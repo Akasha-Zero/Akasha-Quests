@@ -167,6 +167,51 @@ quests:
       - xp: 2
       - item: minecraft:chest x4
 
+  - id: g_diamantes_512
+    title: "Quinhentos Diamantes"
+    type: normal
+    deps: [g_diamantes]
+    icon: minecraft:diamond
+    desc: |
+      Seis lingotes de Matriz para a Mesa, dez para o Compressor, sete para o Coletor, mais as
+      ferramentas: o total passa de cinquenta lingotes, ou mais de mil diamantes. Comece com
+      §e512§r e automatize a mineração.
+    tasks:
+      - get: minecraft:diamond x512
+    rewards:
+      - xp: 8
+      - item: minecraft:diamond_block x4
+
+  - id: reflexao_matriz
+    title: "Um Aviso sobre Escala"
+    type: info
+    deps: [mapa_epilogo]
+    icon: minecraft:written_book
+    desc: |
+      Eu preciso ser clara, Herói: este Epílogo não é rápido. As quantidades são enormes de
+      propósito. Cada degrau do Infinito foi pensado para pesar, porque quem chega ao topo sem
+      ter sentido o peso não entende o que tem nas mãos.
+
+      Respire, planeje, automatize. E nunca tenha pressa.
+    tasks:
+      - check
+    rewards:
+      - xp: 3
+
+  - id: g_ae2_interface
+    title: "Do AE2: Interface de Padrões"
+    type: normal
+    deps: [mapa_epilogo, ae2:interface_padroes]
+    icon: appliedenergistics2:tile.BlockInterface
+    desc: |
+      Cada receita da Mesa Extrema pode virar padrão numa rede ME, com o §bMontador Molecular§r
+      ou a Mesa Extrema Automática do Addons. Não é obrigatório, mas as quantidades pedem.
+    tasks:
+      - get: appliedenergistics2:tile.BlockInterface
+    rewards:
+      - xp: 4
+      - item: minecraft:iron_ingot x16
+
   # ======================================================================
   # FASE 2 — AS MESAS
   # ======================================================================
@@ -265,6 +310,48 @@ quests:
       - check
     rewards:
       - xp: 3
+
+  - id: trelicas_16
+    title: "Dezesseis Treliças"
+    type: normal
+    deps: [trelica_diamante]
+    icon: Avaritia:Resource
+    desc: |
+      Para quatro lingotes de Matriz, §e16 Treliças de Diamante§r (80 diamantes). Se for
+      programar a bancada, um padrão no AE2 resolve.
+    tasks:
+      - get: Avaritia:Resource x16
+    rewards:
+      - xp: 6
+      - item: minecraft:diamond x16
+
+  - id: matriz_64
+    title: "Sessenta e Quatro Matrizes"
+    type: normal
+    deps: [matriz_16]
+    icon: Avaritia:Resource:1
+    desc: |
+      A Mesa, o Coletor e o Compressor somados ainda deixam a conta aberta: o equipamento do
+      Infinito tem blocos de Matriz e o Lingote do Infinito também. Estoque de §e64 lingotes§r.
+    tasks:
+      - get: Avaritia:Resource:1 x64
+    rewards:
+      - xp: 14
+      - item: minecraft:nether_star x2
+      - loot: epico
+
+  - id: matriz_128
+    title: "Cento e Vinte e Oito Matrizes"
+    type: normal
+    deps: [matriz_64]
+    icon: Avaritia:Resource:1
+    desc: |
+      O Lingote do Infinito pede muita Matriz. Com §e128 lingotes§r você respira.
+    tasks:
+      - get: Avaritia:Resource:1 x128
+    rewards:
+      - xp: 20
+      - loot: epico
 
   - id: matriz_bloco
     title: "Bloco de Matriz de Cristal"
@@ -389,6 +476,47 @@ quests:
       - xp: 14
       - loot: epico
 
+  - id: pilhas_729
+    title: "Setecentas e Vinte e Nove Pilhas"
+    type: normal
+    deps: [pilha_neutrons]
+    icon: Avaritia:Resource:2
+    desc: |
+      Nove pilhas formam uma pepita, nove pepitas um lingote: cada Lingote de Neutrônio é §e81
+      pilhas§r. Para quatro lingotes você precisa de 324, e para a conta completa do Infinito,
+      de milhares. Um parque de coletores não é exagero.
+    tasks:
+      - get: Avaritia:Resource:2 x729
+    rewards:
+      - xp: 18
+      - loot: epico
+
+  - id: neutronio_4
+    title: "Quatro Lingotes de Neutrônio"
+    type: normal
+    deps: [lingote_neutronio]
+    icon: Avaritia:Resource:4
+    desc: |
+      A Pérola Endest usa quatro lingotes de Neutrônio. Um marco rápido: §e4 lingotes§r.
+    tasks:
+      - get: Avaritia:Resource:4 x4
+    rewards:
+      - xp: 8
+      - item: minecraft:end_stone x16
+
+  - id: neutronio_128
+    title: "Cento e Vinte e Oito de Neutrônio"
+    type: normal
+    deps: [lingote_neutronio_64]
+    icon: Avaritia:Resource:4
+    desc: |
+      A armadura sozinha usa mais de 120 lingotes de Neutrônio. Estoque de §e128§r.
+    tasks:
+      - get: Avaritia:Resource:4 x128
+    rewards:
+      - xp: 24
+      - loot: lendario
+
   - id: bloco_neutronio
     title: "Bloco de Neutrônio"
     type: main
@@ -422,6 +550,23 @@ quests:
       - xp: 25
       - kit: {name: "Kit do Compressor", items: [minecraft:iron_block x32, minecraft:gold_block x8, minecraft:lapis_block x8, minecraft:redstone_block x16]}
       - loot: epico
+
+  - id: primeira_singularidade
+    title: "Sua Primeira Singularidade"
+    type: main
+    deps: [compressor_neutronio]
+    icon: Avaritia:Singularity
+    desc: |
+      Passe o primeiro bloco de ferro no Compressor e produza uma §eSingularidade de Ferro§r. É
+      a mais simples de todas, e o primeiro ponto do Catálogo.
+
+      O capítulo "Singularidades Eternas" tem as outras. Daqui em diante, ele e este volume
+      andam juntos.
+    tasks:
+      - get: Avaritia:Singularity
+    rewards:
+      - xp: 14
+      - loot: raro
 
   - id: info_compressor
     title: "Como o Compressor Trabalha"
@@ -577,6 +722,116 @@ quests:
       - xp: 6
       - item: minecraft:bread x16
 
+  - id: ensopado_kelp
+    title: "Ensopado: Alga"
+    type: normal
+    deps: [ensopado_basico]
+    icon: allthemodiumlegacy:kelp
+    desc: |
+      A §eAlga§r da Dimensão de Mineração é um dos ingredientes do ensopado. Procure lagoas
+      raras em chunks novos, ou pesque (ela cai como sucata). Plante em água-fonte e colha.
+    tasks:
+      - get: allthemodiumlegacy:kelp
+    rewards:
+      - xp: 4
+      - item: minecraft:bone x8
+
+  - id: ensopado_alho
+    title: "Ensopado: Alho"
+    type: normal
+    deps: [ensopado_basico]
+    icon: witchery:garlic
+    desc: |
+      O §eAlho§r do Witchery tempera o ensopado. Plante e colha; ele também afasta vampiros.
+    tasks:
+      - get: witchery:garlic
+    rewards:
+      - xp: 4
+      - item: minecraft:wheat_seeds x16
+
+  - id: ensopado_hellder
+    title: "Ensopado: Hellderberry"
+    type: normal
+    deps: [ensopado_basico]
+    icon: netherlicious:HellderBerryItem
+    desc: |
+      A §eHellderberry§r vem do Netherlicious, no Nether. Colha os arbustos e leve as sementes
+      para casa.
+    tasks:
+      - get: netherlicious:HellderBerryItem
+    rewards:
+      - xp: 4
+      - item: minecraft:nether_wart x8
+
+  - id: carnes_crepusculo
+    title: "Almôndegas: Carnes do Crepúsculo"
+    type: normal
+    deps: [almondegas_carnes_base]
+    icon: TwilightForest:item.venisonRaw
+    desc: |
+      Veado e Meef cru da Floresta do Crepúsculo: os Lordes Lich e os Faraós nunca aprovaram
+      esses banquetes, mas as almôndegas cósmicas pedem. Cace Veados e Meefs na floresta.
+    tasks:
+      - get: [TwilightForest:item.venisonRaw, TwilightForest:item.meefRaw]
+    rewards:
+      - xp: 5
+      - item: minecraft:cooked_beef x8
+
+  - id: carne_mfr
+    title: "Almôndegas: Barra de Carne"
+    type: normal
+    deps: [almondegas_carnes_base]
+    icon: MineFactoryReloaded:meat.ingot.raw
+    desc: |
+      A §eBarra de Carne Crua§r vem do MineFactory Reloaded (Empacotador de Carne, com suco de
+      carne). É um dos ingredientes mais esquisitos.
+    tasks:
+      - get: MineFactoryReloaded:meat.ingot.raw
+    rewards:
+      - xp: 5
+      - item: minecraft:cooked_beef x8
+
+  - id: gordura_porco
+    title: "Almôndegas: Gordura de Porco"
+    type: normal
+    deps: [almondegas_carnes_base]
+    icon: arsmagica2:itemOre:8
+    desc: |
+      A §eGordura de Porco§r é um item do Ars Magica 2, vinda de porcos. Ela tem usos mágicos de
+      sobra, e aqui entra na carne.
+    tasks:
+      - get: arsmagica2:itemOre:8
+    rewards:
+      - xp: 5
+      - item: minecraft:porkchop x8
+
+  - id: carneiro_cru
+    title: "Almôndegas: Carneiro"
+    type: normal
+    deps: [almondegas_carnes_base]
+    icon: harvestcraft:muttonrawItem
+    desc: |
+      O §eCarneiro Cru§r do HarvestCraft fecha a lista de carnes.
+    tasks:
+      - get: harvestcraft:muttonrawItem
+    rewards:
+      - xp: 5
+      - item: minecraft:mutton x8
+
+  - id: almondegas_carnes_base
+    title: "Almôndegas: Carnes Comuns"
+    type: normal
+    deps: [catalisador_info, pilha_neutrons]
+    icon: minecraft:beef
+    desc: |
+      Para as almôndegas, comece pelas carnes comuns: carne de vaca, frango, porco e peixe crus.
+      Depois vêm as carnes especiais, nas páginas ao lado.
+    tasks:
+      - get: [minecraft:beef, minecraft:chicken, minecraft:porkchop, minecraft:fish]
+    rewards:
+      - xp: 4
+      - item: minecraft:cooked_chicken x8
+
   - id: ensopado_pomar
     title: "Ensopado: Frutas do Pomar"
     type: normal
@@ -613,7 +868,7 @@ quests:
   - id: ensopado_exoticos
     title: "Ensopado: Itens Exóticos"
     type: normal
-    deps: [ensopado_basico]
+    deps: [ensopado_kelp, ensopado_alho, ensopado_hellder]
     icon: allthemodiumlegacy:kelp
     desc: |
       O ensopado também pede itens fora do comum: §eAlga§r da Dimensão de Mineração (ATM),
@@ -644,7 +899,7 @@ quests:
   - id: almondegas_carnes
     title: "Almôndegas: As Carnes"
     type: normal
-    deps: [catalisador_info, pilha_neutrons]
+    deps: [carnes_crepusculo, carne_mfr, gordura_porco, carneiro_cru]
     icon: minecraft:cooked_beef
     desc: |
       As §eAlmôndegas Cósmicas§r pedem uma Pilha de Nêutrons e carnes cruas de várias fontes:
@@ -798,6 +1053,47 @@ quests:
     rewards:
       - xp: 25
       - loot: epico
+
+  - id: catalisadores_5
+    title: "Cinco Catalisadores"
+    type: normal
+    deps: [catalisadores_mais]
+    icon: Avaritia:Resource:5
+    desc: |
+      Cinco catalisadores: a Espada, as Calças e o Capacete já ficam cobertos. Seu parque de
+      ensopado, almôndega e singularidades está funcionando, não está?
+    tasks:
+      - get: Avaritia:Resource:5 x5
+    rewards:
+      - xp: 30
+      - loot: lendario
+
+  - id: infinito_60
+    title: "Sessenta Lingotes do Infinito"
+    type: normal
+    deps: [infinito_30]
+    icon: Avaritia:Resource:6
+    desc: |
+      Sessenta lingotes: metade da armadura e uma ferramenta já saem.
+    tasks:
+      - get: Avaritia:Resource:6 x60
+    rewards:
+      - xp: 30
+      - loot: lendario
+
+  - id: infinito_100
+    title: "Cem Lingotes do Infinito"
+    type: normal
+    deps: [infinito_60]
+    icon: Avaritia:Resource:6
+    desc: |
+      Cem lingotes: o suficiente para armadura e arsenal, com folga. Herói, é um número que eu
+      nunca achei que veria no meu Registro.
+    tasks:
+      - get: Avaritia:Resource:6 x100
+    rewards:
+      - xp: 40
+      - loot: lendario x2
 
   - id: bloco_infinito
     title: "Bloco do Infinito"
@@ -977,6 +1273,46 @@ quests:
     rewards:
       - xp: 60
       - loot: lendario x2
+
+  - id: reflexao_catalisador
+    title: "O Que o Catalisador Pesa"
+    type: info
+    deps: [catalisador]
+    icon: Avaritia:Resource:5
+    desc: |
+      Você segurou nas mãos algo que os Antigos queriam e não conseguiram. A diferença é que
+      você esperou, planejou, automatizou, dividiu o peso em degraus. O infinito não se
+      conquista: se constrói devagar.
+    tasks:
+      - check
+    rewards:
+      - xp: 3
+
+  - id: reflexao_armadura
+    title: "Vestindo a Eternidade"
+    type: info
+    deps: [armadura_infinito]
+    icon: Avaritia:Infinity_Helm
+    desc: |
+      A armadura não se quebra. Isso significa que a responsabilidade é toda sua: o Registro não
+      vai te impedir, nada mais vai. Use com sabedoria, Herói.
+    tasks:
+      - check
+    rewards:
+      - xp: 3
+
+  - id: reflexao_arsenal
+    title: "Armas que Não Cansam"
+    type: info
+    deps: [arsenal_infinito]
+    icon: Avaritia:Infinity_Sword
+    desc: |
+      Cinco ferramentas que não se gastam. É um poder enorme para quem tem pouco para temer.
+      Lembre da pergunta que eu fiz lá no começo: o que você escolhe não escrever?
+    tasks:
+      - check
+    rewards:
+      - xp: 3
 
   # ======================================================================
   # EXTRAS — CURIOSIDADES DO INFINITO
