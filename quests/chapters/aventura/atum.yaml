@@ -1,0 +1,1308 @@
+# Atum: As Areias Eternas — Atum 0.6.77 (namespace atum, dimensão 17).
+# Ato III, Reino Perdido nº 3: o Reino das Areias e a Chave das Areias.
+# Fontes: registro do pack (nomes pt_BR do próprio mod), lang en_US (efeitos dos artefatos),
+# classes do JAR (portal do Escaravelho, drops, Baú do Faraó, limpeza das relíquias) e
+# config/atum.cfg. Ver docs/mods/atum.md.
+chapter:
+  id: atum
+  title: "Atum: As Areias Eternas"
+  order: 220
+  icon: atum:item.scarab
+  desc: |
+    §2Ato III — Reino Perdido das Areias.§r Um deserto sem fim sob um sol implacável, onde os
+    deuses guardam o Livro dos Mortos. Enfrente múmias, bandidos e o Faraó para reaver a
+    §6Chave das Areias§r.
+
+quests:
+  # ------------------------------------------------------------------ Chegada
+  - id: areias_inicio
+    title: "O Reino das Areias"
+    type: info
+    desc: |
+      O terceiro arquivo perdido é o mais antigo de todos. Em §eAtum§r, os deuses guardam o
+      §eLivro dos Mortos§r, onde está escrito o que acontece com tudo que acaba. E quem guarda a
+      §6Chave das Areias§r é o §eFaraó§r, adormecido no coração das pirâmides.
+
+      §eO caminho:§r Escaravelho → portal de arenito → Calcário → oásis, palmeiras e linho →
+      armaduras do deserto → ruínas e pirâmides → o Faraó e os artefatos dos deuses.
+
+      Leve comida e água: o deserto não perdoa. Pronto(a)?
+    tasks:
+      - check
+    rewards:
+      - xp: 2
+
+  - id: escaravelho
+    title: "O Escaravelho Dourado"
+    type: main
+    deps: [areias_inicio]
+    desc: |
+      Os antigos egípcios acreditavam que o escaravelho empurrava o sol pelo céu. Aqui, ele
+      empurra você para outro mundo!
+
+      Receita: §e4 Lingotes de Ouro em cruz com 1 Diamante no centro§r = §eEscaravelho§r. Ele é
+      a chave do portal para Atum.
+    tasks:
+      - craft: atum:item.scarab
+    rewards:
+      - xp: 5
+      - choice: ["minecraft:sandstone x16", "minecraft:water_bucket", "minecraft:bread x16"]
+
+  - id: moldura_arenito
+    title: "A Bacia de Arenito"
+    type: main
+    deps: [escaravelho]
+    desc: |
+      O portal de Atum é uma bacia de §eArenito§r (Sandstone):
+      §e1.§r um piso de 5x5 blocos;
+      §e2.§r em cima dele, uma borda de 1 bloco de altura em volta (deixando um buraco 3x3 no
+      meio);
+      §e3.§r nos quatro cantos, mais 2 blocos de altura, como pilares.
+
+      São 49 blocos de arenito. Depois, clique com o Escaravelho na estrutura e o buraco do meio
+      vira portal. (Os Tijolos Grandes de Calcário de Atum também servem de moldura.)
+    tasks:
+      - get: minecraft:sandstone x49
+    rewards:
+      - xp: 5
+      - choice: ["minecraft:cooked_beef x16", "minecraft:torch x32", "minecraft:arrow x32"]
+
+  - id: portal_atum
+    title: "As Areias Eternas"
+    type: portal
+    deps: [moldura_arenito]
+    banner: "O Reino das Areias"
+    subtitle: "O terceiro arquivo perdido"
+    desc: |
+      Atravesse o portal. Areia até onde a vista alcança, uma névoa quente no horizonte e,
+      ao longe, a silhueta de uma pirâmide...
+
+      Bem-vindo(a) a §eAtum§r. Aqui a pedra é §eCalcário§r, a madeira vem das §epalmeiras§r dos
+      oásis e os moradores, bom, quase todos querem você morto(a).
+
+      §aDica:§r o portal funciona nos dois sentidos. Construa um abrigo de calcário perto dele
+      antes de explorar.
+    tasks:
+      - visit: {dim: 17, name: "Atum"}
+    rewards:
+      - xp: 8
+      - loot: raro
+
+  - id: areia_estranha
+    title: "Areia Estranha"
+    deps: [portal_atum]
+    desc: |
+      A areia de Atum (§eAreia Estranha§r) não é como a da Superfície. Ela vira §eVidro
+      Cristalino§r na fornalha e, na bancada, pode ser convertida em areia comum.
+
+      Junte 32.
+    tasks:
+      - get: atum:tile.sand x32
+    rewards:
+      - xp: 3
+      - item: minecraft:coal x8
+
+  # ------------------------------------------------------------------ Calcário
+  - id: calcario
+    title: "Calcário"
+    type: main
+    deps: [portal_atum]
+    desc: |
+      Debaixo da areia está a pedra de Atum: o §eLimestone§r. Ao ser minerado, ele vira
+      §eCalcário Rachado§r, o "pedregulho" deste reino.
+
+      Junte 24 de Calcário Rachado.
+    tasks:
+      - get: atum:tile.cobble x24
+    rewards:
+      - xp: 5
+      - choice: ["minecraft:stick x16", "minecraft:torch x32", "minecraft:cooked_chicken x12"]
+
+  - id: picareta_calcario
+    title: "Picareta de Calcário"
+    type: main
+    deps: [calcario]
+    desc: |
+      Com Calcário Rachado e gravetos você faz ferramentas no nível da pedra comum. Comece pela
+      §ePicareta de Calcário§r.
+    tasks:
+      - craft: atum:item.limestonePickaxe
+    rewards:
+      - xp: 5
+      - choice: ["atum:tile.cobble x32", "minecraft:stick x16", "minecraft:bread x12"]
+
+  - id: ferramentas_calcario
+    title: "O Kit de Calcário"
+    deps: [picareta_calcario]
+    desc: |
+      Complete o conjunto: §eMachado§r, §ePá§r, §eEspada§r e §eEnxada de Calcário§r. A enxada vai
+      ser importante para o Solo Fértil dos oásis.
+
+      Faça as quatro.
+    tasks:
+      - get: [atum:item.limestoneAxe, atum:item.limestoneShovel, atum:item.limestoneSword, atum:item.limestoneHoe]
+    rewards:
+      - xp: 3
+      - item: atum:tile.cobble x16
+
+  - id: fornalha_calcario
+    title: "Fornalha de Calcário"
+    deps: [calcario]
+    desc: |
+      Oito blocos de Calcário Rachado em anel = §eFornalha de Calcário§r. Funciona como uma
+      fornalha comum, com a cara do deserto.
+
+      Faça uma.
+    tasks:
+      - craft: atum:tile.furnaceIdle
+    rewards:
+      - xp: 3
+      - item: minecraft:coal x8
+
+  - id: calcario_liso
+    title: "Calcário Polido"
+    type: optional
+    deps: [fornalha_calcario]
+    desc: |
+      Calcário Rachado assado na fornalha volta a ser §eLimestone§r liso, que vira lajes, escadas
+      e tijolos.
+
+      Asse 16.
+    tasks:
+      - craft: atum:tile.stone x16
+    rewards:
+      - loot: comum
+
+  - id: tijolos_calcario
+    title: "Tijolos de Calcário"
+    type: optional
+    deps: [calcario_liso]
+    desc: |
+      Os construtores de Atum tinham três tijolos favoritos: os §eTijolos Pequenos§r (de
+      Calcário Rachado), os §eTijolos Grandes§r (de Limestone) e os §eTijolos Talhados§r.
+
+      Faça qualquer um deles.
+    tasks:
+      - one_of: [atum:tile.smallBrick, atum:tile.largeBrick:2, atum:tile.carvedBrick]
+    rewards:
+      - loot: comum
+
+  - id: vidro_cristalino
+    title: "Vidro Cristalino"
+    deps: [fornalha_calcario, areia_estranha]
+    desc: |
+      A Areia Estranha assada vira §eVidro Cristalino§r, tão transparente que parece não estar
+      ali. Ele também tinge em 16 cores e vira painéis finos.
+
+      Faça 8.
+    tasks:
+      - craft: atum:tile.crystalGlass x8
+    rewards:
+      - xp: 3
+      - item: atum:tile.sand x16
+
+  - id: vidro_emoldurado
+    title: "Vidro Emoldurado"
+    type: optional
+    deps: [vidro_cristalino]
+    desc: |
+      Vidro Cristalino cercado por 4 gravetos = §eVidro Emoldurado§r, a janela clássica das casas
+      de Atum. Tudo isso também tem versões coloridas.
+    tasks:
+      - craft: atum:tile.framedGlass
+    rewards:
+      - loot: comum
+
+  - id: minerio_atum
+    title: "Riquezas na Pedra"
+    deps: [picareta_calcario]
+    desc: |
+      O Limestone de Atum esconde os mesmos minérios da Superfície: carvão, ferro, ouro,
+      redstone, lápis-lazúli e diamante, cada um com textura de calcário.
+
+      Minere 6 §eMinérios de Ferro§r de Atum (eles saem como bloco e vão para a fornalha).
+    tasks:
+      - get: atum:tile.ironOre x6
+    rewards:
+      - xp: 3
+      - item: minecraft:coal x8
+
+  - id: ouro_atum
+    title: "O Ouro dos Faraós"
+    type: optional
+    deps: [minerio_atum]
+    desc: |
+      Onde houve faraós, houve ouro. Minere 4 §eMinérios de Ouro§r de Atum: você vai precisar de
+      ouro para os Escaravelhos de outros aventureiros, para o Ídolo... e por puro prazer.
+    tasks:
+      - get: atum:tile.goldOre x4
+    rewards:
+      - loot: incomum
+
+  # ------------------------------------------------------------------ Oásis, palmeiras e linho
+  - id: oasis
+    title: "O Oásis"
+    type: main
+    deps: [portal_atum]
+    desc: |
+      De vez em quando o deserto se abre num §eoásis§r: água, palmeiras, papiro e um solo escuro
+      e úmido, o §eSolo Fértil§r, onde cresce o linho.
+
+      Ache um oásis e colete 3 §ePapiros§r da beira da água.
+    tasks:
+      - get: atum:item.papyrusPlant x3
+    rewards:
+      - xp: 5
+      - choice: ["minecraft:water_bucket", "minecraft:bucket", "minecraft:bread x16"]
+
+  - id: palmeira
+    title: "Madeira de Palmeira"
+    type: main
+    deps: [portal_atum]
+    desc: |
+      As §epalmeiras§r são a única madeira de Atum. Cada tronco vira 4 §eTábuas de Palmeira§r, que
+      servem para tudo que a madeira comum serve.
+
+      Corte 16 troncos.
+    tasks:
+      - get: atum:tile.palmLog x16
+    rewards:
+      - xp: 5
+      - choice: ["atum:tile.palmPlanks x16", "minecraft:stick x16", "minecraft:apple x8"]
+
+  - id: muda_palmeira
+    title: "Muda de Palmeira"
+    deps: [palmeira]
+    desc: |
+      As folhas de palmeira soltam §eMudas de Palmeira§r. Plante algumas perto da sua base para
+      ter madeira (e sombra!) garantidas.
+
+      Junte 2 mudas.
+    tasks:
+      - get: atum:tile.palmSapling x2
+    rewards:
+      - xp: 3
+      - item: minecraft:dye:15 x8
+
+  - id: tamaras
+    title: "Tâmaras"
+    deps: [palmeira]
+    desc: |
+      As §eTâmaras§r crescem penduradas nas folhas das palmeiras. São a fruta do deserto: doces
+      e fáceis de colher.
+
+      Colete 6.
+    tasks:
+      - get: atum:item.date x6
+    rewards:
+      - xp: 3
+      - item: minecraft:bread x6
+
+  - id: arbusto
+    title: "Arbustos Secos"
+    type: optional
+    deps: [portal_atum]
+    desc: |
+      Os §eArbustos§r do deserto quebram em gravetos: uma fonte de madeira de emergência quando
+      não há palmeira por perto. Com tesoura, você leva o arbusto inteiro para decorar.
+
+      Colete 2 arbustos (com tesoura).
+    tasks:
+      - get: atum:tile.shrub x2
+    rewards:
+      - loot: comum
+
+  - id: pergaminho
+    title: "O Pergaminho"
+    deps: [oasis]
+    desc: |
+      Com papiro e gravetos você faz um §ePergaminho§r (7 papiros em volta e 2 gravetos no meio;
+      confira o formato no NEI). Os escribas de Atum escreviam nele as orações aos deuses.
+
+      Faça um.
+    tasks:
+      - craft: atum:item.scroll
+    rewards:
+      - xp: 3
+      - item: minecraft:paper x8
+
+  - id: linho_planta
+    title: "Linho no Solo Fértil"
+    type: main
+    deps: [oasis]
+    desc: |
+      O §eLinho§r (a planta, Flax) cresce no Solo Fértil dos oásis. Quebre as plantas maduras
+      para colher Linho e §eSementes de Linho§r.
+
+      §aPara plantar o seu:§r are o Solo Fértil com uma enxada e semeie. Ele não cresce em terra
+      comum! Colete 9 de Linho (planta).
+    tasks:
+      - get: atum:item.flax x9
+    rewards:
+      - xp: 5
+      - choice: ["atum:item.flaxSeeds x8", "minecraft:dye:15 x16", "minecraft:water_bucket"]
+
+  - id: sementes_linho
+    title: "Sementes de Linho"
+    deps: [linho_planta]
+    desc: |
+      Guarde §eSementes de Linho§r para montar a sua própria plantação num pedaço de Solo Fértil
+      arado. (Plantação de linho = armadura e linha infinitas.)
+
+      Junte 8.
+    tasks:
+      - get: atum:item.flaxSeeds x8
+    rewards:
+      - xp: 3
+      - item: minecraft:dye:15 x8
+
+  - id: tecido_linho
+    title: "Tecendo o Linho"
+    type: main
+    deps: [linho_planta]
+    desc: |
+      Três Linhos (planta) em linha na bancada viram o §eLinho§r tecido (Linen), o pano dos
+      andarilhos do deserto. (Sim, os dois se chamam "Linho" em português; o tecido é o que
+      vem da bancada.) Um Linho planta sozinho também vira 3 Linhas.
+
+      Teça 6 tecidos.
+    tasks:
+      - craft: atum:item.linen x6
+    rewards:
+      - xp: 5
+      - choice: ["atum:item.flax x9", "minecraft:string x8", "minecraft:leather x6"]
+
+  - id: habitante_areias
+    title: "Habitante das Areias"
+    type: milestone
+    deps: [ferramentas_calcario, fornalha_calcario, tecido_linho, tamaras]
+    banner: "Habitante das Areias"
+    subtitle: "Calcário, palmeira e linho"
+    desc: |
+      Ferramentas de calcário, fornalha, tâmaras e linho tecido: você já vive como um morador
+      de Atum!
+
+      Agora que dá para se vestir e se proteger, é hora de conhecer os outros "moradores":
+      múmias, fantasmas, chacais, soldados de pedra e bandidos. E, mais adiante, as pirâmides.
+
+      §aDica de Akasha:§r a Espada Sagrada (Holy Sword) do Aether causa dano enorme em
+      mortos-vivos. Se você já visitou os céus, traga-a!
+    tasks:
+      - check
+    rewards:
+      - xp: 10
+      - kit: {name: "Kit do Habitante das Areias", items: ["atum:item.date x16", "atum:item.linen x8", "atum:tile.palmPlanks x32", "minecraft:water_bucket"]}
+      - loot: raro
+
+  # ------------------------------------------------------------------ Armaduras
+  - id: armadura_andarilho
+    title: "Armadura do Andarilho"
+    type: main
+    deps: [tecido_linho]
+    desc: |
+      Linho tecido nas receitas normais de armadura vira a §eArmadura do Andarilho§r: leve e
+      fresca, perfeita para os primeiros passos no deserto.
+
+      Faça as quatro peças (24 tecidos).
+    tasks:
+      - get: [atum:item.wandererHelmet, atum:item.wandererChest, atum:item.wandererLegs, atum:item.wandererBoots]
+    rewards:
+      - xp: 5
+      - choice: ["minecraft:iron_ingot x8", "atum:item.linen x6", "minecraft:golden_apple"]
+
+  - id: armadura_deserto
+    title: "Armadura do Deserto"
+    deps: [armadura_andarilho]
+    desc: |
+      Junte cada peça do Andarilho com a peça de ferro equivalente (sem forma na bancada) e
+      nasce a §eArmadura do Deserto§r: bem mais resistente.
+
+      Faça as quatro peças (você vai precisar de uma armadura de ferro completa).
+    tasks:
+      - get: [atum:item.desertHelmet, atum:item.desertChest, atum:item.desertLegs, atum:item.desertBoots]
+    rewards:
+      - xp: 3
+      - item: minecraft:golden_apple x2
+
+  - id: retalhos
+    title: "Retalhos de Múmia"
+    deps: [mumias]
+    desc: |
+      As múmias largam §eRetalhos§r das bandagens. Eles servem para fazer a armadura de múmia.
+
+      Junte 12.
+    tasks:
+      - get: atum:item.clothScrap x12
+    rewards:
+      - xp: 3
+      - item: atum:item.linen x4
+
+  - id: armadura_mumia
+    title: "Disfarce de Múmia"
+    type: optional
+    deps: [retalhos]
+    desc: |
+      Retalhos nas receitas de armadura viram a §eArmadura da Múmia§r (elmo, peitoral, calça e
+      botas). Proteção modesta, estilo garantido.
+
+      Faça as quatro peças.
+    tasks:
+      - get: [atum:item.mummyHelmet, atum:item.mummyChest, atum:item.mummyLegs, atum:item.mummyBoots]
+    rewards:
+      - loot: incomum
+
+  # ------------------------------------------------------------------ Criaturas
+  - id: mumias
+    title: "As Múmias"
+    type: main
+    deps: [portal_atum]
+    desc: |
+      Elas se arrastam pelas dunas, envoltas em bandagens: as §eMúmias§r. Lentas, mas resistentes,
+      e costumam andar em grupos.
+
+      Derrote 5. Armas fortes contra mortos-vivos (encantamento Castigo, por exemplo) ajudam
+      muito.
+    tasks:
+      - kill: {entity: "atum.mummy", count: 5}
+    rewards:
+      - xp: 5
+      - choice: ["minecraft:cooked_beef x12", "minecraft:arrow x32", "minecraft:flint_and_steel"]
+
+  - id: fantasmas
+    title: "Fantasmas do Deserto"
+    deps: [mumias]
+    desc: |
+      Os §eFantasmas do Deserto§r flutuam silenciosos entre as dunas. Eles largam §eEctoplasma§r.
+
+      Derrote 3.
+    tasks:
+      - kill: {entity: "atum.desertGhost", count: 3}
+    rewards:
+      - xp: 3
+      - item: minecraft:glass_bottle x4
+
+  - id: ectoplasma
+    title: "Ectoplasma"
+    deps: [fantasmas]
+    desc: |
+      O §eEctoplasma§r é a essência que sobra dos fantasmas. Ele tem um uso precioso: 4
+      ectoplasmas em volta de uma Poção (garrafa com água serve) viram uma §eGarrafa de
+      Experiência§r.
+
+      Junte 4.
+    tasks:
+      - get: atum:item.ectoplasm x4
+    rewards:
+      - xp: 3
+      - item: minecraft:glass_bottle x4
+
+  - id: garrafa_experiencia
+    title: "Experiência Engarrafada"
+    type: optional
+    deps: [ectoplasma]
+    desc: |
+      Monte a receita: Ectoplasma nos 4 lados e a poção no centro. Uma fonte de XP de fantasma,
+      para quem gosta de encantar.
+    tasks:
+      - craft: minecraft:experience_bottle
+    rewards:
+      - loot: comum
+
+  - id: esqueletos
+    title: "Esqueletos Empoeirados"
+    deps: [portal_atum]
+    desc: |
+      Os §eEsqueletos Empoeirados§r são os guardas mortos de Atum. Eles largam ossos: farinha de
+      osso para as palmeiras e o linho!
+
+      Derrote 5.
+    tasks:
+      - kill: {entity: "atum.dustySkeleton", count: 5}
+    rewards:
+      - xp: 3
+      - item: minecraft:arrow x16
+
+  - id: chacais
+    title: "Chacais"
+    deps: [portal_atum]
+    desc: |
+      Os §eChacais§r (Desert Wolves) costumam aparecer em grupos. Eles largam ossos e a valiosa §ePele de
+      Chacal§r.
+
+      Derrote 4.
+    tasks:
+      - kill: {entity: "atum.desertWolf", count: 4}
+    rewards:
+      - xp: 3
+      - item: minecraft:bone x8
+
+  - id: pele_chacal
+    title: "Pele de Chacal"
+    deps: [chacais]
+    desc: |
+      Uma §ePele de Chacal§r é a lembrança de uma boa caçada. Guarde 3, porque nunca se sabe
+      quando uma receita (de outro mod ou do futuro) vai pedir.
+    tasks:
+      - get: atum:item.wolfPelt x3
+    rewards:
+      - xp: 3
+      - item: minecraft:leather x4
+
+  - id: soldados_pedra
+    title: "Soldados de Pedra"
+    deps: [mumias]
+    desc: |
+      Os §eSoldados de Pedra§r são estátuas vivas que protegem as construções antigas. Eles
+      largam §ePedaços de Pedra§r e, às vezes, a própria espada.
+
+      Derrote 3. Eles são duros: leve a melhor arma que tiver.
+    tasks:
+      - kill: {entity: "atum.stoneSoldier", count: 3}
+    rewards:
+      - xp: 3
+      - item: minecraft:iron_ingot x4
+
+  - id: tijolo_rachado
+    title: "Tijolos Rachados"
+    type: optional
+    deps: [soldados_pedra]
+    desc: |
+      Quatro §ePedaços de Pedra§r dos soldados formam 4 §eTijolos de Calcário Rachado§r. Ótimo
+      para construir ruínas "envelhecidas".
+    tasks:
+      - craft: atum:tile.crackedLargeBrick
+    rewards:
+      - loot: comum
+
+  - id: bandidos
+    title: "Bandidos Guerreiros"
+    type: main
+    deps: [armadura_andarilho]
+    desc: |
+      Nem todo perigo de Atum está morto. Os §eBandidos Guerreiros§r atacam com cimitarras e
+      andam em grupo.
+
+      Derrote 4. Eles podem largar pepitas de ouro e as próprias armas.
+    tasks:
+      - kill: {entity: "atum.banditWarrior", count: 4}
+    rewards:
+      - xp: 5
+      - choice: ["minecraft:golden_apple", "minecraft:arrow x32", "minecraft:iron_ingot x6"]
+
+  - id: arqueiros
+    title: "Bandidos Arqueiros"
+    deps: [bandidos]
+    desc: |
+      Os §eBandidos Arqueiros§r atiram de longe com o Arco Curto. Use as dunas como cobertura e
+      chegue perto rápido.
+
+      Derrote 3.
+    tasks:
+      - kill: {entity: "atum.banditArcher", count: 3}
+    rewards:
+      - xp: 3
+      - item: minecraft:arrow x24
+
+  - id: barbaro
+    title: "O Bárbaro"
+    deps: [bandidos]
+    desc: |
+      O §eBárbaro§r carrega uma Espada Larga e bate como um caminhão. Ele é raro e solitário.
+
+      Derrote um.
+    tasks:
+      - kill: {entity: "atum.barbarian", count: 1}
+    rewards:
+      - xp: 3
+      - item: minecraft:golden_apple
+
+  - id: chefe_bandido
+    title: "O Chefe dos Bandidos"
+    type: main
+    deps: [arqueiros, barbaro]
+    desc: |
+      O §eBandido Chefe§r (Bandit Warlord) comanda os saqueadores do deserto. Ele usa cimitarra e
+      pode vestir a armadura do Andarilho.
+
+      Derrote o chefe e o deserto fica um pouco mais seguro.
+    tasks:
+      - kill: {entity: "atum.banditWarlord", count: 1}
+    rewards:
+      - xp: 5
+      - choice: ["minecraft:diamond x2", "minecraft:golden_apple x2", "minecraft:gold_ingot x8"]
+
+  - id: guerreiro_deserto
+    title: "Guerreiro do Deserto"
+    type: milestone
+    deps: [chefe_bandido, armadura_deserto, soldados_pedra, fantasmas]
+    banner: "Guerreiro do Deserto"
+    subtitle: "Pronto para as pirâmides"
+    desc: |
+      Múmias, fantasmas, soldados de pedra e o próprio Chefe dos Bandidos: nada no deserto
+      aberto te assusta mais.
+
+      Os Faraós eram parceiros antigos dos Lordes Lich do Crepúsculo, sabia? Eles trocavam
+      páginas: o tempo dos Lich pelo destino dos Faraós. É por isso que as tumbas dos dois reinos
+      se parecem tanto.
+
+      Agora, as pirâmides.
+    tasks:
+      - check
+    rewards:
+      - xp: 10
+      - kit: {name: "Kit do Guerreiro do Deserto", items: ["minecraft:golden_apple x4", "minecraft:arrow x64", "atum:item.date x16", "minecraft:potion:8259 x2"]}
+      - loot: raro
+
+  # ------------------------------------------------------------------ Armas
+  - id: cimitarra
+    title: "Cimitarra"
+    deps: [bandidos]
+    desc: |
+      A §eCimitarra§r é a lâmina curva dos bandidos. Rápida e afiada, ótima arma do meio do jogo.
+
+      Consiga uma (derrotando bandidos).
+    tasks:
+      - get: atum:item.scimitar
+    rewards:
+      - xp: 3
+      - item: minecraft:iron_ingot x4
+
+  - id: espada_larga
+    title: "Espada Larga"
+    type: optional
+    deps: [barbaro]
+    desc: |
+      A §eEspada Larga§r do Bárbaro é pesada e devastadora. Se ele largar a dele, é sua.
+    tasks:
+      - get: atum:item.greatsword
+    rewards:
+      - loot: incomum
+
+  - id: arco_curto
+    title: "Arco Curto"
+    type: optional
+    deps: [arqueiros]
+    desc: |
+      O §eArco Curto§r dos arqueiros bandidos. Um arco compacto para quem prefere distância.
+    tasks:
+      - get: atum:item.bow
+    rewards:
+      - loot: incomum
+
+  - id: espada_soldado
+    title: "Espada do Soldado de Pedra"
+    type: optional
+    deps: [soldados_pedra]
+    desc: |
+      Às vezes um Soldado de Pedra derrotado larga a sua §eEspada do Soldado de Pedra§r. Uma
+      arma esculpida, literalmente, em rocha viva.
+    tasks:
+      - get: atum:item.stoneSoldierSword
+    rewards:
+      - loot: incomum
+
+  # ------------------------------------------------------------------ Ruínas, baús e relíquias
+  - id: ruinas
+    title: "As Ruínas"
+    type: main
+    deps: [guerreiro_deserto]
+    desc: |
+      Espalhadas pelo deserto há §eruínas§r de calcário, restos de cidades antigas. Os baús delas
+      guardam comida, ferramentas e §erelíquias§r (ídolos, colares, anéis, broches e cetros).
+
+      Encontre uma relíquia de qualquer tipo. Muitas vêm §e"Sujas"§r: guarde-as, vamos limpar
+      já já.
+    tasks:
+      - get: atum:item.loot:*
+    rewards:
+      - xp: 5
+      - choice: ["minecraft:torch x32", "minecraft:golden_apple", "minecraft:arrow x32"]
+
+  - id: bau_amaldicoado
+    title: "O Baú do Atum"
+    deps: [ruinas]
+    desc: |
+      Alguns baús de Atum (o §eBáu do Atum§r) são amaldiçoados: ao chegar perto, criaturas surgem
+      para defendê-lo, e o baú §enão abre enquanto houver inimigos por perto§r ("há inimigos
+      demais por perto para revistar este baú").
+
+      Limpe a área, abra um baú desses e marque esta quest. Leve armadura completa!
+    tasks:
+      - check
+    rewards:
+      - xp: 3
+      - item: minecraft:golden_apple
+
+  - id: limpar_reliquia
+    title: "Lavando o Passado"
+    deps: [ruinas]
+    desc: |
+      Uma relíquia §eSuja§r esconde o seu verdadeiro valor. §eJogue-a na água§r (no chão de um
+      lago ou poça, com a tecla Q) e ela se revela: pode virar Prata, Ouro, Safira, Rubi,
+      Esmeralda ou até Diamante!
+
+      Tenha uma relíquia limpa de qualquer tipo.
+    tasks:
+      - one_of: [atum:item.loot:2, atum:item.loot:4, atum:item.loot:6, atum:item.loot:8, atum:item.loot:10, atum:item.loot:12, atum:item.loot:34, atum:item.loot:36, atum:item.loot:38, atum:item.loot:40, atum:item.loot:42, atum:item.loot:44, atum:item.loot:66, atum:item.loot:68, atum:item.loot:70, atum:item.loot:72, atum:item.loot:74, atum:item.loot:76, atum:item.loot:98, atum:item.loot:100, atum:item.loot:102, atum:item.loot:104, atum:item.loot:106, atum:item.loot:108, atum:item.loot:130, atum:item.loot:132, atum:item.loot:134, atum:item.loot:136, atum:item.loot:138, atum:item.loot:140]
+    rewards:
+      - xp: 3
+      - item: minecraft:gold_nugget x9
+
+  - id: reliquia_diamante
+    title: "Relíquia de Diamante"
+    type: optional
+    deps: [limpar_reliquia]
+    desc: |
+      A sorte grande: uma relíquia que, lavada, se revela de §eDiamante§r (ídolo, colar, anel,
+      broche ou cetro). Continue limpando relíquias sujas até conseguir uma.
+    tasks:
+      - one_of: [atum:item.loot:12, atum:item.loot:44, atum:item.loot:76, atum:item.loot:108, atum:item.loot:140]
+    rewards:
+      - loot: incomum
+
+  - id: colecao_idolos
+    title: "Coleção de Ídolos"
+    type: optional
+    deps: [limpar_reliquia]
+    desc: |
+      Os §eÍdolos§r eram as imagens dos deuses de Atum. Junte um ídolo limpo de Prata, um de
+      Ouro e um de qualquer pedra preciosa (Safira, Rubi, Esmeralda ou Diamante).
+
+      Para facilitar: basta ter os ídolos de Prata e de Ouro e mais um precioso qualquer.
+    tasks:
+      - get: [atum:item.loot:2, atum:item.loot:4]
+      - one_of: [atum:item.loot:6, atum:item.loot:8, atum:item.loot:10, atum:item.loot:12]
+    rewards:
+      - loot: incomum
+
+  # ------------------------------------------------------------------ Pirâmide e Faraó
+  - id: piramide
+    title: "A Pirâmide"
+    type: main
+    deps: [ruinas]
+    desc: |
+      Ela domina o horizonte: a §ePirâmide§r. As paredes externas são de §eTijolos Grandes de
+      Calcário inquebráveis§r; você precisa achar a entrada e atravessar o labirinto interno,
+      cheio de §earmadilhas de fogo§r e Soldados de Pedra.
+
+      §cCuidado:§r as armadilhas disparam quando você passa. Vá devagar, com armadura e poções
+      de resistência ao fogo. Marque quando chegar à câmara central, onde fica o §eBaú do
+      Faraó§r.
+    tasks:
+      - check
+    rewards:
+      - xp: 5
+      - choice: ["minecraft:potion:8259 x3", "minecraft:golden_apple x2", "minecraft:arrow x48"]
+
+  - id: farao
+    title: "O Faraó Desperta"
+    type: boss
+    deps: [piramide]
+    banner: "O Faraó foi derrotado!"
+    subtitle: "O guardião das areias descansa"
+    desc: |
+      Toque no §eBaú do Faraó§r e ele desperta: o §eFaraó§r surge, cercado de múmias guardiãs, e o
+      servidor inteiro fica sabendo quem o invocou. O baú só abre depois que ele cair.
+
+      §cTática:§r ele bate forte e tem muita vida. Lide primeiro com as múmias, use uma arma
+      boa contra mortos-vivos e mantenha comida e poções à mão.
+
+      Derrotado, ele larga ouro e sempre um §eartefato dos deuses§r. O Livro dos Mortos agora
+      tem o seu nome... do lado certo.
+    tasks:
+      - kill: {entity: "atum.pharaoh", count: 1}
+    rewards:
+      - xp: 10
+      - loot: epico
+
+  - id: tesouro_farao
+    title: "O Tesouro do Faraó"
+    type: main
+    deps: [farao]
+    desc: |
+      Com o Faraó vencido, o §eBaú do Faraó§r finalmente abre. E o Faraó deixou para trás o seu
+      primeiro §eartefato dos deuses§r: uma arma, ferramenta, armadura ou amuleto com o poder de
+      uma divindade de Atum.
+
+      Tenha qualquer artefato.
+    tasks:
+      - one_of: [atum:item.ptahsDecadence, atum:item.soteksRage, atum:item.osirisWill, atum:item.akersToil, atum:item.gebsBlessing, atum:item.atensFury, atum:item.rasGlory, atum:item.sekhmetsWrath, atum:item.nutsAgility, atum:item.horusFlight, atum:item.monthusStrike, atum:item.anhursMight, atum:item.hedetetsSting, atum:item.horusSoaring, atum:item.shusBreath, atum:item.ptahsDestruction, atum:item.monthusBlast, atum:item.nusFlux, atum:item.mnevisHorns, atum:item.isisEmbrace, atum:item.maatsBalance, atum:item.hedetetsVenom, atum:item.gebsSolidarity, atum:item.nutsCall, atum:item.anuketsBounty, atum:item.mafdetsQuickness, atum:item.isisHealing, atum:item.amunetsHomecoming, atum:item.anubisMercy, atum:item.neithsAudacity]
+    rewards:
+      - xp: 5
+      - choice: ["minecraft:gold_ingot x8", "minecraft:diamond x2", "minecraft:golden_apple x3"]
+
+  - id: cetro
+    title: "O Cetro"
+    type: optional
+    deps: [farao]
+    desc: |
+      O Faraó empunha um §eCetro§r. Se você conseguir um, guarde: é a insígnia de quem governou
+      estas areias.
+    tasks:
+      - get: atum:item.scepter
+    rewards:
+      - loot: incomum
+
+  - id: segundo_farao
+    title: "Outra Pirâmide, Outro Faraó"
+    type: optional
+    deps: [farao]
+    desc: |
+      Cada pirâmide tem o seu Faraó, e cada Faraó deixa um artefato aleatório. Quem quer a
+      coleção dos deuses vai precisar visitar várias pirâmides.
+
+      Derrote mais 2 Faraós.
+    tasks:
+      - kill: {entity: "atum.pharaoh", count: 2}
+    rewards:
+      - loot: [incomum, raro]
+
+  # ------------------------------------------------------------------ Artefatos dos deuses
+  - id: armas_deuses
+    title: "As Armas dos Deuses"
+    type: optional
+    deps: [tesouro_farao]
+    desc: |
+      Sete armas corpo a corpo, sete divindades:
+      §eRaiva de Soteks§r (empurra para longe), §eVontade de Osiris§r (dano extra em mortos-vivos
+      e chance de ectoplasma), §eGolpe de Monthus§r (carregue para empurrar em área), §ePoder de
+      Anhurs§r (te deixa lento, mas pode atordoar), §eFerrão de Hedetets§r (envenena),
+      §eDestruição de Ptahs§r (dano extra em inimigos de pedra) e §eFluxo de Nus§r (joga os
+      inimigos para o ar).
+
+      Tenha qualquer uma delas.
+    tasks:
+      - one_of: [atum:item.soteksRage, atum:item.osirisWill, atum:item.monthusStrike, atum:item.anhursMight, atum:item.hedetetsSting, atum:item.ptahsDestruction, atum:item.nusFlux]
+    rewards:
+      - loot: incomum
+
+  - id: arcos_deuses
+    title: "Os Arcos dos Deuses"
+    type: optional
+    deps: [tesouro_farao]
+    desc: |
+      Os arqueiros divinos de Atum: §eFúria de Atens§r (flechas de fogo), §eAscendência de
+      Horus§r (flechas 50% mais rápidas), §eRespiração de Shus§r (puxa mais rápido),
+      §eExplosão de Monthus§r (flechas explosivas), §eVeneno de Hedetets§r (flechas venenosas),
+      §eChamado de Nuts§r (chance de raio) e §eAudácia de Neiths§r (dispara duas flechas).
+
+      Tenha qualquer um.
+    tasks:
+      - one_of: [atum:item.atensFury, atum:item.horusSoaring, atum:item.shusBreath, atum:item.monthusBlast, atum:item.hedetetsVenom, atum:item.nutsCall, atum:item.neithsAudacity]
+    rewards:
+      - loot: incomum
+
+  - id: ferramentas_deuses
+    title: "As Ferramentas dos Deuses"
+    type: optional
+    deps: [tesouro_farao]
+    desc: |
+      Os deuses também trabalhavam: §eDecadência de Ptahs§r (um diamante extra de cada minério de
+      diamante), §eLabuta de Akers§r (mais rápida e sem cansaço) e §eBênção de Gebs§r (o solo
+      arado com ela fica abençoado e as plantas crescem mais rápido).
+
+      Tenha qualquer uma.
+    tasks:
+      - one_of: [atum:item.ptahsDecadence, atum:item.akersToil, atum:item.gebsBlessing]
+    rewards:
+      - loot: incomum
+
+  - id: amuletos_deuses
+    title: "Os Amuletos dos Deuses"
+    type: optional
+    deps: [tesouro_farao]
+    desc: |
+      Pequenos objetos, grandes milagres: §eRapidez de Mafdets§r (corre mais rápido enquanto
+      segura), §eCura de Isis§r (regenera enquanto segura), §eReencontro de Amunets§r (te leva
+      de volta ao ponto de renascimento) e §eMisericórdia de Anubis§r (ao morrer, te leva de
+      volta ao ponto de renascimento).
+
+      Tenha qualquer um.
+    tasks:
+      - one_of: [atum:item.mafdetsQuickness, atum:item.isisHealing, atum:item.amunetsHomecoming, atum:item.anubisMercy]
+    rewards:
+      - loot: incomum
+
+  - id: decadencia_ptah
+    title: "Decadência de Ptahs"
+    type: optional
+    deps: [ferramentas_deuses]
+    desc: |
+      De todos os artefatos, este é o que mais faz os olhos brilharem: com a §eDecadência de
+      Ptahs§r, cada minério de diamante rende §eum diamante extra§r ("Wealth I").
+    tasks:
+      - get: atum:item.ptahsDecadence
+    rewards:
+      - loot: incomum
+
+  - id: vontade_osiris
+    title: "Vontade de Osiris"
+    type: optional
+    deps: [armas_deuses]
+    desc: |
+      Osiris, senhor dos mortos, empresta a sua vontade: a §eVontade de Osiris§r causa dano extra
+      em mortos-vivos e pode fazer os inimigos largarem Ectoplasma ("Banish I"). Feita para
+      Atum.
+    tasks:
+      - get: atum:item.osirisWill
+    rewards:
+      - loot: incomum
+
+  - id: misericordia_anubis
+    title: "Misericórdia de Anubis"
+    type: optional
+    deps: [amuletos_deuses]
+    desc: |
+      Anubis pesa os corações dos mortos. Com a §eMisericórdia de Anubis§r, quando você morre ele
+      te devolve ao seu ponto de renascimento ("Return I"). O guardião do Livro dos Mortos
+      cuidando de você!
+    tasks:
+      - get: atum:item.anubisMercy
+    rewards:
+      - loot: incomum
+
+  - id: reencontro_amunet
+    title: "Reencontro de Amunets"
+    type: optional
+    deps: [amuletos_deuses]
+    desc: |
+      O §eReencontro de Amunets§r te teleporta de volta ao ponto de renascimento quando usado.
+      O caminho de casa, num amuleto.
+    tasks:
+      - get: atum:item.amunetsHomecoming
+    rewards:
+      - loot: incomum
+
+  - id: audacia_neith
+    title: "Audácia de Neiths"
+    type: optional
+    deps: [arcos_deuses]
+    desc: |
+      Neith, a caçadora, nunca errava: a §eAudácia de Neiths§r dispara §eduas flechas§r por tiro
+      ("Double Shot I").
+    tasks:
+      - get: atum:item.neithsAudacity
+    rewards:
+      - loot: incomum
+
+  - id: furia_aten
+    title: "Fúria de Atens"
+    type: optional
+    deps: [arcos_deuses]
+    desc: |
+      O disco solar em forma de arco: as flechas da §eFúria de Atens§r pegam fogo e incendeiam
+      blocos e inimigos ("Fire Shot I").
+    tasks:
+      - get: atum:item.atensFury
+    rewards:
+      - loot: incomum
+
+  - id: raiva_soteks
+    title: "Raiva de Soteks"
+    type: optional
+    deps: [armas_deuses]
+    desc: |
+      A §eRaiva de Soteks§r arremessa os inimigos para longe a cada golpe ("Exile I"). Perfeita
+      para manter múmias a uma distância respeitosa.
+    tasks:
+      - get: atum:item.soteksRage
+    rewards:
+      - loot: comum
+
+  - id: golpe_monthu
+    title: "Golpe de Monthus"
+    type: optional
+    deps: [armas_deuses]
+    desc: |
+      Monthu era o deus da guerra. O §eGolpe de Monthus§r causa mais dano e, carregado, solta uma
+      onda que empurra tudo em volta ("Slam I").
+    tasks:
+      - get: atum:item.monthusStrike
+    rewards:
+      - loot: comum
+
+  - id: fluxo_nu
+    title: "Fluxo de Nus"
+    type: optional
+    deps: [armas_deuses]
+    desc: |
+      Nu é o oceano primordial de onde tudo nasceu. O §eFluxo de Nus§r tem chance de lançar os
+      inimigos para o alto ("Sweep I"), como uma onda.
+    tasks:
+      - get: atum:item.nusFlux
+    rewards:
+      - loot: comum
+
+  - id: ferrao_hedetet
+    title: "Ferrão de Hedetets"
+    type: optional
+    deps: [armas_deuses]
+    desc: |
+      Hedetet é a deusa-escorpião. O §eFerrão de Hedetets§r tem chance de envenenar quem ele
+      acerta ("Poison II").
+    tasks:
+      - get: atum:item.hedetetsSting
+    rewards:
+      - loot: comum
+
+  - id: explosao_monthu
+    title: "Explosão de Monthus"
+    type: optional
+    deps: [arcos_deuses]
+    desc: |
+      As flechas da §eExplosão de Monthus§r explodem ao atingir o alvo ("Explosive Shot I").
+      §cCuidado§r com a própria base!
+    tasks:
+      - get: atum:item.monthusBlast
+    rewards:
+      - loot: comum
+
+  - id: ascendencia_horus
+    title: "Ascendência de Horus"
+    type: optional
+    deps: [arcos_deuses]
+    desc: |
+      Horus, o falcão, enxerga longe. A §eAscendência de Horus§r dispara flechas 50% mais
+      rápidas, que vão mais longe e mais retas ("Velocity I").
+    tasks:
+      - get: atum:item.horusSoaring
+    rewards:
+      - loot: comum
+
+  - id: chamado_nut
+    title: "Chamado de Nuts"
+    type: optional
+    deps: [arcos_deuses]
+    desc: |
+      Nut é a deusa do céu. O §eChamado de Nuts§r tem chance de fazer um raio cair sobre o alvo
+      ("Wrath I"). As Valquírias aprovariam.
+    tasks:
+      - get: atum:item.nutsCall
+    rewards:
+      - loot: comum
+
+  - id: bencao_geb
+    title: "Bênção de Gebs"
+    type: optional
+    deps: [ferramentas_deuses]
+    desc: |
+      Geb é o deus da terra. O solo arado com a §eBênção de Gebs§r fica abençoado e as plantas
+      crescem mais depressa ("Sowing I"). Que tal uma plantação de linho divina?
+    tasks:
+      - get: atum:item.gebsBlessing
+    rewards:
+      - loot: comum
+
+  - id: labuta_aker
+    title: "Labuta de Akers"
+    type: optional
+    deps: [ferramentas_deuses]
+    desc: |
+      Aker guarda os horizontes. A §eLabuta de Akers§r trabalha mais rápido e não gasta a sua
+      energia ("Performance I").
+    tasks:
+      - get: atum:item.akersToil
+    rewards:
+      - loot: comum
+
+  - id: cura_isis
+    title: "Cura de Isis"
+    type: optional
+    deps: [amuletos_deuses]
+    desc: |
+      Isis, a curadora. Enquanto você segura a §eCura de Isis§r, sua vida se regenera devagar
+      ("Regeneration I").
+    tasks:
+      - get: atum:item.isisHealing
+    rewards:
+      - loot: comum
+
+  - id: rapidez_mafdet
+    title: "Rapidez de Mafdets"
+    type: optional
+    deps: [amuletos_deuses]
+    desc: |
+      Mafdet, a deusa-guepardo, nunca perdia uma corrida. Segurando a §eRapidez de Mafdets§r você
+      corre mais rápido ("Swiftness I").
+    tasks:
+      - get: atum:item.mafdetsQuickness
+    rewards:
+      - loot: comum
+
+  - id: conjunto_sol
+    title: "As Vestes do Sol"
+    type: optional
+    deps: [tesouro_farao]
+    desc: |
+      Quatro artefatos que vestem: §eGlória de Ras§r (elmo: visão noturna e visão mais longa em
+      Atum), §eIra de Sekhmets§r (peito: proteção contra fogo e chance de incendiar quem te ataca),
+      §eAgilidade de Nuts§r (calças: mais velocidade para correr e golpear) e §eVoo de Horus§r
+      (botas: pulo mais alto e sem dano de queda).
+
+      Junte as quatro peças. (Vai precisar de vários Faraós!)
+    tasks:
+      - get: [atum:item.rasGlory, atum:item.sekhmetsWrath, atum:item.nutsAgility, atum:item.horusFlight]
+    rewards:
+      - loot: raro
+
+  - id: conjunto_equilibrio
+    title: "As Vestes do Equilíbrio"
+    type: optional
+    deps: [tesouro_farao]
+    desc: |
+      O segundo conjunto divino: §eChifres de Mnevis§r (elmo: devolve dano a quem te ataca),
+      §eAbraço de Isis§r (peito: regeneração lenta), §eEquilíbrio de Maats§r (calças: você causa
+      menos dano e recebe menos dano) e §eSolidariedade de Gebs§r (botas: menos repulsão, mais
+      lentidão).
+
+      Junte as quatro peças.
+    tasks:
+      - get: [atum:item.mnevisHorns, atum:item.isisEmbrace, atum:item.maatsBalance, atum:item.gebsSolidarity]
+    rewards:
+      - loot: raro
+
+  - id: sobreviver_deserto
+    title: "Sobrevivendo ao Deserto"
+    type: info
+    deps: [portal_atum]
+    desc: |
+      Algumas verdades sobre Atum:
+      §e•§r O céu é coberto por uma névoa quente que limita a visão. Marque o caminho com tochas
+      ou pilares.
+      §e•§r Água de verdade só nos §eoásis§r. Leve baldes da Superfície.
+      §e•§r Muitos moradores são mortos-vivos: armas contra mortos-vivos (Castigo, Holy Sword,
+      Vontade de Osiris) valem ouro aqui.
+      §e•§r Baús nas ruínas podem ser amaldiçoados. Esteja pronto(a) para lutar antes de abrir.
+    tasks:
+      - check
+    rewards:
+      - xp: 2
+
+  - id: vidro_tingido
+    title: "Vitrais do Deserto"
+    type: optional
+    deps: [vidro_cristalino]
+    desc: |
+      O Vidro Cristalino aceita as 16 cores: vitrais dignos de um templo. Faça 8 blocos de
+      §eVidro Cristalino Tingido§r de qualquer cor.
+    tasks:
+      - get: atum:tile.crystalStainedGlass:* x8
+    rewards:
+      - loot: comum
+
+  - id: muros_calcario
+    title: "Muros de Calcário"
+    type: optional
+    deps: [calcario_liso]
+    desc: |
+      Toda cidade de Atum tinha muros. Os §eMuros de Calcário§r vêm em quatro estilos (polido,
+      rachado, tijolos grandes e pequenos).
+
+      Faça 6 muros de qualquer estilo.
+    tasks:
+      - get: atum:tile.walls:* x6
+    rewards:
+      - loot: comum
+
+  - id: livro_mortos
+    title: "O Livro dos Mortos"
+    type: info
+    deps: [tesouro_farao]
+    desc: |
+      Deixa eu te contar o que eu li nas páginas que você trouxe. Os deuses de Atum escreviam no
+      §eLivro dos Mortos§r o destino de tudo que acaba. Cada artefato é uma "assinatura" de um
+      deus, uma bênção concedida a quem enfrentou um Faraó.
+
+      Os artefatos têm durabilidade (muitos no nível de diamante) e os efeitos estão no texto do
+      item (passe o mouse). Alguns funcionam ao golpear, outros ao vestir, outros só ao segurar.
+    tasks:
+      - check
+    rewards:
+      - xp: 2
+
+  # ------------------------------------------------------------------ Pescaria sagrada
+  - id: recompensa_anuket
+    title: "Recompensa de Anukets"
+    type: optional
+    deps: [tesouro_farao, oasis]
+    desc: |
+      Anuket é a deusa do Nilo. A §eRecompensa de Anukets§r é uma vara de pescar divina: com ela,
+      pescando em Atum, você tem chance de fisgar §epeixes especiais§r ("Alluring I").
+
+      Consiga a vara.
+    tasks:
+      - get: atum:item.anuketsBounty
+    rewards:
+      - loot: incomum
+
+  - id: peixe_atum
+    title: "O Primeiro Peixe de Atum"
+    type: optional
+    deps: [recompensa_anuket]
+    desc: |
+      Pesque num oásis com a Recompensa de Anukets e veja o que o Nilo de Atum devolve:
+      §ePeixe Forsaken§r, §ePeixe Mumificado§r, §ePeixe de Jóias§r ou §eEspinha de Peixe§r.
+
+      Pesque qualquer um deles.
+    tasks:
+      - one_of: [atum:item.fish, atum:item.fish:1, atum:item.fish:2, atum:item.fish:3]
+    rewards:
+      - loot: comum
+
+  - id: pescaria_completa
+    title: "A Pescaria Sagrada"
+    type: optional
+    deps: [peixe_atum]
+    desc: |
+      O pescador perfeito de Atum tem os quatro peixes especiais: Forsaken, Mumificado, de Jóias
+      e a Espinha de Peixe. (O de Jóias é o mais bonito, na minha opinião.)
+    tasks:
+      - get: [atum:item.fish, atum:item.fish:1, atum:item.fish:2, atum:item.fish:3]
+    rewards:
+      - loot: incomum
+
+  # ------------------------------------------------------------------ Chave
+  - id: panteao
+    title: "O Panteão de Atum"
+    type: milestone
+    deps: [armas_deuses, arcos_deuses, ferramentas_deuses, amuletos_deuses]
+    banner: "O Panteão de Atum"
+    subtitle: "Armas, arcos, ferramentas e amuletos"
+    desc: |
+      Uma arma, um arco, uma ferramenta e um amuleto: os quatro tipos de dádiva dos deuses de
+      Atum estão nas suas mãos. Os escribas antigos diriam que você foi "pesado(a) e achado(a)
+      digno(a)".
+
+      Se quiser completar as Vestes do Sol e do Equilíbrio, mais pirâmides te esperam.
+    tasks:
+      - check
+    rewards:
+      - xp: 10
+      - kit: {name: "Relicário do Panteão", items: ["minecraft:gold_block x2", "minecraft:diamond x4", "minecraft:experience_bottle x16"]}
+      - loot: raro
+
+  - id: chave_areias
+    title: "A Chave das Areias"
+    type: finale
+    deps: [farao, tesouro_farao]
+    banner: "A Chave das Areias"
+    subtitle: "O terceiro Reino Perdido foi restaurado"
+    desc: |
+      No fundo do Baú do Faraó, entre o ouro e as relíquias, há uma página que não é de papiro:
+      é a §6Chave das Areias§r, a última das três chaves dos Reinos Perdidos.
+
+      Agora eu entendo o acordo antigo: os §dLich do Crepúsculo§r davam aos Faraós as páginas do
+      tempo, e os Faraós guardavam no Livro dos Mortos o que acontece quando o tempo acaba. As
+      §eValquírias§r vigiavam tudo lá de cima. Com as três chaves juntas, o Registro volta a
+      saber como as coisas começam, duram e terminam.
+
+      Obrigada, Herói. De verdade.
+    tasks:
+      - check
+    rewards:
+      - xp: 20
+      - kit: {name: "Chave das Areias", items: ["minecraft:gold_block x4", "minecraft:diamond x6", "atum:item.scarab", "minecraft:golden_apple:1"]}
+      - loot: [epico x2]
+
+  - link: twilight:chave_crepusculo
+  - link: aether:chave_ceus

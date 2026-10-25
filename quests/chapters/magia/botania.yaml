@@ -641,8 +641,9 @@ quests:
   - id: flores_flutuantes
     title: "Flores Flutuantes"
     type: optional
-    at: [18, 5]
-    deps: [sementes_pasto, flores_reluzentes]
+    at: [19, 4]
+    deps: [sementes_pasto]
+    deps_hidden: [flores_reluzentes]
     desc: |
       Flor Reluzente + Sementes de Pasto + Terra = uma §eFlor Flutuante§r, uma ilhota que paira no
       ar e brilha. E o melhor: na bancada você combina uma Flor Flutuante com qualquer flor
@@ -1281,7 +1282,7 @@ quests:
   # ------------------------------------------------------------------ Rumo ao Terrasteel
   - id: pilone_mana
     title: "Pilão de Mana"
-    at: [21, 2]
+    at: [21, 1]
     deps: [diamante_mana]
     deps_hidden: [manasteel]
     desc: |
@@ -1667,7 +1668,8 @@ quests:
     title: "Aparatos Naturais"
     type: info
     at: [9, 6]
-    deps: [poco_mana]
+    deps: [rocha_viva]
+    deps_hidden: [poco_mana]
     desc: |
       Além de flores, a Botânica tem uma oficina inteira de §eAparatos Naturais§r: catalisadores de
       alquimia, plataformas fantasmas, tambores, caixotes que fabricam sozinhos, um encantador
@@ -1816,8 +1818,9 @@ quests:
     at: [12, 9]
     deps: [plataforma_espectral]
     desc: |
-      Trilho + Plataforma Espectral. Carrinhos que passam pelo §eTrilho Espectral§r atravessam
-      blocos sólidos até o próximo trilho. Montanha-russa fantasma!
+      Trilho + Plataforma Espectral. Um carrinho lançado para fora do §eTrilho Espectral§r flutua um
+      pouco e atravessa paredes, até cair num trilho ou bater em Madeira dos Sonhos. Montanha-russa
+      fantasma!
     tasks:
       - get: Botania:ghostRail
     rewards:
@@ -1826,8 +1829,8 @@ quests:
   - id: encantador
     title: "Encantador de Mana"
     type: main
-    at: [9, 10]
-    deps: [catalisador_alquimico]
+    at: [7, 6]
+    deps: [info_aparatos]
     deps_hidden: [pilone_mana]
     desc: |
       Encantar §esem gastar os livros§r! A estrutura pede §e17 Obsidianas, 10 Flores Místicas
@@ -1849,7 +1852,7 @@ quests:
     title: "Caixote Inteligente"
     at: [12, 6]
     deps: [caixote_aberto]
-    deps_hidden: [madeira_sonhos]
+    deps_hidden: [portal_alfheim]
     desc: |
       Madeira dos Sonhos e uma Bancada: o §eCaixote Inteligente§r fabrica sozinho. Os itens entram
       preenchendo a grade da esquerda para a direita, de cima para baixo; o §eReservante de
@@ -1936,3 +1939,2746 @@ quests:
       - craft: Botania:avatar
     rewards:
       - loot: comum
+
+  # ------------------------------------------------------------------ Flora Funcional
+  - id: info_funcionais
+    title: "Flora Funcional"
+    type: info
+    at: [12, -8]
+    deps: [info_geradoras]
+    deps_hidden: [altar_runico]
+    desc: |
+      As geradoras produzem; as §dflores funcionais§r trabalham. Cada uma puxa Mana do §ePoço de
+      Mana mais próximo§r existente quando foi plantada (religue com a Varinha). Elas não recebem
+      rajadas diretamente — sempre um poço por perto!
+
+      Flores feitas com §eRaiz de Redstone§r podem ser ligadas/desligadas por redstone.
+      Algumas têm alcance grande demais: num poço com Catalisador Alquímico elas encolhem e
+      viram versões "Petite" de raio menor.
+    tasks:
+      - check
+    rewards:
+      - xp: 2
+
+  - id: raiz_redstone
+    title: "Raiz de Redstone"
+    at: [12, -9]
+    deps: [info_funcionais]
+    desc: |
+      Pó de Redstone + Grama Alta (sem formato) = §eRaiz de Redstone§r. Muitas flores funcionais a
+      pedem na receita, e é ela que permite controlar a flor com redstone. Faça várias de uma vez.
+    tasks:
+      - get: "Botania:manaResource:6 x8"
+    rewards:
+      - xp: 2
+      - item: "minecraft:redstone x16"
+
+  - id: jaded_amaranthus
+    title: "Jaded Amaranthus"
+    at: [13, -8]
+    deps: [info_funcionais]
+    deps_hidden: [raiz_redstone, runa_primavera]
+    desc: |
+      Flores fazendo flores! A §eJaded Amaranthus§r gasta Mana para fazer brotar §eFlores Místicas§r
+      aleatórias em todo espaço livre à sua volta. Receita: §ePétalas Roxa, Lima e Verde, Runa da
+      Primavera e Raiz de Redstone§r. Fim da falta de pétalas!
+    tasks:
+      - {get: 'Botania:specialFlower {type:"jadedAmaranthus"}', nbt: true}
+    rewards:
+      - xp: 2
+      - item: "minecraft:shears"
+
+  - id: bellethorne
+    title: "Bellethorne"
+    at: [14, -8]
+    deps: [info_funcionais]
+    deps_hidden: [raiz_redstone]
+    desc: |
+      Uma flor malvada: a §eBellethorne§r fere aos poucos qualquer criatura viva por perto —
+      §emenos jogadores§r. O coração de uma fazenda de mobs botânica. Receita: §e3 Pétalas
+      Vermelhas, 2 Ciano e Raiz de Redstone§r.
+    tasks:
+      - {get: 'Botania:specialFlower {type:"bellethorn"}', nbt: true}
+    rewards:
+      - xp: 2
+      - item: "minecraft:bone x8"
+
+  - id: dreadthorne
+    title: "Dreadthorne"
+    at: [15, -8]
+    deps: [info_funcionais]
+    deps_hidden: [raiz_redstone]
+    desc: |
+      Versão seletiva da Bellethorne: a §eDreadthorne§r só machuca §eanimais adultos§r. Deixe os
+      filhotes crescerem e o abate do curral fica automático. Receita: §e3 Pétalas Pretas, 2 Ciano
+      e Raiz de Redstone§r.
+    tasks:
+      - {get: 'Botania:specialFlower {type:"dreadthorn"}', nbt: true}
+    rewards:
+      - xp: 2
+      - item: "minecraft:wheat x16"
+
+  - id: heisei_dream
+    title: "Heisei Dream"
+    at: [16, -8]
+    deps: [info_funcionais]
+    deps_hidden: [runa_ira, po_fada]
+    desc: |
+      A §eHeisei Dream§r desperta raiva nos monstros por perto e os faz §elutar entre si§r. Ótima
+      defesa — eles se distraem uns com os outros. Receita: §e2 Pétalas Magenta, 1 Roxa, 1 Rosa,
+      Runa da Ira e Pó de Fada§r.
+    tasks:
+      - {get: 'Botania:specialFlower {type:"heiseiDream"}', nbt: true}
+    rewards:
+      - xp: 3
+
+  - id: tigerseye
+    title: "Tigerseye"
+    at: [17, -8]
+    deps: [info_funcionais]
+    deps_hidden: [runa_outono]
+    desc: |
+      Creepers morrem de medo de gatos. A §eTigerseye§r emite uma "aura felina": Creepers por perto
+      ficam paralisados, §enão explodem§r e fogem dos jogadores. Paz para o seu jardim! Receita:
+      §ePétalas Amarela, Marrom, Laranja e Lima + Runa do Outono§r.
+    tasks:
+      - {get: 'Botania:specialFlower {type:"tigerseye"}', nbt: true}
+    rewards:
+      - xp: 2
+      - item: "minecraft:gunpowder x8"
+
+  - id: orechid
+    title: "Orechid"
+    type: main
+    at: [18, -8]
+    deps: [info_funcionais]
+    deps_hidden: [raiz_redstone, runa_orgulho, runa_ganancia, po_fada]
+    desc: |
+      Minério renovável sem sair de casa! A §eOrechid§r usa Mana para transformar §ePedra§r próxima
+      em minérios aleatórios, sorteados de uma lista com pesos que favorece os mais comuns (carvão,
+      ferro…) e inclui minérios de outros mods presentes no pack. Receita: §e2 Pétalas Cinzas, Amarela, Verde, Vermelha,
+      Runa do Orgulho, Runa da Ganância, Raiz de Redstone e Pó de Fada§r.
+
+      §aDica:§r ela precisa de §ePedra lisa§r em volta (gerador de pedregulho → fornalha → pedra) e
+      de MUITA Mana: é uma das flores mais famintas do mod.
+    tasks:
+      - {get: 'Botania:specialFlower {type:"orechid"}', nbt: true}
+    rewards:
+      - xp: 4
+      - choice: ["minecraft:stone x64", "minecraft:iron_pickaxe", "Botania:manaResource:2 x2"]
+
+  - id: orechid_ignem
+    title: "Orechid Ignem"
+    at: [19, -8]
+    deps: [orechid]
+    desc: |
+      A Orechid não sabe fazer minérios do Nether. A §eOrechid Ignem§r sabe: §eno Nether§r, ela
+      transforma Netherrack em minérios do Nether (quartzo e, se existirem, minérios de Nether
+      de outros mods).
+      Receita: §e2 Pétalas Vermelhas, 2 Brancas, 1 Rosa, Runa do Orgulho, Runa da Ganância, Raiz de
+      Redstone e Pó de Fada§r.
+    tasks:
+      - {get: 'Botania:specialFlower {type:"orechidIgnem"}', nbt: true}
+    rewards:
+      - xp: 3
+      - item: "minecraft:netherrack x64"
+
+  - id: fallen_kanade
+    title: "Fallen Kanade"
+    at: [20, -8]
+    deps: [info_funcionais]
+    deps_hidden: [runa_primavera]
+    desc: |
+      Uma flor com asas de anjo: a §eFallen Kanade§r gasta Mana para dar §eRegeneração§r aos
+      jogadores próximos. Plante na sala de cura da base. Receita: §e2 Pétalas Brancas, 2 Amarelas,
+      1 Laranja e Runa da Primavera§r.
+    tasks:
+      - {get: 'Botania:specialFlower {type:"fallenKanade"}', nbt: true}
+    rewards:
+      - xp: 2
+      - item: "minecraft:golden_apple"
+
+  - id: exoflame
+    title: "Exoflame"
+    at: [21, -8]
+    deps: [info_funcionais]
+    deps_hidden: [runa_fogo, runa_verao]
+    desc: |
+      O oposto da Endoflame: a §eExoflame§r §egasta§r Mana para manter acesas as §eFornalhas§r ao redor
+      e ainda acelerá-las. Fornalhas sem carvão! Receita: §e2 Pétalas Vermelhas, Cinza, Cinza Claro,
+      Runa do Fogo e Runa do Verão§r.
+    tasks:
+      - {get: 'Botania:specialFlower {type:"exoflame"}', nbt: true}
+    rewards:
+      - xp: 2
+      - item: "minecraft:furnace x4"
+
+  - id: agricarnation
+    title: "Agricarnation"
+    at: [13, -9]
+    deps: [info_funcionais]
+    deps_hidden: [raiz_redstone, runa_primavera]
+    desc: |
+      Colheitas lentas? A §eAgricarnation§r transforma Mana em fertilizante natural e acelera o
+      crescimento das plantas em volta. Receita: §e2 Pétalas Lima, Verde, Amarela, Runa da
+      Primavera e Raiz de Redstone§r. Os agricultores do Registro agradecem.
+    tasks:
+      - {get: 'Botania:specialFlower {type:"agricarnation"}', nbt: true}
+    rewards:
+      - xp: 2
+      - item: "minecraft:wheat_seeds x16"
+
+  - id: hopperhock
+    title: "Hopperhock"
+    at: [14, -9]
+    deps: [info_funcionais]
+    deps_hidden: [raiz_redstone, runa_ar]
+    desc: |
+      Um funil em forma de flor: a §eHopperhock§r recolhe itens do chão ao redor e os coloca nos
+      inventários encostados nela. Mana é opcional (aumenta o alcance). §eMolduras de Item§r nos
+      baús filtram o que vai para onde; agachado + Varinha muda a regra de filtro. Receita: §e2
+      Pétalas Cinzas, 2 Cinza Claro, Runa do Ar e Raiz de Redstone§r.
+    tasks:
+      - {get: 'Botania:specialFlower {type:"hopperhock"}', nbt: true}
+    rewards:
+      - xp: 2
+      - item: "minecraft:chest x2"
+
+  - id: tangleberrie
+    title: "Tangleberrie"
+    at: [15, -9]
+    deps: [info_funcionais]
+    deps_hidden: [runa_ar, runa_terra]
+    desc: |
+      Com um pouco de Mana, a §eTangleberrie§r mantém animais e monstros próximos §epresos dentro§r
+      de um círculo em volta dela. Currais sem cerca! Receita: §e2 Pétalas Ciano, Cinza, Cinza
+      Claro, Runa do Ar e Runa da Terra§r.
+    tasks:
+      - {get: 'Botania:specialFlower {type:"tangleberrie"}', nbt: true}
+    rewards:
+      - xp: 2
+
+  - id: jiyuulia
+    title: "Jiyuulia"
+    at: [16, -9]
+    deps: [info_funcionais]
+    deps_hidden: [runa_agua, runa_ar]
+    desc: |
+      O contrário da Tangleberrie: a §eJiyuulia§r §eafasta§r animais e monstros, protegendo uma área
+      circular. Receita: §e2 Pétalas Rosas, Roxa, Cinza Claro, Runa da Água e Runa do Ar§r.
+    tasks:
+      - {get: 'Botania:specialFlower {type:"jiyuulia"}', nbt: true}
+    rewards:
+      - xp: 2
+
+  - id: rannuncarpus
+    title: "Rannuncarpus"
+    at: [17, -9]
+    deps: [info_funcionais]
+    deps_hidden: [raiz_redstone, runa_terra]
+    desc: |
+      A §eRannuncarpus§r pega blocos soltos no chão e os §ecoloca§r no mundo por perto — mas só em
+      cima do tipo de bloco que estiver logo abaixo do solo onde ela está plantada. Replantio de
+      cana, de mudas, pavimentação automática… Receita: §e2 Pétalas Laranjas, Amarela, Runa da
+      Terra e Raiz de Redstone§r. Mana é opcional (aumenta o alcance).
+    tasks:
+      - {get: 'Botania:specialFlower {type:"rannuncarpus"}', nbt: true}
+    rewards:
+      - xp: 2
+
+  - id: hyacidus
+    title: "Hyacidus"
+    at: [18, -9]
+    deps: [info_funcionais]
+    deps_hidden: [raiz_redstone, runa_agua, runa_outono]
+    desc: |
+      Veneno não mata… mas deixa por um fio. A §eHyacidus§r envenena os mobs próximos até ficarem
+      prontos para cair com um golpe. Receita: §e2 Pétalas Roxas, 2 Magenta, Verde, Runa da Água,
+      Runa do Outono e Raiz de Redstone§r.
+    tasks:
+      - {get: 'Botania:specialFlower {type:"hyacidus"}', nbt: true}
+    rewards:
+      - xp: 2
+
+  - id: pollidisiac
+    title: "Pollidisiac"
+    at: [19, -9]
+    deps: [info_funcionais]
+    deps_hidden: [runa_luxuria, runa_fogo]
+    desc: |
+      Animais só comem o que é dado na boca. A §ePollidisiac§r faz isso por você: pega a comida
+      certa do chão (trigo, cenoura…) e alimenta os animais próximos, deixando-os prontos para
+      procriar. Receita: §e2 Pétalas Vermelhas, 2 Rosas, Laranja, Runa do Desejo e Runa do Fogo§r.
+    tasks:
+      - {get: 'Botania:specialFlower {type:"pollidisiac"}', nbt: true}
+    rewards:
+      - xp: 2
+      - item: "minecraft:carrot x16"
+
+  - id: clayconia
+    title: "Clayconia"
+    at: [20, -9]
+    deps: [info_funcionais]
+    deps_hidden: [runa_terra]
+    desc: |
+      Simples e útil: a §eClayconia§r umedece a §eAreia§r ao redor e a transforma em §eArgila§r,
+      gastando uma quantidade razoável de Mana. Receita: §e2 Pétalas Cinza Claro, Cinza, Ciano e
+      Runa da Terra§r. Tijolos infinitos à vista.
+    tasks:
+      - {get: 'Botania:specialFlower {type:"clayconia"}', nbt: true}
+    rewards:
+      - xp: 2
+      - item: "minecraft:sand x32"
+
+  - id: loonium
+    title: "Loonium"
+    at: [21, -9]
+    deps: [info_funcionais]
+    deps_hidden: [raiz_redstone, runa_preguica, runa_gula, runa_inveja, po_fada]
+    desc: |
+      Tesouros de masmorra sem masmorra! A §eLoonium§r gasta uma quantidade §eabsurda§r de Mana para
+      materializar itens dos baús de masmorras e soltá-los por perto. Receita: §e4 Pétalas Verdes,
+      Cinza, Runas da Preguiça, Gula e Inveja, Raiz de Redstone e Pó de Fada§r.
+    tasks:
+      - {get: 'Botania:specialFlower {type:"loonium"}', nbt: true}
+    rewards:
+      - xp: 3
+      - loot: incomum
+
+  - id: daffomill
+    title: "Daffomill"
+    at: [13, -10]
+    deps: [info_funcionais]
+    deps_hidden: [raiz_redstone, runa_ar]
+    desc: |
+      Um ventilador florido: a §eDaffomill§r empurra itens à sua frente com um pouco de Mana.
+      Agachado + Varinha muda a direção (as partículas de vento mostram para onde). Ótima com a
+      Hopperhock. Receita: §e2 Pétalas Brancas, Marrom, Amarela, Runa do Ar e Raiz de Redstone§r.
+    tasks:
+      - {get: 'Botania:specialFlower {type:"daffomill"}', nbt: true}
+    rewards:
+      - xp: 2
+
+  - id: vinculotus
+    title: "Vinculotus"
+    at: [14, -10]
+    deps: [info_funcionais]
+    deps_hidden: [raiz_redstone, runa_agua, runa_preguica, runa_luxuria]
+    desc: |
+      Endermen adoram teleportar. Com a §eVinculotus§r por perto (raio grande), sempre que um
+      Enderman for se teleportar ele vai parar §eem cima dela§r. Fazenda de pérolas fácil. Receita:
+      §e2 Pétalas Pretas, 2 Roxas, Verde, Runas da Água, Preguiça e Desejo, Raiz de Redstone§r.
+    tasks:
+      - {get: 'Botania:specialFlower {type:"vinculotus"}', nbt: true}
+    rewards:
+      - xp: 3
+      - item: "minecraft:ender_pearl x4"
+
+  - id: spectranthemum
+    title: "Spectranthemum"
+    at: [15, -10]
+    deps: [info_funcionais]
+    deps_hidden: [raiz_redstone, runa_inveja, runa_agua, po_fada]
+    desc: |
+      Transporte instantâneo de itens: a §eSpectranthemum§r teletransporta itens soltos perto dela
+      (que não contenham Mana) para um bloco vinculado com a Varinha, até 12 blocos de distância.
+      Cada item só pode ser teleportado uma vez, e o destino precisa estar carregado. Receita: §e2
+      Pétalas Brancas, 2 Cinza Claro, Ciano, Runas da Inveja e da Água, Raiz de Redstone e Pó de
+      Fada§r.
+    tasks:
+      - {get: 'Botania:specialFlower {type:"spectranthemum"}', nbt: true}
+    rewards:
+      - xp: 3
+
+  - id: medumone
+    title: "Medumone"
+    at: [16, -10]
+    deps: [info_funcionais]
+    deps_hidden: [raiz_redstone, runa_terra]
+    desc: |
+      Parado aí! Enquanto recebe Mana, a §eMedumone§r aplica uma lentidão tão forte nas criaturas
+      próximas (exceto jogadores) que elas ficam congeladas no lugar. Receita: §e2 Pétalas Marrons,
+      2 Cinzas, Runa da Terra e Raiz de Redstone§r.
+    tasks:
+      - {get: 'Botania:specialFlower {type:"medumone"}', nbt: true}
+    rewards:
+      - xp: 2
+
+  - id: marimorphosis
+    title: "Marimorphosis"
+    at: [17, -10]
+    deps: [info_funcionais]
+    deps_hidden: [raiz_redstone, runa_terra, runa_fogo]
+    desc: |
+      A §eMarimorphosis§r faz metamorfose na Pedra próxima, transformando-a em 8 tipos de §ePedra
+      Metamórfica§r — quais saem mais depende do bioma. Elas viram tijolos, lajes, escadas e até
+      Boticários decorados. Receita: §ePétalas Cinza, Amarela, Verde e Vermelha, Runas da Terra e
+      do Fogo, Raiz de Redstone§r.
+    tasks:
+      - {get: 'Botania:specialFlower {type:"marimorphosis"}', nbt: true}
+    rewards:
+      - xp: 2
+      - item: "minecraft:stone x32"
+
+  - id: bubbell
+    title: "Bubbell"
+    at: [18, -10]
+    deps: [info_funcionais]
+    deps_hidden: [runa_agua, runa_verao, po_fada]
+    desc: |
+      Construir debaixo d'água é um sofrimento. Plante a §eBubbell§r no fundo, dê Mana a ela (de
+      preferência antes) e ela cria uma §ebolha de ar§r de cerca de 12 blocos de raio que segura a
+      água longe. Precisa de Mana constante. Receita: §e2 Pétalas Ciano, 2 Azul Claro, 2 Azuis,
+      Runas da Água e do Verão e Pó de Fada§r.
+    tasks:
+      - {get: 'Botania:specialFlower {type:"bubbell"}', nbt: true}
+    rewards:
+      - xp: 3
+
+  - id: solegnolia
+    title: "Solegnolia"
+    at: [19, -10]
+    deps: [info_funcionais]
+    deps_hidden: [raiz_redstone]
+    desc: |
+      O Anel Magnético às vezes puxa o que não devia, bagunçando suas máquinas. A §eSolegnolia§r
+      (sem Mana!) impede que itens próximos sejam puxados por anéis, e quem estiver no raio dela
+      também não puxa nada. Receita: §e2 Pétalas Marrons, Vermelha, Azul e Raiz de Redstone§r.
+    tasks:
+      - {get: 'Botania:specialFlower {type:"solegnolia"}', nbt: true}
+    rewards:
+      - xp: 2
+
+  - id: flores_petite
+    title: "Flores Petite"
+    type: optional
+    at: [20, -10]
+    deps: [info_funcionais]
+    deps_hidden: [catalisador_alquimico]
+    desc: |
+      Alcance grande demais? Jogue a flor num Poço de Mana com §eCatalisador Alquímico§r embaixo e ela
+      encolhe para a versão §ePetite§r, com raio menor e mesmo efeito. Funciona com Bellethorne,
+      Agricarnation, Hopperhock, Rannuncarpus, Clayconia, Marimorphosis, Bubbell e Solegnolia.
+      (Passivas viram versões "Motif" decorativas que não murcham.)
+    tasks:
+      - one_of: ['Botania:specialFlower {type:"bellethornChibi"}', 'Botania:specialFlower {type:"agricarnationChibi"}', 'Botania:specialFlower {type:"hopperhockChibi"}', 'Botania:specialFlower {type:"rannuncarpusChibi"}', 'Botania:specialFlower {type:"clayconiaChibi"}', 'Botania:specialFlower {type:"marimorphosisChibi"}', 'Botania:specialFlower {type:"bubbellChibi"}', 'Botania:specialFlower {type:"solegnoliaChibi"}']
+        nbt: true
+    rewards:
+      - loot: incomum
+
+  - id: bastao_obediencia
+    title: "Varinha da Obediência Floral"
+    type: optional
+    at: [21, -10]
+    deps: [info_funcionais]
+    deps_hidden: [manasteel]
+    desc: |
+      Religar dezenas de flores uma por uma cansa. A §eVarinha da Obediência Floral§r (Gravetos de
+      Madeira-viva + Manasteel), clicada num Dispersor ou Poço de Mana, vincula a ele §etodas§r as
+      flores relevantes por perto de uma vez só.
+    tasks:
+      - craft: Botania:obedienceStick
+    rewards:
+      - loot: comum
+
+  - id: boticarios_metamorficos
+    title: "Boticários Metamórficos"
+    type: optional
+    at: [17, -11]
+    deps: [marimorphosis]
+    desc: |
+      Oito Pedregulhos Metamórficos em volta de um Boticário de Pétalas dão um §eBoticário
+      decorado§r do bioma correspondente (Floresta, Planície, Montanha, Fungo, Pântano, Deserto,
+      Taiga ou Mesa). Funciona igual, só que muito mais bonito.
+    tasks:
+      - one_of: ["Botania:altar:1", "Botania:altar:2", "Botania:altar:3", "Botania:altar:4", "Botania:altar:5", "Botania:altar:6", "Botania:altar:7", "Botania:altar:8"]
+    rewards:
+      - loot: comum
+
+  # ------------------------------------------------------------------ Equipamento de Manasteel e Tecido de Mana
+  - id: ferramentas_manasteel
+    title: "Ferramentas de Manasteel"
+    at: [18, -2]
+    deps: [manasteel]
+    desc: |
+      Ferramentas de Manasteel são parecidas com as de ferro, porém mais encantáveis e duráveis —
+      e, se houver Mana no inventário (Tablete de Mana, anel…), §eusam Mana em vez de durabilidade§r.
+      Os cabos são Gravetos de Madeira-viva.
+      Bônus no clique direito: a §ePicareta§r coloca tochas do inventário, o §eMachado§r planta mudas
+      e a §ePá§r ara a terra como enxada. Faça qualquer uma.
+    tasks:
+      - one_of: [Botania:manasteelPick, Botania:manasteelShovel, Botania:manasteelAxe, Botania:manasteelSword, Botania:manasteelShears]
+    rewards:
+      - xp: 2
+      - item: "minecraft:torch x32"
+
+  - id: armadura_manasteel
+    title: "Armadura de Manasteel"
+    at: [19, -2]
+    deps: [manasteel]
+    desc: |
+      As quatro peças de §eArmadura de Manasteel§r protegem como ferro, se consertam com Mana do
+      inventário e, com o conjunto completo, dão a "Afinidade com Mana": §e-10% no custo de Mana§r de
+      ferramentas e cajados. Vista o conjunto inteiro!
+    tasks:
+      - get: [Botania:manasteelHelm, Botania:manasteelChest, Botania:manasteelLegs, Botania:manasteelBoots]
+    rewards:
+      - xp: 3
+      - item: "Botania:manaResource x4"
+
+  - id: tecido_mana
+    title: "Tecido de Mana"
+    at: [16, 5]
+    deps: [linha_mana]
+    desc: |
+      Quatro Linhas Infundidas em Mana em quadrado viram §eTecido de Mana§r. Ele faz os robes de
+      mago botânico, o Tecido Encantado e o Teru Teru Bozu.
+    tasks:
+      - get: "Botania:manaResource:22 x8"
+    rewards:
+      - xp: 2
+      - item: "minecraft:string x16"
+
+  - id: robes_mana
+    title: "Robes de Tecido de Mana"
+    at: [16, 6]
+    deps: [tecido_mana]
+    desc: |
+      Capuz, Robe Superior, Robe Inferior e Botas de §eTecido de Mana§r. Protegem pouco, mas o
+      conjunto completo dá a "Proeza da Maré de Mana": §e-35% no custo de Mana§r de ferramentas e
+      cajados e cajados mais poderosos. O traje de quem prefere magia a pancada.
+    tasks:
+      - get: [Botania:manaweaveHelm, Botania:manaweaveChest, Botania:manaweaveLegs, Botania:manaweaveBoots]
+    rewards:
+      - xp: 3
+      - item: "Botania:manaResource:16 x4"
+
+  - id: tecido_encantado
+    title: "Tecido Encantado"
+    type: optional
+    at: [17, 6]
+    deps: [tecido_mana]
+    deps_hidden: [perola_mana]
+    desc: |
+      Tecido de Mana em volta de uma Pérola de Mana. Na bancada, o §eTecido Encantado§r junto de um
+      item encantado §eremove todos os encantamentos§r dele (gastando durabilidade do tecido). Ótimo
+      para reaproveitar uma ferramenta com encanto ruim no Encantador de Mana.
+    tasks:
+      - craft: Botania:spellCloth
+    rewards:
+      - loot: comum
+
+  - id: teru_teru
+    title: "Teru Teru Bozu"
+    type: optional
+    at: [15, 6]
+    deps: [tecido_mana]
+    desc: |
+      Um amuleto contra o mau tempo: Tecido de Mana e um Girassol. Colocado no mundo, o §eTeru Teru
+      Bozu§r encurta chuvas e nevascas; durante o mau tempo, clique nele com um Girassol (ou jogue o
+      girassol nele) para o sol voltar. Comparador detecta a chuva.
+    tasks:
+      - craft: Botania:teruTeruBozu
+    rewards:
+      - loot: comum
+
+  # ------------------------------------------------------------------ Equipamento de Terrasteel
+  - id: terra_blade
+    title: "Lâmina da Terra"
+    type: main
+    at: [25, 2]
+    deps: [terrasteel]
+    desc: |
+      Duas Barras de Terrasteel e um Graveto de Madeira-viva. A §eLâmina da Terra§r bate como espada
+      de diamante, usa Mana do inventário em vez de durabilidade e, ao golpear, às vezes dispara um
+      §efeixe§r que causa o mesmo dano à distância. A espada do botânico — e a base de outras duas
+      lâminas élficas lendárias.
+    tasks:
+      - craft: Botania:terraSword
+    rewards:
+      - xp: 4
+      - choice: ["Botania:manaResource:4", "minecraft:experience_bottle x16", "Botania:manaResource:2 x2"]
+
+  - id: terra_shatterer
+    title: "Terra-Destruidor"
+    at: [26, 2]
+    deps: [terrasteel]
+    deps_hidden: [tablete_mana]
+    desc: |
+      A picareta lendária: Terrasteel, Gravetos e um §eTablete de Mana§r. O §eTerra-Destruidor§r
+      §eacumula Mana§r (jogue-o no poço) e sobe de §erank§r: D, C, B, A, S, SS. Do D para o C bastam
+      segundos; do C para o B um poço cheio; depois, dez vezes mais a cada rank.
+      Clique direito liga a habilidade ativa: quebrar em área (coluna no C, quadrados cada vez
+      maiores depois). Ativa, ela consome Mana o tempo todo.
+    tasks:
+      - craft: Botania:terraPick
+    rewards:
+      - xp: 3
+      - item: "minecraft:torch x64"
+
+  - id: terra_truncator
+    title: "Terra-Truncador"
+    at: [27, 2]
+    deps: [terrasteel]
+    desc: |
+      O machado de Terrasteel (com Pedra Luminosa na receita). O §eTerra-Truncador§r derruba a
+      árvore inteira — troncos e folhas — de uma vez, a um custo alto de Mana. Agachado (ou com a
+      Pedra da Moderação ativa) ele corta só um bloco. Lenhador profissional.
+    tasks:
+      - craft: Botania:terraAxe
+    rewards:
+      - xp: 3
+      - item: "minecraft:sapling x8"
+
+  - id: armadura_terrasteel
+    title: "Armadura de Terrasteel"
+    at: [28, 2]
+    deps: [terrasteel]
+    deps_hidden: [armadura_manasteel, runa_primavera, runa_verao, runa_outono, runa_inverno]
+    desc: |
+      Cada peça é a peça de Manasteel + Terrasteel + Gravetos + uma runa de estação: §eElmo -
+      Primavera, Peitoral - Verão, Calças - Outono, Botas - Inverno§r. Proteção de diamante, conserto
+      com Mana e o bônus "Vontade dos Ancestrais": §e-20% de custo de Mana§r, regeneração mesmo sem
+      fome cheia e geração passiva de Mana em Tabletes. Reúna o conjunto!
+    tasks:
+      - get: [Botania:terrasteelHelm, Botania:terrasteelChest, Botania:terrasteelLegs, Botania:terrasteelBoots]
+    rewards:
+      - xp: 4
+      - item: "Botania:manaResource:4 x2"
+
+  - id: chakram_espinhos
+    title: "Chakram Espinhento"
+    type: optional
+    at: [25, 3]
+    deps: [terrasteel]
+    desc: |
+      Oito Vinhas em volta de uma Barra de Terrasteel = dois §eChakrams Espinhentos§r. Arremesse:
+      ele atravessa inimigos (às vezes envenenando), quica em blocos e volta como um bumerangue.
+      Empilha até 6. Com Pó de Blaze e Pó de
+      Fada vira o §eChakram Flamejante§r, que incendeia.
+    tasks:
+      - get: Botania:thornChakram
+    rewards:
+      - loot: incomum
+
+  - id: pedra_temperanca
+    title: "Pedra da Moderação"
+    type: optional
+    at: [26, 3]
+    deps: [terra_shatterer]
+    deps_hidden: [runa_terra]
+    desc: |
+      Às vezes você só quer um túnel 3×3, não uma cratera. Com a §ePedra da Moderação§r (Pedra +
+      Runa da Terra) ativa no inventário, o Terra-Destruidor e o Terra-Truncador não quebram mais
+      que 3×3. Clique para ligar/desligar.
+    tasks:
+      - craft: Botania:temperanceStone
+    rewards:
+      - loot: comum
+
+  - id: espelho_mana
+    title: "Espelho de Mana"
+    at: [28, 3]
+    deps: [terrasteel]
+    deps_hidden: [tablete_mana]
+    desc: |
+      Um Tablete de Mana com Terrasteel, Pérola, Graveto e Rocha-viva. Agachado, clique com o
+      §eEspelho de Mana§r num Poço de Mana para vinculá-lo: ele passa a funcionar como um tablete que
+      puxa a Mana §edireto daquele poço§r, de longe. Suas ferramentas nunca mais ficam com fome.
+    tasks:
+      - craft: Botania:manaMirror
+    rewards:
+      - xp: 3
+
+  # ------------------------------------------------------------------ Acessórios (Baubles)
+  - id: info_acessorios
+    title: "Acessórios"
+    type: info
+    at: [18, 7]
+    deps: [tablete_mana]
+    desc: |
+      §dAcessórios§r (Baubles) são joias usadas em espaços próprios: abra o inventário e use o
+      botão de Baubles para ver os espaços de §eAmuleto, Anéis e Cinto§r (outros mods do pack podem
+      acrescentar mais tipos). O inventário de Baubles é compartilhado entre todos os mods.
+
+      Quase todo acessório do Botania gasta um pouco de Mana do inventário para funcionar — um
+      Tablete ou Bracelete de Mana carregado resolve.
+    tasks:
+      - check
+    rewards:
+      - xp: 2
+
+  - id: bracelete_mana
+    title: "Bracelete de Mana"
+    at: [17, 8]
+    deps: [info_acessorios]
+    desc: |
+      Um Tablete de Mana envolto em Manasteel: o §eBracelete de Mana§r é um tablete que vai no
+      espaço de anel. 500.000 de Mana sempre no dedo, alimentando tudo o que você carrega.
+    tasks:
+      - craft: Botania:manaRing:*
+    rewards:
+      - xp: 2
+      - item: "Botania:manaResource x2"
+
+  - id: bracelete_aura
+    title: "Bracelete de Aura"
+    at: [18, 8]
+    deps: [info_acessorios]
+    deps_hidden: [runa_mana]
+    desc: |
+      Runa de Mana + Manasteel. Em vez de guardar, o §eBracelete de Aura§r §egera§r Mana devagarinho
+      enquanto equipado e a deposita nos itens de Mana do inventário. Um pinga-pinga de energia.
+    tasks:
+      - craft: Botania:auraRing
+    rewards:
+      - xp: 2
+
+  - id: cinta_viajante
+    title: "Cinta de Soujourner"
+    at: [19, 8]
+    deps: [info_acessorios]
+    deps_hidden: [runa_terra, runa_ar]
+    desc: |
+      Couro, Manasteel e Runas da Terra e do Ar. A §eCinta de Soujourner§r (cinto) aumenta
+      velocidade, altura do pulo, reduz dano de queda e deixa você subir degraus de 1 bloco sem
+      pular (quando não agachado), por um pouco de Mana.
+    tasks:
+      - craft: Botania:travelBelt
+    rewards:
+      - xp: 2
+      - item: "minecraft:leather x4"
+
+  - id: cinturao_tectonico
+    title: "Cinturão Tectônico"
+    at: [20, 8]
+    deps: [info_acessorios]
+    deps_hidden: [runa_fogo, runa_terra]
+    desc: |
+      Couro, Manasteel e Runas do Fogo e da Terra. Com o §eCinturão Tectônico§r você §eignora o
+      empurrão§r (repulsão) de qualquer ataque. Firme como uma montanha.
+    tasks:
+      - craft: Botania:knockbackBelt
+    rewards:
+      - xp: 2
+
+  - id: pingente_floco
+    title: "Pingente do Floco de Neve"
+    at: [21, 8]
+    deps: [info_acessorios]
+    deps_hidden: [runa_inverno, runa_agua]
+    desc: |
+      Linha, Manasteel e Runas do Inverno e da Água. Usando o §ePingente do Floco de Neve§r, a água
+      parada aos seus pés vira gelo — você anda sobre lagos! O gelo derrete logo depois. Não
+      funciona agachado nem submerso.
+    tasks:
+      - craft: Botania:icePendant
+    rewards:
+      - xp: 2
+
+  - id: pingente_piroclasta
+    title: "Pingente do Piromântico"
+    at: [22, 8]
+    deps: [info_acessorios]
+    deps_hidden: [runa_verao, runa_fogo]
+    desc: |
+      Linha, Manasteel e Runas do Verão e do Fogo. Se você pegar fogo (e não estiver em cima de
+      fogo/lava), o §ePingente do Piromântico§r apaga as chamas na hora. A versão melhorada, com
+      Espírito de Gaia, dá imunidade total a fogo e lava.
+    tasks:
+      - craft: Botania:lavaPendant
+    rewards:
+      - xp: 2
+
+  - id: anel_cordados
+    title: "Anel dos Cordados"
+    at: [23, 8]
+    deps: [info_acessorios]
+    deps_hidden: [runa_agua]
+    desc: |
+      Manasteel, Runa da Água e dois peixes (baiacu e salmão). O §eAnel dos Cordados§r faz você nadar
+      como peixe: acelera debaixo d'água, melhora a visão e, gastando Mana, permite §erespirar
+      indefinidamente§r. Perfeito com a Bubbell.
+    tasks:
+      - craft: Botania:waterRing
+    rewards:
+      - xp: 2
+
+  - id: anel_manto
+    title: "Anel do Manto"
+    at: [24, 8]
+    deps: [info_acessorios]
+    deps_hidden: [runa_terra]
+    desc: |
+      Manasteel, Runa da Terra e uma Picareta de Ouro. Com Mana no inventário, o §eAnel do Manto§r dá
+      §ePressa§r enquanto você cava. Cada braçada gasta um pouco de Mana.
+    tasks:
+      - craft: Botania:miningRing
+    rewards:
+      - xp: 2
+
+  - id: anel_magnetico
+    title: "Anel Magnético"
+    at: [25, 8]
+    deps: [info_acessorios]
+    deps_hidden: [lente_magnetismo]
+    desc: |
+      Uma Lente de Magnetismo virando anel. Os itens próximos voam até você (exceto agachado), e o
+      anel pausa 5 segundos depois de você jogar algo, para não puxar de volta. Com Terrasteel na
+      bancada vira o §eAnel Magnético Superior§r, de alcance maior.
+    tasks:
+      - craft: Botania:magnetRing
+    rewards:
+      - xp: 2
+
+  - id: anel_correcao
+    title: "Anel da Correção"
+    at: [26, 8]
+    deps: [info_acessorios]
+    desc: |
+      Argila e Manasteel. Com o §eAnel da Correção§r, a ferramenta na sua mão vira sempre a certa
+      para o bloco (picareta, machado ou pá) — desde que sejam ferramentas que usam Mana.
+    tasks:
+      - craft: Botania:swapRing
+    rewards:
+      - xp: 2
+
+  - id: monoculo
+    title: "Monóculo de Mana"
+    at: [17, 9]
+    deps: [info_acessorios]
+    deps_hidden: [vidro_mana]
+    desc: |
+      Vidro de Mana, Manasteel e Pepitas de Ouro. Com o §eMonóculo§r você vê todas as rajadas de Mana
+      por perto, mesmo atrás de paredes, e ao olhar para uma flor enxerga o raio de ação dela. O
+      acessório favorito dos engenheiros botânicos.
+    tasks:
+      - craft: Botania:monocle
+    rewards:
+      - xp: 2
+
+  - id: pequeno_planeta
+    title: "Pequeno Planeta"
+    type: optional
+    at: [18, 9]
+    deps: [info_acessorios]
+    deps_hidden: [perola_mana]
+    desc: |
+      Rocha-viva, Pedra e uma Pérola de Mana. O §ePequeno Planeta§r atrai rajadas de Mana próximas,
+      que passam a orbitar você. Com mais Pedra ele vira um bloco com o mesmo efeito. Também é
+      ingrediente do Encanto da Diva.
+    tasks:
+      - craft: Botania:tinyPlanet
+    rewards:
+      - loot: comum
+
+  - id: caixa_baubles
+    title: "Caixa de Baubles"
+    at: [19, 9]
+    deps: [info_acessorios]
+    desc: |
+      Manasteel, Ouro e um Baú. A §eCaixa de Baubles§r guarda seus acessórios e permite trocar o que
+      está equipado rapidamente pela própria interface. Também aceita Tabletes de Mana.
+    tasks:
+      - craft: Botania:baubleBox
+    rewards:
+      - xp: 2
+
+  - id: cinta_desbravador
+    title: "Cinta do Desbravador Planar"
+    at: [20, 9]
+    deps: [cinta_viajante]
+    desc: |
+      Cinta de Soujourner + Mapa + Sementes de Pasto + Açúcar. A §eCinta do Desbravador Planar§r não
+      acelera parado: quanto mais você anda sem parar, mais ela §ecarrega§r e mais rápido você fica —
+      até passar de qualquer outra cinta. Parou, zerou.
+    tasks:
+      - craft: Botania:speedUpBelt
+    rewards:
+      - xp: 2
+
+  - id: espectador
+    title: "O Espectador"
+    type: optional
+    at: [21, 9]
+    deps: [info_acessorios]
+    desc: |
+      Ferro, um Olho do Fim e uma Esmeralda. Com §eO Espectador§r na cabeça, segurando um item, você
+      vê destacados os baús, carrinhos, mobs e itens no chão que têm aquele item. Achar aquela
+      pedra perdida no armazém nunca foi tão fácil.
+    tasks:
+      - craft: Botania:itemFinder
+    rewards:
+      - loot: comum
+
+  - id: cosmeticos
+    title: "Acessórios Cosméticos"
+    type: optional
+    at: [22, 9]
+    deps: [info_acessorios]
+    deps_hidden: [linha_mana]
+    desc: |
+      Oito pétalas da mesma cor em volta de uma Linha Infundida em Mana = um dos 32 §eacessórios
+      cosméticos§r (gravatas, orelhas de gato, óculos 3D…). Use no espaço de amuleto ou combine na
+      bancada com outro acessório para trocar a aparência dele. Moda é importante, Herói.
+    tasks:
+      - get: "Botania:cosmetic:*"
+    rewards:
+      - loot: comum
+
+  - id: bracelete_mana_superior
+    title: "Bracelete de Mana Superior"
+    at: [23, 9]
+    deps: [bracelete_mana]
+    deps_hidden: [terrasteel]
+    desc: |
+      Bracelete de Mana + Barra de Terrasteel. O §eBracelete de Mana Superior§r guarda §e2.000.000§r de
+      Mana — quatro vezes mais. Indispensável para o Terra-Destruidor e os cajados mais caros.
+    tasks:
+      - craft: Botania:manaRingGreater:*
+    rewards:
+      - xp: 3
+
+  - id: bracelete_aura_superior
+    title: "Bracelete de Aura Superior"
+    type: optional
+    at: [24, 9]
+    deps: [bracelete_aura]
+    deps_hidden: [terrasteel]
+    desc: |
+      Bracelete de Aura + Terrasteel: gera Mana §ebem mais rápido§r para seus itens. Combine com o
+      bracelete de armazenamento e você quase nunca precisa voltar ao poço.
+    tasks:
+      - craft: Botania:auraRingGreater
+    rewards:
+      - loot: incomum
+
+  - id: anel_magnetico_superior
+    title: "Anel Magnético Superior"
+    type: optional
+    at: [25, 9]
+    deps: [anel_magnetico]
+    deps_hidden: [terrasteel]
+    desc: |
+      Anel Magnético + Terrasteel: o mesmo efeito com um raio de atração bem maior. Ideal para
+      quem usa o Terra-Destruidor em área.
+    tasks:
+      - craft: Botania:magnetRingGreater
+    rewards:
+      - loot: incomum
+
+  - id: anel_grande_fada
+    title: "Anel da Grande Fada"
+    type: optional
+    at: [26, 9]
+    deps: [info_acessorios]
+    deps_hidden: [elementium, po_fada]
+    desc: |
+      Elementium e Pó de Fada. O §eAnel da Grande Fada§r aumenta a chance de uma §eFada§r surgir para
+      atacar quem bater em você — funciona mesmo sem a armadura de Elementium, e soma com ela.
+    tasks:
+      - craft: Botania:pixieRing
+    rewards:
+      - loot: incomum
+
+  - id: anel_longo_alcance
+    title: "Anel do Longo Alcance"
+    at: [27, 9]
+    deps: [info_acessorios]
+    deps_hidden: [elementium, runa_orgulho]
+    desc: |
+      Elementium e Runa do Orgulho. O §eAnel do Longo Alcance§r aumenta em cerca de §e3 blocos§r a
+      distância em que você quebra, coloca e interage com blocos e criaturas. Construir nunca mais
+      vai exigir tantas escadas.
+    tasks:
+      - craft: Botania:reachRing
+    rewards:
+      - xp: 3
+
+  # ------------------------------------------------------------------ Itens Místicos: cajados e ferramentas
+  - id: info_cajados
+    title: "Itens Místicos"
+    type: info
+    at: [3, 3]
+    deps_hidden: [altar_runico]
+    desc: |
+      Agora que você tem runas, chegou a hora dos §dItens Místicos§r: cajados que conjuram terra,
+      água e fogo, armas que disparam Mana e ferramentas que parecem trapaça.
+
+      Quase todos §egastam Mana do seu inventário§r a cada uso — mantenha um Tablete ou Bracelete de
+      Mana carregado. Os robes de Tecido de Mana barateiam o custo e deixam alguns cajados mais
+      fortes.
+    tasks:
+      - check
+    rewards:
+      - xp: 2
+
+  - id: cajado_terras
+    title: "Cajado das Terras"
+    at: [0, 4]
+    deps: [info_cajados]
+    deps_hidden: [runa_terra]
+    desc: |
+      Terra, Graveto e Runa da Terra. O §eCajado das Terras§r coloca um bloco de Terra onde você
+      clicar, pagando com Mana. Nunca mais carregue pilhas de terra para pontes improvisadas.
+    tasks:
+      - craft: Botania:dirtRod
+    rewards:
+      - xp: 2
+
+  - id: cajado_mares
+    title: "Cajado dos Mares"
+    at: [1, 4]
+    deps: [info_cajados]
+    deps_hidden: [runa_agua]
+    desc: |
+      Frasco de Água, Graveto e Runa da Água. O §eCajado dos Mares§r cria um bloco de água onde você
+      clicar e também enche o Boticário de Pétalas. Adeus, viagens até o lago!
+    tasks:
+      - craft: Botania:waterRod
+    rewards:
+      - xp: 2
+
+  - id: cajado_ceus
+    title: "Cajado dos Céus"
+    at: [2, 4]
+    deps: [info_cajados]
+    deps_hidden: [runa_ar]
+    desc: |
+      Pena, Graveto e Runa do Ar. Segure o clique como um arco e o §eCajado dos Céus§r te lança para
+      o alto; enquanto ele recarrega, você não sofre dano de queda. Num Avatar de Madeira-viva,
+      lança quem pular perto dele.
+    tasks:
+      - craft: Botania:tornadoRod
+    rewards:
+      - xp: 2
+      - item: "minecraft:feather x8"
+
+  - id: cajado_infernos
+    title: "Cajado dos Infernos"
+    at: [3, 4]
+    deps: [info_cajados]
+    deps_hidden: [runa_fogo]
+    desc: |
+      Pó de Blaze, Graveto e Runa do Fogo. Usado no chão, o §eCajado dos Infernos§r cria um §canel de
+      fogo§r que queima tudo o que estiver dentro depois de se espalhar — §cvocê incluso§r! Saia do
+      círculo rapidinho.
+    tasks:
+      - craft: Botania:fireRod
+    rewards:
+      - xp: 2
+
+  - id: cajado_profundezas
+    title: "Cajado das Profundezas"
+    at: [4, 4]
+    deps: [info_cajados]
+    deps_hidden: [runa_fogo, runa_agua]
+    desc: |
+      Pedregulho, Gravetos e Runas do Fogo e da Água. Igual ao Cajado das Terras, mas conjura
+      §ePedregulho§r (um pouco mais caro). Pontes e torres instantâneas.
+    tasks:
+      - craft: Botania:cobbleRod
+    rewards:
+      - xp: 2
+
+  - id: cajado_nucleo
+    title: "Cajado do Núcleo Derretido"
+    at: [5, 4]
+    deps: [info_cajados]
+    deps_hidden: [runa_fogo]
+    desc: |
+      Varas de Blaze, Gravetos e Runa do Fogo. Segure o clique apontando para um bloco que pode ser
+      fundido e o §eCajado do Núcleo Derretido§r o derrete no lugar: Pedregulho vira Pedra, Areia
+      vira Vidro… Uma fornalha de bolso.
+    tasks:
+      - craft: Botania:smeltRod
+    rewards:
+      - xp: 2
+
+  - id: cajado_manto_pleno
+    title: "Cajado do Manto Pleno"
+    at: [0, 5]
+    deps: [info_cajados]
+    deps_hidden: [diamante_mana]
+    desc: |
+      Gravetos e um Diamante de Mana. O §eCajado do Manto Pleno§r faz os §eminérios§r num raio grande
+      brilharem por alguns instantes, através das paredes. Raio-X botânico (e honesto)!
+    tasks:
+      - craft: Botania:diviningRod
+    rewards:
+      - xp: 3
+
+  - id: cajado_crosta
+    title: "Cajado da Crosta Inconstante"
+    at: [1, 5]
+    deps: [info_cajados]
+    deps_hidden: [runa_preguica]
+    desc: |
+      Pedra, Gravetos e Runa da Preguiça. Agachado + clique num bloco escolhe o material; clique
+      esquerdo em outro bloco o §etroca§r pelo escolhido (tirando do seu inventário); clique direito
+      troca uma área inteira destacada. O Cajado das Terras/Profundezas no inventário fornece terra
+      ou pedregulho infinitos para ele.
+    tasks:
+      - craft: Botania:exchangeRod
+    rewards:
+      - xp: 3
+
+  - id: cajado_highlands
+    title: "Cajado de Highlands"
+    at: [2, 5]
+    deps: [cajado_terras]
+    deps_hidden: [po_fada]
+    desc: |
+      Cajado das Terras + Pó de Fada + Runa do Ar. O §eCajado de Highlands§r faz tudo o que o original
+      faz e ainda coloca Terra §eno meio do ar§r, sem apoio (custa mais Mana). Escadas para o céu!
+    tasks:
+      - craft: Botania:skyDirtRod
+    rewards:
+      - xp: 3
+
+  - id: cajado_terra_firma
+    title: "Cajado de Terra Firma"
+    at: [3, 5]
+    deps: [cajado_terras]
+    deps_hidden: [terrasteel, runa_primavera, runa_verao, runa_outono, runa_inverno]
+    desc: |
+      Terrasteel, as quatro runas das estações, Cajado das Terras e Sementes de Pasto. Segure o
+      clique e o §eCajado de Terra Firma§r §eaplaina§r o terreno ao seu redor até a sua altura,
+      colocando terra ou removendo blocos (§cos blocos removidos se perdem§r). Não funciona abaixo do
+      nível do mar.
+    tasks:
+      - craft: Botania:terraformRod
+    rewards:
+      - xp: 3
+      - item: "minecraft:dirt x64"
+
+  - id: cajado_bifrost
+    title: "Cajado de Bifrost"
+    at: [4, 5]
+    deps: [info_cajados]
+    deps_hidden: [elementium, po_fada, pedra_draconiana]
+    desc: |
+      Elementium, Pó de Fada e Pedra Draconiana. O §eCajado de Bifrost§r cria uma §eponte de arco-íris§r
+      na direção em que você olha, de até 100 blocos, que dura uns 15 segundos (uma por vez).
+      Bônus: com Vidro Élfico ele vira Blocos de Bifrost decorativos.
+    tasks:
+      - craft: Botania:rainbowRod
+    rewards:
+      - xp: 3
+
+  - id: poco_fabuloso
+    title: "Poço de Mana Fabuloso"
+    type: optional
+    at: [4, 6]
+    deps: [cajado_bifrost]
+    desc: |
+      Cajado de Bifrost + Vidro Élfico = Bloco de Bifrost; Bloco de Bifrost + Rocha-viva = §eRocha
+      Reluzente§r arco-íris. Cinco delas formam o §ePoço de Mana Fabuloso§r: guarda o mesmo que um
+      poço normal, só que é FABULOSO.
+    tasks:
+      - craft: Botania:pool:3
+    rewards:
+      - loot: incomum
+
+  - id: cajado_mesa
+    title: "Cajado da Mesa Sombria"
+    at: [5, 5]
+    deps: [info_cajados]
+    deps_hidden: [pedra_draconiana]
+    desc: |
+      Gravetos de Madeira dos Sonhos, Trigo e Pedra Draconiana. Segure o clique num monstro ou item
+      com o §eCajado da Mesa Sombria§r para levantá-lo no ar; solte para largar ou clique esquerdo para
+      §earremessá-lo§r com força. Física é para os fracos.
+    tasks:
+      - craft: Botania:gravityRod
+    rewards:
+      - xp: 3
+
+  - id: disparador_mana
+    title: "Disparador de Mana"
+    at: [0, 6]
+    deps: [info_cajados]
+    deps_hidden: [dispersor_pulso, runa_mana, diamante_mana]
+    desc: |
+      Um dispersor de bolso em forma de pistola (Dispersor por Redstone, Runa de Mana, Diamante de
+      Mana, Madeira-viva e TNT). O §eDisparador de Mana§r atira rajadas usando Mana do inventário —
+      mais rápidas, com 3/4 da Mana de um dispersor. Coloque uma lente ao lado dele na bancada para
+      encaixá-la (e dispare Lentes de Dano, Escavação…).
+    tasks:
+      - craft: Botania:manaGun
+    rewards:
+      - xp: 3
+      - item: "minecraft:tnt x2"
+
+  - id: estilingue
+    title: "Estilingue e Bolas de Vinhas"
+    type: optional
+    at: [1, 6]
+    deps: [info_cajados]
+    deps_hidden: [runa_ar]
+    desc: |
+      Nove Vinhas = uma §eBola de Vinhas§r: arremesse e onde ela bater nasce uma escada de vinhas
+      firme, escalável mesmo sem parede atrás. O §eEstilingue de Madeira-viva§r (com Runa do Ar)
+      atira as bolas em linha reta, ignorando a gravidade.
+    tasks:
+      - get: [Botania:slingshot, "Botania:vineBall x8"]
+    rewards:
+      - loot: comum
+
+  - id: arco_madeira_viva
+    title: "Arco de Madeira-viva"
+    at: [2, 6]
+    deps: [info_cajados]
+    deps_hidden: [linha_mana]
+    desc: |
+      Gravetos e Linha Infundida em Mana. O §eArco de Madeira-viva§r dura mais que um arco comum e se
+      conserta com Mana do inventário, como as ferramentas de Manasteel.
+    tasks:
+      - craft: Botania:livingwoodBow
+    rewards:
+      - xp: 2
+      - item: "minecraft:arrow x32"
+
+  - id: arco_cristal
+    title: "Arco de Cristal"
+    at: [3, 6]
+    deps: [arco_madeira_viva]
+    deps_hidden: [pedra_draconiana]
+    desc: |
+      Pedras Draconianas no lugar dos gravetos. O §eArco de Cristal§r §ecria as flechas com Mana§r — não
+      precisa carregar nenhuma — e atira bem mais rápido. A arma de longo alcance dos elfos.
+    tasks:
+      - craft: Botania:crystalBow
+    rewards:
+      - xp: 3
+
+  - id: berrante
+    title: "Berrante da Selva"
+    type: optional
+    at: [5, 6]
+    deps: [info_cajados]
+    deps_hidden: [sementes_pasto]
+    desc: |
+      Madeira-viva e Sementes de Pasto. Sopre o §eBerrante da Selva§r e a vegetação próxima é
+      arrancada como se fosse quebrada à mão. Com Folhas vira o Berrante do Toldo (quebra folhas);
+      com Bola de Neve, o Berrante das Neves (limpa neve).
+    tasks:
+      - one_of: [Botania:grassHorn, "Botania:grassHorn:1", "Botania:grassHorn:2"]
+    rewards:
+      - loot: comum
+
+  - id: picareta_vitrea
+    title: "Picareta Vítrea"
+    type: optional
+    at: [0, 7]
+    deps: [info_cajados]
+    deps_hidden: [manasteel]
+    desc: |
+      Vidro, Manasteel e Gravetos. A §ePicareta Vítrea§r quebra vidro e o devolve inteiro — um Toque
+      Suave barato, só para vidro. Os decoradores agradecem.
+    tasks:
+      - craft: Botania:glassPick
+    rewards:
+      - loot: comum
+
+  - id: aureola_criacao
+    title: "Auréola da Criação"
+    at: [1, 7]
+    deps: [info_cajados]
+    deps_hidden: [perola_mana, manasteel]
+    desc: |
+      Manasteel, Pérola de Mana e uma Bancada. A §eAuréola da Criação§r é uma bancada portátil: na mão,
+      mostra um "halo" de receitas salvas ao seu redor. Clique na bancada do halo para fabricar e
+      guarde as receitas que mais usa para refazer num clique.
+    tasks:
+      - craft: Botania:craftingHalo
+    rewards:
+      - xp: 2
+
+  - id: aureola_manufatura
+    title: "Auréola de Manufatura"
+    at: [2, 7]
+    deps: [aureola_criacao]
+    deps_hidden: [diamante_mana]
+    desc: |
+      Auréola da Criação + Diamante de Mana. A §eAuréola de Manufatura§r faz tudo o que a outra faz e,
+      §equando não está na mão§r, executa sozinha as receitas salvas sempre que possível — por exemplo,
+      compactar minérios em blocos enquanto você minera.
+    tasks:
+      - craft: Botania:autocraftingHalo
+    rewards:
+      - xp: 3
+
+  - id: sextante
+    title: "Sextante do Modulador do Mundo"
+    type: optional
+    at: [3, 7]
+    deps: [info_cajados]
+    deps_hidden: [manasteel]
+    desc: |
+      Construir círculos em blocos é uma arte esquecida. Com o §eSextante§r, aponte para o centro,
+      olhe em volta para definir o raio, e ele projeta o contorno perfeito para você seguir. Adeus,
+      geradores de círculo na internet!
+    tasks:
+      - craft: Botania:sextant
+    rewards:
+      - loot: comum
+
+  - id: tinta_fantasma
+    title: "Tinta Fantasmal"
+    type: optional
+    at: [4, 7]
+    deps: [info_cajados]
+    deps_hidden: [perola_mana]
+    desc: |
+      Pérola de Mana, corante, vidro e quatro frascos = 4 §eTintas Fantasmais§r. Na bancada, ela deixa
+      sua armadura de Mana (Manasteel, Terrasteel, Elementium, Tecido de Mana) §einvisível§r sem
+      perder a proteção. Clicada numa Fagulha, deixa a fagulha quase transparente.
+    tasks:
+      - get: Botania:phantomInk
+    rewards:
+      - loot: comum
+
+  - id: semente_mundo
+    title: "Semente do Mundo"
+    type: optional
+    at: [5, 7]
+    deps: [info_cajados]
+    deps_hidden: [pedra_draconiana]
+    desc: |
+      Grama, Sementes de Trigo e Pedra Draconiana = 4 §eSementes do Mundo§r. Se você estiver a mais de
+      24 blocos do ponto de nascimento do mundo, usar uma te leva §einstantaneamente§r até lá (ela é
+      consumida). Uma saída de emergência!
+    tasks:
+      - get: Botania:worldSeed
+    rewards:
+      - loot: incomum
+
+  - id: balde_extrapolado
+    title: "Balde sem Fundo"
+    type: optional
+    at: [0, 8]
+    deps: [info_cajados]
+    deps_hidden: [elementium]
+    desc: |
+      Um balde de Elementium que não segura nada: todo líquido que o §eBalde sem Fundo§r recolhe some
+      no éter. Ótimo para limpar lava e água de cavernas.
+    tasks:
+      - craft: Botania:openBucket
+    rewards:
+      - loot: incomum
+
+  - id: hera_resoluta
+    title: "Hera Resoluta"
+    at: [1, 8]
+    deps: [info_cajados]
+    deps_hidden: [po_fada, ar_do_fim]
+    desc: |
+      Pó de Fada, Vinha e Ar do Fim. Junte a §eHera Resoluta§r a um item na bancada e ele §efica no seu
+      inventário quando você morrer§r. A hera se gasta na morte e precisa ser reaplicada. Proteja suas
+      Relíquias com ela!
+    tasks:
+      - get: Botania:keepIvy
+    rewards:
+      - xp: 3
+
+  - id: virus_equestre
+    title: "Vírus Equestre"
+    type: optional
+    at: [2, 8]
+    deps: [info_cajados]
+    deps_hidden: [po_fada]
+    desc: |
+      Pó de Fada, Bola de Vinhas, Creme de Magma, Olho de Aranha Fermentado, Olho do Fim e uma
+      caveira (de zumbi ou de esqueleto). O vírus transforma um Cavalo em §eCavalo Zumbi ou Esqueleto§r
+      — e melhora muito todos os atributos dele. Montaria de elite.
+    tasks:
+      - one_of: [Botania:virus, "Botania:virus:1"]
+    rewards:
+      - loot: incomum
+
+  - id: garrafa_slime
+    title: "Slime Engarrafado"
+    type: optional
+    at: [3, 8]
+    deps: [info_cajados]
+    deps_hidden: [elementium, vidro_elfico]
+    desc: |
+      Elementium, Vidro Élfico e uma Bola de Slime. O §eSlime Engarrafado§r é um §edetector de Chunks
+      de Slime§r: a gosma dentro começa a pular quando você está numa área onde Slimes nascem. O par perfeito da Narslimmus!
+    tasks:
+      - craft: Botania:slimeBottle
+    rewards:
+      - loot: incomum
+
+  # ------------------------------------------------------------------ Botânica Alquímica: o Fermentador
+  - id: fermentador
+    title: "Fermentador Botânico"
+    at: [20, 3]
+    deps: [bloco_manasteel]
+    deps_hidden: [runa_mana]
+    desc: |
+      Poções com receita fixa e várias doses! O §eFermentador Botânico§r (Rocha-viva, Suporte de
+      Poção, Runa de Mana e Bloco de Manasteel) prepara §ePoções Botânicas§r usando Mana como
+      solvente.
+
+      Uso: coloque primeiro o §efrasco§r (ele fica em cima do fermentador), depois os ingredientes
+      (clique ou jogue). Quando a combinação for válida, aponte um dispersor e a Mana começa a fluir.
+      §aToda receita começa com Fungo do Nether§r — confira as combinações no NEI.
+    tasks:
+      - craft: Botania:brewery
+    rewards:
+      - xp: 3
+      - item: "minecraft:nether_wart x8"
+
+  - id: frascos
+    title: "Frascos Pequenos"
+    at: [21, 3]
+    deps: [fermentador]
+    deps_hidden: [vidro_mana]
+    desc: |
+      Três Vidros de Mana em "V" dão três §eFrascos Pequenos§r. Cada frasco de poção botânica tem
+      §e4 doses§r — bem melhor que uma garrafa comum. Faça uma pilha.
+    tasks:
+      - get: "Botania:vial x6"
+    rewards:
+      - xp: 2
+      - item: "Botania:manaGlass x6"
+
+  - id: primeira_pocao
+    title: "Primeira Poção Botânica"
+    at: [22, 3]
+    deps: [frascos]
+    desc: |
+      Hora de cozinhar! Algumas receitas simples (todas com Fungo do Nether):
+      §eVelocidade§r: Açúcar + Redstone. §eVigor§r: Pó de Blaze + Pó de Pedra Luminosa.
+      §eCura§r: Melancia Reluzente + Batata. §eResistência§r: Barra de Ferro + Couro.
+      §ePele de Magma§r: Creme de Magma + Netherrack. §eVisão Noturna§r: Olho de Aranha + Cenoura
+      Dourada. Prepare qualquer uma e beba com orgulho.
+    tasks:
+      - get: "Botania:brewVial:*"
+    rewards:
+      - xp: 2
+      - item: "minecraft:glowstone_dust x8"
+
+  - id: pocoes_complexas
+    title: "Poções Complexas"
+    type: optional
+    at: [23, 3]
+    deps: [primeira_pocao]
+    deps_hidden: [manasteel]
+    desc: |
+      Além das cópias de poções comuns há misturas exclusivas: §eSobrecarga§r (vários efeitos de
+      força e velocidade de uma vez — Pó de Blaze, Açúcar, Pedra Luminosa, Manasteel e Olho de
+      Aranha), §ePeso Pena§r, §eAlmas Cruzadas§r, §eAbsolução§r (remove efeitos), §eSedução Marinha§r
+      (pesca) e outras. Com o Thaumcraft, existe até a §eMente Sã§r contra Warp! Veja no NEI.
+    tasks:
+      - one_of: ['Botania:brewVial {brewKey:"overload"}', 'Botania:brewVial {brewKey:"featherFeet"}', 'Botania:brewVial {brewKey:"soulCross"}', 'Botania:brewVial {brewKey:"clear"}', 'Botania:brewVial {brewKey:"allure"}', 'Botania:brewVial {brewKey:"emptiness"}', 'Botania:brewVial {brewKey:"bloodthirst"}', 'Botania:brewVial {brewKey:"warpWard"}']
+        nbt: true
+    rewards:
+      - loot: incomum
+
+  - id: frasco_elfico
+    title: "Frasco de Vidro Élfico"
+    type: optional
+    at: [21, 4]
+    deps: [frascos]
+    deps_hidden: [vidro_elfico]
+    desc: |
+      Feito com Vidro Élfico, o §eFrasco Élfico§r guarda §e6 doses§r em vez de 4 e gasta menos
+      ingredientes por dose — mas o dobro de Mana. E bebe-se mais rápido, coisa de elfo.
+    tasks:
+      - get: "Botania:vial:1 x3"
+    rewards:
+      - loot: incomum
+
+  - id: incenso
+    title: "Incensos"
+    at: [22, 4]
+    deps: [primeira_pocao]
+    desc: |
+      Uma Vara de Incenso (Graveto, Pó de Blaze e Lágrima de Ghast) colocada no Fermentador no lugar
+      do frasco recebe a poção — custando cerca de 10× mais Mana. Na §eBandeja de Incensos§r, acesa com
+      Isqueiro, ela dá o efeito a todos os jogadores num raio de §e30 blocos§r, durando 60× mais que a
+      poção líquida. Poções instantâneas ou com vários efeitos não servem.
+    tasks:
+      - get: [Botania:incenseStick, Botania:incensePlate]
+    rewards:
+      - xp: 3
+      - item: "minecraft:ghast_tear x2"
+
+  - id: pingente_sangue
+    title: "Pingente de Sangue"
+    type: optional
+    at: [23, 4]
+    deps: [primeira_pocao]
+    deps_hidden: [prismarinho, diamante_mana]
+    desc: |
+      Fragmentos de Prismarinho, Lágrima de Ghast e Diamante de Mana. Infunda o §ePingente de Sangue§r
+      com uma poção no Fermentador (como se fosse um frasco) e, usando-o como amuleto, você recebe o
+      efeito o tempo todo, pagando com Mana.
+    tasks:
+      - get: Botania:bloodPendant
+    rewards:
+      - loot: incomum
+
+  # ------------------------------------------------------------------ O Portal de Alfheim
+  - id: madeira_viva_reluzente
+    title: "Madeira-viva Reluzente"
+    at: [28, -2]
+    deps: [terrasteel]
+    desc: |
+      Madeira-viva + Pó de Pedra Luminosa (sem formato) = §eMadeira-viva Reluzente§r. O portal élfico
+      precisa de §etrês§r delas. Faça logo, porque o resto do portal é bem mais caro.
+    tasks:
+      - get: "Botania:livingwood:5 x3"
+    rewards:
+      - xp: 2
+      - item: "minecraft:glowstone_dust x8"
+
+  - id: nucleo_portal
+    title: "Núcleo do Portal Élfico"
+    type: main
+    at: [28, 0]
+    deps: [pepitas_terrasteel]
+    desc: |
+      Seis Madeiras-vivas com uma coluna de §etrês Pepitas de Terrasteel§r no meio: o §eNúcleo do
+      Portal Élfico§r. É o coração da ponte entre o nosso mundo e Alfheim, a terra dos elfos — que
+      foram banidos daqui há muito, muito tempo. (Eu tenho tantas perguntas para eles!)
+    tasks:
+      - craft: Botania:alfheimPortal
+    rewards:
+      - xp: 4
+      - choice: ["Botania:livingwood x16", "minecraft:glowstone_dust x16", "Botania:manaResource:1 x2"]
+
+  - id: pilone_natura
+    title: "Pilão da Natureza"
+    type: main
+    at: [29, 1]
+    deps: [pepitas_terrasteel]
+    deps_hidden: [pilone_mana]
+    desc: |
+      Um Pilão de Mana cercado por §equatro Pepitas de Terrasteel§r e um Olho do Fim. O portal precisa
+      de §edois Pilões da Natureza§r, cada um em cima de um Poço de Mana. Eles drenam a Mana dos poços
+      para manter a ponte com Alfheim aberta.
+    tasks:
+      - get: "Botania:pylon:1 x2"
+    rewards:
+      - xp: 4
+      - choice: ["minecraft:ender_eye x2", "Botania:livingrock x16", "minecraft:gold_ingot x4"]
+
+  - id: portal_alfheim
+    title: "Portal de Alfheim"
+    type: portal
+    at: [30, 0]
+    deps: [nucleo_portal, pilone_natura, madeira_viva_reluzente]
+    banner: "O Portal de Alfheim"
+    subtitle: "Uma ponte para a terra dos elfos"
+    desc: |
+      §eMontagem§r (de frente para o portal): o Núcleo fica no §emeio da base§r; a moldura tem 5 de
+      largura por 5 de altura, §esem os cantos§r, com o miolo 3×3 vazio. São 8 Madeiras-vivas e as 3
+      Reluzentes no §emeio de cada lateral e no meio do topo§r. Dois Poços de Mana ficam 3 blocos para
+      cada lado e 3 blocos à frente (ou atrás), cada um com um Pilão da Natureza em cima.
+
+      Encha os poços e clique no Núcleo com a §eVarinha§r. Abrir custa muita Mana; mantê-lo aberto,
+      pouca — então não fique fechando. §cSó itens atravessam§r. Jogue §eMadeira-viva§r e os elfos
+      devolvem §eMadeira dos Sonhos§r!
+      §cAtenção:§r itens que eles não trocam ficam como "presente" (somem). Ferro, Diamante e Pérola
+      do Fim eles devolvem.
+    tasks:
+      - get: "Botania:dreamwood x8"
+    rewards:
+      - xp: 5
+      - loot: raro
+
+  - id: carta_elfos
+    title: "Uma Carta de Elven Garde"
+    type: info
+    at: [30, -2]
+    deps: [portal_alfheim]
+    desc: |
+      A Lexica só sabe o básico sobre Alfheim… então §ejogue a sua Lexica Botania no portal§r! Os elfos
+      leem, se encantam com as notícias do nosso mundo e a devolvem com uma carta do Alto Conselho de
+      Elven Garde e um capítulo inteiro de §dConhecimento Élfico§r desbloqueado: Pó de Fada, Pedra
+      Draconiana, Elementium, Gaia…
+
+      (Não tenha medo: o livro volta. O tempo lá passa diferente.)
+    tasks:
+      - check
+    rewards:
+      - xp: 2
+
+  - id: elementium
+    title: "Elementium"
+    type: main
+    at: [32, 0]
+    deps: [portal_alfheim]
+    desc: |
+      O metal élfico! Jogue §eduas Barras de Manasteel§r no portal e receba §euma Barra de Elementium§r
+      (dois Blocos de Manasteel viram um Bloco de Elementium). Ele faz ferramentas e armaduras com
+      poderes únicos, os Pilões de Gaia e boa parte do equipamento avançado.
+    tasks:
+      - get: "Botania:manaResource:7 x4"
+    rewards:
+      - xp: 4
+      - choice: ["Botania:manaResource x8", "minecraft:iron_block x2", "Botania:livingwood x16"]
+
+  - id: po_fada
+    title: "Pó de Fada"
+    at: [31, -2]
+    deps: [portal_alfheim]
+    desc: |
+      Uma §ePérola de Mana§r jogada no portal volta como §ePó de Fada§r. Ele aparece em dezenas de
+      receitas élficas — Kekimurus, Orechid, Loonium, lentes, melhorias de fagulha… Junte bastante.
+    tasks:
+      - get: "Botania:manaResource:8 x4"
+    rewards:
+      - xp: 3
+      - item: "minecraft:ender_pearl x4"
+
+  - id: pedra_draconiana
+    title: "Pedra Draconiana"
+    at: [32, -2]
+    deps: [portal_alfheim]
+    desc: |
+      Um §eDiamante de Mana§r no portal volta como §ePedra Draconiana§r (o bloco também troca). Ela é
+      a gema dos elfos: Arco de Cristal, Dispersor de Gaia, Índice Corporea, cajados e mais.
+    tasks:
+      - get: "Botania:manaResource:9 x2"
+    rewards:
+      - xp: 3
+      - item: "minecraft:diamond x2"
+
+  - id: graveto_sonhos
+    title: "Graveto de Madeira dos Sonhos"
+    at: [33, -2]
+    deps: [portal_alfheim]
+    desc: |
+      Igual ao de Madeira-viva: dois blocos de Madeira dos Sonhos em coluna dão um §eGraveto de
+      Madeira dos Sonhos§r. É o cabo das ferramentas de Elementium e de vários cajados élficos.
+    tasks:
+      - get: "Botania:manaResource:13 x4"
+    rewards:
+      - xp: 2
+
+  - id: quartzo_elfico
+    title: "Quartzo Élfico"
+    type: optional
+    at: [31, -3]
+    deps: [portal_alfheim]
+    desc: |
+      Os elfos adoram o nosso Quartzo do Nether (o deles é verde). Jogue quartzo no portal e receba
+      §eQuartzo Élfico§r, que vira blocos, pilares e escadas — e asas para a Tiara de Flügel!
+    tasks:
+      - get: "Botania:quartz:5 x8"
+    rewards:
+      - loot: comum
+
+  - id: vidro_elfico
+    title: "Vidro Élfico"
+    at: [32, -3]
+    deps: [portal_alfheim]
+    deps_hidden: [vidro_mana]
+    desc: |
+      §eVidro de Mana§r no portal vira §eVidro Élfico§r, com padrões que mudam conforme o lugar. Ele
+      entra nos Frascos Élficos, na Lente de Labareda e no Cubo de Cristal Corporea.
+    tasks:
+      - get: "Botania:elfGlass x8"
+    rewards:
+      - xp: 2
+
+  - id: dispersor_elfico
+    title: "Dispersor de Mana Élfico"
+    at: [33, -3]
+    deps: [graveto_sonhos]
+    deps_hidden: [elementium]
+    desc: |
+      Madeira dos Sonhos e Elementium no lugar de Madeira-viva e Ouro. O §eDispersor Élfico§r dispara
+      rajadas mais rápidas, que vão mais longe antes de perder Mana. Troque os dispersores das suas
+      linhas longas!
+    tasks:
+      - craft: Botania:spreader:2
+    rewards:
+      - xp: 3
+      - item: "Botania:dreamwood x8"
+
+  - id: melhorias_fagulha
+    title: "Melhorias de Fagulha"
+    at: [31, -4]
+    deps: [po_fada]
+    deps_hidden: [fagulha, runa_agua, runa_fogo, runa_terra, runa_ar]
+    desc: |
+      Pó de Fada + Manasteel + uma runa elemental = uma §eMelhoria de Fagulha§r (só funciona em
+      fagulhas sobre poços, uma por fagulha):
+      §eDispersiva§r (Água): carrega os itens de Mana dos jogadores próximos.
+      §eDominante§r (Fogo): puxa Mana dos poços vizinhos até encher.
+      §eRecessiva§r (Terra): empurra toda a Mana do seu poço para os vizinhos.
+      §eIsolada§r (Ar): não interage com Dominantes/Recessivas.
+    tasks:
+      - one_of: [Botania:sparkUpgrade, "Botania:sparkUpgrade:1", "Botania:sparkUpgrade:2", "Botania:sparkUpgrade:3"]
+    rewards:
+      - xp: 3
+      - item: "Botania:spark x2"
+
+  - id: modificador_fagulhas
+    title: "Modificador de Fagulhas"
+    type: optional
+    at: [32, -4]
+    deps: [melhorias_fagulha]
+    desc: |
+      Elementium, Rocha-viva e Redstone. Encostado em poços com fagulhas, o §eModificador de
+      Fagulhas§r guarda uma melhoria e, com sinal de redstone, troca-a pela de uma fagulha conectada
+      escolhida ao acaso. Redes de Mana que se reconfiguram sozinhas!
+    tasks:
+      - craft: Botania:sparkChanger
+    rewards:
+      - loot: incomum
+
+  - id: fole_mana
+    title: "Fole da Maré de Mana"
+    type: optional
+    at: [33, -4]
+    deps: [po_fada]
+    deps_hidden: [runa_ar]
+    desc: |
+      Lajes de Madeira-viva, Couro e Runa do Ar. Apontado para um Poço de Mana, o §eFole§r acelera a
+      transferência do poço para Tabletes e outros itens (vários foles somam). Clicado à mão, ele
+      também aviva uma Fornalha acesa.
+    tasks:
+      - craft: Botania:bellows
+    rewards:
+      - loot: comum
+
+  # ------------------------------------------------------------------ Equipamento de Elementium
+  - id: armadura_elementium
+    title: "Armadura de Elementium"
+    at: [31, 2]
+    deps: [elementium]
+    desc: |
+      As peças de §eElementium§r têm boa resistência (cerca de metade da durabilidade do diamante), se
+      consertam com Mana e,
+      quando você é atingido, têm chance de invocar uma §eFada§r que ataca o agressor (mais peças, mais
+      chance). Conjunto completo: as fadas aplicam efeitos de poção. Esta é a armadura que o Lexica
+      recomenda para o Ritual de Gaia!
+    tasks:
+      - get: [Botania:elementiumHelm, Botania:elementiumChest, Botania:elementiumLegs, Botania:elementiumBoots]
+    rewards:
+      - xp: 4
+      - item: "Botania:manaResource:7 x2"
+
+  - id: picareta_elementium
+    title: "Picareta de Elementium"
+    at: [32, 2]
+    deps: [elementium]
+    deps_hidden: [graveto_sonhos]
+    desc: |
+      Ao minerar, a §ePicareta de Elementium§r §edestrói o entulho§r (pedregulho, terra, netherrack…) e
+      deixa só minérios e coisas boas. Combine-a com o Terra-Destruidor na bancada para ele ganhar o
+      mesmo poder (irreversível).
+    tasks:
+      - craft: Botania:elementiumPick
+    rewards:
+      - xp: 3
+
+  - id: pa_elementium
+    title: "Pá de Elementium"
+    type: optional
+    at: [33, 2]
+    deps: [elementium]
+    deps_hidden: [graveto_sonhos]
+    desc: |
+      Cavou areia ou cascalho? A §ePá de Elementium§r leva junto a coluna inteira daquele material
+      acima e/ou abaixo. Nunca mais cascalho caindo na cabeça.
+    tasks:
+      - craft: Botania:elementiumShovel
+    rewards:
+      - loot: incomum
+
+  - id: machado_elementium
+    title: "Machado de Elementium"
+    at: [34, 2]
+    deps: [elementium]
+    deps_hidden: [graveto_sonhos]
+    desc: |
+      Também é arma: dar o golpe final com o §eMachado de Elementium§r em Zumbis, Esqueletos,
+      Creepers ou jogadores tem chance de §edecapitá-los§r, derrubando a cabeça (Pilhagem ajuda).
+      Guarde este machado — ele tem uma surpresa reservada para o Guardião de Gaia.
+    tasks:
+      - craft: Botania:elementiumAxe
+    rewards:
+      - xp: 3
+
+  - id: tesoura_elementium
+    title: "Tesoura de Elementium"
+    type: optional
+    at: [32, 3]
+    deps: [elementium]
+    desc: |
+      Segure o clique como se fosse um arco e a §eTesoura de Elementium§r tosquia rapidamente todas
+      as ovelhas numa área grande à sua volta. Lã em massa!
+    tasks:
+      - craft: Botania:elementiumShears
+    rewards:
+      - loot: incomum
+
+  - id: espada_elementium
+    title: "Espada de Elementium"
+    at: [33, 3]
+    deps: [elementium]
+    deps_hidden: [graveto_sonhos]
+    desc: |
+      A §eEspada de Elementium§r aumenta a chance de Fadas surgirem quando você é atingido (mesmo sem
+      a armadura) e deixa essas fadas mais fortes. Fadas causam dano que o Guardião de Gaia aceita…
+      anote isso.
+    tasks:
+      - craft: Botania:elementiumSword
+    rewards:
+      - xp: 3
+
+  # ------------------------------------------------------------------ Artefatos do Fim
+  - id: ar_do_fim
+    title: "Garrafa de Ar do Fim"
+    at: [34, -2]
+    deps: [elementium]
+    desc: |
+      O ar do vazio do Fim tem propriedades mutantes. §eNo Fim§r, clique com um Frasco de Vidro vazio
+      no ar para engarrafar §eAr do Fim§r. Arremessado, ele transforma Pedra em Pedra do Fim. Ele é
+      ingrediente do Fio-vermelho, da Corporea, da Tiara de Flügel e de várias relíquias élficas —
+      encha uns 16 frascos de uma vez.
+    tasks:
+      - get: "Botania:manaResource:15 x8"
+    rewards:
+      - xp: 3
+      - item: "minecraft:glass_bottle x16"
+
+  - id: fiscalizador_fim
+    title: "Fiscalizador do Fim"
+    type: optional
+    at: [35, 2]
+    deps: [ar_do_fim]
+    desc: |
+      Olhos do Fim, Obsidiana e Redstone. O §eFiscalizador do Fim§r emite redstone quando um jogador
+      a até 64 blocos olha diretamente para ele (abóbora na cabeça engana). Portas que abrem com
+      um olhar!
+    tasks:
+      - craft: Botania:enderEyeBlock
+    rewards:
+      - loot: comum
+
+  - id: mao_ender
+    title: "Mão do Fim"
+    at: [36, 2]
+    deps: [ar_do_fim]
+    deps_hidden: [perola_mana]
+    desc: |
+      Pérola de Mana, Couro, Obsidiana e um Baú do Fim. A §eMão do Fim§r abre seu §eBaú do Fim§r de
+      qualquer lugar (por Mana); usada em outro jogador, abre o inventário dele (bem mais caro). E
+      ainda abastece o Cajado da Crosta Inconstante com o conteúdo do seu Baú do Fim.
+    tasks:
+      - craft: Botania:enderHand
+    rewards:
+      - xp: 3
+
+  - id: soulscribe
+    title: "Soulscribe"
+    type: optional
+    at: [37, 2]
+    deps: [ar_do_fim]
+    deps_hidden: [perola_mana]
+    desc: |
+      Uma adaga de Manasteel com Pérola de Mana que corta §eEndermen§r como manteiga. A energia dela
+      impede o conserto por Mana, então dura poucas mortes. Feita para farmar pérolas no Fim.
+    tasks:
+      - craft: Botania:enderDagger
+    rewards:
+      - loot: incomum
+
+  - id: invocador_monstros
+    title: "Invocador de Monstros"
+    type: optional
+    at: [35, 3]
+    deps: [ar_do_fim]
+    deps_hidden: [elementium, prismarinho]
+    desc: |
+      Varas de Blaze, Elementium, Prismarinho Escuro, Bloco de Manasteel e Ar do Fim. Colocado em
+      cima de um §eSpawner de monstros§r e alimentado com bastante Mana, o §eInvocador§r faz o spawner
+      funcionar §emesmo sem jogadores por perto§r. Fazendas de mob sem babá!
+    tasks:
+      - craft: Botania:spawnerClaw
+    rewards:
+      - loot: incomum
+
+  - id: luminizer
+    title: "Luminizer"
+    type: optional
+    at: [36, 3]
+    deps: [ar_do_fim]
+    deps_hidden: [fio_vermelho, pedra_draconiana]
+    desc: |
+      Fio-vermelho, Pedra Draconiana e Pó de Pedra Luminosa. Vincule §eLuminizers§r com a Varinha
+      (alcance de 20 blocos, encadeáveis) e clique num deles para viajar numa trilha de luz até o
+      outro. O §eLançador Luminizer§r manda animais e itens; a versão Detectora emite redstone.
+    tasks:
+      - get: Botania:lightRelay
+    rewards:
+      - loot: incomum
+
+  - id: projetor_estrelas
+    title: "Projetor de Estrelas"
+    type: optional
+    at: [37, 3]
+    deps: [ar_do_fim]
+    deps_hidden: [elementium, po_fada]
+    desc: |
+      Elementium, Pó de Fada e Obsidiana. À noite, o §eProjetor de Estrelas§r enche o céu de uma área
+      grande com um campo estrelado. Romântico, inútil, maravilhoso.
+    tasks:
+      - craft: Botania:starfield
+    rewards:
+      - loot: comum
+
+  - id: casulo
+    title: "Casulo de Caprice"
+    type: optional
+    at: [38, 3]
+    deps: [ar_do_fim]
+    deps_hidden: [po_fada, pedra_draconiana]
+    desc: |
+      Linha, Pó de Fada e Pedra Draconiana. Colocado no mundo, o §eCasulo§r lentamente "choca" um
+      §efilhote de animal§r — geralmente de fazenda, às vezes um lobo ou cavalo. Dizem que Esmeraldas
+      dadas ao casulo mudam o resultado…
+    tasks:
+      - craft: Botania:cocoon
+    rewards:
+      - loot: comum
+
+  - id: abobora_fel
+    title: "Abóbora Fel"
+    type: optional
+    at: [35, 4]
+    deps: [ar_do_fim]
+    desc: |
+      Abóbora, Linha, Osso, Carne Podre e Pólvora. Coloque a §eAbóbora Fel§r em cima de duas Barras
+      de Ferro (como um Golem de Neve) e nasce um §eBlaze§r que derruba Pó de Blaze em boa quantidade.
+      Fazenda de pó sem ir ao Nether!
+    tasks:
+      - craft: Botania:felPumpkin
+    rewards:
+      - loot: comum
+
+  # ------------------------------------------------------------------ Fio-vermelho
+  - id: fio_vermelho
+    title: "Fio-vermelho"
+    at: [34, -5]
+    deps: [ar_do_fim]
+    deps_hidden: [po_fada]
+    desc: |
+      Diz a lenda que os deuses amarram um fio vermelho nos tornozelos de quem deve se encontrar.
+      §eLinha, Bloco de Redstone, Pó de Fada e Ar do Fim§r dão o §eFio-vermelho§r. Blocos feitos com ele
+      se ligam "pelo ar" ao primeiro bloco compatível na direção para onde apontam (veja o fio com a
+      Varinha). Não dá para encadear um no outro.
+    tasks:
+      - get: "Botania:manaResource:12 x4"
+    rewards:
+      - xp: 3
+      - item: "minecraft:redstone_block x2"
+
+  - id: fio_recipiente
+    title: "Recipiente de Fio-vermelho"
+    at: [33, -6]
+    deps: [fio_vermelho]
+    desc: |
+      O §eRecipiente de Fio-vermelho§r liga-se a qualquer inventário; itens colocados nele (funil,
+      tubo…) vão parar no inventário ligado, entrando pelo mesmo lado. Um "baú remoto" sem canos.
+    tasks:
+      - craft: Botania:redStringContainer
+    rewards:
+      - xp: 2
+
+  - id: fio_ejetor
+    title: "Ejetor de Fio-vermelho"
+    type: optional
+    at: [34, -6]
+    deps: [fio_vermelho]
+    desc: |
+      Liga-se a um Ejetor ou Liberador: recebe itens como o recipiente e, com sinal de redstone, faz o
+      bloco ligado disparar.
+    tasks:
+      - craft: Botania:redStringDispenser
+    rewards:
+      - loot: comum
+
+  - id: fio_fertilizador
+    title: "Fertilizador de Fio-vermelho"
+    type: optional
+    at: [35, -6]
+    deps: [fio_vermelho]
+    desc: |
+      Farinha de Osso usada nele fertiliza o bloco ligado. Perfeito para fertilizar plantas
+      inalcançáveis… ou uma Margarida esquecida no meio da base.
+    tasks:
+      - craft: Botania:redStringFertilizer
+    rewards:
+      - loot: comum
+
+  - id: fio_comparador
+    title: "Comparador de Fio-vermelho"
+    type: optional
+    at: [36, -6]
+    deps: [fio_vermelho]
+    desc: |
+      Liga-se a qualquer bloco que um Comparador consegue ler (baús, Poços de Mana, Altar Rúnico…) e
+      repassa esse sinal para um Comparador encostado nele. Leitura de nível à distância.
+    tasks:
+      - craft: Botania:redStringComparator
+    rewards:
+      - loot: comum
+
+  - id: fio_materializador
+    title: "Materializador de Fio-vermelho"
+    at: [33, -7]
+    deps: [fio_vermelho]
+    desc: |
+      Coloque uma flor com efeito em cima do §eMaterializador§r e ligue-o a outra flor/cogumelo: a
+      flor de cima para de funcionar e o bloco ligado passa a agir §ecomo se fosse ela§r. Dá para
+      "teletransportar" a posição de uma flor sem replantar o jardim.
+    tasks:
+      - craft: Botania:redStringRelay
+    rewards:
+      - xp: 2
+
+  - id: fio_interceptador
+    title: "Interceptador de Fio-vermelho"
+    type: optional
+    at: [34, -7]
+    deps: [fio_vermelho]
+    desc: |
+      Liga-se a um bloco complexo (baú, fornalha, Boticário…) e emite um pulso de redstone sempre que
+      alguém clica nesse bloco. Alarmes e campainhas!
+    tasks:
+      - craft: Botania:redStringInterceptor
+    rewards:
+      - loot: comum
+
+  # ------------------------------------------------------------------ Corporea
+  - id: fagulha_corporea
+    title: "Fagulha Corporea"
+    type: main
+    at: [35, -4]
+    deps: [ar_do_fim]
+    deps_hidden: [fagulha, po_fada]
+    desc: |
+      §eCorporea§r é a rede élfica de transporte instantâneo de itens. Uma Fagulha + Pó de Fada + Ar do
+      Fim = §eFagulha Corporea§r, que vai em cima de §einventários§r (baús, ejetores…), não de poços.
+
+      Cada rede tem §euma Fagulha Corporea Mestre§r (fagulha corporea + Pedra Draconiana); as fagulhas
+      próximas se encadeiam até ela. Pó Floral clicado na fagulha muda a cor: só fagulhas da mesma
+      cor formam a mesma rede. Itens só entram na rede fisicamente (funis etc.).
+    tasks:
+      - get: ["Botania:corporeaSpark x4", "Botania:corporeaSpark:1"]
+    rewards:
+      - xp: 4
+      - choice: ["minecraft:chest x8", "Botania:manaResource:15 x4", "minecraft:hopper x4"]
+
+  - id: indice_corporea
+    title: "Índice Corporea"
+    type: main
+    at: [36, -4]
+    deps: [fagulha_corporea]
+    deps_hidden: [pedra_draconiana]
+    desc: |
+      Um cristal com uma Fagulha Corporea em cima: chegue perto do §eÍndice Corporea§r e §eescreva no
+      chat§r o que quer — "iron ingot", "10 apples", "a stack of cobblestone", "all diamonds", "count
+      redstone"… — e os itens surgem na sua frente! O índice compara com o nome do item; se o nome em
+      português não for reconhecido no servidor, tente o nome em inglês. Mais fácil ainda: com o NEI,
+      a tecla §eC§r sobre um item pede 1 (Shift = pilha). TAB no chat autocompleta.
+    tasks:
+      - craft: Botania:corporeaIndex
+    rewards:
+      - xp: 4
+      - item: "minecraft:obsidian x8"
+
+  - id: funil_corporea
+    title: "Exaustor Corporea"
+    at: [35, -5]
+    deps: [fagulha_corporea]
+    desc: |
+      Liberador + Fagulha Corporea. Com sinal de redstone, o §eExaustor Corporea§r pede à rede um dos
+      itens das Molduras de Item presas nele (girar a moldura muda a quantidade: 1, 16, 32, 64) e o
+      deposita no inventário 1–2 blocos abaixo — ou solta no chão.
+    tasks:
+      - craft: Botania:corporeaFunnel
+    rewards:
+      - xp: 3
+
+  - id: interceptador_corporea
+    title: "Interceptador Corporea"
+    type: optional
+    at: [36, -5]
+    deps: [fagulha_corporea]
+    desc: |
+      Bloco de Redstone + Fagulha Corporea. Quando alguém pede à rede um item (das Molduras presas
+      nele) que §enão existe§r, o §eInterceptador§r emite um pulso — perfeito para disparar um Caixote
+      Inteligente que fabrica o que falta.
+    tasks:
+      - craft: Botania:corporeaInterceptor
+    rewards:
+      - loot: incomum
+
+  - id: cubo_corporea
+    title: "Cubo de Cristal Corporea"
+    type: optional
+    at: [37, -5]
+    deps: [fagulha_corporea]
+    deps_hidden: [vidro_elfico]
+    desc: |
+      Clique com um item no §eCubo de Cristal§r (com fagulha) e ele mostra quantos existem na rede;
+      clique esquerdo pede um, agachado pede uma pilha. Um Comparador lê a quantidade em escala
+      logarítmica.
+    tasks:
+      - craft: Botania:corporeaCrystalCube
+    rewards:
+      - loot: incomum
+
+  - id: retentor_corporea
+    title: "Retentor Corporea"
+    type: optional
+    at: [38, -5]
+    deps: [interceptador_corporea]
+    desc: |
+      Baú + Fagulha Corporea. Ao lado de um Interceptador, o §eRetentor§r memoriza o pedido que
+      falhou; quando recebe redstone, refaz o pedido original. Autocrafting sob demanda completo:
+      pediu, faltou, fabricou, entregou.
+    tasks:
+      - craft: Botania:corporeaRetainer
+    rewards:
+      - loot: incomum
+
+  # ------------------------------------------------------------------ O Ritual de Gaia
+  - id: pilone_gaia
+    title: "Pilão de Gaia"
+    type: main
+    at: [34, 0]
+    deps: [elementium]
+    deps_hidden: [po_fada, pilone_mana]
+    desc: |
+      Um Pilão de Mana com §eduas Barras de Elementium e dois Pós de Fada§r: o §ePilão de Gaia§r. São os
+      catalisadores do Ritual de Gaia — você vai precisar de §equatro§r. Eles também servem de base
+      para o Dispersor Natural do Advanced Botany, lá na frente.
+    tasks:
+      - get: "Botania:pylon:2 x4"
+    rewards:
+      - xp: 5
+      - choice: ["Botania:manaResource:7 x4", "Botania:manaResource:8 x4", "minecraft:gold_ingot x8"]
+
+  - id: sinalizador
+    title: "O Altar: um Sinalizador"
+    at: [35, 1]
+    deps: [pilone_gaia]
+    desc: |
+      O altar do ritual é um §eSinalizador§r (Beacon). Para fabricá-lo você precisa de uma §eEstrela do
+      Nether§r — ou seja, de derrotar o Wither (veja o capítulo do Nether). O Lexica pede um
+      sinalizador §eativo§r: monte a pirâmide de blocos de minério embaixo dele.
+      §aDica:§r faça a pirâmide e a arena num lugar plano e aberto, longe da base.
+    tasks:
+      - get: minecraft:beacon
+    rewards:
+      - xp: 3
+      - item: "minecraft:iron_block x9"
+
+  - id: info_ritual_gaia
+    title: "Ritual de Gaia: Preparação e Regras"
+    type: info
+    at: [36, -1]
+    deps: [pilone_gaia]
+    desc: |
+      §cLeia com calma, Herói. Este é um dos chefes mais duros do Registro.§r
+
+      §eO altar:§r Sinalizador ativo + §e4 Pilões de Gaia§r um bloco §eacima§r do sinalizador, nas
+      diagonais, a 4 blocos em X e 4 em Z (posições ±4, +1, ±4).
+      §eA arena:§r um círculo de §e12 blocos de raio§r em volta do sinalizador com chão firme perto da
+      altura dele e pelo menos 3 blocos livres acima, sem paredes, pilares ou buracos grandes. Se a
+      área estiver errada, o sinalizador recusa o sacrifício com uma mensagem vermelha. Não
+      funciona no modo Pacífico. Armadilhas de urso (OpenBlocks) e ímãs (Thaumic Tinkerer) na arena
+      são destruídos.
+      §eInvocação:§r agachado + clique no sinalizador com uma §eBarra de Terrasteel§r (Gaia I) ou uma
+      §eBarra de Espírito de Gaia§r (Gaia II). Afaste-se: ele carrega por alguns segundos.
+
+      §eRegras da luta:§r só conta §edano corpo a corpo de jogadores de verdade§r (e das Fadas da
+      armadura/espada de Elementium) — flechas, magias, torres e "jogadores falsos" de máquinas não
+      ferem. Cada golpe é limitado (40 de dano, 60 no crítico). Vida: §e800 por jogador§r na arena.
+      Os efeitos do Sinalizador são anulados (poções botânicas valem!). Quem sai do círculo é puxado
+      de volta. Fuja das §dmanchas roxas§r (Armadilhas de Gaia). Abaixo de 20% de vida ele fica
+      invulnerável e chama §eondas de Zumbis, Esqueletos (alguns Wither) e Bruxas§r — limpe tudo e volte a bater.
+      Com mais de 5 jogadores vira caos: não recomendado.
+    tasks:
+      - check
+    rewards:
+      - xp: 3
+
+  - id: gaia1
+    title: "Guardião de Gaia"
+    type: boss
+    at: [36, 0]
+    deps: [pilone_gaia, sinalizador, info_ritual_gaia]
+    deps_hidden: [terrasteel]
+    banner: "Guardião de Gaia derrotado!"
+    subtitle: "O Ritual de Gaia I"
+    desc: |
+      O teste final dos botânicos élficos. Ofereça a §eBarra de Terrasteel§r e o §eGuardião de Gaia§r —
+      um reflexo seu — desce sobre a arena. Ele se teletransporta, dispara mísseis mágicos e espalha
+      armadilhas roxas.
+
+      §eLeve:§r Armadura de Elementium encantada, Lâmina da Terra (ou Espada de Elementium para mais
+      fadas), Frascos de Cura/Revitalização/Vigor, comida e um Bracelete de Mana cheio. Ataque em
+      sequência, mova-se sempre e §cnão fique parado nas manchas roxas§r.
+
+      Recompensa: §eEspíritos de Gaia§r (8 para quem bateu primeiro, 6 para cada outro participante) e
+      chance de um Disco de Música. Eu sabia que você conseguia!
+    tasks:
+      - kill: "Botania.botania:doppleganger x1"
+      - get: "Botania:manaResource:5 x4"
+    rewards:
+      - xp: 10
+      - loot: epico
+
+  - id: barra_espirito_gaia
+    title: "Barra de Espírito de Gaia"
+    type: main
+    at: [38, 0]
+    deps: [gaia1]
+    desc: |
+      Terrasteel e Espírito de Gaia se anulam quando fundidos: §euma Barra de Terrasteel cercada por
+      quatro Espíritos de Gaia§r vira uma §eBarra de Espírito de Gaia§r — inútil como metal… mas com
+      tanta energia concentrada que invoca um §cGuardião muito mais forte§r. Prepare-se antes de usá-la.
+    tasks:
+      - craft: Botania:manaResource:14
+    rewards:
+      - xp: 5
+      - choice: ["Botania:manaResource:4", "minecraft:golden_apple x4", "Botania:manaResource:2 x4"]
+
+  - id: gaia2
+    title: "Guardião de Gaia II"
+    type: boss
+    at: [40, 0]
+    deps: [barra_espirito_gaia]
+    banner: "Gaia II derrotado!"
+    subtitle: "O Ritual de Gaia II"
+    effect: 4
+    desc: |
+      A revanche. Ofereça a §eBarra de Espírito de Gaia§r ao sinalizador e o Guardião volta mais
+      resistente (recebe só 60% do dano), mais forte e mais rápido, com mais Bruxas nas ondas. As
+      regras da arena são as mesmas — releia o guia do ritual.
+
+      A recompensa vale cada gota de suor: §eEspíritos de Gaia§r (16 para o primeiro, 10 para os demais),
+      uma §eVontade dos Antigos§r garantida, o §eDado do Destino§r (relíquias!) e chances de Lótus Negra,
+      Semente do Super-crescimento, pilhas de Manasteel, Pérolas e Diamantes de Mana, runas e até o
+      Pinkinator.
+
+      Esta vitória ecoa no Registro inteiro: é uma das provas do §dSelo Arcano§r.
+    tasks:
+      - kill: "Botania.botania:doppleganger x1"
+      - get: "Botania:ancientWill:*"
+    rewards:
+      - xp: 15
+      - loot: [epico, epico]
+
+  # ------------------------------------------------------------------ Tesouros de Gaia
+  - id: dispersor_gaia
+    title: "Dispersor de Mana de Gaia"
+    at: [37, -2]
+    deps: [gaia1]
+    deps_hidden: [dispersor_elfico, pedra_draconiana]
+    desc: |
+      Dispersor Élfico + Espírito de Gaia + Pedra Draconiana. O §eDispersor de Gaia§r é o melhor
+      dispersor do mod, superior em praticamente tudo: rajadas maiores, mais rápidas e mais longas.
+    tasks:
+      - craft: Botania:spreader:3
+    rewards:
+      - xp: 4
+
+  - id: tiara_flugel
+    title: "Tiara de Flügel"
+    type: main
+    at: [38, -2]
+    deps: [gaia1]
+    deps_hidden: [elementium, ar_do_fim]
+    desc: |
+      Os Flügel eram uma raça alada criada para matar deuses. Com §equatro Espíritos de Gaia§r, Elementium,
+      Penas e Ar do Fim você recria um pedacinho desse poder: a §eTiara de Flügel§r dá §evoo§r usando Mana.
+
+      A barra de voo dura uns 30 segundos antes de precisar recarregar. Correr (Ctrl) voando dá um
+      §eimpulso§r; agachar caindo §eplana§r e evita dano de queda. Na bancada, a tiara + um tipo de
+      quartzo muda as asas.
+    tasks:
+      - craft: Botania:flightTiara:*
+    rewards:
+      - xp: 6
+      - item: "Botania:quartz:5 x4"
+
+  - id: coroa_laurel
+    title: "Coroa Dourada de Laurel"
+    at: [39, -2]
+    deps: [gaia1]
+    desc: |
+      Ouro, Folhas e um Espírito de Gaia. Se você §emorrer§r usando a §eCoroa de Laurel§r, ela se
+      despedaça e te devolve toda a vida, com alguns instantes de invencibilidade. Uma segunda chance
+      — leve uma para o Gaia II!
+    tasks:
+      - craft: Botania:goldenLaurel
+    rewards:
+      - xp: 4
+
+  - id: encanto_diva
+    title: "Encanto da Diva"
+    type: optional
+    at: [40, -2]
+    deps: [gaia1]
+    deps_hidden: [pequeno_planeta, runa_orgulho]
+    desc: |
+      Espíritos de Gaia, Ouro, Pequeno Planeta e Runa do Orgulho. Com o §eEncanto da Diva§r, o mob que
+      você atacar passa a obedecer sua vontade e ataca os inimigos próximos. Charme irresistível.
+    tasks:
+      - craft: Botania:divaCharm
+    rewards:
+      - loot: incomum
+
+  - id: pingente_carmesim
+    title: "Pingente Carmesiano"
+    at: [41, -2]
+    deps: [gaia1]
+    deps_hidden: [pingente_piroclasta]
+    desc: |
+      Pingente do Piromântico + Varas de Blaze + Tijolos do Nether + Espírito de Gaia. O §ePingente
+      Carmesiano§r dá §eimunidade total a fogo e lava§r. Nadar em lava nunca foi tão relaxante.
+    tasks:
+      - craft: Botania:superLavaPendant
+    rewards:
+      - xp: 4
+
+  - id: cinta_globetrotter
+    title: "Cinta do Viajante Mundial"
+    type: optional
+    at: [42, -2]
+    deps: [gaia1]
+    deps_hidden: [cinta_viajante, elementium]
+    desc: |
+      Cinta de Soujourner + Elementium + Espírito de Gaia. A §eCinta do Viajante Mundial§r é a versão
+      turbinada: velocidades que a original nem sonha.
+    tasks:
+      - craft: Botania:superTravelBelt
+    rewards:
+      - loot: incomum
+
+  - id: capas_julgamento
+    title: "Capas do Julgamento"
+    type: optional
+    at: [43, -2]
+    deps: [gaia1]
+    desc: |
+      Lã, Pedra Luminosa (ou Redstone) e Espírito de Gaia. A §eCapa da Virtude§r (branca) bloqueia por
+      completo um golpe recebido (exceto mágico); a §eCapa do Pecado§r (preta) devolve o dano recebido
+      aos monstros próximos. Ambas recarregam por 10 segundos e vão no espaço de cinto.
+    tasks:
+      - one_of: [Botania:holyCloak, Botania:unholyCloak]
+    rewards:
+      - loot: incomum
+
+  - id: talisma_buraco_negro
+    title: "Talismã do Buraco-negro"
+    at: [37, -3]
+    deps: [gaia1]
+    deps_hidden: [elementium, ar_do_fim]
+    desc: |
+      Espírito de Gaia, Elementium e Ar do Fim. O §eTalismã do Buraco-negro§r guarda uma quantidade
+      praticamente infinita de §eum único tipo de bloco§r (pedregulho, terra…). Mineradores, chorem
+      de alegria.
+    tasks:
+      - craft: Botania:blackHoleTalisman
+    rewards:
+      - xp: 4
+
+  - id: hera_eterna
+    title: "Hera Eterna"
+    at: [38, -3]
+    deps: [gaia1]
+    deps_hidden: [elementium]
+    desc: |
+      Vinha, Espírito de Gaia e Elementium. Junte a §eHera Eterna§r a praticamente qualquer item na bancada
+      e ele passa a §ese consertar com Mana§r, como as ferramentas do Botania. Sua picareta favorita de
+      outro mod agradece.
+    tasks:
+      - get: Botania:regenIvy
+    rewards:
+      - xp: 4
+
+  - id: agregador_vida
+    title: "Agregador de Vida"
+    type: optional
+    at: [39, -3]
+    deps: [gaia1]
+    deps_hidden: [elementium, ar_do_fim, pedra_draconiana]
+    desc: |
+      Espíritos de Gaia, Elementium, Ar do Fim e Pedra Draconiana. O §eAgregador de Vida§r captura um
+      §eSpawner de monstros§r e permite recolocá-lo em outro lugar. Ele se quebra depois de um uso, então
+      escolha bem o destino.
+    tasks:
+      - craft: Botania:spawnerMover
+    rewards:
+      - loot: incomum
+
+  - id: cajado_reservatorio
+    title: "Cajado do Depósito Instável"
+    type: optional
+    at: [40, -3]
+    deps: [gaia1]
+    deps_hidden: [pedra_draconiana, graveto_sonhos]
+    desc: |
+      Espíritos de Gaia, Pedras Draconianas e Gravetos de Madeira dos Sonhos. Canalize o §eCajado do
+      Depósito Instável§r e incontáveis mísseis arcanos perseguem os inimigos ao redor — a um custo
+      pesado de Mana. A resposta para hordas.
+    tasks:
+      - craft: Botania:missileRod
+    rewards:
+      - loot: incomum
+
+  - id: carga_manastorm
+    title: "Carga de Manastorm"
+    type: optional
+    at: [41, -3]
+    deps: [gaia1]
+    desc: |
+      Madeira-viva, TNT e um Espírito de Gaia. Atingida por uma rajada de Mana, a §eCarga de
+      Manastorm§r cria um epicentro instável que dispara rajadas explosivas por um bom tempo.
+      §cSó um maníaco usaria isso perto de algo que ama.§r Você foi avisado.
+    tasks:
+      - get: Botania:manaBomb
+    rewards:
+      - loot: incomum
+
+  - id: fragmento_laputa
+    title: "Fragmento de Laputa"
+    type: optional
+    at: [42, -3]
+    deps: [gaia1]
+    deps_hidden: [flores_flutuantes, prismarinho, pedra_draconiana]
+    desc: |
+      Espíritos de Gaia, uma Flor Flutuante, Prismarinho, Pedra Draconiana e Runas do Ar e da Terra.
+      Usado no chão, o §eFragmento de Laputa§r §elevanta uma esfera de terreno§r para o céu (pode levar
+      uns dez minutos). Mais Espíritos de Gaia na bancada aumentam o nível — e o tamanho da ilha.
+    tasks:
+      - get: "Botania:laputaShard:*"
+    rewards:
+      - loot: incomum
+
+  - id: laminas_estelares
+    title: "Starcaller e Thundercaller"
+    at: [27, 3]
+    deps: [terra_blade]
+    deps_hidden: [ar_do_fim, elementium]
+    desc: |
+      Uma Lâmina da Terra + Ar do Fim + Elementium + (Pedra Draconiana ou Diamante de Mana). A
+      §eStarcaller§r às vezes invoca uma §eestrela cadente§r onde você mira; a §eThundercaller§r troca o
+      feixe por §erelâmpagos em cadeia§r que pulam entre os monstros. (Os encantamentos da Lâmina da
+      Terra se perdem na receita.)
+    tasks:
+      - one_of: [Botania:starSword, Botania:thunderSword]
+    rewards:
+      - xp: 5
+
+  # ------------------------------------------------------------------ Espólios do Gaia II e Relíquias
+  - id: cabeca_gaia
+    title: "Cabeça do Guardião"
+    type: optional
+    at: [38, 2]
+    deps: [gaia1]
+    deps_hidden: [machado_elementium]
+    desc: |
+      Lembra da surpresa do Machado de Elementium? Dê o golpe final no Guardião de Gaia com ele e há
+      uma pequena chance (maior com Pilhagem) de ele derrubar a §eCabeça do Guardião de Gaia§r. Troféu
+      de respeito na parede.
+    tasks:
+      - get: Botania:gaiaHead
+    rewards:
+      - loot: incomum
+
+  - id: discos_gaia
+    title: "Trilha Sonora de Gaia"
+    type: optional
+    at: [39, 2]
+    deps: [gaia1]
+    desc: |
+      Os Guardiões às vezes deixam cair um §eDisco de Música§r com a trilha da batalha ("Endure
+      Emptiness" no Gaia I, "Fight For Quiescence" no Gaia II). Para relembrar a luta em paz, na base.
+    tasks:
+      - one_of: [Botania:recordGaia1, Botania:recordGaia2]
+    rewards:
+      - loot: incomum
+
+  - id: vontades_antigas
+    title: "Vontades dos Antigos"
+    at: [40, 2]
+    deps: [gaia2]
+    deps_hidden: [armadura_terrasteel]
+    desc: |
+      O Gaia II sempre deixa uma §eVontade§r: Ahrim, Dharok, Guthan, Torag, Verac ou Karil. Junte a
+      vontade ao §eElmo de Terrasteel§r na bancada; com o conjunto de Terrasteel completo, seus golpes
+      críticos ganham o poder dela — Fraqueza (Ahrim), mais dano com pouca vida (Dharok), roubo de vida
+      (Guthan), Lentidão (Torag), ignorar armadura (Verac) ou Apodrecimento (Karil). Dá para pôr várias.
+    tasks:
+      - get: "Botania:ancientWill:*"
+    rewards:
+      - xp: 5
+
+  - id: lotus_negra
+    title: "Lótus Negra"
+    type: optional
+    at: [41, 2]
+    deps: [gaia2]
+    desc: |
+      Uma flor que não cresce nem se reproduz, recheada de Mana. Jogue a §eLótus Negra§r num Poço de
+      Mana que já tenha alguma Mana e ela libera §e8.000§r de uma vez; a §eLótus Profunda§r libera
+      §e100.000§r. O Gaia II deixa algumas.
+    tasks:
+      - get: "Botania:blackLotus:*"
+    rewards:
+      - loot: incomum
+
+  - id: semente_supercrescimento
+    title: "Semente do Super-crescimento"
+    type: optional
+    at: [39, 3]
+    deps: [gaia2]
+    desc: |
+      Rara: cai do Gaia II e aparece em estruturas antigas. Clique com ela num bloco de Grama para criar
+      §eSolo Encantado§r: flores plantadas nele funcionam com o §edobro da velocidade§r — e flores
+      passivas simplesmente §enunca murcham§r. Coloque sua melhor flor nele.
+    tasks:
+      - get: Botania:overgrowthSeed
+    rewards:
+      - loot: incomum
+
+  - id: dado_destino
+    title: "O Dado do Destino"
+    type: main
+    at: [42, 0]
+    deps: [gaia2]
+    desc: |
+      "Quem rolar o Dado do Destino será recompensado com os Presentes dos Deuses." O §eDado do Destino§r
+      do Gaia II é seu e de mais ninguém. Clique para rolar: ele vira uma das seis §eRelíquias dos
+      Aesir§r que você ainda não tem (o resultado depende da fase da lua). Se você já tiver todas,
+      o dado some.
+
+      Relíquias são §evinculadas a quem as ganhou§r — não adianta emprestar. Proteja-as com Hera Resoluta!
+    tasks:
+      - one_of: [Botania:infiniteFruit, Botania:kingKey, Botania:flugelEye, Botania:thorRing, Botania:odinRing, Botania:lokiRing]
+    rewards:
+      - xp: 8
+      - choice: ["Botania:keepIvy x2", "Botania:manaResource:5 x4", "Botania:manaRingGreater:1000"]
+
+  - id: fruta_grisaia
+    title: "A Fruta de Grisaia"
+    type: optional
+    at: [43, 2]
+    deps: [dado_destino]
+    desc: |
+      Uma maçã que §enunca acaba§r: come-se como comida comum, mas consome Mana do inventário em vez de
+      sumir. Fome, nunca mais. (Espero que você goste de maçã.)
+    tasks:
+      - get: Botania:infiniteFruit
+    rewards:
+      - loot: incomum
+
+  - id: chave_rei
+    title: "Chave das Leis do Rei"
+    type: optional
+    at: [44, 2]
+    deps: [dado_destino]
+    desc: |
+      Segure o clique e a §eChave das Leis do Rei§r materializa até vinte armas no ar atrás de você;
+      solte e elas disparam, uma a uma, para onde você olha, explodindo no impacto. Um portão do
+      tesouro só seu.
+    tasks:
+      - get: Botania:kingKey
+    rewards:
+      - loot: incomum
+
+  - id: olho_flugel
+    title: "Olho de Flügel"
+    type: optional
+    at: [45, 2]
+    deps: [dado_destino]
+    desc: |
+      Agachado + clique vincula o §eOlho de Flügel§r a um lugar; depois, segure o clique para ser
+      §echamado de volta§r para lá (custa Mana e não funciona entre dimensões). Ter o olho no inventário
+      ainda deixa a Tiara de Flügel voar além do limite normal, por um custo maior.
+    tasks:
+      - get: Botania:flugelEye
+    rewards:
+      - loot: incomum
+
+  - id: anel_thor
+    title: "Anel de Thor"
+    type: optional
+    at: [43, 1]
+    deps: [dado_destino]
+    desc: |
+      O poder do Deus do Trovão: com o §eAnel de Thor§r equipado, a mineração em área do Terra-Destruidor
+      fica drasticamente mais forte. Um dos três anéis dos Aesir.
+    tasks:
+      - get: Botania:thorRing
+    rewards:
+      - loot: incomum
+
+  - id: anel_odin
+    title: "Anel de Odin"
+    type: optional
+    at: [44, 1]
+    deps: [dado_destino]
+    desc: |
+      A vitalidade do Pai de Todos: §e+10 corações§r e proteção contra afogamento, sufocamento, fogo e
+      fome. (A resistência a fogo está ligada nesta config.) Um dos três anéis dos Aesir.
+    tasks:
+      - get: Botania:odinRing
+    rewards:
+      - loot: incomum
+
+  - id: anel_loki
+    title: "Anel de Loki"
+    type: optional
+    at: [45, 1]
+    deps: [dado_destino]
+    desc: |
+      O truque do Deus da Trapaça: com a mão vazia, agachado, clique num bloco de origem e depois em
+      outros para marcar posições relativas; ao colocar um bloco agachado, ele é copiado em todas as
+      posições (e o Terra-Destruidor/Truncador quebram nelas também). Cada bloco custa Mana — mais
+      posições, mais caro.
+    tasks:
+      - get: Botania:lokiRing
+    rewards:
+      - loot: incomum
+
+  - id: anel_aesir
+    title: "Anel dos Aesir"
+    type: milestone
+    at: [46, 0]
+    deps: [anel_thor, anel_odin, anel_loki]
+    banner: "Anel dos Aesir"
+    subtitle: "Como os Deuses dizem"
+    desc: |
+      Três anéis, três deuses, um destino. Combine o §eAnel de Thor§r, o §eAnel de Odin§r e o §eAnel de
+      Loki§r na bancada e eles se fundem no §eAnel dos Aesir§r, que reúne os poderes dos três num único
+      espaço.
+
+      Para chegar aqui você derrotou o Guardião de Gaia várias vezes e rolou o Dado do Destino até os
+      deuses se renderem. Herói… você reescreveu o Volume das Flores Vivas inteirinho. Os elfos de
+      Elven Garde mandam lembranças — e eu mando um abraço enorme.
+    tasks:
+      - get: Botania:aesirRing
+    rewards:
+      - xp: 12
+      - kit: {name: "Tesouro de Elven Garde", items: ["Botania:manaResource:5 x8", "Botania:storage:2 x2", "Botania:blackLotus:1", "Botania:manaResource:9 x4"]}
+      - loot: epico
+
+  # ------------------------------------------------------------------ Conteúdo Diverso e decoração
+  - id: info_decoracao
+    title: "Conteúdo Diverso"
+    type: info
+    at: [3, 10]
+    deps_hidden: [decor_viva]
+    desc: |
+      A Lexica tem uma categoria inteira de §eConteúdo Diverso§r: quartzos coloridos, tijolos novos,
+      azulejos portugueses, pavimentos, prismarinho, blocos do Fim e alguns truques curiosos. Nada
+      disso é obrigatório, mas o seu templo élfico merece!
+    tasks:
+      - check
+    rewards:
+      - xp: 1
+
+  - id: quartzos
+    title: "Quartzos Decorativos"
+    type: optional
+    at: [1, 11]
+    deps: [info_decoracao]
+    desc: |
+      Oito Quartzos do Nether em volta de um "tempero" criam quartzos novos: Carvão Vegetal = §eQuartzo
+      Escuro§r, Pó de Blaze = §eFlamejante§r, Allium (flor roxa) = §eLavanda§r, Redstone = §eQuartzo-
+      vermelho§r, Girassol = §eSolar§r. O §eQuartzo de Mana§r sai do poço (250 de Mana) e o §eÉlfico§r da troca
+      com os elfos. Todos viram blocos, pilares e escadas.
+    tasks:
+      - one_of: [Botania:quartz, "Botania:quartz:1", "Botania:quartz:2", "Botania:quartz:3", "Botania:quartz:4", "Botania:quartz:6"]
+    rewards:
+      - loot: comum
+
+  - id: tijolos_botania
+    title: "Tijolos e Azulejos"
+    type: optional
+    at: [2, 11]
+    deps: [info_decoracao]
+    desc: |
+      Tijolos de Pedra cercados de Netherrack, Areia de Almas ou Neve viram §eTijolos Infernais, da Alma
+      ou Invernais§r; há também Ladrilhos de telhado, Palha, Bloco de Cana e uma coleção de §eAzulejos§r
+      portugueses. O autor do mod é português — dá para sentir o carinho!
+    tasks:
+      - one_of: [Botania:customBrick, "Botania:customBrick:1", "Botania:customBrick:2", "Botania:customBrick:3", "Botania:customBrick:4"]
+    rewards:
+      - loot: comum
+
+  - id: prismarinho_blocos
+    title: "Blocos de Prismarinho"
+    type: optional
+    at: [3, 11]
+    deps: [info_decoracao]
+    deps_hidden: [prismarinho]
+    desc: |
+      Fragmentos de Prismarinho em volta de Pedregulho, Tijolos de Pedra ou Tijolo do Nether dão os três
+      §ePrismarinhos§r; em volta de Pedra Luminosa, a §eLanterna do Mar§r. Templos submarinos à vontade.
+    tasks:
+      - one_of: [Botania:prismarine, "Botania:prismarine:1", "Botania:prismarine:2", Botania:seaLamp]
+    rewards:
+      - loot: comum
+
+  - id: tijolos_fim
+    title: "Tijolos do Fim"
+    type: optional
+    at: [4, 11]
+    deps: [info_decoracao]
+    desc: |
+      Quatro Pedras do Fim em quadrado viram §eTijolos de Pedra do Fim§r; com uma Pérola do Fim no meio
+      de quatro deles, §eTijolos do Fim§r roxos. E lembre: Ar do Fim arremessado transforma Pedra em
+      Pedra do Fim, então você nem precisa minerar no Fim.
+    tasks:
+      - one_of: [Botania:endStoneBrick, "Botania:endStoneBrick:1", "Botania:endStoneBrick:2", "Botania:endStoneBrick:3"]
+    rewards:
+      - loot: comum
+
+  - id: cabeca_jogador
+    title: "Criação de Cabeças"
+    type: optional
+    at: [5, 11]
+    deps: [info_decoracao]
+    deps_hidden: [altar_runico, po_fada, prismarinho]
+    desc: |
+      Um truque do Altar Rúnico: uma Caveira + Pó de Fada + Fragmento de Prismarinho + Etiqueta + Maçã
+      Dourada (22.500 de Mana) viram uma §eCabeça de Jogador§r. Renomeie a etiqueta com o nome de alguém
+      antes, e a cabeça será dessa pessoa!
+    tasks:
+      - get: "minecraft:skull:3"
+    rewards:
+      - loot: incomum
+
+  - id: integracao_thaumcraft
+    title: "Botânica e Thaumcraft"
+    type: optional
+    at: [0, 11]
+    deps: [info_decoracao]
+    deps_hidden: [manasteel]
+    desc: |
+      Os dois grandes Volumes de magia conversam: Elmo de Manasteel + §eÓculos da Descoberta§r na bancada
+      dá o §eElmo de Manasteel da Revelação§r (o mesmo vale para Terrasteel e Elementium); a Ferramenta de
+      Escrita infundida no poço (35.000 de Mana) vira o §eTinteiro do Botanurgista§r. E vários blocos do
+      Botania estabilizam a infusão do Thaumcraft.
+    tasks:
+      - one_of: [Botania:manasteelHelmReveal, Botania:terrasteelHelmReveal, Botania:elementiumHelmReveal, "Botania:manaInkwell:*"]
+    rewards:
+      - loot: incomum

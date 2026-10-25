@@ -64,8 +64,7 @@ quests:
       poderia ouvir para sempre. Na primeira visita você ganha um §eBook of Lore§r e um
       §eGolden Parachute§r de presente.
 
-      §cAtenção:§r ferramentas da Superfície funcionam mal com os blocos daqui. Comece pela
-      madeira Skyroot.
+      Comece pela madeira Skyroot: as ferramentas do Aether têm bônus que você vai adorar.
     tasks:
       - visit: {dim: 4, name: "Aether"}
     rewards:
@@ -810,7 +809,7 @@ quests:
 
   - id: paraquedas_dourado
     title: "Paraquedas Dourado"
-    deps: [paraquedas_frio]
+    deps: [paraquedas_frio, nuvem_dourada]
     desc: |
       As §eGolden Aerclouds§r ficam mais altas no céu e são raras. Quatro delas em quadrado
       fazem um §eGolden Parachute§r de 20 usos: o melhor seguro contra quedas que existe.
@@ -960,8 +959,7 @@ quests:
     title: "Cockatrices"
     deps: [fauna_ceus]
     desc: |
-      As §eCockatrices§r são aves agressivas que disparam agulhas venenosas e aparecem quando
-      escurece. Derrote 2.
+      As §eCockatrices§r são aves agressivas que disparam agulhas venenosas. Derrote 2.
 
       Leve White Apples ou um balde de remédio.
     tasks:
@@ -1202,8 +1200,7 @@ quests:
       linha reta e esmaga tudo pelo caminho.
 
       §cSó picaretas machucam o Slider§r (espadas não adiantam: ele mesmo avisa). Use a melhor
-      picareta que tiver, ataque e saia da frente quando ele "carregar" o deslize. Quando ele
-      ficar vermelho, está furioso e mais rápido.
+      picareta que tiver, ataque e saia da frente quando ele começar a deslizar na sua direção.
 
       Ele deixa a §eBronze Key§r, que abre o baú do tesouro.
     tasks:
@@ -1328,8 +1325,8 @@ quests:
       A §eRainha Valquíria§r espera no salão principal. Fale com ela, mostre as medalhas e
       prepare-se: "Esta será a sua batalha final!"
 
-      §cTática:§r ela teleporta, voa e dispara raios. Fique longe das bordas e acerte quando ela
-      pousar. A Valkyrie Lance (de alcance longo) é ótima aqui.
+      §cTática:§r ela teleporta e dispara projéteis de energia. Fique longe das bordas e acerte
+      quando ela estiver ao alcance. A Valkyrie Lance (de alcance longo) é ótima aqui.
 
       Vencida, ela reconhece seu valor e entrega a §eSilver Key§r. As Valquírias vigiavam o
       Crepúsculo e as Areias lá de cima; agora vigiam com você.
@@ -1562,6 +1559,197 @@ quests:
       - one_of: [aether_legacy:vampire_blade, aether_legacy:pig_slayer, aether_legacy:iron_bubble]
     rewards:
       - loot: incomum
+
+  # ------------------------------------------------------------------ Extras
+  - id: queda_ceu
+    title: "E Se Eu Cair?"
+    type: info
+    deps: [portal_aether]
+    desc: |
+      Pergunta importante, resposta importante: quem cai da borda de uma ilha do Aether §enão
+      morre no vazio§r: você despenca no Mundo Normal, logo abaixo, de uma altura enorme.
+
+      Por isso: paraquedas no inventário (eles abrem sozinhos), Sentry Boots assim que puder, e
+      nada de lutar perto das bordas. E sempre saiba onde fica o seu portal.
+    tasks:
+      - check
+    rewards:
+      - xp: 2
+
+  - id: baldes_skyroot
+    title: "Baldes de Água e Leite"
+    type: optional
+    deps: [balde_skyroot]
+    desc: |
+      O Skyroot Bucket carrega água como um balde de ferro e também tira leite das vacas (as
+      voadoras incluídas!). O leite cura efeitos de poções.
+
+      Tenha um Skyroot Water Bucket ou um Skyroot Milk Bucket.
+    tasks:
+      - one_of: [aether_legacy:skyroot_bucket:1, aether_legacy:skyroot_bucket:4]
+    rewards:
+      - loot: comum
+
+  - id: nuvem_dourada
+    title: "Nuvens Douradas"
+    deps: [portal_aether]
+    desc: |
+      As §eGolden Aerclouds§r aparecem em pequenas quantidades, mais alto que as brancas.
+      Elas seguram quedas como as outras nuvens e são o material do paraquedas dourado.
+
+      Junte 4.
+    tasks:
+      - get: aether_legacy:aercloud:2 x4
+    rewards:
+      - xp: 3
+      - item: aether_legacy:aercloud x4
+
+  - id: holystone_musgo
+    title: "Musgo Perto das Masmorras"
+    type: optional
+    deps: [holystone]
+    desc: |
+      A §eMossy Holystone§r (Holystone com cipós claros) costuma aparecer perto das masmorras. Se
+      você vê muito musgo numa ilha, procure uma entrada escondida!
+
+      Junte 8.
+    tasks:
+      - get: aether_legacy:mossy_holystone x8
+    rewards:
+      - loot: comum
+
+  - id: moa_laranja
+    title: "A Moa Laranja"
+    type: optional
+    deps: [ovo_moa]
+    desc: |
+      A §eOrange Moa§r tem só 2 pulos no ar, mas é extremamente rápida: a corredora do céu.
+      Ache um §eOrange Moa Egg§r.
+    tasks:
+      - get: "aether_legacy:moa_egg {typeId:1}"
+        nbt: true
+    rewards:
+      - loot: comum
+
+  - id: moa_branca
+    title: "A Moa Branca"
+    type: optional
+    deps: [ovo_moa]
+    desc: |
+      A §eWhite Moa§r é razoavelmente rara e dá 4 pulos no ar. Ache um §eWhite Moa Egg§r.
+    tasks:
+      - get: "aether_legacy:moa_egg {typeId:3}"
+        nbt: true
+    rewards:
+      - loot: comum
+
+  - id: atirador_veneno
+    title: "Atirador Venenoso"
+    type: optional
+    deps: [dardo_veneno]
+    desc: |
+      O atirador dourado + um Skyroot Poison Bucket (sem forma) viram o §ePoison Dart Shooter§r,
+      que dispara os dardos venenosos.
+
+      Faça um.
+    tasks:
+      - get: aether_legacy:dart_shooter:1
+    rewards:
+      - loot: comum
+
+  - id: municao_encantada
+    title: "Munição Encantada"
+    type: optional
+    deps: [dardo_encantado]
+    desc: |
+      Encante Golden Darts no Altar para obter §eEnchanted Darts§r, a munição mais forte do
+      Aether. Junte 16.
+    tasks:
+      - get: aether_legacy:dart:2 x16
+    rewards:
+      - loot: comum
+
+  - id: aneis
+    title: "Anéis das Masmorras"
+    type: optional
+    deps: [masmorra_bronze]
+    desc: |
+      Os §eIron Rings§r e §eGolden Rings§r não são fabricáveis nesta versão: eles aparecem nos
+      baús comuns das masmorras. São enfeites... até irem para o Freezer, onde viram Ice Rings.
+
+      Encontre qualquer um.
+    tasks:
+      - one_of: [aether_legacy:iron_ring, aether_legacy:golden_ring]
+    rewards:
+      - loot: comum
+
+  - id: luvas_malha
+    title: "Luvas de Malha"
+    type: optional
+    deps: [chave_ouro]
+    desc: |
+      As §eChain Gloves§r não têm receita: são um achado muito raro do tesouro de Ouro e
+      completam o conjunto de armadura de malha.
+    tasks:
+      - get: aether_legacy:chain_gloves
+    rewards:
+      - loot: incomum
+
+  - id: pedra_esculpida
+    title: "Pedra Esculpida"
+    type: optional
+    deps: [slider]
+    desc: |
+      Os blocos da Masmorra de Bronze ficam inquebráveis até o Slider cair. Agora você pode
+      levar §eCarved Stone§r e §eSentry Stone§r (a versão clara) para construir.
+
+      Junte 16 Carved Stone.
+    tasks:
+      - get: aether_legacy:carved_stone x16
+    rewards:
+      - loot: comum
+
+  - id: pedra_angelical
+    title: "Pedra Angelical"
+    type: optional
+    deps: [rainha_valquiria]
+    desc: |
+      Com a Rainha vencida, a §eAngelic Stone§r e os pilares da Masmorra de Prata podem ser
+      minerados. Pedra branca e dourada, digna de um templo.
+
+      Junte 16 Angelic Stone.
+    tasks:
+      - get: aether_legacy:angelic_stone x16
+    rewards:
+      - loot: comum
+
+  - id: pedra_infernal
+    title: "Pedra Infernal"
+    type: optional
+    deps: [espirito_sol]
+    desc: |
+      A §eHellfire Stone§r forma quase todo o interior da Masmorra de Ouro e só pode ser coletada
+      depois que o Espírito do Sol se apaga. É quente ao toque (no bom sentido).
+
+      Junte 16.
+    tasks:
+      - get: aether_legacy:hellfire_stone x16
+    rewards:
+      - loot: comum
+
+  - id: pilares
+    title: "Pilares do Santuário"
+    type: optional
+    deps: [pedra_angelical]
+    desc: |
+      Os §ePillars§r e §ePillar Tops§r decoram a Masmorra de Prata. Leve alguns para a sua base
+      e faça um santuário só seu.
+
+      Junte 4 pilares e 2 topos.
+    tasks:
+      - get: [aether_legacy:pillar x4, aether_legacy:pillar_top x2]
+    rewards:
+      - loot: comum
 
   # ------------------------------------------------------------------ Conclusão
   - id: tres_masmorras

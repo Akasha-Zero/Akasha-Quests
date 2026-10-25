@@ -1,0 +1,1983 @@
+chapter:
+  id: cozinha
+  title: "Cozinha e Banquetes"
+  prefix: ""
+  order: 115
+  icon: harvestcraft:potItem
+  desc: |
+    O Volume dos Sabores: utensílios, jardins, pomares, abelhas, armadilhas, cozinhas completas e um catálogo de banquetes do petisco ao prato lendário.
+
+quests:
+  # ------------------------------------------------------------------ Fase 1: fome
+  - id: c_bem_vindo
+    title: "A Mesa Está Posta"
+    type: info
+    icon: harvestcraft:delightedmealItem
+    desc: |
+      Sabe qual página o Registro guarda com mais carinho? A das receitas de família. Herói de barriga vazia não reescreve página nenhuma!
+
+      Este Volume junta três mods de comida: o §eHarvestCraft§r (centenas de pratos, cultivos e árvores), o §eCooking for Blockheads§r (cozinhas inteligentes) e o §eThe Kitchen Mod§r (sanduíches montados camada por camada). O §eAppleCore§r mostra tudo o que cada comida faz.
+
+      Começamos pelo básico e terminamos num banquete de verdade. Traga o garfo!
+    tasks:
+      - check
+    rewards:
+      - xp: 1
+
+  - id: fome_saturacao
+    title: "Fome e Saturação"
+    type: info
+    deps: [c_bem_vindo]
+    desc: |
+      Toda comida tem dois números: §efome§r (as coxinhas da barra) e §esaturação§r (uma reserva invisível que é gasta antes da fome). Comida boa enche as duas.
+
+      Com o AppleCore: segure §eShift§r sobre uma comida para ver os valores; com ela na mão, o HUD mostra quanto vai encher e a saturação atual aparece sobre a barra.
+
+      Neste pack não existe penalidade por repetir comida — mas comer bem rende muito mais tempo de aventura. O HarvestCraft separa os pratos em lanches, refeições e refeições fartas, cada um com mais saturação.
+    tasks:
+      - check
+    rewards:
+      - xp: 1
+
+  - id: pao_nosso
+    title: "O Pão Nosso"
+    type: normal
+    deps: [c_bem_vindo]
+    desc: |
+      Antes dos banquetes, o clássico: três trigos lado a lado. Simples, honesto e sempre bem-vindo.
+
+      §aDica:§r trigo vem da grama vanilla; as sementes do HarvestCraft, não (você vai ver por quê nos jardins).
+    tasks:
+      - get: minecraft:bread x8
+    rewards:
+      - xp: 1
+      - item: minecraft:wheat_seeds x8
+
+  - id: agua_fresca
+    title: "Água Fresca"
+    type: normal
+    deps: [c_bem_vindo]
+    desc: |
+      Muitas receitas pedem "qualquer água". Um balde de água na bancada vira §eÁgua Fresca§r (e o balde volta). As pias e poços do HarvestCraft ajudam a encher baldes e garrafas sem procurar rio.
+
+      Balde de água, garrafa de água e Água Fresca servem nas receitas que pedem água.
+    tasks:
+      - get: harvestcraft:freshwaterItem x4
+    rewards:
+      - xp: 1
+      - item: minecraft:bucket
+
+  - id: leite_fresco
+    title: "Leite Fresco"
+    type: normal
+    deps: [c_bem_vindo]
+    desc: |
+      Um balde de leite na bancada rende §e4 Leites Frescos§r. É bem mais prático do que gastar um balde inteiro em cada receita de queijo, creme ou panqueca.
+    tasks:
+      - get: harvestcraft:freshmilkItem x4
+    rewards:
+      - xp: 1
+      - item: minecraft:wheat x8
+
+  # ------------------------------------------------------------------ Fase 2: utensílios
+  - id: utensilios_info
+    title: "Utensílios Não se Gastam"
+    type: info
+    deps: [c_bem_vindo]
+    desc: |
+      O HarvestCraft usa §eoito utensílios§r como ingredientes: Tábua de Cortar, Panela, Frigideira, Caçarola, Assadeira, Pilão, Tigela de Mistura e Espremedor.
+
+      Coloque o utensílio junto com os ingredientes na bancada: ele §avolta inteiro§r depois da receita. Faça cada um uma única vez. O NEI mostra qual utensílio cada prato pede.
+    tasks:
+      - check
+    rewards:
+      - xp: 1
+
+  - id: tabua_corte
+    title: "Tábua de Cortar"
+    type: main
+    deps: [utensilios_info]
+    desc: |
+      Um lingote de ferro (ou cobre, ou aço), um graveto e uma tábua, em diagonal. A §eTábua de Cortar§r é o utensílio das saladas, sanduíches, tacos e sushis.
+    tasks:
+      - get: harvestcraft:cuttingboardItem
+    rewards:
+      - xp: 3
+      - choice: [harvestcraft:lettuceseedItem x4, harvestcraft:tomatoseedItem x4, harvestcraft:onionseedItem x4]
+
+  - id: panela
+    title: "Panela"
+    type: main
+    deps: [utensilios_info]
+    desc: |
+      Graveto + 4 lingotes de ferro (ou cobre/aço). A §ePanela§r faz sopas, caldos, queijo, ovos cozidos e — muito importante — §esal§r: Panela + qualquer água.
+    tasks:
+      - get: harvestcraft:potItem
+    rewards:
+      - xp: 3
+      - choice: [minecraft:water_bucket, minecraft:bone x8, minecraft:iron_ingot x4]
+
+  - id: frigideira_hc
+    title: "Frigideira"
+    type: normal
+    deps: [utensilios_info]
+    desc: |
+      Dois lingotes e um graveto em diagonal. A §eFrigideira§r faz ovos fritos, panquecas, hambúrgueres e waffles.
+    tasks:
+      - get: harvestcraft:skilletItem
+    rewards:
+      - xp: 2
+      - item: minecraft:egg x8
+
+  - id: cacarola
+    title: "Caçarola"
+    type: normal
+    deps: [utensilios_info]
+    desc: |
+      Um lingote sobre um graveto. A §eCaçarola§r derrete açúcar em caramelo, faz manteiga, chocolate e molhos (o espaguete passa por ela).
+    tasks:
+      - get: harvestcraft:saucepanItem
+    rewards:
+      - xp: 2
+      - item: minecraft:sugar x8
+
+  - id: assadeira
+    title: "Assadeira"
+    type: normal
+    deps: [utensilios_info]
+    desc: |
+      Oito tijolos (ou tijolos do Nether) em anel. A §eAssadeira§r faz tortas, pizzas, batata frita, bolos e assados.
+    tasks:
+      - get: harvestcraft:bakewareItem
+    rewards:
+      - xp: 2
+      - item: minecraft:clay_ball x8
+
+  - id: pilao_hc
+    title: "Pilão"
+    type: normal
+    deps: [utensilios_info]
+    desc: |
+      Pedra, graveto e pedra, com mais uma pedra embaixo. O §ePilão§r mói trigo (e batata, arroz, cevada, aveia, centeio) em §efarinha§r, cacau em chocolate em pó e especiarias.
+    tasks:
+      - get: harvestcraft:mortarandpestleItem
+    rewards:
+      - xp: 2
+      - item: minecraft:wheat x8
+
+  - id: tigela_mistura
+    title: "Tigela de Mistura"
+    type: normal
+    deps: [utensilios_info]
+    desc: |
+      Tábua, graveto e tábua, com mais uma tábua embaixo. A §eTigela de Mistura§r faz massa, macarrão, creme de leite, sorvetes e purês.
+    tasks:
+      - get: harvestcraft:mixingbowlItem
+    rewards:
+      - xp: 2
+      - item: minecraft:planks x8
+
+  - id: espremedor
+    title: "Espremedor"
+    type: normal
+    deps: [utensilios_info]
+    desc: |
+      Uma pedra sobre uma placa de pressão de pedra. O §eEspremedor§r faz sucos, batidas (com bola de neve), maionese, ketchup e óleo de cozinha.
+    tasks:
+      - get: harvestcraft:juicerItem
+    rewards:
+      - xp: 2
+      - item: minecraft:apple x4
+
+  - id: cozinha_equipada
+    title: "Cozinha Equipada"
+    type: milestone
+    deps: [tabua_corte, panela, frigideira_hc, cacarola, assadeira, pilao_hc, tigela_mistura, espremedor]
+    banner: "Cozinha Equipada"
+    subtitle: "Oito utensílios, seiscentas receitas"
+    desc: |
+      Tábua, Panela, Frigideira, Caçarola, Assadeira, Pilão, Tigela e Espremedor: com esses oito, praticamente todo o cardápio do HarvestCraft está aberto para você!
+
+      §aDica:§r guarde os utensílios num §eRaque de Utensílios§r do Cooking for Blockheads mais adiante — assim a cozinha "sabe" que eles existem.
+
+      Eu estou tão feliz que até sinto cheirinho de bolo. É impressão minha?
+    tasks:
+      - get: [harvestcraft:cuttingboardItem, harvestcraft:potItem, harvestcraft:skilletItem, harvestcraft:saucepanItem, harvestcraft:bakewareItem, harvestcraft:mortarandpestleItem, harvestcraft:mixingbowlItem, harvestcraft:juicerItem]
+    rewards:
+      - xp: 5
+      - kit: {name: "Kit do Cozinheiro", items: [harvestcraft:saltItem x16, harvestcraft:freshmilkItem x8, minecraft:egg x8, minecraft:sugar x16]}
+      - loot: incomum
+
+  - id: sal
+    title: "Sal"
+    type: main
+    deps: [panela, agua_fresca]
+    desc: |
+      Panela + qualquer água (balde, garrafa ou Água Fresca) = §eSal§r. Também existe minério de sal no mundo.
+
+      Sal está em massa, queijo, manteiga, batata frita… é o ingrediente mais usado do mod. 9 sais fazem um bloco compacto para guardar.
+    tasks:
+      - get: harvestcraft:saltItem x16
+    rewards:
+      - xp: 3
+      - choice: [minecraft:water_bucket, harvestcraft:freshwaterItem x8]
+
+  # ------------------------------------------------------------------ Fase 3: jardins
+  - id: jardins_info
+    title: "Onde Estão as Sementes?"
+    type: info
+    deps: [c_bem_vindo]
+    desc: |
+      Neste pack §cnenhuma semente do HarvestCraft cai da grama§r. Elas vêm dos §eJardins Selvagens§r: tufos coloridos espalhados pelos biomas. Quebre um jardim e ele solta §e3 cultivos§r daquele tipo; os jardins também se espalham devagar pelo mundo.
+
+      Na bancada, §e1 cultivo vira 1 semente§r. Plante em terra arada; quando maduro, §eclique com o botão direito§r para colher e replantar sozinho.
+
+      Existem 12 jardins. Explore biomas diferentes! (E o Mercado vende sementes por esmeraldas.)
+    tasks:
+      - check
+    rewards:
+      - xp: 1
+
+  - id: jardim_bagas
+    title: "Jardim de Bagas"
+    type: normal
+    deps: [jardins_info]
+    desc: |
+      Florestas, colinas e regiões frias ou pantanosas escondem o §eJardim de Bagas§r: amora, mirtilo, framboesa, morango, uva e tungue (a "vela" das bagas).
+
+      Traga qualquer baga.
+    tasks:
+      - one_of: [harvestcraft:blackberryItem, harvestcraft:blueberryItem, harvestcraft:raspberryItem, harvestcraft:strawberryItem, harvestcraft:grapeItem, harvestcraft:candleberryItem]
+    rewards:
+      - xp: 1
+      - item: minecraft:bone x4
+
+  - id: jardim_grama
+    title: "Jardim de Grama"
+    type: normal
+    deps: [jardins_info]
+    desc: |
+      Nas planícies vive o §eJardim de Grama§r, cheio de grãos: aspargo, cevada, aveia, centeio, milho e broto de bambu. Milho vira pipoca e fubá!
+    tasks:
+      - one_of: [harvestcraft:asparagusItem, harvestcraft:barleyItem, harvestcraft:oatsItem, harvestcraft:ryeItem, harvestcraft:cornItem, harvestcraft:bambooshootItem]
+    rewards:
+      - xp: 1
+      - item: minecraft:bone x4
+
+  - id: jardim_cabacas
+    title: "Jardim de Cabaças"
+    type: normal
+    deps: [jardins_info]
+    desc: |
+      Planícies e florestas têm o §eJardim de Cabaças§r: melão (cantalupo), pepino, moranga, abobrinha e abóbora.
+    tasks:
+      - one_of: [harvestcraft:cantaloupeItem, harvestcraft:cucumberItem, harvestcraft:wintersquashItem, harvestcraft:zucchiniItem]
+    rewards:
+      - xp: 1
+      - item: minecraft:bone x4
+
+  - id: jardim_chao
+    title: "Jardim de Chão"
+    type: normal
+    deps: [jardins_info]
+    desc: |
+      Montanhas, colinas, mesas e savanas: lá está o §eJardim de Chão§r, com as raízes — beterraba, cebola, chirívia, amendoim, rabanete, couve-nabo, batata-doce, nabo, ruibarbo, além de cenoura e batata.
+    tasks:
+      - one_of: [harvestcraft:beetItem, harvestcraft:onionItem, harvestcraft:parsnipItem, harvestcraft:peanutItem, harvestcraft:radishItem, harvestcraft:rutabagaItem, harvestcraft:sweetpotatoItem, harvestcraft:turnipItem, harvestcraft:rhubarbItem]
+    rewards:
+      - xp: 1
+      - item: minecraft:bone x4
+
+  - id: jardim_ervas
+    title: "Jardim de Ervas"
+    type: normal
+    deps: [jardins_info]
+    desc: |
+      Florestas temperadas guardam o §eJardim de Ervas§r: aipo, alho, gengibre, louro (o "tempero" de muitas receitas), raiz comestível, folha de chá, café e mostarda.
+    tasks:
+      - one_of: [harvestcraft:celeryItem, harvestcraft:garlicItem, harvestcraft:gingerItem, harvestcraft:spiceleafItem, harvestcraft:ediblerootItem, harvestcraft:tealeafItem, harvestcraft:coffeebeanItem, harvestcraft:mustardseedsItem]
+    rewards:
+      - xp: 1
+      - item: minecraft:bone x4
+
+  - id: jardim_folhoso
+    title: "Jardim Folhoso"
+    type: normal
+    deps: [jardins_info]
+    desc: |
+      Também nas florestas temperadas, o §eJardim Folhoso§r: brócolis, couve-flor, alho-poró, alface, cebolinha, alcachofra, couve-de-bruxelas, repolho e espinafre. Verde que só!
+    tasks:
+      - one_of: [harvestcraft:broccoliItem, harvestcraft:cauliflowerItem, harvestcraft:leekItem, harvestcraft:lettuceItem, harvestcraft:scallionItem, harvestcraft:artichokeItem, harvestcraft:brusselsproutItem, harvestcraft:cabbageItem, harvestcraft:spinachItem]
+    rewards:
+      - xp: 1
+      - item: minecraft:bone x4
+
+  - id: jardim_caules
+    title: "Jardim de Caules"
+    type: normal
+    deps: [jardins_info]
+    desc: |
+      Florestas, planícies e pântanos: o §eJardim de Caules§r dá feijão, soja, pimentão, pimenta chili, berinjela, quiabo, ervilha e §etomate§r — talvez o cultivo mais importante do mod.
+    tasks:
+      - one_of: [harvestcraft:beanItem, harvestcraft:soybeanItem, harvestcraft:bellpepperItem, harvestcraft:chilipepperItem, harvestcraft:eggplantItem, harvestcraft:okraItem, harvestcraft:peasItem, harvestcraft:tomatoItem]
+    rewards:
+      - xp: 1
+      - item: minecraft:bone x4
+
+  - id: jardim_textil
+    title: "Jardim Têxtil"
+    type: normal
+    deps: [jardins_info]
+    desc: |
+      Regiões frias, colinas e pântanos têm o §eJardim Têxtil§r, com §ealgodão§r. 3 algodões viram 2 linhas, e 2 linhas viram Malha de Algodão.
+    tasks:
+      - get: harvestcraft:cottonItem x3
+    rewards:
+      - xp: 1
+      - item: minecraft:bone x4
+
+  - id: jardim_tropical
+    title: "Jardim Tropical"
+    type: normal
+    deps: [jardins_info]
+    desc: |
+      Selvas, pântanos e lugares quentes e úmidos têm o §eJardim Tropical§r: abacaxi, kiwi, melancia, folha de curry e gergelim.
+    tasks:
+      - one_of: [harvestcraft:pineappleItem, harvestcraft:kiwiItem, harvestcraft:curryleafItem, harvestcraft:sesameseedsItem]
+    rewards:
+      - xp: 1
+      - item: minecraft:bone x4
+
+  - id: jardim_cogumelos
+    title: "Jardim de Cogumelos"
+    type: normal
+    deps: [jardins_info]
+    desc: |
+      Nas florestas, o §eJardim de Cogumelos§r solta cogumelos vermelhos, marrons e o §eCogumelo Branco§r do HarvestCraft, que se planta como semente (esporo).
+    tasks:
+      - get: harvestcraft:whitemushroomItem
+    rewards:
+      - xp: 1
+      - item: minecraft:bone x4
+
+  - id: jardim_deserto
+    title: "Jardim do Deserto"
+    type: normal
+    deps: [jardins_info]
+    desc: |
+      Entre as areias, o §eJardim do Deserto§r dá a §eTuna§r (fruta do cacto). No Espremedor, vira Suco de Tuna.
+    tasks:
+      - get: harvestcraft:cactusfruitItem
+    rewards:
+      - xp: 1
+      - item: minecraft:bone x4
+
+  - id: jardim_agua
+    title: "Jardim de Água"
+    type: normal
+    deps: [jardins_info]
+    desc: |
+      Em rios e oceanos não frios, boiando na superfície, fica o §eJardim de Água§r: oxicoco, arroz, alga marinha, castanha-d'água e frutos do mar (molusco, caranguejo, lagostim, sapo, vieira, camarão, caracol, tartaruga).
+
+      Traga arroz, alga ou oxicoco.
+    tasks:
+      - one_of: [harvestcraft:riceItem, harvestcraft:seaweedItem, harvestcraft:cranberryItem, harvestcraft:waterchestnutItem]
+    rewards:
+      - xp: 1
+      - item: minecraft:bone x4
+
+  - id: semente_cultivo
+    title: "Da Colheita à Semente"
+    type: normal
+    deps: [jardim_caules, jardim_folhoso, jardim_chao]
+    deps_any: true
+    desc: |
+      Um cultivo sozinho na bancada vira uma semente. Plante em terra arada (com água por perto) e use farinha de osso se tiver pressa.
+
+      Faça sementes de tomate, alface ou cebola — os três aparecem em dezenas de receitas.
+    tasks:
+      - one_of: [harvestcraft:tomatoseedItem, harvestcraft:lettuceseedItem, harvestcraft:onionseedItem]
+    rewards:
+      - xp: 2
+      - item: minecraft:dye:15 x16
+
+  - id: plantio_agua
+    title: "Plantio na Água"
+    type: normal
+    deps: [jardim_agua]
+    desc: |
+      Arroz, alga marinha, oxicoco e castanha-d'água são §eplantados diretamente sobre a água§r (não em terra arada) — o pack mantém essa regra especial ativa.
+
+      Monte um arrozal raso e colha uma boa leva de arroz: ele vira bolinho de arroz, sushi e acompanha metade dos curries.
+    tasks:
+      - get: harvestcraft:riceItem x16
+    rewards:
+      - xp: 2
+      - item: harvestcraft:seaweedseedItem x4
+
+  - id: algodao
+    title: "Malha de Algodão"
+    type: optional
+    deps: [jardim_textil]
+    desc: |
+      2 linhas = §eMalha de Algodão§r. Ela faz lã (2 malhas) e até armadura de couro. Uma alternativa às ovelhas e aranhas!
+    tasks:
+      - get: harvestcraft:wovencottonItem x4
+    rewards:
+      - loot: comum
+
+  - id: horta_do_registro
+    title: "Horta do Registro"
+    type: milestone
+    deps: [semente_cultivo, plantio_agua, jardim_grama, jardim_bagas]
+    banner: "Horta do Registro"
+    subtitle: "Seis jardins, uma horta"
+    desc: |
+      Tomate, alface, cebola, milho, arroz e morango — seis cultivos vindos de seis jardins diferentes, todos crescendo na sua horta. Isso é uma página inteira de agricultura reescrita!
+
+      §aDica:§r o Alvião do Tinkers ara a terra; o HarvestCraft também conversa com as máquinas de colheita/plantio do MineFactory Reloaded e com golens do Thaumcraft para automatizar depois.
+    tasks:
+      - get: [harvestcraft:tomatoItem x8, harvestcraft:lettuceItem x8, harvestcraft:onionItem x8, harvestcraft:cornItem x8, harvestcraft:riceItem x8, harvestcraft:strawberryItem x8]
+    rewards:
+      - xp: 5
+      - kit: {name: "Kit do Horticultor", items: [minecraft:dye:15 x32, harvestcraft:bellpepperseedItem x4, harvestcraft:garlicseedItem x4, harvestcraft:spiceleafseedItem x4]}
+      - loot: incomum
+
+  # ------------------------------------------------------------------ Fase 4: pomares
+  - id: pomar_info
+    title: "Pomares"
+    type: info
+    deps: [c_bem_vindo]
+    desc: |
+      O HarvestCraft espalha §e40 árvores frutíferas§r pelo mundo: parecem árvores comuns, mas têm frutas penduradas. As temperadas aparecem em florestas; as tropicais em selvas, pântanos e lugares quentes; o bordo, nas florestas de coníferas.
+
+      §eClique com o botão direito§r numa fruta madura para colher — ela volta a crescer. Mudas de árvores frutíferas são vendidas no §eMercado§r.
+    tasks:
+      - check
+    rewards:
+      - xp: 1
+
+  - id: frutas_pomar
+    title: "Frutas do Pomar"
+    type: normal
+    deps: [pomar_info]
+    desc: |
+      Cereja, pêssego, pêra, ameixa, damasco, figo, caqui, romã, gooseberry… Traga qualquer uma dessas frutas de árvore.
+    tasks:
+      - one_of: [harvestcraft:cherryItem, harvestcraft:peachItem, harvestcraft:pearItem, harvestcraft:plumItem, harvestcraft:apricotItem, harvestcraft:figItem, harvestcraft:persimmonItem, harvestcraft:pomegranateItem, harvestcraft:gooseberryItem]
+    rewards:
+      - xp: 1
+      - item: minecraft:apple x4
+
+  - id: citricos
+    title: "Cítricos"
+    type: normal
+    deps: [pomar_info]
+    desc: |
+      Laranja, limão-siciliano, limão e toranja. Cítricos fazem sucos, limonada, geleias e o merengue de limão. Traga qualquer um.
+    tasks:
+      - one_of: [harvestcraft:orangeItem, harvestcraft:lemonItem, harvestcraft:limeItem, harvestcraft:grapefruitItem]
+    rewards:
+      - xp: 1
+      - item: minecraft:sugar x8
+
+  - id: frutas_tropicais
+    title: "Frutas Tropicais"
+    type: normal
+    deps: [pomar_info]
+    desc: |
+      Banana, manga, mamão, pitaia, carambola, durião, tâmara, abacate: o sabor das selvas e pântanos. Traga qualquer uma.
+    tasks:
+      - one_of: [harvestcraft:bananaItem, harvestcraft:mangoItem, harvestcraft:papayaItem, harvestcraft:dragonfruitItem, harvestcraft:starfruitItem, harvestcraft:durianItem, harvestcraft:dateItem, harvestcraft:avocadoItem]
+    rewards:
+      - xp: 1
+      - item: minecraft:snowball x8
+
+  - id: coco
+    title: "Coco"
+    type: normal
+    deps: [frutas_tropicais]
+    desc: |
+      O §eCoco§r vira Leite de Coco no Espremedor (base de curries), coco torrado na fornalha e piña colada com abacaxi.
+    tasks:
+      - get: harvestcraft:coconutItem x2
+    rewards:
+      - xp: 1
+      - item: harvestcraft:pineappleseedItem x2
+
+  - id: nozes
+    title: "Nozes e Castanhas"
+    type: normal
+    deps: [pomar_info]
+    desc: |
+      Amêndoa, caju, castanha, noz-pecã, pistache e noz. Viram manteigas de nozes, pralinês, castanha torrada e o tradicional "mix de trilha". Traga qualquer uma.
+    tasks:
+      - one_of: [harvestcraft:almondItem, harvestcraft:cashewItem, harvestcraft:chestnutItem, harvestcraft:pecanItem, harvestcraft:pistachioItem, harvestcraft:walnutItem]
+    rewards:
+      - xp: 1
+      - item: minecraft:sugar x8
+
+  - id: especiarias_arvore
+    title: "Especiarias de Árvore"
+    type: normal
+    deps: [pomar_info]
+    desc: |
+      Canela, noz-moscada, pimenta-do-reino e fava de baunilha crescem em árvores! Moídas no Pilão (ou no Moinho), viram Canela Moída, Noz-moscada Moída e Pimenta-do-reino; a baunilha vai para a fornalha.
+
+      Traga qualquer uma. §aDica:§r a pimenta-do-reino moída é pedida no Frango Assado e na Torta de Carne.
+    tasks:
+      - one_of: [harvestcraft:cinnamonItem, harvestcraft:nutmegItem, harvestcraft:peppercornItem, harvestcraft:vanillabeanItem]
+    rewards:
+      - xp: 1
+      - item: minecraft:dye:15 x8
+
+  - id: especiarias_moidas
+    title: "Temperos Moídos"
+    type: normal
+    deps: [especiarias_arvore, pilao_hc]
+    desc: |
+      Pilão + pimenta-do-reino = §ePimenta-do-reino§r moída; Pilão + canela = §eCanela Moída§r. Faça qualquer um dos dois.
+    tasks:
+      - one_of: [harvestcraft:blackpepperItem, harvestcraft:groundcinnamonItem, harvestcraft:groundnutmegItem]
+    rewards:
+      - xp: 1
+      - item: harvestcraft:saltItem x8
+
+  - id: xarope_bordo
+    title: "Xarope de Bordo"
+    type: normal
+    deps: [pomar_info]
+    desc: |
+      Nas florestas de coníferas cresce o §eBordo§r, que dá §eXarope de Bordo§r. Panquecas, waffles, mingau e a Linguiça com Bordo (base de um dos pratos lendários!) agradecem.
+    tasks:
+      - get: harvestcraft:maplesyrupItem x2
+    rewards:
+      - xp: 1
+      - item: minecraft:bread x4
+
+  - id: oleo_cozinha
+    title: "Óleo de Cozinha"
+    type: normal
+    deps: [pomar_info, espremedor]
+    desc: |
+      Espremedor + §eazeitona§r (ou semente de girassol) = §eÓleo de Cozinha§r. O Pressionador também extrai óleo de nozes e de várias sementes.
+
+      É ingrediente de rosquinhas e naan e o §ecombustível do Forno§r do HarvestCraft.
+    tasks:
+      - get: harvestcraft:oliveoilItem x4
+    rewards:
+      - xp: 2
+      - item: harvestcraft:oliveItem x4
+
+  - id: muda_frutifera
+    title: "Plante Seu Pomar"
+    type: normal
+    deps: [pomar_info]
+    desc: |
+      Consiga uma muda de árvore frutífera (no Mercado, por esmeraldas) e plante. Ela cresce como uma árvore comum e passa a dar frutas.
+
+      Traga uma muda de maçã, cereja, laranja, banana, coco ou bordo.
+    tasks:
+      - one_of: [harvestcraft:pamappleSapling, harvestcraft:pamcherrySapling, harvestcraft:pamorangeSapling, harvestcraft:pambananaSapling, harvestcraft:pamcoconutSapling, harvestcraft:pammapleSapling]
+    rewards:
+      - xp: 2
+      - item: minecraft:dye:15 x16
+
+  # ------------------------------------------------------------------ Fase 5: mercado e abelhas
+  - id: mercado
+    title: "Mercado"
+    type: normal
+    deps: [jardins_info]
+    desc: |
+      Tábuas nos cantos, lã nas bordas e uma §eesmeralda§r no centro. No §eMercado§r você troca esmeraldas por: sementes (1), mudas de árvores frutíferas (3), farinha de osso (3) e ovos de criação de galinha (3), porco (6), ovelha (6), vaca (9) e cavalo (12).
+
+      É o jeito garantido de conseguir aquela semente que nenhum jardim por perto dá.
+    tasks:
+      - get: harvestcraft:market
+    rewards:
+      - xp: 2
+      - item: minecraft:emerald x3
+
+  - id: abelha_rainha
+    title: "Abelha Rainha"
+    type: normal
+    deps: [pomar_info]
+    desc: |
+      Às vezes um bloco de folha ou tronco de uma árvore é, na verdade, uma §eColmeia§r. Quebre e consiga uma §eAbelha Rainha§r!
+
+      Estas são as abelhas simples do HarvestCraft (as abelhas genéticas do Forestry têm capítulo próprio).
+    tasks:
+      - get: harvestcraft:queenbeeItem
+    rewards:
+      - xp: 2
+      - item: minecraft:item_frame x3
+
+  - id: apiaria
+    title: "Apiária"
+    type: normal
+    deps: [abelha_rainha]
+    desc: |
+      Tábuas nas laterais e 3 molduras no meio. Coloque a Abelha Rainha na §eApiária§r e ela produz §efavos de mel§r, §efavos de cera§r e §elarvas§r. Flores, cultivos e jardins ao redor aceleram a produção.
+
+      A rainha se desgasta com o tempo, mas sempre deixa ao menos uma larva antes de acabar.
+    tasks:
+      - get: harvestcraft:apiary
+    rewards:
+      - xp: 2
+      - item: minecraft:red_flower x8
+
+  - id: favos
+    title: "Favos"
+    type: normal
+    deps: [apiaria]
+    desc: |
+      Recolha um §eFavo de Mel§r e um §eFavo de Cera§r da Apiária. Os dois vão para o Pressionador.
+    tasks:
+      - get: [harvestcraft:honeycombItem, harvestcraft:waxcombItem]
+    rewards:
+      - xp: 2
+      - item: minecraft:bread x4
+
+  - id: geleia_real
+    title: "Geléia Real"
+    type: optional
+    deps: [apiaria]
+    desc: |
+      Quando a rainha chega ao fim da vida (durabilidade zero), coloque-a na bancada: ela vira §eGeléia Real§r. E a Larva de Abelha? Comestível… para os corajosos.
+    tasks:
+      - one_of: [harvestcraft:royaljellyItem, harvestcraft:grubItem]
+    rewards:
+      - loot: comum
+
+  - id: prensa
+    title: "Pressionador"
+    type: main
+    deps: [favos]
+    desc: |
+      Ferro (ou bronze/aço) em volta e 2 pistões em cima e embaixo. O §ePressionador§r espreme: favo de mel → §ecera + mel§r; favo de cera → cera; frutas → suco + isca; azeitona, girassol, nozes e sementes → óleo + isca; cana → açúcar; tronco → papel; soja → tofu; Água Fresca → Água Gaseificada.
+    tasks:
+      - get: harvestcraft:presser
+    rewards:
+      - xp: 3
+      - choice: [minecraft:piston x2, minecraft:iron_ingot x6, harvestcraft:oliveItem x8]
+
+  - id: mel_cera
+    title: "Mel e Cera"
+    type: normal
+    deps: [prensa]
+    desc: |
+      Prense um favo de mel: §eMel§r e §eCera de Abelha§r. Mel vira açúcar na Panela e entra no Sanduíche de Mel; a cera vira velas e couro endurecido.
+    tasks:
+      - get: [harvestcraft:honeyItem, harvestcraft:beeswaxItem]
+    rewards:
+      - xp: 2
+      - item: minecraft:string x8
+
+  - id: velas
+    title: "Velas"
+    type: optional
+    deps: [mel_cera]
+    desc: |
+      Cera + linha = 4 §eVelas§r (com corante, coloridas). Iluminam tanto quanto uma tocha e ficam lindas numa mesa de banquete.
+    tasks:
+      - one_of: [harvestcraft:pamcandleDeco1, harvestcraft:pamcandleDeco2, harvestcraft:pamcandleDeco5, harvestcraft:pamcandleDeco15]
+    rewards:
+      - loot: comum
+
+  - id: couro_endurecido
+    title: "Couro Endurecido"
+    type: optional
+    deps: [mel_cera]
+    desc: |
+      Couro + cera = §eCouro Endurecido§r, que faz uma armadura mais resistente que a de couro comum. Cera de tungue (4 tungues na Panela) também serve.
+    tasks:
+      - get: harvestcraft:hardenedleatherItem x4
+    rewards:
+      - loot: comum
+
+  # ------------------------------------------------------------------ Fase 6: máquinas
+  - id: pias_hc
+    title: "Pias e Poços"
+    type: normal
+    deps: [agua_fresca]
+    desc: |
+      Seis lingotes de ferro (ou cobre/estanho/bronze/aço) com troncos, pedra, blocos de argila ou tijolos no meio: §eBarril de Água§r, §eBacia de Pedra§r, §eJarro de Argila§r ou §ePoço de Tijolos§r. São fontes de água para encher baldes e garrafas sem procurar rio.
+    tasks:
+      - one_of: [harvestcraft:sink, harvestcraft:sink:1, harvestcraft:sink:2, harvestcraft:sink:3]
+    rewards:
+      - xp: 2
+      - item: minecraft:glass_bottle x8
+
+  - id: forno_hc
+    title: "Forno do HarvestCraft"
+    type: normal
+    deps: [oleo_cozinha]
+    desc: |
+      Ferro em volta, barras de ferro em cima e uma fornalha no meio. O §eForno§r só cozinha comida, mas é §emuito rápido§r; o combustível é §eÓleo de Cozinha§r.
+    tasks:
+      - get: harvestcraft:oven
+    rewards:
+      - xp: 2
+      - item: harvestcraft:oliveoilItem x4
+
+  - id: batedeira
+    title: "Batedeira"
+    type: optional
+    deps: [sal, leite_fresco]
+    desc: |
+      Graveto em cima, tábuas em volta. A §eBatedeira§r (Churn) transforma Leite Fresco em §eManteiga§r usando §esal como combustível§r. Bem menos trabalho que a receita manual.
+    tasks:
+      - get: harvestcraft:churn
+    rewards:
+      - loot: comum
+
+  - id: moinho
+    title: "Moinho de Pedra"
+    type: optional
+    deps: [pilao_hc]
+    desc: |
+      Graveto, pedras e duas placas de pressão de pedra. O §eMoinho§r (Quern) mói tudo que o Pilão mói — trigo, batata, cevada, centeio, arroz e aveia em farinha, cacau em chocolate, especiarias — usando §eplacas de pressão de pedra§r como combustível.
+    tasks:
+      - get: harvestcraft:quern
+    rewards:
+      - loot: comum
+
+  - id: isca_peixe
+    title: "Isca de Peixe"
+    type: normal
+    deps: [pesca_hc]
+    desc: |
+      Linha + 3 peixes crus = 4 §eIscas de Peixe§r. É o "combustível" da Armadilha de Peixe.
+    tasks:
+      - get: harvestcraft:fishtrapbaitItem x4
+    rewards:
+      - xp: 1
+      - item: minecraft:string x8
+
+  - id: armadilha_peixe
+    title: "Armadilha de Peixe"
+    type: normal
+    deps: [isca_peixe]
+    desc: |
+      Gravetos nos cantos, vara de pesca em cima, linha nas laterais e um baú no meio. Coloque a §eArmadilha de Peixe§r na água com §epelo menos 5 blocos de água parada em volta, no mesmo nível§r, e abasteça com iscas: ela pesca sozinha peixes e frutos do mar.
+    tasks:
+      - get: harvestcraft:fishtrap
+    rewards:
+      - xp: 2
+      - item: harvestcraft:fishtrapbaitItem x8
+
+  - id: iscas_animais
+    title: "Iscas para Animais"
+    type: normal
+    deps: [jardins_info]
+    desc: |
+      Linha + 3 grãos = 4 §eIscas de Grãos§r; linha + 3 frutas = §eIscas de Frutas§r; linha + 3 vegetais = §eIscas de Vegetais§r. Faça qualquer uma.
+    tasks:
+      - one_of: [harvestcraft:grainbaitItem, harvestcraft:fruitbaitItem, harvestcraft:veggiebaitItem]
+    rewards:
+      - xp: 1
+      - item: minecraft:string x8
+
+  - id: armadilha_animal
+    title: "Armadilha de Animais"
+    type: normal
+    deps: [iscas_animais]
+    desc: |
+      Como a de peixe, mas com um alçapão em cima. Coloque a §eArmadilha de Animais§r com §epelo menos 5 blocos de terra ou grama em volta, no mesmo nível§r. Cada tipo de isca atrai animais diferentes e traz carne, couro, penas, ovos, ossos — e carnes que só ela consegue: §eperu, coelho e veado§r.
+    tasks:
+      - get: harvestcraft:animaltrap
+    rewards:
+      - xp: 2
+      - item: harvestcraft:grainbaitItem x8
+
+  - id: carnes_selvagens
+    title: "Carnes Selvagens"
+    type: optional
+    deps: [armadilha_animal]
+    desc: |
+      Peru, coelho ou veado cru, direto da armadilha. Asse na fornalha para uma carne nova no cardápio.
+    tasks:
+      - one_of: [harvestcraft:turkeyrawItem, harvestcraft:rabbitrawItem, harvestcraft:venisonrawItem]
+    rewards:
+      - loot: comum
+
+  # ------------------------------------------------------------------ Fase 7: pesca
+  - id: pesca_hc
+    title: "Peixes do HarvestCraft"
+    type: normal
+    deps: [c_bem_vindo]
+    desc: |
+      Neste pack a vara de pesca comum também fisga §eos peixes do HarvestCraft§r: anchova, robalo, carpa, peixe-gato, truta, atum, tilápia, garoupa e outros. Todos contam como "peixe cru" nas receitas e podem ser assados.
+
+      Pesque qualquer um deles.
+    tasks:
+      - one_of: [harvestcraft:anchovyrawItem, harvestcraft:bassrawItem, harvestcraft:carprawItem, harvestcraft:catfishrawItem, harvestcraft:charrrawItem, harvestcraft:eelrawItem, harvestcraft:grouperrawItem, harvestcraft:herringrawItem, harvestcraft:mudfishrawItem, harvestcraft:perchrawItem, harvestcraft:snapperrawItem, harvestcraft:tilapiarawItem, harvestcraft:troutrawItem, harvestcraft:tunarawItem, harvestcraft:walleyerawItem]
+    rewards:
+      - xp: 2
+      - item: minecraft:fishing_rod
+
+  - id: frutos_mar
+    title: "Frutos do Mar"
+    type: optional
+    deps: [jardim_agua]
+    desc: |
+      Molusco, caranguejo, camarão, vieira, lagostim ou polvo: vêm dos Jardins de Água e das Armadilhas de Peixe. O Camarão ao Coco espera por você.
+    tasks:
+      - one_of: [harvestcraft:clamrawItem, harvestcraft:crabrawItem, harvestcraft:shrimprawItem, harvestcraft:scalloprawItem, harvestcraft:crayfishrawItem, harvestcraft:octopusrawItem]
+    rewards:
+      - loot: comum
+
+  - id: calamari
+    title: "Calamari"
+    type: optional
+    deps: [pesca_hc]
+    desc: |
+      Lulas deixam cair §eCalamari Cru§r neste pack. Asse e sirva. (Desculpa, lulinhas.)
+    tasks:
+      - get: harvestcraft:calamarirawItem
+    rewards:
+      - loot: comum
+
+  - id: sushi
+    title: "Sushi"
+    type: normal
+    deps: [pesca_hc, plantio_agua, tabua_corte]
+    desc: |
+      Tábua de Cortar + peixe cru + alga + arroz = §eSushi§r (6 de fome, refeição farta). O Sushi Califórnia e o Futo Maki vêm logo depois.
+    tasks:
+      - get: harvestcraft:sushiItem
+    rewards:
+      - xp: 2
+      - item: harvestcraft:riceItem x8
+
+  # ------------------------------------------------------------------ Fase 8: básicos
+  - id: farinha
+    title: "Farinha"
+    type: main
+    deps: [pilao_hc]
+    desc: |
+      Pilão + trigo = §eFarinha§r (batata, arroz, cevada, aveia e centeio também servem). A base de massas, bolos, panquecas e empanados.
+    tasks:
+      - get: harvestcraft:flourItem x8
+    rewards:
+      - xp: 3
+      - choice: [minecraft:wheat x16, minecraft:potato x16]
+
+  - id: massa
+    title: "Massa"
+    type: main
+    deps: [farinha, tigela_mistura, sal]
+    desc: |
+      Tigela de Mistura + água + farinha + sal = §eMassa§r. Na fornalha, massa vira pão; na Tigela com manteiga, vira macarrão; na Assadeira, vira tortas e pizzas.
+    tasks:
+      - get: harvestcraft:doughItem x4
+    rewards:
+      - xp: 3
+      - choice: [harvestcraft:saltItem x8, harvestcraft:flourItem x8]
+
+  - id: torrada
+    title: "Torrada"
+    type: normal
+    deps: [pao_nosso]
+    desc: |
+      Pão na fornalha = §eTorrada§r (7 de fome, mais que o próprio pão!). É o "pão de hambúrguer" do HarvestCraft. A Torradeira do Cooking for Blockheads também faz.
+    tasks:
+      - get: harvestcraft:toastItem x4
+    rewards:
+      - xp: 1
+      - item: minecraft:bread x4
+
+  - id: creme_leite
+    title: "Creme de Leite"
+    type: normal
+    deps: [tigela_mistura, leite_fresco]
+    desc: |
+      Tigela de Mistura + leite = §eCreme de Leite§r. Vai em sopas cremosas, bolos e na manteiga.
+    tasks:
+      - get: harvestcraft:heavycreamItem x2
+    rewards:
+      - xp: 1
+      - item: harvestcraft:freshmilkItem x4
+
+  - id: manteiga
+    title: "Manteiga"
+    type: normal
+    deps: [creme_leite, cacarola, sal]
+    desc: |
+      Caçarola + creme de leite + sal = §eManteiga§r. (Ou use a Batedeira.) Manteiga faz macarrão, batata amanteigada, queijo grelhado e chocolate.
+    tasks:
+      - get: harvestcraft:butterItem x2
+    rewards:
+      - xp: 1
+      - item: harvestcraft:freshmilkItem x4
+
+  - id: queijo
+    title: "Queijo"
+    type: normal
+    deps: [panela, sal, leite_fresco]
+    desc: |
+      Panela + leite + sal = §eQueijo§r. Cheeseburger, pizza, nachos, queijo grelhado… o queijo está em todo lugar.
+    tasks:
+      - get: harvestcraft:cheeseItem x4
+    rewards:
+      - xp: 1
+      - item: harvestcraft:freshmilkItem x4
+
+  - id: macarrao
+    title: "Macarrão"
+    type: normal
+    deps: [massa, manteiga]
+    desc: |
+      Tigela de Mistura + massa + manteiga = §eMacarrão§r. Rumo ao espaguete!
+    tasks:
+      - get: harvestcraft:pastaItem x2
+    rewards:
+      - xp: 1
+      - item: harvestcraft:tomatoItem x4
+
+  - id: maionese
+    title: "Maionese"
+    type: normal
+    deps: [espremedor]
+    desc: |
+      Espremedor + ovo = §eMaionese§r. Vai nos sanduíches de frango e de peixe, na salada de batata e na de ovo.
+    tasks:
+      - get: harvestcraft:mayoItem x2
+    rewards:
+      - xp: 1
+      - item: minecraft:egg x4
+
+  - id: caldo
+    title: "Caldo"
+    type: normal
+    deps: [panela]
+    desc: |
+      Panela + osso (ou qualquer carne crua, ou vegetal) = §e3 Caldos§r. Toda sopa começa aqui.
+    tasks:
+      - get: harvestcraft:stockItem x3
+    rewards:
+      - xp: 1
+      - item: minecraft:bone x8
+
+  - id: ketchup
+    title: "Ketchup"
+    type: optional
+    deps: [espremedor, jardim_caules]
+    desc: |
+      Espremedor + tomate = §eKetchup§r. Ingrediente da Linguiça com Pão, um dos pratos lendários.
+    tasks:
+      - get: harvestcraft:ketchupItem
+    rewards:
+      - loot: comum
+
+  - id: chocolate
+    title: "Chocolate"
+    type: normal
+    deps: [pilao_hc, cacarola, manteiga]
+    desc: |
+      Pilão + semente de cacau = §eChocolate em Pó§r. Caçarola + chocolate em pó + manteiga + leite = §eBarra de Chocolate§r. Segure o entusiasmo!
+    tasks:
+      - get: [harvestcraft:cocoapowderItem, harvestcraft:chocolatebarItem]
+    rewards:
+      - xp: 2
+      - item: minecraft:dye:3 x8
+
+  - id: caramelo
+    title: "Caramelo"
+    type: optional
+    deps: [cacarola]
+    desc: |
+      Caçarola + açúcar = §eCaramelo§r. Maçã do amor, sorvete de caramelo, fudge… doce demais? Nunca.
+    tasks:
+      - get: harvestcraft:caramelItem
+    rewards:
+      - loot: comum
+
+  - id: iogurte
+    title: "Iogurte"
+    type: optional
+    deps: [leite_fresco]
+    desc: |
+      O NEI mostra a receita do §eIogurte Natural§r neste pack (leite + couro rende 4); depois, iogurte + leite rende mais 2. Ele vira dezenas de iogurtes de fruta e entra no Frango com Curry.
+    tasks:
+      - get: harvestcraft:plainyogurtItem
+    rewards:
+      - loot: comum
+
+  - id: vinagre
+    title: "Vinagre"
+    type: optional
+    deps: [jardim_bagas, panela]
+    desc: |
+      Suco de Uva (Espremedor + uva) na Panela = §eVinagre§r. Picles, molho de salada e conservas dependem dele.
+    tasks:
+      - get: harvestcraft:vinegarItem
+    rewards:
+      - loot: comum
+
+  - id: fuba
+    title: "Fubá e Tortilha"
+    type: optional
+    deps: [jardim_grama, pilao_hc, frigideira_hc]
+    desc: |
+      Pilão + milho = §eFubá§r. Frigideira + fubá + água = §eTortilha§r — a base de tacos, burritos e nachos.
+    tasks:
+      - get: [harvestcraft:cornmealItem, harvestcraft:tortillaItem]
+    rewards:
+      - loot: comum
+
+  - id: tofu
+    title: "Tofu"
+    type: optional
+    deps: [prensa, jardim_caules]
+    desc: |
+      Soja no Pressionador = §eTofu Sedoso§r; tofu sedoso no Pressionador = §eTofu Firme§r + Leite de Soja. Neste pack o tofu firme substitui carne e ovos, e o leite de soja substitui leite, em praticamente todas as receitas. Cozinha vegetariana completa!
+    tasks:
+      - one_of: [harvestcraft:silkentofuItem, harvestcraft:firmtofuItem, harvestcraft:soymilkItem]
+    rewards:
+      - loot: comum
+
+  # ------------------------------------------------------------------ Fase 9: Cooking for Blockheads
+  - id: livro_receitas
+    title: "Culinária para Quadradões I"
+    type: normal
+    deps: [c_bem_vindo]
+    desc: |
+      Coloque um §elivro comum na fornalha§r: sai o §eCulinária para Quadradões I§r. Ele mostra quais comidas você consegue fazer com o que tem no inventário — e ordena por fome ou saturação!
+    tasks:
+      - get: cookingforblockheads:recipebook
+    rewards:
+      - xp: 1
+      - item: minecraft:book x2
+
+  - id: livro_nofilter
+    title: "Edição #NoFilter"
+    type: optional
+    deps: [livro_receitas]
+    desc: |
+      Livro + quadro = §eCulinária para Quadradões§r edição #NoFilter, que mostra §etodas§r as receitas de comida, tendo ou não os ingredientes. (Na fornalha, ele vira o livro I.)
+    tasks:
+      - get: cookingforblockheads:recipebook:3
+    rewards:
+      - loot: comum
+
+  - id: livro_crafting
+    title: "Culinária para Quadradões II"
+    type: normal
+    deps: [livro_receitas]
+    desc: |
+      Livro I + 2 diamantes + 2 bancadas = §eCulinária para Quadradões II§r, o Livro de Crafting: ele §efabrica§r a comida direto do inventário. Clique no prato, clique de novo para fazer um; Shift + clique faz uma pilha.
+    tasks:
+      - get: cookingforblockheads:recipebook:1
+    rewards:
+      - xp: 2
+      - item: minecraft:crafting_table x2
+
+  - id: mesa_cozinha
+    title: "Mesa de Cozinha"
+    type: main
+    deps: [livro_crafting]
+    desc: |
+      Argila endurecida preta em cima, troncos em volta e o Livro II no centro: a §eMesa de Cozinha§r. Sozinha ela funciona como o Livro II; encostada em outros blocos de cozinha, ela forma uma §eCozinha Multibloco§r e enxerga tudo o que eles guardam e fazem.
+    tasks:
+      - get: cookingforblockheads:cookingtable
+    rewards:
+      - xp: 3
+      - choice: [minecraft:hardened_clay x16, minecraft:log x8]
+
+  - id: geladeira
+    title: "Geladeira"
+    type: normal
+    deps: [mesa_cozinha]
+    desc: |
+      Baú + porta de ferro = §eGeladeira§r. Os ingredientes dentro dela ficam disponíveis para a Mesa de Cozinha.
+    tasks:
+      - get: cookingforblockheads:fridge
+    rewards:
+      - xp: 2
+      - item: minecraft:iron_ingot x4
+
+  - id: balcao
+    title: "Balcões"
+    type: normal
+    deps: [mesa_cozinha]
+    desc: |
+      Pedra em cima, argila endurecida em volta e um baú no centro: §eBalcão§r (Counter), que guarda ingredientes para a cozinha. A versão de canto (sem baú) é só para acabamento. Os blocos de cozinha podem ser tingidos.
+    tasks:
+      - one_of: [cookingforblockheads:counter, cookingforblockheads:countercorner]
+    rewards:
+      - xp: 2
+      - item: minecraft:hardened_clay x8
+
+  - id: armario_cfb
+    title: "Armários"
+    type: optional
+    deps: [mesa_cozinha]
+    desc: |
+      Argila endurecida com um baú: o §eArmário§r (Cabinet), que também guarda ingredientes para a cozinha. A versão de canto é só acabamento.
+    tasks:
+      - one_of: [cookingforblockheads:cabinet, cookingforblockheads:cabinetcorner]
+    rewards:
+      - loot: comum
+
+  - id: pia_cfb
+    title: "Pia"
+    type: normal
+    deps: [mesa_cozinha]
+    desc: |
+      Ferro em cima, troncos em volta e um balde de água no centro: a §ePia§r fornece água para as receitas da cozinha. §cNeste pack a pia precisa ser abastecida com água§r (balde ou canos) — ela não é infinita.
+    tasks:
+      - get: cookingforblockheads:sink
+    rewards:
+      - xp: 2
+      - item: minecraft:water_bucket
+
+  - id: forno_cfb
+    title: "Forno de Cozinha"
+    type: normal
+    deps: [mesa_cozinha]
+    desc: |
+      Vidro preto em cima, ferro em volta e uma fornalha: o §eForno de Cozinha§r dá à cozinha o poder de assar. Neste pack ele usa combustível comum (não precisa de óleo).
+    tasks:
+      - get: cookingforblockheads:cookingoven
+    rewards:
+      - xp: 2
+      - item: minecraft:coal x16
+
+  - id: raque_utensilios
+    title: "Raque de Utensílios"
+    type: normal
+    deps: [mesa_cozinha, cozinha_equipada]
+    desc: |
+      Placas de pressão de madeira e ferro: o §eRaque de Utensílios§r. Pendure Panela, Frigideira, Tábua e companhia nele e a cozinha passa a usá-los nas receitas.
+    tasks:
+      - get: cookingforblockheads:toolrack
+    rewards:
+      - xp: 2
+      - item: minecraft:iron_ingot x4
+
+  - id: torradeira
+    title: "Torradeira"
+    type: optional
+    deps: [mesa_cozinha]
+    desc: |
+      Ferro, redstone e pedra lisa: a §eTorradeira§r (Toaster) torra pão (neste pack ela faz a Torrada do HarvestCraft). Clique com pão e espere o "plim"!
+    tasks:
+      - get: cookingforblockheads:toaster
+    rewards:
+      - loot: comum
+
+  - id: piso_cozinha
+    title: "Piso de Cozinha"
+    type: optional
+    deps: [mesa_cozinha]
+    desc: |
+      Quartzo e carvão em xadrez (rende 12): §ePiso de Cozinha§r (Kitchen Floor). Além de lindo, ele §econecta blocos de cozinha à distância§r — a cozinha não precisa ser uma fileira só.
+    tasks:
+      - one_of: [cookingforblockheads:white_kitchen_floor, cookingforblockheads:black_kitchen_floor, cookingforblockheads:red_kitchen_floor, cookingforblockheads:blue_kitchen_floor]
+    rewards:
+      - loot: comum
+
+  - id: cozinha_multibloco
+    title: "Cozinha Multibloco"
+    type: milestone
+    deps: [geladeira, balcao, pia_cfb, forno_cfb, raque_utensilios]
+    banner: "Cozinha Multibloco"
+    subtitle: "Uma cozinha que pensa"
+    desc: |
+      Mesa de Cozinha, Geladeira, Balcão, Pia, Forno e Raque de Utensílios, todos encostados (ou ligados pelo Piso de Cozinha): agora a Mesa enxerga ingredientes, água, forno e utensílios de uma vez só e §efaz qualquer prato com um clique§r.
+
+      Organize: carnes e laticínios na geladeira, grãos e temperos nos balcões, utensílios no raque. Uma cozinha de verdade no meio do mundo fraturado. Que orgulho!
+    tasks:
+      - get: [cookingforblockheads:cookingtable, cookingforblockheads:fridge, cookingforblockheads:counter, cookingforblockheads:sink, cookingforblockheads:cookingoven, cookingforblockheads:toolrack]
+    rewards:
+      - xp: 5
+      - kit: {name: "Kit da Cozinha Moderna", items: [cookingforblockheads:white_kitchen_floor x12, cookingforblockheads:cabinet x2, minecraft:water_bucket]}
+      - loot: incomum
+
+  # ------------------------------------------------------------------ Fase 10: The Kitchen Mod
+  - id: faca_cozinha
+    title: "Faca de Cozinha"
+    type: normal
+    deps: [c_bem_vindo]
+    desc: |
+      Um lingote de ferro e um graveto em diagonal: a §eFaca§r do The Kitchen Mod. Ela fatia na bancada: pão → 2 fatias, tomate → 4 fatias, alface → folhas, queijo → fatias, carne → rosbife cru, porco → bacon cru, frango → filé…
+    tasks:
+      - get: kitchen:knife
+    rewards:
+      - xp: 1
+      - item: minecraft:bread x4
+
+  - id: plantas_selvagens
+    title: "Plantas Selvagens"
+    type: normal
+    deps: [faca_cozinha]
+    desc: |
+      O The Kitchen Mod tem seus próprios cultivos, que aparecem como §eplantas selvagens§r pelo mundo: tomate, alface, morango e amendoim. Colha e replante.
+
+      Traga qualquer um deles (do Kitchen Mod, não do HarvestCraft).
+    tasks:
+      - one_of: [kitchen:tomato, kitchen:lettuce, kitchen:strawberry, kitchen:peanuts_in_shell]
+    rewards:
+      - xp: 1
+      - item: minecraft:dye:15 x8
+
+  - id: fatias
+    title: "Fatias e Folhas"
+    type: normal
+    deps: [plantas_selvagens]
+    desc: |
+      Use a faca: §eFatia de Pão§r, §eFatia de Tomate§r, §eFolhas de Alface§r, §eFatia de Queijo§r (o queijo do Kitchen sai de um balde de leite). Faça qualquer uma — são as camadas do seu sanduíche.
+    tasks:
+      - one_of: [kitchen:bread_slice, kitchen:tomato_slice, kitchen:lettuce_leaf, kitchen:cheese_slice]
+    rewards:
+      - xp: 1
+      - item: minecraft:bread x4
+
+  - id: tabua_kitchen
+    title: "Tábua de Montar"
+    type: normal
+    deps: [faca_cozinha]
+    desc: |
+      Laje de madeira, placa de pressão de madeira e laje: a §eTábua de Cortar§r do Kitchen Mod (diferente da do HarvestCraft!). Ela é um bloco: coloque no chão.
+    tasks:
+      - get: kitchen:board
+    rewards:
+      - xp: 1
+      - item: minecraft:wooden_slab x4
+
+  - id: sanduiche
+    title: "Sanduíche Modular"
+    type: main
+    deps: [tabua_kitchen, fatias]
+    desc: |
+      Na Tábua, clique com uma §efatia de pão§r (ou torrada), depois adicione camadas — tomate, alface, bacon, queijo, rosbife, frango, batata, cenoura… — e feche com outra fatia de pão. Pegue o §eSanduíche§r: §ecada camada soma fome§r!
+
+      O tooltip "Sanduíchável" mostra o que pode entrar. Há combinações secretas com nomes especiais.
+    tasks:
+      - get: kitchen:sandwich
+    rewards:
+      - xp: 3
+      - choice: [minecraft:bread x8, minecraft:porkchop x6, minecraft:beef x6]
+
+  - id: forno_kitchen
+    title: "Forno a Carvão"
+    type: normal
+    deps: [faca_cozinha]
+    desc: |
+      Ferro em volta, carvão no meio e um isqueiro embaixo: o §eForno§r do Kitchen Mod. Abra, coloque carvão e as fatias cruas (rosbife, filé de frango, bacon), feche e espere. §cDeixou demais? Vira Carne Queimada!§r
+    tasks:
+      - get: [kitchen:oven, kitchen:roast_beef]
+    rewards:
+      - xp: 2
+      - item: minecraft:coal x8
+
+  - id: frigideira_kitchen
+    title: "Frigideira sobre o Forno"
+    type: normal
+    deps: [forno_kitchen]
+    desc: |
+      5 lingotes de ferro: a §eFrigideira§r do Kitchen Mod. Ela só funciona §eem cima do Forno§r do Kitchen Mod. Frita bacon e filé de frango e faz geleias com fatias de morango açucaradas, fatias de maçã ou amendoim.
+    tasks:
+      - get: [kitchen:frying_pan, kitchen:bacon_cooked]
+    rewards:
+      - xp: 2
+      - item: minecraft:sugar x8
+
+  - id: jarro_geleia
+    title: "Jarro de Geleia"
+    type: optional
+    deps: [frigideira_kitchen]
+    desc: |
+      Vidro e um lingote de ferro fazem o §eJarro Vazio§r. Clique na Frigideira com geleia pronta para enchê-lo; depois passe a geleia (ou manteiga de amendoim) no sanduíche, direto na Tábua.
+    tasks:
+      - get: kitchen:jam_jar
+    rewards:
+      - loot: comum
+
+  - id: almofariz_kitchen
+    title: "Almofariz e Pilão"
+    type: optional
+    deps: [faca_cozinha]
+    desc: |
+      Almofariz (3 pedras) + pilão (2 pedras). O do Kitchen Mod faz farinha (de trigo ou pão), manteiga (do balde de leite) e descasca amendoins.
+    tasks:
+      - get: kitchen:mortar_and_pestle
+    rewards:
+      - loot: comum
+
+  - id: mesa_posta_kitchen
+    title: "Pratos e Armários"
+    type: optional
+    deps: [sanduiche]
+    desc: |
+      Para servir com estilo: §ePrato§r (argila e farinha de osso; coloque comida em cima), §eArmário de Cozinha§r (quartzo e tábuas) ou §eAzulejos§r (Tiles: argila e corantes). Faça qualquer um.
+    tasks:
+      - one_of: [kitchen:plate, kitchen:kitchen_cabinet, kitchen:tiles]
+    rewards:
+      - loot: comum
+
+  # ------------------------------------------------------------------ Fase 11: catálogo de banquetes
+  - id: cardapio_info
+    title: "O Cardápio do Registro"
+    type: info
+    deps: [cozinha_equipada]
+    desc: |
+      Agora o catálogo! Os pratos estão organizados pela §efome§r que restauram (em meias-coxinhas, como o tooltip do AppleCore mostra com Shift):
+
+      • §ePetiscos§r: 4–6, saturação baixa (lanches).
+      • §ePratos do Dia§r: 6–9, refeições.
+      • §eRefeições Fartas§r: 8–12, saturação alta.
+      • §6Banquetes§r: 13–16.
+      • §6Pratos Lendários§r: 18 — enchem quase a barra inteira e a saturação até o máximo.
+
+      As receitas estão na descrição de cada prato e no NEI. Bom apetite!
+    tasks:
+      - check
+    rewards:
+      - xp: 1
+
+  # --- petiscos
+  - id: pipoca
+    title: "Pipoca"
+    type: normal
+    deps: [cardapio_info, jardim_grama]
+    desc: |
+      Milho na fornalha (ou no Forno) = §ePipoca§r. 4 de fome, petisco de sessão de cinema. Pipoca de mineração, no caso.
+    tasks:
+      - get: harvestcraft:popcornItem x4
+    rewards:
+      - xp: 1
+      - item: harvestcraft:cornItem x4
+
+  - id: batata_frita
+    title: "Batata Frita"
+    type: normal
+    deps: [cardapio_info, assadeira, sal]
+    desc: |
+      Assadeira + batata + sal = §eBatata Frita§r (4). Sozinha é um lanche; com Palitos de Peixe vira Peixe com Batatas; com bife, Bife com Fritas.
+    tasks:
+      - get: harvestcraft:friesItem x2
+    rewards:
+      - xp: 1
+      - item: minecraft:potato x8
+
+  - id: cha_cafe
+    title: "Chá ou Café?"
+    type: normal
+    deps: [cardapio_info, jardim_ervas]
+    desc: |
+      Folha de chá na fornalha = §eXícara de Chá§r; grão de café na fornalha = §eXícara de Café§r. Bebidas do HarvestCraft que, além de 4 de fome, dão um efeito de poção curtinho. Faça qualquer uma.
+    tasks:
+      - one_of: [harvestcraft:teaItem, harvestcraft:coffeeItem]
+    rewards:
+      - xp: 1
+      - item: minecraft:sugar x4
+
+  - id: rosquinha
+    title: "Rosquinha"
+    type: normal
+    deps: [cardapio_info, massa, oleo_cozinha]
+    desc: |
+      Panela + massa + óleo de cozinha = §eRosquinha§r (6). Com chocolate, açúcar, geleia ou glacê, vira uma família inteira de rosquinhas.
+    tasks:
+      - get: harvestcraft:donutItem x2
+    rewards:
+      - xp: 1
+      - item: harvestcraft:oliveoilItem x2
+
+  - id: suco_fruta
+    title: "Suco Natural"
+    type: normal
+    deps: [cardapio_info, espremedor]
+    desc: |
+      Espremedor + fruta = suco. §eSuco de Maçã§r (5), §eLimonada§r (6), §eSuco de Laranja§r… Sucos também são ingrediente do Café da Manhã Amistoso. Faça qualquer um.
+    tasks:
+      - one_of: [harvestcraft:applejuiceItem, harvestcraft:lemonaideItem, harvestcraft:orangejuiceItem, harvestcraft:grapejuiceItem]
+    rewards:
+      - xp: 1
+      - item: minecraft:apple x4
+
+  - id: mestre_petiscos
+    title: "Mestre dos Petiscos"
+    type: milestone
+    deps: [pipoca, batata_frita, cha_cafe, rosquinha, suco_fruta, chocolate]
+    banner: "Mestre dos Petiscos"
+    subtitle: "Primeiro degrau do cardápio"
+    desc: |
+      Pipoca, batata frita, chá ou café, rosquinha e suco: a despensa de lanches está garantida! Petiscos enchem pouco, mas são rápidos e baratos — perfeitos para levar na mochila.
+
+      Agora vamos aos pratos de verdade.
+    tasks:
+      - get: [harvestcraft:popcornItem, harvestcraft:friesItem, harvestcraft:donutItem, harvestcraft:chocolatebarItem]
+    rewards:
+      - xp: 5
+      - kit: {name: "Cesta de Piquenique", items: [harvestcraft:toastItem x8, harvestcraft:applejuiceItem x4, harvestcraft:cheeseItem x4]}
+      - loot: incomum
+
+  # --- pratos do dia
+  - id: panquecas
+    title: "Panquecas"
+    type: normal
+    deps: [mestre_petiscos, frigideira_hc, farinha]
+    desc: |
+      Frigideira + farinha + ovo + leite = §ePanquecas§r (6). Com mirtilo ou xarope de bordo ficam ainda melhores.
+    tasks:
+      - get: harvestcraft:pancakesItem x2
+    rewards:
+      - xp: 1
+      - item: minecraft:egg x4
+
+  - id: hamburguer
+    title: "Hambúrguer"
+    type: normal
+    deps: [mestre_petiscos, frigideira_hc, torrada]
+    desc: |
+      Frigideira + carne crua + torrada = §eHambúrguer§r (8). Junte queijo e vira Cheeseburger (9); depois bacon, Cheesebacon (14)!
+    tasks:
+      - get: harvestcraft:hamburgerItem
+    rewards:
+      - xp: 1
+      - item: minecraft:beef x4
+
+  - id: cheeseburguer
+    title: "Cheeseburger"
+    type: normal
+    deps: [hamburguer, queijo]
+    desc: |
+      Hambúrguer + queijo = §eCheeseburger§r (9). Sem utensílio, só montagem. Guarde alguns: ele é a base do Cheeseburger Deluxe e do Cheesebacon.
+    tasks:
+      - get: harvestcraft:cheeseburgerItem
+    rewards:
+      - xp: 1
+      - item: harvestcraft:cheeseItem x2
+
+  - id: queijo_grelhado
+    title: "Queijo Grelhado"
+    type: normal
+    deps: [mestre_petiscos, torrada, manteiga, queijo]
+    desc: |
+      Frigideira + torrada + manteiga + queijo = §eQueijo Grelhado§r (9). O conforto em forma de sanduíche.
+    tasks:
+      - get: harvestcraft:grilledcheeseItem
+    rewards:
+      - xp: 1
+      - item: harvestcraft:butterItem x2
+
+  - id: espaguete
+    title: "Espaguete"
+    type: normal
+    deps: [mestre_petiscos, macarrao, cacarola, jardim_ervas]
+    desc: |
+      Caçarola + tomate + macarrão + louro = §eEspaguete§r (8). Com carne cozida na Tigela de Mistura vira Espaguete com Almôndegas.
+    tasks:
+      - get: harvestcraft:spagettiItem
+    rewards:
+      - xp: 1
+      - item: harvestcraft:spiceleafItem x4
+
+  - id: waffles
+    title: "Waffles"
+    type: normal
+    deps: [panquecas, manteiga]
+    desc: |
+      Frigideira + farinha + ovo + leite + manteiga = §eWaffles§r (9). Café da manhã de campeão.
+    tasks:
+      - get: harvestcraft:wafflesItem
+    rewards:
+      - xp: 1
+      - item: harvestcraft:maplesyrupItem
+
+  - id: pure_batata
+    title: "Purê de Batata"
+    type: normal
+    deps: [mestre_petiscos, manteiga, tigela_mistura]
+    desc: |
+      Batata assada + manteiga = Batata Amanteigada (7). Tigela de Mistura + batata amanteigada + sal = §eBatatas Amassadas§r (9). Simples e reconfortante.
+    tasks:
+      - get: harvestcraft:mashedpotatoesItem
+    rewards:
+      - xp: 1
+      - item: minecraft:potato x8
+
+  - id: salada_primavera
+    title: "Salada Primavera"
+    type: normal
+    deps: [mestre_petiscos, tabua_corte, jardim_folhoso]
+    desc: |
+      Tábua de Cortar + alface + cenoura (ou cebola) = §eSalada Primavera§r (9). A prova de que salada também enche barriga.
+    tasks:
+      - get: harvestcraft:springsaladItem
+    rewards:
+      - xp: 1
+      - item: harvestcraft:lettuceItem x4
+
+  - id: burrito_feijao
+    title: "Burrito de Feijão"
+    type: normal
+    deps: [fuba, queijo, plantio_agua, jardim_caules]
+    desc: |
+      Frigideira + feijão + tortilha + arroz + queijo = §eBurrito com Feijão§r (9). ¡Qué rico!
+    tasks:
+      - get: harvestcraft:beanburritoItem
+    rewards:
+      - xp: 1
+      - item: harvestcraft:beanItem x4
+
+  - id: mestre_pratos
+    title: "Mestre dos Pratos do Dia"
+    type: milestone
+    deps: [cheeseburguer, queijo_grelhado, espaguete, waffles, pure_batata, salada_primavera]
+    banner: "Pratos do Dia"
+    subtitle: "Segundo degrau do cardápio"
+    desc: |
+      Hambúrguer, queijo grelhado, espaguete, waffles, purê, salada: você já cozinha um cardápio de restaurante! Refeições comuns dão o dobro da saturação dos petiscos.
+
+      Próximo passo: as refeições fartas, com saturação ainda maior.
+    tasks:
+      - get: [harvestcraft:cheeseburgerItem, harvestcraft:spagettiItem, harvestcraft:wafflesItem, harvestcraft:mashedpotatoesItem]
+    rewards:
+      - xp: 5
+      - kit: {name: "Marmita do Aventureiro", items: [harvestcraft:hamburgerItem x4, harvestcraft:stockItem x6, harvestcraft:doughItem x4]}
+      - loot: incomum
+
+  # --- refeições fartas
+  - id: sopa_vegetais
+    title: "Sopa de Vegetais"
+    type: normal
+    deps: [mestre_pratos, caldo]
+    desc: |
+      Panela + batata + cenoura + cogumelo + caldo = §eSopa de Vegetais§r (8, farta). A sopa da vovó.
+    tasks:
+      - get: harvestcraft:vegetablesoupItem
+    rewards:
+      - xp: 1
+      - item: harvestcraft:stockItem x3
+
+  - id: torta_maca
+    title: "Torta de Maçã"
+    type: normal
+    deps: [mestre_pratos, massa, assadeira]
+    desc: |
+      Assadeira + maçã + açúcar + massa = §eTorta de Maçã§r (8, farta). O cheirinho chega até o Registro.
+    tasks:
+      - get: harvestcraft:applepieItem
+    rewards:
+      - xp: 1
+      - item: minecraft:apple x4
+
+  - id: cachorro_quente
+    title: "Cachorro-Quente"
+    type: normal
+    deps: [mestre_pratos, panela]
+    desc: |
+      Panela + porco cru + pão = §eCachorro-Quente§r (8, farto). Barato e eficiente.
+    tasks:
+      - get: harvestcraft:hotdogItem
+    rewards:
+      - xp: 1
+      - item: minecraft:porkchop x4
+
+  - id: sopa_frango
+    title: "Sopa de Macarrão com Frango"
+    type: normal
+    deps: [mestre_pratos, macarrao, caldo]
+    desc: |
+      Panela + frango cru + cenoura + macarrão + caldo = §eSopa de Macarrão de Frango§r (9). Cura até mau humor de creeper.
+    tasks:
+      - get: harvestcraft:chickennoodlesoupItem
+    rewards:
+      - xp: 1
+      - item: minecraft:chicken x4
+
+  - id: peixe_batatas
+    title: "Peixe com Batatas"
+    type: normal
+    deps: [mestre_pratos, batata_frita, pesca_hc]
+    desc: |
+      Assadeira + peixe cru + farinha = Palitos de Peixe; Palitos de Peixe + Batata Frita = §ePeixe com Batatas§r (9). Clássico britânico!
+    tasks:
+      - get: harvestcraft:fishandchipsItem
+    rewards:
+      - xp: 1
+      - item: minecraft:fish x4
+
+  - id: frango_assado
+    title: "Frango Assado"
+    type: normal
+    deps: [mestre_pratos, especiarias_moidas, assadeira]
+    desc: |
+      Assadeira + frango cru + sal + pimenta-do-reino moída = §eFrango Assado§r (9). Ele é metade do Sunday Roast!
+    tasks:
+      - get: harvestcraft:roastchickenItem
+    rewards:
+      - xp: 1
+      - item: harvestcraft:blackpepperItem x2
+
+  - id: pizza
+    title: "Pizza"
+    type: normal
+    deps: [mestre_pratos, massa, queijo]
+    desc: |
+      Assadeira + massa + tomate + queijo + porco cru = §ePizza§r (10). Com pimentão, cebola e louro na Tábua vira Pizza Suprema.
+    tasks:
+      - get: harvestcraft:pizzaItem
+    rewards:
+      - xp: 1
+      - item: harvestcraft:tomatoItem x4
+
+  - id: carne_panela
+    title: "Carne de Panela"
+    type: normal
+    deps: [mestre_pratos, caldo]
+    desc: |
+      Panela + carne crua + batata + cenoura + caldo = §eCarne de Panela§r (10). Domingo em família.
+    tasks:
+      - get: harvestcraft:potroastItem
+    rewards:
+      - xp: 1
+      - item: minecraft:beef x4
+
+  - id: taco
+    title: "Taco"
+    type: normal
+    deps: [mestre_pratos, fuba, queijo]
+    desc: |
+      Tábua de Cortar + carne cozida + alface + queijo + tortilha = §eTaco§r (11, farto).
+    tasks:
+      - get: harvestcraft:tacoItem
+    rewards:
+      - xp: 1
+      - item: harvestcraft:cornItem x4
+
+  - id: bat
+    title: "BAT (Bacon, Alface e Tomate)"
+    type: normal
+    deps: [mestre_pratos, torrada]
+    desc: |
+      Tábua de Cortar + alface + tomate + porco cozido + torrada = §eBAT§r (12). O clássico BLT, versão brasileira.
+    tasks:
+      - get: harvestcraft:bltItem
+    rewards:
+      - xp: 1
+      - item: minecraft:cooked_porkchop x4
+
+  - id: cheeseburguer_deluxe
+    title: "Cheeseburger Deluxe"
+    type: normal
+    deps: [cheeseburguer, mestre_pratos]
+    desc: |
+      Cheeseburger + alface + tomate = §eCheeseburger Deluxe§r (12). Guarde um: ele é a base da Refeição Deleitosa, um prato lendário.
+    tasks:
+      - get: harvestcraft:deluxecheeseburgerItem
+    rewards:
+      - xp: 1
+      - item: harvestcraft:lettuceItem x4
+
+  - id: bife_fritas
+    title: "Bife com Fritas"
+    type: normal
+    deps: [mestre_pratos, batata_frita]
+    desc: |
+      Frigideira + carne crua + batata frita = §eBife com Fritas§r (12). Rápido, farto e direto ao ponto.
+    tasks:
+      - get: harvestcraft:steakandchipsItem
+    rewards:
+      - xp: 1
+      - item: minecraft:beef x4
+
+  - id: mestre_fartura
+    title: "Mestre da Fartura"
+    type: milestone
+    deps: [sopa_vegetais, torta_maca, sopa_frango, frango_assado, pizza, carne_panela, bat, bife_fritas]
+    banner: "Mestre da Fartura"
+    subtitle: "Terceiro degrau do cardápio"
+    desc: |
+      Sopas, tortas, assados, pizza e sanduíches fartos: refeições "carnudas" têm o modificador de saturação mais alto do HarvestCraft. Um prato desses segura você por um bom tempo de mineração.
+
+      Os banquetes chamam!
+    tasks:
+      - get: [harvestcraft:pizzaItem, harvestcraft:roastchickenItem, harvestcraft:potroastItem, harvestcraft:bltItem]
+    rewards:
+      - xp: 5
+      - kit: {name: "Despensa Farta", items: [harvestcraft:saltItem x16, harvestcraft:stockItem x8, harvestcraft:cheeseItem x8, harvestcraft:doughItem x8]}
+      - loot: incomum
+
+  # --- banquetes
+  - id: chili
+    title: "Chili"
+    type: normal
+    deps: [mestre_fartura]
+    desc: |
+      Panela + feijão + cebola (ou pimentão) + carne cozida = §eChili§r (13). Chili + pimenta chili = Chili Extremo (14).
+    tasks:
+      - get: harvestcraft:chiliItem
+    rewards:
+      - xp: 2
+      - item: harvestcraft:beanItem x4
+
+  - id: pizza_suprema
+    title: "Pizza Suprema"
+    type: normal
+    deps: [mestre_fartura, pizza]
+    desc: |
+      Tábua de Cortar + pizza + pimentão + cebola + louro = §ePizza Suprema§r (13). Já a Pizza de Banquete de Carne, lendária, parte da pizza comum — guarde algumas!
+    tasks:
+      - get: harvestcraft:supremepizzaItem
+    rewards:
+      - xp: 2
+      - item: harvestcraft:bellpepperItem x4
+
+  - id: cheesebacon
+    title: "Cheesebacon"
+    type: normal
+    deps: [mestre_fartura, cheeseburguer]
+    desc: |
+      Cheeseburger + porco cozido = §eCheesebacon§r (14). E com cogumelo, Hambúrguer de Bacon e Cogumelo. Seu coração aguenta?
+    tasks:
+      - get: harvestcraft:baconcheeseburgerItem
+    rewards:
+      - xp: 2
+      - item: minecraft:cooked_porkchop x4
+
+  - id: sunday_roast
+    title: "Sunday Roast"
+    type: normal
+    deps: [mestre_fartura, frango_assado]
+    desc: |
+      Assadeira + Frango Assado + Batatas Assadas (Assadeira + batata + sal + pimenta) + uma verdura = §eSunday Roast§r (14). O almoço de domingo inglês, completo.
+    tasks:
+      - get: harvestcraft:sundayroastItem
+    rewards:
+      - xp: 2
+      - item: harvestcraft:broccoliItem x4
+
+  - id: torta_carne
+    title: "Torta de Carne"
+    type: normal
+    deps: [mestre_fartura, especiarias_moidas]
+    desc: |
+      Assadeira + carne crua + massa + cebola + alho + pimenta-do-reino + caldo = §eTorta de Carne§r (14). Trabalhosa e deliciosa.
+    tasks:
+      - get: harvestcraft:meatpieItem
+    rewards:
+      - xp: 2
+      - item: harvestcraft:garlicItem x4
+
+  - id: frango_curry
+    title: "Frango com Curry"
+    type: normal
+    deps: [mestre_fartura, coco, iogurte, especiarias_moidas]
+    desc: |
+      Panela + coco + iogurte + frango cru + tempero + pimenta chili + arroz + canela moída + alho = §eFrango com Curry§r (14). Uma viagem de sabores — e a base do Deluxe Chicken Curry lendário.
+    tasks:
+      - get: harvestcraft:chickencurryItem
+    rewards:
+      - xp: 2
+      - item: harvestcraft:riceItem x8
+
+  - id: sandubao
+    title: "Sandubão"
+    type: normal
+    deps: [mestre_fartura, maionese]
+    desc: |
+      Tábua de Cortar + pão + carne (ou frango) cozida + alface + tomate + maionese = §eSandubão§r (Footlong, 14). Meio metro de felicidade.
+    tasks:
+      - get: harvestcraft:footlongItem
+    rewards:
+      - xp: 2
+      - item: minecraft:bread x4
+
+  - id: gumbo
+    title: "Quiabo com Frango (Gumbo)"
+    type: normal
+    deps: [mestre_fartura, caldo, jardim_ervas]
+    desc: |
+      Panela + quiabo + frango cru + aipo + cebola + caldo + tempero + pimentão = §eQuiabo com Frango§r (Chicken Gumbo, 16). Comida de Nova Orleans no meio do mundo fraturado.
+    tasks:
+      - get: harvestcraft:chickengumboItem
+    rewards:
+      - xp: 2
+      - item: harvestcraft:okraItem x4
+
+  - id: mcpam
+    title: "McPam"
+    type: normal
+    deps: [mestre_fartura, vinagre, torrada]
+    desc: |
+      Tábua de Cortar + carne cozida + alface + picles + cebola + torrada + molho de salada = §eMcPam§r (16). Picles e molho de salada pedem vinagre e óleo. Um lanche famoso que eu prometo não comentar.
+    tasks:
+      - get: harvestcraft:mcpamItem
+    rewards:
+      - xp: 2
+      - item: harvestcraft:cucumberItem x4
+
+  - id: mestre_banquetes
+    title: "Mestre dos Banquetes"
+    type: milestone
+    deps: [chili, pizza_suprema, cheesebacon, sunday_roast, torta_carne, frango_curry, sandubao, gumbo, mcpam]
+    banner: "Mestre dos Banquetes"
+    subtitle: "Quarto degrau do cardápio"
+    desc: |
+      Chili, Sunday Roast, Gumbo, McPam… pratos de 13 a 16 de fome com saturação alta. Uma refeição destas e a barra fica cheia por muito tempo.
+
+      Só falta o topo do cardápio: os oito pratos lendários de 18.
+    tasks:
+      - get: [harvestcraft:chiliItem, harvestcraft:sundayroastItem, harvestcraft:chickengumboItem, harvestcraft:mcpamItem]
+    rewards:
+      - xp: 5
+      - kit: {name: "Banquete Real", items: [harvestcraft:pizzaItem x2, harvestcraft:roastchickenItem x2, harvestcraft:applepieItem x2]}
+      - loot: incomum
+
+  # --- pratos lendários
+  - id: refeicao_deleitosa
+    title: "Refeição Deleitosa"
+    type: normal
+    deps: [mestre_banquetes, cheeseburguer_deluxe, batata_frita]
+    desc: |
+      Cheeseburger Deluxe + batata frita (ou abobrinha frita) + qualquer batida = §eRefeição Deleitosa§r (18). O combo perfeito, sem utensílio.
+    tasks:
+      - get: harvestcraft:delightedmealItem
+    rewards:
+      - xp: 2
+      - item: minecraft:snowball x8
+
+  - id: cafe_manha
+    title: "Café da Manhã Amistoso"
+    type: normal
+    deps: [mestre_banquetes, suco_fruta]
+    desc: |
+      Porco cozido + ovo frito + torrada + bolinhos de batata (Frigideira + cebola + batata + manteiga) + um suco = §eCafé da Manhã Amistoso§r (18). Comece o dia como um herói.
+    tasks:
+      - get: harvestcraft:heartybreakfastItem
+    rewards:
+      - xp: 2
+      - item: minecraft:egg x8
+
+  - id: bacon_epico
+    title: "Bacon Épico"
+    type: normal
+    deps: [mestre_banquetes]
+    desc: |
+      Porco cozido + corantes vermelho, laranja, amarelo, verde, azul, roxo e magenta = §eBacon Épico§r (18). Sim, é um bacon arco-íris. Não, eu não sei como funciona. Sim, eu quero.
+    tasks:
+      - get: harvestcraft:epicbaconItem
+    rewards:
+      - xp: 2
+      - item: minecraft:cooked_porkchop x4
+
+  - id: bife_wellington
+    title: "Bife Wellington"
+    type: normal
+    deps: [mestre_banquetes, massa, jardim_folhoso]
+    desc: |
+      Carne crua + massa + cogumelo + espinafre = §eBife Wellington§r (18). Elegante e, surpreendentemente, sem utensílio.
+    tasks:
+      - get: harvestcraft:beefwellingtonItem
+    rewards:
+      - xp: 2
+      - item: minecraft:beef x6
+
+  - id: pizza_banquete
+    title: "Pizza de Banquete de Carne"
+    type: normal
+    deps: [mestre_banquetes, pizza]
+    desc: |
+      Panela + pizza + calabresa + linguiça de porco + carne cozida + frango assado (vanilla) = §ePizza de Banquete de Carne§r (18). Calabresa e linguiça saem da Tábua de Cortar com porco cozido, temperos e sal.
+    tasks:
+      - get: harvestcraft:meatfeastpizzaItem
+    rewards:
+      - xp: 2
+      - item: minecraft:cooked_chicken x4
+
+  - id: linguica_pao
+    title: "Linguiça com Pão"
+    type: normal
+    deps: [mestre_banquetes, xarope_bordo, ketchup]
+    desc: |
+      Linguiça com Bordo (carne crua + louro + xarope de bordo) + pão + ketchup + cebola = §eLinguiça com Pão§r (18). O bordo faz toda a diferença.
+    tasks:
+      - get: harvestcraft:sausageinbreadItem
+    rewards:
+      - xp: 2
+      - item: harvestcraft:onionItem x4
+
+  - id: curry_deluxe
+    title: "Deluxe Chicken Curry"
+    type: normal
+    deps: [mestre_banquetes, frango_curry]
+    desc: |
+      Tábua de Cortar + Frango com Curry + arroz + naan (Frigideira + massa + cebola + óleo) + chutney de manga = §eDeluxe Chicken Curry§r (18). O prato mais trabalhoso do catálogo. Vale cada passo.
+    tasks:
+      - get: harvestcraft:deluxechickencurryItem
+    rewards:
+      - xp: 2
+      - item: harvestcraft:mangoItem x2
+
+  - id: hamburguer_beterraba
+    title: "Hambúrguer de Beterraba"
+    type: normal
+    deps: [mestre_banquetes, jardim_chao, jardim_tropical]
+    desc: |
+      Tábua de Cortar + carne cozida + beterraba + ovo frito + porco cozido + abacaxi + torrada = §eHambúrguer de Beterraba§r (18). Uma torre australiana de sabores.
+    tasks:
+      - get: harvestcraft:beetburgerItem
+    rewards:
+      - xp: 2
+      - item: harvestcraft:beetItem x4
+
+  # --- doces e bebidas
+  - id: bolos
+    title: "Bolos de Festa"
+    type: normal
+    deps: [mestre_pratos, assadeira, creme_leite]
+    desc: |
+      Bolo de Cenoura, Cheesecake, Pavlova, Bolo de Fim de Ano, Bolo de Veludo Vermelho… os bolos do HarvestCraft podem ser §ecolocados como bloco§r e comidos fatia por fatia, como o bolo vanilla. Faça qualquer um.
+    tasks:
+      - one_of: [harvestcraft:carrotcakeItem, harvestcraft:cheesecakeItem, harvestcraft:pavlovaItem, harvestcraft:holidaycakeItem, harvestcraft:redvelvetcakeItem]
+    rewards:
+      - xp: 2
+      - item: minecraft:sugar x16
+
+  - id: batidas
+    title: "Batidas Geladas"
+    type: normal
+    deps: [mestre_petiscos, espremedor]
+    desc: |
+      Espremedor + fruta + bola de neve = batida. §eBatida de Morango§r, de Banana e muitas outras. Batidas são ingrediente da Refeição Deleitosa! Faça qualquer uma.
+    tasks:
+      - one_of: [harvestcraft:strawberrysmoothieItem, harvestcraft:bananasmoothieItem, harvestcraft:melonsmoothieItem, harvestcraft:blueberrysmoothieItem]
+    rewards:
+      - xp: 2
+      - item: minecraft:snowball x16
+
+  - id: pina_colada
+    title: "Piña Colada"
+    type: optional
+    deps: [coco, jardim_tropical]
+    desc: |
+      Espremedor + coco + abacaxi = §ePiña Colada§r. (Sem álcool, eu garanto. É só de coco.) Ou um §ePonche de Frutas§r: fruta + açúcar no Espremedor.
+    tasks:
+      - one_of: [harvestcraft:pinacoladaItem, harvestcraft:fruitpunchItem]
+    rewards:
+      - loot: comum
+
+  - id: grande_banquete
+    title: "O Grande Banquete do Registro"
+    type: milestone
+    deps: [refeicao_deleitosa, cafe_manha, bacon_epico, bife_wellington, pizza_banquete, linguica_pao, curry_deluxe, hamburguer_beterraba, bolos]
+    banner: "O Grande Banquete"
+    subtitle: "A página das receitas de família, reescrita"
+    desc: |
+      Herói… olha essa mesa. Refeição Deleitosa, Café da Manhã Amistoso, Bacon Épico, Bife Wellington, Pizza de Banquete, Linguiça com Pão, Deluxe Curry, Hambúrguer de Beterraba e bolo de sobremesa. Cada um enche a barra inteira!
+
+      Antes da Fratura, os Antigos faziam banquetes assim para celebrar cada página nova do Registro. Hoje, quem celebra somos nós. Convide os amigos do servidor, acenda as velas e coma até não aguentar.
+
+      §6Página das receitas de família: reescrita.§r Obrigada por cozinhar comigo.
+    tasks:
+      - get: [harvestcraft:delightedmealItem, harvestcraft:heartybreakfastItem, harvestcraft:beefwellingtonItem, harvestcraft:deluxechickencurryItem]
+    rewards:
+      - xp: 5
+      - kit: {name: "Kit do Grande Chef", items: [harvestcraft:delightedmealItem x2, harvestcraft:heartybreakfastItem x2, harvestcraft:epicbaconItem x2, minecraft:golden_apple x2]}
+      - loot: incomum
+      - command: "/effect @p 23 5 4"

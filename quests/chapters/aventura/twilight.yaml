@@ -410,8 +410,8 @@ quests:
     deps: [portal_crepusculo]
     desc: |
       Algumas árvores do Crepúsculo são colossais e ocas. Escale uma delas (pelas raízes e
-      galhos) e procure, no alto da copa, um esconderijo de folhas com um baú guardado por
-      aranhas.
+      galhos) e procure, no alto da copa, um esconderijo de folhas com um baú e um spawner
+      de monstros.
 
       Esse baú é o §eTree Cache§r: é de lá que vêm as mudas mágicas (Tempo,
       Transformação, Mineração e Separação) e os Charms. Traga qualquer muda rara do
@@ -1685,7 +1685,8 @@ quests:
       Sim, como no conto. §eMagic Beans§r plantados em §eUberous Soil§r crescem num pé de feijão
       gigante que sobe até as nuvens, onde vivem os gigantes.
 
-      Junte um feijão e um bloco de Uberous Soil (os dois aparecem nos jardins dos trolls).
+      Junte um feijão e um bloco de Uberous Soil (os dois aparecem nos baús dos jardins dos
+      trolls; os Cave Trolls também podem largar feijões).
     tasks:
       - get: [TwilightForest:item.magicBeans, TwilightForest:tile.UberousSoil]
     rewards:
@@ -1872,7 +1873,7 @@ quests:
     type: optional
     deps: [portal_crepusculo]
     desc: |
-      Os §eKobolds§r são pequenos, barulhentos e adoram pão. Eles andam em bandos nas florestas.
+      Os §eKobolds§r são pequenos, barulhentos e covardes. Eles andam em bandos nas florestas.
 
       Derrote 5 Kobolds.
     tasks:
@@ -1929,9 +1930,12 @@ quests:
       Depois que a Naga cai, os blocos decorados do pátio podem ser coletados: Nagastone,
       pilares e escadas. Ótimos para um templo particular.
 
-      Junte 16 blocos de Nagastone (o corpo da serpente esculpida).
+      Junte 8 blocos de Etched Nagastone de um mesmo tipo (normal, com musgo ou desgastada).
+    task_logic: OR
     tasks:
-      - get: TwilightForest:tile.TFNagastoneBody x16
+      - get: TwilightForest:tile.TFNagastoneEtched x8
+      - get: TwilightForest:tile.TFNagastoneEtchedMossy x8
+      - get: TwilightForest:tile.TFNagastoneEtchedWeathered x8
     rewards:
       - loot: incomum
 
@@ -2363,20 +2367,6 @@ quests:
       - one_of: [TwilightForest:buckets, TwilightForest:buckets:1, TwilightForest:buckets:2]
     rewards:
       - loot: incomum
-
-  - id: sebes
-    title: "Sebes Espinhentas"
-    type: optional
-    deps: [labirinto_sebe]
-    desc: |
-      As §eHedges§r dos labirintos machucam quem encosta. Isso também faz delas uma cerca
-      defensiva ótima para a sua base!
-
-      Colete 16 blocos de sebe (use uma ferramenta, não a mão).
-    tasks:
-      - get: TwilightForest:tile.TFHedge x16
-    rewards:
-      - loot: comum
 
   - id: cogumelos_profundos
     title: "A Floresta de Cogumelos Profunda"

@@ -1,0 +1,762 @@
+chapter:
+  id: advbotany
+  title: "Advanced Botany"
+  prefix: ""
+  order: 531
+  icon: AdvancedBotany:itemABResource
+  desc: |
+    §dO apêndice esquecido da Botânica.§r Ancient Alphirine, a Forja de Nidavellir, Mithrill,
+    Nebulosa e as relíquias perdidas do Panteão. Exige o Guardião de Gaia.
+
+quests:
+  - link: botania:gaia1
+    at: [0, 0]
+
+  # ------------------------------------------------------------------ Introdução
+  - id: intro
+    title: "O Volume Esquecido"
+    type: info
+    at: [0, -2]
+    desc: |
+      Encontrei umas páginas grudadas no fundo do Volume das Flores Vivas… Elas falam de técnicas que
+      até os elfos esqueceram: o §eAdvanced Botany§r, um anexo do Botania.
+
+      Quase tudo aqui é §eendgame botânico§r: a primeira peça, a flor §eAncient Alphirine§r, pede quatro
+      §eEspíritos de Gaia§r, então você precisa ter vencido o Guardião de Gaia (capítulo Botania). Alguns
+      itens avulsos (Enxada de Terra, Caixa de Buracos Negros, Esfera de Atração e o Tabuleiro) só
+      pedem materiais élficos e já podem ser feitos.
+
+      O mod não tem tradução para português: os nomes aparecem em inglês no jogo. As entradas novas
+      ficam na Lexica, na categoria "Connecting with the past".
+    tasks:
+      - check
+    rewards:
+      - xp: 2
+
+  # ------------------------------------------------------------------ Ancient Alphirine
+  - id: ancient_alphirine
+    title: "Ancient Alphirine"
+    type: main
+    at: [2, 0]
+    deps: [botania:gaia1]
+    deps_hidden: [botania:runa_mana, botania:runa_primavera, botania:runa_verao, botania:runa_outono, botania:runa_inverno]
+    desc: |
+      A guardiã de toda a tecnologia antiga! A §eAncient Alphirine§r sai do Boticário de Pétalas com
+      §e4 Espíritos de Gaia, Runa de Mana, as quatro runas das estações, uma Pétala Laranja e uma
+      Amarela§r.
+
+      Ela é uma flor funcional (até 180.000 de Mana guardada). Jogue perto dela um item que ela
+      reconheça e, gastando §e4.500 de Mana por tentativa§r, ela tenta recriá-lo como um recurso do
+      passado através de um pequeno portal. §cCada tentativa consome uma unidade do item, mesmo quando
+      falha§r (a falha custa só 1/10 da Mana). As chances variam por receita — veja o NEI.
+    tasks:
+      - {get: 'Botania:specialFlower {type:"ancientAlphirine"}', nbt: true}
+    rewards:
+      - xp: 6
+      - choice: ["Botania:manaResource:5 x2", "Botania:manaResource:15 x8", "Botania:petal:1 x8"]
+
+  - id: conhecimento_esquecido
+    title: "Conhecimento Esquecido"
+    type: info
+    at: [2, -2]
+    deps: [ancient_alphirine]
+    desc: |
+      Assim como os elfos fizeram com o portal, a Alphirine quer ler o seu livro: §ejogue a Lexica
+      Botania perto dela§r (com Mana na flor) e ela devolve o livro com o conhecimento §9Esquecido§r
+      desbloqueado — as entradas do Advanced Botany passam a aparecer completas.
+    tasks:
+      - check
+    rewards:
+      - xp: 2
+
+  - id: ar_esquecido
+    title: "Air of Forgotten Lands"
+    type: main
+    at: [4, 0]
+    deps: [ancient_alphirine]
+    deps_hidden: [botania:ar_do_fim]
+    desc: |
+      Jogue §eGarrafas de Ar do Fim§r perto da Alphirine: cada tentativa tem boa chance (cerca de
+      2 em 3) de virar §eAir of Forgotten Lands§r, o ar das terras esquecidas. Ele é peça da Forja de
+      Nidavellir, da Nebula Blaze e das Calças de Nebulosa. Leve umas 8 garrafas do Fim.
+    tasks:
+      - get: "AdvancedBotany:itemABResource:3 x3"
+    rewards:
+      - xp: 4
+      - item: "Botania:manaResource:15 x4"
+
+  - id: presente_natureza
+    title: "Nature's Gift"
+    at: [4, -2]
+    deps: [ancient_alphirine]
+    desc: |
+      Uma §eFlor Mística§r comum (qualquer cor) jogada perto da Alphirine tem cerca de 30% de chance por
+      tentativa de virar §eNature's Gift§r, o "presente da natureza". Ele é a base das flores novas
+      (Dictarius, Ardent Azarcissus, Pure Gladiolus) e da Mana Flower. Junte quatro.
+    tasks:
+      - get: "AdvancedBotany:itemABResource:4 x4"
+    rewards:
+      - xp: 4
+      - item: "Botania:fertilizer x4"
+
+  - id: funil_engenheiro
+    title: "Engineer Hopper"
+    at: [2, -3]
+    deps: [ancient_alphirine]
+    desc: |
+      Um §eFunil§r comum jogado perto da Alphirine pode virar o §eEngineer Hopper§r (cerca de 22% por
+      tentativa). Ele move itens entre dois inventários vinculados à distância, sem canos visíveis:
+      agachado + clique no funil e depois agachado + clique no inventário para vincular (o lado
+      clicado conta); clique normal alterna se você está marcando a origem ou o destino. Ele não
+      puxa itens de cima como um funil comum. Engenharia escondida e elegante!
+    tasks:
+      - get: AdvancedBotany:blockEngineerHopper
+    rewards:
+      - xp: 4
+      - item: "minecraft:hopper x4"
+
+  - id: fagulha_supercondutora
+    title: "Superconductive Spark"
+    at: [1, 1]
+    deps: [ancient_alphirine]
+    desc: |
+      A receita se perdeu, mas a Alphirine lembra: uma §eFagulha§r comum perto dela tem ~11% de chance
+      por tentativa de virar uma §eSuperconductive Spark§r, a fagulha mais rápida "do velho oeste" —
+      transfere Mana muito mais depressa. Ideal para os Mana Containers.
+    tasks:
+      - get: AdvancedBotany:itemAdvancedSpark
+    rewards:
+      - xp: 4
+      - item: "Botania:spark x4"
+
+  # ------------------------------------------------------------------ Forja de Nidavellir e Mithrill
+  - id: forja_nidavellir
+    title: "Forge of Nidavellir"
+    type: main
+    at: [6, 0]
+    deps: [ar_esquecido]
+    deps_hidden: [botania:placa_terrestre, botania:bloco_manasteel, botania:runa_ar]
+    desc: |
+      Uma invenção dos anões de Nidavellir, dada aos elfos e perdida na grande destruição. A §eForja de
+      Nidavellir§r é uma Placa de Aglomeração turbinada: §e2 Blocos de Manasteel, a Placa de
+      Aglomeração Terrestre, uma Bigorna, 2 Air of Forgotten Lands e a Runa do Ar§r.
+
+      Como a placa original, ela funde §etrês itens jogados em cima§r usando muita Mana — receba por
+      rajadas ou, muito melhor, por §eFagulhas§r ligadas a poços (ou aos Mana Containers). Abra o NEI
+      na forja para ver todas as receitas.
+    tasks:
+      - craft: AdvancedBotany:blockABPlate
+    rewards:
+      - xp: 6
+      - choice: ["Botania:storage x2", "Botania:spark x4", "minecraft:anvil"]
+
+  - id: terrasteel_forja
+    title: "Terrasteel na Forja"
+    type: optional
+    at: [6, 1]
+    deps: [forja_nidavellir]
+    desc: |
+      A forja também sabe fazer §eTerrasteel§r com a receita clássica (Manasteel, Diamante de Mana e
+      Pérola de Mana) por 500.000 de Mana — sem precisar do tabuleiro de Lápis-lazúli. Uma forja só
+      para tudo.
+    tasks:
+      - get: Botania:manaResource:4
+    rewards:
+      - loot: incomum
+
+  - id: estrela_mana
+    title: "Mana Nether Star"
+    at: [6, -2]
+    deps: [forja_nidavellir]
+    desc: |
+      §ePó de Mana + Espírito de Gaia + Estrela do Nether§r na forja, com 250.000 de Mana, dão a §eMana
+      Nether Star§r. Ela entra no Natural Mana Spreader, na Aspecolus e no Playing Board. Sim, mais um
+      Wither para a conta.
+    tasks:
+      - get: AdvancedBotany:itemABResource:2
+    rewards:
+      - xp: 4
+      - item: "minecraft:skull:1"
+
+  - id: mithril
+    title: "Mithrill"
+    type: milestone
+    at: [8, 0]
+    deps: [forja_nidavellir]
+    banner: "Mithrill!"
+    subtitle: "O metal que não se quebra"
+    desc: |
+      Espírito de Gaia e Terrasteel se anulavam numa barra… a não ser que o Manasteel equilibre a
+      mistura. Na Forja de Nidavellir, §eum Espírito de Gaia + um Bloco de Manasteel + uma Pepita de
+      Terrasteel§r com §e2.500.000 de Mana§r (dois poços e meio!) viram §eMithrill§r.
+
+      Ferramentas de Mithrill simplesmente §enão sofrem dano§r. Ele é a base dos Mana Containers, do
+      anel de Mithrill, das lâminas e do caminho até a Nebulosa. Prepare uma rede de fagulhas
+      decente — e respire fundo, porque o próximo degrau custa dez vezes mais.
+    tasks:
+      - get: AdvancedBotany:itemABResource
+    rewards:
+      - xp: 12
+      - kit: {name: "Kit dos Anões de Nidavellir", items: ["Botania:manaResource:5 x2", "Botania:storage x2", "Botania:manaResource:18 x4", "Botania:spark x4"]}
+      - loot: epico
+
+  - id: destruidor_materiais
+    title: "Material Destroyer"
+    at: [8, -2]
+    deps: [mithril]
+    desc: |
+      Duas barras de Mithrill, Madeira-viva e Gravetos. O §eMaterial Destroyer§r quebra praticamente
+      qualquer bloco quase na hora — tão rápido que precisou de um "fusível" para ligar e desligar
+      (clique direito). E, sendo de Mithrill, não se desgasta.
+    tasks:
+      - craft: AdvancedBotany:itemMihrillMultiTool
+    rewards:
+      - xp: 4
+
+  - id: lamina_mar
+    title: "Blade of Sea"
+    at: [8, 2]
+    deps: [mithril]
+    deps_hidden: [botania:runa_agua, botania:graveto_sonhos]
+    desc: |
+      Mithrill, Pepita de Mithrill, duas Runas da Água e um Graveto de Madeira dos Sonhos. Cada golpe
+      da §eBlade of Sea§r vem com um jato d'água que empurra todos à frente na direção do seu olhar;
+      ao defender, um escudo de água mantém os inimigos longe.
+    tasks:
+      - craft: AdvancedBotany:itemAquaSword
+    rewards:
+      - xp: 4
+
+  - id: anel_mithril
+    title: "Mithrill Mana Ring"
+    at: [9, -3]
+    deps: [mithril]
+    deps_hidden: [botania:bracelete_mana_superior]
+    desc: |
+      Um Bracelete de Mana Superior envolto em Mithrill e Pepitas de Mithrill. O §eMithrill Mana Ring§r
+      guarda Mana equivalente a §e8 Poços de Mana§r num dedo só.
+    tasks:
+      - craft: AdvancedBotany:itemMithrillRing:*
+    rewards:
+      - xp: 4
+
+  # ------------------------------------------------------------------ Logística de Mana
+  - id: container_mana
+    title: "Mana Container"
+    type: main
+    at: [10, 0]
+    deps: [mithril]
+    deps_hidden: [botania:runa_orgulho, botania:runa_ar, botania:pilone_mana]
+    desc: |
+      Um depósito para loucos: §e4 Mithrill, Runa do Orgulho, Runa do Ar, 2 Poços de Mana e um Pilão de
+      Mana§r formam o §eMana Container§r, um recipiente flutuante que guarda §e64.000.000 de Mana§r (64
+      poços, pela config do pack).
+
+      Ele recebe e entrega Mana como um poço, mas §cnão infunde itens nem carrega ferramentas§r jogadas
+      nele. Use-o como o grande banco de Mana da base, ligado por fagulhas à Forja.
+    tasks:
+      - craft: AdvancedBotany:blockManaContainer
+    rewards:
+      - xp: 6
+      - choice: ["AdvancedBotany:itemAdvancedSpark x2", "Botania:spark x8", "Botania:blackLotus:1"]
+
+  - id: container_diluido
+    title: "Diluted Mana Container"
+    type: optional
+    at: [10, 2]
+    deps: [mithril]
+    desc: |
+      A mesma receita com §ePepitas de Mithrill§r e §ePoços Diluídos§r: guarda 8.000.000 de Mana (8 poços).
+      Mais barato e ainda enorme.
+    tasks:
+      - craft: AdvancedBotany:blockManaContainer:1
+    rewards:
+      - loot: incomum
+
+  - id: container_fabuloso
+    title: "Fabulous Mana Container"
+    type: optional
+    at: [11, 2]
+    deps: [container_mana]
+    deps_hidden: [botania:poco_fabuloso]
+    desc: |
+      Com §ePoços de Mana Fabulosos§r no lugar dos comuns, o container ganha o visual arco-íris — mesma
+      capacidade de 64.000.000 de Mana. Porque estilo importa.
+    tasks:
+      - craft: AdvancedBotany:blockManaContainer:2
+    rewards:
+      - loot: incomum
+
+  - id: cubo_cristal_mana
+    title: "Mana Crystal Cube"
+    at: [10, -2]
+    deps: [container_mana]
+    desc: |
+      Pepitas de Terrasteel, uma Fagulha, Vidro de Mana, a Varinha da Floresta, Madeira dos Sonhos e
+      Manasteel. O §eMana Crystal Cube§r mostra §ea Mana total§r de todos os poços e acumuladores que têm
+      fagulha na rede — ele mesmo não precisa de fagulha. O painel de controle do botânico nerd.
+    tasks:
+      - craft: AdvancedBotany:blockManaCrystalCube
+    rewards:
+      - xp: 4
+
+  - id: carregador_mana
+    title: "Mana Charger"
+    at: [11, -2]
+    deps: [mithril]
+    deps_hidden: [botania:fole_mana, botania:runa_mana]
+    desc: |
+      Pepitas de Mithrill, Rocha-viva, dois Foles da Maré de Mana, um Pilão de Mana e a Runa de Mana. O
+      §eMana Charger§r carrega até §e4 itens de Mana§r ao mesmo tempo (tabletes, anéis, ferramentas) e pode
+      descarregar um deles. Vincule-o com a Varinha a uma fonte (Poço ou Mana Container) para ele
+      funcionar. Ativado nesta config.
+    tasks:
+      - craft: AdvancedBotany:blockManaCharger
+    rewards:
+      - xp: 4
+
+  # ------------------------------------------------------------------ Flores novas
+  - id: flor_mana
+    title: "Mana Flower"
+    at: [4, -3]
+    deps: [presente_natureza]
+    deps_hidden: [botania:garrafa_mana, botania:runa_mana]
+    desc: |
+      Nature's Gift + Mana Engarrafada + Runa de Mana. Um "experimento que deu errado" virou um item
+      útil: a §eMana Flower§r gera Mana sozinha para os §eanéis e Tabletes de Mana§r do seu inventário.
+      (Nenhum elfo foi ferido, garante o Lexica.)
+    tasks:
+      - craft: AdvancedBotany:itemManaFlower
+    rewards:
+      - xp: 4
+
+  - id: dictarius
+    title: "Dictarius"
+    at: [5, -3]
+    deps: [presente_natureza]
+    deps_hidden: [botania:runa_orgulho]
+    desc: |
+      Uma geradora tagarela: §eNature's Gift, 2 Espíritos de Gaia, Runa do Orgulho, 2 Pétalas Amarelas e
+      1 Laranja§r. A cada 10 segundos a §eDictarius§r "discursa" para quem está pertinho (área 5×5) e gera
+      Mana conforme a plateia — §ejogadores rendem muito, aldeões pouco§r (até 16 ouvintes). Com plateia
+      de aldeões grande demais, alguns podem desaparecer!
+      §cCuidado:§r Dictarius demais juntos (mais de 64 numa área 9×9×9, pela config) viram Arbusto Seco.
+    tasks:
+      - {get: 'Botania:specialFlower {type:"dictarius"}', nbt: true}
+    rewards:
+      - xp: 4
+
+  - id: gladiolo_puro
+    title: "Pure Gladiolus"
+    type: optional
+    at: [4, -4]
+    deps: [presente_natureza]
+    deps_hidden: [botania:runa_mana]
+    desc: |
+      Para quem também é taumaturgo: §eNature's Gift, Runa de Mana e Pétalas Cinza Claro, Amarela,
+      Vermelha, Lima, Verde e Azul§r. Gastando Mana, a §ePure Gladiolus§r solta §eorbes de aspectos
+      primais§r do Thaumcraft (Aer, Aqua, Terra, Ignis, Ordo, Perditio) perto dos jogadores — vis para a
+      sua varinha.
+    tasks:
+      - {get: 'Botania:specialFlower {type:"pureGladiolus"}', nbt: true}
+    rewards:
+      - loot: incomum
+
+  - id: aspecolus
+    title: "Aspecolus"
+    type: optional
+    at: [6, -3]
+    deps: [estrela_mana]
+    deps_hidden: [botania:raiz_redstone, botania:runa_fogo, botania:runa_agua]
+    desc: |
+      Raiz de Redstone, Espírito de Gaia, Runas do Fogo e da Água, Mana Nether Star e Pétalas Roxa e
+      Verde. Chegue perto da §eAspecolus§r e parece que alguém está mexendo na sua cabeça: gastando
+      Mana, ela dá §epontos de pesquisa de aspectos§r do Thaumcraft (dos aspectos que você já descobriu).
+      Uma "meditação forçada" para taumaturgos.
+    tasks:
+      - {get: 'Botania:specialFlower {type:"aspecolus"}', nbt: true}
+    rewards:
+      - loot: incomum
+
+  # ------------------------------------------------------------------ Lebethron e o Dispersor Natural
+  - id: madeira_lebethron
+    title: "Lebethron Wood"
+    at: [2, 2]
+    deps: [ancient_alphirine]
+    desc: |
+      A melhor criação dos elfos, perdida quando foram banidos. Jogue §eMadeira dos Sonhos§r perto da
+      Alphirine (cerca de 14% por tentativa) para reviver a §eLebethron Wood§r, um condutor poderoso de
+      Mana. Paciência: junte umas oito.
+    tasks:
+      - get: "AdvancedBotany:blockLebethron x8"
+    rewards:
+      - xp: 4
+      - item: "Botania:dreamwood x16"
+
+  - id: lebethron_decor
+    title: "Lebethron Decorativa"
+    type: optional
+    at: [1, 3]
+    deps: [madeira_lebethron]
+    desc: |
+      Lebethron vira Tábuas (4 por bloco), Tábuas com Musgo (tábua + semente) e Madeira Reluzente (com
+      Pó de Pedra Luminosa). Para templos élficos de verdade.
+    tasks:
+      - one_of: ["AdvancedBotany:blockLebethron:1", "AdvancedBotany:blockLebethron:2", "AdvancedBotany:blockLebethron:3"]
+    rewards:
+      - loot: comum
+
+  - id: nucleo_natural
+    title: "Natural Core"
+    at: [3, 3]
+    deps: [madeira_lebethron]
+    deps_hidden: [botania:pilone_natura, botania:runa_primavera, botania:runa_verao, botania:runa_outono, botania:runa_inverno]
+    desc: |
+      Um Pilão da Natureza no meio de 4 Lebethron Woods e das 4 runas das estações. O §eNatural Core§r é
+      ingrediente do Natural Mana Spreader e do Rod of Sprawl — e, montado numa estrutura, faz nascer
+      uma árvore.
+    tasks:
+      - get: "AdvancedBotany:blockLebethron:4"
+    rewards:
+      - xp: 4
+
+  - id: arvore_lebethron
+    title: "A Árvore de Lebethron"
+    type: optional
+    at: [3, 4]
+    deps: [nucleo_natural]
+    desc: |
+      O Núcleo Natural cria uma árvore de §efolhagem infinita§r — nem fogo nem a Munchdew acabam com ela.
+      Ele precisa de um tronco: uma coluna de §eLebethron Wood§r com o Núcleo como §esegundo bloco de
+      baixo para cima§r (confira a página de estrutura no Lexica) e de folhas que você fornece clicando
+      nele com um bloco de folhas. Marque quando sua árvore estiver de pé.
+    tasks:
+      - check
+    rewards:
+      - loot: incomum
+
+  - id: cajado_expansao
+    title: "Rod of Sprawl"
+    at: [4, 4]
+    deps: [nucleo_natural]
+    deps_hidden: [botania:sementes_pasto]
+    desc: |
+      Sementes de Pasto (qualquer tipo), Natural Core e Gravetos. O §eRod of Sprawl§r dispara um projétil
+      que espalha sementes de grama numa área enorme (até 64 pela config). Transformar um deserto em
+      pasto com um tiro? É com ele.
+    tasks:
+      - craft: AdvancedBotany:itemSprawlRod
+    rewards:
+      - xp: 4
+
+  - id: dispersor_natural
+    title: "Natural Mana Spreader"
+    type: main
+    at: [5, 3]
+    deps: [nucleo_natural]
+    deps_hidden: [estrela_mana, botania:dispersor_gaia, botania:pilone_mana]
+    desc: |
+      §e4 Natural Cores, 2 Mana Nether Stars, 2 Pilões de Mana e um Dispersor de Gaia§r. O §eNatural
+      Mana Spreader§r é o dispersor dos especialistas: cada rajada carrega §e32.000 de Mana§r e ele guarda
+      até 128.000 (valores da config). Entregar uma tonelada de Mana em instantes, para flores e forjas
+      famintas. E sim: ele brilha!
+    tasks:
+      - craft: AdvancedBotany:blockABSpreader
+    rewards:
+      - xp: 6
+      - choice: ["Botania:spreader:3", "AdvancedBotany:itemABResource:2", "Botania:manaResource:5 x2"]
+
+  # ------------------------------------------------------------------ Nebulosa
+  - id: fragmento_nebulosa
+    title: "Nebula Fragment"
+    type: milestone
+    at: [12, 0]
+    deps: [container_mana]
+    deps_hidden: [botania:po_fada, botania:pedra_draconiana]
+    banner: "Nebula Fragment"
+    subtitle: "Um pedaço do cosmos"
+    desc: |
+      O material com um pedaço do poder do espaço. Na Forja de Nidavellir: §ePó de Fada + Bloco de Pedra
+      Draconiana + Pepita de Mithrill§r e — segure-se — §e25.000.000 de Mana§r. Vinte e cinco poços cheios
+      por fragmento! É para isso que o Mana Container existe.
+
+      Um fragmento vira 9 §ePieces of Nebula§r na bancada (e 9 pedaços voltam a ser um fragmento). Com
+      eles nascem as armas, o anel e a armadura de Nebulosa. Eu nem sei o que dizer… Você é a pessoa
+      mais paciente do Registro, Herói.
+    tasks:
+      - get: AdvancedBotany:itemABResource:5
+    rewards:
+      - xp: 12
+      - kit: {name: "Kit do Astrônomo Botânico", items: ["Botania:storage:4", "Botania:manaResource:8 x8", "AdvancedBotany:itemABResource:1 x9"]}
+      - loot: epico
+
+  - id: anel_nebulosa
+    title: "Nebula Mana Ring"
+    at: [12, -2]
+    deps: [fragmento_nebulosa, anel_mithril]
+    desc: |
+      O Mithrill Mana Ring cercado de Espíritos de Gaia e Pieces of Nebula. O §eNebula Mana Ring§r guarda
+      Mana equivalente a §e48 Poços de Mana§r. Nunca mais "sem Mana".
+    tasks:
+      - craft: AdvancedBotany:itemNebulaRing:*
+    rewards:
+      - xp: 5
+
+  - id: cajado_nebulosa
+    title: "Rod of Nebula"
+    at: [13, -2]
+    deps: [fragmento_nebulosa]
+    deps_hidden: [botania:graveto_sonhos, botania:runa_mana]
+    desc: |
+      Gravetos de Madeira dos Sonhos, uma Piece of Nebula e a Runa de Mana. O §eRod of Nebula§r revela a
+      essência da Nebulosa — §emover-se§r: abre um portal pessoal para te tirar de um lugar ruim ou para
+      viajar. Usa uma "força" que se recupera com o tempo e com Mana. Confira na Lexica como escolher o
+      destino.
+    tasks:
+      - craft: AdvancedBotany:itemNebulaRod
+    rewards:
+      - xp: 5
+
+  - id: lamina_espaco
+    title: "Blade of Space"
+    at: [14, -2]
+    deps: [fragmento_nebulosa]
+    deps_hidden: [mithril]
+    desc: |
+      Duas barras de Mithrill, duas Pieces of Nebula e um Graveto. Como o Terra-Destruidor, a §eBlade of
+      Space§r acumula Mana e sobe de §erank§r; cada rank abre um poder: §eStarburst§r (projétil estelar ao
+      golpear), §eSpatial leap§r (impulso na direção do olhar com clique direito) e golpes em área 3×3,
+      5×5 e 7×7.
+    tasks:
+      - craft: AdvancedBotany:itemMithrillSword
+    rewards:
+      - xp: 5
+
+  - id: labareda_nebulosa
+    title: "Nebula Blaze"
+    at: [13, 2]
+    deps: [fragmento_nebulosa]
+    deps_hidden: [ar_esquecido]
+    desc: |
+      Pieces of Nebula, 3 Blocos de Manasteel e Air of Forgotten Lands. A §eNebula Blaze§r é uma arma
+      mágica para "quando alguém está te tirando do sério": aponte e dispare — o projétil até corrige a
+      mira sozinho.
+    tasks:
+      - craft: AdvancedBotany:itemNebulaBlaze
+    rewards:
+      - xp: 5
+
+  - id: armadura_nebulosa
+    title: "Armadura de Nebulosa"
+    type: milestone
+    at: [15, 0]
+    deps: [fragmento_nebulosa]
+    deps_hidden: [botania:armadura_terrasteel, botania:tiara_flugel, botania:cinta_desbravador, ar_esquecido]
+    banner: "Parentesco com o Cosmos"
+    subtitle: "A armadura de Nebulosa completa"
+    desc: |
+      Cada peça é uma peça de §eTerrasteel§r + Nebula Fragments + Elementium + Pó de Fada, e duas pedem
+      extras: o §ePeitoral§r leva uma §eTiara de Flügel§r e as §eBotas§r uma §eCinta do Desbravador Planar§r (as
+      Calças levam Air of Forgotten Lands).
+
+      Poderes: §eElmo§r aumenta a vida, §ePeitoral§r dá voo e resistência a empurrão, §eCalças§r aumentam o
+      pulo e §eBotas§r a velocidade. A proteção depende da Mana guardada em cada peça. Conjunto completo:
+      §e-30% de custo de Mana§r em ferramentas e cajados.
+
+      Herói, você vestiu as estrelas. O Volume Esquecido está completo.
+    tasks:
+      - get: ["AdvancedBotany:nebulaHelm:*", "AdvancedBotany:nebulaChest:*", "AdvancedBotany:nebulaLegs:*", "AdvancedBotany:nebulaBoots:*"]
+    rewards:
+      - xp: 15
+      - loot: [epico, lendario]
+
+  - id: elmo_nebulosa_revelacao
+    title: "Nebula Helmet of Revealing"
+    type: optional
+    at: [15, 2]
+    deps: [armadura_nebulosa]
+    desc: |
+      Para taumaturgos: o Elmo de Nebulosa + §eÓculos da Descoberta§r do Thaumcraft na bancada dão o
+      §eNebula Helmet of Revealing§r, que mostra aspectos e nodos sem perder os poderes do elmo.
+    tasks:
+      - get: "AdvancedBotany:nebulaHelmRevealing:*"
+    rewards:
+      - loot: raro
+
+  # ------------------------------------------------------------------ Itens élficos avulsos
+  - id: enxada_terra
+    title: "Terrahoe"
+    at: [-2, 0]
+    deps: [intro]
+    deps_hidden: [botania:terrasteel, botania:runa_terra]
+    desc: |
+      Duas Barras e uma Pepita de Terrasteel, Runa da Terra e Gravetos. A §eTerrahoe§r ara a terra
+      transformando-a em §eFertile Soil§r, um solo automatizado: as plantações sobre ele §ese colhem
+      sozinhas§r depois de um tempo. Fazendas preguiçosas, aprovadas.
+    tasks:
+      - craft: AdvancedBotany:itemTerraHoe
+    rewards:
+      - xp: 4
+      - item: "minecraft:wheat_seeds x32"
+
+  - id: caixa_buraco_negro
+    title: "Black Hole Box"
+    at: [-2, 1]
+    deps: [intro]
+    deps_hidden: [botania:talisma_buraco_negro, botania:aureola_manufatura]
+    desc: |
+      Elementium, 2 Talismãs do Buraco-negro e a Auréola de Manufatura. A §eBlack Hole Box§r carrega até
+      §e12 Talismãs do Buraco-negro§r num único espaço. Para guardar um talismã nela, ele precisa estar na
+      barra rápida e já ter um tipo de bloco definido. O sonho de qualquer pedreiro.
+    tasks:
+      - craft: AdvancedBotany:itemBlackHalo
+    rewards:
+      - xp: 4
+
+  - id: esfera_atracao
+    title: "Sphere of Attraction"
+    at: [-2, 2]
+    deps: [intro]
+    deps_hidden: [botania:flores_flutuantes, botania:elementium, botania:vidro_elfico, botania:runa_ar]
+    desc: |
+      Vidro Élfico, uma Flor Flutuante, Elementium e Runa do Ar. A §eSphere of Attraction§r §eparalisa
+      blocos em queda§r à sua volta: areia, cascalho, até bigornas. Física, quem precisa dela?
+    tasks:
+      - craft: AdvancedBotany:itemAntigravityCharm
+    rewards:
+      - xp: 4
+
+  - id: caixote_thaumim
+    title: "Thaumim Crafty Crate"
+    type: optional
+    at: [-2, 3]
+    deps: [intro]
+    deps_hidden: [botania:caixote_inteligente]
+    desc: |
+      Tecido Encantado, Salis Mundus, Madeira de Greatwood e um Caixote Inteligente. O §eThaumim Crafty
+      Crate§r é um Caixote Inteligente para receitas da §eBancada Arcana§r do Thaumcraft: precisa de um
+      Thaumonomicon e de uma varinha com Vis. Os §eThaumim Crafting Placeholders§r (Bancada + Rocha-viva
+      + Salis Mundus = 48) e os padrões com Pepitas de Táumio funcionam como os do Botania.
+    tasks:
+      - get: [AdvancedBotany:magicThaumCrafter, AdvancedBotany:itemCraftingPattern]
+    rewards:
+      - loot: incomum
+
+  # ------------------------------------------------------------------ Tabuleiros e Relíquias do Panteão
+  - id: tabuleiro
+    title: "Playing Board"
+    at: [0, 5]
+    deps: [intro]
+    deps_hidden: [botania:diamante_mana, botania:quartzos]
+    desc: |
+      Dois Blocos de Quartzo de Mana, um Diamante de Mana, dois Manasteels e Pó de Mana. O
+      §ePlaying Board§r é um passatempo élfico com dois modos — contra um amigo ou sozinho (agachado +
+      clique direito troca, entre partidas). Os elfos jogam valendo Mana… e a próxima flor também.
+    tasks:
+      - craft: AdvancedBotany:blockBoardFate
+    rewards:
+      - xp: 4
+
+  - id: azarcissus
+    title: "Ardent Azarcissus"
+    at: [0, 6]
+    deps: [tabuleiro]
+    deps_hidden: [presente_natureza]
+    desc: |
+      Uma flor apostadora: §eNature's Gift, 2 Pétalas Azuis, 2 Vermelhas, 1 Verde e 1 Espírito de Gaia§r.
+      Plante a §eArdent Azarcissus§r ao lado de um §ePlaying Board§r e ela joga contra o próprio tabuleiro;
+      quando vence, gera Mana conforme a diferença de pontos. É classificada como flor passiva.
+    tasks:
+      - {get: 'Botania:specialFlower {type:"ardentAzarcissus"}', nbt: true}
+    rewards:
+      - xp: 4
+
+  - id: tabuleiro_destino
+    title: "Fate Playing Board"
+    type: main
+    at: [2, 5]
+    deps: [tabuleiro]
+    deps_hidden: [ancient_alphirine]
+    desc: |
+      Todo elfo sonhava em jogar neste tabuleiro, esperando um prêmio valioso. Jogue um §ePlaying Board§r
+      perto da Alphirine (~55% por tentativa) e ele vira o §eFate Playing Board§r.
+
+      Ele usa §eDados do Destino§r (do Gaia II): "1 dado, 6 relíquias; 2 dados…" — no tabuleiro, os dados
+      podem render também as §erelíquias do Panteão§r do Advanced Botany, além das seis do Botania.
+    tasks:
+      - get: "AdvancedBotany:blockBoardFate:1"
+    rewards:
+      - xp: 6
+      - choice: ["Botania:keepIvy x2", "Botania:manaResource:5 x2", "Botania:manaResource:9 x4"]
+
+  - id: estilingue_freyr
+    title: "Freyr Slingshot"
+    type: optional
+    at: [3, 6]
+    deps: [tabuleiro_destino]
+    deps_hidden: [botania:gaia2]
+    desc: |
+      Relíquia de Freyr. O "Clarão Natural" do §eFreyr Slingshot§r acelera sementes e mudas na área e deixa
+      os animais com clima de romance. Acertando uma árvore, ela se cobre de §eFertile Liana§r (acelera o
+      que cresce embaixo) ou da versão brilhante, que ainda gera Pepitas de Ouro!
+    tasks:
+      - get: AdvancedBotany:freyrSlingshot
+    rewards:
+      - loot: raro
+
+  - id: chave_riquezas
+    title: "Key to Hidden Wealth"
+    type: optional
+    at: [4, 6]
+    deps: [tabuleiro_destino]
+    deps_hidden: [botania:gaia2]
+    desc: |
+      Insira, gire, abra. A §eKey to Hidden Wealth§r faz surgir §ebaús de pertences pessoais§r — guarde seus
+      tesouros em cada um, ou use-os como despensa portátil na mineração.
+    tasks:
+      - get: AdvancedBotany:talismanHiddenRiches
+    rewards:
+      - loot: raro
+
+  - id: cubo_agil
+    title: "Nimble Cube"
+    type: optional
+    at: [5, 6]
+    deps: [tabuleiro_destino]
+    deps_hidden: [botania:gaia2]
+    desc: |
+      O §eNimble Cube§r guarda um segundo conjunto de armadura. Quando você é atacado, ele troca na hora
+      para o conjunto configurado na área vermelha e depois volta ao visual anterior. Bonito por fora,
+      forte por dentro.
+    tasks:
+      - get: AdvancedBotany:autoPocketWardrobe
+    rewards:
+      - loot: raro
+
+  - id: esfera_navegacao
+    title: "Sphere of Navigation"
+    type: optional
+    at: [3, 7]
+    deps: [tabuleiro_destino]
+    deps_hidden: [botania:gaia2]
+    desc: |
+      A §eSphere of Navigation§r encontra um bloco escolhido através das paredes e marca onde ele está.
+      Cada busca custa Mana (2.500 pela config) — e no longo prazo isso soma. Raio-X ou relíquia sagrada?
+    tasks:
+      - get: AdvancedBotany:sphereNavigation
+    rewards:
+      - loot: raro
+
+  - id: chifre_fartura
+    title: "Horn of Plenty"
+    type: optional
+    at: [4, 7]
+    deps: [tabuleiro_destino]
+    deps_hidden: [botania:gaia2]
+    desc: |
+      Relíquia de um dos Ases ligado à caça. Use o §eHorn of Plenty§r para carregá-lo com Mana; depois,
+      cada criatura que você abater tem chance de deixar §edrops extras§r. Caçada dupla!
+    tasks:
+      - get: AdvancedBotany:hornPlenty
+    rewards:
+      - loot: raro

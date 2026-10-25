@@ -6,7 +6,7 @@ Capítulo `cozinha` — "Cozinha e Banquetes" — `quests/chapters/base/cozinha.
 
 | Mod | Versão no pack | Namespace | Papel |
 | --- | --- | --- | --- |
-| Pam's HarvestCraft | 1.7.10Lb (mcmod diz "1.7.10i"; registro "1.7.10j") | `harvestcraft` | ~600 comidas, 70+ cultivos, 12 jardins, 40+ árvores frutíferas, abelhas, Mercado, Prensa, armadilhas |
+| Pam's HarvestCraft | 1.7.10Lb (mcmod diz "1.7.10i"; registro "1.7.10j") | `harvestcraft` | ~600 comidas, 70+ cultivos, 12 jardins, 40+ árvores frutíferas, abelhas, Mercado, Pressionador, armadilhas |
 | Cooking for Blockheads | 1.4.13-GTNH | `cookingforblockheads` | Livros de receitas e a cozinha multibloco (Mesa de Cozinha, Geladeira, Pia, Forno…) |
 | The Kitchen Mod | 1.3.23 (MrSpring) | `kitchen` | Sanduíches modulares na Tábua de Cortar, faca, forno a carvão, frigideira e geleias |
 | AppleCore | 3.3.11 | `AppleCore` | Mostra fome/saturação no tooltip (Shift) e no HUD; base das mecânicas de comida |
@@ -23,7 +23,7 @@ penalidade por repetir comida) nem mod de sede.
 
 Sem energia. Recursos-chave: Sal (Panela + qualquer água `listAllwater`), Água Fresca
 (balde de água → 1), Leite Fresco (balde de leite → 4), Óleo de Cozinha
-(`oliveoilItem`: Espremedor + azeitona/girassol, ou Prensa), Massa, Caldo, esmeraldas (Mercado).
+(`oliveoilItem`: Espremedor + azeitona/girassol, ou Pressionador), Massa, Caldo, esmeraldas (Mercado).
 
 ## AppleCore e a fome (config `AppleCore.cfg`)
 
@@ -76,8 +76,8 @@ Fome em meias-coxinhas (2 = 1 coxinha). Exemplos usados no catálogo:
    plantados na água (`enablecropspecialplanting=true`).
 4. **Pomares:** 40 árvores frutíferas (Twilight desligado); mudas no Mercado.
 5. **Abelhas:** Colmeias nas árvores (`beehiveRarity=5`) → Abelha Rainha → Apiária (favos de
-   mel/cera, larvas) → Prensa (mel, cera).
-6. **Máquinas:** Prensa, Forno (óleo), Batedeira (sal), Moinho (placas de pressão de pedra),
+   mel/cera, larvas) → Pressionador (mel, cera).
+6. **Máquinas:** Pressionador, Forno (óleo), Batedeira (sal), Moinho (placas de pressão de pedra),
    Pias/Poço, Armadilhas de peixe e de animais, Mercado (esmeraldas).
 7. **Cozinha CfB** e **Kitchen Mod**.
 8. **Catálogo de banquetes** por nível de fome/saturação até os pratos de 18.
@@ -112,7 +112,7 @@ Fome em meias-coxinhas (2 = 1 coxinha). Exemplos usados no catálogo:
 * **Mercado** (tábuas nos cantos, lã nas bordas, esmeralda no centro): compra sementes (1
   esmeralda), mudas de árvores (3), farinha de osso (3) e ovos de criação (spawn eggs) de
   galinha (3), porco (6), ovelha (6), vaca (9) e cavalo (12) — moeda padrão esmeralda.
-* **Prensa** (ferro/bronze/aço + 2 pistões): favo de mel → cera + mel; frutas → suco + isca;
+* **Pressionador** (Presser; ferro/bronze/aço + 2 pistões): favo de mel → cera + mel; frutas → suco + isca;
   azeitona/girassol/nozes/sementes → óleo + isca; cana → açúcar; tronco → papel; soja → tofu.
 * **Forno** HarvestCraft (ferro + barras de ferro + fornalha): só comida, combustível Óleo de
   Cozinha, muito rápido.

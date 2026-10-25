@@ -85,7 +85,7 @@ rocha do Nether, obsidiana e metais fundidos.
 | Rocha do Nether / Obsidiana | quase tudo **exceto lâminas de espada, lâmina grande, lâmina de faca, frigideira e cinzel** (rocha do Nether também sem cabeça de martelo) |
 
 Consequência: **não há lâmina de espada sem metal** (nem de pederneira, pedra ou osso). A
-primeira arma "barata" é a **Adaga** (lâmina de faca de pederneira/osso/cacto).
+primeira arma "barata" é o **Punhal** (Dagger: lâmina de faca de pederneira/osso/cacto).
 
 ### TConstruct (`config/TinkersConstruct.cfg`)
 
@@ -132,7 +132,7 @@ Arsenal, 314–316 Extra Utilities, 500/501 Avaritia, 1000/1001 MFR, 1020–1025
    Baú de Moldes. Livros: estêncil + papel → *Materiais e Você v1* → v2 → *Fundições Poderosas*
    → *Arsenal do Construtor* → *Diário de um Construtor* (cada um craftado do anterior).
 2. **Pedra lascada:** pederneira (3 cascalhos), peças de pederneira/madeira/osso/cacto/papel,
-   picareta/pá/machadinha/enxadão/adaga; XP de ferramenta e "Melhorado".
+   picareta/pá/machadinha/alvião (Mattock)/punhal (Dagger); XP de ferramenta e "Melhorado".
 3. **Fundição** (`TConstruct:Smeltery` etc.): Argamassa (`CraftedSoil:1`: 1 argila + 1 areia + 1
    cascalho → 2) → fornalha → Tijolo da Fundição (`materials:2`) → bloco de tijolos (4).
    Controle (8 tijolos), Dreno, Tanque (8 tijolos + vidro), Torneira, Mesa e Bacia de Fundição.
@@ -165,7 +165,7 @@ Arsenal, 314–316 Extra Utilities, 500/501 Avaritia, 1000/1001 MFR, 1020–1025
 
 * **Fundição** (descrita acima). Versão do Nether: `SmelteryNether`, com Argamassa do Nether
   (`CraftedSoil:6`: fungo do Nether + areia das almas + cascalho) → `materials:37`.
-* **Estação/Forja de Ferramentas:** Forja = 3 blocos de tijolo da fundição em cima, Estação no
+* **Estação de Ferramenta / Forja de Ferramentas:** Forja = 3 blocos de tijolo da fundição em cima, Estação no
   centro, 4 blocos de metal (ferro, ouro, diamante, esmeralda, cobalto, ardite, manyullyn,
   cobre, bronze, estanho, alumínio, alumínio-bronze, alumite ou aço — 14 variantes).
 * **Cabide de Secagem** (3 lajes de madeira): carne → charque.
@@ -174,9 +174,9 @@ Arsenal, 314–316 Extra Utilities, 500/501 Avaritia, 1000/1001 MFR, 1020–1025
 ## Dimensões, estruturas, chefes e mobs
 
 Ilhas de slime (Overworld), Slime-Azul (dropa Slime Gelatinoso `strangeFood:0`), Slime Rei.
-Corações: Mini Coração Amarelo cai de monstros hostis (há lista de exceção
-`YellowHeartDropBlacklist` na config); 1 Mini Coração Amarelo vira 1 Mini Coração Vermelho na
-bancada. **Lata Verde não tem receita no pack** (não incluída).
+Corações: Mini Corações são drops raros de criaturas/chefes (a config tem a lista de exceção
+`YellowHeartDropBlacklist` = NPCs do Custom NPCs; fonte exata não confirmada sem o NEI);
+1 Mini Coração Amarelo vira 1 Mini Coração Vermelho na bancada. **Lata Verde não tem receita no pack** (não incluída).
 
 ## Integrações no pack
 
@@ -211,6 +211,11 @@ bancada. **Lata Verde não tem receita no pack** (não incluída).
 * `tinkers:biblioteca_moldes` — conjunto de moldes de metal essenciais.
 * `tinkers:liga_alumite` — primeira liga de nível Cobalto (Alumite).
 * `tinkers:manyullyn` — Manyullyn, a liga do Nether (fim da metalurgia do TiC).
-* `tinkers:mestre_forja` — Martelo, Machado de Lenhador e Escavador (ferramentas grandes).
-* `tinkers:arsenal` — Espada Larga, Espada Longa e Rapieira.
+* `tinkers:mestre_forja` — Martelo, Machado de lenhador (Lumber Axe) e Escavador (ferramentas grandes).
+* `tinkers:arsenal` — Espada (Broadsword), Espada Longa e Florete (Rapier).
 * `tinkers:viajante_completo` — conjunto completo do Viajante.
+
+Nota de nomes (pt_BR do jogo): Broadsword = "Espada", Rapier = "Florete", Dagger = "Punhal",
+Cutlass = "Cutelo", Cleaver = "Decepador", Mattock = "Alvião", Lumber Axe = "Machado",
+Javelin = "Lança", Bolts = "Dardos", Tough Rod = "Cabo" (mesmo nome do cabo comum),
+Broad Axe Head = "Cabeça de Machado de Batalha". As quests usam esses nomes.

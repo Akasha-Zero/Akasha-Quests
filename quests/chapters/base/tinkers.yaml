@@ -81,11 +81,11 @@ quests:
       - choice: [minecraft:log x8, minecraft:cobblestone x32, minecraft:flint x6]
 
   - id: estacao_ferramentas
-    title: "Estação de Ferramentas"
+    title: "Estação de Ferramenta"
     type: main
     deps: [estencil_branco]
     desc: |
-      Estêncil em cima de uma §ebancada§r = §eEstação de Ferramentas§r. É aqui que as peças viram ferramentas (as de 2 e 3 peças), que você aplica modificadores e renomeia suas criações.
+      Estêncil em cima de uma §ebancada§r = §eEstação de Ferramenta§r. É aqui que as peças viram ferramentas (as de 2 e 3 peças), que você aplica modificadores e renomeia suas criações.
 
       Os ícones à esquerda mostram cada ferramenta e onde vai cada peça. Ela também conserta: coloque a ferramenta e o material da cabeça.
     tasks:
@@ -99,7 +99,7 @@ quests:
     type: optional
     deps: [mesa_estenceis]
     desc: |
-      Estênceis espalhados pelo chão? Não no meu Registro! O §eBaú de Moldes§r (estêncil + baú) guarda só estênceis e moldes .
+      Estênceis espalhados pelo chão? Não no meu Registro! O §eBaú de Moldes§r (estêncil + baú) guarda só estênceis e moldes.
 
       Deixe-o ao lado das mesas da oficina para ter todos os formatos à mão.
     tasks:
@@ -153,7 +153,7 @@ quests:
     type: normal
     deps: [livro_fundicao]
     desc: |
-      Fundições Poderosas na bancada vira o §eArsenal do Construtor§r: facas de arremesso, shuriken, dardos, arcos curtos e longos, bestas, flechas e virotes.
+      Fundições Poderosas na bancada vira o §eArsenal do Construtor§r: facas de arremesso, shuriken, lanças, arcos curtos e longos, bestas, flechas e dardos de besta.
 
       Tudo explicado por um xerife chamado Bownana. Não me pergunte.
     tasks:
@@ -241,9 +241,9 @@ quests:
     type: normal
     deps: [mesa_estenceis]
     desc: |
-      Picaretas, enxadões e outras ferramentas de 3 peças precisam de um §econector§r prendendo a cabeça no cabo.
+      Picaretas, alviões e outras ferramentas de 3 peças precisam de um §econector§r prendendo a cabeça no cabo.
 
-      Dica do Iguana: uma §elinha§r comum também serve como conector na Estação de Ferramentas. Mas um conector de verdade (madeira, cacto, papel, slime) influencia a ferramenta e conta como peça trocável.
+      Dica do Iguana: uma §elinha§r comum também serve como conector na Estação de Ferramenta. Mas um conector de verdade (madeira, cacto, papel, slime) influencia a ferramenta e conta como peça trocável.
     tasks:
       - get: TConstruct:woodPattern:9
     rewards:
@@ -298,7 +298,7 @@ quests:
     deps: [cabeca_picareta_pederneira, cabo_madeira, estacao_ferramentas]
     banner: "Primeira Ferramenta Viva"
     desc: |
-      O momento chegou! Na Estação de Ferramentas, escolha o ícone da picareta e coloque §ecabeça + cabo + conector§r (ou linha). Dê um nome se quiser: ela vai crescer com você.
+      O momento chegou! Na Estação de Ferramenta, escolha o ícone da picareta e coloque §ecabeça + cabo + conector§r (ou linha). Dê um nome se quiser: ela vai crescer com você.
 
       Passe o mouse e veja: §eNível de Habilidade§r, §eXP de Habilidade§r e §eNível de Mineração§r. Segure Shift para os números. Quebre pedra e ela aprende. Quando quebrar, ela não some: fica "quebrada" e é só consertar.
 
@@ -333,7 +333,7 @@ quests:
 
       Antes disso, uma picareta de pederneira só quebra o que uma de pedra quebraria, e uma de ferro não pega diamante. §aMinere bastante pedra com ela logo cedo§r e o problema some.
 
-      Atalho: cabeças de mob na Estação de Ferramentas também melhoram a picareta (próximas páginas).
+      Atalho: cabeças de mob na Estação de Ferramenta também melhoram a picareta (próximas páginas).
     tasks:
       - check
     rewards:
@@ -344,7 +344,7 @@ quests:
     type: info
     deps: [primeira_picareta]
     desc: |
-      Ferramenta do Tinkers não some quando a durabilidade zera: ela fica §cquebrada§r e para de funcionar. Para consertar, coloque-a na Estação de Ferramentas com o material da §ecabeça§r (pederneira para pederneira, lingote para metal…).
+      Ferramenta do Tinkers não some quando a durabilidade zera: ela fica §cquebrada§r e para de funcionar. Para consertar, coloque-a na Estação de Ferramenta com o material da §ecabeça§r (pederneira para pederneira, lingote para metal…).
 
       Neste pack dá até para consertar direto na bancada (ferramenta + material). E ao morrer, a ferramenta perde 10% da durabilidade, mas não se destrói se cair no chão.
     tasks:
@@ -357,7 +357,7 @@ quests:
     type: normal
     deps: [primeira_picareta]
     desc: |
-      Cabeça de pá + cabo. Duas peças, Estação de Ferramentas, pronto!
+      Cabeça de pá + cabo. Duas peças, Estação de Ferramenta, pronto!
 
       Uma boa pá de pederneira ou osso já cava terra e cascalho num piscar — e você vai precisar de MUITO cascalho, areia e argila para a Fundição.
     tasks:
@@ -381,11 +381,11 @@ quests:
       - item: minecraft:log x8
 
   - id: enxadao
-    title: "Enxadão"
+    title: "Alvião"
     type: normal
     deps: [pa_tinkers, machadinha]
     desc: |
-      Cabeça de machado + cabo + cabeça de pá = §eEnxadão§r (Mattock). Ara a terra como uma enxada e ainda cava e corta razoavelmente.
+      Cabeça de machado + cabo + cabeça de pá = §eAlvião§r (Mattock). Ara a terra como uma enxada e ainda cava e corta razoavelmente.
 
       É a "enxada" do Tinkers: perfeito para quem vai cuidar de horta (o capítulo de Cozinha agradece).
     tasks:
@@ -395,13 +395,13 @@ quests:
       - item: minecraft:wheat_seeds x8
 
   - id: adaga
-    title: "Adaga"
+    title: "Punhal"
     type: normal
     deps: [primeira_picareta]
     desc: |
       Sem metal não há lâmina de espada neste pack, mas há §elâmina de faca§r! Pederneira, osso ou cacto + Estêncil de Lâmina de Faca; junte cabo e §eprotetor curto§r (madeira ou osso).
 
-      A §eAdaga§r é leve, rápida e pode ser arremessada com o botão direito. Ótima até você chegar à Fundição.
+      O §ePunhal§r (Dagger) é leve, rápida e pode ser arremessada com o botão direito. Ótima até você chegar à Fundição.
     tasks:
       - get: TConstruct:dagger
     rewards:
@@ -452,7 +452,7 @@ quests:
     type: optional
     deps: [impulso_mineracao]
     desc: |
-      Uma cabeça de mob aplicada a uma picareta (ou martelo) na Estação de Ferramentas faz a §emelhoria§r na hora, sem gastar modificador — mas só até um limite (tooltip "Aplicável até"):
+      Uma cabeça de mob aplicada a uma picareta (ou martelo) na Estação de Ferramenta faz a §emelhoria§r na hora, sem gastar modificador — mas só até um limite (tooltip "Aplicável até"):
 
       • Zumbi → Ferro • Esqueleto, Creeper, Pigman → Redstone
       • Blaze, Blizz → Obsidiana • Enderman, Esqueleto Wither → Cobalto
@@ -534,7 +534,7 @@ quests:
       - item: TConstruct:CraftedSoil:1 x16
 
   - id: controlador
-    title: "Controle da Fundição"
+    title: "Controle da Oficina de Fundição"
     type: main
     deps: [tijolo_fundicao]
     desc: |
@@ -732,7 +732,7 @@ quests:
     desc: |
       Existe uma versão escura da Fundição! A §eArgamassa do Nether§r (fungo do Nether + areia das almas + cascalho, rende 2) assada vira tijolo do Nether, que monta Controle, Drenos, Tanques e mesas idênticos aos normais.
 
-      Faça um Controle da Fundição do Nether.
+      Faça um Controle da Oficina de Fundição do Nether.
     tasks:
       - get: TConstruct:SmelteryNether
     rewards:
@@ -815,7 +815,7 @@ quests:
     type: normal
     deps: [pecas_pedra]
     desc: |
-      Um §eMolde de Cabo§r permite cabos de metal, bem mais resistentes. Ele também é a base dos virotes da besta: um cabo na mesa recebe metal na ponta.
+      Um §eMolde de Cabo§r permite cabos de metal, bem mais resistentes. Ele também é a base dos dardos da besta: um cabo na mesa recebe metal na ponta.
     tasks:
       - get: TConstruct:metalPattern:1
     rewards:
@@ -827,7 +827,7 @@ quests:
     type: normal
     deps: [pecas_pedra]
     desc: |
-      Conectores de metal completam picaretas e enxadões de metal. Cada material novo muda um pouquinho a ferramenta — teste combinações!
+      Conectores de metal completam picaretas e alviões de metal. Cada material novo muda um pouquinho a ferramenta — teste combinações!
     tasks:
       - get: TConstruct:metalPattern:9
     rewards:
@@ -839,7 +839,7 @@ quests:
     type: normal
     deps: [pecas_pedra]
     desc: |
-      Os moldes de §eCabeça de Pá§r e de §eCabeça de Machado§r completam o trio de ferramentas básicas (e o enxadão).
+      Os moldes de §eCabeça de Pá§r e de §eCabeça de Machado§r completam o trio de ferramentas básicas (e o alvião).
     tasks:
       - get: [TConstruct:metalPattern:3, TConstruct:metalPattern:4]
     rewards:
@@ -851,7 +851,7 @@ quests:
     type: normal
     deps: [pecas_pedra]
     desc: |
-      Lembra que não existe lâmina de espada sem metal neste pack? Pois aqui está a solução. O §eMolde de Lâmina de Espada§r abre as espadas larga, longa, rapieira e cutelo.
+      Lembra que não existe lâmina de espada sem metal neste pack? Pois aqui está a solução. O §eMolde de Lâmina de Espada§r abre a Espada (Broadsword), a Espada Longa, o Florete e o Cutelo.
     tasks:
       - get: TConstruct:metalPattern:5
     rewards:
@@ -863,7 +863,7 @@ quests:
     type: normal
     deps: [molde_lamina]
     desc: |
-      Cada espada tem um protetor diferente: §eProtetor Largo§r (espada larga), §eProtetor de Mão§r (espada longa) e §eProtetor Curto§r (rapieira e adaga). Faça os três moldes.
+      Cada espada tem um protetor diferente: §eProtetor Largo§r (Espada), §eProtetor de Mão§r (Espada Longa) e §eProtetor Curto§r (Florete e Punhal). Faça os três moldes.
     tasks:
       - get: [TConstruct:metalPattern:6, TConstruct:metalPattern:7, TConstruct:metalPattern:8]
     rewards:
@@ -875,7 +875,7 @@ quests:
     type: optional
     deps: [pecas_pedra]
     desc: |
-      Lâminas de faca de metal fazem adagas e facas de arremesso de verdade. Bem mais afiadas que a pederneira.
+      Lâminas de faca de metal fazem punhais e facas de arremesso de verdade. Bem mais afiadas que a pederneira.
     tasks:
       - get: TConstruct:metalPattern:12
     rewards:
@@ -897,7 +897,7 @@ quests:
     type: normal
     deps: [pecas_pedra]
     desc: |
-      Pontas de flecha de metal pesam mais e atravessam armaduras. Também são a ponta dos dardos (javelins).
+      Pontas de flecha de metal pesam mais e atravessam armaduras. Também são a ponta das lanças (Javelin).
     tasks:
       - get: TConstruct:metalPattern:25
     rewards:
@@ -942,11 +942,11 @@ quests:
       - item: minecraft:gold_ingot x2
 
   - id: molde_machado_largo
-    title: "Molde de Machado Largo"
+    title: "Molde de Cabeça de Machado de Batalha"
     type: normal
     deps: [moldes_pesados]
     desc: |
-      A §eCabeça de Machado Largo§r faz o Machado de Lenhador (derruba a árvore inteira) e o Machado de Batalha (duas cabeças!).
+      A §eCabeça de Machado de Batalha§r faz o Machado de lenhador (Lumber Axe, derruba a árvore inteira) e o Machado de Batalha (duas cabeças!).
     tasks:
       - get: TConstruct:metalPattern:17
     rewards:
@@ -977,11 +977,11 @@ quests:
       - loot: comum
 
   - id: molde_lamina_larga
-    title: "Molde de Lâmina Grande"
+    title: "Molde de Lâmina Larga"
     type: optional
     deps: [moldes_pesados]
     desc: |
-      A §eLâmina Grande§r é a peça do Cutelo, a arma pesada que decapita monstros (e deixa as cabeças para você melhorar picaretas!).
+      A §eLâmina de Espada Larga§r é a peça do Decepador (Cleaver), a arma pesada que decapita monstros (e deixa as cabeças para você melhorar picaretas!).
     tasks:
       - get: TConstruct:metalPattern:20
     rewards:
@@ -1215,7 +1215,7 @@ quests:
     type: normal
     deps: [ferramenta_alumite]
     desc: |
-      Cobalto e ardite só existem de verdade no §cNether§r (densidade alta, espalhados entre a rocha do Nether). Leve a picareta de Alumite melhorada, comida, armadura e blocos para se proteger. §cNão quebre o minério em cima da lava.§r
+      Os minérios de cobalto e ardite do Tinkers ficam no §cNether§r (bem comuns, espalhados entre a rocha do Nether). Leve a picareta de Alumite melhorada, comida, armadura e blocos para se proteger. §cNão quebre o minério em cima da lava.§r
 
       O capítulo do Nether tem mais detalhes sobre a dimensão. Aqui, basta chegar lá.
     tasks:
@@ -1329,7 +1329,7 @@ quests:
     type: info
     deps: [xp_ferramenta]
     desc: |
-      Na Estação de Ferramentas, coloque a ferramenta e o item modificador nos slots ao lado. Cada modificador gasta §eslots§r ("Modificadores" no tooltip).
+      Na Estação de Ferramenta, coloque a ferramenta e o item modificador nos slots ao lado. Cada modificador gasta §eslots§r ("Modificadores" no tooltip).
 
       Neste pack as ferramentas nascem com §c0 slots§r: você ganha 1 nos níveis 2, 4 e 6, e pode comprar mais (bloco de ouro + diamante, maçã dourada encantada + bloco de diamante, Estrela do Nether — cada um uma vez por ferramenta). Peças de Papel (e de Táumio) adicionam slots.
 
@@ -1453,11 +1453,11 @@ quests:
       - item: minecraft:string x16
 
   - id: joia_seda
-    title: "Joia de Seda"
+    title: "Jóia de Seda"
     type: normal
     deps: [pano_seda]
     desc: |
-      4 Panos de Seda ao redor de uma esmeralda = §eJoia de Seda§r. Aplicada na ferramenta, dá §eToque de Seda§r; numa foice, ela vira tesoura. §cNão combina com Sorte nem Auto-Fundição.§r
+      4 Panos de Seda ao redor de uma esmeralda = §eJóia de Seda§r. Aplicada na ferramenta, dá §eToque de Seda§r; numa foice, ela vira tesoura. §cNão combina com Sorte nem Auto-Fundição.§r
     tasks:
       - get: TConstruct:materials:26
     rewards:
@@ -1546,7 +1546,7 @@ quests:
     type: optional
     deps: [slots_extras]
     desc: |
-      A Estrela do Nether, aplicada na Estação de Ferramentas, dá o terceiro slot comprado. O Iguana também a reconhece como item de melhoria de picareta até o nível Manyullyn.
+      A Estrela do Nether, aplicada na Estação de Ferramenta, dá o terceiro slot comprado. O Iguana também a reconhece como item de melhoria de picareta até o nível Manyullyn.
 
       Um troféu do Wither. Muito caro, muito bonito.
     tasks:
@@ -1586,7 +1586,7 @@ quests:
     type: main
     deps: [bacia_fundicao, picareta_ferro]
     desc: |
-      Para as ferramentas de 4 peças: 3 blocos de Tijolo da Fundição em cima, a Estação de Ferramentas no centro e §e4 blocos de metal§r (ferro, ouro, cobre, bronze, estanho, alumínio, alumínio-bronze, alumite, aço, cobalto, ardite, manyullyn, diamante ou esmeralda) nos cantos e laterais de baixo.
+      Para as ferramentas de 4 peças: 3 blocos de Tijolo da Fundição em cima, a Estação de Ferramenta no centro e §e4 blocos de metal§r (ferro, ouro, cobre, bronze, estanho, alumínio, alumínio-bronze, alumite, aço, cobalto, ardite, manyullyn, diamante ou esmeralda) nos cantos e laterais de baixo.
 
       O metal só muda a cor. Ferro é o mais barato.
     tasks:
@@ -1624,11 +1624,11 @@ quests:
       - choice: [minecraft:torch x64, minecraft:iron_ingot x8]
 
   - id: machado_lenhador
-    title: "Machado de Lenhador"
+    title: "Machado (de Lenhador)"
     type: normal
     deps: [pecas_grandes, molde_machado_largo]
     desc: |
-      Cabeça de machado largo + placa grande + cabo grande + conector grande. O §eMachado de Lenhador§r derruba a árvore inteira (até 30 blocos de altura) de uma vez.
+      Cabeça de machado de batalha + placa grande + cabo grande + conector grande. O §eMachado§r de lenhador (Lumber Axe) derruba a árvore inteira (até 30 blocos de altura) de uma vez.
 
       Perfeito para alimentar fornalhas com carvão vegetal.
     tasks:
@@ -1654,18 +1654,18 @@ quests:
     type: optional
     deps: [pecas_grandes, molde_foice]
     desc: |
-      Lâmina de foice + cabo grande + conector grande + cabo grande. Colhe plantações e folhas em 3×3×3 e ataca em área. Com Joia de Seda, corta como tesoura.
+      Lâmina de foice + cabo grande + conector grande + cabo grande. Colhe plantações e folhas em 3×3×3 e ataca em área. Com Jóia de Seda, corta como tesoura.
     tasks:
       - get: TConstruct:scythe
     rewards:
       - loot: comum
 
   - id: cutelo
-    title: "Cutelo"
+    title: "Decepador"
     type: optional
     deps: [pecas_grandes, molde_lamina_larga]
     desc: |
-      Lâmina grande + placa grande + 2 cabos grandes. Lento, pesado e com §eDecapitação II§r natural: os monstros deixam a cabeça. Ótimo para coletar cabeças de melhoria!
+      Lâmina de espada larga + placa grande + 2 cabos grandes. O §eDecepador§r (Cleaver) é lento, pesado e com §eDecapitação II§r natural: os monstros deixam a cabeça. Ótimo para coletar cabeças de melhoria!
     tasks:
       - get: TConstruct:cleaver
     rewards:
@@ -1676,7 +1676,7 @@ quests:
     type: optional
     deps: [pecas_grandes, molde_machado_largo]
     desc: |
-      Duas cabeças de machado largo + cabo grande + conector grande. Arma ofensiva que empurra os inimigos para longe e ainda corta troncos numa coluna.
+      Duas cabeças de machado de batalha + cabo grande + conector grande. Arma ofensiva que empurra os inimigos para longe e ainda corta troncos numa coluna.
     tasks:
       - get: TConstruct:battleaxe
     rewards:
@@ -1689,7 +1689,7 @@ quests:
     banner: "Mestre da Forja"
     subtitle: "Ferramentas grandes para obras grandes"
     desc: |
-      Martelo, Machado de Lenhador e Escavador: você agora move montanhas — literalmente, 3×3 de cada vez.
+      Martelo, Machado de lenhador e Escavador: você agora move montanhas — literalmente, 3×3 de cada vez.
 
       §aDica:§r ferramentas grandes custam muito para reparar; dê a elas Auto-Reparo (Bola de Musgo) ou Reforçado assim que tiverem slots. E lembre que cada uma sobe de nível separadamente.
     tasks:
@@ -1701,11 +1701,11 @@ quests:
 
   # ------------------------------------------------------------------ Fase 9: armas
   - id: espada_larga
-    title: "Espada Larga"
+    title: "Espada (Broadsword)"
     type: normal
     deps: [molde_guardas, picareta_ferro]
     desc: |
-      Lâmina de espada + cabo + protetor largo. A §eEspada Larga§r é a arma defensiva clássica: segure o botão direito para bloquear e reduzir vários tipos de dano pela metade.
+      Lâmina de espada + cabo + protetor largo. A §eEspada§r (a "Broadsword") é a arma defensiva clássica: segure o botão direito para bloquear e reduzir vários tipos de dano pela metade.
     tasks:
       - get: TConstruct:broadsword
     rewards:
@@ -1725,7 +1725,7 @@ quests:
       - item: minecraft:quartz x8
 
   - id: rapieira
-    title: "Rapieira"
+    title: "Florete"
     type: normal
     deps: [molde_guardas, picareta_ferro]
     desc: |
@@ -1737,7 +1737,7 @@ quests:
       - item: minecraft:quartz x8
 
   - id: cutlass
-    title: "Cutelo de Pirata"
+    title: "Cutelo"
     type: optional
     deps: [molde_guardas]
     desc: |
@@ -1821,11 +1821,11 @@ quests:
       - loot: comum
 
   - id: dardo
-    title: "Dardo"
+    title: "Lança"
     type: optional
     deps: [faca_arremesso, pecas_grandes]
     desc: |
-      Uma ponta de flecha sobre cabos grandes: o §eDardo§r (Javelin) é arma de corpo a corpo razoável e, arremessado, causa muito dano. Você carrega poucos, então recolha depois! O Arsenal do Construtor traz a montagem.
+      Uma ponta de flecha sobre cabos grandes: a §eLança§r (Javelin) é arma de corpo a corpo razoável e, arremessado, causa muito dano. Você carrega poucas, então recolha depois! O Arsenal do Construtor traz a montagem.
     tasks:
       - get: TConstruct:Javelin
     rewards:
@@ -1928,11 +1928,11 @@ quests:
       - item: minecraft:iron_ingot x4
 
   - id: virotes
-    title: "Virotes"
+    title: "Dardos de Besta"
     type: normal
     deps: [besta, molde_cabo]
     desc: |
-      Coloque um §ecabo§r na Mesa de Fundição e despeje metal: a ponta é revestida e vira a peça do virote. Junte uma pluma na Estação e pronto. Virotes são pesados e ótimos contra armaduras.
+      Coloque um §ecabo§r na Mesa de Fundição e despeje metal: a ponta é revestida e vira o §eDardo§r (Bolt). Junte uma pluma na Estação e pronto. Dardos de besta são pesados e ótimos contra armaduras.
     tasks:
       - get: TConstruct:BoltAmmo
     rewards:
@@ -2071,7 +2071,7 @@ quests:
     type: normal
     deps: [lata_vazia]
     desc: |
-      Monstros hostis às vezes deixam cair um §eMini Coração Amarelo§r. Neste pack, um Mini Coração Amarelo na bancada vira um §eMini Coração Vermelho§r.
+      Os §eMini Corações§r são drops raros de criaturas perigosas e chefes — os amarelos são os mais difíceis. Neste pack, um Mini Coração Amarelo na bancada vira um §eMini Coração Vermelho§r.
 
       Comidos, eles curam (10 ou 20 corações), mas valem muito mais dentro de uma lata.
     tasks:
