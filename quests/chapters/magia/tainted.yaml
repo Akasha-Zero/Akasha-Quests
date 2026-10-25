@@ -1,0 +1,862 @@
+chapter:
+  id: tainted
+  title: "Tainted Magic"
+  prefix: ""
+  order: 507
+  icon: TaintedMagic:ItemMaterial
+  desc: |
+    §dO Volume da Página Rasgada.§r Metal das Sombras, estilhaços desequilibrados, a madeira
+    deformada, o sangue cristalizado do Culto Carmesim, lâminas da Fortaleza e o Estilhaço da
+    Criação. (Tainted Magic 7.7.8-GTNH)
+
+quests:
+  - link: thaumcraft:infusao
+
+  # ======================================================================
+  # FASE 0 — UMA DESCOBERTA PERTURBADORA
+  # ======================================================================
+  - id: pagina_rasgada
+    title: "Uma Descoberta Perturbadora"
+    type: info
+    deps_hidden: [thaumcraft:crisol]
+    icon: Thaumcraft:ItemResource:13
+    desc: |
+      Enquanto você explorava, encontrou algo que me deu arrepios: uma §epágina rasgada e manchada de
+      sangue§r do Taumonomicon de outro taumaturgo. "Quem escreveu isto?"
+
+      É a aba §eTainted Magic§r do seu livro (a pesquisa "A Disturbing Find" já vem desbloqueada).
+      Ela fala de um lado mais escuro da magia: o Metal das Sombras, o sangue cristalino dos
+      cultistas, a madeira deformada pelo Warp e, no fim, o próprio segredo da Criação.
+
+      §cQuase tudo aqui custa Warp.§r Tenha sabão e sais de banho por perto.
+    tasks:
+      - check
+    rewards:
+      - xp: 1
+
+  # ======================================================================
+  # FASE 1 — METAL DAS SOMBRAS
+  # ======================================================================
+  - id: minerio_sombra
+    title: "Minério das Sombras"
+    type: main
+    deps: [pagina_rasgada]
+    icon: TaintedMagic:BlockShadowOre
+    desc: |
+      "Você derrubou um bloco de pedra numa bagunça borbulhante..." Uma §epedra§r jogada no Crisol com
+      §e2 Vacuos, 4 Tenebrae, 6 Metallum e 8 Praecantatio§r vira §eMinério das Sombras§r. Esse
+      minério não aparece no mundo: ele nasce no Crisol. §cA pesquisa Shadowmetal dá 2 de Warp.§r
+
+      Faça §e4 minérios§r.
+    tasks:
+      - get: TaintedMagic:BlockShadowOre x4
+    rewards:
+      - xp: 4
+      - choice: [minecraft:stone x32, Thaumcraft:ItemShard:5 x4, minecraft:coal x16]
+
+  - id: metal_sombra
+    title: "Metal das Sombras"
+    type: main
+    deps: [minerio_sombra]
+    icon: TaintedMagic:ItemMaterial
+    desc: |
+      Uma fornalha comum basta: o Minério das Sombras derrete em §eLingote de Metal das Sombras§r
+      (oredict ingotShadow). Extremamente duro e durável. Nove viram um Bloco. Faça §e8 lingotes§r.
+    tasks:
+      - get: TaintedMagic:ItemMaterial x8
+    rewards:
+      - xp: 4
+      - choice: [Thaumcraft:ItemResource:2 x8, Thaumcraft:ItemResource:14 x4, minecraft:iron_ingot x16]
+
+  - id: bloco_sombra
+    title: "Bloco de Metal das Sombras"
+    type: normal
+    deps: [metal_sombra]
+    icon: TaintedMagic:BlockShadowmetal
+    desc: |
+      Nove lingotes = um §eBlock of Shadowmetal§r. Ele é o centro do Foco Maça do Mago e entra na
+      Armadura da Fortaleza Sombria (4 blocos no peitoral!). Faça §e2§r.
+    tasks:
+      - get: TaintedMagic:BlockShadowmetal x2
+    rewards:
+      - xp: 3
+      - item: minecraft:obsidian x8
+
+  - id: ferramentas_sombra
+    title: "Ferramentas de Metal das Sombras"
+    type: normal
+    deps: [metal_sombra]
+    icon: TaintedMagic:ItemShadowmetalPick
+    desc: |
+      Picareta, espada, machadinha, pá e enxada nas receitas normais de bancada. Duráveis e afiadas.
+      Faça a picareta e a espada — a espada vira a Lâmina da Fortaleza Sombria lá na frente.
+    tasks:
+      - get: [TaintedMagic:ItemShadowmetalPick, TaintedMagic:ItemShadowmetalSword]
+    rewards:
+      - xp: 3
+      - item: minecraft:experience_bottle x8
+
+  - id: ferramentas_sombra_completas
+    title: "Arsenal das Sombras"
+    type: optional
+    deps: [ferramentas_sombra]
+    icon: TaintedMagic:ItemShadowmetalAxe
+    desc: |
+      Completem o conjunto: machadinha, pá e enxada de Metal das Sombras.
+    tasks:
+      - get: [TaintedMagic:ItemShadowmetalAxe, TaintedMagic:ItemShadowmetalSpade, TaintedMagic:ItemShadowmetalHoe]
+    rewards:
+      - loot: comum
+
+  - id: tecido_sombra
+    title: "Tecido Imbuído de Sombra"
+    type: normal
+    deps: [metal_sombra]
+    deps_hidden: [thaumcraft:tecido_encantado]
+    icon: TaintedMagic:ItemMaterial:1
+    desc: |
+      Três Tecidos Encantados com Metal das Sombras em cima e embaixo (Mesa Arcana): §eShadow-Imbued
+      Cloth§r, macio, fino, leve e incrivelmente forte. Faça §e4§r.
+    tasks:
+      - get: TaintedMagic:ItemMaterial:1 x4
+    rewards:
+      - xp: 3
+      - item: Thaumcraft:ItemResource:7 x4
+
+  - id: oculos_deformados
+    title: "Óculos da Revelação Deformados"
+    type: normal
+    deps: [metal_sombra]
+    deps_hidden: [thaumcraft:oculos]
+    icon: TaintedMagic:ItemWarpedGoggles
+    desc: |
+      Infunda os Óculos da Revelação com dois lingotes de Metal das Sombras: os §eWarped Goggles§r
+      ganham pontos de armadura... e uma lente nublada de Warp, que às vezes mostra visões.
+      "Poderia ser pior, né?"
+    tasks:
+      - get: TaintedMagic:ItemWarpedGoggles
+    rewards:
+      - xp: 3
+      - item: minecraft:leather x8
+
+  - id: oculos_vazio
+    title: "Óculos de Metal do Vazio"
+    type: optional
+    deps: [oculos_deformados]
+    deps_hidden: [thaumcraft2:metal_vazio]
+    icon: TaintedMagic:ItemVoidmetalGoggles
+    desc: |
+      Os óculos deformados infundidos com Metal do Vazio e Tecido Encantado: §ese consertam sozinhos§r
+      e dão um desconto de vis enorme, com menos proteção. §cWarp: 2 na pesquisa.§r A visão às vezes
+      fica distorcida... "warp não é tão ruim, né?"
+    tasks:
+      - get: TaintedMagic:ItemVoidmetalGoggles
+    rewards:
+      - loot: incomum
+
+  - id: foco_maca
+    title: "Foco: Maça do Mago"
+    type: normal
+    deps: [bloco_sombra]
+    deps_hidden: [thaumcraft:infusao, thaumcraft:foco_fogo]
+    icon: TaintedMagic:ItemFocusMageMace
+    desc: |
+      Um foco corpo a corpo! Encaixado, ele §eaumenta o dano de ataque§r da varinha ou cajado
+      (principalmente cajados). Cada golpe gasta vis; sem vis, sem dano. Infusão de um Bloco de
+      Metal das Sombras com quartzo, ouro, estilhaços de entropia e uma espada de diamante.
+    tasks:
+      - get: TaintedMagic:ItemFocusMageMace
+    rewards:
+      - xp: 3
+      - item: Thaumcraft:ItemShard:5 x4
+
+  - id: pontas_pano
+    title: "Pontas de Pano"
+    type: optional
+    deps: [pagina_rasgada]
+    deps_hidden: [thaumcraft:pontas_ouro, thaumcraft:tecido_encantado]
+    icon: TaintedMagic:ItemWandCap:1
+    desc: |
+      Cinco Tecidos Encantados no formato de ponta (Mesa Arcana): §ePontas de Pano Encantado§r,
+      baratíssimas, com §e5% de desconto§r. "Não sei por que funciona, mas funciona."
+    tasks:
+      - get: TaintedMagic:ItemWandCap:1 x2
+    rewards:
+      - loot: comum
+
+  - id: pontas_sombra_pano
+    title: "Pontas de Pano das Sombras"
+    type: normal
+    deps: [tecido_sombra, pontas_pano]
+    icon: TaintedMagic:ItemWandCap:3
+    desc: |
+      Tecido Imbuído de Sombra com Salis Mundus no meio (Mesa Arcana): §e10% de desconto§r, sem
+      precisar de infusão. Ótima alternativa às pontas de táumio. §cWarp: 1.§r
+    tasks:
+      - get: TaintedMagic:ItemWandCap:3 x2
+    rewards:
+      - xp: 3
+      - item: Thaumcraft:ItemResource:14 x2
+
+  # ======================================================================
+  # FASE 2 — ESTILHAÇOS DESEQUILIBRADOS E MADEIRA DEFORMADA
+  # ======================================================================
+  - id: estilhacos_desequilibrados
+    title: "Estilhaços Desequilibrados"
+    type: main
+    deps: [pagina_rasgada]
+    icon: TaintedMagic:ItemMaterial:4
+    desc: |
+      "Desequilibrar" um Estilhaço Equilibrado no Crisol: com §e4 Alienis§r ele vira §eEstilhaço
+      Deformado§r (Warped Shard); com §e4 Vitium§r, §eEstilhaço Fluxado§r (Fluxed Shard). Eles são a
+      base dos focos de mácula e da madeira deformada. Faça §e2 de cada§r.
+    tasks:
+      - get: [TaintedMagic:ItemMaterial:3 x2, TaintedMagic:ItemMaterial:4 x2]
+    rewards:
+      - xp: 3
+      - choice: [Thaumcraft:ItemShard:6 x4, Thaumcraft:ItemResource:14 x3, Thaumcraft:ItemShard:5 x4]
+
+  - id: foco_estilhaco
+    title: "Foco: Estilhaço de Vis"
+    type: normal
+    deps: [estilhacos_desequilibrados]
+    deps_hidden: [thaumcraft:foco_fogo]
+    icon: TaintedMagic:ItemFocusVisShard
+    desc: |
+      Animar um estilhaço para o combate! O foco só dispara se você estiver olhando para um inimigo:
+      o estilhaço §eperseguem o alvo§r, quica nos blocos e estoura no contato. Mercúrio, estilhaços
+      equilibrados e fluxados e Essência Etérea (Mesa Arcana).
+    tasks:
+      - get: TaintedMagic:ItemFocusVisShard
+    rewards:
+      - xp: 3
+      - item: Thaumcraft:ItemShard:6 x2
+
+  - id: foco_tempestade
+    title: "Foco: Tempestade Maculada"
+    type: main
+    deps: [estilhacos_desequilibrados]
+    deps_hidden: [thaumcraft:infusao, thaumcraft2:macula_engarrafada]
+    icon: TaintedMagic:ItemFocusTaint
+    desc: |
+      Uma rajada de §ebolhas de mácula§r em área (10 m) que envenenam e machucam. Infusão do Foco:
+      Maldição dos Pêch com gosma maculada, estilhaços fluxados e Mácula Engarrafada (64 Vitium, 64
+      Aqua, 64 Praecantatio, 64 Limus). §cRisco de pegar Gripe de Fluxo ao usar. Warp: 4.§r
+    tasks:
+      - get: TaintedMagic:ItemFocusTaint
+    rewards:
+      - xp: 4
+      - choice: [Thaumcraft:ItemBottleTaint x2, Thaumcraft:ItemResource:11 x4, Thaumcraft:ItemSanitySoap]
+
+  - id: foco_onda_maculada
+    title: "Foco: Onda de Choque Maculada"
+    type: normal
+    deps: [foco_tempestade]
+    icon: TaintedMagic:ItemFocusTaintedBlast
+    desc: |
+      Acumula energia maculada na ponta da varinha e §eexplode num raio de 15 blocos§r, arremessando
+      tudo para longe. "50 zumbis em volta? Sem problema!" A melhoria Enlarge aumenta o raio.
+      §cWarp: 2.§r
+    tasks:
+      - get: TaintedMagic:ItemFocusTaintedBlast
+    rewards:
+      - xp: 3
+      - loot: incomum
+
+  - id: arvore_deformada
+    title: "A Árvore Deformada"
+    type: main
+    deps: [estilhacos_desequilibrados]
+    deps_hidden: [thaumcraft:infusao, thaumcraft:cerebro_zumbi]
+    icon: TaintedMagic:BlockWarpwoodSapling
+    desc: |
+      Uma muda qualquer infundida com Estilhaços Deformados e cérebros de zumbi (8 Alienis, 8 Arbor,
+      8 Tenebrae): a §eMuda de Madeira Deformada§r cresce numa árvore imbuída de Warp. "Você não sabe
+      para que vai servir... mas um dia vai." §cWarp: 3.§r
+
+      Plante e colha §e8 toras§r.
+    tasks:
+      - get: [TaintedMagic:BlockWarpwoodSapling, TaintedMagic:BlockWarpwoodLog x8]
+    rewards:
+      - xp: 4
+      - choice: [Thaumcraft:ItemZombieBrain x2, minecraft:dye:15 x16, TaintedMagic:ItemMaterial:3 x2]
+
+  - id: tabuas_deformadas
+    title: "Tábuas de Madeira Deformada"
+    type: optional
+    deps: [arvore_deformada]
+    icon: TaintedMagic:BlockWarpwoodPlanks
+    desc: |
+      Uma tora = 4 tábuas (oredict plankWood). Escuras e lindas para um laboratório sombrio.
+    tasks:
+      - get: TaintedMagic:BlockWarpwoodPlanks x16
+    rewards:
+      - loot: comum
+
+  - id: fungo_magico
+    title: "Fungo Mágico"
+    type: optional
+    deps: [pagina_rasgada]
+    deps_hidden: [thaumcraft:vishroom]
+    icon: TaintedMagic:ItemMagicFunguar
+    desc: |
+      Vingança contra os Vishrooms! Um Vishroom com um estilhaço, cogumelos marrom e vermelho e pó de
+      blaze (Mesa Arcana, sem forma) vira o §eMagic Funguar§r: comestível e, ao comer, você ganha
+      §epontos de pesquisa aleatórios§r.
+    tasks:
+      - get: TaintedMagic:ItemMagicFunguar x4
+    rewards:
+      - loot: comum
+
+  # ======================================================================
+  # FASE 3 — SANGUE CRISTALINO E O CULTO CARMESIM
+  # ======================================================================
+  - id: adaga_cristal
+    title: "Adaga de Cristal"
+    type: main
+    deps: [pagina_rasgada]
+    deps_hidden: [thaumcraft:cristalizador, thaumcraft2:metal_vazio, thaumcraft:tecido_encantado]
+    icon: TaintedMagic:ItemCrystalDagger
+    desc: |
+      Depois de conhecer o Cristalizador de Essência, você criou uma adaga que §ecristaliza o sangue§r
+      dos inimigos: toda criatura morta por ela deixa algumas gotas de §eSangue Cristalino§r.
+
+      Mesa Arcana: Metal do Vazio, um Cristalizador de Essência e madeira (85 Terra, 85 Ignis, 85
+      Perditio!). §cWarp: 2.§r
+    tasks:
+      - get: TaintedMagic:ItemCrystalDagger
+    rewards:
+      - xp: 4
+      - choice: [Thaumcraft:ItemResource:16 x2, minecraft:iron_sword, Thaumcraft:ItemResource:14 x3]
+
+  - id: sangue_cristalino
+    title: "Sangue Cristalino"
+    type: main
+    deps: [adaga_cristal]
+    icon: TaintedMagic:ItemMaterial:7
+    desc: |
+      Mate criaturas com a Adaga de Cristal (ou qualquer lâmina com o efeito Sede de Sangue) e junte
+      §e16 Frascos de Sangue Cristalino§r. "Este não é um sangue comum... as vestes do Culto têm
+      propriedades parecidas."
+    tasks:
+      - get: TaintedMagic:ItemMaterial:7 x16
+    rewards:
+      - xp: 4
+      - choice: [minecraft:rotten_flesh x16, minecraft:bone x16, minecraft:string x16]
+
+  - id: tecido_carmesim
+    title: "Tecido Manchado de Carmesim"
+    type: main
+    deps: [sangue_cristalino]
+    icon: TaintedMagic:ItemMaterial:2
+    desc: |
+      "As vestes do Culto têm as mesmas propriedades do Sangue Cristalino!" Um Tecido Encantado
+      cercado por 4 frascos de sangue (Mesa Arcana) = §eCrimson-Stained Cloth§r. Faça §e8§r.
+    tasks:
+      - get: TaintedMagic:ItemMaterial:2 x8
+    rewards:
+      - xp: 4
+      - choice: [Thaumcraft:ItemResource:7 x8, minecraft:wool:14 x8, minecraft:dye:1 x8]
+
+  - id: vestes_culto
+    title: "Costura Carmesim"
+    type: normal
+    deps: [tecido_carmesim]
+    icon: Thaumcraft:ItemChestplateCultistRobe
+    desc: |
+      Com o tecido carmesim você costura as §evestes do Culto Carmesim§r na Mesa Arcana: capuz, manto,
+      calças e botas (as peças do próprio Thaumcraft!). §cComo toda veste cultista, dão Warp quando
+      vestidas.§r Faça as quatro.
+    tasks:
+      - get: [Thaumcraft:ItemHelmetCultistRobe, Thaumcraft:ItemChestplateCultistRobe, Thaumcraft:ItemLeggingsCultistRobe, Thaumcraft:ItemBootsCultist]
+    rewards:
+      - xp: 3
+      - item: TaintedMagic:ItemMaterial:7 x4
+
+  - id: pontas_carmesim
+    title: "Pontas de Pano Carmesim"
+    type: normal
+    deps: [tecido_carmesim, pontas_pano]
+    icon: TaintedMagic:ItemWandCap:2
+    desc: |
+      Tecido carmesim com Salis Mundus (Mesa Arcana): as §eCrimson-Stained Cloth Caps§r dão §e15% de
+      desconto§r — melhor que táumio, sem infusão!
+    tasks:
+      - get: TaintedMagic:ItemWandCap:2 x2
+    rewards:
+      - xp: 3
+      - item: Thaumcraft:ItemResource:14 x2
+
+  - id: placa_carmesim
+    title: "Chapas Carmesins"
+    type: main
+    deps: [tecido_carmesim]
+    deps_hidden: [thaumcraft:infusao]
+    icon: TaintedMagic:ItemMaterial:8
+    desc: |
+      A armadura dos Cavaleiros não é só pano: um lingote de ferro infundido com 4 frascos de Sangue
+      Cristalino (8 Tenebrae, 8 Metallum, 8 Praecantatio) vira §eCrimson Plating§r, um metal manchado
+      de sangue idêntico ao dos Cavaleiros Carmesins. Exige a Epifania Eldritch. Faça §e8§r.
+    tasks:
+      - get: TaintedMagic:ItemMaterial:8 x8
+    rewards:
+      - xp: 4
+      - choice: [minecraft:iron_ingot x8, TaintedMagic:ItemMaterial:7 x8, Thaumcraft:ItemResource:14 x3]
+
+  - id: armadura_cavaleiro
+    title: "Forja Carmesim"
+    type: normal
+    deps: [placa_carmesim]
+    icon: Thaumcraft:ItemChestplateCultistPlate
+    desc: |
+      Chapas e tecido carmesim na Mesa Arcana: elmo, peitoral e grevas dos §eCavaleiros Carmesins§r.
+      Faça as três peças.
+    tasks:
+      - get: [Thaumcraft:ItemHelmetCultistPlate, Thaumcraft:ItemChestplateCultistPlate, Thaumcraft:ItemLeggingsCultistPlate]
+    rewards:
+      - xp: 3
+      - item: TaintedMagic:ItemMaterial:8 x2
+
+  - id: armadura_pretor
+    title: "Forja Carmesim Avançada"
+    type: main
+    deps: [armadura_cavaleiro]
+    deps_hidden: [thaumcraft2:metal_vazio]
+    icon: Thaumcraft:ItemHelmetCultistLeaderPlate
+    desc: |
+      "Sussurros falam do líder do Culto." Cada peça de Cavaleiro infundida com ouro, chapas e tecido
+      carmesim (64 Tenebrae, 64 Metallum, 64 Praecantatio, 4 Alienis) vira a peça do §ePretor§r. Exige a
+      Revelação Eldritch. Faça as três peças.
+    tasks:
+      - get: [Thaumcraft:ItemHelmetCultistLeaderPlate, Thaumcraft:ItemChestplateCultistLeaderPlate, Thaumcraft:ItemLeggingsCultistLeaderPlate]
+    rewards:
+      - xp: 6
+      - choice: [TaintedMagic:ItemMaterial:8 x4, TaintedMagic:ItemMaterial:2 x4, minecraft:gold_ingot x8]
+
+  - id: sangue_vazio
+    title: "Sangue do Vazio"
+    type: normal
+    deps: [armadura_pretor]
+    icon: TaintedMagic:ItemVoidsentBlood
+    desc: |
+      As vestes do Culto não se consertam sozinhas... até agora. Sangue Cristalino no Crisol com 12
+      Vacuos, 4 Tenebrae, 6 Auram e 8 Tutamen = §eVoidsent Blood§r. Junte com uma peça do Culto na
+      bancada: ela passa a §ese reparar sozinha§r como Metal do Vazio.
+    tasks:
+      - get: TaintedMagic:ItemVoidsentBlood x2
+    rewards:
+      - xp: 3
+      - item: TaintedMagic:ItemMaterial:7 x4
+
+  - id: lamina_carmesim
+    title: "A Lâmina Carmesim"
+    type: main
+    deps: [armadura_pretor]
+    deps_hidden: [thaumcraft2:ferramentas_vazio]
+    icon: Thaumcraft:ItemSwordCrimson
+    desc: |
+      "A conclusão dos seus estudos sobre o Culto." Uma Espada do Vazio infundida com a Adaga de
+      Cristal, Sangue Cristalino, chapas e tecido carmesim (instabilidade 7): a §eCrimson Blade§r, a
+      lâmina do Pretor. Causa Fraqueza e também cristaliza sangue. §cWarp: 3.§r
+    tasks:
+      - get: Thaumcraft:ItemSwordCrimson
+    rewards:
+      - xp: 6
+      - choice: [TaintedMagic:ItemMaterial:7 x8, Thaumcraft:ItemResource:16 x4, Thaumcraft:ItemSanitySoap x2]
+
+  - id: culto_reconstruido
+    title: "O Culto Reconstruído"
+    type: milestone
+    deps: [vestes_culto, armadura_pretor, lamina_carmesim, sangue_vazio]
+    icon: Thaumcraft:ItemChestplateCultistLeaderPlate
+    banner: "O Culto Reconstruído"
+    subtitle: "Os segredos carmesins são seus"
+    desc: |
+      Vestes, armaduras de cavaleiro e pretor e a Lâmina Carmesim — tudo forjado por você, a partir
+      de sangue cristalizado. Herói, o Culto Carmesim passou séculos guardando esses segredos, e você
+      os decifrou numa tarde (bom, em várias tardes).
+
+      Só não vá abrir uma filial, tá? Eu confio em você.
+    tasks:
+      - get: [Thaumcraft:ItemChestplateCultistLeaderPlate, Thaumcraft:ItemSwordCrimson]
+    rewards:
+      - xp: 10
+      - kit: {name: "Kit do Ex-Cultista", items: [TaintedMagic:ItemMaterial:7 x16, TaintedMagic:ItemMaterial:8 x4, TaintedMagic:ItemVoidsentBlood x2, Thaumcraft:ItemSanitySoap x2]}
+      - loot: raro
+
+  # ======================================================================
+  # FASE 4 — LÂMINAS DA FORTALEZA
+  # ======================================================================
+  - id: lamina_taumio
+    title: "Lâmina da Fortaleza de Táumio"
+    type: main
+    deps: [pagina_rasgada]
+    deps_hidden: [thaumcraft2:fortaleza]
+    icon: TaintedMagic:ItemKatana
+    desc: |
+      Uma katana para combinar com a Armadura Fortaleza! Espada de Táumio infundida com obsidiana,
+      Táumio, ouro, esmeralda e ferro (48 Metallum, 48 Telum, 32 Praecantatio). A §eThaumium Fortress
+      Blade§r §enunca perde durabilidade§r e, segurando o botão direito, §ecarrega§r um golpe que pode
+      causar até o dobro do dano.
+    tasks:
+      - get: TaintedMagic:ItemKatana
+    rewards:
+      - xp: 4
+      - choice: [Thaumcraft:ItemResource:2 x8, minecraft:emerald x2, minecraft:obsidian x8]
+
+  - id: inscricao_vulcanica
+    title: "Inscrição Vulcânica"
+    type: normal
+    deps: [lamina_taumio]
+    icon: minecraft:fire_charge
+    desc: |
+      Runas de fogo gravadas na lâmina (infusão com Foco de Fogo, carvão, netherrack, carga de fogo,
+      pó de blaze e Nitor): o dano vira §efogo que ignora armadura§r, o alvo pega fogo e o golpe
+      carregado solta uma bola de fogo explosiva (agachado cancela).
+    tasks:
+      - {get: 'TaintedMagic:ItemKatana:* {inscription:0}', nbt: true}
+    rewards:
+      - xp: 3
+      - item: minecraft:blaze_powder x8
+
+  - id: inscricao_maculada
+    title: "Inscrição Maculada"
+    type: optional
+    deps: [lamina_taumio, foco_tempestade]
+    icon: Thaumcraft:ItemBottleTaint
+    desc: |
+      Runas de mácula (infusão com o Foco: Tempestade Maculada, estilhaço fluxado, Cérebro na Jarra,
+      Vishroom, Mácula Engarrafada e gosma): dano mágico que ignora armadura, Veneno de Mácula e uma
+      nuvem maculada no golpe carregado. §cWarp: 2.§r
+    tasks:
+      - {get: 'TaintedMagic:ItemKatana:* {inscription:1}', nbt: true}
+    rewards:
+      - loot: incomum
+
+  - id: inscricao_morto_vivo
+    title: "Inscrição dos Mortos-Vivos"
+    type: optional
+    deps: [lamina_taumio]
+    deps_hidden: [thaumcraft2:sais_banho]
+    icon: minecraft:bone
+    desc: |
+      Runas de murchar (infusão com cérebro, osso, carne podre, Foco Pech e Sais de Banho): dano de
+      Murchar que ignora armadura e, no golpe carregado, você §erecupera 25% do dano§r causado.
+      §cWarp: 5.§r
+    tasks:
+      - {get: 'TaintedMagic:ItemKatana:* {inscription:2}', nbt: true}
+    rewards:
+      - loot: incomum
+
+  - id: lamina_vazio
+    title: "Lâmina da Fortaleza do Vazio"
+    type: normal
+    deps: [lamina_taumio, fortaleza_vazio]
+    icon: TaintedMagic:ItemKatana:1
+    desc: |
+      A mesma construção com Metal do Vazio sobre uma Espada do Vazio: mais afiada e com §eDrenagem
+      Maior§r (Fraqueza em quem você acerta). Aceita as mesmas inscrições. §cWarp: 4.§r
+    tasks:
+      - get: TaintedMagic:ItemKatana:1
+    rewards:
+      - xp: 4
+      - item: Thaumcraft:ItemResource:16 x4
+
+  - id: lamina_sombra
+    title: "Lâmina da Fortaleza Sombria"
+    type: main
+    deps: [lamina_vazio, fortaleza_sombria]
+    icon: TaintedMagic:ItemKatana:2
+    desc: |
+      A Espada de Metal das Sombras na construção da Fortaleza: a lâmina §emais forte e afiada§r do
+      Volume. Deixa o alvo lento e com a visão turva. §cWarp: 6.§r
+    tasks:
+      - get: TaintedMagic:ItemKatana:2
+    rewards:
+      - xp: 6
+      - choice: [TaintedMagic:ItemMaterial x8, Thaumcraft:ItemResource:16 x4, Thaumcraft:ItemSanitySoap x2]
+
+  # ======================================================================
+  # FASE 5 — FORTALEZAS DO VAZIO E DAS SOMBRAS
+  # ======================================================================
+  - id: revelacao_tm
+    title: "Revelação Eldritch (Tainted)"
+    type: info
+    deps: [pagina_rasgada]
+    deps_hidden: [thaumcraft2:epifania]
+    icon: Thaumcraft:ItemEldritchObject
+    desc: |
+      A aba do Tainted Magic tem uma cópia da §eRevelação Eldritch§r: ela só se abre quando você
+      recebe a Revelação de verdade (Warp acima de 50). Atrás dela ficam a Fortaleza do Vazio, as
+      Botas do Andarilho do Vazio, o Desmontador Táumico e o Estilhaço da Criação.
+    tasks:
+      - check
+    rewards:
+      - xp: 2
+
+  - id: fortaleza_vazio
+    title: "Armadura Fortaleza do Vazio"
+    type: normal
+    deps: [revelacao_tm]
+    deps_hidden: [thaumcraft2:armadura_vazio, thaumcraft2:fortaleza]
+    icon: TaintedMagic:ItemVoidFortressChestplate
+    desc: |
+      A Armadura Fortaleza feita com §eMetal do Vazio§r: mais protetora, mais durável e §ese conserta
+      sozinha§r. Infusão de cada peça do vazio com Metal do Vazio, ouro e esmeralda/couro. Aceita
+      óculos e máscaras como a Fortaleza de Táumio. "Uma dor surda nos ossos... reconfortante."
+    tasks:
+      - get: [TaintedMagic:ItemVoidFortressHelmet, TaintedMagic:ItemVoidFortressChestplate, TaintedMagic:ItemVoidFortressLeggings]
+    rewards:
+      - xp: 4
+      - loot: raro
+
+  - id: fortaleza_sombria
+    title: "Armadura Fortaleza Sombria"
+    type: main
+    deps: [fortaleza_vazio, bloco_sombra]
+    icon: TaintedMagic:ItemShadowFortressChestplate
+    desc: |
+      Peças do vazio infundidas com §eBlocos de Metal das Sombras§r (instabilidade 7): a armadura mais
+      protetora do Volume, e cada peça extra vestida aumenta muito a proteção. Ela §enão§r herdou o
+      auto-reparo. Aceita óculos e máscaras. §cWarp: 3.§r
+    tasks:
+      - get: [TaintedMagic:ItemShadowFortressHelmet, TaintedMagic:ItemShadowFortressChestplate, TaintedMagic:ItemShadowFortressLeggings]
+    rewards:
+      - xp: 6
+      - choice: [TaintedMagic:BlockShadowmetal x2, Thaumcraft:ItemResource:16 x4, minecraft:diamond x4]
+
+  - id: botas_andarilho
+    title: "Botas do Andarilho do Vazio"
+    type: main
+    deps: [revelacao_tm, tecido_sombra]
+    deps_hidden: [thaumcraft:botas_viajante, thaumcraft2:vestes_vazio]
+    icon: TaintedMagic:ItemVoidwalkerBoots
+    desc: |
+      O par que faltava nas Vestes do Taumaturgo do Vazio! Botas do Viajante infundidas com Olhos
+      Eldritch, Metal do Vazio, Metal das Sombras e tecido das sombras: proteção excelente,
+      §evelocidade enorme§r andando ou voando e §esem dano de queda§r. §cWarp: 3.§r
+    tasks:
+      - get: TaintedMagic:ItemVoidwalkerBoots
+    rewards:
+      - xp: 6
+      - choice: [Thaumcraft:ItemEldritchObject x2, TaintedMagic:ItemMaterial:1 x4, Thaumcraft:ItemResource:16 x4]
+
+  - id: faixa_andarilho
+    title: "Faixa Rúnica do Andarilho"
+    type: normal
+    deps: [botas_andarilho]
+    deps_hidden: [thaumcraft2:cinto_runico, thaumcraft2:perola_primordial]
+    icon: TaintedMagic:ItemVoidwalkerSash
+    desc: |
+      Um Cinto Rúnico infundido com a Pérola Primordial, Metal do Vazio, Metal das Sombras e tecido
+      das sombras: §e+20 de proteção rúnica§r no cinto. Com as Botas do Andarilho, velocidade e pulo
+      aumentam muito (Shift+clique alterna o efeito, conforme o livro).
+    tasks:
+      - get: TaintedMagic:ItemVoidwalkerSash
+    rewards:
+      - xp: 4
+      - loot: raro
+
+  - id: liga_taumica
+    title: "Liga Táumica"
+    type: normal
+    deps: [revelacao_tm]
+    deps_hidden: [thaumcraft2:metal_vazio]
+    icon: TaintedMagic:ItemMaterial:6
+    desc: |
+      Táumio, Metal do Vazio e um diamante (Mesa Arcana, 50 Ordo e 50 Perditio) = §eThaumic Alloy§r,
+      a matriz do Desmontador.
+    tasks:
+      - get: TaintedMagic:ItemMaterial:6
+    rewards:
+      - xp: 3
+      - item: Thaumcraft:ItemResource:2 x4
+
+  - id: desmontador
+    title: "Desmontador Táumico"
+    type: main
+    deps: [liga_taumica]
+    deps_hidden: [thaumcraft2:ferramentas_vazio_completas]
+    icon: TaintedMagic:ItemThaumicDisassembler
+    desc: |
+      "Um taumaturgo NÃO mexe com tecnologia!" Mas ouviu falar do Desintegrador Atômico e ficou com
+      inveja. A resposta: a Liga Táumica infundida com picareta, pá, espada e machado do vazio. O
+      §eThaumic Disassembler§r quebra §equalquer bloco§r na velocidade que você escolher (Shift+clique
+      direito) e se recarrega com um pouco de §ePerditio§r da varinha.
+    tasks:
+      - get: TaintedMagic:ItemThaumicDisassembler
+    rewards:
+      - xp: 6
+      - choice: [Thaumcraft:ItemResource:16 x4, Thaumcraft:ItemShard:5 x8, minecraft:diamond x4]
+
+  # ======================================================================
+  # FASE 6 — A CRIAÇÃO
+  # ======================================================================
+  - id: estilhaco_criacao
+    title: "O Estilhaço da Criação"
+    type: main
+    deps: [revelacao_tm]
+    deps_hidden: [thaumcraft2:perola_primordial]
+    icon: TaintedMagic:ItemMaterial:5
+    desc: |
+      "Algo para desafiar os Eldritch." Uma §ePérola Primordial§r infundida com uma Estrela do Nether e
+      um Cacho de Cristais de cada primal (64 Alienis, 64 Vacuos, 64 Praecantatio; instabilidade 8)
+      resulta em §e2 Estilhaços da Criação§r: "um fragmento com o poder de criar".
+
+      "Assim que a infusão terminou, uma sensação de clareza encheu sua mente torcida." §cWarp: 5.§r
+    tasks:
+      - get: TaintedMagic:ItemMaterial:5 x2
+    rewards:
+      - xp: 8
+      - choice: [minecraft:nether_star, Thaumcraft:blockCrystal:6 x4, Thaumcraft:ItemSanitySoap x3]
+
+  - id: criacao
+    title: "Criação"
+    type: info
+    deps: [estilhaco_criacao]
+    icon: TaintedMagic:ItemMaterial:5
+    desc: |
+      Ao tocar o Estilhaço, as vozes pararam. E você viu... a §eCriação§r.
+
+      Eras atrás, energias primais vindas de além da realidade se chocaram e formaram um universo onde
+      nasceram os §eEldritch§r. A magia deles era cheia de Warp, então decidiram criar um universo novo,
+      sem esse limite. Na última hora, dividiram as forças em duas: um §evazio sem fim§r com todo o
+      poder da criação, e o §eMundo§r que você conhece. Para proteger as Pérolas, ergueram labirintos e
+      guardiões.
+
+      Herói... isso explica tanta coisa sobre a Fratura. §cA pesquisa dá 5 de Warp.§r
+    tasks:
+      - check
+    rewards:
+      - xp: 3
+
+  - id: foco_materia_escura
+    title: "Foco: Matéria Escura"
+    type: normal
+    deps: [criacao]
+    deps_hidden: [thaumcraft2:foco_buraco]
+    icon: TaintedMagic:ItemFocusEldritch
+    desc: |
+      Os orbes dos Guardiões Eldritch, agora seus — e mais fortes: §e5 corações§r de dano e Fraqueza.
+      Infusão do Estilhaço da Criação com Foco de Buraco Portátil, Metal do Vazio, Olhos Eldritch e um
+      Primal Charm. §cCada disparo pode dar um pouco de Warp normal.§r
+    tasks:
+      - get: TaintedMagic:ItemFocusEldritch
+    rewards:
+      - xp: 4
+      - loot: raro
+
+  - id: foco_tempo
+    title: "Foco: Tempo"
+    type: optional
+    deps: [criacao]
+    icon: TaintedMagic:ItemFocusTime
+    desc: |
+      Usando a fórmula da criação, você troca o §edia pela noite§r (e vice-versa). Recarga de 30 s; não
+      aceita melhorias. Infusão do Estilhaço da Criação com relógio, cachos de cristal de ar e Foco de
+      Buraco Portátil. §cWarp: 3.§r
+    tasks:
+      - get: TaintedMagic:ItemFocusTime
+    rewards:
+      - loot: raro
+
+  - id: foco_meteorologia
+    title: "Foco: Meteorologia"
+    type: optional
+    deps: [criacao]
+    icon: TaintedMagic:ItemFocusMeteorology
+    desc: |
+      Começa uma tempestade se não houver, ou acaba com ela se houver. Recarga de 30 s. Infusão do
+      Estilhaço da Criação com Focos de Choque e Gelo e cachos de cristal de água. §cWarp: 3.§r
+    tasks:
+      - get: TaintedMagic:ItemFocusMeteorology
+    rewards:
+      - loot: raro
+
+  - id: gume_primordial
+    title: "O Gume dos Primordiais"
+    type: main
+    deps: [criacao]
+    deps_hidden: [thaumcraft2:triturador_primal]
+    icon: TaintedMagic:ItemPrimordialEdge
+    desc: |
+      "A outra metade do seu conjunto primal." Uma Espada do Vazio infundida com o §eTriturador
+      Primal§r e um Cacho de Cristais de cada primal. Bloqueando, a §eEdge of the Primordials§r cria um
+      vórtice que §epuxa e machuca§r todos os mobs num raio de 15 blocos, como um nó faminto. Ela
+      ainda aplica Fraqueza e Fome fortes. §cWarp: 4.§r
+    tasks:
+      - get: TaintedMagic:ItemPrimordialEdge
+    rewards:
+      - xp: 8
+      - loot: epico
+
+  - id: pontas_sombra
+    title: "Pontas de Metal das Sombras"
+    type: main
+    deps: [estilhaco_criacao, metal_sombra]
+    deps_hidden: [thaumcraft2:pontas_vazio]
+    icon: TaintedMagic:ItemWandCap
+    desc: |
+      Pontas de Metal do Vazio carregadas infundidas com Metal das Sombras, Estilhaço Deformado e a
+      Pérola Primordial (que §enão é consumida§r). As §eShadowmetal Caps§r dão §e30% de desconto§r em
+      todos os primais. §cWarp: 5 (dizem que dá até tontura).§r
+    tasks:
+      - get: TaintedMagic:ItemWandCap x2
+    rewards:
+      - xp: 6
+      - choice: [TaintedMagic:ItemMaterial x8, Thaumcraft:ItemResource:14 x6, Thaumcraft:ItemNugget:7 x9]
+
+  - id: haste_deformada
+    title: "Haste de Madeira Deformada"
+    type: main
+    deps: [arvore_deformada, metal_sombra]
+    deps_hidden: [thaumcraft2:perola_primordial, thaumcraft2:cajado_primal]
+    icon: TaintedMagic:ItemWandRod
+    desc: |
+      Uma tora deformada infundida com a §ePérola Primordial§r, Metal das Sombras, Estilhaços
+      Deformados, Metal do Vazio e um cérebro de zumbi "para guardar a insanidade" (instabilidade 8).
+      A §eWarpwood Rod§r guarda §e250 de vis§r e §ese recarrega com o seu próprio Warp§r: quanto mais
+      Warp, mais rápido. O efeito Warp Ward anula a reação. §cWarp: 3.§r
+    tasks:
+      - get: TaintedMagic:ItemWandRod
+    rewards:
+      - xp: 6
+      - choice: [TaintedMagic:BlockWarpwoodLog x8, Thaumcraft:ItemZombieBrain x4, TaintedMagic:ItemMaterial:3 x4]
+
+  - id: cajado_deformado
+    title: "Núcleo de Cajado Deformado"
+    type: normal
+    deps: [haste_deformada]
+    icon: TaintedMagic:ItemWandRod:1
+    desc: |
+      Duas Hastes Deformadas com uma Pérola Primordial na ponta (Mesa Arcana, §e120 de cada primal§r!):
+      o §eWarpwood Staff Core§r guarda §e500 de vis§r e mantém a recarga pelo Warp. Para pagar os 120,
+      use um cetro ou pontas com bom desconto.
+    tasks:
+      - get: TaintedMagic:ItemWandRod:1
+    rewards:
+      - xp: 4
+      - loot: epico
+
+  - id: mestre_maculado
+    title: "Mestre da Página Rasgada"
+    type: milestone
+    deps: [gume_primordial, pontas_sombra, haste_deformada, lamina_sombra, fortaleza_sombria, culto_reconstruido]
+    icon: TaintedMagic:ItemPrimordialEdge
+    banner: "Mestre da Página Rasgada"
+    subtitle: "O Volume da Página Rasgada está completo"
+    effect: 5
+    desc: |
+      Aquela página rasgada e manchada de sangue... você a decifrou inteira. Metal das Sombras, sangue
+      cristalino, a madeira que bebe o seu Warp, as lâminas da Fortaleza e o Gume dos Primordiais na
+      mão. E você viu a Criação.
+
+      Herói, agora eu sei por que a Fratura doeu tanto: o Registro foi escrito em cima da mesma
+      fronteira que os Eldritch traçaram. Cada página que você recupera aqui fortalece o §6Selo
+      Arcano§r. Respira fundo, toma um banho de sais... e me conta tudo.
+    tasks:
+      - get: [TaintedMagic:ItemPrimordialEdge, TaintedMagic:ItemWandCap, TaintedMagic:ItemWandRod]
+    rewards:
+      - xp: 12
+      - kit: {name: "Kit da Página Rasgada", items: [TaintedMagic:BlockShadowmetal x2, TaintedMagic:ItemMaterial:5, Thaumcraft:ItemSanitySoap x4, Thaumcraft:ItemBathSalts x2]}
+      - loot: epico
