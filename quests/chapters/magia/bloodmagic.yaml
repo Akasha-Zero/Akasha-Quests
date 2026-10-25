@@ -1,0 +1,2805 @@
+chapter:
+  id: bloodmagic
+  title: "Blood Magic"
+  prefix: ""
+  order: 540
+  icon: AWWayofTime:Altar
+  desc: |
+    §dO Volume do Sangue.§r Faca, Altar de Sangue, Orbes, Sigilos, Rituais com Pedras
+    Rituais, Alquimia de reagentes, Armadura Vinculada, Elementais e o Portal Demoníaco
+    até o Orbe Transcendente. (Blood Magic: Alchemical Wizardry 1.9.12)
+
+quests:
+  # ======================================================================
+  # FASE 0 — O ALTAR E A PRIMEIRA GOTA
+  # ======================================================================
+  - id: altar_sangue
+    title: "O Altar de Sangue"
+    type: main
+    icon: AWWayofTime:Altar
+    desc: |
+      Este Volume foi escrito com tinta vermelha, Herói. Literalmente. Antes de abrir, me
+      promete uma coisa: comer bem e nunca usar a faca com pouca vida. Combinado?
+
+      O §eAltar de Sangue§r é o coração de tudo aqui. A receita é simples: pedra nas laterais,
+      uma §eFornalha§r no meio, §e2 lingotes de ouro§r e §e1 diamante§r embaixo (confira no
+      NEI). Coloque-o no chão: ele guarda até §e10 000 LP§r de Essência Vital e transmuta itens
+      colocados na bacia com clique direito.
+
+      §aDica:§r monte o altar num lugar com espaço em volta. Ele vai crescer... muito.
+    tasks:
+      - get: AWWayofTime:Altar
+    rewards:
+      - xp: 4
+      - choice: [minecraft:cooked_beef x16, minecraft:golden_carrot x8, minecraft:bread x24]
+
+  - id: faca_sacrificio
+    title: "A Faca de Sacrifício"
+    type: main
+    deps: [altar_sangue]
+    icon: AWWayofTime:sacrificialKnife
+    desc: |
+      Aqui começa a parte que dói. A §eFaca de Sacrifício§r (vidro, um lingote de ouro e um
+      de ferro) transforma a sua própria vida em Essência Vital.
+
+      Fique bem pertinho do altar (cerca de um bloco) e clique com a faca: você perde
+      §c1 coração§r e o altar ganha cerca de §e200 LP§r. Depois deixe a vida voltar
+      (comida com boa saturação ajuda muito) e repita.
+
+      §cAviso de Akasha:§r a faca não liga se você está com meio coração. Ela corta do mesmo
+      jeito. Nunca sacrifique perto de monstros, de lava ou caindo de fome!
+    tasks:
+      - get: AWWayofTime:sacrificialKnife
+    rewards:
+      - xp: 4
+      - choice: [minecraft:cooked_porkchop x16, minecraft:baked_potato x24, minecraft:golden_apple x1]
+
+  - id: info_rede_almas
+    title: "A Rede de Almas e o LP"
+    type: info
+    deps: [faca_sacrificio]
+    icon: AWWayofTime:lifeEssence
+    desc: |
+      Uma aulinha antes de sangrar mais, prometo que é rápida!
+
+      §eEssência Vital§r é o fluido vermelho do altar. Para guardar poder, você precisa de um
+      §eOrbe de Sangue§r vinculado (clique direito com ele na mão). Um orbe colocado no altar
+      bombeia a essência para a sua §dRede de Almas§r, medida em §eLP§r (Life Points).
+
+      Sigilos, rituais, alquimia e armaduras puxam LP da sua Rede. §cSe a Rede secar, o item
+      cobra direto da sua vida§r — e alguns causam náusea quando faltam pontos.
+
+      Cada orbe tem um teto de LP para a Rede. Orbes melhores, teto maior. Simples assim!
+    tasks:
+      - check
+    rewards:
+      - xp: 1
+
+  - id: orbe_fraco
+    title: "Orbe de Sangue Fraco"
+    type: main
+    deps: [faca_sacrificio]
+    icon: AWWayofTime:weakBloodOrb
+    desc: |
+      O primeiro orbe nasce de um §ediamante§r. Encha o altar com pelo menos §e2000 LP§r
+      (uns 10 cortes da faca... respire fundo) e coloque o diamante na bacia.
+
+      Partículas vermelhas = transmutando. Partículas cinzentas = o altar secou e o processo
+      está perdendo progresso, corra para cortar mais!
+
+      Pronto o §eOrbe de Sangue Fraco§r, clique direito para vinculá-lo a você. Ele leva a
+      sua Rede de Almas até §e5000 LP§r. Coloque-o no altar para encher a Rede.
+    tasks:
+      - get: AWWayofTime:weakBloodOrb
+    rewards:
+      - xp: 4
+      - choice: [minecraft:diamond x1, minecraft:cooked_beef x16, minecraft:stone x32]
+
+  - id: lousa_branca
+    title: "Lousas em Branco"
+    type: main
+    deps: [orbe_fraco]
+    icon: AWWayofTime:blankSlate
+    desc: |
+      Toda magia de sangue precisa de um "papel" para ser escrita: a §eLousa em Branco§r.
+      Coloque §ePedra lisa§r no altar: custa §e1000 LP§r cada.
+
+      Junte §e8 lousas§r — elas vão para sigilos, runas e quase tudo daqui para frente.
+      §aDica:§r faça os cortes enquanto a lousa está na bacia; o altar consome a essência
+      conforme você a fornece.
+    tasks:
+      - get: AWWayofTime:blankSlate x8
+    rewards:
+      - xp: 4
+      - choice: [minecraft:stone x64, minecraft:glass x32, minecraft:cooked_chicken x16]
+
+  - id: sigilo_divinacao
+    title: "Sigilo da Divinação"
+    type: main
+    deps: [lousa_branca]
+    icon: AWWayofTime:divinationSigil
+    desc: |
+      Como saber quanto sangue você já tem? Com o §eSigilo da Divinação§r: vidro em volta,
+      uma Lousa em Branco e o Orbe Fraco na bancada (o orbe não é consumido, só "assina" a
+      receita com LP).
+
+      Clique no ar para ver o LP da sua Rede; clique no altar para ver o §etier§r, a
+      capacidade e quanto ele guarda. Você vai usar isso o tempo todo, então deixe na hotbar!
+    tasks:
+      - get: AWWayofTime:divinationSigil
+    rewards:
+      - xp: 4
+      - choice: [AWWayofTime:blankSlate x2, minecraft:glass x32, minecraft:diamond x1]
+
+  - id: primeiro_sangue
+    title: "O Primeiro Sangue"
+    type: milestone
+    deps: [orbe_fraco, sigilo_divinacao]
+    icon: AWWayofTime:weakBloodOrb
+    banner: "O Primeiro Sangue"
+    subtitle: "O Volume do Sangue desperta"
+    desc: |
+      Altar, faca, orbe vinculado, sigilo... Herói, você acabou de escrever a primeira página
+      vermelha do Registro! Eu sinto a sua Rede de Almas pulsando daqui.
+
+      O que vem agora:
+      §e• Sigilos§r de Água e Lava para facilitar a vida.
+      §e• Runas de Sangue§r para o Altar de Tier 2.
+      §e• Pedra Ritual Imperfeita§r para os primeiros rituais.
+
+      Uma recomendação de quem gosta de você: monte uma horta, uma criação de animais e
+      tenha sempre comida saturada por perto. Sangue não nasce em árvore!
+    tasks:
+      - get: [AWWayofTime:Altar, AWWayofTime:weakBloodOrb, AWWayofTime:divinationSigil]
+    rewards:
+      - xp: 8
+      - kit: {name: "Kit do Aprendiz de Sangue", items: [minecraft:cooked_beef x32, minecraft:golden_carrot x16, minecraft:stone x64, minecraft:glass x16, minecraft:gold_ingot x4]}
+      - loot: raro
+
+  - id: sigilo_agua
+    title: "Sigilo da Água"
+    type: normal
+    deps: [lousa_branca]
+    icon: AWWayofTime:waterSigil
+    desc: |
+      Água infinita no bolso! O §eSigilo da Água§r leva 7 baldes de água em volta de uma
+      Lousa em Branco e o Orbe Fraco embaixo.
+
+      Cada uso cria uma fonte de água e custa §e100 LP§r. Ótimo para fazendas, para apagar
+      incêndios... e para quando a lava aparecer onde não devia.
+    tasks:
+      - get: AWWayofTime:waterSigil
+    rewards:
+      - xp: 2
+      - item: minecraft:bucket x4
+
+  - id: cristal_lava
+    title: "Cristal de Lava"
+    type: normal
+    deps: [orbe_fraco]
+    icon: AWWayofTime:lavaCrystal
+    desc: |
+      Um combustível que nunca acaba (enquanto a sua Rede aguentar)! O §eCristal de Lava§r
+      usa vidro, baldes de lava, obsidiana, um diamante e o Orbe Fraco.
+
+      Coloque-o como combustível em qualquer fornalha: ele queima puxando LP da sua Rede.
+      §cSe a Rede secar, você sente náusea§r enquanto ele estiver na fornalha — tire-o de lá!
+      Ele também vira o Cristal de Ativação, mais adiante.
+    tasks:
+      - get: AWWayofTime:lavaCrystal
+    rewards:
+      - xp: 2
+      - item: minecraft:obsidian x4
+
+  - id: sigilo_lava
+    title: "Sigilo da Lava"
+    type: normal
+    deps: [cristal_lava]
+    icon: AWWayofTime:lavaSigil
+    desc: |
+      Lava infinita e incêndios infinitos — escolha com sabedoria onde clica!
+
+      O §eSigilo da Lava§r leva baldes de lava, um Creme de Magma, uma Lousa em Branco e o
+      §eCristal de Lava§r. Cada uso cria uma fonte de lava e custa §e1000 LP§r — caro para
+      uma Rede pequena. §cNunca use perto de madeira ou de você mesmo.§r
+    tasks:
+      - get: AWWayofTime:lavaSigil
+    rewards:
+      - xp: 2
+      - item: minecraft:magma_cream x2
+
+  - id: balde_vida
+    title: "Balde de Vida"
+    type: optional
+    deps: [orbe_fraco]
+    icon: AWWayofTime:bucketLife
+    desc: |
+      Um balde vazio no altar (1000 LP) vira um §eBalde de Vida§r com Essência Vital. Serve
+      para transportar sangue e é ingrediente do Sigilo da Visão. Ah, e não, não é para
+      beber. Eu sei que você pensou nisso.
+    tasks:
+      - get: AWWayofTime:bucketLife
+    rewards:
+      - loot: comum
+
+  - id: pedra_imperfeita
+    title: "Pedra Ritual Imperfeita"
+    type: normal
+    deps: [orbe_fraco]
+    icon: AWWayofTime:imperfectRitualStone
+    desc: |
+      Os primeiros rituais de Magus eram simples: uma pedra que lê o bloco logo acima dela.
+      A §ePedra Ritual Imperfeita§r usa obsidiana, pedra e o Orbe Fraco.
+
+      Clique direito nela e um raio cai, ativando um efeito conforme o bloco em cima, por
+      §e5000 LP§r. Veja a quest de informação ao lado para a lista.
+    tasks:
+      - get: AWWayofTime:imperfectRitualStone
+    rewards:
+      - xp: 2
+      - item: minecraft:obsidian x4
+
+  - id: info_rituais_fracos
+    title: "Rituais Imperfeitos"
+    type: info
+    deps: [pedra_imperfeita]
+    icon: minecraft:coal_block
+    desc: |
+      Bloco em cima da Pedra Ritual Imperfeita → efeito (5000 LP cada):
+      §e• Fonte de água:§r invoca uma tempestade.
+      §e• Bloco de carvão:§r invoca um zumbi fortalecido. §c(Ele vem bravo!)§r
+      §e• Bloco de lápis-lazúli:§r vira noite.
+      §e• Rocha-mãe (bedrock):§r Resistência II por 1 minuto.
+
+      Um raio cai na ativação. Não fique em cima, nem perto de nada inflamável!
+    tasks:
+      - check
+    rewards:
+      - xp: 1
+
+  # ======================================================================
+  # FASE 1 — TIER 2: RUNAS, ADAGA, LOUSA REFORÇADA
+  # ======================================================================
+  - id: runas_sangue
+    title: "Runas de Sangue"
+    type: main
+    deps: [primeiro_sangue]
+    icon: AWWayofTime:AlchemicalWizardrybloodRune
+    desc: |
+      O poder do altar vem da estrutura em volta dele. A §eRuna de Sangue§r é feita com
+      pedra, 2 Lousas em Branco e o Orbe Fraco.
+
+      Faça §e8 runas§r e coloque-as num anel 3×3 §eum bloco abaixo§r do altar (o altar fica no
+      centro, por cima do buraco do anel). Use o Sigilo da Divinação no altar: ele deve
+      dizer §eTier 2§r.
+
+      §aImportante:§r runas especiais substituem runas comuns em qualquer posição de runa.
+    tasks:
+      - get: AWWayofTime:AlchemicalWizardrybloodRune x8
+    rewards:
+      - xp: 4
+      - choice: [AWWayofTime:blankSlate x4, minecraft:stone x64, minecraft:cooked_beef x16]
+
+  - id: lousa_reforcada
+    title: "Altar de Tier 2: Lousa Reforçada"
+    type: milestone
+    deps: [runas_sangue]
+    icon: AWWayofTime:reinforcedSlate
+    banner: "Altar de Tier 2"
+    subtitle: "Oito runas despertas"
+    desc: |
+      Sentiu a vibração? É o altar acordando para o segundo andar!
+
+      A prova de que o Tier 2 funciona: uma Lousa em Branco no altar, com §e2000 LP§r, vira
+      §eLousa Reforçada§r — e isso só acontece de Tier 2 para cima. Junte §e4§r.
+
+      O Tier 2 destrava a Adaga de Sacrifício, o Orbe de Aprendiz (esmeralda, 5000 LP) e o
+      Frasco de Poção. Próxima parada: §eTier 3§r, com pilares e 20 runas a mais.
+    tasks:
+      - get: AWWayofTime:reinforcedSlate x4
+    rewards:
+      - xp: 8
+      - kit: {name: "Kit das Runas", items: [AWWayofTime:blankSlate x8, minecraft:stone x64, minecraft:sugar x16, minecraft:emerald x1, minecraft:cooked_porkchop x32]}
+      - loot: raro
+
+  - id: runa_velocidade
+    title: "Runa de Velocidade"
+    type: normal
+    deps: [runas_sangue]
+    icon: AWWayofTime:speedRune
+    desc: |
+      Açúcar dá energia até para altares! A §eRuna de Velocidade§r leva uma Runa de Sangue,
+      açúcar, pedra e Lousas em Branco.
+
+      Cada uma aumenta em §e25%§r a velocidade com que o altar injeta essência nas
+      transmutações e nos orbes. §aMas cuidado:§r mais rápido também significa que o altar
+      seca mais rápido nas receitas caras.
+    tasks:
+      - get: AWWayofTime:speedRune
+    rewards:
+      - xp: 2
+      - item: minecraft:sugar x16
+
+  - id: adaga_sacrificio
+    title: "Adaga do Sacrifício"
+    type: main
+    deps: [lousa_reforcada]
+    icon: AWWayofTime:daggerOfSacrifice
+    desc: |
+      Chega de cortar a si mesmo o tempo todo. Uma §eEspada de Ferro§r no altar de Tier 2
+      (3000 LP) vira a §eAdaga do Sacrifício§r.
+
+      Golpeie uma criatura §eperto do altar§r: ela morre na hora e a vida dela vira essência.
+      Animais rendem menos, monstros mais, e aldeões ainda mais. Chefes, filhotes e
+      jogadores não podem ser sacrificados.
+
+      §cAviso:§r máquinas não conseguem usar a adaga — para automatizar, existe o ritual
+      Poço do Sofrimento.
+    tasks:
+      - get: AWWayofTime:daggerOfSacrifice
+    rewards:
+      - xp: 4
+      - choice: [minecraft:wheat x32, minecraft:carrot x16, minecraft:lead x4]
+
+  - id: orbe_aprendiz
+    title: "Orbe de Sangue de Aprendiz"
+    type: main
+    deps: [lousa_reforcada]
+    icon: AWWayofTime:apprenticeBloodOrb
+    desc: |
+      Se um diamante deu um orbe, imagina uma esmeralda!
+
+      Coloque uma §eEsmeralda§r no altar de Tier 2: são §e5000 LP§r. O altar precisa ter
+      essência suficiente fluindo; se ficar cinza, corra para sacrificar mais.
+
+      O §eOrbe de Aprendiz§r leva a sua Rede até §e25 000 LP§r e é exigido por muitos sigilos,
+      runas de sacrifício e Pedras Rituais.
+    tasks:
+      - get: AWWayofTime:apprenticeBloodOrb
+    rewards:
+      - xp: 4
+      - choice: [minecraft:emerald x1, AWWayofTime:reinforcedSlate x2, minecraft:obsidian x16]
+
+  - id: frasco_pocao
+    title: "Frasco de Poção"
+    type: optional
+    deps: [lousa_reforcada]
+    icon: AWWayofTime:alchemyFlask
+    desc: |
+      Um frasco de vidro no altar (2000 LP) vira o §eFrasco de Poção§r, que guarda várias
+      doses de uma poção alquímica. É o recipiente das poções da Mesa Alquímica e um jeito
+      de aplicar Fraqueza III (útil para os Fragmentos de Sangue, mais tarde).
+    tasks:
+      - get: AWWayofTime:alchemyFlask
+    rewards:
+      - loot: comum
+
+  - id: cristal_nao_vinculado
+    title: "Cristal Não Vinculado"
+    type: optional
+    deps: [lousa_reforcada]
+    icon: AWWayofTime:blankSpell
+    desc: |
+      Vidro no altar de Tier 2 (1000 LP) vira o §eCristal Não Vinculado§r. Ele é a base do
+      Cristal de Feitiço Complexo, a chave dos feitiços de sangue. Guarde um!
+    tasks:
+      - get: AWWayofTime:blankSpell
+    rewards:
+      - loot: comum
+
+  - id: sigilo_vazio
+    title: "Sigilo do Vazio"
+    type: normal
+    deps: [orbe_aprendiz]
+    icon: AWWayofTime:voidSigil
+    desc: |
+      Criar líquido você já sabe. Agora, sumir com ele! O §eSigilo do Vazio§r leva baldes,
+      linha, uma Lousa Reforçada e o Orbe de Aprendiz. Cada uso apaga uma fonte de líquido
+      (50 LP). Perfeito para limpar lava de cavernas.
+    tasks:
+      - get: AWWayofTime:voidSigil
+    rewards:
+      - xp: 2
+      - item: minecraft:string x8
+
+  - id: sigilo_ar
+    title: "Sigilo do Ar"
+    type: normal
+    deps: [orbe_aprendiz]
+    icon: AWWayofTime:airSigil
+    desc: |
+      Voar como um passarinho... ou como uma pedra arremessada. O §eSigilo do Ar§r (penas,
+      lágrima de Ghast, Lousa Reforçada e Orbe de Aprendiz) empurra você para onde olha.
+
+      §cCuidado com o pouso!§r Ele não protege contra dano de queda. Planeje a aterrissagem
+      (água ajuda muito).
+    tasks:
+      - get: AWWayofTime:airSigil
+    rewards:
+      - xp: 2
+      - item: minecraft:feather x16
+
+  - id: sigilo_minerador
+    title: "Sigilo do Minerador Veloz"
+    type: normal
+    deps: [orbe_aprendiz]
+    icon: AWWayofTime:sigilOfTheFastMiner
+    desc: |
+      Por que melhorar a ferramenta se dá para melhorar o braço? O §eSigilo do Minerador
+      Veloz§r usa picareta, pá e machado de ferro, pedra, Lousa Reforçada e o Orbe de
+      Aprendiz.
+
+      Ligue/desligue com clique direito: dá Pressa enquanto ativo, cobrando LP de tempos em
+      tempos. §aLembre de desligar§r quando não estiver minerando!
+    tasks:
+      - get: AWWayofTime:sigilOfTheFastMiner
+    rewards:
+      - xp: 2
+      - item: minecraft:iron_ingot x8
+
+  - id: sigilo_bosque
+    title: "Sigilo do Bosque Verdejante"
+    type: normal
+    deps: [orbe_aprendiz]
+    icon: AWWayofTime:growthSigil
+    desc: |
+      Uma farinha de osso infinita e portátil! O §eSigilo do Bosque Verdejante§r leva
+      mudas, canas-de-açúcar, Lousa Reforçada e Orbe de Aprendiz.
+
+      Clique numa planta para fertilizá-la, ou ative para acelerar as plantas em volta
+      enquanto anda. É a versão de bolso do Ritual do Bosque Verdejante.
+    tasks:
+      - get: AWWayofTime:growthSigil
+    rewards:
+      - xp: 2
+      - item: minecraft:sapling x8
+
+  - id: sigilo_visao
+    title: "Sigilo da Visão"
+    type: optional
+    deps: [orbe_aprendiz, balde_vida, sigilo_divinacao]
+    icon: AWWayofTime:seerSigil
+    desc: |
+      Uma divinação mais técnica: o §eSigilo da Visão§r (vidro, Sigilo da Divinação, Balde de
+      Vida e Orbe de Aprendiz) mostra os buffers do altar, o progresso da transmutação e a
+      velocidade de consumo. Em troca, deixa de mostrar o tier. Ótimo para planejar receitas
+      caras!
+    tasks:
+      - get: AWWayofTime:seerSigil
+    rewards:
+      - loot: comum
+
+  - id: runa_sacrificio
+    title: "Runa de Sacrifício"
+    type: normal
+    deps: [orbe_aprendiz, adaga_sacrificio]
+    icon: AWWayofTime:runeOfSacrifice
+    desc: |
+      Ouro é ótimo para magia. A §eRuna de Sacrifício§r (pedra, ouro, Lousas Reforçadas e
+      Orbe de Aprendiz) aumenta em §e12%§r por runa o LP das criaturas sacrificadas pela
+      Adaga ou pelo Poço do Sofrimento.
+
+      Se a sua base vai viver de fazenda de mobs, encha o altar delas!
+    tasks:
+      - get: AWWayofTime:runeOfSacrifice
+    rewards:
+      - xp: 2
+      - item: minecraft:gold_ingot x4
+
+  - id: runa_autosacrificio
+    title: "Runa de Autossacrifício"
+    type: normal
+    deps: [orbe_aprendiz]
+    icon: AWWayofTime:runeOfSelfSacrifice
+    desc: |
+      A irmã de pó de pedra luminosa: a §eRuna de Autossacrifício§r (pedra, pó de pedra
+      luminosa, Lousas Reforçadas e Orbe de Aprendiz) aumenta em §e12%§r por runa o LP de
+      cada corte da sua faca.
+
+      Se o seu estilo é "sangrar com responsabilidade", essa é a runa.
+    tasks:
+      - get: AWWayofTime:runeOfSelfSacrifice
+    rewards:
+      - xp: 2
+      - item: minecraft:glowstone_dust x8
+
+  - id: mochila_sangue
+    title: "Mochila do Sangrador"
+    type: optional
+    deps: [lousa_branca]
+    icon: AWWayofTime:itemBloodPack
+    desc: |
+      Para quem não quer ficar parado ao lado do altar: a §eMochila do Sangrador§r (peitoral
+      de couro, vidro, balde, sílex e Lousa em Branco) drena sua vida aos poucos quando você
+      tem mais de 5 corações e guarda até 10 000 LP de essência.
+
+      Despeje no altar depois — mas as runas não dão bônus a essa essência, e o altar só
+      aceita quando não está transmutando.
+    tasks:
+      - get: AWWayofTime:itemBloodPack
+    rewards:
+      - loot: comum
+
+  - id: pedra_ritual
+    title: "Pedras Rituais"
+    type: main
+    deps: [orbe_aprendiz]
+    icon: AWWayofTime:ritualStone
+    desc: |
+      As grandes magias de Magus são desenhadas no chão com pedras e tintas. A §ePedra
+      Ritual§r é feita com obsidiana, Lousas Reforçadas e o Orbe de Aprendiz.
+
+      Rituais pequenos usam 4 a 8 pedras; os grandes usam dezenas. Comece com §e8§r e vá
+      juntando — você nunca terá pedras rituais demais.
+    tasks:
+      - get: AWWayofTime:ritualStone x8
+    rewards:
+      - xp: 4
+      - choice: [minecraft:obsidian x16, AWWayofTime:reinforcedSlate x4, minecraft:diamond x1]
+
+  - id: mesa_quimica
+    title: "Conjunto de Química Alquímica"
+    type: main
+    deps: [orbe_fraco]
+    icon: AWWayofTime:blockWritingTable
+    desc: |
+      Vlad, o aprendiz alquimista, inventou uma bancada que usa LP como combustível. O
+      §eConjunto de Química Alquímica§r leva um Suporte de Poções, obsidiana e o Orbe Fraco.
+
+      Coloque um §eOrbe de Sangue vinculado§r no espaço do orbe e até 5 ingredientes; a mesa
+      processa drenando LP da Rede. Cada receita exige um tier mínimo de orbe (veja no NEI,
+      aba "Alchemic Chemistry Set").
+    tasks:
+      - get: AWWayofTime:blockWritingTable
+    rewards:
+      - xp: 4
+      - choice: [minecraft:redstone x16, minecraft:glowstone_dust x8, minecraft:gunpowder x8]
+
+  # ======================================================================
+  # FASE 2 — ALQUIMIA: CATALISADORES E REAGENTES
+  # ======================================================================
+  - id: catalisador_simples
+    title: "Catalisador Simples"
+    type: main
+    deps: [mesa_quimica]
+    icon: AWWayofTime:simpleCatalyst
+    desc: |
+      A base de quase toda alquimia: §eCatalisador Simples§r = açúcar, 2 redstone, pó de
+      pedra luminosa e pólvora, com o Orbe Fraco na mesa.
+
+      Faça §e8§r. Os reagentes, os agentes de ligação e os catalisadores de poção começam
+      todos aqui.
+    tasks:
+      - get: AWWayofTime:simpleCatalyst x8
+    rewards:
+      - xp: 4
+      - choice: [minecraft:redstone x16, minecraft:sugar x16, minecraft:gunpowder x8]
+
+  - id: reagente_incendium
+    title: "Incendium"
+    type: normal
+    deps: [catalisador_simples]
+    icon: AWWayofTime:incendium
+    desc: |
+      O reagente do fogo: balde de lava, 2 pós de blaze, rocha do Nether e um Catalisador
+      Simples (Orbe de Aprendiz). O §eIncendium§r aparece em núcleos de fogo, catalisadores
+      maiores e no Cristal de Ativação Desperto.
+    tasks:
+      - get: AWWayofTime:incendium
+    rewards:
+      - xp: 2
+      - item: minecraft:blaze_powder x2
+
+  - id: reagente_aether
+    title: "Aether"
+    type: normal
+    deps: [catalisador_simples]
+    icon: AWWayofTime:aether
+    desc: |
+      O reagente do ar: 2 penas, pó de pedra luminosa, lágrima de Ghast e Catalisador
+      Simples (Orbe de Aprendiz). O §eAether§r vira Núcleo de Vento e entra em convocações.
+    tasks:
+      - get: AWWayofTime:aether
+    rewards:
+      - xp: 2
+      - item: minecraft:feather x8
+
+  - id: reagente_sanctus
+    title: "Sanctus"
+    type: normal
+    deps: [catalisador_simples]
+    icon: AWWayofTime:sanctus
+    desc: |
+      O reagente sagrado: 2 pós de pedra luminosa, pepita de ouro, vidro e Catalisador
+      Simples. O §eSanctus§r cura e protege — e entra no Agente de Ligação Padrão.
+    tasks:
+      - get: AWWayofTime:sanctus
+    rewards:
+      - xp: 2
+      - item: minecraft:glowstone_dust x8
+
+  - id: reagente_crepitous
+    title: "Crepitous"
+    type: normal
+    deps: [catalisador_simples]
+    icon: AWWayofTime:crepitous
+    desc: |
+      O reagente explosivo: 2 pólvoras, 2 pedregulhos e Catalisador Simples. §cTrate o
+      Crepitous com respeito§r: ele está na Bazuca de Energia.
+    tasks:
+      - get: AWWayofTime:crepitous
+    rewards:
+      - xp: 2
+      - item: minecraft:gunpowder x8
+
+  - id: reagente_crystallos
+    title: "Crystallos"
+    type: normal
+    deps: [catalisador_simples]
+    icon: AWWayofTime:crystallos
+    desc: |
+      O reagente do gelo: 2 gelos, 2 blocos de neve e Catalisador Simples. O §eCrystallos§r
+      congela — e é parte do Agente de Ligação Padrão.
+    tasks:
+      - get: AWWayofTime:crystallos
+    rewards:
+      - xp: 2
+      - item: minecraft:snowball x16
+
+  - id: reagente_terrae
+    title: "Terrae"
+    type: normal
+    deps: [catalisador_simples]
+    icon: AWWayofTime:terrae
+    desc: |
+      O reagente da terra: terra, areia, 2 obsidianas e Catalisador Simples. O §eTerrae§r
+      também aumenta o tamanho de meteoros no ritual Marca da Torre Caída!
+    tasks:
+      - get: AWWayofTime:terrae
+    rewards:
+      - xp: 2
+      - item: minecraft:obsidian x4
+
+  - id: reagente_aquasalus
+    title: "Aquasalus"
+    type: normal
+    deps: [catalisador_simples]
+    icon: AWWayofTime:aquasalus
+    desc: |
+      O reagente da água: 3 frascos de água, uma bolsa de tinta e Catalisador Simples. O
+      §eAquasalus§r está nos catalisadores de duração maiores e no Agente de Enchimento
+      Aprimorado.
+    tasks:
+      - get: AWWayofTime:aquasalus
+    rewards:
+      - xp: 2
+      - item: minecraft:glass_bottle x8
+
+  - id: reagente_tenebrae
+    title: "Tenebrae"
+    type: normal
+    deps: [catalisador_simples]
+    icon: AWWayofTime:tennebrae
+    desc: |
+      O reagente da escuridão: 2 carvões, obsidiana, argila e Catalisador Simples. O
+      §eTenebrae§r vira Praesidium e é pedido em várias convocações de demônios.
+    tasks:
+      - get: AWWayofTime:tennebrae
+    rewards:
+      - xp: 2
+      - item: minecraft:coal x8
+
+  - id: reagente_magicales
+    title: "Magicales"
+    type: normal
+    deps: [catalisador_simples]
+    icon: AWWayofTime:magicales
+    desc: |
+      O reagente arcano: redstone, pólvora, 2 pós de pedra luminosa e Catalisador Simples. O
+      §eMagicales§r vira o Cabo Magicales dos feitiços complexos.
+    tasks:
+      - get: AWWayofTime:magicales
+    rewards:
+      - xp: 2
+      - item: minecraft:redstone x16
+
+  - id: reagentes_completos
+    title: "Os Nove Reagentes"
+    type: milestone
+    deps: [reagente_incendium, reagente_aether, reagente_sanctus, reagente_crepitous, reagente_crystallos, reagente_terrae, reagente_aquasalus, reagente_tenebrae, reagente_magicales]
+    icon: AWWayofTime:magicales
+    banner: "Os Nove Reagentes"
+    subtitle: "Alquimia de sangue dominada"
+    desc: |
+      Fogo, ar, luz, explosão, gelo, terra, água, sombra e magia — os nove reagentes na sua
+      mão! Vlad ficaria orgulhoso (e eu estou, MUITO).
+
+      Esses reagentes alimentam a §eCalcinadora Alquímica§r (para rituais com reagentes), a
+      convocação de §eElementais§r na Plinto Arcano e os catalisadores de poção. E guarde
+      sempre alguns: o Catalisador Amorfo do Blood Arsenal leva oito deles!
+    tasks:
+      - get: [AWWayofTime:incendium, AWWayofTime:aether, AWWayofTime:sanctus, AWWayofTime:crepitous, AWWayofTime:crystallos, AWWayofTime:terrae, AWWayofTime:aquasalus, AWWayofTime:tennebrae, AWWayofTime:magicales]
+    rewards:
+      - xp: 8
+      - kit: {name: "Kit do Alquimista Rubro", items: [AWWayofTime:simpleCatalyst x8, minecraft:glowstone_dust x16, minecraft:redstone x32, minecraft:gunpowder x16, minecraft:blaze_powder x4]}
+      - loot: raro
+
+  - id: agente_ligacao_fraco
+    title: "Agente de Ligação Fraco"
+    type: normal
+    deps: [catalisador_simples]
+    icon: AWWayofTime:weakBindingAgent
+    desc: |
+      2 Catalisadores Simples + argila (Orbe de Aprendiz) = §eAgente de Ligação Fraco§r. Ele
+      "cola" catalisadores de poção e é a base do Agente de Ligação Padrão.
+    tasks:
+      - get: AWWayofTime:weakBindingAgent
+    rewards:
+      - xp: 2
+      - item: minecraft:clay_ball x8
+
+  - id: agente_ligacao_padrao
+    title: "Agente de Ligação Padrão"
+    type: normal
+    deps: [agente_ligacao_fraco, reagente_sanctus, reagente_crystallos]
+    icon: AWWayofTime:standardBindingAgent
+    desc: |
+      Agente Fraco + Sanctus + Crystallos (Orbe de Mago) = §eAgente de Ligação Padrão§r. Ele
+      junta os catalisadores Mundanos em Médios. §aDica:§r também aparece em baús de
+      masmorra!
+    tasks:
+      - get: AWWayofTime:standardBindingAgent
+    rewards:
+      - xp: 2
+      - item: AWWayofTime:simpleCatalyst x2
+
+  - id: catalisador_potencia
+    title: "Catalisadores de Potência"
+    type: normal
+    deps: [agente_ligacao_fraco]
+    icon: AWWayofTime:mundanePowerCatalyst
+    desc: |
+      As poções alquímicas ficam mais fortes com §eCatalisadores de Potência§r:
+      §e• Mundano:§r 3 pós de pedra luminosa + Agente Fraco + Catalisador Simples.
+      §e• Médio:§r 2 Mundanos + Agente Padrão.
+      §e• Maior:§r 2 Médios + Incendium.
+
+      Mostre o Mundano para começar. Aplicam-se ao Frasco de Poção na mesa (veja o NEI).
+    tasks:
+      - get: AWWayofTime:mundanePowerCatalyst
+    rewards:
+      - xp: 2
+      - item: minecraft:glowstone_dust x8
+
+  - id: catalisador_duracao
+    title: "Catalisadores de Duração"
+    type: normal
+    deps: [agente_ligacao_fraco]
+    icon: AWWayofTime:mundaneLengtheningCatalyst
+    desc: |
+      Para poções que duram mais, os §eCatalisadores de Prolongamento§r:
+      §e• Mundano:§r 3 redstones + Agente Fraco + Catalisador Simples.
+      §e• Médio:§r 2 Mundanos + Agente Padrão.
+      §e• Maior:§r 2 Médios + Aquasalus.
+    tasks:
+      - get: AWWayofTime:mundaneLengtheningCatalyst
+    rewards:
+      - xp: 2
+      - item: minecraft:redstone x16
+
+  - id: catalisador_maior
+    title: "Catalisadores Maiores"
+    type: optional
+    deps: [catalisador_potencia, catalisador_duracao, agente_ligacao_padrao]
+    icon: AWWayofTime:greaterPowerCatalyst
+    desc: |
+      O topo da escada de catalisadores. Mostre um §eCatalisador de Potência Maior§r ou um
+      §eCatalisador de Prolongamento Maior§r. Eles também aparecem raramente em baús de
+      masmorra, de presente!
+    tasks:
+      - one_of: [AWWayofTime:greaterPowerCatalyst, AWWayofTime:greaterLengtheningCatalyst]
+    rewards:
+      - loot: incomum
+
+  - id: agente_enchimento
+    title: "Agentes de Enchimento"
+    type: optional
+    deps: [catalisador_simples]
+    icon: AWWayofTime:weakFillingAgent
+    desc: |
+      Os §eAgentes de Enchimento§r recarregam doses do Frasco de Poção. Fraco: Catalisador
+      Simples, verruga do Nether, redstone e pó de pedra luminosa. Padrão: Fraco + Terrae.
+      Aprimorado: Padrão + Aquasalus + Magicales.
+    tasks:
+      - get: AWWayofTime:weakFillingAgent
+    rewards:
+      - loot: comum
+
+  - id: catalisador_fortalecido
+    title: "Catalisador Fortalecido"
+    type: normal
+    deps: [catalisador_simples]
+    icon: AWWayofTime:bloodMagicBaseAlchemyItems:3
+    desc: |
+      2 Catalisadores Simples + farinha de osso + verruga do Nether (Orbe de Mago) =
+      §eCatalisador Fortalecido§r. É o segundo degrau: dele saem Offensa, Praesidium, Orbis
+      Terrae, Virtus, Reductus e Potentia, além dos roteadores alquímicos.
+    tasks:
+      - get: AWWayofTime:bloodMagicBaseAlchemyItems:3 x4
+    rewards:
+      - xp: 2
+      - item: minecraft:nether_wart x8
+
+  - id: osso_fraturado
+    title: "Osso Fraturado"
+    type: optional
+    deps: [catalisador_simples]
+    icon: AWWayofTime:bloodMagicBaseAlchemyItems:5
+    desc: |
+      4 ossos + pólvora na mesa (Orbe Fraco) = §eOsso Fraturado§r. Na bancada ele vira 5
+      farinhas de osso, e é ingrediente do Catalisador Concentrado e do Incenso Purpura.
+    tasks:
+      - get: AWWayofTime:bloodMagicBaseAlchemyItems:5
+    rewards:
+      - loot: comum
+
+  - id: catalisador_concentrado
+    title: "Catalisador Concentrado"
+    type: normal
+    deps: [catalisador_fortalecido, osso_fraturado]
+    icon: AWWayofTime:bloodMagicBaseAlchemyItems:4
+    desc: |
+      Fortalecido + Osso Fraturado + pepita de ouro (Orbe Mestre) = §eCatalisador
+      Concentrado§r. Ele faz a Redoma de Cristal, o Relé Alquímico e as Placas Rúnicas
+      Rachadas dos feitiços.
+    tasks:
+      - get: AWWayofTime:bloodMagicBaseAlchemyItems:4
+    rewards:
+      - xp: 3
+      - item: minecraft:gold_nugget x9
+
+  - id: reagentes_avancados
+    title: "Offensa, Praesidium e Orbis Terrae"
+    type: normal
+    deps: [catalisador_fortalecido, reagentes_completos]
+    icon: AWWayofTime:bloodMagicBaseAlchemyItems
+    desc: |
+      Reagentes de segunda geração (Orbe de Mago, base Catalisador Fortalecido):
+      §e• Offensa:§r + Incendium, 2 flechas, sílex.
+      §e• Praesidium:§r + Tenebrae, ferro, teia, redstone.
+      §e• Orbis Terrae:§r + Terrae, pólvora, rocha do Nether, areia.
+
+      Eles fazem os Núcleos Ofensivo, Defensivo e Ambiental dos feitiços.
+    tasks:
+      - get: [AWWayofTime:bloodMagicBaseAlchemyItems, AWWayofTime:bloodMagicBaseAlchemyItems:1, AWWayofTime:bloodMagicBaseAlchemyItems:2]
+    rewards:
+      - xp: 3
+      - item: minecraft:arrow x16
+
+  - id: reagentes_potencia
+    title: "Virtus, Reductus e Potentia"
+    type: normal
+    deps: [catalisador_fortalecido, reagentes_completos]
+    icon: AWWayofTime:bloodMagicBaseAlchemyItems:6
+    desc: |
+      Os reagentes que modulam feitiços (Orbe de Mago):
+      §e• Virtus:§r redstones, carvão, pólvora → Núcleo de Poder.
+      §e• Reductus:§r redstone, ouro, areia das almas, cenoura → Núcleo de Redução.
+      §e• Potentia:§r pó de pedra luminosa, 2 lápis-lazúli, quartzo → Núcleo de Potência.
+    tasks:
+      - get: [AWWayofTime:bloodMagicBaseAlchemyItems:6, AWWayofTime:bloodMagicBaseAlchemyItems:7, AWWayofTime:bloodMagicBaseAlchemyItems:8]
+    rewards:
+      - xp: 3
+      - item: minecraft:quartz x8
+
+  - id: calcinadora
+    title: "Calcinadora Alquímica"
+    type: normal
+    deps: [catalisador_fortalecido]
+    icon: AWWayofTime:blockAlchemicCalcinator
+    desc: |
+      Alguns rituais aceitam §eAR§r (Reagente Alquímico puro). A §eCalcinadora Alquímica§r
+      (Placas Rúnicas Rachadas, vidro, Catalisador Fortalecido e pedregulho) refina o
+      reagente cru em AR: clique nela com um Orbe vinculado e depois com o reagente.
+
+      O AR fica guardado dentro dela e pode ser levado aos rituais com Roteadores.
+    tasks:
+      - get: AWWayofTime:blockAlchemicCalcinator
+    rewards:
+      - xp: 2
+      - item: minecraft:cobblestone x32
+
+  - id: redoma_cristal
+    title: "Redoma de Cristal"
+    type: normal
+    deps: [catalisador_concentrado]
+    icon: AWWayofTime:blockCrystalBelljar
+    desc: |
+      Vidro, Catalisador Concentrado e lajes de madeira = §eRedoma de Cristal§r. Ela armazena
+      AR e §emantém o conteúdo quando quebrada§r. A Convocação dos Condenados exige
+      §e8 redomas§r em posições exatas — comece a fazer!
+    tasks:
+      - get: AWWayofTime:blockCrystalBelljar
+    rewards:
+      - xp: 2
+      - item: minecraft:glass x16
+
+  - id: roteador_alquimico
+    title: "Roteador e Relé Alquímico"
+    type: optional
+    deps: [calcinadora]
+    icon: AWWayofTime:itemAttunedCrystal
+    desc: |
+      O §eRoteador Alquímico§r liga fontes de AR a destinos: clique na fonte, depois no
+      destino. O §eRelé Alquímico§r estende o alcance. O §eSegmentador§r limita tanques e o
+      §eLimpador§r apaga ligações erradas. Mostre o Roteador ou o Relé.
+    tasks:
+      - one_of: [AWWayofTime:itemAttunedCrystal, AWWayofTime:blockReagentConduit]
+    rewards:
+      - loot: comum
+
+  # ======================================================================
+  # FASE 3 — TIER 3: ORBE DE MAGO, TINTAS E A PEDRA MESTRA
+  # ======================================================================
+  - id: info_altar_t3
+    title: "Estrutura: Altar de Tier 3"
+    type: info
+    deps: [lousa_reforcada]
+    icon: minecraft:glowstone
+    desc: |
+      O Tier 3 exige o anel do Tier 2 §emais§r:
+      §e• 20 runas§r num anel 7×7, §eum bloco abaixo do anel anterior§r (5 em cada lado,
+      centralizadas, sem os cantos).
+      §e• 4 pilares§r de 2 blocos (qualquer material) nos cantos, a 3 blocos do altar.
+      §e• Tampas§r em cima dos pilares: §ePedra Luminosa§r (este pack aceita também Lanterna
+      do Mar do Botania, do Et Futurum, pedra luminosa do Chisel e da ExtraUtilities, e a
+      Pedra Luminosa Infundida do Blood Arsenal).
+
+      Total: 28 runas. Os vãos podem ficar vazios ou decorados.
+    tasks:
+      - check
+    rewards:
+      - xp: 1
+
+  - id: altar_tier3
+    title: "Altar de Tier 3: Lousa Imbuída"
+    type: milestone
+    deps: [info_altar_t3, runas_sangue]
+    icon: AWWayofTime:imbuedSlate
+    banner: "Altar de Tier 3"
+    subtitle: "Pilares de luz"
+    desc: |
+      Vinte e oito runas e quatro chamas de pedra luminosa. Que lindo, Herói!
+
+      Prova do Tier 3: uma Lousa Reforçada com §e5000 LP§r vira §eLousa Imbuída§r. Junte
+      §e4§r. O Tier 3 também transmuta o Bloco de Ouro no Orbe de Mago (25 000 LP!), as
+      quatro tintas elementais, o Cristal de Ativação e o Soquete Preenchido.
+
+      §aDica:§r 25 000 LP é mais do que um altar sem runas de capacidade guarda — mantenha
+      essência entrando enquanto o orbe transmuta (poções de cura ajudam muito).
+    tasks:
+      - get: AWWayofTime:imbuedSlate x4
+    rewards:
+      - xp: 8
+      - kit: {name: "Kit do Mago de Sangue", items: [minecraft:glowstone x4, minecraft:gold_block x1, AWWayofTime:reinforcedSlate x4, minecraft:potion:8229 x4, minecraft:cooked_beef x32]}
+      - loot: raro
+
+  - id: orbe_mago
+    title: "Orbe de Sangue de Mago"
+    type: main
+    deps: [altar_tier3]
+    icon: AWWayofTime:magicianBloodOrb
+    desc: |
+      O orbe dourado! Um §eBloco de Ouro§r no altar de Tier 3 consome §e25 000 LP§r.
+
+      Como o altar básico só guarda 10 000, você precisa repor essência enquanto ele
+      transmuta. Poções de cura instantânea + faca = muito LP rápido (só não exagere).
+
+      O §eOrbe de Mago§r leva a Rede a §e150 000 LP§r e destrava a Pedra Ritual Mestra, os
+      sigilos de terceira geração e a Forja de Armadura da Alma.
+    tasks:
+      - get: AWWayofTime:magicianBloodOrb
+    rewards:
+      - xp: 4
+      - choice: [minecraft:gold_block x1, AWWayofTime:imbuedSlate x2, minecraft:obsidian x32]
+
+  - id: tinta_terra
+    title: "Ferramenta de Inscrição: Terra"
+    type: normal
+    deps: [altar_tier3]
+    icon: AWWayofTime:earthScribeTool
+    desc: |
+      Rituais são desenhados com quatro tintas elementais. A de §eTerra§r nasce de uma
+      §eObsidiana§r no altar de Tier 3 (1000 LP). Cada ferramenta tem 10 usos: clique numa
+      Pedra Ritual para pintá-la.
+    tasks:
+      - get: AWWayofTime:earthScribeTool
+    rewards:
+      - xp: 2
+      - item: minecraft:obsidian x4
+
+  - id: tinta_agua
+    title: "Ferramenta de Inscrição: Água"
+    type: normal
+    deps: [altar_tier3]
+    icon: AWWayofTime:waterScribeTool
+    desc: |
+      A tinta da §eÁgua§r vem de um §eBloco de Lápis-Lazúli§r no altar de Tier 3 (1000 LP).
+      Pinte as pedras azuis dos rituais com ela.
+    tasks:
+      - get: AWWayofTime:waterScribeTool
+    rewards:
+      - xp: 2
+      - item: minecraft:dye:4 x9
+
+  - id: tinta_fogo
+    title: "Ferramenta de Inscrição: Fogo"
+    type: normal
+    deps: [altar_tier3]
+    icon: AWWayofTime:fireScribeTool
+    desc: |
+      A tinta do §eFogo§r vem de um §eCreme de Magma§r no altar de Tier 3 (1000 LP). Pedras
+      vermelhas, rituais quentes!
+    tasks:
+      - get: AWWayofTime:fireScribeTool
+    rewards:
+      - xp: 2
+      - item: minecraft:magma_cream x2
+
+  - id: tinta_ar
+    title: "Ferramenta de Inscrição: Ar"
+    type: normal
+    deps: [altar_tier3]
+    icon: AWWayofTime:airScribeTool
+    desc: |
+      A tinta do §eAr§r vem de uma §eLágrima de Ghast§r no altar de Tier 3 (1000 LP). Sim, você
+      vai precisar visitar o Nether e chorar junto com os Ghasts.
+    tasks:
+      - get: AWWayofTime:airScribeTool
+    rewards:
+      - xp: 2
+      - item: minecraft:ghast_tear x1
+
+  - id: pedra_mestra
+    title: "Pedra Ritual Mestra"
+    type: main
+    deps: [orbe_mago, pedra_ritual]
+    icon: AWWayofTime:masterStone
+    desc: |
+      O coração de todo ritual: a §ePedra Ritual Mestra§r, com 4 Pedras Rituais, obsidiana e
+      o §eOrbe de Mago§r.
+
+      Coloque-a, monte as Pedras Rituais em volta no desenho certo (com as cores certas de
+      tinta) e ative com um §eCristal de Ativação§r vinculado. O ritual cobra um custo de
+      ativação e, depois, um pequeno custo periódico da sua Rede.
+    tasks:
+      - get: AWWayofTime:masterStone
+    rewards:
+      - xp: 4
+      - choice: [AWWayofTime:ritualStone x4, minecraft:obsidian x16, minecraft:diamond x2]
+
+  - id: cristal_ativacao
+    title: "Cristal de Ativação Fraco"
+    type: main
+    deps: [altar_tier3, cristal_lava]
+    icon: AWWayofTime:activationCrystal
+    desc: |
+      Um §eCristal de Lava§r no altar de Tier 3 (10 000 LP) vira o §eCristal de Ativação
+      Fraco§r. Vincule-o e clique na Pedra Ritual Mestra para iniciar rituais de nível 1 —
+      quase todos os rituais iniciais.
+    tasks:
+      - get: AWWayofTime:activationCrystal
+    rewards:
+      - xp: 4
+      - choice: [minecraft:lava_bucket x1, minecraft:diamond x1, minecraft:obsidian x8]
+
+  - id: adivinho_ritual
+    title: "Adivinho Ritual"
+    type: normal
+    deps: [tinta_terra, tinta_agua, tinta_fogo, tinta_ar]
+    icon: AWWayofTime:itemRitualDiviner
+    desc: |
+      O presente de Tiberius para Magus! O §eAdivinho Ritual§r (as quatro ferramentas de
+      inscrição, 4 diamantes e uma esmeralda) monta rituais sozinho.
+
+      Shift + clique direito no ar troca o ritual (Shift + esquerdo volta). Shift + clique
+      num bloco gira a direção. Clique direito na Pedra Mestra: ele coloca e pinta as
+      pedras do seu inventário. Só funciona em espaços vazios!
+    tasks:
+      - get: AWWayofTime:itemRitualDiviner
+    rewards:
+      - xp: 3
+      - item: AWWayofTime:ritualStone x8
+
+  - id: info_rituais
+    title: "Como Funcionam os Rituais"
+    type: info
+    deps: [pedra_mestra, cristal_ativacao]
+    icon: AWWayofTime:ritualStone
+    desc: |
+      Receita de bolo para qualquer ritual:
+      §e1.§r Pedra Ritual Mestra no centro.
+      §e2.§r Pedras Rituais no desenho do ritual, pintadas (Água, Fogo, Terra, Ar, e mais tarde
+      Crepúsculo e Alvorada). O Adivinho faz isso por você.
+      §e3.§r Rede de Almas com LP para a §eativação§r.
+      §e4.§r Clique na Pedra Mestra com o Cristal de Ativação vinculado.
+
+      Para desligar: sinal de redstone na Pedra Mestra pausa o ritual. Os custos abaixo vêm
+      da config deste pack. Rituais de nível 2 pedem o Cristal Desperto.
+    tasks:
+      - check
+    rewards:
+      - xp: 1
+
+  # --- RITUAIS DE NÍVEL 1 (catálogo) ---
+  - id: ritual_fonte
+    title: "Ritual da Fonte Plena"
+    type: normal
+    deps: [info_rituais]
+    icon: minecraft:water_bucket
+    desc: |
+      O primeiro e mais barato: 4 pedras de Água. Ativação §e500 LP§r. Cria água sem parar
+      acima da Pedra Mestra (custo periódico baixo). Monte e confirme.
+    tasks:
+      - check
+    rewards:
+      - xp: 2
+      - item: AWWayofTime:ritualStone x2
+
+  - id: ritual_serenata
+    title: "Serenata do Nether"
+    type: normal
+    deps: [info_rituais]
+    icon: minecraft:lava_bucket
+    desc: |
+      4 pedras de Fogo. Ativação §e10 000 LP§r e §c500 LP§r por operação: cria lava acima da
+      Pedra Mestra. Caro, mas é lava infinita para geradores. §cCerque bem a área!§r
+    tasks:
+      - check
+    rewards:
+      - xp: 2
+      - item: minecraft:bucket x2
+
+  - id: ritual_bosque
+    title: "Ritual do Bosque Verdejante"
+    type: normal
+    deps: [info_rituais]
+    icon: minecraft:wheat
+    desc: |
+      Ativação §e1000 LP§r. Acelera o crescimento das plantações em volta da Pedra Mestra.
+      Combine com uma fazenda e veja a colheita voar!
+    tasks:
+      - check
+    rewards:
+      - xp: 2
+      - item: minecraft:wheat_seeds x16
+
+  - id: ritual_interdicao
+    title: "Ritual de Interdição"
+    type: normal
+    deps: [info_rituais]
+    icon: minecraft:torch
+    desc: |
+      Ativação §e1000 LP§r. Empurra criaturas para longe da Pedra Mestra — uma tocha de
+      interdição gigante. Ótimo para proteger a entrada da base.
+    tasks:
+      - check
+    rewards:
+      - xp: 2
+      - item: minecraft:torch x16
+
+  - id: ritual_contencao
+    title: "Ritual de Contenção"
+    type: normal
+    deps: [info_rituais]
+    icon: minecraft:iron_bars
+    desc: |
+      A Interdição ao contrário: puxa criaturas §epara dentro§r. Ativação §e2000 LP§r. Útil
+      para juntar mobs num ponto de abate.
+    tasks:
+      - check
+    rewards:
+      - xp: 2
+      - item: minecraft:iron_bars x8
+
+  - id: ritual_salto
+    title: "Ritual do Salto Alto"
+    type: normal
+    deps: [info_rituais]
+    icon: minecraft:feather
+    desc: |
+      Faz exatamente o que diz: quem pisa na área salta muito alto. Ativação §e1000 LP§r.
+      §cOlha a queda!§r
+    tasks:
+      - check
+    rewards:
+      - xp: 2
+      - item: minecraft:feather x8
+
+  - id: ritual_velocidade
+    title: "Ritual da Velocidade"
+    type: normal
+    deps: [info_rituais]
+    icon: minecraft:sugar
+    desc: |
+      Ativação §e1000 LP§r. Lança quem pisa em cima na direção configurada do ritual (gire
+      com o Adivinho). Uma "estrada-catapulta" de sangue!
+    tasks:
+      - check
+    rewards:
+      - xp: 2
+      - item: minecraft:sugar x8
+
+  - id: ritual_magnetismo
+    title: "Ritual do Magnetismo"
+    type: normal
+    deps: [info_rituais]
+    icon: minecraft:iron_ore
+    desc: |
+      Ativação §e5000 LP§r. Puxa minérios do subsolo para perto da Pedra Mestra. Uma
+      mineração preguiçosa (e deliciosa).
+    tasks:
+      - check
+    rewards:
+      - xp: 2
+      - item: minecraft:iron_ingot x8
+
+  - id: ritual_triturador
+    title: "Ritual do Triturador"
+    type: normal
+    deps: [info_rituais]
+    icon: minecraft:iron_pickaxe
+    desc: |
+      Ativação §e2500 LP§r. Quebra os blocos abaixo da Pedra Mestra e coloca os itens num
+      baú em cima dela. Uma pedreira de sangue!
+    tasks:
+      - check
+    rewards:
+      - xp: 2
+      - item: minecraft:chest x2
+
+  - id: ritual_pastor
+    title: "Ritual do Pastor"
+    type: normal
+    deps: [info_rituais]
+    icon: minecraft:wool
+    desc: |
+      Ativação §e10 000 LP§r. Faz filhotes de animais crescerem mais rápido em volta. Ótimo
+      para quem cria animais para a Adaga do Sacrifício...
+    tasks:
+      - check
+    rewards:
+      - xp: 2
+      - item: minecraft:wheat x16
+
+  - id: ritual_poco_sofrimento
+    title: "Poço do Sofrimento"
+    type: normal
+    deps: [info_rituais, adaga_sacrificio]
+    icon: minecraft:rotten_flesh
+    desc: |
+      O motor de toda base de sangue automatizada. Ativação §e50 000 LP§r. Fere as
+      criaturas em volta e manda a essência para um altar próximo (cerca de §e10 LP§r por
+      golpe, multiplicado pelas Runas de Sacrifício).
+
+      Combine com uma fazenda de mobs (ou um espaço cheio de animais) e o altar enche
+      sozinho. §cJogadores na área também levam dano!§r
+    tasks:
+      - check
+    rewards:
+      - xp: 3
+      - item: AWWayofTime:runeOfSacrifice x1
+
+  - id: ritual_regeneracao
+    title: "Ritual da Regeneração"
+    type: normal
+    deps: [info_rituais]
+    icon: minecraft:golden_apple
+    desc: |
+      Ativação §e25 000 LP§r. Dá Regeneração às criaturas na área (inclusive você). Junte com
+      a faca e vire uma fonte quase infinita de LP — só cuide da fome.
+    tasks:
+      - check
+    rewards:
+      - xp: 2
+      - item: minecraft:cooked_beef x16
+
+  - id: ritual_faca_emplumada
+    title: "Ritual da Faca Emplumada"
+    type: normal
+    deps: [info_rituais]
+    icon: AWWayofTime:sacrificialKnife
+    desc: |
+      Ativação §e50 000 LP§r. Sacrifica automaticamente a vida dos jogadores na área para o
+      altar (100 LP por "corte"), parando antes de matar. Junte com o Ritual da Regeneração
+      e boa comida: é a forma clássica de LP passivo.
+    tasks:
+      - check
+    rewards:
+      - xp: 3
+      - item: AWWayofTime:runeOfSelfSacrifice x1
+
+  - id: ritual_colheita
+    title: "Colheita da Lua Ceifadora"
+    type: normal
+    deps: [info_rituais]
+    icon: minecraft:wheat
+    desc: |
+      Ativação §e20 000 LP§r. Colhe plantações maduras em volta e deixa os itens no chão. Junte
+      com o Bosque Verdejante para uma fazenda inteira de sangue.
+    tasks:
+      - check
+    rewards:
+      - xp: 2
+      - item: minecraft:hopper x2
+
+  - id: ritual_zefiro
+    title: "Chamado do Zéfiro"
+    type: normal
+    deps: [info_rituais]
+    icon: minecraft:hopper
+    desc: |
+      Ativação §e25 000 LP§r. Suga os itens soltos em volta para um baú acima da Pedra Mestra.
+      O aspirador oficial das fazendas de mobs.
+    tasks:
+      - check
+    rewards:
+      - xp: 2
+      - item: minecraft:chest x2
+
+  - id: ritual_estomago
+    title: "Réquiem do Estômago Saciado"
+    type: normal
+    deps: [info_rituais]
+    icon: minecraft:bread
+    desc: |
+      Ativação §e100 000 LP§r. Alimenta os jogadores próximos com a comida de um baú acima da
+      Pedra Mestra. Combina perfeitamente com a Faca Emplumada!
+    tasks:
+      - check
+    rewards:
+      - xp: 2
+      - item: minecraft:bread x16
+
+  - id: ritual_santidade
+    title: "Proteção da Sacrossantidade"
+    type: normal
+    deps: [info_rituais]
+    icon: minecraft:glowstone
+    desc: |
+      Ativação §e150 000 LP§r. Impede que monstros nasçam numa área grande em volta. A paz que
+      toda base merece.
+    tasks:
+      - check
+    rewards:
+      - xp: 3
+      - item: minecraft:glowstone x4
+
+  - id: ritual_veu_mal
+    title: "Véu do Mal"
+    type: normal
+    deps: [info_rituais]
+    icon: minecraft:skull:2
+    desc: |
+      O oposto da Sacrossantidade: ativação §e150 000 LP§r, faz monstros nascerem com mais
+      facilidade na área. Perfeito para uma fazenda de mobs que alimenta o Poço do
+      Sofrimento. §cE perigoso, claro.§r
+    tasks:
+      - check
+    rewards:
+      - xp: 3
+      - item: minecraft:bone x16
+
+  - id: ritual_supressao
+    title: "Cúpula da Supressão"
+    type: normal
+    deps: [info_rituais]
+    icon: minecraft:sponge
+    desc: |
+      Ativação §e10 000 LP§r. Remove líquidos numa área em volta enquanto ativa — e os devolve
+      quando o ritual para. Construir embaixo d'água ficou fácil!
+    tasks:
+      - check
+    rewards:
+      - xp: 2
+      - item: minecraft:glass x16
+
+  - id: ritual_evaporacao
+    title: "Canção da Evaporação"
+    type: normal
+    deps: [info_rituais]
+    icon: minecraft:bucket
+    desc: |
+      Ativação §e20 000 LP§r. Evapora líquidos em volta de forma permanente (um ritual de
+      Crepúsculo — exige tinta Crepuscular nas pedras). Volte aqui depois do Tier 4!
+    tasks:
+      - check
+    rewards:
+      - xp: 2
+      - item: minecraft:bucket x2
+
+  - id: ritual_elipsoide
+    title: "Foco da Elipsoide"
+    type: normal
+    deps: [info_rituais]
+    icon: minecraft:stone
+    desc: |
+      Ativação §e25 000 LP§r. Constrói uma elipsoide com os blocos de um baú; o tamanho é
+      controlado pelos itens no baú (veja a descrição do ritual no Adivinho). Ferramenta
+      de arquitetura arcana!
+    tasks:
+      - check
+    rewards:
+      - xp: 2
+      - item: minecraft:stone x64
+
+  - id: ritual_maos_fantasmas
+    title: "Orquestra das Mãos Fantasmas"
+    type: normal
+    deps: [info_rituais]
+    icon: AWWayofTime:inputRoutingFocus
+    desc: |
+      Ativação §e10 000 LP§r. Transporta itens entre baús usando Focos de Roteamento de
+      Entrada e Saída (feitos com Fragmentos de Ender). Logística de sangue!
+    tasks:
+      - check
+    rewards:
+      - xp: 2
+      - item: minecraft:ender_pearl x2
+
+  - id: ritual_bigorna
+    title: "Ritmo da Bigorna Pulsante"
+    type: normal
+    deps: [info_rituais]
+    icon: minecraft:crafting_table
+    desc: |
+      Ativação §e15 000 LP§r. Executa receitas de bancada automaticamente a partir de
+      inventários próximos. Uma bancada automática de sangue.
+    tasks:
+      - check
+    rewards:
+      - xp: 2
+      - item: minecraft:crafting_table x2
+
+  - id: ritual_alquimia
+    title: "Balada da Alquimia"
+    type: normal
+    deps: [info_rituais, mesa_quimica]
+    icon: AWWayofTime:blockWritingTable
+    desc: |
+      Ativação §e20 000 LP§r. Automatiza Conjuntos de Química Alquímica próximos, puxando
+      ingredientes de baús. Para quem cansou de fazer catalisadores na mão.
+    tasks:
+      - check
+    rewards:
+      - xp: 2
+      - item: AWWayofTime:simpleCatalyst x4
+
+  - id: ritual_expulsao
+    title: "Aura da Expulsão"
+    type: normal
+    deps: [info_rituais]
+    icon: minecraft:ender_pearl
+    desc: |
+      Ativação caríssima de §e1 000 000 LP§r. Teleporta para longe outros jogadores que
+      entram na área (o dono e quem estiver vinculado ficam). A cerca definitiva.
+    tasks:
+      - check
+    rewards:
+      - xp: 3
+      - loot: incomum
+
+  - id: ritual_desvinculo
+    title: "Ritual do Desvínculo"
+    type: normal
+    deps: [info_rituais]
+    icon: AWWayofTime:sigilOfHolding
+    desc: |
+      Ativação §e30 000 LP§r. Desmonta itens vinculados (Armadura Vinculada, Sigilo de
+      Contenção) de volta em seus componentes. Errou a montagem da armadura? É aqui que se
+      conserta.
+    tasks:
+      - check
+    rewards:
+      - xp: 2
+      - item: AWWayofTime:ritualStone x2
+
+  # --- RITUAL DE VÍNCULO E ITENS VINCULADOS ---
+  - id: ritual_vinculo
+    title: "Ritual do Vínculo"
+    type: main
+    deps: [info_rituais]
+    icon: AWWayofTime:energySword
+    desc: |
+      Prender a alma de um demônio a uma arma. Ativação §e5000 LP§r. Monte o ritual, ative,
+      e §ejogue o item sobre a Pedra Mestra§r. Raios caem em volta por alguns segundos — §cfique
+      longe!§r — e o item vinculado aparece.
+
+      Receitas (NEI, aba "Binding Ritual"): Espada de Diamante → §eLâmina Vinculada§r;
+      picareta/machado/pá de diamante → ferramentas vinculadas; Orbe de Aprendiz →
+      §eLançador de Energia§r. Comece pela Lâmina!
+    tasks:
+      - get: AWWayofTime:energySword
+    rewards:
+      - xp: 4
+      - choice: [minecraft:diamond x3, minecraft:cooked_beef x32, minecraft:experience_bottle x8]
+
+  - id: ferramentas_vinculadas
+    title: "Ferramentas Vinculadas"
+    type: normal
+    deps: [ritual_vinculo]
+    icon: AWWayofTime:boundPickaxe
+    desc: |
+      Picareta, Machado e Pá Vinculados: vinculadas a você, ligam e desligam com Shift +
+      clique, gastam LP em vez de durabilidade e quebram tudo muito rápido. Shift + clique
+      direito com ela ativa faz uma escavação em área (com custo maior). Faça as três!
+    tasks:
+      - get: [AWWayofTime:boundPickaxe, AWWayofTime:boundAxe, AWWayofTime:boundShovel]
+    rewards:
+      - xp: 3
+      - item: minecraft:diamond x2
+
+  - id: lancador_energia
+    title: "Lançador de Energia"
+    type: optional
+    deps: [ritual_vinculo]
+    icon: AWWayofTime:energyBlaster
+    desc: |
+      Um Orbe de Aprendiz jogado no Ritual do Vínculo vira o §eLançador de Energia§r: dispara
+      projéteis de energia (150 LP por tiro). Também deixa os mobs fracos o suficiente para
+      soltar Fragmentos de Sangue.
+    tasks:
+      - get: AWWayofTime:energyBlaster
+    rewards:
+      - loot: incomum
+
+  - id: fragmento_sangue_fraco
+    title: "Fragmento de Sangue Fraco"
+    type: main
+    deps: [ritual_vinculo]
+    icon: AWWayofTime:weakBloodShard
+    desc: |
+      Monstros têm alma — e um pedacinho dela pode ser arrancado. Mobs que morrem para um
+      jogador enquanto estão com §eFraqueza III ou mais§r têm 50% de chance de soltar um
+      §eFragmento de Sangue Fraco§r.
+
+      A Lâmina Vinculada aplica essa Fraqueza a cada golpe. Saia à noite e cace! Junte
+      §e8 fragmentos§r: eles fazem os Tijolos de Pedra-Sangue do Tier 4 e o Orbe Mestre.
+    tasks:
+      - get: AWWayofTime:weakBloodShard x8
+    rewards:
+      - xp: 4
+      - choice: [minecraft:diamond x2, minecraft:stone x64, minecraft:golden_apple x2]
+
+  - id: tijolo_pedra_sangue
+    title: "Tijolo Grande de Pedra-Sangue"
+    type: normal
+    deps: [fragmento_sangue_fraco]
+    icon: AWWayofTime:largeBloodStoneBrick
+    desc: |
+      Fragmento de Sangue Fraco + pedra na bancada = 32 §eTijolos Grandes de Pedra-Sangue§r.
+      Tiberius diz que a pedra cresceu tanto que ele ficou preso no armário. (Faça a receita
+      do lado de fora, só por garantia.)
+
+      Você precisa de §e4§r para as tampas do Tier 4.
+    tasks:
+      - get: AWWayofTime:largeBloodStoneBrick x4
+    rewards:
+      - xp: 2
+      - item: minecraft:stone x32
+
+  # --- SIGILOS DE TERCEIRA GERAÇÃO ---
+  - id: sigilo_magnetismo
+    title: "Sigilo do Magnetismo"
+    type: normal
+    deps: [orbe_mago]
+    icon: AWWayofTime:sigilOfMagnetism
+    desc: |
+      Um ímã para tudo: 4 blocos de ferro, ouro, Lousa Imbuída e Orbe de Mago. Ative com
+      clique direito e os itens próximos voam para o seu inventário (50 LP por intervalo).
+    tasks:
+      - get: AWWayofTime:sigilOfMagnetism
+    rewards:
+      - xp: 3
+      - item: minecraft:iron_ingot x9
+
+  - id: sigilo_ponte
+    title: "Sigilo da Ponte Fantasma"
+    type: normal
+    deps: [orbe_mago]
+    icon: AWWayofTime:sigilOfTheBridge
+    desc: |
+      Pedra, areia das almas, Lousa Imbuída e Orbe de Mago. Ativo, cria uma plataforma 5×5
+      de blocos fantasmas sob os seus pés (Shift desce um nível). Clicar num bloco fantasma
+      com um bloco na mão o substitui. Construção aérea sem medo!
+    tasks:
+      - get: AWWayofTime:sigilOfTheBridge
+    rewards:
+      - xp: 3
+      - item: minecraft:soul_sand x8
+
+  - id: sigilo_contencao
+    title: "Sigilo da Contenção"
+    type: normal
+    deps: [orbe_mago]
+    icon: AWWayofTime:sigilOfHolding
+    desc: |
+      Muitos sigilos, pouca hotbar? O §eSigilo da Contenção§r (Lousas em Branco, pedra, Lousa
+      Imbuída e Orbe de Mago) absorve até 4 sigilos: Shift + clique direito com outro sigilo
+      no inventário. Para tirá-los de volta, só com o Ritual do Desvínculo.
+    tasks:
+      - get: AWWayofTime:sigilOfHolding
+    rewards:
+      - xp: 3
+      - item: AWWayofTime:blankSlate x4
+
+  - id: sigilo_afinidade
+    title: "Sigilo da Afinidade Elemental"
+    type: normal
+    deps: [orbe_mago, sigilo_agua, sigilo_lava, sigilo_ar]
+    icon: AWWayofTime:sigilOfElementalAffinity
+    desc: |
+      Os sigilos de Água, Lava e Ar fundidos numa Lousa Imbuída com obsidiana e Orbe de Mago.
+      Ativo, protege contra afogamento, fogo e dano de queda — com custo contínuo alto
+      (200 LP por intervalo). Leve a Rede cheia!
+    tasks:
+      - get: AWWayofTime:sigilOfElementalAffinity
+    rewards:
+      - xp: 3
+      - item: minecraft:obsidian x8
+
+  - id: sigilo_lampada
+    title: "Sigilo da Lâmpada de Sangue"
+    type: normal
+    deps: [orbe_mago]
+    icon: AWWayofTime:itemBloodLightSigil
+    desc: |
+      Adeus, tochas! Pedra luminosa, uma tocha, Lousas Imbuídas e Orbe de Mago. Cada uso
+      dispara um projétil que vira uma luz invisível (só 10 LP). Ilumine cavernas inteiras.
+    tasks:
+      - get: AWWayofTime:itemBloodLightSigil
+    rewards:
+      - xp: 3
+      - item: minecraft:glowstone x4
+
+  - id: runa_capacidade
+    title: "Runa da Capacidade Aumentada"
+    type: normal
+    deps: [orbe_mago]
+    icon: AWWayofTime:AlchemicalWizardrybloodRune:1
+    desc: |
+      Baldes, pedra, Lousa Imbuída e Orbe de Mago. Cada §eRuna da Capacidade Aumentada§r
+      soma §e3500 LP§r à capacidade do altar (e os buffers crescem junto). Essencial para os
+      orbes grandes!
+    tasks:
+      - get: AWWayofTime:AlchemicalWizardrybloodRune:1 x4
+    rewards:
+      - xp: 3
+      - item: minecraft:bucket x4
+
+  - id: runa_deslocamento
+    title: "Runa do Deslocamento"
+    type: optional
+    deps: [orbe_mago]
+    icon: AWWayofTime:AlchemicalWizardrybloodRune:2
+    desc: |
+      Baldes de água, pedra, Lousa Imbuída e Orbe de Mago. Aumenta em 50% (multiplicativo)
+      a vazão entre o altar e seus buffers — útil para extrair Essência Vital por canos.
+    tasks:
+      - get: AWWayofTime:AlchemicalWizardrybloodRune:2
+    rewards:
+      - loot: comum
+
+  - id: mesa_feiticos
+    title: "Mesa de Feitiços"
+    type: optional
+    deps: [orbe_aprendiz]
+    icon: AWWayofTime:blockHomHeart
+    desc: |
+      A primeira invenção de Demir: lã vermelha, pedra, Runa de Sangue e Orbe de Aprendiz.
+      Coloque um item "foco" (TNT, lágrima de Ghast, pó de pedra luminosa, balde de água...)
+      na mesa e clique com o Cristal Não Vinculado para criar feitiços simples. Veja o NEI!
+    tasks:
+      - get: AWWayofTime:blockHomHeart
+    rewards:
+      - loot: comum
+
+  # ======================================================================
+  # FASE 4 — TIER 4: ORBE MESTRE, ARMADURA VINCULADA, ELEMENTAIS
+  # ======================================================================
+  - id: info_altar_t4
+    title: "Estrutura: Altar de Tier 4"
+    type: info
+    deps: [altar_tier3]
+    icon: AWWayofTime:largeBloodStoneBrick
+    desc: |
+      Tudo do Tier 3 §emais§r:
+      §e• 28 runas§r num anel 11×11 (7 em cada lado), um bloco abaixo do anel do Tier 3.
+      §e• 4 pilares§r de 4 blocos nos cantos, a 5 blocos do altar.
+      §e• Tampas§r de §eTijolo Grande de Pedra-Sangue§r, um bloco acima da altura das pedras
+      luminosas.
+
+      Total: 56 runas. É um bom momento para trocar runas comuns por especiais!
+    tasks:
+      - check
+    rewards:
+      - xp: 1
+
+  - id: altar_tier4
+    title: "Altar de Tier 4: Lousa Demoníaca"
+    type: milestone
+    deps: [info_altar_t4, tijolo_pedra_sangue]
+    icon: AWWayofTime:demonicSlate
+    banner: "Altar de Tier 4"
+    subtitle: "Tampas de pedra-sangue"
+    desc: |
+      Cinquenta e seis runas, Herói. Cinquenta e seis! Você está oficialmente
+      construindo uma catedral de sangue.
+
+      Prova do Tier 4: Lousa Imbuída + §e15 000 LP§r = §eLousa Demoníaca§r. Junte §e4§r.
+      O Tier 4 destrava o §eOrbe Mestre§r (Fragmento de Sangue Fraco, 40 000 LP), os Focos de
+      Teleposição, a tinta do Crepúsculo e as runas de quarto nível.
+    tasks:
+      - get: AWWayofTime:demonicSlate x4
+    rewards:
+      - xp: 10
+      - kit: {name: "Kit do Mestre de Sangue", items: [AWWayofTime:imbuedSlate x4, AWWayofTime:AlchemicalWizardrybloodRune x8, minecraft:ender_pearl x4, minecraft:coal_block x2, minecraft:golden_apple x2]}
+      - loot: raro
+
+  - id: orbe_mestre
+    title: "Orbe de Sangue Mestre"
+    type: main
+    deps: [altar_tier4, fragmento_sangue_fraco]
+    icon: AWWayofTime:masterBloodOrb
+    desc: |
+      Os fragmentos já fizeram parte de uma Rede de Almas — então por que não reconstruir um
+      orbe inteiro com eles? Um §eFragmento de Sangue Fraco§r no altar de Tier 4 pede
+      §e40 000 LP§r.
+
+      O §eOrbe Mestre§r leva a Rede a §e1 000 000 LP§r. Ele também zera o custo extra dos
+      upgrades da Armadura Vinculada e multiplica fragmentos (Orbe Mestre + fragmento + Lousa
+      Imbuída = 5 fragmentos).
+    tasks:
+      - get: AWWayofTime:masterBloodOrb
+    rewards:
+      - xp: 6
+      - choice: [AWWayofTime:weakBloodShard x2, AWWayofTime:demonicSlate x1, minecraft:diamond x4]
+
+  - id: tinta_crepusculo
+    title: "Ferramenta de Inscrição: Crepúsculo"
+    type: normal
+    deps: [altar_tier4]
+    icon: AWWayofTime:duskScribeTool
+    desc: |
+      A tinta escura que o Tier 3 não conseguia fazer: um §eBloco de Carvão§r no altar de
+      Tier 4 (2000 LP). Rituais grandes (Poço do Sofrimento, Colheita, Elipsoide,
+      Evaporação...) usam pedras de §eCrepúsculo§r.
+    tasks:
+      - get: AWWayofTime:duskScribeTool
+    rewards:
+      - xp: 3
+      - item: minecraft:coal_block x2
+
+  - id: adivinho_crepusculo
+    title: "Adivinho do Crepúsculo"
+    type: optional
+    deps: [tinta_crepusculo, adivinho_ritual]
+    icon: AWWayofTime:itemRitualDiviner:1
+    desc: |
+      Adivinho Ritual + 2 tintas do Crepúsculo + 2 Lousas Demoníacas = um Adivinho que
+      também monta rituais com pedras de Crepúsculo.
+    tasks:
+      - get: AWWayofTime:itemRitualDiviner:1
+    rewards:
+      - loot: incomum
+
+  - id: foco_teleposicao
+    title: "Foco de Teleposição"
+    type: normal
+    deps: [altar_tier4]
+    icon: AWWayofTime:telepositionFocus
+    desc: |
+      Uma pérola do Ender no altar de Tier 4 (2000 LP) vira o §eFoco de Teleposição§r. Ele é o
+      cérebro do Teleposer. O Foco Aprimorado (altar, 10 000 LP) move uma área 3×3×3; com um
+      Fragmento de Sangue Fraco vira Reforçado (5×5×5); com um Fragmento Demoníaco, Demoníaco.
+    tasks:
+      - get: AWWayofTime:telepositionFocus
+    rewards:
+      - xp: 3
+      - item: minecraft:ender_pearl x4
+
+  - id: teleposer
+    title: "Teleposer"
+    type: normal
+    deps: [foco_teleposicao]
+    icon: AWWayofTime:blockTeleposer
+    desc: |
+      Ouro, 2 pérolas do Ender e um Foco de Teleposição. Para usar: vincule um foco a um
+      Teleposer A (clique nele com o foco), coloque o foco no Teleposer B e dê um sinal de
+      redstone em B. Tudo que estiver acima de A troca de lugar com o que estiver acima de B —
+      jogadores, mobs e §eaté blocos com conteúdo§r. Custo depende do volume e da distância;
+      criaturas não atravessam dimensões.
+    tasks:
+      - get: AWWayofTime:blockTeleposer x2
+    rewards:
+      - xp: 3
+      - item: minecraft:gold_ingot x8
+
+  - id: sigilo_pressa
+    title: "Sigilo da Pressa"
+    type: normal
+    deps: [orbe_mestre]
+    icon: AWWayofTime:sigilOfHaste
+    desc: |
+      Biscoitos, açúcar, Lousa Demoníaca, obsidiana e Orbe Mestre. Ativo, você corre mais e
+      pula mais alto — e acumula com poções de velocidade e salto! (250 LP por intervalo.)
+    tasks:
+      - get: AWWayofTime:sigilOfHaste
+    rewards:
+      - xp: 3
+      - item: minecraft:cookie x16
+
+  - id: sigilo_redemoinho
+    title: "Sigilo do Redemoinho"
+    type: normal
+    deps: [orbe_mestre, sigilo_ar]
+    icon: AWWayofTime:sigilOfWind
+    desc: |
+      Penas, 2 lágrimas de Ghast, o Sigilo do Ar, Lousa Demoníaca e Orbe Mestre. Cria uma bolha
+      de vento que desvia muitos projéteis. Não pega todos — e desvia os seus também!
+    tasks:
+      - get: AWWayofTime:sigilOfWind
+    rewards:
+      - xp: 3
+      - item: minecraft:ghast_tear x1
+
+  - id: sigilo_compressao
+    title: "Sigilo da Compressão"
+    type: normal
+    deps: [orbe_mestre]
+    icon: AWWayofTime:itemCompressionSigil
+    desc: |
+      Pistões, bancadas, Lousa Demoníaca, obsidiana e Orbe Mestre. Ativo, compacta seu
+      inventário em blocos (redstone → bloco de redstone, etc.). Pedregulho só é compactado
+      se você tiver mais de um pack. Adeus, inventário lotado!
+    tasks:
+      - get: AWWayofTime:itemCompressionSigil
+    rewards:
+      - xp: 3
+      - item: minecraft:piston x2
+
+  - id: sigilo_ender
+    title: "Sigilo da Ruptura do Ender"
+    type: normal
+    deps: [orbe_mestre, fragmento_sangue_fraco]
+    icon: AWWayofTime:sigilOfEnderSeverance
+    desc: |
+      Pérolas e olhos do Ender, Fragmento de Sangue Fraco, Lousa Demoníaca e Orbe Mestre.
+      Impede que Endermen (e muitas outras coisas, inclusive pérolas) se teleportem perto de
+      você. A vingança de Tiberius contra os Endermen fujões!
+    tasks:
+      - get: AWWayofTime:sigilOfEnderSeverance
+    rewards:
+      - xp: 3
+      - item: minecraft:ender_pearl x4
+
+  - id: sigilo_supressao
+    title: "Sigilo da Supressão"
+    type: normal
+    deps: [orbe_mestre, teleposer, sigilo_vazio]
+    icon: AWWayofTime:sigilOfSupression
+    desc: |
+      Baldes de água e lava, o Sigilo do Vazio, um Teleposer e o Orbe Mestre. Cria uma bolha
+      sem líquidos em volta de você e devolve tudo quando você sai. Passeie no fundo do lago!
+    tasks:
+      - get: AWWayofTime:sigilOfSupression
+    rewards:
+      - xp: 3
+      - item: minecraft:water_bucket x2
+
+  - id: runa_orbe
+    title: "Runa do Orbe"
+    type: normal
+    deps: [orbe_mestre]
+    icon: AWWayofTime:AlchemicalWizardrybloodRune:3
+    desc: |
+      Pedra, Orbe Fraco, 2 Lousas Demoníacas e §eOrbe Mestre§r. Cada §eRuna do Orbe§r
+      aumenta em §e4%§r (aditivo) o teto de LP do orbe colocado no altar. Com muitas runas, o
+      Orbe Mestre enche bem além de 1 milhão!
+    tasks:
+      - get: AWWayofTime:AlchemicalWizardrybloodRune:3
+    rewards:
+      - xp: 3
+      - item: AWWayofTime:demonicSlate x1
+
+  - id: runa_capacidade_superior
+    title: "Runa da Capacidade Superior"
+    type: optional
+    deps: [orbe_mestre, runa_capacidade]
+    icon: AWWayofTime:AlchemicalWizardrybloodRune:4
+    desc: |
+      Obsidiana, baldes, Runa da Capacidade Aumentada, Lousa Demoníaca e Orbe Mestre. Cada
+      uma multiplica a capacidade base em §e×1,14§r — com muitas runas supera as comuns.
+    tasks:
+      - get: AWWayofTime:AlchemicalWizardrybloodRune:4
+    rewards:
+      - loot: incomum
+
+  - id: chave_vinculo
+    title: "Chave do Vínculo"
+    type: optional
+    deps: [fragmento_sangue_fraco]
+    icon: AWWayofTime:itemKeyOfDiablo
+    desc: |
+      Ouro, diamante e Fragmentos de Sangue Fracos. Clique com ela para definir o dono e
+      entregue a um amigo: ela vincula o primeiro item sem dono do inventário dele à SUA
+      Rede. Perfeito para equipar a sua turma!
+    tasks:
+      - get: AWWayofTime:itemKeyOfDiablo
+    rewards:
+      - loot: incomum
+
+  # --- ARMADURA VINCULADA ---
+  - id: soquete_vazio
+    title: "Soquete Vazio e Preenchido"
+    type: normal
+    deps: [fragmento_sangue_fraco, altar_tier3]
+    icon: AWWayofTime:bloodSocket
+    desc: |
+      O molde da armadura de demônio. §eSoquete Vazio§r = vidro, diamante e Fragmentos de
+      Sangue Fracos. No altar de Tier 3 com §e30 000 LP§r ele vira §eSoquete Preenchido§r.
+
+      Uma armadura completa pede MUITOS soquetes (o formato da peça). Comece com §e8§r.
+    tasks:
+      - get: AWWayofTime:bloodSocket x8
+    rewards:
+      - xp: 3
+      - item: minecraft:diamond x2
+
+  - id: forja_alma
+    title: "Forja de Armadura da Alma"
+    type: main
+    deps: [soquete_vazio, orbe_mago]
+    icon: AWWayofTime:armourForge
+    desc: |
+      Pedra, 4 Soquetes Preenchidos e Orbe de Mago. Para criar uma peça: coloque os Soquetes
+      Preenchidos no chão com o §eformato da peça§r (como na bancada: capacete, peitoral...),
+      a Forja ocupando um dos espaços, e clique direito na Forja.
+
+      Antes de forjar, você pode clicar nos soquetes com §esigilos§r (efeito), §eFragmentos de
+      Sangue§r (espaço de upgrade) e um §eorbe§r (reduz o custo). Mostre a Forja!
+    tasks:
+      - get: AWWayofTime:armourForge
+    rewards:
+      - xp: 6
+      - choice: [AWWayofTime:bloodSocket x4, minecraft:diamond x4, AWWayofTime:weakBloodShard x4]
+
+  - id: armadura_vinculada
+    title: "Armadura Vinculada"
+    type: milestone
+    deps: [forja_alma]
+    icon: AWWayofTime:boundPlate
+    banner: "Armadura Vinculada"
+    subtitle: "Um demônio por peça"
+    desc: |
+      Capacete, Peitoral, Calças e Botas Vinculados! Vincule cada peça a você: ela se
+      repara puxando LP da sua Rede.
+
+      Segundo o diário do Arquiteto, a armadura absorve cerca de 90% do dano comum e 80% do
+      mágico, mas §cnão aceita encantamentos§r. Sigilos embutidos viram efeitos passivos
+      (Sigilo da Água = respirar embaixo d'água, Minerador Veloz sempre ativo...). Para
+      desligar os efeitos, use o §eInibidor de Armadura§r.
+    tasks:
+      - get: [AWWayofTime:boundHelmet, AWWayofTime:boundPlate, AWWayofTime:boundLeggings, AWWayofTime:boundBoots]
+    rewards:
+      - xp: 10
+      - kit: {name: "Kit do Cavaleiro Rubro", items: [AWWayofTime:bloodSocket x4, AWWayofTime:weakBloodShard x4, minecraft:golden_apple x4, minecraft:cooked_beef x32]}
+      - loot: raro
+
+  - id: inibidor_armadura
+    title: "Inibidor de Armadura"
+    type: optional
+    deps: [armadura_vinculada]
+    icon: AWWayofTime:armourInhibitor
+    desc: |
+      Ouro e um Fragmento de Sangue Fraco. Ativo, suprime todos os efeitos especiais da
+      Armadura Vinculada. É tudo-ou-nada, mas salva a sua Rede em dias tranquilos.
+    tasks:
+      - get: AWWayofTime:armourInhibitor
+    rewards:
+      - loot: incomum
+
+  - id: armadura_sanguinea
+    title: "Armadura Sanguínea (Thaumcraft)"
+    type: optional
+    deps: [ritual_vinculo]
+    icon: AWWayofTime:sanguineRobe
+    desc: |
+      Uma ponte com o Thaumcraft! No Ritual do Vínculo, os §eÓculos da Revelação§r e as peças
+      de §earmadura de Thaumium§r viram §eArmadura Sanguínea§r: proteção de diamante e um
+      pequeno desconto de Vis. Ela também pode ser embutida (peça igual com peça igual) na
+      Armadura Vinculada — o Capacete Sanguíneo dá visão de nodos ao capacete vinculado.
+    tasks:
+      - one_of: [AWWayofTime:sanguineHelmet, AWWayofTime:sanguineRobe, AWWayofTime:sanguinePants, AWWayofTime:sanguineBoots]
+    rewards:
+      - loot: incomum
+
+  # --- INCENSO ---
+  - id: cadinho_incenso
+    title: "Cadinho de Incenso"
+    type: normal
+    deps: [orbe_fraco]
+    icon: AWWayofTime:blockCrucible
+    desc: |
+      Uma forma (perigosa) de sangrar muito mais. O §eCadinho de Incenso§r (ferro, lajes de
+      pedra e pedra) fica perto do altar; coloque incenso nele com clique direito.
+
+      Com incenso aceso, cada uso da faca drena §ctoda a sua vida menos os últimos 10%§r de
+      uma vez, rendendo muito mais LP — e deixa você com Desgaste da Alma por um tempo,
+      sem poder sacrificar. Dura cerca de 10 sacrifícios.
+    tasks:
+      - get: AWWayofTime:blockCrucible
+    rewards:
+      - xp: 2
+      - item: minecraft:stone_slab x8
+
+  - id: incenso_cinza
+    title: "Cinza de Madeira"
+    type: normal
+    deps: [cadinho_incenso]
+    icon: AWWayofTime:bloodMagicIncenseItem
+    desc: |
+      8 toras em volta de um carvão vegetal = §eCinza de Madeira§r, o primeiro incenso
+      (+40% de LP quando totalmente carregado). Também é a base dos incensos superiores.
+    tasks:
+      - get: AWWayofTime:bloodMagicIncenseItem x4
+    rewards:
+      - xp: 2
+      - item: minecraft:log x16
+
+  - id: incenso_byrrus
+    title: "Byrrus"
+    type: normal
+    deps: [incenso_cinza]
+    icon: AWWayofTime:bloodMagicIncenseItem:1
+    desc: |
+      Cinza de Madeira, 2 corantes vermelhos, redstone, 2 folhas e o Orbe Fraco = §eByrrus§r
+      (+80%). Cada incenso exige o anterior aceso em outro cadinho.
+    tasks:
+      - get: AWWayofTime:bloodMagicIncenseItem:1
+    rewards:
+      - xp: 2
+      - item: minecraft:redstone x8
+
+  - id: incenso_livens
+    title: "Livens"
+    type: normal
+    deps: [incenso_byrrus, orbe_aprendiz]
+    icon: AWWayofTime:bloodMagicIncenseItem:2
+    desc: |
+      Cinza, 2 corantes azuis, 2 pepitas de ouro, pó de pedra luminosa, 2 linhas e Orbe de
+      Aprendiz = §eLivens§r (+150%).
+    tasks:
+      - get: AWWayofTime:bloodMagicIncenseItem:2
+    rewards:
+      - xp: 2
+      - item: minecraft:string x8
+
+  - id: incenso_viridis
+    title: "Viridis"
+    type: normal
+    deps: [incenso_livens]
+    icon: AWWayofTime:bloodMagicIncenseItem:3
+    desc: |
+      Cinza, 2 corantes verdes, areia das almas, pólvora, olho de aranha fermentado, Lousa em
+      Branco e Orbe de Aprendiz = §eViridis§r (+240%).
+    tasks:
+      - get: AWWayofTime:bloodMagicIncenseItem:3
+    rewards:
+      - xp: 2
+      - item: minecraft:soul_sand x4
+
+  - id: incenso_purpura
+    title: "Purpura"
+    type: normal
+    deps: [incenso_viridis, orbe_mago, osso_fraturado]
+    icon: AWWayofTime:bloodMagicIncenseItem:4
+    desc: |
+      Cinza, 2 corantes roxos, quartzo, verruga do Nether, pó de blaze, Osso Fraturado, Lousa
+      Reforçada e Orbe de Mago = §ePurpura§r (+350%). O incenso máximo: cada corte vale uma
+      fortuna. §cSó sacrifique em segurança total!§r
+    tasks:
+      - get: AWWayofTime:bloodMagicIncenseItem:4
+    rewards:
+      - xp: 3
+      - item: minecraft:blaze_powder x4
+
+  # --- ELEMENTAIS E DEMÔNIOS MENORES ---
+  - id: pedestal_arcano
+    title: "Pedestal e Plinto Arcanos"
+    type: normal
+    deps: [fragmento_sangue_fraco]
+    icon: AWWayofTime:blockPlinth
+    desc: |
+      Para chamar demônios, Bella usava um Plinto. §ePedestal Arcano§r = obsidiana e um
+      Fragmento de Sangue Fraco. §ePlinto Arcano§r = blocos de ferro e um Pedestal.
+
+      Faça §e1 Plinto e 6 Pedestais§r: os pedestais ficam no anel externo de uma área 5×5
+      em volta do Plinto, formando um hexágono.
+    tasks:
+      - get: [AWWayofTime:blockPlinth, AWWayofTime:blockPedestal x6]
+    rewards:
+      - xp: 3
+      - item: minecraft:iron_block x2
+
+  - id: info_convocacao
+    title: "Convocando Elementais"
+    type: info
+    deps: [pedestal_arcano, reagentes_completos]
+    icon: AWWayofTime:blockPedestal
+    desc: |
+      §cIsto invoca monstros de verdade. Venha armado e com armadura!§r
+
+      Coloque um §eOrbe Mestre (ou melhor) vinculado§r no Plinto e o §emesmo reagente§r em
+      cada um dos 6 Pedestais. Raios caem em cada pedestal e um Elemental aparece:
+      §e• 6 Aether:§r de Ar §e• 6 Aquasalus:§r de Água §e• 6 Terrae:§r de Terra
+      §e• 6 Incendium:§r de Fogo §e• 6 Tenebrae:§r de Sombra §e• 6 Sanctus:§r Sagrado
+
+      Elementais voam, têm 100 de vida e atacam à distância. Outras combinações chamam
+      demônios diferentes (veja o NEI no Plinto).
+    tasks:
+      - check
+    rewards:
+      - xp: 2
+
+  - id: fragmento_demoniaco
+    title: "Fragmento de Sangue Demoníaco"
+    type: boss
+    deps: [info_convocacao, orbe_mestre]
+    icon: AWWayofTime:demonBloodShard
+    banner: "Caçador de Elementais"
+    subtitle: "Sangue de demônio"
+    desc: |
+      Os Elementais não precisam morrer para a Lâmina Vinculada: §eFragmentos de Sangue
+      Demoníacos§r caem com certa chance (Pilhagem ajuda bastante).
+
+      Junte §e4 fragmentos§r. Eles fazem o §eOrbe de Arquimago§r, o Cristal de Ativação
+      Desperto e o Foco de Teleposição Demoníaco.
+
+      §cDicas de combate:§r lute em área aberta, use a Armadura Vinculada e leve comida. Os
+      elementais de fogo incendeiam tudo — não convoque dentro de casa de madeira!
+    tasks:
+      - get: AWWayofTime:demonBloodShard x4
+    rewards:
+      - xp: 10
+      - loot: raro
+
+  - id: elementais_derrotados
+    title: "Seis Elementos"
+    type: optional
+    deps: [fragmento_demoniaco]
+    icon: AWWayofTime:demonPlacer
+    desc: |
+      Para quem gosta de colecionar inimigos: derrote um §eElemental de Fogo§r e um
+      §eElemental de Sombra§r (os mais perigosos). Os outros quatro ficam por sua conta!
+    tasks:
+      - kill: {entity: "AWWayofTime.FireElemental", count: 1}
+      - kill: {entity: "AWWayofTime.ShadeElemental", count: 1}
+    rewards:
+      - loot: incomum
+
+  # --- SISTEMA DE FEITIÇOS COMPLEXOS ---
+  - id: cristal_feitico
+    title: "Cristal de Feitiço Complexo"
+    type: normal
+    deps: [cristal_nao_vinculado, fragmento_sangue_fraco, mesa_quimica]
+    icon: AWWayofTime:itemComplexSpellCrystal
+    desc: |
+      Os feitiços complexos de Demir são máquinas de blocos ligados por Condutores. O
+      §eCristal de Feitiço Complexo§r (Cristal Não Vinculado, 2 Fragmentos Fracos, diamante e
+      ouro na Mesa Alquímica) é a varinha: vincule-o a um Paradigma e conjure.
+    tasks:
+      - get: AWWayofTime:itemComplexSpellCrystal
+    rewards:
+      - xp: 3
+      - item: minecraft:gold_ingot x4
+
+  - id: info_feiticos
+    title: "Feitiços Complexos"
+    type: info
+    deps: [cristal_feitico]
+    icon: AWWayofTime:blockConduit
+    desc: |
+      Um feitiço é uma "linha de montagem" de blocos, ligados por §eCondutores de Feitiço§r
+      na ordem certa:
+      §e1. Paradigma§r (forma): Gerador de Partículas (projétil), Auto-Aumentador (em si),
+      Agregador Corpo-a-Corpo, Forjador de Ferramentas.
+      §e2. Efeito§r (elemento): Cadinho de Fogo, Fabricante de Gelo, Gerador de Vento,
+      Moldador de Terra.
+      §e3. Modificador:§r Padrão, Ofensivo, Defensivo, Ambiental.
+      §e4. Aprimoramentos:§r Potencializadores (poder), Amortecedores (custo), Aumentadores
+      (potência), em cinco níveis.
+
+      Clique no Paradigma com o Cristal para vincular. Experimente combinações!
+    tasks:
+      - check
+    rewards:
+      - xp: 1
+
+  - id: nucleos_feitico
+    title: "Núcleos e Cabos"
+    type: normal
+    deps: [info_feiticos, reagentes_completos]
+    icon: AWWayofTime:bloodMagicBaseItems:1
+    desc: |
+      Os blocos de feitiço são montados com peças: §eNúcleo Vazio§r (ouro, ferro, vidro,
+      Catalisador Simples), §eCabo Magicales§r, §eCabos de Entrada/Saída§r, §ePlaca de
+      Paradigma§r e §eSuportes§r. Os núcleos especializados levam reagentes e o Orbe de Mago
+      (veja o NEI). Mostre um Núcleo Vazio e um Cabo Magicales.
+    tasks:
+      - get: [AWWayofTime:bloodMagicBaseItems:1, AWWayofTime:bloodMagicBaseItems:2]
+    rewards:
+      - xp: 3
+      - item: AWWayofTime:simpleCatalyst x4
+
+  - id: paradigma
+    title: "Paradigma de Feitiço"
+    type: normal
+    deps: [nucleos_feitico]
+    icon: AWWayofTime:AlchemicalWizardrytile.blockSpellParadigm
+    desc: |
+      O começo do feitiço. Qualquer um dos quatro Paradigmas serve: Gerador de Partículas
+      (projétil), Auto-Aumentador, Agregador Corpo-a-Corpo ou Forjador de Ferramentas (que
+      cria a Maça Dinâmica!).
+    tasks:
+      - one_of: [AWWayofTime:AlchemicalWizardrytile.blockSpellParadigm, AWWayofTime:AlchemicalWizardrytile.blockSpellParadigm:1, AWWayofTime:AlchemicalWizardrytile.blockSpellParadigm:2, AWWayofTime:AlchemicalWizardrytile.blockSpellParadigm:3]
+    rewards:
+      - xp: 3
+      - item: minecraft:gold_ingot x4
+
+  - id: efeito_feitico
+    title: "Efeito de Feitiço"
+    type: normal
+    deps: [nucleos_feitico]
+    icon: AWWayofTime:AlchemicalWizardrytile.blockSpellEffect
+    desc: |
+      O elemento do feitiço: Cadinho de Fogo (Incendium), Fabricante de Gelo (Crystallos),
+      Gerador de Vento (Aether) ou Moldador de Terra (Terrae). Cada núcleo elemental usa
+      diamante, Fragmento Fraco e Orbe de Mago.
+    tasks:
+      - one_of: [AWWayofTime:AlchemicalWizardrytile.blockSpellEffect, AWWayofTime:AlchemicalWizardrytile.blockSpellEffect:1, AWWayofTime:AlchemicalWizardrytile.blockSpellEffect:2, AWWayofTime:AlchemicalWizardrytile.blockSpellEffect:3]
+    rewards:
+      - xp: 3
+      - item: minecraft:diamond x1
+
+  - id: modificador_feitico
+    title: "Modificador de Feitiço"
+    type: normal
+    deps: [nucleos_feitico, reagentes_avancados]
+    icon: AWWayofTime:AlchemicalWizardrytile.blockSpellModifier
+    desc: |
+      O "como": Padrão (Catalisador Fortalecido), Ofensivo (Offensa), Defensivo (Praesidium)
+      ou Ambiental (Orbis Terrae). Mude o modificador e o mesmo elemento faz coisas
+      completamente diferentes!
+    tasks:
+      - one_of: [AWWayofTime:AlchemicalWizardrytile.blockSpellModifier, AWWayofTime:AlchemicalWizardrytile.blockSpellModifier:1, AWWayofTime:AlchemicalWizardrytile.blockSpellModifier:2, AWWayofTime:AlchemicalWizardrytile.blockSpellModifier:3]
+    rewards:
+      - xp: 3
+      - item: minecraft:iron_ingot x8
+
+  - id: feitico_completo
+    title: "O Primeiro Feitiço"
+    type: milestone
+    deps: [paradigma, efeito_feitico, modificador_feitico, cristal_feitico]
+    icon: AWWayofTime:itemComplexSpellCrystal
+    banner: "Feiticeiro de Sangue"
+    subtitle: "Paradigma, efeito e modificador"
+    desc: |
+      Paradigma → Condutor → Efeito → Condutor → Modificador. Vincule o Cristal ao Paradigma
+      e... funcionou?! Demir faria um bolo para você (e queimaria a cozinha, mas a intenção
+      é que conta).
+
+      Agora, experimente os §eAprimoramentos§r: as Placas Rúnicas (Rachada → Rúnica →
+      Imbuída → da Alma) definem o nível de Potencializadores, Amortecedores e Aumentadores.
+      Cuidado: feitiços fortes gastam LP rapidinho.
+    tasks:
+      - get: [AWWayofTime:blockConduit x4]
+    rewards:
+      - xp: 10
+      - kit: {name: "Kit do Feiticeiro Rubro", items: [AWWayofTime:bloodMagicBaseItems:1 x2, AWWayofTime:magicales x4, AWWayofTime:simpleCatalyst x8, minecraft:quartz x16]}
+      - loot: raro
+
+  - id: placa_runica
+    title: "Placas Rúnicas"
+    type: optional
+    deps: [feitico_completo, catalisador_concentrado]
+    icon: AWWayofTime:bloodMagicBaseItems:16
+    desc: |
+      Os aprimoramentos de feitiço sobem de nível com placas: Rachada (2 Lousas Imbuídas +
+      Catalisador Concentrado), Rúnica (+ Terrae), Imbuída (2 Rúnicas + Magicales, Incendium
+      e Aquasalus) e da Alma (Fragmentos da Alma, para o Tier 6). Mostre uma Placa Rúnica.
+    tasks:
+      - get: AWWayofTime:bloodMagicBaseItems:16
+    rewards:
+      - loot: incomum
+
+  # ======================================================================
+  # FASE 5 — TIER 5: FAROIS, ARQUIMAGO E RITUAIS DESPERTOS
+  # ======================================================================
+  - id: info_altar_t5
+    title: "Estrutura: Altar de Tier 5"
+    type: info
+    deps: [altar_tier4]
+    icon: minecraft:beacon
+    desc: |
+      Tudo do Tier 4 §emais§r:
+      §e• 52 runas§r num anel 17×17 (13 em cada lado), um bloco abaixo do anel anterior.
+      §e• 4 Sinalizadores (Beacons)§r nos cantos, a 8 blocos do altar, um bloco acima do anel
+      novo. Neste pack valem os sinalizadores vanilla, do Et Futurum e do Chisel.
+
+      Total: 108 runas. Quatro sinalizadores = quatro Estrelas do Nether = §cquatro Withers§r.
+      Prepare-se de verdade!
+    tasks:
+      - check
+    rewards:
+      - xp: 2
+
+  - id: sinalizadores
+    title: "Quatro Sinalizadores"
+    type: main
+    deps: [info_altar_t5]
+    icon: minecraft:beacon
+    desc: |
+      Magus fez cada aprendiz matar seu próprio Wither. Eu só peço os quatro sinalizadores —
+      o "como" fica com você (e com o capítulo do Wither, se precisar de ajuda).
+
+      §cAviso de Akasha:§r o Wither explode blocos e aplica Murchar. Lute longe da base, com
+      leite, comida e armadura forte. Os sinalizadores não precisam de pirâmide para o
+      altar, mas a estrutura deixa espaço para ela.
+    tasks:
+      - get: minecraft:beacon x4
+    rewards:
+      - xp: 6
+      - choice: [minecraft:iron_block x16, minecraft:gold_block x8, minecraft:diamond_block x2]
+
+  - id: altar_tier5
+    title: "Altar de Tier 5: Lousa Etérea"
+    type: milestone
+    deps: [sinalizadores, orbe_mestre]
+    icon: AWWayofTime:bloodMagicBaseItems:27
+    banner: "Altar de Tier 5"
+    subtitle: "O preço do poder"
+    desc: |
+      Cento e oito runas e quatro sinalizadores brilhando no escuro. O Registro inteiro
+      está olhando para você, Herói!
+
+      Prova do Tier 5: uma Lousa Demoníaca com §e30 000 LP§r vira §eLousa Etérea§r. Junte
+      §e2§r. O Tier 5 transforma o §eFragmento de Sangue Demoníaco§r no §eOrbe de Arquimago§r
+      (75 000 LP) e destrava as Runas de Aceleração e Rapidez.
+    tasks:
+      - get: AWWayofTime:bloodMagicBaseItems:27 x2
+    rewards:
+      - xp: 12
+      - kit: {name: "Kit do Arquimago", items: [AWWayofTime:demonicSlate x4, AWWayofTime:demonBloodShard x1, minecraft:nether_star x1, minecraft:golden_apple:1 x1, AWWayofTime:speedRune x4]}
+      - loot: epico
+
+  - id: orbe_arquimago
+    title: "Orbe de Sangue de Arquimago"
+    type: main
+    deps: [altar_tier5, fragmento_demoniaco]
+    icon: AWWayofTime:archmageBloodOrb
+    desc: |
+      Um §eFragmento de Sangue Demoníaco§r no altar de Tier 5: §e75 000 LP§r. Use Runas de
+      Capacidade e do Orbe para aguentar a transmutação.
+
+      O §eOrbe de Arquimago§r leva a Rede a §e10 000 000 LP§r — dez vezes o Orbe Mestre.
+    tasks:
+      - get: AWWayofTime:archmageBloodOrb
+    rewards:
+      - xp: 6
+      - choice: [AWWayofTime:demonBloodShard x1, AWWayofTime:bloodMagicBaseItems:27 x1, minecraft:diamond_block x1]
+
+  - id: cristal_desperto
+    title: "Cristal de Ativação Desperto"
+    type: main
+    deps: [fragmento_demoniaco, reagentes_completos, cristal_ativacao]
+    icon: AWWayofTime:activationCrystal:1
+    desc: |
+      Os rituais grandes (Terra Emplumada, Transformação de Gaia, Reverência do Condor, Marca
+      da Torre Caída, Grito da Alma Eterna, Convocação, Simetria do Ômega...) exigem o
+      §eCristal de Ativação Desperto§r.
+
+      Na Mesa Alquímica (Orbe Mestre): Cristal Fraco + §eFragmento Demoníaco§r (ou uma
+      §eEstrela do Nether§r) + Incendium + Aquasalus + Aether.
+    tasks:
+      - get: AWWayofTime:activationCrystal:1
+    rewards:
+      - xp: 6
+      - choice: [AWWayofTime:incendium x2, AWWayofTime:aquasalus x2, AWWayofTime:aether x2]
+
+  - id: bazuca_energia
+    title: "Bazuca de Energia"
+    type: optional
+    deps: [orbe_arquimago, lancador_energia, reagente_crepitous]
+    icon: AWWayofTime:energyBazooka
+    desc: |
+      O Lançador de Energia, Crepitous, diamantes, um Fragmento Fraco e o Orbe de Arquimago.
+      Cada tiro (§c20 000 LP§r) explode em vários projéteis menores. Use com moderação — e
+      longe de qualquer coisa que você ame.
+    tasks:
+      - get: AWWayofTime:energyBazooka
+    rewards:
+      - loot: incomum
+
+  - id: sigilo_colheita
+    title: "Sigilo da Deusa da Colheita"
+    type: normal
+    deps: [orbe_arquimago]
+    icon: AWWayofTime:itemHarvestSigil
+    desc: |
+      Terra, enxadas de ouro, Lousa Etérea e Orbe de Arquimago. É para a Colheita da Lua
+      Ceifadora o que o Bosque Verdejante é para o ritual: colhe as plantações em volta de
+      você enquanto ativo. Bella virou uma "deusa" assim!
+    tasks:
+      - get: AWWayofTime:itemHarvestSigil
+    rewards:
+      - xp: 4
+      - item: minecraft:golden_hoe x1
+
+  - id: runa_aceleracao
+    title: "Runa de Aceleração"
+    type: normal
+    deps: [orbe_arquimago, runa_velocidade]
+    icon: AWWayofTime:AlchemicalWizardrybloodRune:5
+    desc: |
+      Baldes, ouro, Runa de Velocidade, Lousa Etérea e Orbe de Arquimago. Cada uma reduz em
+      1 tick o intervalo de troca entre o altar e os buffers (máximo de 19). Para extrair
+      Essência Vital em grande escala.
+    tasks:
+      - get: AWWayofTime:AlchemicalWizardrybloodRune:5
+    rewards:
+      - xp: 4
+      - item: minecraft:bucket x4
+
+  - id: runa_rapidez
+    title: "Runa de Rapidez"
+    type: optional
+    deps: [runa_aceleracao]
+    icon: AWWayofTime:AlchemicalWizardrybloodRune:6
+    desc: |
+      Lousas Etéreas, Runas de Velocidade e Aceleração e Orbe de Arquimago. Reduz em 20%
+      (multiplicativo) a pausa de 5 segundos entre transmutações automatizadas. A
+      automação perfeita do altar.
+    tasks:
+      - get: AWWayofTime:AlchemicalWizardrybloodRune:6
+    rewards:
+      - loot: incomum
+
+  - id: foco_demoniaco
+    title: "Foco de Teleposição Demoníaco"
+    type: optional
+    deps: [foco_teleposicao, fragmento_demoniaco]
+    icon: AWWayofTime:demonicTelepositionFocus
+    desc: |
+      Foco Aprimorado (altar) → + Fragmento Fraco = Reforçado → + Fragmento Demoníaco =
+      §eDemoníaco§r, que move uma área de 7×7×7. Mova salas inteiras!
+    tasks:
+      - get: AWWayofTime:demonicTelepositionFocus
+    rewards:
+      - loot: incomum
+
+  # --- RITUAIS DE NÍVEL 2 ---
+  - id: ritual_terra_emplumada
+    title: "Ritual da Terra Emplumada"
+    type: normal
+    deps: [cristal_desperto]
+    icon: minecraft:feather
+    desc: |
+      Ritual desperto. Ativação §e100 000 LP§r. Elimina o dano de queda de quem está na área.
+      Combina com o Salto Alto e com a sua mania de pular de lugares altos.
+    tasks:
+      - check
+    rewards:
+      - xp: 4
+      - item: minecraft:feather x16
+
+  - id: ritual_gaia
+    title: "Ritual da Transformação de Gaia"
+    type: normal
+    deps: [cristal_desperto]
+    icon: minecraft:sapling
+    desc: |
+      Ritual desperto. Ativação §e1 000 000 LP§r. Muda o bioma em volta conforme os itens
+      oferecidos (veja a descrição do ritual). Terraformação de sangue!
+    tasks:
+      - check
+    rewards:
+      - xp: 4
+      - item: minecraft:sapling x16
+
+  - id: ritual_condor
+    title: "Reverência do Condor"
+    type: normal
+    deps: [cristal_desperto]
+    icon: AWWayofTime:airSigil
+    desc: |
+      Ritual desperto. Ativação §e1 000 000 LP§r. Permite voar dentro da área do ritual. Uma
+      base inteira com voo livre!
+    tasks:
+      - check
+    rewards:
+      - xp: 4
+      - loot: incomum
+
+  - id: ritual_alma_eterna
+    title: "Grito da Alma Eterna"
+    type: normal
+    deps: [cristal_desperto]
+    icon: AWWayofTime:bucketLife
+    desc: |
+      Ritual desperto. Ativação §e2 000 000 LP§r. Converte LP da sua Rede de volta em Essência
+      Vital para um altar próximo — útil quando a Rede está cheia e o altar faminto.
+    tasks:
+      - check
+    rewards:
+      - xp: 4
+      - loot: incomum
+
+  - id: ritual_lua_nova
+    title: "Sangue da Lua Nova"
+    type: normal
+    deps: [cristal_desperto]
+    icon: minecraft:dirt
+    desc: |
+      Ritual desperto. Ativação §e10 000 LP§r. Ergue uma ilha esférica de terra flutuante a
+      partir do chão em volta. Arquitetura dramática garantida.
+    tasks:
+      - check
+    rewards:
+      - xp: 3
+      - item: minecraft:dirt x32
+
+  - id: ritual_meteoro
+    title: "Marca da Torre Caída"
+    type: milestone
+    deps: [cristal_desperto]
+    icon: minecraft:iron_block
+    banner: "Chuva de Meteoros"
+    subtitle: "Minérios caídos do céu"
+    desc: |
+      Ritual desperto: ativação §e100 000 LP§r, e cada meteoro custa §e1 000 000 LP§r extras
+      (nenhum meteoro deste pack define custo próprio). Com o ritual ativo, §ejogue o item foco
+      sobre a Pedra Mestra§r e um meteoro cheio de minério cai por perto:
+      §e• Pedra:§r carvão, apatita e ferro (raio 16).
+      §e• Bloco de Ferro:§r ferro, ouro, cobre, estanho, prata, chumbo, lápis e redstone.
+      §e• Diamante:§r diamante, esmeralda, cinabre e âmbar.
+      §e• Estrela do Nether:§r diamante, esmeralda, quartzo, certus, pedra-da-lua e raros.
+
+      Terrae/Orbis Terrae aumentam o meteoro. §cEle explode ao cair e destrói blocos!§r
+    tasks:
+      - check
+    rewards:
+      - xp: 12
+      - kit: {name: "Kit do Astrônomo Rubro", items: [minecraft:iron_block x4, minecraft:diamond x4, AWWayofTime:terrae x4, minecraft:golden_apple x2]}
+      - loot: epico
+
+  # ======================================================================
+  # FASE 6 — TIER 6: DEMÔNIOS, CRISTAIS E O ORBE TRANSCENDENTE
+  # ======================================================================
+  - id: info_convocacao_condenados
+    title: "A Convocação dos Condenados"
+    type: info
+    deps: [cristal_desperto, redoma_cristal, calcinadora]
+    icon: AWWayofTime:demonPortalMain
+    desc: |
+      §cO ritual mais perigoso do Volume. Leia tudo!§r
+
+      A §eConvocação dos Condenados§r abre um §ePortal Demoníaco§r que gera uma aldeia de
+      demônios e hordas que atacam. Ativação §e15 000 000 LP§r (Cristal Desperto).
+      Requisitos (segundo o código desta versão):
+      §e•§r Um §eAltar de Sangue sobre a Pedra Mestra§r, com ar acima dele.
+      §e•§r §e8 Redomas de Cristal§r em posições fixas (o Adivinho/livro mostra a forma).
+      §e•§r AR de Aether, Aquasalus, Terrae, Incendium, Sanctus, Tenebrae, Magicales e Potentia.
+      §e•§r O altar precisa estar "com sangue demoníaco": sacrifique um demônio de Blood Magic
+      perto dele com a Adaga do Sacrifício.
+
+      §cNeste pack o ritual NÃO funciona no Mundo Normal (dimensão 0 bloqueada na config).§r
+      Faça em outra dimensão.
+    tasks:
+      - check
+    rewards:
+      - xp: 2
+
+  - id: portal_demoniaco
+    title: "O Portal Demoníaco"
+    type: portal
+    deps: [info_convocacao_condenados, orbe_arquimago]
+    icon: AWWayofTime:demonPortalMain
+    banner: "O Portal Demoníaco"
+    subtitle: "Os demônios chegaram"
+    effect: 5
+    desc: |
+      Você abriu um rasgo no tecido do mundo, Herói. Exatamente como Magus fez em Venric's
+      Folly... só que agora a responsabilidade é sua.
+
+      Do portal saem estradas, casas e hordas de §eDemônios Recrutas§r (de fogo, gelo,
+      vento e terra) e seus Guardiões. Eles soltam §eFragmentos da Vida§r (vermelhos) e
+      §eFragmentos da Alma§r (azuis) — a chave do Tier 6.
+
+      Derrote §e5 Demônios Recrutas§r de qualquer tipo comum. §cLute em grupo, recue para
+      curar, e não deixe o portal perto da base!§r
+    tasks:
+      - kill: {entity: "AWWayofTime.MinorDemonGrunt", count: 5}
+    rewards:
+      - xp: 10
+      - loot: epico
+
+  - id: fragmentos_vida_alma
+    title: "Fragmentos da Vida e da Alma"
+    type: main
+    deps: [portal_demoniaco]
+    icon: AWWayofTime:bloodMagicBaseItems:28
+    desc: |
+      Os demônios do portal usam cristais como âncora. Junte §e20 Fragmentos da Vida§r e §e16
+      Fragmentos da Alma§r — exatamente o que vai virar quatro Aglomerados de Cristal.
+
+      §aDica:§r com Pilhagem caem mais. Os guardiões armados são mais fortes; elimine-os um
+      de cada vez.
+    tasks:
+      - get: [AWWayofTime:bloodMagicBaseItems:28 x20, AWWayofTime:bloodMagicBaseItems:29 x16]
+    rewards:
+      - xp: 6
+      - choice: [minecraft:golden_apple x4, minecraft:diamond x6, minecraft:cooked_beef x64]
+
+  - id: aglomerado_cristal
+    title: "Aglomerado de Cristal"
+    type: main
+    deps: [fragmentos_vida_alma]
+    icon: AWWayofTime:blockCrystal
+    desc: |
+      5 Fragmentos da Vida + 4 Fragmentos da Alma, alternados na bancada = 1 §eAglomerado de
+      Cristal§r pulsando de poder demoníaco.
+
+      Faça §e5§r: quatro para as tampas do Tier 6 e um para o Orbe Transcendente. (Os tijolos
+      de cristal são só decoração — não os use nas tampas!)
+    tasks:
+      - get: AWWayofTime:blockCrystal x5
+    rewards:
+      - xp: 6
+      - choice: [AWWayofTime:bloodMagicBaseItems:28 x5, AWWayofTime:bloodMagicBaseItems:29 x4, minecraft:diamond_block x1]
+
+  - id: info_altar_t6
+    title: "Estrutura: Altar de Tier 6"
+    type: info
+    deps: [aglomerado_cristal, altar_tier5]
+    icon: AWWayofTime:blockCrystal
+    desc: |
+      O altar final. Tudo do Tier 5 §emais§r:
+      §e• 76 runas§r num anel 23×23 (19 em cada lado), um bloco abaixo do anel do Tier 5.
+      §e• 4 pilares§r de 7 blocos nos cantos, a 11 blocos do altar.
+      §e• Tampas de Aglomerado de Cristal§r, um bloco acima da altura das tampas de
+      pedra-sangue.
+
+      Total: §e184 runas§r. É uma obra. Use o Sigilo da Ponte Fantasma e muita paciência!
+    tasks:
+      - check
+    rewards:
+      - xp: 2
+
+  - id: orbe_transcendente
+    title: "Orbe de Sangue Transcendente"
+    type: milestone
+    deps: [info_altar_t6, orbe_arquimago]
+    icon: AWWayofTime:transcendentBloodOrb
+    banner: "Altar de Tier 6"
+    subtitle: "Transcendência"
+    effect: 4
+    desc: |
+      Um Aglomerado de Cristal no altar de Tier 6: §e200 000 LP§r. E então...
+
+      O §eOrbe Transcendente§r. Teto de §e30 000 000 LP§r na sua Rede de Almas. Tiberius
+      escreveu que nem teve tempo de experimentar — você tem, Herói.
+
+      Ele destrava a tinta da Alvorada (pedra luminosa no Tier 6), os Glifos do altar e os
+      rituais de Ômega. Eu estou literalmente brilhando de orgulho aqui dentro do livro!
+    tasks:
+      - get: AWWayofTime:transcendentBloodOrb
+    rewards:
+      - xp: 15
+      - kit: {name: "Kit do Transcendente", items: [AWWayofTime:bloodMagicBaseItems:27 x4, AWWayofTime:blockCrystal x1, minecraft:nether_star x1, minecraft:golden_apple:1 x2]}
+      - loot: epico
+
+  - id: tinta_alvorada
+    title: "Ferramenta de Inscrição: Alvorada"
+    type: normal
+    deps: [orbe_transcendente]
+    icon: AWWayofTime:dawnScribeTool
+    desc: |
+      Um bloco de §ePedra Luminosa§r no altar de Tier 6 (20 000 LP) vira a tinta da
+      §eAlvorada§r — usada nos rituais de Ômega (Simetria do Ômega, Dueto das Almas Fundidas).
+    tasks:
+      - get: AWWayofTime:dawnScribeTool
+    rewards:
+      - xp: 5
+      - item: minecraft:glowstone x8
+
+  - id: adivinho_alvorada
+    title: "Adivinho da Alvorada"
+    type: optional
+    deps: [tinta_alvorada, adivinho_crepusculo]
+    icon: AWWayofTime:itemRitualDiviner:2
+    desc: |
+      Adivinho do Crepúsculo + 2 tintas da Alvorada + 2 Lousas Etéreas = o Adivinho que monta
+      qualquer ritual do mod.
+    tasks:
+      - get: AWWayofTime:itemRitualDiviner:2
+    rewards:
+      - loot: raro
+
+  - id: glifos_altar
+    title: "Glifos do Altar"
+    type: optional
+    deps: [orbe_transcendente]
+    icon: AWWayofTime:blockEnchantmentGlyph
+    desc: |
+      Três glifos feitos com Lousas Etéreas, Runa de Sangue, reagentes e o Orbe
+      Transcendente: §eGlifo da Estabilidade Rígida§r, §eGlifo do Encantador Hábil§r e
+      §eGlifo do Potencial Arcano§r. Eles fazem parte da estrutura dos rituais de Ômega
+      (veja o Adivinho da Alvorada). Mostre qualquer um.
+    tasks:
+      - one_of: [AWWayofTime:blockStabilityGlyph, AWWayofTime:blockEnchantmentGlyph, AWWayofTime:blockEnchantmentGlyph:1]
+    rewards:
+      - loot: raro
+
+  - id: ritual_omega
+    title: "Simetria do Ômega"
+    type: normal
+    deps: [tinta_alvorada]
+    icon: AWWayofTime:boundPlateFire
+    desc: |
+      Ritual de Alvorada. Ativação §e15 000 000 LP§r. Funde a Armadura Vinculada com um
+      reagente, transformando-a temporariamente numa §eArmadura Ômega§r elemental (Água,
+      Terra, Vento ou Fogo), alimentada por reagente. O §eDueto das Almas Fundidas§r estende o
+      efeito. Mecânica complexa: leia a descrição do ritual no Adivinho antes!
+    tasks:
+      - check
+    rewards:
+      - xp: 5
+      - loot: raro
+
+  - id: sigilo_holding_cheio
+    title: "Coleção de Sigilos"
+    type: optional
+    deps: [sigilo_contencao, sigilo_pressa, sigilo_compressao, sigilo_magnetismo, sigilo_lampada]
+    icon: AWWayofTime:sigilOfHolding
+    desc: |
+      Para quem coleciona: tenha ao mesmo tempo os sigilos de Magnetismo, Pressa, Compressão,
+      Lâmpada de Sangue e Ponte Fantasma. Seu cinto de ferramentas de sangue está completo!
+    tasks:
+      - get: [AWWayofTime:sigilOfMagnetism, AWWayofTime:sigilOfHaste, AWWayofTime:itemCompressionSigil, AWWayofTime:itemBloodLightSigil, AWWayofTime:sigilOfTheBridge]
+    rewards:
+      - loot: raro
+
+  - id: mestre_sangue
+    title: "Mestre do Sangue"
+    type: finale
+    deps: [orbe_transcendente, armadura_vinculada, feitico_completo, ritual_meteoro, reagentes_completos]
+    icon: AWWayofTime:transcendentBloodOrb
+    banner: "Mestre do Sangue"
+    subtitle: "O Volume do Sangue está completo"
+    effect: 6
+    desc: |
+      Orbe Transcendente, Armadura Vinculada, feitiços complexos, meteoros e os nove
+      reagentes. Herói... você foi do primeiro corte com uma faca de vidro até uma catedral
+      de 184 runas que abre portais para demônios.
+
+      O Volume do Sangue está reescrito — e ele brilha forte no §dSelo Arcano§r. Magus,
+      Tiberius, Vlad, Demir e Bella ficariam orgulhosos. Eu fico. Muito.
+
+      Agora vá cuidar da saúde, coma alguma coisa e, se quiser ir além, o §eBlood Arsenal§r
+      tem armas e sigilos novos esperando por você.
+    tasks:
+      - get: [AWWayofTime:transcendentBloodOrb, AWWayofTime:boundPlate, AWWayofTime:dawnScribeTool]
+    rewards:
+      - xp: 30
+      - loot: [lendario, epico]

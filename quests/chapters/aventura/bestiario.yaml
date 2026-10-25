@@ -1,0 +1,1343 @@
+# Bestiario: caçadas com kill de mobs vanilla e de mods (ids reais via reg.py entity).
+# Fora: chefes de Twilight/Aether/Atum/OreSpawn/Draconic/Galacticraft. Ver docs/mods/bestiario.md.
+chapter:
+  id: bestiario
+  title: "Bestiário"
+  order: 265
+  icon: minecraft:iron_sword
+  desc: |
+    §cO Mural de Caçadas.§r Contratos diários, mobs do mundo comum, do Nether e dos mods mágicos
+    (Thaumcraft, Witchery, Ars Magica, Blood Magic), com chefes para provar a coragem.
+quests:
+
+  - id: mural
+    title: "O Mural de Caçadas"
+    type: info
+    icon: minecraft:iron_sword
+    desc: |
+      Herói, esta página do Registro é um mural de contratos: cada recorte traz um monstro, uma
+      quantidade e uma recompensa. Matar bicho é útil, e eu pago bem.
+
+      Os §eContratos Diários§r renovam a cada 24 horas. Os demais seguem do mais fácil ao mais
+      perigoso. Os chefes de Twilight, Aether, Atum e afins têm capítulos próprios; aqui ficam os
+      outros caçadores.
+
+      §aDica:§r os mobs do §eInfernal Mobs§r não são entidades à parte: são os mesmos bichos com
+      habilidades extras. Os que você matar aqui contam igual.
+    tasks:
+      - check
+    rewards:
+      - xp: 1
+
+  - id: diario_zumbis
+    title: "Contrato: Zumbis"
+    deps: [mural]
+    repeat: 86400
+    icon: minecraft:rotten_flesh
+    desc: |
+      A cidade sempre tem mais um zumbi do que deveria. Elimine §e20 Zumbis§r hoje.
+
+      §aDica: à noite eles aparecem em bando; uma porta de ferro ajuda.§r
+
+      Este contrato renova a cada 24 horas.
+    tasks:
+      - kill: {entity: "Zombie", count: 20}
+    rewards:
+      - xp: 3
+      - choice: [minecraft:cooked_beef x8, minecraft:golden_apple, minecraft:iron_ingot x6]
+
+  - id: diario_esqueletos
+    title: "Contrato: Esqueletos"
+    deps: [mural]
+    repeat: 86400
+    icon: minecraft:bone
+    desc: |
+      Os arqueiros ossudos incomodam toda noite. Elimine §e20 Esqueletos§r.
+
+      §aEscudo ou parede de bloco resolve as flechas.§r
+
+      Este contrato renova a cada 24 horas.
+    tasks:
+      - kill: {entity: "Skeleton", count: 20}
+    rewards:
+      - xp: 3
+      - choice: [minecraft:cooked_beef x8, minecraft:golden_apple, minecraft:iron_ingot x6]
+
+  - id: diario_aranhas
+    title: "Contrato: Aranhas"
+    deps: [mural]
+    repeat: 86400
+    icon: minecraft:spider_eye
+    desc: |
+      Elas escalam paredes e pulam em você. Elimine §e15 Aranhas§r.
+
+      §aEspadas com Ruína dos Artrópodes ajudam.§r
+
+      Este contrato renova a cada 24 horas.
+    tasks:
+      - kill: {entity: "Spider", count: 15}
+    rewards:
+      - xp: 3
+      - choice: [minecraft:cooked_beef x8, minecraft:golden_apple, minecraft:iron_ingot x6]
+
+  - id: diario_creepers
+    title: "Contrato: Creepers"
+    deps: [mural]
+    repeat: 86400
+    icon: minecraft:gunpowder
+    desc: |
+      Eles não dizem "oi", só "ssss". Elimine §e10 Creepers§r a distância.
+
+      §aArco ou lança: nunca encoste!§r
+
+      Este contrato renova a cada 24 horas.
+    tasks:
+      - kill: {entity: "Creeper", count: 10}
+    rewards:
+      - xp: 3
+      - choice: [minecraft:cooked_beef x8, minecraft:golden_apple, minecraft:iron_ingot x6]
+
+  - id: diario_endermen
+    title: "Contrato: Endermen"
+    deps: [mural]
+    repeat: 86400
+    icon: minecraft:ender_pearl
+    desc: |
+      Altos, caladões e teleportadores. Elimine §e6 Endermen§r.
+
+      §aOlhar nos olhos é convite à briga; use abóbora na cabeça.§r
+
+      Este contrato renova a cada 24 horas.
+    tasks:
+      - kill: {entity: "Enderman", count: 6}
+    rewards:
+      - xp: 3
+      - choice: [minecraft:cooked_beef x8, minecraft:golden_apple, minecraft:iron_ingot x6]
+
+  - id: diario_bruxas
+    title: "Contrato: Bruxas"
+    deps: [mural]
+    repeat: 86400
+    icon: minecraft:glass_bottle
+    desc: |
+      Elas jogam poções e curam a si mesmas. Elimine §e3 Bruxas§r.
+
+      §aPântanos e cabanas são o lugar delas.§r
+
+      Este contrato renova a cada 24 horas.
+    tasks:
+      - kill: {entity: "Witch", count: 3}
+    rewards:
+      - xp: 3
+      - choice: [minecraft:cooked_beef x8, minecraft:golden_apple, minecraft:iron_ingot x6]
+
+  - id: zumbi
+    title: "Zumbis da Noite"
+    type: main
+    deps: [mural]
+    icon: minecraft:rotten_flesh
+    desc: |
+      A primeira caçada de todo Herói: zumbis! Eles andam devagar, mas em bando incomodam. Derrote
+      §e5§r.
+
+      Durante o dia eles queimam, então caçar de manhã é grátis. Se carne podre cair, guarde para
+      troca com aldeões.
+    tasks:
+      - kill: {entity: "Zombie", count: 5}
+    rewards:
+      - xp: 3
+      - choice: [minecraft:iron_sword, minecraft:bow, minecraft:cooked_beef x12]
+
+  - id: esqueleto
+    title: "Arqueiros de Osso"
+    type: main
+    deps: [zumbi]
+    icon: minecraft:bone
+    desc: |
+      Esqueletos atiram de longe e erram pouco. Derrote §e5§r. Aproxime-se em zigue-zague, ou
+      construa uma barricada.
+
+      Eles largam arcos, flechas e ossos (excelente adubo e comida para lobos).
+    tasks:
+      - kill: {entity: "Skeleton", count: 5}
+    rewards:
+      - xp: 3
+      - item: [minecraft:arrow x32, minecraft:bone x8]
+
+  - id: aranha
+    title: "Tecelãs"
+    type: main
+    deps: [esqueleto]
+    icon: minecraft:spider_eye
+    desc: |
+      Aranhas são neutras de dia e hostis à noite. Derrote §e5§r e traga o olho de aranha.
+
+      §aDica:§r o fio (string) vale ouro para arcos e armadilhas.
+    tasks:
+      - kill: {entity: "Spider", count: 5}
+    rewards:
+      - xp: 3
+      - item: [minecraft:string x16]
+
+  - id: aranha_caverna
+    title: "Aranha das Cavernas"
+    deps: [aranha]
+    icon: minecraft:fermented_spider_eye
+    desc: |
+      Menores, rápidas e venenosas, saem das masmorras. Derrote §e4§r.
+
+      §cPerigo:§r o veneno tira vida; leve leite no inventário.
+    tasks:
+      - kill: {entity: "CaveSpider", count: 4}
+    rewards:
+      - xp: 4
+      - item: [minecraft:milk_bucket]
+
+  - id: creeper
+    title: "Silêncio e Estouro"
+    type: main
+    deps: [zumbi]
+    icon: minecraft:gunpowder
+    desc: |
+      Não deixe chegar perto! Derrote §e5 Creepers§r de longe com arco ou com golpe e recuo.
+
+      A pólvora serve para TNT e foguetes. Cuide dos seus blocos preferidos.
+    tasks:
+      - kill: {entity: "Creeper", count: 5}
+    rewards:
+      - xp: 4
+      - item: [minecraft:gunpowder x8, minecraft:arrow x16]
+
+  - id: enderman
+    title: "Os Altos Calados"
+    deps: [creeper]
+    icon: minecraft:ender_pearl
+    desc: |
+      Endermen teleportam e batem forte. Derrote §e3§r para colher pérolas, mas nunca olhe nos
+      olhos antes de atacar.
+
+      Debaixo de um teto baixo (2 blocos) ele não consegue te alcançar bem.
+    tasks:
+      - kill: {entity: "Enderman", count: 3}
+    rewards:
+      - xp: 5
+      - loot: incomum
+
+  - id: bruxa
+    title: "Bruxa do Pântano"
+    deps: [aranha]
+    icon: minecraft:glass_bottle
+    desc: |
+      Cabanas nos pântanos escondem bruxas. Derrote §e2§r. Elas jogam poções de lentidão, veneno e
+      dano.
+
+      Traga leite e arco: matar de longe é mais seguro.
+    tasks:
+      - kill: {entity: "Witch", count: 2}
+    rewards:
+      - xp: 4
+      - item: [minecraft:glowstone_dust x8, minecraft:redstone x8]
+
+  - id: slime
+    title: "Gosma Saltitante"
+    deps: [zumbi]
+    icon: minecraft:slime_ball
+    desc: |
+      Slimes pulam e se dividem em menores. Derrote §e6§r (conta cada um!). Aparecem em pântanos e
+      cavernas profundas.
+
+      A bola de slime é matéria-prima para pistões grudentos.
+    tasks:
+      - kill: {entity: "Slime", count: 6}
+    rewards:
+      - xp: 3
+      - item: [minecraft:slime_ball x8]
+
+  - id: silverfish
+    title: "Traça de Pedra"
+    type: optional
+    deps: [aranha_caverna]
+    icon: minecraft:stone
+    desc: |
+      Escondidos dentro de blocos de pedra, aparecem de repente. Derrote §e5§r. Quebre a pedra
+      suspeita com picareta e fique de olho.
+    tasks:
+      - kill: {entity: "Silverfish", count: 5}
+    rewards:
+      - loot: comum
+
+  - id: pigzombie
+    title: "Porcos Zumbis"
+    deps: [enderman]
+    icon: minecraft:gold_nugget
+    desc: |
+      No Nether, eles vivem em bandos pacíficos até você bater em um. Derrote §e6§r e leve as
+      pepitas de ouro.
+
+      §cPerigo:§r bateu em um, todos vêm atrás. Leve armadura!
+    tasks:
+      - kill: {entity: "PigZombie", count: 6}
+    rewards:
+      - xp: 5
+      - item: [minecraft:gold_ingot x4]
+
+  - id: blaze
+    title: "Chamas Vivas"
+    type: main
+    deps: [pigzombie]
+    icon: minecraft:blaze_rod
+    desc: |
+      Nas fortalezas do Nether voam as §eChamas§r: lançam bolas de fogo e dão varetas essenciais.
+      Derrote §e4§r.
+
+      §aDica:§r poção de resistência ao fogo e bolas de neve acabam com elas rapidinho.
+    tasks:
+      - kill: {entity: "Blaze", count: 4}
+    rewards:
+      - xp: 6
+      - loot: incomum
+
+  - id: ghast
+    title: "Lamento do Nether"
+    deps: [blaze]
+    icon: minecraft:ghast_tear
+    desc: |
+      Os §eGhasts§r flutuam e choram. Cada lágrima vale ouro para poções. Derrote §e2§r.
+
+      §aDica:§r rebata a bola de fogo com um golpe e ela volta para ele!
+    tasks:
+      - kill: {entity: "Ghast", count: 2}
+    rewards:
+      - xp: 6
+      - loot: incomum
+
+  - id: lava_slime
+    title: "Cubo de Magma"
+    deps: [blaze]
+    icon: minecraft:magma_cream
+    desc: |
+      Primos do slime que vivem no Nether, soltam creme de magma. Derrote §e5§r.
+
+      Ótimo para poção de resistência ao fogo.
+    tasks:
+      - kill: {entity: "LavaSlime", count: 5}
+    rewards:
+      - xp: 5
+      - item: [minecraft:magma_cream x4]
+
+  - id: wither_boss
+    title: "O Wither"
+    type: boss
+    deps: [ghast, lava_slime]
+    banner: "O Wither caiu!"
+    subtitle: "Uma estrela do Nether é sua"
+    icon: minecraft:nether_star
+    desc: |
+      Três crânios de Wither Skeleton sobre areia de almas invocam o §eWither§r. Ele destrói
+      blocos e dá bastante trabalho.
+
+      §cTática:§r lute em área aberta e baixa, com arco e armadura de diamante. Poção de cura
+      sempre. Ele deixa uma §eEstrela do Nether§r.
+    tasks:
+      - kill: {entity: "WitherBoss", count: 1}
+    rewards:
+      - xp: 20
+      - loot: epico
+
+  - id: dragao_fim
+    title: "O Dragão do Fim"
+    type: boss
+    deps: [enderman, wither_boss]
+    banner: "O Dragão tombou!"
+    subtitle: "O Fim é seu"
+    icon: minecraft:dragon_egg
+    desc: |
+      O guardião do Fim, enorme e implacável. Destrua primeiro os cristais nos pilares (cuidado
+      com os arqueiros) e depois ataque o dragão.
+
+      §cTática:§r flechas e camas não valem; leve muitas flechas e blocos. Ele deixa o ovo do
+      dragão.
+    tasks:
+      - kill: {entity: "EnderDragon", count: 1}
+    rewards:
+      - xp: 25
+      - loot: lendario
+
+  - id: lula
+    title: "Pesca com Tinta"
+    type: optional
+    deps: [zumbi]
+    icon: minecraft:dye
+    desc: |
+      Lulas nadam em águas calmas e largam saco de tinta. Pegue §e4§r para tingir lã e livros.
+    tasks:
+      - kill: {entity: "Squid", count: 4}
+    rewards:
+      - loot: comum
+
+  - id: morcego
+    title: "Morcegos na Caverna"
+    type: optional
+    deps: [esqueleto]
+    icon: minecraft:feather
+    desc: |
+      Rápidos e pequenininhos, vivem no escuro. Derrote §e3§r para a coleção.
+    tasks:
+      - kill: {entity: "Bat", count: 3}
+    rewards:
+      - loot: comum
+
+  - id: lobo
+    title: "Lobos Selvagens"
+    type: optional
+    deps: [zumbi]
+    icon: minecraft:bone
+    desc: |
+      Lobos atacam se provocados. Derrote §e2§r se for preciso, mas domar com osso é mais bonito.
+    tasks:
+      - kill: {entity: "Wolf", count: 2}
+    rewards:
+      - loot: comum
+
+  - id: ocelote
+    title: "Gatos da Selva"
+    type: optional
+    deps: [aranha]
+    icon: minecraft:fish
+    desc: |
+      Selvagens e ariscos nas selvas. Domar com peixe cru rende um gatinho, mas o contrato pede
+      ação: derrote §e2§r.
+    tasks:
+      - kill: {entity: "Ozelot", count: 2}
+    rewards:
+      - loot: comum
+
+  - id: golem_ferro
+    title: "Golem de Ferro"
+    type: optional
+    deps: [slime]
+    icon: minecraft:iron_ingot
+    desc: |
+      Protetores das aldeias e fonte de ferro. Derrote §e1§r, de preferência um golem seu, para
+      não irritar os aldeões.
+    tasks:
+      - kill: {entity: "VillagerGolem", count: 1}
+    rewards:
+      - loot: incomum
+
+  - id: husk
+    title: "Zumbis do Deserto"
+    deps: [zumbi]
+    icon: minecraft:rotten_flesh
+    desc: |
+      Nos desertos aparecem os §eZumbis Secos§r (Husks), que não queimam ao sol. Derrote §e4§r e
+      aplique um pouco de fome no dia a dia.
+    tasks:
+      - kill: {entity: "etfuturum.husk", count: 4}
+    rewards:
+      - xp: 4
+      - item: [minecraft:cooked_beef x8]
+
+  - id: stray
+    title: "Esqueletos do Gelo"
+    deps: [esqueleto]
+    icon: minecraft:snowball
+    desc: |
+      Esqueletos que vivem em biomas gelados e atiram flechas de lentidão. Derrote §e4§r.
+    tasks:
+      - kill: {entity: "etfuturum.stray", count: 4}
+    rewards:
+      - xp: 4
+      - item: [minecraft:arrow x32]
+
+  - id: endermite
+    title: "Endermitas"
+    type: optional
+    deps: [enderman]
+    icon: minecraft:ender_eye
+    desc: |
+      Nascem de pérolas jogadas. Derrote §e3§r, pequenas e chatas.
+    tasks:
+      - kill: {entity: "etfuturum.endermite", count: 3}
+    rewards:
+      - loot: comum
+
+  - id: shulker
+    title: "Shulkers"
+    deps: [dragao_fim]
+    icon: minecraft:ender_chest
+    desc: |
+      Moradores das cidades do Fim, escondidos em conchas. Derrote §e2§r com cuidado (a levitação
+      é irritante).
+    tasks:
+      - kill: {entity: "etfuturum.shulker", count: 2}
+    rewards:
+      - xp: 8
+      - loot: raro
+
+  - id: piglin
+    title: "Piglins"
+    deps: [pigzombie]
+    icon: minecraft:gold_ingot
+    desc: |
+      No Nether do Netherlicious vivem os §ePiglins§r. Derrote §e3§r se precisar, mas ouro na mão
+      costuma agradar mais.
+    tasks:
+      - kill: {entity: "netherlicious.Piglin", count: 3}
+    rewards:
+      - xp: 5
+      - item: [minecraft:gold_ingot x4]
+
+  - id: hoglin
+    title: "Hoglins"
+    deps: [piglin]
+    icon: minecraft:cooked_porkchop
+    desc: |
+      Javalis do Nether, fortes e teimosos. Derrote §e3§r e ganhe carne e couro.
+    tasks:
+      - kill: {entity: "netherlicious.Hoglin", count: 3}
+    rewards:
+      - xp: 6
+      - item: [minecraft:cooked_porkchop x16]
+
+  - id: zoglin
+    title: "Zoglins"
+    type: optional
+    deps: [hoglin]
+    icon: minecraft:rotten_flesh
+    desc: |
+      Hoglins que viraram mortos-vivos. Derrote §e2§r. São agressivos e atacam qualquer coisa.
+    tasks:
+      - kill: {entity: "netherlicious.Zoglin", count: 2}
+    rewards:
+      - loot: incomum
+
+  - id: tc_cultista
+    title: "Cultistas Encapuzados"
+    type: main
+    deps: [bruxa]
+    icon: minecraft:iron_helmet
+    desc: |
+      Cultistas se escondem em templos e dão trabalho. Derrote §e3 Cavaleiros§r. Têm armadura e
+      atacam em grupo.
+
+      §aDica:§r quem investigou Thaumcraft sabe: eles carregam pergaminhos e baús interessantes.
+    tasks:
+      - kill: {entity: "Thaumcraft.CultistKnight", count: 3}
+    rewards:
+      - xp: 6
+      - loot: incomum
+
+  - id: tc_cultista_clerigo
+    title: "Clérigos do Culto"
+    deps: [tc_cultista]
+    icon: minecraft:book
+    desc: |
+      Os clérigos curam os outros e invocam. Derrote §e3§r primeiro.
+    tasks:
+      - kill: {entity: "Thaumcraft.CultistCleric", count: 3}
+    rewards:
+      - xp: 5
+      - item: [minecraft:paper x16]
+
+  - id: tc_pech
+    title: "Pechs do Mato"
+    deps: [aranha]
+    icon: minecraft:emerald
+    desc: |
+      Criaturinhas curiosas das florestas mágicas, que trocam coisas. Derrote §e3§r se estiverem
+      hostis. Cuidado: carregam varinhas.
+    tasks:
+      - kill: {entity: "Thaumcraft.Pech", count: 3}
+    rewards:
+      - xp: 5
+      - item: [minecraft:emerald x2]
+
+  - id: tc_firebat
+    title: "Morcegos de Fogo"
+    deps: [bruxa]
+    icon: minecraft:blaze_powder
+    desc: |
+      Surgem em cavernas profundas, soltando faíscas. Derrote §e4§r. Água e escudos ajudam.
+    tasks:
+      - kill: {entity: "Thaumcraft.Firebat", count: 4}
+    rewards:
+      - xp: 4
+      - item: [minecraft:blaze_powder x4]
+
+  - id: tc_zumbi_cerebro
+    title: "Zumbi Pensante"
+    deps: [zumbi]
+    icon: minecraft:rotten_flesh
+    desc: |
+      Zumbis que usam o cérebro: mais rápidos, com armadura. Derrote §e4§r.
+    tasks:
+      - kill: {entity: "Thaumcraft.BrainyZombie", count: 4}
+    rewards:
+      - xp: 5
+      - item: [minecraft:cooked_beef x8]
+
+  - id: tc_aranha_mente
+    title: "Aranha da Mente"
+    deps: [aranha_caverna]
+    icon: minecraft:spider_eye
+    desc: |
+      Pequenas aranhas que dão confusão. Derrote §e3§r.
+    tasks:
+      - kill: {entity: "Thaumcraft.MindSpider", count: 3}
+    rewards:
+      - xp: 5
+      - item: [minecraft:string x16]
+
+  - id: tc_guardiao
+    title: "Guardiões Sombrios"
+    deps: [tc_cultista_clerigo]
+    icon: minecraft:obsidian
+    desc: |
+      Das dimensões estranhas vêm os §eGuardiões Eldritch§r. Fortes e silenciosos. Derrote §e2§r.
+
+      §cPerigo:§r não vá sozinho. Leve armadura boa e poções.
+    tasks:
+      - kill: {entity: "Thaumcraft.EldritchGuardian", count: 2}
+    rewards:
+      - xp: 8
+      - loot: raro
+
+  - id: tc_caranguejo
+    title: "Caranguejo Eldritch"
+    type: optional
+    deps: [tc_guardiao]
+    icon: minecraft:fish
+    desc: |
+      Pequenos, mas irritantes. Derrote §e3§r.
+    tasks:
+      - kill: {entity: "Thaumcraft.EldritchCrab", count: 3}
+    rewards:
+      - loot: incomum
+
+  - id: tc_taint
+    title: "Enxame Maculado"
+    deps: [tc_firebat]
+    icon: minecraft:spider_eye
+    desc: |
+      Onde há Mácula, há enxames. Derrote §e3§r grupos e leve proteção contra mácula.
+    tasks:
+      - kill: {entity: "Thaumcraft.TaintSwarm", count: 3}
+    rewards:
+      - xp: 6
+      - loot: incomum
+
+  - id: tc_warden
+    title: "Vigia Eldritch"
+    type: boss
+    deps: [tc_guardiao]
+    banner: "O Vigia caiu!"
+    subtitle: "Eldritch derrotado"
+    icon: minecraft:ender_eye
+    desc: |
+      O guardião das profundezas. Pesado, resistente e perigoso. Derrote §e1§r e prove sua
+      coragem.
+
+      §cTática:§r use armaduras, poções e o apoio de aliados. Fuga também é arma.
+    tasks:
+      - kill: {entity: "Thaumcraft.EldritchWarden", count: 1}
+    rewards:
+      - xp: 15
+      - loot: epico
+
+  - id: wi_vampiro
+    title: "Sangue Antigo"
+    type: main
+    deps: [tc_cultista]
+    icon: minecraft:redstone
+    desc: |
+      À noite, vampiros vagam pelas aldeias da Witchery. Derrote §e3§r. Eles chupam vida, então
+      ataque rápido.
+
+      §aDica:§r estaca de madeira e alho ajudam (confira no NEI).
+    tasks:
+      - kill: {entity: "witchery.vampire", count: 3}
+    rewards:
+      - xp: 6
+      - loot: incomum
+
+  - id: wi_lobisomem
+    title: "Lobisomem"
+    deps: [wi_vampiro]
+    icon: minecraft:bone
+    desc: |
+      Sob a lua cheia, humanos viram feras. Derrote §e2§r §eLobisomens§r. Prata é a melhor arma.
+    tasks:
+      - kill: {entity: "witchery.wolfman", count: 2}
+    rewards:
+      - xp: 6
+      - loot: incomum
+
+  - id: wi_werevillager
+    title: "Aldeões Amaldiçoados"
+    deps: [wi_lobisomem]
+    icon: minecraft:rotten_flesh
+    desc: |
+      Aldeões que escondem uma fera dentro. Derrote §e2§r e não confie em quem uiva.
+    tasks:
+      - kill: {entity: "witchery.werevillager", count: 2}
+    rewards:
+      - xp: 5
+      - item: [minecraft:cooked_beef x8]
+
+  - id: wi_cao_infernal
+    title: "Cão do Inferno"
+    deps: [wi_vampiro]
+    icon: minecraft:blaze_powder
+    desc: |
+      Feras de fogo que cercam em grupo. Derrote §e3§r. Resistência ao fogo é boa ideia.
+    tasks:
+      - kill: {entity: "witchery.hellhound", count: 3}
+    rewards:
+      - xp: 6
+      - item: [minecraft:coal x16]
+
+  - id: wi_goblin
+    title: "Goblins Astutos"
+    deps: [wi_vampiro]
+    icon: minecraft:emerald
+    desc: |
+      Pequenos, mas espertos, carregam talismãs e pedras. Derrote §e3§r.
+    tasks:
+      - kill: {entity: "witchery.goblin", count: 3}
+    rewards:
+      - xp: 5
+      - item: [minecraft:emerald x2]
+
+  - id: wi_imp
+    title: "Diabretes"
+    deps: [wi_vampiro]
+    icon: minecraft:nether_wart
+    desc: |
+      Diabretes zombam e fazem bagunça. Derrote §e4§r.
+    tasks:
+      - kill: {entity: "witchery.imp", count: 4}
+    rewards:
+      - xp: 5
+      - item: [minecraft:nether_wart x8]
+
+  - id: wi_bruxa_coven
+    title: "Bruxas do Coven"
+    deps: [bruxa]
+    icon: minecraft:glass_bottle
+    desc: |
+      As bruxas do coven são mais perigosas que as comuns. Derrote §e3§r e ganhe ingredientes
+      raros.
+    tasks:
+      - kill: {entity: "witchery.covenwitch", count: 3}
+    rewards:
+      - xp: 6
+      - loot: incomum
+
+  - id: wi_espectro
+    title: "Espectros"
+    deps: [wi_vampiro]
+    icon: minecraft:ghast_tear
+    desc: |
+      Fantasmas que atravessam parede. Derrote §e3§r com armas encantadas.
+    tasks:
+      - kill: {entity: "witchery.spectre", count: 3}
+    rewards:
+      - xp: 6
+      - loot: incomum
+
+  - id: wi_banshee
+    title: "Banshee"
+    deps: [wi_espectro]
+    icon: minecraft:glowstone_dust
+    desc: |
+      O grito dela gela a espinha. Derrote §e2§r e proteja os ouvidos.
+    tasks:
+      - kill: {entity: "witchery.banshee", count: 2}
+    rewards:
+      - xp: 6
+      - loot: incomum
+
+  - id: wi_poltergeist
+    title: "Poltergeist"
+    type: optional
+    deps: [wi_espectro]
+    icon: minecraft:paper
+    desc: |
+      Ele joga objetos pela sala. Derrote §e2§r.
+    tasks:
+      - kill: {entity: "witchery.poltergeist", count: 2}
+    rewards:
+      - loot: incomum
+
+  - id: wi_pesadelo
+    title: "Pesadelos"
+    deps: [wi_banshee]
+    icon: minecraft:ender_pearl
+    desc: |
+      Criaturas dos sonhos ruins. Derrote §e2§r e acorde em paz.
+    tasks:
+      - kill: {entity: "witchery.nightmare", count: 2}
+    rewards:
+      - xp: 8
+      - loot: raro
+
+  - id: wi_demonio
+    title: "Demônio"
+    deps: [wi_cao_infernal]
+    icon: minecraft:blaze_rod
+    desc: |
+      Demônio de verdade! Derrote §e1§r (cuidado: bate forte).
+    tasks:
+      - kill: {entity: "witchery.demon", count: 1}
+    rewards:
+      - xp: 10
+      - loot: raro
+
+  - id: wi_lilith
+    title: "Lilith"
+    type: boss
+    deps: [wi_demonio]
+    banner: "Lilith caiu!"
+    subtitle: "A Mãe das Bruxas"
+    icon: minecraft:nether_star
+    desc: |
+      A senhora do sabá, uma bruxa antiga e poderosa. Derrote §e1 Lilith§r.
+
+      §cTática:§r prepare-se com poção de cura, armadura encantada e não fique parado.
+    tasks:
+      - kill: {entity: "witchery.lilith", count: 1}
+    rewards:
+      - xp: 18
+      - loot: epico
+
+  - id: wi_senhor_tormento
+    title: "Senhor do Tormento"
+    type: boss
+    deps: [wi_pesadelo]
+    banner: "O Tormento acabou"
+    subtitle: "O Senhor caiu"
+    icon: minecraft:ender_eye
+    desc: |
+      Vive no reino do Tormento, só ataca os corajosos. Derrote §e1§r e saia vivo.
+    tasks:
+      - kill: {entity: "witchery.lordoftorment", count: 1}
+    rewards:
+      - xp: 18
+      - loot: epico
+
+  - id: am_darkling
+    title: "Escurinhos"
+    type: main
+    deps: [bruxa]
+    icon: minecraft:coal
+    desc: |
+      Pequenas criaturas das sombras das florestas do Ars Magica. Derrote §e4§r.
+    tasks:
+      - kill: {entity: "arsmagica2.MobDarkling", count: 4}
+    rewards:
+      - xp: 5
+      - item: [minecraft:coal x16]
+
+  - id: am_dryad
+    title: "Dríades"
+    deps: [am_darkling]
+    icon: minecraft:sapling
+    desc: |
+      Espíritos da floresta, protegem as árvores. Derrote §e3§r se atacarem.
+    tasks:
+      - kill: {entity: "arsmagica2.MobDryad", count: 3}
+    rewards:
+      - xp: 5
+      - item: [minecraft:sapling x8]
+
+  - id: am_mana_creeper
+    title: "Creeper de Mana"
+    deps: [creeper]
+    icon: minecraft:gunpowder
+    desc: |
+      Um creeper que explode em mana. Derrote §e3§r à distância.
+    tasks:
+      - kill: {entity: "arsmagica2.MobManaCreeper", count: 3}
+    rewards:
+      - xp: 5
+      - item: [minecraft:gunpowder x8]
+
+  - id: am_elemental_fogo
+    title: "Elementais de Fogo"
+    deps: [am_darkling]
+    icon: minecraft:blaze_powder
+    desc: |
+      Seres de pura chama. Derrote §e2§r e resfrie a cabeça.
+    tasks:
+      - kill: {entity: "arsmagica2.MobFireElemental", count: 2}
+    rewards:
+      - xp: 6
+      - loot: incomum
+
+  - id: am_elemental_agua
+    title: "Elementais de Água"
+    deps: [am_darkling]
+    icon: minecraft:water_bucket
+    desc: |
+      Elementais líquidos. Derrote §e2§r e tenha um balde à mão.
+    tasks:
+      - kill: {entity: "arsmagica2.MobWaterElemental", count: 2}
+    rewards:
+      - xp: 6
+      - loot: incomum
+
+  - id: am_elemental_terra
+    title: "Elementais de Terra"
+    deps: [am_darkling]
+    icon: minecraft:dirt
+    desc: |
+      Pesados como montanhas. Derrote §e2§r com ferramentas fortes.
+    tasks:
+      - kill: {entity: "arsmagica2.EarthElemental", count: 2}
+    rewards:
+      - xp: 6
+      - loot: incomum
+
+  - id: am_mago_escuro
+    title: "Magos das Trevas"
+    deps: [am_elemental_fogo, am_elemental_agua, am_elemental_terra]
+    icon: minecraft:book
+    desc: |
+      Magos que lançam feitiços. Derrote §e2§r e recolha pergaminhos de magia.
+    tasks:
+      - kill: {entity: "arsmagica2.MobDarkMage", count: 2}
+    rewards:
+      - xp: 8
+      - loot: raro
+
+  - id: am_mago_luz
+    title: "Magos da Luz"
+    deps: [am_mago_escuro]
+    icon: minecraft:glowstone_dust
+    desc: |
+      O oposto dos magos das trevas, mas igualmente perigoso. Derrote §e2§r.
+    tasks:
+      - kill: {entity: "arsmagica2.MobLightMage", count: 2}
+    rewards:
+      - xp: 8
+      - loot: raro
+
+  - id: am_hecate
+    title: "Hécate"
+    deps: [am_mago_luz]
+    icon: minecraft:ender_eye
+    desc: |
+      A deusa da magia, rara e poderosa. Derrote §e1§r se tiver coragem.
+    tasks:
+      - kill: {entity: "arsmagica2.MobHecate", count: 1}
+    rewards:
+      - xp: 12
+      - loot: raro
+
+  - id: am_vaca_inferno
+    title: "Vaca Infernal"
+    type: optional
+    deps: [am_darkling]
+    icon: minecraft:leather
+    desc: |
+      Uma vaca do Nether com raiva. Derrote §e2§r e leve leite fervente.
+    tasks:
+      - kill: {entity: "arsmagica2.HellCow", count: 2}
+    rewards:
+      - loot: comum
+
+  - id: am_boss_fogo
+    title: "Guardião do Fogo"
+    type: boss
+    deps: [am_hecate]
+    banner: "Guardião do Fogo caiu!"
+    subtitle: "Um elemento a menos"
+    icon: minecraft:blaze_rod
+    desc: |
+      Um dos guardiões dos elementos de Ars Magica. Forte, com ataques elementais. Derrote §e1§r.
+
+      §cTática:§r traga resistência ao elemento dele e armas fortes. Ele solta uma essência
+      valiosa para a magia.
+    tasks:
+      - kill: {entity: "arsmagica2.BossFireGuardian", count: 1}
+    rewards:
+      - xp: 15
+      - loot: epico
+
+  - id: am_boss_agua
+    title: "Guardião da Água"
+    type: boss
+    deps: [am_hecate]
+    banner: "Guardião da Água caiu!"
+    subtitle: "Um elemento a menos"
+    icon: minecraft:water_bucket
+    desc: |
+      Um dos guardiões dos elementos de Ars Magica. Forte, com ataques elementais. Derrote §e1§r.
+
+      §cTática:§r traga resistência ao elemento dele e armas fortes. Ele solta uma essência
+      valiosa para a magia.
+    tasks:
+      - kill: {entity: "arsmagica2.BossWaterGuardian", count: 1}
+    rewards:
+      - xp: 15
+      - loot: epico
+
+  - id: am_boss_terra
+    title: "Guardião da Terra"
+    type: boss
+    deps: [am_hecate]
+    banner: "Guardião da Terra caiu!"
+    subtitle: "Um elemento a menos"
+    icon: minecraft:dirt
+    desc: |
+      Um dos guardiões dos elementos de Ars Magica. Forte, com ataques elementais. Derrote §e1§r.
+
+      §cTática:§r traga resistência ao elemento dele e armas fortes. Ele solta uma essência
+      valiosa para a magia.
+    tasks:
+      - kill: {entity: "arsmagica2.BossEarthGuardian", count: 1}
+    rewards:
+      - xp: 15
+      - loot: epico
+
+  - id: am_boss_ar
+    title: "Guardião do Ar"
+    type: boss
+    deps: [am_hecate]
+    banner: "Guardião do Ar caiu!"
+    subtitle: "Um elemento a menos"
+    icon: minecraft:feather
+    desc: |
+      Um dos guardiões dos elementos de Ars Magica. Forte, com ataques elementais. Derrote §e1§r.
+
+      §cTática:§r traga resistência ao elemento dele e armas fortes. Ele solta uma essência
+      valiosa para a magia.
+    tasks:
+      - kill: {entity: "arsmagica2.BossAirGuardian", count: 1}
+    rewards:
+      - xp: 15
+      - loot: epico
+
+  - id: am_boss_natureza
+    title: "Guardião da Natureza"
+    type: boss
+    deps: [am_boss_terra]
+    banner: "A Natureza cedeu"
+    subtitle: "O guardião caiu"
+    icon: minecraft:sapling
+    desc: |
+      O senhor das florestas mágicas. Derrote §e1§r. Leve fogo!
+    tasks:
+      - kill: {entity: "arsmagica2.BossNatureGuardian", count: 1}
+    rewards:
+      - xp: 15
+      - loot: epico
+
+  - id: am_boss_vida
+    title: "Guardião da Vida"
+    type: boss
+    deps: [am_boss_natureza]
+    banner: "A Vida cedeu"
+    subtitle: "O guardião caiu"
+    icon: minecraft:golden_apple
+    desc: |
+      Ele cura e revive aliados. Derrote §e1§r e acabe com as curas rápido.
+    tasks:
+      - kill: {entity: "arsmagica2.BossLifeGuardian", count: 1}
+    rewards:
+      - xp: 15
+      - loot: epico
+
+  - id: am_boss_arcano
+    title: "Guardião Arcano"
+    type: boss
+    deps: [am_boss_vida]
+    banner: "Arcano derrotado"
+    subtitle: "O saber foi seu"
+    icon: minecraft:ender_eye
+    desc: |
+      O mestre das artes arcanas. Derrote §e1§r com cuidado e boas poções.
+    tasks:
+      - kill: {entity: "arsmagica2.BossArcaneGuardian", count: 1}
+    rewards:
+      - xp: 18
+      - loot: epico
+
+  - id: bm_demonio_menor
+    title: "Demônios Menores"
+    type: main
+    deps: [wi_cao_infernal]
+    icon: minecraft:redstone
+    desc: |
+      Servos menores do Blood Magic. Derrote §e3§r e leve o sangue deles. Cuidado com cheiro de
+      enxofre.
+    tasks:
+      - kill: {entity: "AWWayofTime.MinorDemonGrunt", count: 3}
+    rewards:
+      - xp: 6
+      - loot: incomum
+
+  - id: bm_anjo_caido
+    title: "Anjos Caídos"
+    deps: [bm_demonio_menor]
+    icon: minecraft:feather
+    desc: |
+      Anjos que perderam a graça. Derrote §e2§r.
+    tasks:
+      - kill: {entity: "AWWayofTime.FallenAngel", count: 2}
+    rewards:
+      - xp: 8
+      - loot: raro
+
+  - id: bm_demonio_bile
+    title: "Demônio da Bile"
+    deps: [bm_demonio_menor]
+    icon: minecraft:rotten_flesh
+    desc: |
+      Um monte de pus ambulante. Derrote §e2§r e não respire fundo.
+    tasks:
+      - kill: {entity: "AWWayofTime.BileDemon", count: 2}
+    rewards:
+      - xp: 8
+      - loot: raro
+
+  - id: bm_punho
+    title: "Punho de Pedra"
+    deps: [bm_demonio_menor]
+    icon: minecraft:cobblestone
+    desc: |
+      Um brutamontes feito de rocha. Derrote §e2§r com picareta e martelo.
+    tasks:
+      - kill: {entity: "AWWayofTime.BoulderFist", count: 2}
+    rewards:
+      - xp: 8
+      - loot: raro
+
+  - id: bm_demonio_fogo
+    title: "Demônio Alado"
+    deps: [bm_anjo_caido]
+    icon: minecraft:blaze_powder
+    desc: |
+      Um demônio voador de fogo. Derrote §e1§r.
+    tasks:
+      - kill: {entity: "AWWayofTime.WingedFireDemon", count: 1}
+    rewards:
+      - xp: 10
+      - loot: raro
+
+  - id: bm_demonio_gelo
+    title: "Demônio do Gelo"
+    deps: [bm_anjo_caido]
+    icon: minecraft:snowball
+    desc: |
+      O inverso do alado: congelante. Derrote §e1§r.
+    tasks:
+      - kill: {entity: "AWWayofTime.IceDemon", count: 1}
+    rewards:
+      - xp: 10
+      - loot: raro
+
+  - id: bm_sombra
+    title: "Elemental das Sombras"
+    type: optional
+    deps: [bm_demonio_menor]
+    icon: minecraft:coal
+    desc: |
+      Um elemental sombrio. Derrote §e2§r.
+    tasks:
+      - kill: {entity: "AWWayofTime.ShadeElemental", count: 2}
+    rewards:
+      - loot: incomum
+
+  - id: bm_guardiao
+    title: "Guardião Inferior"
+    type: boss
+    deps: [bm_demonio_fogo, bm_demonio_gelo]
+    banner: "O Guardião caiu"
+    subtitle: "Sangue demais"
+    icon: minecraft:nether_star
+    desc: |
+      Um guardião do submundo. Derrote §e1§r e preserve seu sangue.
+    tasks:
+      - kill: {entity: "AWWayofTime.LowerGuardian", count: 1}
+    rewards:
+      - xp: 18
+      - loot: epico
+
+  - id: gaia
+    title: "Guardiã Gaia"
+    type: boss
+    deps: [am_boss_ar]
+    banner: "Gaia descansa"
+    subtitle: "A Guardiã caiu"
+    icon: minecraft:emerald
+    desc: |
+      No Botania, a §eGuardiã Gaia§r (dopplegänger) surge do ritual com o Gaia Ritual. Derrote
+      §e1§r.
+
+      §cTática:§r muita defesa, arco e esquiva. Ela solta o Fragmento de Terrasteel.
+    tasks:
+      - kill: {entity: "Botania.botania:doppleganger", count: 1}
+    rewards:
+      - xp: 20
+      - loot: epico
+
+  - id: rei_slime
+    title: "Rei Slime"
+    type: boss
+    deps: [slime]
+    icon: minecraft:slime_ball
+    desc: |
+      O maior dos slimes, do Tinker's Construct. Derrote §e1§r e leve a coroa.
+    tasks:
+      - kill: {entity: "TConstruct.KingSlime", count: 1}
+    rewards:
+      - xp: 10
+      - loot: raro
+
+  - id: slime_azul
+    title: "Slime Azul"
+    type: optional
+    deps: [slime]
+    icon: minecraft:slime_ball
+    desc: |
+      Slimes azuis do Tinker's Construct, comestíveis! Derrote §e4§r.
+    tasks:
+      - kill: {entity: "TConstruct.EdibleSlime", count: 4}
+    rewards:
+      - loot: comum
+
+  - id: slime_rosa
+    title: "Slime Rosa"
+    type: optional
+    deps: [slime]
+    icon: minecraft:slime_ball
+    desc: |
+      No MineFactory Reloaded, os slimes rosa dão geleia rosa. Derrote §e3§r.
+    tasks:
+      - kill: {entity: "MineFactoryReloaded.mfrEntityPinkSlime", count: 3}
+    rewards:
+      - loot: comum
+
+  - id: monolito
+    title: "Monólito"
+    deps: [enderman]
+    icon: minecraft:obsidian
+    desc: |
+      Nas dimensões das Dim Doors habita o §eMonólito§r, que te puxa para o Limbo se você olhar
+      nos olhos. Derrote §e1§r e saia vivo.
+    tasks:
+      - kill: {entity: "dimdoors.Monolith", count: 1}
+    rewards:
+      - xp: 10
+      - loot: raro
+
+  - id: cavalo_zumbi
+    title: "Cavalo Zumbi"
+    type: optional
+    deps: [zumbi]
+    icon: minecraft:rotten_flesh
+    desc: |
+      Cavalos mortos-vivos do Thaumic Horizons. Derrote §e2§r.
+    tasks:
+      - kill: {entity: "ThaumicHorizons.HorseZombie", count: 2}
+    rewards:
+      - loot: incomum
+
+  - id: lobo_lunar
+    title: "Lobo Lunar"
+    type: optional
+    deps: [wi_lobisomem]
+    icon: minecraft:bone
+    desc: |
+      Um lobo mágico à luz da lua. Derrote §e2§r.
+    tasks:
+      - kill: {entity: "ThaumicHorizons.LunarWolf", count: 2}
+    rewards:
+      - loot: incomum
+
+  - id: cao_nether
+    title: "Cão do Nether"
+    type: optional
+    deps: [pigzombie]
+    icon: minecraft:blaze_powder
+    desc: |
+      Cães de fogo do Thaumic Horizons. Derrote §e2§r.
+    tasks:
+      - kill: {entity: "ThaumicHorizons.NetherHound", count: 2}
+    rewards:
+      - loot: incomum
+
+  - id: cacador_novato
+    title: "Caçador Novato"
+    type: milestone
+    deps: [zumbi, esqueleto, aranha, creeper, enderman]
+    banner: "Caçador Novato"
+    subtitle: "O básico está feito"
+    icon: minecraft:iron_sword
+    desc: |
+      Zumbis, esqueletos, aranhas, creepers e endermen: o básico está dominado, Herói. A Akasha já
+      anotou o seu nome no mural.
+
+      Continue para o Nether e para os monstros mágicos.
+    tasks:
+      - check
+    rewards:
+      - xp: 10
+      - kit: {name: "Kit do Caçador Novato", items: [minecraft:iron_sword, minecraft:bow, minecraft:arrow x64, minecraft:cooked_beef x16]}
+      - loot: incomum
+
+  - id: cacador_nether
+    title: "Caçador do Nether"
+    type: milestone
+    deps: [blaze, ghast, pigzombie, lava_slime]
+    banner: "Caçador do Nether"
+    subtitle: "O fogo agora te respeita"
+    icon: minecraft:blaze_rod
+    desc: |
+      As chamas do Nether aprenderam seu nome. Você já derrotou Blazes, Ghasts, Porcos Zumbis e
+      cubos de magma.
+
+      Hora de caçar monstros mágicos e chefes de mods.
+    tasks:
+      - check
+    rewards:
+      - xp: 15
+      - kit: {name: "Kit do Caçador do Nether", items: [minecraft:diamond x4, minecraft:golden_apple x4, minecraft:blaze_rod x8]}
+      - loot: raro
+
+  - id: cacador_arcano
+    title: "Caçador Arcano"
+    type: milestone
+    deps: [tc_guardiao, wi_vampiro, am_mago_escuro, bm_demonio_menor]
+    banner: "Caçador Arcano"
+    subtitle: "O sobrenatural cedeu"
+    icon: minecraft:ender_eye
+    desc: |
+      Eldritch, vampiros, magos das trevas e demônios: você enfrentou o lado mágico do pack.
+      Poucos chegam tão longe, Herói.
+    tasks:
+      - check
+    rewards:
+      - xp: 20
+      - loot: epico
+
+  - id: mestre_cacador
+    title: "Mestre das Caçadas"
+    type: finale
+    deps: [wither_boss, dragao_fim, tc_warden, wi_lilith, am_boss_arcano, bm_guardiao, gaia]
+    banner: "Mestre das Caçadas"
+    subtitle: "O Registro inteiro treme"
+    icon: minecraft:nether_star
+    desc: |
+      Dragão, Wither, Guardiões, Lilith e Gaia: o mural inteiro está riscado. O Registro Akáshico
+      agora tem um capítulo inteiro de monstros com a sua assinatura.
+
+      Mande lembranças aos infernalmente mortos.
+    tasks:
+      - check
+    rewards:
+      - xp: 30
+      - kit: {name: "Kit do Mestre Caçador", items: [minecraft:diamond x16, minecraft:golden_apple x8, minecraft:nether_star]}
+      - loot: lendario

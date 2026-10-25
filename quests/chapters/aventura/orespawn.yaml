@@ -1,0 +1,924 @@
+chapter:
+  id: orespawn
+  title: "OreSpawn"
+  order: 245
+  icon: OreSpawn:ingotultimate
+  desc: |
+    §dO Mundo dos Mil Monstros.§r Novos minérios, gemas, dimensões 80 a 85, comidas, utilidades
+    e os grandes chefes (Mobzilla, Rainha e Rei). (OreSpawn)
+
+quests:
+  - id: sal
+    title: "Sal da Terra"
+    type: main
+    icon: OreSpawn:Salt
+    desc: |
+      O OreSpawn espalha minérios novos pelo mundo. O mais simples é o §eSal§r, que tempera comida
+      e entra em receitas como a pipoca. Quebre §eSalt Ore§r com qualquer picareta.
+    tasks:
+      - get: OreSpawn:Salt x4
+    rewards:
+      - xp: 3
+      - choice: [minecraft:bread x8, minecraft:iron_ingot x6]
+
+  - id: rubi
+    title: "Rubi"
+    type: main
+    deps: [sal]
+    icon: OreSpawn:Ruby
+    desc: |
+      O §eRubi§r é a gema vermelha do mod. Cave em profundidade moderada e busque o §eRuby Ore§r.
+      Com a picareta de ferro você já consegue, Herói.
+    tasks:
+      - get: OreSpawn:Ruby x4
+    rewards:
+      - xp: 3
+      - loot: comum
+
+  - id: ametista
+    title: "Ametista"
+    type: main
+    deps: [sal]
+    icon: OreSpawn:Amethyst
+    desc: |
+      A §eAmetista§r vem do Amethyst Ore. Cave um pouco mais fundo e traga alguns cristais roxos.
+      Guarde as sobras!
+    tasks:
+      - get: OreSpawn:Amethyst x4
+    rewards:
+      - xp: 3
+      - loot: comum
+
+  - id: olho_tigre
+    title: "Olho de Tigre"
+    type: main
+    deps: [sal]
+    icon: OreSpawn:TigersEyeIngot
+    desc: |
+      O §eTigerseye§r é um metal-gema dourado e listrado: minere o minério e derreta na fornalha
+      para fazer lingotes. Confira no NEI.
+    tasks:
+      - get: OreSpawn:TigersEyeIngot x4
+    rewards:
+      - xp: 3
+      - loot: comum
+
+  - id: turmalina
+    title: "Turmalina"
+    type: optional
+    deps: [sal]
+    icon: OreSpawn:CrystalPinkIngot
+    desc: |
+      A §eTourmaline§r (Crystal Pink) rende um lingote rosa, bom para ferramentas. Ache o minério
+      pelas cavernas.
+    tasks:
+      - get: OreSpawn:CrystalPinkIngot x4
+    rewards:
+      - loot: comum
+
+  - id: titanio
+    title: "Titânio"
+    type: main
+    deps: [rubi]
+    icon: OreSpawn:IngotTitanium
+    desc: |
+      O minério de §eTitânio§r é resistente. Derreta o minério (ou junte 9 pepitas na bancada) e
+      faça lingotes; 9 lingotes viram um bloco.
+    tasks:
+      - get: OreSpawn:IngotTitanium x6
+    rewards:
+      - xp: 5
+      - choice: [minecraft:iron_ingot x16, minecraft:diamond x2]
+
+  - id: uranio
+    title: "Urânio"
+    type: main
+    deps: [rubi]
+    icon: OreSpawn:IngotUranium
+    desc: |
+      O §eUrânio§r é perigoso de nome, mas aqui é só mais um metal. Derreta e prepare para o
+      Lingote Supremo.
+    tasks:
+      - get: OreSpawn:IngotUranium x6
+    rewards:
+      - xp: 3
+      - loot: comum
+
+  - id: lingote_supremo
+    title: "Lingote Supremo"
+    type: milestone
+    deps: [titanio, uranio]
+    icon: OreSpawn:ingotultimate
+    desc: |
+      Na bancada, combine Urânio, Ferro e Titânio num padrão (confira a receita no NEI). Faça pelo
+      menos 4 §eUltimate Ingots§r: é o metal das armas mais fortes.
+    tasks:
+      - get: OreSpawn:ingotultimate x4
+    rewards:
+      - xp: 10
+      - choice: [minecraft:diamond x4, minecraft:golden_apple x2]
+      - loot: raro
+
+  - id: espada_rubi
+    title: "Espada de Rubi"
+    type: main
+    deps: [rubi]
+    icon: OreSpawn:RubySword
+    desc: |
+      Dois rubis e um graveto: uma espada afiada para os mobs do mod. As ferramentas de Rubi vêm
+      em jogo completo.
+    tasks:
+      - craft: OreSpawn:RubySword
+    rewards:
+      - xp: 3
+      - loot: comum
+
+  - id: ferramentas_ametista
+    title: "Ametista em Peças"
+    type: optional
+    deps: [ametista]
+    icon: OreSpawn:AmethystSword
+    desc: |
+      Espada, picareta, pá, machado e enxada de ametista também existem. Faça pelo menos a espada.
+    tasks:
+      - craft: OreSpawn:AmethystSword
+    rewards:
+      - loot: comum
+
+  - id: ferramentas_tigre
+    title: "Olho de Tigre em Peças"
+    type: optional
+    deps: [olho_tigre]
+    icon: OreSpawn:TigersEyePickaxe
+    desc: |
+      Espada, picareta e o resto do jogo em §eTigerseye§r. Faça a picareta para minerar mais
+      rápido.
+    tasks:
+      - craft: OreSpawn:TigersEyePickaxe
+    rewards:
+      - loot: comum
+
+  - id: esmeralda_equip
+    title: "Equipamento de Esmeralda"
+    type: optional
+    deps: [rubi]
+    icon: OreSpawn:EmeraldSword
+    desc: |
+      O OreSpawn também dá ferramentas e armadura de §eEsmeralda§r, que não existem no vanilla.
+      Experimente a espada.
+    tasks:
+      - craft: OreSpawn:EmeraldSword
+    rewards:
+      - loot: comum
+
+  - id: turmalina_equip
+    title: "Armadura de Turmalina"
+    type: optional
+    deps: [turmalina]
+    icon: OreSpawn:CrystalPinkHelmet
+    desc: |
+      Capacete, peitoral, calças e botas de §eTourmaline§r. Combina com ferramentas rosadas.
+    tasks:
+      - get: OreSpawn:CrystalPinkHelmet
+    rewards:
+      - loot: comum
+
+  - id: cajado_trovao
+    title: "Cajado do Trovão"
+    type: optional
+    deps: [espada_rubi]
+    icon: OreSpawn:ThunderStaff
+    desc: |
+      Diamante e quatro rubis: o §eThunder Staff§r. Chame raios, Herói, mas lembre-se: §cfogo
+      amigo existe§r!
+    tasks:
+      - craft: OreSpawn:ThunderStaff
+    rewards:
+      - loot: comum
+
+  - id: espada_suprema
+    title: "Espada Suprema"
+    type: main
+    deps: [lingote_supremo]
+    icon: OreSpawn:ultimate_sword
+    desc: |
+      Dois Lingotes Supremos e um graveto. A §eUltimate Sword§r é a melhor arma sem material de
+      chefe. Faça também o arco se tiver lingotes de sobra.
+    tasks:
+      - craft: OreSpawn:ultimate_sword
+    rewards:
+      - xp: 3
+      - loot: comum
+
+  - id: arco_supremo
+    title: "Arco Supremo"
+    type: optional
+    deps: [lingote_supremo]
+    icon: OreSpawn:UltimateBow
+    desc: |
+      Três cordas e três lingotes supremos: o §eUltimate Bow§r.
+    tasks:
+      - craft: OreSpawn:UltimateBow
+    rewards:
+      - loot: comum
+
+  - id: maca_titanio
+    title: "Maçãs Poderosas"
+    type: optional
+    deps: [titanio]
+    icon: OreSpawn:apples:2
+    desc: |
+      As maçãs especiais sobem de nível: Cristal, Urânio, Titânio, Suprema. Comece pela de Titânio
+      com o que você tem (confira a cadeia no NEI).
+    tasks:
+      - get: OreSpawn:apples:2
+    rewards:
+      - loot: comum
+
+  - id: muda_cristal
+    title: "Árvore de Cristal"
+    type: main
+    deps: [entrar_utopia]
+    icon: OreSpawn:CrystalPlant
+    desc: |
+      Procure o §eCrystal Sapling§r (muda) e plante. As árvores de cristal dão madeira especial e
+      folhas coloridas.
+    tasks:
+      - get: OreSpawn:CrystalPlant
+    rewards:
+      - xp: 3
+      - loot: comum
+
+  - id: madeira_cristal
+    title: "Madeira de Cristal"
+    type: main
+    deps: [muda_cristal]
+    icon: OreSpawn:CrystalWorkbenchBlock
+    desc: |
+      Um tronco vira 4 tábuas e quatro tábuas viram a bancada de cristal. Faça a §eCrystal
+      Workbench§r.
+    tasks:
+      - get: OreSpawn:CrystalWorkbenchBlock
+    rewards:
+      - xp: 3
+      - loot: comum
+
+  - id: forno_cristal
+    title: "Forno de Cristal"
+    type: optional
+    deps: [madeira_cristal]
+    icon: OreSpawn:CrystalFurnaceBlock
+    desc: |
+      O §eCrystal Furnace§r é uma fornalha especial. Confira a receita na bancada de cristal, no
+      NEI.
+    tasks:
+      - get: OreSpawn:CrystalFurnaceBlock
+    rewards:
+      - loot: comum
+
+  - id: ferramentas_cristal
+    title: "Ferramentas de Cristal"
+    type: optional
+    deps: [madeira_cristal]
+    icon: OreSpawn:CrystalWoodSword
+    desc: |
+      Espada, picareta e o resto em madeira de cristal. Comece pela espada.
+    tasks:
+      - get: OreSpawn:CrystalWoodSword
+    rewards:
+      - loot: comum
+
+  - id: tocha_extrema
+    title: "Tocha Extrema"
+    type: optional
+    deps: [entrar_utopia]
+    icon: OreSpawn:ExtremeTorch
+    desc: |
+      A §eExtreme Torch§r ilumina bem e entra na receita do repelente de Kraken. Confira no NEI.
+    tasks:
+      - get: OreSpawn:ExtremeTorch
+    rewards:
+      - loot: comum
+
+  - id: entrar_utopia
+    title: "Utopia"
+    type: portal
+    icon: OreSpawn:Island
+    desc: |
+      A primeira das dimensões do OreSpawn: §eDimension-Utopia§r (80). Procure o portal ou item de
+      acesso no NEI; se não achar, peça ajuda à administração. Leve comida, armas e camas.
+    tasks:
+      - visit: {dim: 80, name: "Dimension-Utopia"}
+    rewards:
+      - xp: 10
+      - choice: [minecraft:golden_apple x2, minecraft:cooked_beef x16, minecraft:torch x32]
+
+  - id: entrar_extremo
+    title: "Dimensão Extrema"
+    type: portal
+    deps: [entrar_utopia]
+    icon: OreSpawn:ExtremeTorch
+    desc: |
+      A §eDimension-Extreme§r (81) é mais dura. Entre só com equipamento bom e pontos de recuo.
+    tasks:
+      - visit: {dim: 81, name: "Dimension-Extreme"}
+    rewards:
+      - xp: 3
+      - loot: comum
+
+  - id: entrar_vila
+    title: "Dimensão VillageMania"
+    type: portal
+    deps: [entrar_utopia]
+    icon: minecraft:emerald
+    desc: |
+      A §eDimension-VillageMania§r (82) está repleta de aldeias. Boa para trocar com aldeões e
+      recuperar suprimentos.
+    tasks:
+      - visit: {dim: 82, name: "Dimension-VillageMania"}
+    rewards:
+      - xp: 3
+      - loot: comum
+
+  - id: entrar_ilhas
+    title: "Dimensão das Ilhas"
+    type: portal
+    deps: [entrar_utopia]
+    icon: OreSpawn:Island
+    desc: |
+      Na §eDimension-Islands§r (83) a paisagem são ilhas flutuantes. Cuidado com quedas, Herói.
+    tasks:
+      - visit: {dim: 83, name: "Dimension-Islands"}
+    rewards:
+      - xp: 3
+      - loot: comum
+
+  - id: entrar_cristal
+    title: "Dimensão de Cristal"
+    type: portal
+    deps: [entrar_utopia]
+    icon: OreSpawn:CrystalPlant
+    desc: |
+      A §eDimension-Crystal§r (84) é cheia de cristais e árvores brilhantes. Aqui vive a madeira
+      de cristal.
+    tasks:
+      - visit: {dim: 84, name: "Dimension-Crystal"}
+    rewards:
+      - xp: 3
+      - loot: comum
+
+  - id: entrar_caos
+    title: "Dimensão do Caos"
+    type: milestone
+    deps: [entrar_extremo, entrar_vila, entrar_ilhas, entrar_cristal]
+    icon: OreSpawn:starstone
+    desc: |
+      A §eDimension-Chaos§r (85) é a última, a mais perigosa. Só entre depois de dominar as
+      outras.
+    tasks:
+      - visit: {dim: 85, name: "Dimension-Chaos"}
+    rewards:
+      - xp: 15
+      - kit: {name: "Kit do Viajante das Dimensões", items: ["minecraft:golden_apple x4", "minecraft:experience_bottle x16", "minecraft:diamond x4"]}
+      - loot: raro
+
+  - id: arroz
+    title: "Fazenda do OreSpawn"
+    type: optional
+    deps: [entrar_utopia]
+    icon: OreSpawn:rice
+    desc: |
+      O mod traz plantas novas: §eArroz, Feijão, Alface, Morango, Milho, Tomate e Quinoa§r.
+      Confira no NEI como conseguir as sementes. Junte um pouco de arroz.
+    tasks:
+      - get: OreSpawn:rice x4
+    rewards:
+      - loot: comum
+
+  - id: milho
+    title: "Milho"
+    type: optional
+    deps: [arroz]
+    icon: OreSpawn:CornCob
+    desc: |
+      O §eMilho§r vira pipoca! Coloque no fogo e confira o NEI para pipoca com manteiga e sal.
+    tasks:
+      - get: OreSpawn:CornCob x4
+    rewards:
+      - loot: comum
+
+  - id: pipoca
+    title: "Pipoca"
+    type: optional
+    deps: [milho]
+    icon: OreSpawn:Popcorn
+    desc: |
+      Milho assado. Misture manteiga e sal para uma pipoca ainda melhor (confira no NEI).
+    tasks:
+      - get: OreSpawn:Popcorn x4
+    rewards:
+      - loot: comum
+
+  - id: queijo
+    title: "Queijo e Manteiga"
+    type: optional
+    deps: [arroz]
+    icon: OreSpawn:Cheese
+    desc: |
+      Leite faz §eQueijo§r e §eManteiga§r nas receitas do mod. Veja no NEI as combinações.
+    tasks:
+      - one_of: [OreSpawn:Cheese, OreSpawn:Butter]
+    rewards:
+      - loot: comum
+
+  - id: salada
+    title: "Salada"
+    type: optional
+    deps: [arroz]
+    icon: OreSpawn:Salad
+    desc: |
+      Alface, tomate e mais (confira a receita no NEI). Comida leve e cheia de saturação.
+    tasks:
+      - get: OreSpawn:Salad
+    rewards:
+      - loot: comum
+
+  - id: bacon
+    title: "Sanduíche BLT"
+    type: optional
+    deps: [salada]
+    icon: OreSpawn:BLT
+    desc: |
+      Bacon + alface + tomate. O §eBLT§r é uma comida das boas. Confira as receitas no NEI.
+    tasks:
+      - get: OreSpawn:BLT
+    rewards:
+      - loot: comum
+
+  - id: peixes
+    title: "Peixes Coloridos"
+    type: optional
+    deps: [entrar_utopia]
+    icon: OreSpawn:Fish
+    desc: |
+      Pescando você pode pegar peixes especiais (Fire Fish, Sun Fish...). Cada um é um item único;
+      pegue pelo menos um.
+    tasks:
+      - one_of: [OreSpawn:Fish, OreSpawn:Fish:1, OreSpawn:Fish:2, OreSpawn:Fish:3, OreSpawn:Fish:4]
+    rewards:
+      - loot: comum
+
+  - id: frutas
+    title: "Pomar"
+    type: optional
+    deps: [entrar_utopia]
+    icon: OreSpawn:Cherry
+    desc: |
+      Árvores de §eCereja§r e §ePêssego§r crescem de sementes. Plante e colha para ter frutas à
+      vontade.
+    tasks:
+      - one_of: [OreSpawn:Cherry, OreSpawn:Peach]
+    rewards:
+      - loot: comum
+
+  - id: peneira
+    title: "Peneira"
+    type: optional
+    deps: [sal]
+    icon: OreSpawn:Sifter
+    desc: |
+      Oito gravetos ao redor de um barbante: a §eSifter§r. Peneira terra para encontrar tesouros
+      (confira os drops no NEI).
+    tasks:
+      - craft: OreSpawn:Sifter
+    rewards:
+      - loot: comum
+
+  - id: chave_canhao
+    title: "Fragmentos de Chave"
+    type: optional
+    deps: [entrar_utopia]
+    icon: OreSpawn:key_fragment
+    desc: |
+      Junte 9 fragmentos de chave para fazer uma §eKey§r (confira no NEI para que serve).
+    tasks:
+      - get: OreSpawn:key_fragment x9
+    rewards:
+      - loot: comum
+
+  - id: elevador
+    title: "Elevador"
+    type: optional
+    deps: [rubi]
+    icon: OreSpawn:Elevator
+    desc: |
+      Madeira, diamante e redstone: um §eElevator§r. Boa conveniência em torres.
+    tasks:
+      - craft: OreSpawn:Elevator
+    rewards:
+      - loot: comum
+
+  - id: chave_inglesa
+    title: "Chave Inglesa"
+    type: optional
+    deps: [sal]
+    icon: OreSpawn:Wrench
+    desc: |
+      Quatro lingotes de ferro em formato de L: a §eWrench§r do OreSpawn.
+    tasks:
+      - craft: OreSpawn:Wrench
+    rewards:
+      - loot: comum
+
+  - id: repelente_kraken
+    title: "Repelente de Kraken"
+    type: optional
+    deps: [tocha_extrema]
+    icon: OreSpawn:KrakenRepellent
+    desc: |
+      Insetos mortos e a tocha extrema formam o §eKraken Repellent§r. Mantém o monstro longe da
+      sua base. Confira no NEI.
+    tasks:
+      - craft: OreSpawn:KrakenRepellent
+    rewards:
+      - loot: comum
+
+  - id: repelente_creeper
+    title: "Repelente de Creeper"
+    type: optional
+    deps: [tocha_extrema]
+    icon: OreSpawn:CreeperRepellent
+    desc: |
+      Parecido com o anterior, mas contra Creepers.
+    tasks:
+      - get: OreSpawn:CreeperRepellent
+    rewards:
+      - loot: comum
+
+  - id: abrigo
+    title: "Abrigo Instantâneo"
+    type: optional
+    deps: [entrar_utopia]
+    icon: OreSpawn:InstantShelter
+    desc: |
+      Item que constrói um §eabrigo§r na hora, perfeito para a primeira noite longe de casa.
+      Confira no NEI.
+    tasks:
+      - get: OreSpawn:InstantShelter
+    rewards:
+      - loot: comum
+
+  - id: jardim
+    title: "Jardim Instantâneo"
+    type: optional
+    deps: [entrar_utopia]
+    icon: OreSpawn:InstantGarden
+    desc: |
+      Construir um jardim pronto: o §eInstant Garden§r. Confira a receita.
+    tasks:
+      - get: OreSpawn:InstantGarden
+    rewards:
+      - loot: comum
+
+  - id: zoo
+    title: "Zoológico Instantâneo"
+    type: optional
+    deps: [entrar_utopia]
+    icon: OreSpawn:ZooCage
+    desc: |
+      O §eInstant Zoo§r gera um zoológico rápido. Há 5 níveis: confira no NEI.
+    tasks:
+      - get: OreSpawn:ZooCage
+    rewards:
+      - loot: comum
+
+  - id: estrela
+    title: "Poeira de Estrela"
+    type: optional
+    deps: [entrar_utopia]
+    icon: OreSpawn:stardust
+    desc: |
+      Estrelas cadentes deixam §eStar Dust§r. Nove poeiras viram um Star Fragment: use para itens
+      avançados, olhe o NEI.
+    tasks:
+      - get: OreSpawn:stardust x9
+    rewards:
+      - loot: comum
+
+  - id: fragmento_estrela
+    title: "Fragmento de Estrela"
+    type: optional
+    deps: [estrela]
+    icon: OreSpawn:starfragment
+    desc: |
+      Nove poeiras juntas formam um fragmento. Guarde, ele será útil mais à frente.
+    tasks:
+      - get: OreSpawn:starfragment
+    rewards:
+      - loot: comum
+
+  - id: mob_triffid
+    title: "Triffid"
+    type: optional
+    deps: [entrar_utopia]
+    icon: OreSpawn:TriffidSpawnBlock
+    desc: |
+      Os §eTriffids§r são plantas carnívoras. Mate em campo aberto e fique longe das vinhas.
+    tasks:
+      - kill: "Triffid x1"
+    rewards:
+      - loot: comum
+
+  - id: mob_basilisco
+    title: "Basilisco"
+    type: optional
+    deps: [entrar_utopia]
+    icon: OreSpawn:BasiliskScale
+    desc: |
+      O §eBasilisk§r tem escamas valiosas. Confira como são usadas no NEI.
+    tasks:
+      - kill: "Basilisk x1"
+    rewards:
+      - loot: comum
+
+  - id: mob_pesadelo
+    title: "Pesadelo"
+    type: optional
+    deps: [entrar_utopia]
+    icon: OreSpawn:NightmareScale
+    desc: |
+      O §eNightmare§r é um monstro raro que solta escama. Leve armadura boa e cura.
+    tasks:
+      - kill: "Nightmare x1"
+    rewards:
+      - loot: comum
+
+  - id: mob_mothra
+    title: "Mothra"
+    type: optional
+    deps: [entrar_utopia]
+    icon: OreSpawn:MothScale
+    desc: |
+      A §eMothra§r é uma mariposa gigante. A escama dela vira armadura (veja no NEI).
+    tasks:
+      - kill: "Mothra x1"
+    rewards:
+      - loot: comum
+
+  - id: mob_terror
+    title: "Terrores"
+    type: optional
+    deps: [entrar_utopia]
+    icon: OreSpawn:TerribleTerrorSpawnBlock
+    desc: |
+      §eTerrible Terror§r, §eLurking Terror§r, §eCreeping Horror§r: criaturas do mod. Derrote um
+      Terrible Terror, é um desafio de aquecimento.
+    tasks:
+      - kill: {entity: "Terrible Terror", count: 1}
+    rewards:
+      - loot: comum
+
+  - id: cephadrome
+    title: "Cephadrome"
+    type: boss
+    deps: [espada_suprema]
+    banner: "O Cephadrome foi derrotado!"
+    subtitle: "O oceano está mais calmo"
+    task_logic: OR
+    icon: OreSpawn:CephadromeSpawnBlock
+    desc: |
+      O §eCephadrome§r é um tubarão-dinossauro que domina os oceanos. Prepare-se com Respiração
+      Aquática e armadura boa. §cEle é rápido!§r
+    tasks:
+      - kill: {entity: "Cephadrome", count: 1}
+    rewards:
+      - xp: 10
+      - loot: raro
+
+  - id: kraken
+    title: "O Kraken"
+    type: boss
+    deps: [repelente_kraken]
+    banner: "O Kraken afundou!"
+    subtitle: "O oceano devolveu os barcos"
+    task_logic: OR
+    icon: OreSpawn:KrakenTooth
+    desc: |
+      O §eKraken§r vive no fundo dos oceanos. Mantenha o Repelente longe da área da luta, fique em
+      um bote e leve armas fortes e flechas. §cCuidado com os tentáculos.§r
+    tasks:
+      - kill: {entity: "The Kraken", count: 1}
+      - get: OreSpawn:KrakenTooth
+    rewards:
+      - xp: 15
+      - loot: raro
+
+  - id: vortex
+    title: "Olho do Vórtice"
+    type: boss
+    deps: [espada_suprema]
+    banner: "O Vortex foi derrotado!"
+    subtitle: "O olho se fechou"
+    task_logic: OR
+    icon: OreSpawn:VortexEye
+    desc: |
+      O §eVortex§r é um olho gigante que paira. Ataque de distância e use bloco como proteção.
+    tasks:
+      - kill: {entity: "Vortex", count: 1}
+      - get: OreSpawn:VortexEye
+    rewards:
+      - xp: 12
+      - loot: raro
+
+  - id: molenoid
+    title: "Molenoid"
+    type: boss
+    deps: [espada_suprema]
+    banner: "O Molenoid foi derrotado!"
+    subtitle: "A toupeira gigante descansa"
+    task_logic: OR
+    icon: OreSpawn:MolenoidNose
+    desc: |
+      O §eMolenoid§r escava túneis por baixo de você. Fique atento ao chão e use armadura boa.
+    tasks:
+      - kill: {entity: "Molenoid", count: 1}
+      - get: OreSpawn:MolenoidNose
+    rewards:
+      - xp: 12
+      - loot: raro
+
+  - id: leonopteryx
+    title: "Leonopteryx"
+    type: boss
+    deps: [espada_suprema]
+    banner: "A Leonopteryx caiu!"
+    subtitle: "O céu respira"
+    task_logic: OR
+    icon: minecraft:feather
+    desc: |
+      A §eLeonopteryx§r é um dragão voador. §cLeve um arco bom e armadura forte.§r
+    tasks:
+      - kill: {entity: "Leonopteryx", count: 1}
+    rewards:
+      - xp: 15
+      - loot: epico
+
+  - id: zilla
+    title: "Mobzilla"
+    type: boss
+    deps: [espada_suprema]
+    banner: "Mobzilla foi derrotado!"
+    subtitle: "O gigante tombou"
+    task_logic: OR
+    icon: OreSpawn:zilla_scale
+    desc: |
+      O §eMobzilla§r é o chefe gigante do mod. Prepare armadura completa, poções e uma arena
+      aberta. §cCuidado com o raio e as pisadas.§r Ele deixa escamas, coração e o §eTroféu
+      Zilla§r.
+    tasks:
+      - kill: {entity: "Mobzilla", count: 1}
+      - get: OreSpawn:trophy:2
+    rewards:
+      - xp: 20
+      - loot: epico
+
+  - id: rainha
+    title: "A Rainha"
+    type: boss
+    deps: [zilla]
+    banner: "A Rainha caiu!"
+    subtitle: "A colmeia silencia"
+    task_logic: OR
+    icon: OreSpawn:queen_scale
+    desc: |
+      A §eQueen§r (The Queen) é um dos chefes finais. Ela solta escamas, coração e o troféu dela.
+      Prepare-se.
+    tasks:
+      - kill: {entity: "The Queen", count: 1}
+      - get: OreSpawn:trophy:1
+    rewards:
+      - xp: 20
+      - loot: epico
+
+  - id: rei
+    title: "O Rei"
+    type: boss
+    deps: [rainha]
+    banner: "O Rei caiu!"
+    subtitle: "A coroa é sua"
+    task_logic: OR
+    icon: OreSpawn:king_scale
+    desc: |
+      O §eKing§r (The King) é o chefe mais difícil, no topo da hierarquia. Armadura completa, cura
+      e paciência.
+    tasks:
+      - kill: {entity: "The King", count: 1}
+      - get: OreSpawn:trophy
+    rewards:
+      - xp: 25
+      - loot: lendario
+
+  - id: escamas
+    title: "Escamas do Mobzilla"
+    type: main
+    deps: [zilla]
+    icon: OreSpawn:zilla_scale
+    desc: |
+      Escamas, corações e placas servem para forjar anéis e espadas. Guarde-as, Herói.
+    tasks:
+      - get: OreSpawn:zilla_scale x9
+    rewards:
+      - xp: 3
+      - loot: comum
+
+  - id: placa_zilla
+    title: "Placa de Escama"
+    type: optional
+    deps: [escamas]
+    icon: OreSpawn:zilla_scale_plate
+    desc: |
+      Nove escamas viram uma placa (receita na bancada).
+    tasks:
+      - get: OreSpawn:zilla_scale_plate
+    rewards:
+      - loot: comum
+
+  - id: anel_zilla
+    title: "Anel do Zilla"
+    type: main
+    deps: [placa_zilla]
+    icon: OreSpawn:ring:2
+    desc: |
+      Aneis são ferramentas de poder. O §eZilla Ring§r pede placas e escamas em volta de um anel
+      comum. Confira no NEI.
+    tasks:
+      - get: OreSpawn:ring:2
+    rewards:
+      - xp: 3
+      - loot: comum
+
+  - id: anel_rainha
+    title: "Anel da Rainha"
+    type: optional
+    deps: [rainha]
+    icon: OreSpawn:ring:3
+    desc: |
+      Mesma lógica com escamas da Rainha: §eQueen Ring§r.
+    tasks:
+      - get: OreSpawn:ring:3
+    rewards:
+      - loot: comum
+
+  - id: anel_rei
+    title: "Anel do Rei"
+    type: optional
+    deps: [rei]
+    icon: OreSpawn:ring:4
+    desc: |
+      O anel final da linhagem real. Confira no NEI.
+    tasks:
+      - get: OreSpawn:ring:4
+    rewards:
+      - loot: comum
+
+  - id: espada_rei
+    title: "Espada do Rei"
+    type: main
+    deps: [rei]
+    icon: OreSpawn:king_sword
+    desc: |
+      A §eKing Sword§r combina cabos e lâminas da Big Bertha. Confira a receita completa no NEI:
+      ela usa Bertha, Blade e Cabo do Rei.
+    tasks:
+      - get: OreSpawn:king_sword
+    rewards:
+      - xp: 3
+      - loot: comum
+
+  - id: maca_final
+    title: "Maçã MGZ"
+    type: optional
+    deps: [rei, rainha, zilla]
+    icon: OreSpawn:apples:4
+    desc: |
+      A maçã final: a §eMGZ Apple§r depende de itens dos três chefes. Confira no NEI. Para o Herói
+      que quer tudo!
+    tasks:
+      - get: OreSpawn:apples:4
+    rewards:
+      - loot: comum
+
+  - id: mestre_orespawn
+    title: "Mestre do OreSpawn"
+    type: milestone
+    deps: [rei, entrar_caos]
+    icon: OreSpawn:trophy
+    desc: |
+      Você passou por minérios, dimensões e chefes. Que a coleção fique completa. Este é o marco
+      do capítulo, Herói.
+    tasks:
+      - get: OreSpawn:trophy
+    rewards:
+      - xp: 25
+      - kit: {name: "Kit do Mestre do OreSpawn", items: ["minecraft:diamond x8", "minecraft:golden_apple x8", "minecraft:experience_bottle x32"]}
+      - loot: lendario

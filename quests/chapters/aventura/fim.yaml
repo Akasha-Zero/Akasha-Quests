@@ -135,7 +135,7 @@ quests:
       dragão quando ele pousar no centro, em cima do portal de saída. Evite o sopro roxo e fuja
       das investidas. Leve arco, flechas em abundância, poções de cura, e nunca fique na beira.
       Quando ele cair, o portal de saída se abre e o §eOvo do Dragão§r aparece em cima dele. Este
-      é o chefe que vale como a §eConquista do Fim§r.
+      é o chefe-marco do capítulo.
     tasks:
       - kill: {entity: "EnderDragon", count: 1}
       - get: minecraft:dragon_egg
@@ -163,8 +163,8 @@ quests:
     deps: [dragao]
     icon: etfuturum:dragon_breath
     desc: |
-      Frascos de água no sopro do dragão... confira no NEI. A receita do pack usa uma poção e
-      Frutas Chorus. É base para poções persistentes.
+      O §eSopro do Dragão§r sai de uma poção específica com 2 Frutas Chorus (confira no NEI qual).
+      Serve de base para poções persistentes.
     tasks:
       - get: etfuturum:dragon_breath
     rewards:
@@ -188,7 +188,8 @@ quests:
     deps: [chorus]
     icon: etfuturum:chorus_fruit_popped
     desc: |
-      Asse a fruta na fornalha e ela vira §eChorus Popped§r. Cuida do purpur, vara do Fim e mais.
+      Asse a fruta na fornalha e ela vira §eChorus Popped§r. É ingrediente do Purpur e da Vara
+      Ender.
     tasks:
       - get: etfuturum:chorus_fruit_popped x4
     rewards:
@@ -299,18 +300,3 @@ quests:
       - get: minecraft:ender_chest
     rewards:
       - loot: comum
-
-  - id: fim_final
-    title: "Mestre do Fim"
-    type: milestone
-    deps: [dragao, ovo_dragao]
-    icon: minecraft:dragon_egg
-    desc: |
-      Dragão derrotado e o vazio explorado. Prepare o próximo passo: o Nether e outras dimensões
-      te esperam, Herói.
-    tasks:
-      - check: "Confirme que derrotou o Dragão"
-    rewards:
-      - xp: 20
-      - kit: {name: "Kit do Viajante do Fim", items: ["minecraft:ender_pearl x16", "minecraft:golden_apple x4", "minecraft:experience_bottle x16"]}
-      - loot: raro

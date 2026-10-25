@@ -20,8 +20,14 @@ Repo `/home/user/Akasha-Quests`. Livro BetterQuesting 1.7.10 do pack Technic For
 ## Voz (Akasha)
 Narradora calorosa, guardiã do Registro Akáshico; fala com o jogador como "Herói"/"você"
 (sem gênero para o jogador; Akasha fala de si no feminino). PT-BR informal. Cada desc:
-gancho curto → instrução prática (receita/máquina/onde achar) → incentivo. 30–90 palavras;
-marcos/chefes até 150. Destaques com `§e` (item), `§a` (dica), `§c` (perigo). Nada inventado:
+gancho curto → instrução prática (receita/máquina/onde achar) → incentivo. **Mínimo 45
+palavras** (máx. 100); marcos/chefes 90–160, com emoção e referência ao que veio antes.
+Nunca entregue desc de uma linha só. Exemplo do padrão esperado:
+
+> Sabe aquele brilho vermelho nas cavernas fundas? É §eRubi§r! Minere com picareta de ferro
+> ou melhor e funda na fornalha. Dois rubis e um graveto viram uma §eEspada de Rubi§r —
+> bem mais forte que diamante contra os bichos estranhos deste Volume.
+> §aDica:§r guarde alguns para a armadura; os chefes do OreSpawn não perdoam. Bora, Herói! Destaques com `§e` (item), `§a` (dica), `§c` (perigo). Nada inventado:
 se não souber, oriente a conferir no NEI.
 
 ## Formato (resumo)

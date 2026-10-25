@@ -825,7 +825,210 @@ quests:
       - xp: 4
       - item: [minecraft:iron_ingot x4]
 
-  - id: ovo_ovo_mamute
+  - id: regras_parque
+    title: "Regras do Parque"
+    type: info
+    deps: [dinopad]
+    icon: jurassicraft:item.dinopad
+    desc: |
+      Três regrinhas da Akasha, Herói: §c1.§r nunca solte dinossauro sem cerca; §c2.§r carnívoros
+      e herbívoros em recintos separados; §c3.§r um soro de crescimento no bolso nunca é demais.
+    tasks:
+      - check
+    rewards:
+      - xp: 1
+
+  - id: tanque_cultivo
+    title: "Tanque do Cultivador"
+    type: optional
+    deps: [cultivador]
+    icon: jurassicraft:tile.culivateFluid
+    desc: |
+      O Cultivador precisa de líquido nutritivo. Tenha em mãos §eágua§r para o início e confira no
+      NEI o que mais ele aceita.
+    tasks:
+      - fluid: "water x1000"
+    rewards:
+      - xp: 3
+      - item: [minecraft:sugar x16]
+
+  - id: cientista_veterano
+    title: "Cientista Veterano"
+    type: optional
+    deps: [soro]
+    icon: minecraft:experience_bottle
+    desc: |
+      Ciência cansa a cabeça. Chegue ao nível 20 de experiência: é o que separa estagiários de
+      paleontólogos.
+    tasks:
+      - xp: 20
+    rewards:
+      - loot: incomum
+
+  - id: couro_grande
+    title: "Couro dos Gigantes"
+    type: optional
+    deps: [couro]
+    icon: jurassicraft:item.Tyrannosaurus_Skin
+    desc: |
+      Peles mais difíceis: §eTiranossauro Rex§r, §eBraquiossauro§r, §eAnquilossauro§r,
+      §eDilofossauro§r, §eHerrerassauro§r, §eParassaurolofo§r e §eHipsilofodonte§r.
+    tasks:
+      - get: jurassicraft:item.Tyrannosaurus_Skin
+      - get: jurassicraft:item.Brachiosaurus_Skin
+      - get: jurassicraft:item.Ankylosaurus_Skin
+      - get: jurassicraft:item.Dilophosaurus_Skin
+      - get: jurassicraft:item.Herrerasaurus_Skin
+      - get: jurassicraft:item.Parasaurolophus_Skin
+      - get: jurassicraft:item.Hypsilophodon_Skin
+    rewards:
+      - loot: incomum
+
+  - id: carne_aquatica
+    title: "Banquete Marinho"
+    type: optional
+    deps: [cacar_tylo]
+    icon: jurassicraft:item.Tylosaurus_Meat
+    desc: |
+      Carne de §eTilossauro§r e de §eCelacanto§r: raros e deliciosos depois de assados.
+    tasks:
+      - get: jurassicraft:item.Tylosaurus_Meat
+      - get: jurassicraft:item.Coelacanth_Meat
+    rewards:
+      - loot: comum
+
+  - id: cranio_rex
+    title: "Crânio do Rei"
+    type: optional
+    deps: [cacar_rex]
+    icon: jurassicraft:item.Tyrannosaurus_Skull
+    desc: |
+      Um §eCrânio de Tiranossauro§r é peça de museu. Coloque-o no centro do seu salão de troféus.
+    tasks:
+      - get: jurassicraft:item.Tyrannosaurus_Skull
+    rewards:
+      - loot: raro
+
+  - id: cacar_brachio
+    title: "Sombra no Horizonte"
+    type: optional
+    deps: [ovo_gigante]
+    icon: jurassicraft:item.Brachiosaurus_Meat
+    desc: |
+      Enorme e pacífico. Derrube um §eBraquiossauro§r só se precisar mesmo de carne: o pescoço
+      dele chega à copa das árvores.
+    tasks:
+      - kill: {entity: "jurassicraft.Brachiosaurus", count: 1}
+    rewards:
+      - xp: 5
+      - item: [minecraft:iron_ingot x8]
+
+  - id: cacar_anquilo
+    title: "Tanque Vivo"
+    type: optional
+    deps: [ovo_gigante]
+    icon: jurassicraft:item.Ankylosaurus_Meat
+    desc: |
+      Couraça por todo lado e uma cauda-martelo. Enfrente um §eAnquilossauro§r pela frente, com
+      paciência.
+    tasks:
+      - kill: {entity: "jurassicraft.Ankylosaurus", count: 1}
+    rewards:
+      - xp: 5
+      - item: [minecraft:iron_ingot x8]
+
+  - id: cacar_hipsi
+    title: "Pequenino Veloz"
+    type: optional
+    deps: [ovo_herbivoro_pequeno]
+    icon: jurassicraft:item.Hypsilophodon_Meat
+    desc: |
+      Pequeno e arisco. Derrube três §eHipsilofodontes§r para a coleção de carne.
+    tasks:
+      - kill: {entity: "jurassicraft.Hypsilophodon", count: 3}
+    rewards:
+      - xp: 3
+      - item: [minecraft:arrow x32]
+
+  - id: cacar_para
+    title: "Crista Sonora"
+    type: optional
+    deps: [ovo_herbivoro_pequeno]
+    icon: jurassicraft:item.Parasaurolophus_Meat
+    desc: |
+      Eles avisam o bando com um grito. Vença dois §eParassaurolofos§r antes que fujam.
+    tasks:
+      - kill: {entity: "jurassicraft.Parasaurolophus", count: 2}
+    rewards:
+      - xp: 3
+      - item: [minecraft:arrow x32]
+
+  - id: cacar_herrera
+    title: "Primeiro Predador"
+    type: optional
+    deps: [ovo_dilo]
+    icon: jurassicraft:item.Herrerasaurus_Meat
+    desc: |
+      Um dos mais antigos carnívoros. Derrote dois §eHerrerassauros§r; eles atacam em pares.
+    tasks:
+      - kill: {entity: "jurassicraft.Herrerasaurus", count: 2}
+    rewards:
+      - xp: 4
+      - item: [minecraft:golden_apple]
+
+  - id: cacar_arsino
+    title: "Chifres Gêmeos"
+    type: optional
+    deps: [seringas]
+    icon: jurassicraft:item.Arsinoitherium_Meat
+    desc: |
+      Um gigante de dois chifres. Vença um §eArsinoitherium§r e confira a carne no NEI.
+    tasks:
+      - kill: {entity: "jurassicraft.Arsinoitherium", count: 1}
+    rewards:
+      - xp: 5
+      - item: [minecraft:leather x8]
+
+  - id: cacar_lepti
+    title: "Focinho Curioso"
+    type: optional
+    deps: [seringas]
+    icon: jurassicraft:item.Leptictidium_Meat
+    desc: |
+      Pequeno e tímido. Procure dois §eLeptictidium§r e preserve o resto da população.
+    tasks:
+      - kill: {entity: "jurassicraft.Leptictidium", count: 2}
+    rewards:
+      - xp: 3
+      - item: [minecraft:arrow x16]
+
+  - id: cacar_celacanto
+    title: "Fóssil Vivo"
+    type: optional
+    deps: [ovo_aquatico]
+    icon: jurassicraft:item.Coelacanth_Meat
+    desc: |
+      Um peixe que "estava extinto". Pesque (ou arpoe) três §eCelacantos§r.
+    tasks:
+      - kill: {entity: "jurassicraft.Coelacanth", count: 3}
+    rewards:
+      - xp: 3
+      - item: [minecraft:fishing_rod]
+
+  - id: cacar_ortho
+    title: "Tubarão Antigo"
+    type: optional
+    deps: [ovo_aquatico]
+    icon: jurassicraft:item.Coelacanth_Meat
+    desc: |
+      Um tubarão de água doce com espinhos. Derrote dois §eOrthacanthus§r.
+    tasks:
+      - kill: {entity: "jurassicraft.Orthacanthus", count: 2}
+    rewards:
+      - xp: 4
+      - item: [minecraft:cooked_fished x8]
+
+  - id: zoologico_aberto
     title: "Zoológico Aberto"
     type: milestone
     deps: [ovo_rex, ovo_gigante, ovo_aquatico, seringas, cerca_poste]

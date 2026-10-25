@@ -1,0 +1,828 @@
+chapter:
+  id: bloodarsenal
+  title: "Blood Arsenal"
+  prefix: ""
+  order: 541
+  icon: BloodArsenal:blood_infused_sword_iron
+  desc: |
+    §dO apêndice vermelho do Volume do Sangue.§r Madeira e ferro infundidos, vidro que
+    corta, armas vinculadas, sigilos novos, armaduras vivas e o Compactador de Almas.
+    (Blood Arsenal 1.5.12 — exige Blood Magic)
+
+quests:
+  # ======================================================================
+  # FASE 0 — VIDRO E LINHA
+  # ======================================================================
+  - id: fragmento_vidro
+    title: "Fragmentos de Vidro"
+    type: main
+    deps_hidden: [bloodmagic:orbe_fraco]
+    icon: BloodArsenal:glass_shard
+    desc: |
+      Lembra das primeiras facas de vidro? Arcaratus, o autor deste apêndice, também lembra.
+
+      Quebre blocos de §evidro com um sílex na mão§r (sem Toque de Seda): eles soltam
+      §eFragmentos de Vidro§r. §cVidro quebrado corta!§r Este pack deixa a opção "vidro é
+      perigoso" ligada: às vezes você fica com Sangramento por alguns segundos. Quebrar vidro
+      de mãos vazias é ainda pior.
+
+      Junte §e16 fragmentos§r.
+    tasks:
+      - get: BloodArsenal:glass_shard x16
+    rewards:
+      - xp: 4
+      - choice: [minecraft:glass x32, minecraft:flint x8, minecraft:cooked_beef x16]
+
+  - id: linha_queimada
+    title: "Linha Queimada de Sangue"
+    type: main
+    deps_hidden: [bloodmagic:orbe_fraco]
+    icon: BloodArsenal:blood_burned_string
+    desc: |
+      8 linhas em volta do §eOrbe de Sangue Fraco§r = 4 §eLinhas Queimadas de Sangue§r. Elas
+      tecem os Amuletos de Sacrifício e o Orbe Transparente. Faça §e8§r.
+    tasks:
+      - get: BloodArsenal:blood_burned_string x8
+    rewards:
+      - xp: 4
+      - choice: [minecraft:string x16, minecraft:gold_ingot x2, minecraft:glowstone_dust x8]
+
+  - id: vidro_manchado
+    title: "Vidro Manchado de Sangue"
+    type: normal
+    deps: [fragmento_vidro]
+    deps_hidden: [bloodmagic:orbe_aprendiz]
+    icon: BloodArsenal:blood_stained_glass
+    desc: |
+      8 vidros em volta do Orbe de Aprendiz = 8 §eVidros Manchados de Sangue§r. Decorativo e
+      ingrediente da Lâmpada de Sangue e do Orbe Transparente.
+    tasks:
+      - get: BloodArsenal:blood_stained_glass x8
+    rewards:
+      - xp: 2
+      - item: minecraft:glass x16
+
+  - id: gelo_manchado
+    title: "Gelo Manchado de Sangue"
+    type: optional
+    deps: [vidro_manchado]
+    icon: BloodArsenal:blood_stained_ice
+    desc: |
+      Gelo em volta do Orbe de Aprendiz vira §eGelo Manchado de Sangue§r; 4 deles fazem a
+      versão compactada. Decoração arrepiante para o seu salão do altar.
+    tasks:
+      - get: BloodArsenal:blood_stained_ice x8
+    rewards:
+      - loot: comum
+
+  - id: amuletos_sacrificio
+    title: "Amuletos de Sacrifício"
+    type: normal
+    deps: [linha_queimada]
+    icon: BloodArsenal:sacrifice_amulet
+    desc: |
+      Bugigangas (Baubles) para coletar vida. Linha Queimada, Orbe Fraco e ouro =
+      §eAmuleto de Sacrifício§r ("coletando vida"); com pó de pedra luminosa no lugar do
+      ouro = §eAmuleto de Autossacrifício§r. Use no espaço de amuleto e confira a dica do
+      item. Mostre qualquer um dos dois.
+    tasks:
+      - one_of: [BloodArsenal:sacrifice_amulet, BloodArsenal:self_sacrifice_amulet]
+    rewards:
+      - xp: 2
+      - item: minecraft:gold_ingot x4
+
+  - id: armadura_vidro
+    title: "Armadura de Vidro"
+    type: optional
+    deps: [fragmento_vidro]
+    icon: BloodArsenal:glass_chestplate
+    desc: |
+      Fragmentos de Vidro + Orbe de Aprendiz no formato de cada peça. "Mais doloroso do que
+      parece", diz a dica — para quem a acerta, imagino! Mostre as quatro peças.
+    tasks:
+      - get: [BloodArsenal:glass_helmet, BloodArsenal:glass_chestplate, BloodArsenal:glass_leggings, BloodArsenal:glass_boots]
+    rewards:
+      - loot: comum
+
+  # ======================================================================
+  # FASE 1 — MADEIRA INFUNDIDA
+  # ======================================================================
+  - id: madeira_infundida
+    title: "Madeira Infundida de Sangue"
+    type: main
+    deps: [fragmento_vidro]
+    deps_hidden: [bloodmagic:lousa_reforcada]
+    icon: BloodArsenal:blood_infused_wood
+    desc: |
+      Uma tora de carvalho no Altar de Sangue de §eTier 2§r (3000 LP) vira §eMadeira Infundida
+      de Sangue§r — madeira que regenera. Uma tora rende 4 tábuas; 2 tábuas, gravetos.
+
+      Faça §e4 toras§r. (No Tinkers' Construct ela também é um material de ferramenta!)
+    tasks:
+      - get: BloodArsenal:blood_infused_wood x4
+    rewards:
+      - xp: 4
+      - choice: [minecraft:log x16, AWWayofTime:blankSlate x4, minecraft:cooked_porkchop x16]
+
+  - id: ferramentas_madeira
+    title: "Ferramentas de Madeira Infundida"
+    type: normal
+    deps: [madeira_infundida]
+    icon: BloodArsenal:blood_infused_pickaxe_wood
+    desc: |
+      Tábuas e Gravetos Infundidos nos formatos de sempre: picareta, machado, pá e espada. São
+      fracas, mas são a base das ferramentas de ferro infundido. Mostre as quatro!
+    tasks:
+      - get: [BloodArsenal:blood_infused_pickaxe_wood, BloodArsenal:blood_infused_axe_wood, BloodArsenal:blood_infused_shovel_wood, BloodArsenal:blood_infused_sword_wood]
+    rewards:
+      - xp: 2
+      - item: BloodArsenal:blood_infused_wood x2
+
+  - id: comidas_sangue
+    title: "Lanchinho de Sangue"
+    type: optional
+    deps_hidden: [bloodmagic:orbe_fraco]
+    icon: BloodArsenal:blood_orange
+    desc: |
+      Até o sangue pode ser gostoso (eu acho). Corante laranja no altar (200 LP) vira
+      §eLaranja de Sangue§r; laranja + frasco = §eSuco de Laranja§r; um biscoito no altar
+      (2000 LP) vira §eBiscoito de Sangue§r; suco + biscoito = §eSuco com Biscoitos§r.
+      Mostre o Suco com Biscoitos!
+    tasks:
+      - get: BloodArsenal:juice_and_cookies
+    rewards:
+      - loot: comum
+
+  # ======================================================================
+  # FASE 2 — FERRO INFUNDIDO E CATALISADOR AMORFO
+  # ======================================================================
+  - id: ferro_infundido
+    title: "Ferro Infundido de Sangue"
+    type: main
+    deps: [madeira_infundida]
+    deps_hidden: [bloodmagic:altar_tier3]
+    icon: BloodArsenal:blood_infused_iron
+    desc: |
+      Um lingote de ferro no altar de §eTier 3§r (6000 LP) vira §eLingote de Ferro Infundido de
+      Sangue§r. (Um bloco de ferro direto custa 54 000 LP — a mesma conta por lingote.)
+
+      Junte §e16 lingotes§r: ferramentas, armadura viva, lâmpada e máquinas pedem muito ferro.
+    tasks:
+      - get: BloodArsenal:blood_infused_iron x16
+    rewards:
+      - xp: 4
+      - choice: [minecraft:iron_ingot x16, AWWayofTime:imbuedSlate x2, minecraft:iron_block x2]
+
+  - id: catalisador_amorfo
+    title: "Catalisador Amorfo"
+    type: main
+    deps: [ferro_infundido]
+    deps_hidden: [bloodmagic:reagentes_completos]
+    icon: BloodArsenal:amorphic_catalyst
+    desc: |
+      "Uma bagunça coagulada." Na bancada: uma Lousa em Branco + §eAether, Terrae, Crystallos,
+      Sanctus, Magicales, Crepitous, Incendium e Aquasalus§r (oito reagentes do Blood Magic).
+
+      É o ingrediente central do arsenal: ferramentas de ferro e diamante, amuletos
+      fortalecidos, Sigilo da Divindade... Faça §e4§r.
+    tasks:
+      - get: BloodArsenal:amorphic_catalyst x4
+    rewards:
+      - xp: 4
+      - choice: [AWWayofTime:simpleCatalyst x8, AWWayofTime:blankSlate x8, minecraft:glowstone_dust x16]
+
+  - id: ferramentas_ferro
+    title: "Ferramentas de Ferro Infundido"
+    type: main
+    deps: [catalisador_amorfo, ferramentas_madeira]
+    icon: BloodArsenal:blood_infused_pickaxe_iron
+    desc: |
+      Ferro Infundido em cima, a ferramenta de madeira infundida no meio, Catalisadores Amorfos
+      nos cantos de baixo e o §eOrbe de Mago§r embaixo. Assim nascem picareta, machado, pá e
+      espada de ferro infundido — ferramentas vivas que se regeneram. Mostre as quatro!
+    tasks:
+      - get: [BloodArsenal:blood_infused_pickaxe_iron, BloodArsenal:blood_infused_axe_iron, BloodArsenal:blood_infused_shovel_iron, BloodArsenal:blood_infused_sword_iron]
+    rewards:
+      - xp: 4
+      - choice: [BloodArsenal:blood_infused_iron x4, BloodArsenal:amorphic_catalyst x1, minecraft:diamond x2]
+
+  - id: arsenal_ferro
+    title: "O Arsenal de Ferro"
+    type: milestone
+    deps: [ferramentas_ferro]
+    icon: BloodArsenal:blood_infused_sword_iron
+    banner: "O Arsenal de Ferro"
+    subtitle: "Aço que respira"
+    desc: |
+      Madeira que regenera, ferro que pulsa e quatro ferramentas vivas. Herói, isso aqui já
+      parece a sala de armas de um castelo de vampiros (no bom sentido!).
+
+      Daqui o arsenal se divide: §earmaduras imbuídas de vida§r, §esigilos novos§r, o
+      §ediamante de sangue§r e, no fim, o §eCompactador de Almas§r. Escolha o seu caminho.
+    tasks:
+      - get: [BloodArsenal:blood_infused_pickaxe_iron, BloodArsenal:blood_infused_sword_iron]
+    rewards:
+      - xp: 8
+      - kit: {name: "Kit do Ferreiro Rubro", items: [minecraft:iron_ingot x16, BloodArsenal:amorphic_catalyst x2, AWWayofTime:imbuedSlate x2, minecraft:cooked_beef x32]}
+      - loot: raro
+
+  - id: bloco_ferro_infundido
+    title: "Bloco de Ferro Infundido"
+    type: normal
+    deps: [ferro_infundido]
+    icon: BloodArsenal:blood_infused_iron_block
+    desc: |
+      9 lingotes = 1 §eBloco de Ferro Infundido§r. Você vai precisar de blocos para o
+      Diamante de Sangue Inativo, o Sigilo do Relâmpago e o Compactador de Almas. Faça §e2§r.
+    tasks:
+      - get: BloodArsenal:blood_infused_iron_block x2
+    rewards:
+      - xp: 2
+      - item: minecraft:iron_block x2
+
+  - id: pedra_luminosa_infundida
+    title: "Pedra Luminosa Infundida"
+    type: normal
+    deps_hidden: [bloodmagic:altar_tier3]
+    icon: BloodArsenal:blood_infused_glowstone
+    desc: |
+      Pó de pedra luminosa no altar de Tier 3 (5000 LP cada) vira §ePó de Pedra Luminosa
+      Infundido§r; 4 pós = 1 bloco. §aCuriosidade:§r neste pack, o bloco §evale como tampa
+      dos pilares do Tier 3§r do Altar de Sangue!
+    tasks:
+      - get: BloodArsenal:blood_infused_glowstone
+    rewards:
+      - xp: 2
+      - item: minecraft:glowstone_dust x8
+
+  - id: lampada_sangue
+    title: "Lâmpada de Sangue"
+    type: optional
+    deps: [pedra_luminosa_infundida, vidro_manchado, ferro_infundido]
+    icon: BloodArsenal:blood_lamp
+    desc: |
+      Ferro Infundido, Vidro Manchado e um bloco de Pedra Luminosa Infundida: uma luminária
+      vermelha linda para a sala do altar.
+    tasks:
+      - get: BloodArsenal:blood_lamp
+    rewards:
+      - loot: comum
+
+  - id: pedras_sangue
+    title: "Pedras de Sangue"
+    type: optional
+    deps_hidden: [bloodmagic:lousa_branca]
+    icon: BloodArsenal:blood_stone
+    desc: |
+      9 lousas iguais = 1 §ePedra de Sangue§r (Em Branco, Reforçada, Imbuída, Demoníaca ou
+      Etérea), que volta a 9 lousas na bancada. Estoque compacto de lousas! Mostre uma
+      Pedra de Sangue Reforçada.
+    tasks:
+      - get: BloodArsenal:blood_stone:1
+    rewards:
+      - loot: comum
+
+  - id: tnt_bolo
+    title: "TNT e Bolo de Sangue"
+    type: optional
+    deps_hidden: [bloodmagic:altar_tier3]
+    icon: BloodArsenal:blood_tnt
+    desc: |
+      Duas transmutações de Tier 3 (10 000 LP cada): §eTNT de Sangue§r (uma TNT) e §eBolo de
+      Sangue§r (um bolo). §cO TNT explode, claro.§r O bolo... não é uma mentira neste pack.
+      Mostre os dois.
+    tasks:
+      - get: [BloodArsenal:blood_tnt, BloodArsenal:item_blood_cake]
+    rewards:
+      - loot: comum
+
+  - id: dinheiro_sangue
+    title: "Dinheiro de Sangue"
+    type: optional
+    deps_hidden: [bloodmagic:altar_tier3]
+    icon: BloodArsenal:blood_money
+    desc: |
+      "Pague suas dívidas em sangue!" Papel no altar de Tier 3 (10 000 LP) = §eDinheiro de
+      Sangue§r, que guarda LP (4 notas compactam em ×4, ×16, ×64). Use para dar LP à Rede de
+      um amigo — ou à sua, mais tarde.
+    tasks:
+      - get: BloodArsenal:blood_money
+    rewards:
+      - loot: comum
+
+  # ======================================================================
+  # FASE 3 — ADAGAS, ARMADURA VIVA E MÁQUINAS
+  # ======================================================================
+  - id: adaga_vidro
+    title: "Faca de Sacrifício de Vidro"
+    type: normal
+    deps: [fragmento_vidro, ferro_infundido]
+    icon: BloodArsenal:glass_sacrificial_dagger
+    desc: |
+      "Não brinque com isso!" Fragmentos de Vidro, a Faca de Sacrifício, Ferro Infundido e o
+      Orbe de Mago = §eFaca de Sacrifício de Vidro§r, uma versão mais cortante da faca
+      original. §cMais LP por corte geralmente significa mais dor por corte.§r
+    tasks:
+      - get: BloodArsenal:glass_sacrificial_dagger
+    rewards:
+      - xp: 3
+      - item: minecraft:cooked_beef x16
+
+  - id: adaga_vidro_sacrificio
+    title: "Adaga do Sacrifício de Vidro"
+    type: normal
+    deps: [adaga_vidro]
+    icon: BloodArsenal:glass_dagger_of_sacrifice
+    desc: |
+      A mesma receita com a Adaga do Sacrifício no centro. "Fazendo doer" — a versão de vidro
+      da adaga que sacrifica criaturas perto do altar.
+    tasks:
+      - get: BloodArsenal:glass_dagger_of_sacrifice
+    rewards:
+      - xp: 3
+      - item: BloodArsenal:glass_shard x8
+
+  - id: armadura_viva
+    title: "Armadura Imbuída de Vida"
+    type: main
+    deps: [arsenal_ferro]
+    icon: BloodArsenal:life_imbued_chestplate
+    desc: |
+      Ferro Infundido em volta de uma peça de armadura de ferro, com o §eOrbe de Mago§r. A
+      §eArmadura Imbuída de Vida§r guarda até §e100 000 LP§r por peça e usa esse LP para
+      absorver o dano que você leva.
+
+      Mostre as quatro peças. Para enchê-las, você vai precisar do Infusor de Vida.
+    tasks:
+      - get: [BloodArsenal:life_imbued_helmet, BloodArsenal:life_imbued_chestplate, BloodArsenal:life_imbued_leggings, BloodArsenal:life_imbued_boots]
+    rewards:
+      - xp: 4
+      - choice: [BloodArsenal:blood_infused_iron x8, minecraft:iron_ingot x24, minecraft:golden_apple x2]
+
+  - id: infusor_vida
+    title: "Infusor de Vida"
+    type: normal
+    deps: [armadura_viva]
+    icon: BloodArsenal:life_infuser
+    desc: |
+      Ferro Infundido, Orbe de Mago, um Altar de Sangue e um balde. O §eInfusor de Vida§r
+      transfere essência para itens "recarregáveis" como a Armadura Imbuída de Vida. Abasteça
+      com Essência Vital (canos a partir do altar ou baldes) e confira o WAILA.
+    tasks:
+      - get: BloodArsenal:life_infuser
+    rewards:
+      - xp: 3
+      - item: AWWayofTime:bucketLife x2
+
+  - id: materializador_lp
+    title: "Materializador de Essência Vital"
+    type: normal
+    deps: [ferro_infundido]
+    icon: BloodArsenal:lp_materializer
+    desc: |
+      Ferro Infundido, Lousas Imbuídas e Orbe de Mago. Ele faz o caminho inverso do orbe:
+      converte LP da sua Rede em §eEssência Vital§r líquida — pela config deste pack,
+      §e150 LP viram 100 mB§r. Útil para encher o altar ou o Infusor sem sangrar.
+    tasks:
+      - get: BloodArsenal:lp_materializer
+    rewards:
+      - xp: 3
+      - item: minecraft:bucket x2
+
+  # ======================================================================
+  # FASE 4 — VINCULADOS DO ARSENAL
+  # ======================================================================
+  - id: arco_vinculado
+    title: "Arco Vinculado"
+    type: normal
+    deps_hidden: [bloodmagic:ritual_vinculo]
+    icon: BloodArsenal:bound_bow
+    desc: |
+      O Ritual do Vínculo do Blood Magic aceita itens novos com o Arsenal! Jogue um §eArco§r
+      sobre a Pedra Mestra com o ritual ativo: §eArco Vinculado§r. "Deixe as flechas
+      demoníacas voarem!"
+    tasks:
+      - get: BloodArsenal:bound_bow
+    rewards:
+      - xp: 3
+      - item: minecraft:arrow x32
+
+  - id: foice_vinculada
+    title: "Foice Vinculada"
+    type: normal
+    deps_hidden: [bloodmagic:ritual_vinculo]
+    icon: BloodArsenal:bound_sickle
+    desc: |
+      Uma §eEnxada de Diamante§r no Ritual do Vínculo = §eFoice Vinculada§r, que corta
+      plantas em área "como um demônio". Ótima para limpar grama e folhagem.
+    tasks:
+      - get: BloodArsenal:bound_sickle
+    rewards:
+      - xp: 3
+      - item: minecraft:diamond x1
+
+  - id: tesoura_vinculada
+    title: "Tesoura Vinculada"
+    type: normal
+    deps_hidden: [bloodmagic:ritual_vinculo]
+    icon: BloodArsenal:bound_shears
+    desc: |
+      Uma §eTesoura§r no Ritual do Vínculo = §eTesoura Vinculada§r — "uma solução demoníaca
+      para um gramado crescido".
+    tasks:
+      - get: BloodArsenal:bound_shears
+    rewards:
+      - xp: 3
+      - item: minecraft:wool x8
+
+  - id: isqueiro_vinculado
+    title: "Isqueiro Vinculado e Tocha de Sangue"
+    type: normal
+    deps: [madeira_infundida]
+    deps_hidden: [bloodmagic:ritual_vinculo]
+    icon: BloodArsenal:bound_igniter
+    desc: |
+      Um §eIsqueiro§r no Ritual do Vínculo vira o §eIsqueiro Vinculado§r. Isqueiro Vinculado
+      sobre um Graveto Infundido = §eTocha de Sangue§r. Mostre os dois!
+    tasks:
+      - get: [BloodArsenal:bound_igniter, BloodArsenal:blood_torch]
+    rewards:
+      - xp: 3
+      - item: minecraft:flint x8
+
+  - id: traje_vampiro
+    title: "Traje do Vampiro"
+    type: optional
+    deps_hidden: [bloodmagic:ritual_vinculo]
+    icon: BloodArsenal:vampire_cape
+    desc: |
+      Peitoral, calças e botas de couro no Ritual do Vínculo viram §eCapa, Grevas e Botas de
+      Vampiro§r. Um conjunto com efeito próprio (confira a dica dos itens). Mostre qualquer
+      peça — mas, se quiser estilo completo, faça as três!
+    tasks:
+      - one_of: [BloodArsenal:vampire_cape, BloodArsenal:vampire_greaves, BloodArsenal:vampire_boots]
+    rewards:
+      - loot: incomum
+
+  # ======================================================================
+  # FASE 5 — SIGILOS DO ARSENAL
+  # ======================================================================
+  - id: sigilo_natacao
+    title: "Sigilo da Natação"
+    type: normal
+    deps_hidden: [bloodmagic:sigilo_vazio]
+    icon: BloodArsenal:sigil_of_swimming
+    desc: |
+      "Continue a nadar!" Baldes de água e lava, um balde vazio, o Sigilo do Vazio e o Orbe
+      de Aprendiz. Ativo, você se move muito mais rápido na água §ee na lava§r (250 LP por
+      intervalo). Ainda queima na lava — leve Resistência ao Fogo!
+    tasks:
+      - get: BloodArsenal:sigil_of_swimming
+    rewards:
+      - xp: 3
+      - item: minecraft:water_bucket x2
+
+  - id: sigilo_ender_arsenal
+    title: "Sigilo do Ender"
+    type: normal
+    deps_hidden: [bloodmagic:orbe_mago]
+    icon: BloodArsenal:sigil_of_ender
+    desc: |
+      Obsidiana, olho e pérolas do Ender, Lousa Imbuída, 2 Baús do Ender e o Orbe de Mago.
+      "Enfiando a mão no Fim": abre o seu Baú do Ender de qualquer lugar (400 LP) e também
+      teleporta (custo multiplicado pela distância, segundo a config).
+    tasks:
+      - get: BloodArsenal:sigil_of_ender
+    rewards:
+      - xp: 3
+      - item: minecraft:ender_pearl x4
+
+  - id: sigilo_contencao_aumentada
+    title: "Sigilo da Contenção Aumentada"
+    type: normal
+    deps: [ferro_infundido]
+    deps_hidden: [bloodmagic:sigilo_contencao]
+    icon: BloodArsenal:sigil_of_augmented_holding
+    desc: |
+      Lousas Demoníacas, Orbe Mestre, vara de blaze, o Sigilo da Contenção, lágrima de Ghast,
+      Ferro Infundido e um baú. "Segure TODOS os sigilos!" — mais espaços que o sigilo
+      original.
+    tasks:
+      - get: BloodArsenal:sigil_of_augmented_holding
+    rewards:
+      - xp: 3
+      - item: minecraft:blaze_rod x2
+
+  - id: sigilo_relampago
+    title: "Sigilo do Relâmpago"
+    type: normal
+    deps: [diamante_vinculado, bloco_ferro_infundido]
+    deps_hidden: [bloodmagic:orbe_arquimago]
+    icon: BloodArsenal:sigil_of_lightning
+    desc: |
+      Pedra de Sangue Demoníaca, bloco de ferro, Blocos de Ferro Infundido, Lousa Etérea,
+      Estrela do Nether, Orbe de Arquimago e Diamante Vinculado. "Solta a fera!" Invoca raios
+      com modos diferentes (Shift troca o modo). Custo alto por raio. §cNão use dentro de casa.§r
+    tasks:
+      - get: BloodArsenal:sigil_of_lightning
+    rewards:
+      - xp: 5
+      - loot: raro
+
+  - id: sigilo_divindade
+    title: "Sigilo da Divindade"
+    type: milestone
+    deps: [diamante_vinculado, catalisador_amorfo, pedra_luminosa_infundida]
+    deps_hidden: [bloodmagic:orbe_transcendente, bloodmagic:sigilo_afinidade]
+    icon: BloodArsenal:sigil_of_divinity
+    banner: "Sigilo da Divindade"
+    subtitle: "Que os Divinos te protejam"
+    desc: |
+      O sigilo mais caro do Registro vermelho: Pedra Luminosa Infundida, uma §eMaçã Dourada
+      Encantada§r, uma §eEstrela do Nether§r, o Sigilo da Afinidade Elemental, um Diamante
+      Vinculado, Catalisadores Amorfos e o §eOrbe Transcendente§r.
+
+      Ativá-lo custa §c1 000 000 LP§r (config do pack). "Que os Divinos te protejam!" — confira
+      a dica do item para o efeito exato e use nos momentos de perigo real.
+    tasks:
+      - get: BloodArsenal:sigil_of_divinity
+    rewards:
+      - xp: 15
+      - kit: {name: "Kit Divino", items: [minecraft:golden_apple:1 x1, minecraft:nether_star x1, BloodArsenal:amorphic_catalyst x4]}
+      - loot: epico
+
+  # ======================================================================
+  # FASE 6 — DIAMANTE DE SANGUE
+  # ======================================================================
+  - id: diamante_sangue
+    title: "Diamante de Sangue"
+    type: main
+    deps: [arsenal_ferro]
+    deps_hidden: [bloodmagic:orbe_mestre]
+    icon: BloodArsenal:blood_diamond
+    desc: |
+      Vidro e diamantes em volta do §eOrbe Mestre§r = §eDiamante de Sangue§r. Com ele, 2
+      Blocos de Ferro Infundido, Catalisadores Amorfos e o Orbe Mestre você faz o §eDiamante
+      Infundido de Sangue (Inativo)§r. Mostre os dois.
+    tasks:
+      - get: [BloodArsenal:blood_diamond, BloodArsenal:blood_infused_diamond_unactive]
+    rewards:
+      - xp: 5
+      - choice: [minecraft:diamond x4, BloodArsenal:blood_infused_iron x8, BloodArsenal:amorphic_catalyst x2]
+
+  - id: diamante_ativo
+    title: "Diamante Infundido Ativo"
+    type: main
+    deps: [diamante_sangue]
+    deps_hidden: [bloodmagic:altar_tier4]
+    icon: BloodArsenal:blood_infused_diamond_active
+    desc: |
+      O diamante "precisa ser ativado": coloque o Diamante Inativo no Altar de §eTier 4§r. São
+      §e80 000 LP§r — use Runas de Capacidade e mantenha o sangue fluindo!
+    tasks:
+      - get: BloodArsenal:blood_infused_diamond_active
+    rewards:
+      - xp: 5
+      - choice: [AWWayofTime:demonicSlate x2, minecraft:golden_apple x4, minecraft:diamond x4]
+
+  - id: diamante_vinculado
+    title: "Diamante Vinculado"
+    type: main
+    deps: [diamante_ativo]
+    deps_hidden: [bloodmagic:ritual_vinculo]
+    icon: BloodArsenal:blood_infused_diamond_bound
+    desc: |
+      "O Diamante da Vida." Jogue o Diamante Ativo no §eRitual do Vínculo§r e ele volta
+      como §eDiamante Vinculado§r — o material das ferramentas de diamante infundido, do Anel
+      Vampírico, do Compactador de Almas e dos sigilos supremos. Faça §e4§r.
+    tasks:
+      - get: BloodArsenal:blood_infused_diamond_bound x4
+    rewards:
+      - xp: 5
+      - choice: [minecraft:diamond_block x1, BloodArsenal:blood_infused_iron_block x1, minecraft:nether_star x1]
+
+  - id: ferramentas_diamante
+    title: "Ferramentas de Diamante Infundido"
+    type: normal
+    deps: [diamante_vinculado, ferramentas_ferro]
+    icon: BloodArsenal:blood_infused_pickaxe_diamond
+    desc: |
+      Diamantes Vinculados em cima, a ferramenta de ferro infundido no meio, Catalisadores
+      Amorfos e o Orbe Mestre. A Picareta é "uma pedreira de mão" e a Pá "faz buracos".
+      §aObs.:§r o Machado e a Espada de diamante aparecem como "[WIP]" — existem, mas estão
+      inacabados nesta versão. Mostre a picareta e a pá.
+    tasks:
+      - get: [BloodArsenal:blood_infused_pickaxe_diamond, BloodArsenal:blood_infused_shovel_diamond]
+    rewards:
+      - xp: 5
+      - item: minecraft:diamond x4
+
+  - id: anel_vampirico
+    title: "Anel Vampírico"
+    type: optional
+    deps: [diamante_vinculado]
+    icon: BloodArsenal:vampire_ring
+    desc: |
+      Um Diamante Vinculado, pedra e o Orbe Mestre: o §eAnel Vampírico§r (Bauble). Como o nome
+      sugere, ele tem a ver com roubar vida — confira a dica do item.
+    tasks:
+      - get: BloodArsenal:vampire_ring
+    rewards:
+      - loot: incomum
+
+  - id: amuletos_fortalecidos
+    title: "Amuletos Fortalecidos"
+    type: optional
+    deps: [amuletos_sacrificio, pedra_luminosa_infundida, catalisador_amorfo]
+    icon: BloodArsenal:empowered_sacrifice_amulet
+    desc: |
+      Pó de Pedra Luminosa Infundido, varas de blaze, Runas de Sacrifício (ou de
+      Autossacrifício), o amuleto básico, um bloco de ouro (ou pedra luminosa) e um
+      Catalisador Amorfo. "Coletando MAIS vida!" Mostre qualquer um dos dois.
+    tasks:
+      - one_of: [BloodArsenal:empowered_sacrifice_amulet, BloodArsenal:empowered_self_sacrifice_amulet]
+    rewards:
+      - loot: incomum
+
+  - id: coracao
+    title: "Coração"
+    type: normal
+    deps_hidden: [bloodmagic:fragmento_sangue_fraco]
+    icon: BloodArsenal:heart
+    desc: |
+      Uma quest sombria, eu sei. Criaturas mortas por um jogador enquanto estão com
+      §eFraqueza§r podem soltar um §eCoração§r: zumbis raramente (1%), aldeões com mais
+      frequência (25%). A Lâmina Vinculada aplica Fraqueza.
+
+      §cAkasha prefere os zumbis.§r Os aldeões são seus vizinhos!
+    tasks:
+      - get: BloodArsenal:heart
+    rewards:
+      - xp: 3
+      - item: minecraft:rotten_flesh x16
+
+  - id: fragmento_alma_arsenal
+    title: "Fragmento da Alma"
+    type: normal
+    deps: [coracao]
+    deps_hidden: [bloodmagic:altar_tier4]
+    icon: BloodArsenal:soul_fragment
+    desc: |
+      "A essência crua de uma alma." Um Coração no altar de Tier 4 (75 000 LP) vira um
+      §eFragmento da Alma§r. São eles que formam o Impulsionador e o Anulador de Alma.
+    tasks:
+      - get: BloodArsenal:soul_fragment
+    rewards:
+      - xp: 4
+      - item: minecraft:golden_apple x1
+
+  - id: impulsionador_alma
+    title: "Impulsionador e Anulador de Alma"
+    type: optional
+    deps: [fragmento_alma_arsenal]
+    icon: BloodArsenal:soul_booster
+    desc: |
+      Fragmentos da Alma em volta de um §eSinalizador§r (Impulsionador, "aumenta as
+      habilidades da alma") ou de um §eInibidor de Armadura§r (Anulador, "anula as
+      habilidades anormais da alma"), com o Orbe de Mago. Mostre qualquer um.
+    tasks:
+      - one_of: [BloodArsenal:soul_booster, BloodArsenal:soul_nullifier]
+    rewards:
+      - loot: incomum
+
+  # ======================================================================
+  # FASE 7 — COMPACTADOR, RITUAIS E INTEGRAÇÕES
+  # ======================================================================
+  - id: compactador_almas
+    title: "Compactador de Almas"
+    type: main
+    deps: [diamante_vinculado, bloco_ferro_infundido]
+    deps_hidden: [bloodmagic:orbe_arquimago]
+    icon: BloodArsenal:compacter
+    desc: |
+      Tábuas Infundidas, Diamantes Vinculados, um pistão, Blocos de Ferro Infundido e o
+      §eOrbe de Arquimago§r. O Compactador "dobra" estruturas inteiras:
+      §e•§r Coloque-o §elogo abaixo de uma Pedra Ritual Mestra§r com ritual montado e clique
+      com um orbe: o ritual vira uma §ePedra Ritual Mestra Compactada§r (custo = ativação ×
+      um bônus por pedra).
+      §e•§r Abaixo de um §eAltar de Sangue§r montado (sem item na bacia, orbe de tier ≥ tier
+      do altar): o altar inteiro vira um §eAltar Portátil§r.
+
+      §cATENÇÃO: o orbe que você está segurando é CONSUMIDO!§r Use um orbe reserva.
+    tasks:
+      - get: BloodArsenal:compacter
+    rewards:
+      - xp: 6
+      - choice: [AWWayofTime:masterBloodOrb x1, minecraft:diamond_block x1, BloodArsenal:blood_infused_iron_block x2]
+
+  - id: ritual_compactado
+    title: "Ritual Compactado"
+    type: normal
+    deps: [compactador_almas]
+    icon: BloodArsenal:compacted_mrs
+    desc: |
+      Compacte qualquer ritual que você usa muito (Fonte Plena, Zéfiro, Bosque...). Uma Pedra
+      Ritual Mestra Compactada guarda o ritual num único bloco — perfeito para levar na
+      mochila!
+    tasks:
+      - get: {id: BloodArsenal:compacted_mrs, meta: 0}
+    rewards:
+      - xp: 4
+      - item: AWWayofTime:ritualStone x8
+
+  - id: altar_portatil
+    title: "Altar Portátil"
+    type: optional
+    deps: [compactador_almas]
+    icon: BloodArsenal:portable_altar
+    desc: |
+      Compacte um Altar de Sangue montado e leve o seu altar (com runas e tudo) para onde
+      quiser. Lembre: o orbe na mão é consumido e o tier do orbe precisa ser pelo menos o do
+      altar.
+    tasks:
+      - get: BloodArsenal:portable_altar
+    rewards:
+      - loot: raro
+
+  - id: orbe_transparente
+    title: "Orbe Transparente"
+    type: optional
+    deps: [vidro_manchado, linha_queimada]
+    deps_hidden: [bloodmagic:orbe_transcendente]
+    icon: BloodArsenal:transparent_orb
+    desc: |
+      Vidro Manchado, vidro, Linhas Queimadas, um Sigilo da Divinação e o §eOrbe
+      Transcendente§r. Um orbe de exibição, para quem completou o Volume do Sangue.
+    tasks:
+      - get: BloodArsenal:transparent_orb
+    rewards:
+      - loot: raro
+
+  - id: rituais_arsenal
+    title: "Rituais do Arsenal"
+    type: info
+    deps_hidden: [bloodmagic:info_rituais]
+    icon: AWWayofTime:masterStone
+    desc: |
+      O Blood Arsenal adiciona cinco rituais (custos de ativação do código desta versão):
+      §e• Ritual do Murchar§r — 75 000 LP, Cristal Fraco.
+      §e• Toque de Midas§r — 5000 LP, Cristal Fraco.
+      §e• Hino do Pescador§r — 10 000 LP, Cristal Fraco.
+      §e• O Feitiço da Encantadora§r — 50 000 LP, §eCristal Desperto§r.
+      §e• Ritual da Opressão dos Mobs§r — 25 000 LP, §eCristal Desperto§r.
+
+      Monte-os com o Adivinho Ritual (eles aparecem na lista) e leia a descrição de cada um.
+    tasks:
+      - check
+    rewards:
+      - xp: 2
+
+  - id: integracao_thaumcraft
+    title: "Varinhas de Sangue (Thaumcraft)"
+    type: optional
+    deps: [ferro_infundido, catalisador_amorfo]
+    icon: BloodArsenal:wand_caps
+    desc: |
+      Com o Thaumcraft (e o Forbidden Magic), o Arsenal adiciona pesquisas: §eCapas de Ferro
+      Infundido§r (a partir das Capas Alquímicas) e §eNúcleos de Madeira Infundida§r (a partir
+      do Núcleo de Sangue do Forbidden Magic), por infusão. §cAs pesquisas dão Warp!§r
+      Mostre uma Capa de Ferro Infundido.
+    tasks:
+      - get: BloodArsenal:wand_caps
+    rewards:
+      - loot: incomum
+
+  - id: integracao_tinkers
+    title: "Sangue no Tinkers' Construct"
+    type: info
+    deps: [ferro_infundido]
+    icon: BloodArsenal:blood_infused_iron
+    desc: |
+      No Tinkers' Construct, a §eMadeira Infundida§r e o §eFerro Infundido§r são materiais de
+      ferramenta (o ferro funde na Fundição como "Molten Blood Infused Iron"). Há também o
+      modificador §eSoulbound§r, aplicado com um §eOrbe Mestre§r na Estação de
+      Modificação. Confira os atributos no livro do Tinkers.
+    tasks:
+      - check
+    rewards:
+      - xp: 2
+
+  - id: arsenal_completo
+    title: "O Arsenal Completo"
+    type: milestone
+    deps: [compactador_almas, ferramentas_diamante, armadura_viva, sigilo_natacao, sigilo_ender_arsenal]
+    icon: BloodArsenal:blood_infused_pickaxe_diamond
+    banner: "O Arsenal Completo"
+    subtitle: "O apêndice vermelho reescrito"
+    desc: |
+      Ferramentas de diamante infundido, armadura viva, sigilos novos e um Compactador que
+      dobra rituais inteiros. O apêndice do Volume do Sangue está completo, Herói!
+
+      Você agora carrega um arsenal que Magus e Tiberius nunca imaginaram. Use com cuidado —
+      e, quando a Rede de Almas apertar, lembre do Materializador e do Dinheiro de Sangue.
+    tasks:
+      - get: [BloodArsenal:compacter, BloodArsenal:blood_infused_pickaxe_diamond, BloodArsenal:life_imbued_chestplate]
+    rewards:
+      - xp: 12
+      - kit: {name: "Kit do Arsenal Rubro", items: [BloodArsenal:blood_infused_diamond_bound x2, BloodArsenal:blood_infused_iron_block x2, BloodArsenal:amorphic_catalyst x4, minecraft:golden_apple x4]}
+      - loot: epico

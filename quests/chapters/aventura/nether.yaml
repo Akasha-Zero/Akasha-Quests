@@ -704,7 +704,7 @@ quests:
   - id: wither
     title: "O Selo do Abismo"
     type: boss
-    deps: [cranios, areia_almas, armadura_efrine]
+    deps: [cranios, areia_almas, suporte_pocoes]
     banner: "O Wither foi derrotado!"
     subtitle: "O Selo do Abismo foi quebrado"
     task_logic: OR
@@ -713,8 +713,8 @@ quests:
       Hora do chefe, Herói. Monte uma estrutura em T com §e4 Areias de Almas§r e coloque os §e3
       Crânios§r em cima, num lugar aberto e longe da base: §cele explode blocos!§r Aguente o
       primeiro estágio de saúde e depois ele voa. Leve arco, poções de cura e armadura de diamante
-      ou de Efrine. Ao cair, ele solta a §eEstrela do Nether§r. Isto vale como o §eSelo do
-      Abismo§r que abre a Terceira Chave.
+      ou de Efrine. Ao cair, ele solta a §eEstrela do Nether§r. Este é o §eSelo do Abismo§r, o
+      marco que o resto da aventura reconhece.
     tasks:
       - kill: {entity: "WitherBoss", count: 1}
       - get: minecraft:nether_star

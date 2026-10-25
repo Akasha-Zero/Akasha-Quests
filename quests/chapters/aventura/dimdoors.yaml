@@ -1,0 +1,285 @@
+chapter:
+  id: dimdoors
+  title: "Portas Dimensionais"
+  order: 260
+  icon: {id: "dimdoors:Unstable Door Item", meta: 0}
+  desc: |
+    §bPortas para Qualquer Lugar.§r Tecido estável, portas dimensionais, bolsos pessoais e o
+    Limbo. (Dimensional Doors)
+
+quests:
+  - id: porta_ouro
+    title: "Porta de Ouro"
+    type: main
+    icon: minecraft:paper
+    desc: |
+      Seis lingotes de ouro dão uma §ePorta de Ouro§r. Ela ainda é só uma porta, mas é a base para
+      as portas que atravessam dimensões, Herói.
+    tasks:
+      - get: {id: "dimdoors:Golden Door Item", meta: 0}
+    rewards:
+      - xp: 3
+      - choice: [minecraft:gold_ingot x8, minecraft:ender_pearl x4]
+
+  - id: porta_quartzo
+    title: "Porta de Quartzo"
+    type: main
+    icon: minecraft:paper
+    desc: |
+      Seis minérios de quartzo (o bloco bruto, sem fundir) fazem a §ePorta de Quartzo§r. Ela serve
+      para a Personal Dimensional Door.
+    tasks:
+      - get: {id: "dimdoors:Quartz Door Item", meta: 0}
+    rewards:
+      - xp: 3
+      - loot: comum
+
+  - id: pearls_porta
+    title: "Pérolas e Ferro"
+    type: main
+    icon: minecraft:ender_pearl
+    desc: |
+      As portas pedem Pérolas do Fim, ferro e ouro. Garanta as pérolas matando Endermen em local
+      fechado.
+    tasks:
+      - get: minecraft:ender_pearl x8
+    rewards:
+      - xp: 3
+      - choice: [minecraft:iron_ingot x16, minecraft:gold_ingot x16]
+
+  - id: assinatura
+    title: "Assinatura de Fenda"
+    type: main
+    deps: [pearls_porta]
+    icon: minecraft:paper
+    desc: |
+      Ferro em volta de uma Pérola: a §eRift Signature§r marca fendas no mundo. Use clicando no
+      chão em dois pontos para ligar duas portas (confira o uso no NEI).
+    tasks:
+      - get: {id: "dimdoors:Rift Signature", meta: 0}
+    rewards:
+      - xp: 3
+      - loot: comum
+
+  - id: remover_fenda
+    title: "Removedor de Fendas"
+    type: main
+    deps: [pearls_porta]
+    icon: minecraft:paper
+    desc: |
+      Ouro e pérola formam o §eRift Remover§r, que fecha fendas indesejadas. Útil quando uma porta
+      quebrada deixa uma fenda na sua base.
+    tasks:
+      - get: {id: "dimdoors:Rift Remover", meta: 0}
+    rewards:
+      - xp: 3
+      - loot: comum
+
+  - id: chave_fenda
+    title: "Chave de Fendas"
+    type: optional
+    deps: [pearls_porta]
+    icon: minecraft:paper
+    desc: |
+      Dois lingotes de ouro e uma pérola: a §eRift Key§r. Serve para trancar portas dimensionais.
+    tasks:
+      - get: {id: "dimdoors:Rift Key", meta: 0}
+    rewards:
+      - loot: comum
+
+  - id: porta_dobra
+    title: "Porta de Dobra"
+    type: main
+    deps: [pearls_porta]
+    icon: minecraft:paper
+    desc: |
+      Duas portas de madeira e uma pérola. A §eWarp Door§r te leva até uma fenda fechada (confira
+      o uso no NEI).
+    tasks:
+      - get: {id: "dimdoors:Warp Door Item", meta: 0}
+    rewards:
+      - xp: 3
+      - loot: comum
+
+  - id: alcapao
+    title: "Alçapão Transdimensional"
+    type: optional
+    deps: [pearls_porta]
+    icon: minecraft:paper
+    desc: |
+      Dois alçapões e uma pérola entre eles. Um atalho para baixo por outras dimensões.
+    tasks:
+      - get: {id: "dimdoors:Transdimensional Trapdoor", meta: 0}
+    rewards:
+      - loot: comum
+
+  - id: fio_mundo
+    title: "Fio do Mundo"
+    type: main
+    deps: [porta_dobra]
+    icon: minecraft:paper
+    desc: |
+      O §eWorld Thread§r é o fio que costura a realidade, Herói. Não sai de bancada: ele vem de
+      dentro das dimensões de bolso e da realidade desgastada, confira no NEI como achar. Junte 8
+      ou mais.
+    tasks:
+      - get: {id: "dimdoors:World Thread", meta: 0}
+    rewards:
+      - xp: 5
+      - choice: [minecraft:ender_pearl x8, minecraft:diamond x2]
+
+  - id: tecido_estavel
+    title: "Tecido Estável"
+    type: main
+    deps: [fio_mundo]
+    icon: minecraft:paper
+    desc: |
+      Oito Fios do Mundo em volta de uma pérola: o §eStable Fabric§r. É o ingrediente das portas
+      dimensionais.
+    tasks:
+      - get: {id: "dimdoors:Stable Fabric Item", meta: 0}
+    rewards:
+      - xp: 5
+      - choice: [minecraft:iron_door x2, minecraft:ender_eye x2]
+
+  - id: porta_dimensional
+    title: "Porta Dimensional"
+    type: milestone
+    deps: [tecido_estavel]
+    icon: minecraft:paper
+    desc: |
+      Porta de ferro, tecido estável, porta de ferro. A §eDimensional Door§r cria um mundo de
+      bolso novo cada vez que alguém a usa em uma fenda! Experimente com cuidado. §cSe quebrar a
+      porta dentro, você pode ficar preso!§r
+    tasks:
+      - get: {id: "dimdoors:Dimensional Door Item", meta: 0}
+    rewards:
+      - xp: 10
+      - loot: raro
+
+  - id: porta_dourada
+    title: "Porta Dimensional Dourada"
+    type: optional
+    deps: [tecido_estavel, porta_ouro]
+    icon: minecraft:paper
+    desc: |
+      Duas Portas de Ouro com um Tecido Estável no meio. A §eGolden Dimensional Door§r leva a um
+      tipo diferente de bolso (veja o NEI).
+    tasks:
+      - get: {id: "dimdoors:Golden Dimensional Door Item", meta: 0}
+    rewards:
+      - loot: comum
+
+  - id: porta_pessoal
+    title: "Porta Pessoal"
+    type: main
+    deps: [tecido_estavel, porta_quartzo]
+    icon: minecraft:paper
+    desc: |
+      Duas Portas de Quartzo e o Tecido Estável: a §ePersonal Dimensional Door§r te leva ao seu
+      bolso pessoal, só seu. Perfeito como cofre!
+    tasks:
+      - get: {id: "dimdoors:Personal Dimensional Door Item", meta: 0}
+    rewards:
+      - xp: 3
+      - loot: comum
+
+  - id: assinatura_estavel
+    title: "Assinatura Estabilizada"
+    type: optional
+    deps: [tecido_estavel, assinatura]
+    icon: minecraft:paper
+    desc: |
+      Ferro e tecido estável: a §eStabilized Rift Signature§r liga fendas sem perder o ponto.
+      Confira no NEI.
+    tasks:
+      - get: {id: "dimdoors:Stabilized Rift Signature", meta: 0}
+    rewards:
+      - loot: comum
+
+  - id: lamina_fenda
+    title: "Lâmina de Fenda"
+    type: main
+    deps: [tecido_estavel]
+    icon: minecraft:paper
+    desc: |
+      Dois tecidos estáveis e uma Vara de Blaze: a §eRift Blade§r corta a realidade e abre fendas.
+    tasks:
+      - get: {id: "dimdoors:Rift Blade", meta: 0}
+    rewards:
+      - xp: 8
+      - loot: raro
+
+  - id: porta_instavel
+    title: "Porta Instável"
+    type: main
+    deps: [porta_dimensional]
+    icon: minecraft:paper
+    desc: |
+      Duas Portas Dimensionais e um Olho do Fim: a §eUnstable Door§r. Os destinos dela são
+      imprevisíveis. §cInstável mesmo!§r
+    tasks:
+      - get: {id: "dimdoors:Unstable Door Item", meta: 0}
+    rewards:
+      - xp: 3
+      - loot: comum
+
+  - id: limbo
+    title: "O Limbo"
+    type: portal
+    deps: [porta_instavel]
+    icon: {id: "dimdoors:Unraveled Fabric", meta: 0}
+    desc: |
+      O §eLimbo§r é o vazio cinzento onde a realidade se desfaz. Quedas no vazio e portas
+      instáveis podem levar você até lá (confira no NEI e no jogo). Não se demore e tenha sempre
+      um jeito de voltar, Herói.
+    tasks:
+      - visit: {dim: -23, name: "Limbo"}
+    rewards:
+      - xp: 10
+      - choice: [minecraft:golden_apple x2, minecraft:cooked_beef x16]
+
+  - id: monolito
+    title: "Monólitos"
+    type: boss
+    deps: [limbo]
+    banner: "O Monólito caiu!"
+    subtitle: "O Limbo ficou um pouco mais calmo"
+    task_logic: OR
+    icon: {id: "dimdoors:Fabric of RealityPerm", meta: 0}
+    desc: |
+      Os §eMonolitos§r vigiam o Limbo e são perigosos: leve armadura boa, comida e um plano de
+      fuga. Derrote um para provar sua coragem.
+    tasks:
+      - kill: "dimdoors.Monolith x1"
+    rewards:
+      - xp: 12
+      - loot: raro
+
+  - id: tecido_eterno
+    title: "Tecido Eterno"
+    type: optional
+    deps: [limbo]
+    icon: minecraft:paper
+    desc: |
+      O §eEternal Fabric§r é indestrutível e forma as paredes dos bolsos. Em geral só aparece nos
+      mundos de bolso; confira no NEI.
+    tasks:
+      - get: {id: "dimdoors:Fabric of RealityPerm", meta: 0}
+    rewards:
+      - loot: comum
+
+  - id: mestre_portas
+    title: "Mestre das Portas"
+    type: milestone
+    deps: [lamina_fenda, porta_pessoal, monolito]
+    icon: minecraft:paper
+    desc: |
+      Você domina portas, bolsos e o Limbo. Todas as dimensões estão ao seu alcance. Marco do
+      capítulo, Herói!
+    tasks:
+      - get: {id: "dimdoors:Dimensional Door Item", meta: 0}
+    rewards:
+      - xp: 15
+      - kit: {name: "Kit do Viajante Dimensional", items: ["minecraft:ender_pearl x16", "minecraft:gold_ingot x16", "minecraft:iron_ingot x16"]}
+      - loot: raro

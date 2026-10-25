@@ -1,0 +1,406 @@
+chapter:
+  id: runic
+  title: "Runic Dungeons"
+  order: 240
+  icon: runicdungeons:item.magicchalk
+  desc: |
+    §6Masmorras Rúnicas.§r Giz Mágico, portal, guardiões, chaves, aço rúnico, cristais
+    elementais e cintos mágicos. (Runic Dungeons, dimensão Dungeon -34)
+
+quests:
+  - id: giz_magico
+    title: "Giz Mágico"
+    type: main
+    icon: runicdungeons:item.magicchalk
+    desc: |
+      Há páginas do Registro que eu só consegui ler aqui, Herói: as das masmorras rúnicas. Tudo
+      começa com o §eGiz Mágico§r, que aparece em §eTemplos Antigos§r. Procure pelo mundo e, se
+      não achar, peça ajuda a quem administra o servidor. Guarde o giz: ele é ingrediente de quase
+      tudo!
+    tasks:
+      - get: runicdungeons:item.magicchalk
+    rewards:
+      - xp: 5
+      - choice: [minecraft:gold_ingot x8, minecraft:stonebrick x32]
+
+  - id: tijolos_masmorra
+    title: "Tijolos da Masmorra"
+    type: main
+    deps: [giz_magico]
+    icon: runicdungeons:tile.survivalRunicBrick
+    desc: |
+      Oito §eTijolos de Pedra§r em volta de um Giz Mágico geram §eDungeon Bricks§r (versão de
+      sobrevivência, que quebram). Faça uma pilha para decorar a base e para o portal.
+    tasks:
+      - get: runicdungeons:tile.survivalRunicBrick x8
+    rewards:
+      - xp: 3
+      - loot: comum
+
+  - id: tijolos_runicos
+    title: "Tijolos Rúnicos"
+    type: optional
+    deps: [tijolos_masmorra]
+    icon: runicdungeons:tile.survivalRunicBrick:3
+    desc: |
+      Um Dungeon Brick (rachado) vira §eRunic Dungeon Brick§r numa receita simples. Confira a
+      cadeia de variantes no NEI.
+    tasks:
+      - get: runicdungeons:tile.survivalRunicBrick:3 x4
+    rewards:
+      - loot: comum
+
+  - id: portal_runico
+    title: "Portal das Masmorras"
+    type: portal
+    deps: [tijolos_masmorra]
+    icon: runicdungeons:tile.runicPortal
+    desc: |
+      Com o giz você abre um §ePortal das Masmorras§r. O texto do mod diz que §capenas operadores
+      podem criar portais§r (se não conseguir, peça para a administração liberar). Entre e você
+      chega à dimensão Dungeon.
+    tasks:
+      - visit: {dim: -34, name: "Dungeon"}
+    rewards:
+      - xp: 10
+      - choice: [minecraft:torch x32, minecraft:cooked_beef x16, minecraft:iron_ingot x8]
+
+  - id: guardiao
+    title: "Guardião das Profundezas"
+    type: main
+    deps: [portal_runico]
+    icon: runicdungeons:tile.runeSpawner
+    desc: |
+      Os §eDungeon Guardians§r protegem as salas. São fortes e atacam em grupo: lute em corredor,
+      com armadura boa e comida. Cada guardião derrotado conta como a conquista 'Guardian of the
+      Depths'.
+    tasks:
+      - kill: "Guardian x1"
+    rewards:
+      - xp: 8
+      - choice: [minecraft:golden_apple x2, minecraft:arrow x64]
+
+  - id: chave_masmorra
+    title: "Chave da Masmorra"
+    type: main
+    deps: [guardiao]
+    icon: runicdungeons:item.key
+    desc: |
+      Procure uma §eDungeon Key§r em baús ou com guardiões. Ela abre as §eDungeon Keyholes§r
+      (fechaduras) das salas trancadas. Isso conta como a conquista 'The Key to Progress!'.
+    tasks:
+      - get: runicdungeons:item.key
+    rewards:
+      - xp: 3
+      - loot: comum
+
+  - id: fechadura
+    title: "Fechadura Misteriosa"
+    type: optional
+    deps: [chave_masmorra]
+    icon: runicdungeons:tile.runicKeyhole
+    desc: |
+      Use a chave numa §eDungeon Keyhole§r e a porta se abre. Se não houver fechadura, ela
+      provavelmente está só mais fundo. Confira no NEI o que a chave faz.
+    tasks:
+      - get: runicdungeons:tile.runicKeyhole
+    rewards:
+      - loot: comum
+
+  - id: runas
+    title: "Círculos Rúnicos"
+    type: optional
+    deps: [portal_runico]
+    icon: runicdungeons:tile.runicCircle
+    desc: |
+      As §eMysterious Runes§r no chão marcam salas especiais. Pisar nelas pode ativar armadilhas
+      ou guardiões, então tome cuidado. Colete uma para estudar.
+    tasks:
+      - one_of: [runicdungeons:tile.runicCircle, runicdungeons:tile.runicCircleSmall, runicdungeons:tile.runicCircleLarge]
+    rewards:
+      - loot: comum
+
+  - id: varinha_traps
+    title: "Varinha Anti-Armadilhas"
+    type: main
+    deps: [giz_magico]
+    icon: runicdungeons:item.trapRemover
+    desc: |
+      §eTrap Nullification Wand§r: lã amarela, ouro e giz. Ela desarma as armadilhas da masmorra.
+      Faça antes de ir fundo.
+    tasks:
+      - craft: runicdungeons:item.trapRemover
+    rewards:
+      - xp: 5
+      - choice: [minecraft:golden_apple, minecraft:cooked_beef x16]
+
+  - id: cajado
+    title: "Cajado Mágico"
+    type: optional
+    deps: [giz_magico]
+    icon: runicdungeons:item.magicstaff
+    desc: |
+      Esmeralda, diamante, ouro e três Gizes dão o §eMagical Staff§r. Confira o formato da receita
+      no NEI.
+    tasks:
+      - craft: runicdungeons:item.magicstaff
+    rewards:
+      - loot: comum
+
+  - id: vidro_runico
+    title: "Vidro Rúnico"
+    type: optional
+    deps: [giz_magico]
+    icon: runicdungeons:tile.runicGlass
+    desc: |
+      Vidro em volta do giz: oito §eRunic Glass§r. Bom para janelas do estilo da masmorra.
+    tasks:
+      - get: runicdungeons:tile.runicGlass x8
+    rewards:
+      - loot: comum
+
+  - id: lampada_runica
+    title: "Lâmpada Rúnica"
+    type: optional
+    deps: [tijolos_masmorra]
+    icon: runicdungeons:tile.survivalRunicLamp
+    desc: |
+      Tijolo da masmorra + Pedra Luminosa, receita sem forma. Rendem 4 lâmpadas.
+    tasks:
+      - get: runicdungeons:tile.survivalRunicLamp x4
+    rewards:
+      - loot: comum
+
+  - id: pilar_runico
+    title: "Pilar Rúnico"
+    type: optional
+    deps: [tijolos_masmorra]
+    icon: runicdungeons:tile.survivalRunicPillar
+    desc: |
+      Dois tijolos da masmorra rendem 4 pilares. Aposto que vai ficar lindo.
+    tasks:
+      - get: runicdungeons:tile.survivalRunicPillar x4
+    rewards:
+      - loot: comum
+
+  - id: areia_caotica
+    title: "Areia Caótica"
+    type: optional
+    deps: [portal_runico]
+    icon: runicdungeons:tile.chaoticSand
+    desc: |
+      Areia e Pedra do Fim intercaladas na bancada: Areia Caótica. Confira no NEI como ela se
+      comporta.
+    tasks:
+      - get: runicdungeons:tile.chaoticSand x9
+    rewards:
+      - loot: comum
+
+  - id: obsidiana_comprimida
+    title: "Obsidiana Comprimida"
+    type: optional
+    deps: [portal_runico]
+    icon: runicdungeons:tile.compressedObsidian
+    desc: |
+      Nove blocos de obsidiana viram um bloco de §eCompressed Obsidian§r, resistente a explosões.
+      Bom para fortalecer a base.
+    tasks:
+      - get: runicdungeons:tile.compressedObsidian
+    rewards:
+      - loot: comum
+
+  - id: aco_runico
+    title: "Aço Rúnico"
+    type: main
+    deps: [chave_masmorra]
+    icon: runicdungeons:item.runicSteel
+    desc: |
+      O §eRunic Steel§r não tem receita de bancada no pack: ele vem de dentro das masmorras.
+      Confira no NEI e explore baús e salas. Quando juntar 4 lingotes, comece a forjar.
+    tasks:
+      - get: runicdungeons:item.runicSteel x4
+    rewards:
+      - xp: 5
+      - choice: [minecraft:diamond x2, minecraft:iron_ingot x16]
+
+  - id: espada_runica
+    title: "Espada de Aço Rúnico"
+    type: main
+    deps: [aco_runico]
+    icon: runicdungeons:item.runicSteelSword
+    desc: |
+      Dois lingotes e um graveto: §eRunic Steel Sword§r. Resistente e forte.
+    tasks:
+      - craft: runicdungeons:item.runicSteelSword
+    rewards:
+      - xp: 3
+      - loot: comum
+
+  - id: picareta_runica
+    title: "Picareta de Aço Rúnico"
+    type: optional
+    deps: [aco_runico]
+    icon: runicdungeons:item.runicSteelPickaxe
+    desc: |
+      Para extrair o que a masmorra tem: três lingotes e dois gravetos na bancada, formato de
+      picareta.
+    tasks:
+      - craft: runicdungeons:item.runicSteelPickaxe
+    rewards:
+      - loot: comum
+
+  - id: bloco_aco
+    title: "Bloco de Aço Rúnico"
+    type: optional
+    deps: [aco_runico]
+    icon: runicdungeons:tile.runicSteelBlock
+    desc: |
+      Nove lingotes viram um bloco de §eRunic Steel§r, para decorar ou guardar.
+    tasks:
+      - get: runicdungeons:tile.runicSteelBlock
+    rewards:
+      - loot: comum
+
+  - id: cristais_elementais
+    title: "Cristais Elementais"
+    type: main
+    deps: [chave_masmorra]
+    icon: runicdungeons:item.airCrystal
+    desc: |
+      Os cristais de §eAr, Terra, Fogo e Água§r aparecem nas masmorras. Quatro tesouros, um de
+      cada elemento. Pegue o que encontrar.
+    tasks:
+      - one_of: [runicdungeons:item.airCrystal, runicdungeons:item.earthCrystal, runicdungeons:item.fireCrystal, runicdungeons:item.waterCrystal]
+    rewards:
+      - xp: 3
+      - loot: comum
+
+  - id: cristal_fogo
+    title: "Cristal de Fogo"
+    type: optional
+    deps: [cristais_elementais]
+    icon: runicdungeons:item.fireCrystal
+    desc: |
+      Quando você achar o de Fogo, guarde. A Masmorra Demoníaca tem mais.
+    tasks:
+      - get: runicdungeons:item.fireCrystal
+    rewards:
+      - loot: comum
+
+  - id: cristal_agua
+    title: "Cristal de Água"
+    type: optional
+    deps: [cristais_elementais]
+    icon: runicdungeons:item.waterCrystal
+    desc: |
+      Se encontrar o cristal da água, guarde bem: confira no NEI se ele serve em alguma receita.
+    tasks:
+      - get: runicdungeons:item.waterCrystal
+    rewards:
+      - loot: comum
+
+  - id: cinto_basico
+    title: "Cinto Básico"
+    type: main
+    deps: [giz_magico]
+    icon: runicdungeons:item.basicBelt
+    desc: |
+      Couro, lingote de ouro e mais couro: §eBasic Belt Base§r. É a base de todos os cintos,
+      Herói.
+    tasks:
+      - craft: runicdungeons:item.basicBelt
+    rewards:
+      - xp: 3
+      - loot: comum
+
+  - id: cinto_flechas
+    title: "Cinto de Flechas"
+    type: optional
+    deps: [cinto_basico]
+    icon: runicdungeons:item.beltArrow
+    desc: |
+      Flecha, cinto e flecha em linha: Arrow Belt. Útil para quem usa arco.
+    tasks:
+      - craft: runicdungeons:item.beltArrow
+    rewards:
+      - loot: comum
+
+  - id: cinto_avancado
+    title: "Cinto Avançado"
+    type: main
+    deps: [cinto_basico]
+    icon: runicdungeons:item.advancedBelt
+    desc: |
+      Cinto básico + Estrela do Nether (sem forma): §eAdvanced Belt Base§r. Só dá para fazer
+      depois do Wither, no capítulo do Nether.
+    tasks:
+      - craft: runicdungeons:item.advancedBelt
+    rewards:
+      - xp: 8
+      - choice: [minecraft:feather x8, minecraft:diamond x2]
+
+  - id: cinto_voo
+    title: "Cinto de Voo"
+    type: milestone
+    deps: [cinto_avancado]
+    icon: runicdungeons:item.flyBelt
+    desc: |
+      Pena, Advanced Belt e pena. §eBelt of Flight§r! Você fica no ar, Herói. Aproveite com
+      cuidado: confira o gasto de durabilidade no NEI.
+    tasks:
+      - craft: runicdungeons:item.flyBelt
+    rewards:
+      - xp: 10
+      - loot: raro
+
+  - id: masmorra_demoniaca
+    title: "Masmorra Demoníaca"
+    type: optional
+    deps: [portal_runico]
+    icon: runicdungeons:tile.survivalDemonicBrick
+    desc: |
+      Tijolos do Nether em volta do giz fazem §eDemonic Bricks§r: a conquista 'Fire and Brimstone'
+      leva à Masmorra Demoníaca. Perigosa! Guarde recursos e entre de armadura completa.
+    tasks:
+      - get: runicdungeons:tile.survivalDemonicBrick x8
+    rewards:
+      - loot: comum
+
+  - id: cavalgada
+    title: "Montaria Rúnica"
+    type: optional
+    deps: [cinto_basico]
+    icon: runicdungeons:item.rider
+    desc: |
+      Rédea + sela, receita sem forma: Rider (WIP). Experimental, use por sua conta e risco.
+    tasks:
+      - get: runicdungeons:item.rider
+    rewards:
+      - loot: comum
+
+  - id: estante
+    title: "Estante Antiga"
+    type: optional
+    deps: [portal_runico]
+    icon: runicdungeons:tile.ancientBookshelf
+    desc: |
+      A §eAncient Bookshelf§r aparece nas salas. Traga uma para a base como lembrança, Herói.
+    tasks:
+      - get: runicdungeons:tile.ancientBookshelf
+    rewards:
+      - loot: comum
+
+  - id: senhor_masmorra
+    title: "Senhor das Masmorras"
+    type: milestone
+    deps: [chave_masmorra, espada_runica, cinto_voo]
+    icon: runicdungeons:item.runicSteel
+    desc: |
+      Você já tem chave, aço, cristais e cinto. Mostre que dominou os salões: derrote mais
+      guardiões e traga o Aço Rúnico completo. Este é o marco do capítulo.
+    tasks:
+      - kill: "Guardian x5"
+    rewards:
+      - xp: 15
+      - kit: {name: "Kit do Explorador de Masmorras", items: ["minecraft:diamond x4", "minecraft:golden_apple x4", "minecraft:experience_bottle x16"]}
+      - loot: raro

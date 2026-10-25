@@ -1,658 +1,848 @@
 chapter:
   id: agricraft
   title: "AgriCraft"
+  prefix: ""
   order: 615
-  icon: AgriCraft:seedTaintedRoot
+  icon: AgriCraft:seedAnalyzer
   desc: |
-    TODO
+    §aA Horta com Genética.§r Cultive em varas de plantio, cruze espécies, analise sementes e
+    suba os atributos de crescimento, ganho e força. Dos tubérculos ao Taint Root.
+    (AgriCraft 1.7.10-1.5.2)
+
 quests:
-  - id: clipper
-    title: "Clipper"
+  - id: varas_plantio
+    title: "Varas de Plantio"
+    type: main
+    icon: AgriCraft:cropsItem
     desc: |
-      TODO [Bancada] minecraft:shears
+      Esqueça plantar direto na terra, Herói. No AgriCraft tudo nasce em §eVaras de Plantio§r
+      (Crop Sticks), colocadas sobre terra arada e com água por perto.
+
+      Faça algumas na bancada com gravetos. Clicando com uma vara numa plantação já em pé você cria um
+      §ecruzamento§r — duas varas lado a lado —, base de toda a genética.
     tasks:
-      - get: AgriCraft:clipper
+      - get: AgriCraft:cropsItem x16
     rewards:
-      - xp: 1
-  - id: crop_sticks
-    title: "Crop Sticks"
+      - xp: 2
+      - choice: [minecraft:bread x8, minecraft:cooked_beef x6, minecraft:carrot x16]
+
+  - id: semente_cenoura
+    title: "Semente de Cenoura"
+    type: main
+    deps: [varas_plantio]
+    icon: AgriCraft:seedCarrot
     desc: |
-      TODO [Bancada] 
-    tasks:
-      - get: AgriCraft:cropsItem
-    rewards:
-      - xp: 1
-  - id: wooden_hand_rake
-    title: "Wooden Hand Rake"
-    desc: |
-      TODO [Bancada] minecraft:fence
-    tasks:
-      - get: AgriCraft:handRake
-    rewards:
-      - xp: 1
-  - id: iron_hand_rake
-    title: "Iron Hand Rake"
-    desc: |
-      TODO [Bancada] minecraft:iron_bars
-    tasks:
-      - get: AgriCraft:handRake:1
-    rewards:
-      - xp: 1
-  - id: magnifying_glass
-    title: "Magnifying Glass"
-    desc: |
-      TODO [Bancada] 
-    tasks:
-      - get: AgriCraft:magnifyingGlass
-    rewards:
-      - xp: 1
-  - id: osmium_nugget
-    title: "Osmium Nugget"
-    desc: |
-      TODO [Bancada] 
-    tasks:
-      - get: AgriCraft:nuggetOsmium
-    rewards:
-      - xp: 1
-  - id: quartz_shard
-    title: "Quartz Shard"
-    desc: |
-      TODO [Bancada] minecraft:quartz
-    tasks:
-      - get: AgriCraft:nuggetQuartz
-    rewards:
-      - xp: 1
-  - id: seed_analyzer
-    title: "Seed Analyzer"
-    desc: |
-      TODO [Bancada] minecraft:stone_slab
-    tasks:
-      - get: AgriCraft:seedAnalyzer
-    rewards:
-      - xp: 1
-  - id: carrot_seeds
-    title: "Carrot Seeds"
-    desc: |
-      TODO [Bancada] minecraft:carrot
+      Plantar uma cenoura inteira é coisa do passado: no AgriCraft ela vira uma §esemente de cenoura§r
+      com atributos próprios. Receita simples na bancada, com a cenoura comum.
+
+      Plante nas varas, espere crescer e colha com o botão direito.
     tasks:
       - get: AgriCraft:seedCarrot
     rewards:
-      - xp: 1
-  - id: potato_seeds
-    title: "Potato Seeds"
+      - xp: 2
+      - choice: [minecraft:bread x8, minecraft:cooked_beef x6, minecraft:carrot x16]
+
+  - id: semente_batata
+    title: "Semente de Batata"
+    type: main
+    deps: [varas_plantio]
+    icon: AgriCraft:seedPotato
     desc: |
-      TODO [Bancada] minecraft:potato
+      Mesma ideia, agora com a batata. Faça a §eSemente de Batata§r na bancada e plante nas varas.
+
+      §aDica:§r deixe sempre uma semente para trás; colher sem repor é a forma mais rápida de perder a espécie.
     tasks:
       - get: AgriCraft:seedPotato
     rewards:
-      - xp: 1
-  - id: sprinkler
-    title: "Sprinkler"
+      - xp: 2
+      - choice: [minecraft:bread x8, minecraft:cooked_beef x6, minecraft:carrot x16]
+
+  - id: lupa
+    title: "Lupa"
+    deps: [varas_plantio]
+    icon: AgriCraft:magnifyingGlass
     desc: |
-      TODO [Bancada] minecraft:bucket, minecraft:iron_bars
+      Quer ver o que acontece dentro de uma planta? A §eLupa§r mostra os atributos (crescimento, ganho,
+      força) e o estágio de cada plantio sem tocar nela. Dois gravetos, vidro, mais um graveto.
     tasks:
-      - get: AgriCraft:sprinkler
+      - get: AgriCraft:magnifyingGlass
     rewards:
-      - xp: 1
-  - id: gardening_trowel
-    title: "Gardening Trowel"
+      - xp: 2
+      - choice: [minecraft:bread x8, minecraft:cooked_beef x6, minecraft:carrot x16]
+
+  - id: rastelo
+    title: "Rastelo de Mão"
+    deps: [varas_plantio]
+    icon: AgriCraft:handRake
     desc: |
-      TODO [Bancada] 
+      Ervas daninhas atrapalham o crescimento! O §eRastelo de Mão§r (cerca + graveto) limpa as ervas
+      do plantio. Existe uma versão de ferro, mais durável.
+    tasks:
+      - get: AgriCraft:handRake
+    rewards:
+      - xp: 2
+      - choice: [minecraft:bread x8, minecraft:cooked_beef x6, minecraft:carrot x16]
+
+  - id: tesoura_poda
+    title: "Podadeira"
+    deps: [varas_plantio]
+    icon: AgriCraft:clipper
+    desc: |
+      A §ePodadeira§r (Clipper) permite colher só o necessário sem derrubar a planta. Ferro, gravetos
+      e uma tesoura. §aDica:§r essencial para manter a planta viva ao tirar a semente.
+    tasks:
+      - get: AgriCraft:clipper
+    rewards:
+      - xp: 2
+      - choice: [minecraft:bread x8, minecraft:cooked_beef x6, minecraft:carrot x16]
+
+  - id: espatula
+    title: "Espátula de Jardinagem"
+    deps: [varas_plantio]
+    icon: AgriCraft:trowel
+    desc: |
+      Precisa mudar uma planta de lugar sem perder os atributos? A §eEspátula§r (Trowel) transplanta
+      a planta madura com a semente para outra vara.
     tasks:
       - get: AgriCraft:trowel
     rewards:
-      - xp: 1
-  - id: agricultural_journal
-    title: "Agricultural Journal"
-    deps: [crop_sticks]
+      - xp: 2
+      - choice: [minecraft:bread x8, minecraft:cooked_beef x6, minecraft:carrot x16]
+
+  - id: analisador
+    title: "Analisador de Sementes"
+    type: main
+    deps: [lupa]
+    icon: AgriCraft:seedAnalyzer
     desc: |
-      TODO [Bancada] Crop Sticks, minecraft:writable_book
+      A peça central da genética. O §eAnalisador de Sementes§r revela os atributos de uma semente
+      nova — sem análise você planta no escuro.
+
+      Receita: gravetos, painel de vidro, meia-laje de pedra e madeira. Coloque a semente dentro e
+      espere. §aDica:§r analise tudo que colher.
+    tasks:
+      - get: AgriCraft:seedAnalyzer
+    rewards:
+      - xp: 4
+      - choice: [minecraft:iron_ingot x8, minecraft:redstone x16, minecraft:dye:15 x16]
+
+  - id: diario
+    title: "Diário Agrícola"
+    deps: [analisador]
+    icon: AgriCraft:journal
+    desc: |
+      O §eDiário Agrícola§r (livro com varas de plantio e sementes diferentes) registra as espécies
+      que você já analisou e as mutações possíveis. Meu favorito entre as ferramentas!
     tasks:
       - get: AgriCraft:journal
     rewards:
-      - xp: 2
-  - id: computer_controlled_seed_analyzer
-    title: "Computer Controlled Seed Analyzer"
-    deps: [seed_analyzer]
+      - xp: 3
+      - choice: [minecraft:iron_ingot x8, minecraft:redstone x16, minecraft:dye:15 x16]
+
+  - id: analisador_pc
+    title: "Analisador Controlado por PC"
+    type: optional
+    deps: [analisador]
+    icon: AgriCraft:peripheral
     desc: |
-      TODO [Bancada] OpenComputers:case1, Seed Analyzer, minecraft:comparator
+      Para quem usa OpenComputers: ligue o analisador a um computador e automatize a leitura.
+      Comparador, caixa do OC e o analisador. Coisa de nerd, e eu adoro.
     tasks:
       - get: AgriCraft:peripheral
     rewards:
-      - xp: 2
-  - id: brown_mushroom_spores
-    title: "Brown Mushroom Spores"
-    deps: [potato_seeds]
+      - xp: 3
+      - loot: incomum
+
+  - id: aspersor
+    title: "Aspersor"
+    deps: [varas_plantio]
+    icon: AgriCraft:sprinkler
     desc: |
-      TODO [Crop Mutation] Potato Seeds, minecraft:mycelium, minecraft:nether_wart
+      Regar manualmente cansa. O §eAspersor§r (balde, grades e ferro) cuida da irrigação quando ligado
+      a um tanque de água por canais. Para quem vai fazer horta grande.
+    tasks:
+      - get: AgriCraft:sprinkler
+    rewards:
+      - xp: 3
+      - choice: [minecraft:iron_ingot x8, minecraft:redstone x16, minecraft:dye:15 x16]
+
+  - id: almofada_agua
+    title: "Tanque e Almofada de Água"
+    type: optional
+    deps: [aspersor]
+    icon: AgriCraft:waterPad
+    desc: |
+      Culturas aquáticas pedem uma §eAlmofada de Água§r (Water Pad) em vez de terra. Há também o
+      §eTanque de Água§r de madeira para o sistema de irrigação.
+    tasks:
+      - get: AgriCraft:waterPad
+    rewards:
+      - xp: 3
+      - loot: comum
+
+  - id: brown_mushroom_spores
+    title: "Cogumelo Marrom"
+    deps: [semente_batata]
+    icon: AgriCraft:seedShroomBrown
+    desc: |
+      Cogumelos no AgriCraft viram plantio: sementes de §eesporos§r. O marrom é o primeiro.
+
+      Cruze §ePotato Seeds§r, com o bloco §eminecraft:mycelium / minecraft:nether_wart§r sob o solo. A lista exata está no NEI, aba §eCrop Mutation§r.
     tasks:
       - get: AgriCraft:seedShroomBrown
     rewards:
-      - xp: 2
+      - xp: 3
+      - choice: [minecraft:iron_ingot x8, minecraft:redstone x16, minecraft:dye:15 x16]
+
   - id: sugarcane_seeds
-    title: "Sugarcane Seeds"
-    deps: [carrot_seeds]
+    title: "Cana-de-Açúcar"
+    deps: [semente_cenoura]
+    icon: AgriCraft:seedSugarcane
     desc: |
-      TODO [Crop Mutation] Carrot Seeds, minecraft:sand, minecraft:wheat_seeds
+      Com cenoura, areia e semente de trigo surge a §eCana-de-Açúcar§r. Papel e açúcar em campo aberto.
+
+      Cruze §eCarrot Seeds§r, com o bloco §eminecraft:sand / minecraft:wheat_seeds§r sob o solo. A lista exata está no NEI, aba §eCrop Mutation§r.
     tasks:
       - get: AgriCraft:seedSugarcane
     rewards:
-      - xp: 2
+      - xp: 3
+      - choice: [minecraft:iron_ingot x8, minecraft:redstone x16, minecraft:dye:15 x16]
+
   - id: dandelion_seeds
-    title: "Dandelion Seeds"
+    title: "Dente-de-Leão"
     deps: [sugarcane_seeds]
+    icon: AgriCraft:seedDandelion
     desc: |
-      TODO [Crop Mutation] ChromatiCraft:chromaticraft_block_cliffstone:3, Sugarcane Seeds, minecraft:melon_seeds
+      Flor amarela, cruzamento simples. Ótima para tinturas.
+
+      Cruze §eSugarcane Seeds§r, com o bloco §eminecraft:melon_seeds§r sob o solo. A lista exata está no NEI, aba §eCrop Mutation§r.
     tasks:
       - get: AgriCraft:seedDandelion
     rewards:
       - xp: 3
+      - choice: [minecraft:iron_ingot x8, minecraft:redstone x16, minecraft:dye:15 x16]
+
   - id: poppy_seeds
-    title: "Poppy Seeds"
+    title: "Papoula"
     deps: [sugarcane_seeds]
+    icon: AgriCraft:seedPoppy
     desc: |
-      TODO [Crop Mutation] ChromatiCraft:chromaticraft_block_cliffstone:3, Sugarcane Seeds, minecraft:pumpkin_seeds
+      Papoulas vermelhas viram semente ao cruzar a cana com abóbora.
+
+      Cruze §eSugarcane Seeds§r, com o bloco §eminecraft:pumpkin_seeds§r sob o solo. A lista exata está no NEI, aba §eCrop Mutation§r.
     tasks:
       - get: AgriCraft:seedPoppy
     rewards:
       - xp: 3
+      - choice: [minecraft:iron_ingot x8, minecraft:redstone x16, minecraft:dye:15 x16]
+
   - id: cactus_seeds
-    title: "Cactus Seeds"
+    title: "Cacto"
     deps: [poppy_seeds, sugarcane_seeds]
+    icon: AgriCraft:seedCactus
     desc: |
-      TODO [Crop Mutation] Poppy Seeds, Sugarcane Seeds, minecraft:sand
+      Cacto sem sofrer no deserto! Plante e colha o verde espinhento.
+
+      Cruze §ePoppy Seeds + Sugarcane Seeds§r, com o bloco §eminecraft:sand§r sob o solo. A lista exata está no NEI, aba §eCrop Mutation§r.
     tasks:
       - get: AgriCraft:seedCactus
     rewards:
-      - xp: 4
-      - loot: incomum
+      - xp: 3
+      - choice: [minecraft:iron_ingot x8, minecraft:redstone x16, minecraft:dye:15 x16]
+
   - id: blue_orchid_seeds
-    title: "Blue Orchid Seeds"
+    title: "Orquídea Azul"
     deps: [poppy_seeds, dandelion_seeds]
+    icon: AgriCraft:seedOrchid
     desc: |
-      TODO [Crop Mutation] ChromatiCraft:chromaticraft_block_cliffstone:3, Dandelion Seeds, Poppy Seeds
+      A orquídea azul abre a porta para as flores de Botânica e afins.
+
+      Cruze §eDandelion Seeds + Poppy Seeds§r. A lista exata está no NEI, aba §eCrop Mutation§r.
     tasks:
       - get: AgriCraft:seedOrchid
     rewards:
-      - xp: 4
-      - loot: incomum
+      - xp: 3
+      - choice: [minecraft:iron_ingot x8, minecraft:redstone x16, minecraft:dye:15 x16]
+
   - id: red_mushroom_spores
-    title: "Red Mushroom Spores"
+    title: "Cogumelo Vermelho"
     deps: [poppy_seeds]
+    icon: AgriCraft:seedShroomRed
     desc: |
-      TODO [Crop Mutation] Poppy Seeds, minecraft:mycelium, minecraft:nether_wart
+      O irmão vermelho do marrom. Cuidado com o sol: cogumelos preferem sombra.
+
+      Cruze §ePoppy Seeds§r, com o bloco §eminecraft:mycelium / minecraft:nether_wart§r sob o solo. A lista exata está no NEI, aba §eCrop Mutation§r.
     tasks:
       - get: AgriCraft:seedShroomRed
     rewards:
-      - xp: 4
-      - loot: incomum
+      - xp: 3
+      - choice: [minecraft:iron_ingot x8, minecraft:redstone x16, minecraft:dye:15 x16]
+
   - id: allium_seeds
-    title: "Allium Seeds"
+    title: "Allium"
     deps: [blue_orchid_seeds, poppy_seeds]
+    icon: AgriCraft:seedAllium
     desc: |
-      TODO [Crop Mutation] Blue Orchid Seeds, ChromatiCraft:chromaticraft_block_cliffstone:3, Poppy Seeds
+      A bela flor roxa nasce da orquídea azul e da papoula.
+
+      Cruze §eBlue Orchid Seeds + Poppy Seeds§r. A lista exata está no NEI, aba §eCrop Mutation§r.
     tasks:
       - get: AgriCraft:seedAllium
     rewards:
-      - xp: 5
-      - loot: incomum
+      - xp: 3
+      - choice: [minecraft:iron_ingot x8, minecraft:redstone x16, minecraft:dye:15 x16]
+
   - id: daisy_seeds
-    title: "Daisy Seeds"
+    title: "Margarida"
     deps: [blue_orchid_seeds, dandelion_seeds]
+    icon: AgriCraft:seedDaisy
     desc: |
-      TODO [Crop Mutation] Blue Orchid Seeds, ChromatiCraft:chromaticraft_block_cliffstone:3, Dandelion Seeds
+      A margarida branca, simples e útil para as mutações seguintes.
+
+      Cruze §eBlue Orchid Seeds + Dandelion Seeds§r. A lista exata está no NEI, aba §eCrop Mutation§r.
     tasks:
       - get: AgriCraft:seedDaisy
     rewards:
-      - xp: 5
-      - loot: incomum
-  - id: mystical_blue_flower_seeds
-    title: "Mystical Blue Flower Seeds"
-    deps: [allium_seeds, blue_orchid_seeds]
-    desc: |
-      TODO [Crop Mutation] Allium Seeds, Blue Orchid Seeds, minecraft:dirt:2
-    tasks:
-      - get: AgriCraft:seedBotaniaBlue
-    rewards:
-      - xp: 6
-      - loot: raro
+      - xp: 3
+      - choice: [minecraft:iron_ingot x8, minecraft:redstone x16, minecraft:dye:15 x16]
+
   - id: orange_tulip_seeds
-    title: "Orange Tulip Seeds"
+    title: "Tulipa Laranja"
     deps: [daisy_seeds, blue_orchid_seeds]
+    icon: AgriCraft:seedTulipOrange
     desc: |
-      TODO [Crop Mutation] Blue Orchid Seeds, ChromatiCraft:chromaticraft_block_cliffstone:3, Daisy Seeds
+      Cada tulipa tem sua cor e sua receita; esta é laranja.
+
+      Cruze §eBlue Orchid Seeds + Daisy Seeds§r. A lista exata está no NEI, aba §eCrop Mutation§r.
     tasks:
       - get: AgriCraft:seedTulipOrange
     rewards:
-      - xp: 6
-      - loot: raro
+      - xp: 3
+      - choice: [minecraft:iron_ingot x8, minecraft:redstone x16, minecraft:dye:15 x16]
+
   - id: pink_tulip_seeds
-    title: "Pink Tulip Seeds"
+    title: "Tulipa Rosa"
     deps: [allium_seeds, dandelion_seeds]
+    icon: AgriCraft:seedTulipPink
     desc: |
-      TODO [Crop Mutation] Allium Seeds, ChromatiCraft:chromaticraft_block_cliffstone:3, Dandelion Seeds
+      Tulipa rosa: do Allium com o Dente-de-Leão.
+
+      Cruze §eAllium Seeds + Dandelion Seeds§r. A lista exata está no NEI, aba §eCrop Mutation§r.
     tasks:
       - get: AgriCraft:seedTulipPink
     rewards:
-      - xp: 6
-      - loot: raro
+      - xp: 3
+      - choice: [minecraft:iron_ingot x8, minecraft:redstone x16, minecraft:dye:15 x16]
+
   - id: red_tulip_seeds
-    title: "Red Tulip Seeds"
+    title: "Tulipa Vermelha"
     deps: [allium_seeds, poppy_seeds]
+    icon: AgriCraft:seedTulipRed
     desc: |
-      TODO [Crop Mutation] Allium Seeds, ChromatiCraft:chromaticraft_block_cliffstone:3, Poppy Seeds
+      Vermelha e viva: um ponto de partida para outras mutações.
+
+      Cruze §eAllium Seeds + Poppy Seeds§r. A lista exata está no NEI, aba §eCrop Mutation§r.
     tasks:
       - get: AgriCraft:seedTulipRed
     rewards:
-      - xp: 6
-      - loot: raro
+      - xp: 3
+      - choice: [minecraft:iron_ingot x8, minecraft:redstone x16, minecraft:dye:15 x16]
+
   - id: white_tulip_seeds
-    title: "White Tulip Seeds"
+    title: "Tulipa Branca"
     deps: [daisy_seeds, dandelion_seeds]
+    icon: AgriCraft:seedTulipWhite
     desc: |
-      TODO [Crop Mutation] ChromatiCraft:chromaticraft_block_cliffstone:3, Daisy Seeds, Dandelion Seeds
+      Branca como a espuma do Registro. Útil para muitas mutações.
+
+      Cruze §eDaisy Seeds + Dandelion Seeds§r. A lista exata está no NEI, aba §eCrop Mutation§r.
     tasks:
       - get: AgriCraft:seedTulipWhite
     rewards:
-      - xp: 6
-      - loot: raro
-  - id: mystical_black_flower_seeds
-    title: "Mystical Black Flower Seeds"
-    deps: [mystical_blue_flower_seeds, cactus_seeds]
-    desc: |
-      TODO [Crop Mutation] Cactus Seeds, Mystical Blue Flower Seeds, minecraft:dirt:2
-    tasks:
-      - get: AgriCraft:seedBotaniaBlack
-    rewards:
-      - xp: 6
-      - loot: raro
-  - id: mystical_red_flower_seeds
-    title: "Mystical Red Flower Seeds"
-    deps: [red_tulip_seeds, poppy_seeds]
-    desc: |
-      TODO [Crop Mutation] Poppy Seeds, Red Tulip Seeds, minecraft:dirt:2
-    tasks:
-      - get: AgriCraft:seedBotaniaRed
-    rewards:
-      - xp: 6
-      - loot: raro
-  - id: mystical_white_flower_seeds
-    title: "Mystical White Flower Seeds"
-    deps: [white_tulip_seeds, daisy_seeds]
-    desc: |
-      TODO [Crop Mutation] Daisy Seeds, White Tulip Seeds, minecraft:dirt:2
-    tasks:
-      - get: AgriCraft:seedBotaniaWhite
-    rewards:
-      - xp: 6
-      - loot: raro
-  - id: mystical_yellow_flower_seeds
-    title: "Mystical Yellow Flower Seeds"
-    deps: [orange_tulip_seeds, dandelion_seeds]
-    desc: |
-      TODO [Crop Mutation] Dandelion Seeds, Orange Tulip Seeds, minecraft:dirt:2
-    tasks:
-      - get: AgriCraft:seedBotaniaYellow
-    rewards:
-      - xp: 6
-      - loot: raro
+      - xp: 3
+      - choice: [minecraft:iron_ingot x8, minecraft:redstone x16, minecraft:dye:15 x16]
+
   - id: cinderpearl_seeds
-    title: "Cinderpearl Seeds"
+    title: "Cinderpearl"
     deps: [red_tulip_seeds, cactus_seeds]
+    icon: AgriCraft:seedCinderpearl
     desc: |
-      TODO [Crop Mutation] Cactus Seeds, Red Tulip Seeds, minecraft:sand
+      Primeira planta de recurso da lista: §eCinderpearl§r, uma erva de Thaumcraft que o AgriCraft faz crescer em areia.
+
+      Cruze §eCactus Seeds + Red Tulip Seeds§r, com o bloco §eminecraft:sand§r sob o solo. A lista exata está no NEI, aba §eCrop Mutation§r.
     tasks:
       - get: AgriCraft:seedCinderpearl
     rewards:
-      - xp: 6
-      - loot: raro
+      - xp: 3
+      - choice: [minecraft:iron_ingot x8, minecraft:redstone x16, minecraft:dye:15 x16]
+
   - id: lapender_seeds
-    title: "Lapender Seeds"
+    title: "Lapender"
     deps: [pink_tulip_seeds, blue_orchid_seeds]
+    icon: AgriCraft:seedLapender
     desc: |
-      TODO [Crop Mutation] Blue Orchid Seeds, ChromatiCraft:chromaticraft_block_cliffstone:3, Pink Tulip Seeds, minecraft:lapis_ore:4
+      A planta do lápis-lazúli. Precisa de um bloco de lápis sob a terra.
+
+      Cruze §eBlue Orchid Seeds + Pink Tulip Seeds§r, com o bloco §eminecraft:lapis_ore:4§r sob o solo. A lista exata está no NEI, aba §eCrop Mutation§r.
     tasks:
       - get: AgriCraft:seedLapender
     rewards:
-      - xp: 6
-      - loot: raro
+      - xp: 3
+      - choice: [minecraft:iron_ingot x8, minecraft:redstone x16, minecraft:dye:15 x16]
+
   - id: nitor_wart_spores
-    title: "Nitor Wart Spores"
+    title: "Nitor Wart"
     deps: [orange_tulip_seeds]
+    icon: AgriCraft:seedNitorWart
     desc: |
-      TODO [Crop Mutation] Orange Tulip Seeds, minecraft:glowstone, minecraft:nether_wart, minecraft:soul_sand
+      Esporos que rendem pó de glowstone, crescendo sobre soul sand. Luz de sobra!
+
+      Cruze §eOrange Tulip Seeds§r, com o bloco §eminecraft:glowstone / minecraft:nether_wart / minecraft:soul_sand§r sob o solo. A lista exata está no NEI, aba §eCrop Mutation§r.
     tasks:
       - get: AgriCraft:seedNitorWart
     rewards:
-      - xp: 6
-      - loot: raro
+      - xp: 3
+      - choice: [minecraft:iron_ingot x8, minecraft:redstone x16, minecraft:dye:15 x16]
+
   - id: redstodendron_seeds
-    title: "Redstodendron Seeds"
+    title: "Redstodendron"
     deps: [red_tulip_seeds, daisy_seeds]
+    icon: AgriCraft:seedRedstodendron
     desc: |
-      TODO [Crop Mutation] ChromatiCraft:chromaticraft_block_cliffstone:3, Daisy Seeds, Red Tulip Seeds, minecraft:redstone_ore
+      A planta de redstone. Dê um bloco de minério de redstone para o solo.
+
+      Cruze §eDaisy Seeds + Red Tulip Seeds§r, com o bloco §eminecraft:redstone_ore§r sob o solo. A lista exata está no NEI, aba §eCrop Mutation§r.
     tasks:
       - get: AgriCraft:seedRedstodendron
     rewards:
-      - xp: 6
-      - loot: raro
+      - xp: 3
+      - choice: [minecraft:iron_ingot x8, minecraft:redstone x16, minecraft:dye:15 x16]
+
   - id: aurigold_seeds
-    title: "Aurigold Seeds"
+    title: "Aurigold"
     deps: [redstodendron_seeds, orange_tulip_seeds]
+    icon: AgriCraft:seedAurigold
     desc: |
-      TODO [Crop Mutation] ChromatiCraft:chromaticraft_block_cliffstone:3, Orange Tulip Seeds, Redstodendron Seeds, minecraft:gold_ore
+      A planta de ouro, essencial para as mutações avançadas.
+
+      Cruze §eOrange Tulip Seeds + Redstodendron Seeds§r, com o bloco §eminecraft:gold_ore§r sob o solo. A lista exata está no NEI, aba §eCrop Mutation§r.
     tasks:
       - get: AgriCraft:seedAurigold
     rewards:
-      - xp: 6
-      - loot: raro
-  - id: mystical_gray_flower_seeds
-    title: "Mystical Gray Flower Seeds"
-    deps: [mystical_white_flower_seeds, mystical_black_flower_seeds]
-    desc: |
-      TODO [Crop Mutation] Mystical Black Flower Seeds, Mystical White Flower Seeds, minecraft:dirt:2
-    tasks:
-      - get: AgriCraft:seedBotaniaGray
-    rewards:
-      - xp: 6
-      - loot: raro
-  - id: mystical_green_flower_seeds
-    title: "Mystical Green Flower Seeds"
-    deps: [mystical_yellow_flower_seeds, mystical_blue_flower_seeds]
-    desc: |
-      TODO [Crop Mutation] Mystical Blue Flower Seeds, Mystical Yellow Flower Seeds, minecraft:dirt:2
-    tasks:
-      - get: AgriCraft:seedBotaniaGreen
-    rewards:
-      - xp: 6
-      - loot: raro
-  - id: mystical_light_blue_flower_seeds
-    title: "Mystical Light Blue Flower Seeds"
-    deps: [mystical_white_flower_seeds, mystical_blue_flower_seeds]
-    desc: |
-      TODO [Crop Mutation] Mystical Blue Flower Seeds, Mystical White Flower Seeds, minecraft:dirt:2
-    tasks:
-      - get: AgriCraft:seedBotaniaLightBlue
-    rewards:
-      - xp: 6
-      - loot: raro
-  - id: mystical_magenta_flower_seeds
-    title: "Mystical Magenta Flower Seeds"
-    deps: [mystical_red_flower_seeds, mystical_blue_flower_seeds]
-    desc: |
-      TODO [Crop Mutation] Mystical Blue Flower Seeds, Mystical Red Flower Seeds, minecraft:dirt:2
-    tasks:
-      - get: AgriCraft:seedBotaniaMagenta
-    rewards:
-      - xp: 6
-      - loot: raro
-  - id: mystical_orange_flower_seeds
-    title: "Mystical Orange Flower Seeds"
-    deps: [mystical_yellow_flower_seeds, mystical_red_flower_seeds]
-    desc: |
-      TODO [Crop Mutation] Mystical Red Flower Seeds, Mystical Yellow Flower Seeds, minecraft:dirt:2
-    tasks:
-      - get: AgriCraft:seedBotaniaOrange
-    rewards:
-      - xp: 6
-      - loot: raro
+      - xp: 4
+      - choice: [minecraft:gold_ingot x6, minecraft:lapis_block x2, minecraft:glowstone x16]
+
   - id: cuprosia_seeds
-    title: "Cuprosia Seeds"
+    title: "Cuprosia"
     deps: [redstodendron_seeds, red_tulip_seeds]
+    icon: AgriCraft:seedCuprosia
     desc: |
-      TODO [Crop Mutation] ChromatiCraft:chromaticraft_block_cliffstone:3, Red Tulip Seeds, Redstodendron Seeds, ThermalFoundation:Ore
+      Planta de cobre, perfeita para quem quer metal sem minerar.
+
+      Cruze §eRed Tulip Seeds + Redstodendron Seeds§r, com o bloco §eThermalFoundation:Ore§r sob o solo. A lista exata está no NEI, aba §eCrop Mutation§r.
     tasks:
       - get: AgriCraft:seedCuprosia
     rewards:
-      - xp: 6
-      - loot: raro
+      - xp: 3
+      - choice: [minecraft:iron_ingot x8, minecraft:redstone x16, minecraft:dye:15 x16]
+
   - id: desert_nova_seeds
-    title: "Desert Nova Seeds"
+    title: "Desert Nova"
     deps: [cinderpearl_seeds, red_tulip_seeds]
+    icon: AgriCraft:seedDesertNova
     desc: |
-      TODO [Crop Mutation] Cinderpearl Seeds, Red Tulip Seeds, minecraft:sand
+      A erva do deserto de Ars Magica, que cresce em areia. Ponto de passagem para o Cerublossom.
+
+      Cruze §eCinderpearl Seeds + Red Tulip Seeds§r, com o bloco §eminecraft:sand§r sob o solo. A lista exata está no NEI, aba §eCrop Mutation§r.
     tasks:
       - get: AgriCraft:seedDesertNova
     rewards:
-      - xp: 6
-      - loot: raro
+      - xp: 3
+      - choice: [minecraft:iron_ingot x8, minecraft:redstone x16, minecraft:dye:15 x16]
+
   - id: ferranium_seeds
-    title: "Ferranium Seeds"
+    title: "Ferranium"
     deps: [lapender_seeds, white_tulip_seeds]
+    icon: AgriCraft:seedFerranium
     desc: |
-      TODO [Crop Mutation] ChromatiCraft:chromaticraft_block_cliffstone:3, Lapender Seeds, White Tulip Seeds, minecraft:iron_ore
+      Ferranium: a planta do ferro. Vale a pena ter uma estufa só para ela.
+
+      Cruze §eLapender Seeds + White Tulip Seeds§r, com o bloco §eminecraft:iron_ore§r sob o solo. A lista exata está no NEI, aba §eCrop Mutation§r.
     tasks:
       - get: AgriCraft:seedFerranium
     rewards:
-      - xp: 6
-      - loot: raro
+      - xp: 4
+      - choice: [minecraft:gold_ingot x6, minecraft:lapis_block x2, minecraft:glowstone x16]
+
   - id: petinia_seeds
-    title: "Petinia Seeds"
+    title: "Petinia"
     deps: [lapender_seeds, daisy_seeds]
+    icon: AgriCraft:seedPetinia
     desc: |
-      TODO [Crop Mutation] ChromatiCraft:chromaticraft_block_cliffstone:3, Daisy Seeds, Lapender Seeds, ThermalFoundation:Ore:1
+      A planta do estanho (precisa de bloco de minério de estanho).
+
+      Cruze §eDaisy Seeds + Lapender Seeds§r, com o bloco §eThermalFoundation:Ore:1§r sob o solo. A lista exata está no NEI, aba §eCrop Mutation§r.
     tasks:
       - get: AgriCraft:seedPetinia
     rewards:
-      - xp: 6
-      - loot: raro
+      - xp: 3
+      - choice: [minecraft:iron_ingot x8, minecraft:redstone x16, minecraft:dye:15 x16]
+
   - id: quartzanthemum_seeds
-    title: "Quartzanthemum Seeds"
+    title: "Quartzanthemum"
     deps: [nitor_wart_spores, lapender_seeds]
+    icon: AgriCraft:seedQuartzanthemum
     desc: |
-      TODO [Crop Mutation] Lapender Seeds, Nitor Wart Spores, minecraft:quartz_ore, minecraft:soul_sand
+      Quartzo crescendo em flor. Mutação com solo de soul sand.
+
+      Cruze §eLapender Seeds + Nitor Wart Spores§r, com o bloco §eminecraft:quartz_ore / minecraft:soul_sand§r sob o solo. A lista exata está no NEI, aba §eCrop Mutation§r.
     tasks:
       - get: AgriCraft:seedQuartzanthemum
     rewards:
-      - xp: 6
-      - loot: raro
-  - id: mystical_cyan_flower_seeds
-    title: "Mystical Cyan Flower Seeds"
-    deps: [mystical_green_flower_seeds, mystical_blue_flower_seeds]
-    desc: |
-      TODO [Crop Mutation] Mystical Blue Flower Seeds, Mystical Green Flower Seeds, minecraft:dirt:2
-    tasks:
-      - get: AgriCraft:seedBotaniaCyan
-    rewards:
-      - xp: 6
-      - loot: raro
-  - id: mystical_light_gray_flower_seeds
-    title: "Mystical Light Gray Flower Seeds"
-    deps: [mystical_gray_flower_seeds, mystical_white_flower_seeds]
-    desc: |
-      TODO [Crop Mutation] Mystical Gray Flower Seeds, Mystical White Flower Seeds, minecraft:dirt:2
-    tasks:
-      - get: AgriCraft:seedBotaniaLightGray
-    rewards:
-      - xp: 6
-      - loot: raro
-  - id: mystical_lime_flower_seeds
-    title: "Mystical Lime Flower Seeds"
-    deps: [mystical_green_flower_seeds, mystical_white_flower_seeds]
-    desc: |
-      TODO [Crop Mutation] Mystical Green Flower Seeds, Mystical White Flower Seeds, minecraft:dirt:2
-    tasks:
-      - get: AgriCraft:seedBotaniaLime
-    rewards:
-      - xp: 6
-      - loot: raro
-  - id: mystical_purple_flower_seeds
-    title: "Mystical Purple Flower Seeds"
-    deps: [mystical_magenta_flower_seeds, mystical_blue_flower_seeds]
-    desc: |
-      TODO [Crop Mutation] Mystical Blue Flower Seeds, Mystical Magenta Flower Seeds, minecraft:dirt:2
-    tasks:
-      - get: AgriCraft:seedBotaniaPurple
-    rewards:
-      - xp: 6
-      - loot: raro
+      - xp: 3
+      - choice: [minecraft:iron_ingot x8, minecraft:redstone x16, minecraft:dye:15 x16]
+
   - id: cerublossom_seeds
-    title: "Cerublossom Seeds"
+    title: "Cerublossom"
     deps: [desert_nova_seeds, cinderpearl_seeds]
+    icon: AgriCraft:seedCerublossom
     desc: |
-      TODO [Crop Mutation] ChromatiCraft:chromaticraft_block_cliffstone:3, Cinderpearl Seeds, Desert Nova Seeds
+      Erva de Ars Magica que abre o caminho para as plantas mais raras.
+
+      Cruze §eCinderpearl Seeds + Desert Nova Seeds§r. A lista exata está no NEI, aba §eCrop Mutation§r.
     tasks:
       - get: AgriCraft:seedCerublossom
     rewards:
-      - xp: 6
-      - loot: raro
+      - xp: 4
+      - choice: [minecraft:gold_ingot x6, minecraft:lapis_block x2, minecraft:glowstone x16]
+
   - id: diamahlia_seeds
-    title: "Diamahlia Seeds"
+    title: "Diamahlia"
     deps: [aurigold_seeds, lapender_seeds]
+    icon: AgriCraft:seedDiamahlia
     desc: |
-      TODO [Crop Mutation] Aurigold Seeds, ChromatiCraft:chromaticraft_block_cliffstone:3, Lapender Seeds, minecraft:diamond_ore
+      Dália de diamante! Cruze com os pais certos e use um bloco de diamante sob o solo.
+
+      Cruze §eAurigold Seeds + Lapender Seeds§r, com o bloco §eminecraft:diamond_ore§r sob o solo. A lista exata está no NEI, aba §eCrop Mutation§r.
     tasks:
       - get: AgriCraft:seedDiamahlia
     rewards:
-      - xp: 6
-      - loot: raro
+      - xp: 5
+      - choice: [minecraft:diamond x2, minecraft:emerald x2, minecraft:ender_pearl x6]
+
   - id: emeryllis_seeds
-    title: "Emeryllis Seeds"
+    title: "Emeryllis"
     deps: [ferranium_seeds, redstodendron_seeds]
+    icon: AgriCraft:seedEmeryllis
     desc: |
-      TODO [Crop Mutation] ChromatiCraft:chromaticraft_block_cliffstone:3, Ferranium Seeds, Redstodendron Seeds, minecraft:emerald_ore
+      Flor de esmeraldas. Minério de esmeralda sob o solo, paciência no cruzamento.
+
+      Cruze §eFerranium Seeds + Redstodendron Seeds§r, com o bloco §eminecraft:emerald_ore§r sob o solo. A lista exata está no NEI, aba §eCrop Mutation§r.
     tasks:
       - get: AgriCraft:seedEmeryllis
     rewards:
-      - xp: 6
-      - loot: raro
+      - xp: 5
+      - choice: [minecraft:diamond x2, minecraft:emerald x2, minecraft:ender_pearl x6]
+
   - id: jaslumine_seeds
-    title: "Jaslumine Seeds"
+    title: "Jaslumine"
     deps: [ferranium_seeds]
+    icon: AgriCraft:seedJaslumine
     desc: |
-      TODO [Crop Mutation] ChromatiCraft:chromaticraft_block_cliffstone:3, Ferranium Seeds, ImmersiveEngineering:ore:1, minecraft:wheat_seeds
+      Planta do alumínio (Immersive Engineering). Ferranium e um pouco de trigo bastam.
+
+      Cruze §eFerranium Seeds§r, com o bloco §eImmersiveEngineering:ore:1 / minecraft:wheat_seeds§r sob o solo. A lista exata está no NEI, aba §eCrop Mutation§r.
     tasks:
       - get: AgriCraft:seedJaslumine
     rewards:
-      - xp: 6
-      - loot: raro
+      - xp: 3
+      - choice: [minecraft:iron_ingot x8, minecraft:redstone x16, minecraft:dye:15 x16]
+
   - id: niccissus_seeds
-    title: "Niccissus Seeds"
+    title: "Niccissus"
     deps: [aurigold_seeds, dandelion_seeds]
+    icon: AgriCraft:seedNiccissus
     desc: |
-      TODO [Crop Mutation] Aurigold Seeds, ChromatiCraft:chromaticraft_block_cliffstone:3, Dandelion Seeds, ThermalFoundation:Ore:4
+      Planta do níquel: Aurigold com dente-de-leão.
+
+      Cruze §eAurigold Seeds + Dandelion Seeds§r, com o bloco §eThermalFoundation:Ore:4§r sob o solo. A lista exata está no NEI, aba §eCrop Mutation§r.
     tasks:
       - get: AgriCraft:seedNiccissus
     rewards:
-      - xp: 6
-      - loot: raro
+      - xp: 3
+      - choice: [minecraft:iron_ingot x8, minecraft:redstone x16, minecraft:dye:15 x16]
+
   - id: osmonium_seeds
-    title: "Osmonium Seeds"
+    title: "Osmonium"
     deps: [ferranium_seeds, blue_orchid_seeds]
+    icon: AgriCraft:seedOsmonium
     desc: |
-      TODO [Crop Mutation] Blue Orchid Seeds, ChromatiCraft:chromaticraft_block_cliffstone:3, Ferranium Seeds, Mekanism:OreBlock
+      A planta do ósmio, de Mekanism. Cruze com Ferranium.
+
+      Cruze §eBlue Orchid Seeds + Ferranium Seeds§r, com o bloco §eMekanism:OreBlock§r sob o solo. A lista exata está no NEI, aba §eCrop Mutation§r.
     tasks:
       - get: AgriCraft:seedOsmonium
     rewards:
-      - xp: 6
-      - loot: raro
+      - xp: 3
+      - choice: [minecraft:iron_ingot x8, minecraft:redstone x16, minecraft:dye:15 x16]
+
   - id: plombean_seeds
-    title: "Plombean Seeds"
-    deps: [ferranium_seeds, potato_seeds]
+    title: "Plombean"
+    deps: [ferranium_seeds, semente_batata]
+    icon: AgriCraft:seedPlombean
     desc: |
-      TODO [Crop Mutation] ChromatiCraft:chromaticraft_block_cliffstone:3, Ferranium Seeds, Potato Seeds, ThermalFoundation:Ore:3
+      Chumbo em forma de feijão. Cruze com Ferranium e batata.
+
+      Cruze §eFerranium Seeds + Potato Seeds§r, com o bloco §eThermalFoundation:Ore:3§r sob o solo. A lista exata está no NEI, aba §eCrop Mutation§r.
     tasks:
       - get: AgriCraft:seedPlombean
     rewards:
-      - xp: 6
-      - loot: raro
+      - xp: 3
+      - choice: [minecraft:iron_ingot x8, minecraft:redstone x16, minecraft:dye:15 x16]
+
   - id: silverweed_seeds
-    title: "Silverweed Seeds"
+    title: "Silverweed"
     deps: [aurigold_seeds, allium_seeds]
+    icon: AgriCraft:seedSilverweed
     desc: |
-      TODO [Crop Mutation] Allium Seeds, Aurigold Seeds, ChromatiCraft:chromaticraft_block_cliffstone:3, ThermalFoundation:Ore:2
+      Erva de prata: Aurigold com Allium e um minério de prata.
+
+      Cruze §eAllium Seeds + Aurigold Seeds§r, com o bloco §eThermalFoundation:Ore:2§r sob o solo. A lista exata está no NEI, aba §eCrop Mutation§r.
     tasks:
       - get: AgriCraft:seedSilverweed
     rewards:
-      - xp: 6
-      - loot: raro
-  - id: tarma_root_seeds
-    title: "Tarma Root Seeds"
-    deps: [desert_nova_seeds, brown_mushroom_spores]
-    desc: |
-      TODO [Crop Mutation] Brown Mushroom Spores, ChromatiCraft:chromaticraft_block_cliffstone:3, Desert Nova Seeds
-    tasks:
-      - get: AgriCraft:seedTarmaRoot
-    rewards:
-      - xp: 6
-      - loot: raro
-  - id: aum_seeds
-    title: "Aum Seeds"
-    deps: [cerublossom_seeds, cinderpearl_seeds]
-    desc: |
-      TODO [Crop Mutation] Cerublossom Seeds, ChromatiCraft:chromaticraft_block_cliffstone:3, Cinderpearl Seeds, arsmagica2:WitchwoodLog
-    tasks:
-      - get: AgriCraft:seedAum
-    rewards:
-      - xp: 6
-      - loot: raro
-  - id: mystical_brown_flower_seeds
-    title: "Mystical Brown Flower Seeds"
-    deps: [mystical_purple_flower_seeds, mystical_green_flower_seeds]
-    desc: |
-      TODO [Crop Mutation] Mystical Green Flower Seeds, Mystical Purple Flower Seeds, minecraft:dirt:2
-    tasks:
-      - get: AgriCraft:seedBotaniaBrown
-    rewards:
-      - xp: 6
-      - loot: raro
-  - id: mystical_pink_flower_seeds
-    title: "Mystical Pink Flower Seeds"
-    deps: [mystical_purple_flower_seeds, mystical_white_flower_seeds]
-    desc: |
-      TODO [Crop Mutation] Mystical Purple Flower Seeds, Mystical White Flower Seeds, minecraft:dirt:2
-    tasks:
-      - get: AgriCraft:seedBotaniaPink
-    rewards:
-      - xp: 6
-      - loot: raro
+      - xp: 3
+      - choice: [minecraft:iron_ingot x8, minecraft:redstone x16, minecraft:dye:15 x16]
+
   - id: platiolus_seeds
-    title: "Platiolus Seeds"
+    title: "Platiolus"
     deps: [diamahlia_seeds, ferranium_seeds]
+    icon: AgriCraft:seedPlatiolus
     desc: |
-      TODO [Crop Mutation] ChromatiCraft:chromaticraft_block_cliffstone:3, Diamahlia Seeds, Ferranium Seeds, ThermalFoundation:Ore:5
+      Gladíolo de platina. Cruze Diamahlia com Ferranium e use um minério de platina.
+
+      Cruze §eDiamahlia Seeds + Ferranium Seeds§r, com o bloco §eThermalFoundation:Ore:5§r sob o solo. A lista exata está no NEI, aba §eCrop Mutation§r.
     tasks:
       - get: AgriCraft:seedPlatiolus
     rewards:
       - xp: 6
-      - loot: raro
-  - id: shimmerleaf_seeds
-    title: "Shimmerleaf Seeds"
-    deps: [cerublossom_seeds, white_tulip_seeds]
+      - choice: [minecraft:diamond x2, minecraft:emerald x2, minecraft:ender_pearl x6]
+
+  - id: tarma_root_seeds
+    title: "Tarma Root"
+    deps: [desert_nova_seeds, brown_mushroom_spores]
+    icon: AgriCraft:seedTarmaRoot
     desc: |
-      TODO [Crop Mutation] Cerublossom Seeds, ChromatiCraft:chromaticraft_block_cliffstone:3, Thaumcraft:blockMagicalLog:1, White Tulip Seeds
+      Raiz de Ars Magica. Cruze Desert Nova com cogumelo marrom.
+
+      Cruze §eBrown Mushroom Spores + Desert Nova Seeds§r. A lista exata está no NEI, aba §eCrop Mutation§r.
+    tasks:
+      - get: AgriCraft:seedTarmaRoot
+    rewards:
+      - xp: 3
+      - choice: [minecraft:iron_ingot x8, minecraft:redstone x16, minecraft:dye:15 x16]
+
+  - id: aum_seeds
+    title: "Aum"
+    deps: [cerublossom_seeds, cinderpearl_seeds]
+    icon: AgriCraft:seedAum
+    desc: |
+      Erva de Ars Magica; precisa de um tronco de bruxa (Witchwood) no solo.
+
+      Cruze §eCerublossom Seeds + Cinderpearl Seeds§r, com o bloco §earsmagica2:WitchwoodLog§r sob o solo. A lista exata está no NEI, aba §eCrop Mutation§r.
+    tasks:
+      - get: AgriCraft:seedAum
+    rewards:
+      - xp: 3
+      - choice: [minecraft:iron_ingot x8, minecraft:redstone x16, minecraft:dye:15 x16]
+
+  - id: shimmerleaf_seeds
+    title: "Shimmerleaf"
+    deps: [cerublossom_seeds, white_tulip_seeds]
+    icon: AgriCraft:seedShimmerleaf
+    desc: |
+      Folha de Thaumcraft; precisa de um tronco da árvore mágica sob o solo.
+
+      Cruze §eCerublossom Seeds + White Tulip Seeds§r, com o bloco §eThaumcraft:blockMagicalLog:1§r sob o solo. A lista exata está no NEI, aba §eCrop Mutation§r.
     tasks:
       - get: AgriCraft:seedShimmerleaf
     rewards:
-      - xp: 6
-      - loot: raro
+      - xp: 3
+      - choice: [minecraft:iron_ingot x8, minecraft:redstone x16, minecraft:dye:15 x16]
+
   - id: vishroom_spores
-    title: "Vishroom Spores"
+    title: "Vishroom"
     deps: [shimmerleaf_seeds, brown_mushroom_spores]
+    icon: AgriCraft:seedVishroom
     desc: |
-      TODO [Crop Mutation] Brown Mushroom Spores, Shimmerleaf Seeds, minecraft:mycelium
+      Cogumelo de vis! Cruze Shimmerleaf com o cogumelo marrom, sobre mycelium.
+
+      Cruze §eBrown Mushroom Spores + Shimmerleaf Seeds§r, com o bloco §eminecraft:mycelium§r sob o solo. A lista exata está no NEI, aba §eCrop Mutation§r.
     tasks:
       - get: AgriCraft:seedVishroom
     rewards:
-      - xp: 6
-      - loot: raro
+      - xp: 3
+      - choice: [minecraft:iron_ingot x8, minecraft:redstone x16, minecraft:dye:15 x16]
+
   - id: wakebloom_seeds
-    title: "Wakebloom seeds"
+    title: "Wakebloom"
     deps: [aum_seeds, cerublossom_seeds]
+    icon: AgriCraft:seedWakebloom
     desc: |
-      TODO [Crop Mutation] Aum Seeds, Cerublossom Seeds, Water Pad
+      Planta aquática de Ars Magica! Use a Almofada de Água sob o cultivo.
+
+      Cruze §eAum Seeds + Cerublossom Seeds§r, com o bloco §eWater Pad§r sob o solo. A lista exata está no NEI, aba §eCrop Mutation§r.
     tasks:
       - get: AgriCraft:seedWakebloom
     rewards:
-      - xp: 6
-      - loot: raro
+      - xp: 5
+      - choice: [minecraft:diamond x2, minecraft:emerald x2, minecraft:ender_pearl x6]
+
   - id: taint_root_seeds
-    title: "Taint Root Seeds"
+    title: "Taint Root"
+    type: boss
     deps: [vishroom_spores, tarma_root_seeds]
+    icon: AgriCraft:seedTaintedRoot
     desc: |
-      TODO [Crop Mutation] Tarma Root Seeds, Thaumcraft:blockTaint, Thaumcraft:blockTaint:1, Vishroom Spores
+      A mais difícil das mutações: a Raiz Corrompida cresce em solo tomado pela Corrupção. Cruze Tarma Root com Vishroom e coloque bloco de Taint sob o solo.
+
+      Cruze §eTarma Root Seeds + Vishroom Spores§r, com o bloco §eThaumcraft:blockTaint / Thaumcraft:blockTaint:1§r sob o solo. A lista exata está no NEI, aba §eCrop Mutation§r.
+
+      §cCuidado:§r a Corrupção se espalha. Faça isso num local isolado!
     tasks:
       - get: AgriCraft:seedTaintedRoot
     rewards:
-      - xp: 6
+      - xp: 8
+      - loot: epico
+
+  - id: mystical_blue_flower_seeds
+    title: "Flor Mística Azul"
+    deps: [allium_seeds, blue_orchid_seeds]
+    icon: AgriCraft:seedBotaniaBlue
+    desc: |
+      Para os fãs de Botania: a primeira flor mística em semente. Terra podzol sob o solo.
+
+      Cruze §eAllium Seeds + Blue Orchid Seeds§r, com o bloco §eminecraft:dirt:2§r sob o solo. A lista exata está no NEI, aba §eCrop Mutation§r.
+    tasks:
+      - get: AgriCraft:seedBotaniaBlue
+    rewards:
+      - xp: 3
+      - choice: [minecraft:iron_ingot x8, minecraft:redstone x16, minecraft:dye:15 x16]
+
+  - id: mystical_black_flower_seeds
+    title: "Flor Mística Preta"
+    deps: [mystical_blue_flower_seeds, cactus_seeds]
+    icon: AgriCraft:seedBotaniaBlack
+    desc: |
+      A flor preta, mistura do cacto com a flor azul.
+
+      Cruze §eCactus Seeds + Mystical Blue Flower Seeds§r, com o bloco §eminecraft:dirt:2§r sob o solo. A lista exata está no NEI, aba §eCrop Mutation§r.
+    tasks:
+      - get: AgriCraft:seedBotaniaBlack
+    rewards:
+      - xp: 3
+      - choice: [minecraft:iron_ingot x8, minecraft:redstone x16, minecraft:dye:15 x16]
+
+  - id: mystical_red_flower_seeds
+    title: "Flor Mística Vermelha"
+    deps: [red_tulip_seeds, poppy_seeds]
+    icon: AgriCraft:seedBotaniaRed
+    desc: |
+      Vermelha e rica em mana; cruzamento com papoula.
+
+      Cruze §ePoppy Seeds + Red Tulip Seeds§r, com o bloco §eminecraft:dirt:2§r sob o solo. A lista exata está no NEI, aba §eCrop Mutation§r.
+    tasks:
+      - get: AgriCraft:seedBotaniaRed
+    rewards:
+      - xp: 3
+      - choice: [minecraft:iron_ingot x8, minecraft:redstone x16, minecraft:dye:15 x16]
+
+  - id: mystical_white_flower_seeds
+    title: "Flor Mística Branca"
+    deps: [white_tulip_seeds, daisy_seeds]
+    icon: AgriCraft:seedBotaniaWhite
+    desc: |
+      Branca e pura, da margarida com a tulipa branca.
+
+      Cruze §eDaisy Seeds + White Tulip Seeds§r, com o bloco §eminecraft:dirt:2§r sob o solo. A lista exata está no NEI, aba §eCrop Mutation§r.
+    tasks:
+      - get: AgriCraft:seedBotaniaWhite
+    rewards:
+      - xp: 3
+      - choice: [minecraft:iron_ingot x8, minecraft:redstone x16, minecraft:dye:15 x16]
+
+  - id: mystical_yellow_flower_seeds
+    title: "Flor Mística Amarela"
+    deps: [orange_tulip_seeds, dandelion_seeds]
+    icon: AgriCraft:seedBotaniaYellow
+    desc: |
+      Amarela como o sol: dente-de-leão com tulipa laranja.
+
+      Cruze §eDandelion Seeds + Orange Tulip Seeds§r, com o bloco §eminecraft:dirt:2§r sob o solo. A lista exata está no NEI, aba §eCrop Mutation§r.
+    tasks:
+      - get: AgriCraft:seedBotaniaYellow
+    rewards:
+      - xp: 3
+      - choice: [minecraft:iron_ingot x8, minecraft:redstone x16, minecraft:dye:15 x16]
+
+  - id: flores_misticas_cores
+    title: "Cores das Flores Místicas"
+    type: optional
+    deps: [mystical_black_flower_seeds, mystical_red_flower_seeds, mystical_white_flower_seeds, mystical_yellow_flower_seeds]
+    icon: AgriCraft:seedBotaniaGray
+    desc: |
+      Com as cinco flores básicas você cruza todas as outras cores: cinza, verde, azul-claro, magenta,
+      laranja, ciano, cinza-claro, lima, roxo, marrom e rosa. A árvore genealógica está no NEI.
+    tasks:
+      - get: AgriCraft:seedBotaniaGray
+      - get: AgriCraft:seedBotaniaGreen
+      - get: AgriCraft:seedBotaniaLightBlue
+      - get: AgriCraft:seedBotaniaMagenta
+      - get: AgriCraft:seedBotaniaOrange
+    rewards:
+      - xp: 4
+      - loot: incomum
+
+  - id: flores_misticas_fim
+    title: "Mais Cores de Flores"
+    type: optional
+    deps: [flores_misticas_cores]
+    icon: AgriCraft:seedBotaniaBrown
+    desc: |
+      As cores finais: ciano, cinza-claro, lima, roxo, marrom e rosa. Quem completa a coleção
+      é chamado, pela minha boca, de Botânico Honorário.
+    tasks:
+      - get: AgriCraft:seedBotaniaCyan
+      - get: AgriCraft:seedBotaniaLightGray
+      - get: AgriCraft:seedBotaniaLime
+      - get: AgriCraft:seedBotaniaPurple
+      - get: AgriCraft:seedBotaniaBrown
+      - get: AgriCraft:seedBotaniaPink
+    rewards:
+      - xp: 5
       - loot: raro
+
+  - id: marco_agricraft
+    title: "Marco: A Grande Horta"
+    type: milestone
+    deps: [analisador, diamahlia_seeds, emeryllis_seeds, aurigold_seeds, ferranium_seeds, diario]
+    icon: AgriCraft:journal
+    banner: "A Grande Horta"
+    subtitle: "Genética de plantas dominada"
+    desc: |
+      Herói, olhe seu canteiro! Sementes analisadas, ouro, ferro, diamante e esmeralda nascendo em
+      fileiras, um diário cheio de espécies. Você é agora uma §egeneticista de plantas§r.
+
+      Daqui, continue o aprimoramento: suba crescimento, ganho e força cruzando as melhores sementes
+      repetidamente, e leve a Taint Root ao máximo. Obrigada por cultivar comigo!
+    tasks:
+      - get: AgriCraft:journal
+      - get: AgriCraft:seedDiamahlia
+      - get: AgriCraft:seedEmeryllis
+      - get: AgriCraft:seedAurigold
+      - get: AgriCraft:seedFerranium
+    rewards:
+      - xp: 10
+      - kit: {name: "Kit do Jardineiro Genético", items: [AgriCraft:cropsItem x32, minecraft:dye:15 x32, minecraft:bucket x2, minecraft:diamond x4]}
+      - loot: epico
+

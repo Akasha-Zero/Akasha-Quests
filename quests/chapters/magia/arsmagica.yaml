@@ -468,7 +468,7 @@ quests:
       - get: arsmagica2:InscriptionTable
     rewards:
       - xp: 4
-      - choice: [minecraft:writable_book x2, minecraft:feather x8, minecraft:ink_sac x8]
+      - choice: [minecraft:writable_book x2, minecraft:feather x8, minecraft:dye x8]
 
   - id: formas
     title: "Formas"
@@ -498,7 +498,7 @@ quests:
     desc: |
       O §ecomponente§r é o que o feitiço §efaz§r. Há dezenas: Dano Físico, de Fogo, de Gelo e
       de Raio, Cavar, Cura, Regeneração, Salto, Queda Lenta, Pressa, Voo, Luz, Visão Noturna,
-      Telecinese, Atração, Piscar (Blink), Marcar/Retornar, Invocar, Escudo, Encantar Plantas
+      Telecinese, Atração, Piscar (Blink), Marcar/Retornar, Invocar, Escudo, magias de plantas
       (Crescer, Colher, Arar), Tempestade, Estrela Cadente e muito mais.
 
       Cada componente aparece uma vez por estágio e pede §ereagentes§r no altar (o livro da
@@ -706,3 +706,1380 @@ quests:
       - check
     rewards:
       - loot: comum
+
+  # ======================================================================
+  # FASE 3 — A REDE DE ETHERIUM
+  # ======================================================================
+  - id: obelisco
+    title: "O Obelisco"
+    type: main
+    deps: [primeiro_feitico]
+    icon: arsmagica2:obelisk
+    desc: |
+      Uma fornalha mágica! O §eObelisco§r (Pó de Vinteum, pedra e tijolo de pedra cinzelado)
+      queima §ePó de Vinteum§r ou §eEtherium Líquido§r (balde) e gera §bEtherium Neutro§r, que
+      alcança aparelhos num raio de §e10 blocos§r.
+
+      §aUpgrades opcionais:§r um círculo de Giz de Mago em volta e depois os pilares (veja a
+      estrutura no Compêndio) aumentam a geração. Tijolo cinzelado: 4 tijolos de pedra em 2×2.
+    tasks:
+      - get: arsmagica2:obelisk
+    rewards:
+      - xp: 4
+      - choice: [arsmagica2:itemOre x16, minecraft:stonebrick x32, minecraft:coal_block x4]
+
+  - id: chave_cristal
+    title: "Chave de Cristal"
+    type: main
+    deps: [obelisco, cerublossom, desert_nova]
+    icon: arsmagica2:crystal_wrench
+    desc: |
+      Etherium não anda sozinho: você precisa "ligar" fonte e destino. A §eChave de Cristal§r
+      (ferro, Cerublossom, Desert Nova e Pó de Vinteum) faz isso:
+
+      §e1.§r Clique direito na §efonte§r (Obelisco, Prisma, Aurem...).
+      §e2.§r Clique direito no §edestino§r. Não precisa clicar nos conduítes do caminho: a rede
+      acha o trajeto sozinha.
+      §aAtalho:§r agachado na fonte, o cristal fica verde e você liga vários destinos seguidos.
+    tasks:
+      - get: arsmagica2:crystal_wrench
+    rewards:
+      - xp: 4
+      - choice: [minecraft:iron_ingot x8, arsmagica2:itemOre x8, minecraft:gold_nugget x16]
+
+  - id: conduite_etherium
+    title: "Conduíte de Etherium"
+    type: normal
+    deps: [chave_cristal, quimerita]
+    icon: arsmagica2:essenceConduit
+    desc: |
+      Cada §eConduíte de Etherium§r (Quimerita sobre pedras) retransmite energia num raio de
+      §e10 blocos§r, formando correntes de até §e100 blocos§r a partir da fonte. Coloque-os a
+      até 10 blocos uns dos outros.
+    tasks:
+      - get: arsmagica2:essenceConduit x2
+    rewards:
+      - xp: 3
+      - item: ore:gemChimerite x2
+
+  - id: tipos_etherium
+    title: "Os Três Etherium"
+    type: info
+    deps: [obelisco]
+    icon: arsmagica2:essenceConduit
+    desc: |
+      Existem três tipos de Etherium:
+
+      §b• Neutro§r — do Obelisco (queima Vinteum/Etherium Líquido).
+      §e• Luminoso§r — do §ePrisma Celestial§r (luz do sol, passivo e lento).
+      §5• Sombrio§r — da §5Aurem Negra§r (consome a vida de criaturas).
+
+      Certas partes de feitiço exigem um tipo específico no altar (o livro mostra pela cor;
+      troque o tipo com a Chave de Cristal). Algumas máquinas só funcionam com um tipo, e o
+      Calefator faz maravilhas com os três juntos.
+    tasks:
+      - check
+    rewards:
+      - xp: 1
+
+  - id: oculos_magitech
+    title: "Óculos Magitech"
+    type: normal
+    deps: [chave_cristal, topazio_azul]
+    icon: arsmagica2:magitechGoggles
+    desc: |
+      Quando a rede fica complicada, você precisa ver o invisível. Os §eÓculos Magitech§r
+      (couro, Quimerita, Topázio Azul e pepita de ouro) mostram de onde vem a energia de cada
+      máquina e revelam os §eElos de Energia Quebrados§r (quando um conduíte some do caminho).
+    tasks:
+      - get: arsmagica2:magitechGoggles
+    rewards:
+      - xp: 2
+      - item: minecraft:leather x6
+
+  - id: cajado_magitech
+    title: "Cajado Magitech"
+    type: normal
+    deps: [oculos_magitech]
+    icon: arsmagica2:magitechStaff
+    desc: |
+      O parceiro dos Óculos. Clique direito num bloco com o §eCajado Magitech§r (pepitas de
+      ouro e um Topázio Azul) para ler o nível de Etherium; de óculos, agachado, você vê
+      todas as entradas da máquina. Ele também recolhe a Vassoura Mágica e muda a prioridade
+      dos Cristais Marcadores.
+    tasks:
+      - get: arsmagica2:magitechStaff
+    rewards:
+      - xp: 2
+      - item: minecraft:gold_nugget x16
+
+  - id: giz_mago
+    title: "Giz de Mago"
+    type: normal
+    deps: [obelisco]
+    icon: arsmagica2:blueChalk
+    desc: |
+      Rituais começam no chão. O §eGiz de Mago§r (corante branco, argila, Pó de Vinteum, sílex
+      e papel) desenha runas no piso — dura 50 usos.
+
+      É ele que forma os círculos dos rituais, as melhorias do Obelisco e o anel que estabiliza
+      o Altar de Criação.
+    tasks:
+      - get: arsmagica2:blueChalk
+    rewards:
+      - xp: 2
+      - item: minecraft:clay_ball x8
+
+  - id: gordura_animal
+    title: "Gordura Animal"
+    type: normal
+    deps: [compendio_arcano]
+    icon: arsmagica2:itemOre:8
+    desc: |
+      Nada glamouroso, eu sei. A §eGordura Animal§r cai de porcos (perto de 30% de chance) e é a
+      cera das Velas de Proteção. Junte §e4§r.
+    tasks:
+      - get: arsmagica2:itemOre:8 x4
+    rewards:
+      - xp: 2
+      - item: minecraft:cooked_porkchop x8
+
+  - id: vela_protecao
+    title: "Vela de Proteção"
+    type: normal
+    deps: [gordura_animal, floresta_witchwood, giz_mago]
+    icon: arsmagica2:wardingCandle
+    desc: |
+      Linha, Gordura Animal e uma Laje de Witchwood. A §eVela de Proteção§r tem dois usos:
+
+      §e• Ritual:§r colocada no chão, faz parte dos desenhos de giz.
+      §e• Detector:§r agachado, clique num bloco para §esintonizá-la§r; a chama fica azul a 15
+      blocos e vermelha a 5 blocos daquele bloco (ótima para achar minério!). Velas sintonizadas
+      não servem para rituais.
+    tasks:
+      - get: arsmagica2:wardingCandle x4
+    rewards:
+      - xp: 3
+      - item: minecraft:string x8
+
+  - id: composto_arcano
+    title: "Composto Arcano"
+    type: main
+    deps: [obelisco]
+    icon: arsmagica2:itemOre:1
+    desc: |
+      Uma mistura de materiais de vários mundos: pedra, redstone, Netherrack e pó de
+      glowstone formam o §eComposto Arcano§r.
+
+      Ele não é útil sozinho — mas na fornalha vira a famosa Cinza Arcana. Faça §e4§r.
+    tasks:
+      - get: arsmagica2:itemOre:1 x4
+    rewards:
+      - xp: 4
+      - choice: [minecraft:netherrack x32, minecraft:glowstone_dust x8, minecraft:redstone x16]
+
+  - id: cinza_arcana
+    title: "Cinza Arcana"
+    type: main
+    deps: [composto_arcano]
+    icon: arsmagica2:itemOre:2
+    desc: |
+      Queime o Composto Arcano na fornalha: §eCinza Arcana§r! Ela armazena Etherium como
+      ninguém e é a pedra fundamental das máquinas avançadas — e o centro de §etoda§r receita
+      do Refinador de Essências. Junte §e8§r.
+    tasks:
+      - get: ore:arcaneAsh x8
+    rewards:
+      - xp: 4
+      - choice: [arsmagica2:itemOre:1 x4, minecraft:obsidian x4, minecraft:coal x16]
+
+  - id: vinteum_purificado
+    title: "Vinteum Purificado"
+    type: normal
+    deps: [cinza_arcana, cerublossom, desert_nova]
+    icon: arsmagica2:itemOre:3
+    desc: |
+      Cinza Arcana fortalece, a Cerublossom catalisa e a Desert Nova libera a instabilidade:
+      os três + Pó de Vinteum = §eVinteum Purificado§r, com capacidade de Etherium muito maior.
+
+      Ele aparece no Foco Maior, no Inlay de Ouro, na Poção Lendária e no Filactério. Faça
+      §e4§r.
+    tasks:
+      - get: arsmagica2:itemOre:3 x4
+    rewards:
+      - xp: 3
+      - item: ore:dustVinteum x8
+
+  - id: refinador_essencias
+    title: "Refinador de Essências"
+    type: main
+    deps: [cinza_arcana, chave_cristal]
+    icon: arsmagica2:essenceRefiner
+    desc: |
+      O §eRefinador de Essências§r (tábuas, diamante, obsidiana e Cinza Arcana) reduz itens
+      comuns à sua §eessência§r pura. Ele recebe §e5 itens§r (a Cinza Arcana sempre no centro)
+      e consome §bEtherium§r: ligue-o ao Obelisco com a Chave de Cristal.
+
+      §aDica:§r Etherium §5Sombrio§r (Aurem Negra) acelera muito o processo. Anel vermelho
+      piscando na interface = falta energia.
+    tasks:
+      - get: arsmagica2:essenceRefiner
+    rewards:
+      - xp: 4
+      - choice: [ore:arcaneAsh x6, minecraft:diamond x1, minecraft:obsidian x8]
+
+  - id: essencia_arcana
+    title: "Essência Arcana"
+    type: main
+    deps: [refinador_essencias]
+    icon: arsmagica2:essence
+    desc: |
+      A mais simples de todas: §e5 Cinzas Arcanas§r no Refinador = §eEssência Arcana§r.
+
+      Ela invoca o Guardião Arcano, entra no Diário e no Núcleo Superior. Abra o Refinador no
+      NEI para ver as receitas de todas as essências.
+    tasks:
+      - get: arsmagica2:essence x2
+    rewards:
+      - xp: 4
+      - choice: [ore:arcaneAsh x6, arsmagica2:itemOre x16, minecraft:book x4]
+
+  - id: essencia_terra
+    title: "Essência da Terra"
+    type: normal
+    deps: [essencia_arcana]
+    icon: arsmagica2:essence:1
+    desc: |
+      Terra, pedra, Cinza Arcana, pedra e obsidiana no Refinador = §eEssência da Terra§r.
+      Peitoral de Mago de Batalha, invocação... e o Guardião da Terra também a solta.
+    tasks:
+      - get: arsmagica2:essence:1
+    rewards:
+      - xp: 2
+      - item: minecraft:obsidian x4
+
+  - id: essencia_ar
+    title: "Essência do Ar"
+    type: normal
+    deps: [essencia_arcana, raiz_tarma]
+    icon: arsmagica2:essence:2
+    desc: |
+      Penas e Raízes de Tarma em volta da Cinza Arcana = §eEssência do Ar§r. Ela é o
+      catalisador da invocação do §eGuardião do Ar§r e vai nas Botas de Mago de Batalha.
+    tasks:
+      - get: arsmagica2:essence:2
+    rewards:
+      - xp: 2
+      - item: minecraft:feather x8
+
+  - id: essencia_fogo
+    title: "Essência do Fogo"
+    type: normal
+    deps: [essencia_arcana]
+    icon: arsmagica2:essence:3
+    desc: |
+      Carvão e pó de blaze em volta da Cinza Arcana = §eEssência do Fogo§r. Vai nas Calças de
+      Mago de Batalha e na Vara de Pesca Infernal.
+    tasks:
+      - get: arsmagica2:essence:3
+    rewards:
+      - xp: 2
+      - item: minecraft:blaze_powder x4
+
+  - id: essencia_agua
+    title: "Essência da Água"
+    type: normal
+    deps: [essencia_arcana, wakebloom]
+    icon: arsmagica2:essence:4
+    desc: |
+      Wakebloom e baldes de água (ou frascos de água) em volta da Cinza Arcana = §eEssência da
+      Água§r. Capacete de Mago de Batalha... e a chave para irritar o §cGuardião do Fogo§r.
+    tasks:
+      - get: arsmagica2:essence:4
+    rewards:
+      - xp: 2
+      - item: minecraft:water_bucket
+
+  - id: essencia_gelo
+    title: "Essência do Gelo"
+    type: normal
+    deps: [essencia_arcana]
+    icon: arsmagica2:essence:6
+    desc: |
+      Neve e gelo em volta da Cinza Arcana = §eEssência do Gelo§r. Ingrediente do Núcleo
+      Superior. (Toque de Seda ajuda a pegar o gelo!)
+    tasks:
+      - get: arsmagica2:essence:6
+    rewards:
+      - xp: 2
+      - item: minecraft:snowball x16
+
+  - id: essencia_raio
+    title: "Essência do Raio"
+    type: normal
+    deps: [essencia_arcana]
+    icon: arsmagica2:essence:7
+    desc: |
+      Redstone e pó de glowstone em volta da Cinza Arcana = §eEssência do Raio§r. Também vai
+      no Núcleo Superior.
+    tasks:
+      - get: arsmagica2:essence:7
+    rewards:
+      - xp: 2
+      - item: minecraft:redstone x16
+
+  - id: essencia_natureza
+    title: "Essência da Natureza"
+    type: normal
+    deps: [essencia_arcana]
+    icon: arsmagica2:essence:5
+    desc: |
+      Folhas, vitória-régia, Cinza Arcana, cacto e cipó = §eEssência da Natureza§r. Ingrediente
+      do Núcleo Superior e das Sementes de Flor-da-Lua.
+    tasks:
+      - get: arsmagica2:essence:5
+    rewards:
+      - xp: 2
+      - item: minecraft:sapling x8
+
+  - id: essencia_vida
+    title: "Essência da Vida"
+    type: normal
+    deps: [essencia_arcana]
+    icon: arsmagica2:essence:8
+    desc: |
+      Ovos e §emaçãs douradas§r em volta da Cinza Arcana = §eEssência da Vida§r. Cara, mas
+      essencial: Essência Pura, Foco de Jogador, Caule Infundido e o Capacete Vinculado.
+    tasks:
+      - get: arsmagica2:essence:8
+    rewards:
+      - xp: 3
+      - item: minecraft:egg x8
+
+  - id: essencia_ender
+    title: "Essência do Ender"
+    type: normal
+    deps: [essencia_arcana]
+    icon: arsmagica2:essence:9
+    desc: |
+      Pérolas e Olhos do Fim em volta da Cinza Arcana = §eEssência do Ender§r. Receptáculo de
+      Pedra-Chave, Vara de Pesca Arcana, Cristal de Déficit, ritual de Corrupção... e a
+      invocação do temível §5Guardião do Ender§r.
+    tasks:
+      - get: arsmagica2:essence:9
+    rewards:
+      - xp: 3
+      - item: minecraft:ender_pearl x4
+
+  - id: nucleo_base
+    title: "Núcleo de Essência Básico"
+    type: normal
+    deps: [essencia_terra, essencia_ar, essencia_fogo, essencia_agua]
+    icon: arsmagica2:essence:12
+    desc: |
+      As quatro essências clássicas — Ar, Água, Fogo e Terra — em volta da Cinza Arcana formam
+      o §eNúcleo de Essência Básico§r. Meio caminho para a Essência Pura!
+    tasks:
+      - get: arsmagica2:essence:12
+    rewards:
+      - xp: 3
+      - item: ore:arcaneAsh x4
+
+  - id: nucleo_superior
+    title: "Núcleo de Essência Superior"
+    type: normal
+    deps: [essencia_raio, essencia_gelo, essencia_natureza]
+    icon: arsmagica2:essence:11
+    desc: |
+      Raio, Gelo, Natureza e Arcano em volta da Cinza Arcana = §eNúcleo de Essência
+      Superior§r. A outra metade da Essência Pura.
+    tasks:
+      - get: arsmagica2:essence:11
+    rewards:
+      - xp: 3
+      - item: ore:arcaneAsh x4
+
+  - id: essencia_pura
+    title: "Essência Pura"
+    type: normal
+    deps: [nucleo_base, nucleo_superior, essencia_vida, essencia_ender]
+    icon: arsmagica2:essence:10
+    desc: |
+      Núcleo Superior, Vida, um §ediamante§r no centro, Ender e Núcleo Básico: a §eEssência
+      Pura§r, a soma de todos os elementos. Desconstrutor Arcano, Capuz e Calças do Arquimago
+      pedem esta joia. Respire fundo — você merece.
+    tasks:
+      - get: arsmagica2:essence:10
+    rewards:
+      - xp: 4
+      - item: minecraft:diamond x2
+
+  - id: bolsa_essencias
+    title: "Bolsa de Essências"
+    type: optional
+    deps: [essencia_arcana]
+    icon: arsmagica2:essenceBag
+    desc: |
+      Essência pra todo lado no inventário? A §eBolsa de Essências§r (couro, lã e pepita de
+      ouro) guarda tudo num cantinho só.
+    tasks:
+      - get: arsmagica2:essenceBag
+    rewards:
+      - loot: comum
+
+  - id: bolsa_runas
+    title: "Bolsa de Runas"
+    type: optional
+    deps: [runas_coloridas]
+    icon: arsmagica2:runeBag
+    desc: |
+      Couro e lã. A §eBolsa de Runas§r guarda runas — e as Pedras-Chave conseguem ler as runas
+      dentro dela para trocar de combinação rapidinho.
+    tasks:
+      - get: arsmagica2:runeBag
+    rewards:
+      - loot: comum
+
+  # ======================================================================
+  # FASE 4 — FOCOS E RITUAIS DE TRANSMUTAÇÃO
+  # ======================================================================
+  - id: foco_menor
+    title: "Foco Menor"
+    type: normal
+    deps: [obelisco]
+    icon: arsmagica2:lesserFocus
+    desc: |
+      Vidro rodeado de pepitas de ouro: o §eFoco Menor§r. Focos dizem às máquinas do AM2 como
+      trabalhar (alcance da Pedra Vidente e da Barreira Astral, por exemplo) e são a ponta dos
+      Cajados de Feitiço.
+    tasks:
+      - get: arsmagica2:lesserFocus
+    rewards:
+      - xp: 2
+      - item: minecraft:gold_nugget x8
+
+  - id: foco_padrao
+    title: "Foco Padrão"
+    type: normal
+    deps: [foco_menor]
+    icon: arsmagica2:standardFocus
+    desc: |
+      Foco Menor + 4 redstone = §eFoco Padrão§r. Ele é a base dos focos especializados: de
+      Mana, de Carga, de Monstro, de Criatura, de Item e de Jogador.
+    tasks:
+      - get: arsmagica2:standardFocus
+    rewards:
+      - xp: 2
+      - item: minecraft:redstone x8
+
+  - id: foco_maior
+    title: "Foco Maior"
+    type: normal
+    deps: [foco_padrao, vinteum_purificado]
+    icon: arsmagica2:greaterFocus
+    desc: |
+      Foco Padrão com Cinza Arcana e Vinteum Purificado = §eFoco Maior§r: alcance de 15 blocos
+      nas máquinas e a ponta do Cajado de Mestre.
+    tasks:
+      - get: arsmagica2:greaterFocus
+    rewards:
+      - xp: 3
+      - item: ore:arcaneAsh x4
+
+  - id: foco_mana
+    title: "Foco de Mana"
+    type: normal
+    deps: [foco_padrao]
+    icon: arsmagica2:manaFocus
+    desc: |
+      Foco Padrão entre dois Pós de Vinteum. O §eFoco de Mana§r reduz o custo de operação das
+      máquinas — e é reagente do §eRitual da Purificação§r!
+    tasks:
+      - get: arsmagica2:manaFocus
+    rewards:
+      - xp: 2
+      - item: ore:dustVinteum x8
+
+  - id: foco_carga
+    title: "Foco de Carga"
+    type: optional
+    deps: [foco_padrao]
+    icon: arsmagica2:chargeFocus
+    desc: |
+      Foco Padrão entre dois vidros. O §eFoco de Carga§r acelera a recarga das máquinas e, no
+      Calefator e no Reconstrutor Arcano, também a velocidade do trabalho.
+    tasks:
+      - get: arsmagica2:chargeFocus
+    rewards:
+      - loot: comum
+
+  - id: foco_monstro
+    title: "Foco de Monstro"
+    type: normal
+    deps: [foco_padrao]
+    icon: arsmagica2:mobFocus
+    desc: |
+      Foco Padrão entre duas espadas de ferro. O §eFoco de Monstro§r faz a Pedra Vidente
+      procurar monstros — e é reagente do §eRitual da Corrupção§r.
+    tasks:
+      - get: arsmagica2:mobFocus
+    rewards:
+      - xp: 2
+      - item: minecraft:iron_ingot x4
+
+  - id: prisma_celestial
+    title: "Prisma Celestial"
+    type: milestone
+    deps: [foco_mana, pedra_da_lua, vela_protecao, primeiro_feitico]
+    icon: arsmagica2:celestialPrism
+    banner: "Etherium Luminoso"
+    subtitle: "O Obelisco purificado"
+    desc: |
+      Um Obelisco que bebe a luz do sol! O §eRitual da Purificação§r transforma um Obelisco
+      em §ePrisma Celestial§r, que gera §eEtherium Luminoso§r de graça durante o dia.
+
+      §e1.§r Desenhe em volta do Obelisco o padrão de §eGiz de Mago§r e §eVelas§r do ritual
+      (Compêndio → Estruturas → Rituais → Purificação).
+      §e2.§r Jogue dentro do círculo §euma Pedra da Lua§r e §eum Foco de Mana§r.
+      §e3.§r Lance no Obelisco um feitiço com o componente §eLuz§r (Toque + Luz, por exemplo),
+      mirando exatamente o bloco central.
+
+      §aBônus:§r tampas de Pedra da Lua nos pilares aumentam muito a geração, mas fazem o
+      Prisma carregar à noite.
+    tasks:
+      - get: arsmagica2:celestialPrism
+    rewards:
+      - xp: 8
+      - kit: {name: "Kit do Guardião da Luz", items: [ore:gemMoonstone x1, arsmagica2:itemOre:3 x4, arsmagica2:standardManaPotion x4, minecraft:glowstone x8]}
+      - loot: raro
+
+  - id: aurem_negra
+    title: "Aurem Negra"
+    type: milestone
+    deps: [foco_monstro, pedra_do_sol, vela_protecao, primeiro_feitico]
+    icon: arsmagica2:blackAurem
+    banner: "Etherium Sombrio"
+    subtitle: "A fome da escuridão"
+    desc: |
+      Agora, o lado sombrio. §cA Aurem Negra puxa criaturas vivas para o centro e arranca a
+      vida delas§r — mobs mortos por ela não deixam XP nem itens. Em troca, gera §5Etherium
+      Sombrio§r.
+
+      §e1.§r Desenhe o padrão do §eRitual da Corrupção§r em volta de um Obelisco (veja no
+      Compêndio).
+      §e2.§r Jogue dentro §eum Foco de Monstro§r e §euma Pedra do Sol§r.
+      §e3.§r Acerte o Obelisco com um feitiço de §eDano de Fogo§r.
+
+      §aDica:§r a Aurem fica ótima numa farm de mobs. Mantenha-a longe dos seus animais (e de
+      você!).
+    tasks:
+      - get: arsmagica2:blackAurem
+    rewards:
+      - xp: 8
+      - kit: {name: "Kit do Pacto Sombrio", items: [ore:gemSunstone x1, arsmagica2:essence:9 x2, minecraft:obsidian x16, minecraft:rotten_flesh x16]}
+      - loot: raro
+
+  - id: tres_luzes
+    title: "As Três Luzes do Etherium"
+    type: milestone
+    deps: [prisma_celestial, aurem_negra, conduite_etherium]
+    icon: arsmagica2:essenceConduit
+    banner: "As Três Luzes"
+    subtitle: "Neutro, Luminoso e Sombrio"
+    desc: |
+      Obelisco, Prisma Celestial e Aurem Negra — a sua rede agora tem os três tipos de
+      Etherium. Isso abre os feitiços mais complexos do altar (que pedem tipos específicos) e
+      as máquinas que exigem dois ou três tipos de uma vez.
+
+      §aOrganização que eu recomendo:§r os três geradores perto do Altar de Criação, ligados
+      por Conduítes, e uma Bateria de Mana como reserva. O Prisma perto do altar ainda ajuda a
+      combater a instabilidade na criação; a Aurem, ao contrário, atrapalha — deixe-a mais
+      afastada.
+
+      Eu estou orgulhosíssima. Você domina a energia do Volume Arcano!
+    tasks:
+      - get: [arsmagica2:obelisk, arsmagica2:celestialPrism, arsmagica2:blackAurem]
+    rewards:
+      - xp: 8
+      - kit: {name: "Kit do Engenheiro de Etherium", items: [arsmagica2:essenceConduit x4, arsmagica2:manaBattery, ore:arcaneAsh x8, arsmagica2:itemOre:3 x4]}
+      - loot: raro
+
+  - id: bateria_mana
+    title: "Bateria de Mana"
+    type: normal
+    deps: [cinza_arcana, quimerita, chave_cristal]
+    icon: arsmagica2:manaBattery
+    desc: |
+      Uma moldura de Quimerita e Vinteum com Cinza Arcana no centro: a §eBateria de Mana§r
+      armazena muito Etherium. Ela sempre fornece energia aos aparelhos ligados e, com sinal
+      de redstone, puxa energia da rede.
+
+      §aGuarde uma:§r ela também é o pára-raios do ritual do Guardião do Raio.
+    tasks:
+      - get: arsmagica2:manaBattery
+    rewards:
+      - xp: 3
+      - item: ore:gemChimerite x2
+
+  - id: calefator
+    title: "Calefator"
+    type: normal
+    deps: [chave_cristal]
+    icon: arsmagica2:calefactor
+    desc: |
+      Uma fornalha mágica movida a Etherium (lápis, pedra, redstone e Pó de Vinteum). O
+      §eCalefator§r às vezes gera §ePó de Vinteum§r de brinde ao fundir e sempre tem uma
+      pequena chance de dobrar comida.
+
+      §eCom Etherium Luminoso, Neutro e Sombrio ao mesmo tempo, ele dobra minérios!§r
+    tasks:
+      - get: arsmagica2:calefactor
+    rewards:
+      - xp: 3
+      - item: minecraft:iron_ore x8
+
+  - id: reconstrutor_arcano
+    title: "Reconstrutor Arcano"
+    type: normal
+    deps: [chave_cristal, parede_magica]
+    icon: arsmagica2:blockArcaneReconstructor
+    desc: |
+      Direcionando Etherium para os pontos fracos de um item, a energia solidifica e conserta
+      o estrago. O §eReconstrutor Arcano§r (pedra, Parede Mágica, Pó de Vinteum, diamante e
+      obsidiana) repara ferramentas e armaduras.
+    tasks:
+      - get: arsmagica2:blockArcaneReconstructor
+    rewards:
+      - xp: 3
+      - item: minecraft:diamond
+
+  - id: parede_magica
+    title: "Parede Mágica"
+    type: normal
+    deps: [po_vinteum]
+    icon: arsmagica2:magicWall
+    desc: |
+      Uma tentativa antiga de bloco de ilusão que... não ficou ilusória, mas segura até bola de
+      fogo! Pó de Vinteum, pedra e Pó de Vinteum em linha = §e16 Paredes Mágicas§r. Elas vão no
+      Reconstrutor, no Pote de Flicker e no Filactério.
+    tasks:
+      - get: arsmagica2:magicWall x4
+    rewards:
+      - xp: 2
+      - item: minecraft:stone x16
+
+  - id: extrator_etherium
+    title: "Extrator de Etherium"
+    type: normal
+    deps: [floresta_witchwood, topazio_azul]
+    icon: arsmagica2:etheriumExtractor
+    desc: |
+      O jeito preferido dos magos de colher Etherium Líquido. Use o §eExtrator de Etherium§r
+      (vidro, ferro e Topázio Azul) num §etronco de Witchwood§r com um balde vazio no
+      inventário: a seiva vira §eBalde de Etherium Líquido§r e o tronco fica §7Drenado§r.
+
+      O balde alimenta o Obelisco e é usado na Poção de Etherium Infundido.
+    tasks:
+      - get: arsmagica2:etheriumExtractor
+    rewards:
+      - xp: 3
+      - item: minecraft:bucket x2
+
+  - id: balde_etherium
+    title: "Etherium Engarrafado"
+    type: normal
+    deps: [extrator_etherium]
+    icon: arsmagica2:liquidEssenceBucket
+    desc: |
+      Um balde inteirinho de magia! Pegue um §eBalde de Etherium Líquido§r.
+
+      §aIdeia:§r espalhe fontes de Etherium em volta de uma muda de Witchwood, ou cerque o
+      Altar de Criação com giz e Etherium para estabilizar as criações.
+    tasks:
+      - get: arsmagica2:liquidEssenceBucket
+    rewards:
+      - xp: 2
+      - item: minecraft:bucket
+
+  - id: pocao_etherium
+    title: "Poção de Etherium Infundido"
+    type: optional
+    deps: [balde_etherium, raiz_tarma]
+    icon: arsmagica2:liquidEssenceBottle
+    desc: |
+      Balde de Etherium Líquido + Quimerita + Raiz de Tarma = §ePoção de Etherium Infundido§r,
+      que aumenta temporariamente a mana máxima. O processo desperdiça muito Etherium, mas é
+      reagente da Soulspike.
+    tasks:
+      - get: arsmagica2:liquidEssenceBottle
+    rewards:
+      - loot: comum
+
+  - id: pedra_eterna
+    title: "Pedra Eterna"
+    type: optional
+    deps: [topazio_azul, quimerita]
+    icon: arsmagica2:everstone
+    desc: |
+      Um bloco que imita outros (clique nele com o bloco desejado). Quebrado, ele não cai: fica
+      incorpóreo por um tempo e depois volta. Perfeito para portas secretas! A Chave de Cristal
+      remove o disfarce.
+    tasks:
+      - get: arsmagica2:everstone
+    rewards:
+      - loot: comum
+
+  - id: bloco_ilusao
+    title: "Blocos de Ilusão"
+    type: optional
+    deps: [quimerita, runas_coloridas]
+    icon: arsmagica2:illusionBlock
+    desc: |
+      Quimerita e runas pretas formam §eBlocos de Ilusão§r: parecem sólidos e são sólidos — a
+      menos que você esteja com §eVisão Verdadeira§r. A versão §eEtérea§r (com vidro) é
+      atravessável por qualquer um.
+    tasks:
+      - one_of: [arsmagica2:illusionBlock, arsmagica2:illusionBlock:1]
+    rewards:
+      - loot: comum
+
+  - id: tocha_vinteum
+    title: "Tocha de Vinteum"
+    type: normal
+    deps: [po_vinteum]
+    icon: arsmagica2:VinteumTorch
+    desc: |
+      Pó de Vinteum sobre um graveto = §e4 Tochas de Vinteum§r. Puramente decorativas... exceto
+      por um detalhe: o ritual do §eGuardião da Terra§r exige quatro delas!
+    tasks:
+      - get: arsmagica2:VinteumTorch x4
+    rewards:
+      - xp: 2
+      - item: minecraft:stick x16
+
+  - id: bolo_mana
+    title: "Bolo de Mana"
+    type: optional
+    deps: [cerublossom, desert_nova]
+    icon: arsmagica2:manaCake
+    desc: |
+      É bolo! Cerublossom, Desert Nova, açúcar e trigo rendem §e3 Bolos de Mana§r: matam a fome
+      e aceleram a regeneração de mana. O lanche oficial do mago.
+    tasks:
+      - get: arsmagica2:manaCake x3
+    rewards:
+      - loot: comum
+
+  - id: pocao_mana_menor
+    title: "Poções de Mana"
+    type: normal
+    deps: [mana_e_nivel]
+    icon: arsmagica2:lesserManaPotion
+    desc: |
+      O cafezinho do mago. Semente de trigo, açúcar e um frasco de poção = §ePoção de Mana
+      Menor§r (100 de mana). Com pólvora vira a §ePadrão§r (250).
+
+      Três poções iguais + linha = um §eFeixe§r de três usos (devolve os frascos).
+    tasks:
+      - get: [arsmagica2:lesserManaPotion, arsmagica2:standardManaPotion]
+    rewards:
+      - xp: 2
+      - item: minecraft:glass_bottle x8
+
+  - id: pocao_mana_maior
+    title: "Poções Maior e Épica"
+    type: optional
+    deps: [pocao_mana_menor, cinza_arcana]
+    icon: arsmagica2:epicManaPotion
+    desc: |
+      Padrão + Pó de Vinteum = §eMaior§r (2000 de mana). Maior + Cinza Arcana = §eÉpica§r
+      (5000). Para as lutas contra os Guardiões, leve várias.
+    tasks:
+      - get: arsmagica2:epicManaPotion
+    rewards:
+      - loot: comum
+
+  - id: pocao_mana_lendaria
+    title: "Poção de Mana Lendária"
+    type: optional
+    deps: [pocao_mana_maior, vinteum_purificado]
+    icon: arsmagica2:legendaryManaPotion
+    desc: |
+      Épica + Vinteum Purificado = §eLendária§r: §e10 000§r de mana de uma vez! Também é
+      reagente do Ritual da Fusão com o Mundo.
+    tasks:
+      - get: arsmagica2:legendaryManaPotion
+    rewards:
+      - loot: incomum
+
+  - id: martini_mana
+    title: "Martíni de Mana"
+    type: optional
+    deps: [pocao_mana_menor]
+    icon: arsmagica2:manaMartini
+    desc: |
+      Uma homenagem à versão "007" do AM2. Gelo, batata, açúcar, graveto e uma Poção de Mana
+      Padrão = §eMartíni de Mana§r: §e25% menos esgotamento§r por um tempo. Batido, não mexido.
+    tasks:
+      - get: arsmagica2:manaMartini
+    rewards:
+      - loot: comum
+
+  - id: pedra_mana
+    title: "Pedra de Mana"
+    type: optional
+    deps: [po_vinteum]
+    icon: arsmagica2:manaStone
+    desc: |
+      Diamante, ouro e Pó de Vinteum. A §ePedra de Mana§r guarda até §e1000§r da sua mana para
+      depois; feitiços que não cabem na sua reserva puxam dela.
+    tasks:
+      - get: arsmagica2:manaStone
+    rewards:
+      - loot: comum
+
+  # ======================================================================
+  # FASE 5 — VESTES DE MAGO E MAGO DE BATALHA
+  # ======================================================================
+  - id: capuz_mago
+    title: "Capuz de Mago"
+    type: normal
+    deps: [runas_coloridas]
+    icon: arsmagica2:mageHood
+    desc: |
+      A armadura do AM2 é feita para magos: pouca durabilidade, mas ela §einfunde-se§r —
+      puxa mana de você para se consertar enquanto está vestida.
+
+      O §eCapuz de Mago§r leva lã roxa, couro, uma §eRuna Roxa§r e um frasco de água. Peças de
+      mago aceitam muito bem encantamentos.
+    tasks:
+      - get: arsmagica2:mageHood
+    rewards:
+      - xp: 2
+      - item: minecraft:wool:10 x8
+
+  - id: vestes_mago
+    title: "Vestes de Mago"
+    type: normal
+    deps: [runas_coloridas]
+    icon: arsmagica2:mageArmor
+    desc: |
+      Lã roxa, couro, carvão e duas §eRunas Brancas§r = §eVestes de Mago§r.
+    tasks:
+      - get: arsmagica2:mageArmor
+    rewards:
+      - xp: 2
+      - item: minecraft:wool:10 x8
+
+  - id: calcas_mago
+    title: "Calças de Mago"
+    type: normal
+    deps: [runas_coloridas]
+    icon: arsmagica2:mageLeggings
+    desc: |
+      Lã roxa, couro, pólvora e uma §eRuna Amarela§r = §eCalças de Mago§r.
+    tasks:
+      - get: arsmagica2:mageLeggings
+    rewards:
+      - xp: 2
+      - item: minecraft:leather x6
+
+  - id: botas_mago
+    title: "Botas de Mago"
+    type: normal
+    deps: [runas_coloridas]
+    icon: arsmagica2:mageBoots
+    desc: |
+      Couro, lã roxa, pena e duas §eRunas Pretas§r = §eBotas de Mago§r.
+    tasks:
+      - get: arsmagica2:mageBoots
+    rewards:
+      - xp: 2
+      - item: minecraft:feather x8
+
+  - id: traje_mago
+    title: "O Traje Completo"
+    type: milestone
+    deps: [capuz_mago, vestes_mago, calcas_mago, botas_mago]
+    icon: arsmagica2:mageArmor
+    banner: "Traje de Mago"
+    subtitle: "Mana fluindo pelas costuras"
+    desc: |
+      Capuz, vestes, calças e botas! Com o §econjunto completo§r, a sua regeneração de mana
+      aumenta e todos os feitiços ficam um pouco mais eficazes.
+
+      §aLembre:§r a armadura se repara com a sua mana (infusão) — se ela estiver gasta, parte da
+      sua mana vai para ela. E qualquer armadura vestida ganha XP quando você ganha: guarde isso
+      para a Mesa de Imbuimento.
+
+      Próximo passo: obsidiana, Inlays de Ouro e essências para a §eArmadura de Mago de
+      Batalha§r.
+    tasks:
+      - get: [arsmagica2:mageHood, arsmagica2:mageArmor, arsmagica2:mageLeggings, arsmagica2:mageBoots]
+    rewards:
+      - xp: 8
+      - kit: {name: "Kit do Alfaiate Arcano", items: [arsmagica2:standardManaPotion x4, arsmagica2:manaCake x3, arsmagica2:rune:1 x8, minecraft:wool:10 x16]}
+      - loot: raro
+
+  - id: inlay_redstone
+    title: "Inlay de Redstone"
+    type: normal
+    deps: [po_vinteum]
+    icon: arsmagica2:redstoneInlay
+    desc: |
+      Oito redstone em volta de um Pó de Vinteum = §e4 Inlays de Redstone§r. Inlays são runas
+      de chão que §einvocam Guardiões§r quando dispostas num §eanel 3×3 com o centro vazio§r
+      (todas no mesmo nível e do mesmo tipo — as runas acendem quando o anel está certo).
+
+      §aCuriosidade:§r também funcionam como trilhos: o de redstone acelera carrinhos.
+    tasks:
+      - get: arsmagica2:redstoneInlay x8
+    rewards:
+      - xp: 3
+      - item: minecraft:redstone x16
+
+  - id: inlay_ferro
+    title: "Inlay de Ferro"
+    type: normal
+    deps: [inlay_redstone, cinza_arcana]
+    icon: arsmagica2:ironInlay
+    desc: |
+      Oito lingotes de ferro em volta de uma Cinza Arcana = §e4 Inlays de Ferro§r. Invocam os
+      Guardiões da Terra e Arcano. (Como trilho, inverte o sentido do carrinho.)
+    tasks:
+      - get: arsmagica2:ironInlay x8
+    rewards:
+      - xp: 3
+      - item: minecraft:iron_ingot x8
+
+  - id: inlay_ouro
+    title: "Inlay de Ouro"
+    type: normal
+    deps: [inlay_ferro, vinteum_purificado]
+    icon: arsmagica2:goldInlay
+    desc: |
+      Oito lingotes de ouro em volta de um Vinteum Purificado = §e4 Inlays de Ouro§r: o inlay
+      dos Guardiões mais poderosos e da Armadura de Mago de Batalha. (Como trilho, teleporta o
+      carrinho até o próximo inlay de ouro a até 8 blocos!)
+    tasks:
+      - get: arsmagica2:goldInlay x8
+    rewards:
+      - xp: 3
+      - item: minecraft:gold_ingot x8
+
+  - id: capacete_batalha
+    title: "Diadema de Mago de Batalha"
+    type: normal
+    deps: [traje_mago, inlay_ouro, essencia_agua]
+    icon: arsmagica2:battlemageHood
+    desc: |
+      A Armadura de Mago de Batalha é dada só a quem provou seu valor: mais proteção e
+      durabilidade, menos encantabilidade e bônus mágicos menores que a de mago. Com XP, ela
+      libera feitiços de proteção que vêm em seu socorro.
+
+      O §eDiadema§r: obsidiana, Inlay de Ouro, Runa em Branco e §eEssência da Água§r.
+    tasks:
+      - get: arsmagica2:battlemageHood
+    rewards:
+      - xp: 3
+      - item: minecraft:obsidian x8
+
+  - id: peitoral_batalha
+    title: "Armadura de Mago de Batalha"
+    type: normal
+    deps: [traje_mago, inlay_ouro, essencia_terra]
+    icon: arsmagica2:battlemageArmor
+    desc: |
+      Obsidiana, Inlay de Ouro, Runas em Branco e §eEssência da Terra§r.
+    tasks:
+      - get: arsmagica2:battlemageArmor
+    rewards:
+      - xp: 3
+      - item: minecraft:obsidian x8
+
+  - id: calcas_batalha
+    title: "Calças de Mago de Batalha"
+    type: normal
+    deps: [traje_mago, inlay_ouro, essencia_fogo]
+    icon: arsmagica2:battlemageLeggings
+    desc: |
+      Obsidiana, dois Inlays de Ouro, Runa em Branco e §eEssência do Fogo§r.
+    tasks:
+      - get: arsmagica2:battlemageLeggings
+    rewards:
+      - xp: 3
+      - item: minecraft:obsidian x8
+
+  - id: botas_batalha
+    title: "Botas de Mago de Batalha"
+    type: normal
+    deps: [traje_mago, inlay_ouro, essencia_ar]
+    icon: arsmagica2:battlemageBoots
+    desc: |
+      Obsidiana, Inlay de Ouro, Runas em Branco e §eEssência do Ar§r.
+    tasks:
+      - get: arsmagica2:battlemageBoots
+    rewards:
+      - xp: 3
+      - item: minecraft:obsidian x8
+
+  - id: mago_batalha
+    title: "Armadura de Batalha Completa"
+    type: milestone
+    deps: [capacete_batalha, peitoral_batalha, calcas_batalha, botas_batalha]
+    icon: arsmagica2:battlemageArmor
+    banner: "Mago de Batalha"
+    subtitle: "Obsidiana, ouro e quatro elementos"
+    desc: |
+      Diadema, armadura, calças e botas de §eMago de Batalha§r! Agora sim você aguenta uma luta
+      de verdade — e vai precisar: os Guardiões elementais estão logo ali.
+
+      §aLembrete:§r a armadura se repara mais devagar que a de mago, e os feitiços protetores
+      dela consomem a magia guardada, que volta aos poucos da sua mana.
+
+      Estas quatro peças são a base das lendárias §6Vestes do Arquimago§r, feitas com as
+      lembranças dos Guardiões. Respire, prepare as poções e vamos caçar!
+    tasks:
+      - get: [arsmagica2:battlemageHood, arsmagica2:battlemageArmor, arsmagica2:battlemageLeggings, arsmagica2:battlemageBoots]
+    rewards:
+      - xp: 8
+      - kit: {name: "Kit do Mago de Batalha", items: [arsmagica2:greaterManaPotion x4, arsmagica2:goldInlay x4, minecraft:golden_apple x2, minecraft:obsidian x16]}
+      - loot: raro
+
+  - id: mesa_imbuimento
+    title: "Mesa de Imbuimento"
+    type: normal
+    deps: [altar_criacao, traje_mago]
+    icon: arsmagica2:armorInfuser
+    desc: |
+      Toda armadura vestida absorve parte do XP que você ganha. Com a §eMesa de Imbuimento de
+      Armadura§r (dois Altares de Criação, tapete, mesa de encantamento e obsidiana) você gasta
+      esse XP em §eimbuimentos§r — um por peça, então escolha bem!
+
+      Custos: Nível I = 30, II = 42, III = 54, IV = 66 níveis guardados na peça. Exemplos:
+      Velocidade de Mineração (cabeça), Salvar Vida (peito), Passo Assistido (pernas), Andar na
+      Água (pés). Vista a peça e abra a mesa; as opções disponíveis aparecem coloridas.
+    tasks:
+      - get: arsmagica2:armorInfuser
+    rewards:
+      - xp: 3
+      - item: minecraft:experience_bottle x8
+
+  - id: catalisador_vinculo
+    title: "Catalisadores de Vínculo"
+    type: optional
+    deps: [primeiro_feitico]
+    icon: arsmagica2:bindingCatalyst
+    desc: |
+      A forma §eVínculo§r cria ferramentas mágicas. O catalisador (gosma, Pó de Vinteum e uma
+      ferramenta de ouro) define qual: picareta, machado, espada, pá, enxada ou arco. Jogue-o
+      no altar quando o livro pedir.
+    tasks:
+      - one_of: [arsmagica2:bindingCatalyst, arsmagica2:bindingCatalyst:1, arsmagica2:bindingCatalyst:2, arsmagica2:bindingCatalyst:3, arsmagica2:bindingCatalyst:4, arsmagica2:bindingCatalyst:5]
+    rewards:
+      - loot: comum
+
+  - id: armadura_vinculada
+    title: "Armadura Vinculada"
+    type: optional
+    deps: [catalisador_vinculo, essencia_vida]
+    icon: arsmagica2:boundHood
+    desc: |
+      Não é forte, mas guarda um feitiço de §econtingência§r: o capacete lança ao morrer, o
+      peitoral com vida baixa, as calças ao levar dano, as botas ao cair. Cada peça usa um
+      catalisador próprio (veja no NEI) e é fabricada junto com o feitiço.
+    tasks:
+      - one_of: [arsmagica2:boundHood, arsmagica2:boundArmor, arsmagica2:boundLeggings, arsmagica2:boundBoots]
+    rewards:
+      - loot: incomum
+
+  # ======================================================================
+  # FASE 6 — OS GUARDIÕES ELEMENTAIS
+  # ======================================================================
+  - id: rituais_guardioes
+    title: "Os Rituais de Invocação"
+    type: info
+    deps: [inlay_redstone]
+    icon: arsmagica2:goldInlay
+    desc: |
+      Os Guardiões não vagam pelo mundo: são §einvocados§r com anéis de inlay, oferendas e
+      condições especiais (Compêndio → Bestas → cada Guardião).
+
+      Ao surgir, §co Guardião abre uma clareira enorme§r no terreno (se mobGriefing estiver
+      ativo) — invoque longe de casa! Cada um, morto por você, deixa um §eOrbe do Infinito§r,
+      de 0 a 3 essências do seu elemento e §e30% de chance§r da sua §6lembrança§r única. E
+      cada Guardião derrotado dá §e+2000 de mana§r máxima.
+
+      Níveis recomendados: Água 10, Terra 25, Ar 35, Arcano 45, Vida 50, Natureza 60, Raio 70,
+      Fogo 90. Inverno e Ender: "muito difíceis".
+    tasks:
+      - check
+    rewards:
+      - xp: 1
+
+  - id: guardiao_agua
+    title: "Guardião da Água"
+    type: boss
+    deps: [rituais_guardioes]
+    icon: arsmagica2:essence:4
+    banner: "O Guardião da Água caiu!"
+    subtitle: "A primeira maré vencida"
+    task_logic: OR
+    desc: |
+      O mais fraco dos Guardiões — mas não subestime: ele é fluido, às vezes ignora golpes e se
+      divide em §ecópias§r para atacar de emboscada.
+
+      §eRitual:§r num bioma de muita água (oceano, rio, pântano), faça um §eanel de Inlay de
+      Redstone§r. §eDurante a chuva§r, jogue dentro um §ebarco§r e um §ebalde de água§r, em
+      homenagem aos navios perdidos.
+
+      Ataque o verdadeiro, não as cópias. Recompensa: Orbe azul, Essências da Água e, com sorte,
+      os §6Orbes da Água§r.
+    tasks:
+      - kill: {entity: "arsmagica2.BossWaterGuardian", count: 1}
+      - get: arsmagica2:water_orbs
+    rewards:
+      - xp: 8
+      - loot: raro
+
+  - id: guardiao_terra
+    title: "Guardião da Terra"
+    type: boss
+    deps: [rituais_guardioes, inlay_ferro, tocha_vinteum, topazio_azul, quimerita]
+    icon: arsmagica2:essence:1
+    banner: "O Guardião da Terra caiu!"
+    subtitle: "Pedra contra magia"
+    task_logic: OR
+    desc: |
+      Um núcleo de pedra que aguenta absurdos de dano físico e gira atacando em área.
+      §cMagia funciona melhor que espada aqui.§r
+
+      §eRitual:§r plataforma 3×3 de §eobsidiana§r com um §etijolo de pedra cinzelado§r no
+      centro. Sobre a obsidiana, um §eanel de Inlay de Ferro§r; em cada lado, no mesmo nível dos
+      inlays, uma §eTocha de Vinteum§r. Jogue §eum Topázio Azul, uma esmeralda e uma
+      Quimerita§r.
+
+      §cEle escava uma área grande ao surgir: nada de porão!§r Lembrança: §6Armadura da
+      Terra§r.
+    tasks:
+      - kill: {entity: "arsmagica2.BossEarthGuardian", count: 1}
+      - get: arsmagica2:earth_armor
+    rewards:
+      - xp: 8
+      - loot: raro
+
+  - id: guardiao_arcano
+    title: "Guardião Arcano"
+    type: boss
+    deps: [rituais_guardioes, inlay_ferro, atril, essencia_arcana]
+    icon: arsmagica2:essence
+    banner: "O Guardião Arcano caiu!"
+    subtitle: "Um duelo de magos antigos"
+    task_logic: OR
+    desc: |
+      Um mago de eras antigas com um repertório imenso de feitiços (ataque, buffs, debuffs) e um
+      sigilo protetor que pune tanto quem bate de perto quanto quem atira de longe.
+
+      §eRitual — o Santuário do Conhecimento:§r dois pilares de §eestantes de livros§r com 3 de
+      altura, um §eAtril com um Compêndio Arcano§r no chão entre eles e, bem em frente, um
+      §eanel de Inlay de Ferro§r. Jogue uma §eEssência Arcana§r no centro do anel.
+
+      Lembrança: o §6Grimório Arcano§r (feitiços mais fortes e mais baratos).
+    tasks:
+      - kill: {entity: "arsmagica2.BossArcaneGuardian", count: 1}
+      - get: arsmagica2:arcane_spellbook
+    rewards:
+      - xp: 10
+      - loot: epico
+
+  - id: guardiao_ar
+    title: "Guardião do Ar"
+    type: boss
+    deps: [rituais_guardioes, inlay_ouro, essencia_ar]
+    icon: arsmagica2:essence:2
+    banner: "O Guardião do Ar caiu!"
+    subtitle: "Acima das nuvens"
+    task_logic: OR
+    desc: |
+      Um ser de vento que adora §erepulsão§r. §cSem proteção contra queda, é suicídio.§r Ele
+      lança feitiços fortes à distância, mas alguns exigem muita concentração... aproveite essas
+      pausas.
+
+      §eRitual:§r suba acima das nuvens, construa uma plataforma a §eY 150 ou mais§r, faça um
+      §eanel de Inlay de Ouro§r e jogue uma §eEssência do Ar§r.
+
+      Lembrança: o §6Trenó Aéreo§r, mais rápido que o voo criativo.
+    tasks:
+      - kill: {entity: "arsmagica2.BossAirGuardian", count: 1}
+      - get: arsmagica2:air_sled
+    rewards:
+      - xp: 10
+      - loot: epico
+
+  - id: guardiao_inverno
+    title: "Guardião do Inverno"
+    type: boss
+    deps: [rituais_guardioes, inlay_ouro, topazio_azul]
+    icon: arsmagica2:essence:6
+    banner: "O Guardião do Inverno caiu!"
+    subtitle: "O gelo se parte"
+    task_logic: OR
+    desc: |
+      A encarnação do inverno, cercada de ventos gelados que drenam a força de quem se
+      aproxima. §cO Compêndio avisa: é um dos chefes mais difíceis do mod.§r
+
+      §eRitual:§r num bioma gelado, coloque um §eanel de Inlay de Ouro§r e, no centro, uma
+      efígie: §egelo em cima de dois Blocos de Topázio Azul§r. Depois crie §e3 golens de neve§r
+      ali perto para alimentar a invocação.
+
+      Lembrança: o §6Aperto do Inverno§r, um braço arremessável que congela e enfraquece.
+    tasks:
+      - kill: {entity: "arsmagica2.BossWinterGuardian", count: 1}
+      - get: arsmagica2:winter_arm
+    rewards:
+      - xp: 15
+      - loot: [epico x2]
+
+  - id: guardiao_raio
+    title: "Guardião do Raio"
+    type: boss
+    deps: [rituais_guardioes, inlay_ouro, bateria_mana]
+    icon: arsmagica2:essence:7
+    banner: "O Guardião do Raio caiu!"
+    subtitle: "A tempestade silenciou"
+    task_logic: OR
+    desc: |
+      Imprevisível e poderosíssimo: raios de alcance extremo, sinapses embaralhadas e uma
+      telecinese elétrica que deixa você indefeso. §cDano altíssimo em pouco tempo.§r
+
+      §eRitual:§r um §eanel de Inlay de Ouro§r com uma §eBateria de Mana§r no centro e §e2
+      barras de ferro§r em cima, formando um pára-raios. Depois... espere uma §etempestade§r.
+
+      Lembrança: o §6Amuleto do Raio§r, que atrai itens próximos.
+    tasks:
+      - kill: {entity: "arsmagica2.BossLightningGuardian", count: 1}
+      - get: arsmagica2:lightningCharm
+    rewards:
+      - xp: 10
+      - loot: epico
+
+  - id: guardiao_vida
+    title: "Guardião da Vida"
+    type: boss
+    deps: [rituais_guardioes, giz_mago, vela_protecao]
+    icon: arsmagica2:essence:8
+    banner: "O Guardião da Vida caiu!"
+    subtitle: "Um sacrilégio respondido"
+    task_logic: OR
+    desc: |
+      Ele só aparece diante de um sacrilégio contra a vida — e o ritual é exatamente isso.
+      §c(Sim, eu também fiquei chocada.)§r
+
+      §eRitual:§r anel 5×5 de §eGiz de Mago§r com uma §eVela de Proteção§r do lado de fora, no
+      meio de cada lado (4 velas). Numa noite de §elua cheia§r, mate um §ealdeão criança§r dentro
+      do círculo.
+
+      O Guardião quase não ataca: ele §efortalece outras criaturas§r que lutam por ele. Derrube
+      os protetores. Lembrança: a §6Proteção da Vida§r (escudo de até 20 pontos de vida).
+    tasks:
+      - kill: {entity: "arsmagica2.BossLifeGuardian", count: 1}
+      - get: arsmagica2:lifeWard
+    rewards:
+      - xp: 10
+      - loot: epico
+
+  - id: guardiao_natureza
+    title: "Guardião da Natureza"
+    type: boss
+    deps: [rituais_guardioes]
+    icon: arsmagica2:essence:5
+    banner: "O Guardião da Natureza caiu!"
+    subtitle: "A foice adormece"
+    task_logic: OR
+    desc: |
+      Uma foice mortal e a habilidade de usá-la — tão perigoso de longe quanto de perto.
+      §cMuito difícil; nível recomendado 60.§r
+
+      §eRitual:§r a natureza não tolera um massacre. Mate §e5 Dríades§r em sequência rápida
+      (elas vivem em florestas e campos) e o Guardião aparece para defendê-las.
+
+      Lembrança: a §6Foice da Natureza§r, que limpa folhas e plantas e pode ser arremessada como
+      bumerangue (250 de mana).
+    tasks:
+      - kill: {entity: "arsmagica2.BossNatureGuardian", count: 1}
+      - get: arsmagica2:natureScythe
+    rewards:
+      - xp: 15
+      - loot: [epico x2]
+
+  - id: guardiao_fogo
+    title: "Guardião do Fogo"
+    type: boss
+    deps: [rituais_guardioes, inlay_ouro, essencia_agua]
+    icon: arsmagica2:essence:3
+    banner: "O Guardião do Fogo caiu!"
+    subtitle: "O inferno se apaga"
+    task_logic: OR
+    desc: |
+      Um inferno vivo das profundezas do Nether. §cNível recomendado 90 — o mais forte da
+      lista oficial.§r
+
+      §eRitual:§r no §eNether§r, faça um §eanel de Inlay de Ouro sobre obsidiana§r com um
+      §ebloco de carvão§r no centro. Jogue uma §eEssência da Água§r sobre o carvão. Ele odeia
+      quem traz água ao seu domínio...
+
+      Leve resistência ao fogo de sobra. Lembrança: a §6Antena do Guardião do Fogo§r, imunidade
+      total a fogo e lava.
+    tasks:
+      - kill: {entity: "arsmagica2.BossFireGuardian", count: 1}
+      - get: arsmagica2:fire_ears
+    rewards:
+      - xp: 15
+      - loot: [epico x2]
+
+  - id: guardiao_ender
+    title: "Guardião do Ender"
+    type: boss
+    deps: [rituais_guardioes, inlay_ouro, aurem_negra, essencia_ender]
+    icon: arsmagica2:essence:9
+    banner: "O Guardião do Ender caiu!"
+    subtitle: "O pesadelo do Fim tem fim"
+    task_logic: OR
+    desc: |
+      "Ninguém jamais viu o Guardião e sobreviveu." Magnus Severinus, o Arquimago da Segunda Era,
+      tentou. Só voltou um papel manchado de sangue com o ritual. §cO mais temido de todos.§r
+
+      §eRitual:§r no §eFim§r, coloque uma §eAurem Negra§r sobre uma plataforma de §eblocos de
+      carvão§r, cerque com um §eanel de Inlay de Ouro§r e acenda um §efogo§r em cada lado do
+      anel. Jogue uma §eEssência do Ender§r e um §eOlho do Fim§r para desestabilizar a Aurem.
+
+      Lembrança: as §6Botas do Ender§r (agache e pule para inverter a gravidade).
+    tasks:
+      - kill: {entity: "arsmagica2.BossEnderGuardian", count: 1}
+      - get: arsmagica2:enderBoots
+    rewards:
+      - xp: 15
+      - loot: [epico x2]
+
+  - id: dez_guardioes
+    title: "Os Dez Guardiões"
+    type: milestone
+    deps: [guardiao_agua, guardiao_terra, guardiao_arcano, guardiao_ar, guardiao_inverno, guardiao_raio, guardiao_vida, guardiao_natureza, guardiao_fogo, guardiao_ender]
+    icon: arsmagica2:rune:19
+    banner: "Os Dez Guardiões"
+    subtitle: "Todos os elementos se curvam"
+    desc: |
+      Água, Terra, Arcano, Ar, Inverno, Raio, Vida, Natureza, Fogo e Ender. Herói... você
+      derrotou §etodos§r os Guardiões do Ars Magica. São mais 20 000 de mana máxima, uma pilha
+      de Orbes do Infinito e as essências de todos os elementos.
+
+      Nos arquivos do Registro, os Guardiões eram os vigias dos dez Elementos — e cada um
+      guardava uma página arrancada pela Fratura. Agora essas páginas voltam para casa.
+
+      Falta só uma coisa: transformar as lembranças deles nas §6Vestes do Arquimago§r.
+    tasks:
+      - check
+    rewards:
+      - xp: 12
+      - kit: {name: "Kit dos Dez Elementos", items: [arsmagica2:essence:10, arsmagica2:legendaryManaPotion x2, arsmagica2:rune:19, minecraft:nether_star]}
+      - loot: epico

@@ -1,808 +1,890 @@
 chapter:
   id: binnie
   title: "Binnie: Árvores, Flores e Genética"
+  prefix: ""
   order: 610
-  icon: Botany:clay:58
+  icon: ExtraTrees:machine
   desc: |
-    TODO
+    §aO Laboratório de Binnie.§r Madeiras raras, marcenaria de luxo, flores com solo e pH,
+    e uma bancada de genética para isolar, sequenciar e injetar genes em abelhas, árvores e borboletas.
+    (Extra Trees, Botany, Genetics e Binnie Core 2.6.43)
+
 quests:
-  - id: acid_bucket
-    title: "Acid Bucket"
+  - id: toras_novas
+    title: "Madeiras Novas"
+    type: main
+    deps: [forestry:bau_arborista]
+    icon: ExtraTrees:log:3
     desc: |
-      TODO [Engarrafador] minecraft:bucket
+      Cada espécie do Extra Trees dá uma madeira diferente, Herói: cereja, fresno, abeto, faia, teixo...
+      Dê uma volta, plante as mudas que achar (a Forestry ensina como) e traga toras de §e3 tipos§r diferentes.
+
+      §aDica:§r o Arboranalisador ajuda a descobrir qual espécie você tem em mãos.
     tasks:
-      - get: BinnieCore:containerBucket:64
+      - one_of: [ExtraTrees:log:3, ExtraTrees:log:7, ExtraTrees:log:14, ExtraTrees:log:12]
+      - one_of: [ExtraTrees:log:5, ExtraTrees:log:8, ExtraTrees:log:9, ExtraTrees:log:13]
     rewards:
-      - xp: 1
-  - id: poison_bucket
-    title: "Poison Bucket"
+      - xp: 3
+      - choice: [minecraft:bread x8, minecraft:cooked_beef x6, minecraft:apple x8]
+
+  - id: engrenagem_aprovada
+    title: "Engrenagem Aprovada"
+    type: main
+    deps: [toras_novas]
+    icon: ExtraTrees:misc:3
     desc: |
-      TODO [Engarrafador] minecraft:bucket
+      Todas as máquinas do Extra Trees pedem uma §eEngrenagem Aprovada§r. A receita é quatro
+      §eGravetos de Carvalho§r em formato de X — madeira de qualquer espécie, não, só gravetos de carvalho!
+
+      Faça umas quatro de uma vez, vão ser úteis.
     tasks:
-      - get: BinnieCore:containerBucket:65
+      - get: ExtraTrees:misc:3 x4
     rewards:
-      - xp: 1
-  - id: nitrogen_bucket
-    title: "Nitrogen Bucket"
+      - xp: 3
+      - choice: [minecraft:bread x8, minecraft:cooked_beef x6, minecraft:apple x8]
+
+  - id: serraria
+    title: "Serraria"
+    type: main
+    deps: [engrenagem_aprovada, forestry:carcaca_resistente]
+    icon: ExtraTrees:machine
     desc: |
-      TODO [Engarrafador] minecraft:bucket
+      A §eSerraria§r (Lumbermill) corta toras em tábuas — mais tábuas que a bancada! — e ainda rende
+      §eSerragem§r e §eCasca§r de bônus.
+
+      Receita: Carcaça Resistente no centro, vidro, engrenagem de bronze, um machado de ferro e 4
+      Engrenagens Aprovadas. Precisa de energia — confira no NEI.
     tasks:
-      - get: BinnieCore:containerBucket:66
+      - get: ExtraTrees:machine
     rewards:
-      - xp: 1
-  - id: sap_bucket
-    title: "Sap Bucket"
+      - xp: 4
+      - choice: [minecraft:iron_ingot x8, minecraft:redstone x16, minecraft:glass x16]
+
+  - id: serragem_casca
+    title: "Serragem e Casca"
+    deps: [serraria]
+    icon: ExtraTrees:misc:1
     desc: |
-      TODO [Engarrafador] minecraft:bucket
+      Os subprodutos da Serraria: §eSerragem§r (combustível e cola de carpintaria) e §eCasca§r.
+      Guarde-as — o polimento da madeira e outras receitas vão usá-las.
     tasks:
-      - get: BinnieCore:containerBucket:128
+      - get: ExtraTrees:misc:1
+      - get: ExtraTrees:misc:2
     rewards:
-      - xp: 1
-  - id: resin_bucket
-    title: "Resin Bucket"
+      - xp: 2
+      - choice: [minecraft:bread x8, minecraft:cooked_beef x6, minecraft:apple x8]
+
+  - id: marcenaria
+    title: "Marcenaria"
+    type: main
+    deps: [serraria]
+    icon: ExtraTrees:machine:1
     desc: |
-      TODO [Engarrafador] minecraft:bucket
+      Cerca, portão, porta, escada, laje... a §eMarcenaria§r faz móveis de madeira em lote, em
+      qualquer espécie. Receita: invólucro impregnado, vidro e engrenagens aprovadas.
     tasks:
-      - get: BinnieCore:containerBucket:129
+      - get: ExtraTrees:machine:1
     rewards:
-      - xp: 1
-  - id: latex_bucket
-    title: "Latex Bucket"
+      - xp: 4
+      - choice: [minecraft:iron_ingot x8, minecraft:redstone x16, minecraft:glass x16]
+
+  - id: painelaria
+    title: "Painelaria"
+    deps: [marcenaria]
+    icon: ExtraTrees:machine:2
     desc: |
-      TODO [Engarrafador] minecraft:bucket
+      A §ePainelaria§r (Panelworker) transforma lajes e tábuas em §epainéis de madeira§r, ótimos
+      para detalhes de construção. Receita parecida com a da Marcenaria, mas com meias-lajes.
     tasks:
-      - get: BinnieCore:containerBucket:130
+      - get: ExtraTrees:machine:2
     rewards:
-      - xp: 1
-  - id: turpentine_bucket
-    title: "Turpentine Bucket"
+      - xp: 3
+      - choice: [minecraft:iron_ingot x8, minecraft:redstone x16, minecraft:glass x16]
+
+  - id: vidraria
+    title: "Vidraria"
+    deps: [marcenaria]
+    icon: ExtraTrees:machine:3
     desc: |
-      TODO [Engarrafador] minecraft:bucket
+      A §eVidraria§r (Glassworker) faz vidros coloridos com molduras de madeira. Vidro, invólucro
+      impregnado e Engrenagens Aprovadas.
     tasks:
-      - get: BinnieCore:containerBucket:131
+      - get: ExtraTrees:machine:3
     rewards:
-      - xp: 1
-  - id: binniecore_item_container_bucket_binnie_
-    title: "binniecore.item.container.bucket.binnie.growthmedium"
+      - xp: 3
+      - choice: [minecraft:iron_ingot x8, minecraft:redstone x16, minecraft:glass x16]
+
+  - id: ladrilharia
+    title: "Ladrilharia"
+    deps: [marcenaria]
+    icon: ExtraTrees:machine:4
     desc: |
-      TODO [Engarrafador] minecraft:bucket
+      A §eLadrilharia§r (Tileworker) faz ladrilhos decorativos. Versão com argila no lugar do vidro.
     tasks:
-      - get: BinnieCore:containerBucket:768
+      - get: ExtraTrees:machine:4
     rewards:
-      - xp: 1
-  - id: acid_can
-    title: "Acid Can"
+      - xp: 3
+      - choice: [minecraft:iron_ingot x8, minecraft:redstone x16, minecraft:glass x16]
+
+  - id: polimento
+    title: "Polimento de Madeira"
+    deps: [serraria]
+    icon: ExtraTrees:misc:4
     desc: |
-      TODO [Engarrafador] Forestry:canEmpty
+      O §ePolimento de Madeira§r sai da Cera de Abelha na Carpintaria da Forestry (4 por cera).
+      É ingrediente de móveis finos. Se ainda não tem cera, a Abelha ajuda!
     tasks:
-      - get: BinnieCore:containerCan:64
+      - get: ExtraTrees:misc:4
     rewards:
-      - xp: 1
-  - id: poison_can
-    title: "Poison Can"
+      - xp: 3
+      - choice: [minecraft:bread x8, minecraft:cooked_beef x6, minecraft:apple x8]
+
+  - id: encaixes_vidro
+    title: "Encaixes de Vidro"
+    type: optional
+    deps: [serraria]
+    icon: ExtraTrees:misc:5
     desc: |
-      TODO [Engarrafador] Forestry:canEmpty
+      Dois pares de gravetos, um lingote de ferro no meio: 6 §eEncaixes de Vidro§r. Pequenos, mas
+      sem eles a Vidraria não funciona direito.
     tasks:
-      - get: BinnieCore:containerCan:65
+      - get: ExtraTrees:misc:5
     rewards:
-      - xp: 1
-  - id: nitrogen_can
-    title: "Nitrogen Can"
+      - xp: 2
+      - choice: [minecraft:bread x8, minecraft:cooked_beef x6, minecraft:apple x8]
+
+  - id: martelo_carpinteiro
+    title: "Martelo de Carpinteiro"
+    deps: [marcenaria]
+    icon: ExtraTrees:hammer
     desc: |
-      TODO [Engarrafador] Forestry:canEmpty
+      O §eMartelo de Carpinteiro§r (tábuas, ferro e gravetos) trabalha com o Carpinteiro nas
+      construções finas. Há o §eMartelo Mestre§r, de obsidiana e ouro — mais durável.
     tasks:
-      - get: BinnieCore:containerCan:66
+      - get: ExtraTrees:hammer
     rewards:
-      - xp: 1
-  - id: sap_can
-    title: "Sap Can"
+      - xp: 3
+      - choice: [minecraft:iron_ingot x8, minecraft:redstone x16, minecraft:glass x16]
+
+  - id: martelo_mestre
+    title: "Martelo Mestre"
+    type: optional
+    deps: [martelo_carpinteiro]
+    icon: ExtraTrees:durableHammer
     desc: |
-      TODO [Engarrafador] Forestry:canEmpty
+      Mais firme que o martelo de ferro! Obsidiana, ouro e gravetos. Para quem constrói muito.
     tasks:
-      - get: BinnieCore:containerCan:128
+      - get: ExtraTrees:durableHammer
     rewards:
-      - xp: 1
-  - id: resin_can
-    title: "Resin Can"
+      - xp: 2
+      - loot: comum
+
+  - id: tabuas_exoticas
+    title: "Tábuas Exóticas"
+    deps: [serraria]
+    icon: ExtraTrees:planks:1
     desc: |
-      TODO [Engarrafador] Forestry:canEmpty
+      Toras de espécies diferentes viram tábuas de espécies diferentes! Peça no NEI a lista das 35.
+      Junte três tipos para construir algo especial.
     tasks:
-      - get: BinnieCore:containerCan:129
+      - one_of: [ExtraTrees:planks:1, ExtraTrees:planks:3, ExtraTrees:planks:5]
+      - one_of: [ExtraTrees:planks:10, ExtraTrees:planks:12, ExtraTrees:planks:14]
+      - one_of: [ExtraTrees:planks:15, ExtraTrees:planks:16, ExtraTrees:planks]
     rewards:
-      - xp: 1
-  - id: latex_can
-    title: "Latex Can"
+      - xp: 3
+      - choice: [minecraft:bread x8, minecraft:cooked_beef x6, minecraft:apple x8]
+
+  - id: moveis_madeira
+    title: "Portas, Cercas e Escadas"
+    deps: [marcenaria, tabuas_exoticas]
+    icon: ExtraTrees:door
     desc: |
-      TODO [Engarrafador] Forestry:canEmpty
+      A Marcenaria rende §eportas, portões, cercas, escadas e lajes§r em qualquer das 35 espécies.
+      Monte a vila dos sonhos!
     tasks:
-      - get: BinnieCore:containerCan:130
+      - get: ExtraTrees:door
+      - get: ExtraTrees:fence
+      - get: ExtraTrees:stairs
     rewards:
-      - xp: 1
-  - id: turpentine_can
-    title: "Turpentine Can"
+      - xp: 3
+      - choice: [minecraft:bread x8, minecraft:cooked_beef x6, minecraft:apple x8]
+
+  - id: azulejos
+    title: "Ladrilhos e Vidros Coloridos"
+    type: optional
+    deps: [vidraria, ladrilharia]
+    icon: ExtraTrees:stainedglass
     desc: |
-      TODO [Engarrafador] Forestry:canEmpty
+      Decorar é a minha parte favorita! Peças de §eVidro Colorido§r (Vidraria) e §eLadrilhos de Madeira§r
+      (Ladrilharia) pedem mais pigmentos e madeira. Uma casa de conto de fadas.
     tasks:
-      - get: BinnieCore:containerCan:131
+      - get: ExtraTrees:stainedglass
+      - get: ExtraTrees:carpentry
     rewards:
-      - xp: 1
-  - id: binniecore_item_container_can_binnie_gro
-    title: "binniecore.item.container.can.binnie.growthmedium"
+      - xp: 3
+      - loot: incomum
+
+  - id: frutas_extra
+    title: "Pomar Exótico"
+    deps: [toras_novas]
+    icon: ExtraTrees:food
     desc: |
-      TODO [Engarrafador] Forestry:canEmpty
+      Além da maçã, as árvores de fruta do Extra Trees dão §eMaçã-do-Mato§r, §eLaranja§r, §eKumquat§r,
+      §eLima§r, cerejas, ameixas, damascos, §ePêssego§r e mais de 60 variedades!
+
+      Plante, cuide, e colha uma variedade. §aDica:§r polinize para outras espécies surgirem.
     tasks:
-      - get: BinnieCore:containerCan:768
+      - one_of: [ExtraTrees:food, ExtraTrees:food:1, ExtraTrees:food:2, ExtraTrees:food:3]
     rewards:
-      - xp: 1
-  - id: acid_capsule
-    title: "Acid Capsule"
+      - xp: 3
+      - choice: [minecraft:bread x8, minecraft:cooked_beef x6, minecraft:apple x8]
+
+  - id: frutas_variadas
+    title: "Cerejas e Pêssegos"
+    type: optional
+    deps: [frutas_extra]
+    icon: ExtraTrees:food:12
     desc: |
-      TODO [Engarrafador] Forestry:waxCapsule
+      Uma colheita de cereja ou pêssego numa fornada de tortas? Sim, por favor. Traga uma variedade
+      nova para o diário.
     tasks:
-      - get: BinnieCore:containerCapsule:64
+      - one_of: [ExtraTrees:food:4, ExtraTrees:food:5, ExtraTrees:food:6, ExtraTrees:food:12, ExtraTrees:food:13]
     rewards:
-      - xp: 1
-  - id: poison_capsule
-    title: "Poison Capsule"
+      - xp: 2
+      - loot: comum
+
+  - id: arborista_db
+    title: "Banco de Dados do Arborista"
+    type: main
+    deps: [toras_novas]
+    icon: ExtraTrees:database
     desc: |
-      TODO [Engarrafador] Forestry:waxCapsule
+      O §eBanco de Dados do Arborista§r mostra, num painel, as árvores que você já descobriu e
+      as mutações possíveis. Ouro, redstone, vidro, esmeralda e diamante. Vale cada pedra!
     tasks:
-      - get: BinnieCore:containerCapsule:65
+      - get: ExtraTrees:database
     rewards:
-      - xp: 1
-  - id: nitrogen_capsule
-    title: "Nitrogen Capsule"
+      - xp: 5
+      - choice: [minecraft:gold_ingot x6, minecraft:lapis_block x2, minecraft:glowstone x16]
+
+  - id: arborista_mestre_db
+    title: "Banco de Dados Mestre"
+    deps: [arborista_db]
+    icon: ExtraTrees:database:1
     desc: |
-      TODO [Engarrafador] Forestry:waxCapsule
+      A versão mestre guarda a árvore genealógica completa e mostra as mutações por completo.
+      Receita a conferir no NEI.
     tasks:
-      - get: BinnieCore:containerCapsule:66
+      - get: ExtraTrees:database:1
     rewards:
-      - xp: 1
-  - id: sap_capsule
-    title: "Sap Capsule"
+      - xp: 5
+      - loot: raro
+
+  - id: lepidopterista_db
+    title: "Banco de Dados do Lepidopterista"
+    type: optional
+    deps: [arborista_db]
+    icon: ExtraTrees:databaseMoth
     desc: |
-      TODO [Engarrafador] Forestry:waxCapsule
+      Para quem curte as §eMariposas§r do Extra Trees: o banco de dados do Lepidopterista cataloga
+      espécies e mutações das mariposas.
     tasks:
-      - get: BinnieCore:containerCapsule:128
+      - get: ExtraTrees:databaseMoth
     rewards:
-      - xp: 1
-  - id: resin_capsule
-    title: "Resin Capsule"
+      - xp: 3
+      - loot: incomum
+
+  - id: pa_jardineiro
+    title: "Pá de Jardineiro"
+    type: main
+    icon: Botany:trowelWood
     desc: |
-      TODO [Engarrafador] Forestry:waxCapsule
+      Flores no Botany não se plantam: elas se §etransplantam§r, com uma §ePá de Jardineiro§r.
+      A de madeira é só terra, tábua e graveto. Há as de pedra, ferro, ouro e diamante, cada uma com mais durabilidade.
     tasks:
-      - get: BinnieCore:containerCapsule:129
+      - get: Botany:trowelWood
     rewards:
-      - xp: 1
-  - id: latex_capsule
-    title: "Latex Capsule"
+      - xp: 2
+      - choice: [minecraft:bread x8, minecraft:cooked_beef x6, minecraft:apple x8]
+
+  - id: flor_botany
+    title: "Flor Botânica"
+    type: main
+    deps: [pa_jardineiro]
+    icon: Botany:itemFlower
     desc: |
-      TODO [Engarrafador] Forestry:waxCapsule
+      Uma flor genética! No mundo, ao colher uma flor com a pá, ela vira um item com genes próprios.
+      Procure flores em planícies e floresta: cada uma carrega cor, vigor e tolerâncias de clima e solo.
+
+      §aDica:§r olhe no NEI a lista de flores e cruzamentos (Flower Breeding).
     tasks:
-      - get: BinnieCore:containerCapsule:130
+      - get: Botany:itemFlower
     rewards:
-      - xp: 1
-  - id: turpentine_capsule
-    title: "Turpentine Capsule"
+      - xp: 3
+      - choice: [minecraft:bread x8, minecraft:cooked_beef x6, minecraft:apple x8]
+
+  - id: polen_botany
+    title: "Pólen de Flor"
+    deps: [flor_botany]
+    icon: Botany:pollen
     desc: |
-      TODO [Engarrafador] Forestry:waxCapsule
+      Pólen: as flores também têm! Use-o para polinizar e criar híbridos.
     tasks:
-      - get: BinnieCore:containerCapsule:131
+      - get: Botany:pollen
     rewards:
-      - xp: 1
-  - id: binniecore_item_container_capsule_binnie
-    title: "binniecore.item.container.capsule.binnie.growthmedium"
+      - xp: 2
+      - choice: [minecraft:bread x8, minecraft:cooked_beef x6, minecraft:apple x8]
+
+  - id: germling
+    title: "Germling"
+    deps: [polen_botany]
+    icon: Botany:seed
     desc: |
-      TODO [Engarrafador] Forestry:waxCapsule
+      Um §eGermling§r é a semente da flor Botany. Plante em solo (Soil, Loam ou Flowerbed) para
+      cultivar a flor genética.
     tasks:
-      - get: BinnieCore:containerCapsule:768
+      - get: Botany:seed
     rewards:
-      - xp: 1
-  - id: acid_glass
-    title: "Acid Glass"
+      - xp: 3
+      - choice: [minecraft:bread x8, minecraft:cooked_beef x6, minecraft:apple x8]
+
+  - id: medidor_solo
+    title: "Medidor de Solo"
+    deps: [pa_jardineiro]
+    icon: Botany:soilMeter
     desc: |
-      TODO [Engarrafador] minecraft:glass_bottle
+      O §eMedidor de Solo§r mostra o pH e a umidade do bloco: indispensável para a flor certa.
+      Ouro, redstone e ferro.
     tasks:
-      - get: BinnieCore:containerGlass:64
+      - get: Botany:soilMeter
     rewards:
-      - xp: 1
-  - id: poison_glass
-    title: "Poison Glass"
+      - xp: 3
+      - choice: [minecraft:iron_ingot x8, minecraft:redstone x16, minecraft:glass x16]
+
+  - id: terra_botany
+    title: "Solos do Botany"
+    type: main
+    deps: [medidor_solo]
+    icon: Botany:soil:1
     desc: |
-      TODO [Engarrafador] minecraft:glass_bottle
+      Flores precisam do pH certo! Os blocos §eSoil§r, §eLoam§r e §eFlowerbed§r vêm em níveis de
+      acidez e alcalinidade (de 0 a 8).
+
+      Para mudar o pH, combine quatro blocos com um pó de §eenxofre§r ou §ecinza§r — veja no NEI a receita exata.
     tasks:
-      - get: BinnieCore:containerGlass:65
+      - one_of: [Botany:soil:1, Botany:soil:2, Botany:soil:3, Botany:soil:4]
     rewards:
-      - xp: 1
-  - id: nitrogen_glass
-    title: "Nitrogen Glass"
+      - xp: 3
+      - choice: [minecraft:iron_ingot x8, minecraft:redstone x16, minecraft:glass x16]
+
+  - id: pos_botany
+    title: "Pós e Argamassa"
+    deps: [terra_botany]
+    icon: Botany:misc:6
     desc: |
-      TODO [Engarrafador] minecraft:glass_bottle
+      Argila e cascalho viram §eArgamassa§r (6 por vez); aranha e sementes viram §eMata-Ervas§r (4);
+      cinza vira §ePó de Cinzas§r. Pequenos ingredientes que mantêm o canteiro sob controle.
     tasks:
-      - get: BinnieCore:containerGlass:66
+      - get: Botany:misc:6
+      - get: Botany:misc:7
+      - get: Botany:misc
     rewards:
-      - xp: 1
-  - id: sap_glass
-    title: "Sap Glass"
+      - xp: 3
+      - choice: [minecraft:bread x8, minecraft:cooked_beef x6, minecraft:apple x8]
+
+  - id: adubo_botany
+    title: "Fertilizante em Pó"
+    type: optional
+    deps: [pos_botany]
+    icon: Botany:misc:4
     desc: |
-      TODO [Engarrafador] minecraft:glass_bottle
+      Um §eFertilizante Composto§r da Forestry rende 4 §ePós de Fertilizante§r. Plantas gostam de comida!
     tasks:
-      - get: BinnieCore:containerGlass:128
+      - get: Botany:misc:4
     rewards:
-      - xp: 1
-  - id: resin_glass
-    title: "Resin Glass"
+      - xp: 2
+      - loot: comum
+
+  - id: pigmentos
+    title: "Pigmentos"
+    deps: [flor_botany]
+    icon: Botany:pigment
     desc: |
-      TODO [Engarrafador] minecraft:glass_bottle
+      Flores dão cor! O §ePigmento§r (80 cores) sai do pó da flor, em bancada. Mistura de pigmentos
+      faz novas cores — como tinta de verdade.
     tasks:
-      - get: BinnieCore:containerGlass:129
+      - get: Botany:pigment
     rewards:
-      - xp: 1
-  - id: latex_glass
-    title: "Latex Glass"
+      - xp: 3
+      - choice: [minecraft:bread x8, minecraft:cooked_beef x6, minecraft:apple x8]
+
+  - id: argila_botany
+    title: "Argila Colorida"
+    deps: [pigmentos]
+    icon: Botany:clay
     desc: |
-      TODO [Engarrafador] minecraft:glass_bottle
+      Três bolas de argila e um pigmento viram §eArgila Colorida§r. Asse na fornalha para ter a
+      §eCerâmica§r — blocos de construção coloridos.
     tasks:
-      - get: BinnieCore:containerGlass:130
+      - get: Botany:clay
+      - get: Botany:ceramic
     rewards:
-      - xp: 1
-  - id: turpentine_glass
-    title: "Turpentine Glass"
+      - xp: 3
+      - choice: [minecraft:iron_ingot x8, minecraft:redstone x16, minecraft:glass x16]
+
+  - id: vidro_pigmento
+    title: "Vidro Pigmentado"
+    type: optional
+    deps: [pigmentos]
+    icon: Botany:stained
     desc: |
-      TODO [Engarrafador] minecraft:glass_bottle
+      Vidro, mais um pigmento no meio: 4 §eVidros Pigmentados§r. A janela do castelo-florido.
     tasks:
-      - get: BinnieCore:containerGlass:131
+      - get: Botany:stained
     rewards:
-      - xp: 1
-  - id: binniecore_item_container_glass_binnie_g
-    title: "binniecore.item.container.glass.binnie.growthmedium"
+      - xp: 2
+      - loot: comum
+
+  - id: botanista_db
+    title: "Banco de Dados do Botânico"
+    deps: [flor_botany]
+    icon: Botany:database
     desc: |
-      TODO [Engarrafador] minecraft:glass_bottle
+      O §eBanco de Dados do Botânico§r lista flores e mutações. Mesmo receita-base dos outros
+      bancos (ouro, redstone, esmeralda e diamante).
     tasks:
-      - get: BinnieCore:containerGlass:768
+      - get: Botany:database
     rewards:
-      - xp: 1
-  - id: acid_capsule_2
-    title: "Acid Capsule"
+      - xp: 4
+      - choice: [minecraft:gold_ingot x6, minecraft:lapis_block x2, minecraft:glowstone x16]
+
+  - id: flores_cruzamento
+    title: "Cruzamento de Flores"
+    deps: [germling, terra_botany]
+    icon: Botany:itemFlower
     desc: |
-      TODO [Engarrafador] Forestry:refractoryEmpty
+      Plante duas flores lado a lado em solo certo e, com sorte, nasce uma mutação.
+      Consulte o NEI, aba §eFlower Breeding§r, para ver as combinações possíveis.
     tasks:
-      - get: BinnieCore:containerRefractory:64
+      - get: Botany:itemFlower
     rewards:
-      - xp: 1
-  - id: poison_capsule_2
-    title: "Poison Capsule"
+      - xp: 4
+      - choice: [minecraft:gold_ingot x6, minecraft:lapis_block x2, minecraft:glowstone x16]
+
+  - id: marco_botany
+    title: "Marco: O Jardim Botânico"
+    type: milestone
+    deps: [botanista_db, argila_botany, flores_cruzamento, terra_botany]
+    icon: Botany:database
+    banner: "O Jardim Botânico"
+    subtitle: "Flores, solos e cerâmica"
     desc: |
-      TODO [Engarrafador] Forestry:refractoryEmpty
+      Seu jardim já tem flores genéticas, solos com pH calibrado e argila colorida para uma
+      casa de arco-íris. Você agora é um §ebotânico§r de verdade, Herói.
+
+      Agora a genética chama: vamos isolar e injetar esses genes!
     tasks:
-      - get: BinnieCore:containerRefractory:65
+      - get: Botany:database
+      - get: Botany:soil:1
+      - get: Botany:clay
+      - get: Botany:itemFlower
     rewards:
-      - xp: 1
-  - id: nitrogen_capsule_2
-    title: "Nitrogen Capsule"
+      - xp: 6
+      - kit: {name: "Kit do Botânico", items: [Botany:trowelIron x1, minecraft:dye:15 x32, minecraft:clay_ball x32, minecraft:glass x16]}
+      - loot: incomum
+
+  - id: campo_kit
+    title: "Kit de Campo"
+    type: main
+    icon: BinnieCore:fieldKit:63
     desc: |
-      TODO [Engarrafador] Forestry:refractoryEmpty
-    tasks:
-      - get: BinnieCore:containerRefractory:66
-    rewards:
-      - xp: 1
-  - id: sap_capsule_2
-    title: "Sap Capsule"
-    desc: |
-      TODO [Engarrafador] Forestry:refractoryEmpty
-    tasks:
-      - get: BinnieCore:containerRefractory:128
-    rewards:
-      - xp: 1
-  - id: resin_capsule_2
-    title: "Resin Capsule"
-    desc: |
-      TODO [Engarrafador] Forestry:refractoryEmpty
-    tasks:
-      - get: BinnieCore:containerRefractory:129
-    rewards:
-      - xp: 1
-  - id: latex_capsule_2
-    title: "Latex Capsule"
-    desc: |
-      TODO [Engarrafador] Forestry:refractoryEmpty
-    tasks:
-      - get: BinnieCore:containerRefractory:130
-    rewards:
-      - xp: 1
-  - id: turpentine_capsule_2
-    title: "Turpentine Capsule"
-    desc: |
-      TODO [Engarrafador] Forestry:refractoryEmpty
-    tasks:
-      - get: BinnieCore:containerRefractory:131
-    rewards:
-      - xp: 1
-  - id: binniecore_item_container_refractory_bin
-    title: "binniecore.item.container.refractory.binnie.growthmedium"
-    desc: |
-      TODO [Engarrafador] Forestry:refractoryEmpty
-    tasks:
-      - get: BinnieCore:containerRefractory:768
-    rewards:
-      - xp: 1
-  - id: field_kit
-    title: "Field Kit"
-    desc: |
-      TODO [Bancada] minecraft:dye, minecraft:glass_pane, minecraft:iron_ingot, minecraft:paper
+      Antes do laboratório, o §eKit de Campo§r: vidro, ferro, papel e uma tintura. Ele ajuda a coletar
+      e identificar amostras de seres vivos. Meu pequeno detetive de bolso.
     tasks:
       - get: BinnieCore:fieldKit:63
     rewards:
-      - xp: 1
-  - id: compartment
-    title: "Compartment"
+      - xp: 3
+      - choice: [minecraft:bread x8, minecraft:cooked_beef x6, minecraft:apple x8]
+
+  - id: compartimento
+    title: "Compartimento"
+    type: optional
+    deps: [campo_kit]
+    icon: BinnieCore:storage
     desc: |
-      TODO [Bancada] minecraft:book, minecraft:chest, minecraft:stone_button
+      Os §eCompartimentos§r guardam sementes, pólens e amostras em ordem: botões de pedra, baús e
+      um livro. Melhoram em níveis com engrenagens de cobre e bronze.
     tasks:
       - get: BinnieCore:storage
     rewards:
-      - xp: 1
-  - id: clay
-    title: "Clay"
+      - xp: 2
+      - loot: comum
+
+  - id: carcaca_reforcada
+    title: "Carcaça Reforçada"
+    type: main
+    deps: [campo_kit, forestry:carcaca_resistente]
+    icon: Genetics:misc
     desc: |
-      TODO [Bancada] Pigment, minecraft:clay_ball
+      A base de todas as máquinas genéticas: §eCarcaça Reforçada§r — Carcaça Resistente da Forestry
+      cercada de 8 lingotes de ferro.
     tasks:
-      - get: Botany:clay
+      - get: Genetics:misc
     rewards:
-      - xp: 1
-  - id: clay_2
-    title: "Clay"
+      - xp: 4
+      - choice: [minecraft:iron_ingot x8, minecraft:redstone x16, minecraft:glass x16]
+
+  - id: placa_circuito
+    title: "Placa de Circuito Integrada"
+    type: main
+    deps: [carcaca_reforcada]
+    icon: Genetics:misc:9
     desc: |
-      TODO [Bancada] Pigment, minecraft:clay_ball
+      Uma placa de circuito Forestry com lápis e glowstone nos cantos vira a
+      §ePlaca Integrada§r. Todas as máquinas usam esse circuito.
     tasks:
-      - get: Botany:clay:2
+      - get: Genetics:misc:9
     rewards:
-      - xp: 1
-  - id: clay_3
-    title: "Clay"
+      - xp: 4
+      - choice: [minecraft:iron_ingot x8, minecraft:redstone x16, minecraft:glass x16]
+
+  - id: corantes_dna
+    title: "Corantes de DNA"
+    deps: [placa_circuito]
+    icon: Genetics:misc:1
     desc: |
-      TODO [Bancada] Pigment, minecraft:clay_ball
+      O §eCorante de DNA§r (roxo, magenta e rosa) e o §eCorante Fluorescente§r (laranja, amarelo e glowstone)
+      são ingredientes do Analisador e do Sequenciador.
     tasks:
-      - get: Botany:clay:3
+      - get: Genetics:misc:1
+      - get: Genetics:misc:2
     rewards:
-      - xp: 1
-  - id: clay_4
-    title: "Clay"
+      - xp: 3
+      - choice: [minecraft:bread x8, minecraft:cooked_beef x6, minecraft:apple x8]
+
+  - id: bancada_lab
+    title: "Bancada de Laboratório"
+    type: main
+    deps: [placa_circuito]
+    icon: Genetics:labMachine
     desc: |
-      TODO [Bancada] Pigment, minecraft:clay_ball
+      A §eBancada de Laboratório§r é o ponto-base. Carcaça reforçada, circuito Forestry e engrenagens
+      de bronze. Várias máquinas se ligam nela.
     tasks:
-      - get: Botany:clay:4
+      - get: Genetics:labMachine
     rewards:
-      - xp: 1
-  - id: clay_5
-    title: "Clay"
+      - xp: 4
+      - choice: [minecraft:iron_ingot x8, minecraft:redstone x16, minecraft:glass x16]
+
+  - id: analisador
+    title: "Analisador"
+    type: main
+    deps: [bancada_lab, corantes_dna, forestry:muda_genetica]
+    icon: Genetics:labMachine:1
     desc: |
-      TODO [Bancada] Pigment, minecraft:clay_ball
+      O §eAnalisador§r lê o genoma de abelhas, árvores e borboletas — nome, atributos, dominância.
+      Receita com o Abelhanalisador da Forestry. §aDica:§r analise tudo antes de isolar.
     tasks:
-      - get: Botany:clay:5
+      - get: Genetics:labMachine:1
     rewards:
-      - xp: 1
-  - id: clay_6
-    title: "Clay"
+      - xp: 5
+      - choice: [minecraft:gold_ingot x6, minecraft:lapis_block x2, minecraft:glowstone x16]
+
+  - id: incubadora
+    title: "Incubadora"
+    type: main
+    deps: [bancada_lab]
+    icon: Genetics:labMachine:2
     desc: |
-      TODO [Bancada] Pigment, minecraft:clay_ball
+      A §eIncubadora§r aquece e cultiva. Aqui nasce a §eEnzima§r (a partir de açúcar) e o
+      §eMeio de Cultura§r. Fornalha, circuito, bronze e ferro.
     tasks:
-      - get: Botany:clay:6
+      - get: Genetics:labMachine:2
     rewards:
-      - xp: 1
-  - id: clay_7
-    title: "Clay"
+      - xp: 5
+      - choice: [minecraft:gold_ingot x6, minecraft:lapis_block x2, minecraft:glowstone x16]
+
+  - id: enzima
+    title: "Enzima"
+    type: main
+    deps: [incubadora]
+    icon: Genetics:misc:3
     desc: |
-      TODO [Bancada] Pigment, minecraft:clay_ball
+      Açúcar na §eIncubadora§r → §eEnzima§r. Será usada para criar o Isolador, Polimerizador
+      e Inoculador. Faça umas 6.
     tasks:
-      - get: Botany:clay:7
+      - get: Genetics:misc:3 x4
     rewards:
-      - xp: 1
-  - id: clay_8
-    title: "Clay"
+      - xp: 3
+      - choice: [minecraft:bread x8, minecraft:cooked_beef x6, minecraft:apple x8]
+
+  - id: meio_cultura
+    title: "Meio de Cultura"
+    deps: [incubadora]
+    icon: Genetics:misc:4
     desc: |
-      TODO [Bancada] Pigment, minecraft:clay_ball
+      Farinha de osso e açúcar: 2 unidades de §eMeio de Cultura§r — comida para as bactérias do
+      laboratório. Pode virar balde ou cilindro no Engarrafador.
     tasks:
-      - get: Botany:clay:8
+      - get: Genetics:misc:4
     rewards:
-      - xp: 1
-  - id: clay_9
-    title: "Clay"
+      - xp: 3
+      - choice: [minecraft:bread x8, minecraft:cooked_beef x6, minecraft:apple x8]
+
+  - id: isolador
+    title: "Isolador"
+    type: main
+    deps: [enzima]
+    icon: Genetics:machine
     desc: |
-      TODO [Bancada] Pigment, minecraft:clay_ball
+      O §eIsolador§r extrai o DNA bruto de uma amostra viva. É a primeira etapa da engenharia genética.
+      Receita: carcaça, placa de circuito, enzimas, engrenagem de bronze e pepitas de ouro.
     tasks:
-      - get: Botany:clay:9
+      - get: Genetics:machine
     rewards:
-      - xp: 1
-  - id: clay_10
-    title: "Clay"
+      - xp: 6
+      - choice: [minecraft:gold_ingot x6, minecraft:lapis_block x2, minecraft:glowstone x16]
+
+  - id: sequenciador
+    title: "Sequenciador"
+    type: main
+    deps: [isolador, corantes_dna]
+    icon: Genetics:machine:1
     desc: |
-      TODO [Bancada] Pigment, minecraft:clay_ball
+      O §eSequenciador§r transforma DNA bruto em sequências de genes legíveis. Usa os corantes
+      fluorescentes. Bronze, ouro e uma boa dose de paciência.
     tasks:
-      - get: Botany:clay:10
+      - get: Genetics:machine:1
     rewards:
-      - xp: 1
-  - id: clay_11
-    title: "Clay"
+      - xp: 6
+      - choice: [minecraft:gold_ingot x6, minecraft:lapis_block x2, minecraft:glowstone x16]
+
+  - id: sequencia_vazia
+    title: "Sequência em Branco"
+    deps: [sequenciador]
+    icon: Genetics:misc:5
     desc: |
-      TODO [Bancada] Pigment, minecraft:clay_ball
+      Ouro, papel e vidro rendem a §eSequência em Branco§r, usada no Sequenciador para gravar
+      genes. Ela também vem de sequências antigas, fundidas na fornalha.
     tasks:
-      - get: Botany:clay:11
+      - get: Genetics:misc:5
     rewards:
-      - xp: 1
-  - id: clay_12
-    title: "Clay"
+      - xp: 3
+      - choice: [minecraft:bread x8, minecraft:cooked_beef x6, minecraft:apple x8]
+
+  - id: polimerizador
+    title: "Polimerizador"
+    type: main
+    deps: [sequenciador]
+    icon: Genetics:machine:2
     desc: |
-      TODO [Bancada] Pigment, minecraft:clay_ball
+      O §ePolimerizador§r junta bactérias e DNA para criar vetores. Ferro, ouro e bronze.
     tasks:
-      - get: Botany:clay:12
+      - get: Genetics:machine:2
     rewards:
-      - xp: 1
-  - id: clay_13
-    title: "Clay"
+      - xp: 5
+      - choice: [minecraft:gold_ingot x6, minecraft:lapis_block x2, minecraft:glowstone x16]
+
+  - id: inoculador
+    title: "Inoculador"
+    deps: [polimerizador]
+    icon: Genetics:machine:3
     desc: |
-      TODO [Bancada] Pigment, minecraft:clay_ball
+      O §eInoculador§r injeta o vetor em um ser vivo — o último passo quando você quer aplicar uma mudança
+      genética. Receita com esmeraldas.
     tasks:
-      - get: Botany:clay:13
+      - get: Genetics:machine:3
     rewards:
-      - xp: 1
-  - id: clay_14
-    title: "Clay"
+      - xp: 5
+      - choice: [minecraft:gold_ingot x6, minecraft:lapis_block x2, minecraft:glowstone x16]
+
+  - id: frasco_soro
+    title: "Frasco de Soro Vazio"
+    deps: [sequencia_vazia]
+    icon: Genetics:misc:6
     desc: |
-      TODO [Bancada] Pigment, minecraft:clay_ball
+      O §eFrasco de Soro Vazio§r guarda o gene pronto. Vidro e ouro. Existe a versão em lote
+      (§eArray de Soros§r) para aplicar vários genes de uma vez.
     tasks:
-      - get: Botany:clay:14
+      - get: Genetics:misc:6
+      - get: Genetics:misc:7
     rewards:
-      - xp: 1
-  - id: clay_15
-    title: "Clay"
+      - xp: 3
+      - choice: [minecraft:bread x8, minecraft:cooked_beef x6, minecraft:apple x8]
+
+  - id: cilindro_vidro
+    title: "Cilindro de Vidro"
+    type: optional
+    deps: [frasco_soro]
+    icon: Genetics:misc:8
     desc: |
-      TODO [Bancada] Pigment, minecraft:clay_ball
+      Três painéis de vidro: 8 §eCilindros de Vidro§r, contêineres para líquidos de laboratório.
     tasks:
-      - get: Botany:clay:15
+      - get: Genetics:misc:8
     rewards:
-      - xp: 1
-  - id: clay_16
-    title: "Clay"
+      - xp: 2
+      - loot: comum
+
+  - id: cilindros_fluido
+    title: "Líquidos do Laboratório"
+    type: optional
+    deps: [cilindro_vidro]
+    icon: BinnieCore:containerCylinder:768
     desc: |
-      TODO [Bancada] Pigment, minecraft:clay_ball
+      Cilindros com §eMeio de Cultura§r, §eBactérias§r, §eÁcido§r e outros. O Engarrafador da
+      Forestry ou o Transposador de Fluidos enchem e esvaziam. Cuidado com o ácido!
     tasks:
-      - get: Botany:clay:16
+      - one_of: [BinnieCore:containerCylinder:768, BinnieCore:containerCylinder:769, BinnieCore:containerCylinder:64]
     rewards:
-      - xp: 1
-  - id: clay_17
-    title: "Clay"
+      - xp: 3
+      - loot: comum
+
+  - id: soro_exemplo
+    title: "Soro de Exemplo"
+    deps: [inoculador, frasco_soro]
+    icon: Genetics:serum
     desc: |
-      TODO [Bancada] Pigment, minecraft:clay_ball
+      Hora de ver o resultado! Um §eSoro§r carrega um gene de uma espécie (de abelha, árvore, flor ou
+      mariposa). Aplique no ser vivo com o §eInoculador§r ou em itens da Forestry.
+
+      Há centenas de soros no jogo; escolha um e faça. Só um por aqui!
     tasks:
-      - get: Botany:clay:17
+      - one_of: [Genetics:serum, Genetics:serumArray]
     rewards:
-      - xp: 1
-  - id: clay_18
-    title: "Clay"
+      - xp: 6
+      - choice: [minecraft:diamond x2, minecraft:emerald x2, minecraft:ender_pearl x6]
+
+  - id: poco_genes
+    title: "Poço de Genes"
+    deps: [incubadora]
+    icon: Genetics:labMachine:3
     desc: |
-      TODO [Bancada] Pigment, minecraft:clay_ball
+      O §ePoço de Genes§r (Genepool) armazena genes. Vidro, bronze e circuito Forestry.
     tasks:
-      - get: Botany:clay:18
+      - get: Genetics:labMachine:3
     rewards:
-      - xp: 1
-  - id: clay_19
-    title: "Clay"
+      - xp: 5
+      - choice: [minecraft:gold_ingot x6, minecraft:lapis_block x2, minecraft:glowstone x16]
+
+  - id: aclimatador
+    title: "Aclimatador"
+    type: optional
+    deps: [incubadora]
+    icon: Genetics:labMachine:4
     desc: |
-      TODO [Bancada] Pigment, minecraft:clay_ball
+      O §eAclimatador§r muda a tolerância de clima e umidade de abelhas e árvores.
+      Baldes de lava e água, bronze e circuitos. §aDica:§r útil para criar abelhas que vivem no deserto.
     tasks:
-      - get: Botany:clay:19
+      - get: Genetics:labMachine:4
     rewards:
-      - xp: 1
-  - id: clay_20
-    title: "Clay"
+      - xp: 4
+      - loot: incomum
+
+  - id: emendador
+    title: "Emendador"
+    type: main
+    deps: [inoculador, poco_genes]
+    icon: Genetics:advMachine
     desc: |
-      TODO [Bancada] Pigment, minecraft:clay_ball
+      O §eEmendador§r (Splicer) é a máquina final: combina genes de espécies diferentes com sérios
+      efeitos. Usa CPU Integrada, Carcaça Integrada, varas de blaze e bronze.
+
+      §cAtenção:§r receita cara. Comece fazendo a CPU Integrada (circuito em cruz com diamante).
     tasks:
-      - get: Botany:clay:20
+      - get: Genetics:advMachine
     rewards:
-      - xp: 1
-  - id: clay_21
-    title: "Clay"
+      - xp: 8
+      - choice: [minecraft:diamond x2, minecraft:emerald x2, minecraft:ender_pearl x6]
+
+  - id: cpu_integrada
+    title: "CPU e Carcaça Integradas"
+    deps: [placa_circuito]
+    icon: Genetics:misc:10
     desc: |
-      TODO [Bancada] Pigment, minecraft:clay_ball
+      Nove placas integradas viram uma §eCPU Integrada§r (com diamante no meio) ou uma
+      §eCarcaça Integrada§r (com a carcaça reforçada). Ambas precisam do Emendador.
     tasks:
-      - get: Botany:clay:21
+      - get: Genetics:misc:10
+      - get: Genetics:misc:11
     rewards:
-      - xp: 1
-  - id: clay_22
-    title: "Clay"
+      - xp: 5
+      - choice: [minecraft:gold_ingot x6, minecraft:lapis_block x2, minecraft:glowstone x16]
+
+  - id: banco_genes
+    title: "Banco de Genes"
+    deps: [analisador]
+    icon: Genetics:database
     desc: |
-      TODO [Bancada] Pigment, minecraft:clay_ball
+      O §eBanco de Genes§r mostra todos os genes conhecidos e os alelos de cada espécie.
+      Ouro, redstone, vidro, obsidiana e olho de ender. Há a versão mestre.
     tasks:
-      - get: Botany:clay:22
+      - get: Genetics:database
     rewards:
-      - xp: 1
-  - id: clay_23
-    title: "Clay"
+      - xp: 5
+      - choice: [minecraft:gold_ingot x6, minecraft:lapis_block x2, minecraft:glowstone x16]
+
+  - id: analista
+    title: "Analista"
+    deps: [analisador]
+    icon: Genetics:analyst
     desc: |
-      TODO [Bancada] Pigment, minecraft:clay_ball
+      O §eAnalista§r junta o Abelhanalisador, o Arboranalisador e o Borboletanalisador numa só
+      ferramenta. Um tesouro para qualquer geneticista!
     tasks:
-      - get: Botany:clay:23
+      - get: Genetics:analyst
     rewards:
-      - xp: 1
-  - id: clay_24
-    title: "Clay"
+      - xp: 5
+      - choice: [minecraft:diamond x2, minecraft:emerald x2, minecraft:ender_pearl x6]
+
+  - id: registro
+    title: "Registro"
+    deps: [arborista_db, lepidopterista_db, botanista_db, banco_genes]
+    icon: Genetics:registry
     desc: |
-      TODO [Bancada] Pigment, minecraft:clay_ball
+      O §eRegistro§r reúne os bancos de dados de árvores, mariposas, flores e abelhas (Extra Bees)
+      num só painel. §aDica:§r o Registro exige o Dicionário do Extra Bees; confira no NEI se ele está no pacote.
     tasks:
-      - get: Botany:clay:24
+      - get: Genetics:registry
     rewards:
-      - xp: 1
-  - id: clay_25
-    title: "Clay"
+      - xp: 6
+      - loot: raro
+
+  - id: genesis
+    title: "Gênese"
+    type: boss
+    deps: [emendador, registro]
+    icon: BinnieCore:genesis
     desc: |
-      TODO [Bancada] Pigment, minecraft:clay_ball
+      A §eGênese§r é o aparelho dos sonhos de qualquer geneticista: cria e cultiva organismos do
+      zero. Confira a receita no NEI — é a mais cara de todo o pacote Binnie.
+
+      Herói, você chegou ao topo do laboratório de Binnie. Eu me orgulho de cada gene isolado!
     tasks:
-      - get: Botany:clay:25
+      - get: BinnieCore:genesis
     rewards:
-      - xp: 1
-  - id: clay_26
-    title: "Clay"
+      - xp: 10
+      - loot: epico
+
+  - id: marco_binnie
+    title: "Marco: O Laboratório Completo"
+    type: milestone
+    deps: [emendador, analisador, isolador, sequenciador, marco_botany]
+    icon: Genetics:advMachine
+    banner: "O Laboratório Completo"
+    subtitle: "Genética de Binnie dominada"
     desc: |
-      TODO [Bancada] Pigment, minecraft:clay_ball
+      Isolador, Sequenciador, Polimerizador, Analisador e Emendador de pé... Você tem um laboratório
+      completo, Herói. Árvores de madeiras raras, flores com solo calibrado, genes em frascos.
+
+      Agora é continuar o cruzamento: leve as abelhas da Forestry às espécies mais raras e traga
+      os genes certos para as árvores. O Registro sorri para você.
     tasks:
-      - get: Botany:clay:26
+      - get: Genetics:advMachine
+      - get: Genetics:labMachine:1
+      - get: Genetics:machine
+      - get: Genetics:machine:1
     rewards:
-      - xp: 1
-  - id: clay_27
-    title: "Clay"
-    desc: |
-      TODO [Bancada] Pigment, minecraft:clay_ball
-    tasks:
-      - get: Botany:clay:27
-    rewards:
-      - xp: 1
-  - id: clay_28
-    title: "Clay"
-    desc: |
-      TODO [Bancada] Pigment, minecraft:clay_ball
-    tasks:
-      - get: Botany:clay:28
-    rewards:
-      - xp: 1
-  - id: clay_29
-    title: "Clay"
-    desc: |
-      TODO [Bancada] Pigment, minecraft:clay_ball
-    tasks:
-      - get: Botany:clay:29
-    rewards:
-      - xp: 1
-  - id: clay_30
-    title: "Clay"
-    desc: |
-      TODO [Bancada] Pigment, minecraft:clay_ball
-    tasks:
-      - get: Botany:clay:30
-    rewards:
-      - xp: 1
-  - id: clay_31
-    title: "Clay"
-    desc: |
-      TODO [Bancada] Pigment, minecraft:clay_ball
-    tasks:
-      - get: Botany:clay:31
-    rewards:
-      - xp: 1
-  - id: clay_32
-    title: "Clay"
-    desc: |
-      TODO [Bancada] Pigment, minecraft:clay_ball
-    tasks:
-      - get: Botany:clay:32
-    rewards:
-      - xp: 1
-  - id: clay_33
-    title: "Clay"
-    desc: |
-      TODO [Bancada] Pigment, minecraft:clay_ball
-    tasks:
-      - get: Botany:clay:33
-    rewards:
-      - xp: 1
-  - id: clay_34
-    title: "Clay"
-    desc: |
-      TODO [Bancada] Pigment, minecraft:clay_ball
-    tasks:
-      - get: Botany:clay:34
-    rewards:
-      - xp: 1
-  - id: clay_35
-    title: "Clay"
-    desc: |
-      TODO [Bancada] Pigment, minecraft:clay_ball
-    tasks:
-      - get: Botany:clay:35
-    rewards:
-      - xp: 1
-  - id: clay_36
-    title: "Clay"
-    desc: |
-      TODO [Bancada] Pigment, minecraft:clay_ball
-    tasks:
-      - get: Botany:clay:36
-    rewards:
-      - xp: 1
-  - id: clay_37
-    title: "Clay"
-    desc: |
-      TODO [Bancada] Pigment, minecraft:clay_ball
-    tasks:
-      - get: Botany:clay:37
-    rewards:
-      - xp: 1
-  - id: clay_38
-    title: "Clay"
-    desc: |
-      TODO [Bancada] Pigment, minecraft:clay_ball
-    tasks:
-      - get: Botany:clay:38
-    rewards:
-      - xp: 1
-  - id: clay_39
-    title: "Clay"
-    desc: |
-      TODO [Bancada] Pigment, minecraft:clay_ball
-    tasks:
-      - get: Botany:clay:39
-    rewards:
-      - xp: 1
-  - id: clay_40
-    title: "Clay"
-    desc: |
-      TODO [Bancada] Pigment, minecraft:clay_ball
-    tasks:
-      - get: Botany:clay:40
-    rewards:
-      - xp: 1
-  - id: clay_41
-    title: "Clay"
-    desc: |
-      TODO [Bancada] Pigment, minecraft:clay_ball
-    tasks:
-      - get: Botany:clay:41
-    rewards:
-      - xp: 1
-  - id: clay_42
-    title: "Clay"
-    desc: |
-      TODO [Bancada] Pigment, minecraft:clay_ball
-    tasks:
-      - get: Botany:clay:42
-    rewards:
-      - xp: 1
-  - id: clay_43
-    title: "Clay"
-    desc: |
-      TODO [Bancada] Pigment, minecraft:clay_ball
-    tasks:
-      - get: Botany:clay:43
-    rewards:
-      - xp: 1
-  - id: clay_44
-    title: "Clay"
-    desc: |
-      TODO [Bancada] Pigment, minecraft:clay_ball
-    tasks:
-      - get: Botany:clay:44
-    rewards:
-      - xp: 1
-  - id: clay_45
-    title: "Clay"
-    desc: |
-      TODO [Bancada] Pigment, minecraft:clay_ball
-    tasks:
-      - get: Botany:clay:45
-    rewards:
-      - xp: 1
-  - id: clay_46
-    title: "Clay"
-    desc: |
-      TODO [Bancada] Pigment, minecraft:clay_ball
-    tasks:
-      - get: Botany:clay:46
-    rewards:
-      - xp: 1
-  - id: clay_47
-    title: "Clay"
-    desc: |
-      TODO [Bancada] Pigment, minecraft:clay_ball
-    tasks:
-      - get: Botany:clay:47
-    rewards:
-      - xp: 1
-  - id: clay_48
-    title: "Clay"
-    desc: |
-      TODO [Bancada] Pigment, minecraft:clay_ball
-    tasks:
-      - get: Botany:clay:48
-    rewards:
-      - xp: 1
-  - id: clay_49
-    title: "Clay"
-    desc: |
-      TODO [Bancada] Pigment, minecraft:clay_ball
-    tasks:
-      - get: Botany:clay:49
-    rewards:
-      - xp: 1
-  - id: clay_50
-    title: "Clay"
-    desc: |
-      TODO [Bancada] Pigment, minecraft:clay_ball
-    tasks:
-      - get: Botany:clay:50
-    rewards:
-      - xp: 1
-  - id: clay_51
-    title: "Clay"
-    desc: |
-      TODO [Bancada] Pigment, minecraft:clay_ball
-    tasks:
-      - get: Botany:clay:51
-    rewards:
-      - xp: 1
-  - id: clay_52
-    title: "Clay"
-    desc: |
-      TODO [Bancada] Pigment, minecraft:clay_ball
-    tasks:
-      - get: Botany:clay:52
-    rewards:
-      - xp: 1
-  - id: clay_53
-    title: "Clay"
-    desc: |
-      TODO [Bancada] Pigment, minecraft:clay_ball
-    tasks:
-      - get: Botany:clay:53
-    rewards:
-      - xp: 1
-  - id: clay_54
-    title: "Clay"
-    desc: |
-      TODO [Bancada] Pigment, minecraft:clay_ball
-    tasks:
-      - get: Botany:clay:54
-    rewards:
-      - xp: 1
-  - id: clay_55
-    title: "Clay"
-    desc: |
-      TODO [Bancada] Pigment, minecraft:clay_ball
-    tasks:
-      - get: Botany:clay:55
-    rewards:
-      - xp: 1
-  - id: clay_56
-    title: "Clay"
-    desc: |
-      TODO [Bancada] Pigment, minecraft:clay_ball
-    tasks:
-      - get: Botany:clay:56
-    rewards:
-      - xp: 1
-  - id: clay_57
-    title: "Clay"
-    desc: |
-      TODO [Bancada] Pigment, minecraft:clay_ball
-    tasks:
-      - get: Botany:clay:57
-    rewards:
-      - xp: 1
-  - id: clay_58
-    title: "Clay"
-    desc: |
-      TODO [Bancada] Pigment, minecraft:clay_ball
-    tasks:
-      - get: Botany:clay:58
-    rewards:
-      - xp: 1
+      - xp: 12
+      - kit: {name: "Kit do Geneticista", items: [minecraft:diamond x4, minecraft:emerald x4, minecraft:gold_ingot x16, minecraft:glass_pane x32, minecraft:sugar x32]}
+      - loot: epico
+

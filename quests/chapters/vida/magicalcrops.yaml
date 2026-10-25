@@ -259,7 +259,7 @@ quests:
     deps: [accio_essence]
     icon: magicalcrops:DyeSeeds
     desc: |
-      A §eSemente de Tintura§r rende essência técnica-colorida. Boa para quem curte decorar com cor.
+      A §eSemente de Tintura§r rende essência de tintura, que vira corante em vários tons. Boa para quem curte decorar com cor.
     tasks:
       - get: magicalcrops:DyeSeeds
     rewards:
@@ -965,4 +965,59 @@ quests:
       - xp: 12
       - kit: {name: "Kit do Alquimista Verde", items: [minecraft:diamond x8, minecraft:emerald x8, minecraft:gold_block x4, minecraft:experience_bottle x16]}
       - loot: epico
+
+  - id: minicio_minerio
+    title: "Minério em Três Mundos"
+    type: optional
+    deps: [minicio_essence]
+    icon: magicalcrops:MinicioOre
+    desc: |
+      O minério de Minicio aparece no Overworld, no §cNether§r e no §5End§r, cada um com a sua versão.
+      Se a essência estiver curta, uma caminhada mineradora resolve. Use Fortuna para render mais.
+    tasks:
+      - get: magicalcrops:MinicioOre
+    rewards:
+      - xp: 2
+      - loot: comum
+
+  - id: bloco_wither
+    title: "Bloco à Prova de Wither"
+    type: optional
+    deps: [sementes_wither]
+    icon: magicalcrops:WitherProof
+    desc: |
+      Construa a base do seu Wither com blocos que ele não destrói! O §eBloco à Prova de Wither§r
+      leva pedra, obsidiana e essência de Wither (a colheita da semente anterior). Há também a versão em vidro.
+    tasks:
+      - get: magicalcrops:WitherProof
+    rewards:
+      - xp: 5
+      - loot: raro
+
+  - id: essencias_metal
+    title: "Essências de Cobre e Ferro"
+    deps: [sementes_ferro, metais_basicos]
+    icon: magicalcrops:IronEssence
+    desc: |
+      A colheita virou essência de metal. Nove sementes (ou a colheita direta) fazem a essência —
+      leve-a à fornalha e saem lingotes. §aDica:§r a Fornalha Accio ou superior aumenta o rendimento; veja no NEI.
+    tasks:
+      - get: magicalcrops:IronEssence
+      - get: magicalcrops:CopperEssence
+    rewards:
+      - xp: 4
+      - choice: [minecraft:iron_ingot x8, minecraft:redstone x16, minecraft:coal x16]
+
+  - id: essencia_diamante
+    title: "Essência de Diamante"
+    deps: [sementes_diamante]
+    icon: magicalcrops:DiamondEssence
+    desc: |
+      Parabéns pela primeira colheita de diamante! A essência vira diamante cru na fornalha.
+      Compartilhe com o Registro: até eu fiquei emocionada.
+    tasks:
+      - get: magicalcrops:DiamondEssence
+    rewards:
+      - xp: 6
+      - loot: raro
 

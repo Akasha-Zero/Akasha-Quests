@@ -1,0 +1,142 @@
+chapter:
+  id: atm_bemvindo
+  title: Bem-vindo
+  prefix: ATM
+  order: 900
+  icon: allthemodiumlegacy:legacy_guide
+  desc: |
+    §6O Volume dos Metais Impossíveis.§r A série ATM nasceu para provar que sempre existe um
+    metal mais raro do que o último que você achou. Aqui eu guardo o mapa: o que são os três
+    módulos, como os três metais se encadeiam e onde fica a Estrela ATM, o fim da estrada.
+    (Akashic ATM Family 0.1.0-alpha.10)
+quests:
+- id: boas_vindas
+  title: Uma Página Dourada
+  type: info
+  icon: allthemodiumlegacy:legacy_guide
+  desc: |
+    Herói, achei esta página no fundo do Registro, brilhando de um jeito que livro comum não
+    brilha. Ela abre o §6Volume dos Metais Impossíveis§r.
+
+    A ideia da série é simples e cruel: três metais, cada um mais difícil que o anterior
+    (§eAllthemodium§r, §eVibranium§r e §eUnobtainium§r), e uma meta no fim de tudo, a §eEstrela
+    ATM§r. Os capítulos seguintes levam você de uma árvore até lá.
+
+    Leia estas páginas com calma e marque cada uma. Sem pressa, a gente chega.
+  tasks: &id001
+  - check: true
+  rewards:
+  - xp: 2
+  - item:
+    - allthemodiumlegacy:legacy_guide
+- id: tres_modulos
+  title: Três Módulos, Uma Família
+  type: info
+  icon: allthemodiumlegacy:allthemodium_ingot
+  deps: [boas_vindas]
+  desc: |
+    A família Akashic ATM vem em três pedaços, e você vai ver cada um em uma aba criativa
+    própria:
+
+    §eAll The Modium§r: os metais, as ferramentas, as armaduras e as três dimensões. §eAll The
+    Tweaks§r: a Estrela ATM e os componentes que a montam. §eAll The Compressed§r: blocos
+    comprimidos de 1x até 9x.
+
+    §aDica:§r o item §eGuia da Família Akashic ATM§r (um livro mais uma pepita de Allthemodium)
+    resume tudo isso dentro do jogo. Faça um e guarde na mochila.
+  tasks: *id001
+  rewards:
+  - xp: 3
+- id: progressao_metais
+  title: A Escada dos Três Metais
+  type: info
+  icon: allthemodiumlegacy:vibranium_ingot
+  deps: [tres_modulos]
+  desc: |
+    A progressão do equipamento é uma escada: §enetherita§r, depois §eAllthemodium§r,
+    §eVibranium§r e por fim §eUnobtainium§r. Cada degrau melhora o anterior na bancada: você
+    junta a peça velha, um lingote do metal novo e um molde de ferraria, e o molde some. Nome e
+    encantamentos ficam!
+
+    No Forbidden, a netherita vem do Et Futurum. Para cada ferramenta, confira a base exata no
+    NEI.
+  tasks: *id001
+  rewards:
+  - xp: 3
+- id: o_que_e_ferramenta
+  title: Ferramentas que Não Gastam
+  type: info
+  icon: allthemodiumlegacy:unobtainium_chestplate
+  deps: [progressao_metais]
+  desc: |
+    As ferramentas e armaduras prontas desta família não perdem durabilidade. As armaduras
+    também dão poderes: elmo contra afogamento, botas anulam queda, peitoral contra fogo e lava,
+    calças ajudam a nadar. O peitoral de Unobtainium protege até do vazio.
+
+    §cAtenção:§r nada disso dá voo. E peças montadas no Tinkers' Construct usam as regras do
+    Tinkers, com durabilidade normal.
+  tasks: *id001
+  rewards:
+  - xp: 3
+- id: tres_dimensoes_info
+  title: Mundos Só Para os Metais
+  type: info
+  icon: allthemodiumlegacy:teleport_pad
+  deps: [progressao_metais]
+  desc: |
+    Existem três dimensões novas: a §eMineração§r (240), O §eOutro§r (241) e O §eAlém§r (242).
+    Você chega a elas pela §eplataforma de teletransporte§r, que casa Overworld com Mineração,
+    Nether com O Outro e End com O Além.
+
+    A geração foi adaptada à 1.7.10. Não espere o mesmo mundo das versões novas do ATM, mas o
+    espírito é o mesmo: minerar fundo, enfrentar o Piglich e construir no vazio.
+  tasks: *id001
+  rewards:
+  - xp: 3
+- id: meta_estrela
+  title: A Estrela no Fim da Estrada
+  type: info
+  icon: allthemodiumlegacy:atm_star
+  deps: [tres_modulos]
+  desc: |
+    O objetivo final da família é a §eEstrela ATM§r. Ela é montada com cinco fragmentos de etapa
+    diferentes (1/5 até 5/5); não adianta juntar cinco cópias do mesmo. Cada etapa pede
+    componentes de várias indústrias do pack: Draconic Evolution, IC2, EnderIO, Thermal e os
+    blocos comprimidos.
+
+    Os capítulos de materiais deste livro preparam o terreno. O capítulo da Estrela cuida do
+    resto.
+  tasks: *id001
+  rewards:
+  - xp: 3
+- id: diferencas_17
+  title: Isto Não É o ATM Moderno
+  type: info
+  icon: minecraft:book
+  deps: [meta_estrela]
+  desc: |
+    Antes de comparar com o ATM10, saiba: as receitas foram §eadaptadas à 1.7.10§r e ao
+    Forbidden. Algumas etapas passam pelas máquinas do pack (Alloy Smelter do EnderIO, Mekanism,
+    Thermal), e o mod deliberadamente §cnão inventa§r recursos sem fornecedor.
+
+    Se algo parecer diferente do que você leu por aí, abra o NEI: ele é a verdade deste mundo. O
+    GregStar não existe aqui.
+  tasks: *id001
+  rewards:
+  - xp: 3
+- id: como_usar_livro
+  title: Como Percorrer Este Livro
+  type: info
+  icon: minecraft:map
+  deps: [diferencas_17, tres_dimensoes_info, o_que_e_ferramenta]
+  desc: |
+    Siga a ordem: §eO Começo§r (do vanilla até o Nether e o Fim), depois §eAllthemodium§r (os
+    metais e as dimensões). §eAll The Compressed§r e §eAll The Tweaks§r são caminhos paralelos,
+    que você visita quando precisar de armazenamento ou de enfeites. O §eQuadro de Recompensas§r
+    rende material extra todos os dias, e as §eDicas e Truques§r ficam à mão para qualquer
+    dúvida.
+
+    Pronto, Herói. O próximo passo é o Capítulo 1.
+  tasks: *id001
+  rewards:
+  - xp: 3
