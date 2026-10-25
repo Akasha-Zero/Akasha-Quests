@@ -1,0 +1,805 @@
+chapter:
+  id: magicalcrops
+  title: "Magical Crops"
+  order: 620
+  icon: magicalcrops:GhastSeeds
+  desc: |
+    TODO
+quests:
+  - id: aminicio_block
+    title: "§aMinicio Block"
+    deps: [aminicio_essence]
+    desc: |
+      TODO [Bancada] §aMinicio Essence
+    tasks:
+      - get: magicalcrops:essence_storage
+    rewards:
+      - xp: 2
+  - id: aminicio_essence
+    title: "§aMinicio Essence"
+    deps: [aminicio_block]
+    desc: |
+      TODO [Bancada] §aMinicio Block
+    tasks:
+      - get: magicalcrops:1MinicioEssence
+    rewards:
+      - xp: 3
+  - id: growth_pulser
+    title: "Growth Pulser"
+    deps: [aminicio_block]
+    desc: |
+      TODO [Bancada] minecraft:diamond, minecraft:stone, §aMinicio Block
+    tasks:
+      - get: magicalcrops:CropBooster
+    rewards:
+      - xp: 3
+  - id: 6weak_infusion_stone
+    title: "§6Weak Infusion Stone"
+    deps: [aminicio_essence]
+    desc: |
+      TODO [Bancada] §aMinicio Essence
+    tasks:
+      - get: magicalcrops:InfusionStoneWeak
+    rewards:
+      - xp: 4
+      - loot: incomum
+  - id: magical_fertilizer
+    title: "Magical Fertilizer"
+    deps: [aminicio_essence]
+    desc: |
+      TODO [Bancada] minecraft:diamond, minecraft:dye:15, §aMinicio Essence
+    tasks:
+      - get: magicalcrops:MagicalFertilizer
+    rewards:
+      - xp: 4
+      - loot: incomum
+  - id: minicio_seeds
+    title: "Minicio Seeds"
+    deps: [aminicio_essence]
+    desc: |
+      TODO [Bancada] minecraft:wheat_seeds, §aMinicio Essence
+    tasks:
+      - get: magicalcrops:MinicioSeeds
+    rewards:
+      - xp: 4
+      - loot: incomum
+  - id: 6accio_essence
+    title: "§6Accio Essence"
+    deps: [6weak_infusion_stone, aminicio_essence]
+    desc: |
+      TODO [Bancada] §6Weak Infusion Stone, §aMinicio Essence
+    tasks:
+      - get: magicalcrops:2AccioEssence
+    rewards:
+      - xp: 5
+      - loot: incomum
+  - id: regular_infusion_stone
+    title: "Regular Infusion Stone"
+    deps: [6weak_infusion_stone]
+    desc: |
+      TODO [Bancada] §6Weak Infusion Stone
+    tasks:
+      - get: magicalcrops:InfusionStoneRegular
+    rewards:
+      - xp: 5
+      - loot: incomum
+  - id: ecrucio_essence
+    title: "§eCrucio Essence"
+    deps: [6accio_essence, regular_infusion_stone]
+    desc: |
+      TODO [Bancada] Regular Infusion Stone, §6Accio Essence
+    tasks:
+      - get: magicalcrops:3CrucioEssence
+    rewards:
+      - xp: 6
+      - loot: raro
+  - id: accio_furnace
+    title: "Accio Furnace"
+    deps: [6accio_essence]
+    desc: |
+      TODO [Bancada] minecraft:furnace, §6Accio Essence
+    tasks:
+      - get: magicalcrops:AccioFurnace
+    rewards:
+      - xp: 6
+      - loot: raro
+  - id: air_seeds
+    title: "Air Seeds"
+    deps: [6accio_essence, minicio_seeds]
+    desc: |
+      TODO [Bancada] Minicio Seeds, minecraft:glass_bottle, §6Accio Essence
+    tasks:
+      - get: magicalcrops:AirSeeds
+    rewards:
+      - xp: 6
+      - loot: raro
+  - id: coal_seeds
+    title: "Coal Seeds"
+    deps: [6accio_essence, minicio_seeds]
+    desc: |
+      TODO [Bancada] Minicio Seeds, minecraft:coal, §6Accio Essence
+    tasks:
+      - get: magicalcrops:CoalSeeds
+    rewards:
+      - xp: 6
+      - loot: raro
+  - id: dye_seeds
+    title: "Dye Seeds"
+    deps: [6accio_essence, minicio_seeds]
+    desc: |
+      TODO [Bancada] Minicio Seeds, minecraft:dye, §6Accio Essence
+    tasks:
+      - get: magicalcrops:DyeSeeds
+    rewards:
+      - xp: 6
+      - loot: raro
+  - id: earth_seeds
+    title: "Earth Seeds"
+    deps: [6accio_essence, minicio_seeds]
+    desc: |
+      TODO [Bancada] Minicio Seeds, minecraft:dirt, §6Accio Essence
+    tasks:
+      - get: magicalcrops:EarthSeeds
+    rewards:
+      - xp: 6
+      - loot: raro
+  - id: fire_seeds
+    title: "Fire Seeds"
+    deps: [6accio_essence, minicio_seeds]
+    desc: |
+      TODO [Bancada] Minicio Seeds, minecraft:lava_bucket, §6Accio Essence
+    tasks:
+      - get: magicalcrops:FireSeeds
+    rewards:
+      - xp: 6
+      - loot: raro
+  - id: bstrong_infusion_stone
+    title: "§bStrong Infusion Stone"
+    deps: [regular_infusion_stone]
+    desc: |
+      TODO [Bancada] Regular Infusion Stone
+    tasks:
+      - get: magicalcrops:InfusionStoneStrong
+    rewards:
+      - xp: 6
+      - loot: raro
+  - id: nature_seeds
+    title: "Nature Seeds"
+    deps: [6accio_essence, minicio_seeds]
+    desc: |
+      TODO [Bancada] Minicio Seeds, §6Accio Essence
+    tasks:
+      - get: magicalcrops:NatureSeeds
+    rewards:
+      - xp: 6
+      - loot: raro
+  - id: rubber_seeds
+    title: "Rubber Seeds"
+    deps: [6accio_essence, minicio_seeds]
+    desc: |
+      TODO [Bancada] Minicio Seeds, §6Accio Essence
+    tasks:
+      - get: magicalcrops:RubberSeeds
+    rewards:
+      - xp: 6
+      - loot: raro
+  - id: accio_seed_bag
+    title: "Accio Seed Bag"
+    deps: [6accio_essence]
+    desc: |
+      TODO [Bancada] minecraft:leather, §6Accio Essence
+    tasks:
+      - get: magicalcrops:SeedBagAccio
+    rewards:
+      - xp: 6
+      - loot: raro
+  - id: water_seeds
+    title: "Water Seeds"
+    deps: [6accio_essence, minicio_seeds]
+    desc: |
+      TODO [Bancada] Minicio Seeds, minecraft:water_bucket, §6Accio Essence
+    tasks:
+      - get: magicalcrops:WaterSeeds
+    rewards:
+      - xp: 6
+      - loot: raro
+  - id: 6accio_block
+    title: "§6Accio Block"
+    deps: [6accio_essence]
+    desc: |
+      TODO [Bancada] §6Accio Essence
+    tasks:
+      - get: magicalcrops:essence_storage:1
+    rewards:
+      - xp: 6
+      - loot: raro
+  - id: bimperio_essence
+    title: "§bImperio Essence"
+    deps: [ecrucio_essence, bstrong_infusion_stone]
+    desc: |
+      TODO [Bancada] §bStrong Infusion Stone, §eCrucio Essence
+    tasks:
+      - get: magicalcrops:4ImperioEssence
+    rewards:
+      - xp: 6
+      - loot: raro
+  - id: air_essence
+    title: "Air Essence"
+    deps: [air_seeds]
+    desc: |
+      TODO [Bancada] Air Seeds
+    tasks:
+      - get: magicalcrops:AirEssence
+    rewards:
+      - xp: 6
+      - loot: raro
+  - id: aluminium_seeds
+    title: "Aluminium Seeds"
+    deps: [ecrucio_essence, minicio_seeds]
+    desc: |
+      TODO [Bancada] Minicio Seeds, §eCrucio Essence
+    tasks:
+      - get: magicalcrops:AluminiumSeeds
+    rewards:
+      - xp: 6
+      - loot: raro
+  - id: amber_seeds
+    title: "Amber Seeds"
+    deps: [ecrucio_essence, minicio_seeds]
+    desc: |
+      TODO [Bancada] Minicio Seeds, §eCrucio Essence
+    tasks:
+      - get: magicalcrops:AmberSeeds
+    rewards:
+      - xp: 6
+      - loot: raro
+  - id: bronze_seeds
+    title: "Bronze Seeds"
+    deps: [ecrucio_essence, minicio_seeds]
+    desc: |
+      TODO [Bancada] Minicio Seeds, §eCrucio Essence
+    tasks:
+      - get: magicalcrops:BronzeSeeds
+    rewards:
+      - xp: 6
+      - loot: raro
+  - id: certus_quartz_seeds
+    title: "Certus Quartz Seeds"
+    deps: [ecrucio_essence, minicio_seeds]
+    desc: |
+      TODO [Bancada] Minicio Seeds, §eCrucio Essence
+    tasks:
+      - get: magicalcrops:CertusQuartzSeeds
+    rewards:
+      - xp: 6
+      - loot: raro
+  - id: chicken_seeds
+    title: "Chicken Seeds"
+    deps: [ecrucio_essence, minicio_seeds]
+    desc: |
+      TODO [Bancada] Minicio Seeds, minecraft:egg, §eCrucio Essence
+    tasks:
+      - get: magicalcrops:ChickenSeeds
+    rewards:
+      - xp: 6
+      - loot: raro
+  - id: coal_essence
+    title: "Coal Essence"
+    deps: [coal_seeds]
+    desc: |
+      TODO [Bancada] Coal Seeds
+    tasks:
+      - get: magicalcrops:CoalEssence
+    rewards:
+      - xp: 6
+      - loot: raro
+  - id: copper_seeds
+    title: "Copper Seeds"
+    deps: [ecrucio_essence, minicio_seeds]
+    desc: |
+      TODO [Bancada] Minicio Seeds, §eCrucio Essence
+    tasks:
+      - get: magicalcrops:CopperSeeds
+    rewards:
+      - xp: 6
+      - loot: raro
+  - id: cow_seeds
+    title: "Cow Seeds"
+    deps: [ecrucio_essence, minicio_seeds]
+    desc: |
+      TODO [Bancada] Minicio Seeds, minecraft:leather, §eCrucio Essence
+    tasks:
+      - get: magicalcrops:CowSeeds
+    rewards:
+      - xp: 6
+      - loot: raro
+  - id: crucio_furnace
+    title: "Crucio Furnace"
+    deps: [accio_furnace, ecrucio_essence]
+    desc: |
+      TODO [Bancada] Accio Furnace, §eCrucio Essence
+    tasks:
+      - get: magicalcrops:CrucioFurnace
+    rewards:
+      - xp: 6
+      - loot: raro
+  - id: technicolor_essence
+    title: "Technicolor Essence"
+    deps: [dye_seeds]
+    desc: |
+      TODO [Bancada] Dye Seeds
+    tasks:
+      - get: magicalcrops:DyeEssence
+    rewards:
+      - xp: 6
+      - loot: raro
+  - id: earth_essence
+    title: "Earth Essence"
+    deps: [earth_seeds]
+    desc: |
+      TODO [Bancada] Earth Seeds
+    tasks:
+      - get: magicalcrops:EarthEssence
+    rewards:
+      - xp: 6
+      - loot: raro
+  - id: fire_essence
+    title: "Fire Essence"
+    deps: [fire_seeds]
+    desc: |
+      TODO [Bancada] Fire Seeds
+    tasks:
+      - get: magicalcrops:FireEssence
+    rewards:
+      - xp: 6
+      - loot: raro
+  - id: glowstone_seeds
+    title: "Glowstone Seeds"
+    deps: [ecrucio_essence, minicio_seeds]
+    desc: |
+      TODO [Bancada] Minicio Seeds, minecraft:glowstone_dust, §eCrucio Essence
+    tasks:
+      - get: magicalcrops:GlowstoneSeeds
+    rewards:
+      - xp: 6
+      - loot: raro
+  - id: extreme_infusion_stone
+    title: "Extreme Infusion Stone"
+    deps: [bstrong_infusion_stone]
+    desc: |
+      TODO [Bancada] §bStrong Infusion Stone
+    tasks:
+      - get: magicalcrops:InfusionStoneExtreme
+    rewards:
+      - xp: 6
+      - loot: raro
+  - id: lead_seeds
+    title: "Lead Seeds"
+    deps: [ecrucio_essence, minicio_seeds]
+    desc: |
+      TODO [Bancada] Minicio Seeds, §eCrucio Essence
+    tasks:
+      - get: magicalcrops:LeadSeeds
+    rewards:
+      - xp: 6
+      - loot: raro
+  - id: manasteel_seeds
+    title: "Manasteel Seeds"
+    deps: [ecrucio_essence, minicio_seeds]
+    desc: |
+      TODO [Bancada] Minicio Seeds, §eCrucio Essence
+    tasks:
+      - get: magicalcrops:ManasteelSeeds
+    rewards:
+      - xp: 6
+      - loot: raro
+  - id: nature_essence
+    title: "Nature Essence"
+    deps: [nature_seeds]
+    desc: |
+      TODO [Bancada] Nature Seeds
+    tasks:
+      - get: magicalcrops:NatureEssence
+    rewards:
+      - xp: 6
+      - loot: raro
+  - id: nether_seeds
+    title: "Nether Seeds"
+    deps: [ecrucio_essence, minicio_seeds]
+    desc: |
+      TODO [Bancada] Minicio Seeds, §eCrucio Essence
+    tasks:
+      - get: magicalcrops:NetherSeeds
+    rewards:
+      - xp: 6
+      - loot: raro
+  - id: obsidian_seeds
+    title: "Obsidian Seeds"
+    deps: [ecrucio_essence, minicio_seeds]
+    desc: |
+      TODO [Bancada] Minicio Seeds, minecraft:obsidian, §eCrucio Essence
+    tasks:
+      - get: magicalcrops:ObsidianSeeds
+    rewards:
+      - xp: 6
+      - loot: raro
+  - id: pig_seeds
+    title: "Pig Seeds"
+    deps: [ecrucio_essence, minicio_seeds]
+    desc: |
+      TODO [Bancada] Minicio Seeds, minecraft:porkchop, §eCrucio Essence
+    tasks:
+      - get: magicalcrops:PigSeeds
+    rewards:
+      - xp: 6
+      - loot: raro
+  - id: quicksilver_seeds
+    title: "Quicksilver Seeds"
+    deps: [ecrucio_essence, minicio_seeds]
+    desc: |
+      TODO [Bancada] Minicio Seeds, §eCrucio Essence
+    tasks:
+      - get: magicalcrops:QuicksilverSeeds
+    rewards:
+      - xp: 6
+      - loot: raro
+  - id: redstone_seeds
+    title: "Redstone Seeds"
+    deps: [ecrucio_essence, minicio_seeds]
+    desc: |
+      TODO [Bancada] Minicio Seeds, minecraft:redstone, §eCrucio Essence
+    tasks:
+      - get: magicalcrops:RedstoneSeeds
+    rewards:
+      - xp: 6
+      - loot: raro
+  - id: rubber_essence
+    title: "Rubber Essence"
+    deps: [rubber_seeds]
+    desc: |
+      TODO [Bancada] Rubber Seeds
+    tasks:
+      - get: magicalcrops:RubberEssence
+    rewards:
+      - xp: 6
+      - loot: raro
+  - id: saltpeter_seeds
+    title: "Saltpeter Seeds"
+    deps: [ecrucio_essence, minicio_seeds]
+    desc: |
+      TODO [Bancada] Minicio Seeds, §eCrucio Essence
+    tasks:
+      - get: magicalcrops:SaltpeterSeeds
+    rewards:
+      - xp: 6
+      - loot: raro
+  - id: crucio_seed_bag
+    title: "Crucio Seed Bag"
+    deps: [accio_seed_bag, ecrucio_essence]
+    desc: |
+      TODO [Bancada] Accio Seed Bag, §eCrucio Essence
+    tasks:
+      - get: magicalcrops:SeedBagCrucio
+    rewards:
+      - xp: 6
+      - loot: raro
+  - id: sheep_seeds
+    title: "Sheep Seeds"
+    deps: [ecrucio_essence, minicio_seeds]
+    desc: |
+      TODO [Bancada] Minicio Seeds, minecraft:wool, §eCrucio Essence
+    tasks:
+      - get: magicalcrops:SheepSeeds
+    rewards:
+      - xp: 6
+      - loot: raro
+  - id: sulfur_seeds
+    title: "Sulfur Seeds"
+    deps: [ecrucio_essence, minicio_seeds]
+    desc: |
+      TODO [Bancada] Minicio Seeds, §eCrucio Essence
+    tasks:
+      - get: magicalcrops:SulfurSeeds
+    rewards:
+      - xp: 6
+      - loot: raro
+  - id: tin_seeds
+    title: "Tin Seeds"
+    deps: [ecrucio_essence, minicio_seeds]
+    desc: |
+      TODO [Bancada] Minicio Seeds, §eCrucio Essence
+    tasks:
+      - get: magicalcrops:TinSeeds
+    rewards:
+      - xp: 6
+      - loot: raro
+  - id: water_essence
+    title: "Water Essence"
+    deps: [water_seeds]
+    desc: |
+      TODO [Bancada] Water Seeds
+    tasks:
+      - get: magicalcrops:WaterEssence
+    rewards:
+      - xp: 6
+      - loot: raro
+  - id: ecrucio_block
+    title: "§eCrucio Block"
+    deps: [ecrucio_essence]
+    desc: |
+      TODO [Bancada] §eCrucio Essence
+    tasks:
+      - get: magicalcrops:essence_storage:2
+    rewards:
+      - xp: 6
+      - loot: raro
+  - id: dzivicio_essence
+    title: "§dZivicio Essence"
+    deps: [extreme_infusion_stone, bimperio_essence]
+    desc: |
+      TODO [Bancada] Extreme Infusion Stone, §bImperio Essence
+    tasks:
+      - get: magicalcrops:5ZivicioEssence
+    rewards:
+      - xp: 6
+      - loot: raro
+  - id: air_shard_seeds
+    title: "Air Shard Seeds"
+    deps: [bimperio_essence, minicio_seeds]
+    desc: |
+      TODO [Bancada] Minicio Seeds, §bImperio Essence
+    tasks:
+      - get: magicalcrops:AirshardSeeds
+    rewards:
+      - xp: 6
+      - loot: raro
+  - id: aluminium_essence
+    title: "Aluminium Essence"
+    deps: [aluminium_seeds]
+    desc: |
+      TODO [Bancada] Aluminium Seeds
+    tasks:
+      - get: magicalcrops:AluminiumEssence
+    rewards:
+      - xp: 6
+      - loot: raro
+  - id: alumite_seeds
+    title: "Alumite Seeds"
+    deps: [bimperio_essence, minicio_seeds]
+    desc: |
+      TODO [Bancada] Minicio Seeds, §bImperio Essence
+    tasks:
+      - get: magicalcrops:AlumiteSeeds
+    rewards:
+      - xp: 6
+      - loot: raro
+  - id: amber_essence
+    title: "Amber Essence"
+    deps: [amber_seeds]
+    desc: |
+      TODO [Bancada] Amber Seeds
+    tasks:
+      - get: magicalcrops:AmberEssence
+    rewards:
+      - xp: 6
+      - loot: raro
+  - id: ardite_seeds
+    title: "Ardite Seeds"
+    deps: [bimperio_essence, minicio_seeds]
+    desc: |
+      TODO [Bancada] Minicio Seeds, §bImperio Essence
+    tasks:
+      - get: magicalcrops:ArditeSeeds
+    rewards:
+      - xp: 6
+      - loot: raro
+  - id: blaze_seeds
+    title: "Blaze Seeds"
+    deps: [bimperio_essence, minicio_seeds]
+    desc: |
+      TODO [Bancada] Minicio Seeds, minecraft:blaze_rod, §bImperio Essence
+    tasks:
+      - get: magicalcrops:BlazeSeeds
+    rewards:
+      - xp: 6
+      - loot: raro
+  - id: blizz_seeds
+    title: "Blizz Seeds"
+    deps: [bimperio_essence, minicio_seeds]
+    desc: |
+      TODO [Bancada] Minicio Seeds, §bImperio Essence
+    tasks:
+      - get: magicalcrops:BlizzSeeds
+    rewards:
+      - xp: 6
+      - loot: raro
+  - id: bronze_essence
+    title: "Bronze Essence"
+    deps: [bronze_seeds]
+    desc: |
+      TODO [Bancada] Bronze Seeds
+    tasks:
+      - get: magicalcrops:BronzeEssence
+    rewards:
+      - xp: 6
+      - loot: raro
+  - id: certus_quartz_essence
+    title: "Certus Quartz Essence"
+    deps: [certus_quartz_seeds]
+    desc: |
+      TODO [Bancada] Certus Quartz Seeds
+    tasks:
+      - get: magicalcrops:CertusQuartzEssence
+    rewards:
+      - xp: 6
+      - loot: raro
+  - id: chicken_essence
+    title: "Chicken Essence"
+    deps: [chicken_seeds]
+    desc: |
+      TODO [Bancada] Chicken Seeds
+    tasks:
+      - get: magicalcrops:ChickenEssence
+    rewards:
+      - xp: 6
+      - loot: raro
+  - id: conductive_iron_seeds
+    title: "Conductive Iron Seeds"
+    deps: [bimperio_essence, minicio_seeds]
+    desc: |
+      TODO [Bancada] Minicio Seeds, §bImperio Essence
+    tasks:
+      - get: magicalcrops:ConductiveIronSeeds
+    rewards:
+      - xp: 6
+      - loot: raro
+  - id: copper_essence
+    title: "Copper Essence"
+    deps: [copper_seeds]
+    desc: |
+      TODO [Bancada] Copper Seeds
+    tasks:
+      - get: magicalcrops:CopperEssence
+    rewards:
+      - xp: 6
+      - loot: raro
+  - id: cow_essence
+    title: "Cow Essence"
+    deps: [cow_seeds]
+    desc: |
+      TODO [Bancada] Cow Seeds
+    tasks:
+      - get: magicalcrops:CowEssence
+    rewards:
+      - xp: 6
+      - loot: raro
+  - id: creeper_seeds
+    title: "Creeper Seeds"
+    deps: [bimperio_essence, minicio_seeds]
+    desc: |
+      TODO [Bancada] Minicio Seeds, minecraft:gunpowder, §bImperio Essence
+    tasks:
+      - get: magicalcrops:CreeperSeeds
+    rewards:
+      - xp: 6
+      - loot: raro
+  - id: dark_steel_seeds
+    title: "Dark Steel Seeds"
+    deps: [bimperio_essence, minicio_seeds]
+    desc: |
+      TODO [Bancada] Minicio Seeds, §bImperio Essence
+    tasks:
+      - get: magicalcrops:DarkSteelSeeds
+    rewards:
+      - xp: 6
+      - loot: raro
+  - id: draconium_seeds
+    title: "Draconium Seeds"
+    deps: [bimperio_essence, minicio_seeds]
+    desc: |
+      TODO [Bancada] Minicio Seeds, §bImperio Essence
+    tasks:
+      - get: magicalcrops:DraconiumSeeds
+    rewards:
+      - xp: 6
+      - loot: raro
+  - id: earth_shard_seeds
+    title: "Earth Shard Seeds"
+    deps: [bimperio_essence, minicio_seeds]
+    desc: |
+      TODO [Bancada] Minicio Seeds, §bImperio Essence
+    tasks:
+      - get: magicalcrops:EarthshardSeeds
+    rewards:
+      - xp: 6
+      - loot: raro
+  - id: electrical_steel_seeds
+    title: "Electrical Steel Seeds"
+    deps: [bimperio_essence, minicio_seeds]
+    desc: |
+      TODO [Bancada] Minicio Seeds, §bImperio Essence
+    tasks:
+      - get: magicalcrops:ElectricalSteelSeeds
+    rewards:
+      - xp: 6
+      - loot: raro
+  - id: electrum_seeds
+    title: "Electrum Seeds"
+    deps: [bimperio_essence, minicio_seeds]
+    desc: |
+      TODO [Bancada] Minicio Seeds, §bImperio Essence
+    tasks:
+      - get: magicalcrops:ElectrumSeeds
+    rewards:
+      - xp: 6
+      - loot: raro
+  - id: enderman_seeds
+    title: "Enderman Seeds"
+    deps: [bimperio_essence, minicio_seeds]
+    desc: |
+      TODO [Bancada] Minicio Seeds, minecraft:ender_pearl, §bImperio Essence
+    tasks:
+      - get: magicalcrops:EndermanSeeds
+    rewards:
+      - xp: 6
+      - loot: raro
+  - id: energetic_alloy_seeds
+    title: "Energetic Alloy Seeds"
+    deps: [bimperio_essence, minicio_seeds]
+    desc: |
+      TODO [Bancada] Minicio Seeds, §bImperio Essence
+    tasks:
+      - get: magicalcrops:EnergeticAlloySeeds
+    rewards:
+      - xp: 6
+      - loot: raro
+  - id: entropy_shard_seeds
+    title: "Entropy Shard Seeds"
+    deps: [bimperio_essence, minicio_seeds]
+    desc: |
+      TODO [Bancada] Minicio Seeds, §bImperio Essence
+    tasks:
+      - get: magicalcrops:EntropyshardSeeds
+    rewards:
+      - xp: 6
+      - loot: raro
+  - id: experience_seeds
+    title: "Experience Seeds"
+    deps: [bimperio_essence, minicio_seeds]
+    desc: |
+      TODO [Bancada] Minicio Seeds, minecraft:enchanted_book, §bImperio Essence
+    tasks:
+      - get: magicalcrops:ExperienceSeeds
+    rewards:
+      - xp: 6
+      - loot: raro
+  - id: fire_shard_seeds
+    title: "Fire Shard Seeds"
+    deps: [bimperio_essence, minicio_seeds]
+    desc: |
+      TODO [Bancada] Minicio Seeds, §bImperio Essence
+    tasks:
+      - get: magicalcrops:FireshardSeeds
+    rewards:
+      - xp: 6
+      - loot: raro
+  - id: fluix_seeds
+    title: "Fluix Seeds"
+    deps: [bimperio_essence, minicio_seeds]
+    desc: |
+      TODO [Bancada] Minicio Seeds, §bImperio Essence
+    tasks:
+      - get: magicalcrops:FluixSeeds
+    rewards:
+      - xp: 6
+      - loot: raro
+  - id: ghast_seeds
+    title: "Ghast Seeds"
+    deps: [bimperio_essence, minicio_seeds]
+    desc: |
+      TODO [Bancada] Minicio Seeds, minecraft:ghast_tear, §bImperio Essence
+    tasks:
+      - get: magicalcrops:GhastSeeds
+    rewards:
+      - xp: 6
+      - loot: raro

@@ -1,0 +1,658 @@
+chapter:
+  id: agricraft
+  title: "AgriCraft"
+  order: 615
+  icon: AgriCraft:seedTaintedRoot
+  desc: |
+    TODO
+quests:
+  - id: clipper
+    title: "Clipper"
+    desc: |
+      TODO [Bancada] minecraft:shears
+    tasks:
+      - get: AgriCraft:clipper
+    rewards:
+      - xp: 1
+  - id: crop_sticks
+    title: "Crop Sticks"
+    desc: |
+      TODO [Bancada] 
+    tasks:
+      - get: AgriCraft:cropsItem
+    rewards:
+      - xp: 1
+  - id: wooden_hand_rake
+    title: "Wooden Hand Rake"
+    desc: |
+      TODO [Bancada] minecraft:fence
+    tasks:
+      - get: AgriCraft:handRake
+    rewards:
+      - xp: 1
+  - id: iron_hand_rake
+    title: "Iron Hand Rake"
+    desc: |
+      TODO [Bancada] minecraft:iron_bars
+    tasks:
+      - get: AgriCraft:handRake:1
+    rewards:
+      - xp: 1
+  - id: magnifying_glass
+    title: "Magnifying Glass"
+    desc: |
+      TODO [Bancada] 
+    tasks:
+      - get: AgriCraft:magnifyingGlass
+    rewards:
+      - xp: 1
+  - id: osmium_nugget
+    title: "Osmium Nugget"
+    desc: |
+      TODO [Bancada] 
+    tasks:
+      - get: AgriCraft:nuggetOsmium
+    rewards:
+      - xp: 1
+  - id: quartz_shard
+    title: "Quartz Shard"
+    desc: |
+      TODO [Bancada] minecraft:quartz
+    tasks:
+      - get: AgriCraft:nuggetQuartz
+    rewards:
+      - xp: 1
+  - id: seed_analyzer
+    title: "Seed Analyzer"
+    desc: |
+      TODO [Bancada] minecraft:stone_slab
+    tasks:
+      - get: AgriCraft:seedAnalyzer
+    rewards:
+      - xp: 1
+  - id: carrot_seeds
+    title: "Carrot Seeds"
+    desc: |
+      TODO [Bancada] minecraft:carrot
+    tasks:
+      - get: AgriCraft:seedCarrot
+    rewards:
+      - xp: 1
+  - id: potato_seeds
+    title: "Potato Seeds"
+    desc: |
+      TODO [Bancada] minecraft:potato
+    tasks:
+      - get: AgriCraft:seedPotato
+    rewards:
+      - xp: 1
+  - id: sprinkler
+    title: "Sprinkler"
+    desc: |
+      TODO [Bancada] minecraft:bucket, minecraft:iron_bars
+    tasks:
+      - get: AgriCraft:sprinkler
+    rewards:
+      - xp: 1
+  - id: gardening_trowel
+    title: "Gardening Trowel"
+    desc: |
+      TODO [Bancada] 
+    tasks:
+      - get: AgriCraft:trowel
+    rewards:
+      - xp: 1
+  - id: agricultural_journal
+    title: "Agricultural Journal"
+    deps: [crop_sticks]
+    desc: |
+      TODO [Bancada] Crop Sticks, minecraft:writable_book
+    tasks:
+      - get: AgriCraft:journal
+    rewards:
+      - xp: 2
+  - id: computer_controlled_seed_analyzer
+    title: "Computer Controlled Seed Analyzer"
+    deps: [seed_analyzer]
+    desc: |
+      TODO [Bancada] OpenComputers:case1, Seed Analyzer, minecraft:comparator
+    tasks:
+      - get: AgriCraft:peripheral
+    rewards:
+      - xp: 2
+  - id: brown_mushroom_spores
+    title: "Brown Mushroom Spores"
+    deps: [potato_seeds]
+    desc: |
+      TODO [Crop Mutation] Potato Seeds, minecraft:mycelium, minecraft:nether_wart
+    tasks:
+      - get: AgriCraft:seedShroomBrown
+    rewards:
+      - xp: 2
+  - id: sugarcane_seeds
+    title: "Sugarcane Seeds"
+    deps: [carrot_seeds]
+    desc: |
+      TODO [Crop Mutation] Carrot Seeds, minecraft:sand, minecraft:wheat_seeds
+    tasks:
+      - get: AgriCraft:seedSugarcane
+    rewards:
+      - xp: 2
+  - id: dandelion_seeds
+    title: "Dandelion Seeds"
+    deps: [sugarcane_seeds]
+    desc: |
+      TODO [Crop Mutation] ChromatiCraft:chromaticraft_block_cliffstone:3, Sugarcane Seeds, minecraft:melon_seeds
+    tasks:
+      - get: AgriCraft:seedDandelion
+    rewards:
+      - xp: 3
+  - id: poppy_seeds
+    title: "Poppy Seeds"
+    deps: [sugarcane_seeds]
+    desc: |
+      TODO [Crop Mutation] ChromatiCraft:chromaticraft_block_cliffstone:3, Sugarcane Seeds, minecraft:pumpkin_seeds
+    tasks:
+      - get: AgriCraft:seedPoppy
+    rewards:
+      - xp: 3
+  - id: cactus_seeds
+    title: "Cactus Seeds"
+    deps: [poppy_seeds, sugarcane_seeds]
+    desc: |
+      TODO [Crop Mutation] Poppy Seeds, Sugarcane Seeds, minecraft:sand
+    tasks:
+      - get: AgriCraft:seedCactus
+    rewards:
+      - xp: 4
+      - loot: incomum
+  - id: blue_orchid_seeds
+    title: "Blue Orchid Seeds"
+    deps: [poppy_seeds, dandelion_seeds]
+    desc: |
+      TODO [Crop Mutation] ChromatiCraft:chromaticraft_block_cliffstone:3, Dandelion Seeds, Poppy Seeds
+    tasks:
+      - get: AgriCraft:seedOrchid
+    rewards:
+      - xp: 4
+      - loot: incomum
+  - id: red_mushroom_spores
+    title: "Red Mushroom Spores"
+    deps: [poppy_seeds]
+    desc: |
+      TODO [Crop Mutation] Poppy Seeds, minecraft:mycelium, minecraft:nether_wart
+    tasks:
+      - get: AgriCraft:seedShroomRed
+    rewards:
+      - xp: 4
+      - loot: incomum
+  - id: allium_seeds
+    title: "Allium Seeds"
+    deps: [blue_orchid_seeds, poppy_seeds]
+    desc: |
+      TODO [Crop Mutation] Blue Orchid Seeds, ChromatiCraft:chromaticraft_block_cliffstone:3, Poppy Seeds
+    tasks:
+      - get: AgriCraft:seedAllium
+    rewards:
+      - xp: 5
+      - loot: incomum
+  - id: daisy_seeds
+    title: "Daisy Seeds"
+    deps: [blue_orchid_seeds, dandelion_seeds]
+    desc: |
+      TODO [Crop Mutation] Blue Orchid Seeds, ChromatiCraft:chromaticraft_block_cliffstone:3, Dandelion Seeds
+    tasks:
+      - get: AgriCraft:seedDaisy
+    rewards:
+      - xp: 5
+      - loot: incomum
+  - id: mystical_blue_flower_seeds
+    title: "Mystical Blue Flower Seeds"
+    deps: [allium_seeds, blue_orchid_seeds]
+    desc: |
+      TODO [Crop Mutation] Allium Seeds, Blue Orchid Seeds, minecraft:dirt:2
+    tasks:
+      - get: AgriCraft:seedBotaniaBlue
+    rewards:
+      - xp: 6
+      - loot: raro
+  - id: orange_tulip_seeds
+    title: "Orange Tulip Seeds"
+    deps: [daisy_seeds, blue_orchid_seeds]
+    desc: |
+      TODO [Crop Mutation] Blue Orchid Seeds, ChromatiCraft:chromaticraft_block_cliffstone:3, Daisy Seeds
+    tasks:
+      - get: AgriCraft:seedTulipOrange
+    rewards:
+      - xp: 6
+      - loot: raro
+  - id: pink_tulip_seeds
+    title: "Pink Tulip Seeds"
+    deps: [allium_seeds, dandelion_seeds]
+    desc: |
+      TODO [Crop Mutation] Allium Seeds, ChromatiCraft:chromaticraft_block_cliffstone:3, Dandelion Seeds
+    tasks:
+      - get: AgriCraft:seedTulipPink
+    rewards:
+      - xp: 6
+      - loot: raro
+  - id: red_tulip_seeds
+    title: "Red Tulip Seeds"
+    deps: [allium_seeds, poppy_seeds]
+    desc: |
+      TODO [Crop Mutation] Allium Seeds, ChromatiCraft:chromaticraft_block_cliffstone:3, Poppy Seeds
+    tasks:
+      - get: AgriCraft:seedTulipRed
+    rewards:
+      - xp: 6
+      - loot: raro
+  - id: white_tulip_seeds
+    title: "White Tulip Seeds"
+    deps: [daisy_seeds, dandelion_seeds]
+    desc: |
+      TODO [Crop Mutation] ChromatiCraft:chromaticraft_block_cliffstone:3, Daisy Seeds, Dandelion Seeds
+    tasks:
+      - get: AgriCraft:seedTulipWhite
+    rewards:
+      - xp: 6
+      - loot: raro
+  - id: mystical_black_flower_seeds
+    title: "Mystical Black Flower Seeds"
+    deps: [mystical_blue_flower_seeds, cactus_seeds]
+    desc: |
+      TODO [Crop Mutation] Cactus Seeds, Mystical Blue Flower Seeds, minecraft:dirt:2
+    tasks:
+      - get: AgriCraft:seedBotaniaBlack
+    rewards:
+      - xp: 6
+      - loot: raro
+  - id: mystical_red_flower_seeds
+    title: "Mystical Red Flower Seeds"
+    deps: [red_tulip_seeds, poppy_seeds]
+    desc: |
+      TODO [Crop Mutation] Poppy Seeds, Red Tulip Seeds, minecraft:dirt:2
+    tasks:
+      - get: AgriCraft:seedBotaniaRed
+    rewards:
+      - xp: 6
+      - loot: raro
+  - id: mystical_white_flower_seeds
+    title: "Mystical White Flower Seeds"
+    deps: [white_tulip_seeds, daisy_seeds]
+    desc: |
+      TODO [Crop Mutation] Daisy Seeds, White Tulip Seeds, minecraft:dirt:2
+    tasks:
+      - get: AgriCraft:seedBotaniaWhite
+    rewards:
+      - xp: 6
+      - loot: raro
+  - id: mystical_yellow_flower_seeds
+    title: "Mystical Yellow Flower Seeds"
+    deps: [orange_tulip_seeds, dandelion_seeds]
+    desc: |
+      TODO [Crop Mutation] Dandelion Seeds, Orange Tulip Seeds, minecraft:dirt:2
+    tasks:
+      - get: AgriCraft:seedBotaniaYellow
+    rewards:
+      - xp: 6
+      - loot: raro
+  - id: cinderpearl_seeds
+    title: "Cinderpearl Seeds"
+    deps: [red_tulip_seeds, cactus_seeds]
+    desc: |
+      TODO [Crop Mutation] Cactus Seeds, Red Tulip Seeds, minecraft:sand
+    tasks:
+      - get: AgriCraft:seedCinderpearl
+    rewards:
+      - xp: 6
+      - loot: raro
+  - id: lapender_seeds
+    title: "Lapender Seeds"
+    deps: [pink_tulip_seeds, blue_orchid_seeds]
+    desc: |
+      TODO [Crop Mutation] Blue Orchid Seeds, ChromatiCraft:chromaticraft_block_cliffstone:3, Pink Tulip Seeds, minecraft:lapis_ore:4
+    tasks:
+      - get: AgriCraft:seedLapender
+    rewards:
+      - xp: 6
+      - loot: raro
+  - id: nitor_wart_spores
+    title: "Nitor Wart Spores"
+    deps: [orange_tulip_seeds]
+    desc: |
+      TODO [Crop Mutation] Orange Tulip Seeds, minecraft:glowstone, minecraft:nether_wart, minecraft:soul_sand
+    tasks:
+      - get: AgriCraft:seedNitorWart
+    rewards:
+      - xp: 6
+      - loot: raro
+  - id: redstodendron_seeds
+    title: "Redstodendron Seeds"
+    deps: [red_tulip_seeds, daisy_seeds]
+    desc: |
+      TODO [Crop Mutation] ChromatiCraft:chromaticraft_block_cliffstone:3, Daisy Seeds, Red Tulip Seeds, minecraft:redstone_ore
+    tasks:
+      - get: AgriCraft:seedRedstodendron
+    rewards:
+      - xp: 6
+      - loot: raro
+  - id: aurigold_seeds
+    title: "Aurigold Seeds"
+    deps: [redstodendron_seeds, orange_tulip_seeds]
+    desc: |
+      TODO [Crop Mutation] ChromatiCraft:chromaticraft_block_cliffstone:3, Orange Tulip Seeds, Redstodendron Seeds, minecraft:gold_ore
+    tasks:
+      - get: AgriCraft:seedAurigold
+    rewards:
+      - xp: 6
+      - loot: raro
+  - id: mystical_gray_flower_seeds
+    title: "Mystical Gray Flower Seeds"
+    deps: [mystical_white_flower_seeds, mystical_black_flower_seeds]
+    desc: |
+      TODO [Crop Mutation] Mystical Black Flower Seeds, Mystical White Flower Seeds, minecraft:dirt:2
+    tasks:
+      - get: AgriCraft:seedBotaniaGray
+    rewards:
+      - xp: 6
+      - loot: raro
+  - id: mystical_green_flower_seeds
+    title: "Mystical Green Flower Seeds"
+    deps: [mystical_yellow_flower_seeds, mystical_blue_flower_seeds]
+    desc: |
+      TODO [Crop Mutation] Mystical Blue Flower Seeds, Mystical Yellow Flower Seeds, minecraft:dirt:2
+    tasks:
+      - get: AgriCraft:seedBotaniaGreen
+    rewards:
+      - xp: 6
+      - loot: raro
+  - id: mystical_light_blue_flower_seeds
+    title: "Mystical Light Blue Flower Seeds"
+    deps: [mystical_white_flower_seeds, mystical_blue_flower_seeds]
+    desc: |
+      TODO [Crop Mutation] Mystical Blue Flower Seeds, Mystical White Flower Seeds, minecraft:dirt:2
+    tasks:
+      - get: AgriCraft:seedBotaniaLightBlue
+    rewards:
+      - xp: 6
+      - loot: raro
+  - id: mystical_magenta_flower_seeds
+    title: "Mystical Magenta Flower Seeds"
+    deps: [mystical_red_flower_seeds, mystical_blue_flower_seeds]
+    desc: |
+      TODO [Crop Mutation] Mystical Blue Flower Seeds, Mystical Red Flower Seeds, minecraft:dirt:2
+    tasks:
+      - get: AgriCraft:seedBotaniaMagenta
+    rewards:
+      - xp: 6
+      - loot: raro
+  - id: mystical_orange_flower_seeds
+    title: "Mystical Orange Flower Seeds"
+    deps: [mystical_yellow_flower_seeds, mystical_red_flower_seeds]
+    desc: |
+      TODO [Crop Mutation] Mystical Red Flower Seeds, Mystical Yellow Flower Seeds, minecraft:dirt:2
+    tasks:
+      - get: AgriCraft:seedBotaniaOrange
+    rewards:
+      - xp: 6
+      - loot: raro
+  - id: cuprosia_seeds
+    title: "Cuprosia Seeds"
+    deps: [redstodendron_seeds, red_tulip_seeds]
+    desc: |
+      TODO [Crop Mutation] ChromatiCraft:chromaticraft_block_cliffstone:3, Red Tulip Seeds, Redstodendron Seeds, ThermalFoundation:Ore
+    tasks:
+      - get: AgriCraft:seedCuprosia
+    rewards:
+      - xp: 6
+      - loot: raro
+  - id: desert_nova_seeds
+    title: "Desert Nova Seeds"
+    deps: [cinderpearl_seeds, red_tulip_seeds]
+    desc: |
+      TODO [Crop Mutation] Cinderpearl Seeds, Red Tulip Seeds, minecraft:sand
+    tasks:
+      - get: AgriCraft:seedDesertNova
+    rewards:
+      - xp: 6
+      - loot: raro
+  - id: ferranium_seeds
+    title: "Ferranium Seeds"
+    deps: [lapender_seeds, white_tulip_seeds]
+    desc: |
+      TODO [Crop Mutation] ChromatiCraft:chromaticraft_block_cliffstone:3, Lapender Seeds, White Tulip Seeds, minecraft:iron_ore
+    tasks:
+      - get: AgriCraft:seedFerranium
+    rewards:
+      - xp: 6
+      - loot: raro
+  - id: petinia_seeds
+    title: "Petinia Seeds"
+    deps: [lapender_seeds, daisy_seeds]
+    desc: |
+      TODO [Crop Mutation] ChromatiCraft:chromaticraft_block_cliffstone:3, Daisy Seeds, Lapender Seeds, ThermalFoundation:Ore:1
+    tasks:
+      - get: AgriCraft:seedPetinia
+    rewards:
+      - xp: 6
+      - loot: raro
+  - id: quartzanthemum_seeds
+    title: "Quartzanthemum Seeds"
+    deps: [nitor_wart_spores, lapender_seeds]
+    desc: |
+      TODO [Crop Mutation] Lapender Seeds, Nitor Wart Spores, minecraft:quartz_ore, minecraft:soul_sand
+    tasks:
+      - get: AgriCraft:seedQuartzanthemum
+    rewards:
+      - xp: 6
+      - loot: raro
+  - id: mystical_cyan_flower_seeds
+    title: "Mystical Cyan Flower Seeds"
+    deps: [mystical_green_flower_seeds, mystical_blue_flower_seeds]
+    desc: |
+      TODO [Crop Mutation] Mystical Blue Flower Seeds, Mystical Green Flower Seeds, minecraft:dirt:2
+    tasks:
+      - get: AgriCraft:seedBotaniaCyan
+    rewards:
+      - xp: 6
+      - loot: raro
+  - id: mystical_light_gray_flower_seeds
+    title: "Mystical Light Gray Flower Seeds"
+    deps: [mystical_gray_flower_seeds, mystical_white_flower_seeds]
+    desc: |
+      TODO [Crop Mutation] Mystical Gray Flower Seeds, Mystical White Flower Seeds, minecraft:dirt:2
+    tasks:
+      - get: AgriCraft:seedBotaniaLightGray
+    rewards:
+      - xp: 6
+      - loot: raro
+  - id: mystical_lime_flower_seeds
+    title: "Mystical Lime Flower Seeds"
+    deps: [mystical_green_flower_seeds, mystical_white_flower_seeds]
+    desc: |
+      TODO [Crop Mutation] Mystical Green Flower Seeds, Mystical White Flower Seeds, minecraft:dirt:2
+    tasks:
+      - get: AgriCraft:seedBotaniaLime
+    rewards:
+      - xp: 6
+      - loot: raro
+  - id: mystical_purple_flower_seeds
+    title: "Mystical Purple Flower Seeds"
+    deps: [mystical_magenta_flower_seeds, mystical_blue_flower_seeds]
+    desc: |
+      TODO [Crop Mutation] Mystical Blue Flower Seeds, Mystical Magenta Flower Seeds, minecraft:dirt:2
+    tasks:
+      - get: AgriCraft:seedBotaniaPurple
+    rewards:
+      - xp: 6
+      - loot: raro
+  - id: cerublossom_seeds
+    title: "Cerublossom Seeds"
+    deps: [desert_nova_seeds, cinderpearl_seeds]
+    desc: |
+      TODO [Crop Mutation] ChromatiCraft:chromaticraft_block_cliffstone:3, Cinderpearl Seeds, Desert Nova Seeds
+    tasks:
+      - get: AgriCraft:seedCerublossom
+    rewards:
+      - xp: 6
+      - loot: raro
+  - id: diamahlia_seeds
+    title: "Diamahlia Seeds"
+    deps: [aurigold_seeds, lapender_seeds]
+    desc: |
+      TODO [Crop Mutation] Aurigold Seeds, ChromatiCraft:chromaticraft_block_cliffstone:3, Lapender Seeds, minecraft:diamond_ore
+    tasks:
+      - get: AgriCraft:seedDiamahlia
+    rewards:
+      - xp: 6
+      - loot: raro
+  - id: emeryllis_seeds
+    title: "Emeryllis Seeds"
+    deps: [ferranium_seeds, redstodendron_seeds]
+    desc: |
+      TODO [Crop Mutation] ChromatiCraft:chromaticraft_block_cliffstone:3, Ferranium Seeds, Redstodendron Seeds, minecraft:emerald_ore
+    tasks:
+      - get: AgriCraft:seedEmeryllis
+    rewards:
+      - xp: 6
+      - loot: raro
+  - id: jaslumine_seeds
+    title: "Jaslumine Seeds"
+    deps: [ferranium_seeds]
+    desc: |
+      TODO [Crop Mutation] ChromatiCraft:chromaticraft_block_cliffstone:3, Ferranium Seeds, ImmersiveEngineering:ore:1, minecraft:wheat_seeds
+    tasks:
+      - get: AgriCraft:seedJaslumine
+    rewards:
+      - xp: 6
+      - loot: raro
+  - id: niccissus_seeds
+    title: "Niccissus Seeds"
+    deps: [aurigold_seeds, dandelion_seeds]
+    desc: |
+      TODO [Crop Mutation] Aurigold Seeds, ChromatiCraft:chromaticraft_block_cliffstone:3, Dandelion Seeds, ThermalFoundation:Ore:4
+    tasks:
+      - get: AgriCraft:seedNiccissus
+    rewards:
+      - xp: 6
+      - loot: raro
+  - id: osmonium_seeds
+    title: "Osmonium Seeds"
+    deps: [ferranium_seeds, blue_orchid_seeds]
+    desc: |
+      TODO [Crop Mutation] Blue Orchid Seeds, ChromatiCraft:chromaticraft_block_cliffstone:3, Ferranium Seeds, Mekanism:OreBlock
+    tasks:
+      - get: AgriCraft:seedOsmonium
+    rewards:
+      - xp: 6
+      - loot: raro
+  - id: plombean_seeds
+    title: "Plombean Seeds"
+    deps: [ferranium_seeds, potato_seeds]
+    desc: |
+      TODO [Crop Mutation] ChromatiCraft:chromaticraft_block_cliffstone:3, Ferranium Seeds, Potato Seeds, ThermalFoundation:Ore:3
+    tasks:
+      - get: AgriCraft:seedPlombean
+    rewards:
+      - xp: 6
+      - loot: raro
+  - id: silverweed_seeds
+    title: "Silverweed Seeds"
+    deps: [aurigold_seeds, allium_seeds]
+    desc: |
+      TODO [Crop Mutation] Allium Seeds, Aurigold Seeds, ChromatiCraft:chromaticraft_block_cliffstone:3, ThermalFoundation:Ore:2
+    tasks:
+      - get: AgriCraft:seedSilverweed
+    rewards:
+      - xp: 6
+      - loot: raro
+  - id: tarma_root_seeds
+    title: "Tarma Root Seeds"
+    deps: [desert_nova_seeds, brown_mushroom_spores]
+    desc: |
+      TODO [Crop Mutation] Brown Mushroom Spores, ChromatiCraft:chromaticraft_block_cliffstone:3, Desert Nova Seeds
+    tasks:
+      - get: AgriCraft:seedTarmaRoot
+    rewards:
+      - xp: 6
+      - loot: raro
+  - id: aum_seeds
+    title: "Aum Seeds"
+    deps: [cerublossom_seeds, cinderpearl_seeds]
+    desc: |
+      TODO [Crop Mutation] Cerublossom Seeds, ChromatiCraft:chromaticraft_block_cliffstone:3, Cinderpearl Seeds, arsmagica2:WitchwoodLog
+    tasks:
+      - get: AgriCraft:seedAum
+    rewards:
+      - xp: 6
+      - loot: raro
+  - id: mystical_brown_flower_seeds
+    title: "Mystical Brown Flower Seeds"
+    deps: [mystical_purple_flower_seeds, mystical_green_flower_seeds]
+    desc: |
+      TODO [Crop Mutation] Mystical Green Flower Seeds, Mystical Purple Flower Seeds, minecraft:dirt:2
+    tasks:
+      - get: AgriCraft:seedBotaniaBrown
+    rewards:
+      - xp: 6
+      - loot: raro
+  - id: mystical_pink_flower_seeds
+    title: "Mystical Pink Flower Seeds"
+    deps: [mystical_purple_flower_seeds, mystical_white_flower_seeds]
+    desc: |
+      TODO [Crop Mutation] Mystical Purple Flower Seeds, Mystical White Flower Seeds, minecraft:dirt:2
+    tasks:
+      - get: AgriCraft:seedBotaniaPink
+    rewards:
+      - xp: 6
+      - loot: raro
+  - id: platiolus_seeds
+    title: "Platiolus Seeds"
+    deps: [diamahlia_seeds, ferranium_seeds]
+    desc: |
+      TODO [Crop Mutation] ChromatiCraft:chromaticraft_block_cliffstone:3, Diamahlia Seeds, Ferranium Seeds, ThermalFoundation:Ore:5
+    tasks:
+      - get: AgriCraft:seedPlatiolus
+    rewards:
+      - xp: 6
+      - loot: raro
+  - id: shimmerleaf_seeds
+    title: "Shimmerleaf Seeds"
+    deps: [cerublossom_seeds, white_tulip_seeds]
+    desc: |
+      TODO [Crop Mutation] Cerublossom Seeds, ChromatiCraft:chromaticraft_block_cliffstone:3, Thaumcraft:blockMagicalLog:1, White Tulip Seeds
+    tasks:
+      - get: AgriCraft:seedShimmerleaf
+    rewards:
+      - xp: 6
+      - loot: raro
+  - id: vishroom_spores
+    title: "Vishroom Spores"
+    deps: [shimmerleaf_seeds, brown_mushroom_spores]
+    desc: |
+      TODO [Crop Mutation] Brown Mushroom Spores, Shimmerleaf Seeds, minecraft:mycelium
+    tasks:
+      - get: AgriCraft:seedVishroom
+    rewards:
+      - xp: 6
+      - loot: raro
+  - id: wakebloom_seeds
+    title: "Wakebloom seeds"
+    deps: [aum_seeds, cerublossom_seeds]
+    desc: |
+      TODO [Crop Mutation] Aum Seeds, Cerublossom Seeds, Water Pad
+    tasks:
+      - get: AgriCraft:seedWakebloom
+    rewards:
+      - xp: 6
+      - loot: raro
+  - id: taint_root_seeds
+    title: "Taint Root Seeds"
+    deps: [vishroom_spores, tarma_root_seeds]
+    desc: |
+      TODO [Crop Mutation] Tarma Root Seeds, Thaumcraft:blockTaint, Thaumcraft:blockTaint:1, Vishroom Spores
+    tasks:
+      - get: AgriCraft:seedTaintedRoot
+    rewards:
+      - xp: 6
+      - loot: raro
