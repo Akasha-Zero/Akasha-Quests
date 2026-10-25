@@ -2083,3 +2083,731 @@ quests:
       - xp: 12
       - kit: {name: "Kit dos Dez Elementos", items: [arsmagica2:essence:10, arsmagica2:legendaryManaPotion x2, arsmagica2:rune:19, minecraft:nether_star]}
       - loot: epico
+
+  # ======================================================================
+  # FASE 7 — AS VESTES DO ARQUIMAGO
+  # ======================================================================
+  - id: capuz_arquimago
+    title: "Capuz do Arquimago"
+    type: normal
+    deps: [mago_batalha, guardiao_fogo, essencia_pura, pedra_do_sol]
+    icon: arsmagica2:ArchmageHood
+    desc: |
+      O Diadema de Mago de Batalha no centro, a §eAntena do Guardião do Fogo§r em cima,
+      Essências do Fogo, duas §ePedras do Sol§r, Runas Laranja e uma §eEssência Pura§r.
+
+      O §eCapuz do Arquimago§r dá visão noturna, resistência ao fogo e queima quem ataca você.
+    tasks:
+      - get: arsmagica2:ArchmageHood
+    rewards:
+      - xp: 4
+      - item: arsmagica2:essence:3 x2
+
+  - id: vestes_arquimago
+    title: "Vestes do Arquimago"
+    type: normal
+    deps: [mago_batalha, guardiao_terra, guardiao_vida]
+    icon: arsmagica2:ArchmageArmor
+    desc: |
+      A Armadura de Mago de Batalha no centro, a §eArmadura da Terra§r em cima, a §eProteção
+      da Vida§r embaixo, Essências da Terra, §eduas Estrelas do Nether§r e Runas Marrons.
+
+      As §eVestes do Arquimago§r anulam repulsão, fortalecem seus golpes e deixam você muito mais
+      difícil de matar.
+    tasks:
+      - get: arsmagica2:ArchmageArmor
+    rewards:
+      - xp: 4
+      - item: arsmagica2:essence:1 x2
+
+  - id: calcas_arquimago
+    title: "Calças do Arquimago"
+    type: normal
+    deps: [mago_batalha, guardiao_agua, essencia_pura]
+    icon: arsmagica2:ArchmageLeggings
+    desc: |
+      As Calças de Mago de Batalha no centro, os §eOrbes da Água§r em cima, Essências da Água,
+      §edois blocos de diamante§r, Runas Ciano e uma §eEssência Pura§r.
+
+      Debaixo d'água você respira, corre e interage sem dificuldade.
+    tasks:
+      - get: arsmagica2:ArchmageLeggings
+    rewards:
+      - xp: 4
+      - item: arsmagica2:essence:4 x2
+
+  - id: botas_arquimago
+    title: "Botas do Arquimago"
+    type: normal
+    deps: [mago_batalha, guardiao_ender, guardiao_ar, pedra_da_lua]
+    icon: arsmagica2:ArchmageBoots
+    desc: |
+      As Botas de Mago de Batalha no centro, as §eBotas do Ender§r em cima, o §eTrenó Aéreo§r
+      embaixo, Essências do Ar, duas §ePedras da Lua§r e Runas Brancas.
+
+      Quedas amortecidas, imunidade a lentidão... e a liberdade de §evoar§r.
+    tasks:
+      - get: arsmagica2:ArchmageBoots
+    rewards:
+      - xp: 4
+      - item: arsmagica2:essence:2 x2
+
+  - id: maestria_arcana
+    title: "Maestria Arcana"
+    type: milestone
+    deps: [capuz_arquimago, vestes_arquimago, calcas_arquimago, botas_arquimago, tres_luzes]
+    icon: arsmagica2:ArchmageArmor
+    size: 48
+    banner: "Maestria Arcana"
+    subtitle: "O Volume das Artes Arcanas está completo"
+    effect: 4
+    desc: |
+      Capuz, Vestes, Calças e Botas do §6Arquimago§r. Com o conjunto completo, a mana regenera
+      mais rápido e, ao golpear uma criatura agachado, você a §e"chicoteia" para o céu§r,
+      invertendo a gravidade dela por alguns instantes. É a armadura máxima de um mago — capaz
+      de competir com as melhores da Taumaturgia e da Magia de Sangue.
+
+      Herói, olhe para trás: um livro numa moldura ao lado de uma poça azul, o primeiro
+      Projétil, Obelisco, Prisma, Aurem, dez Guardiões... O §dVolume das Artes Arcanas§r foi
+      reescrito, página por página, por você.
+
+      Esta conquista vai brilhar no §6Selo Arcano§r. Eu estou chorando um pouquinho. De
+      orgulho. Só de orgulho.
+    tasks:
+      - get: [arsmagica2:ArchmageHood, arsmagica2:ArchmageArmor, arsmagica2:ArchmageLeggings, arsmagica2:ArchmageBoots]
+    rewards:
+      - xp: 15
+      - kit: {name: "Kit da Maestria Arcana", items: [arsmagica2:legendaryManaPotion x4, arsmagica2:essence:10 x2, arsmagica2:manaStone, arsmagica2:rune:19 x2, minecraft:nether_star]}
+      - loot: [epico x2]
+      - command: "/effect @p 23 1 0"
+
+  # ======================================================================
+  # FASE 8 — FLICKERS E AUTOMAÇÃO
+  # ======================================================================
+  - id: flickers
+    title: "Flickers"
+    type: info
+    deps: [primeiro_feitico]
+    icon: arsmagica2:flickerJar:1
+    desc: |
+      Pequenos elementais que "piscam" entre o plano deles e o nosso. Os §eFlickers§r são a base
+      da §eautomação do Ars Magica§r. Cada afinidade tem o seu, e eles aparecem em lugares que
+      lembram o seu elemento: Água em rios e oceanos, Ar no alto (~25 blocos acima do chão),
+      Terra no subsolo, Fogo no Nether, Raio sobre praias e em tempestades, Natureza em
+      florestas, Gelo em biomas gelados, Arcano nas florestas de Witchwood, Ender no Fim e Vida
+      em qualquer lugar (raro).
+
+      Eles fogem se atacados ou se você chegar perto demais. Um efeito mágico duradouro (como
+      Invisibilidade) ajuda a se aproximar.
+    tasks:
+      - check
+    rewards:
+      - xp: 1
+
+  - id: pote_flicker
+    title: "Pote de Flicker"
+    type: normal
+    deps: [flickers, parede_magica]
+    icon: arsmagica2:flickerJar
+    desc: |
+      Pepitas de ouro, uma Parede Mágica e painéis de vidro: o §ePote de Flicker Vazio§r.
+      Clique direito num Flicker para prendê-lo. Parece simples, né? Divirta-se...
+    tasks:
+      - get: arsmagica2:flickerJar
+    rewards:
+      - xp: 2
+      - item: minecraft:glass_pane x8
+
+  - id: flicker_capturado
+    title: "Um Flicker na Mão"
+    type: normal
+    deps: [pote_flicker]
+    icon: arsmagica2:flickerJar:8
+    desc: |
+      Capture um Flicker de qualquer elemento! Os potes cheios são ingredientes dos §eFocos de
+      Flicker§r e, colocados num Habitat vizinho, servem de §eupgrade§r para outro Habitat.
+    tasks:
+      - one_of: [arsmagica2:flickerJar:1, arsmagica2:flickerJar:2, arsmagica2:flickerJar:3, arsmagica2:flickerJar:4, arsmagica2:flickerJar:5, arsmagica2:flickerJar:6, arsmagica2:flickerJar:7, arsmagica2:flickerJar:8, arsmagica2:flickerJar:9, arsmagica2:flickerJar:10]
+    rewards:
+      - xp: 3
+      - item: arsmagica2:flickerJar x2
+
+  - id: isca_flicker
+    title: "Isca de Flicker"
+    type: optional
+    deps: [pote_flicker, chave_cristal]
+    icon: arsmagica2:flickerLure
+    desc: |
+      Cansou de correr atrás deles? A §eIsca de Flicker§r, alimentada com Etherium e acionada
+      com redstone, puxa Flickers para o nosso mundo. O tipo depende do lugar onde ela está.
+    tasks:
+      - get: arsmagica2:flickerLure
+    rewards:
+      - loot: comum
+
+  - id: habitat_flicker
+    title: "Habitat de Flicker"
+    type: normal
+    deps: [flicker_capturado, quimerita]
+    icon: arsmagica2:elementalAttuner
+    desc: |
+      Cristais que deixam os Flickers ficarem no nosso mundo. O §eHabitat de Flicker§r (ferro,
+      Pó de Vinteum e um §eBloco de Quimerita§r) recebe um §eFoco de Flicker§r e passa a
+      trabalhar sozinho: crescer plantas, derrubar árvores, pescar, organizar itens...
+
+      Um Habitat vizinho com um Pote de Flicker modifica o trabalho do primeiro.
+    tasks:
+      - get: arsmagica2:elementalAttuner
+    rewards:
+      - xp: 3
+      - item: ore:dustVinteum x8
+
+  - id: foco_flicker
+    title: "Focos de Flicker"
+    type: normal
+    deps: [habitat_flicker]
+    icon: arsmagica2:flickerFocus:832
+    desc: |
+      Cada foco combina Flickers de elementos diferentes (veja no NEI). Os favoritos:
+
+      §e• Generosidade da Natureza§r (Vida+Natureza+Água) — acelera plantas num raio de 6.
+      §e• Carvalho Abatido§r (Natureza+Raio) — derruba árvores; com Natureza, replanta.
+      §e• Transporte de Itens§r (Ar) — logística com Cristais Marcadores.
+      §e• Pesca§r (Água+Natureza) — pesca num poço 3×3 com 2 de fundo.
+      §e• Marés Lunares§r — puxa os meteoros de Pedra da Lua para perto!
+
+      Faça qualquer um.
+    tasks:
+      - one_of: [arsmagica2:flickerFocus:1, arsmagica2:flickerFocus:3, arsmagica2:flickerFocus:4, arsmagica2:flickerFocus:9, arsmagica2:flickerFocus:36, arsmagica2:flickerFocus:64, arsmagica2:flickerFocus:80, arsmagica2:flickerFocus:134, arsmagica2:flickerFocus:144, arsmagica2:flickerFocus:384, arsmagica2:flickerFocus:512, arsmagica2:flickerFocus:768, arsmagica2:flickerFocus:832]
+    rewards:
+      - xp: 3
+      - choice: [minecraft:sapling x16, minecraft:fishing_rod, minecraft:dye:15 x32]
+
+  - id: cristais_marcadores
+    title: "Cristais Marcadores"
+    type: optional
+    deps: [foco_flicker, cajado_magitech]
+    icon: arsmagica2:crystalMarker
+    desc: |
+      Com o foco de §eTransporte de Itens§r, os Flickers movem itens entre baús marcados por
+      §eCristais§r: de Importação, de Exportação, Imitação, Definido, Regulado, Final e até o de
+      Feitiço (busca os reagentes que o Altar de Criação pedir!). O Cajado Magitech ajusta a
+      prioridade; os Óculos mostram.
+    tasks:
+      - one_of: [arsmagica2:crystalMarker, arsmagica2:crystalMarker:1, arsmagica2:crystalMarker:2, arsmagica2:crystalMarker:3, arsmagica2:crystalMarker:4, arsmagica2:crystalMarker:5, arsmagica2:crystalMarker:6, arsmagica2:crystalMarker:7, arsmagica2:crystalMarker:8]
+    rewards:
+      - loot: comum
+
+  # ======================================================================
+  # FASE 9 — PEDRAS-CHAVE, PORTAIS E A MOO MOO FARM
+  # ======================================================================
+  - id: pedra_chave
+    title: "Pedra-Chave"
+    type: normal
+    deps: [runas_coloridas, po_vinteum]
+    icon: arsmagica2:keystone
+    desc: |
+      Ouro, ferro e Pó de Vinteum. A §ePedra-Chave§r guarda uma §ecombinação de runas§r (abra
+      a interface e coloque runas coloridas). Ela tranca máquinas do AM2, Baús e Portas de
+      Pedra-Chave e liga Portais entre si.
+    tasks:
+      - get: arsmagica2:keystone
+    rewards:
+      - xp: 2
+      - item: minecraft:gold_ingot x4
+
+  - id: bau_porta_chave
+    title: "Baú e Porta de Pedra-Chave"
+    type: optional
+    deps: [pedra_chave]
+    icon: arsmagica2:keystoneChest
+    desc: |
+      Segurança mágica! O §eBaú de Pedra-Chave§r só abre para quem tem a combinação certa; a
+      §ePorta de Pedra-Chave§r idem — e zumbis não conseguem arrombá-la.
+    tasks:
+      - one_of: [arsmagica2:keystoneChest, arsmagica2:keystoneDoorPlacer]
+    rewards:
+      - loot: comum
+
+  - id: receptaculo
+    title: "Receptáculo de Pedra-Chave"
+    type: main
+    deps: [pedra_chave, essencia_ender]
+    icon: arsmagica2:keystoneReceptacle
+    desc: |
+      O coração de um §ePortal§r (Gateway). Tijolos de pedra, Pó de Vinteum, Olhos do Fim e uma
+      §eEssência do Ender§r formam o §eReceptáculo de Pedra-Chave§r.
+
+      O Portal é um §eanel de tijolos de pedra e escadas de tijolo§r em volta do receptáculo
+      (modelo em Compêndio → Estruturas → Gateway) e precisa de §bEtherium§r. Portais com a mesma
+      Pedra-Chave se conectam; distâncias grandes custam muita energia.
+    tasks:
+      - get: arsmagica2:keystoneReceptacle
+    rewards:
+      - xp: 4
+      - choice: [minecraft:stonebrick x32, minecraft:stone_brick_stairs x16, minecraft:ender_pearl x4]
+
+  - id: perna_pau
+    title: "Perna de Pau"
+    type: normal
+    deps: [compendio_arcano]
+    icon: arsmagica2:woodenLeg
+    desc: |
+      Tábua, laje e graveto = uma §ePerna de Pau§r. Pra quê? Paciência, Herói... confie em mim.
+      (Pirata não, mas quase.)
+    tasks:
+      - get: arsmagica2:woodenLeg
+    rewards:
+      - xp: 2
+      - item: minecraft:stick x16
+
+  - id: livro_sinistro
+    title: "Um Livro de Aparência Maligna"
+    type: main
+    deps: [perna_pau, compendio_arcano]
+    icon: arsmagica2:evilBook
+    desc: |
+      Perna de Pau + Compêndio Arcano = §eEvil-Looking Book§r. Ele parece... errado. Eu juro
+      que ouvi um "muuu" vindo das páginas.
+
+      §aGuarde um Compêndio extra§r — este aqui não volta a ser o que era. O livro também é
+      ingrediente do Foco de Flicker: Açougue.
+    tasks:
+      - get: arsmagica2:evilBook
+    rewards:
+      - xp: 4
+      - choice: [minecraft:book x4, minecraft:leather x8, minecraft:milk_bucket]
+
+  - id: moo_moo_farm
+    title: "A Moo Moo Farm"
+    type: portal
+    deps: [receptaculo, livro_sinistro, obelisco]
+    icon: arsmagica2:cowHorn
+    banner: "Bem-vindo à Moo Moo Farm"
+    subtitle: "Muuuuuuuu."
+    effect: 5
+    desc: |
+      Tá preparado para a página mais esquisita do Registro inteiro?
+
+      Monte um §ePortal§r completo (Receptáculo + anel de tijolos de pedra e escadas) ligado a
+      uma fonte de §bEtherium§r. Segure o §eLivro de Aparência Maligna§r na mão e §eclique
+      direito agachado§r no Receptáculo: o portal acende em §cvermelho§r. Entre nele.
+
+      Você vai parar na §eMoo Moo Farm§r (dimensão −31), lar das §cVacas Infernais§r. §cElas
+      atacam em bando e batem forte.§r Volte pelo mesmo tipo de portal. Muuu. Eu avisei.
+    tasks:
+      - visit: {dim: -31, name: "The Moo Moo Farm"}
+    rewards:
+      - xp: 5
+      - loot: raro
+
+  - id: vaca_infernal
+    title: "Vaca Infernal"
+    type: normal
+    deps: [moo_moo_farm]
+    icon: arsmagica2:AMSpawnEgg:8
+    desc: |
+      "Moo? Moo moo moo, moo moo." É basicamente isso que o Compêndio diz sobre elas.
+
+      Derrote §e10 Vacas Infernais§r. De vez em quando elas largam um diamante ou uma esmeralda
+      como drop raro!
+    tasks:
+      - kill: {entity: "arsmagica2.HellCow", count: 10}
+    rewards:
+      - xp: 3
+      - item: minecraft:cooked_beef x16
+
+  - id: chifre_vaca_infernal
+    title: "Chifre de Vaca Infernal"
+    type: optional
+    deps: [vaca_infernal]
+    icon: arsmagica2:cowHorn
+    desc: |
+      Um troféu raríssimo: cada Vaca Infernal tem só §e1% de chance§r de largar o seu §eChifre§r
+      (já vem encantado!). Persistência, Herói. Muuuuita persistência.
+    tasks:
+      - get: arsmagica2:cowHorn
+    rewards:
+      - loot: raro
+
+  # ======================================================================
+  # FASE 10 — MÁQUINAS E ARTEFATOS AVANÇADOS
+  # ======================================================================
+  - id: cajado_novato
+    title: "Cajado de Feitiço do Novato"
+    type: normal
+    deps: [foco_menor, primeiro_feitico]
+    icon: arsmagica2:spellStaffNovice
+    desc: |
+      Dois bastões de blaze e um Foco Menor. Os §eCajados de Feitiço§r lançam o feitiço
+      embutido neles (fabrique o cajado junto com o feitiço) usando a reserva do próprio
+      cajado, não a sua mana. O de Novato aguenta §e300 de mana§r na vida toda.
+    tasks:
+      - get: arsmagica2:spellStaffNovice
+    rewards:
+      - xp: 2
+      - item: minecraft:blaze_rod x2
+
+  - id: cajado_viajante
+    title: "Cajado do Viajante"
+    type: optional
+    deps: [cajado_novato, foco_padrao]
+    icon: arsmagica2:spellStaffJourneyman
+    desc: |
+      Com Foco Padrão, o §eCajado do Viajante§r (Journeyman) aguenta §e900 de mana§r — ótimo
+      para um feitiço de emergência.
+    tasks:
+      - get: arsmagica2:spellStaffJourneyman
+    rewards:
+      - loot: comum
+
+  - id: cajado_mestre
+    title: "Cajado de Mestre"
+    type: optional
+    deps: [cajado_viajante, foco_maior]
+    icon: arsmagica2:spellStaffMaster
+    desc: |
+      Com Foco Maior, o §eCajado de Mestre§r aguenta §e5000 de mana§r: dá para virar uma luta.
+    tasks:
+      - get: arsmagica2:spellStaffMaster
+    rewards:
+      - loot: incomum
+
+  - id: cristal_deficit
+    title: "Cristal de Déficit"
+    type: normal
+    deps: [cinza_arcana, essencia_ender]
+    icon: arsmagica2:deficitCrystal
+    desc: |
+      "A antimatéria da magia." O §eCristal de Déficit§r sai da bancada (diamante, Cinza Arcana
+      e Olho do Fim) ou do Refinador. Ele é o núcleo das máquinas que §edesfazem§r coisas.
+    tasks:
+      - get: arsmagica2:deficitCrystal
+    rewards:
+      - xp: 3
+      - item: minecraft:ender_eye x2
+
+  - id: enervador_entropico
+    title: "Enervador Entrópico"
+    type: optional
+    deps: [cristal_deficit, inlay_ouro]
+    icon: arsmagica2:entropicEvervator
+    desc: |
+      Quebra itens de propósito, com Etherium: tijolo → tijolo rachado, pedra → pedregulho →
+      cascalho, osso → farinha, teia → linha... e transforma sementes comuns nas §esementes
+      mágicas§r (Rain Rockrose, Storm Sawtooth). Confira o NEI do Enervador.
+    tasks:
+      - get: arsmagica2:entropicEvervator
+    rewards:
+      - loot: comum
+
+  - id: desconstrutor_arcano
+    title: "Desconstrutor Arcano"
+    type: optional
+    deps: [cristal_deficit, essencia_pura, foco_item]
+    icon: arsmagica2:arcaneDeconstructor
+    desc: |
+      Com §5Etherium Sombrio§r, ele §edesmonta itens§r de volta nos componentes — inclusive
+      feitiços (a Runa em Branco inicial, o Etherium investido e o pergaminho final não voltam).
+    tasks:
+      - get: arsmagica2:arcaneDeconstructor
+    rewards:
+      - loot: incomum
+
+  - id: foco_item
+    title: "Focos de Detecção"
+    type: optional
+    deps: [foco_padrao]
+    icon: arsmagica2:itemFocus
+    desc: |
+      Item (pedregulho + bancada), Criatura (porco, pena e lã), Jogador (Essência da Vida) e
+      Monstro: os focos que dizem à §ePedra Vidente§r o que procurar.
+    tasks:
+      - one_of: [arsmagica2:itemFocus, arsmagica2:creatureFocus, arsmagica2:playerFocus]
+    rewards:
+      - loot: comum
+
+  - id: pedra_vidente
+    title: "Pedra Vidente e Barreira Astral"
+    type: optional
+    deps: [foco_item, pedra_chave]
+    icon: arsmagica2:seerStone
+    desc: |
+      Defesas de mago! A §ePedra Vidente§r emite redstone quando detecta algo (foco de alvo +
+      foco de distância: 5/10/15 blocos). A §eBarreira Astral§r bloqueia teletransportes no raio
+      (pérolas, Blink, Marcar/Retornar, endermen). Com uma Pedra-Chave, quem tiver a combinação
+      certa passa ileso.
+    tasks:
+      - one_of: [arsmagica2:seerStone, arsmagica2:astralBarrier]
+    rewards:
+      - loot: comum
+
+  - id: filacterio
+    title: "Filactério de Cristal"
+    type: optional
+    deps: [pedra_da_lua, vinteum_purificado, parede_magica]
+    icon: {id: "arsmagica2:Crystal Phylactery"}
+    desc: |
+      Um capturador de almas: com ele no inventário, pedaços das almas dos inimigos que você
+      mata ficam presos lá. Cheio, ele vira componente de um feitiço de §eInvocar§r aquela
+      criatura.
+    tasks:
+      - get: {id: "arsmagica2:Crystal Phylactery"}
+    rewards:
+      - loot: comum
+
+  - id: invocador
+    title: "Invocador"
+    type: optional
+    deps: [filacterio, chave_cristal]
+    icon: arsmagica2:Summoner
+    desc: |
+      O §eInvocador§r usa Etherium para invocar uma criatura quando recebe redstone (precisa de
+      um feitiço completo de Invocar, não de um filactério cheio). Custo alto para invocar e
+      para manter.
+    tasks:
+      - get: arsmagica2:Summoner
+    rewards:
+      - loot: comum
+
+  - id: vassoura_magica
+    title: "Vassoura Mágica"
+    type: optional
+    deps: [cinza_arcana]
+    icon: arsmagica2:magicBroom
+    desc: |
+      Gravetos, Cinza Arcana e um fardo de feno. Clique direito com a §eVassoura Mágica§r num
+      baú: ela começa a varrer, recolhendo itens soltos para ele. Para recolhê-la, use o Cajado
+      Magitech.
+    tasks:
+      - get: arsmagica2:magicBroom
+    rewards:
+      - loot: comum
+
+  - id: gerador_corrente_ar
+    title: "Gerador de Corrente de Ar"
+    type: optional
+    deps: [floresta_witchwood, essencia_ar]
+    icon: arsmagica2:slipstreamGenerator
+    desc: |
+      Troncos de Witchwood, penas e Essência do Ar. Sobre o §eGerador de Corrente de Ar§r, olhe
+      para cima para subir, para baixo para descer e para frente para flutuar (agache para ficar
+      parado). Só funciona com jogadores.
+    tasks:
+      - get: arsmagica2:slipstreamGenerator
+    rewards:
+      - loot: comum
+
+  - id: replicador_feiticos
+    title: "Replicador de Feitiços"
+    type: optional
+    deps: [flicker_capturado, prisma_celestial]
+    icon: arsmagica2:spellReplicator
+    desc: |
+      Perdeu feitiço? Quer dar um de presente? O §eReplicador de Feitiços§r copia feitiços ao
+      custo de §e10× a mana deles em Etherium Luminoso§r. Leva Pó Cósmico (pescado no Fim) e um
+      Pote de Flicker Arcano.
+    tasks:
+      - get: arsmagica2:spellReplicator
+    rewards:
+      - loot: incomum
+
+  - id: vara_pesca_arcana
+    title: "Vara de Pesca Arcana"
+    type: optional
+    deps: [essencia_ender]
+    icon: arsmagica2:arcane_rod
+    desc: |
+      Uma vara comum com Pó de Vinteum e Essências do Ender pesca nas profundezas do §eFim§r (e
+      no vazio de outros mundos) ingredientes raros: §ePeixe Celestial§r, §ePó Cósmico§r e até
+      §eEstrelas Espaciais§r.
+    tasks:
+      - get: arsmagica2:arcane_rod
+    rewards:
+      - loot: comum
+
+  - id: vara_pesca_infernal
+    title: "Vara de Pesca Infernal"
+    type: optional
+    deps: [vara_pesca_arcana, essencia_fogo]
+    icon: arsmagica2:infernal_rod
+    desc: |
+      Com Cinza Arcana e Essências do Fogo, a vara aguenta os lagos de lava do Nether (e perde a
+      pesca no vazio). De lá vêm o §ePeixe Infernal§r e o §eSedimento Pirogênico§r.
+    tasks:
+      - get: arsmagica2:infernal_rod
+    rewards:
+      - loot: comum
+
+  - id: pescados_arcanos
+    title: "Pescados Arcanos"
+    type: optional
+    deps: [vara_pesca_arcana]
+    icon: arsmagica2:itemOre:9
+    desc: |
+      Mostre um tesouro das águas estranhas: §ePeixe Celestial§r, §ePó Cósmico§r, §ePeixe
+      Infernal§r ou §eSedimento Pirogênico§r.
+    tasks:
+      - one_of: [arsmagica2:itemOre:9, arsmagica2:itemOre:10, arsmagica2:itemOre:13, arsmagica2:itemOre:14]
+    rewards:
+      - loot: comum
+
+  - id: estrela_espacial
+    title: "Estrela Espacial"
+    type: optional
+    deps: [pescados_arcanos]
+    icon: arsmagica2:itemOre:15
+    desc: |
+      Meio física, meio mágica, rara e valiosa: as §eEstrelas Espaciais§r cruzam o vazio do Fim,
+      sobretudo em noites de lua cheia. Com uma delas e uma pérola, o Ritual da Cruz Anelada
+      transforma uma Aurem Negra num §eVórtice Espacial§r, que troca energia com outros vórtices.
+    tasks:
+      - get: arsmagica2:itemOre:15
+    rewards:
+      - loot: incomum
+
+  - id: diario_mago
+    title: "Diário"
+    type: optional
+    deps: [essencia_arcana]
+    icon: arsmagica2:playerjournal
+    desc: |
+      Livro e Pena + Essência Arcana = §eDiário§r: ele grava a sua experiência para ser
+      recuperada depois, lendo. Um cofrinho de XP de mago.
+    tasks:
+      - get: arsmagica2:playerjournal
+    rewards:
+      - loot: comum
+
+  - id: rituais_avancados
+    title: "Rituais Avançados"
+    type: info
+    deps: [prisma_celestial]
+    icon: arsmagica2:candle
+    desc: |
+      Giz, velas, reagentes jogados no chão e um feitiço mirado no centro. Além da Purificação e
+      da Corrupção, o Compêndio ensina:
+
+      §e• Ampulheta§r — estende buffs (Voo, Pressa, Escudo...) em +180 s, mais 180 s por Poder
+      de Buff.
+      §e• Cruz Anelada§r — Retornar até um Portal (as runas viram a combinação), puxar outro
+      jogador, criar Vórtices Espaciais e a Aura do Outro Mundo.
+      §e• Fusão com o Mundo§r — um bloco de esmeralda no centro e um feitiço de §eElo de Mana§r
+      dão mana extra permanente.
+      §e• Corrupção do Gerador§r — Rift ou Life Tap recolhem um gerador de monstros (inerte).
+    tasks:
+      - check
+    rewards:
+      - xp: 1
+
+  - id: gerador_inerte
+    title: "Gerador Inerte"
+    type: optional
+    deps: [rituais_avancados, foco_monstro, essencia_ender]
+    icon: arsmagica2:inertSpawner
+    desc: |
+      Com o Ritual da Corrupção (Foco de Monstro + Essência do Ender) e um feitiço de Rift ou
+      Life Tap, você §erecolhe um gerador de monstros§r — ele vira um §eGerador Inerte§r. Com
+      Etherium Sombrio e um Filactério cheio ele volta a funcionar; com o Ritual da Cruz e
+      Transposição, vira a §eAura do Outro Mundo§r, que automatiza a criação de feitiços.
+    tasks:
+      - get: arsmagica2:inertSpawner
+    rewards:
+      - loot: incomum
+
+  - id: aura_outro_mundo
+    title: "Aura do Outro Mundo"
+    type: optional
+    deps: [gerador_inerte, traje_mago]
+    icon: arsmagica2:otherworldAura
+    desc: |
+      A Aura invoca uma §esombra de quem a criou§r para buscar os reagentes do Altar de Criação
+      em baús a até 8 blocos. Ela precisa ficar a até 10 blocos do altar e de Etherium Sombrio ou
+      Neutro (viagem interdimensional é cara!). Sem energia, a sombra some... e pode levar o
+      reagente que estava carregando, de birra.
+    tasks:
+      - get: arsmagica2:otherworldAura
+    rewards:
+      - loot: incomum
+
+  - id: reino_fractal
+    title: "O Reino Fractal"
+    type: optional
+    deps: [pescados_arcanos, pocao_mana_menor]
+    icon: arsmagica2:casparazoid
+    desc: |
+      §cIsto é perigoso, Herói.§r O AM2.5 tem substâncias "psicodélicas": o §eCasparazoid§r
+      (fraco, planos Inferiores) e o §eAstrocalis§r (forte, planos Superiores). Elas revelam as
+      §eAlucinações§r — criaturas imunes a dano físico — e habitantes fractais que negociam
+      essências por §eEssência do Pesadelo§r e §eFragmentos Fractais§r.
+
+      §cParar de repente faz mal ao corpo e à alma.§r Faça um Casparazoid (receita no NEI).
+    tasks:
+      - one_of: [arsmagica2:casparazoid, arsmagica2:astrocalis]
+    rewards:
+      - loot: incomum
+
+  - id: fragmento_alma
+    title: "Fragmento de Alma"
+    type: optional
+    deps: [reino_fractal]
+    icon: arsmagica2:itemOre:23
+    desc: |
+      O item mais estranho do Volume: um pedaço de alma com vontade própria. Só se obtém
+      "tentando morrer" no mundo fractal Superior carregando meia dúzia de itens raros (como
+      encantados), que se perdem no processo.
+
+      Ele é exigido pelo §eConjurador§r, pela §eRuna Conjuradora§r, pela §eSoulspike§r e pela
+      §eCaixa de Ilusões§r. Confira tudo no Compêndio antes de tentar.
+    tasks:
+      - get: arsmagica2:itemOre:23
+    rewards:
+      - loot: raro
+
+  - id: conjurador
+    title: "Conjurador"
+    type: optional
+    deps: [fragmento_alma]
+    icon: arsmagica2:blockCaster
+    desc: |
+      Um bloco que §elança feitiços sozinho§r (sinal de redstone), guiado por um pergaminho e por
+      focos. A §eRuna Conjuradora§r faz o mesmo quando alguém pisa nela.
+    tasks:
+      - one_of: [arsmagica2:blockCaster, arsmagica2:CasterRune]
+    rewards:
+      - loot: raro
+
+  - id: soulspike
+    title: "Soulspike"
+    type: optional
+    deps: [fragmento_alma, pocao_etherium]
+    icon: arsmagica2:soulspike
+    desc: |
+      Uma relíquia rara feita de pedaços de alma: armazena muito mais mana que a Pedra de Mana,
+      mas só se enche §ealimentando-se de almas§r. Dizem que, bem preparada, ajuda a tornar-se
+      etéreo por um tempo...
+    tasks:
+      - get: arsmagica2:soulspike
+    rewards:
+      - loot: raro
+
+  - id: reservatorio_etherium
+    title: "Reservatório de Etherium de Unobtainium"
+    type: optional
+    deps: [tres_luzes]
+    icon: allthemodiumlegacy:allthemodium_source_jar
+    desc: |
+      Uma página que veio de outro Volume! O §eReservatório de Etherium de Unobtainium§r (8
+      lingotes de §6Unobtainium§r em volta de um Conduíte de Etherium) é uma adaptação, feita
+      para este pack, do Source Jar do Allthemodium para a rede do AM2.5.
+
+      Ele guarda §e100 000 de Etherium§r de §eum tipo por vez§r (Luminoso, Neutro ou Sombrio).
+      Ligue-o à rede com a Chave de Cristal; clique de mão vazia para ver a carga. Recolhido, ele
+      mantém a energia, mas os vínculos precisam ser refeitos.
+
+      §aIsso é conteúdo do Ato V:§r o Unobtainium vem bem lá no fim, no capítulo dos Metais
+      Impossíveis.
+    tasks:
+      - get: allthemodiumlegacy:allthemodium_source_jar
+    rewards:
+      - loot: raro
