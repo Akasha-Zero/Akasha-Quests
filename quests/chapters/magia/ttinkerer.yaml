@@ -1,0 +1,1160 @@
+chapter:
+  id: ttinkerer
+  title: "Thaumic Tinkerer"
+  prefix: ""
+  order: 505
+  icon: ThaumicTinkerer:kamiResource
+  desc: |
+    §dO Volume do Inventor Arcano.§r Quartzo esfumaçado, transvetores, ímãs, o Encantador
+    Osmótico, focos novos, golens de tabuleta, o Restaurador e, no topo, o Ichor e o
+    equipamento Kami. (Thaumic Tinkerer 2.12.30)
+
+quests:
+  - link: thaumcraft:infusao
+
+  # ======================================================================
+  # FASE 0 — O INVENTOR
+  # ======================================================================
+  - id: inventor
+    title: "O Inventor Arcano"
+    type: info
+    deps_hidden: [thaumcraft:taumonomicon]
+    icon: ThaumicTinkerer:darkQuartzItem
+    desc: |
+      O §eThaumic Tinkerer§r é o caderno de um taumaturgo que adorava gambiarras mágicas:
+      blocos que imitam outros, ímãs, golens que seguram ferramentas, focos espertos... e, no
+      fim, o §6Ichor§r, a substância desperta de uma Estrela do Nether.
+
+      Tudo fica numa aba própria do Taumonomicon (a aba de encantamento do Tinkerer). As
+      pesquisas usam as mesmas ferramentas do Thaumcraft: Mesa Arcana, Crisol e Altar de
+      Infusão. A parte Kami (Ichor) exige que você tenha pesquisado §epraticamente tudo§r.
+    tasks:
+      - check
+    rewards:
+      - xp: 1
+
+  - id: quartzo_fume
+    title: "Quartzo Esfumaçado"
+    type: main
+    deps: [inventor]
+    icon: ThaumicTinkerer:darkQuartzItem
+    desc: |
+      O quartzo "ao contrário": 4 quartzos do Nether nos cantos e um carvão (ou carvão vegetal)
+      no centro = §e4 Smokey Quartz§r. Ele faz os mesmos blocos que o quartzo comum, só que
+      pretos, e é peça do Transvector e do Talismã de Remédio.
+
+      Faça §e16§r.
+    tasks:
+      - get: ThaumicTinkerer:darkQuartzItem x16
+    rewards:
+      - xp: 3
+      - choice: [minecraft:quartz x16, minecraft:coal x16, minecraft:glass x16]
+
+  - id: blocos_quartzo_fume
+    title: "Blocos de Quartzo Esfumaçado"
+    type: optional
+    deps: [quartzo_fume]
+    icon: ThaumicTinkerer:darkQuartz
+    desc: |
+      Bloco, cinzelado, pilar, laje e escada: o quartzo esfumaçado combina demais com pedra
+      arcana. Faça um bloco cinzelado e um pilar.
+    tasks:
+      - get: [ThaumicTinkerer:darkQuartz:1, ThaumicTinkerer:darkQuartz:2]
+    rewards:
+      - loot: comum
+
+  - id: tomo_compartilhado
+    title: "Tomo do Conhecimento Compartilhado"
+    type: optional
+    deps: [inventor]
+    icon: ThaumicTinkerer:shareBook
+    desc: |
+      Taumonomicon + ferramenta de escrita + papel = §eTome of Knowledge Sharing§r. Clique com ele
+      na mão e entregue a outra pessoa: ela recebe §etodas as suas pesquisas§r. Perfeito para
+      grupos no servidor.
+    tasks:
+      - get: ThaumicTinkerer:shareBook
+    rewards:
+      - loot: comum
+
+  # ======================================================================
+  # FASE 1 — TRANSVETORES E ÍMÃS
+  # ======================================================================
+  - id: interface_transvetora
+    title: "Interface Transvetora"
+    type: main
+    deps: [quartzo_fume]
+    deps_hidden: [thaumcraft:mesa_arcana]
+    icon: ThaumicTinkerer:interface
+    desc: |
+      "Um bloco só tem seis lados" — mito desmentido! A §eTransvector Interface§r se liga a um
+      bloco próximo e funciona como §eextensão§r dele: aceita energia (BC, TE, IC2), essência,
+      itens e líquidos. Até 4 blocos de distância.
+
+      Mesa Arcana: pedra arcana, redstone, lápis-lazúli e uma pérola do Fim.
+    tasks:
+      - get: ThaumicTinkerer:interface
+    rewards:
+      - xp: 3
+      - choice: [minecraft:ender_pearl x2, minecraft:redstone x16, minecraft:dye:4 x8]
+
+  - id: aglutinador
+    title: "Aglutinador Transvetor"
+    type: main
+    deps: [interface_transvetora]
+    icon: ThaumicTinkerer:connector
+    desc: |
+      O §eTransvector Binder§r faz a ligação: clique na interface, depois no bloco alvo. Clicar com
+      outro bloco na mão camufla a interface. (Tubos do BuildCraft precisam ser recolocados para
+      reconhecer a ligação.)
+    tasks:
+      - get: ThaumicTinkerer:connector
+    rewards:
+      - xp: 3
+      - choice: [Thaumcraft:ItemShard:4 x4, minecraft:iron_ingot x6, minecraft:stick x16]
+
+  - id: deslocador
+    title: "Deslocador Transvetor"
+    type: normal
+    deps: [aglutinador]
+    deps_hidden: [thaumcraft:vidro_espelhado]
+    icon: ThaumicTinkerer:dislocator
+    desc: |
+      Com redstone, o §eTransvector Dislocator§r §etroca de lugar§r o bloco à frente dele com o bloco
+      ligado (até 16 blocos), levando junto as entidades. Elevadores, portas secretas, prensas...
+      Vidro Espelhado, uma Interface e um comparador na Mesa Arcana.
+    tasks:
+      - get: ThaumicTinkerer:dislocator
+    rewards:
+      - xp: 2
+      - item: minecraft:comparator
+
+  - id: ima_cinetico
+    title: "Atrator Cinético"
+    type: normal
+    deps: [interface_transvetora, foco_telecinese]
+    icon: ThaumicTinkerer:magnet
+    desc: |
+      Um ímã de itens! O §eKinetic Attractor§r tem dois modos (norte empurra, sul puxa) e o alcance
+      depende do sinal de redstone (uma alavanca ao lado dá 7,5 blocos). Leva o Foco de
+      Telecinese na receita.
+    tasks:
+      - get: ThaumicTinkerer:magnet
+    rewards:
+      - xp: 2
+      - item: minecraft:lever x4
+
+  - id: ima_corporal
+    title: "Atrator Corpóreo e Molde de Alma"
+    type: normal
+    deps: [ima_cinetico]
+    icon: ThaumicTinkerer:magnet:1
+    desc: |
+      A versão para §ecriaturas§r. Clique nele com a varinha para abrir os filtros; use um §eMolde de
+      Alma§r (pérola do Fim no Crisol com Bestia, Cognitio e Sensus) clicado num mob para salvar o
+      tipo como filtro, e escolha adultos ou filhotes. Fazendas de mobs organizadas!
+    tasks:
+      - get: [ThaumicTinkerer:magnet:1, ThaumicTinkerer:soulMould]
+    rewards:
+      - xp: 2
+      - item: minecraft:ender_pearl x2
+
+  - id: locomotiva
+    title: "Locomotiva Levitacional"
+    type: optional
+    deps: [ima_cinetico]
+    icon: ThaumicTinkerer:Levitational Locomotive
+    desc: |
+      Dois §eLevitational Locomotive Relays§r em linha reta projetam um feixe; um §eLevitador
+      Locomotivo§r colocado no feixe vai e volta carregando o bloco que estiver em cima. Elevador
+      horizontal mágico!
+    tasks:
+      - get: [{id: "ThaumicTinkerer:Levitational Locomotive"}, {id: "ThaumicTinkerer:Levitational Locomotive Relay", count: 2}]
+    rewards:
+      - loot: comum
+
+  - id: tabuleta_dinamismo
+    title: "Tabuleta do Dinamismo"
+    type: main
+    deps: [ima_cinetico]
+    icon: ThaumicTinkerer:animationTablet
+    desc: |
+      Um "jogador falso" mágico: a §eDynamism Tablet§r segura um item e clica com ele (botão
+      esquerdo ou direito), sempre ou só com redstone. Picaretas quebram, baldes enchem, espadas
+      atacam... A velocidade depende da ferramenta. Ouro, ferro e um Núcleo de Animação em
+      branco. §cA pesquisa dá 1 de Warp.§r
+    tasks:
+      - get: ThaumicTinkerer:animationTablet
+    rewards:
+      - xp: 3
+      - choice: [Thaumcraft:ItemGolemCore:100, minecraft:gold_ingot x4, minecraft:iron_pickaxe]
+
+  - id: plataforma
+    title: "Plataforma Etérea"
+    type: optional
+    deps: [talisma_remedio]
+    icon: ThaumicTinkerer:platform
+    desc: |
+      Um bloco sólido §esó para quem está em cima§r: de baixo você atravessa, e agachado você cai.
+      Combine com o Levitador Arcano para elevadores de uma via. Pode ser camuflado.
+    tasks:
+      - get: ThaumicTinkerer:platform x4
+    rewards:
+      - loot: comum
+
+  - id: pavimentos_tt
+    title: "Lajes e Escadas Pavimentadas"
+    type: optional
+    deps: [inventor]
+    deps_hidden: [thaumcraft:pavimentos]
+    icon: ThaumicTinkerer:travelSlab
+    desc: |
+      O Tinkerer adiciona lajes e escadas do Pavimento de Viagem e lajes do Pavimento Guardião.
+      Estradas inteiras de velocidade! Faça uma laje de viagem e uma escada.
+    tasks:
+      - get: [ThaumicTinkerer:travelSlab, ThaumicTinkerer:travelStairs]
+    rewards:
+      - loot: comum
+
+  # ======================================================================
+  # FASE 2 — LUZ, SOMBRA E FOGO
+  # ======================================================================
+  - id: gas_luz
+    title: "Iluminação Gasosa"
+    type: normal
+    deps: [inventor]
+    deps_hidden: [thaumcraft:nitor]
+    icon: ThaumicTinkerer:gaseousLightItem
+    desc: |
+      Um Frasco de Vidro no Crisol com 16 Lux, 10 Aer e 8 Motus vira §eGaseous Illuminae§r. Solte
+      (botão direito) e uma luz invisível se espalha pela área. Perfeito para cavernas grandes.
+    tasks:
+      - get: ThaumicTinkerer:gaseousLightItem
+    rewards:
+      - xp: 2
+      - item: Thaumcraft:ItemEssence x4
+
+  - id: gas_sombra
+    title: "Sombra Gasosa"
+    type: optional
+    deps: [gas_luz]
+    icon: ThaumicTinkerer:gaseousShadowItem
+    desc: |
+      O oposto: §eGaseous Tenebrae§r (16 Tenebrae, 10 Aer, 8 Motus) escurece a área. Para salas de
+      cinema, fazendas de mobs e... drama.
+    tasks:
+      - get: ThaumicTinkerer:gaseousShadowItem
+    rewards:
+      - loot: comum
+
+  - id: dissipador
+    title: "Dissipador de Fumaça"
+    type: optional
+    deps: [gas_sombra]
+    icon: ThaumicTinkerer:gasRemover
+    desc: |
+      Shift+clique direito: todo o gás de luz e sombra por perto some. Feito com quartzo
+      esfumaçado, quartzo e um frasco de cada gás.
+    tasks:
+      - get: ThaumicTinkerer:gasRemover
+    rewards:
+      - loot: comum
+
+  - id: nitor_hiperenergetico
+    title: "Nitor Hiperenergético"
+    type: main
+    deps: [gas_luz]
+    icon: ThaumicTinkerer:brightNitor
+    desc: |
+      Nitor no Crisol com 25 Potentia, 25 Lux, 10 Aer e 10 Ignis. O §eHyperenergetic Nitor§r §ebrilha
+      enquanto você o carrega§r — uma lanterna que segue você! (No Nether o rastro de luz é maior.)
+    tasks:
+      - get: ThaumicTinkerer:brightNitor
+    rewards:
+      - xp: 3
+      - choice: [Thaumcraft:ItemResource:1 x4, minecraft:glowstone_dust x16, Thaumcraft:ItemShard:1 x4]
+
+  - id: funil_essencia
+    title: "Funil de Essência"
+    type: normal
+    deps: [nitor_hiperenergetico]
+    icon: ThaumicTinkerer:funnel
+    desc: |
+      Coloque o §eEssence Funnel§r em cima de um funil (hopper) e clique com um jarro cheio: o
+      conteúdo passa para o jarro para onde o hopper aponta (vazio ou do mesmo aspecto). Pedra e
+      Táumio na Mesa Arcana.
+    tasks:
+      - get: ThaumicTinkerer:funnel
+    rewards:
+      - xp: 2
+      - item: minecraft:hopper
+
+  - id: restaurador
+    title: "Restaurador Táumico"
+    type: main
+    deps: [funil_essencia]
+    deps_hidden: [thaumcraft:infusao]
+    icon: ThaumicTinkerer:repairer
+    desc: |
+      O §eThaumic Restorer§r conserta ferramentas e armaduras usando essência §eInstrumentum§r
+      puxada por tubos. Clique nele com o item gasto (ou use automação); com os Óculos você vê o
+      desgaste, e ele emite redstone enquanto trabalha.
+
+      Infusão de instabilidade alta (8): um Bloco Táumico no centro com ferro, ouro, diamante,
+      pedregulho, madeira, couro, tecido encantado e Táumio.
+    tasks:
+      - get: ThaumicTinkerer:repairer
+    rewards:
+      - xp: 4
+      - choice: [Thaumcraft:blockJar x4, Thaumcraft:blockTube x8, Thaumcraft:ItemResource:2 x4]
+
+  - id: fogo_imbuido
+    title: "Fogos Elementais"
+    type: normal
+    deps: [nitor_hiperenergetico]
+    icon: ThaumicTinkerer:fireFire
+    desc: |
+      Um estilhaço no Crisol com Ignis, Praecantatio e o seu elemento vira um §efogo imbuído§r que
+      §etransforma o terreno§r: Ignis "nethera" o mundo, Aqua congela o Nether, Aer vira deserto,
+      Terra vira terra, Perditio apaga os outros fogos (Ordo está em reforma e não faz nada).
+
+      §cEles se espalham! Use longe da base.§r Faça qualquer um.
+    tasks:
+      - one_of: [ThaumicTinkerer:fireFire, ThaumicTinkerer:fireWater, ThaumicTinkerer:fireAir, ThaumicTinkerer:fireEarth, ThaumicTinkerer:fireChaos, ThaumicTinkerer:fireOrder]
+    rewards:
+      - xp: 2
+      - item: Thaumcraft:ItemShard:1 x4
+
+  - id: fogo_perditio
+    title: "O Antídoto: Fogo de Perditio"
+    type: optional
+    deps: [fogo_imbuido]
+    icon: ThaumicTinkerer:fireChaos
+    desc: |
+      Antes de brincar com os outros fogos, tenha este no bolso: o §ePerditio Imbued Fire§r arranca
+      a magia dos fogos elementais e devolve tudo ao normal.
+    tasks:
+      - get: ThaumicTinkerer:fireChaos
+    rewards:
+      - loot: comum
+
+  - id: sementes_infundidas
+    title: "Sementes Infundidas"
+    type: normal
+    deps: [fogo_imbuido]
+    deps_hidden: [thaumcraft:infusao]
+    icon: ThaumicTinkerer:infusedSeeds
+    desc: |
+      Sementes de trigo infundidas com 4 estilhaços iguais (32 Messis, 32 Meto) viram §eInfused
+      Seeds§r do primal escolhido. Só os primais se fabricam; os outros aspectos nascem por
+      cruzamento no campo (o resíduo mágico do solo combina aspectos vizinhos). "Tendências"
+      melhoram as plantas: Terra (mais resíduo), Ignis (novos aspectos), Ordo (mais colheita),
+      Perditio (mais sementes), Aer (absorve tendências).
+    tasks:
+      - get: ThaumicTinkerer:infusedSeeds
+    rewards:
+      - xp: 2
+      - item: minecraft:wheat_seeds x16
+
+  - id: pocao_infundida
+    title: "Poções Infundidas"
+    type: optional
+    deps: [sementes_infundidas]
+    icon: ThaumicTinkerer:infusedPotion
+    desc: |
+      Algumas colheitas dão §eGrãos Imbuídos§r que, no Crisol com Auram, viram poções: Terra
+      ergue barreiras contra mobs, Fogo prende inimigos numa esfera de chamas, Ar arremessa os
+      inimigos para cima e Água esfria a lava em volta. Faça qualquer uma.
+    tasks:
+      - one_of: [ThaumicTinkerer:infusedPotion, ThaumicTinkerer:infusedPotion:1, ThaumicTinkerer:infusedPotion:2, ThaumicTinkerer:infusedPotion:3]
+    rewards:
+      - loot: comum
+
+  # ======================================================================
+  # FASE 3 — PANO, ENCANTADOR E TALISMÃS
+  # ======================================================================
+  - id: pano_feiticos
+    title: "Pano de Feitiços"
+    type: main
+    deps: [inventor]
+    deps_hidden: [thaumcraft:tecido_encantado]
+    icon: ThaumicTinkerer:spellCloth
+    desc: |
+      Uma "borracha de encantamentos": Tecido Encantado no Crisol com 10 Praecantatio, 6 Perditio e
+      4 Permutatio. Junte o §eSpellbinding Cloth§r com um item encantado na bancada e ele §eremove
+      os encantamentos§r. Ótimo para reaproveitar uma ferramenta mal encantada.
+    tasks:
+      - get: ThaumicTinkerer:spellCloth
+    rewards:
+      - xp: 3
+      - choice: [Thaumcraft:ItemResource:7 x4, minecraft:book x4, minecraft:experience_bottle x8]
+
+  - id: encantador_osmotico
+    title: "Encantador Osmótico"
+    type: main
+    deps: [pano_feiticos]
+    deps_hidden: [thaumcraft:infusao]
+    icon: ThaumicTinkerer:enchanter
+    desc: |
+      Escolha os encantamentos que você quer! O §eOsmotic Enchanter§r (infusão: mesa de
+      encantamento + ladrilhos de obsidiana, Táumio e o Pano de Feitiços) usa §evis da varinha§r em
+      vez de sorte. O custo cresce exponencialmente com o nível; as regras normais de combinação
+      valem.
+
+      §eEstrutura:§r §e6 pilares§r até 4 blocos de distância, na mesma altura da mesa, cada um de
+      §e2 a 12 Totens Obsidianos§r com um §eNitor§r em cima. Não funciona com pontas de ferro ou
+      cobre.
+    tasks:
+      - get: [ThaumicTinkerer:enchanter, Thaumcraft:blockCosmeticSolid x12, Thaumcraft:ItemResource:1 x6]
+    rewards:
+      - xp: 4
+      - choice: [Thaumcraft:ItemResource:1 x6, minecraft:obsidian x16, minecraft:experience_bottle x16]
+
+  - id: encantos_combate
+    title: "Encantamentos de Combate"
+    type: info
+    deps: [encantador_osmotico]
+    icon: minecraft:iron_sword
+    desc: |
+      Encantamentos exclusivos do Tinkerer (pesquisas secundárias):
+      §e• Vampirism§r — cura ao acertar.
+      §e• Focused Strikes§r e §eDispersed Strikes§r — dano focado ou espalhado.
+      §e• Final Strike§r — exige os dois anteriores.
+      §e• Valiance§r e §eQuick Draw§r (para arcos).
+      Combine com Afiação e afins conforme as regras normais.
+    tasks:
+      - check
+    rewards:
+      - xp: 1
+
+  - id: encantos_mobilidade
+    title: "Encantamentos de Mobilidade"
+    type: info
+    deps: [encantador_osmotico]
+    icon: minecraft:feather
+    desc: |
+      Para calçados e afins:
+      §e• Ascent Boost§r — pulo mais alto. §e• Slow Fall§r — queda lenta.
+      §e• Pounce§r — salto de ataque (exige Ascent Boost).
+      §e• Shockwave§r — onda de choque ao cair (exige Slow Fall).
+    tasks:
+      - check
+    rewards:
+      - xp: 1
+
+  - id: encantos_mineracao
+    title: "Encantamentos de Mineração"
+    type: info
+    deps: [encantador_osmotico]
+    icon: minecraft:iron_pickaxe
+    desc: |
+      Para ferramentas:
+      §e• Flaming Touch§r — funde o que minera. §e• Tunnel§r — exige Flaming Touch.
+      §e• Disintegrate§r — destrói blocos comuns. §e• Shatter§r — exige Disintegrate.
+      Confira cada efeito no livro: o Tinkerer explica tudo na aba de encantamentos.
+    tasks:
+      - check
+    rewards:
+      - xp: 1
+
+  - id: talisma_remedio
+    title: "Talismã de Remédio"
+    type: main
+    deps: [quartzo_fume]
+    deps_hidden: [thaumcraft:infusao]
+    icon: ThaumicTinkerer:cleansingTalisman
+    desc: |
+      "Melhor que leite." Usado no espaço de §eamuleto§r, o §eTalisman of Remedium§r tira de você a
+      maioria dos efeitos ruins (perdendo durabilidade) — inclusive §ealguns efeitos causados pelo
+      Warp§r, com um custo altíssimo. Shift+clique direito liga e desliga.
+
+      Infusão: pérola do Fim no centro, 4 quartzos esfumaçados, lágrima de ghast e Nitor.
+    tasks:
+      - get: ThaumicTinkerer:cleansingTalisman
+    rewards:
+      - xp: 3
+      - choice: [minecraft:ghast_tear x2, ThaumicTinkerer:darkQuartzItem x8, Thaumcraft:ItemResource:1 x4]
+
+  - id: talisma_retencao
+    title: "Talismã de Retenção"
+    type: normal
+    deps: [pano_feiticos]
+    deps_hidden: [thaumcraft:cerebro_jarra]
+    icon: ThaumicTinkerer:xpTalisman
+    desc: |
+      Um "cérebro na jarra" portátil: no amuleto, o §eTalisman of Withhold§r (Shift+clique para
+      ligar) absorve orbes de XP próximos. Clique com uma garrafa de vidro no inventário para
+      transformar o XP guardado em Garrafas de Encantamento.
+    tasks:
+      - get: ThaumicTinkerer:xpTalisman
+    rewards:
+      - xp: 3
+      - item: minecraft:glass_bottle x16
+
+  - id: elmo_revelacao
+    title: "Capacete da Revelação"
+    type: normal
+    deps: [inventor]
+    deps_hidden: [thaumcraft:oculos, thaumcraft:armadura_taumio]
+    icon: ThaumicTinkerer:revealingHelm
+    desc: |
+      Óculos não protegem de zumbis. Óculos da Revelação + Capacete de Táumio na Mesa Arcana = §eHelmet
+      of Revealing§r: proteção e visão mágica no mesmo slot.
+    tasks:
+      - get: ThaumicTinkerer:revealingHelm
+    rewards:
+      - xp: 2
+      - item: Thaumcraft:ItemResource:2 x2
+
+  - id: lamina_espirito
+    title: "Lâmina do Espírito Amaldiçoado"
+    type: normal
+    deps: [talisma_remedio]
+    icon: ThaumicTinkerer:bloodSword
+    desc: |
+      Uma espada de Táumio infundida com carne, osso, diamante e lágrima de ghast. Ela bate muito
+      forte, mas §ccada acerto custa 1 coração seu§r; segurá-la deixa você mais rápido. Com
+      Shift+clique direito ela §ecolhe almas§r dos mobs no lugar dos drops: os §eAspectos de Alma§r.
+      §cA pesquisa dá 1 de Warp.§r
+    tasks:
+      - get: ThaumicTinkerer:bloodSword
+    rewards:
+      - xp: 3
+      - item: minecraft:ghast_tear
+
+  - id: tabuleta_necromancia
+    title: "Tabuleta de Necromancia"
+    type: normal
+    deps: [lamina_espirito]
+    icon: ThaumicTinkerer:spawner
+    desc: |
+      "Quase necromancia": coloque §e3 pedestais§r em volta da §eTablet of Necromancy§r e ponha 3
+      Aspectos de Alma neles. Cada mistura de almas invoca um mob diferente (o NEI tem uma aba só
+      para isso). §cA pesquisa dá 3 de Warp.§r
+    tasks:
+      - get: [ThaumicTinkerer:spawner, ThaumicTinkerer:mobAspect:*]
+    rewards:
+      - xp: 3
+      - item: Thaumcraft:blockStoneDevice:1 x3
+
+  - id: alma_infundida
+    title: "Aspecto de Alma Infundido"
+    type: optional
+    deps: [tabuleta_necromancia]
+    icon: ThaumicTinkerer:mobAspect:42
+    desc: |
+      Nove almas iguais formam um bloco que, infundido, vira um §eInfused Soul Aspect§r. Com eles
+      a tabuleta invoca §esem gastar§r as almas — só que bem mais devagar. Faça qualquer um.
+    tasks:
+      - get: ThaumicTinkerer:mobAspect:42
+    rewards:
+      - loot: incomum
+
+  # ======================================================================
+  # FASE 4 — FOCOS DO TINKERER
+  # ======================================================================
+  - id: foco_efreet
+    title: "Foco: Chama de Efreet"
+    type: main
+    deps: [inventor]
+    deps_hidden: [thaumcraft:foco_escavacao]
+    icon: ThaumicTinkerer:focusSmelt
+    desc: |
+      Fogo + Escavação = um feixe que §efunde blocos no lugar§r (só os que viram outro bloco na
+      fornalha: areia vira vidro, pedregulho vira pedra...). Foco de Fogo, Nitor e Foco de
+      Escavação na Mesa Arcana.
+    tasks:
+      - get: ThaumicTinkerer:focusSmelt
+    rewards:
+      - xp: 3
+      - choice: [minecraft:sand x32, minecraft:cobblestone x32, Thaumcraft:ItemShard:1 x4]
+
+  - id: foco_ascensao
+    title: "Foco: Ascensão"
+    type: normal
+    deps: [foco_efreet]
+    deps_hidden: [thaumcraft:infusao]
+    icon: ThaumicTinkerer:focusFlight
+    desc: |
+      Inspirado na Espada de Zephyr: o §eWand Focus: Uprising§r §earremessa você§r na direção em que
+      você olha e zera o dano de queda acumulado. Infusão de uma pérola do Fim com quartzo,
+      penas e estilhaço de ar.
+    tasks:
+      - get: ThaumicTinkerer:focusFlight
+    rewards:
+      - xp: 2
+      - item: minecraft:feather x8
+
+  - id: foco_distorcao
+    title: "Foco: Distorção"
+    type: normal
+    deps: [foco_ascensao]
+    icon: ThaumicTinkerer:focusDeflect
+    desc: |
+      Um campo que faz §eprojéteis comuns§r (flechas, bolas de neve, poções) atravessarem você sem
+      dano enquanto o foco é usado. Bolas de fogo e cabeças de wither ainda passam. Infusão do
+      Foco de Ascensão com vidro espelhado e pavimento guardião.
+    tasks:
+      - get: ThaumicTinkerer:focusDeflect
+    rewards:
+      - xp: 2
+      - item: minecraft:arrow x16
+
+  - id: foco_telecinese
+    title: "Foco: Telecinese"
+    type: normal
+    deps: [foco_ascensao]
+    icon: ThaumicTinkerer:focusTelekinesis
+    desc: |
+      Move itens no chão para onde você aponta (agachado, puxa para você). É o ingrediente dos
+      Atratores.
+    tasks:
+      - get: ThaumicTinkerer:focusTelekinesis
+    rewards:
+      - xp: 2
+      - item: minecraft:quartz x8
+
+  - id: foco_deslocamento
+    title: "Foco: Deslocamento"
+    type: normal
+    deps: [foco_ascensao]
+    icon: ThaumicTinkerer:focusDislocation
+    desc: |
+      Carregue §eblocos inteiros§r — até baús e geradores de monstros! Clique para pegar, clique para
+      soltar. Blocos com conteúdo custam 5× o vis; geradores de monstros, 20×. Infusão com âmbar,
+      quartzo e diamante. (Alguns blocos compactados estão na lista proibida do pack.)
+    tasks:
+      - get: ThaumicTinkerer:focusDislocation
+    rewards:
+      - xp: 3
+      - item: Thaumcraft:ItemResource:6 x4
+
+  - id: foco_cura
+    title: "Foco: Restauração"
+    type: optional
+    deps: [foco_distorcao]
+    icon: ThaumicTinkerer:focusHeal
+    desc: |
+      Cura você aos poucos enquanto usa, gastando vis. A receita leva um §eFoco: Maldição dos Pêch§r
+      no centro — e esses focos só vêm dos Pechs. Hora de fazer amizade (ou não).
+    tasks:
+      - get: ThaumicTinkerer:focusHeal
+    rewards:
+      - loot: incomum
+
+  - id: foco_fenda
+    title: "Foco: Fenda do Fim"
+    type: optional
+    deps: [foco_distorcao]
+    deps_hidden: [thaumcraft:foco_buraco, thaumcraft:espelho_magico]
+    icon: ThaumicTinkerer:focusEnderChest
+    desc: |
+      Abra o seu §eBaú do Fim§r de qualquer lugar. Espelho Mágico, olho do Fim e Foco de Buraco
+      Portátil na Mesa Arcana. §cA pesquisa dá 1 de Warp.§r
+    tasks:
+      - get: ThaumicTinkerer:focusEnderChest
+    rewards:
+      - loot: incomum
+
+  - id: inventor_completo
+    title: "Oficina do Inventor"
+    type: milestone
+    deps: [tabuleta_dinamismo, restaurador, encantador_osmotico, foco_deslocamento, talisma_remedio]
+    icon: ThaumicTinkerer:enchanter
+    banner: "Oficina do Inventor"
+    subtitle: "O Tinkerer no seu laboratório"
+    desc: |
+      Encantamentos sob medida, ferramentas que se consertam com essência, tabuletas que trabalham
+      sozinhas, blocos que viajam no seu bolso... Herói, o seu laboratório virou uma oficina de
+      gênio maluco — do jeito que eu gosto!
+
+      Daqui pra frente vem a parte §6Kami§r: o Ichor. Ela exige que você conheça quase todas as
+      pesquisas de Básico, Taumaturgia, Alquimia, Artifício, Golemancia e do próprio Tinkerer.
+      Bora completar esse livro?
+    tasks:
+      - get: [ThaumicTinkerer:animationTablet, ThaumicTinkerer:repairer, ThaumicTinkerer:enchanter]
+    rewards:
+      - xp: 8
+      - kit: {name: "Kit do Inventor Arcano", items: [ThaumicTinkerer:darkQuartzItem x16, Thaumcraft:ItemResource:1 x4, Thaumcraft:ItemResource:2 x8, Thaumcraft:ItemResource:7 x4]}
+      - loot: raro
+
+  # ======================================================================
+  # FASE 5 — KAMI: O ICHOR
+  # ======================================================================
+  - id: fragmentos_dimensionais
+    title: "Fragmentos Dimensionais"
+    type: main
+    deps: [inventor_completo]
+    icon: ThaumicTinkerer:kamiResource:6
+    desc: |
+      Como a Superfície tem seus estilhaços, o Nether e o Fim têm os deles: §eNether Shards§r e
+      §eEnder Shards§r. Eles são §eraramente segurados§r por Homens-porco Zumbis no Nether e por
+      Endermen no Fim — derrote-os e torça. Junte §e2 de cada§r.
+    tasks:
+      - get: [ThaumicTinkerer:kamiResource:6 x2, ThaumicTinkerer:kamiResource:7 x2]
+    rewards:
+      - xp: 4
+      - choice: [minecraft:ender_pearl x8, minecraft:blaze_rod x6, minecraft:golden_apple x2]
+
+  - id: requisito_kami
+    title: "O Peso do Conhecimento"
+    type: info
+    deps: [inventor_completo]
+    icon: Thaumcraft:ItemThaumonomicon
+    desc: |
+      Toda pesquisa Kami (as do Ichor) tem como pré-requisitos ocultos §etodas§r as pesquisas não
+      perdidas das abas Básico, Taumaturgia, Alquimia, Artifício, Golemancia e do Tinkerer —
+      inclusive as que outros addons colocam nessas abas. A aba Eldritch não conta.
+
+      Na prática: complete o livro. Use o Mestre em Pesquisas, a Duplicação de Pesquisa e o Tomo
+      do Conhecimento Compartilhado (se alguém do grupo já pesquisou). §cA pesquisa do Ichor dá 5
+      de Warp.§r
+    tasks:
+      - check
+    rewards:
+      - xp: 2
+
+  - id: ichor
+    title: "Ichor"
+    type: main
+    deps: [fragmentos_dimensionais, requisito_kami]
+    icon: ThaumicTinkerer:kamiResource
+    desc: |
+      "O poder desperto e bruto de uma Estrela do Nether." Infunda uma §eEstrela do Nether§r com
+      diamante, um Ender Shard, um olho do Fim e um Nether Shard (32 Humanus, 32 Lux, 64
+      Spiritus; instabilidade 7): saem §e8 Ichor§r.
+
+      Herói, segure isso com respeito. É luz de outro mundo.
+    tasks:
+      - get: ThaumicTinkerer:kamiResource x8
+    rewards:
+      - xp: 6
+      - choice: [minecraft:nether_star, minecraft:diamond x8, Thaumcraft:ItemResource:14 x8]
+
+  - id: tecido_ichor
+    title: "Tecido de Ichor"
+    type: main
+    deps: [ichor]
+    icon: ThaumicTinkerer:kamiResource:1
+    desc: |
+      Tecido Encantado, Ichor e diamantes na Mesa Arcana = §e3 Ichorcloth§r. O custo é enorme:
+      §e125 de cada primal§r. Uma varinha de Silverwood (100) só dá conta com descontos: pontas do
+      vazio (80%) resolvem, e o livro recomenda vestir os §eRobes do Taumaturgo§r. Um Cetro de
+      Silverwood (150) também serve.
+    tasks:
+      - get: ThaumicTinkerer:kamiResource:1 x3
+    rewards:
+      - xp: 6
+      - choice: [Thaumcraft:ItemResource:7 x8, minecraft:diamond x3, Thaumcraft:ItemShard:6 x6]
+
+  - id: ichorium
+    title: "Ichorium"
+    type: main
+    deps: [ichor]
+    icon: ThaumicTinkerer:kamiResource:2
+    desc: |
+      Táumio, Ichor e diamante na Mesa Arcana (100 de cada primal): o §eIchorium§r, um metal mais
+      forte do que qualquer coisa mundana. Um lingote vira 9 pepitas. Faça §e4 lingotes§r.
+    tasks:
+      - get: ThaumicTinkerer:kamiResource:2 x4
+    rewards:
+      - xp: 6
+      - choice: [Thaumcraft:ItemResource:2 x8, minecraft:diamond x4, ThaumicTinkerer:kamiResource:3 x9]
+
+  - id: pontas_ichorium
+    title: "Pontas de Ichorium"
+    type: main
+    deps: [ichorium]
+    icon: ThaumicTinkerer:kamiResource:4
+    desc: |
+      Ichorium no centro, Ichor e Pontas de Táumio em volta (Mesa Arcana, 100 de cada primal) =
+      §e2 Pontas de Ichorium§r com §e30% de desconto§r em tudo. §cA pesquisa dá 2 de Warp.§r
+    tasks:
+      - get: ThaumicTinkerer:kamiResource:4 x2
+    rewards:
+      - xp: 6
+      - choice: [Thaumcraft:WandCap:2 x2, ThaumicTinkerer:kamiResource x2, Thaumcraft:ItemResource:14 x8]
+
+  - id: haste_ichor
+    title: "Haste de Silverwood Tecida em Ichor"
+    type: main
+    deps: [tecido_ichor, pontas_ichorium]
+    icon: ThaumicTinkerer:kamiResource:5
+    desc: |
+      "Você conseguiu: o núcleo definitivo." Uma Haste de Silverwood infundida com Ichor,
+      Ichorcloth, Salis Mundus e lágrima de ghast (100 Praecantatio, 32 Lux, 32 Instrumentum;
+      instabilidade 9). Ela guarda §e1000 de vis§r por primal! "Agora a pergunta é: de onde vai
+      vir tanto vis?" §cWarp: 1.§r
+    tasks:
+      - get: ThaumicTinkerer:kamiResource:5
+    rewards:
+      - xp: 6
+      - choice: [Thaumcraft:blockStoneDevice:5, Thaumcraft:ItemAmuletVis:1, Thaumcraft:ItemResource:15 x2]
+
+  - id: varinha_ichor
+    title: "A Varinha de Ichor"
+    type: milestone
+    deps: [haste_ichor]
+    icon: ThaumicTinkerer:kamiResource:5
+    banner: "A Varinha de Ichor"
+    subtitle: "Mil de vis em cada primal"
+    desc: |
+      Monte a haste tecida em Ichor com as Pontas de Ichorium na Mesa Arcana. O resultado é a
+      varinha mais poderosa deste Volume: §e1000 de vis§r por primal com §e30% de desconto§r.
+
+      Para enchê-la: Pedestal de Recarga perto de nós fortes, nós energizados e relés, ou o Foco
+      de Dreno de Experiência (que transforma XP em vis). Herói, você está escrevendo páginas
+      que nem eu sabia que existiam!
+    tasks:
+      - get: [ThaumicTinkerer:kamiResource:5, ThaumicTinkerer:kamiResource:4 x2]
+    rewards:
+      - xp: 12
+      - kit: {name: "Kit Kami", items: [ThaumicTinkerer:kamiResource x4, ThaumicTinkerer:kamiResource:2 x2, Thaumcraft:ItemResource:14 x8, minecraft:diamond x4]}
+      - loot: epico
+
+  - id: ferramentas_ichor
+    title: "Ferramentas de Ichorium"
+    type: main
+    deps: [ichorium]
+    icon: ThaumicTinkerer:ichorPick
+    desc: |
+      Ichorium no lugar do lingote e §eHastes de Silverwood§r no lugar dos gravetos (Mesa Arcana, 75
+      de um primal cada). Picareta, pá, machado e espada de Ichorium §enunca quebram§r e são mais
+      fortes que diamante. §cA pesquisa dá 2 de Warp.§r Faça as quatro.
+    tasks:
+      - get: [ThaumicTinkerer:ichorPick, ThaumicTinkerer:ichorShovel, ThaumicTinkerer:ichorAxe, ThaumicTinkerer:ichorSword]
+    rewards:
+      - xp: 6
+      - choice: [Thaumcraft:WandRod:2 x2, ThaumicTinkerer:kamiResource:2 x2, minecraft:diamond x4]
+
+  - id: picareta_desperta
+    title: "Picareta de Ichorium Desperta"
+    type: main
+    deps: [ferramentas_ichor]
+    icon: ThaumicTinkerer:ichorPickGem
+    desc: |
+      Uma infusão gigantesca (instabilidade 15!) com a Picareta do Núcleo, Focos de Escavação,
+      aglomerados nativos, Ichor, Ichorium e Ichorcloth. Shift+clique troca o modo: §everde§r (um
+      bloco), §evermelho§r (5×5) e §eazul§r (linha de 10 blocos).
+
+      E o detalhe mais importante: ela §equebra rocha-mãe§r. "Cavar mais fundo pode ser frutífero."
+      Estabilize MUITO bem o altar.
+    tasks:
+      - get: ThaumicTinkerer:ichorPickGem
+    rewards:
+      - xp: 6
+      - choice: [minecraft:diamond_block x2, ThaumicTinkerer:kamiResource x2, Thaumcraft:ItemResource:14 x8]
+
+  - id: dimensao_rochamae
+    title: "A Dimensão da Rocha-Mãe"
+    type: portal
+    deps: [picareta_desperta]
+    icon: minecraft:bedrock
+    banner: "A Dimensão da Rocha-Mãe"
+    subtitle: "Abaixo de tudo"
+    desc: |
+      Na Superfície, §eagachado§r, quebre um bloco de §erocha-mãe§r abaixo da camada Y 5 com a
+      Picareta Desperta: no lugar surge um §ePortal de Rocha-Mãe§r. Ele leva à §eBedrock dimension§r
+      (dimensão -19), um mundo de rocha-mãe recheado de minérios. Lá dentro, quebre rocha-mãe no
+      teto (acima de Y 253) para voltar.
+
+      Leve tochas, comida e espaço no inventário. Minério ali é o que não falta!
+    tasks:
+      - visit: {dim: -19, name: "Dimensão da Rocha-Mãe"}
+    rewards:
+      - xp: 10
+      - loot: epico
+
+  - id: pa_desperta
+    title: "Pá de Ichorium Desperta"
+    type: normal
+    deps: [ferramentas_ichor]
+    icon: ThaumicTinkerer:ichorShovelGem
+    desc: |
+      Mesma ideia da picareta, com a Pá do Movedor de Terra: modos um bloco, 5×5 e §ecoluna§r (cava
+      toda a coluna do mesmo bloco).
+    tasks:
+      - get: ThaumicTinkerer:ichorShovelGem
+    rewards:
+      - xp: 4
+      - item: ThaumicTinkerer:kamiResource
+
+  - id: machado_desperto
+    title: "Machado de Ichorium Desperto"
+    type: normal
+    deps: [ferramentas_ichor]
+    icon: ThaumicTinkerer:ichorAxeGem
+    desc: |
+      Com o Machado da Corrente: modos um bloco, 5×5 e §eárvore inteira§r com um golpe.
+    tasks:
+      - get: ThaumicTinkerer:ichorAxeGem
+    rewards:
+      - xp: 4
+      - item: ThaumicTinkerer:kamiResource
+
+  - id: espada_desperta
+    title: "Espada de Ichorium Desperta"
+    type: normal
+    deps: [ferramentas_ichor]
+    icon: ThaumicTinkerer:ichorSwordGem
+    desc: |
+      Com a Espada de Zephyr e Focos de Gelo: modo único, §eárea§r (atinge todos do mesmo tipo num
+      raio de 3) e §ealma§r — menos dano, mas gera §eCorações de Alma§r: corações metálicos que
+      bloqueiam um golpe cada.
+    tasks:
+      - get: ThaumicTinkerer:ichorSwordGem
+    rewards:
+      - xp: 4
+      - item: ThaumicTinkerer:kamiResource
+
+  - id: protoargila
+    title: "Protoargila"
+    type: optional
+    deps: [picareta_desperta, pa_desperta]
+    icon: ThaumicTinkerer:protoclay
+    desc: |
+      Cansado de trocar de ferramenta? Com a §eProtoclay§r, se você tentar quebrar um bloco com a
+      ferramenta Desperta errada, ela troca automaticamente pela certa do seu inventário.
+    tasks:
+      - get: ThaumicTinkerer:protoclay
+    rewards:
+      - loot: raro
+
+  - id: anel_buraco_negro
+    title: "Anel do Buraco Negro"
+    type: normal
+    deps: [picareta_desperta, pa_desperta]
+    icon: ThaumicTinkerer:blockTalisman
+    desc: |
+      Configure o anel num tipo de bloco: ligado, ele §eabsorve o excesso§r daquele bloco do seu
+      inventário (mantém um pack) e guarda até mais de 2 bilhões! Dá para colocar os blocos de
+      volta no mundo direto do anel. Pedregulho entupindo o inventário? Nunca mais.
+    tasks:
+      - get: ThaumicTinkerer:blockTalisman
+    rewards:
+      - xp: 4
+      - item: minecraft:chest x4
+
+  - id: espelho_moldador
+    title: "Espelho do Moldador de Mundos"
+    type: optional
+    deps: [anel_buraco_negro]
+    icon: ThaumicTinkerer:placementMirror
+    desc: |
+      Coloca uma grade de blocos de uma vez com o poder da mente, mostrando uma prévia fantasma.
+      Shift+clique num bloco para escolher; Shift+clique no ar para mudar o tamanho. Infusão do
+      Anel do Buraco Negro com Ichor, vidro e pó de blaze.
+    tasks:
+      - get: ThaumicTinkerer:placementMirror
+    rewards:
+      - loot: raro
+
+  - id: bolsa_sem_fundo
+    title: "Bolsa Sem Fundo"
+    type: normal
+    deps: [tecido_ichor]
+    icon: ThaumicTinkerer:ichorPouch
+    desc: |
+      A Bolsa de Focos infundida com Ichorcloth, Foco de Buraco Portátil, Baú Faminto e Jarro do
+      Vazio: guarda §eo conteúdo de mais de quatro baús§r e continua funcionando como bolsa de
+      focos. Adeus, problemas de inventário!
+    tasks:
+      - get: ThaumicTinkerer:ichorPouch
+    rewards:
+      - xp: 4
+      - item: minecraft:chest x8
+
+  - id: amuleto_felino
+    title: "Amuleto Felino"
+    type: optional
+    deps: [ichorium]
+    icon: ThaumicTinkerer:catAmulet
+    desc: |
+      Creepers fogem de gatos. Com o §eFeline Amulet§r no inventário, creepers fogem de VOCÊ — e
+      ficam tão apavorados que nem conseguem explodir.
+    tasks:
+      - get: ThaumicTinkerer:catAmulet
+    rewards:
+      - loot: raro
+
+  - id: foco_dreno_xp
+    title: "Foco: Dreno de Experiência"
+    type: normal
+    deps: [haste_ichor]
+    deps_hidden: [talisma_retencao]
+    icon: ThaumicTinkerer:focusXPDrain
+    desc: |
+      Uma varinha de 1000 precisa de outra fonte de vis: este foco §etransforma o seu XP em vis§r,
+      rápido mas sem muita eficiência. Infusão de uma pérola do Fim com Ichor, Talismã de
+      Retenção e uma mesa de encantamento.
+    tasks:
+      - get: ThaumicTinkerer:focusXPDrain
+    rewards:
+      - xp: 4
+      - item: minecraft:experience_bottle x16
+
+  - id: foco_raio_sombrio
+    title: "Foco: Raio Sombrio"
+    type: optional
+    deps: [haste_ichor]
+    icon: ThaumicTinkerer:focusShadowbeam
+    desc: |
+      Um feixe de energia contínuo que machuca tudo no caminho e §ericocheteia nos blocos§r como se
+      fossem espelhos. Infusão do Foco de Choque com Ichor, Foco de Escavação e Foco de Distorção.
+    tasks:
+      - get: ThaumicTinkerer:focusShadowbeam
+    rewards:
+      - loot: raro
+
+  # ======================================================================
+  # FASE 6 — VESTES KAMI
+  # ======================================================================
+  - id: vestes_ichor
+    title: "Vestes de Ichorcloth"
+    type: main
+    deps: [tecido_ichor]
+    icon: ThaumicTinkerer:ichorclothChest
+    desc: |
+      Capuz, robe, calça e botas de Ichorcloth (Mesa Arcana, 75 de um primal cada). Protegem como
+      diamante e são §ecompletamente inquebráveis§r. §cA pesquisa dá 4 de Warp.§r Faça as quatro.
+    tasks:
+      - get: [ThaumicTinkerer:ichorclothHelm, ThaumicTinkerer:ichorclothChest, ThaumicTinkerer:ichorclothLegs, ThaumicTinkerer:ichorclothBoots]
+    rewards:
+      - xp: 6
+      - choice: [ThaumicTinkerer:kamiResource:1 x2, ThaumicTinkerer:kamiResource x2, minecraft:diamond x4]
+
+  - id: capuz_abissal
+    title: "Capuz das Profundezas Abissais"
+    type: normal
+    deps: [vestes_ichor]
+    icon: ThaumicTinkerer:ichorclothHelmGem
+    desc: |
+      O capuz desperto (infusão de instabilidade 13): funciona como Óculos da Revelação, dá
+      §erespiração e visão infinitas debaixo d'água§r e mantém a regeneração de vida mesmo com fome.
+    tasks:
+      - get: ThaumicTinkerer:ichorclothHelmGem
+    rewards:
+      - xp: 4
+      - loot: raro
+
+  - id: robes_estratosfera
+    title: "Robes da Estratosfera"
+    type: normal
+    deps: [vestes_ichor]
+    deps_hidden: [foco_ascensao, foco_distorcao, thaumcraft2:catalisador_taumostatico]
+    icon: ThaumicTinkerer:ichorclothChestGem
+    desc: |
+      O robe desperto: §evoo eterno§r, sem dano de queda, e proteção passiva contra projéteis
+      simples (como o Foco de Distorção). A infusão pede o Foco Primal, o Taumonomicon, o
+      Catalisador Taumostático, os Focos de Ascensão e Distorção, entre outros.
+    tasks:
+      - get: ThaumicTinkerer:ichorclothChestGem
+    rewards:
+      - xp: 4
+      - loot: raro
+
+  - id: perneiras_manto
+    title: "Perneiras do Manto Ardente"
+    type: normal
+    deps: [vestes_ichor]
+    deps_hidden: [foco_efreet, nitor_hiperenergetico]
+    icon: ThaumicTinkerer:ichorclothLegsGem
+    desc: |
+      As perneiras despertas carregam a alma do fogo: §eiluminam§r em volta e para onde você olha,
+      como uma lanterna (Shift+clique liga/desliga), e dão proteção contra fogo. A receita usa o
+      Foco Chama de Efreet e o Nitor Hiperenergético.
+    tasks:
+      - get: ThaumicTinkerer:ichorclothLegsGem
+    rewards:
+      - xp: 4
+      - loot: raro
+
+  - id: botas_escudo
+    title: "Botas do Escudo Horizontal"
+    type: normal
+    deps: [vestes_ichor]
+    icon: ThaumicTinkerer:ichorclothBootsGem
+    desc: |
+      Movimento suave como as Botas do Viajante, só que muito mais: velocidade, altura e alcance de
+      pulo aumentados, e você §esobe degraus de 1 bloco§r como se fossem lajes (agachado desliga).
+      Neste pack elas também transformam terra em grama por onde você passa.
+    tasks:
+      - get: ThaumicTinkerer:ichorclothBootsGem
+    rewards:
+      - xp: 4
+      - loot: raro
+
+  # ======================================================================
+  # FASE 7 — O PORTAL CELESTIAL
+  # ======================================================================
+  - id: perola_celestial
+    title: "Pérolas Celestiais"
+    type: normal
+    deps: [robes_estratosfera]
+    icon: ThaumicTinkerer:skyPearl
+    desc: |
+      Uma pérola do Fim infundida com Ichor, Ender Shard, bloco de lápis-lazúli e diamante: §e2
+      Celestial Pearls§r. Shift+clique num Portal Celestial para gravar aquele local na pérola.
+      Renomeie na bigorna para o nome aparecer na lista.
+    tasks:
+      - get: ThaumicTinkerer:skyPearl x2
+    rewards:
+      - xp: 4
+      - item: minecraft:ender_pearl x8
+
+  - id: portal_celestial
+    title: "Portal Celestial"
+    type: main
+    deps: [perola_celestial]
+    icon: ThaumicTinkerer:warpGate
+    desc: |
+      O §eCelestial Gateway§r é a rede de teletransporte do Tinkerer. Coloque pérolas gravadas dentro
+      dele (até §e10 destinos§r) e §efique agachado em cima§r para ver a lista. Cada pérola é uma
+      via de mão única: para ir e voltar, use duas. Você pode bloquear conexões de outros portais
+      na tela do bloco.
+
+      Infusão em Pavimento de Viagem com Ichor, shards dimensionais, o Deslocador Transvetor,
+      diamante e pena.
+    tasks:
+      - get: ThaumicTinkerer:warpGate x2
+    rewards:
+      - xp: 6
+      - choice: [ThaumicTinkerer:skyPearl x2, Thaumcraft:blockCosmeticSolid:2 x8, minecraft:ender_pearl x8]
+
+  - id: foco_retorno
+    title: "Foco: Retorno Celestial"
+    type: normal
+    deps: [portal_celestial]
+    deps_hidden: [haste_ichor]
+    icon: ThaumicTinkerer:focusRecall
+    desc: |
+      Teletransporte sem portal: com uma Pérola Celestial gravada na barra de atalhos, o foco te
+      leva até aquele destino depois de um tempinho de conjuração. Infusão de uma Pérola Celestial
+      com Ichor, espelho mágico e Foco de Buraco Portátil.
+    tasks:
+      - get: ThaumicTinkerer:focusRecall
+    rewards:
+      - xp: 4
+      - loot: raro
+
+  - id: kami
+    title: "O Taumaturgo Kami"
+    type: milestone
+    deps: [varinha_ichor, capuz_abissal, robes_estratosfera, perneiras_manto, botas_escudo, picareta_desperta, portal_celestial]
+    icon: ThaumicTinkerer:ichorclothChestGem
+    banner: "O Taumaturgo Kami"
+    subtitle: "O Volume do Inventor está completo"
+    effect: 4
+    desc: |
+      Capuz que respira debaixo d'água, robe que voa para sempre, perneiras que iluminam o mundo,
+      botas que deslizam, ferramentas que nunca quebram e uma varinha com mil de vis. Herói... você
+      agora é aquilo que o Tinkerer chamava de §6Kami§r — um mago com um pé no divino.
+
+      O Registro inteiro sente esse Ichor. É mais uma luz acesa no §6Selo Arcano§r. E eu? Estou
+      aqui escrevendo de felicidade!
+    tasks:
+      - get: [ThaumicTinkerer:ichorclothHelmGem, ThaumicTinkerer:ichorclothChestGem, ThaumicTinkerer:ichorclothLegsGem, ThaumicTinkerer:ichorclothBootsGem]
+    rewards:
+      - xp: 12
+      - kit: {name: "Kit do Kami", items: [ThaumicTinkerer:kamiResource x8, ThaumicTinkerer:kamiResource:2 x4, ThaumicTinkerer:kamiResource:1 x4, minecraft:nether_star]}
+      - loot: epico
