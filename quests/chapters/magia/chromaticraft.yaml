@@ -1820,3 +1820,675 @@ quests:
     rewards:
       - xp: 6
       - choice: [ChromatiCraft:chromaticraft_item_bucket x4, ChromatiCraft:chromaticraft_item_shard:26 x8, ore:shardCrystal x32]
+
+  # ======================================================================
+  # FASE 12 — EXPLORAÇÃO (OS REQUISITOS DO OUTRO MUNDO)
+  # ======================================================================
+  - id: floresta_arco_iris
+    title: "Magical Forests"
+    type: main
+    deps: [arvores_tingidas]
+    icon: ChromatiCraft:chromaticraft_block_rainbowsapling
+    desc: |
+      Dizem que há florestas inteiras de árvores coloridas, com magia forte o bastante para
+      afastar o mal. Encontre uma §eRainbow Forest§r (bioma do ChromatiCraft; nesta config os
+      animais lá são calmos e plantas anti-Taint crescem nela). Descoberta "Magical Forests".
+    tasks:
+      - visit: {dim: 0, biome: 48, name: "Rainbow Forest"}
+    rewards:
+      - xp: 4
+      - choice: [minecraft:cooked_beef x16, minecraft:sapling x8, minecraft:compass]
+
+  - id: arvore_arco_iris
+    title: "Rainbow Tree"
+    type: normal
+    deps: [floresta_arco_iris]
+    icon: ChromatiCraft:chromaticraft_block_rainbowleaf:1
+    desc: |
+      Às vezes surgem árvores enormes em forma de chama, com folhas de todas as cores: as
+      §eRainbow Trees§r. Elas limpam e estabilizam o ar em volta (o Léxico lembra da "praga roxa"
+      do Thaumcraft...) e suas folhas podem soltar maçãs douradas. Pegue uma §eRainbow Sapling§r.
+    tasks:
+      - get: ChromatiCraft:chromaticraft_block_rainbowsapling
+    rewards:
+      - xp: 3
+      - item: minecraft:golden_apple
+
+  - id: residuo_magico
+    title: "Muddy Residue"
+    type: optional
+    deps: [arvore_arco_iris]
+    icon: ChromatiCraft:chromaticraft_block_mud
+    desc: |
+      Sob as árvores arco-íris, o chão fica §elamacento§r com resíduos de um líquido mágico. O
+      Léxico sugere que esse solo "regado por magia" ajuda certas plantas. Colete um pouco.
+    tasks:
+      - get: ChromatiCraft:chromaticraft_block_mud
+    rewards:
+      - loot: comum
+
+  - id: penhascos_luminosos
+    title: "Glowing Terraces"
+    type: main
+    deps: [lexico]
+    icon: ChromatiCraft:chromaticraft_block_cliffstone:2
+    desc: |
+      Nem toda região mágica é floresta. Os §eLuminous Cliffs§r são penhascos em terraços com uma
+      atmosfera muito estranha — e raros (peso de bioma baixo nesta config). Encontre um:
+      descoberta "Glowing Terraces".
+    tasks:
+      - visit: {dim: 0, biome: 49, name: "Luminous Cliffs"}
+    rewards:
+      - xp: 4
+      - choice: [minecraft:cooked_beef x16, minecraft:glowstone x8, minecraft:compass]
+
+  - id: luma
+    title: "Ethereal Luma"
+    type: normal
+    deps: [penhascos_luminosos]
+    icon: ChromatiCraft:chromaticraft_item_bucket:3
+    desc: |
+      Bem fundo sob os penhascos, perto de fendas que soltam gases, há poças de um líquido "de
+      energia e de espaço": a §eLuma Etérea§r. Encha um balde (descoberta "Ethereal Luma").
+    tasks:
+      - get: ChromatiCraft:chromaticraft_item_bucket:3
+    rewards:
+      - xp: 3
+      - item: minecraft:bucket x2
+
+  - id: floresta_ender
+    title: "Ender Forest"
+    type: optional
+    deps: [lexico]
+    icon: ChromatiCraft:chromaticraft_item_bucket:1
+    desc: |
+      Uma floresta com poças de §eEssência Líquida de Ender§r, que arremessa quem encosta numa
+      direção aleatória. Encha um balde: ela é útil em tudo que envolve viajar pelo espaço.
+    tasks:
+      - visit: {dim: 0, biome: 47, name: "Ender Forest"}
+      - get: ChromatiCraft:chromaticraft_item_bucket:1
+    rewards:
+      - loot: incomum
+
+  - id: estrutura_caverna
+    title: "Buried Hollows"
+    type: normal
+    deps: [ruinas]
+    icon: ChromatiCraft:chromaticraft_block_crystal:7
+    desc: |
+      Câmaras enterradas na rocha, cheias de cristais e algum saque: os §eCrystal Shrines§r.
+      Encontre um (descoberta "Buried Hollows"). §eÉ um dos requisitos do outro mundo.§r
+    tasks:
+      - check
+    rewards:
+      - xp: 3
+      - loot: comum
+
+  - id: estrutura_toca
+    title: "Secret Burrows"
+    type: normal
+    deps: [ruinas]
+    icon: ChromatiCraft:chromaticraft_block_lamp:4
+    desc: |
+      À noite, pontos de luz no chão que não são lava nem fogo... são §eCrystal Burrows§r, tocas
+      escondidas com alguns itens iniciais. Encontre uma (descoberta "Secret Burrows").
+    tasks:
+      - check
+    rewards:
+      - xp: 3
+      - loot: comum
+
+  - id: estrutura_oceano
+    title: "Ocean Temples"
+    type: normal
+    deps: [ruinas]
+    icon: minecraft:prismarine
+    desc: |
+      Histórias falam de estruturas no fundo do oceano — e são verdadeiras. O §eOcean Temple§r
+      do ChromatiCraft é maior do que parece e §cnão é amigável§r. Leve respiração aquática.
+      (Descoberta "Ocean Temples"; libera também o Crystal Tank.)
+    tasks:
+      - check
+    rewards:
+      - xp: 3
+      - loot: incomum
+
+  - id: estrutura_deserto
+    title: "Sandy Burrows"
+    type: normal
+    deps: [ruinas]
+    icon: minecraft:sandstone
+    desc: |
+      Além das pirâmides (explosivas), os desertos escondem os §eSandy Burrows§r: ocos subterrâneos
+      cheios de saque — e de perigo. Encontre um (descoberta "Sandy Burrows").
+    tasks:
+      - check
+    rewards:
+      - xp: 3
+      - loot: incomum
+
+  - id: estrutura_neve
+    title: "Snowy Outposts"
+    type: normal
+    deps: [ruinas]
+    icon: minecraft:packed_ice
+    desc: |
+      Gelo até onde a vista alcança... e um §eFrozen Outpost§r abandonado guardando alguma coisa.
+      Encontre um (descoberta "Snowy Outposts"). Cuidado com o chão de Mirrorstone.
+    tasks:
+      - check
+    rewards:
+      - xp: 3
+      - loot: incomum
+
+  - id: torre_dados
+    title: "Glowing Towers"
+    type: optional
+    deps: [ruinas]
+    icon: ChromatiCraft:chromaticraft_item_datacrystal
+    desc: |
+      Torres antigas coroadas por um cristal luminoso cheio de informação: as §eAncient Data
+      Towers§r. O §eMemory Crystal§r delas serve de cinzel (Inscrição) e para mapas de artefatos.
+    tasks:
+      - get: ChromatiCraft:chromaticraft_item_datacrystal
+    rewards:
+      - loot: incomum
+
+  - id: artefato
+    title: "Unknown Artefact"
+    type: optional
+    deps: [ruinas]
+    icon: ChromatiCraft:chromaticraft_item_artefact
+    desc: |
+      Em certas regiões, raramente, há uma "coisa" em forma de estrela enterrada logo abaixo da
+      superfície. §cÉ perigosa de carregar§r (os aldeões que o digam). O Léxico guarda segredos
+      sobre ela.
+    tasks:
+      - get: ChromatiCraft:chromaticraft_item_artefact:*
+    rewards:
+      - loot: incomum
+
+  - id: colmeia_cristal
+    title: "Crystal Hives"
+    type: optional
+    deps: [ruinas]
+    icon: ChromatiCraft:chromaticraft_block_hive
+    desc: |
+      Abelhas no escuro? Há colmeias cristalinas subterrâneas com abelhas adaptadas (integração
+      com Forestry). Encontre uma §eCrystal Hive§r — ela libera pesquisas de abelhas.
+    tasks:
+      - get: ChromatiCraft:chromaticraft_block_hive:*
+    rewards:
+      - loot: incomum
+
+  - id: caverna_funda
+    title: "Lower Layers"
+    type: normal
+    deps: [cristais_caverna]
+    icon: minecraft:stone_pickaxe
+    desc: |
+      As cavernas descem muito mais do que parece. Explore um sistema de cavernas bem fundo
+      (descoberta "Lower Layers") e depois chegue à §erocha matriz§r, "a barreira impenetrável"
+      (descoberta "World Floor"). O código encadeia: cavernas fundas → rocha matriz → Nether →
+      Fim.
+    tasks:
+      - check
+    rewards:
+      - xp: 3
+      - item: minecraft:torch x32
+
+  - id: nether_cc
+    title: "The Evil Realm"
+    type: normal
+    deps: [caverna_funda]
+    icon: minecraft:netherrack
+    desc: |
+      "Então as histórias de portais de obsidiana para um pesadelo de fogo eram verdade..."
+      Entre no Nether (descoberta "The Evil Realm"). Para o ChromatiCraft, ela só conta depois de
+      você ter chegado à rocha matriz.
+    tasks:
+      - visit: {dim: -1, name: "Nether"}
+    rewards:
+      - xp: 3
+      - item: minecraft:fire_charge x4
+
+  - id: teto_nether
+    title: "A second layer"
+    type: normal
+    deps: [nether_cc, ruinas]
+    icon: ChromatiCraft:chromaticraft_item_netherkey
+    desc: |
+      O Nether tem um teto de rocha matriz. Ele é impenetrável? Não para você. Chegue §eacima do
+      teto do Nether§r (descoberta "A second layer") — o §eNether Layer Crystal§r ajuda — e
+      procure as §econstruções sinistras§r que cruzam o topo (descoberta "Ominous
+      Constructions"). Ambas são requisitos do outro mundo.
+    tasks:
+      - check
+    rewards:
+      - xp: 4
+      - loot: incomum
+
+  - id: fim_cc
+    title: "The Alien Realm"
+    type: normal
+    deps: [nether_cc]
+    icon: minecraft:end_stone
+    desc: |
+      "Nada poderia ser mais estranho que aquele mundo de lava e águas-vivas voadoras..." Pode.
+      Visite o Fim (descoberta "The Alien Realm") — mais um requisito do outro mundo.
+    tasks:
+      - visit: {dim: 1, name: "O Fim"}
+    rewards:
+      - xp: 4
+      - item: minecraft:ender_pearl x8
+
+  - id: dragao_cc
+    title: "Aerial Predator"
+    type: optional
+    deps: [fim_cc]
+    icon: minecraft:dragon_egg
+    desc: |
+      Um dragão gigante cuja destruição dá recompensa "física e conceitual". Derrote o §eDragão
+      do Ender§r (descoberta "Aerial Predator"). O Léxico também lembra dos cristais do Fim: o
+      §eEnder Crystal§r do ChromatiCraft permite pegá-los sem explodir.
+    tasks:
+      - kill: "EnderDragon x1"
+    rewards:
+      - xp: 8
+      - loot: raro
+
+  - id: wither_cc
+    title: "Eldritch Nightmare"
+    type: optional
+    deps: [nether_cc]
+    icon: minecraft:nether_star
+    desc: |
+      "Quatro areias das almas, três crânios de wither..." O §eWither§r solta uma estrela
+      misteriosa e valiosa — que, por acaso, é o centro da Auroral Battery do ElectriCraft.
+    tasks:
+      - kill: "WitherBoss x1"
+    rewards:
+      - xp: 8
+      - loot: raro
+
+  - id: spawner_cc
+    title: "Endless Mobs"
+    type: optional
+    deps: [ruinas]
+    icon: minecraft:mob_spawner
+    desc: |
+      "O que é essa caixa em chamas?" Encontre um spawner e destrua-o (descobertas "Endless Mobs"
+      e "Stopping the Torrent"), o que libera o Spawner Interference Crystal e outros truques.
+    tasks:
+      - check
+    rewards:
+      - loot: comum
+
+  - id: pronto_para_proxima
+    title: "Todas as Pistas"
+    type: milestone
+    deps: [todas_as_cores, fim_cc, teto_nether, cristal_poder, floresta_arco_iris, penhascos_luminosos, estrutura_caverna, estrutura_toca, estrutura_oceano, estrutura_deserto, estrutura_neve]
+    icon: ChromatiCraft:chromaticraft_block_portal
+    banner: "Todas as Pistas"
+    subtitle: "Os requisitos do outro mundo"
+    desc: |
+      O código do ChromatiCraft é claro: a descoberta "Other Worlds" exige §etodas§r estas
+      pistas — as 16 cores, o Fim, as construções acima do teto do Nether, o Power Crystal, a
+      Rainbow Forest, os Luminous Cliffs e as cinco estruturas geradas (Shrine, Burrow, Ocean
+      Temple, Sandy Burrow e Frozen Outpost).
+
+      Você juntou cada página solta, Herói. Agora o Léxico consegue descrever um mundo onde a
+      energia cristalina flui livre, "sem a influência corruptora de outras forças".
+    tasks:
+      - check
+    rewards:
+      - xp: 12
+      - kit: {name: "Kit do Explorador Cromático", items: [ChromatiCraft:chromaticraft_item_bucket x4, ore:shardCrystal x32, minecraft:golden_apple x2, minecraft:ender_pearl x8]}
+      - loot: epico
+
+  # ======================================================================
+  # FASE 13 — PROXIMA (DIMENSÃO 60)
+  # ======================================================================
+  - id: portal_proxima
+    title: "Portal Rift"
+    type: main
+    deps: [pronto_para_proxima]
+    icon: ChromatiCraft:chromaticraft_block_portal
+    desc: |
+      Falar de um mundo especial não adianta sem um jeito de chegar lá. O §ePortal§r é uma
+      receita de Pylon com a sua estrutura própria (Portal Beacon, no Léxico). Monte-o.
+    tasks:
+      - get: ChromatiCraft:chromaticraft_block_portal
+    rewards:
+      - xp: 8
+      - choice: [ChromatiCraft:chromaticraft_block_pylonstruct x64, ChromatiCraft:chromaticraft_item_bucket x4, ore:shardCrystal x32]
+
+  - id: proxima
+    title: "Other Worlds"
+    type: portal
+    deps: [portal_proxima]
+    icon: ChromatiCraft:chromaticraft_block_portal
+    banner: "Proxima"
+    subtitle: "O mundo das cores livres"
+    desc: |
+      Um mundo novo... estranho, mas calmo e sereno, e vivamente colorido: §eProxima§r (dimensão
+      60). Planícies e florestas de cristal, montanhas, oceanos de aura, ilhas flutuantes.
+
+      §cAtenção ao principal:§r o Léxico chama este mundo de §evolátil§r — até ser observado, ele
+      existe num estado indefinido, e §cnão persiste entre visitas§r. Recursos infinitos, sim;
+      mas §cnada que você deixar lá estará lá quando voltar§r. E entrar e sair é por meios
+      incomuns. Não construa a sua base aqui!
+    tasks:
+      - visit: {dim: 60, name: "Proxima"}
+    rewards:
+      - xp: 10
+      - loot: epico
+
+  - id: sintonia_portal
+    title: "Portal Tuning"
+    type: info
+    deps: [proxima]
+    icon: ChromatiCraft:chromaticraft_block_portal
+    desc: |
+      No começo o portal está "fora de fase", como um rádio mal sintonizado: áreas inteiras
+      ficam inacessíveis e várias formações não podem ser usadas. O Léxico (página "Portal
+      Tuning") explica como afinar essa sintonia para interagir de verdade com o mundo.
+    tasks:
+      - check
+    rewards:
+      - xp: 2
+
+  - id: planicies_cristal
+    title: "Crystal Plains"
+    type: normal
+    deps: [proxima]
+    icon: ChromatiCraft:chromaticraft_block_crystal:15
+    desc: |
+      Explore os biomas de Proxima. Comece pelas §eCrystal Plains§r e pelas §eCrystal Forests§r.
+    tasks:
+      - visit: {dim: 60, biome: 102, name: "Crystal Plains"}
+      - visit: {dim: 60, biome: 104, name: "Crystal Forest"}
+    rewards:
+      - xp: 4
+      - item: ore:shardCrystal x16
+
+  - id: oceano_aura
+    title: "Aura Ocean e Crystal Mountains"
+    type: normal
+    deps: [planicies_cristal]
+    icon: ChromatiCraft:chromaticraft_item_dimgen:7
+    desc: |
+      Mais longe: os §eAura Oceans§r e as §eCrystal Mountains§r. Cada bioma tem materiais que só
+      existem aqui.
+    tasks:
+      - visit: {dim: 60, biome: 106, name: "Aura Ocean"}
+      - visit: {dim: 60, biome: 105, name: "Crystal Mountains"}
+    rewards:
+      - xp: 4
+      - item: minecraft:cooked_beef x16
+
+  - id: ilhas_lumen
+    title: "Lumen Skylands"
+    type: optional
+    deps: [oceano_aura]
+    icon: ChromatiCraft:chromaticraft_item_dimgen:1
+    desc: |
+      Ilhas flutuando no céu de Proxima. Leve uma forma de voar — ou as Floatstone Boots.
+    tasks:
+      - visit: {dim: 60, biome: 101, name: "Lumen Skylands"}
+    rewards:
+      - loot: incomum
+
+  - id: materiais_proxima
+    title: "Floatstone, Aqua e Lifewater"
+    type: normal
+    deps: [planicies_cristal]
+    icon: ChromatiCraft:chromaticraft_item_dimgen:1
+    desc: |
+      Recursos de Proxima: §eFloatstone§r (pedra que flutua), §eAqua Dust§r e §eRestorative Gel§r
+      (das fontes de Lifewater). Junte os três.
+    tasks:
+      - get: [ChromatiCraft:chromaticraft_item_dimgen:1 x4, ChromatiCraft:chromaticraft_item_dimgen:2 x4, ChromatiCraft:chromaticraft_item_dimgen:3 x4]
+    rewards:
+      - xp: 4
+      - item: ore:shardCrystal x16
+
+  - id: gemas_proxima
+    title: "Geode Gem e Aura Glass"
+    type: normal
+    deps: [materiais_proxima]
+    icon: ChromatiCraft:chromaticraft_item_dimgen:5
+    desc: |
+      Mais raridades: §eGeode Gem§r, §eAura Glass Shard§r e §eOrtho Crystals§r. Qualquer uma delas
+      já prova que você explorou a fundo.
+    tasks:
+      - one_of: [ChromatiCraft:chromaticraft_item_dimgen:5 x4, ChromatiCraft:chromaticraft_item_dimgen:8 x4, ChromatiCraft:chromaticraft_item_dimgen:4 x4]
+    rewards:
+      - xp: 4
+      - loot: incomum
+
+  - id: essencia_lumen
+    title: "Lumen Essence e Miasma"
+    type: optional
+    deps: [materiais_proxima]
+    icon: ChromatiCraft:chromaticraft_item_dimgen:9
+    desc: |
+      Das §eEnergy Fissures§r sai §eLumen Essence§r; do §eMiasma§r, a §eMiasmatic Essence§r.
+      Ambos entram em receitas de endgame. Qualquer um.
+    tasks:
+      - one_of: [ChromatiCraft:chromaticraft_item_dimgen:9 x4, ChromatiCraft:chromaticraft_item_dimgen x4]
+    rewards:
+      - loot: incomum
+
+  - id: essencia_proximal
+    title: "Proximal Essence"
+    type: normal
+    deps: [proxima]
+    icon: ChromatiCraft:chromaticraft_item_tiered:26
+    desc: |
+      Um pó com propriedade ressonante, quase uma forma tangível do mundo onde foi achado:
+      §eProximal Essence§r. O Léxico só diz "imagina-se que significado isso teria..."
+    tasks:
+      - get: ChromatiCraft:chromaticraft_item_tiered:26 x4
+    rewards:
+      - xp: 4
+      - loot: incomum
+
+  - id: estruturas_puzzle
+    title: "Unusual Structures"
+    type: main
+    deps: [proxima, primeira_habilidade]
+    icon: ChromatiCraft:chromaticraft_block_dimdata
+    desc: |
+      Proxima está pontilhada de grandes estruturas: §equebra-cabeças§r (labirintos, travas por
+      cor, feixes, música...). Neste pack a dificuldade das estruturas está em §e3§r (config).
+      Complete uma e leve o seu §eDimensional Core§r (descoberta "Unusual Structures"; o código
+      exige já ter uma habilidade).
+
+      §aDica:§r cada estrutura concluída dá também uma "chave" anotada no Léxico.
+    tasks:
+      - get: ChromatiCraft:chromaticraft_item_placer:43
+    rewards:
+      - xp: 8
+      - choice: [minecraft:golden_apple x2, ChromatiCraft:chromaticraft_item_bucket x4, ore:shardCrystal x32]
+
+  - id: nucleos_dimensionais
+    title: "Dimensional Cores"
+    type: milestone
+    deps: [estruturas_puzzle]
+    icon: ChromatiCraft:chromaticraft_item_placer:43
+    banner: "Dimensional Cores"
+    subtitle: "Dezesseis orbes"
+    desc: |
+      Cada estrutura de Proxima guarda um §eDimensional Core§r de uma cor. Junte §eos dezesseis§r
+      (descoberta "Dimensional Cores"). Como o mundo é volátil, cada visita traz estruturas
+      novas — é uma jornada, não uma tarde.
+    tasks:
+      - get: ChromatiCraft:chromaticraft_item_placer:43 x16
+    rewards:
+      - xp: 12
+      - kit: {name: "Kit do Decifrador", items: [ChromatiCraft:chromaticraft_item_bucket x8, ore:shardCrystal x64, minecraft:golden_apple x4]}
+      - loot: epico
+
+  - id: regioes_distantes
+    title: "The Far Regions"
+    type: optional
+    deps: [proxima]
+    icon: minecraft:compass
+    desc: |
+      O Léxico brinca com as "Far Lands": Proxima também tem §eregiões externas§r, bem longe do
+      centro, com terreno alto e quebrado (descoberta "Outer Regions"). É requisito do Mineral
+      Extractor.
+    tasks:
+      - check
+    rewards:
+      - loot: raro
+
+  - id: botas_flutuantes
+    title: "Floatstone Boots"
+    type: optional
+    deps: [materiais_proxima]
+    icon: ChromatiCraft:chromaticraft_item_floatboots
+    desc: |
+      Botas de Floatstone, receita de Pylon. Flutuar sobre os oceanos de aura nunca foi tão
+      elegante.
+    tasks:
+      - get: ChromatiCraft:chromaticraft_item_floatboots
+    rewards:
+      - loot: raro
+
+  - id: arma_vacuo
+    title: "Vacuum Gun e Persistence Crystal"
+    type: optional
+    deps: [proxima]
+    icon: ChromatiCraft:chromaticraft_item_vacuumgun
+    desc: |
+      Duas receitas que pedem ter visitado Proxima: a §eVacuum Gun§r e o §ePersistence Crystal§r
+      (um carregador de chunks). Qualquer uma.
+    tasks:
+      - one_of: [ChromatiCraft:chromaticraft_item_vacuumgun, ChromatiCraft:chromaticraft_block_chunkloader]
+    rewards:
+      - loot: raro
+
+  # ======================================================================
+  # FASE 14 — ENDGAME E MAESTRIA ELEMENTAL
+  # ======================================================================
+  - id: turbo_pylon
+    title: "Pylon Turbocharging"
+    type: main
+    deps: [nucleos_dimensionais, arvore_lumen]
+    icon: ChromatiCraft:chromaticraft_item_placer:52
+    desc: |
+      Nem um anel cheio de Power Crystals aguenta a sua rede. A solução é violenta: a §ePylon
+      Enhancement Ring§r — 8 §eEnergy Focal Points§r em anel e um central §e8 blocos abaixo do orbe§r
+      — acionada pelo Manipulador. O anel precisa de céu aberto e ar em volta. Você precisa
+      dominar o elemento do Pylon antes.
+
+      §cInterromper o processo ou quebrar o anel depois é uma péssima ideia.§r (O código pede
+      Proxima, a Lumen Tree e uma estrutura concluída.)
+    tasks:
+      - get: ChromatiCraft:chromaticraft_item_placer:52 x9
+    rewards:
+      - xp: 8
+      - choice: [ChromatiCraft:chromaticraft_block_pylonstruct x64, ChromatiCraft:chromaticraft_item_bucket x8, ore:shardCrystal x64]
+
+  - id: farol_protecao
+    title: "Protection Beacon"
+    type: optional
+    deps: [ligacao_pylon]
+    icon: ChromatiCraft:chromaticraft_item_placer:19
+    desc: |
+      Energia Karmir (proteção) irradiada no ar: enquanto tiver energia (e gasta muita), o
+      §eProtection Beacon§r te deixa praticamente imortal no alcance — e protege seus bichos.
+    tasks:
+      - get: ChromatiCraft:chromaticraft_item_placer:19
+    rewards:
+      - loot: raro
+
+  - id: pintor_bioma
+    title: "Biome Painter"
+    type: optional
+    deps: [ligacao_pylon, floresta_arco_iris]
+    icon: ChromatiCraft:chromaticraft_item_placer:34
+    desc: |
+      Ajuste o clima "como quem pinta uma tela": o §eBiome Painter§r troca biomas em volta.
+      Perfeito para abelhas exigentes. (Pede a Rainbow Forest.)
+    tasks:
+      - get: ChromatiCraft:chromaticraft_item_placer:34
+    rewards:
+      - loot: raro
+
+  - id: portao_transposicao
+    title: "Transposition Core"
+    type: optional
+    deps: [ligacao_pylon, fim_cc]
+    icon: ChromatiCraft:chromaticraft_item_placer:78
+    desc: |
+      Uma rede de portões de teletransporte entre as suas bases: o §eTransposition Core§r e a
+      estrutura do Transposition Gate. Modo privado, só chegada ou só partida. (Pede o Fim.)
+    tasks:
+      - get: ChromatiCraft:chromaticraft_item_placer:78
+    rewards:
+      - loot: raro
+
+  - id: extrator_mineral
+    title: "Mineral Extractor"
+    type: optional
+    deps: [regioes_distantes, picareta_minerio]
+    icon: ChromatiCraft:chromaticraft_item_placer:24
+    desc: |
+      Chega de 50 baús de pedregulho: o §eMineral Extractor§r sente minérios e valores no mundo e
+      os extrai direto. Escaneia a área depois de colocado (ou com o Manipulador). Receita de
+      maestria — pede as Regiões Distantes.
+    tasks:
+      - get: ChromatiCraft:chromaticraft_item_placer:24
+    rewards:
+      - loot: epico
+
+  - id: monumento
+    title: "Restoration"
+    type: milestone
+    deps: [nucleos_dimensionais, turbo_pylon]
+    icon: ChromatiCraft:chromaticraft_item_placer:42
+    banner: "Restoration"
+    subtitle: "O Monumento desperta"
+    effect: 6
+    desc: |
+      No centro de Proxima há uma estrutura radialmente simétrica, incompleta e gasta pelo tempo:
+      o §eMonumento§r. Restaure-o e use os 16 Dimensional Cores para disparar o processo de
+      reativação — "quantidades sem precedentes de energia cristalina fluindo de formas novas"
+      (descoberta "Restoration").
+
+      Isso abre o último nível do Léxico, §6Elemental Mastery§r, e o §eAura Locus§r, a construção
+      que marca a sua maestria. Faça um.
+    tasks:
+      - get: ChromatiCraft:chromaticraft_item_placer:42
+    rewards:
+      - xp: 15
+      - kit: {name: "Kit da Restauração", items: [ChromatiCraft:chromaticraft_item_bucket x8, ore:shardCrystal x64, ChromatiCraft:chromaticraft_item_crafting:11 x8]}
+      - loot: epico
+
+  - id: maestria_elemental
+    title: "Elemental Mastery"
+    type: milestone
+    deps: [monumento, acelerador, primeira_habilidade, arvore_lumen]
+    icon: ChromatiCraft:chromaticraft_item_help
+    banner: "Maestria Elemental"
+    subtitle: "O Volume das Dezesseis Cores está completo"
+    effect: 3
+    desc: |
+      Herói... as dezesseis cores cantam para você.
+
+      Você começou quebrando um cristal numa caverna. Aprendeu com ruínas, com aldeões
+      desastrados, com choques de Pylon e com repetidores explodindo. Fundiu runas, templos e
+      complexos; levou energia por quilômetros; tirou habilidades do próprio corpo; viajou a um
+      mundo que se desfaz quando você vai embora — e restaurou o Monumento no coração dele.
+
+      Esta é talvez a página mais difícil de todo o Registro, porque ela §enão se deixa ler§r: é
+      preciso vivê-la. Ela agora brilha no §6Selo Arcano§r, com todas as cores ao mesmo tempo.
+    tasks:
+      - get: [ChromatiCraft:chromaticraft_item_placer:42, ChromatiCraft:chromaticraft_item_adjacency:12, ChromatiCraft:chromaticraft_item_placer:36]
+    rewards:
+      - xp: 15
+      - kit: {name: "Kit do Mestre Cromático", items: [ChromatiCraft:chromaticraft_item_crafting:11 x16, ChromatiCraft:chromaticraft_item_bucket x16, ore:shardCrystal x64, minecraft:nether_star]}
+      - loot: lendario
