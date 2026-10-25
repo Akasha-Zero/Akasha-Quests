@@ -1,0 +1,507 @@
+chapter:
+  id: atm_tweaks
+  title: All The Tweaks
+  prefix: ATM
+  order: 920
+  icon: allthemodiumlegacy:trophy_atm
+  desc: |
+    §6Os pequenos luxos da série.§r Miniaturas de portais, o troféu do All The Mods, a estrela
+    rosa mais famosa do fundo do mar e os blocos de armazenamento que combinam com tudo. Os
+    componentes da Estrela ATM ficam no capítulo dela; aqui moram os enfeites e a organização.
+quests:
+- id: tweaks_intro
+  title: O Que São os Tweaks
+  type: info
+  icon: allthemodiumlegacy:trophy_atm
+  desc: |
+    O módulo §eAll The Tweaks§r é a casa da Estrela ATM e dos seus componentes (esses você
+    encontra no capítulo da Estrela). Ele também guarda blocos de armazenamento e peças
+    decorativas.
+
+    Neste capítulo ficam os itens que não entram direto na Estrela: miniaturas, troféu, blocos
+    de estoque e o Patrick. Visite na ordem que quiser.
+  tasks:
+  - check: true
+  rewards:
+  - xp: 2
+- id: silex_coleta
+  title: Sílex
+  type: main
+  desc: |
+    Cascalho cede sílex de vez em quando. Quebre cascalho com a pá até juntar §e9 sílex§r. Ele
+    vira flecha, isqueiro e, aqui, bloco.
+  tasks:
+  - get: minecraft:flint x9
+  rewards:
+  - xp: 2
+  - item:
+    - minecraft:gravel x16
+- id: bloco_silex
+  title: Bloco de Sílex
+  deps: [silex_coleta]
+  desc: |
+    Nove sílex em quadrado formam o §eBloco de Sílex§r, uma pedra preta e lascada que compõe
+    famílias de bloco comprimido. Bonita para pisos e muros de aparência selvagem.
+  tasks:
+  - craft: allthemodiumlegacy:flint_block
+  rewards:
+  - xp: 3
+  - item:
+    - minecraft:flint x9
+- id: varas_para_bloco
+  title: Varas de Blaze
+  type: main
+  desc: |
+    Nove varas, um bloco. Antes, você precisa tê-las: ataque Blazes em fortalezas do Nether e
+    junte §e9 varas§r.
+  tasks:
+  - get: minecraft:blaze_rod x9
+  rewards:
+  - xp: 3
+  - item:
+    - minecraft:blaze_powder x8
+- id: bloco_vara
+  title: Bloco de Vara de Blaze
+  deps: [varas_para_bloco]
+  desc: |
+    Em quadrado, nove varas fazem o §eBloco de Vara Incandescente§r, um laranja quente e
+    decorativo. Ele também é peça de armazenamento e entra nas famílias comprimidas.
+  tasks:
+  - craft: allthemodiumlegacy:blaze_rod_block
+  rewards:
+  - xp: 4
+  - item:
+    - minecraft:blaze_rod x4
+- id: estrelas_para_bloco
+  title: Estrelas do Nether
+  type: optional
+  desc: |
+    Cada Wither derrotado solta uma estrela. Para o bloco de estoque você precisa de §e9§r, o
+    que significa várias lutas ou uma fazenda de Wither bem montada. Boa sorte!
+  tasks:
+  - get: minecraft:nether_star x9
+  rewards:
+  - xp: 10
+  - loot: raro
+- id: bloco_estrela_nether
+  title: Bloco de Estrela do Nether
+  type: optional
+  deps: [estrelas_para_bloco]
+  desc: |
+    Nove estrelas viram o §eBloco de Estrela do Nether§r, um cubo brilhante que armazena poder.
+    Ele alimenta as famílias de blocos comprimidos, muito usadas na Estrela ATM.
+  tasks:
+  - craft: allthemodiumlegacy:nether_star_block
+  rewards:
+  - xp: 10
+  - item:
+    - minecraft:diamond x4
+- id: perolas_para_bloco
+  title: Pérolas do Ender
+  type: optional
+  desc: |
+    Junte §e9 pérolas§r (de Endermen ou de fazendas de Endermen) para guardar em bloco.
+  tasks:
+  - get: minecraft:ender_pearl x9
+  rewards:
+  - xp: 3
+  - item:
+    - minecraft:ender_pearl x4
+- id: bloco_perola
+  title: Bloco de Pérola do Ender
+  type: optional
+  deps: [perolas_para_bloco]
+  desc: |
+    Nove pérolas, um §eBloco de Pérola do Ender§r. Sobra espaço no baú e ainda fica lindo, um
+    verde-água brilhante que lembra o Fim.
+  tasks:
+  - craft: allthemodiumlegacy:ender_pearl_block
+  rewards:
+  - xp: 4
+  - item:
+    - minecraft:ender_pearl x4
+- id: bloco_estrela_atm
+  title: Bloco de Estrela ATM
+  type: optional
+  icon: allthemodiumlegacy:atm_star_block
+  desc: |
+    Nove Estrelas ATM no Craft formam o §eBloco de Estrela ATM§r, o armazenamento do tesouro
+    final. Mais tarde, nove desses blocos viram o bloco 1x (81 estrelas). Você só precisa dele
+    se for realmente longe.
+
+    Para chegar até a estrela, o capítulo dela mostra o caminho.
+  tasks:
+  - get: allthemodiumlegacy:atm_star_block
+  rewards:
+  - xp: 30
+  - loot: lendario
+- id: estrela_fragmento
+  title: Fragmento de Estrela ATM
+  type: optional
+  icon: allthemodiumlegacy:atm_star_shard
+  deps: [bloco_estrela_atm]
+  desc: |
+    Uma Estrela ATM no Triturador rende §e5 fragmentos§r (sem número). Eles não substituem as
+    etapas numeradas e não voltam a formar a estrela de forma simples.
+
+    Para colecionadores e para quem quer um enfeite brilhante: um fragmento de cada.
+  tasks:
+  - get: allthemodiumlegacy:atm_star_shard x5
+  rewards:
+  - xp: 20
+  - loot: epico
+- id: alga_coleta
+  title: Alga
+  type: optional
+  desc: |
+    A §eAlga§r cresce em água. Plante, colha e leve para casa: ela é a base de uma receita
+    saborosa, barata e ótima para guardar.
+  tasks:
+  - get: allthemodiumlegacy:kelp x9
+  rewards:
+  - xp: 2
+  - item:
+    - minecraft:coal x8
+- id: alga_seca
+  title: Alga Seca
+  type: optional
+  deps: [alga_coleta]
+  desc: |
+    Asse a alga numa fornalha comum e ela vira §eAlga Seca§r, alimento barato e rápido de comer.
+    Junte §e9§r.
+  tasks:
+  - get: allthemodiumlegacy:dried_kelp x9
+  rewards:
+  - xp: 3
+  - item:
+    - minecraft:bread x4
+- id: bloco_alga
+  title: Bloco de Alga Seca
+  type: optional
+  deps: [alga_seca]
+  desc: |
+    Nove algas secas, um §eBloco de Alga Seca§r. Combustível de longa duração em algumas
+    máquinas, e parte da família comprimida. Desfazer o bloco devolve as nove.
+  tasks:
+  - craft: allthemodiumlegacy:dried_kelp_block
+  rewards:
+  - xp: 4
+  - item:
+    - minecraft:coal x16
+- id: mini_obsidiana
+  title: Obsidiana
+  type: main
+  desc: |
+    As três miniaturas de portais usam obsidiana. Junte §e12 blocos§r: são 5 para o Nether, 2
+    para o Fim e 4 para a Saída, mais folga.
+  tasks:
+  - get: minecraft:obsidian x12
+  rewards:
+  - xp: 4
+  - item:
+    - minecraft:obsidian x4
+- id: mini_ingredientes_nether
+  title: Para o Nether em Miniatura
+  deps: [mini_obsidiana]
+  desc: |
+    Reúna §e2 pós de Blaze§r, §e1 netherrack§r e §e1 Estrela do Nether§r. A estrela é a peça
+    cara; o resto é fácil.
+
+    Lembre: as miniaturas são decoração. Nenhuma abre caminho entre dimensões.
+  tasks:
+  - get: minecraft:blaze_powder x2
+  - get: minecraft:netherrack
+  - get: minecraft:nether_star
+  rewards:
+  - xp: 6
+- id: mini_nether
+  title: Portal do Nether em Miniatura
+  deps: [mini_ingredientes_nether]
+  desc: |
+    Cinco obsidianas, dois pós de blaze, um netherrack e a Estrela do Nether no centro (confira
+    o desenho no NEI). O resultado é um minúsculo portal, perfeito para a sala de troféus.
+  tasks:
+  - craft: allthemodiumlegacy:mini_nether
+  rewards:
+  - xp: 8
+  - item:
+    - minecraft:obsidian x4
+- id: mini_ingredientes_fim
+  title: Para o Fim em Miniatura
+  deps: [mini_obsidiana]
+  desc: |
+    Para o Fim e para a Saída juntos, reúna §e5 pedras do End§r, §e5 Olhos do Fim§r e §e2
+    Estrelas do Nether§r. Os olhos você faz com pó de blaze e pérola. As pedras vêm do Fim.
+  tasks:
+  - get: minecraft:end_stone x5
+  - get: minecraft:ender_eye x5
+  - get: minecraft:nether_star x2
+  rewards:
+  - xp: 6
+- id: mini_end
+  title: Portal do End em Miniatura
+  deps: [mini_ingredientes_fim]
+  desc: |
+    Três pedras do End, três olhos, duas obsidianas e a estrela formam um minúsculo portal do
+    Fim. Ele lembra a primeira vez que você viu os olhos encaixando.
+  tasks:
+  - craft: allthemodiumlegacy:mini_end
+  rewards:
+  - xp: 8
+  - item:
+    - minecraft:end_stone x8
+- id: mini_saida
+  title: Portal de Saída em Miniatura
+  deps: [mini_ingredientes_fim]
+  desc: |
+    Quatro obsidianas, duas pedras do End, dois olhos e a estrela: o §ePortal de Saída§r, a
+    versão decorativa do retorno do Fim. Faça um para fechar o conjunto.
+  tasks:
+  - craft: allthemodiumlegacy:mini_exit
+  rewards:
+  - xp: 8
+  - item:
+    - minecraft:end_stone x8
+- id: santuario_portais
+  title: Santuário dos Portais
+  type: optional
+  deps: [mini_nether, mini_end, mini_saida]
+  desc: |
+    Coloque os três lado a lado numa sala de pedra, iluminada por tochas. Sem poderes mágicos,
+    mas é um lembrete bonito da sua jornada vanilla.
+
+    Marque a quest quando estiver pronto.
+  tasks:
+  - check: true
+  rewards:
+  - xp: 6
+  - loot: incomum
+- id: bloco_ouro
+  title: Bloco de Ouro
+  type: main
+  desc: |
+    O troféu pede §e2 blocos de ouro§r (18 lingotes). O Nether é generoso com ouro, e piglins
+    pagam em barras.
+  tasks:
+  - get: minecraft:gold_block x2
+  rewards:
+  - xp: 4
+  - item:
+    - minecraft:gold_ingot x8
+- id: bloco_diamante
+  title: Bloco de Diamante
+  type: main
+  desc: |
+    Nove diamantes por bloco. O troféu pede §e1§r. Aproveite e junte outro para os moldes de
+    ferraria do Capítulo 2.
+  tasks:
+  - get: minecraft:diamond_block x2
+  rewards:
+  - xp: 5
+  - item:
+    - minecraft:diamond x2
+- id: bloco_esmeralda
+  title: Bloco de Esmeralda
+  type: main
+  desc: |
+    Esmeraldas vêm do comércio com aldeões e de vilas esquecidas. Junte §e1 bloco§r (9
+    esmeraldas).
+  tasks:
+  - get: minecraft:emerald_block
+  rewards:
+  - xp: 4
+  - item:
+    - minecraft:emerald x4
+- id: trofeu_ingotes
+  title: Três Lingotes de Allthemodium
+  type: main
+  desc: |
+    O troféu leva §e3 lingotes de Allthemodium§r. Esta é uma prova de que você já domina o
+    Capítulo 2.
+  tasks:
+  - get: allthemodiumlegacy:allthemodium_ingot x3
+  rewards:
+  - xp: 6
+  - item:
+    - allthemodiumlegacy:allthemodium_nugget x9
+- id: trofeu_atm
+  title: Troféu do All The Mods
+  type: milestone
+  deps: [bloco_ouro, bloco_diamante, bloco_esmeralda, trofeu_ingotes]
+  desc: |
+    Reúna ouro, diamante, esmeralda e três lingotes de Allthemodium na bancada e saia com o
+    §eTroféu do All The Mods§r. É uma peça de exposição que celebra a progressão.
+
+    Ponha no centro da sala e saiba que ninguém mais tem um igual (talvez).
+  tasks:
+  - craft: allthemodiumlegacy:trophy_atm
+  rewards:
+  - xp: 20
+  - loot: epico
+- id: la_magenta
+  title: Lã Magenta
+  type: optional
+  desc: |
+    Patrick Estrela começa por cores. Para a base, pegue §e4 lãs magenta§r (tinja com dente-de-
+    leão roxo ou corante magenta).
+  tasks:
+  - get: minecraft:wool:2 x4
+  rewards:
+  - xp: 3
+  - item:
+    - minecraft:dye:5 x4
+- id: la_rosa
+  title: Lã Rosa
+  type: optional
+  desc: |
+    O tom principal do corpo: §e2 lãs rosa§r. Corante rosa vem de rosas vermelhas e ossos.
+  tasks:
+  - get: minecraft:wool:6 x2
+  rewards:
+  - xp: 3
+  - item:
+    - minecraft:dye:9 x4
+- id: la_verde
+  title: Lã Verde
+  type: optional
+  desc: |
+    A bermuda do Patrick! §e2 lãs verde§r. O verde vem de cactos queimados na fornalha.
+  tasks:
+  - get: minecraft:wool:13 x2
+  rewards:
+  - xp: 3
+  - item:
+    - minecraft:dye:2 x4
+- id: la_lima
+  title: Lã Verde-Limão
+  type: optional
+  desc: |
+    Um toque de verde-claro no centro: §e1 lã verde-limão§r. Mistura de verde e branco.
+  tasks:
+  - get: minecraft:wool:5
+  rewards:
+  - xp: 3
+  - item:
+    - minecraft:dye:10 x4
+- id: patrick_star
+  title: Patrick Estrela
+  type: milestone
+  icon: allthemodiumlegacy:patrick_star
+  deps: [la_magenta, la_rosa, la_verde, la_lima]
+  desc: |
+    Nove lãs em padrão de estrela: magenta nos cantos, rosa nas laterais, verde no meio e lima
+    no centro. O resultado é o §ePatrick Estrela§r, uma relíquia de outro oceano.
+
+    Ela é também um componente de uma das etapas finais da Estrela ATM, por isso guarde com
+    carinho.
+  tasks:
+  - craft: allthemodiumlegacy:patrick_star
+  rewards:
+  - xp: 10
+  - loot: raro
+- id: patrick_decoracao
+  title: Casa do Patrick
+  type: optional
+  deps: [patrick_star]
+  desc: |
+    Decore uma casinha com uma pedra, uma porta e o Patrick num canto. Dizem que ele ainda dorme
+    com a bermuda.
+  tasks:
+  - check: true
+  rewards:
+  - xp: 4
+- id: dec_pedra_lisa
+  title: Pedra Ancestral Lisa
+  type: optional
+  desc: |
+    Funda a pedra ancestral numa fornalha e saem lisas. A decoração da casa da Mineração ganha
+    um piso fino.
+  tasks:
+  - get: allthemodiumlegacy:ancient_smooth_stone x16
+  rewards:
+  - xp: 3
+  - item:
+    - allthemodiumlegacy:ancient_stone x16
+- id: dec_tijolos
+  title: Tijolos de Pedra Ancestrais
+  type: optional
+  deps: [dec_pedra_lisa]
+  desc: |
+    Quatro pedras ancestrais em quadrado viram tijolos. São a base para muros, escadas e lajes.
+  tasks:
+  - get: allthemodiumlegacy:ancient_stone_bricks x16
+  rewards:
+  - xp: 3
+  - item:
+    - allthemodiumlegacy:ancient_stone_bricks x16
+- id: dec_cinzelados
+  title: Tijolos Cinzelados
+  type: optional
+  deps: [dec_tijolos]
+  desc: |
+    Dois degraus de laje em coluna criam os cinzelados, um detalhe elegante para colunas e
+    arcos.
+  tasks:
+  - get: allthemodiumlegacy:ancient_chiseled_stone_bricks x8
+  rewards:
+  - xp: 3
+  - item:
+    - allthemodiumlegacy:ancient_stone_bricks x16
+- id: dec_musgosos
+  title: Pedra Ancestral Musgosa
+  type: optional
+  deps: [dec_pedra_lisa]
+  desc: |
+    Cipós e pedra ancestral juntos formam o musgo. Perfeito para ruínas de aparência antiga.
+  tasks:
+  - get: allthemodiumlegacy:ancient_mossy_stone x16
+  rewards:
+  - xp: 3
+  - item:
+    - allthemodiumlegacy:ancient_stone x16
+- id: dec_estante_ancestral
+  title: Estante Ancestral
+  type: optional
+  desc: |
+    Madeira ancestral e livros formam a §eEstante Ancestral§r. Boa para bibliotecas e mesas de
+    encantamento.
+  tasks:
+  - get: allthemodiumlegacy:ancient_bookshelf x3
+  rewards:
+  - xp: 4
+  - item:
+    - minecraft:book x8
+- id: dec_estante_demoniaca
+  title: Estante Demoníaca
+  type: optional
+  desc: |
+    Versão avermelhada, de madeira demoníaca. Perfeita para a ala sombria da biblioteca.
+  tasks:
+  - get: allthemodiumlegacy:demonic_bookshelf x3
+  rewards:
+  - xp: 4
+  - item:
+    - minecraft:book x8
+- id: dec_estante_almas
+  title: Estante das Almas
+  type: optional
+  desc: |
+    Madeira das almas e livros: a mais fantasmagórica das três estantes.
+  tasks:
+  - get: allthemodiumlegacy:soul_bookshelf x3
+  rewards:
+  - xp: 4
+  - item:
+    - minecraft:book x8
+- id: dec_cerca_ancestral
+  title: Cerca Ancestral
+  type: optional
+  desc: |
+    Uma cerca resistente de madeira ancestral. Para os animais de O Outro ou só para a charme do
+    jardim.
+  tasks:
+  - get: allthemodiumlegacy:ancient_wooden_fence x16
+  rewards:
+  - xp: 3
+  - item:
+    - allthemodiumlegacy:ancient_planks x16

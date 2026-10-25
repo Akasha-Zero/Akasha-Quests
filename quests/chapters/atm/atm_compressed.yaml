@@ -1,0 +1,1054 @@
+chapter:
+  id: atm_compressed
+  title: All The Compressed
+  prefix: ATM
+  order: 915
+  icon: allthemodiumlegacy:netherrack_compressed
+  desc: |
+    §6Armazenar o mundo em um bloco.§r Nove blocos viram um 1x, nove 1x viram um 2x, e assim até
+    o 9x. A compressão só guarda: ela nunca multiplica. Este capítulo mostra os materiais que a
+    Estrela ATM pede, com a quantidade equivalente de cada degrau.
+quests:
+- id: como_comprimir
+  title: Como Comprimir
+  type: info
+  icon: minecraft:crafting_table
+  desc: |
+    Nove blocos iguais, na bancada, formam um bloco §e1x§r. Nove blocos 1x formam um §e2x§r, e
+    assim até o §e9x§r. Cada degrau pode ser desfeito em nove do nível anterior, em ordem.
+
+    Só aparecem famílias com fornecedor compatível no pack. Para conferir o nível, passe o mouse
+    sobre o bloco: o texto diz "Equivale a N blocos base".
+  tasks:
+  - check: true
+  rewards:
+  - xp: 3
+- id: netherrack_1x
+  title: Netherrack 1x
+  type: normal
+  icon: allthemodiumlegacy:netherrack_compressed
+  deps: [como_comprimir]
+  desc: |
+    O Nether inteiro cabe numa prateleira, se você tiver paciência.
+
+    §7Equivale a 9 blocos base.§r Junte nove unidades base e faça o primeiro §e1x§r na bancada.
+
+    Para recuperar, desfaça os níveis em ordem. Nada se perde.
+  tasks:
+  - get: allthemodiumlegacy:netherrack_compressed
+  rewards:
+  - xp: 3
+  - item:
+    - minecraft:netherrack x64
+- id: netherrack_3x
+  title: Netherrack 3x
+  type: normal
+  icon: allthemodiumlegacy:netherrack_compressed:2
+  deps: [netherrack_1x]
+  desc: |
+    Mais um degrau: Netherrack 3x.
+
+    §7Equivale a 729 blocos base.§r Encadeie nove blocos do nível anterior em cada passo até
+    chegar ao §e3x§r.
+
+    Para recuperar, desfaça os níveis em ordem. Nada se perde.
+  tasks:
+  - get: allthemodiumlegacy:netherrack_compressed:2
+  rewards:
+  - xp: 3
+  - item:
+    - minecraft:netherrack x64
+- id: netherrack_6x
+  title: Netherrack 6x
+  type: main
+  icon: allthemodiumlegacy:netherrack_compressed:5
+  deps: [netherrack_3x]
+  desc: |
+    Mais um degrau: Netherrack 6x.
+
+    §7Equivale a 531.441 blocos base.§r Encadeie nove blocos do nível anterior em cada passo até
+    chegar ao §e6x§r. A Semente Dimensional pede um bloco 6x.
+
+    Para recuperar, desfaça os níveis em ordem. Nada se perde.
+  tasks:
+  - get: allthemodiumlegacy:netherrack_compressed:5
+  rewards:
+  - xp: 6
+  - item:
+    - minecraft:netherrack x64
+- id: netherrack_9x
+  title: Netherrack 9x
+  type: normal
+  icon: allthemodiumlegacy:netherrack_compressed:8
+  deps: [netherrack_6x]
+  desc: |
+    O topo da pirâmide de Netherrack.
+
+    §7Equivale a 387.420.489 blocos base.§r Encadeie nove blocos do nível anterior em cada passo
+    até chegar ao §e9x§r.
+
+    Para recuperar, desfaça os níveis em ordem. Nada se perde.
+  tasks:
+  - get: allthemodiumlegacy:netherrack_compressed:8
+  rewards:
+  - xp: 6
+  - item:
+    - minecraft:netherrack x64
+- id: obsidian_1x
+  title: Obsidiana 1x
+  type: normal
+  icon: allthemodiumlegacy:obsidian_compressed
+  deps: [como_comprimir]
+  desc: |
+    Escura e densa, a obsidiana comprimida vira muralha de qualquer base.
+
+    §7Equivale a 9 blocos base.§r Junte nove unidades base e faça o primeiro §e1x§r na bancada.
+
+    Para recuperar, desfaça os níveis em ordem. Nada se perde.
+  tasks:
+  - get: allthemodiumlegacy:obsidian_compressed
+  rewards:
+  - xp: 3
+  - item:
+    - minecraft:obsidian x16
+- id: obsidian_2x
+  title: Obsidiana 2x
+  type: main
+  icon: allthemodiumlegacy:obsidian_compressed:1
+  deps: [obsidian_1x]
+  desc: |
+    Mais um degrau: Obsidiana 2x.
+
+    §7Equivale a 81 blocos base.§r Nove blocos 1x viram um §e2x§r na bancada. Dois blocos 2x
+    entram no Buraco Negro Pulsante.
+
+    Para recuperar, desfaça os níveis em ordem. Nada se perde.
+  tasks:
+  - get: allthemodiumlegacy:obsidian_compressed:1
+  rewards:
+  - xp: 3
+  - item:
+    - minecraft:obsidian x16
+- id: obsidian_5x
+  title: Obsidiana 5x
+  type: main
+  icon: allthemodiumlegacy:obsidian_compressed:4
+  deps: [obsidian_2x]
+  desc: |
+    Mais um degrau: Obsidiana 5x.
+
+    §7Equivale a 59.049 blocos base.§r Encadeie nove blocos do nível anterior em cada passo até
+    chegar ao §e5x§r. A Semente Dimensional usa um bloco 5x.
+
+    Para recuperar, desfaça os níveis em ordem. Nada se perde.
+  tasks:
+  - get: allthemodiumlegacy:obsidian_compressed:4
+  rewards:
+  - xp: 6
+  - item:
+    - minecraft:obsidian x16
+- id: obsidian_9x
+  title: Obsidiana 9x
+  type: normal
+  icon: allthemodiumlegacy:obsidian_compressed:8
+  deps: [obsidian_5x]
+  desc: |
+    O topo da pirâmide de Obsidiana.
+
+    §7Equivale a 387.420.489 blocos base.§r Encadeie nove blocos do nível anterior em cada passo
+    até chegar ao §e9x§r.
+
+    Para recuperar, desfaça os níveis em ordem. Nada se perde.
+  tasks:
+  - get: allthemodiumlegacy:obsidian_compressed:8
+  rewards:
+  - xp: 6
+  - item:
+    - minecraft:obsidian x16
+- id: end_stone_1x
+  title: Pedra do End 1x
+  type: main
+  icon: allthemodiumlegacy:end_stone_compressed
+  deps: [como_comprimir]
+  desc: |
+    Pálida e leve, a pedra do Fim ocupa um mundo inteiro quando você não guarda.
+
+    §7Equivale a 9 blocos base.§r Junte nove unidades base e faça o primeiro §e1x§r na bancada.
+    Dois blocos 1x entram na Alma de Dragão.
+
+    Para recuperar, desfaça os níveis em ordem. Nada se perde.
+  tasks:
+  - get: allthemodiumlegacy:end_stone_compressed
+  rewards:
+  - xp: 3
+  - item:
+    - minecraft:end_stone x32
+- id: end_stone_5x
+  title: Pedra do End 5x
+  type: main
+  icon: allthemodiumlegacy:end_stone_compressed:4
+  deps: [end_stone_1x]
+  desc: |
+    Mais um degrau: Pedra do End 5x.
+
+    §7Equivale a 59.049 blocos base.§r Encadeie nove blocos do nível anterior em cada passo até
+    chegar ao §e5x§r. A Semente Dimensional pede um bloco 5x.
+
+    Para recuperar, desfaça os níveis em ordem. Nada se perde.
+  tasks:
+  - get: allthemodiumlegacy:end_stone_compressed:4
+  rewards:
+  - xp: 6
+  - item:
+    - minecraft:end_stone x32
+- id: end_stone_9x
+  title: Pedra do End 9x
+  type: normal
+  icon: allthemodiumlegacy:end_stone_compressed:8
+  deps: [end_stone_5x]
+  desc: |
+    O topo da pirâmide de Pedra do End.
+
+    §7Equivale a 387.420.489 blocos base.§r Encadeie nove blocos do nível anterior em cada passo
+    até chegar ao §e9x§r.
+
+    Para recuperar, desfaça os níveis em ordem. Nada se perde.
+  tasks:
+  - get: allthemodiumlegacy:end_stone_compressed:8
+  rewards:
+  - xp: 6
+  - item:
+    - minecraft:end_stone x32
+- id: emerald_block_1x
+  title: Bloco de Esmeralda 1x
+  type: normal
+  icon: allthemodiumlegacy:emerald_block_compressed
+  deps: [como_comprimir]
+  desc: |
+    Moeda das vilas e, aqui, verde puro empilhado.
+
+    §7Equivale a 9 blocos base.§r Junte nove unidades base e faça o primeiro §e1x§r na bancada.
+
+    Para recuperar, desfaça os níveis em ordem. Nada se perde.
+  tasks:
+  - get: allthemodiumlegacy:emerald_block_compressed
+  rewards:
+  - xp: 3
+  - item:
+    - minecraft:emerald x4
+- id: emerald_block_4x
+  title: Bloco de Esmeralda 4x
+  type: main
+  icon: allthemodiumlegacy:emerald_block_compressed:3
+  deps: [emerald_block_1x]
+  desc: |
+    Mais um degrau: Bloco de Esmeralda 4x.
+
+    §7Equivale a 6.561 blocos base.§r Encadeie nove blocos do nível anterior em cada passo até
+    chegar ao §e4x§r. A Semente Dimensional pede um bloco 4x.
+
+    Para recuperar, desfaça os níveis em ordem. Nada se perde.
+  tasks:
+  - get: allthemodiumlegacy:emerald_block_compressed:3
+  rewards:
+  - xp: 3
+  - item:
+    - minecraft:emerald x4
+- id: emerald_block_9x
+  title: Bloco de Esmeralda 9x
+  type: normal
+  icon: allthemodiumlegacy:emerald_block_compressed:8
+  deps: [emerald_block_4x]
+  desc: |
+    O topo da pirâmide de Bloco de Esmeralda.
+
+    §7Equivale a 387.420.489 blocos base.§r Encadeie nove blocos do nível anterior em cada passo
+    até chegar ao §e9x§r.
+
+    Para recuperar, desfaça os níveis em ordem. Nada se perde.
+  tasks:
+  - get: allthemodiumlegacy:emerald_block_compressed:8
+  rewards:
+  - xp: 6
+  - item:
+    - minecraft:emerald x4
+- id: diamond_block_1x
+  title: Bloco de Diamante 1x
+  type: main
+  icon: allthemodiumlegacy:diamond_block_compressed
+  deps: [como_comprimir]
+  desc: |
+    Azul brilhante, caro e firme, é também a base dos moldes de ferraria.
+
+    §7Equivale a 9 blocos base.§r Junte nove unidades base e faça o primeiro §e1x§r na bancada.
+    Dois blocos 1x entram no Dispositivo de Probabilidade Improvável.
+
+    Para recuperar, desfaça os níveis em ordem. Nada se perde.
+  tasks:
+  - get: allthemodiumlegacy:diamond_block_compressed
+  rewards:
+  - xp: 3
+  - item:
+    - minecraft:diamond x4
+- id: diamond_block_4x
+  title: Bloco de Diamante 4x
+  type: main
+  icon: allthemodiumlegacy:diamond_block_compressed:3
+  deps: [diamond_block_1x]
+  desc: |
+    Mais um degrau: Bloco de Diamante 4x.
+
+    §7Equivale a 6.561 blocos base.§r Encadeie nove blocos do nível anterior em cada passo até
+    chegar ao §e4x§r. A Semente Dimensional pede um bloco 4x.
+
+    Para recuperar, desfaça os níveis em ordem. Nada se perde.
+  tasks:
+  - get: allthemodiumlegacy:diamond_block_compressed:3
+  rewards:
+  - xp: 3
+  - item:
+    - minecraft:diamond x4
+- id: diamond_block_9x
+  title: Bloco de Diamante 9x
+  type: normal
+  icon: allthemodiumlegacy:diamond_block_compressed:8
+  deps: [diamond_block_4x]
+  desc: |
+    O topo da pirâmide de Bloco de Diamante.
+
+    §7Equivale a 387.420.489 blocos base.§r Encadeie nove blocos do nível anterior em cada passo
+    até chegar ao §e9x§r.
+
+    Para recuperar, desfaça os níveis em ordem. Nada se perde.
+  tasks:
+  - get: allthemodiumlegacy:diamond_block_compressed:8
+  rewards:
+  - xp: 6
+  - item:
+    - minecraft:diamond x4
+- id: coal_block_1x
+  title: Bloco de Carvão 1x
+  type: normal
+  icon: allthemodiumlegacy:coal_block_compressed
+  deps: [como_comprimir]
+  desc: |
+    Combustível de sobra, guardado em formato compacto.
+
+    §7Equivale a 9 blocos base.§r Junte nove unidades base e faça o primeiro §e1x§r na bancada.
+
+    Para recuperar, desfaça os níveis em ordem. Nada se perde.
+  tasks:
+  - get: allthemodiumlegacy:coal_block_compressed
+  rewards:
+  - xp: 3
+  - item:
+    - minecraft:coal x32
+- id: coal_block_2x
+  title: Bloco de Carvão 2x
+  type: main
+  icon: allthemodiumlegacy:coal_block_compressed:1
+  deps: [coal_block_1x]
+  desc: |
+    Mais um degrau: Bloco de Carvão 2x.
+
+    §7Equivale a 81 blocos base.§r Nove blocos 1x viram um §e2x§r na bancada. O Combustível do
+    Filósofo usa dois blocos 2x.
+
+    Para recuperar, desfaça os níveis em ordem. Nada se perde.
+  tasks:
+  - get: allthemodiumlegacy:coal_block_compressed:1
+  rewards:
+  - xp: 3
+  - item:
+    - minecraft:coal x32
+- id: coal_block_9x
+  title: Bloco de Carvão 9x
+  type: normal
+  icon: allthemodiumlegacy:coal_block_compressed:8
+  deps: [coal_block_2x]
+  desc: |
+    O topo da pirâmide de Bloco de Carvão.
+
+    §7Equivale a 387.420.489 blocos base.§r Encadeie nove blocos do nível anterior em cada passo
+    até chegar ao §e9x§r.
+
+    Para recuperar, desfaça os níveis em ordem. Nada se perde.
+  tasks:
+  - get: allthemodiumlegacy:coal_block_compressed:8
+  rewards:
+  - xp: 6
+  - item:
+    - minecraft:coal x32
+- id: blaze_rod_block_1x
+  title: Bloco de Vara Incandescente 1x
+  type: main
+  icon: allthemodiumlegacy:blaze_rod_block_compressed
+  deps: [como_comprimir]
+  desc: |
+    Calor engarrafado: varas de blaze viram blocos para armazenar.
+
+    §7Equivale a 9 blocos base.§r Junte nove unidades base e faça o primeiro §e1x§r na bancada.
+    O Combustível do Filósofo pede dois blocos 1x.
+
+    Para recuperar, desfaça os níveis em ordem. Nada se perde.
+  tasks:
+  - get: allthemodiumlegacy:blaze_rod_block_compressed
+  rewards:
+  - xp: 3
+  - item:
+    - minecraft:blaze_rod x8
+- id: blaze_rod_block_5x
+  title: Bloco de Vara Incandescente 5x
+  type: normal
+  icon: allthemodiumlegacy:blaze_rod_block_compressed:4
+  deps: [blaze_rod_block_1x]
+  desc: |
+    Mais um degrau: Bloco de Vara Incandescente 5x.
+
+    §7Equivale a 59.049 blocos base.§r Encadeie nove blocos do nível anterior em cada passo até
+    chegar ao §e5x§r.
+
+    Para recuperar, desfaça os níveis em ordem. Nada se perde.
+  tasks:
+  - get: allthemodiumlegacy:blaze_rod_block_compressed:4
+  rewards:
+  - xp: 6
+  - item:
+    - minecraft:blaze_rod x8
+- id: blaze_rod_block_9x
+  title: Bloco de Vara Incandescente 9x
+  type: normal
+  icon: allthemodiumlegacy:blaze_rod_block_compressed:8
+  deps: [blaze_rod_block_5x]
+  desc: |
+    O topo da pirâmide de Bloco de Vara Incandescente.
+
+    §7Equivale a 387.420.489 blocos base.§r Encadeie nove blocos do nível anterior em cada passo
+    até chegar ao §e9x§r.
+
+    Para recuperar, desfaça os níveis em ordem. Nada se perde.
+  tasks:
+  - get: allthemodiumlegacy:blaze_rod_block_compressed:8
+  rewards:
+  - xp: 6
+  - item:
+    - minecraft:blaze_rod x8
+- id: nether_star_block_1x
+  title: Bloco de Estrela do Nether 1x
+  type: main
+  icon: allthemodiumlegacy:nether_star_block_compressed
+  deps: [como_comprimir]
+  desc: |
+    Cada bloco base guarda nove estrelas do Nether, e o comprimido guarda muito mais.
+
+    §7Equivale a 9 blocos base.§r Junte nove unidades base e faça o primeiro §e1x§r na bancada.
+    A Bússola do Wither e o Buraco Negro Pulsante pedem blocos 1x.
+
+    Para recuperar, desfaça os níveis em ordem. Nada se perde.
+  tasks:
+  - get: allthemodiumlegacy:nether_star_block_compressed
+  rewards:
+  - xp: 3
+  - item:
+    - minecraft:blaze_powder x16
+- id: nether_star_block_3x
+  title: Bloco de Estrela do Nether 3x
+  type: main
+  icon: allthemodiumlegacy:nether_star_block_compressed:2
+  deps: [nether_star_block_1x]
+  desc: |
+    Mais um degrau: Bloco de Estrela do Nether 3x.
+
+    §7Equivale a 729 blocos base.§r Encadeie nove blocos do nível anterior em cada passo até
+    chegar ao §e3x§r. Etapas da Estrela usam blocos 3x.
+
+    Para recuperar, desfaça os níveis em ordem. Nada se perde.
+  tasks:
+  - get: allthemodiumlegacy:nether_star_block_compressed:2
+  rewards:
+  - xp: 3
+  - item:
+    - minecraft:blaze_powder x16
+- id: nether_star_block_4x
+  title: Bloco de Estrela do Nether 4x
+  type: main
+  icon: allthemodiumlegacy:nether_star_block_compressed:3
+  deps: [nether_star_block_3x]
+  desc: |
+    Mais um degrau: Bloco de Estrela do Nether 4x.
+
+    §7Equivale a 6.561 blocos base.§r Nove blocos 3x viram um §e4x§r na bancada. A segunda etapa
+    da Estrela usa também um bloco 4x.
+
+    Para recuperar, desfaça os níveis em ordem. Nada se perde.
+  tasks:
+  - get: allthemodiumlegacy:nether_star_block_compressed:3
+  rewards:
+  - xp: 3
+  - item:
+    - minecraft:blaze_powder x16
+- id: nether_star_block_9x
+  title: Bloco de Estrela do Nether 9x
+  type: normal
+  icon: allthemodiumlegacy:nether_star_block_compressed:8
+  deps: [nether_star_block_4x]
+  desc: |
+    O topo da pirâmide de Bloco de Estrela do Nether.
+
+    §7Equivale a 387.420.489 blocos base.§r Encadeie nove blocos do nível anterior em cada passo
+    até chegar ao §e9x§r.
+
+    Para recuperar, desfaça os níveis em ordem. Nada se perde.
+  tasks:
+  - get: allthemodiumlegacy:nether_star_block_compressed:8
+  rewards:
+  - xp: 6
+  - item:
+    - minecraft:blaze_powder x16
+- id: unobtainium_allthemodium_alloy_block_1x
+  title: Bloco de Liga Unobtainium-Allthemodium 1x
+  type: main
+  icon: allthemodiumlegacy:unobtainium_allthemodium_alloy_block_compressed
+  deps: [como_comprimir]
+  desc: |
+    A primeira etapa da Estrela vive deste material.
+
+    §7Equivale a 9 blocos base.§r Junte nove unidades base e faça o primeiro §e1x§r na bancada.
+    A primeira etapa da Estrela pede três blocos 1x.
+
+    Para recuperar, desfaça os níveis em ordem. Nada se perde.
+  tasks:
+  - get: allthemodiumlegacy:unobtainium_allthemodium_alloy_block_compressed
+  rewards:
+  - xp: 3
+  - item:
+    - allthemodiumlegacy:allthemodium_nugget x9
+- id: unobtainium_allthemodium_alloy_block_2x
+  title: Bloco de Liga Unobtainium-Allthemodium 2x
+  type: normal
+  icon: allthemodiumlegacy:unobtainium_allthemodium_alloy_block_compressed:1
+  deps: [unobtainium_allthemodium_alloy_block_1x]
+  desc: |
+    Mais um degrau: Bloco de Liga Unobtainium-Allthemodium 2x.
+
+    §7Equivale a 81 blocos base.§r Nove blocos 1x viram um §e2x§r na bancada.
+
+    Para recuperar, desfaça os níveis em ordem. Nada se perde.
+  tasks:
+  - get: allthemodiumlegacy:unobtainium_allthemodium_alloy_block_compressed:1
+  rewards:
+  - xp: 3
+  - item:
+    - allthemodiumlegacy:allthemodium_nugget x9
+- id: unobtainium_allthemodium_alloy_block_5x
+  title: Bloco de Liga Unobtainium-Allthemodium 5x
+  type: normal
+  icon: allthemodiumlegacy:unobtainium_allthemodium_alloy_block_compressed:4
+  deps: [unobtainium_allthemodium_alloy_block_2x]
+  desc: |
+    Mais um degrau: Bloco de Liga Unobtainium-Allthemodium 5x.
+
+    §7Equivale a 59.049 blocos base.§r Encadeie nove blocos do nível anterior em cada passo até
+    chegar ao §e5x§r.
+
+    Para recuperar, desfaça os níveis em ordem. Nada se perde.
+  tasks:
+  - get: allthemodiumlegacy:unobtainium_allthemodium_alloy_block_compressed:4
+  rewards:
+  - xp: 6
+  - item:
+    - allthemodiumlegacy:allthemodium_nugget x9
+- id: unobtainium_allthemodium_alloy_block_9x
+  title: Bloco de Liga Unobtainium-Allthemodium 9x
+  type: normal
+  icon: allthemodiumlegacy:unobtainium_allthemodium_alloy_block_compressed:8
+  deps: [unobtainium_allthemodium_alloy_block_5x]
+  desc: |
+    O topo da pirâmide de Bloco de Liga Unobtainium-Allthemodium.
+
+    §7Equivale a 387.420.489 blocos base.§r Encadeie nove blocos do nível anterior em cada passo
+    até chegar ao §e9x§r.
+
+    Para recuperar, desfaça os níveis em ordem. Nada se perde.
+  tasks:
+  - get: allthemodiumlegacy:unobtainium_allthemodium_alloy_block_compressed:8
+  rewards:
+  - xp: 6
+  - item:
+    - allthemodiumlegacy:allthemodium_nugget x9
+- id: unobtainium_vibranium_alloy_block_1x
+  title: Bloco de Liga Unobtainium-Vibranium 1x
+  type: normal
+  icon: allthemodiumlegacy:unobtainium_vibranium_alloy_block_compressed
+  deps: [como_comprimir]
+  desc: |
+    Duas etapas da Estrela usam o bloco base desta liga.
+
+    §7Equivale a 9 blocos base.§r Junte nove unidades base e faça o primeiro §e1x§r na bancada.
+
+    Para recuperar, desfaça os níveis em ordem. Nada se perde.
+  tasks:
+  - get: allthemodiumlegacy:unobtainium_vibranium_alloy_block_compressed
+  rewards:
+  - xp: 3
+  - item:
+    - allthemodiumlegacy:vibranium_nugget x9
+- id: unobtainium_vibranium_alloy_block_4x
+  title: Bloco de Liga Unobtainium-Vibranium 4x
+  type: normal
+  icon: allthemodiumlegacy:unobtainium_vibranium_alloy_block_compressed:3
+  deps: [unobtainium_vibranium_alloy_block_1x]
+  desc: |
+    Mais um degrau: Bloco de Liga Unobtainium-Vibranium 4x.
+
+    §7Equivale a 6.561 blocos base.§r Encadeie nove blocos do nível anterior em cada passo até
+    chegar ao §e4x§r.
+
+    Para recuperar, desfaça os níveis em ordem. Nada se perde.
+  tasks:
+  - get: allthemodiumlegacy:unobtainium_vibranium_alloy_block_compressed:3
+  rewards:
+  - xp: 3
+  - item:
+    - allthemodiumlegacy:vibranium_nugget x9
+- id: unobtainium_vibranium_alloy_block_9x
+  title: Bloco de Liga Unobtainium-Vibranium 9x
+  type: normal
+  icon: allthemodiumlegacy:unobtainium_vibranium_alloy_block_compressed:8
+  deps: [unobtainium_vibranium_alloy_block_4x]
+  desc: |
+    O topo da pirâmide de Bloco de Liga Unobtainium-Vibranium.
+
+    §7Equivale a 387.420.489 blocos base.§r Encadeie nove blocos do nível anterior em cada passo
+    até chegar ao §e9x§r.
+
+    Para recuperar, desfaça os níveis em ordem. Nada se perde.
+  tasks:
+  - get: allthemodiumlegacy:unobtainium_vibranium_alloy_block_compressed:8
+  rewards:
+  - xp: 6
+  - item:
+    - allthemodiumlegacy:vibranium_nugget x9
+- id: piglich_heart_block_1x
+  title: Bloco de Coração de Piglich 1x
+  type: normal
+  icon: allthemodiumlegacy:piglich_heart_block_compressed
+  deps: [como_comprimir]
+  desc: |
+    Os corações do chefe guardados em pilhas cada vez mais densas.
+
+    §7Equivale a 9 blocos base.§r Junte nove unidades base e faça o primeiro §e1x§r na bancada.
+
+    Para recuperar, desfaça os níveis em ordem. Nada se perde.
+  tasks:
+  - get: allthemodiumlegacy:piglich_heart_block_compressed
+  rewards:
+  - xp: 3
+  - item:
+    - minecraft:gold_ingot x16
+- id: piglich_heart_block_3x
+  title: Bloco de Coração de Piglich 3x
+  type: main
+  icon: allthemodiumlegacy:piglich_heart_block_compressed:2
+  deps: [piglich_heart_block_1x]
+  desc: |
+    Mais um degrau: Bloco de Coração de Piglich 3x.
+
+    §7Equivale a 729 blocos base.§r Encadeie nove blocos do nível anterior em cada passo até
+    chegar ao §e3x§r. Reserve blocos de coração para a Alma de Dragão, o Estilhaço do
+    Esquecimento e o AllTheCatalystium.
+
+    Para recuperar, desfaça os níveis em ordem. Nada se perde.
+  tasks:
+  - get: allthemodiumlegacy:piglich_heart_block_compressed:2
+  rewards:
+  - xp: 3
+  - item:
+    - minecraft:gold_ingot x16
+- id: piglich_heart_block_9x
+  title: Bloco de Coração de Piglich 9x
+  type: normal
+  icon: allthemodiumlegacy:piglich_heart_block_compressed:8
+  deps: [piglich_heart_block_3x]
+  desc: |
+    O topo da pirâmide de Bloco de Coração de Piglich.
+
+    §7Equivale a 387.420.489 blocos base.§r Encadeie nove blocos do nível anterior em cada passo
+    até chegar ao §e9x§r.
+
+    Para recuperar, desfaça os níveis em ordem. Nada se perde.
+  tasks:
+  - get: allthemodiumlegacy:piglich_heart_block_compressed:8
+  rewards:
+  - xp: 6
+  - item:
+    - minecraft:gold_ingot x16
+- id: allthemodium_block_1x
+  title: Bloco de Allthemodium 1x
+  type: normal
+  icon: allthemodiumlegacy:allthemodium_block_compressed
+  deps: [como_comprimir]
+  desc: |
+    O metal dourado guardado em escala monstruosa.
+
+    §7Equivale a 9 blocos base.§r Junte nove unidades base e faça o primeiro §e1x§r na bancada.
+
+    Para recuperar, desfaça os níveis em ordem. Nada se perde.
+  tasks:
+  - get: allthemodiumlegacy:allthemodium_block_compressed
+  rewards:
+  - xp: 3
+  - item:
+    - allthemodiumlegacy:allthemodium_nugget x9
+- id: allthemodium_block_4x
+  title: Bloco de Allthemodium 4x
+  type: normal
+  icon: allthemodiumlegacy:allthemodium_block_compressed:3
+  deps: [allthemodium_block_1x]
+  desc: |
+    Mais um degrau: Bloco de Allthemodium 4x.
+
+    §7Equivale a 6.561 blocos base.§r Encadeie nove blocos do nível anterior em cada passo até
+    chegar ao §e4x§r.
+
+    Para recuperar, desfaça os níveis em ordem. Nada se perde.
+  tasks:
+  - get: allthemodiumlegacy:allthemodium_block_compressed:3
+  rewards:
+  - xp: 3
+  - item:
+    - allthemodiumlegacy:allthemodium_nugget x9
+- id: allthemodium_block_9x
+  title: Bloco de Allthemodium 9x
+  type: normal
+  icon: allthemodiumlegacy:allthemodium_block_compressed:8
+  deps: [allthemodium_block_4x]
+  desc: |
+    O topo da pirâmide de Bloco de Allthemodium.
+
+    §7Equivale a 387.420.489 blocos base.§r Encadeie nove blocos do nível anterior em cada passo
+    até chegar ao §e9x§r.
+
+    Para recuperar, desfaça os níveis em ordem. Nada se perde.
+  tasks:
+  - get: allthemodiumlegacy:allthemodium_block_compressed:8
+  rewards:
+  - xp: 6
+  - item:
+    - allthemodiumlegacy:allthemodium_nugget x9
+- id: vibranium_block_1x
+  title: Bloco de Vibranium 1x
+  type: normal
+  icon: allthemodiumlegacy:vibranium_block_compressed
+  deps: [como_comprimir]
+  desc: |
+    O azul de Vibranium em blocos que somem de vista.
+
+    §7Equivale a 9 blocos base.§r Junte nove unidades base e faça o primeiro §e1x§r na bancada.
+
+    Para recuperar, desfaça os níveis em ordem. Nada se perde.
+  tasks:
+  - get: allthemodiumlegacy:vibranium_block_compressed
+  rewards:
+  - xp: 3
+  - item:
+    - allthemodiumlegacy:vibranium_nugget x9
+- id: vibranium_block_4x
+  title: Bloco de Vibranium 4x
+  type: normal
+  icon: allthemodiumlegacy:vibranium_block_compressed:3
+  deps: [vibranium_block_1x]
+  desc: |
+    Mais um degrau: Bloco de Vibranium 4x.
+
+    §7Equivale a 6.561 blocos base.§r Encadeie nove blocos do nível anterior em cada passo até
+    chegar ao §e4x§r.
+
+    Para recuperar, desfaça os níveis em ordem. Nada se perde.
+  tasks:
+  - get: allthemodiumlegacy:vibranium_block_compressed:3
+  rewards:
+  - xp: 3
+  - item:
+    - allthemodiumlegacy:vibranium_nugget x9
+- id: vibranium_block_9x
+  title: Bloco de Vibranium 9x
+  type: normal
+  icon: allthemodiumlegacy:vibranium_block_compressed:8
+  deps: [vibranium_block_4x]
+  desc: |
+    O topo da pirâmide de Bloco de Vibranium.
+
+    §7Equivale a 387.420.489 blocos base.§r Encadeie nove blocos do nível anterior em cada passo
+    até chegar ao §e9x§r.
+
+    Para recuperar, desfaça os níveis em ordem. Nada se perde.
+  tasks:
+  - get: allthemodiumlegacy:vibranium_block_compressed:8
+  rewards:
+  - xp: 6
+  - item:
+    - allthemodiumlegacy:vibranium_nugget x9
+- id: unobtainium_block_1x
+  title: Bloco de Unobtainium 1x
+  type: normal
+  icon: allthemodiumlegacy:unobtainium_block_compressed
+  deps: [como_comprimir]
+  desc: |
+    O roxo do Unobtainium compactado é um troféu por si só.
+
+    §7Equivale a 9 blocos base.§r Junte nove unidades base e faça o primeiro §e1x§r na bancada.
+
+    Para recuperar, desfaça os níveis em ordem. Nada se perde.
+  tasks:
+  - get: allthemodiumlegacy:unobtainium_block_compressed
+  rewards:
+  - xp: 3
+  - item:
+    - allthemodiumlegacy:unobtainium_nugget x9
+- id: unobtainium_block_4x
+  title: Bloco de Unobtainium 4x
+  type: normal
+  icon: allthemodiumlegacy:unobtainium_block_compressed:3
+  deps: [unobtainium_block_1x]
+  desc: |
+    Mais um degrau: Bloco de Unobtainium 4x.
+
+    §7Equivale a 6.561 blocos base.§r Encadeie nove blocos do nível anterior em cada passo até
+    chegar ao §e4x§r.
+
+    Para recuperar, desfaça os níveis em ordem. Nada se perde.
+  tasks:
+  - get: allthemodiumlegacy:unobtainium_block_compressed:3
+  rewards:
+  - xp: 3
+  - item:
+    - allthemodiumlegacy:unobtainium_nugget x9
+- id: unobtainium_block_9x
+  title: Bloco de Unobtainium 9x
+  type: normal
+  icon: allthemodiumlegacy:unobtainium_block_compressed:8
+  deps: [unobtainium_block_4x]
+  desc: |
+    O topo da pirâmide de Bloco de Unobtainium.
+
+    §7Equivale a 387.420.489 blocos base.§r Encadeie nove blocos do nível anterior em cada passo
+    até chegar ao §e9x§r.
+
+    Para recuperar, desfaça os níveis em ordem. Nada se perde.
+  tasks:
+  - get: allthemodiumlegacy:unobtainium_block_compressed:8
+  rewards:
+  - xp: 6
+  - item:
+    - allthemodiumlegacy:unobtainium_nugget x9
+- id: ender_pearl_block_1x
+  title: Bloco de Pérola do Ender 1x
+  type: normal
+  icon: allthemodiumlegacy:ender_pearl_block_compressed
+  deps: [como_comprimir]
+  desc: |
+    Pérolas guardadas em blocos: ótimo para quem tem uma fazenda de Endermen.
+
+    §7Equivale a 9 blocos base.§r Junte nove unidades base e faça o primeiro §e1x§r na bancada.
+
+    Para recuperar, desfaça os níveis em ordem. Nada se perde.
+  tasks:
+  - get: allthemodiumlegacy:ender_pearl_block_compressed
+  rewards:
+  - xp: 3
+  - item:
+    - minecraft:ender_pearl x8
+- id: ender_pearl_block_9x
+  title: Bloco de Pérola do Ender 9x
+  type: normal
+  icon: allthemodiumlegacy:ender_pearl_block_compressed:8
+  deps: [ender_pearl_block_1x]
+  desc: |
+    O topo da pirâmide de Bloco de Pérola do Ender.
+
+    §7Equivale a 387.420.489 blocos base.§r Encadeie nove blocos do nível anterior em cada passo
+    até chegar ao §e9x§r.
+
+    Para recuperar, desfaça os níveis em ordem. Nada se perde.
+  tasks:
+  - get: allthemodiumlegacy:ender_pearl_block_compressed:8
+  rewards:
+  - xp: 6
+  - item:
+    - minecraft:ender_pearl x8
+- id: raw_allthemodium_block_1x
+  title: Bloco de Allthemodium Bruto 1x
+  type: normal
+  icon: allthemodiumlegacy:raw_allthemodium_block_compressed
+  deps: [como_comprimir]
+  desc: |
+    Minério bruto estocado: a Mineração rende mais do que cabe no baú.
+
+    §7Equivale a 9 blocos base.§r Junte nove unidades base e faça o primeiro §e1x§r na bancada.
+
+    Para recuperar, desfaça os níveis em ordem. Nada se perde.
+  tasks:
+  - get: allthemodiumlegacy:raw_allthemodium_block_compressed
+  rewards:
+  - xp: 3
+  - item:
+    - minecraft:cobblestone x64
+- id: raw_allthemodium_block_9x
+  title: Bloco de Allthemodium Bruto 9x
+  type: normal
+  icon: allthemodiumlegacy:raw_allthemodium_block_compressed:8
+  deps: [raw_allthemodium_block_1x]
+  desc: |
+    O topo da pirâmide de Bloco de Allthemodium Bruto.
+
+    §7Equivale a 387.420.489 blocos base.§r Encadeie nove blocos do nível anterior em cada passo
+    até chegar ao §e9x§r.
+
+    Para recuperar, desfaça os níveis em ordem. Nada se perde.
+  tasks:
+  - get: allthemodiumlegacy:raw_allthemodium_block_compressed:8
+  rewards:
+  - xp: 6
+  - item:
+    - minecraft:cobblestone x64
+- id: raw_vibranium_block_1x
+  title: Bloco de Vibranium Bruto 1x
+  type: normal
+  icon: allthemodiumlegacy:raw_vibranium_block_compressed
+  deps: [como_comprimir]
+  desc: |
+    O bruto de Vibranium de O Outro, guardado até a hora de processar.
+
+    §7Equivale a 9 blocos base.§r Junte nove unidades base e faça o primeiro §e1x§r na bancada.
+
+    Para recuperar, desfaça os níveis em ordem. Nada se perde.
+  tasks:
+  - get: allthemodiumlegacy:raw_vibranium_block_compressed
+  rewards:
+  - xp: 3
+  - item:
+    - minecraft:cobblestone x64
+- id: raw_vibranium_block_9x
+  title: Bloco de Vibranium Bruto 9x
+  type: normal
+  icon: allthemodiumlegacy:raw_vibranium_block_compressed:8
+  deps: [raw_vibranium_block_1x]
+  desc: |
+    O topo da pirâmide de Bloco de Vibranium Bruto.
+
+    §7Equivale a 387.420.489 blocos base.§r Encadeie nove blocos do nível anterior em cada passo
+    até chegar ao §e9x§r.
+
+    Para recuperar, desfaça os níveis em ordem. Nada se perde.
+  tasks:
+  - get: allthemodiumlegacy:raw_vibranium_block_compressed:8
+  rewards:
+  - xp: 6
+  - item:
+    - minecraft:cobblestone x64
+- id: raw_unobtainium_block_1x
+  title: Bloco de Unobtainium Bruto 1x
+  type: normal
+  icon: allthemodiumlegacy:raw_unobtainium_block_compressed
+  deps: [como_comprimir]
+  desc: |
+    O bruto mais raro do pack. Estocar é um luxo.
+
+    §7Equivale a 9 blocos base.§r Junte nove unidades base e faça o primeiro §e1x§r na bancada.
+
+    Para recuperar, desfaça os níveis em ordem. Nada se perde.
+  tasks:
+  - get: allthemodiumlegacy:raw_unobtainium_block_compressed
+  rewards:
+  - xp: 3
+  - item:
+    - minecraft:cobblestone x64
+- id: raw_unobtainium_block_9x
+  title: Bloco de Unobtainium Bruto 9x
+  type: normal
+  icon: allthemodiumlegacy:raw_unobtainium_block_compressed:8
+  deps: [raw_unobtainium_block_1x]
+  desc: |
+    O topo da pirâmide de Bloco de Unobtainium Bruto.
+
+    §7Equivale a 387.420.489 blocos base.§r Encadeie nove blocos do nível anterior em cada passo
+    até chegar ao §e9x§r.
+
+    Para recuperar, desfaça os níveis em ordem. Nada se perde.
+  tasks:
+  - get: allthemodiumlegacy:raw_unobtainium_block_compressed:8
+  rewards:
+  - xp: 6
+  - item:
+    - minecraft:cobblestone x64
+- id: vibranium_allthemodium_alloy_block_1x
+  title: Bloco de Liga Vibranium-Allthemodium 1x
+  type: normal
+  icon: allthemodiumlegacy:vibranium_allthemodium_alloy_block_compressed
+  deps: [como_comprimir]
+  desc: |
+    A terceira liga, que fica de fora da Estrela, mas merece seu espaço.
+
+    §7Equivale a 9 blocos base.§r Junte nove unidades base e faça o primeiro §e1x§r na bancada.
+
+    Para recuperar, desfaça os níveis em ordem. Nada se perde.
+  tasks:
+  - get: allthemodiumlegacy:vibranium_allthemodium_alloy_block_compressed
+  rewards:
+  - xp: 3
+  - item:
+    - allthemodiumlegacy:vibranium_nugget x9
+- id: atm_star_block_1x
+  title: Bloco de Estrela ATM 1x
+  type: normal
+  icon: allthemodiumlegacy:atm_star_block_compressed
+  deps: [como_comprimir]
+  desc: |
+    Nove Estrelas ATM formam o bloco base; o comprimido guarda a série inteira.
+
+    §7Equivale a 9 blocos base.§r Junte nove unidades base e faça o primeiro §e1x§r na bancada.
+
+    Para recuperar, desfaça os níveis em ordem. Nada se perde.
+  tasks:
+  - get: allthemodiumlegacy:atm_star_block_compressed
+  rewards:
+  - xp: 3
+  - item:
+    - minecraft:experience_bottle x16
+- id: atm_star_block_5x
+  title: Bloco de Estrela ATM 5x
+  type: normal
+  icon: allthemodiumlegacy:atm_star_block_compressed:4
+  deps: [atm_star_block_1x]
+  desc: |
+    Mais um degrau: Bloco de Estrela ATM 5x.
+
+    §7Equivale a 59.049 blocos base.§r Encadeie nove blocos do nível anterior em cada passo até
+    chegar ao §e5x§r.
+
+    Para recuperar, desfaça os níveis em ordem. Nada se perde.
+  tasks:
+  - get: allthemodiumlegacy:atm_star_block_compressed:4
+  rewards:
+  - xp: 6
+  - item:
+    - minecraft:experience_bottle x16
+- id: atm_star_block_9x
+  title: Bloco de Estrela ATM 9x
+  type: milestone
+  icon: allthemodiumlegacy:atm_star_block_compressed:8
+  deps: [atm_star_block_5x]
+  desc: |
+    O topo da pirâmide de Bloco de Estrela ATM.
+
+    §7Equivale a 387.420.489 blocos base.§r Encadeie nove blocos do nível anterior em cada passo
+    até chegar ao §e9x§r.
+
+    Para recuperar, desfaça os níveis em ordem. Nada se perde.
+  tasks:
+  - get: allthemodiumlegacy:atm_star_block_compressed:8
+  rewards:
+  - xp: 6
+  - item:
+    - minecraft:experience_bottle x16

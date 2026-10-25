@@ -1,0 +1,295 @@
+chapter:
+  id: aedf3_armaduras_futuro
+  title: Armaduras do Futuro
+  prefix: AEDF3
+  order: 804.688
+  icon: IC2:itemArmorQuantumChestplate
+  desc: |
+    §6Memórias de outros heróis, página cinco.§r Nas lendas, havia um momento em que o herói parava de ser "um jogador de ferro" e virava uma máquina de guerra recarregável: capacete que enxerga no escuro, peitoral com super-resistência, botas que pulam três andares. Neste pack não existe o GraviSuite, então a escada sobe pelas armaduras §eNano§r e §eQuantum§r do IC2 e do Industrial Upgrade.
+quests:
+- id: bateria_recarregavel
+  title: Baterias Recarregáveis
+  type: main
+  deps_hidden: ['aedf3_energia_solar:solar_milestone']
+  desc: |
+    Tudo de elétrico precisa de bateria. As §eBaterias Avançadas§r guardam bastante energia e são reutilizáveis: carregue na BatBox ou MFE e use quando precisar. Faça três para circular entre ferramentas e armaduras. Nenhum herói saía de casa sem pelo menos uma de reserva.
+  tasks:
+  - {get: 'IC2:itemAdvBat:* x3'}
+  rewards:
+  - {xp: 5}
+  - choice: ['IC2:itemBatCrystal:*', 'IC2:itemCable x8']
+- id: traje_hazmat
+  title: Traje Hazmat
+  type: normal
+  deps: [bateria_recarregavel]
+  desc: |
+    Antes de qualquer armadura de futuro, a segurança: o §eTraje Hazmat§r protege contra lava, fogo e radiação. É feito de borracha, lã e vidro. Não custa caro e salva vidas em reatores, minas profundas e cavernas de lava.
+  tasks:
+  - get: ['IC2:itemArmorHazmatHelmet', 'IC2:itemArmorHazmatChestplate', 'IC2:itemArmorHazmatLeggings',
+      'IC2:itemArmorRubBoots']
+  rewards:
+  - {xp: 3}
+  - choice: ['IC2:itemCable x8', 'minecraft:iron_ingot x8']
+- id: colete_reforcado
+  title: Colete Reforçado
+  type: normal
+  deps: [traje_hazmat]
+  desc: |
+    O §eColete de Liga§r é um peitoral reforçado do IC2, bem mais resistente que ferro. É um primeiro passo, sem energia, para quem ainda não chegou na Nano. Os heróis lendários usavam esse colete como ponte entre o ferro e o futuro.
+  tasks:
+  - {get: 'IC2:itemArmorAlloyChestplate'}
+  rewards:
+  - {xp: 3}
+  - choice: ['IC2:itemPartAlloy x4', 'minecraft:iron_ingot x8']
+- id: mochila_de_baterias
+  title: Mochila de Baterias
+  type: normal
+  deps: [colete_reforcado]
+  desc: |
+    A §eMochila de Baterias§r carrega itens do inventário enquanto você anda e serve como reserva para ferramentas elétricas. Use no peito (lugar da armadura) e tenha energia portátil o dia inteiro. Perfeito para expedições longas.
+  tasks:
+  - {get: 'IC2:itemArmorBatpack:*'}
+  rewards:
+  - {xp: 3}
+  - choice: ['IC2:itemAdvBat:*', 'IC2:itemCable x8']
+- id: jetpack_eletrico
+  title: Jetpack Elétrico
+  type: main
+  deps: [mochila_de_baterias]
+  desc: |
+    Voar! O §eJetpack Elétrico§r te deixa subir ao céu por alguns minutos, gastando energia. Segure o botão de salto e aproveite a paisagem de cima. Outra lição dos heróis lendários: voar é divertido, mas lembre da bateria para voltar.
+
+    §cCuidado:§r bateria vazia no ar significa queda livre.
+  tasks:
+  - {get: 'IC2:itemArmorJetpackElectric:*'}
+  rewards:
+  - {xp: 5}
+  - choice: ['IC2:itemBatCrystal:*', 'IC2:itemCable:3 x8']
+- id: oculos_noturnos
+  title: Óculos de Visão Noturna
+  type: normal
+  deps: [jetpack_eletrico]
+  desc: |
+    Cavernas escuras viram dia claro com os §eÓculos de Visão Noturna§r. Ligue com o atalho certo, gaste um pouquinho de energia e veja tudo em verde. Útil em minas e no Nether, mas também para evitar monstros escondidos.
+  tasks:
+  - {get: 'IC2:itemNightvisionGoggles:*'}
+  rewards:
+  - {xp: 3}
+  - choice: ['IC2:itemAdvBat:*', 'minecraft:glowstone x8']
+- id: nano_capacete
+  title: Capacete NanoSuit
+  type: main
+  deps: [oculos_noturnos]
+  desc: |
+    A armadura que deu fama à Era do Futuro! O §eCapacete Nano§r tem boa proteção, respira embaixo d'água e tem visão noturna embutida. Precisa de fibra de carbono, circuitos e cristal de energia. Comece pela cabeça, que é a peça mais barata.
+  tasks:
+  - {get: 'IC2:itemArmorNanoHelmet:*'}
+  rewards:
+  - {xp: 5}
+  - choice: ['IC2:itemPartCarbonPlate x2', 'IC2:itemBatCrystal:*']
+- id: nano_peitoral
+  title: Peitoral NanoSuit
+  type: main
+  deps: [nano_capacete]
+  desc: |
+    O peito é a peça que mais protege. O §ePeitoral Nano§r absorve boa parte do dano quando carregado. É caro (cristais, carbono, circuitos avançados) e valioso. Junte os materiais com calma e confie na máquina de compressão para a fibra.
+  tasks:
+  - {get: 'IC2:itemArmorNanoChestplate:*'}
+  rewards:
+  - {xp: 5}
+  - choice: ['IC2:itemPartCarbonPlate x2', 'IC2:itemBatCrystal:*']
+- id: nano_calcas
+  title: Calças NanoSuit
+  type: main
+  deps: [nano_peitoral]
+  desc: |
+    As calças aumentam a velocidade em terra e dão proteção sólida. As §eCalças Nano§r pedem fibra de carbono e cristal de energia. A recompensa é enorme: sentir-se leve, rápido e blindado. Prepare o carregador!
+  tasks:
+  - {get: 'IC2:itemArmorNanoLegs:*'}
+  rewards:
+  - {xp: 5}
+  - choice: ['IC2:itemPartCarbonPlate x2', 'IC2:itemBatCrystal:*']
+- id: nano_botas
+  title: Botas NanoSuit
+  type: main
+  deps: [nano_calcas]
+  desc: |
+    As §eBotas Nano§r absorvem impacto de quedas altas e deixam saltar mais longe. Perfeito para quem usa jetpack e para o dia em que a bateria acaba. A quarta peça do conjunto!
+  tasks:
+  - {get: 'IC2:itemArmorNanoBoots:*'}
+  rewards:
+  - {xp: 5}
+  - choice: ['IC2:itemPartCarbonPlate x2', 'IC2:itemBatCrystal:*']
+- id: nano_completa
+  title: Traje Nano Completo
+  type: main
+  deps: [nano_botas]
+  desc: |
+    O conjunto completo! Capacete, peitoral, calças e botas Nano formam a armadura mais famosa das memórias da Era do Futuro. Vista tudo e carregue na BatBox. Você está andando pelo mundo como um herói de verdade.
+  tasks:
+  - get: ['IC2:itemArmorNanoHelmet:*', 'IC2:itemArmorNanoChestplate:*', 'IC2:itemArmorNanoLegs:*', 'IC2:itemArmorNanoBoots:*']
+  rewards:
+  - {xp: 5}
+  - choice: ['IC2:itemBatLamaCrystal:*', 'minecraft:diamond x4']
+- id: sabre_nano
+  title: Sabre Nano
+  type: main
+  deps: [nano_completa]
+  desc: |
+    Uma espada de energia! O §eSabre Nano§r causa dano gigante quando ligado, mas consome carga bem rápido. Acenda antes do combate e desligue depois. Perfeito para chefes e multidões, mas só se a bateria aguentar.
+  tasks:
+  - {get: 'IC2:itemNanoSaber:*'}
+  rewards:
+  - {xp: 5}
+  - choice: ['IC2:itemBatLamaCrystal:*', 'minecraft:diamond x4']
+- id: laser_de_mineracao
+  title: Laser de Mineração
+  type: normal
+  deps: [sabre_nano]
+  desc: |
+    O §eLaser de Mineração§r fura túneis em linha reta, rápido e sem esforço. Também é arma de longo alcance. Use com cuidado, pois o disparo atravessa blocos e pode destruir coisas importantes atrás da parede.
+  tasks:
+  - {get: 'IC2:itemToolMiningLaser:*'}
+  rewards:
+  - {xp: 3}
+  - choice: ['IC2:itemBatLamaCrystal:*', 'minecraft:redstone x32']
+- id: minerio_de_iridio
+  title: Minério de Irídio
+  type: main
+  deps: [laser_de_mineracao]
+  desc: |
+    O metal mais raro do IC2! O §eMinério de Irídio§r só aparece em profundidades baixas, em veios pequenos. Muitos heróis perdiam dias procurando. Use um scanner de minérios para achar rápido. Junte quatro, que é o suficiente para a primeira placa e o primeiro sonho.
+  tasks:
+  - {get: 'IC2:itemOreIridium x4'}
+  rewards:
+  - {xp: 5}
+  - choice: ['IC2:itemPartIridium', 'minecraft:diamond x4']
+- id: placa_iridio
+  title: Placa de Irídio
+  type: main
+  deps: [minerio_de_iridio]
+  desc: |
+    A §ePlaca Reforçada de Irídio§r é o ingrediente-chave da armadura Quantum. Feita com irídio, carbono e outros materiais, ela é dura e cara. Duas são suficientes para o conjunto inicial. Guarde com carinho!
+  tasks:
+  - {get: 'IC2:itemPartIridium x2'}
+  rewards:
+  - {xp: 5}
+  - choice: ['IC2:itemBatLamaCrystal:*', 'IC2:itemPartCarbonPlate x4']
+- id: broca_iridio
+  title: Broca de Irídio
+  type: optional
+  deps: [placa_iridio]
+  desc: |
+    A ferramenta definitiva de mineração do IC2. A §eBroca de Irídio§r quebra qualquer bloco em instantes e é um sonho para quem trabalha em minas grandes. Gasta bastante energia, então prepare um bom estoque.
+  tasks:
+  - {get: 'IC2:itemToolIridiumDrill:*'}
+  rewards:
+  - {xp: 3}
+  - choice: ['IC2:itemBatLamaCrystal:*', 'minecraft:diamond x4']
+- id: quantum_capacete
+  title: Capacete Quantum
+  type: main
+  deps: [broca_iridio]
+  desc: |
+    O capacete mais poderoso do IC2. Protege de quase tudo (gases, sufocamento, fome!) e ainda tem visão noturna embutida. Faça com a Nano, irídio e circuitos. Cada peça Quantum é uma pequena vitória.
+  tasks:
+  - {get: 'IC2:itemArmorQuantumHelmet:*'}
+  rewards:
+  - {xp: 5}
+  - choice: ['IC2:itemBatLamaCrystal:*', 'IC2:itemPartIridium']
+- id: quantum_peitoral
+  title: Peitoral Quantum
+  type: main
+  deps: [quantum_capacete]
+  desc: |
+    O §ePeitoral Quantum§r é quase invulnerável. Consome pouca energia por dano e permite fazer um jetpack acoplado ao corpo. É a peça que dá ao Herói aquela sensação de "ninguém me segura".
+  tasks:
+  - {get: 'IC2:itemArmorQuantumChestplate:*'}
+  rewards:
+  - {xp: 5}
+  - choice: ['IC2:itemBatLamaCrystal:*', 'IC2:itemPartIridium']
+- id: quantum_calcas
+  title: Calças Quantum
+  type: main
+  deps: [quantum_peitoral]
+  desc: |
+    As §eCalças Quantum§r dão velocidade extra e proteção quase total. Você corre muito mais rápido e acompanha os mobs sem esforço. Combine com as botas para a experiência completa.
+  tasks:
+  - {get: 'IC2:itemArmorQuantumLegs:*'}
+  rewards:
+  - {xp: 5}
+  - choice: ['IC2:itemBatLamaCrystal:*', 'IC2:itemPartIridium']
+- id: quantum_botas
+  title: Botas Quantum
+  type: main
+  deps: [quantum_calcas]
+  desc: |
+    As §eBotas Quantum§r deixam saltar até o topo de edifícios e eliminam o dano de queda. Quando a energia acaba, o corpo sente. Cuide das baterias e aproveite o céu.
+  tasks:
+  - {get: 'IC2:itemArmorQuantumBoots:*'}
+  rewards:
+  - {xp: 5}
+  - choice: ['IC2:itemBatLamaCrystal:*', 'IC2:itemPartIridium']
+- id: quantum_completa
+  title: Traje Quantum Completo
+  type: main
+  deps: [quantum_botas]
+  desc: |
+    O auge do IC2! Capacete, peitoral, calças e botas Quantum. Você corre, pula e aguenta quase tudo. Os heróis da Era do Futuro ficavam horas fazendo testes só para admirar o brilho. Vá em frente, Herói, você merece.
+  tasks:
+  - get: ['IC2:itemArmorQuantumHelmet:*', 'IC2:itemArmorQuantumChestplate:*', 'IC2:itemArmorQuantumLegs:*',
+      'IC2:itemArmorQuantumBoots:*']
+  rewards:
+  - {xp: 5}
+  - choice: ['IC2:itemBatLamaCrystal:* x2', 'minecraft:diamond x8']
+- id: nano_iu
+  title: Nano Reforçada do IU
+  type: main
+  deps: [quantum_completa]
+  desc: |
+    O Industrial Upgrade traz sua própria linha de armaduras Nano, mais fortes que a do IC2. Comece pelo capacete e peitoral. Confira no NEI os materiais exatos e prepare minérios do mod.
+  tasks:
+  - get: ['industrialupgrade:itemArmorNanoHelmet:*', 'industrialupgrade:itemArmorNanoChestplate:*']
+  rewards:
+  - {xp: 5}
+  - choice: ['industrialupgrade:upgradekitPanelIU', 'IC2:itemBatLamaCrystal:*']
+- id: quantum_iu
+  title: Sabre Quântico
+  type: optional
+  deps: [nano_iu]
+  desc: |
+    O §eSabre Quântico§r do IU é o irmão mais forte do Nano. Dano absurdo, consumo alto, brilho elegante. Um sonho para qualquer duelista e uma prova de que o futuro é afiado.
+  tasks:
+  - {get: 'industrialupgrade:itemNanoSaber1:*'}
+  rewards:
+  - {xp: 3}
+  - choice: ['IC2:itemBatLamaCrystal:* x2', 'minecraft:diamond x8']
+- id: jetpack_avancado_iu
+  title: Jetpack Avançado
+  type: optional
+  deps: [quantum_iu]
+  desc: |
+    O §eJetpack Avançado§r do IU voa mais rápido e dura mais tempo. Combine com a armadura Quantum para viajar pelos céus. Os heróis lendários ganhavam rios de tempo com isso, e você também.
+  tasks:
+  - {get: 'industrialupgrade:advjetpack:*'}
+  rewards:
+  - {xp: 3}
+  - choice: ['IC2:itemBatLamaCrystal:*', 'minecraft:diamond x4']
+- id: armaduras_milestone
+  title: O Futuro Vestido
+  type: milestone
+  deps: [jetpack_avancado_iu]
+  desc: |
+    Quantum completa, sabre nas costas, baterias cheias e céu azul. É assim que os heróis da Era do Futuro se lembravam do próprio auge: blindados, rápidos e sorrindo. O que parecia lenda agora está no seu peito.
+
+    Mas armadura sem sabedoria é só metal bonito. As próximas páginas ensinam algo bem diferente: magia, golens e livros antigos. Pegue a varinha, Herói. É hora de ser §eaprendiz de mago§r.
+  tasks:
+  - get: ['IC2:itemArmorQuantumHelmet:*', 'IC2:itemArmorQuantumChestplate:*', 'IC2:itemArmorQuantumLegs:*',
+      'IC2:itemArmorQuantumBoots:*', 'IC2:itemNanoSaber:*']
+  rewards:
+  - {xp: 25}
+  - kit:
+      name: Kit do Futuro
+      items: ['IC2:itemBatLamaCrystal:* x2', 'IC2:itemToolMiningLaser:*', 'minecraft:diamond x8', 'minecraft:golden_apple
+          x2', 'minecraft:experience_bottle x16']
+  - {loot: raro}

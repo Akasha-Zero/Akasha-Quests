@@ -1,0 +1,1339 @@
+chapter:
+  id: wizardry
+  title: "Electroblob's Wizardry"
+  prefix: ""
+  order: 565
+  icon: wizardry:master_wand
+  desc: |
+    §dO Volume dos Feiticeiros Errantes.§r Cristais de mana, varinhas de Novato a Mestre,
+    140 livros de feitiço em sete elementos, torres de magos e armaduras que se carregam com
+    magia. (Electroblob's Wizardry 1.1.6)
+
+quests:
+  # ======================================================================
+  # FASE 0 — CRISTAIS DE MANA
+  # ======================================================================
+  - id: volume_feiticeiros
+    title: "O Volume dos Feiticeiros"
+    type: info
+    icon: wizardry:wizard_handbook
+    desc: |
+      Que delícia de Volume, Herói: nada de multiblocos gigantes nem árvores de talento. Aqui a
+      magia é simples — §eache livros de feitiço, prenda-os numa varinha e lance§r.
+
+      O ciclo é este:
+      §e1.§r Cristais Mágicos (a mana) → Varinha Mágica → Bancada Arcana.
+      §e2.§r Livros de feitiço (baús, monstros, magos) → vincule à varinha.
+      §e3.§r Tomos de Arcana sobem a varinha de tier: §7Novato → §aAprendiz → §9Avançado →
+      §dMestre§r. Cada tier lança feitiços até o seu nível.
+      §e4.§r Armaduras de mago, upgrades e as torres dos magos.
+
+      §aDica:§r o §eManual do Mago§r (The Wizard's Handbook) explica tudo dentro do jogo.
+    tasks:
+      - check
+    rewards:
+      - xp: 1
+
+  - id: minerio_cristal
+    title: "Cristal Mágico"
+    type: main
+    deps: [volume_feiticeiros]
+    icon: wizardry:crystal_ore
+    desc: |
+      A mana deste Volume não mora em você: ela se cristaliza nas rochas. O §eMinério de
+      Cristal§r gera no Mundo Normal em veios pequenos, mais ou menos entre §eY 5 e 30§r, e solta
+      §eCristais Mágicos§r.
+
+      Cada cristal vale §e100 de mana§r. Junte §e16§r: eles fazem a varinha, a bancada e o
+      primeiro livro de feitiço.
+    tasks:
+      - get: wizardry:magic_crystal x16
+    rewards:
+      - xp: 4
+      - choice: [minecraft:iron_pickaxe, minecraft:torch x32, minecraft:bread x12]
+
+  - id: flor_cristal
+    title: "Flor de Cristal"
+    type: normal
+    deps: [minerio_cristal]
+    icon: wizardry:crystal_flower
+    desc: |
+      Já viu uma florzinha brilhando no mato? É uma §eFlor de Cristal§r, fonte natural de mana
+      na superfície. Na bancada, uma flor vira §e2 Cristais Mágicos§r. Colha §e4§r.
+    tasks:
+      - get: wizardry:crystal_flower x4
+    rewards:
+      - xp: 2
+      - item: minecraft:dye:15 x16
+
+  - id: bloco_cristal
+    title: "Bloco de Cristal"
+    type: optional
+    deps: [minerio_cristal]
+    icon: wizardry:crystal_block
+    desc: |
+      Nove cristais = um §eBloco de Cristal§r. Bonito, compacto e brilhante — o seu cofre de mana.
+    tasks:
+      - get: wizardry:crystal_block
+    rewards:
+      - loot: comum
+
+  - id: manual_mago
+    title: "O Manual do Mago"
+    type: normal
+    deps: [minerio_cristal]
+    icon: wizardry:wizard_handbook
+    desc: |
+      Livro + Cristal Mágico = §eThe Wizard's Handbook§r. Se perder, é só fazer outro.
+
+      Ele explica mana, varinhas, tiers, elementos, armaduras e torres — com as receitas. Leia
+      com carinho: o autor (Electroblob) caprichou.
+    tasks:
+      - get: wizardry:wizard_handbook
+    rewards:
+      - xp: 2
+      - item: minecraft:book x2
+
+  # ======================================================================
+  # FASE 1 — VARINHA E BANCADA
+  # ======================================================================
+  - id: varinha_magica
+    title: "A Varinha Mágica"
+    type: main
+    deps: [minerio_cristal]
+    icon: wizardry:magic_wand
+    desc: |
+      Uma pepita de ouro, um graveto e um Cristal Mágico em diagonal: a §eVarinha Mágica§r de
+      §7Novato§r. Ela guarda até §e700 de mana§r e lança feitiços de Novato.
+
+      Segurando a varinha, aparece no canto da tela o feitiço selecionado e a barra de recarga.
+      Troque de feitiço com as teclas do mod ou §eagachado + roda do mouse§r.
+    tasks:
+      - get: wizardry:magic_wand
+    rewards:
+      - xp: 4
+      - choice: [wizardry:magic_crystal x6, minecraft:gold_nugget x9, minecraft:stick x16]
+
+  - id: bancada_arcana
+    title: "A Bancada Arcana"
+    type: main
+    deps: [varinha_magica]
+    icon: wizardry:arcane_workbench
+    desc: |
+      Três pedras, um bloco de lápis-lazúli, dois Cristais Mágicos, duas pepitas de ouro e um
+      tapete roxo: a §eBancada Arcana§r.
+
+      Com a varinha no slot central você pode:
+      §e• Vincular§r feitiços (livros nos slots ao redor, até 5 por varinha).
+      §e• Carregar§r a varinha (cristais no slot superior esquerdo).
+      §e• Melhorar§r a varinha (Tomo de Arcana ou upgrade no slot inferior esquerdo).
+      Depois, aperte §eAplicar§r.
+    tasks:
+      - get: wizardry:arcane_workbench
+    rewards:
+      - xp: 4
+      - choice: [minecraft:lapis_block x2, wizardry:magic_crystal x8, minecraft:carpet:10 x2]
+
+  - id: missil_magico
+    title: "Míssil Mágico"
+    type: main
+    deps: [bancada_arcana]
+    icon: wizardry:spell_book:1
+    desc: |
+      Todo feiticeiro começa por aqui. Um livro rodeado por quatro Cristais Mágicos = o livro de
+      §eMagic Missile§r, o único que dá para fabricar.
+
+      Coloque a varinha no centro da Bancada Arcana, o livro num slot ao redor e aperte
+      Aplicar. Pronto: você lança um projétil mágico (5 de mana). Simples, barato e útil a vida
+      inteira!
+    tasks:
+      - get: wizardry:spell_book:1
+    rewards:
+      - xp: 4
+      - choice: [wizardry:magic_crystal x8, minecraft:arrow x32, minecraft:iron_sword]
+
+  - id: carregar_varinha
+    title: "Recarregando a Varinha"
+    type: info
+    deps: [missil_magico]
+    icon: wizardry:magic_crystal
+    desc: |
+      Cada cristal no slot de carga vale §e100 de mana§r, e a varinha só pega números inteiros
+      de cristais (se faltarem 30, os outros 70 se perdem). Deixe um estoque de cristais na
+      bancada: ela só usa o que precisa.
+
+      Feitiços custam mana de acordo com a força e a duração; os contínuos (raios, escudo,
+      levitação) gastam enquanto você segura o botão.
+    tasks:
+      - check
+    rewards:
+      - xp: 1
+
+  - id: frasco_mana
+    title: "Frasco de Mana"
+    type: normal
+    deps: [carregar_varinha]
+    icon: wizardry:mana_flask
+    desc: |
+      Mana engarrafada para a estrada! Um frasco de vidro rodeado por 8 cristais = §eFrasco de
+      Mana§r (700 de mana). Fabrique-o junto com a varinha (ou uma peça de armadura de mago)
+      para recarregá-la — o frasco é consumido e um pouco de mana se perde no engarrafamento.
+    tasks:
+      - get: wizardry:mana_flask
+    rewards:
+      - xp: 2
+      - item: minecraft:glass_bottle x4
+
+  - id: pergaminho_branco
+    title: "Pergaminho em Branco"
+    type: normal
+    deps: [bancada_arcana]
+    icon: wizardry:blank_scroll
+    desc: |
+      Papel + linha = §ePergaminho em Branco§r. Na Bancada Arcana você grava nele um feitiço que
+      §ejá conhece§r, pagando em cristais o custo de mana. O pergaminho lança o feitiço §euma
+      vez§r e some — perfeito para aquela magia rara que não merece um slot na varinha.
+    tasks:
+      - get: wizardry:blank_scroll x4
+    rewards:
+      - xp: 2
+      - item: minecraft:paper x8
+
+  - id: pergaminho_gravado
+    title: "Um Pergaminho Gravado"
+    type: optional
+    deps: [pergaminho_branco]
+    icon: wizardry:scroll:1
+    desc: |
+      Grave (ou encontre) um pergaminho de qualquer feitiço. Eles também aparecem em baús de
+      masmorra e nas lojas dos magos.
+    tasks:
+      - get: wizardry:scroll:*
+    rewards:
+      - loot: comum
+
+  - id: modo_descoberta
+    title: "Runas Desconhecidas"
+    type: info
+    deps: [missil_magico]
+    icon: wizardry:identification_scroll
+    desc: |
+      No pack, o §emodo descoberta§r está ligado: livros e pergaminhos de feitiços que você nunca
+      lançou aparecem com §erunas ilegíveis§r. Para descobrir o que são, você pode lançá-los
+      (arriscado!) ou usar um §ePergaminho de Identificação§r, que revela o primeiro livro ou
+      pergaminho desconhecido da sua barra.
+    tasks:
+      - check
+    rewards:
+      - xp: 1
+
+  - id: pergaminho_identificacao
+    title: "Pergaminho de Identificação"
+    type: normal
+    deps: [modo_descoberta]
+    icon: wizardry:identification_scroll
+    desc: |
+      Encontrado em baús ou comprado de magos, o §ePergaminho de Identificação§r revela um
+      feitiço desconhecido sem riscos. Guarde alguns para os livros de Mestre!
+    tasks:
+      - get: wizardry:identification_scroll
+    rewards:
+      - xp: 2
+      - item: wizardry:magic_crystal x6
+
+  - id: elementos
+    title: "Os Sete Elementos"
+    type: info
+    deps: [missil_magico]
+    icon: wizardry:basic_fire_wand
+    desc: |
+      Todo feitiço pertence a um elemento:
+
+      §4Fogo§r — queimar, lava, explosões (pouco efeito em criaturas do Nether).
+      §bGelo§r — lentidão e congelamento; ótimo contra criaturas de fogo.
+      §3Raio§r — tempestades, ataques em vários alvos e teleguiados (cuidado com creepers!).
+      §5Necromancia§r — trevas, invocações de mortos-vivos, controle de mentes.
+      §2Terra§r — plantas, animais, vento, veneno.
+      §aFeitiçaria§r — força, luz, gravidade, teletransporte, armas conjuradas.
+      §eCura§r — proteção e regeneração (a luz sagrada fere mortos-vivos).
+
+      Varinhas e armaduras elementais deixam os feitiços do seu elemento mais fortes ou baratos.
+    tasks:
+      - check
+    rewards:
+      - xp: 1
+
+  # ======================================================================
+  # FASE 2 — LIVROS DE FEITIÇO POR ELEMENTO
+  # ======================================================================
+  - id: livro_fogo
+    title: "Grimório de Fogo"
+    type: normal
+    deps: [elementos]
+    icon: wizardry:spell_book:2
+    desc: |
+      Encontre (ou compre) qualquer livro de feitiço de §4Fogo§r: Ignição, Bola de Fogo, Raio de
+      Chamas, Bomba de Fogo, Selo de Fogo, Anel de Fogo, Detonar, Pele de Fogo, Meteoro...
+
+      §cFogo põe fogo em tudo, inclusive na sua base.§r
+    tasks:
+      - one_of: [wizardry:spell_book:2, wizardry:spell_book:13, wizardry:spell_book:14, wizardry:spell_book:15, wizardry:spell_book:16, wizardry:spell_book:17, wizardry:spell_book:48, wizardry:spell_book:49, wizardry:spell_book:50, wizardry:spell_book:51, wizardry:spell_book:52, wizardry:spell_book:53, wizardry:spell_book:91, wizardry:spell_book:92, wizardry:spell_book:93, wizardry:spell_book:111, wizardry:spell_book:114, wizardry:spell_book:124, wizardry:spell_book:125]
+    rewards:
+      - xp: 3
+      - item: wizardry:magic_crystal x6
+
+  - id: livro_gelo
+    title: "Grimório de Gelo"
+    type: normal
+    deps: [elementos]
+    icon: wizardry:spell_book:3
+    desc: |
+      Qualquer livro de §bGelo§r: Congelar, Bola de Neve, Raio Gélido, Estilhaço de Gelo,
+      Estátua de Gelo, Nevasca, Machado de Gelo, Era do Gelo, Gigante de Gelo...
+
+      §aDica:§r Congelar transforma água em gelo — pontes instantâneas!
+    tasks:
+      - one_of: [wizardry:spell_book:3, wizardry:spell_book:4, wizardry:spell_book:18, wizardry:spell_book:19, wizardry:spell_book:20, wizardry:spell_book:21, wizardry:spell_book:22, wizardry:spell_book:54, wizardry:spell_book:55, wizardry:spell_book:56, wizardry:spell_book:57, wizardry:spell_book:58, wizardry:spell_book:94, wizardry:spell_book:95, wizardry:spell_book:96, wizardry:spell_book:126, wizardry:spell_book:127, wizardry:spell_book:128, wizardry:spell_book:136]
+    rewards:
+      - xp: 3
+      - item: wizardry:magic_crystal x6
+
+  - id: livro_raio
+    title: "Grimório do Raio"
+    type: normal
+    deps: [elementos]
+    icon: wizardry:spell_book:5
+    desc: |
+      Qualquer livro de §3Raio§r: Arco Elétrico, Trovão, Raio Contínuo, Bomba de Faíscas,
+      Faísca Teleguiada, Raio em Cadeia, Invocar Tempo, Martelo de Raio, Tempestade...
+
+      §cRaio carrega creepers.§r Você foi avisado.
+    tasks:
+      - one_of: [wizardry:spell_book:5, wizardry:spell_book:6, wizardry:spell_book:23, wizardry:spell_book:24, wizardry:spell_book:25, wizardry:spell_book:26, wizardry:spell_book:27, wizardry:spell_book:59, wizardry:spell_book:60, wizardry:spell_book:61, wizardry:spell_book:62, wizardry:spell_book:63, wizardry:spell_book:64, wizardry:spell_book:97, wizardry:spell_book:98, wizardry:spell_book:129, wizardry:spell_book:137, wizardry:spell_book:138]
+    rewards:
+      - xp: 3
+      - item: wizardry:magic_crystal x6
+
+  - id: livro_necromancia
+    title: "Grimório de Necromancia"
+    type: normal
+    deps: [elementos]
+    icon: wizardry:spell_book:7
+    desc: |
+      Qualquer livro de §5Necromancia§r: Invocar Zumbi, Dreno de Vida, Invocar Esqueleto,
+      Murchar, Controle Mental, Caveira de Wither, Orbe das Trevas, Decadência, Legião de
+      Esqueletos...
+
+      Necromantes não são necessariamente maus. Só... incompreendidos.
+    tasks:
+      - one_of: [wizardry:spell_book:7, wizardry:spell_book:28, wizardry:spell_book:29, wizardry:spell_book:30, wizardry:spell_book:31, wizardry:spell_book:65, wizardry:spell_book:66, wizardry:spell_book:67, wizardry:spell_book:68, wizardry:spell_book:69, wizardry:spell_book:70, wizardry:spell_book:71, wizardry:spell_book:99, wizardry:spell_book:100, wizardry:spell_book:101, wizardry:spell_book:112, wizardry:spell_book:115, wizardry:spell_book:116, wizardry:spell_book:130]
+    rewards:
+      - xp: 3
+      - item: wizardry:magic_crystal x6
+
+  - id: livro_terra
+    title: "Grimório da Terra"
+    type: normal
+    deps: [elementos]
+    icon: wizardry:spell_book:8
+    desc: |
+      Qualquer livro de §2Terra§r: Armadilha, Dardo, Veneno, Aura de Crescimento, Bolha,
+      Redemoinho, Lobo Espiritual, Tornado, Planar, Cavalo Espiritual, Voo, Terremoto...
+
+      O elemento mais variado: ataque, defesa e utilidade.
+    tasks:
+      - one_of: [wizardry:spell_book:8, wizardry:spell_book:9, wizardry:spell_book:32, wizardry:spell_book:33, wizardry:spell_book:34, wizardry:spell_book:35, wizardry:spell_book:36, wizardry:spell_book:37, wizardry:spell_book:72, wizardry:spell_book:73, wizardry:spell_book:74, wizardry:spell_book:75, wizardry:spell_book:76, wizardry:spell_book:77, wizardry:spell_book:102, wizardry:spell_book:103, wizardry:spell_book:104, wizardry:spell_book:113, wizardry:spell_book:117, wizardry:spell_book:118, wizardry:spell_book:131, wizardry:spell_book:139]
+    rewards:
+      - xp: 3
+      - item: wizardry:magic_crystal x6
+
+  - id: livro_feiticaria
+    title: "Grimório de Feitiçaria"
+    type: normal
+    deps: [elementos]
+    icon: wizardry:spell_book:10
+    desc: |
+      Qualquer livro de §aFeitiçaria§r: Luz, Telecinese, Piscar, Agilidade, Conjurar Espada/
+      Picareta/Arco, Flecha de Força, Petrificar, Invisibilidade, Levitação, Transporte, Buraco
+      Negro...
+
+      Força e mudança: a magia de quem gosta de dobrar as regras.
+    tasks:
+      - one_of: [wizardry:spell_book:10, wizardry:spell_book:11, wizardry:spell_book:38, wizardry:spell_book:39, wizardry:spell_book:40, wizardry:spell_book:41, wizardry:spell_book:42, wizardry:spell_book:43, wizardry:spell_book:78, wizardry:spell_book:79, wizardry:spell_book:80, wizardry:spell_book:81, wizardry:spell_book:82, wizardry:spell_book:83, wizardry:spell_book:84, wizardry:spell_book:85, wizardry:spell_book:105, wizardry:spell_book:106, wizardry:spell_book:107, wizardry:spell_book:108, wizardry:spell_book:119, wizardry:spell_book:120, wizardry:spell_book:121, wizardry:spell_book:132]
+    rewards:
+      - xp: 3
+      - item: wizardry:magic_crystal x6
+
+  - id: livro_cura
+    title: "Grimório de Cura"
+    type: normal
+    deps: [elementos]
+    icon: wizardry:spell_book:12
+    desc: |
+      Qualquer livro de §eCura§r: Curar, Escudo, Saciar Fome, Curar Efeitos, Curar Aliado, Cura
+      Maior, Aura de Cura, Campo de Força, Carne de Ferro, Carne de Diamante, Fonte de Mana...
+
+      Indispensável em combate. Eu fico mais tranquila sabendo que você tem um.
+    tasks:
+      - one_of: [wizardry:spell_book:12, wizardry:spell_book:44, wizardry:spell_book:45, wizardry:spell_book:46, wizardry:spell_book:47, wizardry:spell_book:86, wizardry:spell_book:87, wizardry:spell_book:88, wizardry:spell_book:89, wizardry:spell_book:90, wizardry:spell_book:109, wizardry:spell_book:110, wizardry:spell_book:122, wizardry:spell_book:123, wizardry:spell_book:133, wizardry:spell_book:134, wizardry:spell_book:135, wizardry:spell_book:140]
+    rewards:
+      - xp: 3
+      - item: wizardry:magic_crystal x6
+
+  - id: sete_grimorios
+    title: "Os Sete Grimórios"
+    type: milestone
+    deps: [livro_fogo, livro_gelo, livro_raio, livro_necromancia, livro_terra, livro_feiticaria, livro_cura]
+    icon: wizardry:spell_book:38
+    banner: "Sete Elementos"
+    subtitle: "Uma biblioteca de bolso"
+    desc: |
+      Fogo, Gelo, Raio, Necromancia, Terra, Feitiçaria e Cura! Você tem pelo menos um feitiço de
+      cada elemento do Volume dos Feiticeiros.
+
+      Os livros vêm de §ebaús de masmorras e templos§r, de §emonstros§r (há uma chance de
+      qualquer criatura hostil soltar um) e das §elojas dos magos§r. Agora é escolher: se
+      especializar num elemento (e caçar a varinha e as vestes dele) ou ser um feiticeiro de
+      tudo um pouco. As duas escolhas são lindas.
+    tasks:
+      - check
+    rewards:
+      - xp: 8
+      - kit: {name: "Kit do Feiticeiro Errante", items: [wizardry:magic_crystal x32, wizardry:mana_flask x2, wizardry:blank_scroll x8, minecraft:golden_apple]}
+      - loot: raro
+
+  # ======================================================================
+  # FASE 3 — TIERS: APRENDIZ, AVANÇADO E MESTRE
+  # ======================================================================
+  - id: livro_aprendiz
+    title: "Um Feitiço de Aprendiz"
+    type: main
+    deps: [missil_magico]
+    icon: wizardry:spell_book:13
+    desc: |
+      Feitiços de §aAprendiz§r são mais impressionantes — e a Varinha de Novato não consegue
+      lançá-los. Encontre qualquer livro de tier Aprendiz (Bola de Fogo, Estilhaço de Gelo,
+      Piscar, Escudo, Conjurar Espada...).
+
+      Você pode vinculá-lo agora, mas só vai usá-lo depois de subir a varinha de tier.
+    tasks:
+      - one_of: [wizardry:spell_book:13, wizardry:spell_book:14, wizardry:spell_book:15, wizardry:spell_book:16, wizardry:spell_book:17, wizardry:spell_book:18, wizardry:spell_book:19, wizardry:spell_book:20, wizardry:spell_book:21, wizardry:spell_book:22, wizardry:spell_book:23, wizardry:spell_book:24, wizardry:spell_book:25, wizardry:spell_book:26, wizardry:spell_book:27, wizardry:spell_book:28, wizardry:spell_book:29, wizardry:spell_book:30, wizardry:spell_book:31, wizardry:spell_book:32, wizardry:spell_book:33, wizardry:spell_book:34, wizardry:spell_book:35, wizardry:spell_book:36, wizardry:spell_book:37, wizardry:spell_book:38, wizardry:spell_book:39, wizardry:spell_book:40, wizardry:spell_book:41, wizardry:spell_book:42, wizardry:spell_book:43, wizardry:spell_book:44, wizardry:spell_book:45, wizardry:spell_book:46, wizardry:spell_book:47, wizardry:spell_book:114, wizardry:spell_book:115, wizardry:spell_book:116, wizardry:spell_book:117, wizardry:spell_book:118, wizardry:spell_book:119, wizardry:spell_book:120, wizardry:spell_book:121, wizardry:spell_book:122, wizardry:spell_book:123]
+    rewards:
+      - xp: 4
+      - choice: [wizardry:magic_crystal x8, minecraft:gold_ingot x4, minecraft:emerald x2]
+
+  - id: tomo_aprendiz
+    title: "Tomo de Arcana: Aprendiz"
+    type: main
+    deps: [livro_aprendiz]
+    icon: wizardry:arcane_tome:1
+    desc: |
+      Os §eTomos de Arcana§r sobem a varinha de tier. Não há receita: eles aparecem em baús e
+      nas lojas dos magos.
+
+      Encontre o tomo de §aAprendiz§r. Na Bancada Arcana, coloque a varinha no centro e o tomo no
+      slot inferior esquerdo. A varinha vira de Aprendiz — e uma varinha elemental continua do
+      mesmo elemento!
+    tasks:
+      - get: wizardry:arcane_tome:1
+    rewards:
+      - xp: 4
+      - choice: [wizardry:magic_crystal x10, minecraft:gold_ingot x6, minecraft:diamond]
+
+  - id: varinha_aprendiz
+    title: "Varinha de Aprendiz"
+    type: milestone
+    deps: [tomo_aprendiz]
+    icon: wizardry:apprentice_wand
+    banner: "Aprendiz de Feiticeiro"
+    subtitle: "A varinha cresce com você"
+    desc: |
+      Uma §aVarinha de Aprendiz§r! Ela guarda §e1000 de mana§r e lança feitiços de Novato e de
+      Aprendiz. Vale a varinha comum ou qualquer varinha elemental de Aprendiz.
+
+      Agora a Bola de Fogo voa, o Piscar teletransporta e o Escudo protege. Experimente os
+      feitiços que você estava guardando — e prepare-se para os Avançados.
+    tasks:
+      - one_of: [wizardry:apprentice_wand, wizardry:apprentice_fire_wand, wizardry:apprentice_ice_wand, wizardry:apprentice_lightning_wand, wizardry:apprentice_necromancy_wand, wizardry:apprentice_earth_wand, wizardry:apprentice_sorcery_wand, wizardry:apprentice_healing_wand]
+    rewards:
+      - xp: 8
+      - kit: {name: "Kit do Aprendiz de Feiticeiro", items: [wizardry:magic_crystal x24, wizardry:mana_flask, wizardry:identification_scroll x2, minecraft:gold_ingot x8]}
+      - loot: raro
+
+  - id: livro_avancado
+    title: "Um Feitiço Avançado"
+    type: main
+    deps: [varinha_aprendiz]
+    icon: wizardry:spell_book:79
+    desc: |
+      Feitiços §9Avançados§r dão poderes sobre-humanos: Invisibilidade, Levitação, Pele de Fogo,
+      Mente Controlada, Transporte, Campo de Força... Encontre qualquer livro deste tier.
+    tasks:
+      - one_of: [wizardry:spell_book:48, wizardry:spell_book:49, wizardry:spell_book:50, wizardry:spell_book:51, wizardry:spell_book:52, wizardry:spell_book:53, wizardry:spell_book:54, wizardry:spell_book:55, wizardry:spell_book:56, wizardry:spell_book:57, wizardry:spell_book:58, wizardry:spell_book:59, wizardry:spell_book:60, wizardry:spell_book:61, wizardry:spell_book:62, wizardry:spell_book:63, wizardry:spell_book:64, wizardry:spell_book:65, wizardry:spell_book:66, wizardry:spell_book:67, wizardry:spell_book:68, wizardry:spell_book:69, wizardry:spell_book:70, wizardry:spell_book:71, wizardry:spell_book:72, wizardry:spell_book:73, wizardry:spell_book:74, wizardry:spell_book:75, wizardry:spell_book:76, wizardry:spell_book:77, wizardry:spell_book:78, wizardry:spell_book:79, wizardry:spell_book:80, wizardry:spell_book:81, wizardry:spell_book:82, wizardry:spell_book:83, wizardry:spell_book:84, wizardry:spell_book:85, wizardry:spell_book:86, wizardry:spell_book:87, wizardry:spell_book:88, wizardry:spell_book:89, wizardry:spell_book:90, wizardry:spell_book:124, wizardry:spell_book:125, wizardry:spell_book:126, wizardry:spell_book:127, wizardry:spell_book:128, wizardry:spell_book:129, wizardry:spell_book:130, wizardry:spell_book:131, wizardry:spell_book:132, wizardry:spell_book:133, wizardry:spell_book:134, wizardry:spell_book:135]
+    rewards:
+      - xp: 4
+      - choice: [wizardry:magic_crystal x12, minecraft:diamond x2, minecraft:emerald x4]
+
+  - id: tomo_avancado
+    title: "Tomo de Arcana: Avançado"
+    type: main
+    deps: [livro_avancado]
+    icon: wizardry:arcane_tome:2
+    desc: |
+      O tomo de §9Avançado§r é mais raro. Procure em baús de masmorras e templos, ou pague caro
+      a um mago. Ele só funciona numa varinha de Aprendiz.
+    tasks:
+      - get: wizardry:arcane_tome:2
+    rewards:
+      - xp: 4
+      - choice: [wizardry:magic_crystal x12, minecraft:diamond x2, minecraft:gold_block]
+
+  - id: varinha_avancada
+    title: "Varinha Avançada"
+    type: milestone
+    deps: [tomo_avancado]
+    icon: wizardry:advanced_wand
+    banner: "Feiticeiro Avançado"
+    subtitle: "Quase lá"
+    desc: |
+      Uma §9Varinha Avançada§r: §e1500 de mana§r e todos os feitiços, menos os de Mestre. Vale a
+      comum ou qualquer elemental Avançada.
+
+      Este é o ponto em que um feiticeiro passa a mudar o campo de batalha. Use com
+      responsabilidade (e com bastante cristal no bolso).
+    tasks:
+      - one_of: [wizardry:advanced_wand, wizardry:advanced_fire_wand, wizardry:advanced_ice_wand, wizardry:advanced_lightning_wand, wizardry:advanced_necromancy_wand, wizardry:advanced_earth_wand, wizardry:advanced_sorcery_wand, wizardry:advanced_healing_wand]
+    rewards:
+      - xp: 8
+      - kit: {name: "Kit do Feiticeiro Avançado", items: [wizardry:crystal_block x3, wizardry:mana_flask x2, wizardry:identification_scroll x2, minecraft:diamond x4]}
+      - loot: raro
+
+  - id: livro_mestre
+    title: "Um Feitiço de Mestre"
+    type: main
+    deps: [varinha_avancada]
+    icon: wizardry:spell_book:105
+    desc: |
+      §dFeitiços de Mestre§r são raríssimos e podem devastar não só inimigos, mas o próprio mundo:
+      Meteoro, Era do Gelo, Tempestade, Legião de Esqueletos, Buraco Negro, Terremoto, Fonte de
+      Vitalidade...
+
+      §cUse com cuidado — alguns destroem terreno.§r Para comprar um, procure um mago
+      §eespecialista§r no elemento.
+    tasks:
+      - one_of: [wizardry:spell_book:91, wizardry:spell_book:92, wizardry:spell_book:93, wizardry:spell_book:94, wizardry:spell_book:95, wizardry:spell_book:96, wizardry:spell_book:97, wizardry:spell_book:98, wizardry:spell_book:99, wizardry:spell_book:100, wizardry:spell_book:101, wizardry:spell_book:102, wizardry:spell_book:103, wizardry:spell_book:104, wizardry:spell_book:105, wizardry:spell_book:106, wizardry:spell_book:107, wizardry:spell_book:108, wizardry:spell_book:109, wizardry:spell_book:110, wizardry:spell_book:136, wizardry:spell_book:137, wizardry:spell_book:138, wizardry:spell_book:139, wizardry:spell_book:140]
+    rewards:
+      - xp: 5
+      - choice: [wizardry:crystal_block x2, minecraft:diamond x3, minecraft:emerald x6]
+
+  - id: tomo_mestre
+    title: "Tomo de Arcana: Mestre"
+    type: main
+    deps: [livro_mestre]
+    icon: wizardry:arcane_tome:3
+    desc: |
+      O tomo mais raro de todos. Ele transforma uma varinha Avançada em §dMestre§r. Baús raros e
+      os magos mais ricos são a sua melhor aposta.
+    tasks:
+      - get: wizardry:arcane_tome:3
+    rewards:
+      - xp: 5
+      - choice: [wizardry:crystal_block x2, minecraft:diamond_block, minecraft:emerald x8]
+
+  - id: varinha_mestre
+    title: "Varinha de Mestre"
+    type: milestone
+    deps: [tomo_mestre]
+    icon: wizardry:master_wand
+    banner: "Varinha de Mestre"
+    subtitle: "Nenhum feitiço está fora de alcance"
+    desc: |
+      A §dVarinha de Mestre§r: §e2500 de mana§r e capacidade para §equalquer§r feitiço do Volume.
+      Vale a comum ou qualquer elemental de Mestre.
+
+      Herói, quando eu remontei esta página, ela tremia nas minhas mãos. Feitiços de Mestre podem
+      apagar uma montanha. Eu sei que você vai usá-los para proteger, não para destruir.
+    tasks:
+      - one_of: [wizardry:master_wand, wizardry:master_fire_wand, wizardry:master_ice_wand, wizardry:master_lightning_wand, wizardry:master_necromancy_wand, wizardry:master_earth_wand, wizardry:master_sorcery_wand, wizardry:master_healing_wand]
+    rewards:
+      - xp: 10
+      - kit: {name: "Kit da Varinha de Mestre", items: [wizardry:crystal_block x6, wizardry:mana_flask x4, wizardry:identification_scroll x4, minecraft:nether_star]}
+      - loot: epico
+
+  # ======================================================================
+  # FASE 4 — VARINHAS ELEMENTAIS
+  # ======================================================================
+  - id: varinha_elemental
+    title: "Varinha Elemental"
+    type: optional
+    deps: [elementos]
+    icon: wizardry:basic_fire_wand
+    desc: |
+      Com sorte você acha uma §evarinha elemental§r: Brasas (Fogo), Gelo, Faíscas (Raio),
+      Sombras (Necromancia), Floresta (Terra), Mistério (Feitiçaria) ou Cura. Ela lança os
+      feitiços do seu elemento com §emais potência§r que o normal. Elas não têm receita: vêm de
+      baús, de magos e de magos hostis.
+    tasks:
+      - one_of: [wizardry:basic_fire_wand, wizardry:basic_ice_wand, wizardry:basic_lightning_wand, wizardry:basic_necromancy_wand, wizardry:basic_earth_wand, wizardry:basic_sorcery_wand, wizardry:basic_healing_wand]
+    rewards:
+      - loot: incomum
+
+  - id: varinha_elemental_mestre
+    title: "Varinha Elemental de Mestre"
+    type: optional
+    deps: [varinha_elemental, varinha_mestre]
+    icon: wizardry:master_fire_wand
+    desc: |
+      O sonho de todo especialista: uma varinha elemental de §dMestre§r (Mestre Piromante, Mago
+      do Gelo, Mago da Tempestade, Necromante, Mago da Terra, Feiticeiro ou Curandeiro). Suba uma
+      varinha elemental com os três tomos, ou encontre uma.
+    tasks:
+      - one_of: [wizardry:master_fire_wand, wizardry:master_ice_wand, wizardry:master_lightning_wand, wizardry:master_necromancy_wand, wizardry:master_earth_wand, wizardry:master_sorcery_wand, wizardry:master_healing_wand]
+    rewards:
+      - loot: raro
+
+  # ======================================================================
+  # FASE 5 — UPGRADES DE VARINHA
+  # ======================================================================
+  - id: upgrades_varinha
+    title: "Upgrades de Varinha"
+    type: info
+    deps: [varinha_aprendiz]
+    icon: wizardry:storage_upgrade
+    desc: |
+      Além dos tomos, existem §eupgrades especiais§r (sem receita: baús e magos). Cada tipo
+      empilha até §e3 vezes§r numa varinha, e o total de upgrades que a varinha aceita depende do
+      tier dela. §cUpgrades não podem ser removidos§r — escolha bem.
+
+      Aplique-os no slot inferior esquerdo da Bancada Arcana, como os tomos.
+    tasks:
+      - check
+    rewards:
+      - xp: 1
+
+  - id: upgrade_armazenamento
+    title: "Upgrade de Armazenamento"
+    type: optional
+    deps: [upgrades_varinha]
+    icon: wizardry:storage_upgrade
+    desc: |
+      Aumenta a §emana máxima§r da varinha. (Com ele, a varinha vazia pode não pegar um número
+      exato de cristais.)
+    tasks:
+      - get: wizardry:storage_upgrade
+    rewards:
+      - loot: comum
+
+  - id: upgrade_sifao
+    title: "Upgrade de Sifão"
+    type: optional
+    deps: [upgrades_varinha]
+    icon: wizardry:siphon_upgrade
+    desc: |
+      A varinha §erecupera mana quando você mata criaturas§r. Excelente para quem vive em
+      combate.
+    tasks:
+      - get: wizardry:siphon_upgrade
+    rewards:
+      - loot: comum
+
+  - id: upgrade_condensador
+    title: "Upgrade de Condensador"
+    type: optional
+    deps: [upgrades_varinha]
+    icon: wizardry:condenser_upgrade
+    desc: |
+      A varinha §eregenera mana sozinha§r, devagarzinho, com o passar do tempo. Menos viagens à
+      bancada!
+    tasks:
+      - get: wizardry:condenser_upgrade
+    rewards:
+      - loot: comum
+
+  - id: upgrade_alcance
+    title: "Upgrade de Alcance"
+    type: optional
+    deps: [upgrades_varinha]
+    icon: wizardry:range_upgrade
+    desc: |
+      Aumenta o §ealcance§r dos feitiços lançados com a varinha.
+    tasks:
+      - get: wizardry:range_upgrade
+    rewards:
+      - loot: comum
+
+  - id: upgrade_duracao
+    title: "Upgrade de Duração"
+    type: optional
+    deps: [upgrades_varinha]
+    icon: wizardry:duration_upgrade
+    desc: |
+      Aumenta a §eduração§r de efeitos e invocações.
+    tasks:
+      - get: wizardry:duration_upgrade
+    rewards:
+      - loot: comum
+
+  - id: upgrade_recarga
+    title: "Upgrade de Recarga"
+    type: optional
+    deps: [upgrades_varinha]
+    icon: wizardry:cooldown_upgrade
+    desc: |
+      Reduz o §etempo de recarga§r entre um lançamento e outro.
+    tasks:
+      - get: wizardry:cooldown_upgrade
+    rewards:
+      - loot: comum
+
+  - id: upgrade_explosao
+    title: "Upgrade de Explosão"
+    type: optional
+    deps: [upgrades_varinha]
+    icon: wizardry:blast_upgrade
+    desc: |
+      Aumenta o §eraio§r dos feitiços de área e explosões. §cMais raio = mais estrago na base.§r
+    tasks:
+      - get: wizardry:blast_upgrade
+    rewards:
+      - loot: comum
+
+  - id: upgrade_sintonia
+    title: "Upgrade de Sintonia"
+    type: optional
+    deps: [upgrades_varinha]
+    icon: wizardry:attunement_upgrade
+    desc: |
+      Cada §eUpgrade de Sintonia§r libera §emais um slot de feitiço§r na varinha (o padrão é 5).
+      O meu favorito!
+    tasks:
+      - get: wizardry:attunement_upgrade
+    rewards:
+      - loot: incomum
+
+  # ======================================================================
+  # FASE 6 — VESTES DE MAGO
+  # ======================================================================
+  - id: seda_magica
+    title: "Seda Mágica"
+    type: normal
+    deps: [minerio_cristal]
+    icon: wizardry:magic_silk
+    desc: |
+      Quatro linhas em volta de um Cristal Mágico = §e2 Sedas Mágicas§r. É o tecido de todas as
+      vestes de mago. São necessárias 24 sedas para o conjunto inteiro.
+    tasks:
+      - get: wizardry:magic_silk x8
+    rewards:
+      - xp: 2
+      - item: minecraft:string x16
+
+  - id: chapeu_mago
+    title: "Chapéu de Mago"
+    type: normal
+    deps: [seda_magica]
+    icon: wizardry:wizard_hat
+    desc: |
+      Cinco sedas no formato de capacete. As roupas de mago §enão quebram§r: usam energia
+      arcana para proteger, então precisam ser §ecarregadas com cristais§r na Bancada Arcana (ou
+      com Frasco de Mana). Sem carga, elas não protegem nada!
+    tasks:
+      - get: wizardry:wizard_hat
+    rewards:
+      - xp: 2
+      - item: wizardry:magic_crystal x4
+
+  - id: veste_mago
+    title: "Túnica de Mago"
+    type: normal
+    deps: [seda_magica]
+    icon: wizardry:wizard_robe
+    desc: |
+      Oito sedas no formato de peitoral = §eWizard Robes§r. Elas gastam pouca mana — mas gastam.
+    tasks:
+      - get: wizardry:wizard_robe
+    rewards:
+      - xp: 2
+      - item: wizardry:magic_crystal x4
+
+  - id: calcas_mago_wiz
+    title: "Calças de Mago"
+    type: normal
+    deps: [seda_magica]
+    icon: wizardry:wizard_leggings
+    desc: |
+      Sete sedas no formato de calça = §eWizard Leggings§r.
+    tasks:
+      - get: wizardry:wizard_leggings
+    rewards:
+      - xp: 2
+      - item: wizardry:magic_crystal x4
+
+  - id: botas_mago_wiz
+    title: "Botas de Mago"
+    type: normal
+    deps: [seda_magica]
+    icon: wizardry:wizard_boots
+    desc: |
+      Quatro sedas no formato de botas = §eWizard Boots§r.
+    tasks:
+      - get: wizardry:wizard_boots
+    rewards:
+      - xp: 2
+      - item: wizardry:magic_crystal x4
+
+  - id: traje_feiticeiro
+    title: "Traje do Feiticeiro"
+    type: milestone
+    deps: [chapeu_mago, veste_mago, calcas_mago_wiz, botas_mago_wiz]
+    icon: wizardry:wizard_robe
+    banner: "Traje do Feiticeiro"
+    subtitle: "Seda, cristal e estilo"
+    desc: |
+      Chapéu, túnica, calças e botas! O §eTraje de Mago§r protege enquanto tiver mana e §ereduz o
+      custo dos feitiços§r.
+
+      Os magos que se dedicam a um elemento usam §evestes elementais§r (Piromante, Mago do Gelo,
+      da Tempestade, Necromante, da Terra, Feiticeiro, Curandeiro) que dão bônus ao elemento.
+      Conjuntos completos são raros e cobiçados — eles só aparecem como saque.
+    tasks:
+      - get: [wizardry:wizard_hat, wizardry:wizard_robe, wizardry:wizard_leggings, wizardry:wizard_boots]
+    rewards:
+      - xp: 8
+      - kit: {name: "Kit do Alfaiate Feiticeiro", items: [wizardry:mana_flask x3, wizardry:magic_crystal x24, wizardry:magic_silk x4]}
+      - loot: raro
+
+  - id: veste_piromante
+    title: "Vestes do Piromante"
+    type: optional
+    deps: [traje_feiticeiro]
+    icon: wizardry:wizard_robe_fire
+    desc: |
+      Encontre qualquer peça das §4vestes de Piromante§r (chapéu, túnica, calças ou botas).
+    tasks:
+      - one_of: [wizardry:wizard_hat_fire, wizardry:wizard_robe_fire, wizardry:wizard_leggings_fire, wizardry:wizard_boots_fire]
+    rewards:
+      - loot: incomum
+
+  - id: veste_gelo
+    title: "Vestes do Mago do Gelo"
+    type: optional
+    deps: [traje_feiticeiro]
+    icon: wizardry:wizard_robe_ice
+    desc: |
+      Encontre qualquer peça das §bvestes do Mago do Gelo§r.
+    tasks:
+      - one_of: [wizardry:wizard_hat_ice, wizardry:wizard_robe_ice, wizardry:wizard_leggings_ice, wizardry:wizard_boots_ice]
+    rewards:
+      - loot: incomum
+
+  - id: veste_tempestade
+    title: "Vestes do Mago da Tempestade"
+    type: optional
+    deps: [traje_feiticeiro]
+    icon: wizardry:wizard_robe_lightning
+    desc: |
+      Encontre qualquer peça das §3vestes do Mago da Tempestade§r.
+    tasks:
+      - one_of: [wizardry:wizard_hat_lightning, wizardry:wizard_robe_lightning, wizardry:wizard_leggings_lightning, wizardry:wizard_boots_lightning]
+    rewards:
+      - loot: incomum
+
+  - id: veste_necromante
+    title: "Vestes do Necromante"
+    type: optional
+    deps: [traje_feiticeiro]
+    icon: wizardry:wizard_robe_necromancy
+    desc: |
+      Encontre qualquer peça das §5vestes do Necromante§r.
+    tasks:
+      - one_of: [wizardry:wizard_hat_necromancy, wizardry:wizard_robe_necromancy, wizardry:wizard_leggings_necromancy, wizardry:wizard_boots_necromancy]
+    rewards:
+      - loot: incomum
+
+  - id: veste_terra
+    title: "Vestes do Mago da Terra"
+    type: optional
+    deps: [traje_feiticeiro]
+    icon: wizardry:wizard_robe_earth
+    desc: |
+      Encontre qualquer peça das §2vestes do Mago da Terra§r.
+    tasks:
+      - one_of: [wizardry:wizard_hat_earth, wizardry:wizard_robe_earth, wizardry:wizard_leggings_earth, wizardry:wizard_boots_earth]
+    rewards:
+      - loot: incomum
+
+  - id: veste_feiticeiro
+    title: "Vestes do Feiticeiro"
+    type: optional
+    deps: [traje_feiticeiro]
+    icon: wizardry:wizard_robe_sorcery
+    desc: |
+      Encontre qualquer peça das §avestes de Feitiçaria§r (Sorcerer).
+    tasks:
+      - one_of: [wizardry:wizard_hat_sorcery, wizardry:wizard_robe_sorcery, wizardry:wizard_leggings_sorcery, wizardry:wizard_boots_sorcery]
+    rewards:
+      - loot: incomum
+
+  - id: veste_curandeiro
+    title: "Vestes do Curandeiro"
+    type: optional
+    deps: [traje_feiticeiro]
+    icon: wizardry:wizard_robe_healing
+    desc: |
+      Encontre qualquer peça das §evestes do Curandeiro§r.
+    tasks:
+      - one_of: [wizardry:wizard_hat_healing, wizardry:wizard_robe_healing, wizardry:wizard_leggings_healing, wizardry:wizard_boots_healing]
+    rewards:
+      - loot: incomum
+
+  - id: selo_arcano_protecao
+    title: "Selo Arcano de Proteção"
+    type: optional
+    deps: [traje_feiticeiro]
+    icon: wizardry:armour_upgrade
+    desc: |
+      "Uma lenda fala de um selo arcano usado pelos magos mais poderosos para melhorar muito
+      suas armaduras." O §eSelo Arcano de Proteção§r (só como saque) transforma qualquer peça de
+      armadura de mago em §6Lendária§r. Aplique na Bancada Arcana.
+    tasks:
+      - get: wizardry:armour_upgrade
+    rewards:
+      - loot: raro
+
+  # ======================================================================
+  # FASE 7 — TORRES, MAGOS E MAGOS HOSTIS
+  # ======================================================================
+  - id: torre_mago
+    title: "As Torres dos Magos"
+    type: info
+    deps: [missil_magico]
+    icon: wizardry:spawn_wizard
+    desc: |
+      Você não é o único feiticeiro deste mundo! Torres altas de §etelhado pontudo§r abrigam
+      magos que vivem sozinhos (meio rabugentos, mas simpáticos). Elas geram no Mundo Normal.
+
+      Converse com um mago para ver a loja: ele vende livros, tomos, upgrades e pergaminhos em
+      troca de §eouro, diamantes e esmeraldas§r. Para feitiços de §dMestre§r, procure um mago
+      especialista naquele elemento.
+    tasks:
+      - check
+    rewards:
+      - xp: 1
+
+  - id: negocio_arcano
+    title: "Negócios Arcanos"
+    type: normal
+    deps: [torre_mago]
+    icon: minecraft:emerald
+    desc: |
+      Compre algo de um mago. Os mais úteis no começo: um §ePergaminho de Identificação§r ou um
+      §eTomo de Arcana de Aprendiz§r.
+    tasks:
+      - one_of: [wizardry:identification_scroll, wizardry:arcane_tome:1]
+    rewards:
+      - xp: 3
+      - choice: [minecraft:gold_ingot x6, minecraft:emerald x3, minecraft:diamond]
+
+  - id: mago_hostil
+    title: "O Mago Renegado"
+    type: boss
+    deps: [torre_mago, livro_aprendiz]
+    icon: wizardry:spawn_wizard:1
+    banner: "Mago renegado vencido"
+    subtitle: "O conhecimento dele agora é seu"
+    desc: |
+      Nem todo mago gosta de visitas. Os §cmagos hostis§r são renegados que atacam qualquer um com
+      magia poderosa. §cVá com armadura carregada, frasco de mana e feitiços de cura.§r
+
+      Vença um deles: "derrote-os e o conhecimento deles será seu" — eles costumam deixar livros,
+      varinhas e equipamentos de mago.
+    tasks:
+      - kill: {entity: "wizardry.Evil Wizard", count: 1}
+    rewards:
+      - xp: 8
+      - loot: raro
+
+  # ======================================================================
+  # FASE 8 — ARMAS CONJURADAS E ITENS ÚTEIS
+  # ======================================================================
+  - id: espada_espectral
+    title: "Espada Espectral"
+    type: normal
+    deps: [livro_feiticaria, varinha_aprendiz]
+    icon: wizardry:spectral_sword
+    desc: |
+      O feitiço de Aprendiz §eConjurar Espada§r cria uma §eEspada Espectral§r (força de espada de
+      ferro) que dura §e30 segundos§r e some. Conjure uma e me mostre antes que ela evapore!
+    tasks:
+      - get: wizardry:spectral_sword
+    rewards:
+      - xp: 3
+      - item: wizardry:magic_crystal x6
+
+  - id: picareta_espectral
+    title: "Picareta Espectral"
+    type: normal
+    deps: [livro_feiticaria, varinha_aprendiz]
+    icon: wizardry:spectral_pickaxe
+    desc: |
+      §eConjurar Picareta§r cria uma §ePicareta Espectral§r de força igual à de ferro por 30
+      segundos. Ferramenta sem desgaste, à vontade!
+    tasks:
+      - get: wizardry:spectral_pickaxe
+    rewards:
+      - xp: 3
+      - item: wizardry:magic_crystal x6
+
+  - id: arco_espectral
+    title: "Arco Espectral"
+    type: normal
+    deps: [livro_feiticaria, varinha_aprendiz]
+    icon: wizardry:spectral_bow
+    desc: |
+      §eConjurar Arco§r: um §eArco Espectral§r com flechas ilimitadas por 30 segundos.
+    tasks:
+      - get: wizardry:spectral_bow
+    rewards:
+      - xp: 3
+      - item: wizardry:magic_crystal x6
+
+  - id: armadura_espectral
+    title: "Armadura Espectral"
+    type: optional
+    deps: [livro_cura, varinha_avancada]
+    icon: wizardry:spectral_chestplate
+    desc: |
+      O feitiço Avançado de Cura §eConjurar Armadura§r cobre você com armadura espectral
+      equivalente à de ferro por 60 segundos (precisa de slots de armadura vazios). Mostre
+      qualquer peça.
+    tasks:
+      - one_of: [wizardry:spectral_helmet, wizardry:spectral_chestplate, wizardry:spectral_leggings, wizardry:spectral_boots]
+    rewards:
+      - loot: incomum
+
+  - id: machados_elementais
+    title: "Machados Elementais"
+    type: optional
+    deps: [varinha_avancada]
+    icon: wizardry:flaming_axe
+    desc: |
+      Dois feitiços Avançados criam machados temporários (30 s): o §4Machado Flamejante§r (põe
+      fogo no alvo) e o §bMachado de Gelo§r (congela). Conjure um deles.
+    tasks:
+      - one_of: [wizardry:flaming_axe, wizardry:frost_axe]
+    rewards:
+      - loot: incomum
+
+  - id: bombas
+    title: "Bombas Arremessáveis"
+    type: optional
+    deps: [minerio_cristal]
+    icon: wizardry:firebomb
+    desc: |
+      Frasco, pólvora e dois de: pó de blaze (§4Bomba de Fogo§r), olho de aranha (§2Bomba de
+      Veneno§r) ou carvão (§7Bomba de Fumaça§r). Cada receita rende 3. Arremesse e corra!
+    tasks:
+      - one_of: [wizardry:firebomb, wizardry:poison_bomb, wizardry:smoke_bomb]
+    rewards:
+      - loot: comum
+
+  - id: pedra_transporte
+    title: "Pedras de Transporte"
+    type: normal
+    deps: [minerio_cristal]
+    icon: wizardry:transportation_stone
+    desc: |
+      Quatro pedras em volta de um Cristal Mágico = §e2 Pedras de Transporte§r. Faça um §ecírculo
+      de pedras§r, clique nele com a varinha para memorizá-lo e, com o feitiço Avançado
+      §eTransporte§r, você volta para lá de onde estiver (na mesma dimensão).
+    tasks:
+      - get: wizardry:transportation_stone x4
+    rewards:
+      - xp: 2
+      - item: minecraft:stone x16
+
+  - id: aliados
+    title: "Aliados e Fogo Amigo"
+    type: info
+    deps: [missil_magico]
+    icon: minecraft:name_tag
+    desc: |
+      No pack, o §efogo amigo está ligado§r: seus feitiços machucam outros jogadores. Para
+      proteger os amigos, use o comando §e/ally <jogador>§r (e §e/allies§r para ver a lista).
+      Aliados não são atingidos e as suas invocações não os atacam. Clicar num jogador com a
+      varinha agachado também alterna a aliança.
+    tasks:
+      - check
+    rewards:
+      - xp: 1
+
+  # ======================================================================
+  # FINAL
+  # ======================================================================
+  - id: maestria_elementos
+    title: "Maestria dos Elementos"
+    type: milestone
+    deps: [varinha_mestre, sete_grimorios, traje_feiticeiro, mago_hostil]
+    icon: wizardry:master_wand
+    size: 48
+    banner: "Maestria dos Elementos"
+    subtitle: "O Volume dos Feiticeiros está completo"
+    effect: 4
+    desc: |
+      Varinha de Mestre, um grimório de cada elemento, o Traje do Feiticeiro e um mago renegado
+      derrotado. Herói, o §dVolume dos Feiticeiros Errantes§r está reescrito!
+
+      Os magos das torres eram os mensageiros do Registro: levavam páginas de um reino para o
+      outro, guardadas em livros de feitiço. Quando a Fratura veio, eles se espalharam e
+      esqueceram por quê. Talvez algum deles se lembre, agora que você trouxe as páginas de
+      volta.
+
+      Ainda há mais de cem feitiços para colecionar. Eu vou adorar ver cada um deles.
+    tasks:
+      - one_of: [wizardry:master_wand, wizardry:master_fire_wand, wizardry:master_ice_wand, wizardry:master_lightning_wand, wizardry:master_necromancy_wand, wizardry:master_earth_wand, wizardry:master_sorcery_wand, wizardry:master_healing_wand]
+    rewards:
+      - xp: 12
+      - kit: {name: "Kit da Maestria Elemental", items: [wizardry:crystal_block x8, wizardry:mana_flask x4, wizardry:identification_scroll x4, minecraft:nether_star]}
+      - loot: epico
+
+  # ======================================================================
+  # FASE 9 — FEITIÇOS NOTÁVEIS (CATÁLOGO)
+  # ======================================================================
+  - id: feitico_curar
+    title: "Curar"
+    type: optional
+    deps: [livro_cura]
+    icon: wizardry:spell_book:12
+    desc: |
+      O básico que salva vidas: §eHeal§r (Novato, Cura) recupera 2 corações por 5 de mana. Vincule e nunca mais tire da varinha.
+
+      Encontre ou compre o livro deste feitiço.
+    tasks:
+      - get: wizardry:spell_book:12
+    rewards:
+      - loot: comum
+
+  - id: feitico_congelar
+    title: "Congelar"
+    type: optional
+    deps: [livro_gelo]
+    icon: wizardry:spell_book:3
+    desc: |
+      §eFreeze§r (Novato, Gelo) congela o alvo por 10 segundos e também §etransforma água em gelo§r (e cobre o chão de neve): atravesse rios sem barco.
+
+      Encontre ou compre o livro deste feitiço.
+    tasks:
+      - get: wizardry:spell_book:3
+    rewards:
+      - loot: comum
+
+  - id: feitico_luz
+    title: "Luz"
+    type: optional
+    deps: [livro_feiticaria]
+    icon: wizardry:spell_book:10
+    desc: |
+      §eLight§r (Novato, Feitiçaria) cria um ponto de luz mágica que ilumina a área por 30 segundos.
+
+      Encontre ou compre o livro deste feitiço.
+    tasks:
+      - get: wizardry:spell_book:10
+    rewards:
+      - loot: comum
+
+  - id: feitico_telecinese
+    title: "Telecinese"
+    type: optional
+    deps: [livro_feiticaria]
+    icon: wizardry:spell_book:11
+    desc: |
+      §eTelekinesis§r (Novato) puxa um item ou objeto pequeno até você, ou clica no bloco que você mira. No pack, também §edesarma jogadores§r (opção ligada na config).
+
+      Encontre ou compre o livro deste feitiço.
+    tasks:
+      - get: wizardry:spell_book:11
+    rewards:
+      - loot: comum
+
+  - id: feitico_saltar
+    title: "Salto"
+    type: optional
+    deps: [livro_terra]
+    icon: wizardry:spell_book:113
+    desc: |
+      §eLeap§r (Novato, Terra) lança você para o alto e para frente. Combina muito bem com uma queda amortecida...
+
+      Encontre ou compre o livro deste feitiço.
+    tasks:
+      - get: wizardry:spell_book:113
+    rewards:
+      - loot: comum
+
+  - id: feitico_bola_fogo
+    title: "Bola de Fogo"
+    type: optional
+    deps: [livro_fogo]
+    icon: wizardry:spell_book:13
+    desc: |
+      §eFireball§r (Aprendiz, Fogo): o clássico projétil explosivo de chamas. §cNão use dentro de casa de madeira.§r
+
+      Encontre ou compre o livro deste feitiço.
+    tasks:
+      - get: wizardry:spell_book:13
+    rewards:
+      - loot: comum
+
+  - id: feitico_piscar
+    title: "Piscar"
+    type: optional
+    deps: [livro_feiticaria]
+    icon: wizardry:spell_book:38
+    desc: |
+      §eBlink§r (Aprendiz, Feitiçaria) teletransporta você alguns blocos para onde estiver olhando. Fuga ou perseguição em um clique.
+
+      Encontre ou compre o livro deste feitiço.
+    tasks:
+      - get: wizardry:spell_book:38
+    rewards:
+      - loot: comum
+
+  - id: feitico_escudo
+    title: "Escudo"
+    type: optional
+    deps: [livro_cura]
+    icon: wizardry:spell_book:44
+    desc: |
+      §eShield§r (Aprendiz, Cura) cria uma barreira de força que bloqueia projéteis e magia e ainda dá uma leve resistência. Funciona enquanto você segura o botão, gastando mana.
+
+      Encontre ou compre o livro deste feitiço.
+    tasks:
+      - get: wizardry:spell_book:44
+    rewards:
+      - loot: comum
+
+  - id: feitico_bancada_bolso
+    title: "Bancada de Bolso"
+    type: optional
+    deps: [livro_feiticaria]
+    icon: wizardry:spell_book:120
+    desc: |
+      §ePocket Workbench§r (Aprendiz) abre uma bancada de trabalho onde você estiver. Pequenas magias também são magias!
+
+      Encontre ou compre o livro deste feitiço.
+    tasks:
+      - get: wizardry:spell_book:120
+    rewards:
+      - loot: comum
+
+  - id: feitico_fornalha_bolso
+    title: "Fornalha de Bolso"
+    type: optional
+    deps: [livro_fogo]
+    icon: wizardry:spell_book:114
+    desc: |
+      §ePocket Furnace§r (Aprendiz, Fogo) funde na hora até 5 itens do seu inventário (os da barra de atalhos primeiro). Minério vira lingote antes de sair da mina.
+
+      Encontre ou compre o livro deste feitiço.
+    tasks:
+      - get: wizardry:spell_book:114
+    rewards:
+      - loot: comum
+
+  - id: feitico_invisibilidade
+    title: "Invisibilidade"
+    type: optional
+    deps: [livro_avancado]
+    icon: wizardry:spell_book:79
+    desc: |
+      §eInvisibility§r (Avançado, Feitiçaria) deixa você invisível por 30 segundos. Perfeito para passar por perigos sem lutar.
+
+      Encontre ou compre o livro deste feitiço.
+    tasks:
+      - get: wizardry:spell_book:79
+    rewards:
+      - loot: comum
+
+  - id: feitico_levitacao
+    title: "Levitação"
+    type: optional
+    deps: [livro_avancado]
+    icon: wizardry:spell_book:80
+    desc: |
+      §eLevitation§r (Avançado) faz você subir enquanto segura o botão e, usado antes de tocar o chão, anula o dano de queda.
+
+      Encontre ou compre o livro deste feitiço.
+    tasks:
+      - get: wizardry:spell_book:80
+    rewards:
+      - loot: comum
+
+  - id: feitico_transporte
+    title: "Transporte"
+    type: optional
+    deps: [pedra_transporte]
+    icon: wizardry:spell_book:82
+    desc: |
+      §eTransportation§r (Avançado) leva você de volta ao círculo de Pedras de Transporte memorizado. O "voltar para casa" do feiticeiro.
+
+      Encontre ou compre o livro deste feitiço.
+    tasks:
+      - get: wizardry:spell_book:82
+    rewards:
+      - loot: comum
+
+  - id: feitico_voo
+    title: "Voo"
+    type: optional
+    deps: [livro_mestre]
+    icon: wizardry:spell_book:103
+    desc: |
+      §eFlight§r (Mestre, Terra): voe livremente enquanto segurar o botão e houver mana. Sim, voar de verdade!
+
+      Encontre ou compre o livro deste feitiço.
+    tasks:
+      - get: wizardry:spell_book:103
+    rewards:
+      - loot: comum
+
+  - id: feitico_meteoro
+    title: "Meteoro"
+    type: optional
+    deps: [livro_mestre]
+    icon: wizardry:spell_book:91
+    desc: |
+      §eMeteor§r (Mestre, Fogo) derruba um meteoro do céu. §cDestrói terreno — nunca perto da sua base.§r
+
+      Encontre ou compre o livro deste feitiço.
+    tasks:
+      - get: wizardry:spell_book:91
+    rewards:
+      - loot: comum
+
+  - id: feitico_buraco_negro
+    title: "Buraco Negro"
+    type: optional
+    deps: [livro_mestre]
+    icon: wizardry:spell_book:105
+    desc: |
+      §eBlack Hole§r (Mestre, Feitiçaria) cria um buraco negro que suga criaturas e blocos. §cUm dos feitiços mais destrutivos do Volume.§r
+
+      Encontre ou compre o livro deste feitiço.
+    tasks:
+      - get: wizardry:spell_book:105
+    rewards:
+      - loot: comum
+
+  - id: feitico_fonte_mana
+    title: "Fonte de Mana"
+    type: optional
+    deps: [livro_mestre]
+    icon: wizardry:spell_book:140
+    desc: |
+      §eFont of Mana§r (Mestre, Cura) é um mistério até para mim: o livro só traz o trecho queimado do diário de um mago esquecido, falando de uma energia mágica intensa. Leia o livro (clique direito) e descubra.
+
+      Encontre ou compre o livro deste feitiço.
+    tasks:
+      - get: wizardry:spell_book:140
+    rewards:
+      - loot: comum

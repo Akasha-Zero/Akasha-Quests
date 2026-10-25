@@ -1,0 +1,338 @@
+chapter:
+  id: atm_dicas
+  title: Dicas e Truques
+  prefix: ATM
+  order: 935
+  icon: minecraft:book
+  desc: |
+    §6Pequenas sabedorias do Registro.§r Tudo aqui é informativo: comandos do livro de quests,
+    atalhos do NEI, waystones, grupos, carregamento de chunks e os detalhes das dimensões ATM.
+    Marque cada dica conforme for lendo.
+quests:
+- id: dica_abrir_livro
+  title: Abrindo o Livro
+  type: info
+  icon: minecraft:book
+  desc: |
+    O Livro de Quests não é um item: ele abre por uma §etecla§r (Controles, categoria
+    BetterQuesting, "Open Quests"). Existem também teclas para o Gerenciador de Grupo e para
+    trocar o tema visual.
+
+    Se perder o atalho, dê uma olhada no menu de Controles.
+  tasks: &id001
+  - check: true
+  rewards:
+  - xp: 2
+- id: dica_sincronizar
+  title: Quest Fora de Sincronia
+  type: info
+  icon: minecraft:paper
+  deps: [dica_abrir_livro]
+  desc: |
+    Se o livro mostrar algo estranho (quest que você completou aparecendo pendente), tente o
+    comando §e/bq_user refresh§r. Ele resincroniza o seu livro com o servidor.
+
+    Para receber uma cópia do guia de ajuda do BetterQuesting, use §e/bq_user help§r.
+  tasks: *id001
+  rewards:
+  - xp: 2
+- id: dica_comandos_admin
+  title: Comandos de Operador
+  type: info
+  icon: minecraft:command_block
+  deps: [dica_sincronizar]
+  desc: |
+    Quem administra o mundo tem os comandos §e/bq_admin§r: §eedit§r liga e desliga a edição,
+    §ecomplete <id>§r completa uma quest à força, §ereset§r apaga progresso e §elives§r ajusta
+    vidas. Cuidado: reset e delete não têm volta.
+
+    Tudo isso vem da ajuda do próprio BetterQuesting.
+  tasks: *id001
+  rewards:
+  - xp: 2
+- id: dica_grupos
+  title: Grupos de Quests
+  type: info
+  icon: minecraft:name_tag
+  deps: [dica_abrir_livro]
+  desc: |
+    Jogando com amigos? Abra o §eGerenciador de Grupo§r (tecla própria) e use "Create Party"
+    para criar o grupo. Convide jogadores, expulse quem quiser e escolha se vocês dividem as
+    vidas e as recompensas únicas.
+
+    Quests completadas por alguém do grupo contam para todos, conforme as opções.
+  tasks: *id001
+  rewards:
+  - xp: 2
+- id: dica_recompensas
+  title: Recompensas de Escolha
+  type: info
+  icon: minecraft:chest
+  deps: [dica_abrir_livro]
+  desc: |
+    Muitas quests oferecem uma §eescolha§r entre itens: selecione um e pegue. Se o inventário
+    estiver cheio, esvazie antes de resgatar.
+
+    As recompensas "kit" e "loot" aparecem como baús especiais que se abrem ao clicar.
+  tasks: *id001
+  rewards:
+  - xp: 2
+- id: dica_repetiveis
+  title: Missões Repetíveis
+  type: info
+  icon: minecraft:clock
+  deps: [dica_recompensas]
+  desc: |
+    As caçadas do §eQuadro de Recompensas§r podem ser refeitas depois de 24 horas do resgate. O
+    tempo é contado por quest. Combine várias por dia e acumule materiais ATM sem pressa.
+  tasks: *id001
+  rewards:
+  - xp: 2
+- id: dica_nei_receitas
+  title: 'NEI: Receitas e Usos'
+  type: info
+  icon: minecraft:enchanted_book
+  deps: [dica_abrir_livro]
+  desc: |
+    Com o mouse em cima de qualquer item, aperte §eR§r para ver como fazê-lo e §eU§r para ver
+    onde ele é usado. Na maioria das vezes, isso resolve qualquer dúvida de receita deste livro.
+
+    O NEI mostra máquinas, não só a bancada: Alloy Smelter, Mekanism, Thermal, Forestry.
+  tasks: *id001
+  rewards:
+  - xp: 2
+- id: dica_nei_alloy
+  title: Receitas da Fundidora
+  type: info
+  icon: EnderIO:blockAlloySmelter
+  deps: [dica_nei_receitas]
+  desc: |
+    As receitas do Allthemodium, Vibranium, Unobtainium e das ligas passam pela §eFundidora de
+    Ligas§r (EnderIO). No NEI, procure pela aba "Alloy Smelter" para ver ingredientes e RF.
+
+    Lembre: 150.000 RF para o Allthemodium, 250.000 para o Vibranium e o coração, 500.000 para o
+    Unobtainium.
+  tasks: *id001
+  rewards:
+  - xp: 2
+- id: dica_guia_mod
+  title: O Guia do Mod
+  type: info
+  icon: allthemodiumlegacy:legacy_guide
+  deps: [dica_nei_receitas]
+  desc: |
+    O item §eGuia da Família Akashic ATM§r (livro e pepita de Allthemodium, na bancada) tem
+    páginas sobre metais, ferramentas, armaduras, ligas, dimensões, o Piglich e a Estrela. Se
+    houver dúvida, leia o guia.
+  tasks: *id001
+  rewards:
+  - xp: 2
+- id: dica_waila
+  title: Waila
+  type: info
+  icon: minecraft:iron_pickaxe
+  deps: [dica_abrir_livro]
+  desc: |
+    Mire num bloco e o Waila mostra o nome e o mod de origem. Combinado com o plugin de
+    colheita, ele diz qual nível de ferramenta quebra o bloco. Muito útil para minérios novos.
+  tasks: *id001
+  rewards:
+  - xp: 2
+- id: dica_journeymap
+  title: JourneyMap
+  type: info
+  icon: minecraft:map
+  deps: [dica_abrir_livro]
+  desc: |
+    O JourneyMap desenha o mapa e permite marcar §ewaypoints§r. Marque a entrada de cada
+    dimensão: o ponto da Plataforma de Teletransporte, a base, o portal do Nether. Em O Além,
+    isso salva vidas.
+  tasks: *id001
+  rewards:
+  - xp: 2
+- id: dica_waystones
+  title: Waystones
+  type: info
+  icon: waystones:waystone
+  deps: [dica_journeymap]
+  desc: |
+    O pack tem §eWaystones§r e as pedras de dobra (Warp Stone e Return Scroll). Ative uma
+    waystone para se teleportar entre elas. §cAtenção:§r o teletransporte não cruza dimensões.
+    Se o servidor limitar a ativação, só operadores criam waystones.
+  tasks: *id001
+  rewards:
+  - xp: 2
+- id: dica_chunk_loader
+  title: Carregar Chunks
+  type: info
+  icon: MineFactoryReloaded:machine.2:10
+  deps: [dica_waystones]
+  desc: |
+    Quer que as máquinas continuem a trabalhar quando você está longe? Use o §eCarregador de
+    Chunks§r do MineFactory Reloaded. Ele mantém a área carregada.
+
+    Coloque um por base, e não exagere: muitas áreas ativas pesam no servidor.
+  tasks: *id001
+  rewards:
+  - xp: 2
+- id: dica_mochila
+  title: Mochila do Aventureiro
+  type: info
+  icon: adventurebackpack:blockBackpack
+  deps: [dica_journeymap]
+  desc: |
+    A §eMochila do Aventureiro§r guarda muita coisa e pode ser usada nas costas. Ótima para
+    expedições longas às dimensões, onde ninguém quer voltar para casa só para trocar itens.
+  tasks: *id001
+  rewards:
+  - xp: 2
+- id: dica_ender_storage
+  title: Baú do Fim
+  type: info
+  icon: EnderStorage:enderChest
+  deps: [dica_mochila]
+  desc: |
+    O §eBaú do Fim§r do Ender Storage tem uma cor e um código. Todos os baús iguais compartilham
+    o conteúdo. Pronto: um estoque no Overworld, outro na Mineração, o mesmo conteúdo.
+  tasks: *id001
+  rewards:
+  - xp: 2
+- id: dica_tome
+  title: Tomo Akashic
+  type: info
+  icon: akashictome:tome
+  deps: [dica_nei_receitas]
+  desc: |
+    O §eTomo Akashic§r combina guias de vários mods em um só livro. Leve um no inventário em vez
+    de um bando de livros. Siga com ele quando precisar consultar algo.
+  tasks: *id001
+  rewards:
+  - xp: 2
+- id: dica_gavetas
+  title: Gavetas de Armazenamento
+  type: info
+  icon: StorageDrawers:fullDrawers1
+  deps: [dica_mochila]
+  desc: |
+    As §eGavetas§r guardam um tipo de item em grande quantidade. Combine com o armazenamento do
+    pack para organizar nuggets, lingotes e blocos comprimidos. Mais compacto do que baús
+    enfileirados.
+  tasks: *id001
+  rewards:
+  - xp: 2
+- id: dica_organizar
+  title: Ordenar o Inventário
+  type: info
+  icon: minecraft:chest
+  deps: [dica_mochila]
+  desc: |
+    O pack tem Inventory Tweaks e o Bogo Sorter. Ambos arrumam o inventário em um clique
+    (confira as teclas e os botões em Controles). Muito útil quando a mochila se enche de
+    metais.
+  tasks: *id001
+  rewards:
+  - xp: 2
+- id: dica_teleport_regras
+  title: Regras da Plataforma
+  type: info
+  icon: allthemodiumlegacy:teleport_pad
+  deps: [dica_nei_receitas]
+  desc: |
+    Agache e clique com a mão vazia. Cada origem tem seu par: Overworld e Mineração, Nether e O
+    Outro, End e O Além. Espere 2 segundos entre usos, desmonte e solte passageiros. Se não
+    houver chegada segura e permitida, a viagem é recusada.
+  tasks: *id001
+  rewards:
+  - xp: 2
+- id: dica_unobtainium_fonte
+  title: Onde Está o Unobtainium?
+  type: info
+  icon: allthemodiumlegacy:unobtainium_ore
+  deps: [dica_nei_alloy]
+  desc: |
+    Na Mineração, o Unobtainium §cnão é gerado§r. Seu caminho é industrial: Unobtainium bruto na
+    Fundidora de Ligas (1 bloco de Vibranium + Núcleo Desperto + 8 Ligas Vibrantes). A geração
+    em novos chunks do End é opcional e vem desativada por padrão.
+  tasks: *id001
+  rewards:
+  - xp: 2
+- id: dica_geracao_opcional
+  title: Geração Opcional
+  type: info
+  icon: allthemodiumlegacy:allthemodium_ore
+  deps: [dica_unobtainium_fonte]
+  desc: |
+    Allthemodium no Overworld, Vibranium no Nether e Unobtainium no End são opções de
+    configuração, §edesativadas por padrão§r. Só chunks novos recebem a geração. Peça ao dono do
+    servidor, se quiser essas rotas.
+  tasks: *id001
+  rewards:
+  - xp: 2
+- id: dica_ids_dimensao
+  title: IDs das Dimensões
+  type: info
+  icon: minecraft:compass
+  deps: [dica_teleport_regras]
+  desc: |
+    As três dimensões ATM têm IDs fixos: Mineração 240, O Outro 241 e O Além 242. Nunca mude
+    esses números num mundo salvo. Conflitos de ID impedem o servidor de iniciar.
+  tasks: *id001
+  rewards:
+  - xp: 2
+- id: dica_armaduras
+  title: Armaduras Sem Voo
+  type: info
+  icon: allthemodiumlegacy:unobtainium_chestplate
+  deps: [dica_guia_mod]
+  desc: |
+    As armaduras de Allthemodium, Vibranium e Unobtainium dão proteção a afogamento, fogo,
+    queda, magia e Wither. §cNão dão voo.§r O peitoral de Unobtainium protege até do vazio.
+  tasks: *id001
+  rewards:
+  - xp: 2
+- id: dica_bussola_wither
+  title: Bússola do Wither
+  type: info
+  icon: allthemodiumlegacy:withers_compass
+  deps: [dica_armaduras]
+  desc: |
+    A §eBússola do Wither§r (componente da Estrela) reaplica o efeito Wither enquanto está na
+    sua mão. Ela não localiza nada. Guarde-a no inventário depois de usar nas receitas.
+  tasks: *id001
+  rewards:
+  - xp: 2
+- id: dica_tinkers
+  title: Tinkers com ATM
+  type: info
+  icon: allthemodiumlegacy:molten_allthemodium_bucket
+  deps: [dica_guia_mod]
+  desc: |
+    Os três metais viram peças do Tinkers' Construct, fundidos na Fundição com moldes nativos.
+    Ferramentas montadas lá usam a durabilidade do Tinkers (não são eternas como as prontas
+    deste mod).
+  tasks: *id001
+  rewards:
+  - xp: 2
+- id: dica_ae2
+  title: Automação com AE2
+  type: info
+  icon: minecraft:redstone
+  deps: [dica_nei_receitas]
+  desc: |
+    Os itens da família entram em padrões do Applied Energistics 2. Separe etapas de máquina das
+    receitas de bancada, teste cada padrão e mantenha estoque de templates e corações antes de
+    automatizar.
+  tasks: *id001
+  rewards:
+  - xp: 2
+- id: dica_gregstar
+  title: Sem GregStar
+  type: info
+  icon: allthemodiumlegacy:atm_star
+  deps: [dica_guia_mod]
+  desc: |
+    O GregStar não faz parte desta edição. A Estrela ATM e os blocos comprimidos fazem parte da
+    progressão. Se alguém falar da outra versão, ignore: a sua é esta.
+  tasks: *id001
+  rewards:
+  - xp: 2

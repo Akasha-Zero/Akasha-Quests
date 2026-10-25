@@ -1,0 +1,1714 @@
+chapter:
+  id: atm_allthemodium
+  title: Capítulo 2 — Allthemodium
+  prefix: ATM
+  order: 910
+  icon: allthemodiumlegacy:allthemodium_ingot
+  desc: |
+    §6Três metais, três mundos, um Piglich.§r Aqui você transforma o pacote do Capítulo 1 em
+    lingotes de Allthemodium, sobe a escada até o Vibranium e o Unobtainium, atravessa a
+    Mineração, O Outro e O Além, enfrenta o chefe das pirâmides e forja as ligas e armas que só
+    existem neste Volume.
+quests:
+- id: guia_akashic
+  title: O Guia da Família
+  type: main
+  icon: allthemodiumlegacy:legacy_guide
+  desc: |
+    Antes de tudo, um livrinho: o §eGuia da Família Akashic ATM§r. É só um livro e uma pepita de
+    Allthemodium na bancada, mas ele explica cada etapa do jeito do mod, páginas e páginas.
+
+    Se este capítulo e o guia divergirem em algum número, confie no guia e no NEI. Eles são a
+    fonte.
+  tasks:
+  - craft: allthemodiumlegacy:legacy_guide
+  rewards:
+  - xp: 3
+  - item:
+    - minecraft:book x4
+- id: martelo_processamento
+  title: Martelo de Processamento
+  type: main
+  deps: [guia_akashic]
+  desc: |
+    Cinco lingotes de ferro e duas varetas: o §eMartelo de Processamento§r. Ele corta a pedra
+    ancestral em lajes, escadas e muros, e quebra o Allthemodium bruto em pó.
+
+    §aDica:§r a posição do martelo na bancada muda o resultado. O guia explica as combinações.
+  tasks:
+  - craft: allthemodiumlegacy:processing_hammer
+  rewards:
+  - xp: 3
+  - item:
+    - minecraft:iron_ingot x8
+- id: bruto_atm
+  title: Allthemodium Bruto
+  type: main
+  deps: [martelo_processamento]
+  desc: |
+    Oito Enderium, oito Soularium e uma Estrela do Nether, na Fundidora de Ligas, sob 150.000
+    RF. O produto é o §eAllthemodium bruto§r, seu primeiro grama do metal lendário.
+
+    Se ainda não fez isso, o Capítulo 1 mostra o caminho. Não gaste tudo de uma vez: guarde
+    parte para o primeiro molde de ferraria.
+  tasks:
+  - get: allthemodiumlegacy:raw_allthemodium
+  rewards:
+  - xp: 6
+  - item:
+    - allthemodiumlegacy:raw_allthemodium
+- id: atm_po
+  title: Pó de Allthemodium
+  deps: [bruto_atm]
+  desc: |
+    Bata o bruto com o martelo na bancada e saem §e2 Pós de Allthemodium§r. Num Triturador
+    (Macerator do IC2), Pulverizador do Thermal ou Moinho do EnderIO a rota também funciona.
+
+    §aDica:§r converter um lingote em pó conserva material. Não é multiplicação, é só outra
+    forma.
+  tasks:
+  - get: allthemodiumlegacy:allthemodium_dust x2
+  rewards:
+  - xp: 3
+  - item:
+    - allthemodiumlegacy:allthemodium_dust
+- id: atm_lingote
+  title: Lingote de Allthemodium
+  type: milestone
+  icon: allthemodiumlegacy:allthemodium_ingot
+  deps: [bruto_atm]
+  desc: |
+    Funda o pó ou o bruto numa fornalha com pó de pirotita (ou nos fornos avançados do pack) e
+    saia com um §eLingote de Allthemodium§r, dourado e quente.
+
+    Segure o primeiro por um instante. Não é todo dia que a gente vê um metal que nem deveria
+    existir.
+  tasks:
+  - get: allthemodiumlegacy:allthemodium_ingot x4
+  rewards:
+  - xp: 6
+  - item:
+    - allthemodiumlegacy:allthemodium_nugget x9
+- id: atm_pepita
+  title: Pepitas e Lingotes
+  deps: [atm_lingote]
+  desc: |
+    Um lingote vira nove §ePepitas de Allthemodium§r e nove pepitas voltam a ser um lingote. A
+    pepita é a moeda do pack: a Plataforma de Teletransporte, a maçã, a cenoura e o guia pedem
+    pepitas.
+
+    Faça um estoquezinho de §e16§r.
+  tasks:
+  - get: allthemodiumlegacy:allthemodium_nugget x16
+  rewards:
+  - xp: 3
+  - item:
+    - allthemodiumlegacy:allthemodium_nugget x8
+- id: atm_placa
+  title: Placa de Allthemodium
+  type: optional
+  deps: [atm_lingote]
+  desc: |
+    Uma placa por lingote, no Formador de Metal do IC2 ou na Prensa de Metal do Immersive
+    Engineering. Na bancada, quatro lingotes rendem quatro placas, bom para quem não tem
+    máquina.
+
+    Placas servem para blocos mais finos, engrenagens e ferramentas mecânicas.
+  tasks:
+  - get: allthemodiumlegacy:allthemodium_plate x4
+  rewards:
+  - xp: 3
+  - item:
+    - allthemodiumlegacy:allthemodium_ingot
+- id: atm_vara
+  title: Vara de Allthemodium
+  type: optional
+  deps: [atm_lingote]
+  desc: |
+    Um lingote vira duas §eVaras§r no Formador. Na bancada, três lingotes em coluna dão seis
+    varas.
+
+    Varas são o cabo das ferramentas de liga e do tridente. Faça um punhado.
+  tasks:
+  - get: allthemodiumlegacy:allthemodium_rod x4
+  rewards:
+  - xp: 3
+  - item:
+    - allthemodiumlegacy:allthemodium_rod x2
+- id: atm_engrenagem
+  title: Engrenagem de Allthemodium
+  type: optional
+  deps: [atm_placa, atm_vara]
+  desc: |
+    Quatro lingotes pressionados fazem uma §eEngrenagem§r (no Compressor do Thermal, na Prensa
+    do IE, ou na bancada com oito lingotes para duas).
+
+    Bonita e inútil? Não: engrenagens são o coração de máquinas e de peças do pack.
+  tasks:
+  - get: allthemodiumlegacy:allthemodium_gear x2
+  rewards:
+  - xp: 3
+  - item:
+    - allthemodiumlegacy:allthemodium_plate x2
+- id: atm_bloco
+  title: Bloco de Allthemodium
+  type: main
+  deps: [atm_lingote]
+  desc: |
+    Nove lingotes, um §eBloco de Allthemodium§r. Ele serve de armazenamento, de ingrediente do
+    Vibranium bruto e de base dos blocos comprimidos do capítulo All The Compressed.
+
+    Exposto numa estante, brilha mais que qualquer troféu.
+  tasks:
+  - get: allthemodiumlegacy:allthemodium_block
+  rewards:
+  - xp: 5
+  - item:
+    - allthemodiumlegacy:allthemodium_ingot x2
+- id: atm_bruto_bloco
+  title: Bloco de Allthemodium Bruto
+  type: optional
+  deps: [bruto_atm]
+  desc: |
+    Nove brutos formam um §eBloco Bruto§r, bom para guardar minério sem fundir. Colocando um
+    deles no chão, ele pode ser quebrado para devolver o bruto.
+
+    Para o jogo de estocar, perfeito.
+  tasks:
+  - get: allthemodiumlegacy:raw_allthemodium_block
+  rewards:
+  - xp: 4
+  - item:
+    - allthemodiumlegacy:raw_allthemodium
+- id: atm_balde
+  title: Allthemodium Derretido
+  type: optional
+  deps: [atm_lingote]
+  desc: |
+    Na Fundição do Tinkers, o lingote vira §eAllthemodium derretido§r, que pode ser engarrafado
+    num balde com o Engarrafador ou o Transposador. Essa rota também alimenta as peças de
+    ferramentas do Tinkers.
+
+    Teste na Fundição quando tiver sobra de lingotes.
+  tasks:
+  - get: allthemodiumlegacy:molten_allthemodium_bucket
+  rewards:
+  - xp: 5
+  - item:
+    - minecraft:bucket x2
+- id: atm_maca
+  title: Maçã de Allthemodium
+  deps: [atm_pepita]
+  desc: |
+    Oito pepitas e uma maçã, formato de anel. A §eMaçã de Allthemodium§r dá Regeneração II e
+    Absorção II por trinta segundos.
+
+    Guarde para o Piglich ou para o fim de uma expedição longa na Mineração.
+  tasks:
+  - craft: allthemodiumlegacy:allthemodium_apple
+  rewards:
+  - xp: 4
+  - item:
+    - minecraft:apple x4
+- id: atm_cenoura
+  title: Cenoura de Allthemodium
+  deps: [atm_pepita]
+  desc: |
+    O mesmo anel, só que com uma cenoura no meio: a §eCenoura de Allthemodium§r. Ela dá
+    Regeneração III e Absorção III por trinta segundos, um upgrade claro sobre a maçã.
+
+    Coma antes do combate, não durante o pânico.
+  tasks:
+  - craft: allthemodiumlegacy:allthemodium_carrot
+  rewards:
+  - xp: 4
+  - item:
+    - minecraft:carrot x4
+- id: mek_clump
+  title: Aglomerado de Allthemodium
+  type: optional
+  deps: [bruto_atm]
+  desc: |
+    Quer render mais do minério? A rota Mekanism começa na §eCâmara de Purificação§r: o minério
+    (ou bruto) entra, com pederneira, e saem §eAglomerados§r. Eles multiplicam o rendimento em
+    relação a fundir direto.
+
+    Essa rota é opcional. Compare as saídas no NEI.
+  tasks:
+  - get: allthemodiumlegacy:allthemodium_clump
+  rewards:
+  - xp: 4
+  - item:
+    - minecraft:flint x8
+- id: mek_shard
+  title: Fragmento de Allthemodium
+  type: optional
+  deps: [mek_clump]
+  desc: |
+    A §eCâmara de Injeção Química§r pega o bruto com um gás e entrega §eFragmentos§r. É uma
+    etapa intermediária da cadeia: o rendimento cresce de novo.
+
+    §aDica:§r não confunda este fragmento químico com o fragmento de reparo do Tinkers.
+  tasks:
+  - get: allthemodiumlegacy:allthemodium_shard
+  rewards:
+  - xp: 4
+  - item:
+    - minecraft:flint x8
+- id: mek_crystal
+  title: Cristal de Allthemodium
+  type: optional
+  deps: [mek_shard]
+  desc: |
+    No §eCristalizador Químico§r, uma solução específica vira §eCristal de Allthemodium§r. É a
+    etapa mais refinada antes do pó sujo, do aglomerado e do lingote final.
+
+    O Mekanism é denso. Se cansar, volte a fundir direto.
+  tasks:
+  - get: allthemodiumlegacy:allthemodium_crystal
+  rewards:
+  - xp: 4
+  - item:
+    - minecraft:flint x8
+- id: mek_po_sujo
+  title: Pó Sujo
+  type: optional
+  deps: [mek_clump]
+  desc: |
+    O Triturador transforma o aglomerado em §ePó de Allthemodium Sujo§r, que ainda precisa de
+    uma passada no Enriquecedor antes de virar pó limpo.
+
+    Último degrau da rota longa. Uma conquista de paciência.
+  tasks:
+  - get: allthemodiumlegacy:dirty_allthemodium_dust
+  rewards:
+  - xp: 4
+  - item:
+    - allthemodiumlegacy:allthemodium_dust x2
+- id: plataforma
+  title: Plataforma de Teletransporte
+  type: main
+  deps: [atm_pepita]
+  desc: |
+    Quatro pepitas de Allthemodium em cruz e uma pérola do Ender no meio. Pronto: a §ePlataforma
+    de Teletransporte§r. Agachado e de mãos vazias, clique nela e você parte.
+
+    Cada origem tem seu par: Overworld e Mineração, Nether e O Outro, End e O Além. Espere dois
+    segundos entre usos e desmonte antes de viajar.
+  tasks:
+  - craft: allthemodiumlegacy:teleport_pad
+  rewards:
+  - xp: 8
+  - item:
+    - allthemodiumlegacy:teleport_pad
+  - item:
+    - minecraft:ender_pearl x4
+- id: visitar_mineracao
+  title: A Dimensão de Mineração
+  type: portal
+  deps: [plataforma]
+  desc: |
+    Pelo Overworld, na Plataforma, você chega à §eMineração§r (dimensão 240): superfície plana
+    em Y229, pedra, camada profunda, netherrack e pedra do End, até a bedrock lá embaixo.
+
+    §aDica:§r deixe sua plataforma intacta. Ela é a volta para casa. Leve picareta, comida e
+    blocos.
+  tasks:
+  - visit:
+      dim: 240
+      name: Dimensão de Mineração
+  rewards:
+  - xp: 10
+  - kit:
+      name: Kit do Minerador
+      items:
+      - minecraft:cooked_beef x16
+      - minecraft:torch x64
+      - minecraft:cobblestone x64
+- id: minerio_atm
+  title: Minério de Allthemodium
+  type: main
+  deps: [visitar_mineracao]
+  desc: |
+    Na Mineração, o §eMinério de Allthemodium§r aparece nas camadas profundas. Cave com
+    paciência, tochas na mão, e junte §e4 minérios§r.
+
+    Cada um rende bruto, pó, aglomerado, o que você escolher.
+  tasks:
+  - get: allthemodiumlegacy:allthemodium_ore x4
+  rewards:
+  - xp: 8
+  - item:
+    - allthemodiumlegacy:allthemodium_ingot x2
+- id: minerio_atm_ardosia
+  title: Minério de Ardósia
+  type: optional
+  deps: [minerio_atm]
+  desc: |
+    Na camada profunda (Y95 a 141), há uma variante: o §eMinério de Allthemodium de Ardósia§r,
+    que usa ardósia ou pedra ancestral conforme a mod disponível. O rendimento é o mesmo.
+
+    Junte §e2§r só para conhecer.
+  tasks:
+  - get: allthemodiumlegacy:allthemodium_slate_ore x2
+  rewards:
+  - xp: 5
+  - item:
+    - allthemodiumlegacy:allthemodium_nugget x9
+- id: pedra_ancestral
+  title: Pedra Ancestral
+  type: optional
+  deps: [visitar_mineracao]
+  desc: |
+    A pedra de O Outro, também achada na Mineração, tem tom diferente e várias variantes (lisa,
+    tijolos, musgosa, lajes, escadas, muros). Junte §e32§r e use o martelo na bancada para
+    moldar.
+
+    Boa para construções que parecem saídas de uma lenda.
+  tasks:
+  - get: allthemodiumlegacy:ancient_stone x32
+  rewards:
+  - xp: 4
+  - item:
+    - allthemodiumlegacy:ancient_stone x16
+- id: visitar_outro
+  title: O Outro
+  type: portal
+  deps: [plataforma]
+  desc: |
+    Pelo Nether, na Plataforma, você cai em §eO Outro§r (dimensão 241): vale de almas, deserto,
+    deltas de basalto, florestas carmesim e distorcida ancestrais.
+
+    §cPerigo:§r criaturas hostis e estruturas. Armadura, comida e um jeito de voltar antes de
+    explorar.
+  tasks:
+  - visit:
+      dim: 241
+      name: O Outro
+  rewards:
+  - xp: 12
+  - kit:
+      name: Kit do Explorador
+      items:
+      - minecraft:cooked_beef x16
+      - minecraft:golden_apple x2
+      - minecraft:torch x32
+- id: minerio_vibranium
+  title: Minério de Vibranium
+  type: main
+  deps: [visitar_outro]
+  desc: |
+    Em O Outro, procure o §eMinério de Vibranium§r junto a tetos de cavernas. Ele aparece em
+    duas variantes: a comum e a do Outro. Junte §e4§r.
+
+    Arredores de tetos de caverna e câmaras de basalto são os melhores lugares.
+  tasks:
+  - get: ore:oreVibranium x4
+  rewards:
+  - xp: 8
+  - item:
+    - allthemodiumlegacy:vibranium_nugget x9
+- id: minerio_outro_vibranium
+  title: Vibranium do Outro
+  type: optional
+  deps: [minerio_vibranium]
+  desc: |
+    Existe uma segunda pedra: o §eMinério de Vibranium do Outro§r, mais nativo dessa dimensão. O
+    pó e o bruto saem iguais. Colete §e2§r e compare o aspecto.
+
+    Opcional, mas curioso.
+  tasks:
+  - get: allthemodiumlegacy:other_vibranium_ore x2
+  rewards:
+  - xp: 5
+  - item:
+    - allthemodiumlegacy:vibranium_nugget x9
+- id: minerio_atm_outro
+  title: Allthemodium em O Outro
+  type: optional
+  deps: [visitar_outro]
+  desc: |
+    Em O Outro também há §eAllthemodium§r nas regiões baixas e intermediárias. Se a Mineração
+    estiver cheia de gente (ou você já cansou dela), esta é a alternativa.
+
+    Junte §e4§r minérios ou brutos.
+  tasks:
+  - get: ore:oreAllthemodium x4
+  rewards:
+  - xp: 6
+  - item:
+    - allthemodiumlegacy:allthemodium_nugget x9
+- id: vale_das_almas
+  title: O Vale das Almas
+  type: main
+  deps: [visitar_outro]
+  desc: |
+    No bioma do §eVale das Almas§r escondem-se pirâmides. É lá que mora o Piglich. Explore a
+    região a pé e procure a pirâmide por perto.
+
+    §cPerigo:§r criaturas ágeis e o ambiente hostil. Leve armadura boa.
+  tasks:
+  - visit:
+      dim: 241
+      biome: 242
+      name: Vale das Almas
+  rewards:
+  - xp: 10
+  - item:
+    - minecraft:golden_apple x2
+    - minecraft:cooked_beef x16
+- id: vegetacao_ancestral
+  title: Madeira Ancestral
+  type: optional
+  deps: [visitar_outro]
+  desc: |
+    As árvores de O Outro são de três famílias: §eancestral§r, §edemoníaca§r e §ede almas§r.
+    Junte §e8 troncos ancestrais§r para ver as variações (tábuas, escadas, cercas, estantes).
+
+    O martelo de processamento descasca o tronco na bancada.
+  tasks:
+  - get: allthemodiumlegacy:ancient_log_0 x8
+  rewards:
+  - xp: 4
+  - item:
+    - allthemodiumlegacy:ancient_planks x16
+- id: mudas_outro
+  title: Mudas de Três Madeiras
+  type: optional
+  deps: [vegetacao_ancestral]
+  desc: |
+    Colete §ea muda ancestral§r, §ea demoníaca§r e §ea das almas§r. Elas crescem em O Outro e
+    abrem possibilidade de construir sua casa lá, madeira aos montes.
+
+    Pode soltar de qualquer folha das árvores certas.
+  tasks:
+  - get:
+    - allthemodiumlegacy:ancient_sapling
+    - allthemodiumlegacy:demonic_sapling
+    - allthemodiumlegacy:soul_sapling
+  rewards:
+  - xp: 4
+  - item:
+    - minecraft:dye:15 x16
+- id: ervas_outro
+  title: Ervas Antigas
+  type: optional
+  deps: [visitar_outro]
+  desc: |
+    Três ervas crescem em O Outro: a §eAncestral§r, a §eDemoníaca§r e a §eda Alma§r. Colete uma
+    de cada. Elas decoram, e algumas são ingredientes de receitas locais.
+
+    Confira o NEI para ver o que usa cada uma.
+  tasks:
+  - get:
+    - allthemodiumlegacy:ancient_herb
+    - allthemodiumlegacy:demonic_herb
+    - allthemodiumlegacy:soul_herb
+  rewards:
+  - xp: 4
+  - item:
+    - minecraft:wheat_seeds x8
+- id: esqueleto_outro
+  title: Esqueletos Wither do Outro
+  type: optional
+  deps: [visitar_outro]
+  desc: |
+    Em O Outro, uma variante local de §eEsqueleto Wither§r patrulha as estruturas. Derrube
+    §e4§r, de longe se possível, e cuide do efeito Wither (leite ou o próprio Peitoral).
+
+    Dá bom treino para o chefe.
+  tasks:
+  - kill: allthemodiumlegacy.other_wither_skeleton x4
+  rewards:
+  - xp: 8
+  - item:
+    - minecraft:bone x16
+- id: piglich
+  title: O Piglich
+  type: boss
+  icon: allthemodiumlegacy:piglich_heart
+  deps: [vale_das_almas, atm_cenoura]
+  desc: |
+    Dentro da pirâmide vive o §ePiglich§r, com 9.999 pontos de vida, defesas altas, ataques
+    corpo a corpo e rajadas de bolas de fogo, e ainda chama reforços. Entre preparado: armadura
+    boa, Maçãs e Cenouras de Allthemodium, arena aberta e muita comida.
+
+    §cPerigo:§r bolas de fogo vêm em salvas. Quebre a linha de visão e ataque nos intervalos.
+  tasks:
+  - kill: allthemodiumlegacy.piglich x1
+  rewards:
+  - xp: 40
+  - loot: lendario
+  - kit:
+      name: Espólio do Piglich
+      items:
+      - allthemodiumlegacy:piglich_heart x2
+      - allthemodiumlegacy:allthemodium_ingot x4
+- id: coracao_piglich
+  title: Coração de Piglich
+  type: milestone
+  icon: allthemodiumlegacy:piglich_heart
+  deps: [piglich]
+  desc: |
+    O Piglich deixa um §eCoração§r. Ele é o ingrediente-mestre das ligas: sem ele, nenhuma liga,
+    nenhum tridente, nenhuma Estrela. Nove corações viram um bloco, e nove blocos viram um bloco
+    1x.
+
+    Se o chefe renascer, volte. Dizem que ele é persistente.
+  tasks:
+  - get: allthemodiumlegacy:piglich_heart x2
+  rewards:
+  - xp: 10
+  - item:
+    - allthemodiumlegacy:piglich_heart
+- id: coracao_alternativo
+  title: Coração na Fundidora
+  type: optional
+  deps: [coracao_piglich]
+  desc: |
+    Sem coragem de enfrentar o chefe de novo? Existe uma rota industrial: §e8 Soularium§r, §e1
+    Estrela do Nether§r e §e1 lingote de Unobtainium§r na Fundidora de Ligas, por 250.000 RF.
+
+    Cara, mas funciona. Confira no NEI.
+  tasks:
+  - get: allthemodiumlegacy:piglich_heart
+  rewards:
+  - xp: 6
+  - item:
+    - allthemodiumlegacy:piglich_heart
+- id: bloco_coracao
+  title: Bloco de Corações
+  type: optional
+  deps: [coracao_piglich]
+  desc: |
+    Nove corações formam um §eBloco de Coração de Piglich§r, ingrediente da Alma do Dragão, do
+    Estilhaço do Esquecimento e do AllTheCatalystium da Estrela.
+
+    Prepare um estoque. A Estrela ATM não perdoa quem economiza.
+  tasks:
+  - get: allthemodiumlegacy:piglich_heart_block
+  rewards:
+  - xp: 10
+  - item:
+    - allthemodiumlegacy:piglich_heart
+- id: visitar_alem
+  title: O Além
+  type: portal
+  deps: [plataforma]
+  desc: |
+    Pelo End, na Plataforma, você chega a §eO Além§r (dimensão 242), um vazio com apenas um
+    apoio 3x3. Não há terreno natural; é um mundo para construir.
+
+    Leve blocos, defenda a plataforma e preserve o caminho de volta. Cama não vale aqui; se
+    morrer, você acorda no Overworld.
+  tasks:
+  - visit:
+      dim: 242
+      name: O Além
+  rewards:
+  - xp: 12
+  - kit:
+      name: Kit do Construtor
+      items:
+      - minecraft:stone x64
+      - minecraft:glass x32
+      - minecraft:torch x32
+- id: ampliar_alem
+  title: Construir no Vazio
+  type: optional
+  deps: [visitar_alem]
+  desc: |
+    Comece ampliando a plataforma. Junte §e128 blocos§r de pedra e monte uma base ao redor da
+    chegada. Em O Além, tudo que você coloca fica; nenhum creeper, nenhum vizinho.
+
+    Imagine: sua própria ilha flutuante do jeito que você quiser.
+  tasks:
+  - get: minecraft:stone x128
+  rewards:
+  - xp: 6
+  - item:
+    - minecraft:glowstone x16
+- id: molde_atm
+  title: Molde de Ferraria
+  type: main
+  deps: [atm_lingote]
+  desc: |
+    O §eMolde de Ferraria de Allthemodium§r é papel dobrado em torno de um bloco de diamante,
+    uma Estrela do Nether e dois lingotes. Ele é consumido no uso, então faça um por peça.
+
+    Há também uma receita de duplicação do molde (netherita, ardósia e o próprio molde). Veja no
+    NEI.
+  tasks:
+  - craft: allthemodiumlegacy:allthemodium_upgrade_smithing_template
+  rewards:
+  - xp: 8
+  - item:
+    - minecraft:paper x16
+    - minecraft:diamond_block
+- id: atm_espada
+  title: Espada de Allthemodium
+  type: main
+  deps: [molde_atm, atm_lingote]
+  desc: |
+    Uma lâmina para quem já cansou de rachar crânios com ferro. Na bancada: a espada de
+    netherita e um §elingote de Allthemodium§r mais o §emolde de ferraria de Allthemodium§r. O
+    resultado tem o brilho dourado do metal.
+
+    Corta mais fundo e, como toda peça pronta desta família, não perde durabilidade. Nome e
+    encantamentos da peça antiga são preservados.
+  tasks:
+  - craft: allthemodiumlegacy:allthemodium_sword
+  rewards:
+  - xp: 6
+  - item:
+    - allthemodiumlegacy:allthemodium_nugget x9
+- id: atm_picareta
+  title: Picareta de Allthemodium
+  type: main
+  deps: [molde_atm, atm_lingote]
+  desc: |
+    O som de uma picareta de verdade, Herói: Na bancada: a picareta de netherita e um §elingote
+    de Allthemodium§r mais o §emolde de ferraria de Allthemodium§r. O resultado tem o brilho
+    dourado do metal.
+
+    Quebra tudo que o pack tem de duro e nunca se desgasta, ótima para a Mineração. Nome e
+    encantamentos da peça antiga são preservados.
+  tasks:
+  - craft: allthemodiumlegacy:allthemodium_pickaxe
+  rewards:
+  - xp: 6
+  - item:
+    - allthemodiumlegacy:allthemodium_nugget x9
+- id: atm_machado
+  title: Machado de Allthemodium
+  type: normal
+  deps: [molde_atm, atm_lingote]
+  desc: |
+    Madeira não tem chance. Na bancada: a machado de netherita e um §elingote de Allthemodium§r
+    mais o §emolde de ferraria de Allthemodium§r. O resultado tem o brilho dourado do metal.
+
+    Derruba árvore de O Outro como se fosse grama. Nome e encantamentos da peça antiga são
+    preservados.
+  tasks:
+  - craft: allthemodiumlegacy:allthemodium_axe
+  rewards:
+  - xp: 6
+  - item:
+    - allthemodiumlegacy:allthemodium_nugget x9
+- id: atm_pa
+  title: Pá de Allthemodium
+  type: normal
+  deps: [molde_atm, atm_lingote]
+  desc: |
+    Terra, areia e cascalho se rendem. Na bancada: a pá de netherita e um §elingote de
+    Allthemodium§r mais o §emolde de ferraria de Allthemodium§r. O resultado tem o brilho
+    dourado do metal.
+
+    Útil para limpar ilhas inteiras em O Além. Nome e encantamentos da peça antiga são
+    preservados.
+  tasks:
+  - craft: allthemodiumlegacy:allthemodium_shovel
+  rewards:
+  - xp: 6
+  - item:
+    - allthemodiumlegacy:allthemodium_nugget x9
+- id: atm_enxada
+  title: Enxada de Allthemodium
+  type: normal
+  deps: [molde_atm, atm_lingote]
+  desc: |
+    Pode parecer enfeite, mas é útil. Na bancada: a enxada de netherita e um §elingote de
+    Allthemodium§r mais o §emolde de ferraria de Allthemodium§r. O resultado tem o brilho
+    dourado do metal.
+
+    Prepara terra sem desgaste, perfeita para as fazendas que sustentam sua jornada. Nome e
+    encantamentos da peça antiga são preservados.
+  tasks:
+  - craft: allthemodiumlegacy:allthemodium_hoe
+  rewards:
+  - xp: 6
+  - item:
+    - allthemodiumlegacy:allthemodium_nugget x9
+- id: atm_clava
+  title: Clava de Allthemodium
+  type: normal
+  deps: [molde_atm, atm_lingote]
+  desc: |
+    A queda aumenta o golpe. Na bancada: um machado de ferro e um §ebloco de Allthemodium§r mais
+    o §emolde de ferraria de Allthemodium§r. O resultado tem o brilho dourado do metal.
+
+    O dano cresce com a altura da queda, e um acerto aceito zera a queda acumulada. Nome e
+    encantamentos da peça antiga são preservados.
+  tasks:
+  - craft: allthemodiumlegacy:allthemodium_mace
+  rewards:
+  - xp: 6
+  - item:
+    - allthemodiumlegacy:allthemodium_nugget x9
+- id: atm_elmo
+  title: Elmo de Allthemodium
+  type: normal
+  deps: [molde_atm, atm_lingote]
+  desc: |
+    Cada peça da armadura de Allthemodium não gasta e dá um poder próprio. O elmo protege contra
+    afogamento: você respira debaixo d'água como se nada fosse.
+
+    Na bancada: o elmo de netherita mais um §elingote de Allthemodium§r e o §emolde de
+    ferraria§r. Importante: nenhuma dessas armaduras dá voo.
+  tasks:
+  - craft: allthemodiumlegacy:allthemodium_helmet
+  rewards:
+  - xp: 6
+  - item:
+    - allthemodiumlegacy:allthemodium_nugget x9
+- id: atm_peitoral
+  title: Peitoral de Allthemodium
+  type: normal
+  deps: [molde_atm, atm_lingote]
+  desc: |
+    Cada peça da armadura de Allthemodium não gasta e dá um poder próprio. O peitoral protege do
+    fogo e da lava e reduz o dano mágico.
+
+    Na bancada: o peitoral de netherita mais um §elingote de Allthemodium§r e o §emolde de
+    ferraria§r. Importante: nenhuma dessas armaduras dá voo.
+  tasks:
+  - craft: allthemodiumlegacy:allthemodium_chestplate
+  rewards:
+  - xp: 6
+  - item:
+    - allthemodiumlegacy:allthemodium_nugget x9
+- id: atm_calcas
+  title: Calças de Allthemodium
+  type: normal
+  deps: [molde_atm, atm_lingote]
+  desc: |
+    Cada peça da armadura de Allthemodium não gasta e dá um poder próprio. As calças ajudam a
+    nadar e removem o efeito Wither.
+
+    Na bancada: as calças de netherita mais um §elingote de Allthemodium§r e o §emolde de
+    ferraria§r. Importante: nenhuma dessas armaduras dá voo.
+  tasks:
+  - craft: allthemodiumlegacy:allthemodium_leggings
+  rewards:
+  - xp: 6
+  - item:
+    - allthemodiumlegacy:allthemodium_nugget x9
+- id: atm_botas
+  title: Botas de Allthemodium
+  type: normal
+  deps: [molde_atm, atm_lingote]
+  desc: |
+    Cada peça da armadura de Allthemodium não gasta e dá um poder próprio. As botas anulam o
+    dano de queda e ajudam a flutuar sobre a lava.
+
+    Na bancada: as botas de netherita mais um §elingote de Allthemodium§r e o §emolde de
+    ferraria§r. Importante: nenhuma dessas armaduras dá voo.
+  tasks:
+  - craft: allthemodiumlegacy:allthemodium_boots
+  rewards:
+  - xp: 6
+  - item:
+    - allthemodiumlegacy:allthemodium_nugget x9
+- id: bruto_vib
+  title: Vibranium Bruto
+  type: main
+  deps: [atm_bloco, minerio_vibranium]
+  desc: |
+    O próximo degrau exige mais: §e1 Bloco de Allthemodium§r, §e1 Placa Reforçada de Irídio§r
+    (IC2) e §e8 Enderium§r na Fundidora de Ligas, com 250.000 RF. O produto é o §eVibranium
+    bruto§r.
+
+    O irídio vem do Laminador/Fabricador de Matéria do IC2. Veja o NEI para a cadeia.
+  tasks:
+  - get: allthemodiumlegacy:raw_vibranium
+  rewards:
+  - xp: 10
+  - item:
+    - allthemodiumlegacy:raw_vibranium
+- id: vib_po
+  title: Pó de Vibranium
+  deps: [bruto_vib]
+  desc: |
+    Bata o bruto com o martelo e saem dois pós. O Triturador, o Pulverizador do Thermal e o
+    Moinho do EnderIO fazem o mesmo.
+
+    Confira os rendimentos no NEI antes de automatizar.
+  tasks:
+  - get: allthemodiumlegacy:vibranium_dust x2
+  rewards:
+  - xp: 4
+  - item:
+    - allthemodiumlegacy:vibranium_dust
+- id: vib_lingote
+  title: Lingote de Vibranium
+  type: milestone
+  icon: allthemodiumlegacy:vibranium_ingot
+  deps: [bruto_vib]
+  desc: |
+    Funda o pó (ou o bruto com pirotita) e o §eLingote de Vibranium§r aparece, azulado, frio
+    como o céu à noite. Ele é o degrau que une Allthemodium e Unobtainium.
+
+    Guarde pelo menos §e4§r para o molde e a primeira peça.
+  tasks:
+  - get: allthemodiumlegacy:vibranium_ingot x4
+  rewards:
+  - xp: 8
+  - item:
+    - allthemodiumlegacy:vibranium_nugget x9
+- id: vib_pepita
+  title: Pepitas de Vibranium
+  type: optional
+  deps: [vib_lingote]
+  desc: |
+    Um lingote dá nove pepitas, nove pepitas dão um lingote. Útil para ajustar quantidades e
+    como moeda de troca entre as máquinas do pack.
+  tasks:
+  - get: allthemodiumlegacy:vibranium_nugget x16
+  rewards:
+  - xp: 3
+  - item:
+    - allthemodiumlegacy:vibranium_nugget x8
+- id: vib_placa
+  title: Placa de Vibranium
+  type: optional
+  deps: [vib_lingote]
+  desc: |
+    Uma placa por lingote no Formador de Metal ou na Prensa de Metal. Na bancada, quatro
+    lingotes rendem quatro placas.
+  tasks:
+  - get: allthemodiumlegacy:vibranium_plate x4
+  rewards:
+  - xp: 3
+  - item:
+    - allthemodiumlegacy:vibranium_ingot
+- id: vib_vara
+  title: Vara de Vibranium
+  type: optional
+  deps: [vib_lingote]
+  desc: |
+    Um lingote vira duas varas no Formador. Em coluna, na bancada, três lingotes dão seis.
+
+    Varas de Vibranium também servem para as ferramentas de liga.
+  tasks:
+  - get: allthemodiumlegacy:vibranium_rod x4
+  rewards:
+  - xp: 3
+  - item:
+    - allthemodiumlegacy:vibranium_rod x2
+- id: vib_engrenagem
+  title: Engrenagem de Vibranium
+  type: optional
+  deps: [vib_placa, vib_vara]
+  desc: |
+    Quatro lingotes no Compressor ou na Prensa de Metal formam uma §eEngrenagem de Vibranium§r.
+    Dá para fazer na bancada também, com oito lingotes para duas.
+  tasks:
+  - get: allthemodiumlegacy:vibranium_gear x2
+  rewards:
+  - xp: 3
+  - item:
+    - allthemodiumlegacy:vibranium_plate x2
+- id: vib_bloco
+  title: Bloco de Vibranium
+  type: main
+  deps: [vib_lingote]
+  desc: |
+    Nove lingotes para um §eBloco de Vibranium§r. Ele entra na receita do Unobtainium bruto e é
+    a base da família de blocos comprimidos de Vibranium.
+  tasks:
+  - get: allthemodiumlegacy:vibranium_block
+  rewards:
+  - xp: 5
+  - item:
+    - allthemodiumlegacy:vibranium_ingot x2
+- id: vib_bruto_bloco
+  title: Bloco de Vibranium Bruto
+  type: optional
+  deps: [bruto_vib]
+  desc: |
+    Nove brutos formam um §eBloco Bruto§r para armazenar. Quebrando-o, o bruto volta.
+  tasks:
+  - get: allthemodiumlegacy:raw_vibranium_block
+  rewards:
+  - xp: 4
+  - item:
+    - allthemodiumlegacy:raw_vibranium
+- id: vib_balde
+  title: Vibranium Derretido
+  type: optional
+  deps: [vib_lingote]
+  desc: |
+    Na Fundição do Tinkers o lingote vira líquido, que você engarrafa num balde. As peças de
+    ferramentas do Tinkers em Vibranium saem daí, com traços de durabilidade e sangramento.
+  tasks:
+  - get: allthemodiumlegacy:molten_vibranium_bucket
+  rewards:
+  - xp: 5
+  - item:
+    - minecraft:bucket x2
+- id: molde_vib
+  title: Molde de Ferraria de Vibranium
+  type: main
+  deps: [vib_lingote]
+  desc: |
+    Papel, bloco de diamante, Estrela do Nether e §e2 lingotes de Vibranium§r. Cada peça consome
+    um molde.
+
+    A duplicação usa 8 lingotes de Allthemodium, o próprio molde e pedra ancestral. Confira no
+    NEI.
+  tasks:
+  - craft: allthemodiumlegacy:vibranium_upgrade_smithing_template
+  rewards:
+  - xp: 10
+  - item:
+    - minecraft:paper x16
+    - minecraft:diamond_block
+- id: vib_espada
+  title: Espada de Vibranium
+  type: main
+  deps: [molde_vib, vib_lingote, atm_espada]
+  desc: |
+    Uma lâmina para quem já cansou de rachar crânios com ferro. Na bancada: a espada de
+    Allthemodium e um §elingote de Vibranium§r mais o §emolde de ferraria de Vibranium§r. O
+    resultado tem o brilho azul do metal.
+
+    Corta mais fundo e, como toda peça pronta desta família, não perde durabilidade. Nome e
+    encantamentos da peça antiga são preservados.
+  tasks:
+  - craft: allthemodiumlegacy:vibranium_sword
+  rewards:
+  - xp: 8
+  - item:
+    - allthemodiumlegacy:vibranium_nugget x9
+- id: vib_picareta
+  title: Picareta de Vibranium
+  type: main
+  deps: [molde_vib, vib_lingote, atm_picareta]
+  desc: |
+    O som de uma picareta de verdade, Herói: Na bancada: a picareta de Allthemodium e um
+    §elingote de Vibranium§r mais o §emolde de ferraria de Vibranium§r. O resultado tem o brilho
+    azul do metal.
+
+    Quebra tudo que o pack tem de duro e nunca se desgasta, ótima para a Mineração. Nome e
+    encantamentos da peça antiga são preservados.
+  tasks:
+  - craft: allthemodiumlegacy:vibranium_pickaxe
+  rewards:
+  - xp: 8
+  - item:
+    - allthemodiumlegacy:vibranium_nugget x9
+- id: vib_machado
+  title: Machado de Vibranium
+  type: normal
+  deps: [molde_vib, vib_lingote, atm_machado]
+  desc: |
+    Madeira não tem chance. Na bancada: a machado de Allthemodium e um §elingote de Vibranium§r
+    mais o §emolde de ferraria de Vibranium§r. O resultado tem o brilho azul do metal.
+
+    Derruba árvore de O Outro como se fosse grama. Nome e encantamentos da peça antiga são
+    preservados.
+  tasks:
+  - craft: allthemodiumlegacy:vibranium_axe
+  rewards:
+  - xp: 8
+  - item:
+    - allthemodiumlegacy:vibranium_nugget x9
+- id: vib_pa
+  title: Pá de Vibranium
+  type: normal
+  deps: [molde_vib, vib_lingote, atm_pa]
+  desc: |
+    Terra, areia e cascalho se rendem. Na bancada: a pá de Allthemodium e um §elingote de
+    Vibranium§r mais o §emolde de ferraria de Vibranium§r. O resultado tem o brilho azul do
+    metal.
+
+    Útil para limpar ilhas inteiras em O Além. Nome e encantamentos da peça antiga são
+    preservados.
+  tasks:
+  - craft: allthemodiumlegacy:vibranium_shovel
+  rewards:
+  - xp: 8
+  - item:
+    - allthemodiumlegacy:vibranium_nugget x9
+- id: vib_enxada
+  title: Enxada de Vibranium
+  type: normal
+  deps: [molde_vib, vib_lingote, atm_enxada]
+  desc: |
+    Pode parecer enfeite, mas é útil. Na bancada: a enxada de Allthemodium e um §elingote de
+    Vibranium§r mais o §emolde de ferraria de Vibranium§r. O resultado tem o brilho azul do
+    metal.
+
+    Prepara terra sem desgaste, perfeita para as fazendas que sustentam sua jornada. Nome e
+    encantamentos da peça antiga são preservados.
+  tasks:
+  - craft: allthemodiumlegacy:vibranium_hoe
+  rewards:
+  - xp: 8
+  - item:
+    - allthemodiumlegacy:vibranium_nugget x9
+- id: vib_clava
+  title: Clava de Vibranium
+  type: normal
+  deps: [molde_vib, vib_lingote, atm_clava]
+  desc: |
+    A queda aumenta o golpe. Na bancada: a clava de Allthemodium e um §ebloco de Vibranium§r
+    mais o §emolde de ferraria de Vibranium§r. O resultado tem o brilho azul do metal.
+
+    O dano cresce com a altura da queda, e um acerto aceito zera a queda acumulada. Nome e
+    encantamentos da peça antiga são preservados.
+  tasks:
+  - craft: allthemodiumlegacy:vibranium_mace
+  rewards:
+  - xp: 8
+  - item:
+    - allthemodiumlegacy:vibranium_nugget x9
+- id: vib_elmo
+  title: Elmo de Vibranium
+  type: normal
+  deps: [molde_vib, vib_lingote, atm_elmo]
+  desc: |
+    Cada peça da armadura de Vibranium não gasta e dá um poder próprio. O elmo protege contra
+    afogamento: você respira debaixo d'água como se nada fosse.
+
+    Na bancada: o elmo de Allthemodium mais um §elingote de Vibranium§r e o §emolde de
+    ferraria§r. Importante: nenhuma dessas armaduras dá voo.
+  tasks:
+  - craft: allthemodiumlegacy:vibranium_helmet
+  rewards:
+  - xp: 8
+  - item:
+    - allthemodiumlegacy:vibranium_nugget x9
+- id: vib_peitoral
+  title: Peitoral de Vibranium
+  type: normal
+  deps: [molde_vib, vib_lingote, atm_peitoral]
+  desc: |
+    Cada peça da armadura de Vibranium não gasta e dá um poder próprio. O peitoral protege do
+    fogo e da lava e reduz o dano mágico.
+
+    Na bancada: o peitoral de Allthemodium mais um §elingote de Vibranium§r e o §emolde de
+    ferraria§r. Importante: nenhuma dessas armaduras dá voo.
+  tasks:
+  - craft: allthemodiumlegacy:vibranium_chestplate
+  rewards:
+  - xp: 8
+  - item:
+    - allthemodiumlegacy:vibranium_nugget x9
+- id: vib_calcas
+  title: Calças de Vibranium
+  type: normal
+  deps: [molde_vib, vib_lingote, atm_calcas]
+  desc: |
+    Cada peça da armadura de Vibranium não gasta e dá um poder próprio. As calças ajudam a nadar
+    e removem o efeito Wither.
+
+    Na bancada: as calças de Allthemodium mais um §elingote de Vibranium§r e o §emolde de
+    ferraria§r. Importante: nenhuma dessas armaduras dá voo.
+  tasks:
+  - craft: allthemodiumlegacy:vibranium_leggings
+  rewards:
+  - xp: 8
+  - item:
+    - allthemodiumlegacy:vibranium_nugget x9
+- id: vib_botas
+  title: Botas de Vibranium
+  type: normal
+  deps: [molde_vib, vib_lingote, atm_botas]
+  desc: |
+    Cada peça da armadura de Vibranium não gasta e dá um poder próprio. As botas anulam o dano
+    de queda e ajudam a flutuar sobre a lava.
+
+    Na bancada: as botas de Allthemodium mais um §elingote de Vibranium§r e o §emolde de
+    ferraria§r. Importante: nenhuma dessas armaduras dá voo.
+  tasks:
+  - craft: allthemodiumlegacy:vibranium_boots
+  rewards:
+  - xp: 8
+  - item:
+    - allthemodiumlegacy:vibranium_nugget x9
+- id: bruto_unob
+  title: Unobtainium Bruto
+  type: main
+  deps: [vib_bloco]
+  desc: |
+    O topo da escada: §e1 Bloco de Vibranium§r, §e1 Núcleo Desperto§r do Draconic Evolution e
+    §e8 Ligas Vibrantes§r do EnderIO na Fundidora de Ligas, 500.000 RF. O produto: §eUnobtainium
+    bruto§r.
+
+    Não há minério dele na Mineração. Para o Unobtainium sempre existe um caminho industrial.
+  tasks:
+  - get: allthemodiumlegacy:raw_unobtainium
+  rewards:
+  - xp: 15
+  - item:
+    - allthemodiumlegacy:raw_unobtainium
+- id: unob_po
+  title: Pó de Unobtainium
+  deps: [bruto_unob]
+  desc: |
+    Duas porções de pó por bruto, no martelo ou nas máquinas. Pode alimentar a rota do Mekanism
+    se quiser.
+  tasks:
+  - get: allthemodiumlegacy:unobtainium_dust x2
+  rewards:
+  - xp: 4
+  - item:
+    - allthemodiumlegacy:unobtainium_dust
+- id: unob_lingote
+  title: Lingote de Unobtainium
+  type: milestone
+  icon: allthemodiumlegacy:unobtainium_ingot
+  deps: [bruto_unob]
+  desc: |
+    Funda o bruto ou o pó e eis o §eLingote de Unobtainium§r. O nome diz tudo: algo que não
+    devia dar para obter.
+
+    Você acabou de conseguir. Guarde §e4§r para o molde e a primeira peça, o resto é só a
+    diversão.
+  tasks:
+  - get: allthemodiumlegacy:unobtainium_ingot x4
+  rewards:
+  - xp: 12
+  - item:
+    - allthemodiumlegacy:unobtainium_nugget x9
+- id: unob_pepita
+  title: Pepitas de Unobtainium
+  type: optional
+  deps: [unob_lingote]
+  desc: |
+    Nove pepitas por lingote. Dá flexibilidade para receitas finas e tem uso nas máquinas de
+    moldagem.
+  tasks:
+  - get: allthemodiumlegacy:unobtainium_nugget x16
+  rewards:
+  - xp: 3
+  - item:
+    - allthemodiumlegacy:unobtainium_nugget x8
+- id: unob_placa
+  title: Placa de Unobtainium
+  type: optional
+  deps: [unob_lingote]
+  desc: |
+    Placa no Formador de Metal ou na Prensa de Metal: um lingote para uma placa.
+  tasks:
+  - get: allthemodiumlegacy:unobtainium_plate x4
+  rewards:
+  - xp: 3
+  - item:
+    - allthemodiumlegacy:unobtainium_ingot
+- id: unob_vara
+  title: Vara de Unobtainium
+  type: main
+  deps: [unob_lingote]
+  desc: |
+    Uma vara de Unobtainium é o cabo certo para as ferramentas de liga. Faça várias: o Tridente,
+    a picareta, o machado, a pá e a espada de liga usam as varas deste metal.
+  tasks:
+  - get: allthemodiumlegacy:unobtainium_rod x6
+  rewards:
+  - xp: 4
+  - item:
+    - allthemodiumlegacy:unobtainium_rod x2
+- id: unob_engrenagem
+  title: Engrenagem de Unobtainium
+  type: optional
+  deps: [unob_placa, unob_vara]
+  desc: |
+    Quatro lingotes por engrenagem, no Compressor ou na Prensa. Rara e cara, mas bonita.
+  tasks:
+  - get: allthemodiumlegacy:unobtainium_gear
+  rewards:
+  - xp: 4
+  - item:
+    - allthemodiumlegacy:unobtainium_plate x2
+- id: unob_bloco
+  title: Bloco de Unobtainium
+  type: main
+  deps: [unob_lingote]
+  desc: |
+    Nove lingotes: um bloco. É também o material da Clava de Unobtainium, e a base da família de
+    blocos comprimidos de Unobtainium.
+  tasks:
+  - get: allthemodiumlegacy:unobtainium_block
+  rewards:
+  - xp: 6
+  - item:
+    - allthemodiumlegacy:unobtainium_ingot
+- id: unob_bruto_bloco
+  title: Bloco de Unobtainium Bruto
+  type: optional
+  deps: [bruto_unob]
+  desc: |
+    Nove brutos formam o bloco bruto para estocar sem fundir.
+  tasks:
+  - get: allthemodiumlegacy:raw_unobtainium_block
+  rewards:
+  - xp: 5
+  - item:
+    - allthemodiumlegacy:raw_unobtainium
+- id: unob_balde
+  title: Unobtainium Derretido
+  type: optional
+  deps: [unob_lingote]
+  desc: |
+    Derretido na Fundição, o Unobtainium abastece as peças do Tinkers. Combina mineração leve,
+    embalo e dano crescente por acertos consecutivos. Engarrafe em um balde.
+  tasks:
+  - get: allthemodiumlegacy:molten_unobtainium_bucket
+  rewards:
+  - xp: 6
+  - item:
+    - minecraft:bucket x2
+- id: molde_unob
+  title: Molde de Ferraria de Unobtainium
+  type: main
+  deps: [unob_lingote]
+  desc: |
+    Papel, bloco de diamante, Estrela do Nether e §e2 lingotes de Unobtainium§r. A duplicação
+    usa Vibranium e pedra do End.
+  tasks:
+  - craft: allthemodiumlegacy:unobtainium_upgrade_smithing_template
+  rewards:
+  - xp: 12
+  - item:
+    - minecraft:paper x16
+    - minecraft:diamond_block
+- id: unob_espada
+  title: Espada de Unobtainium
+  type: main
+  deps: [molde_unob, unob_lingote, vib_espada]
+  desc: |
+    Uma lâmina para quem já cansou de rachar crânios com ferro. Na bancada: a espada de
+    Vibranium e um §elingote de Unobtainium§r mais o §emolde de ferraria de Unobtainium§r. O
+    resultado tem o brilho roxo do metal.
+
+    Corta mais fundo e, como toda peça pronta desta família, não perde durabilidade. Nome e
+    encantamentos da peça antiga são preservados.
+  tasks:
+  - craft: allthemodiumlegacy:unobtainium_sword
+  rewards:
+  - xp: 8
+  - item:
+    - allthemodiumlegacy:unobtainium_nugget x9
+- id: unob_picareta
+  title: Picareta de Unobtainium
+  type: main
+  deps: [molde_unob, unob_lingote, vib_picareta]
+  desc: |
+    O som de uma picareta de verdade, Herói: Na bancada: a picareta de Vibranium e um §elingote
+    de Unobtainium§r mais o §emolde de ferraria de Unobtainium§r. O resultado tem o brilho roxo
+    do metal.
+
+    Quebra tudo que o pack tem de duro e nunca se desgasta, ótima para a Mineração. Nome e
+    encantamentos da peça antiga são preservados.
+  tasks:
+  - craft: allthemodiumlegacy:unobtainium_pickaxe
+  rewards:
+  - xp: 8
+  - item:
+    - allthemodiumlegacy:unobtainium_nugget x9
+- id: unob_machado
+  title: Machado de Unobtainium
+  type: normal
+  deps: [molde_unob, unob_lingote, vib_machado]
+  desc: |
+    Madeira não tem chance. Na bancada: a machado de Vibranium e um §elingote de Unobtainium§r
+    mais o §emolde de ferraria de Unobtainium§r. O resultado tem o brilho roxo do metal.
+
+    Derruba árvore de O Outro como se fosse grama. Nome e encantamentos da peça antiga são
+    preservados.
+  tasks:
+  - craft: allthemodiumlegacy:unobtainium_axe
+  rewards:
+  - xp: 8
+  - item:
+    - allthemodiumlegacy:unobtainium_nugget x9
+- id: unob_pa
+  title: Pá de Unobtainium
+  type: normal
+  deps: [molde_unob, unob_lingote, vib_pa]
+  desc: |
+    Terra, areia e cascalho se rendem. Na bancada: a pá de Vibranium e um §elingote de
+    Unobtainium§r mais o §emolde de ferraria de Unobtainium§r. O resultado tem o brilho roxo do
+    metal.
+
+    Útil para limpar ilhas inteiras em O Além. Nome e encantamentos da peça antiga são
+    preservados.
+  tasks:
+  - craft: allthemodiumlegacy:unobtainium_shovel
+  rewards:
+  - xp: 8
+  - item:
+    - allthemodiumlegacy:unobtainium_nugget x9
+- id: unob_enxada
+  title: Enxada de Unobtainium
+  type: normal
+  deps: [molde_unob, unob_lingote, vib_enxada]
+  desc: |
+    Pode parecer enfeite, mas é útil. Na bancada: a enxada de Vibranium e um §elingote de
+    Unobtainium§r mais o §emolde de ferraria de Unobtainium§r. O resultado tem o brilho roxo do
+    metal.
+
+    Prepara terra sem desgaste, perfeita para as fazendas que sustentam sua jornada. Nome e
+    encantamentos da peça antiga são preservados.
+  tasks:
+  - craft: allthemodiumlegacy:unobtainium_hoe
+  rewards:
+  - xp: 8
+  - item:
+    - allthemodiumlegacy:unobtainium_nugget x9
+- id: unob_clava
+  title: Clava de Unobtainium
+  type: normal
+  deps: [molde_unob, unob_lingote, vib_clava]
+  desc: |
+    A queda aumenta o golpe. Na bancada: a clava de Vibranium e um §ebloco de Unobtainium§r mais
+    o §emolde de ferraria de Unobtainium§r. O resultado tem o brilho roxo do metal.
+
+    O dano cresce com a altura da queda, e um acerto aceito zera a queda acumulada. Nome e
+    encantamentos da peça antiga são preservados.
+  tasks:
+  - craft: allthemodiumlegacy:unobtainium_mace
+  rewards:
+  - xp: 8
+  - item:
+    - allthemodiumlegacy:unobtainium_nugget x9
+- id: unob_elmo
+  title: Elmo de Unobtainium
+  type: normal
+  deps: [molde_unob, unob_lingote, vib_elmo]
+  desc: |
+    Cada peça da armadura de Unobtainium não gasta e dá um poder próprio. O elmo protege contra
+    afogamento: você respira debaixo d'água como se nada fosse.
+
+    Na bancada: o elmo de Vibranium mais um §elingote de Unobtainium§r e o §emolde de
+    ferraria§r. Importante: nenhuma dessas armaduras dá voo.
+  tasks:
+  - craft: allthemodiumlegacy:unobtainium_helmet
+  rewards:
+  - xp: 8
+  - item:
+    - allthemodiumlegacy:unobtainium_nugget x9
+- id: unob_peitoral
+  title: Peitoral de Unobtainium
+  type: normal
+  deps: [molde_unob, unob_lingote, vib_peitoral]
+  desc: |
+    Cada peça da armadura de Unobtainium não gasta e dá um poder próprio. O peitoral protege do
+    fogo e da lava e reduz o dano mágico.
+
+    Na bancada: o peitoral de Vibranium mais um §elingote de Unobtainium§r e o §emolde de
+    ferraria§r. O peitoral de Unobtainium protege até do vazio. Importante: nenhuma dessas
+    armaduras dá voo.
+  tasks:
+  - craft: allthemodiumlegacy:unobtainium_chestplate
+  rewards:
+  - xp: 8
+  - item:
+    - allthemodiumlegacy:unobtainium_nugget x9
+- id: unob_calcas
+  title: Calças de Unobtainium
+  type: normal
+  deps: [molde_unob, unob_lingote, vib_calcas]
+  desc: |
+    Cada peça da armadura de Unobtainium não gasta e dá um poder próprio. As calças ajudam a
+    nadar e removem o efeito Wither.
+
+    Na bancada: as calças de Vibranium mais um §elingote de Unobtainium§r e o §emolde de
+    ferraria§r. Importante: nenhuma dessas armaduras dá voo.
+  tasks:
+  - craft: allthemodiumlegacy:unobtainium_leggings
+  rewards:
+  - xp: 8
+  - item:
+    - allthemodiumlegacy:unobtainium_nugget x9
+- id: unob_botas
+  title: Botas de Unobtainium
+  type: normal
+  deps: [molde_unob, unob_lingote, vib_botas]
+  desc: |
+    Cada peça da armadura de Unobtainium não gasta e dá um poder próprio. As botas anulam o dano
+    de queda e ajudam a flutuar sobre a lava.
+
+    Na bancada: as botas de Vibranium mais um §elingote de Unobtainium§r e o §emolde de
+    ferraria§r. Importante: nenhuma dessas armaduras dá voo.
+  tasks:
+  - craft: allthemodiumlegacy:unobtainium_boots
+  rewards:
+  - xp: 8
+  - item:
+    - allthemodiumlegacy:unobtainium_nugget x9
+- id: jarra_etherium
+  title: Jarra de Etherium
+  type: optional
+  deps: [unob_lingote]
+  desc: |
+    Seis lingotes de Unobtainium, um conduto de essência do Ars Magica, e a §eJarra de Etherium
+    de Unobtainium§r guarda poder arcano. Combine com seus rituais de magia.
+
+    Um item decorativo e útil para quem mistura tecnologia e magia.
+  tasks:
+  - get: allthemodiumlegacy:allthemodium_source_jar
+  rewards:
+  - xp: 8
+  - item:
+    - allthemodiumlegacy:unobtainium_nugget x9
+- id: liga_vib_atm
+  title: Liga Vibranium-Allthemodium
+  type: main
+  deps: [unob_lingote, coracao_piglich]
+  desc: |
+    Alloy Smelter: §e1 lingote de Vibranium§r + §e1 de Allthemodium§r + §e1 Coração de
+    Piglich§r. O coração é consumido. Você também pode fundir o pó da liga, se preferir.
+
+    É a liga do machado e da pá de liga.
+  tasks:
+  - get: allthemodiumlegacy:vibranium_allthemodium_alloy_ingot x3
+  rewards:
+  - xp: 10
+  - item:
+    - allthemodiumlegacy:vibranium_allthemodium_alloy_ingot
+- id: liga_unob_atm
+  title: Liga Unobtainium-Allthemodium
+  type: main
+  deps: [liga_vib_atm]
+  desc: |
+    Alloy Smelter: §e1 lingote de Unobtainium§r + §e1 de Allthemodium§r + §e1 Coração de
+    Piglich§r. Mais densa, é a liga da picareta de liga.
+  tasks:
+  - get: allthemodiumlegacy:unobtainium_allthemodium_alloy_ingot x3
+  rewards:
+  - xp: 10
+  - item:
+    - allthemodiumlegacy:unobtainium_allthemodium_alloy_ingot
+- id: liga_unob_vib
+  title: Liga Unobtainium-Vibranium
+  type: main
+  deps: [liga_vib_atm]
+  desc: |
+    Alloy Smelter: §e1 lingote de Unobtainium§r + §e1 de Vibranium§r + §e1 Coração de Piglich§r.
+    É a liga do Tridente, e da espada de liga.
+  tasks:
+  - get: allthemodiumlegacy:unobtainium_vibranium_alloy_ingot x3
+  rewards:
+  - xp: 10
+  - item:
+    - allthemodiumlegacy:unobtainium_vibranium_alloy_ingot
+- id: liga_po_atm
+  title: Pó das Ligas
+  type: optional
+  deps: [liga_unob_vib, liga_unob_atm]
+  desc: |
+    Cada liga também existe em pó, que você obtém triturando o lingote. Funda o pó numa fornalha
+    e volta o lingote. Útil para armazenar ou para encaixar na rota de Mekanism.
+  tasks:
+  - get:
+    - allthemodiumlegacy:vibranium_allthemodium_alloy_dust
+    - allthemodiumlegacy:unobtainium_allthemodium_alloy_dust
+    - allthemodiumlegacy:unobtainium_vibranium_alloy_dust
+  rewards:
+  - xp: 4
+  - item:
+    - allthemodiumlegacy:allthemodium_dust x2
+- id: liga_blocos
+  title: Blocos de Liga
+  type: milestone
+  deps: [liga_unob_vib, liga_unob_atm]
+  desc: |
+    Nove lingotes de cada liga formam um bloco, e o bloco de liga é ingrediente de etapas da
+    Estrela ATM (Unobtainium-Allthemodium e Unobtainium-Vibranium). Faça §e1§r de cada.
+  tasks:
+  - get:
+    - allthemodiumlegacy:unobtainium_allthemodium_alloy_block
+    - allthemodiumlegacy:unobtainium_vibranium_alloy_block
+    - allthemodiumlegacy:vibranium_allthemodium_alloy_block
+  rewards:
+  - xp: 12
+  - item:
+    - allthemodiumlegacy:piglich_heart
+- id: liga_picareta
+  title: Picareta de Liga
+  deps: [liga_unob_atm, unob_vara]
+  desc: |
+    Três lingotes de Unobtainium-Allthemodium e duas varas de Unobtainium, no formato de
+    picareta. É a ferramenta mineradora dos finais.
+  tasks:
+  - craft: allthemodiumlegacy:alloy_pick
+  rewards:
+  - xp: 10
+  - item:
+    - allthemodiumlegacy:unobtainium_rod x4
+- id: liga_machado
+  title: Machado de Liga
+  deps: [liga_vib_atm, unob_vara]
+  desc: |
+    Três lingotes de Vibranium-Allthemodium e duas varas de Unobtainium. Derruba tudo em um
+    golpe.
+  tasks:
+  - craft: allthemodiumlegacy:alloy_axe
+  rewards:
+  - xp: 10
+  - item:
+    - allthemodiumlegacy:unobtainium_rod x4
+- id: liga_pa
+  title: Pá de Liga
+  deps: [liga_vib_atm, unob_vara]
+  desc: |
+    Um lingote de Vibranium-Allthemodium e duas varas de Unobtainium. Simples, mas deixa a terra
+    escorrer.
+  tasks:
+  - craft: allthemodiumlegacy:alloy_shovel
+  rewards:
+  - xp: 10
+  - item:
+    - allthemodiumlegacy:unobtainium_rod x4
+- id: liga_espada
+  title: Lâmina de Liga
+  deps: [liga_unob_vib, unob_vara]
+  desc: |
+    Dois lingotes de Unobtainium-Vibranium e uma vara de Unobtainium. Uma lâmina rápida, afiada
+    e que nunca perde o gume.
+  tasks:
+  - craft: allthemodiumlegacy:alloy_sword
+  rewards:
+  - xp: 10
+  - item:
+    - allthemodiumlegacy:unobtainium_rod x4
+- id: liga_tridente
+  title: Tridente de Liga
+  type: boss
+  icon: allthemodiumlegacy:alloy_trident
+  deps: [liga_unob_vib, unob_vara]
+  desc: |
+    Três lingotes de Unobtainium-Vibranium e duas varas de Unobtainium formam o §eTridente de
+    Liga§r. Ele volta para a mão, encadeia raios entre até 16 monstros próximos (sem queimar
+    blocos) e carrega nome e encantamentos.
+
+    Deixe espaço no inventário para recuperá-lo.
+  tasks:
+  - craft: allthemodiumlegacy:alloy_trident
+  rewards:
+  - xp: 15
+  - loot: epico
+- id: liga_paxel
+  title: Pacachado de Liga
+  type: milestone
+  icon: allthemodiumlegacy:alloy_paxel
+  deps: [liga_picareta, liga_machado, liga_pa, liga_unob_vib]
+  desc: |
+    Junte a picareta, o machado e a pá de liga com mais um lingote de Unobtainium-Vibranium, e
+    saia com o §ePacachado de Liga§r: três ferramentas em uma.
+
+    É a ferramenta definitiva de escavação do pack.
+  tasks:
+  - craft: allthemodiumlegacy:alloy_paxel
+  rewards:
+  - xp: 20
+  - loot: epico
+- id: abelha_atm
+  title: Abelha de Allthemodium
+  type: optional
+  deps: [atm_lingote]
+  desc: |
+    Se as abelhas de metal estão ativas no seu mundo (ficam ligadas por padrão), cruze e cuide
+    da abelha de §eAllthemodium§r no Apiário. O Forestry e o Gendustry ajudam. O produto é o
+    §eFavo de Allthemodium§r.
+
+    É uma rota exigente e demorada, por isso é opcional.
+  tasks:
+  - get: allthemodiumlegacy:allthemodium_comb
+  rewards:
+  - xp: 8
+  - item:
+    - Forestry:apiculture
+- id: abelha_vib
+  title: Abelha de Vibranium
+  type: optional
+  deps: [abelha_atm, vib_lingote]
+  desc: |
+    Mesma ideia, nível acima: a abelha de §eVibranium§r produz o Favo de Vibranium. Consulte o
+    NEI em "Bee Breeding" para ver a árvore genética.
+  tasks:
+  - get: allthemodiumlegacy:vibranium_comb
+  rewards:
+  - xp: 8
+  - item:
+    - Forestry:apiculture
+- id: abelha_unob
+  title: Abelha de Unobtainium
+  type: optional
+  deps: [abelha_vib, unob_lingote]
+  desc: |
+    A abelha final da série. O §eFavo de Unobtainium§r vem dela. Prepare ambiente, flores e
+    paciência.
+  tasks:
+  - get: allthemodiumlegacy:unobtainium_comb
+  rewards:
+  - xp: 10
+  - item:
+    - Forestry:apiculture
+- id: residuo_atm
+  title: Resíduo de Allthemodium
+  type: optional
+  deps: [abelha_atm]
+  desc: |
+    Passe o favo pela Centrífuga e sai o §eResíduo de Allthemodium§r. Nove resíduos fazem uma
+    pepita. Pequeno ganho, mas contínuo.
+  tasks:
+  - get: allthemodiumlegacy:allthemodium_bee_residue
+  rewards:
+  - xp: 4
+  - item:
+    - allthemodiumlegacy:allthemodium_nugget x2
+- id: residuo_vib
+  title: Resíduo de Vibranium
+  type: optional
+  deps: [abelha_vib]
+  desc: |
+    Mesmo processo com o favo de Vibranium. Nove resíduos, uma pepita.
+  tasks:
+  - get: allthemodiumlegacy:vibranium_bee_residue
+  rewards:
+  - xp: 4
+  - item:
+    - allthemodiumlegacy:vibranium_nugget x2
+- id: residuo_unob
+  title: Resíduo de Unobtainium
+  type: optional
+  deps: [abelha_unob]
+  desc: |
+    A última linha de produção de pepitas. Centrifugue o favo de Unobtainium.
+  tasks:
+  - get: allthemodiumlegacy:unobtainium_bee_residue
+  rewards:
+  - xp: 4
+  - item:
+    - allthemodiumlegacy:unobtainium_nugget x2
+- id: allthemodium
+  title: Allthemodium
+  type: milestone
+  icon: allthemodiumlegacy:unobtainium_ingot
+  deps: [liga_paxel, liga_tridente, visitar_alem, unob_peitoral, unob_picareta]
+  desc: |
+    Fim do Capítulo 2, Herói. Você abriu o Allthemodium, escalou até o Unobtainium, atravessou
+    as três dimensões, derrotou o Piglich e forjou as ligas que poucos viram.
+
+    Esta quest é o seu marco: ela abre a porta para a §eEstrela ATM§r. Os componentes dela ficam
+    no capítulo seguinte.
+  tasks:
+  - get: allthemodiumlegacy:allthemodium_ingot
+  - get: allthemodiumlegacy:vibranium_ingot
+  - get: allthemodiumlegacy:unobtainium_ingot
+  - get: allthemodiumlegacy:piglich_heart
+  rewards:
+  - xp: 50
+  - loot:
+    - lendario
+    - epico
+  - kit:
+      name: Kit do Fim da Estrada
+      items:
+      - allthemodiumlegacy:unobtainium_ingot x2
+      - allthemodiumlegacy:vibranium_ingot x4
+      - allthemodiumlegacy:allthemodium_ingot x8

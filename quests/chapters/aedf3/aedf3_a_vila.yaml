@@ -1,0 +1,364 @@
+chapter:
+  id: aedf3_a_vila
+  title: A Vila
+  prefix: AEDF3
+  order: 800.0
+  icon: minecraft:bed
+  desc: |
+    §6Memórias de outros heróis, página zero.§r Antes dos reatores, dos dragões e das naves, os heróis da Era do Futuro faziam a mesma coisa que você: fincavam uma casinha no chão e chamavam de lar. Aqui eu guardo o espírito das §eVilas§r lendárias, onde cada um tinha sua casa, sua horta e seu cantinho. Monte a sua!
+quests:
+- id: primeira_madeira
+  title: O Primeiro Tronco
+  type: main
+  desc: |
+    Toda vila lendária começou com alguém dando soco numa árvore, Herói. Não tem vergonha nenhuma nisso! Junte §e8 troncos§r de qualquer tipo de madeira. Eles viram tábuas, tábuas viram ferramentas, e ferramentas viram sonhos. Plante uma muda depois de cortar: os heróis da Era do Futuro sempre deixavam a floresta mais bonita do que encontraram.
+  tasks:
+  - {get: 'minecraft:log:* x8'}
+  rewards:
+  - {xp: 5}
+  - choice: ['minecraft:apple x4', 'minecraft:bread x8', 'minecraft:torch x16']
+- id: bancada_da_vila
+  title: A Bancada do Povoado
+  type: main
+  deps: [primeira_madeira]
+  desc: |
+    A bancada é o coração de qualquer povoado, é nela que o primeiro pão, a primeira porta e a primeira espada nascem. Quatro tábuas em quadrado e pronto! Coloque no meio do futuro terreno da vila.
+
+    §aDica:§r esqueceu uma receita? Aperte §eR§r no NEI com o mouse sobre o item e a página mostra tudo. Bora construir, Herói!
+  tasks:
+  - {craft: 'minecraft:crafting_table'}
+  rewards:
+  - {xp: 4}
+  - choice: ['minecraft:stick x16', 'minecraft:planks x16']
+- id: tabuas_e_paredes
+  title: Paredes e Telhado
+  type: main
+  deps: [bancada_da_vila]
+  desc: |
+    Uma casa começa pelas paredes. Reúna §e32 tábuas§r (ou mais, se estiver sonhando alto) e levante quatro paredes com teto. Nas memórias que recuperei, as primeiras casas eram quadradas e feias, e todo mundo achava lindo, porque eram suas. Pode ser de madeira, pedra ou o que preferir.
+
+    §aDica:§r deixe espaço para o segundo andar, as ideias sempre crescem.
+  tasks:
+  - {get: 'minecraft:planks:* x32'}
+  rewards:
+  - {xp: 5}
+  - choice: ['minecraft:log x8', 'minecraft:stone x16', 'minecraft:glass x8']
+- id: porta_da_frente
+  title: A Porta da Frente
+  type: main
+  deps: [tabuas_e_paredes]
+  desc: |
+    Sem porta, qualquer zumbi entra e se serve da sua despensa! Seis tábuas em duas colunas rendem §e3 portas de madeira§r. Instale uma na entrada, e lembre: criaturas hostis não sabem abrir porta, mas sabem esperar do lado de fora até amanhecer.
+
+    §cCuidado:§r deixe uma tocha do lado de fora para espantar quem passar por perto.
+  tasks:
+  - {craft: 'minecraft:wooden_door'}
+  rewards:
+  - {xp: 5}
+  - choice: ['minecraft:torch x16', 'minecraft:planks x16']
+- id: cama_do_heroi
+  title: A Cama
+  type: main
+  deps: [porta_da_frente]
+  desc: |
+    Três tábuas e três lãs: eis a §eCama§r, o melhor invento da civilização. Dormindo, você pula a noite e ainda marca esta casa como seu ponto de retorno quando as coisas dão errado. Lã vem de ovelhas (use tesouras para não machucar) ou de fios, se tiver sorte.
+
+    Boa noite, Herói. Sonhe com dragões!
+  tasks:
+  - {craft: 'minecraft:bed'}
+  rewards:
+  - {xp: 5}
+  - choice: ['minecraft:bread x8', 'minecraft:cooked_porkchop x6', 'minecraft:apple x6']
+- id: bau_e_despensa
+  title: O Baú da Despensa
+  type: main
+  deps: [cama_do_heroi]
+  desc: |
+    Oito tábuas em volta de um buraco e pronto: §eBaú§r! Heróis de outras eras diziam que a organização de uma vila se mede pelo número de baús etiquetados. Comece com um só e vá crescendo. Dois baús lado a lado viram um baú grande, ótimo para a despensa da cozinha.
+
+    §aDica:§r separe comida, minérios e ferramentas desde já. O seu eu do futuro agradece.
+  tasks:
+  - {craft: 'minecraft:chest'}
+  rewards:
+  - {xp: 5}
+  - choice: ['minecraft:coal x8', 'minecraft:iron_ingot x4']
+- id: fornalha_do_forno
+  title: A Fornalha
+  type: main
+  deps: [bau_e_despensa]
+  desc: |
+    Oito pedregulhos, um buraco no meio e você tem a §eFornalha§r. Ela assa comida, funde minério e derrete areia em vidro. Sem ela não há ferro, e sem ferro a história acaba antes de começar. Ponha uma na cozinha, outra perto da mina, e nunca esqueça combustível: carvão rende bem mais que lenha.
+  tasks:
+  - {craft: 'minecraft:furnace'}
+  rewards:
+  - {xp: 5}
+  - choice: ['minecraft:coal x16', 'minecraft:iron_ingot x4']
+- id: luz_na_vila
+  title: Luz na Vila
+  type: normal
+  deps: [fornalha_do_forno]
+  desc: |
+    Vila sem luz vira buffet de monstros. Misture carvão (ou carvão vegetal) com um graveto para fazer §etochas§r, e salpique-as pelas ruas, pelo quintal e pelos telhados. Quanto menos cantinho escuro, menos criatura nascendo à noite.
+
+    §aDica:§r tocha a cada 7 blocos mais ou menos já impede monstros de nascerem no escuro.
+  tasks:
+  - {get: 'minecraft:torch x32'}
+  rewards:
+  - {xp: 3}
+  - choice: ['minecraft:coal x8', 'minecraft:stick x16']
+- id: cerca_do_curral
+  title: A Cerca do Curral
+  type: normal
+  deps: [luz_na_vila]
+  desc: |
+    Bichos precisam de cercadinho, e cercadinho precisa de §ecerca§r! Seis tábuas e dois gravetos rendem algumas peças, então faça um punhado. Com um curral, vacas, porcos, ovelhas e galinhas ficam à mão, e você ganha carne, leite, lã, couro e ovos sem sair para caçar.
+
+    §cAtenção:§r portinhola ou portão em cada curral, senão você vai pular a cerca toda hora.
+  tasks:
+  - {get: 'minecraft:fence x16'}
+  rewards:
+  - {xp: 3}
+  - choice: ['minecraft:wheat x8', 'minecraft:lead x2']
+- id: horta_da_vila
+  title: A Horta
+  type: main
+  deps: [cerca_do_curral]
+  desc: |
+    Aposto que seu estômago já está roncando! Plante sementes em terra arada perto de água (até 4 blocos de distância) e espere o trigo ficar dourado. Colha §e16 trigos§r. Os heróis das memórias tinham hortas enormes, algumas vigiadas por golens estranhos e muito dedicados, mas isso é conversa para outro capítulo.
+  tasks:
+  - {get: 'minecraft:wheat x16'}
+  rewards:
+  - {xp: 5}
+  - choice: ['minecraft:wheat_seeds x16', 'minecraft:dye:15 x8', 'minecraft:bread x8']
+- id: padaria_do_gutin
+  title: A Padaria
+  type: main
+  deps: [horta_da_vila]
+  desc: |
+    Três trigos em fileira viram um §ePão§r. Nas lendas da Era do Futuro existia uma padaria famosa, abastecida por golens que colhiam trigo sozinhos! Por enquanto, você será o padeiro: asse doze pães, guarde no baú e distribua entre os amigos. Pão quentinho resolve qualquer expedição.
+
+    §aDica:§r um dia a gente automatiza isso, prometo.
+  tasks:
+  - {get: 'minecraft:bread x12'}
+  rewards:
+  - {xp: 5}
+  - choice: ['minecraft:cake', 'minecraft:pumpkin_pie x4']
+- id: palheiro
+  title: Fardos de Feno
+  type: optional
+  deps: [padaria_do_gutin]
+  desc: |
+    Nove trigos viram um §eFardo de Feno§r, decoração perfeita para celeiros, cavalariças e estandes de feira. Também amortece quedas (cair no feno dói bem menos!). Faça quatro e monte um canto rural na sua vila, com cercado, comedouro e talvez um espantalho de abóbora. Sempre achei o feno o bloco mais bonito do campo, Herói, e ainda é barato!
+  tasks:
+  - {get: 'minecraft:hay_block x4'}
+  rewards:
+  - {xp: 3}
+  - item: ['minecraft:wheat x16']
+- id: hortifruti
+  title: Cesta de Legumes
+  type: normal
+  deps: [palheiro]
+  desc: |
+    Uma vila de verdade tem de tudo: cenouras, batatas e abóboras. Plante os legumes em canteiros separados, com tochas ou água por perto. As abóboras também servem para outra coisa muito importante, que vamos ver logo adiante: a §eproteção da vila§r.
+
+    Aproveite, Herói, é comida de graça!
+  tasks:
+  - get: ['minecraft:carrot x8', 'minecraft:potato x8', 'minecraft:pumpkin x2']
+  rewards:
+  - {xp: 3}
+  - choice: ['minecraft:golden_carrot x2', 'minecraft:pumpkin_pie x4', 'minecraft:baked_potato x8']
+- id: rebanho
+  title: O Rebanho
+  type: normal
+  deps: [hortifruti]
+  desc: |
+    Lã, couro, carne: tudo vem do curral. Leve tesouras para as ovelhas (a lã volta a crescer!) e mate o excedente de vacas para couro e bifes. Lã vira cama e tapete, couro vira armadura e livro. Tente manter ao menos dois bichos de cada espécie vivos para continuarem se reproduzindo.
+  tasks:
+  - get: ['minecraft:wool:* x8', 'minecraft:leather x8']
+  rewards:
+  - {xp: 3}
+  - choice: ['minecraft:cooked_beef x8', 'minecraft:cooked_chicken x8', 'minecraft:saddle']
+- id: golem_guardiao
+  title: O Golem Guardião
+  type: main
+  deps: [rebanho]
+  desc: |
+    Quatro blocos de ferro em T e uma abóbora por cima: nasce um §eGolem de Ferro§r para vigiar a vila. Diziam os veteranos que um bom golem vale mais que uma muralha. Faça dois: um para a entrada, outro para a horta. Eles atacam zumbis e outros monstros que chegam perto.
+
+    §aDica:§r o golem só ganha vida se a abóbora for o último item colocado.
+  tasks:
+  - get: ['minecraft:iron_block x4', 'minecraft:pumpkin']
+  rewards:
+  - {xp: 5}
+  - choice: ['minecraft:iron_ingot x8', 'minecraft:gold_ingot x4']
+- id: esmeraldas_comercio
+  title: Moedas de Esmeralda
+  type: normal
+  deps: [golem_guardiao]
+  desc: |
+    Aldeões comerciam usando §eesmeraldas§r como moeda, e uma vila próspera tem feira! Negocie com eles pelos itens que sobram (trigo, papel, carvão) e junte 8 esmeraldas. Também aparecem em minas de montanha. Guarde algumas, pois a economia da vila nunca para de girar. Se encontrar um aldeão de verdade, não bata nele: troque com ele, que rende muito mais, e a vila cresce em paz.
+  tasks:
+  - {get: 'minecraft:emerald x8'}
+  rewards:
+  - {xp: 3}
+  - choice: ['minecraft:emerald x4', 'minecraft:book x4', 'minecraft:bread x8']
+- id: mapa_da_regiao
+  title: O Mapa da Região
+  type: normal
+  deps: [esmeraldas_comercio]
+  desc: |
+    Vilas lendárias eram famosas por terem um §eMapa§r na parede da sala: nele, cada casa e cada mina marcadas com orgulho. Faça um mapa com papel e bússola, abra-o enquanto explora e pendure numa moldura. Fica lindo e ainda guia visitas.
+
+    §aDica:§r o NEI mostra a receita certinha.
+  tasks:
+  - {get: 'minecraft:filled_map'}
+  rewards:
+  - {xp: 3}
+  - choice: ['minecraft:compass', 'minecraft:paper x8']
+- id: bussola_e_relogio
+  title: Bússola e Relógio
+  type: normal
+  deps: [mapa_da_regiao]
+  desc: |
+    Dois instrumentos pequenos para quem não quer se perder: a §eBússola§r (ferro e redstone) aponta pro ponto de spawn, e o §eRelógio§r (ouro e redstone) mostra a hora do dia. Dê para cada amigo da vila um de cada, que ninguém chega atrasado à festa.
+  tasks:
+  - get: ['minecraft:compass', 'minecraft:clock']
+  rewards:
+  - {xp: 3}
+  - choice: ['minecraft:redstone x16', 'minecraft:gold_ingot x4']
+- id: quadros_e_molduras
+  title: Quadros e Molduras
+  type: optional
+  deps: [bussola_e_relogio]
+  desc: |
+    Casa sem quadro parece casa vazia. Faça §eMolduras§r (couro e gravetos) para exibir itens e uma §ePintura§r para a parede. Daqui a pouco você vai querer guardar troféus; os heróis lendários exibiam até cabeças de chefes derrotados numa estante! Vá treinando o design desde já.
+  tasks:
+  - get: ['minecraft:item_frame x4', 'minecraft:painting']
+  rewards:
+  - {xp: 3}
+  - choice: ['minecraft:wool:* x8', 'minecraft:dye:* x8']
+- id: estante_biblioteca
+  title: Estante de Livros
+  type: normal
+  deps: [quadros_e_molduras]
+  desc: |
+    Seis estantes e você já tem cara de sábio. Estantes também aumentam o poder da mesa de encantamento quando em volta dela (15 estantes é o máximo). Cada estante pede seis tábuas e três livros, e os livros pedem couro e papel, então a vila já deve estar em dia.
+
+    Em outras páginas, essa biblioteca vai ficar enorme. Eu garanto.
+  tasks:
+  - {get: 'minecraft:bookshelf x6'}
+  rewards:
+  - {xp: 3}
+  - choice: ['minecraft:book x8', 'minecraft:enchanted_book']
+- id: bibliocraft_estante
+  title: Estantes de BiblioCraft
+  type: optional
+  deps: [estante_biblioteca]
+  desc: |
+    O BiblioCraft traz móveis feitos sob medida: estantes que mostram os livros de frente, relógios de parede, placas elegantes e muito mais. Construa uma §ePaineladora de Mobília§r (confira no NEI) e faça sua primeira estante. Casa com biblioteca arrumada é casa de gente com estilo.
+  tasks:
+  - one_of: ['BiblioCraft:BiblioShelf', 'BiblioCraft:BiblioShelf:1', 'BiblioCraft:BiblioShelf:2', 'BiblioCraft:BiblioShelf:3',
+      'BiblioCraft:BiblioShelf:4']
+  rewards:
+  - {xp: 3}
+  - choice: ['BiblioCraft:BiblioClock', 'BiblioCraft:BiblioFancySign']
+- id: baus_de_ferro
+  title: Baús Maiores
+  type: normal
+  deps: [bibliocraft_estante]
+  desc: |
+    O baú comum fica pequeno rapidinho. O §eBaú de Ferro§r guarda muito mais, e dá para melhorar até cristal e obsidiana depois. Faça dois: um para minérios, outro para ferramentas. O sistema de melhoria (ferro, ouro, diamante) está no NEI.
+
+    Vila organizada é vila feliz, Herói.
+  tasks:
+  - {get: 'IronChest:BlockIronChest x2'}
+  rewards:
+  - {xp: 3}
+  - choice: ['IronChest:BlockIronChest:1', 'minecraft:iron_ingot x8']
+- id: gavetas
+  title: Gavetas de Armazenamento
+  type: normal
+  deps: [baus_de_ferro]
+  desc: |
+    As §eGavetas§r guardam uma pilha enorme de um tipo só de item e mostram o rótulo na frente. Perfeitas para pedregulho, terra, tábuas e carvão. Posicione um paredão delas na despensa e ganhe espaço e ordem. Clicando com item na mão você deposita tudo de uma vez.
+
+    §aDica:§r gaveta lotada é gaveta feliz, mas confira antes de sair para a mina.
+  tasks:
+  - {get: 'StorageDrawers:fullDrawers2 x2'}
+  rewards:
+  - {xp: 3}
+  - choice: ['StorageDrawers:upgradeTemplate', 'minecraft:iron_ingot x8']
+- id: carpinteiro_martelo
+  title: Mão de Carpinteiro
+  type: optional
+  deps: [gavetas]
+  desc: |
+    Os blocos do Carpinteiro vestem a aparência de qualquer outro bloco: você coloca o bloco-base e depois "veste" com tábuas, vidro ou pedra. Faça o martelo e alguns blocos para experimentar portas, escadas e rampas. Fica perfeito para telhados diferentes e janelas curvas. §aDica:§r confira a receita do martelo e do bloco no NEI, e use sempre o martelo para trocar ou remover as coberturas sem perder o bloco-base. Divirta-se!
+  tasks:
+  - get: ['CarpentersBlocks:itemCarpentersHammer', 'CarpentersBlocks:blockCarpentersBlock x8']
+  rewards:
+  - {xp: 3}
+  - choice: ['CarpentersBlocks:blockCarpentersStairs x4', 'CarpentersBlocks:blockCarpentersDoor']
+- id: cinzel_e_marmore
+  title: Cinzel e Pedra Bonita
+  type: optional
+  deps: [carpinteiro_martelo]
+  desc: |
+    O mod Chisel dá novo rosto à pedra: mármore, calcário, tijolos antigos e muito mais. Minere ou fabrique §emármore§r e use o cinzel para variar o desenho dos blocos. Misturar texturas deixa paredes e pisos vivos, e todo mundo vai perguntar como você fez essa fachada.
+  tasks:
+  - {get: 'chisel:marble x16'}
+  rewards:
+  - {xp: 3}
+  - choice: ['minecraft:stonebrick x16', 'minecraft:glass x16']
+- id: rua_de_pedra
+  title: A Rua de Pedra
+  type: normal
+  deps: [cinzel_e_marmore]
+  desc: |
+    Uma vila sem rua é só um monte de casas. Faça tijolos de pedra (4 pedras lisas, em quadrado) e pavimente o caminho principal da porta da frente até a praça. Nas memórias, esse era o passeio favorito: andar pela rua nas noites de lua, de lanterna na mão.
+  tasks:
+  - {get: 'minecraft:stonebrick x32'}
+  rewards:
+  - {xp: 3}
+  - choice: ['minecraft:stone_slab x16', 'minecraft:torch x16']
+- id: composteira
+  title: Composteira
+  type: optional
+  deps: [rua_de_pedra]
+  desc: |
+    Sobrou semente, folha ou casca de legume? Jogue na §eComposteira§r e, de tempos em tempos, sai adubo para a horta. Vila sustentável é vila que não desperdiça nada. Veja a receita no NEI, ela é baratinha e cabe em qualquer cantinho do quintal.
+
+    §aDica:§r junte vários tipos de material vegetal para encher rápido.
+  tasks:
+  - {get: 'etfuturum:composter'}
+  rewards:
+  - {xp: 3}
+  - item: ['minecraft:dye:15 x16']
+- id: pedra_de_viagem
+  title: Pedra de Viagem
+  type: normal
+  deps: [composteira]
+  desc: |
+    Quando a vila crescer e as minas ficarem longe, vai ser ótimo ter um jeito rápido de voltar para casa! A §ePedra de Viagem§r (Waystone) permite teletransporte entre pedras já ativadas. Coloque uma na praça da vila e outra na mina. Veja a receita no NEI.
+  tasks:
+  - {get: 'waystones:waystone'}
+  rewards:
+  - {xp: 3}
+  - choice: ['minecraft:ender_pearl x2', 'minecraft:iron_ingot x8']
+- id: conselho_da_vila
+  title: O Conselho da Vila
+  type: milestone
+  deps: [pedra_de_viagem]
+  desc: |
+    Olhe só o que você fez, Herói! Cama, baú, fornalha, porta e estante: nada de luxo, mas é exatamente o que os heróis da Era do Futuro chamavam de §6um lar§r. A vila existe desde o primeiro tronco, e agora tem gente, bichos, comida e luz.
+
+    Acabou a parte fácil. Mas a vila ensinou o essencial: tudo começa pequeno, e a gente vai crescendo juntos. Pegue o kit, estufe o peito e vamos para as minas, onde a Idade da Pedra e do Ferro nos espera!
+  tasks:
+  - get: ['minecraft:bed', 'minecraft:chest', 'minecraft:furnace', 'minecraft:wooden_door', 'minecraft:bookshelf']
+  rewards:
+  - {xp: 25}
+  - kit:
+      name: Kit do Vilarejo
+      items: ['minecraft:iron_pickaxe', 'minecraft:iron_axe', 'minecraft:iron_shovel', 'minecraft:bread
+          x16', 'minecraft:torch x32', 'minecraft:cooked_beef x16']
+  - {loot: raro}

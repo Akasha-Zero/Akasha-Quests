@@ -1,0 +1,283 @@
+chapter:
+  id: aedf3_aprendiz_mago
+  title: Aprendiz de Mago
+  prefix: AEDF3
+  order: 805.625
+  icon: Thaumcraft:ItemThaumonomicon
+  desc: |
+    §6Memórias de outros heróis, página seis.§r Entre um reator e outro, os heróis da Era do Futuro adoravam trocar o capacete por um chapéu pontudo. Eles aprendiam o Thaumcraft, faziam varinhas, montavam laboratórios alquímicos e criavam golens que trabalhavam sem reclamar, inclusive para assar pão. Uma casa de bruxo, um livro enorme e muita curiosidade: bem-vindo à §eMagia§r.
+quests:
+- id: taumonomicon
+  title: O Grande Livro
+  type: main
+  deps_hidden: ['aedf3_armaduras_futuro:armaduras_milestone']
+  desc: |
+    Tudo começa com um livro. O §eThaumonomicon§r nasce quando você toca uma estante com uma varinha mágica (ou na bancada, dependendo da versão). Nele estão as pesquisas, os aspectos e as receitas mágicas. Os heróis lendários passavam horas lendo, e você também vai gostar.
+
+    §aDica:§r volte sempre a ele quando travar. As respostas estão lá.
+  tasks:
+  - {get: 'Thaumcraft:ItemThaumonomicon'}
+  rewards:
+  - {xp: 5}
+  - choice: ['minecraft:book x4', 'minecraft:paper x16']
+- id: pontas_de_varinha
+  title: Pontas de Ferro
+  type: main
+  deps: [taumonomicon]
+  desc: |
+    Pontas de varinha são os "ouvidos" da mágica: elas ligam as hastes e determinam quanto vis cabe. Faça duas §ePontas de Ferro§r, e espere uma versão melhor mais tarde. O ferro é barato, mas já funciona para os primeiros feitiços.
+  tasks:
+  - {get: 'Thaumcraft:WandCap x2'}
+  rewards:
+  - {xp: 5}
+  - choice: ['ore:nuggetIron x10', 'minecraft:redstone x16']
+- id: primeira_varinha
+  title: A Primeira Varinha
+  type: main
+  deps: [pontas_de_varinha]
+  desc: |
+    Duas pontas e uma haste de madeira formam a §eVarinha§r de um aprendiz. Ela é fraquinha, mas armazena um pouco de vis e abre portas. Pegue-a e dê um toque numa estante: o livro responde. Que sensação, Herói!
+  tasks:
+  - {get: 'Thaumcraft:WandCasting:*'}
+  rewards:
+  - {xp: 5}
+  - choice: ['minecraft:stick x16', 'minecraft:redstone x16']
+- id: estilhacos_elementais
+  title: Estilhaços Elementais
+  type: normal
+  deps: [primeira_varinha]
+  desc: |
+    Cristais brilhantes aparecem em cavernas e florestas mágicas. Cada cor representa um elemento: ar, terra, fogo, água, ordem e entropia. Colete §e6 estilhaços§r (começando pelo ar) e use para carregar varinhas e fazer alquimia.
+  tasks:
+  - {get: 'Thaumcraft:ItemShard x6'}
+  rewards:
+  - {xp: 3}
+  - choice: ['Thaumcraft:ItemShard:1 x2', 'Thaumcraft:ItemShard:2 x2']
+- id: taumometro
+  title: Taumômetro
+  type: main
+  deps: [estilhacos_elementais]
+  desc: |
+    O §eTaumômetro§r escaneia blocos, itens e criaturas para revelar seus aspectos. Cada escaneamento dá pontos de pesquisa e abre receitas novas. Escaneie tudo que puder, Herói, e preencha seu livro de aspectos aos poucos. Descobrir é metade da diversão.
+  tasks:
+  - {get: 'Thaumcraft:ItemThaumometer'}
+  rewards:
+  - {xp: 5}
+  - choice: ['minecraft:gold_ingot x4', 'minecraft:glass x8']
+- id: tinteiro_e_papel
+  title: Tinteiro e Papel
+  type: normal
+  deps: [taumometro]
+  desc: |
+    Pesquisar exige escrever, e escrever exige §eTinteiro§r e papel. Faça um com um balde de tinta (ou corante preto) e uma pena. Prepare papel de sobra: as notas de pesquisa vão consumir bastante.
+  tasks:
+  - get: ['Thaumcraft:ItemInkwell', 'minecraft:paper x8']
+  rewards:
+  - {xp: 3}
+  - choice: ['minecraft:feather x8', 'minecraft:dye:* x8']
+- id: mesa_de_pesquisa
+  title: A Mesa de Pesquisa
+  type: main
+  deps: [tinteiro_e_papel]
+  desc: |
+    Sem mesa, nada de pesquisa avançada! Feita de tábuas e ferro, a §eMesa de Pesquisa§r permite combinar aspectos e produzir notas. É aqui que os feiticeiros passavam madrugadas, conectando pontos entre ideias. Monte a sua perto da biblioteca.
+  tasks:
+  - {get: 'Thaumcraft:blockTable x3'}
+  rewards:
+  - {xp: 5}
+  - choice: ['minecraft:paper x16', 'minecraft:book x4']
+- id: nota_de_pesquisa
+  title: Notas de Pesquisa
+  type: normal
+  deps: [mesa_de_pesquisa]
+  desc: |
+    Cada pesquisa avançada vira uma §eNota§r no inventário. Resolva o quebra-cabeça de aspectos e libere novas descobertas. Quem se perde pode voltar e tentar de outro jeito. Paciência é a virtude de todo mago.
+  tasks:
+  - {get: 'Thaumcraft:ItemResearchNotes:*'}
+  rewards:
+  - {xp: 3}
+  - choice: ['minecraft:paper x16', 'minecraft:book x2']
+- id: arvore_grandiosa
+  title: Greatwood
+  type: normal
+  deps: [nota_de_pesquisa]
+  desc: |
+    A §eGreatwood§r é a árvore sagrada do Thaumcraft: madeira dourada que serve de haste de varinhas melhores. Procure na Floresta Mágica ou plante a muda. Corte oito troncos e guarde alguns para fazer tábuas mágicas.
+  tasks:
+  - {get: 'Thaumcraft:blockMagicalLog x8'}
+  rewards:
+  - {xp: 3}
+  - choice: ['minecraft:sapling x8', 'minecraft:log x16']
+- id: haste_de_greatwood
+  title: Haste de Greatwood
+  type: main
+  deps: [arvore_grandiosa]
+  desc: |
+    A haste de §eGreatwood§r guarda mais vis que a de madeira comum. Faça na Mesa Arcana junto com pontas de ouro. É um upgrade enorme: mais poder, menos gasto. Os heróis falavam que parecia trocar uma pedra por uma lanterna.
+  tasks:
+  - {get: 'Thaumcraft:WandRod'}
+  rewards:
+  - {xp: 5}
+  - choice: ['Thaumcraft:WandCap:1 x2', 'Thaumcraft:ItemShard x4']
+- id: mesa_arcana
+  title: A Mesa Arcana
+  type: main
+  deps: [haste_de_greatwood]
+  desc: |
+    Na §eMesa Arcana§r, a bancada mágica, você produz itens que exigem vis. Coloque a varinha carregada e monte a receita. Sem ela, muita coisa fica fora de alcance. Fica ao lado da Mesa de Pesquisa na casa de bruxo.
+  tasks:
+  - {get: 'Thaumcraft:blockTable:15'}
+  rewards:
+  - {xp: 5}
+  - choice: ['Thaumcraft:ItemShard x4', 'minecraft:diamond']
+- id: foco_de_fogo
+  title: Foco de Fogo
+  type: optional
+  deps: [mesa_arcana]
+  desc: |
+    Um §eFoco§r transforma a varinha em arma. O de fogo lança bolas flamejantes, perfeito para criaturas do Nether e para acender fornalhas à distância. Combine com o resto do arsenal e brinque com cuidado.
+  tasks:
+  - {get: 'Thaumcraft:FocusFire'}
+  rewards:
+  - {xp: 3}
+  - choice: ['Thaumcraft:ItemShard:1 x2', 'minecraft:blaze_powder x4']
+- id: crisol
+  title: O Crisol
+  type: main
+  deps: [foco_de_fogo]
+  desc: |
+    O §eCrisol§r é o caldeirão do alquimista: água, calor e aspectos combinam e produzem materiais novos. Jogue itens dentro e veja as cores mudando. Comece com ouro e prata e vá avançando.
+  tasks:
+  - {get: 'Thaumcraft:blockMetalDevice'}
+  rewards:
+  - {xp: 5}
+  - choice: ['minecraft:iron_ingot x8', 'minecraft:coal x16']
+- id: alumentum
+  title: Alumentum
+  type: main
+  deps: [crisol]
+  desc: |
+    O §eAlumentum§r é uma pedra de fogo mágica, feita no crisol com carvão e outros ingredientes. Serve de combustível poderoso, de explosivo e de ingrediente para golens e armaduras. Um símbolo clássico da alquimia da Era do Futuro.
+  tasks:
+  - {get: 'Thaumcraft:ItemResource x4'}
+  rewards:
+  - {xp: 5}
+  - choice: ['minecraft:coal x32', 'minecraft:gunpowder x8']
+- id: taumio
+  title: Lingote de Taumium
+  type: main
+  deps: [alumentum]
+  desc: |
+    O §eTaumium§r é o metal dos magos: feito do ferro mergulhado em vis no crisol. Resistente, mágico e perfeito para armaduras e pontas de varinha. Faça oito lingotes e comece o conjunto dos sonhos.
+  tasks:
+  - {get: 'Thaumcraft:ItemResource:2 x8'}
+  rewards:
+  - {xp: 5}
+  - choice: ['minecraft:iron_ingot x8', 'Thaumcraft:ItemShard x4']
+- id: armadura_de_taumio
+  title: Armadura de Taumium
+  type: normal
+  deps: [taumio]
+  desc: |
+    Armadura de verdade, só que mágica. O conjunto de §eTaumium§r dá proteção forte e algumas vantagens sobre ferro. Comece pelo capacete e peitoral, e deixe calças e botas para depois. Parece capa de herói, pensa só.
+  tasks:
+  - get: ['Thaumcraft:ItemHelmetThaumium', 'Thaumcraft:ItemChestplateThaumium']
+  rewards:
+  - {xp: 3}
+  - choice: ['Thaumcraft:ItemResource:2 x4', 'minecraft:diamond x2']
+- id: ferramentas_de_taumio
+  title: Ferramentas de Taumium
+  type: normal
+  deps: [armadura_de_taumio]
+  desc: |
+    Picareta e espada de §eTaumium§r: resistentes e com bônus mágicos. A picareta mina bem rápido e a espada corta com leveza. Sem elas, nenhum mago passa da primeira masmorra.
+  tasks:
+  - get: ['Thaumcraft:ItemPickThaumium', 'Thaumcraft:ItemSwordThaumium']
+  rewards:
+  - {xp: 3}
+  - choice: ['Thaumcraft:ItemResource:2 x4', 'minecraft:diamond x2']
+- id: fornalha_alquimica
+  title: Fornalha Alquímica
+  type: normal
+  deps: [ferramentas_de_taumio]
+  desc: |
+    A §eFornalha Alquímica§r extrai os aspectos dos itens e os guarda em jarros. É o começo da automação de aspectos. Pense nela como uma biblioteca viva: tudo que entra vira palavras mágicas.
+  tasks:
+  - {get: 'Thaumcraft:blockStoneDevice'}
+  rewards:
+  - {xp: 3}
+  - choice: ['minecraft:iron_ingot x8', 'minecraft:obsidian x4']
+- id: jarros_de_vidro
+  title: Jarros de Vidro
+  type: normal
+  deps: [fornalha_alquimica]
+  desc: |
+    Os §eJarros§r guardam aspectos, insetos, nós e até criaturas. Faça seis (vidro e uma rolha de madeira) e identifique com rótulos. Armazenamento organizado é metade da magia, dizem os mestres.
+  tasks:
+  - {get: 'Thaumcraft:blockJar x6'}
+  rewards:
+  - {xp: 3}
+  - choice: ['minecraft:glass x16', 'minecraft:planks x8']
+- id: golem_de_palha
+  title: Golem de Palha
+  type: main
+  deps: [jarros_de_vidro]
+  desc: |
+    Chegamos aos golens! Um §eGolem de Palha§r é o mais simples, frágil e engraçado. Feito de fardos e barro, ele serve de ajudante nas tarefas leves. Os heróis diziam que um golem em casa é como ter um cachorro que sabe trabalhar.
+  tasks:
+  - {get: 'Thaumcraft:ItemGolemPlacer'}
+  rewards:
+  - {xp: 5}
+  - choice: ['minecraft:hay_block x4', 'minecraft:wheat x16']
+- id: golem_de_madeira
+  title: Golem de Madeira
+  type: main
+  deps: [golem_de_palha]
+  desc: |
+    O §eGolem de Madeira§r é mais forte e aceita configurações. Dando as ordens certas, ele colhe, planta, carrega itens e até assa pão! Foi dele que a lenda dos "golens padeiros" nasceu: padaria 100% automática, sem padeiro.
+  tasks:
+  - {get: 'Thaumcraft:ItemGolemPlacer:1'}
+  rewards:
+  - {xp: 5}
+  - choice: ['minecraft:wheat x32', 'minecraft:log x16']
+- id: padaria_golem
+  title: Padaria dos Golens
+  type: main
+  deps: [golem_de_madeira]
+  desc: |
+    Monte uma horta enorme, deixe um golem colhendo e outro levando trigo até o baú. Em poucos minutos, a padaria produz pão em quantidade industrial. É o sonho da vila e uma das cenas mais lembradas pelos heróis da Era do Futuro.
+
+    §aDica:§r um moinho de vento por perto deixa o cenário perfeito.
+  tasks:
+  - get: ['minecraft:wheat x64', 'minecraft:bread x32']
+  rewards:
+  - {xp: 5}
+  - choice: ['minecraft:cake x2', 'minecraft:golden_carrot x8']
+- id: bloco_taumico
+  title: Casa de Bruxo
+  type: optional
+  deps: [padaria_golem]
+  desc: |
+    Toda aprendiz de mago merece uma torre. O §eBloco Táumico§r, as tábuas de Greatwood e uma coleção de livros formam o visual perfeito de uma casa de bruxo. Pense em torres, telhados pontudos e velas por toda parte.
+  tasks:
+  - {get: 'Thaumcraft:blockCosmeticSolid:4 x16'}
+  rewards:
+  - {xp: 3}
+  - choice: ['Thaumcraft:blockWoodenDevice:6 x16', 'minecraft:glass x16']
+- id: aprendiz_pronto
+  title: Chapéu de Bruxo
+  type: milestone
+  deps: [bloco_taumico]
+  desc: |
+    Varinha, taumômetro, crisol e um golem de madeira fiel ao seu lado. Você não é mais um iniciante, Herói. É um §eaprendiz de mago§r de verdade, e a Casa de Bruxo agora tem moradora.
+
+    Os heróis lendários diziam que a magia é uma forma de curiosidade. Continue curioso, mas lembre: os grandes chefes esperam, e eles não se importam com seu chapéu. Hora de enfrentar os §eCaçadores de Bosses§r!
+  tasks:
+  - get: ['Thaumcraft:WandCasting:*', 'Thaumcraft:ItemThaumometer', 'Thaumcraft:blockMetalDevice', 'Thaumcraft:ItemGolemPlacer:1']
+  rewards:
+  - {xp: 25}
+  - kit:
+      name: Kit do Aprendiz
+      items: ['Thaumcraft:ItemResource:2 x8', 'Thaumcraft:ItemShard x6', 'minecraft:book x8', 'minecraft:paper
+          x32', 'minecraft:gold_ingot x8']
+  - {loot: raro}

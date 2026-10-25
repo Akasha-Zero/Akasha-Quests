@@ -1,0 +1,319 @@
+chapter:
+  id: aedf3_cacadores_bosses
+  title: Caçadores de Bosses
+  prefix: AEDF3
+  order: 806.562
+  icon: TwilightForest:item.trophy:1
+  desc: |
+    §6Memórias de outros heróis, página sete.§r Dizem que havia uma estante na vila, bem no centro da sala, com cabeças de chefes derrotados alinhadas como troféus de guerra. Naga, Lich, Minoshroom, Hidra, Cavaleiros Fantasmas, Ur-Ghast, Yeti Alfa e Rainha da Neve. Quer a sua estante? Então vamos à §eFloresta do Crepúsculo§r, na ordem dos grandes.
+quests:
+- id: lago_das_flores
+  title: O Lago das Flores
+  type: portal
+  deps_hidden: ['aedf3_aprendiz_mago:aprendiz_pronto']
+  desc: |
+    Procure uma lagoa cercada de flores e jogue um §eDiamante§r na água. Raios caem, a água ganha um brilho estranho e um portal se abre para a §eFloresta do Crepúsculo§r. Parece mágica, mas é só engenharia de outra dimensão. O diamante é o preço, e vale cada pedacinho.
+  tasks:
+  - {get: 'minecraft:diamond'}
+  rewards:
+  - {xp: 3}
+  - choice: ['minecraft:cooked_beef x16', 'minecraft:torch x32']
+- id: floresta_crepusculo
+  title: Atravessando o Véu
+  type: portal
+  deps: [lago_das_flores]
+  icon: TwilightForest:tile.TFLog
+  desc: |
+    Do outro lado, as árvores têm um tom dourado, a luz é sempre de fim de tarde e as criaturas lembram uma história de fadas, só que mais perigosa. Tire um minuto para olhar o mapa e conversar com o silêncio. Os heróis da Era do Futuro adoravam esse mundo. Cuidado com as colinas, que escondem tesouros e armadilhas.
+  tasks:
+  - visit: {dim: 7, name: Floresta do Crepúsculo}
+  rewards:
+  - {xp: 3}
+  - choice: ['TwilightForest:item.magicMap:*', 'minecraft:bread x16']
+- id: madeiras_crepusculo
+  title: Madeiras do Crepúsculo
+  type: normal
+  deps: [floresta_crepusculo]
+  desc: |
+    Os troncos da floresta têm texturas e propriedades próprias. Junte §e16 madeiras§r de tipos diferentes e use para casas, ferramentas e móveis. O visual é lindo e combina bem com a decoração da vila. Quem sabe uma cabana de caça na entrada do portal?
+  tasks:
+  - {get: 'TwilightForest:tile.TFLog:* x16'}
+  rewards:
+  - {xp: 3}
+  - choice: ['minecraft:planks x32', 'minecraft:torch x32']
+- id: colinas_vazias
+  title: As Colinas
+  type: normal
+  deps: [madeiras_crepusculo]
+  icon: minecraft:iron_boots
+  desc: |
+    Sob montes de terra, as §eColinas Ocas§r guardam cavernas, baús e criaturinhas. Os Redcaps são anões de gorro vermelho que perseguem quem entra sem convite. Derrote três deles (cuidado com os que trazem fogo) e recolha o saque.
+  tasks:
+  - {kill: TwilightForest.Redcap x3}
+  rewards:
+  - {xp: 3}
+  - choice: ['minecraft:iron_ingot x8', 'minecraft:cooked_beef x8']
+- id: ironwood
+  title: Lingote de Ironwood
+  type: main
+  deps: [colinas_vazias]
+  desc: |
+    O primeiro metal do Crepúsculo é o §eIronwood§r: mistura de ferro e madeira mágica, leve e resistente. Faça quatro lingotes e guarde para ferramentas e armadura. Dê o primeiro passo na forja local.
+  tasks:
+  - {get: 'TwilightForest:item.ironwoodIngot x4'}
+  rewards:
+  - {xp: 5}
+  - choice: ['TwilightForest:item.ironwoodRaw x4', 'minecraft:iron_ingot x4']
+- id: steeleaf
+  title: Folha-de-Aço
+  type: normal
+  deps: [ironwood]
+  desc: |
+    A §eSteeleaf§r é um metal vegetal mais forte e com bônus de armadura. Exige folhas e minério da floresta. É um bom equipamento intermediário para quem vai encarar chefes grandes. Junte seis lingotes e faça uma peça.
+  tasks:
+  - {get: 'TwilightForest:item.steeleafIngot x6'}
+  rewards:
+  - {xp: 3}
+  - choice: ['TwilightForest:item.ironwoodIngot x4', 'minecraft:diamond']
+- id: naga
+  title: Caçador de Naga
+  type: boss
+  deps: [steeleaf]
+  desc: |
+    O primeiro chefe! A §eNaga§r serpenteia pelo pátio de pedra, bate de cauda e investe contra quem aparece. Use armadura boa e mantenha-se em movimento, pois ela é rápida. Quando cair, solta a primeira cabeça do seu troféu, e a emoção é grande. Parabéns, Herói!
+
+    §cPerigo:§r nada de ficar parado no caminho dela.
+  tasks:
+  - {kill: TwilightForest.Naga x1}
+  - {get: 'TwilightForest:item.trophy:1'}
+  rewards:
+  - {xp: 20}
+  - choice: ['TwilightForest:item.nagaScale x8', 'minecraft:golden_apple']
+  - {loot: epico}
+- id: escamas_naga
+  title: Escamas da Naga
+  type: normal
+  deps: [naga]
+  desc: |
+    Escamas de Naga viram uma armadura leve e resistente. Junte §e8 escamas§r e monte uma túnica ou calças, que combinam muito bem com o visual das lendas. Combine com Ironwood para ficar ainda mais forte.
+  tasks:
+  - {get: 'TwilightForest:item.nagaScale x8'}
+  rewards:
+  - {xp: 3}
+  - choice: ['minecraft:leather x8', 'minecraft:diamond']
+- id: torre_lich
+  title: A Torre Pontuda
+  type: normal
+  deps: [escamas_naga]
+  icon: minecraft:book
+  desc: |
+    Numa torre alta e escura vive o §eLich§r, mago morto que não aceita descanso. Antes dele, os livros-vivos da torre atacam sem parar. Destrua §e3 Death Tomes§r e suba com cuidado. Leve uma boa armadura e uma boa arma, e talvez uma poção ou duas.
+  tasks:
+  - {kill: TwilightForest.Death Tome x3}
+  rewards:
+  - {xp: 3}
+  - choice: ['minecraft:book x8', 'minecraft:paper x16']
+- id: lich
+  title: O Arquivista Caído
+  type: boss
+  deps: [torre_lich]
+  desc: |
+    O segundo chefe é o §eLich§r, que lança magia, invoca clones e teletransporta-se. Mate os clones primeiro e o verdadeiro depois, sem gastar tempo nos adornos. Ele solta um troféu e raros itens mágicos. Os heróis da Era do Futuro já pensavam em qual prateleira usar!
+  tasks:
+  - {kill: TwilightForest.Twilight Lich x1}
+  - {get: 'TwilightForest:item.trophy:2'}
+  rewards:
+  - {xp: 20}
+  - choice: ['minecraft:diamond x2', 'minecraft:experience_bottle x8']
+  - {loot: epico}
+- id: minotauros
+  title: O Labirinto
+  type: normal
+  deps: [lich]
+  icon: minecraft:iron_axe
+  desc: |
+    O §eLabirinto§r é feito de corredores e armadilhas, e minotauros vigiam cada curva. Entre com tochas e um mapa, derrote cinco deles e vá ao centro. Cuidado com as paredes que não deveriam estar lá e com os sons que vêm de trás de você.
+  tasks:
+  - {kill: TwilightForest.Minotaur x5}
+  rewards:
+  - {xp: 3}
+  - choice: ['minecraft:iron_ingot x8', 'minecraft:cooked_beef x16']
+- id: minoshroom
+  title: O Minoshroom
+  type: boss
+  deps: [minotauros]
+  desc: |
+    Um minotauro gigante e vermelho, coberto de cogumelos: o §eMinoshroom§r. É mais forte que seus subordinados e carrega um machado enorme. Mantenha distância, golpeie e recue. O troféu vai direto para a prateleira.
+  tasks:
+  - {kill: TwilightForest.Minoshroom x1}
+  - {get: 'TwilightForest:item.trophy:5'}
+  rewards:
+  - {xp: 20}
+  - choice: ['TwilightForest:item.minotaurAxe', 'minecraft:golden_apple']
+  - {loot: epico}
+- id: hidra
+  title: A Hidra
+  type: boss
+  deps: [minoshroom]
+  desc: |
+    Sete cabeças, uma cauda e muito fogo. A §eHidra§r vive numa ilha dentro do pântano, cercada de lava. Ataque cabeça por cabeça e fuja do fogo. É uma das lutas mais memoráveis da floresta.
+
+    §cPerigo:§r leve resistência ao fogo.
+  tasks:
+  - {kill: TwilightForest.Hydra x1}
+  - {get: 'TwilightForest:item.trophy:0'}
+  rewards:
+  - {xp: 20}
+  - choice: ['TwilightForest:item.hydraChop x2', 'minecraft:diamond x2']
+  - {loot: epico}
+- id: ruinas_cavaleiros
+  title: As Ruínas dos Cavaleiros
+  type: normal
+  deps: [hidra]
+  icon: minecraft:iron_helmet
+  desc: |
+    Uma fortaleza antiga e cheia de goblins armados, com capacete de ferro e escudo. Derrote §e4 cavaleiros goblin§r e entre com cuidado. O baú no fundo tem equipamentos raros. Bom lugar para treinar combate em grupo.
+  tasks:
+  - {kill: TwilightForest.Lower Goblin Knight x4}
+  rewards:
+  - {xp: 3}
+  - choice: ['minecraft:iron_ingot x16', 'minecraft:cooked_beef x8']
+- id: cavaleiros_fantasma
+  title: Os Cavaleiros Fantasma
+  type: boss
+  deps: [ruinas_cavaleiros]
+  desc: |
+    Antigos guerreiros que não aceitam o fim. Os §eCavaleiros Fantasmas§r aparecem em grupo e giram em torno da arena. Derrote todos seguindo o ritmo dos golpes. Você receberá armaduras raras e uma cabeça de troféu muito especial.
+  tasks:
+  - {kill: TwilightForest.Knight Phantom x6}
+  - {get: 'TwilightForest:item.trophy:6'}
+  rewards:
+  - {xp: 20}
+  - choice: ['TwilightForest:item.phantomHelm', 'TwilightForest:item.phantomPlate']
+  - {loot: epico}
+- id: ur_ghast
+  title: Lágrimas de Fogo
+  type: boss
+  deps: [cavaleiros_fantasma]
+  desc: |
+    No topo de uma torre de carminite, o §eUr-Ghast§r chora lágrimas de fogo e atira bolas explosivas. É o maior ghast que você já viu. Leve arco, armadura e paciência para dar conta do ataque aéreo. Ao final, o troféu é seu.
+  tasks:
+  - {kill: TwilightForest.Tower Boss x1}
+  - {get: 'TwilightForest:item.trophy:3'}
+  rewards:
+  - {xp: 20}
+  - choice: ['TwilightForest:item.fieryTears', 'minecraft:golden_apple']
+  - {loot: epico}
+- id: yeti_alfa
+  title: O Yeti Alfa
+  type: boss
+  deps: [ur_ghast]
+  desc: |
+    Na floresta de neve vive o §eYeti Alfa§r, que faz a cabeça de qualquer herói balançar. Ele ataca com fúria, chama aliados e pisoteia o gelo. Leve roupas quentes (armadura de couro basta) e armas boas. Um troféu muito fofo e perigoso.
+  tasks:
+  - {kill: TwilightForest.Yeti Boss x1}
+  - {get: 'TwilightForest:item.trophy:7'}
+  rewards:
+  - {xp: 20}
+  - choice: ['TwilightForest:item.alphaFur x2', 'TwilightForest:item.arcticFur x8']
+  - {loot: epico}
+- id: rainha_da_neve
+  title: A Rainha da Neve
+  type: boss
+  deps: [yeti_alfa]
+  desc: |
+    No Palácio da Aurora, a §eRainha da Neve§r domina a geada. Ela sustenta cristais de gelo, invoca tempestades e fere quem chega perto. É o último grande chefe da floresta. Quando ela cai, o céu parece limpar.
+  tasks:
+  - {kill: TwilightForest.Snow Queen x1}
+  - {get: 'TwilightForest:item.trophy:4'}
+  rewards:
+  - {xp: 20}
+  - choice: ['minecraft:diamond x4', 'minecraft:experience_bottle x16']
+  - {loot: epico}
+- id: prateleira_de_trofeus
+  title: A Prateleira de Troféus
+  type: main
+  deps: [rainha_da_neve]
+  desc: |
+    Chegou a hora de montar a estante de chefes! O §ePedestal de Troféu§r exibe as cabeças dos monstros que você derrotou. Coloque-os lado a lado em um salão da vila. Os heróis da Era do Futuro chegavam a fazer cerimônia de inauguração. Capriche na iluminação.
+  tasks:
+  - {get: 'TwilightForest:tile.TFTrophyPedestal'}
+  rewards:
+  - {xp: 5}
+  - choice: ['minecraft:item_frame x8', 'minecraft:painting x2']
+- id: wither_na_prateleira
+  title: Cabeça do Wither
+  type: main
+  deps: [prateleira_de_trofeus]
+  desc: |
+    Nem tudo está na floresta: o §eWither§r também é um chefe digno de prateleira. Seus crânios (de esqueletos) enfeitam bem o salão. Junte três e guarde. Se ainda não derrotou o Wither, volte ao capítulo infernal e dê um jeito.
+  tasks:
+  - {get: 'minecraft:skull:1 x3'}
+  rewards:
+  - {xp: 5}
+  - choice: ['minecraft:nether_star', 'minecraft:diamond x2']
+- id: olho_do_fim
+  title: Olho do Fim
+  type: main
+  deps: [wither_na_prateleira]
+  desc: |
+    Com pérolas de Ender e pó de Blaze, faça §e12 Olhos do Fim§r. Eles mostram o caminho até a fortaleza subterrânea onde o portal para o Fim espera. Jogue um no ar e siga a direção. Prepare-se para uma jornada longa.
+  tasks:
+  - {get: 'minecraft:ender_eye x12'}
+  rewards:
+  - {xp: 5}
+  - choice: ['minecraft:ender_pearl x4', 'minecraft:blaze_powder x8']
+- id: portal_do_fim
+  title: O Portal do Fim
+  type: portal
+  deps: [olho_do_fim]
+  icon: minecraft:ender_eye
+  desc: |
+    Encontrada a fortaleza, ative os 12 Olhos e entre. O Fim é um ilhéu flutuante e escuro, vigiado por Endermen e cristais. Leve blocos de construção, arco e muita comida. O último chefe espera, e não vai ser educado.
+  tasks:
+  - visit: {dim: 1, name: O Fim}
+  rewards:
+  - {xp: 3}
+  - choice: ['minecraft:ender_pearl x8', 'minecraft:golden_apple x2']
+- id: dragao_do_fim
+  title: O Dragão do Fim
+  type: boss
+  deps: [portal_do_fim]
+  icon: minecraft:dragon_egg
+  desc: |
+    O maior desafio do capítulo! Quebre os cristais que curam o dragão, ataque quando ele pousar e fuja do sopro. Leve arco, armadura quantum se tiver, blocos para esconderijo. Quando ele cair, o céu estoura em luz e você leva o ovo do dragão como prêmio.
+  tasks:
+  - {kill: EnderDragon x1}
+  rewards:
+  - {xp: 20}
+  - choice: ['minecraft:dragon_egg', 'minecraft:diamond x8']
+  - {loot: epico}
+- id: ovo_dragao
+  title: O Ovo do Dragão
+  type: main
+  deps: [dragao_do_fim]
+  desc: |
+    O ovo é um troféu raro e inútil, mas lindo. Pegue e coloque no centro da prateleira. Ele se teletransporta quando tocado: use uma tocha por baixo para deixá-lo no lugar. Ninguém jamais esquece o primeiro ovo.
+  tasks:
+  - {get: 'minecraft:dragon_egg'}
+  rewards:
+  - {xp: 5}
+  - choice: ['minecraft:experience_bottle x16', 'minecraft:ender_pearl x16']
+- id: caçadores_milestone
+  title: A Estante dos Chefes
+  type: milestone
+  deps: [ovo_dragao]
+  desc: |
+    Naga, Lich, Minoshroom e Hidra encarando você do alto da estante. Quem passa pelo salão da vila não consegue deixar de olhar. É assim que os heróis da Era do Futuro registravam suas conquistas: não com palavras, mas com cabeças penduradas.
+
+    Seu nome agora está na Lista dos Caçadores, Herói. Depois da glória, o trabalho: chegou a hora de automatizar tudo. Máquinas, fábricas e motores te esperam na §eAutomação e Indústria Pesada§r.
+  tasks:
+  - get: ['TwilightForest:item.trophy:1', 'TwilightForest:item.trophy:2', 'TwilightForest:item.trophy:5',
+      'TwilightForest:item.trophy:0']
+  rewards:
+  - {xp: 25}
+  - kit:
+      name: Kit do Caçador
+      items: ['minecraft:diamond x8', 'minecraft:golden_apple x4', 'minecraft:experience_bottle x32',
+        'minecraft:ender_pearl x8', 'minecraft:cooked_beef x32']
+  - {loot: raro}

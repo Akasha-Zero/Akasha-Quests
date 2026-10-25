@@ -1,0 +1,313 @@
+chapter:
+  id: aedf3_idade_pedra_ferro
+  title: Idade da Pedra e do Ferro
+  prefix: AEDF3
+  order: 800.938
+  icon: TConstruct:Smeltery
+  desc: |
+    §6Memórias de outros heróis, página um.§r Com a vila de pé, chegou a hora de descer ao subsolo. Os heróis da Era do Futuro cavavam fundo, acendiam fogueiras de fundição e voltavam com ferramentas que brilhavam de tão bem feitas. Aqui estão os passos da §ePedra§r ao §eFerro§r e, claro, da §eFundição§r do Tinkers' Construct.
+quests:
+- id: pedra_nas_maos
+  title: Pedra nas Mãos
+  type: main
+  deps_hidden: ['aedf3_a_vila:conselho_da_vila']
+  desc: |
+    Dê adeus à madeira, Herói! Com uma picareta de madeira, minere §e32 pedregulhos§r em qualquer paredão de pedra. Eles viram fornalha, ferramentas mais resistentes e as primeiras paredes de uma mina de verdade. Nas lendas, a era da pedra durava só até o primeiro veio de ferro; use o tempo bem.
+  tasks:
+  - {get: 'minecraft:cobblestone x32'}
+  rewards:
+  - {xp: 5}
+  - choice: ['minecraft:coal x8', 'minecraft:torch x16', 'minecraft:stick x16']
+- id: picareta_de_pedra
+  title: Picareta de Pedra
+  type: main
+  deps: [pedra_nas_maos]
+  desc: |
+    Dois gravetos e três pedregulhos: sua nova §ePicareta de Pedra§r já rompe minério de ferro! Faça também uma pá e um machado, que servem para tudo e custam quase nada. Quando a pedra quebrar, vem a próxima: o ferro. Está tão perto!
+  tasks:
+  - {craft: 'minecraft:stone_pickaxe'}
+  rewards:
+  - {xp: 5}
+  - choice: ['minecraft:coal x8', 'minecraft:cobblestone x32']
+- id: carvao_da_mina
+  title: Carvão da Mina
+  type: main
+  deps: [picareta_de_pedra]
+  desc: |
+    Carvão aparece em veios grandes e escuros, bem perto da superfície. Junte §e16 carvões§r: são combustível para a fornalha e, com um graveto, viram tochas. Sem luz na mina, o Herói vira refeição de aranha. Leve sempre tochas de sobra e marque o caminho de volta.
+
+    §cPerigo:§r nunca cave direto para baixo, você pode cair na lava.
+  tasks:
+  - {get: 'minecraft:coal x16'}
+  rewards:
+  - {xp: 5}
+  - choice: ['minecraft:torch x32', 'minecraft:iron_ingot x2']
+- id: minerio_de_ferro
+  title: Veios de Ferro
+  type: main
+  deps: [carvao_da_mina]
+  desc: |
+    O ferro é o grande divisor de águas! Procure o minério (pedra com pontinhos alaranjados) entre as camadas 5 e 54, mais comum em cavernas. Minere §e8 blocos§r com a picareta de pedra e leve tudo para a fornalha. Não force a barra: é melhor voltar com pouco que não voltar.
+  tasks:
+  - {get: 'minecraft:iron_ore x8'}
+  rewards:
+  - {xp: 5}
+  - choice: ['minecraft:cooked_beef x8', 'minecraft:iron_ingot x4']
+- id: lingotes_de_ferro
+  title: Lingotes de Ferro
+  type: main
+  deps: [minerio_de_ferro]
+  desc: |
+    Funda o minério na fornalha e junte §e16 lingotes de ferro§r. Cada um é uma porta para novas ferramentas: balde, tesoura, bússola, trilhos, armadura. Os heróis da Era do Futuro diziam que ninguém sabe o valor do ferro até ficar sem ele no meio de uma caverna escura.
+  tasks:
+  - {get: 'minecraft:iron_ingot x16'}
+  rewards:
+  - {xp: 5}
+  - choice: ['minecraft:iron_ingot x8', 'minecraft:coal x16']
+- id: balde_de_ferro
+  title: O Balde
+  type: normal
+  deps: [lingotes_de_ferro]
+  desc: |
+    Três lingotes em V e pronto: um §eBalde§r. Água, lava, leite, tudo cabe nele. Água ajuda a apagar fogo e a fazer elevadores, lava vira combustível e obsidiana, e o leite cura veneno. Uma ferramenta simples que salva vidas.
+
+    §aDica:§r nunca saia para a mina sem um balde d'água. É seu seguro contra lava.
+  tasks:
+  - {craft: 'minecraft:bucket'}
+  rewards:
+  - {xp: 3}
+  - choice: ['minecraft:milk_bucket', 'minecraft:water_bucket']
+- id: armadura_de_ferro
+  title: Armadura de Ferro
+  type: main
+  deps: [balde_de_ferro]
+  desc: |
+    Vinte e quatro lingotes e você troca o couro por uma §earmadura completa de ferro§r. Capacete, peitoral, calças e botas: ela segura boa parte dos golpes e te deixa um pouco mais corajoso. Nenhum herói que tenha entrado numa masmorra se arrependeu de usar armadura.
+  tasks:
+  - get: ['minecraft:iron_helmet', 'minecraft:iron_chestplate', 'minecraft:iron_leggings', 'minecraft:iron_boots']
+  rewards:
+  - {xp: 5}
+  - choice: ['minecraft:cooked_beef x16', 'minecraft:golden_apple']
+- id: espada_de_ferro
+  title: Espada de Ferro
+  type: normal
+  deps: [armadura_de_ferro]
+  desc: |
+    Dois lingotes e um graveto. Simples assim, uma §eEspada de Ferro§r! Ela derrota zumbis e esqueletos em poucos golpes. Para chefes e criaturas maiores, no entanto, você vai precisar de mais, mas por ora é uma amiga leal.
+  tasks:
+  - {craft: 'minecraft:iron_sword'}
+  rewards:
+  - {xp: 3}
+  - choice: ['minecraft:bow', 'minecraft:arrow x32']
+- id: primeiro_diamante
+  title: O Primeiro Diamante
+  type: main
+  deps: [espada_de_ferro]
+  desc: |
+    Brilha mais que tudo: o §eDiamante§r! Fica fundo, quase no fundo do mundo (camadas 5 a 16), muitas vezes perto de lava. Leve picareta de ferro, balde d'água e paciência. Com três diamantes você já faz uma picareta que corta qualquer coisa desta fase. A maioria dos heróis chorou de emoção no primeiro.
+
+    §cCuidado:§r lava embaixo do diamante é pegadinha clássica.
+  tasks:
+  - {get: 'minecraft:diamond x3'}
+  rewards:
+  - {xp: 5}
+  - choice: ['minecraft:diamond x2', 'minecraft:experience_bottle x4']
+- id: manual_do_tinkers
+  title: O Manual do Construtor
+  type: main
+  deps: [primeiro_diamante]
+  desc: |
+    Todo grande mestre ferreiro começa com um livro. O §eManual do Tinkers§r explica estações de trabalho, partes de ferramentas, fundição e materiais. Faça com um livro e um pedaço de papel de resma e leia com calma, é divertido. Tudo o que os heróis dominavam sobre ferramentas customizadas está aí dentro.
+  tasks:
+  - {get: 'TConstruct:manualBook'}
+  rewards:
+  - {xp: 5}
+  - choice: ['minecraft:book x4', 'minecraft:paper x8']
+- id: estacao_ferramentas
+  title: A Estação de Ferramentas
+  type: main
+  deps: [manual_do_tinkers]
+  desc: |
+    Aqui nasce a magia do Tinkers: a §eEstação de Ferramentas§r monta cabeça, cabo e acabamento num só instrumento. Cada parte vem de um material diferente e dá bônus próprios. Faça com uma bancada e uma mesa de estêncil. Quando entender isso, nunca mais vai querer ferramenta de bancada comum.
+  tasks:
+  - {get: 'TConstruct:ToolStationBlock'}
+  rewards:
+  - {xp: 5}
+  - choice: ['minecraft:stick x16', 'minecraft:planks x16']
+- id: construtor_de_partes
+  title: O Construtor de Partes
+  type: main
+  deps: [estacao_ferramentas]
+  desc: |
+    É a oficina onde cabeças de picareta, lâminas e cabos são fabricados. Você coloca o estêncil, o material (ferro, osso, pedra...) e sai a peça. Tudo o que se tem a fazer é testar e ver o resultado. Experimente combinações diferentes: é isso que torna cada ferramenta única.
+
+    §aDica:§r a velocidade e a durabilidade mudam com o material da cabeça.
+  tasks:
+  - {get: 'TConstruct:ToolStationBlock:1'}
+  rewards:
+  - {xp: 5}
+  - choice: ['TConstruct:blankPattern x4', 'minecraft:iron_ingot x4']
+- id: moldes_em_branco
+  title: Estênceis em Branco
+  type: normal
+  deps: [construtor_de_partes]
+  desc: |
+    Para fazer partes no Construtor, você precisa de §eEstênceis em Branco§r (basta um graveto e uma tábua em quadrado). Faça uma pilha e deixe a Estação com tudo à mão. Tábuas e gravetos sobram, e as ferramentas que você vai ganhar valem muito mais que isso.
+  tasks:
+  - {get: 'TConstruct:blankPattern x8'}
+  rewards:
+  - {xp: 3}
+  - choice: ['minecraft:planks x16', 'minecraft:log x8']
+- id: bau_de_moldes
+  title: Baú de Moldes
+  type: normal
+  deps: [moldes_em_branco]
+  desc: |
+    Organizar os estênceis ajuda muito. Coloque o §eBaú de Moldes§r ao lado da Estação ou do Construtor e use-o para alternar entre tipos de peça. Sem bagunça, o trabalho flui. Cada herói tinha seu cantinho de oficina, e o seu merece capricho também.
+  tasks:
+  - {get: 'TConstruct:ToolStationBlock:5'}
+  rewards:
+  - {xp: 3}
+  - choice: ['minecraft:chest x2', 'minecraft:iron_ingot x4']
+- id: machadinha
+  title: Machadinha do Construtor
+  type: normal
+  deps: [bau_de_moldes]
+  desc: |
+    Hora de testar a nova bancada! Monte uma §eMachadinha§r com cabeça de ferro (ou o que tiver) e cabo de graveto. Ela corta madeira bem mais rápido que a comum e ainda ganha melhorias com o uso. Seu primeiro item do Tinkers! O efeito de ver as estatísticas é divertido.
+  tasks:
+  - {get: 'TConstruct:hatchet'}
+  rewards:
+  - {xp: 3}
+  - choice: ['minecraft:log x16', 'minecraft:apple x8']
+- id: martelo_de_mineracao
+  title: Martelo de Mineração
+  type: normal
+  deps: [machadinha]
+  desc: |
+    Em vez de um bloco por vez, o §eMartelo§r mineira em área de 3x3! Fica pesado, caro e lento, mas rende quando precisa limpar um paredão inteiro. Fundos de mina, túneis e cavernas ficam bem mais fáceis. Cuidado com a durabilidade e leve reparo.
+  tasks:
+  - {get: 'TConstruct:hammer'}
+  rewards:
+  - {xp: 3}
+  - choice: ['minecraft:iron_ingot x8', 'minecraft:coal x16']
+- id: fundicao_controle
+  title: O Controle da Fundição
+  type: main
+  deps: [martelo_de_mineracao]
+  desc: |
+    Chegou a hora da grande forja! O §eControle da Fundição§r é o cérebro de um forno gigante que derrete minérios em metal líquido. Faça com tijolos da fundição (argila e fogo) e posicione em um buraco de pelo menos 3x3. Ao lado, coloque o Dreno para tirar o metal.
+
+    §cAtenção:§r a fundição só liga com combustível, como lava ou fogo sólido por baixo.
+  tasks:
+  - {get: 'TConstruct:Smeltery'}
+  rewards:
+  - {xp: 5}
+  - choice: ['TConstruct:Smeltery:2 x8', 'minecraft:lava_bucket']
+- id: tijolos_da_fundicao
+  title: Tijolos da Fundição
+  type: main
+  deps: [fundicao_controle]
+  desc: |
+    A fundição é feita de §eTijolos da Fundição§r, uma versão queimada e endurecida de tijolo de argila. São necessários cerca de 18 blocos para a primeira. Fabrique com a receita do NEI: argila cozida e outros ingredientes comuns. Quando acabar, é montar as paredes num quadrado vazio.
+  tasks:
+  - {get: 'TConstruct:Smeltery:2 x18'}
+  rewards:
+  - {xp: 5}
+  - choice: ['minecraft:clay x16', 'minecraft:brick x16']
+- id: dreno_da_fundicao
+  title: O Dreno
+  type: normal
+  deps: [tijolos_da_fundicao]
+  desc: |
+    O §eDreno§r é o buraco por onde o metal derretido sai da fundição. Coloque numa parede da fundição com a bica voltada para fora. Embaixo dele vão as bacias e mesas de fundição, onde o metal se solidifica em lingotes e peças prontas.
+  tasks:
+  - {get: 'TConstruct:Smeltery:1'}
+  rewards:
+  - {xp: 3}
+  - choice: ['TConstruct:Smeltery:2 x4', 'minecraft:bucket']
+- id: torneira_e_bacia
+  title: Torneira e Bacia
+  type: normal
+  deps: [dreno_da_fundicao]
+  desc: |
+    Para trabalhar o metal líquido, use a §eTorneira§r (conecta ao Dreno) e a §eBacia de Fundição§r (aceita metal e faz blocos). Com a Mesa, você faz lingotes e peças. É como uma fábrica de padaria: o metal escorre, solidifica, sai pronto. Experimente com ferro!
+  tasks:
+  - get: ['TConstruct:SearedBlock:1', 'TConstruct:SearedBlock:2']
+  rewards:
+  - {xp: 3}
+  - choice: ['TConstruct:SearedBlock', 'minecraft:iron_ingot x4']
+- id: tanque_da_fundicao
+  title: Tanque da Fundição
+  type: normal
+  deps: [torneira_e_bacia]
+  desc: |
+    O §eTanque da Fundição§r guarda lava ou metal líquido para uso posterior. É um bloco de segurança precioso para quem não quer ficar sem combustível. Coloque embaixo do Controle para alimentar a fundição com lava e ver tudo funcionar sozinho.
+  tasks:
+  - {get: 'TConstruct:LavaTank'}
+  rewards:
+  - {xp: 3}
+  - choice: ['TConstruct:LavaTank:1', 'minecraft:lava_bucket']
+- id: metal_derretido
+  title: Ligas e Metais
+  type: main
+  deps: [tanque_da_fundicao]
+  desc: |
+    Com a fundição ligada, é só jogar minérios lá dentro! Misturando cobre e estanho sai §eBronze§r. Alumínio e cobre rendem Latão de Alumínio. É a ciência do metal, Herói, e os heróis lendários viravam especialistas nisso. Cada liga tem propriedades próprias, e o NEI mostra todas as proporções.
+  tasks:
+  - get: ['ore:ingotBronze x8', 'ore:ingotAluminum x8']
+  rewards:
+  - {xp: 5}
+  - choice: ['ore:ingotCopper x8', 'ore:ingotTin x8']
+- id: lenhador_tinkers
+  title: Machado de Lenhador
+  type: normal
+  deps: [metal_derretido]
+  desc: |
+    Uma árvore inteira de um golpe! O §eMachado de Lenhador§r derruba troncos empilhados de uma só vez. Fica caro (muitas partes), mas vale cada lingote quando precisar de madeira em massa para a vila. Lembre-se de replantar, que a floresta agradece.
+  tasks:
+  - {get: 'TConstruct:lumberaxe'}
+  rewards:
+  - {xp: 3}
+  - choice: ['minecraft:log x32', 'minecraft:sapling x8']
+- id: espada_larga
+  title: Espada Larga
+  type: normal
+  deps: [lenhador_tinkers]
+  desc: |
+    Lâmina larga, golpe seguro. A §eEspada Larga§r do Tinkers dá mais dano que qualquer espada comum e aceita melhorias (quartzo, diamante, redstone...). Faça com cabeça e cabo de materiais bons, e você terá uma arma digna de um dos heróis do passado.
+  tasks:
+  - {get: 'TConstruct:broadsword'}
+  rewards:
+  - {xp: 3}
+  - choice: ['minecraft:golden_apple', 'minecraft:iron_ingot x8']
+- id: masmorra_esqueletos
+  title: Dungeon dos Esqueletos
+  type: normal
+  deps: [espada_larga]
+  icon: minecraft:bone
+  desc: |
+    Quem desce longe nas minas costuma encontrar salas escuras com baús e gaiolas de monstros. Isso é uma §emasmorra§r! Entre com armadura de ferro, espada afiada e tochas. Derrube §e10 esqueletos§r, mas fique atento às flechas. O saque costuma ser generoso, e a emoção também.
+  tasks:
+  - {kill: Skeleton x10}
+  rewards:
+  - {xp: 3}
+  - choice: ['minecraft:bone x16', 'minecraft:arrow x32']
+- id: fundicao_completa
+  title: A Grande Forja
+  type: milestone
+  deps: [masmorra_esqueletos]
+  desc: |
+    Veja o que você construiu, Herói! Estação, fundição, lâmina larga, machado de lenhador e armadura de ferro. É assim que os heróis da Era do Futuro se preparavam antes de encarar o mundo grande.
+
+    A Idade da Pedra ficou para trás, e o ferro agora corre em suas veias. O próximo desafio é bem mais barulhento: máquinas, cabos e eletricidade! Prepare as luvas de borracha e vamos para a §eEra Industrial§r.
+  tasks:
+  - get: ['TConstruct:Smeltery', 'TConstruct:ToolStationBlock', 'TConstruct:broadsword', 'TConstruct:lumberaxe',
+      'minecraft:iron_chestplate']
+  rewards:
+  - {xp: 25}
+  - kit:
+      name: Kit do Ferreiro
+      items: ['minecraft:iron_pickaxe', 'minecraft:iron_axe', 'minecraft:iron_shovel', 'minecraft:diamond
+          x3', 'minecraft:cooked_beef x16', 'minecraft:torch x32']
+  - {loot: raro}

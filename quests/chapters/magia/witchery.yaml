@@ -1,0 +1,2934 @@
+chapter:
+  id: witchery
+  title: "Witchery"
+  prefix: ""
+  order: 550
+  icon: witchery:witchhat
+  desc: |
+    §dO Volume das Bruxas.§r Ervas, Forno, Destilaria, Chaleira e Caldeirão; Altar e Poder;
+    Círculos de Giz, Bonecos, Maldições, Familiares, o Mundo Espiritual, o Tormento e o
+    Espelho; Lobisomens, Vampiros e Caçadores de Bruxas. (Witchery 0.24.1)
+
+quests:
+  # ======================================================================
+  # FASE 0 — HERBOLOGIA
+  # ======================================================================
+  - id: sementes_bruxa
+    title: "Sementes Estranhas"
+    type: main
+    icon: witchery:seedsmandrake
+    desc: |
+      Este Volume tem cheiro de terra molhada, fumaça e... algo que eu prefiro não nomear.
+      Bem-vindo à bruxaria, Herói! Aqui a magia é sombria, mas eu vou estar do seu lado o
+      tempo todo, com avisos. Muitos avisos.
+
+      Tudo começa no mato: §equebrar grama alta§r solta, de vez em quando, sementes de
+      §eBeladona§r, §eMandrágora§r, §eAlcachofra-d'Água§r, §eCampânula-da-Neve§r,
+      §eAbsinto§r, §eAcônito§r e §eAlho§r. Junte qualquer uma delas para começar.
+    tasks:
+      - one_of: [witchery:seedsbelladonna, witchery:seedsmandrake, witchery:seedsartichoke, witchery:seedssnowbell, witchery:seedswormwood, witchery:seedswolfsbane, witchery:garlic]
+    rewards:
+      - xp: 4
+      - choice: [minecraft:wooden_hoe x1, minecraft:bone x16, minecraft:bread x16]
+
+  - id: beladona
+    title: "Beladona"
+    type: main
+    deps: [sementes_bruxa]
+    icon: witchery:ingredient:21
+    desc: |
+      "Erva-moura mortal, assim é conhecida, e venenos mortais dela são colhidos." Plante as
+      sementes em terra arada: ela cresce em estágios. Colha §e8 Flores de Beladona§r — elas
+      estão em dezenas de receitas (bonecos, chalés, poções, livros...).
+
+      §cNão coma nada que tenha encostado nela. Brincadeira. Mais ou menos.§r
+    tasks:
+      - get: witchery:ingredient:21 x8
+    rewards:
+      - xp: 4
+      - choice: [minecraft:bone x16, minecraft:wheat_seeds x16, minecraft:dye:15 x16]
+
+  - id: mandragora
+    title: "Mandrágora"
+    type: main
+    deps: [sementes_bruxa]
+    icon: witchery:ingredient:22
+    desc: |
+      "Sua raiz em forma de pastinaca tem o aspecto de um homem." O livro de Herbologia
+      avisa: colhida na hora errada, ela §cacorda e grita§r — e vira uma criatura que foge e
+      ataca. Leia a página dela antes de colher!
+
+      Plante em terra arada e junte §e8 Raízes de Mandrágora§r: Mutandis, sopas e quase todo
+      brew pedem uma.
+    tasks:
+      - get: witchery:ingredient:22 x8
+    rewards:
+      - xp: 4
+      - choice: [minecraft:bone x16, minecraft:iron_sword x1, minecraft:dye:15 x16]
+
+  - id: alcachofra
+    title: "Alcachofra-d'Água"
+    type: normal
+    deps: [sementes_bruxa]
+    icon: witchery:ingredient:69
+    desc: |
+      Uma planta que cresce §esobre água parada§r (como vitória-régia). O §eGlobo de
+      Alcachofra-d'Água§r enche a barriga e depois esvazia, e serve de dispersão
+      "instantânea" nos brews do caldeirão. Junte §e4§r.
+    tasks:
+      - get: witchery:ingredient:69 x4
+    rewards:
+      - xp: 2
+      - item: minecraft:waterlily x4
+
+  - id: campanula
+    title: "Campânula-da-Neve"
+    type: normal
+    deps: [sementes_bruxa]
+    icon: witchery:ingredient:78
+    desc: |
+      "Fria como a neve, congela a umidade enquanto cresce." Ela dá §eAgulhas Geladas§r —
+      que, aliás, são o jeito de voltar do Mundo Espiritual. Guarde §e4§r!
+    tasks:
+      - get: witchery:ingredient:78 x4
+    rewards:
+      - xp: 2
+      - item: minecraft:snowball x16
+
+  - id: absinto
+    title: "Absinto"
+    type: normal
+    deps: [sementes_bruxa]
+    icon: witchery:ingredient:111
+    desc: |
+      O §eAbsinto§r é a dispersão "líquida" dos brews do caldeirão: o efeito vira uma poça
+      ou, num ritual, chuva. Plante e colha §e4§r.
+    tasks:
+      - get: witchery:ingredient:111 x4
+    rewards:
+      - xp: 2
+      - item: minecraft:dye:15 x8
+
+  - id: aconito
+    title: "Acônito"
+    type: normal
+    deps: [sementes_bruxa]
+    icon: witchery:ingredient:156
+    desc: |
+      "O nome é a pista: desfaz o segredo do lobisomem." O §eAcônito§r (Wolfsbane) é usado
+      no Altar do Lobo, nas armadilhas, na armadura de Caçador de Bruxas e nos ritos da
+      Maldição do Lobo. Junte §e4§r.
+    tasks:
+      - get: witchery:ingredient:156 x4
+    rewards:
+      - xp: 2
+      - item: minecraft:bone x8
+
+  - id: alho
+    title: "Alho"
+    type: normal
+    deps: [sementes_bruxa]
+    icon: witchery:garlic
+    desc: |
+      "De dia dá sabor à comida, à noite mantém os vampiros longe." O §eAlho§r é semente e
+      colheita ao mesmo tempo. Ele faz guirlandas, estacas, o Cozido Encorpado e a armadura
+      de Caçador "da Alvorada". Junte §e8§r.
+    tasks:
+      - get: witchery:garlic x8
+    rewards:
+      - xp: 2
+      - item: minecraft:bowl x4
+
+  - id: livro_herbologia
+    title: "Bruxaria: Herbologia"
+    type: optional
+    deps: [beladona]
+    icon: witchery:ingredient:81
+    desc: |
+      Livro, corante preto, pena, papoula e dente-de-leão = §eWitchcraft: Herbology§r. Ele
+      descreve cada planta rara: como cresce, onde e como mutá-la. Leitura obrigatória antes
+      de colher Mandrágoras!
+    tasks:
+      - get: witchery:ingredient:81
+    rewards:
+      - loot: comum
+
+  # ======================================================================
+  # FASE 1 — O FORNO DAS BRUXAS
+  # ======================================================================
+  - id: forno_bruxas
+    title: "Forno das Bruxas"
+    type: main
+    deps: [sementes_bruxa]
+    icon: witchery:witchesovenidle
+    desc: |
+      Toda bruxa começa na cozinha. O §eForno das Bruxas§r (ferro e barras de ferro) cozinha
+      um pouco mais rápido que a fornalha (mas §cnão funde minério§r) e, com §eJarros de
+      Argila§r no espaço extra, §ecaptura a fumaça§r do que está queimando.
+
+      Essas fumaças são a base de toda a bruxaria. Coloque o forno na sua cabana!
+    tasks:
+      - get: witchery:witchesovenidle
+    rewards:
+      - xp: 4
+      - choice: [minecraft:clay_ball x16, minecraft:coal x16, minecraft:sapling x8]
+
+  - id: jarro_argila
+    title: "Jarros de Argila"
+    type: main
+    deps: [forno_bruxas]
+    icon: witchery:ingredient:27
+    desc: |
+      4 bolas de argila (formato de "T" invertido) = 4 §eJarros de Argila Mole§r; na
+      fornalha viram §eJarros de Argila§r. Eles guardam as fumaças do forno e os destilados
+      da Destilaria. Você vai precisar de MUITOS. Comece com §e16§r.
+    tasks:
+      - get: witchery:ingredient:27 x16
+    rewards:
+      - xp: 4
+      - choice: [minecraft:clay_ball x32, minecraft:coal x16, minecraft:sand x32]
+
+  - id: cinza_madeira
+    title: "Cinza de Madeira e Cal Virgem"
+    type: normal
+    deps: [forno_bruxas]
+    icon: witchery:ingredient:18
+    desc: |
+      Mudas queimadas viram §eCinza de Madeira§r (neste pack, qualquer muda do oredict vira
+      cinza). Uma cinza sozinha na bancada vira §eCal Virgem§r. Ambas aparecem no giz, nos
+      ritos e nos brews. Junte §e8 cinzas§r e §e2 cales§r.
+    tasks:
+      - get: [witchery:ingredient:18 x8, witchery:ingredient:16 x2]
+    rewards:
+      - xp: 2
+      - item: minecraft:sapling x8
+
+  - id: exalacao_chifrudo
+    title: "Exalação do Chifrudo"
+    type: main
+    deps: [jarro_argila]
+    icon: witchery:ingredient:31
+    desc: |
+      Agora a mágica do forno: cozinhe §emudas de Carvalho§r com jarros no espaço de jarro.
+      Há cerca de 30% de chance (mais com Funis de Fumaça) de capturar a §eExalação do
+      Chifrudo§r. Junte §e4§r — ela vai no Altar e no Mutandis.
+    tasks:
+      - get: witchery:ingredient:31 x4
+    rewards:
+      - xp: 4
+      - choice: [minecraft:sapling x16, witchery:ingredient:27 x4, minecraft:coal x16]
+
+  - id: sopro_deusa
+    title: "Sopro da Deusa"
+    type: main
+    deps: [jarro_argila]
+    icon: witchery:ingredient:32
+    desc: |
+      Mudas de §eBétula§r no forno soltam o §eSopro da Deusa§r. Ele faz o Altar e, na
+      Destilaria, a Lágrima da Deusa. Junte §e4§r.
+    tasks:
+      - get: witchery:ingredient:32 x4
+    rewards:
+      - xp: 4
+      - choice: [minecraft:sapling:2 x16, witchery:ingredient:27 x4, minecraft:coal x16]
+
+  - id: indicio_renascimento
+    title: "Indício de Renascimento"
+    type: normal
+    deps: [jarro_argila]
+    icon: witchery:ingredient:33
+    desc: |
+      Mudas de §ePinheiro§r (spruce) no forno soltam o §eIndício de Renascimento§r, usado no
+      Rito da Fertilidade, no Chamado do Familiar e nos contratos. Junte §e2§r.
+    tasks:
+      - get: witchery:ingredient:33 x2
+    rewards:
+      - xp: 2
+      - item: minecraft:sapling:1 x8
+
+  - id: fumaca_podre
+    title: "Fumaça Fétida"
+    type: normal
+    deps: [jarro_argila]
+    icon: witchery:ingredient:28
+    desc: |
+      Comida e madeira comum no forno soltam §eFumaça Fétida§r. Fedida, mas útil: na
+      Destilaria, com Cal Virgem, ela vira Gesso e Óleo de Vitríolo. Junte §e4§r.
+    tasks:
+      - get: witchery:ingredient:28 x4
+    rewards:
+      - xp: 2
+      - item: minecraft:log x8
+
+  - id: funil_fumaca
+    title: "Funil de Fumaça"
+    type: optional
+    deps: [forno_bruxas]
+    icon: witchery:fumefunnel
+    desc: |
+      Baldes, um balde de lava, pedra luminosa, blocos de ferro e barras de ferro. Encoste
+      §eFunis de Fumaça§r nas laterais/topo do forno (virados para ele): cada um acelera o
+      cozimento e soma §e+25%§r de chance de capturar fumaça.
+    tasks:
+      - get: witchery:fumefunnel
+    rewards:
+      - loot: comum
+
+  - id: livro_forno
+    title: "Bruxaria: Coletando Fumaças"
+    type: optional
+    deps: [forno_bruxas]
+    icon: witchery:ingredient:46
+    desc: |
+      Livro, corante preto, pena, Flor de Beladona e carvão vegetal = §eWitchcraft:
+      Collecting Fumes§r, com a tabela completa de mudas → fumaças.
+    tasks:
+      - get: witchery:ingredient:46
+    rewards:
+      - loot: comum
+
+  # ======================================================================
+  # FASE 2 — CALDEIRÃO E MUTANDIS
+  # ======================================================================
+  - id: pasta_uncao
+    title: "Pasta de Unção"
+    type: main
+    deps: [beladona, mandragora]
+    icon: witchery:ingredient:153
+    desc: |
+      Sementes de Alcachofra-d'Água, Mandrágora, Beladona e Campânula juntas na bancada =
+      §ePasta de Unção§r. É com ela que um caldeirão comum vira um caldeirão de bruxa.
+    tasks:
+      - get: witchery:ingredient:153
+    rewards:
+      - xp: 4
+      - choice: [minecraft:cauldron x1, minecraft:iron_ingot x7, minecraft:water_bucket x1]
+
+  - id: caldeirao_bruxa
+    title: "Caldeirão da Bruxa"
+    type: main
+    deps: [pasta_uncao]
+    icon: witchery:cauldron
+    desc: |
+      Coloque um §eCaldeirão§r comum no mundo e use a §ePasta de Unção§r nele: nasce o
+      §eCaldeirão da Bruxa§r! Encha até a boca com água e acenda §efogo embaixo§r. Quando
+      ferver, jogue os ingredientes (na ordem certa) para fazer brews, rituais ou itens.
+
+      §aPara esvaziar:§r jogue Gesso (limpa) ou Cal Virgem (explode o conteúdo — sem ferir a
+      bruxa nem as construções). Quebre e pegue de volta para provar que fez!
+    tasks:
+      - get: witchery:cauldron
+    rewards:
+      - xp: 4
+      - choice: [minecraft:netherrack x4, minecraft:flint_and_steel x1, minecraft:egg x8]
+
+  - id: livro_pocoes
+    title: "Brews das Bruxas"
+    type: normal
+    deps: [caldeirao_bruxa]
+    icon: witchery:cauldronbook
+    desc: |
+      Livro, corante preto, pena e terra = §eWitches' Brews§r. É o manual do caldeirão:
+      receitas de crafting, rituais, capacidade, poder, duração, modificadores e
+      dispersão. Tenha sempre à mão — o caldeirão é exigente com a ordem dos itens!
+    tasks:
+      - get: witchery:cauldronbook
+    rewards:
+      - xp: 2
+      - item: minecraft:feather x4
+
+  - id: mutandis
+    title: "Mutandis"
+    type: main
+    deps: [caldeirao_bruxa, exalacao_chifrudo]
+    icon: witchery:ingredient:14
+    desc: |
+      No caldeirão fervendo: §eRaiz de Mandrágora + Exalação do Chifrudo + Ovo§r = §e6
+      Mutandis§r (sem custo de poder).
+
+      Use o Mutandis em plantas simples (flores, mudas, grama...) para §emutá-las§r em outra
+      espécie aleatória — é assim que surgem as árvores de bruxa e as plantas raras. Junte
+      §e12§r!
+    tasks:
+      - get: witchery:ingredient:14 x12
+    rewards:
+      - xp: 4
+      - choice: [minecraft:egg x16, witchery:ingredient:22 x4, minecraft:sapling x16]
+
+  - id: sorveira
+    title: "Sorveira (Rowan)"
+    type: main
+    deps: [mutandis]
+    icon: witchery:witchsapling
+    desc: |
+      "A sorveira tem uma afinidade com a magia que poucas árvores igualam." Use Mutandis
+      em mudas até aparecer uma §eMuda de Sorveira§r. Plante, cresça e corte: você precisa
+      de §e4 toras de Sorveira§r para o Altar.
+
+      §cAviso de Akasha:§r às vezes, ao cortar madeira de árvores de bruxa, um §eEnt§r
+      desperta. Ele é forte — mas solta Galhos de Ent, muito valiosos!
+    tasks:
+      - get: witchery:witchlog x4
+    rewards:
+      - xp: 4
+      - choice: [witchery:ingredient:14 x6, minecraft:iron_axe x1, minecraft:dye:15 x16]
+
+  - id: amieiro
+    title: "Amieiro (Alder)"
+    type: normal
+    deps: [mutandis]
+    icon: witchery:witchsapling:1
+    desc: |
+      "A madeira do amieiro parece sangrar quando cortada; esta árvore traz infortúnio a
+      todos." Mute mudas até conseguir uma §eMuda de Amieiro§r.
+    tasks:
+      - get: witchery:witchsapling:1
+    rewards:
+      - xp: 2
+      - item: witchery:ingredient:14 x3
+
+  - id: espinheiro
+    title: "Espinheiro (Hawthorn)"
+    type: normal
+    deps: [mutandis]
+    icon: witchery:witchsapling:2
+    desc: |
+      "O espinheiro é a árvore da pureza." Mute mudas até conseguir uma §eMuda de
+      Espinheiro§r. Ela também é o cabo da Vassoura!
+    tasks:
+      - get: witchery:witchsapling:2
+    rewards:
+      - xp: 2
+      - item: witchery:ingredient:14 x3
+
+  - id: fumacas_bruxa
+    title: "Fumaças das Árvores de Bruxa"
+    type: normal
+    deps: [sorveira, amieiro, espinheiro]
+    icon: witchery:ingredient:34
+    desc: |
+      As mudas das árvores de bruxa também soltam fumaça no forno:
+      §e• Sorveira:§r Sopro de Magia (Whiff of Magic)
+      §e• Amieiro:§r Fedor do Infortúnio (Reek of Misfortune)
+      §e• Espinheiro:§r Odor da Pureza (Odour of Purity)
+
+      Mostre uma de cada. O Sopro de Magia faz a Pedra Sintonizada — o próximo grande passo.
+    tasks:
+      - get: [witchery:ingredient:34, witchery:ingredient:35, witchery:ingredient:36]
+    rewards:
+      - xp: 3
+      - item: witchery:ingredient:27 x6
+
+  - id: mutandis_extremis
+    title: "Mutandis Extremis"
+    type: normal
+    deps: [mutandis]
+    icon: witchery:ingredient:15
+    desc: |
+      Caldeirão fervendo: §eMutandis + Verruga do Nether§r = Mutandis Extremis. Ele muta
+      plantas mais "fortes" (até plantações), transforma grama em micélio e terra
+      submersa em argila.
+    tasks:
+      - get: witchery:ingredient:15 x4
+    rewards:
+      - xp: 2
+      - item: minecraft:nether_wart x4
+
+  - id: plantas_raras
+    title: "Plantas de Bruxa"
+    type: optional
+    deps: [mutandis]
+    icon: witchery:spanishmoss
+    desc: |
+      Com Mutandis surgem plantas raras: §eErva Brilhante§r (luz), §eMusgo Espanhol§r
+      (colha com tesoura — é o recheio dos Bonecos!) e §eMusgo de Brasa§r (pega fogo quando
+      perturbado; tesoura também). Mostre o Musgo Espanhol.
+    tasks:
+      - get: witchery:spanishmoss x4
+    rewards:
+      - loot: comum
+
+  # ======================================================================
+  # FASE 3 — O ALTAR E O PODER
+  # ======================================================================
+  - id: altar_bruxa
+    title: "O Altar"
+    type: main
+    deps: [sorveira, exalacao_chifrudo, sopro_deusa]
+    icon: witchery:altar
+    desc: |
+      Sopro da Deusa, um frasco de água e Exalação do Chifrudo em cima; tijolos de pedra e
+      toras de Sorveira embaixo = §e3 blocos de Altar§r.
+
+      O Altar é um multibloco de §e6 blocos num retângulo 3×2§r. Monte-o e clique: ele mostra
+      o §epoder§r acumulado. Faça duas receitas e monte o seu!
+    tasks:
+      - get: witchery:altar x6
+    rewards:
+      - xp: 4
+      - choice: [minecraft:stonebrick x16, witchery:witchlog x4, minecraft:torch x16]
+
+  - id: info_poder
+    title: "De Onde Vem o Poder"
+    type: info
+    deps: [altar_bruxa]
+    icon: minecraft:red_flower
+    desc: |
+      O Altar tira poder da §enatureza viva em volta§r (até 14 blocos em cada direção):
+      grama, terra, folhas, toras, flores, plantações, cogumelos, água, abóboras, melancias,
+      cactos, canas, trepadeiras... Cada tipo conta até um limite, então §evariedade§r é
+      melhor que quantidade. Plantas de bruxa e árvores de bruxa valem bem.
+
+      Por isso: construa sua cabana §eno meio da floresta§r, nunca dentro de uma caverna de
+      pedra! Destilaria, Chaleira, ritos e Caldeirão puxam poder do altar mais próximo.
+    tasks:
+      - check
+    rewards:
+      - xp: 1
+
+  - id: info_artefatos
+    title: "Artefatos do Altar"
+    type: info
+    deps: [altar_bruxa]
+    icon: minecraft:skull
+    desc: |
+      Itens colocados §esobre§r os blocos do altar o fortalecem (um de cada tipo):
+      §e• Crânio:§r esqueleto ×2, wither ×3, zumbi ×4 em poder máximo e recarga.
+      §e• Candelabro:§r recarga +2 (uma tocha comum dá +1).
+      §e• Cálice:§r poder +1 (+2 se estiver §echeio§r de Sopa de Redstone).
+      §e• Arthana:§r aumenta o alcance do altar.
+      §e• Ramo Místico:§r aumenta o nível de aprimoramento.
+      §e• Pentáculo:§r dobra a recarga.
+
+      Coloque itens no altar com clique direito (Shift) segurando o item.
+    tasks:
+      - check
+    rewards:
+      - xp: 1
+
+  - id: candelabro
+    title: "Candelabro"
+    type: normal
+    deps: [pedra_sintonizada]
+    icon: witchery:ingredient
+    desc: |
+      Tochas, ferro e uma Pedra Sintonizada = §eCandelabro§r. Sobre o altar, a recarga de
+      poder fica bem mais rápida. Toda cabana de bruxa que se preze tem um!
+    tasks:
+      - get: witchery:ingredient
+    rewards:
+      - xp: 2
+      - item: minecraft:torch x16
+
+  - id: calice
+    title: "Cálice"
+    type: normal
+    deps: [pedra_sintonizada]
+    icon: witchery:ingredient:1
+    desc: |
+      Ouro, pepitas e uma Pedra Sintonizada = §eCálice§r. Sobre o altar ele aumenta o poder
+      máximo. Encha-o com §eSopa de Redstone§r (bancada: sopa em cima do cálice) para dobrar o
+      bônus.
+    tasks:
+      - get: witchery:ingredient:1
+    rewards:
+      - xp: 2
+      - item: minecraft:gold_nugget x9
+
+  - id: calice_cheio
+    title: "Cálice Cheio"
+    type: optional
+    deps: [calice, sopa_redstone]
+    icon: witchery:ingredient:2
+    desc: |
+      Sopa de Redstone sobre o Cálice = §eCálice (Cheio)§r. O artefato de poder completo!
+    tasks:
+      - get: witchery:ingredient:2
+    rewards:
+      - loot: comum
+
+  - id: arthana
+    title: "Arthana"
+    type: main
+    deps: [altar_bruxa]
+    icon: witchery:arthana
+    desc: |
+      Ouro, pepitas de ouro, uma esmeralda e um graveto = §eArthana§r, a faca ritual.
+
+      Ela é artefato do altar (mais alcance), ingrediente de vários ritos e, §ena mão ao
+      matar§r, aumenta muito a chance de ingredientes: Lã de Morcego, Língua de Cão,
+      Coração de Creeper, Pó Espectral (de esqueletos e zumbis) e Coração de Demônio.
+    tasks:
+      - get: witchery:arthana
+    rewards:
+      - xp: 4
+      - choice: [minecraft:emerald x1, minecraft:gold_ingot x4, minecraft:experience_bottle x4]
+
+  - id: ingredientes_animais
+    title: "Lã de Morcego e Língua de Cão"
+    type: normal
+    deps: [arthana]
+    icon: witchery:ingredient:24
+    desc: |
+      Dois ingredientes clássicos de bruxa: §eLã de Morcego§r (morcegos) e §eLíngua de Cão§r
+      (lobos). Qualquer morte dá ~33% de chance; com a Arthana na mão, 75% (100% com
+      Pilhagem). Junte §e4 de cada§r. (Desculpa, cachorrinhos selvagens.)
+    tasks:
+      - get: [witchery:ingredient:24 x4, witchery:ingredient:25 x4]
+    rewards:
+      - xp: 2
+      - item: minecraft:bone x8
+
+  - id: coracao_creeper
+    title: "Coração de Creeper"
+    type: normal
+    deps: [arthana]
+    icon: witchery:ingredient:74
+    desc: |
+      Creepers raramente soltam um §eCoração de Creeper§r (bem mais com a Arthana). Ele faz
+      pólvora, a Túnica da Bruxa, o Coração Congelado e o Unguento Místico.
+      §cNão coma: neste pack ele explode quando comido!§r
+    tasks:
+      - get: witchery:ingredient:74
+    rewards:
+      - xp: 2
+      - item: minecraft:gunpowder x8
+
+  - id: po_espectral
+    title: "Pó Espectral"
+    type: normal
+    deps: [arthana]
+    icon: witchery:ingredient:66
+    desc: |
+      Esqueletos e zumbis mortos com a Arthana na mão às vezes soltam §ePó Espectral§r —
+      restos de espírito. Ele faz a Pedra Necromântica, o Pó de Cemitério e a
+      Manifestação. Junte §e4§r.
+    tasks:
+      - get: witchery:ingredient:66 x4
+    rewards:
+      - xp: 2
+      - item: minecraft:bone x16
+
+  # ======================================================================
+  # FASE 4 — PEDRA SINTONIZADA E DESTILARIA
+  # ======================================================================
+  - id: pedra_sintonizada
+    title: "Pedra Sintonizada"
+    type: main
+    deps: [fumacas_bruxa]
+    icon: witchery:ingredient:10
+    desc: |
+      Sopro de Magia em cima, §ediamante§r no meio, balde de lava embaixo = §ePedra
+      Sintonizada§r. É o "cérebro" das máquinas de bruxa: Destilaria, Chaleira, Roda de
+      Fiar, Candelabro, Cálice... Faça §e3§r.
+    tasks:
+      - get: witchery:ingredient:10 x3
+    rewards:
+      - xp: 4
+      - choice: [minecraft:diamond x1, minecraft:lava_bucket x1, witchery:ingredient:34 x2]
+
+  - id: destilaria
+    title: "Destilaria"
+    type: main
+    deps: [pedra_sintonizada, jarro_argila]
+    icon: witchery:distilleryidle
+    desc: |
+      Jarros de Argila, ferro, ouro e uma Pedra Sintonizada. A §eDestilaria§r precisa estar
+      §eperto de um Altar§r (puxa poder dele). Coloque dois itens e o número de jarros
+      pedido: ela separa os destilados. Veja tudo no NEI, aba "Distillery".
+    tasks:
+      - get: witchery:distilleryidle
+    rewards:
+      - xp: 4
+      - choice: [witchery:ingredient:27 x8, minecraft:iron_ingot x8, minecraft:gold_ingot x4]
+
+  - id: gesso_vitriolo
+    title: "Gesso e Óleo de Vitríolo"
+    type: main
+    deps: [destilaria, fumaca_podre, cinza_madeira]
+    icon: witchery:ingredient:17
+    desc: |
+      Destile §eFumaça Fétida + Cal Virgem§r (1 jarro): sai §eGesso§r, §eÓleo de Vitríolo§r e
+      uma bola de slime. O Gesso vai no giz ritual; o Vitríolo em brews e no Vapor de
+      Diamante. Junte §e4 Gessos§r e §e2 Óleos§r.
+    tasks:
+      - get: [witchery:ingredient:17 x4, witchery:ingredient:30 x2]
+    rewards:
+      - xp: 4
+      - choice: [witchery:ingredient:28 x4, witchery:ingredient:16 x4, minecraft:slime_ball x4]
+
+  - id: lagrima_deusa
+    title: "Lágrima da Deusa"
+    type: main
+    deps: [destilaria, sopro_deusa]
+    icon: witchery:ingredient:37
+    desc: |
+      Destile §eSopro da Deusa + Lápis-Lazúli§r (3 jarros): sai §eLágrima da Deusa§r, Sopro de
+      Magia, slime e Fumaça Fétida. A Lágrima é o coração do §eGiz Ritual§r. Junte §e4§r.
+    tasks:
+      - get: witchery:ingredient:37 x4
+    rewards:
+      - xp: 4
+      - choice: [minecraft:dye:4 x8, witchery:ingredient:32 x2, witchery:ingredient:27 x6]
+
+  - id: vapor_diamante
+    title: "Vapor de Diamante"
+    type: normal
+    deps: [gesso_vitriolo]
+    icon: witchery:ingredient:29
+    desc: |
+      Destile §eDiamante + Óleo de Vitríolo§r (3 jarros): 2 §eVapores de Diamante§r e Odor
+      da Pureza. O Vapor está em couro impregnado, bonecos de proteção, ritos e o Coração do
+      Demônio destilado.
+    tasks:
+      - get: witchery:ingredient:29 x2
+    rewards:
+      - xp: 2
+      - item: witchery:ingredient:30 x2
+
+  - id: mal_refinado
+    title: "Mal Refinado"
+    type: normal
+    deps: [vapor_diamante]
+    icon: witchery:ingredient:38
+    desc: |
+      Destile §eVapor de Diamante + Lágrima de Ghast§r (3 jarros): Odor da Pureza, Fedor do
+      Infortúnio, Fumaça Fétida e §eMal Refinado§r. O Mal Refinado é exigido nas
+      convocações de §cDemônios e Diabretes§r.
+    tasks:
+      - get: witchery:ingredient:38
+    rewards:
+      - xp: 2
+      - item: minecraft:ghast_tear x1
+
+  - id: orvalho_ender
+    title: "Orvalho do Ender"
+    type: normal
+    deps: [destilaria]
+    icon: witchery:ingredient:67
+    desc: |
+      Uma §ePérola do Ender§r com 6 jarros vira 5 §eOrvalhos do Ender§r e um Sopro de Magia.
+      O orvalho liga Pedras de Caminho (Waystones) a lugares e criaturas.
+    tasks:
+      - get: witchery:ingredient:67 x4
+    rewards:
+      - xp: 2
+      - item: minecraft:ender_pearl x2
+
+  - id: livro_destilaria
+    title: "Bruxaria: Destilando"
+    type: optional
+    deps: [destilaria]
+    icon: witchery:ingredient:47
+    desc: |
+      Livro, corante preto, pena, Beladona e Sopro da Deusa = §eWitchcraft: Distilling§r. A
+      tabela completa de destilações.
+    tasks:
+      - get: witchery:ingredient:47
+    rewards:
+      - loot: comum
+
+  # ======================================================================
+  # FASE 5 — A CHALEIRA E OS BREWS
+  # ======================================================================
+  - id: chaleira
+    title: "Chaleira"
+    type: main
+    deps: [pedra_sintonizada]
+    icon: witchery:kettle
+    desc: |
+      Gravetos, linha, uma Pedra Sintonizada e um Caldeirão comum = §eChaleira§r. Encha com
+      água, aqueça por baixo e jogue os 6 ingredientes da receita. Quando estiver pronto,
+      recolha com frascos de vidro. Receitas caras puxam poder do altar.
+
+      As receitas estão no NEI (aba "Kettle") e no livro Brews & Infusions.
+    tasks:
+      - get: witchery:kettle
+    rewards:
+      - xp: 4
+      - choice: [minecraft:glass_bottle x16, minecraft:string x8, minecraft:water_bucket x1]
+
+  - id: sopa_redstone
+    title: "Sopa de Redstone"
+    type: main
+    deps: [chaleira, gota_sorte]
+    icon: witchery:ingredient:40
+    desc: |
+      Redstone, Gota de Sorte, Lã de Morcego, Língua de Cão, Beladona e Mandrágora (1000 de
+      poder). A §eSopa de Redstone§r é a base de todas as infusões e unguentos fortes. Faça
+      §e3§r.
+    tasks:
+      - get: witchery:ingredient:40 x3
+    rewards:
+      - xp: 4
+      - choice: [minecraft:redstone x32, witchery:ingredient:24 x2, witchery:ingredient:25 x2]
+
+  - id: gota_sorte
+    title: "Gota de Sorte"
+    type: normal
+    deps: [caldeirao_bruxa, lagrima_deusa, mal_refinado, mutandis_extremis]
+    icon: witchery:ingredient:39
+    desc: |
+      "Sorte engarrafada, rara e difícil de fazer." No caldeirão: Mandrágora, Verruga do
+      Nether, Lágrima da Deusa, Mal Refinado e Mutandis Extremis = §eGota de Sorte§r.
+    tasks:
+      - get: witchery:ingredient:39 x2
+    rewards:
+      - xp: 3
+      - item: minecraft:nether_wart x4
+
+  - id: brew_tinta
+    title: "Brew de Tinta"
+    type: normal
+    deps: [chaleira, gesso_vitriolo]
+    icon: witchery:ingredient:60
+    desc: |
+      Bolsa de tinta, Cal Virgem, Óleo de Vitríolo, slime, Beladona e Bagas de Sorveira = 3
+      §eBrews de Tinta§r. Arremesse para cegar quem está perto (e faça Minas de Tinta com
+      flores).
+    tasks:
+      - get: witchery:ingredient:60
+    rewards:
+      - xp: 2
+      - item: minecraft:dye x8
+
+  - id: brew_espinhos
+    title: "Brew de Espinhos"
+    type: normal
+    deps: [chaleira, gesso_vitriolo]
+    icon: witchery:ingredient:59
+    desc: |
+      Verde-cacto, cogumelo marrom, Óleo de Vitríolo, Odor da Pureza, papoula e Mandrágora.
+      Cria espinhos onde cai — uma armadilha cruel e eficiente.
+    tasks:
+      - get: witchery:ingredient:59
+    rewards:
+      - xp: 2
+      - item: minecraft:cactus x8
+
+  - id: brew_teias
+    title: "Brew de Teias"
+    type: normal
+    deps: [chaleira, ingredientes_animais]
+    icon: witchery:ingredient:58
+    desc: |
+      Teia (Web), cogumelo vermelho, Lã de Morcego, dente-de-leão, Sopro de Magia e Beladona.
+      Prende os alvos em teias.
+    tasks:
+      - get: witchery:ingredient:58
+    rewards:
+      - xp: 2
+      - item: minecraft:string x8
+
+  - id: brew_vinhas
+    title: "Brew de Vinhas"
+    type: normal
+    deps: [chaleira, ingredientes_animais]
+    icon: witchery:ingredient:57
+    desc: |
+      Trepadeira, cogumelos, Língua de Cão, trigo e Fedor do Infortúnio. Cobre a área com
+      vinhas — ótimo para escalar (ou enrolar inimigos).
+    tasks:
+      - get: witchery:ingredient:57
+    rewards:
+      - xp: 2
+      - item: minecraft:vine x8
+
+  - id: brew_broto
+    title: "Brew de Brotação"
+    type: normal
+    deps: [chaleira, sorveira, amieiro, espinheiro]
+    icon: witchery:ingredient:61
+    desc: |
+      As três mudas de bruxa, Língua de Cão, Mandrágora e papoula. O §eBrew de Brotação§r faz
+      árvores brotarem e é exigido pelos ritos da Terra Movente, do Poder da Natureza e da
+      Floresta.
+    tasks:
+      - get: witchery:ingredient:61 x3
+    rewards:
+      - xp: 2
+      - item: minecraft:sapling x8
+
+  - id: brew_erosao
+    title: "Brew da Erosão"
+    type: normal
+    deps: [chaleira, gesso_vitriolo]
+    icon: witchery:ingredient:62
+    desc: |
+      2 Óleos de Vitríolo, Cal Virgem, Beladona, dente-de-leão e creme de magma. Corrói
+      blocos. Também é o foco do Rito da Terra Partida.
+    tasks:
+      - get: witchery:ingredient:62
+    rewards:
+      - xp: 2
+      - item: minecraft:magma_cream x2
+
+  - id: brew_amor
+    title: "Brew do Amor"
+    type: normal
+    deps: [chaleira, fumacas_bruxa]
+    icon: witchery:ingredient:75
+    desc: |
+      Papoula, Sopro de Magia, Alcachofra, cenoura dourada, vitória-régia e cacau. Faz os
+      animais (e aldeões!) se apaixonarem — e é ingrediente de quase todo §eRito de Remover
+      Maldição§r. Faça §e3§r.
+    tasks:
+      - get: witchery:ingredient:75 x3
+    rewards:
+      - xp: 2
+      - item: minecraft:golden_carrot x2
+
+  - id: brew_grotesco
+    title: "Brew do Grotesco"
+    type: normal
+    deps: [chaleira, mutandis_extremis, ingredientes_animais]
+    icon: witchery:ingredient:71
+    desc: |
+      Mutandis Extremis, Mandrágora, Alcachofra, Língua de Cão, maçã dourada e batata
+      venenosa (500 de poder). Deixa quem bebe com uma aparência... assustadora. É
+      ingrediente obrigatório das §cmaldições§r.
+    tasks:
+      - get: witchery:ingredient:71
+    rewards:
+      - xp: 2
+      - item: minecraft:poisonous_potato x4
+
+  - id: brew_gelo
+    title: "Brew do Gelo"
+    type: optional
+    deps: [chaleira, campanula]
+    icon: witchery:ingredient:76
+    desc: |
+      Agulha Gelada, bola de neve, Alcachofra, melancia reluzente, cogumelo vermelho e Odor
+      da Pureza (1000 de poder). Congela o que atinge.
+    tasks:
+      - get: witchery:ingredient:76
+    rewards:
+      - loot: comum
+
+  - id: brew_profundezas
+    title: "Brew das Profundezas"
+    type: optional
+    deps: [chaleira, lagrima_deusa]
+    icon: witchery:ingredient:77
+    desc: |
+      Mandrágora, Alcachofra, Odor da Pureza, Lágrima da Deusa, vitória-régia e tinta.
+      Respiração aquática — e ingrediente dos ritos que removem Afundamento e
+      Superaquecimento.
+    tasks:
+      - get: witchery:ingredient:77
+    rewards:
+      - loot: comum
+
+  - id: brew_sono
+    title: "Brew do Sono"
+    type: main
+    deps: [chaleira, brew_amor, campanula, leite_purificado]
+    icon: witchery:ingredient:95
+    desc: |
+      Leite Purificado, biscoito, Brew do Amor, Sopro de Magia, Agulha Gelada e Alcachofra.
+      §dBeber o Brew do Sono no Mundo Normal faz seu espírito adormecer e viajar para o Mundo
+      Espiritual.§r (Leia a quest do Mundo Espiritual antes de beber!)
+    tasks:
+      - get: witchery:ingredient:95 x2
+    rewards:
+      - xp: 4
+      - choice: [minecraft:cookie x16, witchery:ingredient:78 x4, minecraft:milk_bucket x1]
+
+  - id: leite_purificado
+    title: "Leite Purificado"
+    type: normal
+    deps: [fumacas_bruxa, jarro_argila]
+    icon: witchery:ingredient:105
+    desc: |
+      Balde de leite + Odor da Pureza + 3 Jarros de Argila = 3 §eLeites Purificados§r (um bolo
+      também serve, com 2 Odores). Vai no Brew do Sono.
+    tasks:
+      - get: witchery:ingredient:105 x3
+    rewards:
+      - xp: 2
+      - item: minecraft:milk_bucket x1
+
+  - id: brew_morcegos
+    title: "Brew dos Morcegos"
+    type: optional
+    deps: [chaleira, ingredientes_animais]
+    icon: witchery:ingredient:109
+    desc: |
+      Bola de Morcegos Concentrada (slime + morcegos capturados na Armadilha de Criaturas),
+      Lã de Morcego, maçã, açúcar, olho fermentado e pólvora. Libera uma revoada de morcegos!
+    tasks:
+      - get: witchery:ingredient:109
+    rewards:
+      - loot: comum
+
+  - id: brew_revelacao
+    title: "Brew da Revelação"
+    type: optional
+    deps: [chaleira, fumacas_bruxa]
+    icon: witchery:ingredient:124
+    desc: |
+      Cenoura, 2 olhos de aranha, poção de Visão Noturna, cogumelo marrom e Odor da Pureza.
+      Revela o que está invisível.
+    tasks:
+      - get: witchery:ingredient:124
+    rewards:
+      - loot: comum
+
+  - id: brew_solidificacao
+    title: "Brews de Solidificação"
+    type: optional
+    deps: [chaleira, fumaca_podre, mutandis]
+    icon: witchery:ingredient:116
+    desc: |
+      Um bloco (pedra, terra, areia, arenito ou o Brew da Erosão), Fumaça Fétida, Odor da
+      Pureza, Mutandis, Cinza e Musgo Espanhol (2000 de poder) = Brew de Solidificação. Ele
+      solidifica líquidos no bloco escolhido. Mostre o de Pedra.
+    tasks:
+      - get: witchery:ingredient:116
+    rewards:
+      - loot: comum
+
+  - id: minas_planta
+    title: "Minas de Planta"
+    type: optional
+    deps: [brew_teias, brew_tinta, brew_espinhos, brew_broto]
+    icon: witchery:plantmine
+    desc: |
+      3 brews (Teias, Tinta, Espinhos ou Brotação) em cima, placas de pressão de pedra e uma
+      flor (papoula, dente-de-leão ou arbusto seco) = 4 §eMinas de Planta§r disfarçadas. A
+      defesa de jardim mais traiçoeira do Registro!
+    tasks:
+      - get: witchery:plantmine:*
+    rewards:
+      - loot: comum
+
+  - id: livro_brews
+    title: "Bruxaria: Brews e Infusões"
+    type: optional
+    deps: [chaleira]
+    icon: witchery:ingredient:49
+    desc: |
+      Livro, corante preto, pena, Beladona e Odor da Pureza = §eWitchcraft: Brews &
+      Infusions§r. Todas as receitas da Chaleira.
+    tasks:
+      - get: witchery:ingredient:49
+    rewards:
+      - loot: comum
+
+  - id: unguento_voo
+    title: "Unguento de Voo"
+    type: normal
+    deps: [sopa_redstone]
+    icon: witchery:ingredient:41
+    desc: |
+      Sopa de Redstone, poção de Velocidade, diamante, pena, Lã de Morcego e Beladona (3000
+      de poder). Ele encanta a Vassoura no Rito de Infusão do Céu.
+    tasks:
+      - get: witchery:ingredient:41
+    rewards:
+      - xp: 3
+      - item: minecraft:feather x8
+
+  - id: unguento_mistico
+    title: "Unguento Místico"
+    type: normal
+    deps: [sopa_redstone, coracao_creeper, sangue_infernal]
+    icon: witchery:ingredient:83
+    desc: |
+      Sopa de Redstone, poção de Força, diamante, Muda de Sorveira, Coração de Creeper e
+      Sangue Demoníaco (3000 de poder). Com um Galho de Ent, vira o Ramo Místico (varinha).
+    tasks:
+      - get: witchery:ingredient:83
+    rewards:
+      - xp: 3
+      - item: minecraft:diamond x1
+
+  - id: oleo_acaso
+    title: "Óleo do Acaso"
+    type: normal
+    deps: [sopa_redstone]
+    icon: witchery:ingredient:93
+    desc: |
+      Sopa de Redstone, poção de Visão Noturna, olho do Ender, cenoura dourada, olho de
+      aranha e Mandrágora (2000 de poder). Infunde a Bola de Cristal e a Pedra do Vidente.
+    tasks:
+      - get: witchery:ingredient:93
+    rewards:
+      - xp: 3
+      - item: minecraft:ender_eye x1
+
+  # ======================================================================
+  # FASE 6 — CÍRCULOS DE GIZ
+  # ======================================================================
+  - id: giz_ritual
+    title: "Giz Ritual"
+    type: main
+    deps: [lagrima_deusa, gesso_vitriolo, cinza_madeira]
+    icon: witchery:chalkritual
+    desc: |
+      Lágrima da Deusa no topo, Cinza de Madeira e Gesso = §e2 Gizes Rituais§r (64 usos cada).
+      Com ele você desenha os §ecírculos brancos§r da magia ritual. Faça §e4§r.
+    tasks:
+      - get: witchery:chalkritual x4
+    rewards:
+      - xp: 4
+      - choice: [witchery:ingredient:17 x4, witchery:ingredient:18 x8, witchery:ingredient:37 x1]
+
+  - id: giz_dourado
+    title: "Giz Dourado"
+    type: main
+    deps: [giz_ritual, mandragora]
+    icon: witchery:chalkheart
+    desc: |
+      No caldeirão: §eGiz Ritual + Raiz de Mandrágora + pepita de ouro§r = §eGiz Dourado§r. Ele
+      desenha o §eGlifo do Coração§r, o centro de todo círculo. É o glifo que você ativa para
+      iniciar um rito.
+    tasks:
+      - get: witchery:chalkheart
+    rewards:
+      - xp: 4
+      - choice: [minecraft:gold_nugget x9, witchery:ingredient:22 x2, witchery:chalkritual x1]
+
+  - id: info_circulos
+    title: "Magia de Círculo"
+    type: info
+    deps: [giz_dourado]
+    icon: witchery:chalkritual
+    desc: |
+      Como fazer um rito:
+      §e1.§r Glifo do Coração (giz dourado) no centro.
+      §e2.§r Anéis de giz em volta: §epequeno 7×7§r, §emédio 11×11§r, §egrande 15×15§r (raios
+      3, 5 e 7 a partir do centro). Cada rito exige cores e tamanhos específicos:
+      §fRitual (branco)§r, §5Além-Mundo (roxo)§r, §4Infernal (vermelho)§r.
+      §e3.§r Jogue os itens-foco dentro do círculo.
+      §e4.§r Clique no Glifo do Coração. Quase todo rito precisa de um §eAltar§r por perto com
+      poder suficiente.
+
+      A área em volta do glifo central precisa estar livre de blocos!
+    tasks:
+      - check
+    rewards:
+      - xp: 1
+
+  - id: livro_circulos
+    title: "Bruxaria: Magia de Círculo"
+    type: normal
+    deps: [giz_ritual]
+    icon: witchery:ingredient:48
+    desc: |
+      Livro, corante preto, pena, Beladona e Sopro de Magia = §eWitchcraft: Circle Magic§r. Ele
+      lista cada rito com o desenho, os focos e o poder. Leia antes de qualquer rito novo!
+    tasks:
+      - get: witchery:ingredient:48
+    rewards:
+      - xp: 2
+      - item: minecraft:book x2
+
+  - id: giz_alem_mundo
+    title: "Giz do Além-Mundo"
+    type: normal
+    deps: [giz_dourado, orvalho_ender]
+    icon: witchery:chalkotherwhere
+    desc: |
+      Caldeirão: Giz Ritual + Verruga do Nether + Lágrima da Deusa + Pérola do Ender = §eGiz
+      do Além-Mundo§r (roxo), para ritos de transposição e teleporte (2000 de poder).
+    tasks:
+      - get: witchery:chalkotherwhere
+    rewards:
+      - xp: 3
+      - item: minecraft:ender_pearl x2
+
+  - id: giz_infernal
+    title: "Giz Infernal"
+    type: normal
+    deps: [giz_dourado]
+    icon: witchery:chalkinfernal
+    desc: |
+      Caldeirão: Giz Ritual + Verruga do Nether + pó de blaze = §eGiz Infernal§r (vermelho),
+      para ritos do Nether, demônios e maldições. §cAqui a bruxaria fica pesada.§r
+    tasks:
+      - get: witchery:chalkinfernal
+    rewards:
+      - xp: 3
+      - item: minecraft:blaze_powder x4
+
+  - id: primeiro_rito
+    title: "O Primeiro Rito"
+    type: milestone
+    deps: [info_circulos, info_poder]
+    icon: witchery:chalkheart
+    banner: "O Primeiro Rito"
+    subtitle: "Giz, glifo e poder"
+    desc: |
+      Herói, você tem um Altar pulsando, giz branco, giz dourado e o livro de Magia de
+      Círculo. Isso já é uma bruxa (ou um bruxo) de verdade — com chapéu ou sem!
+
+      O rito mais simples para treinar é o §eRito da Santidade§r: círculo pequeno branco,
+      uma pena e uma redstone. Depois vem a §ePedra Sintonizada Carregada§r, que permite
+      ritos longe do altar.
+
+      Prometa uma coisa: nada de maldições em quem não merece. Combinado?
+    tasks:
+      - get: [witchery:chalkheart, witchery:chalkritual, witchery:altar]
+    rewards:
+      - xp: 8
+      - kit: {name: "Kit da Bruxa Aprendiz", items: [witchery:chalkritual x2, witchery:ingredient:37 x2, witchery:ingredient:27 x8, minecraft:feather x8, minecraft:redstone x16]}
+      - loot: raro
+
+  # ======================================================================
+  # FASE 7 — RITOS DE PROTEÇÃO, CARGA E TRANSPOSIÇÃO
+  # ======================================================================
+  - id: rito_santidade
+    title: "Rito da Santidade"
+    type: normal
+    deps: [primeiro_rito]
+    icon: minecraft:feather
+    desc: |
+      Círculo §epequeno branco§r, focos: §epena + redstone§r, 500 de poder. Monstros não entram
+      no círculo enquanto ele dura (consome 16 de poder/s). Seu primeiro abrigo mágico!
+    tasks:
+      - check
+    rewards:
+      - xp: 2
+      - item: minecraft:feather x8
+
+  - id: rito_aprisionamento
+    title: "Rito do Aprisionamento"
+    type: normal
+    deps: [primeiro_rito]
+    icon: minecraft:slime_ball
+    desc: |
+      O contrário: círculo pequeno branco, §ebola de slime + redstone§r, 500 de poder.
+      Monstros não conseguem §esair§r do círculo (16 de poder/s).
+    tasks:
+      - check
+    rewards:
+      - xp: 2
+      - item: minecraft:slime_ball x4
+
+  - id: rito_protecao
+    title: "Rito da Proteção"
+    type: normal
+    deps: [primeiro_rito]
+    icon: minecraft:obsidian
+    desc: |
+      Círculo pequeno branco, §eobsidiana + redstone§r, 500 de poder: conjura uma cúpula que
+      monstros não atravessam (24 de poder/s). Com círculo médio e §eobsidiana + pedra
+      luminosa§r (1000), a cúpula barra §etodos§r (28/s). Uma Pedra de Caminho ligada como foco
+      extra lança a cúpula lá longe.
+    tasks:
+      - check
+    rewards:
+      - xp: 2
+      - item: minecraft:obsidian x4
+
+  - id: pedra_carregada
+    title: "Pedra Sintonizada Carregada"
+    type: main
+    deps: [primeiro_rito, cinza_madeira]
+    icon: witchery:ingredient:11
+    desc: |
+      Rito da Carga: círculos §epequeno e médio brancos§r, focos §ePedra Sintonizada, pó de
+      pedra luminosa, redstone, Cinza de Madeira e Cal Virgem§r, 2000 de poder.
+
+      A §ePedra Carregada§r é uma "bateria de altar": muitos ritos têm versão portátil que a
+      consome no lugar do poder. Faça §e3§r.
+    tasks:
+      - get: witchery:ingredient:11 x3
+    rewards:
+      - xp: 4
+      - choice: [witchery:ingredient:10 x1, minecraft:glowstone_dust x16, witchery:ingredient:16 x4]
+
+  - id: pedra_caminho
+    title: "Pedra de Caminho"
+    type: normal
+    deps: [primeiro_rito]
+    icon: witchery:ingredient:12
+    desc: |
+      Sílex + Agulha de Osso = §ePedra de Caminho§r (Waystone). O Rito da Ligação (círculo
+      pequeno branco: Pedra de Caminho, Orvalho do Ender e pó de pedra luminosa, 500 de
+      poder) a liga ao lugar do rito. Uma Pedra ligada é a sua "âncora" de teleporte.
+    tasks:
+      - get: witchery:ingredient:12 x2
+    rewards:
+      - xp: 2
+      - item: minecraft:flint x8
+
+  - id: rito_transposicao
+    title: "Rito da Transposição"
+    type: normal
+    deps: [pedra_caminho, giz_alem_mundo]
+    icon: witchery:chalkotherwhere
+    desc: |
+      Círculo §epequeno do Além-Mundo§r (roxo) e uma §ePedra de Caminho ligada§r como foco —
+      sem custo de poder. Você é teleportado para o lugar ligado. A rede de viagens das
+      bruxas!
+    tasks:
+      - check
+    rewards:
+      - xp: 3
+      - item: witchery:ingredient:67 x2
+
+  - id: kit_taglock
+    title: "Agulha de Osso e Kit de Taglock"
+    type: main
+    deps: [primeiro_rito]
+    icon: witchery:taglockkit
+    desc: |
+      Osso + sílex = 8 §eAgulhas de Osso§r. Frasco de vidro + agulha = §eKit de Taglock§r.
+      Use o kit em uma criatura (ou numa cama onde um jogador dormiu) para recolher um
+      fio de cabelo: ele vira o "endereço" de bonecos, maldições e invocações.
+
+      §cMagia de bruxa com taglock é pessoal. Use com responsabilidade — e no servidor,
+      respeite as regras!§r
+    tasks:
+      - get: witchery:taglockkit
+    rewards:
+      - xp: 4
+      - choice: [minecraft:bone x16, minecraft:glass_bottle x8, minecraft:flint x8]
+
+  - id: rito_transposicao_criatura
+    title: "Transposição de Criatura"
+    type: optional
+    deps: [kit_taglock, rito_transposicao]
+    icon: witchery:ingredient:67
+    desc: |
+      Círculo §emédio do Além-Mundo§r: Pedra de Caminho, §eTaglock preenchido§r, Orvalho do
+      Ender e machado de ferro (3000 de poder). Puxa até você a criatura (ou o jogador) do
+      taglock.
+    tasks:
+      - check
+    rewards:
+      - loot: comum
+
+  - id: rito_fertilidade
+    title: "Rito da Fertilidade"
+    type: normal
+    deps: [primeiro_rito, vapor_diamante, mutandis]
+    icon: minecraft:dye:15
+    desc: |
+      Círculo pequeno branco: farinha de osso, Indício de Renascimento, Vapor de Diamante,
+      Cal Virgem, Gesso e Mutandis (3000 de poder). Deixa a terra em volta fértil e §ecura
+      aldeões doentes§r.
+    tasks:
+      - check
+    rewards:
+      - xp: 2
+      - item: minecraft:dye:15 x16
+
+  - id: rito_tempestade
+    title: "Rito da Ira do Céu"
+    type: normal
+    deps: [primeiro_rito]
+    icon: minecraft:wooden_sword
+    desc: |
+      Círculo pequeno branco: §eespada de madeira + Cinza§r (1000 de poder) chama uma
+      tempestade de raios dentro do círculo; com §eespada de pedra§r (2000) os raios caem fora
+      dele. §cSaia de perto e não use perto de madeira!§r
+    tasks:
+      - check
+    rewards:
+      - xp: 2
+      - item: minecraft:iron_ingot x4
+
+  - id: rito_vulcao
+    title: "Rito da Ira da Terra"
+    type: normal
+    deps: [giz_infernal]
+    icon: minecraft:magma_cream
+    desc: |
+      Círculo §epequeno infernal§r: pedregulho, creme de magma e espada de ouro (2000 de
+      poder). Ergue um §evulcão§r — precisa de uma poça de lava embaixo. §cDramático,
+      destrutivo e muito quente.§r
+    tasks:
+      - check
+    rewards:
+      - xp: 2
+      - item: minecraft:magma_cream x2
+
+  - id: rito_assar
+    title: "Rito do Assado"
+    type: normal
+    deps: [giz_infernal]
+    icon: minecraft:cooked_beef
+    desc: |
+      Círculo pequeno infernal: vara de blaze, Cinza e carvão (1000 de poder). Cozinha toda a
+      comida jogada no círculo — às vezes demais. Churrasco de bruxa!
+    tasks:
+      - check
+    rewards:
+      - xp: 2
+      - item: minecraft:cooked_beef x16
+
+  - id: rito_terra
+    title: "Ritos da Terra Movente e Partida"
+    type: optional
+    deps: [brew_broto, brew_erosao, primeiro_rito]
+    icon: minecraft:dirt
+    desc: |
+      §eTerra Movente§r: círculo branco (pequeno, médio ou grande = coluna maior), Brew de
+      Brotação, cacto e pólvora/redstone/pó de pedra luminosa: ergue uma coluna de terra.
+      §eTerra Partida§r: círculo pequeno branco e Brew da Erosão: abre uma fenda no chão.
+    tasks:
+      - check
+    rewards:
+      - loot: comum
+
+  - id: rito_natureza
+    title: "Rito do Poder da Natureza"
+    type: optional
+    deps: [brew_broto, pedra_carregada]
+    icon: minecraft:sapling
+    desc: |
+      Círculo médio branco: Brew de Brotação, as três mudas de bruxa, três mudas comuns
+      (carvalho, pinheiro, bétula) e uma Pedra Carregada. Libera a natureza numa área
+      estéril. Bom para dar vida (e poder!) em volta do altar.
+    tasks:
+      - check
+    rewards:
+      - loot: comum
+
+  - id: rito_floresta
+    title: "Rito da Floresta"
+    type: optional
+    deps: [brew_broto, galho_ent]
+    icon: witchery:wickerbundle
+    desc: |
+      Círculo médio branco: a muda desejada, um Feixe de Vime (9 mudas na bancada), Brew de
+      Brotação e Galho de Ent (4000 de poder). Faz crescer uma floresta inteira da espécie
+      escolhida.
+    tasks:
+      - check
+    rewards:
+      - loot: comum
+
+  - id: transpor_minerio
+    title: "Transposição do Ferro"
+    type: optional
+    deps: [giz_alem_mundo, pedra_carregada]
+    icon: minecraft:iron_ore
+    desc: |
+      Círculo §egrande do Além-Mundo§r: pérola do Ender, lingote de ferro, pó de blaze, Vapor
+      de Diamante e Pedra Carregada. Puxa minérios de ferro e ouro do subsolo para a
+      superfície. Mineração de bruxa!
+    tasks:
+      - check
+    rewards:
+      - loot: incomum
+
+  # ======================================================================
+  # FASE 8 — INVOCAÇÕES, NECROMANCIA E DEMÔNIOS
+  # ======================================================================
+  - id: pedra_necromantica
+    title: "Pedra Necromântica"
+    type: main
+    deps: [po_espectral, primeiro_rito]
+    icon: witchery:ingredient:64
+    desc: |
+      Rito da Necromancia, §eà noite§r, círculo pequeno branco: Pedra Sintonizada, osso, carne
+      podre, Cinza, espada de ferro e Pó Espectral (1000 de poder). A §ePedra Necromântica§r
+      comanda mortos-vivos e é foco de muitos ritos sombrios (Encarnação Anterior,
+      Manifestação, Braseiro, Pedra Espectral...).
+    tasks:
+      - get: witchery:ingredient:64
+    rewards:
+      - xp: 4
+      - choice: [minecraft:bone x32, minecraft:rotten_flesh x16, witchery:ingredient:66 x2]
+
+  - id: rito_encarnacao
+    title: "Rito da Encarnação Anterior"
+    type: optional
+    deps: [pedra_necromantica, giz_infernal]
+    icon: minecraft:skull
+    desc: |
+      Círculo pequeno infernal: Pedra Necromântica, Língua de Cão, osso, Pó Espectral e Pedra
+      Carregada. Invoca uma encarnação anterior de um jogador §ecom os itens que ele tinha§r,
+      perto de onde morreu. O seguro de vida das bruxas!
+    tasks:
+      - check
+    rewards:
+      - loot: incomum
+
+  - id: invocar_bruxa
+    title: "Rito de Invocação: Bruxa"
+    type: normal
+    deps: [giz_infernal, arthana, vapor_diamante]
+    icon: minecraft:fermented_spider_eye
+    desc: |
+      Círculo pequeno infernal: Vapor de Diamante, Exalação do Chifrudo, creme de magma,
+      Arthana e olho de aranha fermentado (2000 de poder). Uma bruxa aparece — §chostil§r.
+      O interior do círculo precisa estar livre (7×7×4)! Derrote §e1 bruxa§r.
+    tasks:
+      - kill: {entity: "Witch", count: 1}
+    rewards:
+      - xp: 3
+      - item: minecraft:glass_bottle x8
+
+  - id: invocar_diabrete
+    title: "Rito de Invocação: Diabrete"
+    type: normal
+    deps: [giz_infernal, mal_refinado, sangue_infernal]
+    icon: witchery:ingredient:140
+    desc: |
+      Círculo médio infernal: Mal Refinado, Sangue Demoníaco, pérola do Ender e Pedra
+      Sintonizada (5000 de poder). Surge um §eDiabrete das Chamas§r (Flame Imp), que negocia
+      §econtratos demoníacos§r: Contrato de Posse (papel, linha e Porco Estranho Cru) e suas
+      variações (Blaze, Resistir ao Fogo, Evaporação, Toque Ígneo, Fundição). Mostre um
+      Contrato Demoníaco.
+    tasks:
+      - get: witchery:ingredient:140
+    rewards:
+      - xp: 3
+      - item: minecraft:paper x16
+
+  - id: invocar_demonio
+    title: "Rito de Invocação: Demônio"
+    type: boss
+    deps: [giz_infernal, mal_refinado]
+    icon: witchery:ingredient:23
+    banner: "Demônio Invocado"
+    subtitle: "Do Poço, com fome"
+    desc: |
+      §cIsto é sério, Herói.§r Círculo §egrande infernal§r: Mal Refinado, pó de blaze e pérola
+      do Ender, mais o sacrifício de um §ealdeão vivo§r dentro do círculo (3000 de poder). A
+      versão "cara" troca o aldeão por vara de blaze e duas Pedras Sintonizadas (uma
+      carregada). O interior precisa estar livre 7×7×4.
+
+      O Demônio é forte e lança fogo. Derrote-o com a §eArthana§r na mão para ter 33% de
+      chance de §eCoração de Demônio§r. Para mandá-lo de volta sem lutar, existe o §eRito do
+      Banimento§r (pó de blaze + Pedra de Caminho, círculo pequeno branco).
+    tasks:
+      - kill: {entity: "witchery.demon", count: 1}
+    rewards:
+      - xp: 8
+      - loot: raro
+
+  - id: coracao_demonio
+    title: "Coração de Demônio"
+    type: normal
+    deps: [invocar_demonio]
+    icon: witchery:ingredient:23
+    desc: |
+      Um §eCoração de Demônio§r ainda batendo. Ele é fonte enorme de poder para o altar (como
+      bloco colocado perto), e na Destilaria vira §eSangue Demoníaco§r. §cBeber? Pega fogo.§r
+    tasks:
+      - get: witchery:ingredient:23
+    rewards:
+      - xp: 3
+      - item: minecraft:blaze_rod x2
+
+  - id: sangue_infernal
+    title: "Sangue Demoníaco"
+    type: normal
+    deps: [destilaria]
+    icon: witchery:ingredient:80
+    desc: |
+      Destile §eCoração de Demônio + Vapor de Diamante§r (4 jarros) para 4 Sangues
+      Demoníacos e Mal Refinado; ou Coração + rocha do Nether (2 jarros) para areia das almas
+      e 2 Sangues. O §eSangue Demoníaco§r está no Vínculo de Familiar, no Unguento Místico, na
+      Invocação do Diabrete e nos Sapatinhos de Rubi.
+    tasks:
+      - get: witchery:ingredient:80 x2
+    rewards:
+      - xp: 2
+      - item: minecraft:netherrack x16
+
+  - id: invocar_wither
+    title: "Rito de Invocação: Wither"
+    type: optional
+    deps: [giz_infernal, vapor_diamante]
+    icon: minecraft:skull:1
+    desc: |
+      §cO aviso mais sério do capítulo:§r círculos médio e grande infernais, crânio de
+      esqueleto Wither, Vapor de Diamante, pérola do Ender e um aldeão (4000 de poder)
+      invocam um §eWither§r. Só faça longe de tudo, muito preparado e se tiver um bom
+      motivo (como um Altar de Sangue de Tier 5...).
+    tasks:
+      - kill: {entity: "WitherBoss", count: 1}
+    rewards:
+      - loot: raro
+
+  - id: inferno_terra
+    title: "Maldição do Inferno na Terra"
+    type: info
+    deps: [invocar_demonio]
+    icon: minecraft:netherrack
+    desc: |
+      §cNão faça isso perto da sua base. Na verdade, não faça.§r Mas é bom saber que existe:
+      círculos pequeno infernal, médio do Além-Mundo e grande infernal, Sopa de Redstone,
+      Coração de Demônio, Pedra de Caminho, Estrela do Nether e um aldeão, à noite, só no
+      Mundo Normal, 5000 de poder + 200/s. Transforma a área num pedaço do Nether, com
+      demônios. Este pack permite os incêndios dele.
+    tasks:
+      - check
+    rewards:
+      - xp: 1
+
+  # ======================================================================
+  # FASE 9 — MALDIÇÕES
+  # ======================================================================
+  - id: info_maldicoes
+    title: "Sobre Maldições"
+    type: info
+    deps: [kit_taglock, brew_grotesco, brew_amor]
+    icon: witchery:ingredient:71
+    desc: |
+      As maldições miram o dono de um §eTaglock preenchido§r. Quase todas pedem círculo
+      §emédio infernal§r, §eExalação do Chifrudo§r, o Brew do Grotesco e §euma tempestade§r.
+
+      Cada uma tem um §eRito de Remover Maldição§r (círculo pequeno branco, Sopro da Deusa,
+      Brew do Amor ou das Profundezas). O livro avisa: "as coisas podem piorar".
+
+      §cAkasha, com carinho e franqueza:§r amaldiçoar outros jogadores sem combinar é
+      maldade — e em servidor pode ser contra as regras. Use em mobs, em amigos que topam a
+      brincadeira, ou para aprender a se defender.
+    tasks:
+      - check
+    rewards:
+      - xp: 1
+
+  - id: maldicao_infortunio
+    title: "Maldição do Infortúnio"
+    type: optional
+    deps: [info_maldicoes]
+    icon: minecraft:fermented_spider_eye
+    desc: |
+      Círculo médio infernal, numa tempestade: Taglock, Exalação do Chifrudo, olho de aranha
+      fermentado, pólvora e Brew do Grotesco (2000 de poder). O alvo passa a ter azar com
+      tudo. Remoção: Sopro da Deusa, olho de aranha, pólvora e Brew do Amor.
+    tasks:
+      - check
+    rewards:
+      - loot: comum
+
+  - id: maldicao_insanidade
+    title: "Maldição da Insanidade"
+    type: optional
+    deps: [info_maldicoes]
+    icon: minecraft:poisonous_potato
+    desc: |
+      Mesma base, com batata venenosa e açúcar: o alvo começa a ver monstros que não estão
+      lá. Remoção: Sopro da Deusa, batata, açúcar e Brew do Amor.
+    tasks:
+      - check
+    rewards:
+      - loot: comum
+
+  - id: maldicao_afundamento
+    title: "Maldição do Afundamento"
+    type: optional
+    deps: [info_maldicoes]
+    icon: minecraft:dye
+    desc: |
+      Com bolsa de tinta e verruga do Nether: o alvo fica pesado e afunda na água. Remoção:
+      Sopro da Deusa, farinha de osso, verruga e Brew das Profundezas.
+    tasks:
+      - check
+    rewards:
+      - loot: comum
+
+  - id: maldicao_superaquecimento
+    title: "Maldição do Superaquecimento"
+    type: optional
+    deps: [info_maldicoes, sangue_infernal]
+    icon: minecraft:blaze_rod
+    desc: |
+      Com Sangue Demoníaco e vara de blaze: o alvo superaquece. Remoção: Sopro da Deusa,
+      Agulha Gelada, vara de blaze e Brew das Profundezas.
+    tasks:
+      - check
+    rewards:
+      - loot: comum
+
+  - id: maldicao_pesadelo
+    title: "Maldição do Pesadelo Desperto"
+    type: optional
+    deps: [info_maldicoes, cordel_atormentado]
+    icon: witchery:ingredient:101
+    desc: |
+      Com Fome Melíflua, Cordel Atormentado e diamante (10 000 de poder): o alvo é perseguido
+      pelo próprio Pesadelo mesmo acordado. Remoção: Sopro da Deusa, cenoura dourada, Cordel
+      Atormentado e Brew do Amor.
+    tasks:
+      - check
+    rewards:
+      - loot: incomum
+
+  - id: maldicao_praga
+    title: "Maldições da Praga e da Cegueira"
+    type: optional
+    deps: [info_maldicoes, sopa_redstone, pedra_carregada]
+    icon: minecraft:speckled_melon
+    desc: |
+      Maldições de área (sem taglock), com Pedra Carregada, Sopa de Redstone e Fedor do
+      Infortúnio: a §ePraga§r (círculo médio infernal) deixa a terra infértil e adoece; a
+      §eCegueira§r (círculo pequeno infernal) cega as criaturas em volta. A cura da Praga é o
+      Rito da Fertilidade.
+    tasks:
+      - check
+    rewards:
+      - loot: comum
+
+  # ======================================================================
+  # FASE 10 — BONECOS (POPPETS)
+  # ======================================================================
+  - id: boneco
+    title: "O Boneco"
+    type: main
+    deps: [kit_taglock, plantas_raras]
+    icon: witchery:poppet
+    desc: |
+      Lã, Musgo Espanhol, Agulha de Osso e linha = §eBoneco§r vazio. Ele é a base de todos os
+      bonecos. A maioria dos bonecos de proteção funciona simplesmente §eestando no seu
+      inventário§r (ou numa Prateleira de Bonecos) e se gasta ao proteger você.
+
+      Para "ligar" um boneco a alguém, junte-o na bancada com um §eTaglock preenchido§r.
+    tasks:
+      - get: witchery:poppet
+    rewards:
+      - xp: 4
+      - choice: [minecraft:wool x8, witchery:spanishmoss x4, minecraft:string x16]
+
+  - id: boneco_terra
+    title: "Boneco de Proteção da Terra"
+    type: normal
+    deps: [boneco]
+    icon: witchery:poppet:1
+    desc: |
+      Boneco + penas, argila e terra. Protege contra §edano de queda§r. Ótimo companheiro do
+      Sigilo do Ar e da vassoura!
+    tasks:
+      - get: witchery:poppet:1
+    rewards:
+      - xp: 2
+      - item: minecraft:feather x8
+
+  - id: boneco_agua
+    title: "Boneco de Proteção da Água"
+    type: normal
+    deps: [boneco, alcachofra]
+    icon: witchery:poppet:2
+    desc: |
+      Boneco + Alcachofras e bolsas de tinta. Protege contra §eafogamento§r.
+    tasks:
+      - get: witchery:poppet:2
+    rewards:
+      - xp: 2
+      - item: minecraft:dye x4
+
+  - id: boneco_fogo
+    title: "Boneco de Proteção do Fogo"
+    type: normal
+    deps: [boneco, ingredientes_animais]
+    icon: witchery:poppet:3
+    desc: |
+      Boneco + Lã de Morcego e Musgo de Brasa. Protege contra §efogo e lava§r. Leve um para o
+      Nether, sempre.
+    tasks:
+      - get: witchery:poppet:3
+    rewards:
+      - xp: 2
+      - item: minecraft:blaze_powder x2
+
+  - id: boneco_fome
+    title: "Boneco de Proteção da Fome"
+    type: normal
+    deps: [boneco]
+    icon: witchery:poppet:4
+    desc: |
+      Boneco + melancia reluzente e carne podre. Protege contra §emorrer de fome§r.
+    tasks:
+      - get: witchery:poppet:4
+    rewards:
+      - xp: 2
+      - item: minecraft:speckled_melon x2
+
+  - id: boneco_ferramenta
+    title: "Bonecos de Ferramenta e Armadura"
+    type: normal
+    deps: [boneco, gota_sorte, vapor_diamante]
+    icon: witchery:poppet:5
+    desc: |
+      Boneco + Fedor do Infortúnio e Gota de Sorte = Boneco de §eProteção de Ferramenta§r
+      (salva a ferramenta de quebrar). Com Vapor de Diamante embaixo = de §eProteção de
+      Armadura§r. Mostre os dois!
+    tasks:
+      - get: [witchery:poppet:5, witchery:poppet:11]
+    rewards:
+      - xp: 3
+      - item: minecraft:iron_ingot x8
+
+  - id: boneco_morte
+    title: "Boneco de Proteção da Morte"
+    type: main
+    deps: [boneco, gota_sorte, vapor_diamante]
+    icon: witchery:poppet:6
+    desc: |
+      Boneco + Gota de Sorte, Vapor de Diamante e pepitas de ouro. §eImpede a sua morte uma
+      vez§r (e se gasta). Herói, faça um e carregue sempre. Eu insisto. Por favor.
+    tasks:
+      - get: witchery:poppet:6
+    rewards:
+      - xp: 4
+      - choice: [minecraft:golden_apple x2, witchery:ingredient:39 x1, witchery:ingredient:29 x2]
+
+  - id: boneco_vodu
+    title: "Boneco Vodu"
+    type: optional
+    deps: [boneco]
+    icon: witchery:poppet:8
+    desc: |
+      Boneco + Beladona, Mandrágora, Exalação do Chifrudo e olho fermentado. Ligado a um
+      taglock, o que acontece com o boneco acontece com o alvo. §cÉ o boneco mais perigoso
+      que existe — use em mobs, ou com consentimento.§r
+    tasks:
+      - get: witchery:poppet:8
+    rewards:
+      - loot: comum
+
+  - id: boneco_protecao_vodu
+    title: "Proteção contra Vodu"
+    type: normal
+    deps: [boneco]
+    icon: witchery:poppet:7
+    desc: |
+      Boneco + Beladona, Mandrágora, flores e cogumelos = §eBoneco de Proteção contra Vodu§r.
+      Com ele no inventário (ou na prateleira), bonecos vodu e muitos ritos contra você
+      falham. Com Gota de Sorte, Orvalho do Ender, ouro e Dedo de Sapo, vira a §eProteção de
+      Boneco§r, que protege os seus próprios bonecos. Mostre a Proteção contra Vodu.
+    tasks:
+      - get: witchery:poppet:7
+    rewards:
+      - xp: 2
+      - item: minecraft:red_mushroom x4
+
+  - id: boneco_vampirico
+    title: "Boneco Vampírico"
+    type: optional
+    deps: [boneco, vapor_diamante]
+    icon: witchery:poppet:9
+    desc: |
+      Boneco + Exalação do Chifrudo, Vapor de Diamante e Lã de Morcego, ligado a §edois§r
+      taglocks: transfere o dano de um para o outro.
+    tasks:
+      - get: witchery:poppet:9
+    rewards:
+      - loot: comum
+
+  - id: prateleira_bonecos
+    title: "Prateleira de Bonecos"
+    type: normal
+    deps: [boneco, pedra_sintonizada]
+    icon: witchery:poppetshelf
+    desc: |
+      Pano verde, Pedras Sintonizadas e tijolos do Nether. A §ePrateleira de Bonecos§r guarda
+      bonecos que continuam funcionando e mantém o chunk carregado. Neste pack, ela só
+      funciona no Mundo Normal e no Mundo Espiritual (config).
+    tasks:
+      - get: witchery:poppetshelf
+    rewards:
+      - xp: 2
+      - item: minecraft:nether_brick x8
+
+  - id: colecao_bonecos
+    title: "Coleção de Bonecos"
+    type: milestone
+    deps: [boneco_terra, boneco_agua, boneco_fogo, boneco_fome, boneco_morte, boneco_protecao_vodu]
+    icon: witchery:poppet:6
+    banner: "A Bruxa dos Bonecos"
+    subtitle: "Proteção para todo perigo"
+    desc: |
+      Terra, água, fogo, fome, morte e vodu. Herói, você agora carrega no bolso mais
+      proteções do que muitos castelos!
+
+      Organize-os numa §ePrateleira de Bonecos§r e lembre de refazer os que se gastam —
+      principalmente o de §eProteção da Morte§r. Ah, e se um dia alguém usar um boneco vodu
+      contra você... agora você sabe se defender.
+    tasks:
+      - get: [witchery:poppet:1, witchery:poppet:2, witchery:poppet:3, witchery:poppet:4, witchery:poppet:6, witchery:poppet:7]
+    rewards:
+      - xp: 8
+      - kit: {name: "Kit da Costureira de Bonecos", items: [witchery:poppet x4, witchery:taglockkit x4, witchery:spanishmoss x8, minecraft:gold_nugget x18, minecraft:wool x8]}
+      - loot: raro
+
+  # ======================================================================
+  # FASE 11 — RODA DE FIAR, VESTES E INFUSÕES
+  # ======================================================================
+  - id: roda_fiar
+    title: "Roda de Fiar"
+    type: main
+    deps: [pedra_sintonizada]
+    icon: witchery:spinningwheel
+    desc: |
+      Molduras, lã, graveto, tábuas e Pedra Sintonizada. A §eRoda de Fiar§r (perto do altar)
+      fia fios mágicos: §eFio de Ouro§r (fardo de feno + Sopro de Magia), §eLinha
+      Fantasiosa§r (Algodão Etéreo do Mundo Espiritual) e §eCordel Atormentado§r (Algodão
+      Perturbado). Também transforma linha em teia.
+    tasks:
+      - get: witchery:spinningwheel
+    rewards:
+      - xp: 4
+      - choice: [minecraft:hay_block x4, minecraft:string x16, minecraft:item_frame x4]
+
+  - id: fio_ouro
+    title: "Fio de Ouro"
+    type: normal
+    deps: [roda_fiar]
+    icon: witchery:ingredient:102
+    desc: |
+      Fardo de feno + 3 linhas + Sopro de Magia na Roda = 3 §eFios de Ouro§r. Eles costuram o
+      Chapéu, as Túnicas e os sapatos de bruxa.
+    tasks:
+      - get: witchery:ingredient:102 x3
+    rewards:
+      - xp: 2
+      - item: minecraft:hay_block x2
+
+  - id: couro_impregnado
+    title: "Couro Impregnado"
+    type: normal
+    deps: [vapor_diamante, fumacas_bruxa]
+    icon: witchery:ingredient:72
+    desc: |
+      Couro, Vapor de Diamante e Sopro de Magia = 4 §eCouros Impregnados§r. É o tecido de toda
+      veste de bruxa (e o material de reparo delas).
+    tasks:
+      - get: witchery:ingredient:72 x8
+    rewards:
+      - xp: 2
+      - item: minecraft:leather x8
+
+  - id: chapeu_bruxa
+    title: "Chapéu de Bruxa"
+    type: main
+    deps: [fio_ouro, couro_impregnado]
+    icon: witchery:witchhat
+    desc: |
+      Couro Impregnado, Fio de Ouro e pó de pedra luminosa. O §eChapéu de Bruxa§r! As vestes
+      ajudam a bruxa a "engarrafar" mais doses no caldeirão (o livro de Brews explica). E,
+      sinceramente, você fica ótimo nele. Ele também é a chave para invocar §eLeonard§r...
+    tasks:
+      - get: witchery:witchhat
+    rewards:
+      - xp: 4
+      - choice: [witchery:ingredient:72 x4, witchery:ingredient:102 x2, minecraft:glowstone_dust x8]
+
+  - id: tunica_bruxa
+    title: "Túnicas de Bruxa"
+    type: normal
+    deps: [chapeu_bruxa, coracao_creeper]
+    icon: witchery:witchrobe
+    desc: |
+      Couro Impregnado, Fio de Ouro e um §eCoração de Creeper§r = §eTúnica de Bruxa§r. Com uma
+      §ePedra Necromântica§r no lugar do coração = §eTúnica de Necromante§r. Mostre qualquer
+      uma das duas.
+    tasks:
+      - one_of: [witchery:witchrobe, witchery:necromancerrobe]
+    rewards:
+      - xp: 3
+      - item: witchery:ingredient:72 x4
+
+  - id: calcados_bruxa
+    title: "Calçados e Cintos de Bruxa"
+    type: optional
+    deps: [chapeu_bruxa]
+    icon: witchery:rubyslippers
+    desc: |
+      Vestes especiais: §eChinelos Gelados§r (Coração Congelado), §eSapatos que Escorrem§r
+      (Mão de Bruxa, Sopa de Redstone, leite) → §eSapatinhos de Rubi§r ("não há lugar como o
+      lar"), §eCinto que Morde§r (com Piolho Parasítico e poções) → §eCinto de Casca§r.
+      Mostre qualquer um.
+    tasks:
+      - one_of: [witchery:iceslippers, witchery:seepingshoes, witchery:rubyslippers, witchery:bitingbelt, witchery:barkbelt]
+    rewards:
+      - loot: incomum
+
+  - id: bolsa_brews
+    title: "Bolsa de Brews"
+    type: optional
+    deps: [couro_impregnado, fio_ouro]
+    icon: witchery:brewbag
+    desc: |
+      8 Couros Impregnados e um Fio de Ouro = §eBolsa de Brews§r, para carregar seus brews e
+      poções (pode ser tingida). Organização é tudo!
+    tasks:
+      - get: witchery:brewbag
+    rewards:
+      - loot: comum
+
+  - id: vassoura
+    title: "Vassoura Encantada"
+    type: milestone
+    deps: [unguento_voo, espinheiro, pedra_carregada]
+    icon: witchery:ingredient:9
+    banner: "Voo da Bruxa"
+    subtitle: "Vassoura encantada"
+    desc: |
+      Gravetos e Mudas de Espinheiro = §eVassoura§r. Agora, o Rito de Infusão do Céu: §eà
+      noite§r, círculos pequeno e médio brancos, Vassoura + §eUnguento de Voo§r (3000 de poder).
+
+      A §eVassoura Encantada§r voa! Coloque-a no chão e monte. Herói, você está voando numa
+      vassoura de verdade. Eu nem consigo descrever o tamanho do meu sorriso.
+      §aDica:§r leve o Boneco de Proteção da Terra para pousos ruins.
+    tasks:
+      - get: witchery:ingredient:9
+    rewards:
+      - xp: 8
+      - kit: {name: "Kit da Bruxa Voadora", items: [witchery:poppet:1 x1, minecraft:feather x16, witchery:ingredient:41 x1, minecraft:cooked_beef x16]}
+      - loot: raro
+
+  - id: galho_ent
+    title: "Galho de Ent"
+    type: normal
+    deps: [sorveira]
+    icon: witchery:ingredient:82
+    desc: |
+      Cortar árvores de bruxa às vezes desperta um §eEnt§r. Derrote-o: ele solta um §eGalho de
+      Ent§r e uma muda de bruxa. O galho faz o Ramo Místico, o livro de Simbologia, o Raminho
+      Mutante e o Rito da Floresta. §cEnts batem forte!§r
+    tasks:
+      - get: witchery:ingredient:82
+    rewards:
+      - xp: 3
+      - item: minecraft:iron_axe x1
+
+  - id: ramo_mistico
+    title: "Ramo Místico"
+    type: main
+    deps: [galho_ent, unguento_mistico]
+    icon: witchery:mysticbranch
+    desc: |
+      Rito de Infusão (árvore), §eà noite§r, círculos pequeno e médio brancos: §eGalho de Ent +
+      Unguento Místico§r (3000 de poder). O §eRamo Místico§r é a varinha da bruxa: desenhe
+      símbolos no ar (o livro de Simbologia mostra os traços) para lançar feitiços que
+      gastam a sua energia infundida. Também é artefato do altar.
+    tasks:
+      - get: witchery:mysticbranch
+    rewards:
+      - xp: 4
+      - choice: [witchery:ingredient:107 x1, witchery:ingredient:83 x1, minecraft:diamond x1]
+
+  - id: livro_simbologia
+    title: "Bruxaria: Simbologia"
+    type: optional
+    deps: [galho_ent]
+    icon: witchery:ingredient:107
+    desc: |
+      Livro, corante preto, pena e Galho de Ent = §eWitchcraft: Symbology§r. Cada feitiço do
+      Ramo Místico, com o desenho dos traços. Pratique muito!
+    tasks:
+      - get: witchery:ingredient:107
+    rewards:
+      - loot: comum
+
+  - id: info_infusoes
+    title: "Infusões"
+    type: info
+    deps: [sopa_redstone, primeiro_rito]
+    icon: witchery:ingredient:42
+    desc: |
+      Uma §eInfusão§r dá ao jogador um tipo de energia mágica (para o Ramo Místico e poderes
+      especiais). Prepare-a na Chaleira (4000 de poder) e use-a num §eRito de Infusão§r
+      parado dentro do círculo (200 de poder). Só uma infusão por vez — a nova substitui a
+      antiga. O próprio livro avisa, em tom sombrio, que "a morte é quase sempre certa" para
+      quem mexe com isso sem cuidado: vá com vida cheia e Boneco da Morte!
+
+      Para recarregar a energia: Rito da Carga com poção de Regeneração, círculos pequeno e
+      médio brancos (40 de poder/s, enquanto você ficar dentro).
+    tasks:
+      - check
+    rewards:
+      - xp: 1
+
+  - id: infusao_luz
+    title: "Fantasma da Luz"
+    type: normal
+    deps: [info_infusoes]
+    icon: witchery:ingredient:42
+    desc: |
+      Chaleira: Sopa de Redstone, poções (Visão Noturna e Resistência ao Fogo), Boneco de Fogo,
+      tocha e Língua de Cão. Infusão da Luz (círculos pequeno e médio brancos, 2000 de poder).
+    tasks:
+      - get: witchery:ingredient:42
+    rewards:
+      - xp: 3
+      - item: minecraft:torch x16
+
+  - id: infusao_mundo
+    title: "Alma do Mundo"
+    type: normal
+    deps: [info_infusoes]
+    icon: witchery:ingredient:43
+    desc: |
+      Chaleira: Sopa de Redstone, poção de Regeneração, maçã dourada encantada, Pedra
+      Sintonizada, Mandrágora e Muda de Sorveira. Infusão do Mundo (círculos pequeno e médio
+      brancos, 4000 de poder): poderes ligados à terra.
+    tasks:
+      - get: witchery:ingredient:43
+    rewards:
+      - xp: 3
+      - item: minecraft:golden_apple x1
+
+  - id: infusao_alem
+    title: "Espírito do Além-Mundo"
+    type: normal
+    deps: [info_infusoes, giz_alem_mundo]
+    icon: witchery:ingredient:44
+    desc: |
+      Chaleira: Sopa de Redstone, poção de Velocidade, 2 olhos do Ender, Gota de Sorte e Lã de
+      Morcego. Infusão do Além-Mundo (círculos pequeno e médio §eroxos§r, 4000 de poder):
+      teleportes curtos e magia do Fim.
+    tasks:
+      - get: witchery:ingredient:44
+    rewards:
+      - xp: 3
+      - item: minecraft:ender_eye x2
+
+  - id: infusao_infernal
+    title: "Ânimo Infernal"
+    type: normal
+    deps: [info_infusoes, giz_infernal, coracao_demonio, boneco_vodu]
+    icon: witchery:ingredient:45
+    desc: |
+      Chaleira: Sopa de Redstone, poção de Fraqueza, Boneco Vodu, Coração de Demônio, Mal
+      Refinado e vara de blaze. Infusão Infernal (círculos pequeno e médio §evermelhos§r,
+      4000 de poder): permite §edominar criaturas§r abatidas e usar seus poderes.
+    tasks:
+      - get: witchery:ingredient:45
+    rewards:
+      - xp: 3
+      - item: minecraft:blaze_rod x2
+
+  - id: bola_cristal
+    title: "Bola de Cristal"
+    type: optional
+    deps: [oleo_acaso]
+    icon: witchery:crystalball
+    desc: |
+      Quartzo, blocos de quartzo e vidro = Esfera de Quartzo. Rito de Infusão (futuro), §eà
+      noite§r, círculo médio branco: Esfera + ouro + Óleo do Acaso (2000 de poder) = §eBola de
+      Cristal§r, que mostra previsões do seu futuro (perto de um altar).
+    tasks:
+      - get: witchery:crystalball
+    rewards:
+      - loot: comum
+
+  - id: pedra_vidente
+    title: "Pedra do Vidente"
+    type: optional
+    deps: [oleo_acaso]
+    icon: witchery:ingredient:94
+    desc: |
+      Rito de Infusão, §eà noite§r, círculo pequeno branco: Esfera de Quartzo, obsidiana e
+      Óleo do Acaso. A §ePedra do Vidente§r mostra informações sobre si e sobre o seu §econvento§r
+      (coven) de bruxas.
+    tasks:
+      - get: witchery:ingredient:94
+    rewards:
+      - loot: comum
+
+  - id: talisma_circulo
+    title: "Talismã do Círculo"
+    type: optional
+    deps: [primeiro_rito, pedra_carregada]
+    icon: witchery:circletalisman
+    desc: |
+      Diamante, ouro e pepitas = §eTalismã do Círculo§r. O Rito da Ligação (talismã + redstone,
+      1000 de poder, sem círculo próprio) "puxa" os círculos de giz desenhados para dentro
+      dele; depois você os desenha de novo em qualquer lugar. Círculos portáteis!
+    tasks:
+      - get: witchery:circletalisman
+    rewards:
+      - loot: comum
+
+  # ======================================================================
+  # FASE 12 — FAMILIARES E O CONVENTO
+  # ======================================================================
+  - id: partes_animais
+    title: "Asa de Corujinha e Dedo de Sapo"
+    type: normal
+    deps: [arthana]
+    icon: witchery:ingredient:89
+    desc: |
+      §eCorujas§r e §eSapos§r de bruxa soltam §eAsa de Corujinha§r e §eDedo de Sapo§r (muito
+      mais com a Arthana). São ingredientes da Base de Brew Infundido, do Rito das Estações e
+      de vários brews. Mostre um de cada.
+    tasks:
+      - get: [witchery:ingredient:89, witchery:ingredient:90]
+    rewards:
+      - xp: 2
+      - item: minecraft:feather x8
+
+  - id: vinculo_familiar
+    title: "Vínculo do Familiar"
+    type: milestone
+    deps: [sangue_infernal, lagrima_deusa, fumacas_bruxa]
+    icon: witchery:ingredient:36
+    banner: "Um Familiar"
+    subtitle: "Coruja, sapo ou gato"
+    desc: |
+      Toda bruxa tem um companheiro. Dome uma §ecoruja, um sapo ou um gato§r. Depois, Rito da
+      Ligação, círculo §emédio branco§r: Lágrima da Deusa, Odor da Pureza, Sopro de Magia,
+      §ediamante§r e Sangue Demoníaco (8000 de poder), com o animal dentro do círculo.
+
+      O familiar dá bônus (o sapo ajuda a engarrafar mais brews; o gato é exigido por
+      algumas maldições). Se ele morrer, o §eRito do Chamado§r (Sopro da Deusa, Indício de
+      Renascimento, Sopro de Magia, círculo médio) o traz de volta.
+    tasks:
+      - get: [witchery:ingredient:37, witchery:ingredient:36, witchery:ingredient:34, minecraft:diamond, witchery:ingredient:80]
+    rewards:
+      - xp: 8
+      - kit: {name: "Kit do Familiar", items: [minecraft:fish x16, minecraft:diamond x1, witchery:ingredient:37 x2, minecraft:lead x2]}
+      - loot: raro
+
+  - id: familiar_espectral
+    title: "Familiar Espectral"
+    type: optional
+    deps: [gota_sorte, arthana]
+    icon: minecraft:porkchop
+    desc: |
+      Rito de Invocação, círculo pequeno branco: Gota de Sorte, costeleta crua, lingote de ouro
+      e Arthana (2000 de poder). Surge um porquinho espectral que "acha coisas". O livro
+      sugere: experimente dar um diamante a ele! (Oinc.)
+    tasks:
+      - check
+    rewards:
+      - loot: comum
+
+  - id: info_convento
+    title: "O Convento"
+    type: info
+    deps: [vinculo_familiar]
+    icon: witchery:ingredient:94
+    desc: |
+      Bruxas do Convento (Coven Witches) aparecem nos pântanos e cabanas de bruxa. Elas pedem
+      favores; ajudando-as, podem se juntar ao seu §econvento§r (até 6 além de você).
+
+      Alguns ritos exigem um convento: Estações (4+), Expansão Gelada (2+), Chuva de Sapos
+      (1+), Chamado das Bestas (3+) e a temida Maldição do Lobo (completo). No caldeirão, mais
+      bruxas = rituais mais fortes e de maior alcance.
+    tasks:
+      - check
+    rewards:
+      - xp: 1
+
+  - id: rito_estacoes
+    title: "Rito das Estações"
+    type: optional
+    deps: [info_convento, partes_animais, pedra_carregada]
+    icon: witchery:ingredient:106
+    desc: |
+      Círculo grande branco, convento de 4+: olho de aranha, Dedo de Sapo, Lã de Morcego,
+      Língua de Cão, Asa de Corujinha, Pedra Sintonizada e Pedra Carregada, mais o foco do
+      bioma e pó de pedra luminosa (veja o §eLivro dos Biomas§r). Muda o bioma em volta!
+    tasks:
+      - check
+    rewards:
+      - loot: incomum
+
+  # ======================================================================
+  # FASE 13 — O MUNDO ESPIRITUAL
+  # ======================================================================
+  - id: info_mundo_espiritual
+    title: "Antes de Sonhar"
+    type: info
+    deps: [brew_sono, campanula]
+    icon: witchery:ingredient:78
+    desc: |
+      §dO Mundo Espiritual (dimensão -37)§r é o lugar dos sonhos. Para ir: no Mundo Normal,
+      beba o §eBrew do Sono§r (ou coma a §eMaçã do Sono§r). Seu corpo fica deitado onde você
+      estava — §cproteja esse lugar!§r
+
+      Para voltar: use uma §eAgulha Gelada§r lá dentro. §eLeve várias.§r
+
+      O que fazer lá: colher §eAlgodão Etéreo§r, capturar espíritos, fazer o §eBrew do Espírito
+      Fluido§r (só lá) e enfrentar o §cPesadelo§r. A Mutandis ainda transforma plantas em
+      verruga do Nether por lá.
+    tasks:
+      - check
+    rewards:
+      - xp: 1
+
+  - id: mundo_espiritual
+    title: "O Mundo Espiritual"
+    type: portal
+    deps: [info_mundo_espiritual]
+    icon: witchery:ingredient:95
+    banner: "O Mundo Espiritual"
+    subtitle: "Onde os sonhos moram"
+    effect: 5
+    desc: |
+      Feche os olhos, Herói. Tudo fica mais suave, as cores mais estranhas, e o vento sussurra
+      o seu nome... Você está sonhando de verdade.
+
+      Explore com calma. §eAlgodão Etéreo§r cresce aqui e vira Linha Fantasiosa na Roda.
+      Espíritos vagam por aí. E, de vez em quando, algo pior — um §cPesadelo§r. Se ele
+      aparecer e você não estiver preparado, use a Agulha Gelada e acorde.
+    tasks:
+      - visit: {dim: -37, name: "Mundo Espiritual"}
+    rewards:
+      - xp: 5
+      - loot: raro
+
+  - id: algodao_eterio
+    title: "Algodão Etéreo"
+    type: normal
+    deps: [mundo_espiritual]
+    icon: witchery:somniancotton
+    desc: |
+      "Uma planta de faz-de-conta que só cresce no sono mais profundo." Colha §e8 Algodões
+      Etéreos§r no Mundo Espiritual. Na Roda de Fiar, 4 algodões + linha + Odor da Pureza =
+      §eLinha Fantasiosa§r.
+    tasks:
+      - get: witchery:somniancotton x8
+    rewards:
+      - xp: 3
+      - item: minecraft:string x8
+
+  - id: linha_fantasiosa
+    title: "Linha Fantasiosa"
+    type: normal
+    deps: [algodao_eterio, roda_fiar]
+    icon: witchery:ingredient:100
+    desc: |
+      A §eLinha Fantasiosa§r faz os Tecelões de Sonhos, o Amuleto do Pensamento Fantasioso e o
+      Brew do Espírito Fluido. Fie §e2§r.
+    tasks:
+      - get: witchery:ingredient:100 x2
+    rewards:
+      - xp: 3
+      - item: witchery:ingredient:36 x2
+
+  - id: cordel_atormentado
+    title: "Cordel Atormentado"
+    type: normal
+    deps: [mundo_espiritual, roda_fiar]
+    icon: witchery:ingredient:101
+    desc: |
+      Do Mundo Espiritual também vem o §eAlgodão Perturbado§r (de sonhos ruins). 4 dele +
+      linha + Fedor do Infortúnio na Roda = §eCordel Atormentado§r: Tecelões de Sonhos,
+      espantalhos, poços-armadilha e a Maldição do Pesadelo.
+    tasks:
+      - get: witchery:ingredient:101
+    rewards:
+      - xp: 3
+      - item: witchery:ingredient:35 x2
+
+  - id: teceloes_sonho
+    title: "Tecelões de Sonhos"
+    type: optional
+    deps: [linha_fantasiosa, cordel_atormentado]
+    icon: witchery:dreamcatcher
+    desc: |
+      Moldura, Linha Fantasiosa, Cordel Atormentado, penas, poções e Vapor de Diamante. Os
+      §eTecelões de Sonhos§r, pendurados perto da cama, dão bônus ao acordar: Pés Velozes,
+      Braço de Ferro, Jejum, Intensidade... (e o de Pesadelos, o contrário). Mostre qualquer um.
+    tasks:
+      - one_of: [witchery:ingredient:3, witchery:ingredient:4, witchery:ingredient:5, witchery:ingredient:6, witchery:ingredient:104]
+    rewards:
+      - loot: comum
+
+  - id: espirito_fluido
+    title: "Brew do Espírito Fluido"
+    type: main
+    deps: [linha_fantasiosa, mundo_espiritual]
+    icon: witchery:ingredient:96
+    desc: |
+      §eSó funciona na Chaleira montada no Mundo Espiritual!§r Linha Fantasiosa, Alcachofra,
+      Mandrágora, Musgo Espanhol, Erva Brilhante e Lã de Morcego = 3 §eBrews do Espírito
+      Fluido§r.
+
+      Na Destilaria (2 jarros), com Óleo de Vitríolo, ele se separa em §eVontade Focada§r,
+      §eMedo Condensado§r e §eLágrimas Ocas§r. É a base da Base de Brew Infundido.
+    tasks:
+      - get: witchery:ingredient:96 x3
+    rewards:
+      - xp: 4
+      - choice: [witchery:ingredient:30 x2, witchery:ingredient:27 x4, witchery:ingredient:78 x4]
+
+  - id: destilados_espirito
+    title: "Vontade, Medo e Lágrimas"
+    type: normal
+    deps: [espirito_fluido]
+    icon: witchery:ingredient:113
+    desc: |
+      Destile o Espírito Fluido: §eVontade Focada§r, §eMedo Condensado§r e 8 §eLágrimas Ocas§r.
+      O Medo vai na Pedra Espectral; as Lágrimas, no Espírito Congelado e no Espelho.
+    tasks:
+      - get: [witchery:ingredient:113, witchery:ingredient:114, witchery:ingredient:115 x4]
+    rewards:
+      - xp: 3
+      - item: witchery:ingredient:27 x4
+
+  - id: espirito_congelado
+    title: "Espírito Congelado"
+    type: normal
+    deps: [destilados_espirito]
+    icon: witchery:ingredient:126
+    desc: |
+      Espíritos derrotados soltam §eEspíritos Subjugados§r. Na Chaleira: Brew das Lágrimas
+      Ocas + 5 Espíritos Subjugados (2000 de poder) = §eEspírito Congelado§r, o coração da
+      Pedra Espectral.
+    tasks:
+      - get: witchery:ingredient:126
+    rewards:
+      - xp: 3
+      - item: minecraft:glass_bottle x8
+
+  - id: pedra_espectral
+    title: "Pedra Espectral e Fetiches"
+    type: optional
+    deps: [espirito_congelado, pedra_necromantica]
+    icon: witchery:spectralstone
+    desc: |
+      Rito da Necromancia, §eà noite§r, círculo pequeno branco: Pedra Necromântica, Espírito
+      Congelado, Medo Condensado, Pó Espectral e Boline (6000 de poder) = §ePedra Espectral§r.
+      Ela prende até 3 criaturas espectrais; o Rito da Ligação as amarra a um §eEspantalho§r,
+      §eEfígie de Trent§r ou §eEscada da Bruxa§r, criando fetiches com efeitos (sentinela,
+      grito, desorientação...). Mostre uma Pedra Espectral.
+    tasks:
+      - get: witchery:spectralstone
+    rewards:
+      - loot: incomum
+
+  - id: manifestacao
+    title: "Rito da Manifestação"
+    type: optional
+    deps: [mundo_espiritual, pedra_necromantica, giz_alem_mundo]
+    icon: minecraft:golden_pickaxe
+    desc: |
+      No Mundo Espiritual, círculo pequeno do Além-Mundo: Pó Espectral, Fome Melíflua,
+      Pedra Necromântica, picareta de ouro, Arthana e pólvora (5000 de poder). Você se
+      §emanifesta como fantasma§r no mundo real por um tempo. Assombração consentida!
+    tasks:
+      - check
+    rewards:
+      - loot: incomum
+
+  - id: brews_infundidos
+    title: "Base de Brew Infundido"
+    type: main
+    deps: [espirito_fluido, sopa_redstone, partes_animais, coracao_creeper]
+    icon: witchery:ingredient:121
+    desc: |
+      Chaleira: Sopa de Redstone, Brew do Espírito Fluido, Coração de Creeper, Dedo de Sapo,
+      Asa de Corujinha e Língua de Cão (3000 de poder) = §eBase de Brew Infundido§r. (Depois
+      ela se multiplica: Base + Espírito Fluido + Indício de Renascimento + Mandrágora + Lã de
+      Morcego + Amora Silvestre = 2 Bases.)
+    tasks:
+      - get: witchery:ingredient:121
+    rewards:
+      - xp: 4
+      - choice: [witchery:ingredient:96 x1, witchery:ingredient:40 x1, witchery:ingredient:89 x2]
+
+  - id: brew_voo
+    title: "Brew Infundido do Voo"
+    type: optional
+    deps: [brews_infundidos, vassoura]
+    icon: witchery:ingredient:122
+    desc: |
+      Rito de Infusão, círculos pequeno e médio brancos: Base Infundida, Vassoura, pena e
+      Arthana, com o sacrifício de uma §ecoruja§r (3000 de poder). Beber dá o poder de voar
+      sem vassoura.
+    tasks:
+      - get: witchery:ingredient:122
+    rewards:
+      - loot: incomum
+
+  - id: brew_tumulo
+    title: "Brew Infundido do Túmulo"
+    type: optional
+    deps: [brews_infundidos, pedra_necromantica]
+    icon: witchery:ingredient:123
+    desc: |
+      Rito de Infusão, círculos pequeno e médio brancos: Base Infundida, osso, Teia e Pedra
+      Necromântica, com o sacrifício de um §ezumbi§r (3000 de poder). Um poder ligado aos
+      mortos.
+    tasks:
+      - get: witchery:ingredient:123
+    rewards:
+      - loot: incomum
+
+  # ======================================================================
+  # FASE 14 — LEONARD, O TORMENTO E O ESPELHO
+  # ======================================================================
+  - id: leonard
+    title: "Leonard"
+    type: boss
+    deps: [chapeu_bruxa, caldeirao_bruxa, vapor_diamante]
+    icon: witchery:leonardsurn
+    banner: "Leonard Derrotado"
+    subtitle: "O demônio medieval"
+    desc: |
+      "Um demônio dos tempos medievais, que preside rituais em outras dimensões. Quando
+      invocado, dificilmente quer ir embora, a não ser derrotado."
+
+      No caldeirão fervendo, com o §eChapéu de Bruxa§r como item-chave, a receita de
+      invocação usa Verruga do Nether, Lágrima da Deusa, Vapor de Diamante, diamante e
+      §eEstrela do Nether§r, com §e10 000 de poder§r (confira a página "Leonard" no livro
+      Witches' Brews e a aba do caldeirão no NEI).
+
+      §cLeonard é um chefe de verdade.§r Ao cair, solta Coração de Demônio e a §eUrna de
+      Leonard§r, que guarda brews para soltar pela varinha.
+    tasks:
+      - kill: {entity: "witchery.leonard", count: 1}
+    rewards:
+      - xp: 10
+      - loot: epico
+
+  - id: urna_leonard
+    title: "Urna de Leonard"
+    type: optional
+    deps: [leonard]
+    icon: witchery:leonardsurn
+    desc: |
+      "Coloque um brew na Urna para focar seu poder, e solte-o pela sua varinha." Duas urnas
+      na bancada fazem uma urna maior (até o nível 3).
+    tasks:
+      - get: witchery:leonardsurn
+    rewards:
+      - loot: raro
+
+  - id: senhor_tormento
+    title: "O Senhor do Tormento"
+    type: boss
+    deps: [invocar_diabrete, info_mundo_espiritual]
+    icon: witchery:ingredient:139
+    banner: "O Senhor do Tormento"
+    subtitle: "Fuja do labirinto"
+    desc: |
+      §cO chefe mais cruel do Volume das Bruxas.§r O pergaminho de contrato "§eTorment§r" diz:
+      "leia este texto num círculo de pedras em pé. Cuidado com a entrada explosiva."
+
+      Quando o §eSenhor do Tormento§r cai abaixo da metade da vida fora do Tormento, ele
+      §earrasta os jogadores próximos para o Tormento§r (dimensão -38), um labirinto em
+      andares. Lá, só ele morto (ou a fuga) liberta você.
+
+      Ao morrer, solta livros encantados, um Coração de Demônio e a §eAlma do Demônio do
+      Tormento§r. Vá com o melhor equipamento e Boneco da Morte.
+    tasks:
+      - kill: {entity: "witchery.lordoftorment", count: 1}
+    rewards:
+      - xp: 12
+      - loot: [epico, raro]
+
+  - id: tormento
+    title: "O Tormento"
+    type: portal
+    deps: [senhor_tormento]
+    icon: witchery:tormentstone
+    banner: "O Tormento"
+    subtitle: "Dimensão -38"
+    effect: 5
+    desc: |
+      Paredes que não acabam, ar pesado e gritos distantes. O Tormento é a prisão de quem
+      desafia o Senhor do Tormento. Se você está lendo isto depois de sair de lá... Herói,
+      que alívio. Vem cá, deixa eu ver se você está inteiro.
+    tasks:
+      - visit: {dim: -38, name: "Tormento"}
+    rewards:
+      - xp: 8
+      - loot: raro
+
+  - id: espelho
+    title: "O Espelho"
+    type: main
+    deps: [destilados_espirito, invocar_demonio]
+    icon: witchery:mirror
+    desc: |
+      Rito de Infusão (espelho), círculo §emédio branco§r: Brew das Lágrimas Ocas, lingote de
+      ouro e painel de vidro, com um §eDemônio vivo§r dentro do círculo como sacrifício (2000
+      de poder). O demônio fica preso no §eEspelho§r.
+
+      "Espelho, espelho meu..." — coloque-o numa parede e atravesse-o para chegar ao §eMundo
+      do Espelho§r.
+    tasks:
+      - get: witchery:mirror
+    rewards:
+      - xp: 4
+      - choice: [minecraft:glass_pane x16, minecraft:gold_ingot x4, witchery:ingredient:115 x4]
+
+  - id: mundo_espelho
+    title: "O Mundo do Espelho"
+    type: portal
+    deps: [espelho]
+    icon: witchery:mirrorblock
+    banner: "Do Outro Lado do Espelho"
+    subtitle: "Dimensão -39"
+    effect: 5
+    desc: |
+      Tudo invertido, silencioso... e com a sensação de estar sendo observado. Bem-vindo ao
+      §eMundo do Espelho§r! Atravessar espelhos liga o mundo real a este lugar.
+
+      Dentro do espelho, quem diz a frase certa ("Espelho, espelho meu, para casa leve-me
+      eu") pode tentar voltar — há um tempo de espera entre tentativas.
+    tasks:
+      - visit: {dim: -39, name: "Mundo do Espelho"}
+    rewards:
+      - xp: 5
+      - loot: raro
+
+  - id: reflexo
+    title: "O Reflexo"
+    type: boss
+    deps: [espelho, giz_infernal]
+    icon: witchery:mirrorblock
+    banner: "Seu Próprio Reflexo"
+    subtitle: "O demônio do espelho"
+    desc: |
+      Rito de Invocação, círculo §egrande infernal§r: o §eEspelho§r, Orvalho do Ender, pó de
+      blaze e Esfera de Quartzo (5000 de poder). O demônio sai do espelho como o §eReflexo§r
+      — uma versão sombria de quem o invocou.
+
+      §cLute com tudo que você tem. Ele conhece os seus truques.§r O interior do círculo
+      precisa estar livre (7×7×4).
+    tasks:
+      - kill: {entity: "witchery.reflection", count: 1}
+    rewards:
+      - xp: 10
+      - loot: epico
+
+  # ======================================================================
+  # FASE 15 — LOBISOMENS
+  # ======================================================================
+  - id: info_lobisomem
+    title: "A Maldição do Lobo"
+    type: info
+    deps: [aconito, info_convento]
+    icon: witchery:wolfhead
+    desc: |
+      §cLeia com atenção, Herói. Licantropia muda o seu jeito de jogar.§r
+
+      Como acontece: ser mordido por lobisomens (este pack permite infecção entre jogadores)
+      ou pelo §eRito da Maldição do Lobo§r: à noite, §esob lua cheia§r, com um §econvento
+      completo§r, círculo médio infernal, Taglock, Exalação do Chifrudo, §eCabeça de Cão
+      Infernal§r, Acônito, diamante e Brew do Grotesco (10 000 de poder).
+
+      Nas noites de lua cheia você se transforma. Para evoluir (níveis 1 a 10), use o §eAltar
+      do Lobo§r: uma voz pede tarefas (ouro, carne, línguas, uivos...).
+
+      Cura: Rito de Remover Maldição, à noite, círculo pequeno branco: Taglock, Sopro da
+      Deusa, §eEspada de Prata§r, Acônito, diamante e Brew do Amor (10 000 de poder).
+      Híbridos vampiro/lobisomem são permitidos neste pack.
+    tasks:
+      - check
+    rewards:
+      - xp: 2
+
+  - id: altar_lobo
+    title: "Altar do Lobo"
+    type: normal
+    deps: [info_lobisomem]
+    icon: witchery:wolfaltar
+    desc: |
+      Cabeças de Lobo (ou de Cão Infernal), pedra e Acônito = §eAltar do Lobo§r. Um lobisomem
+      que interage com ele recebe tarefas da voz da fera — e sobe de nível ao cumpri-las.
+    tasks:
+      - get: witchery:wolfaltar
+    rewards:
+      - xp: 3
+      - item: minecraft:bone x16
+
+  - id: amuleto_lua
+    title: "Amuleto da Lua"
+    type: normal
+    deps: [altar_lobo]
+    icon: witchery:mooncharm
+    desc: |
+      A primeira tarefa do Altar do Lobo pede §elingotes de ouro§r. Cumprida, a voz cria o
+      §eAmuleto da Lua§r: "liberta a fera interior, e a lua não terá mais poder" — com ele você
+      controla a transformação. "NÃO O PERCA DE NOVO!"
+    tasks:
+      - get: witchery:mooncharm
+    rewards:
+      - xp: 4
+      - item: minecraft:gold_ingot x8
+
+  - id: cacador_chifrudo
+    title: "O Caçador Chifrudo"
+    type: boss
+    deps: [amuleto_lua]
+    icon: witchery:hornofthehunt
+    banner: "O Caçador Chifrudo"
+    subtitle: "Lorde da Caçada Selvagem"
+    desc: |
+      No nível 5, a voz exige: "o lobo e o homem devem se tornar um: mate o Senhor Chifrudo da
+      Caçada Selvagem!" Ela entrega a §eTrompa da Caçada§r, que invoca o §eCaçador Chifrudo§r.
+
+      Ele é rápido e forte. Ao cair, solta crânios de esqueleto Wither, Sangue Demoníaco e,
+      às vezes, a §eLança do Caçador§r. §cLute em campo aberto, à noite.§r
+    tasks:
+      - kill: {entity: "witchery.hornedHuntsman", count: 1}
+    rewards:
+      - xp: 10
+      - loot: epico
+
+  - id: armadilhas
+    title: "Armadilhas de Urso e de Lobo"
+    type: optional
+    deps: [aconito]
+    icon: witchery:wolftrap
+    desc: |
+      Ferro, tesouras e placa de pressão pesada = §eArmadilha de Urso§r. Com prata (lingote de
+      prata do oredict ou Pó de Prata), Catalisador Nulo e Acônito = §eArmadilha de Lobo§r,
+      que prende lobisomens. Mostre a Armadilha de Urso.
+    tasks:
+      - get: witchery:beartrap
+    rewards:
+      - loot: comum
+
+  # ======================================================================
+  # FASE 16 — VAMPIROS
+  # ======================================================================
+  - id: livro_vampiro
+    title: "Observações de um Imortal"
+    type: normal
+    deps: [alho, primeiro_rito]
+    icon: witchery:vampirebook
+    desc: |
+      Estrela do Nether, livro, Alho e verruga do Nether = §eObservations of an Immortal§r, o
+      relato de um estudioso condenado que conversou com um vampiro. Cada página revela um
+      passo do caminho (as páginas rasgadas encontradas no mundo completam o livro).
+
+      §cAkasha, séria:§r eu adoro você vivo e ao sol. Leia antes de decidir qualquer coisa.
+    tasks:
+      - get: witchery:vampirebook
+    rewards:
+      - xp: 3
+      - item: minecraft:nether_wart x8
+
+  - id: info_vampiro
+    title: "O Caminho do Vampiro"
+    type: info
+    deps: [livro_vampiro]
+    icon: witchery:glassgoblet
+    desc: |
+      O que o livro conta (e este pack permite):
+      §e•§r O rito de "nascimento": à noite, céu aberto, linha, pó vermelho, tochas e um
+      crânio; sangue de galinha recolhido com Boline no §eCálice de Vidro§r. Uma voz pede
+      para levar "sua filha" aos lagos de fogo do Nether — é ali que §eLilith§r surge.
+      §e•§r Como vampiro você sobe de nível (1 a 10) com tarefas: beber até saciar, beber de
+      vários sem matar, resistir ao sol com o Coletor Solar, extinguir criaturas de fogo,
+      voar como morcego, prender aldeões em jaulas...
+      §e•§r O sol queima, o alho fere, a prata e as estacas são perigosas. Vampiros só dormem
+      de dia (num Caixão!).
+
+      Cura: Rito de Remover Maldição, círculo pequeno branco: Taglock, Sopro da Deusa,
+      Espada de Prata, Alho, diamante e Brew do Amor (10 000 de poder).
+    tasks:
+      - check
+    rewards:
+      - xp: 2
+
+  - id: calice_vidro
+    title: "Cálice de Vidro"
+    type: normal
+    deps: [livro_vampiro]
+    icon: witchery:glassgoblet
+    desc: |
+      3 frascos e um vidro = §eCálice de Vidro§r ("Glass Goblet"). É nele que se recolhe o
+      sangue do rito — e que, no fim, um vampiro oferece o próprio sangue a outro.
+    tasks:
+      - get: witchery:glassgoblet
+    rewards:
+      - xp: 2
+      - item: minecraft:glass_bottle x4
+
+  - id: lilith
+    title: "Lilith"
+    type: boss
+    deps: [calice_vidro, info_vampiro]
+    icon: witchery:ingredient:164
+    banner: "A Mãe dos Vampiros"
+    subtitle: "Lilith nos lagos de fogo"
+    desc: |
+      "Você é digno... desta vez. Deseja magia, ou morte?" Leve o pedido do rito ao Nether e
+      encontre §eLilith§r. Ela oferece §emagia§r (encantar um item) ou §esangue§r — o caminho do
+      vampirismo. A escolha é sua, e eu respeito qualquer uma.
+
+      §cMas cuidado:§r Lilith não é uma vizinha simpática. Prepare-se para o Nether e para o
+      que vier. Confirme quando tiver completado o encontro.
+    tasks:
+      - check
+    rewards:
+      - xp: 10
+      - loot: epico
+
+  - id: traje_vampiro
+    title: "Traje do Vampiro"
+    type: optional
+    deps: [info_vampiro]
+    icon: witchery:vampirecoat
+    desc: |
+      §eTecido Escuro§r (Lã Manchada de Sangue na fornalha) faz Cartola, Casaca, Calças e
+      Sapatos de vampiro, com bônus de conjunto (beber mais rápido, resistência ao fogo,
+      hipnose mais forte). Com ferro, a casaca vira de cota de malha. Mostre qualquer peça.
+    tasks:
+      - one_of: [witchery:vampirehat, witchery:vampirecoat, witchery:vampirecoat_female, witchery:vampirelegs, witchery:vampirelegs_kilt, witchery:vampireboots]
+    rewards:
+      - loot: incomum
+
+  - id: caixao
+    title: "Caixão"
+    type: optional
+    deps: [info_vampiro]
+    icon: witchery:coffin
+    desc: |
+      Cama, tábuas e toras = §eCaixão§r. Vampiros só dormem de dia — e de preferência longe do
+      sol. Combine com o §eColetor Solar§r (ouro, repetidor, ferro e sensor de luz do dia) para
+      treinar a resistência ao sol.
+    tasks:
+      - get: witchery:coffin
+    rewards:
+      - loot: comum
+
+  # ======================================================================
+  # FASE 17 — CAÇADOR DE BRUXAS
+  # ======================================================================
+  - id: catalisador_nulo
+    title: "Catalisador Nulo"
+    type: normal
+    deps: [primeiro_rito]
+    icon: witchery:ingredient:130
+    desc: |
+      Estrela do Nether, diamante, sílex e 6 cremes de magma = 2 §eCatalisadores Nulos§r
+      (depois: Catalisador + creme de magma + pó de blaze = mais um). Ele anula magia: couro
+      nulo, virotes anti-magia, Antídoto Universal, Bússola da Prateleira.
+    tasks:
+      - get: witchery:ingredient:130 x2
+    rewards:
+      - xp: 3
+      - item: minecraft:magma_cream x6
+
+  - id: armadura_cacador
+    title: "Armadura do Caçador de Bruxas"
+    type: main
+    deps: [catalisador_nulo]
+    icon: witchery:huntercoat
+    desc: |
+      Couro + Catalisador Nulo = 3 §eCouros Nulos§r. Com eles: Chapéu, Casaco, Calças e Botas
+      do §eCaçador de Bruxas§r. O conjunto protege contra maldições, mas §cnão deixa usar
+      bonecos§r. Ironia: a melhor defesa contra bruxas é... feita por bruxas.
+    tasks:
+      - get: [witchery:hunterhat, witchery:huntercoat, witchery:hunterlegs, witchery:hunterboots]
+    rewards:
+      - xp: 4
+      - choice: [minecraft:leather x16, witchery:ingredient:130 x1, minecraft:iron_ingot x8]
+
+  - id: armadura_prateada
+    title: "Armadura Prateada e da Alvorada"
+    type: optional
+    deps: [armadura_cacador, aconito, alho]
+    icon: witchery:huntercoatsilvered
+    desc: |
+      Cada peça + Acônito + linha + prata (lingote de prata do oredict, como o do Thermal) =
+      versão §ePrateada§r (proteção contra lobisomens). Depois + Alho = versão da §eAlvorada§r
+      (contra vampiros também). Mostre o Casaco Prateado.
+    tasks:
+      - get: witchery:huntercoatsilvered
+    rewards:
+      - loot: incomum
+
+  - id: besta_cacador
+    title: "Besta de Pistola do Caçador"
+    type: normal
+    deps: [armadura_cacador]
+    icon: witchery:handbow
+    desc: |
+      Ferro, arco, Agulha de Osso, linha e graveto = §eBesta de Pistola§r. Munição: Virotes de
+      Madeira (9 por receita), Bifurcados, Sagrados (osso e lágrima de Ghast), Anti-Magia
+      (Catalisador Nulo e Beladona) e de Prata. Mostre a besta e alguns virotes de madeira.
+    tasks:
+      - get: [witchery:handbow, witchery:ingredient:132 x9]
+    rewards:
+      - xp: 3
+      - item: minecraft:feather x16
+
+  - id: espada_prata
+    title: "Espada de Prata"
+    type: normal
+    deps: [armadura_cacador]
+    icon: witchery:silversword
+    desc: |
+      2 lingotes de prata (oredict) sobre uma espada de ouro = §eEspada de Prata§r (também dá
+      com Pó de Prata em volta). É exigida nas curas de lobisomem e vampiro. E, bem, corta
+      lobisomens muito bem.
+    tasks:
+      - get: witchery:silversword
+    rewards:
+      - xp: 3
+      - item: minecraft:gold_ingot x4
+
+  - id: estaca
+    title: "Estaca de Madeira"
+    type: optional
+    deps: [alho]
+    icon: witchery:ingredient:162
+    desc: |
+      Alho em volta de um graveto = §eEstaca de Madeira§r. Clássica. Este pack permite
+      "estaquear" vampiros. Junto com a §eGuirlanda de Alho§r, sua casa fica bem protegida.
+    tasks:
+      - get: witchery:ingredient:162
+    rewards:
+      - loot: comum
+
+  - id: cacador_bruxas
+    title: "O Caçador de Bruxas"
+    type: boss
+    deps: [primeiro_rito]
+    icon: witchery:hunterhat
+    banner: "Caçador Derrotado"
+    subtitle: "Quem caça quem?"
+    desc: |
+      Bruxas fazem barulho — e chamam atenção. Às vezes aparece um §eCaçador de Bruxas§r
+      armado com besta, atrás de quem pratica magia. §cEle mira em você!§r
+
+      Derrote §e1 Caçador de Bruxas§r. Fique atrás de cobertura e feche a distância; ele
+      atira de longe.
+    tasks:
+      - kill: {entity: "witchery.witchhunter", count: 1}
+    rewards:
+      - xp: 8
+      - loot: raro
+
+  - id: baba_yaga
+    title: "Baba Yaga"
+    type: optional
+    deps: [vinculo_familiar]
+    icon: witchery:babashat
+    desc: |
+      A bruxa mais velha e temida de todas: §eBaba Yaga§r (a Bola de Cristal às vezes avisa
+      quando você "despertou o interesse da velha"). Derrotá-la rende o §eChapéu de Baba
+      Yaga§r — +25% de chance de um segundo e de um terceiro brew no caldeirão. §cEla é
+      perigosa!§r
+    tasks:
+      - kill: {entity: "witchery.babayaga", count: 1}
+    rewards:
+      - loot: raro
+
+  # ======================================================================
+  # FINAL
+  # ======================================================================
+  - id: grande_bruxa
+    title: "A Grande Bruxa"
+    type: finale
+    deps: [vassoura, colecao_bonecos, vinculo_familiar, brews_infundidos, ramo_mistico, leonard, reflexo]
+    icon: witchery:witchhat
+    banner: "Grande Bruxa do Registro"
+    subtitle: "O Volume das Bruxas está completo"
+    effect: 6
+    desc: |
+      Vassoura no céu, bonecos no bolso, um familiar no ombro, Brews Infundidos, a varinha de
+      Ent, Leonard derrotado e o seu próprio Reflexo vencido. Herói... você atravessou todas
+      as sombras deste Volume e saiu do outro lado — mais forte e, espero, ainda gentil.
+
+      O Volume das Bruxas está reescrito e brilha no §dSelo Arcano§r. A floresta em volta da
+      sua cabana canta (ou é só o Altar? tanto faz, é lindo).
+
+      Agora vá dormir — numa cama, sem brew nenhum. Você merece um sonho tranquilo.
+    tasks:
+      - get: [witchery:witchhat, witchery:ingredient:9, witchery:mysticbranch, witchery:poppet:6]
+    rewards:
+      - xp: 30
+      - loot: [lendario, epico]

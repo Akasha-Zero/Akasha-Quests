@@ -1,0 +1,301 @@
+chapter:
+  id: aedf3_aventura_infernal
+  title: Aventura Infernal
+  prefix: AEDF3
+  order: 802.812
+  icon: minecraft:nether_star
+  desc: |
+    §6Memórias de outros heróis, página três.§r Todo grupo lendário tinha o seu dia de "vamos pro Nether": portal aceso, armadura de ferro (ou melhor) e coração apertado. Do outro lado, ghasts chorando, fortalezas de tijolo e um chefe de três cabeças esperando por quem tivesse coragem de montá-lo. Aqui está a §eAventura Infernal§r, sem pressa e sem pânico.
+quests:
+- id: obsidiana_do_portal
+  title: Obsidiana
+  type: main
+  deps_hidden: ['aedf3_era_industrial:fabrica_pronta']
+  desc: |
+    A porta para o inferno é feita de §eObsidiana§r, o bloco mais duro que as picaretas de ferro não conseguem quebrar. Você vai precisar de uma picareta de diamante para minerar. Despeje água sobre lava parada para formar obsidiana fresca, ou procure veios nas profundezas. Dez blocos bastam para um portal pequeno.
+  tasks:
+  - {get: 'minecraft:obsidian x10'}
+  rewards:
+  - {xp: 5}
+  - choice: ['minecraft:iron_pickaxe', 'minecraft:cooked_beef x8']
+- id: isqueiro_de_pederneira
+  title: Isqueiro
+  type: main
+  deps: [obsidiana_do_portal]
+  desc: |
+    Um lingote de ferro e uma pederneira (que cai do cascalho) formam o §eIsqueiro§r. É ele que acende o portal do Nether, tochas ruins e pavios de dinamite. Guarde-o sempre no inventário e leve outro de reserva, pois a durabilidade é curta e um portal apagado é um caminho de volta perdido.
+  tasks:
+  - {craft: 'minecraft:flint_and_steel'}
+  rewards:
+  - {xp: 5}
+  - choice: ['minecraft:flint x8', 'minecraft:iron_ingot x4']
+- id: portal_nether
+  title: O Portal Flamejante
+  type: portal
+  deps: [isqueiro_de_pederneira]
+  desc: |
+    Monte a moldura 4x5 de obsidiana (os cantos podem ficar vazios), acenda com o isqueiro e atravesse a luz roxa. Do outro lado, calor, lava e muitos gritos. Os heróis da Era do Futuro diziam que a primeira entrada no Nether nunca se esquece. Marque as coordenadas do portal de volta, pois o Nether é um labirinto!
+
+    §cPerigo:§r nunca cave em linha reta para baixo, nem corra na beira de lava.
+  tasks:
+  - visit: {dim: -1, name: O Nether}
+  rewards:
+  - {xp: 3}
+  - choice: ['minecraft:cooked_beef x16', 'minecraft:golden_apple']
+- id: netherrack_e_pontes
+  title: Rocha Infernal
+  type: main
+  deps: [portal_nether]
+  desc: |
+    A paisagem do Nether é de §eNetherrack§r, uma pedra avermelhada que queima eternamente se acesa. Junte 32 blocos e faça pontes seguras sobre os rios de lava. Pedregulho funciona melhor para fortificar pontes, já que ghasts explodem a rocha local com bolas de fogo.
+  tasks:
+  - {get: 'minecraft:netherrack x32'}
+  rewards:
+  - {xp: 5}
+  - choice: ['minecraft:cobblestone x64', 'minecraft:torch x32']
+- id: areia_das_almas
+  title: Areia das Almas
+  type: normal
+  deps: [netherrack_e_pontes]
+  desc: |
+    Pisar na §eAreia das Almas§r deixa tudo lento, e dizem que ela guarda sussurros. É necessária para plantar nether wart e também para invocar o Wither. Encha o inventário de 8 blocos e prepare-se, pois isso vai ficar sério daqui a pouco.
+  tasks:
+  - {get: 'minecraft:soul_sand x8'}
+  rewards:
+  - {xp: 3}
+  - choice: ['minecraft:nether_wart x4', 'minecraft:blaze_powder x4']
+- id: pedra_luminosa
+  title: Glowstone
+  type: normal
+  deps: [areia_das_almas]
+  desc: |
+    Cachos de §eGlowstone§r pendem do teto de cavernas do Nether. Quebre-os e junte 8 blocos: viram luzes fortes para a vila, componentes de poções e até lâmpadas decorativas. A cor dourada tem cara de tesouro e não à toa, está em todos os lugares.
+  tasks:
+  - {get: 'minecraft:glowstone x8'}
+  rewards:
+  - {xp: 3}
+  - choice: ['minecraft:redstone x16', 'minecraft:gold_ingot x4']
+- id: quartzo_infernal
+  title: Quartzo
+  type: normal
+  deps: [pedra_luminosa]
+  desc: |
+    O §eQuartzo do Nether§r está espalhado nas paredes como pontos brancos. Minere com picareta de ferro para obter cristal. Serve de redstone, de decoração elegante e de ingrediente para comparadores. Muita gente vive de quartzo aqui no Nether!
+  tasks:
+  - {get: 'minecraft:quartz x16'}
+  rewards:
+  - {xp: 3}
+  - choice: ['minecraft:quartz_block x4', 'minecraft:redstone x16']
+- id: tijolos_do_nether
+  title: Tijolos Infernais
+  type: normal
+  deps: [quartzo_infernal]
+  desc: |
+    Fornalha, netherrack e paciência: sai o §eTijolo do Nether§r, que é o material das fortalezas. Forte e escuro, resistente a explosões, rende cercas e escadas lindas. Junte 32 para uma base com visual infernal.
+  tasks:
+  - {get: 'minecraft:nether_brick x32'}
+  rewards:
+  - {xp: 3}
+  - choice: ['minecraft:nether_brick_fence x8', 'minecraft:nether_brick_stairs x4']
+- id: fortaleza
+  title: A Fortaleza
+  type: main
+  deps: [tijolos_do_nether]
+  desc: |
+    As §eFortalezas do Nether§r são os grandes castelos de tijolo escuro, cheios de corredores, baús e blazes. Tome cuidado com o labirinto, tenha pontos de luz e deixe uma saída marcada. É aqui que vive o brilho da aventura, Herói.
+  tasks:
+  - {get: 'minecraft:nether_brick_fence x4'}
+  rewards:
+  - {xp: 5}
+  - choice: ['minecraft:golden_apple', 'minecraft:cooked_beef x16']
+- id: fruto_do_inferno
+  title: Fruta do Inferno
+  type: normal
+  deps: [fortaleza]
+  desc: |
+    O §eNether Wart§r cresce em areia das almas e é a base de todas as poções. Encontre em fortalezas e plante em casa. Sem ela, nenhuma poção útil sai do alambique. Junte 8 e faça uma plantação para ter sempre estoque.
+  tasks:
+  - {get: 'minecraft:nether_wart x8'}
+  rewards:
+  - {xp: 3}
+  - choice: ['minecraft:glass_bottle x8', 'minecraft:sugar x8']
+- id: porcos_zumbis
+  title: Porcos-Zumbi
+  type: normal
+  deps: [fruto_do_inferno]
+  icon: minecraft:gold_nugget
+  desc: |
+    Pacíficos até você bater em um, quando todos viram uma matilha! Os §ePorcos-Zumbi§r andam em bando e soltam pepitas de ouro. Derrote 4 com espada de ferro ou melhor, mas se afaste dos outros logo depois. Bom para treinar reflexo.
+  tasks:
+  - {kill: PigZombie x4}
+  rewards:
+  - {xp: 3}
+  - choice: ['minecraft:gold_nugget x16', 'minecraft:rotten_flesh x8']
+- id: lagrima_do_ghast
+  title: Lágrima de Ghast
+  type: main
+  deps: [porcos_zumbis]
+  icon: minecraft:ghast_tear
+  desc: |
+    Ouvir um grito agudo e ver uma bola de fogo vindo é a experiência clássica do Nether! O §eGhast§r flutua e atira projéteis que você pode rebater com a espada. Mate um (é bom ter arco) e colha a lágrima, um ingrediente raro de poções de regeneração. Ao menos uma vez na vida, grite de volta.
+  tasks:
+  - {kill: Ghast x1}
+  rewards:
+  - {xp: 5}
+  - choice: ['minecraft:ghast_tear', 'minecraft:fire_charge x8']
+- id: blazes
+  title: Blazes
+  type: main
+  deps: [lagrima_do_ghast]
+  icon: minecraft:blaze_rod
+  desc: |
+    Dentro das fortalezas, gaiolas de spawners soltam §eBlazes§r, chamas que voam e cospem fogo. Use neve ou bolas de neve para derrubá-los mais rápido, e leve armadura sólida. Eles deixam varetas, que são essenciais para poções e para o Olho do Fim.
+  tasks:
+  - {kill: Blaze x3}
+  rewards:
+  - {xp: 5}
+  - choice: ['minecraft:blaze_powder x8', 'minecraft:snowball x16']
+- id: varas_de_blaze
+  title: Varas de Blaze
+  type: main
+  deps: [blazes]
+  desc: |
+    Oito §eVaras de Blaze§r bastam para os primeiros projetos: combustível poderoso, alambique de poções e, mais para a frente, Olhos de Ender. Elas não caem sempre, então tenha paciência no spawner. Reforce o local com tochas e nunca fique parado.
+  tasks:
+  - {get: 'minecraft:blaze_rod x8'}
+  rewards:
+  - {xp: 5}
+  - choice: ['minecraft:blaze_powder x8', 'minecraft:coal x16']
+- id: creme_de_magma
+  title: Creme de Magma
+  type: normal
+  deps: [varas_de_blaze]
+  desc: |
+    Pequenos slimes de magma pulam por fortalezas e deixam §eCreme de Magma§r quando derrotados. Com ele você faz poção de resistência ao fogo, uma salvação para quem mexe com lava. Pegue pelo menos dois e prepare o equipamento.
+  tasks:
+  - {get: 'minecraft:magma_cream x2'}
+  rewards:
+  - {xp: 3}
+  - choice: ['minecraft:slime_ball x8', 'minecraft:blaze_powder x4']
+- id: esqueleto_wither
+  title: Esqueletos Wither
+  type: main
+  deps: [creme_de_magma]
+  icon: minecraft:skull:1
+  desc: |
+    Altos, negros e silenciosos: os §eEsqueletos Wither§r são mais perigosos que os comuns, pois o ataque causa o efeito Wither, que corrói a vida. Eles soltam crânios, que você vai precisar logo. Leve leite para curar a lentidão e aguarde o momento certo.
+  tasks:
+  - {kill: witherSkeleton x3}
+  rewards:
+  - {xp: 5}
+  - choice: ['minecraft:bone x16', 'minecraft:coal x16']
+- id: tres_cranios
+  title: Três Crânios
+  type: main
+  deps: [esqueleto_wither]
+  desc: |
+    Os §eCrânios de Esqueleto Wither§r são raros e a sorte conta. Com 3 crânios e 4 blocos de areia das almas você monta o Wither. Quanto mais fortalezas visitar, mais chance de encontrar. Cuidado com o ritmo, Herói.
+  tasks:
+  - {get: 'minecraft:skull:1 x3'}
+  rewards:
+  - {xp: 5}
+  - choice: ['minecraft:soul_sand x4', 'minecraft:diamond']
+- id: poder_da_cerveja
+  title: Cervejaria Arcana
+  type: normal
+  deps: [tres_cranios]
+  desc: |
+    Uma vareta de blaze e três pedregulhos formam o §eAlambique§r. Com ele você prepara poções de cura, força, velocidade e resistência. As lendas dos heróis falam em estoques de poções pendurados nas paredes. Aprenda a fazer isso cedo.
+  tasks:
+  - {get: 'minecraft:brewing_stand'}
+  rewards:
+  - {xp: 3}
+  - choice: ['minecraft:glass_bottle x8', 'minecraft:nether_wart x8']
+- id: netherlicious_cristais
+  title: Florestas Carmesim
+  type: normal
+  deps: [poder_da_cerveja]
+  icon: netherlicious:CrimsonNylium
+  desc: |
+    Nem tudo no Nether é fogo e rocha! Biomas de florestas carmesim e distorcida, com cogumelos gigantes e blocos coloridos, deixam o mundo bem mais interessante. Procure o §eNylium Carmesim§r e leve para casa um pedacinho de terra vermelha. Ótimo para decoração.
+  tasks:
+  - {get: 'netherlicious:CrimsonNylium'}
+  rewards:
+  - {xp: 3}
+  - choice: ['netherlicious:ShroomLight x4', 'netherlicious:SoulTorch x8']
+- id: restos_antigos
+  title: Detritos Antigos
+  type: normal
+  deps: [netherlicious_cristais]
+  desc: |
+    No fundo do Nether, em camadas profundas, brilham os §eDetritos Antigos§r. Procure com túneis na altura 15 ou menos, usando explosões ou picareta de diamante. São raros e rendem materiais para equipamentos especiais. Cuidado com a lava quando cavar.
+  tasks:
+  - {get: 'etfuturum:ancient_debris x2'}
+  rewards:
+  - {xp: 3}
+  - choice: ['minecraft:diamond', 'minecraft:gold_ingot x8']
+- id: piglin
+  title: Piglins
+  type: normal
+  deps: [restos_antigos]
+  desc: |
+    Cobiçosos e brutos, os §ePiglins§r andam por biomas especiais do Nether. Usar peças de ouro na armadura os mantém calmos. Se atacar um, a tribo toda vira. Derrote um e fuja logo depois, é o conselho dos heróis antigos.
+  tasks:
+  - {kill: netherlicious.Piglin x1}
+  rewards:
+  - {xp: 3}
+  - choice: ['minecraft:gold_ingot x8', 'minecraft:cooked_porkchop x8']
+- id: estrela_do_wither
+  title: Cabeça do Wither
+  type: boss
+  deps: [piglin]
+  icon: minecraft:nether_star
+  desc: |
+    Chegou a hora, Herói. Três crânios no topo, quatro blocos de areia das almas em T, e o §cWither§r desperta. Ele voa, explode blocos e solta crânios mortais. Faça em campo aberto, com armadura boa, poções e arco. Quem derrota o Wither ganha a §eEstrela do Nether§r, a joia da coroa. Muita sorte!
+
+    §cPerigo:§r nunca invoque em lugar fechado ou perto da sua base.
+  tasks:
+  - {kill: WitherBoss x1}
+  rewards:
+  - {xp: 20}
+  - choice: ['minecraft:diamond x4', 'minecraft:experience_bottle x8']
+  - {loot: epico}
+- id: a_estrela
+  title: A Estrela
+  type: main
+  deps: [estrela_do_wither]
+  desc: |
+    A §eEstrela do Nether§r brilha na sua mão! Esse artefato é o ingrediente do Sinal (Beacon) e de muitas coisas poderosas no futuro. Guarde bem. Os heróis diziam que quem tem a estrela já passou do ponto sem volta.
+  tasks:
+  - {get: 'minecraft:nether_star'}
+  rewards:
+  - {xp: 5}
+  - choice: ['minecraft:diamond x2', 'minecraft:obsidian x4']
+- id: sinal_de_luz
+  title: O Sinal
+  type: main
+  deps: [a_estrela]
+  desc: |
+    O §eSinal§r (Beacon) é feito de vidro, obsidiana e a Estrela do Nether. Quando ativado sobre uma pirâmide de blocos de metal, lança um raio ao céu e dá efeitos aos jogadores em volta, como velocidade, pressa ou regeneração. Perfeito para o centro da vila, não é?
+  tasks:
+  - {get: 'minecraft:beacon'}
+  rewards:
+  - {xp: 5}
+  - choice: ['minecraft:iron_block x4', 'minecraft:emerald x2']
+- id: infernal_pronto
+  title: Estrela da Manhã
+  type: milestone
+  deps: [sinal_de_luz]
+  desc: |
+    Você foi até lá, Herói, e voltou! Ghast, blaze, wither, estrela e sinal. É esse tipo de história que os heróis da Era do Futuro contavam em volta da fogueira, sempre com um pouco de exagero.
+
+    Agora você carrega o brilho do Nether no peito e o conhecimento de como sobreviver ao fogo. O céu, por outro lado, está pedindo uma conversa: chega de calor, vamos ver §eenergia limpa§r. Painéis solares à vista!
+  tasks:
+  - get: ['minecraft:nether_star', 'minecraft:beacon', 'minecraft:blaze_rod x8', 'minecraft:ghast_tear']
+  rewards:
+  - {xp: 25}
+  - kit:
+      name: Kit Infernal
+      items: ['minecraft:diamond x4', 'minecraft:golden_apple x2', 'minecraft:experience_bottle x16',
+        'minecraft:cooked_beef x16', 'minecraft:blaze_rod x8']
+  - {loot: raro}

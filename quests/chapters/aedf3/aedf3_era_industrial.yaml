@@ -1,0 +1,319 @@
+chapter:
+  id: aedf3_era_industrial
+  title: Era Industrial
+  prefix: AEDF3
+  order: 801.875
+  icon: IC2:blockMachine:3
+  desc: |
+    §6Memórias de outros heróis, página dois.§r Nas lendas, havia um dia em que o barulho de um gerador ligando substituiu o das picaretas. Cabos de cobre, trituradores, fornalhas elétricas e uma bateria de madeira onde tudo isso começava. Aqui está o caminho até a primeira §eFábrica§r com o IndustrialCraft 2, seguida de alguns tubos de BuildCraft pelo caminho.
+quests:
+- id: arvore_de_borracha
+  title: A Árvore que Chora
+  type: main
+  deps_hidden: ['aedf3_idade_pedra_ferro:fundicao_completa']
+  desc: |
+    Toda era industrial começa numa árvore, Herói, só que dessa vez é a §eÁrvore de Borracha§r! Procure por troncos manchados de resina em florestas e pântanos. Corte quatro troncos, mas deixe uma árvore viva para colher resina depois. Sem borracha não existe cabo isolado, e sem cabo não existe fábrica.
+  tasks:
+  - {get: 'IC2:blockRubWood x4'}
+  rewards:
+  - {xp: 5}
+  - choice: ['minecraft:apple x4', 'minecraft:bread x8', 'minecraft:torch x16']
+- id: torneira_de_resina
+  title: Torneira de Resina
+  type: main
+  deps: [arvore_de_borracha]
+  desc: |
+    Cinco tábuas em formato de "T" e você ganha a §eTorneira§r. Clique com ela nas manchas úmidas do tronco para sair resina. Não bata na árvore com a mão! Faça duas torneiras de uma vez, pois a durabilidade é baixinha e a resina vale ouro.
+  tasks:
+  - {get: 'IC2:itemTreetap'}
+  rewards:
+  - {xp: 5}
+  - choice: ['minecraft:planks x16', 'minecraft:stick x16']
+- id: borracha_pronta
+  title: Borracha
+  type: main
+  deps: [torneira_de_resina]
+  desc: |
+    Resina assada na fornalha vira borracha, e no Extrator rende ainda mais. Junte §e8 borrachas§r para os primeiros cabos. Cada herói tinha seu "pomar de seringueiras", e você também terá. Replante as mudas e não falte resina.
+  tasks:
+  - {get: 'ore:itemRubber x8'}
+  rewards:
+  - {xp: 5}
+  - choice: ['IC2:itemHarz x4', 'minecraft:iron_ingot x4']
+- id: cobre_e_estanho
+  title: Cobre e Estanho
+  type: main
+  deps: [borracha_pronta]
+  desc: |
+    Os dois metais mais importantes da indústria! O cobre vira cabo e o estanho vira cabo e lata. Procure minérios alaranjados (cobre) e esbranquiçados (estanho), funda na fornalha e junte 16 de cada. Quanto mais, melhor, pois o consumo nessa fase é grande.
+  tasks:
+  - get: ['ore:ingotCopper x16', 'ore:ingotTin x16']
+  rewards:
+  - {xp: 5}
+  - choice: ['minecraft:iron_ingot x8', 'minecraft:coal x16']
+- id: bronze_da_industria
+  title: Bronze
+  type: main
+  deps: [cobre_e_estanho]
+  desc: |
+    Três cobres e um estanho na bancada viram quatro §eBronzes§r. Ferramentas e armaduras de bronze são resistentes, e o metal é ingrediente de máquinas. Faça um bom estoque, pois você vai usar bastante nas fases seguintes.
+
+    §aDica:§r bronze aparece também na fundição do Tinkers, se já tiver uma.
+  tasks:
+  - {get: 'ore:ingotBronze x8'}
+  rewards:
+  - {xp: 5}
+  - choice: ['ore:ingotCopper x8', 'ore:ingotTin x8']
+- id: martelo_da_forja
+  title: Martelo de Forja
+  type: normal
+  deps: [bronze_da_industria]
+  desc: |
+    Com o §eMartelo de Forja§r você bate lingotes sobre bigornas e transforma em placas de metal. Placas viram carcaças de máquinas, cabos reforçados e estruturas inteiras. A durabilidade acaba, então leve dois. Pense nele como o primeiro instrumento da indústria.
+  tasks:
+  - {get: 'IC2:itemToolForgeHammer'}
+  rewards:
+  - {xp: 3}
+  - choice: ['minecraft:iron_ingot x8', 'minecraft:coal x16']
+- id: cabo_de_cobre
+  title: Cabo de Cobre Isolado
+  type: main
+  deps: [martelo_da_forja]
+  desc: |
+    Cobre e borracha formam o §eCabo Isolado§r, que carrega energia (EU) sem dar choque. Cabo sem isolamento perde energia e machuca quem encosta, e cabo comprido perde ainda mais. Prepare 16 peças e já deixe um alicate para cortar. A rede elétrica começa aqui, Herói.
+  tasks:
+  - {get: 'IC2:itemCable x16'}
+  rewards:
+  - {xp: 5}
+  - choice: ['IC2:itemCable:13 x8', 'IC2:itemToolCutter']
+- id: circuito_basico
+  title: Circuito Eletrônico
+  type: main
+  deps: [cabo_de_cobre]
+  desc: |
+    Ferro, redstone e cabos de cobre formam o §eCircuito§r, o cérebro das máquinas. Quase tudo da Era Industrial leva um ou vários. Faça uma boa quantidade, pois você vai precisar de uma enxurrada deles para a primeira fábrica.
+  tasks:
+  - {get: 'IC2:itemPartCircuit x4'}
+  rewards:
+  - {xp: 5}
+  - choice: ['minecraft:redstone x16', 'ore:ingotCopper x8']
+- id: carcaca_de_maquina
+  title: Carcaça de Máquina
+  type: main
+  deps: [circuito_basico]
+  desc: |
+    Oito lingotes de ferro em quadrado formam a §eCarcaça Básica§r, que dá origem a qualquer máquina simples. Guarde algumas na caixa de ferramentas. Dentro dela cabem os circuitos e os cabos.
+  tasks:
+  - {get: 'IC2:blockMachine x2'}
+  rewards:
+  - {xp: 5}
+  - choice: ['minecraft:iron_ingot x8', 'minecraft:redstone x16']
+- id: gerador_de_luz
+  title: 'Faça-se a Luz: o Gerador'
+  type: main
+  deps: [carcaca_de_maquina]
+  desc: |
+    Aqui está! O §eGerador§r queima combustível (carvão, madeira, o que tiver) e produz EU. Posicione-o ao lado de uma máquina ou conecte com cabo. Quando a luz da máquina acender, sentirá o mesmo arrepio dos heróis lendários. É a primeira de muitas.
+
+    §cAtenção:§r não deixe o gerador sem ventilação nem em lugar inflamável.
+  tasks:
+  - {get: 'IC2:blockGenerator'}
+  rewards:
+  - {xp: 5}
+  - choice: ['minecraft:coal x32', 'IC2:itemBatSU x2']
+- id: triturador
+  title: O Triturador
+  type: main
+  deps: [gerador_de_luz]
+  desc: |
+    O §eTriturador§r (macerador) quebra minério em pó e dobra o rendimento: dois pós a partir de um bloco de minério. Faça com ferro, pedregulho e um circuito. Esse é o mais importante passo para a indústria, porque todo o resto depende de minério sobrando.
+  tasks:
+  - {get: 'IC2:blockMachine:3'}
+  rewards:
+  - {xp: 5}
+  - choice: ['minecraft:coal x16', 'minecraft:iron_ingot x8']
+- id: minerio_dobrado
+  title: O Dobro de Tudo
+  type: main
+  deps: [triturador]
+  desc: |
+    Minério no triturador vira §eMinério Triturado§r, que na fornalha rende dois lingotes em vez de um. Passe seus estoques de ferro, cobre, estanho, ouro e prata pela máquina. Você vai ver o baú encher em poucos minutos. Isso é indústria, Herói!
+  tasks:
+  - {get: 'IC2:itemCrushedOre:* x16'}
+  rewards:
+  - {xp: 5}
+  - choice: ['IC2:itemDust:2 x16', 'minecraft:iron_ingot x8']
+- id: fornalha_eletrica
+  title: Fornalha Elétrica
+  type: normal
+  deps: [minerio_dobrado]
+  desc: |
+    Aqui ninguém mais precisa de carvão! A §eFornalha Elétrica§r funde itens com energia, rápida e silenciosa. Combine com o triturador e você processa minérios sem lenha. Um dos primeiros luxos da Era Industrial.
+  tasks:
+  - {get: 'IC2:blockMachine:2'}
+  rewards:
+  - {xp: 3}
+  - choice: ['minecraft:coal x16', 'minecraft:iron_ingot x4']
+- id: extrator
+  title: Extrator
+  type: normal
+  deps: [fornalha_eletrica]
+  desc: |
+    O §eExtrator§r tira o melhor das coisas: de uma resina saem três borrachas! Sozinho, ele substitui a fornalha para fazer borracha. Mais um ótimo motivo para manter aquele pomar de seringueiras funcionando.
+  tasks:
+  - {get: 'IC2:blockMachine:4'}
+  rewards:
+  - {xp: 3}
+  - choice: ['IC2:itemHarz x8', 'ore:itemRubber x8']
+- id: compressor
+  title: Compressor
+  type: normal
+  deps: [extrator]
+  desc: |
+    O §eCompressor§r prensa materiais em formas mais densas: neve em gelo, areia em arenito, carvão em diamante (com alguns truques). Parte vital da sua linha de produção, e logo vira o dono do corredor de máquinas.
+  tasks:
+  - {get: 'IC2:blockMachine:5'}
+  rewards:
+  - {xp: 3}
+  - choice: ['minecraft:iron_ingot x8', 'minecraft:coal x16']
+- id: bateria_da_caixa
+  title: A Caixa de Baterias (BatBox)
+  type: main
+  deps: [compressor]
+  desc: |
+    O §eBatBox§r guarda energia para quando o gerador falhar. Madeira, cobre e baterias formam a caixa; coloque uma ao lado do gerador e ligue tudo com cabos. Com ela você tem energia estável, mesmo quando as máquinas estiverem em pico. Não tem preço isso.
+  tasks:
+  - {get: 'IC2:blockElectric'}
+  rewards:
+  - {xp: 5}
+  - choice: ['IC2:itemBatSU x4', 'IC2:itemCable x8']
+- id: reciclador
+  title: Reciclador e Sucata
+  type: normal
+  deps: [bateria_da_caixa]
+  desc: |
+    Itens indesejados vão para o §eReciclador§r e viram sucata. A sucata, por sua vez, é a matéria-prima da Matéria UU lá na frente. O reciclador é barulhento, mas vale cada ruído. Guarde todo lixo que encontrar, Herói.
+  tasks:
+  - {get: 'IC2:blockMachine:11'}
+  rewards:
+  - {xp: 3}
+  - choice: ['IC2:itemScrap x9', 'minecraft:cobblestone x32']
+- id: leitor_de_eu
+  title: Leitor de EU
+  type: normal
+  deps: [reciclador]
+  desc: |
+    Quando a rede some, ou quando alguma máquina não funciona, o §eLeitor de EU§r mostra o que está acontecendo. Ele indica fluxo, perdas e problemas de tensão. Ferramenta de diagnóstico indispensável para qualquer eletricista que se preze.
+  tasks:
+  - {get: 'IC2:itemToolMEter'}
+  rewards:
+  - {xp: 3}
+  - choice: ['IC2:itemCable x8', 'minecraft:redstone x16']
+- id: chave_inglesa
+  title: Chave Inglesa
+  type: normal
+  deps: [leitor_de_eu]
+  desc: |
+    A §eChave Inglesa§r desmonta máquinas sem destruí-las, devolvendo o bloco inteiro e a carcaça. Quebrar sem a chave desperdiça materiais, e você vai sentir isso no bolso. Faça uma logo, ela é barata.
+  tasks:
+  - {get: 'IC2:itemToolWrench'}
+  rewards:
+  - {xp: 3}
+  - choice: ['minecraft:iron_ingot x8', 'ore:itemRubber x4']
+- id: broca_de_mineracao
+  title: Broca de Mineração
+  type: normal
+  deps: [chave_inglesa]
+  desc: |
+    Uma picareta elétrica que come pedra! A §eBroca§r exige energia (leve uma bateria cheia) e rende muito mais velocidade. Conforme os heróis lendários avançavam, era a primeira ferramenta que todos queriam ter. Uma mina com broca é uma mina rápida.
+  tasks:
+  - {get: 'IC2:itemToolDrill:*'}
+  rewards:
+  - {xp: 3}
+  - choice: ['IC2:itemBatRE:*', 'minecraft:iron_ingot x8']
+- id: bc_motor
+  title: Motor de Redstone
+  type: normal
+  deps: [broca_de_mineracao]
+  desc: |
+    Fora da eletricidade, os heróis lendários também usavam o poder dos motores do BuildCraft. O §eMotor de Redstone§r é o mais simples: ele fornece energia mecânica para canos e máquinas. Use com a chave inglesa para girar a face e acender a primeira tocha mecânica.
+  tasks:
+  - {get: 'BuildCraft|Core:engineBlock'}
+  rewards:
+  - {xp: 3}
+  - choice: ['BuildCraft|Core:wrenchItem', 'minecraft:redstone x16']
+- id: bc_cano_madeira
+  title: Canos de Madeira
+  type: normal
+  deps: [bc_motor]
+  desc: |
+    Canos de madeira puxam itens de baús. Com um motor ligado, eles transportam materiais sozinhos de um lado para outro. Experimente automatizar a mina: baú na ponta, cano de madeira e outro baú no destino. Simples, genial e divertido de montar.
+  tasks:
+  - {get: 'BuildCraft|Transport:item.buildcraftPipe.pipeitemswood x8'}
+  rewards:
+  - {xp: 3}
+  - choice: ['minecraft:chest x2', 'minecraft:iron_ingot x4']
+- id: bc_pedreira
+  title: A Pedreira
+  type: main
+  deps: [bc_cano_madeira]
+  desc: |
+    A grande escavadora automática! A §ePedreira§r (Quarry) cava uma área grande, quebrando e coletando tudo. Precisa de energia (motores ou geradores), três marcadores de local e um espaço aberto. Cuidado com a lava! Com uma pedreira rodando, os heróis passavam semanas sem pegar numa picareta.
+
+    §cAtenção:§r instale uma tampa de bedrock embaixo.
+  tasks:
+  - {get: 'BuildCraft|Builders:machineBlock'}
+  rewards:
+  - {xp: 5}
+  - choice: ['minecraft:iron_ingot x16', 'minecraft:diamond x2']
+- id: aco_da_industria
+  title: Aço
+  type: normal
+  deps: [bc_pedreira]
+  desc: |
+    O §eAço§r nasce do ferro refinado na fornalha de indução ou em fundição, e é a base das máquinas avançadas. Junte 8 lingotes. Mais forte e confiável, ele separa a fábrica caseira da indústria de verdade. O passo seguinte da jornada exige isso.
+  tasks:
+  - {get: 'ore:ingotSteel x8'}
+  rewards:
+  - {xp: 3}
+  - choice: ['ore:ingotBronze x8', 'minecraft:coal x32']
+- id: mfe
+  title: O MFE
+  type: main
+  deps: [aco_da_industria]
+  desc: |
+    O §eMFE§r guarda muito mais energia que o BatBox e emite com tensão maior. Perfeito para ligar uma linha inteira de máquinas. Faça com ouro e cabos. É o coração de uma fábrica sólida.
+  tasks:
+  - {get: 'IC2:blockElectric:1'}
+  rewards:
+  - {xp: 5}
+  - choice: ['IC2:itemBatCrystal:*', 'IC2:itemCable:3 x8']
+- id: mfsu
+  title: O MFSU
+  type: main
+  deps: [mfe]
+  desc: |
+    O §eMFSU§r é o monstro das baterias: guarda milhões de EU! Se um MFE é o coração, o MFSU é o cofre inteiro. Faça um (leva muitos materiais, incluindo circuito avançado) e ligue a rede toda nele. Quando ele estiver cheio, você vai sentir orgulho.
+  tasks:
+  - {get: 'IC2:blockElectric:2'}
+  rewards:
+  - {xp: 5}
+  - choice: ['IC2:itemBatLamaCrystal:*', 'IC2:itemCable:9 x2']
+- id: fabrica_pronta
+  title: A Primeira Fábrica
+  type: milestone
+  deps: [mfsu]
+  desc: |
+    Gerador roncando, triturador moendo, fornalha elétrica brilhando, extrator, compressor e um MFSU pronto para guardar o excesso. É assim que o povo lendário da Era do Futuro descrevia a primeira fábrica, e você acaba de montar a sua.
+
+    Foi muito trabalho, Herói, e valeu cada cabo. A eletricidade agora corre por aqui, e o mundo parece diferente. Mas calma, ainda há céus e infernos para visitar. Prepare as botas, porque a próxima página é uma aventura bem mais quente: o §eNether§r!
+  tasks:
+  - get: ['IC2:blockGenerator', 'IC2:blockMachine:3', 'IC2:blockMachine:2', 'IC2:blockMachine:4', 'IC2:blockMachine:5',
+      'IC2:blockElectric:2']
+  rewards:
+  - {xp: 25}
+  - kit:
+      name: Kit Industrial
+      items: ['IC2:itemToolWrench', 'IC2:itemToolForgeHammer', 'IC2:itemCable x32', 'IC2:itemPartCircuit
+          x8', 'IC2:itemBatSU x4', 'minecraft:iron_ingot x16']
+  - {loot: raro}

@@ -1,0 +1,707 @@
+chapter:
+  id: atm_bounty
+  title: Quadro de Recompensas
+  prefix: ATM
+  order: 930
+  icon: minecraft:iron_sword
+  desc: |
+    §6Contratos que se renovam.§r Todo dia o quadro recebe pedidos novos: derrube mobs de
+    verdade e leve pepitas, pós e brutos dos metais impossíveis. Cada caçada pode ser refeita
+    depois de 24 horas.
+quests:
+- id: quadro_regras
+  title: Regras do Quadro
+  type: info
+  icon: minecraft:iron_sword
+  desc: |
+    Bem-vindo ao §eQuadro de Recompensas§r, Herói. Cada contrato aqui é §erepetível a cada 24
+    horas§r: derrube os mobs indicados, e a recompensa chega em materiais ATM. Quanto mais fundo
+    for o alvo, mais valioso o prêmio.
+
+    §aDica:§r confira no NEI o que cada mob larga e leve armadura boa. Boa caça!
+  tasks:
+  - check: true
+  rewards:
+  - xp: 3
+- id: cacada_zumbi
+  title: Cabeças de Zumbi
+  type: normal
+  deps: [quadro_regras]
+  repeat: 86400
+  desc: |
+    Zumbis cercam a vila ao anoitecer, e o quadro paga por quem limpa a vizinhança.
+
+    Derrube §e20§r e volte ao quadro. A recompensa é material ATM, e o contrato fica disponível
+    de novo em 24 horas.
+  tasks:
+  - kill: Zombie x20
+  rewards:
+  - xp: 4
+  - item:
+    - allthemodiumlegacy:allthemodium_nugget x4
+- id: cacada_esqueleto
+  title: Arqueiros Ossudos
+  type: normal
+  deps: [quadro_regras]
+  repeat: 86400
+  desc: |
+    Esqueletos atiram de longe e fogem do sol. Um escudo e passos laterais resolvem.
+
+    Derrube §e20§r e volte ao quadro. A recompensa é material ATM, e o contrato fica disponível
+    de novo em 24 horas.
+  tasks:
+  - kill: Skeleton x20
+  rewards:
+  - xp: 4
+  - item:
+    - allthemodiumlegacy:allthemodium_nugget x4
+- id: cacada_creeper
+  title: Cuidado com o Silvo
+  type: normal
+  deps: [quadro_regras]
+  repeat: 86400
+  desc: |
+    Silvo suave, cheiro de pólvora. Mate à distância, de preferência com arco.
+
+    Derrube §e15§r e volte ao quadro. A recompensa é material ATM, e o contrato fica disponível
+    de novo em 24 horas.
+  tasks:
+  - kill: Creeper x15
+  rewards:
+  - xp: 4
+  - item:
+    - allthemodiumlegacy:allthemodium_nugget x4
+- id: cacada_aranha
+  title: Teias no Escuro
+  type: normal
+  deps: [quadro_regras]
+  repeat: 86400
+  desc: |
+    Aranhas escalam paredes e atacam de cima. Leve uma espada e um olho atento.
+
+    Derrube §e20§r e volte ao quadro. A recompensa é material ATM, e o contrato fica disponível
+    de novo em 24 horas.
+  tasks:
+  - kill: Spider x20
+  rewards:
+  - xp: 4
+  - item:
+    - allthemodiumlegacy:allthemodium_nugget x4
+- id: cacada_aranha_caverna
+  title: Aranhas da Caverna
+  type: normal
+  deps: [quadro_regras]
+  repeat: 86400
+  desc: |
+    Menores e venenosas, moram nas minas abandonadas. Leve leite para o veneno.
+
+    Derrube §e12§r e volte ao quadro. A recompensa é material ATM, e o contrato fica disponível
+    de novo em 24 horas.
+  tasks:
+  - kill: CaveSpider x12
+  rewards:
+  - xp: 4
+  - item:
+    - allthemodiumlegacy:allthemodium_nugget x5
+- id: cacada_bruxa
+  title: Poções Voando
+  type: normal
+  deps: [quadro_regras]
+  repeat: 86400
+  desc: |
+    Bruxas jogam poções de veneno e lentidão. Surpreenda-as pelas costas.
+
+    Derrube §e6§r e volte ao quadro. A recompensa é material ATM, e o contrato fica disponível
+    de novo em 24 horas.
+  tasks:
+  - kill: Witch x6
+  rewards:
+  - xp: 4
+  - item:
+    - allthemodiumlegacy:allthemodium_nugget x6
+- id: cacada_slime
+  title: Gosma Verde
+  type: normal
+  deps: [quadro_regras]
+  repeat: 86400
+  desc: |
+    Slimes pulam e se dividem em menores. Em pântanos, de noite, tem aos montes.
+
+    Derrube §e20§r e volte ao quadro. A recompensa é material ATM, e o contrato fica disponível
+    de novo em 24 horas.
+  tasks:
+  - kill: Slime x20
+  rewards:
+  - xp: 4
+  - item:
+    - allthemodiumlegacy:allthemodium_nugget x4
+- id: cacada_traca
+  title: Traças na Parede
+  type: normal
+  deps: [quadro_regras]
+  repeat: 86400
+  desc: |
+    Elas se escondem dentro de blocos de pedra. Quebre devagar e fique atento.
+
+    Derrube §e12§r e volte ao quadro. A recompensa é material ATM, e o contrato fica disponível
+    de novo em 24 horas.
+  tasks:
+  - kill: Silverfish x12
+  rewards:
+  - xp: 4
+  - item:
+    - allthemodiumlegacy:allthemodium_nugget x4
+- id: cacada_enderman_dia
+  title: Olhares Perigosos
+  type: normal
+  deps: [quadro_regras]
+  repeat: 86400
+  desc: |
+    Não olhe nos olhos! Ataque quando eles estiverem distraídos ou use uma abóbora na cabeça.
+
+    Derrube §e8§r e volte ao quadro. A recompensa é material ATM, e o contrato fica disponível
+    de novo em 24 horas.
+  tasks:
+  - kill: Enderman x8
+  rewards:
+  - xp: 4
+  - item:
+    - allthemodiumlegacy:allthemodium_nugget x6
+    - allthemodiumlegacy:allthemodium_dust
+- id: cacada_husk
+  title: Múmias do Deserto
+  type: normal
+  deps: [quadro_regras]
+  repeat: 86400
+  desc: |
+    Sol não os queima. Eles dão fome. Coma antes de ir.
+
+    Derrube §e12§r e volte ao quadro. A recompensa é material ATM, e o contrato fica disponível
+    de novo em 24 horas.
+  tasks:
+  - kill: etfuturum.husk x12
+  rewards:
+  - xp: 4
+  - item:
+    - allthemodiumlegacy:allthemodium_nugget x5
+- id: cacada_stray
+  title: Frio Mortal
+  type: normal
+  deps: [quadro_regras]
+  repeat: 86400
+  desc: |
+    Esqueletos de gelo atiram flechas de lentidão. Aqueça-se e caminhe rápido.
+
+    Derrube §e12§r e volte ao quadro. A recompensa é material ATM, e o contrato fica disponível
+    de novo em 24 horas.
+  tasks:
+  - kill: etfuturum.stray x12
+  rewards:
+  - xp: 4
+  - item:
+    - allthemodiumlegacy:allthemodium_nugget x5
+- id: cacada_endermite
+  title: Traças do Fim
+  type: normal
+  deps: [quadro_regras]
+  repeat: 86400
+  desc: |
+    Elas aparecem ao lançar pérolas. Pequenas, mas persistentes.
+
+    Derrube §e8§r e volte ao quadro. A recompensa é material ATM, e o contrato fica disponível
+    de novo em 24 horas.
+  tasks:
+  - kill: etfuturum.endermite x8
+  rewards:
+  - xp: 4
+  - item:
+    - allthemodiumlegacy:allthemodium_nugget x4
+- id: cacada_zombificado
+  title: Pigmen Zumbis
+  type: normal
+  deps: ['atm_comeco:entrar_nether']
+  repeat: 86400
+  desc: |
+    Em bando, eles chegam a incomodar. Não bata sem estar preparado.
+
+    Derrube §e15§r e volte ao quadro. A recompensa é material ATM, e o contrato fica disponível
+    de novo em 24 horas.
+  tasks:
+  - kill: PigZombie x15
+  rewards:
+  - xp: 4
+  - item:
+    - allthemodiumlegacy:allthemodium_nugget x6
+- id: cacada_blaze
+  title: Fogo Vivo
+  type: normal
+  deps: ['atm_comeco:entrar_nether']
+  repeat: 86400
+  desc: |
+    Blazes soltam bolas de fogo em salvas. Bom treino para a luta contra o Piglich.
+
+    Derrube §e10§r e volte ao quadro. A recompensa é material ATM, e o contrato fica disponível
+    de novo em 24 horas.
+  tasks:
+  - kill: Blaze x10
+  rewards:
+  - xp: 4
+  - item:
+    - allthemodiumlegacy:allthemodium_nugget x6
+    - allthemodiumlegacy:allthemodium_dust
+- id: cacada_ghast
+  title: Choro no Teto
+  type: normal
+  deps: ['atm_comeco:entrar_nether']
+  repeat: 86400
+  desc: |
+    Ghasts flutuam e atiram bolas gigantes. Rebatidas voltam como dano.
+
+    Derrube §e5§r e volte ao quadro. A recompensa é material ATM, e o contrato fica disponível
+    de novo em 24 horas.
+  tasks:
+  - kill: Ghast x5
+  rewards:
+  - xp: 4
+  - item:
+    - allthemodiumlegacy:allthemodium_nugget x8
+    - allthemodiumlegacy:allthemodium_dust
+- id: cacada_magma
+  title: Cubos de Magma
+  type: normal
+  deps: ['atm_comeco:entrar_nether']
+  repeat: 86400
+  desc: |
+    Pulam sobre lava e ficam pequenos aos poucos. Use botas resistentes ao fogo.
+
+    Derrube §e15§r e volte ao quadro. A recompensa é material ATM, e o contrato fica disponível
+    de novo em 24 horas.
+  tasks:
+  - kill: LavaSlime x15
+  rewards:
+  - xp: 4
+  - item:
+    - allthemodiumlegacy:allthemodium_nugget x6
+- id: cacada_esqueleto_wither
+  title: Esqueletos Pretos
+  type: normal
+  deps: ['atm_comeco:entrar_nether']
+  repeat: 86400
+  desc: |
+    Altos e escuros. O golpe deles aplica Wither, então beba leite ou leve uma Maçã.
+
+    Derrube §e8§r e volte ao quadro. A recompensa é material ATM, e o contrato fica disponível
+    de novo em 24 horas.
+  tasks:
+  - kill: witherSkeleton x8
+  rewards:
+  - xp: 4
+  - item:
+    - allthemodiumlegacy:allthemodium_nugget x8
+    - allthemodiumlegacy:allthemodium_dust x2
+- id: cacada_piglin
+  title: Piglins Guardas
+  type: normal
+  deps: ['atm_comeco:entrar_nether']
+  repeat: 86400
+  desc: |
+    Piglins são rápidos e gananciosos. Armadura de ouro acalma os que não estiverem em fúria.
+
+    Derrube §e10§r e volte ao quadro. A recompensa é material ATM, e o contrato fica disponível
+    de novo em 24 horas.
+  tasks:
+  - kill: netherlicious.Piglin x10
+  rewards:
+  - xp: 4
+  - item:
+    - allthemodiumlegacy:allthemodium_nugget x8
+- id: cacada_hoglin
+  title: Hoglins Furiosos
+  type: normal
+  deps: ['atm_comeco:entrar_nether']
+  repeat: 86400
+  desc: |
+    Grandes, rápidos e teimosos. Segure o escudo e ataque nos intervalos.
+
+    Derrube §e8§r e volte ao quadro. A recompensa é material ATM, e o contrato fica disponível
+    de novo em 24 horas.
+  tasks:
+  - kill: netherlicious.Hoglin x8
+  rewards:
+  - xp: 4
+  - item:
+    - allthemodiumlegacy:allthemodium_nugget x8
+    - allthemodiumlegacy:allthemodium_dust
+- id: cacada_zoglin
+  title: Zoglins
+  type: normal
+  deps: ['atm_comeco:entrar_nether']
+  repeat: 86400
+  desc: |
+    Hoglins zumbificados, sem lado e sem medo. Cuidado com o grupo.
+
+    Derrube §e6§r e volte ao quadro. A recompensa é material ATM, e o contrato fica disponível
+    de novo em 24 horas.
+  tasks:
+  - kill: netherlicious.Zoglin x6
+  rewards:
+  - xp: 4
+  - item:
+    - allthemodiumlegacy:allthemodium_nugget x8
+    - allthemodiumlegacy:allthemodium_dust
+- id: cacada_strider
+  title: Caminhantes de Lava
+  type: normal
+  deps: ['atm_comeco:entrar_nether']
+  repeat: 86400
+  desc: |
+    Dóceis, mas o quadro exige. Eles andam pela lava, então fique no chão firme.
+
+    Derrube §e6§r e volte ao quadro. A recompensa é material ATM, e o contrato fica disponível
+    de novo em 24 horas.
+  tasks:
+  - kill: netherlicious.Strider x6
+  rewards:
+  - xp: 4
+  - item:
+    - allthemodiumlegacy:allthemodium_nugget x6
+- id: cacada_blaze_knight
+  title: Cavaleiros de Fogo
+  type: normal
+  deps: ['atm_comeco:entrar_nether']
+  repeat: 86400
+  desc: |
+    Mais fortes e blindados que os Blazes comuns. Prepare resistência ao fogo.
+
+    Derrube §e4§r e volte ao quadro. A recompensa é material ATM, e o contrato fica disponível
+    de novo em 24 horas.
+  tasks:
+  - kill: netherlicious.BlazeKnight x4
+  rewards:
+  - xp: 4
+  - item:
+    - allthemodiumlegacy:allthemodium_nugget x10
+    - allthemodiumlegacy:allthemodium_dust x2
+- id: cacada_piglin_zombificado
+  title: Piglins Zumbis
+  type: normal
+  deps: ['atm_comeco:entrar_nether']
+  repeat: 86400
+  desc: |
+    A versão moderna dos pigmen. Mesmo cuidado, mesmo bando.
+
+    Derrube §e15§r e volte ao quadro. A recompensa é material ATM, e o contrato fica disponível
+    de novo em 24 horas.
+  tasks:
+  - kill: netherlicious.ZombiePiglin x15
+  rewards:
+  - xp: 4
+  - item:
+    - allthemodiumlegacy:allthemodium_nugget x6
+- id: cacada_shulker
+  title: Caixas Hostis
+  type: normal
+  deps: ['atm_comeco:entrar_fim']
+  repeat: 86400
+  desc: |
+    Elas se escondem em cidades do Fim, e os projéteis causam levitação. Quebre o escudo e
+    ataque.
+
+    Derrube §e6§r e volte ao quadro. A recompensa é material ATM, e o contrato fica disponível
+    de novo em 24 horas.
+  tasks:
+  - kill: etfuturum.shulker x6
+  rewards:
+  - xp: 4
+  - item:
+    - allthemodiumlegacy:vibranium_nugget x6
+    - allthemodiumlegacy:vibranium_dust
+- id: cacada_enderman_fim
+  title: Multidão do Fim
+  type: normal
+  deps: ['atm_comeco:entrar_fim']
+  repeat: 86400
+  desc: |
+    No Fim há mais Endermen do que estrelas. Cave um buraco de dois blocos e ataque com calma.
+
+    Derrube §e20§r e volte ao quadro. A recompensa é material ATM, e o contrato fica disponível
+    de novo em 24 horas.
+  tasks:
+  - kill: Enderman x20
+  rewards:
+  - xp: 4
+  - item:
+    - allthemodiumlegacy:vibranium_nugget x6
+- id: cacada_endermite_fim
+  title: Endermites do Fim
+  type: normal
+  deps: ['atm_comeco:entrar_fim']
+  repeat: 86400
+  desc: |
+    Pequenas, rápidas, e vêm em grupo. Elas drenam pérolas.
+
+    Derrube §e15§r e volte ao quadro. A recompensa é material ATM, e o contrato fica disponível
+    de novo em 24 horas.
+  tasks:
+  - kill: etfuturum.endermite x15
+  rewards:
+  - xp: 4
+  - item:
+    - allthemodiumlegacy:vibranium_nugget x4
+- id: cacada_esqueleto_outro
+  title: Esqueletos do Outro
+  type: normal
+  deps: ['atm_allthemodium:visitar_outro']
+  repeat: 86400
+  desc: |
+    A variante local dos esqueletos Wither. Eles guardam as estruturas de O Outro.
+
+    Derrube §e12§r e volte ao quadro. A recompensa é material ATM, e o contrato fica disponível
+    de novo em 24 horas.
+  tasks:
+  - kill: allthemodiumlegacy.other_wither_skeleton x12
+  rewards:
+  - xp: 4
+  - item:
+    - allthemodiumlegacy:vibranium_nugget x8
+    - allthemodiumlegacy:vibranium_dust
+- id: cacada_piglin_outro
+  title: Piglins de Fronteira
+  type: normal
+  deps: ['atm_allthemodium:visitar_outro']
+  repeat: 86400
+  desc: |
+    Em O Outro, piglins são tão ariscos quanto no Nether. Atenção ao bando.
+
+    Derrube §e15§r e volte ao quadro. A recompensa é material ATM, e o contrato fica disponível
+    de novo em 24 horas.
+  tasks:
+  - kill: netherlicious.Piglin x15
+  rewards:
+  - xp: 4
+  - item:
+    - allthemodiumlegacy:vibranium_nugget x8
+- id: cacada_hoglin_outro
+  title: Hoglins do Outro
+  type: normal
+  deps: ['atm_allthemodium:visitar_outro']
+  repeat: 86400
+  desc: |
+    Fortes e numerosos. Combine armadura boa e sorte.
+
+    Derrube §e12§r e volte ao quadro. A recompensa é material ATM, e o contrato fica disponível
+    de novo em 24 horas.
+  tasks:
+  - kill: netherlicious.Hoglin x12
+  rewards:
+  - xp: 4
+  - item:
+    - allthemodiumlegacy:vibranium_nugget x8
+    - allthemodiumlegacy:vibranium_dust
+- id: cacada_blaze_outro
+  title: Blazes do Outro
+  type: normal
+  deps: ['atm_allthemodium:visitar_outro']
+  repeat: 86400
+  desc: |
+    Nas pirâmides e nos Deltas de Basalto, há fogo aos montes.
+
+    Derrube §e12§r e volte ao quadro. A recompensa é material ATM, e o contrato fica disponível
+    de novo em 24 horas.
+  tasks:
+  - kill: Blaze x12
+  rewards:
+  - xp: 4
+  - item:
+    - allthemodiumlegacy:vibranium_nugget x8
+- id: cacada_ghast_outro
+  title: Ghasts do Outro
+  type: normal
+  deps: ['atm_allthemodium:visitar_outro']
+  repeat: 86400
+  desc: |
+    O céu de O Outro também chora. Rebatidas valem bastante.
+
+    Derrube §e8§r e volte ao quadro. A recompensa é material ATM, e o contrato fica disponível
+    de novo em 24 horas.
+  tasks:
+  - kill: Ghast x8
+  rewards:
+  - xp: 4
+  - item:
+    - allthemodiumlegacy:vibranium_nugget x8
+    - allthemodiumlegacy:vibranium_dust
+- id: cacada_zoglin_outro
+  title: Zoglins do Outro
+  type: normal
+  deps: ['atm_allthemodium:visitar_outro']
+  repeat: 86400
+  desc: |
+    Sem lado, sem medo, em bando. Mantenha as costas protegidas.
+
+    Derrube §e10§r e volte ao quadro. A recompensa é material ATM, e o contrato fica disponível
+    de novo em 24 horas.
+  tasks:
+  - kill: netherlicious.Zoglin x10
+  rewards:
+  - xp: 4
+  - item:
+    - allthemodiumlegacy:vibranium_nugget x8
+- id: cacada_magma_outro
+  title: Cubos do Outro
+  type: normal
+  deps: ['atm_allthemodium:visitar_outro']
+  repeat: 86400
+  desc: |
+    Nas poças de lava de almas, cubos gigantes saltam. Cuidado com o chão.
+
+    Derrube §e20§r e volte ao quadro. A recompensa é material ATM, e o contrato fica disponível
+    de novo em 24 horas.
+  tasks:
+  - kill: LavaSlime x20
+  rewards:
+  - xp: 4
+  - item:
+    - allthemodiumlegacy:vibranium_nugget x6
+- id: cacada_wither
+  title: Tormenta Negra
+  type: boss
+  deps: ['atm_comeco:invocar_wither']
+  repeat: 86400
+  desc: |
+    O chefe do Nether volta ao quadro. Prepare armadura, poções e arena aberta, longe de casa.
+
+    Derrube §e1§r e volte ao quadro. A recompensa é material ATM, e o contrato fica disponível
+    de novo em 24 horas.
+  tasks:
+  - kill: WitherBoss x1
+  rewards:
+  - xp: 4
+  - item:
+    - allthemodiumlegacy:allthemodium_ingot x2
+    - allthemodiumlegacy:unobtainium_nugget x4
+  - loot: raro
+- id: cacada_dragao
+  title: Cauda do Dragão
+  type: boss
+  deps: ['atm_comeco:derrotar_dragao']
+  repeat: 86400
+  desc: |
+    Para novas caçadas ao Dragão, prepare arco, blocos e um plano contra os cristais dos
+    pilares.
+
+    Derrube §e1§r e volte ao quadro. A recompensa é material ATM, e o contrato fica disponível
+    de novo em 24 horas.
+  tasks:
+  - kill: EnderDragon x1
+  rewards:
+  - xp: 4
+  - item:
+    - allthemodiumlegacy:vibranium_ingot x2
+    - allthemodiumlegacy:unobtainium_nugget x6
+  - loot: epico
+- id: cacada_piglich
+  title: Piglich Recorrente
+  type: boss
+  deps: ['atm_allthemodium:piglich']
+  repeat: 86400
+  desc: |
+    As pirâmides de O Outro abrigam um Piglich persistente. Se você já dominou a luta, o quadro
+    paga bem pela repetição.
+
+    Derrube §e1§r e volte ao quadro. A recompensa é material ATM, e o contrato fica disponível
+    de novo em 24 horas.
+  tasks:
+  - kill: allthemodiumlegacy.piglich x1
+  rewards:
+  - xp: 4
+  - item:
+    - allthemodiumlegacy:piglich_heart
+    - allthemodiumlegacy:unobtainium_nugget x8
+  - loot: lendario
+- id: combo_overworld
+  title: Faxina Completa
+  deps: [cacada_zumbi, cacada_esqueleto]
+  repeat: 86400
+  desc: |
+    Contrato duplo: zumbis e esqueletos no mesmo dia. Limpe o terreno nas redondezas e volte ao
+    quadro.
+
+    Derrube §e30 zumbis§r e §e30 esqueletos§r. A recompensa é maior que a soma das duas caçadas
+    simples.
+  tasks:
+  - kill: Zombie x30
+  - kill: Skeleton x30
+  rewards:
+  - xp: 8
+  - item:
+    - allthemodiumlegacy:allthemodium_nugget x12
+    - allthemodiumlegacy:allthemodium_dust x2
+- id: combo_nether
+  title: Expedição Infernal
+  deps: [cacada_blaze, cacada_esqueleto_wither]
+  repeat: 86400
+  desc: |
+    Contrato duplo no Nether: blazes e esqueletos Wither. Prepare fogo, Wither e resistência.
+
+    Derrube §e15 Blazes§r e §e12 esqueletos Wither§r. O prêmio inclui Allthemodium bruto.
+  tasks:
+  - kill: Blaze x15
+  - kill: witherSkeleton x12
+  rewards:
+  - xp: 10
+  - item:
+    - allthemodiumlegacy:allthemodium_nugget x16
+    - allthemodiumlegacy:raw_allthemodium
+- id: combo_fim
+  title: Noite do Fim
+  deps: [cacada_shulker, cacada_enderman_fim]
+  repeat: 86400
+  desc: |
+    Contrato duplo no Fim: Endermen e Shulkers. A queda no vazio é o maior risco.
+
+    Derrube §e30 Endermen§r e §e10 Shulkers§r. Em troca, Vibranium bruto.
+  tasks:
+  - kill: Enderman x30
+  - kill: etfuturum.shulker x10
+  rewards:
+  - xp: 12
+  - item:
+    - allthemodiumlegacy:vibranium_nugget x16
+    - allthemodiumlegacy:raw_vibranium
+- id: combo_outro
+  title: Marcha de O Outro
+  deps: [cacada_esqueleto_outro, cacada_piglin_outro, cacada_hoglin_outro]
+  repeat: 86400
+  desc: |
+    Contrato triplo em O Outro: esqueletos, piglins e Hoglins. Armadura, comida e uma rota de
+    fuga.
+
+    Derrube §e15 esqueletos do Outro§r, §e15 piglins§r e §e10 Hoglins§r. O prêmio é Vibranium
+    bruto.
+  tasks:
+  - kill: allthemodiumlegacy.other_wither_skeleton x15
+  - kill: netherlicious.Piglin x15
+  - kill: netherlicious.Hoglin x10
+  rewards:
+  - xp: 14
+  - item:
+    - allthemodiumlegacy:vibranium_nugget x20
+    - allthemodiumlegacy:raw_vibranium x2
+- id: combo_chefes
+  title: O Caçador de Lendas
+  type: boss
+  deps: [cacada_wither, cacada_dragao, cacada_piglich]
+  repeat: 86400
+  desc: |
+    O contrato supremo: Wither, Dragão e Piglich no mesmo dia. Só os mais obstinados conseguem.
+    A recompensa é um lingote de Unobtainium, e o direito de contar vantagem.
+  tasks:
+  - kill: WitherBoss
+  - kill: EnderDragon
+  - kill: allthemodiumlegacy.piglich
+  rewards:
+  - xp: 50
+  - item:
+    - allthemodiumlegacy:unobtainium_ingot
+  - loot: lendario
