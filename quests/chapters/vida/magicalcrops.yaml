@@ -1,805 +1,968 @@
 chapter:
   id: magicalcrops
   title: "Magical Crops"
+  prefix: ""
   order: 620
-  icon: magicalcrops:GhastSeeds
+  icon: magicalcrops:MinicioSeeds
   desc: |
-    TODO
+    §aA Colheita Mágica.§r Plante essências, colha metais, mobs e gemas. Cinco níveis de poder:
+    Minicio, Accio, Crucio, Imperio e Zivicio, cada um preparado com a essência do anterior.
+    (Magical Crops 4.0.0 Beta 4b)
+
 quests:
-  - id: aminicio_block
-    title: "§aMinicio Block"
-    deps: [aminicio_essence]
+  - id: minicio_essence
+    title: "Essência Minicio"
+    type: main
+    icon: magicalcrops:1MinicioEssence
     desc: |
-      TODO [Bancada] §aMinicio Essence
+      Toda plantação mágica começa com um pozinho verde, Herói. A §aEssência Minicio§r é a base de tudo
+      no Registro: sem ela não há semente, pedra nem essência dos níveis seguintes.
+
+      Procure o §eMinério de Minicio§r no subsolo (existem versões para o Nether e o End também) e
+      minere até juntar §e8 essências§r. §aDica:§r confira no NEI como ela cai de cada minério.
+    tasks:
+      - get: magicalcrops:1MinicioEssence x8
+    rewards:
+      - xp: 3
+      - choice: [minecraft:bread x8, minecraft:cooked_beef x6, minecraft:torch x16]
+
+  - id: minicio_seeds
+    title: "Sementes Minicio"
+    type: main
+    deps: [minicio_essence]
+    icon: magicalcrops:MinicioSeeds
+    desc: |
+      Pronto para o primeiro plantio! A §eSemente Minicio§r vai na bancada: Semente de Trigo no centro
+      e §e8 Essências Minicio§r em volta.
+
+      Plante em terra arada, com água por perto, e espere crescer. A colheita devolve essência e mais
+      sementes — o ciclo se alimenta sozinho. §aDica:§r guarde sempre uma semente sobrando.
+    tasks:
+      - get: magicalcrops:MinicioSeeds
+    rewards:
+      - xp: 3
+      - choice: [minecraft:bread x8, minecraft:cooked_beef x6, minecraft:torch x16]
+
+  - id: bloco_minicio
+    title: "Bloco de Minicio"
+    type: optional
+    deps: [minicio_essence]
+    icon: magicalcrops:essence_storage
+    desc: |
+      Guardar essência solta é receita para bagunça. O §eBloco de Essência Minicio§r compacta tudo
+      (e, olha só, é ingrediente do Pulsador de Crescimento). Cada nível tem o seu bloco, na mesma
+      linha de itens — veja no NEI.
     tasks:
       - get: magicalcrops:essence_storage
     rewards:
       - xp: 2
-  - id: aminicio_essence
-    title: "§aMinicio Essence"
-    deps: [aminicio_block]
+      - loot: comum
+
+  - id: pedra_fraca
+    title: "Pedra de Infusão Fraca"
+    type: main
+    deps: [minicio_essence]
+    icon: magicalcrops:InfusionStoneWeak
     desc: |
-      TODO [Bancada] §aMinicio Block
+      A chave para subir de nível: a §ePedra de Infusão Fraca§r leva §e8 Essências Minicio§r em volta
+      de um material especial no centro (o NEI mostra qual aceita).
+
+      Com ela você transforma Minicio em §6Accio§r. Cada nível seguinte pede uma pedra mais forte —
+      guarde essa com carinho.
     tasks:
-      - get: magicalcrops:1MinicioEssence
+      - get: magicalcrops:InfusionStoneWeak
     rewards:
       - xp: 3
-  - id: growth_pulser
-    title: "Growth Pulser"
-    deps: [aminicio_block]
+      - choice: [minecraft:bread x8, minecraft:cooked_beef x6, minecraft:torch x16]
+
+  - id: fertilizante_magico
+    title: "Fertilizante Mágico"
+    deps: [minicio_essence]
+    icon: magicalcrops:MagicalFertilizer
     desc: |
-      TODO [Bancada] minecraft:diamond, minecraft:stone, §aMinicio Block
+      Impaciência é coisa de Herói, eu entendo! O §eFertilizante Mágico§r (farinha de osso, essência
+      Minicio e um diamante) acelera o crescimento das plantas mágicas.
+
+      Rende 4 por receita. §aDica:§r use em plantações de nível alto, onde esperar custa mais.
+    tasks:
+      - get: magicalcrops:MagicalFertilizer
+    rewards:
+      - xp: 2
+      - choice: [minecraft:bread x8, minecraft:cooked_beef x6, minecraft:torch x16]
+
+  - id: pulsador
+    title: "Pulsador de Crescimento"
+    deps: [bloco_minicio]
+    icon: magicalcrops:CropBooster
+    desc: |
+      O §ePulsador de Crescimento§r é um bloco que dá um empurrãozinho nas plantações ao redor.
+      Receita: 4 Blocos de Essência Minicio, um diamante e pedra.
+
+      Instale uns poucos no meio do canteiro. §aDica:§r veja no NEI o alcance antes de posicionar.
     tasks:
       - get: magicalcrops:CropBooster
     rewards:
       - xp: 3
-  - id: 6weak_infusion_stone
-    title: "§6Weak Infusion Stone"
-    deps: [aminicio_essence]
+      - choice: [minecraft:iron_ingot x8, minecraft:redstone x16, minecraft:coal x16]
+
+  - id: accio_essence
+    title: "Essência Accio"
+    type: main
+    deps: [pedra_fraca, minicio_seeds]
+    icon: magicalcrops:2AccioEssence
     desc: |
-      TODO [Bancada] §aMinicio Essence
+      O segundo nível! Na bancada, coloque a §ePedra de Infusão Fraca§r no centro e §e4 Essências
+      Minicio§r em cruz. Sai a §6Essência Accio§r.
+
+      Ela abre sementes elementais, a Fornalha Accio e a Pedra Regular. Faça um estoque (uns 16)
+      antes de seguir — os próximos níveis comem muito.
     tasks:
-      - get: magicalcrops:InfusionStoneWeak
+      - get: magicalcrops:2AccioEssence x8
     rewards:
       - xp: 4
-      - loot: incomum
-  - id: magical_fertilizer
-    title: "Magical Fertilizer"
-    deps: [aminicio_essence]
+      - choice: [minecraft:bread x8, minecraft:cooked_beef x6, minecraft:torch x16]
+
+  - id: bloco_accio
+    title: "Bloco de Accio"
+    type: optional
+    deps: [accio_essence]
+    icon: magicalcrops:essence_storage:1
     desc: |
-      TODO [Bancada] minecraft:diamond, minecraft:dye:15, §aMinicio Essence
-    tasks:
-      - get: magicalcrops:MagicalFertilizer
-    rewards:
-      - xp: 4
-      - loot: incomum
-  - id: minicio_seeds
-    title: "Minicio Seeds"
-    deps: [aminicio_essence]
-    desc: |
-      TODO [Bancada] minecraft:wheat_seeds, §aMinicio Essence
-    tasks:
-      - get: magicalcrops:MinicioSeeds
-    rewards:
-      - xp: 4
-      - loot: incomum
-  - id: 6accio_essence
-    title: "§6Accio Essence"
-    deps: [6weak_infusion_stone, aminicio_essence]
-    desc: |
-      TODO [Bancada] §6Weak Infusion Stone, §aMinicio Essence
-    tasks:
-      - get: magicalcrops:2AccioEssence
-    rewards:
-      - xp: 5
-      - loot: incomum
-  - id: regular_infusion_stone
-    title: "Regular Infusion Stone"
-    deps: [6weak_infusion_stone]
-    desc: |
-      TODO [Bancada] §6Weak Infusion Stone
-    tasks:
-      - get: magicalcrops:InfusionStoneRegular
-    rewards:
-      - xp: 5
-      - loot: incomum
-  - id: ecrucio_essence
-    title: "§eCrucio Essence"
-    deps: [6accio_essence, regular_infusion_stone]
-    desc: |
-      TODO [Bancada] Regular Infusion Stone, §6Accio Essence
-    tasks:
-      - get: magicalcrops:3CrucioEssence
-    rewards:
-      - xp: 6
-      - loot: raro
-  - id: accio_furnace
-    title: "Accio Furnace"
-    deps: [6accio_essence]
-    desc: |
-      TODO [Bancada] minecraft:furnace, §6Accio Essence
-    tasks:
-      - get: magicalcrops:AccioFurnace
-    rewards:
-      - xp: 6
-      - loot: raro
-  - id: air_seeds
-    title: "Air Seeds"
-    deps: [6accio_essence, minicio_seeds]
-    desc: |
-      TODO [Bancada] Minicio Seeds, minecraft:glass_bottle, §6Accio Essence
-    tasks:
-      - get: magicalcrops:AirSeeds
-    rewards:
-      - xp: 6
-      - loot: raro
-  - id: coal_seeds
-    title: "Coal Seeds"
-    deps: [6accio_essence, minicio_seeds]
-    desc: |
-      TODO [Bancada] Minicio Seeds, minecraft:coal, §6Accio Essence
-    tasks:
-      - get: magicalcrops:CoalSeeds
-    rewards:
-      - xp: 6
-      - loot: raro
-  - id: dye_seeds
-    title: "Dye Seeds"
-    deps: [6accio_essence, minicio_seeds]
-    desc: |
-      TODO [Bancada] Minicio Seeds, minecraft:dye, §6Accio Essence
-    tasks:
-      - get: magicalcrops:DyeSeeds
-    rewards:
-      - xp: 6
-      - loot: raro
-  - id: earth_seeds
-    title: "Earth Seeds"
-    deps: [6accio_essence, minicio_seeds]
-    desc: |
-      TODO [Bancada] Minicio Seeds, minecraft:dirt, §6Accio Essence
-    tasks:
-      - get: magicalcrops:EarthSeeds
-    rewards:
-      - xp: 6
-      - loot: raro
-  - id: fire_seeds
-    title: "Fire Seeds"
-    deps: [6accio_essence, minicio_seeds]
-    desc: |
-      TODO [Bancada] Minicio Seeds, minecraft:lava_bucket, §6Accio Essence
-    tasks:
-      - get: magicalcrops:FireSeeds
-    rewards:
-      - xp: 6
-      - loot: raro
-  - id: bstrong_infusion_stone
-    title: "§bStrong Infusion Stone"
-    deps: [regular_infusion_stone]
-    desc: |
-      TODO [Bancada] Regular Infusion Stone
-    tasks:
-      - get: magicalcrops:InfusionStoneStrong
-    rewards:
-      - xp: 6
-      - loot: raro
-  - id: nature_seeds
-    title: "Nature Seeds"
-    deps: [6accio_essence, minicio_seeds]
-    desc: |
-      TODO [Bancada] Minicio Seeds, §6Accio Essence
-    tasks:
-      - get: magicalcrops:NatureSeeds
-    rewards:
-      - xp: 6
-      - loot: raro
-  - id: rubber_seeds
-    title: "Rubber Seeds"
-    deps: [6accio_essence, minicio_seeds]
-    desc: |
-      TODO [Bancada] Minicio Seeds, §6Accio Essence
-    tasks:
-      - get: magicalcrops:RubberSeeds
-    rewards:
-      - xp: 6
-      - loot: raro
-  - id: accio_seed_bag
-    title: "Accio Seed Bag"
-    deps: [6accio_essence]
-    desc: |
-      TODO [Bancada] minecraft:leather, §6Accio Essence
-    tasks:
-      - get: magicalcrops:SeedBagAccio
-    rewards:
-      - xp: 6
-      - loot: raro
-  - id: water_seeds
-    title: "Water Seeds"
-    deps: [6accio_essence, minicio_seeds]
-    desc: |
-      TODO [Bancada] Minicio Seeds, minecraft:water_bucket, §6Accio Essence
-    tasks:
-      - get: magicalcrops:WaterSeeds
-    rewards:
-      - xp: 6
-      - loot: raro
-  - id: 6accio_block
-    title: "§6Accio Block"
-    deps: [6accio_essence]
-    desc: |
-      TODO [Bancada] §6Accio Essence
+      Compacte a essência Accio num bloco: organiza o baú e é material de construção mágico.
     tasks:
       - get: magicalcrops:essence_storage:1
     rewards:
-      - xp: 6
-      - loot: raro
-  - id: bimperio_essence
-    title: "§bImperio Essence"
-    deps: [ecrucio_essence, bstrong_infusion_stone]
+      - xp: 2
+      - loot: comum
+
+  - id: pedra_regular
+    title: "Pedra de Infusão Regular"
+    type: main
+    deps: [accio_essence]
+    icon: magicalcrops:InfusionStoneRegular
     desc: |
-      TODO [Bancada] §bStrong Infusion Stone, §eCrucio Essence
+      Evolua a pedra! A §ePedra de Infusão Regular§r usa a Fraca no centro e o material Accio ao redor
+      (confira no NEI qual item vale).
+
+      É ela que leva você à §eEssência Crucio§r. Uma pedra por nível — sem atalho.
     tasks:
-      - get: magicalcrops:4ImperioEssence
+      - get: magicalcrops:InfusionStoneRegular
     rewards:
-      - xp: 6
-      - loot: raro
-  - id: air_essence
-    title: "Air Essence"
-    deps: [air_seeds]
+      - xp: 4
+      - choice: [minecraft:iron_ingot x8, minecraft:redstone x16, minecraft:coal x16]
+
+  - id: fornalha_accio
+    title: "Fornalha Accio"
+    deps: [accio_essence]
+    icon: magicalcrops:AccioFurnace
     desc: |
-      TODO [Bancada] Air Seeds
+      Uma fornalha comum com uma pitada de magia: §e4 Essências Accio§r em volta de uma fornalha.
+      Ela cozinha bem mais rápido, e cada nível de fornalha é um upgrade da anterior.
+
+      §aDica:§r ótima para fundir os minérios que suas plantações vão render.
+    tasks:
+      - get: magicalcrops:AccioFurnace
+    rewards:
+      - xp: 3
+      - choice: [minecraft:iron_ingot x8, minecraft:redstone x16, minecraft:coal x16]
+
+  - id: sacola_accio
+    title: "Sacola de Sementes Accio"
+    deps: [accio_essence]
+    icon: magicalcrops:SeedBagAccio
+    desc: |
+      Plantar semente por semente cansa. A §eSacola de Sementes Accio§r (couro e essência Accio)
+      planta várias de uma vez só. Há uma sacola por nível, cada uma maior que a anterior.
+    tasks:
+      - get: magicalcrops:SeedBagAccio
+    rewards:
+      - xp: 3
+      - choice: [minecraft:bread x8, minecraft:cooked_beef x6, minecraft:torch x16]
+
+  - id: sementes_ar
+    title: "Sementes de Ar"
+    deps: [accio_essence]
+    icon: magicalcrops:AirSeeds
+    desc: |
+      Semente Minicio, uma garrafa vazia e essência Accio rendem a §eSemente de Ar§r. Colha a essência
+      de ar e use-a em receitas futuras.
+    tasks:
+      - get: magicalcrops:AirSeeds
+    rewards:
+      - xp: 2
+      - choice: [minecraft:bread x8, minecraft:cooked_beef x6, minecraft:torch x16]
+
+  - id: sementes_terra
+    title: "Sementes de Terra"
+    deps: [accio_essence]
+    icon: magicalcrops:EarthSeeds
+    desc: |
+      Terra, semente Minicio e essência Accio fazem a §eSemente de Terra§r. Simples, firme e útil.
+    tasks:
+      - get: magicalcrops:EarthSeeds
+    rewards:
+      - xp: 2
+      - choice: [minecraft:bread x8, minecraft:cooked_beef x6, minecraft:torch x16]
+
+  - id: sementes_fogo
+    title: "Sementes de Fogo"
+    deps: [accio_essence]
+    icon: magicalcrops:FireSeeds
+    desc: |
+      Um balde de lava no meio da receita e cuidado com os dedos! A §eSemente de Fogo§r rende essência
+      de fogo — combustível mágico.
+    tasks:
+      - get: magicalcrops:FireSeeds
+    rewards:
+      - xp: 2
+      - choice: [minecraft:bread x8, minecraft:cooked_beef x6, minecraft:torch x16]
+
+  - id: sementes_agua
+    title: "Sementes de Água"
+    deps: [accio_essence]
+    icon: magicalcrops:WaterSeeds
+    desc: |
+      Balde d'água, semente Minicio e essência Accio. Tem que ser plantada onde a umidade chega!
+    tasks:
+      - get: magicalcrops:WaterSeeds
+    rewards:
+      - xp: 2
+      - choice: [minecraft:bread x8, minecraft:cooked_beef x6, minecraft:torch x16]
+
+  - id: sementes_natureza
+    title: "Sementes de Natureza"
+    deps: [accio_essence]
+    icon: magicalcrops:NatureSeeds
+    desc: |
+      A §eSemente de Natureza§r nasce só de Minicio e Accio. Verdinha, rápida e generosa.
+    tasks:
+      - get: magicalcrops:NatureSeeds
+    rewards:
+      - xp: 2
+      - choice: [minecraft:bread x8, minecraft:cooked_beef x6, minecraft:torch x16]
+
+  - id: sementes_carvao
+    title: "Sementes de Carvão"
+    deps: [accio_essence]
+    icon: magicalcrops:CoalSeeds
+    desc: |
+      Carvão que cresce! Misture carvão com a semente Minicio e essência Accio. Combustível infinito
+      para as suas fornalhas mágicas.
+    tasks:
+      - get: magicalcrops:CoalSeeds
+    rewards:
+      - xp: 2
+      - choice: [minecraft:iron_ingot x8, minecraft:redstone x16, minecraft:coal x16]
+
+  - id: sementes_tintura
+    title: "Sementes de Tintura"
+    deps: [accio_essence]
+    icon: magicalcrops:DyeSeeds
+    desc: |
+      A §eSemente de Tintura§r rende essência técnica-colorida. Boa para quem curte decorar com cor.
+    tasks:
+      - get: magicalcrops:DyeSeeds
+    rewards:
+      - xp: 2
+      - choice: [minecraft:bread x8, minecraft:cooked_beef x6, minecraft:torch x16]
+
+  - id: sementes_borracha
+    title: "Sementes de Borracha"
+    type: optional
+    deps: [accio_essence]
+    icon: magicalcrops:RubberSeeds
+    desc: |
+      Quer borracha sem derrubar seringueira? Planta e colhe! Confira no NEI o que a essência de
+      borracha vira.
+    tasks:
+      - get: magicalcrops:RubberSeeds
+    rewards:
+      - xp: 2
+      - loot: comum
+
+  - id: essencias_elementais
+    title: "Essências Elementais"
+    deps: [sementes_ar, sementes_terra, sementes_fogo, sementes_agua]
+    icon: magicalcrops:AirEssence
+    desc: |
+      Plantou? Agora colha! Junte a essência de §eAr, Terra, Fogo e Água§r — cada crop dá a sua
+      essência depois de crescer.
+
+      §aDica:§r nove sementes na bancada viram uma essência; confira no NEI se a colheita já traz.
     tasks:
       - get: magicalcrops:AirEssence
-    rewards:
-      - xp: 6
-      - loot: raro
-  - id: aluminium_seeds
-    title: "Aluminium Seeds"
-    deps: [ecrucio_essence, minicio_seeds]
-    desc: |
-      TODO [Bancada] Minicio Seeds, §eCrucio Essence
-    tasks:
-      - get: magicalcrops:AluminiumSeeds
-    rewards:
-      - xp: 6
-      - loot: raro
-  - id: amber_seeds
-    title: "Amber Seeds"
-    deps: [ecrucio_essence, minicio_seeds]
-    desc: |
-      TODO [Bancada] Minicio Seeds, §eCrucio Essence
-    tasks:
-      - get: magicalcrops:AmberSeeds
-    rewards:
-      - xp: 6
-      - loot: raro
-  - id: bronze_seeds
-    title: "Bronze Seeds"
-    deps: [ecrucio_essence, minicio_seeds]
-    desc: |
-      TODO [Bancada] Minicio Seeds, §eCrucio Essence
-    tasks:
-      - get: magicalcrops:BronzeSeeds
-    rewards:
-      - xp: 6
-      - loot: raro
-  - id: certus_quartz_seeds
-    title: "Certus Quartz Seeds"
-    deps: [ecrucio_essence, minicio_seeds]
-    desc: |
-      TODO [Bancada] Minicio Seeds, §eCrucio Essence
-    tasks:
-      - get: magicalcrops:CertusQuartzSeeds
-    rewards:
-      - xp: 6
-      - loot: raro
-  - id: chicken_seeds
-    title: "Chicken Seeds"
-    deps: [ecrucio_essence, minicio_seeds]
-    desc: |
-      TODO [Bancada] Minicio Seeds, minecraft:egg, §eCrucio Essence
-    tasks:
-      - get: magicalcrops:ChickenSeeds
-    rewards:
-      - xp: 6
-      - loot: raro
-  - id: coal_essence
-    title: "Coal Essence"
-    deps: [coal_seeds]
-    desc: |
-      TODO [Bancada] Coal Seeds
-    tasks:
-      - get: magicalcrops:CoalEssence
-    rewards:
-      - xp: 6
-      - loot: raro
-  - id: copper_seeds
-    title: "Copper Seeds"
-    deps: [ecrucio_essence, minicio_seeds]
-    desc: |
-      TODO [Bancada] Minicio Seeds, §eCrucio Essence
-    tasks:
-      - get: magicalcrops:CopperSeeds
-    rewards:
-      - xp: 6
-      - loot: raro
-  - id: cow_seeds
-    title: "Cow Seeds"
-    deps: [ecrucio_essence, minicio_seeds]
-    desc: |
-      TODO [Bancada] Minicio Seeds, minecraft:leather, §eCrucio Essence
-    tasks:
-      - get: magicalcrops:CowSeeds
-    rewards:
-      - xp: 6
-      - loot: raro
-  - id: crucio_furnace
-    title: "Crucio Furnace"
-    deps: [accio_furnace, ecrucio_essence]
-    desc: |
-      TODO [Bancada] Accio Furnace, §eCrucio Essence
-    tasks:
-      - get: magicalcrops:CrucioFurnace
-    rewards:
-      - xp: 6
-      - loot: raro
-  - id: technicolor_essence
-    title: "Technicolor Essence"
-    deps: [dye_seeds]
-    desc: |
-      TODO [Bancada] Dye Seeds
-    tasks:
-      - get: magicalcrops:DyeEssence
-    rewards:
-      - xp: 6
-      - loot: raro
-  - id: earth_essence
-    title: "Earth Essence"
-    deps: [earth_seeds]
-    desc: |
-      TODO [Bancada] Earth Seeds
-    tasks:
       - get: magicalcrops:EarthEssence
-    rewards:
-      - xp: 6
-      - loot: raro
-  - id: fire_essence
-    title: "Fire Essence"
-    deps: [fire_seeds]
-    desc: |
-      TODO [Bancada] Fire Seeds
-    tasks:
       - get: magicalcrops:FireEssence
-    rewards:
-      - xp: 6
-      - loot: raro
-  - id: glowstone_seeds
-    title: "Glowstone Seeds"
-    deps: [ecrucio_essence, minicio_seeds]
-    desc: |
-      TODO [Bancada] Minicio Seeds, minecraft:glowstone_dust, §eCrucio Essence
-    tasks:
-      - get: magicalcrops:GlowstoneSeeds
-    rewards:
-      - xp: 6
-      - loot: raro
-  - id: extreme_infusion_stone
-    title: "Extreme Infusion Stone"
-    deps: [bstrong_infusion_stone]
-    desc: |
-      TODO [Bancada] §bStrong Infusion Stone
-    tasks:
-      - get: magicalcrops:InfusionStoneExtreme
-    rewards:
-      - xp: 6
-      - loot: raro
-  - id: lead_seeds
-    title: "Lead Seeds"
-    deps: [ecrucio_essence, minicio_seeds]
-    desc: |
-      TODO [Bancada] Minicio Seeds, §eCrucio Essence
-    tasks:
-      - get: magicalcrops:LeadSeeds
-    rewards:
-      - xp: 6
-      - loot: raro
-  - id: manasteel_seeds
-    title: "Manasteel Seeds"
-    deps: [ecrucio_essence, minicio_seeds]
-    desc: |
-      TODO [Bancada] Minicio Seeds, §eCrucio Essence
-    tasks:
-      - get: magicalcrops:ManasteelSeeds
-    rewards:
-      - xp: 6
-      - loot: raro
-  - id: nature_essence
-    title: "Nature Essence"
-    deps: [nature_seeds]
-    desc: |
-      TODO [Bancada] Nature Seeds
-    tasks:
-      - get: magicalcrops:NatureEssence
-    rewards:
-      - xp: 6
-      - loot: raro
-  - id: nether_seeds
-    title: "Nether Seeds"
-    deps: [ecrucio_essence, minicio_seeds]
-    desc: |
-      TODO [Bancada] Minicio Seeds, §eCrucio Essence
-    tasks:
-      - get: magicalcrops:NetherSeeds
-    rewards:
-      - xp: 6
-      - loot: raro
-  - id: obsidian_seeds
-    title: "Obsidian Seeds"
-    deps: [ecrucio_essence, minicio_seeds]
-    desc: |
-      TODO [Bancada] Minicio Seeds, minecraft:obsidian, §eCrucio Essence
-    tasks:
-      - get: magicalcrops:ObsidianSeeds
-    rewards:
-      - xp: 6
-      - loot: raro
-  - id: pig_seeds
-    title: "Pig Seeds"
-    deps: [ecrucio_essence, minicio_seeds]
-    desc: |
-      TODO [Bancada] Minicio Seeds, minecraft:porkchop, §eCrucio Essence
-    tasks:
-      - get: magicalcrops:PigSeeds
-    rewards:
-      - xp: 6
-      - loot: raro
-  - id: quicksilver_seeds
-    title: "Quicksilver Seeds"
-    deps: [ecrucio_essence, minicio_seeds]
-    desc: |
-      TODO [Bancada] Minicio Seeds, §eCrucio Essence
-    tasks:
-      - get: magicalcrops:QuicksilverSeeds
-    rewards:
-      - xp: 6
-      - loot: raro
-  - id: redstone_seeds
-    title: "Redstone Seeds"
-    deps: [ecrucio_essence, minicio_seeds]
-    desc: |
-      TODO [Bancada] Minicio Seeds, minecraft:redstone, §eCrucio Essence
-    tasks:
-      - get: magicalcrops:RedstoneSeeds
-    rewards:
-      - xp: 6
-      - loot: raro
-  - id: rubber_essence
-    title: "Rubber Essence"
-    deps: [rubber_seeds]
-    desc: |
-      TODO [Bancada] Rubber Seeds
-    tasks:
-      - get: magicalcrops:RubberEssence
-    rewards:
-      - xp: 6
-      - loot: raro
-  - id: saltpeter_seeds
-    title: "Saltpeter Seeds"
-    deps: [ecrucio_essence, minicio_seeds]
-    desc: |
-      TODO [Bancada] Minicio Seeds, §eCrucio Essence
-    tasks:
-      - get: magicalcrops:SaltpeterSeeds
-    rewards:
-      - xp: 6
-      - loot: raro
-  - id: crucio_seed_bag
-    title: "Crucio Seed Bag"
-    deps: [accio_seed_bag, ecrucio_essence]
-    desc: |
-      TODO [Bancada] Accio Seed Bag, §eCrucio Essence
-    tasks:
-      - get: magicalcrops:SeedBagCrucio
-    rewards:
-      - xp: 6
-      - loot: raro
-  - id: sheep_seeds
-    title: "Sheep Seeds"
-    deps: [ecrucio_essence, minicio_seeds]
-    desc: |
-      TODO [Bancada] Minicio Seeds, minecraft:wool, §eCrucio Essence
-    tasks:
-      - get: magicalcrops:SheepSeeds
-    rewards:
-      - xp: 6
-      - loot: raro
-  - id: sulfur_seeds
-    title: "Sulfur Seeds"
-    deps: [ecrucio_essence, minicio_seeds]
-    desc: |
-      TODO [Bancada] Minicio Seeds, §eCrucio Essence
-    tasks:
-      - get: magicalcrops:SulfurSeeds
-    rewards:
-      - xp: 6
-      - loot: raro
-  - id: tin_seeds
-    title: "Tin Seeds"
-    deps: [ecrucio_essence, minicio_seeds]
-    desc: |
-      TODO [Bancada] Minicio Seeds, §eCrucio Essence
-    tasks:
-      - get: magicalcrops:TinSeeds
-    rewards:
-      - xp: 6
-      - loot: raro
-  - id: water_essence
-    title: "Water Essence"
-    deps: [water_seeds]
-    desc: |
-      TODO [Bancada] Water Seeds
-    tasks:
       - get: magicalcrops:WaterEssence
     rewards:
-      - xp: 6
-      - loot: raro
-  - id: ecrucio_block
-    title: "§eCrucio Block"
-    deps: [ecrucio_essence]
+      - xp: 3
+      - choice: [minecraft:iron_ingot x8, minecraft:redstone x16, minecraft:coal x16]
+
+  - id: crucio_essence
+    title: "Essência Crucio"
+    type: main
+    deps: [pedra_regular]
+    icon: magicalcrops:3CrucioEssence
     desc: |
-      TODO [Bancada] §eCrucio Essence
+      Terceiro nível, Herói: §eEssência Crucio§r! Pedra Regular no centro e §e4 Essências Accio§r em cruz.
+
+      Com ela nascem as sementes de metal, de mobs e de redstone. Estoque: pelo menos §e16§r.
+    tasks:
+      - get: magicalcrops:3CrucioEssence x8
+    rewards:
+      - xp: 4
+      - choice: [minecraft:iron_ingot x8, minecraft:redstone x16, minecraft:coal x16]
+
+  - id: bloco_crucio
+    title: "Bloco de Crucio"
+    type: optional
+    deps: [crucio_essence]
+    icon: magicalcrops:essence_storage:2
+    desc: |
+      Mais um bloco de essência para guardar e exibir. Compacto, bonito e prático.
     tasks:
       - get: magicalcrops:essence_storage:2
     rewards:
-      - xp: 6
-      - loot: raro
-  - id: dzivicio_essence
-    title: "§dZivicio Essence"
-    deps: [extreme_infusion_stone, bimperio_essence]
+      - xp: 2
+      - loot: comum
+
+  - id: pedra_forte
+    title: "Pedra de Infusão Forte"
+    type: main
+    deps: [crucio_essence]
+    icon: magicalcrops:InfusionStoneStrong
     desc: |
-      TODO [Bancada] Extreme Infusion Stone, §bImperio Essence
+      A §ePedra de Infusão Forte§r evolui a Regular com material Crucio. É o passo antes da
+      §bEssência Imperio§r. Cada etapa fica mais cara — mantenha a produção de essência girando.
     tasks:
-      - get: magicalcrops:5ZivicioEssence
+      - get: magicalcrops:InfusionStoneStrong
     rewards:
-      - xp: 6
-      - loot: raro
-  - id: air_shard_seeds
-    title: "Air Shard Seeds"
-    deps: [bimperio_essence, minicio_seeds]
+      - xp: 4
+      - choice: [minecraft:iron_ingot x8, minecraft:redstone x16, minecraft:coal x16]
+
+  - id: fornalha_crucio
+    title: "Fornalha Crucio"
+    deps: [crucio_essence, fornalha_accio]
+    icon: magicalcrops:CrucioFurnace
     desc: |
-      TODO [Bancada] Minicio Seeds, §bImperio Essence
+      Evolua a fornalha: Fornalha Accio no centro e §e4 Essências Crucio§r em volta. Mais velocidade
+      para os lingotes que vêm por aí.
     tasks:
-      - get: magicalcrops:AirshardSeeds
+      - get: magicalcrops:CrucioFurnace
     rewards:
-      - xp: 6
-      - loot: raro
-  - id: aluminium_essence
-    title: "Aluminium Essence"
-    deps: [aluminium_seeds]
+      - xp: 3
+      - choice: [minecraft:iron_ingot x8, minecraft:redstone x16, minecraft:coal x16]
+
+  - id: sacola_crucio
+    title: "Sacola de Sementes Crucio"
+    deps: [crucio_essence, sacola_accio]
+    icon: magicalcrops:SeedBagCrucio
     desc: |
-      TODO [Bancada] Aluminium Seeds
+      A Sacola Accio mais essência Crucio vira a §eSacola Crucio§r. Plante mais sementes por clique.
     tasks:
-      - get: magicalcrops:AluminiumEssence
+      - get: magicalcrops:SeedBagCrucio
     rewards:
-      - xp: 6
-      - loot: raro
-  - id: alumite_seeds
-    title: "Alumite Seeds"
-    deps: [bimperio_essence, minicio_seeds]
+      - xp: 3
+      - choice: [minecraft:bread x8, minecraft:cooked_beef x6, minecraft:torch x16]
+
+  - id: sementes_redstone
+    title: "Sementes de Redstone"
+    deps: [crucio_essence]
+    icon: magicalcrops:RedstoneSeeds
     desc: |
-      TODO [Bancada] Minicio Seeds, §bImperio Essence
+      Redstone no centro e a essência Crucio: temos uma plantação de redstone! Perfeito para
+      máquinas e circuitos.
     tasks:
-      - get: magicalcrops:AlumiteSeeds
+      - get: magicalcrops:RedstoneSeeds
     rewards:
-      - xp: 6
-      - loot: raro
-  - id: amber_essence
-    title: "Amber Essence"
-    deps: [amber_seeds]
+      - xp: 3
+      - choice: [minecraft:iron_ingot x8, minecraft:redstone x16, minecraft:coal x16]
+
+  - id: sementes_glowstone
+    title: "Sementes de Glowstone"
+    deps: [crucio_essence]
+    icon: magicalcrops:GlowstoneSeeds
     desc: |
-      TODO [Bancada] Amber Seeds
+      Pó de glowstone com Crucio e Minicio: a luz cresce em canteiro.
     tasks:
-      - get: magicalcrops:AmberEssence
+      - get: magicalcrops:GlowstoneSeeds
     rewards:
-      - xp: 6
-      - loot: raro
-  - id: ardite_seeds
-    title: "Ardite Seeds"
-    deps: [bimperio_essence, minicio_seeds]
+      - xp: 3
+      - choice: [minecraft:gold_ingot x6, minecraft:lapis_block x2, minecraft:glowstone x16]
+
+  - id: sementes_obsidiana
+    title: "Sementes de Obsidiana"
+    deps: [crucio_essence]
+    icon: magicalcrops:ObsidianSeeds
     desc: |
-      TODO [Bancada] Minicio Seeds, §bImperio Essence
+      Obsidiana sem balde de água nem picareta de diamante: a §eSemente de Obsidiana§r resolve.
     tasks:
-      - get: magicalcrops:ArditeSeeds
+      - get: magicalcrops:ObsidianSeeds
     rewards:
-      - xp: 6
-      - loot: raro
-  - id: blaze_seeds
-    title: "Blaze Seeds"
-    deps: [bimperio_essence, minicio_seeds]
+      - xp: 3
+      - choice: [minecraft:gold_ingot x6, minecraft:lapis_block x2, minecraft:glowstone x16]
+
+  - id: sementes_nether
+    title: "Sementes do Nether"
+    deps: [crucio_essence]
+    icon: magicalcrops:NetherSeeds
     desc: |
-      TODO [Bancada] Minicio Seeds, minecraft:blaze_rod, §bImperio Essence
+      Material do Nether (netherrack, quartzo...) na receita rende a §eSemente do Nether§r. Confira no
+      NEI os itens aceitos.
     tasks:
-      - get: magicalcrops:BlazeSeeds
+      - get: magicalcrops:NetherSeeds
     rewards:
-      - xp: 6
-      - loot: raro
-  - id: blizz_seeds
-    title: "Blizz Seeds"
-    deps: [bimperio_essence, minicio_seeds]
+      - xp: 3
+      - choice: [minecraft:gold_ingot x6, minecraft:lapis_block x2, minecraft:glowstone x16]
+
+  - id: fazenda_mobs
+    title: "Fazenda de Mobs"
+    deps: [crucio_essence]
+    icon: magicalcrops:CowSeeds
     desc: |
-      TODO [Bancada] Minicio Seeds, §bImperio Essence
+      Galinha, vaca, porco e ovelha — tudo em canteiro! Cada semente usa o drop do bicho (ovo, couro,
+      carne de porco, lã) com essência Crucio.
+
+      Assim você tem comida e lã sem pastor. Veja o NEI para as receitas exatas.
     tasks:
-      - get: magicalcrops:BlizzSeeds
+      - get: magicalcrops:ChickenSeeds
+      - get: magicalcrops:CowSeeds
+      - get: magicalcrops:PigSeeds
+      - get: magicalcrops:SheepSeeds
     rewards:
-      - xp: 6
-      - loot: raro
-  - id: bronze_essence
-    title: "Bronze Essence"
-    deps: [bronze_seeds]
+      - xp: 3
+      - choice: [minecraft:bread x8, minecraft:cooked_beef x6, minecraft:torch x16]
+
+  - id: metais_basicos
+    title: "Cobre, Estanho e Chumbo"
+    deps: [crucio_essence]
+    icon: magicalcrops:CopperSeeds
     desc: |
-      TODO [Bancada] Bronze Seeds
+      Metais crescendo da terra, Herói! Semente Minicio + essência Crucio, e o lingote do metal
+      desejado, rendem as sementes de §eCobre, Estanho e Chumbo§r.
+
+      A colheita é essência de metal; o NEI mostra como virar lingote.
     tasks:
-      - get: magicalcrops:BronzeEssence
+      - get: magicalcrops:CopperSeeds
+      - get: magicalcrops:TinSeeds
+      - get: magicalcrops:LeadSeeds
     rewards:
-      - xp: 6
-      - loot: raro
-  - id: certus_quartz_essence
-    title: "Certus Quartz Essence"
-    deps: [certus_quartz_seeds]
+      - xp: 3
+      - choice: [minecraft:iron_ingot x8, minecraft:redstone x16, minecraft:coal x16]
+
+  - id: aluminio_bronze
+    title: "Alumínio e Bronze"
+    deps: [metais_basicos]
+    icon: magicalcrops:BronzeSeeds
     desc: |
-      TODO [Bancada] Certus Quartz Seeds
+      Mais dois metais úteis: §eAlumínio§r e §eBronze§r. A semente de bronze pode precisar do
+      lingote de bronze — confira no NEI.
     tasks:
-      - get: magicalcrops:CertusQuartzEssence
+      - get: magicalcrops:AluminiumSeeds
+      - get: magicalcrops:BronzeSeeds
     rewards:
-      - xp: 6
-      - loot: raro
-  - id: chicken_essence
-    title: "Chicken Essence"
-    deps: [chicken_seeds]
+      - xp: 3
+      - choice: [minecraft:iron_ingot x8, minecraft:redstone x16, minecraft:coal x16]
+
+  - id: enxofre_salitre
+    title: "Enxofre e Salitre"
+    type: optional
+    deps: [crucio_essence]
+    icon: magicalcrops:SulfurSeeds
     desc: |
-      TODO [Bancada] Chicken Seeds
+      Ingredientes de pólvora e explosivos, direto do campo: §eSemente de Enxofre§r e §eSalitre§r.
     tasks:
-      - get: magicalcrops:ChickenEssence
+      - get: magicalcrops:SulfurSeeds
+      - get: magicalcrops:SaltpeterSeeds
     rewards:
-      - xp: 6
-      - loot: raro
-  - id: conductive_iron_seeds
-    title: "Conductive Iron Seeds"
-    deps: [bimperio_essence, minicio_seeds]
+      - xp: 2
+      - loot: comum
+
+  - id: cristais_crucio
+    title: "Certus, Âmbar e Mercúrio"
+    type: optional
+    deps: [crucio_essence]
+    icon: magicalcrops:CertusQuartzSeeds
     desc: |
-      TODO [Bancada] Minicio Seeds, §bImperio Essence
+      Para quem tem AE2, Forestry ou Thaumcraft: sementes de §eQuartzo Certus§r, §eÂmbar§r e
+      §eMercúrio§r. Plante só o que o seu pacote usa!
     tasks:
-      - get: magicalcrops:ConductiveIronSeeds
+      - get: magicalcrops:CertusQuartzSeeds
+      - get: magicalcrops:AmberSeeds
+      - get: magicalcrops:QuicksilverSeeds
     rewards:
-      - xp: 6
-      - loot: raro
-  - id: copper_essence
-    title: "Copper Essence"
-    deps: [copper_seeds]
+      - xp: 2
+      - loot: comum
+
+  - id: sementes_manasteel
+    title: "Sementes de Manasteel"
+    type: optional
+    deps: [crucio_essence]
+    icon: magicalcrops:ManasteelSeeds
     desc: |
-      TODO [Bancada] Copper Seeds
+      Para quem joga Botania: Manasteel que brota. Confira se vale o esforço no seu progresso.
     tasks:
-      - get: magicalcrops:CopperEssence
+      - get: magicalcrops:ManasteelSeeds
     rewards:
-      - xp: 6
-      - loot: raro
-  - id: cow_essence
-    title: "Cow Essence"
-    deps: [cow_seeds]
+      - xp: 2
+      - loot: comum
+
+  - id: imperio_essence
+    title: "Essência Imperio"
+    type: main
+    deps: [pedra_forte, fazenda_mobs]
+    icon: magicalcrops:4ImperioEssence
     desc: |
-      TODO [Bancada] Cow Seeds
+      O quarto nível, Herói! §bEssência Imperio§r: Pedra Forte no centro e §e4 Essências Crucio§r em cruz.
+
+      Daqui saem ferro, ouro, lápis, quartzo, mobs de verdade e metais de mods. Prepare estoque
+      grande: uma só receita consome muita essência!
     tasks:
-      - get: magicalcrops:CowEssence
+      - get: magicalcrops:4ImperioEssence x8
     rewards:
-      - xp: 6
-      - loot: raro
-  - id: creeper_seeds
-    title: "Creeper Seeds"
-    deps: [bimperio_essence, minicio_seeds]
+      - xp: 5
+      - choice: [minecraft:gold_ingot x6, minecraft:lapis_block x2, minecraft:glowstone x16]
+
+  - id: bloco_imperio
+    title: "Bloco de Imperio"
+    type: optional
+    deps: [imperio_essence]
+    icon: magicalcrops:essence_storage:3
     desc: |
-      TODO [Bancada] Minicio Seeds, minecraft:gunpowder, §bImperio Essence
+      Bloco de essência Imperio — repare como o brilho muda a cada nível.
     tasks:
-      - get: magicalcrops:CreeperSeeds
+      - get: magicalcrops:essence_storage:3
     rewards:
-      - xp: 6
-      - loot: raro
-  - id: dark_steel_seeds
-    title: "Dark Steel Seeds"
-    deps: [bimperio_essence, minicio_seeds]
+      - xp: 2
+      - loot: incomum
+
+  - id: pedra_extrema
+    title: "Pedra de Infusão Extrema"
+    type: main
+    deps: [imperio_essence]
+    icon: magicalcrops:InfusionStoneExtreme
     desc: |
-      TODO [Bancada] Minicio Seeds, §bImperio Essence
+      A §ePedra de Infusão Extrema§r usa a Forte no centro e o material Imperio ao redor. É o passo
+      final antes da §dEssência Zivicio§r.
     tasks:
-      - get: magicalcrops:DarkSteelSeeds
+      - get: magicalcrops:InfusionStoneExtreme
     rewards:
-      - xp: 6
-      - loot: raro
-  - id: draconium_seeds
-    title: "Draconium Seeds"
-    deps: [bimperio_essence, minicio_seeds]
+      - xp: 5
+      - choice: [minecraft:gold_ingot x6, minecraft:lapis_block x2, minecraft:glowstone x16]
+
+  - id: fornalha_imperio
+    title: "Fornalha Imperio"
+    deps: [imperio_essence, fornalha_crucio]
+    icon: magicalcrops:ImperioFurnace
     desc: |
-      TODO [Bancada] Minicio Seeds, §bImperio Essence
+      Fornalha Crucio no centro e §e4 Essências Imperio§r em volta. Cozinha à velocidade da luz.
     tasks:
-      - get: magicalcrops:DraconiumSeeds
+      - get: magicalcrops:ImperioFurnace
     rewards:
-      - xp: 6
-      - loot: raro
-  - id: earth_shard_seeds
-    title: "Earth Shard Seeds"
-    deps: [bimperio_essence, minicio_seeds]
+      - xp: 4
+      - choice: [minecraft:gold_ingot x6, minecraft:lapis_block x2, minecraft:glowstone x16]
+
+  - id: sacola_imperio
+    title: "Sacola de Sementes Imperio"
+    deps: [imperio_essence, sacola_crucio]
+    icon: magicalcrops:SeedBagImperio
     desc: |
-      TODO [Bancada] Minicio Seeds, §bImperio Essence
+      A Sacola Crucio melhorada com essência Imperio. A fazenda fica bem mais prática.
     tasks:
-      - get: magicalcrops:EarthshardSeeds
+      - get: magicalcrops:SeedBagImperio
     rewards:
-      - xp: 6
-      - loot: raro
-  - id: electrical_steel_seeds
-    title: "Electrical Steel Seeds"
-    deps: [bimperio_essence, minicio_seeds]
+      - xp: 4
+      - choice: [minecraft:gold_ingot x6, minecraft:lapis_block x2, minecraft:glowstone x16]
+
+  - id: sementes_ferro
+    title: "Sementes de Ferro"
+    type: main
+    deps: [imperio_essence]
+    icon: magicalcrops:IronSeeds
     desc: |
-      TODO [Bancada] Minicio Seeds, §bImperio Essence
+      Ferro em canteiro! Quatro lingotes de ferro, quatro essências Imperio e uma semente Minicio
+      fazem a §eSemente de Ferro§r. Ferro infinito, Herói.
     tasks:
-      - get: magicalcrops:ElectricalSteelSeeds
+      - get: magicalcrops:IronSeeds
     rewards:
-      - xp: 6
-      - loot: raro
-  - id: electrum_seeds
-    title: "Electrum Seeds"
-    deps: [bimperio_essence, minicio_seeds]
+      - xp: 5
+      - choice: [minecraft:gold_ingot x6, minecraft:lapis_block x2, minecraft:glowstone x16]
+
+  - id: sementes_ouro
+    title: "Sementes de Ouro"
+    type: main
+    deps: [imperio_essence]
+    icon: magicalcrops:GoldSeeds
     desc: |
-      TODO [Bancada] Minicio Seeds, §bImperio Essence
+      A mesma ideia com lingotes de ouro. §eSemente de Ouro§r: riqueza que brota do chão.
     tasks:
-      - get: magicalcrops:ElectrumSeeds
+      - get: magicalcrops:GoldSeeds
     rewards:
-      - xp: 6
-      - loot: raro
-  - id: enderman_seeds
-    title: "Enderman Seeds"
-    deps: [bimperio_essence, minicio_seeds]
+      - xp: 5
+      - choice: [minecraft:gold_ingot x6, minecraft:lapis_block x2, minecraft:glowstone x16]
+
+  - id: lapis_quartzo
+    title: "Lápis e Quartzo"
+    deps: [imperio_essence]
+    icon: magicalcrops:LapisSeeds
     desc: |
-      TODO [Bancada] Minicio Seeds, minecraft:ender_pearl, §bImperio Essence
+      Para encantamentos, tintas e circuitos: sementes de §eLápis-lazúli§r e §eQuartzo§r.
     tasks:
-      - get: magicalcrops:EndermanSeeds
+      - get: magicalcrops:LapisSeeds
+      - get: magicalcrops:QuartzSeeds
     rewards:
-      - xp: 6
-      - loot: raro
-  - id: energetic_alloy_seeds
-    title: "Energetic Alloy Seeds"
-    deps: [bimperio_essence, minicio_seeds]
+      - xp: 4
+      - choice: [minecraft:gold_ingot x6, minecraft:lapis_block x2, minecraft:glowstone x16]
+
+  - id: sementes_experiencia
+    title: "Sementes de Experiência"
+    deps: [imperio_essence]
+    icon: magicalcrops:ExperienceSeeds
     desc: |
-      TODO [Bancada] Minicio Seeds, §bImperio Essence
-    tasks:
-      - get: magicalcrops:EnergeticAlloySeeds
-    rewards:
-      - xp: 6
-      - loot: raro
-  - id: entropy_shard_seeds
-    title: "Entropy Shard Seeds"
-    deps: [bimperio_essence, minicio_seeds]
-    desc: |
-      TODO [Bancada] Minicio Seeds, §bImperio Essence
-    tasks:
-      - get: magicalcrops:EntropyshardSeeds
-    rewards:
-      - xp: 6
-      - loot: raro
-  - id: experience_seeds
-    title: "Experience Seeds"
-    deps: [bimperio_essence, minicio_seeds]
-    desc: |
-      TODO [Bancada] Minicio Seeds, minecraft:enchanted_book, §bImperio Essence
+      Um livro encantado no centro e essência Imperio: a §eSemente de Experiência§r rende essência
+      de XP. Ótimo para encantar sem sair da base!
     tasks:
       - get: magicalcrops:ExperienceSeeds
     rewards:
-      - xp: 6
-      - loot: raro
-  - id: fire_shard_seeds
-    title: "Fire Shard Seeds"
-    deps: [bimperio_essence, minicio_seeds]
+      - xp: 5
+      - choice: [minecraft:gold_ingot x6, minecraft:lapis_block x2, minecraft:glowstone x16]
+
+  - id: mobs_nether
+    title: "Blaze e Ghast"
+    deps: [imperio_essence]
+    icon: magicalcrops:BlazeSeeds
     desc: |
-      TODO [Bancada] Minicio Seeds, §bImperio Essence
+      Varas de blaze e lágrimas de ghast sem pisar no Nether: §eSemente de Blaze§r e §eGhast§r.
     tasks:
-      - get: magicalcrops:FireshardSeeds
-    rewards:
-      - xp: 6
-      - loot: raro
-  - id: fluix_seeds
-    title: "Fluix Seeds"
-    deps: [bimperio_essence, minicio_seeds]
-    desc: |
-      TODO [Bancada] Minicio Seeds, §bImperio Essence
-    tasks:
-      - get: magicalcrops:FluixSeeds
-    rewards:
-      - xp: 6
-      - loot: raro
-  - id: ghast_seeds
-    title: "Ghast Seeds"
-    deps: [bimperio_essence, minicio_seeds]
-    desc: |
-      TODO [Bancada] Minicio Seeds, minecraft:ghast_tear, §bImperio Essence
-    tasks:
+      - get: magicalcrops:BlazeSeeds
       - get: magicalcrops:GhastSeeds
     rewards:
+      - xp: 4
+      - choice: [minecraft:gold_ingot x6, minecraft:lapis_block x2, minecraft:glowstone x16]
+
+  - id: mobs_overworld
+    title: "Creeper, Esqueleto, Aranha e Slime"
+    deps: [imperio_essence]
+    icon: magicalcrops:CreeperSeeds
+    desc: |
+      Pólvora, ossos, olhos de aranha e slimeball sem lutar contra a noite. Quatro sementes de mob
+      do Overworld, todas na mesma receita-base.
+    tasks:
+      - get: magicalcrops:CreeperSeeds
+      - get: magicalcrops:SkeletonSeeds
+      - get: magicalcrops:SpiderSeeds
+      - get: magicalcrops:SlimeSeeds
+    rewards:
+      - xp: 4
+      - choice: [minecraft:gold_ingot x6, minecraft:lapis_block x2, minecraft:glowstone x16]
+
+  - id: sementes_enderman
+    title: "Sementes de Enderman"
+    deps: [imperio_essence]
+    icon: magicalcrops:EndermanSeeds
+    desc: |
+      Pérolas do Ender em canteiro! Útil para quem quer teleportar sem caçar enderman.
+    tasks:
+      - get: magicalcrops:EndermanSeeds
+    rewards:
+      - xp: 5
+      - choice: [minecraft:diamond x2, minecraft:emerald x2, minecraft:ender_pearl x6]
+
+  - id: metais_imperio
+    title: "Prata, Níquel, Ósmio e Ardite"
+    deps: [imperio_essence]
+    icon: magicalcrops:SilverSeeds
+    desc: |
+      Metais de outros mods, mesma receita: lingote do metal + essência Imperio + Semente Minicio.
+      Veja no NEI quais dos seus mods usam cada um.
+    tasks:
+      - get: magicalcrops:SilverSeeds
+      - get: magicalcrops:NickelSeeds
+      - get: magicalcrops:OsmiumSeeds
+      - get: magicalcrops:ArditeSeeds
+    rewards:
+      - xp: 4
+      - choice: [minecraft:gold_ingot x6, minecraft:lapis_block x2, minecraft:glowstone x16]
+
+  - id: gemas_imperio
+    title: "Rubi, Safira, Peridoto e Yellorite"
+    type: optional
+    deps: [imperio_essence]
+    icon: magicalcrops:RubySeeds
+    desc: |
+      Gemas e minérios de mods, colhidos em canteiro. Plante só as que o seu pacote usa.
+    tasks:
+      - get: magicalcrops:RubySeeds
+      - get: magicalcrops:SapphireSeeds
+      - get: magicalcrops:PeridotSeeds
+      - get: magicalcrops:YelloriteSeeds
+    rewards:
+      - xp: 3
+      - loot: incomum
+
+  - id: ligas_imperio
+    title: "Ligas: Aço, Invar, Eletro, Signalum, Lumium"
+    deps: [imperio_essence]
+    icon: magicalcrops:SteelSeeds
+    desc: |
+      Ligas direto da horta! Aço, Invar, Electrum, Signalum, Lumium e Alumite — confira o lingote
+      necessário de cada uma no NEI.
+    tasks:
+      - get: magicalcrops:SteelSeeds
+      - get: magicalcrops:InvarSeeds
+      - get: magicalcrops:ElectrumSeeds
+      - get: magicalcrops:SignalumSeeds
+      - get: magicalcrops:LumiumSeeds
+      - get: magicalcrops:AlumiteSeeds
+    rewards:
+      - xp: 4
+      - choice: [minecraft:gold_ingot x6, minecraft:lapis_block x2, minecraft:glowstone x16]
+
+  - id: ligas_enderio
+    title: "Ligas do Ender IO"
+    type: optional
+    deps: [imperio_essence]
+    icon: magicalcrops:EnergeticAlloySeeds
+    desc: |
+      Para quem usa Ender IO: sementes de §eLiga Energética§r, §eAço Elétrico§r, §eLiga de Redstone§r,
+      §eFerro Condutor§r, §eAço Escuro§r e §eSoularium§r.
+    tasks:
+      - get: magicalcrops:EnergeticAlloySeeds
+      - get: magicalcrops:ElectricalSteelSeeds
+      - get: magicalcrops:RedstoneAlloySeeds
+      - get: magicalcrops:ConductiveIronSeeds
+      - get: magicalcrops:DarkSteelSeeds
+      - get: magicalcrops:SoulariumSeeds
+    rewards:
+      - xp: 3
+      - loot: incomum
+
+  - id: cacos_thaumcraft
+    title: "Estilhaços e Tálio"
+    type: optional
+    deps: [imperio_essence]
+    icon: magicalcrops:AirshardSeeds
+    desc: |
+      Para quem estuda Thaumcraft: sementes de §eEstilhaços§r (Ar, Água, Fogo, Terra, Ordem, Entropia)
+      e §eThaumium§r.
+    tasks:
+      - get: magicalcrops:AirshardSeeds
+      - get: magicalcrops:WatershardSeeds
+      - get: magicalcrops:FireshardSeeds
+      - get: magicalcrops:EarthshardSeeds
+      - get: magicalcrops:OrdershardSeeds
+      - get: magicalcrops:EntropyshardSeeds
+      - get: magicalcrops:ThaumiumSeeds
+    rewards:
+      - xp: 3
+      - loot: incomum
+
+  - id: sementes_draconium
+    title: "Sementes de Draconium"
+    type: optional
+    deps: [imperio_essence]
+    icon: magicalcrops:DraconiumSeeds
+    desc: |
+      Draconium crescendo em campo — sim, é possível! Precisa do lingote de draconium na receita.
+      Perfeito para quem encara Draconic Evolution.
+    tasks:
+      - get: magicalcrops:DraconiumSeeds
+    rewards:
+      - xp: 5
+      - loot: raro
+
+  - id: marco_imperio
+    title: "Marco: O Poder Imperio"
+    type: milestone
+    deps: [sementes_ferro, sementes_ouro, fornalha_imperio, pedra_extrema]
+    icon: magicalcrops:IronSeeds
+    banner: "Colheita Imperio"
+    subtitle: "Metais que brotam do chão"
+    desc: |
+      Olha só esse canteiro, Herói: ferro e ouro crescendo, uma fornalha Imperio rugindo e a Pedra
+      Extrema pronta no bolso. Você já não minera — §bcolhe§r.
+
+      Daqui para frente, o único passo que falta é a §dEssência Zivicio§r, a mais pura do Registro. Respire fundo e vá em frente!
+    tasks:
+      - get: magicalcrops:IronSeeds
+      - get: magicalcrops:GoldSeeds
+      - get: magicalcrops:ImperioFurnace
+      - get: magicalcrops:InfusionStoneExtreme
+    rewards:
+      - xp: 8
+      - kit: {name: "Kit do Agricultor Mágico", items: [minecraft:iron_block x2, minecraft:gold_block x2, minecraft:dye:15 x32, minecraft:bucket x2, minecraft:diamond_hoe x1]}
+      - loot: incomum
+
+  - id: zivicio_essence
+    title: "Essência Zivicio"
+    type: main
+    deps: [pedra_extrema, imperio_essence]
+    icon: magicalcrops:5ZivicioEssence
+    desc: |
+      O nível final: §dEssência Zivicio§r. Pedra Extrema no centro e §e4 Essências Imperio§r em cruz.
+
+      É rara e preciosa — use-a primeiro para as sementes de diamante e esmeralda, depois para
+      as fornalhas e a pedra mestra.
+    tasks:
+      - get: magicalcrops:5ZivicioEssence x4
+    rewards:
+      - xp: 6
+      - choice: [minecraft:diamond x2, minecraft:emerald x2, minecraft:ender_pearl x6]
+
+  - id: bloco_zivicio
+    title: "Bloco de Zivicio"
+    type: optional
+    deps: [zivicio_essence]
+    icon: magicalcrops:essence_storage:4
+    desc: |
+      O bloco da essência mais pura. Além de lindo, é ingrediente da Fornalha Suprema.
+    tasks:
+      - get: magicalcrops:essence_storage:4
+    rewards:
+      - xp: 3
+      - loot: raro
+
+  - id: sementes_diamante
+    title: "Sementes de Diamante"
+    type: main
+    deps: [zivicio_essence]
+    icon: magicalcrops:DiamondSeeds
+    desc: |
+      Diamantes em fileiras! Quatro diamantes, quatro essências Zivicio e a semente Minicio.
+      Plante, espere (use fertilizante!) e colha. §aDica:§r cercar com Pulsadores acelera muito.
+    tasks:
+      - get: magicalcrops:DiamondSeeds
+    rewards:
+      - xp: 8
+      - choice: [minecraft:diamond x2, minecraft:emerald x2, minecraft:ender_pearl x6]
+
+  - id: sementes_esmeralda
+    title: "Sementes de Esmeralda"
+    type: main
+    deps: [zivicio_essence]
+    icon: magicalcrops:EmeraldSeeds
+    desc: |
+      A mesma fórmula, agora com esmeraldas. Ótima moeda de troca com aldeões, Herói.
+    tasks:
+      - get: magicalcrops:EmeraldSeeds
+    rewards:
+      - xp: 8
+      - choice: [minecraft:diamond x2, minecraft:emerald x2, minecraft:ender_pearl x6]
+
+  - id: sementes_wither
+    title: "Sementes de Wither"
+    deps: [zivicio_essence, mobs_overworld]
+    icon: magicalcrops:WitherSeeds
+    desc: |
+      Caveiras de Wither são preciosas! Esta semente usa uma Semente de Esqueleto no centro e quatro
+      caveiras de Wither — mas depois rende muitas. Para o Nether Star, claro.
+    tasks:
+      - get: magicalcrops:WitherSeeds
+    rewards:
+      - xp: 8
+      - loot: raro
+
+  - id: metais_zivicio
+    title: "Cobalto, Platina, Enderium e Manyullyn"
+    deps: [zivicio_essence]
+    icon: magicalcrops:CobaltSeeds
+    desc: |
+      Metais raros do Tinkers, Thermal e afins: §eCobalto§r, §ePlatina§r, §eEnderium§r e §eManyullyn§r.
+      O NEI mostra os lingotes certos.
+    tasks:
+      - get: magicalcrops:CobaltSeeds
+      - get: magicalcrops:PlatinumSeeds
+      - get: magicalcrops:EnderiumSeeds
+      - get: magicalcrops:ManyullynSeeds
+    rewards:
+      - xp: 6
+      - choice: [minecraft:diamond x2, minecraft:emerald x2, minecraft:ender_pearl x6]
+
+  - id: sementes_terrasteel
+    title: "Sementes de Terrasteel"
+    type: optional
+    deps: [zivicio_essence]
+    icon: magicalcrops:TerrasteelSeeds
+    desc: |
+      Terrasteel brotando para os fãs de Botania. O último luxo da horta.
+    tasks:
+      - get: magicalcrops:TerrasteelSeeds
+    rewards:
       - xp: 6
       - loot: raro
+
+  - id: pedra_mestra
+    title: "Pedra de Infusão Mestra"
+    type: main
+    deps: [zivicio_essence]
+    icon: magicalcrops:InfusionStoneMaster
+    desc: |
+      A §4Pedra de Infusão Mestra§r: Extrema no centro e §e8 Materiais Zivicio§r em volta.
+      Marca o ápice da alquimia agrícola. Confira o item exato no NEI.
+    tasks:
+      - get: magicalcrops:InfusionStoneMaster
+    rewards:
+      - xp: 8
+      - choice: [minecraft:diamond x2, minecraft:emerald x2, minecraft:ender_pearl x6]
+
+  - id: fornalha_zivicio
+    title: "Fornalha Zivicio"
+    deps: [zivicio_essence, fornalha_imperio]
+    icon: magicalcrops:ZivicioFurnace
+    desc: |
+      Fornalha Imperio e §e4 Essências Zivicio§r. Pronta para a última evolução.
+    tasks:
+      - get: magicalcrops:ZivicioFurnace
+    rewards:
+      - xp: 6
+      - choice: [minecraft:diamond x2, minecraft:emerald x2, minecraft:ender_pearl x6]
+
+  - id: sacola_zivicio
+    title: "Sacola de Sementes Zivicio"
+    deps: [zivicio_essence, sacola_imperio]
+    icon: magicalcrops:SeedBagZivicio
+    desc: |
+      A sacola final: planta tudo em área maior. Planeje o plantio e aproveite.
+    tasks:
+      - get: magicalcrops:SeedBagZivicio
+    rewards:
+      - xp: 6
+      - choice: [minecraft:diamond x2, minecraft:emerald x2, minecraft:ender_pearl x6]
+
+  - id: livro_experiencia
+    title: "Livro de Experiência"
+    type: optional
+    deps: [sementes_experiencia, zivicio_essence]
+    icon: magicalcrops:ExperienceBook:4
+    desc: |
+      Cinco livros de experiência em cadeia: o mais alto guarda muito XP. Receita em cadeia
+      (livro anterior + essências de XP) — confira no NEI.
+    tasks:
+      - get: magicalcrops:ExperienceBook:4
+    rewards:
+      - xp: 5
+      - loot: raro
+
+  - id: marco_magical
+    title: "Marco: Fornalha Suprema"
+    type: milestone
+    deps: [fornalha_zivicio, sementes_diamante, sementes_esmeralda, pedra_mestra, bloco_zivicio]
+    icon: magicalcrops:UltimateFurnace
+    banner: "Colheita Suprema"
+    subtitle: "Magical Crops dominado"
+    desc: |
+      Cinco níveis de essência, dezenas de sementes e uma horta que parece mágica — porque é!
+      A §eFornalha Suprema§r (Fornalha Zivicio + 4 Blocos de Zivicio) coroa a sua colheita.
+
+      Herói, você planta ferro, ouro, diamante e esmeralda. Quem precisa de picareta? Obrigada por
+      me deixar acompanhar essa jornada.
+    tasks:
+      - get: magicalcrops:UltimateFurnace
+      - get: magicalcrops:DiamondSeeds
+      - get: magicalcrops:EmeraldSeeds
+      - get: magicalcrops:InfusionStoneMaster
+    rewards:
+      - xp: 12
+      - kit: {name: "Kit do Alquimista Verde", items: [minecraft:diamond x8, minecraft:emerald x8, minecraft:gold_block x4, minecraft:experience_bottle x16]}
+      - loot: epico
+

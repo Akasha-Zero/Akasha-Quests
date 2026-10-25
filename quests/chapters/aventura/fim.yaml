@@ -1,0 +1,316 @@
+chapter:
+  id: fim
+  title: "O Fim"
+  order: 235
+  icon: minecraft:dragon_egg
+  desc: |
+    §5O Vazio.§r Do olho do Fim ao Dragão e ao Ovo: caça às pérolas, portal, cristais, o chefe e
+    os tesouros de Purpur, Chorus e Shulker.
+
+quests:
+  - id: perola_ender
+    title: "Pérola do Fim"
+    type: main
+    icon: minecraft:ender_pearl
+    desc: |
+      O caminho para o fim da história começa com uma §ePérola do Fim§r, Herói. Os Endermen
+      soltam: mate-os de dia, em lugar com teto de 2 blocos de altura (eles são altos e não
+      passam), e nunca olhe nos olhos deles. §aDica:§r Looting ajuda.
+    tasks:
+      - kill: "Enderman x4"
+    rewards:
+      - xp: 3
+      - choice: [minecraft:ender_pearl x4, minecraft:blaze_powder x8]
+
+  - id: pearls
+    title: "Estoque de Pérolas"
+    type: main
+    deps: [perola_ender]
+    icon: minecraft:ender_pearl
+    desc: |
+      Você vai precisar de §e12 olhos do Fim§r no pior caso, e cada olho pede uma pérola. Junte
+      pérolas à vontade.
+    tasks:
+      - get: minecraft:ender_pearl x12
+    rewards:
+      - xp: 3
+      - loot: comum
+
+  - id: olho_ender
+    title: "Olho do Fim"
+    type: main
+    deps: [pearls]
+    icon: minecraft:ender_eye
+    desc: |
+      Pérola do Fim + Pó de Blaze = §eOlho do Fim§r. Jogue um para o alto e ele voa em direção à
+      fortaleza escondida; ele pode quebrar, então leve sobra.
+    tasks:
+      - craft: minecraft:ender_eye x12
+    rewards:
+      - xp: 5
+      - choice: [minecraft:ender_pearl x8, minecraft:blaze_powder x16]
+
+  - id: fortaleza_fim
+    title: "A Fortaleza Escondida"
+    type: main
+    deps: [olho_ender]
+    icon: minecraft:end_portal_frame
+    desc: |
+      Siga os olhos até eles caírem no chão e então cave para baixo. Lá embaixo está a
+      §eFortaleza§r (Stronghold) com o portal do Fim. §cLeve água, blocos e armas§r, é um
+      labirinto cheio de Silverfish.
+    tasks:
+      - get: minecraft:end_portal_frame
+    rewards:
+      - xp: 5
+      - choice: [minecraft:golden_apple x2, minecraft:cooked_beef x16]
+
+  - id: portal_fim
+    title: "Portal do Fim"
+    type: portal
+    deps: [fortaleza_fim]
+    icon: minecraft:ender_eye
+    desc: |
+      Encaixe um olho em cada moldura vazia do portal. Quando todas brilharem, o céu abre. §cSó
+      entre com equipamento completo§r: arco e flechas, blocos de sobra, água, comida e armadura
+      boa. Depois de pular, não tem volta fácil.
+    tasks:
+      - visit: {dim: 1, name: "O Fim"}
+    rewards:
+      - xp: 10
+      - choice: [minecraft:ender_pearl x8, minecraft:golden_apple x2, minecraft:arrow x64]
+
+  - id: pedra_fim
+    title: "Pedra Estranha"
+    type: main
+    deps: [portal_fim]
+    icon: minecraft:end_stone
+    desc: |
+      Ilha flutuante e vazio infinito: a §ePedra do Fim§r forma o chão. Quebre alguns blocos e
+      junte-os, são ótimos para construir.
+    tasks:
+      - get: minecraft:end_stone x16
+    rewards:
+      - xp: 3
+      - loot: comum
+
+  - id: enderman_fim
+    title: "Caça Livre"
+    type: optional
+    deps: [portal_fim]
+    icon: minecraft:ender_pearl
+    desc: |
+      Aqui os Endermen são aos montes. Aproveite para treinar e juntar pérolas, mas §cfique longe
+      da borda§r!
+    tasks:
+      - kill: "Enderman x8"
+    rewards:
+      - loot: comum
+
+  - id: cristais_fim
+    title: "Cristais do Dragão"
+    type: main
+    deps: [pedra_fim]
+    icon: etfuturum:end_crystal
+    desc: |
+      Torres de obsidiana sustentam §eCristais Ender§r que curam o dragão. Destrua os cristais com
+      flechas ou suba nas torres (algumas têm jaulas, use tesoura ou quebre as grades). §cEles
+      explodem!§r Ataque de longe. Eu recomendo armadura e escudo, Herói.
+    tasks:
+      - get: minecraft:obsidian x4
+    rewards:
+      - xp: 5
+      - choice: [minecraft:arrow x64, minecraft:golden_apple x2]
+
+  - id: dragao
+    title: "O Dragão do Fim"
+    type: boss
+    deps: [cristais_fim]
+    banner: "O Dragão do Fim caiu!"
+    subtitle: "O vazio agora sussurra seu nome"
+    task_logic: OR
+    icon: minecraft:dragon_egg
+    desc: |
+      Aqui está o guardião do vazio, Herói. Quebre todos os cristais primeiro, depois acerte o
+      dragão quando ele pousar no centro, em cima do portal de saída. Evite o sopro roxo e fuja
+      das investidas. Leve arco, flechas em abundância, poções de cura, e nunca fique na beira.
+      Quando ele cair, o portal de saída se abre e o §eOvo do Dragão§r aparece em cima dele. Este
+      é o chefe que vale como a §eConquista do Fim§r.
+    tasks:
+      - kill: {entity: "EnderDragon", count: 1}
+      - get: minecraft:dragon_egg
+    rewards:
+      - xp: 20
+      - loot: epico
+
+  - id: ovo_dragao
+    title: "O Ovo do Dragão"
+    type: milestone
+    deps: [dragao]
+    icon: minecraft:dragon_egg
+    desc: |
+      O §eOvo do Dragão§r é um troféu único. Ele teleporta quando você o toca! Para pegar, coloque
+      uma tocha sob ele ou empurre com um pistão. Guarde no seu baú de troféus.
+    tasks:
+      - get: minecraft:dragon_egg
+    rewards:
+      - xp: 10
+      - loot: raro
+
+  - id: sopro_dragao
+    title: "Sopro do Dragão"
+    type: optional
+    deps: [dragao]
+    icon: etfuturum:dragon_breath
+    desc: |
+      Frascos de água no sopro do dragão... confira no NEI. A receita do pack usa uma poção e
+      Frutas Chorus. É base para poções persistentes.
+    tasks:
+      - get: etfuturum:dragon_breath
+    rewards:
+      - loot: comum
+
+  - id: chorus
+    title: "Planta Estranha"
+    deps: [pedra_fim]
+    icon: etfuturum:chorus_fruit
+    desc: |
+      Ilhas externas do Fim têm §eFlores Chorus§r. Cuidado: ao comer a fruta você se
+      teletransporta. Colha frutos com paciência.
+    tasks:
+      - get: etfuturum:chorus_fruit x4
+    rewards:
+      - xp: 3
+      - loot: comum
+
+  - id: chorus_assada
+    title: "Fruta Tostada"
+    deps: [chorus]
+    icon: etfuturum:chorus_fruit_popped
+    desc: |
+      Asse a fruta na fornalha e ela vira §eChorus Popped§r. Cuida do purpur, vara do Fim e mais.
+    tasks:
+      - get: etfuturum:chorus_fruit_popped x4
+    rewards:
+      - xp: 3
+      - loot: comum
+
+  - id: purpur
+    title: "Purpur"
+    type: optional
+    deps: [chorus_assada]
+    icon: etfuturum:purpur_block
+    desc: |
+      Quatro frutas assadas viram §ePurpur§r, bloco roxo de construção. Combina com a Pedra do
+      Fim: Tijolos do Fim e Pilares.
+    tasks:
+      - get: etfuturum:purpur_block x8
+    rewards:
+      - loot: comum
+
+  - id: tijolos_fim
+    title: "Tijolos do Fim"
+    type: optional
+    deps: [pedra_fim]
+    icon: etfuturum:end_bricks
+    desc: |
+      Pedra do Fim em tijolos para construção: veja a receita na bancada.
+    tasks:
+      - get: etfuturum:end_bricks x8
+    rewards:
+      - loot: comum
+
+  - id: vara_ender
+    title: "Vara Ender"
+    type: optional
+    deps: [chorus_assada]
+    icon: etfuturum:end_rod
+    desc: |
+      Vara de Blaze + fruta assada: uma luz branca bonita para decorar. Confira no NEI.
+    tasks:
+      - get: etfuturum:end_rod x4
+    rewards:
+      - loot: comum
+
+  - id: cristal_ender
+    title: "Cristal Ender"
+    type: optional
+    deps: [dragao]
+    icon: etfuturum:end_crystal
+    desc: |
+      Vidro, Olho do Fim e Lágrima de Ghast. Útil para usar o Dragão de novo (confira como
+      ressuscitar no NEI) ou para decorar. O cristal explode se for atingido, §cmuito cuidado!§r
+    tasks:
+      - get: etfuturum:end_crystal
+    rewards:
+      - loot: comum
+
+  - id: concha_shulker
+    title: "Concha Shulker"
+    type: main
+    deps: [portal_fim]
+    icon: etfuturum:shulker_shell
+    desc: |
+      Os Shulkers moram em cidades do Fim (se o gerador do pack estiver ativo). Sua concha dá o
+      §eShulker Box§r: duas conchas + baú. Confira no NEI e no mapa.
+    tasks:
+      - get: etfuturum:shulker_shell x2
+    rewards:
+      - xp: 3
+      - loot: comum
+
+  - id: caixa_shulker
+    title: "Shulker Box"
+    type: milestone
+    deps: [concha_shulker]
+    icon: etfuturum:shulker_box
+    desc: |
+      Uma caixa que carrega o conteúdo quando quebrada. Ideal para expedições. Duas conchas e um
+      baú, Herói.
+    tasks:
+      - get: etfuturum:shulker_box
+    rewards:
+      - xp: 10
+      - loot: raro
+
+  - id: elytra
+    title: "Asas do Vazio"
+    type: optional
+    deps: [portal_fim]
+    icon: etfuturum:elytra
+    desc: |
+      Um dos maiores tesouros: os §eÉlitros§r. Confira no NEI onde aparecem; não há receita de
+      bancada no pack. Experimente nas naves do Fim.
+    tasks:
+      - get: etfuturum:elytra
+    rewards:
+      - xp: 15
+      - loot: raro
+
+  - id: bau_ender
+    title: "Baú do Fim"
+    type: optional
+    deps: [olho_ender]
+    icon: minecraft:ender_chest
+    desc: |
+      Para sua base: oito obsidianas e um Olho do Fim. Itens guardados aparecem em qualquer baú do
+      Fim seu.
+    tasks:
+      - get: minecraft:ender_chest
+    rewards:
+      - loot: comum
+
+  - id: fim_final
+    title: "Mestre do Fim"
+    type: milestone
+    deps: [dragao, ovo_dragao]
+    icon: minecraft:dragon_egg
+    desc: |
+      Dragão derrotado e o vazio explorado. Prepare o próximo passo: o Nether e outras dimensões
+      te esperam, Herói.
+    tasks:
+      - check: "Confirme que derrotou o Dragão"
+    rewards:
+      - xp: 20
+      - kit: {name: "Kit do Viajante do Fim", items: ["minecraft:ender_pearl x16", "minecraft:golden_apple x4", "minecraft:experience_bottle x16"]}
+      - loot: raro
