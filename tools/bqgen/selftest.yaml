@@ -1,0 +1,5 @@
+chapter: {id: selftest, title: "Teste", order: 1, icon: minecraft:book, desc: "x"}
+quests:
+  - {id: a, title: "A", desc: "d", tasks: [{get: "minecraft:log:* x4"}], rewards: [{xp: 1}, {loot: comum}]}
+  - {id: b, title: "B", type: boss, deps: [a], desc: "d", tasks: [{kill: "Zombie x3"}, check], rewards: [{choice: ["minecraft:iron_ingot x4", "ore:ingotIron x2"]}, {kit: {name: "Kit", items: ["minecraft:torch x16"]}}]}
+  - {id: c, title: "C", deps: [a, b], deps_any: true, desc: "d", tasks: [{visit: {dim: -1, name: "Nether"}}, {fluid: "water x1000"}, {xp: 5}, {craft: "minecraft:furnace"}], rewards: [{command: "/time set day"}, {item: "minecraft:diamond_sword {ench:[{id:16s,lvl:3s}],display:{Name:\"Lâmina\"}}"}]}
