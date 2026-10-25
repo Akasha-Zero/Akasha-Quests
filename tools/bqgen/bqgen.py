@@ -287,7 +287,9 @@ def build_task(t, idx, ctx, reg):
         o['taskID:8'] = 'bq_standard:crafting'
     elif kind == 'kill':
         if isinstance(v, str):
-            m = re.match(r'^\s*(\S+)(?:\s+x\s*(\d+))?\s*$', v)
+            m = re.match(r'^\s*(.+?)(?:\s+x\s*(\d+))?\s*$', v)
+            if not m:
+                raise GenError('%s: bad kill spec %r' % (c, v))
             v = {'entity': m.group(1), 'count': int(m.group(2) or 1)}
         ent = v['entity']
         if reg.loaded and ent not in reg.entities:

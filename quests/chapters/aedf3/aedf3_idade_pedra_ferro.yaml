@@ -289,7 +289,7 @@ quests:
   desc: |
     Quem desce longe nas minas costuma encontrar salas escuras com baús e gaiolas de monstros. Isso é uma §emasmorra§r! Entre com armadura de ferro, espada afiada e tochas. Derrube §e10 esqueletos§r, mas fique atento às flechas. O saque costuma ser generoso, e a emoção também.
   tasks:
-  - {kill: Skeleton x10}
+  - kill: {entity: Skeleton, count: 10}
   rewards:
   - {xp: 3}
   - choice: ['minecraft:bone x16', 'minecraft:arrow x32']

@@ -1,0 +1,1088 @@
+chapter:
+  id: reliquary
+  title: "Reliquary e Forgotten Relics"
+  prefix: ""
+  order: 570
+  icon: xreliquary:hero_medallion
+  desc: |
+    §dO Volume das Relíquias.§r Ingredientes de monstros, o Tomo de Alcaestria, o Boticário,
+    a Pistola do Caçador e dezenas de relíquias (Reliquary: Forbidden Reincarnation) — e, no
+    fim, os artefatos esquecidos de Thaumcraft e Botania (Forgotten Relics 1.7.3).
+
+quests:
+  # ======================================================================
+  # FASE 0 — INGREDIENTES DE MONSTROS
+  # ======================================================================
+  - id: volume_reliquias
+    title: "O Volume das Relíquias"
+    type: info
+    icon: xreliquary:hero_medallion
+    desc: |
+      Toda relíquia começa com um pedaço de monstro, Herói. Eu sei, eu sei... mas é assim que
+      os Antigos faziam!
+
+      Neste pack roda o §eReliquary: Forbidden Reincarnation§r, uma versão não oficial (GPLv3)
+      mantida pela Rede Akashic a partir do código 1.7.10 do Reliquary. Quase tudo funciona como
+      no Reliquary clássico: monstros mortos §epor você§r soltam §eingredientes§r raros (Pilhagem
+      aumenta a chance), e com eles você fabrica relíquias com poderes únicos.
+
+      Dica de ouro: abra cada ingrediente no NEI (tecla U) para ver em que ele é usado.
+    tasks:
+      - check
+    rewards:
+      - xp: 1
+
+  - id: ingredientes_mortos_vivos
+    title: "Ossos e Corações"
+    type: main
+    deps: [volume_reliquias]
+    icon: xreliquary:mob_ingredient
+    desc: |
+      Os mortos-vivos guardam os primeiros segredos:
+
+      §e• Costela (Rib Bone)§r — esqueletos.
+      §e• Coração de Zumbi§r — zumbis e homens-porco zumbis.
+
+      Junte §e4 de cada§r. Eles vão para a Cruz da Misericórdia, os Tiros de Exorcismo e as
+      Pérolas do Coração.
+    tasks:
+      - get: [xreliquary:mob_ingredient x4, xreliquary:mob_ingredient:6 x4]
+    rewards:
+      - xp: 3
+      - choice: [minecraft:bone x16, minecraft:rotten_flesh x16, minecraft:iron_sword]
+
+  - id: costela_wither
+    title: "Costela Murcha"
+    type: normal
+    deps: [ingredientes_mortos_vivos]
+    icon: xreliquary:mob_ingredient:1
+    desc: |
+      Os §eesqueletos wither§r das fortalezas do Nether soltam a §eCostela Murcha§r (Withered
+      Rib). Ela vai na Cruz da Misericórdia e no Cálice Infernal. Junte §e2§r.
+    tasks:
+      - get: xreliquary:mob_ingredient:1 x2
+    rewards:
+      - xp: 2
+      - item: minecraft:coal x8
+
+  - id: ingredientes_aranha_slime
+    title: "Quelíceras e Pérolas de Gosma"
+    type: normal
+    deps: [volume_reliquias]
+    icon: xreliquary:mob_ingredient:2
+    desc: |
+      §e• Quelíceras (Chelicerae)§r — aranhas e aranhas das cavernas.
+      §e• Pérola de Gosma (Slime Pearl)§r — slimes.
+
+      A Pérola de Gosma é uma das mais usadas do mod: Lágrima do Vazio, Pistola, Concha do
+      Kraken... Junte §e4 de cada§r.
+    tasks:
+      - get: [xreliquary:mob_ingredient:2 x4, xreliquary:mob_ingredient:4 x4]
+    rewards:
+      - xp: 2
+      - item: minecraft:slime_ball x8
+
+  - id: glandula_catalisadora
+    title: "Glândula Catalisadora"
+    type: normal
+    deps: [volume_reliquias]
+    icon: xreliquary:mob_ingredient:3
+    desc: |
+      §eCreepers§r e §eghasts§r soltam a §eGlândula Catalisadora§r — a "pólvora" das relíquias.
+      Ela vai no Tomo de Alcaestria, no Pilão e no Caldeirão do Boticário, no Altar e nas
+      granadas. Junte §e6§r.
+    tasks:
+      - get: xreliquary:mob_ingredient:3 x6
+    rewards:
+      - xp: 2
+      - item: minecraft:gunpowder x8
+
+  - id: coracao_nebuloso
+    title: "Coração Nebuloso"
+    type: normal
+    deps: [volume_reliquias]
+    icon: xreliquary:mob_ingredient:11
+    desc: |
+      O §eCoração Nebuloso§r cai de §eendermen§r e é, de longe, o ingrediente mais pedido do
+      Volume: Moeda da Fortuna, Cajado do Ender, Medalhão do Herói, Tocha de Interdição, Nó do
+      Espectro... Junte §e8§r e continue juntando.
+    tasks:
+      - get: xreliquary:mob_ingredient:11 x8
+    rewards:
+      - xp: 3
+      - item: minecraft:ender_pearl x4
+
+  - id: nucleo_derretido
+    title: "Núcleo Derretido"
+    type: normal
+    deps: [volume_reliquias]
+    icon: xreliquary:mob_ingredient:7
+    desc: |
+      §eBlazes§r e §ecubos de magma§r soltam o §eNúcleo Derretido§r. Ele aquece o Caldeirão, a
+      Pistola (Conjunto do Martelo), as Garras Infernais e o Cajado do Piromante. Junte §e6§r.
+    tasks:
+      - get: xreliquary:mob_ingredient:7 x6
+    rewards:
+      - xp: 2
+      - item: minecraft:blaze_rod x2
+
+  - id: ingredientes_ceu
+    title: "Asas, Bicos e Núcleos Gelados"
+    type: normal
+    deps: [volume_reliquias]
+    icon: xreliquary:mob_ingredient:5
+    desc: |
+      §e• Asa de Morcego§r — morcegos.
+      §e• Bico de Lula§r — lulas (três bicos + Pérola de Gosma = Fragmento de Concha do Kraken).
+      §e• Núcleo Congelado§r — golens de neve.
+
+      Mostre §e2 de cada§r.
+    tasks:
+      - get: [xreliquary:mob_ingredient:5 x2, xreliquary:mob_ingredient:12 x2, xreliquary:mob_ingredient:10 x2]
+    rewards:
+      - xp: 3
+      - item: minecraft:snowball x16
+
+  - id: olho_tempestade
+    title: "Olho da Tempestade"
+    type: normal
+    deps: [glandula_catalisadora]
+    icon: xreliquary:mob_ingredient:8
+    desc: |
+      O §eOlho da Tempestade§r vem de §ecreepers eletrificados§r (aqueles atingidos por raio).
+      Difícil de conseguir — mas é o coração do Vendaval Dilacerante e dos Tiros de Tempestade.
+      §aDica:§r um tridente... não, espera, isso é outra versão. Use feitiços de raio ou espere
+      uma tempestade.
+    tasks:
+      - get: xreliquary:mob_ingredient:8
+    rewards:
+      - xp: 3
+      - item: minecraft:gunpowder x16
+
+  - id: chapeu_bruxa
+    title: "Chapéu de Bruxa"
+    type: normal
+    deps: [volume_reliquias]
+    icon: xreliquary:witch_hat
+    desc: |
+      As §ebruxas§r às vezes deixam cair o próprio §eChapéu de Bruxa§r. Ele é ingrediente do Tomo
+      de Alcaestria e da Lágrima Infernal. E fica uma graça na sua cabeça.
+    tasks:
+      - get: xreliquary:witch_hat
+    rewards:
+      - xp: 2
+      - item: minecraft:glass_bottle x8
+
+  - id: ingredientes_compostos
+    title: "Ingredientes Compostos"
+    type: normal
+    deps: [ingredientes_mortos_vivos, ingredientes_aranha_slime, nucleo_derretido, coracao_nebuloso, glandula_catalisadora]
+    icon: xreliquary:mob_ingredient:9
+    desc: |
+      Alguns ingredientes não caem: são fabricados (sem forma) a partir dos outros:
+
+      §e• Essência Fértil§r — glândulas, costelas, pérolas de gosma e corante verde.
+      §e• Garra Infernal§r — couro, Núcleo Derretido, Costela e Pérola de Gosma.
+      §e• Tecido Carmesim§r — lã vermelha, lã preta e dois Corações Nebulosos.
+
+      Faça um de cada.
+    tasks:
+      - get: [xreliquary:mob_ingredient:9, xreliquary:mob_ingredient:13, xreliquary:mob_ingredient:15]
+    rewards:
+      - xp: 3
+      - item: minecraft:leather x8
+
+  # ======================================================================
+  # FASE 1 — ALCAESTRIA E O ALTAR
+  # ======================================================================
+  - id: tomo_alcaestria
+    title: "Tomo de Alcaestria"
+    type: main
+    deps: [chapeu_bruxa, glandula_catalisadora, nucleo_derretido, olho_tempestade, coracao_nebuloso, ingredientes_aranha_slime]
+    icon: xreliquary:alkahest_tome
+    desc: |
+      O livro mais cobiçado do Volume! Livro, Chapéu de Bruxa, cabeça de esqueleto wither,
+      Núcleo Derretido, Olho da Tempestade, Glândula, Pérola de Gosma, Quelíceras e Coração
+      Nebuloso formam o §eTomo de Alcaestria§r.
+
+      Ele guarda até §e250 de redstone§r como carga (fabrique-o junto com redstone para
+      carregar). Depois, §efabrique o tomo junto com certos itens para duplicá-los§r: terra,
+      pedregulho, areia, cascalho, arenito, argila, netherrack, carvão, lápis, obsidiana, areia
+      das almas, pedra do Fim, pólvora, sílex... e até lingotes e gemas, por um custo maior.
+      Leia o tomo (clique direito) para ver a lista.
+    tasks:
+      - get: xreliquary:alkahest_tome
+    rewards:
+      - xp: 5
+      - choice: [minecraft:redstone_block x4, minecraft:redstone x32, minecraft:gold_ingot x8]
+
+  - id: altar_luz
+    title: "Altar da Luz"
+    type: normal
+    deps: [tomo_alcaestria]
+    icon: xreliquary:altar_idle
+    desc: |
+      Obsidiana, pó de glowstone, lâmpada de redstone, Coração Nebuloso e Glândula = §eAltar da
+      Luz§r. Alimente-o com §eredstone§r (3 por ativação — o Tomo de Alcaestria também pode
+      abastecê-lo com clique direito). Ativo, a céu aberto, ele faz brotar §eglowstone§r a cada
+      ~20 minutos (com alguns minutos de variação).
+    tasks:
+      - get: xreliquary:altar_idle
+    rewards:
+      - xp: 3
+      - item: minecraft:glowstone_dust x16
+
+  # ======================================================================
+  # FASE 2 — O BOTICÁRIO
+  # ======================================================================
+  - id: pilao_boticario
+    title: "Pilão do Boticário"
+    type: main
+    deps: [glandula_catalisadora]
+    icon: xreliquary:apothecary_mortar
+    desc: |
+      Blocos de quartzo e Glândulas Catalisadoras formam o §ePilão do Boticário§r. Coloque nele
+      §e2 ou 3 ingredientes de poção§r e clique várias vezes para moê-los numa §eEssência de
+      Poção§r, que combina os efeitos dos ingredientes. Os ingredientes válidos (e os efeitos)
+      estão na config do mod; experimente os clássicos: açúcar, pó de blaze, olho de aranha,
+      cenoura dourada, Corações e Núcleos do próprio Reliquary...
+    tasks:
+      - get: xreliquary:apothecary_mortar
+    rewards:
+      - xp: 4
+      - choice: [minecraft:quartz_block x8, minecraft:sugar x16, minecraft:nether_wart x8]
+
+  - id: essencia_pocao
+    title: "Essência de Poção"
+    type: normal
+    deps: [pilao_boticario]
+    icon: xreliquary:potion_essence
+    desc: |
+      Moa a sua primeira §eEssência de Poção§r no Pilão. Passe o mouse sobre ela para ver os
+      efeitos. Duas essências diferentes no Caldeirão viram poções de efeitos múltiplos!
+    tasks:
+      - get: xreliquary:potion_essence
+    rewards:
+      - xp: 2
+      - item: minecraft:nether_wart x8
+
+  - id: caldeirao_boticario
+    title: "Caldeirão do Boticário"
+    type: main
+    deps: [pilao_boticario, coracao_nebuloso, ingredientes_compostos]
+    icon: xreliquary:apothecary_cauldron
+    desc: |
+      Caldeirão, Glândulas, Corações Nebulosos, Garras Infernais e Núcleo Derretido = §eCaldeirão
+      do Boticário§r. Como usar:
+
+      §e1.§r Ponha uma §efonte de calor§r embaixo (fogo ou lava) e encha de §eágua§r.
+      §e2.§r Adicione §everruga do Nether§r e a §eEssência de Poção§r.
+      §e3.§r Opcionais: §eredstone§r (duração, até 5), §eglowstone§r (potência) e §epólvora§r
+      (poção de arremesso).
+      §e4.§r Quando ferver, recolha com §eFrascos Vazios§r.
+    tasks:
+      - get: xreliquary:apothecary_cauldron
+    rewards:
+      - xp: 4
+      - choice: [minecraft:glowstone_dust x16, minecraft:redstone x16, minecraft:gunpowder x16]
+
+  - id: frasco_vazio
+    title: "Frascos Condensados"
+    type: normal
+    deps: [caldeirao_boticario]
+    icon: xreliquary:potion
+    desc: |
+      Cinco painéis de vidro em "U" = um §efrasco§r para Poções Condensadas. Recolha a poção do
+      Caldeirão com ele.
+    tasks:
+      - get: xreliquary:potion x4
+    rewards:
+      - xp: 2
+      - item: minecraft:glass_pane x16
+
+  - id: pocao_condensada
+    title: "Poção Condensada"
+    type: milestone
+    deps: [frasco_vazio, essencia_pocao]
+    icon: xreliquary:potion
+    banner: "O Boticário"
+    subtitle: "Poções que os alquimistas invejam"
+    desc: |
+      Uma §ePoção Condensada§r feita por você! Elas podem carregar vários efeitos ao mesmo tempo,
+      com duração e potência ajustadas no Caldeirão — muito além das poções comuns.
+
+      §aDica:§r uma linha de Caldeirões com fontes de lava embaixo e baús de essências ao lado
+      vira uma fábrica de poções. Monte a sua farmácia!
+
+      (A tarefa aceita qualquer frasco do Reliquary: mostre um com poção dentro.)
+    tasks:
+      - get: xreliquary:potion
+    rewards:
+      - xp: 8
+      - kit: {name: "Kit do Boticário", items: [minecraft:nether_wart x16, minecraft:glowstone_dust x16, minecraft:redstone x16, minecraft:gunpowder x8, minecraft:glass_pane x16]}
+      - loot: raro
+
+  - id: agua_brilhante
+    title: "Água Brilhante"
+    type: normal
+    deps: [volume_reliquias]
+    icon: xreliquary:glowing_water
+    desc: |
+      Painéis de vidro, balde de água, pó de glowstone, verruga do Nether e pólvora rendem §e5
+      Águas Brilhantes§r: arremessadas, §eferem mortos-vivos§r. A arma sagrada mais barata!
+    tasks:
+      - get: xreliquary:glowing_water x5
+    rewards:
+      - xp: 2
+      - item: minecraft:glowstone_dust x8
+
+  - id: pao_brilhante
+    title: "Pão Brilhante"
+    type: optional
+    deps: [agua_brilhante]
+    icon: xreliquary:glowing_bread
+    desc: |
+      Três pães + uma Água Brilhante = §e3 Pães Brilhantes§r, que §erestauram a fome por
+      completo§r. Lanche de herói.
+    tasks:
+      - get: xreliquary:glowing_bread x3
+    rewards:
+      - loot: comum
+
+  - id: granada_sagrada
+    title: "Granada de Mão Sagrada"
+    type: optional
+    deps: [agua_brilhante, glandula_catalisadora]
+    icon: xreliquary:holy_hand_grenade
+    desc: |
+      Água Brilhante, pepita de ouro, TNT e Glândula = §e4 Granadas de Mão Sagradas§r: uma
+      explosão poderosa que §enão quebra blocos nem fere quem arremessa§r. Conte até três
+      (não até cinco!).
+    tasks:
+      - get: xreliquary:holy_hand_grenade x4
+    rewards:
+      - loot: comum
+
+  - id: soro_afrodite
+    title: "Soro de Afrodite e Poção Fértil"
+    type: optional
+    deps: [ingredientes_compostos]
+    icon: xreliquary:attraction_potion
+    desc: |
+      Com Essência Fértil, balde de água e painéis de vidro: o §eSoro de Afrodite§r (corante
+      vermelho e marrom) faz animais procriarem; a §ePoção Fértil§r (corante verde e amarelo) faz
+      plantas crescerem. Cada receita rende 5.
+    tasks:
+      - one_of: [xreliquary:attraction_potion, xreliquary:fertile_potion]
+    rewards:
+      - loot: comum
+
+  - id: vitoria_regia_fertilidade
+    title: "Vitória-Régia da Fertilidade"
+    type: optional
+    deps: [ingredientes_compostos]
+    icon: xreliquary:lilypad
+    desc: |
+      Três Essências Férteis + vitória-régia = §eVitória-Régia da Fertilidade§r. Colocada na água,
+      ela acelera o crescimento das plantações num raio de §e4 blocos§r. Fazenda feliz!
+    tasks:
+      - get: xreliquary:lilypad
+    rewards:
+      - loot: comum
+
+  # ======================================================================
+  # FASE 3 — A PISTOLA DO CAÇADOR
+  # ======================================================================
+  - id: carregador_vazio
+    title: "Carregador Vazio"
+    type: normal
+    deps: [volume_reliquias]
+    icon: xreliquary:magazine
+    desc: |
+      Ferro, vidro e pedra rendem §e5 Carregadores Vazios§r. Cada carregador recebe §e8 balas§r
+      do mesmo tipo (fabrique-o com as balas). Um deles também vai no Conjunto da Empunhadura.
+    tasks:
+      - get: xreliquary:magazine x2
+    rewards:
+      - xp: 2
+      - item: minecraft:iron_ingot x8
+
+  - id: tiro_neutro
+    title: "Tiro Neutro"
+    type: normal
+    deps: [carregador_vazio]
+    icon: xreliquary:bullet:1
+    desc: |
+      Sílex, duas pepitas de ouro e pólvora = §e8 Tiros Neutros§r, a munição básica. Encha um
+      carregador: 8 tiros + carregador vazio = §eCarregador Neutro§r.
+    tasks:
+      - get: xreliquary:magazine:1
+    rewards:
+      - xp: 2
+      - item: minecraft:gold_nugget x16
+
+  - id: empunhadura
+    title: "Conjunto da Empunhadura"
+    type: normal
+    deps: [carregador_vazio]
+    icon: xreliquary:gun_part
+    desc: |
+      Ferro, creme de magma e um Carregador Vazio = §eConjunto da Empunhadura§r (Grip Assembly).
+    tasks:
+      - get: xreliquary:gun_part
+    rewards:
+      - xp: 2
+      - item: minecraft:magma_cream x2
+
+  - id: cano
+    title: "Conjunto do Cano"
+    type: normal
+    deps: [coracao_nebuloso]
+    icon: xreliquary:gun_part:1
+    desc: |
+      Ferro, creme de magma e dois Corações Nebulosos = §eConjunto do Cano§r (Barrel Assembly).
+    tasks:
+      - get: xreliquary:gun_part:1
+    rewards:
+      - xp: 2
+      - item: minecraft:iron_ingot x6
+
+  - id: martelo_gatilho
+    title: "Conjunto do Martelo"
+    type: normal
+    deps: [nucleo_derretido]
+    icon: xreliquary:gun_part:2
+    desc: |
+      Ferro, botão de pedra, bastão de blaze e Núcleo Derretido = §eConjunto do Martelo§r
+      (Hammer Assembly).
+    tasks:
+      - get: xreliquary:gun_part:2
+    rewards:
+      - xp: 2
+      - item: minecraft:blaze_rod
+  - id: pistola_cacador
+    title: "Pistola do Caçador"
+    type: main
+    deps: [empunhadura, cano, martelo_gatilho, tiro_neutro, ingredientes_aranha_slime]
+    icon: xreliquary:handgun
+    banner: "Pela grande justiça!"
+    subtitle: "Duas palavras: magia estilosa"
+    desc: |
+      "Duas palavras: magia estilosa. Ah, e uma arma." — o lema do mod, e ele não mente.
+
+      Cano, Martelo, Empunhadura, ferro e uma Pérola de Gosma = §eHunter's Handgun§r.
+      §eClique direito§r atira; §esegure o clique direito§r para recarregar com um carregador
+      cheio do inventário. Cada carregador tem 8 tiros.
+    tasks:
+      - get: xreliquary:handgun
+    rewards:
+      - xp: 5
+      - choice: [xreliquary:magazine:1 x2, xreliquary:bullet:1 x32, minecraft:gunpowder x16]
+
+  - id: tiro_exorcismo
+    title: "Tiro de Exorcismo"
+    type: optional
+    deps: [pistola_cacador, ingredientes_mortos_vivos]
+    icon: xreliquary:bullet:2
+    desc: |
+      Oito Tiros Neutros + Coração de Zumbi = §e8 Tiros de Exorcismo§r, muito eficazes contra
+      mortos-vivos.
+    tasks:
+      - get: xreliquary:bullet:2 x8
+    rewards:
+      - loot: comum
+
+  - id: tiro_blaze
+    title: "Tiro de Blaze"
+    type: optional
+    deps: [pistola_cacador]
+    icon: xreliquary:bullet:3
+    desc: |
+      Pó de blaze, bastão de blaze e duas pepitas = §e8 Tiros de Blaze§r: só dano de fogo.
+    tasks:
+      - get: xreliquary:bullet:3 x8
+    rewards:
+      - loot: comum
+
+  - id: tiro_concussivo
+    title: "Tiros Concussivo e Destruidor"
+    type: optional
+    deps: [pistola_cacador, glandula_catalisadora]
+    icon: xreliquary:bullet:6
+    desc: |
+      Gosma, pepitas e pólvora = §e8 Tiros Concussivos§r (dano em área pequena). Oito deles +
+      Glândula Catalisadora = §e8 Tiros Destruidores§r (Buster: área grande).
+    tasks:
+      - one_of: [xreliquary:bullet:5, xreliquary:bullet:6]
+    rewards:
+      - loot: comum
+
+  - id: tiro_teleguiado
+    title: "Tiros Teleguiado e do Ender"
+    type: optional
+    deps: [pistola_cacador, coracao_nebuloso]
+    icon: xreliquary:bullet:4
+    desc: |
+      Lápis, Pérola de Gosma, pepita e pólvora = §e4 Tiros Teleguiados§r (Seeker). Oito deles +
+      Coração Nebuloso = §e8 Tiros do Ender§r, que atravessam inimigos e buscam alvos.
+    tasks:
+      - one_of: [xreliquary:bullet:7, xreliquary:bullet:4]
+    rewards:
+      - loot: comum
+
+  - id: tiro_areia_tempestade
+    title: "Tiros de Areia e de Tempestade"
+    type: optional
+    deps: [pistola_cacador]
+    icon: xreliquary:bullet:9
+    desc: |
+      §eTiro de Areia§r (arenito): cega o alvo e irrita creepers. §eTiro de Tempestade§r (Olho da
+      Tempestade): mais forte durante tempestades e eletrifica creepers. Cada receita rende 8.
+    tasks:
+      - one_of: [xreliquary:bullet:8, xreliquary:bullet:9]
+    rewards:
+      - loot: comum
+
+  - id: cacador_armado
+    title: "Caçador Armado"
+    type: milestone
+    deps: [pistola_cacador, tiro_exorcismo, tiro_concussivo, tiro_teleguiado]
+    icon: xreliquary:magazine:7
+    banner: "Arsenal do Caçador"
+    subtitle: "Uma bala para cada monstro"
+    desc: |
+      Pistola, Exorcismo para os mortos-vivos, Concussivo para os grupos, Teleguiado para os
+      fujões. Você agora tem um §earsenal§r completo, Herói!
+
+      §aOrganização:§r mantenha carregadores cheios de tipos diferentes no inventário; a pistola
+      recarrega com o primeiro que encontrar. Mostre §e3 carregadores cheios§r de qualquer tipo.
+    tasks:
+      - one_of: [xreliquary:magazine:1 x3, xreliquary:magazine:2 x3, xreliquary:magazine:3 x3, xreliquary:magazine:4 x3, xreliquary:magazine:5 x3, xreliquary:magazine:6 x3, xreliquary:magazine:7 x3, xreliquary:magazine:8 x3, xreliquary:magazine:9 x3]
+    rewards:
+      - xp: 8
+      - kit: {name: "Kit do Caçador de Relíquias", items: [xreliquary:magazine x5, xreliquary:bullet:1 x32, minecraft:gold_nugget x32, minecraft:gunpowder x16]}
+      - loot: raro
+
+  # ======================================================================
+  # FASE 4 — RELÍQUIAS DE COMBATE E PROTEÇÃO
+  # ======================================================================
+  - id: cruz_misericordia
+    title: "Cruz da Misericórdia"
+    type: normal
+    deps: [ingredientes_mortos_vivos, costela_wither]
+    icon: xreliquary:mercy_cross
+    desc: |
+      Ouro, couro, Costela, Costela Murcha, Coração de Zumbi e uma cabeça de esqueleto wither =
+      §eCruz da Misericórdia§r, uma arma que causa §edano extra em mortos-vivos§r.
+    tasks:
+      - get: xreliquary:mercy_cross
+    rewards:
+      - xp: 3
+      - item: minecraft:gold_ingot x4
+
+  - id: magicbane
+    title: "Magicbane"
+    type: normal
+    deps: [coracao_nebuloso]
+    icon: xreliquary:magicbane
+    desc: |
+      Olhos do Fim, Corações Nebulosos, ouro e ferro: a §eMagicbane§r é uma lâmina que §efica
+      mais forte a cada encantamento§r que você colocar nela. Leve-a à mesa de encantamento!
+    tasks:
+      - get: xreliquary:magicbane
+    rewards:
+      - xp: 3
+      - item: minecraft:experience_bottle x8
+
+  - id: perola_coracao
+    title: "Pérolas do Coração e Nian Zhu"
+    type: normal
+    deps: [ingredientes_mortos_vivos]
+    icon: xreliquary:heart_zhu
+    desc: |
+      Seis ingredientes de um monstro + ossos/carne = uma §ePérola do Coração§r (Zumbi,
+      Esqueleto, Esqueleto Wither ou Creeper). Seis pérolas iguais numa linha = um §eNian Zhu§r:
+      com ele, §eaquele tipo de monstro não enxerga você§r. Faça um Nian Zhu.
+    tasks:
+      - one_of: [xreliquary:heart_zhu, xreliquary:heart_zhu:1, xreliquary:heart_zhu:2, xreliquary:heart_zhu:3]
+    rewards:
+      - xp: 3
+      - item: minecraft:string x8
+
+  - id: pena_angelical
+    title: "Pena Angelical"
+    type: normal
+    deps: [ingredientes_ceu, ingredientes_compostos, coracao_nebuloso]
+    icon: xreliquary:angelic_feather
+    desc: |
+      Glowstone, ouro, pena, Asas de Morcego, Essências Férteis e um Coração Nebuloso = §ePena
+      Angelical§r: §eprotege de quedas§r em troca de fome (e ajuda no salto).
+    tasks:
+      - get: xreliquary:angelic_feather
+    rewards:
+      - xp: 3
+      - item: minecraft:feather x8
+
+  - id: frasco_coracao_anjo
+    title: "Frasco do Coração de Anjo"
+    type: normal
+    deps: [ingredientes_compostos]
+    icon: xreliquary:angelheart_vial
+    desc: |
+      Vidro, balde de leite, Garra Infernal e Essências Férteis rendem §e5 Frascos do Coração de
+      Anjo§r. Com um no inventário, §evocê ressuscita uma vez§r (com 25% da vida e sem efeitos
+      negativos) e o frasco quebra.
+    tasks:
+      - get: xreliquary:angelheart_vial
+    rewards:
+      - xp: 3
+      - item: minecraft:milk_bucket
+
+  - id: pena_fenix
+    title: "Pluma da Fênix"
+    type: milestone
+    deps: [pena_angelical, frasco_coracao_anjo]
+    icon: xreliquary:phoenix_down
+    banner: "Pluma da Fênix"
+    subtitle: "Da morte, de volta à vida"
+    desc: |
+      Três Frascos do Coração de Anjo + uma Pena Angelical = §ePhoenix Down§r. Com ela no
+      inventário, §evocê ressuscita com a vida cheia§r, regeneração temporária, resistência e até
+      proteção contra fogo ou afogamento se foi isso que matou você. Depois ela volta a ser uma
+      Pena Angelical.
+
+      Herói, eu durmo mais tranquila sabendo que você carrega uma dessas. Faça já a próxima!
+    tasks:
+      - get: xreliquary:phoenix_down
+    rewards:
+      - xp: 8
+      - kit: {name: "Kit da Fênix", items: [xreliquary:angelheart_vial x3, minecraft:golden_apple x2, minecraft:glowstone_dust x16]}
+      - loot: raro
+
+  - id: concha_kraken
+    title: "Concha do Kraken"
+    type: normal
+    deps: [ingredientes_ceu, coracao_nebuloso, ingredientes_aranha_slime]
+    icon: xreliquary:kraken_shell
+    desc: |
+      Fragmentos de Concha do Kraken, Corações Nebulosos, Olhos do Fim e Pérola de Gosma =
+      §eConcha do Kraken§r: §eabsorve o dano de afogamento§r em troca de fome.
+    tasks:
+      - get: xreliquary:kraken_shell
+    rewards:
+      - xp: 3
+      - item: minecraft:prismarine_shard x8
+
+  - id: garras_infernais
+    title: "Garras Infernais"
+    type: normal
+    deps: [ingredientes_compostos, nucleo_derretido]
+    icon: xreliquary:infernal_claws
+    desc: |
+      Garras Infernais, Pérola de Gosma, Núcleos Derretidos e couro = §eGarras Infernais§r:
+      §eabsorvem dano de fogo§r em troca de fome. Indispensável no Nether.
+    tasks:
+      - get: xreliquary:infernal_claws
+    rewards:
+      - xp: 3
+      - item: minecraft:potion:8195
+  - id: olho_salamandra
+    title: "Olho da Salamandra"
+    type: normal
+    deps: [ingredientes_ceu, nucleo_derretido, coracao_nebuloso]
+    icon: xreliquary:salamander_eye
+    desc: |
+      Núcleos Congelados e Derretidos, Corações Nebulosos, lágrimas de ghast e Olho do Fim =
+      §eOlho da Salamandra§r. Segurando-o, §ebolas de fogo de blaze somem e as de ghast voltam§r,
+      e o fogo em você e ao redor se apaga.
+    tasks:
+      - get: xreliquary:salamander_eye
+    rewards:
+      - xp: 3
+      - item: minecraft:ghast_tear x2
+
+  - id: manto_crepusculo
+    title: "Manto do Crepúsculo"
+    type: optional
+    deps: [ingredientes_compostos]
+    icon: xreliquary:twilight_cloak
+    desc: |
+      Ferro, lã preta e Tecido Carmesim = §eTwilight Cloak§r: §einvisibilidade na escuridão§r.
+      Ótimo para atravessar cavernas sem chamar atenção.
+    tasks:
+      - get: xreliquary:twilight_cloak
+    rewards:
+      - loot: comum
+
+  - id: rosa_sem_wither
+    title: "Rosa Sem Murchar"
+    type: optional
+    deps: [ingredientes_compostos]
+    icon: xreliquary:witherless_rose
+    desc: |
+      Quatro §eEstrelas do Nether§r, Essências Férteis e uma roseira = §eWitherless Rose§r: quem
+      a carrega fica §eprotegido do efeito Wither§r. Caro, mas perfeito para lutar contra o Wither
+      de novo e de novo.
+    tasks:
+      - get: xreliquary:witherless_rose
+    rewards:
+      - loot: incomum
+
+  # ======================================================================
+  # FASE 5 — LÁGRIMAS, MOEDAS E MEDALHÕES
+  # ======================================================================
+  - id: lagrima_vazio_vazia
+    title: "Lágrima do Vazio"
+    type: main
+    deps: [ingredientes_aranha_slime, coracao_nebuloso]
+    icon: xreliquary:void_tear_empty
+    desc: |
+      Lápis, pérola do Fim, lágrima de ghast, Pérolas de Gosma e Coração Nebuloso = §eLágrima do
+      Vazio Vazia§r. Ela é ingrediente de metade das relíquias avançadas (Cálices, Cajados,
+      Pedra de Toque, Lágrima Infernal...).
+
+      Usada diretamente (clique direito), ela §ecaptura o item que você tem em maior quantidade§r
+      e o guarda (até 2 bilhões!). Agachado + clique direito alterna a absorção automática.
+    tasks:
+      - get: xreliquary:void_tear_empty x2
+    rewards:
+      - xp: 5
+      - choice: [minecraft:ghast_tear x2, minecraft:ender_pearl x4, minecraft:dye:4 x16]
+
+  - id: lagrima_vazio_cheia
+    title: "Um Mar no Bolso"
+    type: optional
+    deps: [lagrima_vazio_vazia]
+    icon: xreliquary:void_tear
+    desc: |
+      Encha uma Lágrima do Vazio com algo (pedregulho, terra, sementes...). Ela sempre deixa um
+      monte do item no inventário e devolve quando você precisa. Adeus, baús de pedregulho!
+    tasks:
+      - get: xreliquary:void_tear
+    rewards:
+      - loot: comum
+
+  - id: moeda_fortuna
+    title: "Moeda da Fortuna"
+    type: normal
+    deps: [coracao_nebuloso]
+    icon: xreliquary:fortune_coin
+    desc: |
+      Ouro, Olhos do Fim e um Coração Nebuloso = §eCoin of Fortune§r. Ativada (agachado + clique
+      direito), ela §eatrai itens e orbes de XP§r num raio de 5 blocos; segurando o clique
+      direito, puxa de até 15 blocos. A melhor amiga de quem minera.
+    tasks:
+      - get: xreliquary:fortune_coin
+    rewards:
+      - xp: 3
+      - item: minecraft:gold_ingot x4
+
+  - id: lagrima_infernal
+    title: "Lágrima Infernal"
+    type: normal
+    deps: [lagrima_vazio_vazia, chapeu_bruxa, ingredientes_compostos]
+    icon: xreliquary:infernal_tear
+    desc: |
+      Pó de blaze, Chapéu de Bruxa, Núcleos Derretidos, Garra Infernal e uma Lágrima do Vazio
+      Vazia = §eLágrima Infernal§r. Ativada, ela §equeima itens em experiência§r. Ingrediente do
+      Medalhão do Herói, do Cálice Infernal e de vários cajados.
+    tasks:
+      - get: xreliquary:infernal_tear
+    rewards:
+      - xp: 4
+      - item: minecraft:blaze_powder x8
+
+  - id: medalhao_heroi
+    title: "Medalhão do Herói"
+    type: milestone
+    deps: [moeda_fortuna, lagrima_infernal]
+    icon: xreliquary:hero_medallion
+    banner: "Medalhão do Herói"
+    subtitle: "Feito para você, Herói"
+    desc: |
+      Herói... o nome desta relíquia foi feito pra você! Moeda da Fortuna, Lágrima Infernal,
+      Olho do Fim, ferro e Corações Nebulosos = §eHero's Medallion§r.
+
+      Ele §eguarda experiência§r para você (até 2 bilhões de pontos!). Clique direito para
+      recuperar níveis. Junto com a Moeda da Fortuna, nunca mais um orbe de XP vai se perder.
+    tasks:
+      - get: xreliquary:hero_medallion
+    rewards:
+      - xp: 10
+      - kit: {name: "Kit do Herói", items: [minecraft:experience_bottle x16, xreliquary:mob_ingredient:11 x4, minecraft:ender_eye x4, minecraft:gold_ingot x8]}
+      - loot: raro
+
+  - id: pedra_toque_midas
+    title: "Pedra de Toque de Midas"
+    type: normal
+    deps: [lagrima_vazio_vazia, nucleo_derretido, glandula_catalisadora]
+    icon: xreliquary:midas_touchstone
+    desc: |
+      Bigorna, blocos de ouro, Núcleos Derretidos, Glândulas e uma Lágrima do Vazio Vazia =
+      §eTouchstone of Midas§r. Carregue-a com §eglowstone§r: ela §erepara itens de ouro§r no seu
+      inventário. Ouro tem encantamentos ótimos e durabilidade péssima — agora não mais.
+    tasks:
+      - get: xreliquary:midas_touchstone
+    rewards:
+      - xp: 3
+      - item: minecraft:glowstone_dust x16
+
+  - id: calice_imperador
+    title: "Cálice do Imperador"
+    type: normal
+    deps: [lagrima_vazio_vazia]
+    icon: xreliquary:emperor_chalice
+    desc: |
+      Esmeralda, ouro, Pérolas de Gosma, lápis, balde e uma Lágrima do Vazio Vazia = §eEmperor's
+      Chalice§r: um §ebalde de água infinito§r (modo coletar ou colocar). Beber dele mata a fome
+      em troca de um pouco de vida.
+    tasks:
+      - get: xreliquary:emperor_chalice
+    rewards:
+      - xp: 3
+      - item: minecraft:emerald x2
+
+  - id: calice_infernal
+    title: "Cálice Infernal"
+    type: optional
+    deps: [calice_imperador, garras_infernais, lagrima_infernal, costela_wither]
+    icon: xreliquary:infernal_chalice
+    desc: |
+      Cálice do Imperador, Garras Infernais, Lágrima Infernal, Costelas Murchas e Núcleos
+      Derretidos = §eInfernal Chalice§r: §eprotege de dano de lava§r e guarda até 500 000 mB de
+      lava (agachado + clique direito alterna drenar/colocar).
+    tasks:
+      - get: xreliquary:infernal_chalice
+    rewards:
+      - loot: incomum
+
+  # ======================================================================
+  # FASE 6 — CAJADOS E VARAS
+  # ======================================================================
+  - id: cajado_ender
+    title: "Cajado do Ender"
+    type: normal
+    deps: [lagrima_vazio_vazia, ingredientes_ceu]
+    icon: xreliquary:ender_staff
+    desc: |
+      Corações Nebulosos, Asas de Morcego, Olho do Fim, bastão de blaze e Lágrima do Vazio Vazia
+      = §eEnder Staff§r. Ele guarda pérolas do Fim (até 250) e tem modos (agachado + clique
+      esquerdo): lançar, lançamento longo, §eteleportar até um Nó do Espectro§r e vincular.
+    tasks:
+      - get: xreliquary:ender_staff
+    rewards:
+      - xp: 3
+      - item: minecraft:ender_pearl x8
+
+  - id: no_espectro
+    title: "Nó do Espectro"
+    type: optional
+    deps: [cajado_ender]
+    icon: xreliquary:wraith_node
+    desc: |
+      Coração Nebuloso + esmeralda = §eWraith Node§r. Vincule o Cajado do Ender a ele e
+      teletransporte-se de volta de onde estiver. Um "lar" portátil.
+    tasks:
+      - get: xreliquary:wraith_node
+    rewards:
+      - loot: comum
+
+  - id: vendaval_dilacerante
+    title: "Vendaval Dilacerante"
+    type: normal
+    deps: [pena_angelical, olho_tempestade, lagrima_vazio_vazia]
+    icon: xreliquary:rending_gale
+    desc: |
+      Olhos da Tempestade, Asas de Morcego, Penas Angelicais, bastão de blaze e Lágrima do Vazio
+      Vazia = §eRending Gale§r. Com ele você §evoa§r, empurra ou puxa criaturas e, na chuva,
+      §edispara raios§r (agachado + clique esquerdo troca o modo). Precisa de carga — confira no
+      NEI o que o abastece.
+    tasks:
+      - get: xreliquary:rending_gale
+    rewards:
+      - xp: 4
+      - item: minecraft:feather x16
+
+  - id: vara_colheita
+    title: "Vara da Colheita"
+    type: normal
+    deps: [ingredientes_compostos, lagrima_vazio_vazia]
+    icon: xreliquary:harvest_rod
+    desc: |
+      Roseiras, Essência Fértil, cipós, graveto e Lágrima do Vazio Vazia = §eHarvest Rod§r.
+      Abastecida com §efarinha de osso§r (até 250), ela fertiliza com clique direito e §equebra
+      plantações maduras em área§r.
+    tasks:
+      - get: xreliquary:harvest_rod
+    rewards:
+      - xp: 3
+      - item: minecraft:dye:15 x32
+
+  - id: cajado_piromante
+    title: "Cajado do Piromante"
+    type: normal
+    deps: [garras_infernais, olho_salamandra, lagrima_infernal]
+    icon: xreliquary:pyromancer_staff
+    desc: |
+      Núcleos Derretidos, Garras Infernais, Olho da Salamandra, Lágrima Infernal e bastão de
+      blaze = §ePyromancer's Staff§r. Ele §edispara bolas de fogo de blaze e de ghast§r, cria
+      explosões de fogo e acende chamas (agachado + clique esquerdo troca o modo). Carrega com
+      pó de blaze e cargas de fogo.
+    tasks:
+      - get: xreliquary:pyromancer_staff
+    rewards:
+      - xp: 4
+      - item: minecraft:fire_charge x8
+
+  - id: vara_mago_gelo
+    title: "Vara do Mago do Gelo"
+    type: normal
+    deps: [ingredientes_ceu, lagrima_vazio_vazia]
+    icon: xreliquary:ice_magus_rod
+    desc: |
+      Núcleos Congelados, diamantes, gelo compactado, ferro e Lágrima do Vazio Vazia = §eIce Magus
+      Rod§r. Abastecida com §ebolas de neve§r, ela §earremessa bolas de neve que machucam§r (com
+      bônus contra criaturas de fogo e blazes).
+    tasks:
+      - get: xreliquary:ice_magus_rod
+    rewards:
+      - xp: 3
+      - item: minecraft:snowball x32
+
+  - id: tesoura_inverno
+    title: "Tesoura do Inverno"
+    type: optional
+    deps: [ingredientes_ceu]
+    icon: xreliquary:shears_of_winter
+    desc: |
+      Tesoura, Núcleo Congelado e dois diamantes = §eShears of Winter§r: tesouras mágicas que
+      §earrancam as folhas das árvores com o frio§r. Ingrediente do Cajado Glacial.
+    tasks:
+      - get: xreliquary:shears_of_winter
+    rewards:
+      - loot: comum
+
+  - id: cajado_glacial
+    title: "Cajado Glacial"
+    type: optional
+    deps: [vara_mago_gelo, tesoura_inverno]
+    icon: xreliquary:glacial_staff
+    desc: |
+      Vara do Mago do Gelo + Tesoura do Inverno + Núcleos Congelados + diamantes + Lágrima do
+      Vazio = §eGlacial Staff§r: bolas de neve mais fortes, §econgela inimigos§r atingidos e
+      §econgela o chão§r onde você anda.
+    tasks:
+      - get: xreliquary:glacial_staff
+    rewards:
+      - loot: incomum
+
+  - id: cajado_peregrino
+    title: "Cajado do Peregrino"
+    type: optional
+    deps: [lagrima_infernal]
+    icon: xreliquary:sojourner_staff
+    desc: |
+      Ouro, creme de magma, Núcleo Derretido, Lágrima Infernal e bastão de blaze = §eSojourner's
+      Staff§r. Ele §econsome tochas§r do inventário e as coloca §ede longe§r (custo extra para
+      longas distâncias).
+    tasks:
+      - get: xreliquary:sojourner_staff
+    rewards:
+      - loot: comum
+
+  - id: cajado_serpente
+    title: "Cajado da Serpente"
+    type: optional
+    deps: [ingredientes_aranha_slime, ingredientes_ceu]
+    icon: xreliquary:serpent_staff
+    desc: |
+      "Toda aquela coisa nojenta do cuspe de um Kraken, jogada nos inimigos." Quelíceras,
+      obsidiana, Olho do Fim, Pérolas de Gosma, Fragmento de Concha do Kraken e bastão de blaze =
+      §eSerpent Staff§r, que §edrena vida§r ao acertar.
+    tasks:
+      - get: xreliquary:serpent_staff
+    rewards:
+      - loot: comum
+
+  - id: vara_lyssa
+    title: "Vara de Lyssa"
+    type: optional
+    deps: [ingredientes_ceu, ingredientes_compostos]
+    icon: xreliquary:rod_of_lyssa
+    desc: |
+      Uma vara de pesca mágica (Asa de Morcego, bastões de blaze, Coração Nebuloso, Núcleo
+      Derretido, linha e Garra Infernal) que §epuxa itens§r e até §ebate carteiras§r — rouba itens
+      de criaturas fisgadas!
+    tasks:
+      - get: xreliquary:rod_of_lyssa
+    rewards:
+      - loot: comum
+
+  - id: catalisador_destruicao
+    title: "Catalisador da Destruição"
+    type: optional
+    deps: [lagrima_infernal, glandula_catalisadora]
+    icon: xreliquary:destruction_catalyst
+    desc: |
+      TNT, Núcleos Derretidos, Glândula, ouro, isqueiro e Lágrima Infernal = §eDestruction
+      Catalyst§r. Abastecido com §epólvora§r (até 250), ele §edestrói blocos comuns§r (terra,
+      pedra, cascalho, areia, netherrack...) num cubo 3×3×3. Escavação sem picareta!
+    tasks:
+      - get: xreliquary:destruction_catalyst
+    rewards:
+      - loot: comum
+
+  - id: tocha_interdicao
+    title: "Tocha de Interdição"
+    type: normal
+    deps: [coracao_nebuloso, nucleo_derretido, ingredientes_ceu]
+    icon: xreliquary:interdiction_torch
+    desc: |
+      Coração Nebuloso, Núcleos Derretidos, diamante, bastões de blaze e Asa de Morcego = §e4
+      Tochas de Interdição§r: elas §eempurram criaturas e projéteis§r num raio de 5 blocos. No
+      pack, a lista inclui muitas criaturas de outros mods.
+    tasks:
+      - get: xreliquary:interdiction_torch
+    rewards:
+      - xp: 3
+      - item: minecraft:torch x32
+
+  - id: lanterna_paranoia
+    title: "Lanterna da Paranoia"
+    type: optional
+    deps: [tocha_interdicao]
+    icon: xreliquary:lantern_of_paranoia
+    desc: |
+      Ferro, vidro, Núcleo Derretido, Glândula e uma Tocha de Interdição = §eLantern of
+      Paranoia§r. Ativada (agachado + clique direito), ela §ecoloca tochas sozinha§r em lugares
+      escuros. Para quem tem medo do escuro (eu!).
+    tasks:
+      - get: xreliquary:lantern_of_paranoia
+    rewards:
+      - loot: comum
+
+  - id: relicario_completo
+    title: "O Relicário"
+    type: milestone
+    deps: [tomo_alcaestria, pocao_condensada, cacador_armado, pena_fenix, medalhao_heroi, pedra_toque_midas, cajado_piromante, vendaval_dilacerante]
+    icon: xreliquary:alkahest_tome
+    size: 48
+    banner: "O Relicário"
+    subtitle: "Duas palavras: magia estilosa"
+    effect: 4
+    desc: |
+      Tomo de Alcaestria, Poções Condensadas, a Pistola do Caçador, a Pluma da Fênix, o Medalhão
+      do Herói, a Pedra de Midas, o Cajado do Piromante e o Vendaval Dilacerante. Herói, você
+      montou um §erelicário§r de verdade!
+
+      Nos tempos antigos, cada relíquia era um "marcador de página": um objeto que lembrava ao
+      Registro um pedaço de magia esquecida. Agora elas lembram de novo.
+
+      E se você tem coragem para relíquias ainda mais antigas — feitas com Taumaturgia e com os
+      recursos de Alfheim —, as §dRelíquias Esquecidas§r esperam logo ao lado.
+    tasks:
+      - get: [xreliquary:alkahest_tome, xreliquary:handgun, xreliquary:phoenix_down, xreliquary:hero_medallion, xreliquary:pyromancer_staff, xreliquary:rending_gale]
+    rewards:
+      - xp: 12
+      - kit: {name: "Kit do Guardião do Relicário", items: [xreliquary:mob_ingredient:11 x8, xreliquary:mob_ingredient:7 x8, xreliquary:void_tear_empty, minecraft:nether_star]}
+      - loot: epico

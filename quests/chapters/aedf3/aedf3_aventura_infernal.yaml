@@ -127,7 +127,7 @@ quests:
   desc: |
     Pacíficos até você bater em um, quando todos viram uma matilha! Os §ePorcos-Zumbi§r andam em bando e soltam pepitas de ouro. Derrote 4 com espada de ferro ou melhor, mas se afaste dos outros logo depois. Bom para treinar reflexo.
   tasks:
-  - {kill: PigZombie x4}
+  - kill: {entity: PigZombie, count: 4}
   rewards:
   - {xp: 3}
   - choice: ['minecraft:gold_nugget x16', 'minecraft:rotten_flesh x8']
@@ -139,7 +139,7 @@ quests:
   desc: |
     Ouvir um grito agudo e ver uma bola de fogo vindo é a experiência clássica do Nether! O §eGhast§r flutua e atira projéteis que você pode rebater com a espada. Mate um (é bom ter arco) e colha a lágrima, um ingrediente raro de poções de regeneração. Ao menos uma vez na vida, grite de volta.
   tasks:
-  - {kill: Ghast x1}
+  - kill: {entity: Ghast, count: 1}
   rewards:
   - {xp: 5}
   - choice: ['minecraft:ghast_tear', 'minecraft:fire_charge x8']
@@ -151,7 +151,7 @@ quests:
   desc: |
     Dentro das fortalezas, gaiolas de spawners soltam §eBlazes§r, chamas que voam e cospem fogo. Use neve ou bolas de neve para derrubá-los mais rápido, e leve armadura sólida. Eles deixam varetas, que são essenciais para poções e para o Olho do Fim.
   tasks:
-  - {kill: Blaze x3}
+  - kill: {entity: Blaze, count: 3}
   rewards:
   - {xp: 5}
   - choice: ['minecraft:blaze_powder x8', 'minecraft:snowball x16']
@@ -185,7 +185,7 @@ quests:
   desc: |
     Altos, negros e silenciosos: os §eEsqueletos Wither§r são mais perigosos que os comuns, pois o ataque causa o efeito Wither, que corrói a vida. Eles soltam crânios, que você vai precisar logo. Leve leite para curar a lentidão e aguarde o momento certo.
   tasks:
-  - {kill: witherSkeleton x3}
+  - kill: {entity: witherSkeleton, count: 3}
   rewards:
   - {xp: 5}
   - choice: ['minecraft:bone x16', 'minecraft:coal x16']
@@ -241,7 +241,7 @@ quests:
   desc: |
     Cobiçosos e brutos, os §ePiglins§r andam por biomas especiais do Nether. Usar peças de ouro na armadura os mantém calmos. Se atacar um, a tribo toda vira. Derrote um e fuja logo depois, é o conselho dos heróis antigos.
   tasks:
-  - {kill: netherlicious.Piglin x1}
+  - kill: {entity: netherlicious.Piglin, count: 1}
   rewards:
   - {xp: 3}
   - choice: ['minecraft:gold_ingot x8', 'minecraft:cooked_porkchop x8']
@@ -255,7 +255,7 @@ quests:
 
     §cPerigo:§r nunca invoque em lugar fechado ou perto da sua base.
   tasks:
-  - {kill: WitherBoss x1}
+  - kill: {entity: WitherBoss, count: 1}
   rewards:
   - {xp: 20}
   - choice: ['minecraft:diamond x4', 'minecraft:experience_bottle x8']

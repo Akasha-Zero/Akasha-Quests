@@ -49,7 +49,7 @@ quests:
   desc: |
     Sob montes de terra, as §eColinas Ocas§r guardam cavernas, baús e criaturinhas. Os Redcaps são anões de gorro vermelho que perseguem quem entra sem convite. Derrote três deles (cuidado com os que trazem fogo) e recolha o saque.
   tasks:
-  - {kill: TwilightForest.Redcap x3}
+  - kill: {entity: TwilightForest.Redcap, count: 3}
   rewards:
   - {xp: 3}
   - choice: ['minecraft:iron_ingot x8', 'minecraft:cooked_beef x8']
@@ -84,7 +84,7 @@ quests:
 
     §cPerigo:§r nada de ficar parado no caminho dela.
   tasks:
-  - {kill: TwilightForest.Naga x1}
+  - kill: {entity: TwilightForest.Naga, count: 1}
   - {get: 'TwilightForest:item.trophy:1'}
   rewards:
   - {xp: 20}
@@ -109,7 +109,7 @@ quests:
   desc: |
     Numa torre alta e escura vive o §eLich§r, mago morto que não aceita descanso. Antes dele, os livros-vivos da torre atacam sem parar. Destrua §e3 Death Tomes§r e suba com cuidado. Leve uma boa armadura e uma boa arma, e talvez uma poção ou duas.
   tasks:
-  - {kill: TwilightForest.Death Tome x3}
+  - kill: {entity: TwilightForest.Death Tome, count: 3}
   rewards:
   - {xp: 3}
   - choice: ['minecraft:book x8', 'minecraft:paper x16']
@@ -120,7 +120,7 @@ quests:
   desc: |
     O segundo chefe é o §eLich§r, que lança magia, invoca clones e teletransporta-se. Mate os clones primeiro e o verdadeiro depois, sem gastar tempo nos adornos. Ele solta um troféu e raros itens mágicos. Os heróis da Era do Futuro já pensavam em qual prateleira usar!
   tasks:
-  - {kill: TwilightForest.Twilight Lich x1}
+  - kill: {entity: TwilightForest.Twilight Lich, count: 1}
   - {get: 'TwilightForest:item.trophy:2'}
   rewards:
   - {xp: 20}
@@ -134,7 +134,7 @@ quests:
   desc: |
     O §eLabirinto§r é feito de corredores e armadilhas, e minotauros vigiam cada curva. Entre com tochas e um mapa, derrote cinco deles e vá ao centro. Cuidado com as paredes que não deveriam estar lá e com os sons que vêm de trás de você.
   tasks:
-  - {kill: TwilightForest.Minotaur x5}
+  - kill: {entity: TwilightForest.Minotaur, count: 5}
   rewards:
   - {xp: 3}
   - choice: ['minecraft:iron_ingot x8', 'minecraft:cooked_beef x16']
@@ -145,7 +145,7 @@ quests:
   desc: |
     Um minotauro gigante e vermelho, coberto de cogumelos: o §eMinoshroom§r. É mais forte que seus subordinados e carrega um machado enorme. Mantenha distância, golpeie e recue. O troféu vai direto para a prateleira.
   tasks:
-  - {kill: TwilightForest.Minoshroom x1}
+  - kill: {entity: TwilightForest.Minoshroom, count: 1}
   - {get: 'TwilightForest:item.trophy:5'}
   rewards:
   - {xp: 20}
@@ -160,7 +160,7 @@ quests:
 
     §cPerigo:§r leve resistência ao fogo.
   tasks:
-  - {kill: TwilightForest.Hydra x1}
+  - kill: {entity: TwilightForest.Hydra, count: 1}
   - {get: 'TwilightForest:item.trophy:0'}
   rewards:
   - {xp: 20}
@@ -174,7 +174,7 @@ quests:
   desc: |
     Uma fortaleza antiga e cheia de goblins armados, com capacete de ferro e escudo. Derrote §e4 cavaleiros goblin§r e entre com cuidado. O baú no fundo tem equipamentos raros. Bom lugar para treinar combate em grupo.
   tasks:
-  - {kill: TwilightForest.Lower Goblin Knight x4}
+  - kill: {entity: TwilightForest.Lower Goblin Knight, count: 4}
   rewards:
   - {xp: 3}
   - choice: ['minecraft:iron_ingot x16', 'minecraft:cooked_beef x8']
@@ -185,7 +185,7 @@ quests:
   desc: |
     Antigos guerreiros que não aceitam o fim. Os §eCavaleiros Fantasmas§r aparecem em grupo e giram em torno da arena. Derrote todos seguindo o ritmo dos golpes. Você receberá armaduras raras e uma cabeça de troféu muito especial.
   tasks:
-  - {kill: TwilightForest.Knight Phantom x6}
+  - kill: {entity: TwilightForest.Knight Phantom, count: 6}
   - {get: 'TwilightForest:item.trophy:6'}
   rewards:
   - {xp: 20}
@@ -198,7 +198,7 @@ quests:
   desc: |
     No topo de uma torre de carminite, o §eUr-Ghast§r chora lágrimas de fogo e atira bolas explosivas. É o maior ghast que você já viu. Leve arco, armadura e paciência para dar conta do ataque aéreo. Ao final, o troféu é seu.
   tasks:
-  - {kill: TwilightForest.Tower Boss x1}
+  - kill: {entity: TwilightForest.Tower Boss, count: 1}
   - {get: 'TwilightForest:item.trophy:3'}
   rewards:
   - {xp: 20}
@@ -211,7 +211,7 @@ quests:
   desc: |
     Na floresta de neve vive o §eYeti Alfa§r, que faz a cabeça de qualquer herói balançar. Ele ataca com fúria, chama aliados e pisoteia o gelo. Leve roupas quentes (armadura de couro basta) e armas boas. Um troféu muito fofo e perigoso.
   tasks:
-  - {kill: TwilightForest.Yeti Boss x1}
+  - kill: {entity: TwilightForest.Yeti Boss, count: 1}
   - {get: 'TwilightForest:item.trophy:7'}
   rewards:
   - {xp: 20}
@@ -224,7 +224,7 @@ quests:
   desc: |
     No Palácio da Aurora, a §eRainha da Neve§r domina a geada. Ela sustenta cristais de gelo, invoca tempestades e fere quem chega perto. É o último grande chefe da floresta. Quando ela cai, o céu parece limpar.
   tasks:
-  - {kill: TwilightForest.Snow Queen x1}
+  - kill: {entity: TwilightForest.Snow Queen, count: 1}
   - {get: 'TwilightForest:item.trophy:4'}
   rewards:
   - {xp: 20}
@@ -283,7 +283,7 @@ quests:
   desc: |
     O maior desafio do capítulo! Quebre os cristais que curam o dragão, ataque quando ele pousar e fuja do sopro. Leve arco, armadura quantum se tiver, blocos para esconderijo. Quando ele cair, o céu estoura em luz e você leva o ovo do dragão como prêmio.
   tasks:
-  - {kill: EnderDragon x1}
+  - kill: {entity: EnderDragon, count: 1}
   rewards:
   - {xp: 20}
   - choice: ['minecraft:dragon_egg', 'minecraft:diamond x8']
