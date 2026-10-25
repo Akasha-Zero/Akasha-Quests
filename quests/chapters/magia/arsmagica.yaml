@@ -1,0 +1,708 @@
+chapter:
+  id: arsmagica
+  title: "Ars Magica 2"
+  prefix: ""
+  order: 560
+  icon: arsmagica2:ArcaneCompendium
+  desc: |
+    §dO Volume das Artes Arcanas.§r Vinteum, o Compêndio Arcano, feitiços montados à mão
+    (formas, componentes e modificadores), Etherium Neutro, Luminoso e Sombrio, os dez
+    Guardiões elementais e a misteriosa Moo Moo Farm. (AM2.5 LTS 1.6.11)
+
+quests:
+  # ======================================================================
+  # FASE 0 — O DESPERTAR ARCANO
+  # ======================================================================
+  - id: volume_arcano
+    title: "O Volume das Artes Arcanas"
+    type: info
+    icon: arsmagica2:ArcaneCompendium
+    desc: |
+      Este Volume foi um dos que mais sofreram com a Fratura, Herói. As páginas do Ars Magica
+      falam de uma magia que mora dentro de você: §dmana§r que se regenera, um §dnível de
+      mago§r que sobe a cada feitiço bem lançado e um §cesgotamento§r (burnout) que cresce
+      quando você exagera.
+
+      O caminho é este:
+      §e1.§r Vinteum e um lago de Etherium → o §eCompêndio Arcano§r.
+      §e2.§r Óculo (pontos de habilidade) → Mesa de Inscrição → Altar de Criação → seu primeiro
+      feitiço.
+      §e3.§r Obelisco e a rede de §bEtherium§r → Refinador de Essências → as essências.
+      §e4.§r Os Guardiões elementais, as armaduras de mago e, por fim, as Vestes do Arquimago.
+
+      §aDica:§r o próprio Compêndio é a melhor referência (com receitas, estruturas em 3D e
+      rituais). Este pack usa a versão §eAM2.5 LTS§r, que difere um pouco do AM2 clássico.
+    tasks:
+      - check
+    rewards:
+      - xp: 1
+
+  - id: minerio_vinteum
+    title: "O Brilho Azul"
+    type: main
+    deps: [volume_arcano]
+    icon: arsmagica2:vinteumOre
+    desc: |
+      Conta a lenda que o Vinteum nasceu de um raio arcano que bateu num raio do Fim. Eu não
+      estava lá para confirmar, mas o brilho azul é inconfundível!
+
+      O §eMinério de Vinteum§r aparece em veios pequenos entre as camadas §eY 10 e 45§r (há
+      também a versão em ardósia profunda do Et Futurum). Junte §e8 minérios§r.
+
+      §aDica:§r guarde-os crus — a próxima página ensina a transformá-los.
+    tasks:
+      - get: ore:oreVinteum x8
+    rewards:
+      - xp: 4
+      - choice: [minecraft:iron_ingot x8, minecraft:coal x16, minecraft:torch x32]
+
+  - id: po_vinteum
+    title: "Pó de Vinteum"
+    type: main
+    deps: [minerio_vinteum]
+    icon: arsmagica2:itemOre
+    desc: |
+      Sozinho, o Vinteum parece só uma pedrinha bonita. Mas aqueça-o e ele vira um pó com uma
+      capacidade enorme de conduzir §bEtherium§r — a energia do Ars Magica.
+
+      Funda o minério na fornalha para obter §ePó de Vinteum§r (o martelo de forja do Immersive
+      Engineering também serve). Junte §e16§r: quase toda receita do mod usa esse pó.
+    tasks:
+      - get: ore:dustVinteum x16
+    rewards:
+      - xp: 4
+      - choice: [minecraft:redstone x16, minecraft:glowstone_dust x8, minecraft:paper x16]
+
+  - id: lago_etherium
+    title: "Lagos de Etherium"
+    type: info
+    deps: [volume_arcano]
+    icon: arsmagica2:liquidEssenceBucket
+    desc: |
+      Já viu uma pocinha azul-celeste brilhando no meio do mato? Isso é §bEtherium Líquido§r,
+      a magia do mundo em estado puro. Os lagos aparecem pelo Mundo Normal (e dentro das
+      florestas de Witchwood).
+
+      Marque a posição de um deles: é ali que você vai despertar o Compêndio Arcano na
+      próxima página. §cNão tente beber.§r
+    tasks:
+      - check
+    rewards:
+      - xp: 1
+
+  - id: compendio_arcano
+    title: "O Compêndio Arcano"
+    type: main
+    deps: [po_vinteum, lago_etherium]
+    icon: arsmagica2:ArcaneCompendium
+    banner: "O Compêndio desperta"
+    subtitle: "A magia agora mora em você"
+    desc: |
+      O Compêndio Arcano não é fabricado: ele é §dinvocado§r. E eu adoro esse ritual!
+
+      Coloque uma §eMoldura de Item§r a até §e2 blocos§r de um lago de §bEtherium Líquido§r e
+      ponha um §eLivro§r comum nela. Espere cerca de §e40 segundos§r: o livro absorve a magia
+      do lago e se transforma no §eArcane Compendium§r.
+
+      Ao pegá-lo, a interface do mago acende: barra azul de mana, barra vermelha de
+      esgotamento e o seu nível de mago. Use §e/amuicfg§r para reposicionar o HUD.
+    tasks:
+      - get: arsmagica2:ArcaneCompendium
+    rewards:
+      - xp: 4
+      - choice: [arsmagica2:itemOre x8, minecraft:book x4, minecraft:item_frame x2]
+
+  - id: mana_e_nivel
+    title: "Mana, Nível e Esgotamento"
+    type: info
+    deps: [compendio_arcano]
+    icon: arsmagica2:manaCake
+    desc: |
+      Três números regem a sua vida de mago, Herói:
+
+      §b• Mana§r — a energia dos feitiços. Regenera sozinha; Bolo de Mana, Poções de Mana e
+      ficar perto de um Obelisco/Prisma/Aurem com mais de 10% de carga ajudam.
+      §c• Esgotamento (burnout)§r — o cansaço. Quanto maior, mais caro cada feitiço; no
+      limite vêm lentidão, fraqueza, raios e até teletransportes aleatórios.
+      §d• Nível de mago§r — sobe com lançamentos §evalidos§r (o feitiço precisa fazer o que
+      promete; jogar bola de fogo na parede não conta) e aumenta mana e esgotamento máximos.
+      Derrotar Guardiões também dá mana extra.
+
+      Bater no mesmo prego o tempo todo tem retorno decrescente: varie os feitiços!
+    tasks:
+      - check
+    rewards:
+      - xp: 1
+
+  # ======================================================================
+  # FASE 1 — GEMAS, PLANTAS E O ÓCULO
+  # ======================================================================
+  - id: topazio_azul
+    title: "Topázio Azul"
+    type: main
+    deps: [po_vinteum]
+    icon: arsmagica2:itemOre:5
+    desc: |
+      O cristal de entrada de todo aprendiz. O §eMinério de Topázio Azul§r gera entre
+      §eY 10 e 80§r e solta a gema direto ao ser minerado.
+
+      Junte §e6 Topázios Azuis§r — o Óculo, a Pedra Eterna, os Óculos e o Cajado Magitech
+      dependem dele.
+    tasks:
+      - get: ore:gemBlueTopaz x6
+    rewards:
+      - xp: 4
+      - choice: [minecraft:coal x16, minecraft:stonebrick x32, minecraft:glass x16]
+
+  - id: quimerita
+    title: "Quimerita"
+    type: normal
+    deps: [po_vinteum]
+    icon: arsmagica2:itemOre:4
+    desc: |
+      Muda de cor o tempo inteiro — fiquei hipnotizada a primeira vez que vi.
+
+      A §eQuimerita§r (Chimerite) gera entre §eY 10 e 80§r e também cai como gema. Ela é a
+      base de ilusões, das Baterias de Mana e dos Conduítes de Etherium. Junte §e6§r.
+    tasks:
+      - get: ore:gemChimerite x6
+    rewards:
+      - xp: 2
+      - item: arsmagica2:itemOre x4
+
+  - id: pedra_do_sol
+    title: "Pedra do Sol"
+    type: normal
+    deps: [quimerita]
+    icon: arsmagica2:itemOre:6
+    desc: |
+      A §ePedra do Sol§r (Sunstone) só se forma sob calor intenso e pouca pressão: o minério
+      aparece §eao redor de lava§r, principalmente nos lagos de lava do Nether (e, com sorte,
+      nas poças de lava do Mundo Normal).
+
+      §cLeve resistência ao fogo.§r Junte §e2 Pedras do Sol§r — elas são reagente da Aurem
+      Negra e de várias peças avançadas.
+    tasks:
+      - get: ore:gemSunstone x2
+    rewards:
+      - xp: 3
+      - item: minecraft:potion:8195 x2
+
+  - id: pedra_da_lua
+    title: "Meteoros de Pedra da Lua"
+    type: normal
+    deps: [mana_e_nivel]
+    icon: arsmagica2:itemOre:7
+    desc: |
+      Olhe para o céu à noite... está vendo aquele risco? A §ePedra da Lua§r só existe em
+      §emeteoros§r que caem perto de você, sempre sobre a camada de cobertura do bioma (grama,
+      areia...). A lua cheia aumenta a chance.
+
+      §cNo pack, os meteoros só caem para magos de nível 10 ou mais§r e eles arrebentam o
+      terreno onde batem. Ache a cratera e minere o §eMinério de Pedra da Lua§r.
+    tasks:
+      - get: ore:gemMoonstone x2
+    rewards:
+      - xp: 3
+      - item: arsmagica2:itemOre x8
+
+  - id: cerublossom
+    title: "Cerublossom"
+    type: normal
+    deps: [compendio_arcano]
+    icon: arsmagica2:blueOrchid
+    desc: |
+      Uma florzinha azul que brilha de leve — uma das primeiras plantas mágicas conhecidas.
+      A §eCerublossom§r cresce em biomas verdes e úmidos.
+
+      Ela é catalisadora do Vinteum Purificado, ingrediente do Bolo de Mana e da Chave de
+      Cristal. Colha §e4§r.
+    tasks:
+      - get: arsmagica2:blueOrchid x4
+    rewards:
+      - xp: 2
+      - item: minecraft:dye:15 x16
+
+  - id: desert_nova
+    title: "Desert Nova"
+    type: normal
+    deps: [compendio_arcano]
+    icon: arsmagica2:desertNova
+    desc: |
+      Uma flor do deserto que solta pequenas explosões de magia — por isso o nome!
+
+      A §eDesert Nova§r cresce em biomas secos. Ela anda sempre ao lado da Cerublossom nas
+      receitas (Chave de Cristal, Bolo de Mana, Vinteum Purificado). Colha §e4§r.
+    tasks:
+      - get: arsmagica2:desertNova x4
+    rewards:
+      - xp: 2
+      - item: minecraft:dye:15 x16
+
+  - id: raiz_tarma
+    title: "Raiz de Tarma"
+    type: normal
+    deps: [compendio_arcano]
+    icon: arsmagica2:TarmaRoot
+    desc: |
+      Mais leve do que parece! A §eRaiz de Tarma§r cresce em cavernas e lugares escuros.
+
+      Ela é o ingrediente da §eEssência do Ar§r no Refinador e de vários feitiços. Junte §e4§r.
+    tasks:
+      - get: arsmagica2:TarmaRoot x4
+    rewards:
+      - xp: 2
+      - item: minecraft:torch x16
+
+  - id: wakebloom
+    title: "Wakebloom"
+    type: normal
+    deps: [compendio_arcano]
+    icon: arsmagica2:wakebloom
+    desc: |
+      Uma vitória-régia mágica que flutua em águas de climas quentes.
+
+      A §eWakebloom§r é a alma da §eEssência da Água§r e aparece em feitiços aquáticos. Colha
+      §e4§r (um barco ajuda muito).
+    tasks:
+      - get: arsmagica2:wakebloom x4
+    rewards:
+      - xp: 2
+      - item: minecraft:boat
+
+  - id: floresta_witchwood
+    title: "A Floresta de Witchwood"
+    type: normal
+    deps: [compendio_arcano]
+    icon: arsmagica2:WitchwoodLog
+    desc: |
+      Árvores enormes, folhas escuras, faíscas no ar... você chegou numa §dFloresta de
+      Witchwood§r, o bioma do Ars Magica (raro, mas ativo no pack).
+
+      Corte §e16 Troncos de Witchwood§r. A madeira serve para o Gerador de Corrente de Ar, a
+      Lousa de Witchwood das Velas e o Altar de Criação (um dos melhores materiais).
+      §aCuriosidade:§r Flickers Arcanos adoram estas florestas.
+    tasks:
+      - get: ore:witchwoodLog x16
+    rewards:
+      - xp: 3
+      - choice: [minecraft:sapling x8, minecraft:apple x8, minecraft:bread x8]
+
+  - id: aum
+    title: "Aum"
+    type: optional
+    deps: [floresta_witchwood]
+    icon: arsmagica2:Aum
+    desc: |
+      Uma flor de propriedades curativas que só nasce §eao pé das árvores de Witchwood§r.
+      O §eAum§r é componente de muitos feitiços. Leve alguns para casa.
+    tasks:
+      - get: arsmagica2:Aum x2
+    rewards:
+      - loot: comum
+
+  - id: muda_witchwood
+    title: "Muda de Witchwood"
+    type: optional
+    deps: [floresta_witchwood, extrator_etherium]
+    icon: arsmagica2:saplingWitchwood
+    desc: |
+      As mudas de Witchwood caem raramente das folhas e são exigentes: precisam de uma fonte
+      de §bEtherium Líquido§r encostada, um bloco abaixo e ao lado (x/z ±1, y−1). Quanto mais
+      fontes ao redor (até 8), mais rápido crescem — e mesmo assim demora!
+
+      Ter uma Witchwood em casa vale a pena: madeira e Aum sem viajar.
+    tasks:
+      - get: arsmagica2:saplingWitchwood
+    rewards:
+      - loot: comum
+
+  - id: oculo
+    title: "O Óculo"
+    type: main
+    deps: [topazio_azul, compendio_arcano]
+    icon: arsmagica2:occulus
+    desc: |
+      "Uma porta para as estrelas que mostra o seu eu interior." Bonito, né? Fui eu que...
+      tá, não fui eu que escrevi, mas eu concordo!
+
+      O §eÓculo§r (tijolos de pedra, vidro, carvão e um Topázio Azul) é onde você gasta
+      §epontos de habilidade§r para aprender formas, componentes e modificadores. Você começa
+      com §e3 pontos azuis§r: gaste ao menos §eUMA forma e UM componente§r (por exemplo,
+      Projétil + Dano Físico), senão não dá para montar feitiço nenhum!
+    tasks:
+      - get: arsmagica2:occulus
+    rewards:
+      - xp: 4
+      - choice: [minecraft:stonebrick x32, minecraft:glass x16, arsmagica2:itemOre x8]
+
+  - id: pontos_habilidade
+    title: "Pontos de Habilidade"
+    type: info
+    deps: [oculo]
+    icon: arsmagica2:rune:17
+    desc: |
+      O Óculo tem quatro árvores: §cOfensa§r, §9Defesa§r, §aUtilidade§r e §dTalentos§r.
+
+      §e• Pontos azuis:§r a cada nível par do 2 ao 20.
+      §e• Pontos verdes:§r níveis pares do 22 ao 40.
+      §e• Pontos vermelhos:§r níveis pares do 42 ao 50.
+      Pontos extras vêm de §eOrbes do Infinito§r (masmorras e Guardiões).
+
+      O Óculo avisa que a primeira árvore escolhida vira a "primária"; neste pack o limite
+      das árvores secundárias está no padrão (99 camadas), então na prática ele não trava o
+      seu aprendizado. Algumas habilidades §7prateadas§r só são liberadas lançando a
+      combinação certa de partes (veja "Habilidades Prateadas" no Compêndio).
+    tasks:
+      - check
+    rewards:
+      - xp: 1
+
+  - id: orbe_infinito
+    title: "Orbe do Infinito"
+    type: optional
+    deps: [pontos_habilidade]
+    icon: arsmagica2:rune:17
+    desc: |
+      Um orbe que guarda um ponto de habilidade inteiro! Os azuis, verdes e vermelhos aparecem
+      em baús de masmorras e são o prêmio garantido de cada Guardião.
+
+      Encontre um e use-o (clique direito) para ganhar o ponto. (Se usar sem estar pronto, a
+      mensagem é... criativa. Eu ri.)
+    tasks:
+      - one_of: [arsmagica2:rune:17, arsmagica2:rune:18, arsmagica2:rune:19]
+    rewards:
+      - loot: comum
+
+  - id: talentos
+    title: "Talentos"
+    type: info
+    deps: [pontos_habilidade]
+    icon: arsmagica2:manaPotionBundle:3
+    desc: |
+      A quarta árvore do Óculo não ensina feitiços: ela melhora §dvocê§r. Alguns talentos:
+
+      §e• Capacidade de Mana I–III§r e §eRegeneração de Mana I–III§r.
+      §e• Movimento de Feitiço§r — andar em velocidade normal enquanto canaliza.
+      §e• Conjuração Aumentada§r — durações, raios e dano maiores.
+      §e• Invocação Extra§r, §eGlifos Extras§r, §eBando de Magos I/II§r (Magos da Luz seguem
+      você).
+      §e• Ganho de Afinidade§r e §eCor§r (muda a cor das partículas com um corante no altar).
+
+      Planeje: os pontos são escassos.
+    tasks:
+      - check
+    rewards:
+      - xp: 1
+
+  - id: afinidades
+    title: "Afinidades"
+    type: info
+    deps: [primeiro_feitico]
+    icon: arsmagica2:bookAffinity
+    desc: |
+      Cada componente tem um elemento. Quanto mais você lança de um elemento, mais
+      §dafinidade§r ganha com ele (veja o gráfico no HUD ou no Óculo). Componentes da sua
+      afinidade custam menos; os do elemento oposto, mais.
+
+      Cada afinidade dá bônus e penalidades: Terra reduz dano mas afunda na água; Fogo resiste
+      a lava mas sofre com água; Raio corre mais mas não gosta de chuva; Arcano reduz o custo
+      de mana mas sofre mais dano mágico... e assim por diante.
+
+      Ao chegar a 100%, você §etrava§r naquela afinidade; um §eTomo de Afinidade§r oposto (ou
+      o Geral) destrava.
+    tasks:
+      - check
+    rewards:
+      - xp: 1
+
+  - id: tomo_afinidade
+    title: "Tomo de Afinidade"
+    type: optional
+    deps: [afinidades, vinteum_purificado, essencia_arcana]
+    icon: arsmagica2:bookAffinity:1
+    desc: |
+      Relatórios de magos sobre um elemento. Lido, ele dá §e+10%§r naquela afinidade e tira
+      10% das outras; o §eTomo Geral§r só reduz tudo em 10% e destrava uma afinidade travada.
+
+      A receita leva um livro, Vinteum Purificado, a essência do elemento e Orbes do Infinito
+      vermelhos (confira no NEI). Caro — use quando realmente quiser mudar de rumo.
+    tasks:
+      - one_of: [arsmagica2:bookAffinity, arsmagica2:bookAffinity:1, arsmagica2:bookAffinity:2, arsmagica2:bookAffinity:3, arsmagica2:bookAffinity:4, arsmagica2:bookAffinity:5, arsmagica2:bookAffinity:6, arsmagica2:bookAffinity:7, arsmagica2:bookAffinity:8, arsmagica2:bookAffinity:9, arsmagica2:bookAffinity:10]
+    rewards:
+      - loot: incomum
+
+  # ======================================================================
+  # FASE 2 — INSCRIÇÃO E O PRIMEIRO FEITIÇO
+  # ======================================================================
+  - id: pergaminho
+    title: "Pergaminho de Feitiço"
+    type: normal
+    deps: [oculo]
+    icon: arsmagica2:spellParchment
+    desc: |
+      Há milhares de anos os magos escrevem feitiços em papel — e ninguém inventou nada melhor.
+
+      Papel entre dois gravetos = §ePergaminho de Feitiço§r. Ele vai na receita da Mesa de
+      Inscrição e é o "corpo" final de todo feitiço criado no altar.
+    tasks:
+      - get: arsmagica2:spellParchment x2
+    rewards:
+      - xp: 2
+      - item: minecraft:paper x8
+
+  - id: mesa_inscricao
+    title: "Mesa de Inscrição"
+    type: main
+    deps: [pergaminho]
+    icon: arsmagica2:InscriptionTable
+    desc: |
+      Organização é tudo para um mago! A §eMesa de Inscrição§r (tocha, pergaminho, pena, lajes
+      e tábuas) é onde você §ecompõe§r o feitiço.
+
+      Coloque um §eLivro e Pena§r nela. No topo ficam as partes que você conhece; arraste formas
+      e modificadores para os §egrupos de forma§r (quadrados marrons) e monte a §egramática§r
+      embaixo, em ordem. Ao terminar, a receita é escrita no livro — leia-o: ele lista os
+      materiais e a afinidade do feitiço.
+    tasks:
+      - get: arsmagica2:InscriptionTable
+    rewards:
+      - xp: 4
+      - choice: [minecraft:writable_book x2, minecraft:feather x8, minecraft:ink_sac x8]
+
+  - id: formas
+    title: "Formas"
+    type: info
+    deps: [mesa_inscricao]
+    icon: arsmagica2:spellParchment
+    desc: |
+      A §eforma§r diz §ecomo§r o feitiço acha o alvo. Algumas:
+
+      §e• Projétil§r — uma bola que voa por 5 s; §e• Toque§r — alcance curtíssimo;
+      §e• Si Mesmo§r — em você; §e• Canalizado§r e §eFeixe§r — contínuos (cansam!);
+      §e• Área (AoE)§r, §eZona§r, §eCorrente§r, §eOnda§r, §eParede§r;
+      §e• Runa§r e §eGlifo§r — armadilhas e feitiços "guardados";
+      §e• Contingências§r (queda, dano, fogo, vida, morte) e §eVínculo§r (ferramentas).
+
+      Formas podem se encadear em estágios (ex.: Projétil → Área).
+    tasks:
+      - check
+    rewards:
+      - xp: 1
+
+  - id: componentes
+    title: "Componentes"
+    type: info
+    deps: [mesa_inscricao]
+    icon: arsmagica2:essence
+    desc: |
+      O §ecomponente§r é o que o feitiço §efaz§r. Há dezenas: Dano Físico, de Fogo, de Gelo e
+      de Raio, Cavar, Cura, Regeneração, Salto, Queda Lenta, Pressa, Voo, Luz, Visão Noturna,
+      Telecinese, Atração, Piscar (Blink), Marcar/Retornar, Invocar, Escudo, Encantar Plantas
+      (Crescer, Colher, Arar), Tempestade, Estrela Cadente e muito mais.
+
+      Cada componente aparece uma vez por estágio e pede §ereagentes§r no altar (o livro da
+      Mesa de Inscrição mostra quais). Os disponíveis aparecem no Compêndio.
+    tasks:
+      - check
+    rewards:
+      - xp: 1
+
+  - id: modificadores
+    title: "Modificadores"
+    type: info
+    deps: [mesa_inscricao]
+    icon: arsmagica2:essence:10
+    desc: |
+      §eModificadores§r ajustam forma e componentes: Dano, Cura, Velocidade, Duração, Alcance,
+      Raio, Gravidade, Ricochete, Perfurante, Teleguiado, Poder de Mineração, Prosperidade
+      (fortuna), Toque Sedoso, Alvejar Blocos/Jogadores/Criaturas/Monstros, Lunar, Solar...
+
+      Regra de ouro: cada aspecto pode ser modificado §eno máximo 3 vezes por estágio§r.
+      E cada modificador a mais aumenta a instabilidade da criação no altar!
+    tasks:
+      - check
+    rewards:
+      - xp: 1
+
+  - id: runa_branca
+    title: "Runas em Branco"
+    type: normal
+    deps: [mesa_inscricao]
+    icon: arsmagica2:rune:1
+    desc: |
+      Toda criação de feitiço começa jogando uma §eRuna em Branco§r no altar. Cinco
+      pedregulhos em "V" rendem §e2 runas§r.
+
+      Combinadas com corante, viram runas coloridas — que aparecem em receitas e rituais.
+      Faça §e4§r.
+    tasks:
+      - get: arsmagica2:rune:1 x4
+    rewards:
+      - xp: 2
+      - item: minecraft:cobblestone x32
+
+  - id: runas_coloridas
+    title: "Runas Coloridas"
+    type: optional
+    deps: [runa_branca]
+    icon: arsmagica2:rune:13
+    desc: |
+      Runa em Branco + corante = runa da cor. As Vestes de Mago pedem runas roxa, branca,
+      amarela e preta; as Pedras-Chave, Portais e o Ritual da Cruz usam combinações de cores
+      como "senhas".
+
+      Faça uma runa de qualquer cor.
+    tasks:
+      - one_of: [arsmagica2:rune, arsmagica2:rune:2, arsmagica2:rune:3, arsmagica2:rune:4, arsmagica2:rune:5, arsmagica2:rune:6, arsmagica2:rune:7, arsmagica2:rune:8, arsmagica2:rune:9, arsmagica2:rune:10, arsmagica2:rune:11, arsmagica2:rune:12, arsmagica2:rune:13, arsmagica2:rune:14, arsmagica2:rune:15, arsmagica2:rune:16]
+    rewards:
+      - loot: comum
+
+  - id: atril
+    title: "Atril"
+    type: normal
+    deps: [mesa_inscricao]
+    icon: arsmagica2:blockLectern
+    desc: |
+      Um apoio elegante para livros (até Taumonomicons!). O §eAtril§r (lajes e tábua) é peça
+      obrigatória do Altar de Criação: é nele que vai o livro escrito na Mesa de Inscrição,
+      guiando você passo a passo.
+    tasks:
+      - get: arsmagica2:blockLectern
+    rewards:
+      - xp: 2
+      - item: minecraft:planks x16
+
+  - id: altar_criacao
+    title: "O Altar de Criação"
+    type: main
+    deps: [atril, runa_branca, po_vinteum]
+    icon: arsmagica2:CraftingAltar
+    desc: |
+      Aqui os magos fazem milagres. O bloco central §eCrafting Altar§r (Pó de Vinteum +
+      pedra) é o coração de uma §eestrutura multibloco§r — veja o modelo 3D no Compêndio
+      (Estruturas → Crafting Altar). Ela inclui o Atril e uma alavanca.
+
+      O §epoder§r do altar depende do material principal (tábuas, tijolos de pedra, arenito,
+      tijolos, Witchwood, tijolos do Nether, quartzo) e das §e5 tampas§r (vidro, carvão,
+      redstone, ferro, lápis, ouro, diamante, esmeralda, Pedra da Lua, Pedra do Sol). Tábuas
+      com tampas de vidro = no máximo 2 efeitos; o máximo absoluto é 13.
+
+      §aMenos instabilidade:§r construa a céu aberto, crie à noite, cerque com Giz de Mago e
+      não deixe gente distraindo você.
+    tasks:
+      - get: arsmagica2:CraftingAltar
+    rewards:
+      - xp: 4
+      - choice: [minecraft:stonebrick x32, minecraft:glass x8, minecraft:lever x2]
+
+  - id: primeiro_feitico
+    title: "Meu Primeiro Feitiço"
+    type: milestone
+    deps: [altar_criacao, formas, componentes]
+    icon: arsmagica2:spellBase
+    banner: "O Primeiro Feitiço"
+    subtitle: "Palavras que viram magia"
+    desc: |
+      Chegou a hora, Herói! Eu estou tremendo de emoção (dá pra ver as páginas balançando?).
+
+      §e1.§r Escreva na Mesa de Inscrição um feitiço simples: §eProjétil + Dano Físico§r, ou
+      §eToque + Cavar§r, ou §eSi Mesmo + Regeneração§r.
+      §e2.§r Coloque o livro no Atril do altar e jogue uma §eRuna em Branco§r no centro.
+      §e3.§r Jogue no altar, um a um, os itens que o livro pedir. Se aparecer §bEtherium§r,
+      ligue a alavanca (a partir de agora você vai precisar de um Obelisco por perto).
+      §e4.§r Pegue o feitiço, clique direito para dar nome e ícone — e lance!
+
+      Feitiço feito, nível de mago subindo. A partir daqui, a magia é sua.
+    tasks:
+      - get: arsmagica2:spellBase
+    rewards:
+      - xp: 8
+      - kit: {name: "Kit do Aprendiz Arcano", items: [arsmagica2:rune:1 x8, arsmagica2:itemOre x16, arsmagica2:lesserManaPotion x4, arsmagica2:spellParchment x4, minecraft:writable_book x2]}
+      - loot: raro
+
+  - id: livro_feiticos
+    title: "Livro de Feitiços"
+    type: normal
+    deps: [primeiro_feitico]
+    icon: arsmagica2:spellBook
+    desc: |
+      Bolsos cheios de pergaminhos? O §eLivro de Feitiços§r (couro, papel e linha) guarda
+      vários feitiços: troque entre eles com §eZ/X§r ou agachado + roda do mouse. Pode ser
+      tingido e até encantado.
+    tasks:
+      - get: arsmagica2:spellBook:*
+    rewards:
+      - xp: 3
+      - item: minecraft:leather x8
+
+  - id: bancada_mago
+    title: "Bancada do Mágico"
+    type: optional
+    deps: [mesa_inscricao]
+    icon: arsmagica2:magiciansWorkbench
+    desc: |
+      Uma bancada com §evárias grades§r, armazenamento interno e memória das 8 últimas
+      receitas. Para quem fabrica muito subcomponente, é um alívio.
+      §aExtra:§r o §eUpgrade da Bancada§r transforma a segunda grade 2×2 em 3×3 (mas se quebra
+      se a bancada for destruída).
+    tasks:
+      - get: arsmagica2:magiciansWorkbench
+    rewards:
+      - loot: comum
+
+  - id: upgrade_inscricao_1
+    title: "Mesa de Inscrição: Nível 1"
+    type: optional
+    deps: [primeiro_feitico]
+    icon: arsmagica2:inscriptionUpgrade
+    desc: |
+      Mais grupos de forma = feitiços mais versáteis. O §eUpgrade de Nível 1§r (livro, linha,
+      pena e corante preto) é aplicado na Mesa de Inscrição.
+    tasks:
+      - get: arsmagica2:inscriptionUpgrade
+    rewards:
+      - loot: comum
+
+  - id: upgrade_inscricao_2
+    title: "Mesa de Inscrição: Nível 2"
+    type: optional
+    deps: [upgrade_inscricao_1, giz_mago]
+    icon: arsmagica2:inscriptionUpgrade:1
+    desc: |
+      O §eUpgrade de Nível 2§r leva tapete, livro e §eGiz de Mago§r. Mais um grupo de forma
+      para as suas criações.
+    tasks:
+      - get: arsmagica2:inscriptionUpgrade:1
+    rewards:
+      - loot: comum
+
+  - id: upgrade_inscricao_3
+    title: "Mesa de Inscrição: Nível 3"
+    type: optional
+    deps: [upgrade_inscricao_2, vela_protecao]
+    icon: arsmagica2:inscriptionUpgrade:2
+    desc: |
+      O último: §eVela de Proteção§r, isqueiro, Gordura Animal, frasco e livro. Com os três
+      upgrades, a sua mesa está no máximo.
+    tasks:
+      - get: arsmagica2:inscriptionUpgrade:2
+    rewards:
+      - loot: incomum
+
+  - id: feitico_mineracao
+    title: "Magia de Mineração"
+    type: optional
+    deps: [primeiro_feitico]
+    icon: minecraft:iron_pickaxe
+    desc: |
+      Um dos feitiços mais úteis do jogo inteiro: §eToque (ou Projétil) + Cavar§r. Com
+      §eRaio§r ou §ePoder de Mineração§r, vira uma escavadeira de bolso.
+
+      Não há como eu conferir o feitiço que você criou, então marque quando tiver o seu.
+      §aSugestões do Compêndio:§r Projétil + Outono do Mago (limpa folhas); Si Mesmo + Salto
+      + Queda Lenta + Pressa + Poço Gravitacional (viagem rápida).
+    tasks:
+      - check
+    rewards:
+      - loot: comum

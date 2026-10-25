@@ -1,0 +1,846 @@
+# JurassiCraft 1.4.0 (namespace jurassicraft). Biotecnologia: fosseis -> DNA -> ovos -> dinossauros.
+# Ver docs/mods/jurassicraft.md.
+chapter:
+  id: jurassicraft
+  title: "JurassiCraft"
+  order: 250
+  icon: jurassicraft:item.dinopad
+  desc: |
+    §aBiotecnologia do passado.§r De um pedaço de fóssil ou âmbar nasce o DNA; do DNA, o ovo; do ovo,
+    um dinossauro de verdade. Monte o laboratório, cerque o parque e comande a era dos gigantes.
+quests:
+
+  - id: registro_vivo
+    title: "O Registro Vivo"
+    type: info
+    icon: jurassicraft:item.dinopad
+    desc: |
+      Herói, esta página do Registro Akáshico cheira a terra molhada e a era dos gigantes. Em
+      §eJurassiCraft§r a ciência faz o que a magia nunca ousou: traz de volta quem já estava
+      extinto.
+
+      O caminho é: §efóssil ou âmbar§r → §eDNA§r → §eovo ou seringa§r → §edinossauro§r de verdade,
+      andando pelo seu quintal. Quer conferir tudo em tela? Aperte U sobre qualquer item no NEI.
+    tasks:
+      - check
+    rewards:
+      - xp: 1
+
+  - id: minerio_fossil
+    title: "Ossos na Rocha"
+    type: main
+    deps: [registro_vivo]
+    icon: jurassicraft:tile.fossil_ore
+    desc: |
+      Tudo começa debaixo dos seus pés. O §eMinério de Fóssil§r aparece enterrado no subsolo (e as
+      versões em argila e arenito, também). Quebre alguns blocos e veja o que cai.
+
+      §aDica:§r uma picareta de ferro serve. Explore cavernas e bordas de desertos.
+    tasks:
+      - get: jurassicraft:tile.fossil_ore
+    rewards:
+      - xp: 3
+      - choice: [minecraft:iron_pickaxe, minecraft:torch x32, minecraft:bread x8]
+
+  - id: fossil
+    title: "Fóssil"
+    type: main
+    deps: [minerio_fossil]
+    icon: jurassicraft:item.fossil
+    desc: |
+      O que sobra do minério é um §eFóssil§r: um pedaço de DNA petrificado. Junte o suficiente,
+      porque cada experiência vai gastar um bocado deles.
+
+      Os mais raros e valiosos também surgem como §eOsso de Dinossauro§r e §eCrânios§r.
+    tasks:
+      - get: jurassicraft:item.fossil x8
+    rewards:
+      - xp: 3
+      - item: [minecraft:iron_ingot x8, minecraft:redstone x8]
+
+  - id: minerio_ambar
+    title: "Âmbar Antigo"
+    type: main
+    deps: [registro_vivo]
+    icon: jurassicraft:tile.amber_ore
+    desc: |
+      Existe um jeito ainda mais elegante de achar DNA: um mosquito preso em resina há 100 milhões
+      de anos. O §eMinério de Âmbar§r aparece em profundidades médias.
+
+      Extraia com cuidado; vale ouro (ou melhor, vale dinossauro).
+    tasks:
+      - get: jurassicraft:tile.amber_ore
+    rewards:
+      - xp: 3
+      - choice: [minecraft:iron_pickaxe, minecraft:torch x32]
+
+  - id: ambar
+    title: "Âmbar"
+    type: main
+    deps: [minerio_ambar]
+    icon: jurassicraft:item.amber
+    desc: |
+      O §eÂmbar§r é a fonte clássica de DNA bom. Junte algumas pedras e guarde-as no baú: o
+      Extrator vai querer fossil ou âmbar para trabalhar.
+
+      Se não souber o que cada um rende, veja a receita do Extrator no NEI.
+    tasks:
+      - get: jurassicraft:item.amber x4
+    rewards:
+      - xp: 3
+      - item: [minecraft:glass x8, minecraft:iron_ingot x8]
+
+  - id: osso_dino
+    title: "Osso de Dinossauro"
+    type: optional
+    deps: [fossil]
+    icon: jurassicraft:item.dinoBone
+    desc: |
+      Ossos grandes de verdade! Servem de troféu na sua sala (e, dependendo da versão, de matéria-
+      prima). Guarde para a coleção do museu.
+    tasks:
+      - get: jurassicraft:item.dinoBone x2
+    rewards:
+      - loot: comum
+
+  - id: dinopad
+    title: "Dinopad"
+    type: main
+    deps: [fossil]
+    icon: jurassicraft:item.dinopad
+    desc: |
+      O §eDinopad§r é o tablet do paleontólogo: guarda informações sobre as criaturas e sobre os
+      ovos que você chocar.
+
+      Receita: ferro em volta, §eredstone§r dos lados e §epó de glowstone§r no centro. Confira a
+      grade no NEI e leve-o sempre com você.
+    tasks:
+      - get: jurassicraft:item.dinopad
+    rewards:
+      - xp: 5
+      - item: [minecraft:iron_ingot x16, minecraft:redstone x8]
+
+  - id: extrator_dna
+    title: "Extrator de DNA"
+    type: main
+    deps: [fossil, ambar]
+    icon: jurassicraft:tile.dnaExtractor
+    desc: |
+      Chegou a hora da máquina que lê o passado! O §eExtrator de DNA§r leva ferro, vidro e
+      redstone (veja o arranjo no NEI).
+
+      Coloque um fóssil ou âmbar dentro e espere. O resultado é um §eDNA§r de espécie aleatória.
+      Ótimo para começar, Herói!
+    tasks:
+      - get: jurassicraft:tile.dnaExtractor
+    rewards:
+      - xp: 5
+      - item: [minecraft:iron_ingot x16, minecraft:glass x8, minecraft:redstone x8]
+
+  - id: primeiro_dna
+    title: "Primeiro Código"
+    type: main
+    deps: [extrator_dna]
+    icon: jurassicraft:item.velociraptor_DNA
+    desc: |
+      Rodou o Extrator? Então já deve ter algum §eDNA§r no inventário. Qualquer espécie conta,
+      seja de dinossauro, peixe ou mamute.
+
+      §aDica:§r o DNA é sorteado. Para ter todas as espécies, extraia muitas vezes. Se vier
+      repetido, nada se perde: ele serve para o combinador.
+    tasks:
+      - one_of: [jurassicraft:item.ankylosaurus_DNA, jurassicraft:item.brachiosaurus_DNA, jurassicraft:item.velociraptor_DNA, jurassicraft:item.stegosaurus_DNA, jurassicraft:item.triceratops_DNA, jurassicraft:item.tyrannosaurus_DNA, jurassicraft:item.gallimimus_DNA, jurassicraft:item.hypsilophodon_DNA, jurassicraft:item.herrerasaurus_DNA, jurassicraft:item.dilophosaurus_DNA, jurassicraft:item.parasaurolophus_DNA, jurassicraft:item.carnotaurus_DNA, jurassicraft:item.spinosaurus_DNA, jurassicraft:item.tylosaurus_DNA, jurassicraft:item.arsinoitherium_DNA, jurassicraft:item.leptictidium_DNA, jurassicraft:item.mammoth_DNA, jurassicraft:item.titanis_DNA, jurassicraft:item.coelacanth_DNA, jurassicraft:item.orthacanthus_DNA]
+    rewards:
+      - xp: 3
+      - item: [minecraft:gold_ingot x4, minecraft:glowstone_dust x8]
+
+  - id: combinador_dna
+    title: "Combinador de DNA"
+    type: main
+    deps: [primeiro_dna]
+    icon: jurassicraft:tile.dnaCombinator
+    desc: |
+      Com DNA de sobra, o §eCombinador§r junta as sequências. Sua receita usa muito ferro e uma
+      redstone no centro (confira no NEI).
+
+      Aqui o DNA bruto se torna material pronto para o cultivo. Olhe os slots dele com calma antes
+      de colocar o primeiro item.
+    tasks:
+      - get: jurassicraft:tile.dnaCombinator
+    rewards:
+      - xp: 5
+      - item: [minecraft:iron_ingot x16, minecraft:glass x16]
+
+  - id: cultivador
+    title: "Cultivador"
+    type: main
+    deps: [combinador_dna]
+    icon: jurassicraft:tile.cultivate_bottom_idle
+    desc: |
+      O §eCultivador§r é o útero artificial: um tanque de vidro tingido sobre uma base de ferro.
+      Escolha a cor que combina com o seu laboratório. Há 16 cores!
+
+      Ele precisa de energia e nutrientes. Leve água, açúcar e carne se o NEI pedir.
+    tasks:
+      - one_of: [jurassicraft:tile.cultivate_bottom_idle, jurassicraft:tile.cultivate_bottom_idle:1, jurassicraft:tile.cultivate_bottom_idle:2, jurassicraft:tile.cultivate_bottom_idle:3, jurassicraft:tile.cultivate_bottom_idle:4, jurassicraft:tile.cultivate_bottom_idle:5, jurassicraft:tile.cultivate_bottom_idle:6, jurassicraft:tile.cultivate_bottom_idle:7, jurassicraft:tile.cultivate_bottom_idle:8, jurassicraft:tile.cultivate_bottom_idle:9, jurassicraft:tile.cultivate_bottom_idle:10, jurassicraft:tile.cultivate_bottom_idle:11, jurassicraft:tile.cultivate_bottom_idle:12, jurassicraft:tile.cultivate_bottom_idle:13, jurassicraft:tile.cultivate_bottom_idle:14, jurassicraft:tile.cultivate_bottom_idle:15]
+    rewards:
+      - xp: 5
+      - item: [minecraft:water_bucket x2, minecraft:sugar x16]
+
+  - id: cultivador_cores
+    title: "Laboratório Colorido"
+    type: optional
+    deps: [cultivador]
+    icon: jurassicraft:tile.cultivate_bottom_idle:11
+    desc: |
+      Um laboratório digno de cinema tem vários cultivadores, cada um com uma cor. Fabrique um de
+      cor amarela e outro de azul-claro para a vitrine.
+    tasks:
+      - get: jurassicraft:tile.cultivate_bottom_idle:11
+      - get: jurassicraft:tile.cultivate_bottom_idle:12
+    rewards:
+      - loot: comum
+
+  - id: soro
+    title: "Soro de Crescimento"
+    type: main
+    deps: [cultivador]
+    icon: jurassicraft:item.growthSerum
+    desc: |
+      Filhotes crescem devagar. O §eSoro de Crescimento§r acelera tudo: leva §ecorante verde§r,
+      §ecenoura dourada§r, balde d'água e carne de dinossauro.
+
+      Receita sem forma. Use o NEI para ver as combinações aceitas, Herói.
+    tasks:
+      - get: jurassicraft:item.growthSerum
+    rewards:
+      - xp: 5
+      - item: [minecraft:golden_carrot x8]
+
+  - id: dna_herbivoros_gigantes
+    title: "DNA dos Gigantes Mansos"
+    deps: [primeiro_dna]
+    icon: jurassicraft:item.brachiosaurus_DNA
+    desc: |
+      Os gigantes de pescoço comprido e os blindados são os primeiros do zoológico: pacíficos e
+      imponentes.
+
+      Reúna o DNA de §eBraquiossauro§r, §eEstegossauro§r, §eTricerátopo§r e §eAnquilossauro§r.
+      Repetiu algum? Extraia mais até completar.
+    tasks:
+      - get: jurassicraft:item.brachiosaurus_DNA
+      - get: jurassicraft:item.stegosaurus_DNA
+      - get: jurassicraft:item.triceratops_DNA
+      - get: jurassicraft:item.ankylosaurus_DNA
+    rewards:
+      - xp: 5
+      - item: [minecraft:iron_ingot x8, minecraft:wheat x16]
+
+  - id: dna_herbivoros_pequenos
+    title: "DNA dos Ágeis"
+    deps: [primeiro_dna]
+    icon: jurassicraft:item.gallimimus_DNA
+    desc: |
+      Rápidos e fáceis de criar. Junte o DNA de §eGalimimo§r, §eHipsilofodonte§r e
+      §eParassaurolofo§r.
+
+      São ótimos para começar um zoológico seguro.
+    tasks:
+      - get: jurassicraft:item.gallimimus_DNA
+      - get: jurassicraft:item.hypsilophodon_DNA
+      - get: jurassicraft:item.parasaurolophus_DNA
+    rewards:
+      - xp: 4
+      - item: [minecraft:wheat x16, minecraft:apple x8]
+
+  - id: dna_carnivoros_pequenos
+    title: "DNA dos Caçadores"
+    deps: [primeiro_dna]
+    icon: jurassicraft:item.velociraptor_DNA
+    desc: |
+      Pequenos, espertos e perigosos em bando. Colete o DNA de §eVelociraptor§r, §eDilofossauro§r
+      e §eHerrerassauro§r.
+
+      §cPerigo:§r depois de nascerem, estes aí não são bichinhos de estimação. Cerca primeiro!
+    tasks:
+      - get: jurassicraft:item.velociraptor_DNA
+      - get: jurassicraft:item.dilophosaurus_DNA
+      - get: jurassicraft:item.herrerasaurus_DNA
+    rewards:
+      - xp: 4
+      - item: [minecraft:iron_ingot x8, minecraft:cooked_beef x16]
+
+  - id: dna_carnivoros_grandes
+    title: "DNA dos Predadores"
+    deps: [dna_carnivoros_pequenos]
+    icon: jurassicraft:item.tyrannosaurus_DNA
+    desc: |
+      Os reis: §eTiranossauro Rex§r, §eSpinosaurus§r e §eCarnotauro§r. Cada DNA desses é um achado
+      raro.
+
+      Faça uma máquina de extração em fila para aumentar a chance. Paciência, a ciência é isso.
+    tasks:
+      - get: jurassicraft:item.tyrannosaurus_DNA
+      - get: jurassicraft:item.spinosaurus_DNA
+      - get: jurassicraft:item.carnotaurus_DNA
+    rewards:
+      - xp: 6
+      - loot: incomum
+
+  - id: dna_aquaticos
+    title: "DNA das Profundezas"
+    deps: [primeiro_dna]
+    icon: jurassicraft:item.tylosaurus_DNA
+    desc: |
+      O mar também guarda gigantes! Colete o DNA do §eTilossauro§r, do §eCelacanto§r e do
+      §eOrthacanthus§r.
+
+      Para criar, vai precisar de um tanque grande de água. Planeje o espaço.
+    tasks:
+      - get: jurassicraft:item.tylosaurus_DNA
+      - get: jurassicraft:item.coelacanth_DNA
+      - get: jurassicraft:item.orthacanthus_DNA
+    rewards:
+      - xp: 4
+      - item: [minecraft:water_bucket x2, minecraft:fishing_rod]
+
+  - id: dna_mamiferos
+    title: "DNA da Era do Gelo"
+    deps: [primeiro_dna]
+    icon: jurassicraft:item.mammoth_DNA
+    desc: |
+      Nem tudo é réptil. Colete o DNA de §eMamute§r, §eArsinoitherium§r, §eLeptictidium§r e
+      §eTitanis§r (a ave do terror).
+
+      Mamíferos usam §eseringa§r no lugar de ovo. O NEI mostra a diferença.
+    tasks:
+      - get: jurassicraft:item.mammoth_DNA
+      - get: jurassicraft:item.arsinoitherium_DNA
+      - get: jurassicraft:item.leptictidium_DNA
+      - get: jurassicraft:item.titanis_DNA
+    rewards:
+      - xp: 4
+      - item: [minecraft:leather x8, minecraft:wheat x16]
+
+  - id: ovo_herbivoro_pequeno
+    title: "Ovos Ágeis"
+    deps: [dna_herbivoros_pequenos, cultivador]
+    icon: jurassicraft:item.Gallimimus_Egg
+    desc: |
+      Coloque o DNA no Cultivador e espere o ovo. Para esta rodada: §eGalimimo§r,
+      §eHipsilofodonte§r e §eParassaurolofo§r.
+
+      Use o Dinopad para acompanhar a qualidade do ovo. Ovo ainda verde não choca.
+    tasks:
+      - get: jurassicraft:item.Gallimimus_Egg
+      - get: jurassicraft:item.Hypsilophodon_Egg
+      - get: jurassicraft:item.Parasaurolophus_Egg
+    rewards:
+      - xp: 6
+      - item: [minecraft:hay_block x2, minecraft:wheat x32]
+
+  - id: ovo_gigante
+    title: "Ovos Gigantes"
+    deps: [dna_herbivoros_gigantes, cultivador]
+    icon: jurassicraft:item.Brachiosaurus_Egg
+    desc: |
+      É hora dos pesos-pesados. Cultive os ovos de §eBraquiossauro§r, §eEstegossauro§r,
+      §eTricerátopo§r e §eAnquilossauro§r.
+
+      Eles ocupam espaço. Escolha um terreno amplo antes de chocar.
+    tasks:
+      - get: jurassicraft:item.Brachiosaurus_Egg
+      - get: jurassicraft:item.Stegosaurus_Egg
+      - get: jurassicraft:item.Triceratops_Egg
+      - get: jurassicraft:item.Ankylosaurus_Egg
+    rewards:
+      - xp: 8
+      - loot: incomum
+
+  - id: ovo_raptor
+    title: "Ovo do Velociraptor"
+    type: main
+    deps: [dna_carnivoros_pequenos, cultivador]
+    icon: jurassicraft:item.Velociraptor_Egg
+    desc: |
+      O mais famoso dos caçadores em miniatura. O ovo do §eVelociraptor§r pede paciência no
+      Cultivador.
+
+      Antes que choque, prepare a cerca. Esses bichos abrem portas só em filmes... mas é melhor
+      garantir.
+    tasks:
+      - get: jurassicraft:item.Velociraptor_Egg
+    rewards:
+      - xp: 6
+      - item: [minecraft:iron_ingot x16]
+
+  - id: ovo_dilo
+    title: "Ovos de Caçadores"
+    deps: [ovo_raptor]
+    icon: jurassicraft:item.Dilophosaurus_Egg
+    desc: |
+      Mais dois caçadores: §eDilofossauro§r (cospe veneno) e §eHerrerassauro§r. Faça os ovos e
+      guarde-os em lugar seguro.
+    tasks:
+      - get: jurassicraft:item.Dilophosaurus_Egg
+      - get: jurassicraft:item.Herrerasaurus_Egg
+    rewards:
+      - xp: 6
+      - item: [minecraft:cooked_beef x16]
+
+  - id: ovo_rex
+    title: "Ovo do Rei"
+    type: main
+    deps: [dna_carnivoros_grandes, ovo_raptor]
+    icon: jurassicraft:item.Tyrannosaurus_Egg
+    desc: |
+      Aqui está a estrela de todo parque: o ovo de §eTiranossauro Rex§r. Também faça os de
+      §eSpinosaurus§r e §eCarnotauro§r se quiser a coleção.
+
+      Antes de chocar, tenha uma cerca bem alta e um plano de fuga.
+    tasks:
+      - get: jurassicraft:item.Tyrannosaurus_Egg
+    rewards:
+      - xp: 10
+      - loot: raro
+
+  - id: ovo_predadores
+    title: "Ovos de Predadores"
+    deps: [ovo_rex]
+    icon: jurassicraft:item.Spinosaurus_Egg
+    desc: |
+      Complete o set dos grandões: §eSpinosaurus§r e §eCarnotauro§r. Quando esses dois estiverem
+      prontos, o seu parque já impressiona.
+    tasks:
+      - get: jurassicraft:item.Spinosaurus_Egg
+      - get: jurassicraft:item.Carnotaurus_Egg
+    rewards:
+      - xp: 8
+      - loot: incomum
+
+  - id: ovo_aquatico
+    title: "Ovos do Oceano"
+    deps: [dna_aquaticos, cultivador]
+    icon: jurassicraft:item.Tylosaurus_Egg
+    desc: |
+      Ovos de §eTilossauro§r, §eCelacanto§r e §eOrthacanthus§r. Vão precisar de um grande lago ou
+      tanque; solte-os com cuidado.
+    tasks:
+      - get: jurassicraft:item.Tylosaurus_Egg
+      - get: jurassicraft:item.Coelacanth_Egg
+      - get: jurassicraft:item.Orthacanthus_Egg
+    rewards:
+      - xp: 6
+      - item: [minecraft:fishing_rod, minecraft:water_bucket x2]
+
+  - id: ovo_titanis
+    title: "Ovo do Titanis"
+    deps: [dna_mamiferos, cultivador]
+    icon: jurassicraft:item.Titanis_Egg
+    desc: |
+      A ave do terror! Cultive o ovo do §eTitanis§r. Ela corre, bica e ainda por cima é bonita (de
+      longe).
+    tasks:
+      - get: jurassicraft:item.Titanis_Egg
+    rewards:
+      - xp: 5
+      - item: [minecraft:feather x16]
+
+  - id: seringas
+    title: "Seringas do Passado"
+    deps: [dna_mamiferos, cultivador]
+    icon: jurassicraft:item.Mammoth_Syringe
+    desc: |
+      Mamíferos não põem ovos: usam §eseringas§r. Prepare as de §eMamute§r, §eArsinoitherium§r e
+      §eLeptictidium§r.
+
+      No NEI, procure o slot da seringa no Cultivador.
+    tasks:
+      - get: jurassicraft:item.Mammoth_Syringe
+      - get: jurassicraft:item.Arsinoitherium_Syringe
+      - get: jurassicraft:item.Leptictidium_Syringe
+    rewards:
+      - xp: 6
+      - item: [minecraft:leather x8]
+
+  - id: cerca_base
+    title: "Base da Cerca"
+    deps: [dinopad]
+    icon: jurassicraft:tile.low_Security_Fence_Base
+    desc: |
+      Dinossauros fogem. Para evitar passeios inesperados, comece a cerca. A §eBase de Baixa
+      Segurança§r é o alicerce.
+
+      Também funciona contra os criativos que se esqueceram da porta.
+    tasks:
+      - get: jurassicraft:tile.low_Security_Fence_Base x4
+    rewards:
+      - xp: 3
+      - item: [minecraft:iron_ingot x8]
+
+  - id: cerca_poste
+    title: "Postes da Cerca"
+    deps: [cerca_base]
+    icon: jurassicraft:tile.low_Security_Fence_Pole
+    desc: |
+      Complete com o §ePoste§r e o §eÂngulo§r da cerca. Pedra com bloco de ferro no centro (veja
+      no NEI).
+
+      Cerque o recinto antes de chocar o primeiro ovo.
+    tasks:
+      - get: jurassicraft:tile.low_Security_Fence_Pole x4
+      - get: jurassicraft:tile.low_Security_Fence_Main x4
+    rewards:
+      - xp: 4
+      - item: [minecraft:iron_ingot x16, minecraft:stone x32]
+
+  - id: rede
+    title: "A Rede"
+    type: optional
+    deps: [dinopad]
+    icon: jurassicraft:item.net
+    desc: |
+      A §eRede§r serve para capturar criaturas pequenas sem machucá-las. Confira no NEI se o seu
+      bicho cabe nela.
+    tasks:
+      - get: jurassicraft:item.net
+    rewards:
+      - loot: comum
+
+  - id: gesso
+    title: "Pó de Gesso"
+    type: optional
+    deps: [fossil]
+    icon: jurassicraft:item.gypsumPowder
+    desc: |
+      O §ePó de Gesso§r faz blocos brancos para o seu laboratório. Também serve para encapsular
+      fósseis em exposição. Que chique!
+    tasks:
+      - get: jurassicraft:item.gypsumPowder x8
+    rewards:
+      - xp: 2
+
+  - id: bloco_gesso
+    title: "Bloco e Tijolo de Gesso"
+    type: optional
+    deps: [gesso]
+    icon: jurassicraft:tile.block_Gypsum_Brick
+    desc: |
+      Do pó nasce o §eBloco de Gipsita§r e, depois, os §eTijolos§r. Perfeitos para o museu.
+    tasks:
+      - get: jurassicraft:tile.block_Gypsum_Block x4
+      - get: jurassicraft:tile.block_Gypsum_Brick x4
+    rewards:
+      - loot: comum
+
+  - id: vidro_claro
+    title: "Vidro Claro"
+    type: optional
+    deps: [gesso]
+    icon: jurassicraft:tile.clearGlass
+    desc: |
+      Para uma vitrine sem reflexos, o §eVidro Claro§r. Ótimo para o aquário do Tilossauro.
+    tasks:
+      - get: jurassicraft:tile.clearGlass x4
+    rewards:
+      - loot: comum
+
+  - id: bastao_isca
+    title: "Isca no Bastão"
+    type: optional
+    deps: [ovo_gigante]
+    icon: jurassicraft:item.AppleOnAStick
+    desc: |
+      Quer guiar um dinossauro? Uma §eMaçã no Bastão§r funciona para os herbívoros; há variantes
+      de cenoura, trigo, porco, carne e peixe para outras espécies.
+    tasks:
+      - one_of: [jurassicraft:item.AppleOnAStick, jurassicraft:item.BeefOnAStick, jurassicraft:item.CarrotOnAStick, jurassicraft:item.FishOnAStick, jurassicraft:item.PorkOnAStick, jurassicraft:item.WheatOnAStick]
+    rewards:
+      - loot: comum
+
+  - id: carne_dino
+    title: "Carne Crua"
+    deps: [ovo_dilo]
+    icon: jurassicraft:item.Velociraptor_Meat
+    desc: |
+      A carne dos dinossauros cai quando eles são derrotados. Leve algumas peças de qualquer
+      espécie: serve para o Soro e para a cozinha.
+    tasks:
+      - one_of: [jurassicraft:item.Velociraptor_Meat, jurassicraft:item.Ankylosaurus_Meat, jurassicraft:item.Brachiosaurus_Meat, jurassicraft:item.Stegosaurus_Meat, jurassicraft:item.Triceratops_Meat, jurassicraft:item.Tyrannosaurus_Meat, jurassicraft:item.Gallimimus_Meat, jurassicraft:item.Hypsilophodon_Meat, jurassicraft:item.Herrerasaurus_Meat, jurassicraft:item.Dilophosaurus_Meat, jurassicraft:item.Parasaurolophus_Meat, jurassicraft:item.Carnotaurus_Meat, jurassicraft:item.Spinosaurus_Meat, jurassicraft:item.Tylosaurus_Meat]
+    rewards:
+      - xp: 3
+      - item: [minecraft:coal x8]
+
+  - id: couro
+    title: "Couro de Dinossauro"
+    deps: [carne_dino]
+    icon: jurassicraft:item.Velociraptor_Skin
+    desc: |
+      Peles de escamas e couro grosso: §eSkin§r de Velociraptor, Estegossauro e Tricerátopo.
+      Servem de troféu ou de matéria-prima para equipamentos (confira no NEI).
+    tasks:
+      - get: jurassicraft:item.Velociraptor_Skin
+      - get: jurassicraft:item.Stegosaurus_Skin
+      - get: jurassicraft:item.Triceratops_Skin
+    rewards:
+      - xp: 4
+      - item: [minecraft:leather x8]
+
+  - id: bife_gigantes
+    title: "Bifes dos Gigantes"
+    type: optional
+    deps: [carne_dino]
+    icon: jurassicraft:item.Triceratops_Steak
+    desc: |
+      Grelhe a carne na fornalha e prove o §eBife§r de Tricerátopo, Estegossauro, Braquiossauro e
+      Anquilossauro. Alimenta bem melhor que uma maçã.
+    tasks:
+      - get: jurassicraft:item.Triceratops_Steak
+      - get: jurassicraft:item.Stegosaurus_Steak
+      - get: jurassicraft:item.Brachiosaurus_Steak
+      - get: jurassicraft:item.Ankylosaurus_Steak
+    rewards:
+      - loot: comum
+
+  - id: bife_caçadores
+    title: "Bifes dos Caçadores"
+    type: optional
+    deps: [carne_dino]
+    icon: jurassicraft:item.Velociraptor_Steak
+    desc: |
+      Ainda mais exótico: bifes de §eVelociraptor§r, §eDilofossauro§r, §eHerrerassauro§r,
+      §eCarnotauro§r, §eSpinosaurus§r e §eTiranossauro Rex§r. Lembre-se de grelhar antes de comer.
+    tasks:
+      - get: jurassicraft:item.Velociraptor_Steak
+      - get: jurassicraft:item.Dilophosaurus_Steak
+      - get: jurassicraft:item.Herrerasaurus_Steak
+      - get: jurassicraft:item.Carnotaurus_Steak
+      - get: jurassicraft:item.Spinosaurus_Steak
+      - get: jurassicraft:item.Tyrannosaurus_Steak
+    rewards:
+      - loot: incomum
+
+  - id: bife_pequenos
+    title: "Bifes dos Ágeis"
+    type: optional
+    deps: [carne_dino]
+    icon: jurassicraft:item.Gallimimus_Steak
+    desc: |
+      O prato leve: bifes de §eGalimimo§r, §eHipsilofodonte§r, §eParassaurolofo§r, §eTitanis§r e
+      §eTilossauro§r.
+    tasks:
+      - get: jurassicraft:item.Gallimimus_Steak
+      - get: jurassicraft:item.Hypsilophodon_Steak
+      - get: jurassicraft:item.Parasaurolophus_Steak
+      - get: jurassicraft:item.Titanis_Steak
+      - get: jurassicraft:item.Tylosaurus_Steak
+    rewards:
+      - loot: comum
+
+  - id: bife_exotico
+    title: "Bifes Pré-históricos"
+    type: optional
+    deps: [bife_gigantes]
+    icon: jurassicraft:item.Mammoth_Steak
+    desc: |
+      Sabores que nem a pré-história conhecia: §eMamute§r, §eArsinoitherium§r, §eLeptictidium§r e
+      §eCelacanto§r. Um banquete para o seu clube de arqueologia.
+    tasks:
+      - get: jurassicraft:item.Mammoth_Steak
+      - get: jurassicraft:item.Arsinoitherium_Steak
+      - get: jurassicraft:item.Leptictidium_Steak
+      - get: jurassicraft:item.Coelacanth_Steak
+    rewards:
+      - loot: incomum
+
+  - id: cranios
+    title: "Coleção de Crânios"
+    deps: [fossil]
+    icon: jurassicraft:item.Tyrannosaurus_Skull
+    desc: |
+      Troféus de verdade! Os §eCrânios§r de Tiranossauro, Tricerátopo, Estegossauro,
+      Braquiossauro, Dilofossauro, Parassaurolofo, Carnotauro, Spinosaurus, Tilossauro e Titanis
+      podem ser achados na sua jornada.
+
+      Se algum faltar, confira no NEI de onde ele vem e volte ao laboratório.
+    tasks:
+      - one_of: [jurassicraft:item.Tyrannosaurus_Skull, jurassicraft:item.Triceratops_Skull, jurassicraft:item.Stegosaurus_Skull, jurassicraft:item.Brachiosaurus_Skull, jurassicraft:item.Dilophosaurus_Skull, jurassicraft:item.Parasaurolophus_Skull, jurassicraft:item.Carnotaurus_Skull, jurassicraft:item.Spinosaurus_Skull, jurassicraft:item.Tylosaurus_Skull, jurassicraft:item.Titanis_Skull]
+    rewards:
+      - xp: 5
+      - loot: incomum
+
+  - id: cacar_gallimimus
+    title: "Corrida com Galimimo"
+    type: optional
+    deps: [ovo_herbivoro_pequeno]
+    icon: jurassicraft:item.Gallimimus_Meat
+    desc: |
+      Eles correm que nem avestruzes. Se encontrar um bando selvagem, derrube alguns
+      §eGalimimos§r. Leve arco!
+    tasks:
+      - kill: {entity: "jurassicraft.Gallimimus", count: 3}
+    rewards:
+      - xp: 3
+      - item: [minecraft:arrow x32]
+
+  - id: cacar_dilo
+    title: "Cuspe Fatal"
+    type: optional
+    deps: [ovo_dilo]
+    icon: jurassicraft:item.Dilophosaurus_Meat
+    desc: |
+      O §eDilofossauro§r cospe um veneno que cega. Aprenda a desviar do cuspe e derrote três.
+
+      §cPerigo:§r leve leite para curar o veneno.
+    tasks:
+      - kill: {entity: "jurassicraft.Dilophosaurus", count: 3}
+    rewards:
+      - xp: 4
+      - item: [minecraft:milk_bucket]
+
+  - id: cacar_raptor
+    title: "Sem Pânico, Herói"
+    deps: [ovo_raptor]
+    icon: jurassicraft:item.Velociraptor_Meat
+    desc: |
+      Em bando eles rodeiam. Derrote cinco §eVelociraptores§r selvagens, preferencialmente com um
+      corredor estreito atrás de você.
+    tasks:
+      - kill: {entity: "jurassicraft.Velociraptor", count: 5}
+    rewards:
+      - xp: 5
+      - item: [minecraft:golden_apple]
+
+  - id: cacar_trice
+    title: "Chifres de Aço"
+    type: optional
+    deps: [ovo_gigante]
+    icon: jurassicraft:item.Triceratops_Meat
+    desc: |
+      Mansos até serem provocados. Derrube dois §eTricerátopos§r para obter couro e carne. Fique
+      longe das investidas.
+    tasks:
+      - kill: {entity: "jurassicraft.Triceratops", count: 2}
+    rewards:
+      - xp: 4
+      - item: [minecraft:iron_ingot x8]
+
+  - id: cacar_carno
+    title: "Touro do Passado"
+    type: optional
+    deps: [ovo_predadores]
+    icon: jurassicraft:item.Carnotaurus_Meat
+    desc: |
+      Rápido e com chifres sobre os olhos. Vença o §eCarnotauro§r. Mantenha as poções de cura no
+      atalho.
+    tasks:
+      - kill: {entity: "jurassicraft.Carnotaurus", count: 1}
+    rewards:
+      - xp: 6
+      - loot: incomum
+
+  - id: cacar_spino
+    title: "Rei do Rio"
+    type: optional
+    deps: [ovo_predadores]
+    icon: jurassicraft:item.Spinosaurus_Meat
+    desc: |
+      O gigante que caça na água e na terra. Derrote o §eSpinosaurus§r e leve de troféu o crânio.
+    tasks:
+      - kill: {entity: "jurassicraft.Spinosaurus", count: 1}
+    rewards:
+      - xp: 8
+      - loot: raro
+
+  - id: cacar_titanis
+    title: "Pássaro do Terror"
+    type: optional
+    deps: [ovo_titanis]
+    icon: jurassicraft:item.Titanis_Meat
+    desc: |
+      Corre mais rápido que você e bica mais forte que um zumbi. Vença um §eTitanis§r em campo
+      aberto.
+    tasks:
+      - kill: {entity: "jurassicraft.Titanis", count: 1}
+    rewards:
+      - xp: 5
+      - item: [minecraft:feather x16]
+
+  - id: cacar_rex
+    title: "O Rei Tirano"
+    type: boss
+    deps: [ovo_rex]
+    banner: "O Rei caiu!"
+    subtitle: "O Tiranossauro Rex foi derrotado"
+    icon: jurassicraft:item.Tyrannosaurus_Meat
+    desc: |
+      Não existe nada tão marcante quanto o rugido do §eTiranossauro Rex§r. Ele tem muita vida,
+      bate forte e corre atrás de você.
+
+      §cTática:§r use cerca, armadilhas, arqueiros em altura e armadura boa. Comida e poções à
+      mão. Quando ele cair, o Registro inteiro vai tremer.
+    tasks:
+      - kill: {entity: "jurassicraft.Tyrannosaurus", count: 1}
+    rewards:
+      - xp: 12
+      - loot: epico
+
+  - id: cacar_tylo
+    title: "Mar Aberto"
+    type: optional
+    deps: [ovo_aquatico]
+    icon: jurassicraft:item.Tylosaurus_Meat
+    desc: |
+      Um predador marinho gigante. Enfrente o §eTilossauro§r de dentro de um barco ou de uma
+      plataforma firme.
+    tasks:
+      - kill: {entity: "jurassicraft.Tylosaurus", count: 1}
+    rewards:
+      - xp: 6
+      - loot: incomum
+
+  - id: cacar_mamute
+    title: "Peludo e Furioso"
+    type: optional
+    deps: [seringas]
+    icon: jurassicraft:item.Mammoth_Meat
+    desc: |
+      Derrote um §eMamute§r e leve a carne para a fogueira. Cuidado com as presas!
+    tasks:
+      - kill: {entity: "jurassicraft.Mammoth", count: 1}
+    rewards:
+      - xp: 5
+      - item: [minecraft:leather x8]
+
+  - id: cacar_stego
+    title: "Placas e Espinhos"
+    type: optional
+    deps: [ovo_gigante]
+    icon: jurassicraft:item.Stegosaurus_Meat
+    desc: |
+      A cauda dele é arma. Caça um §eEstegossauro§r pelo flanco, nunca por trás.
+    tasks:
+      - kill: {entity: "jurassicraft.Stegosaurus", count: 1}
+    rewards:
+      - xp: 4
+      - item: [minecraft:iron_ingot x4]
+
+  - id: ovo_ovo_mamute
+    title: "Zoológico Aberto"
+    type: milestone
+    deps: [ovo_rex, ovo_gigante, ovo_aquatico, seringas, cerca_poste]
+    banner: "Parque inaugurado"
+    subtitle: "A vida voltou ao mundo"
+    icon: jurassicraft:item.dinopad
+    desc: |
+      Olhe o que você fez, Herói: ovos, seringas, cercas e laboratório. O seu §eparque§r já está
+      pronto para os primeiros visitantes.
+
+      Guarde estes frascos de DNA e os ovos; o próximo capítulo, §eFósseis e Arqueologia§r, traz
+      uma segunda via com outras espécies e dimensões misteriosas.
+    tasks:
+      - check
+    rewards:
+      - xp: 15
+      - kit: {name: "Kit do Paleontólogo", items: [jurassicraft:item.growthSerum x4, minecraft:golden_apple x4, minecraft:iron_ingot x32]}
+      - loot: raro

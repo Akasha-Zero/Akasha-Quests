@@ -1,0 +1,752 @@
+chapter:
+  id: nether
+  title: "O Nether"
+  order: 230
+  icon: minecraft:nether_star
+  desc: |
+    §cO Reino de Fogo.§r Do portal de obsidiana à fortaleza, do Netherlicious aos bioma novos e
+    ao Selo do Abismo: o Wither. (Nether vanilla + Netherlicious)
+
+quests:
+  - id: obsidiana
+    title: "Vidro Negro"
+    type: main
+    icon: minecraft:obsidian
+    desc: |
+      Todo caminho para o Nether começa numa moldura de pedra escura, Herói. Para o portal você
+      precisa de §eObsidiana§r: ela nasce quando a água encontra lava parada. Minere com uma
+      §apicareta de diamante§r. Dez blocos bastam para a moldura mínima (4x5, sem os cantos).
+    tasks:
+      - get: minecraft:obsidian x10
+    rewards:
+      - choice: [minecraft:flint_and_steel, minecraft:iron_ingot x8]
+      - xp: 3
+
+  - id: isqueiro
+    title: "Faísca Inicial"
+    type: main
+    deps: [obsidiana]
+    icon: minecraft:flint_and_steel
+    desc: |
+      Com a moldura montada, falta a centelha. O §eIsqueiro§r é um lingote de ferro com uma
+      pederneira, na bancada. Acenda o interior da moldura e a membrana roxa se forma. Leve também
+      um balde de água, cobblestone e comida: o outro lado não perdoa.
+    tasks:
+      - craft: minecraft:flint_and_steel
+    rewards:
+      - xp: 3
+      - choice: [minecraft:cooked_beef x16, minecraft:cobblestone x64]
+
+  - id: entrar_nether
+    title: "Portão do Inferno"
+    type: portal
+    deps: [isqueiro]
+    icon: minecraft:obsidian
+    desc: |
+      Atravesse o portal, Herói. O Nether é o Registro mais quente que eu guardo: teto de pedra,
+      lagos de lava e uma paisagem que pulsa. §cNão cave em linha reta para baixo§r e cuidado com
+      lava. Dica: ao voltar, o portal leva você ao ponto correspondente (1 bloco no Nether = 8 no
+      Overworld).
+    tasks:
+      - visit: {dim: -1, name: "O Nether"}
+    rewards:
+      - xp: 5
+      - choice: [minecraft:golden_apple, minecraft:cooked_beef x16, minecraft:torch x32]
+
+  - id: netherrack
+    title: "Rocha Quente"
+    type: main
+    deps: [entrar_nether]
+    icon: minecraft:netherrack
+    desc: |
+      A base de tudo aqui é a §eNetherrack§r: quebra rápido e queima para sempre. Pegue uma boa
+      pilha, ela serve de ponte, de combustível de fornalha de tijolos e de bloco de construção
+      barato.
+    tasks:
+      - get: minecraft:netherrack x32
+    rewards:
+      - xp: 3
+      - loot: comum
+
+  - id: areia_almas
+    title: "Areia de Almas"
+    type: main
+    deps: [netherrack]
+    icon: minecraft:soul_sand
+    desc: |
+      A §eSoul Sand§r deixa você lento, mas é indispensável: cresce a Nether Wart nela e é um dos
+      ingredientes do Wither. Procure nos vales de almas (confira os biomas no NEI e no mapa).
+    tasks:
+      - get: minecraft:soul_sand x8
+    rewards:
+      - xp: 3
+      - loot: comum
+
+  - id: glowstone
+    title: "Luz Cristalizada"
+    deps: [netherrack]
+    icon: minecraft:glowstone
+    desc: |
+      Cachos de §ePedra Luminosa§r pendem do teto. Quebre-os e junte o pó. Dá lâmpadas, poções e é
+      um dos materiais do Respawn Anchor, mais à frente.
+    tasks:
+      - get: minecraft:glowstone x8
+    rewards:
+      - xp: 3
+      - loot: comum
+
+  - id: quartzo
+    title: "Quartzo do Nether"
+    deps: [netherrack]
+    icon: minecraft:quartz
+    desc: |
+      Minério branquinho embutido na netherrack. Rende §eQuartzo§r, usado em redstone, blocos
+      decorativos e na Nether Beacon. Pegue uma boa quantidade, Herói.
+    tasks:
+      - get: minecraft:quartz x16
+    rewards:
+      - xp: 3
+      - loot: comum
+
+  - id: tijolos_nether
+    title: "Tijolos Infernais"
+    deps: [netherrack]
+    icon: minecraft:nether_brick
+    desc: |
+      Asse netherrack na fornalha para obter §eTijolos do Nether§r. São a base da fortaleza e de
+      várias variantes do Netherlicious (vermelho, distorcido, foxfire...). Confira as receitas no
+      NEI.
+    tasks:
+      - get: minecraft:nether_brick x16
+    rewards:
+      - xp: 3
+      - loot: comum
+
+  - id: nether_wart
+    title: "O Fungo Maldito"
+    type: main
+    deps: [areia_almas, fortaleza]
+    icon: minecraft:nether_wart
+    desc: |
+      Dentro das fortalezas há canteiros de areia de almas com §eNether Wart§r. Colete e replante:
+      é a base de quase toda poção. Guarde uma farm pequena na base.
+    tasks:
+      - get: minecraft:nether_wart x8
+    rewards:
+      - xp: 3
+      - loot: comum
+
+  - id: porcos_zumbis
+    title: "Pele Podre"
+    deps: [entrar_nether]
+    icon: minecraft:gold_nugget
+    desc: |
+      Os §ePorcos-Zumbis§r vagam em bandos e só atacam se você bater primeiro (aí, todos juntos).
+      Derrote alguns de cada vez, de preferência em corredor estreito. Soltam pepitas de ouro e
+      carne podre.
+    tasks:
+      - kill: "PigZombie x4"
+    rewards:
+      - xp: 3
+      - loot: comum
+
+  - id: ghast
+    title: "Lágrimas no Teto"
+    type: main
+    deps: [entrar_nether]
+    icon: minecraft:ghast_tear
+    desc: |
+      O §eGhast§r é um balão que chora e dispara bolas de fogo. §aDica:§r rebata a bola batendo
+      nela (corpo a corpo ou flecha) e ela volta como dano enorme. Leve arco, bloco de sobra para
+      se esconder e não lute à beira de precipícios.
+    tasks:
+      - kill: "Ghast x1"
+    rewards:
+      - xp: 3
+      - loot: comum
+
+  - id: lagrima_ghast
+    title: "Lágrima de Ghast"
+    deps: [ghast]
+    icon: minecraft:ghast_tear
+    desc: |
+      A §eLágrima de Ghast§r cai do bicho (às vezes só). É ingrediente de poção de Regeneração. Se
+      precisar, mate mais um.
+    tasks:
+      - get: minecraft:ghast_tear
+    rewards:
+      - xp: 3
+      - loot: comum
+
+  - id: fortaleza
+    title: "A Fortaleza Sombria"
+    type: main
+    deps: [tijolos_nether]
+    icon: minecraft:nether_brick_fence
+    desc: |
+      Procure uma construção enorme de tijolos escuros, com pontes e escadarias. É a §eFortaleza
+      do Nether§r: aqui vivem Blazes e Esqueletos Wither, e crescem as plantações de Nether Wart.
+      Explore com cuidado e traga um bom estoque de blocos para tapar os vãos.
+    tasks:
+      - get: minecraft:nether_brick_fence x4
+    rewards:
+      - xp: 3
+      - loot: comum
+
+  - id: blaze
+    title: "Fogo Que Anda"
+    type: main
+    deps: [fortaleza]
+    icon: minecraft:blaze_rod
+    desc: |
+      Perto dos spawners da fortaleza ficam os §eBlazes§r. Eles voam e disparam rajadas de três
+      bolas de fogo. §aDica:§r poção de Resistência ao Fogo e bolas de neve (Blaze toma dano com
+      elas!) ajudam muito.
+    tasks:
+      - kill: "Blaze x3"
+    rewards:
+      - xp: 3
+      - loot: comum
+
+  - id: vara_blaze
+    title: "Varinha de Chamas"
+    type: main
+    deps: [blaze]
+    icon: minecraft:blaze_rod
+    desc: |
+      As §eVaras Incandescentes§r viram pó de blaze (que alimenta o suporte de poções) e
+      combustível. Pegue um punhado: vamos precisar delas.
+    tasks:
+      - get: minecraft:blaze_rod x8
+    rewards:
+      - xp: 3
+      - loot: comum
+
+  - id: creme_magma
+    title: "Creme de Magma"
+    type: optional
+    deps: [vara_blaze]
+    icon: minecraft:magma_cream
+    desc: |
+      Os cubos de magma rendem §eCreme de Magma§r (ou bate nos Slimes de lava). Serve para poção
+      de Resistência ao Fogo.
+    tasks:
+      - get: minecraft:magma_cream x2
+    rewards:
+      - loot: comum
+
+  - id: esqueleto_wither
+    title: "Ossos Escuros"
+    type: main
+    deps: [fortaleza]
+    icon: minecraft:skull:1
+    desc: |
+      Os §eEsqueletos Wither§r são altos, rápidos e aplicam efeito Wither. §cCuidado com a
+      saúde§r: leve maçãs douradas e bata em corredor de 2 de altura onde eles ficam presos.
+      Cabeças são raras, então vá com paciência.
+    tasks:
+      - kill: "witherSkeleton x3"
+    rewards:
+      - xp: 3
+      - loot: comum
+
+  - id: cranios
+    title: "Três Crânios"
+    type: main
+    deps: [esqueleto_wither]
+    icon: minecraft:skull:1
+    desc: |
+      Para invocar o Wither você precisa de §e3 Crânios de Esqueleto Wither§r. O drop é raro: use
+      Looting e persevere. Conte comigo.
+    tasks:
+      - get: minecraft:skull:1 x3
+    rewards:
+      - xp: 3
+      - loot: comum
+
+  - id: floresta_carmesim
+    title: "Floresta Carmesim"
+    type: main
+    deps: [entrar_nether]
+    icon: netherlicious:CrimsonNylium
+    desc: |
+      O Netherlicious trouxe biomas novos. Na §eFloresta Carmesim§r o chão é de §eCrimson Nylium§r
+      e as árvores são enormes fungos vermelhos. Cuidado com Piglins e Hoglins. Ache o bioma e
+      colete o nylium com Toque Suave.
+    tasks:
+      - get: netherlicious:CrimsonNylium
+    rewards:
+      - xp: 3
+      - loot: comum
+
+  - id: floresta_distorcida
+    title: "Floresta Distorcida"
+    deps: [entrar_nether]
+    icon: netherlicious:WarpedNylium
+    desc: |
+      A §eFloresta Distorcida§r tem nylium azul-esverdeado, fungos e muitos Endermen. Mais calma
+      que a carmesim. Traga um §eWarped Nylium§r como prova.
+    tasks:
+      - get: netherlicious:WarpedNylium
+    rewards:
+      - xp: 3
+      - loot: comum
+
+  - id: floresta_foxfire
+    title: "Floresta Foxfire"
+    type: optional
+    deps: [entrar_nether]
+    icon: netherlicious:FoxfireNylium
+    desc: |
+      Um terceiro tipo de floresta, com §eFoxfire Nylium§r e luzes alaranjadas. Se não encontrar
+      de primeira, explore em direções diferentes.
+    tasks:
+      - get: netherlicious:FoxfireNylium
+    rewards:
+      - loot: comum
+
+  - id: vale_almas
+    title: "Vale das Almas"
+    deps: [entrar_nether]
+    icon: netherlicious:SoulSoil
+    desc: |
+      No §eVale das Almas§r o chão é feito de §eSoul Soil§r, com chamas azuis e névoa. Pegue um
+      pouco: ela é o chão para tochas e fogueiras de alma.
+    tasks:
+      - get: netherlicious:SoulSoil x4
+    rewards:
+      - xp: 3
+      - loot: comum
+
+  - id: deltas_basalto
+    title: "Deltas de Basalto"
+    deps: [entrar_nether]
+    icon: netherlicious:Basalt
+    desc: |
+      Colunas de §eBasalto§r, chaminés e lava por todo lado. É um bioma perigoso: leve blocos para
+      atravessar e cuidado com os Magma Cubes. Traga basalto de lá.
+    tasks:
+      - get: netherlicious:Basalt x8
+    rewards:
+      - xp: 3
+      - loot: comum
+
+  - id: blackstone
+    title: "Pedra Preta"
+    deps: [deltas_basalto]
+    icon: netherlicious:Blackstone
+    desc: |
+      A §eBlackstone§r é o bloco de construção do Netherlicious: lisa, polida, em tijolos,
+      azulejos... e as variantes saem na bancada. Confira no NEI as receitas de Polished
+      Blackstone.
+    tasks:
+      - get: netherlicious:Blackstone x16
+    rewards:
+      - xp: 3
+      - loot: comum
+
+  - id: shroomlight
+    title: "Cogumelos Luminosos"
+    type: optional
+    deps: [floresta_carmesim]
+    icon: netherlicious:ShroomLight
+    desc: |
+      A §eShroomlight§r brilha entre as copas dos fungos gigantes. É uma luz bonita para
+      construções. Colete algumas.
+    tasks:
+      - get: netherlicious:ShroomLight x4
+    rewards:
+      - loot: comum
+
+  - id: caule_nether
+    title: "Madeira do Nether"
+    deps: [floresta_carmesim]
+    icon: netherlicious:Stem
+    desc: |
+      Os gigantes são feitos de §eCrimson Stem§r. Corte e transforme em tábuas: madeira que não
+      queima! Dá portas, botões, baús e mais. Veja as receitas no NEI.
+    tasks:
+      - get: netherlicious:Stem x8
+    rewards:
+      - xp: 3
+      - loot: comum
+
+  - id: planta_vinhas
+    title: "Vinhas do Teto"
+    type: optional
+    deps: [floresta_carmesim]
+    icon: netherlicious:WeepingVines
+    desc: |
+      As §eWeeping Vines§r pendem do teto e as §eTwisting Vines§r crescem do chão. As twisting
+      servem para subir e descer; coletar com tesoura facilita.
+    tasks:
+      - one_of: [netherlicious:WeepingVines, netherlicious:TwistingVines]
+    rewards:
+      - loot: comum
+
+  - id: strider
+    title: "Cavalo de Lava"
+    type: optional
+    deps: [entrar_nether]
+    icon: netherlicious:StriderFlankRaw
+    desc: |
+      O §eStrider§r caminha sobre lava! Procure um nos lagos de lava e derrote um para provar a
+      caçada: a carne dele é comida do Nether. Confira no NEI o que mais ele solta.
+    tasks:
+      - kill: "netherlicious.Strider x1"
+    rewards:
+      - loot: comum
+
+  - id: piglin
+    title: "Escambo Piglin"
+    type: optional
+    deps: [floresta_carmesim]
+    icon: minecraft:gold_ingot
+    desc: |
+      Os §ePiglins§r gostam de ouro. Se estiver com armadura de ouro neles ficam neutros. Matar um
+      é possível, mas dá confusão com o bando todo. Cuidado, Herói.
+    tasks:
+      - kill: "netherlicious.Piglin x1"
+    rewards:
+      - loot: comum
+
+  - id: hoglin
+    title: "Javali Infernal"
+    deps: [floresta_carmesim]
+    icon: netherlicious:StriderFlankCooked
+    desc: |
+      O §eHoglin§r é um javali grande e raivoso, mordida forte e bando grande. Ataque de longe ou
+      de cima de uma barreira.
+    tasks:
+      - kill: "netherlicious.Hoglin x2"
+    rewards:
+      - xp: 3
+      - loot: comum
+
+  - id: cavaleiro_blaze
+    title: "Blaze Guerreiro"
+    deps: [blaze]
+    icon: netherlicious:HeavyBlazeHelmet
+    desc: |
+      O §eBlaze Knight§r é um blaze blindado que aparece no Netherlicious. Mais duro que o comum;
+      leve armadura boa e resistência ao fogo.
+    tasks:
+      - kill: "netherlicious.BlazeKnight x1"
+    rewards:
+      - xp: 3
+      - loot: comum
+
+  - id: zoglin
+    title: "Piglin Morto-Vivo"
+    type: optional
+    deps: [hoglin]
+    icon: netherlicious:NetherSpawnEgg:2
+    desc: |
+      Os §eZoglins§r são hoglins corrompidos que atacam qualquer coisa. Procure por eles perto das
+      florestas e confira no NEI o que soltam. Opcional, só para os destemidos.
+    tasks:
+      - kill: "netherlicious.Zoglin x1"
+    rewards:
+      - loot: comum
+
+  - id: ouro_nether
+    title: "Ouro do Nether"
+    deps: [entrar_nether]
+    icon: netherlicious:NetherGoldOre
+    desc: |
+      O §eNether Gold Ore§r rende pepitas de ouro: bom para trocar com Piglins e fazer lingotes.
+      Quebre com qualquer picareta de ferro ou melhor.
+    tasks:
+      - get: netherlicious:NetherGoldOre x4
+    rewards:
+      - xp: 3
+      - loot: comum
+
+  - id: minerio_efrine
+    title: "Minério Efrine"
+    type: main
+    deps: [entrar_nether]
+    icon: netherlicious:EfrineOre
+    desc: |
+      O §eEfrine§r é um metal novo do Nether. Procure o minério (Efrine Ore) nas profundezas dos
+      biomas quentes. Leve picareta de ferro ou melhor.
+    tasks:
+      - get: netherlicious:EfrineOre x4
+    rewards:
+      - xp: 3
+      - loot: comum
+
+  - id: lingote_efrine
+    title: "Lingote de Efrine"
+    type: main
+    deps: [minerio_efrine]
+    icon: netherlicious:Ingot
+    desc: |
+      No NEI, o §eLingote de Efrine§r sai do minério com Pó de Pirotheum (máquina do pack). Também
+      dá para juntar 9 pepitas na bancada. Faça 8 lingotes.
+    tasks:
+      - get: netherlicious:Ingot x8
+    rewards:
+      - xp: 3
+      - loot: comum
+
+  - id: ferramentas_efrine
+    title: "Ferramentas de Efrine"
+    type: main
+    deps: [lingote_efrine]
+    icon: netherlicious:EfrinePickaxe
+    desc: |
+      Com os lingotes você faz §ePicareta, Machado, Pá, Enxada e Espada§r de Efrine. Comece pela
+      picareta.
+    tasks:
+      - get: netherlicious:EfrinePickaxe
+    rewards:
+      - xp: 3
+      - loot: comum
+
+  - id: armadura_efrine
+    title: "Armadura de Efrine"
+    type: main
+    deps: [lingote_efrine]
+    icon: netherlicious:EfrineChestPlate
+    desc: |
+      Capacete, peitoral, calça e botas de §eEfrine§r. Boa proteção contra o fogo do Nether,
+      perfeita para o Wither se você tiver cuidado.
+    tasks:
+      - get: netherlicious:EfrineChestPlate
+    rewards:
+      - xp: 3
+      - loot: comum
+
+  - id: quartzo_vazio
+    title: "Quartzo do Vazio"
+    type: optional
+    deps: [quartzo]
+    icon: netherlicious:VoidQuartzItem
+    desc: |
+      O §eVoid Quartz§r vem do Void Quartz Ore. É uma versão escura do quartzo para decoração e
+      redstone. Cave para achar.
+    tasks:
+      - get: netherlicious:VoidQuartzItem x8
+    rewards:
+      - loot: comum
+
+  - id: cristais
+    title: "Cristais do Nether"
+    type: optional
+    deps: [entrar_nether]
+    icon: netherlicious:CrystalShard
+    desc: |
+      Os §eNether Crystals§r crescem em aglomerados coloridos (branco, azul, verde, amarelo,
+      magenta). Pegue cacos (Crystal Shards) com picareta; dão lâmpadas e óculos.
+    tasks:
+      - get: netherlicious:CrystalShard x8
+    rewards:
+      - loot: comum
+
+  - id: obsidiana_chorosa
+    title: "Obsidiana Chorona"
+    type: main
+    deps: [obsidiana]
+    icon: netherlicious:CryingObsidian
+    desc: |
+      A §eCrying Obsidian§r brilha em roxo e é base do Respawn Anchor. Fica em ruínas de portais.
+      Confira como obter pelo NEI (e se precisa de picareta de diamante).
+    tasks:
+      - get: netherlicious:CryingObsidian x6
+    rewards:
+      - xp: 3
+      - loot: comum
+
+  - id: ancora
+    title: "Âncora de Respawn"
+    type: milestone
+    deps: [obsidiana_chorosa, glowstone]
+    icon: netherlicious:RespawnAnchor
+    desc: |
+      Seis Crying Obsidian e três Glowstone na bancada (confira no NEI). Âncora de Respawn marca
+      seu ponto de renascimento no Nether, quando carregada com Glowstone. Muito útil antes do
+      Wither!
+    tasks:
+      - get: netherlicious:RespawnAnchor
+    rewards:
+      - xp: 10
+      - loot: raro
+
+  - id: restos_ancestrais
+    title: "Detritos Ancestrais"
+    type: optional
+    deps: [entrar_nether]
+    icon: etfuturum:ancient_debris
+    desc: |
+      O §eAncient Debris§r é raro e fica fundo no Nether. Minere com picareta de diamante, derreta
+      em Netherite Scrap e, no NEI, veja como forjar o Netherite Ingot.
+    tasks:
+      - get: etfuturum:ancient_debris x2
+    rewards:
+      - loot: comum
+
+  - id: tocha_alma
+    title: "Fogo Azul"
+    type: optional
+    deps: [vale_almas]
+    icon: netherlicious:SoulTorch
+    desc: |
+      Soul Soil + carvão = §eTocha de Alma§r. Combina com os vales e é imune à água em alguns usos
+      (confira no NEI). Faça uma pilha para iluminar a base.
+    tasks:
+      - get: netherlicious:SoulTorch x8
+    rewards:
+      - loot: comum
+
+  - id: lanterna
+    title: "Lanternas e Correntes"
+    type: optional
+    deps: [tocha_alma]
+    icon: netherlicious:Lantern
+    desc: |
+      Correntes (Chain) e §eLanternas§r são enfeites úteis: faça com ferro e tochas. Veja no NEI.
+    tasks:
+      - one_of: [netherlicious:Lantern, netherlicious:SoulLantern, netherlicious:Chain]
+    rewards:
+      - loot: comum
+
+  - id: pedra_sombria
+    title: "Pedra das Sombras"
+    type: optional
+    deps: [entrar_nether]
+    icon: netherlicious:Gloomstone
+    desc: |
+      A §eGloomstone§r brilha fraquinho e fica em locais escuros. Quebre e junte o pó.
+    tasks:
+      - get: netherlicious:Gloomstone
+    rewards:
+      - loot: comum
+
+  - id: fruta_hellder
+    title: "Frutinha do Inferno"
+    type: optional
+    deps: [floresta_carmesim]
+    icon: netherlicious:HellderBerryItem
+    desc: |
+      O §eHellderberry§r cresce em arbustos no Nether e rende sucos, biscoitos e mais. Tenha o seu
+      estoque de comida lá, Herói!
+    tasks:
+      - get: netherlicious:HellderBerryItem x4
+    rewards:
+      - loot: comum
+
+  - id: aveia_abissal
+    title: "Comida Infernal"
+    type: optional
+    deps: [entrar_nether]
+    icon: netherlicious:AbyssalOatItem
+    desc: |
+      Plante §eAbyssal Oat§r ou §eDevilish Maize§r para ter comida sem sair de casa. Confira as
+      sementes no NEI.
+    tasks:
+      - one_of: [netherlicious:AbyssalOatItem, netherlicious:DevilishMaizeItem, netherlicious:InfernalReedItem]
+    rewards:
+      - loot: comum
+
+  - id: bife_strider
+    title: "Filé de Strider"
+    type: optional
+    deps: [strider]
+    icon: netherlicious:StriderFlankCooked
+    desc: |
+      Asse a carne do Strider e tenha uma boa comida cheia de saturação.
+    tasks:
+      - get: netherlicious:StriderFlankCooked x4
+    rewards:
+      - loot: comum
+
+  - id: disco_pigstep
+    title: "Disco Pigstep"
+    type: optional
+    deps: [entrar_nether]
+    icon: netherlicious:Pigstep
+    desc: |
+      Alguns baús do Nether guardam um disco §ePigstep§r. Procure em ruínas de portal e bastiões,
+      se houver. Pura recompensa.
+    tasks:
+      - get: netherlicious:Pigstep
+    rewards:
+      - loot: comum
+
+  - id: suporte_pocoes
+    title: "Laboratório do Inferno"
+    type: milestone
+    deps: [vara_blaze, nether_wart]
+    icon: minecraft:brewing_stand
+    desc: |
+      Com Vara de Blaze e Nether Wart, monte um Suporte de Poções. Poção de Regeneração e
+      Resistência ao Fogo são ótimas contra o Wither.
+    tasks:
+      - get: minecraft:brewing_stand
+    rewards:
+      - xp: 10
+      - loot: raro
+
+  - id: pocao_cura
+    title: "Poção de Cura"
+    type: optional
+    deps: [suporte_pocoes]
+    icon: minecraft:potion:8261
+    desc: |
+      §aDica:§r traga bastante §ePoção de Cura§r ou maçãs douradas. O Wither dá efeito de
+      degradação que não pode ser bloqueado só com armadura.
+    tasks:
+      - get: minecraft:potion:8261 x2
+    rewards:
+      - loot: comum
+
+  - id: wither
+    title: "O Selo do Abismo"
+    type: boss
+    deps: [cranios, areia_almas, armadura_efrine]
+    banner: "O Wither foi derrotado!"
+    subtitle: "O Selo do Abismo foi quebrado"
+    task_logic: OR
+    icon: minecraft:nether_star
+    desc: |
+      Hora do chefe, Herói. Monte uma estrutura em T com §e4 Areias de Almas§r e coloque os §e3
+      Crânios§r em cima, num lugar aberto e longe da base: §cele explode blocos!§r Aguente o
+      primeiro estágio de saúde e depois ele voa. Leve arco, poções de cura e armadura de diamante
+      ou de Efrine. Ao cair, ele solta a §eEstrela do Nether§r. Isto vale como o §eSelo do
+      Abismo§r que abre a Terceira Chave.
+    tasks:
+      - kill: {entity: "WitherBoss", count: 1}
+      - get: minecraft:nether_star
+    rewards:
+      - xp: 15
+      - loot: epico
+
+  - id: sinalizador_nether
+    title: "Sinalizador"
+    type: milestone
+    deps: [wither]
+    icon: minecraft:beacon
+    desc: |
+      Estrela do Nether, vidro e obsidiana fazem o §eSinalizador§r. Uma alternativa de menor custo
+      é a §eNether Beacon§r do Netherlicious (veja a receita no NEI): vidro, estrela, tijolos e
+      quartzo.
+    tasks:
+      - one_of: [minecraft:beacon, netherlicious:NetherBeacon]
+    rewards:
+      - xp: 10
+      - kit: {name: "Kit do Senhor do Nether", items: ["minecraft:diamond x8", "minecraft:golden_apple x4", "minecraft:experience_bottle x16"]}
+      - loot: raro
+
+  - id: refugio
+    title: "Base no Nether"
+    type: optional
+    deps: [ancora]
+    icon: netherlicious:SoulTorch
+    desc: |
+      Último passo: monte um pequeno refúgio com Respawn Anchor ou cama, tochas de alma e baús.
+      Assim o Nether vira sua segunda casa. Você já é digno, Herói.
+    tasks:
+      - get: netherlicious:SoulTorch x4
+    rewards:
+      - loot: comum
