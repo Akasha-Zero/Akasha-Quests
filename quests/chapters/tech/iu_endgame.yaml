@@ -1,0 +1,1782 @@
+chapter:
+  id: iu_endgame
+  title: "Industrial Upgrade III — Endgame"
+  prefix: ""
+  order: 304
+  icon: industrialupgrade:BlockSolarPanel:13
+  desc: |
+    §bO Volume das Melhorias, parte III.§r Prótons e nêutrons, a fusão nuclear, matéria sólida,
+    a Pedreira Quântica, a Armadura Quântica Espectral, MFSUs de centenas de bilhões e a escada
+    solar até o Painel Quark. (Integrações: Avaritia e Botania.)
+
+quests:
+  # ======================================================================
+  # FASE 0 — ABERTURA
+  # ======================================================================
+  - id: boas_vindas_iii
+    title: "Números Absurdos"
+    type: info
+    icon: industrialupgrade:ItemCore:13
+    desc: |
+      Herói, respira fundo. Este é o capítulo em que o Volume das Melhorias deixa de medir as
+      coisas em milhões e passa a medir em §ebilhões§r. Ele continua de onde o §eIndustrial
+      Upgrade II§r parou (Painel Espectral, Circuito Espectral, Caixa Quântica Melhorada).
+
+      Algumas contas para você sentir o tamanho: um Núcleo Fotônico custa 900 milhões de EU no
+      Transformador Molecular; um Lingote de Nêutron custa uns 146 bilhões de EU; o Painel
+      Quark gera mais de §6339 milhões de EU/t§r.
+
+      §aConselho de amiga:§r monte primeiro uma base de energia de verdade — vários Painéis
+      Espectrais, reatores, ou a energia de outros mods convertida — e um MFSU grande. Depois
+      venha subir a escada comigo.
+    tasks:
+      - check
+    rewards:
+      - xp: 2
+
+  - id: compactando_iridio
+    title: "Irídio Comprimido Melhorado"
+    type: main
+    deps: [boas_vindas_iii]
+    deps_hidden: [iu_avancado:placa_iridio_comprimida]
+    icon: industrialupgrade:QuantumItems4
+    desc: |
+      §e9 Placas de Irídio Comprimidas§r no Compressor = §eImproved Compressed Iridium Plate§r. São
+      36 Placas Reforçadas de Irídio do IC2 numa placa só!
+
+      Ela está nos painéis do Difrativo ao Quark (2 por painel), no MFSU Quark, no
+      Gerador de Partículas de Nêutron, nos Reatores Perfeitos, nos módulos de pedreira de
+      nível alto... Faça §e2§r e já planeje uma linha de Irídio molecular.
+    tasks:
+      - get: industrialupgrade:QuantumItems4 x2
+    rewards:
+      - xp: 6
+      - choice: [industrialupgrade:QuantumItems2 x3, IC2:itemPartIridium x8, IC2:itemOreIridium x8]
+
+  # ======================================================================
+  # FASE 1 — PRÓTON E O PAINEL PROTÔNICO
+  # ======================================================================
+  - id: plutonio
+    title: "Plutônio"
+    type: normal
+    deps: [boas_vindas_iii]
+    icon: IC2:itemPlutonium
+    desc: |
+      O Próton nasce do §ePlutônio§r do IC2: barras de urânio (ou MOX) esgotadas na Centrífuga
+      Térmica soltam Pequenos Montes de Plutônio, e 9 montes viram 1 Plutônio. Mais tarde, o Reator de Fusão Nuclear do IU também
+      transforma §eNetúnio + Tório§r em Plutônio.
+
+      §cRadioativo!§r Use o Traje Antirradiação. Junte §e2 Plutônios§r.
+    tasks:
+      - get: IC2:itemPlutonium x2
+    rewards:
+      - xp: 4
+      - item: IC2:reactorUraniumSimple:1 x2
+
+  - id: proton
+    title: "Carga Positiva"
+    type: main
+    deps: [plutonio]
+    deps_hidden: [iu_base:transformador_molecular]
+    icon: industrialupgrade:proton
+    desc: |
+      No Transformador Molecular: §ePlutônio → Próton§r (15,5 milhões de EU). O Próton é
+      radioativo (use o traje!) e tem dois usos:
+      §e•§r 2 Prótons vão em cada §eVidro Protônico§r;
+      §e•§r na Máquina de Conservas Sólidas, Vareta vazia + Próton = §eBarra de Próton§r, um
+      combustível de reator duradouro. Esgotada, a Centrífuga Térmica devolve o Próton.
+      Faça §e2§r.
+    tasks:
+      - get: industrialupgrade:proton x2
+    rewards:
+      - xp: 6
+      - choice: [IC2:itemPlutonium x2, industrialupgrade:iuplate:7 x4, industrialupgrade:ItemCore:4]
+
+  - id: nucleo_protonico
+    title: "Carga Positiva Concentrada"
+    type: main
+    deps: [boas_vindas_iii]
+    deps_hidden: [iu_avancado:nucleo_espectral]
+    icon: industrialupgrade:ItemCore:5
+    desc: |
+      §e4 Núcleos Espectrais → 1 Núcleo Protônico§r (7,5 milhões de EU). Além do painel, ele vai em
+      pares em cada §eGerador de Matéria Sólida§r, no Gerador de Matéria Melhorado, nos Módulos de
+      Tier do painel e no Núcleo de Neutrônio (Avaritia). Faça §e2§r.
+    tasks:
+      - get: industrialupgrade:ItemCore:5 x2
+    rewards:
+      - xp: 6
+      - choice: [industrialupgrade:ItemCore:4 x2, industrialupgrade:iuingot:17 x16, industrialupgrade:QuantumItems5]
+
+  - id: placa_sunnarium_protonica
+    title: "Placa de Sunnarium Protônica"
+    type: main
+    deps: [boas_vindas_iii]
+    deps_hidden: [iu_avancado:placa_sunnarium_espectral]
+    icon: industrialupgrade:sunnariumpanel:4
+    desc: |
+      §ePlaca Espectral + Placa de Magnésio§r no Fabricante de Placas de Sunnarium = §eProtonic
+      Sunnarium Plate§r. A escada de metais continua: Zinco (Singular), Manganês (Difrativa),
+      Cobalto (Fotônica), Níquel (Nêutron), Prata (Bárion), Vanádio (Hádron), Vitálio
+      (Gráviton) e Caravky (Quark). Faça §e2§r.
+    tasks:
+      - get: industrialupgrade:sunnariumpanel:4 x2
+    rewards:
+      - xp: 6
+      - choice: [industrialupgrade:sunnariumpanel:3, industrialupgrade:iuplate:7 x6, industrialupgrade:sunnarium:2 x4]
+
+  - id: vidro_protonico
+    title: "Vidro Protônico"
+    type: main
+    deps: [proton, placa_sunnarium_protonica]
+    deps_hidden: [iu_avancado:vidro_espectral]
+    icon: industrialupgrade:IUphotonglass:5
+    desc: |
+      Este vidro é diferente: §e4 Varetas de Manganês§r e §e2 Prótons§r em volta, §eVidro
+      Espectral§r no centro e §e2 Placas de Sunnarium Protônicas§r = §eProtonic Glass§r. Faça §e2§r.
+
+      §aDica:§r os próximos vidros voltam ao padrão de 6 varetas: Invar (Singular), Espinélio
+      (Difrativo), Cromo (Fotônico), Germânio + 2 Lingotes de Nêutron (Nêutron), Zinco (Bárion),
+      Vanádio (Hádron), Cobalto (Gráviton) e Caravky (Quark).
+    tasks:
+      - get: industrialupgrade:IUphotonglass:5 x2
+    rewards:
+      - xp: 6
+      - choice: [industrialupgrade:IUphotonglass:4, industrialupgrade:IUstik:16 x8, industrialupgrade:proton]
+
+  - id: painel_protonico
+    title: "Energia Positiva"
+    type: milestone
+    deps: [nucleo_protonico, vidro_protonico]
+    deps_hidden: [iu_avancado:painel_espectral]
+    icon: industrialupgrade:BlockSolarPanel:5
+    banner: "Painel Solar Protônico"
+    subtitle: "5120 EU/t"
+    desc: |
+      §e2 Vidros Protônicos, Núcleo Protônico, 2 Placas de Irídio Comprimidas, 3 Painéis
+      Espectrais e um Circuito Nano§r = §eProtonic Solar Panel§r.
+
+      §e5120 EU/t§r de dia, 50 milhões de EU de buffer, saída de 10 240 EU/t. Isso já passa do
+      limite de um cabo de fibra de vidro do IC2 — use Cabos Espectrais (32 768 EU/t) ou acima.
+
+      §aLembre:§r o tier dos módulos não pode ser maior que o do painel, e os Kits de Upgrade de
+      Painel economizam desmontagem.
+    tasks:
+      - get: industrialupgrade:BlockSolarPanel:5
+    rewards:
+      - xp: 12
+      - kit: {name: "Kit da Carga Positiva", items: [industrialupgrade:ItemCore:4 x4, industrialupgrade:sunnariumpanel:3 x2, industrialupgrade:QuantumItems2 x2, industrialupgrade:iuplate:15 x4, industrialupgrade:IUstik:4 x6]}
+      - loot: epico
+
+  # ======================================================================
+  # FASE 2 — SINGULAR E DIFRATIVO
+  # ======================================================================
+  - id: nucleo_singular
+    title: "Singularidade"
+    type: main
+    deps: [nucleo_protonico]
+    icon: industrialupgrade:ItemCore:6
+    desc: |
+      §e4 Núcleos Protônicos → 1 Núcleo Singular§r (45 milhões de EU). Além do Painel Singular, ele
+      vai no Transformador de Matéria Sólida e nos módulos de Eficiência III da pedreira.
+      Faça §e2§r.
+    tasks:
+      - get: industrialupgrade:ItemCore:6 x2
+    rewards:
+      - xp: 6
+      - choice: [industrialupgrade:ItemCore:5 x2, industrialupgrade:QuantumItems5 x2, industrialupgrade:QuantumItems4]
+
+  - id: placa_sunnarium_singular
+    title: "Placa de Sunnarium Singular"
+    type: main
+    deps: [placa_sunnarium_protonica]
+    icon: industrialupgrade:sunnariumpanel:5
+    desc: |
+      §ePlaca Protônica + Placa de Zinco§r = §eSingular Sunnarium Plate§r. Faça §e2§r.
+    tasks:
+      - get: industrialupgrade:sunnariumpanel:5 x2
+    rewards:
+      - xp: 6
+      - choice: [industrialupgrade:sunnariumpanel:4, industrialupgrade:iuplate:15 x6, industrialupgrade:sunnarium:2 x4]
+
+  - id: vidro_singular
+    title: "Vidro Singular"
+    type: main
+    deps: [vidro_protonico, placa_sunnarium_singular]
+    icon: industrialupgrade:IUphotonglass:6
+    desc: |
+      §e6 Varetas de Invar§r + §eVidro Protônico§r + §e2 Placas de Sunnarium Singulares§r =
+      §eSingular Glass§r. Faça §e2§r.
+    tasks:
+      - get: industrialupgrade:IUphotonglass:6 x2
+    rewards:
+      - xp: 6
+      - choice: [industrialupgrade:IUphotonglass:5, industrialupgrade:IUstik:4 x8, industrialupgrade:iuingot:4 x9]
+
+  - id: painel_singular
+    title: "Energia Emaranhada"
+    type: milestone
+    deps: [painel_protonico, nucleo_singular, vidro_singular]
+    icon: industrialupgrade:BlockSolarPanel:6
+    banner: "Painel Solar Singular"
+    subtitle: "20 480 EU/t de dia, 10 240 de noite"
+    desc: |
+      §e2 Vidros Singulares, Núcleo Singular, 2 Placas de Irídio Comprimidas, 3 Painéis Protônicos e
+      um Circuito Quântico§r = §eSingular Solar Panel§r.
+
+      §e20 480 EU/t de dia e 10 240 de noite§r, 1 bilhão de EU de buffer, saída 40 960 EU/t. O
+      Capacete Solar Singular, o mais forte dos capacetes, usa um destes no topo.
+    tasks:
+      - get: industrialupgrade:BlockSolarPanel:6
+    rewards:
+      - xp: 12
+      - kit: {name: "Kit do Emaranhado", items: [industrialupgrade:ItemCore:5 x4, industrialupgrade:sunnariumpanel:4 x2, industrialupgrade:QuantumItems4, industrialupgrade:iuplate:16 x4, industrialupgrade:IUstik:12 x6]}
+      - loot: epico
+
+  - id: nucleo_difrativo
+    title: "Grade de Difração"
+    type: main
+    deps: [nucleo_singular]
+    icon: industrialupgrade:ItemCore:7
+    desc: |
+      §e4 Núcleos Singulares → 1 Núcleo Difrativo§r (180 milhões de EU). Ele também é o coração da
+      §ePedreira Quântica§r e do Gerador de Matéria Avançado. Faça §e2§r.
+    tasks:
+      - get: industrialupgrade:ItemCore:7 x2
+    rewards:
+      - xp: 6
+      - choice: [industrialupgrade:ItemCore:6 x2, industrialupgrade:QuantumItems4, industrialupgrade:QuantumItems3 x2]
+
+  - id: placa_sunnarium_difrativa
+    title: "Placa de Sunnarium Difrativa"
+    type: main
+    deps: [placa_sunnarium_singular]
+    icon: industrialupgrade:sunnariumpanel:6
+    desc: |
+      §ePlaca Singular + Placa de Manganês§r = §eDiffractive Sunnarium Plate§r. Faça §e2§r.
+    tasks:
+      - get: industrialupgrade:sunnariumpanel:6 x2
+    rewards:
+      - xp: 6
+      - choice: [industrialupgrade:sunnariumpanel:5, industrialupgrade:iuplate:16 x6, industrialupgrade:sunnarium:2 x4]
+
+  - id: vidro_difrativo
+    title: "Vidro Difrativo"
+    type: main
+    deps: [vidro_singular, placa_sunnarium_difrativa]
+    icon: industrialupgrade:IUphotonglass:7
+    desc: |
+      §e6 Varetas de Espinélio§r + §eVidro Singular§r + §e2 Placas de Sunnarium Difrativas§r =
+      §eDiffractive Glass§r. Faça §e2§r.
+    tasks:
+      - get: industrialupgrade:IUphotonglass:7 x2
+    rewards:
+      - xp: 6
+      - choice: [industrialupgrade:IUphotonglass:6, industrialupgrade:IUstik:12 x8, industrialupgrade:iuingot:12 x9]
+
+  - id: painel_difrativo
+    title: "Coletor de Interferência"
+    type: milestone
+    deps: [painel_singular, nucleo_difrativo, vidro_difrativo, compactando_iridio]
+    icon: industrialupgrade:BlockSolarPanel:7
+    banner: "Painel Solar Difrativo"
+    subtitle: "81 920 EU/t"
+    desc: |
+      §e2 Vidros Difrativos, Núcleo Difrativo, 2 Placas de Irídio Comprimidas Melhoradas, 3 Painéis
+      Singulares e um Circuito Quântico§r = §eDiffractive Solar Panel§r.
+
+      §e81 920 EU/t§r, 1,5 bilhão de EU de buffer, saída 327 680 EU/t. A partir daqui, todo painel
+      pede §ePlacas de Irídio Comprimidas Melhoradas§r. Prepare o irídio molecular!
+    tasks:
+      - get: industrialupgrade:BlockSolarPanel:7
+    rewards:
+      - xp: 12
+      - kit: {name: "Kit da Difração", items: [industrialupgrade:ItemCore:6 x4, industrialupgrade:sunnariumpanel:5 x2, industrialupgrade:QuantumItems4, industrialupgrade:iuplate:6 x4, industrialupgrade:IUstik:11 x6]}
+      - loot: epico
+
+  # ======================================================================
+  # FASE 3 — FOTÔNICO
+  # ======================================================================
+  - id: nucleo_fotonico
+    title: "A Luz Não É Só Onda"
+    type: main
+    deps: [nucleo_difrativo]
+    icon: industrialupgrade:ItemCore:8
+    desc: |
+      §e4 Núcleos Difrativos → 1 Núcleo Fotônico§r: §c900 milhões de EU§r. Ele também vai no Gerador
+      de Matéria Perfeito, no Combinador de Painéis, no Combinador de Geradores de Matéria, no
+      MFSU Bárion e na Pedreira Quântica Melhorada. Faça §e2§r — com calma.
+    tasks:
+      - get: industrialupgrade:ItemCore:8 x2
+    rewards:
+      - xp: 6
+      - choice: [industrialupgrade:ItemCore:7 x2, industrialupgrade:QuantumItems4 x2, industrialupgrade:QuantumItems3 x2]
+
+  - id: placa_sunnarium_fotonica
+    title: "Placa de Sunnarium Fotônica"
+    type: main
+    deps: [placa_sunnarium_difrativa]
+    icon: industrialupgrade:sunnariumpanel:7
+    desc: |
+      §ePlaca Difrativa + Placa de Cobalto§r = §ePhotonic Sunnarium Plate§r. Faça §e2§r.
+    tasks:
+      - get: industrialupgrade:sunnariumpanel:7 x2
+    rewards:
+      - xp: 6
+      - choice: [industrialupgrade:sunnariumpanel:6, industrialupgrade:iuplate:6 x6, industrialupgrade:sunnarium:2 x4]
+
+  - id: vidro_fotonico
+    title: "Vidro Fotônico"
+    type: main
+    deps: [vidro_difrativo, placa_sunnarium_fotonica]
+    icon: industrialupgrade:IUphotonglass:8
+    desc: |
+      §e6 Varetas de Cromo§r + §eVidro Difrativo§r + §e2 Placas de Sunnarium Fotônicas§r = §ePhotonic
+      Glass§r. Faça §e2§r.
+    tasks:
+      - get: industrialupgrade:IUphotonglass:8 x2
+    rewards:
+      - xp: 6
+      - choice: [industrialupgrade:IUphotonglass:7, industrialupgrade:IUstik:11 x8, industrialupgrade:iuingot:11 x9]
+
+  - id: painel_fotonico
+    title: "Energia das Partículas de Luz"
+    type: milestone
+    deps: [painel_difrativo, nucleo_fotonico, vidro_fotonico]
+    icon: industrialupgrade:BlockSolarPanel:8
+    banner: "Painel Solar Fotônico"
+    subtitle: "327 680 EU/t"
+    desc: |
+      §e2 Vidros Fotônicos, Núcleo Fotônico, 2 Placas de Irídio Comprimidas Melhoradas, 3 Painéis
+      Difrativos e um Circuito Espectral§r = §ePhotonic Solar Panel§r.
+
+      §e327 680 EU/t§r e 5 bilhões de EU de buffer. Herói, um único painel destes alimenta uma
+      cidade industrial inteira. E ainda é só o nono degrau...
+
+      Para quem joga com o §6Avaritia§r: 4 Painéis Fotônicos + Núcleo de Neutrônio = §6Painel de
+      Neutrônio§r (veja a seção do Avaritia).
+    tasks:
+      - get: industrialupgrade:BlockSolarPanel:8
+    rewards:
+      - xp: 12
+      - kit: {name: "Kit da Luz Sólida", items: [industrialupgrade:ItemCore:7 x4, industrialupgrade:sunnariumpanel:6 x2, industrialupgrade:QuantumItems4, industrialupgrade:iuplate:8 x4, industrialupgrade:IUstik:18 x6]}
+      - loot: epico
+
+  # ======================================================================
+  # FASE 4 — GERADORES DE MATÉRIA E O NÊUTRON
+  # ======================================================================
+  - id: gerador_materia_melhorado
+    title: "Gerador de Matéria Melhorado"
+    type: main
+    deps: [nucleo_protonico]
+    deps_hidden: [ic2:materia_uu, iu_avancado:caixa_quantica]
+    icon: industrialupgrade:machines:1
+    desc: |
+      O §eFabricante de Massa§r do IC2 no centro, 2 Circuitos Quânticos, um Núcleo Protônico, 2
+      Placas Densas de Alumel e 3 Caixas Quânticas = §eImproved Matter Generator§r.
+
+      Ele fabrica Matéria UU gastando §e900 mil EU por mB§r (o do IC2 gasta 1 milhão), com tanque
+      de 8 baldes. O Avançado gasta 800 mil e o Perfeito 700 mil. §cEntrada tier 3 (HV)§r — não
+      ligue direto num MFSU sem transformador.
+    tasks:
+      - get: industrialupgrade:machines:1
+    rewards:
+      - xp: 6
+      - choice: [IC2:itemScrapbox x16, industrialupgrade:QuantumItems6 x2, IC2:upgradeModule x4]
+
+  - id: gerador_materia_avancado
+    title: "Gerador de Matéria Avançado"
+    type: main
+    deps: [gerador_materia_melhorado, nucleo_difrativo]
+    deps_hidden: [iu_avancado:caixa_quantica_melhorada]
+    icon: industrialupgrade:machines:2
+    desc: |
+      O Gerador Melhorado + Núcleo Difrativo + 2 Circuitos Quânticos + 2 Placas Densas de Vitálio +
+      3 Caixas Quânticas Melhoradas = §eAdvanced Matter Generator§r (800 mil EU/mB, tanque de 10
+      baldes).
+    tasks:
+      - get: industrialupgrade:machines:2
+    rewards:
+      - xp: 6
+      - choice: [IC2:itemScrapbox x16, industrialupgrade:QuantumItems3, IC2:upgradeModule x4]
+
+  - id: gerador_materia_perfeito
+    title: "Gerador de Matéria Perfeito"
+    type: main
+    deps: [gerador_materia_avancado, nucleo_fotonico, compactando_iridio]
+    icon: industrialupgrade:machines:3
+    desc: |
+      O Avançado + Núcleo Fotônico + 2 Circuitos Espectrais + 2 Placas Densas de Duralumínio + 2
+      Caixas Quânticas Melhoradas + uma Placa de Irídio Comprimida Melhorada = §ePerfect Matter
+      Generator§r (700 mil EU/mB, 12 baldes). Ele é o centro do próximo passo: o nêutron.
+    tasks:
+      - get: industrialupgrade:machines:3
+    rewards:
+      - xp: 6
+      - choice: [IC2:itemScrapbox x16, industrialupgrade:QuantumItems5 x2, industrialupgrade:photoniy_ingot x2]
+
+  - id: caixa_sucata_dupla
+    title: "Caixa de Sucata Dupla"
+    type: optional
+    deps: [gerador_materia_melhorado]
+    deps_hidden: [iu_base:montador_sucata]
+    icon: industrialupgrade:doublescrapBox
+    desc: |
+      No Montador de Sucata, §e9 Caixas de Sucata = 1 Caixa de Sucata Dupla§r. No amplificador do
+      Fabricante de Massa do IC2, ela vale um bônus enorme: 405 000 de amplificação por
+      unidade. Fabricação de UU nunca mais foi a mesma (os Geradores de Matéria do IU também
+      aceitam sucata como amplificador).
+    tasks:
+      - get: industrialupgrade:doublescrapBox
+    rewards:
+      - loot: incomum
+
+  - id: gerador_neutrons
+    title: "Gerador de Partículas de Nêutron"
+    type: main
+    deps: [gerador_materia_perfeito]
+    deps_hidden: [iu_avancado:lingote_foton]
+    icon: industrialupgrade:machines:5
+    desc: |
+      O Gerador de Matéria Perfeito no centro, 4 Lingotes de Fóton, 2 Circuitos Espectrais e 2
+      Placas de Irídio Comprimidas Melhoradas = §eNeutron Particle Generator§r.
+
+      Ele transforma energia em §eNêutron líquido§r: §c16,25 milhões de EU por mB§r. Uma célula
+      (1000 mB) custa mais de 16 bilhões de EU. Herói, é aqui que a sua base de energia é posta à
+      prova. Ponha várias fontes num MFSU grande e deixe ligado... por dias.
+    tasks:
+      - get: industrialupgrade:machines:5
+    rewards:
+      - xp: 6
+      - choice: [industrialupgrade:cell x16, industrialupgrade:QuantumItems5 x2, industrialupgrade:QuantumItems4]
+
+  - id: celula_neutron
+    title: "Célula de Nêutron Liquefeito"
+    type: normal
+    deps: [gerador_neutrons]
+    icon: industrialupgrade:cell:1
+    desc: |
+      Encha uma Célula Avançada na saída do gerador: §eLiquefied Neutron Cell§r (1000 mB de nêutron
+      cada). Mostre uma.
+    tasks:
+      - get: industrialupgrade:cell:1
+    rewards:
+      - xp: 4
+      - item: industrialupgrade:cell x8
+
+  - id: estilhaco_neutron
+    title: "Partícula Neutra"
+    type: main
+    deps: [celula_neutron]
+    icon: industrialupgrade:neutronium
+    desc: |
+      Uma Célula de Nêutron no Compressor = §eNeutron Shard§r (Estilhaço de Nêutron). Nove
+      estilhaços no Compressor = um §eLingote de Nêutron§r. Junte §e9 estilhaços§r — e respeite cada
+      um deles: são 146 bilhões de EU na sua mão.
+    tasks:
+      - get: industrialupgrade:neutronium x9
+    rewards:
+      - xp: 6
+      - choice: [industrialupgrade:cell x8, industrialupgrade:QuantumItems5 x2, industrialupgrade:ItemCore:8]
+
+  - id: lingote_neutron
+    title: "Lingote de Nêutron"
+    type: main
+    deps: [estilhaco_neutron]
+    icon: industrialupgrade:neutroniumingot
+    desc: |
+      §eNeutron Ingot§r! Ele vai no §eVidro de Nêutron§r (2 por vidro) e no §eReator de Fusão
+      Nuclear§r (4). Junte §e2§r para o vidro.
+    tasks:
+      - get: industrialupgrade:neutroniumingot x2
+    rewards:
+      - xp: 6
+      - choice: [industrialupgrade:neutronium x3, industrialupgrade:QuantumItems4, industrialupgrade:ItemCore:8]
+
+  - id: nucleo_neutron
+    title: "Partícula Sem Carga"
+    type: main
+    deps: [nucleo_fotonico]
+    icon: industrialupgrade:ItemCore:9
+    desc: |
+      §e4 Núcleos Fotônicos → 1 Núcleo de Nêutron§r (2,7 bilhões de EU). Ele também vai no Gerador
+      de Matéria Combinado e no MFSU Hádron. Faça §e2§r.
+    tasks:
+      - get: industrialupgrade:ItemCore:9 x2
+    rewards:
+      - xp: 6
+      - choice: [industrialupgrade:ItemCore:8 x2, industrialupgrade:QuantumItems4 x2, industrialupgrade:QuantumItems5 x2]
+
+  - id: placa_sunnarium_neutron
+    title: "Placa de Sunnarium de Nêutron"
+    type: main
+    deps: [placa_sunnarium_fotonica]
+    icon: industrialupgrade:sunnariumpanel:8
+    desc: |
+      §ePlaca Fotônica + Placa de Níquel§r = §eNeutron Sunnarium Plate§r. Faça §e2§r.
+    tasks:
+      - get: industrialupgrade:sunnariumpanel:8 x2
+    rewards:
+      - xp: 6
+      - choice: [industrialupgrade:sunnariumpanel:7, industrialupgrade:iuplate:8 x6, industrialupgrade:sunnarium:2 x4]
+
+  - id: vidro_neutron
+    title: "Vidro de Nêutron"
+    type: main
+    deps: [vidro_fotonico, placa_sunnarium_neutron, lingote_neutron]
+    icon: industrialupgrade:IUphotonglass:9
+    desc: |
+      §e4 Varetas de Germânio§r e §e2 Lingotes de Nêutron§r em volta, §eVidro Fotônico§r no centro
+      e §e2 Placas de Sunnarium de Nêutron§r = §eNeutron Glass§r. Faça §e2§r (sim, são 4 lingotes de
+      nêutron no total).
+    tasks:
+      - get: industrialupgrade:IUphotonglass:9 x2
+    rewards:
+      - xp: 6
+      - choice: [industrialupgrade:IUphotonglass:8, industrialupgrade:IUstik:18 x8, industrialupgrade:neutronium x3]
+
+  - id: painel_neutron
+    title: "Energia sem Carga"
+    type: milestone
+    deps: [painel_fotonico, nucleo_neutron, vidro_neutron]
+    icon: industrialupgrade:BlockSolarPanel:9
+    banner: "Painel Solar de Nêutron"
+    subtitle: "1 325 720 EU/t"
+    desc: |
+      §e2 Vidros de Nêutron, Núcleo de Nêutron, 2 Placas de Irídio Comprimidas Melhoradas, 3 Painéis
+      Fotônicos e um Circuito Espectral§r = §eNeutron Solar Panel§r.
+
+      Mais de §e1,3 milhão de EU/t§r, 6,5 bilhões de buffer. Faça a conta comigo: uma Célula de
+      Nêutron custa 16,25 bilhões de EU — um único painel destes paga uma célula a cada ~10
+      minutos de sol. A escada agora se paga sozinha, e acelera.
+    tasks:
+      - get: industrialupgrade:BlockSolarPanel:9
+    rewards:
+      - xp: 12
+      - kit: {name: "Kit do Nêutron", items: [industrialupgrade:ItemCore:8 x4, industrialupgrade:sunnariumpanel:7 x2, industrialupgrade:QuantumItems4, industrialupgrade:iuplate:14 x4, industrialupgrade:IUstik:15 x6]}
+      - loot: epico
+
+  # ======================================================================
+  # FASE 5 — FUSÃO NUCLEAR E OS TRANSURÂNICOS
+  # ======================================================================
+  - id: celula_helio
+    title: "Hélio Liquefeito"
+    type: normal
+    deps: [boas_vindas_iii]
+    deps_hidden: [iu_avancado:gerador_helio]
+    icon: industrialupgrade:cell:2
+    desc: |
+      O Gerador de Hélio (Volume II) fabrica hélio com EU; encha Células Avançadas nele (ou num
+      Engarrafador de Líquidos) para obter §eLiquefied Helium Cells§r. Cada síntese do Reator de
+      Fusão consome uma. Junte §e8§r.
+    tasks:
+      - get: industrialupgrade:cell:2 x8
+    rewards:
+      - xp: 4
+      - item: industrialupgrade:cell x8
+
+  - id: reator_fusao
+    title: "Reator de Fusão Nuclear"
+    type: main
+    deps: [lingote_neutron]
+    deps_hidden: [iu_base:titanio]
+    icon: industrialupgrade:BlockBaseMachine2:11
+    desc: |
+      §e4 Lingotes de Nêutron§r nos cantos, 2 Circuitos Espectrais, 2 Blocos de Titânio e uma
+      Carcaça Avançada = §eNuclear Fusion Reactor§r.
+
+      Ele funde dois itens com uma §echance de sucesso§r (mostrada no NEI):
+      §e•§r Cúrio + Hélio → Califórnio (20%) → Berquélio (18%) → Einstênio (16%) → Mendelévio (14%);
+      §e•§r Netúnio + Tório → Plutônio (14%);
+      §e•§r Bloco de Urânio + Tório → Urânio-233 (16%).
+      As gemas de Amerício, Netúnio e Cúrio vêm dos minérios radioativos do Volume I.
+    tasks:
+      - get: industrialupgrade:BlockBaseMachine2:11
+    rewards:
+      - xp: 6
+      - choice: [industrialupgrade:cell:2 x8, industrialupgrade:radiationresources:2 x8, industrialupgrade:toriy x16]
+
+  - id: californio
+    title: "Califórnio"
+    type: normal
+    deps: [reator_fusao, celula_helio]
+    icon: industrialupgrade:radiationresources:3
+    desc: |
+      §eGema de Cúrio + Célula de Hélio§r no Reator de Fusão = §eGema de Califórnio§r (20% de chance
+      por tentativa). Além de combustível, 2 gemas de Califórnio + Modelo de Módulo viram o
+      §eMódulo de Área de Escavação§r no Transformador Molecular Avançado. Faça §e2§r.
+    tasks:
+      - get: industrialupgrade:radiationresources:3 x2
+    rewards:
+      - xp: 4
+      - item: industrialupgrade:cell:2 x4
+
+  - id: transuranicos
+    title: "A Tabela Pesada"
+    type: normal
+    deps: [californio]
+    icon: industrialupgrade:radiationresources:5
+    desc: |
+      Continue a cadeia de fusão: Califórnio → §eBerquélio§r → §eEinstênio§r → §eMendelévio§r, uma
+      Célula de Hélio por tentativa. Cada um é um combustível de reator mais forte que o anterior.
+      Mostre uma Gema de Mendelévio.
+    tasks:
+      - get: industrialupgrade:radiationresources:5
+    rewards:
+      - xp: 4
+      - item: industrialupgrade:cell:2 x8
+
+  - id: uranio_233
+    title: "Urânio-233"
+    type: optional
+    deps: [reator_fusao]
+    icon: industrialupgrade:radiationresources:8
+    desc: |
+      §eBloco de Urânio + Tório§r no Reator de Fusão = §eUrânio-233§r (16%). Um combustível de
+      reator alternativo, de baixo calor.
+    tasks:
+      - get: industrialupgrade:radiationresources:8
+    rewards:
+      - loot: incomum
+
+  - id: barras_transuranicas
+    title: "Barras de Combustível Exóticas"
+    type: normal
+    deps: [transuranicos]
+    icon: industrialupgrade:reactormendeleviumSimple:1
+    desc: |
+      Na Máquina de Conservas Sólidas, Vareta de Combustível vazia + gema = barra de combustível
+      do IU: Amerício, Netúnio, Cúrio, Califórnio, Berquélio, Einstênio, Mendelévio, Urânio-233,
+      Tório e Próton. Pela config do pack, as mais fortes (Mendelévio, Einstênio, Berquélio)
+      geram muito mais energia e calor que as leves (Amerício, Netúnio, U-233). As Duplas e
+      Quádruplas se montam na bancada, e a Centrífuga Térmica devolve as gemas das barras
+      esgotadas. Faça qualquer barra de Califórnio, Berquélio, Einstênio ou Mendelévio.
+    tasks:
+      - one_of: [industrialupgrade:reactorcaliforniaSimple:*, industrialupgrade:reactorberkeliumSimple:*, industrialupgrade:reactoreinsteiniumSimple:*, industrialupgrade:reactormendeleviumSimple:*]
+    rewards:
+      - xp: 4
+      - item: IC2:itemFuelRod x8
+
+  - id: barra_proton
+    title: "Barra de Próton Óctupla"
+    type: optional
+    deps: [proton]
+    icon: industrialupgrade:reactorprotoneit:1
+    desc: |
+      Barra de Próton → Dupla → Quádrupla → e o IU vai além: §eEight Proton Rod§r (a Quádrupla, ou
+      duas Duplas, com placas de ferro e cobre). A barra de próton dura muito (30 000 ciclos pela
+      config) e esquenta pouco.
+    tasks:
+      - get: industrialupgrade:reactorprotoneit:*
+    rewards:
+      - loot: incomum
+
+  - id: reator_perfeito
+    title: "Reator Nuclear Perfeito"
+    type: optional
+    deps: [compactando_iridio]
+    deps_hidden: [iu_avancado:reator_avancado, iu_avancado:caixa_quantica_melhorada]
+    icon: industrialupgrade:BlockBaseMachine2:9
+    desc: |
+      O Reator Avançado + 3 Placas de Irídio Comprimidas Melhoradas + 2 Circuitos Espectrais + 3
+      Caixas Quânticas Melhoradas = §ePerfect Nuclear Reactor§r: saída ×1,8 e grade de até 11×7 com
+      as §eCâmaras Perfeitas§r (Câmara Avançada + 4 Lingotes de Fóton + 4 Caixas Quânticas
+      Melhoradas).
+
+      §cMesmo aviso:§r superaquecido, o reator do IU some com tudo dentro.
+    tasks:
+      - get: industrialupgrade:BlockBaseMachine2:9
+    rewards:
+      - loot: epico
+
+  # ======================================================================
+  # FASE 6 — BÁRION, HÁDRON, GRÁVITON E QUARK
+  # ======================================================================
+  - id: nucleo_barion
+    title: "Algo Elementar e Pesado"
+    type: main
+    deps: [nucleo_neutron]
+    icon: industrialupgrade:ItemCore:10
+    desc: |
+      §e4 Núcleos de Nêutron → 1 Núcleo Bárion§r (4,5 bilhões de EU). §cAtenção:§r do Bárion em
+      diante, o painel leva §e2 núcleos§r do próprio tier (um no topo, um no lugar do circuito).
+      Faça §e2§r.
+    tasks:
+      - get: industrialupgrade:ItemCore:10 x2
+    rewards:
+      - xp: 6
+      - choice: [industrialupgrade:ItemCore:9 x2, industrialupgrade:QuantumItems4 x2, industrialupgrade:neutronium x3]
+
+  - id: placa_sunnarium_barion
+    title: "Placa de Sunnarium Bárion"
+    type: main
+    deps: [placa_sunnarium_neutron]
+    icon: industrialupgrade:sunnariumpanel:9
+    desc: |
+      §ePlaca de Nêutron + Placa de Prata§r = §eBaryon Sunnarium Plate§r. Faça §e2§r.
+    tasks:
+      - get: industrialupgrade:sunnariumpanel:9 x2
+    rewards:
+      - xp: 6
+      - choice: [industrialupgrade:sunnariumpanel:8, industrialupgrade:iuplate:14 x6, industrialupgrade:sunnarium:2 x4]
+
+  - id: vidro_barion
+    title: "Vidro Bárion"
+    type: main
+    deps: [vidro_neutron, placa_sunnarium_barion]
+    icon: industrialupgrade:IUphotonglass:10
+    desc: |
+      §e6 Varetas de Zinco§r + §eVidro de Nêutron§r + §e2 Placas de Sunnarium Bárion§r = §eBaryon
+      Glass§r. Faça §e2§r.
+    tasks:
+      - get: industrialupgrade:IUphotonglass:10 x2
+    rewards:
+      - xp: 6
+      - choice: [industrialupgrade:IUphotonglass:9, industrialupgrade:IUstik:15 x8, industrialupgrade:iuingot:15 x9]
+
+  - id: painel_barion
+    title: "Energia das Partículas Pesadas"
+    type: milestone
+    deps: [painel_neutron, nucleo_barion, vidro_barion]
+    icon: industrialupgrade:BlockSolarPanel:10
+    banner: "Painel Solar Bárion"
+    subtitle: "5 302 880 EU/t"
+    desc: |
+      §e2 Vidros Bárion, 2 Núcleos Bárion, 2 Placas de Irídio Comprimidas Melhoradas e 3 Painéis de
+      Nêutron§r = §eBaryon Solar Panel§r: §e5,3 milhões de EU/t§r e 10 bilhões de buffer.
+
+      O MFSU Bárion (6,4 bilhões) começa a ficar pequeno ao lado dele. Já pensou nos cabos
+      Universe e Difrativo?
+    tasks:
+      - get: industrialupgrade:BlockSolarPanel:10
+    rewards:
+      - xp: 12
+      - kit: {name: "Kit Bariônico", items: [industrialupgrade:ItemCore:9 x4, industrialupgrade:sunnariumpanel:8 x2, industrialupgrade:QuantumItems4 x2, industrialupgrade:iuplate:2 x4, industrialupgrade:IUstik:2 x6]}
+      - loot: epico
+
+  - id: nucleo_hadron
+    title: "Só no Colisor"
+    type: main
+    deps: [nucleo_barion]
+    icon: industrialupgrade:ItemCore:11
+    desc: |
+      §e4 Núcleos Bárion → 1 Núcleo Hádron§r (9 bilhões de EU). Ele também vai no MFSU Gráviton, na
+      Pedreira Quântica Avançada e no módulo de Eficiência V. Faça §e2§r.
+    tasks:
+      - get: industrialupgrade:ItemCore:11 x2
+    rewards:
+      - xp: 6
+      - choice: [industrialupgrade:ItemCore:10 x2, industrialupgrade:QuantumItems4 x2, industrialupgrade:neutronium x3]
+
+  - id: placa_sunnarium_hadron
+    title: "Placa de Sunnarium Hádron"
+    type: main
+    deps: [placa_sunnarium_barion]
+    icon: industrialupgrade:sunnariumpanel:10
+    desc: |
+      §ePlaca Bárion + Placa de Vanádio§r = §eHadron Sunnarium Plate§r. Faça §e2§r.
+    tasks:
+      - get: industrialupgrade:sunnariumpanel:10 x2
+    rewards:
+      - xp: 6
+      - choice: [industrialupgrade:sunnariumpanel:9, industrialupgrade:iuplate:2 x6, industrialupgrade:sunnarium:2 x4]
+
+  - id: vidro_hadron
+    title: "Vidro Hádron"
+    type: main
+    deps: [vidro_barion, placa_sunnarium_hadron]
+    icon: industrialupgrade:IUphotonglass:11
+    desc: |
+      §e6 Varetas de Vanádio§r + §eVidro Bárion§r + §e2 Placas de Sunnarium Hádron§r = §eHadron
+      Glass§r. Faça §e2§r.
+    tasks:
+      - get: industrialupgrade:IUphotonglass:11 x2
+    rewards:
+      - xp: 6
+      - choice: [industrialupgrade:IUphotonglass:10, industrialupgrade:IUstik:2 x8, industrialupgrade:iuingot:2 x9]
+
+  - id: painel_hadron
+    title: "E o LHC Nem Faz Falta"
+    type: milestone
+    deps: [painel_barion, nucleo_hadron, vidro_hadron]
+    icon: industrialupgrade:BlockSolarPanel:11
+    banner: "Painel Solar Hádron"
+    subtitle: "21 211 520 EU/t"
+    desc: |
+      §e2 Vidros Hádron, 2 Núcleos Hádron, 2 Placas de Irídio Comprimidas Melhoradas e 3 Painéis
+      Bárion§r = §eHadron Solar Panel§r: mais de §e21 milhões de EU/t§r.
+
+      §aCuriosidade da config:§r o buffer interno dele é de "só" 2,5 bilhões de EU — menor que o do
+      Bárion. Ligue-o direto num MFSU grande com cabos do tier certo para não desperdiçar nada.
+    tasks:
+      - get: industrialupgrade:BlockSolarPanel:11
+    rewards:
+      - xp: 12
+      - kit: {name: "Kit Hadrônico", items: [industrialupgrade:ItemCore:10 x4, industrialupgrade:sunnariumpanel:9 x2, industrialupgrade:QuantumItems4 x2, industrialupgrade:alloysplate:7 x4, industrialupgrade:IUstik:6 x6]}
+      - loot: epico
+
+  - id: nucleo_graviton
+    title: "A Gravidade É Como a Luz"
+    type: main
+    deps: [nucleo_hadron]
+    icon: industrialupgrade:ItemCore:12
+    desc: |
+      §e4 Núcleos Hádron → 1 Núcleo Gráviton§r (12 bilhões de EU). Também vai no MFSU Quark e na
+      Pedreira Quântica Perfeita. Faça §e2§r.
+    tasks:
+      - get: industrialupgrade:ItemCore:12 x2
+    rewards:
+      - xp: 6
+      - choice: [industrialupgrade:ItemCore:11 x2, industrialupgrade:QuantumItems4 x2, industrialupgrade:neutroniumingot]
+
+  - id: placa_sunnarium_graviton
+    title: "Placa de Sunnarium Gráviton"
+    type: main
+    deps: [placa_sunnarium_hadron]
+    icon: industrialupgrade:sunnariumpanel:11
+    desc: |
+      §ePlaca Hádron + Placa de Vitálio§r = §eGraviton Sunnarium Plate§r. Faça §e2§r.
+    tasks:
+      - get: industrialupgrade:sunnariumpanel:11 x2
+    rewards:
+      - xp: 6
+      - choice: [industrialupgrade:sunnariumpanel:10, industrialupgrade:alloysplate:7 x6, industrialupgrade:sunnarium:2 x4]
+
+  - id: vidro_graviton
+    title: "Vidro Gráviton"
+    type: main
+    deps: [vidro_hadron, placa_sunnarium_graviton]
+    icon: industrialupgrade:IUphotonglass:12
+    desc: |
+      §e6 Varetas de Cobalto§r + §eVidro Hádron§r + §e2 Placas de Sunnarium Gráviton§r = §eGraviton
+      Glass§r. Faça §e2§r.
+    tasks:
+      - get: industrialupgrade:IUphotonglass:12 x2
+    rewards:
+      - xp: 6
+      - choice: [industrialupgrade:IUphotonglass:11, industrialupgrade:IUstik:6 x8, industrialupgrade:iuingot:6 x9]
+
+  - id: painel_graviton
+    title: "Força da Gravidade"
+    type: milestone
+    deps: [painel_hadron, nucleo_graviton, vidro_graviton]
+    icon: industrialupgrade:BlockSolarPanel:12
+    banner: "Painel Solar Gráviton"
+    subtitle: "84 846 080 EU/t"
+    desc: |
+      §e2 Vidros Gráviton, 2 Núcleos Gráviton, 2 Placas de Irídio Comprimidas Melhoradas e 3 Painéis
+      Hádron§r = §eGraviton Solar Panel§r: §e84,8 milhões de EU/t§r e 25 bilhões de buffer.
+
+      Falta um degrau. Um só. Eu estou com o coração na boca!
+    tasks:
+      - get: industrialupgrade:BlockSolarPanel:12
+    rewards:
+      - xp: 12
+      - kit: {name: "Kit Gravitacional", items: [industrialupgrade:ItemCore:11 x4, industrialupgrade:sunnariumpanel:10 x2, industrialupgrade:QuantumItems4 x2, industrialupgrade:iuplate:5 x4, industrialupgrade:IUstik:5 x6]}
+      - loot: epico
+
+  - id: nucleo_quark
+    title: "Mais Elementar que os Hádrons"
+    type: main
+    deps: [nucleo_graviton]
+    icon: industrialupgrade:ItemCore:13
+    desc: |
+      §e4 Núcleos Gráviton → 1 Núcleo Quark§r: §c21 bilhões de EU§r numa única operação do
+      Transformador Molecular. Somando a escada inteira desde o Núcleo Avançado, cada Núcleo Quark
+      representa 4¹³ — mais de 67 milhões — lingotes de irídio. Faça §e2§r.
+    tasks:
+      - get: industrialupgrade:ItemCore:13 x2
+    rewards:
+      - xp: 6
+      - choice: [industrialupgrade:ItemCore:12 x2, industrialupgrade:QuantumItems4 x3, industrialupgrade:neutroniumingot]
+
+  - id: placa_sunnarium_quark
+    title: "Placa de Sunnarium Quark"
+    type: main
+    deps: [placa_sunnarium_graviton]
+    deps_hidden: [iu_avancado:caravky]
+    icon: industrialupgrade:sunnariumpanel:12
+    desc: |
+      §ePlaca Gráviton + Placa de Caravky§r = §eQuark Sunnarium Plate§r, o último degrau da escada de
+      Sunnarium. Faça §e2§r.
+    tasks:
+      - get: industrialupgrade:sunnariumpanel:12 x2
+    rewards:
+      - xp: 6
+      - choice: [industrialupgrade:sunnariumpanel:11, industrialupgrade:iuplate:5 x6, industrialupgrade:sunnarium:2 x4]
+
+  - id: vidro_quark
+    title: "Vidro Quark"
+    type: main
+    deps: [vidro_graviton, placa_sunnarium_quark]
+    icon: industrialupgrade:IUphotonglass:13
+    desc: |
+      §e6 Varetas de Caravky§r + §eVidro Gráviton§r + §e2 Placas de Sunnarium Quark§r = §eQuark
+      Glass§r. Faça §e2§r.
+    tasks:
+      - get: industrialupgrade:IUphotonglass:13 x2
+    rewards:
+      - xp: 6
+      - choice: [industrialupgrade:IUphotonglass:12, industrialupgrade:IUstik:5 x8, industrialupgrade:iuingot:5 x9]
+
+  # ======================================================================
+  # FASE 7 — MFSU GIGANTES, CABOS E TRANSFORMADORES
+  # ======================================================================
+  - id: cristal_energia_melhorado
+    title: "Cristal de Energia Melhorado"
+    type: main
+    deps: [boas_vindas_iii]
+    deps_hidden: [iu_avancado:caixa_quantica_melhorada]
+    icon: industrialupgrade:itemBatLamaCrystal:1
+    desc: |
+      §e4 Cristais de Lapotron§r do IC2 nos cantos, §e4 Caixas Quânticas Melhoradas§r nas laterais
+      e um §eLingote de Fóton§r no centro = §eImproved Energy Crystal§r: 100 milhões de EU numa
+      bateria.
+
+      Ele é o "Lapotron do endgame": vai nos MFSU Hádron, Gráviton e Quark, nos transformadores
+      UMH em diante, no Sabre Espectral e na Armadura Quântica Espectral. Faça §e2§r.
+    tasks:
+      - get: industrialupgrade:itemBatLamaCrystal:* x2
+    rewards:
+      - xp: 6
+      - choice: [IC2:itemBatLamaCrystal:26 x4, industrialupgrade:QuantumItems3, industrialupgrade:photoniy_ingot x2]
+
+  - id: mfsu_perfeito
+    title: "MFSU Perfeito"
+    type: main
+    deps: [boas_vindas_iii]
+    deps_hidden: [iu_avancado:mfsu_avancado, iu_avancado:circuito_espectral, iu_avancado:nucleo_espectral]
+    icon: industrialupgrade:electricblock:6
+    desc: |
+      §e4 Circuitos Espectrais + 4 Núcleos Espectrais + MFSU Avançado§r = §ePerfect MFSU§r: §e1,6
+      bilhão de EU§r, tier 7. Os próximos degraus multiplicam por 4 cada: Bárion (6,4 bi), Hádron
+      (25,6 bi), Gráviton (102 bi) e Quark (409 bi).
+    tasks:
+      - get: industrialupgrade:electricblock:6
+    rewards:
+      - xp: 6
+      - choice: [industrialupgrade:QuantumItems5 x2, industrialupgrade:ItemCore:4 x2, industrialupgrade:upgradekitIU:4]
+
+  - id: mfsu_barion
+    title: "MFSU Bárion"
+    type: normal
+    deps: [mfsu_perfeito, nucleo_fotonico]
+    icon: industrialupgrade:electricblock:7
+    desc: |
+      4 Circuitos Espectrais + 4 Núcleos Fotônicos + MFSU Perfeito = §eBaryon MFSU§r: 6,4 bilhões
+      de EU, tier 8.
+    tasks:
+      - get: industrialupgrade:electricblock:7
+    rewards:
+      - xp: 4
+      - item: industrialupgrade:QuantumItems5 x2
+
+  - id: mfsu_hadron
+    title: "MFSU Hádron"
+    type: normal
+    deps: [mfsu_barion, nucleo_neutron, cristal_energia_melhorado]
+    icon: industrialupgrade:electricblock:8
+    desc: |
+      4 Circuitos Quânticos, 2 Cristais de Energia Melhorados, 2 Núcleos de Nêutron e o MFSU Bárion
+      = §eHadron MFSU§r: 25,6 bilhões de EU, tier 9.
+    tasks:
+      - get: industrialupgrade:electricblock:8
+    rewards:
+      - xp: 4
+      - item: industrialupgrade:QuantumItems8 x4
+
+  - id: mfsu_graviton
+    title: "MFSU Gráviton"
+    type: normal
+    deps: [mfsu_hadron, nucleo_hadron]
+    icon: industrialupgrade:electricblock:9
+    desc: |
+      2 Placas de Irídio Comprimidas, 2 Cristais de Energia Melhorados, 2 Núcleos Hádron, 2
+      Circuitos Espectrais e o MFSU Hádron = §eGraviton MFSU§r: 102 bilhões de EU, tier 10.
+    tasks:
+      - get: industrialupgrade:electricblock:9
+    rewards:
+      - xp: 4
+      - item: industrialupgrade:QuantumItems2 x4
+
+  - id: mfsu_quark
+    title: "MFSU Quark"
+    type: normal
+    deps: [mfsu_graviton, nucleo_graviton, compactando_iridio]
+    icon: industrialupgrade:electricblock:10
+    desc: |
+      2 Placas de Irídio Comprimidas Melhoradas, 2 Cristais de Energia Melhorados, 2 Núcleos
+      Gráviton, 2 Circuitos Espectrais e o MFSU Gráviton = §eQuark MFSU§r: §6409 bilhões de EU§r,
+      tier 11. É o maior armazenamento do Volume das Melhorias — e cabe num bloco só.
+    tasks:
+      - get: industrialupgrade:electricblock:10
+    rewards:
+      - xp: 4
+      - item: industrialupgrade:QuantumItems4 x2
+
+  - id: cabos_altos
+    title: "Cabos Fotônico e de Nêutron"
+    type: normal
+    deps: [boas_vindas_iii]
+    deps_hidden: [iu_avancado:cabo_mitico]
+    icon: industrialupgrade:cable:5
+    desc: |
+      A escada de cabos continua: §eFotônico§r (33,5 milhões de EU/t: Cabos Quânticos + Vitálio
+      denso + Ferro Enriquecido denso) e §eNêutron§r (134 milhões de EU/t: Cabos Fotônicos + Placas
+      de Carbono + lingotes de Alclad e Duralumínio). Faça qualquer um.
+    tasks:
+      - one_of: [industrialupgrade:cable:5, industrialupgrade:cable:6]
+    rewards:
+      - xp: 4
+      - item: industrialupgrade:alloysingot:5 x4
+
+  - id: cabos_extremos
+    title: "Cabos Perfeito, Universe, Difrativo e Infinito"
+    type: optional
+    deps: [cabos_altos]
+    icon: industrialupgrade:cable:10
+    desc: |
+      Para os painéis de cima: §ePerfeito§r (537 milhões de EU/t, Fótons e Lingote de Fóton),
+      §eUniverse§r (8,6 bilhões), §eDifrativo§r (440 bilhões, com Circuito Quântico) e §eInfinito§r
+      (1,76 trilhão de EU/t, com Circuitos Espectrais e Vanádio-Alumínio denso). Faça qualquer um.
+    tasks:
+      - one_of: [industrialupgrade:cable:7, industrialupgrade:cable:8, industrialupgrade:cable:9, industrialupgrade:cable:10]
+    rewards:
+      - loot: incomum
+
+  - id: transformadores_finais
+    title: "Transformadores UMH até HEEV"
+    type: optional
+    deps: [cristal_energia_melhorado, cabos_altos]
+    deps_hidden: [iu_avancado:transformador_uev]
+    icon: industrialupgrade:IUTransformer:6
+    desc: |
+      Cada transformador seguinte leva o anterior + 2 cabos do tier certo + um circuito + um §eCristal
+      de Energia Melhorado§r: §eUMH§r (Cabos Míticos), §eUMEV§r (Quânticos), §eUHEV§r (Fotônicos,
+      Circuito Espectral) e §eHEEV§r (de Nêutron), este último no tier 11. Faça qualquer um.
+    tasks:
+      - one_of: [industrialupgrade:IUTransformer:3, industrialupgrade:IUTransformer:4, industrialupgrade:IUTransformer:5, industrialupgrade:IUTransformer:6]
+    rewards:
+      - loot: incomum
+
+  # ======================================================================
+  # FASE 8 — ARSENAL ESPECTRAL
+  # ======================================================================
+  - id: picareta_espectral
+    title: "Picareta Espectral"
+    type: normal
+    deps: [boas_vindas_iii]
+    deps_hidden: [iu_avancado:picareta_quantica, iu_avancado:caixa_quantica_melhorada, iu_avancado:circuito_espectral, iu_avancado:cristal_carga_avancado]
+    icon: industrialupgrade:spectralpickaxe:1
+    desc: |
+      A Picareta Quântica + 2 Placas Reforçadas de Irídio + 3 Circuitos Espectrais + 2 Caixas
+      Quânticas Melhoradas + o §eCristal de Energia de Carga Avançado§r = §eSpectral Pickaxe§r: 50
+      milhões de EU e §eEficiência V + Fortuna III§r de fábrica. Machado e Pá Espectrais seguem a
+      mesma receita.
+    tasks:
+      - get: industrialupgrade:spectralpickaxe:*
+    rewards:
+      - xp: 4
+      - item: industrialupgrade:QuantumItems5
+
+  - id: ferramentas_espectrais
+    title: "Machado e Pá Espectrais"
+    type: optional
+    deps: [picareta_espectral]
+    icon: industrialupgrade:spectralaxe:1
+    desc: |
+      As versões Espectrais do Machado e da Pá: com a Picareta, elas formam a Broca Perfeita.
+    tasks:
+      - get: [industrialupgrade:spectralaxe:*, industrialupgrade:spectralshovel:*]
+    rewards:
+      - loot: incomum
+
+  - id: broca_espectral
+    title: "Broca Espectral"
+    type: optional
+    deps: [picareta_espectral]
+    icon: industrialupgrade:spectraldrill:1
+    desc: |
+      Picareta + Pá Espectrais + Caixa Quântica Melhorada + 2 Circuitos Espectrais (ou a Broca
+      Quântica na receita das ferramentas Espectrais) = §eSpectral Drill§r, com Eficiência V e
+      Fortuna III.
+    tasks:
+      - get: industrialupgrade:spectraldrill:*
+    rewards:
+      - loot: incomum
+
+  - id: broca_perfeita
+    title: "Broca Perfeita"
+    type: normal
+    deps: [ferramentas_espectrais]
+    icon: industrialupgrade:ultDDrill:1
+    desc: |
+      Machado, Picareta e Pá Espectrais, 2 Overclockers Avançados, 2 Caixas Quânticas Melhoradas e
+      2 Circuitos Espectrais = §ePerfect Drill§r (15 milhões de EU). Ela tem modos (tecla de modo
+      + clique direito): normal, econômico, buraco 3×3, 5×5 e 7×7, árvore inteira e veio de
+      minério inteiro — e, pela config, modos com Toque Suave e com Fortuna. É a ferramenta final
+      do IU.
+    tasks:
+      - get: industrialupgrade:ultDDrill:*
+    rewards:
+      - xp: 4
+      - item: industrialupgrade:iu_upgrademodule:16
+
+  - id: sabre_espectral
+    title: "Sabre Espectral"
+    type: normal
+    deps: [cristal_energia_melhorado]
+    deps_hidden: [iu_avancado:sabre_quantico]
+    icon: industrialupgrade:itemNanoSaber:1
+    desc: |
+      O Sabre Quântico + 2 Placas de Irídio Comprimidas + 2 Circuitos Espectrais + Glowstone + um
+      Cristal de Energia Melhorado = §eSpectral Saber§r: §c60 de dano§r ligado (12 desligado) e
+      600 000 EU. Aceita o módulo de Eficiência do Sabre (Volume II).
+    tasks:
+      - get: industrialupgrade:itemNanoSaber:*
+    rewards:
+      - xp: 4
+      - item: industrialupgrade:iu_upgrademodule:5
+
+  - id: arco_espectral
+    title: "Arco Espectral"
+    type: optional
+    deps: [boas_vindas_iii]
+    deps_hidden: [iu_avancado:arco_quantico, iu_avancado:circuito_espectral]
+    icon: industrialupgrade:spectral_bow:1
+    desc: |
+      O Arco Quântico + 2 Placas de Irídio Comprimidas + 2 Lapotrons + 2 Circuitos Espectrais + 2
+      Placas Densas de Duralumínio = §eSpectral Bow§r (150 000 EU, tier 4).
+    tasks:
+      - get: industrialupgrade:spectral_bow:*
+    rewards:
+      - loot: incomum
+
+  - id: capacete_quantico_espectral
+    title: "Capacete Quântico Espectral"
+    type: normal
+    deps: [cristal_energia_melhorado]
+    deps_hidden: [iu_avancado:caixa_quantica]
+    icon: industrialupgrade:itemArmorQuantumHelmet:1
+    desc: |
+      Duas receitas: o Capacete QuantumSuit do IC2 + 4 Caixas Quânticas + um Cristal de Energia
+      Melhorado; ou o Capacete Nano Reforçado + 2 Placas Reforçadas de Irídio + as mesmas 4 caixas
+      e o cristal. Resultado: §eSpectral Quantum Helmet§r, 100 milhões de EU. Na Estação de
+      Modificação ele aceita Proteção e Respiração Aquática.
+    tasks:
+      - get: industrialupgrade:itemArmorQuantumHelmet:*
+    rewards:
+      - xp: 4
+      - item: industrialupgrade:QuantumItems6 x2
+
+  - id: peitoral_quantico_espectral
+    title: "Peitoral Quântico Espectral"
+    type: normal
+    deps: [capacete_quantico_espectral]
+    icon: industrialupgrade:itemArmorQuantumChestplate:1
+    desc: |
+      O Peitoral Nano Reforçado (com 2 Placas de Irídio) ou o Peitoral QuantumSuit (com 2 Placas
+      Densas de Vitálio), 4 Caixas Quânticas e o Cristal de Energia Melhorado = §eSpectral Quantum
+      Chestplate§r: 300 milhões de EU e §evoo§r (tecla de modo + tecla de impulso). Aceita Proteção,
+      Resistência ao Fogo e Velocidade de Voo; a "trilha" colorida atrás de você muda de cor com a
+      tecla de expandir o HUD.
+    tasks:
+      - get: industrialupgrade:itemArmorQuantumChestplate:*
+    rewards:
+      - xp: 4
+      - item: industrialupgrade:QuantumItems6 x2
+
+  - id: calcas_quanticas_espectrais
+    title: "Calças Quânticas Espectrais"
+    type: normal
+    deps: [capacete_quantico_espectral]
+    icon: industrialupgrade:itemArmorQuantumLegs:1
+    desc: |
+      Mesmo esquema do capacete, com as calças: §eSpectral Quantum Leggings§r (100 milhões de EU).
+      Aceitam Proteção e Velocidade de movimento.
+    tasks:
+      - get: industrialupgrade:itemArmorQuantumLegs:*
+    rewards:
+      - xp: 4
+      - item: industrialupgrade:QuantumItems6 x2
+
+  - id: botas_quanticas_espectrais
+    title: "Botas Quânticas Espectrais"
+    type: normal
+    deps: [capacete_quantico_espectral]
+    icon: industrialupgrade:itemArmorQuantumBoots:1
+    desc: |
+      Mesmo esquema, com as botas: §eSpectral Quantum Boots§r (100 milhões de EU). Aceitam Proteção
+      e Super Pulo.
+    tasks:
+      - get: industrialupgrade:itemArmorQuantumBoots:*
+    rewards:
+      - xp: 4
+      - item: industrialupgrade:QuantumItems6 x2
+
+  - id: armadura_quantica_espectral
+    title: "Armadura Quântica Espectral"
+    type: milestone
+    deps: [capacete_quantico_espectral, peitoral_quantico_espectral, calcas_quanticas_espectrais, botas_quanticas_espectrais]
+    icon: industrialupgrade:itemArmorQuantumChestplate:1
+    banner: "Armadura Quântica Espectral"
+    subtitle: "600 milhões de EU no corpo"
+    desc: |
+      As quatro peças da §dArmadura Quântica Espectral§r: 600 milhões de EU no total, voo, proteção
+      e espaço para módulos de modificação. Herói, você virou um farol ambulante!
+
+      §aMódulos que valem a pena§r (Transformador Molecular Avançado + Modelo de Módulo):
+      Proteção (Duralumínio denso), Resistência ao Fogo, Respiração Aquática, Velocidade e Velocidade
+      de Voo (poções — veja no NEI), Super Pulo (Vanádio-Alumínio denso). E a Máquina de
+      Tingimento troca a skin da armadura.
+    tasks:
+      - get: [industrialupgrade:itemArmorQuantumHelmet:*, industrialupgrade:itemArmorQuantumChestplate:*, industrialupgrade:itemArmorQuantumLegs:*, industrialupgrade:itemArmorQuantumBoots:*]
+    rewards:
+      - xp: 12
+      - kit: {name: "Kit do Farol Ambulante", items: [industrialupgrade:iu_upgrademodule:2 x2, industrialupgrade:itemBatLamaCrystal:26, minecraft:golden_apple:1, minecraft:cooked_beef x32, industrialupgrade:paints:3 x4]}
+      - loot: epico
+
+  - id: capacetes_solares_finais
+    title: "Capacetes Solares Espectral e Singular"
+    type: optional
+    deps: [painel_singular, compactando_iridio]
+    deps_hidden: [iu_avancado:capacete_solar_hibrido]
+    icon: industrialupgrade:singular_solar_helmet:1
+    desc: |
+      §eSpectral Solar Helmet§r: Capacete Solar Perfeito + Painel Espectral + Placas de Irídio
+      Comprimidas Melhoradas + Circuitos Quânticos + Compósito. §eSingular Solar Helmet§r: o
+      Espectral + Painel Singular + Circuitos Espectrais. Os dois guardam 100 milhões de EU. Faça
+      qualquer um.
+    tasks:
+      - one_of: [industrialupgrade:spectral_solar_helmet:*, industrialupgrade:singular_solar_helmet:*]
+    rewards:
+      - loot: epico
+
+  - id: jetpack_perfeito
+    title: "Jetpack Elétrico Perfeito"
+    type: optional
+    deps: [boas_vindas_iii]
+    deps_hidden: [iu_avancado:jetpack_avancado, iu_avancado:caixa_quantica_melhorada]
+    icon: industrialupgrade:perjetpack:1
+    desc: |
+      O Jetpack Avançado + 2 Placas Reforçadas de Irídio + 3 Circuitos Espectrais + 2 Caixas
+      Quânticas Melhoradas + Bateria Avançada = §ePerfect Electric Jetpack§r (250 000 EU, tier 4).
+    tasks:
+      - get: industrialupgrade:perjetpack:*
+    rewards:
+      - loot: incomum
+
+  - id: cristal_carga_perfeito
+    title: "Cristal de Energia de Carga Perfeito"
+    type: optional
+    deps: [cristal_energia_melhorado]
+    deps_hidden: [iu_avancado:cristal_carga_avancado]
+    icon: industrialupgrade:itemBatChargeCrystal:1
+    desc: |
+      O Cristal de Carga Avançado + 2 Cristais de Energia Melhorados + 2 Circuitos Espectrais + 2
+      Placas Reforçadas de Irídio + 2 Placas Densas de Vitálio = §eCharging Perfect Energy
+      Crystal§r: 400 milhões de EU para recarregar todo o inventário.
+    tasks:
+      - get: industrialupgrade:itemBatChargeCrystal:*
+    rewards:
+      - loot: incomum
+
+  - id: modulos_modificacao_finais
+    title: "Módulos de Modificação Raros"
+    type: optional
+    deps: [californio]
+    deps_hidden: [iu_avancado:estacao_modificacao]
+    icon: industrialupgrade:iu_upgrademodule:13
+    desc: |
+      No Transformador Molecular Avançado, Modelo de Módulo +:
+      §e•§r 2 Califórnios → §eÁrea de Escavação§r (para brocas);
+      §e•§r Estrela do Nether → §eWither§r; Teia → Toque Suave; Módulo de Caçador (Saque) →
+      §eSaque§r; 4 Varas de Blaze → Acúmulo de Carga; Maçã Dourada Encantada → §eResistência§r;
+      §e•§r poções → Vampirismo, Invisibilidade, Veneno...
+      Faça qualquer um destes módulos.
+    tasks:
+      - one_of: [industrialupgrade:iu_upgrademodule:13, industrialupgrade:iu_upgrademodule:20, industrialupgrade:iu_upgrademodule:23, industrialupgrade:iu_upgrademodule:18, industrialupgrade:iu_upgrademodule:17, industrialupgrade:iu_upgrademodule:25]
+    rewards:
+      - loot: incomum
+
+  # ======================================================================
+  # FASE 9 — PEDREIRA QUÂNTICA
+  # ======================================================================
+  - id: pedreira_quantica
+    title: "Pedreira Quântica"
+    type: main
+    deps: [nucleo_difrativo]
+    deps_hidden: [iu_avancado:caixa_quantica_melhorada, iu_avancado:placa_iridio_comprimida]
+    icon: industrialupgrade:machines:8
+    desc: |
+      O §eMinerador Avançado§r do IC2 no centro, um §eNúcleo Difrativo§r, 2 Circuitos Quânticos, 2
+      Caixas Quânticas Melhoradas e 3 Placas de Irídio Comprimidas = §eQuantum Quarry§r.
+
+      Ela não escava o mundo: gasta energia a cada "bloco" virtual e, em §e5%§r das operações,
+      entrega um minério/cristal aleatório da lista do oredict. A básica gasta §e200 000 EU por
+      operação§r; as Melhorada, Avançada e Perfeita gastam 150 mil, 100 mil e 50 mil.
+      §cSem o Módulo Analisador no slot de cima ela não trabalha.§r
+    tasks:
+      - get: industrialupgrade:machines:8
+    rewards:
+      - xp: 6
+      - choice: [industrialupgrade:QuantumItems3, industrialupgrade:QuantumItems5 x2, industrialupgrade:ItemCore:7]
+
+  - id: analisador
+    title: "Analisador"
+    type: main
+    deps: [boas_vindas_iii]
+    deps_hidden: [iu_avancado:placa_plastico, iu_avancado:circuito_quantico]
+    icon: industrialupgrade:BlockBaseMachine3:2
+    desc: |
+      3 Placas Reforçadas de Irídio, 2 Placas de Plástico, 2 Placas de Alumel, um Circuito Quântico
+      e uma Carcaça Avançada = §eAnalyzer§r. Ele escaneia o chunk (botão "Analisar") e mostra os
+      minérios, a quantidade e a altura média. Recarregue o chunk a cada análise, como o próprio
+      Analisador avisa.
+    tasks:
+      - get: industrialupgrade:BlockBaseMachine3:2
+    rewards:
+      - xp: 6
+      - choice: [industrialupgrade:plastic_plate x4, IC2:itemPartIridium x2, industrialupgrade:QuantumItems8 x2]
+
+  - id: modulo_analisador
+    title: "Módulos Analisador e Pedreira"
+    type: main
+    deps: [analisador, pedreira_quantica]
+    deps_hidden: [iu_avancado:modelo_modulo]
+    icon: industrialupgrade:analyzermodule
+    desc: |
+      Dois módulos que ligam as duas máquinas (Modelo de Módulo + 2 lingotes de Germânio + 2
+      circuitos + a máquina):
+      §e•§r §eModule: Analyzer§r (com o Analisador) — vai §eno slot de cima da Pedreira§r e liga o
+      modo automático;
+      §e•§r §eModule: Quarry§r (com a Pedreira) — vai §eno Analisador§r: com ele encostado na
+      Pedreira, o botão "Minerar" extrai os minérios reais do chunk analisado.
+      Faça os dois.
+    tasks:
+      - get: [industrialupgrade:analyzermodule, industrialupgrade:quarrymodule]
+    rewards:
+      - xp: 6
+      - choice: [industrialupgrade:iuingot:18 x8, industrialupgrade:module_schedule x2, industrialupgrade:QuantumItems8 x2]
+
+  - id: modulos_pedreira
+    title: "Módulos de Pedreira"
+    type: normal
+    deps: [modulo_analisador]
+    icon: industrialupgrade:module9:1
+    desc: |
+      No slot do meio da Pedreira vão os módulos de melhoria (um por vez):
+      §e•§r §eEficiência I–V§r: cada nível reduz o custo em 5%;
+      §e•§r §eSorte I–III§r: mais cristais e gemas por acerto;
+      §e•§r §eRegião 3×3, 5×5, 7×7§r: mais "blocos" por operação, mas mais caro;
+      §e•§r §eFundir minérios§r: entrega lingotes no lugar de minérios.
+      Todos são caros (núcleos, Fótons, Circuitos Espectrais). Faça qualquer um de nível I.
+    tasks:
+      - one_of: [industrialupgrade:module9:1, industrialupgrade:module9:6, industrialupgrade:module9:9, industrialupgrade:module9]
+    rewards:
+      - xp: 4
+      - item: industrialupgrade:ItemCore:4 x2
+
+  - id: listas_pedreira
+    title: "Listas Branca e Negra"
+    type: optional
+    deps: [modulos_pedreira]
+    icon: industrialupgrade:machines:9
+    desc: |
+      §eModule: Whitelist§r (papel + Circuito Espectral) e §eBlacklist§r (com blocos de redstone) vão
+      no slot de baixo da Pedreira. Para gravar os itens neles, use o §eModule Handler§r (Carcaça
+      Avançada, os dois módulos, Circuitos Quânticos e 4 Núcleos Espectrais): ponha o módulo no
+      centro, os minérios nos outros slots e clique em "Gravar".
+    tasks:
+      - get: industrialupgrade:machines:9
+    rewards:
+      - loot: incomum
+
+  - id: pedreiras_superiores
+    title: "Pedreiras Melhorada, Avançada e Perfeita"
+    type: optional
+    deps: [pedreira_quantica, nucleo_fotonico]
+    icon: industrialupgrade:machines:15
+    desc: |
+      A Pedreira sobe de tier com núcleos altos: §eMelhorada§r (2 Núcleos Fotônicos, Caravky denso,
+      Duralumínio, gemas de Cúrio), §eAvançada§r (2 Núcleos Hádron, Germânio e Alclad densos,
+      Vitálio) e §ePerfeita§r (2 Núcleos Gráviton, Irídio Comprimido Melhorado, Circuitos
+      Espectrais, Titânio). Cada degrau barateia a operação em 50 000 EU. Faça qualquer uma.
+    tasks:
+      - one_of: [industrialupgrade:machines:13, industrialupgrade:machines:14, industrialupgrade:machines:15]
+    rewards:
+      - loot: epico
+
+  # ======================================================================
+  # FASE 10 — MATÉRIA SÓLIDA E LENTES
+  # ======================================================================
+  - id: gerador_materia_solida
+    title: "Gerador de Matéria Sólida"
+    type: main
+    deps: [nucleo_protonico]
+    deps_hidden: [iu_base:transformador_molecular, iu_base:involucros]
+    icon: industrialupgrade:BlockSolidMatter:4
+    desc: |
+      Existem §e8 Geradores de Matéria Sólida§r (Ar, Água, Terra, Ender, comum, Nether, Noite e
+      Sol). Cada um leva §eum Transformador Molecular inteiro§r no centro, 2 Núcleos Protônicos e
+      placas e invólucros de metais diferentes (veja cada um no NEI).
+
+      Eles transformam §e50 milhões de EU em 1 Matéria Sólida§r do seu tipo. A matéria vira
+      §elentes§r no Transformador Molecular e itens no Transformador de Matéria Sólida. Faça
+      qualquer um.
+    tasks:
+      - one_of: [industrialupgrade:BlockSolidMatter, industrialupgrade:BlockSolidMatter:1, industrialupgrade:BlockSolidMatter:2, industrialupgrade:BlockSolidMatter:3, industrialupgrade:BlockSolidMatter:4, industrialupgrade:BlockSolidMatter:5, industrialupgrade:BlockSolidMatter:6, industrialupgrade:BlockSolidMatter:7]
+    rewards:
+      - xp: 6
+      - choice: [industrialupgrade:ItemCore:5, industrialupgrade:iucasing:17 x4, industrialupgrade:iucasing:13 x4]
+
+  - id: materia_solida
+    title: "Matéria Sólida"
+    type: normal
+    deps: [gerador_materia_solida]
+    icon: industrialupgrade:matter
+    desc: |
+      Deixe o gerador encher: mostre qualquer §eMatéria Sólida§r. Cada uma é energia pura
+      condensada — 50 milhões de EU em um item.
+    tasks:
+      - one_of: [industrialupgrade:matter, industrialupgrade:matter:1, industrialupgrade:matter:2, industrialupgrade:matter:3, industrialupgrade:matter:4, industrialupgrade:matter:5, industrialupgrade:matter:6, industrialupgrade:matter:7]
+    rewards:
+      - xp: 4
+      - item: industrialupgrade:QuantumItems5
+
+  - id: lentes
+    title: "Lentes de Matéria"
+    type: normal
+    deps: [materia_solida]
+    icon: industrialupgrade:IUlens:5
+    desc: |
+      No Transformador Molecular, cada Matéria Sólida vira a §elente§r do seu elemento (25 milhões
+      de EU): Ar, Terra, Nether, Ender, Noite, Sol e Chuva (a de Chuva vem da Matéria de Água). As
+      lentes formam os §eMódulos de Tipo de Painel§r. Mostre qualquer lente.
+    tasks:
+      - one_of: [industrialupgrade:IUlens, industrialupgrade:IUlens:1, industrialupgrade:IUlens:2, industrialupgrade:IUlens:3, industrialupgrade:IUlens:4, industrialupgrade:IUlens:5, industrialupgrade:IUlens:6]
+    rewards:
+      - xp: 4
+      - item: industrialupgrade:QuantumItems4
+
+  - id: modulo_tipo_painel
+    title: "Módulos de Tipo de Painel"
+    type: optional
+    deps: [lentes, compactando_iridio]
+    icon: industrialupgrade:module5:5
+    desc: |
+      2 lentes, 3 Placas de Irídio Comprimidas Melhoradas, um Circuito Espectral e uma Caixa
+      Quântica Melhorada = §eMódulo de Tipo de Painel§r:
+      §e•§r Ar: 150% acima de Y 130; Terra: 150% abaixo de Y 30;
+      §e•§r Nether / Ender: o painel funciona naquela dimensão;
+      §e•§r Noite: só de noite, 150%; Dia: só de dia, 150%; Chuva: 150% na chuva.
+    tasks:
+      - one_of: [industrialupgrade:module5, industrialupgrade:module5:1, industrialupgrade:module5:2, industrialupgrade:module5:3, industrialupgrade:module5:4, industrialupgrade:module5:5, industrialupgrade:module5:6]
+    rewards:
+      - loot: epico
+
+  - id: combinador_materia_solida
+    title: "Combinador de Geradores de Matéria"
+    type: optional
+    deps: [gerador_materia_solida, nucleo_fotonico]
+    icon: industrialupgrade:BlockCombinerSolidMatter
+    desc: |
+      Os §e8 Geradores de Matéria Sólida§r em volta de um Núcleo Fotônico = §eSolid Matter Generator
+      Combiner§r, que gera os oito tipos de matéria num bloco só.
+    tasks:
+      - get: industrialupgrade:BlockCombinerSolidMatter
+    rewards:
+      - loot: epico
+
+  - id: transformador_materia_solida
+    title: "Transformador de Matéria Sólida"
+    type: optional
+    deps: [materia_solida, nucleo_singular]
+    deps_hidden: [ic2:materia_uu]
+    icon: industrialupgrade:BlockConverterSolidMatter
+    desc: |
+      Replicador, Examinador e Carcaça Avançada do IC2 + 2 Núcleos Singulares + Caixas e Circuitos
+      Quânticos = §eSolid Matter Transformer§r. Ele "imprime" itens gastando matéria sólida:
+      pedra, grama, cascalho, vidro, glowstone, minérios de ouro e carvão, bloco de ouro e os
+      lingotes do IU. O NEI mostra quanto de cada matéria cada item pede.
+    tasks:
+      - get: industrialupgrade:BlockConverterSolidMatter
+    rewards:
+      - loot: epico
+
+  - id: gerador_materia_combinado
+    title: "Gerador de Matéria Combinado"
+    type: optional
+    deps: [gerador_materia_avancado, nucleo_neutron]
+    deps_hidden: [iu_avancado:modulos_maquina]
+    icon: industrialupgrade:BlockBaseMachine3
+    desc: |
+      O Gerador de Matéria Avançado + 4 Núcleos de Nêutron + 2 Módulos Pilha = §eCombined Matter
+      Generator§r. Coloque Geradores de Matéria do IU dentro dos slots (até 4 por slot) e ele
+      trabalha com todos de uma vez.
+    tasks:
+      - get: industrialupgrade:BlockBaseMachine3
+    rewards:
+      - loot: epico
+
+  # ======================================================================
+  # FASE 11 — MÓDULOS DE PAINEL AVANÇADOS
+  # ======================================================================
+  - id: modulos_tier
+    title: "Módulos de Tier"
+    type: optional
+    deps: [nucleo_protonico, compactando_iridio]
+    deps_hidden: [iu_avancado:caixa_quantica_melhorada]
+    icon: industrialupgrade:module7:1
+    desc: |
+      2 Núcleos Protônicos, 3 Circuitos Espectrais, 3 Placas de Irídio Comprimidas Melhoradas e uma
+      caixa = §eModule: Panel Tier Up§r (com Caixa Quântica Melhorada) ou §ePanel Tier Down§r (com
+      Caixa Nano Avançada). Eles sobem ou descem o tier de saída do painel, para combinar com os
+      seus cabos e máquinas. Faça qualquer um.
+    tasks:
+      - one_of: [industrialupgrade:module7:1, industrialupgrade:module7:2]
+    rewards:
+      - loot: incomum
+
+  - id: modulo_carregar_itens
+    title: "Carregar Itens e Recarga Sem Fio"
+    type: normal
+    deps: [boas_vindas_iii]
+    deps_hidden: [iu_avancado:modelo_modulo, iu_avancado:modulo_sem_fio, iu_avancado:circuito_espectral]
+    icon: industrialupgrade:module7:3
+    desc: |
+      §eModule: Item Charge§r (Modelo, 3 Carbonos Comprimidos, 2 Circuitos Espectrais, Vitálio e
+      Alclad densos): o painel carrega itens nos slots dele. Com o Módulo Sem Fio ele vira os
+      módulos de §eRecarga Instantânea Sem Fio§r de armadura e de ferramentas (há versões RF):
+      Shift + clique direito no armazenamento recarrega tudo de uma vez. Faça o de Carregar Itens.
+    tasks:
+      - get: industrialupgrade:module7:3
+    rewards:
+      - xp: 4
+      - item: industrialupgrade:WirelessModule1
+
+  - id: modulos_fase_lua
+    title: "Fases do Sol e Segundo Sol"
+    type: optional
+    deps: [lentes]
+    deps_hidden: [iu_avancado:modulo_dia, iu_avancado:modulo_noite]
+    icon: industrialupgrade:moonlinse_module
+    desc: |
+      Dois módulos de painel curiosos:
+      §e•§r §eModule: Morning, afternoon and evening§r (Modelo + Módulos de Dia I e Noite I + 3
+      placas densas de Vitálio): aumenta a geração conforme as fases do sol e da lua;
+      §e•§r §eModule: Second Sun§r (Modelo + 3 Lentes da Noite + placas densas de ligas): à noite, o
+      painel gera como se fosse dia.
+      Os dois sobem para II e III no Transformador Molecular Avançado. Faça qualquer um.
+    tasks:
+      - one_of: [industrialupgrade:phase_module, industrialupgrade:moonlinse_module]
+    rewards:
+      - loot: epico
+
+  - id: combinador_paineis
+    title: "Combinador de Painéis"
+    type: optional
+    deps: [nucleo_fotonico]
+    icon: industrialupgrade:BlockSintezator
+    desc: |
+      4 Carcaças Avançadas, 4 Núcleos Fotônicos e um Circuito Espectral = §ePanel Combiner§r. Os
+      painéis são "dobrados" para dentro dele como Módulos de Painel (até 2 por slot, pela config
+      do pack) e somam a geração num bloco só. Economia de telhado!
+    tasks:
+      - get: industrialupgrade:BlockSintezator
+    rewards:
+      - loot: epico
+
+  # ======================================================================
+  # FASE 12 — AVARITIA, ROTORES E EXTRAS
+  # ======================================================================
+  - id: nucleo_neutronio
+    title: "Núcleo de Neutrônio"
+    type: normal
+    deps: [nucleo_protonico]
+    icon: industrialupgrade:neutroncore
+    desc: |
+      Para quem chegou ao §6Avaritia§r: §e4 Lingotes de Neutrônio Cósmico§r em cruz em volta de um
+      Núcleo Protônico = §eNeutronium Core§r.
+    tasks:
+      - get: industrialupgrade:neutroncore
+    rewards:
+      - xp: 4
+      - item: industrialupgrade:ItemCore:5
+
+  - id: painel_neutronio
+    title: "Painel Solar de Neutrônio"
+    type: optional
+    deps: [nucleo_neutronio, painel_fotonico]
+    icon: industrialupgrade:blockAvSolarPanel
+    desc: |
+      §e4 Painéis Fotônicos§r em cruz em volta do Núcleo de Neutrônio = §eNeutronium Solar Panel§r:
+      1 325 720 EU/t, como o Painel de Nêutron — um atalho cósmico para quem tem neutrônio
+      sobrando.
+    tasks:
+      - get: industrialupgrade:blockAvSolarPanel
+    rewards:
+      - loot: epico
+
+  - id: painel_infinito
+    title: "Painel Solar Infinito"
+    type: optional
+    deps: [painel_neutronio]
+    icon: industrialupgrade:blockAvSolarPanel:1
+    desc: |
+      §eInfinity Core§r = 4 Núcleos de Neutrônio + 4 Lingotes do Infinito. Em volta dele, §e4 Painéis
+      de Neutrônio§r = §eInfinity Solar Panel§r: 21 211 520 EU/t (o mesmo do Hádron). Um pedacinho
+      do Epílogo brilhando no seu telhado.
+    tasks:
+      - get: [industrialupgrade:infinitycore, industrialupgrade:blockAvSolarPanel:1]
+    rewards:
+      - loot: epico
+
+  - id: singularidade_iu
+    title: "Singularidades do IU"
+    type: optional
+    deps: [boas_vindas_iii]
+    icon: industrialupgrade:avaritia_iu_singularity
+    desc: |
+      No §eCompressor de Nêutrons§r do Avaritia, centenas de blocos de um metal do IU viram a
+      §esingularidade§r dele (de 215 blocos de Invar a 400 de Manganês). Há singularidades de
+      Michalov, Alumínio, Vanádio, Tungstênio, Cobalto, Magnésio, Platina, Titânio, Cromo,
+      Espinélio, Zinco, Manganês, Invar, Caravky, Electrum, Irídio e Germânio. Faça qualquer uma.
+    tasks:
+      - one_of: [industrialupgrade:avaritia_iu_singularity, industrialupgrade:avaritia_iu_singularity:1, industrialupgrade:avaritia_iu_singularity:3, industrialupgrade:avaritia_iu_singularity:6, industrialupgrade:avaritia_iu_singularity:7, industrialupgrade:avaritia_iu_singularity:12, industrialupgrade:avaritia_iu_singularity:15]
+    rewards:
+      - loot: epico
+
+  - id: rotores_finais
+    title: "Rotores Fotônico a Ultramarino"
+    type: optional
+    deps: [boas_vindas_iii]
+    deps_hidden: [iu_avancado:rotores_espectral_mitico]
+    icon: industrialupgrade:ultramarinerotor:1
+    desc: |
+      A escada de rotores continua: §eFotônico§r (eficiência 32, 4 Caixas Quânticas), §eNêutron§r
+      (64), §eBárion§r (128, Caixas Quânticas Melhoradas), §eHádron§r (256) e §eUltramarino§r (512,
+      Lingotes de Fóton e Irídio Comprimido Melhorado). Faça qualquer um.
+    tasks:
+      - one_of: [industrialupgrade:photon:*, industrialupgrade:neutron:*, industrialupgrade:barionrotor:*, industrialupgrade:adronrotor:*, industrialupgrade:ultramarinerotor:*]
+    rewards:
+      - loot: incomum
+
+  - id: geradores_perfeitos
+    title: "Geradores Perfeitos"
+    type: optional
+    deps: [boas_vindas_iii]
+    deps_hidden: [iu_avancado:geradores_avancados, iu_avancado:circuito_espectral]
+    icon: industrialupgrade:machines:12
+    desc: |
+      Com Circuitos Espectrais e Compósito Comprimido, os geradores do IU chegam ao topo: §eGerador
+      Perfeito§r (18 EU/t), §eGeotérmico Perfeito§r e §eGerador Cinético Perfeito§r. Faça qualquer
+      um.
+    tasks:
+      - one_of: [industrialupgrade:machines:12, industrialupgrade:BlockBaseMachine2:6, industrialupgrade:BlockBaseMachine2:2]
+    rewards:
+      - loot: incomum
+
+  - id: modulo_cacador
+    title: "Módulo de Caçador"
+    type: normal
+    deps: [boas_vindas_iii]
+    deps_hidden: [iu_avancado:modelo_modulo]
+    icon: industrialupgrade:module_entity:1
+    desc: |
+      §eHunter Module: Mob§r: Modelo, 2 Circuitos Nano, 2 lingotes de Germânio e invólucros de
+      Vanádio-Alumínio e Ferromanganês. Clique direito com ele num mob para "gravar" a criatura.
+      (Existe também o de Jogador.)
+    tasks:
+      - get: industrialupgrade:module_entity:1
+    rewards:
+      - xp: 4
+      - item: industrialupgrade:module_schedule
+
+  - id: cacador_automatico
+    title: "Caçador Automático"
+    type: optional
+    deps: [modulo_cacador]
+    deps_hidden: [iu_avancado:caixa_quantica_melhorada, iu_avancado:muntz]
+    icon: industrialupgrade:BlockBaseMachine4:4
+    desc: |
+      2 Módulos de Caçador de Mob, um Circuito Espectral, 3 Caixas Quânticas Melhoradas, Muntz denso
+      e uma Carcaça Avançada = §eAutomatic Hunter§r. Com o módulo gravado dentro, ele produz os
+      drops daquele mob gastando EU. Os §eMódulos de Caçador§r de Saque I–III, Velocidade,
+      Experiência +25%/+50% e 2 ou 3 Mobs melhoram o resultado.
+    tasks:
+      - get: industrialupgrade:BlockBaseMachine4:4
+    rewards:
+      - loot: epico
+
+  - id: purificador_radiacao
+    title: "Purificador de Radiação"
+    type: optional
+    deps: [boas_vindas_iii]
+    deps_hidden: [iu_base:vanadio_aluminio]
+    icon: industrialupgrade:BlockBaseMachine4:1
+    desc: |
+      4 Câmaras de Reator do IC2 em volta de um Bloco de Vanádio-Alumínio = §eRadiation Purifier§r,
+      uma máquina de apoio para quem mexe com os combustíveis radioativos do IU. Veja o que ela faz
+      na interface e no tooltip.
+    tasks:
+      - get: industrialupgrade:BlockBaseMachine4:1
+    rewards:
+      - loot: incomum
+
+  # ======================================================================
+  # FINAL — O PAINEL QUARK
+  # ======================================================================
+  - id: painel_quark
+    title: "Energia Elementar"
+    type: milestone
+    deps: [painel_graviton, nucleo_quark, vidro_quark]
+    icon: industrialupgrade:BlockSolarPanel:13
+    banner: "Painel Solar Quark"
+    subtitle: "339 384 320 EU/t"
+    effect: 4
+    desc: |
+      §e2 Vidros Quark, 2 Núcleos Quark, 2 Placas de Irídio Comprimidas Melhoradas e 3 Painéis
+      Gráviton§r = §6Quark Solar Panel§r.
+
+      §e339 milhões de EU/t§r. 2,5 trilhões de EU de buffer. Para chegar nele você fez, sem
+      exagero, milhões de núcleos, centenas de vidros e dezenas de milhares de painéis menores
+      (3¹⁴ Painéis Solares do IC2 na base da pirâmide!).
+
+      Herói... eu não tenho mais números para comemorar. Só obrigada.
+    tasks:
+      - get: industrialupgrade:BlockSolarPanel:13
+    rewards:
+      - xp: 15
+      - kit: {name: "Kit Elementar", items: [industrialupgrade:ItemCore:12 x2, industrialupgrade:QuantumItems4 x4, industrialupgrade:cable:10 x4, industrialupgrade:upgradekitIU:8, industrialupgrade:neutroniumingot x2]}
+      - loot: [epico x2]
+
+  - id: mestre_melhorias
+    title: "Mestre das Melhorias"
+    type: milestone
+    deps: [painel_quark, mfsu_quark, armadura_quantica_espectral, reator_fusao, pedreira_quantica, broca_perfeita]
+    icon: industrialupgrade:ItemCore:13
+    banner: "Mestre das Melhorias"
+    subtitle: "O Volume das Melhorias está completo"
+    effect: 6
+    desc: |
+      Herói. Vem cá. Senta.
+
+      Lembra do primeiro lingote de Michalov? Da Caixa Nano que comeu nove placas de carbono? Do
+      termômetro do Fabricante de Circuitos subindo até 4500? Depois veio o Sunnarium, o
+      Transformador Molecular, o fóton, o plástico, os circuitos Quânticos e Espectrais. E aqui,
+      no fim: nêutrons engarrafados, fusão nuclear, uma pedreira que tira minério do nada, uma
+      armadura que voa, um MFSU de 400 bilhões e um Painel Quark que sozinho gera mais que
+      qualquer usina dos Antigos.
+
+      §bO Volume das Melhorias está inteiro.§r Esta página brilha ao lado do Volume da Indústria
+      no §6Selo da Engrenagem§r — e, Herói, que brilho!
+
+      Obrigada por ter subido a escada inteira comigo.
+    tasks:
+      - get: [industrialupgrade:BlockSolarPanel:13, industrialupgrade:electricblock:10, industrialupgrade:ultDDrill:*]
+    rewards:
+      - xp: 30
+      - kit: {name: "Legado das Melhorias", items: [industrialupgrade:ItemCore:13, industrialupgrade:QuantumItems5 x8, industrialupgrade:QuantumItems3 x4, industrialupgrade:itemBatLamaCrystal:26 x2, industrialupgrade:neutroniumingot x4]}
+      - loot: [epico x2, lendario]
+      - command: "/effect @p 1 2400 2"
