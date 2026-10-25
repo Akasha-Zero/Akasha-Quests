@@ -1,0 +1,1454 @@
+chapter:
+  id: thorizons
+  title: "Thaumic Horizons"
+  prefix: ""
+  order: 508
+  icon: ThaumicHorizons:modMatrix
+  desc: |
+    §dO Volume da Vida Reescrita.§r Alquimia de carne e sementes, sangue alquímico, o Tonel
+    Curativo, infusões em criaturas, almas reconstruídas, o próprio corpo infundido e um
+    Plano de Bolso só seu. (Thaumic Horizons 1.8.22)
+
+quests:
+  # ======================================================================
+  # FASE 0 — ENTRADA E ALQUIMIA DA VIDA
+  # ======================================================================
+  - id: horizontes
+    title: "Novos Horizontes da Taumaturgia"
+    type: info
+    icon: ThaumicHorizons:eggIncubated
+    desc: |
+      Achei um Volume que me dá um friozinho na barriga, Herói. O §dThaumic Horizons§r é a
+      taumaturgia aplicada à §evida§r: plantas, carne, sangue, animais, almas... e, no fim, o
+      seu próprio corpo.
+
+      Ele ganha uma aba própria no Taumonomicon, chamada §eThaumic Horizons§r. As primeiras
+      pesquisas (Alcheponia, Transmutação de Estilhaços, Alquimita, Dínamo de Vis) só pedem o
+      Crisol e a Mesa de Manufatura Arcana. As do meio pedem o §eAltar de Infusão§r; as do
+      fim pedem a §dPérola Primordial§r, que só se consegue nas Terras Exteriores.
+
+      §cAviso:§r várias pesquisas daqui dão Warp (almas, reencarnação, fendas planares). Eu
+      vou avisar em cada uma. Pronto para começar com algo inocente, tipo... trigo?
+    tasks:
+      - check
+    rewards:
+      - xp: 1
+
+  - id: alcheponia
+    title: "Alcheponia"
+    type: main
+    deps: [horizontes]
+    icon: minecraft:melon_block
+    desc: |
+      Plantas sob encomenda! A pesquisa §eAlcheponics§r ensina a mergulhar sementes no Crisol
+      com essências de luz, água e terra para que elas cresçam na hora.
+
+      No Crisol: §eSementes de Trigo§r, Cenoura ou Batata + 2 §dLux§r, 2 §dTerra§r e 2
+      §dAqua§r = 2 unidades da colheita. §eSementes de Melancia§r ou de Abóbora + 3 de cada
+      aspecto = um bloco inteiro de Melancia ou Abóbora.
+
+      Faça §e4 blocos de Melancia§r pelo Crisol. §aDica:§r o trigo que sai daqui é estéril,
+      então guarde sementes normais para a sua fazenda.
+    tasks:
+      - get: minecraft:melon_block x4
+    rewards:
+      - xp: 4
+      - choice: [minecraft:melon_seeds x8, minecraft:pumpkin_seeds x8, minecraft:wheat_seeds x16]
+
+  - id: ovo_incubado
+    title: "Incubação Alquímica"
+    type: main
+    deps: [alcheponia]
+    desc: |
+      "Uma galinha em cada Crisol" — é o lema da pesquisa, juro que não fui eu que inventei.
+
+      Jogue um §eOvo§r no Crisol com 2 §dIgnis§r e 2 §dVictus§r: sai um §eOvo Incubado§r
+      (Incubated Egg). Ao ser aberto (arremessado), ele §egarante§r o pintinho, sem depender
+      da sorte do ovo comum.
+
+      Faça §e2 Ovos Incubados§r. Galinhas vão ser cobaias muito importantes daqui a pouco...
+    tasks:
+      - get: ThaumicHorizons:eggIncubated x2
+    rewards:
+      - xp: 4
+      - choice: [minecraft:egg x16, minecraft:wheat_seeds x32, Thaumcraft:ItemShard:1 x4]
+
+  - id: crescimento_carne
+    title: "Carne sem Crueldade"
+    type: main
+    deps: [ovo_incubado]
+    icon: minecraft:beef
+    desc: |
+      E se desse para fazer um bife crescer sem precisar de uma vaca inteira? A pesquisa
+      §eMeat Growth§r faz exatamente isso.
+
+      No Crisol: §eCarne crua§r (porco, vaca ou frango) + 3 §dVictus§r = 2 unidades da mesma
+      carne. É um multiplicador de comida e, mais importante, de aspectos de carne para o
+      resto deste Volume.
+
+      Junte §e16 Carnes de Vaca cruas§r. O seu Crisol nunca mais vai passar fome.
+    tasks:
+      - get: minecraft:beef x16
+    rewards:
+      - xp: 4
+      - choice: [minecraft:cooked_beef x16, Thaumcraft:ItemNuggetBeef x16, minecraft:sugar x16]
+
+  - id: couro_carne
+    title: "Da Comida à Moda"
+    type: normal
+    deps: [crescimento_carne]
+    icon: minecraft:leather
+    desc: |
+      Couro sem matar mais nenhuma vaca! A pesquisa §eFlesh Hardening§r cozinha carne em
+      essência até ela virar couro.
+
+      No Crisol: §eCarne de Vaca§r ou de §ePorco§r crua + 1 §dFabrico§r e 1 §dPannus§r = 1
+      Couro. Até §eCarne Podre§r serve, mas precisa de mais 1 §dOrdo§r para desfazer a
+      podridão. Junte §e8 Couros§r — o Estojo de Lentes e a Infusão de Carne de Diamante
+      vão pedir.
+    tasks:
+      - get: minecraft:leather x8
+    rewards:
+      - xp: 2
+      - item: minecraft:rotten_flesh x16
+
+  - id: transmutacao_estilhacos
+    title: "Desequilibrando Estilhaços"
+    type: normal
+    deps: [horizontes]
+    icon: Thaumcraft:ItemShard:6
+    desc: |
+      Sabe aquela frustração de ter vinte Estilhaços de Terra e nenhum de Fogo? Acabou.
+
+      Pela §eShard Transmutation§r, um §eEstilhaço Equilibrado§r (Balanced Shard) no Crisol com
+      2 do aspecto primal desejado + 1 §dPermutatio§r vira o estilhaço daquele aspecto. Ou seja:
+      qualquer estilhaço vira equilibrado (receita do Thaumcraft) e agora o equilibrado vira
+      qualquer estilhaço.
+
+      Tenha §e4 Estilhaços Equilibrados§r à mão. Eles também são a base do Estilhaço Etéreo.
+    tasks:
+      - get: Thaumcraft:ItemShard:6 x4
+    rewards:
+      - xp: 2
+      - choice: [Thaumcraft:ItemShard:0 x4, Thaumcraft:ItemShard:1 x4, Thaumcraft:ItemShard:2 x4, Thaumcraft:ItemShard:3 x4, Thaumcraft:ItemShard:4 x4, Thaumcraft:ItemShard:5 x4]
+
+  - id: estilhaco_etereo
+    title: "Estilhaço Etéreo"
+    type: normal
+    deps: [transmutacao_estilhacos]
+    desc: |
+      Um nodo artificial? Quase! O §eEthereal Shard§r é um bloco que guarda vis como se fosse
+      um nodo, mas sem gerar nada sozinho.
+
+      Infusão: §eEstilhaço Equilibrado§r no centro e §e4 Nitor§r em volta (Auram, Potentia e
+      Vacuos). Depois clique nele com §eEssência Etérea§r (a dos wisps) para dar capacidade, e
+      redirecione centivis de um nodo energizado para carregá-lo. Ao quebrar, ele devolve as
+      essências.
+    tasks:
+      - get: ThaumicHorizons:synthNode
+    rewards:
+      - xp: 3
+      - item: Thaumcraft:ItemResource:1 x4
+
+  - id: alquimita
+    title: "Alquimita"
+    type: optional
+    deps: [transmutacao_estilhacos]
+    desc: |
+      "Isto não tem como dar terrivelmente errado..." — palavras da própria pesquisa. Eu não
+      confio.
+
+      §eTNT§r no Crisol com 4 §dPotentia§r, 4 §dVitreus§r e 4 §dPermutatio§r = §eAlquimita§r.
+      Os blocos que ela explode caem como §eessência cristalizada§r em vez de itens.
+      §cNunca detone perto de um nodo de aura§r — o próprio livro avisa.
+    tasks:
+      - get: ThaumicHorizons:alchemite x4
+    rewards:
+      - loot: comum
+
+  # ======================================================================
+  # FASE 1 — MÁQUINAS DE VIS, FOCOS E BARCOS
+  # ======================================================================
+  - id: dinamo_vis
+    title: "Dínamo de Vis"
+    type: normal
+    deps: [horizontes]
+    desc: |
+      Centivis portátil, direto da sua varinha! O §eVis Dynamo§r é uma infusão com um
+      §ePistão§r no centro e, em volta, um §eAmuleto Primal§r (Primal Charm), 2 Lingotes de
+      Ouro e Tábuas de Greatwood.
+
+      Segure o botão direito nele com a varinha: ele puxa 1 vis por segundo da varinha e emite
+      5 cV para os aparelhos em volta. Pela interface dá para escolher quais primais ele usa.
+    tasks:
+      - get: ThaumicHorizons:visDynamo
+    rewards:
+      - xp: 3
+      - item: minecraft:gold_ingot x4
+
+  - id: dinamo_essencia
+    title: "Dínamo de Essência"
+    type: normal
+    deps: [dinamo_vis]
+    desc: |
+      O Dínamo de Vis cansa o braço. O §eEssentia Dynamo§r faz o mesmo com essência
+      encanada: consome 1 essência por segundo e gera 12 cV, divididos entre os primais que
+      compõem o aspecto (Arbor vira 4 cV de Aer, Aqua e Terra cada).
+
+      Infusão: §ePistão§r no centro; 2 Lingotes de Táumio, Construto Alquímico, Tábuas de
+      Greatwood e Centrifugador Alquímico em volta.
+    tasks:
+      - get: ThaumicHorizons:essentiaDynamo
+    rewards:
+      - xp: 3
+      - item: Thaumcraft:ItemResource:2 x4
+
+  - id: monitor_nodo
+    title: "Monitor de Nodo"
+    type: optional
+    deps: [dinamo_vis]
+    desc: |
+      Nodo é patrimônio, Herói! O §eNode Monitor§r flutua ao lado de um nodo e emite sinal de
+      redstone quando qualquer aspecto dele cai para 1 ponto de vis.
+
+      Infusão: §eTaumômetro§r no centro; Cérebro de Zumbi, Comparador e Estilhaço de Ar.
+    tasks:
+      - get: ThaumicHorizons:nodeMonitor
+    rewards:
+      - loot: comum
+
+  - id: foco_iluminacao
+    title: "Foco: Iluminação"
+    type: normal
+    deps: [horizontes]
+    icon: ThaumicHorizons:focusIllumination:11
+    desc: |
+      Chega de carregar 64 tochas! O §eWand Focus: Illumination§r cria orbes de luz estáveis
+      com um pouquinho de Aer e Ignis.
+
+      Ele sai do Crisol: §eBloco de Pedra Luminosa§r + 12 §dLux§r, 8 §dPotentia§r e 8
+      §dIgnis§r (sai amarelo). Combine o foco com corante na bancada para mudar a cor das luzes.
+    tasks:
+      - get: ThaumicHorizons:focusIllumination:*
+    rewards:
+      - xp: 2
+      - item: minecraft:glowstone x4
+
+  - id: foco_liquefacao
+    title: "Foco: Liquefação"
+    type: normal
+    deps: [foco_iluminacao]
+    desc: |
+      "O chão é lava! Não, sério." O §eWand Focus: Liquefaction§r funde blocos e itens
+      atingidos como se passassem por uma fornalha, derrete gelo, transforma pedra bruta em
+      lava e queima plantas.
+
+      Infusão: §eDiamante§r no centro; §eFoco de Fogo§r, Salis Mundus e §eFoco de Escavação§r em
+      volta. No Manipulador Focal ele aceita melhorias de pepitas extras e de purificação em
+      aglomerados. §cCuidado onde mira!§r
+    tasks:
+      - get: ThaumicHorizons:focusLiquefaction
+    rewards:
+      - xp: 3
+      - item: Thaumcraft:ItemResource:14 x4
+
+  - id: foco_desintegracao
+    title: "Foco: Desintegração"
+    type: optional
+    deps: [foco_liquefacao, alquimita]
+    desc: |
+      Colher essência no campo, sem carregar tudo até a Fornalha Alquímica! Funciona como o
+      Foco de Escavação, mas os blocos quebrados viram §eessência cristalizada§r.
+
+      Infusão: §eFoco de Escavação§r no centro; 2 Baldes de §eMorte Líquida§r, Amuleto Primal e
+      Alumentum. Pesquisa exige Alquimita e Morte Líquida antes.
+    tasks:
+      - get: ThaumicHorizons:focusDisintegration
+    rewards:
+      - loot: incomum
+
+  - id: barco_greatwood
+    title: "Barco de Greatwood"
+    type: optional
+    deps: [horizontes]
+    desc: |
+      Eu sou péssima piloto. O §eGreatwood Boat§r resolve: ele volta ao formato original depois
+      de qualquer batida e é um pouco mais rápido que o comum.
+
+      Arcana: 5 §eToras de Greatwood§r no formato de barco (Ordo, Terra e Aqua).
+    tasks:
+      - get: ThaumicHorizons:boatGreatwood
+    rewards:
+      - loot: comum
+
+  - id: barco_taumio
+    title: "Barco de Táumio"
+    type: optional
+    deps: [barco_greatwood]
+    desc: |
+      Um barco que §enavega em lava§r. Sim, você leu certo. O táumio com Estilhaços de Água
+      isola o calor quase por completo, e o barco ainda protege e resfria quem está dentro.
+
+      Arcana: o Barco de Greatwood no centro, 4 Barras de Táumio e 4 Estilhaços de Água em
+      volta. Perfeito para o Nether!
+    tasks:
+      - get: ThaumicHorizons:boatThaumium
+    rewards:
+      - loot: comum
+
+  # ======================================================================
+  # FASE 2 — LENTES ARCANAS
+  # ======================================================================
+  - id: lente_iluminadora
+    title: "Lentes Arcanas"
+    type: normal
+    deps: [horizontes]
+    icon: ThaumicHorizons:lensFire
+    desc: |
+      Os Óculos da Descoberta são ótimos... mas e se desse para colocar mais uma lente por
+      cima? (Pesquisa §eArcane Lenses§r, depois de Óculos e Infusão.)
+
+      A §eIllumine Lens§r dá visão noturna constante (não funciona embaixo d'água). Infusão:
+      §ePainel de Vidro§r no centro; 2 Cenouras Douradas e 2 Estilhaços de Fogo.
+
+      Com os Óculos na cabeça, segure §eV§r para trocar de lente; §eShift+V§r tira a lente.
+    tasks:
+      - get: ThaumicHorizons:lensFire
+    rewards:
+      - xp: 3
+      - item: minecraft:golden_carrot x4
+
+  - id: lente_kirlian
+    title: "Lente Kirlian"
+    type: normal
+    deps: [lente_iluminadora]
+    desc: |
+      Criaturas perturbam a aura só de existirem. A §eKirlian Lens§r enxerga essas ondulações
+      através das paredes: vivos em azul, mortos-vivos num vórtice vermelho.
+
+      Infusão: §ePainel de Vidro§r; Osso, Ovo e 2 Estilhaços de Ar.
+    tasks:
+      - get: ThaumicHorizons:lensAir
+    rewards:
+      - xp: 2
+      - item: Thaumcraft:ItemShard x2
+
+  - id: lente_eco
+    title: "Lente do Eco"
+    type: normal
+    deps: [lente_iluminadora]
+    desc: |
+      Sonar arcano! A §eEcho Lens§r emite pulsos de som e transforma o eco em imagem: é como
+      visão noturna debaixo d'água e ainda limpa a água turva.
+
+      Infusão: §ePainel de Vidro§r; Jukebox Arcana (Arcane Ear), Bloco Musical e 2 Estilhaços
+      de Água.
+    tasks:
+      - get: ThaumicHorizons:lensWater
+    rewards:
+      - xp: 2
+      - item: Thaumcraft:ItemShard:2 x2
+
+  - id: lente_evanescente
+    title: "Lente Evanescente"
+    type: normal
+    deps: [lente_iluminadora]
+    desc: |
+      Óculos de raio-X, versão taumaturga. A §eEvanescent Lens§r "puxa" a luz através de um
+      quadrado de 3×3 blocos à sua frente. Blocos complexos continuam opacos.
+
+      Infusão: §ePainel de Vidro§r; Pó de Pedra Luminosa, Olho do Fim e 2 Estilhaços de Terra.
+    tasks:
+      - get: ThaumicHorizons:lensEarth
+    rewards:
+      - xp: 2
+      - item: Thaumcraft:ItemShard:3 x2
+
+  - id: lente_estudioso
+    title: "Lente do Estudioso"
+    type: normal
+    deps: [lente_iluminadora]
+    desc: |
+      A minha favorita! A §eScholar's Lens§r escaneia sozinha qualquer bloco ou criatura sob a
+      sua mira, como um Taumômetro sempre ligado. Pesquisar fica muito mais rápido.
+
+      Infusão: §ePainel de Vidro§r; Ferramenta de Escrita, Livro, Estilhaço de Ordem e
+      Estilhaço de Entropia.
+    tasks:
+      - get: ThaumicHorizons:lensOrderEntropy
+    rewards:
+      - xp: 2
+      - item: Thaumcraft:ItemInkwell
+
+  - id: estojo_lentes
+    title: "Estojo de Lentes"
+    type: optional
+    deps: [lente_kirlian, lente_eco, lente_evanescente, lente_estudioso]
+    desc: |
+      Lente solta no bolso arranha, Herói. O §eLens Case§r funciona igual à Bolsa de Focus,
+      só que para lentes.
+
+      Arcana: Couro em volta, um Lingote de Ferro em cima e um §eCinto Mundano§r no centro.
+    tasks:
+      - get: ThaumicHorizons:lensCase
+    rewards:
+      - loot: incomum
+
+  # ======================================================================
+  # FASE 3 — ALQUIMIA DO SANGUE
+  # ======================================================================
+  - id: seringa_guardada
+    title: "Seringa Protegida"
+    type: main
+    deps: [crescimento_carne]
+    icon: ThaumicHorizons:syringeEmpty:2
+    desc: |
+      Beber essência faz mal (o estômago humano não foi feito para isso). Injetar o próprio
+      sangue tratado com essência... funciona. Bem-vindo à §eBlood Alchemy§r. §c(+1 de Warp
+      ao pesquisar.)§r
+
+      Arcana: um §eFrasco de Vidro§r (o frasco vazio de essência) em cima de uma §ePepita de Ferro§r (Aqua e Ordo)
+      = §eWarded Syringe§r. Faça 4: elas são de uso único.
+    tasks:
+      - get: ThaumicHorizons:syringeEmpty:2 x4
+    rewards:
+      - xp: 4
+      - choice: [Thaumcraft:ItemEssence x8, Thaumcraft:ItemNugget x16, minecraft:glass x16]
+
+  - id: seringa_sangue
+    title: "Seringa de Sangue"
+    type: main
+    deps: [seringa_guardada]
+    icon: ThaumicHorizons:syringeBlood
+    desc: |
+      Respira fundo. Clique com o botão direito segurando a Seringa Protegida: ela tira um
+      pouco do §eseu§r sangue e vira uma §eBlood Syringe§r.
+
+      Também dá para colher sangue de qualquer criatura clicando nela com a seringa vazia, mas
+      §esangue de animal não serve para a alquimia§r — só para clonagem, mais adiante.
+    tasks:
+      - get: ThaumicHorizons:syringeBlood x2
+    rewards:
+      - xp: 4
+      - choice: [minecraft:cooked_beef x8, minecraft:golden_apple, minecraft:speckled_melon x2]
+
+  - id: seroconversor
+    title: "Seroconversor"
+    type: main
+    deps: [seringa_sangue]
+    desc: |
+      O §eSeroconverter§r mistura sangue e essência em injeções. Infusão: §eCrisol§r no centro;
+      Comparador, 2 Construtos Alquímicos e um Buffer de Essência em volta.
+
+      Cada injeção usa uma Seringa de Sangue e até §e8 essências§r escolhidas na interface. A
+      regra: cada 2 essências dão 1 efeito, e só os efeitos de maior afinidade aparecem. Ex.:
+      2 §dLux§r = visão noturna; um 3º Lux já traz cegueira junto; trocar o 4º por
+      §dPerfodio§r troca a cegueira por pressa. Experimente!
+    tasks:
+      - get: ThaumicHorizons:bloodInfuser
+    rewards:
+      - xp: 4
+      - choice: [Thaumcraft:blockMetalDevice:9, Thaumcraft:blockTube:4, Thaumcraft:blockTube x16]
+
+  - id: injecao
+    title: "Injeção Alquímica"
+    type: normal
+    deps: [seroconversor]
+    desc: |
+      Sua primeira poção sem caldeirão! Faça uma §eInjection§r no Seroconversor (modo único ou
+      automático) e aplique em você com o botão direito, ou em outra criatura acertando-a com
+      a seringa.
+
+      §aDica:§r anote as combinações que der certo. O próprio livro admite que os efeitos são
+      "um tanto imprevisíveis".
+    tasks:
+      - get: ThaumicHorizons:syringeInjection
+    rewards:
+      - xp: 3
+      - item: ThaumicHorizons:syringeEmpty:2 x2
+
+  - id: frasco_explosivo
+    title: "Frascos Explosivos"
+    type: optional
+    deps: [injecao]
+    desc: |
+      Se a injeção substitui a poção, o §eBlast Phial§r substitui a poção arremessável: explode
+      no impacto e banha quem estiver perto em sangue carregado de magia. Nada higiênico,
+      muito eficiente.
+
+      Arcana sem formato: §e4 Frascos de Vidro§r, 1 Pólvora e 1 Seringa de Sangue =
+      4 Frascos Explosivos (depois carregue-os no Seroconversor como uma seringa).
+    tasks:
+      - get: ThaumicHorizons:syringeBlood:1 x4
+    rewards:
+      - loot: comum
+
+  - id: injetor
+    title: "O Injetor"
+    type: optional
+    deps: [frasco_explosivo]
+    desc: |
+      "Cuidado para onde aponta isso." O §eInjector§r é uma besta modificada que dispara
+      seringas e frascos explosivos de longe. Carregue o tambor com §eShift + botão direito§r.
+
+      Infusão: §eArco de Osso§r no centro; Tábuas de Greatwood, Pena, Barra de Táumio e
+      Estilhaço de Ar. Seringas que erram o alvo podem ser recolhidas; o encantamento
+      Infinidade não funciona nele.
+    tasks:
+      - get: ThaumicHorizons:injector
+    rewards:
+      - loot: incomum
+
+  # ======================================================================
+  # FASE 4 — O TONEL CURATIVO
+  # ======================================================================
+  - id: tonel_curativo
+    title: "O Tonel Curativo"
+    type: milestone
+    deps: [seroconversor, couro_carne]
+    icon: ThaumicHorizons:vat
+    banner: "O Tonel Curativo"
+    subtitle: "Taumaturgo, cura-te a ti mesmo"
+    desc: |
+      Este é o coração do Volume, Herói. O §eCurative Vat§r é uma estrutura de §e3×3 por 4 de
+      altura§r, ativada com a varinha (50 vis de Aqua, Terra e Ordo):
+
+      §e• Camada de baixo e de cima:§r 8 Tábuas de Greatwood em volta de 1 Construto Alquímico.
+      §e• Duas camadas do meio:§r 8 Vidros em volta de 1 bloco de Água.
+
+      Encane essência na base: §dVictus§r cura devagar, §dFames§r enche a fome, §dSano§r cura
+      rápido e tira efeitos negativos. Clique na escotilha da tampa para entrar e sair. Esta
+      quest pede os materiais; monte, bata a varinha e entre para testar!
+
+      Daqui saem a clonagem, as infusões de criaturas e a reencarnação. Que orgulho!
+    tasks:
+      - get: [Thaumcraft:blockWoodenDevice:6 x16, minecraft:glass x16, Thaumcraft:blockMetalDevice:9 x2]
+    rewards:
+      - xp: 10
+      - kit: {name: "Kit do Biotaumaturgo", items: ["Thaumcraft:blockTube x16", "Thaumcraft:blockJar x8", "Thaumcraft:ItemResource:14 x8", "ThaumicHorizons:syringeEmpty:2 x4", "minecraft:sugar x16"]}
+      - loot: raro
+
+  - id: foco_contencao
+    title: "Foco: Contenção"
+    type: main
+    deps: [tonel_curativo]
+    desc: |
+      "Temos que pegar!" Para pôr bichos dentro do tonel você precisa capturá-los. O §eWand
+      Focus: Containment§r prende a criatura em estase dentro de um §eJarro Guardião§r
+      (tenha um vazio no inventário).
+
+      Infusão: §eFoco Buraco Portátil§r no centro; 4 Âmbar, 2 Teias e 2 Barras de Ferro.
+      Bichos comuns entram fácil; os fortes precisam estar feridos ou receber o raio por mais
+      tempo. Golems e outros taumaturgos não podem ser presos. Para soltar, clique no jarro com
+      a varinha.
+    tasks:
+      - get: ThaumicHorizons:focusContainment
+    rewards:
+      - xp: 5
+      - choice: [Thaumcraft:blockJar x8, Thaumcraft:ItemResource:6 x4, minecraft:web x4]
+
+  - id: criatura_jarra
+    title: "Criatura na Jarra"
+    type: normal
+    deps: [foco_contencao]
+    icon: ThaumicHorizons:soulJar
+    desc: |
+      Capture uma criatura qualquer com o Foco de Contenção. Na jarra ela não sente fome, sede
+      nem envelhece.
+
+      Com a jarra na mão, clique no Tonel Curativo para colocar a criatura dentro; com um jarro
+      vazio, você a retira. §cQuebrar um tonel com criatura dentro a mata§r e espirra fluxo
+      para todo lado. Não faça isso perto do laboratório!
+    tasks:
+      - get: ThaumicHorizons:soulJar
+    rewards:
+      - xp: 3
+      - item: Thaumcraft:blockJar x4
+
+  - id: encarnacao
+    title: "Encarnação"
+    type: normal
+    deps: [tonel_curativo]
+    icon: ThaumicHorizons:nutrients
+    desc: |
+      Gado sob encomenda: §eclonagem§r no Tonel Curativo comum. Você precisa de:
+      §e1.§r uma amostra de tecido — um pedaço de carne ou uma Seringa com o sangue da criatura;
+      §e2.§r 4 essências de §dVictus§r encanadas no tonel;
+      §e3.§r §eNutrient Mix§r para o clone crescer (Crisol: Açúcar + 2 §dFames§r).
+
+      Depois retire o clone adulto com um Jarro Guardião. Humanos não podem ser clonados assim
+      — o tonel não consegue criar uma alma humana.
+    tasks:
+      - get: ThaumicHorizons:nutrients x8
+    rewards:
+      - xp: 3
+      - item: minecraft:sugar x16
+
+  - id: matriz_modificada
+    title: "Matriz Rúnica Modificada"
+    type: main
+    deps: [foco_contencao]
+    desc: |
+      Infundir uma criatura viva... o sonho de todo taumaturgo louco. Para isso o tonel ganha
+      uma §eModified Runic Matrix§r em cima dele.
+
+      Infusão: §eMatriz Rúnica§r no centro; 2 Salis Mundus e 2 Seringas de Sangue. §cA
+      instabilidade é 10§r (infundir uma matriz com outra dá muita interferência): deixe o
+      altar bem simétrico e estável antes de começar.
+
+      No tonel, a infusão funciona como no altar comum, mas a essência é encanada direto. A
+      instabilidade fere a criatura e §co processo não pode ser abortado§r. Centivis de Aqua,
+      Ordo e Terra ajudam bichos frágeis a sobreviver.
+    tasks:
+      - get: ThaumicHorizons:modMatrix
+    rewards:
+      - xp: 5
+      - choice: [Thaumcraft:ItemResource:14 x8, Thaumcraft:blockCosmeticSolid:1 x8, Thaumcraft:ItemResource:3 x4]
+
+  - id: infusoes_gerais
+    title: "Infusões Gerais"
+    type: info
+    deps: [matriz_modificada]
+    icon: ThaumicHorizons:infusionCheat:5
+    desc: |
+      Melhorias que servem para qualquer animal (cada uma, uma vez só por criatura):
+
+      §e• Quicksilver Limbs:§r Poção de Velocidade II + 2 Mercúrio (mais velocidade e pulo).
+      §e• Thaumium Claws:§r 2 Espadas Táumicas (mais dano).
+      §e• Awakened Blood:§r Melancia Reluzente, Maçã Dourada, 2 Seringas (regeneração).
+      §e• Diamondflesh:§r Couro + 2 Diamantes (resistência).
+      §e• Enderheart:§r Pérola do Fim + 2 Ovos (desvia de projéteis).
+      §e• Shock Skin:§r 2 Quartzos, Estilhaço de Ar, Redstone (solta raios).
+
+      Uma criatura pode ter várias gerais, mas §esó uma infusão de espécie§r. Mortos-vivos,
+      golems e humanos não aceitam infusão, e os filhotes não herdam nada.
+    tasks:
+      - check
+    rewards:
+      - xp: 2
+
+  - id: lealdade_instilada
+    title: "Lealdade Instilada"
+    type: optional
+    deps: [infusoes_gerais]
+    icon: ThaumicHorizons:infusionCheat:7
+    desc: |
+      "Você vai obedecer!" A §eInstilled Loyalty§r reescreve a mente da criatura: ela perde a
+      hostilidade e passa a defender você como um lobo domado. Clique para mandá-la esperar.
+
+      Ingredientes: §eSela§r, §eCérebro de Zumbi§r e §eMaçã Dourada§r (Cognitio, Bestia e
+      Permutatio). Não funciona em aranhas, lulas e outros sistemas nervosos primitivos, e
+      creepers "esquecem" como explodir.
+    tasks:
+      - get: [minecraft:saddle, Thaumcraft:ItemZombieBrain, minecraft:golden_apple]
+    rewards:
+      - loot: incomum
+
+  - id: pele_runica
+    title: "Couro Rúnico"
+    type: optional
+    deps: [infusoes_gerais]
+    icon: ThaumicHorizons:infusionCheat:8
+    desc: |
+      "Berloques? Que berloques?" A §eRunic Hide§r grava runas na pele do bicho: um escudo
+      rúnico que se recarrega com o vigor da criatura (mais devagar que nos seus itens).
+
+      Ingredientes: §eDiamante, Âmbar, Tecido Encantado, Nitor e Ferramenta de Escrita§r.
+      Exige a pesquisa de Aumento Rúnico do Thaumcraft.
+    tasks:
+      - get: [minecraft:diamond, Thaumcraft:ItemResource:6, Thaumcraft:ItemResource:7, Thaumcraft:ItemResource:1, Thaumcraft:ItemInkwell]
+    rewards:
+      - loot: incomum
+
+  - id: presas_eldritch
+    title: "Presas Eldritch"
+    type: optional
+    deps: [infusoes_gerais]
+    icon: ThaumicHorizons:infusionCheat:9
+    desc: |
+      Mordidas do além. As §eEldritch Fangs§r dão à criatura uma mordida afiadíssima e venenos
+      eldritch. É o limite do que o tonel aguenta: §cinstabilidade 8§r.
+
+      Ingredientes: §e2 Lingotes de Metal do Vazio e 2 Vishrooms§r.
+    tasks:
+      - get: [Thaumcraft:ItemResource:16 x2, Thaumcraft:blockCustomPlant:5 x2]
+    rewards:
+      - loot: incomum
+
+  - id: portabilidade
+    title: "Portabilidade"
+    type: optional
+    deps: [infusoes_gerais]
+    icon: ThaumicHorizons:infusionCheat:10
+    desc: |
+      Lacaios de bolso! A §ePortability§r cria um jarro "deslocado" em volta da criatura: um
+      toque de varinha a prende, outro a solta, e o jarro se refaz sozinho. Economiza vidro e
+      vis do Foco de Contenção.
+
+      Ingredientes: §eJarro Guardião + Pérola do Fim§r.
+    tasks:
+      - get: [Thaumcraft:blockJar, minecraft:ender_pearl]
+    rewards:
+      - loot: comum
+
+  # ======================================================================
+  # FASE 5 — INFUSÕES DE ESPÉCIE
+  # ======================================================================
+  - id: vaca_chocolate
+    title: "Vaca de Chocolate"
+    type: normal
+    deps: [matriz_modificada]
+    icon: ThaumicHorizons:bucketChocolate
+    desc: |
+      Leite místico! Infunda uma vaca com §e2 Sementes de Cacau e 2 Açúcares§r (Fames e
+      Permutatio): ela passa a dar §eBalde de Leite com Chocolate§r.
+
+      O balde vira Barra de Chocolate na bancada, e com Trigo numa receita arcana vira
+      §eSorvete de Chocolate§r. Outra infusão (2 cogumelos marrons + 2 vermelhos) faz uma
+      Coguvaca — e essa, curiosamente, passa a infusão para os filhotes.
+    tasks:
+      - get: ThaumicHorizons:bucketChocolate
+    rewards:
+      - xp: 3
+      - item: ThaumicHorizons:barChocolate x4
+
+  - id: galinha_estudiosa
+    title: "Galinha do Estudioso"
+    type: normal
+    deps: [matriz_modificada]
+    icon: ThaumicHorizons:inkEgg
+    desc: |
+      Até a galinha mais humilde tem potencial! Infunda uma galinha com §eBolsa de Tinta e
+      Tesoura§r (Tenebrae, Limus e Permutatio): ela solta penas grandes o tempo todo e bota o
+      §eTenebrous Egg§r, cheio de tinta preta (vale como corante preto e recarrega Ferramentas
+      de Escrita).
+    tasks:
+      - get: ThaumicHorizons:inkEgg x4
+    rewards:
+      - xp: 3
+      - item: minecraft:feather x16
+
+  - id: galinha_dourada
+    title: "A Galinha dos Ovos de Ouro"
+    type: normal
+    deps: [galinha_estudiosa]
+    icon: ThaumicHorizons:goldEgg
+    desc: |
+      Literalmente. Infunda uma galinha com §e2 Maçãs Douradas, um Construto Alquímico e um
+      Crisol§r (Lucrum, Metallum e Fabrico): ela bota o §eGolden Egg§r, que na fornalha vira
+      uma Pepita de Ouro.
+
+      §aE não:§r matar a galinha não revela um tesouro escondido. O processo é lento e
+      gradual. Deixe ela em paz!
+    tasks:
+      - get: ThaumicHorizons:goldEgg x4
+    rewards:
+      - xp: 3
+      - item: minecraft:gold_nugget x9
+
+  - id: javali_minerio
+    title: "Javali de Minério"
+    type: normal
+    deps: [matriz_modificada]
+    icon: ThaumicHorizons:spawnerEgg:8
+    desc: |
+      Porcos comem qualquer coisa... inclusive pedra! O §eOre Boar§r devora pedregulho solto
+      e excreta os traços de minério que encontra. Não serve para comer, mas é uma mineradora
+      com pernas.
+
+      Ingredientes da infusão (num porco): §eFornalha + Estilhaços de Fogo, Entropia e
+      Terra§r. Outra infusão (Flor de Etérea, 2 Toras de Silverwood e Void na Jarra) cria o
+      §eTaintfeeder§r, que limpa áreas de Taint comendo-as.
+    tasks:
+      - get: [minecraft:furnace, Thaumcraft:ItemShard:1, Thaumcraft:ItemShard:5, Thaumcraft:ItemShard:3]
+    rewards:
+      - xp: 3
+      - item: minecraft:cobblestone x64
+
+  - id: ovelhas
+    title: "Selvagens e Lanosas"
+    type: optional
+    deps: [matriz_modificada]
+    icon: ThaumicHorizons:spawnerEgg
+    desc: |
+      Três jeitos de melhorar ovelhas:
+      §e• Chromatic Sheep:§r corantes vermelho, lápis-lazúli e amarelo — a lã troca entre as 16
+      cores (fixa ao tosquiar).
+      §e• Self-Shearing Sheep:§r Tesoura + Comparador — solta lã sozinha de tempos em tempos.
+      §e• Sheeder:§r 2 Teias + 2 Olhos de Aranha (ou uma aranha com Cérebro de Zumbi e 3 lãs) —
+      uma ovelha coberta de seda que sobe paredes. Tosquie para colher linha!
+    tasks:
+      - get: [minecraft:shears, minecraft:comparator]
+    rewards:
+      - loot: comum
+
+  - id: familiar_felino
+    title: "Familiar Felino"
+    type: normal
+    deps: [matriz_modificada]
+    icon: ThaumicHorizons:spawnerEgg:4
+    desc: |
+      Pelo de gato interage com a aura! O §eFamiliar§r é um gato encantado que capta vis em
+      quantidades minúsculas e carrega a varinha que você estiver segurando por perto (ou o
+      Amuleto de Armazenamento de Vis vestido). Vários familiares juntos carregam mais rápido.
+
+      Ingredientes: §e2 Estilhaços Equilibrados, Lã Preta e Pepita de Ouro§r. Outras infusões
+      felinas: §eGuardian Panther§r (Poção de Força II + Sela) e §eGravekeeper§r (Osso, Bloco de
+      Ouro, Âmbar e Tora de Silverwood), que queima mortos-vivos.
+    tasks:
+      - get: [Thaumcraft:ItemShard:6 x2, minecraft:wool:15, minecraft:gold_nugget]
+    rewards:
+      - xp: 3
+      - item: Thaumcraft:ItemShard:6 x2
+
+  - id: lobo_lunar
+    title: "Lobo Lunar"
+    type: normal
+    deps: [matriz_modificada]
+    icon: ThaumicHorizons:spawnerEgg:13
+    desc: |
+      Lendas de lobisomem têm um fundo de verdade: lobos têm ligação mística com a lua. O
+      §eLunar Wolf§r (um lobo domado infundido) tira vis da lua à noite e carrega a sua
+      varinha ou o amuleto de vis, como o Familiar.
+
+      Ingredientes: §e2 Salis Mundus + 1 Vidro Espelhado§r. Outros cães: §eSeawolf§r (2 Peixes,
+      Estilhaço de Água e Poção de Respiração Aquática longa) e §eNether Hound§r (Balde de
+      Lava, 2 Varas de Blaze e Estilhaço de Fogo), que cospe fogo primal.
+    tasks:
+      - get: [Thaumcraft:ItemResource:14 x2, Thaumcraft:ItemResource:10]
+    rewards:
+      - xp: 3
+      - item: Thaumcraft:ItemResource:14 x4
+
+  - id: corcel_ender
+    title: "Corcel do Fim"
+    type: normal
+    deps: [matriz_modificada]
+    icon: ThaumicHorizons:spawnerEgg:10
+    desc: |
+      Quem disse que cavalo é coisa de aprendiz? O §eEndersteed§r salta pelo espaço levando o
+      cavaleiro: puxando as rédeas ele pisca uma distância curta à frente, até através de
+      paredes (substitui o pulo normal).
+
+      Ingredientes num cavalo: §e2 Pérolas do Fim, Ovo e Salis Mundus§r. Cavalos também viram
+      §eZumbi§r (4 Carnes Podres, mais resistente) ou §eEsqueleto§r (4 Ossos, mais rápido).
+    tasks:
+      - get: [minecraft:ender_pearl x2, minecraft:egg, Thaumcraft:ItemResource:14]
+    rewards:
+      - xp: 3
+      - item: minecraft:saddle
+
+  - id: pesadelo
+    title: "Pesadelo"
+    type: milestone
+    deps: [corcel_ender]
+    icon: ThaumicHorizons:spawnerEgg:16
+    banner: "Pesadelo"
+    subtitle: "Estrada para o inferno"
+    desc: |
+      Uma infusão em cima de uma criatura já infundida. O §eNightmare§r nasce de um
+      §eEndersteed§r infundido com:
+
+      §e• Estrela do Nether§r
+      §e• 2 Obsidianas e 2 Estilhaços de Fogo§r
+      §e• Levitador Arcano§r (os cascos andam sobre lava)
+
+      O Pesadelo pisca como um Endersteed, mas com a barra de pulo §eacima de 90%§r ele rasga
+      o cosmos e leva você do Mundo Normal para o Nether, ou de volta. O destino é impreciso e
+      §ccostuma deixar uma cratera fumegante§r.
+
+      Instabilidade 8: proteja bem o seu corcel durante a infusão. Que cavalgada, Herói!
+    tasks:
+      - get: [minecraft:nether_star, minecraft:obsidian x2, Thaumcraft:ItemShard:1 x2, Thaumcraft:blockLifter]
+    rewards:
+      - xp: 10
+      - kit: {name: "Kit do Cavaleiro do Abismo", items: ["minecraft:golden_carrot x16", "minecraft:diamond_horse_armor", "Thaumcraft:ItemShard:1 x8", "minecraft:obsidian x8"]}
+      - loot: raro
+
+  # ======================================================================
+  # FASE 6 — ALMAS
+  # ======================================================================
+  - id: peneira_almas
+    title: "Peneira de Almas"
+    type: main
+    deps: [horizontes]
+    icon: ThaumicHorizons:soulSieve
+    desc: |
+      As caras que gritam na Areia das Almas não são ilusão: são fragmentos de almas
+      partidas. A §eSoul Sieve§r separa a areia das almas. §c(Pesquisa dá 3 de Warp.)§r
+
+      Infusão: §eFunil§r no centro; 2 Âmbar, 2 Tecidos Encantados e 2 Pistões. Coloque Areia
+      das Almas dentro: a areia comum cai embaixo (num inventário, se houver) e as almas sobem.
+      Ela só funciona com algo útil em cima — um §eCérebro na Jarra§r converte as almas em XP.
+      Centivis de §dAer§r acelera bastante.
+    tasks:
+      - get: [ThaumicHorizons:soulSieve, minecraft:soul_sand x16]
+    rewards:
+      - xp: 5
+      - choice: [minecraft:soul_sand x32, Thaumcraft:ItemResource:7 x4, Thaumcraft:ItemResource:6 x4]
+
+  - id: inspiratron
+    title: "Inspiratron"
+    type: normal
+    deps: [peneira_almas]
+    desc: |
+      Alimentar um cérebro com almas é desperdício. E se recuperássemos o conhecimento dos
+      Antigos que ficou preso nelas? §c(+2 de Warp.)§r
+
+      O §eInspiratron§r vai em cima da Peneira de Almas, recebe §ePapel§r e transcreve as
+      memórias úteis em §eFragmentos de Conhecimento§r. Infusão: §eCérebro na Jarra§r no centro;
+      Ferramenta de Escrita, 2 Barras de Táumio e Maçã Dourada. Cada bloco de areia rende
+      muito ou quase nada — é sorte.
+    tasks:
+      - get: [ThaumicHorizons:inspiratron, Thaumcraft:ItemResource:9 x4]
+    rewards:
+      - xp: 3
+      - item: minecraft:paper x32
+
+  - id: forja_almas
+    title: "Forja de Almas"
+    type: main
+    deps: [peneira_almas]
+    icon: ThaumicHorizons:soulforge
+    desc: |
+      Fragmentos de alma com ideias parecidas se juntam. A §eSoulforge§r acelera isso até
+      formar uma alma inteira. §c(+2 de Warp.)§r
+
+      Infusão: §eJarro Guardião§r no centro; 2 Cérebros na Jarra, 2 Maçãs Douradas e 2 Filtros
+      de Fluxo (Vis Filter). Ela fica em cima da Peneira e precisa de §dCognitio§r encanado na
+      tampa. As almas híbridas têm personalidade: ferreiro, bibliotecário, até taumaturgo.
+    tasks:
+      - get: ThaumicHorizons:soulforge
+    rewards:
+      - xp: 5
+      - choice: [Thaumcraft:blockJar:1, Thaumcraft:ItemResource:8 x2, minecraft:golden_apple x2]
+
+  - id: alma_jarra
+    title: "Alma na Jarra"
+    type: main
+    deps: [forja_almas]
+    icon: ThaumicHorizons:soulJar
+    desc: |
+      Quando a Forja de Almas termina uma alma, ela fica guardada no jarro de cima. Clique com
+      um §eJarro Guardião vazio§r para tirar uma §eJarred Soul§r.
+
+      Por enquanto é só uma curiosidade... mas guarde bem. Uma alma, um corpo e um tonel: você
+      já sabe onde isso vai dar.
+    tasks:
+      - get: ThaumicHorizons:soulJar
+    rewards:
+      - xp: 5
+      - choice: [Thaumcraft:blockJar x4, minecraft:soul_sand x16, minecraft:experience_bottle x8]
+
+  - id: efigie_cadaver
+    title: "Efígie de Cadáver"
+    type: main
+    deps: [alma_jarra, encarnacao]
+    icon: ThaumicHorizons:corpseEffigy
+    desc: |
+      Clones crescem a partir de uma alma imatura — e almas humanas não se formam no tonel. A
+      saída é construir um corpo adulto pronto: a §eCorpse Effigy§r.
+
+      Infusão: §eCérebro de Zumbi§r no centro; 4 Carnes Podres e 4 Ossos alternados (Fabrico e
+      Humanus). Mórbido? Muito. Necessário? Também.
+    tasks:
+      - get: ThaumicHorizons:corpseEffigy
+    rewards:
+      - xp: 5
+      - choice: [minecraft:bone x16, minecraft:rotten_flesh x16, Thaumcraft:ItemZombieBrain x2]
+
+  - id: reencarnacao
+    title: "Reencarnação"
+    type: milestone
+    deps: [efigie_cadaver]
+    icon: ThaumicHorizons:corpseEffigy
+    banner: "Reencarnação"
+    subtitle: "Brincando de criador"
+    desc: |
+      O momento chegou. Carne e alma, unidas no tonel. §c(A pesquisa dá 3 de Warp.)§r
+
+      §e1.§r Coloque a Efígie de Cadáver no Tonel Curativo.
+      §e2.§r Encane §e8 Sano e 8 Victus§r na base do tonel.
+      §e3.§r Clique no tonel com a §eAlma na Jarra§r.
+
+      Sai um aldeão vivo, um pouco confuso. Solte-o num lugar cercado para ele não sair
+      andando por aí.
+
+      Depois disto vem uma página que eu preferia não ler, "Reflexões sobre a Vida e a
+      Morte". Leia com calma. E me prometa que vai continuar sendo você, tá?
+    tasks:
+      - check
+    rewards:
+      - xp: 10
+      - kit: {name: "Kit do Reencarnador", items: ["Thaumcraft:ItemResource:14 x8", "Thaumcraft:blockJar x4", "minecraft:speckled_melon x4", "minecraft:golden_apple x2"]}
+      - loot: raro
+
+  # ======================================================================
+  # FASE 7 — GOLEMS ANIMADOS
+  # ======================================================================
+  - id: po_animacao
+    title: "Pó de Animação"
+    type: normal
+    deps: [encarnacao]
+    icon: ThaumicHorizons:golemPowder
+    desc: |
+      Golemancia evoluída! O §eGolem Animation Powder§r anima quase qualquer bloco cúbico por
+      um tempo curto (pesquisa depois de Golem de Táumio, Golem Avançado e Encarnação).
+
+      Crisol: §eSalis Mundus§r + 4 §dHumanus§r, 4 §dSpiritus§r e 4 §dMotus§r. Clique num bloco
+      sólido: ele vira um golem que segue você e ataca hostis; blocos duros dão golems mais
+      fortes, cacto machuca quem bate. Ponha um §eNúcleo de Golem§r nele e ele vira permanente
+      (com upgrades e tudo). O Sino do Golemante o desfaz antes da hora.
+    tasks:
+      - get: ThaumicHorizons:golemPowder x4
+    rewards:
+      - xp: 3
+      - item: Thaumcraft:ItemResource:14 x4
+
+  - id: foco_animacao
+    title: "Foco: Animação"
+    type: optional
+    deps: [po_animacao]
+    desc: |
+      "A própria matéria me obedece." O §eWand Focus: Animation§r faz golems de pó com um
+      movimento de varinha. Infusão pesada: §ePérola Primordial§r no centro, Núcleos de Golem
+      vazios, Seringas de Sangue e Melhorias de Golem em volta, com 64 de Humanus, Motus,
+      Spiritus e Fabrico (§cinstabilidade 10§r). Confira o anel completo no Taumonomicon.
+    tasks:
+      - get: ThaumicHorizons:focusAnimation
+    rewards:
+      - loot: raro
+
+  # ======================================================================
+  # FASE 8 — TEORIA PLANAR E A FENDA
+  # ======================================================================
+  - id: teoria_planar
+    title: "Teoria Planar"
+    type: main
+    deps: [horizontes]
+    icon: ThaumicHorizons:planarConduit
+    desc: |
+      O que existe entre os planos? "Possibilidade congelada": potencial infinito sem nada
+      para agir. É a raiz de toda magia — e esta pesquisa (depois de Metal do Vazio e do
+      Poder da Vis) é a porta para a parte mais ambiciosa do Volume.
+
+      Arcana: o §ePlanar Conduit§r — Pérola do Fim no centro, 4 Lingotes de Metal do Vazio
+      nos cantos e 4 Essências Etéreas nos lados, custando §e50 de cada primal§r. Vai precisar
+      de vários.
+    tasks:
+      - get: ThaumicHorizons:planarConduit x2
+    rewards:
+      - xp: 6
+      - choice: [Thaumcraft:ItemResource:16 x4, minecraft:ender_pearl x8, Thaumcraft:ItemResource:1 x4]
+
+  - id: amplificador_transducao
+    title: "Amplificador de Transdução"
+    type: main
+    deps: [teoria_planar]
+    icon: ThaumicHorizons:transductionAmplifier
+    desc: |
+      Preso ao lado de um nodo energizado e com sinal de redstone, o §eTransduction
+      Amplifier§r faz o nodo render como se tivesse §e+10 de vis por aspecto§r.
+
+      Arcana: Conduto Planar em cima; Âmbar, §eTransdutor de Nodo§r e Âmbar no meio; Bloco de
+      Redstone, Nitor e Bloco de Redstone embaixo.
+
+      §cUm amplificador é seguro; dois soltam raios; três vazam fluxo. Quatro... o livro manda
+      não tentar.§r Guarde essa informação para daqui a pouco.
+    tasks:
+      - get: ThaumicHorizons:transductionAmplifier
+    rewards:
+      - xp: 6
+      - choice: [minecraft:redstone_block x4, Thaumcraft:ItemResource:1 x4, Thaumcraft:ItemResource:6 x4]
+
+  - id: atenuador_vortice
+    title: "Atenuador de Vórtice"
+    type: main
+    deps: [teoria_planar]
+    icon: ThaumicHorizons:vortexStabilizer
+    desc: |
+      Nodos famintos já levaram muito aprendiz para o túmulo. O §eVortex Attenuator§r, com
+      sinal de redstone, lança um feixe azul que §esuspende a fome§r do nodo enquanto estiver
+      ligado.
+
+      Infusão: §eEstabilizador de Nodo§r no centro; Conduto Planar, 2 Barras de Táumio e Âmbar.
+    tasks:
+      - get: ThaumicHorizons:vortexStabilizer
+    rewards:
+      - xp: 6
+      - choice: [Thaumcraft:ItemResource:2 x6, Thaumcraft:ItemResource:6 x4, minecraft:redstone x32]
+
+  - id: fenda_planar
+    title: "Novos Horizontes: a Fenda"
+    type: milestone
+    deps: [amplificador_transducao, atenuador_vortice]
+    icon: ThaumicHorizons:vortexTH
+    banner: "A Fenda Planar"
+    subtitle: "Rumo ao vazio"
+    effect: 5
+    desc: |
+      Lembra do aviso sobre o quarto amplificador? Pois é exatamente o que vamos fazer —
+      com proteção. §c(A pesquisa New Horizons dá 3 de Warp.)§r
+
+      Prenda §e4 Amplificadores de Transdução§r num único nodo energizado: ele abre uma
+      brecha enorme que, sozinha, devoraria tudo e explodiria. Para segurar a fenda aberta,
+      aponte §e6 Atenuadores de Vórtice§r para ela.
+
+      Com a fenda estável, objetos jogados nela mergulham em vis infinita sem serem
+      desmanchados. Clique na fenda com a varinha para puxar de volta o que sobreviveu.
+      É assim que se faz a Varinha Cristalina e a Massa do Vazio.
+
+      §cMonte longe da base e confira tudo duas vezes.§r Você está tocando o vazio, Herói.
+    tasks:
+      - get: [ThaumicHorizons:transductionAmplifier x4, ThaumicHorizons:vortexStabilizer x6]
+    rewards:
+      - xp: 12
+      - kit: {name: "Kit do Navegante Planar", items: ["Thaumcraft:ItemResource:16 x8", "Thaumcraft:ItemShard:6 x8", "Thaumcraft:ItemResource:1 x8", "minecraft:redstone_block x8"]}
+      - loot: epico
+
+  - id: varinha_cristalina
+    title: "Varinha Cristalina"
+    type: normal
+    deps: [fenda_planar]
+    icon: ThaumicHorizons:crystalWand
+    desc: |
+      Estilhaços sozinhos não absorvem vis... a não ser que você os leve direto à fonte.
+
+      Arcana: §eInert Crystal Wand§r (2 Estilhaços Equilibrados na diagonal e um Aglomerado de
+      Cristais no meio, 25 de cada primal). Jogue-a na fenda e puxe de volta: vira a
+      §eDisposable Crystalline Wand§r, com capacidade enorme de vis mas §esem recarga§r.
+      Use-a para receitas que nenhuma varinha comum aguenta.
+    tasks:
+      - get: ThaumicHorizons:wandCastingDisposable
+    rewards:
+      - xp: 4
+      - item: Thaumcraft:ItemShard:6 x4
+
+  - id: massa_vazio
+    title: "Massa do Vazio"
+    type: normal
+    deps: [fenda_planar]
+    icon: ThaumicHorizons:voidPutty
+    desc: |
+      Metal do Vazio mergulhado na fenda perde a forma e vira uma massa que borbulha sem
+      parar: a §eVoid Putty§r.
+
+      Na bancada, Massa do Vazio + qualquer arma, ferramenta ou armadura danificada =
+      §eitem consertado§r, mantendo material e encantamentos. Melhor que bigorna!
+    tasks:
+      - get: ThaumicHorizons:voidPutty x2
+    rewards:
+      - xp: 4
+      - item: Thaumcraft:ItemResource:16 x2
+
+  - id: wisps_golem_vazio
+    title: "Wisps e Golens do Vazio"
+    type: optional
+    deps: [fenda_planar, po_animacao]
+    icon: Thaumcraft:ItemWispEssence
+    desc: |
+      Dois experimentos com a fenda que o livro registra:
+
+      §e• Salis Mundus§r jogado na fenda vira §ewisps§r (com os aspectos do nodo). A quantidade
+      varia muito — dá para ficar cercado rapidinho.
+      §e• Pó de Animação§r jogado aos poucos vira um §eVoidling Golem§r, obediente e que vive
+      sem núcleo. §c(+1 de Warp.)§r O próprio livro diz que "algo neles não parece certo".
+      Fique de olho.
+    tasks:
+      - get: Thaumcraft:ItemWispEssence x4
+    rewards:
+      - loot: incomum
+
+  - id: recombinador
+    title: "Recombinador Teleológico"
+    type: optional
+    deps: [fenda_planar]
+    icon: ThaumicHorizons:recombinator
+    desc: |
+      Recriar, localmente, as condições do início do cosmos. O §eTeleological Recombinator§r
+      fica em cima de um nodo, com redstone, e faz esse nodo puxar vis dos vizinhos para
+      §efundir os próprios aspectos§r em aspectos compostos (Ordo + Ignis → Potentia, por
+      exemplo). Com a "ração" certa, dá para criar qualquer aspecto.
+
+      Infusão com a §ePérola Primordial§r no centro (Filtros de Fluxo, Condutos Planares e
+      Transdutores de Nodo em volta). Não impede que nodos briguem — use estabilizador.
+    tasks:
+      - get: ThaumicHorizons:recombinator
+    rewards:
+      - loot: raro
+
+  # ======================================================================
+  # FASE 9 — O PLANO DE BOLSO
+  # ======================================================================
+  - id: plano_bolso
+    title: "O Plano de Bolso"
+    type: portal
+    deps: [fenda_planar]
+    icon: ThaumicHorizons:cloudTH
+    banner: "Um Mundo Só Seu"
+    subtitle: "Criação cósmica"
+    effect: 3
+    desc: |
+      Qualquer mortal deixa marca no mundo. Mas e quem cria um mundo? §c(A pesquisa Pocket
+      Plane dá 4 de Warp.)§r
+
+      Jogue uma §dPérola Primordial§r na fenda estabilizada. Mergulhada na vis infinita, ela
+      explode em criação e deixa uma ilha estável no vazio: o seu §ePlano de Bolso§r
+      (dimensão 69). O raio fica entre 32 e 128 metros, conforme a vis do nodo; os aspectos
+      do nodo decidem o que nasce lá (matéria, efeitos, até vida). Uma pérola renomeada na
+      bigorna dá nome ao plano.
+
+      Enquanto os atenuadores segurarem a fenda, ela é o portal. Atravesse e entre no seu
+      mundo! §c(Essa fenda não serve mais para criação no vazio nem para outro plano.)§r
+    tasks:
+      - visit: {dim: 69, name: "Plano de Bolso"}
+    rewards:
+      - xp: 10
+      - loot: epico
+
+  - id: nuvens_planares
+    title: "Nuvens Planares"
+    type: optional
+    deps: [plano_bolso]
+    icon: ThaumicHorizons:cloudTH:2
+    desc: |
+      Clima selvagem! Planos de bolso costumam ter §enuvens planares§r que chovem junto com o
+      Mundo Normal: comuns (água), de trovão, de plasma (brasas), ácidas, tumorosas (carne!),
+      de liga (pepitas), de vis (orbes de aspecto), de glifo (XP), de ânimo (golems
+      berserkers) e de esporos.
+
+      Clique numa nuvem com a varinha para pegá-la e colocá-la onde quiser. Traga uma para
+      casa.
+    tasks:
+      - one_of: [ThaumicHorizons:cloudTH:*, ThaumicHorizons:cloudGlowingTH:*]
+    rewards:
+      - loot: incomum
+
+  - id: fossil_primordial
+    title: "Fóssil Primordial"
+    type: optional
+    deps: [plano_bolso]
+    icon: ThaumicHorizons:leviathanTH
+    desc: |
+      Que descoberta sombria... o seu plano engoliu os ossos de um ser desconhecido enquanto
+      se formava. O §ePrimordial Fossil§r transmuta aspectos de jeitos que violam quase toda
+      lei taumatúrgica — e parece estar §eobservando§r você.
+
+      Se achar um, guarde. E não fique sozinho com ele de noite.
+    tasks:
+      - get: ThaumicHorizons:leviathanTH
+    rewards:
+      - loot: raro
+
+  - id: pedra_angular
+    title: "Pedra Angular Planar"
+    type: normal
+    deps: [plano_bolso]
+    icon: ThaumicHorizons:keystoneTH
+    desc: |
+      Criar um plano é difícil; perder o acesso a ele é fácil demais. A §eBlank Planar
+      Keystone§r resolve. §c(A pesquisa Planar Gateways dá 5 de Warp.)§r
+
+      Infusão: §eConduto Planar§r no centro com 4 Quartzos e 4 Estilhaços Equilibrados (ou
+      Diamante no centro com 2 Mercúrios e 2 Estilhaços Equilibrados). Depois §eimprima§r a
+      pedra: clique com ela na mão estando dentro do seu Plano de Bolso.
+    tasks:
+      - get: ThaumicHorizons:keystoneTH
+    rewards:
+      - xp: 4
+      - item: Thaumcraft:ItemShard:6 x4
+
+  - id: portal_planar
+    title: "Portal Planar"
+    type: milestone
+    deps: [pedra_angular]
+    icon: ThaumicHorizons:slotTH
+    banner: "O Portal Planar"
+    subtitle: "Pensando com portais"
+    desc: |
+      Um portal permanente para o seu mundo, que não depende da fenda.
+
+      §e1.§r Receptáculo (§eKeystone Receptacle§r): infusão com Conduto Planar no centro, 4
+      Lingotes de Ouro e 4 de Metal do Vazio.
+      §e2.§r Portal (§ePlanar Gateway§r): moldura de 5×5 com 4 §eConstrutos Alquímicos
+      Avançados§r, 11 §ePedras Antigas§r (Ancient Stone, das Terras Exteriores) e o receptáculo
+      no topo; forme com a varinha (250 de cada primal).
+      §e3.§r Encaixe a pedra angular imprimida e carregue o receptáculo com 100 vis de cada
+      primal.
+
+      Cada plano aceita até 4 portais: dá para usar o plano como estação entre pontos
+      distantes do Mundo Normal! Não dá para construir portais dentro de planos de bolso nem
+      nas Terras Exteriores.
+    tasks:
+      - get: [ThaumicHorizons:slotTH, Thaumcraft:blockMetalDevice:3 x4, Thaumcraft:blockCosmeticSolid:11 x11]
+    rewards:
+      - xp: 12
+      - kit: {name: "Kit do Arquiteto Planar", items: ["Thaumcraft:ItemResource:16 x6", "minecraft:gold_ingot x8", "Thaumcraft:ItemShard:6 x8", "Thaumcraft:ItemResource:1 x4"]}
+      - loot: epico
+
+  # ======================================================================
+  # FASE 10 — ALÉM DA MORTE: O PRÓPRIO CORPO
+  # ======================================================================
+  - id: farol_almas
+    title: "Farol de Almas"
+    type: main
+    deps: [reencarnacao]
+    icon: ThaumicHorizons:soulBeacon
+    desc: |
+      "Trapaceando a morte." A Pérola Primordial é uma brecha nas leis da magia — e com ela
+      você pode amarrar a sua alma a um tonel. §c(Self-Reincarnation dá 5 de Warp.)§r
+
+      Infusão: §ePérola Primordial§r no centro; Jarro Guardião, 2 Metais do Vazio, 2 Olhos do
+      Fim e um Sinalizador (Beacon). O §eSoul Beacon§r vai em cima de um Tonel Curativo que já
+      tenha uma Efígie de Cadáver reanimada. Ao morrer, você acorda no corpo novo §esem perder
+      a experiência§r (o corpo velho se dissolve em fluxo).
+    tasks:
+      - get: ThaumicHorizons:soulBeacon
+    rewards:
+      - xp: 6
+      - choice: [Thaumcraft:ItemResource:16 x4, minecraft:ender_eye x4, minecraft:golden_apple x2]
+
+  - id: amuleto_espelhado
+    title: "Amuleto Espelhado"
+    type: optional
+    deps: [farol_almas]
+    icon: ThaumicHorizons:amuletMirror
+    desc: |
+      "O que é meu, é meu." Se você vai voltar da morte, quer voltar com as suas coisas. O
+      §eMirrored Amulet§r manda os seus itens para um Espelho Mágico de saída quando você
+      morre (e é destruído, largando a pérola onde você caiu).
+
+      Infusão: §ePérola Primordial§r no centro; Amuleto Mundano, Mapa e Espelho Mágico.
+      Clique no espelho de saída segurando o amuleto para parear.
+    tasks:
+      - get: ThaumicHorizons:amuletMirror
+    rewards:
+      - loot: raro
+
+  - id: autoinfusao
+    title: "Autoinfusão"
+    type: milestone
+    deps: [farol_almas, matriz_modificada]
+    icon: ThaumicHorizons:infusionSelfCheat:2
+    banner: "Mais Humano que Humano"
+    subtitle: "Um corpo do seu próprio projeto"
+    desc: |
+      Almas humanas rejeitam infusões... mas um corpo §esem alma§r, não. Este é o ápice (e o
+      ponto mais assustador) do Volume:
+
+      §e1.§r Reanime uma Efígie de Cadáver no tonel com Sano e Victus.
+      §e2.§r Ponha a Matriz Rúnica Modificada em cima e faça as infusões no corpo vazio.
+      §e3.§r Troque a matriz pelo Farol de Almas, prenda-se a ele... e morra.
+
+      Você acorda no corpo infundido. As infusões ferem o corpo (que só sara depois que você
+      entra nele), então a estabilidade do tonel limita quantas cabem. Aldeões não se ligam a
+      corpos infundidos — só você.
+
+      Eu... estou orgulhosa e preocupada ao mesmo tempo. Cuide-se, Herói.
+    tasks:
+      - check
+    rewards:
+      - xp: 12
+      - kit: {name: "Kit do Corpo Novo", items: ["minecraft:golden_apple x4", "minecraft:speckled_melon x8", "Thaumcraft:ItemResource:16 x4", "Thaumcraft:ItemShard:6 x8"]}
+      - loot: epico
+
+  - id: dedos_morficos
+    title: "Dedos Mórficos"
+    type: optional
+    deps: [autoinfusao]
+    icon: ThaumicHorizons:infusionSelfCheat:2
+    desc: |
+      Uma bancada na palma da mão! Com os §eMorphic Fingers§r, a tecla §eM§r abre uma
+      interface igual à da Mesa de Manufatura Arcana (sem guardar itens).
+
+      Ingredientes da autoinfusão: §eMesa de Manufatura Arcana, 2 Metais do Vazio e um
+      Estilhaço Equilibrado§r.
+    tasks:
+      - get: [Thaumcraft:blockTable:15, Thaumcraft:ItemResource:16 x2, Thaumcraft:ItemShard:6]
+    rewards:
+      - loot: incomum
+
+  - id: coracao_silverwood
+    title: "Coração de Silverwood"
+    type: optional
+    deps: [autoinfusao]
+    icon: ThaumicHorizons:infusionSelfCheat:5
+    desc: |
+      Pureza no corpo. O §eSilverwood Heart§r filtra o Taint do seu sangue: imunidade ao dano
+      de Taint e redução de veneno, Wither e fluxo.
+
+      Ingredientes: §eMuda de Silverwood, 2 Toras de Silverwood e uma Flor Brilhante§r
+      (Shimmerleaf).
+    tasks:
+      - get: [Thaumcraft:blockCustomPlant:1, Thaumcraft:blockMagicalLog:1 x2, Thaumcraft:blockCustomPlant:2]
+    rewards:
+      - loot: incomum
+
+  - id: outras_autoinfusoes
+    title: "Catálogo do Corpo Novo"
+    type: info
+    deps: [autoinfusao]
+    icon: ThaumicHorizons:infusionSelfCheat:9
+    desc: |
+      Outras autoinfusões descritas no Taumonomicon:
+
+      §e• Synthskin:§r fotossíntese — a fome enche devagar sob o sol.
+      §e• Amphibious Breath:§r guelras; respira na água.
+      §e• Spider Climb:§r escala paredes como escada (tecla §eC§r liga/desliga).
+      §e• Chameleon Skin:§r invisibilidade constante, menos a armadura (tecla §eX§r).
+      §e• Quicksilver Limbs, Awakened Blood, Diamondflesh:§r versões humanas, mais caras.
+      §e• Augmented Fists:§r punhos de impacto, fogo, empurrão, vampiro, sorte e atordoamento.
+
+      Confira os ingredientes de cada uma no livro: elas custam bem mais que as dos animais.
+    tasks:
+      - check
+    rewards:
+      - xp: 2
+
+  - id: tumor_distorcido
+    title: "Tumor Distorcido"
+    type: optional
+    deps: [autoinfusao]
+    icon: ThaumicHorizons:infusionSelfCheat:8
+    desc: |
+      O Warp segue a sua alma de corpo em corpo. Se não dá para se livrar dele, dá para
+      prendê-lo: o §eWarped Tumor§r é um órgão que guarda até §e50 pontos de Warp§r (valor da
+      config deste pack). Se você morrer, o Warp guardado volta para a alma.
+
+      Ingredientes: §eBloco de Carne, Sais de Banho Purificantes, 2 Estrelas do Nether, Totem
+      Obsidiano e Sabão Sanitizante§r. Instabilidade 12! §c(E leia "Eldritch Apotheosis"
+      antes de abusar...)§r
+    tasks:
+      - get: [Thaumcraft:blockTaint:2, Thaumcraft:ItemBathSalts, minecraft:nether_star x2, Thaumcraft:blockCosmeticSolid, Thaumcraft:ItemSanitySoap]
+    rewards:
+      - loot: raro
+
+  # ======================================================================
+  # FINAL
+  # ======================================================================
+  - id: mestre_horizontes
+    title: "Senhor dos Horizontes"
+    type: milestone
+    deps: [portal_planar, autoinfusao, pesadelo]
+    icon: ThaumicHorizons:soulBeacon
+    banner: "Senhor dos Horizontes"
+    subtitle: "Vida, alma e mundo reescritos"
+    effect: 4
+    desc: |
+      Olha o que você fez, Herói: um mundo de bolso com portais próprios, um corcel que salta
+      entre dimensões e um corpo que você mesmo projetou. Poucos taumaturgos chegaram aqui —
+      e a maioria não voltou inteira.
+
+      O Volume da Vida Reescrita está completo. Ele conversa com os outros Volumes de
+      Thaumcraft: as Terras Exteriores (de onde vem a Pérola Primordial), o Gadomancy (nodos
+      e golems) e o Selo Arcano, lá no Ato IV.
+
+      Só uma coisa: lembra da página "Eldritch Apotheosis"? Ela diz que o Padrão Eldritch usa
+      os taumaturgos que vão longe demais. Continue curioso, mas continue §evocê§r. Eu preciso
+      de você inteiro para terminar o Registro!
+    tasks:
+      - check
+    rewards:
+      - xp: 12
+      - kit: {name: "Relicário dos Horizontes", items: ["Thaumcraft:ItemResource:16 x8", "Thaumcraft:ItemShard:6 x16", "Thaumcraft:ItemResource:1 x8", "minecraft:nether_star"]}
+      - loot: epico

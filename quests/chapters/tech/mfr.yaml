@@ -1,0 +1,2259 @@
+chapter:
+  id: mfr
+  title: "MineFactory Reloaded"
+  prefix: ""
+  order: 350
+  icon: MineFactoryReloaded:machine.0:2
+  desc: |
+    §bO Volume da Fábrica Automática.§r Borracha, plástico e máquinas que plantam, colhem,
+    ordenham, trituram mobs, perfuram o fundo do mundo com laser e conversam por RedNet.
+    (MineFactory Reloaded 2.8.1)
+
+quests:
+  # ======================================================================
+  # FASE 0 — BORRACHA E PLÁSTICO
+  # ======================================================================
+  - id: arvore_borracha
+    title: "Seringueiras da Fábrica"
+    type: main
+    icon: MineFactoryReloaded:rubberwood.sapling
+    desc: |
+      Sabe qual é o segredo de toda fábrica automática do Registro? Plástico. E sabe de onde
+      vem o plástico? De uma árvore! (Eu também ri quando li isso pela primeira vez.)
+
+      As §eÁrvores de Borracha§r do MineFactory nascem soltas pelo mundo — o tronco é claro,
+      com manchas, e as folhas são de um verde mais pálido. Corte §e8 troncos de Madeira de
+      Borracha§r de árvores que nasceram sozinhas.
+
+      §aDica:§r guarde as mudas que caírem. Uma fazendinha de seringueiras perto de casa vai
+      alimentar todo este capítulo.
+    tasks:
+      - get: MineFactoryReloaded:rubberwood.log x8
+    rewards:
+      - xp: 4
+      - choice: [minecraft:iron_ingot x8, minecraft:coal x16, minecraft:apple x8]
+
+  - id: borracha_crua
+    title: "Borracha Crua"
+    type: main
+    deps: [arvore_borracha]
+    desc: |
+      Aqui vai um detalhe que pouca gente percebe: os troncos de borracha §enaturais§r (os
+      que a árvore gerou, não os que você colocou) soltam §eBorracha Crua§r junto com a
+      madeira quando são quebrados — com Fortuna, sai até mais.
+
+      Então não precisa de torneira nem de paciência: é só derrubar seringueiras. Junte
+      §e8 Borrachas Cruas§r. Mais tarde o §bColhedor§r faz esse trabalho sozinho.
+
+      §aCuriosidade:§r tronco colocado à mão não solta borracha. Plante mudas e deixe crescer!
+    tasks:
+      - get: MineFactoryReloaded:rubber.raw x8
+    rewards:
+      - xp: 4
+      - choice: [minecraft:coal x12, minecraft:log x16, minecraft:torch x32]
+
+  - id: barra_borracha
+    title: "Barra de Borracha"
+    type: main
+    deps: [borracha_crua]
+    desc: |
+      Borracha crua é mole demais para virar qualquer coisa útil. Leve-a à fornalha: cada
+      Borracha Crua vira uma §eBarra de Borracha§r.
+
+      A Barra de Borracha entra no oredict §eitemRubber§r, então serve também nas receitas
+      de outros mods (o IC2 aceita, por exemplo). Aqui ela faz esteiras, seringas e o
+      Extrator de XP — mas o destino principal dela é virar plástico. Funda §e8 barras§r.
+    tasks:
+      - get: MineFactoryReloaded:rubber.bar x8
+    rewards:
+      - xp: 4
+      - choice: [minecraft:coal x16, minecraft:redstone x12, minecraft:iron_ingot x6]
+
+  - id: plastico_cru
+    title: "Plástico Cru"
+    type: main
+    deps: [barra_borracha]
+    desc: |
+      Agora a mágica (ou melhor, a química): §eBarra de Borracha na fornalha vira Plástico
+      Cru§r. A borracha do IC2 também funciona, e até o plástico velho do MFR (folhas, réguas,
+      canudos, sacolas) volta a ser Plástico Cru se for derretido.
+
+      Você vai precisar de MUITO plástico. Junte §e16 Plásticos Crus§r e deixe uma fornalha
+      dedicada só a isso — ou melhor ainda, uma Fornalha Elétrica/Redstone de outro mod.
+    tasks:
+      - get: MineFactoryReloaded:plastic.raw x16
+    rewards:
+      - xp: 4
+      - choice: [MineFactoryReloaded:rubber.bar x8, minecraft:coal_block x2, minecraft:iron_ingot x8]
+
+  - id: folhas_plastico
+    title: "Folhas de Plástico"
+    type: main
+    deps: [plastico_cru]
+    desc: |
+      Quatro Plásticos Crus em quadrado na bancada = §e4 Folhas de Plástico§r. Este é o
+      material número um do MineFactory: §equase toda máquina leva Folhas de Plástico§r na
+      receita, e também tubos, cabos RedNet, armas e ferramentas.
+
+      Faça §e16 folhas§r agora. Daqui pra frente, sempre que eu disser "plástico", pense
+      nelas. (E sim, eu já sonhei com Folhas de Plástico. Não me julgue.)
+    tasks:
+      - get: MineFactoryReloaded:plastic.sheet x16
+    rewards:
+      - xp: 4
+      - choice: [MineFactoryReloaded:plastic.raw x8, ore:ingotIron x8, minecraft:redstone x16]
+
+  - id: muda_borracha
+    title: "Viveiro de Seringueiras"
+    type: optional
+    deps: [arvore_borracha]
+    desc: |
+      Uma floresta de borracha particular é o primeiro passo de qualquer fábrica que se
+      preze. Pegue §e4 Mudas de Borracha§r (caem das folhas) e plante perto da base.
+
+      §aDica:§r farinha de osso acelera o crescimento. Quando o Plantador e o Colhedor
+      chegarem, esse viveiro vira uma linha de produção de borracha sem você mexer um dedo.
+    tasks:
+      - get: MineFactoryReloaded:rubberwood.sapling x4
+    rewards:
+      - loot: comum
+
+  - id: muda_sagrada
+    title: "A Muda Sagrada"
+    type: optional
+    deps: [muda_borracha]
+    icon: MineFactoryReloaded:rubberwood.sapling:1
+    desc: |
+      Existe uma lenda nas bibliotecas das Fortalezas: uma §eMuda de Borracha Sagrada§r,
+      encantada, guardada entre os livros (a config do pack mantém ela no saque das
+      bibliotecas de Fortaleza).
+
+      Ela cresce numa árvore de borracha gigantesca — dessas que viram ponto de referência
+      no mapa. Se achar uma, plante longe da base e de qualquer coisa que você ame muito.
+      É só um troféu de exploração, mas que troféu!
+    tasks:
+      - one_of: [MineFactoryReloaded:rubberwood.sapling:1, MineFactoryReloaded:rubberwood.sapling:3]
+    rewards:
+      - loot: incomum
+
+  - id: bloco_plastico
+    title: "Bloco de Plástico"
+    type: optional
+    deps: [folhas_plastico]
+    desc: |
+      Quatro Folhas de Plástico viram um §eBloco de Plástico§r — e um bloco volta a ser 4
+      folhas na bancada. É a forma mais compacta de estocar plástico (e um bloco de
+      construção bem moderno, se você curte o visual "laboratório").
+    tasks:
+      - get: MineFactoryReloaded:plastic x4
+    rewards:
+      - loot: comum
+
+  - id: armadura_plastico
+    title: "Moda de Plástico"
+    type: optional
+    deps: [folhas_plastico]
+    icon: MineFactoryReloaded:plastic.chest
+    desc: |
+      Ninguém disse que engenharia não pode ter estilo. Com Folhas de Plástico você faz uma
+      armadura inteira: §eCapacete, Peitoral, Perneiras e Botas de Plástico§r.
+
+      É fraquinha (pense em couro), mas é leve, barata e combina com a esteira. Faça as quatro
+      peças e desfile pela fábrica.
+    tasks:
+      - get: [MineFactoryReloaded:plastic.helm, MineFactoryReloaded:plastic.chest, MineFactoryReloaded:plastic.legs, MineFactoryReloaded:plastic.boots]
+    rewards:
+      - loot: comum
+
+  - id: oculos_sol
+    title: "Óculos de Sol"
+    type: optional
+    deps: [armadura_plastico]
+    icon: MineFactoryReloaded:glass.helm
+    desc: |
+      Painéis de vidro preto + Folhas de Plástico = §eSunglasses§r (o jogo não traduziu o
+      nome — ficou chique assim mesmo). Vestem na cabeça como um capacete.
+
+      Funcionam? Funcionam para ficar bonito na frente da Broca Laser, que é bem brilhante.
+      O resto é estilo.
+    tasks:
+      - get: MineFactoryReloaded:glass.helm
+    rewards:
+      - loot: comum
+
+  - id: copo_canudo
+    title: "Copo e Canudo"
+    type: optional
+    deps: [folhas_plastico]
+    icon: MineFactoryReloaded:straw
+    desc: |
+      Dois itens de plástico curiosos:
+      §e• Copo de Plástico§r (16 por receita) — guarda um pouco de fluido e entra na receita
+      das munições líquidas do Flechete.
+      §e• Canudo§r — permite beber fluidos direto do mundo (cada fluido tem um efeito
+      diferente).
+
+      §cCuidado:§r nem todo fluido é refresco. Lava é lava, Herói. Beba com moderação!
+    tasks:
+      - get: [MineFactoryReloaded:plastic.cup, MineFactoryReloaded:straw]
+    rewards:
+      - loot: comum
+
+  - id: sacola_plastica
+    title: "Sacola Plástica"
+    type: optional
+    deps: [folhas_plastico]
+    desc: |
+      Linha e Folhas de Plástico rendem §e3 Sacolas Plásticas§r: um saquinho que guarda
+      alguns itens dentro dele. Prático para organizar o inventário durante a construção da
+      fábrica.
+
+      §aRegra da casa:§r só dá para abrir uma sacola por vez. E sim, sacola velha derrete de
+      volta em Plástico Cru — reciclagem é tudo!
+    tasks:
+      - get: MineFactoryReloaded:plastic.bag
+    rewards:
+      - loot: comum
+
+  - id: regua
+    title: "Régua"
+    type: optional
+    deps: [folhas_plastico]
+    desc: |
+      Plástico + papel = §eRégua§r. Clique em um bloco para marcar o início e em outro para
+      ver a distância e a contagem de blocos entre eles. Perfeito para planejar o tamanho
+      das fazendas e saber se a área do Colhedor vai cobrir tudo.
+    tasks:
+      - get: MineFactoryReloaded:ruler
+    rewards:
+      - loot: comum
+
+  - id: luneta
+    title: "Luneta"
+    type: optional
+    deps: [folhas_plastico]
+    desc: |
+      Bronze, vidro, plástico e um graveto = §eLuneta§r. Olhe por ela para um bloco ou criatura
+      distante: o chat diz o que é e onde está (coordenadas incluídas).
+
+      Ótima para mapear uma ravina antes de descer, ou para descobrir o nome daquele mob
+      esquisito sem chegar perto. Também é peça do Flechete, mais adiante!
+    tasks:
+      - get: MineFactoryReloaded:spyglass
+    rewards:
+      - loot: comum
+
+  - id: marreta
+    title: "Marreta de Precisão"
+    type: main
+    deps: [folhas_plastico]
+    icon: MineFactoryReloaded:hammer
+    desc: |
+      "Como uma chave inglesa, só que mais esmagadora." — é o que diz o próprio item. A
+      §eMarreta de Precisão§r (3 Folhas de Plástico + 2 gravetos) é a ferramenta oficial do
+      MFR.
+
+      Clique numa máquina para §egirá-la§r (as máquinas trabalham na direção da face frontal),
+      gire esteiras e troque modos de tubos e cabos. Com Shift, ela desmonta máquinas sem
+      perder nada. Ela também é ingrediente do Esmagador de Blocos.
+    tasks:
+      - get: MineFactoryReloaded:hammer
+    rewards:
+      - xp: 4
+      - choice: [MineFactoryReloaded:plastic.sheet x8, minecraft:iron_ingot x8, minecraft:redstone x16]
+
+  # ======================================================================
+  # FASE 1 — A BASE DAS MÁQUINAS
+  # ======================================================================
+  - id: receitas_thermal
+    title: "Uma Fábrica de Dois Volumes"
+    type: info
+    deps: [folhas_plastico]
+    icon: ThermalExpansion:Frame
+    desc: |
+      Uma confissão antes de continuar: neste pack, o MineFactory usa o §econjunto de
+      receitas do Thermal Expansion§r (está assim na config do mod). Isso quer dizer que as
+      máquinas do MFR pedem peças do Thermal:
+
+      §e• Estrutura de Máquina (Básica)§r — o "corpo" de quase toda máquina.
+      §e• Bobina Receptora de Redstone§r — o "cérebro" que recebe energia.
+      §e• Engrenagens§r de cobre, estanho, ferro, ouro, níquel, prata, invar...
+      §e• Ferramentas de Invar§r (machado, picareta, pá, espada) em algumas receitas.
+
+      Ou seja: tenha o capítulo §bThermal Expansion§r por perto. Abra o NEI (tecla R) em
+      qualquer máquina do MFR antes de planejar o que fabricar.
+    tasks:
+      - check
+    rewards:
+      - xp: 1
+
+  - id: estrutura_maquina
+    title: "Estrutura e Bobina"
+    type: main
+    deps: [receitas_thermal]
+    icon: ThermalExpansion:Frame
+    desc: |
+      Vamos preparar o esqueleto da fábrica. Faça uma §eEstrutura de Máquina (Básica)§r e uma
+      §eBobina Receptora de Redstone§r do Thermal Expansion — confira as receitas no NEI
+      (a estrutura leva ferro, vidro e uma engrenagem de estanho no centro; a bobina leva
+      redstone e ouro).
+
+      Cada máquina do MFR consome uma Estrutura, e a maioria também uma Bobina Receptora.
+      Faça logo um estoque de três ou quatro de cada.
+    tasks:
+      - get: [ThermalExpansion:Frame, ThermalExpansion:material:1]
+    rewards:
+      - xp: 4
+      - choice: [ThermalFoundation:material:129 x2, ThermalFoundation:material:128 x2, ore:ingotTin x8]
+
+  - id: energia_rf
+    title: "Energia RF e Barras de Trabalho"
+    type: info
+    deps: [estrutura_maquina]
+    icon: ThermalExpansion:Dynamo
+    desc: |
+      As máquinas do MineFactory funcionam com §bRF (Redstone Flux)§r — o tooltip dos
+      geradores do MFR até avisa: "Produz apenas RF". Qualquer dínamo do Thermal, gerador
+      do EnderIO ou cabo de RF serve.
+
+      Na interface de toda máquina há três barras:
+      §e• Energia§r armazenada;
+      §e• Trabalho§r — o progresso da tarefa atual (cada ciclo custa um tanto de RF);
+      §e• Ociosidade§r — quando não há o que fazer, a máquina espera um pouco antes de
+      tentar de novo (e gasta menos).
+
+      Quase todas aceitam redstone para desligar e cospem itens em baús/tubos encostados.
+    tasks:
+      - check
+    rewards:
+      - xp: 1
+
+  - id: bloco_maquina_fabrica
+    title: "Bloco de Máquina de Fábrica"
+    type: optional
+    deps: [folhas_plastico]
+    desc: |
+      3 Folhas de Plástico sobre 3 pedras rendem §e3 Blocos de Máquina de Fábrica§r. No
+      conjunto de receitas do Thermal, ele aparece pouco — mas é o coração do §eTanque de
+      Plástico§r, logo ali do lado.
+    tasks:
+      - get: MineFactoryReloaded:machineblock x3
+    rewards:
+      - loot: comum
+
+  - id: tanque_plastico
+    title: "Tanque de Plástico"
+    type: normal
+    deps: [bloco_maquina_fabrica]
+    desc: |
+      Lodo, esgoto, essência, leite, biocombustível... o MFR é uma fábrica de §efluidos§r.
+      Um lugar para guardar tudo isso é o §eTanque de Plástico§r: 7 Folhas de Plástico
+      envolvendo um Bloco de Máquina de Fábrica.
+
+      Tanques encostados uns nos outros se juntam e dividem o conteúdo. Coloque alguns perto
+      de onde as máquinas vão despejar fluidos.
+    tasks:
+      - get: MineFactoryReloaded:tank
+    rewards:
+      - xp: 2
+      - item: MineFactoryReloaded:plastic.sheet x8
+
+  - id: tubo_plastico
+    title: "Tubos de Plástico"
+    type: normal
+    deps: [folhas_plastico]
+    desc: |
+      6 Folhas de Plástico = §e8 Tubos de Plástico§r, os canos de fluido do MFR.
+
+      Clique num lado com a Marreta para trocar o modo da conexão (desligado, saída ou
+      extração — o chat confirma). Redstone liga e desliga o fluxo; uma tocha de redstone
+      instalada no tubo inverte o controle e um bloco de redstone o desativa.
+      §aDica:§r eles também são ingrediente do Rancheiro, do Roteador de Líquidos e dos cabos
+      RedNet.
+    tasks:
+      - get: MineFactoryReloaded:cable.plastic x8
+    rewards:
+      - xp: 2
+      - item: MineFactoryReloaded:plastic.raw x8
+
+  # ======================================================================
+  # FASE 2 — A FAZENDA AUTOMÁTICA
+  # ======================================================================
+  - id: plantador
+    title: "Plantador"
+    type: main
+    deps: [estrutura_maquina]
+    desc: |
+      A primeira página da Fábrica Automática: uma máquina que planta por você!
+
+      O §ePlantador§r leva Folhas de Plástico, Vaso de Flor, 2 Pistões, a Estrutura, a
+      Bobina Receptora e 2 Engrenagens de Cobre. Coloque sementes ou mudas no inventário dele
+      e ele as planta na área de trabalho (que começa 3×3), em terra arada ou terra comum,
+      conforme a planta.
+
+      §aDica:§r a grade de "filtro" da interface define o que plantar em cada posição da área
+      — ótimo para fazendas mistas.
+    tasks:
+      - get: MineFactoryReloaded:machine.0
+    rewards:
+      - xp: 4
+      - choice: [minecraft:wheat_seeds x32, MineFactoryReloaded:rubberwood.sapling x8, minecraft:sapling x16]
+
+  - id: colhedor
+    title: "Colhedor"
+    type: main
+    deps: [plantador]
+    desc: |
+      Plantar é metade do trabalho. O §eColhedor§r faz a outra metade: corta árvores inteiras
+      (inclusive seringueiras — com Borracha Crua e tudo!), colhe trigo maduro, cana, cactos,
+      abóboras, melancias, cogumelos...
+
+      Receita: plástico, Tesoura, 2 §eMachados de Invar§r, Estrutura, Bobina e 2 Engrenagens
+      de Ouro. A interface tem opções para colher ou não plantas imaturas, galhos de árvore
+      gigante e afins.
+
+      §aBônus:§r ele também produz §eLodo§r, um fluido que guarda para a próxima quest.
+    tasks:
+      - get: MineFactoryReloaded:machine.0:2
+    rewards:
+      - xp: 4
+      - choice: [ore:ingotInvar x4, MineFactoryReloaded:plastic.sheet x12, ThermalExpansion:material:1 x2]
+
+  - id: lodo
+    title: "Lodo"
+    type: normal
+    deps: [colhedor]
+    icon: MineFactoryReloaded:bucket.sludge
+    desc: |
+      Ewww. Ah, desculpa — é que o §eLodo§r tem um cheiro... característico.
+
+      Enquanto trabalha, o Colhedor enche um tanque interno com Lodo. Puxe-o com Tubos de
+      Plástico para um Tanque de Plástico ou encha um balde. Não jogue fora: lodo é matéria
+      prima da Caldeira de Lodo e até munição do Flechete.
+      §aCuriosidade:§r existem lagos de lodo (e de esgoto) gerados pelo mundo!
+    tasks:
+      - get: MineFactoryReloaded:bucket.sludge
+    rewards:
+      - xp: 2
+      - item: minecraft:bucket x2
+
+  - id: caldeira_lodo
+    title: "Caldeira de Lodo"
+    type: normal
+    deps: [lodo]
+    desc: |
+      A §eCaldeira de Lodo§r ferve o lodo e deixa para trás um monte de "terra útil".
+
+      Pela tabela do mod, o resultado mais comum é areia, depois argila e terra, e com menos
+      frequência cascalho, areia vermelha, areia de almas, micélio, podzol e até um pouco de
+      netherrack (com Forestry instalado, entram composto, turfa e cinzas).
+      Receita: plástico, balde, 2 fornalhas, Estrutura, Bobina e 2 Engrenagens de Ferro.
+      Argila e areia de almas grátis? Eu aceito!
+    tasks:
+      - get: MineFactoryReloaded:machine.0:9
+    rewards:
+      - xp: 3
+      - item: ThermalFoundation:material:12 x2
+
+  - id: fertilizante
+    title: "Fertilizante Industrial"
+    type: normal
+    deps: [plantador]
+    desc: |
+      Aqui no pack o Fertilizador está configurado para §cnão aceitar farinha de osso§r: ele
+      só usa o §eFertilizante Industrial§r do MFR.
+
+      A receita rende 24 de uma vez: 4 trigos, 2 farinhas de osso, 2 enxofres e 1 graveto no
+      centro. Mais tarde, a Composteira transforma esgoto em fertilizante e a fazenda se
+      alimenta sozinha. Faça §e24§r.
+    tasks:
+      - get: MineFactoryReloaded:fertilizer x24
+    rewards:
+      - xp: 2
+      - item: minecraft:dye:15 x16
+
+  - id: fertilizador
+    title: "Fertilizador"
+    type: main
+    deps: [fertilizante]
+    desc: |
+      Por que esperar a natureza quando dá para apressá-la?
+
+      O §eFertilizador§r (plástico, frasco de vidro, 2 couros, Estrutura, Bobina e 2
+      Engrenagens de Níquel) aplica Fertilizante Industrial nas plantas da área dele, como se
+      fosse farinha de osso. Trigo maduro em segundos, árvores brotando à vista.
+
+      Junte Plantador + Fertilizador + Colhedor na mesma área e você tem uma fazenda que roda
+      enquanto você dorme. Quase lá!
+    tasks:
+      - get: MineFactoryReloaded:machine.0:4
+    rewards:
+      - xp: 4
+      - choice: [MineFactoryReloaded:fertilizer x24, ThermalFoundation:material:132 x2, MineFactoryReloaded:plastic.sheet x12]
+
+  - id: coletor_itens
+    title: "Coletor de Itens"
+    type: main
+    deps: [colhedor]
+    desc: |
+      O Colhedor derruba tudo... e larga no chão. O §eColetor de Itens§r recolhe os itens
+      soltos numa área em volta e os empurra para um baú ou tubo encostado.
+
+      A receita rende §e8 coletores§r (plástico, Estrutura e um baú). Não usa energia!
+      §aDica:§r o coletor pode receber uma pepita de ouro na bancada — confira no NEI o que
+      muda (o MFR tem essa receita só para ele).
+    tasks:
+      - get: MineFactoryReloaded:machine.0:6
+    rewards:
+      - xp: 4
+      - choice: [minecraft:chest x4, minecraft:hopper x2, MineFactoryReloaded:plastic.sheet x12]
+
+  - id: area_trabalho
+    title: "Áreas de Trabalho e Melhorias"
+    type: info
+    deps: [plantador]
+    icon: MineFactoryReloaded:upgrade.radius
+    desc: |
+      Toda máquina "de área" do MFR (Plantador, Colhedor, Fertilizador, Rancheiro,
+      Triturador, Acasalador...) trabalha numa região ligada à face frontal (ou de cima,
+      dependendo da máquina). O tamanho padrão é pequeno: raio 1, ou seja, 3×3.
+
+      As §eMelhorias§r vão no slot de melhoria da interface e aumentam o raio:
+      §e• Lápis +1 · Estanho +2 · Ferro +3 · Cobre +4 · Bronze +5 · Prata +6
+      · Ouro +7 · Quartzo +8 · Diamante +9 · Platina +10 · Esmeralda +11§r
+      §e• Pedregulho −1§r (encolhe a área!)
+
+      Raio 11 = uma área de 23×23. Planeje antes com a Régua!
+    tasks:
+      - check
+    rewards:
+      - xp: 1
+
+  - id: melhoria_raio
+    title: "A Primeira Melhoria"
+    type: normal
+    deps: [area_trabalho]
+    icon: MineFactoryReloaded:upgrade.radius:2
+    desc: |
+      Toda Melhoria leva 3 do material, 3 Plásticos Crus, 2 redstones e uma pepita de ouro.
+      As baratas (Lápis, Estanho, Ferro, Cobre) já transformam uma fazendinha 3×3 numa
+      plantação de verdade.
+
+      Faça qualquer Melhoria de raio e instale numa máquina de área. Sinta a diferença!
+    tasks:
+      - one_of: [MineFactoryReloaded:upgrade.radius, MineFactoryReloaded:upgrade.radius:1, MineFactoryReloaded:upgrade.radius:2, MineFactoryReloaded:upgrade.radius:3, MineFactoryReloaded:upgrade.radius:4, MineFactoryReloaded:upgrade.radius:5, MineFactoryReloaded:upgrade.radius:6]
+    rewards:
+      - xp: 2
+      - item: MineFactoryReloaded:plastic.raw x6
+
+  - id: melhoria_grande
+    title: "Pensando Grande"
+    type: optional
+    deps: [melhoria_raio]
+    icon: MineFactoryReloaded:upgrade.radius:10
+    desc: |
+      Para fazendas gigantes, as Melhorias caras: §eQuartzo (+8), Diamante (+9), Platina
+      (+10) ou Esmeralda (+11)§r. Uma Melhoria de Esmeralda num Colhedor cobre um quadrado de
+      23×23 — uma floresta inteira de seringueiras!
+    tasks:
+      - one_of: [MineFactoryReloaded:upgrade.radius:7, MineFactoryReloaded:upgrade.radius:8, MineFactoryReloaded:upgrade.radius:9, MineFactoryReloaded:upgrade.radius:10]
+    rewards:
+      - loot: incomum
+
+  - id: melhoria_pedregulho
+    title: "Menos é Mais"
+    type: optional
+    deps: [melhoria_raio]
+    icon: MineFactoryReloaded:upgrade.radius:11
+    desc: |
+      A §eMelhoria de Pedregulho§r é a única que §ediminui§r o raio (−1). Parece inútil? Num
+      Triturador ou num Quebrador de Blocos, encolher a área para só o bloco da frente é
+      exatamente o que você quer. Engenharia é escolher o tamanho certo!
+    tasks:
+      - get: MineFactoryReloaded:upgrade.radius:11
+    rewards:
+      - loot: comum
+
+  - id: fazenda_automatica
+    title: "A Fazenda que Nunca Dorme"
+    type: milestone
+    deps: [plantador, colhedor, fertilizador, coletor_itens]
+    icon: MineFactoryReloaded:machine.0:2
+    banner: "A Fazenda que Nunca Dorme"
+    subtitle: "Plantar, adubar, colher, recolher"
+    desc: |
+      Olha só isso! O Plantador enfia as mudas na terra, o Fertilizador sopra vida nelas, o
+      Colhedor derruba tudo e o Coletor junta cada folhinha num baú. Herói, você acabou de
+      reescrever a primeira página da §bFábrica Automática§r!
+
+      Algumas dicas para a sua fazenda:
+      §e• Fazenda de árvores:§r Plantador e Colhedor apontados para a mesma área, com o
+      Coletor no meio. Seringueiras = madeira + Borracha Crua infinitas.
+      §e• Fazenda de trigo:§r água no centro, terra arada, e o Colhedor só colhe o que está
+      maduro.
+      §e• Lodo:§r ligue o tanque do Colhedor a uma Caldeira de Lodo.
+
+      Agora que a comida e a borracha estão garantidas, vamos aos animais... e aos
+      combustíveis!
+    tasks:
+      - get: [MineFactoryReloaded:machine.0, MineFactoryReloaded:machine.0:2, MineFactoryReloaded:machine.0:4, MineFactoryReloaded:machine.0:6]
+    rewards:
+      - xp: 8
+      - kit: {name: "Kit do Fazendeiro Industrial", items: [MineFactoryReloaded:fertilizer x48, MineFactoryReloaded:upgrade.radius:2 x2, MineFactoryReloaded:plastic.sheet x16, ThermalExpansion:Frame x2, ThermalExpansion:material:1 x2]}
+      - loot: raro
+
+  - id: pegador_frutas
+    title: "Pegador de Frutas"
+    type: optional
+    deps: [colhedor]
+    icon: MineFactoryReloaded:machine.2:6
+    desc: |
+      O Colhedor derruba a árvore inteira — mas e se você só quer as frutas? O §ePegador de
+      Frutas§r colhe frutos de árvores frutíferas (como as de outros mods de agricultura) e
+      deixa a árvore em paz para dar mais.
+
+      Use-o com as árvores do Forestry ou de mods de culinária. Confira no NEI/no Coletor o
+      que ele reconhece no seu mundo.
+    tasks:
+      - get: MineFactoryReloaded:machine.2:6
+    rewards:
+      - loot: comum
+
+  - id: quebrador_blocos
+    title: "Quebrador de Blocos"
+    type: optional
+    deps: [estrutura_maquina]
+    icon: MineFactoryReloaded:machine.0:7
+    desc: |
+      O §eQuebrador de Blocos§r quebra o bloco à frente dele, como se fosse uma picareta.
+      Encoste-o num gerador de pedregulho (água + lava) e pronto: pedregulho infinito.
+
+      A receita usa uma Engrenagem de Invar, uma Picareta e uma Pá de Invar e 2 Engrenagens
+      de Ferro. §aDica:§r junte-o com um Colocador de Blocos e você tem uma pequena "máquina
+      de mover blocos".
+    tasks:
+      - get: MineFactoryReloaded:machine.0:7
+    rewards:
+      - loot: comum
+
+  - id: colocador_blocos
+    title: "Colocador de Blocos"
+    type: optional
+    deps: [quebrador_blocos]
+    icon: MineFactoryReloaded:machine.2:7
+    desc: |
+      O irmão gêmeo do Quebrador: o §eColocador de Blocos§r (3 ejetores do vanilla, plástico,
+      Estrutura e Bobina) coloca no mundo os blocos que estão no inventário dele. Ótimo para
+      repor terra, plantar blocos de abóbora decorativos ou montar contraptions.
+    tasks:
+      - get: MineFactoryReloaded:machine.2:7
+    rewards:
+      - loot: comum
+
+  - id: pescador
+    title: "Pescador"
+    type: optional
+    deps: [estrutura_maquina]
+    icon: MineFactoryReloaded:machine.0:1
+    desc: |
+      Peixe sem vara, sem paciência e sem precisar ficar parado olhando a boia! O §ePescador§r
+      pesca sozinho quando colocado em água (não precisa de varas de pescar neste pack — a
+      config desligou essa exigência).
+
+      Receita: plástico, vara de pescar, 2 baldes, Estrutura, Bobina e 2 Engrenagens de Ferro.
+      Coloque-o num lago grande, com bastante água em volta.
+    tasks:
+      - get: MineFactoryReloaded:machine.0:1
+    rewards:
+      - loot: comum
+
+  - id: coletor_clima
+    title: "Coletor de Clima"
+    type: optional
+    deps: [estrutura_maquina]
+    icon: MineFactoryReloaded:machine.0:8
+    desc: |
+      Chuva é água grátis caindo do céu! O §eColetor de Clima§r, colocado a céu aberto, junta
+      água quando chove (e neve em biomas frios). Uma fonte de água sem bomba e sem lago —
+      útil para Caldeiras de Vapor em lugares secos.
+    tasks:
+      - get: MineFactoryReloaded:machine.0:8
+    rewards:
+      - loot: comum
+
+  - id: esgoto
+    title: "Esgoto"
+    type: normal
+    deps: [estrutura_maquina]
+    icon: MineFactoryReloaded:machine.0:10
+    desc: |
+      Bom, alguém tinha que falar sobre isso. Animais... produzem. E o §eEsgoto§r do MFR
+      recolhe.
+
+      Coloque o Esgoto no chão do curral (os animais por cima ou na área dele): ele enche o
+      tanque com o fluido §eEsgoto§r e, de quebra, recolhe orbes de experiência como
+      §eEssência§r. A receita rende 4 (plástico, balde, tijolos, Estrutura e Servo
+      Pneumático). §aÉ o primeiro passo para o fertilizante automático.§r
+    tasks:
+      - get: MineFactoryReloaded:machine.0:10
+    rewards:
+      - xp: 2
+      - item: minecraft:brick x16
+
+  - id: balde_esgoto
+    title: "Um Balde de... Esgoto"
+    type: normal
+    deps: [esgoto]
+    icon: MineFactoryReloaded:bucket.sewage
+    desc: |
+      Encha um balde com o Esgoto que o seu curral produziu. Prometo que tem utilidade: a
+      Composteira transforma isso em fertilizante, e ele vira munição de Flechete (sim, é
+      exatamente o que você imaginou).
+
+      §aDica:§r em vez de baldes, ligue o Esgoto direto na Composteira com Tubos de Plástico.
+    tasks:
+      - get: MineFactoryReloaded:bucket.sewage
+    rewards:
+      - xp: 2
+      - item: MineFactoryReloaded:cable.plastic x8
+
+  - id: composteira
+    title: "Composteira"
+    type: normal
+    deps: [balde_esgoto, fertilizante]
+    icon: MineFactoryReloaded:machine.0:11
+    desc: |
+      Fechando o ciclo! A §eComposteira§r consome Esgoto e energia e produz §eFertilizante
+      Industrial§r.
+
+      Curral → Esgoto → Composteira → Fertilizador → plantas → comida para os animais...
+      Isso é o que eu chamo de economia circular. Receita: plástico, fornalha, 2 pistões,
+      Estrutura, Bobina e 2 tijolos.
+    tasks:
+      - get: MineFactoryReloaded:machine.0:11
+    rewards:
+      - xp: 3
+      - item: MineFactoryReloaded:fertilizer x24
+
+  - id: solo_fertil
+    title: "Solo Fértil"
+    type: optional
+    deps: [composteira]
+    icon: MineFactoryReloaded:farmland
+    desc: |
+      Podzol + Fertilizante Industrial + leite (qualquer leite do oredict) = §eSolo Fértil§r,
+      um solo de cultivo especial do MFR: conta como terra fértil para várias plantas e pode
+      ser melhorado com fertilizante.
+
+      Não é obrigatório, mas é o tipo de detalhe que deixa uma fazenda "premium". Leia o
+      tooltip e experimente!
+    tasks:
+      - get: MineFactoryReloaded:farmland
+    rewards:
+      - loot: comum
+
+  # ======================================================================
+  # FASE 3 — BIOCOMBUSTÍVEL E VAPOR
+  # ======================================================================
+  - id: bioreator
+    title: "Bio-Reator"
+    type: main
+    deps: [fazenda_automatica]
+    icon: MineFactoryReloaded:machine.1:10
+    desc: |
+      Sua fazenda produz mais do que você consegue comer. Que tal transformar o excesso em
+      combustível?
+
+      O §eBio-Reator§r (plástico, olho de aranha fermentado, 2 bolas de gosma, Estrutura,
+      açúcar e tijolos) "digere" sementes, mudas, colheitas e outras plantas e produz
+      §eBio-Combustível§r. §aO segredo:§r quanto mais tipos diferentes de planta ao mesmo
+      tempo nos slots, mais eficiente ele fica. Monoculturas rendem pouco!
+    tasks:
+      - get: MineFactoryReloaded:machine.1:10
+    rewards:
+      - xp: 4
+      - choice: [minecraft:wheat_seeds x32, minecraft:pumpkin_seeds x16, minecraft:melon_seeds x16]
+
+  - id: biocombustivel
+    title: "Bio-Combustível"
+    type: normal
+    deps: [bioreator]
+    icon: MineFactoryReloaded:bucket.biofuel
+    desc: |
+      Encha um balde de §eBio-Combustível§r. Ele queima no Gerador de Bio-Combustível do MFR
+      e em geradores de outros mods que aceitam combustíveis líquidos.
+
+      §cAtenção:§r neste pack o Bio-Combustível §cexplode no Nether§r (config ativada). Não
+      leve baldes para lá, e muito menos derrame!
+    tasks:
+      - get: MineFactoryReloaded:bucket.biofuel
+    rewards:
+      - xp: 2
+      - item: minecraft:bucket x2
+
+  - id: gerador_bio
+    title: "Gerador de Bio-Combustível"
+    type: main
+    deps: [biocombustivel]
+    icon: MineFactoryReloaded:machine.1:11
+    desc: |
+      O §eGerador de Bio-Combustível§r (plástico, fornalha, 2 pistões, Estrutura, 2 varas
+      incandescentes e uma Bobina Transmissora de Redstone) queima o combustível e produz RF.
+
+      Ligue o Bio-Reator nele com Tubos de Plástico e a fazenda passa a gerar a energia das
+      próprias máquinas. Uma fábrica que se alimenta da própria colheita... os Antigos ficariam
+      com inveja.
+    tasks:
+      - get: MineFactoryReloaded:machine.1:11
+    rewards:
+      - xp: 4
+      - choice: [minecraft:blaze_rod x4, ThermalExpansion:material:2 x1, MineFactoryReloaded:plastic.sheet x16]
+
+  - id: carvao_acucar
+    title: "Carvão Vegetal de Açúcar"
+    type: optional
+    deps: [plastico_cru]
+    icon: MineFactoryReloaded:sugarcharcoal
+    desc: |
+      Uma curiosidade doce: §eaçúcar na fornalha vira Carvão Vegetal de Açúcar§r, um
+      combustível pequeno. Nove deles fazem um bloco decorativo.
+
+      Uma fazenda de cana automática + fornalha = combustível sem minerar. Prático para as
+      fornalhas que derretem o seu plástico!
+    tasks:
+      - get: MineFactoryReloaded:sugarcharcoal x8
+    rewards:
+      - loot: comum
+
+  - id: caldeira_vapor
+    title: "Caldeira de Vapor"
+    type: normal
+    deps: [caldeira_lodo]
+    icon: MineFactoryReloaded:machine.1:6
+    desc: |
+      Agora a parte quente. A §eCaldeira de Vapor§r queima combustível sólido e transforma
+      água em §eVapor§r.
+
+      Receita bem robusta: plástico, 2 §eTanques Portáteis Reforçados§r do Thermal, uma
+      §eCaldeira de Lodo§r no centro e escadas de tijolo do Nether. Precisa de água entrando
+      o tempo todo (uma bomba, um Coletor de Clima ou um bloco de água infinita de outro mod).
+      A config deste pack impede a explosão por falta de água, mas não abuse da sorte.
+    tasks:
+      - get: MineFactoryReloaded:machine.1:6
+    rewards:
+      - xp: 3
+      - item: minecraft:coal_block x4
+
+  - id: turbina_vapor
+    title: "Turbina a Vapor"
+    type: normal
+    deps: [caldeira_vapor]
+    icon: MineFactoryReloaded:machine.2:9
+    desc: |
+      Vapor sozinho só embaça os óculos. A §eTurbina a Vapor§r o transforma em RF.
+
+      Receita: plástico, um §eDínamo a Vapor§r do Thermal, 2 pistões, Estrutura, Bobina
+      Transmissora e 2 Engrenagens de Prata. Ligue a saída de vapor da Caldeira na Turbina
+      e a Turbina nos seus cabos. Pronto: uma usina térmica no meio da fábrica.
+    tasks:
+      - get: MineFactoryReloaded:machine.2:9
+    rewards:
+      - xp: 3
+      - item: ThermalFoundation:material:130 x2
+
+  - id: energia_fabrica
+    title: "A Fábrica se Alimenta"
+    type: milestone
+    deps: [gerador_bio, turbina_vapor]
+    deps_any: true
+    icon: MineFactoryReloaded:machine.1:11
+    banner: "A Fábrica se Alimenta"
+    subtitle: "Energia feita em casa"
+    desc: |
+      Bio-Combustível queimando ou vapor girando uma turbina — qualquer um dos dois serve,
+      Herói: a sua fábrica agora §egera a própria energia§r!
+
+      Isso muda tudo. Até agora as máquinas do MFR dependiam de dínamos de outros mods;
+      daqui pra frente, a fazenda produz o combustível que alimenta... a fazenda. E o excesso
+      vai para o que vem a seguir: animais, mobs e encantamentos automáticos, que gastam RF
+      sem dó.
+
+      §aDica de organização:§r deixe uma Célula de Energia entre os geradores e as máquinas.
+      Ela segura os picos de consumo (o Triturador e o Auto-Invocador são gulosos).
+    tasks:
+      - one_of: [MineFactoryReloaded:machine.1:11, MineFactoryReloaded:machine.2:9]
+    rewards:
+      - xp: 8
+      - kit: {name: "Kit do Usineiro", items: [MineFactoryReloaded:tank x2, MineFactoryReloaded:cable.plastic x16, ThermalExpansion:material:2 x2, minecraft:blaze_rod x4, minecraft:coal_block x8]}
+      - loot: raro
+
+  - id: fabricador_lava
+    title: "Fabricador de Lava"
+    type: optional
+    deps: [energia_fabrica]
+    icon: MineFactoryReloaded:machine.1:5
+    desc: |
+      Energia sobrando? O §eFabricador de Lava§r (obsidiana, creme de magma, varas
+      incandescentes) transforma RF em §elava§r. Caro em energia, mas elimina aquelas
+      viagens perigosas ao Nether com baldes.
+    tasks:
+      - get: MineFactoryReloaded:machine.1:5
+    rewards:
+      - loot: comum
+
+  - id: fonte
+    title: "Fonte"
+    type: optional
+    deps: [tanque_plastico]
+    icon: MineFactoryReloaded:machine.2:11
+    desc: |
+      A §eFonte§r faz o oposto de um tanque: ela coloca no mundo, como blocos, o fluido que
+      recebe. Decoração (uma fonte de leite no jardim? por que não?) ou utilidade (encher uma
+      área de água para o Pescador). Receita com 2 Tanques Portáteis do Thermal.
+    tasks:
+      - get: MineFactoryReloaded:machine.2:11
+    rewards:
+      - loot: comum
+
+  # ======================================================================
+  # FASE 4 — ANIMAIS
+  # ======================================================================
+  - id: rancheiro
+    title: "Rancheiro"
+    type: main
+    deps: [fazenda_automatica]
+    icon: MineFactoryReloaded:machine.0:3
+    desc: |
+      Muuu! Ah, perdão, me empolguei com o curral.
+
+      O §eRancheiro§r trabalha com os animais da área dele: §etosquia ovelhas§r, §eordenha
+      vacas§r (o leite vira fluido no tanque interno) e tira §esopa de cogumelo§r das
+      vacogumelos. Receita: plástico, Tubo de Plástico, 2 tesouras, Estrutura, Bobina e 2
+      Engrenagens de Estanho.
+
+      Os animais não se machucam e voltam a dar lã/leite com o tempo. Lã infinita para as
+      suas decorações!
+    tasks:
+      - get: MineFactoryReloaded:machine.0:3
+    rewards:
+      - xp: 4
+      - choice: [minecraft:wheat x32, minecraft:shears x1, MineFactoryReloaded:plastic.sheet x12]
+
+  - id: leite
+    title: "Garrafa de Leite"
+    type: optional
+    deps: [rancheiro]
+    icon: MineFactoryReloaded:milkbottle
+    desc: |
+      Um balde de leite e um frasco de vidro viram uma §eGarrafa de Leite§r: o mesmo efeito
+      do leite (cura venenos e efeitos), mas num formato que empilha melhor. Neste pack, o
+      MFR também deixa o leite ser colocado no mundo como fluido.
+    tasks:
+      - get: MineFactoryReloaded:milkbottle
+    rewards:
+      - loot: comum
+
+  - id: leite_chocolate
+    title: "Leite com Chocolate"
+    type: optional
+    deps: [leite]
+    icon: MineFactoryReloaded:bucket.chocolatemilk
+    desc: |
+      Leite + balde + sementes de cacau = §eBalde de Leite com Chocolate§r. Precisa de
+      explicação? É leite com chocolate, Herói. Num balde. É a melhor receita deste capítulo
+      inteiro e eu não aceito discussão.
+    tasks:
+      - get: MineFactoryReloaded:bucket.chocolatemilk
+    rewards:
+      - loot: comum
+
+  - id: acasalador
+    title: "Acasalador"
+    type: normal
+    deps: [rancheiro]
+    icon: MineFactoryReloaded:machine.0:12
+    desc: |
+      Um curral precisa de... mais curral. O §eAcasalador§r usa a comida que estiver no
+      inventário dele (trigo, cenoura, sementes...) para fazer os animais da área se
+      reproduzirem.
+
+      Receita: plástico, maçã dourada, 2 cenouras douradas, Estrutura, Bobina e 2 corantes
+      roxos. §cCuidado:§r a config desliga o Acasalador se houver mais de 50 criaturas na área
+      — é proteção contra lag. Combine com um Triturador para manter a população sob
+      controle.
+    tasks:
+      - get: MineFactoryReloaded:machine.0:12
+    rewards:
+      - xp: 3
+      - item: minecraft:wheat x32
+
+  - id: cronotipador
+    title: "Cronotipador"
+    type: optional
+    deps: [acasalador]
+    icon: MineFactoryReloaded:machine.0:15
+    desc: |
+      O §eCronotipador§r separa os animais por idade: ele empurra os filhotes (ou os adultos,
+      conforme a configuração da interface) para fora da área. Ideal para separar os bebês do
+      Acasalador antes de mandá-los para a "linha de produção"... você entendeu.
+      Receita: 3 esmeraldas, plástico, Estrutura, Bobina e corantes roxos.
+    tasks:
+      - get: MineFactoryReloaded:machine.0:15
+    rewards:
+      - loot: comum
+
+  - id: seringa_vazia
+    title: "Seringa Vazia"
+    type: normal
+    deps: [rancheiro]
+    icon: MineFactoryReloaded:syringe.empty
+    desc: |
+      A medicina veterinária do MFR começa com uma §eSeringa Vazia§r (plástico, borracha e
+      ferro). Combinada na bancada, ela vira:
+      §e• Saúde§r (maçã) — cura o animal.
+      §e• Crescimento§r (cenoura dourada) — filhote vira adulto.
+      §e• Zumbi§r (carne podre) e §eDezumbificação§r (maçã dourada).
+      §e• Crescimento de Slime§r (gosmas + lápis) — aumenta slimes.
+    tasks:
+      - get: MineFactoryReloaded:syringe.empty
+    rewards:
+      - xp: 2
+      - item: minecraft:apple x4
+
+  - id: seringas
+    title: "Farmácia Veterinária"
+    type: optional
+    deps: [seringa_vazia]
+    icon: MineFactoryReloaded:syringe.growth
+    desc: |
+      Faça qualquer seringa cheia. A de §eCrescimento§r é a mais usada (adultos na hora para o
+      Acasalador continuar), e a de §eCrescimento de Slime§r tem um uso secreto lá na fase da
+      Broca Laser... shh.
+    tasks:
+      - one_of: [MineFactoryReloaded:syringe.health, MineFactoryReloaded:syringe.growth, MineFactoryReloaded:syringe.zombie, MineFactoryReloaded:syringe.slime, MineFactoryReloaded:syringe.cure]
+    rewards:
+      - loot: comum
+
+  - id: estacao_veterinaria
+    title: "Estação Veterinária"
+    type: optional
+    deps: [seringas]
+    icon: MineFactoryReloaded:machine.0:5
+    desc: |
+      Aplicar seringa animal por animal cansa. A §eEstação Veterinária§r (3 Seringas Vazias,
+      plástico, Estrutura, Bobina e 2 Engrenagens de Cobre) aplica as seringas do inventário
+      nos animais da área, automaticamente. Cuidar de um rebanho inteiro nunca foi tão fácil.
+    tasks:
+      - get: MineFactoryReloaded:machine.0:5
+    rewards:
+      - loot: comum
+
+  # ======================================================================
+  # FASE 5 — MOBS: SAFARI, ESSÊNCIA E INVOCAÇÃO
+  # ======================================================================
+  - id: rede_safari
+    title: "Rede de Safari"
+    type: main
+    deps: [rancheiro]
+    icon: MineFactoryReloaded:safarinet.singleuse
+    desc: |
+      E se desse para guardar uma criatura no bolso? Dá!
+
+      A §eRede de Safari (Uso único)§r — 4 linhas, couro e uma bola de gosma, rende 3 — é
+      arremessada (clique direito) numa criatura e a captura. Arremesse de novo para soltá-la
+      onde quiser. A versão de uso único §ese desfaz ao soltar§r.
+
+      Mudar um cavalo de lugar, levar aldeões para casa, trazer uma vaca da caverna... e,
+      mais tarde, alimentar o Auto-Invocador.
+    tasks:
+      - get: MineFactoryReloaded:safarinet.singleuse
+    rewards:
+      - xp: 4
+      - choice: [minecraft:string x16, minecraft:slime_ball x4, minecraft:leather x8]
+
+  - id: rede_reutilizavel
+    title: "Rede de Safari Reutilizável"
+    type: main
+    deps: [rede_safari]
+    icon: MineFactoryReloaded:safarinet.reusable
+    desc: |
+      Quatro pérolas do Fim em volta de uma lágrima de Ghast = §eRede de Safari (Reutilizável)§r.
+      Captura, solta, captura de novo, para sempre.
+
+      É ela que vai dentro do §eAuto-Invocador§r: a rede com o mob capturado serve de "molde"
+      para as cópias. Capture com carinho: o mob fica guardado dentro da rede, com nome,
+      equipamento e tudo.
+    tasks:
+      - get: MineFactoryReloaded:safarinet.reusable
+    rewards:
+      - xp: 4
+      - choice: [minecraft:ender_pearl x4, minecraft:ghast_tear x1, minecraft:slime_ball x8]
+
+  - id: rede_carcereiro
+    title: "Rede do Carcereiro"
+    type: optional
+    deps: [rede_safari]
+    icon: MineFactoryReloaded:safarinet.jailer
+    desc: |
+      Uma Rede de Uso Único cercada de barras de ferro vira a §eRede de Safari do
+      Carcereiro§r. Criaturas soltas por ela §enão somem (despawn)§r com o tempo — perfeito
+      para guardar aquele mob raro que você quer exibir no zoológico da base.
+    tasks:
+      - get: MineFactoryReloaded:safarinet.jailer
+    rewards:
+      - loot: comum
+
+  - id: rede_dourada
+    title: "Rede Dourada do Carcereiro"
+    type: optional
+    deps: [rede_carcereiro]
+    icon: MineFactoryReloaded:safarinet.jailer.fancy
+    desc: |
+      A Rede do Carcereiro com 8 pepitas de ouro em volta vira a versão §eDourada§r: além de
+      não sumirem, as criaturas soltas §esempre mostram o nome§r flutuando, como jogadores.
+      Dê um nome a um porco com uma etiqueta e solte-o com ela. Pronto: mascote oficial da
+      fábrica!
+    tasks:
+      - get: MineFactoryReloaded:safarinet.jailer.fancy
+    rewards:
+      - loot: comum
+
+  - id: lancador_rede
+    title: "Lançador de Rede de Safari"
+    type: optional
+    deps: [rede_reutilizavel]
+    icon: MineFactoryReloaded:safarinet.launcher
+    desc: |
+      Arremessar na mão tem alcance curto. O §eLançador de Rede de Safari§r (plástico,
+      pólvora, glowstone, ferro e redstone) dispara as redes longe e com precisão — e ainda
+      é peça do Flechete. Com Shift + clique você alterna entre os modos de captura e de
+      soltura.
+    tasks:
+      - get: MineFactoryReloaded:safarinet.launcher
+    rewards:
+      - loot: comum
+
+  - id: triturador_mobs
+    title: "Triturador (de Mobs)"
+    type: main
+    deps: [rede_safari]
+    icon: MineFactoryReloaded:machine.0:13
+    desc: |
+      §cAviso de conteúdo:§r esta página do Registro é meio sombria.
+
+      O §eTriturador§r do MFR (não confunda com o Triturador de minérios do IC2!) mata os mobs
+      da área dele, recolhe os drops e transforma a experiência deles em §eEssência§r, um
+      fluido verde. Receita: plástico, Espada de Invar, 2 livros, Estrutura, Bobina e 2
+      Engrenagens de Estanho.
+
+      Coloque-o no fundo de uma fazenda de mobs (ou num curral superpovoado) e ligue um
+      tanque na saída de Essência. §aEle ignora filhotes§r — ótimo para currais com
+      Acasalador. §cE não fique parado na área dele, por via das dúvidas!§r
+    tasks:
+      - get: MineFactoryReloaded:machine.0:13
+    rewards:
+      - xp: 4
+      - choice: [ore:ingotInvar x4, minecraft:book x4, MineFactoryReloaded:plastic.sheet x12]
+
+  - id: essencia
+    title: "Essência"
+    type: normal
+    deps: [triturador_mobs]
+    icon: MineFactoryReloaded:bucket.essence
+    desc: |
+      A §eEssência§r é experiência em forma líquida — a "moeda" das máquinas mais
+      avançadas do MFR: o Auto-Invocador, o Auto-Encantador, a Auto-Bigorna e o Esmagador de
+      Blocos consomem Essência.
+
+      Encha um balde. §aDica:§r o Esgoto também recolhe orbes de XP do chão como Essência.
+    tasks:
+      - get: MineFactoryReloaded:bucket.essence
+    rewards:
+      - xp: 3
+      - item: MineFactoryReloaded:tank
+
+  - id: extrator_xp
+    title: "Extrator de XP"
+    type: optional
+    deps: [essencia]
+    icon: MineFactoryReloaded:xpextractor
+    desc: |
+      O caminho inverso: o §eExtrator de XP§r tira os §eseus§r níveis e os guarda como
+      Essência. Como diz o tooltip, ele precisa de um recipiente vazio (um balde) no
+      inventário para encher.
+
+      Útil para "doar" experiência às máquinas ou guardar níveis antes de uma aventura
+      arriscada.
+    tasks:
+      - get: MineFactoryReloaded:xpextractor
+    rewards:
+      - loot: comum
+
+  - id: auto_invocador
+    title: "Auto-Invocador"
+    type: main
+    deps: [essencia, rede_reutilizavel]
+    icon: MineFactoryReloaded:machine.1:9
+    desc: |
+      Lembra da Rede Reutilizável com um mob dentro? Agora ela vira um §emolde§r.
+
+      O §eAuto-Invocador§r (fungo do Nether, creme de magma, esmeraldas, Estrutura e Bobina)
+      recebe a rede no slot, consome §eEssência§r + RF e cria cópias do mob capturado na área
+      à frente. Vacas sem Acasalador, Blazes sem Nether, Endermen sem o Fim...
+
+      §cObservação:§r a config bloqueia o Golem de Ferro. Coloque o Triturador onde as cópias
+      aparecem e você tem uma fazenda de drops completa.
+    tasks:
+      - get: MineFactoryReloaded:machine.1:9
+    rewards:
+      - xp: 4
+      - choice: [minecraft:emerald x2, minecraft:magma_cream x4, minecraft:nether_wart x8]
+
+  - id: modo_exato
+    title: "Cópia Comum ou Cópia Exata?"
+    type: info
+    deps: [auto_invocador]
+    icon: MineFactoryReloaded:machine.1:9
+    desc: |
+      O Auto-Invocador tem dois modos (botão na interface):
+
+      §e• Comum:§r cria um mob "novo" da mesma espécie, sem o equipamento e sem os dados da
+      criatura capturada. Custo base.
+      §e• Exato:§r copia a criatura com os dados dela (equipamento incluído). Pela config do
+      pack, custa §e5 vezes mais§r trabalho.
+
+      O custo de cada criatura depende da experiência que ela vale. Mobs "caros" consomem
+      Essência rapidinho, então garanta um fluxo constante do Triturador de volta para o
+      Invocador.
+    tasks:
+      - check
+    rewards:
+      - xp: 1
+
+  - id: matadouro
+    title: "Matadouro"
+    type: normal
+    deps: [triturador_mobs]
+    icon: MineFactoryReloaded:machine.1:13
+    desc: |
+      O primo sem enfeites do Triturador. O §eMatadouro§r processa os animais da área e, em
+      vez de drops, enche dois tanques: §eCarne§r (fluido) e, de vez em quando,
+      §eGosma Rosa§r.
+
+      Receita: Engrenagem de Invar, 2 Espadas de Invar, 2 Machados de Invar, plástico,
+      Estrutura e Bobina. Parece estranho? É. Mas a Gosma Rosa é a chave da Broca Laser, lá
+      no fim do capítulo.
+    tasks:
+      - get: MineFactoryReloaded:machine.1:13
+    rewards:
+      - xp: 3
+      - item: ore:ingotInvar x3
+
+  - id: balde_carne
+    title: "Carne Líquida"
+    type: optional
+    deps: [matadouro]
+    icon: MineFactoryReloaded:bucket.meat
+    desc: |
+      Um balde de §eCarne§r. Não pergunte, só aceite. Ela alimenta o Empacotador de Carne e
+      pode ser bebida com o Canudo (é... nutritiva).
+    tasks:
+      - get: MineFactoryReloaded:bucket.meat
+    rewards:
+      - loot: comum
+
+  - id: empacotador_carne
+    title: "Empacotador de Carne"
+    type: optional
+    deps: [balde_carne]
+    icon: MineFactoryReloaded:machine.1:14
+    desc: |
+      O §eEmpacotador de Carne§r (Ignição por Flux do Thermal, tijolos, plástico, Estrutura e
+      Bobina) prensa o fluido Carne em §eBarras e Pepitas de Carne Crua§r. Na fornalha elas
+      ficam cozidas — comida infinita para a fábrica toda.
+    tasks:
+      - get: MineFactoryReloaded:machine.1:14
+    rewards:
+      - loot: comum
+
+  - id: lingote_carne
+    title: "Lingote de Carne"
+    type: optional
+    deps: [empacotador_carne]
+    icon: MineFactoryReloaded:meat.ingot.cooked
+    desc: |
+      Um "lingote" de carne cozida. Ele está no oredict de carnes (listAllmeat), então serve
+      até em receitas de culinária de outros mods. Coma um em homenagem à engenharia
+      alimentar. §aSabor:§r industrial.
+    tasks:
+      - get: MineFactoryReloaded:meat.ingot.cooked x4
+    rewards:
+      - loot: comum
+
+  - id: gosma_rosa
+    title: "Gosma Rosa"
+    type: normal
+    deps: [matadouro]
+    icon: MineFactoryReloaded:pinkslime
+    desc: |
+      O fluido §eGosma Rosa§r do Matadouro tem um comportamento curioso: §ecolocado no mundo,
+      ele dá origem a Gosmas Rosas§r — slimes cor-de-rosa! Elas soltam §eBolas de Gosma Rosa§r
+      ao morrer (que também valem como bola de gosma comum no oredict).
+
+      Faça um "laguinho" de gosma rosa num cercado e deixe um Triturador por perto. Junte
+      §e9 Bolas de Gosma Rosa§r.
+    tasks:
+      - get: MineFactoryReloaded:pinkslime x9
+    rewards:
+      - xp: 3
+      - item: minecraft:slime_ball x4
+
+  - id: cristal_gosma
+    title: "Cristal de Gosma Rosa"
+    type: normal
+    deps: [gosma_rosa]
+    icon: MineFactoryReloaded:pinkslime:1
+    desc: |
+      9 Bolas de Gosma Rosa = 1 Bloco de Gosma Rosa. Leve o bloco à fornalha e ele vira um
+      §eCristal de Gosma Rosa§r.
+
+      Guarde-o com carinho: ele é o ingrediente central do §ePrecarregador da Broca Laser§r.
+      (Viu? Eu disse que a gosma rosa tinha propósito!)
+    tasks:
+      - get: MineFactoryReloaded:pinkslime:1
+    rewards:
+      - xp: 3
+      - item: MineFactoryReloaded:pinkslime x4
+
+  - id: contador_mobs
+    title: "Contador de Mobs"
+    type: optional
+    deps: [triturador_mobs]
+    icon: MineFactoryReloaded:machine.2:8
+    desc: |
+      O §eContador de Mobs§r emite um sinal de redstone analógico proporcional ao número de
+      criaturas no alcance. Use-o para desligar o Auto-Invocador quando a sala encher ou
+      ligar o Acasalador quando o rebanho diminuir. Automação com bom senso!
+    tasks:
+      - get: MineFactoryReloaded:machine.2:8
+    rewards:
+      - loot: comum
+
+  - id: roteador_mobs
+    title: "Roteador de Mobs"
+    type: optional
+    deps: [cronotipador, roteador_itens]
+    icon: MineFactoryReloaded:machine.2:12
+    desc: |
+      O §eRoteador de Mobs§r é como um Roteador de Itens, só que para criaturas: ele move os
+      mobs da área conforme os filtros (Redes de Safari no inventário indicam quais tipos).
+      Receita: um Roteador de Itens e um Cronotipador no meio de plástico e barras de ferro.
+      Para os fazendeiros mais organizados do Registro.
+    tasks:
+      - get: MineFactoryReloaded:machine.2:12
+    rewards:
+      - loot: incomum
+
+  - id: portainvocador
+    title: "PortaInvocador"
+    type: optional
+    deps: [auto_invocador]
+    icon: MineFactoryReloaded:portaspawner
+    desc: |
+      Achou um gerador de monstros (spawner) numa masmorra e queria levá-lo para casa? O
+      §ePortaInvocador§r pega spawners do mundo e permite recolocá-los em outro lugar.
+
+      Caro: uma §eEstrela do Nether§r, 2 lingotes de Enderium, 4 de Invar e vidro. E, segundo
+      a config, usado num carrinho de mina vazio ele cria um carrinho-spawner!
+      §cDica:§r depois de usar, ele precisa de um tempo para recarregar antes de colocar de novo.
+    tasks:
+      - get: MineFactoryReloaded:portaspawner
+    rewards:
+      - loot: incomum
+
+  - id: fazenda_mobs
+    title: "A Fazenda de Criaturas"
+    type: milestone
+    deps: [triturador_mobs, auto_invocador, essencia]
+    icon: MineFactoryReloaded:machine.1:9
+    banner: "A Fazenda de Criaturas"
+    subtitle: "Capturar, invocar, triturar"
+    desc: |
+      Uma Rede de Safari com um mob dentro, um Auto-Invocador cuspindo cópias, um Triturador
+      transformando tudo em drops e Essência... e a Essência voltando para o Invocador. Herói,
+      isso é um §emotor perpétuo de criaturas§r (quase — a energia ainda é sua).
+
+      O que dá para fazer com isso:
+      §e• Blazes:§r varas incandescentes infinitas, sem pisar no Nether.
+      §e• Endermen:§r pérolas do Fim para as Redes Reutilizáveis.
+      §e• Bruxas, Esqueletos, Slimes:§r redstone, ossos, gosma.
+
+      §cCuidado com o lag:§r limite o número de mobs vivos (Contador de Mobs + redstone) e
+      deixe o Coletor de Itens sempre com espaço para descarregar.
+    tasks:
+      - get: [MineFactoryReloaded:machine.0:13, MineFactoryReloaded:machine.1:9, MineFactoryReloaded:bucket.essence]
+    rewards:
+      - xp: 8
+      - kit: {name: "Kit do Domador de Criaturas", items: [MineFactoryReloaded:safarinet.reusable x1, MineFactoryReloaded:safarinet.singleuse x6, MineFactoryReloaded:upgrade.radius:3 x1, minecraft:ender_pearl x4, MineFactoryReloaded:tank x2]}
+      - loot: raro
+
+  # ======================================================================
+  # FASE 6 — ENCANTAMENTO E OFICINA AUTOMÁTICA
+  # ======================================================================
+  - id: auto_encantador
+    title: "Auto-Encantador"
+    type: normal
+    deps: [essencia]
+    icon: MineFactoryReloaded:machine.0:14
+    desc: |
+      Encantar sem gastar os próprios níveis? Sim, por favor!
+
+      O §eAuto-Encantador§r (obsidiana, 2 livros, 2 diamantes, plástico, Estrutura e Bobina)
+      encanta os itens colocados nele usando §eEssência§r e RF no lugar dos seus níveis. Na
+      interface você escolhe o nível do encantamento desejado.
+
+      Combine com uma Fazenda de Criaturas e você nunca mais precisa juntar XP à mão.
+    tasks:
+      - get: MineFactoryReloaded:machine.0:14
+    rewards:
+      - xp: 3
+      - item: minecraft:book x8
+
+  - id: auto_desencantador
+    title: "Auto-Desencantador"
+    type: optional
+    deps: [auto_encantador]
+    icon: MineFactoryReloaded:machine.1:12
+    desc: |
+      O §eAuto-Desencantador§r faz o caminho de volta: tira os encantamentos de um item e os
+      coloca em livros (precisa de livros comuns no slot). Neste pack ele §enão gasta
+      Essência§r, só energia (config). Ótimo para reaproveitar aquela espada podre com
+      Saque III.
+    tasks:
+      - get: MineFactoryReloaded:machine.1:12
+    rewards:
+      - loot: comum
+
+  - id: auto_bigorna
+    title: "Auto-Bigorna"
+    type: optional
+    deps: [auto_encantador]
+    icon: MineFactoryReloaded:machine.2:2
+    desc: |
+      A §eAuto-Bigorna§r (2 bigornas, plástico, Estrutura, Bobina e Engrenagens de Ferro)
+      combina itens e livros encantados como uma bigorna comum — mas paga o custo com
+      Essência em vez dos seus níveis. Ela também repara ferramentas com o material certo.
+    tasks:
+      - get: MineFactoryReloaded:machine.2:2
+    rewards:
+      - loot: comum
+
+  - id: roteador_encantamentos
+    title: "Roteador de Encantamentos"
+    type: optional
+    deps: [auto_desencantador]
+    icon: MineFactoryReloaded:machine.1:15
+    desc: |
+      Uma "triagem" de livros encantados: o §eRoteador de Encantamentos§r manda cada item para
+      um lado conforme os encantamentos que ele tem, segundo os filtros que você define.
+      Junte com o Desencantador e organize a biblioteca de encantamentos automaticamente.
+    tasks:
+      - get: MineFactoryReloaded:machine.1:15
+    rewards:
+      - loot: comum
+
+  - id: esmagador_blocos
+    title: "Esmagador de Blocos"
+    type: optional
+    deps: [auto_encantador, marreta]
+    icon: MineFactoryReloaded:machine.2:3
+    desc: |
+      O §eEsmagador de Blocos§r (2 Marretas de Precisão, pistão, livros, Estrutura e Bobina)
+      "quebra" itens de bloco como se fosse uma picareta com §eFortuna§r — o nível de Fortuna
+      é escolhido na interface e pago com §eEssência§r.
+
+      Minério de diamante/esmeralda/redstone virando várias gemas sem você levantar a picareta.
+      Confira no NEI quais blocos ele aceita.
+    tasks:
+      - get: MineFactoryReloaded:machine.2:3
+    rewards:
+      - loot: incomum
+
+  - id: auto_fermentador
+    title: "Auto-Fermentador"
+    type: optional
+    deps: [tubo_plastico, estrutura_maquina]
+    icon: MineFactoryReloaded:machine.2:5
+    desc: |
+      Um alquimista que nunca se cansa: o §eAuto-Fermentador§r (suporte de poções, tubos,
+      repetidores, plástico, Estrutura e Bobina) prepara poções em sequência, ingrediente por
+      ingrediente, conforme você organiza os slots. Água entra por tubo.
+    tasks:
+      - get: MineFactoryReloaded:machine.2:5
+    rewards:
+      - loot: comum
+
+  # ======================================================================
+  # FASE 7 — LOGÍSTICA
+  # ======================================================================
+  - id: esteira
+    title: "Esteiras Transportadoras"
+    type: main
+    deps: [barra_borracha]
+    icon: MineFactoryReloaded:conveyor:16
+    desc: |
+      Toda fábrica que se preze tem esteira! 3 borrachas, 2 redstones e 1 ferro rendem
+      §e16 Esteiras Transportadoras§r.
+
+      Elas movem itens §ee criaturas§r na direção em que foram colocadas (gire com a Marreta).
+      Um sinal de redstone as para. §aTruque:§r clique direito numa esteira com §epó de
+      glowstone§r para deixá-la §erápida§r para sempre.
+      Esteiras também levam mobs até o Triturador. Hehe.
+    tasks:
+      - get: MineFactoryReloaded:conveyor:16 x16
+    rewards:
+      - xp: 4
+      - choice: [minecraft:glowstone_dust x16, MineFactoryReloaded:rubber.bar x8, minecraft:redstone x16]
+
+  - id: esteira_colorida
+    title: "Esteiras Coloridas"
+    type: optional
+    deps: [corante_ceramico]
+    icon: MineFactoryReloaded:conveyor:14
+    desc: |
+      Uma esteira + um §eCorante de Cerâmica§r na bancada = esteira colorida (16 cores). É
+      só estética... ou é a melhor forma de lembrar qual linha leva o quê. Vermelho para
+      minérios, verde para a fazenda, roxo para os mobs!
+    tasks:
+      - one_of: [MineFactoryReloaded:conveyor, MineFactoryReloaded:conveyor:1, MineFactoryReloaded:conveyor:2, MineFactoryReloaded:conveyor:3, MineFactoryReloaded:conveyor:4, MineFactoryReloaded:conveyor:5, MineFactoryReloaded:conveyor:6, MineFactoryReloaded:conveyor:7, MineFactoryReloaded:conveyor:8, MineFactoryReloaded:conveyor:9, MineFactoryReloaded:conveyor:10, MineFactoryReloaded:conveyor:11, MineFactoryReloaded:conveyor:12, MineFactoryReloaded:conveyor:13, MineFactoryReloaded:conveyor:14, MineFactoryReloaded:conveyor:15]
+    rewards:
+      - loot: comum
+
+  - id: corante_ceramico
+    title: "Corantes de Cerâmica"
+    type: optional
+    deps: [esteira]
+    icon: MineFactoryReloaded:ceramicdye:11
+    desc: |
+      Os §eCorantes de Cerâmica§r do MFR tingem esteiras, vidro e vidraças do mod. Confira a
+      receita no NEI (tecla R no corante) e faça qualquer cor. Com eles você também faz o
+      Vidro Tingido do MFR, que entra na receita dos Focos de Laser!
+    tasks:
+      - get: MineFactoryReloaded:ceramicdye:*
+    rewards:
+      - loot: comum
+
+  - id: ejetor
+    title: "Ejetor"
+    type: normal
+    deps: [estrutura_maquina]
+    icon: MineFactoryReloaded:machine.1
+    desc: |
+      O §eEjetor§r puxa itens do inventário que está atrás dele e os cospe pela frente — num
+      tubo, numa esteira ou no chão. A receita rende 8 (plástico, Servo Pneumático, redstone e
+      Estrutura). É a "boca" da sua logística: tire itens de baús e máquinas sem pensar duas
+      vezes.
+    tasks:
+      - get: MineFactoryReloaded:machine.1
+    rewards:
+      - xp: 2
+      - item: minecraft:redstone x8
+
+  - id: roteador_itens
+    title: "Roteador de Itens"
+    type: normal
+    deps: [ejetor]
+    icon: MineFactoryReloaded:machine.1:1
+    desc: |
+      O §eRoteador de Itens§r (8 por receita, com 3 Multímetros do Thermal) decide para que lado
+      cada item vai: na interface, cada direção tem uma grade de filtro. O que bater com o
+      filtro de um lado vai para lá; o resto segue o padrão.
+
+      Use-o no fim de uma esteira para separar madeira, mudas e borracha da fazenda.
+    tasks:
+      - get: MineFactoryReloaded:machine.1:1
+    rewards:
+      - xp: 2
+      - item: minecraft:chest x4
+
+  - id: roteador_liquidos
+    title: "Roteador de Líquidos"
+    type: optional
+    deps: [roteador_itens, tubo_plastico]
+    icon: MineFactoryReloaded:machine.1:2
+    desc: |
+      O mesmo conceito do Roteador de Itens, para fluidos: coloque um recipiente cheio (um
+      balde de Esgoto, por exemplo) no slot de um lado e aquele fluido passa a ir para lá.
+      Indispensável quando lodo, esgoto, essência e leite dividem o mesmo cano.
+    tasks:
+      - get: MineFactoryReloaded:machine.1:2
+    rewards:
+      - loot: comum
+
+  - id: unificador
+    title: "Unificador"
+    type: optional
+    deps: [roteador_itens]
+    icon: MineFactoryReloaded:machine.1:8
+    desc: |
+      Cinco tipos de cobre no baú, cada um de um mod? O §eUnificador§r converte itens do
+      mesmo oredict para uma única versão. A config já evita mexer em coisas com mais de um
+      nome no oredict (e em alguns corantes, água e leite). Organização é amor!
+    tasks:
+      - get: MineFactoryReloaded:machine.1:8
+    rewards:
+      - loot: comum
+
+  - id: liquifabricador
+    title: "LiquiFabricador"
+    type: optional
+    deps: [roteador_liquidos]
+    icon: MineFactoryReloaded:machine.1:4
+    desc: |
+      Uma bancada automática que entende fluidos: o §eLiquiFabricador§r fabrica a receita
+      montada na grade dele usando ingredientes dos slots e §efluidos dos tanques internos§r
+      no lugar de baldes. Perfeito para receitas que pedem "um balde de algo".
+    tasks:
+      - get: MineFactoryReloaded:machine.1:4
+    rewards:
+      - loot: comum
+
+  - id: trilhos_carga
+    title: "Trilhos de Carga"
+    type: optional
+    deps: [folhas_plastico]
+    icon: MineFactoryReloaded:rail.cargo.pickup
+    desc: |
+      O §eTrilho de Embarque de Carga§r tira itens dos baús vizinhos e coloca no carrinho com
+      baú que passa por ele; o §eTrilho de Desembarque§r faz o contrário. Um sistema de
+      trem de carga entre a fazenda e o armazém, sem tubo nenhum!
+    tasks:
+      - get: [MineFactoryReloaded:rail.cargo.pickup, MineFactoryReloaded:rail.cargo.dropoff]
+    rewards:
+      - loot: comum
+
+  - id: trilhos_passageiros
+    title: "Trilhos de Passageiros"
+    type: optional
+    deps: [trilhos_carga]
+    icon: MineFactoryReloaded:rail.passenger.pickup
+    desc: |
+      O §eTrilho de Embarque de Passageiros§r coloca no carrinho um jogador que estiver por
+      perto; o de §eDesembarque§r o solta perto do trilho. Metrô da base, Herói!
+    tasks:
+      - get: [MineFactoryReloaded:rail.passenger.pickup, MineFactoryReloaded:rail.passenger.dropoff]
+    rewards:
+      - loot: comum
+
+  - id: estrada
+    title: "Estradas e Luzes"
+    type: optional
+    deps: [folhas_plastico]
+    icon: MineFactoryReloaded:road
+    desc: |
+      Tijolos de pedra + Folha de Plástico = §e16 blocos de Estrada§r, que deixam você mais
+      rápido ao andar sobre eles. Quatro estradas e uma lâmpada de redstone viram §eLuzes de
+      Estrada§r (há a versão invertida, que acende sem sinal). Ruas iluminadas para a cidade
+      industrial!
+    tasks:
+      - get: [MineFactoryReloaded:road x16, MineFactoryReloaded:road:1]
+    rewards:
+      - loot: comum
+
+  - id: andaime_vinhas
+    title: "Andaime de Vinhas"
+    type: optional
+    deps: [esteira]
+    icon: MineFactoryReloaded:vinescaffold
+    desc: |
+      Seis vinhas = §e8 Andaimes de Vinhas§r. Dá para subir neles como numa escada, e
+      colocar um sobre o outro muito rápido. Construir a torre da Broca Laser ficou mais
+      fácil!
+    tasks:
+      - get: MineFactoryReloaded:vinescaffold x8
+    rewards:
+      - loot: comum
+
+  - id: auto_jukebox
+    title: "Auto-Jukebox"
+    type: optional
+    deps: [estrutura_maquina]
+    icon: MineFactoryReloaded:machine.1:7
+    desc: |
+      Toda fábrica precisa de trilha sonora. A §eAuto-Jukebox§r toca discos e pode ser
+      controlada por redstone; com um §eDisco em Branco§r (papel + plástico cru) ela até grava
+      cópias do disco que estiver tocando. Faça os dois e escolha a música da linha de
+      produção!
+    tasks:
+      - get: [MineFactoryReloaded:machine.1:7, MineFactoryReloaded:record.blank]
+    rewards:
+      - loot: comum
+
+  # ======================================================================
+  # FASE 8 — REDNET
+  # ======================================================================
+  - id: cabo_rednet
+    title: "Cabo RedNet"
+    type: main
+    deps: [tubo_plastico]
+    icon: MineFactoryReloaded:cable.redstone
+    desc: |
+      Redstone comum leva §eum§r sinal por fio. O §eCabo RedNet§r leva §e16 sinais ao mesmo
+      tempo§r, um por cor, num único cabo!
+
+      Receita: 6 Folhas de Plástico + 3 redstones = 8 cabos (ou 5 Tubos de Plástico + 2
+      redstones = 5 cabos). Clique num lado com a Marreta para trocar o modo de conexão
+      (padrão, forçada, forte ou só-cabo). Máquinas do MFR entendem RedNet direto: dá para
+      ligar e desligar cada uma por uma cor diferente.
+    tasks:
+      - get: MineFactoryReloaded:cable.redstone x8
+    rewards:
+      - xp: 4
+      - choice: [minecraft:redstone x32, MineFactoryReloaded:plastic.sheet x16, minecraft:redstone_block x2]
+
+  - id: rednet_info
+    title: "Como Pensar em RedNet"
+    type: info
+    deps: [cabo_rednet]
+    icon: MineFactoryReloaded:cable.redstone
+    desc: |
+      Uma aulinha rápida (eu adoro essa parte!):
+
+      §e• Subredes:§r cada um dos 16 corantes é um "canal". Um sinal na cor Laranja só afeta
+      quem escuta Laranja.
+      §e• Nós:§r blocos que entendem RedNet (máquinas do MFR, Historiador, Controlador) leem e
+      escrevem nas cores; blocos comuns recebem/enviam redstone normal pela cor configurada.
+      §e• Medidor:§r clique no cabo para ver os valores de cada subrede.
+      §e• Controlador Programável (CRP):§r um "computador lógico" que lê as cores, passa por
+      circuitos (AND, OR, contadores, temporizadores, multiplicadores...) e escreve o
+      resultado em outras cores.
+
+      O manual completo vem com o próprio Controlador (o "PRC Owner's Manual").
+    tasks:
+      - check
+    rewards:
+      - xp: 1
+
+  - id: medidor_rednet
+    title: "Medidor RedNet"
+    type: normal
+    deps: [cabo_rednet]
+    icon: MineFactoryReloaded:rednet.meter
+    desc: |
+      O §eMedidor RedNet§r (pepita de electrum, redstone e plástico) é o multímetro da RedNet:
+      clique num cabo e o chat lista o valor de cada subrede (ou avisa que estão todas em 0).
+      Debugar sem ele é como procurar uma agulha num palheiro... de redstone.
+    tasks:
+      - get: MineFactoryReloaded:rednet.meter
+    rewards:
+      - xp: 2
+      - item: minecraft:redstone x16
+
+  - id: multimedidor
+    title: "Multimedidor RedNet"
+    type: optional
+    deps: [medidor_rednet]
+    icon: MineFactoryReloaded:rednet.meter:1
+    desc: |
+      Um Medidor turbinado com Bobina Condutora de Redstone e cobre: o §eMultimedidor§r também
+      lê as variáveis internas do Controlador Programável e o pó de redstone comum. Para os
+      programadores de CRP, é indispensável.
+    tasks:
+      - get: MineFactoryReloaded:rednet.meter:1
+    rewards:
+      - loot: comum
+
+  - id: cabo_rednet_energia
+    title: "Cabo RedNet de Energia"
+    type: optional
+    deps: [cabo_rednet]
+    icon: MineFactoryReloaded:cable.redstone:2
+    desc: |
+      Por que dois cabos se dá para ter um? O §eCabo RedNet de Energia§r carrega os 16 sinais
+      §ee§r energia RF ao mesmo tempo. Receita sem forma: Cabo RedNet + pepitas de electrum +
+      redstone (ou 6 cabos + lingotes de electrum + bloco de redstone para 6 de uma vez).
+    tasks:
+      - get: MineFactoryReloaded:cable.redstone:2
+    rewards:
+      - loot: comum
+
+  - id: encaixe_prc
+    title: "Encaixe do Controlador"
+    type: normal
+    deps: [medidor_rednet]
+    icon: MineFactoryReloaded:machineblock:1
+    desc: |
+      Antes do cérebro, a caixa do cérebro: o §eEncaixe do Controlador Programável de RedNet§r
+      (plástico, redstone, vidro e ferro). Sozinho ele não faz nada — é a carcaça do CRP, a
+      próxima quest.
+    tasks:
+      - get: MineFactoryReloaded:machineblock:1
+    rewards:
+      - xp: 2
+      - item: minecraft:gold_ingot x2
+
+  - id: prc
+    title: "Controlador Programável de RedNet"
+    type: main
+    deps: [encaixe_prc]
+    icon: MineFactoryReloaded:rednet.logic
+    desc: |
+      O §eControlador Programável de RedNet (CRP)§r é um pequeno computador de lógica:
+      diamante, ouro, lápis, redstone e plástico em volta do Encaixe.
+
+      Abra a interface, escolha um circuito para cada "slot" (portas lógicas, flip-flops,
+      contadores, temporizadores, somadores, multiplicadores...) e ligue as entradas e saídas
+      às cores dos cabos. Exemplo clássico: "se o Contador de Mobs passar de X, desligue o
+      Auto-Invocador".
+
+      §aDica:§r o tooltip lembra — "se estiver perdido, leia o manual interno".
+    tasks:
+      - get: MineFactoryReloaded:rednet.logic
+    rewards:
+      - xp: 4
+      - choice: [minecraft:diamond x2, minecraft:gold_ingot x6, minecraft:lapis_block x2]
+
+  - id: lx100
+    title: "Cartão de Expansão LX-100"
+    type: normal
+    deps: [prc]
+    icon: MineFactoryReloaded:upgrade.logic
+    desc: |
+      O CRP vem com poucos slots de circuito. Os §eCartões de Expansão de Lógica§r aumentam
+      a capacidade dele. O primeiro, §eLX-100§r, leva ouro, redstone e plástico. Coloque-o no
+      Controlador e ganhe espaço para programas maiores.
+    tasks:
+      - get: MineFactoryReloaded:upgrade.logic
+    rewards:
+      - xp: 2
+      - item: minecraft:gold_ingot x4
+
+  - id: lx300
+    title: "Cartão de Expansão LX-300"
+    type: optional
+    deps: [lx100]
+    icon: MineFactoryReloaded:upgrade.logic:1
+    desc: |
+      O LX-100 cercado de ouro, plástico e redstone vira o §eLX-300§r: ainda mais circuitos.
+      Ele também é peça do Lança-SPAM, a arma mais exagerada do MFR.
+    tasks:
+      - get: MineFactoryReloaded:upgrade.logic:1
+    rewards:
+      - loot: comum
+
+  - id: lx500
+    title: "Cartão de Expansão LX-500"
+    type: optional
+    deps: [lx300]
+    icon: MineFactoryReloaded:upgrade.logic:2
+    desc: |
+      O topo da linha: o §eLX-500§r (o LX-300 com diamantes, ouro e redstone). Com ele, o CRP
+      vira praticamente um processador. Também vai no Lança-SPAM.
+    tasks:
+      - get: MineFactoryReloaded:upgrade.logic:2
+    rewards:
+      - loot: incomum
+
+  - id: cartao_memoria
+    title: "Cartão de Memória CRP"
+    type: optional
+    deps: [prc]
+    icon: MineFactoryReloaded:rednet.memorycard
+    desc: |
+      Programou um CRP perfeito? Copie! O §eCartão de Memória CRP§r grava o programa de um
+      Controlador e o carrega em outro (o destino precisa ter circuitos suficientes). Na
+      bancada sozinho, ele é apagado.
+    tasks:
+      - get: MineFactoryReloaded:rednet.memorycard
+    rewards:
+      - loot: comum
+
+  - id: historiador
+    title: "Historiador RedNet"
+    type: optional
+    deps: [cabo_rednet]
+    icon: MineFactoryReloaded:rednet.panel
+    desc: |
+      Um painel com gráfico! O §eHistoriador RedNet§r mostra a variação de uma subrede ao longo
+      do tempo, como um osciloscópio. Lindo para acompanhar o nível de um tanque ou a
+      contagem de mobs.
+    tasks:
+      - get: MineFactoryReloaded:rednet.panel
+    rewards:
+      - loot: comum
+
+  - id: rednote
+    title: "Bloco de RedNote"
+    type: optional
+    deps: [cabo_rednet]
+    icon: MineFactoryReloaded:machine.2:4
+    desc: |
+      Um bloco musical que entende RedNet: o §eBloco de RedNote§r toca a nota correspondente
+      ao valor do sinal recebido. Programe uma melodia no CRP e a fábrica canta. (Eu não vou
+      parar de pedir música, Herói.)
+    tasks:
+      - get: MineFactoryReloaded:machine.2:4
+    rewards:
+      - loot: comum
+
+  - id: mestre_rednet
+    title: "A Rede Vermelha"
+    type: milestone
+    deps: [prc, lx100, medidor_rednet]
+    icon: MineFactoryReloaded:rednet.logic
+    banner: "A Rede Vermelha"
+    subtitle: "Dezesseis sinais, um só cabo"
+    desc: |
+      Cabos de 16 cores, um medidor na mão e um Controlador Programável pensando por você.
+      Herói, a sua fábrica agora tem um §esistema nervoso§r!
+
+      Algumas ideias para estrear o CRP:
+      §e• Fazenda inteligente:§r desligue o Fertilizador quando o baú de saída encher.
+      §e• Fazenda de criaturas:§r Contador de Mobs → comparação → liga/desliga o Invocador.
+      §e• Painel de controle:§r alavancas numa parede, uma cor para cada máquina.
+
+      Os Antigos usavam isso para governar fábricas do tamanho de cidades. Você está no
+      caminho certo.
+    tasks:
+      - get: [MineFactoryReloaded:rednet.logic, MineFactoryReloaded:upgrade.logic, MineFactoryReloaded:rednet.meter]
+    rewards:
+      - xp: 8
+      - kit: {name: "Kit do Programador RedNet", items: [MineFactoryReloaded:cable.redstone x32, MineFactoryReloaded:rednet.memorycard x1, minecraft:redstone_block x4, minecraft:gold_ingot x8, minecraft:diamond x2]}
+      - loot: raro
+
+  # ======================================================================
+  # FASE 9 — ARSENAL
+  # ======================================================================
+  - id: carregador_flechete
+    title: "Carregador de Flechete"
+    type: normal
+    deps: [folhas_plastico]
+    icon: MineFactoryReloaded:needlegun.ammo.empty
+    desc: |
+      A fábrica também se defende! Tudo começa com o §eCarregador de Flechete§r: 7 Folhas de
+      Plástico e 1 ferro rendem 4 carregadores vazios. Eles são a base de toda munição do
+      Flechete e até dos foguetes do Lança-SPAM.
+    tasks:
+      - get: MineFactoryReloaded:needlegun.ammo.empty x4
+    rewards:
+      - xp: 2
+      - item: minecraft:gunpowder x8
+
+  - id: municao_agulhas
+    title: "Munição de Agulhas"
+    type: normal
+    deps: [carregador_flechete]
+    icon: MineFactoryReloaded:needlegun.ammo.standard
+    desc: |
+      6 flechas + 2 pólvoras + 1 Carregador vazio = §eMunição de Flechete (Agulhas)§r. É a
+      munição padrão (e a base das munições líquidas). Cada carregador tem algumas rodadas
+      — o tooltip mostra quantas restam.
+    tasks:
+      - get: MineFactoryReloaded:needlegun.ammo.standard
+    rewards:
+      - xp: 2
+      - item: minecraft:arrow x16
+
+  - id: flechete
+    title: "Flechete"
+    type: main
+    deps: [municao_agulhas, luneta, lancador_rede]
+    icon: MineFactoryReloaded:needlegun
+    desc: |
+      O §eFlechete§r é a arma automática do MFR: plástico, uma §eLuneta§r, um §eLançador de
+      Rede de Safari§r, ferro e 2 cremes de magma.
+
+      Coloque um carregador de munição no inventário e dispare (clique direito). Cada tipo de
+      munição tem um efeito: agulhas comuns, metralha que atravessa, fogo, lava, lodo,
+      esgoto... e até uma bigorna. Sim. Uma bigorna.
+    tasks:
+      - get: MineFactoryReloaded:needlegun
+    rewards:
+      - xp: 4
+      - choice: [MineFactoryReloaded:needlegun.ammo.standard x3, minecraft:magma_cream x4, minecraft:gunpowder x16]
+
+  - id: municoes_especiais
+    title: "Munições Especiais"
+    type: optional
+    deps: [flechete]
+    icon: MineFactoryReloaded:needlegun.ammo.fire
+    desc: |
+      Escolha o seu "sabor":
+      §e• Metralha§r — 6 pederneiras + pólvora; atravessa alvos. Com isqueiro vira §eFogo§r.
+      §e• Lava, Lodo, Esgoto§r — Munição de Agulhas + Copo de Plástico + o balde do fluido.
+      §e• Bigorna§r — linha, TNT e uma bigorna. Esmaga tudo (inclusive a sua dignidade).
+      Faça qualquer uma.
+    tasks:
+      - one_of: [MineFactoryReloaded:needlegun.ammo.pierce, MineFactoryReloaded:needlegun.ammo.fire, MineFactoryReloaded:needlegun.ammo.lava, MineFactoryReloaded:needlegun.ammo.sludge, MineFactoryReloaded:needlegun.ammo.sewage, MineFactoryReloaded:needlegun.ammo.anvil]
+    rewards:
+      - loot: comum
+
+  - id: canhao_batatas
+    title: "Canhão de Batatas"
+    type: optional
+    deps: [tanque_plastico]
+    icon: MineFactoryReloaded:potatolauncher
+    desc: |
+      Tubos de Plástico, plástico e um Tanque de Plástico = §ePotato Cannon§r. Ele dispara...
+      batatas. Mais por diversão do que por eficiência — mas um Herói que nunca atirou uma
+      batata num Creeper não viveu de verdade.
+    tasks:
+      - get: MineFactoryReloaded:potatolauncher
+    rewards:
+      - loot: comum
+
+  - id: foguete
+    title: "Super Projétil Anti-Matéria"
+    type: normal
+    deps: [carregador_flechete]
+    icon: MineFactoryReloaded:rocket:1
+    desc: |
+      O nome é exagerado de propósito: §eSPAM§r. Plástico, TNT, 2 fogos de artifício e um
+      Carregador vazio rendem 2 foguetes comuns. Com um Cartão LX-100 eles viram a versão
+      §eGuiada§r, que persegue o alvo.
+
+      §cCuidado:§r pela config, o foguete §cexplode quando o combustível acaba§r — mesmo se
+      errar o alvo. Nada de disparar para cima perto de casa!
+    tasks:
+      - get: MineFactoryReloaded:rocket:1 x2
+    rewards:
+      - xp: 2
+      - item: minecraft:tnt x2
+
+  - id: foguete_guiado
+    title: "Foguete Guiado"
+    type: optional
+    deps: [foguete, lx100]
+    icon: MineFactoryReloaded:rocket
+    desc: |
+      Dois SPAM comuns + um Cartão LX-100 (ou a receita direta com o cartão) = §e2 Super
+      Projéteis Anti-Matéria Guiados§r. Mire num mob com o Lança-SPAM e o foguete corrige a
+      trajetória sozinho. Ciência!
+    tasks:
+      - get: MineFactoryReloaded:rocket
+    rewards:
+      - loot: comum
+
+  - id: lanca_spam
+    title: "Lança-SPAM"
+    type: main
+    deps: [flechete, foguete, lx300]
+    icon: MineFactoryReloaded:rocketlauncher
+    desc: |
+      A artilharia pesada do Registro! O §eLança-SPAM§r leva plástico, os Cartões LX-300 e
+      LX-500, 2 carrinhos de mina e um Flechete inteiro no centro.
+
+      Carregue foguetes no inventário e dispare. Com os foguetes guiados, segure a mira no
+      alvo até travar. §cExplosões destroem blocos§r — use longe da fábrica, por favor, ou eu
+      vou ter que reescrever aquela página de novo.
+    tasks:
+      - get: MineFactoryReloaded:rocketlauncher
+    rewards:
+      - xp: 5
+      - choice: [MineFactoryReloaded:rocket:1 x4, minecraft:tnt x8, minecraft:fireworks x8]
+
+  - id: arsenal_fabrica
+    title: "O Arsenal da Fábrica"
+    type: milestone
+    deps: [flechete, lanca_spam]
+    icon: MineFactoryReloaded:rocketlauncher
+    banner: "O Arsenal da Fábrica"
+    subtitle: "Plástico também protege"
+    desc: |
+      Flechete no cinto, Lança-SPAM nas costas. Quem disse que o povo da fábrica não sabe se
+      defender?
+
+      Lembre-se do que cada um faz melhor:
+      §e• Flechete:§r tiro rápido e munições especiais — fogo para zumbis, metralha para
+      grupos, bigorna para... situações especiais.
+      §e• Lança-SPAM:§r explosivos guiados para alvos grandes e voadores. Ótimo contra Ghasts
+      e Blazes que fogem da sua Fazenda de Criaturas.
+
+      §cE, por favor:§r nunca dentro de casa. O Registro agradece.
+    tasks:
+      - get: [MineFactoryReloaded:needlegun, MineFactoryReloaded:rocketlauncher]
+    rewards:
+      - xp: 8
+      - kit: {name: "Kit do Artilheiro", items: [MineFactoryReloaded:rocket x4, MineFactoryReloaded:needlegun.ammo.standard x4, MineFactoryReloaded:needlegun.ammo.pierce x2, minecraft:gunpowder x16, minecraft:tnt x4]}
+      - loot: raro
+
+  # ======================================================================
+  # FASE 10 — BROCA LASER, ARMAZENAMENTO PROFUNDO E CHUNKS
+  # ======================================================================
+  - id: foco_laser
+    title: "Foco de Laser"
+    type: normal
+    deps: [corante_ceramico]
+    icon: MineFactoryReloaded:laserfocus:11
+    desc: |
+      Um painel de Vidro Tingido do MFR, cercado de 4 esmeraldas e 4 pepitas de ouro =
+      §eFoco de Laser§r da mesma cor. São 16 focos, um por cor.
+
+      Dentro da Broca Laser, cada foco §eaumenta a chance de certos minérios§r saírem (a cor
+      "puxa" grupos de minério específicos). Para saber qual cor favorece o quê, abra o NEI
+      na Broca Laser ou nos focos (U/R). Faça qualquer foco por enquanto.
+    tasks:
+      - one_of: [MineFactoryReloaded:laserfocus, MineFactoryReloaded:laserfocus:1, MineFactoryReloaded:laserfocus:2, MineFactoryReloaded:laserfocus:3, MineFactoryReloaded:laserfocus:4, MineFactoryReloaded:laserfocus:5, MineFactoryReloaded:laserfocus:6, MineFactoryReloaded:laserfocus:7, MineFactoryReloaded:laserfocus:8, MineFactoryReloaded:laserfocus:9, MineFactoryReloaded:laserfocus:10, MineFactoryReloaded:laserfocus:11, MineFactoryReloaded:laserfocus:12, MineFactoryReloaded:laserfocus:13, MineFactoryReloaded:laserfocus:14, MineFactoryReloaded:laserfocus:15]
+    rewards:
+      - xp: 3
+      - item: minecraft:emerald x2
+
+  - id: broca_laser
+    title: "Broca Laser"
+    type: main
+    deps: [energia_fabrica]
+    icon: MineFactoryReloaded:machine.2
+    desc: |
+      Agora sim, Herói. A página mais famosa deste Volume: uma máquina que §etira minérios do
+      nada§r, disparando um laser até a rocha-mãe.
+
+      A §eBroca Laser§r leva 2 Iluminadores de Pedra Luminosa do Thermal, 2 Bobinas
+      Receptoras, 2 diamantes, um vidro endurecido e plástico. Ela é colocada §esobre um
+      buraco que desce até a rocha-mãe§r (ou até o vazio) — nenhum bloco no caminho.
+
+      Sozinha ela não faz nada: precisa ser "alimentada" por Precarregadores. Próxima página!
+    tasks:
+      - get: MineFactoryReloaded:machine.2
+    rewards:
+      - xp: 6
+      - choice: [minecraft:diamond x2, ThermalExpansion:material:1 x2, minecraft:glowstone x8]
+
+  - id: precarregador
+    title: "Precarregador da Broca Laser"
+    type: main
+    deps: [broca_laser, cristal_gosma]
+    icon: MineFactoryReloaded:machine.2:1
+    desc: |
+      O §ePrecarregador da Broca Laser§r é quem consome a energia: ele converte RF num feixe
+      que carrega a Broca. Receita: o §eCristal de Gosma Rosa§r, vidro endurecido, um
+      Iluminador, 2 Bobinas Condutoras de Redstone, diamante e plástico.
+
+      Coloque-o §ea um bloco de distância§r da Broca (é o que diz o tooltip) e ligue RF nele;
+      quando estiver no lugar certo, você vê o feixe ligando os dois. Mais precarregadores =
+      broca mais rápida. Cada minério custa bastante trabalho, então capriche na usina.
+    tasks:
+      - get: MineFactoryReloaded:machine.2:1
+    rewards:
+      - xp: 6
+      - choice: [ThermalExpansion:material:3 x2, minecraft:diamond x2, MineFactoryReloaded:pinkslime x9]
+
+  - id: laser_info
+    title: "Montando o Laser"
+    type: info
+    deps: [precarregador, foco_laser]
+    icon: MineFactoryReloaded:laserfocus:4
+    desc: |
+      Checklist da instalação (leia com calma, é caro errar):
+
+      §e1.§r Cave um poço de 1×1 até a rocha-mãe, sem nenhum bloco no caminho. Ou monte a
+      broca sobre o vazio.
+      §e2.§r Coloque a §eBroca Laser§r no topo do poço.
+      §e3.§r Coloque os §ePrecarregadores§r a um bloco de distância da Broca e ligue RF neles
+      (o feixe aparece quando estão bem posicionados).
+      §e4.§r Coloque §eFocos de Laser§r na Broca para direcionar os minérios.
+      §e5.§r Ligue um baú/tubo na Broca para recolher a produção.
+
+      §aDica:§r a Broca funciona sem foco nenhum (sorteio "neutro"). Os focos só mudam as
+      chances. Consulte o NEI para ver a lista de minérios possíveis.
+    tasks:
+      - check
+    rewards:
+      - xp: 2
+
+  - id: perfuracao_laser
+    title: "O Laser que Toca a Rocha-Mãe"
+    type: milestone
+    deps: [laser_info]
+    icon: MineFactoryReloaded:machine.2
+    banner: "O Laser que Toca a Rocha-Mãe"
+    subtitle: "Minérios saídos da luz"
+    effect: 4
+    desc: |
+      Uma coluna de luz atravessando o mundo inteiro até a rocha-mãe... e minérios saindo do
+      outro lado. Herói, eu fiquei arrepiada (e eu nem tenho pele).
+
+      Você reescreveu uma das páginas mais cobiçadas do Registro: §eminério sem mineração§r.
+      Agora é só otimizar:
+      §e• Energia:§r mais Precarregadores, mais RF. A usina de Bio-Combustível/Vapor vai
+      trabalhar dobrado.
+      §e• Focos:§r escolha as cores que puxam os minérios que faltam na sua base.
+      §e• Saída:§r Roteador de Itens separando tudo por tipo.
+
+      Combine com a Fazenda de Criaturas e o RedNet e você tem uma fábrica completa.
+    tasks:
+      - get: [MineFactoryReloaded:machine.2, MineFactoryReloaded:machine.2:1 x2]
+    rewards:
+      - xp: 12
+      - kit: {name: "Kit do Operador de Laser", items: [MineFactoryReloaded:laserfocus x1, MineFactoryReloaded:laserfocus:11 x1, MineFactoryReloaded:laserfocus:14 x1, ThermalExpansion:material:3 x2, minecraft:diamond x4]}
+      - loot: epico
+
+  - id: dsu
+    title: "Unidade de Armazenamento Profundo"
+    type: main
+    deps: [fazenda_automatica, roteador_itens]
+    icon: MineFactoryReloaded:machine.1:3
+    desc: |
+      A sua fazenda produz madeira aos milhares. Baús não dão conta. Chegou a hora da §eUnidade
+      de Armazenamento Profundo (DSU)§r: um único bloco que guarda uma quantidade absurda (na
+      casa dos bilhões) de §eum único tipo de item§r.
+
+      Receita cara no pack: §e4 Caixas Fortes Reforçadas§r do Thermal em volta de uma
+      §eEstrutura da Célula de Energia Ressonante (vazia)§r, com plástico. O tooltip mostra o
+      que tem dentro, e ela §enão perde o conteúdo§r ao ser desmontada.
+      Uma DSU para madeira, outra para pedregulho... e nunca mais "inventário cheio".
+    tasks:
+      - get: MineFactoryReloaded:machine.1:3
+    rewards:
+      - xp: 6
+      - choice: [ThermalExpansion:Strongbox:2 x1, minecraft:chest x8, MineFactoryReloaded:plastic x8]
+
+  - id: carregador_chunks
+    title: "Carregador de Chunks"
+    type: main
+    deps: [energia_fabrica, mestre_rednet]
+    icon: MineFactoryReloaded:machine.2:10
+    desc: |
+      Uma fábrica que para quando você vai explorar não é fábrica de verdade. O §eCarregador
+      de Chunks§r do MFR mantém os chunks ao redor carregados enquanto recebe RF.
+
+      É caríssimo: uma §eCélula de Energia Ressonante§r, 2 §eTesseratos§r, uma Estrutura da
+      Célula de Redstone (cheia), Bobina Condutora e Engrenagens de Electrum. O consumo de
+      energia cresce muito com o tamanho da área — comece pequeno! O limite de tickets do
+      Forge do servidor continua valendo (se passar, o chat avisa que este carregador não
+      pode funcionar).
+    tasks:
+      - get: MineFactoryReloaded:machine.2:10
+    rewards:
+      - xp: 6
+      - choice: [ThermalFoundation:material:135 x4, ore:ingotEnderium x2, minecraft:ender_pearl x8]
+
+  - id: mestre_fabrica
+    title: "Mestre da Fábrica Automática"
+    type: milestone
+    deps: [perfuracao_laser, dsu, fazenda_mobs, mestre_rednet]
+    icon: MineFactoryReloaded:machine.1:3
+    banner: "Mestre da Fábrica Automática"
+    subtitle: "O Volume da Fábrica está completo"
+    effect: 3
+    desc: |
+      Herói... olha para trás um segundo.
+
+      Tudo começou com um tronco de seringueira e um pouco de borracha crua. Depois vieram as
+      folhas de plástico, a primeira fazenda que funcionava sozinha, o lodo (eca), o
+      esgoto (eca²), o bio-combustível, o vapor. Vieram as Redes de Safari, as criaturas
+      invocadas, a Essência que encanta sem gastar níveis. Veio a RedNet, com seus 16 sinais
+      num cabo. E, por fim, um laser até a rocha-mãe e um armazém sem fundo.
+
+      §bO Volume da Fábrica Automática está reescrito.§r Esta página ajuda a acender o
+      §6Selo da Engrenagem§r — porque toda grande indústria do Registro precisa de quem
+      plante, colha e organize sem descanso.
+
+      Obrigada por cuidar tão bem das minhas máquinas. Agora... que tal ligar essa fábrica
+      toda a um sistema de armazenamento digital? O capítulo de Applied Energistics está
+      esperando!
+    tasks:
+      - get: [MineFactoryReloaded:machine.2, MineFactoryReloaded:machine.1:3, MineFactoryReloaded:machine.1:9, MineFactoryReloaded:rednet.logic]
+    rewards:
+      - xp: 15
+      - kit: {name: "Legado do Mestre da Fábrica", items: [MineFactoryReloaded:upgrade.radius:10 x2, MineFactoryReloaded:laserfocus:4 x1, MineFactoryReloaded:upgrade.logic:2 x1, MineFactoryReloaded:safarinet.reusable x2, MineFactoryReloaded:plastic x16]}
+      - loot: [epico x2]
