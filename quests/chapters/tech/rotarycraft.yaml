@@ -1,0 +1,3079 @@
+chapter:
+  id: rotarycraft
+  title: "RotaryCraft"
+  prefix: ""
+  order: 345
+  icon: RotaryCraft:rotarycraft_item_engine:2
+  desc: |
+    §bO Volume das Engrenagens.§r Potência de verdade: torque × velocidade = watts.
+    Aço HSLA, eixos, caixas de engrenagens, motores a vapor, etanol e jato, extração
+    de minério e ferramentas de rocha matriz. (RotaryCraft V33a, Reika)
+
+quests:
+  # ======================================================================
+  # FASE 0 — O MANUAL E A FÍSICA
+  # ======================================================================
+  - id: manual_rc
+    title: "O Manual RotaryCraft"
+    type: main
+    desc: |
+      Herói, este Volume é diferente de todos os outros. Aqui não existe "energia guardada
+      numa caixinha": existe §epotência mecânica§r, girando agora, ou não existe nada.
+
+      Você nasce com o §eManual RotaryCraft§r no inventário (a config do pack garante). Se
+      perdeu, ele sai de 6 papéis, 2 redstone e 1 lingote de ferro na bancada. Ele mostra
+      a receita, o consumo exato e as manhas de cada máquina — e é o manual mais completo
+      que eu conheço. Sério, leia antes de reclamar que algo "não funciona".
+
+      §aDica:§r a conquista do próprio mod se chama "Leia o manual, ao invés de cometer
+      erros básicos e chamá-los de bug". Eu não poderia concordar mais.
+    tasks:
+      - get: RotaryCraft:rotarycraft_item_handbook
+    rewards:
+      - xp: 4
+      - choice: [minecraft:iron_ingot x16, minecraft:coal x16, minecraft:redstone x16]
+
+  - id: info_torque
+    title: "Torque × Velocidade"
+    type: info
+    deps: [manual_rc]
+    icon: RotaryCraft:rotarycraft_item_meter
+    desc: |
+      A primeira página que eu consegui reescrever deste Volume foi uma conta simples:
+
+      §ePotência (W) = Torque (Nm) × Velocidade angular (rad/s)§r
+
+      * §bTorque§r é a "força" do giro: máquinas pesadas (Compactador, Quebrador de Rocha
+        Matriz) pedem muito torque.
+      * §bVelocidade§r é o quão rápido gira: centrífugas e o Fracionador pedem muita.
+      * Cada máquina tem um §eMÍNIMO§r de potência e, muitas vezes, um mínimo de torque OU de
+        velocidade. Abaixo disso, ela simplesmente não liga.
+
+      Os motores daqui giram rápido com pouco torque. Para trocar velocidade por torque
+      (ou o contrário) existem as §eCaixas de Engrenagens§r. Guarde esta conta: ela resolve
+      90% dos problemas do RotaryCraft.
+    tasks:
+      - check
+    rewards:
+      - xp: 1
+
+  - id: info_direcao
+    title: "Entrada Verde, Saída Vermelha"
+    type: info
+    deps: [manual_rc]
+    icon: RotaryCraft:rotarycraft_item_screwdriver
+    desc: |
+      Quase tudo aqui é §edirecional§r. Ao olhar para uma máquina, o jogo desenha uma caixa
+      §averde§r na(s) face(s) de entrada e §cvermelha§r na(s) de saída. Um eixo virado ao
+      contrário não transmite nada — e é a causa número um de "minha máquina não liga".
+
+      A §ePotência do eixo não se acumula§r: ela é usada no mesmo instante em que é gerada.
+      Um eixo desconectado continua "gastando" toda a potência do motor, só que à toa.
+      (É o oposto de um fio elétrico.)
+
+      A Chave de Fenda gira as máquinas depois de colocadas. §aDica:§r cobrir motores com um
+      arco de lã abafa o barulho — o manual tem uma página só sobre isso.
+    tasks:
+      - check
+    rewards:
+      - xp: 1
+
+  - id: info_limites
+    title: "Materiais que Quebram"
+    type: info
+    deps: [info_torque]
+    icon: RotaryCraft:rotarycraft_item_gearcraft:0
+    desc: |
+      §cEixos e caixas de engrenagens têm limite de carga§r — passou do limite, eles se
+      despedaçam com violência. A página "Limites" do Manual lista os valores; eu calculei os
+      do código deste pack para você ter uma ideia:
+
+      * Madeira: ~278 Nm e ~3.500 rad/s
+      * Pedra: ~950 Nm e ~11.500 rad/s
+      * §eAço: ~6.700 Nm e ~57.000 rad/s§r
+      * Liga de Tungstênio: ~9.500 Nm e ~314.000 rad/s
+      * Diamante: ~69.500 Nm e milhões de rad/s
+      * Rocha Matriz: infinito
+
+      Repare: a Turbina de Avião gira a 65.536 rad/s — acima do limite do aço! Volantes
+      (flywheels) também estouram se girarem rápido demais. Confira no Manual antes de
+      ligar algo grande.
+    tasks:
+      - check
+    rewards:
+      - xp: 1
+
+  # ======================================================================
+  # FASE 1 — AÇO HSLA
+  # ======================================================================
+  - id: forno_calor
+    title: "Forno de Calor"
+    type: main
+    deps: [manual_rc]
+    desc: |
+      Tudo no RotaryCraft é feito de §eAço HSLA§r, e aço nasce no §eForno de Calor§r (o
+      Blast Furnace do mod — a tradução chama assim). É uma das duas únicas máquinas que
+      saem da bancada comum: §e8 Tijolos de Pedra em volta de 1 Redstone§r.
+
+      §cO carvão dentro dele não é combustível!§r O forno precisa de uma fonte de calor
+      externa. Na próxima página eu explico como esquentá-lo.
+    tasks:
+      - get: RotaryCraft:rotarycraft_item_machine:45
+    rewards:
+      - xp: 4
+      - choice: [minecraft:iron_ingot x16, minecraft:gunpowder x8, minecraft:sand x32]
+
+  - id: aquecer_forno
+    title: "Seiscentos Graus"
+    type: info
+    deps: [forno_calor]
+    icon: minecraft:lava_bucket
+    desc: |
+      O aço só se forma com o forno a §e600 °C§r ou mais. No começo, o jeito mais simples
+      (conferido no código) é encostar §elava§r em uma face do forno: ela soma cerca de
+      600 °C à temperatura ambiente. §eFogo§r encostado soma mais um pouco.
+
+      Mais tarde, o §eAquecedor§r (colocado embaixo) e o §eFriccionador§r dão calor
+      controlado, e você vai precisar de §c1450 °C§r para os lingotes de rocha matriz.
+
+      §cCuidado:§r água ou gelo encostados resfriam o forno. E não deixe nada inflamável ao
+      lado da lava, por favor.
+    tasks:
+      - check
+    rewards:
+      - xp: 1
+
+  - id: aco_hsla
+    title: "Aço HSLA"
+    type: main
+    deps: [forno_calor]
+    icon: RotaryCraft:rotarycraft_item_shaftcraft:1
+    desc: |
+      Hora de forjar! No Forno de Calor quente (600 °C+):
+
+      * §ecarvão ou coque§r no slot da esquerda;
+      * §epólvora§r no slot de baixo à esquerda;
+      * §eareia§r no slot de cima à esquerda;
+      * §elingotes de ferro§r em qualquer um dos 9 slots do meio.
+
+      Quanto mais slots do meio cheios, maior a chance de bônus (até 50% de chance, com
+      bônus de até 100%). O NEI (aba "Blast Furnace") mostra a receita certinha.
+
+      Junte §e16 Lingotes de Aço HSLA§r. Você vai precisar de MUITOS — tudo aqui é aço.
+    tasks:
+      - get: RotaryCraft:rotarycraft_item_shaftcraft:1 x16
+    rewards:
+      - xp: 4
+      - choice: [minecraft:iron_ingot x24, minecraft:gunpowder x16, minecraft:coal x24]
+
+  - id: coque
+    title: "Carvão de Coque"
+    type: normal
+    deps: [forno_calor]
+    icon: RotaryCraft:rotarycraft_item_compacts:8
+    desc: |
+      Carvão sozinho no Forno de Calor vira §eCarvão de Coque§r. O coque é uma fonte de
+      carbono mais eficiente para o aço (o Manual confirma) e ainda queima melhor que carvão
+      numa fornalha comum.
+
+      Faça §e8 Carvões de Coque§r e use-os no lugar do carvão nas próximas fornadas.
+    tasks:
+      - get: RotaryCraft:rotarycraft_item_compacts:8 x8
+    rewards:
+      - xp: 2
+      - item: minecraft:coal x16
+
+  - id: bloco_aco
+    title: "Bloco de Aço"
+    type: optional
+    deps: [aco_hsla]
+    desc: |
+      Nove lingotes de HSLA formam um §eBloco de Aço§r — e o bloco volta a 9 lingotes na
+      bancada. Ótimo para guardar estoque (e para decorar a fábrica com cara de fábrica).
+    tasks:
+      - get: RotaryCraft:rotarycraft_block_deco
+    rewards:
+      - loot: comum
+
+  - id: sucata
+    title: "Sim para a Reciclagem"
+    type: optional
+    deps: [aco_hsla]
+    icon: RotaryCraft:rotarycraft_item_shaftcraft:10
+    desc: |
+      Trilhos, grades de ferro e até baldes velhos viram §eSucata de Ferro§r na bancada
+      (8 trilhos ou 8 grades = 3 sucatas; 1 balde = 3 sucatas). A sucata volta a ser lingote
+      de ferro na fornalha. É a conquista "Sim para Reciclagem"!
+
+      Ótimo destino para aquela pilha de trilhos de mineshaft que você pegou "por via das
+      dúvidas".
+    tasks:
+      - get: RotaryCraft:rotarycraft_item_shaftcraft:10 x3
+    rewards:
+      - loot: comum
+
+  - id: mesa_trabalho
+    title: "Mesa de Trabalho"
+    type: main
+    deps: [aco_hsla]
+    desc: |
+      §eTodas as máquinas do RotaryCraft§r (e do ReactorCraft e ElectriCraft) são montadas na
+      §eMesa de Trabalho§r — a bancada comum não serve (a config do pack mantém isso). A
+      exceção é ela mesma e o Forno de Calor.
+
+      Receita (bancada): Bancada de Trabalho em cima, Aço HSLA – Bloco de Tijolos – Aço HSLA
+      no meio, Laje de Pedra – Redstone – Laje de Pedra embaixo.
+
+      Use como uma bancada; para fabricar, clique no resultado ou dê um sinal de redstone.
+      Ela guarda os itens e também recarrega ferramentas de mola.
+    tasks:
+      - get: RotaryCraft:rotarycraft_item_machine:75
+    rewards:
+      - xp: 4
+      - choice: [RotaryCraft:rotarycraft_item_shaftcraft:1 x8, minecraft:redstone x16, minecraft:gold_ingot x8]
+
+  - id: fabricador_portatil
+    title: "Fabricador Portátil"
+    type: optional
+    deps: [mesa_trabalho]
+    desc: |
+      Uma bancada que cabe no bolso: o §eFabricador Portátil§r (bancada no meio, aço dos
+      lados, ouro em cima e embaixo) abre uma grade 3×3 em qualquer lugar. Não substitui a
+      Mesa de Trabalho para máquinas, mas salva viagens.
+    tasks:
+      - get: RotaryCraft:rotarycraft_item_handcraft
+    rewards:
+      - loot: comum
+
+  - id: chave_fenda
+    title: "Chave de Fenda"
+    type: main
+    deps: [aco_hsla]
+    desc: |
+      A ferramenta mais usada do mod. A §eChave de Fenda§r (aço, graveto e tábua) gira
+      máquinas já colocadas; com Shift faz a função secundária (trocar a Junção de Eixos
+      entre "unir" e "dividir", inverter caixas de engrenagens...). Ela gira até pistões e
+      escadas.
+
+      Coloque tudo no lugar e depois ajuste com ela. Eu juro que é mais fácil.
+    tasks:
+      - get: RotaryCraft:rotarycraft_item_screwdriver
+    rewards:
+      - xp: 4
+      - choice: [RotaryCraft:rotarycraft_item_shaftcraft:1 x6, minecraft:iron_ingot x16, minecraft:redstone x12]
+
+  - id: transdutor
+    title: "Transdutor Angular"
+    type: normal
+    deps: [chave_fenda]
+    desc: |
+      Clique com o §eTransdutor Angular§r em qualquer motor, eixo ou máquina e ele diz o
+      torque, a velocidade e a potência que estão passando ali. É o "multímetro" do
+      RotaryCraft — indispensável para descobrir onde o seu eixo está perdendo força.
+
+      Receita: tábuas em volta de uma redstone, 3 lingotes de HSLA na linha de baixo (confira no NEI).
+    tasks:
+      - get: RotaryCraft:rotarycraft_item_meter
+    rewards:
+      - xp: 3
+      - item: RotaryCraft:rotarycraft_item_shaftcraft:1 x4
+
+  - id: oculos_es
+    title: "Óculos de E/S"
+    type: optional
+    deps: [transdutor]
+    desc: |
+      Os §eÓculos de ES§r mostram sempre as faces de entrada e saída das máquinas, mesmo
+      sem olhar direto para elas. Para montagens grandes, é paz de espírito.
+    tasks:
+      - get: RotaryCraft:rotarycraft_item_iogoggles
+    rewards:
+      - loot: comum
+
+  - id: ferramentas_hsla
+    title: "Ferramentas de Aço HSLA"
+    type: optional
+    deps: [aco_hsla]
+    icon: RotaryCraft:rotarycraft_item_steelpick
+    desc: |
+      Aço HSLA também vira ferramenta: equivalem às de ferro, mas duram §e600 usos§r. Faça
+      Picareta, Machado e Pá — o formato é o de sempre, com lingotes de HSLA.
+    tasks:
+      - get: [RotaryCraft:rotarycraft_item_steelpick, RotaryCraft:rotarycraft_item_steelaxe, RotaryCraft:rotarycraft_item_steelshovel]
+    rewards:
+      - loot: comum
+
+  - id: arsenal_hsla
+    title: "Espada, Tesoura e Foice"
+    type: optional
+    deps: [ferramentas_hsla]
+    icon: RotaryCraft:rotarycraft_item_steelsickle
+    desc: |
+      Para completar o kit: §eEspada§r, §eTesoura§r e a §eFoice de Aço HSLA§r (que colhe
+      plantações numa área). Todas com a mesma durabilidade de 600 usos.
+    tasks:
+      - get: [RotaryCraft:rotarycraft_item_steelsword, RotaryCraft:rotarycraft_item_steelshears, RotaryCraft:rotarycraft_item_steelsickle]
+    rewards:
+      - loot: comum
+
+  - id: armadura_hsla
+    title: "Armadura de Aço HSLA"
+    type: optional
+    deps: [aco_hsla]
+    icon: RotaryCraft:rotarycraft_item_steelchest
+    desc: |
+      Um pouco melhor que a de ferro e bem mais durável, segundo o Manual. Se você vai
+      ficar ao lado de motores barulhentos e eixos que podem estourar, melhor estar vestido.
+    tasks:
+      - get: [RotaryCraft:rotarycraft_item_steelhelmet, RotaryCraft:rotarycraft_item_steelchest, RotaryCraft:rotarycraft_item_steellegs, RotaryCraft:rotarycraft_item_steelboots]
+    rewards:
+      - loot: comum
+
+  - id: painel_base
+    title: "Painel Base"
+    type: normal
+    deps: [aco_hsla]
+    icon: RotaryCraft:rotarycraft_item_shaftcraft
+    desc: |
+      Três lingotes de HSLA em linha = 3 §ePainéis Base§r. É a "chapa" das carcaças de
+      máquinas e de várias peças. Faça uma pilha razoável.
+    tasks:
+      - get: RotaryCraft:rotarycraft_item_shaftcraft x6
+    rewards:
+      - xp: 2
+      - item: RotaryCraft:rotarycraft_item_shaftcraft:1 x3
+
+  - id: engrenagem_aco
+    title: "Engrenagem de Aço"
+    type: normal
+    deps: [aco_hsla]
+    icon: RotaryCraft:rotarycraft_item_gearcraft:1
+    desc: |
+      Cinco lingotes de HSLA em "+" = 3 §eEngrenagens de Aço§r. (A tradução do jogo chama de
+      "Aço Engrenagem de Aço HSLA" — é ela mesma.) Engrenagens entram em caixas de
+      engrenagens, impelidores, compressores e volantes.
+    tasks:
+      - get: RotaryCraft:rotarycraft_item_gearcraft:1 x6
+    rewards:
+      - xp: 2
+      - item: RotaryCraft:rotarycraft_item_shaftcraft:1 x4
+
+  - id: haste_aco
+    title: "Haste de Aço"
+    type: normal
+    deps: [aco_hsla]
+    icon: RotaryCraft:rotarycraft_item_gearcraft
+    desc: |
+      Três lingotes de HSLA na diagonal = 3 §eHastes de Aço§r (Steel Shaft Unit). Elas são o
+      "miolo" dos eixos e das unidades de engrenagem.
+    tasks:
+      - get: RotaryCraft:rotarycraft_item_gearcraft x6
+    rewards:
+      - xp: 2
+      - item: RotaryCraft:rotarycraft_item_shaftcraft:1 x3
+
+  - id: nucleo_eixo
+    title: "Núcleo de Eixo"
+    type: normal
+    deps: [haste_aco]
+    icon: RotaryCraft:rotarycraft_item_gearcraft:7
+    desc: |
+      Duas hastes com um lingote de HSLA no meio formam o §eNúcleo de Eixo de Aço§r (Steel
+      Shaft Core). Guarde alguns: magnetizados, eles são o coração do Motor CA.
+    tasks:
+      - get: RotaryCraft:rotarycraft_item_gearcraft:7 x2
+    rewards:
+      - xp: 2
+      - item: RotaryCraft:rotarycraft_item_shaftcraft:1 x3
+
+  - id: esferas_rolamento
+    title: "Esferas de Rolamento"
+    type: normal
+    deps: [aco_hsla]
+    icon: RotaryCraft:rotarycraft_item_borecraft:10
+    desc: |
+      Quatro lingotes de HSLA em quadrado = §e16 Esferas de Rolamento§r. Oito delas em volta
+      de um lingote formam um §eRolamento de Aço§r, peça das caixas de engrenagens.
+    tasks:
+      - get: RotaryCraft:rotarycraft_item_borecraft:10 x16
+    rewards:
+      - xp: 2
+      - item: RotaryCraft:rotarycraft_item_shaftcraft:1 x2
+
+  - id: rolamento_aco
+    title: "Rolamento de Aço"
+    type: normal
+    deps: [esferas_rolamento]
+    icon: RotaryCraft:rotarycraft_item_gearcraft:6
+    desc: |
+      O §eRolamento de Aço§r (8 esferas + 1 HSLA) entra nas caixas de engrenagens. Mais
+      tarde, rolamentos de materiais melhores reduzem — ou eliminam — o consumo de
+      lubrificante (o Manual tem a página "Rolamentos").
+    tasks:
+      - get: RotaryCraft:rotarycraft_item_gearcraft:6 x2
+    rewards:
+      - xp: 2
+      - item: RotaryCraft:rotarycraft_item_shaftcraft:1 x3
+
+  - id: unidades_engrenagem
+    title: "Unidades de Engrenagem"
+    type: normal
+    deps: [engrenagem_aco, haste_aco]
+    icon: RotaryCraft:rotarycraft_item_gearcraft:2
+    desc: |
+      Engrenagens e hastes se combinam em §eUnidades de Engrenagem 2x§r; duas 2x (com
+      hastes) viram uma 4x, e assim por diante até 16x. Elas definem a relação da caixa de
+      engrenagens (2:1, 4:1, 8:1, 16:1).
+
+      Faça uma §eUnidade 2x§r e uma §eUnidade 4x§r de aço.
+    tasks:
+      - get: [RotaryCraft:rotarycraft_item_gearcraft:2, RotaryCraft:rotarycraft_item_gearcraft:3]
+    rewards:
+      - xp: 2
+      - item: RotaryCraft:rotarycraft_item_gearcraft:1 x3
+
+  - id: era_do_aco
+    title: "A Era do Aço"
+    type: milestone
+    deps: [mesa_trabalho, chave_fenda, unidades_engrenagem]
+    icon: RotaryCraft:rotarycraft_block_deco
+    banner: "A Era do Aço"
+    subtitle: "Mesa, chave e engrenagens"
+    desc: |
+      Eu sinto o cheiro de óleo daqui! Você tem o Forno de Calor funcionando, a Mesa de
+      Trabalho, a Chave de Fenda e as primeiras engrenagens. Esta é a fundação do Volume das
+      Engrenagens.
+
+      Daqui em diante, o ciclo é sempre o mesmo: §eabra o Manual na máquina que você
+      quer§r, veja a potência mínima e o torque/velocidade, escolha o motor e a caixa de
+      engrenagens que entregam isso, e monte na Mesa de Trabalho.
+
+      Próximo passo: o primeiro motor. Ele é mais fraco do que você imagina — e é perfeito
+      para aprender.
+    tasks:
+      - get: [RotaryCraft:rotarycraft_item_machine:75, RotaryCraft:rotarycraft_item_screwdriver, RotaryCraft:rotarycraft_item_gearcraft:2]
+    rewards:
+      - xp: 8
+      - kit: {name: "Kit do Ferreiro de Eixos", items: [RotaryCraft:rotarycraft_item_shaftcraft:1 x16, RotaryCraft:rotarycraft_item_compacts:8 x16, minecraft:gunpowder x16, minecraft:sand x32, minecraft:iron_ingot x16]}
+      - loot: raro
+
+  # ======================================================================
+  # FASE 2 — PRIMEIROS MOTORES E TRANSMISSÃO
+  # ======================================================================
+  - id: motor_cc
+    title: "Motor CD Elétrico"
+    type: main
+    deps: [era_do_aco]
+    icon: RotaryCraft:rotarycraft_item_engine
+    desc: |
+      O motor mais simples: o §eMotor CD Elétrico§r (DC) só precisa de um §esinal de redstone
+      contínuo§r. Em troca, é o mais fraco de todos: §b4 Nm a 256 rad/s = 1.024 W§r.
+
+      Pouco? É exatamente o que o §eFermentador§r pede (1 kW e 32 rad/s). Ou seja: este
+      motor já paga o seu combustível do futuro.
+
+      Monte na Mesa de Trabalho (receita no NEI ou no Manual, categoria Motores).
+    tasks:
+      - get: RotaryCraft:rotarycraft_item_engine
+    rewards:
+      - xp: 4
+      - choice: [minecraft:redstone x24, minecraft:redstone_torch x8, RotaryCraft:rotarycraft_item_shaftcraft:1 x8]
+
+  - id: eixo_aco
+    title: "Eixos"
+    type: main
+    deps: [era_do_aco]
+    icon: RotaryCraft:rotarycraft_item_shaft
+    desc: |
+      O §eEixo§r carrega a potência de um bloco para o outro sem mudar torque nem velocidade
+      — mas só numa direção. Faça na Mesa de Trabalho; o de aço é o padrão (o de madeira usa
+      graveto no lugar da haste e é fraquinho).
+
+      Pegue §e8 eixos§r: a distância entre motor e máquina sempre parece menor do que é.
+    tasks:
+      - get: RotaryCraft:rotarycraft_item_shaft x8
+    rewards:
+      - xp: 4
+      - choice: [RotaryCraft:rotarycraft_item_shaftcraft:1 x8, RotaryCraft:rotarycraft_item_gearcraft x6, minecraft:iron_ingot x16]
+
+  - id: curva_eixos
+    title: "Curva de Eixos"
+    type: normal
+    deps: [eixo_aco]
+    icon: RotaryCraft:rotarycraft_item_machine:4
+    desc: |
+      Eixo só anda em linha reta. Para virar a esquina, use a §eCurva de Eixos§r (bevel
+      gears). Ela muda a direção sem perder nada e §enão precisa de lubrificante§r.
+      Configure as faces com a Chave de Fenda.
+    tasks:
+      - get: RotaryCraft:rotarycraft_item_machine:4 x2
+    rewards:
+      - xp: 3
+      - item: RotaryCraft:rotarycraft_item_gearcraft:1 x2
+
+  - id: caixa_2
+    title: "Caixa de Engrenagens 2:1"
+    type: main
+    deps: [eixo_aco, unidades_engrenagem]
+    icon: RotaryCraft:rotarycraft_item_gearbox
+    desc: |
+      A §eCaixa de Engrenagens§r troca torque por velocidade mantendo a potência. Em modo
+      §bredução§r, uma 2:1 dobra o torque e divide a velocidade por 2; em modo §baceleração§r
+      faz o contrário (troque com a Chave de Fenda + Shift).
+
+      §cImportante:§r a maioria das caixas precisa de §elubrificante§r. Sem ele, elas se
+      desgastam e passam cada vez menos torque. Já já a gente resolve isso. E respeite o
+      limite do material (veja "Materiais que Quebram").
+    tasks:
+      - get: RotaryCraft:rotarycraft_item_gearbox
+    rewards:
+      - xp: 4
+      - choice: [RotaryCraft:rotarycraft_item_gearcraft:2, RotaryCraft:rotarycraft_item_gearcraft:6 x2, RotaryCraft:rotarycraft_item_shaftcraft:1 x8]
+
+  - id: caixa_4
+    title: "Caixa de Engrenagens 4:1"
+    type: normal
+    deps: [caixa_2]
+    icon: RotaryCraft:rotarycraft_item_gearbox:1
+    desc: |
+      Com a §eUnidade 4x§r você faz a caixa §e4:1§r — o "par perfeito" do Motor a Vapor com o
+      Triturador (você vai ver por quê). Quanto maior a relação, maior também o desgaste e o
+      consumo de lubrificante.
+    tasks:
+      - get: RotaryCraft:rotarycraft_item_gearbox:1
+    rewards:
+      - xp: 3
+      - item: RotaryCraft:rotarycraft_item_gearcraft:1 x4
+
+  - id: caixa_8
+    title: "Caixa de Engrenagens 8:1"
+    type: normal
+    deps: [caixa_4]
+    icon: RotaryCraft:rotarycraft_item_gearbox:2
+    desc: |
+      A §e8:1§r em modo aceleração leva os 512 rad/s de um Motor a Vapor a §e4.096 rad/s§r —
+      exatamente a velocidade que a §eCentrífuga§r pede. Guarde essa informação!
+    tasks:
+      - get: RotaryCraft:rotarycraft_item_gearbox:2
+    rewards:
+      - xp: 3
+      - item: RotaryCraft:rotarycraft_item_gearcraft:1 x4
+
+  - id: caixa_16
+    title: "Caixa de Engrenagens 16:1"
+    type: normal
+    deps: [caixa_8]
+    icon: RotaryCraft:rotarycraft_item_gearbox:3
+    desc: |
+      A maior relação "comum": §e16:1§r. Com ela, um Motor de Performance (256 Nm) vira
+      §e4.096 Nm§r — o torque do Compactador. Para relações ainda maiores, existem a TCV e a
+      Engrenagem de Alta Proporção, lá na frente.
+    tasks:
+      - get: RotaryCraft:rotarycraft_item_gearbox:3
+    rewards:
+      - xp: 3
+      - item: RotaryCraft:rotarycraft_item_gearcraft:2
+
+  - id: embreagem
+    title: "Embreagem"
+    type: normal
+    deps: [eixo_aco]
+    icon: RotaryCraft:rotarycraft_item_machine:9
+    desc: |
+      A §eEmbreagem§r é um eixo com interruptor: com sinal de redstone ela passa a potência;
+      sem sinal, não passa nada. Perfeita para ligar e desligar máquinas sem desligar o
+      motor.
+    tasks:
+      - get: RotaryCraft:rotarycraft_item_machine:9
+    rewards:
+      - xp: 3
+      - item: minecraft:lever x4
+
+  - id: dinamometro
+    title: "Dinamômetro"
+    type: normal
+    deps: [eixo_aco]
+    icon: RotaryCraft:rotarycraft_item_machine:10
+    desc: |
+      Um eixo com visor: o §eDinamômetro§r mostra o torque, a velocidade e a potência que
+      passam por ele, o tempo todo. Coloque um logo depois de cada motor importante e você
+      nunca mais vai ficar adivinhando.
+    tasks:
+      - get: RotaryCraft:rotarycraft_item_machine:10
+    rewards:
+      - xp: 3
+      - item: RotaryCraft:rotarycraft_item_shaftcraft:1 x4
+
+  - id: juncao_eixos
+    title: "Junção de Eixos"
+    type: normal
+    deps: [eixo_aco]
+    icon: RotaryCraft:rotarycraft_item_machine:6
+    desc: |
+      A §eJunção de Eixos§r tem dois modos (Shift + Chave de Fenda):
+
+      * §bUnir§r: soma o torque de dois motores, na mesma velocidade. Velocidades
+        diferentes = chuva de faíscas e nada de potência.
+      * §bDividir§r: reparte o torque de uma entrada entre duas saídas.
+
+      §cLimite:§r ela aguenta no máximo 4× a média das entradas; acima disso, quebra (a
+      não ser que seja melhorada com uma Unidade 2x de rocha matriz).
+    tasks:
+      - get: RotaryCraft:rotarycraft_item_machine:6
+    rewards:
+      - xp: 3
+      - item: RotaryCraft:rotarycraft_item_gearcraft:1 x2
+
+  - id: pas_helice
+    title: "Pás de Hélice"
+    type: normal
+    deps: [era_do_aco]
+    icon: RotaryCraft:rotarycraft_item_misccraft:5
+    desc: |
+      Haste de aço, lingote e painel base em coluna = uma §ePá de Hélice§r. Ela vai para a
+      Turbina Eólica, para a peça "Turbina" dos motores a jato e para as turbinas do
+      ReactorCraft. Faça 4.
+    tasks:
+      - get: RotaryCraft:rotarycraft_item_misccraft:5 x4
+    rewards:
+      - xp: 2
+      - item: RotaryCraft:rotarycraft_item_shaftcraft:1 x4
+
+  - id: turbina_eolica
+    title: "Turbina Eólica"
+    type: normal
+    deps: [motor_cc, pas_helice]
+    icon: RotaryCraft:rotarycraft_item_engine:1
+    desc: |
+      Energia de graça, vinda do céu! A §eTurbina Eólica§r entrega §b8 Nm a 1.024 rad/s
+      (~8 kW)§r, mas só com eficiência máxima quando está §ealta e em campo aberto§r — blocos
+      na frente das pás atrapalham.
+
+      Coloque bem alto, com um eixo descendo até as máquinas. §cAs pás giram de verdade:§r
+      não fique na frente.
+    tasks:
+      - get: RotaryCraft:rotarycraft_item_engine:1
+    rewards:
+      - xp: 3
+      - item: RotaryCraft:rotarycraft_item_shaft x4
+
+  - id: impelidor
+    title: "Impelidor"
+    type: normal
+    deps: [era_do_aco]
+    icon: RotaryCraft:rotarycraft_item_enginecraft
+    desc: |
+      Uma engrenagem cercada de 4 lingotes de HSLA (ou de estanho) vira o §eImpelidor§r.
+      Ele empurra fluidos: está no Motor a Vapor, na Bomba e em vários aparelhos.
+    tasks:
+      - get: RotaryCraft:rotarycraft_item_enginecraft x2
+    rewards:
+      - xp: 2
+      - item: RotaryCraft:rotarycraft_item_gearcraft:1 x2
+
+  - id: motor_vapor
+    title: "Motor a Vapor"
+    type: main
+    deps: [motor_cc, impelidor]
+    icon: RotaryCraft:rotarycraft_item_engine:2
+    desc: |
+      Agora sim um motor de gente grande: o §eMotor a Vapor§r dá §b32 Nm a 512 rad/s
+      (16.384 W)§r enquanto tiver §eágua encanada§r e uma §efonte de calor embaixo§r
+      (lava, fogo...).
+
+      §cEle superaquece a 150 °C§r — mantenha a água sempre chegando. Uma Bomba num lago e
+      alguns Tubos de Líquidos resolvem.
+
+      Conquista "Eu acho que posso"! Com ele, o Triturador finalmente está ao seu alcance.
+    tasks:
+      - get: RotaryCraft:rotarycraft_item_engine:2
+    rewards:
+      - xp: 4
+      - choice: [minecraft:lava_bucket, minecraft:water_bucket x2, RotaryCraft:rotarycraft_item_gearcraft:3]
+
+  - id: triturador
+    title: "Triturador"
+    type: main
+    deps: [motor_vapor, caixa_2]
+    icon: RotaryCraft:rotarycraft_item_machine:11
+    desc: |
+      O §eTriturador§r mói tudo: pedra → pedregulho → cascalho → areia, rocha do Nether em
+      pó, areia das almas em areia betuminosa, madeira em serragem... e, o mais importante,
+      §esementes de canola em lubrificante§r.
+
+      Ele pede §b128 Nm e 4.096 W§r. O Motor a Vapor dá só 32 Nm — então ponha uma
+      §eCaixa 4:1 em modo redução§r no meio: 32×4 = 128 Nm a 512/4 = 128 rad/s
+      (16 kW). Perfeito! Mais velocidade = moagem mais rápida.
+    tasks:
+      - get: RotaryCraft:rotarycraft_item_machine:11
+    rewards:
+      - xp: 4
+      - choice: [RotaryCraft:rotarycraft_item_shaft x4, RotaryCraft:rotarycraft_item_gearbox:1, minecraft:iron_ingot x16]
+
+  - id: primeira_rotacao
+    title: "A Primeira Rotação"
+    type: milestone
+    deps: [triturador]
+    icon: RotaryCraft:rotarycraft_item_gearbox:1
+    banner: "A Primeira Rotação"
+    subtitle: "Motor, caixa e máquina"
+    desc: |
+      Motor a Vapor → Caixa 4:1 → Triturador. Pode parecer pouco, mas você acabou de
+      resolver o problema central de todo o RotaryCraft: §eentregar o torque e a velocidade
+      certos para cada máquina§r.
+
+      Lembra da conta? 32 Nm × 512 rad/s = 16 kW. A caixa não cria nem destrói potência:
+      só troca uma grandeza pela outra. Daqui em diante é a mesma lógica, com números cada
+      vez maiores.
+
+      Agora o problema é outro: essa caixa de engrenagens vai se desgastar. Hora de
+      plantar canola!
+    tasks:
+      - get: [RotaryCraft:rotarycraft_item_engine:2, RotaryCraft:rotarycraft_item_machine:11]
+    rewards:
+      - xp: 8
+      - kit: {name: "Kit da Casa de Máquinas", items: [RotaryCraft:rotarycraft_item_shaft x8, RotaryCraft:rotarycraft_item_machine:4 x2, RotaryCraft:rotarycraft_item_shaftcraft:1 x16, minecraft:lava_bucket, minecraft:water_bucket]}
+      - loot: raro
+
+  - id: po_netherrack
+    title: "Pó de Rocha do Nether"
+    type: normal
+    deps: [triturador]
+    icon: RotaryCraft:rotarycraft_item_powders
+    desc: |
+      Rocha do Nether no Triturador vira §ePó de Rocha do Nether§r. Ele parece inútil agora,
+      mas é um dos ingredientes do §eCombustível de Jato§r. Comece um estoque.
+    tasks:
+      - get: RotaryCraft:rotarycraft_item_powders x16
+    rewards:
+      - xp: 2
+      - item: minecraft:netherrack x32
+
+  - id: areia_betuminosa
+    title: "Areia Betuminosa"
+    type: normal
+    deps: [triturador]
+    icon: RotaryCraft:rotarycraft_item_powders:1
+    desc: |
+      Areia das almas moída vira §eAreia Betuminosa§r (o "tar" do Manual), rica em
+      hidrocarbonetos. Outro ingrediente obrigatório do combustível de jato. Uma visita
+      ao Nether paga muitos lotes.
+    tasks:
+      - get: RotaryCraft:rotarycraft_item_powders:1 x16
+    rewards:
+      - xp: 2
+      - item: minecraft:soul_sand x16
+
+  - id: po_carvao
+    title: "Pó de Carvão"
+    type: normal
+    deps: [triturador]
+    icon: RotaryCraft:rotarycraft_item_powders:10
+    desc: |
+      O §ePó de Carvão§r (carvão no Triturador) entra no combustível de jato e, aquecido no
+      Friccionador, vira §eGrafite§r para o ReactorCraft. Pó de carvão de outros mods também
+      vale (oredict dustCoal).
+    tasks:
+      - get: ore:dustCoal x16
+    rewards:
+      - xp: 2
+      - item: minecraft:coal x16
+
+  - id: serragem
+    title: "Serragem"
+    type: optional
+    deps: [triturador]
+    icon: RotaryCraft:rotarycraft_item_powders:3
+    desc: |
+      Sobrou escada de madeira? Moa! A §eSerragem§r volta a ser madeira ou vira papel (e
+      poupa cana-de-açúcar). Com corante, dá outros tipos de madeira. O Manual chama isso de
+      "20 pilhas de escadas? Sem problema".
+    tasks:
+      - get: RotaryCraft:rotarycraft_item_powders:3 x16
+    rewards:
+      - loot: comum
+
+  # ======================================================================
+  # FASE 3 — LUBRIFICAÇÃO E FLUIDOS
+  # ======================================================================
+  - id: sementes_canola
+    title: "Sementes de Canola"
+    type: main
+    deps: [manual_rc]
+    icon: RotaryCraft:rotarycraft_item_canola
+    desc: |
+      Uma flor amarela segura todo este Volume em pé. As §eSementes de Canola§r caem ao
+      quebrar §egrama alta§r (como as de trigo). Plante em terra arada com água por perto:
+      a canola bebe muita água e morre em solo seco.
+
+      Quando o pé estiver coberto de florzinhas amarelas, colha: ele derruba mais sementes.
+      Junte §e32§r.
+    tasks:
+      - get: RotaryCraft:rotarycraft_item_canola x32
+    rewards:
+      - xp: 4
+      - choice: [minecraft:water_bucket x2, minecraft:dye:15 x16, minecraft:iron_hoe]
+
+  - id: lubrificante
+    title: "Lubrificante"
+    type: main
+    deps: [sementes_canola, triturador]
+    icon: RotaryCraft:rotarycraft_item_bucket
+    desc: |
+      Coloque sementes de canola no Triturador: elas viram §eLubrificante§r, guardado no
+      tanque interno. Para tirar, ponha §ebaldes vazios§r no slot de balde do Triturador — ou
+      ligue um Duto de Lubrificante.
+
+      Clique na caixa de engrenagens com o balde (ou conecte o duto) e acompanhe o medidor na
+      interface. Caixas consomem mais lubrificante em velocidades maiores.
+    tasks:
+      - get: RotaryCraft:rotarycraft_item_bucket
+    rewards:
+      - xp: 4
+      - choice: [minecraft:bucket x4, RotaryCraft:rotarycraft_item_canola x32, RotaryCraft:rotarycraft_item_shaftcraft:1 x8]
+
+  - id: duto_lubrificante
+    title: "Duto de Lubrificante"
+    type: normal
+    deps: [lubrificante]
+    icon: RotaryCraft:rotarycraft_item_machine:13
+    desc: |
+      Carregar balde é coisa de iniciante. O §eDuto de Lubrificante§r leva o óleo do
+      Triturador direto para as caixas de engrenagens. Uma linha de dutos + sementes no
+      Triturador = caixas sempre lubrificadas.
+    tasks:
+      - get: RotaryCraft:rotarycraft_item_machine:13 x8
+    rewards:
+      - xp: 3
+      - item: RotaryCraft:rotarycraft_item_canola x16
+
+  - id: info_lubrificacao
+    title: "Rolamentos e Desgaste"
+    type: info
+    deps: [lubrificante]
+    icon: RotaryCraft:rotarycraft_item_gearcraft:6
+    desc: |
+      Algumas regras do Manual (páginas "Lubrificante" e "Rolamentos"):
+
+      * Caixas sem óleo se desgastam e transmitem cada vez menos torque; dá para consertá-las
+        clicando com engrenagens.
+      * Trocar o rolamento por um melhor reduz o consumo; rolamentos de §bdiamante§r eliminam o
+        consumo e os de §brocha matriz§r eliminam até a necessidade de óleo.
+      * Uma caixa só aceita rolamento até dois níveis acima do seu material; rolamento de
+        madeira só serve em caixa de madeira.
+      * A Curva de Eixos nunca precisa de lubrificante. A TCV precisa, mas não consome.
+    tasks:
+      - check
+    rewards:
+      - xp: 1
+
+  - id: bomba
+    title: "Bomba"
+    type: normal
+    deps: [motor_vapor]
+    icon: RotaryCraft:rotarycraft_item_machine:16
+    desc: |
+      A §eBomba§r suga líquidos do mundo (água, lava...) e empurra para os tubos. Pede só
+      §b8 Nm e 1.024 W§r, entrando pela frente ou por trás. Uma bomba num lago mantém o seu
+      Motor a Vapor feliz para sempre.
+    tasks:
+      - get: RotaryCraft:rotarycraft_item_machine:16
+    rewards:
+      - xp: 3
+      - item: RotaryCraft:rotarycraft_item_shaftcraft:1 x4
+
+  - id: tubos_liquidos
+    title: "Tubos de Líquidos"
+    type: normal
+    deps: [bomba]
+    icon: RotaryCraft:rotarycraft_item_machine:17
+    desc: |
+      Os §eTubos de Líquidos§r levam água, lava e etanol entre máquinas. Para combustíveis
+      existe o §eDuto de Combustível§r; para lubrificante, o duto próprio. Cada fluido no seu
+      cano — o RotaryCraft é organizado assim.
+    tasks:
+      - get: RotaryCraft:rotarycraft_item_machine:17 x16
+    rewards:
+      - xp: 3
+      - item: minecraft:glass x16
+
+  - id: reservatorio
+    title: "Reservatório"
+    type: normal
+    deps: [tubos_liquidos]
+    icon: RotaryCraft:rotarycraft_item_machine:18
+    desc: |
+      O §eReservatório§r guarda qualquer líquido e pode ser enchido/esvaziado com balde.
+      Reservatórios lado a lado se juntam em tanques grandes, e dá para cobri-los com
+      painéis de vidro. Cheio de água, ele até enche garrafas.
+    tasks:
+      - get: RotaryCraft:rotarycraft_item_machine:18 x2
+    rewards:
+      - xp: 3
+      - item: minecraft:glass_pane x16
+
+  - id: duto_combustivel
+    title: "Duto de Combustível"
+    type: normal
+    deps: [tubos_liquidos]
+    icon: RotaryCraft:rotarycraft_item_machine:24
+    desc: |
+      Etanol, combustível de jato e afins andam no §eDuto de Combustível§r. Você vai
+      precisar dele para alimentar Microturbinas e Turbinas de Avião sem viver carregando
+      baldes.
+    tasks:
+      - get: RotaryCraft:rotarycraft_item_machine:24 x8
+    rewards:
+      - xp: 3
+      - item: RotaryCraft:rotarycraft_item_shaftcraft:1 x4
+
+  - id: tubos_especiais
+    title: "Válvulas e Separadores"
+    type: optional
+    deps: [tubos_liquidos]
+    icon: RotaryCraft:rotarycraft_item_machine:94
+    desc: |
+      Para redes de fluido mais espertas: o §eTubo Válvula§r, o §eTubo de Escape§r (bypass)
+      e o §eTubo Roteador§r (separação). Basta um deles para esta quest — mas o Manual
+      explica os três.
+    tasks:
+      - one_of: [RotaryCraft:rotarycraft_item_machine:94, RotaryCraft:rotarycraft_item_machine:95, RotaryCraft:rotarycraft_item_machine:96]
+    rewards:
+      - loot: comum
+
+  - id: enchedor_balde
+    title: "Enchedor de Balde"
+    type: optional
+    deps: [reservatorio]
+    icon: RotaryCraft:rotarycraft_item_machine:69
+    desc: |
+      Recebe líquido pelos lados e baldes vazios por cima, e enche tudo sozinho — ou faz o
+      contrário, esvaziando baldes cheios na rede. Ótimo para engarrafar lubrificante.
+    tasks:
+      - get: RotaryCraft:rotarycraft_item_machine:69
+    rewards:
+      - loot: comum
+
+  - id: regador
+    title: "Regador"
+    type: optional
+    deps: [tubos_liquidos]
+    icon: RotaryCraft:rotarycraft_item_machine:31
+    desc: |
+      O §eRegador§r borrifa água nos blocos abaixo: acelera plantações, hidrata a terra e
+      apaga fogo. Mais pressão (bombas mais fortes) = mais alcance. A sua plantação de
+      canola agradece.
+    tasks:
+      - get: RotaryCraft:rotarycraft_item_machine:31
+    rewards:
+      - loot: comum
+
+  # ======================================================================
+  # FASE 4 — CALOR
+  # ======================================================================
+  - id: aquecedor
+    title: "Aquecedor"
+    type: normal
+    deps: [era_do_aco]
+    icon: RotaryCraft:rotarycraft_item_machine:35
+    desc: |
+      O §eAquecedor§r esquenta até a temperatura que você escolher e aquece a máquina
+      §ecolocada em cima dele§r. Queima qualquer combustível de fornalha — um balde de lava
+      chega a 800 °C. Pede §b16 Nm e 8 kW§r, entrando por baixo.
+
+      É a forma controlada de manter o Forno de Calor e o Compactador na temperatura certa.
+    tasks:
+      - get: RotaryCraft:rotarycraft_item_machine:35
+    rewards:
+      - xp: 3
+      - item: minecraft:lava_bucket
+
+  - id: friccionador
+    title: "Friccionador"
+    type: normal
+    deps: [motor_vapor]
+    icon: RotaryCraft:rotarycraft_item_machine:67
+    desc: |
+      O §eFriccionador§r esquenta uma §efornalha comum§r só com atrito — sem combustível.
+      Mais torque e velocidade = mais calor (casar os dois melhora a eficiência), e fornalha
+      quente funde mais rápido. Pede §b32 Nm e 8 kW§r.
+
+      §cCuidado:§r tempo demais em temperatura alta derrete a fornalha. E é a única forma de
+      fundir os §eFlocos de Tungstênio§r!
+    tasks:
+      - get: RotaryCraft:rotarycraft_item_machine:67
+    rewards:
+      - xp: 3
+      - item: minecraft:furnace x2
+
+  - id: barras_refrigeracao
+    title: "Barras de Refrigeração"
+    type: optional
+    deps: [aquecedor]
+    icon: RotaryCraft:rotarycraft_item_machine:74
+    desc: |
+      As §eBarras de Refrigeração§r tiram calor das máquinas sem encanamento de água.
+      §cElas machucam ao toque§r se estiverem ligadas a uma máquina quente.
+    tasks:
+      - get: RotaryCraft:rotarycraft_item_machine:74
+    rewards:
+      - loot: comum
+
+  - id: fabrica_obsidiana
+    title: "Fábrica de Obsidiana"
+    type: optional
+    deps: [bomba]
+    icon: RotaryCraft:rotarycraft_item_machine:27
+    desc: |
+      Água + lava encanadas = obsidiana, se a temperatura ficar na faixa ideal (fora dela,
+      sai pedra ou pedregulho). Pede §b2.048 rad/s e 32 kW§r. §cNão deixe só lava dentro
+      por muito tempo§r: ela superaquece e derrete.
+    tasks:
+      - get: RotaryCraft:rotarycraft_item_machine:27
+    rewards:
+      - loot: comum
+
+  - id: derretedor_rochas
+    title: "Derretedor de Rochas"
+    type: optional
+    deps: [aquecedor]
+    icon: RotaryCraft:rotarycraft_item_machine:91
+    desc: |
+      Lava infinita a partir de pedra: o §eDerretedor de Rochas§r (Rock Melter) derrete
+      pedras e pedregulhos. Veja na aba "Rock Melter" do NEI quais blocos ele aceita.
+    tasks:
+      - get: RotaryCraft:rotarycraft_item_machine:91
+    rewards:
+      - loot: comum
+
+  # ======================================================================
+  # FASE 5 — ETANOL E COMBUSTÃO
+  # ======================================================================
+  - id: fermentador
+    title: "Fermentador"
+    type: main
+    deps: [motor_cc]
+    icon: RotaryCraft:rotarycraft_item_machine:7
+    desc: |
+      O etanol nasce no §eFermentador§r, que pede §b32 rad/s e 1.024 W§r — o seu Motor CD dá
+      exatamente isso (256 rad/s, 1 kW)!
+
+      Ele é sensível à temperatura: o fermento cresce melhor entre §e20 e 40 °C§r (pico em
+      25 °C) e §cmorre acima de 60 °C§r. O slot do meio é um medidor de água, não um slot
+      de item — encane água nele. Com redstone você escolhe o produto (canto superior
+      direito).
+    tasks:
+      - get: RotaryCraft:rotarycraft_item_machine:7
+    rewards:
+      - xp: 4
+      - choice: [minecraft:sugar x32, minecraft:dirt x32, minecraft:water_bucket x2]
+
+  - id: fermento
+    title: "Fermento"
+    type: main
+    deps: [fermentador]
+    icon: RotaryCraft:rotarycraft_item_yeast
+    desc: |
+      §eAçúcar em cima, terra embaixo§r, água encanada: o Fermentador cria §eFermento§r.
+      (Conquista "Fermentador"!) Junte §e16§r — o próximo passo come fermento com vontade.
+    tasks:
+      - get: RotaryCraft:rotarycraft_item_yeast x16
+    rewards:
+      - xp: 4
+      - choice: [minecraft:sugar x32, minecraft:reeds x16, minecraft:dirt x32]
+
+  - id: lodo
+    title: "Lodo de Etanol"
+    type: main
+    deps: [fermento]
+    icon: RotaryCraft:rotarycraft_item_powders:2
+    desc: |
+      Agora §efermento em cima e matéria vegetal embaixo§r (sementes, folhas, mudas, flores...
+      o NEI lista quase 200 opções): sai o lodo de etanol — o jogo traduz como §eMusgo§r.
+      Ele se forma mais rápido perto de §e35 °C§r.
+    tasks:
+      - get: RotaryCraft:rotarycraft_item_powders:2 x16
+    rewards:
+      - xp: 4
+      - choice: [minecraft:wheat_seeds x32, minecraft:sapling x16, minecraft:leaves x32]
+
+  - id: centrifuga
+    title: "Centrífuga"
+    type: main
+    deps: [lodo, caixa_8]
+    icon: RotaryCraft:rotarycraft_item_machine:125
+    desc: |
+      A §eCentrífuga§r separa o lodo em §eExtrato de Etanol§r (e um pouco de húmus). Ela pede
+      §b4.096 rad/s e 16 kW§r — velocidade alta!
+
+      A receita clássica: Motor a Vapor (512 rad/s) → §eCaixa 8:1 em modo aceleração§r =
+      4.096 rad/s a 4 Nm = 16 kW. Bate certinho. Viu como a conta sempre fecha?
+    tasks:
+      - get: RotaryCraft:rotarycraft_item_machine:125
+    rewards:
+      - xp: 4
+      - choice: [RotaryCraft:rotarycraft_item_gearbox:2, RotaryCraft:rotarycraft_item_shaft x4, RotaryCraft:rotarycraft_item_shaftcraft:1 x10]
+
+  - id: extrato_etanol
+    title: "Extrato de Etanol"
+    type: main
+    deps: [centrifuga]
+    icon: RotaryCraft:rotarycraft_item_powders:16
+    desc: |
+      Lodo na Centrífuga → §eExtrato de Etanol§r. Falta só um passo: secar/cozinhar o
+      extrato até virar cristal. Junte §e16§r.
+    tasks:
+      - get: RotaryCraft:rotarycraft_item_powders:16 x16
+    rewards:
+      - xp: 4
+      - choice: [minecraft:coal x16, RotaryCraft:rotarycraft_item_compacts:8 x8, RotaryCraft:rotarycraft_item_yeast x8]
+
+  - id: cristais_etanol
+    title: "Cristais de Etanol"
+    type: main
+    deps: [extrato_etanol]
+    icon: RotaryCraft:rotarycraft_item_ethanol
+    desc: |
+      Extrato de etanol na §efornalha comum§r vira §eCristais de Etanol§r — o combustível
+      do Motor a Gasolina, do Motor de Performance, do Minecart a Etanol e da Mochila a Jato.
+      (A Fornalha de Cristal do ChromatiCraft faz 2 por extrato, se você também estiver por
+      lá.)
+
+      Junte §e32§r. Vai começar a queimar já já.
+    tasks:
+      - get: RotaryCraft:rotarycraft_item_ethanol x32
+    rewards:
+      - xp: 4
+      - choice: [RotaryCraft:rotarycraft_item_shaftcraft:1 x10, minecraft:gold_ingot x8, minecraft:redstone x16]
+
+  - id: cilindro
+    title: "Cilindro"
+    type: normal
+    deps: [era_do_aco]
+    icon: RotaryCraft:rotarycraft_item_enginecraft:5
+    desc: |
+      Oito lingotes de HSLA em anel = 2 §eCilindros§r, o "pistão" dos motores de combustão.
+    tasks:
+      - get: RotaryCraft:rotarycraft_item_enginecraft:5 x2
+    rewards:
+      - xp: 2
+      - item: RotaryCraft:rotarycraft_item_shaftcraft:1 x4
+
+  - id: unidade_ignicao
+    title: "Unidade de Ignição"
+    type: normal
+    deps: [era_do_aco]
+    icon: RotaryCraft:rotarycraft_item_enginecraft:15
+    desc: |
+      Ouro (ou eletro), redstone e HSLA: a §eUnidade de Ignição§r é a "vela" dos motores e
+      também vai dentro do Combustor. Faça 2.
+    tasks:
+      - get: RotaryCraft:rotarycraft_item_enginecraft:15 x2
+    rewards:
+      - xp: 2
+      - item: minecraft:gold_ingot x4
+
+  - id: motor_gasolina
+    title: "Motor a Gasolina"
+    type: main
+    deps: [cristais_etanol, cilindro, unidade_ignicao]
+    icon: RotaryCraft:rotarycraft_item_engine:3
+    desc: |
+      "O motor a gasolina, como o nome diz, roda a... etanol." — palavras do Manual, não
+      minhas. Coloque §eCristais de Etanol§r dentro e ele entrega §b128 Nm a 512 rad/s
+      (65.536 W)§r.
+
+      Quatro vezes um Motor a Vapor, sem precisar de água nem de calor. A partir daqui o
+      seu parque de máquinas cresce de verdade.
+    tasks:
+      - get: RotaryCraft:rotarycraft_item_engine:3
+    rewards:
+      - xp: 4
+      - choice: [RotaryCraft:rotarycraft_item_ethanol x32, RotaryCraft:rotarycraft_item_shaft x6, RotaryCraft:rotarycraft_item_gearbox:1]
+
+  - id: combustao
+    title: "Combustão Controlada"
+    type: milestone
+    deps: [motor_gasolina]
+    icon: RotaryCraft:rotarycraft_item_ethanol
+    banner: "Combustão Controlada"
+    subtitle: "Do açúcar ao motor"
+    desc: |
+      Açúcar e terra viraram fermento; fermento e folhas viraram lodo; a centrífuga e a
+      fornalha transformaram tudo em cristal; e o cristal agora gira um motor de 65 kW.
+      Isso é uma §ecadeia de produção§r de verdade, Herói!
+
+      Automatize: uma fazenda de plantas alimentando o Fermentador, a Centrífuga
+      ligada por tubo, uma fornalha no fim. O Motor a Gasolina e o Motor de Performance vão
+      beber esses cristais o tempo todo.
+
+      Próximas paradas: o §eExtrator§r (minério em dobro) e motores ainda maiores.
+    tasks:
+      - get: [RotaryCraft:rotarycraft_item_engine:3, RotaryCraft:rotarycraft_item_ethanol x16]
+    rewards:
+      - xp: 8
+      - kit: {name: "Kit do Destilador", items: [RotaryCraft:rotarycraft_item_ethanol x64, RotaryCraft:rotarycraft_item_yeast x16, RotaryCraft:rotarycraft_item_machine:17 x16, RotaryCraft:rotarycraft_item_shaftcraft:1 x16]}
+      - loot: raro
+
+  - id: ecu
+    title: "Unidade de Controle de Motor"
+    type: normal
+    deps: [motor_gasolina]
+    icon: RotaryCraft:rotarycraft_item_machine:38
+    desc: |
+      A §eUnidade de Controle de Motor§r (ECU) acelera ou desacelera motores a combustível:
+      mantém o torque, reduz a velocidade e §egasta menos combustível§r (velocidades menores
+      são mais eficientes; turbinas ganham menos). Troque o modo com a Chave de Fenda;
+      redstone desliga o motor.
+    tasks:
+      - get: RotaryCraft:rotarycraft_item_machine:38
+    rewards:
+      - xp: 3
+      - item: RotaryCraft:rotarycraft_item_ethanol x16
+
+  - id: composteira
+    title: "Composteira"
+    type: optional
+    deps: [fermento]
+    icon: RotaryCraft:rotarycraft_item_machine:121
+    desc: |
+      Fermento + matéria vegetal na §eComposteira§r = §eHúmus§r, um fertilizante (oredict
+      fertilizer). Uso nobre para o excesso de sementes de canola.
+    tasks:
+      - get: RotaryCraft:rotarycraft_item_powders:13 x8
+    rewards:
+      - loot: comum
+
+  - id: cama_secagem
+    title: "Cama de Secagem"
+    type: optional
+    deps: [tubos_liquidos]
+    icon: RotaryCraft:rotarycraft_item_machine:127
+    desc: |
+      A §eCama de Secagem§r evapora líquidos e deixa o resíduo: §eSal§r da água (ingrediente
+      do Iodeto de Prata e do ReactorCraft), areia betuminosa, bolas de slime... veja a aba
+      "Drying Bed" do NEI.
+    tasks:
+      - get: RotaryCraft:rotarycraft_item_machine:127
+    rewards:
+      - loot: comum
+
+  - id: minecart_etanol
+    title: "Minecart a Etanol"
+    type: optional
+    deps: [motor_gasolina]
+    icon: RotaryCraft:rotarycraft_item_minecart
+    desc: |
+      Um Motor a Gasolina em cima de um minecart: o §eMinecart a Etanol§r é a versão forte e
+      pesada do minecart de fornalha, ótimo para empurrar trens longos. Abastece com
+      cristais de etanol.
+    tasks:
+      - get: RotaryCraft:rotarycraft_item_minecart
+    rewards:
+      - loot: comum
+
+  - id: mochila_etanol
+    title: "Mochila a Jato a Etanol"
+    type: optional
+    deps: [motor_gasolina, cilindro]
+    icon: RotaryCraft:rotarycraft_item_jetpack
+    desc: |
+      Voar! A §eMochila a Jato a Etanol§r consome bastante combustível — fique de olho no
+      medidor. Com combustível de jato ela ganha empuxo; três lingotes no topo, na Mesa de
+      Trabalho, adicionam uma asa para planar.
+    tasks:
+      - get: RotaryCraft:rotarycraft_item_jetpack
+    rewards:
+      - loot: incomum
+
+  # ======================================================================
+  # FASE 6 — PROCESSAMENTO DE MINÉRIO (EXTRATOR)
+  # ======================================================================
+  - id: extrator
+    title: "Extrator"
+    type: main
+    deps: [combustao]
+    icon: RotaryCraft:rotarycraft_item_machine:20
+    desc: |
+      O §eExtrator§r é o "multiplicador de minério" do RotaryCraft. Ele trabalha em quatro
+      estágios: §emói§r o minério em pó, §emistura§r com água (pasta), §efiltra§r em solução
+      e §equeima§r em flocos. Cada estágio tem §epelo menos 50% de chance de dobrar§r a
+      saída. Os flocos vão para uma fornalha comum e viram lingote ou gema.
+
+      A potência entra §epor baixo§r, e ele precisa de água para os estágios 2 e 3.
+    tasks:
+      - get: RotaryCraft:rotarycraft_item_machine:20
+    rewards:
+      - xp: 4
+      - choice: [minecraft:iron_ore x16, minecraft:gold_ore x8, RotaryCraft:rotarycraft_item_shaftcraft:1 x12]
+
+  - id: info_extrator
+    title: "Os Quatro Estágios"
+    type: info
+    deps: [extrator]
+    icon: RotaryCraft:rotarycraft_item_extracts:25
+    desc: |
+      Do código deste pack (página do Extrator no Manual):
+
+      * Estágio 1 (pó): §b512 Nm§r e 65 kW
+      * Estágio 2 (pasta): §b2.048 rad/s§r e 16 kW, com água
+      * Estágio 3 (solução): §b8.192 rad/s§r e 32 kW, com água
+      * Estágio 4 (flocos): §b256 Nm§r e 65 kW
+
+      Como é um eixo só, para rodar tudo ao mesmo tempo você precisa de §e512 Nm a 8.192
+      rad/s§r (~4,2 MW). Até lá, um estágio sem torque ou sem velocidade simplesmente para
+      — dá para trocar a relação com uma TCV ou caixas e ir "estágio por estágio".
+      §aDica:§r uma Broca de Rocha Matriz instalada nele é um upgrade.
+    tasks:
+      - check
+    rewards:
+      - xp: 1
+
+  - id: po_ferro
+    title: "Pó de Minério de Ferro"
+    type: normal
+    deps: [extrator]
+    icon: RotaryCraft:rotarycraft_item_extracts:1
+    desc: |
+      Primeiro estágio: minério de ferro vira §ePó de Minério de Ferro§r. Este estágio é
+      pesado (512 Nm) — um Motor CA ou um Motor a Gasolina com caixa 4:1 dão conta.
+    tasks:
+      - get: RotaryCraft:rotarycraft_item_extracts:1 x8
+    rewards:
+      - xp: 3
+      - item: minecraft:iron_ore x8
+
+  - id: pasta_ferro
+    title: "Mistura de Ferro"
+    type: normal
+    deps: [po_ferro]
+    icon: RotaryCraft:rotarycraft_item_extracts:9
+    desc: |
+      Segundo estágio: o pó com água vira §eMistura (pasta) de Minério de Ferro§r. Aqui o
+      que importa é a velocidade: 2.048 rad/s.
+    tasks:
+      - get: RotaryCraft:rotarycraft_item_extracts:9 x8
+    rewards:
+      - xp: 3
+      - item: minecraft:water_bucket
+
+  - id: solucao_ferro
+    title: "Solução Ferrosa"
+    type: normal
+    deps: [pasta_ferro]
+    icon: RotaryCraft:rotarycraft_item_extracts:17
+    desc: |
+      Terceiro estágio, o mais rápido: 8.192 rad/s para filtrar a pasta em §eSolução
+      Ferrosa§r. Turbinas e caixas em aceleração são seus amigos aqui.
+    tasks:
+      - get: RotaryCraft:rotarycraft_item_extracts:17 x8
+    rewards:
+      - xp: 3
+      - item: RotaryCraft:rotarycraft_item_gearcraft:4
+
+  - id: flocos_ferro
+    title: "Flocos de Ferro"
+    type: main
+    deps: [solucao_ferro]
+    icon: RotaryCraft:rotarycraft_item_extracts:25
+    desc: |
+      Quarto estágio: §eFlocos de Ferro§r! Cada floco vira um lingote na fornalha. Somando
+      as chances de duplicação, um minério rende bem mais que dois lingotes. (Conquista
+      "Multiplicador"!)
+
+      O Extrator aceita centenas de minérios — de outros mods também (a config "Force
+      Inter-Mod Ore Compatibility" está ligada). Veja a aba "Extractor" do NEI.
+    tasks:
+      - get: RotaryCraft:rotarycraft_item_extracts:25 x16
+    rewards:
+      - xp: 4
+      - choice: [minecraft:iron_ore x16, minecraft:gold_ore x8, minecraft:redstone_ore x8]
+
+  - id: flocos_ouro
+    title: "Flocos de Ouro e Prata"
+    type: normal
+    deps: [flocos_ferro]
+    icon: RotaryCraft:rotarycraft_item_extracts:32
+    desc: |
+      Processando ouro, o Extrator às vezes solta §eFlocos Prateados§r de bônus. Fundidos,
+      eles viram §eLingote de Prata§r — necessário para o Iodeto de Prata e para espelhos.
+    tasks:
+      - get: [RotaryCraft:rotarycraft_item_extracts:26 x8, RotaryCraft:rotarycraft_item_extracts:32]
+    rewards:
+      - xp: 3
+      - item: minecraft:gold_ore x8
+
+  - id: aluminio
+    title: "Pó de Alumínio"
+    type: normal
+    deps: [flocos_ferro]
+    icon: RotaryCraft:rotarycraft_item_powders:8
+    desc: |
+      Processando redstone, o bônus ocasional é §ePó de Alumínio§r. Na fornalha vira
+      §eLingote de Alumínio§r; com ferro, faz termite para o Incendiador; e no Forno de Calor
+      (areia + pó de alumínio + pó de blaze) vira §ePó de Silício§r.
+    tasks:
+      - get: RotaryCraft:rotarycraft_item_powders:8 x4
+    rewards:
+      - xp: 3
+      - item: minecraft:redstone_ore x8
+
+  - id: silicio
+    title: "Silício"
+    type: normal
+    deps: [aluminio, friccionador]
+    icon: RotaryCraft:rotarycraft_item_compacts:10
+    desc: |
+      §ePó de Silício§r (Forno de Calor: areia, pó de alumínio, pó de blaze) aquecido numa
+      fornalha com o Friccionador vira §eSilício§r. Ele barateia Placas de Circuito e
+      Módulos de Energia (rende 3 em vez de 2) e entra nas Placas de Transferência sem fio
+      do ElectriCraft.
+    tasks:
+      - get: RotaryCraft:rotarycraft_item_compacts:10 x4
+    rewards:
+      - xp: 3
+      - item: minecraft:blaze_powder x8
+
+  - id: flocos_tungstenio
+    title: "Flocos de Tungstênio"
+    type: normal
+    deps: [flocos_ferro]
+    icon: RotaryCraft:rotarycraft_item_extracts:33
+    desc: |
+      O §etungstênio§r é um subproduto do processamento de §eminério de ferro§r no Extrator.
+      É o metal das aplicações de alta temperatura, alta pressão e alta resistência. Junte
+      alguns §eFlocos de Tungstênio§r — eles não fundem numa fornalha fria.
+    tasks:
+      - get: RotaryCraft:rotarycraft_item_extracts:33 x4
+    rewards:
+      - xp: 3
+      - item: minecraft:iron_ore x16
+
+  - id: tungstenio
+    title: "Tungstênio Sinterizado"
+    type: main
+    deps: [flocos_tungstenio, friccionador]
+    icon: RotaryCraft:rotarycraft_item_compacts:5
+    desc: |
+      Uma fornalha comum §eaquecida pelo Friccionador§r é a única que funde Flocos de
+      Tungstênio em §eLingote de Tungstênio Sinterizado§r. Ele vai para o Raio de Calor, a
+      Fornalha de Pulso, as lentes do ReactorCraft e para a §eLiga de Tungstênio§r (Forno de
+      Calor: Liga de Aço Torcido + obsidiana + flocos).
+    tasks:
+      - get: RotaryCraft:rotarycraft_item_compacts:5 x4
+    rewards:
+      - xp: 4
+      - choice: [minecraft:obsidian x8, RotaryCraft:rotarycraft_item_compacts:8 x16, minecraft:furnace x2]
+
+  - id: flocos_diamante
+    title: "Flocos de Diamante"
+    type: optional
+    deps: [flocos_ferro]
+    icon: RotaryCraft:rotarycraft_item_extracts:29
+    desc: |
+      O mesmo caminho vale para diamante, esmeralda, lápis, redstone e quartzo. Flocos de
+      Diamante na fornalha = diamante. Quem disse que diamante não se multiplica?
+    tasks:
+      - get: RotaryCraft:rotarycraft_item_extracts:29 x2
+    rewards:
+      - loot: incomum
+
+  - id: placa_circuitos
+    title: "Placa de Circuitos"
+    type: normal
+    deps: [era_do_aco]
+    icon: RotaryCraft:rotarycraft_item_borecraft:4
+    desc: |
+      HSLA, ouro, redstone e uma pérola do ender (ou Silício, que rende 3 placas) formam a
+      §ePlaca de Circuitos§r. Ela está no Magnetizador, no Radar, no Tunelador, no Contador
+      Geiger do ReactorCraft...
+    tasks:
+      - get: RotaryCraft:rotarycraft_item_borecraft:4 x2
+    rewards:
+      - xp: 2
+      - item: minecraft:ender_pearl x2
+
+  - id: modulo_energia
+    title: "Módulo de Energia"
+    type: normal
+    deps: [placa_circuitos]
+    icon: RotaryCraft:rotarycraft_item_misccraft:2
+    desc: |
+      Ouro, redstone, HSLA e um olho do ender (ou Silício) = §eMódulo de Energia§r, peça de
+      armas, do Motor de Indução Linear e de máquinas grandes.
+    tasks:
+      - get: RotaryCraft:rotarycraft_item_misccraft:2
+    rewards:
+      - xp: 2
+      - item: minecraft:gold_ingot x4
+
+  - id: tela_radar
+    title: "Tela, Radar e Sonar"
+    type: normal
+    deps: [placa_circuitos]
+    icon: RotaryCraft:rotarycraft_item_borecraft:5
+    desc: |
+      Os "olhos" das máquinas de levantamento: §eTela§r (vidro + placa), §eRadar§r (com um
+      Motor CD) e §eSonar§r (com um bloco musical). Eles entram no Radar de Penetração no
+      Solo, no Ultrassom, no Detector de Movimento e no Contador Geiger.
+    tasks:
+      - get: [RotaryCraft:rotarycraft_item_borecraft:5, RotaryCraft:rotarycraft_item_borecraft:2, RotaryCraft:rotarycraft_item_borecraft:3]
+    rewards:
+      - xp: 2
+      - item: minecraft:glass_pane x8
+
+  # ======================================================================
+  # FASE 7 — MOTOR CA
+  # ======================================================================
+  - id: magnetizador
+    title: "Magnetizador"
+    type: normal
+    deps: [placa_circuitos, nucleo_eixo]
+    icon: RotaryCraft:rotarycraft_item_machine:60
+    desc: |
+      O §eMagnetizador§r gira um Núcleo de Eixo tão rápido que cria um campo magnético
+      dentro dele. Pede §b2.048 rad/s e 16 kW§r e um §esinal de redstone alternado§r (um
+      relógio de redstone).
+    tasks:
+      - get: RotaryCraft:rotarycraft_item_machine:60
+    rewards:
+      - xp: 3
+      - item: RotaryCraft:rotarycraft_item_gearcraft:7 x2
+
+  - id: motor_ca
+    title: "Motor CA Elétrico"
+    type: main
+    deps: [magnetizador]
+    icon: RotaryCraft:rotarycraft_item_engine:4
+    desc: |
+      O primo forte do Motor CD (o jogo escreve "Moto CA Elétrico"). Ele pede um §esinal
+      alternado§r — relógios rápidos dão saída mais estável; um de 2 ticks entrega o máximo
+      — e um §eNúcleo de Eixo magnetizado§r, que ele desmagnetiza aos poucos.
+
+      Saída: §b512 Nm a 256 rad/s = 131.072 W§r. Muito torque, sem combustível: só redstone
+      e núcleos remagnetizados de vez em quando. O núcleo só sai por automação quando está
+      totalmente desmagnetizado.
+    tasks:
+      - get: RotaryCraft:rotarycraft_item_engine:4
+    rewards:
+      - xp: 4
+      - choice: [RotaryCraft:rotarycraft_item_gearcraft:7 x2, minecraft:redstone_block x4, minecraft:repeater x8]
+
+  # ======================================================================
+  # FASE 8 — MOTOR DE PERFORMANCE, RODA D'ÁGUA E COMPACTADOR
+  # ======================================================================
+  - id: radiador
+    title: "Radiador e Combustor"
+    type: normal
+    deps: [unidade_ignicao]
+    icon: RotaryCraft:rotarycraft_item_enginecraft:6
+    desc: |
+      Motores grandes esquentam. O §eRadiador§r (ouro, tubos de líquidos e HSLA) e o
+      §eCombustor§r (HSLA, redstone e Unidade de Ignição) são peças do Motor de Performance
+      e das turbinas. Faça um de cada.
+    tasks:
+      - get: [RotaryCraft:rotarycraft_item_enginecraft:6, RotaryCraft:rotarycraft_item_enginecraft:4]
+    rewards:
+      - xp: 2
+      - item: minecraft:gold_ingot x6
+
+  - id: motor_performance
+    title: "Motor de Performance"
+    type: main
+    deps: [motor_gasolina, radiador]
+    icon: RotaryCraft:rotarycraft_item_engine:5
+    desc: |
+      O carro esportivo do RotaryCraft: etanol, §eágua de refrigeração§r e um §eaditivo§r no
+      combustível — redstone, pólvora ou pó de blaze, cada um melhor que o anterior.
+      Totalmente abastecido: §b256 Nm a 1.024 rad/s = 262.144 W§r.
+
+      §cSuperaquece a 240 °C§r. Mantenha a água chegando sempre.
+    tasks:
+      - get: RotaryCraft:rotarycraft_item_engine:5
+    rewards:
+      - xp: 5
+      - choice: [minecraft:blaze_powder x16, minecraft:gunpowder x32, RotaryCraft:rotarycraft_item_ethanol x48]
+
+  - id: aco_torcido
+    title: "Liga de Aço Torcido"
+    type: normal
+    deps: [aco_hsla, coque]
+    icon: RotaryCraft:rotarycraft_item_compacts:9
+    desc: |
+      HSLA + coque + redstone no Forno de Calor = §eLiga de Aço Torcido§r (Spring Steel).
+      É flexível e resistente: vai nas pás da Roda D'água e na Liga de Tungstênio.
+    tasks:
+      - get: RotaryCraft:rotarycraft_item_compacts:9 x6
+    rewards:
+      - xp: 3
+      - item: RotaryCraft:rotarycraft_item_compacts:8 x8
+
+  - id: pa_roda
+    title: "Pá da Roda D'água"
+    type: normal
+    deps: [aco_torcido, painel_base]
+    icon: RotaryCraft:rotarycraft_item_enginecraft:13
+    desc: |
+      Seis Painéis Base sobre três Ligas de Aço Torcido = a §ePá§r (Paddle Panel), a peça
+      que a água empurra.
+    tasks:
+      - get: RotaryCraft:rotarycraft_item_enginecraft:13
+    rewards:
+      - xp: 2
+      - item: RotaryCraft:rotarycraft_item_shaftcraft x6
+
+  - id: roda_dagua
+    title: "Roda D'água"
+    type: normal
+    deps: [pa_roda, lubrificante]
+    icon: RotaryCraft:rotarycraft_item_engine:6
+    desc: |
+      O motor hidrocinético transforma líquido caindo em potência e tem o §emaior torque§r
+      de todos: com 64+ blocos de queda, §b16.384 Nm a 32 rad/s (~524 kW)§r. Uma queda de 3
+      blocos dá quase nada.
+
+      Ele §esó gira no sentido anti-horário§r (posicione a cachoeira certo), precisa de
+      §elubrificante§r e pode ser encadeado (até 4; 16 com Haste de Rocha Matriz). §cAs
+      pás giram:§r blocos vizinhos travam e pessoas vizinhas... também.
+    tasks:
+      - get: RotaryCraft:rotarycraft_item_engine:6
+    rewards:
+      - xp: 3
+      - item: RotaryCraft:rotarycraft_item_bucket x2
+
+  - id: compactador
+    title: "Compactador"
+    type: main
+    deps: [motor_performance, caixa_16, aquecedor]
+    icon: RotaryCraft:rotarycraft_item_machine:22
+    desc: |
+      Pressão + calor = diamantes. O §eCompactador§r espreme 4 itens em 1: carvão vira
+      §eAntracite§r, depois §ePrismane§r, depois §eLonsdaleíta§r, depois §ediamante§r.
+
+      Ele pede §b4.096 Nm e 262 kW§r — exatamente um Motor de Performance numa Caixa 16:1
+      em redução! Pressão vem do torque; a temperatura (alta!) vem do ambiente — ponha um
+      §eAquecedor§r embaixo. O Manual mostra os valores de pressão e temperatura.
+    tasks:
+      - get: RotaryCraft:rotarycraft_item_machine:22
+    rewards:
+      - xp: 5
+      - choice: [minecraft:coal_block x8, RotaryCraft:rotarycraft_item_compacts:8 x32, minecraft:lava_bucket x2]
+
+  - id: antracite
+    title: "Antracite"
+    type: normal
+    deps: [compactador]
+    icon: RotaryCraft:rotarycraft_item_compacts
+    desc: |
+      4 carvões → 2 §eAntracites§r. Bloco de antracite é um ótimo bloco decorativo escuro, e
+      a antracite é o primeiro degrau da escada até o diamante.
+    tasks:
+      - get: RotaryCraft:rotarycraft_item_compacts x8
+    rewards:
+      - xp: 3
+      - item: minecraft:coal x32
+
+  - id: lonsdaleita
+    title: "Prismane e Lonsdaleíta"
+    type: normal
+    deps: [antracite]
+    icon: RotaryCraft:rotarycraft_item_compacts:2
+    desc: |
+      4 Antracites → 1 §ePrismane§r; 4 Prismanes → 1 §eLonsdaleíta§r. Só falta mais um
+      aperto...
+    tasks:
+      - get: [RotaryCraft:rotarycraft_item_compacts:1, RotaryCraft:rotarycraft_item_compacts:2]
+    rewards:
+      - xp: 3
+      - item: minecraft:coal_block x4
+
+  - id: diamante_compactado
+    title: "Diamante de Carvão"
+    type: optional
+    deps: [lonsdaleita]
+    icon: minecraft:diamond
+    desc: |
+      4 Lonsdaleítas → 1 §eDiamante§r. São 128 carvões por diamante, mas carvão é fácil e
+      automação não cansa. Conquista desbloqueada no meu coração.
+    tasks:
+      - get: minecraft:diamond
+    rewards:
+      - loot: incomum
+
+  - id: forca_motriz
+    title: "Força Motriz"
+    type: milestone
+    deps: [motor_ca, motor_performance, compactador]
+    icon: RotaryCraft:rotarycraft_item_engine:5
+    banner: "Força Motriz"
+    subtitle: "Centenas de quilowatts"
+    desc: |
+      Motor CA, Motor de Performance, Compactador. Você já mexe com §ecentenas de
+      quilowatts§r e sabe escolher entre torque (Roda D'água, Motor CA) e velocidade
+      (turbinas).
+
+      É hora de pensar em §etransmissão de verdade§r: volantes para estabilizar, TCV para
+      escolher a relação na hora, correias e correntes para levar potência longe, e
+      embreagens para distribuir. Depois disso, o céu (e o combustível de jato) é o limite.
+    tasks:
+      - get: [RotaryCraft:rotarycraft_item_engine:4, RotaryCraft:rotarycraft_item_engine:5, RotaryCraft:rotarycraft_item_machine:22]
+    rewards:
+      - xp: 8
+      - kit: {name: "Kit da Oficina Pesada", items: [RotaryCraft:rotarycraft_item_shaftcraft:1 x32, RotaryCraft:rotarycraft_item_ethanol x64, minecraft:blaze_powder x16, RotaryCraft:rotarycraft_item_bucket x4, minecraft:gold_ingot x8]}
+      - loot: raro
+
+  # ======================================================================
+  # FASE 9 — TRANSMISSÃO AVANÇADA E MOLAS
+  # ======================================================================
+  - id: volante
+    title: "Volante"
+    type: normal
+    deps: [caixa_2]
+    icon: RotaryCraft:rotarycraft_item_flywheel:2
+    desc: |
+      O §eVolante§r (flywheel) guarda energia cinética: demora para acelerar, mas segura a
+      rotação por um tempo e §eestabiliza§r uma entrada irregular. Materiais mais densos dão
+      volantes melhores (madeira, pedra, ferro, ouro, tungstênio, urânio empobrecido, rocha
+      matriz). §cGirar rápido demais = falha violenta.§r
+
+      Faça um de ferro (Núcleo de Volante de Ferro = 8 ferros + 1 engrenagem de aço).
+    tasks:
+      - get: RotaryCraft:rotarycraft_item_flywheel:2
+    rewards:
+      - xp: 3
+      - item: minecraft:iron_ingot x16
+
+  - id: correia
+    title: "Correias"
+    type: normal
+    deps: [era_do_aco]
+    icon: RotaryCraft:rotarycraft_item_borecraft:9
+    desc: |
+      8 couros em volta de 1 HSLA = §e8 Correias§r. Elas vão na TCV e ligam os Cubos de
+      Correia.
+    tasks:
+      - get: RotaryCraft:rotarycraft_item_borecraft:9 x16
+    rewards:
+      - xp: 2
+      - item: minecraft:leather x16
+
+  - id: tcv
+    title: "Unidade TCV"
+    type: main
+    deps: [forca_motriz, correia]
+    icon: RotaryCraft:rotarycraft_item_advgear:1
+    desc: |
+      A §eTCV§r (transmissão continuamente variável) é uma caixa de engrenagens dinâmica: você
+      escolhe a relação na hora, na interface. Funciona com §ecorreias§r — cada potência de 2
+      dobra a relação máxima, até §e32:1§r. Precisa de lubrificante, mas não o consome.
+
+      Conquista "Versatilidade"! É a ferramenta ideal para o Extrator, que pede torque num
+      estágio e velocidade no outro.
+    tasks:
+      - get: RotaryCraft:rotarycraft_item_advgear:1
+    rewards:
+      - xp: 5
+      - choice: [RotaryCraft:rotarycraft_item_borecraft:9 x16, RotaryCraft:rotarycraft_item_bucket x2, RotaryCraft:rotarycraft_item_shaftcraft:1 x16]
+
+  - id: helicoidal
+    title: "Engrenagem Helicoidal"
+    type: normal
+    deps: [unidades_engrenagem]
+    icon: RotaryCraft:rotarycraft_item_advgear
+    desc: |
+      Um jeito compacto de multiplicar torque sem empilhar caixas: a §eEngrenagem
+      Helicoidal§r (Worm Gear) cria uma relação fixa grande, mas §eperde potência§r — e
+      perde mais quanto maior a velocidade de entrada.
+    tasks:
+      - get: RotaryCraft:rotarycraft_item_advgear
+    rewards:
+      - xp: 3
+      - item: RotaryCraft:rotarycraft_item_gearcraft:1 x4
+
+  - id: cubo_correia
+    title: "Cubo de Correia"
+    type: normal
+    deps: [correia]
+    icon: RotaryCraft:rotarycraft_item_machine:102
+    desc: |
+      Dois §eCubos de Correia§r com linha de visão ligam potência a até 64 blocos. Clique em
+      um com a pilha de correias e depois no outro; cada metro gasta uma correia. Há um
+      limite de torque antes de escorregar — e §cchuva piora§r a tração.
+    tasks:
+      - get: RotaryCraft:rotarycraft_item_machine:102 x2
+    rewards:
+      - xp: 3
+      - item: RotaryCraft:rotarycraft_item_borecraft:9 x16
+
+  - id: corrente
+    title: "Transmissão por Corrente"
+    type: normal
+    deps: [cubo_correia]
+    icon: RotaryCraft:rotarycraft_item_machine:124
+    desc: |
+      A versão avançada da correia: a §eTransmissão por Corrente§r aguenta o dobro de torque,
+      até 65.536 rad/s, e não liga para chuva. Os §eElos de Corrente§r saem de 5 HSLA em X.
+    tasks:
+      - get: RotaryCraft:rotarycraft_item_machine:124 x2
+    rewards:
+      - xp: 3
+      - item: RotaryCraft:rotarycraft_item_misccraft:14 x8
+
+  - id: embreagens_avancadas
+    title: "Distribuição de Potência"
+    type: optional
+    deps: [embreagem, juncao_eixos]
+    icon: RotaryCraft:rotarycraft_item_machine:137
+    desc: |
+      Para redes grandes: a §eEmbreagem Multi-Direcional§r (uma saída para cada força de
+      redstone), a §eEmbreagem de Distribuição§r (desvia uma quantidade exata de torque para
+      os lados) e o §eBarramento de Potência§r (divide igualmente entre saídas). Qualquer
+      um serve aqui.
+    tasks:
+      - one_of: [RotaryCraft:rotarycraft_item_machine:83, RotaryCraft:rotarycraft_item_machine:137, RotaryCraft:rotarycraft_item_machine:111]
+    rewards:
+      - loot: comum
+
+  - id: bobina_industrial
+    title: "Bobina Industrial"
+    type: normal
+    deps: [tcv]
+    icon: RotaryCraft:rotarycraft_item_advgear:2
+    desc: |
+      A §eBobina Industrial§r é uma mola gigante: carrega com potência e libera sob comando
+      (redstone), com torque e velocidade escolhidos. Serve como "capacitor" mecânico.
+      §cPassou da capacidade = liberação extremamente violenta de toda a energia.§r Ela não
+      carrega e descarrega ao mesmo tempo.
+    tasks:
+      - get: RotaryCraft:rotarycraft_item_advgear:2
+    rewards:
+      - xp: 3
+      - item: RotaryCraft:rotarycraft_item_shaftcraft:1 x8
+
+  - id: enrolador
+    title: "Enrolador de Mola"
+    type: normal
+    deps: [era_do_aco]
+    icon: RotaryCraft:rotarycraft_item_machine:41
+    desc: |
+      O §eEnrolador de Mola§r (Coil Winder) dá corda nas §eMolas§r — a "bateria" das
+      ferramentas portáteis do RotaryCraft. A carga máxima é proporcional ao torque de
+      entrada. §cMolas muito apertadas podem arrebentar ao carregar.§r
+
+      As ferramentas gastam um pouco de mola a cada uso. Para recarregar, junte a ferramenta
+      com uma mola nova na Mesa de Trabalho e pegue a velha de volta.
+    tasks:
+      - get: RotaryCraft:rotarycraft_item_machine:41
+    rewards:
+      - xp: 3
+      - item: RotaryCraft:rotarycraft_item_spring x2
+
+  - id: mola
+    title: "Mola"
+    type: normal
+    deps: [enrolador]
+    icon: RotaryCraft:rotarycraft_item_spring
+    desc: |
+      Quatro HSLA em losango = uma §eMola (0 kJ)§r. Enrole no Enrolador e ela passa a
+      mostrar a carga em kJ. (Molas de alta tensão, reforçadas com diamante e rocha matriz,
+      nunca arrebentam, mas pedem 16× mais torque.)
+    tasks:
+      - get: RotaryCraft:rotarycraft_item_spring:*
+    rewards:
+      - xp: 2
+      - item: RotaryCraft:rotarycraft_item_shaftcraft:1 x4
+
+  - id: aspirador_portatil
+    title: "Aspirador Portátil"
+    type: optional
+    deps: [mola]
+    icon: RotaryCraft:rotarycraft_item_vacuum:32000
+    desc: |
+      Clique-direito puxa itens e orbes de XP até você; Shift-clique num baú esvazia tudo de
+      uma vez. Ferramenta de mola, recarregável na Mesa de Trabalho.
+    tasks:
+      - get: RotaryCraft:rotarycraft_item_vacuum:*
+    rewards:
+      - loot: comum
+
+  - id: estilingue_cascalho
+    title: "Estilingue de Cascalho"
+    type: optional
+    deps: [mola]
+    icon: RotaryCraft:rotarycraft_item_gravelgun:32000
+    desc: |
+      Dispara lascas de pederneira em velocidade absurda (sem efeito da gravidade). Em carga
+      alta mata a maioria dos mobs com um tiro. Usa cascalho como munição e só mira em
+      criaturas vivas.
+    tasks:
+      - get: RotaryCraft:rotarycraft_item_gravelgun:*
+    rewards:
+      - loot: comum
+
+  - id: arma_repulsao
+    title: "Arma de Repulsão"
+    type: optional
+    deps: [mola, tela_radar]
+    icon: RotaryCraft:rotarycraft_item_stungun:32000
+    desc: |
+      Não causa dano: arremessa mobs para longe. Com Shift, o pulso sonoro desmonta áreas
+      conectadas de material solto (cascalho, folhas, minérios). Divertidíssima.
+    tasks:
+      - get: RotaryCraft:rotarycraft_item_stungun:*
+    rewards:
+      - loot: comum
+
+  - id: ultrassom
+    title: "Ultrassom"
+    type: optional
+    deps: [mola, tela_radar]
+    icon: RotaryCraft:rotarycraft_item_ultrasound:32000
+    desc: |
+      Mede a densidade dos blocos: detecta cavernas, veios de minério e até traças
+      escondidas em blocos infestados. Mineração com raio-X legítimo.
+    tasks:
+      - get: RotaryCraft:rotarycraft_item_ultrasound:*
+    rewards:
+      - loot: comum
+
+  - id: detector_movimento
+    title: "Detector de Movimento"
+    type: optional
+    deps: [mola, tela_radar]
+    icon: RotaryCraft:rotarycraft_item_motion:32000
+    desc: |
+      Sonar + radar de mão: avisa de mobs próximos (e se estão mirando em você), através de
+      paredes. No inventário, faz o Radar de Mobs desenhar um HUD.
+    tasks:
+      - get: RotaryCraft:rotarycraft_item_motion:*
+    rewards:
+      - loot: comum
+
+  - id: visao_noturna
+    title: "Óculos de Visão Noturna"
+    type: optional
+    deps: [mola, tela_radar]
+    icon: RotaryCraft:rotarycraft_item_nvg:8192
+    desc: |
+      Enxergue no escuro total. Ocupam o slot de capacete sem proteger nada — mas combinados
+      com um Elmo de Rocha Matriz viram um capacete de visão noturna.
+    tasks:
+      - get: RotaryCraft:rotarycraft_item_nvg:*
+    rewards:
+      - loot: comum
+
+  - id: botas_mola
+    title: "Botas de Velocidade"
+    type: optional
+    deps: [mola]
+    icon: RotaryCraft:rotarycraft_item_jump:24000
+    desc: |
+      As §eBotas de Velocidade§r (Spring Boots) aumentam o pulo e a corrida e ainda
+      amortecem a queda. Perfeitas para inspecionar fábricas de vários andares.
+    tasks:
+      - get: RotaryCraft:rotarycraft_item_jump:*
+    rewards:
+      - loot: comum
+
+  - id: lanca_fogo
+    title: "Lançador de Bola de Fogo"
+    type: optional
+    deps: [mola, radiador]
+    icon: RotaryCraft:rotarycraft_item_fireball:32000
+    desc: |
+      Bolas de fogo estilo Ghast, carregadas como um arco (máximo no azul-escuro), com
+      explosão de até 2× TNT. Munição: cargas de fogo. §cUse longe de casa.§r
+    tasks:
+      - get: RotaryCraft:rotarycraft_item_fireball:*
+    rewards:
+      - loot: comum
+
+  # ======================================================================
+  # FASE 10 — COMBUSTÍVEL DE JATO E TURBINAS
+  # ======================================================================
+  - id: fracionador
+    title: "Unidade Fraccionadora"
+    type: main
+    deps: [forca_motriz, po_netherrack, areia_betuminosa, po_carvao]
+    icon: RotaryCraft:rotarycraft_item_machine:25
+    desc: |
+      O §eFracionador§r destila o §eCombustível de Jato§r. Ele pede §b8.192 rad/s e 65 kW§r
+      (potência por baixo) e os ingredientes:
+
+      * areia betuminosa, pó de rocha do Nether, pó de carvão, pó de blaze, corante e creme
+        de magma (consumidos);
+      * §eetanol líquido§r como base;
+      * uma §elágrima de Ghast§r como catalisador (não é consumida).
+
+      Mais pressão = mais rendimento. O combustível só sai §epelo topo§r — ou ponha baldes
+      vazios no slot de balde.
+    tasks:
+      - get: RotaryCraft:rotarycraft_item_machine:25
+    rewards:
+      - xp: 5
+      - choice: [minecraft:ghast_tear x2, minecraft:magma_cream x16, minecraft:blaze_powder x16]
+
+  - id: etanol_liquido
+    title: "Etanol Líquido"
+    type: normal
+    deps: [cristais_etanol]
+    icon: RotaryCraft:rotarycraft_item_bucket:2
+    desc: |
+      O Fracionador precisa de §eetanol líquido§r como base. Os motores a etanol e os
+      tanques deixam você tirar e pôr etanol com balde (o Manual explica na página dos
+      baldes). Consiga um §eBalde de Etanol§r.
+    tasks:
+      - get: RotaryCraft:rotarycraft_item_bucket:2
+    rewards:
+      - xp: 3
+      - item: RotaryCraft:rotarycraft_item_ethanol x32
+
+  - id: combustivel_jato
+    title: "Combustível de Jato"
+    type: main
+    deps: [fracionador, etanol_liquido]
+    icon: RotaryCraft:rotarycraft_item_bucket:1
+    desc: |
+      "Poder Líquido"! O §eCombustível de Jato§r alimenta a Microturbina, a Turbina de Avião
+      e a Fornalha de Pulso a Jato, e dá empuxo extra às mochilas a jato. Encha um balde e
+      comece a estocar num Reservatório.
+
+      As turbinas bebem MUITO. Automatize os pós no Triturador e o etanol antes de ligar
+      qualquer jato.
+    tasks:
+      - get: RotaryCraft:rotarycraft_item_bucket:1
+    rewards:
+      - xp: 5
+      - choice: [minecraft:blaze_rod x8, RotaryCraft:rotarycraft_item_powders:1 x32, RotaryCraft:rotarycraft_item_machine:24 x16]
+
+  - id: refinaria
+    title: "Refinaria"
+    type: optional
+    deps: [combustivel_jato]
+    icon: RotaryCraft:rotarycraft_item_machine:86
+    desc: |
+      A §eRefinaria§r (Fuel Enhancer) transforma combustível de petróleo (o "fuel" do
+      BuildCraft) em combustível de jato. O volume cai 4 vezes e ainda pede creme de magma,
+      pó de blaze, pó de rocha do Nether e areia betuminosa. Bom destino para petróleo
+      sobrando.
+    tasks:
+      - get: RotaryCraft:rotarycraft_item_machine:86
+    rewards:
+      - loot: incomum
+
+  - id: pecas_turbina
+    title: "Compressor, Turbina e Difusor"
+    type: normal
+    deps: [pas_helice, engrenagem_aco]
+    icon: RotaryCraft:rotarycraft_item_enginecraft:2
+    desc: |
+      As peças de um motor a jato: §eCompressor§r (HSLA em volta de uma engrenagem),
+      §eTurbina§r (compressor cercado de 8 pás de hélice) e §eDifusor§r (HSLA). Junto do
+      Combustor, elas formam a Microturbina e a Turbina de Avião.
+    tasks:
+      - get: [RotaryCraft:rotarycraft_item_enginecraft:1, RotaryCraft:rotarycraft_item_enginecraft:2, RotaryCraft:rotarycraft_item_enginecraft:3]
+    rewards:
+      - xp: 3
+      - item: RotaryCraft:rotarycraft_item_misccraft:5 x4
+
+  - id: microturbina
+    title: "Microturbina"
+    type: main
+    deps: [combustivel_jato, pecas_turbina]
+    icon: RotaryCraft:rotarycraft_item_engine:7
+    desc: |
+      Um motor único: a §eMicroturbina§r dá quase nenhum torque (§b16 Nm§r) a uma velocidade
+      absurda (§b131.072 rad/s§r) = pouco mais de §b2 MW§r com combustível de jato.
+
+      §cNenhum eixo de aço aguenta essa velocidade!§r Use caixas em redução logo na saída
+      (com material à altura) ou eixos melhores. É também a única fonte "direta" da
+      velocidade que a Fornalha de Pulso a Jato pede.
+    tasks:
+      - get: RotaryCraft:rotarycraft_item_engine:7
+    rewards:
+      - xp: 5
+      - choice: [RotaryCraft:rotarycraft_item_bucket:1 x2, RotaryCraft:rotarycraft_item_gearbox:3, RotaryCraft:rotarycraft_item_gearcraft:113 x4]
+
+  - id: liga_tungstenio
+    title: "Liga de Tungstênio"
+    type: normal
+    deps: [tungstenio, aco_torcido]
+    icon: RotaryCraft:rotarycraft_item_compacts:12
+    desc: |
+      Liga de Aço Torcido + obsidiana + flocos de tungstênio no Forno de Calor = §eLingote de
+      Liga de Tungstênio§r. Com ela você faz hastes, engrenagens, núcleos e caixas de
+      tungstênio — o material que aguenta as turbinas (~314.000 rad/s).
+    tasks:
+      - get: RotaryCraft:rotarycraft_item_compacts:12 x6
+    rewards:
+      - xp: 3
+      - item: minecraft:obsidian x8
+
+  - id: engrenagens_tungstenio
+    title: "Transmissão de Tungstênio"
+    type: normal
+    deps: [liga_tungstenio]
+    icon: RotaryCraft:rotarycraft_item_gearcraft:113
+    desc: |
+      §eHaste§r e §eEngrenagem de Liga de Tungstênio§r (mesmas formas das de aço) e, a
+      partir delas, unidades e caixas de tungstênio. É o que separa uma turbina funcionando
+      de um eixo explodido.
+    tasks:
+      - get: [RotaryCraft:rotarycraft_item_gearcraft:112 x3, RotaryCraft:rotarycraft_item_gearcraft:113 x5]
+    rewards:
+      - xp: 3
+      - item: RotaryCraft:rotarycraft_item_compacts:12 x4
+
+  - id: turbina_aviao
+    title: "Turbina de Avião"
+    type: milestone
+    deps: [microturbina, engrenagens_tungstenio]
+    icon: RotaryCraft:rotarycraft_item_engine:8
+    banner: "Questão de Confiança"
+    subtitle: "67 megawatts"
+    desc: |
+      O motor mais poderoso de todos: a §eTurbina de Avião§r (Gas Turbine) entrega §b1.024 Nm
+      a 65.536 rad/s ≈ 67 MW§r — potência de avião comercial, com o barulho de um.
+
+      §cFIQUE LONGE DA FRENTE DELA.§r Ela suga o que estiver na entrada (o Manual compara com
+      um liquidificador) e, se estiver danificada, pode falhar violentamente. Há conquistas
+      para quem é sugado... e para quem enfia 50 galinhas nela. Por favor, não.
+
+      65.536 rad/s passa do limite do aço: use tungstênio, diamante ou rocha matriz, ou
+      reduza a velocidade imediatamente. Agora você tem potência para tudo — inclusive para
+      quebrar a rocha matriz.
+    tasks:
+      - get: RotaryCraft:rotarycraft_item_engine:8
+    rewards:
+      - xp: 12
+      - kit: {name: "Kit do Piloto", items: [RotaryCraft:rotarycraft_item_bucket:1 x4, RotaryCraft:rotarycraft_item_compacts:12 x8, RotaryCraft:rotarycraft_item_machine:24 x16, RotaryCraft:rotarycraft_item_shaftcraft:1 x32]}
+      - loot: epico
+
+  - id: turbina_composta
+    title: "Turbina Composta"
+    type: optional
+    deps: [turbina_aviao]
+    icon: RotaryCraft:rotarycraft_item_misccraft:12
+    desc: |
+      Duas Turbinas, quatro Tungstênios Sinterizados e um Núcleo de Tungstênio = §eTurbina
+      Composta§r. Ela é base do Upgrade de Pós-queima e do Núcleo de Turbina a Vapor do
+      ReactorCraft.
+    tasks:
+      - get: RotaryCraft:rotarycraft_item_misccraft:12
+    rewards:
+      - loot: incomum
+
+  - id: fornalha_pulso
+    title: "Fornalha de Pulso a Jato"
+    type: normal
+    deps: [combustivel_jato, tungstenio]
+    icon: RotaryCraft:rotarycraft_item_machine:21
+    desc: |
+      Uma fornalha movida a jato! Não funde receitas comuns, mas §ederrete obsidiana em vidro
+      à prova de TNT§r, §erecicla armaduras e ferramentas§r de volta em lingotes e faz aço com
+      mais eficiência. Pede §b131.072 rad/s§r (sem potência mínima), entrando por baixo, e
+      consome muito combustível de jato.
+
+      §cEla fica MUITO quente§r e incendeia tudo em volta: refrigere com água. Aceita oxigênio
+      líquido como acelerante.
+    tasks:
+      - get: RotaryCraft:rotarycraft_item_machine:21
+    rewards:
+      - xp: 3
+      - item: minecraft:obsidian x16
+
+  - id: vidro_explosao
+    title: "Vidro Anti-Explosão"
+    type: normal
+    deps: [fornalha_pulso]
+    icon: RotaryCraft:rotarycraft_block_blastglass
+    desc: |
+      Obsidiana na Fornalha de Pulso = §eVidro Anti-Explosão§r: transparente e resistente a
+      quase qualquer explosão (oredict glassHardened). Vira painéis na bancada. O
+      ReactorCraft usa muito desse vidro — por bons motivos.
+    tasks:
+      - get: RotaryCraft:rotarycraft_block_blastglass x8
+    rewards:
+      - xp: 3
+      - item: minecraft:obsidian x16
+
+  # ======================================================================
+  # FASE 11 — MINERAÇÃO E LEVANTAMENTO
+  # ======================================================================
+  - id: broca_pecas
+    title: "Broca e Cabeça de Pressão"
+    type: normal
+    deps: [era_do_aco]
+    icon: RotaryCraft:rotarycraft_item_borecraft
+    desc: |
+      Peças de mineração: a §eBroca§r (HSLA) e a §eCabeça de Pressão§r (HSLA, obsidiana,
+      diamantes e pó de rocha matriz — essa fica para depois). Comece pela Broca.
+    tasks:
+      - get: RotaryCraft:rotarycraft_item_borecraft
+    rewards:
+      - xp: 2
+      - item: RotaryCraft:rotarycraft_item_shaftcraft:1 x6
+
+  - id: tunelador
+    title: "Tunelador"
+    type: main
+    deps: [forca_motriz, broca_pecas]
+    icon: RotaryCraft:rotarycraft_item_machine:14
+    desc: |
+      O §eTunelador§r (Boring Machine) cava túneis infinitos para a frente. Na interface você
+      desenha o formato do túnel e escolhe se os blocos caem como item. Cada bloco custa
+      potência pela dureza e um torque mínimo — pedra dura pede mais.
+
+      Ele escora o teto trocando areia/cascalho. Aceita encantamentos (Toque Suave, Fortuna,
+      Eficiência) via livro encantado. E dizem que os labirintos de uma certa floresta
+      mítica se rendem a ele...
+    tasks:
+      - get: RotaryCraft:rotarycraft_item_machine:14
+    rewards:
+      - xp: 5
+      - choice: [minecraft:diamond x2, RotaryCraft:rotarycraft_item_ethanol x48, minecraft:torch x64]
+
+  - id: spawner_rc
+    title: "Spawner Inteiro"
+    type: optional
+    deps: [tunelador]
+    icon: minecraft:mob_spawner
+    desc: |
+      Se o Tunelador (ou o Bate-Estacas) passar por um spawner, ele não é destruído: §ecai
+      como item§r, mantendo o tipo de mob. Junto do Controlador de Spawners, é o coração de
+      uma fazenda de mobs.
+    tasks:
+      - get: RotaryCraft:rotarycraft_item_spawner
+    rewards:
+      - loot: incomum
+
+  - id: bate_estacas
+    title: "Bate-Estacas"
+    type: normal
+    deps: [tunelador]
+    icon: RotaryCraft:rotarycraft_item_machine:28
+    desc: |
+      O §eBate-Estacas§r (Pile Driver — o jogo chama de "Minarador Vertical") martela o chão e
+      abre um poço estreito até a rocha matriz, atravessando até líquidos. Pede um torque
+      §eenorme§r e potência que cresce a cada metro de profundidade (veja o Manual).
+
+      §cNão fique embaixo dele.§r A vibração derruba quadros, arranca mudas e deixa jogadores
+      tontos.
+    tasks:
+      - get: RotaryCraft:rotarycraft_item_machine:28
+    rewards:
+      - xp: 3
+      - item: minecraft:torch x32
+
+  - id: radar_solo
+    title: "Radar de Penetração no Solo"
+    type: normal
+    deps: [tela_radar]
+    icon: RotaryCraft:rotarycraft_item_machine:26
+    desc: |
+      O §eRadar de Penetração no Solo§r (GPR) desenha um corte do subsolo: cavernas,
+      estruturas e minérios (a config deixa ele mostrar minérios). Mais potência = campo de
+      visão maior, até 82 blocos. Pede 32 kW por qualquer lado; mova o corte com [ e ].
+    tasks:
+      - get: RotaryCraft:rotarycraft_item_machine:26
+    rewards:
+      - xp: 3
+      - item: minecraft:glowstone x8
+
+  - id: scanner_caverna
+    title: "Scanner de Caverna"
+    type: optional
+    deps: [radar_solo]
+    icon: RotaryCraft:rotarycraft_item_machine:57
+    desc: |
+      Um "scanner 3D a laser": desenha no mundo o contorno das cavernas abaixo, coloridas
+      por profundidade. Clique-direito empurra a área para onde você olha.
+    tasks:
+      - get: RotaryCraft:rotarycraft_item_machine:57
+    rewards:
+      - loot: comum
+
+  - id: lenhador
+    title: "Lenhador"
+    type: optional
+    deps: [motor_gasolina]
+    icon: RotaryCraft:rotarycraft_item_machine:32
+    desc: |
+      O §eLenhador§r corta o tronco e derruba a árvore inteira, replantando se cair muda (com
+      Infinidade, replanta sempre). Pede §b64 Nm e 16 kW§r. Fazenda de madeira resolvida.
+    tasks:
+      - get: RotaryCraft:rotarycraft_item_machine:32
+    rewards:
+      - loot: comum
+
+  # ======================================================================
+  # FASE 12 — ROCHA MATRIZ
+  # ======================================================================
+  - id: quebrador_rocha
+    title: "Broca de Rocha Matriz"
+    type: main
+    deps: [turbina_aviao]
+    icon: RotaryCraft:rotarycraft_item_machine
+    desc: |
+      "Inquebrável? Sério?" O §eQuebrador de Rocha Matriz§r (o jogo chama de "Broca de Rocha
+      Matriz") desgasta a rocha matriz à sua frente, bloco por bloco, e solta §ePó de Rocha
+      Matriz§r. Pede §b16.384 Nm e ~4,2 MW§r, entrando por trás; mais velocidade = mais rápido.
+
+      Ele §enão quebra a camada Y=0§r (a config do pack mantém assim) — então nada de buraco
+      para o vazio.
+    tasks:
+      - get: RotaryCraft:rotarycraft_item_machine
+    rewards:
+      - xp: 6
+      - choice: [RotaryCraft:rotarycraft_item_bucket:1 x4, RotaryCraft:rotarycraft_item_gearbox:3, minecraft:diamond x4]
+
+  - id: po_rocha_matriz
+    title: "Pó de Rocha Matriz"
+    type: main
+    deps: [quebrador_rocha]
+    icon: RotaryCraft:rotarycraft_item_powders:4
+    desc: |
+      A rocha matriz é o único material duro o bastante para as pressões e temperaturas
+      mais extremas. Junte §e32 Pós de Rocha Matriz§r: eles vão virar lingotes, ferramentas,
+      armaduras e os melhores eixos do jogo.
+    tasks:
+      - get: RotaryCraft:rotarycraft_item_powders:4 x32
+    rewards:
+      - xp: 6
+      - choice: [RotaryCraft:rotarycraft_item_shaftcraft:1 x16, minecraft:lava_bucket x4, RotaryCraft:rotarycraft_item_compacts:8 x32]
+
+  - id: lingote_rocha
+    title: "Lingote de Liga de Rocha Matriz"
+    type: main
+    deps: [po_rocha_matriz, aquecedor]
+    icon: RotaryCraft:rotarycraft_item_compacts:3
+    desc: |
+      No Forno de Calor: §e4 Pós de Rocha Matriz§r à esquerda e §e1 Aço HSLA§r no canto
+      superior esquerdo da grade, a §c1.450 °C§r. Lava encostada não chega lá: ponha um
+      §eAquecedor§r embaixo, ajuste a temperatura-alvo e alimente-o sem parar com
+      combustível forte. §cAcima de 2.000 °C o Aquecedor derrete.§r
+
+      Faça §e8 Lingotes de Liga de Rocha Matriz§r.
+    tasks:
+      - get: RotaryCraft:rotarycraft_item_compacts:3 x8
+    rewards:
+      - xp: 6
+      - choice: [RotaryCraft:rotarycraft_item_powders:4 x16, RotaryCraft:rotarycraft_item_shaftcraft:1 x16, minecraft:lava_bucket x4]
+
+  - id: eixo_rocha
+    title: "Transmissão de Rocha Matriz"
+    type: normal
+    deps: [lingote_rocha]
+    icon: RotaryCraft:rotarycraft_item_gearcraft:64
+    desc: |
+      Hastes e engrenagens de rocha matriz saem do Forno de Calor (pó de rocha matriz em
+      volta das peças de aço). Eixos de rocha matriz têm §eresistência infinita§r e
+      engrenagens de rocha matriz §enão se desgastam nem precisam de lubrificante§r.
+      Conquista "Isso sim é inquebrável!"
+    tasks:
+      - get: [RotaryCraft:rotarycraft_item_gearcraft:64, RotaryCraft:rotarycraft_item_gearcraft:65]
+    rewards:
+      - xp: 4
+      - item: RotaryCraft:rotarycraft_item_powders:4 x8
+
+  - id: alta_proporcao
+    title: "Engrenagem de Alta Proporção"
+    type: normal
+    deps: [eixo_rocha]
+    icon: RotaryCraft:rotarycraft_item_advgear:3
+    desc: |
+      Uma relação de §e256:1§r num bloco só — o efeito de várias caixas encadeadas. Precisa
+      ser de rocha matriz para aguentar e consome bastante lubrificante (rolamentos melhores
+      reduzem). Inverta entre torque e velocidade com Shift + Chave de Fenda.
+    tasks:
+      - get: RotaryCraft:rotarycraft_item_advgear:3
+    rewards:
+      - xp: 4
+      - item: RotaryCraft:rotarycraft_item_bucket x4
+
+  - id: picareta_rocha
+    title: "Picareta de Rocha Matriz"
+    type: normal
+    deps: [lingote_rocha]
+    icon: RotaryCraft:rotarycraft_item_bedpick
+    desc: |
+      Ferramentas de rocha matriz (feitas no Forno de Calor) têm §edurabilidade infinita§r e
+      são mais rápidas que as de diamante. A §ePicareta§r colhe qualquer bloco "limpo", como
+      se tivesse Toque Suave permanente — e, neste pack, §ecolhe até spawners§r.
+
+      Os encantamentos dela vêm travados (a config "Lock enchants" está ligada).
+    tasks:
+      - get: RotaryCraft:rotarycraft_item_bedpick
+    rewards:
+      - xp: 4
+      - item: RotaryCraft:rotarycraft_item_powders:4 x8
+
+  - id: ferramentas_rocha
+    title: "Machado, Pá e Espada de Rocha Matriz"
+    type: normal
+    deps: [picareta_rocha]
+    icon: RotaryCraft:rotarycraft_item_bedsword
+    desc: |
+      Complete o conjunto: §eMachado§r, §ePá§r e §eEspada§r (muito eficaz contra armadura e
+      "limpa" na colheita de mobs). Conquista "Chega de consertar ferramentas!"
+    tasks:
+      - get: [RotaryCraft:rotarycraft_item_bedaxe, RotaryCraft:rotarycraft_item_bedshovel, RotaryCraft:rotarycraft_item_bedsword]
+    rewards:
+      - xp: 4
+      - item: RotaryCraft:rotarycraft_item_compacts:3 x2
+
+  - id: utilitarios_rocha
+    title: "Tesoura, Enxada e Foice de Rocha Matriz"
+    type: optional
+    deps: [picareta_rocha]
+    icon: RotaryCraft:rotarycraft_item_bedshears
+    desc: |
+      A §eTesoura§r colhe até as plantas mais delicadas; a §eEnxada§r ara 5×5 (ou planta
+      sementes em área, agachado); a §eFoice§r colhe em área. Todas eternas.
+    tasks:
+      - get: [RotaryCraft:rotarycraft_item_bedshears, RotaryCraft:rotarycraft_item_bedhoe, RotaryCraft:rotarycraft_item_bedsickle]
+    rewards:
+      - loot: incomum
+
+  - id: armadura_rocha
+    title: "Armadura de Rocha Matriz"
+    type: normal
+    deps: [lingote_rocha]
+    icon: RotaryCraft:rotarycraft_item_bedchest
+    desc: |
+      Elmo, Armadura, Calça e Botas de rocha matriz: proteção excelente e §edurabilidade
+      infinita§r. O elmo aceita os Óculos de Visão Noturna e o peitoral se combina com a
+      mochila a jato. Muitos lingotes — mas é para sempre.
+    tasks:
+      - get: [RotaryCraft:rotarycraft_item_bedhelm, RotaryCraft:rotarycraft_item_bedchest, RotaryCraft:rotarycraft_item_bedlegs, RotaryCraft:rotarycraft_item_bedboots]
+    rewards:
+      - xp: 6
+      - loot: raro
+
+  - id: mochila_rocha
+    title: "Mochila a Jato de Rocha Matriz"
+    type: optional
+    deps: [armadura_rocha, mochila_etanol]
+    icon: RotaryCraft:rotarycraft_item_bedpack
+    desc: |
+      Peitoral de rocha matriz + mochila a jato: voo e proteção no mesmo slot. É um pouco
+      mais pesada e responde mais devagar, segundo o Manual. Um preço justo.
+    tasks:
+      - get: RotaryCraft:rotarycraft_item_bedpack
+    rewards:
+      - loot: raro
+
+  - id: inquebravel
+    title: "Inquebrável"
+    type: milestone
+    deps: [ferramentas_rocha, armadura_rocha, eixo_rocha]
+    icon: RotaryCraft:rotarycraft_block_deco:4
+    banner: "Inquebrável"
+    subtitle: "Ferramentas e eixos de rocha matriz"
+    desc: |
+      Você arrancou pedaços do chão do mundo e os forjou em ferramentas eternas. Os Antigos
+      chamavam a rocha matriz de "a última página de baixo" — e você acabou de escrever nela.
+
+      Eixos de rocha matriz não quebram, engrenagens não gastam, ferramentas não acabam. A
+      partir daqui, o limite da sua fábrica é a sua imaginação (e o seu estoque de combustível
+      de jato).
+    tasks:
+      - get: [RotaryCraft:rotarycraft_item_bedpick, RotaryCraft:rotarycraft_item_bedchest, RotaryCraft:rotarycraft_item_gearcraft:64]
+    rewards:
+      - xp: 12
+      - kit: {name: "Kit da Rocha Matriz", items: [RotaryCraft:rotarycraft_item_compacts:3 x8, RotaryCraft:rotarycraft_item_powders:4 x32, RotaryCraft:rotarycraft_item_bucket:1 x4]}
+      - loot: epico
+
+  # ======================================================================
+  # FASE 13 — MÁQUINAS DE UTILIDADE, FAZENDA E DEFESA
+  # ======================================================================
+  - id: ventilador
+    title: "Ventilador"
+    type: normal
+    deps: [motor_gasolina]
+    icon: RotaryCraft:rotarycraft_item_machine:23
+    desc: |
+      O §eVentilador§r sopra entidades para longe (mais potência = mobs mais pesados e
+      alcance maior, a partir de 1 kW). Em alta velocidade ele também §earranca plantações
+      maduras§r e apaga — ou espalha — fogo. Um Difusor aumenta a área, à custa de metade
+      da eficiência.
+    tasks:
+      - get: RotaryCraft:rotarycraft_item_machine:23
+    rewards:
+      - xp: 3
+      - item: minecraft:hopper x2
+
+  - id: aspirador_itens
+    title: "Aspirador de Itens"
+    type: normal
+    deps: [motor_gasolina]
+    icon: RotaryCraft:rotarycraft_item_machine:29
+    desc: |
+      Puxa itens e orbes de XP e guarda dentro de si (16 kW). Para tirar o XP, Shift +
+      clique com a Chave de Fenda. Ele também suga de inventários vizinhos na horizontal.
+      Par perfeito do Ventilador numa fazenda.
+    tasks:
+      - get: RotaryCraft:rotarycraft_item_machine:29
+    rewards:
+      - xp: 3
+      - item: minecraft:chest x2
+
+  - id: alimentador
+    title: "Alimentador"
+    type: optional
+    deps: [motor_gasolina]
+    icon: RotaryCraft:rotarycraft_item_machine:37
+    desc: |
+      O §eAlimentador§r (Auto Breeder) atrai animais e os alimenta até cruzarem. Cada bicho
+      quer a sua comida (lobos adoram porco cru); a comida é gasta quando o animal entra no
+      modo de cruzamento.
+    tasks:
+      - get: RotaryCraft:rotarycraft_item_machine:37
+    rewards:
+      - loot: comum
+
+  - id: caixa_isca
+    title: "Caixa de Isca"
+    type: optional
+    deps: [motor_gasolina]
+    icon: RotaryCraft:rotarycraft_item_machine:36
+    desc: |
+      Atrai ou repele mobs conforme os itens dentro (não são consumidos): Endermen são
+      atraídos por grama e repelidos pelas "caras" da areia das almas. Aquecida de leve,
+      ainda choca ovos.
+    tasks:
+      - get: RotaryCraft:rotarycraft_item_machine:36
+    rewards:
+      - loot: comum
+
+  - id: matador_mobs
+    title: "Matador de Mobs"
+    type: normal
+    deps: [motor_gasolina]
+    icon: RotaryCraft:rotarycraft_item_machine:50
+    desc: |
+      O §eMatador de Mobs§r causa dano como se fosse um jogador nos mobs logo acima — então
+      saem os drops "só de jogador", como varas de blaze. O dano cresce com a potência.
+    tasks:
+      - get: RotaryCraft:rotarycraft_item_machine:50
+    rewards:
+      - xp: 3
+      - item: minecraft:iron_sword
+
+  - id: controlador_spawner
+    title: "Controlador de Spawners"
+    type: optional
+    deps: [matador_mobs]
+    icon: RotaryCraft:rotarycraft_item_machine:33
+    desc: |
+      Encostado num spawner, desliga-o ou ajusta o ritmo: quanto mais velocidade, menor o
+      intervalo mínimo entre spawns (pede 131 kW). Fazenda de mobs sob medida.
+    tasks:
+      - get: RotaryCraft:rotarycraft_item_machine:33
+    rewards:
+      - loot: incomum
+
+  - id: holofote
+    title: "Canhão de Luz"
+    type: optional
+    deps: [motor_cc]
+    icon: RotaryCraft:rotarycraft_item_machine:8
+    desc: |
+      O §eCanhão de Luz§r (floodlight) projeta um feixe que ilumina tudo até bater num bloco
+      sólido — ótimo para salões enormes. Pede só 1 kW.
+    tasks:
+      - get: RotaryCraft:rotarycraft_item_machine:8
+    rewards:
+      - loot: comum
+
+  - id: bau_redimensionavel
+    title: "Baú Redimensionável"
+    type: optional
+    deps: [motor_gasolina]
+    icon: RotaryCraft:rotarycraft_item_machine:58
+    desc: |
+      Quanto mais potência, mais slots. §cSe a potência cair com itens nos slots extras, eles
+      ficam escondidos§r até a potência voltar. Não deixe o motor acabar o combustível!
+    tasks:
+      - get: RotaryCraft:rotarycraft_item_machine:58
+    rewards:
+      - loot: comum
+
+  - id: fabricador_auto
+    title: "Fabricador Automático"
+    type: optional
+    deps: [mesa_trabalho]
+    icon: RotaryCraft:rotarycraft_item_machine:120
+    desc: |
+      A §eAutoCrafting Unit§r fabrica receitas a partir de §ePadrões de Fabricação§r (papel de
+      receita). Com 1 kW, automatiza a produção de peças — painéis, engrenagens, eixos.
+    tasks:
+      - get: RotaryCraft:rotarycraft_item_machine:120
+    rewards:
+      - loot: incomum
+
+  - id: maquina_triagem
+    title: "Máquina de Triagem"
+    type: optional
+    deps: [motor_cc]
+    icon: RotaryCraft:rotarycraft_item_machine:85
+    desc: |
+      Separa itens por tipo para saídas diferentes, movida a eixo (1 kW). Logística simples
+      para quem não quer mexer com tubos de outros mods.
+    tasks:
+      - get: RotaryCraft:rotarycraft_item_machine:85
+    rewards:
+      - loot: comum
+
+  - id: carregador_chunk
+    title: "Chunk Loader"
+    type: optional
+    deps: [microturbina]
+    icon: RotaryCraft:rotarycraft_item_machine:49
+    desc: |
+      Mantém chunks carregados enquanto recebe potência (raio máximo de 8 chunks pela config
+      do pack). Pede muita velocidade — veja o Manual. Converse com a administração do
+      servidor sobre as regras de chunk loading antes de abusar.
+    tasks:
+      - get: RotaryCraft:rotarycraft_item_machine:49
+    rewards:
+      - loot: incomum
+
+  - id: campo_forca
+    title: "Campo de Força"
+    type: optional
+    deps: [forca_motriz]
+    icon: RotaryCraft:rotarycraft_item_machine:46
+    desc: |
+      Uma esfera de energia que repele mobs hostis e projéteis (524 kW). É sólida de um lado
+      só: coisas saem, mas não entram. Precisa de espaço livre acima igual ao raio.
+    tasks:
+      - get: RotaryCraft:rotarycraft_item_machine:46
+    rewards:
+      - loot: incomum
+
+  - id: torreta
+    title: "Torreta"
+    type: optional
+    deps: [turbina_aviao, modulo_energia]
+    icon: RotaryCraft:rotarycraft_item_machine:53
+    desc: |
+      A §eTorreta§r (RailGun) acelera munição metálica pesada com campos magnéticos e mira no
+      mob visível mais próximo (4,2 MW). Munição mais pesada = mais dano e mais estrago no
+      terreno (a config permite dano a blocos). Conquista "Exagero" — merecida.
+    tasks:
+      - get: RotaryCraft:rotarycraft_item_machine:53
+    rewards:
+      - loot: raro
+
+  - id: municao_torreta
+    title: "Munição de Torreta"
+    type: optional
+    deps: [torreta]
+    icon: RotaryCraft:rotarycraft_item_railgun:9
+    desc: |
+      Cada nível de munição soma massa ao anterior: tábuas, depois pedra, ferro, ouro e,
+      por fim, lingotes de rocha matriz (até 32.768 kg!). 8 balas por receita.
+    tasks:
+      - get: RotaryCraft:rotarycraft_item_railgun:9 x8
+    rewards:
+      - loot: incomum
+
+  - id: raio_calor
+    title: "Raio de Calor"
+    type: optional
+    deps: [turbina_aviao, tungstenio]
+    icon: RotaryCraft:rotarycraft_item_machine:12
+    desc: |
+      Uma das máquinas mais caras e destrutivas: um feixe de fogo que derrete pedra e acende
+      TNT pelo caminho (2,1 MW de mínimo; mais potência = mais alcance). O ReactorCraft usa
+      o feixe dele para aquecer o plasma da fusão. §cTotalmente capaz de queimar um bioma.§r
+    tasks:
+      - get: RotaryCraft:rotarycraft_item_machine:12
+    rewards:
+      - loot: raro
+
+  - id: ponte_luz
+    title: "Ponte de Luz"
+    type: optional
+    deps: [turbina_aviao]
+    icon: RotaryCraft:rotarycraft_item_machine:15
+    desc: |
+      Com uma demanda de potência gigantesca (~33 MW para o alcance total), emite uma ponte
+      de luz sólida e indestrutível onde dá para andar. Precisa de luz forte ou céu aberto
+      acima.
+    tasks:
+      - get: RotaryCraft:rotarycraft_item_machine:15
+    rewards:
+      - loot: raro
+
+  - id: canhao_tnt
+    title: "Canhão de TNT"
+    type: optional
+    deps: [forca_motriz]
+    icon: RotaryCraft:rotarycraft_item_machine:43
+    desc: |
+      Dispara TNT acesa por velocidade/ângulo/rumo ou até uma coordenada (com o Direcionador
+      de TNT). Ângulos íngremes pedem torque; tiros longos, potência. §cUse com juízo — e com
+      permissão de quem mora perto.§r
+    tasks:
+      - get: RotaryCraft:rotarycraft_item_machine:43
+    rewards:
+      - loot: comum
+
+  - id: terraformador
+    title: "Terraformador"
+    type: optional
+    deps: [forca_motriz]
+    icon: RotaryCraft:rotarycraft_item_machine:84
+    desc: |
+      Converte biomas em biomas parecidos (mudanças radicais exigem etapas), gastando muitos
+      líquidos e itens. Marque as áreas com o §eSeletor de Tiles§r; com um diamante ele imita
+      até a geração de mundo do bioma alvo. Ativa por redstone.
+    tasks:
+      - get: RotaryCraft:rotarycraft_item_machine:84
+    rewards:
+      - loot: incomum
+
+  - id: projetor_musica
+    title: "Projetor e Caixa de Música"
+    type: optional
+    deps: [motor_cc]
+    icon: RotaryCraft:rotarycraft_item_machine:47
+    desc: |
+      Para a parte bonita da fábrica: o §eProjetor§r exibe slides numa parede 7×5 e a §eCaixa
+      de Música§r é um circuito de blocos musicais programável (redstone toca uma vez; eixo
+      toca em loop). Qualquer um dos dois serve.
+    tasks:
+      - one_of: [RotaryCraft:rotarycraft_item_machine:52, RotaryCraft:rotarycraft_item_machine:47]
+    rewards:
+      - loot: comum
+
+  # ======================================================================
+  # FASE 14 — CONVERSÃO DE ENERGIA (PONTES COM OUTROS MODS)
+  # ======================================================================
+  - id: info_conversao
+    title: "Pontes de Energia"
+    type: info
+    deps: [forca_motriz]
+    icon: RotaryCraft:rotarycraft_item_machine:108
+    desc: |
+      O RotaryCraft conversa com os outros Volumes por "motores de conversão" (Manual,
+      categoria Conversores). Neste pack a perda de conversão está em §e0%§r (config).
+
+      * Eixo → RF: §eDínamo Rotacional§r; RF → eixo: §eMotor Magnetostático§r.
+      * Eixo → EU (IC2): §eGerador Elétrico§r; EU → eixo: §eMotor Elétrico§r.
+      * Eixo → vapor: §eCaldeira de Fricção§r; vapor → eixo: §eTurbina a Vapor§r.
+      * Combustível do BuildCraft → eixo: §eMotor a Combustível§r.
+
+      Os motores de conversão têm 6 níveis (mais potência, menos eficiência) e precisam de
+      refrigeração. E o ElectriCraft tem seus próprios geradores elétricos de eixo!
+    tasks:
+      - check
+    rewards:
+      - xp: 1
+
+  - id: dinamo
+    title: "Dínamo Rotacional"
+    type: normal
+    deps: [info_conversao]
+    icon: RotaryCraft:rotarycraft_item_machine:108
+    desc: |
+      Eixo → RF (Redstone Flux). O §eDínamo Rotacional§r tem limite de torque e de velocidade
+      na entrada (o excesso é desperdiçado, sem perigo) e se orienta como os dínamos do
+      Thermal Expansion. Uma turbina de jato alimentando a rede RF inteira? Pode.
+    tasks:
+      - get: RotaryCraft:rotarycraft_item_machine:108
+    rewards:
+      - xp: 3
+      - item: minecraft:redstone_block x4
+
+  - id: motor_magnetostatico
+    title: "Motor Magnetostático"
+    type: normal
+    deps: [info_conversao]
+    icon: RotaryCraft:rotarycraft_item_machine:109
+    desc: |
+      O contrário: RF → eixo. Escolha a velocidade de saída na interface; mais potência pede
+      mais RF. Precisa de refrigeração e superaquece se ficar sem.
+    tasks:
+      - get: RotaryCraft:rotarycraft_item_machine:109
+    rewards:
+      - xp: 3
+      - item: minecraft:redstone_block x4
+
+  - id: gerador_eletrico
+    title: "Gerador Elétrico"
+    type: normal
+    deps: [info_conversao]
+    icon: RotaryCraft:rotarycraft_item_machine:92
+    desc: |
+      Eixo → EU do IC2. A saída total e o tamanho do pacote crescem com a potência de
+      entrada — §ccuidado com a tensão§r nas máquinas do IC2 (lembra delas explodindo?).
+    tasks:
+      - get: RotaryCraft:rotarycraft_item_machine:92
+    rewards:
+      - xp: 3
+      - item: minecraft:gold_ingot x6
+
+  - id: motor_eletrico
+    title: "Motor Elétrico"
+    type: normal
+    deps: [info_conversao]
+    icon: RotaryCraft:rotarycraft_item_machine:93
+    desc: |
+      EU → eixo: o §eMotor Elétrico§r usa energia do IC2 e você escolhe a velocidade. Mais
+      potência pede mais EU e tensão maior. Bom para alimentar máquinas do RotaryCraft com a
+      sua MFSU.
+    tasks:
+      - get: RotaryCraft:rotarycraft_item_machine:93
+    rewards:
+      - xp: 3
+      - item: minecraft:gold_ingot x6
+
+  - id: caldeira_friccao
+    title: "Caldeira de Fricção e Turbina a Vapor"
+    type: normal
+    deps: [info_conversao]
+    icon: RotaryCraft:rotarycraft_item_machine:89
+    desc: |
+      A §eCaldeira de Fricção§r ferve água com potência de eixo (vapor sai pelo topo; ela
+      demora a aquecer e §cpode falhar se superaquecer§r). A §eTurbina a Vapor§r faz o
+      inverso: vapor de qualquer tubo vira potência. Qualquer uma das duas vale.
+    tasks:
+      - one_of: [RotaryCraft:rotarycraft_item_machine:88, RotaryCraft:rotarycraft_item_machine:89]
+    rewards:
+      - xp: 3
+      - item: minecraft:water_bucket x2
+
+  - id: motor_combustivel
+    title: "Motor a Combustível"
+    type: optional
+    deps: [info_conversao]
+    icon: RotaryCraft:rotarycraft_item_machine:100
+    desc: |
+      Roda com o combustível ("fuel") do BuildCraft, com desempenho parecido com o do motor
+      de combustão de lá. Precisa de lubrificante e água, e desacelera quando esquenta.
+    tasks:
+      - get: RotaryCraft:rotarycraft_item_machine:100
+    rewards:
+      - loot: comum
+
+  # ======================================================================
+  # FASE 15 — ENERGIA SOLAR
+  # ======================================================================
+  - id: espelho_solar
+    title: "Espelho Solar"
+    type: normal
+    deps: [forca_motriz]
+    icon: RotaryCraft:rotarycraft_item_machine:70
+    desc: |
+      A usina solar do RotaryCraft é escalável: §eEspelhos Solares§r em volta da base de uma
+      torre. Eles precisam de céu aberto, rendem menos com o sol fraco e §cquebram se algo
+      pesado (você, slimes) cair em cima§r. Faça muitos.
+    tasks:
+      - get: RotaryCraft:rotarycraft_item_machine:70 x16
+    rewards:
+      - xp: 3
+      - item: minecraft:glass x32
+
+  - id: torre_solar
+    title: "Torre Solar"
+    type: normal
+    deps: [espelho_solar]
+    icon: RotaryCraft:rotarycraft_item_machine:71
+    desc: |
+      Empilhe blocos de §eTorre Solar§r, cerque a base de espelhos (ligados à torre, direto
+      ou por outros espelhos) e encane água. A potência sai §epor baixo da torre§r; torres
+      mais altas e mais espelhos = mais torque. §cIncendeia blocos inflamáveis por perto.§r
+      O ReactorCraft ainda tem um trocador de sódio para ela.
+    tasks:
+      - get: RotaryCraft:rotarycraft_item_machine:71 x4
+    rewards:
+      - xp: 3
+      - item: RotaryCraft:rotarycraft_item_machine:17 x8
+
+  - id: bobina_ouro
+    title: "Bobina de Ouro e Gerador"
+    type: normal
+    deps: [nucleo_eixo]
+    icon: RotaryCraft:rotarycraft_item_enginecraft:8
+    desc: |
+      Oito ouros (ou eletros) em volta de um HSLA = §eBobina de Ouro§r. Duas bobinas com um
+      Núcleo de Eixo no meio formam a peça §eGerador§r, usada na Mira de Torreta e no
+      ReactorCraft. Duas bobinas com redstone e HSLA viram o Motor de Indução Linear.
+    tasks:
+      - get: [RotaryCraft:rotarycraft_item_enginecraft:8 x2, RotaryCraft:rotarycraft_item_misccraft:8]
+    rewards:
+      - xp: 2
+      - item: minecraft:gold_ingot x8
+
+  - id: transmissao_diamante
+    title: "Engrenagens de Diamante"
+    type: optional
+    deps: [engrenagens_tungstenio]
+    icon: RotaryCraft:rotarycraft_item_gearcraft:49
+    desc: |
+      Quatro diamantes em volta de uma Engrenagem de Tungstênio, no Forno de Calor, rendem
+      §e6 Engrenagens de Diamante§r. Hastes de diamante saem da bancada (3 diamantes na
+      diagonal). Rolamentos de diamante eliminam o consumo de lubrificante.
+    tasks:
+      - get: RotaryCraft:rotarycraft_item_gearcraft:49 x6
+    rewards:
+      - loot: incomum
+
+  - id: estacao_abastecimento
+    title: "Estação de Preenchimento"
+    type: optional
+    deps: [combustivel_jato]
+    icon: RotaryCraft:rotarycraft_item_machine:101
+    desc: |
+      Enche Mochilas a Jato e §eTanques de Combustível Reserva§r direto do encanamento. O
+      tanque reserva (no inventário) reabastece a mochila no meio do voo — clique-direito
+      para despejar. Salva vidas a 200 blocos de altura.
+    tasks:
+      - get: [RotaryCraft:rotarycraft_item_machine:101, RotaryCraft:rotarycraft_item_fuel]
+    rewards:
+      - loot: incomum
+
+  - id: pistao_portatil
+    title: "Pistão Portátil e Telêmetro"
+    type: optional
+    deps: [mola]
+    icon: RotaryCraft:rotarycraft_item_heldpiston:32000
+    desc: |
+      Mais duas ferramentas de mola: o §ePistão Portátil§r (um pistão de mão — o Manual explica os
+      modos) e o §eTelêmetro§r (mede distâncias). Qualquer uma das duas serve.
+    tasks:
+      - one_of: [RotaryCraft:rotarycraft_item_heldpiston:*, RotaryCraft:rotarycraft_item_rangefinder:*]
+    rewards:
+      - loot: comum
+
+  - id: bomba_corda
+    title: "Bomba de Corda"
+    type: optional
+    deps: [mola, bomba]
+    icon: RotaryCraft:rotarycraft_item_pump:32000
+    desc: |
+      Suga grandes quantidades de líquido do mundo para o tanque interno da ferramenta e
+      despeja num tanque com clique-direito. Ótima para drenar lagos de lava "na mão".
+    tasks:
+      - get: RotaryCraft:rotarycraft_item_pump:*
+    rewards:
+      - loot: comum
+
+  - id: controlador_climatico
+    title: "Controlador Climático"
+    type: optional
+    deps: [flocos_ouro]
+    icon: RotaryCraft:rotarycraft_item_machine:54
+    desc: |
+      O canhão de Iodeto de Prata controla o tempo: serragem traz sol; §eIodeto de Prata§r
+      traz chuva; com redstone, tempestade; com glowstone + redstone, superestorm. Precisa de
+      céu aberto e tem tempo de recarga. O iodeto vem de prata + sal (iodo).
+    tasks:
+      - get: RotaryCraft:rotarycraft_item_machine:54
+    rewards:
+      - loot: comum
+
+  - id: agricultura_rc
+    title: "Agricultura Mecânica"
+    type: optional
+    deps: [regador]
+    icon: RotaryCraft:rotarycraft_item_machine:90
+    desc: |
+      Mais máquinas de fazenda: §eFertilizador§r, §eDesfoliador§r, §eHidratador de Solo§r e o
+      §eRegador de Solo§r. Escolha a que combina com a sua plantação de canola.
+    tasks:
+      - one_of: [RotaryCraft:rotarycraft_item_machine:90, RotaryCraft:rotarycraft_item_machine:104, RotaryCraft:rotarycraft_item_machine:131, RotaryCraft:rotarycraft_item_machine:114]
+    rewards:
+      - loot: comum
+
+  - id: lentes_rc
+    title: "Lentes"
+    type: optional
+    deps: [vidro_explosao]
+    icon: RotaryCraft:rotarycraft_item_misccraft:1
+    desc: |
+      Quatro diamantes em volta de um Vidro Anti-Explosão = §eLentes§r. Elas vão no Raio de
+      Calor e na Lente de Concentração de Laser da fusão do ReactorCraft.
+    tasks:
+      - get: RotaryCraft:rotarycraft_item_misccraft:1
+    rewards:
+      - loot: incomum
+
+  - id: upgrade_poscombustao
+    title: "Upgrade de Pós-queima"
+    type: optional
+    deps: [turbina_composta, po_rocha_matriz]
+    icon: RotaryCraft:rotarycraft_item_upgrade:6
+    desc: |
+      Turbina Composta, Combustores de Alta Temperatura, Unidades de Ignição e pó de rocha
+      matriz: o §eUpgrade de Pós-queima§r para a Turbina de Avião. Aplique com clique-direito
+      na máquina (upgrades ficam guardados quando ela é quebrada).
+    tasks:
+      - get: RotaryCraft:rotarycraft_item_upgrade:6
+    rewards:
+      - loot: raro
+
+  - id: freio_serra
+    title: "Serra, Misturador e Disco de Freio"
+    type: optional
+    deps: [unidades_engrenagem]
+    icon: RotaryCraft:rotarycraft_item_borecraft:7
+    desc: |
+      Peças de máquinas especializadas: §eSerra§r (Lenhador), §eMisturador§r (com um
+      impelidor) e §eDisco de Freio§r. Qualquer uma das três.
+    tasks:
+      - one_of: [RotaryCraft:rotarycraft_item_borecraft:7, RotaryCraft:rotarycraft_item_borecraft:6, RotaryCraft:rotarycraft_item_borecraft:11]
+    rewards:
+      - loot: comum
+
+  # ======================================================================
+  # FINAL
+  # ======================================================================
+  - id: proximos_volumes
+    title: "Os Volumes Irmãos"
+    type: info
+    deps: [forca_motriz]
+    icon: RotaryCraft:rotarycraft_item_handbook
+    desc: |
+      O RotaryCraft é a base de mais dois Volumes do Reika neste pack:
+
+      * §bReactorCraft§r — fissão, reatores de sódio, HTGR e fusão. As turbinas dele entregam
+        potência de eixo para as suas máquinas — muita potência.
+      * §bElectriCraft§r — fios, geradores e motores de indução, baterias e transmissão sem
+        fio de RF. Leva potência de eixo para longe como eletricidade.
+
+      Ambos usam a sua Mesa de Trabalho e o seu Aço HSLA. Os capítulos deles estão logo ao
+      lado deste no livro.
+    tasks:
+      - check
+    rewards:
+      - xp: 1
+
+  - id: mestre_rotacional
+    title: "Mestre das Engrenagens"
+    type: milestone
+    deps: [inquebravel, tcv, flocos_ferro, lonsdaleita, turbina_aviao]
+    icon: RotaryCraft:rotarycraft_item_advgear:1
+    banner: "Mestre das Engrenagens"
+    subtitle: "O Volume das Engrenagens está completo"
+    effect: 6
+    desc: |
+      Herói... eu estou girando de alegria. (Literalmente: 65.536 rad/s.)
+
+      Você começou com um Forno de Calor encostado na lava e terminou com turbinas de avião,
+      extratores multiplicando minério, compactadores fazendo diamante de carvão e
+      ferramentas que nunca quebram. Mais do que isso: você aprendeu a §epensar em
+      potência§r — torque, velocidade, material, lubrificação.
+
+      Esta página do Registro estava rasgada desde a Fratura. Agora ela gira de novo, e
+      alimenta o §6Selo da Engrenagem§r. O ReactorCraft espera por você com potências ainda
+      maiores — e com riscos à altura.
+    tasks:
+      - get: [RotaryCraft:rotarycraft_item_engine:8, RotaryCraft:rotarycraft_item_advgear:1, RotaryCraft:rotarycraft_item_bedpick, RotaryCraft:rotarycraft_item_machine:20]
+    rewards:
+      - xp: 15
+      - kit: {name: "Kit do Mestre das Engrenagens", items: [RotaryCraft:rotarycraft_item_compacts:3 x16, RotaryCraft:rotarycraft_item_bucket:1 x8, RotaryCraft:rotarycraft_item_compacts:12 x16, RotaryCraft:rotarycraft_block_deco x8]}
+      - loot: epico

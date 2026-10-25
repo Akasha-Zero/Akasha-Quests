@@ -1,0 +1,2426 @@
+chapter:
+  id: ie
+  title: "Immersive Engineering"
+  prefix: ""
+  order: 335
+  icon: ImmersiveEngineering:tool
+  desc: |
+    §bO Volume dos Engenheiros.§r Martelo, coque, creosoto, aço de alto-forno, fios de cobre
+    pendurados em postes e máquinas do tamanho de uma casa. Tudo em RF.
+    (Immersive Engineering 0.7.9 — edição Forbidden, com Bancada Automatizada)
+
+quests:
+  # ======================================================================
+  # FASE 0 — O MANUAL, O MARTELO E OS METAIS
+  # ======================================================================
+  - id: manual
+    title: "Manual do Engenheiro"
+    type: main
+    icon: ImmersiveEngineering:tool:3
+    desc: |
+      Sabe qual é a primeira regra da engenharia? Ler o manual. (A segunda é não pôr a mão no
+      Triturador, mas a gente chega lá.)
+
+      O §eEngineer's Manual§r é só um livro + uma alavanca na bancada. Ele mostra, página por
+      página, a forma de cada multibloco, a lista de materiais e o que cada máquina faz. Quase
+      todas as quests deste capítulo vão mandar você conferir alguma coisa nele.
+
+      §aDica:§r clique nas palavras sublinhadas do manual para pular entre as páginas.
+    tasks:
+      - get: ImmersiveEngineering:tool:3
+    rewards:
+      - xp: 3
+      - choice: [minecraft:iron_ingot x8, minecraft:coal x16, minecraft:bread x8]
+
+  - id: martelo
+    title: "HAMMAH!"
+    type: main
+    deps: [manual]
+    icon: ImmersiveEngineering:tool
+    desc: |
+      O §eEngineer's Hammer§r é a ferramenta mais importante do mod: com ele você §bforma
+      multiblocos§r (clicando no bloco certo da estrutura), §bconfigura lados§r de capacitores e
+      barris, gira esteiras e — na bancada — §bmartela lingotes em placas§r e §btritura minérios§r
+      em pó.
+
+      Receita: dois lingotes de ferro, um fio e dois gravetos. Ele tem 100 usos de
+      durabilidade na bancada (configuração do pack), então tenha ferro de sobra.
+    tasks:
+      - get: ImmersiveEngineering:tool
+    rewards:
+      - xp: 3
+      - choice: [minecraft:iron_ingot x10, minecraft:stick x16, minecraft:string x8]
+
+  - id: minerios_ie
+    title: "Onde Cavar"
+    type: info
+    deps: [manual]
+    icon: ImmersiveEngineering:ore:1
+    desc: |
+      O IE gera cinco minérios no Mundo Normal (não gera no Nether nem no Fim):
+      §e• Cobre:§r Y 40–72, veios de 8 — picareta de pedra.
+      §e• Bauxita (alumínio):§r Y 40–85, veios de 4 — picareta de pedra.
+      §e• Chumbo:§r Y 8–36, veios de 6 — picareta de ferro.
+      §e• Prata:§r Y 8–40, veios de 8 (80% de chance por tentativa) — picareta de ferro.
+      §e• Níquel:§r Y 8–24, veios de 6, só 2 por chunk — o mais raro.
+
+      Tudo usa o OreDictionary: cobre do Thermal, chumbo do IC2, etc. valem igual nas
+      receitas. Funda na fornalha ou, melhor, triture antes (próximas quests).
+    tasks:
+      - check
+    rewards:
+      - xp: 1
+
+  - id: cobre
+    title: "Cobre para Fios"
+    type: main
+    deps: [martelo]
+    icon: ImmersiveEngineering:ore
+    desc: |
+      Todo fio de baixa tensão, conector e componente mecânico do IE pede cobre.
+
+      Junte §e16 lingotes de cobre§r (de qualquer mod). Ele aparece entre Y 40 e 72, bem perto
+      da superfície. Guarde uns minérios crus: com o martelo eles viram pó e rendem melhor no
+      futuro Triturador.
+    tasks:
+      - get: ore:ingotCopper x16
+    rewards:
+      - xp: 3
+      - choice: [minecraft:iron_ingot x8, minecraft:coal x16, minecraft:torch x32]
+
+  - id: aluminio
+    title: "Bauxita e Alumínio"
+    type: normal
+    deps: [minerios_ie]
+    icon: ImmersiveEngineering:ore:1
+    desc: |
+      A §eBauxite Ore§r funde em §eAluminium Ingot§r. Você vai precisar dele mais tarde para o
+      fio de alta tensão (aço + alumínio), conectores HV, capacitor HV e a Caixa de
+      Ferramentas. Junte §e8 lingotes de alumínio§r — qualquer alumínio do oredict serve.
+    tasks:
+      - get: ore:ingotAluminum x8
+    rewards:
+      - xp: 2
+      - item: minecraft:iron_ingot x6
+
+  - id: chumbo
+    title: "Chumbo"
+    type: normal
+    deps: [minerios_ie]
+    icon: ImmersiveEngineering:ore:2
+    desc: |
+      O chumbo mora fundo (Y 8–36) e pede picareta de ferro. Ele é o coração dos
+      §bcapacitores§r do IE — o capacitor HV leva um §ebloco§r inteiro de chumbo — e das
+      balas Casull. Junte §e8 lingotes de chumbo§r.
+    tasks:
+      - get: ore:ingotLead x8
+    rewards:
+      - xp: 2
+      - item: minecraft:redstone x12
+
+  - id: prata
+    title: "Prata"
+    type: normal
+    deps: [minerios_ie]
+    icon: ImmersiveEngineering:ore:3
+    desc: |
+      Prata + ouro = §6Electrum§r, o condutor dos fios de média tensão. Ela também vira
+      Cartuchos de Prata (dizem que lobisomens odeiam). Procure entre Y 8 e 40 e junte
+      §e6 lingotes de prata§r.
+    tasks:
+      - get: ore:ingotSilver x6
+    rewards:
+      - xp: 2
+      - item: minecraft:gold_ingot x4
+
+  - id: niquel
+    title: "Níquel"
+    type: normal
+    deps: [minerios_ie]
+    icon: ImmersiveEngineering:ore:4
+    desc: |
+      O mais tímido dos minérios do IE: só entre Y 8 e 24, dois veios por chunk. Níquel + cobre
+      = §6Constantan§r, a liga termoelétrica dos geradores de calor. Junte §e4 lingotes de
+      níquel§r. §aDica:§r o minério de ferro de outros mods às vezes vem com níquel de bônus.
+    tasks:
+      - get: ore:ingotNickel x4
+    rewards:
+      - xp: 2
+      - item: ore:ingotCopper x6
+
+  - id: placa_ferro
+    title: "Primeira Placa"
+    type: main
+    deps: [martelo]
+    icon: ImmersiveEngineering:metal:30
+    desc: |
+      Lingote + Engineer's Hammer na bancada (sem forma) = §eIron Plate§r. O martelo perde
+      um ponto de durabilidade por placa.
+
+      Placas de ferro viram §eFluid Pipes§r, §eSheet Metal§r e várias peças do mod. Faça
+      §e4 placas§r. Mais tarde a §bPrensa de Metal§r faz isso sem gastar martelo.
+    tasks:
+      - get: ore:plateIron x4
+    rewards:
+      - xp: 3
+      - choice: [minecraft:iron_ingot x8, ore:ingotCopper x8, minecraft:redstone x16]
+
+  - id: triturar_martelo
+    title: "Triturando na Mão"
+    type: normal
+    deps: [martelo]
+    icon: ImmersiveEngineering:metal:8
+    desc: |
+      Minério + martelo na bancada = §eGrit§r (pó). Funciona com ferro, ouro, cobre, chumbo,
+      prata, níquel e bauxita. Na mão rende 1 pó por minério, igual à fornalha — a graça é que
+      §bpó mistura§r, e misturas viram ligas. Faça §e4 Iron Grit§r para pegar o jeito.
+    tasks:
+      - get: ImmersiveEngineering:metal:8 x4
+    rewards:
+      - xp: 2
+      - item: minecraft:iron_ore x4
+
+  - id: constantan
+    title: "Constantan"
+    type: normal
+    deps: [triturar_martelo, niquel]
+    icon: ImmersiveEngineering:metal:5
+    desc: |
+      Pó de cobre + pó de níquel (sem forma) = §e2 Constantan Grit§r. Funda o pó e pronto: um
+      lingote que não muda de resistência com o calor. É ele que faz o §bGerador
+      Termoelétrico§r funcionar. Junte §e4 lingotes de Constantan§r.
+    tasks:
+      - get: ore:ingotConstantan x4
+    rewards:
+      - xp: 2
+      - item: ore:ingotCopper x4
+
+  - id: electrum
+    title: "Electrum"
+    type: main
+    deps: [triturar_martelo, prata]
+    icon: ImmersiveEngineering:metal:6
+    desc: |
+      Pó de prata + pó de ouro = §e2 Electrum Grit§r → fornalha → §6Electrum Ingot§r. Um
+      condutor excelente: é o metal dos fios de média tensão (MV), dos capacitores MV e de
+      todo Heavy Engineering Block.
+
+      Junte §e8 lingotes de Electrum§r. Vai faltar, prometo.
+    tasks:
+      - get: ore:ingotElectrum x8
+    rewards:
+      - xp: 4
+      - choice: [minecraft:gold_ingot x6, ore:ingotSilver x6, minecraft:redstone x16]
+
+  - id: alicate
+    title: "Wire Cutters"
+    type: normal
+    deps: [madeira_tratada]
+    icon: ImmersiveEngineering:tool:1
+    desc: |
+      Todo eletricista precisa desfazer o que fez. O §eEngineer's Wire Cutters§r remove todos
+      os fios ligados a um bloco com um clique (e devolve as bobinas). Feito com dois
+      Treated Sticks e um lingote de ferro. Também alterna o modo "cobrir com pedregulho" da
+      Bomba de Fluidos.
+    tasks:
+      - get: ImmersiveEngineering:tool:1
+    rewards:
+      - xp: 2
+      - item: ImmersiveEngineering:material x8
+
+  - id: voltimetro
+    title: "Voltímetro"
+    type: optional
+    deps: [alicate, capacitor_lv]
+    icon: ImmersiveEngineering:tool:2
+    desc: |
+      Bússola + cobre + gravetos tratados = §eEngineer's Voltmeter§r. Mire num capacitor para
+      ler a energia guardada; agache e clique em dois conectores para saber a §bperda média§r
+      entre eles. Ótimo para descobrir por que a fábrica do outro lado do rio está fraca.
+    tasks:
+      - get: ImmersiveEngineering:tool:2
+    rewards:
+      - loot: comum
+
+  - id: caixa_ferramentas
+    title: "A Bolsa do Engenheiro"
+    type: optional
+    deps: [caixote, aluminio]
+    icon: ImmersiveEngineering:toolbox
+    desc: |
+      Três placas de alumínio, corante vermelho e um Caixote de madeira tratada viram a
+      §eEngineer's Toolbox§r: uma maleta com espaços para comida, ferramentas, fiação (bobinas e
+      conectores) e "qualquer coisa". Cabe tudo o que você usa num dia de obra.
+    tasks:
+      - get: ImmersiveEngineering:toolbox
+    rewards:
+      - loot: comum
+
+  # ======================================================================
+  # FASE 1 — COQUE, CREOSOTO E MADEIRA TRATADA
+  # ======================================================================
+  - id: tijolo_coque
+    title: "Tijolos de Coque"
+    type: main
+    deps: [martelo]
+    icon: ImmersiveEngineering:stoneDecoration:1
+    desc: |
+      Bola de argila + tijolos + arenito, em xadrez na bancada = §e2 Coke Bricks§r.
+
+      O §bForno de Coque§r é um cubo 3×3×3 feito com §e27 Coke Bricks§r. Junte todos, monte o
+      cubo maciço e clique com o martelo no bloco do meio de uma das faces laterais. A
+      estrutura "funde" e vira o forno.
+    tasks:
+      - get: ImmersiveEngineering:stoneDecoration:1 x27
+    rewards:
+      - xp: 3
+      - choice: [minecraft:clay_ball x32, minecraft:brick x24, minecraft:sandstone x16]
+
+  - id: forno_coque
+    title: "O Forno de Coque"
+    type: main
+    deps: [tijolo_coque]
+    icon: ImmersiveEngineering:material:6
+    banner: "Fogo Sem Ar"
+    desc: |
+      Lembra da primeira fornalha? Esta queima §bsem oxigênio§r. O carvão perde as impurezas e
+      vira §eCoal Coke§r, um combustível quase puro de carbono — e o vapor que sai condensa como
+      §eCreosote Oil§r.
+
+      §e• Carvão:§r 1 coque + 500 mB de creosoto (1800 ticks).
+      §e• Bloco de carvão:§r 1 bloco de coque + 5000 mB.
+      §e• Tora:§r 1 carvão vegetal + 250 mB.
+
+      O forno não precisa de combustível. Faça §e8 Coal Coke§r.
+    tasks:
+      - get: ImmersiveEngineering:material:6 x8
+    rewards:
+      - xp: 3
+      - choice: [minecraft:coal x24, minecraft:coal_block x2, minecraft:log x16]
+
+  - id: creosoto
+    title: "Óleo de Creosoto"
+    type: main
+    deps: [forno_coque]
+    icon: ImmersiveEngineering:fluidContainers:1
+    desc: |
+      O tanque do Forno de Coque guarda o creosoto. Coloque um balde vazio no espaço da
+      interface e ele sai cheio: §eBucket of Creosote Oil§r. Garrafas de vidro também servem.
+
+      Creosoto é conservante de madeira (a próxima quest!) e combustível inflamável no
+      Lança-Químicos.
+    tasks:
+      - get: ImmersiveEngineering:fluidContainers:1
+    rewards:
+      - xp: 3
+      - choice: [minecraft:bucket x2, minecraft:glass_bottle x8, minecraft:planks x32]
+
+  - id: madeira_tratada
+    title: "Madeira Tratada"
+    type: main
+    deps: [creosoto]
+    icon: ImmersiveEngineering:treatedWood
+    desc: |
+      Oito tábuas em volta de um balde (ou garrafa) de creosoto = §e8 Treated Wood Planks§r. O
+      balde volta vazio.
+
+      É o material mais usado do mod: postes, moinhos, capacitores, bancada, caixotes... Faça
+      §e32 tábuas§r de uma vez. §aDica:§r clicar a tábua na bancada sozinha alterna entre os
+      três desenhos (horizontal, vertical, empacotada).
+    tasks:
+      - get: ore:plankTreatedWood x32
+    rewards:
+      - xp: 3
+      - choice: [minecraft:planks x32, minecraft:log x16, ImmersiveEngineering:fluidContainers:1]
+
+  - id: graveto_tratado
+    title: "Graveto Tratado"
+    type: normal
+    deps: [madeira_tratada]
+    icon: ImmersiveEngineering:material
+    desc: |
+      Duas tábuas tratadas = §e4 Treated Sticks§r. Eles aparecem em cabos de ferramenta,
+      cercas, empunhaduras de armas, pás de moinho e segmentos de roda d'água. Faça §e16§r.
+    tasks:
+      - get: ImmersiveEngineering:material x16
+    rewards:
+      - xp: 2
+      - item: ore:plankTreatedWood x8
+
+  - id: bloco_coque
+    title: "Bloco de Coque"
+    type: optional
+    deps: [forno_coque]
+    icon: ImmersiveEngineering:stoneDecoration:3
+    desc: |
+      Nove coques = §eBlock of Coal Coke§r. No Alto-Forno, um bloco queima 12000 ticks — dez
+      vezes um coque solto. Também é ótimo combustível de fornalha comum.
+    tasks:
+      - get: ImmersiveEngineering:stoneDecoration:3
+    rewards:
+      - loot: comum
+
+  - id: cerca_tratada
+    title: "Cercas e Andaimes Tratados"
+    type: optional
+    deps: [graveto_tratado]
+    icon: ImmersiveEngineering:woodenDecoration:5
+    desc: |
+      Seis gravetos = 2 §eTreated Wood Fences§r; cercas + tábuas = §eTreated Wood
+      Scaffolding§r, um andaime escalável. Andaimes também cobrem Canos de Fluido.
+    tasks:
+      - get: [ImmersiveEngineering:woodenDecoration:1 x4, ImmersiveEngineering:woodenDecoration:5 x6]
+    rewards:
+      - loot: comum
+
+  - id: poste
+    title: "Poste de Madeira"
+    type: normal
+    deps: [cerca_tratada]
+    icon: ImmersiveEngineering:woodenDevice
+    desc: |
+      Duas cercas tratadas + tijolo de pedra = §eWooden Post§r. Ele ocupa §b4 blocos de altura§r
+      (precisa de espaço livre). Martele as laterais do topo para criar braços, onde conectores
+      e transformadores pequenos se encaixam. É o poste clássico de linha de transmissão!
+    tasks:
+      - get: ImmersiveEngineering:woodenDevice x2
+    rewards:
+      - xp: 2
+      - item: ImmersiveEngineering:woodenDecoration:1 x8
+
+  - id: caixote
+    title: "Caixote de Armazenamento"
+    type: optional
+    deps: [madeira_tratada]
+    icon: ImmersiveEngineering:woodenDevice:4
+    desc: |
+      Oito tábuas tratadas = §eWooden Storage Crate§r: 27 espaços que §bnão esvaziam ao ser
+      quebrados§r. Perfeito para mudar a oficina de lugar sem perder nada.
+    tasks:
+      - get: ImmersiveEngineering:woodenDevice:4
+    rewards:
+      - loot: comum
+
+  - id: barril_madeira
+    title: "Barril de Madeira"
+    type: optional
+    deps: [madeira_tratada]
+    icon: ImmersiveEngineering:woodenDevice:6
+    desc: |
+      Guarda 12 baldes de fluido e mantém o conteúdo quando quebrado. §cNão aceita fluidos
+      quentes nem gases§r. Martele o topo/fundo para alternar entre entrada, saída e nada.
+    tasks:
+      - get: ImmersiveEngineering:woodenDevice:6
+    rewards:
+      - loot: comum
+
+  - id: escadas_tratadas
+    title: "Arquitetura de Engenheiro"
+    type: optional
+    deps: [madeira_tratada]
+    icon: ImmersiveEngineering:woodenStairs
+    desc: |
+      Escadas, lajes e montagens de parede de madeira tratada. Puramente decorativos, mas uma
+      oficina bonita rende mais (comprovado por mim, agora). Pegue escadas e lajes tratadas.
+    tasks:
+      - get: [ImmersiveEngineering:woodenStairs x4, ImmersiveEngineering:woodenDecoration:2 x6]
+    rewards:
+      - loot: comum
+
+  - id: canhamo
+    title: "Cânhamo Industrial"
+    type: normal
+    deps: [manual]
+    icon: ImmersiveEngineering:seed
+    desc: |
+      Quebre grama alta até cair uma §eIndustrial Hemp Seed§r. Plante em terra arada: a planta
+      cresce dois blocos de altura. Colha o bloco de cima e deixe o de baixo rebrotar.
+
+      As sementes viram óleo vegetal no Espremedor; as fibras, tecido. Junte §e8 sementes§r.
+    tasks:
+      - get: ImmersiveEngineering:seed x8
+    rewards:
+      - xp: 2
+      - item: minecraft:dye:15 x16
+
+  - id: fibra_canhamo
+    title: "Fibra de Cânhamo"
+    type: normal
+    deps: [canhamo]
+    icon: ImmersiveEngineering:material:3
+    desc: |
+      A planta colhida dá §eIndustrial Hemp Fiber§r. Ela vira tecido, corda e até um "concreto
+      vegetal" (Hempcrete). Junte §e16 fibras§r.
+    tasks:
+      - get: ImmersiveEngineering:material:3 x16
+    rewards:
+      - xp: 2
+      - item: ImmersiveEngineering:seed x8
+
+  - id: tecido
+    title: "Tecido Resistente"
+    type: normal
+    deps: [fibra_canhamo]
+    icon: ImmersiveEngineering:material:4
+    desc: |
+      Oito fibras em volta de um graveto = §eTough Fabric§r. É a vela do Moinho Aprimorado, a
+      lona dos Balões e, no capítulo de Petróleo, vira couro sintético. Faça §e4§r.
+    tasks:
+      - get: ImmersiveEngineering:material:4 x4
+    rewards:
+      - xp: 2
+      - item: ImmersiveEngineering:material:3 x16
+
+  - id: hempcrete
+    title: "Hempcrete"
+    type: optional
+    deps: [fibra_canhamo]
+    icon: ImmersiveEngineering:stoneDecoration
+    desc: |
+      Argila + fibra de cânhamo = §e6 Hempcrete§r, um bloco de construção claro e resistente.
+      Eu acho lindo para paredes de galpão.
+    tasks:
+      - get: ImmersiveEngineering:stoneDecoration x6
+    rewards:
+      - loot: comum
+
+  - id: corda
+    title: "Corda de Cânhamo"
+    type: optional
+    deps: [fibra_canhamo]
+    icon: ImmersiveEngineering:coil:3
+    desc: |
+      Quatro fibras e um graveto = 4 §eHemp Rope Coils§r. Decorativa: não conduz energia, mas
+      liga Conectores Estruturais e Balões — e o Skyhook desliza por ela!
+    tasks:
+      - get: ImmersiveEngineering:coil:3 x4
+    rewards:
+      - loot: comum
+
+  - id: balao
+    title: "...99 Balões"
+    type: optional
+    deps: [tecido]
+    icon: ImmersiveEngineering:clothDevice
+    desc: |
+      Tecido + tocha + laje tratada = 2 §eBalloons§r. Eles emitem luz, flutuam onde você
+      clicar no ar e aceitam corda ou cabo de aço. Tinja cada faixa com corantes; o martelo
+      troca listras horizontais/verticais. Total frivolidade. Eu amo.
+    tasks:
+      - get: ImmersiveEngineering:clothDevice x2
+    rewards:
+      - loot: comum
+
+  # ======================================================================
+  # FASE 2 — AÇO
+  # ======================================================================
+  - id: tijolo_alto_forno
+    title: "Tijolos Refratários"
+    type: main
+    deps: [forno_coque]
+    icon: ImmersiveEngineering:stoneDecoration:2
+    desc: |
+      §cPrecisa do Nether!§r Tijolos do Nether + tijolos comuns em volta de um pó de blaze =
+      §e2 Blast Bricks§r.
+
+      O §bAlto-Forno Rústico§r é outro cubo 3×3×3: §e27 Blast Bricks§r, formado com o martelo no
+      centro de uma face lateral. São 14 receitas — leve uma boa pilha de pó de blaze.
+    tasks:
+      - get: ImmersiveEngineering:stoneDecoration:2 x27
+    rewards:
+      - xp: 4
+      - choice: [minecraft:blaze_powder x8, minecraft:netherbrick x32, minecraft:brick x32]
+
+  - id: aco
+    title: "O Upgrade"
+    type: main
+    deps: [tijolo_alto_forno]
+    icon: ImmersiveEngineering:metal:7
+    desc: |
+      O Alto-Forno aumenta o carbono do ferro. Coloque §eferro§r em cima e §ecombustível de
+      alto carbono§r embaixo: Coal Coke (1200 ticks), Bloco de Coque (12000), carvão vegetal
+      (300) ou bloco de carvão vegetal (3000). §cCarvão mineral comum não serve!§r
+
+      Cada lingote leva 1200 ticks (1 minuto) e sai com uma §eSlag§r. §cTire a escória — se o
+      espaço encher, o forno para.§r Um bloco de ferro vira um bloco de aço (10800 ticks).
+
+      Faça §e8 Steel Ingots§r.
+    tasks:
+      - get: ore:ingotSteel x8
+    rewards:
+      - xp: 4
+      - choice: [minecraft:iron_ingot x16, ImmersiveEngineering:material:6 x16, ImmersiveEngineering:stoneDecoration:3 x2]
+
+  - id: escoria
+    title: "Escória"
+    type: normal
+    deps: [aco]
+    icon: ImmersiveEngineering:material:13
+    desc: |
+      "Lixo" do aço? Nada disso! Quatro §eSlag§r + argila + cascalho + balde d'água rendem
+      §e12 Concretos§r (com areia, a receita dá só 8). Junte §e8 escórias§r.
+    tasks:
+      - get: ImmersiveEngineering:material:13 x8
+    rewards:
+      - xp: 2
+      - item: minecraft:gravel x16
+
+  - id: concreto
+    title: "Concreto"
+    type: normal
+    deps: [escoria]
+    icon: ImmersiveEngineering:stoneDecoration:4
+    desc: |
+      Muito duro e resistente a explosões — um material de fortaleza. Quatro concretos viram 4
+      §eConcrete Tiles§r e ambos têm escadas e lajes. No capítulo de Petróleo ele vira o fluido
+      de perfuração da Derrick! Faça §e24 Concrete§r.
+    tasks:
+      - get: ImmersiveEngineering:stoneDecoration:4 x24
+    rewards:
+      - xp: 2
+      - item: minecraft:clay_ball x16
+
+  - id: concreto_decor
+    title: "Ladrilhos e Escadas"
+    type: optional
+    deps: [concreto]
+    icon: ImmersiveEngineering:stoneDecoration:5
+    desc: |
+      Concrete Tile, escadas e lajes de concreto. Calçadas de fábrica não se fazem sozinhas.
+    tasks:
+      - get: [ImmersiveEngineering:stoneDecoration:5 x4, ImmersiveEngineering:concreteStairs x4]
+    rewards:
+      - loot: comum
+
+  - id: tijolo_reforcado
+    title: "Tijolos Reforçados"
+    type: main
+    deps: [aco, placa_aco]
+    icon: ImmersiveEngineering:stoneDecoration:6
+    desc: |
+      Blast Brick + placa de aço (sem forma) = §eReinforced Blast Brick§r. Você vai precisar de
+      §e27§r para o §bAlto-Forno Aprimorado§r — e mais 27 para o Forno a Arco no fim do capítulo.
+      É por isso que o manual recomenda: §agaste seu primeiro aço nesta melhoria§r.
+    tasks:
+      - get: ImmersiveEngineering:stoneDecoration:6 x27
+    rewards:
+      - xp: 4
+      - choice: [ImmersiveEngineering:stoneDecoration:2 x8, ore:ingotSteel x4, minecraft:blaze_powder x8]
+
+  - id: alto_forno_aprimorado
+    title: "Alto-Forno Aprimorado"
+    type: milestone
+    deps: [tijolo_reforcado]
+    icon: ImmersiveEngineering:stoneDecoration:6
+    banner: "Refined Arts"
+    subtitle: "Aço em escala industrial"
+    desc: |
+      O mesmo cubo 3×3×3, agora com §e27 Reinforced Blast Bricks§r e um §efunil§r no topo para
+      receber ferro e coque. Forme com o martelo como antes.
+
+      A diferença é tudo: §bele é automatizável§r. Aço sai pela frente, escória por trás, e o
+      forno empurra sozinho para baús ou esteiras encostadas. Com até dois §ePreaquecedores§r
+      (um em cada lateral, 32 RF/t cada) ele acelera.
+
+      Herói, este é o momento em que o IE deixa de ser artesanato e vira indústria. O aço é a
+      espinha de tudo o que vem: fios HV, motores, prensas, escavadeiras. Que orgulho!
+    tasks:
+      - get: [ImmersiveEngineering:stoneDecoration:6 x27, minecraft:hopper]
+    rewards:
+      - xp: 8
+      - kit: {name: "Kit do Siderurgista", items: [ImmersiveEngineering:stoneDecoration:3 x4, minecraft:iron_block x4, ore:ingotSteel x8, ImmersiveEngineering:material:6 x16]}
+      - loot: raro
+
+  - id: preaquecedor
+    title: "Preaquecedor"
+    type: optional
+    deps: [alto_forno_aprimorado, aquecedor]
+    icon: ImmersiveEngineering:metalDevice2:11
+    desc: |
+      Sheet Metal + Aquecedor Externo + Cano de Fluido = §eBlast Furnace Preheater§r. Encoste nas
+      portas laterais do Alto-Forno Aprimorado e alimente com 32 RF/t: o ar quente acelera o
+      refino. Dois preaquecedores = aço bem mais rápido.
+    tasks:
+      - get: ImmersiveEngineering:metalDevice2:11
+    rewards:
+      - loot: incomum
+
+  - id: placa_aco
+    title: "Placa de Aço"
+    type: normal
+    deps: [aco, placa_ferro]
+    icon: ImmersiveEngineering:metal:38
+    desc: |
+      Aço + martelo = §eSteel Plate§r. Os moldes da Prensa de Metal, o tijolo reforçado e os
+      blocos de chapa de aço pedem placas. Faça §e8§r.
+    tasks:
+      - get: ore:plateSteel x8
+    rewards:
+      - xp: 2
+      - item: ore:ingotSteel x2
+
+  - id: vara_ferro
+    title: "Varas de Metal"
+    type: normal
+    deps: [aco]
+    icon: ImmersiveEngineering:material:15
+    desc: |
+      Dois lingotes em pé = 4 varas (§eIron Rod§r ou §eSteel Rod§r). Varas de aço viram cercas
+      de aço; varas de ferro e aço também são §cmunição de Railgun§r! Junte 8 de cada.
+    tasks:
+      - get: [ore:stickIron x8, ore:stickSteel x8]
+    rewards:
+      - xp: 2
+      - item: minecraft:iron_ingot x6
+
+  - id: componente_ferro
+    title: "Componente Mecânico de Ferro"
+    type: main
+    deps: [cobre, aco]
+    icon: ImmersiveEngineering:material:11
+    desc: |
+      Quatro lingotes de ferro nas pontas, cobre no centro = §eIron Mechanical Component§r. É
+      a "engrenagem genérica" do IE: Light Engineering Blocks, bombas, roteadores, cloche,
+      revólver... A versão de aço (§eSteel Mechanical Component§r) vai nos Heavy Engineering
+      Blocks e na furadeira. Faça §e4 de ferro e 4 de aço§r.
+    tasks:
+      - get: [ImmersiveEngineering:material:11 x4, ImmersiveEngineering:material:12 x4]
+    rewards:
+      - xp: 4
+      - choice: [ore:ingotCopper x8, minecraft:iron_ingot x12, ore:ingotSteel x4]
+
+  - id: estrutura_aco
+    title: "Cercas e Andaimes de Aço"
+    type: normal
+    deps: [vara_ferro]
+    icon: ImmersiveEngineering:metalDecoration:1
+    desc: |
+      Varas de aço = §eSteel Fence§r; aço + cercas = §e6 Steel Scaffolding§r. Andaimes de aço
+      são escaláveis e entram em quase todo multibloco pesado (Triturador, Prensa, Escavadeira,
+      Forno a Arco). Junte §e8 cercas e 12 andaimes§r.
+    tasks:
+      - get: [ImmersiveEngineering:metalDecoration x8, ImmersiveEngineering:metalDecoration:1 x12]
+    rewards:
+      - xp: 2
+      - item: ore:ingotSteel x3
+
+  - id: braco_estrutural
+    title: "Braço Estrutural"
+    type: optional
+    deps: [estrutura_aco]
+    icon: ImmersiveEngineering:metalDecoration:3
+    desc: |
+      Andaimes em escada = 4 §eStructural Arms§r, ótimos pontos de fixação para relés de alta
+      tensão (que só se prendem embaixo dos blocos). Há também montagens de parede de aço.
+    tasks:
+      - get: ImmersiveEngineering:metalDecoration:3 x4
+    rewards:
+      - loot: comum
+
+  - id: chapa_metal
+    title: "Chapa de Metal"
+    type: normal
+    deps: [placa_ferro]
+    icon: ImmersiveEngineering:metalDecoration:10
+    desc: |
+      Quatro placas de ferro em cruz = 4 §eSheet Metal§r. Tanques, silos, a Refinaria e o
+      Montador são feitos dela; o Barril de Metal também. Junte §e16§r (os tanques pedem 34!).
+    tasks:
+      - get: ImmersiveEngineering:metalDecoration:10 x16
+    rewards:
+      - xp: 2
+      - item: minecraft:iron_ingot x8
+
+  - id: barril_metal
+    title: "Barril de Metal"
+    type: optional
+    deps: [chapa_metal]
+    icon: ImmersiveEngineering:metalDevice2:7
+    desc: |
+      Igual ao de madeira (12 baldes, mantém o conteúdo), mas §baceita gases e fluidos
+      quentes§r. Lava, vapor, combustíveis — sem drama.
+    tasks:
+      - get: ImmersiveEngineering:metalDevice2:7
+    rewards:
+      - loot: comum
+
+  - id: blocos_metal
+    title: "Blocos de Metal do IE"
+    type: optional
+    deps: [aco, electrum, constantan]
+    icon: ImmersiveEngineering:storage:7
+    desc: |
+      Bloco de aço, de electrum, de constantan... O Forno a Arco e a Escavadeira pedem
+      §eBlocos de Aço§r inteiros (a escavadeira, 12!). Comece guardando um.
+    tasks:
+      - get: ore:blockSteel
+    rewards:
+      - loot: incomum
+
+  # ======================================================================
+  # FASE 3 — ENERGIA E FIAÇÃO
+  # ======================================================================
+  - id: rede_info
+    title: "Como Funciona a Rede"
+    type: info
+    deps: [madeira_tratada]
+    icon: ImmersiveEngineering:coil
+    desc: |
+      O IE transmite §bRF§r por fios pendurados no ar, entre conectores:
+      §e• Fio LV (cobre):§r 2048 RF/t, até 16 blocos, perda 5% a cada 16 blocos.
+      §e• Fio MV (electrum):§r 8192 RF/t, até 16 blocos, perda 2,5%.
+      §e• Fio HV (aço+alumínio):§r 163840 RF/t, até 32 blocos, perda 2,5%.
+      §e• Corda e cabo de aço:§r decorativos, não conduzem.
+
+      §bConectores§r limitam a entrada/saída: LV 256, MV 1024, HV 163840 RF/t. Vários
+      conectores podem somar num fio, mas §cse passar do limite do FIO, ele queima§r.
+      Para trocar de tipo de fio use §etransformadores§r. Fios atravessam chunks
+      descarregados. O fio também aceita/entrega EU (4 RF = 1 EU).
+    tasks:
+      - check
+    rewards:
+      - xp: 1
+
+  - id: bobina_lv
+    title: "Bobina LV"
+    type: main
+    deps: [cobre, madeira_tratada]
+    icon: ImmersiveEngineering:coil
+    desc: |
+      Quatro cobres em volta de um graveto = §e4 LV Wire Coils§r. Clique num conector com a
+      bobina, ande até o outro e clique de novo: um fio de cobre aparece entre eles. Faça §e8
+      bobinas§r.
+    tasks:
+      - get: ImmersiveEngineering:coil x8
+    rewards:
+      - xp: 4
+      - choice: [ore:ingotCopper x8, minecraft:hardened_clay x16, ore:plankTreatedWood x16]
+
+  - id: conector_lv
+    title: "Conector LV"
+    type: main
+    deps: [bobina_lv]
+    icon: ImmersiveEngineering:metalDevice
+    desc: |
+      Argila endurecida + cobre = §e8 LV Wire Connectors§r. Ponha um encostado em qualquer
+      bloco que guarde ou gere RF: ele vira entrada/saída da rede. Em LV e MV o mesmo bloco serve
+      de relé (só passa fio adiante). Faça §e8§r.
+    tasks:
+      - get: ImmersiveEngineering:metalDevice x8
+    rewards:
+      - xp: 4
+      - choice: [ImmersiveEngineering:coil x4, minecraft:hardened_clay x16, ore:ingotCopper x8]
+
+  - id: capacitor_lv
+    title: "Capacitor LV"
+    type: main
+    deps: [conector_lv, chumbo]
+    icon: ImmersiveEngineering:metalDevice:1
+    desc: |
+      Ferro, cobre, chumbo, redstone e madeira tratada = §eLV Capacitor§r: 100 000 RF,
+      entrada/saída de 256 RF/t.
+
+      Martele um lado para mudar a configuração: §9azul§r = entrada, §6laranja§r = saída, sem
+      cor = nada (agachado configura o lado oposto). Ponha um conector em cima do lado certo.
+    tasks:
+      - get: ImmersiveEngineering:metalDevice:1
+    rewards:
+      - xp: 4
+      - choice: [ore:ingotLead x4, minecraft:redstone x16, ore:ingotCopper x8]
+
+  - id: dinamo
+    title: "Dínamo Cinético"
+    type: main
+    deps: [capacitor_lv]
+    icon: ImmersiveEngineering:metalDevice:9
+    desc: |
+      Redstone + Copper Wire Coil (bloco) + ferro = §eKinetic Dynamo§r. Ele converte rotação em
+      RF: encoste uma roda d'água ou um moinho na face do eixo. Saída base 3 RF/t, multiplicada
+      pela velocidade de quem gira. Pouco? Sim. Grátis e eterno? Também!
+    tasks:
+      - get: ImmersiveEngineering:metalDevice:9
+    rewards:
+      - xp: 4
+      - choice: [ore:ingotCopper x8, minecraft:redstone x16, minecraft:iron_ingot x8]
+
+  - id: bobina_cobre_bloco
+    title: "Bobina de Fio de Cobre"
+    type: normal
+    deps: [bobina_lv]
+    icon: ImmersiveEngineering:storage:8
+    desc: |
+      Oito bobinas LV em volta de um ferro = §eCopper Wire Coil§r (o bloco). Não confunda com a
+      bobina de mão! O bloco vai dentro do dínamo, do aquecedor, do gerador termoelétrico e da
+      estação de carga. Faça §e3§r.
+    tasks:
+      - get: ImmersiveEngineering:storage:8 x3
+    rewards:
+      - xp: 2
+      - item: ore:ingotCopper x8
+
+  - id: roda_dagua
+    title: "Roda d'Água"
+    type: main
+    deps: [dinamo, graveto_tratado]
+    icon: ImmersiveEngineering:woodenDevice:1
+    desc: |
+      Gravetos e tábuas tratadas = §eWaterwheel Segment§r; quatro segmentos + tábua = §eWater
+      Wheel§r (enorme!). Encoste no dínamo.
+
+      A velocidade depende da água que corre em volta: o ideal é a água descer por um lado e
+      correr por baixo, num semicírculo. Até §btrês rodas§r podem ficar encostadas em fila no
+      mesmo eixo.
+    tasks:
+      - get: ImmersiveEngineering:woodenDevice:1
+    rewards:
+      - xp: 4
+      - choice: [ore:plankTreatedWood x16, minecraft:water_bucket, ImmersiveEngineering:material x8]
+
+  - id: moinho
+    title: "Moinho de Vento"
+    type: normal
+    deps: [dinamo, graveto_tratado]
+    icon: ImmersiveEngineering:woodenDevice:2
+    desc: |
+      Quatro §eWindmill Blades§r em volta de um ferro = §eWindmill§r. Quanto §bmais alto§r e mais
+      livre o espaço à frente, mais rápido gira; chuva e tempestade ajudam. Ponha num morro,
+      encostado no dínamo, e esqueça.
+    tasks:
+      - get: ImmersiveEngineering:woodenDevice:2
+    rewards:
+      - xp: 3
+      - item: ImmersiveEngineering:material:2 x2
+
+  - id: moinho_aprimorado
+    title: "Moinho Aprimorado"
+    type: optional
+    deps: [moinho, tecido]
+    icon: ImmersiveEngineering:woodenDevice:3
+    desc: |
+      Pá de moinho + 4 Tough Fabric = §eImproved Windmill Blade§r; oito delas em volta de aço =
+      §eImproved Windmill§r. §bProduz o dobro§r do moinho comum. Velas de cânhamo ao vento!
+    tasks:
+      - get: ImmersiveEngineering:woodenDevice:3
+    rewards:
+      - loot: incomum
+
+  - id: aquecedor
+    title: "Aquecedor Externo"
+    type: normal
+    deps: [bobina_cobre_bloco, capacitor_lv]
+    icon: ImmersiveEngineering:metalDevice:12
+    desc: |
+      Encoste um §eExternal Heater§r numa fornalha comum e ela cozinha §bsem combustível§r. Ele
+      gasta 8 RF/t por unidade de calor (até 4 por tick no aquecimento, depois só 1) e mais
+      24 RF/t para §bdobrar a velocidade§r quando a fornalha está quente. Martele um lado para
+      receber energia. Sinal de redstone o mantém sempre aquecido.
+    tasks:
+      - get: ImmersiveEngineering:metalDevice:12
+    rewards:
+      - xp: 3
+      - item: minecraft:furnace x2
+
+  - id: termoeletrico
+    title: "Gerador Termoelétrico"
+    type: normal
+    deps: [constantan, bobina_cobre_bloco, aco]
+    icon: ImmersiveEngineering:metalDevice:10
+    desc: |
+      Aço, placas de constantan e um Copper Wire Coil = §eThermoelectric Generator§r. Sem peças
+      móveis: ele gera RF pela §bdiferença de temperatura§r entre dois lados opostos.
+
+      Ponha algo quente de um lado (lava, ~1300 K) e algo frio do outro (água, gelo a 273 K,
+      gelo compactado a 200 K). Blocos de urânio/yellorium (2000 K) e plutônio (4000 K) também
+      contam. Lava de um lado + gelo compactado do outro é o clássico.
+    tasks:
+      - get: ImmersiveEngineering:metalDevice:10
+    rewards:
+      - xp: 3
+      - item: minecraft:packed_ice x4
+
+  - id: bobina_mv
+    title: "Bobina MV"
+    type: main
+    deps: [electrum, conector_lv]
+    icon: ImmersiveEngineering:coil:1
+    desc: |
+      Quatro electrums e um graveto = §e4 MV Wire Coils§r: 8192 RF/t por fio. Para fábricas
+      médias é o fio de trabalho. Faça §e8§r.
+    tasks:
+      - get: ImmersiveEngineering:coil:1 x8
+    rewards:
+      - xp: 4
+      - choice: [ore:ingotElectrum x4, minecraft:hardened_clay x16, minecraft:iron_ingot x8]
+
+  - id: conector_mv
+    title: "Conector MV"
+    type: main
+    deps: [bobina_mv]
+    icon: ImmersiveEngineering:metalDevice:2
+    desc: |
+      Argila endurecida + ferro = §e8 MV Wire Connectors§r (1024 RF/t de entrada/saída cada).
+      Lembre: conectores só aceitam o tipo de fio que já está ligado neles.
+    tasks:
+      - get: ImmersiveEngineering:metalDevice:2 x4
+    rewards:
+      - xp: 4
+      - choice: [ImmersiveEngineering:coil:1 x4, minecraft:hardened_clay x16, minecraft:iron_ingot x8]
+
+  - id: capacitor_mv
+    title: "Capacitor MV"
+    type: normal
+    deps: [conector_mv]
+    icon: ImmersiveEngineering:metalDevice:3
+    desc: |
+      Igual ao LV, com electrum e bloco de redstone: §eMV Capacitor§r, 1 000 000 RF, 1024 RF/t.
+    tasks:
+      - get: ImmersiveEngineering:metalDevice:3
+    rewards:
+      - xp: 3
+      - item: minecraft:redstone_block x2
+
+  - id: transformador
+    title: "Transformador"
+    type: main
+    deps: [conector_mv, bobina_electrum_bloco]
+    icon: ImmersiveEngineering:metalDevice:4
+    desc: |
+      Conector LV + conector MV + Electrum Wire Coil (bloco) + ferro = §eTransformer§r. Ele aceita
+      exatamente §bdois fios de tipos diferentes§r (LV ↔ MV). O fio mais fraco limita a taxa.
+      Transformadores comuns podem ser pendurados nos braços do poste de madeira.
+    tasks:
+      - get: ImmersiveEngineering:metalDevice:4
+    rewards:
+      - xp: 4
+      - choice: [ImmersiveEngineering:coil x8, ImmersiveEngineering:coil:1 x8, minecraft:iron_ingot x12]
+
+  - id: bobina_electrum_bloco
+    title: "Bobina de Fio de Electrum"
+    type: normal
+    deps: [bobina_mv]
+    icon: ImmersiveEngineering:storage:9
+    desc: |
+      Oito bobinas MV + ferro = §eElectrum Wire Coil§r (o bloco). Vai no transformador, no
+      Railgun, nos Tubos Amplificadores do revólver e no Para-raios. Faça §e2§r.
+    tasks:
+      - get: ImmersiveEngineering:storage:9 x2
+    rewards:
+      - xp: 2
+      - item: ore:ingotElectrum x4
+
+  - id: vidro_isolante
+    title: "Vidro Isolante"
+    type: normal
+    deps: [triturar_martelo]
+    icon: ImmersiveEngineering:stoneDevice:4
+    desc: |
+      Vidro + Iron Grit + corante verde = §e2 Insulating Glass§r. É o isolador dos relés de alta
+      tensão. Faça §e4§r.
+    tasks:
+      - get: ImmersiveEngineering:stoneDevice:4 x4
+    rewards:
+      - xp: 2
+      - item: minecraft:glass x16
+
+  - id: bobina_hv
+    title: "Bobina HV"
+    type: main
+    deps: [transformador, aluminio]
+    icon: ImmersiveEngineering:coil:2
+    desc: |
+      Dois aços + dois alumínios + graveto = §e4 HV Wire Coils§r: §c163 840 RF/t§r e até 32 blocos
+      de vão. É o fio das linhas de transmissão de verdade. Faça §e8§r.
+    tasks:
+      - get: ImmersiveEngineering:coil:2 x8
+    rewards:
+      - xp: 4
+      - choice: [ore:ingotSteel x4, ore:ingotAluminum x6, minecraft:hardened_clay x16]
+
+  - id: conector_hv
+    title: "Conector e Relé HV"
+    type: main
+    deps: [bobina_hv, vidro_isolante]
+    icon: ImmersiveEngineering:metalDevice:6
+    desc: |
+      Em alta tensão, §bconector e relé são blocos diferentes§r:
+      §e• HV Wire Connector§r (alumínio + argila): entrada/saída, aceita só um fio.
+      §e• HV Wire Relay§r (vidro isolante + ferro): só passa o fio adiante, não entrega energia, e
+      §csó se prende na face de baixo de um bloco§r.
+
+      Pegue §e2 conectores e 4 relés§r.
+    tasks:
+      - get: [ImmersiveEngineering:metalDevice:6 x2, ImmersiveEngineering:metalDevice:5 x4]
+    rewards:
+      - xp: 4
+      - choice: [ImmersiveEngineering:coil:2 x4, ImmersiveEngineering:metalDecoration:3 x4, ore:ingotAluminum x6]
+
+  - id: capacitor_hv
+    title: "Capacitor HV"
+    type: normal
+    deps: [conector_hv]
+    icon: ImmersiveEngineering:metalDevice:7
+    desc: |
+      Aço, alumínio, §ebloco de chumbo§r, bloco de redstone e madeira tratada = §eHV
+      Capacitor§r: 4 000 000 RF e 163 840 RF/t. Também é peça do Railgun e do Para-raios.
+    tasks:
+      - get: ImmersiveEngineering:metalDevice:7
+    rewards:
+      - xp: 3
+      - item: ore:ingotLead x9
+
+  - id: transformador_hv
+    title: "Transformador HV"
+    type: normal
+    deps: [conector_hv, hv_coil_bloco]
+    icon: ImmersiveEngineering:metalDevice:8
+    desc: |
+      Conector MV + conector HV + High-Voltage Wire Coil (bloco) = §eHV Transformer§r. Ele desce
+      de HV direto para MV §bou LV§r — não precisa encadear dois. Não vai em poste de madeira.
+    tasks:
+      - get: ImmersiveEngineering:metalDevice:8
+    rewards:
+      - xp: 3
+      - item: ImmersiveEngineering:coil:1 x8
+
+  - id: rede_eletrica
+    title: "Pássaros no Fio"
+    type: milestone
+    deps: [capacitor_hv, transformador_hv, capacitor_mv, roda_dagua]
+    icon: ImmersiveEngineering:metalDevice:8
+    banner: "Birds on a Wire"
+    subtitle: "LV, MV e HV dominados"
+    desc: |
+      Postes de madeira tratada, fios de cobre cantando ao vento, transformadores no braço do
+      poste e uma linha de alta tensão atravessando o vale... Herói, isso é uma rede elétrica!
+
+      Resumo para não queimar nada:
+      §e• Gerador → conector → fio → capacitor → máquinas.§r
+      §e• Nunca ultrapasse a taxa do fio§r (LV 2048, MV 8192, HV 163840 RF/t).
+      §e• Troque de tipo só com transformador§r; o HV desce direto até LV.
+      §e• Use o voltímetro§r para medir perdas entre pontos.
+
+      Agora falta só uma coisa: energia de verdade para encher esse HV. Isso vem com o
+      Gerador a Diesel, mais adiante.
+    tasks:
+      - get: [ImmersiveEngineering:metalDevice:1, ImmersiveEngineering:metalDevice:3, ImmersiveEngineering:metalDevice:7, ImmersiveEngineering:metalDevice:4]
+    rewards:
+      - xp: 8
+      - kit: {name: "Kit do Eletricista de Linha", items: [ImmersiveEngineering:coil x16, ImmersiveEngineering:coil:1 x8, ImmersiveEngineering:metalDevice x8, ImmersiveEngineering:metalDevice:2 x4, ImmersiveEngineering:woodenDevice x2]}
+      - loot: raro
+
+  - id: disjuntor
+    title: "Disjuntor"
+    type: optional
+    deps: [conector_lv]
+    icon: ImmersiveEngineering:metalDevice2
+    desc: |
+      Alavanca + cobre + argila = §eBreaker Switch§r: liga e corta um trecho da rede (dois fios do
+      mesmo tipo). Emite redstone quando ligado (o martelo inverte). §cNão aceita HV§r — para isso
+      existe o §eRedstone Breaker§r, controlado só por sinal.
+    tasks:
+      - get: ImmersiveEngineering:metalDevice2
+    rewards:
+      - loot: comum
+
+  - id: disjuntor_redstone
+    title: "Disjuntor de Redstone"
+    type: optional
+    deps: [disjuntor, conector_hv]
+    icon: ImmersiveEngineering:metalDevice2:9
+    desc: |
+      Dois conectores HV, repetidor e redstone = §eRedstone Breaker§r. Bem isolado, aceita fios HV,
+      mas só abre/fecha com sinal de redstone. Bom para desligar a fábrica inteira de uma vez.
+    tasks:
+      - get: ImmersiveEngineering:metalDevice2:9
+    rewards:
+      - loot: comum
+
+  - id: medidor_corrente
+    title: "Transformador de Corrente"
+    type: optional
+    deps: [voltimetro, bobina_cobre_bloco]
+    icon: ImmersiveEngineering:metalDevice2:2
+    desc: |
+      O §eCurrent Transformer§r entra no meio de uma linha e mede a média de RF/t que passou.
+      Clique para ler. Perfeito para saber se o gerador dá conta.
+    tasks:
+      - get: ImmersiveEngineering:metalDevice2:2
+    rewards:
+      - loot: comum
+
+  - id: estacao_carga
+    title: "Estação de Carga"
+    type: optional
+    deps: [conector_mv, bobina_cobre_bloco]
+    icon: ImmersiveEngineering:metalDevice2:10
+    desc: |
+      A §eCharging Station§r carrega ferramentas e itens elétricos (até 4000 RF/t) — inclusive
+      itens de EU do IC2. Energia por baixo ou por trás; os tubos da frente mostram a carga.
+      O Railgun agradece.
+    tasks:
+      - get: ImmersiveEngineering:metalDevice2:10
+    rewards:
+      - loot: comum
+
+  - id: lanterna
+    title: "Iluminação de Engenheiro"
+    type: optional
+    deps: [capacitor_lv]
+    icon: ImmersiveEngineering:metalDevice2:3
+    desc: |
+      §eLantern§r: luz igual a pedra luminosa, sem energia. §ePowered Lantern§r: ligada direto
+      nos fios (passa energia adiante, dá pra ligar em fila) e §bimpede mobs hostis de nascer
+      num raio de 32 blocos§r! Pegue uma de cada.
+    tasks:
+      - get: [ImmersiveEngineering:metalDecoration:2, ImmersiveEngineering:metalDevice2:3]
+    rewards:
+      - loot: comum
+
+  - id: holofote
+    title: "Aziz! Luz!"
+    type: optional
+    deps: [lanterna, componente_ferro]
+    icon: ImmersiveEngineering:metalDevice2:4
+    desc: |
+      O §eFloodlight§r projeta um cone de luz de até 32 blocos (e também bloqueia spawns). Martele
+      o topo/fundo para girar, as laterais para inclinar. Gasta mais que a lanterna elétrica.
+    tasks:
+      - get: ImmersiveEngineering:metalDevice2:4
+    rewards:
+      - loot: comum
+
+  - id: para_raios
+    title: "Thunderstruck!"
+    type: optional
+    deps: [capacitor_hv, bobina_electrum_bloco]
+    icon: ImmersiveEngineering:metalMultiblock
+    desc: |
+      A §eLightning Rod Base§r leva aço, cerca de aço, bobinas de electrum e HV e um Capacitor HV.
+      A base do multibloco usa §e9 Bases§r (veja a forma no manual); depois empilhe muitas cercas
+      de aço em cima. Quanto mais alto (e com uma "rede" de cercas no topo), mais raios. Cada
+      raio rende §616 000 000 RF§r, liberados devagar pelos lados. Só funciona com chuva!
+    tasks:
+      - get: [ImmersiveEngineering:metalMultiblock x9, ImmersiveEngineering:metalDecoration x16]
+    rewards:
+      - loot: raro
+
+  # ======================================================================
+  # FASE 4 — ENGENHARIA PESADA
+  # ======================================================================
+  - id: bloco_eng_leve
+    title: "Light Engineering Block"
+    type: main
+    deps: [componente_ferro]
+    icon: ImmersiveEngineering:metalDecoration:7
+    desc: |
+      Ferro, cobre e componentes de ferro = §e2 Light Engineering Blocks§r. O "tijolo" das
+      máquinas leves: Espremedor, Fermentador, Triturador, Prensa, Engarrafadora, Bancada
+      Automatizada... Você vai precisar de dezenas. Faça §e16§r.
+    tasks:
+      - get: ImmersiveEngineering:metalDecoration:7 x16
+    rewards:
+      - xp: 4
+      - choice: [ImmersiveEngineering:material:11 x4, ore:ingotCopper x16, minecraft:iron_ingot x16]
+
+  - id: bloco_eng_pesado
+    title: "Heavy Engineering Block"
+    type: main
+    deps: [componente_ferro, electrum]
+    icon: ImmersiveEngineering:metalDecoration:5
+    desc: |
+      Aço, componentes de aço, pistões e electrum = §e2 Heavy Engineering Blocks§r. O coração do
+      Gerador a Diesel (27 deles!), da Escavadeira, do Forno a Arco e da Refinaria. Faça §e8§r
+      para começar.
+    tasks:
+      - get: ImmersiveEngineering:metalDecoration:5 x8
+    rewards:
+      - xp: 4
+      - choice: [ImmersiveEngineering:material:12 x4, ore:ingotElectrum x4, minecraft:piston x4]
+
+  - id: bloco_redstone_eng
+    title: "Redstone Engineering Block"
+    type: normal
+    deps: [bloco_eng_leve]
+    icon: ImmersiveEngineering:metalDecoration2:3
+    desc: |
+      Ferro, redstone e cobre = §e2 Redstone Engineering Blocks§r. Esta edição do IE usa o bloco
+      na §bBancada Automatizada§r — e o Immersive Petroleum usa em várias torres e poços.
+    tasks:
+      - get: ImmersiveEngineering:metalDecoration2:3 x2
+    rewards:
+      - xp: 2
+      - item: minecraft:redstone x16
+
+  - id: esteira
+    title: "Esteira Transportadora"
+    type: normal
+    deps: [manual]
+    icon: ImmersiveEngineering:metalDevice:11
+    desc: |
+      Couro + ferro + redstone = §e8 Conveyor Belts§r. Itens jogados em cima andam e entram no
+      inventário do fim da linha; até vacas andam nela. Martelo gira; agachado + martelo faz
+      subir/descer. Prensa, Engarrafadora e Montador §bpedem esteiras na estrutura§r.
+    tasks:
+      - get: ImmersiveEngineering:metalDevice:11 x8
+    rewards:
+      - xp: 2
+      - item: minecraft:leather x6
+
+  - id: esteira_queda
+    title: "Esteira com Alçapão"
+    type: optional
+    deps: [esteira]
+    icon: ImmersiveEngineering:metalDevice:15
+    desc: |
+      Esteira + funil = §eDropping Conveyor Belt§r: deixa cair o que passa por cima num
+      inventário embaixo (ou no chão).
+    tasks:
+      - get: ImmersiveEngineering:metalDevice:15
+    rewards:
+      - loot: comum
+
+  - id: roteador
+    title: "Roteador de Itens"
+    type: optional
+    deps: [esteira, componente_ferro]
+    icon: ImmersiveEngineering:metalDevice:13
+    desc: |
+      O §eItem Router§r tem seis filtros coloridos, um por face. Itens vão para a face cujo filtro
+      combina, ou para uma face sem filtro. Agache-clique numa face para usar o OreDictionary.
+    tasks:
+      - get: ImmersiveEngineering:metalDevice:13
+    rewards:
+      - loot: comum
+
+  - id: cano_fluido
+    title: "Encanador Profissional"
+    type: normal
+    deps: [placa_ferro]
+    icon: ImmersiveEngineering:metalDevice2:5
+    desc: |
+      Placas e lingotes de ferro = §e8 Fluid Pipes§r. Sozinhos são lentos; com uma §eFluid Pump§r
+      empurrando, o fluxo dispara. A bomba também puxa fluidos do mundo (com energia em cima e
+      redstone) e §ba água vira fonte infinita§r se mais de 3 blocos estiverem conectados.
+    tasks:
+      - get: [ImmersiveEngineering:metalDevice2:5 x16, ImmersiveEngineering:metalDevice2:6]
+    rewards:
+      - xp: 2
+      - item: minecraft:bucket x2
+
+  - id: tanque_silo
+    title: "Tanques e Silos"
+    type: optional
+    deps: [chapa_metal, cerca_tratada]
+    icon: ImmersiveEngineering:metalDecoration:10
+    desc: |
+      §eSheetmetal Tank§r: 4 cercas tratadas + 34 Sheet Metal, guarda §b512 baldes§r. §eSilo§r:
+      4 cercas + 50 Sheet Metal, guarda §b41 472 itens§r de um tipo (24 baús!). Ambos se formam
+      clicando com o martelo num bloco do meio da segunda camada. Junte o material do tanque.
+    tasks:
+      - get: [ImmersiveEngineering:metalDecoration:10 x34, ImmersiveEngineering:woodenDecoration:1 x4]
+    rewards:
+      - loot: incomum
+
+  - id: espremedor
+    title: "Espremedor Industrial"
+    type: main
+    deps: [bloco_eng_leve, canhamo]
+    icon: ImmersiveEngineering:metalMultiblock:2
+    desc: |
+      Ferro, pistões, componentes e corante verde = §e2 Industrial Squeezers§r. O multibloco 3×3×3
+      usa §e8 Squeezers + 19 Light Engineering Blocks§r; forme martelando uma lateral.
+
+      Ele espreme sementes (trigo, abóbora, melancia e principalmente §ecânhamo§r) em §ePlant
+      Oil§r. Energia por cima ou por baixo; fluido sai pelas portas de baixo de cada lado.
+      Também comprime §e8 Coke Dust → 1 HOP Graphite Dust§r. Encha um balde de óleo vegetal.
+    tasks:
+      - get: [ImmersiveEngineering:metalMultiblock:2 x8, ImmersiveEngineering:fluidContainers:3]
+    rewards:
+      - xp: 4
+      - choice: [ImmersiveEngineering:seed x32, minecraft:wheat_seeds x32, ImmersiveEngineering:metalDecoration:7 x4]
+
+  - id: fermentador
+    title: "Fermentador"
+    type: main
+    deps: [bloco_eng_leve]
+    icon: ImmersiveEngineering:metalMultiblock:3
+    desc: |
+      Mesma receita do espremedor, com corante azul: §e2 Fermenters§r. Estrutura idêntica:
+      §e8 Fermenters + 19 Light Engineering Blocks§r.
+
+      Fermenta cana-de-açúcar, melancia, maçã, batata, trigo e várias frutas do HarvestCraft em
+      §eEthanol§r. Encha um balde de etanol.
+    tasks:
+      - get: [ImmersiveEngineering:metalMultiblock:3 x8, ImmersiveEngineering:fluidContainers:5]
+    rewards:
+      - xp: 4
+      - choice: [minecraft:reeds x32, minecraft:apple x16, minecraft:potato x16]
+
+  - id: refinaria
+    title: "Refinaria"
+    type: main
+    deps: [espremedor, fermentador, bloco_eng_pesado, chapa_metal]
+    icon: ImmersiveEngineering:fluidContainers:7
+    desc: |
+      A §bRefinaria§r mistura óleo vegetal + etanol em §6Biodiesel§r. Materiais (lista do manual):
+      §e8 Steel Scaffolding, 6 Light Engineering, 24 Sheet Metal e 3 Heavy Engineering§r. Forme
+      martelando o centro da frente.
+
+      Entradas nas laterais menores, saída na frente, energia no conector de trás; redstone no
+      painel da direita pausa. Encha um §eBucket of Biodiesel§r.
+    tasks:
+      - get: ImmersiveEngineering:fluidContainers:7
+    rewards:
+      - xp: 4
+      - choice: [ImmersiveEngineering:fluidContainers:3 x2, ImmersiveEngineering:fluidContainers:5 x2, ImmersiveEngineering:metalDecoration:10 x8]
+
+  - id: blocos_diesel
+    title: "Radiadores e Geradores"
+    type: normal
+    deps: [bloco_eng_pesado, dinamo]
+    icon: ImmersiveEngineering:metalDecoration:6
+    desc: |
+      §eRadiator Block§r: aço, cobre e balde d'água (rende 2). §eGenerator Block§r: aço, electrum e
+      um Kinetic Dynamo (rende 2). O Gerador a Diesel pede §e9 radiadores e 6 blocos gerador§r.
+    tasks:
+      - get: [ImmersiveEngineering:metalDecoration:4 x9, ImmersiveEngineering:metalDecoration:6 x6]
+    rewards:
+      - xp: 3
+      - item: ore:ingotSteel x6
+
+  - id: gerador_diesel
+    title: "Gerador a Diesel"
+    type: milestone
+    deps: [refinaria, blocos_diesel]
+    icon: ImmersiveEngineering:metalDecoration:6
+    banner: "Bad for the Environment"
+    subtitle: "Energia para a alta tensão"
+    desc: |
+      Um bloco de motor do tamanho de um caminhão: §e6 Generator Blocks, 9 Radiators e
+      27 Heavy Engineering Blocks§r, formado martelando o gerador central ou o radiador central.
+
+      Ele queima Biodiesel (e também Diesel e combustíveis de outros mods) e, pela configuração
+      deste pack, entrega §6327 680 RF/t§r, divididos entre até três conexões no topo. Combustível entra pelos cantos de baixo; redstone no terminal lateral
+      desliga. O martelo no centro-topo do lado do gerador espelha a estrutura.
+
+      §cEle bebe combustível muito rápido.§r Garanta uma linha de biodiesel automática antes de
+      ligar. Herói, sua rede HV finalmente tem coração!
+    tasks:
+      - get: [ImmersiveEngineering:metalDecoration:6 x6, ImmersiveEngineering:metalDecoration:4 x9, ImmersiveEngineering:metalDecoration:5 x27]
+    rewards:
+      - xp: 8
+      - kit: {name: "Kit do Motorista", items: [ImmersiveEngineering:fluidContainers:7 x4, ImmersiveEngineering:metalDevice:6 x2, ImmersiveEngineering:coil:2 x8, ImmersiveEngineering:metalDevice:7]}
+      - loot: raro
+
+  - id: triturador
+    title: "Triturador"
+    type: main
+    deps: [bloco_eng_leve, estrutura_aco]
+    icon: ImmersiveEngineering:metal:10
+    banner: "Hazardous Machinery"
+    desc: |
+      §cMantenha as mãos (e os pés, e o cachorro) longe!§r O §bCrusher§r usa §e10 Steel
+      Scaffolding, 11 Light Engineering Blocks, 8 Steel Fences e 9 funis§r. Forme martelando o
+      bloco central da frente — o lado largo com um Light Engineering embaixo.
+
+      Cada minério vira §e2 pós§r (às vezes com bônus) gastando até 120 RF/t. Ele também
+      tritura pedregulho, vidro, ossos, lã... e §ccriaturas§r: qualquer ser vivo que cair dentro
+      leva dano pesado (e o triturador entrega os drops). Itens sem receita são destruídos.
+
+      Triture §e16 minérios de cobre§r.
+    tasks:
+      - get: ore:dustCopper x32
+    rewards:
+      - xp: 4
+      - choice: [minecraft:hopper x4, ImmersiveEngineering:metalDecoration:7 x4, minecraft:iron_ore x16]
+
+  - id: prensa
+    title: "Prensa de Metal"
+    type: main
+    deps: [bloco_eng_pesado, esteira, estrutura_aco]
+    icon: ImmersiveEngineering:mold
+    desc: |
+      §bUnder Pressure!§r A Prensa usa §e3 Steel Scaffolding, 1 pistão, 2 esteiras e 1 Heavy
+      Engineering§r. Forme martelando o pistão. Energia por cima; itens entram e saem pelas
+      esteiras, no sentido do movimento.
+
+      Ela precisa de um §emolde§r: clique na prensa com ele na mão. Moldes são 4 placas de aço em
+      volta de uma peça-modelo. Comece pelo §eMolde de Placa§r (placa de ferro no meio).
+    tasks:
+      - get: ImmersiveEngineering:mold
+    rewards:
+      - xp: 4
+      - choice: [ore:plateSteel x4, minecraft:piston x2, ImmersiveEngineering:metalDevice:11 x4]
+
+  - id: molde_engrenagem
+    title: "Molde de Engrenagem"
+    type: normal
+    deps: [prensa]
+    icon: ImmersiveEngineering:mold:1
+    desc: |
+      Placas de aço em volta de uma engrenagem de ferro = §eMetal Press Mold: Gear§r. Na prensa,
+      §e4 lingotes → 1 engrenagem§r (ferro, ouro, cobre, estanho, prata, chumbo, níquel,
+      electrum, invar... no formato do Thermal Foundation). Muito mais barato que à mão!
+    tasks:
+      - get: ImmersiveEngineering:mold:1
+    rewards:
+      - xp: 2
+      - item: ore:plateSteel x2
+
+  - id: molde_vara
+    title: "Molde de Vara"
+    type: normal
+    deps: [prensa]
+    icon: ImmersiveEngineering:mold:2
+    desc: |
+      Com uma vara de metal no centro: §eMetal Press Mold: Rod§r. Na prensa, §e1 lingote → 2
+      varas§r (ferro, aço, alumínio). Munição de Railgun em escala!
+    tasks:
+      - get: ImmersiveEngineering:mold:2
+    rewards:
+      - xp: 2
+      - item: ore:plateSteel x2
+
+  - id: engarrafadora
+    title: "Engarrafadora"
+    type: normal
+    deps: [bloco_eng_leve, esteira, cano_fluido]
+    icon: ImmersiveEngineering:metalDevice:11
+    desc: |
+      A §bBottling Machine§r usa §e5 Steel Scaffolding, 2 Light Engineering e 5 esteiras§r;
+      forme martelando a esteira central. Fluido entra pela porta central de baixo, itens pelas
+      esteiras, energia por cima (8 RF/t).
+
+      Enche baldes, garrafas, galões e a furadeira. No capítulo de Petróleo ela prepara o
+      fluido de perfuração e o napalm! Encha um §eBottle of Plant Oil§r para provar.
+    tasks:
+      - get: [ImmersiveEngineering:metalDevice:11 x5, ImmersiveEngineering:fluidContainers:2]
+    rewards:
+      - xp: 3
+      - item: minecraft:glass_bottle x16
+
+  - id: montador
+    title: "Montador"
+    type: normal
+    deps: [prensa, chapa_metal]
+    icon: ImmersiveEngineering:metalDecoration:10
+    desc: |
+      O §bAssembler§r fabrica itens como um jogador numa bancada: guarda até §b3 receitas§r
+      executadas em ordem (a saída de uma pode alimentar a seguinte), 18 espaços de material e
+      3 tanques internos que substituem baldes nas receitas. Gasta 80 RF por item. Forme
+      martelando uma das esteiras (ela vira a entrada). Confira a forma e a lista no manual.
+    tasks:
+      - get: [ImmersiveEngineering:metalDecoration:10 x6, ImmersiveEngineering:metalDecoration:7 x4, ImmersiveEngineering:metalDevice:11 x2]
+    rewards:
+      - xp: 3
+      - loot: comum
+
+  - id: bancada_engenheiro
+    title: "Bancada do Engenheiro"
+    type: main
+    deps: [madeira_tratada, cerca_tratada]
+    icon: ImmersiveEngineering:woodenDevice:5
+    desc: |
+      Lajes tratadas, bancada de trabalho e cerca tratada = §eEngineer's Workbench§r. Ela faz
+      duas coisas: §binstala melhorias§r em ferramentas (furadeira, revólver, lança-químicos,
+      railgun) e §bfabrica itens a partir de Projetos§r (Engineer's Blueprints) — munição e
+      eletrodos de grafite.
+    tasks:
+      - get: ImmersiveEngineering:woodenDevice:5
+    rewards:
+      - xp: 4
+      - choice: [ore:plankTreatedWood x16, minecraft:paper x16, minecraft:gunpowder x8]
+
+  - id: bancada_automatica
+    title: "Bancada Automatizada"
+    type: normal
+    deps: [bancada_engenheiro, bloco_redstone_eng, bloco_eng_pesado, esteira]
+    icon: ImmersiveEngineering:metalDecoration2:3
+    desc: |
+      §6Exclusividade desta edição do IE!§r A §eAutomated Engineer's Workbench§r lê um Projeto e
+      monta sozinha os itens dele. Materiais: §e5 Steel Scaffolding, 2 lajes tratadas,
+      1 Redstone Engineering, 4 Light Engineering, 2 Heavy Engineering e 4 esteiras§r.
+
+      Coloque o projeto na prancheta, escolha o item, e alimente pelas duas escotilhas de pontos
+      azuis (energia logo acima). Cada montagem custa 23 040 RF e 180 ticks; o produto cai no
+      fim da esteira. Redstone sob a prancheta controla. Munição e eletrodos no automático!
+    tasks:
+      - get: [ImmersiveEngineering:metalDecoration2:3, ImmersiveEngineering:metalDecoration:7 x4, ImmersiveEngineering:metalDecoration:5 x2, ImmersiveEngineering:metalDevice:11 x4]
+    rewards:
+      - xp: 3
+      - loot: incomum
+
+  - id: cloche
+    title: "Redoma de Jardim"
+    type: optional
+    deps: [bloco_eng_leve, lanterna]
+    icon: ImmersiveEngineering:metalDevice2:12
+    desc: |
+      A §eGarden Cloche§r (vidro, lanterna, madeira tratada e componente de ferro) cultiva uma
+      planta dentro de uma redoma, gastando 8 RF/t, e entrega a colheita. Fertilizante (sólido ou
+      fluido) acelera. Cânhamo em redoma = fibra e semente infinitas para o Espremedor.
+    tasks:
+      - get: ImmersiveEngineering:metalDevice2:12
+    rewards:
+      - loot: incomum
+
+  # ======================================================================
+  # FASE 5 — GRAFITE E FORNO A ARCO
+  # ======================================================================
+  - id: po_coque
+    title: "Pó de Coque"
+    type: normal
+    deps: [triturador]
+    icon: ImmersiveEngineering:metal:17
+    desc: |
+      Coal Coke no Triturador = §eCoke Dust§r. Ele é aditivo do aço no Forno a Arco e matéria-prima
+      do grafite. Junte §e16§r.
+    tasks:
+      - get: ImmersiveEngineering:metal:17 x16
+    rewards:
+      - xp: 2
+      - item: ImmersiveEngineering:material:6 x8
+
+  - id: grafite
+    title: "Grafite HOP"
+    type: main
+    deps: [po_coque, espremedor]
+    icon: ImmersiveEngineering:metal:20
+    desc: |
+      §bHighly Ordered Pyrolytic Graphite.§r O Espremedor comprime §e8 Coke Dust → 1 HOP Graphite
+      Dust§r (pó de coque de petróleo também serve); a fornalha transforma o pó em §eHOP
+      Graphite Ingot§r. Quatro lingotes = um eletrodo. Junte §e8 lingotes§r.
+    tasks:
+      - get: ImmersiveEngineering:metal:20 x8
+    rewards:
+      - xp: 4
+      - choice: [ImmersiveEngineering:metal:17 x16, ImmersiveEngineering:stoneDecoration:3 x2, minecraft:coal_block x4]
+
+  - id: projeto_eletrodo
+    title: "O Projeto Perdido"
+    type: main
+    deps: [bancada_engenheiro]
+    icon: ImmersiveEngineering:blueprint:2
+    desc: |
+      O projeto de §eArc Furnace Electrodes§r §cnão pode ser fabricado§r neste pack. Há três
+      jeitos de consegui-lo:
+      §e• Baús da Casa do Engenheiro§r nas vilas (o IE gera essa casa).
+      §e• Baús de ferreiro de vila e da biblioteca das Fortalezas.§r
+      §e• Comprar do aldeão Engenheiro§r (por esmeraldas).
+
+      Ache um e guarde como relíquia — ele não se gasta.
+    tasks:
+      - get: ImmersiveEngineering:blueprint:2
+    rewards:
+      - xp: 4
+      - choice: [minecraft:emerald x8, minecraft:paper x16, minecraft:compass]
+
+  - id: eletrodo
+    title: "Eletrodo de Grafite"
+    type: main
+    deps: [grafite, projeto_eletrodo]
+    icon: ImmersiveEngineering:graphiteElectrode
+    desc: |
+      Projeto na Bancada do Engenheiro + §e4 HOP Graphite Ingots§r = §eGraphite Electrode§r. O Forno
+      a Arco usa §e3 eletrodos§r ao mesmo tempo, e cada um aguenta 96 000 ticks de trabalho
+      (8 dias de jogo). Faça §e3§r. (Eles também são munição pesada de Railgun!)
+    tasks:
+      - get: ImmersiveEngineering:graphiteElectrode x3
+    rewards:
+      - xp: 4
+      - choice: [ImmersiveEngineering:metal:20 x4, ImmersiveEngineering:metal:17 x16, ore:ingotSteel x4]
+
+  - id: forno_arco
+    title: "O Tema Mais Quente"
+    type: milestone
+    deps: [eletrodo, tijolo_reforcado, bloco_eng_pesado, blocos_metal]
+    icon: ImmersiveEngineering:graphiteElectrode
+    banner: "The Hottest Topic"
+    subtitle: "O Forno a Arco"
+    desc: |
+      Uma cuba de aço coroada por três eletrodos que derretem qualquer metal. Materiais:
+      §e1 caldeirão, 14 lajes de aço, 4 blocos de aço, 27 Reinforced Blast Bricks, 14 Light
+      Engineering, 7 Heavy Engineering e 10 Steel Scaffolding§r. Forme martelando o caldeirão.
+
+      §e• Minérios:§r 1 minério → 2 lingotes (+ escória). É o processamento 2× mais rápido do IE.
+      §e• Aço:§r ferro + Coke Dust como aditivo, muitos de uma vez.
+      §e• Ligas:§r electrum, constantan, invar, bronze e até ligas do Ender IO.
+      §e• Reciclagem:§r ferramentas e armaduras velhas viram metal.
+
+      Energia pelos 3 conectores de trás; entradas pelas escotilhas do topo; saída pelo
+      "balde" da frente, escória por trás. §cTire a escória e troque eletrodos§r ou ele para.
+    tasks:
+      - get: [ImmersiveEngineering:graphiteElectrode x3, minecraft:cauldron, ImmersiveEngineering:storageSlab:7 x14, ore:blockSteel x4]
+    rewards:
+      - xp: 8
+      - kit: {name: "Kit do Fundidor", items: [ImmersiveEngineering:metal:17 x32, minecraft:iron_ore x16, ImmersiveEngineering:metal:20 x4, ImmersiveEngineering:stoneDecoration:6 x4]}
+      - loot: raro
+
+  # ======================================================================
+  # FASE 6 — MINERAIS E ESCAVADEIRA
+  # ======================================================================
+  - id: minerais_info
+    title: "Veios Minerais"
+    type: info
+    deps: [estrutura_aco]
+    icon: ImmersiveEngineering:metalDevice:14
+    desc: |
+      Além dos minérios normais, cada chunk pode esconder um §bveio mineral§r profundo, uma
+      mistura de minérios que só a Escavadeira alcança. Tipos (conforme o JAR): Ferro, Magnetita,
+      Pirita, Bauxita, Cobre, Cassiterita, Ouro, Níquel, Platina, Urânio, Quartzito, Galena,
+      Chumbo, Prata, Lápis e Carvão — cada um com seus minérios e chances (o manual lista tudo).
+
+      Um veio rende até 76 800 minérios (configuração do pack) e depois esgota. Os veios dependem
+      da dimensão: alguns só aparecem no Nether, por exemplo.
+    tasks:
+      - check
+    rewards:
+      - xp: 1
+
+  - id: sonda
+    title: "Sonda de Testemunho"
+    type: main
+    deps: [minerais_info, bloco_eng_leve]
+    icon: ImmersiveEngineering:metalDevice:14
+    desc: |
+      Andaimes e cercas de aço + Light Engineering = §eCore Sample Drill§r. Coloque, ligue
+      (40 RF/t) e espere 600 ticks: ela perfura o chunk e diz qual veio existe ali e quanto
+      resta. Faça a prospecção antes de investir numa escavadeira!
+    tasks:
+      - get: ImmersiveEngineering:metalDevice:14
+    rewards:
+      - xp: 4
+      - choice: [ImmersiveEngineering:metalDecoration:1 x8, ImmersiveEngineering:metalDecoration x8, ore:ingotSteel x4]
+
+  - id: escavadeira
+    title: "Diggy Diggy Hole"
+    type: milestone
+    deps: [sonda, gerador_diesel]
+    icon: ImmersiveEngineering:storage:7
+    banner: "Diggy Diggy Hole"
+    subtitle: "A Escavadeira"
+    desc: |
+      Melhor que anões! A Escavadeira tem duas partes:
+      §e• Motor:§r 12 blocos de aço, 9 Light Engineering, 13 Heavy Engineering, 3 Steel Scaffolding.
+      §e• Roda de caçambas:§r 9 blocos de aço e 20 Steel Scaffolding, encaixada nos "suportes".
+
+      Ela consome §c4096 RF/t§r — precisa do Gerador a Diesel ou de uma linha HV. Energia na
+      lateral; atrás ficam o painel de redstone e a saída de itens. Cada volta tira minérios do
+      veio mineral do chunk (5% das caçambas voltam vazias).
+
+      Herói, você está literalmente arrancando o mundo pelas raízes. Com carinho, tá?
+    tasks:
+      - get: [ore:blockSteel x21, ImmersiveEngineering:metalDecoration:5 x13, ImmersiveEngineering:metalDecoration:1 x23]
+    rewards:
+      - xp: 8
+      - kit: {name: "Kit do Minerador Industrial", items: [minecraft:iron_ore x32, minecraft:gold_ore x8, minecraft:redstone_ore x8, ImmersiveEngineering:ore:2 x16]}
+      - loot: raro
+
+  # ======================================================================
+  # FASE 7 — ARSENAL DO ENGENHEIRO
+  # ======================================================================
+  - id: projeto_municao
+    title: "Projeto: Projéteis Comuns"
+    type: normal
+    deps: [bancada_engenheiro]
+    icon: ImmersiveEngineering:blueprint
+    desc: |
+      Este projeto você §bfabrica§r: pólvora, cobre, corante azul e papel = §eEngineer's Blueprint
+      (Common Projectiles)§r. Com ele a Bancada monta Casull, Perfurante, Chumbo Grosso, Alto
+      Explosivo e Prata. O de §eSpecialized Projectiles§r (Sopro de Dragão, Teleguiada, Matilha,
+      Frasco) só vem de baús e do aldeão Engenheiro.
+    tasks:
+      - get: ImmersiveEngineering:blueprint
+    rewards:
+      - xp: 3
+      - item: minecraft:gunpowder x16
+
+  - id: capsulas
+    title: "Cápsulas Vazias"
+    type: normal
+    deps: [projeto_municao]
+    icon: ImmersiveEngineering:bullet
+    desc: |
+      Cobre em "U" = §e3 Empty Casings§r (para balas). Papel, corante vermelho e cobre = §e3 Empty
+      Shells§r (para cartuchos de espalhamento). Junte §e8 de cada§r.
+    tasks:
+      - get: [ImmersiveEngineering:bullet x8, ImmersiveEngineering:bullet:1 x8]
+    rewards:
+      - xp: 2
+      - item: ore:ingotCopper x8
+
+  - id: pecas_revolver
+    title: "Peças do Revólver"
+    type: normal
+    deps: [aco, componente_ferro, graveto_tratado]
+    icon: ImmersiveEngineering:material:8
+    desc: |
+      §e• Revolver Barrel:§r 3 aços em linha.
+      §e• Revolver Drum:§r aço em volta de um componente de ferro.
+      §e• Revolver Hammer:§r 5 aços.
+      §e• Wooden Grip:§r gravetos tratados + cobre (faça dois).
+    tasks:
+      - get: [ImmersiveEngineering:material:7, ImmersiveEngineering:material:8, ImmersiveEngineering:material:10, ImmersiveEngineering:material:9 x2]
+    rewards:
+      - xp: 2
+      - item: ore:ingotSteel x4
+
+  - id: revolver
+    title: "Vá em Frente, Alegre Meu Dia"
+    type: main
+    deps: [pecas_revolver]
+    icon: ImmersiveEngineering:revolver
+    desc: |
+      Ferro + martelo + tambor + cano + duas empunhaduras = §eRevolver§r, calibre 12 (!).
+
+      Agache + clique direito para abrir o tambor e carregar cartuchos. Um §eSpeedloader§r
+      carregado no inventário recarrega sozinho quando a última bala sai. Melhorias vão na
+      Bancada do Engenheiro.
+    tasks:
+      - get: ImmersiveEngineering:revolver
+    rewards:
+      - xp: 4
+      - choice: [ImmersiveEngineering:bullet x16, minecraft:gunpowder x16, ore:ingotLead x8]
+
+  - id: casull
+    title: "Cartucho Casull"
+    type: normal
+    deps: [revolver, capsulas, chumbo]
+    icon: ImmersiveEngineering:bullet:2
+    desc: |
+      Cápsula + pólvora + chumbo (ou 2 pepitas) na Bancada com o projeto comum = §eCasull
+      Cartridge§r: 10 de dano. A munição de todo dia. Faça §e16§r — ou deixe a Bancada
+      Automatizada fazer.
+    tasks:
+      - get: ImmersiveEngineering:bullet:2 x16
+    rewards:
+      - xp: 2
+      - item: minecraft:gunpowder x8
+
+  - id: perfurante
+    title: "Perfurante de Blindagem"
+    type: optional
+    deps: [casull]
+    icon: ImmersiveEngineering:bullet:3
+    desc: |
+      Cápsula, pólvora, pepitas de aço e de constantan = §eArmor-Piercing Cartridge§r. Mesmo dano
+      da Casull, mas atravessa armadura na força bruta.
+    tasks:
+      - get: ImmersiveEngineering:bullet:3 x8
+    rewards:
+      - loot: comum
+
+  - id: chumbo_grosso
+    title: "Chumbo Grosso"
+    type: optional
+    deps: [casull]
+    icon: ImmersiveEngineering:bullet:4
+    desc: |
+      Shell + pólvora + pó de ferro = §eBuckshot Cartridge§r: vários bagos em cone, devastador de
+      perto. §aGuarde alguns:§r o Instrumento de Pesquisa Sísmica do Immersive Petroleum dispara
+      chumbo grosso!
+    tasks:
+      - get: ImmersiveEngineering:bullet:4 x8
+    rewards:
+      - loot: comum
+
+  - id: explosivo
+    title: "Alto Explosivo"
+    type: optional
+    deps: [casull]
+    icon: ImmersiveEngineering:bullet:5
+    desc: |
+      Cápsula + pólvora + TNT = §eHigh-Explosive Cartridge§r. Explode no impacto, ferindo criaturas
+      §ce o terreno§r. Não use dentro de casa. Sério.
+    tasks:
+      - get: ImmersiveEngineering:bullet:5 x4
+    rewards:
+      - loot: comum
+
+  - id: prata_bala
+    title: "Bala de Prata"
+    type: optional
+    deps: [casull, prata]
+    icon: ImmersiveEngineering:bullet:9
+    desc: |
+      Núcleo de chumbo envolto em prata: §eSilver Cartridge§r. Eficaz contra... lobisomens? No
+      Witchery, sim, muito eficaz.
+    tasks:
+      - get: ImmersiveEngineering:bullet:9 x4
+    rewards:
+      - loot: comum
+
+  - id: projeto_especial
+    title: "Projeto: Projéteis Especiais"
+    type: optional
+    deps: [projeto_municao]
+    icon: ImmersiveEngineering:blueprint:1
+    desc: |
+      Encontrado em baús da Casa do Engenheiro ou comprado do aldeão Engenheiro (7 esmeraldas,
+      segundo o código do mod). Libera Sopro de Dragão, Frasco, Teleguiada e Matilha.
+    tasks:
+      - get: ImmersiveEngineering:blueprint:1
+    rewards:
+      - loot: incomum
+
+  - id: sopro_dragao
+    title: "Sopro de Dragão"
+    type: optional
+    deps: [projeto_especial]
+    icon: ImmersiveEngineering:bullet:6
+    desc: |
+      Shell + pólvora + 2 pós de alumínio = §eDragon's Breath Cartridge§r: uma rajada curta de
+      chamas. Lança-chamas de bolso.
+    tasks:
+      - get: ImmersiveEngineering:bullet:6 x4
+    rewards:
+      - loot: comum
+
+  - id: frasco
+    title: "Cartucho Frasco"
+    type: optional
+    deps: [projeto_especial]
+    icon: ImmersiveEngineering:bullet:10
+    desc: |
+      Cápsula + pólvora + pó de quartzo + garrafa = §ePhial Cartridge§r. Combine na bancada com
+      qualquer poção: a bala aplica o efeito (poção de arremesso = efeito em área).
+    tasks:
+      - get: ImmersiveEngineering:bullet:10 x2
+    rewards:
+      - loot: comum
+
+  - id: teleguiada
+    title: "Teleguiada e Matilha"
+    type: optional
+    deps: [projeto_especial]
+    icon: ImmersiveEngineering:bullet:8
+    desc: |
+      Com 2 Pepitas de Terrasteel (Botania), a §eHoming Cartridge§r persegue o alvo mais próximo.
+      Quatro delas num Shell = §eWolfpack Cartridge§r: um tiro que se divide em 6 projéteis
+      teleguiados. "Beauty of Destruction", diz o mod.
+    tasks:
+      - get: [ImmersiveEngineering:bullet:7 x4, ImmersiveEngineering:bullet:8]
+    rewards:
+      - loot: incomum
+
+  - id: speedloader
+    title: "Speedloader"
+    type: optional
+    deps: [revolver]
+    icon: ImmersiveEngineering:revolver:1
+    desc: |
+      Ferro e aço = §eRevolver Speedloader§r. Carregue-o com balas; quando o revólver esvaziar, ele
+      recarrega sozinho. (Não recarrega o pente estendido.)
+    tasks:
+      - get: ImmersiveEngineering:revolver:1
+    rewards:
+      - loot: comum
+
+  - id: melhorias_revolver
+    title: "Shalashaska"
+    type: normal
+    deps: [revolver, bancada_engenheiro, bobina_electrum_bloco]
+    icon: ImmersiveEngineering:toolupgrade:6
+    desc: |
+      Três melhorias na Bancada:
+      §e• Bayonet§r (espada de ferro + aço + tábua): dano corpo a corpo de espada de ferro.
+      §e• Extended Magazine:§r +6 cartuchos.
+      §e• Amplifier Electron Tubes:§r tiros elétricos que atordoam e descarregam equipamento.
+      Instalar todas dá a conquista "Shalashaska"!
+    tasks:
+      - get: [ImmersiveEngineering:toolupgrade:4, ImmersiveEngineering:toolupgrade:5, ImmersiveEngineering:toolupgrade:6]
+    rewards:
+      - xp: 3
+      - item: ImmersiveEngineering:bullet:2 x16
+
+  - id: galao
+    title: "Galão"
+    type: normal
+    deps: [refinaria]
+    icon: ImmersiveEngineering:jerrycan
+    desc: |
+      Ferro e baldes = §eJerrycan§r: 10 baldes de fluido. Não recolhe fluido do mundo, mas despeja
+      e §babastece a furadeira§r se você combiná-los na bancada.
+    tasks:
+      - get: ImmersiveEngineering:jerrycan
+    rewards:
+      - xp: 2
+      - item: ImmersiveEngineering:fluidContainers:7
+
+  - id: furadeira
+    title: "Power Pick"
+    type: main
+    deps: [bloco_eng_pesado, refinaria, revolver]
+    icon: ImmersiveEngineering:drill
+    desc: |
+      Empunhaduras + Heavy Engineering Block + Steel Mechanical Component = §eMining Drill§r,
+      movida a §bbiodiesel§r (ou diesel). Encha na Refinaria, na Engarrafadora ou com o Galão.
+
+      Ela precisa de uma §ecabeça§r: §eIron Drill Head§r (blocos e lingotes de ferro) ou §eSteel
+      Drill Head§r (de aço) — a cabeça define nível, velocidade, área (3×3!) e dano. A cabeça
+      se desgasta e se conserta numa bigorna. Pegue a furadeira e uma cabeça.
+    tasks:
+      - get: ImmersiveEngineering:drill
+      - one_of: [ImmersiveEngineering:drillhead, ImmersiveEngineering:drillhead:1]
+    rewards:
+      - xp: 4
+      - choice: [ImmersiveEngineering:fluidContainers:7 x2, ore:blockSteel, minecraft:iron_block x2]
+
+  - id: melhorias_furadeira
+    title: "Big Daddy"
+    type: normal
+    deps: [furadeira, bancada_engenheiro]
+    icon: ImmersiveEngineering:toolupgrade:1
+    desc: |
+      Melhorias da furadeira (na Bancada):
+      §e• Pressurized Air Tank:§r funciona debaixo d'água, sem lentidão.
+      §e• Advanced Lubrication System§r (com óleo vegetal): cava mais rápido.
+      §e• Additional Augers:§r +1 de dano cada, até 3.
+      §e• Large Tank:§r mais combustível.
+      Pegue as quatro.
+    tasks:
+      - get: [ImmersiveEngineering:toolupgrade, ImmersiveEngineering:toolupgrade:1, ImmersiveEngineering:toolupgrade:2, ImmersiveEngineering:toolupgrade:3]
+    rewards:
+      - xp: 3
+      - item: ImmersiveEngineering:fluidContainers:7 x2
+
+  - id: lanca_quimicos
+    title: "Spray and Pray"
+    type: normal
+    deps: [melhorias_furadeira, cano_fluido]
+    icon: ImmersiveEngineering:chemthrower
+    desc: |
+      Tanque de ar, empunhaduras, Heavy Engineering, cano e balde = §eChemical Thrower§r. Ele
+      borrifa qualquer fluido do tanque. Agache + clique liga a §cchama piloto§r: fluidos
+      inflamáveis (creosoto, biodiesel, etanol, diesel, querosene) viram lança-chamas. Água
+      apaga fogo; creosoto deixa o alvo "inflamável".
+
+      O §eFocused Nozzle§r estreita o jato e aumenta o alcance; o Large Tank soma 2000 mB.
+    tasks:
+      - get: ImmersiveEngineering:chemthrower
+    rewards:
+      - xp: 3
+      - item: ImmersiveEngineering:fluidContainers:1 x2
+
+  - id: bocal
+    title: "Bocal Focado"
+    type: optional
+    deps: [lanca_quimicos]
+    icon: ImmersiveEngineering:toolupgrade:7
+    desc: |
+      Aço, canos e funil = §eFocused Nozzle§r. Menos espalhamento, mais alcance.
+    tasks:
+      - get: ImmersiveEngineering:toolupgrade:7
+    rewards:
+      - loot: comum
+
+  - id: railgun
+    title: "Legado de Fortune"
+    type: main
+    deps: [capacitor_hv, pecas_revolver, bobina_electrum_bloco]
+    icon: ImmersiveEngineering:railgun
+    desc: |
+      Dois Capacitores HV, dois canos de revólver, duas Electrum Wire Coils e uma empunhadura =
+      §eRailgun§r (oficialmente "Catapulta de Indução Portátil").
+
+      Segure o botão até a carga chegar a 99 e solte. Munição: §evaras de ferro e de aço§r e
+      §eeletrodos de grafite§r (os mais fortes). Cada tiro gasta 800 RF — recarregue na Estação
+      de Carga.
+    tasks:
+      - get: ImmersiveEngineering:railgun
+    rewards:
+      - xp: 4
+      - choice: [ore:stickSteel x32, ore:stickIron x32, ImmersiveEngineering:metalDevice2:10]
+
+  - id: melhorias_railgun
+    title: "Mira e Capacitores"
+    type: optional
+    deps: [railgun]
+    icon: ImmersiveEngineering:toolupgrade:8
+    desc: |
+      §ePrecision Scope§r: agache para mirar e use a roda do mouse para o zoom. §eAdditional
+      Capacitors§r (bobinas e capacitores HV): mais energia e carga muito mais rápida.
+    tasks:
+      - get: [ImmersiveEngineering:toolupgrade:8, ImmersiveEngineering:toolupgrade:9]
+    rewards:
+      - loot: incomum
+
+  - id: cabo_aco
+    title: "Cabo de Aço"
+    type: normal
+    deps: [estrutura_aco]
+    icon: ImmersiveEngineering:coil:4
+    desc: |
+      Quatro aços + graveto = §e4 Steel Cable Coils§r: decorativo, não conduz, mas com até 32
+      blocos de vão. Liga §eStructural Cable Connectors§r (cercas e aço). Perfeito para tirolesas!
+    tasks:
+      - get: [ImmersiveEngineering:coil:4 x4, ImmersiveEngineering:metalDecoration:8 x2]
+    rewards:
+      - xp: 2
+      - item: ore:ingotSteel x4
+
+  - id: skyhook
+    title: "Booker, Pegue!"
+    type: main
+    deps: [cabo_aco, componente_ferro]
+    icon: ImmersiveEngineering:skyhook
+    desc: |
+      Aço, componente de ferro e empunhaduras = §eEngineer's Skyhook§r, um gancho motorizado que
+      desliza por fios, cordas e cabos de aço.
+
+      Perto de um conector, §bsegure o botão direito§r para engatar; solte ou agache para cair
+      fora. Não dá para começar no meio do fio. Uma rede de tirolesas entre torres = transporte
+      mais estiloso do Registro. Viaje 1 km para a conquista "Skyline Master"!
+    tasks:
+      - get: ImmersiveEngineering:skyhook
+    rewards:
+      - xp: 4
+      - choice: [ImmersiveEngineering:coil:4 x8, ImmersiveEngineering:metalDecoration:8 x8, minecraft:feather x16]
+
+  - id: shaders
+    title: "Azul! Não, Amarelo!"
+    type: optional
+    deps: [revolver]
+    icon: ImmersiveEngineering:shaderBag
+    desc: |
+      §eShader Grabbags§r caem de §bchefes§r, aparecem em baús e com o aldeão Engenheiro. Abra para
+      ganhar um §eShader§r: uma pintura para Revólver, Furadeira, Lança-Químicos, Railgun, carrinhos
+      e Balões (aplique na Bancada ou clicando). Raridade igual ou melhor que a do saco.
+    tasks:
+      - get: ImmersiveEngineering:shaderBag
+    rewards:
+      - loot: incomum
+
+  - id: aluminio_estrutura
+    title: "Estruturas de Alumínio"
+    type: optional
+    deps: [aluminio, prensa]
+    icon: ImmersiveEngineering:metalDecoration:13
+    desc: |
+      Varas de alumínio viram cercas e andaimes de alumínio, mais leves e claros que os de aço —
+      e o braço estrutural de alumínio. Faça algumas peças para a sua torre de transmissão.
+    tasks:
+      - get: [ImmersiveEngineering:metalDecoration:12 x4, ImmersiveEngineering:metalDecoration:13 x6]
+    rewards:
+      - loot: comum
+
+
+  # ======================================================================
+  # EXTRAS — PROCESSAMENTO, DECORAÇÃO E INTEGRAÇÕES
+  # ======================================================================
+  - id: carvao_vegetal
+    title: "Carvão Vegetal no Forno"
+    type: optional
+    deps: [forno_coque]
+    icon: minecraft:coal:1
+    desc: |
+      Sem carvão mineral por perto? Toras no Forno de Coque viram §ecarvão vegetal§r + 250 mB de
+      creosoto. O carvão vegetal também é combustível aceito pelo Alto-Forno (300 ticks).
+    tasks:
+      - get: minecraft:coal:1 x16
+    rewards:
+      - loot: comum
+
+  - id: pos_metais
+    title: "Pós de Todos os Metais"
+    type: optional
+    deps: [triturar_martelo, minerios_ie]
+    icon: ImmersiveEngineering:metal:13
+    desc: |
+      Cobre, chumbo, prata, níquel e bauxita também viram Grit no martelo. Juntar um de cada é
+      ótimo para lembrar que §bpó mistura em liga§r — e que no Triturador cada minério rende 2.
+    tasks:
+      - get: [ImmersiveEngineering:metal:10, ImmersiveEngineering:metal:11, ImmersiveEngineering:metal:12, ImmersiveEngineering:metal:13, ImmersiveEngineering:metal:14]
+    rewards:
+      - loot: comum
+
+  - id: po_quartzo
+    title: "Pó de Quartzo"
+    type: optional
+    deps: [triturador]
+    icon: ImmersiveEngineering:metal:18
+    desc: |
+      Quartzo do Nether no Triturador = §eQuartz Dust§r. Ele vai no Cartucho Frasco e em várias
+      receitas de outros mods que pedem pó de quartzo.
+    tasks:
+      - get: ImmersiveEngineering:metal:18 x4
+    rewards:
+      - loot: comum
+
+  - id: pepitas
+    title: "Pepitas de Aço"
+    type: optional
+    deps: [aco]
+    icon: ImmersiveEngineering:metal:29
+    desc: |
+      Um lingote = 9 pepitas, e de volta. As §eSteel Nuggets§r (com pepitas de constantan) fazem
+      o Cartucho Perfurante. Toda liga do IE tem pepita própria.
+    tasks:
+      - get: ore:nuggetSteel x9
+    rewards:
+      - loot: comum
+
+  - id: lajes_metal
+    title: "Lajes de Aço"
+    type: optional
+    deps: [blocos_metal]
+    icon: ImmersiveEngineering:storageSlab:7
+    desc: |
+      Todo bloco de metal do IE vira laje. As §eSteel Slabs§r não são só decoração: o Forno a Arco
+      pede §e14§r delas.
+    tasks:
+      - get: ImmersiveEngineering:storageSlab:7 x6
+    rewards:
+      - loot: comum
+
+  - id: chapas_coloridas
+    title: "Chapas de Alumínio, Chumbo e Aço"
+    type: optional
+    deps: [chapa_metal, placa_aco]
+    icon: ImmersiveEngineering:metalDecoration2:2
+    desc: |
+      Placas de alumínio, chumbo ou aço em cruz rendem blocos de chapa de cada metal. Pura
+      estética industrial — mas que estética!
+    tasks:
+      - get: [ImmersiveEngineering:metalDecoration2, ImmersiveEngineering:metalDecoration2:1, ImmersiveEngineering:metalDecoration2:2]
+    rewards:
+      - loot: comum
+
+  - id: suportes_parede
+    title: "Suportes de Parede"
+    type: optional
+    deps: [cerca_tratada, estrutura_aco]
+    icon: ImmersiveEngineering:metalDecoration:9
+    desc: |
+      §eWooden Wall Mount§r e §eSteel Wall Mount§r: braços para prender conectores e relés na
+      parede, longe do caminho. Fios bonitos são fios que não enroscam na cabeça de ninguém.
+    tasks:
+      - get: [ImmersiveEngineering:woodenDecoration:6 x2, ImmersiveEngineering:metalDecoration:9 x2]
+    rewards:
+      - loot: comum
+
+  - id: silo
+    title: "Silo de Itens"
+    type: optional
+    deps: [tanque_silo]
+    icon: ImmersiveEngineering:metalDecoration:10
+    desc: |
+      §e4 cercas tratadas + 50 Sheet Metal§r. Guarda 41 472 itens de um só tipo; entra por cima,
+      sai por baixo (redstone no bloco de baixo faz sair sozinho). Comparadores nas camadas do
+      topo indicam cada 1/6 da capacidade. Ideal para escória, pedregulho e sementes.
+    tasks:
+      - get: ImmersiveEngineering:metalDecoration:10 x50
+    rewards:
+      - loot: incomum
+
+  - id: torres_info
+    title: "Torres de Transmissão"
+    type: info
+    deps: [conector_hv, braco_estrutural]
+    icon: ImmersiveEngineering:metalDevice:5
+    desc: |
+      Projeto clássico de linha HV:
+      §e• Torre:§r cercas e andaimes de aço empilhados, com braços estruturais no topo.
+      §e• Relé HV§r preso §bembaixo§r do braço (é a única face aceita).
+      §e• Vão máximo:§r 32 blocos por fio HV, com linha de visão livre.
+      §e• Nas pontas:§r Conector HV + Transformador HV para descer a MV/LV.
+
+      Fios atravessam chunks descarregados, então a usina pode ficar bem longe da base. E o
+      Skyhook transforma a linha numa tirolesa!
+    tasks:
+      - check
+    rewards:
+      - xp: 1
+
+  - id: ponte_ic2
+    title: "Ponte com o IC2"
+    type: info
+    deps: [conector_lv]
+    icon: ImmersiveEngineering:metalDevice
+    desc: |
+      A configuração do pack deixa os fios do IE §baceitarem e entregarem EU§r, na proporção
+      §e4 RF = 1 EU§r. Ou seja, um conector encostado numa máquina do IndustrialCraft consegue
+      alimentá-la. A Estação de Carga também carrega ferramentas de EU.
+
+      §cCuidado:§r as máquinas do IC2 continuam explodindo com sobretensão — um conector HV
+      empurrando energia demais numa máquina LV é receita de desastre. Desça a tensão antes.
+    tasks:
+      - check
+    rewards:
+      - xp: 1
+
+  - id: casa_engenheiro
+    title: "A Casa do Engenheiro"
+    type: info
+    deps: [bancada_engenheiro]
+    icon: ImmersiveEngineering:blueprint:1
+    desc: |
+      O IE adiciona às vilas uma §bCasa do Engenheiro§r (ativada na configuração do pack), com
+      caixotes de saque e um aldeão §eEngenheiro§r. É nela que aparecem projetos que não se
+      fabricam — Projéteis Especiais e Eletrodos — além de Shaders e peças.
+
+      O Engenheiro troca projetos e itens por esmeraldas. Explore vilas antes de desistir do
+      Forno a Arco!
+    tasks:
+      - check
+    rewards:
+      - xp: 1
+
+  - id: aco_arco
+    title: "Aço a Arco"
+    type: normal
+    deps: [forno_arco]
+    icon: ImmersiveEngineering:metal:7
+    desc: |
+      No Forno a Arco, ferro (lingote, pó ou minério) com §eCoke Dust§r como aditivo vira aço — em
+      até 12 espaços de entrada ao mesmo tempo. O Alto-Forno parece lento agora, né? Produza
+      §e32 lingotes de aço§r.
+    tasks:
+      - get: ore:ingotSteel x32
+    rewards:
+      - xp: 3
+      - item: ImmersiveEngineering:metal:17 x16
+
+  - id: ligas_arco
+    title: "Ligas no Arco"
+    type: normal
+    deps: [forno_arco]
+    icon: ImmersiveEngineering:metal:5
+    desc: |
+      O Forno a Arco funde ligas direto dos lingotes ou pós: §eElectrum§r (ouro + prata),
+      §eConstantan§r (cobre + níquel), §eInvar§r (2 ferros + níquel = 3), bronze e até ligas do
+      Ender IO. Confira tudo no NEI (U no forno). Faça §e8 Invar§r.
+    tasks:
+      - get: ore:ingotInvar x8
+    rewards:
+      - xp: 3
+      - item: ore:ingotNickel x4
+
+  - id: reciclagem
+    title: "Reciclagem a Arco"
+    type: info
+    deps: [forno_arco]
+    icon: minecraft:iron_chestplate
+    desc: |
+      A reciclagem está ligada neste pack: ferramentas e armaduras velhas no Forno a Arco
+      devolvem parte do metal (proporcional ao desgaste). Aquela pilha de espadas de ferro dos
+      zumbis finalmente serve para alguma coisa.
+    tasks:
+      - check
+    rewards:
+      - xp: 1
+
+  - id: placas_prensa
+    title: "Placas em Série"
+    type: normal
+    deps: [prensa]
+    icon: ImmersiveEngineering:metal:38
+    desc: |
+      Com o molde de placa, a prensa transforma §e1 lingote → 1 placa§r sem gastar martelo. Ponha
+      um baú no fim da esteira e produza §e32 placas de aço§r — os tijolos reforçados agradecem.
+    tasks:
+      - get: ore:plateSteel x32
+    rewards:
+      - xp: 3
+      - item: ore:ingotSteel x6
+
+  - id: engrenagens
+    title: "Engrenagens em Série"
+    type: normal
+    deps: [molde_engrenagem]
+    icon: ThermalFoundation:material:12
+    desc: |
+      Quatro lingotes por engrenagem, sem gastar nada além de RF. Engrenagens de ferro e cobre
+      alimentam metade das máquinas do Thermal, BuildCraft e Forestry. Faça §e4 de ferro e 4 de
+      cobre§r.
+    tasks:
+      - get: [ore:gearIron x4, ore:gearCopper x4]
+    rewards:
+      - xp: 2
+      - item: minecraft:iron_ingot x8
+
+  - id: cabeca_aco
+    title: "Cabeça de Aço"
+    type: optional
+    deps: [furadeira]
+    icon: ImmersiveEngineering:drillhead
+    desc: |
+      A §eSteel Drill Head§r (blocos e lingotes de aço) é mais rápida, cava materiais mais duros e
+      dura mais que a de ferro. No Arcane Engineering existem cabeças de Taumio e de Vazio!
+    tasks:
+      - get: ImmersiveEngineering:drillhead
+    rewards:
+      - loot: incomum
+
+  - id: estoque_biodiesel
+    title: "Tanque Cheio"
+    type: normal
+    deps: [gerador_diesel]
+    icon: ImmersiveEngineering:fluidContainers:7
+    desc: |
+      O Gerador a Diesel bebe rápido. Antes de confiar a fábrica a ele, monte a linha completa
+      (Redoma ou fazenda de cânhamo → Espremedor; cana → Fermentador; Refinaria → tanque) e
+      junte §e8 baldes de Biodiesel§r de reserva.
+    tasks:
+      - get: ImmersiveEngineering:fluidContainers:7 x8
+    rewards:
+      - xp: 3
+      - item: ImmersiveEngineering:seed x32
+
+  - id: oleo_lubrificante
+    title: "Lubrificação Avançada"
+    type: optional
+    deps: [espremedor]
+    icon: ImmersiveEngineering:fluidContainers:2
+    desc: |
+      Óleo vegetal não é só combustível de biodiesel: duas garrafas (ou baldes) dele fazem o
+      §eAdvanced Lubrication System§r da furadeira, e no Immersive Petroleum ele substitui o
+      lubrificante no Lubrificador Automático (gastando mais). Pegue §e4 garrafas§r.
+    tasks:
+      - get: ImmersiveEngineering:fluidContainers:2 x4
+    rewards:
+      - loot: comum
+
+  - id: hv_coil_bloco
+    title: "Bobina de Fio HV"
+    type: normal
+    deps: [bobina_hv]
+    icon: ImmersiveEngineering:storage:10
+    desc: |
+      Oito bobinas HV + ferro = §eHigh-Voltage Wire Coil§r (bloco). Peça do Transformador HV e do
+      Para-raios; os Capacitores Adicionais do Railgun usam as bobinas de mão.
+    tasks:
+      - get: ImmersiveEngineering:storage:10
+    rewards:
+      - xp: 2
+      - item: ore:ingotAluminum x4
+
+  # ======================================================================
+  # FINAL
+  # ======================================================================
+  - id: mestre_engenheiro
+    title: "Mestria em Engenharia"
+    type: milestone
+    deps: [forno_arco, escavadeira, gerador_diesel, rede_eletrica, railgun, skyhook]
+    icon: ImmersiveEngineering:railgun
+    banner: "Mestria em Engenharia"
+    subtitle: "O Volume dos Engenheiros está completo"
+    effect: 6
+    desc: |
+      Olhe para trás, Herói: um forno de tijolos que virou alto-forno, que virou forno a arco.
+      Uma roda d'água que virou gerador a diesel. Um fio de cobre que virou uma linha de alta
+      tensão pendurada entre torres de aço — e você deslizando nela com um gancho!
+
+      O Volume dos Engenheiros está reescrito. Próximos passos:
+      §e• Immersive Petroleum§r (capítulo vizinho): petróleo, torre de destilação, gasolina.
+      §e• Arcane Engineering§r: varinhas de madeira tratada e cabeças de furadeira de taumio.
+      §e• Electrical Age§r: se o IE é a rede de postes, o Eln é a eletricidade de verdade, com
+      volts e ampères.
+
+      Eu sabia que você conseguiria. Eu SEMPRE soube.
+    tasks:
+      - get: [ImmersiveEngineering:railgun, ImmersiveEngineering:skyhook, ImmersiveEngineering:graphiteElectrode, ImmersiveEngineering:metalDevice:14]
+    rewards:
+      - xp: 12
+      - kit: {name: "Kit do Mestre Engenheiro", items: [ImmersiveEngineering:storage:7 x4, ImmersiveEngineering:storage:6 x2, ImmersiveEngineering:graphiteElectrode x3, ImmersiveEngineering:fluidContainers:7 x4]}
+      - loot: epico

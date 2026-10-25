@@ -1,0 +1,3050 @@
+chapter:
+  id: ae2
+  title: "Applied Energistics 2"
+  prefix: ""
+  order: 370
+  icon: appliedenergistics2:tile.BlockController
+  desc: |
+    §bO Volume do Armazenamento Digital.§r Quartzo certus, meteoritos, prensas, canais, células
+    de bytes, fabricação automática, fluidos, túneis P2P, pontes quânticas e espaço guardado
+    num cristal. (Applied Energistics 2 rv3-beta-1035-GTNH + AE2 Fluid Crafting +
+    NotEnoughEnergistics)
+
+quests:
+  # ======================================================================
+  # FASE 0 — QUARTZO E METEORITOS
+  # ======================================================================
+  - id: certus
+    title: "Quartzo Certus"
+    type: main
+    icon: appliedenergistics2:tile.OreQuartz
+    desc: |
+      Sabe o que os Antigos usavam para guardar o mundo inteiro dentro de uma caixinha?
+      Cristais. Mais especificamente: §eQuartzo Certus§r.
+
+      O §eMinério de Quartzo Certus§r gera no subsolo do mundo normal, em pequenos veios
+      (parece um minério de quartzo azulado). Quebre com picareta de ferro ou melhor e junte
+      §e16 Cristais de Quartzo Certus§r. Fortuna ajuda — e muito!
+
+      Este Volume inteiro é construído em cima desse cristal. Bem-vindo à era digital, Herói!
+    tasks:
+      - get: ore:crystalCertusQuartz x16
+    rewards:
+      - xp: 4
+      - choice: [minecraft:iron_ingot x16, minecraft:redstone x16, minecraft:torch x32]
+
+  - id: certus_carregado
+    title: "Certus Carregado"
+    type: main
+    deps: [certus]
+    icon: appliedenergistics2:item.ItemMultiMaterial:1
+    desc: |
+      Alguns veios de certus vêm §ecarregados§r: o §eMinério de Quartzo Certus Carregado§r
+      brilha e solta faíscas (neste pack, cerca de 8% dos veios). Quebrando-o, você recebe
+      §eCristais Carregados de Quartzo Certus§r.
+
+      No começo, esse é o único jeito de conseguir cristais carregados — e eles são a chave
+      do Fluix, da Bússola de Meteoritos e do Carregador. Junte §e4§r.
+    tasks:
+      - get: appliedenergistics2:item.ItemMultiMaterial:1 x4
+    rewards:
+      - xp: 4
+      - choice: [minecraft:redstone x16, minecraft:quartz x8, minecraft:iron_pickaxe x1]
+
+  - id: quartzo_nether
+    title: "Quartzo do Nether"
+    type: normal
+    deps: [certus]
+    icon: minecraft:quartz
+    desc: |
+      O AE2 também usa o velho conhecido §eQuartzo do Nether§r: no Fluix, nos Núcleos de
+      Aniquilação, nas ferramentas de quartzo e nos Detectores de Luz. Faça uma viagem ao
+      Nether e traga §e16§r.
+      §cLembre:§r leve armadura, comida e um balde de água... ah não, água não funciona lá.
+      Leve blocos!
+    tasks:
+      - get: minecraft:quartz x16
+    rewards:
+      - xp: 2
+      - item: minecraft:gold_ingot x4
+
+  - id: fluix
+    title: "Cristal de Fluix"
+    type: main
+    deps: [certus_carregado, quartzo_nether]
+    icon: appliedenergistics2:item.ItemMultiMaterial:7
+    desc: |
+      Agora uma alquimia moderna! Jogue §edentro da água§r (água parada, um bloco de fonte):
+      §e1 Cristal Carregado de Certus + 1 Pó de Redstone + 1 Quartzo do Nether§r. Depois de
+      alguns segundos, eles se fundem em §e2 Cristais de Fluix§r!
+
+      O Fluix é o "sangue" das redes ME: cabos, controladores, cartões, planos... Faça §e8§r.
+      §aDica:§r jogue um item de cada vez, todos no mesmo bloco de água.
+    tasks:
+      - get: appliedenergistics2:item.ItemMultiMaterial:7 x8
+    rewards:
+      - xp: 4
+      - choice: [minecraft:redstone x32, minecraft:quartz x8, minecraft:water_bucket x1]
+
+  - id: rebolo
+    title: "Rebolo de Quartzo"
+    type: main
+    deps: [certus]
+    icon: appliedenergistics2:tile.BlockGrinder
+    desc: |
+      Antes de qualquer máquina elétrica, um moinho à moda antiga. O §eRebolo de Quartzo§r
+      (pedra, pedregulho, cristais de certus e uma §eengrenagem de madeira§r do BuildCraft no
+      centro) mói itens quando você gira a §eManivela de Madeira§r (5 gravetos) colocada em
+      cima dele.
+
+      Ele faz Pó de Certus, Pó de Quartzo do Nether, Pó de Fluix, Farinha e mais. Clique com o
+      botão direito na manivela até a mó girar. É braçal, mas funciona sem energia!
+    tasks:
+      - get: [appliedenergistics2:tile.BlockGrinder, appliedenergistics2:tile.BlockCrank]
+    rewards:
+      - xp: 4
+      - choice: [BuildCraft|Core:woodenGearItem x2, minecraft:cobblestone x32, minecraft:stick x16]
+
+  - id: po_certus
+    title: "Pó de Quartzo Certus"
+    type: normal
+    deps: [rebolo]
+    icon: appliedenergistics2:item.ItemMultiMaterial:2
+    desc: |
+      Moa cristais (ou minério) de certus no Rebolo — ou num Triturador, Pulverizador, Moinho
+      SAG... quase toda máquina de moagem do pack aceita. Junte §e16 Pós de Quartzo Certus§r:
+      eles fazem Vidro de Quartzo, Fibra de Quartzo e Sementes de Cristal.
+    tasks:
+      - get: appliedenergistics2:item.ItemMultiMaterial:2 x16
+    rewards:
+      - xp: 2
+      - item: minecraft:sand x16
+
+  - id: po_nether
+    title: "Pó de Quartzo do Nether"
+    type: optional
+    deps: [rebolo, quartzo_nether]
+    icon: appliedenergistics2:item.ItemMultiMaterial:3
+    desc: |
+      Quartzo do Nether moído vira §ePó de Quartzo do Nether§r. Com areia, ele faz Sementes de
+      Quartzo do Nether, que crescem na água até virar Cristal Puro de Quartzo do Nether.
+    tasks:
+      - get: appliedenergistics2:item.ItemMultiMaterial:3 x4
+    rewards:
+      - loot: comum
+
+  - id: farinha
+    title: "Farinha"
+    type: optional
+    deps: [rebolo]
+    icon: appliedenergistics2:item.ItemMultiMaterial:4
+    desc: |
+      Trigo no Rebolo = §eFarinha§r. Ela vale como "pó de trigo" no oredict (receitas de pão e
+      massas de outros mods). O AE2 é tecnológico, mas também gosta de um pão quentinho.
+    tasks:
+      - get: appliedenergistics2:item.ItemMultiMaterial:4 x8
+    rewards:
+      - loot: comum
+
+  - id: ferramentas_quartzo
+    title: "Ferramentas de Quartzo"
+    type: optional
+    deps: [certus]
+    icon: appliedenergistics2:item.ToolCertusQuartzPickaxe
+    desc: |
+      Certus ou Quartzo do Nether também viram ferramentas: picareta, machado, pá, enxada e
+      espada, com a durabilidade parecida com a de ferro. Faça qualquer uma — elas quebram o
+      galho enquanto o ferro estiver em falta.
+    tasks:
+      - one_of: [appliedenergistics2:item.ToolCertusQuartzPickaxe, appliedenergistics2:item.ToolCertusQuartzAxe, appliedenergistics2:item.ToolCertusQuartzSpade, appliedenergistics2:item.ToolCertusQuartzSword, appliedenergistics2:item.ToolCertusQuartzHoe, appliedenergistics2:item.ToolNetherQuartzPickaxe, appliedenergistics2:item.ToolNetherQuartzAxe, appliedenergistics2:item.ToolNetherQuartzSpade, appliedenergistics2:item.ToolNetherQuartzSword, appliedenergistics2:item.ToolNetherQuartzHoe]
+    rewards:
+      - loot: comum
+
+  - id: chave_quartzo
+    title: "Chave de Quartzo"
+    type: normal
+    deps: [certus]
+    icon: appliedenergistics2:item.ToolCertusQuartzWrench
+    desc: |
+      5 cristais de quartzo (certus ou do Nether) em forma de chave = §eChave de Quartzo§r.
+      Ela gira blocos do AE2 e, com Shift, desmonta peças da rede. É também a base da
+      §eFerramenta de Rede§r, mais à frente.
+    tasks:
+      - one_of: [appliedenergistics2:item.ToolCertusQuartzWrench, appliedenergistics2:item.ToolNetherQuartzWrench]
+    rewards:
+      - xp: 2
+      - item: appliedenergistics2:item.ItemMultiMaterial x4
+
+  - id: faca_corte
+    title: "Faca de Corte de Quartzo"
+    type: optional
+    deps: [certus]
+    icon: appliedenergistics2:item.ToolCertusQuartzCuttingKnife
+    desc: |
+      Ferro, 2 cristais de quartzo e gravetos = §eFaca de Corte§r. Junto com ferro na bancada,
+      ela faz §eCabos Âncora§r (o suporte das fachadas). Abrindo-a, você também pode gravar
+      nomes em itens com a Prensa de Nome. Útil para organizar tudo!
+    tasks:
+      - one_of: [appliedenergistics2:item.ToolCertusQuartzCuttingKnife, appliedenergistics2:item.ToolNetherQuartzCuttingKnife]
+    rewards:
+      - loot: comum
+
+  - id: vidro_quartzo
+    title: "Vidro de Quartzo"
+    type: main
+    deps: [po_certus]
+    icon: appliedenergistics2:tile.BlockQuartzGlass
+    desc: |
+      5 Pós de Quartzo Certus (ou do Nether) intercalados com 4 vidros = §e4 Vidros de
+      Quartzo§r. Ele aparece em muita coisa: células de armazenamento, aceitadores de energia,
+      painéis, pilões espaciais...
+
+      Faça §e8§r e guarde. Bonito, transparente e — eu juro — digitalmente nobre.
+    tasks:
+      - get: appliedenergistics2:tile.BlockQuartzGlass x8
+    rewards:
+      - xp: 4
+      - choice: [minecraft:glass x16, minecraft:sand x32, appliedenergistics2:item.ItemMultiMaterial:2 x8]
+
+  - id: vidro_vibrante
+    title: "Vidro Vibrante de Quartzo"
+    type: optional
+    deps: [vidro_quartzo]
+    icon: appliedenergistics2:tile.BlockQuartzLamp
+    desc: |
+      Vidro de Quartzo + 2 pós de glowstone = §eVidro Vibrante§r: um vidro que ilumina.
+      Decoração de luxo para a sala do servidor (e ingrediente das células de fluido mais
+      avançadas).
+    tasks:
+      - get: appliedenergistics2:tile.BlockQuartzLamp x4
+    rewards:
+      - loot: comum
+
+  - id: blocos_certus
+    title: "Arquitetura de Quartzo"
+    type: optional
+    deps: [certus]
+    icon: appliedenergistics2:tile.BlockQuartzPillar
+    desc: |
+      4 cristais de certus = 1 Bloco de Quartzo Certus (e o bloco volta a ser 4 cristais).
+      Dele saem pilares, blocos talhados, escadas e lajes. Uma sala de servidores com piso de
+      certus... imagina que lindo?
+    tasks:
+      - one_of: [appliedenergistics2:tile.BlockQuartz, appliedenergistics2:tile.BlockQuartzPillar, appliedenergistics2:tile.BlockQuartzChiseled]
+    rewards:
+      - loot: comum
+
+  - id: carregador
+    title: "Carregador"
+    type: main
+    deps: [fluix]
+    icon: appliedenergistics2:tile.BlockCharger
+    desc: |
+      Chega de depender da sorte com minério carregado! O §eCarregador§r (5 ferros e 2
+      Cristais de Fluix) carrega Cristais de Quartzo Certus comuns, transformando-os em
+      §eCristais Carregados§r.
+
+      Ele precisa de energia: ligue RF/EU direto, a rede ME... ou, no começo, gire uma
+      §eManivela de Madeira§r em cima dele. Também recarrega ferramentas do AE2, como o
+      Terminal Sem Fio.
+    tasks:
+      - get: appliedenergistics2:tile.BlockCharger
+    rewards:
+      - xp: 4
+      - choice: [appliedenergistics2:tile.BlockCrank x1, ore:crystalCertusQuartz x8, minecraft:iron_ingot x8]
+
+  - id: carga_em_serie
+    title: "Carga em Série"
+    type: normal
+    deps: [carregador]
+    icon: appliedenergistics2:item.ItemMultiMaterial:1
+    desc: |
+      Com o Carregador funcionando, cristal carregado deixa de ser sorte. Carregue §e16
+      Cristais de Quartzo Certus§r — um de cada vez, ou automatize com funis e tubos.
+      §aDica:§r com o Fluix ficando barato, vale montar uma "piscina" de fabricação de Fluix
+      perto do Carregador.
+    tasks:
+      - get: appliedenergistics2:item.ItemMultiMaterial:1 x16
+    rewards:
+      - xp: 2
+      - item: minecraft:redstone x16
+
+  - id: bussola_meteoritos
+    title: "Bússola de Meteoritos"
+    type: main
+    deps: [certus_carregado]
+    icon: appliedenergistics2:tile.BlockSkyCompass
+    desc: |
+      Pedras do céu caíram durante a Fratura — e dentro delas estão as §eprensas§r que
+      imprimem os circuitos do AE2.
+
+      A §eBússola de Meteoritos§r (4 ferros em volta de um Cristal Carregado) aponta para o
+      meteorito mais próximo. Neste pack eles caem §esó no mundo normal§r, com bastante
+      distância entre si. Siga a agulha... e prepare-se para cavar.
+    tasks:
+      - get: appliedenergistics2:tile.BlockSkyCompass
+    rewards:
+      - xp: 4
+      - choice: [minecraft:bread x16, minecraft:torch x32, minecraft:iron_shovel x1]
+
+  - id: meteorito
+    title: "Pedra do Céu"
+    type: main
+    deps: [bussola_meteoritos]
+    icon: appliedenergistics2:tile.BlockSkyStone
+    desc: |
+      Achou a cratera? A rocha preta é §ePedra do Céu§r — duríssima, então use uma picareta
+      boa (diamante é o ideal). Cave até o centro do meteorito: lá dentro há um §eBaú de
+      Pedra do Céu§r com uma prensa, pepitas de metal e mais pedra.
+
+      Junte §e16 Pedras do Céu§r. Elas viram Blocos de Pedra do Céu na fornalha, que entram no
+      Controlador ME.
+      §aDica:§r cada meteorito traz §euma§r das quatro prensas. Vai ser preciso visitar alguns!
+    tasks:
+      - get: appliedenergistics2:tile.BlockSkyStone x16
+    rewards:
+      - xp: 4
+      - choice: [minecraft:diamond x1, minecraft:cooked_beef x16, minecraft:torch x32]
+
+  - id: bloco_pedra_ceu
+    title: "Bloco de Pedra do Céu"
+    type: normal
+    deps: [meteorito]
+    icon: appliedenergistics2:tile.BlockSkyStone:1
+    desc: |
+      Pedra do Céu na fornalha = §eBloco de Pedra do Céu§r, mais liso e bonito. O Controlador
+      ME leva 4 deles. Os blocos também viram tijolos e tijolos pequenos para decoração.
+    tasks:
+      - get: appliedenergistics2:tile.BlockSkyStone:1 x4
+    rewards:
+      - xp: 2
+      - item: minecraft:coal x8
+
+  - id: bau_pedra_ceu
+    title: "Baú de Pedra do Céu"
+    type: optional
+    deps: [meteorito]
+    icon: appliedenergistics2:tile.BlockSkyChest
+    desc: |
+      8 Pedras do Céu = §eBaú de Pedra do Céu§r: um baú resistente a explosões e com cara de
+      ficção científica. Perfeito para guardar as suas prensas preciosas.
+    tasks:
+      - one_of: [appliedenergistics2:tile.BlockSkyChest, appliedenergistics2:tile.BlockSkyChest:1]
+    rewards:
+      - loot: comum
+
+  - id: prensa_calculo
+    title: "Prensa de Cálculo"
+    type: normal
+    deps: [meteorito]
+    icon: appliedenergistics2:item.ItemMultiMaterial:13
+    desc: |
+      A §ePrensa Inscritora de Cálculo§r imprime o Circuito de Cálculo a partir de um §eCristal
+      Puro de Quartzo Certus§r. Sem ela, nada de Processador de Cálculo (células 4k, cartões,
+      terminais de fabricação...).
+      §aAlternativa do pack:§r 8 Essências de Certus do Magical Crops + 1 ferro também fazem
+      esta prensa.
+    tasks:
+      - get: appliedenergistics2:item.ItemMultiMaterial:13
+    rewards:
+      - xp: 3
+      - item: minecraft:iron_block
+
+  - id: prensa_engenharia
+    title: "Prensa de Engenharia"
+    type: normal
+    deps: [meteorito]
+    icon: appliedenergistics2:item.ItemMultiMaterial:14
+    desc: |
+      A §ePrensa Inscritora de Engenharia§r imprime o Circuito de Engenharia a partir de um
+      §ediamante§r. Ela é a mais importante: o Processador de Engenharia vai no Controlador, no
+      Acionador ME e em metade do mod.
+      §aAlternativa:§r 8 Essências de Certus + 1 diamante.
+    tasks:
+      - get: appliedenergistics2:item.ItemMultiMaterial:14
+    rewards:
+      - xp: 3
+      - item: minecraft:iron_block
+
+  - id: prensa_logica
+    title: "Prensa Lógica"
+    type: normal
+    deps: [meteorito]
+    icon: appliedenergistics2:item.ItemMultiMaterial:15
+    desc: |
+      A §ePrensa Inscritora Lógica§r imprime o Circuito Lógico a partir de um §elingote de
+      ouro§r. O Processador Lógico aparece nos Componentes de Armazenamento, nos Núcleos e no
+      Terminal ME.
+      §aAlternativa:§r 8 Essências de Certus + 1 ouro.
+    tasks:
+      - get: appliedenergistics2:item.ItemMultiMaterial:15
+    rewards:
+      - xp: 3
+      - item: minecraft:iron_block
+
+  - id: prensa_silicio
+    title: "Prensa de Silício"
+    type: normal
+    deps: [meteorito]
+    icon: appliedenergistics2:item.ItemMultiMaterial:19
+    desc: |
+      A §ePrensa de Silício§r (o jogo escreve "Compressa Inscitora de Silício" — tradução
+      criativa!) imprime o §eSilício Impresso§r, que entra em §etodos§r os três processadores.
+      §aAlternativa:§r 8 Essências de Certus + um silício.
+    tasks:
+      - get: appliedenergistics2:item.ItemMultiMaterial:19
+    rewards:
+      - xp: 3
+      - item: minecraft:iron_block
+
+  - id: tijolos_pedra_ceu
+    title: "Tijolos de Pedra do Céu"
+    type: optional
+    deps: [bloco_pedra_ceu]
+    icon: appliedenergistics2:tile.BlockSkyStone:2
+    desc: |
+      Bloco de Pedra do Céu na bancada vira §eTijolos§r, que viram §eTijolos Pequenos§r, que
+      voltam a ser Bloco. Um ciclo decorativo infinito! Pedra do Céu é resistente a explosões —
+      ótima para paredes da sala do Controlador.
+    tasks:
+      - one_of: [appliedenergistics2:tile.BlockSkyStone:2, appliedenergistics2:tile.BlockSkyStone:3]
+    rewards:
+      - loot: comum
+
+  - id: quatro_prensas
+    title: "As Quatro Prensas"
+    type: milestone
+    deps: [prensa_calculo, prensa_engenharia, prensa_logica, prensa_silicio]
+    icon: appliedenergistics2:item.ItemMultiMaterial:14
+    banner: "As Quatro Prensas"
+    subtitle: "Os moldes caídos do céu"
+    desc: |
+      Cálculo, Engenharia, Lógica e Silício. Herói, você juntou os quatro moldes que os
+      Antigos deixaram cair do céu! Sem eles não existe AE2 — com eles, existe §etudo§r.
+
+      §cGuarde-as como relíquias.§r As prensas não se gastam no Inscritor, mas perder uma
+      significa voltar a caçar meteoritos.
+      §aDica de ouro:§r o Inscritor também §ecopia prensas§r — uma prensa + um bloco de ferro
+      geram uma cópia. Faça reservas!
+
+      Agora, ao Inscritor.
+    tasks:
+      - get: [appliedenergistics2:item.ItemMultiMaterial:13, appliedenergistics2:item.ItemMultiMaterial:14, appliedenergistics2:item.ItemMultiMaterial:15, appliedenergistics2:item.ItemMultiMaterial:19]
+    rewards:
+      - xp: 8
+      - kit: {name: "Kit do Caçador de Meteoritos", items: [minecraft:iron_block x4, ore:crystalCertusQuartz x16, appliedenergistics2:item.ItemMultiMaterial:7 x8, minecraft:diamond x2, minecraft:gold_ingot x8]}
+      - loot: raro
+
+  - id: sementes_cristal
+    title: "Sementes de Cristal"
+    type: normal
+    deps: [po_certus]
+    icon: appliedenergistics2:item.ItemCrystalSeed
+    desc: |
+      Areia + Pó de Quartzo Certus = §e2 Sementes de Quartzo Certus§r (com Pó de Fluix ou de
+      Quartzo do Nether, saem sementes de Fluix ou de Nether).
+
+      §eJogue as sementes na água§r e espere: elas crescem devagar até virar §eCristais
+      Puros§r. O tooltip mostra o progresso. Faça várias de uma vez!
+    tasks:
+      - get: appliedenergistics2:item.ItemCrystalSeed:* x4
+    rewards:
+      - xp: 2
+      - item: minecraft:sand x32
+
+  - id: cristal_puro
+    title: "Cristal Puro de Quartzo Certus"
+    type: main
+    deps: [sementes_cristal]
+    icon: appliedenergistics2:item.ItemMultiMaterial:10
+    desc: |
+      Paciência recompensada! As sementes que cresceram na água viram §eCristais Puros de
+      Quartzo Certus§r. Eles são o material do Circuito de Cálculo — e 8 deles fazem um bloco
+      de certus.
+
+      Junte §e4§r. Com o Acelerador de Crescimento, tudo isso fica muito mais rápido.
+    tasks:
+      - get: appliedenergistics2:item.ItemMultiMaterial:10 x4
+    rewards:
+      - xp: 4
+      - choice: [appliedenergistics2:item.ItemMultiMaterial:2 x16, minecraft:sand x32, minecraft:water_bucket x1]
+
+  - id: fluix_puro
+    title: "Cristal Fluix Puro"
+    type: normal
+    deps: [sementes_cristal, po_fluix]
+    icon: appliedenergistics2:item.ItemMultiMaterial:12
+    desc: |
+      Sementes de Fluix (areia + Pó de Fluix) crescem na água até virar §eCristais Fluix
+      Puros§r. O Controlador ME leva 4 deles! Junte §e4§r.
+    tasks:
+      - get: appliedenergistics2:item.ItemMultiMaterial:12 x4
+    rewards:
+      - xp: 3
+      - item: appliedenergistics2:item.ItemMultiMaterial:8 x4
+
+  - id: nether_puro
+    title: "Cristal Puro de Quartzo do Nether"
+    type: optional
+    deps: [sementes_cristal, po_nether]
+    icon: appliedenergistics2:item.ItemMultiMaterial:11
+    desc: |
+      A versão do Nether: §eCristal Puro de Quartzo do Nether§r, crescido de sementes na água.
+      Ele vale como quartzo do Nether nas receitas — quartzo renovável sem visitar o Nether!
+    tasks:
+      - get: appliedenergistics2:item.ItemMultiMaterial:11 x4
+    rewards:
+      - loot: comum
+
+  - id: fazenda_cristais
+    title: "Fazenda de Cristais"
+    type: normal
+    deps: [cristal_puro]
+    icon: appliedenergistics2:item.ItemMultiMaterial:10
+    desc: |
+      Um poço de água, um funil embaixo e um bom estoque de sementes: uma §efazenda de
+      cristais§r! Cristais Puros de Certus viram blocos (8 → 1) e depois 4 cristais comuns — ou
+      seja, a semente multiplica o seu quartzo. Junte §e16 Cristais Puros§r.
+    tasks:
+      - get: appliedenergistics2:item.ItemMultiMaterial:10 x16
+    rewards:
+      - xp: 2
+      - item: minecraft:sand x64
+
+  - id: acelerador_crescimento
+    title: "Acelerador de Crescimento de Cristais"
+    type: optional
+    deps: [cristal_puro, cabo_vidro, aceitador_energia]
+    icon: appliedenergistics2:tile.BlockQuartzGrowthAccelerator
+    desc: |
+      O §eAcelerador de Crescimento de Cristais§r (ferro, Vidro de Quartzo, Cabos de Vidro e um
+      Bloco de Fluix), energizado e encostado na água onde estão as sementes, acelera muito o
+      crescimento. Vários aceleradores em volta = cristais em minutos. Fazenda de quartzo
+      oficialmente aberta!
+    tasks:
+      - get: appliedenergistics2:tile.BlockQuartzGrowthAccelerator
+    rewards:
+      - loot: incomum
+
+  - id: po_fluix
+    title: "Pó de Fluix"
+    type: normal
+    deps: [fluix, rebolo]
+    icon: appliedenergistics2:item.ItemMultiMaterial:8
+    desc: |
+      Moa Cristais de Fluix e ganhe §ePó de Fluix§r: sementes de fluix, Células de Energia,
+      Núcleos de Formação e Aniquilação, Condensador de Matéria... Junte §e8§r.
+    tasks:
+      - get: appliedenergistics2:item.ItemMultiMaterial:8 x8
+    rewards:
+      - xp: 2
+      - item: minecraft:redstone x16
+
+  - id: perola_fluix
+    title: "Pérola de Fluix"
+    type: normal
+    deps: [po_fluix]
+    icon: appliedenergistics2:item.ItemMultiMaterial:9
+    desc: |
+      Uma pérola do Fim envolvida por Pó e Cristais de Fluix = §ePérola de Fluix§r. Ela é o
+      coração do Receptor Sem Fio, da Câmara de Ligação Quântica e dos Componentes Espaciais.
+    tasks:
+      - get: appliedenergistics2:item.ItemMultiMaterial:9 x2
+    rewards:
+      - xp: 2
+      - item: minecraft:ender_pearl x2
+
+  - id: bloco_fluix
+    title: "Bloco de Fluix"
+    type: optional
+    deps: [fluix]
+    icon: appliedenergistics2:tile.BlockFluix
+    desc: |
+      4 Cristais de Fluix = 1 Bloco de Fluix (e volta). Roxo, brilhante, digno de uma sala de
+      controle. Também vai no Acelerador de Crescimento.
+    tasks:
+      - get: appliedenergistics2:tile.BlockFluix
+    rewards:
+      - loot: comum
+
+  # ======================================================================
+  # FASE 1 — INSCRITOR E PROCESSADORES
+  # ======================================================================
+  - id: inscritor
+    title: "Inscritor"
+    type: main
+    deps: [fluix, quatro_prensas]
+    icon: appliedenergistics2:tile.BlockInscriber
+    desc: |
+      A impressora dos Antigos! O §eInscritor§r (5 ferros, um Cristal de Fluix e 2 pistões
+      grudentos) usa as prensas para gravar circuitos.
+
+      Ele precisa de §eenergia§r (RF/EU direto ou pela rede ME). Coloque a prensa no slot de
+      cima (ou de baixo), o material no meio e espere. Uma prensa no slot não é gasta.
+      §aDica:§r tenha um Inscritor para cada prensa — trocar prensa toda hora cansa!
+    tasks:
+      - get: appliedenergistics2:tile.BlockInscriber
+    rewards:
+      - xp: 5
+      - choice: [minecraft:sticky_piston x2, minecraft:iron_ingot x16, appliedenergistics2:item.ItemMultiMaterial:7 x4]
+
+  - id: inscritor_info
+    title: "Como o Inscritor Pensa"
+    type: info
+    deps: [inscritor]
+    icon: appliedenergistics2:item.ItemMultiMaterial:20
+    desc: |
+      Os processadores saem em duas etapas:
+
+      §e1. Circuitos impressos§r (prensa + material):
+      §e• Cálculo:§r prensa de cálculo + Cristal Puro de Certus.
+      §e• Engenharia:§r prensa de engenharia + diamante.
+      §e• Lógico:§r prensa lógica + lingote de ouro.
+      §e• Silício Impresso:§r prensa de silício + Silício.
+
+      §e2. Processador§r: circuito impresso no slot de cima, Silício Impresso no de baixo e
+      §eredstone§r no meio.
+
+      §aCópia de prensa:§r prensa + bloco de ferro no Inscritor = outra prensa igual. Tudo isso
+      aparece no NEI (aba "Inscritor").
+    tasks:
+      - check
+    rewards:
+      - xp: 1
+
+  - id: silicio
+    title: "Silício"
+    type: normal
+    deps: [inscritor]
+    icon: EnderIO:itemMaterial
+    desc: |
+      Neste pack o AE2 não tem silício próprio: a Prensa de Silício aceita o §eSilício do
+      EnderIO ou do Galacticraft§r (qualquer "itemSilicon"). Uma forma fácil é triturar
+      §eareia§r: o Moinho SAG do EnderIO e o Triturador do Mekanism fazem isso. Junte §e8§r.
+    tasks:
+      - get: ore:itemSilicon x8
+    rewards:
+      - xp: 2
+      - item: minecraft:sand x32
+
+  - id: circuito_calculo
+    title: "Circuito Impresso de Cálculo"
+    type: normal
+    deps: [inscritor_info, cristal_puro]
+    icon: appliedenergistics2:item.ItemMultiMaterial:16
+    desc: |
+      Prensa de Cálculo + Cristal Puro de Quartzo Certus = §eCircuito Impresso de Cálculo§r.
+      Faça §e4§r para começar.
+    tasks:
+      - get: appliedenergistics2:item.ItemMultiMaterial:16 x4
+    rewards:
+      - xp: 2
+      - item: appliedenergistics2:item.ItemMultiMaterial:10 x2
+
+  - id: circuito_engenharia
+    title: "Circuito Impresso de Engenharia"
+    type: normal
+    deps: [inscritor_info]
+    icon: appliedenergistics2:item.ItemMultiMaterial:17
+    desc: |
+      Prensa de Engenharia + diamante (o diamante industrial do IC2 também serve) =
+      §eCircuito Impresso de Engenharia§r. É o mais caro dos três: comece uma reserva de
+      diamantes.
+    tasks:
+      - get: appliedenergistics2:item.ItemMultiMaterial:17 x4
+    rewards:
+      - xp: 3
+      - item: minecraft:diamond
+
+  - id: circuito_logico
+    title: "Circuito Impresso Lógico"
+    type: normal
+    deps: [inscritor_info]
+    icon: appliedenergistics2:item.ItemMultiMaterial:18
+    desc: |
+      Prensa Lógica + lingote de ouro = §eCircuito Impresso Lógico§r. Você vai precisar de
+      MUITOS — cada componente de armazenamento leva um processador lógico.
+    tasks:
+      - get: appliedenergistics2:item.ItemMultiMaterial:18 x4
+    rewards:
+      - xp: 2
+      - item: minecraft:gold_ingot x4
+
+  - id: silicio_impresso
+    title: "Silício Impresso"
+    type: normal
+    deps: [inscritor_info, silicio]
+    icon: appliedenergistics2:item.ItemMultiMaterial:20
+    desc: |
+      Prensa de Silício + Silício = §eSilício Impresso§r. Ele vai no slot de baixo de todo
+      processador. Faça §e8§r.
+    tasks:
+      - get: appliedenergistics2:item.ItemMultiMaterial:20 x8
+    rewards:
+      - xp: 2
+      - item: ore:itemSilicon x4
+
+  - id: processador_logico
+    title: "Processador Lógico"
+    type: main
+    deps: [circuito_logico, silicio_impresso]
+    icon: appliedenergistics2:item.ItemMultiMaterial:22
+    desc: |
+      Circuito Lógico (em cima) + redstone (no meio) + Silício Impresso (embaixo) =
+      §eProcessador Lógico§r. Ele aparece em componentes de armazenamento, Núcleos de Formação
+      e Aniquilação e no Terminal ME. Faça §e4§r.
+    tasks:
+      - get: appliedenergistics2:item.ItemMultiMaterial:22 x4
+    rewards:
+      - xp: 5
+      - choice: [minecraft:gold_ingot x8, minecraft:redstone x32, ore:itemSilicon x4]
+
+  - id: processador_calculo
+    title: "Processador de Cálculo"
+    type: main
+    deps: [circuito_calculo, silicio_impresso]
+    icon: appliedenergistics2:item.ItemMultiMaterial:23
+    desc: |
+      Circuito de Cálculo + redstone + Silício Impresso = §eProcessador de Cálculo§r: cartões,
+      Célula Densa de Energia, Emissor de Nível, Terminal de Fabricação, Componente 4k...
+      Faça §e4§r.
+    tasks:
+      - get: appliedenergistics2:item.ItemMultiMaterial:23 x4
+    rewards:
+      - xp: 5
+      - choice: [appliedenergistics2:item.ItemMultiMaterial:10 x4, minecraft:redstone x32, ore:itemSilicon x4]
+
+  - id: processador_engenharia
+    title: "Processador de Engenharia"
+    type: main
+    deps: [circuito_engenharia, silicio_impresso]
+    icon: appliedenergistics2:item.ItemMultiMaterial:24
+    desc: |
+      Circuito de Engenharia + redstone + Silício Impresso = §eProcessador de Engenharia§r. O
+      Controlador ME leva 1, o Acionador ME leva 2, e ele aparece em quase todo bloco avançado.
+      Faça §e4§r.
+    tasks:
+      - get: appliedenergistics2:item.ItemMultiMaterial:24 x4
+    rewards:
+      - xp: 5
+      - choice: [minecraft:diamond x2, minecraft:redstone x32, ore:itemSilicon x4]
+
+  - id: copia_prensa
+    title: "Prensas de Reserva"
+    type: optional
+    deps: [inscritor_info]
+    icon: minecraft:iron_block
+    desc: |
+      Coloque uma prensa e um §ebloco de ferro§r no Inscritor: sai uma cópia da prensa. Faça
+      uma reserva de qualquer prensa (tenha duas iguais) — e durma tranquilo.
+    tasks:
+      - one_of: [appliedenergistics2:item.ItemMultiMaterial:13 x2, appliedenergistics2:item.ItemMultiMaterial:14 x2, appliedenergistics2:item.ItemMultiMaterial:15 x2, appliedenergistics2:item.ItemMultiMaterial:19 x2]
+    rewards:
+      - loot: incomum
+
+  - id: tres_processadores
+    title: "Os Três Processadores"
+    type: milestone
+    deps: [processador_logico, processador_calculo, processador_engenharia]
+    icon: appliedenergistics2:item.ItemMultiMaterial:24
+    banner: "Os Três Processadores"
+    subtitle: "Lógica, Cálculo e Engenharia"
+    desc: |
+      Lógico, de Cálculo e de Engenharia. Herói, você tem os três "cérebros" do AE2! Os
+      Antigos chamavam isso de "a trindade digital" (tá, fui eu que inventei agora, mas
+      combina, não combina?).
+
+      §aRecomendação séria:§r automatize. Três Inscritores (um por circuito) + um quarto para o
+      silício + um quinto para montar os processadores. Daqui a pouco você vai usar a própria
+      rede ME para alimentá-los sozinha.
+
+      Próximo passo: energia, cabos e o Controlador ME. A primeira rede está a poucos passos!
+    tasks:
+      - get: [appliedenergistics2:item.ItemMultiMaterial:22 x2, appliedenergistics2:item.ItemMultiMaterial:23 x2, appliedenergistics2:item.ItemMultiMaterial:24 x2]
+    rewards:
+      - xp: 8
+      - kit: {name: "Kit do Gravador de Circuitos", items: [appliedenergistics2:item.ItemMultiMaterial:20 x8, minecraft:diamond x4, minecraft:gold_ingot x8, appliedenergistics2:item.ItemMultiMaterial:10 x8, minecraft:redstone x32]}
+      - loot: raro
+
+  # ======================================================================
+  # FASE 2 — ENERGIA, CABOS E A PRIMEIRA REDE
+  # ======================================================================
+  - id: aceitador_energia
+    title: "Aceitador de Energia"
+    type: main
+    deps: [vidro_quartzo, fluix]
+    icon: appliedenergistics2:tile.BlockEnergyAcceptor
+    desc: |
+      A rede ME funciona com §eAE§r, a energia própria do mod. O §eAceitador de Energia§r (ferro,
+      4 Vidros de Quartzo e um Cristal de Fluix) converte §eRF e EU§r de outros mods em AE.
+
+      Coloque-o na rede e ligue um cabo de energia nele. Uma rede pequena gasta pouco, mas cada
+      dispositivo soma um tanto por tick — o Terminal mostra o consumo total.
+    tasks:
+      - get: appliedenergistics2:tile.BlockEnergyAcceptor
+    rewards:
+      - xp: 4
+      - choice: [appliedenergistics2:tile.BlockQuartzGlass x4, minecraft:iron_ingot x8, minecraft:redstone x16]
+
+  - id: energia_ae
+    title: "Energia AE"
+    type: info
+    deps: [aceitador_energia]
+    icon: appliedenergistics2:tile.BlockEnergyAcceptor
+    desc: |
+      Um resumo da economia de energia do AE2:
+
+      §e• Consumo passivo:§r todo dispositivo da rede gasta um pouquinho de AE por tick, mesmo
+      parado (cabos quase nada; Acionadores, Interfaces e Pontos de Acesso mais).
+      §e• Consumo ativo:§r mover itens, fabricar, recortar espaço e usar ferramentas sem fio
+      gastam energia extra.
+      §e• Entrada:§r Aceitador de Energia (RF/EU), Câmara de Vibração (combustível) ou
+      Túneis P2P de energia.
+      §e• Reserva:§r Células de Energia seguram os picos.
+
+      Clique com a Ferramenta de Rede em qualquer cabo para ver a energia armazenada e o
+      consumo médio.
+    tasks:
+      - check
+    rewards:
+      - xp: 1
+
+  - id: camara_vibracao
+    title: "Câmara de Vibração"
+    type: optional
+    deps: [aceitador_energia]
+    icon: appliedenergistics2:tile.BlockVibrationChamber
+    desc: |
+      Sem gerador de outro mod? A §eCâmara de Vibração§r (ferro, fornalha e um Aceitador de
+      Energia) queima combustível de fornalha e gera AE direto na rede. Não é eficiente, mas
+      salva o começo.
+    tasks:
+      - get: appliedenergistics2:tile.BlockVibrationChamber
+    rewards:
+      - loot: comum
+
+  - id: celula_energia
+    title: "Célula de Energia"
+    type: normal
+    deps: [aceitador_energia, po_fluix]
+    icon: appliedenergistics2:tile.BlockEnergyCell
+    desc: |
+      A bateria da rede: §eCélula de Energia§r (cristais de certus, Pó de Fluix e Vidro de
+      Quartzo). Ela segura picos de consumo — e, se a energia externa cair por um instante, a
+      rede continua de pé. Pelo NBT do registro, ela guarda 200 000 AE.
+    tasks:
+      - get: appliedenergistics2:tile.BlockEnergyCell
+    rewards:
+      - xp: 3
+      - item: appliedenergistics2:item.ItemMultiMaterial:8 x4
+
+  - id: celula_densa
+    title: "Célula Densa de Energia"
+    type: optional
+    deps: [celula_energia, processador_calculo]
+    icon: appliedenergistics2:tile.BlockDenseEnergyCell
+    desc: |
+      8 Células de Energia + 1 Processador de Cálculo = §eCélula Densa de Energia§r (1 600 000
+      AE). Ela é ingrediente do Terminal Sem Fio e das células quânticas lá no fim.
+    tasks:
+      - get: appliedenergistics2:tile.BlockDenseEnergyCell
+    rewards:
+      - loot: incomum
+
+  - id: fibra_quartzo
+    title: "Fibra de Quartzo"
+    type: normal
+    deps: [po_certus]
+    icon: appliedenergistics2:item.ItemMultiPart:140
+    desc: |
+      6 vidros + 3 Pós de Quartzo = §e3 Fibras de Quartzo§r. Elas conduzem §esó energia§r (sem
+      canais) entre partes da rede — e são o miolo do Cabo de Vidro.
+    tasks:
+      - get: appliedenergistics2:item.ItemMultiPart:140 x3
+    rewards:
+      - xp: 2
+      - item: minecraft:glass x16
+
+  - id: cabo_vidro
+    title: "Cabo de Vidro ME"
+    type: main
+    deps: [fibra_quartzo, fluix]
+    icon: appliedenergistics2:item.ItemMultiPart:16
+    desc: |
+      Fibra de Quartzo + 2 Cristais de Fluix = §e4 Cabos de Vidro ME - Fluix§r. É o cabo mais
+      básico: leva energia e até §e8 canais§r.
+
+      Pinte com corante na bancada (8 cabos + 1 corante) para separar linhas: cabos de cores
+      diferentes não se conectam entre si (o Fluix se liga a todos). Faça §e16§r.
+    tasks:
+      - get: appliedenergistics2:item.ItemMultiPart:16 x16
+    rewards:
+      - xp: 4
+      - choice: [appliedenergistics2:item.ItemMultiMaterial:7 x8, appliedenergistics2:item.ItemMultiPart:140 x6, minecraft:glass x16]
+
+  - id: cabo_coberto
+    title: "Cabo Coberto ME"
+    type: optional
+    deps: [cabo_vidro]
+    icon: appliedenergistics2:item.ItemMultiPart:36
+    desc: |
+      Cabo de Vidro + lã = §eCabo Coberto§r. Mesma capacidade (8 canais), só que com acabamento
+      de tecido. Quatro Cabos Cobertos sem mais nada viram um §eCabo Coberto Denso§r. Decoração
+      de cabos é coisa séria numa sala de servidores bonita!
+    tasks:
+      - get: appliedenergistics2:item.ItemMultiPart:36 x8
+    rewards:
+      - loot: comum
+
+  - id: cabos_coloridos
+    title: "Cabos Coloridos"
+    type: optional
+    deps: [cabo_vidro]
+    icon: appliedenergistics2:item.ItemMultiPart:14
+    desc: |
+      8 cabos (de qualquer tipo) + 1 corante = 8 cabos coloridos. Cabos de cores diferentes
+      §enão se conectam§r — o Fluix (sem cor) se liga a todos. Assim você passa duas redes lado
+      a lado sem que se misturem. Faça cabos de qualquer cor.
+    tasks:
+      - one_of: [appliedenergistics2:item.ItemMultiPart, appliedenergistics2:item.ItemMultiPart:4, appliedenergistics2:item.ItemMultiPart:11, appliedenergistics2:item.ItemMultiPart:14, appliedenergistics2:item.ItemMultiPart:15, appliedenergistics2:item.ItemMultiPart:34, appliedenergistics2:item.ItemMultiPart:51, appliedenergistics2:item.ItemMultiPart:54, appliedenergistics2:item.ItemMultiPart:74, appliedenergistics2:item.ItemMultiPart:71]
+    rewards:
+      - loot: comum
+
+  - id: cabo_coberto_denso
+    title: "Cabo Coberto Denso"
+    type: optional
+    deps: [cabo_coberto]
+    icon: appliedenergistics2:item.ItemMultiPart:536
+    desc: |
+      4 Cabos Cobertos, sem mais nada, viram um §eME Dense Covered Cable§r: a versão densa
+      (32 canais) sem as luzinhas do inteligente. Mais barato que o Cabo Denso comum.
+    tasks:
+      - get: appliedenergistics2:item.ItemMultiPart:536
+    rewards:
+      - loot: comum
+
+  - id: cabo_inteligente
+    title: "Cabo Inteligente ME"
+    type: normal
+    deps: [cabo_vidro]
+    icon: appliedenergistics2:item.ItemMultiPart:56
+    desc: |
+      Cabo Coberto + redstone + glowstone = §eCabo Inteligente§r. Ele também leva 8 canais, mas
+      §emostra os canais em uso§r com luzinhas coloridas. Indispensável para entender onde a
+      rede está apertada.
+    tasks:
+      - get: appliedenergistics2:item.ItemMultiPart:56 x8
+    rewards:
+      - xp: 2
+      - item: minecraft:glowstone_dust x8
+
+  - id: cabo_denso
+    title: "Cabo Denso ME"
+    type: main
+    deps: [cabo_inteligente]
+    icon: appliedenergistics2:item.ItemMultiPart:76
+    desc: |
+      4 Cabos Cobertos + redstone + glowstone = §eCabo Denso ME§r: §e32 canais§r num só cabo!
+
+      Use cabos densos como "espinha dorsal" saindo do Controlador e ramifique em cabos
+      comuns perto dos dispositivos. Repare: o cabo denso é grosso e não aceita peças
+      (barramentos, terminais) encostadas diretamente nele.
+    tasks:
+      - get: appliedenergistics2:item.ItemMultiPart:76 x4
+    rewards:
+      - xp: 4
+      - choice: [appliedenergistics2:item.ItemMultiPart:36 x8, minecraft:glowstone_dust x16, minecraft:redstone x16]
+
+  - id: controlador
+    title: "Controlador ME"
+    type: main
+    deps: [bloco_pedra_ceu, fluix_puro, processador_engenharia, aceitador_energia]
+    icon: appliedenergistics2:tile.BlockController
+    desc: |
+      O coração da rede: o §eControlador ME§r (4 Blocos de Pedra do Céu, 4 Cristais Fluix
+      Puros e um Processador de Engenharia).
+
+      Sem controlador, uma rede "improvisada" aguenta só 8 dispositivos. Com ele, §ecada face
+      do Controlador fornece 32 canais§r. Controladores encostados formam um bloco maior (até
+      certo tamanho) — mas §cnunca ligue duas estruturas de controlador separadas na mesma
+      rede§r: ela entra em conflito e para.
+    tasks:
+      - get: appliedenergistics2:tile.BlockController
+    rewards:
+      - xp: 5
+      - choice: [appliedenergistics2:tile.BlockSkyStone:1 x4, appliedenergistics2:item.ItemMultiMaterial:12 x4, appliedenergistics2:item.ItemMultiMaterial:24 x1]
+
+  - id: canais_info
+    title: "Canais: a Regra de Ouro"
+    type: info
+    deps: [controlador, cabo_denso]
+    icon: appliedenergistics2:item.ItemMultiPart:56
+    desc: |
+      Esta é a aula mais importante do AE2 (puxa uma cadeira!):
+
+      §e• Dispositivos§r como Acionadores, Terminais, Interfaces, barramentos e planos usam
+      §e1 canal§r cada. Cabos, Fibras, Células de Energia e o próprio Controlador não usam.
+      §e• Cabos comuns§r (vidro, coberto, inteligente) levam §e8 canais§r.
+      §e• Cabos densos§r levam §e32 canais§r.
+      §e• Cada face do Controlador§r entrega até 32 canais.
+      §e• Sem Controlador§r, a rede inteira suporta só 8 dispositivos.
+
+      Se um dispositivo ficar sem canal, ele simplesmente desliga. Use Cabos Inteligentes para
+      ver as luzinhas e a Ferramenta de Rede para inspecionar.
+    tasks:
+      - check
+    rewards:
+      - xp: 1
+
+  - id: encaixe_armazenamento
+    title: "Encaixe de Armazenamento ME"
+    type: normal
+    deps: [vidro_quartzo]
+    icon: appliedenergistics2:item.ItemMultiMaterial:39
+    desc: |
+      A "carcaça" das células: §eEncaixe de Armazenamento ME§r (2 Vidros de Quartzo, 3 redstones
+      e 3 ferros). Encaixe + componente na bancada = célula. Esvaziou uma célula? Com Shift +
+      clique direito vazio no ar, ela se desmonta de volta em encaixe e componente!
+    tasks:
+      - get: appliedenergistics2:item.ItemMultiMaterial:39 x2
+    rewards:
+      - xp: 2
+      - item: minecraft:redstone x8
+
+  - id: componente_1k
+    title: "Componente de Armazenamento 1k"
+    type: main
+    deps: [processador_logico]
+    icon: appliedenergistics2:item.ItemMultiMaterial:35
+    desc: |
+      4 redstones + 4 cristais de certus em volta de um Processador Lógico = §eComponente de
+      Armazenamento ME de 1k§r. "1k" significa 1024 §ebytes§r — e o AE2 conta bytes, não pilhas!
+    tasks:
+      - get: appliedenergistics2:item.ItemMultiMaterial:35
+    rewards:
+      - xp: 4
+      - choice: [ore:crystalCertusQuartz x8, minecraft:redstone x16, appliedenergistics2:item.ItemMultiMaterial:22 x1]
+
+  - id: celula_1k
+    title: "Célula de Armazenamento 1k"
+    type: main
+    deps: [componente_1k, encaixe_armazenamento]
+    icon: appliedenergistics2:item.ItemBasicStorageCell.1k
+    desc: |
+      Encaixe + Componente 1k = §eCélula de Armazenamento ME de 1k§r.
+
+      Como contar: cada §etipo§r de item diferente ocupa uma parte dos bytes, e cada byte
+      guarda §e8 itens§r. Uma célula aceita até §e63 tipos§r. Ou seja: poucas variedades em
+      grande quantidade cabem muito melhor que muitas variedades soltas. Segure Shift no tooltip
+      para ver os bytes usados.
+    tasks:
+      - get: appliedenergistics2:item.ItemBasicStorageCell.1k
+    rewards:
+      - xp: 4
+      - choice: [appliedenergistics2:item.ItemMultiMaterial:39 x1, ore:crystalCertusQuartz x8, minecraft:redstone x16]
+
+  - id: acionador
+    title: "Acionador ME"
+    type: main
+    deps: [processador_engenharia, cabo_vidro]
+    icon: appliedenergistics2:tile.BlockDrive
+    desc: |
+      O §eAcionador ME§r (o "ME Drive"; ferro, 2 Cabos de Vidro e 2 Processadores de Engenharia)
+      guarda até §e10 células§r e as disponibiliza para a rede inteira. Ele usa 1 canal.
+
+      As luzinhas da frente mostram o estado de cada célula: verde (espaço livre), laranja
+      (tipos esgotados) e vermelho (cheia).
+    tasks:
+      - get: appliedenergistics2:tile.BlockDrive
+    rewards:
+      - xp: 4
+      - choice: [appliedenergistics2:item.ItemMultiMaterial:24 x1, appliedenergistics2:item.ItemMultiPart:16 x8, minecraft:iron_ingot x8]
+
+  - id: bau_me
+    title: "Baú ME"
+    type: optional
+    deps: [terminal, celula_1k]
+    icon: appliedenergistics2:tile.BlockChest
+    desc: |
+      O §eBaú ME§r é um Terminal + slot de uma célula num bloco só. Funciona até sozinho (com
+      energia), como um "baú de bytes", ou ligado à rede como mais um disco. Ótimo para a
+      primeira semana de AE2.
+    tasks:
+      - get: appliedenergistics2:tile.BlockChest
+    rewards:
+      - loot: comum
+
+  - id: painel_iluminado
+    title: "Painel Iluminado"
+    type: normal
+    deps: [vidro_quartzo]
+    icon: appliedenergistics2:item.ItemMultiPart:180
+    desc: |
+      Ferro, glowstone, redstone e Vidro de Quartzo = §e3 Painéis Iluminados§r. Eles são a
+      "tela" de todos os terminais e monitores (e uma luminária bonitinha). Existem variantes
+      clara e escura — é só trocar na bancada.
+    tasks:
+      - get: appliedenergistics2:item.ItemMultiPart:180 x3
+    rewards:
+      - xp: 2
+      - item: minecraft:glowstone_dust x8
+
+  - id: nucleos
+    title: "Núcleos de Formação e Aniquilação"
+    type: normal
+    deps: [processador_logico, po_fluix, quartzo_nether]
+    icon: appliedenergistics2:item.ItemMultiMaterial:43
+    desc: |
+      Dois opostos que andam juntos:
+      §e• Núcleo de Formação§r (certus + Pó de Fluix + Processador Lógico, rende 2) — "coloca"
+      coisas: exportação, planos de formação.
+      §e• Núcleo de Aniquilação§r (quartzo do Nether + Pó de Fluix + Processador Lógico, rende
+      2) — "tira" coisas: importação, planos de aniquilação.
+      O Terminal ME, a Interface e o Montador Molecular levam um de cada.
+    tasks:
+      - get: [appliedenergistics2:item.ItemMultiMaterial:43 x2, appliedenergistics2:item.ItemMultiMaterial:44 x2]
+    rewards:
+      - xp: 3
+      - item: appliedenergistics2:item.ItemMultiMaterial:8 x4
+
+  - id: terminal
+    title: "Terminal ME"
+    type: main
+    deps: [painel_iluminado, nucleos]
+    icon: appliedenergistics2:item.ItemMultiPart:380
+    desc: |
+      A janela para o mundo digital! O §eTerminal ME§r (Painel Iluminado, Processador Lógico e
+      os dois Núcleos) é colocado num cabo ou bloco da rede e mostra §etodos os itens
+      guardados§r. Pesquise, ordene, retire com um clique.
+
+      §aAtalhos:§r Shift + clique manda tudo para o inventário; a barra de pesquisa aceita
+      nome do mod com "@" (ex.: @minecraft).
+    tasks:
+      - get: appliedenergistics2:item.ItemMultiPart:380
+    rewards:
+      - xp: 4
+      - choice: [appliedenergistics2:item.ItemMultiPart:180 x3, appliedenergistics2:item.ItemMultiMaterial:22 x1, minecraft:glowstone_dust x16]
+
+  - id: primeira_rede
+    title: "A Primeira Rede ME"
+    type: milestone
+    deps: [controlador, acionador, celula_1k, terminal]
+    icon: appliedenergistics2:tile.BlockDrive
+    banner: "A Primeira Rede ME"
+    subtitle: "O mundo cabe num disco"
+    desc: |
+      Controlador zumbindo, Acionador com a primeira célula, energia entrando pelo Aceitador e um
+      Terminal mostrando cada pedrinha que você guardou. Herói... o seu inventário agora é
+      §edigital§r!
+
+      Uma montagem simples que funciona:
+      §e• Controlador ME§r com um Cabo Denso saindo de uma face.
+      §e• Aceitador de Energia§r encostado no controlador (ou na linha), recebendo RF/EU.
+      §e• Acionador ME§r e §eTerminal§r ligados por cabos comuns.
+
+      A partir daqui, cada célula maior multiplica o espaço. E logo, logo, a rede vai começar a
+      fabricar coisas sozinha. Eu estou literalmente saltitando de alegria!
+    tasks:
+      - get: [appliedenergistics2:tile.BlockController, appliedenergistics2:tile.BlockDrive, appliedenergistics2:item.ItemBasicStorageCell.1k, appliedenergistics2:item.ItemMultiPart:380]
+    rewards:
+      - xp: 8
+      - kit: {name: "Kit do Primeiro Servidor", items: [appliedenergistics2:item.ItemMultiPart:16 x32, appliedenergistics2:item.ItemMultiPart:76 x4, appliedenergistics2:item.ItemMultiMaterial:39 x4, appliedenergistics2:item.ItemMultiMaterial:22 x4, appliedenergistics2:tile.BlockEnergyCell x1]}
+      - loot: raro
+
+  - id: terminal_fabricacao
+    title: "Terminal de Fabricação ME"
+    type: main
+    deps: [primeira_rede, processador_calculo]
+    icon: appliedenergistics2:item.ItemMultiPart:360
+    desc: |
+      Terminal ME + bancada de trabalho + Processador de Cálculo = §eTerminal de Fabricação§r: um
+      terminal com grade 3×3 que puxa os ingredientes direto da rede. Com o NEI aberto, clique
+      no "?" ou "+" da receita para preencher a grade automaticamente.
+
+      Você nunca mais vai fabricar tochas "na mão".
+    tasks:
+      - get: appliedenergistics2:item.ItemMultiPart:360
+    rewards:
+      - xp: 4
+      - choice: [appliedenergistics2:item.ItemMultiMaterial:23 x2, minecraft:crafting_table x2, appliedenergistics2:item.ItemMultiPart:180 x3]
+
+  - id: componente_4k
+    title: "Célula de 4k"
+    type: normal
+    deps: [celula_1k, processador_calculo]
+    icon: appliedenergistics2:item.ItemBasicStorageCell.4k
+    desc: |
+      3 Componentes 1k + Processador de Cálculo + Vidro de Quartzo + redstone = §eComponente 4k§r.
+      Com um Encaixe, vira a §eCélula de 4k§r: quatro vezes mais bytes no mesmo slot.
+    tasks:
+      - get: appliedenergistics2:item.ItemBasicStorageCell.4k
+    rewards:
+      - xp: 3
+      - item: appliedenergistics2:item.ItemMultiMaterial:35 x1
+
+  - id: componente_16k
+    title: "Célula de 16k"
+    type: normal
+    deps: [componente_4k]
+    icon: appliedenergistics2:item.ItemBasicStorageCell.16k
+    desc: |
+      3 Componentes 4k + Processador de Engenharia + Vidro de Quartzo + glowstone = §eComponente
+      16k§r → §eCélula de 16k§r. Agora sim um "disco" decente para minérios e blocos.
+    tasks:
+      - get: appliedenergistics2:item.ItemBasicStorageCell.16k
+    rewards:
+      - xp: 3
+      - item: minecraft:glowstone_dust x16
+
+  - id: componente_64k
+    title: "Célula de 64k"
+    type: normal
+    deps: [componente_16k]
+    icon: appliedenergistics2:item.ItemBasicStorageCell.64k
+    desc: |
+      3 Componentes 16k + Processador de Engenharia + Vidro de Quartzo + glowstone =
+      §eComponente 64k§r → §eCélula de 64k§r: 65 536 bytes. É a maior das células "básicas".
+    tasks:
+      - get: appliedenergistics2:item.ItemBasicStorageCell.64k
+    rewards:
+      - xp: 4
+      - item: appliedenergistics2:item.ItemMultiMaterial:24 x2
+
+  - id: encaixe_avancado
+    title: "Encaixe de Armazenamento Avançado"
+    type: optional
+    deps: [componente_64k]
+    icon: appliedenergistics2:item.ItemMultiMaterial:61
+    desc: |
+      Para as células gigantes deste pack, um encaixe à altura: o §eME Advanced Storage
+      Housing§r (2 Vidros de Quartzo, 3 Pós de Fluix e 3 diamantes). É nele que entram os
+      componentes de 256k para cima.
+    tasks:
+      - get: appliedenergistics2:item.ItemMultiMaterial:61
+    rewards:
+      - loot: incomum
+
+  - id: celula_256k
+    title: "Célula de 256k"
+    type: normal
+    deps: [encaixe_avancado]
+    icon: appliedenergistics2:item.ItemAdvancedStorageCell.256k
+    desc: |
+      O AE2 desta versão (GTNH) vai além do 64k! 3 Componentes 64k + Processador de Engenharia +
+      Processador Lógico + glowstone = §eComponente 256k§r. Com o Encaixe Avançado, vira a
+      §eCélula de 256k§r.
+    tasks:
+      - get: appliedenergistics2:item.ItemAdvancedStorageCell.256k
+    rewards:
+      - xp: 4
+      - item: minecraft:diamond x3
+
+  - id: celula_1024k
+    title: "Célula de 1024k"
+    type: optional
+    deps: [celula_256k]
+    icon: appliedenergistics2:item.ItemAdvancedStorageCell.1024k
+    desc: |
+      3 Componentes 256k + Processador de Engenharia + Processador Lógico + glowstone =
+      §eComponente 1024k§r. Com o Encaixe Avançado, a §eCélula de 1024k§r guarda mais de um
+      milhão de bytes.
+    tasks:
+      - get: appliedenergistics2:item.ItemAdvancedStorageCell.1024k
+    rewards:
+      - loot: incomum
+
+  - id: celulas_gigantes
+    title: "Células Gigantes"
+    type: optional
+    deps: [celula_1024k]
+    icon: appliedenergistics2:item.ItemAdvancedStorageCell.16384k
+    desc: |
+      A escada continua: §e4096k → 16384k§r, cada componente feito de 3 do anterior com
+      processadores e glowstone. Faça qualquer uma delas. Seu armazém agora tem o tamanho de um
+      continente.
+    tasks:
+      - one_of: [appliedenergistics2:item.ItemAdvancedStorageCell.4096k, appliedenergistics2:item.ItemAdvancedStorageCell.16384k]
+    rewards:
+      - loot: raro
+
+  - id: bancada_celulas
+    title: "Bancada de Células"
+    type: normal
+    deps: [celula_1k, processador_calculo]
+    icon: appliedenergistics2:tile.BlockCellWorkbench
+    desc: |
+      A §eBancada de Células§r (lã, ferro, Processador de Cálculo e baú) "particiona" uma
+      célula: você define quais itens ela aceita. Ótimo para criar discos dedicados (só
+      minérios, só pedregulho...) e evitar que a célula encha de tralha. Também é onde se
+      instalam cartões em células.
+    tasks:
+      - get: appliedenergistics2:tile.BlockCellWorkbench
+    rewards:
+      - xp: 3
+      - item: minecraft:wool x4
+
+  - id: ver_celula
+    title: "Ver Célula"
+    type: optional
+    deps: [encaixe_armazenamento]
+    icon: appliedenergistics2:item.ItemViewCell
+    desc: |
+      A §eVer Célula§r ("View Cell") não guarda nada: ela filtra o que aparece no Terminal.
+      Particione-a na Bancada com, por exemplo, só minérios, e coloque-a no slot lateral do
+      terminal. Organização visual!
+    tasks:
+      - get: appliedenergistics2:item.ItemViewCell
+    rewards:
+      - loot: comum
+
+  - id: celula_portatil
+    title: "Célula Portátil"
+    type: optional
+    deps: [bau_me, celula_energia]
+    icon: appliedenergistics2:item.ToolPortableCell
+    desc: |
+      Baú ME + Componente 1k + Célula de Energia = §eCélula Portátil§r: uma mochila digital de
+      1k que você abre na mão. Carregue-a no Carregador antes de sair para minerar.
+    tasks:
+      - get: appliedenergistics2:item.ToolPortableCell
+    rewards:
+      - loot: comum
+
+  - id: celula_vazio
+    title: "Célula do Vazio"
+    type: optional
+    deps: [encaixe_armazenamento]
+    icon: appliedenergistics2:item.ItemVoidStorageCell
+    desc: |
+      A §eVoid ME Storage Cell§r (encaixe com pérola do Fim) §edestrói§r tudo que entra nela.
+      Particione-a com pedregulho e terra, dê prioridade baixa, e o excesso some do sistema.
+      §cCuidado:§r particione sempre — senão ela engole tudo!
+    tasks:
+      - get: appliedenergistics2:item.ItemVoidStorageCell
+    rewards:
+      - loot: comum
+
+  - id: armazem_digital
+    title: "O Armazém Digital"
+    type: milestone
+    deps: [componente_64k, bancada_celulas, terminal_fabricacao]
+    icon: appliedenergistics2:item.ItemBasicStorageCell.64k
+    banner: "O Armazém Digital"
+    subtitle: "Bytes no lugar de baús"
+    desc: |
+      Células de 1k a 64k, discos particionados, um Terminal de Fabricação que puxa tudo da
+      rede. Herói, você aposentou os baús!
+
+      Lembretes de quem já sofreu com redes lotadas:
+      §e• Tipos custam bytes:§r guarde muita variedade em células pequenas e grande volume em
+      células grandes e particionadas.
+      §e• Prioridade:§r Acionadores e Barramentos de Armazenamento têm prioridade
+      configurável — o item vai primeiro para quem tem prioridade maior.
+      §e• Canais:§r 1 Acionador = 1 canal para até 10 células. Barato!
+
+      Agora a rede vai aprender a §emover§r coisas sozinha.
+    tasks:
+      - get: [appliedenergistics2:item.ItemBasicStorageCell.64k, appliedenergistics2:tile.BlockCellWorkbench, appliedenergistics2:item.ItemMultiPart:360]
+    rewards:
+      - xp: 8
+      - kit: {name: "Kit do Arquivista Digital", items: [appliedenergistics2:item.ItemMultiMaterial:39 x4, appliedenergistics2:item.ItemMultiMaterial:35 x3, appliedenergistics2:item.ItemMultiMaterial:23 x2, appliedenergistics2:item.ItemMultiMaterial:24 x2, appliedenergistics2:tile.BlockQuartzGlass x8]}
+      - loot: raro
+
+  - id: ferramenta_rede
+    title: "Ferramenta de Rede"
+    type: normal
+    deps: [chave_quartzo, painel_iluminado, processador_calculo]
+    icon: appliedenergistics2:item.ToolNetworkTool
+    desc: |
+      Chave de Quartzo + baú + Painel Iluminado + Processador de Cálculo = §eFerramenta de
+      Rede§r. Clique num bloco da rede para ver a energia, os canais e os dispositivos. Ela
+      também tem um inventário para guardar cartões de melhoria.
+    tasks:
+      - get: appliedenergistics2:item.ToolNetworkTool
+    rewards:
+      - xp: 3
+      - item: appliedenergistics2:item.ItemMultiMaterial:23
+
+  - id: cartao_memoria
+    title: "Cartão de Memória"
+    type: normal
+    deps: [processador_calculo]
+    icon: appliedenergistics2:item.ToolMemoryCard
+    desc: |
+      O §eCartão de Memória§r copia configurações: com Shift + clique num barramento, ele grava
+      os filtros; clique em outro igual e cole. É também ele que §eliga túneis P2P§r — grave a
+      entrada, aplique nas saídas.
+    tasks:
+      - get: appliedenergistics2:item.ToolMemoryCard
+    rewards:
+      - xp: 3
+      - item: minecraft:gold_ingot x4
+
+  - id: ferramenta_rede_avancada
+    title: "Ferramenta de Rede Avançada"
+    type: optional
+    deps: [ferramenta_rede, monitores, componente_64k]
+    icon: appliedenergistics2:item.ToolAdvancedNetworkTool
+    desc: |
+      Ferramenta de Rede + Cartão de Capacidade + Monitor de Conversão + Componente 64k =
+      §eAdvanced Network Tool§r, uma versão turbinada desta versão do AE2. Leia o tooltip para
+      as funções extras.
+    tasks:
+      - get: appliedenergistics2:item.ToolAdvancedNetworkTool
+    rewards:
+      - loot: incomum
+
+  - id: cartao_prioridade
+    title: "Priority Card"
+    type: optional
+    deps: [processador_engenharia, armazem_digital]
+    icon: appliedenergistics2:item.ToolPriorityCard
+    desc: |
+      Processador de Engenharia, diamantes, ferro e redstone = §ePriority Card§r: uma ferramenta
+      para ajustar a prioridade de dispositivos sem abrir um por um. Ótima quando há dezenas de
+      Acionadores e Barramentos de Armazenamento.
+    tasks:
+      - get: appliedenergistics2:item.ToolPriorityCard
+    rewards:
+      - loot: comum
+
+  - id: fachadas
+    title: "Cabos Âncora e Fachadas"
+    type: optional
+    deps: [faca_corte, cabo_vidro]
+    icon: appliedenergistics2:item.ItemMultiPart:120
+    desc: |
+      Ferro + Faca de Corte = 3 §eCabos Âncora§r. Âncoras + um bloco na bancada viram
+      §eFachadas§r: "capas" que escondem os cabos com a textura do bloco escolhido. Sala de
+      servidores com paredes de madeira? Com fachadas, pode!
+    tasks:
+      - one_of: [appliedenergistics2:item.ItemMultiPart:120, appliedenergistics2:item.ItemFacade]
+    rewards:
+      - loot: comum
+
+  # ======================================================================
+  # FASE 3 — AUTOMAÇÃO DE ITENS
+  # ======================================================================
+  - id: barramento_importacao
+    title: "Barramento de Importação ME"
+    type: main
+    deps: [nucleos, primeira_rede]
+    icon: appliedenergistics2:item.ItemMultiPart:240
+    desc: |
+      Ferro + Núcleo de Aniquilação + pistão grudento = §eBarramento de Importação§r. Encoste-o
+      numa máquina ou baú: ele §epuxa§r os itens para a rede (pode filtrar). Saída da fornalha,
+      do triturador, do Colhedor do MFR... tudo direto para os discos!
+    tasks:
+      - get: appliedenergistics2:item.ItemMultiPart:240
+    rewards:
+      - xp: 4
+      - choice: [minecraft:sticky_piston x2, appliedenergistics2:item.ItemMultiMaterial:44 x2, minecraft:iron_ingot x8]
+
+  - id: barramento_exportacao
+    title: "Barramento de Exportação ME"
+    type: main
+    deps: [nucleos, primeira_rede]
+    icon: appliedenergistics2:item.ItemMultiPart:260
+    desc: |
+      O contrário: ferro + Núcleo de Formação + pistão = §eBarramento de Exportação§r. Ele
+      §eempurra§r para fora os itens que você configurar no filtro. Carvão para as fornalhas,
+      minério para o processamento — sem esvaziar a rede inteira.
+    tasks:
+      - get: appliedenergistics2:item.ItemMultiPart:260
+    rewards:
+      - xp: 4
+      - choice: [minecraft:piston x2, appliedenergistics2:item.ItemMultiMaterial:43 x2, minecraft:iron_ingot x8]
+
+  - id: cartao_basico
+    title: "Cartões Básico e Avançado"
+    type: normal
+    deps: [processador_calculo]
+    icon: appliedenergistics2:item.ItemMultiMaterial:25
+    desc: |
+      As melhorias do AE2 são cartões. Eles partem de duas bases (Processador de Cálculo,
+      ferro e redstone; rendem 2):
+      §e• Cartão Básico§r — com ouro.
+      §e• Cartão Avançado§r — com diamante.
+      Faça um de cada: deles saem os cartões de capacidade, redstone, fabricação, aceleração...
+    tasks:
+      - get: [appliedenergistics2:item.ItemMultiMaterial:25, appliedenergistics2:item.ItemMultiMaterial:28]
+    rewards:
+      - xp: 3
+      - item: minecraft:gold_ingot x4
+
+  - id: cartao_capacidade
+    title: "Cartão de Capacidade"
+    type: normal
+    deps: [cartao_basico]
+    icon: appliedenergistics2:item.ItemMultiMaterial:27
+    desc: |
+      Cartão Básico + cristal de certus = §eCartão de Capacidade§r. Num barramento, ele abre
+      mais slots de filtro; em barramentos de armazenamento e células, mais espaço de
+      configuração. O cartão mais usado do mod!
+    tasks:
+      - get: appliedenergistics2:item.ItemMultiMaterial:27
+    rewards:
+      - xp: 2
+      - item: ore:crystalCertusQuartz x4
+
+  - id: cartao_redstone
+    title: "Cartão de Redstone"
+    type: optional
+    deps: [cartao_basico]
+    icon: appliedenergistics2:item.ItemMultiMaterial:26
+    desc: |
+      Cartão Básico + tocha de redstone = §eCartão de Redstone§r. O barramento passa a obedecer
+      a um sinal de redstone (ligado com sinal, sem sinal, ou num pulso).
+    tasks:
+      - get: appliedenergistics2:item.ItemMultiMaterial:26
+    rewards:
+      - loot: comum
+
+  - id: cartao_impreciso
+    title: "Cartão Impreciso"
+    type: optional
+    deps: [cartao_basico]
+    icon: appliedenergistics2:item.ItemMultiMaterial:29
+    desc: |
+      Cartão Avançado + lã = §eCartão Impreciso§r ("Fuzzy"). O filtro passa a ignorar dano/
+      durabilidade (e pode agrupar por faixas). Útil para ferramentas e armaduras usadas.
+    tasks:
+      - get: appliedenergistics2:item.ItemMultiMaterial:29
+    rewards:
+      - loot: comum
+
+  - id: cartao_inversor
+    title: "Cartão Inversor"
+    type: optional
+    deps: [cartao_basico]
+    icon: appliedenergistics2:item.ItemMultiMaterial:31
+    desc: |
+      Cartão Avançado + tocha de redstone = §eCartão Inversor§r. O filtro vira uma "lista
+      negra": passa tudo, menos o que estiver configurado.
+    tasks:
+      - get: appliedenergistics2:item.ItemMultiMaterial:31
+    rewards:
+      - loot: comum
+
+  - id: cartao_aceleracao
+    title: "Cartão de Aceleração"
+    type: normal
+    deps: [cartao_basico]
+    icon: appliedenergistics2:item.ItemMultiMaterial:30
+    desc: |
+      Cartão Avançado + Cristal de Fluix = §eCartão de Aceleração§r. Barramentos movem mais
+      itens por operação, Inscritores e Montadores Moleculares trabalham mais rápido. Neste
+      pack há até versões "Hyper" e "Superluminal", feitas com componentes de armazenamento!
+    tasks:
+      - get: appliedenergistics2:item.ItemMultiMaterial:30
+    rewards:
+      - xp: 2
+      - item: appliedenergistics2:item.ItemMultiMaterial:7 x4
+
+  - id: cartoes_especiais
+    title: "Cartões Especiais"
+    type: optional
+    deps: [cartao_capacidade]
+    icon: appliedenergistics2:item.ItemMultiMaterial:55
+    desc: |
+      Esta versão do AE2 traz vários cartões extras (todos sem forma na bancada):
+      §e• Filtro de Oredict§r (avançado + livro) · §eAderente§r (básico + gosma)
+      §e• Descarte de Excesso§r (básico + pérola do Fim) · §eDistribuição Igual§r (avançado +
+      Processador Lógico) · §eTravamento§r e §eBloqueio Avançado§r para fabricação.
+      Leia os tooltips e faça qualquer um.
+    tasks:
+      - one_of: [appliedenergistics2:item.ItemMultiMaterial:55, appliedenergistics2:item.ItemMultiMaterial:64, appliedenergistics2:item.ItemMultiMaterial:68, appliedenergistics2:item.ItemMultiMaterial:69, appliedenergistics2:item.ItemMultiMaterial:65, appliedenergistics2:item.ItemMultiMaterial:63]
+    rewards:
+      - loot: incomum
+
+  - id: cartoes_aceleracao_extremos
+    title: "Aceleração Hiper e Superluminal"
+    type: optional
+    deps: [cartao_aceleracao, componente_16k]
+    icon: appliedenergistics2:item.ItemMultiMaterial:56
+    desc: |
+      Cartão de Aceleração + Componente 16k = §eHyper-Acceleration Card§r; esse + Componente
+      1024k = §eSuperluminal Acceleration Card§r. Velocidade de máquinas e barramentos levada ao
+      exagero (do jeitinho que eu gosto).
+    tasks:
+      - one_of: [appliedenergistics2:item.ItemMultiMaterial:56, appliedenergistics2:item.ItemMultiMaterial:67]
+    rewards:
+      - loot: incomum
+
+  - id: barramento_armazenamento
+    title: "Barramento de Armazenamento ME"
+    type: main
+    deps: [interface]
+    icon: appliedenergistics2:item.ItemMultiPart:220
+    desc: |
+      Interface + pistão grudento + pistão = §eBarramento de Armazenamento§r. Encoste-o num baú,
+      numa DSU do MineFactory, numa gaveta... e §eaquele inventário passa a fazer parte da
+      rede§r, como se fosse uma célula.
+
+      Combine com prioridade e particionamento: "pedregulho vai para a DSU", "o resto vai para
+      os discos". Um baú gigante sem bytes!
+    tasks:
+      - get: appliedenergistics2:item.ItemMultiPart:220
+    rewards:
+      - xp: 4
+      - choice: [minecraft:sticky_piston x2, minecraft:chest x8, appliedenergistics2:item.ItemMultiMaterial:27 x1]
+
+  - id: interface
+    title: "Interface ME"
+    type: main
+    deps: [nucleos, primeira_rede]
+    icon: appliedenergistics2:tile.BlockInterface
+    desc: |
+      A peça mais versátil do AE2! A §eInterface ME§r (ferro, vidro e os dois Núcleos) é uma
+      "porta" entre a rede e o mundo:
+      §e• Estoque:§r configure itens e quantidades, e ela mantém essa reserva disponível para
+      tubos e máquinas vizinhas.
+      §e• Entrada:§r o que for inserido nela vai para a rede.
+      §e• Fabricação:§r segura padrões e empurra ingredientes para máquinas e Montadores
+      Moleculares.
+      Existe em bloco e em "peça" (de cabo) — uma vira a outra na bancada.
+    tasks:
+      - one_of: [appliedenergistics2:tile.BlockInterface, appliedenergistics2:item.ItemMultiPart:440]
+    rewards:
+      - xp: 4
+      - choice: [appliedenergistics2:item.ItemMultiMaterial:43 x2, appliedenergistics2:item.ItemMultiMaterial:44 x2, minecraft:iron_ingot x8]
+
+  - id: emissor_nivel
+    title: "Emissor de Nível ME"
+    type: normal
+    deps: [processador_calculo, primeira_rede]
+    icon: appliedenergistics2:item.ItemMultiPart:280
+    desc: |
+      Processador de Cálculo + tocha de redstone = §eEmissor de Nível§r. Ele emite redstone
+      quando a quantidade de um item na rede passa (ou fica abaixo) de um valor. Ligue uma
+      fazenda só quando o trigo acabar, desligue a pedreira quando tiver pedregulho demais...
+      Com um Cartão de Fabricação, ele até liga quando a rede quer fabricar aquele item.
+    tasks:
+      - get: appliedenergistics2:item.ItemMultiPart:280
+    rewards:
+      - xp: 3
+      - item: minecraft:redstone_torch x8
+
+  - id: monitores
+    title: "Monitores de Armazenamento e Conversão"
+    type: optional
+    deps: [emissor_nivel, painel_iluminado]
+    icon: appliedenergistics2:item.ItemMultiPart:400
+    desc: |
+      Emissor de Nível + Painel Iluminado = §eMonitor de Armazenamento§r: uma "placa" na parede
+      que mostra a quantidade de um item (clique com o item para configurar). Com os dois
+      Núcleos, ele vira o §eMonitor de Conversão§r, que também deixa depositar e retirar
+      aquele item ali mesmo. Faça qualquer um.
+    tasks:
+      - one_of: [appliedenergistics2:item.ItemMultiPart:400, appliedenergistics2:item.ItemMultiPart:420, appliedenergistics2:item.ItemMultiPart:410]
+    rewards:
+      - loot: comum
+
+  - id: planos
+    title: "Planos de Formação e Aniquilação"
+    type: optional
+    deps: [nucleos, primeira_rede]
+    icon: appliedenergistics2:item.ItemMultiPart:300
+    desc: |
+      Os planos interagem com o §emundo§r:
+      §e• Plano de Aniquilação§r — quebra blocos à frente (e recolhe itens caídos) para a rede.
+      §e• Plano de Formação§r — coloca blocos (ou solta itens) à frente, a partir da rede.
+      Um gerador de pedregulho + Plano de Aniquilação = pedregulho infinito nos discos. O de
+      Identidade (com Pérola de Fluix) mantém dados/NBT dos blocos. Faça qualquer um.
+    tasks:
+      - one_of: [appliedenergistics2:item.ItemMultiPart:300, appliedenergistics2:item.ItemMultiPart:320, appliedenergistics2:item.ItemMultiPart:301]
+    rewards:
+      - loot: comum
+
+  - id: barramento_alternancia
+    title: "Barramento de Alternância"
+    type: optional
+    deps: [cabo_vidro]
+    icon: appliedenergistics2:item.ItemMultiPart:80
+    desc: |
+      2 Cabos de Vidro, redstone e uma alavanca = §eBarramento de Alternância§r: liga ou corta a
+      conexão da rede naquele ponto com redstone (a versão Invertida faz o contrário). Ótimo
+      para "desligar" uma ala inteira da base.
+    tasks:
+      - one_of: [appliedenergistics2:item.ItemMultiPart:80, appliedenergistics2:item.ItemMultiPart:100]
+    rewards:
+      - loot: comum
+
+  - id: porta_es
+    title: "Porta de Entrada-Saída ME"
+    type: normal
+    deps: [acionador, processador_logico]
+    icon: appliedenergistics2:tile.BlockIOPort
+    desc: |
+      A §ePorta de Entrada-Saída ME§r (2 Acionadores, vidro, ferro, Cabo de Vidro e Processador
+      Lógico) esvazia ou enche células automaticamente. Use-a para transferir o conteúdo de um
+      disco antigo para um maior, sem tirar item por item.
+    tasks:
+      - get: appliedenergistics2:tile.BlockIOPort
+    rewards:
+      - xp: 3
+      - item: appliedenergistics2:item.ItemMultiMaterial:22 x2
+
+  - id: condensador
+    title: "Condensador de Matéria"
+    type: normal
+    deps: [po_fluix, vidro_quartzo]
+    icon: appliedenergistics2:tile.BlockCondenser
+    desc: |
+      O §eCondensador de Matéria§r (ferro, vidro e Pó de Fluix) destrói itens — e, com
+      componentes de armazenamento instalados, transforma o que destrói em energia
+      condensada: §eBolas de Matéria§r ou, com muito, muito material, uma §eSingularidade§r.
+
+      É a lixeira mais útil do Registro. As Bolas de Matéria são munição do Canhão de Matéria.
+    tasks:
+      - get: appliedenergistics2:tile.BlockCondenser
+    rewards:
+      - xp: 3
+      - item: minecraft:cobblestone x64
+
+  - id: singularidade
+    title: "Singularidade"
+    type: optional
+    deps: [condensador, componente_64k]
+    icon: appliedenergistics2:item.ItemMultiMaterial:47
+    desc: |
+      Uma estrela de nêutrons de bolso! Encha o Condensador de Matéria (com um componente de
+      armazenamento grande instalado) até ele condensar uma §eSingularidade§r. Ela é peça da
+      ponte quântica e das células "Artificial Universe".
+      §cAviso:§r leva MUITO material. Use pedregulho de um gerador automático.
+    tasks:
+      - get: appliedenergistics2:item.ItemMultiMaterial:47
+    rewards:
+      - loot: raro
+
+  - id: bola_materia
+    title: "Bola de Matéria"
+    type: optional
+    deps: [condensador]
+    icon: appliedenergistics2:item.ItemMultiMaterial:6
+    desc: |
+      Configure o Condensador de Matéria para produzir §eBolas de Matéria§r (com um componente
+      instalado) e jogue itens inúteis nele. Cada bola é "matéria comprimida" — munição perfeita
+      para o Canhão de Matéria.
+    tasks:
+      - get: appliedenergistics2:item.ItemMultiMaterial:6 x4
+    rewards:
+      - loot: comum
+
+  - id: canhao_materia
+    title: "Canhão de Matéria"
+    type: optional
+    deps: [condensador, celula_energia]
+    icon: appliedenergistics2:item.ToolMassCannon
+    desc: |
+      Ferro, Componente 4k, Célula de Energia e Núcleo de Formação = §eCanhão de Matéria§r. Ele
+      dispara itens da célula interna — Bolas de Matéria, pepitas de metal... — com força.
+      Carregue no Carregador. A arma mais "digital" do Registro!
+    tasks:
+      - get: appliedenergistics2:item.ToolMassCannon
+    rewards:
+      - loot: comum
+
+  - id: logistica_digital
+    title: "Logística Digital"
+    type: milestone
+    deps: [barramento_importacao, barramento_exportacao, barramento_armazenamento, interface]
+    icon: appliedenergistics2:tile.BlockInterface
+    banner: "Logística Digital"
+    subtitle: "A rede aprende a mover"
+    desc: |
+      Importação puxando, Exportação empurrando, Barramento de Armazenamento transformando baús
+      em discos e Interfaces mantendo estoques. Herói, sua rede agora §emexe nas coisas§r!
+
+      Três montagens clássicas para estrear:
+      §e• Fornalha automática:§r Exportação de minério e carvão por cima/lado, Importação
+      embaixo.
+      §e• DSU do MineFactory:§r Barramento de Armazenamento com prioridade alta para pedregulho.
+      §e• Estoque de tochas:§r Interface configurada com 64 tochas ao lado de um baú.
+
+      Lembre-se dos canais: cada barramento é 1 canal. Um Cabo Denso salva vidas.
+    tasks:
+      - get: [appliedenergistics2:item.ItemMultiPart:240, appliedenergistics2:item.ItemMultiPart:260, appliedenergistics2:item.ItemMultiPart:220]
+    rewards:
+      - xp: 10
+      - kit: {name: "Kit do Logístico", items: [appliedenergistics2:item.ItemMultiMaterial:27 x4, appliedenergistics2:item.ItemMultiMaterial:30 x2, appliedenergistics2:item.ItemMultiPart:76 x8, appliedenergistics2:item.ItemMultiMaterial:43 x2, appliedenergistics2:item.ItemMultiMaterial:44 x2]}
+      - loot: raro
+
+  # ======================================================================
+  # FASE 4 — FABRICAÇÃO AUTOMÁTICA
+  # ======================================================================
+  - id: padrao_branco
+    title: "Padrão em Branco"
+    type: main
+    deps: [logistica_digital]
+    icon: appliedenergistics2:item.ItemMultiMaterial:52
+    desc: |
+      Chegou a hora da página mais bonita do Volume: a rede que §efabrica sozinha§r.
+
+      Tudo começa num §ePadrão em Branco§r (2 Vidros de Quartzo, 3 glowstones, 3 ferros e um
+      cristal de certus). Um padrão é uma "receita gravada": diz à rede o que entra e o que
+      sai. Faça §e8§r.
+    tasks:
+      - get: appliedenergistics2:item.ItemMultiMaterial:52 x8
+    rewards:
+      - xp: 5
+      - choice: [minecraft:glowstone_dust x32, appliedenergistics2:tile.BlockQuartzGlass x8, minecraft:iron_ingot x16]
+
+  - id: terminal_padroes
+    title: "Terminal de Padrões ME"
+    type: main
+    deps: [padrao_branco, terminal_fabricacao]
+    icon: appliedenergistics2:item.ItemMultiPart:340
+    desc: |
+      Terminal de Fabricação + Processador de Engenharia = §eTerminal de Padrões§r. Nele você
+      grava padrões:
+      §e• Modo Fabricação:§r receitas de bancada (feitas pelo Montador Molecular).
+      §e• Modo Processamento:§r "entra X, sai Y" — para máquinas (fornalha, triturador,
+      inscritor...).
+      Monte a receita, coloque um Padrão em Branco e clique em "codificar".
+    tasks:
+      - get: appliedenergistics2:item.ItemMultiPart:340
+    rewards:
+      - xp: 5
+      - choice: [appliedenergistics2:item.ItemMultiMaterial:52 x4, appliedenergistics2:item.ItemMultiMaterial:24 x2, appliedenergistics2:item.ItemMultiPart:180 x3]
+
+  - id: padrao_codificado
+    title: "O Primeiro Padrão"
+    type: main
+    deps: [terminal_padroes]
+    icon: appliedenergistics2:item.ItemEncodedPattern
+    desc: |
+      Codifique o seu primeiro §ePadrão Codificado§r: que tal tochas, ou tábuas a partir de
+      troncos? Segure Shift sobre o padrão para conferir entrada e saída.
+      §aDica:§r errou? Com Shift + clique direito no ar, o padrão codificado na mão volta a ser
+      um Padrão em Branco.
+    tasks:
+      - get: appliedenergistics2:item.ItemEncodedPattern
+    rewards:
+      - xp: 5
+      - choice: [appliedenergistics2:item.ItemMultiMaterial:52 x4, minecraft:log x16, minecraft:coal x16]
+
+  - id: montador_molecular
+    title: "Montador Molecular"
+    type: main
+    deps: [nucleos, vidro_quartzo]
+    icon: appliedenergistics2:tile.BlockMolecularAssembler
+    desc: |
+      A bancada que trabalha sozinha: o §eMontador Molecular§r (ferro, Vidros de Quartzo,
+      bancada e os dois Núcleos). Coloque-o §eencostado numa Interface§r: a Interface envia os
+      padrões de fabricação e os ingredientes, o montador faz a receita e devolve o resultado.
+
+      Cartões de Aceleração deixam o montador mais rápido. Montadores encostados uns nos
+      outros repassam o trabalho entre si.
+    tasks:
+      - get: appliedenergistics2:tile.BlockMolecularAssembler
+    rewards:
+      - xp: 5
+      - choice: [appliedenergistics2:item.ItemMultiMaterial:30 x1, minecraft:crafting_table x4, appliedenergistics2:tile.BlockQuartzGlass x4]
+
+  - id: unidade_fabricacao
+    title: "Unidade de Fabricação"
+    type: main
+    deps: [processador_calculo, processador_logico, cabo_vidro]
+    icon: appliedenergistics2:tile.BlockCraftingUnit
+    desc: |
+      A rede precisa de um "cérebro de fabricação" — a §eCPU de Fabricação§r. Ela é um
+      multibloco montado com §eUnidades de Fabricação§r (ferro, Cabos de Vidro, 2 Processadores
+      de Cálculo e um Lógico) e blocos derivados delas.
+
+      Sozinha, a Unidade é só "enchimento". Ela vira os outros blocos da CPU na bancada.
+    tasks:
+      - get: appliedenergistics2:tile.BlockCraftingUnit x2
+    rewards:
+      - xp: 5
+      - choice: [appliedenergistics2:item.ItemMultiMaterial:23 x2, appliedenergistics2:item.ItemMultiMaterial:22 x2, minecraft:iron_ingot x16]
+
+  - id: armazenamento_fabricacao
+    title: "Armazenamento de Fabricação"
+    type: main
+    deps: [unidade_fabricacao, componente_1k]
+    icon: appliedenergistics2:tile.BlockCraftingStorage
+    desc: |
+      Unidade de Fabricação + Componente 1k = §eArmazenamento de Fabricação de 1k§r: a memória
+      da CPU. Cada pedido de fabricação ocupa bytes durante o cálculo — receitas grandes
+      precisam de mais memória (4k, 16k, 64k... e até 16384k neste pack).
+    tasks:
+      - get: appliedenergistics2:tile.BlockCraftingStorage
+    rewards:
+      - xp: 5
+      - choice: [appliedenergistics2:item.ItemMultiMaterial:35 x1, appliedenergistics2:tile.BlockCraftingUnit x1, appliedenergistics2:item.ItemMultiMaterial:22 x2]
+
+  - id: coprocessador
+    title: "Unidade de Co-Processamento"
+    type: normal
+    deps: [unidade_fabricacao]
+    icon: appliedenergistics2:tile.BlockCraftingUnit:1
+    desc: |
+      Unidade de Fabricação + Processador de Engenharia = §eUnidade de Co-Processamento§r. Cada
+      co-processador deixa a CPU despachar mais tarefas em paralelo. Quatro deles viram um de
+      4 núcleos, e assim por diante (até 4096 núcleos!).
+    tasks:
+      - get: appliedenergistics2:tile.BlockCraftingUnit:1
+    rewards:
+      - xp: 3
+      - item: appliedenergistics2:item.ItemMultiMaterial:24
+
+  - id: monitor_fabricacao
+    title: "Monitor de Fabricação"
+    type: optional
+    deps: [unidade_fabricacao, monitores]
+    icon: appliedenergistics2:tile.BlockCraftingMonitor
+    desc: |
+      Unidade de Fabricação + Monitor de Armazenamento = §eMonitor de Fabricação§r: faz parte da
+      CPU e mostra, na face, o item que ela está fabricando agora. Lindo de ver funcionando.
+    tasks:
+      - get: appliedenergistics2:tile.BlockCraftingMonitor
+    rewards:
+      - loot: comum
+
+  - id: cpu_info
+    title: "Montando a CPU de Fabricação"
+    type: info
+    deps: [armazenamento_fabricacao]
+    icon: appliedenergistics2:tile.BlockCraftingStorage
+    desc: |
+      Regras da CPU de Fabricação:
+
+      §e• Formato:§r um §eparalelepípedo sólido§r (caixa cheia, sem buracos) feito só de
+      blocos da família da Unidade de Fabricação.
+      §e• Conteúdo mínimo:§r pelo menos §eum Armazenamento de Fabricação§r.
+      §e• Opcionais:§r Co-Processadores (mais velocidade), Monitores (visual).
+      §e• Conexão:§r a caixa precisa encostar na rede por um cabo (usa canal).
+      §e• Várias CPUs:§r caixas separadas = CPUs separadas, cada uma faz um pedido por vez.
+
+      Quando a estrutura forma, os blocos mudam de aparência. Peça algo no Terminal (clique
+      do meio ou na opção de fabricar) e veja a mágica!
+    tasks:
+      - check
+    rewards:
+      - xp: 1
+
+  - id: autocraft_info
+    title: "Fabricação vs. Processamento"
+    type: info
+    deps: [padrao_codificado, montador_molecular]
+    icon: appliedenergistics2:item.ItemEncodedPattern
+    desc: |
+      Dois tipos de padrão, dois destinos:
+
+      §e• Padrão de Fabricação§r (receita de bancada): vai numa §eInterface§r encostada num
+      §eMontador Molecular§r. O montador faz a receita.
+      §e• Padrão de Processamento§r (máquinas): vai numa §eInterface encostada na máquina§r. A
+      Interface empurra os ingredientes para a máquina; o resultado precisa §evoltar para a
+      rede§r (por um Barramento de Importação, ou empurrado para a própria Interface).
+
+      §aDica:§r o "Modo de Bloqueio" da Interface evita que ela mande o próximo lote antes da
+      máquina terminar o anterior — essencial para máquinas com várias entradas.
+    tasks:
+      - check
+    rewards:
+      - xp: 1
+
+  - id: primeiro_autocraft
+    title: "A Rede que Fabrica"
+    type: milestone
+    deps: [cpu_info, autocraft_info, interface]
+    icon: appliedenergistics2:tile.BlockMolecularAssembler
+    banner: "A Rede que Fabrica"
+    subtitle: "Peça, e será feito"
+    desc: |
+      Você clica num item no Terminal, escolhe a quantidade... e a CPU calcula, a Interface
+      distribui, o Montador Molecular monta e o resultado aparece nos discos. Herói, a sua
+      rede §efabrica sozinha§r!
+
+      Eu esperei séculos por este momento. Os Antigos tinham cidades inteiras funcionando
+      assim, e quando a Fratura veio, as CPUs ficaram em silêncio. Você acabou de acordá-las.
+
+      Próximos degraus:
+      §e• Mais padrões§r — inclusive de processamento para fornalhas e máquinas.
+      §e• Mais CPUs§r — para vários pedidos ao mesmo tempo.
+      §e• Emissores de Nível com Cartão de Fabricação§r — fabricar sob demanda.
+    tasks:
+      - get: [appliedenergistics2:tile.BlockMolecularAssembler, appliedenergistics2:tile.BlockCraftingStorage, appliedenergistics2:item.ItemEncodedPattern]
+    rewards:
+      - xp: 10
+      - kit: {name: "Kit do Arquiteto de Fábricas", items: [appliedenergistics2:item.ItemMultiMaterial:52 x16, appliedenergistics2:tile.BlockCraftingUnit x4, appliedenergistics2:item.ItemMultiMaterial:30 x2, appliedenergistics2:tile.BlockMolecularAssembler x1, appliedenergistics2:item.ItemMultiMaterial:24 x2]}
+      - loot: epico
+
+  - id: cartao_fabricacao
+    title: "Cartão de Fabricação"
+    type: normal
+    deps: [primeiro_autocraft, cartao_basico]
+    icon: appliedenergistics2:item.ItemMultiMaterial:53
+    desc: |
+      Cartão Básico + bancada = §eCartão de Fabricação§r. Num Barramento de Exportação, ele faz
+      a rede §efabricar§r o item quando faltar para exportar. Num Emissor de Nível, o emissor
+      liga quando a rede precisa daquele item numa fabricação — perfeito para acionar fazendas
+      de outros mods sob demanda.
+    tasks:
+      - get: appliedenergistics2:item.ItemMultiMaterial:53
+    rewards:
+      - xp: 3
+      - item: minecraft:crafting_table x2
+
+  - id: cpu_maior
+    title: "Uma CPU de Respeito"
+    type: optional
+    deps: [primeiro_autocraft, componente_16k]
+    icon: appliedenergistics2:tile.BlockCraftingStorage:2
+    desc: |
+      Pedidos grandes (centenas de processadores, células gigantes) precisam de memória. Faça
+      um Armazenamento de Fabricação de §e4k, 16k ou 64k§r e aumente a sua CPU.
+    tasks:
+      - one_of: [appliedenergistics2:tile.BlockCraftingStorage:1, appliedenergistics2:tile.BlockCraftingStorage:2, appliedenergistics2:tile.BlockCraftingStorage:3]
+    rewards:
+      - loot: incomum
+
+  - id: coprocessadores_multinucleo
+    title: "Co-Processadores Multinúcleo"
+    type: optional
+    deps: [coprocessador]
+    icon: appliedenergistics2:tile.BlockCraftingUnit:3
+    desc: |
+      4 co-processadores = um de §e4 núcleos§r; 4 desses = §e16 núcleos§r... Compacte a sua CPU
+      e ganhe paralelismo sem ocupar espaço. Faça qualquer co-processador multinúcleo.
+    tasks:
+      - one_of: [appliedenergistics2:tile.BlockCraftingUnit:2, appliedenergistics2:tile.BlockCraftingUnit:3, appliedenergistics2:tile.BlockAdvancedCraftingUnit]
+    rewards:
+      - loot: incomum
+
+  - id: cpu_avancada
+    title: "CPUs de Escala Industrial"
+    type: optional
+    deps: [cpu_maior, coprocessadores_multinucleo, celula_256k]
+    icon: appliedenergistics2:tile.BlockAdvancedCraftingStorage
+    desc: |
+      Esta versão do AE2 tem blocos de CPU enormes: §eArmazenamento de Fabricação 256k a
+      16384k§r (Unidade + componente avançado) e §eCo-Processadores de 256, 1024 e 4096
+      núcleos§r. Faça qualquer um e monte uma CPU digna de uma megafábrica.
+    tasks:
+      - one_of: [appliedenergistics2:tile.BlockAdvancedCraftingStorage, appliedenergistics2:tile.BlockAdvancedCraftingStorage:1, appliedenergistics2:tile.BlockAdvancedCraftingStorage:2, appliedenergistics2:tile.BlockAdvancedCraftingStorage:3, appliedenergistics2:tile.BlockAdvancedCraftingUnit:1, appliedenergistics2:tile.BlockAdvancedCraftingUnit:2, appliedenergistics2:tile.BlockAdvancedCraftingUnit:3]
+    rewards:
+      - loot: raro
+
+  - id: cartao_fabricacao_falsa
+    title: "Fake Crafting Card"
+    type: optional
+    deps: [cartao_fabricacao]
+    icon: appliedenergistics2:item.ItemMultiMaterial:66
+    desc: |
+      Cartão Avançado + bancada + tocha de redstone = §eFake Crafting Card§r, um cartão extra
+      desta versão ligado à fabricação. O tooltip (Shift) explica onde instalá-lo.
+    tasks:
+      - get: appliedenergistics2:item.ItemMultiMaterial:66
+    rewards:
+      - loot: comum
+
+  - id: terminal_interface
+    title: "Terminal de Interface ME"
+    type: normal
+    deps: [primeiro_autocraft, painel_iluminado]
+    icon: appliedenergistics2:item.ItemMultiPart:480
+    desc: |
+      Painel Iluminado + Interface + Processador de Engenharia = §eTerminal de Interface§r. Ele
+      mostra os padrões de §etodas§r as Interfaces da rede num lugar só, para colocar, tirar e
+      organizar. Quando a fábrica crescer, você vai me agradecer.
+    tasks:
+      - get: appliedenergistics2:item.ItemMultiPart:480
+    rewards:
+      - xp: 3
+      - item: appliedenergistics2:item.ItemMultiMaterial:52 x4
+
+  - id: terminal_processamento
+    title: "Terminal de Padrões de Processamento"
+    type: optional
+    deps: [terminal_padroes, tres_processadores]
+    icon: appliedenergistics2:item.ItemMultiPart:500
+    desc: |
+      Terminal de Padrões + os três processadores = §eME Processing Pattern Terminal§r: uma
+      versão com mais espaço para padrões de processamento grandes (muitas entradas e saídas).
+    tasks:
+      - get: appliedenergistics2:item.ItemMultiPart:500
+    rewards:
+      - loot: incomum
+
+  - id: cartao_padroes
+    title: "Pattern Capacity Card"
+    type: optional
+    deps: [terminal_interface, componente_16k]
+    icon: appliedenergistics2:item.ItemMultiMaterial:54
+    desc: |
+      Cartão Avançado + 2 Componentes 16k + Interface = §ePattern Capacity Card§r: mais espaço
+      de padrões numa Interface. Menos interfaces, menos canais!
+    tasks:
+      - get: appliedenergistics2:item.ItemMultiMaterial:54
+    rewards:
+      - loot: incomum
+
+  - id: interface_padroes
+    title: "Pattern Interface (NotEnoughEnergistics)"
+    type: normal
+    deps: [terminal_padroes, monitor_fabricacao]
+    icon: neenergistics:tile.pattern_interface
+    desc: |
+      O §eNotEnoughEnergistics§r liga o NEI ao AE2: no Terminal de Padrões, use os botões da
+      receita no NEI para transferir a receita direto para a grade — inclusive receitas de
+      máquinas como padrão de processamento.
+
+      Ele também adiciona a §ePattern Interface§r (2 Padrões em Branco, 2 Interfaces, Cabos
+      Inteligentes, um Terminal de Padrões e um Monitor de Fabricação). Confira no NEI e leia
+      o tooltip: ela foi feita para simplificar a codificação de padrões.
+    tasks:
+      - get: neenergistics:tile.pattern_interface
+    rewards:
+      - xp: 3
+      - item: appliedenergistics2:item.ItemMultiMaterial:52 x4
+
+  - id: matriz_otimizacao
+    title: "Pattern Optimization Matrix"
+    type: optional
+    deps: [cpu_maior]
+    icon: appliedenergistics2:tile.BlockPatternOptimizationMatrix
+    desc: |
+      4 Processadores Lógicos, 4 de Engenharia e uma Unidade de Fabricação = §ePattern
+      Optimization Matrix§r, um bloco extra desta versão do AE2 para otimizar o uso de padrões
+      nas fabricações. Leia o tooltip (Shift) para os detalhes.
+    tasks:
+      - get: appliedenergistics2:tile.BlockPatternOptimizationMatrix
+    rewards:
+      - loot: incomum
+
+  - id: diagnostico_fabricacao
+    title: "Terminal de Diagnóstico de Fabricação"
+    type: optional
+    deps: [primeiro_autocraft]
+    icon: appliedenergistics2:item.ItemMultiPart:370
+    desc: |
+      Terminal de Fabricação + Processador Lógico = §eME Crafting Diagnostic Terminal§r. Ele
+      ajuda a descobrir por que uma fabricação travou ou demorou. Para fábricas grandes, é um
+      estetoscópio digital.
+    tasks:
+      - get: appliedenergistics2:item.ItemMultiPart:370
+    rewards:
+      - loot: comum
+
+  - id: fabrica_digital
+    title: "Fábrica Digital"
+    type: milestone
+    deps: [cartao_fabricacao, terminal_interface, coprocessador]
+    icon: appliedenergistics2:item.ItemMultiPart:480
+    banner: "Fábrica Digital"
+    subtitle: "Padrões, CPUs e demanda"
+    desc: |
+      Interfaces cheias de padrões, uma CPU com co-processadores, cartões de fabricação
+      acionando fazendas quando falta matéria-prima. Herói, isso já não é uma rede — é uma
+      §efábrica digital§r.
+
+      Um desafio para se divertir: faça a rede produzir os §epróprios processadores§r.
+      Padrões de processamento nos Inscritores (com Interfaces encostadas), padrões de
+      fabricação para cabos e células, e um pedido de 64 Processadores de Engenharia.
+      Se funcionar, você entendeu o AE2.
+    tasks:
+      - get: [appliedenergistics2:item.ItemMultiMaterial:53, appliedenergistics2:item.ItemMultiPart:480, appliedenergistics2:tile.BlockCraftingUnit:1]
+    rewards:
+      - xp: 12
+      - kit: {name: "Kit do Engenheiro de Fábricas Digitais", items: [appliedenergistics2:tile.BlockInterface x2, appliedenergistics2:item.ItemMultiMaterial:52 x16, appliedenergistics2:item.ItemMultiMaterial:30 x4, appliedenergistics2:tile.BlockCraftingUnit:1 x2, appliedenergistics2:item.ItemMultiMaterial:27 x4]}
+      - loot: epico
+
+  # ======================================================================
+  # FASE 5 — FLUIDOS (AE2 FLUID CRAFTING)
+  # ======================================================================
+  - id: interface_dupla
+    title: "Interface Dupla ME"
+    type: main
+    deps: [interface]
+    icon: ae2fc:fluid_interface
+    desc: |
+      Itens são só metade do mundo. O addon §eAE2 Fluid Crafting§r ensina a rede a lidar com
+      §efluidos§r!
+
+      Tudo começa na §eME Dual Interface§r (Interface Dupla): uma Interface ME com ferro, vidro e
+      lápis-lazúli. Ela faz tudo o que a Interface faz §ee também§r recebe, guarda e entrega
+      fluidos. Existe em bloco e em peça de cabo.
+    tasks:
+      - one_of: [ae2fc:fluid_interface, ae2fc:part_fluid_interface]
+    rewards:
+      - xp: 5
+      - choice: [minecraft:lapis_block x2, appliedenergistics2:tile.BlockInterface x1, minecraft:bucket x4]
+
+  - id: fluidos_info
+    title: "Fluidos na Rede"
+    type: info
+    deps: [interface_dupla]
+    icon: ae2fc:fluid_drop
+    desc: |
+      Como o Fluid Crafting funciona (resumo da Akasha):
+
+      §e• Células de Fluido§r guardam fluidos em bytes, como as de itens. As "Multi-Fluid"
+      aceitam vários tipos.
+      §e• Barramentos de Fluido§r (importação, exportação, armazenamento) fazem com tanques o
+      que os de itens fazem com baús.
+      §e• Padrões com fluidos:§r receitas que pedem fluidos usam a Interface Dupla. Se um item
+      estranho "Fluid Packet" aparecer, é porque você usou uma Interface comum no lugar da
+      Dupla (o próprio tooltip avisa!).
+      §e• Decodificador de Pacotes§r converte pacotes/gotas de volta em fluido.
+    tasks:
+      - check
+    rewards:
+      - xp: 1
+
+  - id: celula_fluido
+    title: "Célula de Fluido 1k"
+    type: main
+    deps: [fluidos_info, processador_engenharia]
+    icon: ae2fc:fluid_storage1
+    desc: |
+      O §eComponente de Fluido 1k§r leva corante vermelho, Cristais Puros de Certus e um
+      Processador de Engenharia. Com o §eME Fluid Storage Housing§r (Vidro de Quartzo, corante
+      vermelho e ferro), vira a §eCélula de Armazenamento de Fluido 1k§r. Coloque-a no Acionador
+      como qualquer célula.
+    tasks:
+      - get: ae2fc:fluid_storage1
+    rewards:
+      - xp: 5
+      - choice: [minecraft:dye:1 x16, appliedenergistics2:item.ItemMultiMaterial:10 x4, minecraft:bucket x4]
+
+  - id: celula_multi_fluido
+    title: "Célula Multi-Fluido"
+    type: optional
+    deps: [celula_fluido]
+    icon: ae2fc:multi_fluid_storage1
+    desc: |
+      Com o encaixe Multi-Fluid (lápis no lugar do corante vermelho), a célula vira §eMulti-Fluid
+      Storage Cell§r. Confira no tooltip as diferenças entre as duas famílias e escolha a que
+      combina com a sua base.
+    tasks:
+      - get: ae2fc:multi_fluid_storage1
+    rewards:
+      - loot: comum
+
+  - id: celulas_fluido_maiores
+    title: "Tanques de Bytes"
+    type: optional
+    deps: [celula_fluido]
+    icon: ae2fc:fluid_storage64
+    desc: |
+      A escada dos fluidos segue a dos itens: 4k, 16k, 64k (e do 256k para cima com o encaixe
+      avançado de fluidos e Vidro Vibrante). Faça qualquer célula de fluido de 4k para cima.
+    tasks:
+      - one_of: [ae2fc:fluid_storage4, ae2fc:fluid_storage16, ae2fc:fluid_storage64, ae2fc:fluid_storage256, ae2fc:fluid_storage1024]
+    rewards:
+      - loot: incomum
+
+  - id: barramento_fluido
+    title: "Barramento de Armazenamento de Fluido"
+    type: normal
+    deps: [interface_dupla]
+    icon: ae2fc:part_fluid_storage_bus
+    desc: |
+      Interface Dupla + pistão grudento + pistão = §eME Fluid Storage Bus§r. Encoste num tanque
+      (um Tanque de Plástico do MFR, um tanque portátil, um tanque de outro mod) e ele vira
+      parte da rede. Fluidos à vista no terminal!
+    tasks:
+      - get: ae2fc:part_fluid_storage_bus
+    rewards:
+      - xp: 3
+      - item: minecraft:bucket x4
+
+  - id: barramentos_fluido_es
+    title: "Importação e Exportação de Fluidos"
+    type: normal
+    deps: [barramento_fluido]
+    icon: ae2fc:part_fluid_import
+    desc: |
+      As versões líquidas dos barramentos: §eME Fluid Import Bus§r (Núcleo de Aniquilação) e
+      §eME Fluid Export Bus§r (Núcleo de Formação), ambos com lápis, ferro e pistão. Lava
+      entrando dos tanques, combustível saindo para os geradores...
+    tasks:
+      - get: [ae2fc:part_fluid_import, ae2fc:part_fluid_export]
+    rewards:
+      - xp: 3
+      - item: minecraft:lapis_block x2
+
+  - id: tanque_certus
+    title: "Tanque de Quartzo Certus"
+    type: optional
+    deps: [vidro_quartzo]
+    icon: ae2fc:certus_quartz_tank
+    desc: |
+      8 Vidros de Quartzo = §eCertus Quartz Tank§r: um tanque simples e bonito para guardar
+      fluidos perto da rede.
+    tasks:
+      - get: ae2fc:certus_quartz_tank
+    rewards:
+      - loot: comum
+
+  - id: decodificador_pacotes
+    title: "Decodificador de Pacotes de Fluido"
+    type: normal
+    deps: [interface_dupla, processador_calculo]
+    icon: ae2fc:fluid_packet_decoder
+    desc: |
+      O §eME Fluid Packet Decoder§r (ferro, Cabos de Vidro, funil, Interface Dupla e Processador
+      de Cálculo) transforma "pacotes" e "gotas" de fluido de volta em fluido de verdade. Ele
+      precisa estar ligado à rede e ter um lugar para guardar o líquido.
+    tasks:
+      - get: ae2fc:fluid_packet_decoder
+    rewards:
+      - xp: 3
+      - item: minecraft:hopper x2
+
+  - id: codificador_fluido
+    title: "Codificador de Padrões de Fluido"
+    type: optional
+    deps: [bancada_celulas, interface_dupla]
+    icon: ae2fc:fluid_pattern_encoder
+    desc: |
+      O §eFluid Pattern Encoder§r (lápis, ferro, Processador de Engenharia e Bancada de Células)
+      ajuda a codificar padrões com fluidos. Ele também é ingrediente do Mantenedor de Nível e
+      do Auto Filler.
+    tasks:
+      - get: ae2fc:fluid_pattern_encoder
+    rewards:
+      - loot: comum
+
+  - id: mantenedor_nivel
+    title: "Mantenedor de Nível ME"
+    type: normal
+    deps: [codificador_fluido, cartao_padroes, coprocessador]
+    icon: ae2fc:level_maintainer
+    desc: |
+      Meu bloco preferido do addon! O §eME Level Maintainer§r (Co-Processador + Codificador de
+      Padrões de Fluido + Pattern Capacity Card) §emantém estoques automaticamente§r: você
+      define "quero sempre 256 Processadores Lógicos" e ele pede a fabricação sempre que faltar.
+
+      Ele mostra o estado de cada pedido (ocioso, fabricando, exportando, erro). Ligue-o à rede
+      e nunca mais fique sem o básico.
+    tasks:
+      - get: ae2fc:level_maintainer
+    rewards:
+      - xp: 4
+      - item: appliedenergistics2:item.ItemMultiMaterial:52 x8
+
+  - id: terminal_nivel
+    title: "Terminal de Nível ME"
+    type: optional
+    deps: [mantenedor_nivel]
+    icon: ae2fc:part_level_terminal
+    desc: |
+      Terminal ME + Mantenedor de Nível = §eME Level Terminal§r: mostra e edita todos os
+      Mantenedores de Nível da rede de uma vez. Gerência de estoque profissional.
+    tasks:
+      - get: ae2fc:part_level_terminal
+    rewards:
+      - loot: comum
+
+  - id: celula_fluido_portatil
+    title: "Célula de Fluido Portátil"
+    type: optional
+    deps: [celula_fluido, bau_me]
+    icon: ae2fc:portable_fluid_cell
+    desc: |
+      Baú ME + Componente de Fluido 1k + Célula de Energia = §ePortable Fluid Cell§r: uma
+      "mochila de fluidos". Carregue-a antes de usar — o tooltip lembra.
+    tasks:
+      - get: ae2fc:portable_fluid_cell
+    rewards:
+      - loot: comum
+
+  - id: auto_filler
+    title: "Auto Filler de Fluidos"
+    type: optional
+    deps: [codificador_fluido, terminal_padroes]
+    icon: ae2fc:fluid_auto_filler
+    desc: |
+      Terminal de Padrões + Codificador de Padrões de Fluido = §eME Fluid Auto Filler§r. Como diz
+      o tooltip, ele cria automaticamente padrões de "encher recipiente" com o recipiente
+      escolhido. Baldes, células, garrafas: enchidos sob demanda!
+    tasks:
+      - get: ae2fc:fluid_auto_filler
+    rewards:
+      - loot: comum
+
+  - id: celula_fluido_vazio
+    title: "Célula de Fluido do Vazio"
+    type: optional
+    deps: [celula_fluido, singularidade]
+    icon: ae2fc:fluid_storage.void
+    desc: |
+      "Onde o nada é tudo, e tudo é nada" — diz o tooltip. A §eME Fluid Void Cell§r (com uma
+      Singularidade) destrói fluidos que entram nela. Particione e use para descartar excesso
+      de água ou lodo.
+    tasks:
+      - get: ae2fc:fluid_storage.void
+    rewards:
+      - loot: comum
+
+  - id: buffers
+    title: "Buffers de Ingredientes"
+    type: optional
+    deps: [interface_dupla]
+    icon: ae2fc:ingredient_buffer
+    desc: |
+      O addon traz buffers para montagens de processamento: §eIngredient Buffer§r, §eLarge
+      Ingredient Buffer§r e o §eME Fluid Buffer§r ("um IO de fluidos de alta velocidade").
+      Faça qualquer um e experimente nas suas linhas de máquinas.
+    tasks:
+      - one_of: [ae2fc:ingredient_buffer, ae2fc:large_ingredient_buffer, ae2fc:fluid_buffer]
+    rewards:
+      - loot: comum
+
+  - id: agua_infinita
+    title: "Célula de Água Infinita"
+    type: optional
+    deps: [celulas_fluido_maiores, condensador]
+    icon: ae2fc:fluid_storage.infinity.water
+    desc: |
+      4 baldes de água, os dois Núcleos, um Componente de Fluido 64k, o encaixe avançado de
+      fluidos e um Condensador de Matéria = §eME Fluid Infinity Water Storage Cell§r. Água sem
+      fim dentro da rede! Caldeiras agradecem.
+    tasks:
+      - get: ae2fc:fluid_storage.infinity.water
+    rewards:
+      - loot: incomum
+
+  - id: morsa
+    title: "A Morsa"
+    type: optional
+    deps: [fluidos_info]
+    icon: ae2fc:walrus
+    desc: |
+      Encontrei uma página muito estranha no Volume dos fluidos: 8 peixes crus na bancada
+      fazem uma... §eMorsa§r. Ela não faz nada. O tooltip diz algo misterioso sobre empregos.
+      Eu amo os desenvolvedores de mods. Faça uma e coloque ela de guarda na sala do servidor.
+    tasks:
+      - get: ae2fc:walrus
+    rewards:
+      - loot: comum
+
+  - id: rede_fluidos
+    title: "Rios Digitais"
+    type: milestone
+    deps: [celula_fluido, barramento_fluido, barramentos_fluido_es, decodificador_pacotes]
+    icon: ae2fc:fluid_storage1
+    banner: "Rios Digitais"
+    subtitle: "Fluidos dentro da rede"
+    desc: |
+      Lava, água, biocombustível, Essência do MFR... tudo correndo pelos mesmos cabos que os
+      itens. Herói, a sua rede agora tem §erios digitais§r!
+
+      Ideias:
+      §e• Usina:§r Exportação de Fluido levando combustível aos geradores.
+      §e• Fábrica:§r padrões de processamento com fluidos em máquinas de outros mods, usando a
+      Interface Dupla.
+      §e• Estoque:§r Mantenedor de Nível pedindo a fabricação de fluidos e itens sozinho.
+
+      §aLembrete:§r se aparecerem "Fluid Packets" no inventário, troque a Interface comum pela
+      Dupla. É sempre ela.
+    tasks:
+      - get: [ae2fc:fluid_storage1, ae2fc:part_fluid_storage_bus, ae2fc:part_fluid_import, ae2fc:fluid_packet_decoder]
+    rewards:
+      - xp: 12
+      - kit: {name: "Kit do Hidráulico Digital", items: [ae2fc:fluid_part x2, ae2fc:fluid_storage_housing x2, ae2fc:fluid_interface x1, minecraft:bucket x8, minecraft:lapis_block x4]}
+      - loot: epico
+
+  # ======================================================================
+  # FASE 6 — SEM FIO E TÚNEIS P2P
+  # ======================================================================
+  - id: receptor_sem_fio
+    title: "Receptor Sem Fio"
+    type: normal
+    deps: [perola_fluix, fibra_quartzo]
+    icon: appliedenergistics2:item.ItemMultiMaterial:41
+    desc: |
+      Ferro + Pérola de Fluix + Fibra de Quartzo = §eReceptor Sem Fio§r: a antena do AE2. Ela vai
+      no Ponto de Acesso, no Terminal Sem Fio e nos blocos espaciais.
+    tasks:
+      - get: appliedenergistics2:item.ItemMultiMaterial:41 x2
+    rewards:
+      - xp: 3
+      - item: appliedenergistics2:item.ItemMultiMaterial:9
+
+  - id: ponto_acesso
+    title: "Ponto de Acesso Sem Fio ME"
+    type: main
+    deps: [receptor_sem_fio, primeira_rede]
+    icon: appliedenergistics2:tile.BlockWireless
+    desc: |
+      Receptor Sem Fio + Processador de Cálculo + Cabo de Vidro = §ePonto de Acesso Sem Fio ME§r.
+      Coloque-o na rede: ele cria uma área de alcance onde Terminais Sem Fio funcionam. Ele
+      também consome um canal e um pouco de energia, que aumenta com o alcance.
+    tasks:
+      - get: appliedenergistics2:tile.BlockWireless
+    rewards:
+      - xp: 5
+      - choice: [appliedenergistics2:item.ItemMultiMaterial:41 x1, appliedenergistics2:item.ItemMultiMaterial:23 x2, minecraft:ender_pearl x4]
+
+  - id: amplificador
+    title: "Amplificador Sem Fio"
+    type: normal
+    deps: [ponto_acesso]
+    icon: appliedenergistics2:item.ItemMultiMaterial:42
+    desc: |
+      O §eAmplificador Sem Fio§r (rende 2) vai dentro do Ponto de Acesso e aumenta o alcance.
+      Vários amplificadores = área enorme (e mais gasto de energia). Confira a receita no NEI.
+    tasks:
+      - get: appliedenergistics2:item.ItemMultiMaterial:42 x2
+    rewards:
+      - xp: 3
+      - item: appliedenergistics2:item.ItemMultiMaterial:8 x4
+
+  - id: terminal_seguranca
+    title: "Terminal de Segurança ME"
+    type: main
+    deps: [bau_me, componente_16k, processador_engenharia]
+    icon: appliedenergistics2:tile.BlockSecurity
+    desc: |
+      O §eTerminal de Segurança ME§r (Baú ME, Componente 16k, Processador de Engenharia, Cabos e
+      ferro) faz duas coisas importantes:
+      §e• Permissões:§r com §eCartões Biométricos§r, você define quem pode retirar, inserir,
+      fabricar ou construir na sua rede. Ótimo em servidor!
+      §e• Vínculo sem fio:§r é nele que o §eTerminal Sem Fio§r é ligado à rede.
+      Cada rede aceita só um.
+    tasks:
+      - get: appliedenergistics2:tile.BlockSecurity
+    rewards:
+      - xp: 5
+      - choice: [appliedenergistics2:item.ToolBiometricCard x2, appliedenergistics2:item.ItemMultiMaterial:24 x2, minecraft:iron_ingot x16]
+
+  - id: cartao_biometrico
+    title: "Cartão Biométrico"
+    type: optional
+    deps: [terminal_seguranca]
+    icon: appliedenergistics2:item.ToolBiometricCard
+    desc: |
+      Clique com o §eCartão Biométrico§r num jogador para gravá-lo, coloque o cartão no Terminal
+      de Segurança e marque o que essa pessoa pode fazer. Amigos com acesso de "só olhar"?
+      Pode!
+    tasks:
+      - get: appliedenergistics2:item.ToolBiometricCard
+    rewards:
+      - loot: comum
+
+  - id: terminal_sem_fio
+    title: "Terminal Sem Fio"
+    type: main
+    deps: [terminal_seguranca, ponto_acesso, celula_densa]
+    icon: appliedenergistics2:item.ToolWirelessTerminal
+    desc: |
+      Receptor Sem Fio + Terminal ME + Célula Densa de Energia = §eTerminal Sem Fio§r: a rede
+      inteira no seu bolso!
+
+      Coloque-o no slot do Terminal de Segurança para vinculá-lo, carregue no Carregador e use
+      dentro da área do Ponto de Acesso. Ele gasta energia a cada uso — leve-o de volta ao
+      Carregador de vez em quando.
+    tasks:
+      - get: appliedenergistics2:item.ToolWirelessTerminal
+    rewards:
+      - xp: 5
+      - choice: [appliedenergistics2:tile.BlockEnergyCell x1, appliedenergistics2:item.ItemMultiMaterial:42 x2, minecraft:ender_pearl x4]
+
+  - id: terminais_sem_fio_extra
+    title: "Terminais Sem Fio Especializados"
+    type: optional
+    deps: [terminal_sem_fio, terminal_padroes]
+    icon: ae2fc:wireless_fluid_pattern_terminal
+    desc: |
+      O Fluid Crafting tem versões sem fio de outros terminais: §ePattern§r (Terminal Sem Fio +
+      Terminal de Padrões), §eInterface§r (com Terminal de Interface) e §eLevel§r (com
+      Mantenedor de Nível). Faça qualquer um.
+    tasks:
+      - one_of: [ae2fc:wireless_fluid_pattern_terminal, ae2fc:wireless_interface_terminal, ae2fc:wireless_level_terminal]
+    rewards:
+      - loot: incomum
+
+  - id: terminal_universal
+    title: "Terminal Sem Fio Universal"
+    type: optional
+    deps: [terminais_sem_fio_extra]
+    icon: ae2fc:wireless_ultra_terminal
+    desc: |
+      Junte o Terminal Sem Fio com os três especializados (Pattern, Interface e Level) e nasce o
+      §eUniversal Wireless Terminal§r: Shift + clique direito troca de modo. Ele pode ficar no
+      slot de Baubles e abrir por tecla de atalho. Um terminal para todos governar!
+    tasks:
+      - get: ae2fc:wireless_ultra_terminal
+    rewards:
+      - loot: raro
+
+  - id: cartoes_terminal
+    title: "Cartão de Ponte Quântica e Cartão de Energia"
+    type: optional
+    deps: [terminal_universal, ponte_quantica]
+    icon: ae2fc:quantum_bridge_card
+    desc: |
+      Dois cartões para terminais sem fio do addon:
+      §e• Quantum Bridge Card§r — conecta o terminal a uma ponte quântica, com §ealcance
+      ilimitado§r (4 Anéis Quânticos, 2 Receptores, 2 Estrelas do Nether).
+      §e• Energy Card§r — energia infinita para o terminal (Células Densas, Carregadores,
+      Singularidades).
+      Faça qualquer um e combine com o terminal na bancada.
+    tasks:
+      - one_of: [ae2fc:quantum_bridge_card, ae2fc:energy_card]
+    rewards:
+      - loot: raro
+
+  - id: p2p_me
+    title: "Túnel P2P - ME"
+    type: main
+    deps: [processador_engenharia, fluix, cartao_memoria]
+    icon: appliedenergistics2:item.ItemMultiPart:460
+    desc: |
+      Um "buraco de minhoca" para cabos! O §eTúnel P2P - ME§r (ferro, Cristais de Fluix e
+      Processador de Engenharia) leva §evários canais§r de um ponto a outro usando só um canal
+      da rede principal.
+
+      Coloque um túnel de entrada e um ou mais de saída (na mesma rede de transporte). Grave o
+      de entrada com o §eCartão de Memória§r (Shift + clique) e aplique nas saídas (clique).
+    tasks:
+      - get: appliedenergistics2:item.ItemMultiPart:460 x2
+    rewards:
+      - xp: 5
+      - choice: [appliedenergistics2:item.ItemMultiMaterial:7 x8, appliedenergistics2:item.ItemMultiMaterial:24 x1, minecraft:iron_ingot x8]
+
+  - id: p2p_info
+    title: "Sintonizando Túneis"
+    type: info
+    deps: [p2p_me]
+    icon: appliedenergistics2:item.ItemMultiPart:466
+    desc: |
+      Um Túnel P2P ME pode ser §esintonizado§r para levar outras coisas: com o túnel já colocado,
+      clique nele com um item "de referência" e ele muda de tipo. Exemplos típicos:
+      §e• Redstone:§r pó de redstone. §e• Itens:§r um baú/funil. §e• Fluidos:§r um balde.
+      §e• Energia RF/EU:§r um item de energia do mod correspondente. §e• Luz:§r uma tocha.
+
+      Os tipos existentes neste pack: ME, Redstone, Item, Fluido, EU, RF, Luz, OpenComputers,
+      Interface ME e Som. Na dúvida, confira o tooltip ou o NEI. Depois, ligue entrada e saída
+      com o Cartão de Memória.
+    tasks:
+      - check
+    rewards:
+      - xp: 1
+
+  - id: p2p_energia
+    title: "Túnel P2P de Energia"
+    type: normal
+    deps: [p2p_info]
+    icon: appliedenergistics2:item.ItemMultiPart:466
+    desc: |
+      Transporte RF ou EU sem cabos de energia pela base: um §eTúnel P2P - RF§r ou §e- EU§r de
+      entrada encostado no gerador e saídas encostadas nas máquinas. A energia passa pela rede
+      de transporte do AE2. Faça qualquer um.
+    tasks:
+      - one_of: [appliedenergistics2:item.ItemMultiPart:465, appliedenergistics2:item.ItemMultiPart:466]
+    rewards:
+      - xp: 3
+      - item: appliedenergistics2:item.ItemMultiPart:460
+
+  - id: p2p_logistica
+    title: "Túneis de Itens e Fluidos"
+    type: optional
+    deps: [p2p_info]
+    icon: appliedenergistics2:item.ItemMultiPart:462
+    desc: |
+      §eTúnel P2P - Item§r e §e- Fluido§r: tubos invisíveis. O que entra num lado sai no outro,
+      longe dali. Perfeito para levar a saída de uma fazenda distante até a base.
+    tasks:
+      - one_of: [appliedenergistics2:item.ItemMultiPart:462, appliedenergistics2:item.ItemMultiPart:463]
+    rewards:
+      - loot: comum
+
+  - id: p2p_sinais
+    title: "Túneis de Sinal"
+    type: optional
+    deps: [p2p_info]
+    icon: appliedenergistics2:item.ItemMultiPart:461
+    desc: |
+      §eRedstone§r, §eLuz§r, §eSom§r e até §eOpenComputers§r: sinais que atravessam a base pelo
+      AE2. Um botão na sala de controle acendendo uma lâmpada lá na mina? Pode! Faça qualquer
+      um desses túneis.
+    tasks:
+      - one_of: [appliedenergistics2:item.ItemMultiPart:461, appliedenergistics2:item.ItemMultiPart:467, appliedenergistics2:item.ItemMultiPart:468, appliedenergistics2:item.ItemMultiPart:472]
+    rewards:
+      - loot: comum
+
+  - id: p2p_interface
+    title: "Túnel P2P de Interface"
+    type: optional
+    deps: [p2p_me, interface_dupla]
+    icon: appliedenergistics2:item.ItemMultiPart:471
+    desc: |
+      Túnel P2P ME + Interface (ou Interface Dupla) = §eTúnel P2P de Interface§r: várias saídas
+      que funcionam como a mesma Interface. Um único conjunto de padrões alimentando várias
+      máquinas idênticas!
+    tasks:
+      - one_of: [appliedenergistics2:item.ItemMultiPart:471, ae2fc:part_fluid_p2p_interface]
+    rewards:
+      - loot: incomum
+
+  - id: alcance_infinito
+    title: "A Rede Sem Fronteiras"
+    type: milestone
+    deps: [terminal_sem_fio, p2p_me, p2p_energia]
+    icon: appliedenergistics2:item.ToolWirelessTerminal
+    banner: "A Rede Sem Fronteiras"
+    subtitle: "Sem fio e por túneis"
+    desc: |
+      Um terminal no bolso, túneis levando canais e energia pela base inteira. Herói, a rede ME
+      deixou de ser um cômodo: ela agora §eocupa a sua base toda§r.
+
+      Organizando a expansão:
+      §e• Pontos de Acesso§r com Amplificadores cobrindo as áreas de trabalho.
+      §e• Túneis P2P ME§r levando 32 canais por um único cabo até outra ala.
+      §e• Túneis de energia§r substituindo linhas de cabo de outros mods.
+
+      Falta só uma fronteira: outras dimensões. Para isso... física quântica!
+    tasks:
+      - get: [appliedenergistics2:item.ToolWirelessTerminal, appliedenergistics2:item.ItemMultiPart:460, appliedenergistics2:tile.BlockWireless]
+    rewards:
+      - xp: 12
+      - kit: {name: "Kit do Engenheiro de Redes", items: [appliedenergistics2:item.ItemMultiPart:460 x4, appliedenergistics2:item.ItemMultiMaterial:42 x4, appliedenergistics2:tile.BlockDenseEnergyCell x1, appliedenergistics2:item.ItemMultiPart:76 x8, appliedenergistics2:item.ItemMultiMaterial:41 x2]}
+      - loot: epico
+
+  # ======================================================================
+  # FASE 7 — PONTE QUÂNTICA E ARMAZENAMENTO ESPACIAL
+  # ======================================================================
+  - id: anel_quantico
+    title: "Anel Quântico ME"
+    type: main
+    deps: [alcance_infinito, celula_energia, cabo_denso]
+    icon: appliedenergistics2:tile.BlockQuantumRing
+    desc: |
+      Para ligar redes entre dimensões, a §ePonte Quântica§r. Ela começa com §e8 Anéis
+      Quânticos ME§r (ferro, Processador de Engenharia, 2 Processadores Lógicos, Célula de
+      Energia e Cabo Denso cada).
+
+      Sim, oito. Cada ponta da ponte precisa da sua estrutura. Comece a juntar processadores!
+    tasks:
+      - get: appliedenergistics2:tile.BlockQuantumRing x8
+    rewards:
+      - xp: 6
+      - choice: [appliedenergistics2:item.ItemMultiMaterial:22 x8, appliedenergistics2:tile.BlockEnergyCell x2, appliedenergistics2:item.ItemMultiPart:76 x8]
+
+  - id: camara_ligacao
+    title: "Câmara de Ligação Quântica"
+    type: main
+    deps: [anel_quantico, perola_fluix]
+    icon: appliedenergistics2:tile.BlockQuantumLinkChamber
+    desc: |
+      4 Vidros de Quartzo + 4 Pérolas de Fluix = §eCâmara de Ligação Quântica ME§r. Ela fica no
+      §ecentro de um quadrado 3×3§r cercada pelos 8 Anéis. Dentro dela vai uma Singularidade
+      Quanticamente Entrelaçada.
+    tasks:
+      - get: appliedenergistics2:tile.BlockQuantumLinkChamber
+    rewards:
+      - xp: 6
+      - choice: [appliedenergistics2:item.ItemMultiMaterial:9 x4, appliedenergistics2:tile.BlockQuartzGlass x8, minecraft:ender_pearl x8]
+
+  - id: singularidade_entrelacada
+    title: "Singularidade Quanticamente Entrelaçada"
+    type: normal
+    deps: [singularidade, camara_ligacao]
+    icon: appliedenergistics2:item.ItemMultiMaterial:48
+    desc: |
+      As Singularidades Entrelaçadas sempre nascem §eem par§r — e cada uma vai numa ponta da
+      ponte. Para criá-las, jogue no chão uma §eSingularidade§r junto com §ePó de Ender§r (pérola do
+      Fim moída no Rebolo) e faça os dois §eexplodirem§r — com TNT, por exemplo. §cFaça longe de
+      casa!§r Coloque uma em cada Câmara de Ligação.
+    tasks:
+      - get: appliedenergistics2:item.ItemMultiMaterial:48 x2
+    rewards:
+      - xp: 4
+      - item: minecraft:tnt x4
+
+  - id: ponte_quantica
+    title: "A Ponte Quântica"
+    type: milestone
+    deps: [singularidade_entrelacada, anel_quantico, camara_ligacao]
+    icon: appliedenergistics2:tile.BlockQuantumLinkChamber
+    banner: "A Ponte Quântica"
+    subtitle: "Duas redes, um só sistema"
+    effect: 4
+    desc: |
+      8 anéis em volta de uma câmara, uma singularidade entrelaçada brilhando lá dentro... e,
+      do outro lado do mundo (ou em outra dimensão!), a sua gêmea. Herói, você §edobrou o
+      espaço§r!
+
+      A Ponte Quântica liga duas redes como se fosse um cabo — inclusive entre dimensões — e
+      transmite até 32 canais. Os dois lados precisam ficar §ecarregados§r (chunk loader!) e
+      com energia.
+
+      Uma base de mineração no Nether ligada à sua central. Uma fábrica no espaço ligada à
+      Terra. Os Antigos fariam festa.
+    tasks:
+      - get: [appliedenergistics2:tile.BlockQuantumRing x8, appliedenergistics2:tile.BlockQuantumLinkChamber, appliedenergistics2:item.ItemMultiMaterial:48]
+    rewards:
+      - xp: 12
+      - kit: {name: "Kit do Físico Quântico", items: [appliedenergistics2:tile.BlockQuantumRing x4, appliedenergistics2:item.ItemMultiMaterial:9 x4, appliedenergistics2:tile.BlockDenseEnergyCell x1, appliedenergistics2:item.ItemMultiMaterial:24 x4, minecraft:nether_star x1]}
+      - loot: epico
+
+  - id: componente_espacial
+    title: "Componente Espacial 2³"
+    type: normal
+    deps: [perola_fluix, processador_engenharia]
+    icon: appliedenergistics2:item.ItemMultiMaterial:32
+    desc: |
+      4 glowstones + 4 Pérolas de Fluix + Processador de Engenharia = §eComponente Espacial 2³§r.
+      Quatro dele (com glowstone e outro processador) fazem o 16³, e quatro do 16³ fazem o 128³.
+    tasks:
+      - get: appliedenergistics2:item.ItemMultiMaterial:32
+    rewards:
+      - xp: 3
+      - item: minecraft:glowstone_dust x16
+
+  - id: celula_espacial
+    title: "Célula de Armazenamento Espacial"
+    type: main
+    deps: [componente_espacial, encaixe_armazenamento]
+    icon: appliedenergistics2:item.ItemSpatialStorageCell.2Cubed
+    desc: |
+      Encaixe + Componente Espacial = §eCélula de Armazenamento Espacial§r. Ela não guarda
+      itens: ela guarda §eum pedaço do mundo§r — blocos, máquinas, baús com conteúdo, até
+      criaturas — de 2×2×2, 16×16×16 ou 128×128×128 blocos!
+    tasks:
+      - get: appliedenergistics2:item.ItemSpatialStorageCell.2Cubed
+    rewards:
+      - xp: 5
+      - choice: [appliedenergistics2:item.ItemMultiMaterial:39 x2, minecraft:glowstone_dust x16, appliedenergistics2:item.ItemMultiMaterial:9 x2]
+
+  - id: pilao_espacial
+    title: "Pilão Espacial"
+    type: main
+    deps: [celula_espacial, cabo_vidro]
+    icon: appliedenergistics2:tile.BlockSpatialPylon
+    desc: |
+      4 Vidros de Quartzo, 2 Pós de Fluix, 2 Cabos de Vidro e um Cristal de Fluix = §ePilão
+      Espacial§r. Os pilões formam as "arestas" da região que será capturada. Você vai precisar
+      de vários (16 é um bom começo).
+    tasks:
+      - get: appliedenergistics2:tile.BlockSpatialPylon x16
+    rewards:
+      - xp: 5
+      - choice: [appliedenergistics2:item.ItemMultiMaterial:8 x8, appliedenergistics2:tile.BlockQuartzGlass x16, appliedenergistics2:item.ItemMultiPart:16 x16]
+
+  - id: porta_espacial
+    title: "Porta Entrada-Saída Espacial"
+    type: main
+    deps: [pilao_espacial, porta_es]
+    icon: appliedenergistics2:tile.BlockSpatialIOPort
+    desc: |
+      Vidro, Cabos, ferro, uma Porta de Entrada-Saída ME e um Processador de Engenharia =
+      §ePorta Entrada-Saída Espacial§r. Coloque a Célula Espacial nela e dê um pulso de
+      redstone: a região delimitada pelos pilões é §erecortada do mundo§r e guardada na célula
+      (ou devolvida, se a célula estiver cheia).
+    tasks:
+      - get: appliedenergistics2:tile.BlockSpatialIOPort
+    rewards:
+      - xp: 5
+      - choice: [minecraft:redstone_block x4, appliedenergistics2:item.ItemMultiMaterial:24 x2, minecraft:lever x2]
+
+  - id: espacial_info
+    title: "Como Recortar o Mundo"
+    type: info
+    deps: [porta_espacial]
+    icon: appliedenergistics2:tile.BlockSpatialPylon
+    desc: |
+      Montagem do Armazenamento Espacial:
+
+      §e1.§r Faça um contorno de §ePilões Espaciais§r ligados à rede, formando as arestas de uma
+      caixa (o tamanho interno precisa caber na célula: 2³, 16³ ou 128³).
+      §e2.§r Ligue a §ePorta Espacial§r na mesma rede, com a célula dentro.
+      §e3.§r Energia! Quanto maior a região, mais energia o recorte exige (a config usa uma
+      fórmula exponencial). Células de Energia ajudam.
+      §e4.§r Um pulso de redstone na porta faz a troca.
+
+      §cAtenção:§r o que estiver dentro da caixa vai junto — inclusive você, se estiver lá!
+      A região guardada fica numa dimensão de armazenamento própria do AE2.
+    tasks:
+      - check
+    rewards:
+      - xp: 2
+
+  - id: componentes_espaciais_maiores
+    title: "Espaços Maiores"
+    type: optional
+    deps: [componente_espacial]
+    icon: appliedenergistics2:item.ItemSpatialStorageCell.16Cubed
+    desc: |
+      Para mudar uma casa inteira de lugar: §eCélula Espacial 16³§r. Para uma montanha:
+      §e128³§r. Faça qualquer uma das duas.
+    tasks:
+      - one_of: [appliedenergistics2:item.ItemSpatialStorageCell.16Cubed, appliedenergistics2:item.ItemSpatialStorageCell.128Cubed]
+    rewards:
+      - loot: incomum
+
+  - id: espaco_guardado
+    title: "O Espaço num Cristal"
+    type: milestone
+    deps: [espacial_info, celula_espacial, pilao_espacial]
+    icon: appliedenergistics2:item.ItemSpatialStorageCell.2Cubed
+    banner: "O Espaço num Cristal"
+    subtitle: "Recortar e colar o mundo"
+    desc: |
+      Um pulso de redstone e... um cubo do mundo some, guardado dentro de uma célula do tamanho
+      da sua mão. Herói, você §erecortou o espaço§r!
+
+      Usos que eu adoro:
+      §e• Mudança de base:§r guarde uma sala inteira de máquinas e cole em outro lugar.
+      §e• Quarto secreto:§r a região guardada vira um pequeno mundo isolado.
+      §e• Transporte de estruturas:§r aquele altar complicado? Leve-o inteiro.
+
+      §cSó não esqueça de sair da caixa antes do pulso.§r Eu não quero ter que te procurar
+      dentro de um cristal.
+    tasks:
+      - get: [appliedenergistics2:item.ItemSpatialStorageCell.2Cubed, appliedenergistics2:tile.BlockSpatialIOPort, appliedenergistics2:tile.BlockSpatialPylon x8]
+    rewards:
+      - xp: 12
+      - kit: {name: "Kit do Cartógrafo Espacial", items: [appliedenergistics2:item.ItemMultiMaterial:33 x1, appliedenergistics2:tile.BlockSpatialPylon x8, appliedenergistics2:tile.BlockDenseEnergyCell x1, minecraft:glowstone x8, appliedenergistics2:item.ItemMultiMaterial:9 x4]}
+      - loot: epico
+
+  # ======================================================================
+  # FASE 8 — FERRAMENTAS E CURIOSIDADES
+  # ======================================================================
+  - id: cajado_carregado
+    title: "Cajado Carregado"
+    type: optional
+    deps: [carregador]
+    icon: appliedenergistics2:item.ToolChargedStaff
+    desc: |
+      Um Cristal Carregado na ponta de 2 ferros = §eCajado Carregado§r. Ele dá choques nos
+      inimigos usando energia. Recarregue no Carregador e saia distribuindo faíscas.
+    tasks:
+      - get: appliedenergistics2:item.ToolChargedStaff
+    rewards:
+      - loot: comum
+
+  - id: manipulador_entropia
+    title: "Manipulador de Entropia"
+    type: optional
+    deps: [celula_energia, processador_engenharia]
+    icon: appliedenergistics2:item.ToolEntropyManipulator
+    desc: |
+      O §eManipulador de Entropia§r (Fluix, Processador de Engenharia, Célula de Energia e ferro)
+      esquenta ou esfria blocos: derrete gelo, transforma água em gelo, funde coisas no lugar...
+      Experimente com e sem Shift. Recarregue no Carregador.
+    tasks:
+      - get: appliedenergistics2:item.ToolEntropyManipulator
+    rewards:
+      - loot: comum
+
+  - id: aplicador_cor
+    title: "Aplicador de Cor"
+    type: optional
+    deps: [nucleos, celula_energia]
+    icon: appliedenergistics2:item.ToolColorApplicator
+    desc: |
+      O §eAplicador de Cor§r pinta cabos já instalados (e outros blocos) usando corantes, bolas
+      de neve ou Bolas de Tinta guardadas numa célula interna. Recolorir uma rede inteira sem
+      quebrar nada: um sonho!
+    tasks:
+      - get: appliedenergistics2:item.ToolColorApplicator
+    rewards:
+      - loot: comum
+
+  - id: tnt_minuscula
+    title: "TNT Minúscula"
+    type: optional
+    deps: [po_certus]
+    icon: appliedenergistics2:tile.BlockTinyTNT
+    desc: |
+      2 Pós de Certus + 2 pólvoras = §eTNT Minúscula§r: uma explosão pequenininha, ótima para
+      abrir caminho na Pedra do Céu ou cavar com precisão. Pequena, mas ainda é TNT — §ccuidado§r.
+    tasks:
+      - get: appliedenergistics2:tile.BlockTinyTNT x2
+    rewards:
+      - loot: comum
+
+  - id: iluminacao_quartzo
+    title: "Iluminação de Quartzo"
+    type: optional
+    deps: [carregador]
+    icon: appliedenergistics2:tile.BlockQuartzTorch
+    desc: |
+      Cristal Carregado + ferro = 2 §eInstalações de Quartzo Carregado§r, umas "tochas" de cristal
+      elegantes. A §eInstalação Detectora de Luz§r (quartzo do Nether + ferro) emite redstone
+      conforme a luz do ambiente. Faça qualquer uma.
+    tasks:
+      - one_of: [appliedenergistics2:tile.BlockQuartzTorch, appliedenergistics2:tile.BlockLightDetector]
+    rewards:
+      - loot: comum
+
+  # ======================================================================
+  # FASE 9 — ARMAZENAMENTO EXTREMO E MARCO FINAL
+  # ======================================================================
+  - id: celula_fluido_quantica
+    title: "Células de Fluido Extremas"
+    type: optional
+    deps: [celulas_fluido_maiores, ponte_quantica]
+    icon: ae2fc:fluid_storage.quantum
+    desc: |
+      As versões líquidas das células extremas: §eFluid Quantum§r (Anéis Quânticos + componentes
+      de fluido 16384k), §eDigital Singularity§r e §eArtificial Universe§r. Faça qualquer uma —
+      e guarde um oceano.
+    tasks:
+      - one_of: [ae2fc:fluid_storage.quantum, ae2fc:fluid_storage.singularity, ae2fc:fluid_storage.Universe]
+    rewards:
+      - loot: epico
+
+  - id: armazenamento_singularidade
+    title: "Singularity Crafting Storage"
+    type: optional
+    deps: [celula_quantica, cpu_avancada]
+    icon: appliedenergistics2:tile.BlockSingularityCraftingStorage
+    desc: |
+      O topo absoluto da CPU: 8 células Digital Singularity + uma Unidade de Fabricação =
+      §eSingularity Crafting Storage§r. Se você chegou até aqui, eu não tenho mais nada a
+      ensinar sobre bytes. Só a aplaudir.
+    tasks:
+      - get: appliedenergistics2:tile.BlockSingularityCraftingStorage
+    rewards:
+      - loot: epico
+
+  - id: celula_quantica
+    title: "Célula de Armazenamento Quântica"
+    type: optional
+    deps: [celulas_gigantes, ponte_quantica]
+    icon: appliedenergistics2:item.ItemExtremeStorageCell.Quantum
+    desc: |
+      Para quem acha 16384k pouco: 4 Anéis Quânticos + 4 Componentes 16384k + uma Célula Densa
+      de Energia = §eQuantum ME Storage Cell§r. Daqui saem ainda a "Digital Singularity" (8
+      quânticas + Condensador) e a "Artificial Universe" (com Singularidades e uma Estrela do
+      Nether). Faça qualquer uma.
+    tasks:
+      - one_of: [appliedenergistics2:item.ItemExtremeStorageCell.Quantum, appliedenergistics2:item.ItemExtremeStorageCell.Singularity, appliedenergistics2:item.ItemExtremeStorageCell.Universe]
+    rewards:
+      - loot: epico
+
+  - id: mestre_me
+    title: "Mestre do Armazenamento Digital"
+    type: milestone
+    deps: [fabrica_digital, rede_fluidos, ponte_quantica, espaco_guardado, armazem_digital]
+    icon: appliedenergistics2:tile.BlockController
+    banner: "Mestre do Armazenamento Digital"
+    subtitle: "O Volume do Armazenamento Digital está completo"
+    effect: 3
+    desc: |
+      Herói... deixa eu respirar fundo (no sentido figurado — eu sou um livro).
+
+      Você começou quebrando um minério azulado. Jogou cristais na água e viu o Fluix nascer.
+      Caçou meteoritos atrás de quatro prensas caídas do céu. Gravou processadores, ligou o
+      primeiro Controlador e viu o mundo caber num disco. Ensinou a rede a mover, depois a
+      fabricar, depois a cuidar de fluidos. Atravessou o espaço com túneis e pontes quânticas.
+      E, por fim, guardou o próprio espaço dentro de um cristal.
+
+      §bO Volume do Armazenamento Digital está reescrito.§r Esta página é uma das mais
+      brilhantes do §6Selo da Engrenagem§r: nenhuma grande indústria do Registro funciona sem
+      um sistema que lembre de tudo.
+
+      Obrigada, de coração. Agora vá — e ligue essa rede a cada máquina do pack.
+    tasks:
+      - get: [appliedenergistics2:tile.BlockController, appliedenergistics2:tile.BlockMolecularAssembler, ae2fc:fluid_interface, appliedenergistics2:tile.BlockQuantumLinkChamber, appliedenergistics2:tile.BlockSpatialIOPort]
+    rewards:
+      - xp: 15
+      - kit: {name: "Legado do Mestre ME", items: [appliedenergistics2:item.ItemAdvancedStorageCell.256k x1, ae2fc:fluid_storage64 x1, appliedenergistics2:tile.BlockCraftingUnit:3 x1, appliedenergistics2:item.ItemMultiMaterial:30 x4, appliedenergistics2:tile.BlockDenseEnergyCell x2]}
+      - loot: [epico x2]

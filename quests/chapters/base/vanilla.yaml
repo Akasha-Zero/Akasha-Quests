@@ -1,0 +1,2225 @@
+chapter:
+  id: vanilla
+  title: "Primeiros Passos"
+  prefix: ""
+  color: "§a"
+  order: 100
+  icon: minecraft:diamond_pickaxe
+  desc: |
+    §aO Volume da Sobrevivência.§r Mineração em camadas, diamantes, encantamentos,
+    poções, o Nether até os Blazes, vilas, fazendas, redstone, pesca, mapas e o
+    caminho até o Fim. (Minecraft 1.7.10 com os ajustes deste pack)
+
+quests:
+  # ======================================================================
+  # FASE 0 — ABERTURA
+  # ======================================================================
+  - id: volume_sobrevivencia
+    title: "O Volume da Sobrevivência"
+    type: info
+    icon: minecraft:grass
+    desc: |
+      Você já sabe acender uma fornalha e fundir ferro — o Prólogo cuidou disso. Agora
+      vem a parte que os Antigos chamavam de "a arte de não morrer".
+
+      Este Volume cobre o Minecraft "de raiz" em profundidade: §emineração por camadas§r,
+      §ediamantes§r, §eencantamentos§r, §epoções§r, o §cNether§r até os Blazes, §evilas§r,
+      §efazendas§r, §eredstone§r, pesca e mapas. No fim, você vai estar com tudo pronto
+      para mergulhar em qualquer outro Volume do Registro.
+
+      §aDica:§r o pack traz várias novidades do §eEt Futurum§r (ferro bruto, ardósia
+      profunda, mesa de encantamentos nova). Eu aviso sempre que elas mudarem algo aqui.
+    tasks:
+      - check
+    rewards:
+      - xp: 1
+
+  - id: perigos_da_noite
+    title: "O Que Mora no Escuro"
+    type: info
+    deps: [volume_sobrevivencia]
+    icon: minecraft:rotten_flesh
+    desc: |
+      Uma conversa séria, rapidinho. Monstros nascem em luz baixa: §eZumbis§r,
+      §eEsqueletos§r, §eAranhas§r e os §cCreepers§r (que explodem perto de você).
+
+      §e• F7§r liga a sobreposição de mobs do NEI: marca em vermelho onde monstros podem
+      nascer. Ilumine até sumir o vermelho.
+      §e• F9§r mostra as bordas dos chunks.
+      §c• Cuidado:§r este pack tem §cInfernal Mobs§r — de vez em quando um monstro nasce
+      com nome e poderes extras (fogo, teleporte, veneno...). Se aparecer um nome
+      estranho em cima da cabeça dele, recue e lute com calma.
+    tasks:
+      - check
+    rewards:
+      - item: minecraft:torch x16
+      - xp: 1
+
+  # ======================================================================
+  # FASE 1 — EQUIPAMENTO DE FERRO
+  # ======================================================================
+  - id: armadura_ferro
+    title: "Vestido de Ferro"
+    type: main
+    deps: [volume_sobrevivencia]
+    icon: minecraft:iron_chestplate
+    desc: |
+      Ferramenta de ferro você já tem. Mas e o corpo? Uma flecha bem colocada no escuro
+      e lá se vai a aventura.
+
+      Faça a §earmadura completa de ferro§r: capacete (5 lingotes), peitoral (8),
+      calças (7) e botas (4) — 24 lingotes no total. Ela reduz bastante o dano e é o
+      mínimo decente antes de descer para as camadas fundas.
+
+      Vista tudo e me mostre. Agora sim, Herói, dá pra conversar com um Creeper.
+      (Brincadeira. Não converse com Creepers.)
+    tasks:
+      - get: [minecraft:iron_helmet, minecraft:iron_chestplate, minecraft:iron_leggings, minecraft:iron_boots]
+    rewards:
+      - xp: 3
+      - choice: [minecraft:iron_ingot x8, minecraft:cooked_beef x12, minecraft:arrow x32]
+
+  - id: balde
+    title: "Um Balde de Possibilidades"
+    type: main
+    deps: [armadura_ferro]
+    icon: minecraft:water_bucket
+    desc: |
+      Três lingotes de ferro em "V" fazem o item mais versátil da sobrevivência.
+
+      Um §eBalde de Água§r apaga fogo em você, amortece quedas (coloque a água embaixo
+      antes de cair!), cria escadas de água para subir de cavernas e transforma lava em
+      §eobsidiana§r. Um balde de lava é combustível que dura muito na fornalha.
+
+      Tenha um balde vazio e um com água. §aDica:§r duas fontes de água num buraco 2×1
+      formam uma fonte infinita.
+    tasks:
+      - get: [minecraft:bucket, minecraft:water_bucket]
+    rewards:
+      - xp: 3
+      - choice: [minecraft:iron_ingot x6, minecraft:bread x12, minecraft:torch x32]
+
+  - id: pederneira
+    title: "Faísca Controlada"
+    type: normal
+    deps: [armadura_ferro]
+    desc: |
+      Um lingote de ferro e um §eSílex§r (cascalho quebrado às vezes solta sílex)
+      fazem o §eIsqueiro§r.
+
+      Ele acende fogo, liga TNT e — o mais importante — §eacende portais do Nether§r.
+      Guarde um no baú desde já; você vai precisar dele daqui a pouco.
+    tasks:
+      - get: minecraft:flint_and_steel
+    rewards:
+      - item: minecraft:gravel x16
+      - xp: 1
+
+  - id: arco_flechas
+    title: "Alcance é Segurança"
+    type: normal
+    deps: [armadura_ferro]
+    icon: minecraft:bow
+    desc: |
+      Lutar de perto com um Creeper é péssima ideia. Lutar de longe é ótima ideia.
+
+      Faça um §eArco§r (3 gravetos + 3 linhas) e §e32 flechas§r (sílex, graveto e pena).
+      Linha cai de aranhas; penas, de galinhas. Segure o botão para puxar a corda: quanto
+      mais tempo, mais forte o disparo.
+    tasks:
+      - get: [minecraft:bow, minecraft:arrow x32]
+    rewards:
+      - item: minecraft:arrow x16
+      - xp: 2
+
+  - id: tesoura
+    title: "Tesoura Afiada"
+    type: normal
+    deps: [armadura_ferro]
+    desc: |
+      Dois lingotes na diagonal e pronto: §eTesoura§r.
+
+      Ela tosquia ovelhas sem matá-las (1 a 3 lãs por ovelha, e a lã volta a crescer
+      quando ela come grama), corta folhas e teias mantendo o bloco e colhe trepadeiras.
+      Barato, útil e silencioso.
+    tasks:
+      - get: minecraft:shears
+    rewards:
+      - item: minecraft:wool x4
+      - xp: 1
+
+  # ======================================================================
+  # FASE 2 — MINERAÇÃO POR CAMADAS
+  # ======================================================================
+  - id: camadas_do_mundo
+    title: "As Camadas do Mundo"
+    type: info
+    deps: [armadura_ferro]
+    icon: minecraft:stone
+    desc: |
+      Antes de cavar fundo, uma aula de geologia akáshica! A altura aparece no §eF3§r
+      (coordenada Y). Mar fica em Y 63; rocha-mãe em Y 0–4.
+
+      §e• Carvão:§r Y 0–127 (muito comum).
+      §e• Ferro:§r Y 0–63.  §e• Lápis-lazúli:§r Y 0–31 (mais perto de Y 16).
+      §e• Ouro:§r Y 0–31.  §e• Redstone e Diamante:§r Y 0–15.
+      §e• Esmeralda:§r Y 4–31, só nas Colinas Extremas (montanhas).
+
+      §bEt Futurum:§r abaixo de Y ~22 a pedra vira §eArdósia Profunda§r (Deepslate),
+      mais dura de quebrar — e os minérios lá são versões de ardósia. O melhor andar para
+      diamante é entre §eY 5 e 12§r. Lagos de lava ficam em Y 11: cuidado ao cavar!
+    tasks:
+      - check
+    rewards:
+      - xp: 1
+
+  - id: minerio_bruto
+    title: "Ferro Bruto"
+    type: normal
+    deps: [camadas_do_mundo]
+    icon: etfuturum:raw_ore:1
+    desc: |
+      Reparou? Neste mundo, quebrar minério de ferro solta §eFerro Bruto§r (Raw Iron), não
+      o bloco. É uma página do Et Futurum que voltou ao lugar.
+
+      Funda o ferro bruto na fornalha para ter lingotes. §aFortuna§r aumenta a quantidade
+      de ferro bruto; §aToque Suave§r ainda pega o bloco do minério inteiro (útil para
+      máquinas que dobram minério depois). O mesmo vale para ouro e cobre.
+
+      Junte §e16 Ferros Brutos§r. Nove deles também formam um bloco compacto.
+    tasks:
+      - get: etfuturum:raw_ore:1 x16
+    rewards:
+      - item: minecraft:coal x8
+      - xp: 2
+
+  - id: bloco_carvao
+    title: "Carvão Compacto"
+    type: normal
+    deps: [camadas_do_mundo]
+    desc: |
+      Nove carvões viram um §eBloco de Carvão§r, que queima por 80 itens na fornalha (o
+      carvão solto queima 8). Guarda melhor e cansa menos o braço.
+
+      Faça §e2 blocos§r. Carvão vegetal (de tronco) não forma bloco aqui — só o mineral.
+    tasks:
+      - get: minecraft:coal_block x2
+    rewards:
+      - item: minecraft:torch x16
+      - xp: 1
+
+  - id: ouro
+    title: "Brilho Dourado"
+    type: main
+    deps: [camadas_do_mundo]
+    icon: minecraft:gold_ingot
+    desc: |
+      O ouro mora abaixo de Y 32 (e em grande quantidade nos Mesas/Badlands, onde aparece
+      até perto da superfície). Ele também sai como §eOuro Bruto§r ao minerar.
+
+      Ferramentas de ouro são rápidas, mas frágeis. O ouro brilha mesmo é nas receitas:
+      relógios, trilhos energizados, maçãs douradas, cenouras douradas e mais.
+
+      Junte §e16 lingotes de ouro§r.
+    tasks:
+      - get: minecraft:gold_ingot x16
+    rewards:
+      - xp: 3
+      - choice: [minecraft:iron_ingot x8, minecraft:coal x16, minecraft:cooked_porkchop x8]
+
+  - id: redstone
+    title: "Pó Vermelho"
+    type: main
+    deps: [camadas_do_mundo]
+    icon: minecraft:redstone
+    desc: |
+      Minério de redstone fica bem fundo (Y 0–15) e brilha quando você toca nele. Cada
+      bloco solta 4 ou 5 pós (mais com Fortuna).
+
+      A §eRedstone§r é a eletricidade do mundo antigo: fios, tochas, pistões, portas
+      automáticas, relógios... e quase todo mod de tecnologia pede um pouco dela.
+
+      Junte §e32 de redstone§r.
+    tasks:
+      - get: minecraft:redstone x32
+    rewards:
+      - xp: 3
+      - choice: [minecraft:iron_ingot x8, minecraft:torch x32, minecraft:bread x12]
+
+  - id: lapis
+    title: "Azul Profundo"
+    type: main
+    deps: [camadas_do_mundo]
+    icon: minecraft:dye:4
+    desc: |
+      O §eLápis-Lazúli§r aparece entre Y 0 e 31, mais denso perto de Y 16. Cada minério
+      solta vários pedaços azuis.
+
+      §bEt Futurum:§r a Mesa de Encantamentos deste pack §ecobra lápis§r a cada
+      encantamento (1 a 3 pedaços). Ou seja: guarde lápis como quem guarda ouro!
+
+      Junte §e32 Lápis-Lazúli§r.
+    tasks:
+      - get: minecraft:dye:4 x32
+    rewards:
+      - xp: 3
+      - choice: [minecraft:iron_ingot x8, minecraft:coal x16, minecraft:arrow x32]
+
+  - id: tunel_ramificado
+    title: "A Técnica do Túnel"
+    type: info
+    deps: [camadas_do_mundo]
+    icon: minecraft:iron_pickaxe
+    desc: |
+      Quer diamantes com eficiência? Vou te contar o segredo dos mineradores antigos.
+
+      Desça em escada até §eY 11 ou 12§r. Cave um corredor principal e, a partir dele,
+      §etúneis laterais§r de 1×2 separados por 2 ou 3 blocos de pedra. Assim você enxerga
+      quase todo minério sem cavar à toa.
+
+      §c• Nunca cave reto para baixo.§r Lava gosta de esperar embaixo.
+      §a• Leve:§r balde de água, tochas, comida e um bloco de pedra para tapar buracos.
+    tasks:
+      - check
+    rewards:
+      - item: minecraft:torch x32
+      - xp: 1
+
+  - id: diamante
+    title: "O Primeiro Diamante"
+    type: main
+    deps: [tunel_ramificado, redstone]
+    icon: minecraft:diamond
+    desc: |
+      Ali, no meio da ardósia, um brilho azul-claro... É ele!
+
+      O §eDiamante§r só pode ser minerado com picareta de ferro ou melhor, e mora abaixo
+      de Y 16. Cada minério solta um diamante (Fortuna aumenta a chance de vários).
+
+      Junte §e5 diamantes§r. Os três primeiros vão virar uma picareta; os outros,
+      a Mesa de Encantamentos.
+    tasks:
+      - get: minecraft:diamond x5
+    rewards:
+      - xp: 3
+      - choice: [minecraft:iron_ingot x12, minecraft:dye:4 x16, minecraft:redstone x16]
+
+  - id: picareta_diamante
+    title: "Picareta de Diamante"
+    type: main
+    deps: [diamante]
+    desc: |
+      Três diamantes e dois gravetos: a ferramenta que separa os aventureiros dos
+      turistas.
+
+      A §ePicareta de Diamante§r dura muito (1561 usos) e é a única picareta comum que
+      quebra §eobsidiana§r. Encante-a mais tarde com Eficiência, Inquebrável e Fortuna e
+      ela vira a sua melhor amiga.
+    tasks:
+      - get: minecraft:diamond_pickaxe
+    rewards:
+      - xp: 3
+      - choice: [minecraft:torch x32, minecraft:cooked_beef x12, minecraft:iron_ingot x8]
+
+  - id: obsidiana
+    title: "Vidro Vulcânico"
+    type: main
+    deps: [picareta_diamante, balde]
+    icon: minecraft:obsidian
+    desc: |
+      Água corrente sobre §efonte de lava§r forma §eObsidiana§r: um bloco resistente a
+      explosões que só sai com picareta de diamante (e demora!).
+
+      Jogue água num lago de lava, espere esfriar e minere. §cCuidado§r para não
+      quebrar o bloco acima da lava e cair dentro.
+
+      Junte §e14 obsidianas§r: 10 para um portal do Nether e 4 para a Mesa de
+      Encantamentos.
+    tasks:
+      - get: minecraft:obsidian x14
+    rewards:
+      - xp: 3
+      - choice: [minecraft:water_bucket, minecraft:diamond, minecraft:iron_ingot x12]
+
+  - id: ferramentas_diamante
+    title: "Arsenal Cristalino"
+    type: normal
+    deps: [picareta_diamante]
+    icon: minecraft:diamond_sword
+    desc: |
+      Uma picareta sozinha é solitária. Complete o kit com §eEspada§r, §eMachado§r e
+      §ePá§r de diamante.
+
+      §aDica de economia:§r se os diamantes estão contados, priorize a espada. Pá e
+      machado de ferro dão conta por bastante tempo.
+    tasks:
+      - get: [minecraft:diamond_sword, minecraft:diamond_axe, minecraft:diamond_shovel]
+    rewards:
+      - item: minecraft:stick x16
+      - xp: 2
+
+  - id: armadura_diamante
+    title: "Couraça de Diamante"
+    type: normal
+    deps: [ferramentas_diamante]
+    icon: minecraft:diamond_chestplate
+    desc: |
+      24 diamantes. É caro, eu sei. Mas a §earmadura completa de diamante§r é o padrão
+      de segurança para o Nether, o Fim e boa parte dos Volumes de aventura.
+
+      §bEt Futurum:§r no capítulo "Ecos do Futuro" você pode transformar essa armadura em
+      §eNetherita§r na Mesa de Ferraria. Então ela nunca é desperdício!
+    tasks:
+      - get: [minecraft:diamond_helmet, minecraft:diamond_chestplate, minecraft:diamond_leggings, minecraft:diamond_boots]
+    rewards:
+      - item: minecraft:golden_apple x2
+      - xp: 2
+
+  - id: esmeralda_minerio
+    title: "A Pedra das Montanhas"
+    type: optional
+    deps: [camadas_do_mundo]
+    icon: minecraft:emerald
+    desc: |
+      O minério de §eEsmeralda§r é raríssimo: veios de um só bloco, entre Y 4 e 31, e
+      apenas nos biomas de §eColinas Extremas§r.
+
+      Se encontrar um, comemore — esmeraldas são a moeda dos aldeões. Se não encontrar,
+      relaxa: o comércio também dá esmeraldas. Tenha §e1 esmeralda§r.
+    tasks:
+      - get: minecraft:emerald
+    rewards:
+      - loot: comum
+
+  - id: mina_abandonada
+    title: "Trilhos Esquecidos"
+    type: optional
+    deps: [tunel_ramificado]
+    icon: minecraft:rail
+    desc: |
+      Corredores de madeira, trilhos enferrujados, teias... uma §eMina Abandonada§r.
+      Ela atravessa muitas camadas e expõe minério em todo canto, mas tem
+      §cGeradores de Aranhas de Caverna§r (as pequenas e venenosas).
+
+      Recolha §e16 trilhos§r dos corredores (ou fabrique) e pegue uma §eVagoneta§r. Baús
+      de mina às vezes guardam pão, ferro, ouro, diamantes e até mochilas de Morcego!
+    tasks:
+      - get: [minecraft:rail x16, minecraft:minecart]
+    rewards:
+      - loot: comum
+
+  - id: masmorra
+    title: "A Sala do Gerador"
+    type: optional
+    deps: [tunel_ramificado]
+    icon: minecraft:mossy_cobblestone
+    desc: |
+      Paredes de pedregulho musgoso, um gerador girando no centro e dois baús: uma
+      §eMasmorra§r!
+
+      Ilumine o gerador com tochas em volta (ou quebre-o) e saqueie os baús. Lá podem
+      estar selas, etiquetas de nome, maçãs douradas e discos de música.
+
+      Traga §eum tesouro de masmorra§r qualquer da lista. (Se fabricou, eu finjo que não vi.)
+    tasks:
+      - one_of: [minecraft:saddle, minecraft:name_tag, minecraft:golden_apple, minecraft:record_13, minecraft:record_cat]
+    rewards:
+      - loot: comum
+
+  - id: tnt
+    title: "Mineração Explosiva"
+    type: optional
+    deps: [tunel_ramificado]
+    desc: |
+      Cinco pólvoras e quatro areias fazem uma §eTNT§r. Acenda com isqueiro ou redstone e
+      corra — 4 segundos, nada mais.
+
+      É útil para abrir espaço rápido, mas §cdestrói parte dos minérios§r e assusta a
+      vizinhança. Use com consciência (e longe da base).
+    tasks:
+      - get: minecraft:tnt x4
+    rewards:
+      - loot: comum
+
+  - id: lava_combustivel
+    title: "Combustível Líquido"
+    type: normal
+    deps: [balde, camadas_do_mundo]
+    icon: minecraft:lava_bucket
+    desc: |
+      Lagos de lava nas profundezas são perigosos... e generosos. Um §eBalde de Lava§r na
+      fornalha funde §e100 itens§r (o carvão, só 8) e devolve o balde vazio.
+
+      Encha §eum balde de lava§r com cuidado: pise firme, nunca de frente para a lava
+      descendo, e tenha água por perto.
+    tasks:
+      - get: minecraft:lava_bucket
+    rewards:
+      - item: minecraft:bucket
+      - xp: 1
+
+  - id: slime
+    title: "Gosma Verde"
+    type: optional
+    deps: [camadas_do_mundo]
+    icon: minecraft:slime_ball
+    desc: |
+      §eSlimes§r aparecem em pântanos à noite e em certos "chunks de slime" no subterrâneo
+      (abaixo de Y 40), em qualquer luz. Os grandes se dividem em menores ao morrer.
+
+      §eBolas de Slime§r fazem pistões grudentos, laços, cremes de magma e blocos de slime.
+      Junte §e8§r.
+    tasks:
+      - get: minecraft:slime_ball x8
+    rewards:
+      - loot: comum
+
+  - id: templo
+    title: "Templos Perdidos"
+    type: optional
+    deps: [volume_sobrevivencia]
+    icon: minecraft:sandstone:1
+    desc: |
+      Pirâmides de arenito no deserto e templos de pedra musgosa na selva guardam baús —
+      e armadilhas! No deserto, §cnão pise na placa de pressão do fundo§r (TNT embaixo);
+      na selva, cuidado com fios e flechas.
+
+      §eNovidade do pack:§r templos do deserto e da selva também trazem uma §eWaystone§r.
+      Encontre um templo, saqueie com cuidado e marque esta página.
+    tasks:
+      - check
+    rewards:
+      - loot: comum
+
+  - id: mineracao_profunda
+    title: "Mestre das Profundezas"
+    type: milestone
+    deps: [diamante, ouro, lapis, obsidiana, minerio_bruto]
+    icon: minecraft:diamond_ore
+    banner: "Mestre das Profundezas!"
+    subtitle: "As camadas do mundo não têm mais segredos"
+    desc: |
+      Lembra quando a gente mal sabia o que era uma fornalha? Olha você agora: ferro,
+      ouro, redstone, lápis, diamantes e obsidiana — toda a coluna geológica do mundo
+      passou pela sua picareta.
+
+      Essa página do Registro se chama §eAs Camadas§r, e eu adoro ela. Ela explica por
+      que cada coisa está onde está... e quase todos os Volumes de tecnologia vão te
+      mandar de volta para lá, atrás de cobre, estanho, urânio e cristais.
+
+      Toma: um kit de minerador para a próxima expedição. Agora, encantamentos!
+    tasks:
+      - check
+    rewards:
+      - kit:
+          name: "Kit do Minerador"
+          items: ["minecraft:torch x64", "minecraft:cooked_beef x16", "minecraft:iron_pickaxe", "minecraft:water_bucket"]
+      - loot: incomum
+      - xp: 5
+
+  # ======================================================================
+  # FASE 3 — ENCANTAMENTOS
+  # ======================================================================
+  - id: cana_acucar
+    title: "Cana-de-Açúcar"
+    type: normal
+    deps: [volume_sobrevivencia]
+    icon: minecraft:reeds
+    desc: |
+      Livros são feitos de papel, papel é feito de §eCana-de-Açúcar§r, e ela cresce na
+      beira da água (em areia, terra ou grama encostada em água).
+
+      Plante algumas e colha as de cima, deixando a base. Três canas viram três papéis.
+      Junte §e32 canas§r — elas também viram açúcar (bolo, poções de agilidade).
+    tasks:
+      - get: minecraft:reeds x32
+    rewards:
+      - item: minecraft:reeds x8
+      - xp: 1
+
+  - id: couro
+    title: "Couro e Leitura"
+    type: normal
+    deps: [volume_sobrevivencia]
+    icon: minecraft:leather
+    desc: |
+      Vacas soltam §eCouro§r (0 a 2 por vaca). Coelhos do Et Futurum também: 4 peles de
+      coelho fazem 1 couro.
+
+      Um couro e três papéis formam um §eLivro§r. Cada Estante pede 3 livros, e a mesa
+      de encantamentos quer 15 estantes por perto: são §e45 livros§r no total!
+
+      Comece com §e15 livros§r e vá completando. Uma criação de vacas resolve o couro de
+      vez (veja a fase de pecuária).
+    tasks:
+      - get: minecraft:book x15
+    rewards:
+      - item: minecraft:leather x6
+      - xp: 2
+
+  - id: mesa_encantamentos
+    title: "A Mesa dos Encantamentos"
+    type: main
+    deps: [obsidiana, diamante, couro]
+    icon: minecraft:enchanting_table
+    desc: |
+      Um livro, dois diamantes e quatro obsidianas: a §eMesa de Encantamentos§r. Foi uma
+      das primeiras páginas mágicas que os Antigos escreveram, sabia?
+
+      §bEt Futurum:§r a mesa deste pack funciona como nas versões novas: ela §emostra uma
+      prévia§r do encantamento, §ecobra Lápis-Lazúli§r (1 a 3) e gasta só 1 a 3 níveis
+      de XP, mesmo nas opções caras. O nível exigido continua alto, então junte XP.
+
+      Fabrique a mesa e coloque num cantinho bonito. Ela gosta de livros por perto...
+    tasks:
+      - get: minecraft:enchanting_table
+    rewards:
+      - xp: 3
+      - choice: [minecraft:dye:4 x24, minecraft:book x9, minecraft:experience_bottle x8]
+
+  - id: estantes
+    title: "Biblioteca Arcana"
+    type: main
+    deps: [mesa_encantamentos]
+    icon: minecraft:bookshelf
+    desc: |
+      Sozinha, a mesa só alcança encantamentos fracos. Com §e15 Estantes§r ao redor, ela
+      chega ao nível 30!
+
+      Monte as estantes num anel a §e1 bloco de distância§r da mesa, no mesmo nível ou um
+      acima, sem nada no meio (nem tocha, nem tapete). Cada estante = 6 tábuas + 3 livros.
+
+      Me mostre §e15 estantes§r. Eu fico toda arrepiada perto de tanto livro junto.
+    tasks:
+      - get: minecraft:bookshelf x15
+    rewards:
+      - xp: 3
+      - choice: [minecraft:dye:4 x24, minecraft:experience_bottle x8, minecraft:paper x24]
+
+  - id: nivel_trinta
+    title: "Trinta Níveis"
+    type: normal
+    deps: [estantes]
+    icon: minecraft:experience_bottle
+    desc: |
+      O encantamento mais forte da mesa pede §enível 30§r. Como juntar XP rápido?
+
+      §e• Minerar§r carvão, redstone, lápis, diamante e quartzo dá XP.
+      §e• Fundir§r na fornalha dá XP ao retirar os itens.
+      §e• Mobs§r dão XP; uma fazenda de mobs (uma torre escura com queda) é o ápice.
+
+      Chegue ao §enível 30§r (não será consumido). §aDica:§r morrer derruba quase todo
+      o XP — encante antes de se arriscar!
+    tasks:
+      - xp: 30
+    rewards:
+      - item: minecraft:dye:4 x9
+      - xp: 2
+
+  - id: primeiro_encantamento
+    title: "Palavras de Poder"
+    type: main
+    deps: [estantes]
+    icon: minecraft:enchanted_book
+    desc: |
+      Coloque um item na mesa, o lápis no espaço ao lado e escolha uma das três opções.
+      Livros também podem ser encantados — e viram §eLivros Encantados§r, que você aplica
+      depois na bigorna em qualquer ferramenta.
+
+      Encante §eum livro§r e me mostre o Livro Encantado. Os favoritos dos mineradores:
+      §aEficiência§r, §aInquebrável§r, §aFortuna§r e §aToque Suave§r (Fortuna e Toque
+      Suave não combinam no mesmo item).
+    tasks:
+      - get: minecraft:enchanted_book
+    rewards:
+      - xp: 3
+      - choice: [minecraft:dye:4 x16, minecraft:book x8, minecraft:experience_bottle x8]
+
+  - id: bigorna
+    title: "A Bigorna"
+    type: main
+    deps: [primeiro_encantamento]
+    icon: minecraft:anvil
+    desc: |
+      Três blocos de ferro e quatro lingotes (31 de ferro!) fazem a §eBigorna§r.
+
+      Ela §ejunta encantamentos§r (item + livro, ou dois itens iguais), §econserta§r
+      ferramentas com o material delas e §erenomeia§r itens. Cada operação custa níveis
+      de XP; acima de 39 níveis aparece "Caro Demais!".
+
+      §bEt Futurum:§r renomear aqui é bem mais barato. A bigorna vai se desgastando com o
+      uso e um dia quebra — tenha ferro de reserva.
+    tasks:
+      - get: minecraft:anvil
+    rewards:
+      - xp: 3
+      - choice: [minecraft:iron_ingot x16, minecraft:experience_bottle x8, minecraft:name_tag]
+
+  - id: etiqueta_nome
+    title: "Batizando Amigos"
+    type: optional
+    deps: [bigorna]
+    desc: |
+      Uma §eEtiqueta de Nome§r renomeada na bigorna dá nome a um animal — e animais com
+      nome §enão somem§r com o tempo. Ótimo para o seu cavalo favorito.
+
+      Neste pack a etiqueta tem receita (papel, linhas e uma bola de slime): confira no NEI.
+    tasks:
+      - get: minecraft:name_tag
+    rewards:
+      - loot: comum
+
+  - id: encantador
+    title: "Encantador do Registro"
+    type: milestone
+    deps: [bigorna, nivel_trinta]
+    icon: minecraft:enchanting_table
+    banner: "Encantador do Registro!"
+    subtitle: "A primeira página de magia voltou a brilhar"
+    desc: |
+      Mesa, quinze estantes, nível trinta e uma bigorna. Você reescreveu a página mais
+      antiga da magia comum!
+
+      Daqui pra frente, encantar vira rotina: Proteção na armadura, Afiação na espada,
+      Eficiência e Inquebrável nas ferramentas. Os Volumes de magia (Thaumcraft,
+      Botania, Ars Magica...) vão te mostrar formas muito mais estranhas de dobrar a
+      realidade — mas tudo começa com esse brilho roxinho.
+
+      Toma, um presente de leitora para leitor de encantamentos. ♥
+    tasks:
+      - check
+    rewards:
+      - kit:
+          name: "Kit do Encantador"
+          items: ["minecraft:dye:4 x32", "minecraft:book x8", "minecraft:experience_bottle x16"]
+      - loot: incomum
+      - xp: 5
+
+  # ======================================================================
+  # FASE 4 — O NETHER
+  # ======================================================================
+  - id: portal_nether
+    title: "O Portal Vermelho"
+    type: portal
+    deps: [obsidiana, pederneira]
+    icon: minecraft:obsidian
+    banner: "O Nether!"
+    subtitle: "Uma dimensão de fogo e cinzas"
+    desc: |
+      Um quadro de §eobsidiana§r de 4 de largura por 5 de altura (os cantos podem ficar
+      vazios: 10 blocos bastam). Acenda com o isqueiro e... olha esse roxo girando.
+
+      Do outro lado está o §cNether§r: lava, fogo, Ghasts que cospem bolas de fogo e
+      Homens-Porco Zumbis que só atacam se você atacar um deles. Neste pack, o Nether
+      ganhou biomas novos (Netherlicious e Et Futurum), então espere paisagens variadas.
+
+      §c• Camas explodem no Nether.§r
+      §a• Leve:§r armadura, comida, blocos para pontes e sempre um isqueiro para reacender
+      o portal de volta.
+    tasks:
+      - visit: {dim: -1, name: "Nether"}
+    rewards:
+      - item: minecraft:cobblestone x64
+      - loot: incomum
+      - xp: 5
+
+  - id: quartzo_nether
+    title: "Quartzo do Nether"
+    type: normal
+    deps: [portal_nether]
+    icon: minecraft:quartz
+    desc: |
+      Pontinhos brancos na netherrack? É §eQuartzo do Nether§r! Ele dá ótimo XP ao
+      minerar e vira blocos decorativos, comparadores e sensores.
+
+      Junte §e32 quartzos§r. Vários mods (Applied Energistics, Thermal...) também gostam dele.
+    tasks:
+      - get: minecraft:quartz x32
+    rewards:
+      - item: minecraft:netherrack x32
+      - xp: 2
+
+  - id: pedra_luminosa
+    title: "Pedra Luminosa"
+    type: normal
+    deps: [portal_nether]
+    icon: minecraft:glowstone_dust
+    desc: |
+      Pendurada no teto do Nether, a §ePedra Luminosa§r solta 2 a 4 pós ao quebrar
+      (quebre de longe ou com uma ponte segura — o teto é alto).
+
+      O pó deixa poções mais fortes (nível II) e quatro pós voltam a ser um bloco de luz.
+      Junte §e16 pós de pedra luminosa§r.
+    tasks:
+      - get: minecraft:glowstone_dust x16
+    rewards:
+      - item: minecraft:glowstone_dust x8
+      - xp: 2
+
+  - id: areia_almas
+    title: "Areia das Almas"
+    type: normal
+    deps: [portal_nether]
+    icon: minecraft:soul_sand
+    desc: |
+      Esse chão que te deixa lento e parece ter rostinhos gritando? §eAreia das Almas§r.
+      Simpático, né?
+
+      É nela que a §eVerruga do Nether§r cresce, e ela também é usada para invocar certo
+      chefe muito perigoso (mais sobre isso no Volume do Nether). Junte §e16§r.
+    tasks:
+      - get: minecraft:soul_sand x16
+    rewards:
+      - xp: 1
+      - item: minecraft:bread x6
+
+  - id: fortaleza_nether
+    title: "A Fortaleza do Nether"
+    type: main
+    deps: [portal_nether]
+    icon: minecraft:nether_brick
+    desc: |
+      Pontes enormes de tijolo escuro cortando lagos de lava: uma §eFortaleza do Nether§r.
+      Ela costuma ficar ao longo do eixo norte–sul; explore nessa direção.
+
+      §eNovidade do pack:§r toda fortaleza tem uma §eWaystone do Nether§r! Ative-a e
+      volte quando quiser (custa XP, veja o capítulo de Utilidades).
+
+      Traga §e32 Tijolos do Nether§r (o bloco) da estrutura. §cAtenção:§r esqueletos
+      Wither e Blazes moram aqui.
+    tasks:
+      - get: minecraft:nether_brick x32
+    rewards:
+      - xp: 3
+      - choice: [minecraft:golden_apple, minecraft:arrow x32, minecraft:cooked_beef x16]
+
+  - id: verruga_nether
+    title: "Verruga do Nether"
+    type: main
+    deps: [fortaleza_nether, areia_almas]
+    icon: minecraft:nether_wart
+    desc: |
+      Nas escadarias das fortalezas crescem plantinhas vermelhas na areia das almas: a
+      §eVerruga do Nether§r, a base de quase toda poção.
+
+      Colha, leve para casa e plante em §eareia das almas§r — ela cresce em qualquer
+      dimensão, mesmo no escuro. Junte §e16 verrugas§r e comece sua plantação.
+    tasks:
+      - get: minecraft:nether_wart x16
+    rewards:
+      - xp: 3
+      - choice: [minecraft:soul_sand x8, minecraft:glass_bottle x6, minecraft:sugar x16]
+
+  - id: blaze
+    title: "Fogo Vivo"
+    type: main
+    deps: [fortaleza_nether]
+    icon: minecraft:blaze_rod
+    desc: |
+      Dentro das fortalezas ficam §eGeradores de Blaze§r: criaturas de fogo que flutuam e
+      atiram três bolas de fogo seguidas.
+
+      §a• Bolas de neve§r ferem Blazes. §a• Poção de Resistência ao Fogo§r faz você rir
+      deles. §a• Lute em corredores§r com cobertura e cerque o gerador com blocos se
+      ficar caótico.
+
+      Derrote §e5 Blazes§r e traga §e8 Varas de Blaze§r. Elas viram pó de blaze:
+      combustível do suporte de poções e ingrediente do Olho do Fim.
+    tasks:
+      - kill: "Blaze x5"
+      - get: minecraft:blaze_rod x8
+    rewards:
+      - xp: 3
+      - choice: [minecraft:golden_apple x2, minecraft:snowball x16, minecraft:diamond]
+
+  - id: lagrima_ghast
+    title: "Lágrimas de Ghast"
+    type: optional
+    deps: [portal_nether]
+    icon: minecraft:ghast_tear
+    desc: |
+      Ghasts são enormes, choram e cospem bolas de fogo explosivas. Rebata a bola de fogo
+      com um golpe ou acerte com flechas.
+
+      Quando morrem, soltam §eLágrimas de Ghast§r (se não caírem na lava!) — ingrediente
+      da Poção de Regeneração. Traga §e2 lágrimas§r.
+    tasks:
+      - get: minecraft:ghast_tear x2
+    rewards:
+      - loot: comum
+
+  - id: creme_magma
+    title: "Creme de Magma"
+    type: normal
+    deps: [portal_nether]
+    icon: minecraft:magma_cream
+    desc: |
+      Os §eCubos de Magma§r saltitantes soltam §eCreme de Magma§r — base da Poção de
+      Resistência ao Fogo. Também dá para fazer com pó de blaze + bola de slime.
+
+      Junte §e4 cremes de magma§r.
+    tasks:
+      - get: minecraft:magma_cream x4
+    rewards:
+      - item: minecraft:slime_ball x4
+      - xp: 1
+
+  - id: cranio_wither
+    title: "Crânio Sombrio"
+    type: optional
+    deps: [fortaleza_nether]
+    icon: minecraft:skull:1
+    desc: |
+      Os §eEsqueletos Wither§r são altos, escuros e causam o efeito Wither (que drena a
+      vida). Às vezes, raramente, soltam o §eCrânio de Esqueleto Wither§r.
+
+      Três crânios e areia das almas invocam o chefe §cWither§r... mas essa história fica
+      para o Volume do Nether. Por enquanto, só traga §e1 crânio§r. Saquear aumenta a chance.
+    tasks:
+      - get: minecraft:skull:1
+    rewards:
+      - loot: comum
+
+  - id: nether_basico
+    title: "Sobrevivente do Nether"
+    type: milestone
+    deps: [blaze, verruga_nether, quartzo_nether, pedra_luminosa]
+    icon: minecraft:blaze_powder
+    banner: "Sobrevivente do Nether!"
+    subtitle: "Fogo, cinzas e varas de blaze"
+    desc: |
+      Você entrou no lugar mais hostil que o mundo comum conhece e voltou com quartzo,
+      pedra luminosa, verrugas e varas de blaze. Os Antigos chamavam o Nether de
+      "a forja do mundo" — e agora a forja trabalha para você.
+
+      Com essas varas de blaze você acabou de destravar duas coisas enormes: as §epoções§r
+      e o §eOlho do Fim§r. E o Nether ainda tem muito mais (Wither, biomas novos,
+      netherita...) no Volume dedicado a ele e no de Et Futurum.
+
+      Respira, troca de armadura e vamos para a alquimia!
+    tasks:
+      - check
+    rewards:
+      - kit:
+          name: "Kit do Viajante Infernal"
+          items: ["minecraft:golden_apple x2", "minecraft:flint_and_steel", "minecraft:obsidian x4", "minecraft:cooked_porkchop x16"]
+      - loot: incomum
+      - xp: 5
+
+  # ======================================================================
+  # FASE 5 — POÇÕES
+  # ======================================================================
+  - id: suporte_pocoes
+    title: "O Suporte de Poções"
+    type: main
+    deps: [blaze]
+    icon: minecraft:brewing_stand
+    desc: |
+      Uma vara de blaze e três pedregulhos: o §eSuporte de Poções§r.
+
+      §bEt Futurum:§r este suporte tem um §eespaço de combustível§r como nas versões
+      novas — coloque §ePó de Blaze§r ali. Cada pó dura §e30 fermentações§r (uma
+      fermentação conta igual com 1 ou 3 frascos).
+
+      Fabrique um e moa algumas varas em pó (1 vara = 2 pós).
+    tasks:
+      - get: [minecraft:brewing_stand, minecraft:blaze_powder x4]
+    rewards:
+      - xp: 3
+      - choice: [minecraft:glass_bottle x9, minecraft:nether_wart x8, minecraft:blaze_rod x2]
+
+  - id: frascos_agua
+    title: "Frascos com Água"
+    type: normal
+    deps: [suporte_pocoes]
+    icon: minecraft:potion
+    desc: |
+      Três vidros em "V" fazem 3 §eFrascos de Vidro§r. Encha-os clicando na água (ou num
+      §eCaldeirão§r cheio, que tem 3 frascos de água).
+
+      Toda poção começa assim: §efrasco com água → + Verruga do Nether = Poção Estranha§r
+      → + ingrediente = poção com efeito. Tenha §e3 frascos com água§r e um caldeirão.
+    tasks:
+      - get: [minecraft:potion x3, minecraft:cauldron]
+    rewards:
+      - item: minecraft:glass_bottle x6
+      - xp: 1
+
+  - id: guia_alquimia
+    title: "Guia Rápido de Alquimia"
+    type: info
+    deps: [frascos_agua]
+    icon: minecraft:nether_wart
+    desc: |
+      Uma colinha que eu escrevi pra você (base: Poção Estranha):
+
+      §e• Lágrima de Ghast§r → Regeneração  §e• Açúcar§r → Agilidade
+      §e• Creme de Magma§r → Resistência ao Fogo  §e• Olho de Aranha§r → Venenosa
+      §e• Melancia Reluzente§r → Cura  §e• Cenoura Dourada§r → Visão Noturna
+      §e• Pó de Blaze§r → Força  §e• Peixe-Balão§r → Respiração Aquática
+
+      §dModificadores:§r Redstone = dura mais; Pó de Pedra Luminosa = nível II;
+      Olho de Aranha Fermentado = inverte (Visão Noturna → Invisibilidade, Cura → Dano,
+      Agilidade → Lentidão); Pólvora = arremessável.
+    tasks:
+      - check
+    rewards:
+      - xp: 1
+
+  - id: olho_fermentado
+    title: "Olho Fermentado"
+    type: normal
+    deps: [guia_alquimia]
+    icon: minecraft:fermented_spider_eye
+    desc: |
+      Olho de aranha + cogumelo marrom + açúcar = §eOlho de Aranha Fermentado§r. Ele
+      "estraga" poções, invertendo o efeito.
+
+      Num frasco de água puro, ele cria direto a §ePoção da Fraqueza§r (que você vai usar
+      para curar aldeões zumbis!). Faça §e2 olhos fermentados§r.
+    tasks:
+      - get: minecraft:fermented_spider_eye x2
+    rewards:
+      - item: minecraft:spider_eye x2
+      - xp: 1
+
+  - id: ingredientes_dourados
+    title: "Ingredientes Dourados"
+    type: normal
+    deps: [guia_alquimia, ouro]
+    icon: minecraft:speckled_melon
+    desc: |
+      Oito pepitas de ouro em volta de uma fatia de melancia = §eMelancia Reluzente§r.
+      Oito pepitas em volta de uma cenoura = §eCenoura Dourada§r (que também é uma das
+      comidas mais nutritivas do jogo).
+
+      Faça uma de cada. A melancia vira cura; a cenoura, visão noturna.
+    tasks:
+      - get: [minecraft:speckled_melon, minecraft:golden_carrot]
+    rewards:
+      - item: minecraft:gold_nugget x9
+      - xp: 1
+
+  - id: pocao_resistencia_fogo
+    title: "Pele de Salamandra"
+    type: normal
+    deps: [guia_alquimia, creme_magma]
+    icon: minecraft:potion:8227
+    desc: |
+      Poção Estranha + Creme de Magma = §ePoção de Resistência ao Fogo§r: imunidade total a
+      fogo e lava por 3 minutos (8 com redstone).
+
+      É a poção que salva vidas no Nether. Faça §euma§r (normal ou prolongada).
+    tasks:
+      - one_of: [minecraft:potion:8227, minecraft:potion:8259]
+    rewards:
+      - item: minecraft:magma_cream x2
+      - xp: 2
+
+  - id: pocao_cura
+    title: "Gole de Cura"
+    type: normal
+    deps: [ingredientes_dourados]
+    icon: minecraft:potion:8261
+    desc: |
+      Poção Estranha + Melancia Reluzente = §ePoção de Cura§r. Ela devolve vida na hora
+      (4 corações; 8 no nível II com pedra luminosa).
+
+      Faça §euma Poção de Cura§r de qualquer nível. Num aperto, ela vale mais que um
+      bife inteiro.
+    tasks:
+      - one_of: [minecraft:potion:8261, minecraft:potion:8229]
+    rewards:
+      - item: minecraft:glowstone_dust x4
+      - xp: 2
+
+  - id: pocao_visao_noturna
+    title: "Olhos de Gato"
+    type: normal
+    deps: [ingredientes_dourados]
+    icon: minecraft:potion:8230
+    desc: |
+      Poção Estranha + Cenoura Dourada = §ePoção da Visão Noturna§r. Cavernas, oceanos à
+      noite e o fundo do mar ficam claros como o dia.
+
+      Faça §euma§r. Depois, coloque um Olho Fermentado nela e você terá Invisibilidade.
+    tasks:
+      - one_of: [minecraft:potion:8230, minecraft:potion:8262]
+    rewards:
+      - item: minecraft:golden_carrot x2
+      - xp: 2
+
+  - id: pocao_forca
+    title: "Força Engarrafada"
+    type: normal
+    deps: [guia_alquimia]
+    icon: minecraft:potion:8201
+    desc: |
+      Poção Estranha + Pó de Blaze = §ePoção da Força§r: bem mais dano por golpe. Com pó
+      de pedra luminosa, vira Força II.
+
+      Faça §euma§r (qualquer versão). Ótima para chefes.
+    tasks:
+      - one_of: [minecraft:potion:8201, minecraft:potion:8233, minecraft:potion:8265]
+    rewards:
+      - item: minecraft:blaze_powder x2
+      - xp: 2
+
+  - id: pocao_regeneracao
+    title: "Lágrima que Cura"
+    type: normal
+    deps: [guia_alquimia, lagrima_ghast]
+    icon: minecraft:potion:8193
+    desc: |
+      Poção Estranha + Lágrima de Ghast = §ePoção da Regeneração§r: cura aos poucos,
+      continuamente. Combina muito bem com a Cura numa luta longa.
+
+      Faça §euma§r de qualquer versão.
+    tasks:
+      - one_of: [minecraft:potion:8193, minecraft:potion:8225, minecraft:potion:8257]
+    rewards:
+      - item: minecraft:ghast_tear
+      - xp: 2
+
+  - id: pocao_agilidade
+    title: "Pés Ligeiros"
+    type: normal
+    deps: [guia_alquimia, cana_acucar]
+    icon: minecraft:potion:8194
+    desc: |
+      Poção Estranha + Açúcar = §ePoção da Agilidade§r. Você corre bem mais rápido —
+      excelente para explorar e fugir (sem vergonha nenhuma).
+
+      Faça §euma§r.
+    tasks:
+      - one_of: [minecraft:potion:8194, minecraft:potion:8226, minecraft:potion:8258]
+    rewards:
+      - item: minecraft:sugar x8
+      - xp: 2
+
+  - id: pocao_fraqueza
+    title: "A Poção da Fraqueza"
+    type: normal
+    deps: [olho_fermentado]
+    icon: minecraft:potion:8232
+    desc: |
+      Frasco com água (sem verruga!) + Olho Fermentado = §ePoção da Fraqueza§r. Ela
+      reduz o dano de quem bebe.
+
+      Parece inútil? Que nada: na versão §earremessável§r (com pólvora) ela é metade da
+      receita para curar um aldeão zumbi. Faça §euma§r.
+    tasks:
+      - one_of: [minecraft:potion:8232, minecraft:potion:8264, minecraft:potion:16424, minecraft:potion:16456]
+    rewards:
+      - item: minecraft:gunpowder x4
+      - xp: 2
+
+  - id: pocao_respiracao
+    title: "Guelras Temporárias"
+    type: optional
+    deps: [guia_alquimia, peixe_balao]
+    icon: minecraft:potion:8237
+    desc: |
+      Poção Estranha + Peixe-Balão = §ePoção de Respiração Aquática§r. Minutos inteiros
+      debaixo d'água, perfeito para explorar oceanos e templos.
+
+      Faça §euma§r.
+    tasks:
+      - one_of: [minecraft:potion:8237, minecraft:potion:8269]
+    rewards:
+      - loot: comum
+
+  - id: pocao_invisibilidade
+    title: "Agora Você Me Vê..."
+    type: optional
+    deps: [pocao_visao_noturna, olho_fermentado]
+    icon: minecraft:potion:8238
+    desc: |
+      Visão Noturna + Olho Fermentado = §ePoção da Invisibilidade§r. Os monstros param de
+      te ver... a menos que você esteja de armadura (ela continua visível!).
+
+      Faça §euma§r. Eu prometo não contar a ninguém onde você está.
+    tasks:
+      - one_of: [minecraft:potion:8238, minecraft:potion:8270]
+    rewards:
+      - loot: comum
+
+  - id: pocao_arremessavel
+    title: "Alquimia de Arremesso"
+    type: normal
+    deps: [pocao_cura]
+    icon: minecraft:potion:16421
+    desc: |
+      Junte §ePólvora§r a qualquer poção pronta e ela vira §earremessável§r: estoura e
+      atinge todos em volta. Cura arremessável salva o time inteiro numa luta.
+
+      §cAtenção, curiosidade alquímica:§r em mortos-vivos (zumbis, esqueletos) é ao
+      contrário — a Cura §cfere§r e o Dano cura. Use isso a seu favor!
+
+      Faça §euma Poção de Cura Arremessável§r.
+    tasks:
+      - one_of: [minecraft:potion:16421, minecraft:potion:16453]
+    rewards:
+      - item: minecraft:gunpowder x6
+      - xp: 2
+
+  - id: maca_dourada
+    title: "A Maçã Dourada"
+    type: normal
+    deps: [ouro]
+    icon: minecraft:golden_apple
+    desc: |
+      Oito lingotes de ouro em volta de uma maçã: §eMaçã Dourada§r. Ela dá Absorção e
+      Regeneração na hora — um "segundo fôlego" de bolso.
+
+      Com §eoito blocos de ouro§r você faz a §6Maçã Dourada Encantada§r, muito mais forte
+      (é caríssima, mas em chefes difíceis vale cada pepita). Faça §euma maçã dourada§r.
+    tasks:
+      - get: minecraft:golden_apple
+    rewards:
+      - item: minecraft:apple x4
+      - xp: 2
+
+  - id: alquimista
+    title: "Alquimista Iniciante"
+    type: milestone
+    deps: [pocao_resistencia_fogo, pocao_cura, pocao_forca, pocao_visao_noturna, pocao_arremessavel]
+    icon: minecraft:brewing_stand
+    banner: "Alquimista Iniciante!"
+    subtitle: "Fogo, cura, força e visão no bolso"
+    desc: |
+      Borbulhando, fumegando e quase explodindo... e deu certo! Você domina a alquimia
+      comum: resistência ao fogo, cura, força, visão noturna e arremessáveis.
+
+      Sabe o que é engraçado? Os alquimistas de Thaumcraft e de Witchery torcem o nariz
+      para o suporte de poções, mas foi aqui que todos começaram. E as poções que você
+      sabe fazer agora vão garantir as próximas lutas grandes.
+
+      Leva esse kit e organize uma prateleira de poções — eu adoro uma estante colorida.
+    tasks:
+      - check
+    rewards:
+      - kit:
+          name: "Kit do Alquimista"
+          items: ["minecraft:glass_bottle x12", "minecraft:nether_wart x16", "minecraft:blaze_powder x6", "minecraft:glowstone_dust x8", "minecraft:redstone x16"]
+      - loot: incomum
+      - xp: 5
+
+  # ======================================================================
+  # FASE 6 — VILAS E COMÉRCIO
+  # ======================================================================
+  - id: vila
+    title: "Sinais de Vida"
+    type: main
+    deps: [volume_sobrevivencia]
+    icon: minecraft:emerald
+    desc: |
+      Casinhas, plantações, um poço no meio... uma §eVila§r! E os aldeões fazem "hmm"
+      quando você passa.
+
+      §eNovidade do pack:§r toda vila tem uma §eWaystone§r. Ative-a: é um ponto de
+      viagem garantido. Os aldeões trocam itens por §eEsmeraldas§r, a moeda deles.
+
+      Encontre uma vila e junte §e8 esmeraldas§r (de minério ou vendendo trigo, carvão,
+      papel, lã... ao aldeão certo).
+    tasks:
+      - get: minecraft:emerald x8
+    rewards:
+      - xp: 3
+      - choice: [minecraft:wheat x32, minecraft:paper x24, minecraft:coal x16]
+
+  - id: profissoes
+    title: "Quem é Quem na Vila"
+    type: info
+    deps: [vila]
+    icon: minecraft:book
+    desc: |
+      Na versão do nosso mundo há cinco profissões (pela roupa):
+
+      §e• Fazendeiro§r (marrom): comida, flechas, tesoura.
+      §e• Bibliotecário§r (branco): papel, livros, §elivros encantados§r, bússola.
+      §e• Sacerdote§r (roxo): pérolas do fim, garrafas de XP, redstone.
+      §e• Ferreiro§r (avental preto): armas, ferramentas e armaduras de ferro e diamante.
+      §e• Açougueiro§r (avental branco): carnes e couro.
+
+      Usar a última oferta de um aldeão libera ofertas novas. Ofertas muito usadas
+      ficam bloqueadas por um tempo. Clique com o botão direito para negociar.
+    tasks:
+      - check
+    rewards:
+      - xp: 1
+
+  - id: livro_bibliotecario
+    title: "O Livro do Bibliotecário"
+    type: optional
+    deps: [profissoes]
+    icon: minecraft:enchanted_book
+    desc: |
+      Os bibliotecários às vezes vendem §eLivros Encantados§r com encantamentos que
+      a mesa raramente dá. É um jeito ótimo de gastar esmeraldas!
+
+      Negocie com bibliotecários até achar um livro bom e traga §eum livro encantado§r
+      (do aldeão ou da sua mesa, eu não vou conferir de onde veio).
+    tasks:
+      - get: minecraft:enchanted_book
+    rewards:
+      - loot: comum
+
+  - id: golem_ferro
+    title: "O Guardião de Ferro"
+    type: optional
+    deps: [vila, mineracao_profunda]
+    icon: minecraft:pumpkin
+    desc: |
+      Quatro §eblocos de ferro§r em "T" com uma §eabóbora§r na cabeça (por último!)
+      invocam um §eGolem de Ferro§r. Ele protege a vila e quem constrói ele.
+
+      Junte os materiais: §e4 blocos de ferro e 1 abóbora§r. Vilas grandes também criam
+      golens sozinhas — e eles soltam ferro quando morrem.
+    tasks:
+      - get: [minecraft:iron_block x4, minecraft:pumpkin]
+    rewards:
+      - loot: comum
+
+  - id: golem_neve
+    title: "Boneco de Neve de Verdade"
+    type: optional
+    deps: [vila]
+    icon: minecraft:snow
+    desc: |
+      Dois blocos de neve empilhados e uma abóbora em cima: um §eGolem de Neve§r! Ele
+      atira bolas de neve nos monstros (excelente contra Blazes) e deixa um rastro de neve.
+
+      §bEt Futurum:§r com uma tesoura você tira a abóbora dele. Junte §e2 blocos de neve e
+      1 abóbora§r.
+    tasks:
+      - get: [minecraft:snow x2, minecraft:pumpkin]
+    rewards:
+      - loot: comum
+
+  - id: curar_aldeao
+    title: "A Cura do Aldeão"
+    type: optional
+    deps: [pocao_fraqueza, maca_dourada, vila]
+    icon: minecraft:golden_apple
+    desc: |
+      Um zumbi com nariz de aldeão? É um §eAldeão Zumbi§r. Dá para curar!
+
+      1. Prenda o zumbi (de dia ele queima: deixe-o na sombra).
+      2. Jogue nele uma §ePoção da Fraqueza Arremessável§r.
+      3. Clique com uma §eMaçã Dourada§r comum.
+      Ele treme por alguns minutos e volta a ser aldeão. Tenha os dois itens em mãos.
+    tasks:
+      - one_of: [minecraft:potion:16424, minecraft:potion:16456]
+      - get: minecraft:golden_apple
+    rewards:
+      - loot: comum
+
+  # ======================================================================
+  # FASE 7 — AGRICULTURA E PECUÁRIA
+  # ======================================================================
+  - id: enxada
+    title: "Terra Arada"
+    type: main
+    deps: [volume_sobrevivencia]
+    icon: minecraft:iron_hoe
+    desc: |
+      Quem planta colhe — mas primeiro precisa de uma §eEnxada§r. Clique em terra ou grama
+      para fazer terra arada; com água a até 4 blocos, ela fica úmida e as plantas
+      crescem mais rápido.
+
+      §bEt Futurum:§r a enxada também quebra folhas, feno e outros blocos "macios" bem
+      mais rápido. Fabrique uma enxada de qualquer material.
+    tasks:
+      - one_of: [minecraft:wooden_hoe, minecraft:stone_hoe, minecraft:iron_hoe, minecraft:golden_hoe, minecraft:diamond_hoe]
+    rewards:
+      - xp: 3
+      - choice: [minecraft:wheat_seeds x16, minecraft:bone x8, minecraft:water_bucket]
+
+  - id: trigo
+    title: "Mar de Trigo"
+    type: main
+    deps: [enxada]
+    icon: minecraft:wheat
+    desc: |
+      Sementes (de grama alta) na terra arada, um pouco de paciência e luz: §eTrigo§r!
+
+      Uma plantação 9×9 com água no centro irriga tudo. Colha quando estiver dourado.
+      Trigo vira pão, bolo, alimenta vacas e ovelhas e é ótima moeda para aldeões
+      fazendeiros. Junte §e64 trigos§r.
+    tasks:
+      - get: minecraft:wheat x64
+    rewards:
+      - xp: 3
+      - choice: [minecraft:wheat_seeds x32, minecraft:bone x16, minecraft:bread x12]
+
+  - id: farinha_osso
+    title: "Farinha de Osso"
+    type: normal
+    deps: [enxada]
+    icon: minecraft:dye:15
+    desc: |
+      Esqueletos soltam ossos; um osso vira 3 de §eFarinha de Osso§r. Clique numa planta
+      e ela cresce na hora (às vezes precisa de mais de uma).
+
+      Também faz flores e grama brotarem e é um corante branco. Junte §e32§r.
+    tasks:
+      - get: minecraft:dye:15 x32
+    rewards:
+      - item: minecraft:bone x8
+      - xp: 1
+
+  - id: fardo_feno
+    title: "Fardos de Feno"
+    type: normal
+    deps: [trigo]
+    icon: minecraft:hay_block
+    desc: |
+      Nove trigos fazem um §eFardo de Feno§r: guarda trigo de forma compacta e alimenta
+      cavalos. §bEt Futurum:§r cair num fardo reduz o dano da queda!
+
+      Faça §e4 fardos§r.
+    tasks:
+      - get: minecraft:hay_block x4
+    rewards:
+      - item: minecraft:wheat x16
+      - xp: 1
+
+  - id: cenoura_batata
+    title: "Raízes do Campo"
+    type: normal
+    deps: [enxada]
+    icon: minecraft:carrot
+    desc: |
+      §eCenouras§r e §eBatatas§r não vêm de sementes: você planta a própria cenoura ou
+      batata. Encontre-as nas plantações das vilas ou como drop raro de zumbis.
+
+      Batata assada é comida excelente; cenoura alimenta porcos e vira cenoura dourada.
+      Junte §e16 de cada§r.
+    tasks:
+      - get: [minecraft:carrot x16, minecraft:potato x16]
+    rewards:
+      - item: minecraft:bone x8
+      - xp: 2
+
+  - id: abobora_melancia
+    title: "Abóboras e Melancias"
+    type: normal
+    deps: [enxada]
+    icon: minecraft:melon_block
+    desc: |
+      Estas plantas crescem como um "talo" que gera o fruto num bloco vizinho livre.
+      Deixe terra livre ao lado de cada talo!
+
+      Abóboras aparecem na natureza; melancias, em selvas. Junte §e4 abóboras§r e
+      §e16 fatias de melancia§r.
+    tasks:
+      - get: [minecraft:pumpkin x4, minecraft:melon x16]
+    rewards:
+      - item: minecraft:pumpkin_seeds x4
+      - xp: 2
+
+  - id: cacau
+    title: "Cacau da Selva"
+    type: optional
+    deps: [enxada]
+    icon: minecraft:dye:3
+    desc: |
+      Nas selvas, frutinhas marrons crescem presas nos troncos de árvore da selva:
+      §eSementes de Cacau§r. Plante em troncos de selva para cultivar.
+
+      O cacau é corante marrom e, com trigo, vira biscoitos. Junte §e8§r.
+    tasks:
+      - get: minecraft:dye:3 x8
+    rewards:
+      - loot: comum
+
+  - id: cogumelos
+    title: "Sopa de Cogumelos"
+    type: optional
+    deps: [enxada]
+    icon: minecraft:mushroom_stew
+    desc: |
+      Cogumelos crescem no escuro (luz baixa) sobre quase qualquer bloco. Um vermelho, um
+      marrom e uma tigela fazem §eSopa de Cogumelos§r.
+
+      E se você achar uma §eCoguvaca§r (vaca vermelha das ilhas de micélio), uma tigela
+      nela dá sopa infinita! Faça §euma sopa§r.
+    tasks:
+      - get: minecraft:mushroom_stew
+    rewards:
+      - loot: comum
+
+  - id: vacas
+    title: "Rebanho de Vacas"
+    type: normal
+    deps: [trigo]
+    icon: minecraft:leather
+    desc: |
+      Segure trigo e as vacas vêm atrás. Dê trigo a duas e elas fazem um bezerro
+      (§ereprodução§r). Um balde nelas dá leite (que remove efeitos de poção).
+
+      Monte um cercado e junte §e16 couros§r e §e8 carnes cruas§r de vaca.
+    tasks:
+      - get: [minecraft:leather x16, minecraft:beef x8]
+    rewards:
+      - item: minecraft:wheat x16
+      - xp: 2
+
+  - id: ovelhas
+    title: "Lã de Todas as Cores"
+    type: normal
+    deps: [trigo, tesoura]
+    icon: minecraft:wool:14
+    desc: |
+      Ovelhas também se reproduzem com trigo. Tinja uma ovelha (clique com corante) e
+      ela passa a dar lã daquela cor — e os filhotes herdam ou misturam as cores!
+
+      Junte §e32 lãs§r de qualquer cor (tosquiadas, de preferência).
+    tasks:
+      - get: minecraft:wool:* x32
+    rewards:
+      - item: minecraft:dye:1 x4
+      - xp: 2
+
+  - id: galinhas
+    title: "Penas e Ovos"
+    type: normal
+    deps: [trigo]
+    icon: minecraft:egg
+    desc: |
+      Galinhas se reproduzem com sementes e botam §eovos§r sozinhas. Jogar ovos às vezes
+      faz nascer pintinhos — um jeito barato de começar uma criação.
+
+      Penas viram flechas; ovos, bolo. Junte §e16 penas§r e §e16 ovos§r.
+    tasks:
+      - get: [minecraft:feather x16, minecraft:egg x16]
+    rewards:
+      - item: minecraft:wheat_seeds x16
+      - xp: 2
+
+  - id: porcos
+    title: "Porquinhos"
+    type: normal
+    deps: [cenoura_batata]
+    icon: minecraft:porkchop
+    desc: |
+      Porcos se reproduzem com cenouras. Com uma §esela§r num porco e uma §eVara com
+      Cenoura§r (vara de pescar + cenoura) na mão, você pode montar e guiar o porco!
+
+      Faça uma Vara com Cenoura e junte §e8 costeletas cruas§r.
+    tasks:
+      - get: [minecraft:carrot_on_a_stick, minecraft:porkchop x8]
+    rewards:
+      - item: minecraft:carrot x8
+      - xp: 2
+
+  - id: cavalos
+    title: "Montaria"
+    type: optional
+    deps: [trigo]
+    icon: minecraft:saddle
+    desc: |
+      Cavalos selvagens vivem em planícies e savanas. Monte repetidamente (com a mão vazia)
+      até ele parar de te derrubar — corações aparecem quando aceitar você.
+
+      Com §eSela§r você controla o cavalo; com §eLaço§r, puxa animais. Neste pack a sela
+      tem receita (couro e ferro). Fabrique §euma sela e 2 laços§r.
+    tasks:
+      - get: [minecraft:saddle, minecraft:lead x2]
+    rewards:
+      - loot: comum
+
+  - id: lobos_gatos
+    title: "Amigos de Quatro Patas"
+    type: optional
+    deps: [volume_sobrevivencia]
+    icon: minecraft:bone
+    desc: |
+      §eLobos§r (florestas e taigas) são domados com §eossos§r e lutam ao seu lado. As
+      §eJaguatiricas§r da selva são domadas com §epeixe cru§r (fique parado e deixe ela
+      se aproximar) e viram gatos — que espantam Creepers!
+
+      Junte §e8 ossos§r e §e4 peixes crus§r e vá fazer amigos.
+    tasks:
+      - get: [minecraft:bone x8, minecraft:fish x4]
+    rewards:
+      - loot: comum
+
+  - id: bolo
+    title: "Tem Bolo!"
+    type: normal
+    deps: [galinhas, vacas, cana_acucar]
+    icon: minecraft:cake
+    desc: |
+      Três baldes de leite, dois açúcares, um ovo e três trigos: §eBolo§r! Coloque no chão
+      e cada clique come uma fatia (7 fatias).
+
+      Não é a comida mais eficiente... mas é a mais festiva. Faça um bolo. (A Akasha é
+      totalmente a favor de comemorar com bolo.)
+    tasks:
+      - get: minecraft:cake
+    rewards:
+      - item: minecraft:sugar x8
+      - xp: 2
+
+  - id: torta_abobora
+    title: "Torta de Abóbora"
+    type: normal
+    deps: [galinhas, abobora_melancia]
+    icon: minecraft:pumpkin_pie
+    desc: |
+      Abóbora + açúcar + ovo = §eTorta de Abóbora§r, uma das comidas mais práticas: não
+      precisa de fornalha e enche bem.
+
+      Faça §e4 tortas§r. O Volume "Cozinha e Banquetes" vai te ensinar centenas de
+      receitas ainda melhores.
+    tasks:
+      - get: minecraft:pumpkin_pie x4
+    rewards:
+      - item: minecraft:egg x4
+      - xp: 1
+
+  - id: fazendeiro
+    title: "Mãos de Fazendeiro"
+    type: milestone
+    deps: [trigo, cenoura_batata, abobora_melancia, vacas, ovelhas, galinhas, porcos]
+    icon: minecraft:golden_hoe
+    banner: "Mãos de Fazendeiro!"
+    subtitle: "Comida nunca mais vai faltar"
+    desc: |
+      Trigo, raízes, abóboras, melancias, vacas, ovelhas, galinhas e porcos. Você tem uma
+      fazenda de verdade, Herói!
+
+      Pode parecer pouca coisa perto de reatores e feitiços, mas a fome derrota mais
+      aventureiros do que dragões. E lá no fim do Registro, a §eVida§r é um dos Oito
+      Selos — Forestry, abelhas, AgriCraft e Magical Crops começam exatamente aqui.
+
+      Um kit para a próxima colheita. Bom apetite!
+    tasks:
+      - check
+    rewards:
+      - kit:
+          name: "Kit do Fazendeiro"
+          items: ["minecraft:iron_hoe", "minecraft:dye:15 x32", "minecraft:wheat_seeds x32", "minecraft:carrot x8", "minecraft:potato x8"]
+      - loot: incomum
+      - xp: 5
+
+  # ======================================================================
+  # FASE 8 — REDSTONE
+  # ======================================================================
+  - id: redstone_basica
+    title: "Fios e Tochas"
+    type: main
+    deps: [redstone]
+    icon: minecraft:redstone_torch
+    desc: |
+      Redstone no chão vira fio. Uma §eAlavanca§r, um §eBotão§r ou uma §ePlaca de Pressão§r
+      ligam o sinal; a §eTocha de Redstone§r fornece sinal constante — e §einverte§r o
+      bloco em que está presa (sinal no bloco = tocha apagada).
+
+      O sinal anda até 15 blocos de fio. Fabrique §euma tocha de redstone, uma alavanca e
+      um botão de pedra§r.
+    tasks:
+      - get: [minecraft:redstone_torch, minecraft:lever, minecraft:stone_button]
+    rewards:
+      - xp: 3
+      - choice: [minecraft:redstone x24, minecraft:stone x32, minecraft:iron_ingot x6]
+
+  - id: repetidor_comparador
+    title: "Repetidor e Comparador"
+    type: normal
+    deps: [redstone_basica, quartzo_nether]
+    icon: minecraft:repeater
+    desc: |
+      O §eRepetidor§r renova o sinal para mais 15 blocos, só deixa passar num sentido e
+      atrasa de 1 a 4 ticks (clique para ajustar). O §eComparador§r (precisa de quartzo do
+      Nether) lê quanto um baú está cheio e compara sinais.
+
+      Fabrique §eum de cada§r.
+    tasks:
+      - get: [minecraft:repeater, minecraft:comparator]
+    rewards:
+      - item: minecraft:redstone x16
+      - xp: 2
+
+  - id: pistoes
+    title: "Empurra e Puxa"
+    type: main
+    deps: [redstone_basica]
+    icon: minecraft:piston
+    desc: |
+      Tábuas, pedregulho, ferro e redstone fazem o §ePistão§r: ele empurra até 12 blocos.
+      Com uma §ebola de slime§r ele vira §ePistão Grudento§r, que também puxa o bloco de
+      volta.
+
+      Pistões são o coração de portas secretas, fazendas automáticas e elevadores.
+      Fabrique §eum pistão e um pistão grudento§r.
+    tasks:
+      - get: [minecraft:piston, minecraft:sticky_piston]
+    rewards:
+      - xp: 3
+      - choice: [minecraft:slime_ball x4, minecraft:redstone x16, minecraft:cobblestone x64]
+
+  - id: porta_automatica
+    title: "Porta Automática"
+    type: normal
+    deps: [redstone_basica]
+    icon: minecraft:iron_door
+    desc: |
+      §ePortas de Ferro§r não abrem com a mão: precisam de sinal. Uma placa de pressão de
+      cada lado e pronto, porta automática que zumbi nenhum arromba.
+
+      Fabrique §euma porta de ferro e duas placas de pressão de pedra§r.
+    tasks:
+      - get: [minecraft:iron_door, minecraft:stone_pressure_plate x2]
+    rewards:
+      - item: minecraft:iron_ingot x4
+      - xp: 1
+
+  - id: funil
+    title: "O Funil"
+    type: normal
+    deps: [redstone_basica]
+    icon: minecraft:hopper
+    desc: |
+      Cinco ferros e um baú: §eFunil§r. Ele puxa itens de cima (e itens caídos no chão) e
+      empurra para o bloco para onde aponta: baús, fornalhas, outros funis.
+
+      Funil em cima de fornalha + baú embaixo = fundição automática. Um sinal de redstone
+      "trava" o funil. Fabrique §e2 funis§r.
+    tasks:
+      - get: minecraft:hopper x2
+    rewards:
+      - item: minecraft:iron_ingot x5
+      - xp: 2
+
+  - id: ejetor_liberador
+    title: "Ejetor e Liberador"
+    type: normal
+    deps: [arco_flechas, redstone_basica]
+    icon: minecraft:dispenser
+    desc: |
+      O §eEjetor§r (Dispenser) dispara ou usa itens ao receber sinal: atira flechas,
+      coloca água, joga poções. O §eLiberador§r (Dropper) só solta o item.
+
+      Fabrique §eum de cada§r. Um ejetor com balde de água é a base de muitas fazendas.
+    tasks:
+      - get: [minecraft:dispenser, minecraft:dropper]
+    rewards:
+      - item: minecraft:arrow x16
+      - xp: 1
+
+  - id: lampada_redstone
+    title: "Lâmpada de Redstone"
+    type: normal
+    deps: [redstone_basica, pedra_luminosa]
+    icon: minecraft:redstone_lamp
+    desc: |
+      Pedra luminosa cercada de redstone: a §eLâmpada de Redstone§r acende só quando
+      recebe sinal. Iluminação controlada com alavanca, sensor ou relógio.
+
+      Fabrique §e4 lâmpadas§r.
+    tasks:
+      - get: minecraft:redstone_lamp x4
+    rewards:
+      - item: minecraft:glowstone_dust x4
+      - xp: 1
+
+  - id: sensor_luz
+    title: "Sensor de Luz Solar"
+    type: optional
+    deps: [repetidor_comparador]
+    icon: minecraft:daylight_detector
+    desc: |
+      Vidro, quartzo e lajes de madeira formam o §eSensor de Luz Solar§r, que emite sinal
+      de dia. Ligue-o numa tocha de redstone e você terá luzes que acendem sozinhas à noite.
+
+      Fabrique §eum sensor§r.
+    tasks:
+      - get: minecraft:daylight_detector
+    rewards:
+      - loot: comum
+
+  - id: trilhos_energizados
+    title: "Trilhos Energizados"
+    type: normal
+    deps: [redstone_basica, ouro]
+    icon: minecraft:golden_rail
+    desc: |
+      §eTrilhos Energizados§r (ouro + redstone) aceleram vagonetas quando ligados — um a
+      cada ~30 trilhos mantém a velocidade no plano. O §eTrilho Detector§r emite sinal
+      quando uma vagoneta passa.
+
+      Fabrique §e6 trilhos energizados§r e §eum detector§r.
+    tasks:
+      - get: [minecraft:golden_rail x6, minecraft:detector_rail]
+    rewards:
+      - item: minecraft:rail x16
+      - xp: 2
+
+  - id: blocos_musicais
+    title: "Música, Maestro!"
+    type: optional
+    deps: [redstone_basica, diamante]
+    icon: minecraft:jukebox
+    desc: |
+      O §eBloco Musical§r toca uma nota a cada sinal (clique para mudar o tom; o bloco
+      embaixo muda o instrumento). A §eJukebox§r toca discos — que caem de Creepers
+      atingidos por flechas de esqueletos.
+
+      Fabrique §eum bloco musical e uma jukebox§r. (Os rádios do servidor estão no
+      Volume de Utilidades!)
+    tasks:
+      - get: [minecraft:noteblock, minecraft:jukebox]
+    rewards:
+      - loot: comum
+
+  - id: armadilha_fio
+    title: "Fio de Armadilha"
+    type: optional
+    deps: [redstone_basica]
+    icon: minecraft:tripwire_hook
+    desc: |
+      Dois §eGanchos de Armadilha§r com §elinha§r esticada entre eles emitem sinal quando
+      algo atravessa. Ótimo para alarmes... e para pegadinhas com amigos.
+
+      Fabrique §e2 ganchos§r.
+    tasks:
+      - get: minecraft:tripwire_hook x2
+    rewards:
+      - loot: comum
+
+  - id: engenheiro_redstone
+    title: "Engenharia de Redstone"
+    type: milestone
+    deps: [pistoes, repetidor_comparador, funil, porta_automatica, ejetor_liberador]
+    icon: minecraft:comparator
+    banner: "Engenharia de Redstone!"
+    subtitle: "Sinais, pistões e automação primitiva"
+    desc: |
+      Fios, tochas, repetidores, comparadores, pistões, funis e ejetores: você aprendeu
+      a língua da redstone! Com ela dá para fazer portas secretas, fazendas automáticas,
+      elevadores e até calculadoras (eu já vi, juro).
+
+      Essa é a ponte natural para os Volumes de §bTecnologia§r: quase toda máquina de
+      IndustrialCraft, Thermal ou Ender IO aceita controle por redstone. Você vai ver
+      esse pó vermelho em todo lugar.
+
+      Leva esse kit de engenheiro e invente alguma coisa bem esquisita. Eu quero ver!
+    tasks:
+      - check
+    rewards:
+      - kit:
+          name: "Kit do Engenheiro de Redstone"
+          items: ["minecraft:redstone x64", "minecraft:repeater x4", "minecraft:sticky_piston x2", "minecraft:hopper"]
+      - loot: incomum
+      - xp: 5
+
+  # ======================================================================
+  # FASE 9 — PESCA, MAPAS E ORIENTAÇÃO
+  # ======================================================================
+  - id: vara_pescar
+    title: "Uma Tarde no Lago"
+    type: main
+    deps: [volume_sobrevivencia]
+    icon: minecraft:fishing_rod
+    desc: |
+      Três gravetos e duas linhas: §eVara de Pescar§r. Lance na água e espere a boia
+      afundar (e as bolhinhas chegando), aí puxe!
+
+      A vara também puxa mobs e itens. Chuva aumenta a chance de fisgar algo. Fabrique
+      uma e relaxe um pouco — aventura também precisa de pausa.
+    tasks:
+      - get: minecraft:fishing_rod
+    rewards:
+      - xp: 3
+      - choice: [minecraft:string x8, minecraft:bread x8, minecraft:cooked_fished x6]
+
+  - id: peixes
+    title: "Pescaria Farta"
+    type: normal
+    deps: [vara_pescar]
+    icon: minecraft:fish
+    desc: |
+      No nosso mundo existem quatro peixes: §eBacalhau§r, §eSalmão§r, §ePeixe-Palhaço§r e
+      §ePeixe-Balão§r (esse não coma!). Bacalhau e salmão assados são boa comida.
+
+      Pesque §e12 peixes crus§r (bacalhau).
+    tasks:
+      - get: minecraft:fish x12
+    rewards:
+      - item: minecraft:string x4
+      - xp: 1
+
+  - id: peixe_balao
+    title: "Peixe-Balão"
+    type: normal
+    deps: [vara_pescar]
+    icon: minecraft:fish:3
+    desc: |
+      Bochechudo e venenoso: o §ePeixe-Balão§r. Comer dá náusea, fome e veneno.
+
+      Mas no suporte de poções ele vira §ePoção de Respiração Aquática§r. Pesque §eum§r.
+    tasks:
+      - get: minecraft:fish:3
+    rewards:
+      - item: minecraft:fish x4
+      - xp: 1
+
+  - id: tesouro_pesca
+    title: "Pescando Tesouros"
+    type: optional
+    deps: [vara_pescar]
+    icon: minecraft:name_tag
+    desc: |
+      De vez em quando, a vara puxa um §etesouro§r em vez de peixe: arcos e varas
+      encantadas, livros encantados, etiquetas de nome, selas, vitórias-régias...
+
+      Os encantamentos §aSorte do Mar§r e §aIsca§r melhoram muito a pesca. Pesque um destes
+      tesouros: §eetiqueta de nome, sela ou vitória-régia§r.
+    tasks:
+      - one_of: [minecraft:name_tag, minecraft:saddle, minecraft:waterlily]
+    rewards:
+      - loot: comum
+
+  - id: bussola_relogio
+    title: "Bússola e Relógio"
+    type: normal
+    deps: [redstone, ouro]
+    icon: minecraft:compass
+    desc: |
+      Quatro ferros e uma redstone: §eBússola§r, que aponta para o ponto de renascimento
+      do mundo. Quatro ouros e uma redstone: §eRelógio§r, que mostra o dia e a noite
+      (útil no subterrâneo!).
+
+      Fabrique §eum de cada§r. A bússola também é ingrediente do mapa e da Bússola da
+      Natureza.
+    tasks:
+      - get: [minecraft:compass, minecraft:clock]
+    rewards:
+      - item: minecraft:paper x8
+      - xp: 2
+
+  - id: mapa
+    title: "Cartógrafo"
+    type: main
+    deps: [bussola_relogio, cana_acucar]
+    icon: minecraft:filled_map
+    desc: |
+      Oito papéis em volta de uma bússola fazem um §eMapa Vazio§r. Clique com ele na mão
+      e ele desenha a região em volta, conforme você anda.
+
+      Para §eampliar§r, coloque o mapa no centro de 8 papéis na bancada (até 4 vezes).
+      Mapas também copiam: mapa + mapa vazio. Me mostre §eum mapa desenhado§r.
+    tasks:
+      - get: minecraft:filled_map
+    rewards:
+      - xp: 3
+      - choice: [minecraft:paper x16, minecraft:item_frame x2, minecraft:compass]
+
+  - id: moldura_mapa
+    title: "Parede de Mapas"
+    type: optional
+    deps: [mapa]
+    icon: minecraft:item_frame
+    desc: |
+      Uma §eMoldura§r na parede exibe qualquer item — inclusive mapas! Várias molduras
+      com mapas lado a lado formam um mural gigante do seu mundo.
+
+      Fabrique §e4 molduras§r. (O JourneyMap faz isso sozinho, mas cá entre nós, mural de
+      mapa é muito mais charmoso.)
+    tasks:
+      - get: minecraft:item_frame x4
+    rewards:
+      - loot: comum
+
+  - id: mapa_mundi
+    title: "O Mapa Vivo"
+    type: info
+    deps: [mapa]
+    icon: minecraft:map
+    desc: |
+      Este pack tem o §eJourneyMap§r: aperte §eJ§r para abrir o mapa completo, que se
+      desenha sozinho enquanto você explora. Dá para criar marcadores (waypoints) e as
+      §eWaystones§r que você ativa viram marcadores automaticamente!
+
+      O minimapa fica no canto da tela. Ainda assim, saber fazer mapas de papel é coisa de
+      quem respeita a tradição. ♥
+    tasks:
+      - check
+    rewards:
+      - xp: 1
+
+  # ======================================================================
+  # FASE 10 — CONSTRUÇÃO E CONFORTO
+  # ======================================================================
+  - id: vidro
+    title: "Janelas para o Mundo"
+    type: normal
+    deps: [volume_sobrevivencia]
+    icon: minecraft:glass
+    desc: |
+      Areia na fornalha = §eVidro§r. Seis vidros fazem 16 §epainéis§r, mais finos e
+      econômicos para janelas.
+
+      Junte §e32 vidros§r. Eles também viram frascos, garrafas, lâmpadas e um monte de
+      máquinas de mod.
+    tasks:
+      - get: minecraft:glass x32
+    rewards:
+      - item: minecraft:sand x16
+      - xp: 1
+
+  - id: tijolos_pedra
+    title: "Tijolos de Pedra"
+    type: normal
+    deps: [volume_sobrevivencia]
+    icon: minecraft:stonebrick
+    desc: |
+      Pedra lisa (pedregulho na fornalha) em grupos de 4 vira §eTijolos de Pedra§r. Funda
+      tijolos para ter a versão rachada; com trepadeira, a versão musgosa.
+
+      Faça §e64 tijolos de pedra§r e dê um ar de castelo à sua base. O Volume de
+      Arquitetura e Decoração leva isso a outro nível.
+    tasks:
+      - get: minecraft:stonebrick x64
+    rewards:
+      - item: minecraft:torch x16
+      - xp: 1
+
+  - id: tijolos_argila
+    title: "Argila e Tijolos"
+    type: normal
+    deps: [volume_sobrevivencia]
+    icon: minecraft:brick_block
+    desc: |
+      Bolas de argila (de blocos cinza no fundo de rios e lagos) assadas viram tijolos;
+      quatro tijolos fazem um §eBloco de Tijolos§r. Bloco de argila na fornalha vira
+      §eTerracota§r, que pode ser tingida.
+
+      Faça §e16 blocos de tijolos§r.
+    tasks:
+      - get: minecraft:brick_block x16
+    rewards:
+      - item: minecraft:clay_ball x16
+      - xp: 1
+
+  - id: corantes
+    title: "Paleta de Cores"
+    type: normal
+    deps: [ovelhas]
+    icon: minecraft:dye:1
+    desc: |
+      Flores dão corantes (rosa → vermelho, dente-de-leão → amarelo...), lápis é azul,
+      cacau é marrom, farinha de osso é branco, bolsa de tinta (lulas) é preto. Misturas
+      fazem o resto: vermelho + amarelo = laranja, azul + branco = azul-claro...
+
+      Tenha §e6 corantes diferentes§r: vermelho, amarelo, verde (cacto na fornalha),
+      azul (lápis), preto e branco.
+    tasks:
+      - get: [minecraft:dye:1, minecraft:dye:11, minecraft:dye:2, minecraft:dye:4, minecraft:dye:0, minecraft:dye:15]
+    rewards:
+      - item: minecraft:wool x8
+      - xp: 2
+
+  - id: estoque_comida
+    title: "Despensa Cheia"
+    type: normal
+    deps: [fazendeiro]
+    icon: minecraft:cooked_beef
+    desc: |
+      Com fazenda e rebanho funcionando, encha a despensa. Comidas boas (carne assada,
+      batata assada, pão, torta, cenoura dourada) enchem a §esaturação§r e mantêm a
+      regeneração de vida ativa.
+
+      Tenha §e32 carnes assadas§r de qualquer animal (bife, costeleta, frango ou carneiro).
+    tasks:
+      - one_of: [minecraft:cooked_beef x32, minecraft:cooked_porkchop x32, minecraft:cooked_chicken x32, etfuturum:mutton_cooked x32]
+    rewards:
+      - item: minecraft:golden_carrot x4
+      - xp: 2
+
+  - id: bau_ender_aviso
+    title: "O Baú do Fim (Aviso)"
+    type: info
+    deps: [blaze]
+    icon: EnderStorage:enderChest
+    desc: |
+      Atenção a uma diferença importante deste pack! O §eBaú do Fim vanilla não pode ser
+      colocado§r — ele foi substituído pelo §eBaú do Fim do EnderStorage§r, que é bem
+      melhor: você escolhe três cores na tampa (com lã) e todo baú com as mesmas cores
+      compartilha o inventário, até entre dimensões.
+
+      A receita leva varas de blaze, obsidiana, baú, lã e pérola do fim. Detalhes no
+      Volume de Utilidades.
+    tasks:
+      - check
+    rewards:
+      - xp: 1
+
+  - id: lula_tinta
+    title: "Tinta de Lula"
+    type: optional
+    deps: [vara_pescar]
+    icon: minecraft:dye
+    desc: |
+      §eLulas§r nadam em rios e oceanos e soltam §eBolsas de Tinta§r — o corante preto do
+      jogo (com pena e livro, vira o Livro e Pena para escrever).
+
+      Junte §e8 bolsas de tinta§r. Uma espada ou flechas resolvem; a vara de pescar puxa
+      a lula para perto.
+    tasks:
+      - get: minecraft:dye x8
+    rewards:
+      - loot: comum
+
+  - id: garrafas_xp
+    title: "Experiência Engarrafada"
+    type: optional
+    deps: [profissoes]
+    icon: minecraft:experience_bottle
+    desc: |
+      Os §esacerdotes§r (aldeões de roupa roxa) às vezes vendem §eFrascos de Experiência§r.
+      Jogue-os no chão e saem orbes de XP — ótimo para consertar com a bigorna ou
+      completar aquele nível 30.
+
+      Consiga §e4 frascos de experiência§r.
+    tasks:
+      - get: minecraft:experience_bottle x4
+    rewards:
+      - loot: comum
+
+  - id: farol
+    title: "O Sinalizador"
+    type: optional
+    deps: [nether_basico, mineracao_profunda]
+    icon: minecraft:beacon
+    desc: |
+      Vidro, obsidiana e uma §eEstrela do Nether§r fazem o §eSinalizador§r (Beacon). Numa
+      pirâmide de blocos de ferro, ouro, esmeralda ou diamante, ele dá efeitos (Pressa,
+      Velocidade, Força...) para todos em volta.
+
+      A estrela vem do chefe §cWither§r — história do Volume do Nether. §bEt Futurum:§r
+      vidro tingido no feixe muda a cor da luz. Construa um sinalizador quando puder.
+    tasks:
+      - get: minecraft:beacon
+    rewards:
+      - loot: comum
+
+  # ======================================================================
+  # FASE 11 — RUMO AO FIM
+  # ======================================================================
+  - id: enderman
+    title: "Não Olhe nos Olhos"
+    type: main
+    deps: [armadura_diamante]
+    icon: minecraft:ender_pearl
+    desc: |
+      Altos, pretos, olhos roxos... §eEndermen§r. Eles ficam bravos se você olhar direto
+      para o rosto deles, teleportam e carregam blocos.
+
+      §a• Lute embaixo de um teto de 2 blocos§r: eles têm 3 de altura e não conseguem te
+      alcançar. §a• Água os machuca.§r §a• Use uma abóbora na cabeça§r para olhar sem
+      irritá-los. Derrote §e8 Endermen§r e junte §e12 Pérolas do Fim§r.
+    tasks:
+      - kill: "Enderman x8"
+      - get: minecraft:ender_pearl x12
+    rewards:
+      - xp: 3
+      - choice: [minecraft:golden_apple x2, minecraft:pumpkin, minecraft:ender_pearl x4]
+
+  - id: olho_do_fim
+    title: "O Olho do Fim"
+    type: main
+    deps: [enderman, nether_basico]
+    icon: minecraft:ender_eye
+    desc: |
+      Pérola do Fim + Pó de Blaze = §eOlho do Fim§r. Ele é a chave do portal e a bússola
+      que aponta para ele.
+
+      Jogue um olho para o alto (botão direito): ele voa na direção da §eFortaleza§r mais
+      próxima e cai ou se quebra (às vezes some!). Faça §e12 Olhos do Fim§r — mais alguns
+      de reserva seria sábio.
+    tasks:
+      - get: minecraft:ender_eye x12
+    rewards:
+      - xp: 3
+      - choice: [minecraft:ender_pearl x4, minecraft:blaze_rod x2, minecraft:cooked_beef x16]
+
+  - id: fortaleza_subterranea
+    title: "A Fortaleza Subterrânea"
+    type: main
+    deps: [olho_do_fim]
+    icon: minecraft:stonebrick:2
+    desc: |
+      Siga os olhos: quando eles começarem a cair para baixo, você está em cima da
+      §eFortaleza§r (Stronghold). Cave em escada até achar corredores de tijolos de
+      pedra, celas, bibliotecas e... a sala do portal, com lava e um §eGerador de Traças§r.
+
+      §eNovidade do pack:§r fortalezas também têm uma §eWaystone§r! Ative e marque o
+      caminho. Traga §e16 Tijolos de Pedra Rachados§r da estrutura (ou funda tijolos comuns)
+      e marque quando encontrar a sala do portal.
+    tasks:
+      - get: minecraft:stonebrick:2 x16
+      - check
+    rewards:
+      - xp: 3
+      - choice: [minecraft:ender_eye x2, minecraft:golden_apple x2, minecraft:torch x32]
+
+  - id: prontos_volumes
+    title: "Prontos para os Volumes"
+    type: milestone
+    deps: [mineracao_profunda, encantador, nether_basico, alquimista, fazendeiro, engenheiro_redstone, mapa, vila]
+    icon: minecraft:book
+    size: 48
+    banner: "Prontos para os Volumes!"
+    subtitle: "A sobrevivência comum foi reescrita"
+    desc: |
+      Herói... para tudo. Olha quanto chão a gente andou!
+
+      Minério de todas as camadas, encantamentos de nível 30, o Nether, poções, uma vila
+      amiga, uma fazenda inteira, engenhocas de redstone e mapas. Esse era o §eVolume da
+      Sobrevivência§r, a base de todos os outros — e ele está inteiro de novo.
+
+      De agora em diante o mundo é seu: §bTecnologia§r, §dMagia§r, §2Aventura§r,
+      §eVida§r... qualquer Volume, em qualquer ordem. O §6Ato I — Raízes§r vai acompanhar
+      você nessa escolha.
+
+      Esse kit é o meu "boa viagem". Eu estou muito, muito orgulhosa de você. ♥
+    tasks:
+      - check
+    rewards:
+      - kit:
+          name: "Kit do Herói Preparado"
+          items: ["minecraft:diamond x4", "minecraft:golden_apple x2", "minecraft:experience_bottle x16", "minecraft:ender_pearl x4", "minecraft:cooked_beef x32"]
+      - loot: incomum
+      - xp: 5
+
+  - id: limiar_do_fim
+    title: "O Limiar do Fim"
+    type: milestone
+    deps: [fortaleza_subterranea, prontos_volumes]
+    icon: minecraft:ender_eye
+    banner: "O Limiar do Fim"
+    subtitle: "O Dragão espera do outro lado"
+    desc: |
+      Doze molduras ao redor de um buraco escuro sobre a lava. Coloque um §eOlho do Fim§r
+      em cada moldura vazia e o portal se acende num céu estrelado.
+
+      §cNão pule ainda!§r Do outro lado está o §eFim§r, uma ilha flutuante no vazio, com
+      Endermen por toda parte, cristais em torres de obsidiana e o §5Dragão do Fim§r. Não
+      há volta sem derrotá-lo (ou morrer).
+
+      Essa batalha tem um Volume só dela: §5O Fim§r (seção Aventura). Prepare: armadura
+      de diamante encantada, arco com muitas flechas, poções, blocos e uma cama na base.
+      Marque esta página quando o portal estiver pronto. Eu vou estar lá com você.
+    tasks:
+      - get: minecraft:ender_eye x12
+      - check
+    rewards:
+      - kit:
+          name: "Kit do Limiar"
+          items: ["minecraft:arrow x64", "minecraft:golden_apple x3", "minecraft:obsidian x16", "minecraft:pumpkin"]
+      - loot: incomum
+      - xp: 5

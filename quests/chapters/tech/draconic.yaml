@@ -1,0 +1,2364 @@
+chapter:
+  id: draconic
+  title: "Draconic Evolution"
+  prefix: ""
+  order: 385
+  icon: DraconicEvolution:draconicCore
+  desc: |
+    §bO Volume do Dragão.§r Draconium do Fim, núcleos cada vez mais poderosos, o Núcleo de
+    Energia de trilhões de RF, armaduras que voam, o Guardião do Caos e o Reator Dracônico.
+    (Draconic Evolution 1.5.33-GTNH)
+
+quests:
+  # ======================================================================
+  # FASE 0 — DRACONIUM
+  # ======================================================================
+  - id: minerio_draconio
+    title: "O Minério que Brilha no Escuro"
+    type: main
+    icon: DraconicEvolution:draconiumOre
+    desc: |
+      Sabe aquele roxo que pisca no fundo do mundo? É uma página do Volume do Dragão chamando
+      por você.
+
+      O §eDraconium Ore§r existe em três lugares (todos ativos na config do pack):
+      §e• Superfície:§r abaixo da camada Y 8 — raríssimo.
+      §e• Nether:§r em qualquer altura — também raro.
+      §e• O Fim:§r MUITO mais comum, na ilha principal e nos cometas.
+
+      Ele dropa §e1 a 3 Draconium Dust§r (até 4 a 12 com Fortuna III). Com Toque Suave você
+      leva o minério inteiro. Traga um dos dois para eu ver!
+    tasks:
+      - one_of: [DraconicEvolution:draconiumOre, DraconicEvolution:draconiumDust]
+    rewards:
+      - xp: 4
+      - choice: [minecraft:ender_pearl x4, minecraft:golden_apple, minecraft:torch x32]
+
+  - id: viagem_fim
+    title: "Rumo ao Fim"
+    type: normal
+    deps: [minerio_draconio]
+    desc: |
+      Se você só achou um minério depois de horas cavando no Y 8, eu tenho uma notícia: o
+      Fim é onde o Draconium mora de verdade.
+
+      Entre no Fim (Olhos do Fim no portal da fortaleza). O minério aparece na pedra do Fim da
+      ilha principal, bem mais comum que no mundo normal. §cCuidado:§r o Dragão ainda está lá
+      — e os Endermen não gostam de olhares.
+    tasks:
+      - visit: {dim: 1, name: "O Fim"}
+    rewards:
+      - xp: 4
+      - item: minecraft:ender_pearl x4
+
+  - id: cometa_ender
+    title: "Cometas do Fim"
+    type: optional
+    deps: [viagem_fim]
+    desc: |
+      Minerou toda a ilha principal? Então pegue algo que voe e explore o vazio do Fim.
+
+      Os §eCometas Ender§r são formações de pedra do Fim e obsidiana recheadas de Draconium.
+      A config deixa a chance em §e1 a cada 10 000 chunks§r, então é preciso paciência —
+      mas um cometa grande vale semanas de mineração.
+    tasks:
+      - get: DraconicEvolution:draconiumOre x16
+    rewards:
+      - loot: incomum
+
+  - id: po_draconio
+    title: "Poeira de Dragão"
+    type: main
+    deps: [minerio_draconio]
+    icon: DraconicEvolution:draconiumDust
+    desc: |
+      Tudo no Draconic começa nesse pozinho roxo. Junte §e16 Draconium Dust§r.
+
+      Fontes no pack: quebrar o minério (com Fortuna rende muito mais), §eMartelo de
+      Engenheiro§r do Immersive Engineering (1 minério → 1 pó na bancada) e a linha de
+      processamento do RotaryCraft. Confira as outras rotas no NEI (U no pó).
+    tasks:
+      - get: ore:dustDraconium x16
+    rewards:
+      - xp: 4
+      - choice: [minecraft:blaze_powder x8, minecraft:ender_eye x2, minecraft:obsidian x8]
+
+  - id: lingote_draconio
+    title: "Lingote de Draconium"
+    type: main
+    deps: [po_draconio]
+    icon: DraconicEvolution:draconiumIngot
+    desc: |
+      Funda o pó numa fornalha comum: §e1 Draconium Dust → 1 Draconium Ingot§r. Simples assim!
+
+      §aAtalho do pack:§r o minério junto de um Pó de Pyrotheum (Thermal) na bancada vira um
+      lingote direto — e o Magical Crops tem a Essência de Draconium (9 essências → 1 lingote).
+
+      Faça §e16 lingotes§r. Você vai gastar muito mais do que imagina.
+    tasks:
+      - get: ore:ingotDraconium x16
+    rewards:
+      - xp: 5
+      - choice: [minecraft:gold_ingot x8, minecraft:diamond x2, minecraft:redstone x32]
+
+  - id: pepita_draconio
+    title: "Trocados de Draconium"
+    type: optional
+    deps: [lingote_draconio]
+    desc: |
+      Um lingote na bancada vira §e9 Draconium Nuggets§r (e 9 pepitas voltam a ser um lingote).
+      Úteis para guardar sobras de receitas de máquinas de outros mods.
+    tasks:
+      - get: DraconicEvolution:nugget x9
+    rewards:
+      - loot: comum
+
+  - id: tablet_informacoes
+    title: "O Tablet do Dragão"
+    type: normal
+    deps: [po_draconio]
+    desc: |
+      Eu tenho uma confissão: o próprio Draconic escreveu um manual — o §eDraconic Evolution
+      Information Tablet§r. 8 pedras em volta de 1 Draconium Dust.
+
+      Ele explica cada bloco do mod, inclusive os desenhos camada por camada do Núcleo de
+      Energia e o ritual do Dragão. Eu vou resumir tudo aqui, mas é bom ter a fonte original.
+    tasks:
+      - get: DraconicEvolution:infoTablet
+    rewards:
+      - xp: 3
+      - item: minecraft:book x4
+
+  - id: bloco_draconio
+    title: "Bloco de Draconium"
+    type: normal
+    deps: [lingote_draconio]
+    desc: |
+      9 lingotes = §eDraconium Block§r. Além de guardar metal, ele é §eresistente ao Wither§r
+      (ótimo para arenas) e é a matéria-prima de três coisas importantes: o Núcleo de Energia,
+      a Pedra da Ressurreição e o Bloco de Draconium Carregado.
+    tasks:
+      - get: ore:blockDraconium
+    rewards:
+      - xp: 4
+      - item: minecraft:obsidian x8
+
+  - id: fortuna_draconio
+    title: "A Sorte do Minerador"
+    type: optional
+    deps: [po_draconio]
+    icon: minecraft:enchanted_book
+    desc: |
+      Uma picareta com §eFortuna III§r transforma cada minério em até 12 pós de Draconium.
+      Em vez de Toque Suave, minere com Fortuna e traga §e48 Draconium Dust§r de uma vez —
+      é o jeito mais barato de encher os bolsos.
+    tasks:
+      - get: ore:dustDraconium x48
+    rewards:
+      - loot: incomum
+
+  - id: essencia_draconio
+    title: "Draconium que Cresce em Árvore"
+    type: optional
+    deps: [lingote_draconio]
+    icon: magicalcrops:DraconiumEssence
+    desc: |
+      Uma ponte com o capítulo do Magical Crops: a §eDraconium Essence§r. Nove essências na
+      bancada viram um Draconium Ingot. Uma plantação de Draconium é um jeito tranquilo de nunca
+      mais depender só do Fim.
+    tasks:
+      - get: magicalcrops:DraconiumEssence x9
+    rewards:
+      - loot: incomum
+
+  - id: piroteum_draconio
+    title: "Atalho Flamejante"
+    type: optional
+    deps: [minerio_draconio]
+    icon: ThermalFoundation:material:512
+    desc: |
+      No pack existe uma receita sem forma que funde direto: §e1 Draconium Ore + 1 Pó de
+      Pyrotheum§r (Thermal) na bancada = 1 Draconium Ingot. Útil quando você está longe da
+      fornalha — mas lembre que quebrar com Fortuna e fundir o pó rende bem mais.
+    tasks:
+      - get: ore:dustPyrotheum x4
+    rewards:
+      - loot: comum
+
+  - id: martelo_engenheiro
+    title: "Martelo no Minério"
+    type: optional
+    deps: [minerio_draconio]
+    icon: ImmersiveEngineering:tool
+    desc: |
+      Tem um §eEngineer's Hammer§r do Immersive Engineering? Minério de Draconium + martelo na
+      bancada = 1 Draconium Dust, sem gastar o minério numa fornalha. Bom para quem coletou
+      tudo com Toque Suave.
+    tasks:
+      - get: ImmersiveEngineering:tool
+    rewards:
+      - loot: comum
+
+  - id: mineracao_fim
+    title: "Minerador do Fim"
+    type: normal
+    deps: [viagem_fim]
+    icon: DraconicEvolution:draconiumOre
+    desc: |
+      Agora que você chegou ao Fim, encha os bolsos. A pedra do Fim da ilha principal tem
+      Draconium de sobra: junte §e24 Draconium Ore§r (Toque Suave) ou o pó equivalente se
+      preferir minerar com Fortuna. Fique de olho nos Endermen e nunca olhe nos olhos deles.
+    tasks:
+      - one_of: [DraconicEvolution:draconiumOre x24, DraconicEvolution:draconiumDust x48]
+    rewards:
+      - xp: 4
+      - item: minecraft:ender_pearl x6
+
+  # ======================================================================
+  # FASE 1 — O NÚCLEO DRACÔNICO E OS PRIMEIROS DISPOSITIVOS
+  # ======================================================================
+  - id: nucleo_draconico
+    title: "Draconic Core"
+    type: main
+    deps: [lingote_draconio]
+    icon: DraconicEvolution:draconicCore
+    desc: |
+      Este é o coração de quase todas as receitas do mod — e de uma porção de receitas de
+      outros mods do pack também.
+
+      §eDraconic Core:§r 4 lingotes de ouro nos cantos, 4 Draconium Ingots nas laterais e
+      1 diamante no centro. Faça §e4§r: as próximas máquinas pedem um cada.
+    tasks:
+      - get: DraconicEvolution:draconicCore x4
+    rewards:
+      - xp: 6
+      - choice: [minecraft:gold_ingot x12, minecraft:diamond x3, DraconicEvolution:draconiumIngot x6]
+
+  - id: obsidiana_infundida
+    title: "Obsidiana Infundida"
+    type: normal
+    deps: [po_draconio]
+    desc: |
+      4 obsidianas, 4 Pós de Blaze e 1 Draconium Dust no centro rendem §e4 Draconium Infused
+      Obsidian§r: o dobro da resistência da obsidiana, à prova de qualquer criatura.
+
+      E ela tem um segredo: monta portais dracônicos (veja o Receptáculo, logo ali).
+    tasks:
+      - get: DraconicEvolution:infusedObsidian x4
+    rewards:
+      - xp: 3
+      - item: minecraft:blaze_rod x4
+
+  - id: amuleto_deslocamento
+    title: "Charm of Dislocation"
+    type: normal
+    deps: [po_draconio]
+    desc: |
+      Teletransporte de bolso! Olho do Fim no centro, 4 Draconium Dust e 4 Pós de Blaze em volta.
+
+      O §eCharm of Dislocation§r guarda §eum único destino§r (funciona até entre dimensões),
+      tem usos limitados e cobra um pouquinho da sua vida a cada salto. Quando acabar, faça
+      outro. A versão avançada vem depois, com núcleos Wyvern.
+    tasks:
+      - get: DraconicEvolution:teleporterMKI
+    rewards:
+      - xp: 3
+      - item: minecraft:ender_pearl x4
+
+  - id: obsidiana_lote
+    title: "Um Portal Grande"
+    type: optional
+    deps: [obsidiana_infundida]
+    icon: DraconicEvolution:infusedObsidian
+    desc: |
+      Um portal dracônico pode ter até 150×150 blocos. Para uma moldura confortável de 4×5,
+      você vai precisar de §e14 blocos§r de Obsidiana Infundida (cantos inclusos). Junte §e16§r.
+    tasks:
+      - get: DraconicEvolution:infusedObsidian x16
+    rewards:
+      - loot: comum
+
+  - id: pedestal_deslocador
+    title: "Dislocator Pedestal"
+    type: optional
+    deps: [amuleto_deslocamento]
+    desc: |
+      Coloque um Charm num §eDislocator Pedestal§r e clique no pedestal para viajar — sem
+      gastar o amuleto! A desvantagem: o amuleto fica no pedestal. Perfeito para uma "estação
+      de teletransporte" na base. (Shift + clique com a mão vazia retira o amuleto.)
+    tasks:
+      - get: DraconicEvolution:teleporterStand
+    rewards:
+      - loot: comum
+
+  - id: portal_draconico
+    title: "Portal Dracônico"
+    type: optional
+    deps: [obsidiana_infundida, pedestal_deslocador, nucleo_draconico]
+    icon: DraconicEvolution:dislocatorReceptacle
+    desc: |
+      Monte uma moldura retangular de §eObsidiana Infundida§r — de 1×1 até 150×150, deitada ou
+      em pé — e troque um bloco da borda (nunca um canto) por um §eDislocator Receptacle§r.
+
+      Clique no Receptáculo com um Charm de Dislocation vinculado: o portal acende e leva até
+      o destino gravado. Dá até para trocar o amuleto por funil e automatizar o destino!
+    tasks:
+      - get: DraconicEvolution:dislocatorReceptacle
+    rewards:
+      - loot: incomum
+
+  - id: deslocador_itens
+    title: "Item Dislocator"
+    type: normal
+    deps: [amuleto_deslocamento]
+    icon: DraconicEvolution:magnet
+    desc: |
+      Um ímã de itens com tecnologia de teletransporte. Ferro, 2 blocos de redstone e um Charm
+      of Dislocation viram o §eItem Dislocator§r, que puxa os itens do chão até você.
+
+      §aDica:§r agachar desliga o ímã temporariamente. A config ignora sementes de cristal do
+      AE2 e itens sobre a Fornalha Alquímica do Thaumcraft e as piscinas de Mana do Botania.
+    tasks:
+      - get: DraconicEvolution:magnet
+    rewards:
+      - xp: 3
+      - item: minecraft:redstone_block x2
+
+  - id: inibidor_deslocador
+    title: "Dislocator Inhibitor"
+    type: optional
+    deps: [deslocador_itens]
+    desc: |
+      Tem itens que você NÃO quer que o ímã puxe (uma fazenda de mobs, uma esteira...).
+      O §eDislocator Inhibitor§r bloqueia o efeito do Dislocator na área em volta dele.
+    tasks:
+      - get: DraconicEvolution:dislocatorInhibitor
+    rewards:
+      - loot: comum
+
+  - id: fosforos_seguranca
+    title: "Fósforos de Segurança"
+    type: optional
+    deps: [tablet_informacoes]
+    desc: |
+      Uma pausa fofa no meio de tanta energia: o §eSafety Match§r (graveto + corante laranja)
+      acende um fogo que nunca apaga, não queima você e não espalha. 9 fósforos viram uma
+      caixinha. Lareira dos sonhos!
+    tasks:
+      - get: DraconicEvolution:safetyMatch
+    rewards:
+      - loot: comum
+
+  - id: gerador_draconico
+    title: "Um Gerador Modesto"
+    type: normal
+    deps: [nucleo_draconico]
+    icon: DraconicEvolution:generator:3
+    desc: |
+      Não tem outra fonte de RF ainda? O §eGenerator§r do Draconic (tijolos do Nether, ferro,
+      fornalha e um Draconic Core) queima combustível sólido e gera cerca de §e80 RF/t§r.
+
+      É pouco para o endgame, mas serve para começar a carregar as primeiras máquinas.
+    tasks:
+      - get: DraconicEvolution:generator:3
+    rewards:
+      - xp: 3
+      - item: minecraft:coal_block x4
+
+  - id: triturador_mobs
+    title: "Mob Grinder"
+    type: normal
+    deps: [nucleo_draconico]
+    icon: DraconicEvolution:grinder:3
+    desc: |
+      Toda base precisa de uma fazenda de mobs. O §eMob Grinder§r mata tudo numa área 7×7 à
+      frente dele, gastando combustível sólido ou — muito melhor — RF (1000 RF por mob).
+
+      §aDica:§r os orbes de XP que ele gera somem em 30 segundos; coloque um coletor de XP por
+      perto. A config deste pack §cnão§r aplica Saque (Looting) às mortes.
+    tasks:
+      - get: DraconicEvolution:grinder:3
+    rewards:
+      - xp: 4
+      - item: minecraft:iron_ingot x16
+
+  - id: controle_clima
+    title: "Weather Controller"
+    type: optional
+    deps: [nucleo_draconico]
+    desc: |
+      Chuva atrapalhando a construção? O §eWeather Controller§r usa §eEsmeraldas§r como
+      combustível e tem três modos: parar a chuva, começar a chover ou tempestade. Escolha o
+      modo e aplique um sinal de redstone.
+    tasks:
+      - get: DraconicEvolution:weatherController
+    rewards:
+      - loot: incomum
+
+  - id: sensor_chuva
+    title: "Rain Sensor"
+    type: optional
+    deps: [controle_clima]
+    desc: |
+      Um sensor que emite redstone quando chove. Junte com o Weather Controller e você nunca
+      mais vai ver uma gota no seu terreno. Automação climática!
+    tasks:
+      - get: DraconicEvolution:rainSensor
+    rewards:
+      - loot: comum
+
+  - id: potenciometro
+    title: "Potentiometer"
+    type: optional
+    deps: [tablet_informacoes]
+    desc: |
+      Um emissor de redstone ajustável de 0 a 15. Ótimo para controlar os Flux Gates (que
+      variam o fluxo conforme a força do sinal) sem montar uma gambiarra de comparadores.
+    tasks:
+      - get: DraconicEvolution:potentiometer
+    rewards:
+      - loot: comum
+
+  - id: detector_jogador
+    title: "Player Detector"
+    type: optional
+    deps: [nucleo_draconico]
+    desc: |
+      Emite redstone quando um jogador chega a até §e10 blocos§r (alcance ajustável). Portas
+      automáticas, luzes, alarmes... você escolhe.
+    tasks:
+      - get: DraconicEvolution:playerDetector
+    rewards:
+      - loot: comum
+
+  - id: detector_avancado
+    title: "Advanced Player Detector"
+    type: optional
+    deps: [detector_jogador]
+    desc: |
+      A versão de luxo: alcance de até §e20 blocos§r, lista branca ou negra de nomes, camuflagem
+      e saída invertida. Pede um Crânio de Esqueleto Wither — boa desculpa para visitar uma
+      Fortaleza do Nether.
+    tasks:
+      - get: DraconicEvolution:playerDetectorAdvanced
+    rewards:
+      - loot: incomum
+
+  - id: gerador_particulas
+    title: "Particle Generator"
+    type: normal
+    deps: [nucleo_draconico]
+    desc: |
+      Parece só enfeite — e é mesmo, dá para criar efeitos de partículas totalmente
+      personalizados pela GUI. MAS ele também é peça obrigatória do §eNúcleo de Energia§r
+      (4 por estrutura) e de receitas como o Energy Infuser.
+
+      4 blocos de redstone, 4 Varas de Blaze e um Draconic Core.
+    tasks:
+      - get: DraconicEvolution:particleGenerator
+    rewards:
+      - xp: 3
+      - item: minecraft:blaze_rod x4
+
+  - id: desencantador
+    title: "Disenchanter"
+    type: optional
+    deps: [nucleo_draconico]
+    desc: |
+      Tira encantamentos de um item e passa para um livro, cobrando XP. §cAtenção:§r o item
+      perde durabilidade a cada extração; 20 estantes de livros em volta zeram esse dano.
+      §cItens de energia (como os do Draconic) também são danificados e podem ser destruídos!§r
+    tasks:
+      - get: DraconicEvolution:dissEnchanter
+    rewards:
+      - loot: incomum
+
+  - id: bau_draconico
+    title: "Draconic Chest"
+    type: normal
+    deps: [nucleo_draconico]
+    desc: |
+      O baú definitivo: §e234 espaços§r, bancada embutida, uma fornalha de 5 espaços movida a RF
+      que §edobra minérios§r e guarda tudo ao ser quebrado. Ainda vem em qualquer cor (Shift +
+      clique com a mão vazia mostra como).
+
+      A receita pede 2 Baús de Obsidiana do Iron Chests, uma fornalha, uma bancada e um
+      Draconic Core.
+    tasks:
+      - get: DraconicEvolution:draconiumChest
+    rewards:
+      - xp: 4
+      - item: minecraft:chest x4
+
+  - id: modificador_melhorias
+    title: "Upgrade Modifier"
+    type: main
+    deps: [nucleo_draconico]
+    desc: |
+      Todas as ferramentas e armaduras do Draconic podem ser melhoradas — e é aqui que isso
+      acontece.
+
+      Coloque o item no §eUpgrade Modifier§r: aparecem as melhorias possíveis (velocidade, área,
+      dano, energia, escudo...). Cada melhoria aceita §enúcleos§r (Draconic, Wyvern, Awakened,
+      Chaotic): quanto maior o tier do núcleo, mais pontos ele dá. Itens Wyvern aceitam até
+      3 melhorias; os Dracônicos até 6 (config do pack).
+    tasks:
+      - get: DraconicEvolution:upgradeModifier
+    rewards:
+      - xp: 6
+      - choice: [DraconicEvolution:draconicCore x2, minecraft:diamond x4, DraconicEvolution:draconiumIngot x8]
+
+  - id: infusor_energia
+    title: "Energy Infuser"
+    type: main
+    deps: [gerador_particulas]
+    desc: |
+      O carregador mais rápido do pack (até §e10 milhões de RF/t§r pela config!) e com partículas
+      lindas de brinde. Ele carrega qualquer item de RF — e é ele que transforma um Draconium
+      Block em §eCharged Draconium Block§r, mais adiante.
+
+      Receita: Altar de Encantamentos no centro, 3 Draconic Cores, um Particle Generator e
+      Draconium Ingots.
+    tasks:
+      - get: DraconicEvolution:energyInfuser
+    rewards:
+      - xp: 6
+      - choice: [minecraft:redstone_block x8, DraconicEvolution:draconiumIngot x8, minecraft:glowstone x8]
+
+  - id: aglutinador_cristais
+    title: "Crystal Binder"
+    type: normal
+    deps: [nucleo_draconico]
+    icon: DraconicEvolution:wrench
+    desc: |
+      A ferramenta que conecta a rede de energia sem fio do Draconic. Shift + clique direito
+      troca o modo (vincular, desvincular, desvincular tudo, trocar entrada/saída). Com ela na
+      mão você enxerga as ligações entre os cristais.
+    tasks:
+      - get: DraconicEvolution:wrench
+    rewards:
+      - xp: 3
+      - item: minecraft:diamond x2
+
+  - id: rele_energia
+    title: "Energy Relay"
+    type: normal
+    deps: [aglutinador_cristais]
+    icon: DraconicEvolution:energyCrystal
+    desc: |
+      Os §eEnergy Relays§r são os "postes" da rede: não pegam nem entregam energia sozinhos,
+      só ligam outros cristais (alcance 25, até 10 conexões). A receita rende 4.
+
+      A energia flui de quem tem o buffer mais cheio para quem tem o mais vazio — sem cabo
+      nenhum atravessando a sua base.
+    tasks:
+      - get: DraconicEvolution:energyCrystal x4
+    rewards:
+      - xp: 3
+      - item: minecraft:diamond x2
+
+  - id: transceptor_energia
+    title: "Energy Transceiver"
+    type: normal
+    deps: [rele_energia]
+    icon: DraconicEvolution:energyCrystal:2
+    desc: |
+      Este é o cristal que realmente põe e tira energia: encoste-o numa máquina ou gerador e
+      vincule à rede. O Crystal Binder no modo "Mode Change" alterna entrada/saída.
+      Um Energy Relay na bancada vira 2 Transceivers (e 2 voltam a ser um Relay).
+    tasks:
+      - get: DraconicEvolution:energyCrystal:2 x2
+    rewards:
+      - xp: 3
+      - item: minecraft:redstone x16
+
+  - id: transceptor_sem_fio
+    title: "Wireless Energy Transceiver"
+    type: normal
+    deps: [transceptor_energia, gerador_particulas]
+    icon: DraconicEvolution:energyCrystal:4
+    desc: |
+      Agora sem encostar: o §eWireless Energy Transceiver§r se liga a até §e8 máquinas§r num
+      raio de 15 blocos. Vincule clicando primeiro no cristal e depois na máquina. Adeus,
+      emaranhado de cabos!
+    tasks:
+      - get: DraconicEvolution:energyCrystal:4
+    rewards:
+      - xp: 3
+      - item: minecraft:ender_pearl x4
+
+  - id: portao_fluxo
+    title: "Flux Gate"
+    type: normal
+    deps: [nucleo_energia_wyvern]
+    icon: DraconicEvolution:flowGate
+    desc: |
+      Um registro de RF: limita quanta energia passa por tick. A GUI tem dois valores — fluxo
+      com redstone 15 e fluxo sem redstone — e um sinal parcial fica no meio do caminho.
+      Entrada azul, saída laranja.
+
+      §cGuarde isso no coração:§r o Reator Dracônico §cPRECISA§r de pelo menos dois Flux Gates.
+      Também aceita controle por OpenComputers.
+    tasks:
+      - get: DraconicEvolution:flowGate
+    rewards:
+      - xp: 4
+      - item: minecraft:comparator x4
+
+  - id: portao_fluido
+    title: "Fluid Gate"
+    type: optional
+    deps: [portao_fluxo]
+    icon: DraconicEvolution:flowGate:6
+    desc: |
+      O irmão líquido do Flux Gate: limita mB/t de qualquer fluido, com a mesma lógica de dois
+      valores controlados por redstone.
+    tasks:
+      - get: DraconicEvolution:flowGate:6
+    rewards:
+      - loot: comum
+
+  - id: nucleo_energia_wyvern
+    title: "Wyvern Energy Core"
+    type: main
+    deps: [nucleo_draconico]
+    icon: DraconicEvolution:draconiumEnergyCore
+    desc: |
+      Uma bateria-componente: 4 Draconium Ingots, 4 blocos de redstone e um Draconic Core no
+      centro. O §eWyvern Energy Core§r vai dentro de toda ferramenta, arma e armadura Wyvern, do
+      capacitor de fluxo e do Núcleo de Energia. Faça §e4§r para já ir adiantando.
+    tasks:
+      - get: DraconicEvolution:draconiumEnergyCore x4
+    rewards:
+      - xp: 6
+      - choice: [minecraft:redstone_block x12, DraconicEvolution:draconiumIngot x8, minecraft:gold_ingot x12]
+
+  - id: dispositivos_draconicos
+    title: "A Oficina do Dragão"
+    type: milestone
+    deps: [modificador_melhorias, infusor_energia, nucleo_energia_wyvern, bau_draconico]
+    icon: DraconicEvolution:energyInfuser
+    banner: "A Oficina do Dragão"
+    subtitle: "O primeiro capítulo do Volume do Dragão"
+    desc: |
+      Um Energy Infuser zumbindo, um Upgrade Modifier na bancada, um baú enorme e núcleos de
+      energia empilhados. Herói, a primeira página do Volume do Dragão está escrita!
+
+      Daqui para frente o caminho sobe em tiers:
+      §e• Wyvern§r — precisa de uma §6Estrela do Nether§r (Wither).
+      §e• Dracônico§r — precisa do Draconium Despertado, que só existe com um Coração de Dragão.
+      §e• Caótico§r — precisa dos Fragmentos do Caos, guardados pelo Guardião do Caos.
+
+      E no meio disso tudo, o Núcleo de Energia: o banco de energia mais absurdo do pack.
+    tasks:
+      - get: [DraconicEvolution:upgradeModifier, DraconicEvolution:energyInfuser, DraconicEvolution:draconiumEnergyCore, DraconicEvolution:draconiumChest]
+    rewards:
+      - xp: 8
+      - kit: {name: "Kit do Aprendiz de Dragão", items: [DraconicEvolution:draconiumIngot x16, DraconicEvolution:draconicCore x2, minecraft:redstone_block x8, minecraft:diamond x4, minecraft:ender_eye x4]}
+      - loot: raro
+
+  # ======================================================================
+  # FASE 2 — WYVERN
+  # ======================================================================
+  - id: estrela_nether
+    title: "A Estrela do Wither"
+    type: main
+    deps: [dispositivos_draconicos]
+    icon: minecraft:nether_star
+    desc: |
+      Para subir ao tier Wyvern o Draconic pede o que o Wither guarda no peito: uma §6Estrela do
+      Nether§r.
+
+      §cO Wither explode blocos§r: invoque-o longe da base (de preferência no subsolo, cercado de
+      blocos resistentes — o Draconium Block é resistente ao Wither!). Leve poções, comida boa
+      e uma espada afiada. Cada Wyvern Core consome uma estrela, então pense em farmar.
+
+      Esse monstro também faz parte do §5Selo do Abismo§r.
+    tasks:
+      - get: minecraft:nether_star
+    rewards:
+      - xp: 8
+      - choice: [minecraft:golden_apple x2, minecraft:diamond x4, DraconicEvolution:draconiumIngot x8]
+
+  - id: nucleo_wyvern
+    title: "Wyvern Core"
+    type: main
+    deps: [estrela_nether]
+    icon: DraconicEvolution:wyvernCore
+    desc: |
+      Estrela do Nether no centro, 4 Draconic Cores nas laterais e 4 Draconium Ingots nos
+      cantos: o §eWyvern Core§r.
+
+      Ele é o segundo degrau dos núcleos (melhor no Upgrade Modifier), entra em todos os itens
+      Wyvern e, mais tarde, 4 deles formam um Awakened Core.
+    tasks:
+      - get: DraconicEvolution:wyvernCore
+    rewards:
+      - xp: 8
+      - choice: [DraconicEvolution:draconicCore x2, DraconicEvolution:draconiumIngot x12, minecraft:diamond x4]
+
+  - id: capacitor_wyvern
+    title: "Wyvern Flux Capacitor"
+    type: normal
+    deps: [nucleo_wyvern]
+    icon: DraconicEvolution:draconiumFluxCapacitor
+    desc: |
+      Uma bateria de bolso de §e80 milhões de RF§r (config do pack) que recarrega as suas
+      ferramentas e armaduras enquanto você trabalha. 4 Wyvern Energy Cores, um Wyvern Core e
+      Draconium. Configure o modo de carga com a tecla §eC§r.
+    tasks:
+      - get: DraconicEvolution:draconiumFluxCapacitor
+    rewards:
+      - xp: 5
+      - item: minecraft:redstone_block x8
+
+  - id: gui_config
+    title: "A Tecla C"
+    type: info
+    deps: [nucleo_wyvern]
+    icon: DraconicEvolution:wyvernCore
+    desc: |
+      Antes de vestir o primeiro equipamento Wyvern, uma aula rápida.
+
+      §eTecla C§r (padrão) abre a §eTool Config GUI§r: clique num item destacado do inventário e
+      ajuste velocidade de mineração, área de escavação (AoE), modo seguro, voo, velocidade,
+      recarga... Lá também ficam os espaços de encantamento e o filtro de lixo das ferramentas.
+
+      §aModo seguro de AoE:§r se ligado, a ferramenta não quebra nada se houver uma máquina ou
+      baú na área. Deixe ligado perto da base!
+
+      Outra tecla útil: §eP§r coloca qualquer item no mundo como decoração.
+    tasks:
+      - check
+    rewards:
+      - xp: 2
+
+  - id: picareta_wyvern
+    title: "Pickaxe of the Wyvern"
+    type: main
+    deps: [nucleo_wyvern, nucleo_energia_wyvern]
+    icon: DraconicEvolution:wyvernPickaxe
+    desc: |
+      Cansado da picareta de diamante? Ela vira a base desta aqui: Picareta de Diamante + Wyvern
+      Core + 2 Draconium Ingots + Wyvern Energy Core.
+
+      A ferramenta Wyvern §enunca quebra§r — funciona a RF (1 milhão de base). Área 1×1 ou 3×3
+      (ampliável no Upgrade Modifier). Carregue no Energy Infuser.
+    tasks:
+      - get: DraconicEvolution:wyvernPickaxe
+    rewards:
+      - xp: 8
+      - choice: [DraconicEvolution:draconiumIngot x8, minecraft:diamond x4, minecraft:redstone_block x8]
+
+  - id: pa_wyvern
+    title: "Shovel of the Wyvern"
+    type: normal
+    deps: [picareta_wyvern]
+    icon: DraconicEvolution:wyvernShovel
+    desc: |
+      A mesma ideia para a terra e a areia: Pá de Diamante como base, mesmo núcleo e mesma
+      energia. Área 1×1 ou 3×3. Terraplanagem nunca foi tão rápida.
+    tasks:
+      - get: DraconicEvolution:wyvernShovel
+    rewards:
+      - xp: 4
+      - item: DraconicEvolution:draconiumIngot x4
+
+  - id: espada_wyvern
+    title: "Sword of the Wyvern"
+    type: normal
+    deps: [nucleo_wyvern, nucleo_energia_wyvern]
+    icon: DraconicEvolution:wyvernSword
+    desc: |
+      Espada de Diamante + Wyvern Core + Draconium + Wyvern Energy Core. Resultado: §e+20 de
+      dano§r, mais §e10% da vida do alvo§r somados ao golpe e ataque em área 3×3.
+
+      E um bônus importante: com ela os mobs às vezes deixam cair a própria §eMob Soul§r.
+    tasks:
+      - get: DraconicEvolution:wyvernSword
+    rewards:
+      - xp: 4
+      - item: DraconicEvolution:draconiumIngot x4
+
+  - id: arco_wyvern
+    title: "Bow of the Wyvern"
+    type: normal
+    deps: [espada_wyvern]
+    icon: DraconicEvolution:wyvernBow
+    desc: |
+      Um arco que você regula: dano base, velocidade da flecha, disparo automático, explosão e
+      zoom. É §e10× mais preciso§r que um arco comum, mas o custo de RF por tiro cresce
+      multiplicando as opções — regule com carinho. Também aumenta a chance de almas.
+    tasks:
+      - get: DraconicEvolution:wyvernBow
+    rewards:
+      - xp: 4
+      - item: minecraft:arrow x64
+
+  - id: flecha_ender
+    title: "Ender Arrow"
+    type: optional
+    deps: [arco_wyvern]
+    desc: |
+      Alguém teve a "brilhante" ideia de amarrar uma Pérola do Fim numa flecha. Ela é pesada
+      demais para arcos comuns, então só sai de um arco Wyvern ou Dracônico... e te teleporta
+      para onde cair. §cUse proteção contra queda. Muita proteção.§r
+    tasks:
+      - get: DraconicEvolution:enderArrow x4
+    rewards:
+      - loot: comum
+
+  - id: elmo_wyvern
+    title: "Wyvern Helm"
+    type: normal
+    deps: [nucleo_wyvern, nucleo_energia_wyvern]
+    icon: DraconicEvolution:wyvernHelm
+    desc: |
+      Toda peça Wyvern é feita a partir da peça de diamante equivalente + Wyvern Core + 6
+      Draconium Ingots + Wyvern Energy Core.
+
+      O elmo dá §e+20 de escudo§r. Com o conjunto completo, §eimunidade total a fogo§r.
+    tasks:
+      - get: DraconicEvolution:wyvernHelm
+    rewards:
+      - xp: 4
+      - item: DraconicEvolution:draconiumIngot x4
+
+  - id: peitoral_wyvern
+    title: "Wyvern Chestplate"
+    type: normal
+    deps: [elmo_wyvern]
+    icon: DraconicEvolution:wyvernChest
+    desc: |
+      A peça mais robusta: §e+80 de escudo§r. Peitoral de Diamante como base.
+    tasks:
+      - get: DraconicEvolution:wyvernChest
+    rewards:
+      - xp: 4
+      - item: DraconicEvolution:draconiumIngot x4
+
+  - id: calcas_wyvern
+    title: "Wyvern Leggings"
+    type: normal
+    deps: [elmo_wyvern]
+    icon: DraconicEvolution:wyvernLeggs
+    desc: |
+      §e+80 de escudo§r e um aumento de velocidade (ajustável na tecla C, para você não sair
+      voando por cima dos próprios pés).
+    tasks:
+      - get: DraconicEvolution:wyvernLeggs
+    rewards:
+      - xp: 4
+      - item: DraconicEvolution:draconiumIngot x4
+
+  - id: botas_wyvern
+    title: "Wyvern Boots"
+    type: normal
+    deps: [elmo_wyvern]
+    icon: DraconicEvolution:wyvernBoots
+    desc: |
+      §e+20 de escudo§r, menos dano de queda e pulo mais alto. As botas de quem pula em
+      cometas do Fim.
+    tasks:
+      - get: DraconicEvolution:wyvernBoots
+    rewards:
+      - xp: 4
+      - item: DraconicEvolution:draconiumIngot x4
+
+  - id: escudo_draconico
+    title: "O Escudo Dracônico"
+    type: info
+    deps: [elmo_wyvern]
+    icon: DraconicEvolution:wyvernChest
+    desc: |
+      As armaduras Wyvern e Dracônica não funcionam como armadura comum: elas criam um
+      §eescudo§r que absorve dano.
+
+      §e• Pontos de escudo§r (barra vermelho-verde ao lado da hotbar): quanto de dano o escudo
+      ainda segura. Regeneram gastando RF.
+      §e• Entropia§r (barra verde pequena): sobe a cada golpe e diminui a regeneração; em 100% o
+      escudo para de regenerar.
+      §e• RF§r (barra azul): a energia das peças. Sem energia, sem escudo!
+
+      §6Última chance:§r se houver pelo menos §e10 milhões de RF§r guardados na armadura, ela
+      bloqueia um golpe fatal gastando essa energia. Mantenha a armadura carregada.
+    tasks:
+      - check
+    rewards:
+      - xp: 2
+
+  - id: armadura_wyvern
+    title: "Armadura do Wyvern"
+    type: milestone
+    deps: [peitoral_wyvern, calcas_wyvern, botas_wyvern]
+    icon: DraconicEvolution:wyvernChest
+    banner: "Pele de Wyvern"
+    subtitle: "Imune ao fogo, rápido e protegido"
+    desc: |
+      Quatro peças, um escudo de 200 pontos, imunidade ao fogo, velocidade e pulo extra.
+      Herói, você já anda pelo Nether como se fosse um passeio no parque!
+
+      §aPróximos passos:§r use o Upgrade Modifier com núcleos para aumentar escudo e
+      recuperação, e mantenha um Wyvern Flux Capacitor no inventário para recarga constante.
+      O próximo salto — a armadura Dracônica, que §evoa§r — exige o Coração de um Dragão.
+    tasks:
+      - get: [DraconicEvolution:wyvernHelm, DraconicEvolution:wyvernChest, DraconicEvolution:wyvernLeggs, DraconicEvolution:wyvernBoots]
+    rewards:
+      - xp: 10
+      - kit: {name: "Kit do Cavaleiro Wyvern", items: [DraconicEvolution:draconicCore x4, DraconicEvolution:draconiumIngot x16, minecraft:golden_apple x4, minecraft:nether_wart x16]}
+      - loot: raro
+
+  - id: amuleto_avancado
+    title: "Enhanced Charm of Dislocation"
+    type: normal
+    deps: [nucleo_wyvern, amuleto_deslocamento]
+    icon: DraconicEvolution:teleporterMKII
+    desc: |
+      O teletransportador definitivo: até §e100 destinos§r, entre dimensões, usando Pérolas do
+      Fim como combustível. Shift + clique direito abre a lista; Shift + rolagem troca o destino
+      sem abrir a GUI. Ele até teletransporta outros jogadores (agachados) e mobs.
+    tasks:
+      - get: DraconicEvolution:teleporterMKII
+    rewards:
+      - xp: 5
+      - item: minecraft:ender_pearl x16
+
+  - id: rele_avancado
+    title: "Advanced Energy Relay"
+    type: optional
+    deps: [nucleo_wyvern, rele_energia]
+    icon: DraconicEvolution:energyCrystal:1
+    desc: |
+      Relés avançados (4 por receita, com um Wyvern Core): alcance 50, até 20 conexões e
+      transferência muito maior (4,55 milhões de RF de buffer). Quebre-os na bancada para obter
+      §eAdvanced Energy Transceivers§r, que puxam energia 5× mais rápido.
+    tasks:
+      - get: DraconicEvolution:energyCrystal:1 x4
+    rewards:
+      - loot: incomum
+
+  - id: transceptor_sem_fio_avancado
+    title: "Advanced Wireless Transceiver"
+    type: optional
+    deps: [rele_avancado, transceptor_sem_fio]
+    icon: DraconicEvolution:energyCrystal:5
+    desc: |
+      Alcance sem fio de 30 blocos e até 16 máquinas por cristal. Uma sala inteira de máquinas
+      alimentada por um único cristal flutuante. Lindo.
+    tasks:
+      - get: DraconicEvolution:energyCrystal:5
+    rewards:
+      - loot: incomum
+
+  - id: alma_mob
+    title: "Mob Soul"
+    type: normal
+    deps: [espada_wyvern]
+    desc: |
+      Matar mobs com uma §eespada ou arco Wyvern§r (ou Dracônico, que é ainda melhor, ou o
+      Cajado do Poder) às vezes captura a §eMob Soul§r da criatura. O encantamento §eReaper§r
+      (Ceifador) aumenta a chance e funciona até em armas comuns. A chance base é baixa
+      (1 em 1000 na config), então seja persistente.
+
+      Junte §e4 almas§r — elas fazem a Pedra da Ressurreição.
+    tasks:
+      - get: DraconicEvolution:mobSoul x4
+    rewards:
+      - xp: 5
+      - item: minecraft:bone x16
+
+  - id: gerador_estabilizado
+    title: "Stabilized Mob Spawner"
+    type: optional
+    deps: [alma_mob]
+    icon: DraconicEvolution:customSpawner
+    desc: |
+      Clique com um Draconic Core num gerador de monstros comum: ele vira um §eStabilized Mob
+      Spawner§r, que pode ser carregado (quebre com ferramentas dracônicas). Use qualquer Mob
+      Soul nele para trocar o mob.
+
+      Melhorias: Wyvern Core (tier 2), Awakened Core (tier 3), Estrela do Nether (funciona sem
+      jogador por perto) e Maçã de Notch (ignora as condições de spawn, como luz).
+    tasks:
+      - get: DraconicEvolution:customSpawner
+    rewards:
+      - loot: incomum
+
+  - id: transceptor_avancado
+    title: "Advanced Energy Transceiver"
+    type: optional
+    deps: [rele_avancado]
+    icon: DraconicEvolution:energyCrystal:3
+    desc: |
+      Um Advanced Energy Relay na bancada rende 2 §eAdvanced Energy Transceivers§r: buffer de
+      10 milhões de RF e capacidade de puxar ou empurrar energia de uma máquina §e5× mais
+      rápido§r que o normal. Perfeito para encostar num banco de energia grande.
+    tasks:
+      - get: DraconicEvolution:energyCrystal:3 x2
+    rewards:
+      - loot: incomum
+
+  - id: ferramentas_wyvern
+    title: "Arsenal Wyvern"
+    type: milestone
+    deps: [pa_wyvern, arco_wyvern, picareta_wyvern]
+    icon: DraconicEvolution:wyvernPickaxe
+    banner: "Arsenal Wyvern"
+    subtitle: "Ferramentas que nunca quebram"
+    desc: |
+      Picareta, pá, espada e arco que nunca quebram, rodam a RF e já começam com área 3×3.
+      Herói, o seu cinto de ferramentas acabou de ganhar asas (ainda pequenas, mas asas).
+
+      §aLembre-se:§r cada ferramenta Wyvern guarda 1 milhão de RF de base; o Energy Infuser e o
+      Wyvern Flux Capacitor mantêm tudo cheio. E todas elas serão a base das versões Dracônicas.
+    tasks:
+      - get: [DraconicEvolution:wyvernPickaxe, DraconicEvolution:wyvernShovel, DraconicEvolution:wyvernSword, DraconicEvolution:wyvernBow]
+    rewards:
+      - xp: 10
+      - kit: {name: "Kit do Ferramenteiro Wyvern", items: [DraconicEvolution:draconicCore x4, DraconicEvolution:draconiumEnergyCore x2, minecraft:redstone_block x8]}
+      - loot: raro
+
+  - id: melhorias_info
+    title: "Pontos de Melhoria"
+    type: info
+    deps: [modificador_melhorias, nucleo_wyvern]
+    icon: DraconicEvolution:upgradeModifier
+    desc: |
+      Como o Upgrade Modifier funciona, em detalhes:
+
+      §e• Limite de núcleos:§r no canto da GUI aparece quantos núcleos o item aceita no total
+      e quantos já estão instalados.
+      §e• Botões + e −:§r com o núcleo no inventário, clique em + embaixo da melhoria desejada;
+      − devolve o núcleo.
+      §e• Valor por tier:§r passe o mouse sobre o número do núcleo para ver quantos pontos ele
+      vale. Draconic < Wyvern < Awakened < Chaotic.
+      §e• Teto:§r cada melhoria tem pontos base, máximo e custo (passe o mouse no número acima
+      dela).
+
+      §aDica:§r guarde os núcleos de tier alto para as melhorias que mais importam (escudo e
+      recuperação da armadura, área das ferramentas).
+    tasks:
+      - check
+    rewards:
+      - xp: 2
+
+  - id: lote_estrelas
+    title: "Caçador de Withers"
+    type: normal
+    deps: [nucleo_wyvern]
+    icon: minecraft:nether_star
+    desc: |
+      Wyvern Cores consomem uma Estrela do Nether cada, e o caminho Dracônico pede muitos:
+      Awakened Core (4), Pedra da Ressurreição (4), cada ferramenta e armadura... Junte §e4
+      Estrelas do Nether§r. Uma arena de Wither bem montada (com Draconium Block, que o Wither não
+      quebra) faz toda a diferença.
+    tasks:
+      - get: minecraft:nether_star x4
+    rewards:
+      - xp: 5
+      - item: minecraft:skull:1 x3
+
+  - id: lote_nucleos_wyvern
+    title: "Quatro Asas"
+    type: normal
+    deps: [lote_estrelas]
+    icon: DraconicEvolution:wyvernCore
+    desc: |
+      Prepare §e4 Wyvern Cores§r de uma vez: exatamente o que o primeiro Awakened Core vai pedir.
+      (A Pedra da Ressurreição também pede 4 — se for fazer as duas, dobre a meta.)
+    tasks:
+      - get: DraconicEvolution:wyvernCore x4
+    rewards:
+      - xp: 5
+      - item: DraconicEvolution:draconicCore x4
+
+  - id: lote_blocos_draconio
+    title: "Estoque de Draconium"
+    type: normal
+    deps: [bloco_draconio, mineracao_fim]
+    icon: DraconicEvolution:draconium
+    desc: |
+      Draconium Blocks aparecem em todo lugar daqui para frente: casca do Núcleo de Energia,
+      Blocos Carregados, Pedra da Ressurreição. Junte §e8 blocos§r (72 lingotes) — a mina do Fim
+      vai trabalhar bastante.
+    tasks:
+      - get: ore:blockDraconium x8
+    rewards:
+      - xp: 4
+      - item: minecraft:ender_pearl x8
+
+  - id: arena_wither
+    title: "Arena à Prova de Wither"
+    type: optional
+    deps: [lote_estrelas, bloco_draconio]
+    icon: DraconicEvolution:draconium
+    desc: |
+      O Wither explode quase tudo — mas não o Draconium Block. Uma caixa de §e16 blocos§r em
+      volta do ponto de invocação transforma a caçada de estrelas numa rotina segura. Junte os
+      blocos e construa sua arena.
+    tasks:
+      - get: ore:blockDraconium x16
+    rewards:
+      - loot: incomum
+
+  - id: lote_energia_wyvern
+    title: "Baterias para Tudo"
+    type: normal
+    deps: [nucleo_energia_wyvern, nucleo_wyvern]
+    icon: DraconicEvolution:draconiumEnergyCore
+    desc: |
+      Conte comigo: 4 ferramentas Wyvern + 4 peças de armadura + o capacitor (4) + o Energy Core
+      (2) + 4 por Draconic Energy Core... são muitos §eWyvern Energy Cores§r. Deixe §e8§r prontos
+      na gaveta.
+    tasks:
+      - get: DraconicEvolution:draconiumEnergyCore x8
+    rewards:
+      - xp: 4
+      - item: minecraft:redstone_block x8
+
+  - id: infusor_info
+    title: "Tudo Sempre Carregado"
+    type: info
+    deps: [infusor_energia, capacitor_wyvern]
+    icon: DraconicEvolution:energyInfuser
+    desc: |
+      Ferramentas e armaduras do Draconic funcionam a RF — sem energia, uma picareta Wyvern é
+      só um enfeite.
+
+      §e• Energy Infuser:§r coloque o item no slot e alimente o bloco com RF (até 10 milhões de
+      RF/t no pack). Também carrega itens de RF de outros mods.
+      §e• Flux Capacitor:§r a tecla C escolhe o modo de carga (desligado, só a armadura, só a
+      mão, tudo...). Com ele no inventário você quase nunca vai precisar parar.
+      §e• Rede de cristais:§r um Wireless Transceiver ligado ao Infuser leva energia do seu banco
+      até ele sem nenhum cabo.
+    tasks:
+      - check
+    rewards:
+      - xp: 2
+
+  - id: bloco_carregado
+    title: "Charged Draconium Block"
+    type: main
+    deps: [infusor_energia, bloco_draconio]
+    icon: DraconicEvolution:draconium:2
+    desc: |
+      Coloque um Draconium Block no §eEnergy Infuser§r e alimente com §e100 milhões de RF§r
+      (até 10 milhões por tick). Ele sai como §eCharged Draconium Block§r.
+
+      Você vai precisar de §e4§r para a Ressurreição do Dragão e até §e4§r por Coração de Dragão
+      no Ritual do Despertar. Hora de ter uma fonte de energia séria — Big Reactors, um campo
+      solar enorme ou um Reator do IC2 bem planejado.
+    tasks:
+      - get: DraconicEvolution:draconium:2 x4
+    rewards:
+      - xp: 8
+      - choice: [DraconicEvolution:draconium, minecraft:redstone_block x16, DraconicEvolution:draconicCore x3]
+
+  # ======================================================================
+  # FASE 3 — O NÚCLEO DE ENERGIA
+  # ======================================================================
+  - id: nucleo_energia_info
+    title: "Como Funciona o Núcleo de Energia"
+    type: info
+    deps: [dispositivos_draconicos]
+    icon: DraconicEvolution:energyStorageCore
+    desc: |
+      O §eEnergy Core§r é um multibloco de 7 tiers, do mais barato (45,5 milhões de RF) ao mais
+      insano (§e2,14 trilhões de RF§r). Peças:
+
+      §e• 1 Energy Core§r no centro.
+      §e• 4 Particle Generators§r alinhados com o núcleo, a até 10 blocos.
+      §e• Draconium Blocks e Blocos de Redstone§r em volta (a quantidade depende do tier).
+      §e• 2+ Energy Pylons§r a até 15 blocos, com um bloco de vidro em cima ou embaixo.
+
+      Monte a casca (o Tablet mostra cada camada), depois §eShift + clique com a mão vazia§r num
+      Particle Generator para ativar. Clique na esfera do Pylon para alternar entrada (azul) e
+      saída (laranja). Comparador no Pylon lê o nível de energia.
+    tasks:
+      - check
+    rewards:
+      - xp: 2
+
+  - id: nucleo_energia
+    title: "Energy Core"
+    type: main
+    deps: [nucleo_energia_info, nucleo_wyvern, nucleo_energia_wyvern]
+    icon: DraconicEvolution:energyStorageCore
+    desc: |
+      O bloco central: 6 Draconium Ingots, 2 Wyvern Energy Cores e um Wyvern Core.
+
+      Sozinho com os 4 Particle Generators ele já é o §eTier 1§r: §e45,5 milhões de RF§r, sem
+      nenhum bloco extra. É mais do que muita base guarda inteira!
+    tasks:
+      - get: DraconicEvolution:energyStorageCore
+    rewards:
+      - xp: 8
+      - choice: [DraconicEvolution:draconiumIngot x16, minecraft:redstone_block x16, DraconicEvolution:draconicCore x3]
+
+  - id: geradores_estrutura
+    title: "Quatro Pilares de Luz"
+    type: normal
+    deps: [nucleo_energia, gerador_particulas]
+    icon: DraconicEvolution:particleGenerator
+    desc: |
+      O núcleo precisa de §e4 Particle Generators§r, cada um na mesma linha (eixo X ou Z) que
+      ele, a até 10 blocos. Eles "seguram" a esfera de energia no lugar.
+    tasks:
+      - get: DraconicEvolution:particleGenerator x4
+    rewards:
+      - xp: 4
+      - item: minecraft:blaze_rod x6
+
+  - id: pilones_energia
+    title: "Energy Pylons"
+    type: main
+    deps: [nucleo_energia]
+    icon: DraconicEvolution:energyPylon
+    desc: |
+      A receita rende §e2 Energy Pylons§r — um para entrada e outro para saída.
+
+      Coloque-os a até 15 blocos do núcleo e ponha um §ebloco de vidro§r do lado voltado para
+      ele (em cima do pylon se ele estiver abaixo do núcleo, embaixo se estiver acima). O vidro
+      muda de visual e as partículas brancas mostram a ligação. Cada pylon transfere até
+      2,1 bilhões de RF/t.
+    tasks:
+      - get: DraconicEvolution:energyPylon x2
+    rewards:
+      - xp: 8
+      - choice: [minecraft:glass x16, minecraft:emerald x4, minecraft:ender_eye x4]
+
+  - id: nucleo_tier2
+    title: "Núcleo Tier 2"
+    type: normal
+    deps: [pilones_energia, geradores_estrutura]
+    icon: DraconicEvolution:draconium
+    desc: |
+      Tier 2: §e6 Draconium Blocks§r em volta do núcleo, nada de redstone. Capacidade:
+      §e273 milhões de RF§r. O desenho exato de cada camada está no Tablet de Informações.
+    tasks:
+      - get: ore:blockDraconium x6
+    rewards:
+      - xp: 4
+      - item: DraconicEvolution:draconiumIngot x9
+
+  - id: nucleo_tier3
+    title: "Núcleo Tier 3"
+    type: normal
+    deps: [nucleo_tier2]
+    icon: DraconicEvolution:draconium
+    desc: |
+      Tier 3: §e26 Draconium Blocks§r (uma casca 3×3×3 em volta do núcleo). Capacidade:
+      §e1,64 bilhão de RF§r. A partir daqui o núcleo começa a ficar vermelho escuro conforme
+      enche — é o termômetro mais bonito do pack.
+    tasks:
+      - get: ore:blockDraconium x26
+    rewards:
+      - xp: 5
+      - item: minecraft:redstone_block x13
+
+  - id: nucleo_tier4
+    title: "Núcleo Tier 4"
+    type: normal
+    deps: [nucleo_tier3]
+    icon: minecraft:redstone_block
+    desc: |
+      Tier 4: §e26 Blocos de Redstone§r por dentro e §e54 Draconium Blocks§r por fora.
+      Capacidade: §e9,88 bilhões de RF§r.
+
+      §aDica:§r monte a casca por camadas seguindo as imagens do Tablet; um bloco fora do lugar e
+      o núcleo simplesmente não ativa.
+    tasks:
+      - get: [minecraft:redstone_block x26, ore:blockDraconium x54]
+    rewards:
+      - xp: 6
+      - item: minecraft:redstone_block x16
+
+  - id: nucleo_ativo
+    title: "O Coração Elétrico"
+    type: milestone
+    deps: [nucleo_tier3, pilones_energia]
+    icon: DraconicEvolution:energyStorageCore
+    banner: "O Núcleo Desperta"
+    subtitle: "Bilhões de RF numa esfera"
+    desc: |
+      Uma esfera girando dentro de uma casca de Draconium, pylons cuspindo partículas azuis e
+      laranjas... Herói, isso é a coisa mais linda que eu já vi numa base. (Não conte para o
+      Botania que eu disse isso.)
+
+      Com o Núcleo de Energia pronto você tem onde guardar a energia para carregar Blocos de
+      Draconium, ferramentas e, no futuro, para dar a partida no §cReator Dracônico§r — que
+      exige uma reserva enorme só para manter o campo de contenção.
+
+      Mostre-me o núcleo, os pylons e os geradores de partículas.
+    tasks:
+      - get: [DraconicEvolution:energyStorageCore, DraconicEvolution:energyPylon x2, DraconicEvolution:particleGenerator x4]
+    rewards:
+      - xp: 12
+      - kit: {name: "Kit do Engenheiro do Núcleo", items: [DraconicEvolution:draconium x4, minecraft:redstone_block x32, minecraft:glass x8, DraconicEvolution:wyvernCore]}
+      - loot: epico
+
+  - id: pilones_extras
+    title: "Mais Entradas, Mais Saídas"
+    type: optional
+    deps: [nucleo_ativo]
+    icon: DraconicEvolution:energyPylon
+    desc: |
+      Um núcleo aceita vários pylons. Ponha alguns em modo entrada (azul) para os geradores e
+      outros em modo saída (laranja) para a base. Shift + clique no pylon troca o núcleo ao qual
+      ele está ligado, se houver mais de um no alcance. Faça mais §e2 pylons§r.
+    tasks:
+      - get: DraconicEvolution:energyPylon x4
+    rewards:
+      - loot: incomum
+
+  - id: leitura_nucleo
+    title: "Lendo o Núcleo"
+    type: optional
+    deps: [nucleo_ativo]
+    icon: minecraft:comparator
+    desc: |
+      Um §eComparador§r encostado num pylon emite um sinal proporcional à energia do núcleo.
+      Ligue isso a um gerador de reserva (liga quando o núcleo estiver baixo) e você nunca mais
+      fica sem energia. A energia também aparece na tela ao olhar para o núcleo e no chat ao
+      clicar nele.
+    tasks:
+      - get: minecraft:comparator x2
+    rewards:
+      - loot: comum
+
+  - id: nucleo_tier5
+    title: "Núcleo Tier 5"
+    type: optional
+    deps: [nucleo_tier4]
+    icon: minecraft:redstone_block
+    desc: |
+      Tier 5: §e80 Blocos de Redstone§r e §e98 Draconium Blocks§r. Capacidade: §e59,3 bilhões
+      de RF§r. Isso já é mais do que a maioria das bases consegue gerar em semanas.
+    tasks:
+      - get: [minecraft:redstone_block x80, ore:blockDraconium x98]
+    rewards:
+      - loot: raro
+
+  - id: nucleo_tier6
+    title: "Núcleo Tier 6"
+    type: optional
+    deps: [nucleo_tier5]
+    icon: minecraft:redstone_block
+    desc: |
+      Tier 6: §e133 Blocos de Redstone§r e §e150 Draconium Blocks§r. Capacidade: §e356 bilhões
+      de RF§r. A partir daqui, o Fim inteiro vira sua mina de Draconium.
+    tasks:
+      - get: [minecraft:redstone_block x133, ore:blockDraconium x150]
+    rewards:
+      - loot: raro
+
+  - id: nucleo_tier7
+    title: "Núcleo Tier 7"
+    type: optional
+    deps: [nucleo_tier6]
+    icon: DraconicEvolution:energyStorageCore
+    desc: |
+      O tier máximo: §e328 Blocos de Redstone§r e §e218 Draconium Blocks§r para guardar §e2,14
+      TRILHÕES de RF§r. Um monumento à paciência (e à mineração no Fim). Eu vou bater palmas
+      até cansar.
+    tasks:
+      - get: [minecraft:redstone_block x328, ore:blockDraconium x218]
+    rewards:
+      - loot: epico
+
+  # ======================================================================
+  # FASE 4 — O DRAGÃO E O DESPERTAR
+  # ======================================================================
+  - id: coracao_dragao
+    title: "Dragon Heart"
+    type: main
+    deps: [dispositivos_draconicos]
+    icon: DraconicEvolution:dragonHeart
+    desc: |
+      O Volume do Dragão tem esse nome por um motivo. O §eDragon Heart§r cai quando o Dragão do
+      Fim morre — e só ele destrava o Draconium Despertado, o material de todo o tier Dracônico.
+
+      §cPreparação:§r destrua os cristais nos pilares de obsidiana (eles curam o Dragão), leve
+      arco, blocos para subir, poções de cura e uma Pena da Queda nas botas. O Dragão também é
+      parte do §5Selo do Abismo§r.
+
+      §aBoa notícia:§r se o Dragão do seu mundo já morreu, dá para trazer outro com o Ritual da
+      Ressurreição Dracônica (logo ali).
+    tasks:
+      - get: DraconicEvolution:dragonHeart
+    rewards:
+      - xp: 10
+      - choice: [minecraft:golden_apple:1, DraconicEvolution:draconium:2, minecraft:diamond_block x2]
+
+  - id: colecionador_almas
+    title: "Colecionador de Almas"
+    type: optional
+    deps: [alma_mob]
+    icon: DraconicEvolution:mobSoul
+    desc: |
+      Cada Mob Soul guarda o tipo da criatura. Com um Stabilized Mob Spawner, cada alma vira uma
+      fazenda daquele mob. Junte §e12 almas§r de qualquer tipo — Zumbis, Esqueletos, Endermen...
+      sua futura fazenda agradece.
+    tasks:
+      - get: DraconicEvolution:mobSoul x12
+    rewards:
+      - loot: raro
+
+  - id: pedra_ressurreicao
+    title: "Resurrection Stone"
+    type: normal
+    deps: [alma_mob, nucleo_wyvern, bloco_draconio]
+    icon: DraconicEvolution:draconium:1
+    desc: |
+      Um Draconium Block no centro, 4 Wyvern Cores e 4 Mob Souls em volta: a §eResurrection
+      Stone§r, chave do Ritual da Ressurreição Dracônica.
+
+      Sim, são 4 Estrelas do Nether escondidas aí dentro. Nada que é poderoso sai barato.
+    tasks:
+      - get: DraconicEvolution:draconium:1
+    rewards:
+      - xp: 5
+      - item: minecraft:obsidian x4
+
+  - id: ritual_ressurreicao
+    title: "O Ritual da Ressurreição"
+    type: normal
+    deps: [pedra_ressurreicao, bloco_carregado]
+    icon: DraconicEvolution:draconium:1
+    desc: |
+      Para chamar um novo Dragão você precisa, a até §e150 blocos do ponto 0,0 do Fim§r:
+      §e• 1 Resurrection Stone§r no centro;
+      §e• 4 Blocos de Pedra Luminosa, 4 Obsidianas, 4 Blocos de Diamante e 4 Charged Draconium
+      Blocks;§r
+      §e• 12 Pilares de Quartzo§r, a até 5 blocos da pedra (de preferência simétricos — veja a
+      imagem no Tablet).
+
+      Clique direito na pedra e §cafaste-se§r: os cristais do Fim reacendem e, no fim, uma
+      explosão mata quem estiver perto. Clicar de novo cancela (e descarrega os blocos).
+    tasks:
+      - get: [DraconicEvolution:draconium:1, minecraft:glowstone x4, minecraft:obsidian x4, minecraft:diamond_block x4, DraconicEvolution:draconium:2 x4, minecraft:quartz_block:2 x12]
+    rewards:
+      - xp: 6
+      - item: minecraft:arrow x64
+
+  - id: dragao_ressuscitado
+    title: "O Dragão Renascido"
+    type: boss
+    deps: [ritual_ressurreicao]
+    icon: minecraft:dragon_egg
+    banner: "O Dragão Renascido"
+    subtitle: "Mais forte a cada retorno"
+    desc: |
+      O Dragão que volta pelo ritual tem uma textura nova, §cregeneração por 25 segundos§r e fica
+      §cmais forte e mais perigoso a cada vez§r que você o invoca (até um limite).
+
+      Use a armadura Wyvern, mire nos cristais reacesos primeiro e não fique parado no topo de
+      um pilar. Cada vitória rende um novo Dragon Heart — ou seja, mais Draconium Despertado.
+    tasks:
+      - kill: {entity: "DraconicEvolution.EnderDragon", count: 1}
+    rewards:
+      - xp: 15
+      - loot: [epico, epico]
+
+  - id: ritual_despertar_info
+    title: "O Ritual do Despertar"
+    type: info
+    deps: [coracao_dragao]
+    icon: DraconicEvolution:dragonHeart
+    desc: |
+      O Draconium comum é só um estado adormecido. Para despertá-lo:
+
+      §e1.§r Jogue o Dragon Heart no chão e §eative-o com uma explosão§r (TNT serve).
+      §e2.§r Jogue de §e4 a 16 Draconic Cores§r perto dele — §e4 por bloco§r que você vai
+      despertar. Alguns segundos depois o coração puxa os itens próximos e §cdestrói tudo que não
+      for Draconic Core§r.
+      §e3.§r Rápido: coloque de §e1 a 4 Charged Draconium Blocks§r perto do coração.
+      §e4.§r Quando a energia do coração mirar nos blocos, afaste-se e assista.
+
+      §cCada coração só faz o ritual uma vez.§r Prepare 16 núcleos e 4 blocos carregados para
+      aproveitar o máximo (4 Awakened Draconium Blocks = 36 lingotes).
+    tasks:
+      - check
+    rewards:
+      - xp: 2
+
+  - id: draconio_despertado
+    title: "Awakened Draconium"
+    type: milestone
+    deps: [ritual_despertar_info, bloco_carregado]
+    icon: DraconicEvolution:draconicBlock
+    banner: "O Draconium Desperta"
+    subtitle: "A verdadeira forma do metal do dragão"
+    desc: |
+      Eu senti daqui! O coração do Dragão pulsou, os blocos carregados giraram e agora... o
+      §6Awakened Draconium Block§r brilha na sua mão.
+
+      Um bloco = 9 §eAwakened Draconium Ingots§r (e cada lingote = 9 pepitas). Esse metal faz:
+      o Awakened Core, o Draconic Energy Core, todas as ferramentas e armaduras Dracônicas, o
+      Núcleo do Reator e — guarde as pepitas! — é o §ecombustível§r do Reator Dracônico.
+
+      Não desperdice: cada Dragon Heart só faz um ritual.
+    tasks:
+      - get: ore:blockDraconiumAwakened
+    rewards:
+      - xp: 12
+      - kit: {name: "Kit do Despertar", items: [DraconicEvolution:draconicCore x8, DraconicEvolution:draconium x2, minecraft:tnt x4, minecraft:golden_apple x4]}
+      - loot: epico
+
+  - id: pepita_despertada
+    title: "Pepitas Despertadas"
+    type: optional
+    deps: [draconio_despertado]
+    icon: DraconicEvolution:nugget:1
+    desc: |
+      Um Awakened Draconium Ingot na bancada vira 9 pepitas. Elas são a unidade de combustível
+      do Reator (cada pepita vale 16 unidades de combustível na config deste pack).
+    tasks:
+      - get: DraconicEvolution:nugget:1 x9
+    rewards:
+      - loot: incomum
+
+  - id: nucleo_despertado
+    title: "Awakened Core"
+    type: main
+    deps: [draconio_despertado, nucleo_wyvern]
+    icon: DraconicEvolution:awakenedCore
+    desc: |
+      4 Wyvern Cores e 5 Awakened Draconium Ingots: o §6Awakened Core§r.
+
+      §6Atenção, Herói, isso é importante para toda a campanha:§r o Awakened Core é ingrediente
+      de §evários componentes da Estrela ATM§r — Buraco Negro Pulsante, Emissor Nexium, Semente
+      Dimensional, Alma de Dragão, Combustível do Filósofo, Fragmento do Esquecimento,
+      Dispositivo de Probabilidade Improvável, dois Fragmentos da Estrela, o AllTheCatalystium
+      e até o Unobtainium Bruto. Ou seja: o Draconic é parada obrigatória no caminho até o fim.
+    tasks:
+      - get: DraconicEvolution:awakenedCore
+    rewards:
+      - xp: 10
+      - choice: [DraconicEvolution:wyvernCore, DraconicEvolution:draconium:2 x2, minecraft:nether_star]
+
+  - id: estrela_atm_info
+    title: "Núcleos para a Estrela"
+    type: info
+    deps: [nucleo_despertado]
+    icon: DraconicEvolution:awakenedCore
+    desc: |
+      Um lembrete de planejamento, de amiga para Herói: a Estrela ATM vai pedir §epelo menos uma
+      dúzia de Awakened Cores§r espalhados pelos componentes (abra o NEI com U no Awakened Core
+      para ver todas as receitas do Volume dos Metais Impossíveis).
+
+      Cada núcleo custa 4 Wyvern Cores (4 Estrelas do Nether!) e 5 lingotes despertados. Comece
+      a automatizar a caça ao Wither e mantenha o Ritual da Ressurreição girando para ter
+      Corações de Dragão. Futuro você vai me agradecer.
+    tasks:
+      - check
+    rewards:
+      - xp: 3
+
+  - id: nucleo_energia_draconico
+    title: "Draconic Energy Core"
+    type: main
+    deps: [nucleo_despertado]
+    icon: DraconicEvolution:draconiumEnergyCore:1
+    desc: |
+      4 Wyvern Energy Cores, 1 Wyvern Core e 4 Awakened Draconium Ingots: o §eDraconic Energy
+      Core§r, a bateria dos equipamentos Dracônicos. Cada ferramenta e peça de armadura leva um.
+    tasks:
+      - get: DraconicEvolution:draconiumEnergyCore:1
+    rewards:
+      - xp: 8
+      - choice: [DraconicEvolution:draconiumEnergyCore x2, minecraft:redstone_block x16, DraconicEvolution:draconicCore x4]
+
+  - id: lote_energia_draconica
+    title: "Baterias Despertadas"
+    type: normal
+    deps: [nucleo_energia_draconico, lote_energia_wyvern]
+    icon: DraconicEvolution:draconiumEnergyCore:1
+    desc: |
+      Cada ferramenta, arma e peça de armadura Dracônica pede um Draconic Energy Core, e cada
+      Estabilizador do Reator também. Deixe §e4§r prontos antes de começar a forjar a armadura.
+    tasks:
+      - get: DraconicEvolution:draconiumEnergyCore:1 x4
+    rewards:
+      - xp: 5
+      - item: DraconicEvolution:draconiumEnergyCore x4
+
+  - id: lote_lingotes_despertados
+    title: "Barras de Luz"
+    type: normal
+    deps: [draconio_despertado]
+    icon: DraconicEvolution:draconicIngot
+    desc: |
+      Quebre um Awakened Draconium Block na bancada: 9 lingotes. Junte §e18 Awakened Draconium
+      Ingots§r — o Awakened Core pede 5, cada peça de armadura pede 6 e cada ferramenta pede 2.
+    tasks:
+      - get: ore:ingotDraconiumAwakened x18
+    rewards:
+      - xp: 5
+      - item: DraconicEvolution:draconicCore x4
+
+  - id: capacitor_draconico
+    title: "Draconic Flux Capacitor"
+    type: normal
+    deps: [nucleo_energia_draconico, capacitor_wyvern]
+    icon: DraconicEvolution:draconiumFluxCapacitor:1
+    desc: |
+      O Wyvern Flux Capacitor vira a base deste: §e250 milhões de RF§r de base (mais 50 milhões
+      por melhoria) e saída de até 100 milhões de RF/t. Dá para passar dias sem recarregar.
+    tasks:
+      - get: DraconicEvolution:draconiumFluxCapacitor:1
+    rewards:
+      - xp: 5
+      - item: minecraft:redstone_block x16
+
+  - id: picareta_draconica
+    title: "Draconic Pickaxe"
+    type: main
+    deps: [nucleo_energia_draconico, picareta_wyvern]
+    icon: DraconicEvolution:draconicPickaxe
+    desc: |
+      As ferramentas Dracônicas são feitas a partir das Wyvern (ou das de diamante, no caso do
+      machado e da enxada) + Awakened Core + 2 Awakened Draconium Ingots + Draconic Energy Core.
+
+      A picareta minera em área de §e1×1 até 5×5§r, com profundidade ajustável separadamente, e
+      tem um §efiltro de lixo§r para não encher o inventário de pedregulho.
+    tasks:
+      - get: DraconicEvolution:draconicPickaxe
+    rewards:
+      - xp: 8
+      - choice: [DraconicEvolution:nugget:1 x9, DraconicEvolution:draconicCore x4, minecraft:diamond_block x2]
+
+  - id: pa_draconica
+    title: "Draconic Shovel"
+    type: normal
+    deps: [picareta_draconica, pa_wyvern]
+    icon: DraconicEvolution:draconicShovel
+    desc: |
+      Feita da Pá do Wyvern. Mesma área ajustável e filtro de lixo da picareta. Juntas, elas
+      viram um ingrediente do Cajado do Poder.
+    tasks:
+      - get: DraconicEvolution:draconicShovel
+    rewards:
+      - xp: 4
+      - item: DraconicEvolution:draconicCore x2
+
+  - id: machado_draconico
+    title: "Draconic Axe"
+    type: normal
+    deps: [picareta_draconica]
+    icon: DraconicEvolution:draconicAxe
+    desc: |
+      Machado de Diamante como base. Além da área ajustável, tem o §eModo Árvore§r: derruba a
+      árvore inteira com um golpe. Seu lenhador interior agradece.
+    tasks:
+      - get: DraconicEvolution:draconicAxe
+    rewards:
+      - xp: 4
+      - item: minecraft:sapling x16
+
+  - id: enxada_draconica
+    title: "Draconic Hoe"
+    type: optional
+    deps: [picareta_draconica]
+    icon: DraconicEvolution:draconicHoe
+    desc: |
+      Ara de 1×1 até §e7×7§r de uma vez e ainda nivela o terreno usando terra do seu inventário.
+      Fazendeiros dracônicos existem, sim!
+    tasks:
+      - get: DraconicEvolution:draconicHoe
+    rewards:
+      - loot: incomum
+
+  - id: espada_draconica
+    title: "Draconic Sword"
+    type: normal
+    deps: [nucleo_energia_draconico, espada_wyvern]
+    icon: DraconicEvolution:draconicSword
+    desc: |
+      A Espada do Wyvern despertada: §e+40 de dano§r, mais §e20% da vida do alvo§r e ataque em
+      área 5×5. Também dobra a chance de capturar Mob Souls em relação à Wyvern.
+    tasks:
+      - get: DraconicEvolution:draconicSword
+    rewards:
+      - xp: 4
+      - item: minecraft:experience_bottle x16
+
+  - id: arco_draconico
+    title: "Draconic Bow"
+    type: normal
+    deps: [espada_draconica, arco_wyvern]
+    icon: DraconicEvolution:draconicBow
+    desc: |
+      Tudo do arco Wyvern e mais: §eFlecha de Fogo Dracônico§r (atira sem flechas, +10% de dano,
+      mais leve) e §eOnda de Choque§r, que causa um dano enorme em área sem destruir blocos.
+      §cCuidado:§r a config deste pack deixa a explosão do arco quebrar blocos.
+    tasks:
+      - get: DraconicEvolution:draconicBow
+    rewards:
+      - xp: 4
+      - item: minecraft:arrow x64
+
+  - id: cajado_poder
+    title: "Draconic Staff of Power"
+    type: milestone
+    deps: [pa_draconica, espada_draconica]
+    icon: DraconicEvolution:draconicDistructionStaff
+    banner: "O Cajado do Poder"
+    subtitle: "Picareta, pá e espada num só"
+    desc: |
+      Picareta, Pá e Espada Dracônicas, 5 Awakened Draconium Ingots e um Awakened Core se
+      fundem no §6Draconic Staff of Power§r:
+      §e• mineração extrema§r em área de até 7×7×7, com filtro de lixo e modo seguro;
+      §e• +60 de dano§r, mais 30% da vida do alvo, ataque em área de até 7×7;
+      §e• a maior chance de Mob Souls§r de todas as armas do mod.
+
+      Herói, isso não é uma ferramenta. É uma declaração.
+    tasks:
+      - get: DraconicEvolution:draconicDistructionStaff
+    rewards:
+      - xp: 12
+      - kit: {name: "Kit do Arquimago Dracônico", items: [DraconicEvolution:wyvernCore x2, DraconicEvolution:draconium:2 x2, minecraft:experience_bottle x32]}
+      - loot: epico
+
+  - id: elmo_draconico
+    title: "Draconic Helm"
+    type: normal
+    deps: [nucleo_energia_draconico, armadura_wyvern]
+    icon: DraconicEvolution:draconicHelm
+    desc: |
+      Cada peça Dracônica = peça Wyvern + Awakened Core + 6 Awakened Draconium Ingots + Draconic
+      Energy Core.
+
+      O elmo: §evisão noturna§r, cura efeitos negativos, ignora sufocamento e afogamento, mina
+      rápido debaixo d'água e dá §e+60 de escudo§r.
+    tasks:
+      - get: DraconicEvolution:draconicHelm
+    rewards:
+      - xp: 5
+      - item: DraconicEvolution:nugget:1 x6
+
+  - id: peitoral_draconico
+    title: "Draconic Chestplate"
+    type: normal
+    deps: [elmo_draconico]
+    icon: DraconicEvolution:draconicChest
+    desc: |
+      §6VOO.§r Além disso: imunidade a fogo, mineração sem penalidade no ar e §e+200 de escudo§r.
+      É aqui que o jogo muda de verdade.
+    tasks:
+      - get: DraconicEvolution:draconicChest
+    rewards:
+      - xp: 5
+      - item: DraconicEvolution:nugget:1 x6
+
+  - id: calcas_draconicas
+    title: "Draconic Leggings"
+    type: normal
+    deps: [elmo_draconico]
+    icon: DraconicEvolution:draconicLeggs
+    desc: |
+      Velocidade ainda maior que a do Wyvern e §e+180 de escudo§r.
+    tasks:
+      - get: DraconicEvolution:draconicLeggs
+    rewards:
+      - xp: 5
+      - item: DraconicEvolution:nugget:1 x6
+
+  - id: botas_draconicas
+    title: "Draconic Boots"
+    type: normal
+    deps: [elmo_draconico]
+    icon: DraconicEvolution:draconicBoots
+    desc: |
+      Proteção total contra queda, pulo alto, subida automática de degraus e §e+60 de escudo§r.
+    tasks:
+      - get: DraconicEvolution:draconicBoots
+    rewards:
+      - xp: 5
+      - item: DraconicEvolution:nugget:1 x6
+
+  - id: armadura_draconica
+    title: "Armadura Dracônica"
+    type: milestone
+    deps: [peitoral_draconico, calcas_draconicas, botas_draconicas]
+    icon: DraconicEvolution:draconicChest
+    banner: "Asas de Dragão"
+    subtitle: "Voo, escudo de 500 pontos e imunidade"
+    desc: |
+      Herói... você está flutuando. Com asas de dragão, escudo de §e500 pontos§r, visão noturna,
+      imunidade ao fogo e proteção contra queda.
+
+      A armadura Dracônica também tem uma qualidade única: é a §eúnica§r que bloqueia o dano
+      perfurante do Guardião do Caos. Ou seja, ela não é só bonita — ela é o ingresso para a
+      luta mais difícil do Volume do Dragão. Melhore escudo e recuperação no Upgrade Modifier
+      antes de ir.
+    tasks:
+      - get: [DraconicEvolution:draconicHelm, DraconicEvolution:draconicChest, DraconicEvolution:draconicLeggs, DraconicEvolution:draconicBoots]
+    rewards:
+      - xp: 12
+      - kit: {name: "Kit do Dragão Voador", items: [DraconicEvolution:wyvernCore x2, DraconicEvolution:draconicCore x8, minecraft:golden_apple:1 x2]}
+      - loot: epico
+
+  - id: deslocador_despertado
+    title: "Awakened Item Dislocator"
+    type: normal
+    deps: [draconio_despertado, deslocador_itens, bloco_carregado]
+    icon: DraconicEvolution:magnet:1
+    desc: |
+      O ímã com um pouco de energia e Draconium Despertado: alcance e eficácia muito maiores.
+      Pede 2 Charged Draconium Blocks e 4 Awakened Draconium Ingots em volta do Item Dislocator.
+    tasks:
+      - get: DraconicEvolution:magnet:1
+    rewards:
+      - xp: 4
+      - item: minecraft:ender_pearl x8
+
+  - id: relogio_solar
+    title: "Sun Dial"
+    type: optional
+    deps: [nucleo_despertado]
+    desc: |
+      Um bloco absurdo: com sinal de redstone constante ele carrega e §edispara um feixe no sol§r,
+      acelerando o tempo em 30×. Desligue o sinal quando chegar na hora que você quer.
+
+      Pede um §eOvo de Dragão§r, um Awakened Core e dois Draconic Cores. Só para quem já
+      enfrentou o Dragão.
+    tasks:
+      - get: DraconicEvolution:sunDial
+    rewards:
+      - loot: raro
+
+  - id: chama_distorcao
+    title: "Distortion Flame"
+    type: optional
+    deps: [nucleo_wyvern]
+    icon: DraconicEvolution:xRayBlock
+    desc: |
+      Lembra quando um chunk carregava errado e você enxergava todas as cavernas? A §eDistortion
+      Flame§r faz isso de propósito: a face do bloco encostada nela fica transparente.
+
+      Custa §e4 Estrelas do Nether§r (rende 4 chamas) e §cnão pode ser recolhida§r depois de
+      colocada, nem com Toque Suave.
+    tasks:
+      - get: DraconicEvolution:xRayBlock
+    rewards:
+      - loot: raro
+
+  - id: furia_porcos
+    title: "Fúria dos Porcos-Zumbi"
+    type: info
+    deps: [viagem_fim]
+    icon: minecraft:cooked_porkchop
+    desc: |
+      Um aviso que salvou muitos Heróis (e que a config deste pack deixa ligado): §cnão coma
+      carne de porco perto de Homens-Porco Zumbis.§r Eles veem... e não gostam nada disso.
+
+      Pronto, eu avisei. Agora é com você.
+    tasks:
+      - check
+    rewards:
+      - xp: 2
+
+  - id: ovo_dragao
+    title: "O Ovo do Dragão"
+    type: optional
+    deps: [coracao_dragao]
+    icon: minecraft:dragon_egg
+    desc: |
+      Depois da morte do Dragão aparece um §eOvo de Dragão§r no portal de saída. Clicar nele o faz
+      teleportar! Para pegá-lo, empurre-o com um pistão ou deixe-o cair numa tocha. Ele é
+      ingrediente do Sun Dial — e um troféu e tanto.
+    tasks:
+      - get: minecraft:dragon_egg
+    rewards:
+      - loot: raro
+
+  - id: lote_nucleos_ritual
+    title: "Dezesseis Núcleos"
+    type: normal
+    deps: [ritual_despertar_info]
+    icon: DraconicEvolution:draconicCore
+    desc: |
+      Para aproveitar um Dragon Heart ao máximo o ritual consome §e16 Draconic Cores§r (4 por
+      Charged Draconium Block, até 4 blocos). Faça os 16 antes de explodir o coração — no meio do
+      ritual não dá tempo de ir à bancada!
+    tasks:
+      - get: DraconicEvolution:draconicCore x16
+    rewards:
+      - xp: 5
+      - item: minecraft:gold_ingot x16
+
+  - id: lote_blocos_carregados
+    title: "Quatro Blocos Carregados"
+    type: normal
+    deps: [bloco_carregado, lote_blocos_draconio]
+    icon: DraconicEvolution:draconium:2
+    desc: |
+      O ritual completo pede §e4 Charged Draconium Blocks§r além dos que você usar na
+      Ressurreição. São 400 milhões de RF no Energy Infuser — o Núcleo de Energia agradece por
+      ter onde guardar tudo isso. Junte §e8§r para fazer Ressurreição e Despertar sem pausa.
+    tasks:
+      - get: DraconicEvolution:draconium:2 x8
+    rewards:
+      - xp: 5
+      - item: minecraft:redstone_block x16
+
+  - id: despertar_completo
+    title: "Ritual Perfeito"
+    type: optional
+    deps: [draconio_despertado, lote_nucleos_ritual, lote_blocos_carregados]
+    icon: DraconicEvolution:draconicBlock
+    desc: |
+      Um coração, 16 núcleos e 4 blocos carregados = §e4 Awakened Draconium Blocks§r de uma só
+      vez (36 lingotes). Esse é o ritual perfeito. Mostre os quatro blocos!
+    tasks:
+      - get: ore:blockDraconiumAwakened x4
+    rewards:
+      - loot: epico
+
+  - id: lote_nucleos_despertados
+    title: "Quatro Núcleos Despertados"
+    type: normal
+    deps: [nucleo_despertado, lote_nucleos_wyvern]
+    icon: DraconicEvolution:awakenedCore
+    desc: |
+      O Chaotic Core pede §e4 Awakened Cores§r. E o Reator pede 4 Chaotic Cores. Faça as contas
+      com calma (e com muitas Estrelas do Nether). Comece juntando os 4 primeiros.
+    tasks:
+      - get: DraconicEvolution:awakenedCore x4
+    rewards:
+      - xp: 6
+      - item: DraconicEvolution:wyvernCore x2
+
+  - id: arsenal_draconico
+    title: "Arsenal Dracônico"
+    type: normal
+    deps: [machado_draconico, arco_draconico]
+    icon: DraconicEvolution:draconicAxe
+    desc: |
+      Machado, Arco e Enxada não entram no Cajado do Poder, mas completam o kit Dracônico.
+      Mostre o machado e o arco — a enxada é por sua conta.
+    tasks:
+      - get: [DraconicEvolution:draconicAxe, DraconicEvolution:draconicBow]
+    rewards:
+      - xp: 5
+      - item: DraconicEvolution:nugget:1 x9
+
+  # ======================================================================
+  # FASE 5 — O CAOS
+  # ======================================================================
+  - id: ilha_caos_info
+    title: "As Ilhas do Caos"
+    type: info
+    deps: [armadura_draconica]
+    icon: DraconicEvolution:chaosShard
+    desc: |
+      Achou o Dragão fácil? O Draconic ri disso.
+
+      Em qualquer múltiplo de §e10 000 blocos§r do Fim (por exemplo x=0 z=10000, x=10000 z=0,
+      x=0 z=-10000...) existe uma §5Ilha do Caos§r: pedra do Fim e obsidiana moldadas por energia
+      escura. No centro, numa câmara de obsidiana alguns blocos abaixo da superfície, está o
+      §eChaos Crystal§r.
+
+      A ilha é guardada pelo §cGuardião do Caos§r, um Dragão do Fim mutado. Os ataques dele
+      atravessam quase qualquer armadura — exceto a Dracônica — e drenam rápido a energia de
+      armaduras de RF. Leve um Flux Capacitor Dracônico carregado!
+    tasks:
+      - check
+    rewards:
+      - xp: 3
+
+  - id: ilha_caos
+    title: "Chegada à Ilha do Caos"
+    type: normal
+    deps: [ilha_caos_info]
+    icon: minecraft:end_stone
+    task_logic: OR
+    desc: |
+      Voe até uma das Ilhas do Caos mais próximas do centro do Fim. A viagem é longa: leve
+      Pérolas do Fim, um Enhanced Charm of Dislocation para marcar a volta e comida.
+
+      Esta quest conclui quando você chegar perto do centro de uma das quatro ilhas mais
+      próximas (x=±10000 ou z=±10000).
+    tasks:
+      - visit: {dim: 1, x: 0, y: 80, z: 10000, range: 250, name: "Ilha do Caos (Sul)"}
+      - visit: {dim: 1, x: 0, y: 80, z: -10000, range: 250, name: "Ilha do Caos (Norte)"}
+      - visit: {dim: 1, x: 10000, y: 80, z: 0, range: 250, name: "Ilha do Caos (Leste)"}
+      - visit: {dim: 1, x: -10000, y: 80, z: 0, range: 250, name: "Ilha do Caos (Oeste)"}
+    rewards:
+      - xp: 6
+      - item: minecraft:golden_apple x4
+
+  - id: guardiao_caos
+    title: "O Guardião do Caos"
+    type: boss
+    deps: [ilha_caos]
+    icon: DraconicEvolution:chaosShard
+    banner: "O Guardião do Caos Caiu"
+    subtitle: "O Selo do Abismo treme"
+    desc: |
+      Este é o maior desafio do Volume do Dragão — e uma das três provas do §5Selo do Abismo§r.
+
+      §eComo lutar:§r
+      §e• Cristais de cura:§r espalhados pela ilha, cada um com 50 pontos de vida e um escudo
+      temporário quando atingido. §cO Guardião não leva dano enquanto houver cristais ativos.§r
+      Quando a vida dele fica baixa, ele tenta reacender alguns.
+      §e• Ataques:§r rajadas, projéteis do caos e investidas que perfuram armaduras. Só a
+      Dracônica bloqueia esse dano perfurante.
+      §e• Energia:§r ele drena armaduras de RF rapidamente; mantenha o capacitor no inventário.
+
+      Use o Arco Dracônico com onda de choque nos cristais e a espada ou o cajado no Guardião.
+      Eu estou rezando por você daqui do Registro.
+    tasks:
+      - kill: {entity: "DraconicEvolution.ChaosGuardian", count: 1}
+    rewards:
+      - xp: 15
+      - loot: [epico, epico]
+
+  - id: fragmento_caos
+    title: "Chaos Shard"
+    type: main
+    deps: [guardiao_caos]
+    icon: DraconicEvolution:chaosShard
+    desc: |
+      Com o Guardião derrotado, cave até a câmara no centro da ilha e quebre o §eChaos
+      Crystal§r: ele solta §e5 Chaos Shards§r.
+
+      §c§lCORRA!§r Quando o cristal quebra, o campo de energia colapsa e §ca ilha inteira é
+      aniquilada em segundos§r. Sem a armadura Dracônica completa, você tem pouquíssimo tempo para
+      pegar os fragmentos e fugir. Tenha a rota de fuga pronta ANTES de quebrar.
+    tasks:
+      - get: DraconicEvolution:chaosShard x5
+    rewards:
+      - xp: 10
+      - choice: [DraconicEvolution:awakenedCore, DraconicEvolution:draconicBlock, DraconicEvolution:wyvernCore x2]
+
+  - id: nucleo_caotico
+    title: "Chaotic Core"
+    type: main
+    deps: [fragmento_caos, lote_nucleos_despertados]
+    icon: DraconicEvolution:chaoticCore
+    desc: |
+      O último núcleo: 4 Awakened Cores, 4 Awakened Draconium Ingots e um Chaos Shard no
+      centro. O §5Chaotic Core§r é o núcleo de melhoria mais forte do Upgrade Modifier e a peça
+      central dos Estabilizadores do Reator.
+    tasks:
+      - get: DraconicEvolution:chaoticCore
+    rewards:
+      - xp: 10
+      - choice: [DraconicEvolution:awakenedCore, DraconicEvolution:draconicBlock, DraconicEvolution:draconium:2 x4]
+
+  - id: fragmentos_menores
+    title: "Fragmentos do Caos"
+    type: optional
+    deps: [reator_draconico]
+    icon: DraconicEvolution:chaosFragment
+    desc: |
+      Quando o Reator converte combustível, o resultado é §eCaos§r — que você retira na GUI do
+      reator, desligado, em forma de Fragmentos do Caos (Tiny → Small → Large, 9 para 1 a cada
+      degrau) e Chaos Shards. Ou seja: o reator também é uma fonte renovável de fragmentos!
+    tasks:
+      - get: DraconicEvolution:chaosFragment:2
+    rewards:
+      - loot: raro
+
+  # ======================================================================
+  # FASE 6 — O REATOR DRACÔNICO
+  # ======================================================================
+  - id: reator_info
+    title: "§cLeia Antes: o Reator Dracônico"
+    type: info
+    deps: [nucleo_caotico]
+    icon: DraconicEvolution:reactorCore
+    desc: |
+      Eu vou ser muito franca: §co Reator Dracônico é a coisa mais perigosa do pack§r.
+
+      §eComo funciona:§r combustível de Draconium Despertado + Caos geram calor e RF; o Caos
+      acelera a reação. Um §ecampo de contenção§r (alimentado por você!) segura a esfera de plasma.
+      §e• Temperatura ideal:§r cerca de §e8 000 °C§r. Acima disso a carga no campo dispara (10×
+      a 10 000 °C, ~20× a 11 000 °C).
+      §e• Saturação:§r quanto mais energia você tira, mais quente fica.
+      §e• Conversão:§r §cnunca deixe chegar a 100%§r — a temperatura sobe sem controle e não há
+      como desligar. Desligue e reabasteça em 80–90%.
+      §e• Campo em 0% = explosão§r de 20 a 200 blocos de raio (conforme o combustível). A onda de
+      choque §catravessa obsidiana e qualquer outra coisa§r — e a config deste pack mantém a
+      explosão grande ligada.
+
+      Construa §clonge da base§r, num posto avançado, com reserva de energia de sobra. Não é
+      brincadeira.
+    tasks:
+      - check
+    rewards:
+      - xp: 3
+
+  - id: estrutura_estabilizador
+    title: "Reactor Stabilizer Frame"
+    type: normal
+    deps: [reator_info]
+    icon: DraconicEvolution:reactorCraftingPart
+    desc: |
+      Primeira peça do estabilizador: 6 lingotes de ferro, um Wyvern Core e um Awakened
+      Draconium Ingot. Você vai precisar de §e4§r — um por estabilizador.
+    tasks:
+      - get: DraconicEvolution:reactorCraftingPart x4
+    rewards:
+      - xp: 4
+      - item: minecraft:iron_block x4
+
+  - id: rotor_interno
+    title: "Reactor Stabilizer Inner Rotor"
+    type: normal
+    deps: [reator_info]
+    icon: DraconicEvolution:reactorCraftingPart:1
+    desc: |
+      3 Awakened Draconium Ingots, um Draconic Core e 2 Draconium Ingots. Cada Rotor Assembly
+      pede 2 rotores internos e o Injetor de Energia pede 4 — faça §e12§r no total.
+    tasks:
+      - get: DraconicEvolution:reactorCraftingPart:1 x12
+    rewards:
+      - xp: 4
+      - item: DraconicEvolution:draconicCore x2
+
+  - id: rotor_externo
+    title: "Reactor Stabilizer Outer Rotor"
+    type: normal
+    deps: [reator_info]
+    icon: DraconicEvolution:reactorCraftingPart:2
+    desc: |
+      Igual ao interno, mas com 3 diamantes no lugar do Draconium Despertado. Faça §e8§r (2 por
+      montagem de rotor).
+    tasks:
+      - get: DraconicEvolution:reactorCraftingPart:2 x8
+    rewards:
+      - xp: 4
+      - item: minecraft:diamond x4
+
+  - id: montagem_rotor
+    title: "Reactor Stabilizer Rotor Assembly"
+    type: normal
+    deps: [rotor_interno, rotor_externo]
+    icon: DraconicEvolution:reactorCraftingPart:3
+    desc: |
+      2 rotores internos, 2 externos, um Wyvern Core e 2 Draconium Ingots. §e4 montagens§r.
+    tasks:
+      - get: DraconicEvolution:reactorCraftingPart:3 x4
+    rewards:
+      - xp: 4
+      - item: DraconicEvolution:draconiumIngot x8
+
+  - id: anel_foco
+    title: "Reactor Stabilizer Focus Ring"
+    type: normal
+    deps: [reator_info]
+    icon: DraconicEvolution:reactorCraftingPart:4
+    desc: |
+      4 lingotes de ouro, 4 diamantes e um Wyvern Core. Também §e4§r.
+    tasks:
+      - get: DraconicEvolution:reactorCraftingPart:4 x4
+    rewards:
+      - xp: 4
+      - item: minecraft:gold_ingot x8
+
+  - id: estabilizador_reator
+    title: "Reactor Stabilizer"
+    type: main
+    deps: [estrutura_estabilizador, montagem_rotor, anel_foco]
+    icon: DraconicEvolution:reactorStabilizer
+    desc: |
+      Frame + Rotor Assembly + Focus Ring + §5Chaotic Core§r + Draconic Energy Core + 4 Awakened
+      Draconium Ingots = um §eReactor Stabilizer§r. São necessários §e4§r (quatro Chaotic Cores!).
+
+      Eles mantêm o campo de contenção e são por onde a energia SAI do reator. §cSe um deles for
+      destruído com o reator ligado, o campo cai.§r
+    tasks:
+      - get: DraconicEvolution:reactorStabilizer x4
+    rewards:
+      - xp: 10
+      - choice: [DraconicEvolution:draconicBlock, DraconicEvolution:awakenedCore, DraconicEvolution:chaosShard]
+
+  - id: injetor_energia
+    title: "Reactor Energy Injector"
+    type: normal
+    deps: [rotor_interno]
+    icon: DraconicEvolution:reactorEnergyInjector
+    desc: |
+      4 rotores internos, um Wyvern Core e Draconium: o §eReactor Energy Injector§r. É por ele
+      que entra a energia para dar a partida e para manter o campo de contenção.
+    tasks:
+      - get: DraconicEvolution:reactorEnergyInjector
+    rewards:
+      - xp: 5
+      - item: minecraft:redstone_block x16
+
+  - id: nucleo_reator
+    title: "Draconic Reactor Core"
+    type: main
+    deps: [nucleo_caotico]
+    icon: DraconicEvolution:reactorCore
+    desc: |
+      4 Awakened Draconium Ingots em cruz com um §eChaos Shard§r no centro: a semente da reação.
+      O núcleo fica no meio da estrutura e cresce (até o dobro do tamanho) conforme esquenta.
+    tasks:
+      - get: DraconicEvolution:reactorCore
+    rewards:
+      - xp: 8
+      - choice: [DraconicEvolution:nugget:1 x18, DraconicEvolution:chaosFragment:2 x2, DraconicEvolution:draconium:2 x2]
+
+  - id: montagem_reator
+    title: "Montando o Reator"
+    type: info
+    deps: [estabilizador_reator, injetor_energia, nucleo_reator, portao_fluxo]
+    icon: DraconicEvolution:reactorStabilizer
+    desc: |
+      §e1.§r Núcleo no centro.
+      §e2.§r 4 Estabilizadores em volta, §evirados para o núcleo§r, a até 8 blocos e a pelo menos
+      4 blocos de distância (o núcleo cresce!). Não precisa ser um anel horizontal.
+      §e3.§r Nada entre os estabilizadores e o núcleo. Clique num estabilizador: se a GUI mostrar
+      §a"OFFLINE"§r está tudo certo; §c"INVALID SETUP"§r, reposicione.
+      §e4.§r O Injetor num dos dois lados livres.
+      §e5.§r §eFlux Gate§r na saída dos estabilizadores e §eoutro§r na entrada do injetor.
+
+      §ePartida:§r coloque até 8 blocos de Awakened Draconium no slot de combustível, aperte
+      "Charge", alimente pelo injetor até campo e saturação chegarem a 50% e a temperatura a
+      2 000 °C, e então "Activate". Comparadores nos estabilizadores dão leituras externas; com
+      OpenComputers dá para ler tudo e desligar remotamente.
+    tasks:
+      - check
+    rewards:
+      - xp: 3
+
+  - id: segunda_ilha
+    title: "Outra Ilha, Outro Guardião"
+    type: optional
+    deps: [fragmento_caos]
+    icon: DraconicEvolution:chaosShard
+    desc: |
+      As ilhas se repetem a cada 10 000 blocos, e cada uma tem o seu Guardião e o seu cristal.
+      O reator inteiro pede 5 shards (4 Chaotic Cores + o núcleo do reator); mais Chaotic Cores
+      para melhorias pedem mais. Junte §e10 Chaos Shards§r se tiver coragem para uma segunda
+      ilha.
+    tasks:
+      - get: DraconicEvolution:chaosShard x10
+    rewards:
+      - loot: epico
+
+  - id: fragmento_minusculo
+    title: "Tiny Chaos Fragment"
+    type: optional
+    deps: [fragmento_caos]
+    icon: DraconicEvolution:chaosFragment
+    desc: |
+      A menor unidade de Caos. 9 Tiny → 1 Small, 9 Small → 1 Large, 9 Large → 1 Chaos Shard.
+      Eles saem do reator quando você retira o combustível convertido. A config dá a cada
+      fragmento minúsculo 16 unidades de combustível convertido.
+    tasks:
+      - get: DraconicEvolution:chaosFragment x9
+    rewards:
+      - loot: incomum
+
+  - id: fragmento_pequeno
+    title: "Small Chaos Fragment"
+    type: optional
+    deps: [fragmento_minusculo]
+    icon: DraconicEvolution:chaosFragment:1
+    desc: |
+      9 Tiny Chaos Fragments na bancada. Um passo mais perto de um novo Chaos Shard sem precisar
+      enfrentar outro Guardião.
+    tasks:
+      - get: DraconicEvolution:chaosFragment:1
+    rewards:
+      - loot: incomum
+
+  - id: portoes_reator
+    title: "Dois Registros de Segurança"
+    type: normal
+    deps: [portao_fluxo, reator_info]
+    icon: DraconicEvolution:flowGate
+    desc: |
+      O reator exige §e2 Flux Gates§r: um limitando a saída dos estabilizadores e outro
+      controlando a entrada do injetor. Sem eles, a energia sai sem freio e o campo não aguenta.
+      Use um Potentiometer em cada um para ajustes finos.
+    tasks:
+      - get: DraconicEvolution:flowGate x2
+    rewards:
+      - xp: 4
+      - item: DraconicEvolution:potentiometer x2
+
+  - id: combustivel_reator
+    title: "Combustível Despertado"
+    type: normal
+    deps: [reator_info, draconio_despertado]
+    icon: DraconicEvolution:draconicBlock
+    desc: |
+      O reator aceita até §e8 blocos§r de Awakened Draconium (em blocos, lingotes ou pepitas).
+      §cQuanto mais combustível, maior a explosão se algo der errado§r: 20 blocos de raio com um
+      lingote, 200 com tudo cheio. Comece pequeno: §e2 blocos§r já é muita energia.
+    tasks:
+      - get: ore:blockDraconiumAwakened x2
+    rewards:
+      - xp: 5
+      - item: minecraft:obsidian x16
+
+  - id: reator_computador
+    title: "Reator por Controle Remoto"
+    type: optional
+    deps: [montagem_reator]
+    icon: minecraft:comparator
+    desc: |
+      Encoste um computador do OpenComputers num estabilizador ou no injetor e use
+      §egetReactorInfo()§r (temperatura, campo, saturação, conversão, geração...),
+      §echargeReactor()§r, §eactivateReactor()§r e §estopReactor()§r. Um script que desliga o
+      reator quando o campo cai é o melhor seguro de vida que existe. Comparadores também
+      servem: Shift + clique no estabilizador escolhe qual leitura ele envia.
+    tasks:
+      - check
+    rewards:
+      - loot: raro
+
+  - id: reator_draconico
+    title: "O Reator Dracônico"
+    type: milestone
+    deps: [montagem_reator, portoes_reator, combustivel_reator]
+    icon: DraconicEvolution:reactorCore
+    banner: "A Estrela Engarrafada"
+    subtitle: "Milhões de RF por tick — com responsabilidade"
+    desc: |
+      Um núcleo de plasma girando, quatro estabilizadores segurando o campo, Flux Gates
+      regulando cada RF... Herói, você engarrafou uma estrela.
+
+      §eLembretes de quem se importa com você:§r
+      §e• Mantenha o campo fora do vermelho§r: dar energia a mais é o "modo seguro".
+      §e• Desligue em 80–90% de conversão§r e reabasteça.
+      §e• Ao desligar, tenha reserva§r (o Núcleo de Energia é perfeito para isso) para segurar o
+      campo enquanto a temperatura cai abaixo de 2 000 °C.
+
+      Mostre-me o reator completo: núcleo, 4 estabilizadores, injetor e 2 Flux Gates.
+    tasks:
+      - get: [DraconicEvolution:reactorCore, DraconicEvolution:reactorStabilizer x4, DraconicEvolution:reactorEnergyInjector, DraconicEvolution:flowGate x2]
+    rewards:
+      - xp: 12
+      - kit: {name: "Kit do Domador de Estrelas", items: [DraconicEvolution:draconicBlock, DraconicEvolution:flowGate x2, DraconicEvolution:potentiometer x2, DraconicEvolution:energyPylon x2]}
+      - loot: epico
+
+  - id: mestre_draconico
+    title: "Mestre do Volume do Dragão"
+    type: milestone
+    deps: [reator_draconico, cajado_poder, nucleo_ativo, guardiao_caos]
+    icon: DraconicEvolution:chaoticCore
+    banner: "Mestre do Dragão"
+    subtitle: "O Volume do Dragão está completo"
+    desc: |
+      Draconium do Fim, núcleos Wyvern, Despertado e Caótico, um Núcleo de Energia de bilhões,
+      armadura que voa, o Cajado do Poder, o Guardião do Caos derrotado e um reator que não
+      explodiu (ufa!). Herói, o Volume do Dragão inteiro foi reescrito por você.
+
+      Esta página é uma das que sustentam o §5Selo do Abismo§r — e os Awakened Cores que você
+      aprendeu a fazer vão brilhar de novo lá na §6Estrela ATM§r.
+
+      Eu estou tão orgulhosa que, se eu tivesse escamas, elas estariam brilhando.
+    tasks:
+      - get: [DraconicEvolution:chaoticCore, DraconicEvolution:draconicDistructionStaff, DraconicEvolution:draconicChest]
+    rewards:
+      - xp: 15
+      - kit: {name: "Tesouro do Dragão", items: [DraconicEvolution:awakenedCore x2, DraconicEvolution:draconicBlock x2, minecraft:dragon_egg]}
+      - loot: lendario

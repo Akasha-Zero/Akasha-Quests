@@ -1,0 +1,903 @@
+chapter:
+  id: texploration
+  title: "Thaumic Exploration e Revelations"
+  prefix: ""
+  order: 509
+  icon: ThaumicExploration:everfullUrn
+  desc: |
+    §dO Volume das Curiosidades e dos Guardiões.§r Selos que ligam baús, urnas sem fundo,
+    botas do meteoro e do cometa, núcleos e ponteiras de varinha, o Braseiro de Almas e a
+    ordem esquecida dos Guardiões Táumicos. (Thaumic Exploration 1.5.27-GTNH e Thaumic
+    Revelations 1.2.3)
+
+quests:
+  # ======================================================================
+  # PARTE 1 — THAUMIC EXPLORATION
+  # ======================================================================
+  - id: tx_inicio
+    title: "Explorações Táumicas"
+    type: info
+    icon: ThaumicExploration:everfullUrn
+    desc: |
+      Este Volume é uma caixinha de surpresas, Herói: um monte de invenções práticas que o
+      Thaumcraft esqueceu de inventar.
+
+      Abra a aba §eThaumic Exploration§r no Taumonomicon. As pesquisas com o prefixo
+      §e[TX]§r são cópias das pesquisas do Thaumcraft que servem de "porta" para as novas
+      (Sebo Mágico, Infusão, Botas do Viajante, Destilação de Essência...). Completou a
+      original? A cópia aparece já desbloqueada.
+
+      Quase tudo aqui pede §eInfusão§r, então tenha o altar pronto. Vamos às descobertas!
+    tasks:
+      - check
+    rewards:
+      - xp: 1
+
+  - id: sebo_magico
+    title: "Sebo Mágico"
+    type: main
+    deps: [tx_inicio]
+    icon: Thaumcraft:ItemResource:4
+    desc: |
+      Tudo neste canto do Volume começa com uma coisa gordurosa: o §eSebo Mágico§r (Magic
+      Tallow), feito no Crisol a partir de carne podre, como ensina o Thaumcraft.
+
+      Junte §e16 de Sebo Mágico§r. Vira selos, velas flutuantes e muito mais.
+    tasks:
+      - get: Thaumcraft:ItemResource:4 x16
+    rewards:
+      - xp: 4
+      - choice: [minecraft:rotten_flesh x32, minecraft:dye x8, Thaumcraft:ItemShard x4]
+
+  - id: velas_flutuantes
+    title: "Velas Flutuantes"
+    type: optional
+    deps: [sebo_magico]
+    icon: ThaumicExploration:floatCandle
+    desc: |
+      Toda escola de magia respeitável tem velas flutuando no salão. Arcana sem formato: §e3
+      Velas de Sebo§r da mesma cor + 1 §eEstilhaço de Ar§r = 3 Velas Flutuantes.
+
+      Elas ficam no ar sem apoio, balançam bonitinho e, como as velas comuns, ajudam a
+      §eestabilizar infusões§r.
+    tasks:
+      - get: ThaumicExploration:floatCandle:* x3
+    rewards:
+      - loot: comum
+
+  - id: selo_branco
+    title: "Selo em Branco"
+    type: normal
+    deps: [sebo_magico]
+    icon: ThaumicExploration:blankSeal
+    desc: |
+      Na bancada comum: 4 §eSebos Mágicos§r em cruz em volta de um §ecorante§r = um §eSelo em
+      Branco§r daquela cor. A cor serve para separar as suas redes de baús e jarros.
+
+      Faça pelo menos 2 selos da mesma cor.
+    tasks:
+      - get: ThaumicExploration:blankSeal:* x2
+    rewards:
+      - xp: 2
+      - item: Thaumcraft:ItemResource:4 x8
+
+  - id: bau_vinculado
+    title: "Baús Vinculados"
+    type: normal
+    deps: [selo_branco]
+    icon: ThaumicExploration:chestSeal
+    desc: |
+      Baús que compartilham o mesmo conteúdo, em qualquer lugar! No Crisol, o selo em
+      branco + 6 §dAlienis§r, 4 §dPermutatio§r, 4 §dVacuos§r, 4 §dVinculum§r e 6 §dIter§r vira o
+      §eSelo de Vínculo de Baú§r.
+
+      §e1.§r Clique num baú §evazio§r com o selo: ele vira um Baú Vinculado e cria uma rede nova.
+      §e2.§r Clique num baú já vinculado: o selo "aprende" a rede.
+      §e3.§r Clique noutro baú vazio com esse selo: ele entra na rede.
+    tasks:
+      - get: ThaumicExploration:chestSeal:* x2
+    rewards:
+      - xp: 3
+      - item: minecraft:chest x4
+
+  - id: jarra_vinculada
+    title: "Jarros Vinculados"
+    type: normal
+    deps: [selo_branco]
+    icon: ThaumicExploration:jarSeal
+    desc: |
+      A mesma ideia, para essência: no Crisol, o selo em branco + 6 §dAlienis§r, 4
+      §dPermutatio§r, 4 §dVitreus§r, 4 §dVinculum§r e 6 §dIter§r = §eSelo de Vínculo de
+      Jarro§r. Funciona igual ao de baú, em jarros vazios.
+
+      Não dá para vincular Void na Jarra nem jarros com rótulo. A sucção de um jarro selado
+      fica acima do jarro sem rótulo e abaixo do rotulado.
+    tasks:
+      - get: ThaumicExploration:jarSeal:* x2
+    rewards:
+      - xp: 3
+      - item: Thaumcraft:blockJar x4
+
+  - id: cerebro_curado
+    title: "Cérebro Higienizado"
+    type: main
+    deps: [tx_inicio]
+    icon: ThaumicExploration:pureZombieBrain
+    desc: |
+      Um cérebro de zumbi... curado. É o mesmo truque de curar aldeões zumbis, só que
+      aplicado ao cérebro solto.
+
+      Infusão: §eCérebro de Zumbi§r no centro; §ePoção de Fraqueza§r (qualquer tipo ou
+      duração), §eMaçã Dourada§r e §eBalde de Água§r em volta. O §eCured Zombie Brain§r é bem
+      mais inteligente e serve para o Tanque Pensante e o Cajado do Necromante.
+    tasks:
+      - get: ThaumicExploration:pureZombieBrain x3
+    rewards:
+      - xp: 4
+      - choice: [Thaumcraft:ItemZombieBrain x3, minecraft:golden_apple x2, minecraft:fermented_spider_eye x4]
+
+  - id: tanque_pensante
+    title: "Tanque Pensante"
+    type: milestone
+    deps: [cerebro_curado]
+    icon: ThaumicExploration:thinkTankJar
+    banner: "Tanque Pensante"
+    subtitle: "Pesquisa automatizada"
+    desc: |
+      Finalmente, pesquisa no piloto automático! Vários cérebros curados num jarro, com
+      instrumentos táumicos e §elivros§r para ler, rendem §eFragmentos de Conhecimento§r (os
+      livros são consumidos).
+
+      Infusão: §eJarro Guardião§r no centro; 3 Cérebros Curados, Ferramenta de Escrita,
+      Taumonomicon e Taumômetro em volta.
+
+      §cPosicionamento exigente:§r o tanque vai em cima de uma §eEstante de Livros§r e não
+      pode haver mais nada num cubo de 3×3×3 em volta dele (só a estante embaixo). Não
+      precisa de varinha para montar.
+    tasks:
+      - get: [ThaumicExploration:thinkTankJar, Thaumcraft:ItemResource:9 x8]
+    rewards:
+      - xp: 8
+      - kit: {name: "Kit do Pesquisador Preguiçoso", items: ["minecraft:book x32", "minecraft:bookshelf x4", "Thaumcraft:ItemResource:9 x8", "minecraft:dye x8"]}
+      - loot: raro
+
+  - id: jarra_oblivio
+    title: "Jarro do Esquecimento"
+    type: normal
+    deps: [tx_inicio]
+    icon: ThaumicExploration:trashJar
+    desc: |
+      A sala de infusão transbordando de essências que você não quer? Um Void na Jarra por
+      aspecto dá trabalho. O §eOblivion Jar§r apaga §etoda§r essência que entra nele.
+
+      Ele tem a §emenor sucção§r de todos os jarros: só recebe o que não tem para onde ir.
+      Golems também despejam nele quando não acham outro jarro.
+
+      Infusão: §eVoid na Jarra§r no centro; Baú Faminto, 4 Estilhaços de Entropia e Âmbar
+      em volta (instabilidade 7).
+    tasks:
+      - get: ThaumicExploration:trashJar
+    rewards:
+      - xp: 3
+      - item: Thaumcraft:ItemShard:5 x4
+
+  - id: urna_cheia
+    title: "A Urna Sempre Cheia"
+    type: main
+    deps: [tx_inicio]
+    icon: ThaumicExploration:everfullUrn
+    desc: |
+      A lendária urna de Azanor: §eágua infinita§r! A §eEverfull Urn§r enche baldes sem parar,
+      pode ser bombeada por cima para um tanque, apaga jogadores em chamas por perto e enche
+      sozinha Crisóis, Spas Arcanos, Apotecários de Pétalas (Botania) e caldeirões vizinhos
+      — tudo ativado na config do pack.
+
+      Infusão: §eVaso de Flor§r no centro; 3 Baldes de Água e 3 Tijolos em volta.
+    tasks:
+      - get: ThaumicExploration:everfullUrn
+    rewards:
+      - xp: 4
+      - choice: [minecraft:bucket x4, Thaumcraft:blockMetalDevice, minecraft:brick x16]
+
+  - id: urna_ardente
+    title: "A Urna Sempre Ardente"
+    type: normal
+    deps: [urna_cheia]
+    icon: ThaumicExploration:everburnUrn
+    desc: |
+      Lava, ao contrário de água, precisa de energia. A §eEverburn Urn§r produz lava
+      gastando §ecentivis§r de um nodo e também pode ser bombeada por cima ou esvaziada com
+      baldes.
+
+      Infusão: §eVaso de Flor§r no centro; 3 Baldes de Lava e 3 Tijolos em volta.
+    tasks:
+      - get: ThaumicExploration:everburnUrn
+    rewards:
+      - xp: 3
+      - item: minecraft:lava_bucket
+
+  - id: crisol_almas
+    title: "Crisol das Almas"
+    type: normal
+    deps: [cerebro_curado]
+    icon: ThaumicExploration:crucibleSouls
+    desc: |
+      Uma fonte de essência que ninguém usava: a força vital dos seres vivos. O §eCrucible
+      of Souls§r procura a criatura viva mais próxima, drena a vida dela aos poucos e, no
+      golpe final, entrega §eessência§r no lugar do loot normal. Encane pelas laterais ou por
+      baixo.
+
+      Infusão: §eFornalha Alquímica§r no centro; Crisol, Carne Podre, Osso, Lágrima de Ghast,
+      Areia das Almas e Alambique Arcano. §cGera bastante fluxo§r — prepare o descarte. Ele
+      ignora humanos e golems, mas mantenha os seus bichos longe!
+    tasks:
+      - get: ThaumicExploration:crucibleSouls
+    rewards:
+      - xp: 3
+      - item: Thaumcraft:blockTube x8
+
+  - id: replicador
+    title: "Replicador Táumico"
+    type: milestone
+    deps: [urna_cheia]
+    icon: ThaumicExploration:replicator
+    banner: "Replicador Táumico"
+    subtitle: "Essência vira matéria"
+    desc: |
+      Você já desmancha blocos em essência na Fornalha Alquímica. Agora faça o contrário!
+
+      Infusão (instabilidade 9): §eMatriz Rúnica§r no centro; Mesa de Manufatura Arcana, 3
+      Lingotes de Ouro e 3 Barras de Táumio em volta.
+
+      §e1.§r Clique no replicador com um bloco para defini-lo como modelo.
+      §e2.§r Olhe com os Óculos da Descoberta para ver a essência necessária e coloque-a em
+      jarros por perto, como numa infusão.
+      §e3.§r Clique com a varinha (ou mande redstone) para replicar; um funil tira o bloco.
+
+      Ele copia blocos de construção simples: pedras, terras, madeiras (incluindo tábuas de
+      Greatwood/Silverwood e de outros mods — tudo liberado na config). A lista completa
+      está no NEI, em "Thaumic Replication".
+    tasks:
+      - get: ThaumicExploration:replicator
+    rewards:
+      - xp: 8
+      - kit: {name: "Kit do Replicador", items: ["Thaumcraft:blockJar x8", "Thaumcraft:ItemResource:13 x16", "minecraft:hopper x2", "Thaumcraft:ItemResource:2 x4"]}
+      - loot: raro
+
+  - id: talisma_nutricao
+    title: "Talismã da Nutrição"
+    type: normal
+    deps: [tx_inicio]
+    icon: ThaumicExploration:talismanFood
+    desc: |
+      Maratona de pesquisa sem parar para comer! O §eTalisman of Nourishment§r suga a
+      energia das comidas simples da sua barra de atalhos, guarda e enche a sua fome quando
+      ela cai. Comidas com efeito (Carne Podre, Maçã Dourada) você ainda come na mão.
+
+      Infusão: §eAmuleto Primal§r no centro; Obsidiana, Bife, Frango, Porco e Peixe assados,
+      Pão, Baú e Cenoura Dourada em volta.
+    tasks:
+      - get: ThaumicExploration:talismanFood
+    rewards:
+      - xp: 3
+      - item: minecraft:cooked_beef x16
+
+  - id: aneis_estilhaco
+    title: "Anéis de Estilhaço"
+    type: normal
+    deps: [tx_inicio]
+    icon: ThaumicExploration:discountRing
+    desc: |
+      Varinha gastando vis demais? Esculpa §e4 estilhaços§r de um aspecto em forma de anel na
+      Mesa Arcana (15 vis do mesmo primal): sai um §eAnel de Aer, Terra, Ignis, Aqua, Ordo ou
+      Perditio§r que dá desconto daquele aspecto.
+
+      Use até dois; dois anéis do mesmo aspecto §esomam§r o desconto.
+    tasks:
+      - get: ThaumicExploration:discountRing:* x2
+    rewards:
+      - xp: 3
+      - choice: [Thaumcraft:ItemShard x4, Thaumcraft:ItemShard:1 x4, Thaumcraft:ItemShard:2 x4, Thaumcraft:ItemShard:3 x4, Thaumcraft:ItemShard:4 x4, Thaumcraft:ItemShard:5 x4]
+
+  - id: apanhador_sonhos
+    title: "Apanhador de Sonhos Etéreo"
+    type: normal
+    deps: [tx_inicio]
+    icon: ThaumicExploration:charmNoTaint
+    desc: |
+      Se apanhador de sonhos segura pesadelos, por que não segurar Taint? O §eWispy
+      Dreamcatcher§r, na barra de atalhos, tem grande chance de anular o dano de Taint e de
+      criaturas maculadas.
+
+      Arcana (Ordo e Perditio 15): Gosma Maculada nos cantos de cima, Tábuas de Greatwood,
+      uma Vinha Maculada no centro e Penas embaixo.
+    tasks:
+      - get: ThaumicExploration:charmNoTaint
+    rewards:
+      - xp: 3
+      - item: Thaumcraft:ItemResource:11 x4
+
+  - id: anel_tentaculo
+    title: "Anel do Tentáculo"
+    type: optional
+    deps: [apanhador_sonhos]
+    icon: ThaumicExploration:tentacleRing
+    desc: |
+      Conhecimento das terras maculadas virando arma! Com o §eTaintacle Ring§r num slot de
+      anel, cada vez que você leva dano em terra firme brota um pequeno tentáculo que ataca
+      os inimigos por perto.
+
+      Infusão: §eAnel Mundano§r no centro; 2 Gosmas Maculadas e 2 Vinhas Maculadas.
+    tasks:
+      - get: ThaumicExploration:tentacleRing
+    rewards:
+      - loot: incomum
+
+  - id: estabilizador
+    title: "Estabilizador Taumostático"
+    type: normal
+    deps: [tx_inicio]
+    icon: ThaumicExploration:stabilizerBelt
+    desc: |
+      Voando com o Catalizador Taumostático e um esqueleto te empurra para o vazio? Nunca
+      mais. O §eThaumostatic Stabilizer§r é um cinto que §eanula o recuo§r (knockback) de
+      todo dano.
+
+      Infusão: §eCinto Mundano§r no centro; 2 Lingotes de Ferro, 2 de Ouro, Estilhaço de
+      Ordem e Estilhaço de Terra.
+    tasks:
+      - get: ThaumicExploration:stabilizerBelt
+    rewards:
+      - xp: 3
+      - item: minecraft:iron_ingot x8
+
+  - id: botas_meteoro
+    title: "Botas do Meteoro"
+    type: main
+    deps: [tx_inicio]
+    icon: ThaumicExploration:bootsMeteor
+    desc: |
+      As Botas do Viajante com a força bruta de Ignis e Potentia! Pule §eagachado§r e você é
+      lançado na direção em que está olhando; aperte agachar §eno ar§r e despenca no chão
+      como um meteoro, ferindo tudo em volta do impacto.
+
+      Infusão: §eBotas do Viajante§r no centro; Aglomerado de Cristal de Fogo, 3 Netherracks e
+      Foco de Fogo em volta.
+    tasks:
+      - get: ThaumicExploration:bootsMeteor
+    rewards:
+      - xp: 4
+      - choice: [Thaumcraft:ItemShard:1 x6, minecraft:netherrack x32, minecraft:feather x16]
+
+  - id: botas_cometa
+    title: "Botas do Cometa"
+    type: main
+    deps: [tx_inicio]
+    icon: ThaumicExploration:bootsComet
+    desc: |
+      Velocidade de cometa! As §eBoots of the Comet§r correm muito mais que as Botas do
+      Viajante, cruzam grandes distâncias em segundos e §econgelam a água§r sob os seus pés
+      (gelo temporário, ativado na config).
+
+      Infusão: §eBotas do Viajante§r no centro; Aglomerado de Cristal de Água, 3 Blocos de
+      Neve e Foco de Gelo em volta.
+    tasks:
+      - get: ThaumicExploration:bootsComet
+    rewards:
+      - xp: 4
+      - choice: [Thaumcraft:ItemShard:2 x6, minecraft:snow x16, minecraft:packed_ice x8]
+
+  - id: nucleo_ambar
+    title: "Núcleo de Âmbar"
+    type: normal
+    deps: [tx_inicio]
+    icon: ThaumicExploration:amberCore
+    desc: |
+      Âmbar conduz mal a vis: a §eAmber Rod§r guarda só 10 de cada aspecto... mas ela se
+      "lembra" da vis e §eregenera todos os seis primais§r, duas vezes mais rápido que os
+      outros núcleos regenerativos.
+
+      Infusão: §eBloco de Âmbar§r no centro; 2 Salis Mundus. Para o cajado (25 de cada),
+      Arcana: Amuleto Primal + 2 Núcleos de Âmbar na diagonal.
+    tasks:
+      - get: ThaumicExploration:amberCore
+    rewards:
+      - xp: 3
+      - item: Thaumcraft:ItemResource:6 x4
+
+  - id: nucleo_transmutativo
+    title: "Núcleo Transmutativo"
+    type: normal
+    deps: [nucleo_ambar]
+    icon: ThaumicExploration:transmutationCore
+    desc: |
+      Um Amuleto Primal infundido vira núcleo de varinha: a §eTransmutative Rod§r guarda 75
+      de cada aspecto e, quando um aspecto passa de §e90%§r, converte o excesso em outros
+      aspectos (numa taxa baixa).
+
+      Infusão: §eAmuleto Primal§r no centro; um estilhaço de cada primal e Salis Mundus. O
+      cajado (175 de cada) segue o mesmo formato do de Âmbar.
+    tasks:
+      - get: ThaumicExploration:transmutationCore
+    rewards:
+      - xp: 3
+      - item: Thaumcraft:ItemResource:15
+
+  - id: cajado_ambar
+    title: "Cajado de Âmbar"
+    type: optional
+    deps: [nucleo_ambar]
+    icon: ThaumicExploration:amberStaffCore
+    desc: |
+      Cajados guardam mais e batem mais forte. Na Mesa Arcana, um §eAmuleto Primal§r no canto
+      de cima e 2 §eNúcleos de Âmbar§r na diagonal = §eAmber Staff Core§r: 25 de cada
+      aspecto, com a mesma regeneração lenta de todos os primais.
+    tasks:
+      - get: ThaumicExploration:amberStaffCore
+    rewards:
+      - loot: comum
+
+  - id: cajado_transmutativo
+    title: "Cajado Transmutativo"
+    type: optional
+    deps: [nucleo_transmutativo]
+    icon: ThaumicExploration:transmutationStaffCore
+    desc: |
+      O mesmo formato do Cajado de Âmbar, com 2 Núcleos Transmutativos: o §eTransmutative
+      Staff Core§r guarda §e175 de cada aspecto§r e continua convertendo o excesso acima de
+      90%. Um ótimo cajado de uso geral!
+    tasks:
+      - get: ThaumicExploration:transmutationStaffCore
+    rewards:
+      - loot: incomum
+
+  - id: carne_purificada
+    title: "Purificação da Carne"
+    type: optional
+    deps: [sebo_magico]
+    icon: minecraft:leather
+    desc: |
+      Tirando a doença da carne podre! Na pesquisa §eFlesh Purification§r, Carne Podre no
+      Crisol com 2 §dCorpus§r e 1 §dPannus§r vira §e2 Couros§r. É o primeiro passo para o
+      Cérebro Higienizado, e um jeito ótimo de dar uso às pilhas de carne podre do baú.
+    tasks:
+      - get: minecraft:leather x8
+    rewards:
+      - loot: comum
+
+  - id: cajado_necromante
+    title: "Cajado do Necromante"
+    type: optional
+    deps: [cerebro_curado]
+    icon: ThaumicExploration:necroStaffCore
+    desc: |
+      Uma ferramenta horripilante para quem gosta de briga. O §eNecromancer's Staff Core§r
+      guarda 200 de vis, recebe §e4×§r a vis dos monstros que você mata e faz murchar quem
+      apanha dele. Em compensação, só recebe 75% da vis de nodos e outras fontes.
+
+      Infusão: §eNúcleo de Cajado de Osso§r no centro; Crânio de Esqueleto Wither, 2 Carnes
+      Podres, 2 Ossos e um Cérebro Curado.
+    tasks:
+      - get: ThaumicExploration:necroStaffCore
+    rewards:
+      - loot: incomum
+
+  - id: ponteira_viajante
+    title: "Ponteira do Viajante"
+    type: normal
+    deps: [tx_inicio]
+    icon: ThaumicExploration:sojournerCap
+    desc: |
+      Recarregar a varinha num pedestal cansa. A §eSojourner's Cap§r faz a varinha §edrenar
+      sozinha os nodos próximos§r enquanto está na sua mão, como um Pedestal de Recarga
+      portátil.
+
+      Arcana: §eInert Sojourner's Cap§r (Lápis-Lazúli e Diamante). Depois, infusão dela com 2
+      Salis Mundus. Rende mais que a ponteira de ouro, menos que a de táumio.
+    tasks:
+      - get: ThaumicExploration:sojournerCap x2
+    rewards:
+      - xp: 3
+      - item: minecraft:dye:4 x8
+
+  - id: ponteira_mecanico
+    title: "Ponteira do Mecânico"
+    type: normal
+    deps: [ponteira_viajante]
+    icon: ThaumicExploration:mechanistCap
+    desc: |
+      Engrenagem + magia: a §eMechanist's Cap§r desmonta e colhe a vis de um nodo §ebem mais
+      rápido§r que o normal.
+
+      Arcana: §eInert Mechanist's Cap§r (5 Redstones, Pistão e Repetidor). Depois, infusão
+      com 2 Salis Mundus. Mesma eficiência da Ponteira do Viajante.
+    tasks:
+      - get: ThaumicExploration:mechanistCap x2
+    rewards:
+      - xp: 3
+      - item: minecraft:redstone x16
+
+  - id: encantamentos_tx
+    title: "Encantamentos Táumicos"
+    type: info
+    deps: [tx_inicio]
+    icon: minecraft:enchanted_book
+    desc: |
+      Três encantamentos novos para a Infusão de Encantamento:
+
+      §e• Binding (Vínculo):§r espadas. Nível I deixa o alvo lento; nível II impede o
+      Enderman de teleportar e o Creeper de explodir por um tempo. (Salis Mundus + Areia das
+      Almas)
+      §e• Disarming (Desarmar):§r espadas. Chance de derrubar a arma da criatura (não funciona
+      em jogadores). (Salis Mundus + Bola de Slime)
+      §e• Night Vision (Visão Noturna):§r capacetes. (Salis Mundus + 2 Cenouras Douradas)
+    tasks:
+      - check
+    rewards:
+      - xp: 2
+
+  - id: braseiro_almas
+    title: "Braseiro de Almas"
+    type: milestone
+    deps: [crisol_almas, ponteira_mecanico]
+    icon: ThaumicExploration:soulBrazier
+    banner: "Braseiro de Almas"
+    subtitle: "O peso do Warp, fora da mente"
+    desc: |
+      Warp na mente é ruim; solto no mundo é pior. O §eSoul Brazier§r guarda o seu §eWarp
+      permanente§r com segurança... relativa.
+
+      Infusão (instabilidade 7): §eEstrela do Nether§r no centro; Cérebro de Zumbi e 2
+      Lingotes de Metal do Vazio em volta (Mortuus, Tenebrae e Auram 32).
+
+      Para funcionar, ele precisa de §evis de um nodo§r e de essência de §dMortuus§r. O dono
+      tem que estar perto; ele recusa "almas desconhecidas". Se ele apagar, o Warp guardado
+      volta para você com uma bela dor de cabeça. Ele também pode manter o chunk carregado
+      (ativado na config).
+    tasks:
+      - get: ThaumicExploration:soulBrazier
+    rewards:
+      - xp: 10
+      - kit: {name: "Kit do Guardião do Braseiro", items: ["Thaumcraft:ItemResource:16 x4", "Thaumcraft:blockTube x16", "Thaumcraft:blockJar x4", "minecraft:bone x16"]}
+      - loot: raro
+
+  # ======================================================================
+  # PARTE 2 — THAUMIC REVELATIONS
+  # ======================================================================
+  - id: rev_inicio
+    title: "As Revelações"
+    type: info
+    deps: [tx_inicio]
+    icon: thaumrev:itemWardenAmulet
+    desc: |
+      "Havia três facções neste mundo: os Taumaturgos, de onde nasceram os Guardiões
+      Táumicos; os Cultistas Carmesins, taumaturgos que enlouqueceram; e os Eldritch."
+
+      A aba §eThaumic Revelations§r conta a história de Lizbeth, Wesly e Vana em quatro
+      páginas de lore — e ensina a forjar as armas dos §eGuardiões Táumicos§r (Thaumic
+      Wardens), feitas para lutar contra o Eldritch.
+
+      Leia as páginas com calma. Eu adoro uma boa história de origem!
+    tasks:
+      - check
+    rewards:
+      - xp: 2
+
+  - id: rosa_guardia
+    title: "A Rosa Guardiã"
+    type: main
+    deps: [rev_inicio]
+    icon: thaumrev:blockExcubitura
+    desc: |
+      Uma rosinha mutada pela magia, com um cristal onde deveria estar o estigma: a
+      §eWardenic Rose§r (Excubitura). Ela nasce já madura sobre a grama do Mundo Normal, mas é
+      rara (cerca de uma tentativa a cada 10 chunks) — procure com calma.
+
+      É uma planta de cultivo: plante as §esementes§r e espere o último estágio; cada rosa
+      madura dá 2 itens, sementes ou §ePétalas de Rosa Guardiã§r. Cada pétala
+      carrega o aspecto §dExcubitor§r (Alienis + Mortuus), o "aspecto dos Guardiões".
+    tasks:
+      - get: [thaumrev:itemResource x8, thaumrev:itemExcubituraSeeds]
+    rewards:
+      - xp: 4
+      - choice: [minecraft:dye:15 x16, Thaumcraft:ItemResource:14 x4, minecraft:grass x8]
+
+  - id: cristal_guardiao
+    title: "Cristal Guardião"
+    type: main
+    deps: [rosa_guardia]
+    icon: thaumrev:itemResource:1
+    desc: |
+      Cristalizando as pétalas! No Crisol: §ePétala de Rosa Guardiã§r + 32 §dPraecantatio§r e
+      32 §dVitreus§r = §eWardenic Crystal§r. É caro — encha bem o Crisol antes.
+
+      O cristal reage de um jeito estranho a essências: é ele que vai permitir "carregar"
+      as armas dos Guardiões com aspectos.
+    tasks:
+      - get: thaumrev:itemResource:1 x4
+    rewards:
+      - xp: 4
+      - choice: [Thaumcraft:ItemShard:6 x4, Thaumcraft:blockCrystal:6, Thaumcraft:ItemResource:14 x8]
+
+  - id: quartzo_guardiao
+    title: "Quartzo Guardião"
+    type: main
+    deps: [rev_inicio]
+    icon: thaumrev:itemResource:2
+    desc: |
+      Um manuscrito antigo descreve o quartzo das armas dos Guardiões: ele atravessa metal e
+      proteção comum. No Crisol: §eQuartzo do Nether§r + 4 §dPraecantatio§r e 4 §dAlienis§r =
+      §eWardenic Quartz§r.
+
+      Faça bastante: só a armadura completa pede 22 quartzos.
+    tasks:
+      - get: thaumrev:itemResource:2 x16
+    rewards:
+      - xp: 4
+      - choice: [minecraft:quartz x32, Thaumcraft:ItemShard:6 x2, minecraft:glowstone_dust x16]
+
+  - id: quartzo_infundido
+    title: "Blocos de Quartzo Infundido"
+    type: optional
+    deps: [quartzo_guardiao]
+    icon: thaumrev:blockInfusedQuartzNormal
+    desc: |
+      Decoração digna de fortaleza! 4 Quartzos Guardiões = 1 §eBloco de Quartzo Infundido§r;
+      dele saem pilares, lajes, escadas e a versão cinzelada, como o quartzo comum.
+    tasks:
+      - get: thaumrev:blockInfusedQuartzNormal x4
+    rewards:
+      - loot: comum
+
+  - id: tecido_guardiao
+    title: "Tecido dos Guardiões"
+    type: main
+    deps: [rosa_guardia]
+    icon: thaumrev:itemResource:3
+    desc: |
+      O lendário tecido dos protetores. No Crisol: §eTecido Encantado§r + 8 §dPraecantatio§r e 8
+      §dPannus§r = §eWardencloth§r.
+
+      Com ele: vestes leves (Arcana, como armadura comum), o núcleo de varinha dos Guardiões
+      e o amuleto.
+    tasks:
+      - get: thaumrev:itemResource:3 x8
+    rewards:
+      - xp: 4
+      - choice: [Thaumcraft:ItemResource:7 x4, minecraft:string x16, minecraft:wool x8]
+
+  - id: vestes_guardiao
+    title: "Vestes de Tecido Guardião"
+    type: optional
+    deps: [tecido_guardiao]
+    icon: thaumrev:itemWardenclothChest
+    desc: |
+      Peitoral, calças e botas de §eWardencloth§r, feitos na Mesa Arcana no formato das
+      armaduras comuns (8, 7 e 4 vis de cada primal). Uma opção leve e bonita enquanto a
+      armadura de verdade não sai.
+    tasks:
+      - one_of: [thaumrev:itemWardenclothChest, thaumrev:itemWardenclothLegs, thaumrev:itemWardenclothBoots]
+    rewards:
+      - loot: comum
+
+  - id: haste_guardia
+    title: "Haste de Tecido Guardião"
+    type: normal
+    deps: [tecido_guardiao, cristal_guardiao]
+    icon: thaumrev:itemWandCore
+    desc: |
+      Uma Haste de Silverwood amarrada com tecido dos Guardiões: a §eWardencloth Rod§r.
+
+      Infusão: §eHaste de Silverwood§r no centro; Pétala, 2 Wardencloths, 2 Salis Mundus e um
+      Cristal Guardião em volta, com 10 de cada primal e §e20 de Excubitor§r (pétalas na
+      Fornalha Alquímica dão essa essência). Há também o núcleo de cajado (Arcana).
+    tasks:
+      - get: thaumrev:itemWandCore
+    rewards:
+      - xp: 3
+      - item: thaumrev:itemResource x4
+
+  - id: foco_pureza
+    title: "Foco: Pureza"
+    type: optional
+    deps: [haste_guardia]
+    icon: thaumrev:itemFocusPurity
+    desc: |
+      "Tu serás purificado!" Um foco dos Guardiões contra as criaturas maculadas e eldritch.
+
+      Arcana: §eFoco de Proteção§r (Warding) no centro; 4 Gosmas Maculadas e 4 Vinhas
+      Maculadas em volta (25 de cada primal). Na config do pack ele custa 100 de vis e tem
+      recarga de 500.
+    tasks:
+      - get: thaumrev:itemFocusPurity
+    rewards:
+      - loot: incomum
+
+  - id: foco_iluminacao_rev
+    title: "Foco: Iluminação Carmesim"
+    type: optional
+    deps: [rev_inicio]
+    icon: thaumrev:itemFocusIllumination
+    desc: |
+      "Nós sabemos dos seus planos..." Este foco, cheio de mensagens estranhas no livro, cria
+      luz com o botão direito.
+
+      Arcana (Aer e Ignis 20): §eFoco de Fogo§r no centro e 4 §eNitor§r em cruz.
+    tasks:
+      - get: thaumrev:itemFocusIllumination
+    rewards:
+      - loot: comum
+
+  - id: martelo_wesly
+    title: "O Martelo de Wesly"
+    type: main
+    deps: [haste_guardia, quartzo_guardiao]
+    icon: thaumrev:itemWaslieHammer
+    desc: |
+      Criado pelo Mestre Andarilho Wesly para Lizbeth. O §eWesly's Hammer§r é a ferramenta
+      que §einfunde aspectos§r nas armas e armaduras dos Guardiões: abra a interface, ponha a
+      peça e um recipiente de essência (frasco, jarro...) com o aspecto desejado.
+
+      Arcana (50 de cada primal): 3 Cristais Guardiões em cima, Cristal–Quartzo–Cristal no
+      meio e a Haste de Tecido Guardião embaixo.
+    tasks:
+      - get: thaumrev:itemWaslieHammer
+    rewards:
+      - xp: 5
+      - choice: [thaumrev:itemResource:2 x8, Thaumcraft:ItemEssence x16, Thaumcraft:blockJar x4]
+
+  - id: espada_guardiao
+    title: "A Espada dos Guardiões"
+    type: main
+    deps: [martelo_wesly]
+    icon: thaumrev:itemWardenWeapon
+    desc: |
+      Os restos da Lâmina de Luz, reconstruídos por Lizbeth: a §eWarden's Sword§r se refaz
+      sozinha e muda de efeito conforme o aspecto infundido pelo martelo.
+
+      Arcana: 2 Quartzos Guardiões em cima de um Cristal Guardião — mas custa §e125 de cada
+      primal§r. Use uma varinha ou cajado que aguente isso!
+    tasks:
+      - get: thaumrev:itemWardenWeapon
+    rewards:
+      - xp: 5
+      - choice: [Thaumcraft:ItemShard:6 x6, thaumrev:itemResource:1 x2, minecraft:experience_bottle x16]
+
+  - id: arco_guardiao
+    title: "O Arco dos Guardiões"
+    type: optional
+    deps: [martelo_wesly]
+    icon: thaumrev:itemWardenBow
+    desc: |
+      Mesma ideia, à distância: o §eWarden's Bow§r leva Quartzos Guardiões, um Cristal e
+      Linha (125 de cada primal). Os efeitos dos aspectos ficam mais fortes em tiros
+      §ecríticos§r (arco totalmente puxado).
+    tasks:
+      - get: thaumrev:itemWardenBow
+    rewards:
+      - loot: incomum
+
+  - id: aspectos_guardioes
+    title: "Os Aspectos dos Guardiões"
+    type: info
+    deps: [martelo_wesly]
+    icon: thaumrev:itemResource:1
+    desc: |
+      Efeitos que conferi no código de cada infusão do martelo (ficam mais fortes com mais
+      peças de armadura dos Guardiões):
+
+      §e• Ignis:§r incendeia o alvo; imunidade a fogo e menos dano de explosão.
+      §e• Aer:§r atordoa o alvo; menos dano de projéteis e de queda (4 peças anulam a queda).
+      §e• Terra:§r lentidão e cansaço no alvo; ao cair, fere quem está perto.
+      §e• Aqua:§r envenena o alvo; respiração aquática.
+      §e• Ordo:§r dano extra em mortos-vivos e criaturas do Nether; metade do dano recebido.
+      §e• Perditio:§r dano caótico (às vezes metade da vida do alvo) — §cmas pode dar Warp§r.
+      §e• Excubitor:§r dano extra em criaturas eldritch e maculadas; metade do dano recebido.
+    tasks:
+      - check
+    rewards:
+      - xp: 2
+
+  - id: amuleto_guardiao
+    title: "Amuleto do Guardião"
+    type: normal
+    deps: [martelo_wesly]
+    icon: thaumrev:itemWardenAmulet
+    desc: |
+      O §eWarden's Amulet§r guarda uma reserva enorme de vis e a usa para §erecarregar as suas
+      varinhas§r; ele também aceita infusão de aspecto pelo martelo. Há uma tecla própria
+      ("Use Amulet") nos controles do Thaumic Revelations.
+
+      Arcana (250 de cada primal!): Wardencloth e Cristal Guardião — confira o formato no
+      NEI.
+    tasks:
+      - get: thaumrev:itemWardenAmulet
+    rewards:
+      - xp: 4
+      - item: Thaumcraft:ItemResource:1 x4
+
+  - id: tecido_carmesim
+    title: "Tecido Carmesim"
+    type: optional
+    deps: [rev_inicio]
+    icon: thaumrev:itemResource:4
+    desc: |
+      O Culto Carmesim: "conhecimento é poder", dizem. No Crisol, §eTecido Encantado§r + 8
+      §dTelum§r e 8 §dPannus§r = §eCrimsoncloth§r. Com ele você faz, na Mesa Arcana, as vestes
+      do Culto (capuz, robe, calças e botas) iguais às dos cultistas.
+    tasks:
+      - get: thaumrev:itemResource:4 x4
+    rewards:
+      - loot: comum
+
+  - id: cartola_carmesim
+    title: "Cartola Carmesim"
+    type: optional
+    deps: [tecido_carmesim]
+    icon: thaumrev:itemCrimsonHat
+    desc: |
+      Elegância sinistra! Arcana (40 de cada primal): o §eAcessório de Golem: Cartola§r no
+      centro e 4 Tecidos Carmesins em cruz. Sim, a cartolinha do golem vira um chapéu de
+      verdade.
+    tasks:
+      - get: thaumrev:itemCrimsonHat
+    rewards:
+      - loot: comum
+
+  - id: tecido_vazio
+    title: "Tecido do Vazio"
+    type: optional
+    deps: [rev_inicio]
+    icon: thaumrev:itemResource:5
+    desc: |
+      "Que milagres esperam por você no Abismo?" No Crisol, §eTecido Encantado§r + 8
+      §dAlienis§r e 8 §dPannus§r = §eVoidcloth§r. Nesta versão ainda não há receita que o use
+      (a pesquisa do Eldritch está marcada como "WiP"). Fica como curiosidade de
+      colecionador.
+    tasks:
+      - get: thaumrev:itemResource:5
+    rewards:
+      - loot: comum
+
+  - id: armadura_guardiao
+    title: "A Armadura dos Guardiões"
+    type: milestone
+    deps: [espada_guardiao, aspectos_guardioes]
+    icon: thaumrev:itemWardenChest
+    banner: "Guardião Táumico"
+    subtitle: "Para sempre um guardião"
+    desc: |
+      "Parece que estou vestindo nada!" A armadura lendária dos Guardiões absorve golpes
+      enormes, se reconstrói sozinha e aceita aspectos pelo martelo.
+
+      Cada peça é Arcana com Quartzos Guardiões em volta de um §eCristal Guardião§r, no
+      formato da armadura (5, 7, 6 e 4 quartzos), e custa §e125 de cada primal§r.
+
+      Com a espada e as quatro peças infundidas com §dExcubitor§r, os Eldritch vão aprender a
+      ter medo de você. Lizbeth ficaria orgulhosa — e eu também!
+    tasks:
+      - get: [thaumrev:itemWardenHelm, thaumrev:itemWardenChest, thaumrev:itemWardenLegs, thaumrev:itemWardenBoots]
+    rewards:
+      - xp: 12
+      - kit: {name: "Kit do Guardião Táumico", items: ["thaumrev:itemResource:2 x16", "thaumrev:itemResource:1 x4", "Thaumcraft:ItemShard:6 x8", "Thaumcraft:ItemResource:1 x8"]}
+      - loot: epico
+
+  - id: explorador_completo
+    title: "Explorador das Revelações"
+    type: milestone
+    deps: [armadura_guardiao, braseiro_almas, replicador, tanque_pensante]
+    icon: thaumrev:itemWardenAmulet
+    banner: "Explorador das Revelações"
+    subtitle: "Curiosidades e guardiões reunidos"
+    desc: |
+      Urnas sem fundo, um replicador de blocos, um tanque de cérebros que pesquisa por você,
+      um braseiro que segura o seu Warp e a armadura completa dos Guardiões. Que coleção!
+
+      Este Volume fecha aqui, mas ele conversa com tudo: as botas do meteoro e do cometa se
+      combinam bem com o Thaumic Boots, e a armadura dos Guardiões é uma ótima companheira
+      para as Terras Exteriores. O Selo Arcano está cada vez mais perto, Herói!
+    tasks:
+      - check
+    rewards:
+      - xp: 10
+      - loot: epico

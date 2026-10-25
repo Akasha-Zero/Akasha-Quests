@@ -1,0 +1,1674 @@
+chapter:
+  id: opencomputers
+  title: "OpenComputers"
+  prefix: ""
+  order: 360
+  icon: OpenComputers:case1
+  desc: |
+    §bO Volume das Máquinas Pensantes.§r Transistores, CPUs, OpenOS e Lua: monte o seu
+    primeiro computador, programe robôs e drones, conecte redes e ligue servidores em rack.
+    (OpenComputers 1.12.61-GTNH)
+
+quests:
+  # ======================================================================
+  # FASE 0 — DO BARRO AO CHIP
+  # ======================================================================
+  - id: placa_crua
+    title: "Placa de Circuito Crua"
+    type: main
+    icon: OpenComputers:item:30
+    desc: |
+      Sabe qual é a página do Registro que mais me deixa nostálgica? A das máquinas que
+      pensam. Os Antigos conversavam com elas em linhas de código... e tudo começa com barro.
+      Juro!
+
+      Um lingote de ouro, uma argila e um corante verde, misturados na bancada, rendem
+      §e8 Placas de Circuito Cruas§r. É a base de praticamente todo componente do
+      OpenComputers.
+    tasks:
+      - get: OpenComputers:item:30 x8
+    rewards:
+      - xp: 4
+      - choice: [minecraft:gold_ingot x4, minecraft:clay_ball x16, minecraft:redstone x16]
+
+  - id: placa_impressa
+    title: "Placa de Circuito Impresso"
+    type: main
+    deps: [placa_crua]
+    icon: OpenComputers:item:32
+    desc: |
+      Leve as Placas Cruas à fornalha: cada uma vira uma §ePlaca de Circuito Impresso (PCB)§r.
+      Gabinetes, monitores, cartões, aprimoramentos... quase tudo leva uma PCB.
+
+      §aDica:§r deixe uma fornalha só para isso. Você vai precisar de dezenas delas ao longo
+      do capítulo.
+    tasks:
+      - get: OpenComputers:item:32 x8
+    rewards:
+      - xp: 4
+      - choice: [minecraft:coal x16, minecraft:gold_ingot x4, minecraft:clay_ball x16]
+
+  - id: transistor
+    title: "Transistor"
+    type: main
+    deps: [placa_crua]
+    icon: OpenComputers:item:23
+    desc: |
+      O átomo da computação! O §eTransistor§r leva 3 ferros, 2 pepitas de ouro, papel e uma
+      redstone — e rende §e8§r de uma vez.
+
+      Ele entra em chips, EEPROMs, capacitores, ULAs, Unidades de Controle... Faça um bom
+      estoque. (Um computador de verdade tem bilhões deles. O seu vai ter uns trinta. Já é
+      um começo!)
+    tasks:
+      - get: OpenComputers:item:23 x8
+    rewards:
+      - xp: 4
+      - choice: [minecraft:iron_ingot x8, minecraft:paper x16, minecraft:gold_nugget x16]
+
+  - id: circuito1
+    title: "Circuito Integrado (Nível 1)"
+    type: main
+    deps: [transistor]
+    icon: OpenComputers:item:24
+    desc: |
+      Um Transistor cercado de 6 pepitas de ferro e 2 redstones vira §e8 Circuitos Integrados
+      de Nível 1§r — os "microchips" do mod.
+
+      Repare no padrão que vai se repetir em todo o capítulo: §eNível 1 = ferro, Nível 2 =
+      ouro, Nível 3 = diamante§r. O Nível 2 usa pepitas de ouro e rende 4; o Nível 3 usa
+      Chips de Diamante e rende 2.
+    tasks:
+      - get: OpenComputers:item:24 x8
+    rewards:
+      - xp: 4
+      - choice: [minecraft:redstone x16, minecraft:iron_ingot x6, OpenComputers:item:23 x4]
+
+  - id: manual
+    title: "O Manual do OpenComputers"
+    type: main
+    deps: [circuito1]
+    icon: OpenComputers:item:98
+    desc: |
+      Antes de qualquer coisa: leia o manual! Sério, ele é ótimo (e eu sou uma bibliotecária,
+      eu sei reconhecer um bom livro).
+
+      Um livro + um Circuito Integrado (Nível 1) = §eManual do OpenComputers§r. Ele funciona
+      como uma wiki: clique nos links, use o botão direito para voltar. §aTruque:§r com
+      Shift + clique direito num bloco do mod, o manual abre direto na página dele.
+
+      E guarde-o bem: ele também é ingrediente do §eEEPROM Lua BIOS§r e do §edisquete do
+      OpenOS§r.
+    tasks:
+      - get: OpenComputers:item:98
+    rewards:
+      - xp: 4
+      - choice: [minecraft:book x4, OpenComputers:item:24 x4, minecraft:paper x16]
+
+  - id: chave_fenda
+    title: "Chave de Fenda-Boca"
+    type: optional
+    deps: [circuito1]
+    icon: OpenComputers:wrench
+    desc: |
+      A §eChave de Fenda-Boca§r ("Scrench", em inglês — metade chave de fenda, metade chave
+      inglesa, nenhuma metade confortável). Gira a maioria dos blocos do mod e de outros mods
+      compatíveis com chaves, inverte o Carregador e configura os lados do Divisor de Rede.
+    tasks:
+      - get: OpenComputers:wrench
+    rewards:
+      - loot: comum
+
+  - id: analisador
+    title: "Analisador"
+    type: normal
+    deps: [placa_impressa, transistor]
+    icon: OpenComputers:item
+    desc: |
+      O melhor amigo de quem monta computador. O §eAnalisador§r (tocha de redstone,
+      transistor, PCB e pepitas de ouro), usado com Shift num bloco do mod, mostra no chat o
+      endereço do componente, a energia da rede e — o mais importante — §eo erro que fez um
+      computador travar§r.
+
+      §aTruque:§r Ctrl + clique direito copia o endereço do componente para a área de
+      transferência.
+    tasks:
+      - get: OpenComputers:item
+    rewards:
+      - xp: 2
+      - item: minecraft:gold_nugget x9
+
+  - id: circuito2
+    title: "Circuito Integrado (Nível 2)"
+    type: normal
+    deps: [circuito1]
+    icon: OpenComputers:item:25
+    desc: |
+      Transistor + 6 pepitas de ouro + 2 redstones = §e4 Circuitos Integrados (Nível 2)§r.
+      Eles destravam o Gabinete Nível 2, o Montador Eletrônico, o Geonalizador, cartões de
+      rede sem fio e muito mais.
+    tasks:
+      - get: OpenComputers:item:25 x4
+    rewards:
+      - xp: 2
+      - item: minecraft:gold_nugget x12
+
+  - id: chip_diamante
+    title: "Chip de Diamante"
+    type: normal
+    deps: [circuito1]
+    icon: OpenComputers:item:111
+    desc: |
+      Primeiro faça um §eFio de Corte§r (2 gravetos e uma pepita de ferro). Depois, combine o
+      fio com um diamante na bancada: o diamante é fatiado em §e6 Chips de Diamante§r.
+
+      Eles são o material do Nível 3: CPU, RAM, barramentos e circuitos de topo.
+    tasks:
+      - get: OpenComputers:item:111 x6
+    rewards:
+      - xp: 2
+      - item: OpenComputers:item:17
+
+  - id: circuito3
+    title: "Circuito Integrado (Nível 3)"
+    type: normal
+    deps: [chip_diamante, circuito2]
+    icon: OpenComputers:item:26
+    desc: |
+      Transistor + 6 Chips de Diamante + 2 redstones = §e2 Circuitos Integrados (Nível 3)§r.
+      É caro, mas é o que faz um Gabinete Nível 3, um Monitor colorido de alta resolução ou
+      um Aprimoramento Solar.
+    tasks:
+      - get: OpenComputers:item:26 x2
+    rewards:
+      - xp: 3
+      - item: minecraft:diamond
+
+  - id: ula
+    title: "Unidade Lógica Aritmética"
+    type: main
+    deps: [circuito1]
+    icon: OpenComputers:item:27
+    desc: |
+      A parte que faz as contas! A §eULA§r leva 3 transistores, um Circuito Nível 1, redstone
+      e pepitas de ferro. Ela entra em toda CPU, toda Placa de Vídeo e no Cartão de Dados.
+    tasks:
+      - get: OpenComputers:item:27
+    rewards:
+      - xp: 4
+      - choice: [OpenComputers:item:23 x4, minecraft:iron_ingot x4, minecraft:redstone x16]
+
+  - id: uc
+    title: "Unidade de Controle"
+    type: main
+    deps: [ula]
+    icon: OpenComputers:item:28
+    desc: |
+      A ULA faz contas; a §eUnidade de Controle (UC)§r decide o que fazer com elas. Leva 3
+      transistores, redstone, pepitas de ouro e — repare — um §erelógio§r no centro. Faz
+      sentido: todo processador tem um "clock".
+
+      ULA + UC + Circuitos = CPU. Estamos quase lá!
+    tasks:
+      - get: OpenComputers:item:28
+    rewards:
+      - xp: 4
+      - choice: [minecraft:gold_ingot x4, OpenComputers:item:23 x4, minecraft:clock]
+
+  - id: base_cartao
+    title: "Base de Cartão"
+    type: main
+    deps: [placa_impressa]
+    icon: OpenComputers:item:33
+    desc: |
+      Toda placa de expansão — vídeo, rede, redstone, internet, dados — começa numa §eBase de
+      Cartão§r (PCB, pepitas de ferro e uma de ouro). Faça algumas: o próximo grande passo é
+      a Placa de Vídeo.
+    tasks:
+      - get: OpenComputers:item:33 x2
+    rewards:
+      - xp: 4
+      - choice: [OpenComputers:item:32 x4, minecraft:iron_ingot x4, minecraft:gold_nugget x9]
+
+  # ======================================================================
+  # FASE 1 — O PRIMEIRO COMPUTADOR
+  # ======================================================================
+  - id: gabinete1
+    title: "Gabinete (Nível 1)"
+    type: main
+    deps: [circuito1, placa_impressa]
+    icon: OpenComputers:case1
+    desc: |
+      Aqui mora o computador. O §eGabinete (Nível 1)§r — ferro, Circuito Nível 1, barras de
+      ferro, um baú e uma PCB — tem slots para: 2 cartões de Nível 1, 1 CPU de Nível 1,
+      2 memórias de Nível 1 e 1 disco rígido de Nível 1.
+
+      O numeral romano no cantinho de cada slot mostra o nível máximo aceito. Vazio, ele só
+      apita e reclama. Vamos enchê-lo!
+    tasks:
+      - get: OpenComputers:case1
+    rewards:
+      - xp: 4
+      - choice: [minecraft:iron_ingot x8, OpenComputers:item:32 x2, minecraft:chest x2]
+
+  - id: cpu1
+    title: "CPU (Nível 1)"
+    type: main
+    deps: [uc, gabinete1]
+    icon: OpenComputers:item:29
+    desc: |
+      O cérebro! A §eUnidade Central de Processamento (Nível 1)§r junta ULA, UC, 2 Circuitos
+      Nível 1, redstone e pepitas de ferro.
+
+      Ela define quantos componentes o computador consegue usar ao mesmo tempo:
+      §eNível 1 = 8 · Nível 2 = 12 · Nível 3 = 16§r. CPUs melhores também rodam mais rápido.
+      Passou do limite? O computador nem liga.
+    tasks:
+      - get: OpenComputers:item:29
+    rewards:
+      - xp: 4
+      - choice: [OpenComputers:item:24 x4, minecraft:redstone x16, minecraft:iron_ingot x6]
+
+  - id: ram1
+    title: "Memória (Nível 1)"
+    type: main
+    deps: [gabinete1]
+    icon: OpenComputers:item:1
+    desc: |
+      Sem memória, nada de programa. A §eMemória (Nível 1)§r (2 Circuitos Nível 1, uma pepita
+      de ferro e uma PCB) dá 192 KB para a arquitetura Lua.
+
+      O manual é claro: para rodar o §eOpenOS§r, use pelo menos §eduas§r memórias de Nível 1.
+      Faça duas!
+    tasks:
+      - get: OpenComputers:item:1 x2
+    rewards:
+      - xp: 4
+      - choice: [OpenComputers:item:24 x4, OpenComputers:item:32 x2, minecraft:iron_ingot x4]
+
+  - id: eeprom
+    title: "EEPROM (Lua BIOS)"
+    type: main
+    deps: [manual, cpu1]
+    icon: OpenComputers:eeprom
+    desc: |
+      Liguei o computador e... "no bios found; install configured EEPROM". Calma, é normal!
+
+      A §eEEPROM§r guarda o código que dá a partida no computador. Faça uma EEPROM em branco
+      (transistor, Circuito Nível 1, papel, pepitas de ouro e tocha de redstone) e depois
+      §ecombine-a com o Manual§r na bancada: sai uma §eEEPROM (Lua BIOS)§r já configurada.
+      O manual volta para você.
+
+      Coloque a Lua BIOS no slot de EEPROM do gabinete.
+    tasks:
+      - get: OpenComputers:eeprom
+    rewards:
+      - xp: 4
+      - choice: [minecraft:gold_nugget x9, OpenComputers:item:23 x4, minecraft:redstone_torch x8]
+
+  - id: disquete_openos
+    title: "O Disquete do OpenOS"
+    type: main
+    deps: [eeprom]
+    icon: OpenComputers:item:4
+    desc: |
+      Próximo erro: "no bootable medium found". O BIOS funciona, mas não tem sistema para
+      iniciar.
+
+      Faça um §eDisquete§r (Prato do Disco, papel, pepitas de ferro e uma alavanca) e combine
+      com o §eManual§r na bancada: ele vira o disquete do §eOpenOS§r, o sistema operacional
+      do mod. (O disquete do OpenOS é somente leitura.)
+
+      §aCuriosidade:§r existem outros disquetes com programas, como o gerenciador de pacotes
+      OPPM, escondidos em baús de masmorras.
+    tasks:
+      - get: OpenComputers:item:4
+    rewards:
+      - xp: 4
+      - choice: [minecraft:paper x16, minecraft:iron_ingot x4, minecraft:lever x4]
+
+  - id: unidade_disco
+    title: "Unidade de Disco"
+    type: main
+    deps: [disquete_openos]
+    icon: OpenComputers:diskDrive
+    desc: |
+      Os Gabinetes de Nível 1 e 2 não têm entrada para disquete. A §eUnidade de Disco§r
+      (ferro, Circuito Nível 1, pistão, graveto e PCB) resolve: coloque-a encostada no
+      gabinete (ou ligada por cabo) e insira o disquete.
+
+      §aAtalho:§r Shift + clique direito na unidade com o disquete na mão insere ou tira sem
+      abrir a interface.
+    tasks:
+      - get: OpenComputers:diskDrive
+    rewards:
+      - xp: 4
+      - choice: [minecraft:piston x2, minecraft:iron_ingot x6, OpenComputers:item:24 x4]
+
+  - id: placa_video1
+    title: "Placa de Vídeo (Nível 1)"
+    type: main
+    deps: [base_cartao, ula, ram1]
+    icon: OpenComputers:item:8
+    desc: |
+      O computador já pensa — agora precisa mostrar! A §ePlaca de Vídeo (Nível 1)§r leva um
+      Circuito Nível 1, uma ULA, uma Memória Nível 1 e a Base de Cartão.
+
+      A resolução e as cores dependem do §emenor§r nível entre placa e monitor: placa Nível 1
+      com monitor Nível 3 continua mostrando só o Nível 1.
+    tasks:
+      - get: OpenComputers:item:8
+    rewards:
+      - xp: 4
+      - choice: [OpenComputers:item:33 x1, OpenComputers:item:24 x4, minecraft:gold_nugget x9]
+
+  - id: monitor1
+    title: "Monitor (Nível 1)"
+    type: main
+    deps: [placa_video1]
+    icon: OpenComputers:screen1
+    desc: |
+      Ferro, redstone, vidro e um Circuito Nível 1 = §eMonitor (Nível 1)§r: 50×16 caracteres,
+      monocromático. Simples, mas suficiente para o seu primeiro "Olá, mundo".
+
+      Coloque-o encostado no gabinete (ou ligado por cabo). Monitores do mesmo nível, lado a
+      lado e virados para o mesmo lado, viram uma tela grande — o tamanho não muda a
+      resolução, só o visual.
+    tasks:
+      - get: OpenComputers:screen1
+    rewards:
+      - xp: 4
+      - choice: [minecraft:glass x8, minecraft:redstone x16, minecraft:iron_ingot x6]
+
+  - id: teclado
+    title: "Teclado"
+    type: main
+    deps: [monitor1]
+    icon: OpenComputers:keyboard
+    desc: |
+      Para digitar, um §eTeclado§r: 4 Grupos de Botões (6 botões cada), Setas do Teclado
+      (4 botões) e um Teclado Numérico (9 botões). É muito botão de pedra, eu sei!
+
+      O teclado precisa ficar §eencostado no monitor§r: em cima, do lado ou na frente,
+      virado para ele. Se ao clicar no teclado a tela abrir, está conectado.
+    tasks:
+      - get: OpenComputers:keyboard
+    rewards:
+      - xp: 4
+      - choice: [minecraft:stone_button x16, minecraft:stone x32, minecraft:redstone x8]
+
+  - id: disco_rigido1
+    title: "Disco Rígido (Nível 1)"
+    type: main
+    deps: [ram1]
+    icon: OpenComputers:item:5
+    desc: |
+      O disquete do OpenOS é somente leitura. Para salvar os seus próprios programas, você
+      precisa de um §eDisco Rígido (Nível 1)§r — 1 MB! (Os de Nível 2 e 3 têm 2 e 4 MB.)
+
+      Receita: 3 Pratos do Disco, 2 Circuitos Nível 1, ferro, pistão e PCB.
+    tasks:
+      - get: OpenComputers:item:5
+    rewards:
+      - xp: 4
+      - choice: [OpenComputers:item:19 x3, OpenComputers:item:24 x4, minecraft:piston x2]
+
+  - id: energia_oc
+    title: "Energia para Pensar"
+    type: info
+    deps: [gabinete1]
+    icon: OpenComputers:powerConverter
+    desc: |
+      Computador sem energia só apita. O OpenComputers usa uma energia interna própria, mas
+      §eaceita a energia dos outros mods§r: RF, EU do IC2, AE2, Galacticraft...
+
+      §e• Ligação direta:§r vários blocos do mod aceitam energia de outros mods direto — o
+      tooltip mostra a "velocidade de conversão" de quem aceita.
+      §e• Conversor de Energia:§r a forma mais rápida de converter energia externa. Ideal para
+      alimentar o Montador e o Carregador.
+      §e• Capacitador:§r guarda energia na rede. Vários encostados (até 2 blocos de distância)
+      ganham bônus de capacidade.
+
+      Dentro da mesma sub-rede, a energia passa instantaneamente pelos cabos.
+    tasks:
+      - check
+    rewards:
+      - xp: 1
+
+  - id: conversor_energia
+    title: "Conversor de Energia"
+    type: normal
+    deps: [energia_oc]
+    icon: OpenComputers:powerConverter
+    desc: |
+      Ferro, Cabo, ouro, Circuito Nível 1 e PCB = §eConversor de Energia§r. Encoste-o num
+      cabo de RF ou EU e na rede do computador: ele traduz tudo para a energia do
+      OpenComputers. Um computador simples talvez nem precise, mas o Montador agradece.
+    tasks:
+      - get: OpenComputers:powerConverter
+    rewards:
+      - xp: 2
+      - item: minecraft:gold_ingot x2
+
+  - id: capacitador
+    title: "Capacitador"
+    type: normal
+    deps: [energia_oc]
+    icon: OpenComputers:capacitor
+    desc: |
+      O §eCapacitador§r (ferro, transistor, pepitas de ouro, papel e PCB) é a "bateria" da
+      rede. Ele segura picos de consumo — montar um robô ou carregar um drone gasta muito de
+      uma vez.
+
+      §aDica:§r coloque vários juntos: eles ganham capacidade extra por vizinhança. Existe até
+      um §eCapacitador com Tapete§r (tapete + capacitador) que gera um pouco de energia quando
+      há pelo menos duas ovelhas (ou duas jaguatiricas) por perto. Fofo e útil!
+    tasks:
+      - get: OpenComputers:capacitor
+    rewards:
+      - xp: 2
+      - item: OpenComputers:item:23 x4
+
+  - id: cabo
+    title: "Cabos"
+    type: normal
+    deps: [circuito1]
+    icon: OpenComputers:cable
+    desc: |
+      Uma redstone cercada de 4 pepitas de ferro = §e4 Cabos§r. Eles ligam gabinete, monitor,
+      unidade de disco e periféricos à distância (blocos encostados já se conectam sozinhos).
+
+      Pinte os cabos com corante: cabos coloridos só se ligam aos da mesma cor ou aos
+      cinza-claro (o padrão). Ótimo para separar redes lado a lado.
+    tasks:
+      - get: OpenComputers:cable x8
+    rewards:
+      - xp: 2
+      - item: minecraft:redstone x8
+
+  - id: primeiro_computador
+    title: "Olá, Mundo!"
+    type: milestone
+    deps: [cpu1, eeprom, unidade_disco, teclado, disco_rigido1]
+    icon: OpenComputers:screen1
+    banner: "Olá, Mundo!"
+    subtitle: "O primeiro computador desperta"
+    desc: |
+      Gabinete com CPU, duas memórias, Placa de Vídeo, EEPROM Lua BIOS e um disco rígido.
+      Unidade de disco com o OpenOS. Monitor e teclado. Aperte o botão de ligar...
+
+      ...e o cursor pisca. Herói, ele está §evivo§r! Eu juro que senti um arrepio no meu
+      encadernamento.
+
+      Se algo der errado, o §eAnalisador§r (Shift + clique no gabinete) mostra o erro. Os
+      bipes também ajudam: cada combinação indica uma peça faltando.
+
+      Próximo passo, logo ali: instalar o OpenOS no disco rígido. Depois disso, o mundo das
+      máquinas pensantes é seu.
+    tasks:
+      - get: [OpenComputers:case1, OpenComputers:item:29, OpenComputers:item:1 x2, OpenComputers:eeprom, OpenComputers:item:8, OpenComputers:screen1, OpenComputers:keyboard, OpenComputers:item:5]
+    rewards:
+      - xp: 8
+      - kit: {name: "Kit do Programador Iniciante", items: [OpenComputers:item:32 x8, OpenComputers:item:23 x16, OpenComputers:item:24 x8, OpenComputers:cable x16, OpenComputers:item:33 x2]}
+      - loot: raro
+
+  - id: instalar_openos
+    title: "Instalando o OpenOS"
+    type: info
+    deps: [primeiro_computador]
+    icon: OpenComputers:item:4
+    desc: |
+      Com o computador ligado pelo disquete, digite §einstall§r e siga as instruções na tela:
+      o OpenOS é copiado para o disco rígido (que é gravável). Reinicie e o disquete já pode
+      sair.
+
+      Alguns comandos para começar:
+      §e• lua§r — abre o interpretador Lua; ótimo para testar comandos.
+      §e• edit arquivo.lua§r — editor de texto.
+      §e• arquivo§r — roda o script "arquivo.lua".
+      §e• ls, cd, cp, rm, mkdir§r — como num terminal de verdade.
+      §e• components§r — lista os componentes conectados.
+
+      O manual tem uma página inteira sobre Lua. Não tenha medo de errar: computador não
+      explode (diferente das máquinas do IC2).
+    tasks:
+      - check
+    rewards:
+      - xp: 1
+
+  # ======================================================================
+  # FASE 2 — COMPUTADORES MELHORES
+  # ======================================================================
+  - id: gabinete2
+    title: "Gabinete (Nível 2)"
+    type: normal
+    deps: [primeiro_computador, circuito2]
+    icon: OpenComputers:case2
+    desc: |
+      Agora com ouro! O §eGabinete (Nível 2)§r aceita 1 cartão de Nível 1 e 1 de Nível 2,
+      CPU de Nível 2, 2 memórias de Nível 2 e dois discos (um de Nível 1 e um de Nível 2).
+      Mais componentes, mais memória, mais possibilidades.
+    tasks:
+      - get: OpenComputers:case2
+    rewards:
+      - xp: 3
+      - item: minecraft:gold_ingot x4
+
+  - id: cpu2
+    title: "CPU (Nível 2)"
+    type: normal
+    deps: [gabinete2]
+    icon: OpenComputers:item:42
+    desc: |
+      A §eCPU (Nível 2)§r usa pepitas de ouro e Circuitos Nível 2. Suporta §e12 componentes§r
+      e roda mais rápido. Para quem quer ligar monitor, teclado, unidade de disco, adaptadores
+      e cartões ao mesmo tempo, ela é obrigatória.
+    tasks:
+      - get: OpenComputers:item:42
+    rewards:
+      - xp: 3
+      - item: OpenComputers:item:25 x2
+
+  - id: ram2
+    title: "Memória (Nível 2)"
+    type: normal
+    deps: [gabinete2]
+    icon: OpenComputers:item:2
+    desc: |
+      As memórias vêm em seis graus: 1 (192 KB), 1.5 (256 KB), 2 (384 KB), 2.5 (512 KB),
+      3 (768 KB) e 3.5 (1024 KB). Os "meios-níveis" contam como o nível inteiro de baixo
+      para os slots.
+
+      Faça §e2 Memórias (Nível 2)§r (2 Circuitos Nível 2 e uma pepita de ferro na PCB).
+    tasks:
+      - get: OpenComputers:item:2 x2
+    rewards:
+      - xp: 3
+      - item: OpenComputers:item:25 x2
+
+  - id: disco_rigido2
+    title: "Disco Rígido (Nível 2)"
+    type: optional
+    deps: [gabinete2]
+    icon: OpenComputers:item:6
+    desc: |
+      2 MB de espaço com ouro e Circuitos Nível 2. Todos os discos têm a mesma velocidade —
+      só muda o espaço. Para programas grandes ou bibliotecas baixadas, vale a pena.
+    tasks:
+      - get: OpenComputers:item:6
+    rewards:
+      - loot: comum
+
+  - id: placa_video2
+    title: "Placa de Vídeo (Nível 2)"
+    type: normal
+    deps: [ram2]
+    icon: OpenComputers:item:9
+    desc: |
+      Circuito Nível 2 + ULA + Memória Nível 2 na Base de Cartão = §ePlaca de Vídeo (Nível 2)§r.
+      Com um monitor Nível 2, você ganha 80×25 caracteres e 16 cores (4 bits). Além disso,
+      placas melhores executam mais operações de desenho por tick.
+    tasks:
+      - get: OpenComputers:item:9
+    rewards:
+      - xp: 3
+      - item: OpenComputers:item:33
+
+  - id: monitor2
+    title: "Monitor (Nível 2)"
+    type: normal
+    deps: [placa_video2]
+    icon: OpenComputers:screen2
+    desc: |
+      Ouro, vidro, Circuito Nível 2 e corantes vermelho, verde e azul = §eMonitor (Nível 2)§r:
+      80×25, 16 cores e — novidade — §esuporte a mouse§r! Clique pela interface do monitor ou
+      com Shift no monitor no mundo.
+
+      §aDica:§r pintar monitores com corante controla quais se juntam numa tela grande.
+    tasks:
+      - get: OpenComputers:screen2
+    rewards:
+      - xp: 3
+      - item: minecraft:glass x8
+
+  - id: gabinete3
+    title: "Gabinete (Nível 3)"
+    type: main
+    deps: [gabinete2, circuito3]
+    icon: OpenComputers:case3
+    desc: |
+      O topo de linha! O §eGabinete (Nível 3)§r (diamantes, Circuito Nível 3) aceita 1 cartão
+      de Nível 3 e 2 de Nível 2, CPU de Nível 3, 2 memórias de Nível 3, discos de Nível 2 e 3
+      — e tem §eentrada de disquete embutida§r. Adeus, Unidade de Disco externa!
+
+      Ele também é a melhor base para um robô no Montador.
+    tasks:
+      - get: OpenComputers:case3
+    rewards:
+      - xp: 4
+      - choice: [minecraft:diamond x2, OpenComputers:item:26 x1, OpenComputers:item:111 x6]
+
+  - id: cpu3
+    title: "CPU (Nível 3)"
+    type: normal
+    deps: [gabinete3]
+    icon: OpenComputers:item:43
+    desc: |
+      Chips de Diamante + Circuitos Nível 3 = §eCPU (Nível 3)§r: §e16 componentes§r e a maior
+      velocidade de execução. Ela também entra na receita do Raid e da APU de
+      Nível 2.
+    tasks:
+      - get: OpenComputers:item:43
+    rewards:
+      - xp: 3
+      - item: OpenComputers:item:111 x3
+
+  - id: ram3
+    title: "Memória (Nível 3)"
+    type: normal
+    deps: [gabinete3]
+    icon: OpenComputers:item:38
+    desc: |
+      §eMemória (Nível 3)§r: 768 KB por pente (2 Circuitos Nível 3 e uma pepita de ferro). A
+      3.5, com 1 MB, leva ainda mais circuitos — é a que vai nos servidores mais pesados.
+    tasks:
+      - one_of: [OpenComputers:item:38, OpenComputers:item:39]
+    rewards:
+      - xp: 3
+      - item: OpenComputers:item:26
+
+  - id: disco_rigido3
+    title: "Disco Rígido (Nível 3)"
+    type: optional
+    deps: [gabinete3]
+    icon: OpenComputers:item:7
+    desc: |
+      4 MB com diamantes e Circuitos Nível 3. Três discos juntos num §eRaid§r somam o espaço
+      de todos — mas cuidado, colocar um disco no Raid apaga o conteúdo dele.
+    tasks:
+      - get: OpenComputers:item:7
+    rewards:
+      - loot: comum
+
+  - id: placa_video3
+    title: "Placa de Vídeo (Nível 3)"
+    type: normal
+    deps: [ram3]
+    icon: OpenComputers:item:10
+    desc: |
+      Circuito Nível 3 + ULA + Memória Nível 3 = §ePlaca de Vídeo (Nível 3)§r. Junto com o
+      Monitor Nível 3, ela libera 160×50 caracteres e 256 cores. Hora de desenhar painéis
+      bonitos para a sua base!
+    tasks:
+      - get: OpenComputers:item:10
+    rewards:
+      - xp: 3
+      - item: OpenComputers:item:33
+
+  - id: monitor3
+    title: "Monitor (Nível 3)"
+    type: normal
+    deps: [placa_video3, monitor2]
+    icon: OpenComputers:screen3
+    desc: |
+      Obsidiana, pó de glowstone, vidro e um Circuito Nível 3 = §eMonitor (Nível 3)§r:
+      160×50 e 8 bits de cor. Ele detecta cliques com mais precisão (até a metade de um
+      caractere, se ativado pelo programa). Faça uma parede inteira deles!
+    tasks:
+      - get: OpenComputers:screen3
+    rewards:
+      - xp: 3
+      - item: minecraft:glowstone_dust x16
+
+  - id: apu
+    title: "Unidade de Processamento Acelerado"
+    type: optional
+    deps: [cpu2, placa_video1]
+    icon: OpenComputers:item:101
+    desc: |
+      CPU e Placa de Vídeo num chip só: a §eAPU§r! Ela libera um slot de cartão. Em troca é um
+      pouco mais lenta: a APU Nível 1 controla tantos componentes quanto uma CPU Nível 2, mas
+      roda como uma CPU Nível 1 e desenha como uma placa Nível 1. Faça qualquer APU.
+    tasks:
+      - one_of: [OpenComputers:item:101, OpenComputers:item:102]
+    rewards:
+      - loot: incomum
+
+  - id: raid
+    title: "Raid"
+    type: optional
+    deps: [cpu3, disco_rigido2]
+    icon: OpenComputers:raid
+    desc: |
+      O §eRaid§r junta três discos rígidos num único sistema de arquivos (com a soma das
+      capacidades). §cAtenção:§r colocar um disco apaga o conteúdo dele, e tirar um disco de
+      um Raid completo apaga o Raid inteiro. Quebrar o bloco, porém, guarda tudo — dá para
+      mudá-lo de lugar sem medo.
+    tasks:
+      - get: OpenComputers:raid
+    rewards:
+      - loot: incomum
+
+  - id: estacao_trabalho
+    title: "Estação de Trabalho"
+    type: milestone
+    deps: [gabinete3, cpu3, monitor3, placa_video3]
+    icon: OpenComputers:case3
+    banner: "Estação de Trabalho"
+    subtitle: "Diamante, cor e velocidade"
+    desc: |
+      Um Gabinete de diamante, CPU de 16 componentes, monitor de 256 cores. Herói, você
+      montou uma §eestação de trabalho§r de verdade!
+
+      Com ela dá para:
+      §e• Ligar muitos periféricos§r (adaptadores, transpositores, geonalizador...) sem
+      estourar o limite de componentes.
+      §e• Desenhar interfaces§r coloridas com mouse no Monitor Nível 3.
+      §e• Instalar o OpenOS§r em robôs e drones pela rede ou por disquete.
+
+      Agora vamos tirar o computador da mesa e colocá-lo para mexer no mundo.
+    tasks:
+      - get: [OpenComputers:case3, OpenComputers:item:43, OpenComputers:screen3, OpenComputers:item:10]
+    rewards:
+      - xp: 8
+      - kit: {name: "Kit do Engenheiro de Hardware", items: [OpenComputers:item:26 x2, OpenComputers:item:111 x6, OpenComputers:item:32 x8, OpenComputers:item:23 x16, minecraft:diamond x2]}
+      - loot: raro
+
+  # ======================================================================
+  # FASE 3 — O COMPUTADOR E O MUNDO
+  # ======================================================================
+  - id: cartao_redstone1
+    title: "Cartão de Redstone (Nível 1)"
+    type: main
+    deps: [primeiro_computador]
+    icon: OpenComputers:item:66
+    desc: |
+      O primeiro "braço" do computador. O §eCartão de Redstone (Nível 1)§r (tocha de
+      redstone, Circuito Nível 1 e Base de Cartão) lê e emite sinais de redstone analógicos
+      nos blocos encostados no gabinete.
+
+      §aCuidado com os lados:§r eles são relativos à frente do gabinete — olhando para a
+      frente dele, "direita" fica à sua esquerda. Teste com §ecomponent.redstone§r no Lua.
+    tasks:
+      - get: OpenComputers:item:66
+    rewards:
+      - xp: 4
+      - choice: [minecraft:redstone x16, minecraft:redstone_torch x8, minecraft:repeater x4]
+
+  - id: cartao_redstone2
+    title: "Cartão de Redstone (Nível 2)"
+    type: optional
+    deps: [cartao_redstone1, circuito2]
+    icon: OpenComputers:item:12
+    desc: |
+      Bloco de redstone, pérola do Fim e Circuito Nível 2 = §eCartão de Redstone (Nível 2)§r.
+      Ele conversa com sistemas de §eredstone agrupada§r de outros mods — como a §eRedNet do
+      MineFactory Reloaded§r — e com redstone sem fio compatível. Seu CRP vai ganhar um
+      amigo que fala Lua!
+    tasks:
+      - get: OpenComputers:item:12
+    rewards:
+      - loot: incomum
+
+  - id: es_redstone
+    title: "E/S de Redstone"
+    type: normal
+    deps: [cartao_redstone1, circuito3]
+    icon: OpenComputers:redstone
+    desc: |
+      O §eBloco de E/S de Redstone§r faz o trabalho de um Cartão de Redstone à distância
+      (ligado por cabo). Ele lê e emite sinais analógicos e agrupados, usando as direções do
+      mundo (norte, leste...). Também pode "acordar" computadores quando um sinal passa de
+      certo valor — perfeito para automação.
+    tasks:
+      - get: OpenComputers:redstone
+    rewards:
+      - xp: 3
+      - item: minecraft:redstone_block x2
+
+  - id: adaptador
+    title: "Adaptador"
+    type: main
+    deps: [primeiro_computador, cabo]
+    icon: OpenComputers:adapter
+    desc: |
+      Esta é a ponte com o resto do Registro! O §eAdaptador§r (ferro, cabos, Circuito Nível 1
+      e PCB) faz os blocos encostados nele — do vanilla e de muitos mods — aparecerem como
+      componentes no computador.
+
+      Ler a carga de uma Célula de Energia, o conteúdo de um tanque, o estado de um reator...
+      O slot do Adaptador ainda aceita alguns aprimoramentos, como o Controlador de
+      Inventário. Use §ecomponents§r no OpenOS para ver o que apareceu.
+    tasks:
+      - get: OpenComputers:adapter
+    rewards:
+      - xp: 4
+      - choice: [OpenComputers:cable x16, OpenComputers:item:24 x4, minecraft:iron_ingot x8]
+
+  - id: controlador_inventario
+    title: "Controlador de Inventário"
+    type: normal
+    deps: [adaptador, analisador, circuito2]
+    icon: OpenComputers:item:61
+    desc: |
+      O §eAprimoramento de Controlador de Inventário§r (ouro, Analisador, liberador, pistão,
+      Circuito Nível 2 e PCB) lê os detalhes de cada pilha de itens. Num Adaptador, ele inspeciona
+      o baú vizinho; num robô ou drone, também permite escolher slots exatos e trocar de
+      ferramenta sozinho.
+    tasks:
+      - get: OpenComputers:item:61
+    rewards:
+      - xp: 3
+      - item: minecraft:gold_ingot x4
+
+  - id: controlador_tanque
+    title: "Controlador de Tanque"
+    type: optional
+    deps: [controlador_inventario]
+    icon: OpenComputers:item:77
+    desc: |
+      O irmão líquido: o §eAprimoramento de Controlador de Tanque§r informa o conteúdo de
+      tanques vizinhos ao Adaptador, ou dá a robôs e drones controle fino sobre fluidos.
+    tasks:
+      - get: OpenComputers:item:77
+    rewards:
+      - loot: comum
+
+  - id: transpositor
+    title: "Transpositor"
+    type: normal
+    deps: [controlador_inventario, controlador_tanque]
+    icon: OpenComputers:transposer
+    desc: |
+      Um funil inteligente: o §eTranspositor§r move itens §ee fluidos§r entre os blocos
+      encostados nele, sob o comando do computador — e inspeciona o conteúdo deles. Ele não
+      tem inventário próprio. A receita (com os dois Controladores) rende 4.
+
+      Classificador de itens programável? Sim. Gerente de fornalhas? Também.
+    tasks:
+      - get: OpenComputers:transposer
+    rewards:
+      - xp: 3
+      - item: minecraft:hopper x2
+
+  - id: geonalizador
+    title: "Geonalizador"
+    type: main
+    deps: [adaptador, circuito2]
+    icon: OpenComputers:geolyzer
+    desc: |
+      Um radar de rochas! O §eGeonalizador§r (ouro, bússola, 2 olhos do Fim, Circuito Nível 2
+      e PCB) permite ao computador escanear o terreno em volta e medir a §edureza aproximada§r
+      de cada bloco. Minérios costumam ser mais duros que terra e pedra...
+
+      Os resultados têm um pouco de "ruído"; escanear várias vezes dá mais precisão. Ele
+      também pode ser instalado em robôs e tablets. Junte com um projetor holográfico e veja
+      o subsolo em 3D!
+    tasks:
+      - get: OpenComputers:geolyzer
+    rewards:
+      - xp: 4
+      - choice: [minecraft:ender_eye x2, minecraft:gold_ingot x4, minecraft:compass]
+
+  - id: sensor_movimento
+    title: "Sensor de Movimento"
+    type: optional
+    deps: [cpu2]
+    icon: OpenComputers:motionSensor
+    desc: |
+      O §eSensor de Movimento§r (3 sensores de luz solar, uma CPU Nível 2, ouro e PCB) avisa o
+      computador quando uma criatura se move rápido demais num raio de 8 blocos, com linha de
+      visão. Alarme anti-Creeper programável!
+    tasks:
+      - get: OpenComputers:motionSensor
+    rewards:
+      - loot: comum
+
+  - id: holograma1
+    title: "Projetor Holográfico (Nível 1)"
+    type: normal
+    deps: [geonalizador, chip_diamante]
+    icon: OpenComputers:hologram1
+    desc: |
+      Agora é a minha parte favorita: o §eProjetor Holográfico§r! Ele exibe uma grade 3D de
+      "voxels" que o computador liga e desliga um a um. Mapas do terreno, gráficos, logotipos
+      girando...
+
+      Receita: Circuitos Nível 2, vidro, Chip de Diamante, PCBs, obsidiana e glowstone. Com a
+      chave, bata no topo ou na base para girar a imagem.
+    tasks:
+      - get: OpenComputers:hologram1
+    rewards:
+      - xp: 3
+      - item: minecraft:glowstone_dust x16
+
+  - id: holograma2
+    title: "Projetor Holográfico (Nível 2)"
+    type: optional
+    deps: [holograma1, circuito3]
+    icon: OpenComputers:hologram2
+    desc: |
+      Mesma resolução do Nível 1, mas com §etrês cores§r definidas por você. Leva diamante,
+      Circuitos Nível 3 e pó de blaze. Um mapa do subsolo com minérios coloridos? Eu já estou
+      chorando de emoção.
+    tasks:
+      - get: OpenComputers:hologram2
+    rewards:
+      - loot: incomum
+
+  - id: impressora_3d
+    title: "Impressora 3D"
+    type: optional
+    deps: [circuito3, cartao_internet]
+    icon: OpenComputers:printer
+    desc: |
+      A §eImpressora 3D§r imprime blocos de qualquer formato e textura, a partir de modelos
+      enviados pelo computador. Ela consome §eCamaleão§r (cascalho, redstone, carvão vegetal e
+      água rendem 16) e um §eCartucho de Tinta§r.
+
+      O jeito mais fácil: instale o OPPM e rode §eoppm install print3d-examples§r (precisa do
+      Cartão de Internet). Depois, §eprint3d arquivo.3dm§r.
+    tasks:
+      - get: [OpenComputers:printer, OpenComputers:item:96 x16, OpenComputers:item:95]
+    rewards:
+      - loot: incomum
+
+  - id: impressao_3d
+    title: "Minha Primeira Impressão"
+    type: optional
+    deps: [impressora_3d]
+    icon: OpenComputers:print
+    desc: |
+      Imprima qualquer coisa: uma estátua, um botão decorativo, uma placa com o seu nome. As
+      impressões podem receber pó de glowstone para brilhar e blocos de metal/gema para
+      ficarem mais "nobres" (confira as receitas no NEI). Mostre-me o resultado!
+    tasks:
+      - get: OpenComputers:print
+    rewards:
+      - loot: comum
+
+  - id: interweb
+    title: "Interweb"
+    type: normal
+    deps: [circuito1]
+    icon: OpenComputers:item:48
+    desc: |
+      Uma pérola do Fim cercada de linha = §eInterweb§r, uma "teia" que fala com tudo. É a
+      peça-chave do Cartão de Internet, dos Cartões Vinculados e do Ponto de Passagem.
+    tasks:
+      - get: OpenComputers:item:48
+    rewards:
+      - xp: 2
+      - item: minecraft:string x16
+
+  - id: cartao_internet
+    title: "Cartão de Internet"
+    type: optional
+    deps: [interweb, circuito2]
+    icon: OpenComputers:item:44
+    desc: |
+      O §eCartão de Internet§r dá ao computador acesso a requisições HTTP (e TCP, se o
+      servidor permitir). Ele já vem com programas como §ewget§r e §epastebin§r para baixar
+      scripts. Neste pack o HTTP está ligado. Com ele, o OPPM instala programas da comunidade
+      com um comando.
+    tasks:
+      - get: OpenComputers:item:44
+    rewards:
+      - loot: incomum
+
+  - id: cartao_dados
+    title: "Cartão de Dados"
+    type: optional
+    deps: [ula, base_cartao]
+    icon: OpenComputers:item:104
+    desc: |
+      O §eCartão de Dados§r faz contas pesadas que o Lua faria devagar: hashes, compressão
+      (inflate/deflate) e, nos níveis maiores, criptografia. Cada operação gasta um pouco de
+      energia. Faça o de Nível 1 (ULA + Circuito Nível 2 + pepita de ferro).
+    tasks:
+      - one_of: [OpenComputers:item:104, OpenComputers:item:105, OpenComputers:item:106]
+    rewards:
+      - loot: comum
+
+  # ======================================================================
+  # FASE 4 — REDES
+  # ======================================================================
+  - id: cartao_rede
+    title: "Cartão de Rede"
+    type: main
+    deps: [primeiro_computador, cabo]
+    icon: OpenComputers:item:11
+    desc: |
+      Um computador sozinho é solitário. O §eCartão de Rede§r (cabo, Circuito Nível 1 e Base
+      de Cartão) permite trocar mensagens com outros computadores da mesma rede de cabos —
+      para todos (broadcast) ou para um endereço específico.
+
+      É assim que um computador central dá ordens a vários outros, ou que robôs mandam
+      relatórios para casa.
+    tasks:
+      - get: OpenComputers:item:11
+    rewards:
+      - xp: 4
+      - choice: [OpenComputers:cable x16, OpenComputers:item:33 x2, minecraft:redstone x16]
+
+  - id: rele
+    title: "Relé"
+    type: normal
+    deps: [cartao_rede]
+    icon: OpenComputers:relay
+    desc: |
+      O §eRelé§r liga sub-redes deixando passar as §emensagens§r, mas não os componentes. Isso
+      evita que um computador "veja" o monitor do vizinho ou estoure o limite de componentes.
+      Com um cartão sem fio dentro, ele também retransmite mensagens pelo ar.
+
+      §cEvite ciclos§r (mensagens repetidas) e lembre: uma mensagem é retransmitida no máximo
+      5 vezes.
+    tasks:
+      - get: OpenComputers:relay
+    rewards:
+      - xp: 3
+      - item: OpenComputers:cable x8
+
+  - id: wifi1
+    title: "Cartão de Rede Sem Fio (Nível 1)"
+    type: normal
+    deps: [cartao_rede]
+    icon: OpenComputers:item:113
+    desc: |
+      Sem cabos! O §eCartão de Rede Sem Fio (Nível 1)§r — duas tochas de redstone e um
+      Circuito Nível 1 — alcança §e16 blocos§r neste pack. Pouco, mas suficiente para falar
+      com um robô na mesma sala.
+    tasks:
+      - get: OpenComputers:item:113
+    rewards:
+      - xp: 3
+      - item: minecraft:redstone_torch x8
+
+  - id: wifi2
+    title: "Cartão de Rede Sem Fio (Nível 2)"
+    type: normal
+    deps: [wifi1, circuito2]
+    icon: OpenComputers:item:13
+    desc: |
+      Pérola do Fim + Circuito Nível 2 = §eCartão de Rede Sem Fio (Nível 2)§r: alcance de até
+      §e400 blocos§r. Indispensável para drones, tablets, nanomáquinas e para o Rack. Quanto
+      maior o alcance usado, mais energia por mensagem.
+    tasks:
+      - get: OpenComputers:item:13
+    rewards:
+      - xp: 3
+      - item: minecraft:ender_pearl x2
+
+  - id: cartao_vinculado
+    title: "Cartões Vinculados"
+    type: optional
+    deps: [wifi2, interweb, circuito3]
+    icon: OpenComputers:item:51
+    desc: |
+      Dois Cartões de Rede, uma Interweb, olhos do Fim e Circuitos Nível 3 rendem um §epar de
+      Cartões Vinculados§r: uma linha direta entre os dois, com alcance §eilimitado e entre
+      dimensões§r. Um computador na base conversando com outro no Nether? Pode!
+    tasks:
+      - get: OpenComputers:item:51 x2
+    rewards:
+      - loot: incomum
+
+  - id: divisor_rede
+    title: "Divisor de Rede"
+    type: optional
+    deps: [rele]
+    icon: OpenComputers:netSplitter
+    desc: |
+      O §eDivisor de Rede§r liga sub-redes vizinhas §ecom§r acesso aos componentes, e cada lado
+      pode ser ligado ou desligado com a chave. Um sinal de redstone inverte todos os lados.
+      Use-o para conectar e desconectar partes da rede sob comando.
+    tasks:
+      - get: OpenComputers:netSplitter
+    rewards:
+      - loot: comum
+
+  - id: distribuidor_energia
+    title: "Distribuidor de Energia"
+    type: optional
+    deps: [capacitador, rele]
+    icon: OpenComputers:powerDistributor
+    desc: |
+      O §eDistribuidor de Energia§r equilibra a energia entre várias sub-redes sem expor os
+      componentes de uma para a outra. Um banco de Capacitadores alimentando vários
+      computadores separados? É ele quem faz isso.
+    tasks:
+      - get: OpenComputers:powerDistributor
+    rewards:
+      - loot: comum
+
+  - id: rede_computadores
+    title: "A Rede das Máquinas"
+    type: milestone
+    deps: [cartao_rede, rele, wifi2]
+    icon: OpenComputers:relay
+    banner: "A Rede das Máquinas"
+    subtitle: "Computadores que conversam"
+    desc: |
+      Cabos, relés, ondas pelo ar... os seus computadores agora §econversam entre si§r. Os
+      Antigos chamavam isso de "a teia", e eu passei séculos tentando lembrar como era.
+
+      Ideias para estrear a rede:
+      §e• Um servidor de arquivos§r que manda scripts para os outros computadores.
+      §e• Um painel central§r que recebe o estado de várias máquinas pelo Adaptador.
+      §e• Uma base de controle§r para robôs e drones via rede sem fio.
+
+      Próximo passo: dar pernas (e hélices) às suas máquinas pensantes.
+    tasks:
+      - get: [OpenComputers:item:11, OpenComputers:relay, OpenComputers:item:13]
+    rewards:
+      - xp: 8
+      - kit: {name: "Kit do Administrador de Redes", items: [OpenComputers:cable x32, OpenComputers:item:33 x4, OpenComputers:item:24 x8, OpenComputers:item:25 x4, minecraft:ender_pearl x4]}
+      - loot: raro
+
+  # ======================================================================
+  # FASE 5 — ROBÔS, DRONES E MICROCONTROLADORES
+  # ======================================================================
+  - id: montador
+    title: "Montador Eletrônico"
+    type: main
+    deps: [estacao_trabalho, conversor_energia]
+    icon: OpenComputers:assembler
+    desc: |
+      Chegou a hora de construir máquinas que se movem! O §eMontador Eletrônico§r (ferro,
+      bancada, pistões, Circuito Nível 2 e PCB) monta robôs, drones, microcontroladores e
+      tablets.
+
+      Coloque a peça-base (um Gabinete para robôs, uma Carcaça para os outros), encha os slots
+      com componentes e aperte "iniciar". §cMontar gasta muita energia§r — alimente com
+      Conversor e Capacitadores. E atenção: §edepois de montado, não dá para mudar§r. Confira
+      tudo antes!
+    tasks:
+      - get: OpenComputers:assembler
+    rewards:
+      - xp: 4
+      - choice: [OpenComputers:capacitor x2, minecraft:piston x4, OpenComputers:item:25 x4]
+
+  - id: complexidade
+    title: "Complexidade e Contêineres"
+    type: info
+    deps: [montador]
+    icon: OpenComputers:item:54
+    desc: |
+      O Montador tem um limite de §ecomplexidade§r, que depende do nível da peça-base. Cada
+      componente/aprimoramento soma o próprio nível: Nível 1 = 1, Nível 2 = 2, Nível 3 = 3.
+      §eContêineres§r (de cartão ou de aprimoramento) somam o dobro do nível.
+
+      Os contêineres criam slots no robô pronto, para trocar cartões e aprimoramentos depois
+      da montagem. Lembre-se também de dar ao robô um jeito de ter sistema: um disco rígido
+      com OpenOS já instalado ou uma Unidade de Disco. Robô com tela precisa de Monitor (Nível
+      1) e Teclado na montagem.
+    tasks:
+      - check
+    rewards:
+      - xp: 1
+
+  - id: carregador
+    title: "Carregador"
+    type: main
+    deps: [montador, capacitador]
+    icon: OpenComputers:charger
+    desc: |
+      Robôs, drones e tablets têm bateria. O §eCarregador§r (ferro, ouro, 2 Capacitadores,
+      Circuito Nível 2 e PCB) recarrega os que estiverem ao lado dele.
+
+      §aDetalhe importante:§r ele só funciona com §esinal de redstone§r — a força do sinal
+      define a velocidade (15 = 100%). Com a chave, o comportamento se inverte.
+    tasks:
+      - get: OpenComputers:charger
+    rewards:
+      - xp: 4
+      - choice: [minecraft:lever x2, OpenComputers:capacitor x1, minecraft:redstone x16]
+
+  - id: aprimoramento_inventario
+    title: "Aprimoramento de Inventário"
+    type: normal
+    deps: [montador]
+    icon: OpenComputers:item:53
+    desc: |
+      Sem ele, o robô não carrega nada! Cada §eAprimoramento de Inventário§r dá §e16 slots§r a
+      um robô (até 64 no total) ou 4 a um drone (até 8). Receita bem "de madeira": tábuas,
+      funil, liberador, baú, pistão e um Circuito Nível 1.
+    tasks:
+      - get: OpenComputers:item:53
+    rewards:
+      - xp: 3
+      - item: minecraft:chest x4
+
+  - id: aprimoramento_navegacao
+    title: "Aprimoramento de Navegação"
+    type: normal
+    deps: [montador]
+    icon: OpenComputers:item:36
+    desc: |
+      Onde estou? Para onde estou virado? O §eAprimoramento de Navegação§r (ouro, bússola,
+      §emapa preenchido§r, frasco de água e Circuitos Nível 2) responde. As coordenadas são
+      relativas ao centro do mapa usado na receita, e o alcance depende do tamanho do mapa.
+
+      Recombine com outro mapa para trocar (o antigo volta). Ele fica muito mais útil com
+      §ePontos de Passagem§r.
+    tasks:
+      - get: OpenComputers:item:36
+    rewards:
+      - xp: 3
+      - item: minecraft:compass
+
+  - id: ponto_passagem
+    title: "Ponto de Passagem"
+    type: optional
+    deps: [aprimoramento_navegacao, interweb]
+    icon: OpenComputers:waypoint
+    desc: |
+      O §ePonto de Passagem§r é um marco que o Aprimoramento de Navegação detecta. Ele tem um
+      rótulo editável (32 caracteres) e informa o sinal de redstone que recebe. A posição
+      informada é a do bloco à frente dele (onde saem as partículas). Ideal para rotas de
+      drones: "baú de entrada", "fornalha", "casa".
+    tasks:
+      - get: OpenComputers:waypoint
+    rewards:
+      - loot: comum
+
+  - id: aprimoramentos_robo
+    title: "Caixa de Ferramentas do Robô"
+    type: optional
+    deps: [aprimoramento_inventario]
+    icon: OpenComputers:item:14
+    desc: |
+      Alguns aprimoramentos que mudam o que um robô sabe fazer. Faça qualquer um:
+      §e• Construção§r — fabrica receitas usando a grade 3×3 do inventário.
+      §e• Raio Trator§r — puxa itens num raio de 3 blocos.
+      §e• Angelical§r — coloca blocos no ar, sem apoio.
+      §e• Pistão§r — empurra blocos.
+      §e• Tanque§r — guarda 16 baldes de fluido.
+      §e• Experiência§r — o robô ganha níveis (até 30) e fica dourado no 10 e "de diamante"
+      no 20!
+    tasks:
+      - one_of: [OpenComputers:item:14, OpenComputers:item:67, OpenComputers:item:49, OpenComputers:item:75, OpenComputers:item:76, OpenComputers:item:52]
+    rewards:
+      - loot: comum
+
+  - id: aprimoramento_energia
+    title: "Energia de Bolso"
+    type: optional
+    deps: [aprimoramento_inventario]
+    icon: OpenComputers:item:34
+    desc: |
+      Robôs longe do Carregador precisam de energia própria:
+      §e• Gerador§r — queima combustível sólido (um pouco ineficiente).
+      §e• Gerador Solar§r — energia passiva sob o sol direto (não funciona coberto ou com chuva).
+      §e• Bateria (Níveis 1–3)§r — aumenta o estoque interno de energia.
+      Faça qualquer um.
+    tasks:
+      - one_of: [OpenComputers:item:15, OpenComputers:item:34, OpenComputers:item:63, OpenComputers:item:64, OpenComputers:item:65]
+    rewards:
+      - loot: comum
+
+  - id: aprimoramento_chunkloader
+    title: "Aprimoramento de Chunkloader"
+    type: optional
+    deps: [aprimoramento_inventario, circuito3]
+    icon: OpenComputers:item:62
+    desc: |
+      Um robô minerando longe pára quando você se afasta... a não ser que tenha o
+      §eAprimoramento de Chunkloader§r (ouro, vidro, olho do Fim, obsidiana e Circuitos Nível
+      3). Ele mantém o chunk do robô (e os vizinhos) carregados enquanto o robô estiver
+      ligado, gastando energia o tempo todo.
+    tasks:
+      - get: OpenComputers:item:62
+    rewards:
+      - loot: incomum
+
+  - id: conteineres
+    title: "Contêineres"
+    type: optional
+    deps: [complexidade]
+    icon: OpenComputers:item:57
+    desc: |
+      Um §eContêiner de Cartão§r ou §ede Aprimoramento§r cria um slot "trocável" no robô
+      pronto. O nível do contêiner define o nível máximo do que entra nele — e a complexidade
+      dele é o dobro do nível. Faça qualquer um.
+    tasks:
+      - one_of: [OpenComputers:item:54, OpenComputers:item:55, OpenComputers:item:56, OpenComputers:item:57, OpenComputers:item:58, OpenComputers:item:59]
+    rewards:
+      - loot: comum
+
+  - id: robo
+    title: "O Primeiro Robô"
+    type: main
+    deps: [carregador, aprimoramento_inventario, complexidade]
+    icon: OpenComputers:robot
+    desc: |
+      Lá vem ele! Gabinete no Montador, CPU, memória, disco com OpenOS (ou Unidade de Disco),
+      Monitor Nível 1, Teclado, Placa de Vídeo e um Aprimoramento de Inventário...
+      e pronto: um §eRobô§r!
+
+      Robôs se movem pelo mundo, usam ferramentas, quebram e colocam blocos, como um jogador.
+      Eles §enão§r acessam componentes externos — para conversar, use cartão de rede sem fio
+      ou redstone. Escreva os seus programas (§erobot.forward()§r, §erobot.swing()§r...) ou
+      procure em masmorras disquetes prontos, como o "Digger", o "Builder" e o "Mazer".
+    tasks:
+      - get: OpenComputers:robot
+    rewards:
+      - xp: 5
+      - choice: [OpenComputers:item:53 x1, OpenComputers:item:36 x1, OpenComputers:capacitor x2]
+
+  - id: desmontador
+    title: "Desmontador"
+    type: optional
+    deps: [robo]
+    icon: OpenComputers:disassembler
+    desc: |
+      Montou um robô sem sistema operacional? Acontece com todo mundo. O §eDesmontador§r
+      desmonta a maioria dos itens do mod de volta nas peças. Demora, gasta energia e há uma
+      §epequena chance de perder cada componente§r. Leva um balde de lava na receita!
+    tasks:
+      - get: OpenComputers:disassembler
+    rewards:
+      - loot: comum
+
+  - id: carcaca_microcontrolador
+    title: "Carcaça do Microcontrolador"
+    type: normal
+    deps: [montador]
+    icon: OpenComputers:item:82
+    desc: |
+      Nem tudo precisa de um computador inteiro. A §eCarcaça do Microcontrolador (Nível 1)§r
+      (pepitas de ferro, Circuito Nível 1, redstone, baú e PCB) é a base de um computadorzinho
+      barato: 1 CPU e 1 memória de Nível 1, uma EEPROM, 2 cartões de Nível 1 e 1 aprimoramento
+      de Nível 2.
+    tasks:
+      - get: OpenComputers:item:82
+    rewards:
+      - xp: 3
+      - item: OpenComputers:item:24 x4
+
+  - id: microcontrolador
+    title: "Microcontrolador"
+    type: main
+    deps: [carcaca_microcontrolador, eeprom]
+    icon: OpenComputers:microcontroller
+    desc: |
+      Monte a carcaça no Montador e você tem um §eMicrocontrolador§r: consome pouquíssima
+      energia e é perfeito para tarefas simples — transformar sinais de redstone, abrir uma
+      porta, responder a uma mensagem de rede.
+
+      Ele §enão tem sistema de arquivos§r: todo o programa fica na §eEEPROM§r. Para trocar o
+      programa, combine o Microcontrolador com outra EEPROM na bancada (a antiga volta). Ele
+      também não acessa componentes externos.
+    tasks:
+      - get: OpenComputers:microcontroller
+    rewards:
+      - xp: 4
+      - choice: [OpenComputers:eeprom x2, OpenComputers:item:66 x1, minecraft:redstone x16]
+
+  - id: carcaca_drone
+    title: "Carcaça de Drone"
+    type: normal
+    deps: [carcaca_microcontrolador]
+    icon: OpenComputers:item:83
+    desc: |
+      Pedra do Fim (a do OpenComputers: pérolas do Fim e blocos de Camaleão rendem 4), uma
+      bússola, Circuitos Nível 1, uma §eCarcaça do Microcontrolador§r e um Componente de
+      Barramento (Nível 2) = §eCarcaça de Drone (Nível 1)§r.
+
+      Repare: precisa do Barramento Nível 2 (ouro, Circuito Nível 2, Unidade de Controle e
+      PCB). Confira tudo no NEI.
+    tasks:
+      - get: OpenComputers:item:83
+    rewards:
+      - xp: 3
+      - item: minecraft:ender_pearl x2
+
+  - id: drone
+    title: "Drone"
+    type: main
+    deps: [carcaca_drone, wifi2]
+    icon: OpenComputers:item:84
+    desc: |
+      Bzzzz! O §eDrone§r é um "robô-entidade": voa, é muito mais rápido, gasta menos energia...
+      mas não usa ferramentas e tem poucos slots. Ótimo para transportar pequenas cargas e
+      fazer reconhecimento.
+
+      Assim como o Microcontrolador, ele roda só o que estiver na §eEEPROM§r. O mais comum é
+      gravar nela um programinha que escuta comandos pela §erede sem fio§r, enviados de um
+      computador ou tablet. Robô + drone juntos = equipe imbatível.
+    tasks:
+      - get: OpenComputers:item:84
+    rewards:
+      - xp: 5
+      - choice: [OpenComputers:item:53 x1, OpenComputers:item:13 x1, OpenComputers:eeprom x2]
+
+  - id: carcaca_tablet
+    title: "Carcaça de Tablet"
+    type: normal
+    deps: [montador, monitor2, circuito3]
+    icon: OpenComputers:item:74
+    desc: |
+      Um computador de bolso! A §eCarcaça de Tablet (Nível 1)§r leva ouro, um botão, um
+      Barramento (Nível 1), um §eMonitor (Nível 2)§r, Circuito Nível 3 e PCB. A tela já vem
+      embutida — só falta montar.
+    tasks:
+      - get: OpenComputers:item:74
+    rewards:
+      - xp: 3
+      - item: minecraft:gold_ingot x4
+
+  - id: tablet
+    title: "Tablet"
+    type: normal
+    deps: [carcaca_tablet]
+    icon: OpenComputers:item:68
+    desc: |
+      Monte a carcaça com CPU, memória, disco (com OpenOS!) e um teclado e pronto: um
+      §eTablet§r. Segure o clique direito num bloco por um segundo e ele gera um sinal com
+      informações do bloco (com Geonalizador e Navegação instalados).
+
+      §cAtenção:§r tablets não "sobrevivem" a sair do jogo ou trocar de dimensão ligados.
+      Recarregue-os no Carregador — que, de bônus, deixa um computador acessar o disco do
+      tablet.
+    tasks:
+      - get: OpenComputers:item:68
+    rewards:
+      - xp: 3
+      - item: OpenComputers:item:13
+
+  - id: botas_voadoras
+    title: "Botas Voadoras"
+    type: optional
+    deps: [carcaca_drone]
+    icon: OpenComputers:hoverBoots
+    desc: |
+      Não quer programar drones? Calce um! As §eBotas Voadoras§r (Aprimoramento de Flutuação
+      Nível 2, Carcaça de Drone, couro, Capacitador) deixam você pular até 4 blocos, reduzem o
+      impacto da queda a um terço e sobem degraus de 1 bloco sem pular.
+
+      Recarregue no Carregador do OC, na Caixa de Baterias do IC2, no Carregador do AE2...
+      e pinte com corante, como couro!
+    tasks:
+      - get: OpenComputers:hoverBoots
+    rewards:
+      - loot: incomum
+
+  - id: sensor_mundo
+    title: "Cartão de Sensor de Mundo"
+    type: optional
+    deps: [robo]
+    icon: OpenComputers:item:89
+    desc: |
+      Uma ponte com o capítulo de §eGalacticraft§r: o §eCartão de Sensor de Mundo§r (as Lentes
+      Sensoras do Galacticraft, Circuito Nível 2 e Base de Cartão) lê informações de atmosfera
+      e gravidade dos planetas. Para robôs e drones que vão trabalhar no espaço!
+    tasks:
+      - get: OpenComputers:item:89
+    rewards:
+      - loot: incomum
+
+  - id: nanomaquinas
+    title: "Nanomáquinas"
+    type: optional
+    deps: [wifi2, cpu2]
+    icon: OpenComputers:item:107
+    desc: |
+      §cIsto é coisa séria, Herói.§r As §eNanomáquinas§r são "comidas" e passam a viver no seu
+      sistema nervoso: elas têm entradas que, ativadas por mensagens sem fio (a até 2 metros),
+      causam efeitos — bons e ruins, sorteados por configuração.
+
+      Ativar entradas demais de uma vez faz mal! Para removê-las, só bebendo §eGrogue§r (água,
+      açúcar, gosma, olho de aranha fermentado e osso). Leia a página do manual antes.
+    tasks:
+      - get: OpenComputers:item:107
+    rewards:
+      - loot: incomum
+
+  - id: maquinas_pensantes
+    title: "Máquinas que Pensam e Andam"
+    type: milestone
+    deps: [robo, drone, microcontrolador]
+    icon: OpenComputers:robot
+    banner: "Máquinas que Pensam e Andam"
+    subtitle: "Robôs, drones e microcontroladores"
+    desc: |
+      Um robô cavando, um drone zumbindo pelo céu da base e um microcontrolador abrindo a
+      porta sozinho. Herói, você ensinou as máquinas a §eagir§r!
+
+      Combinações que valem ouro:
+      §e• Robô minerador§r com Geonalizador, Chunkloader e Gerador.
+      §e• Drone entregador§r com Navegação e Pontos de Passagem marcando os baús.
+      §e• Microcontrolador porteiro§r com Cartão de Redstone.
+
+      §aDica de quem já sofreu:§r antes de mandar um robô para longe, teste o programa perto
+      de casa. Robô perdido é robô triste.
+    tasks:
+      - get: [OpenComputers:robot, OpenComputers:item:84, OpenComputers:microcontroller]
+    rewards:
+      - xp: 8
+      - kit: {name: "Kit do Roboticista", items: [OpenComputers:item:53 x2, OpenComputers:item:36 x1, OpenComputers:item:34 x1, OpenComputers:eeprom x2, OpenComputers:capacitor x2]}
+      - loot: raro
+
+  # ======================================================================
+  # FASE 6 — SERVIDORES E RACKS
+  # ======================================================================
+  - id: barramento
+    title: "Componente de Barramento"
+    type: normal
+    deps: [uc, circuito2]
+    icon: OpenComputers:item:70
+    desc: |
+      Nos servidores, o limite de componentes pode crescer com os §eComponentes de
+      Barramento§r (ferro/ouro/diamante, Circuito do nível, Unidade de Controle e PCB). Eles
+      também entram nas receitas de servidores, carcaças de drone e tablets. Faça o de Nível 1.
+    tasks:
+      - get: OpenComputers:item:70
+    rewards:
+      - xp: 3
+      - item: OpenComputers:item:28
+
+  - id: servidor1
+    title: "Servidor (Nível 1)"
+    type: normal
+    deps: [barramento, ram1]
+    icon: OpenComputers:item:45
+    desc: |
+      Um computador de alta densidade num item! O §eServidor (Nível 1)§r aceita CPU de Nível
+      2, 2 memórias e 2 discos de Nível 2, 1 barramento, 2 cartões e uma EEPROM. Você o
+      configura segurando-o na mão (como uma mochila) — mas ele §esó funciona dentro de um
+      Rack§r.
+    tasks:
+      - get: OpenComputers:item:45
+    rewards:
+      - xp: 3
+      - item: minecraft:obsidian x4
+
+  - id: rack
+    title: "Rack"
+    type: main
+    deps: [servidor1, rele, distribuidor_energia, wifi2]
+    icon: OpenComputers:rack
+    desc: |
+      O §eRack§r guarda até 4 itens montáveis: servidores, servidores de terminal e unidades
+      de disco montáveis. Ele também funciona como §eRelé e Distribuidor de Energia§r ao mesmo
+      tempo!
+
+      Receita de respeito: diamantes, Cartão de Rede Sem Fio (Nível 2), barras, baú, um Relé,
+      PCB e um Distribuidor de Energia. Na interface, você liga cada servidor (e os cartões
+      dele) aos "barramentos" dos lados do Rack — linhas finas passam só mensagens de rede;
+      linhas grossas também dão acesso aos componentes.
+    tasks:
+      - get: OpenComputers:rack
+    rewards:
+      - xp: 5
+      - choice: [minecraft:diamond x2, OpenComputers:item:45 x1, OpenComputers:item:13 x1]
+
+  - id: servidor3
+    title: "Servidor (Nível 3)"
+    type: optional
+    deps: [rack, ram3, cpu3]
+    icon: OpenComputers:item:40
+    desc: |
+      O monstro: CPU Nível 3, §e4 memórias§r e §e4 discos§r de Nível 3, 3 barramentos e 4
+      cartões. Leva Memória 3.5, Barramento Nível 3 e diamantes. Para quem quer controlar a
+      base inteira de um único Rack.
+    tasks:
+      - get: OpenComputers:item:40
+    rewards:
+      - loot: incomum
+
+  - id: terminal_remoto
+    title: "Servidor de Terminal e Terminal Remoto"
+    type: optional
+    deps: [rack]
+    icon: OpenComputers:item:41
+    desc: |
+      Instale um §eServidor de Terminal§r no Rack: ele cria uma tela e um teclado "virtuais".
+      Depois vincule um §eTerminal Remoto§r (clique no Rack mirando o Servidor de Terminal) e
+      controle o computador de qualquer lugar. Vários terminais podem compartilhar o mesmo
+      servidor — e veem a mesma tela.
+    tasks:
+      - get: [OpenComputers:item:108, OpenComputers:item:41]
+    rewards:
+      - loot: incomum
+
+  - id: disco_montavel
+    title: "Unidade de Disco Montável"
+    type: optional
+    deps: [rack]
+    icon: OpenComputers:item:109
+    desc: |
+      Uma Unidade de Disco cercada de obsidiana, barras de ferro, Circuito e PCB vira a versão
+      §emontável no Rack§r. Assim os servidores leem disquetes sem nenhum bloco a mais na sala.
+    tasks:
+      - get: OpenComputers:item:109
+    rewards:
+      - loot: comum
+
+  - id: mestre_computacao
+    title: "Mestre das Máquinas Pensantes"
+    type: milestone
+    deps: [rack, maquinas_pensantes, rede_computadores, estacao_trabalho]
+    icon: OpenComputers:rack
+    banner: "Mestre das Máquinas Pensantes"
+    subtitle: "O Volume das Máquinas Pensantes está completo"
+    effect: 3
+    desc: |
+      Herói, deixa eu contar uma coisa: quando a Fratura aconteceu, as máquinas que pensavam
+      foram as primeiras a esquecer. Ficaram em silêncio por séculos.
+
+      E agora? Um Rack zumbindo com servidores, uma rede que cruza a base pelo ar, robôs
+      cavando, drones entregando e um computador de diamante desenhando hologramas. Você não
+      só lembrou como elas funcionavam — você §eensinou de novo§r.
+
+      §bO Volume das Máquinas Pensantes está reescrito.§r Ele também ajuda a acender o
+      §6Selo da Engrenagem§r: toda grande indústria precisa de um cérebro.
+
+      §aPróximo passo:§r ligue esse cérebro a tudo. O Adaptador conversa com reatores, células
+      de energia e sistemas ME do Applied Energistics... o limite agora é o seu código.
+    tasks:
+      - get: [OpenComputers:rack, OpenComputers:item:45, OpenComputers:robot, OpenComputers:item:84]
+    rewards:
+      - xp: 12
+      - kit: {name: "Legado do Mestre das Máquinas", items: [OpenComputers:item:43 x1, OpenComputers:item:39 x2, OpenComputers:item:7 x1, OpenComputers:item:26 x4, OpenComputers:item:72 x1]}
+      - loot: [epico]

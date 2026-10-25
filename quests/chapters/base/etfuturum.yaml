@@ -1,0 +1,1406 @@
+chapter:
+  id: etfuturum
+  title: "Ecos do Futuro (Et Futurum)"
+  prefix: ""
+  color: "§a"
+  order: 105
+  icon: etfuturum:netherite_ingot
+  desc: |
+    §aEcos de mundos que ainda não aconteceram.§r Pedras novas, ardósia profunda, cobre
+    que enferruja, geodos de ametista, barris, defumadores, altos-fornos, netherita,
+    abelhas, frutas doces e o Fim renovado. (Et Futurum Requiem 2.6.59-GTNH)
+
+quests:
+  # ======================================================================
+  # ABERTURA
+  # ======================================================================
+  - id: ecos_do_futuro
+    title: "Ecos do Futuro"
+    type: info
+    icon: etfuturum:copper_ingot
+    desc: |
+      Sabe o que é estranho, Herói? Algumas páginas do Registro descrevem coisas que
+      §eainda não existiam§r quando ele se partiu. Eu chamo essas páginas de "Ecos do
+      Futuro": blocos, criaturas e ferramentas de um mundo que viria depois.
+
+      O §eEt Futurum Requiem§r traz esses ecos para cá: pedras novas, §eardósia
+      profunda§r, §ecobre§r, §eametista§r, §enetherita§r, barris, defumadores, abelhas,
+      raposas e um Fim com ilhas externas e plantas chorus.
+
+      §aDica:§r muitos itens deste mod aparecem com nome em inglês no jogo. Eu escrevo o
+      nome do jogo destacado e, quando ajuda, uma tradução ao lado.
+    tasks:
+      - check
+    rewards:
+      - xp: 1
+
+  - id: ecos_ausentes
+    title: "Ecos que Não Chegaram"
+    type: info
+    deps: [ecos_do_futuro]
+    icon: etfuturum:shulker_shell
+    desc: |
+      Sendo honesta com você: nem todo eco chegou inteiro. Nesta versão do mod e com a
+      configuração deste pack:
+
+      §c• Élitros, Cascas de Shulker e Totens da Imortalidade§r existem no registro, mas
+      §cnão têm fonte natural§r (as Cidades do Fim não são geradas e o Totem não tem
+      receita). Não perca tempo procurando!
+      §7• Mesa de Corte (Stonecutter), Tear (Loom), Mesa de Flechas e Mesa de Cartografia§r
+      são §edecorativas§r por enquanto — não abrem receitas.
+      §7• O Para-raios§r não tem receita.
+
+      O resto? Funciona lindamente. Vamos lá!
+    tasks:
+      - check
+    rewards:
+      - xp: 1
+
+  # ======================================================================
+  # PEDRAS E ARDÓSIA
+  # ======================================================================
+  - id: pedras_novas
+    title: "Granito, Diorito e Andesito"
+    type: main
+    deps: [ecos_do_futuro]
+    icon: etfuturum:stone:1
+    desc: |
+      Manchas rosadas, brancas e cinzentas no meio da pedra: §eGranito§r, §eDiorito§r e
+      §eAndesito§r. Elas aparecem em bolsões no subterrâneo (até 32 blocos por bolsão).
+
+      Também dá para fabricar: pedregulho + quartzo → diorito; diorito + quartzo →
+      granito; diorito + pedregulho → andesito. Junte §e16 de cada§r.
+    tasks:
+      - get: [etfuturum:stone:1 x16, etfuturum:stone:3 x16, etfuturum:stone:5 x16]
+    rewards:
+      - xp: 3
+      - choice: [minecraft:quartz x8, minecraft:cobblestone x64, minecraft:torch x32]
+
+  - id: pedras_polidas
+    title: "Pedras Polidas"
+    type: normal
+    deps: [pedras_novas]
+    icon: etfuturum:stone:2
+    desc: |
+      Quatro blocos de granito, diorito ou andesito em quadrado viram a versão
+      §epolida§r — superfície lisa, ótima para pisos e paredes.
+
+      Faça §e8 de cada versão polida§r. Existem lajes, escadas e muros de todas elas.
+    tasks:
+      - get: [etfuturum:stone:2 x8, etfuturum:stone:4 x8, etfuturum:stone:6 x8]
+    rewards:
+      - item: etfuturum:stone:5 x16
+      - xp: 2
+
+  - id: ardosia
+    title: "Ardósia Profunda"
+    type: main
+    deps: [ecos_do_futuro]
+    icon: etfuturum:cobbled_deepslate
+    desc: |
+      Abaixo de §eY ~22§r, toda a pedra do mundo vira §eArdósia Profunda§r (Deepslate):
+      escura, densa e mais lenta de quebrar. Os minérios lá embaixo também mudam de
+      aparência (minério de diamante de ardósia, de ferro de ardósia...), mas soltam o
+      mesmo material.
+
+      Ao quebrar, ela vira §ePedregulho de Ardósia§r. Junte §e64§r — é uma pedra
+      maravilhosa para construir.
+    tasks:
+      - get: etfuturum:cobbled_deepslate x64
+    rewards:
+      - xp: 3
+      - choice: [minecraft:torch x32, minecraft:iron_ingot x8, minecraft:cooked_beef x12]
+
+  - id: ardosia_lapidada
+    title: "Ardósia Lapidada"
+    type: normal
+    deps: [ardosia]
+    icon: etfuturum:deepslate_bricks
+    desc: |
+      Pedregulho de ardósia → (4 em quadrado) §eArdósia Polida§r → §eTijolos de Ardósia§r
+      → §eLadrilhos de Ardósia§r. Funda tijolos e ladrilhos para as versões rachadas.
+
+      Faça §e16 Tijolos de Ardósia§r. Elegante, escuro, perfeito para fortalezas.
+    tasks:
+      - get: etfuturum:deepslate_bricks x16
+    rewards:
+      - item: etfuturum:cobbled_deepslate x32
+      - xp: 2
+
+  - id: tufo
+    title: "Tufo Vulcânico"
+    type: normal
+    deps: [ardosia]
+    icon: etfuturum:tuff
+    desc: |
+      Junto com a ardósia aparecem bolsões de §eTufo§r (Tuff), uma pedra cinza-esverdeada
+      de origem vulcânica. Ele tem versões polida, em tijolos e cinzelada.
+
+      Junte §e16 de Tufo§r.
+    tasks:
+      - get: etfuturum:tuff x16
+    rewards:
+      - item: minecraft:torch x16
+      - xp: 1
+
+  - id: pedra_lisa
+    title: "Pedra Lisa"
+    type: normal
+    deps: [ecos_do_futuro]
+    icon: etfuturum:smooth_stone
+    desc: |
+      Funda §ePedra§r comum (não pedregulho!) mais uma vez e ela vira §ePedra Lisa§r
+      (Smooth Stone). É ingrediente do §eAlto-Forno§r e faz lajes bem retinhas.
+
+      Junte §e8 pedras lisas§r. O mesmo truque vale para arenito e quartzo (versões lisas).
+    tasks:
+      - get: etfuturum:smooth_stone x8
+    rewards:
+      - item: minecraft:coal x8
+      - xp: 1
+
+  - id: muros_e_escadas
+    title: "Muros, Lajes e Escadas"
+    type: optional
+    deps: [pedras_polidas]
+    icon: etfuturum:stone_wall_2
+    desc: |
+      O Et Futurum trouxe muros, lajes e escadas para quase tudo: granito, diorito,
+      andesito, ardósia, tufo, prismarinho, arenito vermelho, tijolos do Nether...
+
+      Faça §eum muro de granito, diorito ou andesito§r. Muros se conectam sozinhos e
+      ficam lindos em jardins.
+    tasks:
+      - one_of: [etfuturum:stone_wall_2, etfuturum:stone_wall_2:1, etfuturum:stone_wall_2:2]
+    rewards:
+      - loot: comum
+
+  # ======================================================================
+  # COBRE
+  # ======================================================================
+  - id: cobre
+    title: "O Cobre do Futuro"
+    type: main
+    deps: [ecos_do_futuro]
+    icon: etfuturum:copper_ore
+    desc: |
+      Um minério com manchas laranja-esverdeadas: §eMinério de Cobre§r do Et Futurum
+      (entre Y 4 e 80). Ele solta §eCobre Bruto§r (Raw Copper), que vira lingote na
+      fornalha.
+
+      §aBoa notícia:§r esse cobre é o mesmo "ingotCopper" dos outros mods (IC2, Thermal,
+      Mekanism...). Junte §e16 lingotes de cobre§r — qualquer cobre do oredict vale.
+    tasks:
+      - get: ore:ingotCopper x16
+    rewards:
+      - xp: 3
+      - choice: [minecraft:iron_ingot x8, minecraft:coal x16, etfuturum:raw_ore x8]
+
+  - id: bloco_cobre
+    title: "Bloco de Cobre"
+    type: normal
+    deps: [cobre]
+    icon: etfuturum:copper_block
+    desc: |
+      Nove lingotes do cobre do Et Futurum formam um §eBloco de Cobre§r (Block of Copper).
+      Ele é bonito, alaranjado... e não vai ficar assim para sempre! Veja a próxima página.
+
+      Faça §e2 blocos de cobre§r.
+    tasks:
+      - get: etfuturum:copper_block x2
+    rewards:
+      - item: etfuturum:copper_ingot x4
+      - xp: 1
+
+  - id: oxidacao
+    title: "A Pátina do Tempo"
+    type: info
+    deps: [bloco_cobre]
+    icon: etfuturum:copper_block:3
+    desc: |
+      Deixe um bloco de cobre colocado no mundo e, com o tempo, ele §eoxida§r: Exposto →
+      Desgastado → Oxidado (verde-azulado). Cada estágio tem sua cor.
+
+      §e• Machado:§r clique para raspar um estágio de oxidação.
+      §e• Favo de Mel§r (Honeycomb): clique para §eencerar§r — o cobre encerado para de
+      mudar para sempre (raspe com machado para tirar a cera).
+
+      Planeje: quer um telhado verdinho? Espere. Quer laranja brilhante? Encere logo!
+    tasks:
+      - check
+    rewards:
+      - xp: 1
+
+  - id: cobre_cortado
+    title: "Cobre Cortado"
+    type: normal
+    deps: [bloco_cobre]
+    icon: etfuturum:copper_block:4
+    desc: |
+      Quatro blocos de cobre em quadrado fazem 4 de §eCobre Cortado§r (Cut Copper), com
+      lajes e escadas próprias. Ele oxida igualzinho ao bloco.
+
+      Faça §e4 de cobre cortado§r.
+    tasks:
+      - get: etfuturum:copper_block:4 x4
+    rewards:
+      - item: etfuturum:copper_ingot x4
+      - xp: 1
+
+  - id: cobre_encerado
+    title: "Cobre Encerado"
+    type: optional
+    deps: [oxidacao, abelhas]
+    icon: etfuturum:copper_block:8
+    desc: |
+      Encere um bloco de cobre com um §eFavo de Mel§r e ele fica preso naquele estágio
+      para sempre. Na bancada, cobre + favo (ou cera de outros mods, como a do Forestry)
+      também faz a versão encerada — confira no NEI.
+
+      Tenha §equalquer bloco de cobre encerado§r (Waxed).
+    tasks:
+      - one_of: [etfuturum:copper_block:8, etfuturum:copper_block:9, etfuturum:copper_block:10, etfuturum:copper_block:11, etfuturum:copper_block:12, etfuturum:copper_block:13, etfuturum:copper_block:14, etfuturum:copper_block:15]
+    rewards:
+      - loot: comum
+
+  - id: lampada_cobre
+    title: "Lâmpada de Cobre"
+    type: normal
+    deps: [bloco_cobre]
+    icon: etfuturum:copper_bulb
+    desc: |
+      Cobre, uma vara de blaze e redstone fazem 4 §eLâmpadas de Cobre§r (Copper Bulb).
+      Diferente da lâmpada de redstone, ela §ealterna§r: cada pulso de redstone liga ou
+      desliga. E brilha menos conforme oxida!
+
+      Faça §euma lâmpada de cobre§r.
+    tasks:
+      - get: etfuturum:copper_bulb
+    rewards:
+      - item: minecraft:redstone x8
+      - xp: 2
+
+  - id: grade_porta_cobre
+    title: "Grade e Porta de Cobre"
+    type: optional
+    deps: [bloco_cobre]
+    icon: etfuturum:copper_grate
+    desc: |
+      Mais ecos do cobre: a §eGrade de Cobre§r (Copper Grate), vazada e translúcida, e a
+      §ePorta de Cobre§r. As duas também oxidam e podem ser enceradas.
+
+      Faça §euma grade e uma porta de cobre§r.
+    tasks:
+      - get: [etfuturum:copper_grate, etfuturum:copper_door]
+    rewards:
+      - loot: comum
+
+  # ======================================================================
+  # AMETISTA
+  # ======================================================================
+  - id: geodo_ametista
+    title: "O Geodo de Ametista"
+    type: main
+    deps: [ardosia]
+    icon: etfuturum:amethyst_shard
+    desc: |
+      Ouviu um tilintar de cristal? Você está perto de um §eGeodo de Ametista§r! Eles
+      ficam abaixo de Y 46 (cerca de 1 a cada 53 chunks): uma casca de §eBasalto Liso§r,
+      uma camada de §eCalcita§r e, dentro, cristais roxos.
+
+      Quebre os §eAglomerados de Ametista§r (o estágio final) para ter §eFragmentos de
+      Ametista§r. §cAtenção:§r neste pack a §eAmetista Germinante§r não pode ser
+      recolhida nem com Toque Suave — deixe-a no lugar e volte depois para colher de novo.
+
+      Junte §e8 fragmentos§r.
+    tasks:
+      - get: etfuturum:amethyst_shard x8
+    rewards:
+      - xp: 3
+      - choice: [minecraft:glass x16, minecraft:torch x32, minecraft:iron_ingot x8]
+
+  - id: calcita_basalto
+    title: "Calcita e Basalto Liso"
+    type: normal
+    deps: [geodo_ametista]
+    icon: etfuturum:calcite
+    desc: |
+      As camadas do geodo também são materiais de construção: a §eCalcita§r branquinha e o
+      §eBasalto Liso§r cinza-escuro.
+
+      Junte §e8 de cada§r. Combinados com a ametista, fazem uma decoração de caverna
+      linda.
+    tasks:
+      - get: [etfuturum:calcite x8, etfuturum:smooth_basalt x8]
+    rewards:
+      - item: minecraft:torch x16
+      - xp: 1
+
+  - id: vidro_escurecido
+    title: "Vidro Escurecido"
+    type: normal
+    deps: [geodo_ametista]
+    icon: etfuturum:tinted_glass
+    desc: |
+      Quatro fragmentos de ametista em volta de um vidro fazem 2 de §eVidro Escurecido§r
+      (Tinted Glass): você enxerga através, mas ele §ebloqueia a luz§r.
+
+      Ótimo para janelas de salas onde monstros não podem nascer... ou para uma sala de
+      cinema. Faça §e2§r.
+    tasks:
+      - get: etfuturum:tinted_glass x2
+    rewards:
+      - item: minecraft:glass x8
+      - xp: 1
+
+  - id: bloco_ametista
+    title: "Bloco de Ametista"
+    type: optional
+    deps: [geodo_ametista]
+    icon: etfuturum:amethyst_block
+    desc: |
+      Quatro fragmentos fazem um §eBloco de Ametista§r, que tilinta quando você anda em
+      cima. Puramente decorativo... e puramente adorável.
+
+      Faça §e4 blocos§r.
+    tasks:
+      - get: etfuturum:amethyst_block x4
+    rewards:
+      - loot: comum
+
+  # ======================================================================
+  # ESTAÇÕES DE TRABALHO
+  # ======================================================================
+  - id: barril
+    title: "O Barril"
+    type: main
+    deps: [ecos_do_futuro]
+    icon: etfuturum:barrel
+    desc: |
+      Seis tábuas e duas lajes de madeira: §eBarril§r. Ele guarda 27 pilhas como um baú,
+      mas abre §emesmo com um bloco em cima§r — dá para empilhar barris até o teto!
+
+      Fabrique §eum barril§r. Ele também evolui: há barris de ferro, ouro, diamante,
+      cobre, prata, aço, obsidiana, aço negro e netherita.
+    tasks:
+      - get: etfuturum:barrel
+    rewards:
+      - xp: 3
+      - choice: [minecraft:planks x32, minecraft:log x8, minecraft:chest x2]
+
+  - id: barril_ferro
+    title: "Barris de Metal"
+    type: normal
+    deps: [barril]
+    icon: etfuturum:iron_barrel
+    desc: |
+      Oito lingotes de ferro em volta de um barril = §eBarril de Ferro§r (mais espaço). Daí
+      em diante: ouro → diamante → obsidiana → netherita (ou cobre → prata/aço).
+
+      Também existem §eAprimoramentos de Barril§r para trocar o tier sem esvaziar. Faça
+      §eum barril de ferro§r.
+    tasks:
+      - get: etfuturum:iron_barrel
+    rewards:
+      - item: minecraft:iron_ingot x4
+      - xp: 2
+
+  - id: barril_diamante
+    title: "Barril de Diamante"
+    type: optional
+    deps: [barril_ferro]
+    icon: etfuturum:diamond_barrel
+    desc: |
+      Barril de ouro (8 ouros em volta do de ferro) e depois §eBarril de Diamante§r
+      (vidros e diamantes em volta do de ouro). Muito espaço, muito brilho.
+
+      Faça §eum barril de diamante§r.
+    tasks:
+      - get: etfuturum:diamond_barrel
+    rewards:
+      - loot: comum
+
+  - id: malho_tanoeiro
+    title: "O Malho do Tanoeiro"
+    type: optional
+    deps: [barril, cobre]
+    icon: etfuturum:coopers_mallet
+    desc: |
+      O §eMalho do Tanoeiro§r (Cooper's Mallet) troca um baú por um barril — ou o
+      contrário — §eno lugar e sem perder o conteúdo§r. Deixe o barril (ou baú) que vai
+      entrar num slot ao lado do malho e use o malho no bloco.
+
+      A receita pede baú, bloco de cobre, barril e gravetos. Fabrique um.
+    tasks:
+      - get: etfuturum:coopers_mallet
+    rewards:
+      - loot: comum
+
+  - id: defumador
+    title: "O Defumador"
+    type: main
+    deps: [barril]
+    icon: etfuturum:smoker
+    desc: |
+      Uma fornalha cercada por quatro troncos: §eDefumador§r (Smoker). Ele só aceita
+      §ecomida§r, mas cozinha na §emetade do tempo§r da fornalha comum.
+
+      No NEI, a aba "Smoking" mostra tudo o que ele assa (inclusive comida de outros mods).
+      Fabrique um e asse §e8 carnes§r nele.
+    tasks:
+      - get: etfuturum:smoker
+      - one_of: [minecraft:cooked_beef x8, minecraft:cooked_porkchop x8, minecraft:cooked_chicken x8, etfuturum:mutton_cooked x8]
+    rewards:
+      - xp: 3
+      - choice: [minecraft:beef x12, minecraft:coal x16, minecraft:log x16]
+
+  - id: alto_forno
+    title: "O Alto-Forno"
+    type: main
+    deps: [pedra_lisa, barril]
+    icon: etfuturum:blast_furnace
+    desc: |
+      Cinco ferros, uma fornalha e três pedras lisas: §eAlto-Forno§r (Blast Furnace). Ele
+      só funde §eminérios e metais§r, mas no §edobro da velocidade§r.
+
+      A aba "Blasting" do NEI lista tudo que ele aceita (ele procura sozinho as receitas
+      de fundição de minérios dos outros mods). Fabrique um e funda §e16 lingotes de
+      ferro§r.
+    tasks:
+      - get: [etfuturum:blast_furnace, minecraft:iron_ingot x16]
+    rewards:
+      - xp: 3
+      - choice: [etfuturum:raw_ore:1 x12, minecraft:coal_block x2, minecraft:iron_ingot x8]
+
+  - id: mesa_ferraria
+    title: "A Mesa de Ferraria"
+    type: main
+    deps: [alto_forno]
+    icon: etfuturum:smithing_table
+    desc: |
+      Dois ferros e quatro tábuas: §eMesa de Ferraria§r (Smithing Table). Aqui ela tem um
+      trabalho muito especial: §etransformar diamante em netherita§r.
+
+      Coloque uma ferramenta ou peça de armadura de diamante e um Lingote de Netherita: sai
+      a versão de netherita, §emantendo os encantamentos§r. Fabrique a mesa — logo, logo
+      a gente vai ao Nether atrás do material.
+    tasks:
+      - get: etfuturum:smithing_table
+    rewards:
+      - xp: 3
+      - choice: [minecraft:iron_ingot x8, minecraft:gold_ingot x8, minecraft:diamond]
+
+  - id: composteira
+    title: "A Composteira"
+    type: normal
+    deps: [ecos_do_futuro]
+    icon: etfuturum:composter
+    desc: |
+      Sete lajes de madeira em "U": §eComposteira§r. Jogue nela restos de plantas
+      (sementes, folhas, mudas, frutas...) e, quando encher, ela solta §eFarinha de Osso§r.
+
+      É o destino perfeito para aquelas sementes que lotam o baú. Fabrique uma.
+    tasks:
+      - get: etfuturum:composter
+    rewards:
+      - item: minecraft:dye:15 x8
+      - xp: 1
+
+  - id: mesas_decorativas
+    title: "Mesas de Enfeite"
+    type: optional
+    deps: [ecos_do_futuro]
+    icon: etfuturum:loom
+    desc: |
+      Algumas estações do futuro chegaram só "por fora": a §eMesa de Corte§r (Stonecutter),
+      o §eTear§r (Loom), a §eMesa de Flechas§r e a §eMesa de Cartografia§r ainda não
+      funcionam neste mod — são decoração.
+
+      Ficam ótimas numa oficina temática! Fabrique §eum tear e uma mesa de cartografia§r.
+    tasks:
+      - get: [etfuturum:loom, etfuturum:cartography_table]
+    rewards:
+      - loot: comum
+
+  # ======================================================================
+  # BLOCOS ÚTEIS E DECORAÇÃO
+  # ======================================================================
+  - id: suporte_armadura
+    title: "Suporte de Armaduras"
+    type: main
+    deps: [ecos_do_futuro]
+    icon: etfuturum:wooden_armorstand
+    desc: |
+      Seis gravetos e uma laje de pedra: §eSuporte de Armaduras§r (Armor Stand). Clique
+      com uma peça de armadura para vesti-lo — ou clique nele para trocar o que você veste
+      pelo que ele veste.
+
+      Perfeito para exibir conjuntos e trocar de armadura rapidinho. Fabrique um.
+    tasks:
+      - get: etfuturum:wooden_armorstand
+    rewards:
+      - xp: 3
+      - choice: [minecraft:stick x16, minecraft:stone_slab x8, minecraft:iron_ingot x6]
+
+  - id: estandarte
+    title: "Estandartes"
+    type: normal
+    deps: [suporte_armadura]
+    icon: etfuturum:banner:14
+    desc: |
+      Seis lãs da mesma cor e um graveto: §eEstandarte§r. Combine-o na bancada com
+      corantes (e alguns itens especiais) para desenhar §epadrões§r: listras, cruzes,
+      bordas, o rosto de um creeper...
+
+      O NEI tem uma aba "Banners" só com os padrões. Faça §eum estandarte§r de qualquer cor.
+    tasks:
+      - get: etfuturum:banner:*
+    rewards:
+      - item: minecraft:wool x6
+      - xp: 1
+
+  - id: lanterna_corrente
+    title: "Lanterna e Corrente"
+    type: normal
+    deps: [ecos_do_futuro]
+    icon: etfuturum:lantern
+    desc: |
+      Uma tocha cercada de pepitas de ferro: §eLanterna§r. Ela fica no chão ou pendurada no
+      teto. Uma §eCorrente§r (pepita, lingote, pepita) faz o pendente perfeito.
+
+      §ePepitas de ferro§r saem de um lingote (9 pepitas). Faça §euma lanterna e 4
+      correntes§r.
+    tasks:
+      - get: [etfuturum:lantern, etfuturum:chain x4]
+    rewards:
+      - item: minecraft:torch x16
+      - xp: 1
+
+  - id: fogo_almas
+    title: "Fogo das Almas"
+    type: optional
+    deps: [lanterna_corrente]
+    icon: etfuturum:soul_lantern
+    desc: |
+      Carvão, graveto e areia das almas (ou terra das almas) fazem a §eTocha das Almas§r,
+      de chama azul. Com pepitas, vira §eLanterna das Almas§r.
+
+      Faça §euma lanterna das almas§r. Fica lindíssima no Nether.
+    tasks:
+      - get: etfuturum:soul_lantern
+    rewards:
+      - loot: comum
+
+  - id: observador
+    title: "O Observador"
+    type: normal
+    deps: [ecos_do_futuro]
+    icon: etfuturum:observer
+    desc: |
+      Pedregulho, redstone e quartzo: §eObservador§r. Ele "olha" o bloco à frente e emite
+      um pulso quando aquele bloco muda (planta cresceu, bloco quebrado, água correu...).
+
+      É o coração das fazendas automáticas de cana e abóbora. Fabrique §e2 observadores§r.
+    tasks:
+      - get: etfuturum:observer x2
+    rewards:
+      - item: minecraft:redstone x8
+      - xp: 2
+
+  - id: alvo
+    title: "Na Mosca!"
+    type: optional
+    deps: [observador]
+    icon: etfuturum:target
+    desc: |
+      Um fardo de feno cercado de redstone: §eAlvo§r (Target). Acerte com uma flecha e ele
+      emite sinal — mais forte quanto mais perto do centro.
+
+      Fabrique um e treine a pontaria.
+    tasks:
+      - get: etfuturum:target
+    rewards:
+      - loot: comum
+
+  - id: bloco_slime
+    title: "Bloco de Slime"
+    type: normal
+    deps: [ecos_do_futuro]
+    icon: etfuturum:slime
+    desc: |
+      Nove bolas de slime: §eBloco de Slime§r. Quique nele (sem dano de queda!) e — com
+      pistões — ele §earrasta os blocos grudados§r junto. Máquinas voadoras, alguém?
+
+      Faça §eum bloco de slime§r.
+    tasks:
+      - get: etfuturum:slime
+    rewards:
+      - item: minecraft:slime_ball x4
+      - xp: 1
+
+  - id: concreto
+    title: "Concreto Colorido"
+    type: normal
+    deps: [ecos_do_futuro]
+    icon: etfuturum:concrete:14
+    desc: |
+      Corante + 4 areias + 4 cascalhos = 8 de §ePó de Concreto§r. Coloque o pó encostado em
+      §eágua§r e ele endurece em §eConcreto§r de cores vivas e lisas.
+
+      Tenha §e16 blocos de concreto§r de qualquer cor.
+    tasks:
+      - get: etfuturum:concrete:* x16
+    rewards:
+      - item: minecraft:sand x16
+      - xp: 1
+
+  - id: terracota_vitrificada
+    title: "Terracota Vitrificada"
+    type: optional
+    deps: [concreto]
+    icon: etfuturum:orange_glazed_terracotta
+    desc: |
+      Funda terracota tingida (argila endurecida colorida) e ela vira §eTerracota
+      Vitrificada§r, com padrões que se encaixam quando você gira os blocos.
+
+      Faça §equalquer terracota vitrificada§r.
+    tasks:
+      - one_of: [etfuturum:white_glazed_terracotta, etfuturum:orange_glazed_terracotta, etfuturum:magenta_glazed_terracotta, etfuturum:light_blue_glazed_terracotta, etfuturum:yellow_glazed_terracotta, etfuturum:lime_glazed_terracotta, etfuturum:pink_glazed_terracotta, etfuturum:gray_glazed_terracotta, etfuturum:light_gray_glazed_terracotta, etfuturum:cyan_glazed_terracotta, etfuturum:purple_glazed_terracotta, etfuturum:blue_glazed_terracotta, etfuturum:brown_glazed_terracotta, etfuturum:green_glazed_terracotta, etfuturum:red_glazed_terracotta, etfuturum:black_glazed_terracotta]
+    rewards:
+      - loot: comum
+
+  - id: madeira_descascada
+    title: "Madeira Descascada"
+    type: normal
+    deps: [ecos_do_futuro]
+    icon: etfuturum:log_stripped
+    desc: |
+      Clique num tronco com um §emachado§r e ele fica §edescascado§r (Stripped Log). Quatro
+      troncos fazem 3 blocos de §eMadeira§r com casca em todos os lados (Wood).
+
+      Junte §e8 troncos descascados§r de qualquer árvore comum.
+    tasks:
+      - get: etfuturum:log_stripped:* x8
+    rewards:
+      - item: minecraft:log x8
+      - xp: 1
+
+  - id: madeiras_novas
+    title: "Portas, Cercas e Barcos Novos"
+    type: optional
+    deps: [madeira_descascada]
+    icon: etfuturum:door_spruce
+    desc: |
+      Agora cada madeira tem sua porta, alçapão, cerca, portão, botão, placa de pressão e
+      barco próprios! Barcos novos aguentam dois passageiros e existem com baú.
+
+      Faça §euma porta de pinheiro§r e §eum barco de pinheiro§r.
+    tasks:
+      - get: [etfuturum:door_spruce, etfuturum:spruce_boat]
+    rewards:
+      - loot: comum
+
+  # ======================================================================
+  # NATUREZA
+  # ======================================================================
+  - id: frutas_doces
+    title: "Frutas Doces"
+    type: normal
+    deps: [ecos_do_futuro]
+    icon: etfuturum:sweet_berries
+    desc: |
+      Nas taigas (florestas de coníferas) crescem arbustos espinhosos com bolinhas
+      vermelhas: §eFrutas Doces§r (Sweet Berries). §cOs espinhos machucam§r quem anda no
+      meio deles.
+
+      Colha com o botão direito e plante as próprias frutas para cultivar. Raposas adoram!
+      Junte §e16§r.
+    tasks:
+      - get: etfuturum:sweet_berries x16
+    rewards:
+      - item: minecraft:bread x6
+      - xp: 1
+
+  - id: bambu
+    title: "Bambuzal"
+    type: normal
+    deps: [ecos_do_futuro]
+    icon: etfuturum:bamboo
+    desc: |
+      Nas selvas aparecem touceiras de §eBambu§r, que cresce muito rápido. Nove bambus
+      fazem um §eBloco de Bambu§r, que vira tábuas, mosaico, portas e até jangadas.
+
+      Junte §e32 bambus§r.
+    tasks:
+      - get: etfuturum:bamboo x32
+    rewards:
+      - item: minecraft:dye:15 x8
+      - xp: 1
+
+  - id: jangada_bambu
+    title: "Jangada de Bambu"
+    type: optional
+    deps: [bambu]
+    icon: etfuturum:bamboo_raft
+    desc: |
+      Tábuas de bambu fazem uma §eJangada§r (Bamboo Raft) — um "barco" com cara de
+      aventura tropical. Também existe a versão com baú.
+
+      Faça §euma jangada§r e vá dar um passeio.
+    tasks:
+      - get: etfuturum:bamboo_raft
+    rewards:
+      - loot: comum
+
+  - id: cerejeira
+    title: "Cerejeiras em Flor"
+    type: optional
+    deps: [ecos_do_futuro]
+    icon: etfuturum:cherry_log
+    desc: |
+      Copas cor-de-rosa e §ePétalas Rosas§r pelo chão: uma §eCerejeira§r! Elas são raras
+      e aparecem em poucos lugares do mundo — explore bastante.
+
+      Junte §e8 troncos de cerejeira§r. As tábuas rosadas dão uma decoração única.
+    tasks:
+      - get: etfuturum:cherry_log x8
+    rewards:
+      - loot: comum
+
+  - id: lama
+    title: "Lama e Tijolos de Barro"
+    type: normal
+    deps: [ecos_do_futuro]
+    icon: etfuturum:packed_mud:1
+    desc: |
+      Use um §eFrasco com Água§r num bloco de terra e ele vira §eLama§r (Mud). Lama + trigo
+      = §eLama Compacta§r; 4 lamas compactas = 4 §eTijolos de Barro§r. Lama também aparece
+      em pântanos.
+
+      Faça §e8 tijolos de barro§r — perfeitos para casas de estilo rústico.
+    tasks:
+      - get: etfuturum:packed_mud:1 x8
+    rewards:
+      - item: minecraft:wheat x8
+      - xp: 1
+
+  - id: musgo
+    title: "Bloco de Musgo"
+    type: optional
+    deps: [ecos_do_futuro]
+    icon: etfuturum:moss_block
+    desc: |
+      Terra cercada de trepadeiras vira §eBloco de Musgo§r. Com farinha de osso ele
+      espalha musgo, grama e plantinhas em volta. Ótimo para jardins naturais.
+
+      Faça §e4 blocos de musgo§r.
+    tasks:
+      - get: etfuturum:moss_block x4
+    rewards:
+      - loot: comum
+
+  - id: flores_novas
+    title: "Flores Novas"
+    type: normal
+    deps: [ecos_do_futuro]
+    icon: etfuturum:cornflower
+    desc: |
+      Duas flores do futuro apareceram nas planícies e florestas: a §eCentáurea§r
+      (Cornflower, azul) e o §eLírio-do-Vale§r (Lily of the Valley, branco).
+
+      Elas viram os novos corantes §eazul§r e §ebranco§r do Et Futurum e entram no
+      §eEnsopado Suspeito§r. Colha §e4 de cada§r.
+    tasks:
+      - get: [etfuturum:cornflower x4, etfuturum:lily_of_the_valley x4]
+    rewards:
+      - item: minecraft:dye:15 x8
+      - xp: 1
+
+  - id: ensopado_suspeito
+    title: "Ensopado Suspeito"
+    type: optional
+    deps: [flores_novas]
+    icon: etfuturum:suspicious_stew
+    desc: |
+      Cogumelo vermelho, cogumelo marrom, tigela e §euma flor§r: §eEnsopado Suspeito§r. O
+      efeito depende da flor usada (visão noturna, regeneração, salto...). É uma surpresa
+      a cada colherada!
+
+      Faça §eum ensopado suspeito§r.
+    tasks:
+      - get: etfuturum:suspicious_stew
+    rewards:
+      - loot: comum
+
+  - id: beterraba
+    title: "Beterrabas"
+    type: normal
+    deps: [ecos_do_futuro]
+    icon: etfuturum:beetroot
+    desc: |
+      A §eBeterraba§r é uma plantação nova: plante as §esementes de beterraba§r (encontradas
+      em vilas e baús) como trigo. Seis beterrabas e uma tigela fazem §eSopa de Beterraba§r.
+
+      Junte §e8 beterrabas§r e faça §euma sopa§r.
+    tasks:
+      - get: [etfuturum:beetroot x8, etfuturum:beetroot_soup]
+    rewards:
+      - item: etfuturum:beetroot_seeds x8
+      - xp: 2
+
+  - id: abelhas
+    title: "Zum-Zum: Abelhas"
+    type: main
+    deps: [flores_novas]
+    icon: etfuturum:bee_nest
+    desc: |
+      Árvores com uma caixinha amarela pendurada: §eNinhos de Abelha§r! As abelhas do Et
+      Futurum polinizam flores e enchem o ninho de mel.
+
+      Quando o ninho estiver cheio (pingando), use §etesoura§r para tirar §eFavos de
+      Mel§r ou um §efrasco vazio§r para pegar §eMel§r. §cAs abelhas ficam bravas§r com
+      quem mexe no ninho: vista armadura e afaste-se rápido depois da colheita.
+
+      Junte §e3 favos de mel§r e §e2 frascos de mel§r.
+    tasks:
+      - get: [etfuturum:honeycomb x3, etfuturum:honey_bottle x2]
+    rewards:
+      - xp: 3
+      - choice: [minecraft:glass_bottle x6, minecraft:shears, etfuturum:cornflower x4]
+
+  - id: colmeia
+    title: "Colmeia Artificial"
+    type: normal
+    deps: [abelhas]
+    icon: etfuturum:beehive
+    desc: |
+      Tábuas e três favos de mel fazem uma §eColmeia§r (Beehive). Coloque perto de flores e
+      leve abelhas até ela (elas seguem você se segurar uma flor). Aí é só colher mel e
+      favos sem precisar procurar ninhos.
+
+      Fabrique §euma colmeia§r. (O Volume de Apicultura tem abelhas bem mais... genéticas.)
+    tasks:
+      - get: etfuturum:beehive
+    rewards:
+      - item: minecraft:red_flower x4
+      - xp: 2
+
+  - id: bloco_mel
+    title: "Bloco de Mel"
+    type: optional
+    deps: [abelhas]
+    icon: etfuturum:honey_block
+    desc: |
+      Quatro frascos de mel: §eBloco de Mel§r. Grudento: você anda devagar, pula pouco e
+      escorrega devagarinho pelas paredes dele. Com pistões, também arrasta blocos
+      vizinhos (mas não gruda em slime!).
+
+      Faça §eum bloco de mel§r.
+    tasks:
+      - get: etfuturum:honey_block
+    rewards:
+      - loot: comum
+
+  - id: coelhos
+    title: "Coelhos"
+    type: normal
+    deps: [ecos_do_futuro]
+    icon: etfuturum:rabbit_foot
+    desc: |
+      Desertos, taigas e planícies nevadas ganharam §eCoelhos§r. Eles soltam carne, §epele
+      de coelho§r (4 viram 1 couro) e, raramente, o §ePé de Coelho§r — ingrediente da
+      Poção de Salto.
+
+      Junte §e4 peles de coelho§r e §eum pé de coelho§r.
+    tasks:
+      - get: [etfuturum:rabbit_hide x4, etfuturum:rabbit_foot]
+    rewards:
+      - item: minecraft:carrot x8
+      - xp: 2
+
+  - id: ensopado_coelho
+    title: "Ensopado de Coelho"
+    type: optional
+    deps: [coelhos]
+    icon: etfuturum:rabbit_stew
+    desc: |
+      Coelho assado, cenoura, batata assada, cogumelo marrom e tigela: §eEnsopado de
+      Coelho§r, uma das comidas que mais enchem. Faça §eum§r.
+    tasks:
+      - get: etfuturum:rabbit_stew
+    rewards:
+      - loot: comum
+
+  - id: carneiro
+    title: "Carneiro Assado"
+    type: normal
+    deps: [ecos_do_futuro]
+    icon: etfuturum:mutton_cooked
+    desc: |
+      Agora as ovelhas também soltam §eCarne de Carneiro§r! Asse no defumador ou na
+      fornalha. É mais uma fonte de carne para quem cria ovelhas pela lã.
+
+      Junte §e8 carneiros assados§r.
+    tasks:
+      - get: etfuturum:mutton_cooked x8
+    rewards:
+      - item: minecraft:wheat x16
+      - xp: 1
+
+  - id: criaturas_novas
+    title: "Bestiário do Futuro"
+    type: info
+    deps: [ecos_do_futuro]
+    icon: etfuturum:rabbit_hide
+    desc: |
+      Criaturas que você pode encontrar por aí graças ao Et Futurum:
+
+      §e• Raposas§r (taigas): pegam itens do chão e adoram frutas doces.
+      §e• Abelhas e Coelhos§r — já falamos deles.
+      §e• Coguvaca marrom§r: uma variante marrom da coguvaca.
+      §c• Husk§r: zumbi do deserto que não queima no sol e causa fome.
+      §c• Stray§r: esqueleto das neves com flechas de lentidão.
+      §c• Endermite§r: às vezes surge quando você usa pérolas do fim.
+      §7• Golem de Neve§r: agora você pode tirar a abóbora dele com tesoura.
+    tasks:
+      - check
+    rewards:
+      - xp: 1
+
+  - id: husk_stray
+    title: "Mortos do Deserto e do Gelo"
+    type: optional
+    deps: [criaturas_novas]
+    icon: minecraft:rotten_flesh
+    desc: |
+      Os §eHusks§r (desertos) não pegam fogo de dia e os §eStrays§r (biomas nevados)
+      atiram flechas que deixam você lento. Cuidado redobrado nesses biomas!
+
+      Derrote §e3 Husks§r e §e3 Strays§r.
+    tasks:
+      - kill: "etfuturum.husk x3"
+      - kill: "etfuturum.stray x3"
+    rewards:
+      - loot: comum
+
+  - id: monumento_oceanico
+    title: "O Monumento Oceânico"
+    type: optional
+    deps: [ecos_do_futuro]
+    icon: etfuturum:prismarine_block
+    desc: |
+      No fundo dos oceanos profundos podem existir enormes §eMonumentos Oceânicos§r de
+      §ePrismarinho§r verde-azulado, iluminados por §eLanternas do Mar§r.
+
+      Leve Respiração Aquática, Visão Noturna e uma boa picareta. Traga §e16 blocos de
+      prismarinho§r (qualquer tipo) e §euma lanterna do mar§r.
+    tasks:
+      - get: [etfuturum:prismarine_block:* x16, etfuturum:sea_lantern]
+    rewards:
+      - loot: comum
+
+  # ======================================================================
+  # O NETHER RENOVADO
+  # ======================================================================
+  - id: nether_renovado
+    title: "O Nether Renovado"
+    type: info
+    deps: [ecos_do_futuro]
+    icon: etfuturum:magma
+    desc: |
+      O Et Futurum também mexeu no Nether:
+
+      §e• Minério de Ouro do Nether§r: solta pepitas de ouro (Y 10–117).
+      §e• Detritos Antigos§r: o material da netherita (próxima página).
+      §e• Blocos de Magma§r (4 cremes de magma): queimam quem pisa sem agachar.
+      §e• Tijolos Vermelhos do Nether§r, §eBloco de Verruga§r, §eTerra das Almas§r e
+      §eFogo das Almas§r azul.
+      §e• Itens resistentes ao fogo:§r itens de netherita não queimam na lava!
+    tasks:
+      - check
+    rewards:
+      - xp: 1
+
+  - id: tijolos_nether_vermelhos
+    title: "Tijolos Vermelhos do Nether"
+    type: optional
+    deps: [nether_renovado]
+    icon: etfuturum:red_netherbrick
+    desc: |
+      Dois tijolos do Nether (o item) e duas verrugas fazem §eTijolos Vermelhos do Nether§r
+      (Red Nether Bricks). Nove verrugas formam um §eBloco de Verruga do Nether§r.
+
+      Faça §e8 tijolos vermelhos§r e §eum bloco de verruga§r.
+    tasks:
+      - get: [etfuturum:red_netherbrick x8, etfuturum:nether_wart]
+    rewards:
+      - loot: comum
+
+  - id: bloco_magma
+    title: "Bloco de Magma"
+    type: normal
+    deps: [nether_renovado]
+    icon: etfuturum:magma
+    desc: |
+      Quatro cremes de magma: §eBloco de Magma§r. Ele brilha, queima quem pisa nele
+      (agache para não se machucar) e, debaixo d'água, cria uma §ecoluna de bolhas§r que
+      puxa tudo para baixo.
+
+      Faça §e2 blocos de magma§r.
+    tasks:
+      - get: etfuturum:magma x2
+    rewards:
+      - item: minecraft:magma_cream x2
+      - xp: 1
+
+  - id: detritos_antigos
+    title: "Detritos Antigos"
+    type: main
+    deps: [nether_renovado, mesa_ferraria]
+    icon: etfuturum:ancient_debris
+    desc: |
+      O tesouro mais escondido do Nether: §eDetritos Antigos§r (Ancient Debris). Veios de
+      1 a 3 blocos entre §eY 8 e 22§r (e veios menores até Y 119), §enunca encostados no
+      ar§r — ou seja, só cavando.
+
+      §a• Picareta de diamante§r é obrigatória.
+      §a• Dica clássica:§r túneis longos em Y ~15. Explosões de TNT revelam detritos
+      (eles são à prova de explosão). §cCamas explodem no Nether§r — não tente.
+
+      Traga §e4 Detritos Antigos§r.
+    tasks:
+      - get: etfuturum:ancient_debris x4
+    rewards:
+      - xp: 3
+      - choice: [minecraft:gold_ingot x8, minecraft:tnt x4, minecraft:golden_apple x2]
+
+  - id: sucata_netherita
+    title: "Sucata de Netherita"
+    type: main
+    deps: [detritos_antigos]
+    icon: etfuturum:netherite_scrap
+    desc: |
+      Funda os detritos (na fornalha ou, mais rápido, no Alto-Forno) e cada um vira uma
+      §eSucata de Netherita§r (Netherite Scrap).
+
+      Junte §e4 sucatas§r — é a receita de um lingote.
+    tasks:
+      - get: etfuturum:netherite_scrap x4
+    rewards:
+      - xp: 3
+      - choice: [minecraft:gold_ingot x4, minecraft:coal_block, minecraft:obsidian x4]
+
+  - id: lingote_netherita
+    title: "O Lingote de Netherita"
+    type: main
+    deps: [sucata_netherita]
+    icon: etfuturum:netherite_ingot
+    desc: |
+      Quatro sucatas e quatro lingotes de ouro, sem forma definida: §eLingote de
+      Netherita§r. Escuro, pesado e §eà prova de fogo§r.
+
+      Fabrique §eum lingote§r. Neste pack ele também melhora baús de ferro, barris e é
+      chamado em receitas de outros Volumes (inclusive as do ATM, eu ouvi falar...).
+    tasks:
+      - get: etfuturum:netherite_ingot
+    rewards:
+      - xp: 3
+      - choice: [minecraft:gold_ingot x8, minecraft:diamond, minecraft:experience_bottle x8]
+
+  - id: ferramenta_netherita
+    title: "Ferramenta de Netherita"
+    type: main
+    deps: [lingote_netherita, mesa_ferraria]
+    icon: etfuturum:netherite_pickaxe
+    desc: |
+      Na §eMesa de Ferraria§r: ferramenta de diamante + lingote de netherita = ferramenta de
+      §eNetherita§r, com os encantamentos preservados. Mais rápida, mais durável (2031
+      usos), mais dano e nível de colheita 4. E ela não queima na lava!
+
+      Faça §equalquer ferramenta ou arma de netherita§r. Recomendo começar pela picareta.
+    tasks:
+      - one_of: [etfuturum:netherite_pickaxe, etfuturum:netherite_sword, etfuturum:netherite_axe, etfuturum:netherite_spade, etfuturum:netherite_hoe]
+    rewards:
+      - xp: 3
+      - choice: [minecraft:diamond x2, minecraft:experience_bottle x12, minecraft:golden_apple x2]
+
+  - id: armadura_netherita
+    title: "Armadura de Netherita"
+    type: normal
+    deps: [ferramenta_netherita]
+    icon: etfuturum:netherite_chestplate
+    desc: |
+      Quatro lingotes de netherita (16 sucatas, 16 ouros...) e quatro peças de diamante
+      na Mesa de Ferraria: §earmadura completa de netherita§r. A mesma proteção do diamante
+      (3/8/6/3) com bem mais durabilidade — e à prova de fogo.
+
+      Me mostre as §equatro peças§r. É caro, eu sei. Vale cada detrito.
+    tasks:
+      - get: [etfuturum:netherite_helmet, etfuturum:netherite_chestplate, etfuturum:netherite_leggings, etfuturum:netherite_boots]
+    rewards:
+      - item: minecraft:golden_apple x2
+      - xp: 2
+
+  - id: bloco_netherita
+    title: "Bloco de Netherita"
+    type: optional
+    deps: [lingote_netherita]
+    icon: etfuturum:netherite_block
+    desc: |
+      Nove lingotes de netherita fazem um §eBloco de Netherita§r: base de sinalizador e
+      demonstração descarada de riqueza. Ah, e tem uma escada de netherita chamada
+      "Swaggiest stairs ever". Eu não inventei isso.
+
+      Faça §eum bloco§r se tiver coragem (e detritos).
+    tasks:
+      - get: etfuturum:netherite_block
+    rewards:
+      - loot: comum
+
+  # ======================================================================
+  # O FIM RENOVADO
+  # ======================================================================
+  - id: fim_renovado
+    title: "O Fim Renovado"
+    type: info
+    deps: [ecos_do_futuro]
+    icon: etfuturum:end_bricks
+    desc: |
+      O Fim deste pack usa o gerador do Et Futurum: além da ilha central, existem §eilhas
+      externas§r bem longe (a mais de ~1000 blocos do centro), onde crescem as §ePlantas
+      Chorus§r. Os portais de passagem (End Gateways) existem no mod, mas §cnão são
+      gerados§r: para chegar lá, construa uma ponte ou use outros meios de transporte.
+
+      Depois de vencer o dragão, §e4 Cristais do Fim§r colocados no portal de saída
+      podem §einvocá-lo de novo§r. (A luta em si é no Volume "O Fim".)
+    tasks:
+      - check
+    rewards:
+      - xp: 1
+
+  - id: tijolos_fim
+    title: "Tijolos de Pedra do Fim"
+    type: normal
+    deps: [fim_renovado]
+    icon: etfuturum:end_bricks
+    desc: |
+      Quatro pedras do Fim viram 4 §eTijolos de Pedra do Fim§r — com lajes, escadas e
+      muros. Uma pedra clara e elegante para construções no vazio.
+
+      Faça §e16 tijolos de pedra do Fim§r.
+    tasks:
+      - get: etfuturum:end_bricks x16
+    rewards:
+      - item: minecraft:end_stone x16
+      - xp: 1
+
+  - id: cristal_fim
+    title: "Cristal do Fim"
+    type: normal
+    deps: [fim_renovado]
+    icon: etfuturum:end_crystal
+    desc: |
+      Sete vidros, um olho do fim e uma lágrima de ghast: §eCristal do Fim§r (End Crystal).
+      Quatro deles, um em cada lado do portal de saída, §einvocam o Dragão do Fim de novo§r.
+
+      Fabrique §e4 cristais§r para quando quiser uma revanche. §cEles explodem forte se
+      forem atingidos!§r
+    tasks:
+      - get: etfuturum:end_crystal x4
+    rewards:
+      - item: minecraft:ghast_tear
+      - xp: 2
+
+  - id: fruta_chorus
+    title: "A Fruta Chorus"
+    type: normal
+    deps: [fim_renovado]
+    icon: etfuturum:chorus_fruit
+    desc: |
+      Nas ilhas externas crescem §ePlantas Chorus§r roxas. Quebre-as para pegar §eFrutas
+      Chorus§r: comer uma §eteleporta§r você para um lugar aleatório perto (útil para
+      fugir!). Plante as §eFlores Chorus§r em pedra do Fim para cultivar.
+
+      Junte §e16 frutas chorus§r.
+    tasks:
+      - get: etfuturum:chorus_fruit x16
+    rewards:
+      - item: minecraft:ender_pearl x2
+      - xp: 2
+
+  - id: purpur
+    title: "Purpur e Varas do Fim"
+    type: normal
+    deps: [fruta_chorus]
+    icon: etfuturum:purpur_block
+    desc: |
+      Asse a fruta chorus: §eFruta Chorus Estourada§r. Quatro delas fazem 4 §eBlocos de
+      Purpur§r (com pilares, lajes e escadas). Uma vara de blaze + uma fruta estourada =
+      §eVara do Fim§r (End Rod), uma luz fininha e brilhante.
+
+      Faça §e16 blocos de purpur§r e §e2 varas do fim§r.
+    tasks:
+      - get: [etfuturum:purpur_block x16, etfuturum:end_rod x2]
+    rewards:
+      - item: etfuturum:chorus_fruit x4
+      - xp: 2
+
+  - id: sopro_dragao
+    title: "Sopro do Dragão Engarrafado"
+    type: optional
+    deps: [fruta_chorus]
+    icon: etfuturum:dragon_breath
+    desc: |
+      Neste pack, o §eSopro do Dragão§r tem uma receita própria na bancada: uma §ePoção de
+      Resistência ao Fogo§r com duas frutas chorus. §cAtenção:§r a receita pede uma
+      variante específica da poção — abra o NEI (R no Sopro do Dragão) e confira qual
+      antes de fermentar.
+
+      No suporte de poções, ele transforma poções arremessáveis em §ePoções Duradouras§r
+      (Lingering), que deixam uma nuvem de efeito no chão. Faça §eum sopro do dragão§r.
+    tasks:
+      - get: etfuturum:dragon_breath
+    rewards:
+      - loot: comum
+
+  - id: pocao_duradoura
+    title: "Poções Duradouras e Flechas Imbuídas"
+    type: optional
+    deps: [sopro_dragao]
+    icon: etfuturum:lingering_potion:8193
+    desc: |
+      Poção arremessável + sopro do dragão (no suporte) = §ePoção Duradoura§r: uma nuvem que
+      fica no chão aplicando o efeito. E oito flechas em volta de uma poção duradoura
+      viram §eFlechas Imbuídas§r (Tipped Arrows) com aquele efeito!
+
+      Faça §equalquer poção duradoura§r.
+    tasks:
+      - get: etfuturum:lingering_potion:*
+    rewards:
+      - loot: comum
+
+  # ======================================================================
+  # MARCOS
+  # ======================================================================
+  - id: encantos_futuro
+    title: "Encantamentos do Futuro"
+    type: info
+    deps: [ecos_do_futuro]
+    icon: minecraft:enchanted_book
+    desc: |
+      Três encantamentos novos chegaram com o Et Futurum:
+
+      §d• Remendo (Mending):§r o XP que você pega conserta o item encantado. Na mesa de
+      encantamentos ele só aparece ao encantar §elivros§r — depois, aplique o livro na
+      bigorna.
+      §d• Passos Gelados (Frost Walker):§r congela a água sob seus pés.
+      §d• Agachar Veloz (Swift Sneak):§r anda mais rápido agachado.
+
+      Neste pack, o Remendo também funciona em itens equipados nos slots do Baubles.
+    tasks:
+      - check
+    rewards:
+      - xp: 1
+
+  - id: ecos_cobre_ametista
+    title: "Ecos das Profundezas"
+    type: milestone
+    deps: [ardosia_lapidada, cobre_cortado, lampada_cobre, vidro_escurecido, tufo]
+    icon: etfuturum:copper_bulb
+    banner: "Ecos das Profundezas!"
+    subtitle: "Ardósia, cobre e ametista"
+    desc: |
+      Ardósia lapidada, tufo, cobre cortado, lâmpadas que piscam e vidro de ametista. Você
+      ouviu os ecos do subterrâneo do futuro, Herói — e trouxe todos para casa.
+
+      O mais legal é que nada disso fica isolado: o cobre é o mesmo dos Volumes de
+      tecnologia, e a ardósia é uma das pedras mais bonitas para construir. Experimenta
+      fazer uma torre de ardósia com detalhes de cobre oxidado... eu fico só imaginando.
+
+      Toma um kitzinho de construtor do futuro.
+    tasks:
+      - check
+    rewards:
+      - kit:
+          name: "Kit do Construtor do Futuro"
+          items: ["etfuturum:cobbled_deepslate x64", "etfuturum:copper_ingot x16", "etfuturum:amethyst_shard x8", "etfuturum:honeycomb x2"]
+      - loot: incomum
+      - xp: 5
+
+  - id: oficina_futuro
+    title: "A Oficina do Futuro"
+    type: milestone
+    deps: [barril_ferro, defumador, alto_forno, mesa_ferraria, suporte_armadura, observador, composteira]
+    icon: etfuturum:blast_furnace
+    banner: "A Oficina do Futuro!"
+    subtitle: "Barris, defumador, alto-forno e ferraria"
+    desc: |
+      Barris empilhados, um defumador cheirando a churrasco, o alto-forno roncando, a mesa
+      de ferraria pronta e um suporte de armaduras exibindo o seu melhor conjunto. Que
+      oficina, Herói!
+
+      Essas estações aceleram muito o começo do jogo: comida e lingotes no dobro da
+      velocidade, organização melhor e a porta aberta para a netherita.
+
+      Um kit para equipar a oficina. Agora... que tal uma visita ao Nether?
+    tasks:
+      - check
+    rewards:
+      - kit:
+          name: "Kit da Oficina"
+          items: ["minecraft:coal_block x4", "minecraft:iron_ingot x16", "etfuturum:barrel x2", "minecraft:beef x12"]
+      - loot: incomum
+      - xp: 5
+
+  - id: forja_netherita
+    title: "Forjado em Netherita"
+    type: milestone
+    deps: [ferramenta_netherita, armadura_netherita]
+    icon: etfuturum:netherite_ingot
+    banner: "Forjado em Netherita!"
+    subtitle: "O metal mais forte do mundo comum"
+    desc: |
+      Detritos arrancados das entranhas do Nether, sucata fundida, ouro misturado e uma
+      mesa de ferraria. O resultado está aí, em você: §enetherita§r, o metal mais
+      resistente que o mundo comum conhece.
+
+      Engraçado pensar que, lá na frente, os Volumes dos "metais impossíveis" (Draconic,
+      Avaritia, ATM) vão fazer até a netherita parecer modesta. Mas cada um deles começa
+      com alguém que, um dia, encarou o Nether e voltou com detritos no bolso.
+
+      Parabéns. Você merece.
+    tasks:
+      - check
+    rewards:
+      - kit:
+          name: "Kit do Forjador"
+          items: ["minecraft:gold_ingot x16", "minecraft:golden_apple x2", "minecraft:experience_bottle x16"]
+      - loot: incomum
+      - xp: 5
+
+  - id: ecos_completos
+    title: "Todos os Ecos"
+    type: milestone
+    deps: [ecos_cobre_ametista, oficina_futuro, forja_netherita, abelhas, frutas_doces, purpur]
+    icon: etfuturum:end_rod
+    size: 48
+    banner: "Todos os Ecos!"
+    subtitle: "O futuro e o passado se encontraram"
+    desc: |
+      Cobre e ametista nas profundezas, uma oficina inteira, netherita forjada, abelhas
+      zumbindo, frutas doces, purpur e varas do Fim. Você ouviu cada eco do futuro que
+      chegou até aqui.
+
+      Sabe o que isso significa para o Registro? Que até as páginas que ainda não tinham
+      sido escritas quando ele se partiu podem ser recuperadas. Isso me dá esperança para
+      a última página de todas... mas isso é história para muito, muito depois.
+
+      Obrigada por ouvir comigo, Herói. ♥
+    tasks:
+      - check
+    rewards:
+      - kit:
+          name: "Kit dos Ecos"
+          items: ["etfuturum:netherite_scrap x2", "etfuturum:honey_block", "etfuturum:end_crystal", "minecraft:diamond x2"]
+      - loot: incomum
+      - xp: 5

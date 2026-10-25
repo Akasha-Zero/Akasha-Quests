@@ -1,0 +1,1607 @@
+chapter:
+  id: extrautils
+  title: "Extra Utilities"
+  prefix: ""
+  order: 355
+  icon: ExtraUtilities:angelBlock
+  desc: |
+    §bO Volume das Pequenas Maravilhas.§r Blocos que flutuam no ar, geradores para tudo,
+    nós de transferência, lingotes que explodem, um ritual à meia-noite e duas dimensões
+    estranhas. (Extra Utilities 1.2.13a)
+
+quests:
+  # ======================================================================
+  # FASE 0 — UTILIDADES DO DIA A DIA
+  # ======================================================================
+  - id: bloco_anjo
+    title: "O Bloco Anjo"
+    type: main
+    icon: ExtraUtilities:angelBlock
+    desc: |
+      Vou começar pelo meu favorito, Herói. O §eBloco Anjo§r pode ser colocado §eno ar§r — sem
+      nenhum bloco de apoio. Clique direito no vazio e ele aparece na sua frente. Quebrar é
+      instantâneo, e no modo sobrevivência ele volta direto para o inventário.
+
+      Receita: ouro em cima, penas dos lados e obsidiana no meio. Ponte sobre a lava, andaime no
+      céu, ilha no oceano... você vai querer uns cinco.
+    tasks:
+      - get: ExtraUtilities:angelBlock x2
+    rewards:
+      - xp: 3
+      - choice: [minecraft:feather x16, minecraft:obsidian x8, minecraft:gold_ingot x4]
+
+  - id: pedregulho_comprimido
+    title: "Pedregulho Comprimido"
+    type: main
+    deps: [bloco_anjo]
+    icon: ExtraUtilities:cobblestone_compressed
+    desc: |
+      Baús e mais baús de pedregulho? 9 pedregulhos = 1 §ePedregulho Comprimido§r. 9 desses = 1
+      Duplamente Comprimido... e assim até o §eOctuplamente§r (43 milhões de pedregulhos!). Dá
+      para descomprimir na bancada a qualquer momento.
+
+      Faça §e4 Pedregulhos Comprimidos§r. Mais tarde eles viram portais e Bedrockium.
+    tasks:
+      - get: ExtraUtilities:cobblestone_compressed x4
+    rewards:
+      - xp: 3
+      - choice: [minecraft:cobblestone x64, minecraft:iron_ingot x6, minecraft:torch x32]
+
+  - id: comprimido_duplo
+    title: "Duplamente Comprimido"
+    type: normal
+    deps: [pedregulho_comprimido]
+    icon: ExtraUtilities:cobblestone_compressed:1
+    desc: |
+      81 pedregulhos num bloco só. Junte §e4 Duplamente Comprimidos§r — o caminho até o Bedrockium
+      e o Portal do Escuro Profundo passa por aqui.
+    tasks:
+      - get: ExtraUtilities:cobblestone_compressed:1 x4
+    rewards:
+      - xp: 2
+      - item: minecraft:cobblestone x64
+
+  - id: comprimido_triplo
+    title: "Triplamente Comprimido"
+    type: normal
+    deps: [comprimido_duplo]
+    icon: ExtraUtilities:cobblestone_compressed:2
+    desc: |
+      729 pedregulhos por bloco. Um Extrusor Ígneo, um Nó de Transferência com melhoria de
+      interação ou uma Pedreira ajudam muito. Junte §e4§r.
+    tasks:
+      - get: ExtraUtilities:cobblestone_compressed:2 x4
+    rewards:
+      - xp: 2
+      - item: ExtraUtilities:cobblestone_compressed x9
+
+  - id: comprimido_quadruplo
+    title: "Quadruplamente Comprimido"
+    type: normal
+    deps: [comprimido_triplo]
+    icon: ExtraUtilities:cobblestone_compressed:3
+    desc: |
+      6 561 pedregulhos por bloco. É ingrediente do §eBedrockium§r (junto do Triplamente
+      Comprimido e de um bloco de diamante) e do §ePortal do Escuro Profundo§r. Junte §e4§r.
+    tasks:
+      - get: ExtraUtilities:cobblestone_compressed:3 x4
+    rewards:
+      - xp: 3
+      - item: ExtraUtilities:cobblestone_compressed:1 x9
+
+  - id: comprimido_quintuplo
+    title: "Quintuplamente Comprimido"
+    type: optional
+    deps: [comprimido_quadruplo]
+    icon: ExtraUtilities:cobblestone_compressed:4
+    desc: |
+      59 049 pedregulhos. Vai no centro do Portal do Escuro Profundo. Sim, eu fiz a conta duas
+      vezes.
+    tasks:
+      - get: ExtraUtilities:cobblestone_compressed:4
+    rewards:
+      - loot: incomum
+
+  - id: comprimido_octuplo
+    title: "Octuplamente Comprimido"
+    type: optional
+    deps: [comprimido_quintuplo]
+    icon: ExtraUtilities:cobblestone_compressed:7
+    desc: |
+      §e43 046 721 pedregulhos§r num único bloco. Na fornalha, ele vira um §eBloco de
+      Bedrockium§r. Isso é um projeto de vida — e eu vou torcer por você em cada compressão.
+    tasks:
+      - get: ExtraUtilities:cobblestone_compressed:7
+    rewards:
+      - loot: raro
+
+  - id: outros_comprimidos
+    title: "Terra, Cascalho e Areia Comprimidos"
+    type: optional
+    deps: [pedregulho_comprimido]
+    icon: ExtraUtilities:cobblestone_compressed:8
+    desc: |
+      A mesma compressão vale para §eterra§r (até 4×), §ecascalho§r e §eareia§r (até 2×). Faça
+      qualquer um e libere espaço no baú.
+    tasks:
+      - one_of: [ExtraUtilities:cobblestone_compressed:8, ExtraUtilities:cobblestone_compressed:12, ExtraUtilities:cobblestone_compressed:14]
+    rewards:
+      - loot: comum
+
+  - id: lata_lixo
+    title: "Lata de Lixo"
+    type: normal
+    deps: [bloco_anjo]
+    icon: ExtraUtilities:trashcan
+    desc: |
+      Pedra, pedregulho e um baú. A §eLata de Lixo§r destrói tudo que entra: arraste ou use
+      agachado + clique. Funis e canos também podem despejar nela, e um Filtro de Itens no slot
+      faz ela aceitar só o que você quiser. Sem lag, sem drama.
+    tasks:
+      - get: ExtraUtilities:trashcan
+    rewards:
+      - xp: 2
+      - item: minecraft:chest x2
+
+  - id: lixo_fluido_energia
+    title: "Lixeiras de Fluido e de Energia"
+    type: optional
+    deps: [lata_lixo]
+    icon: ExtraUtilities:trashcan:1
+    desc: |
+      Lata de Lixo + balde = §eLixeira de Fluidos§r; + ouro e redstone = §eLixeira de Energia§r.
+      Para aquele excesso de água, lava ou RF que você não sabe onde pôr.
+    tasks:
+      - one_of: [ExtraUtilities:trashcan:1, ExtraUtilities:trashcan:2]
+    rewards:
+      - loot: comum
+
+  - id: regador
+    title: "Regador"
+    type: normal
+    deps: [bloco_anjo]
+    icon: ExtraUtilities:watering_can:1
+    desc: |
+      Ferro, farinha de osso e uma tigela. Encha o §eRegador§r com água (clique numa fonte) e
+      segure o botão direito sobre as plantas: elas crescem bem mais rápido. Também apaga fogo
+      (inclusive em você!) e, de vez em quando, esvazia.
+    tasks:
+      - get: ExtraUtilities:watering_can:*
+    rewards:
+      - xp: 2
+      - item: minecraft:wheat_seeds x16
+
+  - id: abafa_som
+    title: "Abafa-Som"
+    type: normal
+    deps: [bloco_anjo]
+    icon: ExtraUtilities:sound_muffler
+    desc: |
+      Lã em volta de um bloco musical. O §eAbafa-Som§r reduz em 90% qualquer som num raio de 8
+      blocos. Sua fazenda de ovelhas finalmente vai ficar em silêncio.
+    tasks:
+      - get: ExtraUtilities:sound_muffler
+    rewards:
+      - xp: 2
+      - item: minecraft:wool x8
+
+  - id: abafa_chuva
+    title: "Abafa-Chuva"
+    type: optional
+    deps: [abafa_som]
+    icon: ExtraUtilities:sound_muffler:1
+    desc: |
+      Lã em volta de um balde de água. O §eAbafa-Chuva§r silencia o som de chuva num raio de 64
+      blocos. Clique nele para pôr "algodão mágico nos ouvidos" e nunca mais ouvir chuva (só
+      afeta o som).
+    tasks:
+      - get: ExtraUtilities:sound_muffler:1
+    rewards:
+      - loot: comum
+
+  - id: relogio_redstone
+    title: "Loop de Redstone"
+    type: optional
+    deps: [bloco_anjo]
+    icon: ExtraUtilities:timer
+    desc: |
+      Redstone, pedra e uma tocha de redstone. Emite §eum pulso por segundo§r, sem montar relógio
+      de repetidores. Barato e confiável.
+    tasks:
+      - get: ExtraUtilities:timer
+    rewards:
+      - loot: comum
+
+  - id: bud
+    title: "Detector de Atualização de Bloco"
+    type: optional
+    deps: [relogio_redstone]
+    icon: ExtraUtilities:budoff
+    desc: |
+      O §eBUD§r manda um pulso quando um bloco vizinho é atualizado — ótimo para colher abóboras ou
+      detectar crescimento. A versão §eAvançada§r (com blocos de redstone) percebe qualquer mudança
+      de bloco, sem precisar de atualização, e a Chave Inglesa escolhe o lado de saída.
+    tasks:
+      - one_of: [ExtraUtilities:budoff, ExtraUtilities:budoff:3]
+    rewards:
+      - loot: comum
+
+  - id: esteira
+    title: "Esteira"
+    type: optional
+    deps: [bloco_anjo]
+    icon: ExtraUtilities:conveyor
+    desc: |
+      Trilhos, ferro e redstone = 8 §eEsteiras§r. Feitas para fazendas de mobs: movem criaturas e
+      itens, mantêm tudo centralizado e até sobem degraus. Leve o drop direto para o baú.
+    tasks:
+      - get: ExtraUtilities:conveyor x8
+    rewards:
+      - loot: comum
+
+  - id: baus
+    title: "Baús Pequenos e Médios"
+    type: optional
+    deps: [bloco_anjo]
+    icon: ExtraUtilities:chestFull
+    desc: |
+      O §eBaú Um Pouco Maior§r (baú cercado de gravetos) tem mais espaço que um baú comum sem
+      ocupar dois blocos; quebrado em 9, ele vira §eMini-Baús§r de um slot — ótimos como buffer de
+      máquinas.
+    tasks:
+      - one_of: [ExtraUtilities:chestFull, ExtraUtilities:chestMini]
+    rewards:
+      - loot: comum
+
+  - id: arquivador
+    title: "Arquivador"
+    type: normal
+    deps: [baus]
+    icon: ExtraUtilities:filing
+    desc: |
+      Três baús e ferro. O §eArquivador§r guarda §e270 itens que não empilham§r, desde que tenham o
+      mesmo ID (espadas de diamante com encantamentos diferentes, por exemplo), e mantém tudo em
+      ordem alfabética.
+    tasks:
+      - get: ExtraUtilities:filing
+    rewards:
+      - xp: 2
+      - item: minecraft:chest x2
+
+  - id: lustre
+    title: "Lustre"
+    type: normal
+    deps: [bloco_anjo]
+    icon: ExtraUtilities:chandelier
+    desc: |
+      Ouro, diamante e tochas. O §eLustre§r ilumina um pouquinho mais que uma tocha e, mais
+      importante, §eimpede monstros de nascerem num raio de 16 blocos§r, mesmo sem linha de visão.
+      Luxo com função!
+    tasks:
+      - get: ExtraUtilities:chandelier
+    rewards:
+      - xp: 2
+      - item: minecraft:torch x32
+
+  - id: cortinas
+    title: "Cortinas de Blackout"
+    type: optional
+    deps: [bloco_anjo]
+    icon: ExtraUtilities:curtains
+    desc: |
+      6 lãs = 12 cortinas. Elas reduzem a luz pela metade e dá para atravessá-las. Perfeitas para o
+      quarto (ou para uma sala de spawn escura).
+    tasks:
+      - get: ExtraUtilities:curtains x4
+    rewards:
+      - loot: comum
+
+  - id: posto_trocas
+    title: "Posto de Trocas"
+    type: optional
+    deps: [bloco_anjo]
+    icon: ExtraUtilities:trading_post
+    desc: |
+      Tábuas, um bloco de esmeralda e uma jukebox. O §ePosto de Trocas§r lista as trocas de todos
+      os aldeões próximos: clique numa e a tela de troca daquele aldeão abre. Caçar o
+      bibliotecário certo ficou fácil.
+    tasks:
+      - get: ExtraUtilities:trading_post
+    rewards:
+      - loot: comum
+
+  - id: mesa_pacifica
+    title: "Mesa do Pacífico"
+    type: optional
+    deps: [bloco_anjo]
+    icon: ExtraUtilities:peaceful_table_top
+    desc: |
+      Esmeraldas, tábuas e uma pérola do Ender. Ao lado de um baú com uma espada, a §eMesa do
+      Pacífico§r "gera e abate" mobs e guarda os drops. §cMas atenção:§r pela config do pack
+      (`peacefulTableInAllDifficulties=false`) ela §cfunciona apenas na dificuldade Pacífica§r —
+      num servidor normal, é decoração.
+    tasks:
+      - get: ExtraUtilities:peaceful_table_top
+    rewards:
+      - loot: comum
+
+  - id: sacola_dourada
+    title: "Sacola Dourada"
+    type: normal
+    deps: [bloco_anjo]
+    icon: ExtraUtilities:golden_bag
+    desc: |
+      Lã, ouro, diamante, um baú e um bloco de ouro. A §eSacola Dourada§r carrega o equivalente a
+      §eum baú duplo§r: clique direito para abrir. Mais tarde, combinada com Madeira Mágica na
+      bancada, ela fica "encantada" (confira o tooltip para o efeito).
+    tasks:
+      - get: ExtraUtilities:golden_bag
+    rewards:
+      - xp: 3
+      - item: minecraft:gold_ingot x4
+
+  - id: laco_dourado
+    title: "Laço Dourado"
+    type: normal
+    deps: [bloco_anjo]
+    icon: ExtraUtilities:golden_lasso
+    desc: |
+      Pepitas de ouro, barbante e um olho do Ender. Clique num animal passivo com o §eLaço Dourado§r
+      e ele fica guardado dentro do item; clique no chão para soltar. Nada de puxar vaca com trigo
+      pela floresta! (E ele ajuda num certo ritual, mais adiante...)
+    tasks:
+      - get: ExtraUtilities:golden_lasso
+    rewards:
+      - xp: 2
+      - item: minecraft:wheat x16
+
+  - id: barril
+    title: "Barril"
+    type: normal
+    deps: [bloco_anjo]
+    icon: ExtraUtilities:drum
+    desc: |
+      Ferro, placas de pressão pesadas e um caldeirão. O §eBarril§r guarda §e256 baldes§r de um
+      fluido. Clique com um graveto (ou agachado com chave inglesa) para pegá-lo §esem perder o
+      conteúdo§r. Tinja com corante.
+    tasks:
+      - get: ExtraUtilities:drum
+    rewards:
+      - xp: 2
+      - item: minecraft:bucket x4
+
+  - id: luva
+    title: "Luva"
+    type: optional
+    deps: [bloco_anjo]
+    icon: ExtraUtilities:glove
+    desc: |
+      Lã e barbante. Com a §eLuva§r na mão, você clica nos blocos "de mão vazia" sem liberar um
+      slot. Segure correr ao clicar para usar a própria luva. A cor da lã muda a cor da luva!
+    tasks:
+      - get: ExtraUtilities:glove
+    rewards:
+      - loot: comum
+
+  - id: escaneador
+    title: "Escaneador Portátil"
+    type: optional
+    deps: [bloco_anjo]
+    icon: ExtraUtilities:scanner
+    desc: |
+      Ferro, olho do Ender e redstone. Clique num bloco complexo para ver informações dele; com o
+      escaneador na mão, você enxerga o caminho de itens e fluidos dentro dos Tubos de
+      Transferência. Ótimo para achar o entupimento.
+    tasks:
+      - get: ExtraUtilities:scanner
+    rewards:
+      - loot: comum
+
+  - id: pincel_cores
+    title: "Pincel e Blocos Coloridos"
+    type: optional
+    deps: [bloco_anjo]
+    icon: ExtraUtilities:paintbrush
+    desc: |
+      O §ePincel§r (barbante + gravetos) transforma tijolos de pedra e tábuas em versões coloridas.
+      O truque: tingir um bloco colorido muda a "paleta" daquela cor em todo o chunk. Faça o
+      pincel e algumas Tábuas Coloridas.
+    tasks:
+      - get: [ExtraUtilities:paintbrush, ExtraUtilities:colorWoodPlanks:* x8]
+    rewards:
+      - loot: comum
+
+  - id: bobina_inducao
+    title: "Bobina de Indução"
+    type: optional
+    deps: [bloco_anjo]
+    icon: ExtraUtilities:heatingElement
+    desc: |
+      Placas de pressão pesadas e redstone. A §eBobina de Indução§r é um item que guarda RF —
+      confira no tooltip/NEI como ela é usada como "combustível" recarregável.
+    tasks:
+      - get: ExtraUtilities:heatingElement
+    rewards:
+      - loot: comum
+
+  # ======================================================================
+  # FASE 1 — ESPINHOS E ENCANTAMENTO
+  # ======================================================================
+  - id: espinhos_madeira
+    title: "Espinho de Madeira"
+    type: normal
+    deps: [bloco_anjo]
+    icon: ExtraUtilities:spike_base_wood
+    desc: |
+      Espadas de madeira, tábuas e tronco = 4 §eEspinhos de Madeira§r. Espinhos ferem qualquer
+      criatura que encoste neles e são a base das fazendas de mobs. O de madeira é o mais fraco
+      da família (leia o tooltip de cada um: eles se comportam diferente).
+    tasks:
+      - get: ExtraUtilities:spike_base_wood x4
+    rewards:
+      - xp: 2
+      - item: minecraft:planks x16
+
+  - id: espinhos_ferro
+    title: "Espinho de Ferro"
+    type: normal
+    deps: [espinhos_madeira]
+    icon: ExtraUtilities:spike_base
+    desc: |
+      Espadas de ferro, ferro e um bloco de ferro = 4. Dano alto; mobs mortos por eles soltam até
+      os itens "raros", §cmas não soltam experiência§r. Combine com Esteiras e um Cano de Obsidiana.
+    tasks:
+      - get: ExtraUtilities:spike_base x4
+    rewards:
+      - xp: 2
+      - item: minecraft:iron_ingot x6
+
+  - id: espinhos_ouro
+    title: "Espinho de Ouro"
+    type: optional
+    deps: [espinhos_ferro, madeira_magica]
+    icon: ExtraUtilities:spike_base_gold
+    desc: |
+      Espadas de ouro, Madeira Mágica e um bloco de ouro. Uma variante "encantada" do espinho —
+      confira no tooltip a diferença em relação ao de ferro antes de montar a sua fazenda.
+    tasks:
+      - get: ExtraUtilities:spike_base_gold x4
+    rewards:
+      - loot: incomum
+
+  - id: espinhos_diamante
+    title: "Espinho de Diamante"
+    type: optional
+    deps: [espinhos_ouro]
+    icon: ExtraUtilities:spike_base_diamond
+    desc: |
+      Espadas de diamante, Espinhos de Ouro e um bloco de diamante: o espinho mais forte. Caro,
+      mas transforma qualquer fazenda de mobs numa máquina de drops.
+    tasks:
+      - get: ExtraUtilities:spike_base_diamond x4
+    rewards:
+      - loot: incomum
+
+  - id: obsidiana_ender
+    title: "Obsidiana Fundida em Ender"
+    type: main
+    deps: [bloco_anjo]
+    icon: ExtraUtilities:decorativeBlock1:1
+    desc: |
+      4 obsidianas em volta de uma pérola do Ender = 4 §eObsidianas Fundidas em Ender§r. Ela é a
+      base de quase tudo que é "Ender" neste mod: Coletor, Bomba, QED, Pedreira do Fim, Núcleo de
+      Ender. Faça 8.
+    tasks:
+      - get: ExtraUtilities:decorativeBlock1:1 x8
+    rewards:
+      - xp: 3
+      - choice: [minecraft:obsidian x8, minecraft:ender_pearl x4, minecraft:diamond]
+
+  - id: madeira_magica
+    title: "Madeira Mágica"
+    type: normal
+    deps: [bloco_anjo]
+    icon: ExtraUtilities:decorativeBlock1:8
+    desc: |
+      Uma estante, ouro e §elivros encantados§r. A §eMadeira Mágica§r aumenta em 5 níveis o máximo
+      das mesas de encantamento próximas (até o limite de 30). Também é ingrediente do Núcleo de
+      Ender, do Arquivador Avançado e do Espinho de Ouro.
+    tasks:
+      - get: ExtraUtilities:decorativeBlock1:8
+    rewards:
+      - xp: 2
+      - item: minecraft:book x8
+
+  - id: nucleo_ender
+    title: "Núcleo de Ender"
+    type: normal
+    deps: [madeira_magica, obsidiana_ender]
+    icon: ExtraUtilities:decorativeBlock1:11
+    desc: |
+      Madeira Mágica + Obsidiana Fundida em Ender + olho do Ender. O §eNúcleo de Ender§r turbina a
+      mesa de encantamento em §e20 níveis§r (até 30) — uma estante inteira num bloco. Também vai na
+      Pedreira do Fim.
+    tasks:
+      - get: ExtraUtilities:decorativeBlock1:11
+    rewards:
+      - xp: 3
+      - item: minecraft:ender_eye x2
+
+  - id: arquivador_avancado
+    title: "Arquivador Avançado"
+    type: optional
+    deps: [arquivador, madeira_magica]
+    icon: ExtraUtilities:filing:1
+    desc: |
+      Arquivadores + Madeira Mágica. A versão avançada guarda §e540 itens não-empilháveis de
+      qualquer tipo§r, em ordem alfabética. O armário de ferramentas dos sonhos.
+    tasks:
+      - get: ExtraUtilities:filing:1
+    rewards:
+      - loot: comum
+
+  - id: vidro_temperado
+    title: "Vidros Decorativos"
+    type: optional
+    deps: [bloco_anjo]
+    icon: ExtraUtilities:decorativeBlock2
+    desc: |
+      Areia + vidro = Vidro "Areiado"; na fornalha ele vira §eVidro Temperado§r, que se une sem
+      bordas. Daí saem vidro com bordas, tijolos de vidro, vidro de coração, vidro escuro... Faça
+      alguns Vidros Temperados.
+    tasks:
+      - get: ExtraUtilities:decorativeBlock2 x8
+    rewards:
+      - loot: comum
+
+  - id: coletor_ender
+    title: "Coletor do Fim"
+    type: optional
+    deps: [obsidiana_ender]
+    icon: ExtraUtilities:enderCollector
+    desc: |
+      Pérolas do Ender e Obsidiana Fundida em Ender. O §eEnder Collector§r puxa itens caídos ao
+      redor dele para o inventário encostado. Um aspirador silencioso.
+    tasks:
+      - get: ExtraUtilities:enderCollector
+    rewards:
+      - loot: comum
+
+  - id: lirio_ender
+    title: "Vitória-Régia do Fim"
+    type: optional
+    deps: [obsidiana_ender]
+    icon: ExtraUtilities:plant/ender_lilly
+    desc: |
+      As §eSementes de Vitória-Régia do Fim§r só aparecem em §ebaús de masmorra§r. A planta cresce
+      MUITO devagar (cerca de uma semana de jogo) e, madura, solta uma pérola do Ender. Cuidado:
+      ela cria espinhos conforme envelhece. As sementes também alimentam o Gerador do Fim.
+    tasks:
+      - get: ExtraUtilities:plant/ender_lilly
+    rewards:
+      - loot: incomum
+
+  - id: bomba_endertermica
+    title: "Bomba Ender-Térmica"
+    type: optional
+    deps: [obsidiana_ender]
+    icon: ExtraUtilities:enderThermicPump
+    desc: |
+      Uma bomba de lava "sem lag": ao bombear, ela troca a lava por pedra sem causar atualização e
+      carrega os chunks que precisa. Coloque logo acima da superfície de um lago de lava do
+      §eNether§r (por padrão só funciona lá). Funciona com energia, como a bomba do BuildCraft.
+    tasks:
+      - get: ExtraUtilities:enderThermicPump
+    rewards:
+      - loot: incomum
+
+  # ======================================================================
+  # FASE 2 — GERADORES
+  # ======================================================================
+  - id: aula_geradores
+    title: "Aula: Os Geradores"
+    type: info
+    deps: [bloco_anjo]
+    icon: ExtraUtilities:generator
+    desc: |
+      O Extra Utilities tem §e12 geradores de RF§r, cada um queimando algo diferente: combustível
+      de fornalha, lava, pérolas do Ender, comida, poções, sol, TNT, corante rosa, estrelas do
+      Nether... Quase todos levam fornalha e redstone embaixo da receita.
+
+      Eles empurram RF para os vizinhos? Não automaticamente para todos os mods: ligue com cabos
+      de outro mod (Ender IO, Mekanism, BuildCraft) ou com um §eNó de Transferência de Energia§r.
+      E existem versões §ex8§r e §ex64§r de cada gerador (8 ou 64 geradores num bloco).
+    tasks:
+      - check
+    rewards:
+      - xp: 1
+
+  - id: gerador_sobrevivente
+    title: "Gerador do Sobrevivente"
+    type: main
+    deps: [aula_geradores]
+    icon: ExtraUtilities:generator
+    desc: |
+      Pedregulho, ferro, pistão, fornalha e redstone. Queima combustível de fornalha com produção
+      §ebaixa§r, mas é surpreendentemente eficiente: cada carvão dura muito. O gerador perfeito do
+      começo de jogo.
+    tasks:
+      - get: ExtraUtilities:generator
+    rewards:
+      - xp: 3
+      - choice: [minecraft:coal x32, minecraft:iron_ingot x8, minecraft:redstone x16]
+
+  - id: gerador_fornalha
+    title: "Gerador de Fornalha"
+    type: normal
+    deps: [gerador_sobrevivente]
+    icon: ExtraUtilities:generator:1
+    desc: |
+      Ferro e um bloco de ferro. Também queima combustível de fornalha, mais rápido e com mais
+      potência que o do Sobrevivente.
+    tasks:
+      - get: ExtraUtilities:generator:1
+    rewards:
+      - xp: 2
+      - item: minecraft:coal x16
+
+  - id: gerador_alta_temp
+    title: "Gerador de Alta Temperatura"
+    type: optional
+    deps: [gerador_fornalha]
+    icon: ExtraUtilities:generator:10
+    desc: |
+      Um Gerador de Fornalha cercado de ferro. Começa fraquinho e §eesquenta§r com o tempo,
+      aumentando a produção — mas é pouco eficiente. Para quem tem carvão sobrando.
+    tasks:
+      - get: ExtraUtilities:generator:10
+    rewards:
+      - loot: comum
+
+  - id: gerador_culinario
+    title: "Gerador de Culinária"
+    type: normal
+    deps: [gerador_sobrevivente]
+    icon: ExtraUtilities:generator:5
+    desc: |
+      Um Gerador do Sobrevivente cercado de ferro. Queima §ecomida§r: quanto mais a comida
+      alimenta, mais RF; quanto mais "saciante", mais tempo dura. Com o HarvestCraft no pack,
+      isso é uma usina de lanches.
+    tasks:
+      - get: ExtraUtilities:generator:5
+    rewards:
+      - xp: 2
+      - item: minecraft:bread x16
+
+  - id: gerador_rosa
+    title: "Gerador Rosa"
+    type: optional
+    deps: [gerador_sobrevivente]
+    icon: ExtraUtilities:generator:9
+    desc: |
+      Um Gerador do Sobrevivente cercado de lã rosa. Funciona com o §epoder do amor§r: corante rosa
+      ou qualquer coisa feita com corante rosa. Eu não inventei isso, juro. Está no manual!
+    tasks:
+      - get: ExtraUtilities:generator:9
+    rewards:
+      - loot: comum
+
+  - id: gerador_lava
+    title: "Gerador de Lava"
+    type: normal
+    deps: [gerador_fornalha]
+    icon: ExtraUtilities:generator:2
+    desc: |
+      Ouro e um bloco de ferro. Queima §elava bombeada em forma líquida§r (canos ou nós de
+      líquido). Não é a forma mais eficiente de usar lava, mas é simples.
+    tasks:
+      - get: ExtraUtilities:generator:2
+    rewards:
+      - xp: 2
+      - item: minecraft:lava_bucket
+
+  - id: gerador_redstone
+    title: "Gerador de Redstone Aquecida"
+    type: normal
+    deps: [gerador_lava]
+    icon: ExtraUtilities:generator:4
+    desc: |
+      Um Gerador de Lava cercado de blocos de redstone. Queima §elava + redstone§r ao mesmo tempo
+      (ou a Redstone Desestabilizada do Thermal). Bem mais potente.
+    tasks:
+      - get: ExtraUtilities:generator:4
+    rewards:
+      - xp: 2
+      - item: minecraft:redstone x32
+
+  - id: gerador_ender
+    title: "Gerador do Fim"
+    type: normal
+    deps: [gerador_fornalha]
+    icon: ExtraUtilities:generator:3
+    desc: |
+      Pérolas e olhos do Ender e um bloco de ferro. Queima §epérolas do Ender, olhos do Ender e
+      sementes de Vitória-Régia do Fim§r, com ótima eficiência. Uma fazenda de endermen vira uma
+      usina.
+    tasks:
+      - get: ExtraUtilities:generator:3
+    rewards:
+      - xp: 2
+      - item: minecraft:ender_pearl x4
+
+  - id: gerador_pocoes
+    title: "Gerador de Poções"
+    type: optional
+    deps: [gerador_fornalha]
+    icon: ExtraUtilities:generator:6
+    desc: |
+      Obsidiana e uma mesa de encantamento. Queima §epoções§r: cada etapa de preparo dobra a energia
+      gerada. Poções complexas valem muito!
+    tasks:
+      - get: ExtraUtilities:generator:6
+    rewards:
+      - loot: comum
+
+  - id: gerador_solar
+    title: "Gerador Solar"
+    type: optional
+    deps: [gerador_fornalha]
+    icon: ExtraUtilities:generator:7
+    desc: |
+      Lápis, quartzo e um bloco de diamante. Gera muito RF com sol direto, §cmas não consegue gerar
+      e transmitir ao mesmo tempo§r: alterne os modos com um sinal de redstone (o Loop de Redstone
+      ajuda).
+    tasks:
+      - get: ExtraUtilities:generator:7
+    rewards:
+      - loot: incomum
+
+  - id: gerador_tnt
+    title: "Gerador de TNT"
+    type: optional
+    deps: [gerador_fornalha]
+    icon: ExtraUtilities:generator:8
+    desc: |
+      TNT e um bloco de ferro. Queima pólvora e TNT. §cAs explosões não ficam totalmente contidas§r
+      — instale longe de tudo que você ama.
+    tasks:
+      - get: ExtraUtilities:generator:8
+    rewards:
+      - loot: comum
+
+  - id: gerador_estrela
+    title: "Gerador de Estrela do Nether"
+    type: optional
+    deps: [gerador_redstone, gerador_ender]
+    icon: ExtraUtilities:generator:11
+    desc: |
+      O monstro da família: queima §eEstrelas do Nether§r e produz mais energia do que a maioria dos
+      cabos consegue levar. §cEle fere tudo num raio de 10 blocos enquanto funciona.§r Confira a
+      receita no NEI — e mantenha distância.
+    tasks:
+      - get: ExtraUtilities:generator:11
+    rewards:
+      - loot: raro
+
+  - id: banco_geradores
+    title: "Banco de Geradores"
+    type: milestone
+    deps: [gerador_sobrevivente, gerador_culinario, gerador_lava, gerador_ender, gerador_redstone]
+    icon: ExtraUtilities:generator:4
+    banner: "Energia de Tudo"
+    subtitle: "Comida, lava, pérolas e redstone"
+    desc: |
+      Um gerador para cada coisa que sobra na base: comida velha, lava, pérolas, redstone. Herói,
+      você acabou de transformar lixo em energia! Os Antigos chamariam isso de alquimia; eu chamo
+      de bom senso.
+
+      Lembre-se: os geradores precisam de cabos (ou de nós de energia) para entregar RF a
+      máquinas de outros mods.
+    tasks:
+      - get: [ExtraUtilities:generator, ExtraUtilities:generator:5, ExtraUtilities:generator:2, ExtraUtilities:generator:3, ExtraUtilities:generator:4]
+    rewards:
+      - xp: 6
+      - kit: {name: "Kit do Gerador Curioso", items: [minecraft:coal x32, minecraft:ender_pearl x8, minecraft:redstone x32, minecraft:lava_bucket, minecraft:bread x16]}
+      - loot: incomum
+
+  # ======================================================================
+  # FASE 3 — NÓS E TUBOS DE TRANSFERÊNCIA
+  # ======================================================================
+  - id: tubo_transferencia
+    title: "Tubos de Transferência"
+    type: main
+    deps: [bloco_anjo]
+    icon: ExtraUtilities:pipes
+    desc: |
+      Lajes de pedra, vidro e redstone = 8 §eTubos de Transferência§r. Eles não fazem nada sozinhos:
+      são os "caminhos" que os Nós de Transferência percorrem procurando onde entregar itens e
+      fluidos. Clique com uma chave (ou graveto) para mudar direção ou impedir conexão com
+      inventários. Faça 16.
+    tasks:
+      - get: ExtraUtilities:pipes x16
+    rewards:
+      - xp: 3
+      - choice: [minecraft:stone_slab x16, minecraft:glass x16, minecraft:redstone x16]
+
+  - id: no_itens
+    title: "Nó de Transferência de Itens"
+    type: main
+    deps: [tubo_transferencia]
+    icon: ExtraUtilities:extractor_base
+    desc: |
+      Um tubo, redstone, uma pérola do Ender (rende 4) ou bloco de redstone (rende 1), pedra e baú.
+      Coloque o §eNó§r encostado num inventário: ele puxa itens e §epercorre os tubos§r procurando
+      inventários onde colocá-los, enchendo cada um até o fim antes de seguir.
+    tasks:
+      - get: ExtraUtilities:extractor_base x2
+    rewards:
+      - xp: 3
+      - choice: [minecraft:ender_pearl x2, minecraft:chest x4, minecraft:redstone x16]
+
+  - id: no_liquidos
+    title: "Nó de Transferência de Líquidos"
+    type: normal
+    deps: [no_itens]
+    icon: ExtraUtilities:extractor_base:6
+    desc: |
+      Como o de itens, mas para fluidos (lápis, ferro, balde). Ele insere metade do buffer em cada
+      tanque que encontra — a não ser que use um Tubo de Organização.
+    tasks:
+      - get: ExtraUtilities:extractor_base:6
+    rewards:
+      - xp: 2
+      - item: minecraft:bucket x2
+
+  - id: melhoria_velocidade
+    title: "Melhoria de Velocidade"
+    type: normal
+    deps: [no_itens]
+    icon: ExtraUtilities:nodeUpgrade
+    desc: |
+      Blocos de redstone e ouro = 4 §eMelhorias de Velocidade§r. Cada uma soma uma operação por
+      segundo ao nó (até 64). Também vai nas melhorias da Pedreira do Fim.
+    tasks:
+      - get: ExtraUtilities:nodeUpgrade x4
+    rewards:
+      - xp: 2
+      - item: minecraft:redstone_block x2
+
+  - id: melhoria_interacao
+    title: "Melhoria de Interação com o Mundo"
+    type: normal
+    deps: [no_itens]
+    icon: ExtraUtilities:nodeUpgrade:2
+    desc: |
+      Lápis, ferro e uma picareta de ferro. Com ela, o nó interage com o mundo:
+      §e•§r Nó de itens encostado num pedregulho entre lava e água: §egera pedregulho§r.
+      §e•§r Nó de itens numa bancada: §efabrica automaticamente§r (lendo os inventários atrás).
+      §e•§r Nó de itens sem inventário: §ecoleta itens§r do chão à frente.
+      §e•§r Nó de líquidos numa fonte infinita de água: §ebombeia água§r.
+    tasks:
+      - get: ExtraUtilities:nodeUpgrade:2
+    rewards:
+      - xp: 2
+      - item: minecraft:iron_ingot x4
+
+  - id: melhoria_pilha
+    title: "Melhoria de Pilhas Completas"
+    type: normal
+    deps: [melhoria_velocidade]
+    icon: ExtraUtilities:nodeUpgrade:3
+    desc: |
+      Melhoria de Velocidade + ouro + diamantes. O nó passa a mover §epilhas inteiras§r (ou o
+      máximo de fluido) de uma vez.
+    tasks:
+      - get: ExtraUtilities:nodeUpgrade:3
+    rewards:
+      - xp: 2
+      - item: minecraft:gold_ingot x4
+
+  - id: filtro_itens
+    title: "Filtro de Itens"
+    type: normal
+    deps: [no_itens]
+    icon: ExtraUtilities:nodeUpgrade:1
+    desc: |
+      Redstone, gravetos e barbante. Programe o §eFiltro§r (clique direito: as cópias são
+      "fantasmas") e ponha no nó, no Tubo de Filtro ou na Lata de Lixo. Na bancada, com tocha de
+      redstone ele inverte, e há versões que ignoram meta ou NBT. O §eFiltro Avançado§r (com lápis)
+      é ainda mais flexível.
+    tasks:
+      - one_of: [ExtraUtilities:nodeUpgrade:1, ExtraUtilities:nodeUpgrade:10]
+    rewards:
+      - xp: 2
+      - item: minecraft:string x8
+
+  - id: tubos_organizacao
+    title: "Tubos de Organização e de Filtro"
+    type: normal
+    deps: [tubo_transferencia, filtro_itens]
+    icon: ExtraUtilities:pipes:8
+    desc: |
+      §e• Organização:§r só insere em inventários que já têm aquele item (ou vazios).
+      §e• Organização por Mod:§r só junta itens do mesmo mod.
+      §e• Filtro:§r manda cada item para o lado da cor que você configurar.
+      Faça um Tubo de Organização e um de Filtro — e diga adeus ao baú de "coisas aleatórias".
+    tasks:
+      - get: [ExtraUtilities:pipes:8, ExtraUtilities:pipes:9]
+    rewards:
+      - xp: 2
+      - item: minecraft:chest x4
+
+  - id: tubos_especiais
+    title: "Tubos Especiais"
+    type: optional
+    deps: [tubo_transferencia]
+    icon: ExtraUtilities:pipes:12
+    desc: |
+      §e• Racionador:§r põe no máximo uma pilha de cada item por inventário (o Híper-Racionador,
+      menos ainda). §e• Junção:§r deixa dois sistemas se cruzarem sem se misturar.
+      §e• Organização por Mod:§r junta por mod. Faça qualquer um.
+    tasks:
+      - one_of: [ExtraUtilities:pipes:10, ExtraUtilities:pipes.1, ExtraUtilities:pipes:12, ExtraUtilities:pipes:13]
+    rewards:
+      - loot: comum
+
+  - id: melhorias_busca
+    title: "Melhorias de Busca"
+    type: optional
+    deps: [melhoria_velocidade]
+    icon: ExtraUtilities:nodeUpgrade:9
+    desc: |
+      Mudam a ordem em que o nó visita os inventários: §ePrimeiro em Profundidade§r, §ePrimeiro em
+      Largura§r (os mais próximos primeiro) e §ePseudo-Rotação§r (distribui como um rodízio). Faça
+      qualquer uma.
+    tasks:
+      - one_of: [ExtraUtilities:nodeUpgrade:7, ExtraUtilities:nodeUpgrade:8, ExtraUtilities:nodeUpgrade:9]
+    rewards:
+      - loot: comum
+
+  - id: gerador_pedregulho
+    title: "Pedregulho Infinito"
+    type: optional
+    deps: [melhoria_interacao, pedregulho_comprimido]
+    icon: ExtraUtilities:extractor_base
+    desc: |
+      Junte as peças: um §eNó de Itens§r com §eMelhoria de Interação§r encostado num pedregulho
+      entre lava e água, tubos até um baú e, se quiser, Melhorias de Velocidade. Pedregulho sem
+      fim — o combustível dos Comprimidos (e do Bedrockium).
+    tasks:
+      - get: [ExtraUtilities:extractor_base, ExtraUtilities:nodeUpgrade:2, ExtraUtilities:cobblestone_compressed:1 x9]
+    rewards:
+      - loot: incomum
+
+  - id: rede_transferencia
+    title: "A Rede de Transferência"
+    type: milestone
+    deps: [no_itens, no_liquidos, tubos_organizacao, melhoria_pilha]
+    icon: ExtraUtilities:extractor_base
+    banner: "A Rede"
+    subtitle: "Itens que sabem o caminho"
+    desc: |
+      Nós puxando, tubos organizando, filtros decidindo e pilhas inteiras voando pelos canos.
+      Herói, sua base acabou de ganhar um sistema nervoso! Eu adoro ver cada item achando o
+      próprio baú.
+
+      Truque final: o §eEscaneador Portátil§r mostra o fluxo dentro dos tubos. Se algo entupir,
+      ele aponta onde.
+    tasks:
+      - get: [ExtraUtilities:extractor_base, ExtraUtilities:extractor_base:6, ExtraUtilities:pipes:8, ExtraUtilities:nodeUpgrade:3]
+    rewards:
+      - xp: 6
+      - kit: {name: "Kit da Rede", items: [ExtraUtilities:pipes x32, ExtraUtilities:nodeUpgrade x4, ExtraUtilities:extractor_base x2, minecraft:chest x4, minecraft:redstone_block x2]}
+      - loot: incomum
+
+  - id: tubo_energia
+    title: "Tubos de Energia"
+    type: optional
+    deps: [tubo_transferencia]
+    icon: ExtraUtilities:pipes:11
+    desc: |
+      O §eTubo de Energia§r só é percorrido por Nós de Energia (os de itens e líquidos o ignoram);
+      o §eTubo de Extração de Energia§r é a versão de ouro. Eles só fazem sentido com o Nó de
+      Energia, que é fabricado no QED (veja a trilha do QED).
+    tasks:
+      - one_of: [ExtraUtilities:pipes:11, ExtraUtilities:pipes:14]
+    rewards:
+      - loot: comum
+
+  # ======================================================================
+  # FASE 4 — O QED E A PEDREIRA DO FIM
+  # ======================================================================
+  - id: quartzo_queimado
+    title: "Quartzo Queimado"
+    type: normal
+    deps: [obsidiana_ender]
+    icon: ExtraUtilities:decorativeBlock1:2
+    desc: |
+      O §eQuartzo Queimado§r é a chave de tudo que é avançado no Extra Utilities: Matriz
+      Computacional (QED e Pedreira do Fim), Base de Melhoria da Pedreira e o Portal do Último
+      Milênio.
+
+      §cAviso honesto da bibliotecária:§r no mod original ele sai da fornalha (Bloco de Quartzo →
+      Quartzo Queimado), mas neste pack o Et Futurum assume essa receita e a fornalha devolve
+      §eQuartzo Liso§r. Confira no NEI (U no Quartzo Queimado) se o servidor adicionou outra
+      receita; se não houver, fale com a staff antes de gastar seu quartzo.
+    tasks:
+      - get: ExtraUtilities:decorativeBlock1:2 x4
+    rewards:
+      - xp: 3
+      - item: minecraft:quartz x16
+
+  - id: matriz_computacional
+    title: "Matriz Computacional"
+    type: normal
+    deps: [quartzo_queimado]
+    icon: ExtraUtilities:decorativeBlock1:12
+    desc: |
+      Quartzo Queimado, diamantes e Obsidiana Fundida em Ender = §eMatriz Computacional Encravada em
+      Diamante§r. O "cérebro" do QED e da Pedreira do Fim.
+    tasks:
+      - get: ExtraUtilities:decorativeBlock1:12
+    rewards:
+      - xp: 3
+      - item: minecraft:diamond x2
+
+  - id: qed
+    title: "O QED"
+    type: main
+    deps: [matriz_computacional]
+    icon: ExtraUtilities:endConstructor
+    desc: |
+      Olhos do Ender, bancada, Matriz Computacional e Obsidiana Fundida em Ender. O §eQED§r (o nome
+      muda a cada vez que você olha — "Dispositivo de Entrelaçamento Quântico", "Pato Comedor de
+      Codornas"...) é uma bancada que fabrica com §eFluxo do Fim (EF)§r.
+
+      Ele não gera EF sozinho: precisa de §eCristais de Ender-Fluxo§r por perto. O QED também
+      funde minério com carvão rendendo §e3 lingotes§r!
+    tasks:
+      - get: ExtraUtilities:endConstructor
+    rewards:
+      - xp: 4
+      - choice: [minecraft:ender_eye x4, ExtraUtilities:decorativeBlock1:1 x4, minecraft:coal x32]
+
+  - id: cristal_ender_fluxo
+    title: "Cristal de Ender-Fluxo"
+    type: main
+    deps: [qed]
+    icon: ExtraUtilities:endConstructor:2
+    desc: |
+      Olho do Ender + Obsidiana Fundida em Ender. Cada §ePilar de Cristal§r converte RF em EF na
+      razão de §e1 000 RF para 1 EF§r e envia para máquinas num cubo de 10 blocos. Um pilar faz no
+      máximo 0,08 EF/t — use vários e alimente com bastante RF.
+    tasks:
+      - get: ExtraUtilities:endConstructor:2 x4
+    rewards:
+      - xp: 4
+      - choice: [minecraft:ender_eye x4, minecraft:redstone_block x4, ExtraUtilities:decorativeBlock1:1 x4]
+
+  - id: no_energia
+    title: "Nó de Transferência de Energia"
+    type: normal
+    deps: [cristal_ender_fluxo, melhorias_busca]
+    icon: ExtraUtilities:extractor_base:12
+    desc: |
+      No QED: Nós de Itens + ouro + uma Melhoria de Primeiro em Largura. O §eNó de Energia§r aceita
+      RF, procura máquinas pelos tubos e distribui a energia todo tick. Com 4 deles + Bedrockium no
+      QED sai o §eNó Híper (MkII)§r.
+    tasks:
+      - get: ExtraUtilities:extractor_base:12
+    rewards:
+      - xp: 3
+      - item: minecraft:gold_ingot x4
+
+  - id: transmissor_ender
+    title: "Transmissor e Receptor do Fim"
+    type: optional
+    deps: [no_energia]
+    icon: ExtraUtilities:nodeUpgrade:5
+    desc: |
+      Feitos no QED com pérolas e quartzo. Um §eTransmissor§r num Nó de Energia envia RF "pelo
+      éter" para um Nó com §eReceptor§r na mesma frequência (renomeie na bigorna). Há alguma perda,
+      e mais transmissores aumentam a velocidade.
+    tasks:
+      - get: [ExtraUtilities:nodeUpgrade:5, ExtraUtilities:nodeUpgrade:6]
+    rewards:
+      - loot: incomum
+
+  - id: nos_recuperacao
+    title: "Nós de Recuperação"
+    type: optional
+    deps: [cristal_ender_fluxo]
+    icon: ExtraUtilities:extractor_base_remote
+    desc: |
+      No QED: dois Nós + pérolas + esmeralda (itens) ou diamante (líquidos). O §eNó de
+      Recuperação§r faz o contrário do normal: percorre os tubos e §epuxa§r itens (ou 200 mB de
+      fluido) dos inventários distantes até o seu.
+    tasks:
+      - one_of: [ExtraUtilities:extractor_base_remote, ExtraUtilities:extractor_base_remote:6]
+    rewards:
+      - loot: incomum
+
+  - id: tocha_magnum
+    title: "Tocha Magnum"
+    type: optional
+    deps: [cristal_ender_fluxo, lustre]
+    icon: ExtraUtilities:magnumTorch
+    desc: |
+      Lustres, troncos e poções (confira no NEI do QED). A §eTocha Magnum§r impede o nascimento de
+      monstros num raio de §e64 blocos§r, qualquer que seja a luz. Não afeta spawners nem Terra
+      Amaldiçoada. Uma tocha para a base inteira!
+    tasks:
+      - get: ExtraUtilities:magnumTorch
+    rewards:
+      - loot: raro
+
+  - id: geradores_x8
+    title: "Geradores x8"
+    type: optional
+    deps: [no_energia, banco_geradores]
+    icon: ExtraUtilities:generator.8
+    desc: |
+      Oito geradores iguais em volta de um §eNó de Energia§r = um gerador §ex8§r (8 vezes a
+      produção num bloco). Com oito desses + um Nó Híper, sai o §ex64§r. Compactação de energia,
+      estilo Extra Utilities.
+    tasks:
+      - get: ExtraUtilities:generator.8:*
+    rewards:
+      - loot: raro
+
+  - id: pedreira_fim
+    title: "A Pedreira do Fim"
+    type: milestone
+    deps: [matriz_computacional, nucleo_ender, bomba_endertermica]
+    icon: ExtraUtilities:enderQuarry
+    banner: "A Pedreira do Fim"
+    subtitle: "Toda a terra, sem um buraco"
+    desc: |
+      Obsidiana Fundida em Ender, uma muda, Núcleos de Ender, a Matriz, duas Bombas Ender-Térmicas
+      e uma picareta de diamante. A §ePedreira do Fim§r teleporta tudo que não for terra ou planta
+      para um inventário ao lado e §edeixa terra no lugar§r — o terreno fica inteiro!
+
+      Como usar: cerque a área com §ecercas§r (madeira ou Nether) num retângulo fechado, sem
+      buracos. Tire uma estaca, coloque a Pedreira ali e clique direito. Ela minera coluna por
+      coluna, chunk por chunk, e §ecarrega os próprios chunks§r (não há limite de tamanho).
+      Consumo do pack: 1 800 RF por bloco + 200 RF por ponto de dureza.
+    tasks:
+      - get: ExtraUtilities:enderQuarry
+    rewards:
+      - xp: 8
+      - kit: {name: "Kit do Minerador do Fim", items: [minecraft:fence x64, minecraft:chest x4, ExtraUtilities:nodeUpgrade x4, minecraft:redstone_block x4, minecraft:diamond x2]}
+      - loot: raro
+
+  - id: base_melhoria_pedreira
+    title: "Base de Melhoria da Pedreira"
+    type: normal
+    deps: [pedreira_fim, cristal_ender_fluxo]
+    icon: ExtraUtilities:enderQuarryUpgrade
+    desc: |
+      Feita no QED (Obsidiana Fundida em Ender + Quartzo Queimado). As melhorias da Pedreira do Fim
+      encostam na própria pedreira e partem desta base.
+    tasks:
+      - get: ExtraUtilities:enderQuarryUpgrade
+    rewards:
+      - xp: 3
+      - item: ExtraUtilities:decorativeBlock1:1 x4
+
+  - id: melhoria_toque_suave
+    title: "Toque Suave na Pedreira"
+    type: optional
+    deps: [base_melhoria_pedreira]
+    icon: ExtraUtilities:enderQuarryUpgrade:2
+    desc: |
+      Base + picareta de ouro com Toque Suave + redstone. Minérios saem inteiros, prontos para a sua
+      linha de processamento triplicar.
+    tasks:
+      - get: ExtraUtilities:enderQuarryUpgrade:2
+    rewards:
+      - loot: incomum
+
+  - id: melhoria_fortuna
+    title: "Fortuna na Pedreira"
+    type: optional
+    deps: [base_melhoria_pedreira]
+    icon: ExtraUtilities:enderQuarryUpgrade:5
+    desc: |
+      Base + picaretas com Fortuna I, II e III (cada nível parte do anterior). Diamantes,
+      redstone e carvão em dobro. Faça qualquer nível.
+    tasks:
+      - one_of: [ExtraUtilities:enderQuarryUpgrade:3, ExtraUtilities:enderQuarryUpgrade:4, ExtraUtilities:enderQuarryUpgrade:5]
+    rewards:
+      - loot: incomum
+
+  - id: melhoria_eficiencia
+    title: "Eficiência na Pedreira"
+    type: optional
+    deps: [base_melhoria_pedreira, melhoria_pilha]
+    icon: ExtraUtilities:enderQuarryUpgrade:6
+    desc: |
+      Base + picaretas com Eficiência + Melhorias de Velocidade (e de Pilhas no nível III). A
+      pedreira vai bem mais rápido — e gasta mais RF.
+    tasks:
+      - one_of: [ExtraUtilities:enderQuarryUpgrade:6, ExtraUtilities:enderQuarryUpgrade:7, ExtraUtilities:enderQuarryUpgrade:8]
+    rewards:
+      - loot: incomum
+
+  - id: melhorias_mundo
+    title: "Buraco no Mundo e Bomba"
+    type: optional
+    deps: [base_melhoria_pedreira, lata_lixo]
+    icon: ExtraUtilities:enderQuarryUpgrade:1
+    desc: |
+      §e• Minerar Tudo:§r a pedreira deixa de ignorar terra e plantas (e não coloca terra de volta).
+      §e• Bomba de Líquidos:§r recolhe os fluidos que encontrar. Faça qualquer uma.
+    tasks:
+      - one_of: [ExtraUtilities:enderQuarryUpgrade:1, ExtraUtilities:enderQuarryUpgrade:9]
+    rewards:
+      - loot: incomum
+
+  - id: marcador_fim
+    title: "Marcador do Fim"
+    type: optional
+    deps: [cristal_ender_fluxo]
+    icon: ExtraUtilities:endMarker
+    desc: |
+      Feito no QED (pérola + Obsidiana Fundida em Ender). Um marcador de área do Extra Utilities —
+      confira no tooltip como ele ajuda a delimitar a Pedreira do Fim.
+    tasks:
+      - get: ExtraUtilities:endMarker
+    rewards:
+      - loot: comum
+
+  # ======================================================================
+  # FASE 5 — A RUNA DE DIVISÃO E O LINGOTE INSTÁVEL
+  # ======================================================================
+  - id: runa_divisao
+    title: "A Runa de Divisão"
+    type: main
+    deps: [bloco_anjo]
+    icon: ExtraUtilities:divisionSigil
+    desc: |
+      Este item §cnão tem receita§r: a §eRuna de Divisão§r só aparece em §ebaús de masmorras§r e
+      outros baús de estruturas. Explore — e guarde a que encontrar como se fosse a última página
+      do Registro.
+
+      Crua, ela não serve para nada. Precisa ser §eativada§r por um ritual antigo...
+    tasks:
+      - get: ExtraUtilities:divisionSigil
+    rewards:
+      - xp: 3
+      - choice: [minecraft:golden_apple, minecraft:diamond x2, minecraft:ender_pearl x4]
+
+  - id: ritual_ativacao
+    title: "O Ritual de Ativação"
+    type: info
+    deps: [runa_divisao]
+    icon: minecraft:enchanting_table
+    desc: |
+      §dSegure firme, Herói. Isso é magia antiga.§r (Agachado + clique numa mesa de encantamento
+      mostra as instruções no jogo.)
+
+      §e1.§r Ponha uma §emesa de encantamento§r sobre terra ou grama, com §ecéu aberto§r acima e
+      §emuita terra/grama§r em volta.
+      §e2.§r Coloque §e8 pós de redstone§r em quadrado ao redor da mesa (também sobre terra).
+      §e3.§r Traga um animal ou monstro para sacrificar (o Laço Dourado ajuda).
+      §e4.§r Espere a §emeia-noite§r — a runa brilha quando é a hora — e §eapague toda luz§r em volta.
+      §e5.§r Com a runa no inventário, §emate a criatura em cima ou ao lado da mesa§r.
+
+      §cHaverá consequências§r (vista armadura!). O ritual também cria a §eTerra Amaldiçoada§r.
+    tasks:
+      - check
+    rewards:
+      - xp: 2
+
+  - id: runa_ativada
+    title: "Runa Ativada"
+    type: main
+    deps: [ritual_ativacao]
+    icon: ExtraUtilities:divisionSigil
+    desc: |
+      Funcionou?! A §eRuna de Divisão (Ativada)§r tem 256 usos. Com ela você:
+      §e•§r divide por diamante (Lingotes Instáveis — próxima quest, cuidado!);
+      §e•§r "desencanta" itens: sobre a runa, item encantado em cima e livro embaixo reduz os
+      encantamentos.
+
+      Mostre a runa ativada.
+    tasks:
+      - {get: 'ExtraUtilities:divisionSigil {damage:256}', nbt: true}
+    rewards:
+      - xp: 4
+      - choice: [minecraft:diamond x4, minecraft:iron_ingot x16, minecraft:gold_nugget x32]
+
+  - id: terra_amaldicoada
+    title: "Terra Amaldiçoada"
+    type: optional
+    deps: [runa_ativada]
+    icon: ExtraUtilities:cursedearthside
+    desc: |
+      Criada pelo ritual. No escuro, a §eTerra Amaldiçoada§r faz monstros nascerem muito mais rápido
+      (sem precisar de jogador por perto) e se espalha pela terra vizinha. Sob luz, volta a ser terra.
+      §cEla fere quem pisa e às vezes pega fogo.§r Se sair do controle: uma tocha e 95% dela some.
+    tasks:
+      - get: ExtraUtilities:cursedearthside
+    rewards:
+      - loot: incomum
+
+  - id: lingote_instavel
+    title: "O Lingote Instável"
+    type: main
+    deps: [runa_ativada]
+    icon: ExtraUtilities:unstableingot
+    desc: |
+      §cLEIA ATÉ O FIM, POR FAVOR.§r Ferro + Runa Ativada + diamante na bancada = §eLingote
+      Instável§r. Ele tem §c10 segundos de vida§r: depois disso, §cexplode no seu inventário§r. Também
+      explode se você fechar a bancada ou jogá-lo no chão (no pack, explosões estão ligadas).
+
+      Por isso o jeito certo é: deixe a receita do item final montada ao lado, pegue o lingote e
+      use-o §eimediatamente na mesma bancada§r. Itens feitos com ele são estáveis.
+
+      Para cumprir esta quest com segurança, faça a versão estável: §e9 Pepitas Semi-Estáveis§r
+      (pepita de ouro + runa + diamante) = 1 Lingote Instável que nunca explode.
+    tasks:
+      - get: ore:ingotUnstable
+    rewards:
+      - xp: 4
+      - choice: [minecraft:diamond x3, minecraft:gold_nugget x27, minecraft:obsidian x8]
+
+  - id: pepitas_semi
+    title: "Pepitas Semi-Estáveis"
+    type: normal
+    deps: [runa_ativada]
+    icon: ExtraUtilities:unstableingot:1
+    desc: |
+      Pepita de ouro + Runa Ativada + diamante = §ePepita Semi-Estável§r. Pequena o bastante para não
+      explodir. 9 delas = um Lingote Instável estável. Gasta 9 diamantes por lingote, mas dorme-se
+      melhor.
+    tasks:
+      - get: ExtraUtilities:unstableingot:1 x9
+    rewards:
+      - xp: 3
+      - item: minecraft:gold_nugget x18
+
+  - id: varinha_construtor
+    title: "Varinha do Construtor"
+    type: normal
+    deps: [lingote_instavel]
+    icon: ExtraUtilities:builderswand
+    desc: |
+      Lingote Instável + obsidiana. Clique num bloco e a §eVarinha do Construtor§r estende aquela
+      camada em mais um bloco, usando blocos do seu inventário — até §e9 blocos por clique§r. Paredes
+      e chãos em segundos!
+    tasks:
+      - get: ExtraUtilities:builderswand
+    rewards:
+      - xp: 3
+      - item: minecraft:stonebrick x64
+
+  - id: vidro_etereo
+    title: "Vidro Etéreo"
+    type: normal
+    deps: [lingote_instavel]
+    icon: ExtraUtilities:etherealglass
+    desc: |
+      8 vidros + Lingote Instável = 4 §eVidros Etéreos§r. Jogadores atravessam; todo o resto (mobs,
+      itens) bate nele. Agachado, ele fica sólido para você. Existem versões limpa, escura e
+      "invertida" (com tocha de redstone). Porta de base perfeita!
+    tasks:
+      - get: ExtraUtilities:etherealglass:* x4
+    rewards:
+      - xp: 3
+      - item: minecraft:glass x16
+
+  - id: ferramentas_instaveis
+    title: "Ferramentas Instáveis"
+    type: normal
+    deps: [lingote_instavel]
+    icon: ExtraUtilities:ethericsword
+    desc: |
+      Lingotes Instáveis + obsidiana fazem ferramentas §ede durabilidade infinita§r:
+      §e• Espada Etérea:§r um pouco mais forte que a de diamante.
+      §e• Picareta da Destruição:§r 5× mais rápida que diamante em pedra comum, mas nada cai.
+      §e• Pá da Erosão:§r atravessa terra e elimina areia/cascalho acima; também sem drops.
+      §e• Machado da Cura:§r troca sua vida pela do alvo (e fere mortos-vivos).
+      §e• Enxada Reversa:§r "desenvelhece" plantações, transforma terra em grama e pedregulho em pedra.
+      Faça qualquer uma.
+    tasks:
+      - one_of: [ExtraUtilities:ethericsword, ExtraUtilities:destructionpickaxe, ExtraUtilities:erosionShovel, ExtraUtilities:defoliageAxe, ExtraUtilities:temporalHoe]
+    rewards:
+      - xp: 3
+      - item: minecraft:obsidian x8
+
+  - id: tesoura_precisao
+    title: "Tesoura de Precisão"
+    type: optional
+    deps: [lingote_instavel]
+    icon: ExtraUtilities:shears
+    desc: |
+      Lingotes Instáveis + Blocos Anjo. Funciona como tesoura e colhe tudo que uma ferramenta de
+      pedra colheria; agachado + clique quebra o bloco na hora e manda para o inventário.
+    tasks:
+      - get: ExtraUtilities:shears
+    rewards:
+      - loot: comum
+
+  - id: oculos_sonar
+    title: "Óculos Sonar"
+    type: optional
+    deps: [lingote_instavel]
+    icon: ExtraUtilities:sonar_goggles
+    desc: |
+      Lingotes Instáveis + olhos do Ender. No escuro, olhando para um bloco, mostram o "esqueleto"
+      de todos os blocos iguais conectados até 5 blocos de distância. Nunca mais perca um veio!
+    tasks:
+      - get: ExtraUtilities:sonar_goggles
+    rewards:
+      - loot: comum
+
+  - id: bloco_instavel
+    title: "Bloco de Barras Instáveis"
+    type: optional
+    deps: [lingote_instavel]
+    icon: ExtraUtilities:decorativeBlock1:5
+    desc: |
+      9 Lingotes Instáveis num bloco. Puro exibicionismo (ou uma reserva para o Portal do Escuro
+      Profundo). Eu aprovo as duas coisas.
+    tasks:
+      - get: ExtraUtilities:decorativeBlock1:5
+    rewards:
+      - loot: incomum
+
+  - id: anel_anjo
+    title: "Anel de Anjo"
+    type: optional
+    deps: [lingote_instavel]
+    icon: ExtraUtilities:angelRing
+    desc: |
+      Uma §eEstrela do Nether§r, ouro e Lingotes Instáveis (mais vidro, penas, corantes, couro ou
+      pepitas, que só mudam a aparência das asas). Com o §eAnel de Anjo§r no inventário você §evoa
+      livremente§r, como no criativo. O item mais desejado do Volume!
+    tasks:
+      - get: ExtraUtilities:angelRing:*
+    rewards:
+      - loot: epico
+
+  - id: runa_estavel
+    title: "A Pseudo-Runa de Inversão"
+    type: optional
+    deps: [runa_ativada]
+    icon: ExtraUtilities:divisionSigil
+    desc: |
+      Para quem não tem medo: agachado + clique num §efarol (beacon)§r com a Runa Ativada inicia o
+      §eRitual de Estabilização§r, "excepcionalmente difícil de entender e realizar" segundo o
+      próprio manual. O resultado é a §ePseudo-Runa de Inversão§r, que permite o §eLingote Mobius§r,
+      uma versão superior e sempre estável. Siga as dicas que o jogo mostra — e boa sorte!
+    tasks:
+      - {get: 'ExtraUtilities:divisionSigil {stable:1b}', nbt: true}
+    rewards:
+      - loot: epico
+
+  # ======================================================================
+  # FASE 6 — BEDROCKIUM E DIMENSÕES
+  # ======================================================================
+  - id: bedrockium
+    title: "Bedrockium"
+    type: main
+    deps: [comprimido_quadruplo]
+    icon: ExtraUtilities:bedrockiumIngot
+    desc: |
+      "O material mais resistente conhecido." Neste pack, a §eBarra de Bedrockium§r sai na bancada
+      com §e4 Pedregulhos Triplamente + 4 Quadruplamente Comprimidos + 1 bloco de diamante§r (e o
+      Octuplamente Comprimido na fornalha vira um bloco inteiro). Confira no NEI.
+
+      Ele vai no Barril de Bedrockium e no Nó Híper de Energia.
+    tasks:
+      - get: ExtraUtilities:bedrockiumIngot
+    rewards:
+      - xp: 4
+      - choice: [ExtraUtilities:cobblestone_compressed:2 x2, minecraft:diamond x2, minecraft:obsidian x16]
+
+  - id: barril_bedrockium
+    title: "Barril de Bedrockium"
+    type: optional
+    deps: [bedrockium, barril]
+    icon: ExtraUtilities:drum:1
+    desc: |
+      O Barril com Bedrockium no lugar do ferro: uma capacidade gigantesca de um único fluido. Para
+      quem leva petróleo ou lava a sério.
+    tasks:
+      - get: ExtraUtilities:drum:1
+    rewards:
+      - loot: raro
+
+  - id: portal_escuro
+    title: "Portal para o Escuro Profundo"
+    type: main
+    deps: [lingote_instavel, comprimido_quintuplo]
+    icon: ExtraUtilities:dark_portal
+    desc: |
+      4 Pedregulhos Quadruplamente Comprimidos, 4 Lingotes Instáveis e 1 Quintuplamente Comprimido
+      no centro. Coloque o §ePortal§r no chão (camada mais funda é tradição) e clique: ele leva ao
+      §eEscuro Profundo§r, um mundo "abaixo do vazio" cheio de minérios e de inimigos.
+    tasks:
+      - get: ExtraUtilities:dark_portal
+    rewards:
+      - xp: 4
+      - choice: [minecraft:torch x64, minecraft:golden_apple x2, minecraft:cooked_beef x16]
+
+  - id: escuro_profundo
+    title: "O Escuro Profundo"
+    type: portal
+    deps: [portal_escuro]
+    icon: ExtraUtilities:dark_portal
+    banner: "O Escuro Profundo"
+    subtitle: "Abaixo do vazio, a escuridão respira"
+    effect: 5
+    desc: |
+      Bem-vindo à dimensão §e-100§r (o Registro a chama de "Underdark"). Cavernas imensas, minérios
+      por toda parte... e §cmonstros que nascem em qualquer nível de luz§r. Dizem que a própria
+      escuridão está viva e devora quem se afasta demais da luz.
+
+      §cRegras de sobrevivência:§r
+      §e•§r Tochas iluminam, mas §cnão impedem spawn§r aqui. §aLustres e Tochas Magnum impedem.§r
+      §e•§r Leve armadura boa, comida e blocos para se cercar.
+      §e•§r Marque o caminho de volta até o portal.
+
+      Eu vou ficar segurando a lanterna daqui, Herói. Volte com saúde — e com todas as páginas!
+    tasks:
+      - visit: {dim: -100, name: "O Escuro Profundo"}
+    rewards:
+      - xp: 5
+      - loot: raro
+
+  - id: portal_milenio
+    title: "Portal para o Último Milênio"
+    type: optional
+    deps: [quartzo_queimado]
+    icon: ExtraUtilities:dark_portal:2
+    desc: |
+      Quartzo Queimado, Pedra "Eminência" (pedra + corantes magenta e roxo + pérola) e um relógio.
+      O portal leva "para fora do fluxo do tempo", ao §eÚltimo Milênio§r, alguns séculos antes do
+      fim da realidade. (Depende do Quartzo Queimado — veja o aviso naquela quest.)
+    tasks:
+      - get: ExtraUtilities:dark_portal:2
+    rewards:
+      - loot: incomum
+
+  - id: ultimo_milenio
+    title: "O Último Milênio"
+    type: portal
+    deps: [portal_milenio]
+    icon: ExtraUtilities:dark_portal:2
+    banner: "O Último Milênio"
+    subtitle: "O aluguel está baratíssimo"
+    effect: 3
+    desc: |
+      A dimensão §e-112§r: literalmente nada. "Toda vida, energia, conhecimento e significado
+      estão a poucos séculos de se tornarem inúteis. Pelo lado bom, o aluguel está muito barato."
+
+      Herói, de todas as páginas do Registro, esta é a mais silenciosa. É um bom lugar para pensar
+      no que os Antigos fizeram — e no que nós vamos fazer diferente. Volte quando quiser; aqui o
+      tempo não tem pressa.
+    tasks:
+      - visit: {dim: -112, name: "O Último Milênio"}
+    rewards:
+      - xp: 5
+      - loot: raro
+
+  - id: mestre_utilidades
+    title: "Mestre das Pequenas Maravilhas"
+    type: milestone
+    deps: [escuro_profundo, rede_transferencia, banco_geradores, varinha_construtor, bedrockium]
+    icon: ExtraUtilities:angelBlock
+    banner: "Mestre das Pequenas Maravilhas"
+    subtitle: "O Volume das Utilidades está completo"
+    desc: |
+      Bloco Anjo, rede de transferência, geradores de tudo, Lingote Instável domado, Bedrockium e
+      uma viagem de ida e volta ao Escuro Profundo. Herói, o Volume das Pequenas Maravilhas está
+      inteiro!
+
+      Este mod é a caixa de ferramentas de todo o resto do pack: o Bloco Anjo nas dimensões, os
+      Nós nas fábricas, os Comprimidos no armazenamento. Leve-o para todos os capítulos. E se
+      algum dia voar com um Anel de Anjo, me leve junto.
+    tasks:
+      - get: [ExtraUtilities:angelBlock, ExtraUtilities:extractor_base, ExtraUtilities:builderswand, ExtraUtilities:bedrockiumIngot]
+    rewards:
+      - xp: 10
+      - kit: {name: "Relicário das Maravilhas", items: [ExtraUtilities:angelBlock x8, ExtraUtilities:cobblestone_compressed:2 x4, ExtraUtilities:nodeUpgrade x4, minecraft:diamond x4, minecraft:golden_apple x2]}
+      - loot: epico

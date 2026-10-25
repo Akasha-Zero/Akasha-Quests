@@ -1,0 +1,1768 @@
+chapter:
+  id: extraplanets
+  title: "ExtraPlanets"
+  prefix: ""
+  order: 391
+  icon: ExtraPlanets:itemTier4Rocket
+  desc: |
+    §bO Volume dos Mundos Distantes.§r De Vênus a Kepler 22b: foguetes Nível 4 a 10, trajes
+    térmicos, sete chefes de calabouço, luas geladas e metais que não existem na Terra.
+    (ExtraPlanets 2.1.4 — requer o capítulo do Galacticraft)
+
+quests:
+  # ======================================================================
+  # FASE 0 — ALÉM DOS ASTEROIDES
+  # ======================================================================
+  - link: galacticraft:foguete_t3
+
+  - id: mundos_distantes
+    title: "Mundos Distantes"
+    type: info
+    icon: ExtraPlanets:itemTier4Rocket
+    desc: |
+      O Galacticraft leva você até os Asteroides. O §bExtraPlanets§r leva até a borda do sistema
+      solar — e além.
+
+      §eA escada dos foguetes (Mapa da Galáxia):§r
+      §e• Nível 2:§r Fobos e Deimos (luas de Marte).
+      §e• Nível 3:§r Vênus.
+      §e• Nível 4:§r Mercúrio, Ceres, Júpiter e as luas Io, Europa, Ganimedes e Calisto.
+      §e• Nível 5:§r Saturno, Titã, Reia e Oberon.
+      §e• Nível 6:§r Urano, Titânia e Jápeto.
+      §e• Nível 7:§r Netuno e Tritão. §e• Nível 8:§r Plutão. §e• Nível 9:§r Éris.
+      §e• Nível 10:§r Kepler 22b, em outro sistema estelar.
+
+      Cada planeta principal (Vênus, Júpiter, Saturno, Urano, Netuno, Plutão e Éris) tem um
+      §ccalabouço com chefe§r. A chave do chefe abre o baú com o §eesquemático do próximo
+      foguete§r. Os sete chefes fazem parte do §5Selo das Estrelas§r.
+    tasks:
+      - check
+    rewards:
+      - xp: 3
+
+  - id: termico_info
+    title: "§cCalor e Frio Extremos"
+    type: info
+    deps: [mundos_distantes]
+    icon: ExtraPlanets:item.tier2ThermalPadding:1
+    desc: |
+      Os trajes térmicos do Galacticraft não aguentam o sistema solar exterior. O ExtraPlanets
+      traz três novos níveis (as peças vão nos mesmos espaços térmicos do inventário do
+      Galacticraft):
+
+      §e• Traje Térmico Nível 2:§r necessário em §eVênus e Mercúrio§r (calor).
+      §e• Traje Térmico Nível 3:§r §eJúpiter, Saturno e suas luas§r.
+      §e• Traje Térmico Nível 4:§r §eUrano, Netuno, Plutão, Éris e suas luas§r (frio extremo).
+
+      Sem o traje certo a sua temperatura dispara ou despenca até causar dano. Dentro de ar
+      respirável ela volta ao normal.
+
+      §aDica:§r os §eKits§r do ExtraPlanets (clique direito para vestir) guardam todo o
+      equipamento — máscara, equipamento, tanques, paraquedas, módulo de frequência e traje —
+      num único item.
+    tasks:
+      - check
+    rewards:
+      - xp: 3
+
+  # ======================================================================
+  # FASE 1 — AS LUAS DE MARTE (NÍVEL 2)
+  # ======================================================================
+  - id: fobos
+    title: "Fobos"
+    type: normal
+    deps: [mundos_distantes]
+    deps_hidden: [galacticraft:foguete_t2]
+    icon: ExtraPlanets:tile.phobos:2
+    desc: |
+      A maior lua de Marte, alcançável com o §eFoguete Nível 2§r. Uma pedra cinza e fria
+      (traje térmico do Galacticraft recomendado), sem ar, com minérios comuns e o §eMinério de
+      Chumbo§r — a matéria-prima das baterias dos rovers.
+    tasks:
+      - visit: {dim: -33, name: "Fobos"}
+    rewards:
+      - xp: 5
+      - loot: raro
+
+  - id: deimos
+    title: "Deimos"
+    type: normal
+    deps: [mundos_distantes]
+    deps_hidden: [galacticraft:foguete_t2]
+    icon: ExtraPlanets:tile.deimos:2
+    desc: |
+      A irmã menor de Fobos. Também pede só o Foguete Nível 2, também é fria e também tem
+      §eMinério de Chumbo§r.
+    tasks:
+      - visit: {dim: -35, name: "Deimos"}
+    rewards:
+      - xp: 5
+      - loot: raro
+
+  - id: chumbo_luas
+    title: "Chumbo das Luas"
+    type: normal
+    deps: [fobos, deimos]
+    deps_any: true
+    icon: ExtraPlanets:tile.phobos:6
+    desc: |
+      Os Minérios de Chumbo de Fobos e Deimos fundem em lingotes de chumbo comuns. Junte §e16§r:
+      as Baterias Nível 1 e 2 dos rovers pedem 5 cada.
+    tasks:
+      - get: ore:ingotLead x16
+    rewards:
+      - xp: 4
+      - item: ore:ingotTin x8
+
+  # ---- Mars Rover ----
+  - id: esquematico_mars_rover
+    title: "Esquemático: Mars Rover"
+    type: normal
+    deps: [mundos_distantes]
+    icon: ExtraPlanets:item.schematicMarsRover
+    desc: |
+      O ExtraPlanets colocou o esquemático do §eMars Rover§r nos §ebaús dos calabouços lunares§r
+      (junto dos esquemáticos do Galacticraft). Se ele veio no seu baú, destrave na Bancada NASA.
+    tasks:
+      - get: ExtraPlanets:item.schematicMarsRover
+    rewards:
+      - xp: 4
+      - item: GalacticraftCore:item.buggymat x2
+
+  - id: pecas_rover_t1
+    title: "Rodas e Bateria Nível 1"
+    type: normal
+    deps: [esquematico_mars_rover, chumbo_luas]
+    icon: ExtraPlanets:item.electricParts:2
+    desc: |
+      §eTier 1 Wheel:§r 4 Blindagens Pesadas + uma Roda de Buggy. §eTier 1 Battery:§r 5 lingotes de
+      chumbo + 4 Blindagens Pesadas. O Mars Rover é elétrico: nada de combustível!
+    tasks:
+      - get: [ExtraPlanets:item.electricParts:2 x4, ExtraPlanets:item.electricParts]
+    rewards:
+      - xp: 4
+      - item: GalacticraftCore:item.heavyPlating x4
+
+  - id: mars_rover
+    title: "Mars Rover"
+    type: optional
+    deps: [pecas_rover_t1]
+    icon: ExtraPlanets:item.marsRover
+    desc: |
+      Monte o §eMars Rover§r na Bancada NASA e passeie por Marte sem gastar combustível. Ele carrega
+      numa §eVehicle Charging Pad§r (5×5) com um §eVehicle Charger§r encostado.
+    tasks:
+      - get: ExtraPlanets:item.marsRover:*
+    rewards:
+      - loot: incomum
+
+  - id: carregador_veiculos
+    title: "Vehicle Charger"
+    type: optional
+    deps: [mars_rover]
+    icon: ExtraPlanets:chargingBlock
+    desc: |
+      §eVehicle Charging Pad:§r 3 Blocos de Desh + 3 Barras de Desh rendem 5; a pista é um quadrado
+      §e5×5§r (25 blocos). §eVehicle Charger:§r 6 Barras de Desh e 3 Baterias, encostado na pista.
+    tasks:
+      - get: [ExtraPlanets:tile.advancedLaunchPad:2 x25, ExtraPlanets:chargingBlock]
+    rewards:
+      - loot: incomum
+
+  # ======================================================================
+  # FASE 2 — VÊNUS (NÍVEL 3)
+  # ======================================================================
+  - id: tecido_termico_t2
+    title: "Tier 2 Thermal Cloth"
+    type: main
+    deps: [termico_info]
+    icon: ExtraPlanets:item.thermalCloth
+    desc: |
+      3 Desh Prensado e 2 Tecidos Térmicos do Galacticraft: o §eTier 2 Thermal Cloth§r. As 4 peças
+      do traje (elmo, peitoral, perneiras e botas) pedem muito tecido — faça §e20§r.
+    tasks:
+      - get: ExtraPlanets:item.thermalCloth x20
+    rewards:
+      - xp: 6
+      - choice: [ore:compressedDesh x6, GalacticraftMars:item.itemBasicAsteroids:7 x8, minecraft:wool x16]
+
+  - id: traje_termico_t2
+    title: "Traje Térmico Nível 2"
+    type: main
+    deps: [tecido_termico_t2]
+    icon: ExtraPlanets:item.tier2ThermalPadding:1
+    desc: |
+      As quatro peças do §eTier 2 Thermal Padding§r (o elmo, por exemplo, leva 5 tecidos de Nível 2
+      e um Desh Prensado). Obrigatório em §eVênus e Mercúrio§r.
+    tasks:
+      - get: [ExtraPlanets:item.tier2ThermalPadding, ExtraPlanets:item.tier2ThermalPadding:1, ExtraPlanets:item.tier2ThermalPadding:2, ExtraPlanets:item.tier2ThermalPadding:3]
+    rewards:
+      - xp: 6
+      - choice: [GalacticraftCore:item.oxygenTankHeavyFull, ore:compressedDesh x6, ExtraPlanets:item.thermalCloth x4]
+
+  - id: venus
+    title: "Vênus"
+    type: portal
+    deps: [traje_termico_t2]
+    deps_hidden: [galacticraft:foguete_t3]
+    icon: ExtraPlanets:tile.venus
+    banner: "O Planeta Escaldante"
+    subtitle: "Chegada a Vênus"
+    effect: 3
+    desc: |
+      Uma estufa do tamanho de um planeta: calor que derrete, céu amarelado e §evulcões§r (ativos
+      na config). Vênus pede o §eFoguete Nível 3§r e o §eTraje Térmico Nível 2§r.
+
+      §eO que tem aqui:§r §eMinério de Carbono§r (o metal dos foguetes Nível 4), Rocha Vulcânica,
+      blocos de cinza, minérios comuns e o §cCalabouço de Vênus§r, com o primeiro chefe do
+      ExtraPlanets.
+    tasks:
+      - visit: {dim: -14, name: "Vênus"}
+    rewards:
+      - xp: 10
+      - loot: epico
+
+  - id: carbono
+    title: "Carbono"
+    type: main
+    deps: [venus]
+    icon: ExtraPlanets:tile.venus:6
+    desc: |
+      Funda o §eCarbon Ore§r para ter §eCarbon Ingot§r (ou use o minério com Pó de Pyrotheum na
+      bancada). Junte §e24§r.
+    tasks:
+      - get: ore:ingotCarbon x24
+    rewards:
+      - xp: 6
+      - choice: [ExtraPlanets:tile.venus:6 x6, ore:compressedDesh x4, minecraft:coal_block x6]
+
+  - id: carbono_prensado
+    title: "Compressed Carbon"
+    type: main
+    deps: [carbono]
+    icon: ExtraPlanets:tier4Items:4
+    desc: |
+      Dois Carbon Ingots na Prensa = §eCompressed Carbon§r. Ele faz a Blindagem Nível 4, os Motores
+      Auxiliares Nível 4 e o Tecido Térmico Nível 3. Faça §e16§r.
+    tasks:
+      - get: ExtraPlanets:tier4Items:4 x16
+    rewards:
+      - xp: 6
+      - choice: [ore:ingotCarbon x8, GalacticraftMars:item.itemBasicAsteroids x4, ore:compressedTitanium x4]
+
+  - id: rocha_vulcanica
+    title: "Rocha Vulcânica"
+    type: normal
+    deps: [venus]
+    icon: ExtraPlanets:volcanicRock
+    desc: |
+      A §eVolcanic Rock§r dos vulcões funde em §eVolcanic Ingot§r. Com ela você faz o §eSledge
+      Hammer§r (3 lingotes vulcânicos, 2 Barras de Ferro Meteórico e 2 gravetos).
+    tasks:
+      - get: ExtraPlanets:tier4Items:11 x8
+    rewards:
+      - xp: 4
+      - item: GalacticraftCore:item.meteoricIronIngot x4
+
+  - id: marreta
+    title: "Sledge Hammer"
+    type: normal
+    deps: [rocha_vulcanica]
+    icon: ExtraPlanets:tier4Items:8
+    desc: |
+      Uma marreta de bancada: com um §eAsh Block§r ela rende 2 §eAsh Shards§r (4 shards = 1 Ash).
+      Também é ingrediente do Grinding Wheel.
+    tasks:
+      - get: ExtraPlanets:tier4Items:8
+    rewards:
+      - xp: 3
+      - item: ExtraPlanets:ashBlock x8
+
+  - id: rebolo
+    title: "Grinding Wheel"
+    type: optional
+    deps: [marreta]
+    icon: ExtraPlanets:tier4Items:9
+    desc: |
+      4 Volcanic Ingots, 4 Ash Shards e o Sledge Hammer: o §eGrinding Wheel§r. Com 5 lingotes
+      vulcânicos ele faz 2 Volcanic Shards; com 5 Magnesium Ingots, 2 Magnesium Shards (que vão na
+      Fire Bomb).
+    tasks:
+      - get: ExtraPlanets:tier4Items:9
+    rewards:
+      - loot: comum
+
+  - id: bomba_fogo
+    title: "Fire Bomb"
+    type: optional
+    deps: [rebolo]
+    icon: ExtraPlanets:fireBomb
+    desc: |
+      Cinzas, areia, um lingote e um estilhaço vulcânico e um Magnesium Shard: uma bomba que
+      espalha fogo. §cUse longe de qualquer coisa que você ame.§r
+    tasks:
+      - get: ExtraPlanets:fireBomb
+    rewards:
+      - loot: incomum
+
+  - id: calabouco_venus
+    title: "O Calabouço de Vênus"
+    type: normal
+    deps: [venus]
+    icon: ExtraPlanets:veunsDungeonBrick
+    desc: |
+      Como os calabouços da Lua e de Marte, o de Vênus fica escondido e é feito de §eVenus Dungeon
+      Brick§r. No fundo mora o primeiro chefe do ExtraPlanets. Ache-o e pegue alguns tijolos.
+    tasks:
+      - get: ExtraPlanets:veunsDungeonBrick x8
+    rewards:
+      - xp: 4
+      - item: minecraft:arrow x32
+
+  - id: chefe_venus
+    title: "O Cubo de Magma Evoluído"
+    type: boss
+    deps: [calabouco_venus]
+    icon: minecraft:magma_cream
+    banner: "Vênus Respira Aliviada"
+    subtitle: "O Cubo de Magma-Chefe caiu"
+    desc: |
+      O guardião de Vênus é um §cCubo de Magma Evoluído§r gigante: pula, esmaga e se divide em
+      pedaços menores. §cO calor é tanto quanto o do planeta§r — traje térmico, Resistência ao Fogo
+      e muita vida extra.
+
+      Derrotado, ele deixa a §eTier 4 Dungeon Key§r. Primeiro chefe do ExtraPlanets no §5Selo das
+      Estrelas§r!
+    tasks:
+      - kill: {entity: "extraplanets.EvolvedMagmaCubeBoss", count: 1}
+      - get: ExtraPlanets:T4key
+    rewards:
+      - xp: 15
+      - loot: [epico, epico]
+
+  - id: tesouro_venus
+    title: "Esquemático: Foguete Nível 4"
+    type: main
+    deps: [chefe_venus]
+    icon: ExtraPlanets:schematicTier4
+    desc: |
+      A chave abre o §eTier 4 Treasure Chest§r, que guarda o esquemático do §eFoguete Nível 4§r (e
+      pode trazer também o do §eVenus Rover§r). Destrave na Bancada NASA.
+    tasks:
+      - get: ExtraPlanets:schematicTier4
+    rewards:
+      - xp: 8
+      - choice: [ExtraPlanets:tier4Items:4 x6, ore:ingotCarbon x12, GalacticraftMars:item.itemBasicAsteroids x6]
+
+  - id: venus_rover
+    title: "Venus Rover"
+    type: optional
+    deps: [tesouro_venus, pecas_rover_t1]
+    icon: ExtraPlanets:item.venusRover
+    desc: |
+      Com o esquemático do Venus Rover, monte o irmão mais forte do Mars Rover. Ele usa §eTier 2
+      Wheels§r (4 Blindagens Nível 4 + Tier 1 Wheel) e a §eTier 2 Battery§r (5 lingotes de chumbo +
+      4 Blindagens Nível 4).
+    tasks:
+      - get: ExtraPlanets:item.venusRover:*
+    rewards:
+      - loot: incomum
+
+  # ======================================================================
+  # FASE 3 — O FOGUETE NÍVEL 4
+  # ======================================================================
+  - id: blindagem_t4
+    title: "Heavy-Duty Plate Nível 4"
+    type: main
+    deps: [tesouro_venus, carbono_prensado]
+    icon: ExtraPlanets:tier4Items:3
+    desc: |
+      Na Prensa: §eBlindagem Pesada Nível 3 (Galacticraft) + Compressed Carbon = Heavy-Duty Plate
+      Nível 4§r. A regra se repete daqui até o Nível 10: cada blindagem nova = a blindagem anterior +
+      o metal prensado do planeta da vez. Faça §e20§r.
+    tasks:
+      - get: ExtraPlanets:tier4Items:3 x20
+    rewards:
+      - xp: 6
+      - choice: [ExtraPlanets:tier4Items:4 x6, GalacticraftMars:item.itemBasicAsteroids x6, ore:compressedDesh x6]
+
+  - id: pecas_t4
+    title: "Peças do Foguete Nível 4"
+    type: main
+    deps: [blindagem_t4]
+    icon: ExtraPlanets:tier4Items
+    desc: |
+      Todas as peças seguem o mesmo molde do Galacticraft, com as blindagens novas:
+      §e• Tier 4 Nose Cone:§r 3 blindagens + Tocha de Redstone.
+      §e• Tier 4 Rocket Engine:§r 4 blindagens, Lata de Estanho, Respirador, Isqueiro e Botão.
+      §e• Tier 4 Booster:§r 4 Compressed Carbon, Lã Laranja, Lata de Combustível Cheia, 2
+      blindagens e Respirador.
+      §e• Tier 4 Rocket Fins:§r 2 Blindagens Pesadas comuns + 4 blindagens Nível 4.
+      Confira as quantidades exatas do foguete na Bancada NASA.
+    tasks:
+      - get: [ExtraPlanets:noseConeTier4, ExtraPlanets:tier4Items, ExtraPlanets:tier4Items:1 x2, ExtraPlanets:tier4Items:2 x4]
+    rewards:
+      - xp: 6
+      - choice: [GalacticraftCore:item.bucketFuel x3, ExtraPlanets:tier4Items:3 x4, GalacticraftCore:item.airVent x4]
+
+  - id: plataforma_t2
+    title: "Tier 2 Rocket Launch Pad"
+    type: main
+    deps: [tesouro_venus]
+    icon: ExtraPlanets:tile.advancedLaunchPad
+    desc: |
+      Foguetes Nível 4 a 8 são grandes demais para a base 3×3. A §eTier 2 Rocket Launch Pad§r
+      (3 Blocks of Titanium + 3 Barras de Titânio rendem 5) forma um quadrado §e5×5§r — ou seja,
+      §e25 blocos§r. Cada Block of Titanium são 9 barras de titânio dos Asteroides.
+    tasks:
+      - get: ExtraPlanets:tile.advancedLaunchPad x25
+    rewards:
+      - xp: 6
+      - choice: [ore:ingotTitanium x12, ExtraPlanets:tile.venus:9 x2, ore:compressedTitanium x6]
+
+  - id: foguete_t4
+    title: "Foguete Nível 4"
+    type: main
+    deps: [pecas_t4, plataforma_t2]
+    icon: ExtraPlanets:itemTier4Rocket
+    desc: |
+      Monte o §eFoguete Nível 4§r na Bancada NASA. Ele abre §eMercúrio, Ceres, Júpiter§r e as quatro
+      grandes luas de Júpiter. Lance-o da plataforma 5×5!
+    tasks:
+      - get: ExtraPlanets:itemTier4Rocket:*
+    rewards:
+      - xp: 8
+      - choice: [GalacticraftCore:item.bucketFuel x4, ExtraPlanets:tier4Items:3 x6, ExtraPlanets:tier4Items:4 x6]
+
+  # ======================================================================
+  # FASE 4 — MERCÚRIO E CERES (NÍVEL 4)
+  # ======================================================================
+  - id: mercurio
+    title: "Mercúrio"
+    type: portal
+    deps: [foguete_t4, traje_termico_t2]
+    icon: ExtraPlanets:tile.mercury
+    banner: "Colado no Sol"
+    subtitle: "Chegada a Mercúrio"
+    desc: |
+      O planeta mais perto do Sol: pequeno, quente e sem ar. Pede o §eFoguete Nível 4§r (config) e o
+      §eTraje Térmico Nível 2§r. O tesouro daqui é o §eMercury Ore§r.
+    tasks:
+      - visit: {dim: -13, name: "Mercúrio"}
+    rewards:
+      - xp: 10
+      - loot: epico
+
+  - id: mercurio_metal
+    title: "Mercury Ingot"
+    type: normal
+    deps: [mercurio]
+    icon: ExtraPlanets:ingotMercury
+    desc: |
+      O Mercury Ore funde em §eMercury Ingot§r (ou com Pó de Pyrotheum na bancada). Ele vira
+      Compressed Mercury, a §eMercury Battery§r (85 000 gJ) e o equipamento de Mercúrio.
+    tasks:
+      - get: ExtraPlanets:ingotMercury x12
+    rewards:
+      - xp: 4
+      - item: minecraft:redstone x16
+
+  - id: bateria_mercurio
+    title: "Mercury Battery"
+    type: optional
+    deps: [mercurio_metal]
+    icon: ExtraPlanets:mercuryBattery
+    desc: |
+      5 Compressed Mercury, redstone e carvão: uma bateria com mais de cinco vezes a carga da
+      Bateria do Galacticraft.
+    tasks:
+      - get: ExtraPlanets:mercuryBattery
+    rewards:
+      - loot: incomum
+
+  - id: ceres
+    title: "Ceres"
+    type: portal
+    deps: [foguete_t4]
+    icon: ExtraPlanets:tile.ceres
+    banner: "O Planeta-Anão"
+    subtitle: "Chegada a Ceres"
+    desc: |
+      O maior objeto do cinturão de asteroides é um planeta-anão de verdade, com chão firme! Ceres
+      pede o §eFoguete Nível 4§r, é frio e tem vilas (config ativa) e §eCeres Uranium Ore§r.
+    tasks:
+      - visit: {dim: -20, name: "Ceres"}
+    rewards:
+      - xp: 10
+      - loot: epico
+
+  - id: uranio_ceres
+    title: "Urânio de Ceres"
+    type: normal
+    deps: [ceres]
+    icon: ExtraPlanets:tile.ceres:6
+    desc: |
+      O Ceres Uranium Ore funde em lingotes de urânio (oredict "ingotUranium", que o IC2 e outros
+      mods aceitam). Cuidado com a radiação dos mods que a simulam!
+    tasks:
+      - get: ore:ingotUranium x8
+    rewards:
+      - xp: 4
+      - item: minecraft:obsidian x8
+
+  - id: bomba_nuclear
+    title: "Nuclear Bomb"
+    type: optional
+    deps: [uranio_ceres]
+    icon: ExtraPlanets:nuclearBomb
+    desc: |
+      Pólvora, areia e um lingote de urânio. §cUma explosão enorme.§r Eu não vou dizer que você
+      deveria fazer uma... mas também não vou fingir que não é tentador.
+    tasks:
+      - get: ExtraPlanets:nuclearBomb
+    rewards:
+      - loot: incomum
+
+  # ======================================================================
+  # FASE 5 — JÚPITER (NÍVEL 4)
+  # ======================================================================
+  - id: tecido_termico_t3
+    title: "Tier 3 Thermal Cloth"
+    type: main
+    deps: [carbono_prensado, tecido_termico_t2]
+    icon: ExtraPlanets:item.thermalCloth:1
+    desc: |
+      3 Compressed Carbon + 2 Tier 2 Thermal Cloth = §eTier 3 Thermal Cloth§r. Faça §e20§r para o
+      traje completo.
+    tasks:
+      - get: ExtraPlanets:item.thermalCloth:1 x20
+    rewards:
+      - xp: 6
+      - choice: [ExtraPlanets:tier4Items:4 x6, ExtraPlanets:item.thermalCloth x6, minecraft:wool x16]
+
+  - id: traje_termico_t3
+    title: "Traje Térmico Nível 3"
+    type: main
+    deps: [tecido_termico_t3]
+    icon: ExtraPlanets:item.tier3ThermalPadding:1
+    desc: |
+      As quatro peças de Nível 3 (o elmo leva 5 tecidos de Nível 3 e um Compressed Carbon).
+      Obrigatório em §eJúpiter, Saturno e suas luas§r.
+    tasks:
+      - get: [ExtraPlanets:item.tier3ThermalPadding, ExtraPlanets:item.tier3ThermalPadding:1, ExtraPlanets:item.tier3ThermalPadding:2, ExtraPlanets:item.tier3ThermalPadding:3]
+    rewards:
+      - xp: 6
+      - choice: [GalacticraftCore:item.oxygenTankHeavyFull x2, ExtraPlanets:item.thermalCloth:1 x4, ExtraPlanets:tier4Items:4 x6]
+
+  - id: jupiter
+    title: "Júpiter"
+    type: portal
+    deps: [foguete_t4, traje_termico_t3]
+    icon: ExtraPlanets:tile.jupiter
+    banner: "O Gigante"
+    subtitle: "Chegada a Júpiter"
+    effect: 3
+    desc: |
+      Nuvens rodando, §erelâmpagos de verdade caindo do céu§r (a config deixa ligados), neblina e um
+      calor sufocante. Júpiter pede o §eFoguete Nível 4§r e o §eTraje Térmico Nível 3§r.
+
+      §eRecursos:§r §ePalladium§r e §eNickel§r (os metais do Foguete Nível 5) e §eRed Gem§r. No
+      subsolo, o calabouço do segundo chefe.
+    tasks:
+      - visit: {dim: -15, name: "Júpiter"}
+    rewards:
+      - xp: 10
+      - loot: epico
+
+  - id: paladio
+    title: "Palladium e Nickel"
+    type: main
+    deps: [jupiter]
+    icon: ExtraPlanets:tile.jupiter:6
+    desc: |
+      Funda os minérios de §ePalladium§r e §eNickel§r de Júpiter. O Compressed Palladium faz a
+      blindagem e os motores auxiliares do Nível 5; o Nickel faz a Nickel Battery e o Advanced Fuel
+      Loader. Junte §e24 de paládio§r e §e12 de níquel§r.
+    tasks:
+      - get: [ore:ingotPalladium x24, ore:ingotNickel x12]
+    rewards:
+      - xp: 6
+      - choice: [ExtraPlanets:tile.jupiter:6 x6, ExtraPlanets:tile.jupiter:7 x6, ExtraPlanets:tier4Items:3 x4]
+
+  - id: gema_vermelha
+    title: "Red Gem"
+    type: normal
+    deps: [jupiter]
+    icon: ExtraPlanets:tier5Items:8
+    desc: |
+      O Red Gem Ore funde em §eRed Gem§r (ou rende 1 gema com o Martelo de Engenheiro). Ferramentas,
+      armadura e o Red Gem Wafer.
+    tasks:
+      - get: ore:gemRedGem x6
+    rewards:
+      - xp: 4
+      - item: minecraft:diamond x2
+
+  - id: chefe_jupiter
+    title: "O Morcego de Fogo Evoluído"
+    type: boss
+    deps: [jupiter]
+    icon: minecraft:blaze_powder
+    banner: "Júpiter Silencia"
+    subtitle: "O Morcego de Fogo-Chefe caiu"
+    desc: |
+      No calabouço de Júpiter (tijolos de Jupiter Dungeon Brick) voa um §cMorcego de Fogo Evoluído§r
+      gigante. Ele voa rápido e incendeia; leve Resistência ao Fogo, arco e paciência.
+
+      Ele deixa a §eTier 5 Dungeon Key§r. Mais um chefe do §5Selo das Estrelas§r!
+    tasks:
+      - kill: {entity: "extraplanets.EvolvedFireBatBoss", count: 1}
+      - get: ExtraPlanets:T5key
+    rewards:
+      - xp: 15
+      - loot: [epico, epico]
+
+  - id: tesouro_jupiter
+    title: "Esquemático: Foguete Nível 5"
+    type: main
+    deps: [chefe_jupiter]
+    icon: ExtraPlanets:schematicTier5
+    desc: |
+      Abra o §eTier 5 Treasure Chest§r com a chave e destrave o §eFoguete Nível 5§r. Saturno está
+      logo ali.
+    tasks:
+      - get: ExtraPlanets:schematicTier5
+    rewards:
+      - xp: 8
+      - choice: [ore:ingotPalladium x12, ExtraPlanets:tier4Items:3 x6, GalacticraftCore:item.bucketFuel x3]
+
+  - id: io
+    title: "Io"
+    type: normal
+    deps: [jupiter]
+    icon: ExtraPlanets:tile.io:2
+    desc: |
+      A lua vulcânica de Júpiter, com terras de cinza e planícies em chamas. Pede o Foguete Nível 4
+      e o Traje Térmico Nível 3.
+    tasks:
+      - visit: {dim: -2004, name: "Io"}
+    rewards:
+      - xp: 5
+      - loot: raro
+
+  - id: europa
+    title: "Europa"
+    type: normal
+    deps: [jupiter]
+    icon: ExtraPlanets:tile.europa:2
+    desc: |
+      Uma lua de gelo com oceanos escondidos. Foguete Nível 4 e Traje Térmico Nível 3.
+    tasks:
+      - visit: {dim: -2002, name: "Europa"}
+    rewards:
+      - xp: 5
+      - loot: raro
+
+  - id: ganimedes
+    title: "Ganimedes"
+    type: normal
+    deps: [jupiter]
+    icon: ExtraPlanets:tile.ganymede:2
+    desc: |
+      A maior lua do sistema solar. Foguete Nível 4 e Traje Térmico Nível 3.
+    tasks:
+      - visit: {dim: -2003, name: "Ganimedes"}
+    rewards:
+      - xp: 5
+      - loot: raro
+
+  - id: calisto
+    title: "Calisto"
+    type: normal
+    deps: [jupiter]
+    icon: ExtraPlanets:tile.callisto:2
+    desc: |
+      Uma lua antiga, cheia de crateras. Foguete Nível 4 e Traje Térmico Nível 3.
+    tasks:
+      - visit: {dim: -2001, name: "Calisto"}
+    rewards:
+      - xp: 5
+      - loot: raro
+
+  - id: luas_galileanas
+    title: "As Luas de Galileu"
+    type: optional
+    deps: [io, europa, ganimedes, calisto]
+    icon: ExtraPlanets:tile.ganymede:2
+    desc: |
+      Io, Europa, Ganimedes e Calisto — as quatro luas que Galileu viu pela primeira vez. Visitar
+      todas é um feito de exploradora... digo, de Herói! Esta quest marca que você esteve nas
+      quatro.
+    tasks:
+      - check
+    rewards:
+      - loot: raro
+
+  # ======================================================================
+  # FASE 6 — SATURNO (NÍVEL 5)
+  # ======================================================================
+  - id: foguete_t5
+    title: "Foguete Nível 5"
+    type: main
+    deps: [tesouro_jupiter, paladio]
+    icon: ExtraPlanets:itemTier5Rocket
+    desc: |
+      §eBlindagem Nível 5§r = Blindagem Nível 4 + Compressed Palladium (na Prensa). Nariz, motor,
+      aletas (6 blindagens) e propulsores (4 Compressed Palladium, Lã Azul...) seguem o mesmo molde.
+      Monte o §eFoguete Nível 5§r: Saturno, Titã, Reia e Oberon.
+    tasks:
+      - get: [ExtraPlanets:tier5Items:3 x8, ExtraPlanets:itemTier5Rocket:*]
+    rewards:
+      - xp: 8
+      - choice: [GalacticraftCore:item.bucketFuel x4, ExtraPlanets:tier5Items:4 x6, ore:ingotPalladium x12]
+
+  - id: saturno
+    title: "Saturno"
+    type: portal
+    deps: [foguete_t5, traje_termico_t3]
+    icon: ExtraPlanets:tile.saturn
+    banner: "O Senhor dos Anéis"
+    subtitle: "Chegada a Saturno"
+    effect: 3
+    desc: |
+      Os anéis cortando o céu... é a vista mais bonita do sistema solar. Saturno pede o §eFoguete
+      Nível 5§r e o §eTraje Térmico Nível 3§r.
+
+      §eRecursos:§r §eMagnesium§r (Nível 6 e Tecido Térmico Nível 4), §eSlime Ore§r, mares de
+      hidrocarbonetos e terras "infectadas" com §cÁgua Infectada§r. E o terceiro chefe.
+    tasks:
+      - visit: {dim: -16, name: "Saturno"}
+    rewards:
+      - xp: 10
+      - loot: epico
+
+  - id: magnesio
+    title: "Magnesium"
+    type: main
+    deps: [saturno]
+    icon: ExtraPlanets:tile.saturn:6
+    desc: |
+      O §eSaturn Magnesium Ore§r funde em Magnesium Ingot. Compressed Magnesium faz a Blindagem
+      Nível 6, o Tecido Térmico Nível 4, o Hybrid Solar Panel e o Advanced Oxygen Compressor.
+      Junte §e32§r.
+    tasks:
+      - get: ore:ingotMagnesium x32
+    rewards:
+      - xp: 6
+      - choice: [ExtraPlanets:tile.saturn:6 x8, ExtraPlanets:tier5Items:3 x4, ore:ingotPalladium x8]
+
+  - id: slime_saturno
+    title: "Slime Ore"
+    type: optional
+    deps: [saturno]
+    icon: ExtraPlanets:tile.saturn:11
+    desc: |
+      Um minério que dá gosma de slime! Útil para Manipuladores de Fluidos e pistões grudentos.
+      (Também existe um Slime Block do ExtraPlanets.)
+    tasks:
+      - get: minecraft:slime_ball x16
+    rewards:
+      - loot: comum
+
+  - id: chefe_saturno
+    title: "O Ghast Evoluído"
+    type: boss
+    deps: [saturno]
+    icon: minecraft:ghast_tear
+    banner: "Os Anéis Brilham em Paz"
+    subtitle: "O Ghast-Chefe caiu"
+    desc: |
+      O calabouço de Saturno guarda um §cGhast Evoluído§r gigante que dispara bolas de fogo
+      explosivas. Rebata as bolas, use arco e lute com cobertura.
+
+      Ele deixa a §eTier 6 Dungeon Key§r. Chefe do §5Selo das Estrelas§r!
+    tasks:
+      - kill: {entity: "extraplanets.EvolvedGhastBoss", count: 1}
+      - get: ExtraPlanets:T6key
+    rewards:
+      - xp: 15
+      - loot: [epico, epico]
+
+  - id: tesouro_saturno
+    title: "Esquemático: Foguete Nível 6"
+    type: main
+    deps: [chefe_saturno]
+    icon: ExtraPlanets:schematicTier6
+    desc: |
+      O §eTier 6 Treasure Chest§r guarda o projeto do §eFoguete Nível 6§r. Urano espera.
+    tasks:
+      - get: ExtraPlanets:schematicTier6
+    rewards:
+      - xp: 8
+      - choice: [ore:ingotMagnesium x12, ExtraPlanets:tier5Items:3 x6, GalacticraftCore:item.bucketFuel x3]
+
+  - id: tita
+    title: "Titã"
+    type: normal
+    deps: [saturno]
+    icon: ExtraPlanets:tile.titan:2
+    desc: |
+      A lua de Saturno com colinas e mares de metano. Foguete Nível 5 e Traje Térmico Nível 3.
+    tasks:
+      - visit: {dim: -40, name: "Titã"}
+    rewards:
+      - xp: 5
+      - loot: raro
+
+  - id: reia
+    title: "Reia"
+    type: normal
+    deps: [saturno]
+    icon: ExtraPlanets:tile.rhea:2
+    desc: |
+      Outra lua de Saturno, acessível com o Foguete Nível 5 e o Traje Térmico Nível 3.
+    tasks:
+      - visit: {dim: -2006, name: "Reia"}
+    rewards:
+      - xp: 5
+      - loot: raro
+
+  - id: japeto
+    title: "Jápeto"
+    type: normal
+    deps: [saturno, foguete_t6]
+    icon: ExtraPlanets:iapetus:2
+    desc: |
+      A lua "de duas cores" de Saturno é mais difícil de alcançar: pede o §eFoguete Nível 6§r (e,
+      como lua de Saturno, o Traje Térmico Nível 3).
+    tasks:
+      - visit: {dim: -43, name: "Jápeto"}
+    rewards:
+      - xp: 5
+      - loot: raro
+
+  # ======================================================================
+  # FASE 7 — URANO (NÍVEL 6)
+  # ======================================================================
+  - id: foguete_t6
+    title: "Foguete Nível 6"
+    type: main
+    deps: [tesouro_saturno, magnesio]
+    icon: ExtraPlanets:itemTier6Rocket
+    desc: |
+      §eBlindagem Nível 6§r = Blindagem Nível 5 + Compressed Magnesium. Propulsores com Compressed
+      Magnesium e Lã Verde-Limão. Monte o §eFoguete Nível 6§r: Urano, Titânia e Jápeto.
+    tasks:
+      - get: [ExtraPlanets:tier6Items:3 x8, ExtraPlanets:itemTier6Rocket:*]
+    rewards:
+      - xp: 8
+      - choice: [GalacticraftCore:item.bucketFuel x4, ExtraPlanets:tier6Items:4 x6, ore:ingotMagnesium x12]
+
+  - id: tecido_termico_t4
+    title: "Tier 4 Thermal Cloth"
+    type: main
+    deps: [magnesio, tecido_termico_t3]
+    icon: ExtraPlanets:item.thermalCloth:2
+    desc: |
+      3 Compressed Magnesium + 2 Tier 3 Thermal Cloth = §eTier 4 Thermal Cloth§r. Faça §e20§r.
+    tasks:
+      - get: ExtraPlanets:item.thermalCloth:2 x20
+    rewards:
+      - xp: 6
+      - choice: [ExtraPlanets:tier6Items:4 x6, ExtraPlanets:item.thermalCloth:1 x6, minecraft:wool x16]
+
+  - id: traje_termico_t4
+    title: "Traje Térmico Nível 4"
+    type: main
+    deps: [tecido_termico_t4]
+    icon: ExtraPlanets:item.tier4ThermalPadding:1
+    desc: |
+      O traje definitivo do ExtraPlanets: obrigatório em §eUrano, Netuno, Plutão, Éris e suas
+      luas§r, onde o frio passa de -100 na escala térmica do Galacticraft.
+    tasks:
+      - get: [ExtraPlanets:item.tier4ThermalPadding, ExtraPlanets:item.tier4ThermalPadding:1, ExtraPlanets:item.tier4ThermalPadding:2, ExtraPlanets:item.tier4ThermalPadding:3]
+    rewards:
+      - xp: 6
+      - choice: [GalacticraftCore:item.oxygenTankHeavyFull x2, ExtraPlanets:item.thermalCloth:2 x4, ExtraPlanets:tier6Items:4 x6]
+
+  - id: urano
+    title: "Urano"
+    type: portal
+    deps: [foguete_t6, traje_termico_t4]
+    icon: ExtraPlanets:tile.uranus
+    banner: "O Gigante de Gelo"
+    subtitle: "Chegada a Urano"
+    effect: 3
+    desc: |
+      Tudo é gelo: mares congelados, terras de neve, §eespinhos de gelo§r e até §eiglus§r (ambos
+      ativos na config). Pede o §eFoguete Nível 6§r e o §eTraje Térmico Nível 4§r.
+
+      §eRecursos:§r §eCrystal§r (o metal do Nível 7) e §eWhite Gem§r.
+    tasks:
+      - visit: {dim: -17, name: "Urano"}
+    rewards:
+      - xp: 10
+      - loot: epico
+
+  - id: cristal
+    title: "Crystal"
+    type: main
+    deps: [urano]
+    icon: ExtraPlanets:tile.uranus:3
+    desc: |
+      O §eUranus Crystal Ore§r funde em Crystal Ingot. Para a Blindagem Nível 7 você vai precisar de
+      §eCompressed Reinforced Crystal§r: dois Compressed Crystal juntos na Prensa. Junte §e32§r
+      lingotes.
+    tasks:
+      - get: ore:ingotCrystal x32
+    rewards:
+      - xp: 6
+      - choice: [ExtraPlanets:tile.uranus:3 x8, ExtraPlanets:tier6Items:3 x4, ore:ingotMagnesium x8]
+
+  - id: gema_branca
+    title: "White Gem"
+    type: normal
+    deps: [urano]
+    icon: ExtraPlanets:tier7Items:7
+    desc: |
+      Funda o §eUranus White Gem Ore§r para White Gems (ou use o Martelo de Engenheiro).
+      Ferramentas, armadura e o White Gem Wafer.
+    tasks:
+      - get: ore:gemWhiteGem x6
+    rewards:
+      - xp: 4
+      - item: minecraft:diamond x2
+
+  - id: chefe_urano
+    title: "O Slime de Gelo Evoluído"
+    type: boss
+    deps: [urano]
+    icon: minecraft:snowball
+    banner: "O Gelo Racha"
+    subtitle: "O Slime de Gelo-Chefe caiu"
+    desc: |
+      O guardião de Urano é um §cSlime de Gelo Evoluído§r enorme que pula, esmaga e se divide.
+      Cuidado com o terreno escorregadio da arena.
+
+      Ele deixa a §eTier 7 Dungeon Key§r. Chefe do §5Selo das Estrelas§r!
+    tasks:
+      - kill: {entity: "extraplanets.EvolvedIceSlimeBoss", count: 1}
+      - get: ExtraPlanets:T7key
+    rewards:
+      - xp: 15
+      - loot: [epico, epico]
+
+  - id: tesouro_urano
+    title: "Esquemático: Foguete Nível 7"
+    type: main
+    deps: [chefe_urano]
+    icon: ExtraPlanets:schematicTier7
+    desc: |
+      O §eTier 7 Treasure Chest§r guarda o projeto do §eFoguete Nível 7§r. Rumo a Netuno!
+    tasks:
+      - get: ExtraPlanets:schematicTier7
+    rewards:
+      - xp: 8
+      - choice: [ore:ingotCrystal x12, ExtraPlanets:tier6Items:3 x6, GalacticraftCore:item.bucketFuel x3]
+
+  - id: oberon
+    title: "Oberon"
+    type: normal
+    deps: [urano]
+    icon: ExtraPlanets:oberon:2
+    desc: |
+      Uma lua de Urano com montanhas e vales enormes. Curiosamente, pede só o §eFoguete Nível 5§r —
+      mas o frio é de Urano: Traje Térmico Nível 4.
+    tasks:
+      - visit: {dim: -41, name: "Oberon"}
+    rewards:
+      - xp: 5
+      - loot: raro
+
+  - id: titania
+    title: "Titânia"
+    type: normal
+    deps: [urano]
+    icon: ExtraPlanets:titania:2
+    desc: |
+      A maior lua de Urano. Foguete Nível 6 e Traje Térmico Nível 4.
+    tasks:
+      - visit: {dim: -2007, name: "Titânia"}
+    rewards:
+      - xp: 5
+      - loot: raro
+
+  # ======================================================================
+  # FASE 8 — NETUNO (NÍVEL 7)
+  # ======================================================================
+  - id: foguete_t7
+    title: "Foguete Nível 7"
+    type: main
+    deps: [tesouro_urano, cristal]
+    icon: ExtraPlanets:itemTier7Rocket
+    desc: |
+      §eBlindagem Nível 7§r = Blindagem Nível 6 + Compressed Reinforced Crystal. Propulsores com
+      Compressed Crystal e Lã Magenta. Monte o §eFoguete Nível 7§r: Netuno e Tritão.
+    tasks:
+      - get: [ExtraPlanets:tier7Items:3 x8, ExtraPlanets:itemTier7Rocket:*]
+    rewards:
+      - xp: 8
+      - choice: [GalacticraftCore:item.bucketFuel x4, ExtraPlanets:tier7Items:4 x6, ore:ingotCrystal x12]
+
+  - id: netuno
+    title: "Netuno"
+    type: portal
+    deps: [foguete_t7, traje_termico_t4]
+    icon: ExtraPlanets:tile.neptune
+    banner: "O Azul Profundo"
+    subtitle: "Chegada a Netuno"
+    effect: 3
+    desc: |
+      O planeta mais azul: colinas em camadas, mares de §cÁgua Radioativa§r e um frio de -140.
+      §eFoguete Nível 7§r e §eTraje Térmico Nível 4§r.
+
+      §eRecursos:§r §eZinc§r (o metal do Nível 8) e §eBlue Gem§r.
+    tasks:
+      - visit: {dim: -18, name: "Netuno"}
+    rewards:
+      - xp: 10
+      - loot: epico
+
+  - id: zinco
+    title: "Zinc"
+    type: main
+    deps: [netuno]
+    icon: ExtraPlanets:tile.neptune:6
+    desc: |
+      O §eNeptune Zinc Ore§r funde em Zinc Ingot. Compressed Zinc faz a Blindagem Nível 8; o zinco
+      também faz a Zinc Battery, o Advanced Refinery e a Tier 3 Launch Pad. Junte §e32§r.
+    tasks:
+      - get: ore:ingotZinc x32
+    rewards:
+      - xp: 6
+      - choice: [ExtraPlanets:tile.neptune:6 x8, ExtraPlanets:tier7Items:3 x4, ore:ingotCrystal x8]
+
+  - id: gema_azul
+    title: "Blue Gem"
+    type: normal
+    deps: [netuno]
+    icon: ExtraPlanets:tier8Items:6
+    desc: |
+      Funda o §eNeptune Blue Gem Ore§r (ou martele). Ferramentas, armadura e o Blue Gem Wafer.
+    tasks:
+      - get: ore:gemBlueGem x6
+    rewards:
+      - xp: 4
+      - item: minecraft:diamond x2
+
+  - id: chefe_netuno
+    title: "O Boneco de Neve Evoluído"
+    type: boss
+    deps: [netuno]
+    icon: minecraft:snow
+    banner: "Netuno Derrete um Pouco"
+    subtitle: "O Boneco de Neve-Chefe caiu"
+    desc: |
+      Não ria do nome: o §cBoneco de Neve Evoluído§r de Netuno é uma metralhadora de bolas de neve
+      que empurram e machucam. Escudo de blocos, arco e muita mobilidade.
+
+      Ele deixa a §eTier 8 Dungeon Key§r. Chefe do §5Selo das Estrelas§r!
+    tasks:
+      - kill: {entity: "extraplanets.EvolvedSnowmanBoss", count: 1}
+      - get: ExtraPlanets:T8key
+    rewards:
+      - xp: 15
+      - loot: [epico, epico]
+
+  - id: tesouro_netuno
+    title: "Esquemático: Foguete Nível 8"
+    type: main
+    deps: [chefe_netuno]
+    icon: ExtraPlanets:schematicTier8
+    desc: |
+      O §eTier 8 Treasure Chest§r guarda o projeto do §eFoguete Nível 8§r — o último a usar a
+      plataforma de Nível 2.
+    tasks:
+      - get: ExtraPlanets:schematicTier8
+    rewards:
+      - xp: 8
+      - choice: [ore:ingotZinc x12, ExtraPlanets:tier7Items:3 x6, GalacticraftCore:item.bucketFuel x3]
+
+  - id: tritao
+    title: "Tritão"
+    type: normal
+    deps: [netuno]
+    icon: ExtraPlanets:tile.triton:2
+    desc: |
+      A lua gelada de Netuno, com terras e mares de gelo. Foguete Nível 7 e Traje Térmico Nível 4.
+    tasks:
+      - visit: {dim: -36, name: "Tritão"}
+    rewards:
+      - xp: 5
+      - loot: raro
+
+  # ======================================================================
+  # FASE 9 — PLUTÃO (NÍVEL 8)
+  # ======================================================================
+  - id: foguete_t8
+    title: "Foguete Nível 8"
+    type: main
+    deps: [tesouro_netuno, zinco]
+    icon: ExtraPlanets:itemTier8Rocket
+    desc: |
+      §eBlindagem Nível 8§r = Blindagem Nível 7 + Compressed Zinc. Monte o §eFoguete Nível 8§r e
+      parta para Plutão.
+    tasks:
+      - get: [ExtraPlanets:tier8Items:3 x8, ExtraPlanets:itemTier8Rocket:*]
+    rewards:
+      - xp: 8
+      - choice: [GalacticraftCore:item.bucketFuel x4, ExtraPlanets:tier8Items:4 x6, ore:ingotZinc x12]
+
+  - id: plutao
+    title: "Plutão"
+    type: portal
+    deps: [foguete_t8, traje_termico_t4]
+    icon: ExtraPlanets:tile.pluto
+    banner: "Pequeno, Mas Nosso"
+    subtitle: "Chegada a Plutão"
+    effect: 3
+    desc: |
+      Para o Registro, Plutão sempre vai ser um planeta. Pede o §eFoguete Nível 8§r e o §eTraje
+      Térmico Nível 4§r. O recurso daqui é o §eTungsten§r (Nível 9).
+    tasks:
+      - visit: {dim: -2005, name: "Plutão"}
+    rewards:
+      - xp: 10
+      - loot: epico
+
+  - id: tungstenio
+    title: "Tungsten"
+    type: main
+    deps: [plutao]
+    icon: ExtraPlanets:tile.pluto:6
+    desc: |
+      O §ePluto Tungsten Ore§r funde em Tungsten Ingot. Compressed Tungsten faz a Blindagem Nível 9;
+      9 lingotes viram um Block of Tungsten, base da plataforma de Nível 3. Junte §e48§r.
+    tasks:
+      - get: ore:ingotTungsten x48
+    rewards:
+      - xp: 6
+      - choice: [ExtraPlanets:tile.pluto:6 x8, ExtraPlanets:tier8Items:3 x4, ore:ingotZinc x8]
+
+  - id: chefe_plutao
+    title: "O Creeper-Chefe de Plutão"
+    type: boss
+    deps: [plutao]
+    icon: minecraft:skull:4
+    banner: "Plutão Conquistado"
+    subtitle: "O Creeper-Chefe de Plutão caiu"
+    desc: |
+      Uma versão gelada e mais forte do Creeper-Chefe de Marte, com o mesmo gosto por explosões.
+      Proteção contra Explosões e distância!
+
+      Ele deixa a §eTier 9 Dungeon Key§r. Chefe do §5Selo das Estrelas§r!
+    tasks:
+      - kill: {entity: "extraplanets.CreeperBossPluto", count: 1}
+      - get: ExtraPlanets:T9key
+    rewards:
+      - xp: 15
+      - loot: [epico, epico]
+
+  - id: tesouro_plutao
+    title: "Esquemático: Foguete Nível 9"
+    type: main
+    deps: [chefe_plutao]
+    icon: ExtraPlanets:schematicTier9
+    desc: |
+      O §eTier 9 Treasure Chest§r guarda o projeto do §eFoguete Nível 9§r.
+    tasks:
+      - get: ExtraPlanets:schematicTier9
+    rewards:
+      - xp: 8
+      - choice: [ore:ingotTungsten x12, ExtraPlanets:tier8Items:3 x6, GalacticraftCore:item.bucketFuel x3]
+
+  - id: plataforma_t3
+    title: "Tier 3 Rocket Launch Pad"
+    type: main
+    deps: [tungstenio, zinco]
+    icon: ExtraPlanets:tile.advancedLaunchPad:1
+    desc: |
+      Os Foguetes Nível 9 e 10 exigem a §eTier 3 Rocket Launch Pad§r: 3 Blocks of Tungsten + 3 Zinc
+      Ingots rendem 5; monte o quadrado §e5×5§r (25 blocos).
+    tasks:
+      - get: ExtraPlanets:tile.advancedLaunchPad:1 x25
+    rewards:
+      - xp: 6
+      - choice: [ore:ingotTungsten x18, ore:ingotZinc x12, ExtraPlanets:tile.pluto:7 x2]
+
+  # ======================================================================
+  # FASE 10 — ÉRIS (NÍVEL 9)
+  # ======================================================================
+  - id: foguete_t9
+    title: "Foguete Nível 9"
+    type: main
+    deps: [tesouro_plutao, tungstenio, plataforma_t3]
+    icon: ExtraPlanets:itemTier9Rocket
+    desc: |
+      §eBlindagem Nível 9§r = Blindagem Nível 8 + Compressed Tungsten. Propulsores com Compressed
+      Tungsten e Lã Azul-Clara. Monte o §eFoguete Nível 9§r e lance-o da plataforma de Nível 3.
+    tasks:
+      - get: [ExtraPlanets:tier9Items:3 x8, ExtraPlanets:itemTier9Rocket:*]
+    rewards:
+      - xp: 8
+      - choice: [GalacticraftCore:item.bucketFuel x4, ExtraPlanets:tier9Items:4 x6, ore:ingotTungsten x12]
+
+  - id: eris
+    title: "Éris"
+    type: portal
+    deps: [foguete_t9, traje_termico_t4]
+    icon: ExtraPlanets:tile.eris
+    banner: "A Borda do Sistema"
+    subtitle: "Chegada a Éris"
+    effect: 3
+    desc: |
+      O planeta-anão mais distante: escuro, gelado (-150!) e silencioso. §eFoguete Nível 9§r e
+      §eTraje Térmico Nível 4§r. O recurso daqui é o §eDark Iron§r, metal do último foguete.
+    tasks:
+      - visit: {dim: -21, name: "Éris"}
+    rewards:
+      - xp: 10
+      - loot: epico
+
+  - id: ferro_escuro
+    title: "Dark Iron"
+    type: main
+    deps: [eris]
+    icon: ExtraPlanets:tile.eris:7
+    desc: |
+      O §eEris Dark Iron Ore§r funde em Dark Iron Ingot (ou com Pó de Pyrotheum na bancada).
+      Compressed Dark Iron faz a Blindagem e os propulsores do Nível 10; o Dark Iron também faz o
+      Ultimate Refinery. Junte §e32§r.
+    tasks:
+      - get: ore:ingotDarkIron x32
+    rewards:
+      - xp: 6
+      - choice: [ExtraPlanets:tile.eris:7 x8, ExtraPlanets:tier9Items:3 x4, ore:ingotTungsten x8]
+
+  - id: chefe_eris
+    title: "O Creeper-Chefe de Éris"
+    type: boss
+    deps: [eris]
+    icon: minecraft:skull:4
+    banner: "O Último Guardião"
+    subtitle: "O Creeper-Chefe de Éris caiu"
+    desc: |
+      O guardião mais distante do sistema solar: um Creeper-Chefe ainda mais resistente. Use tudo o
+      que aprendeu nos outros seis chefes.
+
+      Ele deixa a §eTier 10 Dungeon Key§r — a chave para Kepler 22b. Último chefe do ExtraPlanets no
+      §5Selo das Estrelas§r!
+    tasks:
+      - kill: {entity: "extraplanets.CreeperBossEris", count: 1}
+      - get: ExtraPlanets:T10key
+    rewards:
+      - xp: 15
+      - loot: [epico, epico]
+
+  - id: tesouro_eris
+    title: "Esquemático: Foguete Nível 10"
+    type: main
+    deps: [chefe_eris]
+    icon: ExtraPlanets:schematicTier10
+    desc: |
+      O §eTier 10 Treasure Chest§r guarda o último projeto: o §eFoguete Nível 10§r, capaz de deixar
+      o sistema solar.
+    tasks:
+      - get: ExtraPlanets:schematicTier10
+    rewards:
+      - xp: 8
+      - choice: [ore:ingotDarkIron x12, ExtraPlanets:tier9Items:3 x6, GalacticraftCore:item.bucketFuel x3]
+
+  # ======================================================================
+  # FASE 11 — KEPLER 22b (NÍVEL 10)
+  # ======================================================================
+  - id: foguete_t10
+    title: "Foguete Nível 10"
+    type: main
+    deps: [tesouro_eris, ferro_escuro]
+    icon: ExtraPlanets:itemTier10Rocket
+    desc: |
+      §eBlindagem Nível 10§r = Blindagem Nível 9 + Compressed Dark Iron. Propulsores com Compressed
+      Dark Iron e Lã Ciano. Monte o §eFoguete Nível 10§r: o primeiro foguete interestelar do
+      Registro.
+    tasks:
+      - get: [ExtraPlanets:tier10Items:3 x8, ExtraPlanets:itemTier10Rocket:*]
+    rewards:
+      - xp: 8
+      - choice: [GalacticraftCore:item.bucketFuel x6, ExtraPlanets:tier10Items:4 x6, ore:ingotDarkIron x12]
+
+  - id: kepler22b
+    title: "Kepler 22b"
+    type: portal
+    deps: [foguete_t10]
+    icon: ExtraPlanets:tile.kepler22bMapleSaplings
+    banner: "Um Novo Lar?"
+    subtitle: "Chegada a Kepler 22b"
+    effect: 6
+    desc: |
+      Outra estrela, outro céu... e §eflorestas de bordos coloridos§r: azuis, vermelhos, roxos,
+      amarelos, verdes e marrons. Kepler 22b é o planeta mais parecido com a Terra que existe no
+      Registro — sem frio nem calor extremos e com gravidade baixíssima.
+
+      §eRecursos:§r §ediamantes coloridos§r (Blue, Red, Purple, Yellow e Green Diamond), §ePlatinum§r
+      e §eDense Coal§r. Respire fundo... na máscara, claro.
+    tasks:
+      - visit: {dim: -22, name: "Kepler 22b"}
+    rewards:
+      - xp: 12
+      - loot: epico
+
+  - id: bordos_kepler
+    title: "Bordos de Kepler"
+    type: normal
+    deps: [kepler22b]
+    icon: ExtraPlanets:tile.kepler22bMapleLogs
+    desc: |
+      Seis cores de bordos, seis cores de tábuas e de gravetos. Leve uma muda de cada cor para casa
+      — um jardim interestelar!
+    tasks:
+      - get: [ExtraPlanets:tile.kepler22bMapleSaplings, ExtraPlanets:tile.kepler22bMapleSaplings:1, ExtraPlanets:tile.kepler22bMapleSaplings:2, ExtraPlanets:tile.kepler22bMapleSaplings:3, ExtraPlanets:tile.kepler22bMapleSaplings:4, ExtraPlanets:tile.kepler22bMapleSaplings:5]
+    rewards:
+      - xp: 5
+      - item: minecraft:dye:15 x16
+
+  - id: diamantes_coloridos
+    title: "Diamantes Coloridos"
+    type: normal
+    deps: [kepler22b]
+    icon: ExtraPlanets:tier11Items
+    desc: |
+      Os planaltos de Kepler escondem minérios de diamante azul, vermelho, roxo, amarelo e verde.
+      Martele (Martelo de Engenheiro) ou funda para obter as gemas. Junte uma de cada cor.
+    tasks:
+      - get: [ExtraPlanets:tier11Items, ExtraPlanets:tier11Items:1, ExtraPlanets:tier11Items:2, ExtraPlanets:tier11Items:3, ExtraPlanets:tier11Items:4]
+    rewards:
+      - xp: 5
+      - item: minecraft:diamond x4
+
+  - id: platina
+    title: "Platinum de Kepler"
+    type: optional
+    deps: [kepler22b]
+    icon: ExtraPlanets:tile.kepler22b:13
+    desc: |
+      O §eKepler 22b Platinum Ore§r dá Platinum Ingots (e Compressed Platinum na Prensa).
+    tasks:
+      - get: ExtraPlanets:tier11Items:11 x8
+    rewards:
+      - loot: raro
+
+  - id: carvao_denso
+    title: "Dense Coal"
+    type: optional
+    deps: [kepler22b]
+    icon: ExtraPlanets:tile.kepler22b:5
+    desc: |
+      Minério de carvão "denso" das planícies de Kepler: combustível farto para a base
+      interestelar. Minere alguns blocos.
+    tasks:
+      - get: ExtraPlanets:tile.kepler22b:5 x8
+    rewards:
+      - loot: incomum
+
+  # ======================================================================
+  # MÁQUINAS, ENERGIA E UTILIDADES
+  # ======================================================================
+  - id: refinaria_avancada
+    title: "Advanced Refinery"
+    type: normal
+    deps: [zinco]
+    icon: ExtraPlanets:advancedRefinery
+    desc: |
+      Uma Refinaria do Galacticraft com 2 Zinc Ingots: refina petróleo mais rápido. Foguetes grandes
+      bebem muito combustível!
+    tasks:
+      - get: ExtraPlanets:advancedRefinery
+    rewards:
+      - xp: 4
+      - item: GalacticraftCore:item.bucketFuel x2
+
+  - id: refinaria_definitiva
+    title: "Ultimate Refinery"
+    type: optional
+    deps: [refinaria_avancada, ferro_escuro]
+    icon: ExtraPlanets:ultimateRefinery
+    desc: |
+      A Advanced Refinery com 2 Dark Iron Ingots: a refinaria mais rápida do Registro.
+    tasks:
+      - get: ExtraPlanets:ultimateRefinery
+    rewards:
+      - loot: raro
+
+  - id: wafers_ep
+    title: "Wafers do ExtraPlanets"
+    type: normal
+    deps: [carbono]
+    icon: ExtraPlanets:item.wafer:1
+    task_logic: OR
+    desc: |
+      O Fabricador de Circuitos ganhou novos wafers: §eDiamond, Carbon, Titanium, Red Gem, Blue Gem e
+      White Gem§r. Eles são usados nos carregadores avançados e nas §eestações espaciais§r dos
+      planetas do ExtraPlanets (o tooltip avisa). Confira as receitas no NEI. Faça qualquer um.
+    tasks:
+      - get: ExtraPlanets:item.wafer
+      - get: ExtraPlanets:item.wafer:1
+      - get: ExtraPlanets:item.wafer:2
+      - get: ExtraPlanets:item.wafer:3
+      - get: ExtraPlanets:item.wafer:4
+      - get: ExtraPlanets:item.wafer:5
+    rewards:
+      - xp: 4
+      - item: minecraft:diamond x2
+
+  - id: carregador_avancado
+    title: "Advanced Fuel Loader"
+    type: normal
+    deps: [paladio, wafers_ep]
+    icon: ExtraPlanets:advancedFuelLoader
+    desc: |
+      Um Carregador de Combustível com níquel, paládio e um Carbon Wafer: enche os tanques grandes
+      dos foguetes mais rápido.
+    tasks:
+      - get: ExtraPlanets:advancedFuelLoader
+    rewards:
+      - xp: 4
+      - item: GalacticraftCore:item.bucketFuel x2
+
+  - id: carregador_definitivo
+    title: "Ultimate Fuel Loader"
+    type: optional
+    deps: [carregador_avancado, tungstenio]
+    icon: ExtraPlanets:ultimateFuelLoader
+    desc: |
+      Tungstênio, zinco, um Titanium Wafer e o Advanced Fuel Loader.
+    tasks:
+      - get: ExtraPlanets:ultimateFuelLoader
+    rewards:
+      - loot: raro
+
+  - id: compressor_oxigenio_avancado
+    title: "Advanced Oxygen Compressor"
+    type: optional
+    deps: [magnesio]
+    icon: ExtraPlanets:advancedOxygenCompressor
+    desc: |
+      4 Compressores de Oxigênio e 5 Magnesium Ingots: enche tanques muito mais rápido. Também há a
+      versão Descompressor e as versões §eUltimate§r (com tungstênio).
+    tasks:
+      - get: ExtraPlanets:advancedOxygenCompressor
+    rewards:
+      - loot: incomum
+
+  - id: compressor_oxigenio_definitivo
+    title: "Ultimate Oxygen Compressor"
+    type: optional
+    deps: [compressor_oxigenio_avancado, tungstenio]
+    icon: ExtraPlanets:ultimateOxygenCompressor
+    desc: |
+      4 Advanced Oxygen Compressors e 5 Tungsten Ingots. O ar mais rápido do sistema solar.
+    tasks:
+      - get: ExtraPlanets:ultimateOxygenCompressor
+    rewards:
+      - loot: raro
+
+  - id: solar_hibrido
+    title: "Hybrid Solar Panel"
+    type: normal
+    deps: [magnesio]
+    icon: ExtraPlanets:tile.solar
+    desc: |
+      Um Painel Solar Avançado do Galacticraft com 2 Compressed Magnesium: mais energia por painel.
+    tasks:
+      - get: ExtraPlanets:tile.solar
+    rewards:
+      - xp: 4
+      - item: ore:waferSolar x9
+
+  - id: solar_definitivo
+    title: "Ultimate Solar Panel"
+    type: optional
+    deps: [solar_hibrido, cristal]
+    icon: ExtraPlanets:tile.solar:4
+    desc: |
+      O Hybrid Solar Panel com 2 Compressed Crystal: o painel mais forte do Galacticraft no pack.
+    tasks:
+      - get: ExtraPlanets:tile.solar:4
+    rewards:
+      - loot: raro
+
+  - id: baterias_ep
+    title: "Baterias Planetárias"
+    type: normal
+    deps: [paladio, zinco]
+    icon: ExtraPlanets:zincBattery
+    desc: |
+      Cada planeta traz uma bateria: §eNickel Battery§r (45 000 gJ, Júpiter), §eMercury Battery§r
+      (85 000) e §eZinc Battery§r (125 000, Netuno). Faça a de níquel e a de zinco.
+    tasks:
+      - get: [ExtraPlanets:nickelBattery, ExtraPlanets:zincBattery]
+    rewards:
+      - xp: 4
+      - item: minecraft:redstone_block x4
+
+  - id: bateria_avancada_ep
+    title: "Advanced Battery"
+    type: optional
+    deps: [baterias_ep]
+    icon: ExtraPlanets:item.advancedBattery
+    desc: |
+      5 Titânio Prensado, uma Bateria e um Bloco de Desh: 50 000 gJ.
+    tasks:
+      - get: ExtraPlanets:item.advancedBattery
+    rewards:
+      - loot: incomum
+
+  - id: bateria_definitiva_ep
+    title: "Ultimate Battery"
+    type: optional
+    deps: [bateria_avancada_ep, tungstenio, cristal, gema_azul, gema_branca, gema_vermelha]
+    icon: ExtraPlanets:item.ultimateBattery
+    desc: |
+      Um "tour" pelo sistema solar numa bateria: blocos de White Gem, Red Gem, Blue Gem, Carbon,
+      Palladium e Magnesium, lingotes de Tungsten e Zinc e uma Advanced Battery. 200 000 gJ.
+    tasks:
+      - get: ExtraPlanets:item.ultimateBattery
+    rewards:
+      - loot: raro
+
+  - id: macas_especiais
+    title: "Maçãs de Metal"
+    type: optional
+    deps: [mundos_distantes]
+    icon: ExtraPlanets:diamondApple
+    task_logic: OR
+    desc: |
+      O ExtraPlanets tem §eIron Apples§r (8 ferros + maçã) e §eDiamond Apples§r (8 diamantes +
+      maçã), com versões "Notch" feitas de blocos. Boas para as lutas contra os chefes.
+    tasks:
+      - get: ExtraPlanets:ironApple
+      - get: ExtraPlanets:diamondApple
+    rewards:
+      - loot: incomum
+
+  - id: comida_enlatada_ep
+    title: "Carnes Enlatadas"
+    type: optional
+    deps: [mundos_distantes]
+    icon: ExtraPlanets:cannedFood
+    desc: |
+      Uma Lata de Estanho com 2 carnes assadas (porco, peixe, salmão, frango ou filé) vira comida
+      enlatada do ExtraPlanets. Proteína para a viagem!
+    tasks:
+      - get: ExtraPlanets:cannedFood:* x8
+    rewards:
+      - loot: comum
+
+  - id: kit_espacial
+    title: "Kit Espacial Completo"
+    type: optional
+    deps: [traje_termico_t2]
+    icon: ExtraPlanets:item.tier2_kit
+    task_logic: OR
+    desc: |
+      Os §eKits§r guardam máscara, equipamento, tanques, módulo de frequência, paraquedas e (no Full
+      Kit) o "Protection Kit" com o traje térmico. Clique direito para vestir tudo de uma vez. Faça
+      qualquer Full Kit (Nível 1 a 4).
+    tasks:
+      - get: ExtraPlanets:item.tier1_kit
+      - get: ExtraPlanets:item.tier2_kit
+      - get: ExtraPlanets:item.tier3_kit
+      - get: ExtraPlanets:item.tier4_kit
+    rewards:
+      - loot: incomum
+
+  - id: estacoes_planetarias
+    title: "Estações em Outros Planetas"
+    type: optional
+    deps: [foguete_t4, wafers_ep]
+    icon: GalacticraftCore:tile.spaceStationBase
+    desc: |
+      O ExtraPlanets permite criar §eEstações Espaciais§r em volta de Mercúrio, Vênus, Ceres, Marte,
+      Júpiter, Saturno, Urano, Netuno, Plutão, Éris e Kepler 22b (todas ativas na config). Os
+      materiais aparecem no Mapa da Galáxia ao selecionar o planeta, e os wafers do ExtraPlanets
+      entram nessas receitas. Construa uma estação em qualquer planeta além da Terra.
+    tasks:
+      - check
+    rewards:
+      - loot: raro
+
+  # ======================================================================
+  # FERRAMENTAS E ARMADURAS PLANETÁRIAS
+  # ======================================================================
+  - id: equip_mercurio_carbono
+    title: "Equipamento de Mercúrio e Carbono"
+    type: optional
+    deps: [carbono, mercurio_metal]
+    icon: ExtraPlanets:carbonPickaxe
+    task_logic: OR
+    desc: |
+      Cada metal novo tem ferramentas e armadura completas. As de Carbono são leves; as de Mercúrio,
+      mais duráveis. Faça uma peça qualquer de uma das duas linhas.
+    tasks:
+      - one_of: [ExtraPlanets:carbonPickaxe, ExtraPlanets:carbonSword, ExtraPlanets:carbonChest]
+      - one_of: [ExtraPlanets:mercuryPickaxe, ExtraPlanets:mercurySword, ExtraPlanets:mercuryChest]
+    rewards:
+      - loot: incomum
+
+  - id: equip_uranio
+    title: "Equipamento de Urânio"
+    type: optional
+    deps: [uranio_ceres]
+    icon: ExtraPlanets:uraniumPickaxe
+    desc: |
+      Ferramentas e armadura de Urânio, com o metal de Ceres. Faça uma peça.
+    tasks:
+      - one_of: [ExtraPlanets:uraniumPickaxe, ExtraPlanets:uraniumSword, ExtraPlanets:uraniumChest]
+    rewards:
+      - loot: incomum
+
+  - id: equip_jupiter
+    title: "Equipamento Joviano"
+    type: optional
+    deps: [paladio, gema_vermelha]
+    icon: ExtraPlanets:redGemPickaxe
+    task_logic: OR
+    desc: |
+      Paládio e Red Gem dão duas linhas de equipamento. Faça uma peça de qualquer uma.
+    tasks:
+      - one_of: [ExtraPlanets:palladiumPickaxe, ExtraPlanets:palladiumSword, ExtraPlanets:palladiumChest]
+      - one_of: [ExtraPlanets:redGemPickaxe, ExtraPlanets:redGemSword, ExtraPlanets:redGemChest]
+    rewards:
+      - loot: incomum
+
+  - id: equip_magnesio
+    title: "Equipamento de Magnésio"
+    type: optional
+    deps: [magnesio]
+    icon: ExtraPlanets:magnesiumPickaxe
+    desc: |
+      O magnésio de Saturno também vira ferramentas e armadura.
+    tasks:
+      - one_of: [ExtraPlanets:magnesiumPickaxe, ExtraPlanets:magnesiumSword, ExtraPlanets:magnesiumChest]
+    rewards:
+      - loot: incomum
+
+  - id: equip_urano
+    title: "Equipamento de Urano"
+    type: optional
+    deps: [cristal, gema_branca]
+    icon: ExtraPlanets:crystalPickaxe
+    task_logic: OR
+    desc: |
+      Crystal e White Gem: duas linhas de equipamento geladas e muito duráveis.
+    tasks:
+      - one_of: [ExtraPlanets:crystalPickaxe, ExtraPlanets:crystalSword, ExtraPlanets:crystalChest]
+      - one_of: [ExtraPlanets:whiteGemPickaxe, ExtraPlanets:whiteGemSword, ExtraPlanets:whiteGemChest]
+    rewards:
+      - loot: incomum
+
+  - id: equip_netuno
+    title: "Equipamento de Netuno"
+    type: optional
+    deps: [zinco, gema_azul]
+    icon: ExtraPlanets:blueGemPickaxe
+    task_logic: OR
+    desc: |
+      Zinc e Blue Gem. As armaduras de zinco e de gema azul estão entre as mais duráveis do mod.
+    tasks:
+      - one_of: [ExtraPlanets:zincPickaxe, ExtraPlanets:zincSword, ExtraPlanets:zincChest]
+      - one_of: [ExtraPlanets:blueGemPickaxe, ExtraPlanets:blueGemSword, ExtraPlanets:blueGemChest]
+    rewards:
+      - loot: incomum
+
+  - id: equip_tungstenio
+    title: "Equipamento de Tungstênio"
+    type: optional
+    deps: [tungstenio]
+    icon: ExtraPlanets:tungstenPickaxe
+    desc: |
+      A armadura de tungstênio é a mais durável do ExtraPlanets. Faça uma peça.
+    tasks:
+      - one_of: [ExtraPlanets:tungstenPickaxe, ExtraPlanets:tungstenSword, ExtraPlanets:tungstenChest]
+    rewards:
+      - loot: incomum
+
+  - id: equip_kepler
+    title: "Equipamento de Diamante Colorido"
+    type: optional
+    deps: [diamantes_coloridos]
+    icon: ExtraPlanets:blueDiamondPickaxe
+    desc: |
+      Cada diamante colorido de Kepler 22b tem uma linha completa de ferramentas — as mais duráveis
+      do mod. Faça uma picareta de qualquer cor.
+    tasks:
+      - one_of: [ExtraPlanets:blueDiamondPickaxe, ExtraPlanets:redDiamondPickaxe, ExtraPlanets:purpleDiamondPickaxe, ExtraPlanets:yellowDiamondPickaxe, ExtraPlanets:greenDiamondPickaxe]
+    rewards:
+      - loot: raro
+
+  # ======================================================================
+  # MARCOS FINAIS
+  # ======================================================================
+  - id: gigantes_gasosos
+    title: "Os Gigantes"
+    type: milestone
+    deps: [jupiter, saturno, chefe_jupiter, chefe_saturno]
+    icon: ExtraPlanets:itemTier6Rocket
+    banner: "Os Gigantes Gasosos"
+    subtitle: "Júpiter e Saturno conquistados"
+    desc: |
+      Relâmpagos de Júpiter, anéis de Saturno e dois chefes a menos. Herói, você já viajou mais longe
+      do que qualquer página do Registro imaginava!
+
+      Daqui em diante, o frio manda: Urano, Netuno, Plutão e Éris pedem o Traje Térmico Nível 4.
+      Não esqueça de ir trocando as blindagens a cada novo metal.
+    tasks:
+      - get: [ExtraPlanets:T5key, ExtraPlanets:T6key]
+    rewards:
+      - xp: 12
+      - kit: {name: "Kit do Explorador Joviano", items: [ExtraPlanets:tier6Items:4 x8, GalacticraftCore:item.oxygenTankHeavyFull x2, GalacticraftCore:item.bucketFuel x4, ExtraPlanets:item.thermalCloth:1 x8]}
+      - loot: epico
+
+  - id: sete_guardioes
+    title: "Os Sete Guardiões"
+    type: milestone
+    deps: [chefe_venus, chefe_jupiter, chefe_saturno, chefe_urano, chefe_netuno, chefe_plutao, chefe_eris]
+    icon: ExtraPlanets:T10key
+    banner: "Os Sete Guardiões Caíram"
+    subtitle: "O Selo das Estrelas brilha mais forte"
+    desc: |
+      Cubo de Magma, Morcego de Fogo, Ghast, Slime de Gelo, Boneco de Neve e os dois Creepers da
+      borda do sistema. Sete chaves, sete baús, sete foguetes. Herói, você limpou o sistema solar!
+
+      Estes sete chefes, junto com os do Galacticraft e o de Amun-Ra, formam o §5Selo das Estrelas§r.
+    tasks:
+      - get: [ExtraPlanets:T4key, ExtraPlanets:T5key, ExtraPlanets:T6key, ExtraPlanets:T7key, ExtraPlanets:T8key, ExtraPlanets:T9key, ExtraPlanets:T10key]
+    rewards:
+      - xp: 15
+      - kit: {name: "Troféus dos Sete Guardiões", items: [ExtraPlanets:diamondApple:1, ExtraPlanets:tile.solar:4, ExtraPlanets:item.ultimateBattery]}
+      - loot: epico
+
+  - id: viajante_interestelar
+    title: "Viajante Interestelar"
+    type: milestone
+    deps: [kepler22b, sete_guardioes]
+    icon: ExtraPlanets:itemTier10Rocket
+    banner: "Além do Sol"
+    subtitle: "O Volume dos Mundos Distantes está completo"
+    desc: |
+      De Fobos a Kepler 22b. Dez níveis de foguete, quatro de traje térmico, sete guardiões e um
+      planeta de árvores coloridas em outra estrela. O Volume dos Mundos Distantes está inteiro de
+      novo, e eu estou chorando de alegria aqui no Registro.
+
+      O céu ainda guarda um último segredo: o sistema de §eAmun-Ra§r, com suas naves-mãe e o Faraó
+      Morto-Vivo. Quando quiser, é só abrir aquele capítulo.
+    tasks:
+      - get: [ExtraPlanets:itemTier10Rocket:*, ExtraPlanets:T10key]
+    rewards:
+      - xp: 15
+      - loot: lendario

@@ -1,0 +1,1008 @@
+chapter:
+  id: petroleo
+  title: "Immersive Petroleum e Arcane Engineering"
+  prefix: ""
+  order: 336
+  icon: immersivepetroleum:crudeoil_bucket
+  desc: |
+    §bO ouro negro e a madeira encantada.§r Pesquisa sísmica, Derrick, Pumpjack, Torre de
+    Destilação, Hidrotratador e Coqueria; depois, a ponte entre o Thaumcraft e o Immersive
+    Engineering. (Immersive Petroleum — backport Forbidden 0.1.0-alpha.10, e Arcane
+    Engineering 0.2.7)
+
+quests:
+  # ======================================================================
+  # FASE 0 — PLANEJAMENTO
+  # ======================================================================
+  - id: jornada
+    title: "Da Pesquisa ao Combustível"
+    type: info
+    icon: immersivepetroleum:crudeoil_bucket
+    desc: |
+      Este Volume é a continuação do Immersive Engineering — tudo aqui é montado com blocos do
+      IE e formado com o §eEngineer's Hammer§r. O manual do IE ganhou uma categoria
+      §e"Immersive Petroleum"§r com cada etapa.
+
+      A jornada, segundo o próprio manual:
+      §e1.§r Pesquisa sísmica para achar o reservatório.
+      §e2.§r Derrick: perfura o poço com tubos, energia e fluido de perfuração.
+      §e3.§r Pumpjack: bombeia o petróleo do poço pronto.
+      §e4.§r Tanque de Petróleo e Torre de Destilação: separam as frações.
+      §e5.§r Hidrotratador, Coqueria e Refinaria: diesel, coque, gasolina e química fina.
+
+      Antes de começar, tenha o capítulo do IE até os §bmultiblocos pesados§r (Light/Heavy
+      Engineering, Engarrafadora, linha MV).
+    tasks:
+      - check
+    rewards:
+      - xp: 2
+
+  - id: projetor
+    title: "Projetor de Multiblocos"
+    type: main
+    deps: [jornada]
+    icon: immersivepetroleum:projector
+    desc: |
+      Vidro, ferro, uma Powered Lantern e madeira tratada = §eMultiblock Projector§r. Ele projeta
+      um "fantasma" da estrutura no chão: §9azul§r = falta, §averde§r = certo, §cvermelho§r =
+      errado, §droxo§r = pendente. Também lista os materiais!
+
+      Teclas: §eP§r seleciona a estrutura, §eF§r espelha, agachar + roda gira, agachar + usar fixa
+      ou solta. As máquinas deste capítulo são enormes — o projetor vale ouro.
+    tasks:
+      - get: immersivepetroleum:projector
+    rewards:
+      - xp: 4
+      - choice: [minecraft:glass x16, ImmersiveEngineering:metalDevice2:3 x2, ore:plankTreatedWood x16]
+
+  - id: laje_gradeada
+    title: "Andaime Gradeado"
+    type: normal
+    deps: [projetor]
+    icon: immersivepetroleum:steel_grating_slab
+    desc: |
+      Um Steel Scaffolding na bancada vira 2 §eGrated Steel Scaffolding Slabs§r. Esse piso vazado
+      aparece na Derrick, na Torre de Destilação, no Tanque de Petróleo e na Coqueria. Faça §e16§r.
+    tasks:
+      - get: immersivepetroleum:steel_grating_slab x16
+    rewards:
+      - xp: 3
+      - item: ImmersiveEngineering:metalDecoration:1 x4
+
+  # ======================================================================
+  # FASE 1 — PROSPECÇÃO E PERFURAÇÃO
+  # ======================================================================
+  - id: instrumento_sismico
+    title: "Instrumento de Pesquisa Sísmica"
+    type: main
+    deps: [jornada]
+    icon: immersivepetroleum:seismic_survey
+    desc: |
+      Andaimes de aço, dois canos e o cão de um revólver, componentes de ferro e um Light
+      Engineering Block = §eSeismic Survey Instrument§r. Ele "ouve" o subsolo com uma explosão.
+
+      Coloque-o com §b3 blocos de espaço vertical§r livre. Carregue um §eBuckshot Cartridge§r do
+      IE (é a "carga sísmica") e use com a §bmão vazia§r para disparar. Agachado descarrega.
+    tasks:
+      - get: [immersivepetroleum:seismic_survey, ImmersiveEngineering:bullet:4 x4]
+    rewards:
+      - xp: 4
+      - choice: [ImmersiveEngineering:bullet:4 x4, minecraft:gunpowder x16, ImmersiveEngineering:metalDecoration:1 x8]
+
+  - id: relatorio_sismico
+    title: "Caderno de Campo"
+    type: main
+    deps: [instrumento_sismico]
+    icon: immersivepetroleum:survey_result
+    desc: |
+      A pesquisa leva um tempo e continua mesmo se você recolher o instrumento. Quando terminar,
+      recolha o §eSeismic Survey Report§r (e a cápsula vazia; deixe espaço no inventário).
+
+      Clique com o relatório para abrir o caderno: um mapa (norte para cima, 1 pixel = 1 bloco)
+      que mostra §bsinal sísmico§r ou §bdepósitos§r, com quantidade registrada, capacidade
+      restante e fluxo estimado. É uma §cfoto do momento§r: o reservatório muda depois.
+    tasks:
+      - get: immersivepetroleum:survey_result
+    rewards:
+      - xp: 4
+      - choice: [ImmersiveEngineering:bullet:4 x4, minecraft:map x2, minecraft:paper x16]
+
+  - id: reservatorios
+    title: "Reservatórios"
+    type: info
+    deps: [relatorio_sismico]
+    icon: immersivepetroleum:survey_result
+    desc: |
+      O backport define três tipos de reservatório (dados do JAR):
+      §e• Petróleo:§r 2,5 a 32,5 milhões de mB de §ePetróleo Bruto§r; quando esgota, ainda pinga
+      um resíduo de 6 mB/t. É o mais comum.
+      §e• Aquífero:§r 5 a 10 milhões de mB de água, com recarga.
+      §e• Lava:§r 250 mil a 1 milhão de mB.
+
+      Pesquisar fora de uma jazida também ajuda: o mapa mostra depósitos vizinhos. Escolha o
+      ponto do poço só depois de ler o relatório.
+    tasks:
+      - check
+    rewards:
+      - xp: 1
+
+  - id: concreto_seco
+    title: "Balde de Concreto Seco"
+    type: normal
+    deps: [relatorio_sismico]
+    icon: immersivepetroleum:concrete_dry_bucket
+    desc: |
+      A Derrick cimenta o poço enquanto perfura. Prepare a mistura: §e4 areias, 2 cascalhos,
+      2 argilas e um balde vazio§r (sem forma) = §eDry Concrete Bucket§r. Faça §e4§r.
+    tasks:
+      - get: immersivepetroleum:concrete_dry_bucket x4
+    rewards:
+      - xp: 3
+      - item: minecraft:sand x16
+
+  - id: fluido_perfuracao
+    title: "Fluido de Perfuração"
+    type: main
+    deps: [concreto_seco]
+    icon: immersivepetroleum:concrete_bucket
+    desc: |
+      Passe o balde seco pela §bEngarrafadora do IE§r com §e1000 mB de água§r: sai um §eDrilling
+      Fluid Bucket§r. Na Derrick, ele entrega só o concreto necessário — o resto fica no balde
+      para a próxima vez (despejos parciais preservam o conteúdo).
+    tasks:
+      - get: immersivepetroleum:concrete_bucket x4
+    rewards:
+      - xp: 4
+      - choice: [immersivepetroleum:concrete_dry_bucket x2, minecraft:water_bucket, minecraft:clay_ball x16]
+
+  - id: derrick
+    title: "A Derrick"
+    type: main
+    deps: [fluido_perfuracao, laje_gradeada, projetor]
+    icon: ImmersiveEngineering:metalDevice2:5
+    desc: |
+      A torre de perfuração! Seus componentes: §eSteel Scaffolding, Steel Fence, Fluid Pipes,
+      Light Engineering, Grated Steel Scaffolding Slab, Heavy Engineering e Redstone
+      Engineering§r. Monte com o Projetor e forme com o martelo.
+
+      No controlador, forneça §bcanos de fluido do IE§r como tubos de perfuração, energia, o
+      fluido de perfuração e água. O status diz o que falta ("Insira tubos", "Forneça
+      concreto", "Forneça água"...). §cMantenha a saída livre na liberação de pressão.§r
+    tasks:
+      - get: [ImmersiveEngineering:metalDevice2:5 x32, immersivepetroleum:steel_grating_slab x8, ImmersiveEngineering:metalDecoration2:3 x2]
+    rewards:
+      - xp: 4
+      - choice: [ImmersiveEngineering:metalDevice2:5 x16, immersivepetroleum:concrete_bucket x2, ImmersiveEngineering:coil:1 x8]
+
+  - id: poco_direcional
+    title: "Poço Direcional"
+    type: optional
+    deps: [derrick]
+    icon: immersivepetroleum:survey_result
+    desc: |
+      O botão §ePlano§r da Derrick abre a malha do poço direcional: clique numa célula vazia para
+      escolher o destino e em até dois tubos internos para perfurar os pontos de extração.
+      Salve antes de começar — depois de iniciada, a malha trava. Cada segmento custa material e
+      energia, então planeje o caminho mais curto até o reservatório.
+    tasks:
+      - check
+    rewards:
+      - loot: incomum
+
+  - id: primeiro_oleo
+    title: "Jorrou!"
+    type: main
+    deps: [derrick]
+    icon: immersivepetroleum:crudeoil_bucket
+    desc: |
+      Quando a broca alcança o reservatório, a pressão empurra o §ePetróleo Bruto§r para fora
+      ("Extração pressurizada ativa"). Leve-o com canos para um tanque e encha um balde.
+
+      §cPetróleo bruto é viscoso§r: em bloco no mundo ele te deixa lento. Não derrame.
+    tasks:
+      - get: immersivepetroleum:crudeoil_bucket
+    rewards:
+      - xp: 4
+      - choice: [minecraft:bucket x4, ImmersiveEngineering:metalDevice2:7, ImmersiveEngineering:metalDevice2:5 x16]
+
+  - id: pumpjack
+    title: "Pumpjack"
+    type: main
+    deps: [primeiro_oleo]
+    icon: ImmersiveEngineering:metalDecoration2:2
+    desc: |
+      Quando a pressão acaba ("Sem pressão: use a Pumpjack"), entra o cavalinho mecânico. A
+      §ePumpjack§r usa §eSteel Scaffolding, Light Engineering, Treated Wood Fence, Redstone
+      Engineering, Heavy Engineering, Block of Steel, Steel Sheet Metal e Fluid Pipe§r.
+
+      Ela precisa encontrar um §bpoço concluído§r no terreno, energia e uma saída de fluido
+      livre. Não carrega estruturas distantes: deixe tudo no mesmo pedaço de mundo carregado.
+    tasks:
+      - get: [ImmersiveEngineering:metalDecoration2:2 x4, ore:blockSteel x2, ImmersiveEngineering:metalDecoration2:3, ImmersiveEngineering:metalDecoration:5 x2]
+    rewards:
+      - xp: 4
+      - choice: [ImmersiveEngineering:metalDecoration:5 x2, ore:ingotSteel x8, ImmersiveEngineering:coil:1 x8]
+
+  - id: ouro_negro
+    title: "Ouro Negro"
+    type: main
+    deps: [pumpjack]
+    icon: immersivepetroleum:crudeoil_bucket
+    desc: |
+      Pumpjack bombeando, canos levando para o tanque... junte §e8 baldes de Petróleo Bruto§r.
+      Se a extração parar, consulte a pressão e o esgotamento do poço no controlador.
+    tasks:
+      - get: immersivepetroleum:crudeoil_bucket x8
+    rewards:
+      - xp: 4
+      - choice: [minecraft:bucket x8, ImmersiveEngineering:fluidContainers:7 x2, ImmersiveEngineering:metalDevice2:6]
+
+  - id: lubrificador
+    title: "Lubrificador Automático"
+    type: normal
+    deps: [pumpjack]
+    icon: immersivepetroleum:auto_lubricator
+    desc: |
+      Vidro, madeira tratada e um cano = §eAutomatic Lubricator§r. Posicione-o junto a um
+      §eTriturador, Escavadeira ou Pumpjack§r e encha de §eLubrificante§r: ele acrescenta
+      trabalho extra enquanto a máquina roda. Óleo vegetal serve como alternativa, gastando
+      mais. Guarda 8000 mB.
+    tasks:
+      - get: immersivepetroleum:auto_lubricator
+    rewards:
+      - xp: 3
+      - item: ImmersiveEngineering:fluidContainers:3 x2
+
+  - id: almotolia
+    title: "Almotolia"
+    type: optional
+    deps: [lubrificador]
+    icon: immersivepetroleum:oil_can
+    desc: |
+      Placas de ferro, balde e corante vermelho = §eOil Can§r (8000 mB). Aplique em máquinas
+      compatíveis para 600 ticks de lubrificação: gasta 300 mB de lubrificante ou 1200 mB de
+      óleo vegetal por aplicação.
+    tasks:
+      - get: immersivepetroleum:oil_can
+    rewards:
+      - loot: comum
+
+  - id: tanque_petroleo
+    title: "Tanque de Petróleo"
+    type: normal
+    deps: [ouro_negro, laje_gradeada]
+    icon: ImmersiveEngineering:metalDecoration:10
+    desc: |
+      O §eTanque de Petróleo§r (Sheet Metal de ferro, cercas e andaimes de aço e lajes gradeadas)
+      guarda §b1 024 000 mB§r. Tem seis conexões: a de cima recebe por padrão; as de baixo
+      podem abastecer a torre. O martelo muda o modo de cada conexão, redstone controla a saída
+      automática e comparadores medem o nível. §cEsvazie antes de desmontar.§r
+    tasks:
+      - get: [ImmersiveEngineering:metalDecoration:10 x16, ImmersiveEngineering:metalDecoration x8]
+    rewards:
+      - xp: 3
+      - item: ImmersiveEngineering:metalDecoration:10 x8
+
+  # ======================================================================
+  # FASE 2 — DESTILAÇÃO
+  # ======================================================================
+  - id: torre_destilacao
+    title: "Torre de Destilação"
+    type: milestone
+    deps: [ouro_negro, tanque_petroleo]
+    icon: immersivepetroleum:naphtha_bucket
+    banner: "Torre de Destilação"
+    subtitle: "O petróleo em frações"
+    desc: |
+      Uma coluna de aço que separa o petróleo pelo ponto de ebulição. Componentes: §eSteel
+      Scaffolding, Heavy Engineering, Redstone Engineering, Sheet Metal de ferro, lajes
+      gradeadas e Fluid Pipes§r — confira no Projetor.
+
+      A receita padrão (dados do JAR): §e60 mB de petróleo → 15 nafta + 20 querosene + 30 diesel
+      sulfurado + 10 lubrificante§r, com §e7%§r de chance de Betume. §cEncaminhe TODAS as
+      saídas§r: um tanque cheio trava a torre inteira.
+
+      Herói, o seu petróleo virou quatro produtos diferentes. Agora cada um tem um destino —
+      combustível, química, asfalto. Bora encher tanques!
+    tasks:
+      - get: [immersivepetroleum:naphtha_bucket, immersivepetroleum:kerosene_bucket, immersivepetroleum:diesel_sulfur_bucket, immersivepetroleum:lubricant_bucket]
+    rewards:
+      - xp: 8
+      - kit: {name: "Kit do Refinador", items: [minecraft:bucket x8, ImmersiveEngineering:metalDevice2:7 x2, ImmersiveEngineering:metalDevice2:5 x16, ImmersiveEngineering:metalDevice2:6 x2]}
+      - loot: raro
+
+  - id: nafta
+    title: "Nafta"
+    type: normal
+    deps: [torre_destilacao]
+    icon: immersivepetroleum:naphtha_bucket
+    desc: |
+      Leve e inflamável. A §eNafta§r já é combustível do Gerador a Gasolina e da Lancha, mas
+      rende mais como matéria-prima: com Benzol vira Gasolina na Refinaria, e no Hidrotratador é
+      craqueada em Gás de Petróleo. Junte §e4 baldes§r.
+    tasks:
+      - get: immersivepetroleum:naphtha_bucket x4
+    rewards:
+      - xp: 3
+      - item: minecraft:bucket x4
+
+  - id: querosene
+    title: "Querosene"
+    type: normal
+    deps: [torre_destilacao]
+    icon: immersivepetroleum:kerosene_bucket
+    desc: |
+      O §eQuerosene§r queima no Gerador a Diesel do IE e é inflamável no Lança-Químicos. Mas o
+      melhor uso: §bdestilar de novo§r. Na torre, 10 mB de querosene → 5 Benzol + 5 diesel
+      sulfurado, com Parafina como subproduto.
+    tasks:
+      - get: immersivepetroleum:kerosene_bucket x4
+    rewards:
+      - xp: 3
+      - item: minecraft:bucket x4
+
+  - id: lubrificante
+    title: "Lubrificante"
+    type: normal
+    deps: [torre_destilacao]
+    icon: immersivepetroleum:lubricant_bucket
+    desc: |
+      §eLubrificante§r alimenta o Lubrificador Automático e a Almotolia e faz a melhoria de
+      lubrificação da furadeira. §cEle é escorregadio§r: não pise numa poça. Junte §e2 baldes§r.
+    tasks:
+      - get: immersivepetroleum:lubricant_bucket x2
+    rewards:
+      - xp: 3
+      - item: minecraft:bucket x2
+
+  - id: diesel_sulfurado
+    title: "Diesel Sulfurado"
+    type: normal
+    deps: [torre_destilacao]
+    icon: immersivepetroleum:diesel_sulfur_bucket
+    desc: |
+      A maior fração da torre. O §eDiesel Sulfurado§r já queima no Gerador a Diesel do IE, mas o
+      Hidrotratador tira o enxofre e o transforma em §eDiesel§r puro, que rende mais.
+    tasks:
+      - get: immersivepetroleum:diesel_sulfur_bucket x4
+    rewards:
+      - xp: 3
+      - item: minecraft:bucket x4
+
+  - id: benzol
+    title: "Benzol"
+    type: normal
+    deps: [querosene]
+    icon: immersivepetroleum:benzol_bucket
+    desc: |
+      Da segunda destilação, a do querosene, sai o §eBenzol§r. Ele é combustível do gerador
+      portátil e da lancha, e o ingrediente que falta para a Gasolina. Junte §e2 baldes§r.
+    tasks:
+      - get: immersivepetroleum:benzol_bucket x2
+    rewards:
+      - xp: 3
+      - item: minecraft:bucket x2
+
+  - id: parafina
+    title: "Parafina"
+    type: normal
+    deps: [querosene]
+    icon: immersivepetroleum:paraffin_wax
+    desc: |
+      §eParaffin Wax§r é subproduto da destilação do querosene (e do craqueamento de
+      lubrificante). Ela queima em fornalhas, vira velas, blocos escorregadios e couro sintético.
+    tasks:
+      - get: immersivepetroleum:paraffin_wax x8
+    rewards:
+      - xp: 2
+      - item: minecraft:string x8
+
+  - id: vela
+    title: "Vela de Parafina"
+    type: optional
+    deps: [parafina]
+    icon: immersivepetroleum:candle
+    desc: |
+      Fio + parafina = §ePetroleum Candle§r. Romântico, para uma refinaria.
+    tasks:
+      - get: immersivepetroleum:candle x4
+    rewards:
+      - loot: comum
+
+  - id: bloco_parafina
+    title: "Bloco de Parafina"
+    type: optional
+    deps: [parafina]
+    icon: immersivepetroleum:paraffin_wax_block
+    desc: |
+      Nove parafinas = um bloco §bescorregadio§r como gelo. Pistas de patinação industriais!
+    tasks:
+      - get: immersivepetroleum:paraffin_wax_block
+    rewards:
+      - loot: comum
+
+  - id: couro_sintetico
+    title: "Couro Sintético"
+    type: optional
+    deps: [parafina]
+    icon: immersivepetroleum:ersatz_leather
+    desc: |
+      Oito Tough Fabric do IE em volta de uma parafina = §e8 Ersatz Leather§r, registrado como
+      couro no OreDictionary. Esteiras transportadoras sem matar uma vaca sequer.
+    tasks:
+      - get: immersivepetroleum:ersatz_leather x8
+    rewards:
+      - loot: comum
+
+  - id: betume
+    title: "Betume"
+    type: normal
+    deps: [torre_destilacao]
+    icon: immersivepetroleum:bitumen
+    desc: |
+      A borra pesada do petróleo: §eBitumen§r sai da torre com 7% de chance a cada processo. Ele
+      vira asfalto e alimenta a Coqueria. Junte §e8§r.
+    tasks:
+      - get: immersivepetroleum:bitumen x8
+    rewards:
+      - xp: 2
+      - item: minecraft:gravel x16
+
+  - id: asfalto
+    title: "Estrada de Asfalto"
+    type: normal
+    deps: [betume]
+    icon: immersivepetroleum:asphalt
+    desc: |
+      Areia, cascalho, betume e balde d'água = §e8 Asphalt§r. Neste pack, andar sobre asfalto dá
+      §b+20% de velocidade§r. Ligue a base à refinaria com uma estrada e economize pernas.
+    tasks:
+      - get: immersivepetroleum:asphalt x32
+    rewards:
+      - xp: 3
+      - item: minecraft:sand x16
+
+  - id: asfalto_decor
+    title: "Lajes e Escadas de Asfalto"
+    type: optional
+    deps: [asfalto]
+    icon: immersivepetroleum:asphalt_stair
+    desc: |
+      Lajes e escadas de asfalto para calçadas, rampas e meio-fios.
+    tasks:
+      - get: [immersivepetroleum:asphalt_slab x6, immersivepetroleum:asphalt_stair x6]
+    rewards:
+      - loot: comum
+
+  # ======================================================================
+  # FASE 3 — HIDROTRATADOR E COQUERIA
+  # ======================================================================
+  - id: hidrotratador
+    title: "Hidrotratador"
+    type: main
+    deps: [diesel_sulfurado]
+    icon: immersivepetroleum:diesel_bucket
+    desc: |
+      O §eHidrotratador§r (Steel Scaffolding, Sheet Metal de ferro, Light, Heavy e Redstone
+      Engineering) mistura uma fração com água e energia. Receita principal: §e1000 mB de
+      diesel sulfurado + 500 mB de água → 1000 mB de Diesel + pós de enxofre§r.
+
+      Abra o controlador para ver tanques, processo e subproduto. Redstone pausa sem perder um
+      processo já pago. Encha um balde de §eDiesel§r.
+    tasks:
+      - get: immersivepetroleum:diesel_bucket
+    rewards:
+      - xp: 4
+      - choice: [immersivepetroleum:diesel_sulfur_bucket x2, ImmersiveEngineering:metalDecoration2:3 x2, minecraft:water_bucket]
+
+  - id: enxofre
+    title: "Enxofre Recuperado"
+    type: normal
+    deps: [hidrotratador]
+    icon: immersivepetroleum:sulfur_dust
+    desc: |
+      Cada lote de dessulfurização devolve §epós de enxofre§r. Pólvora, ácidos e várias receitas
+      de outros mods agradecem. Junte §e10 pós de enxofre§r (qualquer enxofre do oredict).
+    tasks:
+      - get: ore:dustSulfur x10
+    rewards:
+      - xp: 2
+      - item: minecraft:gunpowder x8
+
+  - id: craqueamento_lub
+    title: "Craqueamento de Lubrificante"
+    type: optional
+    deps: [hidrotratador, lubrificante]
+    icon: immersivepetroleum:paraffin_wax
+    desc: |
+      Sobrou lubrificante? O Hidrotratador craqueia §e2000 mB de lubrificante + 500 mB de água →
+      2000 mB de diesel sulfurado + parafina§r (gasta bastante energia). Nada se perde.
+    tasks:
+      - check
+    rewards:
+      - loot: incomum
+
+  - id: gas_petroleo
+    title: "Gás de Petróleo"
+    type: normal
+    deps: [hidrotratador, nafta]
+    icon: immersivepetroleum:petroleum_gas_bucket
+    desc: |
+      Craqueamento de nafta: §e1500 mB de nafta + 500 mB de água → 2000 mB de Gás de Petróleo§r.
+      O gás é a base da química catalítica da Refinaria (próximas quests). Encha um balde.
+    tasks:
+      - get: immersivepetroleum:petroleum_gas_bucket
+    rewards:
+      - xp: 3
+      - item: immersivepetroleum:naphtha_bucket
+
+  - id: coqueria
+    title: "Unidade de Coqueamento"
+    type: main
+    deps: [betume, hidrotratador]
+    icon: immersivepetroleum:petcoke
+    desc: |
+      A maior estrutura do capítulo: Steel Scaffolding, Sheet Metal, Light/Heavy/Redstone
+      Engineering, cercas de aço, lajes gradeadas, canos, §econcreto e ladrilho de concreto§r,
+      laje e bloco de aço e madeira tratada. Use o Projetor!
+
+      Ela trabalha em fases, em duas câmaras: processar, drenar resíduo, encher com água e
+      descarregar. Lote padrão: §e2 betumes + 125 mB de água → 2 Coques de Petróleo + 27 mB de
+      diesel sulfurado§r. Uma saída bloqueada segura a fase atual.
+    tasks:
+      - get: immersivepetroleum:petcoke x8
+    rewards:
+      - xp: 4
+      - choice: [immersivepetroleum:bitumen x8, ImmersiveEngineering:stoneDecoration:4 x16, ore:blockSteel]
+
+  - id: po_coque_petroleo
+    title: "Pó de Coque de Petróleo"
+    type: normal
+    deps: [coqueria]
+    icon: immersivepetroleum:petcoke_dust
+    desc: |
+      Coque de petróleo no Triturador do IE = §ePetroleum Coke Dust§r. Ele substitui o pó de coque
+      no aço do Forno a Arco, e §e8 pós no Espremedor = 1 HOP Graphite Dust§r. Eletrodos a partir
+      do petróleo!
+    tasks:
+      - get: immersivepetroleum:petcoke_dust x8
+    rewards:
+      - xp: 3
+      - item: ImmersiveEngineering:metal:17 x8
+
+  - id: bloco_coque_petroleo
+    title: "Bloco de Coque de Petróleo"
+    type: optional
+    deps: [coqueria]
+    icon: immersivepetroleum:petcoke_block
+    desc: |
+      Nove coques = um §ePetroleum Coke Block§r. Combustível de fornalha e — segundo o NEI — também
+      aceito como combustível no Alto-Forno do IE.
+    tasks:
+      - get: immersivepetroleum:petcoke_block
+    rewards:
+      - loot: comum
+
+  # ======================================================================
+  # FASE 4 — REFINARIA CATALÍTICA E COMBUSTÍVEIS
+  # ======================================================================
+  - id: gasolina
+    title: "Gasolina"
+    type: milestone
+    deps: [nafta, benzol]
+    icon: immersivepetroleum:gasoline_bucket
+    banner: "Gasolina"
+    subtitle: "A Refinaria do IE, turbinada"
+    desc: |
+      Este backport dá à §bRefinaria do Immersive Engineering§r receitas novas e um espaço de
+      §bcatalisador§r. A primeira não precisa de catalisador:
+
+      §e15 mB de Nafta + 10 mB de Benzol → 25 mB de Gasolina§r (80 RF/t).
+
+      Gasolina move o Gerador Portátil, a Lancha e os Molotovs, e vira Napalm. Encha um balde de
+      §eGasolina§r. Herói, você acabou de montar uma petroquímica inteira. Isso é coisa de
+      engenharia de verdade!
+    tasks:
+      - get: immersivepetroleum:gasoline_bucket
+    rewards:
+      - xp: 8
+      - kit: {name: "Kit do Frentista", items: [immersivepetroleum:naphtha_bucket x2, immersivepetroleum:benzol_bucket x2, ImmersiveEngineering:jerrycan, minecraft:bucket x4]}
+      - loot: raro
+
+  - id: creosoto_catalitico
+    title: "Creosoto Catalítico"
+    type: normal
+    deps: [gasolina, gas_petroleo]
+    icon: ImmersiveEngineering:fluidContainers:1
+    desc: |
+      Segunda receita da refinaria catalítica, com §ePó de Redstone§r no espaço de catalisador:
+      §e5 mB de Benzol + 5 mB de Gás de Petróleo → 10 mB de Óleo de Creosoto§r (240 RF/t).
+      Madeira tratada a partir do petróleo — sem Forno de Coque!
+    tasks:
+      - get: ImmersiveEngineering:fluidContainers:1 x4
+    rewards:
+      - xp: 3
+      - item: minecraft:redstone x16
+
+  - id: acetaldeido
+    title: "Acetaldeído"
+    type: normal
+    deps: [gasolina, gas_petroleo, constantan_placa]
+    icon: immersivepetroleum:acetaldehyde_bucket
+    desc: |
+      Terceira receita, com uma §ePlaca de Constantan§r como catalisador: §e15 mB de Gás de
+      Petróleo → 15 mB de Acetaldeído§r (120 RF/t). É um insumo químico; procure seus usos no
+      NEI (tecla U sobre o balde).
+    tasks:
+      - get: immersivepetroleum:acetaldehyde_bucket
+    rewards:
+      - xp: 3
+      - item: ore:plateConstantan x2
+
+  - id: constantan_placa
+    title: "Catalisador de Constantan"
+    type: normal
+    deps: [gas_petroleo]
+    icon: ImmersiveEngineering:metal:36
+    desc: |
+      A refinaria catalítica reconhece qualquer item com o oredict §eplateConstantan§r como
+      catalisador. Martele ou prense umas placas de Constantan e guarde para o acetaldeído.
+    tasks:
+      - get: ore:plateConstantan x4
+    rewards:
+      - xp: 2
+      - item: ore:ingotNickel x2
+
+  - id: gerador_gasolina
+    title: "Gerador Portátil a Gasolina"
+    type: main
+    deps: [gasolina]
+    icon: immersivepetroleum:gas_generator
+    desc: |
+      Placas de ferro, Kinetic Dynamo e Capacitor LV = §ePortable Gas Generator§r. Combustível por
+      cima (guarda 8000 mB); RF pela frente ou por um fio LV/MV do IE. Redstone pausa.
+
+      Consumos do pack: §eGasolina 6 mB/s§r, Benzol 6 mB/s, Nafta 9 mB/s — todos a §b256 RF/t§r.
+      Agachado recolhe o gerador com combustível e tudo. Energia de campo onde você quiser!
+    tasks:
+      - get: immersivepetroleum:gas_generator
+    rewards:
+      - xp: 4
+      - choice: [immersivepetroleum:gasoline_bucket, ImmersiveEngineering:coil x8, ImmersiveEngineering:metalDevice:1]
+
+  - id: diesel_ie
+    title: "Diesel no Gerador do IE"
+    type: normal
+    deps: [hidrotratador]
+    icon: ImmersiveEngineering:metalDecoration:6
+    desc: |
+      O Gerador a Diesel do IE aceita as frações do petróleo. Pelos valores registrados no
+      código, o §eDiesel§r rende muito mais por balde que o biodiesel (322 contra 125), seguido
+      do diesel sulfurado (285) e do querosene (208). A furadeira também roda com diesel. Junte
+      §e4 baldes de Diesel§r.
+    tasks:
+      - get: immersivepetroleum:diesel_bucket x4
+    rewards:
+      - xp: 3
+      - item: minecraft:bucket x4
+
+  - id: queimador
+    title: "Queimador de Excedentes"
+    type: optional
+    deps: [torre_destilacao]
+    icon: immersivepetroleum:flarestack
+    desc: |
+      Sobrou fluido que você não quer? O §eFlarestack§r (2 blocos de altura) queima combustíveis
+      pela base, até 250 mB/t. Em modo normal a força da redstone regula o descarte; o martelo
+      inverte. §cFica quente: mantenha criaturas (e você) longe da chama.§r
+    tasks:
+      - get: immersivepetroleum:flarestack
+    rewards:
+      - loot: comum
+
+  - id: garrafa_gasolina
+    title: "Garrafa de Gasolina"
+    type: optional
+    deps: [gasolina]
+    icon: immersivepetroleum:gasoline_bottle
+    desc: |
+      A Engarrafadora enche uma garrafa de vidro com §e250 mB de gasolina§r. Dá para despejar o
+      conteúdo num tanque compatível clicando com ela.
+    tasks:
+      - get: immersivepetroleum:gasoline_bottle x2
+    rewards:
+      - loot: comum
+
+  - id: molotov
+    title: "Molotov"
+    type: optional
+    deps: [garrafa_gasolina]
+    icon: immersivepetroleum:molotov
+    desc: |
+      Lã (ou Tough Fabric) sobre a garrafa = §eMolotov§r. Com uma pederneira na barra rápida,
+      segure "usar" um segundo para acender e use de novo para arremessar. §cO pavio dura 15
+      segundos no inventário!§r Guardar num baú pausa a contagem.
+    tasks:
+      - get: immersivepetroleum:molotov
+    rewards:
+      - loot: comum
+
+  - id: napalm
+    title: "Napalm"
+    type: optional
+    deps: [gasolina, aluminio_po]
+    icon: immersivepetroleum:napalm_bucket
+    desc: |
+      Seis pós de alumínio + balde = §ePrepared Napalm Bucket§r; na Engarrafadora com 1000 mB de
+      gasolina vira §eNapalm§r. Uma fonte encostada no fogo incendeia e §cespalha a ignição por
+      todo o napalm vizinho§r. Use no Lança-Químicos, longe de casa.
+    tasks:
+      - get: immersivepetroleum:napalm_bucket
+    rewards:
+      - loot: incomum
+
+  - id: aluminio_po
+    title: "Pó de Alumínio"
+    type: optional
+    deps: [gasolina]
+    icon: ImmersiveEngineering:metal:11
+    desc: |
+      Bauxita no martelo ou no Triturador = §eAluminium Grit§r. O napalm pede seis.
+    tasks:
+      - get: ore:dustAluminum x6
+    rewards:
+      - loot: comum
+
+  - id: lancha
+    title: "Lancha a Motor"
+    type: normal
+    deps: [gasolina]
+    icon: immersivepetroleum:motorboat
+    desc: |
+      Madeira tratada, componente de ferro e Light Engineering = §eMotorboat§r. Coloque na água e
+      abasteça com gasolina (1 mB por tick de motor), nafta ou benzol (2 mB). Tanque de 8000 mB.
+      Viagens pelo oceano nunca mais serão no remo!
+    tasks:
+      - get: immersivepetroleum:motorboat
+    rewards:
+      - xp: 3
+      - item: immersivepetroleum:gasoline_bucket
+
+  - id: melhorias_lancha
+    title: "Melhorias da Lancha"
+    type: optional
+    deps: [lancha]
+    icon: immersivepetroleum:upgrade_tank
+    desc: |
+      Na Bancada do Engenheiro a lancha aceita até §e3 melhorias§r: Casco Reforçado, Quebra-Gelo,
+      Tanque Ampliado (16 000 mB), Lemes e Remos de Emergência. Faça ao menos o tanque e os lemes.
+    tasks:
+      - get: [immersivepetroleum:upgrade_tank, immersivepetroleum:upgrade_rudders]
+    rewards:
+      - loot: incomum
+
+  - id: furadeira_lub
+    title: "Lubrificação da Furadeira"
+    type: optional
+    deps: [lubrificante]
+    icon: immersivepetroleum:toolupgrade_drill_lube
+    desc: |
+      Quatro placas de ferro, um cano e um balde de lubrificante = §eDrill Upgrade: Lubrication§r.
+      Na furadeira do IE: §b75% de chance de não desgastar a cabeça§r a cada bloco. O balde volta
+      vazio.
+    tasks:
+      - get: immersivepetroleum:toolupgrade_drill_lube
+    rewards:
+      - loot: incomum
+
+  - id: industria_petroleo
+    title: "Magnata do Petróleo"
+    type: milestone
+    deps: [gerador_gasolina, coqueria, diesel_ie, asfalto, creosoto_catalitico]
+    icon: immersivepetroleum:gasoline_bucket
+    banner: "Magnata do Petróleo"
+    subtitle: "Do subsolo ao tanque"
+    desc: |
+      Do estrondo do cartucho sísmico ao ronco do gerador a gasolina: você domina a cadeia
+      inteira do petróleo. Diesel limpo no Gerador do IE, coque de petróleo virando aço e
+      grafite, asfalto ligando a base à refinaria.
+
+      Uma palavra de cuidado da sua guardiã: reservatórios acabam. Pesquise outros campos antes
+      do primeiro secar, e reaproveite tudo — creosoto, enxofre, parafina. Engenharia boa não
+      desperdiça.
+    tasks:
+      - get: [immersivepetroleum:gasoline_bucket, immersivepetroleum:diesel_bucket, immersivepetroleum:petcoke x4, immersivepetroleum:asphalt x8]
+    rewards:
+      - xp: 10
+      - kit: {name: "Kit do Magnata do Petróleo", items: [immersivepetroleum:gasoline_bucket x2, immersivepetroleum:diesel_bucket x2, immersivepetroleum:petcoke_block x2, ImmersiveEngineering:metalDecoration:5 x4]}
+      - loot: epico
+
+  # ======================================================================
+  # ARCANE ENGINEERING — A PONTE THAUMCRAFT × IE
+  # ======================================================================
+  - id: magitech
+    title: "Tecnologia Mágica"
+    type: info
+    icon: arcane_engineering:wandcap
+    desc: |
+      §d"Qualquer magia suficientemente analisada é indistinguível da ciência!"§r
+
+      O Arcane Engineering abre uma aba nova no §dThaumonomicon§r: §eArcane Engineering§r.
+      Ali, pesquisas misturam taumaturgia e o Immersive Engineering: núcleos de varinha de
+      madeira tratada que aceitam melhorias na Bancada do Engenheiro, ponteiras de aço e electrum,
+      cabeças de furadeira de taumio e vazio, botas a biodiesel e um destabilizador de nodos.
+
+      Você precisa do Thaumcraft já encaminhado (pesquisas básicas de varinha, Taumio, Infusão).
+      As receitas são arcanas/de infusão: §dconfira os componentes no Thaumonomicon§r.
+    tasks:
+      - check
+    rewards:
+      - xp: 2
+
+  - id: nucleo_tratado
+    title: "Núcleo de Madeira Tratada"
+    type: main
+    deps: [magitech]
+    icon: arcane_engineering:wand_upgradeable
+    desc: |
+      Madeira tratada com creosoto guarda vis melhor que madeira comum: o §eTreated Wood Wand
+      Core§r tem base de §d30 de vis§r. O truque é outro: na §bBancada do Engenheiro§r, varinhas
+      com esse núcleo aceitam §baté duas melhorias§r — e ponteiras certas abrem mais espaços.
+
+      Monte uma varinha com o núcleo tratado (qualquer ponteira).
+    tasks:
+      - get: arcane_engineering:wand_upgradeable:*
+    rewards:
+      - xp: 4
+      - choice: [Thaumcraft:ItemShard x4, Thaumcraft:ItemShard:1 x4, ore:plankTreatedWood x16]
+
+  - id: ponteira_aco
+    title: "Ponteiras de Aço"
+    type: normal
+    deps: [nucleo_tratado]
+    icon: arcane_engineering:wandcap
+    desc: |
+      Se ferro serve de ponteira, por que não aço? O aço é mais "ordenado": §eSteel Wand Caps§r
+      não têm penalidade de vis e, numa varinha de madeira tratada, §bdão 2 espaços extras de
+      melhoria§r.
+    tasks:
+      - get: arcane_engineering:wandcap x2
+    rewards:
+      - xp: 3
+      - item: ore:ingotSteel x4
+
+  - id: ponteira_electrum
+    title: "Ponteiras de Electrum"
+    type: normal
+    deps: [nucleo_tratado]
+    icon: arcane_engineering:wandcap:1
+    desc: |
+      Para quem não decide entre prata e ouro: §eElectrum Wand Caps§r dão §d5% de desconto de
+      vis§r (95% do custo) e §b1 espaço extra§r de melhoria. Meio-termo elegante.
+    tasks:
+      - get: arcane_engineering:wandcap:1 x2
+    rewards:
+      - xp: 3
+      - item: ore:ingotElectrum x4
+
+  - id: capacitor_vis
+    title: "Capacitor de Vis"
+    type: normal
+    deps: [ponteira_aco, ponteira_electrum]
+    deps_any: true
+    icon: arcane_engineering:wandupgrade
+    desc: |
+      Vis pode ser guardado em essência de fogo-fátuo: o §eVis Capacitor§r aumenta a capacidade
+      da varinha de madeira tratada. Instale na Bancada do Engenheiro; §bvários se acumulam§r.
+    tasks:
+      - get: arcane_engineering:wandupgrade
+    rewards:
+      - xp: 3
+      - item: Thaumcraft:ItemShard:6 x4
+
+  - id: carregador_cristalino
+    title: "Carregador Cristalino"
+    type: normal
+    deps: [capacitor_vis]
+    icon: arcane_engineering:wandupgrade:1
+    desc: |
+      Com um fragmento de cristal primal, o §eCrystalline Charger§r faz a varinha §bbeber vis da
+      aura§r em vez dos nodos. Acumula com cópias. (Infusão; exige pesquisas de destilação de
+      essência, infusão e do cajado primal.)
+    tasks:
+      - get: arcane_engineering:wandupgrade:1
+    rewards:
+      - loot: incomum
+
+  - id: energizador
+    title: "Energizador de Foco"
+    type: normal
+    deps: [capacitor_vis]
+    icon: arcane_engineering:wandupgrade:2
+    desc: |
+      Estudando a Pérola Primordial, você aprende sobre energia primal: o §eFocus Energizer§r
+      aplica §dum nível de Potência§r a qualquer foco usado na varinha. (Infusão.)
+    tasks:
+      - get: arcane_engineering:wandupgrade:2
+    rewards:
+      - loot: incomum
+
+  - id: cabeca_taumio
+    title: "Cabeça de Furadeira de Taumio"
+    type: normal
+    deps: [magitech]
+    icon: arcane_engineering:drillhead
+    desc: |
+      A força da picareta de taumio, numa furadeira do IE: a §eThaumium Drill Head§r tem
+      atributos entre as cabeças de ferro e de aço (receita arcana, após a pesquisa de Taumio).
+    tasks:
+      - get: arcane_engineering:drillhead
+    rewards:
+      - xp: 3
+      - item: ImmersiveEngineering:fluidContainers:7 x2
+
+  - id: cabeca_vazio
+    title: "Cabeça de Furadeira do Vazio"
+    type: optional
+    deps: [cabeca_taumio]
+    icon: arcane_engineering:drillhead:1
+    desc: |
+      Infunda uma cabeça com sementes e metal do vazio: a §eVoid Drill Head§r é §bimune a dano§r
+      (leva o auto-reparo das ferramentas do vazio um passo além) e é um pouco melhor que a de
+      aço.
+    tasks:
+      - get: arcane_engineering:drillhead:1
+    rewards:
+      - loot: raro
+
+  - id: botas_impulso
+    title: "Botas de Impulso"
+    type: normal
+    deps: [magitech]
+    icon: arcane_engineering:impulse_boots
+    desc: |
+      Alumínio, Tough Fabric, baldes e componentes de aço = §eImpulse Boots§r, botas-foguete a
+      §6biodiesel§r. Segure pular para subir; agachar + pular paira; correr acelera no ar. Elas
+      reduzem o dano de queda se você frear antes de pousar. §c"Um acidente esperando para
+      acontecer"§r, diz a própria pesquisa.
+    tasks:
+      - get: arcane_engineering:impulse_boots
+    rewards:
+      - xp: 3
+      - item: ImmersiveEngineering:fluidContainers:7 x2
+
+  - id: desestabilizador
+    title: "Desestabilizador de Nodos"
+    type: optional
+    deps: [magitech]
+    icon: arcane_engineering:destabilizer
+    desc: |
+      O oposto do estabilizador: o §eNode Destabilizer§r consome RF (entrada por baixo) e deixa o
+      nodo logo acima §cFaminto§r — ele passa a sugar blocos e outros nodos. A pesquisa dá
+      §cWarp§r. Use com muito cuidado, longe dos seus nodos bons.
+    tasks:
+      - get: arcane_engineering:destabilizer
+    rewards:
+      - loot: incomum
+
+  - id: varinha_engenheiro
+    title: "A Varinha do Engenheiro"
+    type: milestone
+    deps: [carregador_cristalino, energizador, cabeca_taumio]
+    icon: arcane_engineering:wand_upgradeable:8
+    banner: "Magitecnologia"
+    subtitle: "Ciência e magia na mesma bancada"
+    desc: |
+      Uma varinha de madeira tratada, ponteiras de aço, capacitores, carregador cristalino e
+      energizador — tudo parafusado na Bancada do Engenheiro. Os taumaturgos mais conservadores
+      chamariam isso de heresia. Eu chamo de §dgenial§r.
+
+      Esta é a prova de que o Registro não separa magia de tecnologia: são duas línguas para a
+      mesma página. Continue explorando a aba Arcane Engineering e combine com o capítulo do
+      Thaumcraft.
+    tasks:
+      - get: [arcane_engineering:wand_upgradeable:*, arcane_engineering:wandupgrade:1, arcane_engineering:wandupgrade:2]
+    rewards:
+      - xp: 8
+      - kit: {name: "Kit do Magitécnico", items: [Thaumcraft:ItemShard:6 x8, ore:ingotSteel x8, ore:ingotElectrum x4, ImmersiveEngineering:fluidContainers:7 x2]}
+      - loot: raro

@@ -1,0 +1,2053 @@
+chapter:
+  id: thaumcraft2
+  title: "Thaumcraft II — O Taumaturgo"
+  prefix: ""
+  order: 501
+  icon: Thaumcraft:ItemEldritchObject:3
+  desc: |
+    §dO Volume da Taumaturgia, segunda parte.§r Amuletos e cajados, proteção rúnica,
+    encantamentos por infusão, nós energizados, golemancia avançada, Warp, Mácula e os
+    mistérios Eldritch das Terras Exteriores. (Thaumcraft 4.2.3.5)
+
+quests:
+  - link: thaumcraft:aprendiz_completo
+
+  # ======================================================================
+  # FASE 0 — O TAUMATURGO
+  # ======================================================================
+  - id: taumaturgo
+    title: "O Taumaturgo"
+    type: info
+    deps_hidden: [thaumcraft:infusao]
+    icon: Thaumcraft:ItemEldritchObject:3
+    desc: |
+      Bem-vindo de volta, Herói. Se você chegou aqui, já sabe infundir objetos no altar. Agora
+      a coisa fica séria — e um pouco perigosa.
+
+      Neste capítulo:
+      §e•§r Primal Charm, cajados e amuletos de vis.
+      §e•§r Proteção rúnica e encantamentos feitos no altar.
+      §e•§r Nós energizados, relés de vis e o Manipulador Focal.
+      §e•§r Golens avançados.
+      §e•§r O §cWarp§r, a §cMácula§r e o caminho §dEldritch§r até as Terras Exteriores.
+
+      §cAviso honesto:§r muitas pesquisas daqui deixam marcas na mente. Eu vou avisar sempre.
+    tasks:
+      - check
+    rewards:
+      - xp: 2
+
+  # ======================================================================
+  # FASE 1 — PRIMAL CHARM, CAJADOS E VIS PORTÁTIL
+  # ======================================================================
+  - id: primal_charm
+    title: "Primal Charm"
+    type: main
+    deps: [taumaturgo]
+    icon: Thaumcraft:ItemResource:15
+    desc: |
+      O §ePrimal Charm§r (Amuleto Primal) não faz nada sozinho: ele §ecanaliza§r energia
+      primal, e por isso aparece em cajados, cetros, no Pedestal de Recarga, no Manipulador
+      Focal e em vários addons.
+
+      Na Mesa Arcana (pesquisa Basic Artifacing, aba Artifício): um estilhaço de cada primal
+      nas fileiras de cima e de baixo, ouro e um estilhaço equilibrado no meio. Custa §e25 de
+      cada primal§r. Faça §e3§r.
+    tasks:
+      - get: Thaumcraft:ItemResource:15 x3
+    rewards:
+      - xp: 4
+      - choice: [Thaumcraft:ItemShard:6 x4, minecraft:gold_ingot x6, Thaumcraft:ItemResource:14 x4]
+
+  - id: cetro
+    title: "Cetro de Manufatura"
+    type: optional
+    deps: [primal_charm]
+    icon: Thaumcraft:WandCasting:128
+    desc: |
+      Uma varinha só para fabricar: o §eCetro§r não aceita focos, mas guarda §e50% a mais§r de
+      vis e dá §e10% de desconto extra§r em receitas arcanas. Na Mesa Arcana: três pontas
+      iguais, a haste no meio e um Primal Charm no canto superior direito. O custo é 1,5× o de
+      uma varinha. Pesquisa: Crafting Scepters.
+    tasks:
+      - {get: 'Thaumcraft:WandCasting:* {sceptre:1b}', nbt: true}
+    rewards:
+      - loot: incomum
+
+  - id: nucleo_cajado_greatwood
+    title: "Núcleo de Cajado de Greatwood"
+    type: normal
+    deps: [primal_charm]
+    icon: Thaumcraft:WandRod:50
+    desc: |
+      Cajados são varinhas grandes: guardam muito mais vis e servem até como arma, mas não
+      podem ser usados na Mesa Arcana. Duas Hastes de Greatwood na diagonal + um Primal Charm
+      = §eNúcleo de Cajado de Greatwood§r (125 de vis). Monte o cajado com duas pontas, como
+      uma varinha. Pesquisa: Magic Staves.
+    tasks:
+      - get: Thaumcraft:WandRod:50
+    rewards:
+      - xp: 3
+      - item: Thaumcraft:WandRod x2
+
+  - id: cajado_silverwood
+    title: "Cajado de Silverwood"
+    type: main
+    deps: [nucleo_cajado_silverwood]
+    icon: Thaumcraft:WandRod:52
+    desc: |
+      Duas Hastes de Silverwood + Primal Charm = §eNúcleo de Cajado de Silverwood§r, com §e250
+      de vis§r por primal. Monte com pontas de táumio para ter um reservatório enorme para os
+      focos e para o ritual do Oculus.
+    tasks:
+      - {get: 'Thaumcraft:WandCasting:* {rod:"silverwood_staff"}', nbt: true}
+    rewards:
+      - xp: 4
+      - choice: [Thaumcraft:ItemResource:15, Thaumcraft:ItemShard:6 x4, Thaumcraft:ItemResource:14 x4]
+
+  - id: pedestal_recarga
+    title: "Pedestal de Recarga de Varinha"
+    type: main
+    deps: [primal_charm]
+    icon: Thaumcraft:blockStoneDevice:5
+    desc: |
+      Chega de correr atrás de nós! O §ePedestal de Recarga§r (Pedestal Arcano infundido com
+      ouro, diamantes e um Primal Charm) recarrega sozinho a varinha colocada nele, puxando vis
+      dos nós por perto. Ele não esgota o nó (a não ser com varinha de madeira e ferro).
+
+      Pesquisa: Wand Recharge Pedestal (exige Infusão, Preservação e Estabilizador de Nós).
+      Neste pack ele também puxa CV de relés de vis.
+    tasks:
+      - get: Thaumcraft:blockStoneDevice:5
+    rewards:
+      - xp: 4
+      - choice: [minecraft:diamond x2, Thaumcraft:ItemResource:15, minecraft:gold_ingot x6]
+
+  - id: foco_composto
+    title: "Foco de Recarga Composto"
+    type: optional
+    deps: [pedestal_recarga]
+    icon: Thaumcraft:blockStoneDevice:8
+    desc: |
+      Colocado sobre o Pedestal de Recarga, deixa a varinha drenar também os §easpectos
+      compostos§r dos nós — cada ponto composto vira 1 ponto primal (o resto se perde).
+    tasks:
+      - get: Thaumcraft:blockStoneDevice:8
+    rewards:
+      - loot: comum
+
+  - id: amuleto_vis
+    title: "Amuleto de Vis"
+    type: normal
+    deps: [pedestal_recarga]
+    icon: Thaumcraft:ItemAmuletVis:1
+    desc: |
+      Um Amuleto Mundano infundido com Primal Charms e Cachos Mistos de Cristal: o §eAmuleto de
+      Armazenamento de Vis§r guarda vis e recarrega a varinha no seu cinto de Baubles (neste
+      pack, em todo o inventário). Ele só recarrega no Pedestal ou perto de relés.
+
+      Também alimenta a Proteção Rúnica e o encantamento Reparo.
+    tasks:
+      - get: Thaumcraft:ItemAmuletVis:1
+    rewards:
+      - xp: 3
+      - item: Thaumcraft:blockCrystal:6
+
+  # ======================================================================
+  # FASE 2 — PROTEÇÃO RÚNICA
+  # ======================================================================
+  - id: anel_runico
+    title: "Anel de Proteção Rúnica"
+    type: main
+    deps: [taumaturgo]
+    icon: Thaumcraft:ItemRingRunic:1
+    desc: |
+      A §eProteção Rúnica§r é um escudo invisível com pontos próprios: o dano bate nele antes de
+      você. Ele se recarrega gastando §eAer e Terra§r das varinhas (ou do amuleto de vis) que você
+      carrega. Não protege de afogamento, fome e afins.
+
+      Anel Mundano infundido com Primal Charm, âmbar, tecido encantado, nitor e ferramenta de
+      escrita. Pesquisa: Runic Shielding (aba Artifício).
+    tasks:
+      - get: Thaumcraft:ItemRingRunic:1
+    rewards:
+      - xp: 4
+      - choice: [Thaumcraft:ItemResource:6 x4, Thaumcraft:ItemResource:7 x4, Thaumcraft:ItemResource:1 x4]
+
+  - id: amuleto_runico
+    title: "Amuleto de Proteção Rúnica"
+    type: normal
+    deps: [anel_runico]
+    icon: Thaumcraft:ItemAmuletRunic
+    desc: |
+      A versão de amuleto guarda mais carga que o anel. Mesma lógica de receita, com mais nitor.
+      Os pontos de todas as peças rúnicas se somam.
+    tasks:
+      - get: Thaumcraft:ItemAmuletRunic
+    rewards:
+      - xp: 3
+      - item: Thaumcraft:ItemResource:6 x2
+
+  - id: cinto_runico
+    title: "Cinto de Proteção Rúnica"
+    type: normal
+    deps: [anel_runico]
+    icon: Thaumcraft:ItemGirdleRunic
+    desc: |
+      O cinto é a peça rúnica de maior carga. Use anel, amuleto e cinto juntos para um escudo
+      respeitável.
+    tasks:
+      - get: Thaumcraft:ItemGirdleRunic
+    rewards:
+      - xp: 3
+      - item: Thaumcraft:ItemResource:1 x2
+
+  - id: anel_carregado
+    title: "Anel Carregado"
+    type: optional
+    deps: [anel_runico]
+    icon: Thaumcraft:ItemRingRunic:2
+    desc: |
+      Um pouco menos de carga, mas a proteção rúnica recarrega §e25% mais rápido§r. Dá para
+      usar dois. Infusão com estilhaços de fogo e uma poção de velocidade.
+    tasks:
+      - get: Thaumcraft:ItemRingRunic:2
+    rewards:
+      - loot: comum
+
+  - id: anel_revitalizante
+    title: "Anel Revitalizante"
+    type: optional
+    deps: [anel_runico]
+    icon: Thaumcraft:ItemRingRunic:3
+    desc: |
+      Quando o escudo quebra, solta um pulso de regeneração por alguns segundos (no máximo a
+      cada 20 s). Infusão com estilhaços de água e uma poção de regeneração.
+    tasks:
+      - get: Thaumcraft:ItemRingRunic:3
+    rewards:
+      - loot: comum
+
+  - id: amuleto_emergencia
+    title: "Amuleto de Emergência"
+    type: optional
+    deps: [amuleto_runico]
+    icon: Thaumcraft:ItemAmuletRunic:1
+    desc: |
+      Quando o escudo quebra, devolve instantaneamente §e8 pontos§r de proteção (uma vez por
+      minuto). Infusão do Amuleto Rúnico com estilhaços de terra e uma Poção de Força II.
+    tasks:
+      - get: Thaumcraft:ItemAmuletRunic:1
+    rewards:
+      - loot: comum
+
+  - id: cinto_cinetico
+    title: "Cinto Cinético"
+    type: optional
+    deps: [cinto_runico]
+    icon: Thaumcraft:ItemGirdleRunic:1
+    desc: |
+      Quando o escudo quebra, uma explosão de energia cinética empurra e machuca tudo em volta
+      (no máximo a cada 20 s). Infusão com estilhaços de ar e uma Poção Arremessável de Dano.
+    tasks:
+      - get: Thaumcraft:ItemGirdleRunic:1
+    rewards:
+      - loot: comum
+
+  - id: aumento_runico
+    title: "Aumento Rúnico"
+    type: info
+    deps: [anel_runico]
+    icon: Thaumcraft:ItemResource:14
+    desc: |
+      A pesquisa §eRunic Shielding Augmentation§r adiciona +1 de proteção rúnica a peças
+      "magicamente estáveis" (Táumio, Tecido Encantado, metal do vazio...) no Altar de Infusão.
+      Pode repetir: cada nível pede mais Salis Mundus (igual ao nível) e a essência cresce
+      exponencialmente. Em anéis rúnicos o custo parte da carga que eles já têm — caríssimo.
+    tasks:
+      - check
+    rewards:
+      - xp: 2
+
+  # ======================================================================
+  # FASE 3 — INFUSÃO AVANÇADA E ENCANTAMENTOS
+  # ======================================================================
+  - id: estabilizadores
+    title: "Altar Estável"
+    type: normal
+    deps: [taumaturgo]
+    icon: minecraft:skull
+    desc: |
+      As infusões daqui têm instabilidade alta (de 5 a 10 ou mais). Estabilize o altar com
+      §ecrânios, velas e cachos de cristal§r em posições §esimétricas§r em relação à matriz: cada
+      par simétrico ajuda; um bloco sem par atrapalha.
+
+      Junte §e4 crânios§r (qualquer tipo) e §e8 velas§r para montar o seu anel de proteção.
+    tasks:
+      - get: [ore:itemSkull x4, Thaumcraft:blockCandle:* x8]
+    rewards:
+      - xp: 3
+      - item: Thaumcraft:blockCrystal:6
+
+  - id: infusao_encantamento
+    title: "Infusão de Encantamento"
+    type: main
+    deps: [estabilizadores]
+    deps_hidden: [thaumcraft:cerebro_jarra]
+    icon: minecraft:enchanted_book
+    desc: |
+      Chega de sorte na mesa de encantamento! Depois do Cérebro na Jarra vem a §eInfusão de
+      Encantamento§r: ponha o item no pedestal central, os ingredientes em volta, e o altar
+      aplica §eexatamente§r o encantamento escolhido. Gasta essência e um pouco de XP de quem
+      estiver por perto.
+
+      Para subir de nível, repita a infusão (custo × nível). Itens já encantados custam ~10% a
+      mais por nível existente e ficam mais instáveis. Exemplos: Proteção (ferro + Salis), Afiação
+      (espada de ferro), Fortuna (picareta + diamante), e os exclusivos §eReparo§r e §ePressa§r.
+    tasks:
+      - check
+    rewards:
+      - xp: 4
+
+  - id: encanto_reparo
+    title: "Encantamentos Taumaturgicos"
+    type: info
+    deps: [infusao_encantamento]
+    icon: Thaumcraft:ItemPickThaumium
+    desc: |
+      Dois encantamentos só existem no Thaumcraft:
+
+      §eReparo§r (infusão: bigorna + Salis Mundus) — conserta o item aos poucos usando vis das
+      varinhas que você carrega. Só funciona em itens do Thaumcraft (e nem todos).
+      §ePressa§r (infusão: Nitor + Salis Mundus) — para calçados (e o Catalisador
+      Taumostático): mais velocidade em terra.
+
+      §aDica:§r Reparo em ferramentas de Táumio = ferramentas eternas.
+    tasks:
+      - check
+    rewards:
+      - xp: 2
+
+  - id: fortaleza
+    title: "Armadura Fortaleza de Táumio"
+    type: main
+    deps: [infusao_encantamento]
+    icon: Thaumcraft:ItemChestplateFortress
+    desc: |
+      Infunda as peças de Táumio com mais Táumio, ouro e esmeralda/couro: cada peça da
+      §eArmadura Fortaleza§r protege como diamante, dura mais, resiste a magia e fogo, e cada
+      peça extra vestida aumenta a proteção das outras.
+
+      A pesquisa aparece ao descobrir Tutamen, depois de Infusão de Encantamento. Faça as três
+      peças (as botas continuam sendo as de Táumio, ou as do Viajante).
+    tasks:
+      - get: [Thaumcraft:ItemHelmetFortress, Thaumcraft:ItemChestplateFortress, Thaumcraft:ItemLeggingsFortress]
+    rewards:
+      - xp: 4
+      - choice: [Thaumcraft:ItemResource:2 x8, minecraft:emerald x3, minecraft:gold_ingot x8]
+
+  - id: elmo_revelador
+    title: "Elmo da Revelação"
+    type: normal
+    deps: [fortaleza]
+    icon: Thaumcraft:ItemGoggles
+    desc: |
+      Infunda o Elmo Fortaleza com os Óculos da Revelação e slime: ele passa a ter todas as
+      funções dos óculos (sem o desconto de vis). Pode ter óculos e máscara ao mesmo tempo.
+    tasks:
+      - {get: 'Thaumcraft:ItemHelmetFortress:* {goggles:1b}', nbt: true}
+    rewards:
+      - xp: 3
+      - item: minecraft:slime_ball x8
+
+  - id: mascara_diabo
+    title: "Máscara do Diabo Sorridente"
+    type: normal
+    deps: [fortaleza]
+    icon: Thaumcraft:ItemHelmetFortress
+    desc: |
+      A máscara anti-Warp: não diminui quantos eventos de Warp acontecem, mas §ediminui a
+      gravidade§r deles. Infusão no Elmo Fortaleza com tinta, ferro, couro, Flor Brilhante e
+      cérebro de zumbi (64 Cognitio, 64 Sano — prepare essência!).
+    tasks:
+      - {get: 'Thaumcraft:ItemHelmetFortress:* {mask:0}', nbt: true}
+    rewards:
+      - xp: 3
+      - item: Thaumcraft:blockCustomPlant:2 x2
+
+  - id: mascara_fantasma
+    title: "Máscara do Fantasma Raivoso"
+    type: optional
+    deps: [fortaleza]
+    icon: Thaumcraft:ItemHelmetFortress
+    desc: |
+      Quem te bate às vezes sofre Murchar. Infusão com crânio de wither, batata venenosa e
+      outros (64 Perditio, 64 Mortuus). §cA pesquisa dá 1 de Warp.§r
+    tasks:
+      - {get: 'Thaumcraft:ItemHelmetFortress:* {mask:1}', nbt: true}
+    rewards:
+      - loot: incomum
+
+  - id: mascara_demonio
+    title: "Máscara do Demônio Bebedor"
+    type: optional
+    deps: [fortaleza]
+    icon: Thaumcraft:ItemHelmetFortress
+    desc: |
+      Seus golpes às vezes roubam um pouco da vida do alvo. Infusão com lágrima de ghast, balde
+      de leite e outros (64 Exanimis, 64 Victus). §cA pesquisa dá 1 de Warp.§r
+    tasks:
+      - {get: 'Thaumcraft:ItemHelmetFortress:* {mask:2}', nbt: true}
+    rewards:
+      - loot: incomum
+
+  - id: catalisador_taumostatico
+    title: "Catalisador Taumostático"
+    type: main
+    deps: [taumaturgo]
+    icon: Thaumcraft:HoverHarness
+    desc: |
+      O segredo do voo! Infunda um peitoral de couro com estilhaços de ar, tábuas de greatwood,
+      comparador, ouro e ferro (32 Volatus, 32 Potentia, 32 Machina, 16 Iter). Pesquisa:
+      Thaumostatic Harness (exige Botas do Viajante).
+
+      O combustível é §ePotentia§r: clique com o catalisador em jarros cheios para abastecer. A
+      tecla §eH§r liga e desliga. Aceita o encantamento Pressa.
+    tasks:
+      - get: Thaumcraft:HoverHarness
+    rewards:
+      - xp: 4
+      - choice: [Thaumcraft:blockJar x4, Thaumcraft:ItemShard x6, minecraft:feather x16]
+
+  - id: cinto_taumostatico
+    title: "Cinto Taumostático"
+    type: optional
+    deps: [catalisador_taumostatico]
+    icon: Thaumcraft:ItemGirdleHover
+    desc: |
+      Sozinho só evita dano de queda. Com o Catalisador, você voa §emuito mais rápido§r (gastando
+      um pouco mais de Potentia). A pesquisa aparece ao descobrir Volatus.
+    tasks:
+      - get: Thaumcraft:ItemGirdleHover
+    rewards:
+      - loot: incomum
+
+  - id: pedra_sinistra
+    title: "Pedra-Ímã Sinistra"
+    type: normal
+    deps: [taumaturgo]
+    icon: Thaumcraft:ItemCompassStone
+    desc: |
+      Nós §eSinistros§r emitem uma energia fácil de rastrear. A §ePedra-Ímã Sinistra§r (sílex
+      infundido com nitor, estilhaços e um Fragmento de Conhecimento) brilha quando apontada
+      para um deles. Isso vai ser MUITO útil: o ritual Eldritch precisa de um nó sinistro.
+
+      §cA pesquisa dá 2 de Warp e o item, mais 1.§r
+    tasks:
+      - get: Thaumcraft:ItemCompassStone
+    rewards:
+      - xp: 3
+      - item: minecraft:flint x8
+
+  # ======================================================================
+  # FASE 4 — FOCOS AVANÇADOS
+  # ======================================================================
+  - id: foco_buraco
+    title: "Foco: Buraco Portátil"
+    type: normal
+    deps: [taumaturgo]
+    icon: Thaumcraft:FocusPortableHole
+    desc: |
+      Atravesse paredes! O foco abre um túnel extradimensional temporário através de blocos
+      (alguns materiais e blocos complexos bloqueiam). Pérola do Fim infundida com quartzo e
+      estilhaços. Pesquisa: Focus de Varinha: Buraco Portátil (exige Troca Equivalente).
+    tasks:
+      - get: Thaumcraft:FocusPortableHole
+    rewards:
+      - xp: 3
+      - item: minecraft:ender_pearl x2
+
+  - id: foco_nove_infernos
+    title: "Foco: Nove Infernos"
+    type: optional
+    deps: [taumaturgo]
+    icon: Thaumcraft:FocusHellbat
+    desc: |
+      Invoque morcegos de fogo para atacar seus inimigos. A pesquisa aparece ao examinar um
+      Firebat no Nether. Creme de magma infundido com quartzo e estilhaços. §cWarp: 2 na pesquisa
+      e 1 no item.§r O Manipulador Focal ainda pode transformar os morcegos em vampiros.
+    tasks:
+      - get: Thaumcraft:FocusHellbat
+    rewards:
+      - loot: incomum
+
+  - id: foco_protecao
+    title: "Foco: Guarda"
+    type: optional
+    deps: [foco_buraco]
+    icon: Thaumcraft:FocusWarding
+    desc: |
+      Torna blocos §eindestrutíveis§r até você usar o foco de novo neles — "congelados no tempo".
+      Só você vê os blocos protegidos. Custa uma §eEstrela do Nether§r no centro da infusão.
+    tasks:
+      - get: Thaumcraft:FocusWarding
+    rewards:
+      - loot: incomum
+
+  # ======================================================================
+  # FASE 5 — NÓS ENERGIZADOS E VIS EM REDE
+  # ======================================================================
+  - id: transdutor
+    title: "Transdutor de Nó"
+    type: main
+    deps: [taumaturgo]
+    deps_hidden: [thaumcraft:estabilizador_nos]
+    icon: Thaumcraft:blockStoneDevice:11
+    desc: |
+      Um nó é uma portinha minúscula para uma fonte de energia. E se a gente §eabrisse a porta§r?
+
+      Com o nó estabilizado (Estabilizador embaixo), coloque o §eTransdutor de Nó§r em cima e dê
+      sinal de redstone. O nó perde o vis guardado e vira um §eNó Energizado§r: não dá mais para
+      drenar com varinha, mas ele produz §eCV§r (centi-vis) sem parar. Mantenha estabilizador e
+      transdutor sempre ligados; desligar o transdutor reverte o nó (que volta vazio e frágil).
+
+      Pesquisa: Harnessing Vis (rara, aparece por exame).
+    tasks:
+      - get: Thaumcraft:blockStoneDevice:11
+    rewards:
+      - xp: 4
+      - choice: [minecraft:redstone_block x4, minecraft:comparator x2, Thaumcraft:ItemResource:1 x4]
+
+  - id: rele_vis
+    title: "Relés de Vis"
+    type: main
+    deps: [transdutor]
+    icon: Thaumcraft:blockMetalDevice:14
+    desc: |
+      Os §eRelés de Vis§r captam CV de um nó energizado até 8 blocos e repassam de relé em relé,
+      formando uma árvore (cada relé tem um só "pai"). Clique com um estilhaço (ou a varinha)
+      para sintonizar num primal.
+
+      Ferro e um estilhaço equilibrado = 2 relés. A produção de um nó é limitada: não pendure
+      máquinas demais num só.
+    tasks:
+      - get: Thaumcraft:blockMetalDevice:14 x4
+    rewards:
+      - xp: 4
+      - choice: [minecraft:iron_ingot x8, Thaumcraft:ItemShard:6 x2, minecraft:gold_ingot x4]
+
+  - id: rele_recarga
+    title: "Relé de Recarga de Vis"
+    type: normal
+    deps: [rele_vis]
+    icon: Thaumcraft:blockMetalDevice:2
+    desc: |
+      Colocado em cima da Mesa Arcana, recarrega a varinha que está nela usando CV dos relés.
+      Mais lento que o Pedestal, mas muito prático.
+    tasks:
+      - get: Thaumcraft:blockMetalDevice:2
+    rewards:
+      - xp: 3
+      - item: minecraft:iron_ingot x4
+
+  - id: manipulador_focal
+    title: "Manipulador Focal"
+    type: main
+    deps: [rele_vis]
+    icon: Thaumcraft:blockStoneDevice:13
+    desc: |
+      Melhore seus focos! No §eManipulador Focal§r você coloca um foco, escolhe uma melhoria
+      (Potência, Frugalidade, Ampliação... cada foco tem as suas), fornece CV pelos relés e paga
+      XP. Cada foco aceita §e5 melhorias§r e cada nível dobra o custo.
+
+      Neste pack o Salis Arcana adiciona §eFocal Disenchanting§r: remover melhorias com
+      reembolso de 75% do XP.
+    tasks:
+      - get: Thaumcraft:blockStoneDevice:13
+    rewards:
+      - xp: 4
+      - choice: [minecraft:experience_bottle x16, Thaumcraft:ItemResource:15, minecraft:gold_ingot x6]
+
+  - id: estabilizador_avancado
+    title: "Estabilizador de Nós Avançado"
+    type: optional
+    deps: [transdutor]
+    icon: Thaumcraft:blockStoneDevice:10
+    desc: |
+      Faz tudo o que o comum faz e mais: o nó estabilizado pode drenar nós menores, e a chance
+      de curar nós instáveis ou desbotados é maior. Em troca, a recarga do nó quase para.
+    tasks:
+      - get: Thaumcraft:blockStoneDevice:10
+    rewards:
+      - loot: incomum
+
+  - id: lavador_fluxo
+    title: "Lavador de Fluxo"
+    type: normal
+    deps: [rele_vis]
+    icon: Thaumcraft:blockStoneDevice:14
+    desc: |
+      Alimentado com §eAer§r (CV), o §eFlux Scrubber§r limpa gosma e gás de fluxo num raio de 16
+      blocos e ainda recupera um pouco como essência Praecantatio (esvazie o buffer). Coloque um
+      perto do altar de infusão e outro perto da Fornalha Infernal.
+    tasks:
+      - get: Thaumcraft:blockStoneDevice:14
+    rewards:
+      - xp: 3
+      - item: Thaumcraft:blockTube x8
+
+  - id: vis_em_rede
+    title: "Vis em Rede"
+    type: milestone
+    deps: [rele_recarga, manipulador_focal]
+    icon: Thaumcraft:blockMetalDevice:14
+    banner: "Vis em Rede"
+    subtitle: "Um nó energizado alimenta o laboratório"
+    desc: |
+      Um nó energizado zumbindo, relés riscando o ar com fios de luz, a varinha recarregando
+      sozinha na Mesa Arcana e o Manipulador Focal afiando seus focos. Herói, o seu laboratório
+      agora tem §erede elétrica mágica§r. Os engenheiros do capítulo do IC2 ficariam com inveja!
+
+      Dica: use relés sintonizados para separar as linhas (por exemplo, uma só de Aer para os
+      lavadores de fluxo e o Escavador Arcano).
+    tasks:
+      - get: [Thaumcraft:blockStoneDevice:11, Thaumcraft:blockMetalDevice:14 x2, Thaumcraft:blockStoneDevice:13]
+    rewards:
+      - xp: 8
+      - kit: {name: "Kit do Eletricista Arcano", items: [Thaumcraft:blockMetalDevice:14 x4, Thaumcraft:ItemShard:6 x4, minecraft:redstone_block x2, minecraft:experience_bottle x16]}
+      - loot: raro
+
+  # ======================================================================
+  # FASE 6 — GOLEMANCIA AVANÇADA
+  # ======================================================================
+  - id: nucleo_usar
+    title: "Núcleo: Usar"
+    type: normal
+    deps: [taumaturgo]
+    deps_hidden: [thaumcraft:operarios]
+    icon: Thaumcraft:ItemGolemCore:8
+    desc: |
+      O núcleo mais versátil: o golem tira itens do baú e §eos usa§r no bloco ou lugar marcado,
+      como se fosse você clicando (direito ou esquerdo, agachado ou não). Sem baú, clica com a
+      mão vazia. Infusão do Núcleo Esvaziar com comparador, isqueiro, tesoura e alavanca.
+
+      A Melhoria de Ar acelera os cliques.
+    tasks:
+      - get: Thaumcraft:ItemGolemCore:8
+    rewards:
+      - xp: 3
+      - item: minecraft:comparator x2
+
+  - id: nucleo_ordenar
+    title: "Núcleo: Ordenar"
+    type: normal
+    deps: [nucleo_usar]
+    icon: Thaumcraft:ItemGolemCore:10
+    desc: |
+      Como o Esvaziar, mas só leva um item se ele §ejá existir§r num dos baús marcados. É o
+      organizador automático de depósito! Infusão de um cérebro de zumbi com os núcleos
+      Preencher e Esvaziar, comparador e papel.
+    tasks:
+      - get: Thaumcraft:ItemGolemCore:10
+    rewards:
+      - xp: 3
+      - item: minecraft:chest x4
+
+  - id: nucleo_lenhador
+    title: "Núcleo: Lenhador"
+    type: normal
+    deps: [taumaturgo]
+    deps_hidden: [thaumcraft:operarios, thaumcraft:machado_corrente]
+    icon: Thaumcraft:ItemGolemCore:7
+    desc: |
+      O golem procura árvores por perto e as derruba (golens mais fortes cortam mais rápido).
+      Não replanta. Infusão do Núcleo Colher com o Machado da Corrente e três machados de ferro.
+    tasks:
+      - get: Thaumcraft:ItemGolemCore:7
+    rewards:
+      - xp: 3
+      - item: minecraft:sapling x16
+
+  - id: nucleo_pescar
+    title: "Núcleo: Pescar"
+    type: optional
+    deps: [nucleo_lenhador]
+    icon: Thaumcraft:ItemGolemCore:11
+    desc: |
+      Um golem pescador para o seu jantar! Precisa de água funda e aberta. Melhorias: Ar (às
+      vezes pega mais de um), Fogo (assa o peixe), Ordem e Entropia (melhores resultados).
+    tasks:
+      - get: Thaumcraft:ItemGolemCore:11
+    rewards:
+      - loot: comum
+
+  - id: nucleo_acougueiro
+    title: "Núcleo: Açougueiro"
+    type: optional
+    deps: [nucleo_lenhador]
+    icon: Thaumcraft:ItemGolemCore:9
+    desc: |
+      Um guarda que só ataca animais adultos mais velhos e §esempre deixa um casal§r para
+      reprodução. Núcleo Proteger + 5 Corpus + 5 Bestia no Crisol. §cA pesquisa dá 1 de Warp.§r
+    tasks:
+      - get: Thaumcraft:ItemGolemCore:9
+    rewards:
+      - loot: comum
+
+  - id: nucleo_decantar
+    title: "Núcleo: Decantar"
+    type: normal
+    deps: [taumaturgo]
+    deps_hidden: [thaumcraft:operarios]
+    icon: Thaumcraft:ItemGolemCore:5
+    desc: |
+      O golem mantém um tanque cheio de líquido (100 mB por item que ele carregaria; um balde
+      inteiro se pegar do mundo). Com a Melhoria de Entropia, esvazia lagos inteiros a partir do
+      bloco mais distante. Núcleo em branco + 5 Aqua + 5 Vacuos no Crisol.
+    tasks:
+      - get: Thaumcraft:ItemGolemCore:5
+    rewards:
+      - xp: 3
+      - item: minecraft:bucket x2
+
+  - id: nucleo_alquimia
+    title: "Núcleo: Alquimia"
+    type: main
+    deps: [nucleo_decantar]
+    icon: Thaumcraft:ItemGolemCore:6
+    desc: |
+      O sonho do alquimista: preso a uma Fornalha Alquímica ou alambique, o golem puxa essência
+      da pilha inteira de alambiques e enche os jarros marcados (e os vizinhos). Prefere jarros
+      rotulados e deixa os do vazio por último. Infusão do Núcleo Decantar com jarro e poções.
+    tasks:
+      - get: Thaumcraft:ItemGolemCore:6
+    rewards:
+      - xp: 4
+      - choice: [Thaumcraft:blockJar x4, Thaumcraft:ItemResource:13 x8, Thaumcraft:ItemResource x4]
+
+  - id: golem_avancado
+    title: "Golem Avançado"
+    type: main
+    deps: [nucleo_usar, nucleo_alquimia]
+    icon: Thaumcraft:ItemGolemPlacer:7
+    desc: |
+      Exige as seis melhorias de golem pesquisadas. Infunda qualquer golem com redstone,
+      glowstone, pólvora, um jarro e um cérebro: o §eGolem Avançado§r aceita §euma melhoria a
+      mais§r (no máximo 2 do mesmo tipo), é mais rápido e enxerga mais longe.
+
+      "Você tem certeza de que o brilho malicioso nos olhos dele é imaginação sua." §cA pesquisa
+      dá 5 de Warp.§r
+    tasks:
+      - {get: 'Thaumcraft:ItemGolemPlacer:* {advanced:1b}', nbt: true}
+    rewards:
+      - xp: 4
+      - choice: [Thaumcraft:ItemGolemUpgrade:1, Thaumcraft:ItemGolemUpgrade:4, Thaumcraft:ItemGolemUpgrade]
+
+  - id: fabrica_golens
+    title: "A Fábrica de Golens"
+    type: milestone
+    deps: [golem_avancado, nucleo_ordenar]
+    icon: Thaumcraft:ItemGolemCore:10
+    banner: "A Fábrica de Golens"
+    subtitle: "Golemancia avançada"
+    desc: |
+      Golens que usam ferramentas, organizam o depósito, cortam lenha, pescam e engarrafam
+      essência. Você não tem mais operários: tem uma §efábrica§r inteira de autômatos mágicos.
+
+      Sugestão: coloque um Golem de Alquimia em cada pilha de alambiques e um de Ordenar no
+      depósito principal. E dê um chapéu para cada um. Eles merecem.
+    tasks:
+      - get: [Thaumcraft:ItemGolemCore:6, Thaumcraft:ItemGolemCore:8, Thaumcraft:ItemGolemCore:10]
+    rewards:
+      - xp: 8
+      - kit: {name: "Kit do Mestre Golemante", items: [Thaumcraft:ItemGolemCore:100 x4, Thaumcraft:ItemZombieBrain x2, Thaumcraft:ItemGolemDecoration, minecraft:comparator x2, Thaumcraft:blockJar x2]}
+      - loot: raro
+
+  # ======================================================================
+  # FASE 7 — WARP
+  # ======================================================================
+  - id: warp
+    title: "O Warp"
+    type: info
+    deps: [taumaturgo]
+    icon: Thaumcraft:ItemSanityChecker
+    desc: |
+      "Muitos acreditam que o homem não deveria mexer com magia" — e o §cWarp§r é a prova. Ele
+      vem de pesquisas proibidas, itens perigosos e equipamento corrompido, e distorce a mente.
+
+      §eTrês tipos:§r §eTemporário§r (some sozinho), §eNormal§r ("pegajoso", removível com
+      esforço) e §cPermanente§r (não sai). Pesquisas com Warp dão metade permanente e metade
+      normal. Algumas armaduras (metal do vazio, cultistas) dão Warp enquanto vestidas.
+
+      §eEfeitos:§r sussurros, fome mágica, visões, cegueira, névoa de criaturas, aranhas da
+      mente... Neste pack o §eWarpTheory§r adiciona ainda MAIS eventos (veja o capítulo Thaumic
+      Energistics, Boots e o Warp). O Warp também traz conhecimento: é ele que libera as
+      pesquisas Eldritch.
+    tasks:
+      - check
+    rewards:
+      - xp: 2
+
+  - id: verificador_sanidade
+    title: "Verificador de Sanidade"
+    type: normal
+    deps: [warp]
+    icon: Thaumcraft:ItemSanityChecker
+    desc: |
+      Quanto Warp eu tenho? O §eSanity Checker§r (Taumômetro infundido com vidro espelhado,
+      cérebro e diamante) mostra — de forma propositalmente enigmática — as três barras de
+      Warp. Pesquisa: Sanity Check (aba Eldritch, aparece com a Epifania Eldritch).
+    tasks:
+      - get: Thaumcraft:ItemSanityChecker
+    rewards:
+      - xp: 3
+      - item: Thaumcraft:ItemZombieBrain x2
+
+  - id: sais_banho
+    title: "Sais de Banho Purificantes"
+    type: main
+    deps: [warp]
+    icon: Thaumcraft:ItemBathSalts
+    desc: |
+      Quando seu Warp passar de 10 (permanente + normal), um evento revela a pista dos §eSais de
+      Banho§r. No Crisol: Salis Mundus + 6 Cognitio, 6 Auram, 6 Ordo, 6 Sano.
+
+      Jogue os sais numa fonte de água: ela vira §eFluido Purificador§r. Banhar-se nele dá
+      §eWarp Ward§r, que bloqueia os eventos de Warp por um tempo (menos tempo quanto mais Warp
+      você tiver). §cOs sais se desfazem se ficarem jogados por aí.§r
+    tasks:
+      - get: Thaumcraft:ItemBathSalts x2
+    rewards:
+      - xp: 4
+      - choice: [Thaumcraft:ItemResource:14 x4, minecraft:water_bucket x2, Thaumcraft:blockCustomPlant:2 x2]
+
+  - id: fluido_purificador
+    title: "Fluido Purificador"
+    type: normal
+    deps: [sais_banho]
+    icon: Thaumcraft:ItemBucketPure
+    desc: |
+      Encha um balde no Fluido Purificador para levar a "banheira" com você. Quando der, deixe
+      uma piscininha perto da base para os dias de crise de sanidade.
+    tasks:
+      - get: Thaumcraft:ItemBucketPure
+    rewards:
+      - xp: 3
+      - item: minecraft:bucket x2
+
+  - id: spa_arcano
+    title: "Spa Arcano"
+    type: optional
+    deps: [fluido_purificador]
+    icon: Thaumcraft:blockStoneDevice:12
+    desc: |
+      Encha com água e sais de banho (à mão ou automação): o §eSpa Arcano§r mistura e bombeia o
+      fluido para uma área 5×5 acima dele. Funciona com quase qualquer líquido. Redstone desliga.
+    tasks:
+      - get: Thaumcraft:blockStoneDevice:12
+    rewards:
+      - loot: incomum
+
+  - id: sabao
+    title: "Sabão Sanitizante"
+    type: main
+    deps: [sais_banho]
+    icon: Thaumcraft:ItemSanitySoap
+    desc: |
+      Um Bloco de Sebo no Crisol com §e16 Cognitio, 16 Alienis, 16 Ordo e 16 Sano§r vira o
+      §eSabão Sanitizante§r. Usado, ele §eremove todo o Warp temporário§r e tem chance de reduzir
+      o Warp normal. A chance aumenta se você estiver sob Warp Ward ou dentro do Fluido
+      Purificador. Ele não toca no Warp permanente.
+
+      Faça §e4 sabões§r. Higiene mental em dia!
+    tasks:
+      - get: Thaumcraft:ItemSanitySoap x4
+    rewards:
+      - xp: 4
+      - choice: [Thaumcraft:ItemResource:4 x18, Thaumcraft:ItemBathSalts, Thaumcraft:ItemResource:14 x4]
+
+  - id: epifania
+    title: "Epifania Eldritch"
+    type: info
+    deps: [warp]
+    icon: Thaumcraft:ItemEldritchObject
+    desc: |
+      Algo se mexe nos cantos escuros do universo... Quando o seu Warp (permanente + normal)
+      passar de §e25§r, um evento de Warp concede a §eEpifania Eldritch§r: ela abre a aba
+      Eldritch com o Metal do Vazio, o Foco Primal e o Verificador de Sanidade. Acima de §e50§r
+      vem a §eRevelação Eldritch§r, exigida pelo Oculus e pelas vestes do vazio.
+
+      Ou seja: para avançar aqui, você §cprecisa§r acumular Warp. Planeje, use a Máscara do Diabo
+      Sorridente e tenha sabão à mão.
+    tasks:
+      - check
+    rewards:
+      - xp: 2
+
+  # ======================================================================
+  # FASE 8 — MÁCULA E PERIGOS ALQUÍMICOS
+  # ======================================================================
+  - id: macula
+    title: "A Mácula"
+    type: info
+    deps: [taumaturgo]
+    icon: Thaumcraft:blockTaintFibres
+    desc: |
+      Quando a magia apodrece, nasce a §5Mácula§r (Taint). As Terras Maculadas existem
+      naturalmente (bioma "Tainted Land") e também surgem onde o fluxo fica parado tempo demais.
+      Neste pack ela §cse espalha§r (1 chance em 200 por atualização de bloco).
+
+      Fibras roxas cobrem tudo, a terra vira Solo Maculado, animais viram versões monstruosas e
+      encostar nas fibras dá §cVeneno de Fluxo§r. Os esporos explodem em mais mácula.
+
+      Defesa: §eFlores Etéreas§r e nós puros recuperam a terra; a Pá do Purificador (Forbidden
+      Magic) arranca a mácula com as mãos... digo, com a pá.
+    tasks:
+      - check
+    rewards:
+      - xp: 2
+
+  - id: terras_maculadas
+    title: "Terras Maculadas"
+    type: normal
+    deps: [macula]
+    icon: Thaumcraft:blockTaint:1
+    desc: |
+      Encontre um bioma maculado e sobreviva para contar a história. Leve armadura, comida e
+      Flores Etéreas para abrir uma área segura. §cNão durma por lá.§r
+    tasks:
+      - visit: {dim: 0, biome: 192, name: "Terras Maculadas"}
+    rewards:
+      - xp: 3
+      - item: Thaumcraft:blockCustomPlant:4
+
+  - id: gosma_maculada
+    title: "Gosma e Vinhas Maculadas"
+    type: normal
+    deps: [terras_maculadas]
+    icon: Thaumcraft:ItemResource:11
+    desc: |
+      Criaturas maculadas e blocos de mácula deixam §eGosma Maculada§r e §eVinha Maculada§r. São
+      ingredientes da Mácula Engarrafada e de vários itens de Tainted e Forbidden Magic (a Haste
+      Maculada, por exemplo). §cAmbas apodrecem com o tempo no inventário§r — use rápido.
+    tasks:
+      - get: [Thaumcraft:ItemResource:11, Thaumcraft:ItemResource:12]
+    rewards:
+      - xp: 3
+      - item: Thaumcraft:blockCustomPlant:4
+
+  - id: tentaculo
+    title: "Taintáculos"
+    type: optional
+    deps: [terras_maculadas]
+    icon: Thaumcraft:ItemSpawnerEgg:17
+    desc: |
+      Tentáculos gigantes saindo do chão maculado. Eles agarram e batem forte — ataque de
+      longe se puder. Derrote 3.
+    tasks:
+      - kill: "Thaumcraft.Taintacle x3"
+    rewards:
+      - loot: incomum
+
+  - id: macula_engarrafada
+    title: "Mácula Engarrafada"
+    type: optional
+    deps: [gosma_maculada]
+    icon: Thaumcraft:ItemBottleTaint
+    desc: |
+      "Já pensou em ESPALHAR a mácula?" Um frasco de Vitium no Crisol com mais Vitium e
+      Praecantatio. Arremessar cria uma mancha de mácula. Por que você faria isso? Não sei e
+      prefiro não saber. §cWarp: 2 na pesquisa, 1 no item.§r Ingrediente de focos do Tainted
+      Magic.
+    tasks:
+      - get: Thaumcraft:ItemBottleTaint
+    rewards:
+      - loot: incomum
+
+  - id: morte_liquida
+    title: "Morte Líquida"
+    type: optional
+    deps: [warp]
+    icon: Thaumcraft:ItemBucketDeath
+    desc: |
+      Um balde no Crisol com 32 Mortuus, 32 Venenum e 32 Perditio. Esse líquido dissolve
+      qualquer coisa viva — e as criaturas dissolvidas deixam §eessência cristalizada§r dos seus
+      aspectos. Fazenda de essência macabra. §cWarp: 3 na pesquisa, 1 no item. NUNCA entre.§r
+    tasks:
+      - get: Thaumcraft:ItemBucketDeath
+    rewards:
+      - loot: incomum
+
+  # ======================================================================
+  # FASE 9 — O CULTO CARMESIM
+  # ======================================================================
+  - id: obelisco
+    title: "O Anel de Obeliscos"
+    type: normal
+    deps: [epifania]
+    icon: Thaumcraft:blockCosmeticSolid:11
+    desc: |
+      Pelo mundo existem estruturas estranhas: um §ealtar Eldritch§r de pedra antiga cercado por
+      §eobeliscos§r, com um §enó Sinistro§r flutuando sobre a pedra-chave. Use a Pedra-Ímã
+      Sinistra para encontrá-los.
+
+      Esses altares atraem §ecultistas carmesins§r ou §eGuardiões Eldritch§r. Pegue um bloco de
+      §ePedra Antiga§r como prova de que esteve lá.
+    tasks:
+      - get: Thaumcraft:blockCosmeticSolid:11
+    rewards:
+      - xp: 4
+      - item: Thaumcraft:ItemResource:9 x2
+
+  - id: cavaleiro_carmesim
+    title: "Cavaleiros Carmesins"
+    type: normal
+    deps: [obelisco]
+    icon: Thaumcraft:ItemHelmetCultistPlate
+    desc: |
+      Os §eCavaleiros e Clérigos Carmesins§r guardam os altares. Os clérigos lançam magia e
+      curam os outros: derrube-os primeiro. Cultistas deixam cair Fragmentos de Conhecimento,
+      §eSementes do Vazio§r, moedas de ouro e, raramente, o livro §eRitos Carmesins§r.
+
+      Derrote §e5 cavaleiros§r.
+    tasks:
+      - kill: "Thaumcraft.CultistKnight x5"
+    rewards:
+      - xp: 4
+      - loot: incomum
+
+  - id: ritos_carmesins
+    title: "Ritos Carmesins"
+    type: main
+    deps: [cavaleiro_carmesim]
+    icon: Thaumcraft:ItemEldritchObject:1
+    desc: |
+      O livro sagrado do Culto. Clique com ele na mão: você aprende §eThe Crimson Cult§r. O
+      texto fala do ritual "Apertis Oculis" — Abrir o Olho — que os cultistas nunca conseguiram
+      completar. "Só um louco seguiria esse caminho..."
+
+      §cA pesquisa dá 3 de Warp.§r (Eu falei que só um louco...)
+    tasks:
+      - get: Thaumcraft:ItemEldritchObject:1
+    rewards:
+      - xp: 4
+      - choice: [Thaumcraft:ItemResource:9 x3, Thaumcraft:ItemSanitySoap, minecraft:golden_apple]
+
+  - id: vestes_carmesins
+    title: "Vestes do Culto"
+    type: optional
+    deps: [cavaleiro_carmesim]
+    icon: Thaumcraft:ItemChestplateCultistRobe
+    desc: |
+      Às vezes os cultistas deixam cair as próprias vestes. Elas protegem razoavelmente, mas
+      §cdão Warp enquanto vestidas§r. Pegue qualquer peça — o Tainted Magic ensina a fabricá-las.
+    tasks:
+      - one_of: [Thaumcraft:ItemHelmetCultistRobe, Thaumcraft:ItemChestplateCultistRobe, Thaumcraft:ItemLeggingsCultistRobe, Thaumcraft:ItemBootsCultist, Thaumcraft:ItemHelmetCultistPlate, Thaumcraft:ItemChestplateCultistPlate, Thaumcraft:ItemLeggingsCultistPlate]
+    rewards:
+      - loot: incomum
+
+  - id: guardiao_eldritch
+    title: "Guardião Eldritch"
+    type: normal
+    deps: [obelisco]
+    icon: Thaumcraft:ItemSpawnerEgg:6
+    desc: |
+      Altos, pálidos e com uma aura que suga seu fôlego: os §eGuardiões Eldritch§r aparecem nos
+      altares e nas Terras Exteriores. Atiram orbes de matéria escura. Às vezes deixam cair um
+      §eOlho Eldritch§r.
+
+      Derrote §e3 guardiões§r.
+    tasks:
+      - kill: "Thaumcraft.EldritchGuardian x3"
+    rewards:
+      - xp: 5
+      - loot: raro
+
+  # ======================================================================
+  # FASE 10 — METAL DO VAZIO
+  # ======================================================================
+  - id: semente_vazio
+    title: "Semente do Vazio"
+    type: normal
+    deps: [epifania]
+    icon: Thaumcraft:ItemResource:17
+    desc: |
+      Uma semente de trigo no Crisol com §e8 Tenebrae, 8 Vacuos e 2 Alienis§r vira uma
+      §eSemente do Vazio§r (os cultistas também deixam cair). Ela é o catalisador do Metal do
+      Vazio e entra no Olho Eldritch. Faça §e4§r.
+    tasks:
+      - get: Thaumcraft:ItemResource:17 x4
+    rewards:
+      - xp: 4
+      - item: minecraft:wheat_seeds x16
+
+  - id: metal_vazio
+    title: "Metal do Vazio"
+    type: main
+    deps: [semente_vazio]
+    icon: Thaumcraft:ItemResource:16
+    desc: |
+      "Chegou a hora de deixar o Táumio para os amadores." Uma Semente do Vazio no Crisol com
+      §e8 Metallum§r vira §eLingote de Metal do Vazio§r: quente ao toque, mole como ouro e duro
+      como táumio quando golpeado. Itens de Metal do Vazio §ese consertam sozinhos§r.
+
+      Pesquisa: Void metal (exige Táumio e a Epifania Eldritch). Faça §e8 lingotes§r.
+      §cSer ferido por ele enfraquece você por um tempo.§r
+    tasks:
+      - get: Thaumcraft:ItemResource:16 x8
+    rewards:
+      - xp: 6
+      - choice: [Thaumcraft:ItemResource:17 x4, Thaumcraft:ItemNugget:7 x9, Thaumcraft:ItemResource:2 x8]
+
+  - id: ferramentas_vazio
+    title: "Ferramentas do Vazio"
+    type: normal
+    deps: [metal_vazio]
+    icon: Thaumcraft:ItemPickVoid
+    desc: |
+      Picareta, espada, machado, pá e enxada de Metal do Vazio (receitas normais de bancada).
+      Nível de mineração alto, auto-reparo, e a espada causa Fraqueza. Faça picareta e espada.
+    tasks:
+      - get: [Thaumcraft:ItemPickVoid, Thaumcraft:ItemSwordVoid]
+    rewards:
+      - xp: 4
+      - item: Thaumcraft:ItemNugget:7 x9
+
+  - id: ferramentas_vazio_completas
+    title: "Arsenal Completo do Vazio"
+    type: optional
+    deps: [ferramentas_vazio]
+    icon: Thaumcraft:ItemAxeVoid
+    desc: |
+      Para os completistas: machado, pá e enxada do vazio. A pá e a picareta do vazio vão
+      virar o §eTriturador Primal§r lá na frente — guarde-as!
+    tasks:
+      - get: [Thaumcraft:ItemAxeVoid, Thaumcraft:ItemShovelVoid, Thaumcraft:ItemHoeVoid]
+    rewards:
+      - loot: incomum
+
+  - id: armadura_vazio
+    title: "Armadura do Vazio"
+    type: normal
+    deps: [metal_vazio]
+    icon: Thaumcraft:ItemChestplateVoid
+    desc: |
+      As quatro peças de Metal do Vazio (receitas normais). Proteção boa e auto-reparo, mas
+      §ccada peça vestida dá Warp§r. Use com Sabão por perto.
+    tasks:
+      - get: [Thaumcraft:ItemHelmetVoid, Thaumcraft:ItemChestplateVoid, Thaumcraft:ItemLeggingsVoid, Thaumcraft:ItemBootsVoid]
+    rewards:
+      - xp: 4
+      - item: Thaumcraft:ItemSanitySoap
+
+  - id: pontas_vazio
+    title: "Pontas de Metal do Vazio"
+    type: main
+    deps: [metal_vazio]
+    icon: Thaumcraft:WandCap:7
+    desc: |
+      As melhores pontas do Thaumcraft: §e80% de custo§r (20% de desconto). Pepitas do vazio na
+      Mesa Arcana (pontas inertes), depois infusão com 4 Salis Mundus. §cA pesquisa dá 1 de
+      Warp.§r Monte um cajado de Silverwood com elas e sinta a diferença.
+    tasks:
+      - get: Thaumcraft:WandCap:7 x2
+    rewards:
+      - xp: 6
+      - choice: [Thaumcraft:ItemResource:14 x6, Thaumcraft:ItemNugget:7 x9, Thaumcraft:ItemResource:15]
+
+  - id: reservatorio
+    title: "Reservatório de Essência"
+    type: normal
+    deps: [metal_vazio]
+    icon: Thaumcraft:blockEssentiaReservoir
+    desc: |
+      Guarda §e256 de essência§r em qualquer mistura, com compartimentos que se reorganizam
+      sozinhos. Só se enche e esvazia por tubos ou golens, e acessa um lado só. "Pegar um
+      reservatório cheio é... desaconselhável." Infusão de um Buffer de Essência com Metal do
+      Vazio e jarros.
+    tasks:
+      - get: Thaumcraft:blockEssentiaReservoir
+    rewards:
+      - xp: 4
+      - item: Thaumcraft:blockTube x8
+
+  - id: vestes_vazio
+    title: "Vestes do Taumaturgo do Vazio"
+    type: optional
+    deps: [armadura_vazio]
+    icon: Thaumcraft:ItemChestplateVoidFortress
+    desc: |
+      O melhor dos dois mundos: a armadura do vazio infundida com robes, tecido encantado e
+      (no capuz) os Óculos da Revelação. Protege, dá desconto de vis, se conserta e o capuz
+      funciona como óculos. Exige a Revelação Eldritch. Pode tingir. §cDá Warp vestida.§r
+    tasks:
+      - get: [Thaumcraft:ItemHelmetVoidFortress, Thaumcraft:ItemChestplateVoidFortress, Thaumcraft:ItemLeggingsVoidFortress]
+    rewards:
+      - loot: raro
+
+  - id: foco_primal
+    title: "Foco Primal"
+    type: normal
+    deps: [epifania]
+    icon: Thaumcraft:FocusPrimal
+    desc: |
+      "Que loucura te levou a criar isso?" O §eFoco Primal§r dispara um orbe de energia primal
+      devastador... e de trajetória errática. Primal Charm no centro, quartzo e diamantes, 25
+      de cada primal. §cWarp: 2 na pesquisa, 1 no item.§r Ele abre o caminho para o Núcleo de
+      Cajado Primal.
+    tasks:
+      - get: Thaumcraft:FocusPrimal
+    rewards:
+      - xp: 4
+      - item: minecraft:diamond x2
+
+  # ======================================================================
+  # FASE 11 — O OLHO SE ABRE: TERRAS EXTERIORES
+  # ======================================================================
+  - id: olho_eldritch
+    title: "Olhos Eldritch"
+    type: main
+    deps: [ritos_carmesins, guardiao_eldritch, metal_vazio]
+    icon: Thaumcraft:ItemEldritchObject
+    desc: |
+      Com Ritos Carmesins lidos e a §eRevelação Eldritch§r (Warp acima de 50), surge a pesquisa
+      §eOpening the Eye§r (Oculus). Ela ensina a infundir um §eOlho do Fim§r com Semente do Vazio
+      e ouro (64 Alienis, 16 Vacuos, 16 Tenebrae, 16 Iter) para criar §eOlhos Eldritch§r.
+
+      Você precisa de §e4 olhos§r. Os Guardiões Eldritch também deixam cair alguns. §cO Oculus
+      dá 6 de Warp.§r
+    tasks:
+      - get: Thaumcraft:ItemEldritchObject x4
+    rewards:
+      - xp: 6
+      - choice: [Thaumcraft:ItemResource:17 x4, minecraft:ender_eye x4, Thaumcraft:ItemSanitySoap x2]
+
+  - id: ritual_oculus
+    title: "O Ritual do Oculus"
+    type: info
+    deps: [olho_eldritch, cajado_silverwood]
+    icon: Thaumcraft:ItemEldritchObject
+    desc: |
+      §eO ritual "Apertis Oculis":§r
+      §e1.§r Vá a um altar Eldritch (anel de obeliscos) cujo §enó Sinistro§r esteja intacto.
+      §e2.§r Coloque os §e4 Olhos Eldritch§r nos encaixes da pedra-chave.
+      §e3.§r Clique na pedra-chave com a varinha: §e100 de vis de cada primal§r (antes do
+      desconto das pontas). Silverwood com táumio, ou um cajado, dão conta.
+
+      Se tudo estiver certo, o Olho se abre num portal. "Só os tolos temem o desconhecido!"
+      §cLeve o seu melhor equipamento.§r
+    tasks:
+      - check
+    rewards:
+      - xp: 3
+
+  - id: terras_exteriores
+    title: "As Terras Exteriores"
+    type: portal
+    deps: [ritual_oculus]
+    icon: Thaumcraft:blockEldritch:4
+    banner: "As Terras Exteriores"
+    subtitle: "Além do Olho"
+    effect: 5
+    desc: |
+      Você atravessou. Pedra antiga desmoronando, corredores que não levam a lugar nenhum, uma
+      escuridão que parece pensar... As §dTerras Exteriores§r (dimensão -42) são um §elabirinto
+      infinito§r construído como armadilha — "um lugar para testar visitantes e eliminar os
+      fracos". Herói, eu acho que estas são as rachaduras da própria Fratura.
+
+      §e•§r Guardiões Eldritch, caranguejos e cascas cambaleantes vagam pelos corredores.
+      §e•§r Salas-chave guardam §eTábuas Rúnicas§r; salas trancadas guardam chefes.
+      §e•§r Examine os blocos estranhos com o Taumômetro: há pesquisas "perdidas" aqui.
+      §cMarque o caminho de volta ao portal. Sério.§r
+    tasks:
+      - visit: {dim: -42, name: "Terras Exteriores"}
+    rewards:
+      - xp: 8
+      - loot: raro
+
+  - id: tabua_runica
+    title: "A Tábua Rúnica"
+    type: main
+    deps: [terras_exteriores]
+    icon: Thaumcraft:ItemEldritchObject:2
+    desc: |
+      Em certas salas do labirinto, uma §eTábua Rúnica§r flutua sobre um pedestal. Ela é a chave
+      das §efechaduras Eldritch§r: as portas seladas das salas dos chefes.
+
+      Clique na fechadura com a tábua e prepare-se: alguns segundos depois o guardião daquela
+      sala desperta. Pode ser o Warden Eldritch, o Construto Eldritch, o Portal Carmesim ou
+      Taintáculos Gigantes.
+    tasks:
+      - get: Thaumcraft:ItemEldritchObject:2
+    rewards:
+      - xp: 6
+      - choice: [minecraft:golden_apple x2, minecraft:potion:8229 x3, Thaumcraft:ItemSanitySoap x2]
+
+  - id: revelacoes_exteriores
+    title: "Revelações nas Terras Exteriores"
+    type: optional
+    deps: [terras_exteriores]
+    icon: Thaumcraft:ItemThaumometer
+    desc: |
+      A pesquisa perdida §eRevelations in the Outer Lands§r surge ao examinar os blocos
+      especiais do labirinto (certas pedras e cristais). Ela confirma: aquilo não é o lar dos
+      Eldritch — é algo construído, "tanto mental quanto físico". Pegue um bloco de Pedra
+      Antiga Brilhante como lembrança.
+    tasks:
+      - get: Thaumcraft:blockEldritch:4
+    rewards:
+      - loot: raro
+
+  - id: warden_eldritch
+    title: "O Warden Eldritch"
+    type: boss
+    deps: [tabua_runica]
+    icon: Thaumcraft:ItemSpawnerEgg:7
+    banner: "O Warden Eldritch"
+    subtitle: "Guardião do labirinto"
+    desc: |
+      O guardião mais temido das Terras Exteriores. Ele tem §e200 de vida§r, um escudo que se
+      regenera, ataques fortes e convoca ajudantes. Não lute cansado.
+
+      §e•§r Use armadura Fortaleza ou do Vazio, proteção rúnica e comida boa.
+      §e•§r Foco Primal e espadas com Fraqueza ajudam muito.
+      §e•§r Ao morrer, deixa uma §dPérola Primordial§r e um Tesouro Raro.
+
+      Eu acredito em você. (E pega a pérola, eu quero ver de perto!)
+    tasks:
+      - kill: "Thaumcraft.EldritchWarden x1"
+    rewards:
+      - xp: 10
+      - loot: epico
+
+  - id: construto_eldritch
+    title: "O Construto Eldritch"
+    type: boss
+    deps: [tabua_runica]
+    icon: Thaumcraft:ItemSpawnerEgg:12
+    banner: "O Construto Eldritch"
+    subtitle: "Pedra que pensa"
+    desc: |
+      Um golem colossal de pedra antiga com §e250 de vida§r e golpes que arremessam você longe.
+      Lento, mas implacável. Mantenha distância, ataque e recue; não deixe ele te encurralar.
+
+      Como o Warden, deixa cair uma §dPérola Primordial§r e um Tesouro Raro.
+    tasks:
+      - kill: "Thaumcraft.EldritchGolem x1"
+    rewards:
+      - xp: 10
+      - loot: epico
+
+  - id: portal_carmesim
+    title: "O Portal Carmesim"
+    type: boss
+    deps: [tabua_runica]
+    icon: Thaumcraft:ItemSpawnerEgg:11
+    banner: "O Portal Carmesim"
+    subtitle: "O Culto invade"
+    desc: |
+      Algumas fechaduras despertam um §ePortal Carmesim§r (500 de vida) que despeja cultistas
+      sem parar — incluindo o §ePretor§r, líder com armadura dourada que pode empunhar a
+      Lâmina Carmesim. Destrua o portal enquanto controla a horda.
+
+      O portal deixa a §dPérola Primordial§r. O Pretor deixa um Tesouro Raro.
+    tasks:
+      - kill: "Thaumcraft.CultistPortal x1"
+    rewards:
+      - xp: 10
+      - loot: epico
+
+  - id: pretor
+    title: "O Pretor Carmesim"
+    type: optional
+    deps: [portal_carmesim]
+    icon: Thaumcraft:ItemHelmetCultistLeaderPlate
+    desc: |
+      O líder do Culto (125 de vida, muito rápido). Derrote um Pretor. A armadura dele é rara de
+      conseguir — o Tainted Magic ensina a forjá-la.
+    tasks:
+      - kill: "Thaumcraft.CultistLeader x1"
+    rewards:
+      - loot: raro
+
+  - id: taintaculo_gigante
+    title: "Taintáculos Gigantes"
+    type: boss
+    deps: [tabua_runica]
+    icon: Thaumcraft:ItemSpawnerEgg:28
+    banner: "Taintáculos Gigantes"
+    subtitle: "A Mácula tem raízes"
+    desc: |
+      A sala mais nojenta do labirinto: várias §eTaintáculos Gigantes§r (125 de vida cada) brotam
+      do chão e a mácula toma as paredes. Só o §eúltimo§r a morrer deixa a §dPérola
+      Primordial§r. Ataque de longe e cuidado com o Veneno de Fluxo.
+    tasks:
+      - kill: "Thaumcraft.TaintacleGiant x1"
+    rewards:
+      - xp: 10
+      - loot: epico
+
+  - id: perola_primordial
+    title: "A Pérola Primordial"
+    type: milestone
+    deps_any: true
+    deps: [warden_eldritch, construto_eldritch, portal_carmesim, taintaculo_gigante]
+    icon: Thaumcraft:ItemEldritchObject:3
+    banner: "A Pérola Primordial"
+    subtitle: "Matéria do começo de tudo"
+    desc: |
+      "Pela primeira vez você tem nas mãos um enigma que talvez não possa ser resolvido." A
+      §dPérola Primordial§r contém aspectos primais puros, diferentes de tudo que você conhece:
+      restos da aurora da realidade... ou matéria de um lugar fora das regras da magia.
+
+      Herói, eu sinto o Registro tremer quando você segura isso. É uma página do começo do
+      mundo. Use com sabedoria: Triturador Primal, Fornalha Alquímica Avançada, manipulação de
+      nós primordiais, e muitos addons (Tainted, Forbidden, Thaumic Horizons) pedem pérolas.
+    tasks:
+      - get: Thaumcraft:ItemEldritchObject:3
+    rewards:
+      - xp: 12
+      - kit: {name: "Kit do Explorador Eldritch", items: [Thaumcraft:ItemResource:16 x8, Thaumcraft:ItemSanitySoap x2, Thaumcraft:ItemResource:15 x2, minecraft:golden_apple x4]}
+      - loot: epico
+
+  # ======================================================================
+  # FASE 12 — OS PODERES DA PÉROLA
+  # ======================================================================
+  - id: triturador_primal
+    title: "Triturador Primal"
+    type: main
+    deps: [perola_primordial, ferramentas_vazio_completas]
+    deps_hidden: [thaumcraft:picareta_nucleo, thaumcraft:pa_movedor]
+    icon: Thaumcraft:ItemPrimalCrusher
+    desc: |
+      A Pérola Primordial no centro, cercada pela Picareta do Núcleo, Pá do Movedor de Terra,
+      picareta e pá do vazio e Primal Charms: o §eTriturador Primal§r minera §e3×3§r em terra e
+      pedra, às vezes solta aglomerados nativos, se conserta e serve de arma. (Perde as funções
+      de construir e "escutar" das ferramentas originais.)
+    tasks:
+      - get: Thaumcraft:ItemPrimalCrusher
+    rewards:
+      - xp: 6
+      - choice: [Thaumcraft:ItemResource:16 x4, minecraft:diamond x4, Thaumcraft:ItemResource:15 x2]
+
+  - id: fornalha_avancada
+    title: "Fornalha Alquímica Avançada"
+    type: normal
+    deps: [perola_primordial, metal_vazio]
+    icon: Thaumcraft:blockMetalDevice:3
+    desc: |
+      Construtos Alquímicos Avançados (construtos + Metal do Vazio + a Pérola) formam com
+      alambiques, construtos comuns e uma Fornalha Alquímica uma estrutura 3×2×3; clique com a
+      varinha (50 Ignis, 50 Aqua, 50 Ordo). Ela processa muito mais rápido usando §eIgnis§r como
+      calor (sempre), Perditio e Aqua ao trabalhar. Confira a montagem exata no livro.
+    tasks:
+      - get: Thaumcraft:blockMetalDevice:3 x4
+    rewards:
+      - xp: 4
+      - item: Thaumcraft:blockMetalDevice:1 x2
+
+  - id: no_primordial
+    title: "Manipulação de Nó Primordial"
+    type: optional
+    deps: [perola_primordial]
+    icon: Thaumcraft:blockAiry
+    desc: |
+      "Uma teoria meio maluca": use a Pérola Primordial diretamente num nó. Ela se dissolve e
+      §eembaralha§r o nó: aspectos primais podem subir ou descer, compostos às vezes caem, e nós
+      desbotados podem melhorar (ou um nó comum ficar brilhante). Com a pesquisa Primordial
+      Node Manipulation as chances melhoram "um pouquinho". Arrisque num nó que valha a pena.
+    tasks:
+      - check
+    rewards:
+      - loot: raro
+
+  - id: cajado_primal
+    title: "Núcleo de Cajado Primal"
+    type: main
+    deps: [foco_primal, cajado_silverwood]
+    deps_hidden: [thaumcraft:haste_obsidiana, thaumcraft:haste_gelo, thaumcraft:haste_quartzo, thaumcraft:haste_cana, thaumcraft:haste_blaze, thaumcraft:haste_osso]
+    icon: Thaumcraft:WandRod:100
+    desc: |
+      Uma Haste de Silverwood no centro, cercada pelas §eseis hastes primais§r (obsidiana, gelo,
+      quartzo, cana, blaze e osso) e dois Primal Charms. O §eNúcleo de Cajado Primal§r guarda 250
+      de vis, recarrega §etodos§r os primais sozinho e dá +1 de potência a qualquer foco.
+
+      A pesquisa aparece depois do Foco Primal, ao examinar... bem, coisas primais. §cWarp: 3 na
+      pesquisa e 1 no item.§r Instabilidade 8: estabilize bem o altar.
+    tasks:
+      - get: Thaumcraft:WandRod:100
+    rewards:
+      - xp: 8
+      - choice: [Thaumcraft:WandCap:7 x2, Thaumcraft:ItemResource:15 x2, Thaumcraft:ItemSanitySoap x3]
+
+  - id: taumaturgo_supremo
+    title: "Taumaturgo Supremo"
+    type: milestone
+    deps: [perola_primordial, cajado_primal, triturador_primal, sabao, fabrica_golens, vis_em_rede]
+    icon: Thaumcraft:WandRod:100
+    banner: "Taumaturgo Supremo"
+    subtitle: "O Volume da Taumaturgia está completo"
+    effect: 4
+    desc: |
+      Herói... você abriu o Olho que o Culto Carmesim buscou por séculos, caminhou pelo labirinto
+      dos Eldritch, derrotou seus guardiões e voltou com uma pérola do começo do mundo. E ainda
+      montou um cajado que bebe os seis elementos ao mesmo tempo.
+
+      Esta página do Registro — a da §dTaumaturgia§r — está inteira de novo. Ela brilha forte no
+      §6Selo Arcano§r, um dos oito selos que podem fechar a Fratura.
+
+      Ainda há muito a explorar: Ichor e Kami (Thaumic Tinkerer), as armas proibidas (Forbidden e
+      Tainted Magic), horizontes, bases, energias... Mas hoje é dia de festa. Estou tão orgulhosa
+      que nem sei o que dizer!
+    tasks:
+      - get: [Thaumcraft:ItemEldritchObject:3, Thaumcraft:WandRod:100]
+    rewards:
+      - xp: 12
+      - kit: {name: "Kit do Taumaturgo Supremo", items: [Thaumcraft:ItemResource:16 x16, Thaumcraft:WandCap:7 x2, Thaumcraft:ItemResource:15 x4, Thaumcraft:ItemSanitySoap x4, Thaumcraft:blockCrystal:6 x4]}
+      - loot: epico
+      - command: "/playsound random.levelup @p"
+
+  # ======================================================================
+  # EXTRAS — CAJADOS ELEMENTAIS
+  # ======================================================================
+  - id: nucleo_cajado_silverwood
+    title: "Núcleo de Cajado de Silverwood"
+    type: main
+    deps: [nucleo_cajado_greatwood]
+    icon: Thaumcraft:WandRod:52
+    desc: |
+      Duas Hastes de Silverwood na diagonal e um Primal Charm na ponta, na Mesa Arcana: o
+      §eNúcleo de Cajado de Silverwood§r (pesquisa secundária Silverwood Staff Core). 250 de vis
+      por primal depois de montado — o maior reservatório "comum" do Thaumcraft.
+    tasks:
+      - get: Thaumcraft:WandRod:52
+    rewards:
+      - xp: 4
+      - choice: [Thaumcraft:WandRod:2, Thaumcraft:ItemResource:15, Thaumcraft:ItemShard:6 x4]
+
+  - id: cajado_obsidiana
+    title: "Núcleo de Cajado de Obsidiana"
+    type: optional
+    deps: [nucleo_cajado_greatwood]
+    deps_hidden: [thaumcraft:haste_obsidiana]
+    icon: Thaumcraft:WandRod:51
+    desc: |
+      Os núcleos de cajado elementais pegam duas hastes primais e um Primal Charm: §e175 de vis§r
+      e a mesma recarga automática da haste. Obsidiana recarrega §eTerra§r.
+    tasks:
+      - get: Thaumcraft:WandRod:51
+    rewards:
+      - loot: comum
+
+  - id: cajado_gelo
+    title: "Núcleo de Cajado de Gelo"
+    type: optional
+    deps: [nucleo_cajado_greatwood]
+    deps_hidden: [thaumcraft:haste_gelo]
+    icon: Thaumcraft:WandRod:53
+    desc: |
+      Duas Hastes de Gelo + Primal Charm: 175 de vis, recarrega §eAqua§r.
+    tasks:
+      - get: Thaumcraft:WandRod:53
+    rewards:
+      - loot: comum
+
+  - id: cajado_quartzo
+    title: "Núcleo de Cajado de Quartzo"
+    type: optional
+    deps: [nucleo_cajado_greatwood]
+    deps_hidden: [thaumcraft:haste_quartzo]
+    icon: Thaumcraft:WandRod:54
+    desc: |
+      Duas Hastes de Quartzo + Primal Charm: 175 de vis, recarrega §eOrdo§r.
+    tasks:
+      - get: Thaumcraft:WandRod:54
+    rewards:
+      - loot: comum
+
+  - id: cajado_cana
+    title: "Núcleo de Cajado de Cana"
+    type: optional
+    deps: [nucleo_cajado_greatwood]
+    deps_hidden: [thaumcraft:haste_cana]
+    icon: Thaumcraft:WandRod:55
+    desc: |
+      Duas Hastes de Cana + Primal Charm: 175 de vis, recarrega §eAer§r.
+    tasks:
+      - get: Thaumcraft:WandRod:55
+    rewards:
+      - loot: comum
+
+  - id: cajado_blaze
+    title: "Núcleo de Cajado de Blaze"
+    type: optional
+    deps: [nucleo_cajado_greatwood]
+    deps_hidden: [thaumcraft:haste_blaze]
+    icon: Thaumcraft:WandRod:56
+    desc: |
+      Duas Hastes de Blaze + Primal Charm: 175 de vis, recarrega §eIgnis§r.
+    tasks:
+      - get: Thaumcraft:WandRod:56
+    rewards:
+      - loot: comum
+
+  - id: cajado_osso
+    title: "Núcleo de Cajado de Osso"
+    type: optional
+    deps: [nucleo_cajado_greatwood]
+    deps_hidden: [thaumcraft:haste_osso]
+    icon: Thaumcraft:WandRod:57
+    desc: |
+      Duas Hastes de Osso + Primal Charm: 175 de vis, recarrega §ePerditio§r. §cA pesquisa dá 1
+      de Warp.§r
+    tasks:
+      - get: Thaumcraft:WandRod:57
+    rewards:
+      - loot: comum
+
+  - id: cajado_primal_montado
+    title: "O Cajado Primal"
+    type: optional
+    deps: [cajado_primal]
+    icon: Thaumcraft:WandRod:100
+    desc: |
+      Monte o núcleo primal com duas pontas (de preferência do vazio). Um cajado que se recarrega
+      sozinho em todos os primais e deixa qualquer foco mais forte. Agora sim você pode largar
+      os nós de mão.
+    tasks:
+      - {get: 'Thaumcraft:WandCasting:* {rod:"primal_staff"}', nbt: true}
+    rewards:
+      - loot: epico
+
+  # ======================================================================
+  # EXTRAS — ALDEÕES TAUMATURGOS E TESOUROS
+  # ======================================================================
+  - id: aldeao_mago
+    title: "O Aldeão Mago"
+    type: normal
+    deps: [taumaturgo]
+    icon: Thaumcraft:ItemRingRunic
+    desc: |
+      Algumas vilas têm uma §etorre de mago§r, onde mora um aldeão do Thaumcraft. Por esmeraldas
+      ele vende Fragmentos de Conhecimento, Alumentum, Nitor, estilhaços, feijões de mana, Sais
+      de Banho e itens que §esó existem por troca§r: o §eAnel de Proteção§r (Ring of Protection)
+      e a §ePedra de Vis§r.
+
+      Compre o Anel de Proteção.
+    tasks:
+      - get: Thaumcraft:ItemRingRunic
+    rewards:
+      - xp: 3
+      - item: minecraft:emerald x4
+
+  - id: pedra_vis
+    title: "Pedra de Vis"
+    type: optional
+    deps: [aldeao_mago]
+    icon: Thaumcraft:ItemAmuletVis
+    desc: |
+      Outra raridade do aldeão mago: a §eVis Stone§r, uma pequena reserva de vis que você pode
+      carregar. Troque esmeraldas por uma.
+    tasks:
+      - get: Thaumcraft:ItemAmuletVis
+    rewards:
+      - loot: incomum
+
+  - id: moedas_ouro
+    title: "Moedas de Ouro"
+    type: optional
+    deps: [cavaleiro_carmesim]
+    icon: Thaumcraft:ItemResource:18
+    desc: |
+      Cultistas carregam §eMoedas de Ouro§r antigas. O §eBanqueiro§r (outro aldeão do Thaumcraft,
+      com casa própria nas vilas) aceita as moedas em troca de esmeralda, diamante, Barra de
+      Táumio, garrafas de XP, sela e mais. Uma moeda na fornalha vira pepita de ouro. Junte §e20
+      moedas§r.
+    tasks:
+      - get: Thaumcraft:ItemResource:18 x20
+    rewards:
+      - loot: incomum
+
+  - id: campeoes
+    title: "Monstros Campeões"
+    type: info
+    deps: [taumaturgo]
+    icon: Thaumcraft:ItemLootBag:1
+    desc: |
+      Às vezes um monstro comum aparece §ebrilhando e com um título§r: é um §eCampeão§r. Ele tem
+      mais vida, dano e uma habilidade especial (veloz, ardente, venenoso, sugador de Warp...).
+      Em compensação, deixa cair §eSacos de Tesouro§r (comum, incomum, raro) cheios de coisas
+      boas. Neste pack também contam as mortes por "jogadores falsos" (fazendas de mobs).
+
+      §aDica:§r o ThaumcraftMobAspects dá aspectos aos mobs de outros mods — examine-os!
+    tasks:
+      - check
+    rewards:
+      - xp: 2
+
+  - id: saco_tesouro
+    title: "Saco de Tesouro"
+    type: optional
+    deps: [campeoes]
+    icon: Thaumcraft:ItemLootBag
+    desc: |
+      Derrote um campeão e abra o saco que ele deixar (clique com o botão direito). O Pretor
+      Carmesim e os chefes Eldritch deixam Tesouros Raros garantidos.
+    tasks:
+      - one_of: [Thaumcraft:ItemLootBag, Thaumcraft:ItemLootBag:1, Thaumcraft:ItemLootBag:2]
+    rewards:
+      - loot: incomum
+
+  - id: catalogo_melhorias
+    title: "Melhorias de Focos"
+    type: info
+    deps: [manipulador_focal]
+    icon: Thaumcraft:FocusFire
+    desc: |
+      Algumas melhorias que você vai ver no Manipulador Focal (cada foco tem as suas; confira na
+      tela):
+      §e•§r Gerais: §ePotency§r (mais forte), §eFrugal§r (gasta menos), §eEnlarge§r (área maior),
+      §eExtend§r (alcance), §eTreasure§r (sorte).
+      §e•§r Fogo: Fireball, Fire Beam, Alchemist's Fire. Gelo: Scattershot, Ice Boulder,
+      Alchemist's Frost. Choque: Chain Lightning, Earth Shock.
+      §e•§r Escavação: Silk Touch, Dowsing. Troca: Architect. Nove Infernos: Bat Bombs, Devil
+      Bats e, pesquisando Vampire Bats, morcegos vampiros. Outros: Seeker, Nightshade.
+    tasks:
+      - check
+    rewards:
+      - xp: 2
+
+  - id: robe_runico
+    title: "Robe com Proteção Rúnica"
+    type: optional
+    deps: [aumento_runico]
+    icon: Thaumcraft:ItemChestplateRobe
+    desc: |
+      Faça o primeiro Aumento Rúnico num Robe do Taumaturgo: o robe infundido ganha +1 de proteção
+      rúnica (marcado na dica do item). Repita quantas vezes o seu estoque de Salis aguentar.
+    tasks:
+      - {get: 'Thaumcraft:ItemChestplateRobe:* {"RS.HARDEN":1b}', nbt: true}
+    rewards:
+      - loot: incomum
+
+  # ======================================================================
+  # EXTRAS — CRIATURAS DA MÁCULA E DO WARP
+  # ======================================================================
+  - id: rastejante_maculado
+    title: "Rastejantes Maculados"
+    type: normal
+    deps: [terras_maculadas]
+    icon: Thaumcraft:ItemSpawnerEgg:16
+    desc: |
+      Aranhas que a mácula deformou: pequenas, rápidas e sempre em bando. Derrote §e5 Tainted
+      Crawlers§r. §cElas aplicam Veneno de Fluxo.§r
+    tasks:
+      - kill: "Thaumcraft.TaintSpider x5"
+    rewards:
+      - xp: 3
+      - item: minecraft:spider_eye x4
+
+  - id: animais_maculados
+    title: "Animais Maculados"
+    type: optional
+    deps: [terras_maculadas]
+    icon: Thaumcraft:ItemSpawnerEgg:23
+    desc: |
+      Vacas, porcos, ovelhas, galinhas, aldeões e até creepers... tudo que vive muito tempo numa
+      terra maculada vira uma versão monstruosa. Derrote qualquer um deles.
+    task_logic: OR
+    tasks:
+      - kill: "Thaumcraft.TaintedCow x1"
+      - kill: "Thaumcraft.TaintedPig x1"
+      - kill: "Thaumcraft.TaintedSheep x1"
+      - kill: "Thaumcraft.TaintedChicken x1"
+      - kill: "Thaumcraft.TaintedVillager x1"
+      - kill: "Thaumcraft.TaintedCreeper x1"
+    rewards:
+      - loot: comum
+
+  - id: esporos
+    title: "Esporos da Mácula"
+    type: optional
+    deps: [terras_maculadas]
+    icon: Thaumcraft:ItemSpawnerEgg:20
+    desc: |
+      Os pedúnculos de esporo soltam §eesporos§r que flutuam e explodem em mais mácula, e o
+      §eTaint Spore Swarmer§r despeja enxames de bichinhos. Destrua um enxameador.
+    tasks:
+      - kill: "Thaumcraft.TaintSwarmer x1"
+    rewards:
+      - loot: comum
+
+  - id: reconquista
+    title: "Reconquista da Terra"
+    type: normal
+    deps: [gosma_maculada]
+    deps_hidden: [thaumcraft:flor_eterea]
+    icon: Thaumcraft:blockCustomPlant:4
+    desc: |
+      Hora de devolver a terra aos vivos! Plante §eFlores Etéreas§r na borda da mácula: elas
+      purificam uns 8 blocos em volta e a mácula fora do bioma morre aos poucos. Nós puros e
+      árvores de Silverwood também transformam a região de volta (neste pack, nós puros sempre
+      geram Floresta Mágica). Tenha 4 flores em mãos e comece a reconquista.
+    tasks:
+      - get: Thaumcraft:blockCustomPlant:4 x4
+    rewards:
+      - xp: 3
+      - item: Thaumcraft:blockCustomPlant:2 x4
+
+  - id: aranha_mente
+    title: "Aranhas da Mente"
+    type: optional
+    deps: [warp]
+    icon: Thaumcraft:ItemSpawnerEgg:5
+    desc: |
+      Um dos eventos de Warp mais assustadores: "de repente, aranhas!". Algumas são só
+      alucinação... outras são bem reais. Derrote 3 §eMind Spiders§r quando elas aparecerem.
+    tasks:
+      - kill: "Thaumcraft.MindSpider x3"
+    rewards:
+      - loot: comum
+
+  - id: zumbi_furioso
+    title: "Zumbi Furioso"
+    type: optional
+    deps: [taumaturgo]
+    icon: Thaumcraft:ItemSpawnerEgg:1
+    desc: |
+      Os Zumbis Raivosos às vezes vêm numa versão gigante, o §eFurious Zombie§r, que bate muito
+      mais forte e também deixa cair cérebros. Derrote um.
+    tasks:
+      - kill: "Thaumcraft.GiantBrainyZombie x1"
+    rewards:
+      - loot: comum
+
+  - id: clerigo_carmesim
+    title: "Clérigos Carmesins"
+    type: normal
+    deps: [obelisco]
+    icon: Thaumcraft:ItemSpawnerEgg:9
+    desc: |
+      Os §eClérigos§r ficam atrás dos cavaleiros, lançando magia e organizando o grupo. Foque
+      neles primeiro — sem clérigo, os cavaleiros perdem metade da graça. Derrote 3.
+    tasks:
+      - kill: "Thaumcraft.CultistCleric x3"
+    rewards:
+      - xp: 3
+      - item: Thaumcraft:ItemResource:9 x2
+
+  - id: caranguejo_eldritch
+    title: "Caranguejos Eldritch"
+    type: optional
+    deps: [terras_exteriores]
+    icon: Thaumcraft:ItemSpawnerEgg:13
+    desc: |
+      Bichos de casco duro que saem de "ovos" nas paredes do labirinto e grudam na sua cabeça
+      se você bobear. Derrote 5.
+    tasks:
+      - kill: "Thaumcraft.EldritchCrab x5"
+    rewards:
+      - loot: incomum
+
+  - id: casca_cambaleante
+    title: "Cascas Cambaleantes"
+    type: optional
+    deps: [terras_exteriores]
+    icon: Thaumcraft:ItemSpawnerEgg:14
+    desc: |
+      Corpos ocos que algo de fora "habita". As §eShambling Husks§r vagam pelos corredores das
+      Terras Exteriores. Derrote 3.
+    tasks:
+      - kill: "Thaumcraft.InhabitedZombie x3"
+    rewards:
+      - loot: incomum
+
+  - id: lamina_carmesim
+    title: "A Lâmina Carmesim"
+    type: optional
+    deps: [pretor]
+    icon: Thaumcraft:ItemSwordCrimson
+    desc: |
+      A espada do Pretor: causa Fraqueza em quem é atingido. Às vezes ele a deixa cair; o Tainted
+      Magic também ensina a forjá-la. Consiga uma.
+    tasks:
+      - get: Thaumcraft:ItemSwordCrimson
+    rewards:
+      - loot: raro
+
+  - id: armadura_pretor
+    title: "Armadura do Pretor"
+    type: optional
+    deps: [pretor]
+    icon: Thaumcraft:ItemChestplateCultistLeaderPlate
+    desc: |
+      O elmo, peitoral e grevas douradas do líder do Culto. Rara como drop; forjável no Tainted
+      Magic. Consiga qualquer peça. §cComo todo traje cultista, dá Warp vestida.§r
+    tasks:
+      - one_of: [Thaumcraft:ItemHelmetCultistLeaderPlate, Thaumcraft:ItemChestplateCultistLeaderPlate, Thaumcraft:ItemLeggingsCultistLeaderPlate]
+    rewards:
+      - loot: raro
+
+  - id: pepitas_vazio
+    title: "Pepitas do Vazio"
+    type: normal
+    deps: [metal_vazio]
+    icon: Thaumcraft:ItemNugget:7
+    desc: |
+      Um lingote = 9 §ePepitas de Metal do Vazio§r. Elas fazem as pontas do vazio. Junte §e12§r.
+    tasks:
+      - get: Thaumcraft:ItemNugget:7 x12
+    rewards:
+      - xp: 3
+      - item: Thaumcraft:ItemResource:17
+
+  # ======================================================================
+  # EXTRAS — CONHECIMENTO AVANÇADO
+  # ======================================================================
+  - id: cajado_greatwood
+    title: "O Primeiro Cajado"
+    type: normal
+    deps: [nucleo_cajado_greatwood]
+    icon: Thaumcraft:WandRod:50
+    desc: |
+      Monte o núcleo de greatwood com duas pontas (ouro ou táumio) na Mesa Arcana, como faria com
+      uma varinha. Um cajado de §e125 de vis§r já dá conta do Nó na Jarra e de focos gulosos.
+      Lembre: cajado não trabalha na Mesa Arcana.
+    tasks:
+      - {get: 'Thaumcraft:WandCasting:* {rod:"greatwood_staff"}', nbt: true}
+    rewards:
+      - xp: 3
+      - item: Thaumcraft:ItemShard:6 x2
+
+  - id: tipos_no
+    title: "Tipos de Nó"
+    type: info
+    deps: [transdutor]
+    icon: Thaumcraft:ItemThaumometer
+    desc: |
+      Com os Óculos você vê o tipo de cada nó:
+      §e• Puro§r — transforma a região em Floresta Mágica (neste pack, sempre).
+      §e• Sinistro§r — escurece a área e atrai criaturas; é o nó dos altares Eldritch.
+      §e• Faminto§r — §cpuxa e devora§r itens, blocos e você. Mantenha distância!
+      §e• Maculado§r — espalha mácula em volta.
+      §e• Instável§r — perde vis sozinho (o estabilizador segura).
+      E os modificadores: §eBrilhante§r (recarrega rápido), §ePálido§r e §eDesbotado§r (lentos).
+      O modo "hard mode nodes" está ligado: nós negativos são mais perigosos.
+    tasks:
+      - check
+    rewards:
+      - xp: 2
+
+  - id: sintomas_warp
+    title: "Sintomas do Warp"
+    type: info
+    deps: [warp]
+    icon: Thaumcraft:ItemSanitySoap
+    desc: |
+      Alguns eventos de Warp do Thaumcraft (há mais, do WarpTheory):
+      §e•§r §eExaustão de Vis§r — a varinha gasta mais vis por um tempo.
+      §e•§r §eFome Antinatural§r — fome que §ecarne podre ou cérebro de zumbi§r curam.
+      §e•§r §eDesprezado pelo Sol§r — a luz do sol te machuca.
+      §e•§r §eVisão Turva§r, cegueira e sussurros no chat.
+      §e•§r §eOlhar Mortal§r — você faz murchar quem olha.
+      §e•§r Névoa com Guardiões Eldritch, aranhas da mente...
+      §e•§r Às vezes o Warp te dá §epontos de pesquisa§r. Pequeno consolo.
+    tasks:
+      - check
+    rewards:
+      - xp: 2
+
+  - id: espelho_essencia
+    title: "Espelhos de Essência"
+    type: optional
+    deps: [taumaturgo]
+    deps_hidden: [thaumcraft:espelho_magico]
+    icon: Thaumcraft:blockMirror:6
+    desc: |
+      Um par de §eEspelhos de Essência§r deixa o altar de infusão (e outras máquinas que puxam
+      essência) §ebeber de jarros distantes§r através do espelho. Você não pode bombear essência
+      para dentro deles: eles só atendem a "sucção" de quem pede. Seu depósito de jarros pode
+      ficar em outra sala!
+    tasks:
+      - get: Thaumcraft:blockMirror:6 x2
+    rewards:
+      - loot: incomum
+
+  - id: bau_itinerante_melhorias
+    title: "Melhorias do Baú Itinerante"
+    type: info
+    deps: [taumaturgo]
+    deps_hidden: [thaumcraft:bau_itinerante]
+    icon: Thaumcraft:TrunkSpawner
+    desc: |
+      O Baú Itinerante aceita §euma§r melhoria de golem, cada uma com efeito próprio:
+      §e• Ar§r — anda mais rápido. §e• Terra§r — uma fileira extra de inventário.
+      §e• Fogo§r — defende você quando te atacam. §e• Água§r — só você abre e ele fica quase
+      indestrutível. §e• Ordem§r — mantém os itens ao ser recolhido pelo sino.
+      §e• Entropia§r — suga itens próximos sozinho.
+      Dê comida para ele se curar mais rápido. Ele é um bom menino.
+    tasks:
+      - check
+    rewards:
+      - xp: 2
+
+  - id: terras_sombrias
+    title: "Terras Sombrias"
+    type: optional
+    deps: [epifania]
+    icon: Thaumcraft:blockCosmeticSolid:11
+    desc: |
+      O bioma §eEerie§r é um lugar cinzento e silencioso onde o véu também é fino. Visite um para
+      examinar o que vive por lá.
+    tasks:
+      - visit: {dim: 0, biome: 194, name: "Eerie"}
+    rewards:
+      - loot: incomum
+
+  - id: colecao_perolas
+    title: "Colecionador de Pérolas"
+    type: optional
+    deps: [perola_primordial]
+    icon: Thaumcraft:ItemEldritchObject:3
+    desc: |
+      Uma pérola nunca basta: Triturador Primal, Fornalha Avançada, pontas e hastes do Tainted
+      Magic, ferramentas de escrita primais do Forbidden Magic... Cada fechadura derrotada nas
+      Terras Exteriores rende uma. Junte §e3 Pérolas Primordiais§r.
+    tasks:
+      - get: Thaumcraft:ItemEldritchObject:3 x3
+    rewards:
+      - loot: epico
+
+  - id: perola_extrema
+    title: "A Pérola Extremamente Primordial"
+    type: secret
+    deps: [colecao_perolas]
+    icon: Avaritia:big_pearl
+    desc: |
+      Uma pesquisa estranha surgiu na aba Eldritch — trazida pelo Volume do Infinito (Avaritia).
+      "Sempre dá para ter mais": §e8 Pérolas Primordiais§r esmagadas juntas numa infusão
+      monstruosa (64 de cada primal, Alienis e Praecantatio, e 32 de §eTerminus§r, o aspecto do
+      Avaritia). Instabilidade 12. Prepare o altar mais estável da sua vida.
+    tasks:
+      - get: Avaritia:big_pearl
+    rewards:
+      - loot: epico
+
+  - id: registros_akashicos
+    title: "Os Registros Akáshicos"
+    type: secret
+    deps: [perola_extrema]
+    icon: Avaritia:Akashic_Record
+    desc: |
+      ...Herói. Herói! Você viu o nome desta pesquisa?! §6Akashic Records§r. Os Registros
+      Akáshicos. EU estou aqui dentro, de alguma forma, numa página escrita por outros magos!
+
+      O livro diz que eles dão "todos os pontos de pesquisa do mundo, e mais um pouquinho". A
+      receita é de outro mundo: um Fragmento de Conhecimento cercado por §e4 Lingotes de
+      Infinito§r, com 64 Cognitio, 64 Praecantatio e 32 Terminus. Só no fim de tudo, no Epílogo.
+
+      Quando você chegar lá... volte aqui e me mostre. Eu quero me ler.
+    tasks:
+      - get: Avaritia:Akashic_Record
+    rewards:
+      - loot: lendario

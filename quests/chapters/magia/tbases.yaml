@@ -1,0 +1,1001 @@
+chapter:
+  id: tbases
+  title: "Thaumic Bases"
+  prefix: ""
+  order: 510
+  icon: thaumicbases:resource:1
+  desc: |
+    §dO Volume do Taumaturgo Caseiro.§r Alquimia de economia doméstica, Thauminita, plantas
+    mágicas, Sementes do Vazio, fogueira do mago, braceletes, manipulação de nodos e o
+    Revólver do Taumaturgo. (Thaumic Bases 1.9.19)
+
+quests:
+  # ======================================================================
+  # FASE 0 — ALQUIMIA DO DIA A DIA
+  # ======================================================================
+  - id: tb_inicio
+    title: "As Bases do Taumaturgo"
+    type: info
+    icon: thaumicbases:resource:1
+    desc: |
+      Sabe aquele monte de pequenas coisas que deixam a vida de um taumaturgo mais fácil?
+      Pois é: o §eThaumic Bases§r é exatamente isso, e muito mais.
+
+      Ele tem a aba §eThaumic Bases§r no Taumonomicon. As pesquisas com prefixo §eTB.§r que
+      repetem nomes do Thaumcraft (Crisol, Infusão, Táumio, Metal do Vazio...) são só
+      "portas": aparecem quando você completa a original.
+
+      O Volume tem cinco ramos: §ealquimia útil§r, §eThauminita§r, §eplantas mágicas§r,
+      §edispositivos§r e §enodos e armas§r. Comece por onde quiser!
+    tasks:
+      - check
+    rewards:
+      - xp: 1
+
+  - id: duplicacao_simples
+    title: "Duplicação Simples"
+    type: normal
+    deps: [tb_inicio]
+    icon: minecraft:arrow
+    desc: |
+      Alquimia de economia doméstica! No Crisol:
+      §e• Flecha§r + 1 §dTelum§r = 2 Flechas;
+      §e• Bola de Neve§r + 1 §dGelum§r = 2 Bolas de Neve;
+      §e• Redstone§r + 1 §dMachina§r e 1 §dPotentia§r = 2 Redstones.
+
+      A redstone é a que mais rende. Junte §e32 Redstones§r — vão sumir rapidinho nos
+      próximos aparelhos.
+    tasks:
+      - get: minecraft:redstone x32
+    rewards:
+      - xp: 2
+      - item: minecraft:arrow x16
+
+  - id: ambar_alquimico
+    title: "Fazendo Âmbar"
+    type: normal
+    deps: [tb_inicio]
+    icon: Thaumcraft:ItemResource:6
+    desc: |
+      Âmbar sem garimpar! Uma §eMuda de Pinheiro§r (spruce) no Crisol com 2 §dVinculum§r vira
+      1 §eÂmbar§r. Outras árvores "são mundanas demais", segundo o livro — tem que ser
+      pinheiro.
+    tasks:
+      - get: Thaumcraft:ItemResource:6 x8
+    rewards:
+      - xp: 2
+      - item: minecraft:sapling:1 x8
+
+  - id: mercurio_silverwood
+    title: "Mercúrio da Silverwood"
+    type: normal
+    deps: [tb_inicio]
+    icon: Thaumcraft:ItemResource:3
+    desc: |
+      Os vapores que saem quando você corta Silverwood? Mercúrio! Uma §eTora de
+      Silverwood§r no Crisol com 1 §dOrdo§r e 1 §dVenenum§r rende §e3 Mercúrios§r.
+
+      §aBônus:§r 9 Mercúrios fazem um §eBloco de Mercúrio§r (e 4 blocos viram Tijolos de
+      Mercúrio, para decorar).
+    tasks:
+      - get: Thaumcraft:ItemResource:3 x6
+    rewards:
+      - xp: 2
+      - item: Thaumcraft:blockMagicalLog:1 x2
+
+  - id: salis_duplicada
+    title: "Duplicando Salis Mundus"
+    type: main
+    deps: [tb_inicio]
+    icon: Thaumcraft:ItemResource:14
+    desc: |
+      O Salis Mundus nasce de um Estilhaço Equilibrado, que tem todos os primais. Então...
+      e se déssemos todos os primais ao próprio Salis?
+
+      No Crisol: §e1 Salis Mundus§r + 2 de cada aspecto primal + 3 §dPraecantatio§r = §e2
+      Salis Mundus§r. Sem a Praecantatio ele simplesmente ferve. Faça §e16§r — este Volume
+      come salis no café da manhã.
+    tasks:
+      - get: Thaumcraft:ItemResource:14 x16
+    rewards:
+      - xp: 4
+      - choice: [Thaumcraft:ItemShard:6 x4, Thaumcraft:ItemShard x8, Thaumcraft:ItemShard:4 x8]
+
+  - id: bloco_salis
+    title: "Bloco de Salis Mundus"
+    type: normal
+    deps: [salis_duplicada]
+    icon: thaumicbases:blockSalisMundus
+    desc: |
+      9 Salis Mundus na Mesa Arcana (1 vis de cada primal) = §eSalis Mundus Block§r. Ele
+      serve de estabilizador de infusão, de solo mágico para plantas exigentes (como a
+      Lucrite) e entra em várias receitas de nodos. Faça 4.
+    tasks:
+      - get: thaumicbases:blockSalisMundus x4
+    rewards:
+      - xp: 3
+      - item: Thaumcraft:ItemResource:14 x8
+
+  - id: entropia_avancada
+    title: "Entropia Avançada"
+    type: normal
+    deps: [duplicacao_simples]
+    icon: minecraft:blaze_powder
+    desc: |
+      Perditio desmancha coisas — e, com prática, desmancha melhor. No Crisol com 1
+      §dPerditio§r:
+      §e• Lã§r → 3 Linhas; §eArenito§r → 3 Areias; §eVara de Blaze§r → 3 Pós de Blaze.
+
+      Com a pesquisa §eEntropy Manufacturing Mastered§r, adicionando 1 §dFabrico§r, o rendimento
+      sobe para §e4§r. Junte §e16 Pós de Blaze§r.
+    tasks:
+      - get: minecraft:blaze_powder x16
+    rewards:
+      - xp: 3
+      - item: minecraft:blaze_rod x2
+
+  - id: blocos_cristal
+    title: "Blocos de Cristal"
+    type: normal
+    deps: [tb_inicio]
+    icon: thaumicbases:crystalBlock:6
+    desc: |
+      Um §eAglomerado de Cristais§r no Crisol com 1 de cada primal, 2 §dFabrico§r e 2 do
+      próprio aspecto do aglomerado vira um §eBloco de Cristal§r sólido. Com 2 §dVitium§r a
+      mais, ele vira o Bloco de Cristal Maculado.
+
+      Eles estabilizam infusões e são o "solo" da Rosa Mysteria. Faça pelo menos um.
+    tasks:
+      - get: thaumicbases:crystalBlock:*
+    rewards:
+      - xp: 3
+      - item: Thaumcraft:ItemShard:6 x2
+
+  - id: destruicao_minerio
+    title: "Destruição de Minério"
+    type: main
+    deps: [entropia_avancada, blocos_cristal]
+    icon: Thaumcraft:ItemShard:6
+    desc: |
+      O ápice da entropia: minere uma §ePedra Infundida§r com §eToque Suave§r e jogue-a no
+      Crisol com 2 §dPerditio§r, 1 §dPraecantatio§r e 3 do primal daquela pedra. Ela vira §e8
+      estilhaços§r de uma vez (valor da config do pack)!
+
+      É de longe o melhor jeito de conseguir estilhaços. Junte §e16§r de qualquer tipo.
+    tasks:
+      - get: Thaumcraft:ItemShard:* x16
+    rewards:
+      - xp: 4
+      - choice: [minecraft:diamond x2, Thaumcraft:ItemResource:14 x8, Thaumcraft:ItemShard:6 x4]
+
+  - id: incendium
+    title: "Incendium"
+    type: normal
+    deps: [entropia_avancada]
+    icon: thaumicbases:pyroBucket
+    desc: |
+      Pó de Blaze sem ir ao Nether! Um §eBalde de Lava§r no Crisol com 24 §dIgnis§r e 8
+      §dPraecantatio§r vira o §eBucket of Incendium§r.
+
+      Despeje no mundo: o líquido não se espalha e vai §ecristalizando§r devagar. Quando
+      cristalizar por completo, quebre com a mão e caem de 5 a 37 Pós de Blaze (config do
+      pack). §cEle queima igual lava — não nade nele!§r
+    tasks:
+      - get: thaumicbases:pyroBucket
+    rewards:
+      - xp: 3
+      - item: minecraft:lava_bucket
+
+  # ======================================================================
+  # FASE 1 — THAUMINITA
+  # ======================================================================
+  - id: thauminita
+    title: "Thauminita"
+    type: main
+    deps: [salis_duplicada]
+    icon: thaumicbases:resource:1
+    desc: |
+      Um metal melhor que o táumio: quase tão duro quanto diamante e muito mais fácil de
+      encantar. No Crisol: §eBarra de Táumio§r + 4 §dMetallum§r, 8 §dVitreus§r e 2
+      §dPraecantatio§r = §e8 Pepitas de Thauminita§r (o processo perde um pouquinho de metal).
+
+      9 pepitas = 1 §eThauminite Ingot§r. Junte §e8 lingotes§r: ferramentas, armadura e
+      ponteiras esperam por eles.
+    tasks:
+      - get: thaumicbases:resource:1 x8
+    rewards:
+      - xp: 4
+      - choice: [Thaumcraft:ItemResource:2 x6, Thaumcraft:ItemShard:6 x4, minecraft:diamond x2]
+
+  - id: ferramentas_thauminita
+    title: "Ferramentas de Thauminita"
+    type: normal
+    deps: [thauminita]
+    icon: thaumicbases:thauminitePickaxe
+    desc: |
+      Picareta, machado, pá, enxada, espada e até §etesoura§r de Thauminita, todas na Mesa
+      Arcana (15 vis de cada primal), no formato das ferramentas comuns.
+
+      Faça a sua favorita para começar. Elas aceitam encantamentos muito bem!
+    tasks:
+      - one_of: [thaumicbases:thauminitePickaxe, thaumicbases:thauminiteAxe, thaumicbases:thauminiteShovel, thaumicbases:thauminiteSword, thaumicbases:thauminiteHoe, thaumicbases:thauminiteShears]
+    rewards:
+      - xp: 3
+      - item: thaumicbases:resource x9
+
+  - id: armadura_thauminita
+    title: "Armadura de Thauminita"
+    type: normal
+    deps: [thauminita]
+    icon: thaumicbases:thauminiteChest
+    desc: |
+      Capacete, peitoral, calças e botas de Thauminita na Mesa Arcana (25 vis de cada
+      primal), no formato da armadura comum: 24 lingotes no total. Proteção de metal mágico
+      sem perder a elegância.
+    tasks:
+      - get: [thaumicbases:thauminiteHelmet, thaumicbases:thauminiteChest, thaumicbases:thauminiteLeggings, thaumicbases:thauminiteBoots]
+    rewards:
+      - xp: 3
+      - item: thaumicbases:resource:1 x2
+
+  - id: ponteiras_thauminita
+    title: "Ponteiras de Thauminita"
+    type: normal
+    deps: [thauminita]
+    icon: thaumicbases:resource:2
+    desc: |
+      Ponteiras de varinha melhores que as de táumio! Arcana (25 de cada primal): 5 Pepitas
+      de Thauminita e 4 Salis Mundus. O livro diz que elas são "inertes demais para a
+      infusão", por isso o salis extra. Faça um par.
+    tasks:
+      - get: thaumicbases:resource:2 x2
+    rewards:
+      - xp: 3
+      - item: Thaumcraft:ItemResource:14 x4
+
+  - id: haste_taumio
+    title: "Haste de Táumio"
+    type: normal
+    deps: [thauminita]
+    icon: thaumicbases:resource:3
+    desc: |
+      Uma haste de varinha de §etáumio§r! Arcana (50 de cada primal): Barras de Táumio e
+      Salis Mundus na diagonal. A §eThaumium Wand Core§r guarda §e80 de cada aspecto§r. Se vir
+      um raiozinho na superfície da varinha... deve ser imaginação sua.
+    tasks:
+      - get: thaumicbases:resource:3
+    rewards:
+      - xp: 3
+      - item: Thaumcraft:ItemResource:2 x4
+
+  - id: haste_vazio
+    title: "Haste do Vazio"
+    type: milestone
+    deps: [haste_taumio, blocos_cristal]
+    icon: thaumicbases:resource:4
+    banner: "Haste do Vazio"
+    subtitle: "Pulsando de poder"
+    desc: |
+      Depois da viagem às profundezas da insanidade, uma ideia estranha: e uma haste de
+      §eMetal do Vazio§r?
+
+      Infusão (instabilidade 6): §eHaste de Táumio§r no centro; 4 Lingotes de Metal do Vazio,
+      2 Blocos de Salis Mundus e 2 Blocos de Cristal Maculado em volta, com 64 de Alienis,
+      Vacuos e Praecantatio.
+
+      A §eVoid Wand Core§r pulsa de poder e §eacumula aspectos sozinha§r, devagar. É o máximo
+      que se consegue sem voltar às trevas mais uma vez. Que varinha, Herói!
+    tasks:
+      - get: thaumicbases:resource:4
+    rewards:
+      - xp: 10
+      - kit: {name: "Kit do Artesão de Varinhas", items: ["Thaumcraft:ItemResource:16 x4", "thaumicbases:resource:2 x2", "Thaumcraft:ItemResource:14 x16", "Thaumcraft:ItemShard:6 x4"]}
+      - loot: raro
+
+  # ======================================================================
+  # FASE 2 — NATUREZA TÁUMICA
+  # ======================================================================
+  - id: natureza_taumica
+    title: "Natureza Táumica"
+    type: main
+    deps: [tb_inicio]
+    icon: thaumicbases:sweedSeeds
+    desc: |
+      Quase todo taumaturgo ignora as plantas. Você não é "quase todo taumaturgo".
+
+      A primeira planta táumica é o §eSweed§r: §eGrama Alta§r no Crisol com 2 §dMotus§r e 1
+      §dVictus§r. Ele cresce e, colhido, dá açúcar e cana — mas §cse espalha rápido§r, fique de
+      olho. Todas as plantas deste ramo saem do Crisol (as árvores, da Infusão) e a maioria
+      cresce em terra arada, como trigo.
+    tasks:
+      - get: thaumicbases:sweedSeeds x4
+    rewards:
+      - xp: 4
+      - choice: [minecraft:dye:15 x32, minecraft:wheat_seeds x16, minecraft:water_bucket]
+
+  - id: plax
+    title: "Plax"
+    type: normal
+    deps: [natureza_taumica]
+    icon: thaumicbases:plaxSeed
+    desc: |
+      Linha sem caçar aranha nem tosquiar ovelha! §eSementes de Trigo§r + 4 §dPannus§r no
+      Crisol = §ePlax Seeds§r. Cresce como trigo (8 estágios, precisa de luz e terra arada) e
+      cada pé maduro dá §e3 Linhas§r.
+    tasks:
+      - get: thaumicbases:plaxSeed x4
+    rewards:
+      - xp: 2
+      - item: minecraft:string x16
+
+  - id: briar
+    title: "Roseira Brava"
+    type: normal
+    deps: [plax]
+    icon: thaumicbases:rosehipSyrup
+    desc: |
+      Plantas também curam. Uma §eRoseira§r no Crisol com 4 §dSano§r, 4 §dVictus§r e 4
+      §dHerba§r volta ao estado selvagem: o §eBriar§r, planta de 2 blocos que cresce rápido e
+      dá saquinhos de sementes.
+
+      Arcana: Frasco de Vidro + Briar Seed Bag + Açúcar = §eRosehip Syrup§r. Funciona como um
+      leite melhor (empilha até 16) e ajuda com alguns efeitos de Warp — não com os puramente
+      mentais.
+    tasks:
+      - get: thaumicbases:rosehipSyrup x4
+    rewards:
+      - xp: 3
+      - item: minecraft:sugar x16
+
+  - id: metalleat
+    title: "Metalleat"
+    type: normal
+    deps: [plax]
+    icon: thaumicbases:metalleatSeeds
+    desc: |
+      Chega de gastar ferro para conseguir Metallum! §eSementes de Trigo§r + 4 §dOrdo§r, 12
+      §dMetallum§r e 4 §dVictus§r = §eMetalleat Seeds§r. Cresce como trigo, fica metálica no
+      fim e cada pé maduro dá §e2 Pepitas de Ferro§r.
+    tasks:
+      - get: thaumicbases:metalleatSeeds x4
+    rewards:
+      - xp: 2
+      - item: minecraft:iron_ingot x4
+
+  - id: lucrite
+    title: "Lucrite"
+    type: normal
+    deps: [metalleat, bloco_salis]
+    icon: thaumicbases:lucriteSeeds
+    desc: |
+      A prima dourada da Metalleat: §eCenoura Dourada§r + 4 §dFames§r, 12 §dLucrum§r e 4
+      §dVictus§r. Demora o dobro, gasta 7 farinhas de osso e §esó cresce com magia forte
+      embaixo da terra§r — um Bloco de Salis Mundus sob o solo é perfeito. Dá §e3 Pepitas de
+      Ouro§r (e às vezes uma cenoura). §c(+1 de Warp na pesquisa.)§r
+    tasks:
+      - get: thaumicbases:lucriteSeeds x4
+    rewards:
+      - xp: 3
+      - item: minecraft:gold_nugget x18
+
+  - id: lazullia
+    title: "Lazullia"
+    type: normal
+    deps: [metalleat]
+    icon: thaumicbases:lazulliaSeeds
+    desc: |
+      Cinco horas procurando lápis-lazúli? Nunca mais. §eSementes de Trigo§r + 12 §dSensus§r e
+      3 §dLucrum§r = §eLazullia Seeds§r. Cresce devagar e dá Lápis-Lazúli junto com a semente.
+    tasks:
+      - get: thaumicbases:lazulliaSeeds x4
+    rewards:
+      - xp: 2
+      - item: minecraft:dye:4 x16
+
+  - id: redlon
+    title: "Redlon"
+    type: normal
+    deps: [metalleat]
+    icon: thaumicbases:redlonSeeds
+    desc: |
+      Redstone é praticamente mágica, não acha? §eSementes de Melancia§r + 16 §dMachina§r e 16
+      §dPotentia§r = §eRedlon Seed§r. Ela cresce como melancia, mas o fruto é um §eBloco de
+      Redstone§r inteiro. Leva bem mais tempo que uma melancia — paciência!
+    tasks:
+      - get: thaumicbases:redlonSeeds x2
+    rewards:
+      - xp: 3
+      - item: minecraft:redstone_block x2
+
+  - id: cacto_arco_iris
+    title: "Cacto Arco-Íris"
+    type: optional
+    deps: [natureza_taumica]
+    icon: thaumicbases:rainbowCactus
+    desc: |
+      Magia nem sempre é séria. §eCacto§r + 24 §dPermutatio§r e 6 §dSensus§r = §eRainbow
+      Cactus§r. Plante na areia; ao quebrar os blocos de cima ele solta §ecorantes variados§r
+      (só o último bloco cai como cacto). Verde é o mais comum.
+    tasks:
+      - get: thaumicbases:rainbowCactus
+    rewards:
+      - loot: comum
+
+  - id: aurelia
+    title: "Aurelia"
+    type: normal
+    deps: [natureza_taumica]
+    icon: thaumicbases:aureliaPetal
+    desc: |
+      §dAuram§r sem destruir nodos nem caçar wisps! Uma §eTulipa Rosa§r no Crisol com 8
+      §dHerba§r, 2 §dAlienis§r e 2 §dAuram§r vira §eAurelia§r. §c(+2 de Warp na pesquisa.)§r
+
+      Ela só se abre na §elua cheia§r, com o céu à vista, e solta §ePétalas de Aurelia§r no chão
+      em volta — riquíssimas em Auram. Plante várias num lugar aberto.
+    tasks:
+      - get: thaumicbases:aureliaPetal x4
+    rewards:
+      - xp: 3
+      - item: minecraft:red_flower:7 x4
+
+  - id: rosa_mysteria
+    title: "Rosa Mysteria"
+    type: normal
+    deps: [aurelia, blocos_cristal]
+    icon: thaumicbases:knoseSeed
+    desc: |
+      Plantas têm memória? Uma §eRoseira§r com 16 §dCognitio§r, 8 §dVictus§r e 2 §dPotentia§r
+      vira o broto de §eRosa Mysteria§r.
+
+      Ela só cresce em cima de um §eBloco de Cristal§r e, madura, dá um fragmento de
+      conhecimento §esintonizado§r com o aspecto do bloco (Bloco Misto = Fragmento Misto). No
+      Crisol, fragmento + 1 §dOrdo§r e 1 §dPermutatio§r = Fragmento de Conhecimento comum.
+    tasks:
+      - get: thaumicbases:knoseFragment:* x2
+    rewards:
+      - xp: 3
+      - item: Thaumcraft:ItemResource:9 x2
+
+  - id: cogumelo_primal
+    title: "Cogumelos Primais"
+    type: optional
+    deps: [natureza_taumica]
+    icon: thaumicbases:ashroom
+    desc: |
+      Para que servem os Vishrooms? São um estoque de aspectos sem jeito de estourar. Um
+      §eVishroom§r com 4 §dPerditio§r e 2 §dMessis§r vira §ePrimal Shroom§r: crescido e colhido,
+      ele cobre tudo em volta com uma chuva de §eorbes de aspecto primal§r para a varinha.
+    tasks:
+      - get: thaumicbases:ashroom
+    rewards:
+      - loot: comum
+
+  - id: fluxium_glieonia
+    title: "Fluxium e Glieonia"
+    type: optional
+    deps: [natureza_taumica]
+    icon: thaumicbases:glieoniaSeed
+    desc: |
+      Duas flores curiosas:
+      §e• Glieonia:§r Hortênsia-azul (Azure Bluet) + 8 Lux, 6 Praecantatio e 4 Victus. Madura
+      dá §e2 Pós de Pedra Luminosa§r (mas, misteriosamente, não brilha).
+      §e• Fluxium:§r Alho Silvestre (Allium) + 1 Perditio e 2 Praecantatio. Ela §eabsorve
+      fluxo§r do ar e solta Gás de Fluxo acima de si. §c(+2 de Warp.)§r
+    tasks:
+      - get: thaumicbases:glieoniaSeed x2
+    rewards:
+      - loot: comum
+
+  - id: carvalho_dourado
+    title: "Carvalho Dourado"
+    type: normal
+    deps: [natureza_taumica]
+    icon: thaumicbases:goldenOakSapling
+    desc: |
+      Árvores resistem ao Crisol, mas não à Infusão! §eMuda de Carvalho§r no centro; 2 Maçãs
+      e 2 Maçãs Douradas em volta (Herba 16, Lucrum 64) = §eGolden Oak Sapling§r. Cresce como
+      um carvalho, mas as maçãs que caem são §emaçãs douradas§r.
+
+      §aDica do pack:§r tesoura não colhe as folhas dela; use Toque Suave (e aí não cai maçã).
+    tasks:
+      - get: thaumicbases:goldenOakSapling
+    rewards:
+      - xp: 3
+      - item: minecraft:apple x8
+
+  - id: arvores_taumicas
+    title: "Dendrologia Táumica"
+    type: optional
+    deps: [carvalho_dourado]
+    icon: thaumicbases:goldenOakSapling:3
+    desc: |
+      Três árvores para depois do Carvalho Dourado (todas por Infusão):
+      §e• Peaceful:§r Muda de Bétula + Slime, Salis, Flor Brilhante e Lâmpada da Fertilidade.
+      Atrai §eanimais passivos sem parar§r — controle a população!
+      §e• Nether:§r Muda de Greatwood + Pérolas de Cinzas, Estilhaços de Fogo, Flores de Etérea e
+      Balde de Lava. Converte blocos em volta para versões do Nether e deixa criaturas de lá
+      passarem. §cCuidado!§r
+      §e• Ender:§r Muda de Silverwood + Estilhaços Equilibrados, Pérolas do Fim, Nitor e Flor
+      de Etérea (inst. 7). Transforma o chão em Pedra do Fim e Obsidiana e atrai Endermen.
+    tasks:
+      - one_of: [thaumicbases:goldenOakSapling:1, thaumicbases:goldenOakSapling:2, thaumicbases:goldenOakSapling:3]
+    rewards:
+      - loot: incomum
+
+  - id: semente_vazio
+    title: "Sementes do Vazio"
+    type: milestone
+    deps: [lucrite]
+    icon: thaumicbases:voidSeed
+    banner: "Sementes do Vazio"
+    subtitle: "Metal do Vazio que brota da terra"
+    desc: |
+      A Semente do Vazio do Thaumcraft é uma semente infundida demais: perdeu a capacidade de
+      crescer. Mas você sabe muito sobre plantas agora...
+
+      Infusão (instabilidade 3): §eSemente do Vazio§r no centro; Sementes de Trigo, Abóbora e
+      Melancia, Batata Venenosa, Cenoura e Fungo do Nether em volta (Alienis, Tenebrae e
+      Messis 16). Sai a §eVoid Plant Seed§r.
+
+      A Void Crop cresce como trigo e, madura, dá a semente de volta e uma §eSemente do Vazio
+      do Thaumcraft§r — a base do Metal do Vazio! Uma fazendinha disso muda a sua vida,
+      Herói.
+    tasks:
+      - get: thaumicbases:voidSeed x2
+    rewards:
+      - xp: 10
+      - kit: {name: "Kit do Jardineiro do Vazio", items: ["Thaumcraft:ItemResource:17 x4", "minecraft:dye:15 x32", "Thaumcraft:ItemResource:14 x8", "minecraft:nether_wart x8"]}
+      - loot: raro
+
+  # ======================================================================
+  # FASE 3 — TABACO DO TAUMATURGO
+  # ======================================================================
+  - id: tabaco
+    title: "Tabaco Mágico"
+    type: normal
+    deps: [natureza_taumica]
+    icon: thaumicbases:tobaccoSeeds
+    desc: |
+      Um tabaco que §enão§r faz mal e ainda acalma a mente! §eSementes de Trigo§r + 4
+      §dCognitio§r, 4 §dAqua§r, 4 §dHumanus§r e 4 §dMessis§r no Crisol = §eTobacco Seeds§r. Plante
+      e colha as folhas.
+
+      Na Mesa Arcana: §eAlmofariz§r (tigela, graveto e 3 lajes de madeira) + monte de folhas =
+      §eTobacco Pile§r.
+    tasks:
+      - get: thaumicbases:tobaccoPowder x4
+    rewards:
+      - xp: 2
+      - item: minecraft:bowl x4
+
+  - id: cachimbo
+    title: "Cachimbo de Greatwood"
+    type: normal
+    deps: [tabaco]
+    icon: thaumicbases:greatwoodPipe
+    desc: |
+      O descanso do taumaturgo pede três coisas: uma boa casa, um cachimbo e tabaco. Arcana:
+      Tábuas de Greatwood e Salis Mundus = §eGreatwood Smoking Pipe§r.
+
+      Fume (segure o botão direito, sem pressa) e há uma chance de §etirar Warp temporário§r.
+      O cachimbo usa o primeiro tabaco do inventário, como o arco usa flechas.
+    tasks:
+      - get: thaumicbases:greatwoodPipe
+    rewards:
+      - xp: 2
+      - item: thaumicbases:tobaccoPowder x4
+
+  - id: tabacos_especiais
+    title: "Tabacos Especiais"
+    type: info
+    deps: [cachimbo]
+    icon: thaumicbases:tobaccoPowder:6
+    desc: |
+      Variações do Tobacco Pile:
+      §e• Relaxing§r (Arcana: Ordo, Aer e Perditio 10) — tira Warp temporário.
+      §e• Saturating§r (Arcana, + semente de abóbora ou melancia) — engana a fome.
+      §e• Angry§r (Crisol: Telum e Fames 4) — fúria de batalha.
+      §e• Miner's§r (Crisol: Perfodio e Motus 4) — minera mais rápido.
+      §e• Wisdom§r (Crisol: Cognitio e Aer 4) — lucidez rápida para pesquisa.
+      §e• Wispy§r (Infusão: Salis + essência cristalizada) — sai um wisp bravo do cachimbo!
+      §e• Eldritch§r e §eTainted§r — §cdão Warp§r (pesquisas com 2 e 3 de Warp).
+
+      O §eCachimbo de Silverwood§r (Infusão) anula a maioria dos efeitos negativos.
+    tasks:
+      - check
+    rewards:
+      - xp: 2
+
+  # ======================================================================
+  # FASE 4 — DISPOSITIVOS
+  # ======================================================================
+  - id: fogueira
+    title: "Fogueira do Mago"
+    type: main
+    deps: [tb_inicio]
+    icon: thaumicbases:campfire
+    desc: |
+      Longe de casa, a noite chegando e nenhuma cama por perto? Arcana (Ignis 5, Perditio 3):
+      3 Gravetos, Pedregulho–Carvão–Pedregulho e 3 Cascalhos = §eMage's Campfire§r.
+
+      Acenda clicando com uma §etora§r (madeiras mágicas duram mais) e depois ponha
+      combustível. Monstros por perto §erecuam§r dela, como creepers fogem de gato. Não é
+      proteção absoluta: monstro com fome às vezes ignora.
+    tasks:
+      - get: thaumicbases:campfire
+    rewards:
+      - xp: 4
+      - choice: [minecraft:log x16, minecraft:coal x16, Thaumcraft:blockMagicalLog x4]
+
+  - id: braseiro
+    title: "Braseiro de Proteção"
+    type: normal
+    deps: [fogueira]
+    icon: thaumicbases:brazier
+    desc: |
+      A fogueira dá trabalho manual. O §eBrazier of Warding§r faz o mesmo, mas puxa §dIgnis§r
+      dos jarros e espelhos de essência próximos, sem lenha nem combustível.
+
+      Arcana: lajes de pedra, carvão e um §eBloco de Pedra Arcana§r no meio.
+    tasks:
+      - get: thaumicbases:brazier
+    rewards:
+      - xp: 3
+      - item: Thaumcraft:blockJar x2
+
+  - id: obsidiana_chorona
+    title: "Obsidiana Chorona"
+    type: normal
+    deps: [tb_inicio]
+    icon: thaumicbases:cryingObsidian
+    desc: |
+      Cama explode, cama tem monstro por perto, cama está ocupada... chega! Infusão:
+      §eObsidiana§r no centro; Diamante, Cama e 2 Blocos de Lápis Antigos (Ancient Lapis
+      Lazuli Block). §c(+1 de Warp.)§r
+
+      Ponha duas §eCrying Obsidian§r uma em cima da outra (um obelisco) e clique: você passa
+      a renascer perto dele. Dormir numa cama troca o ponto de volta.
+    tasks:
+      - get: thaumicbases:cryingObsidian x2
+    rewards:
+      - xp: 3
+      - item: minecraft:obsidian x8
+
+  - id: blocos_antigos
+    title: "Blocos Antigos"
+    type: optional
+    deps: [tb_inicio]
+    icon: thaumicbases:oldBrick
+    desc: |
+      Decoração com cara de ruína! Arcana (Perditio 5): 8 blocos comuns em volta de um
+      §eAglomerado de Cristal de Entropia§r = 8 blocos "antigos" (pedregulho, cascalho,
+      pedregulho com musgo, tijolo, ferro, ouro, diamante e lápis). O Bloco de Lápis Antigo é
+      ingrediente da Obsidiana Chorona.
+    tasks:
+      - get: thaumicbases:oldLapis x2
+    rewards:
+      - loot: comum
+
+  - id: fornalha_taumio
+    title: "Fornalha Alquímica de Táumio"
+    type: normal
+    deps: [salis_duplicada]
+    icon: thaumicbases:advAlchFurnace
+    desc: |
+      A Fornalha Alquímica é lenta demais! Arcana (Aqua e Ignis 20, Aer 10): Barras de Táumio
+      em volta de uma §eFornalha Alquímica§r, com 3 Foles Arcanos embaixo.
+
+      A §eThaumium Alchemical Furnace§r é §e2× mais rápida§r — mas, neste pack, §esó com
+      Alumentum§r como combustível (config). Foles ainda ajudam.
+    tasks:
+      - get: thaumicbases:advAlchFurnace
+    rewards:
+      - xp: 3
+      - item: Thaumcraft:ItemResource x8
+
+  - id: bigorna_taumio
+    title: "Bigorna de Táumio"
+    type: normal
+    deps: [thauminita]
+    icon: thaumicbases:thaumicAnvil
+    desc: |
+      Bigorna que quebra e cobra cada vez mais caro? A §eThaumium Anvil§r (Arcana: 3 Blocos
+      Táumicos e 4 Barras de Táumio, 25 de cada primal) dura muito mais, trabalha até o
+      §enível 60§r e §enão tem penalidade de reparo acumulada§r.
+    tasks:
+      - get: thaumicbases:thaumicAnvil
+    rewards:
+      - xp: 3
+      - item: minecraft:experience_bottle x8
+
+  - id: bigorna_vazio
+    title: "Bigorna do Vazio"
+    type: optional
+    deps: [bigorna_taumio, haste_vazio]
+    icon: thaumicbases:voidAnvil
+    desc: |
+      Infusão: a Bigorna de Táumio no centro e 5 Blocos de Metal do Vazio em volta. §c(+2 de
+      Warp.)§r Ela §ese conserta sozinha§r com uma atualização de bloco ao lado, e §equalquer§r
+      operação custa sempre 7 níveis. Ótima para combinar livros caríssimos!
+    tasks:
+      - get: thaumicbases:voidAnvil
+    rewards:
+      - loot: incomum
+
+  - id: realocador
+    title: "Realocador Táumico"
+    type: optional
+    deps: [tb_inicio]
+    icon: thaumicbases:relocator
+    desc: |
+      Levitadores Arcanos que vão na §eparede e no teto§r! Arcana: Tábuas de Greatwood,
+      Estilhaços de Ar, Terra e Água e um §eNitor§r = §eThaumic Relocator§r (empurra). Trocando o
+      Nitor por §eAlumentum§r, sai a versão que §epuxa§r tudo para si.
+    tasks:
+      - one_of: [thaumicbases:relocator, thaumicbases:relocator:6]
+    rewards:
+      - loot: comum
+
+  - id: espinhos
+    title: "Espinhos e Mantos Ensanguentados"
+    type: optional
+    deps: [tb_inicio]
+    icon: thaumicbases:spike
+    desc: |
+      Zumbi atrás de você na biblioteca? §eIron Spikes§r ferem quem pisa (e rasgam itens
+      soltos). As §eThaumic Spikes§r batem mais forte, poupam itens e desligam com redstone;
+      as §eVoid Spikes§r quase matam na hora e fazem o monstro soltar XP e aspectos.
+
+      Espinhos ensanguentados limpam-se com Tecido Encantado, que vira §eTecido Encantado
+      Ensanguentado§r — matéria-prima dos §eMantos Ensanguentados§r. §c(+2 de Warp.)§r
+    tasks:
+      - one_of: [thaumicbases:spike, thaumicbases:spike:2, thaumicbases:spike:4]
+    rewards:
+      - loot: comum
+
+  - id: sobreencantamento
+    title: "Mesa de Sobre-Encantamento"
+    type: milestone
+    deps: [blocos_cristal, bloco_salis]
+    icon: thaumicbases:overchanter
+    banner: "Sobre-Encantamento"
+    subtitle: "Além do nível máximo"
+    desc: |
+      Encantamentos têm limite... ou tinham. A §eOverchanting Table§r aumenta em §e+1§r o
+      primeiro encantamento do item — inclusive §eacima do máximo§r (Fortuna IV, Afiação VI).
+
+      Infusão (instabilidade 4): §eMesa de Encantamentos§r no centro, cercada de Blocos de
+      Cristal de todos os primais, Blocos de Salis Mundus e Blocos Táumicos (confira o anel
+      no NEI).
+
+      Ponha o item, bata a varinha duas vezes: ela puxa §e32 Praecantatio§r dos jarros num raio
+      de 8 blocos e §e30 níveis§r de um jogador com 30+ por perto. Cada encantamento só pode
+      ser "turbinado" uma vez.
+    tasks:
+      - get: thaumicbases:overchanter
+    rewards:
+      - xp: 10
+      - kit: {name: "Kit do Encantador Ousado", items: ["minecraft:experience_bottle x32", "Thaumcraft:blockJar x4", "minecraft:book x8", "minecraft:dye:4 x16"]}
+      - loot: raro
+
+  - id: desconstrutor_entidades
+    title: "Desconstrutor de Entidades"
+    type: normal
+    deps: [tb_inicio]
+    icon: thaumicbases:entityDeconstructor
+    desc: |
+      Conhecimento direto dos monstros! O §eEntity Deconstructor§r desmonta criaturas em
+      aspectos e manda o conhecimento para o seu cérebro (num raio de 32 blocos). Clique nele
+      depois de colocar para se vincular. §c(+2 de Warp.)§r
+
+      Infusão: §eTaumômetro§r no centro; 4 Placas de Pressão (ouro e ferro), 2 Fragmentos de
+      Conhecimento e 2 Amuletos Primais. Melhorias: encaixe Blocos de Cristal primais na
+      moldura para mais alcance e velocidade.
+    tasks:
+      - get: thaumicbases:entityDeconstructor
+    rewards:
+      - xp: 3
+      - item: Thaumcraft:ItemResource:9 x4
+
+  - id: focos_tb
+    title: "Novos Focos de Varinha"
+    type: normal
+    deps: [tb_inicio]
+    icon: thaumicbases:fociExperience
+    desc: |
+      Quatro focos novos (todos por Infusão):
+      §e• Liquid Drain:§r apaga água (e lava, com melhoria) sem o resto escorrer — túneis
+      submarinos!
+      §e• Experience:§r quebra o bloco e dá o dobro de XP.
+      §e• Flux Scrubber:§r remove blocos de fluxo para onde você olha.
+      §e• Activation:§r guarda um bloco (Shift+clique) e "clica" nele de até 32 blocos.
+
+      Faça qualquer um deles.
+    tasks:
+      - one_of: [thaumicbases:fociDrain, thaumicbases:fociExperience, thaumicbases:fociFlux, thaumicbases:fociActivation]
+    rewards:
+      - xp: 3
+      - item: Thaumcraft:ItemShard:6 x2
+
+  - id: braceletes
+    title: "Braceletes de Conjuração"
+    type: normal
+    deps: [tb_inicio]
+    icon: thaumicbases:castingBracelet
+    desc: |
+      Uma alternativa aos cajados: os §eBraceletes§r não têm núcleo, guardam pouca vis e
+      §enão servem para fabricar§r, mas brilham com focos — desconto de vis, recarga menor e
+      focos mais rápidos e fortes.
+
+      O de ferro (Arcana: 2 Ponteiras de Ferro, lingote e pepitas) guarda 10. Depois vêm
+      ouro, greatwood, táumio, silverwood, vazio e os de núcleo (cana, osso, obsidiana, blaze,
+      gelo, quartzo), que regeneram o primal correspondente.
+    tasks:
+      - get: thaumicbases:castingBracelet:*
+    rewards:
+      - xp: 3
+      - item: Thaumcraft:WandCap:1 x2
+
+  - id: bracelete_primal
+    title: "Bracelete Primal"
+    type: optional
+    deps: [braceletes]
+    icon: thaumicbases:castingBracelet:12
+    desc: |
+      O melhor de todos: guarda mais vis, dá o maior desconto, regenera todos os aspectos até
+      10% e soma +1 de Potência a qualquer foco. Infusão: §eAmuleto Primal§r no centro; 2
+      Ponteiras de Metal do Vazio e os 6 braceletes de núcleo. §c(Pesquisa: +4 de Warp; o
+      item também dá Warp.)§r
+    tasks:
+      - get: thaumicbases:castingBracelet:12
+    rewards:
+      - loot: raro
+
+  # ======================================================================
+  # FASE 5 — NODOS E O REVÓLVER
+  # ======================================================================
+  - id: manipulador_nodo
+    title: "Manipulador de Nodo"
+    type: milestone
+    deps: [bloco_salis]
+    icon: thaumicbases:nodeManipulator
+    banner: "Manipulador de Nodo"
+    subtitle: "Mexendo nas fibras da aura"
+    desc: |
+      Estabilizar nodos, todo mundo faz. §eMudar o tipo§r de um nodo... aí é outra conversa.
+      §c(+1 de Warp.)§r
+
+      Infusão (instabilidade 6): §eTransdutor de Nodo§r no centro; 2 Estabilizadores de Nodo
+      Avançados, 2 Espelhos Mágicos, 2 Espelhos de Essência, 2 Purificadores de Fluxo (Flux
+      Scrubber) e 2 Blocos de Salis Mundus.
+
+      O §eNode Manipulator§r vai §eem cima§r de um nodo §ecomum§r (energizados não servem) e só
+      funciona com um §eFoco de Manipulador§r encaixado embaixo (clique com o foco).
+    tasks:
+      - get: thaumicbases:nodeManipulator
+    rewards:
+      - xp: 10
+      - kit: {name: "Kit do Jardineiro de Nodos", items: ["Thaumcraft:ItemResource:15 x2", "thaumicbases:blockSalisMundus x4", "Thaumcraft:ItemShard:6 x8", "Thaumcraft:ItemResource:1 x4"]}
+      - loot: raro
+
+  - id: focos_manipulador
+    title: "Focos do Manipulador"
+    type: normal
+    deps: [manipulador_nodo]
+    icon: thaumicbases:nodeFoci:7
+    desc: |
+      Cada foco (Infusão com §eAmuleto Primal§r no centro) faz uma coisa:
+      §e• Speed:§r o nodo recupera vis 5× mais rápido.
+      §e• Efficiency:§r 50% de chance de não gastar a vis drenada.
+      §e• Stability:§r cura nodos (desbotado → pálido → comum) e remove modificadores ruins.
+      §e• Purity / Taint / Sinister / Hunger / Instability:§r convertem o tipo do nodo.
+      §e• Brightness:§r torna o nodo Brilhante (neste pack exige §ePérola Primordial§r).
+      §e• Destruction:§r destrói o nodo e solta a vis em orbes. §c(Warp.)§r
+    tasks:
+      - get: thaumicbases:nodeFoci:*
+    rewards:
+      - xp: 4
+      - item: Thaumcraft:ItemResource:15
+
+  - id: ligador_nodos
+    title: "Ligador de Nodos"
+    type: optional
+    deps: [manipulador_nodo]
+    icon: thaumicbases:nodeLinker
+    desc: |
+      O §eNode Linking Device§r (Arcana) vai em cima de dois nodos: clique com a varinha no
+      receptor e depois no transmissor. Os aspectos e a capacidade do transmissor vão para o
+      receptor, até o transmissor sumir.
+
+      §cA ligação fica instável com o tempo:§r pode vazar fluxo e até explodir o nodo
+      transmissor (o receptor nunca se fere).
+    tasks:
+      - get: thaumicbases:nodeLinker x2
+    rewards:
+      - loot: incomum
+
+  - id: revolver
+    title: "O Revólver do Taumaturgo"
+    type: milestone
+    deps: [thauminita]
+    icon: thaumicbases:revolver
+    banner: "Arsenal do Taumaturgo"
+    subtitle: "Ninguém sabe por que se chama revólver"
+    desc: |
+      Varinha é ótima, mas e uma arma de verdade? O §eThaumaturge's Revolver§r dispara
+      projéteis rapidíssimos feitos de §dTelum§r guardado num jarrinho interno: 1 ponto de
+      essência = 2 tiros.
+
+      Infusão (instabilidade 5): §eBloco de Ferro§r no centro; Cargas de Fogo, Pólvora, Amuleto
+      Primal, Tora de Greatwood e Foco de Fogo (entre outros — veja o anel no NEI), com
+      §e256 de Telum§r.
+
+      Agachado + clique esquerdo abre o revólver; agachado também mira. Ele aceita dezenas de
+      melhorias por infusão. Bang!
+    tasks:
+      - get: thaumicbases:revolver
+    rewards:
+      - xp: 10
+      - kit: {name: "Kit do Pistoleiro Arcano", items: ["minecraft:gunpowder x16", "minecraft:fire_charge x8", "Thaumcraft:ItemResource:14 x8", "Thaumcraft:blockJar x2"]}
+      - loot: raro
+
+  - id: melhorias_revolver
+    title: "Melhorias do Revólver"
+    type: info
+    deps: [revolver]
+    icon: thaumicbases:revolver
+    desc: |
+      Melhorias por infusão no próprio revólver (cada nível a mais custa mais e fica mais
+      instável):
+      §e• Power, Silver, Bane of Arthropods, Bane of Eldritch, Dueling, Eldritch§r — dano
+      (geral ou contra um tipo; elas se excluem entre si).
+      §e• Speed, Accuracy, Efficiency§r — velocidade, precisão, menos Telum por tiro.
+      §e• Heavy§r — +2 de dano corpo a corpo por nível.
+      §e• Piercing§r — atravessa alvos. §e• Primal§r — tiro instantâneo que atravessa
+      paredes (2 essências por tiro, §c+4 Warp na pesquisa§r).
+      §e• Knowledge§r — chance de ganhar conhecimento a cada abate.
+      §e• Void§r — se conserta sozinho. §e• Tainted§r — envenena com Taint.
+    tasks:
+      - check
+    rewards:
+      - xp: 2
+
+  - id: encantamentos_tb
+    title: "Encantamentos de Thaumic Bases"
+    type: info
+    deps: [tb_inicio]
+    icon: minecraft:enchanted_book
+    desc: |
+      Encantamentos novos pela Infusão de Encantamento:
+      §e• Elder Knowledge:§r papéis, Cérebro de Zumbi e Salis.
+      §e• Eldritch Bane:§r Pérola do Fim, Olho do Fim e 2 Salis — dano contra Eldritch.
+      §e• Magic Touch:§r 3 Salis e Papel.
+      §e• Vaporising:§r 2 Salis e Diamante.
+      §e• Tainted:§r Gosma e Vinha Maculadas + Salis §c(+3 de Warp)§r.
+      Confira no livro o efeito exato de cada um antes de gastar o seu XP.
+    tasks:
+      - check
+    rewards:
+      - xp: 2
+
+  - id: mestre_bases
+    title: "Base Taumática Completa"
+    type: milestone
+    deps: [haste_vazio, semente_vazio, sobreencantamento, manipulador_nodo, revolver]
+    icon: thaumicbases:thauminiteBlock
+    banner: "Base Taumática Completa"
+    subtitle: "Uma casa digna de um taumaturgo"
+    desc: |
+      Olha a sua base agora, Herói: metal de Thauminita, uma horta que dá ferro, ouro,
+      redstone e até Sementes do Vazio, uma mesa que encanta além do limite, nodos que mudam
+      de tipo quando você quer e um revólver no coldre.
+
+      Este Volume é sobre transformar a taumaturgia em §erotina§r — e você conseguiu. As
+      Sementes do Vazio vão abastecer o seu Metal do Vazio para sempre, e isso faz diferença
+      lá no §dSelo Arcano§r. Bom trabalho!
+    tasks:
+      - check
+    rewards:
+      - xp: 12
+      - kit: {name: "Cofre da Base Taumática", items: ["thaumicbases:resource:1 x16", "Thaumcraft:ItemResource:16 x8", "thaumicbases:blockSalisMundus x8", "Thaumcraft:ItemShard:6 x8"]}
+      - loot: epico

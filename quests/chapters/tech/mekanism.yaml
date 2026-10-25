@@ -1,0 +1,2785 @@
+chapter:
+  id: mekanism
+  title: "Mekanism"
+  prefix: ""
+  order: 325
+  icon: Mekanism:AtomicAlloy
+  desc: |
+    §bO Volume da Química.§r Ósmio, aço, infusão metalúrgica, gases, processamento de minério
+    até 5×, fábricas, Matriz de Indução, teletransporte e o Minerador Digital.
+    (Mekanism 9.10.48 CE/GTNH-style + MekanismTools)
+
+quests:
+  # ======================================================================
+  # FASE 0 — ÓSMIO E AÇO
+  # ======================================================================
+  - id: minerio_osmio
+    title: "Ósmio"
+    type: main
+    icon: Mekanism:OreBlock
+    desc: |
+      Um metal azulado, pesado e teimoso. O Volume da Química inteiro foi escrito em cima dele!
+
+      O §eMinério de Ósmio§r é bem comum: veios de até 8 blocos, 12 tentativas por chunk, entre
+      as camadas §eY 0 e 59§r (também existe a versão de deepslate). Ao minerar, você pode
+      receber §eÓsmio Bruto§r — conta como minério do mesmo jeito.
+
+      Junte §e16 minérios§r de ósmio.
+    tasks:
+      - get: ore:oreOsmium x16
+    rewards:
+      - xp: 4
+      - choice: [minecraft:iron_pickaxe, minecraft:torch x32, minecraft:bread x16]
+
+  - id: lingote_osmio
+    title: "Barra de Ósmio"
+    type: main
+    deps: [minerio_osmio]
+    icon: Mekanism:Ingot:1
+    desc: |
+      Funda o minério (ou o ósmio bruto) numa fornalha comum e junte §e16 Barras de Ósmio§r.
+      Ele vai para o Infusor Metalúrgico, a Carcaça de Aço, os tanques de gás, o Upgrade de
+      Velocidade e as ferramentas de ósmio.
+
+      §aDica:§r guarde alguns minérios crus. Daqui a pouco a Câmara de Enriquecimento vai
+      transformar cada um em §e2 lingotes§r — e, lá na frente, em até 5!
+    tasks:
+      - get: ore:ingotOsmium x16
+    rewards:
+      - xp: 4
+      - choice: [minecraft:coal x24, minecraft:iron_ingot x12, minecraft:redstone x16]
+
+  - id: info_mekanism
+    title: "O Volume da Química"
+    type: info
+    deps: [minerio_osmio]
+    icon: Mekanism:Configurator
+    desc: |
+      Uma conversa rápida antes de começar (eu adoro este Volume!).
+
+      §e• Energia:§r o Mekanism usa Joules internamente, mas este pack mostra tudo em §bRF§r e
+      as máquinas aceitam RF e EU. Não há tensões: §anada explode§r por excesso de energia.
+      §e• Lados configuráveis:§r cada face de uma máquina pode ser entrada, saída ou
+      energia — você escolhe no GUI (aba de configuração) ou com o Configurador.
+      §e• Gases:§r oxigênio, hidrogênio, cloro... são guardados em tanques e transportados por
+      tubos pressurizados. Eles são a alma do processamento avançado.
+      §e• Tiers:§r Básico → Avançado → Elite → Final, sempre com Ligas e Circuitos.
+
+      Abra o NEI em qualquer máquina (U) para ver as receitas dela!
+    tasks:
+      - check
+    rewards:
+      - xp: 1
+
+  - id: cobre_estanho
+    title: "Cobre e Estanho do Mekanism"
+    type: optional
+    deps: [minerio_osmio]
+    icon: Mekanism:OreBlock:1
+    desc: |
+      O Mekanism também gera §eMinério de Cobre§r (16 por chunk) e §eMinério de Estanho§r (14 por
+      chunk), na mesma faixa do ósmio (Y 0–59). Eles valem em qualquer receita de cobre/estanho
+      do pack, graças ao oredict. Traga um pouco de cada.
+    tasks:
+      - get: [Mekanism:OreBlock:1 x4, Mekanism:OreBlock:2 x4]
+    rewards:
+      - loot: comum
+
+  - id: sal
+    title: "Sal"
+    type: optional
+    deps: [minerio_osmio]
+    icon: Mekanism:SaltBlock
+    desc: |
+      Já reparou em blocos brancos no fundo de rios e lagos? É §eBloco de Sal§r! Quebrado, ele
+      solta Sal (4 por bloco). O sal vira salmoura no Oxidador Químico — e a salmoura dá
+      §ecloro§r. Junte §e2 blocos§r.
+    tasks:
+      - get: Mekanism:SaltBlock x2
+    rewards:
+      - loot: comum
+
+  - id: infusor_metalurgico
+    title: "Infusor Metalúrgico"
+    type: main
+    deps: [lingote_osmio]
+    icon: Mekanism:MachineBlock:8
+    desc: |
+      A primeira máquina do Mekanism — e talvez a mais importante.
+
+      O §eInfusor Metalúrgico§r leva 4 lingotes de ferro, 2 fornalhas, 2 redstone e §e1 Barra de
+      Ósmio§r no centro. Ele "infunde" um material (carbono, redstone, diamante, obsidiana...)
+      dentro de outro: é assim que nascem o aço, os circuitos e as três ligas do Mekanism.
+
+      Ele precisa de energia: um Gerador a Calor (capítulo de Geradores) ou qualquer gerador de
+      RF/EU de outro mod serve.
+    tasks:
+      - get: Mekanism:MachineBlock:8
+    rewards:
+      - xp: 4
+      - choice: [minecraft:redstone x32, minecraft:coal x32, minecraft:iron_ingot x12]
+
+  - id: info_infusao
+    title: "Como Infundir"
+    type: info
+    deps: [infusor_metalurgico]
+    icon: Mekanism:CompressedCarbon
+    desc: |
+      O Infusor tem §edois espaços de entrada§r: à esquerda vai o §einfusor§r (que enche a barra
+      de "infusão"), no meio vai o item a ser infundido.
+
+      §e• Carbono:§r carvão, carvão vegetal ou Carbono Prensado.
+      §e• Redstone:§r redstone, bloco de redstone ou Redstone Prensada.
+      §e• Diamante:§r Pó de Diamante ou Diamante Prensado.
+      §e• Obsidiana:§r Obsidiana Prensada.
+      §e• Estanho:§r pó de estanho (vira bronze com cobre).
+      §e• Bio / Fungo:§r biocombustível / cogumelos (receitas de terra e fermento).
+
+      Cada receita gasta 10 unidades de infusão. A barra só aceita um tipo por vez — use o botão
+      do GUI para esvaziá-la se precisar trocar.
+    tasks:
+      - check
+    rewards:
+      - xp: 1
+
+  - id: ferro_enriquecido
+    title: "Ferro Enriquecido"
+    type: main
+    deps: [infusor_metalurgico]
+    icon: Mekanism:EnrichedIron
+    desc: |
+      Carvão no espaço do infusor, ferro no espaço do meio: §eFerro Enriquecido§r. É o primeiro
+      passo do aço — ferro que "comeu" carbono. Faça §e16§r.
+    tasks:
+      - get: Mekanism:EnrichedIron x16
+    rewards:
+      - xp: 4
+      - choice: [minecraft:coal x32, minecraft:iron_ingot x16, minecraft:coal:1 x32]
+
+  - id: aco_mek
+    title: "Barra de Aço"
+    type: main
+    deps: [po_aco]
+    icon: Mekanism:Ingot:4
+    desc: |
+      Infunda carbono §emais uma vez§r no Ferro Enriquecido e sai §ePó de Aço§r. Asse o pó numa
+      fornalha: §eBarra de Aço§r!
+
+      O aço do Mekanism é a espinha dorsal de tudo — carcaças, cabos, tubos, tanques, jetpacks.
+      Ele é oredict `ingotSteel`, então serve no IC2, no IE e em vários outros mods. Faça §e32§r
+      (sério, vai faltar).
+    tasks:
+      - get: ore:ingotSteel x32
+    rewards:
+      - xp: 4
+      - choice: [minecraft:coal_block x4, Mekanism:EnrichedIron x8, minecraft:iron_ingot x16]
+
+  - id: circuito_controle
+    title: "Circuito de Controle Básico"
+    type: main
+    deps: [infusor_metalurgico]
+    icon: Mekanism:ControlCircuit
+    desc: |
+      Neste pack o Circuito do Mekanism é feito de §eSilício§r: redstone no espaço do infusor e
+      §esilício§r (do Ender IO, do Galacticraft ou do RotaryCraft) no meio = §eCircuito de
+      Controle Básico§r.
+
+      §aAtalho:§r as receitas aceitam qualquer `circuitBasic` do oredict — o Circuito Eletrônico
+      do IC2 também serve! Faça §e8§r.
+    tasks:
+      - get: ore:circuitBasic x8
+    rewards:
+      - xp: 4
+      - choice: [minecraft:redstone_block x3, ore:itemSilicon x8, minecraft:sand x32]
+
+  - id: carcaca_aco
+    title: "Carcaça de Aço"
+    type: main
+    deps: [aco_mek, lingote_osmio]
+    icon: Mekanism:BasicBlock:8
+    desc: |
+      4 Barras de Aço, 4 vidros e §e1 Barra de Ósmio§r no meio = §eCarcaça de Aço§r, a base de
+      quase todas as máquinas do Mekanism. Faça §e4§r — você vai montar várias máquinas em
+      sequência.
+    tasks:
+      - get: Mekanism:BasicBlock:8 x4
+    rewards:
+      - xp: 4
+      - choice: [ore:ingotSteel x8, minecraft:glass x16, ore:ingotOsmium x6]
+
+  - id: liga_enriquecida
+    title: "Liga Enriquecida"
+    type: main
+    deps: [aco_mek]
+    icon: Mekanism:EnrichedAlloy
+    desc: |
+      Atenção, porque este fork é diferente do Mekanism que você talvez conheça: aqui a §eLiga
+      Enriquecida§r sai de §eredstone (infusor) + Barra de Aço§r (qualquer aço do oredict, até o
+      Ferro Refinado do IC2).
+
+      Ela é a liga "Avançada": tablete de energia, upgrades, ferramentas, jetpacks, máquinas
+      químicas... Faça §e16§r.
+    tasks:
+      - get: Mekanism:EnrichedAlloy x16
+    rewards:
+      - xp: 4
+      - choice: [minecraft:redstone x32, ore:ingotSteel x8, minecraft:redstone_block x3]
+
+  - id: camara_enriquecimento
+    title: "Câmara de Enriquecimento"
+    type: main
+    deps: [carcaca_aco, circuito_controle]
+    icon: Mekanism:MachineBlock
+    desc: |
+      Agora sim o Volume da Química começa a render!
+
+      A §eCâmara de Enriquecimento§r (4 redstone, 2 ferros, 2 Circuitos Básicos e uma Carcaça de
+      Aço) transforma §e1 minério em 2 pós§r — o processamento 2×. Ela também faz carbono
+      prensado (carvão), redstone prensada, diamante prensado, pó de obsidiana, sal, argila...
+    tasks:
+      - get: Mekanism:MachineBlock
+    rewards:
+      - xp: 4
+      - choice: [ore:oreOsmium x8, minecraft:iron_ore x8, minecraft:gold_ore x4]
+
+  - id: dobrando_minerio_mek
+    title: "Rendimento Duplo"
+    type: normal
+    deps: [camara_enriquecimento]
+    icon: Mekanism:Dust:2
+    desc: |
+      Passe minérios pela Câmara de Enriquecimento: cada um vira 2 pós, que viram 2 lingotes na
+      fornalha. Junte §e16 Pós de Ósmio§r e §e16 Pós de Ferro§r.
+
+      §aLembrete:§r isto é só o começo. O Mekanism chega a 3×, 4× e 5× com gases.
+    tasks:
+      - get: [ore:dustOsmium x16, ore:dustIron x16]
+    rewards:
+      - xp: 3
+      - item: ore:oreOsmium x8
+
+  - id: fundicao_energizada
+    title: "Fundição Energizada"
+    type: normal
+    deps: [camara_enriquecimento]
+    icon: Mekanism:MachineBlock:10
+    desc: |
+      Uma fornalha elétrica no estilo Mekanism: redstone, vidro, 2 Circuitos Básicos e uma
+      Carcaça de Aço. A §eFundição Energizada§r funde pós em lingotes sem carvão nenhum — e
+      combina com upgrades de velocidade.
+    tasks:
+      - get: Mekanism:MachineBlock:10
+    rewards:
+      - xp: 3
+      - item: minecraft:redstone x16
+
+  - id: triturador
+    title: "Triturador"
+    type: normal
+    deps: [camara_enriquecimento]
+    icon: Mekanism:MachineBlock:3
+    desc: |
+      Redstone, 2 baldes de lava, 2 Circuitos Básicos e Carcaça de Aço = §eTriturador§r. Ele moi
+      lingotes em pó, pedra em pedregulho, plantas em biocombustível — e, no processamento 3×,
+      transforma §eAglomerados§r em §ePó Sujo§r.
+    tasks:
+      - get: Mekanism:MachineBlock:3
+    rewards:
+      - xp: 3
+      - item: minecraft:lava_bucket
+
+  - id: tablete_energia
+    title: "Tablete de Energia"
+    type: main
+    deps: [liga_enriquecida]
+    icon: Mekanism:EnergyTablet
+    desc: |
+      Uma "bateria" do Mekanism: 2 Ligas Enriquecidas, 3 lingotes de ouro e 4 redstone. O
+      §eTablete de Energia§r aparece em cubos de energia, Configurador, Robit, Teletransportador
+      Portátil, Laser... Faça §e4§r.
+    tasks:
+      - get: Mekanism:EnergyTablet x4
+    rewards:
+      - xp: 4
+      - choice: [minecraft:gold_ingot x8, minecraft:redstone x24, Mekanism:EnrichedAlloy x4]
+
+  - id: cubo_basico
+    title: "Cubo de Energia Básico"
+    type: main
+    deps: [tablete_energia, carcaca_aco]
+    icon: Mekanism:EnergyCube
+    desc: |
+      Redstone, 2 ferros, 2 Tabletes de Energia e uma Carcaça de Aço = §eCubo de Energia
+      Básico§r. Guarda energia, recarrega itens nos espaços dele e cada face pode ser entrada ou
+      saída (a frente é a saída por padrão).
+    tasks:
+      - get: 'Mekanism:EnergyCube {tier:"Basic"}'
+        nbt: true
+    rewards:
+      - xp: 4
+      - choice: [Mekanism:EnergyTablet x1, minecraft:redstone_block x3, ore:ingotSteel x8]
+
+  - id: cabo_universal
+    title: "Cabo Universal Básico"
+    type: main
+    deps: [aco_mek]
+    icon: Mekanism:PartTransmitter
+    desc: |
+      2 Barras de Aço e 1 redstone = §e8 Cabos Universais§r. "Universais" porque levam energia
+      de quase qualquer mod — RF, EU e a do próprio Mekanism.
+
+      §aDica:§r clique no cabo com o Configurador para mudar a conexão de cada face (normal,
+      só puxar, só empurrar, nenhuma). Faça §e16§r.
+    tasks:
+      - get: Mekanism:PartTransmitter x16
+    rewards:
+      - xp: 4
+      - choice: [ore:ingotSteel x6, minecraft:redstone x16, Mekanism:EnrichedAlloy x2]
+
+  - id: configurador
+    title: "Configurador"
+    type: normal
+    deps: [tablete_energia]
+    icon: Mekanism:Configurator
+    desc: |
+      Lápis-lazúli, 2 Ligas Enriquecidas, um Tablete e um graveto = §eConfigurador§r. Ele tem
+      vários modos (Shift + clique no ar troca): configurar os lados das máquinas, esvaziar,
+      girar, e funcionar como chave inglesa para desmontar.
+    tasks:
+      - get: Mekanism:Configurator
+    rewards:
+      - xp: 3
+      - item: minecraft:dye:4 x8
+
+  - id: info_lados
+    title: "Cores e Lados"
+    type: info
+    deps: [configurador]
+    icon: Mekanism:Configurator
+    desc: |
+      Toda máquina do Mekanism tem uma aba de configuração com §ecores§r para cada face:
+      §e• Vermelho:§r entrada de itens. §e• Azul escuro:§r saída. §e• Verde:§r energia.
+      §e• Amarelo / outras cores:§r espaços extras (infusão, gás, combustível...).
+      §e• Cinza:§r desligado.
+
+      O botão de §eauto-ejetar§r empurra a saída para o que estiver encostado — sem precisar de
+      tubo. Com o Configurador no modo certo, clique numa face para ver/alterar a cor dela.
+    tasks:
+      - check
+    rewards:
+      - xp: 1
+
+  - id: upgrades_mek
+    title: "Upgrades de Velocidade e Energia"
+    type: normal
+    deps: [liga_enriquecida]
+    icon: Mekanism:SpeedUpgrade
+    desc: |
+      Vidro, 2 Ligas Enriquecidas e um pó no centro: §ePó de Ósmio§r → Upgrade de Velocidade;
+      §ePó de Ouro§r → Upgrade de Energia. Coloque-os no espaço de upgrade (a aba à direita do
+      GUI). Cada máquina aceita vários de cada tipo: velocidade deixa mais rápida e mais faminta;
+      energia reduz o consumo e aumenta o armazenamento.
+    tasks:
+      - get: [Mekanism:SpeedUpgrade, Mekanism:EnergyUpgrade]
+    rewards:
+      - xp: 3
+      - item: Mekanism:EnrichedAlloy x4
+
+  - id: upgrades_extras
+    title: "Upgrades de Filtro, Gás e Silêncio"
+    type: optional
+    deps: [upgrades_mek]
+    icon: Mekanism:MufflingUpgrade
+    desc: |
+      Mesma receita, outros pós: §epó de estanho§r → Upgrade de Filtro (Bomba Elétrica puxa
+      água pesada), §epó de ferro§r → Upgrade de Gás (máquinas gastam menos gás) e §epó de aço§r
+      → Upgrade Silenciador (adeus, barulho!). Faça qualquer um.
+    tasks:
+      - one_of: [Mekanism:FilterUpgrade, Mekanism:GasUpgrade, Mekanism:MufflingUpgrade]
+    rewards:
+      - loot: comum
+
+  - id: primeira_fabrica_mek
+    title: "A Oficina Química"
+    type: milestone
+    deps: [camara_enriquecimento, cubo_basico, cabo_universal, liga_enriquecida]
+    icon: Mekanism:MachineBlock
+    banner: "A Oficina Química"
+    subtitle: "O Volume da Química desperta"
+    desc: |
+      Um Infusor zumbindo, uma Câmara de Enriquecimento dobrando o minério, cabos universais e um
+      Cubo de Energia cheinho. Herói, a primeira página do Volume da Química voltou a brilhar!
+
+      Para não se perder daqui pra frente:
+      §e• Circuitos§r: Básico (silício + redstone) → Avançado → Elite → Final.
+      §e• Ligas§r: Enriquecida (aço + redstone) → Reforçada (diamante) → Atômica (obsidiana).
+      §e• Máquinas químicas§r: elas pedem tanques de gás e muita Liga Enriquecida.
+
+      Mostre a Câmara, o Cubo e alguns cabos — e vamos às ligas!
+    tasks:
+      - get: [Mekanism:MachineBlock, Mekanism:EnergyCube, Mekanism:PartTransmitter x8]
+    rewards:
+      - xp: 8
+      - kit: {name: "Kit do Químico Iniciante", items: [ore:ingotSteel x16, ore:ingotOsmium x16, Mekanism:EnrichedAlloy x8, Mekanism:ControlCircuit x4, Mekanism:SpeedUpgrade]}
+      - loot: raro
+
+  # ======================================================================
+  # FASE 1 — LIGAS, CIRCUITOS E MATERIAIS REFINADOS
+  # ======================================================================
+  - id: circuito_avancado
+    title: "Circuito de Controle Avançado"
+    type: normal
+    deps: [circuito_controle, liga_enriquecida]
+    icon: Mekanism:ControlCircuit:1
+    desc: |
+      Um Circuito Básico entre duas Ligas Enriquecidas = §eCircuito de Controle Avançado§r. Ele
+      monta a Prensa de Ósmio, a Câmara de Purificação, a Torre de Evaporação e os tiers
+      avançados de tudo. Faça §e4§r.
+    tasks:
+      - get: Mekanism:ControlCircuit:1 x4
+    rewards:
+      - xp: 3
+      - item: Mekanism:EnrichedAlloy x4
+
+  - id: prensa_osmio
+    title: "Prensa de Ósmio"
+    type: normal
+    deps: [circuito_avancado, carcaca_aco]
+    icon: Mekanism:MachineBlock:1
+    desc: |
+      4 Ligas Enriquecidas, 2 Circuitos Avançados, 2 baldes e a Carcaça de Aço = §ePrensa de
+      Ósmio§r. Ela gasta §eósmio líquido§r (abasteça com Barras de Ósmio no espaço de cima) para
+      prensar pós em lingotes especiais:
+      §e• Pó de Obsidiana Refinado§r → Barra de Obsidiana (Obsidiana Refinada).
+      §e• Pó de pedra luminosa§r → Barra de Pedra Luminosa.
+      §e• Lápis-lazúli§r → Lazuli Ingot.
+    tasks:
+      - get: Mekanism:MachineBlock:1
+    rewards:
+      - xp: 3
+      - item: ore:ingotOsmium x8
+
+  - id: po_diamante
+    title: "Pó de Diamante"
+    type: normal
+    deps: [triturador]
+    icon: Mekanism:OtherDust
+    desc: |
+      Doloroso, mas necessário: §ediamante no Triturador = Pó de Diamante§r. É o infusor de
+      "Diamante" para a Liga Reforçada (e, enriquecido, vira Diamante Prensado, que rende mais).
+      Junte §e4§r.
+    tasks:
+      - get: ore:dustDiamond x4
+    rewards:
+      - xp: 3
+      - item: minecraft:diamond
+
+  - id: po_obsidiana_mek
+    title: "Pó de Obsidiana"
+    type: normal
+    deps: [camara_enriquecimento]
+    icon: Mekanism:OtherDust:6
+    desc: |
+      Obsidiana na Câmara de Enriquecimento (ou no Triturador) vira §ePó de Obsidiana§r. Ele tem
+      dois destinos: com §einfusão de Diamante§r vira Pó de Obsidiana Refinado (para a Prensa de
+      Ósmio), e enriquecido vira §eObsidiana Prensada§r (o infusor da Liga Atômica). Junte §e8§r.
+    tasks:
+      - get: ore:dustObsidian x8
+    rewards:
+      - xp: 3
+      - item: minecraft:obsidian x8
+
+  - id: obsidiana_refinada
+    title: "Obsidiana Refinada"
+    type: normal
+    deps: [prensa_osmio, po_obsidiana_mek, po_diamante]
+    icon: Mekanism:Ingot
+    desc: |
+      Pó de Obsidiana + infusão de Diamante = Pó de Obsidiana Refinado → Prensa de Ósmio =
+      §eBarra de Obsidiana Refinada§r. Duríssima! Ela faz a Moldura do Teletransportador, o
+      Robit, o Desintegrador Atômico e as ferramentas de obsidiana. Faça §e8§r.
+    tasks:
+      - get: ore:ingotRefinedObsidian x8
+    rewards:
+      - xp: 3
+      - item: minecraft:obsidian x8
+
+  - id: pedra_luminosa_refinada
+    title: "Pedra Luminosa Refinada"
+    type: normal
+    deps: [prensa_osmio]
+    icon: Mekanism:Ingot:3
+    desc: |
+      Pó de pedra luminosa na Prensa de Ósmio = §eBarra de Pedra Luminosa§r. Ela brilha (claro)
+      e entra na Moldura do Teletransportador e nas ferramentas/armadura de pedra luminosa. Faça
+      §e4§r.
+    tasks:
+      - get: ore:ingotRefinedGlowstone x4
+    rewards:
+      - xp: 3
+      - item: minecraft:glowstone_dust x16
+
+  - id: lazuli
+    title: "Lazuli Ingot"
+    type: optional
+    deps: [prensa_osmio]
+    icon: Mekanism:Ingot:7
+    desc: |
+      Uma novidade deste fork: lápis-lazúli prensado na Prensa de Ósmio vira §eLazuli Ingot§r.
+      Um lingote azul-profundo que só os mais caprichosos vão fabricar.
+    tasks:
+      - get: Mekanism:Ingot:7
+    rewards:
+      - loot: comum
+
+  - id: bronze_mek
+    title: "Bronze por Infusão"
+    type: optional
+    deps: [infusor_metalurgico]
+    icon: Mekanism:Ingot:2
+    desc: |
+      Pó de estanho como infusor + lingote de cobre = §eBarra de Bronze§r, sem precisar de
+      fornalha de liga. Ótimo para as ferramentas e a armadura de bronze do MekanismTools.
+    tasks:
+      - get: ore:ingotBronze x4
+    rewards:
+      - loot: comum
+
+  - id: liga_reforcada
+    title: "Liga Reforçada"
+    type: main
+    deps: [liga_enriquecida, po_diamante]
+    icon: Mekanism:ReinforcedAlloy
+    desc: |
+      Liga Enriquecida no meio, §einfusão de Diamante§r (pó de diamante) no lado = §eLiga
+      Reforçada§r, a liga "Elite". Ela pede o Circuito Elite, o Combinador, a Câmara de Injeção
+      Química, o Laser, as fábricas de elite... Faça §e8§r.
+    tasks:
+      - get: Mekanism:ReinforcedAlloy x8
+    rewards:
+      - xp: 4
+      - choice: [Mekanism:OtherDust x4, Mekanism:EnrichedAlloy x8, minecraft:diamond x2]
+
+  - id: circuito_elite
+    title: "Circuito de Controle Elite"
+    type: normal
+    deps: [circuito_avancado, liga_reforcada]
+    icon: Mekanism:ControlCircuit:2
+    desc: |
+      Circuito Avançado entre duas Ligas Reforçadas = §eCircuito de Controle Elite§r. Ele vai na
+      Câmara de Injeção Química, no Combinador, na Porta de Indução, na Mesa de Segurança e nos
+      tiers de elite. Faça §e4§r.
+    tasks:
+      - get: Mekanism:ControlCircuit:2 x4
+    rewards:
+      - xp: 3
+      - item: Mekanism:ReinforcedAlloy x2
+
+  - id: obsidiana_prensada
+    title: "Obsidiana Prensada"
+    type: normal
+    deps: [po_obsidiana_mek]
+    icon: Mekanism:CompressedObsidian
+    desc: |
+      Pó de Obsidiana na Câmara de Enriquecimento = §eObsidiana Prensada§r, o infusor de
+      "Obsidiana". É ela que transforma a Liga Reforçada em Atômica. Faça §e4§r.
+    tasks:
+      - get: Mekanism:CompressedObsidian x4
+    rewards:
+      - xp: 3
+      - item: minecraft:obsidian x8
+
+  - id: liga_atomica
+    title: "Liga Atômica"
+    type: main
+    deps: [liga_reforcada, obsidiana_prensada]
+    icon: Mekanism:AtomicAlloy
+    desc: |
+      O topo da metalurgia do Mekanism: Liga Reforçada + §einfusão de Obsidiana§r = §eLiga
+      Atômica§r, a liga "Final".
+
+      Ela faz o Núcleo de Teletransporte, o Robit, o Desintegrador Atômico, o Minerador Digital,
+      as máquinas de 5× e todo o tier Final. Faça §e8§r e sinta o peso nas mãos.
+    tasks:
+      - get: Mekanism:AtomicAlloy x8
+    rewards:
+      - xp: 5
+      - choice: [Mekanism:CompressedObsidian x4, Mekanism:ReinforcedAlloy x4, minecraft:obsidian x16]
+
+  - id: circuito_final
+    title: "Circuito de Controle Final"
+    type: normal
+    deps: [circuito_elite, liga_atomica]
+    icon: Mekanism:ControlCircuit:3
+    desc: |
+      Circuito Elite entre duas Ligas Atômicas = §eCircuito de Controle Final§r. Ele pede o
+      Transportador Quântico, os tiers finais de cubos, células e provedores, e lá no capítulo
+      de Geradores, o Reator de Fusão. Faça §e2§r.
+    tasks:
+      - get: Mekanism:ControlCircuit:3 x2
+    rewards:
+      - xp: 3
+      - item: Mekanism:AtomicAlloy x2
+
+  - id: tres_ligas
+    title: "Enriquecida, Reforçada, Atômica"
+    type: milestone
+    deps: [liga_atomica, circuito_final, obsidiana_refinada]
+    icon: Mekanism:AtomicAlloy
+    banner: "As Três Ligas"
+    subtitle: "Do aço à obsidiana infundida"
+    desc: |
+      Redstone, diamante, obsidiana — três infusões, três ligas, quatro circuitos. Herói, você
+      dominou a metalurgia do Mekanism!
+
+      O mapa completo:
+      §e• Aço + redstone§r → Liga Enriquecida (Avançado)
+      §e• + diamante§r → Liga Reforçada (Elite)
+      §e• + obsidiana§r → Liga Atômica (Final)
+      §e• Circuito Básico + 2 ligas§r → o circuito do tier seguinte
+
+      A partir daqui o Mekanism mostra os dentes: gases, processamento 5×, Matriz de Indução e
+      teletransporte. Mostre uma de cada liga e o Circuito Final!
+    tasks:
+      - get: [Mekanism:EnrichedAlloy x4, Mekanism:ReinforcedAlloy x4, Mekanism:AtomicAlloy x4, Mekanism:ControlCircuit:3]
+    rewards:
+      - xp: 8
+      - kit: {name: "Kit do Metalurgista Químico", items: [Mekanism:CompressedObsidian x8, Mekanism:OtherDust x8, minecraft:redstone_block x8, Mekanism:ControlCircuit:1 x4, ore:ingotSteel x16]}
+      - loot: raro
+
+  # ======================================================================
+  # FASE 2 — GASES E PROCESSAMENTO 3×, 4× E 5×
+  # ======================================================================
+  - id: tanque_gas
+    title: "Tanque de Gás Básico"
+    type: main
+    deps: [lingote_osmio, infusor_metalurgico]
+    icon: Mekanism:GasTank
+    desc: |
+      Gases não cabem em balde. Eles precisam de uma casa!
+
+      4 Barras de Ósmio e 4 redstone = §eTanque de Gás Básico§r. Ele guarda gás, pode ser
+      enchido e esvaziado por tubos e, quando quebrado, §emantém o gás dentro§r. Quase toda
+      máquina química pede um ou dois na receita. Faça §e4§r.
+    tasks:
+      - get: 'Mekanism:GasTank x4 {tier:0}'
+        nbt: true
+    rewards:
+      - xp: 4
+      - choice: [ore:ingotOsmium x8, minecraft:redstone x24, ore:ingotSteel x8]
+
+  - id: tubo_pressurizado
+    title: "Tubo Pressurizado"
+    type: normal
+    deps: [aco_mek]
+    icon: Mekanism:PartTransmitter:8
+    desc: |
+      2 Barras de Aço e 1 vidro = §e8 Tubos Pressurizados Básicos§r. Eles levam gases entre
+      tanques e máquinas. Configure a face de saída de gás da máquina e ela mesma empurra para o
+      tubo. Faça §e16§r.
+    tasks:
+      - get: Mekanism:PartTransmitter:8 x16
+    rewards:
+      - xp: 3
+      - item: minecraft:glass x16
+
+  - id: info_gases
+    title: "O Mundo dos Gases"
+    type: info
+    deps: [tanque_gas]
+    icon: Mekanism:PartTransmitter:8
+    desc: |
+      Os gases são o coração do processamento avançado:
+      §e• Oxigênio§r → Câmara de Purificação (3×).
+      §e• Cloreto de Hidrogênio§r (hidrogênio + cloro) → Câmara de Injeção Química (4×).
+      §e• Ácido Sulfúrico§r → Câmara de Dissolução Química (5×).
+      §e• Hidrogênio§r → Jetpack, Gerador a Queima de Gás.
+
+      §e• Tubos Pressurizados§r levam gases; o §eCondensentrador Rotativo§r converte gás ↔
+      líquido (água ↔ vapor de água, por exemplo). O Ender IO também tem um §eConduto de Gases§r.
+
+      §cAtenção:§r o botão "despejar" do GUI joga gás fora no ar — use com cuidado.
+    tasks:
+      - check
+    rewards:
+      - xp: 1
+
+  - id: nucleo_eletrolitico
+    title: "Núcleo Eletrolítico"
+    type: normal
+    deps: [liga_enriquecida, dobrando_minerio_mek]
+    icon: Mekanism:ElectrolyticCore
+    desc: |
+      4 Ligas Enriquecidas, 2 Pós de Ósmio, 1 pó de ferro e 1 pó de ouro = §eNúcleo
+      Eletrolítico§r. Ele é o coração do Separador Eletrolítico e do Gerador a Queima de Gás.
+    tasks:
+      - get: Mekanism:ElectrolyticCore
+    rewards:
+      - xp: 3
+      - item: ore:dustOsmium x4
+
+  - id: separador_eletrolitico
+    title: "Separador Eletrolítico"
+    type: main
+    deps: [nucleo_eletrolitico, tanque_gas]
+    icon: Mekanism:MachineBlock2:4
+    desc: |
+      Água entra, hidrogênio e oxigênio saem. Química de escola — só que com muito mais energia!
+
+      O §eSeparador Eletrolítico§r (ferro, redstone, Ligas Enriquecidas e o Núcleo Eletrolítico)
+      faz eletrólise de fluidos:
+      §e• Água§r → Hidrogênio + Oxigênio.
+      §e• Salmoura§r → Sódio + Cloro.
+      §e• Água Pesada§r → Deutério + Oxigênio (para a fusão!).
+
+      Cada lado de saída tem um tanque próprio; ligue tubos nas faces certas (veja as cores).
+    tasks:
+      - get: Mekanism:MachineBlock2:4
+    rewards:
+      - xp: 4
+      - choice: [minecraft:water_bucket x2, 'Mekanism:GasTank {tier:0}', Mekanism:EnrichedAlloy x4]
+
+  - id: oxigenio
+    title: "Oxigênio Engarrafado"
+    type: main
+    deps: [separador_eletrolitico]
+    icon: Mekanism:GasTank
+    desc: |
+      Encha um §eTanque de Gás§r com §eOxigênio§r do Separador Eletrolítico, quebre o tanque (ele
+      guarda o gás) e traga-o para mim.
+
+      O oxigênio alimenta a Câmara de Purificação. O hidrogênio que sai do outro lado vai para o
+      Jetpack e para o Gerador a Queima de Gás — não jogue fora!
+    tasks:
+      - get: 'Mekanism:GasTank {stored:{gasName:"oxygen"}}'
+        nbt: true
+    rewards:
+      - xp: 4
+      - choice: [minecraft:water_bucket x2, ore:ingotOsmium x8, Mekanism:PartTransmitter:8 x8]
+
+  - id: hidrogenio
+    title: "Hidrogênio Engarrafado"
+    type: normal
+    deps: [separador_eletrolitico]
+    icon: Mekanism:GasTank
+    desc: |
+      Do outro lado do Separador sai o §eHidrogênio§r. Encha um tanque e traga-o: ele vai virar
+      combustível de jetpack, gerar energia no Gerador a Queima de Gás e, junto com o cloro,
+      formar o Cloreto de Hidrogênio.
+    tasks:
+      - get: 'Mekanism:GasTank {stored:{gasName:"hydrogen"}}'
+        nbt: true
+    rewards:
+      - xp: 3
+      - item: ore:ingotOsmium x4
+
+  - id: camara_purificacao
+    title: "Câmara de Purificação"
+    type: main
+    deps: [camara_enriquecimento, circuito_avancado, oxigenio]
+    icon: Mekanism:MachineBlock:9
+    desc: |
+      O processamento 3× começa aqui!
+
+      A §eCâmara de Purificação§r (4 Ligas Enriquecidas, 2 Circuitos Avançados, 2 Barras de Ósmio
+      e uma Câmara de Enriquecimento no centro) usa §eoxigênio§r para transformar §e1 minério em
+      3 Aglomerados§r. Ligue um tubo de oxigênio na face de gás (ou ponha um tanque no espaço
+      de gás).
+    tasks:
+      - get: Mekanism:MachineBlock:9
+    rewards:
+      - xp: 4
+      - choice: [ore:oreOsmium x8, minecraft:iron_ore x8, Mekanism:SpeedUpgrade x1]
+
+  - id: processamento_3x
+    title: "Rendimento Triplo"
+    type: normal
+    deps: [camara_purificacao, triturador]
+    icon: Mekanism:DirtyDust
+    desc: |
+      A cadeia 3×: §eminério → Câmara de Purificação → 3 Aglomerados → Triturador → 3 Pós Sujos
+      → Câmara de Enriquecimento → 3 Pós → fornalha§r.
+
+      Junte §e9 Pós Sujos§r de qualquer metal para provar que a linha funciona.
+    tasks:
+      - get: Mekanism:DirtyDust:* x9
+    rewards:
+      - xp: 3
+      - item: ore:oreOsmium x8
+
+  - id: oxidador_quimico
+    title: "Oxidador Químico"
+    type: normal
+    deps: [tanque_gas, circuito_controle, tanque_dinamico]
+    icon: Mekanism:MachineBlock2:1
+    desc: |
+      O §eOxidador Químico§r (Ligas Enriquecidas, Circuitos, Tanque Dinâmico, Tanque de Gás e Baú
+      Pessoal) transforma sólidos em gases:
+      §e• Enxofre§r → Dióxido de Enxofre (para o ácido sulfúrico).
+      §e• Sal§r → Salmoura Gasosa.
+      §e• Pó de Lítio§r → Lítio (gás, para o trítio).
+      §e• Biocombustível§r → Biomassa.
+    tasks:
+      - get: Mekanism:MachineBlock2:1
+    rewards:
+      - xp: 3
+      - item: Mekanism:Salt x16
+
+  - id: condensentrador_rotativo
+    title: "Condensentrador Rotativo"
+    type: normal
+    deps: [tanque_gas, tablete_energia, tanque_dinamico]
+    icon: Mekanism:MachineBlock2
+    desc: |
+      Gás ↔ líquido, num só bloco. O §eCondensentrador Rotativo§r condensa gases em fluidos ou
+      evapora fluidos em gases — o botão do GUI escolhe o sentido.
+
+      Ele é essencial para fazer §eVapor de Água§r (água → gás) para o ácido sulfúrico e para
+      converter Salmoura Gasosa em §eSalmoura§r líquida, que o Separador Eletrolítico entende.
+    tasks:
+      - get: Mekanism:MachineBlock2
+    rewards:
+      - xp: 3
+      - item: minecraft:water_bucket x2
+
+  - id: tanque_dinamico
+    title: "Tanque Dinâmico"
+    type: normal
+    deps: [aco_mek]
+    icon: Mekanism:BasicBlock:9
+    desc: |
+      4 Barras de Aço + 1 balde = 4 blocos de §eTanque Dinâmico§r. Eles são ingrediente de várias
+      máquinas químicas e também formam um §emultibloco§r: monte uma caixa oca (Tanque Dinâmico
+      nas bordas, Vidro Estrutural nas faces se quiser ver dentro) com pelo menos uma §eVálvula
+      Dinâmica§r para entrada/saída. Ele guarda uma quantidade enorme de um fluido.
+    tasks:
+      - get: Mekanism:BasicBlock:9 x4
+    rewards:
+      - xp: 3
+      - item: ore:ingotSteel x4
+
+  - id: torre_evaporacao
+    title: "Torre de Evaporação Térmica"
+    type: normal
+    deps: [circuito_avancado, aco_mek]
+    icon: Mekanism:BasicBlock:14
+    desc: |
+      Um multibloco que usa calor (do sol ou de aquecedores) para concentrar fluidos:
+      §e• Água → Salmoura§r. §e• Salmoura → Lítio§r. §e• Bioetanol → Etileno§r.
+
+      Monte uma torre de base §e4×4§r com §eBlocos de Evaporação Térmica§r (aço + cobre), um
+      §eControlador§r e §eVálvulas§r. Quanto mais alta e mais quente, mais rápida. Traga o
+      Controlador e as Válvulas.
+    tasks:
+      - get: [Mekanism:BasicBlock:14, Mekanism:BasicBlock:15 x2, Mekanism:BasicBlock2 x16]
+    rewards:
+      - xp: 3
+      - item: ore:ingotCopper x8
+
+  - id: cloro
+    title: "Cloro"
+    type: normal
+    deps: [separador_eletrolitico, oxidador_quimico]
+    icon: Mekanism:BrineBucket
+    desc: |
+      Salmoura no Separador Eletrolítico = §eSódio + Cloro§r. Para conseguir salmoura líquida:
+      sal no Oxidador Químico → Salmoura Gasosa → Condensentrador Rotativo → Salmoura (ou use a
+      Torre de Evaporação com água).
+
+      Encha um Tanque de Gás com §eCloro§r e traga-o.
+    tasks:
+      - get: 'Mekanism:GasTank {stored:{gasName:"chlorine"}}'
+        nbt: true
+    rewards:
+      - xp: 3
+      - item: Mekanism:Salt x16
+
+  - id: infusor_quimico
+    title: "Infusor Químico"
+    type: main
+    deps: [tanque_gas, liga_enriquecida, tanque_dinamico]
+    icon: Mekanism:MachineBlock2:2
+    desc: |
+      Dois gases entram, um sai. O §eInfusor Químico§r (Ligas Enriquecidas, Circuitos, 2 Tanques
+      de Gás e um Tanque Dinâmico) faz as reações:
+      §e• Hidrogênio + Cloro§r → Cloreto de Hidrogênio.
+      §e• Oxigênio + Dióxido de Enxofre§r → Trióxido de Enxofre.
+      §e• Trióxido de Enxofre + Vapor de Água§r → Ácido Sulfúrico.
+      §e• Deutério + Trítio§r → Combustível D-T (fusão!).
+    tasks:
+      - get: Mekanism:MachineBlock2:2
+    rewards:
+      - xp: 4
+      - choice: ['Mekanism:GasTank x2 {tier:0}', Mekanism:PartTransmitter:8 x16, Mekanism:EnrichedAlloy x4]
+
+  - id: cloreto_hidrogenio
+    title: "Cloreto de Hidrogênio"
+    type: normal
+    deps: [infusor_quimico, cloro, hidrogenio]
+    icon: Mekanism:GasTank
+    desc: |
+      Hidrogênio + Cloro no Infusor Químico = §eCloreto de Hidrogênio§r, o gás da Câmara de
+      Injeção Química. Encha um tanque e traga-o.
+    tasks:
+      - get: 'Mekanism:GasTank {stored:{gasName:"hydrogenChloride"}}'
+        nbt: true
+    rewards:
+      - xp: 3
+      - item: Mekanism:Salt x16
+
+  - id: camara_injecao
+    title: "Câmara de Injeção Química"
+    type: main
+    deps: [camara_purificacao, circuito_elite, cloreto_hidrogenio]
+    icon: Mekanism:MachineBlock2:3
+    desc: |
+      Bem-vindo ao 4×!
+
+      A §eCâmara de Injeção Química§r (4 Ligas Reforçadas, 2 Circuitos Elite, 2 ouros e uma
+      Câmara de Purificação no centro) injeta §eCloreto de Hidrogênio§r: §e1 minério → 4
+      Estilhaços§r. Estilhaço → Purificação → Aglomerado → Triturador → Pó Sujo → Enriquecimento
+      → Pó.
+
+      §aBônus:§r com água ela transforma terra em argila; com Cloreto de Hidrogênio, pólvora vira
+      enxofre.
+    tasks:
+      - get: Mekanism:MachineBlock2:3
+    rewards:
+      - xp: 4
+      - choice: [Mekanism:ReinforcedAlloy x4, ore:oreOsmium x12, Mekanism:ControlCircuit:2 x1]
+
+  - id: processamento_4x
+    title: "Rendimento Quádruplo"
+    type: normal
+    deps: [camara_injecao]
+    icon: Mekanism:Shard
+    desc: |
+      Junte §e12 Estilhaços§r de qualquer metal. Cada minério virou 4 — mas cada estilhaço ainda
+      precisa passar pela Purificação, pelo Triturador e pelo Enriquecimento. É hora de pensar em
+      automatizar com tubos e fábricas!
+    tasks:
+      - get: Mekanism:Shard:* x12
+    rewards:
+      - xp: 3
+      - item: ore:oreOsmium x12
+
+  - id: acido_sulfurico
+    title: "Ácido Sulfúrico"
+    type: normal
+    deps: [infusor_quimico, oxidador_quimico, condensentrador_rotativo, oxigenio]
+    icon: Mekanism:GasTank
+    desc: |
+      A receita mais longa da química do Mekanism, passo a passo:
+      §e1.§r Enxofre (pó) no Oxidador → Dióxido de Enxofre.
+      §e2.§r Dióxido de Enxofre + Oxigênio no Infusor Químico → Trióxido de Enxofre.
+      §e3.§r Água no Condensentrador Rotativo → Vapor de Água.
+      §e4.§r Trióxido de Enxofre + Vapor de Água no Infusor Químico → §eÁcido Sulfúrico§r.
+
+      §aEnxofre:§r pólvora na Câmara de Injeção (com Cloreto de Hidrogênio) ou de outros mods. Traga um tanque
+      cheio de ácido.
+    tasks:
+      - get: 'Mekanism:GasTank {stored:{gasName:"sulfuricAcid"}}'
+        nbt: true
+    rewards:
+      - xp: 3
+      - item: minecraft:gunpowder x16
+
+  - id: camara_dissolucao
+    title: "Câmara de Dissolução Química"
+    type: main
+    deps: [liga_atomica, acido_sulfurico]
+    icon: Mekanism:MachineBlock2:6
+    desc: |
+      O primeiro passo do 5×. A §eCâmara de Dissolução Química§r (4 Circuitos Básicos, 2 Tanques
+      de Gás, 2 Ligas Enriquecidas e uma Liga Atômica) dissolve o minério em §eÁcido Sulfúrico§r:
+      §e1 minério → 1000 mB de Polpa§r (ainda suja).
+    tasks:
+      - get: Mekanism:MachineBlock2:6
+    rewards:
+      - xp: 4
+      - choice: [Mekanism:AtomicAlloy x2, ore:oreOsmium x12, minecraft:gunpowder x32]
+
+  - id: lavador_quimico
+    title: "Lavador Químico"
+    type: main
+    deps: [camara_dissolucao]
+    icon: Mekanism:MachineBlock2:7
+    desc: |
+      Um balde, 4 Circuitos Básicos, 2 Ligas Enriquecidas, Carcaça de Aço e Tanque de Gás =
+      §eLavador Químico§r. Ele usa §eágua§r para transformar a Polpa suja em §ePolpa Pura§r.
+      Ligue uma fonte de água (Bomba Elétrica, Reservatório do Ender IO...) — ele bebe bastante.
+    tasks:
+      - get: Mekanism:MachineBlock2:7
+    rewards:
+      - xp: 4
+      - choice: [minecraft:water_bucket x2, Mekanism:PartTransmitter:8 x16, Mekanism:EnrichedAlloy x4]
+
+  - id: cristalizador_quimico
+    title: "Cristalizador Químico"
+    type: main
+    deps: [lavador_quimico]
+    icon: Mekanism:MachineBlock2:8
+    desc: |
+      4 Circuitos Básicos, 2 Tanques de Gás, 2 Ligas Atômicas e Carcaça de Aço = §eCristalizador
+      Químico§r. Ele transforma §e200 mB de Polpa Pura em 1 Cristal§r. Como cada minério dá 1000
+      mB, são §e5 cristais por minério§r! Cristal → Injeção → Estilhaço → ... → Pó.
+
+      Ele também cristaliza Lítio (pó de lítio) e Salmoura (sal).
+    tasks:
+      - get: Mekanism:MachineBlock2:8
+    rewards:
+      - xp: 4
+      - choice: [Mekanism:AtomicAlloy x2, ore:oreOsmium x16, Mekanism:SpeedUpgrade x2]
+
+  - id: processamento_5x
+    title: "Rendimento Quíntuplo"
+    type: milestone
+    deps: [cristalizador_quimico, processamento_4x, processamento_3x]
+    icon: Mekanism:Crystal:2
+    banner: "Processamento 5×"
+    subtitle: "Cinco lingotes por minério"
+    desc: |
+      Herói, isto é o auge da mineração no Registro: §ecinco lingotes de cada minério§r!
+
+      A linha completa, de trás para frente:
+      §e• Dissolução§r (ácido sulfúrico) → Polpa → §eLavador§r (água) → Polpa Pura →
+      §eCristalizador§r → 5 Cristais
+      §e• Cristal → Injeção§r (cloreto de hidrogênio) → Estilhaço → §ePurificação§r (oxigênio) →
+      Aglomerado → §eTriturador§r → Pó Sujo → §eEnriquecimento§r → Pó → fornalha.
+
+      §aDica:§r cada etapa aceita upgrades de velocidade e energia, e as fábricas multiplicam
+      tudo. Mostre §e10 Cristais§r de qualquer metal!
+    tasks:
+      - get: Mekanism:Crystal:* x10
+    rewards:
+      - xp: 10
+      - kit: {name: "Kit do Refinador Químico", items: [Mekanism:SpeedUpgrade x4, Mekanism:EnergyUpgrade x4, Mekanism:PartTransmitter:8 x32, Mekanism:PartTransmitter:12 x16, ore:oreOsmium x16]}
+      - loot: raro
+      - command: "/effect @p 3 1200 1"
+
+  # ======================================================================
+  # FASE 3 — FÁBRICAS E TIERS
+  # ======================================================================
+  - id: info_fabricas
+    title: "Fábricas: Várias Máquinas em Uma"
+    type: info
+    deps: [camara_enriquecimento, circuito_avancado]
+    icon: Mekanism:MachineBlock:5
+    desc: |
+      Uma §eFábrica§r é uma máquina que processa vários itens ao mesmo tempo, cada um no seu
+      espaço: §eBásica (3)§r, §eAvançada (5)§r e §eElite (7)§r. Neste fork existem fábricas de
+      Fundição, Enriquecimento, Trituração, Prensagem, Combinação, Purificação, Injeção e Infusão.
+
+      §e• Receita:§r a fábrica básica leva a própria máquina no centro (o tipo da fábrica vem
+      dela), mais redstone, ferro e Circuitos Básicos. Cada tier seguinte leva a fábrica
+      anterior + Ligas e Circuitos do tier.
+      §e• Instaladores de Tier:§r clique com um Instalador de Tier numa fábrica já colocada para
+      subi-la de tier sem desmontar nada (o NEI mostra as receitas, do Básico ao Final).
+      §e• Classificação automática:§r a fábrica tem um botão que distribui os itens entre os
+      espaços sozinha.
+    tasks:
+      - check
+    rewards:
+      - xp: 1
+
+  - id: fabrica_basica
+    title: "Fábrica Básica"
+    type: main
+    deps: [info_fabricas]
+    icon: Mekanism:MachineBlock:5
+    desc: |
+      Escolha a máquina que mais trabalha na sua base (geralmente a Câmara de Enriquecimento ou a
+      Fundição Energizada) e transforme-a numa §eFábrica Básica§r: redstone, 2 ferros, 2
+      Circuitos Básicos e a máquina no centro. Três itens ao mesmo tempo!
+    tasks:
+      - get: Mekanism:MachineBlock:5
+    rewards:
+      - xp: 4
+      - choice: [Mekanism:SpeedUpgrade x2, Mekanism:EnergyUpgrade x2, Mekanism:ControlCircuit x4]
+
+  - id: fabrica_avancada
+    title: "Fábrica Avançada"
+    type: normal
+    deps: [fabrica_basica]
+    icon: Mekanism:MachineBlock:6
+    desc: |
+      Fábrica Básica + 4 Ligas Enriquecidas + 2 Circuitos Avançados + 2 Barras de Ósmio =
+      §eFábrica Avançada§r, com 5 espaços. Ou use o §eInstalador de Tier Avançado§r direto na
+      fábrica colocada.
+    tasks:
+      - get: Mekanism:MachineBlock:6
+    rewards:
+      - xp: 3
+      - item: Mekanism:EnrichedAlloy x4
+
+  - id: fabrica_elite
+    title: "Fábrica Elite"
+    type: normal
+    deps: [fabrica_avancada, circuito_elite]
+    icon: Mekanism:MachineBlock:7
+    desc: |
+      Fábrica Avançada + 4 Ligas Reforçadas + 2 Circuitos Elite + 2 ouros = §eFábrica Elite§r,
+      com §e7 espaços§r. Uma Fábrica Elite de Enriquecimento com upgrades engole um baú de
+      minério em minutos.
+    tasks:
+      - get: Mekanism:MachineBlock:7
+    rewards:
+      - xp: 3
+      - item: Mekanism:ReinforcedAlloy x4
+
+  - id: instaladores
+    title: "Instaladores de Tier"
+    type: optional
+    deps: [fabrica_basica]
+    icon: Mekanism:FactoryInstaller:1
+    desc: |
+      Tábuas no centro, Ligas e Circuitos do tier em volta: os §eInstaladores de Tier§r
+      (Básico, Avançado, Elite e Final) sobem o tier de um bloco já colocado. Nada de desmontar a
+      linha de produção inteira! Faça qualquer um.
+    tasks:
+      - one_of: [Mekanism:FactoryInstaller, Mekanism:FactoryInstaller:1, Mekanism:FactoryInstaller:2, Mekanism:FactoryInstaller:3]
+    rewards:
+      - loot: comum
+
+  - id: combinador
+    title: "Combinador"
+    type: optional
+    deps: [liga_reforcada, circuito_elite]
+    icon: Mekanism:MachineBlock:2
+    desc: |
+      4 Ligas Reforçadas, 2 Circuitos Elite, 2 pedregulhos e Carcaça de Aço = §eCombinador§r. Ele
+      junta §e8 pós + 1 pedregulho§r de volta em minério (e cria redstone/lápis em bloco de
+      minério, pederneira em cascalho). Útil para converter pó de outros mods em minério para o
+      5×.
+    tasks:
+      - get: Mekanism:MachineBlock:2
+    rewards:
+      - loot: incomum
+
+  - id: serraria_precisao
+    title: "Serraria de Precisão"
+    type: optional
+    deps: [circuito_controle, liga_enriquecida]
+    icon: Mekanism:MachineBlock2:5
+    desc: |
+      Ferros, Circuitos, Ligas Enriquecidas e Carcaça de Aço: a §eSerraria de Precisão§r corta
+      toras em 6 tábuas (com chance de §eSerragem§r), desmonta baús, portas e placas de madeira.
+      A serragem vira papel e caixas de papelão.
+    tasks:
+      - get: Mekanism:MachineBlock2:5
+    rewards:
+      - loot: comum
+
+  # ======================================================================
+  # FASE 4 — LOGÍSTICA E ARMAZENAMENTO
+  # ======================================================================
+  - id: cabo_avancado
+    title: "Cabo Universal Avançado"
+    type: normal
+    deps: [cabo_universal, liga_enriquecida]
+    icon: Mekanism:PartTransmitter:1
+    desc: |
+      8 Cabos Básicos em volta de uma Liga Enriquecida = 8 §eCabos Universais Avançados§r, com
+      4× a capacidade do básico. A mesma receita sobe para Elite (Liga Reforçada) e Final (Liga
+      Atômica). Faça §e8§r.
+    tasks:
+      - get: Mekanism:PartTransmitter:1 x8
+    rewards:
+      - xp: 3
+      - item: Mekanism:PartTransmitter x8
+
+  - id: cabo_elite
+    title: "Cabo Universal Elite"
+    type: normal
+    deps: [cabo_avancado, liga_reforcada]
+    icon: Mekanism:PartTransmitter:2
+    desc: |
+      8 Cabos Avançados + 1 Liga Reforçada = 8 §eCabos Universais Elite§r. Necessários para
+      tirar energia de um Cubo Elite ou de uma Matriz de Indução sem gargalo. Faça §e8§r.
+    tasks:
+      - get: Mekanism:PartTransmitter:2 x8
+    rewards:
+      - xp: 3
+      - item: Mekanism:PartTransmitter:1 x8
+
+  - id: cabo_final
+    title: "Cabo Universal Final"
+    type: optional
+    deps: [cabo_elite, liga_atomica]
+    icon: Mekanism:PartTransmitter:3
+    desc: |
+      8 Cabos Elite + 1 Liga Atômica = 8 §eCabos Universais Finais§r, os de maior capacidade.
+      Ideal para reatores e Matrizes de Indução gigantes.
+    tasks:
+      - get: Mekanism:PartTransmitter:3 x8
+    rewards:
+      - loot: incomum
+
+  - id: tubos_tier
+    title: "Tubos de Tier Maior"
+    type: optional
+    deps: [tubo_pressurizado, liga_enriquecida]
+    icon: Mekanism:PartTransmitter:9
+    desc: |
+      Tubos Pressurizados e Mecânicos também têm tiers (Avançado, Elite, Final), sempre com 8
+      tubos em volta da Liga do tier. A vazão sobe bastante. Faça qualquer tubo Avançado ou
+      melhor.
+    tasks:
+      - one_of: [Mekanism:PartTransmitter:5, Mekanism:PartTransmitter:6, Mekanism:PartTransmitter:7, Mekanism:PartTransmitter:9, Mekanism:PartTransmitter:10, Mekanism:PartTransmitter:11]
+    rewards:
+      - loot: comum
+
+  - id: tubo_mecanico
+    title: "Tubo Mecânico"
+    type: normal
+    deps: [aco_mek]
+    icon: Mekanism:PartTransmitter:4
+    desc: |
+      2 Barras de Aço + 1 balde = 8 §eTubos Mecânicos Básicos§r. Eles levam fluidos (água, lava,
+      salmoura, etanol...) e se conectam a qualquer tanque ou máquina de fluido. Faça §e16§r.
+    tasks:
+      - get: Mekanism:PartTransmitter:4 x16
+    rewards:
+      - xp: 2
+      - item: minecraft:bucket x2
+
+  - id: transportador_logistico
+    title: "Transportador Logístico"
+    type: normal
+    deps: [aco_mek, circuito_controle]
+    icon: Mekanism:PartTransmitter:12
+    desc: |
+      2 Barras de Aço + 1 Circuito Básico = 8 §eTransportadores Logísticos§r. Eles levam itens e
+      podem ser §epintados§r com o Configurador (cores = rotas). Máquinas com auto-ejetar empurram
+      para eles sozinhas. Faça §e16§r.
+
+      §aParentes:§r o §eTransportador Restritivo§r só é usado se não houver outro caminho, e o
+      §eRedirecionador§r é controlado por redstone.
+    tasks:
+      - get: Mekanism:PartTransmitter:12 x16
+    rewards:
+      - xp: 3
+      - item: ore:ingotSteel x6
+
+  - id: classificador_logistico
+    title: "Classificador Logístico"
+    type: normal
+    deps: [transportador_logistico]
+    icon: Mekanism:MachineBlock:15
+    desc: |
+      Ferro, pistão e Circuito Básico = §eClassificador Logístico§r. Encoste-o num baú: ele puxa
+      itens que batem com os filtros (item, oredict, mod) e os manda pelo transportador com a
+      cor escolhida. É o "cérebro" da logística do Mekanism.
+    tasks:
+      - get: Mekanism:MachineBlock:15
+    rewards:
+      - xp: 3
+      - item: minecraft:piston x2
+
+  - id: condutor_termico
+    title: "Conduíte Térmico"
+    type: optional
+    deps: [aco_mek]
+    icon: Mekanism:PartTransmitter:18
+    desc: |
+      2 Barras de Aço + 1 cobre = 8 §eConduítes Térmicos§r. Eles levam §ecalor§r (não energia)
+      entre aquecedores, a Torre de Evaporação e outras máquinas térmicas.
+    tasks:
+      - get: Mekanism:PartTransmitter:18 x8
+    rewards:
+      - loot: comum
+
+  - id: silo
+    title: "Silo"
+    type: normal
+    deps: [circuito_controle]
+    icon: Mekanism:BasicBlock:6
+    desc: |
+      Pedregulho, redstone e um Circuito = §eSilo Básico§r: guarda §e4096 itens de um só tipo§r.
+      Clique esquerdo tira um pack; com Shift, um item. Os tiers (Avançado 8192, Elite 32 768,
+      Final 262 144) usam o silo anterior + Ligas e Circuitos.
+    tasks:
+      - get: Mekanism:BasicBlock:6
+    rewards:
+      - xp: 2
+      - item: minecraft:cobblestone x64
+
+  - id: tanque_fluido
+    title: "Tanque Líquido Portátil"
+    type: normal
+    deps: [aco_mek]
+    icon: Mekanism:MachineBlock2:11
+    desc: |
+      Redstone e ferro = §eTanque Líquido Básico§r (14 baldes). Ele mantém o fluido ao ser
+      quebrado, tem "modo balde" (Shift + clique) para recolher/colocar fluido no mundo e sobe de
+      tier com Ligas. Muitas máquinas químicas pedem um.
+    tasks:
+      - get: Mekanism:MachineBlock2:11
+    rewards:
+      - xp: 2
+      - item: minecraft:bucket x2
+
+  - id: bau_pessoal
+    title: "Baú Pessoal"
+    type: optional
+    deps: [aco_mek, circuito_controle]
+    icon: Mekanism:MachineBlock:13
+    desc: |
+      Aço, vidro, 2 baús e um Circuito = §eBaú Pessoal§r, com 54 espaços. Só o dono abre — e
+      neste pack ele pode ser aberto §edireto do inventário§r, sem colocar no chão. Ele também é
+      ingrediente do Oxidador Químico e do Robit.
+    tasks:
+      - get: Mekanism:MachineBlock:13
+    rewards:
+      - loot: comum
+
+  - id: bomba_eletrica
+    title: "Bomba Elétrica"
+    type: normal
+    deps: [carcaca_aco, liga_enriquecida]
+    icon: Mekanism:MachineBlock:12
+    desc: |
+      Balde, Ligas Enriquecidas, Carcaça de Aço e 3 Barras de Ósmio = §eBomba Elétrica§r. Ela
+      suga um lago inteiro de água ou lava (alcance de até 80 blocos). Com um §eUpgrade de
+      Filtro§r, bombeando água, ela produz §eÁgua Pesada§r — o começo do deutério para a fusão!
+    tasks:
+      - get: Mekanism:MachineBlock:12
+    rewards:
+      - xp: 3
+      - item: Mekanism:PartTransmitter:4 x8
+
+  - id: abastecedor_fluidico
+    title: "Abastecedor Fluídico"
+    type: optional
+    deps: [bomba_eletrica]
+    icon: Mekanism:MachineBlock2:12
+    desc: |
+      O contrário da bomba: o §eAbastecedor Fluídico§r (estanho, Circuitos e uma Bomba Elétrica)
+      §ecoloca§r fluido no mundo, enchendo buracos e cavernas. Ótimo para criar lagos de lava ou
+      apagar um incêndio... gigante.
+    tasks:
+      - get: Mekanism:MachineBlock2:12
+    rewards:
+      - loot: comum
+
+  - id: agua_pesada
+    title: "Água Pesada"
+    type: normal
+    deps: [bomba_eletrica, upgrades_extras]
+    icon: Mekanism:HeavyWaterBucket
+    desc: |
+      Coloque um §eUpgrade de Filtro§r na Bomba Elétrica em cima de água: em vez de água comum,
+      ela entrega §eÁgua Pesada§r (bem devagar — a proporção é pequena). O Separador Eletrolítico
+      transforma água pesada em §edeutério§r, metade do combustível de fusão. Encha um balde!
+    tasks:
+      - get: Mekanism:HeavyWaterBucket
+    rewards:
+      - xp: 3
+      - item: Mekanism:FilterUpgrade
+
+  - id: transportador_quantico
+    title: "Transportador Quântico"
+    type: normal
+    deps: [circuito_final, nucleo_teleporte]
+    icon: Mekanism:MachineBlock3
+    desc: |
+      Obsidiana Refinada, 2 Circuitos Finais, 2 Ligas Atômicas e um Núcleo de Teletransporte =
+      §eTransportador Quântico§r. Dois deles na mesma "frequência" compartilham itens, fluidos,
+      gases, energia e calor — a qualquer distância e entre dimensões.
+    tasks:
+      - get: Mekanism:MachineBlock3
+    rewards:
+      - xp: 3
+      - item: Mekanism:AtomicAlloy x2
+
+  - id: oredictionificador
+    title: "Oredictionificador"
+    type: optional
+    deps: [circuito_controle]
+    icon: Mekanism:MachineBlock3:3
+    desc: |
+      Cansado de ter cinco cobres diferentes no baú? O §eOredictionificador§r (aço, vidro,
+      Circuitos, Dicionário e baú) converte itens do mesmo oredict para a variante que você
+      escolher no filtro. Organização total!
+    tasks:
+      - get: Mekanism:MachineBlock3:3
+    rewards:
+      - loot: comum
+
+  - id: montador_formular
+    title: "Montador Formular"
+    type: optional
+    deps: [circuito_controle, carcaca_aco]
+    icon: Mekanism:MachineBlock3:5
+    desc: |
+      Uma bancada automática do Mekanism: o §eMontador Formular§r usa uma §eFórmula§r (papel +
+      Circuito Básico) gravada com a receita e fabrica sozinho, puxando os ingredientes do
+      inventário dele.
+    tasks:
+      - get: Mekanism:MachineBlock3:5
+    rewards:
+      - loot: comum
+
+  - id: base_recarga
+    title: "Base de Recarga"
+    type: optional
+    deps: [tablete_energia]
+    icon: Mekanism:MachineBlock:14
+    desc: |
+      3 placas de pressão de pedra, 2 aços e um Tablete = §eBase de Recarga§r. Pise nela e ela
+      carrega os itens energizados do seu inventário (de qualquer mod) — e recarrega o Robit.
+    tasks:
+      - get: Mekanism:MachineBlock:14
+    rewards:
+      - loot: comum
+
+  - id: utilidades_mek
+    title: "Ferramentas de Diagnóstico"
+    type: optional
+    deps: [tablete_energia]
+    icon: Mekanism:NetworkReader
+    desc: |
+      Pequenos ajudantes:
+      §e• Leitor de Rede§r — mostra o fluxo de cabos, tubos e transportadores.
+      §e• Cartão de Configuração§r — copia a configuração de lados de uma máquina para outra.
+      §e• Medidor Conta-Gotas§r — mede e transfere fluidos/gases em pequenas porções.
+      §e• Dicionário§r — mostra o oredict de qualquer bloco ou item.
+      Faça qualquer um.
+    tasks:
+      - one_of: [Mekanism:NetworkReader:*, Mekanism:ConfigurationCard, Mekanism:GaugeDropper:*, Mekanism:Dictionary]
+    rewards:
+      - loot: comum
+
+  - id: mesa_seguranca
+    title: "Mesa de Segurança"
+    type: optional
+    deps: [circuito_elite, nucleo_teleporte]
+    icon: Mekanism:BasicBlock2:9
+    desc: |
+      A §eMesa de Segurança§r (aço, vidro, Circuitos Elite, Carcaça de Aço e Núcleo de
+      Teletransporte) define quem pode usar as suas máquinas: público, privado ou só a lista de
+      confiança. Ótimo em servidores!
+    tasks:
+      - get: Mekanism:BasicBlock2:9
+    rewards:
+      - loot: incomum
+
+  - id: logistica_mek
+    title: "A Rede Química"
+    type: milestone
+    deps: [transportador_logistico, classificador_logistico, cabo_elite, fabrica_avancada, tubo_mecanico]
+    icon: Mekanism:PartTransmitter:12
+    banner: "A Rede Química"
+    subtitle: "Itens, fluidos, gases e energia em ordem"
+    desc: |
+      Transportadores coloridos, tubos de fluido e de gás, cabos de elite e fábricas
+      trabalhando em paralelo. Herói, a sua base está ficando com cara de indústria química de
+      verdade!
+
+      §aDicas de quem já entupiu muitos tubos:§r
+      §e• Pinte os transportadores§r para separar rotas (minério → fábrica, produto → baú).
+      §e• Use auto-ejetar§r nas máquinas em vez de puxar com tubo.
+      §e• Silos e Tanques§r no fim da linha evitam transbordos.
+
+      Mostre um Classificador Logístico, transportadores e uma Fábrica Avançada!
+    tasks:
+      - get: [Mekanism:MachineBlock:15, Mekanism:PartTransmitter:12 x8, Mekanism:MachineBlock:6]
+    rewards:
+      - xp: 8
+      - kit: {name: "Kit do Logístico", items: [Mekanism:PartTransmitter:13 x16, Mekanism:PartTransmitter:2 x8, Mekanism:ConfigurationCard, Mekanism:FactoryInstaller:1, Mekanism:SpeedUpgrade x2]}
+      - loot: raro
+
+  # ======================================================================
+  # FASE 5 — ENERGIA: CUBOS, MATRIZ DE INDUÇÃO E CALDEIRA
+  # ======================================================================
+  - id: cubo_avancado
+    title: "Cubo de Energia Avançado"
+    type: normal
+    deps: [cubo_basico, liga_enriquecida]
+    icon: Mekanism:EnergyCube
+    desc: |
+      Cubo Básico + 4 Ligas Enriquecidas + 2 Barras de Ósmio + 2 Tabletes = §eCubo de Energia
+      Avançado§r, com 4× a capacidade e a saída do básico.
+    tasks:
+      - get: 'Mekanism:EnergyCube {tier:"Advanced"}'
+        nbt: true
+    rewards:
+      - xp: 3
+      - item: Mekanism:EnergyTablet x2
+
+  - id: cubo_elite
+    title: "Cubo de Energia de Elite"
+    type: normal
+    deps: [cubo_avancado, liga_reforcada]
+    icon: Mekanism:EnergyCube
+    desc: |
+      Cubo Avançado + 4 Ligas Reforçadas + 2 ouros + 2 Tabletes = §eCubo de Energia de Elite§r.
+      Outro salto de 4× — e ele é ingrediente das Células e Provedores de Indução de Elite.
+    tasks:
+      - get: 'Mekanism:EnergyCube {tier:"Elite"}'
+        nbt: true
+    rewards:
+      - xp: 3
+      - item: Mekanism:EnergyTablet x2
+
+  - id: cubo_final
+    title: "Cubo de Energia Final"
+    type: normal
+    deps: [cubo_elite, liga_atomica]
+    icon: Mekanism:EnergyCube
+    desc: |
+      Cubo de Elite + 4 Ligas Atômicas + 2 diamantes + 2 Tabletes = §eCubo de Energia Final§r, o
+      maior cubo do Mekanism. Para guardar ainda mais... só a Matriz de Indução.
+    tasks:
+      - get: 'Mekanism:EnergyCube {tier:"Ultimate"}'
+        nbt: true
+    rewards:
+      - xp: 4
+      - item: Mekanism:AtomicAlloy x2
+
+  - id: po_litio
+    title: "Pó de Lítio"
+    type: normal
+    deps: [torre_evaporacao, cristalizador_quimico]
+    icon: Mekanism:OtherDust:4
+    desc: |
+      As Células e os Provedores de Indução básicos pedem §ePó de Lítio§r. O caminho: água →
+      Torre de Evaporação → Salmoura → Torre de novo → §eLítio§r líquido → Condensentrador
+      Rotativo (líquido → gás) → Cristalizador Químico → Pó de Lítio. Junte §e8§r.
+    tasks:
+      - get: ore:dustLithium x8
+    rewards:
+      - xp: 3
+      - item: Mekanism:Salt x16
+
+  - id: caixa_inducao
+    title: "Caixa e Porta de Indução"
+    type: main
+    deps: [aco_mek, tablete_energia, circuito_elite]
+    icon: Mekanism:BasicBlock2:1
+    desc: |
+      4 Barras de Aço + 1 Tablete = 4 §eCaixas de Indução§r; 4 Caixas + 1 Circuito Elite = 2
+      §ePortas de Indução§r. São as paredes e as "tomadas" da Matriz de Indução. Uma matriz
+      mínima de 3×3×3 tem 26 blocos de borda: junte §e24 Caixas§r e §e2 Portas§r.
+    tasks:
+      - get: [Mekanism:BasicBlock2:1 x24, Mekanism:BasicBlock2:2 x2]
+    rewards:
+      - xp: 4
+      - choice: [ore:ingotSteel x16, Mekanism:EnergyTablet x2, Mekanism:ControlCircuit:2 x1]
+
+  - id: celula_inducao
+    title: "Célula de Indução"
+    type: normal
+    deps: [po_litio, cubo_basico]
+    icon: Mekanism:BasicBlock2:3
+    desc: |
+      4 Pós de Lítio, 4 Tabletes de Energia e um Cubo Básico = §eCélula de Indução Básica§r. As
+      células vão §edentro§r da matriz e definem quanta energia ela guarda (a básica já guarda
+      muito mais que um cubo). Os tiers usam a célula anterior + cubo do tier.
+    tasks:
+      - get: 'Mekanism:BasicBlock2:3 {tier:0}'
+        nbt: true
+    rewards:
+      - xp: 3
+      - item: Mekanism:EnergyTablet x2
+
+  - id: provedor_inducao
+    title: "Provedor de Indução"
+    type: normal
+    deps: [po_litio, cubo_basico, circuito_controle]
+    icon: Mekanism:BasicBlock2:4
+    desc: |
+      4 Pós de Lítio, 4 Circuitos Básicos e um Cubo Básico = §eProvedor de Indução Básico§r.
+      Também vai dentro da matriz e define a §evazão§r (entrada/saída por tick). Equilibre
+      células e provedores conforme a sua base.
+    tasks:
+      - get: 'Mekanism:BasicBlock2:4 {tier:0}'
+        nbt: true
+    rewards:
+      - xp: 3
+      - item: Mekanism:ControlCircuit x2
+
+  - id: matriz_inducao
+    title: "Matriz de Indução"
+    type: milestone
+    deps: [caixa_inducao, celula_inducao, provedor_inducao]
+    icon: Mekanism:BasicBlock2:2
+    banner: "A Matriz de Indução"
+    subtitle: "Um oceano de energia"
+    desc: |
+      O maior "banco de energia" do Mekanism é um multibloco:
+      §e• Formato:§r um paralelepípedo de pelo menos §e3×3×3§r (até 18×18×18).
+      §e• Paredes:§r Caixas de Indução (Vidro Estrutural nas faces é permitido, para ver dentro).
+      §e• Portas:§r Portas de Indução na parede; com o Configurador, alterne entre entrada e saída.
+      §e• Interior:§r preenchido §esó§r com Células e Provedores de Indução (sem espaços vazios).
+
+      Quando forma, partículas brilham e o GUI mostra energia armazenada e vazão. Herói, você
+      acabou de construir uma represa de energia! Mostre Portas, uma Célula e um Provedor.
+    tasks:
+      - get: [Mekanism:BasicBlock2:2 x2, Mekanism:BasicBlock2:3, Mekanism:BasicBlock2:4]
+    rewards:
+      - xp: 10
+      - kit: {name: "Kit do Engenheiro de Indução", items: [Mekanism:OtherDust:4 x8, Mekanism:EnergyTablet x4, Mekanism:BasicBlock2:1 x8, Mekanism:PartTransmitter:2 x8, Mekanism:ControlCircuit:2 x2]}
+      - loot: raro
+
+  - id: aquecedores
+    title: "Aquecedores"
+    type: optional
+    deps: [carcaca_aco]
+    icon: Mekanism:MachineBlock3:6
+    desc: |
+      O Mekanism também trabalha com §ecalor§r:
+      §e• Aquecedor Sólido§r (aço, Circuito, 2 fornalhas, Carcaça) — queima combustível sólido.
+      §e• Aquecedor Resistivo§r (estanho, redstone, Elemento de Superaquecimento, Tablete) —
+      transforma energia em calor.
+      O calor viaja por Conduítes Térmicos e aquece a Torre de Evaporação e a Caldeira.
+    tasks:
+      - one_of: [Mekanism:MachineBlock3:6, Mekanism:MachineBlock3:4]
+    rewards:
+      - loot: comum
+
+  - id: caldeira_termoeletrica
+    title: "Caldeira Termoelétrica"
+    type: normal
+    deps: [aco_mek, circuito_avancado, liga_enriquecida]
+    icon: Mekanism:BasicBlock2:7
+    desc: |
+      Um multibloco que ferve água em vapor usando calor:
+      §e• Carcaça da Caldeira§r (aço + ferro) nas paredes, §eVálvulas da Caldeira§r para água e
+      vapor.
+      §e• Elementos de Superaquecimento§r (redstone, cobre e Carcaça de Aço) aquecem a água.
+      §e• Uma camada de Dispersores de Pressão§r separa a água (em baixo) do vapor (em cima).
+
+      O vapor vai para a §eTurbina Industrial§r (capítulo de Geradores). Traga as peças principais.
+    tasks:
+      - get: [Mekanism:BasicBlock2:7 x8, Mekanism:BasicBlock2:8 x2, Mekanism:BasicBlock2:5, Mekanism:BasicBlock2:6]
+    rewards:
+      - xp: 3
+      - item: ore:ingotSteel x8
+
+  - id: celulas_avancadas
+    title: "Células de Indução Maiores"
+    type: normal
+    deps: [celula_inducao, cubo_avancado]
+    icon: Mekanism:BasicBlock2:3
+    desc: |
+      Célula de Indução Básica + Cubo Avançado + Tabletes = §eCélula de Indução Avançada§r (8× a
+      básica). Depois vêm a de Elite (com Cubo de Elite) e a Final (com Cubo Final). Faça uma
+      Célula Avançada ou melhor.
+    tasks:
+      - one_of:
+          - 'Mekanism:BasicBlock2:3 {tier:1}'
+          - 'Mekanism:BasicBlock2:3 {tier:2}'
+          - 'Mekanism:BasicBlock2:3 {tier:3}'
+        nbt: true
+    rewards:
+      - xp: 3
+      - item: Mekanism:EnergyTablet x2
+
+  - id: celula_final
+    title: "Célula de Indução Final"
+    type: optional
+    deps: [celulas_avancadas, cubo_final]
+    icon: Mekanism:BasicBlock2:3
+    desc: |
+      O topo do armazenamento de energia do Mekanism: Célula de Elite + Cubo Final + Tabletes =
+      §eCélula de Indução Final§r. Uma matriz cheia delas guarda energia para uma vida inteira
+      de máquinas.
+    tasks:
+      - get: 'Mekanism:BasicBlock2:3 {tier:3}'
+        nbt: true
+    rewards:
+      - loot: raro
+
+  - id: provedores_avancados
+    title: "Provedores de Indução Maiores"
+    type: normal
+    deps: [provedor_inducao, cubo_avancado, circuito_avancado]
+    icon: Mekanism:BasicBlock2:4
+    desc: |
+      Provedor Básico + Cubo Avançado + Circuitos Avançados = §eProvedor de Indução Avançado§r,
+      com muito mais vazão. Os de Elite e Final seguem a mesma lógica. Faça um Avançado ou
+      melhor.
+    tasks:
+      - one_of:
+          - 'Mekanism:BasicBlock2:4 {tier:1}'
+          - 'Mekanism:BasicBlock2:4 {tier:2}'
+          - 'Mekanism:BasicBlock2:4 {tier:3}'
+        nbt: true
+    rewards:
+      - xp: 3
+      - item: Mekanism:ControlCircuit:1 x2
+
+  - id: tanques_tier
+    title: "Tanques e Silos de Tier Maior"
+    type: optional
+    deps: [tanque_gas, silo, tanque_fluido]
+    icon: Mekanism:GasTank
+    desc: |
+      Tanques de Gás, Tanques Líquidos e Silos sobem de tier com a mesma receita: o bloco do
+      tier anterior no centro, Ligas do tier em volta (e ósmio/ferro/pedregulho, conforme o
+      bloco). Faça qualquer Tanque de Gás Avançado ou melhor.
+    tasks:
+      - one_of:
+          - 'Mekanism:GasTank {tier:1}'
+          - 'Mekanism:GasTank {tier:2}'
+          - 'Mekanism:GasTank {tier:3}'
+        nbt: true
+    rewards:
+      - loot: comum
+
+  # ======================================================================
+  # FASE 6 — PLÁSTICO E TRÍTIO
+  # ======================================================================
+  - id: biocombustivel
+    title: "Biocombustível"
+    type: normal
+    deps: [triturador]
+    icon: Mekanism:BioFuel
+    desc: |
+      Sementes, folhas, mudas, trigo, batatas, melancias e abóboras no Triturador viram
+      §eBiocombustível§r. Ele alimenta o Biogerador e, no Oxidador Químico, vira §eBiomassa§r (gás)
+      para a química do plástico. Junte §e32§r.
+    tasks:
+      - get: Mekanism:BioFuel x32
+    rewards:
+      - xp: 2
+      - item: minecraft:wheat_seeds x32
+
+  - id: fermento
+    title: "Fermento"
+    type: normal
+    deps: [infusor_metalurgico]
+    icon: Mekanism:Yeast
+    desc: |
+      Açúcar com infusão de §eFungo§r (cogumelos no espaço do infusor) no Infusor Metalúrgico =
+      §eFermento§r. A Câmara de Injeção também multiplica fermento com melaço. Junte §e8§r.
+    tasks:
+      - get: Mekanism:Yeast x8
+    rewards:
+      - xp: 2
+      - item: minecraft:red_mushroom x8
+
+  - id: camara_reacao
+    title: "Câmara de Reação Pressurizada"
+    type: normal
+    deps: [camara_enriquecimento, tanque_dinamico, tanque_gas]
+    icon: Mekanism:MachineBlock2:10
+    desc: |
+      A §eCâmara de Reação Pressurizada§r (CRP) junta §eum item, um fluido e um gás§r ao mesmo
+      tempo. Receitas principais (NEI):
+      §e• Fermento + água + Biomassa§r → Substrato + Bioetanol.
+      §e• Substrato + água + Etileno§r → 8 Substratos (multiplica!).
+      §e• Substrato + Etileno + Oxigênio§r → Pelota de PEAD (plástico).
+    tasks:
+      - get: Mekanism:MachineBlock2:10
+    rewards:
+      - xp: 3
+      - item: Mekanism:Yeast x8
+
+  - id: substrato
+    title: "Substrato"
+    type: normal
+    deps: [camara_reacao, fermento, biocombustivel, oxidador_quimico]
+    icon: Mekanism:Substrate
+    desc: |
+      Biocombustível no Oxidador → Biomassa (gás). Na CRP: Fermento + água + Biomassa =
+      §eSubstrato§r, mais §eBioetanol§r de brinde. Leve o bioetanol para a Torre de Evaporação:
+      ele vira §eEtileno§r. Junte §e8 Substratos§r.
+    tasks:
+      - get: Mekanism:Substrate x8
+    rewards:
+      - xp: 3
+      - item: Mekanism:BioFuel x32
+
+  - id: plastico_pead
+    title: "Plástico (PEAD)"
+    type: normal
+    deps: [substrato, torre_evaporacao]
+    icon: Mekanism:Polyethene
+    desc: |
+      Substrato + Etileno + Oxigênio na CRP = §ePelota de PEAD§r. 8 pelotas na bancada (anel)
+      fazem uma §eFolha de PEAD§r (ou 3 pelotas na Câmara de Enriquecimento); 4 pelotas fazem
+      uma Vara. A folha é ingrediente do §eAtivador Neutrônico Solar§r. Faça §e2 Folhas§r.
+    tasks:
+      - get: Mekanism:Polyethene:2 x2
+    rewards:
+      - xp: 3
+      - item: Mekanism:Substrate x8
+
+  - id: blocos_plastico
+    title: "Blocos de Plástico"
+    type: optional
+    deps: [plastico_pead]
+    icon: Mekanism:PlasticBlock:11
+    desc: |
+      Pelotas de PEAD com corante viram §eBlocos de Plástico§r coloridos, e daí saem as versões
+      lisa (Enriquecimento), luminosa (com pedra luminosa), reforçada, estradas de plástico (mais
+      velocidade ao andar!) e barreiras. Faça qualquer bloco de plástico.
+    tasks:
+      - one_of: ['Mekanism:PlasticBlock:*', 'Mekanism:SlickPlasticBlock:*', 'Mekanism:GlowPlasticBlock:*', 'Mekanism:ReinforcedPlasticBlock:*', 'Mekanism:RoadPlasticBlock:*', 'Mekanism:PlasticFence:*']
+    rewards:
+      - loot: comum
+
+  - id: ativador_neutronico
+    title: "Ativador Neutrônico Solar"
+    type: normal
+    deps: [plastico_pead, liga_reforcada, circuito_elite]
+    icon: Mekanism:MachineBlock3:1
+    desc: |
+      2 Ligas Reforçadas, uma Folha de PEAD, 2 Circuitos Elite, Carcaça de Aço e 3 bronzes =
+      §eAtivador Neutrônico Solar§r. Debaixo do céu aberto, ele bombardeia §eLítio§r (gás) com
+      nêutrons do sol e produz §eTrítio§r — a outra metade do combustível de fusão.
+
+      §aDica:§r ele só funciona de dia e com o céu limpo acima.
+    tasks:
+      - get: Mekanism:MachineBlock3:1
+    rewards:
+      - xp: 3
+      - item: Mekanism:OtherDust:4 x8
+
+  # ======================================================================
+  # FASE 7 — TELETRANSPORTE, MINERADOR DIGITAL E LASERS
+  # ======================================================================
+  - id: nucleo_teleporte
+    title: "Núcleo de Teletransporte"
+    type: main
+    deps: [liga_atomica]
+    icon: Mekanism:TeleportationCore
+    desc: |
+      4 pérolas do Fim, 2 Ligas Atômicas, 2 ouros e um diamante = §eNúcleo de Teletransporte§r.
+      Ele é o coração de tudo que "dobra o espaço" no Mekanism: Teletransportador, versão
+      portátil, Minerador Digital, Transportador Quântico, Mesa de Segurança. Faça §e3§r.
+    tasks:
+      - get: Mekanism:TeleportationCore x3
+    rewards:
+      - xp: 5
+      - choice: [minecraft:ender_pearl x8, Mekanism:AtomicAlloy x2, minecraft:diamond x2]
+
+  - id: moldura_teleporte
+    title: "Moldura do Teletransportador"
+    type: normal
+    deps: [obsidiana_refinada, pedra_luminosa_refinada]
+    icon: Mekanism:BasicBlock:7
+    desc: |
+      8 Barras de Obsidiana Refinada em volta de 1 Barra de Pedra Luminosa = §e9 Molduras do
+      Teletransportador§r — exatamente o que um portal precisa.
+    tasks:
+      - get: Mekanism:BasicBlock:7 x9
+    rewards:
+      - xp: 3
+      - item: ore:ingotRefinedObsidian x4
+
+  - id: teletransportador
+    title: "Teletransportador"
+    type: main
+    deps: [nucleo_teleporte, moldura_teleporte]
+    icon: Mekanism:MachineBlock:11
+    desc: |
+      4 Circuitos Básicos, 4 Carcaças de Aço e um Núcleo = §eTeletransportador§r.
+
+      §eComo montar:§r faça um quadro de §e3 de largura por 4 de altura§r (o vão interno é de 1×2,
+      do tamanho de um jogador) com as 9 Molduras e o §eTeletransportador no meio da base§r. No
+      GUI, crie uma §efrequência§r; outro portal na mesma frequência vira o destino. Ande para
+      dentro do vão e pronto — custa energia proporcional à distância (entre dimensões também).
+    tasks:
+      - get: Mekanism:MachineBlock:11
+    rewards:
+      - xp: 5
+      - choice: [Mekanism:BasicBlock:7 x9, Mekanism:EnergyTablet x2, minecraft:ender_pearl x8]
+
+  - id: teletransportador_portatil
+    title: "Teletransportador Portátil"
+    type: normal
+    deps: [teletransportador]
+    icon: Mekanism:PortableTeleporter
+    desc: |
+      2 Tabletes, 2 Circuitos Básicos e um Núcleo = §eTeletransportador Portátil§r. Ele leva você
+      a qualquer Teletransportador da sua lista de frequências, de onde estiver. Carregue-o numa
+      Base de Recarga ou num cubo de energia antes de sair de casa!
+    tasks:
+      - get: Mekanism:PortableTeleporter:*
+    rewards:
+      - xp: 3
+      - item: Mekanism:EnergyTablet
+
+  - id: robit
+    title: "Robit"
+    type: normal
+    deps: [liga_atomica, bau_pessoal, obsidiana_refinada]
+    icon: Mekanism:Robit
+    desc: |
+      Um amiguinho! O §eRobit§r (aço, 2 Tabletes, Liga Atômica, 2 Obsidianas Refinadas e um Baú
+      Pessoal) segue você, recolhe itens do chão, tem inventário próprio, uma fornalha embutida e
+      até uma bigorna. Ele volta sozinho para a Base de Recarga quando a bateria acaba.
+
+      Coloque-o no chão e clique com Shift para abrir o menu. Dê um nome bonito!
+    tasks:
+      - get: Mekanism:Robit:*
+    rewards:
+      - xp: 3
+      - item: Mekanism:MachineBlock:14
+
+  - id: minerador_digital
+    title: "Minerador Digital"
+    type: main
+    deps: [nucleo_teleporte, robit, classificador_logistico]
+    icon: Mekanism:MachineBlock:4
+    desc: |
+      Um minerador que §eescolhe o que minerar§r. Os Antigos dariam tudo por isto!
+
+      O §eMinerador Digital§r leva 2 Ligas Atômicas, 1 Circuito Básico, 2 Classificadores
+      Logísticos, 1 Robit, 1 Carcaça de Aço e 2 Núcleos de Teletransporte. Ele ocupa um
+      espaço de 3×3×2 e minera num §eraio de até 32 blocos§r (neste pack), de uma camada mínima até
+      uma máxima, só os blocos dos seus filtros (oredict, mod ou item).
+    tasks:
+      - get: Mekanism:MachineBlock:4
+    rewards:
+      - xp: 5
+      - choice: [Mekanism:SpeedUpgrade x4, Mekanism:EnergyUpgrade x4, Mekanism:TeleportationCore x1]
+
+  - id: info_minerador
+    title: "Configurando o Minerador"
+    type: info
+    deps: [minerador_digital]
+    icon: Mekanism:MachineBlock:4
+    desc: |
+      Um passo a passo para não minerar a sua própria base:
+      §e1.§r Coloque o minerador §elonge§r de construções importantes (ele abre buracos).
+      §e2.§r Em "Filtros", adicione `ore*` no filtro de oredict para pegar todos os minérios.
+      §e3.§r Defina raio e camadas mínima/máxima (ex.: Y 5 a 60).
+      §e4.§r Ligue um baú (ou transportador) na saída de cima; ative "auto-ejetar".
+      §e5.§r §eSilk Touch§r está disponível, mas gasta 6× mais energia.
+      §e6.§r Upgrades de velocidade aceleram muito — e cobram muito em energia.
+    tasks:
+      - check
+    rewards:
+      - xp: 1
+
+  - id: vibrador_sismico
+    title: "Vibrador e Leitor Sísmico"
+    type: optional
+    deps: [circuito_controle, tablete_energia]
+    icon: Mekanism:MachineBlock2:9
+    desc: |
+      O §eVibrador Sísmico§r envia ondas pelo chão; com o §eLeitor Sísmico§r em mãos, você vê
+      cada bloco da coluna abaixo dele. Perfeito para achar o ósmio antes de cavar. Faça
+      qualquer um.
+    tasks:
+      - one_of: [Mekanism:MachineBlock2:9, Mekanism:SeismicReader:*]
+    rewards:
+      - loot: comum
+
+  - id: laser
+    title: "Laser"
+    type: normal
+    deps: [liga_reforcada, tablete_energia, carcaca_aco]
+    icon: Mekanism:MachineBlock2:13
+    desc: |
+      3 Ligas Reforçadas, 2 Tabletes, Carcaça de Aço e um diamante = §eLaser§r. Com energia, ele
+      dispara um feixe que §equebra blocos§r à distância (até 64 blocos) ou é capturado por um
+      Amplificador de Laser. É a ignição do Reator de Fusão!
+    tasks:
+      - get: Mekanism:MachineBlock2:13
+    rewards:
+      - xp: 3
+      - item: minecraft:diamond
+
+  - id: amplificador_laser
+    title: "Amplificador de Laser"
+    type: normal
+    deps: [laser, cubo_basico]
+    icon: Mekanism:MachineBlock2:14
+    desc: |
+      7 aços, um Cubo de Energia Básico e um diamante = §eAmplificador de Laser§r. Ele §eacumula§r
+      a energia de vários Lasers e a dispara de uma vez quando chega no limite que você definir
+      (ou com redstone). O Reator de Fusão precisa de uma rajada enorme para acender.
+    tasks:
+      - get: Mekanism:MachineBlock2:14
+    rewards:
+      - xp: 3
+      - item: ore:ingotSteel x8
+
+  - id: feixe_trator
+    title: "Feixe Trator do Laser"
+    type: optional
+    deps: [amplificador_laser, bau_pessoal]
+    icon: Mekanism:MachineBlock2:15
+    desc: |
+      Baú Pessoal em cima de um Amplificador de Laser = §eFeixe Trator§r. Ele recolhe os itens dos
+      blocos quebrados pelo laser. Lasers + Feixe Trator = uma pedreira à distância!
+    tasks:
+      - get: Mekanism:MachineBlock2:15
+    rewards:
+      - loot: comum
+
+  - id: dobrando_espaco
+    title: "Dobrando o Espaço"
+    type: milestone
+    deps: [teletransportador, minerador_digital, transportador_quantico]
+    icon: Mekanism:TeleportationCore
+    banner: "Dobrando o Espaço"
+    subtitle: "Portais, mineradores e entrelaçamento quântico"
+    effect: 6
+    desc: |
+      Herói, o Mekanism acabou de mostrar o seu truque mais bonito: um portal de obsidiana
+      refinada que leva você a qualquer canto, um minerador que escolhe minério a 32 blocos de
+      distância e um par de Transportadores Quânticos que ignoram a distância.
+
+      Os Antigos tinham um nome para esta página: "a costura do espaço". Quando a Fratura
+      rasgou o Registro, foram exatamente estes pontos que se soltaram primeiro. Você acabou de
+      costurá-los de volta.
+
+      Mostre o Teletransportador, o Minerador Digital e um Transportador Quântico!
+    tasks:
+      - get: [Mekanism:MachineBlock:11, Mekanism:MachineBlock:4, Mekanism:MachineBlock3]
+    rewards:
+      - xp: 10
+      - kit: {name: "Kit do Costureiro do Espaço", items: [Mekanism:TeleportationCore, Mekanism:BasicBlock:7 x9, Mekanism:PortableTeleporter, Mekanism:SpeedUpgrade x4, minecraft:ender_pearl x16]}
+      - loot: epico
+
+  # ======================================================================
+  # FASE 8 — EQUIPAMENTOS
+  # ======================================================================
+  - id: jetpack
+    title: "Jetpack"
+    type: main
+    deps: [tanque_gas, aco_mek, circuito_controle]
+    icon: Mekanism:Jetpack
+    desc: |
+      Voar! Finalmente!
+
+      2 aços, 1 Circuito Básico, 3 estanhos e 1 Tanque de Gás Básico = §eJetpack§r. Ele queima
+      §ehidrogênio§r. Vista no peito e segure espaço para subir; a tecla de modo (veja nos
+      controles) alterna entre Normal, Pairar e Desativado.
+    tasks:
+      - get: Mekanism:Jetpack
+    rewards:
+      - xp: 4
+      - choice: [ore:ingotTin x8, ore:ingotSteel x8, minecraft:feather x16]
+
+  - id: jetpack_abastecido
+    title: "Tanque Cheio"
+    type: normal
+    deps: [jetpack, hidrogenio]
+    icon: Mekanism:Jetpack
+    desc: |
+      Encha o Jetpack com hidrogênio: coloque-o no espaço de itens de um Tanque de Gás cheio de
+      hidrogênio (ou direto na saída do Separador Eletrolítico). Mostre o Jetpack abastecido e vá
+      ver o mundo lá de cima!
+
+      §cCuidado:§r o jetpack não amortece a queda quando o hidrogênio acaba.
+    tasks:
+      - get: 'Mekanism:Jetpack {stored:{gasName:"hydrogen"}}'
+        nbt: true
+    rewards:
+      - xp: 3
+      - item: minecraft:feather x8
+
+  - id: jetpack_blindado
+    title: "Jetpack Blindado"
+    type: optional
+    deps: [jetpack, po_diamante, bronze_mek]
+    icon: Mekanism:ArmoredJetpack
+    desc: |
+      Jetpack + 2 Pós de Diamante + 2 bronzes + 1 Bloco de Aço = §eJetpack Blindado§r. Voa igual e
+      ainda protege como um peitoral de verdade.
+    tasks:
+      - get: Mekanism:ArmoredJetpack
+    rewards:
+      - loot: incomum
+
+  - id: equipamento_mergulho
+    title: "Equipamento de Mergulho"
+    type: normal
+    deps: [oxigenio, liga_enriquecida]
+    icon: Mekanism:ScubaTank
+    desc: |
+      A §eMáscara de Gás§r (aço, vidro e Circuito) e o §eTanque de Mergulho§r (Circuito, Ligas
+      Enriquecidas e aço) trabalham juntos: com o tanque cheio de §eoxigênio§r no peito e a
+      máscara na cabeça, você respira debaixo d'água. A máscara também protege de gases tóxicos.
+    tasks:
+      - get: [Mekanism:GasMask, 'Mekanism:ScubaTank {stored:{gasName:"oxygen"}}']
+        nbt: true
+    rewards:
+      - xp: 3
+      - item: minecraft:waterlily x4
+
+  - id: corredores
+    title: "Corredores"
+    type: normal
+    deps: [tablete_energia]
+    icon: Mekanism:FreeRunners
+    desc: |
+      2 Circuitos Básicos, 2 Ligas Enriquecidas e 2 Tabletes = §eCorredores§r (Free Runners).
+      Com energia, eles anulam o dano de queda e deixam você subir degraus automaticamente.
+    tasks:
+      - get: Mekanism:FreeRunners:*
+    rewards:
+      - xp: 3
+      - item: minecraft:leather x8
+
+  - id: desintegrador_atomico
+    title: "Desintegrador Atômico"
+    type: main
+    deps: [liga_atomica, obsidiana_refinada, tablete_energia]
+    icon: Mekanism:AtomicDisassembler
+    desc: |
+      4 Ligas Enriquecidas, um Tablete, uma Liga Atômica e 2 Obsidianas Refinadas = §eDesintegrador
+      Atômico§r. Ele é picareta, pá e machado ao mesmo tempo, com modos (Shift + clique):
+      normal, lento, rápido, §eveio§r (quebra o veio de minério inteiro) e desligado. Carregado,
+      ele também é uma arma fortíssima (20 de dano).
+    tasks:
+      - get: Mekanism:AtomicDisassembler:*
+    rewards:
+      - xp: 5
+      - choice: [Mekanism:EnergyTablet x2, Mekanism:AtomicAlloy x2, minecraft:experience_bottle x16]
+
+  - id: arco_eletrico
+    title: "Arco Elétrico"
+    type: optional
+    deps: [liga_enriquecida, tablete_energia]
+    icon: Mekanism:ElectricBow
+    desc: |
+      Ligas Enriquecidas, linha e um Tablete = §eArco Elétrico§r. Ele gasta energia em vez de
+      durabilidade e tem um modo que §eincendeia§r as flechas.
+    tasks:
+      - get: Mekanism:ElectricBow:*
+    rewards:
+      - loot: comum
+
+  - id: lanca_chamas
+    title: "Lança-Chamas"
+    type: optional
+    deps: [hidrogenio, circuito_avancado, bronze_mek]
+    icon: Mekanism:Flamethrower
+    desc: |
+      Estanho, bronze, um isqueiro (pederneira e aço), um Tanque de Gás e um Circuito Avançado = §eLança-Chamas§r. Ele
+      queima hidrogênio e tem três modos: Combate, Calor (funde o que atinge) e Inferno. §cNão use
+      dentro de casa de madeira.§r Sério.
+    tasks:
+      - get: Mekanism:Flamethrower
+    rewards:
+      - loot: incomum
+
+  - id: tnt_obsidiana
+    title: "TNT de Obsidiana"
+    type: optional
+    deps: [lingote_osmio]
+    icon: Mekanism:ObsidianTNT
+    desc: |
+      3 TNTs entre 6 obsidianas: a §eTNT de Obsidiana§r tem um raio de explosão bem maior que a
+      comum. §cUse longe da base§r — e longe das minhas páginas, por favor.
+    tasks:
+      - get: Mekanism:ObsidianTNT
+    rewards:
+      - loot: comum
+
+  - id: caixa_papelao
+    title: "Caixa de Papelão"
+    type: optional
+    deps: [serraria_precisao]
+    icon: Mekanism:CardboardBox
+    desc: |
+      4 Serragens = §eCaixa de Papelão§r. Clique com Shift num bloco para "embalá-lo" com tudo
+      dentro e colocá-lo em outro lugar — inclusive §egeradores de monstros§r! Neste pack cada
+      caixa só pode ser usada uma vez.
+    tasks:
+      - get: Mekanism:CardboardBox
+    rewards:
+      - loot: comum
+
+  - id: decoracao_mek
+    title: "Balões e Painéis Luminosos"
+    type: optional
+    deps: [plastico_pead]
+    icon: Mekanism:Balloon:14
+    desc: |
+      Para a festa de inauguração da sua fábrica química: §eBalões§r (couro, linha e corante) que
+      você amarra em mobs ou blocos, e §ePainéis Luminosos§r (Folha de PEAD, vidro e pó de pedra
+      luminosa). Faça qualquer um!
+    tasks:
+      - one_of: ['Mekanism:Balloon:*', 'Mekanism:GlowPanel:*']
+    rewards:
+      - loot: comum
+
+  # ======================================================================
+  # EXTRAS — FÁBRICAS ESPECÍFICAS, LOGÍSTICA E AUTOMAÇÃO
+  # ======================================================================
+  - id: po_aco
+    title: "Pó de Aço"
+    type: normal
+    deps: [ferro_enriquecido]
+    icon: Mekanism:OtherDust:1
+    desc: |
+      Ferro Enriquecido com mais uma dose de carbono no Infusor = §ePó de Aço§r. Ele também é o
+      pó do Upgrade Silenciador. Junte §e16§r — e mande para a fornalha!
+    tasks:
+      - get: ore:dustSteel x16
+    rewards:
+      - xp: 2
+      - item: Mekanism:CompressedCarbon x8
+
+  - id: po_obsidiana_refinado
+    title: "Pó de Obsidiana Refinado"
+    type: normal
+    deps: [po_obsidiana_mek, po_diamante]
+    icon: Mekanism:OtherDust:5
+    desc: |
+      Pó de Obsidiana no meio, §ePó de Diamante§r no infusor: §ePó de Obsidiana Refinado§r. É ele
+      que a Prensa de Ósmio transforma em Barra de Obsidiana Refinada. Junte §e8§r.
+    tasks:
+      - get: ore:dustRefinedObsidian x8
+    rewards:
+      - xp: 2
+      - item: Mekanism:OtherDust:6 x8
+
+  - id: fabrica_enriquecimento
+    title: "Fábrica de Enriquecimento"
+    type: normal
+    deps: [fabrica_basica]
+    icon: Mekanism:MachineBlock:5
+    desc: |
+      A fábrica que mais trabalha numa base Mekanism: a de §eEnriquecimento§r. Ela dobra minério,
+      prensa carbono e fecha a última etapa do 3×, 4× e 5× (Pó Sujo → Pó). Faça uma de qualquer
+      tier.
+    tasks:
+      - one_of:
+          - 'Mekanism:MachineBlock:5 {recipeType:1}'
+          - 'Mekanism:MachineBlock:6 {recipeType:1}'
+          - 'Mekanism:MachineBlock:7 {recipeType:1}'
+        nbt: true
+    rewards:
+      - xp: 3
+      - item: Mekanism:SpeedUpgrade
+
+  - id: fabrica_infusao
+    title: "Fábrica de Infusão"
+    type: optional
+    deps: [fabrica_basica, tres_ligas]
+    icon: Mekanism:MachineBlock:6
+    desc: |
+      Ligas e circuitos em massa! A §eFábrica de Infusão§r é um Infusor Metalúrgico com vários
+      espaços dividindo a mesma barra de infusão. Ideal para produzir Liga Enriquecida e
+      Circuitos aos montes.
+    tasks:
+      - one_of:
+          - 'Mekanism:MachineBlock:5 {recipeType:7}'
+          - 'Mekanism:MachineBlock:6 {recipeType:7}'
+          - 'Mekanism:MachineBlock:7 {recipeType:7}'
+        nbt: true
+    rewards:
+      - loot: incomum
+
+  - id: fabrica_trituracao
+    title: "Fábrica de Trituração"
+    type: optional
+    deps: [fabrica_basica, triturador]
+    icon: Mekanism:MachineBlock:5
+    desc: |
+      Aglomerados chegando aos montes da Purificação? Uma §eFábrica de Trituração§r transforma
+      todos em Pó Sujo de uma vez. Faça uma de qualquer tier.
+    tasks:
+      - one_of:
+          - 'Mekanism:MachineBlock:5 {recipeType:2}'
+          - 'Mekanism:MachineBlock:6 {recipeType:2}'
+          - 'Mekanism:MachineBlock:7 {recipeType:2}'
+        nbt: true
+    rewards:
+      - loot: comum
+
+  - id: info_automacao_5x
+    title: "Automatizando o 5×"
+    type: info
+    deps: [processamento_5x]
+    icon: Mekanism:PartTransmitter:12
+    desc: |
+      Uma planta de fábrica 5× que funciona bem:
+      §e1.§r Baú de minério → Classificador Logístico → §eDissolução§r (tubo de ácido sulfúrico).
+      §e2.§r Polpa → tubo pressurizado → §eLavador§r (água por tubo mecânico) → §eCristalizador§r.
+      §e3.§r Cristais → §eFábrica de Injeção§r (cloreto de hidrogênio) → §eFábrica de
+      Purificação§r (oxigênio) → §eFábrica de Trituração§r → §eFábrica de Enriquecimento§r →
+      §eFundição Energizada§r → baú.
+
+      §aDicas:§r use auto-ejetar sempre que der; separe cada tipo de polpa num tubo próprio
+      (gases diferentes não se misturam no mesmo tubo); e coloque Upgrades de Gás nas máquinas
+      que consomem gás.
+    tasks:
+      - check
+    rewards:
+      - xp: 2
+
+  - id: transportadores_especiais
+    title: "Transportador Restritivo e Redirecionador"
+    type: optional
+    deps: [transportador_logistico]
+    icon: Mekanism:PartTransmitter:17
+    desc: |
+      Aço e barras de ferro = 2 §eTransportadores Restritivos§r (só usados se não houver outro
+      caminho). Com redstone a mais, vira o §eTransportador Redirecionador§r, que abre ou fecha
+      conforme o sinal de redstone. Faça qualquer um.
+    tasks:
+      - one_of: [Mekanism:PartTransmitter:16, Mekanism:PartTransmitter:17]
+    rewards:
+      - loot: comum
+
+  - id: silo_final
+    title: "Silo Final"
+    type: optional
+    deps: [silo, liga_atomica]
+    icon: Mekanism:BasicBlock:6
+    desc: |
+      O silo do tier Final guarda §e262 144 itens§r de um tipo só. Pedregulho, a cobrança sem fim
+      da sua mineração, finalmente tem um lar digno.
+    tasks:
+      - get: 'Mekanism:BasicBlock:6 {tier:3}'
+        nbt: true
+    rewards:
+      - loot: incomum
+
+  - id: compat_quartzo
+    title: "Quartzo, Certus e Fluix"
+    type: optional
+    deps: [camara_enriquecimento]
+    icon: minecraft:quartz
+    desc: |
+      A Câmara de Enriquecimento conversa com outros mods: minério de quartzo do Nether e de
+      Quartzo Certus (AE2) rendem pó, e os pós voltam a cristal. Útil para quem anda montando uma
+      rede ME. Traga quartzo do Nether enriquecido ou um pó de certus.
+    tasks:
+      - one_of: [ore:dustNetherQuartz, ore:dustCertusQuartz, minecraft:quartz x6]
+    rewards:
+      - loot: comum
+
+  # ======================================================================
+  # EXTRAS — MATERIAIS E QUÍMICA FINA
+  # ======================================================================
+  - id: carbono_prensado
+    title: "Carbono Prensado"
+    type: normal
+    deps: [camara_enriquecimento]
+    icon: Mekanism:CompressedCarbon
+    desc: |
+      Carvão (ou carvão vegetal) na Câmara de Enriquecimento = §eCarbono Prensado§r. Ele rende
+      bem mais infusão de carbono que o carvão cru — o aço agradece. Junte §e16§r.
+    tasks:
+      - get: Mekanism:CompressedCarbon x16
+    rewards:
+      - xp: 2
+      - item: minecraft:coal x16
+
+  - id: materiais_prensados
+    title: "Redstone e Diamante Prensados"
+    type: optional
+    deps: [carbono_prensado]
+    icon: Mekanism:CompressedDiamond
+    desc: |
+      A Câmara de Enriquecimento também prensa §eredstone§r (Redstone Prensada) e §ediamante§r
+      (Diamante Prensado). Os dois são infusores mais eficientes que o material cru. Faça qualquer
+      um.
+    tasks:
+      - one_of: [Mekanism:CompressedRedstone, Mekanism:CompressedDiamond]
+    rewards:
+      - loot: comum
+
+  - id: infusao_bio
+    title: "Infusões Bio e de Fungo"
+    type: optional
+    deps: [biocombustivel, info_infusao]
+    icon: minecraft:mossy_cobblestone
+    desc: |
+      O Infusor também faz "jardinagem": com §eBio§r (biocombustível), pedregulho vira
+      pedregulho musgoso, tijolo de pedra vira musgoso, areia vira terra e terra vira podzol; com
+      §eFungo§r (cogumelos), terra vira micélio. Faça pedregulho musgoso ou micélio.
+    tasks:
+      - one_of: [minecraft:mossy_cobblestone, minecraft:mycelium, minecraft:stonebrick:1]
+    rewards:
+      - loot: comum
+
+  - id: blocos_mek
+    title: "Blocos de Armazenamento"
+    type: optional
+    deps: [aco_mek]
+    icon: Mekanism:BasicBlock:5
+    desc: |
+      Nove lingotes = um bloco: §eÓsmio§r, §eAço§r, §eBronze§r, §eCobre§r, §eEstanho§r,
+      §eObsidiana Refinada§r, §ePedra Luminosa Refinada§r, e até Ósmio Bruto e Carvão Vegetal.
+      O Bloco de Aço vai no Jetpack Blindado. Faça qualquer um.
+    tasks:
+      - one_of: [Mekanism:BasicBlock, Mekanism:BasicBlock:1, Mekanism:BasicBlock:2, Mekanism:BasicBlock:3, Mekanism:BasicBlock:4, Mekanism:BasicBlock:5, Mekanism:BasicBlock:12, Mekanism:BasicBlock:13, Mekanism:BasicBlock2:10]
+    rewards:
+      - loot: comum
+
+  - id: aglomerados
+    title: "Aglomerados"
+    type: normal
+    deps: [camara_purificacao]
+    icon: Mekanism:Clump
+    desc: |
+      A Câmara de Purificação entrega §e3 Aglomerados§r por minério. Sozinhos eles não viram
+      lingote: passam pelo Triturador (Pó Sujo) e pela Câmara de Enriquecimento (Pó). Junte §e9
+      Aglomerados§r de qualquer metal.
+    tasks:
+      - get: Mekanism:Clump:* x9
+    rewards:
+      - xp: 2
+      - item: ore:oreOsmium x4
+
+  - id: salmoura
+    title: "Salmoura"
+    type: normal
+    deps: [condensentrador_rotativo, oxidador_quimico]
+    icon: Mekanism:BrineBucket
+    desc: |
+      Sal no Oxidador Químico → Salmoura Gasosa → Condensentrador Rotativo (gás → líquido) =
+      §eSalmoura§r líquida. Ou: água na Torre de Evaporação. Encha um balde — ela é a fonte do
+      cloro e do lítio.
+    tasks:
+      - get: Mekanism:BrineBucket
+    rewards:
+      - xp: 2
+      - item: Mekanism:Salt x16
+
+  - id: litio_liquido
+    title: "Lítio Líquido"
+    type: normal
+    deps: [torre_evaporacao, salmoura]
+    icon: Mekanism:LithiumBucket
+    desc: |
+      Salmoura concentrada mais uma vez na Torre de Evaporação vira §eLítio§r. Encha um balde. O
+      lítio vira pó (Cristalizador) para a Matriz de Indução, e gás (Condensentrador) para o
+      Ativador Neutrônico Solar fazer trítio.
+    tasks:
+      - get: Mekanism:LithiumBucket
+    rewards:
+      - xp: 3
+      - item: Mekanism:BrineBucket
+
+  - id: enxofre
+    title: "Enxofre"
+    type: normal
+    deps: [camara_injecao]
+    icon: Mekanism:OtherDust:3
+    desc: |
+      Pólvora na Câmara de Injeção Química (com Cloreto de Hidrogênio) = §ePó de Enxofre§r.
+      Qualquer enxofre do oredict serve (o Thermal e o IC2 também têm). Ele vira Dióxido de
+      Enxofre no Oxidador — o começo do ácido sulfúrico. Junte §e8§r.
+    tasks:
+      - get: ore:dustSulfur x8
+    rewards:
+      - xp: 2
+      - item: minecraft:gunpowder x16
+
+  - id: sodio
+    title: "Sódio"
+    type: optional
+    deps: [cloro]
+    icon: Mekanism:GasTank
+    desc: |
+      Do outro lado do Separador, junto com o cloro, sai o §eSódio§r. Ele não tem muitos usos
+      neste fork, mas cientistas caprichosos guardam tudo. Encha um tanque com sódio.
+    tasks:
+      - get: 'Mekanism:GasTank {stored:{gasName:"sodium"}}'
+        nbt: true
+    rewards:
+      - loot: comum
+
+  - id: tanque_dinamico_multibloco
+    title: "Tanque Dinâmico Multibloco"
+    type: normal
+    deps: [tanque_dinamico, circuito_controle]
+    icon: Mekanism:BasicBlock:11
+    desc: |
+      4 Tanques Dinâmicos + 1 Circuito = 2 §eVálvulas Dinâmicas§r; aço + vidro = 4 §eVidros
+      Estruturais§r. Monte uma caixa oca (mínimo 3×3×3, até 18×18×18) com tanques nas bordas,
+      vidro nas faces e uma válvula para entrada/saída. Ele guarda um único fluido em quantidades
+      enormes. Traga válvulas e vidro.
+    tasks:
+      - get: [Mekanism:BasicBlock:11 x2, Mekanism:BasicBlock:10 x4]
+    rewards:
+      - xp: 2
+      - item: ore:ingotSteel x8
+
+  - id: fabrica_purificacao
+    title: "Fábrica de Purificação"
+    type: normal
+    deps: [fabrica_basica, camara_purificacao]
+    icon: Mekanism:MachineBlock:5
+    desc: |
+      Para o 3× (e o 4× e o 5×) andar rápido, transforme a Câmara de Purificação numa
+      §eFábrica de Purificação§r (de qualquer tier). Ela compartilha um só tanque de oxigênio
+      entre todos os espaços.
+    tasks:
+      - one_of:
+          - 'Mekanism:MachineBlock:5 {recipeType:5}'
+          - 'Mekanism:MachineBlock:6 {recipeType:5}'
+          - 'Mekanism:MachineBlock:7 {recipeType:5}'
+        nbt: true
+    rewards:
+      - xp: 3
+      - item: Mekanism:SpeedUpgrade
+
+  - id: fabrica_injecao
+    title: "Fábrica de Injeção"
+    type: optional
+    deps: [fabrica_basica, camara_injecao]
+    icon: Mekanism:MachineBlock:6
+    desc: |
+      O gargalo do 4× e do 5× é a injeção: cada cristal e cada minério passam por ela. Uma
+      §eFábrica de Injeção§r resolve. Faça uma de qualquer tier.
+    tasks:
+      - one_of:
+          - 'Mekanism:MachineBlock:5 {recipeType:6}'
+          - 'Mekanism:MachineBlock:6 {recipeType:6}'
+          - 'Mekanism:MachineBlock:7 {recipeType:6}'
+        nbt: true
+    rewards:
+      - loot: incomum
+
+  # ======================================================================
+  # FASE 9 — MEKANISMTOOLS
+  # ======================================================================
+  - id: pacachado
+    title: "Pacachado"
+    type: normal
+    deps: [minerio_osmio]
+    icon: MekanismTools:IronPaxel
+    desc: |
+      Por que carregar três ferramentas se dá para levar uma?
+
+      O §ePacachado§r (Paxel) do MekanismTools junta §emachado, picareta e pá§r: coloque as três
+      ferramentas do mesmo material na linha de cima e dois gravetos embaixo. Existe para
+      madeira, pedra, ferro, ouro, diamante e todos os materiais do Mekanism. Faça qualquer um!
+    tasks:
+      - one_of: [MekanismTools:WoodPaxel, MekanismTools:StonePaxel, MekanismTools:IronPaxel, MekanismTools:GoldPaxel, MekanismTools:DiamondPaxel]
+    rewards:
+      - xp: 3
+      - item: minecraft:stick x16
+
+  - id: pacachado_diamante
+    title: "Pacachado de Diamante"
+    type: optional
+    deps: [pacachado]
+    icon: MekanismTools:DiamondPaxel
+    desc: |
+      Machado, picareta e pá de diamante + 2 gravetos = §ePacachado de Diamante§r, com a mesma
+      durabilidade de uma ferramenta de diamante — só que fazendo o trabalho de três.
+    tasks:
+      - get: MekanismTools:DiamondPaxel
+    rewards:
+      - loot: comum
+
+  - id: ferramentas_osmio
+    title: "Ferramentas de Ósmio"
+    type: normal
+    deps: [pacachado, lingote_osmio]
+    icon: MekanismTools:OsmiumPickaxe
+    desc: |
+      Ósmio e gravetos nas formas de sempre: picareta, machado, pá, enxada e espada de ósmio. Elas
+      duram o dobro das de ferro. Junte as três para fazer o §ePacachado de Ósmio§r!
+    tasks:
+      - get: MekanismTools:OsmiumPaxel
+    rewards:
+      - xp: 2
+      - item: ore:ingotOsmium x6
+
+  - id: armadura_osmio
+    title: "Armadura de Ósmio"
+    type: optional
+    deps: [lingote_osmio]
+    icon: MekanismTools:OsmiumChestplate
+    desc: |
+      Elmo, peitoral, calças e botas de §eÓsmio§r — mais resistentes que ferro. Faça as quatro
+      peças.
+    tasks:
+      - get: [MekanismTools:OsmiumHelmet, MekanismTools:OsmiumChestplate, MekanismTools:OsmiumLeggings, MekanismTools:OsmiumBoots]
+    rewards:
+      - loot: comum
+
+  - id: ferramentas_bronze
+    title: "Ferramentas de Bronze"
+    type: optional
+    deps: [pacachado, bronze_mek]
+    icon: MekanismTools:BronzePickaxe
+    desc: |
+      Ferramentas de §eBronze§r (lingote de bronze + gravetos): mais duráveis que as de ósmio.
+      Faça o §ePacachado de Bronze§r.
+    tasks:
+      - get: MekanismTools:BronzePaxel
+    rewards:
+      - loot: comum
+
+  - id: armadura_bronze
+    title: "Armadura de Bronze"
+    type: optional
+    deps: [bronze_mek]
+    icon: MekanismTools:BronzeChestplate
+    desc: |
+      A armadura de §eBronze§r é uma das melhores do começo do jogo, e o bronze é barato com o
+      Infusor. Faça as quatro peças.
+    tasks:
+      - get: [MekanismTools:BronzeHelmet, MekanismTools:BronzeChestplate, MekanismTools:BronzeLeggings, MekanismTools:BronzeBoots]
+    rewards:
+      - loot: comum
+
+  - id: ferramentas_aco
+    title: "Ferramentas de Aço"
+    type: normal
+    deps: [pacachado, aco_mek]
+    icon: MekanismTools:SteelPickaxe
+    desc: |
+      As ferramentas de §eAço§r usam lingotes de ferro no lugar dos gravetos (até o pacachado).
+      Fortes e bem duráveis. Faça o §ePacachado de Aço§r.
+    tasks:
+      - get: MekanismTools:SteelPaxel
+    rewards:
+      - xp: 2
+      - item: ore:ingotSteel x6
+
+  - id: armadura_aco
+    title: "Armadura de Aço"
+    type: normal
+    deps: [aco_mek]
+    icon: MekanismTools:SteelChestplate
+    desc: |
+      A armadura de §eAço§r (aço com detalhes de ferro) é sólida para o meio do jogo. Faça as
+      quatro peças.
+    tasks:
+      - get: [MekanismTools:SteelHelmet, MekanismTools:SteelChestplate, MekanismTools:SteelLeggings, MekanismTools:SteelBoots]
+    rewards:
+      - xp: 3
+      - item: ore:ingotSteel x8
+
+  - id: ferramentas_obsidiana
+    title: "Ferramentas de Obsidiana Refinada"
+    type: normal
+    deps: [pacachado, obsidiana_refinada]
+    icon: MekanismTools:ObsidianPickaxe
+    desc: |
+      As melhores ferramentas do MekanismTools: §eObsidiana Refinada§r + gravetos. Elas cavam
+      rápido e duram muito (o pacachado chega a 3000 usos). Faça o §ePacachado de Obsidiana§r.
+    tasks:
+      - get: MekanismTools:ObsidianPaxel
+    rewards:
+      - xp: 3
+      - item: ore:ingotRefinedObsidian x4
+
+  - id: armadura_obsidiana
+    title: "Armadura de Obsidiana Refinada"
+    type: normal
+    deps: [obsidiana_refinada]
+    icon: MekanismTools:ObsidianChestplate
+    desc: |
+      A armadura mais resistente do MekanismTools, feita de §eObsidiana Refinada§r (24 barras no
+      total). Pesada no bolso, leve no medo. Faça as quatro peças.
+    tasks:
+      - get: [MekanismTools:ObsidianHelmet, MekanismTools:ObsidianChestplate, MekanismTools:ObsidianLeggings, MekanismTools:ObsidianBoots]
+    rewards:
+      - xp: 4
+      - item: ore:ingotRefinedObsidian x4
+
+  - id: ferramentas_pedra_luminosa
+    title: "Ferramentas de Pedra Luminosa"
+    type: optional
+    deps: [pacachado, pedra_luminosa_refinada]
+    icon: MekanismTools:GlowstonePickaxe
+    desc: |
+      Ferramentas de §ePedra Luminosa Refinada§r: muito rápidas, mas pouco duráveis. Bonitas de
+      ver brilhando na mão. Faça o §ePacachado de Pedra Luminosa§r.
+    tasks:
+      - get: MekanismTools:GlowstonePaxel
+    rewards:
+      - loot: comum
+
+  - id: armadura_pedra_luminosa
+    title: "Armadura de Pedra Luminosa"
+    type: optional
+    deps: [pedra_luminosa_refinada]
+    icon: MekanismTools:GlowstoneChestplate
+    desc: |
+      Elmo, peitoral, calças e botas de §ePedra Luminosa Refinada§r. Você vai brilhar (de
+      estilo). Faça as quatro peças.
+    tasks:
+      - get: [MekanismTools:GlowstoneHelmet, MekanismTools:GlowstoneChestplate, MekanismTools:GlowstoneLeggings, MekanismTools:GlowstoneBoots]
+    rewards:
+      - loot: comum
+
+  - id: ferramentas_lapis
+    title: "Ferramentas de Lápis-Lazúli"
+    type: optional
+    deps: [pacachado]
+    icon: MekanismTools:LapisLazuliPickaxe
+    desc: |
+      Ferramentas de §elápis-lazúli§r (o corante azul, direto da mina): frágeis, mas encantam
+      muito bem. Faça o §ePacachado de Lápis-Lazúli§r.
+    tasks:
+      - get: MekanismTools:LapisLazuliPaxel
+    rewards:
+      - loot: comum
+
+  - id: armadura_lapis
+    title: "Armadura de Lápis-Lazúli"
+    type: optional
+    deps: [minerio_osmio]
+    icon: MekanismTools:LapisLazuliChestplate
+    desc: |
+      Uma armadura azul, feita de lápis-lazúli puro. Não é a mais forte, mas é ótima para
+      encantar. Faça as quatro peças.
+    tasks:
+      - get: [MekanismTools:LapisLazuliHelmet, MekanismTools:LapisLazuliChestplate, MekanismTools:LapisLazuliLeggings, MekanismTools:LapisLazuliBoots]
+    rewards:
+      - loot: comum
+
+  - id: arsenal_mek
+    title: "O Arsenal do Mekanism"
+    type: milestone
+    deps: [ferramentas_obsidiana, armadura_obsidiana, desintegrador_atomico, jetpack_abastecido]
+    icon: MekanismTools:ObsidianPaxel
+    banner: "O Arsenal do Mekanism"
+    subtitle: "Obsidiana refinada, átomos e hidrogênio"
+    desc: |
+      Armadura de Obsidiana Refinada, um Pacachado que não acaba nunca, um Desintegrador Atômico
+      que derruba veios inteiros e um Jetpack cheio de hidrogênio. Herói, você está pronto para
+      qualquer mina — e para qualquer céu.
+
+      §aDica:§r o Desintegrador no modo "veio" e o Jetpack no modo "pairar" formam a dupla de
+      mineração mais rápida que eu conheço.
+    tasks:
+      - get: [MekanismTools:ObsidianChestplate, MekanismTools:ObsidianPaxel, Mekanism:AtomicDisassembler:*, Mekanism:Jetpack]
+    rewards:
+      - xp: 8
+      - kit: {name: "Kit do Minerador Químico", items: [ore:ingotRefinedObsidian x8, Mekanism:EnergyTablet x2, 'Mekanism:GasTank {tier:0}', minecraft:torch x64, minecraft:cooked_beef x32]}
+      - loot: raro
+
+  # ======================================================================
+  # MARCO FINAL
+  # ======================================================================
+  - id: mestre_quimico
+    title: "Mestre da Química"
+    type: milestone
+    deps: [primeira_fabrica_mek, tres_ligas, processamento_5x, logistica_mek, matriz_inducao, dobrando_espaco, arsenal_mek]
+    icon: Mekanism:AtomicAlloy
+    banner: "Mestre da Química"
+    subtitle: "O Volume da Química está completo"
+    effect: 3
+    desc: |
+      Herói. Respira fundo comigo.
+
+      Lembra do primeiro minério azulado? Do Infusor Metalúrgico zumbindo pela primeira vez, do
+      aço que nasceu de ferro com carvão? Depois vieram as três ligas, os gases engarrafados, o
+      cloro, o ácido sulfúrico — e cada minério passou a valer §ecinco§r. Vieram as fábricas, a
+      Matriz de Indução, o portal de obsidiana refinada e o Minerador Digital.
+
+      §bO Volume da Química está reescrito.§r Ele brilha no §6Selo da Engrenagem§r junto com os
+      outros grandes Volumes de tecnologia.
+
+      E ainda há fogo pela frente: no capítulo §eMekanism: Geradores e Fusão§r, este mesmo
+      conhecimento acende turbinas industriais e um §eReator de Fusão§r com deutério e trítio.
+      Obrigada por consertar mais esta página do meu livro.
+    tasks:
+      - get: [Mekanism:MachineBlock2:8, Mekanism:BasicBlock2:2, Mekanism:MachineBlock:11, Mekanism:AtomicDisassembler:*]
+    rewards:
+      - xp: 12
+      - kit: {name: "Legado do Mestre da Química", items: [Mekanism:AtomicAlloy x8, Mekanism:ControlCircuit:3 x2, Mekanism:SpeedUpgrade x8, Mekanism:EnergyUpgrade x8, Mekanism:TeleportationCore]}
+      - loot: [epico]
+      - command: "/effect @p 1 1200 1"

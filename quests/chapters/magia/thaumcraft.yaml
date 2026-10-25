@@ -1,0 +1,2728 @@
+chapter:
+  id: thaumcraft
+  title: "Thaumcraft I — O Aprendiz"
+  prefix: ""
+  order: 500
+  icon: Thaumcraft:ItemThaumonomicon
+  desc: |
+    §dO Volume da Taumaturgia, primeira parte.§r Varinhas, nós de aura, aspectos e pesquisa,
+    o Crisol e a alquimia, o Táumio, a destilação de essência, os primeiros golens e o
+    Altar de Infusão. (Thaumcraft 4.2.3.5)
+
+quests:
+  # ======================================================================
+  # FASE 0 — O LIVRO E A VARINHA
+  # ======================================================================
+  - id: aprendiz
+    title: "O Aprendiz da Taumaturgia"
+    type: info
+    icon: Thaumcraft:ItemThaumonomicon
+    desc: |
+      Herói, senta aqui comigo um minutinho. Este é o Volume que mais sofreu com a Fratura: a
+      §dTaumaturgia§r, a arte de enxergar a magia que existe dentro de TUDO — pedra, árvore,
+      criatura — e de dobrá-la com uma varinha.
+
+      O Thaumcraft funciona por §epesquisa§r: você examina o mundo, ganha pontos de aspecto,
+      resolve quebra-cabeças numa mesa e só então o livro (o §eTaumonomicon§r) libera as
+      receitas. Quase nada aqui se faz numa bancada comum, e o NEI mostra as receitas, mas
+      elas só funcionam depois da pesquisa feita.
+
+      §aDica:§r com o NEI aberto, passe o mouse num item e segure §eShift§r para ver os
+      aspectos que você já descobriu. Vamos começar pela varinha?
+    tasks:
+      - check
+    rewards:
+      - xp: 1
+
+  - id: pepitas_ferro
+    title: "Pepitas de Ferro"
+    type: main
+    deps: [aprendiz]
+    icon: Thaumcraft:ItemNugget
+    desc: |
+      Toda varinha precisa de duas pontas que "focam" a magia. As mais simples são de ferro,
+      e as pontas de ferro são feitas de §epepitas de ferro§r.
+
+      O próprio Thaumcraft transforma 1 lingote de ferro em 9 pepitas na bancada (e 9 pepitas
+      voltam a ser um lingote). Pepitas de ferro de outros mods também servem.
+
+      Junte §e10 pepitas§r: 5 para cada ponta.
+    tasks:
+      - get: ore:nuggetIron x10
+    rewards:
+      - xp: 3
+      - choice: [minecraft:iron_ingot x4, minecraft:stick x16, minecraft:bookshelf x2]
+
+  - id: pontas_ferro
+    title: "Pontas de Ferro"
+    type: main
+    deps: [pepitas_ferro]
+    icon: Thaumcraft:WandCap
+    desc: |
+      Cinco pepitas de ferro em formato de "U" de cabeça para baixo (três em cima, uma em
+      cada lado embaixo) viram uma §ePonta de Ferro§r. Faça duas.
+
+      As pontas de ferro são as piores que existem: elas §ccobram 10% a mais§r de vis em
+      tudo o que a varinha faz. Mas todo mago começa de algum lugar, e eu prometo que logo
+      você troca por ouro.
+    tasks:
+      - get: Thaumcraft:WandCap x2
+    rewards:
+      - xp: 3
+      - choice: [minecraft:iron_ingot x4, minecraft:gold_nugget x12, minecraft:torch x16]
+
+  - id: varinha_ferro
+    title: "A Primeira Varinha"
+    type: main
+    deps: [pontas_ferro]
+    icon: Thaumcraft:WandCasting
+    desc: |
+      Uma ponta de ferro, um graveto no meio e outra ponta na diagonal: eis a §eVarinha de
+      Conjuração§r básica. É a ÚNICA varinha que se faz numa bancada comum.
+
+      Ela guarda só §e25 de vis§r de cada aspecto primal. Para encher, segure o botão direito
+      olhando para um §dNó de Aura§r (aquelas bolhas brilhantes que flutuam pelo mundo). O
+      mostrador no canto da tela mostra quanto vis ela tem; com Shift você vê os números.
+
+      §cCuidado:§r drenar um nó até o fim pode enfraquecê-lo ou até apagá-lo.
+    tasks:
+      - get: Thaumcraft:WandCasting:*
+    rewards:
+      - xp: 3
+      - choice: [minecraft:bookshelf x2, minecraft:glass x8, minecraft:gold_ingot x4]
+
+  - id: taumonomicon
+    title: "O Taumonomicon"
+    type: main
+    deps: [varinha_ferro]
+    icon: Thaumcraft:ItemThaumonomicon
+    desc: |
+      Lembra que eu disse que o Registro rachou? Esta é a parte da Taumaturgia que sobrou
+      inteira: o §eTaumonomicon§r.
+
+      Coloque uma §eEstante§r no mundo e clique nela com a varinha. A estante se transforma
+      no livro! Ele mostra as abas Básico, Taumaturgia, Alquimia, Artifício, Golemancia e
+      Eldritch, e cada descoberta sua aparece lá com as receitas.
+
+      §aDica:§r neste pack o livro ganhou extras (Salis Arcana e TC4 Tweaks): Ctrl + roda do
+      mouse troca de aba, há busca de pesquisas e o clique direito volta para a página anterior.
+    tasks:
+      - get: Thaumcraft:ItemThaumonomicon
+    rewards:
+      - xp: 3
+      - choice: [minecraft:paper x16, minecraft:feather x4, minecraft:dye x4]
+
+  # ======================================================================
+  # FASE 1 — ESTILHAÇOS, TAUMÔMETRO E PESQUISA
+  # ======================================================================
+  - id: estilhacos
+    title: "Pedras Infundidas"
+    type: main
+    deps: [aprendiz]
+    icon: Thaumcraft:blockCustomOre:1
+    desc: |
+      Onde a aura é muito forte, a magia se cristaliza dentro da pedra. As §ePedras
+      Infundidas§r aparecem nas cavernas, brilhando em seis cores — uma para cada aspecto
+      primal: Aer (ar), Terra, Ignis (fogo), Aqua (água), Ordo (ordem) e Perditio (entropia).
+
+      Quebre e você ganha §eEstilhaços§r (com Fortuna, mais). Eles entram em quase tudo:
+      taumômetro, focos, melhorias de golem, pedra arcana...
+
+      Pegue qualquer estilhaço para começar. As próximas quests pedem um punhado de cada.
+    tasks:
+      - one_of: [Thaumcraft:ItemShard, Thaumcraft:ItemShard:1, Thaumcraft:ItemShard:2, Thaumcraft:ItemShard:3, Thaumcraft:ItemShard:4, Thaumcraft:ItemShard:5]
+    rewards:
+      - xp: 3
+      - choice: [minecraft:iron_pickaxe, minecraft:torch x32, minecraft:bread x8]
+
+  - id: estilhaco_aer
+    title: "Estilhaço de Ar"
+    type: normal
+    deps: [estilhacos]
+    icon: Thaumcraft:ItemShard
+    desc: |
+      Amarelinho e leve, o §eEstilhaço de Ar§r carrega Aer: movimento, voo, velocidade. Ele vai
+      para o Foco de Choque, o Fole Arcano, as Botas do Viajante e a Melhoria de Golem: Ar.
+
+      Junte §e6 estilhaços de ar§r. §aDica:§r as pedras infundidas de ar costumam aparecer em
+      regiões de montanha e no alto das cavernas.
+    tasks:
+      - get: Thaumcraft:ItemShard x6
+    rewards:
+      - xp: 2
+      - item: minecraft:feather x8
+
+  - id: estilhaco_terra
+    title: "Estilhaço de Terra"
+    type: normal
+    deps: [estilhacos]
+    icon: Thaumcraft:ItemShard:3
+    desc: |
+      Verde e pesado, o §eEstilhaço de Terra§r é o mais "pé no chão" de todos. Foco de
+      Escavação, Pavimento de Viagem, Levitador, Pá do Movedor de Terra... tudo começa aqui.
+
+      Junte §e6 estilhaços de terra§r.
+    tasks:
+      - get: Thaumcraft:ItemShard:3 x6
+    rewards:
+      - xp: 2
+      - item: minecraft:dirt x16
+
+  - id: estilhaco_ignis
+    title: "Estilhaço de Fogo"
+    type: normal
+    deps: [estilhacos]
+    icon: Thaumcraft:ItemShard:1
+    desc: |
+      Este aqui é quentinho na mão (não aperte muito). O §eEstilhaço de Fogo§r alimenta o
+      Foco de Fogo, a Picareta do Núcleo e a Melhoria de Golem: Fogo.
+
+      Junte §e6 estilhaços de fogo§r. As pedras infundidas de fogo são mais comuns perto de
+      lava e em biomas quentes.
+    tasks:
+      - get: Thaumcraft:ItemShard:1 x6
+    rewards:
+      - xp: 2
+      - item: minecraft:coal x8
+
+  - id: estilhaco_aqua
+    title: "Estilhaço de Água"
+    type: normal
+    deps: [estilhacos]
+    icon: Thaumcraft:ItemShard:2
+    desc: |
+      Azul e fresquinho, o §eEstilhaço de Água§r (o jogo escreve "Estilhado de Água", juro que
+      não fui eu). Ele vai para o Foco de Gelo, o Machado da Corrente e a Melhoria de Golem:
+      Água.
+
+      Junte §e6 estilhaços de água§r.
+    tasks:
+      - get: Thaumcraft:ItemShard:2 x6
+    rewards:
+      - xp: 2
+      - item: minecraft:clay_ball x8
+
+  - id: estilhaco_ordo
+    title: "Estilhaço de Ordem"
+    type: normal
+    deps: [estilhacos]
+    icon: Thaumcraft:ItemShard:4
+    desc: |
+      Branco e brilhante, o §eEstilhaço de Ordem§r representa estrutura, pureza e controle.
+      Aparece no Pavimento Guardião, na Enxada do Crescimento e na Melhoria de Golem: Ordem.
+
+      Junte §e6 estilhaços de ordem§r.
+    tasks:
+      - get: Thaumcraft:ItemShard:4 x6
+    rewards:
+      - xp: 2
+      - item: minecraft:quartz x8
+
+  - id: estilhaco_perditio
+    title: "Estilhaço de Entropia"
+    type: normal
+    deps: [estilhacos]
+    icon: Thaumcraft:ItemShard:5
+    desc: |
+      Escuro e meio inquietante: o §eEstilhaço de Entropia§r é destruição, caos e decadência.
+      Ele vai para o Arco de Osso, a Enxada do Crescimento e a Melhoria de Golem: Entropia.
+
+      Junte §e6 estilhaços de entropia§r — e não deixe perto dos outros, eles ficam brigando.
+      (Brincadeira. Acho.)
+    tasks:
+      - get: Thaumcraft:ItemShard:5 x6
+    rewards:
+      - xp: 2
+      - item: minecraft:gunpowder x4
+
+  - id: cacho_misto
+    title: "Cacho de Cristais"
+    type: optional
+    deps: [estilhaco_aer, estilhaco_terra, estilhaco_ignis, estilhaco_aqua, estilhaco_ordo, estilhaco_perditio]
+    icon: Thaumcraft:blockCrystal:6
+    desc: |
+      Seis estilhaços iguais na bancada viram um §eCacho de Cristais§r daquela cor; um de cada
+      cor vira o §eCacho Misto§r. Eles decoram a casa e, mais importante, servem como
+      §eestabilizadores§r no Altar de Infusão (junto com velas e crânios).
+
+      Monte um Cacho Misto. Quebrar um cacho devolve os estilhaços.
+    tasks:
+      - get: Thaumcraft:blockCrystal:6
+    rewards:
+      - loot: comum
+
+  - id: taumometro
+    title: "O Taumômetro"
+    type: main
+    deps: [taumonomicon, estilhacos]
+    icon: Thaumcraft:ItemThaumometer
+    desc: |
+      Agora sim, a ferramenta do curioso! O §eTaumômetro§r se faz na bancada: vidro no meio,
+      ouro dos lados e um estilhaço (qualquer) em cima e embaixo.
+
+      Segure o botão direito apontando para um bloco, item, criatura ou nó: em um segundo
+      você descobre os aspectos dele e ganha §epontos de pesquisa§r. Cada coisa só pode ser
+      examinada uma vez, e a primeira vez que você descobre um aspecto vale pontos extras.
+
+      §aDica:§r neste pack o Taumômetro também examina o conteúdo de baús (pesquisa
+      "Container Scanning", do Salis Arcana).
+    tasks:
+      - get: Thaumcraft:ItemThaumometer
+    rewards:
+      - xp: 3
+      - choice: [minecraft:gold_ingot x4, minecraft:glass x8, minecraft:paper x12]
+
+  - id: examinando
+    title: "Examinar Tudo"
+    type: info
+    deps: [taumometro]
+    icon: Thaumcraft:ItemThaumometer
+    desc: |
+      Pesquisa no Thaumcraft é feita com §epontos de aspecto§r, e você ganha esses pontos
+      examinando o mundo com o Taumômetro.
+
+      §e•§r Você só consegue examinar algo se já conhece os aspectos dele (ou os aspectos que
+      os formam). Comece pelo simples: terra, pedra, madeira, água, animais.
+      §e•§r Cada objeto ou criatura só rende pontos uma vez.
+      §e•§r Às vezes um exame revela uma pesquisa nova no livro (ícone âmbar).
+      §e•§r Há um limite suave de 100 pontos por aspecto guardados; acima disso o ganho cai.
+
+      Saia por aí apontando o Taumômetro para tudo. Eu vou junto, adoro essa parte!
+    tasks:
+      - check
+    rewards:
+      - xp: 1
+
+  - id: ferramenta_escrita
+    title: "Ferramenta de Escrita"
+    type: main
+    deps: [taumometro]
+    icon: Thaumcraft:ItemInkwell
+    desc: |
+      Toda pesquisa precisa de tinta e papel. A §eFerramenta de Escrita§r é feita sem forma na
+      bancada: um Frasco de Vidro (ou garrafa de vidro), uma pena e uma tinta preta.
+
+      Quando a tinta acabar, junte a ferramenta com outra tinta preta para recarregar. Leve
+      também §epapel§r: cada nota de pesquisa gasta uma folha.
+    tasks:
+      - get: [Thaumcraft:ItemInkwell, minecraft:paper x8]
+    rewards:
+      - xp: 3
+      - choice: [minecraft:dye x8, minecraft:paper x16, minecraft:feather x8]
+
+  - id: mesas
+    title: "Mesas de Trabalho"
+    type: main
+    deps: [ferramenta_escrita]
+    icon: Thaumcraft:blockTable
+    desc: |
+      A §eMesa§r do Thaumcraft é mais que decoração: três lajes de madeira em cima e duas
+      tábuas como pernas. Ela é a base da Mesa de Pesquisa e da Mesa de Manufatura Arcana.
+
+      Faça §e3 mesas§r: duas para a Mesa de Pesquisa e uma para a Mesa Arcana.
+    tasks:
+      - get: Thaumcraft:blockTable x3
+    rewards:
+      - xp: 3
+      - choice: [minecraft:planks x16, minecraft:wooden_slab x12, minecraft:log x8]
+
+  - id: nota_pesquisa
+    title: "A Primeira Nota de Pesquisa"
+    type: main
+    deps: [mesas]
+    icon: Thaumcraft:ItemResearchNotes
+    desc: |
+      Coloque §eduas mesas lado a lado§r e clique nelas com a Ferramenta de Escrita: nasce a
+      §eMesa de Pesquisa§r.
+
+      No livro, pesquisas que piscam são as que você pode fazer. Clique numa (com papel e
+      tinta no inventário) e ganhe uma §eNota de Pesquisa§r. Coloque a nota na mesa: aparece
+      uma folha de hexágonos com aspectos nas bordas. Ligue-os arrastando aspectos para os
+      hexágonos vizinhos, de modo que cada vizinho seja um componente do outro.
+
+      Resolva sua primeira nota — ela fica guardada como "descoberta".
+    tasks:
+      - get: Thaumcraft:ItemResearchNotes:*
+    rewards:
+      - xp: 3
+      - choice: [minecraft:paper x16, minecraft:dye x8, minecraft:book x4]
+
+  - id: aspectos
+    title: "Aspectos Primais e Compostos"
+    type: info
+    deps: [nota_pesquisa]
+    icon: Thaumcraft:ItemEssence
+    desc: |
+      Existem §eseis aspectos primais§r: Aer, Terra, Ignis, Aqua, Ordo e Perditio. Todos os
+      outros (dezenas!) são §ecompostos§r de dois aspectos. Exemplo: Victus (vida) = Terra +
+      Aqua; Lux (luz) = Aer + Ignis.
+
+      Na Mesa de Pesquisa você pode §ecombinar§r aspectos que já tem para criar compostos
+      (os componentes são gastos mesmo se a combinação falhar). Na nota, cada aspecto colocado
+      num hexágono custa 1 ponto.
+
+      §aDica:§r o NEI deste pack tem as abas "Aspect Combination" e "Items Containing Aspect"
+      — ótimas para planejar.
+    tasks:
+      - check
+    rewards:
+      - xp: 1
+
+  - id: fragmento
+    title: "Fragmentos de Conhecimento"
+    type: normal
+    deps: [nota_pesquisa]
+    icon: Thaumcraft:ItemResource:9
+    desc: |
+      Às vezes o mundo esconde pedacinhos do Registro rasgado: os §eFragmentos de
+      Conhecimento§r. Eles aparecem em urnas e caixotes de ruínas, e os cultistas carmesins
+      também deixam cair alguns.
+
+      Usar um fragmento dá alguns pontos de pesquisa. Mas §e9 fragmentos§r na bancada viram
+      uma nota especial que revela pesquisas "perdidas", impossíveis de conseguir de outro
+      jeito. Se a teoria for falsa, você recebe a maioria dos fragmentos de volta.
+    tasks:
+      - get: Thaumcraft:ItemResource:9 x3
+    rewards:
+      - xp: 2
+      - item: minecraft:paper x8
+
+  - id: pesquisador
+    title: "Especialização em Pesquisa"
+    type: info
+    deps: [nota_pesquisa]
+    icon: Thaumcraft:ItemInkwell
+    desc: |
+      Duas pesquisas da aba Básico deixam a vida muito mais fácil:
+
+      §e• Especialização em Pesquisa:§r 25% de chance de recuperar o ponto quando você remove
+      um aspecto da nota, e mostra os componentes de cada aspecto.
+      §e• Mestre em Pesquisas:§r 50% de chance de recuperar, 10% de chance de colocar um
+      aspecto de graça e Shift+clique para combinar aspectos automaticamente. §cDá 1 de
+      Warp.§r
+
+      Depois vem a §eDuplicação de Pesquisa§r, que copia notas prontas.
+    tasks:
+      - check
+    rewards:
+      - xp: 1
+
+  - id: mesa_desconstrucao
+    title: "Mesa de Desconstrução"
+    type: optional
+    deps: [pesquisador]
+    icon: Thaumcraft:blockTable:14
+    desc: |
+      Faltou ponto de um primal? A §eMesa de Desconstrução§r quebra itens em aspectos primais
+      e às vezes devolve 1 ponto. É lenta, mas trabalha sozinha.
+
+      Receita arcana: Mesa, Taumômetro, machado e picareta de ouro (custa Perditio). Precisa
+      da pesquisa de mesmo nome (aba Básico).
+    tasks:
+      - get: Thaumcraft:blockTable:14
+    rewards:
+      - loot: comum
+
+  - id: primeira_descoberta
+    title: "A Primeira Descoberta"
+    type: milestone
+    deps: [aspectos, fragmento]
+    icon: Thaumcraft:ItemResearchNotes
+    banner: "A Primeira Descoberta"
+    subtitle: "O Volume da Taumaturgia desperta"
+    desc: |
+      Varinha, Taumonomicon, Taumômetro, Mesa de Pesquisa e a primeira nota resolvida. Herói,
+      você acabou de fazer algo que ninguém fazia desde a Fratura: §dler a magia do mundo§r.
+
+      O caminho agora se divide em três frentes que andam juntas:
+      §e• Taumaturgia§r — a Mesa Arcana e varinhas melhores.
+      §e• Alquimia§r — o Crisol, que transforma itens em essência e essência em itens.
+      §e• Artifício§r — ferramentas, óculos e, lá na frente, a Infusão.
+
+      Continue examinando tudo com o Taumômetro: pontos de pesquisa são a moeda deste Volume.
+    tasks:
+      - get: [Thaumcraft:ItemThaumonomicon, Thaumcraft:ItemThaumometer, Thaumcraft:ItemInkwell]
+    rewards:
+      - xp: 5
+      - kit: {name: "Kit do Aprendiz de Taumaturgia", items: [minecraft:paper x32, minecraft:dye x8, Thaumcraft:ItemShard x4, Thaumcraft:ItemShard:1 x4, Thaumcraft:ItemShard:2 x4, Thaumcraft:ItemShard:3 x4, Thaumcraft:ItemShard:4 x4, Thaumcraft:ItemShard:5 x4]}
+      - loot: incomum
+
+  # ======================================================================
+  # FASE 2 — O MUNDO MÁGICO: MINÉRIOS, PLANTAS, NÓS
+  # ======================================================================
+  - id: cinabrio
+    title: "Cinábrio e Mercúrio"
+    type: normal
+    deps: [estilhacos]
+    icon: Thaumcraft:blockCustomOre
+    desc: |
+      Esse minério avermelhado mora §ebem fundo§r no subsolo. O §eMinério de Cinábrio§r
+      derretido na fornalha vira §eMercúrio§r, um metal líquido muito usado: Vidro Espelhado,
+      Foco de Troca Equivalente, tubos de essência...
+
+      Junte §e4 Mercúrios§r. §aDica:§r a Flor Brilhante também vira mercúrio na bancada.
+    tasks:
+      - get: Thaumcraft:ItemResource:3 x4
+    rewards:
+      - xp: 2
+      - item: minecraft:iron_ingot x4
+
+  - id: ambar
+    title: "Âmbar"
+    type: normal
+    deps: [estilhacos]
+    icon: Thaumcraft:ItemResource:6
+    desc: |
+      O §eÂmbar Preso em Pedra§r fica perto da superfície e, ao ser quebrado, solta pedaços de
+      §eÂmbar§r. Ele entra na Matriz Mnemônica, nos amuletos e anéis de proteção rúnica, e
+      quatro pedaços formam um Bloco de Âmbar (lindo como janela).
+
+      Junte §e4 Âmbares§r.
+    tasks:
+      - get: Thaumcraft:ItemResource:6 x4
+    rewards:
+      - xp: 2
+      - item: minecraft:glass x8
+
+  - id: greatwood
+    title: "Greatwood"
+    type: main
+    deps: [taumonomicon]
+    icon: Thaumcraft:blockMagicalLog
+    desc: |
+      Árvores enormes e escuras, espalhadas pelo campo: a §eGreatwood§r absorve magia como uma
+      esponja. Sua madeira vira as §eHastes de Greatwood§r, o primeiro upgrade de varinha, e as
+      tábuas de greatwood entram em muitos aparelhos.
+
+      Corte §e8 Madeiras de Greatwood§r e guarde algumas mudas.
+    tasks:
+      - get: Thaumcraft:blockMagicalLog x8
+    rewards:
+      - xp: 3
+      - choice: [minecraft:iron_axe, minecraft:apple x6, minecraft:bread x8]
+
+  - id: silverwood
+    title: "Silverwood"
+    type: normal
+    deps: [greatwood]
+    icon: Thaumcraft:blockMagicalLog:1
+    desc: |
+      Que coisa rara e bonita! A §eSilverwood§r tem folhas que cintilam e madeira clara que
+      purifica. Nós de aura costumam nascer no coração dela — e nós puros perto dela
+      transformam a região numa Floresta Mágica.
+
+      Pegue §e4 Madeiras de Silverwood§r e, se puder, uma muda. Ela vira a Haste de Silverwood,
+      um dos maiores marcos deste capítulo.
+    tasks:
+      - get: Thaumcraft:blockMagicalLog:1 x4
+    rewards:
+      - xp: 2
+      - item: Thaumcraft:blockCustomPlant x2
+
+  - id: flor_brilhante
+    title: "Flor Brilhante"
+    type: normal
+    deps: [silverwood]
+    icon: Thaumcraft:blockCustomPlant:2
+    desc: |
+      Ela só cresce à sombra das Silverwoods. A §eFlor Brilhante§r vira Mercúrio na bancada e,
+      no Crisol, se transforma na Flor Etérea, que cura terras maculadas.
+
+      Colha §e2 Flores Brilhantes§r.
+    tasks:
+      - get: Thaumcraft:blockCustomPlant:2 x2
+    rewards:
+      - xp: 2
+      - item: minecraft:bone x8
+
+  - id: perola_cinzas
+    title: "Pérola de Cinzas"
+    type: optional
+    deps: [greatwood]
+    icon: Thaumcraft:blockCustomPlant:3
+    desc: |
+      Em desertos e lugares muito quentes cresce uma florzinha que queima: a §ePérola de
+      Cinzas§r (Cinderpearl). Uma delas na bancada vira §ePó de Blaze§r — sem precisar ir ao
+      Nether!
+
+      Colha uma.
+    tasks:
+      - get: Thaumcraft:blockCustomPlant:3
+    rewards:
+      - loot: comum
+
+  - id: feijao_mana
+    title: "Feijões de Mana"
+    type: optional
+    deps: [floresta_magica]
+    icon: Thaumcraft:ItemManaBean
+    desc: |
+      Nas árvores das Florestas Mágicas crescem vagens estranhas que soltam §eFeijões de
+      Mana§r, cheios de essência. Dá para comer (o efeito é... surpresa) ou replantar numa
+      tora, devagar. Plantar feijões lado a lado às vezes gera feijões de aspectos compostos.
+    tasks:
+      - get: Thaumcraft:ItemManaBean
+    rewards:
+      - loot: comum
+
+  - id: floresta_magica
+    title: "A Floresta Mágica"
+    type: optional
+    deps: [silverwood]
+    icon: Thaumcraft:blockCustomPlant:5
+    desc: |
+      Árvores enormes, cogumelos que brilham, o ar cheio de vis... A §eFloresta Mágica§r é o
+      bioma onde o véu entre mundos é mais fino. Wisps e Pechs vivem por lá.
+
+      Visite uma. §cCuidado§r com os §eVishrooms§r (cogumelos roxos): encostar neles dá
+      enjoo.
+    tasks:
+      - visit: {dim: 0, biome: 193, name: "Floresta Mágica"}
+    rewards:
+      - loot: comum
+
+  - id: essencia_eterea
+    title: "Essência Etérea"
+    type: normal
+    deps: [examinando]
+    icon: Thaumcraft:ItemWispEssence
+    desc: |
+      Os §eWisps§r são bolinhas de luz que aparecem à noite (mais ainda em Florestas Mágicas)
+      e soltam raios. Ao morrer, deixam §eEssência Etérea§r de um aspecto: uma das poucas
+      fontes fáceis de aspectos raros, como Auram.
+
+      Derrote um Wisp e pegue a essência. Examine o Wisp antes, vale pontos!
+    tasks:
+      - get: Thaumcraft:ItemWispEssence
+    rewards:
+      - xp: 2
+      - item: minecraft:glowstone_dust x8
+
+  - id: nos_aura
+    title: "Nós de Aura"
+    type: info
+    deps: [varinha_ferro]
+    icon: Thaumcraft:WandCasting
+    desc: |
+      Os §dNós de Aura§r são as fontes do vis. Cada um tem quantidades de alguns aspectos
+      (geralmente primais) e se recarrega com o tempo.
+
+      §e•§r Nós de tipos especiais: Puro, Sinistro, Faminto, Maculado e Instável. O modo
+      "hard_mode_nodes" está ligado: nós negativos têm efeitos bem piores.
+      §e•§r Drenar um aspecto até zero pode danificar o nó.
+      §e•§r Pesquisas Drenagem Avançada (2×) e Mestre em Drenagem (3×) aceleram a coleta;
+      Preservação de Nós sempre deixa 1 de cada aspecto (exceto com varinhas de ferro e
+      madeira).
+
+      §aDica:§r o mod TC Node Tracker guarda os nós que você examina (veja os controles).
+    tasks:
+      - check
+    rewards:
+      - xp: 1
+
+  # ======================================================================
+  # FASE 3 — TAUMATURGIA: MESA ARCANA E VARINHAS
+  # ======================================================================
+  - id: mesa_arcana
+    title: "Mesa de Manufatura Arcana"
+    type: main
+    deps: [mesas, primeira_descoberta]
+    icon: Thaumcraft:blockTable:15
+    desc: |
+      Clique numa Mesa colocada no mundo com a varinha e ela vira a §eMesa de Manufatura
+      Arcana§r. Ela funciona como uma bancada, mas com um espaço para a §evarinha§r no canto
+      superior direito: as receitas arcanas gastam vis direto da varinha (os seis círculos em
+      volta da grade mostram o custo).
+
+      Quebre a mesa e pegue de volta como item para a quest. Daqui saem pontas, hastes,
+      focos, óculos, tubos e muito mais.
+    tasks:
+      - get: Thaumcraft:blockTable:15
+    rewards:
+      - xp: 3
+      - choice: [minecraft:gold_ingot x4, Thaumcraft:ItemShard:4 x4, minecraft:quartz x8]
+
+  - id: pontas_ouro
+    title: "Pontas de Ouro"
+    type: main
+    deps: [mesa_arcana]
+    icon: Thaumcraft:WandCap:1
+    desc: |
+      O ouro foca a magia sem desperdício: §ePontas de Ouro§r não cobram nada a mais (fator
+      100%, contra 110% do ferro).
+
+      Na Mesa Arcana: 5 pepitas de ouro no mesmo formato das pontas de ferro, e um pouquinho de
+      Ordo, Ignis e Aer da varinha. Faça §eduas§r. Pesquisa: §ePonta de Varinha de Ouro§r.
+    tasks:
+      - get: Thaumcraft:WandCap:1 x2
+    rewards:
+      - xp: 3
+      - choice: [minecraft:gold_nugget x18, Thaumcraft:ItemShard:1 x4, Thaumcraft:ItemShard x4]
+
+  - id: pontas_cobre
+    title: "Pontas de Cobre"
+    type: optional
+    deps: [mesa_arcana]
+    icon: Thaumcraft:WandCap:3
+    desc: |
+      Uma alternativa curiosa: as §ePontas de Cobre§r cobram como ferro (110%) para Aer,
+      Terra, Ignis e Aqua, mas são tão boas quanto ouro para §eOrdo e Perditio§r. Feitas com
+      pepitas de cobre na Mesa Arcana (pesquisa Ponta de Varinha de Cobre).
+    tasks:
+      - get: Thaumcraft:WandCap:3 x2
+    rewards:
+      - loot: comum
+
+  - id: haste_greatwood
+    title: "Haste de Greatwood"
+    type: main
+    deps: [mesa_arcana, greatwood]
+    icon: Thaumcraft:WandRod
+    desc: |
+      Duas madeiras de greatwood na diagonal, um pouco de Perditio, e pronto: a §eHaste de
+      Greatwood§r guarda o dobro da madeira comum — §e50 de vis§r de cada primal.
+
+      Pesquisa: §eVara de Greatwood§r (aba Taumaturgia).
+    tasks:
+      - get: Thaumcraft:WandRod
+    rewards:
+      - xp: 3
+      - choice: [Thaumcraft:blockMagicalLog x4, minecraft:gold_nugget x12, Thaumcraft:ItemShard:5 x4]
+
+  - id: varinha_greatwood
+    title: "Varinha de Greatwood"
+    type: main
+    deps: [pontas_ouro, haste_greatwood]
+    icon: Thaumcraft:WandRod
+    desc: |
+      Monte a varinha na Mesa Arcana: ponta em cima à direita, haste no meio, ponta embaixo à
+      esquerda. Toda varinha custa vis = §e(custo da ponta × custo da haste)§r de cada primal;
+      ouro (3) × greatwood (3) = §e9 de cada§r. A sua varinha de ferro dá conta.
+
+      Resultado: uma varinha com §e50 de vis§r por primal e sem a taxa do ferro. Isso muda
+      tudo: o Altar de Infusão, por exemplo, pede 25 de cada (com pontas de ferro seriam 27,5,
+      mais do que a varinha de madeira aguenta).
+    tasks:
+      - {get: 'Thaumcraft:WandCasting:* {rod:"greatwood",cap:"gold"}', nbt: true}
+    rewards:
+      - xp: 3
+      - choice: [Thaumcraft:ItemShard x4, Thaumcraft:ItemShard:3 x4, Thaumcraft:ItemShard:2 x4]
+
+  - id: foco_fogo
+    title: "Focos: Fogo"
+    type: normal
+    deps: [mesa_arcana]
+    icon: Thaumcraft:FocusFire
+    desc: |
+      Um §efoco§r encaixa na varinha (tecla §eF§r para escolher) e transforma vis em magia
+      prática. O primeiro é o §eFoco de Fogo§r: um cone de chamas que queima tudo à frente.
+
+      Na Mesa Arcana: carga de fogo no centro, quartzo e estilhaços de fogo em volta. Gasta
+      Ignis por segundo de uso.
+    tasks:
+      - get: Thaumcraft:FocusFire
+    rewards:
+      - xp: 2
+      - item: Thaumcraft:ItemShard:1 x4
+
+  - id: foco_gelo
+    title: "Focos: Gelo"
+    type: normal
+    deps: [foco_fogo]
+    icon: Thaumcraft:FocusFrost
+    desc: |
+      Arremesse pedaços de gelo que §equicam nas paredes§r — dá para acertar dobrando
+      esquinas! O §eFoco de Gelo§r leva um diamante no centro e estilhaços de água.
+    tasks:
+      - get: Thaumcraft:FocusFrost
+    rewards:
+      - xp: 2
+      - item: Thaumcraft:ItemShard:2 x4
+
+  - id: foco_choque
+    title: "Focos: Choque"
+    type: normal
+    deps: [foco_fogo]
+    icon: Thaumcraft:FocusShock
+    desc: |
+      Raios na ponta da varinha! O §eFoco de Choque§r usa uma... batata no centro (não
+      pergunte) e estilhaços de ar. Barato e eficiente contra mobs.
+    tasks:
+      - get: Thaumcraft:FocusShock
+    rewards:
+      - xp: 2
+      - item: Thaumcraft:ItemShard x4
+
+  - id: foco_escavacao
+    title: "Focos: Escavação"
+    type: normal
+    deps: [foco_fogo]
+    icon: Thaumcraft:FocusExcavation
+    desc: |
+      Aponte e a terra simplesmente some. O §eFoco de Escavação§r minera pedra e terra
+      rapidinho (materiais duros demoram mais). Leva uma esmeralda e estilhaços de terra.
+
+      Ele é também o coração do §eEscavador Arcano§r, a mineradora automática do Thaumcraft.
+    tasks:
+      - get: Thaumcraft:FocusExcavation
+    rewards:
+      - xp: 2
+      - item: Thaumcraft:ItemShard:3 x4
+
+  - id: foco_troca
+    title: "Focos: Troca Equivalente"
+    type: normal
+    deps: [foco_fogo, cinabrio]
+    icon: Thaumcraft:FocusTrade
+    desc: |
+      O favorito de quem constrói! Shift+clique direito num bloco para escolhê-lo; depois
+      clique esquerdo para trocar um bloco, ou direito para trocar uma área inteira, pelo
+      bloco escolhido (os trocados vão para o seu inventário).
+
+      O §eFoco de Troca Equivalente§r leva Mercúrio no centro e estilhaços equilibrados.
+    tasks:
+      - get: Thaumcraft:FocusTrade
+    rewards:
+      - xp: 2
+      - item: minecraft:stonebrick x32
+
+  - id: bolsa_focos
+    title: "Bolsa de Focos"
+    type: optional
+    deps: [foco_fogo]
+    icon: Thaumcraft:FocusPouch
+    desc: |
+      Muitos focos, pouco espaço. A §eBolsa de Focos§r guarda todos eles e a varinha procura
+      foco nela primeiro. Pode ser usada no espaço de cinto (Baubles). Precisa de um Cinto
+      Mundano (couro e ouro).
+    tasks:
+      - get: Thaumcraft:FocusPouch
+    rewards:
+      - loot: comum
+
+  - id: estabilizador_nos
+    title: "Estabilizador de Nós"
+    type: normal
+    deps: [nos_aura, nitor]
+    icon: Thaumcraft:blockStoneDevice:9
+    desc: |
+      Colocado §esob um nó§r, o §eEstabilizador de Nós§r impede que ele drene ou seja drenado
+      por nós vizinhos, segura nós instáveis e, muito raramente, melhora nós desbotados. Em
+      troca, a recarga do nó cai pela metade. Sinal de redstone desliga.
+
+      Receita arcana com pistão, blocos de quartzo, ouro, nitor e tijolos de pedra arcana.
+      Pesquisa: Preservação de Nós → Estabilizador de Nós.
+    tasks:
+      - get: Thaumcraft:blockStoneDevice:9
+    rewards:
+      - xp: 2
+      - item: minecraft:quartz_block x2
+
+  - id: no_na_jarra
+    title: "Um Nó na Jarra"
+    type: optional
+    deps: [estabilizador_nos, varinha_silverwood]
+    icon: Thaumcraft:BlockJarNodeItem
+    desc: |
+      Quer levar um nó para casa? Construa em volta dele um cubo de §evidro§r (3×4×3) com
+      §elajes de madeira§r por cima, e clique com a varinha: §e70 de vis de cada primal§r
+      (antes do desconto da ponta) transformam tudo num §eNó na Jarra§r.
+
+      §cAtenção:§r o processo tem boa chance de danificar o nó, e ele fica "congelado"
+      enquanto estiver na jarra. Coloque no lugar e clique com a varinha para soltá-lo.
+      Você precisa de uma varinha que guarde 70 por primal — Silverwood ou um cajado.
+    tasks:
+      - get: Thaumcraft:BlockJarNodeItem
+    rewards:
+      - loot: incomum
+
+  # ======================================================================
+  # FASE 4 — ALQUIMIA: O CRISOL
+  # ======================================================================
+  - id: crisol
+    title: "O Crisol"
+    type: main
+    deps: [primeira_descoberta]
+    icon: Thaumcraft:blockMetalDevice
+    desc: |
+      Coloque um §eCaldeirão§r no mundo e clique nele com a varinha: virou §eCrisol§r!
+
+      Ele precisa de §ecalor embaixo§r (fogo, lava, Nitor ou, neste pack, qualquer fonte de
+      calor do oredict) e §eágua§r dentro. Quando ferver, jogue itens: eles se desmancham em
+      essência. Se a mistura bater com uma receita, jogue o §ecatalisador§r e ele vira outra
+      coisa. A essência degrada com o tempo e solta fluxo; Shift+clique com a varinha esvazia.
+
+      Quebre e pegue como item para a quest.
+    tasks:
+      - get: Thaumcraft:blockMetalDevice
+    rewards:
+      - xp: 3
+      - choice: [minecraft:water_bucket, minecraft:lava_bucket, minecraft:coal x16]
+
+  - id: estilhaco_equilibrado
+    title: "Estilhaço Equilibrado"
+    type: main
+    deps: [crisol, estilhacos]
+    icon: Thaumcraft:ItemShard:6
+    desc: |
+      A primeira receita que todo mundo sabe: jogue um estilhaço primal no Crisol que tenha
+      §e2 de cada um dos outros cinco primais§r dissolvidos. Ele vira um §eEstilhaço
+      Equilibrado§r, que ressoa com todos os elementos.
+
+      Faça §e3§r. Eles vão para a Salis Mundus, o Foco de Troca, os relés de vis...
+    tasks:
+      - get: Thaumcraft:ItemShard:6 x3
+    rewards:
+      - xp: 3
+      - choice: [Thaumcraft:ItemShard x3, Thaumcraft:ItemShard:3 x3, Thaumcraft:ItemShard:4 x3]
+
+  - id: salis_mundus
+    title: "Salis Mundus"
+    type: main
+    deps: [estilhaco_equilibrado]
+    icon: Thaumcraft:ItemResource:14
+    desc: |
+      Asse um Estilhaço Equilibrado na fornalha comum e ele se estilhaça em §eSalis Mundus§r, o
+      "sal do taumaturgo". Ele amarra elementos que não querem ficar juntos: entra nas pontas
+      de táumio, nos encantamentos por infusão, nos sais de banho...
+
+      Faça §e3 Salis Mundus§r.
+    tasks:
+      - get: Thaumcraft:ItemResource:14 x3
+    rewards:
+      - xp: 3
+      - choice: [minecraft:coal x16, Thaumcraft:ItemShard:6 x2, minecraft:glowstone_dust x8]
+
+  - id: nitor
+    title: "Nitor"
+    type: main
+    deps: [crisol]
+    icon: Thaumcraft:ItemResource:1
+    desc: |
+      Uma chama que se alimenta de magia! Jogue §ePó de Glowstone§r no Crisol com §e3 Potentia,
+      3 Ignis e 3 Lux§r dissolvidos e nasce o §eNitor§r.
+
+      Ele é luz eterna (dá para colocar no mundo), fonte de calor para o Crisol e ingrediente
+      de muita coisa: Lâmpada Arcana, Levitador, Estabilizador de Nós, núcleo de golem...
+    tasks:
+      - get: Thaumcraft:ItemResource:1 x4
+    rewards:
+      - xp: 3
+      - choice: [minecraft:glowstone_dust x8, minecraft:redstone x16, minecraft:coal x16]
+
+  - id: alumentum
+    title: "Alumentum"
+    type: normal
+    deps: [crisol]
+    icon: Thaumcraft:ItemResource
+    desc: |
+      Carvão + §e3 Potentia, 3 Ignis e 3 Perditio§r no Crisol = §eAlumentum§r, um combustível
+      instável e muito forte. Ele acelera a destilação na Fornalha Alquímica.
+
+      §cCuidado:§r arremessar Alumentum faz ele explodir. Literalmente.
+    tasks:
+      - get: Thaumcraft:ItemResource x4
+    rewards:
+      - xp: 2
+      - item: minecraft:coal x16
+
+  - id: taumio
+    title: "Táumio"
+    type: main
+    deps: [crisol]
+    icon: Thaumcraft:ItemResource:2
+    desc: |
+      Esta pesquisa aparece quando você descobre o aspecto Metallum. A receita é simples: um
+      §elingote de ferro§r jogado no Crisol com §e4 Praecantatio§r (magia) dissolvidos vira
+      §eBarra de Táumio§r.
+
+      O Táumio é mais duro que o ferro, aceita encantamentos muito bem e é a base de quase
+      tudo daqui pra frente: pontas, golens, ferramentas, armaduras, a Infusão...
+
+      Faça §e8 barras§r. §aDica:§r Praecantatio vem de itens mágicos (estilhaços, livros
+      encantados, cristais, Essência Etérea...). Examine tudo!
+    tasks:
+      - get: Thaumcraft:ItemResource:2 x8
+    rewards:
+      - xp: 3
+      - choice: [minecraft:iron_ingot x8, Thaumcraft:ItemShard:3 x4, minecraft:book x4]
+
+  - id: bloco_taumio
+    title: "Bloco Táumico"
+    type: optional
+    deps: [taumio]
+    icon: Thaumcraft:blockCosmeticSolid:4
+    desc: |
+      Nove barras = um §eBloco Táumico§r. Além de bonito, ele é o catalisador do Golem de
+      Táumio e o centro da Gaiola da Ira (Forbidden Magic).
+    tasks:
+      - get: Thaumcraft:blockCosmeticSolid:4
+    rewards:
+      - loot: comum
+
+  - id: armadura_taumio
+    title: "Armadura de Táumio"
+    type: normal
+    deps: [taumio]
+    icon: Thaumcraft:ItemChestplateThaumium
+    desc: |
+      Táumio se trabalha na bancada comum, com as receitas de sempre. A §eArmadura de Táumio§r
+      protege um pouco menos que diamante, mas aceita encantamentos muito melhor — e vira a
+      Armadura Fortaleza no Capítulo II.
+
+      Faça as quatro peças.
+    tasks:
+      - get: [Thaumcraft:ItemHelmetThaumium, Thaumcraft:ItemChestplateThaumium, Thaumcraft:ItemLeggingsThaumium, Thaumcraft:ItemBootsThaumium]
+    rewards:
+      - xp: 2
+      - item: minecraft:experience_bottle x8
+
+  - id: ferramentas_taumio
+    title: "Ferramentas de Táumio"
+    type: normal
+    deps: [taumio]
+    icon: Thaumcraft:ItemPickThaumium
+    desc: |
+      Picareta, espada, machado, pá e enxada de Táumio, nas receitas normais (lingote + graveto).
+      Guarde-as: na Infusão elas viram as §eFerramentas Elementais§r.
+
+      Faça as cinco.
+    tasks:
+      - get: [Thaumcraft:ItemPickThaumium, Thaumcraft:ItemSwordThaumium, Thaumcraft:ItemAxeThaumium, Thaumcraft:ItemShovelThaumium, Thaumcraft:ItemHoeThaumium]
+    rewards:
+      - xp: 2
+      - item: minecraft:diamond x2
+
+  - id: sebo
+    title: "Sebo Mágico"
+    type: normal
+    deps: [crisol]
+    icon: Thaumcraft:ItemResource:4
+    desc: |
+      Carne podre + §e2 Praecantatio§r no Crisol = §eSebo Mágico§r. Ele vira velas (com
+      barbante), o Golem de Sebo e, em bloco, o catalisador do Sabão Sanitizante.
+
+      Faça §e8 Sebos§r.
+    tasks:
+      - get: Thaumcraft:ItemResource:4 x8
+    rewards:
+      - xp: 2
+      - item: minecraft:string x8
+
+  - id: velas
+    title: "Velas de Sebo"
+    type: optional
+    deps: [sebo]
+    icon: Thaumcraft:blockCandle
+    desc: |
+      Barbante em cima e dois sebos embaixo = §e3 velas§r; tinja com corantes. Além de
+      iluminar, velas são §eestabilizadores de infusão§r: colocadas simetricamente em volta do
+      altar, reduzem a instabilidade.
+
+      Faça §e8 velas§r (qualquer cor).
+    tasks:
+      - get: Thaumcraft:blockCandle:* x8
+    rewards:
+      - loot: comum
+
+  - id: duplicacao
+    title: "Duplicação Alquímica"
+    type: normal
+    deps: [sebo]
+    icon: minecraft:slime_ball
+    desc: |
+      Algumas substâncias se multiplicam no Crisol: §epólvora§r (Ignis + Perditio), §eslime§r
+      (Aqua + Victus), §eargila§r, §eglowstone§r e §etinta§r. Cada catalisador sai em dobro.
+
+      Pesquisa: §eAlchemical Duplication§r. Faça §e8 bolas de slime§r — o Golem de... ah, você
+      vai precisar de slime para muita coisa.
+    tasks:
+      - get: minecraft:slime_ball x8
+    rewards:
+      - xp: 2
+      - item: minecraft:gunpowder x8
+
+  - id: manufatura
+    title: "Manufatura Alquímica"
+    type: optional
+    deps: [duplicacao]
+    icon: minecraft:web
+    desc: |
+      O próximo passo da alquimia cria coisas difíceis de achar: §eteia§r (barbante +
+      Vinculum + Pannus), pedregulho musgoso e gelo. Faça uma teia no Crisol.
+    tasks:
+      - get: minecraft:web
+    rewards:
+      - loot: comum
+
+  - id: entropia
+    title: "Processamento Entrópico"
+    type: optional
+    deps: [duplicacao]
+    icon: minecraft:dye:15
+    desc: |
+      Às vezes você só quer quebrar as coisas: um osso + 1 Perditio vira §e4 farinhas de
+      osso§r, e tijolos de pedra viram tijolos rachados. Pesquisa: Entropic Processing — ela
+      abre caminho para a Morte Líquida e a Mácula Engarrafada (Capítulo II).
+    tasks:
+      - get: minecraft:dye:15 x16
+    rewards:
+      - loot: comum
+
+  - id: aglomerado_ferro
+    title: "Aglomerado Nativo de Ferro"
+    type: normal
+    deps: [taumio]
+    icon: Thaumcraft:ItemNugget:16
+    desc: |
+      Purificação de Metais! Um §eMinério de Ferro§r no Crisol com 1 Metallum e 1 Ordo vira
+      um §eAglomerado Nativo de Ferro§r, que derrete em §e2 lingotes§r. É o "dobrador de
+      minério" do Thaumcraft.
+
+      Faça §e4 aglomerados§r.
+    tasks:
+      - get: Thaumcraft:ItemNugget:16 x4
+    rewards:
+      - xp: 2
+      - item: minecraft:iron_ore x4
+
+  - id: aglomerado_ouro
+    title: "Aglomerado Nativo de Ouro"
+    type: normal
+    deps: [aglomerado_ferro]
+    icon: Thaumcraft:ItemNugget:31
+    desc: |
+      A mesma ideia com ouro (Metallum + Ordo no Crisol): §eAglomerado Nativo de Ouro§r, 2
+      lingotes por minério. Pesquisa: Gold Purification. Faça §e2§r.
+    tasks:
+      - get: Thaumcraft:ItemNugget:31 x2
+    rewards:
+      - xp: 2
+      - item: minecraft:gold_ore x2
+
+  - id: aglomerados_outros
+    title: "Outros Aglomerados"
+    type: optional
+    deps: [aglomerado_ferro]
+    icon: Thaumcraft:ItemNugget:17
+    desc: |
+      Como o pack tem cobre, estanho, prata e chumbo, as pesquisas de purificação desses metais
+      também existem. Faça qualquer um desses aglomerados no Crisol.
+    tasks:
+      - one_of: [Thaumcraft:ItemNugget:17, Thaumcraft:ItemNugget:18, Thaumcraft:ItemNugget:19, Thaumcraft:ItemNugget:20]
+    rewards:
+      - loot: comum
+
+  - id: transmutacao
+    title: "Transmutação de Ferro"
+    type: optional
+    deps: [taumio]
+    icon: Thaumcraft:ItemNugget
+    desc: |
+      Uma pepita de ferro + 2 Metallum no Crisol = §e3 pepitas§r. É uma forma de transformar
+      Metallum de qualquer metal em ferro. Existem versões para ouro, cobre, estanho, prata e
+      chumbo. Junte §e27 pepitas de ferro§r.
+    tasks:
+      - get: Thaumcraft:ItemNugget x27
+    rewards:
+      - loot: comum
+
+  - id: laboratorio_alquimico
+    title: "O Laboratório Alquímico"
+    type: milestone
+    deps: [taumio, salis_mundus, nitor, sebo]
+    icon: Thaumcraft:blockMetalDevice
+    banner: "O Laboratório Alquímico"
+    subtitle: "Táumio, Nitor e Salis Mundus"
+    desc: |
+      O Crisol borbulhando, Nitor iluminando a bancada, Salis Mundus num potinho e as primeiras
+      barras de Táumio empilhadas. Herói... isso aqui já parece o laboratório de um mago de
+      verdade!
+
+      Três coisas para lembrar daqui pra frente:
+      §e•§r Essência sobrando no Crisol degrada e vira §cfluxo§r (gosma e gás roxos). Limpe.
+      §e•§r Táumio é a sua nova moeda: produza bastante.
+      §e•§r O próximo passo é §edestilar§r essência e guardá-la em jarros — sem isso não existe
+      Infusão.
+    tasks:
+      - get: [Thaumcraft:ItemResource:2 x4, Thaumcraft:ItemResource:14 x2, Thaumcraft:ItemResource:1 x2]
+    rewards:
+      - xp: 5
+      - kit: {name: "Kit do Alquimista", items: [minecraft:iron_ingot x16, minecraft:glowstone_dust x16, minecraft:coal x32, minecraft:rotten_flesh x16, Thaumcraft:ItemShard:6 x2]}
+      - loot: incomum
+
+  # ======================================================================
+  # FASE 5 — ESSÊNCIA: DESTILAÇÃO, JARROS E TUBOS
+  # ======================================================================
+  - id: frasco
+    title: "Frascos de Vidro"
+    type: main
+    deps: [crisol]
+    icon: Thaumcraft:ItemEssence
+    desc: |
+      Uma bola de argila em cima e vidro em volta = §e8 Frascos de Vidro§r. Eles guardam até 8
+      de uma essência e servem para encher jarros, aplicar símbolos em estandartes e rotular.
+
+      Faça §e8 frascos§r.
+    tasks:
+      - get: Thaumcraft:ItemEssence x8
+    rewards:
+      - xp: 3
+      - choice: [minecraft:glass x16, minecraft:clay_ball x16, minecraft:sand x16]
+
+  - id: fornalha_alquimica
+    title: "Fornalha Alquímica"
+    type: main
+    deps: [frasco, nitor, alumentum]
+    icon: Thaumcraft:blockStoneDevice
+    desc: |
+      Para ter essências à vontade é preciso destilar. A §eFornalha Alquímica§r queima itens
+      (com carvão, ou muito mais rápido com Alumentum) e os transforma numa pasta de essência
+      bruta.
+
+      Receita arcana: um Crisol em cima, uma fornalha no centro e pedra arcana em volta.
+      Pesquisa: §eDestilação de Essência§r (aba Alquimia).
+    tasks:
+      - get: Thaumcraft:blockStoneDevice
+    rewards:
+      - xp: 3
+      - choice: [minecraft:coal x24, Thaumcraft:ItemResource x2, minecraft:cobblestone x32]
+
+  - id: filtro_fluxo
+    title: "Filtro de Fluxo"
+    type: normal
+    deps: [fornalha_alquimica]
+    icon: Thaumcraft:ItemResource:8
+    desc: |
+      Ouro e tábuas de silverwood na Mesa Arcana = 2 §eFiltros de Fluxo§r (Vis Filter). Eles
+      entram no Alambique, nos construtos alquímicos e no tubo filtrado.
+    tasks:
+      - get: Thaumcraft:ItemResource:8 x2
+    rewards:
+      - xp: 2
+      - item: minecraft:gold_ingot x2
+
+  - id: alambique
+    title: "Alambique Arcano"
+    type: main
+    deps: [filtro_fluxo]
+    icon: Thaumcraft:blockMetalDevice:1
+    desc: |
+      Empilhe §eAlambiques Arcanos§r em cima da Fornalha Alquímica (até 5). A pasta sobe e se
+      separa em essências puras, uma por alambique. Tire com frascos, jarros ou tubos.
+
+      Receita arcana com ferro, ouro, balde e um Filtro de Fluxo. Faça §e2§r.
+    tasks:
+      - get: Thaumcraft:blockMetalDevice:1 x2
+    rewards:
+      - xp: 3
+      - choice: [minecraft:iron_ingot x8, minecraft:bucket x2, Thaumcraft:ItemEssence x8]
+
+  - id: jarro
+    title: "Jarro Guardião"
+    type: main
+    deps: [fornalha_alquimica]
+    icon: Thaumcraft:blockJar
+    desc: |
+      Painéis de vidro e uma laje de madeira na Mesa Arcana = §eJarro Guardião§r. Ele guarda
+      essência no mundo indefinidamente, e o Altar de Infusão puxa essência §edireto dos
+      jarros§r por perto. Clique com o jarro num alambique para enchê-lo.
+
+      Faça §e6 jarros§r — um por aspecto que você mais usa.
+    tasks:
+      - get: Thaumcraft:blockJar x6
+    rewards:
+      - xp: 3
+      - choice: [minecraft:glass_pane x24, minecraft:wooden_slab x12, Thaumcraft:ItemEssence x8]
+
+  - id: rotulo
+    title: "Rótulos de Jarra"
+    type: normal
+    deps: [jarro]
+    icon: Thaumcraft:ItemResource:13
+    desc: |
+      Tinta preta, slime e 4 papéis = §e4 Rótulos§r. Um jarro rotulado só aceita aquela
+      essência e "puxa" mais forte nos tubos. Combine rótulo + frasco na bancada para
+      pré-marcar o aspecto (a essência não é gasta).
+    tasks:
+      - get: Thaumcraft:ItemResource:13 x4
+    rewards:
+      - xp: 2
+      - item: minecraft:paper x8
+
+  - id: jarro_vazio
+    title: "Jarro do Vazio"
+    type: optional
+    deps: [rotulo]
+    icon: Thaumcraft:blockJar:3
+    desc: |
+      Um jarro que nunca enche: o excesso de essência simplesmente desaparece. Ótimo como
+      "lixeira" no fim da linha de destilação. Obsidiana, jarro e pó de blaze na Mesa Arcana.
+    tasks:
+      - get: Thaumcraft:blockJar:3
+    rewards:
+      - loot: comum
+
+  - id: essencia_destilada
+    title: "Essência Destilada"
+    type: milestone
+    deps: [alambique, jarro]
+    icon: Thaumcraft:BlockJarFilledItem
+    banner: "Essência Destilada"
+    subtitle: "Magia em potes"
+    desc: |
+      Fornalha queimando, alambiques separando aspectos e jarros enchendo. Isso, Herói, é uma
+      §dbiblioteca de essências§r — e é exatamente o que a Infusão vai devorar.
+
+      Pegue um §eJarro de Essência§r cheio (quebre um jarro com essência dentro). Ele mantém o
+      conteúdo como item.
+
+      §aDica:§r automatize: um golem de alquimia (Capítulo II) ou tubos levam a essência dos
+      alambiques para os jarros sozinhos.
+    tasks:
+      - get: Thaumcraft:BlockJarFilledItem
+    rewards:
+      - xp: 5
+      - kit: {name: "Kit do Destilador", items: [Thaumcraft:blockJar x4, Thaumcraft:ItemResource:13 x8, Thaumcraft:ItemResource x4, minecraft:coal_block x4]}
+      - loot: incomum
+
+  - id: tubos
+    title: "Tubos de Essência"
+    type: normal
+    deps: [essencia_destilada, cinabrio]
+    icon: Thaumcraft:blockTube
+    desc: |
+      Vidro envolto em ferro, uma gota de mercúrio e acabamento em ouro: §e8 Tubos de
+      Essência§r. A essência flui para quem "puxa" mais forte (jarros rotulados puxam mais
+      que vazios). Clique com a varinha para ligar/desligar conexões.
+
+      §cDica:§r um tubo só carrega um tipo de essência por vez. Fumacinha colorida saindo do
+      tubo = sucções brigando.
+    tasks:
+      - get: Thaumcraft:blockTube x8
+    rewards:
+      - xp: 2
+      - item: Thaumcraft:ItemNugget:5 x4
+
+  - id: valvula
+    title: "Válvula e Ressonador"
+    type: normal
+    deps: [tubos]
+    icon: Thaumcraft:blockTube:1
+    desc: |
+      A §eVálvula de Essência§r (tubo + alavanca) corta o fluxo com a mão ou com redstone. O
+      §eRessonador de Essência§r mostra o que está dentro de um tubo e a força de sucção —
+      salvador de redes entupidas.
+    tasks:
+      - get: [Thaumcraft:blockTube:1, Thaumcraft:ItemResonator]
+    rewards:
+      - xp: 2
+      - item: minecraft:lever x4
+
+  - id: tubo_filtrado
+    title: "Tubos Especiais"
+    type: optional
+    deps: [valvula]
+    icon: Thaumcraft:blockTube:3
+    desc: |
+      O §eTubo Filtrado§r aceita rótulo e só deixa passar aquela essência. Também há o tubo
+      restrito (metade da sucção) e o direcional (só um sentido). Faça um tubo filtrado.
+    tasks:
+      - get: Thaumcraft:blockTube:3
+    rewards:
+      - loot: comum
+
+  - id: centrifuga
+    title: "Centrifugador Alquímico"
+    type: normal
+    deps: [tubo_filtrado]
+    icon: Thaumcraft:blockTube:2
+    desc: |
+      Essência composta entra por baixo e sai por cima quebrada em um dos componentes. Use com
+      um §eBuffer de Essência§r em cima (guarda 8 de qualquer mistura). O centrifugador
+      abre o caminho para o Taumatório.
+    tasks:
+      - get: [Thaumcraft:blockTube:2, Thaumcraft:blockTube:4]
+    rewards:
+      - xp: 2
+      - item: minecraft:piston x2
+
+  - id: construto_alquimico
+    title: "Construto Alquímico"
+    type: normal
+    deps: [centrifuga]
+    icon: Thaumcraft:blockMetalDevice:9
+    desc: |
+      Tubos, válvulas, filtros e tábuas de greatwood na Mesa Arcana = §eAlchemical
+      Construct§r. É a peça do Taumatório e do Cristalizador de Essência.
+    tasks:
+      - get: Thaumcraft:blockMetalDevice:9 x2
+    rewards:
+      - xp: 2
+      - item: Thaumcraft:blockTube x4
+
+  - id: taumatorio
+    title: "O Taumatório"
+    type: normal
+    deps: [construto_alquimico]
+    icon: Thaumcraft:blockMetalDevice:9
+    desc: |
+      Alquimia automática! Empilhe §edois Construtos Alquímicos em cima de um Crisol§r e clique
+      com a varinha (15 Ignis, 30 Ordo, 30 Aqua). Escolha o catalisador e a receita na tela; o
+      Taumatório puxa a essência pelos tubos e faz o item perfeito sempre. Precisa de calor
+      embaixo, mas não de água.
+
+      Tenha as peças em mãos para a quest. A §eMatriz Mnemônica§r ao lado guarda mais receitas.
+    tasks:
+      - get: [Thaumcraft:blockMetalDevice:9 x2, Thaumcraft:blockMetalDevice]
+    rewards:
+      - xp: 2
+      - item: Thaumcraft:ItemResource:6 x4
+
+  - id: matriz_mnemonica
+    title: "Matriz Mnemônica"
+    type: optional
+    deps: [taumatorio]
+    icon: Thaumcraft:blockMetalDevice:12
+    desc: |
+      Encostada no Taumatório, cada §eMatriz Mnemônica§r (âmbar, ferro e um cérebro de zumbi)
+      lembra mais 2 receitas.
+    tasks:
+      - get: Thaumcraft:blockMetalDevice:12
+    rewards:
+      - loot: comum
+
+  - id: cristalizador
+    title: "Cristalizador de Essência"
+    type: optional
+    deps: [construto_alquimico]
+    icon: Thaumcraft:blockTube:7
+    desc: |
+      O caminho inverso: o §eEssentia Crystallizer§r puxa essência dos tubos e cospe
+      §eEssência Cristalizada§r, estável e fácil de transportar. Terra vis acelera. Faça um e o
+      primeiro cristal.
+    tasks:
+      - get: [Thaumcraft:blockTube:7, Thaumcraft:ItemCrystalEssence]
+    rewards:
+      - loot: comum
+
+  - id: flor_eterea
+    title: "Flor Etérea"
+    type: normal
+    deps: [flor_brilhante, crisol]
+    icon: Thaumcraft:blockCustomPlant:4
+    desc: |
+      A Flor Brilhante tem um poder purificador adormecido. No Crisol, com §e16 Praecantatio,
+      16 Herba, 16 Sano e 8 Vitium§r, ela vira a §eFlor Etérea§r, que limpa terras corrompidas
+      por magia num raio de uns 8 blocos — inclusive a Mácula.
+
+      A pesquisa aparece quando você descobre o aspecto Vitium. Guarde algumas: a Mácula está
+      chegando no Capítulo II.
+    tasks:
+      - get: Thaumcraft:blockCustomPlant:4
+    rewards:
+      - xp: 2
+      - item: Thaumcraft:blockCustomPlant:2 x2
+
+  # ======================================================================
+  # FASE 6 — ARTIFÍCIO
+  # ======================================================================
+  - id: pedra_arcana
+    title: "Pedra Arcana"
+    type: main
+    deps: [mesa_arcana]
+    icon: Thaumcraft:blockCosmeticSolid:6
+    desc: |
+      Oito pedras em volta de um estilhaço (qualquer) na Mesa Arcana = §e9 Blocos de Pedra
+      Arcana§r. Quatro blocos viram 4 §eTijolos de Pedra Arcana§r na bancada comum.
+
+      É o material de construção do Altar de Infusão, da Fornalha Alquímica e dos pavimentos.
+      Faça §e16 blocos e 8 tijolos§r.
+    tasks:
+      - get: [Thaumcraft:blockCosmeticSolid:6 x16, Thaumcraft:blockCosmeticSolid:7 x8]
+    rewards:
+      - xp: 3
+      - choice: [minecraft:stone x32, Thaumcraft:ItemShard:3 x4, Thaumcraft:ItemShard:1 x4]
+
+  - id: oculos
+    title: "Óculos da Revelação"
+    type: main
+    deps: [mesa_arcana, taumometro]
+    icon: Thaumcraft:ItemGoggles
+    desc: |
+      O Taumômetro vira um par de óculos! Os §eÓculos da Descoberta§r (Goggles of Revealing)
+      mostram nós de aura de longe, revelam o conteúdo de jarros, alambiques e tubos e dão um
+      pequeno desconto de vis. Vão na cabeça.
+
+      Na Mesa Arcana: couro, ouro e dois Taumômetros. Pesquisa: §eÓculos da Revelação§r (aba
+      Artifício).
+    tasks:
+      - get: Thaumcraft:ItemGoggles
+    rewards:
+      - xp: 3
+      - choice: [minecraft:leather x8, minecraft:gold_ingot x4, Thaumcraft:ItemShard x4]
+
+  - id: tecido_encantado
+    title: "Tecido Encantado"
+    type: normal
+    deps: [mesa_arcana]
+    icon: Thaumcraft:ItemResource:7
+    desc: |
+      Lã no meio, barbante em volta e 1 de cada primal: §eTecido Encantado§r. Ele faz os
+      §eRobes do Taumaturgo§r (desconto de vis) e entra nas Botas do Viajante, na proteção
+      rúnica e em vários addons.
+
+      Faça §e8 tecidos§r.
+    tasks:
+      - get: Thaumcraft:ItemResource:7 x8
+    rewards:
+      - xp: 2
+      - item: minecraft:wool x8
+
+  - id: robes
+    title: "Robes do Taumaturgo"
+    type: normal
+    deps: [tecido_encantado]
+    icon: Thaumcraft:ItemChestplateRobe
+    desc: |
+      Robe, calça e botas de Tecido Encantado (Mesa Arcana). Protegem como couro, são muito
+      duráveis, aceitam bem encantamentos e cada peça dá §edesconto de vis§r. Dá para tingir.
+    tasks:
+      - get: [Thaumcraft:ItemChestplateRobe, Thaumcraft:ItemLeggingsRobe, Thaumcraft:ItemBootsRobe]
+    rewards:
+      - xp: 2
+      - item: minecraft:dye:5 x4
+
+  - id: lampada_arcana
+    title: "Lâmpada Arcana"
+    type: normal
+    deps: [nitor, pedra_arcana]
+    icon: Thaumcraft:blockMetalDevice:7
+    desc: |
+      Uma lâmpada que espalha luzes invisíveis num raio de até 16 blocos onde estiver escuro.
+      "Só VOCÊ pode evitar surtos de zumbis!" Nitor, ferro, um bloco de âmbar e um sensor de luz
+      do dia na Mesa Arcana.
+    tasks:
+      - get: Thaumcraft:blockMetalDevice:7
+    rewards:
+      - xp: 2
+      - item: Thaumcraft:ItemResource:6 x4
+
+  - id: levitador
+    title: "Levitador Arcano"
+    type: optional
+    deps: [nitor, pedra_arcana]
+    icon: Thaumcraft:blockLifter
+    desc: |
+      Ergue itens e criaturas até 10 blocos (cada levitador empilhado soma +10). Agachado você
+      desce devagar. Um elevador mágico! Redstone desliga.
+    tasks:
+      - get: Thaumcraft:blockLifter
+    rewards:
+      - loot: comum
+
+  - id: pavimentos
+    title: "Pavimentos Mágicos"
+    type: optional
+    deps: [pedra_arcana]
+    icon: Thaumcraft:blockCosmeticSolid:2
+    desc: |
+      Dois pavimentos de tijolo arcano: o §ede Viagem§r (estilhaços de ar e terra) dá velocidade
+      a quem pisa, e o §eGuardião§r (fogo e ordem) impede a passagem da maioria dos mobs (não de
+      jogadores). Ótimos para a base.
+    tasks:
+      - get: [Thaumcraft:blockCosmeticSolid:2 x4, Thaumcraft:blockCosmeticSolid:3 x4]
+    rewards:
+      - loot: comum
+
+  - id: arcana_guardada
+    title: "Arcana Guardada"
+    type: optional
+    deps: [taumio, cerebro_zumbi]
+    icon: Thaumcraft:ItemArcaneDoor
+    desc: |
+      Portas, placas de pressão e vidro que §elembram quem os colocou§r: só o dono quebra. Chaves
+      de ferro e ouro dão acesso a amigos. A §ePorta Arcana§r leva Táumio, tábuas de greatwood e
+      um cérebro de zumbi.
+    tasks:
+      - get: Thaumcraft:ItemArcaneDoor
+    rewards:
+      - loot: comum
+
+  - id: fornalha_infernal
+    title: "Fornalha Infernal"
+    type: normal
+    deps: [nitor, alumentum]
+    icon: Thaumcraft:blockArcaneFurnace
+    desc: |
+      Uma fornalha sem combustível que às vezes devolve §epepitas bônus§r! É um cubo 3×3×3:
+      tijolos do Nether nos cantos e no meio das arestas, obsidiana no meio das faces, §elava§r
+      no centro, uma §egrade de ferro§r na frente e o centro de baixo vazio. Clique com a
+      varinha (50 Ignis e 50 Terra — use pontas de ouro!).
+
+      Jogue os itens por cima, eles saem pela frente. Vis/essência Ignis acelera, e um Fole
+      Arcano encostado reduz o fluxo. Junte os materiais: 12 tijolos do Nether, 12 obsidianas,
+      um balde de lava e uma grade.
+    tasks:
+      - get: [minecraft:nether_brick x12, minecraft:obsidian x12, minecraft:lava_bucket, minecraft:iron_bars]
+    rewards:
+      - xp: 2
+      - item: Thaumcraft:ItemResource x2
+
+  - id: fole
+    title: "Fole Arcano"
+    type: optional
+    deps: [fornalha_infernal]
+    icon: Thaumcraft:blockWoodenDevice
+    desc: |
+      Sopra sozinho para sempre. Encostado na Fornalha Infernal acelera e reduz fluxo;
+      também acelera fornalhas comuns, alquímicas e a fervura do Crisol. Redstone desliga.
+    tasks:
+      - get: Thaumcraft:blockWoodenDevice
+    rewards:
+      - loot: comum
+
+  # ======================================================================
+  # FASE 7 — A INFUSÃO
+  # ======================================================================
+  - id: matriz_runica
+    title: "Matriz Rúnica"
+    type: main
+    deps: [pedra_arcana, essencia_destilada]
+    icon: Thaumcraft:blockStoneDevice:2
+    desc: |
+      Aqui começa a magia de verdade. A pesquisa §eInfusão§r (aba Artifício, exige Destilação de
+      Essência) ensina a §eMatriz Rúnica§r: pedra arcana, estilhaços e uma pérola do Fim na Mesa
+      Arcana, custando 40 Ordo.
+
+      §e40 Ordo§r é mais que uma varinha de ferro aguenta: use a de Greatwood.
+    tasks:
+      - get: Thaumcraft:blockStoneDevice:2
+    rewards:
+      - xp: 4
+      - choice: [minecraft:ender_pearl x2, Thaumcraft:ItemShard:4 x6, Thaumcraft:blockCosmeticSolid:6 x16]
+
+  - id: pedestais
+    title: "Pedestais Arcanos"
+    type: main
+    deps: [pedra_arcana]
+    icon: Thaumcraft:blockStoneDevice:1
+    desc: |
+      Sete pedras arcanas na Mesa Arcana = §e2 Pedestais Arcanos§r. Um fica no centro do altar
+      (o item que será infundido) e os outros em volta, segurando os ingredientes.
+
+      Faça §e9 pedestais§r: 1 central e 8 ao redor cobrem a maioria das receitas.
+    tasks:
+      - get: Thaumcraft:blockStoneDevice:1 x9
+    rewards:
+      - xp: 4
+      - choice: [Thaumcraft:blockCosmeticSolid:6 x16, minecraft:stone x32, Thaumcraft:ItemShard:6 x2]
+
+  - id: altar_infusao
+    title: "Montando o Altar de Infusão"
+    type: info
+    deps: [matriz_runica, pedestais]
+    icon: Thaumcraft:blockStoneDevice:2
+    desc: |
+      §eA estrutura (3×3×3):§r
+      §e•§r Um pedestal no centro do chão.
+      §e•§r Nas 4 diagonais, colunas de 2 blocos: §etijolo de pedra arcana§r embaixo e §ebloco
+      de pedra arcana§r em cima.
+      §e•§r A §eMatriz Rúnica§r flutuando 2 blocos acima do pedestal central (meio da coluna de
+      ar entre os pilares).
+      Clique na matriz com a varinha: §e25 de cada primal§r (antes do desconto). Pronto!
+
+      §eO resto:§r pedestais com ingredientes até 8 blocos em volta; jarros com essência até 12
+      blocos; clique na matriz com a varinha para começar.
+    tasks:
+      - check
+    rewards:
+      - xp: 2
+
+  - id: instabilidade
+    title: "Instabilidade"
+    type: info
+    deps: [altar_infusao]
+    icon: Thaumcraft:blockCandle
+    desc: |
+      A Infusão força energia demais num só objeto e coisas imprevisíveis acontecem: itens
+      caem dos pedestais, aparece fluxo, você leva dano... às vezes coisas piores.
+
+      Para reduzir:
+      §e•§r Mantenha os pedestais §esimétricos§r (um par oposto para cada um).
+      §e•§r Ponha §evelas, crânios e cachos de cristal§r em formação simétrica em volta.
+      §e•§r Tenha §etoda a essência pronta§r antes de começar: infusão parada por falta de
+      essência fica cada vez mais instável.
+      §e•§r Cada receita tem sua instabilidade própria (o NEI mostra).
+    tasks:
+      - check
+    rewards:
+      - xp: 2
+
+  - id: infusao
+    title: "A Primeira Infusão"
+    type: milestone
+    deps: [altar_infusao]
+    icon: Thaumcraft:blockStoneDevice:2
+    banner: "A Primeira Infusão"
+    subtitle: "Magia forjada no altar"
+    desc: |
+      O altar zumbe, os ingredientes flutuam em fios de luz até o pedestal central e... pronto!
+      Herói, você dominou a §dInfusão§r, a técnica mais poderosa da Taumaturgia — e a porta de
+      entrada de Thaumic Tinkerer, Forbidden Magic, Tainted Magic e tantos outros Volumes.
+
+      Faça qualquer uma destas infusões: Haste de Silverwood, Ponta de Táumio, Botas do
+      Viajante, uma Ferramenta Elemental, o Cérebro na Jarra ou uma haste primal.
+
+      §aDica:§r neste pack o Salis Arcana avisa no chat quando falta a pesquisa de uma receita.
+    tasks:
+      - one_of: [Thaumcraft:WandRod:2, Thaumcraft:WandCap:2, Thaumcraft:BootsTraveller, Thaumcraft:ItemPickaxeElemental, Thaumcraft:ItemAxeElemental, Thaumcraft:ItemSwordElemental, Thaumcraft:ItemShovelElemental, Thaumcraft:ItemHoeElemental, Thaumcraft:blockJar:1, Thaumcraft:WandRod:1, Thaumcraft:WandRod:3, Thaumcraft:WandRod:4, Thaumcraft:WandRod:5, Thaumcraft:WandRod:6, Thaumcraft:WandRod:7]
+    rewards:
+      - xp: 8
+      - kit: {name: "Kit do Infusor", items: [Thaumcraft:blockCandle x8, Thaumcraft:ItemResource:14 x4, Thaumcraft:ItemShard:6 x4, Thaumcraft:blockJar x4, minecraft:skull x2]}
+      - loot: raro
+
+  - id: botas_viajante
+    title: "Botas do Viajante"
+    type: normal
+    deps: [infusao, tecido_encantado]
+    icon: Thaumcraft:BootsTraveller
+    desc: |
+      Infunda §ebotas de couro§r com estilhaços de ar, tecido encantado, uma pena e um peixe
+      (25 Volatus, 25 Iter). Resultado: corrida mais rápida, pulo mais alto, queda maior sem
+      dano e nado ágil ("como um peixe lento e desajeitado", diz o livro).
+    tasks:
+      - get: Thaumcraft:BootsTraveller
+    rewards:
+      - xp: 3
+      - item: minecraft:leather x8
+
+  - id: picareta_nucleo
+    title: "Picareta do Núcleo"
+    type: normal
+    deps: [infusao, ferramentas_taumio]
+    icon: Thaumcraft:ItemPickaxeElemental
+    desc: |
+      Picareta de Táumio + 2 estilhaços de fogo, um diamante e greatwood (8 Ignis, 8 Perfodio,
+      8 Sensus). Às vezes ela solta §eaglomerados nativos§r no lugar do minério (2 lingotes cada)
+      e, com o botão direito, "escuta" a rocha para achar minérios, lava e água por perto.
+    tasks:
+      - get: Thaumcraft:ItemPickaxeElemental
+    rewards:
+      - xp: 3
+      - item: minecraft:iron_ore x8
+
+  - id: machado_corrente
+    title: "Machado da Corrente"
+    type: normal
+    deps: [infusao, ferramentas_taumio]
+    icon: Thaumcraft:ItemAxeElemental
+    desc: |
+      Machado de Táumio + estilhaços de água: ele corta árvores §ede cima para baixo§r, sempre o
+      bloco mais distante conectado, e a madeira flutua até você. Segurar o botão direito puxa
+      itens próximos.
+    tasks:
+      - get: Thaumcraft:ItemAxeElemental
+    rewards:
+      - xp: 3
+      - item: minecraft:sapling x8
+
+  - id: espada_zephyr
+    title: "Espada de Zephyr"
+    type: normal
+    deps: [infusao, ferramentas_taumio]
+    icon: Thaumcraft:ItemSwordElemental
+    desc: |
+      Espada de Táumio + estilhaços de ar: cada golpe varre inimigos em volta. Bloqueando, ela
+      cria um redemoinho que empurra mobs, desvia projéteis e te levanta devagar no ar.
+    tasks:
+      - get: Thaumcraft:ItemSwordElemental
+    rewards:
+      - xp: 3
+      - item: minecraft:arrow x16
+
+  - id: pa_movedor
+    title: "Pá do Movedor de Terra"
+    type: normal
+    deps: [infusao, ferramentas_taumio]
+    icon: Thaumcraft:ItemShovelElemental
+    desc: |
+      Pá de Táumio + estilhaços de terra: cava §e3×3§r em terra e areia e, com o botão direito,
+      coloca um 3×3 do mesmo material do seu inventário. A tecla §eG§r muda a orientação.
+    tasks:
+      - get: Thaumcraft:ItemShovelElemental
+    rewards:
+      - xp: 3
+      - item: minecraft:dirt x32
+
+  - id: enxada_crescimento
+    title: "Enxada do Crescimento"
+    type: normal
+    deps: [infusao, ferramentas_taumio]
+    icon: Thaumcraft:ItemHoeElemental
+    desc: |
+      Enxada de Táumio + estilhaços de ordem e entropia: ara §e3×3§r e funciona como farinha de
+      osso em plantas (gastando durabilidade), até em algumas que a farinha comum não afeta.
+    tasks:
+      - get: Thaumcraft:ItemHoeElemental
+    rewards:
+      - xp: 3
+      - item: minecraft:wheat_seeds x16
+
+  - id: cerebro_zumbi
+    title: "Cérebro de Zumbi"
+    type: normal
+    deps: [examinando]
+    icon: Thaumcraft:ItemZombieBrain
+    desc: |
+      Os §eZumbis Raivosos§r (Angry Zombie) do Thaumcraft deixam cair §eCérebros de Zumbi§r.
+      Eca? Sim. Úteis? Muito: Cérebro na Jarra, Matriz Mnemônica, Arcana Guardada, núcleo de
+      ordenação de golens e várias receitas de addons.
+
+      Pegue §e2 cérebros§r.
+    tasks:
+      - get: Thaumcraft:ItemZombieBrain x2
+    rewards:
+      - xp: 2
+      - item: minecraft:rotten_flesh x8
+
+  - id: cerebro_jarra
+    title: "Cérebro na Jarra"
+    type: normal
+    deps: [infusao, cerebro_zumbi, jarro]
+    icon: Thaumcraft:blockJar:1
+    desc: |
+      Um Jarro Guardião infundido com cérebro, olhos de aranha e água. O cérebro "come" a
+      experiência de quem morre por perto; clique para ele devolver o XP.
+
+      §cWarp:§r a pesquisa dá 3 de Warp e o item dá mais 1 enquanto... bem, ele existir. É o
+      caminho para a §eInfusão de Encantamento§r (Capítulo II).
+    tasks:
+      - get: Thaumcraft:blockJar:1
+    rewards:
+      - xp: 3
+      - item: minecraft:experience_bottle x8
+
+  - id: espelho_magico
+    title: "Espelhos Mágicos"
+    type: optional
+    deps: [infusao, vidro_espelhado]
+    icon: Thaumcraft:blockMirror
+    desc: |
+      Vidro Espelhado (mercúrio + painel de vidro, Mesa Arcana) infundido com ouro e pérola do
+      Fim vira o §eEspelho Mágico§r. Ligue dois espelhos (clique um no outro) e itens jogados
+      num saem no outro — até entre dimensões! Também há o Espelho de Mão e o Espelho de
+      Essência (para o altar puxar essência de longe).
+    tasks:
+      - get: Thaumcraft:blockMirror x2
+    rewards:
+      - loot: incomum
+
+  - id: escavador_arcano
+    title: "Escavador Arcano"
+    type: optional
+    deps: [infusao, foco_escavacao]
+    icon: Thaumcraft:blockWoodenDevice:5
+    desc: |
+      Uma mineradora mágica: o §eEscavador Arcano§r fica em cima (ou embaixo) da sua §eBase§r,
+      leva um Foco de Escavação e uma picareta qualquer, e minera em linha quando recebe
+      redstone. Perditio (essência ou vis) acelera muito. Encantamentos do foco e da picareta
+      valem!
+    tasks:
+      - get: [Thaumcraft:blockWoodenDevice:5, Thaumcraft:blockWoodenDevice:4]
+    rewards:
+      - loot: incomum
+
+  - id: lampadas_vida
+    title: "Lâmpadas da Vida"
+    type: optional
+    deps: [infusao, lampada_arcana]
+    icon: Thaumcraft:blockMetalDevice:8
+    desc: |
+      Infundindo a Lâmpada Arcana: a §eLâmpada do Crescimento§r (com essência Herba por tubo)
+      acelera plantas, e a §eLâmpada da Fertilidade§r (com Victus) deixa animais românticos.
+      Faça qualquer uma.
+    tasks:
+      - one_of: [Thaumcraft:blockMetalDevice:8, Thaumcraft:blockMetalDevice:13]
+    rewards:
+      - loot: incomum
+
+  - id: bau_itinerante
+    title: "Baú Itinerante"
+    type: optional
+    deps: [infusao, golem_madeira]
+    icon: Thaumcraft:TrunkSpawner
+    desc: |
+      Um baú com perninhas que te segue por todo lado, até para outras dimensões! Baú Faminto
+      infundido com ferro, tábuas de greatwood e um Golem de Madeira. Ele aceita uma melhoria
+      de golem que dá habilidades especiais (ver no livro).
+    tasks:
+      - get: Thaumcraft:TrunkSpawner
+    rewards:
+      - loot: incomum
+
+  # ======================================================================
+  # FASE 8 — VARINHAS SUPERIORES
+  # ======================================================================
+  - id: haste_silverwood
+    title: "Haste de Silverwood"
+    type: main
+    deps: [infusao, silverwood]
+    icon: Thaumcraft:WandRod:2
+    desc: |
+      Infunda uma §eMadeira de Silverwood§r com um estilhaço equilibrado e um de cada primal
+      (e um pouco de cada primal + Praecantatio em essência). A §eHaste de Silverwood§r guarda
+      §e100 de vis§r por primal.
+
+      Pesquisa: §eVara de Silverwood§r (exige Greatwood e Infusão). Vale cada gota.
+    tasks:
+      - get: Thaumcraft:WandRod:2
+    rewards:
+      - xp: 4
+      - choice: [Thaumcraft:ItemShard:6 x4, Thaumcraft:blockMagicalLog:1 x2, Thaumcraft:ItemResource:14 x4]
+
+  - id: pontas_taumio_inertes
+    title: "Pontas de Táumio Inertes"
+    type: main
+    deps: [mesa_arcana, taumio]
+    icon: Thaumcraft:WandCap:6
+    desc: |
+      Pepitas de Táumio (1 barra = 9 pepitas) no formato de ponta, na Mesa Arcana. Saem
+      §einertes§r: ainda não focam vis. Faça §eduas§r — a próxima quest as desperta.
+    tasks:
+      - get: Thaumcraft:WandCap:6 x2
+    rewards:
+      - xp: 4
+      - choice: [Thaumcraft:ItemNugget:6 x9, Thaumcraft:ItemResource:14 x3, Thaumcraft:ItemShard:6 x2]
+
+  - id: pontas_taumio
+    title: "Pontas de Táumio"
+    type: main
+    deps: [pontas_taumio_inertes, infusao]
+    icon: Thaumcraft:WandCap:2
+    desc: |
+      Cada ponta inerte vai ao pedestal central com §e3 Salis Mundus§r em volta (mais Potentia
+      e Auram em essência). As §ePontas de Táumio§r dão §e10% de desconto§r em tudo (fator 90%).
+    tasks:
+      - get: Thaumcraft:WandCap:2 x2
+    rewards:
+      - xp: 4
+      - choice: [Thaumcraft:ItemResource:14 x4, Thaumcraft:ItemShard:6 x3, Thaumcraft:ItemNugget:6 x9]
+
+  - id: pontas_prata
+    title: "Pontas de Prata"
+    type: optional
+    deps: [pontas_ouro, infusao]
+    icon: Thaumcraft:WandCap:4
+    desc: |
+      Com prata no pack, há também §ePontas de Prata§r: inertes na Mesa Arcana (pepitas de
+      prata), depois infundidas com Salis Mundus. Custam como ouro, mas só 95% para Aer,
+      Terra, Ignis e Aqua.
+    tasks:
+      - get: Thaumcraft:WandCap:4 x2
+    rewards:
+      - loot: comum
+
+  - id: varinha_silverwood
+    title: "Varinha de Silverwood"
+    type: milestone
+    deps: [haste_silverwood, pontas_taumio]
+    icon: Thaumcraft:WandRod:2
+    banner: "Varinha de Silverwood"
+    subtitle: "100 de vis em cada primal"
+    desc: |
+      Táumio (custo 6) × Silverwood (custo 9) = §e54 de cada primal§r para montar. A varinha de
+      Greatwood com ouro só guarda 50! Saída: monte antes uma Greatwood com §epontas de
+      táumio§r (ou troque as pontas pela receita de substituição do Salis Arcana): o desconto
+      de 10% derruba o custo para ~49. Outra saída é um cajado (Capítulo II).
+
+      O resultado é a varinha clássica do taumaturgo de verdade: §e100 de vis§r por primal e
+      10% de desconto. Com ela você faz o Nó na Jarra, encara o Oculus Eldritch e trabalha
+      sem viver correndo atrás de nós.
+    tasks:
+      - {get: 'Thaumcraft:WandCasting:* {rod:"silverwood",cap:"thaumium"}', nbt: true}
+    rewards:
+      - xp: 8
+      - kit: {name: "Kit do Varinheiro", items: [Thaumcraft:ItemShard x6, Thaumcraft:ItemShard:1 x6, Thaumcraft:ItemShard:2 x6, Thaumcraft:ItemShard:3 x6, Thaumcraft:ItemShard:4 x6, Thaumcraft:ItemShard:5 x6, Thaumcraft:ItemResource:14 x4]}
+      - loot: raro
+
+  - id: haste_obsidiana
+    title: "Haste de Obsidiana"
+    type: optional
+    deps: [haste_greatwood, infusao]
+    icon: Thaumcraft:WandRod:1
+    desc: |
+      As hastes primais guardam §e75 de vis§r e §erecarregam sozinhas§r um aspecto quando ele cai
+      abaixo de 10%. A de §eObsidiana§r (obsidiana + estilhaço equilibrado + de terra) recarrega
+      §eTerra§r. As seis juntas são o caminho para o Núcleo Primal do Capítulo II.
+    tasks:
+      - get: Thaumcraft:WandRod:1
+    rewards:
+      - loot: comum
+
+  - id: haste_gelo
+    title: "Haste de Gelo"
+    type: optional
+    deps: [haste_greatwood, infusao]
+    icon: Thaumcraft:WandRod:3
+    desc: |
+      Gelo + estilhaço equilibrado + de água na infusão: a §eHaste de Gelo§r guarda 75 e
+      recarrega §eAqua§r sozinha.
+    tasks:
+      - get: Thaumcraft:WandRod:3
+    rewards:
+      - loot: comum
+
+  - id: haste_quartzo
+    title: "Haste de Quartzo"
+    type: optional
+    deps: [haste_greatwood, infusao]
+    icon: Thaumcraft:WandRod:4
+    desc: |
+      Bloco de quartzo + estilhaço equilibrado + de ordem: a §eHaste de Quartzo§r guarda 75 e
+      recarrega §eOrdo§r sozinha.
+    tasks:
+      - get: Thaumcraft:WandRod:4
+    rewards:
+      - loot: comum
+
+  - id: haste_cana
+    title: "Haste de Cana"
+    type: optional
+    deps: [haste_greatwood, infusao]
+    icon: Thaumcraft:WandRod:5
+    desc: |
+      Cana-de-açúcar + estilhaço equilibrado + de ar: a §eHaste de Cana§r guarda 75 e recarrega
+      §eAer§r sozinha.
+    tasks:
+      - get: Thaumcraft:WandRod:5
+    rewards:
+      - loot: comum
+
+  - id: haste_blaze
+    title: "Haste de Blaze"
+    type: optional
+    deps: [haste_greatwood, infusao]
+    icon: Thaumcraft:WandRod:6
+    desc: |
+      Vara de blaze + estilhaço equilibrado + de fogo: a §eHaste de Blaze§r guarda 75 e
+      recarrega §eIgnis§r sozinha.
+    tasks:
+      - get: Thaumcraft:WandRod:6
+    rewards:
+      - loot: comum
+
+  - id: haste_osso
+    title: "Haste de Osso"
+    type: optional
+    deps: [haste_greatwood, infusao]
+    icon: Thaumcraft:WandRod:7
+    desc: |
+      Osso + estilhaço equilibrado + de entropia: a §eHaste de Osso§r guarda 75 e recarrega
+      §ePerditio§r sozinha. §cA pesquisa dá 1 de Warp.§r
+    tasks:
+      - get: Thaumcraft:WandRod:7
+    rewards:
+      - loot: comum
+
+  # ======================================================================
+  # FASE 9 — GOLEMANCIA BÁSICA
+  # ======================================================================
+  - id: bau_faminto
+    title: "Baú Faminto"
+    type: main
+    deps: [mesa_arcana]
+    icon: Thaumcraft:blockChestHungry
+    desc: |
+      A porta de entrada da §eGolemancia§r é um baú com fome: o §eBaú Faminto§r engole itens que
+      encostam nele. Tábuas e um alçapão na Mesa Arcana.
+
+      Ele abre a pesquisa §eGolem de Palha§r, o primeiro trabalhador mágico.
+    tasks:
+      - get: Thaumcraft:blockChestHungry
+    rewards:
+      - xp: 3
+      - choice: [minecraft:chest x4, minecraft:hopper, minecraft:planks x16]
+
+  - id: golem_palha
+    title: "Golem de Palha"
+    type: main
+    deps: [bau_faminto, crisol]
+    icon: Thaumcraft:ItemGolemPlacer
+    desc: |
+      Um §efardo de feno§r no Crisol com §e4 Humanus, 4 Motus e 4 Spiritus§r vira um §eGolem de
+      Palha§r: fraco, rápido, carrega 1 item e aceita 1 melhoria.
+
+      O golem fica parado até receber um §enúcleo de animação§r. Para que ele mexa num baú,
+      coloque-o clicando (ou Shift+clicando) no lado do baú com que ele vai trabalhar. Ele
+      atua até 16 blocos da "casa".
+    tasks:
+      - get: Thaumcraft:ItemGolemPlacer
+    rewards:
+      - xp: 3
+      - choice: [minecraft:hay_block x4, minecraft:wheat x16, minecraft:brick x16]
+
+  - id: sino_golem
+    title: "Sino dos Golens"
+    type: main
+    deps: [golem_palha]
+    icon: Thaumcraft:GolemBell
+    desc: |
+      Golens não ouvem conversa, mas obedecem ao §eSino§r (quartzo e graveto). Clique no golem
+      para selecioná-lo; depois clique em blocos, lugares e baús para marcá-los. Shift+clique
+      limpa uma marca; F limpa todas. Clique esquerdo pega o golem de volta (com núcleo e
+      melhorias).
+    tasks:
+      - get: Thaumcraft:GolemBell
+    rewards:
+      - xp: 3
+      - choice: [minecraft:quartz x8, minecraft:gold_nugget x12, minecraft:redstone x16]
+
+  - id: nucleo_vazio
+    title: "Núcleo de Animação em Branco"
+    type: main
+    deps: [golem_palha, nitor]
+    icon: Thaumcraft:ItemGolemCore:100
+    desc: |
+      Tijolos em volta de um Nitor (Mesa Arcana) = §eNúcleo de Animação em Branco§r. Ele é o
+      catalisador: no Crisol, com os aspectos certos, vira cada núcleo específico.
+
+      Faça §e3 núcleos em branco§r. §aObs.:§r a tradução pt_BR troca alguns nomes de núcleos;
+      confie no efeito descrito aqui e no livro.
+    tasks:
+      - get: Thaumcraft:ItemGolemCore:100 x3
+    rewards:
+      - xp: 3
+      - choice: [minecraft:brick x16, Thaumcraft:ItemResource:1 x2, minecraft:clay_ball x16]
+
+  - id: nucleo_coletar
+    title: "Núcleo: Coletar"
+    type: normal
+    deps: [nucleo_vazio]
+    icon: Thaumcraft:ItemGolemCore:2
+    desc: |
+      Núcleo em branco + 5 Lucrum + 5 Terra no Crisol. O golem procura §eitens soltos§r até 16
+      blocos, recolhe e guarda no baú de casa. Clique no golem para escolher o que pegar.
+    tasks:
+      - get: Thaumcraft:ItemGolemCore:2
+    rewards:
+      - xp: 2
+      - item: minecraft:chest x2
+
+  - id: nucleo_preencher
+    title: "Núcleo: Preencher"
+    type: normal
+    deps: [nucleo_coletar]
+    icon: Thaumcraft:ItemGolemCore
+    desc: |
+      Núcleo em branco + 5 Fames + 5 Vacuos. O golem busca nos baús marcados os itens que você
+      definiu e §eenche o baú de casa§r (quantidade exata ou "qualquer quantidade").
+    tasks:
+      - get: Thaumcraft:ItemGolemCore
+    rewards:
+      - xp: 2
+      - item: minecraft:hopper
+
+  - id: nucleo_esvaziar
+    title: "Núcleo: Esvaziar"
+    type: normal
+    deps: [nucleo_coletar]
+    icon: Thaumcraft:ItemGolemCore:1
+    desc: |
+      Núcleo em branco + 5 Lucrum + 5 Vacuos. O golem §etira itens do baú de casa§r e leva para
+      os lugares ou baús marcados. É o "transportador" básico.
+    tasks:
+      - get: Thaumcraft:ItemGolemCore:1
+    rewards:
+      - xp: 2
+      - item: minecraft:chest x2
+
+  - id: nucleo_colher
+    title: "Núcleo: Colher"
+    type: normal
+    deps: [nucleo_coletar]
+    icon: Thaumcraft:ItemGolemCore:3
+    desc: |
+      Núcleo em branco + 5 Meto + 5 Messis. O golem colhe plantações maduras por perto (não
+      precisa de baú). Com a §eMelhoria de Ordem§r, ele também replanta! Junte com um golem
+      coletor e tenha uma fazenda automática.
+    tasks:
+      - get: Thaumcraft:ItemGolemCore:3
+    rewards:
+      - xp: 2
+      - item: minecraft:wheat_seeds x16
+
+  - id: nucleo_guarda
+    title: "Núcleo: Proteger"
+    type: normal
+    deps: [nucleo_coletar]
+    icon: Thaumcraft:ItemGolemCore:4
+    desc: |
+      Núcleo em branco + 5 Telum + 5 Vinculum. Um golem guarda que ataca mobs hostis (menos
+      creepers). Com a Melhoria de Ordem você escolhe os alvos.
+    tasks:
+      - get: Thaumcraft:ItemGolemCore:4
+    rewards:
+      - xp: 2
+      - item: minecraft:iron_sword
+
+  - id: golem_madeira
+    title: "Golem de Madeira"
+    type: normal
+    deps: [golem_palha, greatwood]
+    icon: Thaumcraft:ItemGolemPlacer:1
+    desc: |
+      Madeira de Greatwood + 4 Humanus, 4 Motus, 4 Spiritus no Crisol. Pouco mais forte que o
+      de palha e carrega §e4 itens§r.
+    tasks:
+      - get: Thaumcraft:ItemGolemPlacer:1
+    rewards:
+      - xp: 2
+      - item: Thaumcraft:blockMagicalLog x2
+
+  - id: golem_argila
+    title: "Golem de Argila"
+    type: normal
+    deps: [golem_madeira]
+    icon: Thaumcraft:ItemGolemPlacer:3
+    desc: |
+      Bloco de tijolos + os mesmos aspectos. À prova de fogo, carrega §e8 itens§r, velocidade
+      média.
+    tasks:
+      - get: Thaumcraft:ItemGolemPlacer:3
+    rewards:
+      - xp: 2
+      - item: minecraft:brick_block x4
+
+  - id: golem_pedra
+    title: "Golem de Pedra"
+    type: normal
+    deps: [golem_argila]
+    icon: Thaumcraft:ItemGolemPlacer:5
+    desc: |
+      Tijolos de pedra + aspectos. Durável e carrega §e16 itens§r, mas é lento e afunda na água.
+    tasks:
+      - get: Thaumcraft:ItemGolemPlacer:5
+    rewards:
+      - xp: 2
+      - item: minecraft:stonebrick x16
+
+  - id: golem_ferro
+    title: "Golem de Ferro"
+    type: normal
+    deps: [golem_pedra]
+    icon: Thaumcraft:ItemGolemPlacer:6
+    desc: |
+      Bloco de ferro + aspectos. Muito forte e carrega §e32 itens§r, porém bem lento.
+    tasks:
+      - get: Thaumcraft:ItemGolemPlacer:6
+    rewards:
+      - xp: 2
+      - item: minecraft:iron_ingot x9
+
+  - id: golem_sebo
+    title: "Golem de Sebo"
+    type: normal
+    deps: [golem_argila, sebo]
+    icon: Thaumcraft:ItemGolemPlacer:2
+    desc: |
+      Bloco de Sebo + 8 Humanus, 8 Motus, 8 Spiritus. Parecido com o de argila, mas aceita
+      §e2 melhorias§r.
+    tasks:
+      - get: Thaumcraft:ItemGolemPlacer:2
+    rewards:
+      - xp: 2
+      - item: Thaumcraft:ItemResource:4 x9
+
+  - id: golem_taumio
+    title: "Golem de Táumio"
+    type: normal
+    deps: [golem_ferro, bloco_taumio]
+    icon: Thaumcraft:ItemGolemPlacer:7
+    desc: |
+      Bloco Táumico + 8 de cada aspecto. Durabilidade altíssima, carrega 32, aceita §e2
+      melhorias§r e resiste a dano mágico. O melhor operário deste capítulo.
+    tasks:
+      - get: Thaumcraft:ItemGolemPlacer:7
+    rewards:
+      - xp: 2
+      - item: Thaumcraft:ItemResource:2 x4
+
+  - id: golem_carne
+    title: "Golem de Carne"
+    type: optional
+    deps: [golem_madeira]
+    icon: Thaumcraft:ItemGolemPlacer:4
+    desc: |
+      Um Bloco de Carne (9 carnes podres) + 8 de cada aspecto. Macabro, se cura muito rápido e
+      aceita 2 melhorias. §cA pesquisa dá 3 de Warp e o golem como item, mais 1.§r
+    tasks:
+      - get: Thaumcraft:ItemGolemPlacer:4
+    rewards:
+      - loot: comum
+
+  - id: melhoria_ar
+    title: "Melhoria de Golem: Ar"
+    type: normal
+    deps: [sino_golem]
+    icon: Thaumcraft:ItemGolemUpgrade
+    desc: |
+      Pepitas de ouro em volta de um estilhaço de ar (Mesa Arcana). O golem anda e ataca à
+      distância mais rápido; alguns núcleos ganham bônus.
+    tasks:
+      - get: Thaumcraft:ItemGolemUpgrade
+    rewards:
+      - xp: 2
+      - item: minecraft:gold_nugget x8
+
+  - id: melhoria_terra
+    title: "Melhoria de Golem: Terra"
+    type: normal
+    deps: [sino_golem]
+    icon: Thaumcraft:ItemGolemUpgrade:1
+    desc: |
+      Estilhaço de terra: o golem carrega mais itens (4 a 16 a mais, conforme o tipo), bate
+      mais forte e trabalha mais rápido em tarefas de força.
+    tasks:
+      - get: Thaumcraft:ItemGolemUpgrade:1
+    rewards:
+      - xp: 2
+      - item: minecraft:gold_nugget x8
+
+  - id: melhoria_fogo
+    title: "Melhoria de Golem: Fogo"
+    type: normal
+    deps: [sino_golem]
+    icon: Thaumcraft:ItemGolemUpgrade:2
+    desc: |
+      Estilhaço de fogo: mais espaços de filtro na interface do golem, e os ataques corpo a
+      corpo incendeiam o alvo.
+    tasks:
+      - get: Thaumcraft:ItemGolemUpgrade:2
+    rewards:
+      - xp: 2
+      - item: minecraft:gold_nugget x8
+
+  - id: melhoria_agua
+    title: "Melhoria de Golem: Água"
+    type: normal
+    deps: [sino_golem]
+    icon: Thaumcraft:ItemGolemUpgrade:3
+    desc: |
+      Estilhaço de água: o golem enxerga mais longe (trabalha numa área maior) e acerta melhor
+      à distância.
+    tasks:
+      - get: Thaumcraft:ItemGolemUpgrade:3
+    rewards:
+      - xp: 2
+      - item: minecraft:gold_nugget x8
+
+  - id: melhoria_ordem
+    title: "Melhoria de Golem: Ordem"
+    type: normal
+    deps: [sino_golem]
+    icon: Thaumcraft:ItemGolemUpgrade:4
+    desc: |
+      Estilhaço de ordem: marcas do sino §ecom cores diferentes§r e funções extras em vários
+      núcleos (replantar no Colher, escolher alvos no Proteger).
+    tasks:
+      - get: Thaumcraft:ItemGolemUpgrade:4
+    rewards:
+      - xp: 2
+      - item: minecraft:gold_nugget x8
+
+  - id: melhoria_entropia
+    title: "Melhoria de Golem: Entropia"
+    type: normal
+    deps: [sino_golem]
+    icon: Thaumcraft:ItemGolemUpgrade:5
+    desc: |
+      Estilhaço de entropia: o golem devolve dano a quem o ataca e ganha filtros finos
+      (ignorar dano, NBT ou usar o oredict ao procurar itens).
+    tasks:
+      - get: Thaumcraft:ItemGolemUpgrade:5
+    rewards:
+      - xp: 2
+      - item: minecraft:gold_nugget x8
+
+  - id: acessorios_golem
+    title: "Moda Golem"
+    type: optional
+    deps: [sino_golem]
+    icon: Thaumcraft:ItemGolemDecoration
+    desc: |
+      Sim, golens usam chapéus. E funcionam! Cartola (mais vida), Barrete (cura rápida),
+      Gravata Borboleta (velocidade), Óculos (visão), e para golens de combate: Lança-Dardos,
+      Visor, Blindagem e Braço de Maça. As pesquisas aparecem ao examinar lã e coisas com
+      aspectos de arma ou proteção. Faça qualquer acessório.
+    tasks:
+      - one_of: [Thaumcraft:ItemGolemDecoration, Thaumcraft:ItemGolemDecoration:1, Thaumcraft:ItemGolemDecoration:2, Thaumcraft:ItemGolemDecoration:3, Thaumcraft:ItemGolemDecoration:4, Thaumcraft:ItemGolemDecoration:5, Thaumcraft:ItemGolemDecoration:6, Thaumcraft:ItemGolemDecoration:7]
+    rewards:
+      - loot: comum
+
+  - id: operarios
+    title: "Operários Mágicos"
+    type: milestone
+    deps: [nucleo_preencher, nucleo_esvaziar, nucleo_colher, golem_pedra]
+    icon: Thaumcraft:ItemGolemPlacer:5
+    banner: "Operários Mágicos"
+    subtitle: "A Golemancia desperta"
+    desc: |
+      Golens coletando, enchendo, esvaziando e colhendo — e você tomando chá. Herói, essa é a
+      parte da Taumaturgia que eu mais gosto de assistir.
+
+      Ideias de linha de produção:
+      §e•§r Golem Colher (com Ordem) + Golem Coletar = fazenda que se replanta.
+      §e•§r Golem Esvaziar tira do baú da fornalha e leva para o depósito.
+      §e•§r Golem Preencher mantém o Crisol abastecido de ingredientes.
+
+      No Capítulo II vêm os núcleos avançados: usar, ordenar, lenhador, pescador, alquimia...
+    tasks:
+      - get: [Thaumcraft:ItemGolemCore x1, Thaumcraft:ItemGolemCore:1, Thaumcraft:ItemGolemCore:3]
+    rewards:
+      - xp: 5
+      - kit: {name: "Kit do Golemante", items: [Thaumcraft:ItemGolemCore:100 x2, minecraft:hay_block x4, Thaumcraft:ItemShard:4 x4, minecraft:gold_nugget x16, minecraft:chest x4]}
+      - loot: incomum
+
+  # ======================================================================
+  # FASE 10 — O APRENDIZ COMPLETO
+  # ======================================================================
+  - id: aprendiz_completo
+    title: "O Aprendiz se Torna Mestre"
+    type: milestone
+    deps: [varinha_silverwood, infusao, oculos, laboratorio_alquimico, operarios]
+    icon: Thaumcraft:ItemGoggles
+    banner: "O Aprendiz se Torna Mestre"
+    subtitle: "Fim do Volume da Taumaturgia I"
+    desc: |
+      Olha só pra você: óculos na cara, varinha de Silverwood na mão, um altar de infusão no
+      porão, jarros de essência nas prateleiras e golens varrendo o chão. Herói, eu quase não
+      reconheço aquela pessoa que bateu numa estante com um graveto!
+
+      O §eCapítulo II — O Taumaturgo§r continua daqui: infusão avançada, encantamentos por
+      infusão, nós energizados e relés de vis, golemancia avançada, o §cWarp§r, a §cMácula§r
+      e, no fim, os mistérios Eldritch das Terras Exteriores.
+
+      Também ficam abertos os Volumes irmãos: Thaumic Tinkerer, Forbidden Magic, Tainted
+      Magic e companhia. Estou muito orgulhosa. De verdade.
+    tasks:
+      - {get: 'Thaumcraft:WandCasting:* {rod:"silverwood"}', nbt: true}
+      - get: Thaumcraft:ItemGoggles
+    rewards:
+      - xp: 8
+      - kit: {name: "Kit do Taumaturgo Formado", items: [Thaumcraft:ItemResource:2 x8, Thaumcraft:ItemResource:14 x6, Thaumcraft:ItemResource:1 x4, Thaumcraft:blockJar x4, Thaumcraft:ItemShard:6 x4]}
+      - loot: raro
+
+  # ======================================================================
+  # EXTRAS — CURIOSIDADES DO MUNDO E DO LABORATÓRIO
+  # ======================================================================
+  - id: tabuas_magicas
+    title: "Tábuas de Greatwood e Silverwood"
+    type: normal
+    deps: [silverwood]
+    icon: Thaumcraft:blockWoodenDevice:6
+    desc: |
+      Cada tora mágica rende 4 tábuas. As §eTábuas de Greatwood§r entram em portas arcanas,
+      levitadores, construtos e no Baú Itinerante; as de §eSilverwood§r fazem os Filtros de
+      Fluxo. §aDica:§r o Salis Arcana adiciona tábuas "comuns" parecidas para quem só quer
+      construir.
+    tasks:
+      - get: [Thaumcraft:blockWoodenDevice:6 x8, Thaumcraft:blockWoodenDevice:7 x4]
+    rewards:
+      - xp: 2
+      - item: minecraft:stick x16
+
+  - id: vishroom
+    title: "Vishroom"
+    type: optional
+    deps: [floresta_magica]
+    icon: Thaumcraft:blockCustomPlant:5
+    desc: |
+      O cogumelo roxo das Florestas Mágicas. Encostar nele deixa você enjoado, mas ele é
+      ingrediente do Fungo Mágico (Tainted Magic) e da Inscrição Maculada. Colha um com
+      cuidado (tesoura ou mão rápida!).
+    tasks:
+      - get: Thaumcraft:blockCustomPlant:5
+    rewards:
+      - loot: comum
+
+  - id: bloco_ambar
+    title: "Bloco de Âmbar"
+    type: optional
+    deps: [ambar]
+    icon: Thaumcraft:blockCosmeticOpaque
+    desc: |
+      Quatro âmbares = um Bloco de Âmbar, translúcido e cor de mel. Quatro blocos viram
+      tijolos de âmbar. Ele também é a "lente" da Lâmpada Arcana.
+    tasks:
+      - get: Thaumcraft:blockCosmeticOpaque x2
+    rewards:
+      - loot: comum
+
+  - id: pech
+    title: "O Pech"
+    type: info
+    deps: [floresta_magica]
+    icon: Thaumcraft:ItemSpawnerEgg:4
+    desc: |
+      Baixinhos, gananciosos e fortíssimos: os §ePechs§r vivem onde o véu entre mundos é fino
+      (Florestas Mágicas, Terras Sombrias). Eles roubam tudo que estiver no chão, de
+      preferência coisas valiosas.
+
+      Normalmente fogem de você, mas se você atacar um, o bando inteiro vem atrás. O livro diz
+      que alimentar a ganância deles (dando itens valiosos) pode torná-los amigos — e amigos
+      Pech às vezes oferecem objetos raros. "Amizades assim duram pouco", avisa o autor.
+    tasks:
+      - check
+    rewards:
+      - xp: 1
+
+  - id: teoria_perdida
+    title: "Uma Teoria Perdida"
+    type: optional
+    deps: [fragmento]
+    icon: Thaumcraft:ItemResearchNotes
+    desc: |
+      Nove Fragmentos de Conhecimento na bancada formam uma nota de "conhecimento perdido".
+      Ela revela pesquisas que não aparecem de outro jeito. Junte §e9 fragmentos§r — urnas
+      antigas, caixotes abandonados e cultistas carmesins são as melhores fontes.
+    tasks:
+      - get: Thaumcraft:ItemResource:9 x9
+    rewards:
+      - loot: incomum
+
+  - id: matematica_varinhas
+    title: "A Matemática das Varinhas"
+    type: info
+    deps: [varinha_greatwood]
+    icon: Thaumcraft:WandCap:1
+    desc: |
+      §eCapacidade (vis por primal):§r madeira 25 · greatwood 50 · hastes primais 75 ·
+      silverwood 100 · cajado de greatwood 125 · cajados primais 175 · cajado de silverwood 250.
+
+      §eFator das pontas:§r ferro 110% · cobre 110% (100% em Ordo/Perditio) · ouro 100% · prata
+      100% (95% nos 4 elementais) · táumio 90% · metal do vazio 80%.
+
+      §eCusto de montar (cada primal):§r custo da ponta × custo da haste. Ferro 1, ouro 3,
+      táumio 6, vazio 9; madeira 1, greatwood 3, primais 6, silverwood 9.
+
+      Robes, óculos e outras peças somam descontos extras.
+    tasks:
+      - check
+    rewards:
+      - xp: 1
+
+  - id: primeira_essencia
+    title: "Frasco de Essência"
+    type: normal
+    deps: [alambique]
+    icon: Thaumcraft:ItemEssence:1
+    desc: |
+      Clique com um Frasco de Vidro vazio num alambique (ou jarro) com pelo menos 8 de
+      essência: sai um §eFrasco de Essência§r. Frascos movem essência à mão e aplicam símbolos
+      em estandartes. Pegue qualquer um.
+    tasks:
+      - get: Thaumcraft:ItemEssence:1
+    rewards:
+      - xp: 2
+      - item: Thaumcraft:ItemEssence x8
+
+  - id: vidro_espelhado
+    title: "Vidro Espelhado"
+    type: normal
+    deps: [cinabrio, mesa_arcana]
+    icon: Thaumcraft:ItemResource:10
+    desc: |
+      Mercúrio + painel de vidro na Mesa Arcana (sem forma, 10 Ignis e 10 Terra) = §eVidro
+      Espelhado§r. Ele é a base dos Espelhos Mágicos, do Verificador de Sanidade e de vários
+      itens de addons (Transvector Dislocator, Focus de Distorção...).
+    tasks:
+      - get: Thaumcraft:ItemResource:10 x2
+    rewards:
+      - xp: 2
+      - item: minecraft:glass_pane x16
+
+  - id: espelho_mao
+    title: "Espelho Mágico de Mão"
+    type: optional
+    deps: [espelho_magico]
+    icon: Thaumcraft:HandMirror
+    desc: |
+      Um espelho portátil que §eenvia§r itens do seu inventário para o espelho ligado (só envia,
+      não recebe). Depósito remoto para mineração longe de casa!
+    tasks:
+      - get: Thaumcraft:HandMirror
+    rewards:
+      - loot: comum
+
+  - id: gradil
+    title: "Gradil de Itens"
+    type: optional
+    deps: [mesa_arcana]
+    icon: Thaumcraft:blockMetalDevice:5
+    desc: |
+      Uma grade de ferro sobre um alçapão: aberto, deixa itens caírem através; fechado, segura.
+      Abre com a mão ou redstone. Ótimo para separar itens de mobs em fazendas.
+    tasks:
+      - get: Thaumcraft:blockMetalDevice:5
+    rewards:
+      - loot: comum
+
+  - id: jukebox_arcana
+    title: "Ouvido Arcano"
+    type: optional
+    deps: [oculos]
+    icon: Thaumcraft:blockWoodenDevice:1
+    desc: |
+      O "Arcane Ear" (o jogo chama de Jukebox Arcana) escuta blocos musicais próximos e emite um
+      pulso de redstone quando ouve a nota certa. Afina-se como um bloco musical. Redstone sem
+      fios, à moda dos magos.
+    tasks:
+      - get: Thaumcraft:blockWoodenDevice:1
+    rewards:
+      - loot: comum
+
+  - id: estandarte
+    title: "Estandartes Taumaturgicos"
+    type: optional
+    deps: [primeira_essencia]
+    icon: Thaumcraft:blockWoodenDevice:8
+    desc: |
+      Lã, gravetos e uma laje na Mesa Arcana = um estandarte. Clique nele com um Frasco de
+      Essência para bordar o símbolo do aspecto. Pura decoração — e o seu laboratório merece.
+      (A pesquisa aparece ao examinar um estandarte.)
+    tasks:
+      - get: Thaumcraft:blockWoodenDevice:8
+    rewards:
+      - loot: comum
+
+  - id: arco_osso
+    title: "Arco de Osso"
+    type: optional
+    deps: [estilhaco_perditio, mesa_arcana]
+    icon: Thaumcraft:ItemBowBone
+    desc: |
+      Ossos, barbante e um estilhaço de entropia: o §eArco de Osso§r atira muito mais rápido e
+      as flechas voam mais longe e mais forte. A pesquisa aparece ao examinar um arco comum.
+    tasks:
+      - get: Thaumcraft:ItemBowBone
+    rewards:
+      - loot: comum
+
+  - id: flechas_primais
+    title: "Flechas Primais"
+    type: optional
+    deps: [arco_osso]
+    icon: Thaumcraft:PrimalArrow:1
+    desc: |
+      8 flechas em volta de um estilhaço = 8 §eFlechas Primais§r: Ar ignora armadura, Fogo
+      incendeia, Água deixa lento, Terra bate mais forte, Ordem enfraquece e Entropia murcha
+      o alvo. Elas não podem ser recolhidas do chão. Faça qualquer tipo.
+    tasks:
+      - one_of: [Thaumcraft:PrimalArrow, Thaumcraft:PrimalArrow:1, Thaumcraft:PrimalArrow:2, Thaumcraft:PrimalArrow:3, Thaumcraft:PrimalArrow:4, Thaumcraft:PrimalArrow:5]
+    rewards:
+      - loot: comum
+
+  - id: berloques_mundanos
+    title: "Berloques Mundanos"
+    type: normal
+    deps: [mesa_arcana]
+    icon: Thaumcraft:ItemBaubleBlanks
+    desc: |
+      Na bancada comum: §eAmuleto Mundano§r (barbante e ouro), §eAnel Mundano§r (pepitas de ouro)
+      e §eCinto Mundano§r (couro e ouro). Sozinhos não fazem nada, mas são a base dos amuletos
+      de vis, da proteção rúnica e da Bolsa de Focos. Faça um de cada.
+    tasks:
+      - get: [Thaumcraft:ItemBaubleBlanks, Thaumcraft:ItemBaubleBlanks:1, Thaumcraft:ItemBaubleBlanks:2]
+    rewards:
+      - xp: 2
+      - item: minecraft:gold_ingot x4
+
+  - id: grilhao_golem
+    title: "Grilhão de Golem"
+    type: optional
+    deps: [golem_pedra]
+    icon: Thaumcraft:blockCosmeticSolid:9
+    desc: |
+      Um bloco de pedra arcana que, com redstone, §eparalisa§r qualquer golem que passar por
+      cima até o sinal desligar. Perfeito para manutenção ou para criar "portões" na rota dos
+      seus operários.
+    tasks:
+      - get: Thaumcraft:blockCosmeticSolid:9
+    rewards:
+      - loot: comum
+
+  - id: petisco_carne
+    title: "Surpresa Tripla de Carne"
+    type: optional
+    deps: [fornalha_infernal]
+    icon: Thaumcraft:TripleMeatTreat
+    desc: |
+      A Fornalha Infernal às vezes solta §enuggets de carne§r como bônus ao assar comida. Três
+      nuggets diferentes + açúcar = §eSurpresa Tripla de Carne§r. Eu não sei o que é, mas o
+      cheiro é ótimo. Faça uma!
+    tasks:
+      - get: Thaumcraft:TripleMeatTreat
+    rewards:
+      - loot: comum
+
+  - id: pepitas_taumio
+    title: "Pepitas de Táumio"
+    type: normal
+    deps: [taumio]
+    icon: Thaumcraft:ItemNugget:6
+    desc: |
+      Uma barra de Táumio na bancada = 9 §ePepitas de Táumio§r. Elas fazem as pontas de táumio
+      e servem para ajustar receitas sem desperdiçar barras. Junte §e18§r.
+    tasks:
+      - get: Thaumcraft:ItemNugget:6 x18
+    rewards:
+      - xp: 2
+      - item: minecraft:iron_ingot x4
+
+  - id: bloco_carne
+    title: "Bloco de Carne"
+    type: optional
+    deps: [golem_madeira]
+    icon: Thaumcraft:blockTaint:2
+    desc: |
+      Nove carnes podres = um §eBloco de Carne§r (e, com o Salis Arcana, dá para desfazer).
+      Ele é o catalisador do Golem de Carne e aparece em terras maculadas. Nojento, útil.
+    tasks:
+      - get: Thaumcraft:blockTaint:2
+    rewards:
+      - loot: comum
+
+  - id: duplicacao_pesquisa
+    title: "Duplicação de Pesquisa"
+    type: info
+    deps: [pesquisador]
+    icon: Thaumcraft:ItemResearchNotes
+    desc: |
+      Depois de Mestre em Pesquisas vem a §eDuplicação de Pesquisa§r: na Mesa de Pesquisa, uma
+      nota completa ganha um ícone de estrela. Clique (com papel, tinta e os aspectos) para
+      copiar a nota — ótimo para dar uma pesquisa a um amigo. Cada cópia fica mais cara.
+
+      Neste pack o Salis Arcana deixa duplicar direto pelo Taumonomicon também.
+    tasks:
+      - check
+    rewards:
+      - xp: 1
+
+  - id: fluxo
+    title: "Fluxo: a Sujeira da Magia"
+    type: info
+    deps: [laboratorio_alquimico]
+    icon: Thaumcraft:blockFluxGoo
+    desc: |
+      Magia desperdiçada vira §cfluxo§r: §eGosma de Fluxo§r (líquido roxo) e §eGás de Fluxo§r.
+      Encostar dá §cGripe de Fluxo§r, que faz a varinha gastar mais vis. Pior: neste pack o
+      fluxo parado pode §cmacular o bioma§r em volta.
+
+      Fontes comuns: essência esquecida no Crisol, Fornalha Infernal, infusões instáveis.
+      Limpe colocando blocos por cima ou, mais tarde, com o §eLavador de Fluxo§r (Capítulo II)
+      e a Pá do Purificador (Forbidden Magic).
+    tasks:
+      - check
+    rewards:
+      - xp: 1

@@ -1,0 +1,372 @@
+chapter:
+  id: iu_avancado
+  title: "Industrial Upgrade II — Avançado"
+  prefix: ""
+  order: 303
+  icon: industrialupgrade:QuantumItems8
+  desc: |
+    §bO Volume das Melhorias, parte II.§r Fótons, o tier Quântico, máquinas Avançadas,
+    petróleo e plástico, módulos de painel, MFSU de bilhões, cabos e transformadores do IU,
+    armaduras reforçadas, painéis do Botania — até o Painel Solar Espectral.
+
+quests:
+  # ======================================================================
+  # FASE 0 — A LUZ QUE VIRA METAL
+  # ======================================================================
+  - id: boas_vindas_ii
+    title: "O Tier Quântico"
+    type: info
+    icon: industrialupgrade:QuantumItems8
+    desc: |
+      Bem-vindo de volta, Herói! Se você chegou aqui, já tem o §eTransformador Molecular§r e o
+      primeiro §ePainel Solar Avançado§r do Volume das Melhorias (capítulo Industrial Upgrade
+      I). Agora o livro fica sério.
+
+      Neste volume:
+      §e•§r o §eFóton§r e o §eLingote de Fóton§r, que só existem graças ao Transformador;
+      §e•§r os §eCircuitos Quânticos§r, a §eCaixa Quântica§r e as máquinas §eAvançadas§r;
+      §e•§r §epetróleo, refinarias e plástico§r — base dos módulos de painel;
+      §e•§r MFSU Melhorado e Avançado, cabos e transformadores de alta tensão do IU;
+      §e•§r armaduras Nano Reforçadas, ferramentas e o Sabre Quântico;
+      §e•§r e a escada solar do Híbrido até o §ePainel Espectral§r (1280 EU/t).
+    tasks:
+      - check
+    rewards:
+      - xp: 1
+
+  - id: alquimia_molecular
+    title: "Tabela de Alquimia Molecular"
+    type: info
+    deps: [boas_vindas_ii]
+    icon: industrialupgrade:molecular
+    desc: |
+      Transformações úteis do Transformador Molecular neste pack (energia por item):
+      §e•§r Ferro → Minério de Irídio do IC2 (10 M EU) → §eFóton§r (1,45 M) → §eLingote de
+      Fóton§r (12 M);
+      §e•§r Magnésio → §eCaravky§r (900 mil) → Germânio (600 mil);
+      §e•§r Cobalto → Manganês (350 mil) → Zinco (300 mil);
+      §e•§r Cobre → Níquel; Chumbo → Ouro; Ouro → Platina; Platina → Cromo; Cromo → Michalov;
+      Michalov → Magnésio; Estanho → Prata; Prata → Tungstênio; Tungstênio → Espinélio;
+      Espinélio → Irídio;
+      §e•§r 9 Fragmentos de Irídio (IC2) → 4 Lingotes de Irídio;
+      §e•§r Pó de Carvão → Diamante (1 M); Areia → Cascalho; Netherrack → 2 Pólvoras;
+      §e•§r Plutônio → §ePróton§r (15,5 M) — Volume III.
+      Os núcleos sobem de 4 em 4. Na dúvida, NEI no Transformador.
+    tasks:
+      - check
+    rewards:
+      - xp: 1
+
+  - id: minerio_iridio_ic2
+    title: "Irídio do Ferro"
+    type: normal
+    deps: [boas_vindas_ii]
+    deps_hidden: [iu_base:transformador_molecular]
+    icon: IC2:itemOreIridium
+    desc: |
+      Lembra que o IC2 só dava Minério de Irídio pelo Replicador? No Transformador Molecular,
+      §e1 Lingote de Ferro + 10 milhões de EU = 1 Minério de Irídio§r do IC2.
+
+      Você vai precisar dele em quantidade: Fótons, o Painel Híbrido (2 por painel), a Caixa
+      Quântica e as Placas Reforçadas de Irídio. Junte §e6§r.
+    tasks:
+      - get: IC2:itemOreIridium x6
+    rewards:
+      - xp: 3
+      - item: minecraft:iron_block x2
+
+  - id: foton
+    title: "Fóton"
+    type: main
+    deps: [minerio_iridio_ic2]
+    icon: industrialupgrade:photoniy
+    desc: |
+      Luz que você pode segurar! No Transformador: §eMinério de Irídio (IC2) → Fóton§r
+      (Photon), por 1,45 milhão de EU.
+
+      O Fóton vai na Caixa Nano Avançada (4 por caixa), no Cabo Perfeito, nos módulos de
+      Pedreira e no Tanque Melhorado — e vira o precioso §eLingote de Fóton§r. Faça §e6§r.
+    tasks:
+      - get: industrialupgrade:photoniy x6
+    rewards:
+      - xp: 4
+      - choice: [IC2:itemOreIridium x2, minecraft:iron_block x4, IC2:itemBatLamaCrystal:26]
+
+  - id: lingote_foton
+    title: "Lingote de Fóton"
+    type: main
+    deps: [foton]
+    icon: industrialupgrade:photoniy_ingot
+    desc: |
+      Mais um passo no Transformador: §eFóton → Lingote de Fóton§r (Photon Ingot), por
+      12 milhões de EU. É caro, eu sei — mas ele aparece em quase tudo deste volume: MFSU
+      Melhorado e Avançado, Broca Nano, Caixa Quântica Melhorada, Câmara Perfeita do Reator,
+      cabos de alto tier, núcleos do Botania...
+
+      Faça §e4§r. Um bom momento para investir num segundo Transformador Molecular.
+    tasks:
+      - get: industrialupgrade:photoniy_ingot x4
+    rewards:
+      - xp: 4
+      - choice: [industrialupgrade:photoniy x2, IC2:itemBatLamaCrystal:26, minecraft:diamond x4]
+
+  - id: caravky
+    title: "Caravky"
+    type: main
+    deps: [boas_vindas_ii]
+    deps_hidden: [iu_base:transformador_molecular]
+    icon: industrialupgrade:iuingot:5
+    desc: |
+      O §eCaravky§r não existe em nenhuma mina: ele só nasce no Transformador Molecular,
+      §e1 Lingote de Magnésio → 1 Caravky§r (900 mil EU).
+
+      Ele é a peça central do §eModelo de Módulo§r (Module Template), vai no Gerador de Energia
+      Solar Avançado, no Módulo de Privacidade, no Capacitor Espectral e no Vidro Quark.
+      Faça §e4§r.
+    tasks:
+      - get: ore:ingotCaravky x4
+    rewards:
+      - xp: 4
+      - choice: [industrialupgrade:iuingot:7 x6, industrialupgrade:iuingot:0 x6, minecraft:redstone_block x4]
+
+  - id: germanio_mt
+    title: "Germânio Molecular"
+    type: optional
+    deps: [caravky]
+    icon: industrialupgrade:iuingot:18
+    desc: |
+      Sem minério de germânio? §eCaravky → Germânio§r no Transformador (600 mil EU). O germânio
+      é peça do Capacitor Espectral, dos módulos de Pedreira e Analisador e da Pedreira
+      Quântica Avançada. Mostre §e4 lingotes§r.
+    tasks:
+      - get: ore:ingotGermanium x4
+    rewards:
+      - loot: comum
+
+  - id: estrela_molecular
+    title: "Uma Estrela de Crânios"
+    type: optional
+    deps: [boas_vindas_ii]
+    deps_hidden: [iu_base:transformador_molecular]
+    icon: minecraft:nether_star
+    desc: |
+      Dois caminhos para uma §eEstrela do Nether§r sem lutar com o Wither:
+      §e•§r Transformador Molecular: Crânio de Esqueleto → Crânio de Wither (4 M EU) →
+      Estrela do Nether (250 M EU);
+      §e•§r §eFabricante de Wither§r (Wither Manufacturer): 3 Crânios de Wither + 4 Areias das
+      Almas → 1 Estrela.
+      Mostre uma Estrela do Nether, feita do jeito que preferir.
+    tasks:
+      - get: minecraft:nether_star
+    rewards:
+      - loot: incomum
+
+  - id: fabricante_wither
+    title: "Fabricante de Wither"
+    type: optional
+    deps: [estrela_molecular]
+    icon: industrialupgrade:BlockBaseMachine2:13
+    desc: |
+      3 Crânios de Wither, 2 Circuitos Avançados, uma Carcaça Avançada, Areia das Almas e 2 Caixas
+      Nano = §eWither Manufacturer§r. Ele "invoca" o Wither dentro da máquina e entrega só a
+      estrela — sem explosão, sem chefe solto na base.
+    tasks:
+      - get: industrialupgrade:BlockBaseMachine2:13
+    rewards:
+      - loot: incomum
+
+  # ======================================================================
+  # FASE 1 — PAINÉIS HÍBRIDO E PERFEITO
+  # ======================================================================
+  - id: nucleo_hibrido
+    title: "Híbrido"
+    type: main
+    deps: [boas_vindas_ii]
+    deps_hidden: [iu_base:nucleo_avancado]
+    icon: industrialupgrade:ItemCore:1
+    desc: |
+      No Transformador: §e4 Núcleos Avançados → 1 Núcleo Híbrido§r (11 720 EU). Cada painel
+      do IU leva 1 núcleo do seu tier, e cada núcleo custa 4 do anterior — faça as contas antes
+      de sonhar com o Quark! Faça §e2§r.
+    tasks:
+      - get: industrialupgrade:ItemCore:1 x2
+    rewards:
+      - xp: 4
+      - choice: [industrialupgrade:ItemCore x2, industrialupgrade:iuingot:17 x4, industrialupgrade:iuingot:12 x4]
+
+  - id: placa_sunnarium_hibrida
+    title: "Placa de Sunnarium Híbrida"
+    type: main
+    deps: [boas_vindas_ii]
+    deps_hidden: [iu_base:fabricante_placas_sunnarium]
+    icon: industrialupgrade:sunnariumpanel
+    desc: |
+      No Fabricante de Placas de Sunnarium: §ePlaca de Sunnarium + Placa de Platina§r = §ePlaca de
+      Sunnarium Híbrida§r (Hybrid Sunnarium Plate). A escada continua: cada placa nova é a
+      anterior + a placa de um metal. Faça §e2§r.
+    tasks:
+      - get: industrialupgrade:sunnariumpanel x2
+    rewards:
+      - xp: 4
+      - choice: [industrialupgrade:sunnarium:2 x2, industrialupgrade:iuplate:9 x4, industrialupgrade:sunnarium:4 x8]
+
+  - id: varetas_cobalto
+    title: "Varetas de Cobalto"
+    type: normal
+    deps: [boas_vindas_ii]
+    icon: industrialupgrade:IUstik:6
+    desc: |
+      O Vidro Híbrido leva §e6 Varetas de Cobalto§r (extrusão). Cada vidro tem o seu metal:
+      Cobalto (Híbrido), Platina (Perfeito), Cromo (Quântico), Electrum (Espectral)...
+    tasks:
+      - get: industrialupgrade:IUstik:6 x6
+    rewards:
+      - xp: 2
+      - item: industrialupgrade:iuingot:6 x4
+
+  - id: vidro_hibrido
+    title: "Vidro Híbrido"
+    type: main
+    deps: [placa_sunnarium_hibrida, varetas_cobalto]
+    deps_hidden: [iu_base:vidro_avancado]
+    icon: industrialupgrade:IUphotonglass:1
+    desc: |
+      §e6 Varetas de Cobalto§r + §eVidro Avançado§r no centro + §e2 Placas de Sunnarium
+      Híbridas§r = §eHybrid Glass§r. Faça §e2§r.
+    tasks:
+      - get: industrialupgrade:IUphotonglass:1 x2
+    rewards:
+      - xp: 4
+      - choice: [industrialupgrade:IUphotonglass, industrialupgrade:sunnariumpanel, industrialupgrade:iuingot:6 x6]
+
+  - id: painel_hibrido
+    title: "Hibridização"
+    type: milestone
+    deps: [nucleo_hibrido, vidro_hibrido, minerio_iridio_ic2]
+    deps_hidden: [iu_base:painel_solar_avancado]
+    icon: industrialupgrade:BlockSolarPanel:1
+    banner: "Painel Solar Híbrido"
+    subtitle: "20 EU/t de dia, 10 de noite"
+    desc: |
+      O §eHybrid Solar Panel§r: 2 Vidros Híbridos, 1 Núcleo Híbrido, §e2 Minérios de Irídio do
+      IC2§r, §e3 Painéis Solares Avançados§r do IU e um Circuito Eletrônico.
+
+      Ele gera §e20 EU/t de dia e 10 de noite§r, guarda 20 000 EU e solta até 40 EU/t. Pela
+      primeira vez a noite deixa de ser só um intervalo — Herói, você está domando o sol E a
+      lua!
+
+      §aDica:§r do Híbrido em diante existem §eKits de Upgrade de Painel§r: clique com o kit
+      num painel do tier anterior já instalado e ele sobe sem precisar desmontar.
+    tasks:
+      - get: industrialupgrade:BlockSolarPanel:1
+    rewards:
+      - xp: 8
+      - kit: {name: "Kit da Hibridização", items: [industrialupgrade:ItemCore x4, industrialupgrade:sunnarium:2 x2, IC2:itemOreIridium x2, industrialupgrade:iuplate:9 x4, IC2:blockGenerator:3 x3]}
+      - loot: raro
+
+  - id: kit_painel_hibrido
+    title: "Kit de Upgrade de Painel"
+    type: optional
+    deps: [painel_hibrido]
+    icon: industrialupgrade:upgradekitPanelIU:1
+    desc: |
+      O §eHybrid Solar Panel Upgrade Kit§r é a receita do Painel Híbrido com um dos 3 painéis
+      Avançados a menos (o espaço do meio fica vazio). Clique com ele num Painel Avançado
+      instalado: o painel vira Híbrido no lugar. Existe um kit para cada tier, até o Quark.
+    tasks:
+      - get: industrialupgrade:upgradekitPanelIU:1
+    rewards:
+      - loot: comum
+
+  - id: nucleo_perfeito
+    title: "Perfeição"
+    type: main
+    deps: [nucleo_hibrido]
+    icon: industrialupgrade:ItemCore:2
+    desc: |
+      §e4 Núcleos Híbridos → 1 Núcleo Perfeito§r (60 000 EU no Transformador). Faça §e2§r.
+    tasks:
+      - get: industrialupgrade:ItemCore:2 x2
+    rewards:
+      - xp: 4
+      - choice: [industrialupgrade:ItemCore:1 x2, industrialupgrade:iuingot:17 x6, industrialupgrade:iuingot:12 x6]
+
+  - id: placa_sunnarium_perfeita
+    title: "Placa de Sunnarium Perfeita"
+    type: main
+    deps: [placa_sunnarium_hibrida]
+    icon: industrialupgrade:sunnariumpanel:1
+    desc: |
+      §ePlaca Híbrida + Placa de Michalov§r no Fabricante de Placas = §ePerfect Sunnarium
+      Plate§r. Faça §e2§r.
+    tasks:
+      - get: industrialupgrade:sunnariumpanel:1 x2
+    rewards:
+      - xp: 4
+      - choice: [industrialupgrade:sunnariumpanel, industrialupgrade:iuplate x4, industrialupgrade:sunnarium:2 x2]
+
+  - id: varetas_platina
+    title: "Varetas de Platina"
+    type: normal
+    deps: [varetas_cobalto]
+    icon: industrialupgrade:IUstik:9
+    desc: |
+      §e6 Varetas de Platina§r para o Vidro Perfeito. Platina demais? Lembre que a Calaverita,
+      no Separador de Minerais, rende minério de platina — e o Transformador faz ouro virar
+      platina.
+    tasks:
+      - get: industrialupgrade:IUstik:9 x6
+    rewards:
+      - xp: 2
+      - item: industrialupgrade:iuingot:9 x4
+
+  - id: vidro_perfeito
+    title: "Vidro Perfeito"
+    type: main
+    deps: [vidro_hibrido, placa_sunnarium_perfeita, varetas_platina]
+    icon: industrialupgrade:IUphotonglass:2
+    desc: |
+      §e6 Varetas de Platina§r + §eVidro Híbrido§r + §e2 Placas de Sunnarium Perfeitas§r =
+      §ePerfect Glass§r. Faça §e2§r.
+    tasks:
+      - get: industrialupgrade:IUphotonglass:2 x2
+    rewards:
+      - xp: 4
+      - choice: [industrialupgrade:IUphotonglass:1, industrialupgrade:sunnariumpanel:1, industrialupgrade:iuingot:9 x6]
+
+  - id: placas_iridio
+    title: "Placas Reforçadas de Irídio"
+    type: normal
+    deps: [minerio_iridio_ic2]
+    icon: IC2:itemPartIridium
+    desc: |
+      A §ePlaca Reforçada de Irídio§r do IC2 (Minério de Irídio, Liga Avançada e Diamante) vai
+      em pares nos Painéis Perfeito e Quântico, nas Botas/Calças/Capacete Quânticos
+      melhorados, nos rotores e no Reator Melhorado. 4 delas no Compressor = §ePlaca de Irídio
+      Comprimida§r. Junte §e6§r.
+    tasks:
+      - get: IC2:itemPartIridium x6
+    rewards:
+      - xp: 3
+      - item: IC2:itemOreIridium x2
+
+  - id: painel_perfeito
+    title: "Híbrido Perfeito"
+    type: milestone
+    deps: [painel_hibrido, nucleo_perfeito, vidro_perfeito, placas_iridio]
+    icon: industrialupgrade:BlockSolarPanel:2
+    banner: "Painel Solar Híbrido Perfeito"
+    subtitle: "80 EU/t de dia, 40 de noite"
+    desc: |
+      §e2 Vidros Perfeitos, Núcleo Perfeito, 2 Placas Reforçadas de Irídio, 3 Painéis Híbridos e
+      um Circuito Avançado§r = §ePerfect Hybrid Solar Panel§r.
+
+      §e80 EU/t de dia, 40 de noite§r, 200 000 EU de armazenamento, saída 160 EU/t. Um único
+      painel já alimenta uma fileira de máquinas Melhoradas. Que tal começar a pensar em
+      MFSUs maiores?
+    tasks:
+      - get: industrialupgrade:BlockSolarPanel:2
+    rewards:
+      - xp: 8
+      - kit: {name: "Kit da Perfeição Solar", items: [industrialupgrade:ItemCore:1 x4, industrialupgrade:sunnariumpanel x2, IC2:itemPartIridium x2, industrialupgrade:iuplate x4, industrialupgrade:IUstik:9 x6]}
+      - loot: raro

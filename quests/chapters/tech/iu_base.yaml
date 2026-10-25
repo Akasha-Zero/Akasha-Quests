@@ -1,0 +1,2530 @@
+chapter:
+  id: iu_base
+  title: "Industrial Upgrade I — Fundamentos"
+  prefix: ""
+  order: 302
+  icon: industrialupgrade:nanobox
+  desc: |
+    §bO Volume das Melhorias, parte I.§r Dezessete metais novos, ligas que o IC2 nunca
+    conheceu, circuitos nano, máquinas melhoradas, o Sunnarium e o Transformador
+    Molecular. (Industrial Upgrade 2.5.21 — extensão do IndustrialCraft 2)
+
+quests:
+  # ======================================================================
+  # FASE 0 — BOAS-VINDAS
+  # ======================================================================
+  - id: boas_vindas
+    title: "O Volume das Melhorias"
+    type: info
+    icon: industrialupgrade:nanobox
+    desc: |
+      Lembra do Volume da Indústria? Pois é... ele tinha um apêndice. Um apêndice ENORME,
+      escrito por engenheiros que acharam o IC2 "modesto demais". Eu chamo de §bVolume das
+      Melhorias§r — o §eIndustrial Upgrade§r.
+
+      O que tem aqui:
+      §e•§r 17 metais novos (Michalov, Alumínio, Titânio, Tungstênio, Platina, Irídio...) e
+      dez ligas;
+      §e•§r circuitos Nano, Quânticos e Espectrais, feitos numa máquina própria;
+      §e•§r versões §eMelhoradas, Avançadas e Perfeitas§r das máquinas do IC2, que trabalham
+      2, 3 e 4 itens ao mesmo tempo;
+      §e•§r o §6Sunnarium§r, o Transformador Molecular e uma escada de painéis solares que vai
+      de 5 EU/t até... centenas de milhões.
+
+      Os itens do Industrial Upgrade não têm tradução para o português no jogo, então você
+      vai ver os nomes em inglês. Eu explico cada um. Bora?
+    tasks:
+      - check
+    rewards:
+      - xp: 1
+
+  - id: aviso_moagem
+    title: "Minério IU não vai no Triturador"
+    type: info
+    deps: [boas_vindas]
+    icon: minecraft:furnace
+    desc: |
+      §cAviso importante antes de minerar:§r neste pack os minérios do Industrial Upgrade
+      §cnão têm receita no Triturador do IC2§r — eu conferi o NEI inteiro. Por isso, não
+      existem "minérios triturados" de Michalov, Titânio etc. para lavar e centrifugar.
+
+      O que funciona:
+      §e•§r §eFornalha§r comum ou elétrica: 1 minério → 1 lingote;
+      §e•§r §ePulverizador§r do Thermal Expansion ou §eTriturador§r do Immersive Engineering:
+      1 minério → 2 pós (e o pó vai na fornalha);
+      §e•§r Fundição Induzida do Thermal e outras rotas de outros mods (veja no NEI com U).
+
+      §aDica:§r se ainda não tem um pulverizador, junte o minério cru num baú. Dobrar
+      minério de platina e irídio faz MUITA diferença depois.
+    tasks:
+      - check
+    rewards:
+      - xp: 1
+
+  # ======================================================================
+  # FASE 1 — OS NOVOS METAIS
+  # ======================================================================
+  - id: michalov
+    title: "Sr. Michalov"
+    type: main
+    deps: [boas_vindas]
+    icon: industrialupgrade:Ore
+    desc: |
+      O primeiro metal novo tem nome de gente! O §eMinério de Michalov§r (Michalov Ore) é
+      exclusivo do Industrial Upgrade e aparece no Overworld, das camadas Y 0 a 70, em veios
+      pequenos de 3 a 5 blocos. Todos os minérios básicos do IU seguem essa mesma regra.
+
+      Junte §e8 lingotes de Michalov§r. Eles vão virar §eVaretas de Michalov§r, peça do
+      primeiro vidro solar do mod, e mais tarde placas de tudo quanto é coisa.
+    tasks:
+      - get: ore:ingotMikhail x8
+    rewards:
+      - xp: 4
+      - choice: [minecraft:iron_ingot x16, minecraft:coal x24, minecraft:torch x32]
+
+  - id: aluminio
+    title: "Alumínio"
+    type: main
+    deps: [boas_vindas]
+    icon: industrialupgrade:Ore:1
+    desc: |
+      Leve, brilhante e em toda parte! O §eMinério de Alumínio§r do IU nasce do Y 0 ao 70.
+      O alumínio é o metal mais usado do Volume das Melhorias: placas, Alumel, Duralumínio,
+      Bronze de Alumínio, Alclad... você vai precisar de pilhas e pilhas.
+
+      Junte §e16 lingotes de alumínio§r (qualquer alumínio do oredict serve — Tinkers,
+      Electrical Age e outros também valem).
+    tasks:
+      - get: ore:ingotAluminium x16
+    rewards:
+      - xp: 4
+      - choice: [minecraft:iron_ingot x16, minecraft:coal x24, IC2:itemIngot x12]
+
+  - id: titanio
+    title: "Filho de Gaia"
+    type: main
+    deps: [aluminio]
+    icon: industrialupgrade:Ore:10
+    desc: |
+      Titânio! Os Antigos o chamavam de "filho de Gaia" porque ele aguenta tudo. O
+      §eMinério de Titânio§r do IU está no Overworld, Y 0–70.
+
+      Você vai usá-lo logo: §eAlumel§r (alumínio + titânio) é a liga das máquinas
+      melhoradas, as §eVaretas de Titânio§r formam o chip SOIC Nano e as placas de titânio
+      vão no Aquecedor Elétrico. Junte §e12 lingotes§r.
+    tasks:
+      - get: ore:ingotTitanium x12
+    rewards:
+      - xp: 4
+      - choice: [industrialupgrade:iuingot:1 x8, minecraft:coal x24, minecraft:redstone x16]
+
+  - id: tungstenio
+    title: "Pedra Pesada?"
+    type: main
+    deps: [boas_vindas]
+    icon: industrialupgrade:Ore:3
+    desc: |
+      Pesado como só ele. O §eMinério de Tungstênio§r (Tungsten Ore) aparece no Overworld
+      (Y 0–70) — e no Nether e no End também, em versões próprias.
+
+      O tungstênio é chave cedo: §ePlacas Densas de Tungstênio§r vão no Aquecedor Elétrico,
+      um lingote entra em cada §eSunnarium§r e o lingote faz parte do Circuito Nano.
+      Junte §e12 lingotes§r.
+    tasks:
+      - get: ore:ingotTungsten x12
+    rewards:
+      - xp: 4
+      - choice: [minecraft:iron_ingot x16, minecraft:coal x24, minecraft:redstone x16]
+
+  - id: vanadio
+    title: "Vanádio"
+    type: normal
+    deps: [aluminio]
+    icon: industrialupgrade:Ore:2
+    desc: |
+      O §eMinério de Vanádio§r (Vanadium Ore) é mais um morador do Overworld (Y 0–70).
+
+      Um lingote de vanádio entra em cada §eCircuito Nano§r e em todos os circuitos de tier
+      acima; o vanádio também vira a liga §eVanádio-Alumínio§r. Junte §e8 lingotes§r e
+      guarde uma reserva.
+    tasks:
+      - get: ore:ingotVanady x8
+    rewards:
+      - xp: 2
+      - item: minecraft:iron_ingot x8
+
+  - id: cobalto
+    title: "Goblin Malvado?"
+    type: normal
+    deps: [boas_vindas]
+    icon: industrialupgrade:Ore:6
+    desc: |
+      Diz a lenda que mineiros antigos culpavam goblins ("kobolds") por esse metal azulado.
+      Bobagem! O §eMinério de Cobalto§r do IU é só mais um veio do Overworld, Y 0–70.
+
+      Cobalto vai em placas do Separador de Minerais, na liga Vanádio-Alumínio e em muita
+      coisa do tier quântico. Junte §e8 lingotes§r (o cobalto do Tinkers também vale).
+    tasks:
+      - get: ore:ingotCobalt x8
+    rewards:
+      - xp: 2
+      - item: minecraft:iron_ingot x8
+
+  - id: magnesio
+    title: "O que tem na Magnésia Branca?"
+    type: normal
+    deps: [aluminio]
+    icon: industrialupgrade:Ore:7
+    desc: |
+      Magnésio! Leve e inflamável (não acenda um isqueiro perto do baú, ok?). O §eMinério de
+      Magnésio§r está no Overworld, Y 0–70.
+
+      Com alumínio, ele vira §eDuralumínio§r; com alumínio e manganês, §eAlclad§r. E lá no
+      Volume II, o Transformador Molecular transforma magnésio em §eCaravky§r, um metal que
+      não existe em lugar nenhum do mundo. Junte §e8 lingotes§r.
+    tasks:
+      - get: ore:ingotMagnesium x8
+    rewards:
+      - xp: 2
+      - item: minecraft:iron_ingot x8
+
+  - id: niquel
+    title: "Metal Travesso"
+    type: normal
+    deps: [boas_vindas]
+    icon: industrialupgrade:Ore:8
+    desc: |
+      O níquel adora se misturar. O §eMinério de Níquel§r do IU (Y 0–70) dá lingotes que
+      viram §eInvar§r (com ferro), §eNicromo§r (com cromo) e §eVitálio§r (com cromo e
+      tungstênio).
+
+      Junte §e8 lingotes de níquel§r — o níquel do Thermal (Ferroso) também vale.
+    tasks:
+      - get: ore:ingotNickel x8
+    rewards:
+      - xp: 2
+      - item: minecraft:iron_ingot x8
+
+  - id: platina
+    title: "Prata Refratária ou Ouro Branco?"
+    type: normal
+    deps: [boas_vindas]
+    icon: industrialupgrade:Ore:9
+    desc: |
+      Os dois! A §ePlatina§r do IU aparece no Overworld (Y 0–70), e pelo Separador de
+      Minerais ela também sai da Calaverita.
+
+      Ela é cobiçada: §e3 Placas de Platina§r vão no Fabricante de Circuitos, e placas densas
+      de platina sustentam todas as máquinas Avançadas. Junte §e8 lingotes§r.
+    tasks:
+      - get: ore:ingotPlatinum x8
+    rewards:
+      - xp: 2
+      - item: minecraft:gold_ingot x6
+
+  - id: cromo
+    title: "Metal Fica Mais Bonito com Ele"
+    type: normal
+    deps: [boas_vindas]
+    icon: industrialupgrade:Ore:11
+    desc: |
+      Cromo: o brilho dos para-choques de antigamente. O §eMinério de Cromo§r do IU fica no
+      Overworld, Y 0–70.
+
+      Um lingote de cromo vai em cada §eCapacitor Nano§r, e o cromo forma o Nicromo e o
+      Vitálio. Junte §e8 lingotes§r.
+    tasks:
+      - get: ore:ingotChromium x8
+    rewards:
+      - xp: 2
+      - item: minecraft:iron_ingot x8
+
+  - id: espinelio
+    title: "Minério Espinhoso"
+    type: normal
+    deps: [boas_vindas]
+    icon: industrialupgrade:Ore:12
+    desc: |
+      O §eEspinélio§r (Spinel) do IU é tratado como metal: tem lingote, placa e bloco.
+      Minério no Overworld, Y 0–70.
+
+      Você vai precisar dele mais tarde — o Transformador Molecular converte espinélio em
+      §eIrídio§r, e placas densas de espinélio estão nas máquinas Perfeitas. Junte §e8
+      lingotes§r e guarde.
+    tasks:
+      - get: ore:ingotSpinel x8
+    rewards:
+      - xp: 2
+      - item: minecraft:iron_ingot x8
+
+  - id: prata
+    title: "Brilhante Desde a Antiguidade"
+    type: normal
+    deps: [boas_vindas]
+    icon: industrialupgrade:Ore:14
+    desc: |
+      A prata do IU (Y 0–70) é igualzinha às dos outros mods — qualquer prata do oredict
+      serve aqui.
+
+      Prata + ouro no Fabricante de Ligas = §eElectrum§r. E as §eVaretas de Prata§r são a
+      base dos chips SOIC Quântico e Espectral. Junte §e8 lingotes§r.
+    tasks:
+      - get: ore:ingotSilver x8
+    rewards:
+      - xp: 2
+      - item: minecraft:gold_ingot x6
+
+  - id: zinco
+    title: "Garfo"
+    type: normal
+    deps: [boas_vindas]
+    icon: industrialupgrade:Ore:15
+    desc: |
+      O nome "zinco" vem de uma palavra antiga para "ponta, dente de garfo" — por causa do
+      formato dos cristais. O §eMinério de Zinco§r do IU fica no Overworld, Y 0–70.
+
+      Zinco + cobre = §eLatão Vermelho§r; com chumbo também, §eMetal de Muntz§r. E vai um
+      lingote em cada Capacitor Nano. Junte §e8 lingotes§r.
+    tasks:
+      - get: ore:ingotZinc x8
+    rewards:
+      - xp: 2
+      - item: IC2:itemIngot x8
+
+  - id: manganes
+    title: "A Outra Magnésia Negra"
+    type: normal
+    deps: [boas_vindas]
+    icon: industrialupgrade:baseore1
+    desc: |
+      Manganês: endurece o aço desde os tempos dos ferreiros. O §eMinério de Manganês§r do IU
+      (Y 0–70) dá lingotes que, com ferro, viram §eFerromanganês§r — a liga das ferramentas
+      Nano.
+
+      Junte §e8 lingotes de manganês§r.
+    tasks:
+      - get: ore:ingotManganese x8
+    rewards:
+      - xp: 2
+      - item: minecraft:iron_ingot x8
+
+  - id: iridio
+    title: "Arco-íris?"
+    type: normal
+    deps: [boas_vindas]
+    icon: industrialupgrade:baseore1:1
+    desc: |
+      Sim, irídio vem de "íris", o arco-íris! O IU traz um §eMinério de Irídio§r de verdade,
+      no Overworld (Y 0–70), raro como os outros.
+
+      §cAtenção:§r o §eLingote de Irídio§r do IU não é o "Minério de Irídio" (item) do IC2.
+      O lingote vira o §eNúcleo Avançado§r no Transformador Molecular — o primeiro degrau
+      dos painéis solares. Junte §e4 lingotes§r e guarde como ouro.
+    tasks:
+      - get: ore:ingotIridium x4
+    rewards:
+      - xp: 3
+      - item: minecraft:diamond x2
+
+  - id: germanio
+    title: "Germânio"
+    type: optional
+    deps: [boas_vindas]
+    icon: industrialupgrade:baseore1:2
+    desc: |
+      O §eMinério de Germânio§r (Y 0–70) parece inútil no começo... até o Volume II, quando o
+      germânio entra no Capacitor Espectral e nos módulos da Pedreira Quântica.
+
+      Junte §e4 lingotes§r agora, para não ter que voltar à mina depois.
+    tasks:
+      - get: ore:ingotGermanium x4
+    rewards:
+      - loot: comum
+
+  - id: torio
+    title: "Deus do Trovão entre os Metais"
+    type: normal
+    deps: [boas_vindas]
+    icon: industrialupgrade:toriyore
+    desc: |
+      Tório — o nome vem de Thor! O §eMinério de Tório§r (Y 10–70) solta direto o §eTório§r
+      (Thorium), um cristal levemente radioativo. Também cai do Separador de Minerais
+      (Uraninita e Euxenita).
+
+      Um tório vai no §eGerador de Energia Solar§r, a máquina que fabrica fragmentos de sol.
+      Junte §e4 Tórios§r.
+    tasks:
+      - get: industrialupgrade:toriy x4
+    rewards:
+      - xp: 2
+      - item: minecraft:glowstone_dust x8
+
+  - id: gemas
+    title: "Rubi, Safira e Topázio"
+    type: normal
+    deps: [boas_vindas]
+    icon: industrialupgrade:preciousgems
+    desc: |
+      Joias! Os minérios de §eRubi§r, §eSafira§r e §eTopázio§r do IU ficam entre Y 10 e 70 e
+      soltam as gemas direto (Fortuna aumenta a quantidade).
+
+      Nove gemas fazem um bloco, e as gemas viram armaduras próprias, bem duráveis. Pegue
+      qualquer uma das três.
+    tasks:
+      - one_of: [industrialupgrade:preciousgems, industrialupgrade:preciousgems:1, industrialupgrade:preciousgems:2]
+    rewards:
+      - xp: 2
+      - item: minecraft:iron_ingot x8
+
+  - id: armadura_rubi
+    title: "Armadura de Rubi"
+    type: optional
+    deps: [gemas]
+    icon: industrialupgrade:ruby_chestplate
+    desc: |
+      Formato de armadura comum, só que com rubis: 24 gemas para o conjunto. A armadura de
+      rubi é a mais leve das três (proteção 2/7/3/1), mas encanta muito bem.
+    tasks:
+      - get: [industrialupgrade:ruby_helmet, industrialupgrade:ruby_chestplate, industrialupgrade:ruby_leggings, industrialupgrade:ruby_boots]
+    rewards:
+      - loot: comum
+
+  - id: armadura_safira
+    title: "Armadura de Safira"
+    type: optional
+    deps: [gemas]
+    icon: industrialupgrade:sapphire_chestplate
+    desc: |
+      Azul como o céu de antes da Fratura. A armadura de §eSafira§r dura mais que a de rubi
+      e tem proteção 3/5/3/2. Monte o conjunto com 24 safiras.
+    tasks:
+      - get: [industrialupgrade:sapphire_helmet, industrialupgrade:sapphire_chestplate, industrialupgrade:sapphire_leggings, industrialupgrade:sapphire_boots]
+    rewards:
+      - loot: comum
+
+  - id: armadura_topazio
+    title: "Armadura de Topázio"
+    type: optional
+    deps: [gemas]
+    icon: industrialupgrade:topaz_chestplate
+    desc: |
+      A mais resistente das três: a armadura de §eTopázio§r tem a maior durabilidade e
+      proteção 3/5/4/1. São 24 topázios para o conjunto completo.
+    tasks:
+      - get: [industrialupgrade:topaz_helmet, industrialupgrade:topaz_chestplate, industrialupgrade:topaz_leggings, industrialupgrade:topaz_boots]
+    rewards:
+      - loot: comum
+
+  - id: minerios_pesados
+    title: "Minérios Pesados"
+    type: normal
+    deps: [boas_vindas]
+    icon: industrialupgrade:HeavyOre
+    desc: |
+      Já topou com §eMagnetita§r, §eGalena§r, §eCalaverita§r, §ePirita§r ou §eUraninita§r
+      na mina? São os §eminérios pesados§r do IU (12 tipos, Y 10–70). Eles são misturas: o
+      §bSeparador de Minerais§r os aquece e separa em dois ou três minérios comuns.
+
+      Exemplos: Magnetita → ferro + ouro; Galena → prata + chumbo; Calaverita → platina +
+      ouro + cobre; Uraninita → urânio + tório. Pegue qualquer minério pesado e guarde vários.
+    tasks:
+      - one_of: [industrialupgrade:HeavyOre, industrialupgrade:HeavyOre:1, industrialupgrade:HeavyOre:2, industrialupgrade:HeavyOre:3, industrialupgrade:HeavyOre:4, industrialupgrade:HeavyOre:5, industrialupgrade:HeavyOre:6, industrialupgrade:HeavyOre:7, industrialupgrade:HeavyOre:8, industrialupgrade:HeavyOre:9, industrialupgrade:HeavyOre:10, industrialupgrade:HeavyOre:11]
+    rewards:
+      - xp: 2
+      - item: minecraft:iron_ingot x8
+
+  - id: minerios_radioativos
+    title: "Radiação no Subsolo"
+    type: optional
+    deps: [boas_vindas]
+    icon: industrialupgrade:RadiationOre
+    desc: |
+      §cCuidado com o brilho.§r Os minérios de §eAmerício§r, §eNetúnio§r e §eCúrio§r (Y 10–70)
+      soltam gemas radioativas. Elas só servem lá no Volume III — barras de reator, o Reator
+      de Fusão Nuclear e módulos especiais.
+
+      Pegue qualquer uma das gemas e guarde numa caixa longe de casa. Paciência: a vez delas
+      vai chegar.
+    tasks:
+      - one_of: [industrialupgrade:radiationresources, industrialupgrade:radiationresources:1, industrialupgrade:radiationresources:2]
+    rewards:
+      - loot: comum
+
+  - id: minerios_nether
+    title: "Minérios do Nether"
+    type: optional
+    deps: [boas_vindas]
+    icon: industrialupgrade:NetherOre:3
+    desc: |
+      O IU espalhou versões de quase todos os seus minérios (e dos vanilla/IC2) pelo
+      §cNether§r, de Y 20 a 120: Michalov, Platina, Irídio, Tungstênio, Cobalto, Titânio,
+      Alumínio... Eles contam no oredict como o minério normal.
+
+      Traga qualquer minério do Nether do IU. §aDica:§r leve Proteção contra Fogo — e cuidado
+      com os Porcos Zumbis ao minerar.
+    tasks:
+      - one_of: [industrialupgrade:NetherOre, industrialupgrade:NetherOre:1, industrialupgrade:NetherOre:2, industrialupgrade:NetherOre:3, industrialupgrade:NetherOre:4, industrialupgrade:NetherOre:5, industrialupgrade:NetherOre:6, industrialupgrade:netherore1:3, industrialupgrade:netherore1:4]
+    rewards:
+      - loot: comum
+
+  - id: minerios_end
+    title: "Minérios do End"
+    type: optional
+    deps: [boas_vindas]
+    icon: industrialupgrade:EndOre:3
+    desc: |
+      Até no §5End§r o IU deixou minério (Y 0–128): versões "Ender" de Michalov, Platina,
+      Irídio, Tungstênio, Cromo, Titânio e companhia. Uma ilha do End pode ter mais metal do
+      que você imagina.
+
+      Traga qualquer minério do End do IU. E não olhe nos olhos dos Endermen!
+    tasks:
+      - one_of: [industrialupgrade:EndOre, industrialupgrade:EndOre:1, industrialupgrade:EndOre:2, industrialupgrade:EndOre:3, industrialupgrade:EndOre:4, industrialupgrade:EndOre:5, industrialupgrade:EndOre:6, industrialupgrade:endore1:3, industrialupgrade:endore1:4]
+    rewards:
+      - loot: comum
+
+  - id: moagem_dupla
+    title: "Dobrando o Minério"
+    type: optional
+    deps: [aviso_moagem]
+    icon: industrialupgrade:iudust:10
+    desc: |
+      Lembra do aviso? Os minérios do IU dobram fora do IC2: no §ePulverizador§r (Thermal),
+      no §eTriturador§r do Immersive Engineering ou com o martelo de engenheiro (1 minério →
+      1 pó, só para emergências).
+
+      Mostre §e8 Pós de Titânio§r. Cada pó funde num lingote, então você acabou de
+      transformar quatro minérios em oito lingotes. Esperto!
+    tasks:
+      - get: ore:dustTitanium x8
+    rewards:
+      - loot: comum
+
+  - id: blocos_metal
+    title: "Blocos de Metal"
+    type: optional
+    deps: [michalov]
+    icon: industrialupgrade:IUBlock
+    desc: |
+      Todo metal do IU vira bloco com 9 lingotes (e volta com a bancada). Ótimo para guardar
+      — e lá no Epílogo, para quem tiver o Avaritia, blocos de metais IU viram
+      §dsingularidades§r no Compressor de Nêutrons.
+
+      Faça qualquer bloco de metal do Industrial Upgrade.
+    tasks:
+      - one_of: [industrialupgrade:IUBlock, industrialupgrade:IUBlock:1, industrialupgrade:IUBlock:2, industrialupgrade:IUBlock:3, industrialupgrade:IUBlock:6, industrialupgrade:IUBlock:7, industrialupgrade:IUBlock:8, industrialupgrade:IUBlock:9, industrialupgrade:IUBlock:10, industrialupgrade:IUBlock:11, industrialupgrade:IUBlock:12, industrialupgrade:IUBlock:14, industrialupgrade:IUBlock:15, industrialupgrade:baseblock1, industrialupgrade:baseblock1:1, industrialupgrade:baseblock1:2]
+    rewards:
+      - loot: comum
+
+  # ======================================================================
+  # FASE 2 — METALURGIA: PLACAS, INVÓLUCROS, VARETAS E PLACAS DENSAS
+  # ======================================================================
+  - id: placa_aluminio
+    title: "Placas de Alumínio"
+    type: main
+    deps: [aluminio]
+    deps_hidden: [ic2:primeira_fabrica]
+    icon: industrialupgrade:iuplate:1
+    desc: |
+      Hora de trabalhar o metal! Todos os 19 metais do IU viram §ePlacas§r no §bFormador de
+      Metal§r do IC2 (modo laminação) — 1 lingote, 1 placa. A Prensa do Immersive
+      Engineering também serve para o alumínio.
+
+      Faça §e9 Placas de Alumínio§r. Já já elas viram uma placa densa.
+
+      §aDica:§r o IU tem uma §eLaminadora§r própria (Rolling Machine), só de placas, que mais
+      tarde pode ser melhorada para trabalhar vários lingotes de uma vez.
+    tasks:
+      - get: ore:plateAluminium x9
+    rewards:
+      - xp: 4
+      - choice: [IC2:itemPlates:4 x8, IC2:itemPlates x8, IC2:itemPartCircuit x2]
+
+  - id: placa_densa
+    title: "Placa Densa"
+    type: main
+    deps: [placa_aluminio]
+    icon: industrialupgrade:IUdoubleplate:1
+    desc: |
+      No IU, §e9 placas viram 1 Placa Densa§r no §bCompressor§r — para todos os metais e todas
+      as ligas. (Pó pequeno e montinho minúsculo também se juntam no Compressor, 9 para 1.)
+
+      As placas densas são a moeda das máquinas melhoradas: §eAlumínio denso§r e §eAlumel
+      denso§r nas Melhoradas, §ePlatina§r e §eVitálio§r nas Avançadas, §eEspinélio§r e
+      §eManganês§r nas Perfeitas. Faça uma §ePlaca Densa de Alumínio§r.
+    tasks:
+      - get: ore:doubleplateAluminium
+    rewards:
+      - xp: 4
+      - choice: [industrialupgrade:iuingot:1 x9, minecraft:redstone x16, IC2:itemPartCircuit x2]
+
+  - id: involucros
+    title: "Invólucros"
+    type: normal
+    deps: [placa_aluminio]
+    icon: industrialupgrade:iucasing:1
+    desc: |
+      No modo §ecorte§r do Formador de Metal, uma placa vira §eInvólucro§r (Item Casing).
+      Os invólucros do IU aparecem nos Geradores de Matéria Sólida e em várias receitas
+      avançadas — Irídio, Elétrum, Cobalto, Michalov...
+
+      Faça §e2 Invólucros de Alumínio§r para pegar o jeito.
+    tasks:
+      - get: ore:casingAluminium x2
+    rewards:
+      - xp: 2
+      - item: IC2:itemPlates:1 x6
+
+  - id: varetas_titanio
+    title: "Varetas de Titânio"
+    type: normal
+    deps: [titanio, placa_aluminio]
+    icon: industrialupgrade:IUstik:10
+    desc: |
+      No modo §eextrusão§r do Formador de Metal, cada lingote do IU vira uma §eVareta§r
+      (Stick). Para o chip §eSOIC Nano§r você vai precisar de §e8 Varetas de Titânio§r em
+      volta de um Capacitor Nano.
+
+      Faça §e8 Varetas de Titânio§r agora e deixe guardadas.
+    tasks:
+      - get: industrialupgrade:IUstik:10 x8
+    rewards:
+      - xp: 2
+      - item: minecraft:redstone x16
+
+  - id: placa_platina
+    title: "Placas de Platina"
+    type: normal
+    deps: [platina, placa_aluminio]
+    icon: industrialupgrade:iuplate:9
+    desc: |
+      O §eFabricante de Circuitos§r leva §e3 Placas de Platina§r no topo. Lamine-as no
+      Formador de Metal. A platina também é o que vira o §ePainel Híbrido de Sunnarium§r no
+      Volume II, então não gaste à toa.
+    tasks:
+      - get: ore:platePlatinum x3
+    rewards:
+      - xp: 2
+      - item: minecraft:gold_ingot x4
+
+  - id: tungstenio_denso
+    title: "Tungstênio Denso"
+    type: normal
+    deps: [tungstenio, placa_densa]
+    icon: industrialupgrade:IUdoubleplate:3
+    desc: |
+      Nove placas de tungstênio no Compressor = §ePlaca Densa de Tungstênio§r. Ela é dupla
+      utilidade:
+      §e•§r o §eAquecedor Elétrico§r leva 2;
+      §e•§r uma placa densa de tungstênio sozinha no Compressor vira uma §eCélula Avançada§r
+      (Advanced Cell) — o recipiente dos fluidos do IU (petróleo, gasolina, hélio...).
+
+      Faça §e2 Placas Densas de Tungstênio§r.
+    tasks:
+      - get: ore:doubleplateTungsten x2
+    rewards:
+      - xp: 3
+      - item: industrialupgrade:iuingot:3 x4
+
+  - id: celula_avancada
+    title: "Célula Avançada"
+    type: optional
+    deps: [tungstenio_denso]
+    icon: industrialupgrade:cell
+    desc: |
+      Comprima uma Placa Densa de Tungstênio e ganhe uma §eCélula Avançada§r — o "balde" de
+      fluidos do IU. As refinarias de petróleo, o Gerador de Hélio e o Eletrolisador vão
+      pedir várias no Volume II. Faça uma para guardar.
+    tasks:
+      - get: industrialupgrade:cell
+    rewards:
+      - loot: comum
+
+  - id: laminadora
+    title: "Laminadora"
+    type: optional
+    deps: [placa_aluminio]
+    icon: industrialupgrade:machines_base2
+    desc: |
+      A §eLaminadora§r (Rolling Machine) é um Formador de Metal que só faz placas — mas é
+      barata: 3 lingotes de chumbo, uma Carcaça de Máquina, 2 Circuitos e 3 Martelos de
+      Forja. Como as outras máquinas do IU, ela usa EU e aceita os upgrades do IC2.
+
+      E o melhor: mais tarde ela vira Laminadora Melhorada, Avançada e Perfeita, laminando
+      2, 3 e 4 lingotes ao mesmo tempo.
+    tasks:
+      - get: industrialupgrade:machines_base2
+    rewards:
+      - loot: comum
+
+  - id: extrusora
+    title: "Extrusora"
+    type: optional
+    deps: [laminadora]
+    icon: industrialupgrade:machines_base2:4
+    desc: |
+      A §eExtrusora§r (Extruder) faz só extrusão: varetas, cabos, tubos — tudo que o modo de
+      extrusão do Formador de Metal faz. Leva 2 Martelos de Forja e um Alicate na receita.
+      Uma Laminadora + uma Extrusora + uma Cortadora = um Formador de Metal que trabalha nos
+      três modos ao mesmo tempo, cada um na sua máquina.
+    tasks:
+      - get: industrialupgrade:machines_base2:4
+    rewards:
+      - loot: comum
+
+  - id: cortadora
+    title: "Cortadora"
+    type: optional
+    deps: [laminadora]
+    icon: industrialupgrade:machines_base2:8
+    desc: |
+      A §eCortadora§r (Cutting Machine) faz o modo de corte: placas → invólucros. Três
+      Alicates na receita. Ligue-a direto na saída da Laminadora e tenha invólucros saindo
+      sozinhos.
+    tasks:
+      - get: industrialupgrade:machines_base2:8
+    rewards:
+      - loot: comum
+
+  # ======================================================================
+  # FASE 3 — CARBONO COMPRIMIDO E A CAIXA NANO
+  # ======================================================================
+  - id: carbono_comprimido
+    title: "Carbono Comprimido"
+    type: main
+    deps: [placa_densa]
+    icon: industrialupgrade:compresscarbon
+    desc: |
+      Lembra das Placas de Carbono do IC2? No IU, §e9 Placas de Carbono§r no Compressor viram
+      §eCarbono Comprimido§r (Compressed Carbon). Ele está em quase tudo do tier nano:
+      Caixa de Ferramentas Nano, armaduras reforçadas, rotores, bolsas...
+
+      Faça §e4 Carbonos Comprimidos§r (36 placas de carbono — automatize a sua linha de pó
+      de carvão → fibra → malha → placa!).
+    tasks:
+      - get: industrialupgrade:compresscarbon x4
+    rewards:
+      - xp: 4
+      - choice: [IC2:itemPartCarbonPlate x9, IC2:itemDust:2 x32, minecraft:coal_block x6]
+
+  - id: composito_comprimido
+    title: "Compósito Comprimido"
+    type: normal
+    deps: [carbono_comprimido]
+    icon: industrialupgrade:compresscarbonultra
+    desc: |
+      E se comprimir §e9 Ligas Avançadas§r? Sai o §eCompósito Comprimido§r (Compressed
+      Composite). Ele aparece no Gerador de Pedregulho, nos geradores Perfeitos, nos
+      capacetes solares e na Caixa Quântica. Faça §e2§r.
+    tasks:
+      - get: industrialupgrade:compresscarbonultra x2
+    rewards:
+      - xp: 3
+      - item: IC2:itemPartAlloy x6
+
+  - id: pedaco_carvao
+    title: "Pedaço de Carvão"
+    type: optional
+    deps: [carbono_comprimido]
+    icon: industrialupgrade:coal_chunk
+    desc: |
+      Nove §eFibras de Carbono Brutas§r no Compressor viram um §ePedaço de Carvão§r (Coal
+      Chunk). Ele só tem um uso conhecido: a §dRuna da Noite§r do Botania no Altar Rúnico,
+      lá no Volume II. Curioso, né? Faça um.
+    tasks:
+      - get: industrialupgrade:coal_chunk
+    rewards:
+      - loot: comum
+
+  - id: caixa_nano
+    title: "Caixa de Ferramentas Nano"
+    type: main
+    deps: [carbono_comprimido, cristais_energia]
+    icon: industrialupgrade:nanobox
+    desc: |
+      Essa caixinha é o coração do tier nano. A §eNano Toolbox§r leva 2 Placas de Carbono,
+      2 Carbonos Comprimidos e um §eCristal de Energia§r (qualquer carga) no meio.
+
+      Ela entra em TRÊS unidades em quase toda máquina melhorada, no Fabricante de Ligas e no
+      Fabricante de Circuitos. Faça §e3§r agora — e já planeje uma fábrica de Cristais de
+      Energia.
+    tasks:
+      - get: industrialupgrade:nanobox x3
+    rewards:
+      - xp: 4
+      - choice: [IC2:itemPartCarbonPlate x8, IC2:itemDust:5 x16, minecraft:redstone_block x4]
+
+  # ======================================================================
+  # FASE 4 — LIGAS
+  # ======================================================================
+  - id: fabricante_ligas
+    title: "Fabricante de Ligas"
+    type: main
+    deps: [caixa_nano, forno_inducao]
+    icon: industrialupgrade:machines:4
+    desc: |
+      O §eAlloy Manufacturer§r junta dois metais numa liga. Receita: 3 Ligas Avançadas,
+      2 Circuitos Avançados, um §eForno de Indução§r do IC2 no centro e 3 Caixas Nano.
+
+      Ele aceita lingotes de qualquer mod pelo oredict. Algumas receitas úteis:
+      §e•§r Alumínio + Titânio → §eAlumel§r
+      §e•§r Níquel + 2 Ferro → 3 §eInvar§r
+      §e•§r Ouro + Prata → 2 §eElectrum§r
+      §e•§r Ferro + 2 Carvão → §eFerro Refinado§r (sem alto-forno!)
+      Confira o resto no NEI (U na máquina).
+    tasks:
+      - get: industrialupgrade:machines:4
+    rewards:
+      - xp: 4
+      - choice: [industrialupgrade:iuingot:1 x8, industrialupgrade:iuingot:10 x6, industrialupgrade:iuingot:8 x6]
+
+  - id: alumel
+    title: "Alumel"
+    type: main
+    deps: [fabricante_ligas, titanio]
+    icon: industrialupgrade:alloysingot:1
+    desc: |
+      §eAlumínio + Titânio = Alumel§r. É a liga mais importante do começo: placas densas de
+      Alumel ficam nos cantos de TODAS as máquinas Melhoradas e de vários kits.
+
+      Faça §e18 lingotes de Alumel§r — vão virar duas placas densas logo, logo.
+    tasks:
+      - get: ore:ingotAlumel x18
+    rewards:
+      - xp: 4
+      - choice: [industrialupgrade:iuingot:1 x8, industrialupgrade:iuingot:10 x8, minecraft:coal_block x4]
+
+  - id: alumel_denso
+    title: "Alumel Denso"
+    type: main
+    deps: [alumel, placa_densa]
+    icon: industrialupgrade:alloysdoubleplate:1
+    desc: |
+      Lamine os 18 Alumel em placas e comprima de 9 em 9: §e2 Placas Densas de Alumel§r. Toda
+      máquina Melhorada tem a forma:
+
+      §eAlumel denso – Alumínio denso – Alumel denso
+      Circuito Nano – máquina do IC2 – Circuito Nano
+      Caixa Nano – Caixa Nano – Caixa Nano§r
+
+      Já dá pra ver aonde estamos indo, né?
+    tasks:
+      - get: ore:doubleplateAlumel x2
+    rewards:
+      - xp: 4
+      - choice: [industrialupgrade:alloysingot:1 x6, industrialupgrade:iuingot:1 x9, IC2:itemPartCarbonPlate x6]
+
+  - id: invar
+    title: "Invar"
+    type: normal
+    deps: [fabricante_ligas, niquel]
+    icon: industrialupgrade:iuingot:4
+    desc: |
+      §e1 Níquel + 2 Ferro = 3 Invar§r. O Invar do IU é o mesmo Invar do oredict (Thermal
+      inclusive). Ele vai nos Módulos de Caçador, no Ímã Melhorado e no Módulo de
+      Privacidade dos painéis. Faça §e6§r.
+    tasks:
+      - get: ore:ingotInvar x6
+    rewards:
+      - xp: 2
+      - item: minecraft:iron_ingot x8
+
+  - id: electrum
+    title: "Electrum"
+    type: normal
+    deps: [fabricante_ligas, prata]
+    icon: industrialupgrade:iuingot:13
+    desc: |
+      §eOuro + Prata = 2 Electrum§r. O IU usa Electrum no §ePainel Espectral de Sunnarium§r, nas
+      varetas do Vidro Espectral e no Módulo de Geração Diurna. Faça §e4 lingotes§r.
+    tasks:
+      - get: ore:ingotElectrum x4
+    rewards:
+      - xp: 2
+      - item: minecraft:gold_ingot x4
+
+  - id: latao_vermelho
+    title: "Latão Vermelho"
+    type: normal
+    deps: [fabricante_ligas, zinco]
+    icon: industrialupgrade:alloysingot:2
+    desc: |
+      §eCobre + Zinco = Latão Vermelho§r (Red Brass). Placas (e placas densas) dele reforçam as §eBotas e
+      Calças Nano Reforçadas§r, e lingotes dele estão nos cabos Quânticos. Faça §e4§r.
+    tasks:
+      - get: ore:ingotRedbrass x4
+    rewards:
+      - xp: 2
+      - item: IC2:itemIngot x8
+
+  - id: nicromo
+    title: "Nicromo"
+    type: normal
+    deps: [fabricante_ligas, niquel, cromo]
+    icon: industrialupgrade:alloysingot:4
+    desc: |
+      §eNíquel + Cromo = Nicromo§r, a liga das resistências elétricas de verdade. Placas de
+      Nicromo vão no Gerador de Diesel, no Gerador de Hélio e nos Módulos de Caçador. Faça
+      §e4§r.
+    tasks:
+      - get: ore:ingotNichrome x4
+    rewards:
+      - xp: 2
+      - item: minecraft:iron_ingot x8
+
+  - id: duraluminio
+    title: "Duralumínio"
+    type: normal
+    deps: [fabricante_ligas, magnesio]
+    icon: industrialupgrade:alloysingot:8
+    desc: |
+      §eAlumínio + Magnésio = Duralumínio§r — leve como um avião. Ele aparece no Ímã
+      Melhorado, nas barras de reator do Volume III, no Arco Espectral e nas máquinas
+      Perfeitas de matéria. Faça §e4§r.
+    tasks:
+      - get: ore:ingotDuralumin x4
+    rewards:
+      - xp: 2
+      - item: industrialupgrade:iuingot:1 x6
+
+  - id: ferromanganes
+    title: "Ferromanganês"
+    type: normal
+    deps: [fabricante_ligas, manganes]
+    icon: industrialupgrade:alloysingot:9
+    desc: |
+      §eFerro + Manganês = Ferromanganês§r. Placas densas dele estão nas §eFerramentas Nano§r,
+      no Jetpack Melhorado e no Capacete Nano Reforçado. Faça §e8 lingotes§r — dá pra quatro
+      placas densas... daqui a pouco.
+    tasks:
+      - get: ore:ingotFerromanganese x8
+    rewards:
+      - xp: 2
+      - item: minecraft:iron_ingot x8
+
+  - id: ferro_refinado_ligas
+    title: "Ferro Refinado sem Alto-Forno"
+    type: optional
+    deps: [fabricante_ligas]
+    icon: IC2:itemIngot:3
+    desc: |
+      Segredo de engenheira: no Fabricante de Ligas, §e1 lingote de ferro + 2 carvões = 1
+      Ferro Refinado§r. Sem 50 000 hU, sem Células de Ar Comprimido, sem esperar 5 minutos.
+      Faça §e8§r e sinta o alívio.
+    tasks:
+      - get: IC2:itemIngot:3 x8
+    rewards:
+      - loot: comum
+
+  # ======================================================================
+  # FASE 5 — CALOR E CIRCUITOS NANO
+  # ======================================================================
+  - id: aquecedor
+    title: "Aquecedor"
+    type: main
+    deps: [tungstenio_denso, titanio]
+    icon: industrialupgrade:BlockBaseMachine4:5
+    desc: |
+      Algumas máquinas do IU não ligam só com energia: elas precisam de §etemperatura§r. O
+      Fabricante de Circuitos pede §e4500 graus§r, e o Separador de Minerais de 1500 a 5000,
+      conforme o minério.
+
+      Quem esquenta é um §eAquecedor§r encostado na máquina — ele passa o calor dele para os
+      vizinhos (máximo 5000):
+      §e•§r §eAquecedor Elétrico§r (Electric Heater): 4 Placas de Titânio, 2 Placas Densas de
+      Tungstênio, 2 Circuitos Avançados e um Gerador; gasta 50 EU a cada +5 graus.
+      §e•§r §eAquecedor de Líquido§r (Liquid Heater): queima §clava§r em vez de EU.
+
+      Faça qualquer um dos dois.
+    tasks:
+      - one_of: [industrialupgrade:BlockBaseMachine4:5, industrialupgrade:BlockBaseMachine4:6]
+    rewards:
+      - xp: 4
+      - choice: [minecraft:lava_bucket x2, IC2:itemPartCircuitAdv x2, minecraft:redstone_block x4]
+
+  - id: fabricante_circuitos
+    title: "Fabricante de Circuitos"
+    type: main
+    deps: [aquecedor, caixa_nano, placa_platina]
+    icon: industrialupgrade:machines:6
+    desc: |
+      Agora sim, uma fábrica de chips! O §eCircuit Manufacturer§r leva 3 Placas de Platina,
+      2 Circuitos Eletrônicos, uma Carcaça de Máquina e 3 Caixas Nano.
+
+      Ele tem 5 entradas e monta capacitores, chips e circuitos — §csó trabalha a 4500
+      graus§r. Coloque o Aquecedor encostado nele, ligue os dois e espere o termômetro da
+      interface subir antes de colocar os materiais.
+    tasks:
+      - get: industrialupgrade:machines:6
+    rewards:
+      - xp: 4
+      - choice: [IC2:itemPartCircuit x4, industrialupgrade:iuingot:11 x4, industrialupgrade:iuingot:15 x4]
+
+  - id: capacitor_nano
+    title: "Capacitor Nano"
+    type: main
+    deps: [fabricante_circuitos, cromo, zinco]
+    icon: industrialupgrade:basecircuit
+    desc: |
+      No Fabricante de Circuitos: §eSílex + Lápis-lazúli + Lingote de Ferro + Lingote de
+      Cromo + Lingote de Zinco§r = §eNano Capacitor§r.
+
+      §cDetalhe:§r nesta receita o cromo e o zinco precisam ser os lingotes §edo próprio
+      Industrial Upgrade§r (o NEI mostra isso). Cada Circuito Nano consome §e4 capacitores§r
+      (1 direto, 1 no SOIC e 2 no QFP). Faça §e4§r.
+    tasks:
+      - get: industrialupgrade:basecircuit x4
+    rewards:
+      - xp: 4
+      - choice: [minecraft:flint x16, minecraft:dye:4 x16, minecraft:iron_ingot x12]
+
+  - id: soic_nano
+    title: "Chip SOIC Nano"
+    type: main
+    deps: [capacitor_nano, varetas_titanio]
+    icon: industrialupgrade:basecircuit:3
+    desc: |
+      Na bancada: §e8 Varetas de Titânio§r em volta de §e1 Capacitor Nano§r = §eNano SOIC
+      Chip§r. É o "cérebro" do Circuito Nano.
+    tasks:
+      - get: industrialupgrade:basecircuit:3
+    rewards:
+      - xp: 3
+      - item: industrialupgrade:iuingot:10 x4
+
+  - id: qfp_nano
+    title: "Chip QFP Nano"
+    type: main
+    deps: [capacitor_nano]
+    icon: industrialupgrade:basecircuit:6
+    desc: |
+      Na bancada: 3 Placas de Carbono em cima, §e2 Capacitores Nano§r com um Circuito
+      Eletrônico no meio, e 3 Placas de Bronze embaixo = §eNano QFP Chip§r.
+    tasks:
+      - get: industrialupgrade:basecircuit:6
+    rewards:
+      - xp: 3
+      - item: IC2:itemPartCarbonPlate x3
+
+  - id: circuito_nano
+    title: "Circuito Nano"
+    type: milestone
+    deps: [soic_nano, qfp_nano, vanadio]
+    icon: industrialupgrade:QuantumItems9
+    banner: "Circuito Nano"
+    subtitle: "O primeiro chip das Melhorias"
+    desc: |
+      Herói, olha esse brilho! Você acabou de fabricar o seu primeiro §eNano Circuit§r. No
+      Fabricante de Circuitos, a 4500 graus:
+
+      §eVanádio + Tungstênio + Capacitor Nano + SOIC Nano + QFP Nano§r → Circuito Nano.
+
+      Ele é para o Industrial Upgrade o que o Circuito Avançado é para o IC2: está nas máquinas
+      Melhoradas, no Overclocker Melhorado, nas ferramentas Nano, no Separador de Minerais, no
+      Transformador Molecular... A partir daqui, §eautomatize§r os capacitores e os chips —
+      você vai fazer dezenas.
+
+      Mostre §e2 Circuitos Nano§r. Eu estou batendo palmas aqui dentro do livro!
+    tasks:
+      - get: industrialupgrade:QuantumItems9 x2
+    rewards:
+      - xp: 8
+      - kit: {name: "Kit do Microeletricista", items: [industrialupgrade:basecircuit x4, industrialupgrade:iuingot:2 x4, industrialupgrade:iuingot:3 x4, IC2:itemPartCarbonPlate x6, IC2:itemPlates:2 x6]}
+      - loot: raro
+
+  # ======================================================================
+  # FASE 6 — LIGAS AVANÇADAS
+  # ======================================================================
+  - id: fabricante_ligas_melhorado
+    title: "Fabricante de Ligas Melhorado"
+    type: main
+    deps: [circuito_nano, alumel_denso]
+    icon: industrialupgrade:BlockBaseMachine2:3
+    desc: |
+      O §eImproved Alloy Manufacturer§r funde §etrês§r metais de uma vez. Ele é feito com o
+      Fabricante de Ligas no centro, 2 Circuitos Nano, 3 Caixas Nano, 1 Alumínio denso e
+      2 Alumel densos.
+
+      As ligas triplas:
+      §e•§r Alumínio + Cobre + Estanho → §eBronze de Alumínio§r
+      §e•§r Cobre + Zinco + Chumbo → §eMetal de Muntz§r
+      §e•§r Alumínio + Magnésio + Manganês → §eAlclad§r
+      §e•§r Alumínio + Vanádio + Cobalto → §eVanádio-Alumínio§r
+      §e•§r Cromo + Tungstênio + Níquel → §eVitálio§r
+    tasks:
+      - get: industrialupgrade:BlockBaseMachine2:3
+    rewards:
+      - xp: 4
+      - choice: [industrialupgrade:iuingot:1 x12, IC2:itemIngot x12, industrialupgrade:iuingot:11 x6]
+
+  - id: bronze_aluminio
+    title: "Bronze de Alumínio"
+    type: normal
+    deps: [fabricante_ligas_melhorado]
+    icon: industrialupgrade:alloysingot
+    desc: |
+      §eAlumínio + Cobre + Estanho§r. O Bronze de Alumínio (Aluminum Bronze) vai nas placas
+      densas do §eMFE do IU§r, no Gerador de Obsidiana, no Gerador Magnético e nas Calças Nano
+      Reforçadas. Faça §e9§r.
+    tasks:
+      - get: ore:ingotAluminumbronze x9
+    rewards:
+      - xp: 2
+      - item: IC2:itemIngot x8
+
+  - id: muntz
+    title: "Metal de Muntz"
+    type: normal
+    deps: [fabricante_ligas_melhorado]
+    icon: industrialupgrade:alloysingot:3
+    desc: |
+      §eCobre + Zinco + Chumbo§r = Metal de Muntz, o latão dos cascos de navio. O IU usa
+      placas densas dele nas ferramentas Quânticas, na GraviTool e no Caçador Automático.
+      Faça §e9§r.
+    tasks:
+      - get: ore:ingotMuntsa x9
+    rewards:
+      - xp: 2
+      - item: IC2:itemIngot:5 x8
+
+  - id: alclad
+    title: "Alclad"
+    type: normal
+    deps: [fabricante_ligas_melhorado]
+    icon: industrialupgrade:alloysingot:5
+    desc: |
+      §eAlumínio + Magnésio + Manganês§r. O Alclad é a liga do Gerador de Lava, do Capacete Nano
+      Reforçado, do Lappack Melhorado, do Arco Quântico e do Upgrade de Transformador x4...
+      ufa. Faça §e9§r.
+    tasks:
+      - get: ore:ingotAlcled x9
+    rewards:
+      - xp: 2
+      - item: industrialupgrade:iuingot:1 x8
+
+  - id: vanadio_aluminio
+    title: "Vanádio-Alumínio"
+    type: normal
+    deps: [fabricante_ligas_melhorado, vanadio, cobalto]
+    icon: industrialupgrade:alloysingot:6
+    desc: |
+      §eAlumínio + Vanádio + Cobalto§r = Vanadium Aluminum. Um bloco dela forma o Purificador
+      de Radiação; as placas vão no Lappack Melhorado, o Montador de Sucata e a Estação de Modificação. Faça
+      §e9§r.
+    tasks:
+      - get: ore:ingotVanadoalumite x9
+    rewards:
+      - xp: 2
+      - item: industrialupgrade:iuingot:1 x8
+
+  - id: vitalio
+    title: "Vitálio"
+    type: normal
+    deps: [fabricante_ligas_melhorado, cromo, niquel]
+    icon: industrialupgrade:alloysingot:7
+    desc: |
+      §eCromo + Tungstênio + Níquel§r = Vitálio (Vitalium), a liga mais nobre do começo. Placas
+      densas de Vitálio sustentam todas as máquinas §eAvançadas§r; o lingote vai no Ímã e na
+      Fazenda Autônoma. Faça §e9§r.
+    tasks:
+      - get: ore:ingotVitalium x9
+    rewards:
+      - xp: 2
+      - item: industrialupgrade:iuingot:11 x4
+
+  - id: metalurgia_iu
+    title: "Mestre das Ligas"
+    type: milestone
+    deps: [alumel, invar, electrum, latao_vermelho, nicromo, duraluminio, ferromanganes, bronze_aluminio, muntz, alclad, vanadio_aluminio, vitalio]
+    icon: industrialupgrade:AlloysBlock:7
+    banner: "Mestre das Ligas"
+    subtitle: "Dez ligas que o IC2 nunca conheceu"
+    desc: |
+      Alumel, Latão Vermelho, Nicromo, Duralumínio, Ferromanganês, Bronze de Alumínio, Muntz,
+      Alclad, Vanádio-Alumínio, Vitálio — e ainda Invar e Electrum. Herói, isso é uma tabela
+      periódica inteira na sua base!
+
+      §aDica de organização:§r as ligas existem como lingote, pepita, pó, placa, placa densa,
+      invólucro e bloco. Guarde §eplacas densas§r de Alumel, Vitálio, Ferromanganês e
+      Muntz: elas são as mais pedidas.
+
+      Mostre um lingote de cada uma das dez ligas do IU.
+    tasks:
+      - get: [ore:ingotAlumel, ore:ingotRedbrass, ore:ingotNichrome, ore:ingotDuralumin, ore:ingotFerromanganese, ore:ingotAluminumbronze, ore:ingotMuntsa, ore:ingotAlcled, ore:ingotVanadoalumite, ore:ingotVitalium]
+    rewards:
+      - xp: 8
+      - kit: {name: "Kit do Metalurgista das Melhorias", items: [industrialupgrade:alloysingot:1 x9, industrialupgrade:alloysingot:7 x9, industrialupgrade:alloysingot:9 x9, industrialupgrade:iuingot:1 x16, industrialupgrade:iuingot:10 x8]}
+      - loot: raro
+
+  # ======================================================================
+  # FASE 7 — MÁQUINAS MELHORADAS
+  # ======================================================================
+  - id: macerador_melhorado
+    title: "Triturador Melhorado"
+    type: main
+    deps: [circuito_nano, alumel_denso]
+    icon: industrialupgrade:machines_base
+    desc: |
+      Finalmente! O §eImproved Macerator§r é um Triturador do IC2 com §e2 entradas§r que
+      trabalham ao mesmo tempo. Receita: o Triturador no centro, 2 Circuitos Nano, 3 Caixas
+      Nano, 1 Placa Densa de Alumínio e 2 de Alumel.
+
+      Como toda máquina do IU, ele aceita os upgrades do IC2 (Overclocker, Armazenador,
+      Transformador, Ejetor); com o §eMódulo RF§r instalado, aceita RF também.
+
+      §aTruque:§r prefere não desmontar o Triturador que já está funcionando? O §eKit de
+      Máquina Melhorada§r faz o upgrade no lugar, guardando os upgrades instalados.
+    tasks:
+      - get: industrialupgrade:machines_base
+    rewards:
+      - xp: 4
+      - choice: [IC2:upgradeModule x2, IC2:itemPartCircuitAdv x2, minecraft:coal_block x6]
+
+  - id: compressor_melhorado
+    title: "Compressor Melhorado"
+    type: normal
+    deps: [macerador_melhorado]
+    icon: industrialupgrade:machines_base:3
+    desc: |
+      Mesma receita, com o §eCompressor§r no centro. Duas compressões ao mesmo tempo — ideal
+      para as placas densas e o Carbono Comprimido, que comem 9 itens cada.
+    tasks:
+      - get: industrialupgrade:machines_base:3
+    rewards:
+      - xp: 3
+      - item: IC2:itemPartCarbonPlate x9
+
+  - id: fornalha_melhorada
+    title: "Fornalha Elétrica Melhorada"
+    type: normal
+    deps: [macerador_melhorado]
+    icon: industrialupgrade:machines_base:6
+    desc: |
+      Com a §eFornalha Elétrica§r no centro: duas fundições simultâneas. Perfeita para os pós
+      de metal que saem do Pulverizador.
+    tasks:
+      - get: industrialupgrade:machines_base:6
+    rewards:
+      - xp: 3
+      - item: minecraft:coal_block x4
+
+  - id: extrator_melhorado
+    title: "Extrator Melhorado"
+    type: normal
+    deps: [macerador_melhorado]
+    icon: industrialupgrade:machines_base:9
+    desc: |
+      Com o §eExtrator§r no centro. Resina, borracha, pó de enxofre... em dobro de velocidade
+      útil. Sua fazenda de seringueiras agradece.
+    tasks:
+      - get: industrialupgrade:machines_base:9
+    rewards:
+      - xp: 3
+      - item: IC2:itemHarz x16
+
+  - id: formador_melhorado
+    title: "Formador de Metal Melhorado"
+    type: normal
+    deps: [macerador_melhorado]
+    icon: industrialupgrade:machines_base:12
+    desc: |
+      Com o §eFormador de Metal§r no centro: dois lingotes laminados (ou cortados, ou
+      extrudados) por vez. Para quem vai fazer centenas de placas do IU, é obrigatório.
+    tasks:
+      - get: industrialupgrade:machines_base:12
+    rewards:
+      - xp: 3
+      - item: industrialupgrade:iuingot:1 x9
+
+  - id: reciclador_melhorado
+    title: "Reciclador Melhorado"
+    type: optional
+    deps: [macerador_melhorado]
+    icon: industrialupgrade:machines_base1
+    desc: |
+      Com o §eReciclador§r no centro: sucata em dobro, para alimentar o Fabricante de Massa.
+    tasks:
+      - get: industrialupgrade:machines_base1
+    rewards:
+      - loot: comum
+
+  - id: kit_maquina_melhorada
+    title: "Kit de Máquina Melhorada"
+    type: normal
+    deps: [macerador_melhorado]
+    icon: industrialupgrade:upgradekitMachineIU
+    desc: |
+      O §eImproved Machine Upgrade Kit§r é a receita da máquina melhorada §esem§r a máquina do
+      IC2 no centro. Clique com ele num Triturador, Compressor, Extrator, Fornalha Elétrica,
+      Formador de Metal ou Reciclador do IC2 já instalado: ele vira a versão Melhorada no
+      lugar, mantendo a direção e os upgrades.
+
+      Existem também o Kit Avançado e o Kit Perfeito, para subir as máquinas do IU de tier.
+    tasks:
+      - get: industrialupgrade:upgradekitMachineIU
+    rewards:
+      - xp: 3
+      - item: industrialupgrade:nanobox
+
+  - id: overclocker_melhorado
+    title: "Overclocker Melhorado"
+    type: normal
+    deps: [circuito_nano]
+    icon: industrialupgrade:upgrademodule
+    desc: |
+      §e4 Circuitos Nano§r nos cantos e um §eOverclocker§r do IC2 no meio = §eImproved
+      Overclocker Upgrade§r. Cada um corta o tempo pela metade (×0,5) e aumenta o consumo só
+      em ×1,3 — bem melhor que o do IC2 (×0,7 e ×1,6). Funciona no IC2 e no IU. Mais tarde vem o Overclocker Avançado, feito com Circuitos Quânticos.
+    tasks:
+      - get: industrialupgrade:upgrademodule
+    rewards:
+      - xp: 3
+      - item: IC2:upgradeModule x2
+
+  - id: transformador_x2
+    title: "Upgrade de Transformador x2"
+    type: optional
+    deps: [vitalio, circuito_nano]
+    icon: industrialupgrade:upgrademodule:2
+    desc: |
+      4 Circuitos Nano, 4 Placas de Vitálio e um Upgrade de Transformador do IC2 = §eTransformer
+      Upgrade x2§r: sobe a tensão de entrada da máquina em §e2 tiers§r de uma vez (o x4 sobe 4). Útil para
+      ligar as máquinas do IU direto num MFSU.
+    tasks:
+      - get: industrialupgrade:upgrademodule:2
+    rewards:
+      - loot: comum
+
+  - id: laminadora_melhorada
+    title: "Laminadora Melhorada"
+    type: optional
+    deps: [macerador_melhorado, laminadora]
+    icon: industrialupgrade:machines_base2:1
+    desc: |
+      As três máquinas de metal do IU sobem de tier com a mesma receita das Melhoradas (a
+      máquina básica no centro). A §eImproved Rolling Machine§r lamina dois lingotes de uma
+      vez.
+    tasks:
+      - get: industrialupgrade:machines_base2:1
+    rewards:
+      - loot: comum
+
+  - id: fazenda_autonoma
+    title: "Fazenda Autônoma"
+    type: optional
+    deps: [vitalio, circuito_nano]
+    icon: industrialupgrade:machines_base3
+    desc: |
+      A §eAutonomous Farm§r (Carcaça, 2 Circuitos Nano, 3 lingotes de Vitálio, 2 Ligas
+      Avançadas e um Machado de Diamante) "cultiva" dentro da máquina: semente → trigo,
+      batata → batatas, muda → toras, tora → muda, resina → muda de seringueira... Tudo com
+      EU, sem terra arada. Confira as receitas no NEI.
+    tasks:
+      - get: industrialupgrade:machines_base3
+    rewards:
+      - loot: comum
+
+  - id: montador_sucata
+    title: "Montador de Sucata"
+    type: optional
+    deps: [vanadio_aluminio, bronze_aluminio]
+    icon: industrialupgrade:machines_base3:4
+    desc: |
+      O §eScrap Assembler§r junta §e9 Sucatas em 1 Caixa de Sucata§r (e 9 caixas na Caixa de
+      Sucata Dupla, um amplificador fortíssimo para o Fabricante de Massa). Leva Reciclador,
+      Compressor, Circuitos Nano, Carbono Comprimido e placas de Vanádio-Alumínio e Bronze de
+      Alumínio.
+    tasks:
+      - get: industrialupgrade:machines_base3:4
+    rewards:
+      - loot: comum
+
+  - id: bomba_melhorada
+    title: "Bomba Melhorada"
+    type: optional
+    deps: [macerador_melhorado]
+    icon: industrialupgrade:BlockBaseMachine3:6
+    desc: |
+      A §eImproved Pump§r usa a receita padrão das Melhoradas com a §eBomba§r do IC2 no
+      centro. Mais rápida para drenar lagos de lava para o seu Geotérmico.
+    tasks:
+      - get: industrialupgrade:BlockBaseMachine3:6
+    rewards:
+      - loot: comum
+
+  - id: separador_minerais
+    title: "Separador de Minerais"
+    type: normal
+    deps: [circuito_nano, minerios_pesados, aquecedor, cobalto]
+    icon: industrialupgrade:BlockBaseMachine2:12
+    desc: |
+      O §eMineral Separator§r (2 Placas de Cobalto, Diamante, Carcaça Avançada, 2 Circuitos Nano
+      e 3 Ligas Avançadas) abre os minérios pesados: Magnetita, Galena, Calaverita,
+      Niquelita, Pirita, Quartzito, Uraninita, Azurita, Rodonita, Alfeldita, Euxenita e
+      Smithsonita viram 2 ou 3 minérios comuns.
+
+      §cEle também precisa de calor§r (1500 a 5000 graus, conforme o minério) — encoste um
+      Aquecedor nele. Confira cada receita no NEI.
+    tasks:
+      - get: industrialupgrade:BlockBaseMachine2:12
+    rewards:
+      - xp: 3
+      - item: minecraft:diamond x2
+
+  - id: fabrica_melhorada
+    title: "A Fábrica Melhorada"
+    type: milestone
+    deps: [macerador_melhorado, compressor_melhorado, fornalha_melhorada, overclocker_melhorado]
+    icon: industrialupgrade:machines_base:3
+    banner: "A Fábrica Melhorada"
+    subtitle: "Duas operações de cada vez"
+    desc: |
+      Triturador, Compressor e Fornalha Elétrica Melhorados lado a lado, com Overclockers
+      Melhorados zumbindo dentro. Herói, a sua fábrica acabou de dobrar de tamanho sem ocupar
+      nem um bloco a mais!
+
+      Lembre a escada de tiers das máquinas do IU:
+      §e• Melhorada (Improved)§r — 2 entradas — Caixa Nano + Circuito Nano;
+      §e• Avançada (Advanced)§r — 3 entradas — Caixa Quântica + Circuito Quântico;
+      §e• Perfeita (Perfect)§r — 4 entradas — Caixa Quântica Melhorada + Circuito Espectral.
+
+      As duas últimas estão no §eIndustrial Upgrade II§r. Mostre as três máquinas melhoradas!
+    tasks:
+      - get: [industrialupgrade:machines_base, industrialupgrade:machines_base:3, industrialupgrade:machines_base:6]
+    rewards:
+      - xp: 8
+      - kit: {name: "Kit da Fábrica Melhorada", items: [IC2:upgradeModule x4, IC2:upgradeModule:1 x2, IC2:upgradeModule:2 x2, industrialupgrade:QuantumItems9 x2, industrialupgrade:nanobox x2]}
+      - loot: raro
+      - command: "/effect @p 3 1200 1"
+
+  # ======================================================================
+  # FASE 8 — ENERGIA E ARMAZENAMENTO
+  # ======================================================================
+  - id: gerador_melhorado
+    title: "Gerador Melhorado"
+    type: normal
+    deps: [circuito_nano]
+    icon: industrialupgrade:machines:10
+    desc: |
+      O §eImproved Generator§r (Gerador do IC2 no centro, 2 Circuitos Nano, 3 Ligas Avançadas e
+      3 Placas de Carbono) queima combustível como o gerador comum, mas produz §e12 EU/t§r em
+      vez de 10 e guarda 8000 EU. Depois vêm o Avançado (14 EU/t) e o Perfeito (18 EU/t).
+
+      Não é a energia do futuro, mas é um bom upgrade para a sua fileira de geradores a
+      carvão.
+    tasks:
+      - get: industrialupgrade:machines:10
+    rewards:
+      - xp: 3
+      - item: minecraft:coal_block x8
+
+  - id: geotermico_melhorado
+    title: "Geotérmico Melhorado"
+    type: normal
+    deps: [circuito_nano]
+    icon: industrialupgrade:BlockBaseMachine2:4
+    desc: |
+      Com o §eGerador Geotérmico§r no centro (mais Ligas Avançadas, Circuitos Nano e Placas de
+      Carbono), o §eImproved Geothermal Generator§r tira mais energia de cada balde de lava.
+      Combine com uma Bomba Melhorada num lago do Nether.
+    tasks:
+      - get: industrialupgrade:BlockBaseMachine2:4
+    rewards:
+      - xp: 3
+      - item: minecraft:lava_bucket x2
+
+  - id: cinetico_melhorado
+    title: "Gerador Cinético Melhorado"
+    type: normal
+    deps: [circuito_nano, alumel_denso]
+    icon: industrialupgrade:BlockBaseMachine2
+    desc: |
+      O §eImproved Kinetic Generator§r segue a receita padrão das máquinas Melhoradas, com o
+      Gerador Cinético de Energia do IC2 no centro. Ele converte a energia cinética (kU) dos
+      seus moinhos de vento e d'água com mais aproveitamento.
+    tasks:
+      - get: industrialupgrade:BlockBaseMachine2
+    rewards:
+      - xp: 3
+      - item: IC2:itemRecipePart:9 x4
+
+  - id: rotor_iridio
+    title: "Rotor de Irídio"
+    type: optional
+    deps: [cinetico_melhorado]
+    icon: industrialupgrade:iridium:1
+    desc: |
+      4 Placas Reforçadas de Irídio em volta de um Rotor de Carbono = §eIridium Rotor§r: raio
+      11, eficiência 2,0 e durabilidade de 648 000. Com 4 Carbonos Comprimidos ele vira o
+      §eRotor de Irídio Comprimido§r (eficiência 4,0, 720 000 de durabilidade).
+    tasks:
+      - get: industrialupgrade:iridium:*
+    rewards:
+      - loot: comum
+
+  - id: rotor_iridio_comprimido
+    title: "Rotor de Irídio Comprimido"
+    type: optional
+    deps: [rotor_iridio, carbono_comprimido]
+    icon: industrialupgrade:compressiridium:1
+    desc: |
+      Quatro Carbonos Comprimidos em volta do Rotor de Irídio. É a base de toda a escada de
+      rotores do IU — Espectral, Mítico, Fotônico, Nêutron... — que você encontra nos próximos
+      volumes.
+    tasks:
+      - get: industrialupgrade:compressiridium:*
+    rewards:
+      - loot: comum
+
+  - id: gerador_obsidiana
+    title: "Gerador de Obsidiana"
+    type: optional
+    deps: [bronze_aluminio]
+    icon: industrialupgrade:BlockBaseMachine3:10
+    desc: |
+      Água + lava (1000 mB de cada) + EU = §eobsidiana§r. O §eObsidian Generator§r leva um
+      Gerador, 2 obsidianas, 2 Circuitos e 4 Placas de Bronze de Alumínio. Obsidiana infinita
+      para portais e Pó de Obsidiana!
+    tasks:
+      - get: industrialupgrade:BlockBaseMachine3:10
+    rewards:
+      - loot: comum
+
+  - id: gerador_lava
+    title: "Gerador de Lava"
+    type: optional
+    deps: [alclad]
+    icon: industrialupgrade:BlockBaseMachine3:12
+    desc: |
+      Este é ao contrário: o §eLava Generator§r §econsome§r EU e §efabrica lava§r (20 000 EU por
+      1000 mB). Leva Gerador, 2 baldes de lava, 2 Circuitos e 4 Placas de Alclad. Útil para
+      alimentar o Aquecedor de Líquido ou o Gerador de Obsidiana.
+    tasks:
+      - get: industrialupgrade:BlockBaseMachine3:12
+    rewards:
+      - loot: comum
+
+  - id: gerador_pedregulho
+    title: "Gerador de Pedregulho"
+    type: optional
+    deps: [composito_comprimido, circuito_nano]
+    icon: industrialupgrade:machines:7
+    desc: |
+      O §eCobblestone Generator§r (Gerador, 2 Circuitos Nano, 3 Caixas Nano, Compósito
+      Comprimido e um pedregulho) produz pedregulho de 8 em 8 a partir de lava e água (em
+      balde ou célula do IC2) e EU — veja os slots na interface. Pedregulho para o Reciclador
+      e para construir!
+    tasks:
+      - get: industrialupgrade:machines:7
+    rewards:
+      - loot: comum
+
+  - id: batbox_iu
+    title: "BatBox do IU"
+    type: normal
+    deps: [boas_vindas]
+    icon: industrialupgrade:electricblock:2
+    desc: |
+      O IU tem a sua própria linha de armazenamento: §eBatBox, CESU, MFE e MFSU§r com as mesmas
+      capacidades do IC2 (40 mil, 300 mil, 4 milhões, 40 milhões de EU), mas com §eslots de
+      módulo§r e capacidade de guardar §eRF§r também. E só elas sobem até os MFSU gigantes do IU.
+
+      A BatBox do IU leva 5 toras, um Cabo de Cobre Isolado e 3 Baterias Reutilizáveis.
+    tasks:
+      - get: industrialupgrade:electricblock:2
+    rewards:
+      - xp: 2
+      - item: IC2:itemBatREDischarged x2
+
+  - id: cesu_iu
+    title: "CESU do IU"
+    type: normal
+    deps: [batbox_iu]
+    icon: industrialupgrade:electricblock:5
+    desc: |
+      5 Placas de Bronze, um Cabo de Cobre Isolado e 3 Baterias Avançadas = §eCESU do IU§r
+      (300 000 EU, saída MV).
+    tasks:
+      - get: industrialupgrade:electricblock:5
+    rewards:
+      - xp: 2
+      - item: IC2:itemPlates:2 x5
+
+  - id: mfe_iu
+    title: "MFE do IU"
+    type: normal
+    deps: [cesu_iu, bronze_aluminio]
+    icon: industrialupgrade:electricblock:3
+    desc: |
+      4 Placas Densas de Bronze de Alumínio, 4 Carcaças de Máquina e um Cristal de Energia =
+      §eMFE do IU§r (4 milhões de EU, saída HV).
+    tasks:
+      - get: industrialupgrade:electricblock:3
+    rewards:
+      - xp: 3
+      - item: IC2:itemBatCrystal:26
+
+  - id: mfsu_iu
+    title: "MFSU do IU"
+    type: main
+    deps: [mfe_iu, circuito_nano, lapotrons]
+    icon: industrialupgrade:electricblock:4
+    desc: |
+      6 Cristais de Lapotron, um Circuito Nano, uma Carcaça Avançada e o §eMFE do IU§r no centro
+      = §eMFSU do IU§r: 40 milhões de EU, saída EV.
+
+      Por que trocar o MFSU do IC2 por este? Porque só o MFSU do IU sobe para o §eMFSU
+      Melhorado§r (100 milhões), o §eAvançado§r (400 milhões) e daí até o §6MFSU Quark§r, com
+      400 bilhões de EU. A escada começa aqui.
+    tasks:
+      - get: industrialupgrade:electricblock:4
+    rewards:
+      - xp: 4
+      - choice: [IC2:itemBatLamaCrystal:26, IC2:blockElectric:6, IC2:itemPartCircuitAdv x4]
+
+  - id: kit_armazenamento
+    title: "Kits de Armazenamento"
+    type: optional
+    deps: [mfsu_iu]
+    icon: industrialupgrade:upgradekitIU:1
+    desc: |
+      Chave Inglesa + um armazenamento do IU, na bancada, = §eKit de Upgrade§r daquele tier
+      (MFE Upgrade Kit, MFSU Upgrade Kit, ...). Clique com o kit no armazenamento do IU um
+      tier abaixo e ele sobe de nível §esem perder a energia guardada nem os módulos§r — o
+      kit de MFSU transforma um MFE do IU em MFSU, por exemplo. Também funciona nas Placas de
+      Carga.
+    tasks:
+      - one_of: [industrialupgrade:upgradekitIU, industrialupgrade:upgradekitIU:1]
+    rewards:
+      - loot: comum
+
+  - id: placa_carga
+    title: "Placa de Carga"
+    type: optional
+    deps: [batbox_iu]
+    icon: industrialupgrade:BlockChargepad:2
+    desc: |
+      Cada armazenamento do IU tem uma §ePlaca de Carga§r (Charge Pad): o bloco de energia, uma
+      placa de pressão de pedra, borracha e circuitos. Pise nela e a sua armadura e
+      ferramentas elétricas carregam. Faça a de qualquer tier.
+    tasks:
+      - one_of: [industrialupgrade:BlockChargepad:2, industrialupgrade:BlockChargepad:3, industrialupgrade:BlockChargepad:4, industrialupgrade:BlockChargepad:5]
+    rewards:
+      - loot: comum
+
+  - id: tanque_liquidos
+    title: "Tanque de Líquidos"
+    type: optional
+    deps: [nicromo]
+    icon: industrialupgrade:BlockTank
+    desc: |
+      O §eLiquid Tank§r (Placas Densas de Ferro, Placas de Nicromo e Células Vazias) guarda
+      fluidos — petróleo, gasolina, hélio, lava. Depois há os tanques Avançado, Melhorado e
+      Perfeito.
+    tasks:
+      - get: industrialupgrade:BlockTank
+    rewards:
+      - loot: comum
+
+  - id: armazenamento_xp
+    title: "Armazenamento de Experiência"
+    type: optional
+    deps: [boas_vindas]
+    icon: industrialupgrade:BlockBaseMachine3:8
+    desc: |
+      Uma Carcaça, 2 Circuitos e 2 Garrafas de Experiência = §eExperience Storage§r. Ele guarda
+      a sua XP (botões "Pôr" e "Tirar" na interface) — perfeito para não perder níveis numa
+      morte boba.
+    tasks:
+      - get: industrialupgrade:BlockBaseMachine3:8
+    rewards:
+      - xp: 5
+
+  - id: pescador
+    title: "Máquina de Pesca"
+    type: optional
+    deps: [alumel]
+    icon: industrialupgrade:BlockBaseMachine3:1
+    desc: |
+      A §eFishing Machine§r pesca sozinha com EU. Ela precisa de §eum cubo 3×3×3 de água logo
+      embaixo§r e de uma vara de pescar no slot — os encantamentos da vara afetam o que vem.
+    tasks:
+      - get: industrialupgrade:BlockBaseMachine3:1
+    rewards:
+      - loot: comum
+
+  - id: tingimento
+    title: "Tintas e Máquina de Tingimento"
+    type: optional
+    deps: [boas_vindas]
+    icon: industrialupgrade:BlockBaseMachine3:3
+    desc: |
+      8 lingotes de ferro = uma §eLata de Tinta Vazia§r; com um corante, vira tinta colorida. A
+      §eDyeing Machine§r usa 4 latas de tinta para trocar o visual (skin) das Brocas e da
+      Armadura Quântica do IU: Camuflada, Demoníaca, Sombria, Gélida ou Ender. Tinta comum
+      remove a skin.
+    tasks:
+      - get: industrialupgrade:BlockBaseMachine3:3
+    rewards:
+      - loot: comum
+
+  # ======================================================================
+  # FASE 9 — EQUIPAMENTO NANO
+  # ======================================================================
+  - id: bolsa
+    title: "Bolsa Elétrica"
+    type: optional
+    deps: [boas_vindas]
+    icon: industrialupgrade:iu_bags:1
+    desc: |
+      Couro, um Circuito e uma Bateria de Uso Único = §eBolsa§r (Bag), com 27 espaços. Cada vez
+      que você abre, ela gasta 350 EU. Depois vêm a §eBolsa Avançada§r (45 espaços, com Placas
+      de Carbono) e a §eBolsa Melhorada§r (63 espaços, com Carbono Comprimido).
+    tasks:
+      - get: industrialupgrade:iu_bags:*
+    rewards:
+      - loot: comum
+
+  - id: bolsa_melhorada
+    title: "Bolsa Melhorada"
+    type: optional
+    deps: [bolsa, carbono_comprimido]
+    icon: industrialupgrade:imp_iu_bags:1
+    desc: |
+      Bolsa → Bolsa Avançada (Placas de Carbono + Bateria Reutilizável) → §eBolsa Melhorada§r
+      (Carbono Comprimido + Bateria Avançada). 63 espaços nas costas!
+    tasks:
+      - get: industrialupgrade:imp_iu_bags:*
+    rewards:
+      - loot: comum
+
+  - id: picareta_nano
+    title: "Picareta Nano"
+    type: normal
+    deps: [circuito_nano, ferromanganes]
+    icon: industrialupgrade:nanopickaxe:1
+    desc: |
+      Uma Picareta de Diamante no centro, 3 Circuitos Nano, 4 Placas Densas de Ferromanganês e
+      um Cristal de Energia = §eNano Pickaxe§r. Ela já vem com §eEficiência I e Fortuna I§r e
+      guarda 1 milhão de EU.
+
+      As ferramentas do IU têm modos (tecla de troca de modo + clique direito) e aceitam
+      §emódulos de modificação§r na Estação de Modificação: área, velocidade, profundidade...
+    tasks:
+      - get: industrialupgrade:nanopickaxe:*
+    rewards:
+      - xp: 3
+      - item: IC2:itemBatCrystal:26
+
+  - id: ferramentas_nano
+    title: "Machado e Pá Nano"
+    type: optional
+    deps: [picareta_nano]
+    icon: industrialupgrade:nanoaxe:1
+    desc: |
+      A mesma receita com um Machado ou uma Pá de Diamante no centro. Juntas, a Picareta e a Pá
+      Nano viram a §eBroca Nano§r (Nano Drill) lá no Volume II.
+    tasks:
+      - get: [industrialupgrade:nanoaxe:*, industrialupgrade:nanoshovel:*]
+    rewards:
+      - loot: comum
+
+  - id: arco_nano
+    title: "Arco Nano"
+    type: optional
+    deps: [circuito_nano]
+    icon: industrialupgrade:nano_bow:1
+    desc: |
+      Um arco, 2 Circuitos Nano e 2 Placas de Carbono = §eNano Bow§r, um arco elétrico (50 000 EU)
+      com modos: normal, rajada, espalhado, atirador de elite e chama. Troque o modo com a
+      tecla de modo do IC2.
+    tasks:
+      - get: industrialupgrade:nano_bow:*
+    rewards:
+      - loot: comum
+
+  - id: jetpack_melhorado
+    title: "Jetpack Elétrico Melhorado"
+    type: optional
+    deps: [circuito_nano, ferromanganes]
+    icon: industrialupgrade:advjetpack:1
+    desc: |
+      O Jetpack Elétrico do IC2 no centro, 4 Placas Densas de Ferromanganês, 3 Circuitos Nano e
+      uma Bateria de Uso Único = §eImproved Electric Jetpack§r (60 000 EU, tier 2). Voa mais
+      tempo que o original.
+    tasks:
+      - get: industrialupgrade:advjetpack:*
+    rewards:
+      - loot: comum
+
+  - id: lappack_melhorado
+    title: "Lappack Melhorado"
+    type: optional
+    deps: [alclad, vanadio_aluminio, circuito_nano]
+    icon: industrialupgrade:adv_lappack:1
+    desc: |
+      O Lappack do IC2 vira §eImproved Lappack§r com Placas de Alclad, Placas de
+      Vanádio-Alumínio, um Cristal de Lapotron e um Circuito Nano: §e10 milhões de EU§r nas
+      costas, recarregando suas ferramentas.
+    tasks:
+      - get: industrialupgrade:adv_lappack:*
+    rewards:
+      - loot: comum
+
+  - id: ima
+    title: "Ímã Permanente"
+    type: optional
+    deps: [vitalio, ferromanganes]
+    icon: industrialupgrade:magnet:1
+    desc: |
+      Lingote de Vitálio, lingote de Ferromanganês, 3 Placas Densas de Michalov e uma Bateria
+      Avançada = §eÍmã§r (Permanent Magnet). Raio de 7 blocos e dois modos: atrair os itens para
+      você ou mandá-los direto para o inventário. O §eÍmã Melhorado§r (Duralumínio + Invar
+      denso) tem raio 11.
+    tasks:
+      - get: industrialupgrade:magnet:*
+    rewards:
+      - loot: comum
+
+  - id: traje_fusao
+    title: "Traje Antirradiação de Fusão"
+    type: optional
+    deps: [michalov, platina, cobalto]
+    icon: industrialupgrade:hazmatchest
+    desc: |
+      Cada peça do §eTraje Hazmat§r do IC2 ganha 3 Placas de Michalov, 2 de Platina e 3 de
+      Cobalto e vira o §eNuclear Fusion Radiation Suit§r. Ele protege contra a radiação dos
+      materiais pesados do IU — vai fazer falta no Volume III.
+    tasks:
+      - get: [industrialupgrade:hazmathelmet, industrialupgrade:hazmatchest, industrialupgrade:hazmatleggins, industrialupgrade:hazmatboosts]
+    rewards:
+      - loot: comum
+
+  - id: purificador
+    title: "Purificador"
+    type: normal
+    deps: [boas_vindas]
+    icon: industrialupgrade:Purifier:1
+    desc: |
+      Uma Pequena Unidade de Potência e lã = §ePurifier§r. §cOs painéis solares do IU
+      sujam!§r Com o tempo de uso eles passam por estágios de sujeira, e cada estágio corta
+      25% da produção. Com o Purificador carregado, §eShift + clique direito§r no painel o
+      deixa limpinho.
+
+      Mais tarde existe o §eMódulo Purificador§r, que limpa sozinho. Faça um Purificador agora
+      — você vai precisar assim que montar o primeiro painel.
+    tasks:
+      - get: industrialupgrade:Purifier:*
+    rewards:
+      - xp: 2
+      - item: minecraft:wool x4
+
+  - id: gravitool
+    title: "GraviTool"
+    type: optional
+    deps: [purificador, muntz, circuito_nano]
+    icon: industrialupgrade:GraviTool:1
+    desc: |
+      Enxada Elétrica, Torneira Elétrica, Chave Inglesa Elétrica e Purificador numa ferramenta
+      só, com Placas Densas de Muntz, Circuitos Nano e um Cristal de Energia. A §eGraviTool§r
+      troca de função (enxada, torneira, chave, chave de fenda, purificador) pela tecla de
+      modo.
+    tasks:
+      - get: industrialupgrade:GraviTool:*
+    rewards:
+      - loot: comum
+
+  # ======================================================================
+  # FASE 10 — O SOL ENGARRAFADO: SUNNARIUM E ENRIQUECIMENTO
+  # ======================================================================
+  - id: gerador_energia_solar
+    title: "Sol nas Mãos"
+    type: main
+    deps: [torio, circuito_nano, paineis_ic2]
+    icon: industrialupgrade:generator_se
+    desc: |
+      O §eSolar Energy Generator§r não produz EU — ele §ejunta luz do sol§r. Receita: 2 Placas
+      de Carbono, 1 Tório, 2 Placas de Bronze, um Painel Solar do IC2 no centro, 2 Ligas
+      Avançadas e um Circuito Avançado.
+
+      Durante o §edia§r ele vai enchendo uma barra de energia solar; a cada 2500 unidades sai
+      um §eFragmento de Sunnarium§r. De noite ele para. Coloque vários lado a lado — você vai
+      precisar de MUITOS fragmentos.
+    tasks:
+      - get: industrialupgrade:generator_se
+    rewards:
+      - xp: 4
+      - choice: [IC2:blockGenerator:3 x2, IC2:itemPartAlloy x4, industrialupgrade:toriy x2]
+
+  - id: fragmento_sunnarium
+    title: "Partícula do Sol"
+    type: main
+    deps: [gerador_energia_solar]
+    icon: industrialupgrade:sunnarium:4
+    desc: |
+      Olha que coisa mais linda: um §eFragmento de Sunnarium§r (Sunnarium Fragment), um caquinho
+      de sol que cabe na mão. Os Antigos chamavam o Sunnarium de "a luz que não esfria".
+
+      Junte §e8 fragmentos§r. Quatro deles viram um Sunnarium inteiro no Fabricante de
+      Sunnarium.
+    tasks:
+      - get: industrialupgrade:sunnarium:4 x8
+    rewards:
+      - xp: 4
+      - choice: [minecraft:glowstone_dust x16, minecraft:quartz x16, industrialupgrade:iuingot:3 x4]
+
+  - id: fabricante_sunnarium
+    title: "Juntando os Fragmentos"
+    type: main
+    deps: [fragmento_sunnarium]
+    icon: industrialupgrade:SunnariumMaker
+    desc: |
+      O §eSunnarium Manufacturer§r leva uma Carcaça de Máquina, 2 Circuitos Avançados, 3 Painéis
+      Solares do IC2 e 3 Ligas Avançadas.
+
+      Ele monta o Sunnarium com: §e4 Fragmentos de Sunnarium + Pó de Glowstone + Quartzo do
+      Nether + 1 Lingote de Tungstênio§r. §cAtenção:§r o tungstênio precisa ser o lingote do
+      próprio Industrial Upgrade.
+    tasks:
+      - get: industrialupgrade:SunnariumMaker
+    rewards:
+      - xp: 4
+      - choice: [minecraft:glowstone_dust x16, minecraft:quartz x16, IC2:itemPartCircuitAdv x2]
+
+  - id: sunnarium
+    title: "O Sol com as Próprias Mãos..."
+    type: main
+    deps: [fabricante_sunnarium, tungstenio]
+    icon: industrialupgrade:sunnarium:3
+    desc: |
+      ...e lá está ele: §eSunnarium§r inteiro, quente e brilhante. Eu fico emocionada toda vez
+      que vejo um!
+
+      Faça §e4 Sunnariums§r. Eles viram placas no Compressor, e um deles vai ser "enriquecido"
+      daqui a pouco.
+    tasks:
+      - get: industrialupgrade:sunnarium:3 x4
+    rewards:
+      - xp: 4
+      - choice: [industrialupgrade:sunnarium:4 x4, minecraft:glowstone x4, minecraft:quartz x16]
+
+  - id: placa_sunnarium
+    title: "...Agora Comprima!"
+    type: main
+    deps: [sunnarium]
+    icon: industrialupgrade:sunnarium:2
+    desc: |
+      Um Sunnarium no §eCompressor§r = uma §ePlaca de Sunnarium§r (Sunnarium Plate). Ela é a
+      base de todo o vidro solar do IU e de todas as Placas de Sunnarium dos painéis
+      superiores.
+
+      Faça §e2 placas§r para o primeiro Vidro Avançado.
+    tasks:
+      - get: industrialupgrade:sunnarium:2 x2
+    rewards:
+      - xp: 4
+      - choice: [industrialupgrade:sunnarium:4 x4, IC2:itemPartCarbonPlate x6, minecraft:glowstone_dust x16]
+
+  - id: enriquecedor
+    title: "Enriqueça!"
+    type: main
+    deps: [gerador_energia_solar, varetas_uranio, carcacas_avancadas]
+    icon: industrialupgrade:BlockBaseMachine2:10
+    desc: |
+      A §eEnrichment§r (Enriquecedor) junta dois itens para "irradiá-los". Receita: uma Carcaça
+      Avançada, 2 Circuitos Avançados, 2 Varetas de Combustível de Urânio do IC2, 2 Ligas
+      Avançadas e 2 Placas de Carbono.
+
+      Receitas dela: Urânio + Bloco de Glowstone → Urânio Irradiante; Urânio Irradiante +
+      Vidro Reforçado → 2 Superfícies de Vidro Irradiante; Sunnarium + Urânio Irradiante →
+      Sunnarium Enriquecido; Tório + Pó de Glowstone → Tório Irradiante.
+    tasks:
+      - get: industrialupgrade:BlockBaseMachine2:10
+    rewards:
+      - xp: 4
+      - choice: [minecraft:glowstone x8, IC2:blockAlloyGlass x8, IC2:itemPartAlloy x4]
+
+  - id: uranio_iu
+    title: "Lingote de Urânio do IU"
+    type: normal
+    deps: [enriquecedor]
+    icon: industrialupgrade:ssp_crafting_items:2
+    desc: |
+      O Enriquecedor não aceita qualquer urânio: ele pede o §eUranium Ingot§r do próprio IU. Ele
+      sai do §eCompressor§r: 1 Minério de Urânio do IC2, 1 Urânio (o combustível do IC2) ou
+      1 Minério de Urânio Triturado viram 1 lingote. Faça §e4§r.
+
+      §cRadioativo!§r Guarde numa Caixa de Contenção ou use o Traje Hazmat.
+    tasks:
+      - get: industrialupgrade:ssp_crafting_items:2 x4
+    rewards:
+      - xp: 3
+      - item: minecraft:glowstone x4
+
+  - id: uranio_irradiante
+    title: "Urânio Radioativo"
+    type: main
+    deps: [uranio_iu]
+    icon: industrialupgrade:ssp_crafting_items
+    desc: |
+      No Enriquecedor: §eLingote de Urânio do IU + Bloco de Glowstone§r = §eUrânio Irradiante§r
+      (Irradiant Uranium). Ele é o ingrediente-mãe: vira vidro irradiante, enriquece o
+      Sunnarium e — três por cabo — forma o §eCabo Espectral§r do Volume II.
+
+      Faça §e4§r.
+    tasks:
+      - get: industrialupgrade:ssp_crafting_items x4
+    rewards:
+      - xp: 4
+      - choice: [minecraft:glowstone x6, IC2:blockAlloyGlass x6, industrialupgrade:ssp_crafting_items:2 x2]
+
+  - id: vidro_irradiante
+    title: "Vidro de Depressão"
+    type: main
+    deps: [uranio_irradiante, vidro_reforcado]
+    icon: industrialupgrade:ssp_crafting_items:1
+    desc: |
+      No Enriquecedor: §eUrânio Irradiante + Vidro Reforçado do IC2§r = §e2 Superfícies de
+      Vidro Irradiante§r (Irradiant Glass Surface).
+
+      Você precisa de §e7§r: 6 para o Núcleo do Transformador Molecular e 1 para o primeiro
+      Vidro Avançado. Faça §e8§r para sobrar uma.
+    tasks:
+      - get: industrialupgrade:ssp_crafting_items:1 x8
+    rewards:
+      - xp: 4
+      - choice: [IC2:blockAlloyGlass x8, minecraft:glowstone x4, IC2:itemPartCircuitAdv x2]
+
+  - id: sunnarium_enriquecido
+    title: "Sol Radioativo"
+    type: main
+    deps: [uranio_irradiante, sunnarium]
+    icon: industrialupgrade:sunnarium
+    desc: |
+      No Enriquecedor: §eSunnarium + Urânio Irradiante§r = §eSunnarium Enriquecido§r (Enriched
+      Sunnarium). Um sol radioativo... os Antigos devem ter ficado sem dormir pensando nisso.
+
+      Faça §e2§r — cada Painel Solar Avançado pede 2 placas feitas com ele.
+    tasks:
+      - get: industrialupgrade:sunnarium x2
+    rewards:
+      - xp: 4
+      - choice: [industrialupgrade:sunnarium:4 x4, minecraft:glowstone x4, industrialupgrade:iuplate:1 x4]
+
+  - id: fabricante_placas_sunnarium
+    title: "Sol Comprimido Incomum"
+    type: main
+    deps: [fabricante_sunnarium, enriquecedor]
+    icon: industrialupgrade:SunnariumPanelMaker
+    desc: |
+      O §eSunnarium Plate Manufacturer§r junta Sunnarium com placas de metal. Receita: o
+      Fabricante de Sunnarium, um Gerador de Energia Solar, 2 Circuitos Avançados e 2 Placas de
+      Carbono.
+
+      É ele que faz a escada inteira de §ePlacas de Sunnarium§r dos painéis: Híbrida
+      (platina), Perfeita (michalov), Quântica (cromo), Espectral (electrum)... até a Quark.
+    tasks:
+      - get: industrialupgrade:SunnariumPanelMaker
+    rewards:
+      - xp: 4
+      - choice: [industrialupgrade:iuplate:1 x6, industrialupgrade:iuplate:9 x2, IC2:itemPartCarbonPlate x6]
+
+  - id: placa_sunnarium_enriquecida
+    title: "Placa de Sunnarium Enriquecida"
+    type: main
+    deps: [fabricante_placas_sunnarium, sunnarium_enriquecido]
+    icon: industrialupgrade:sunnarium:1
+    desc: |
+      No Fabricante de Placas: §eSunnarium Enriquecido + Placa de Alumínio§r = §ePlaca de
+      Sunnarium Enriquecida§r (Enriched Sunnarium Plate). É o "C" da receita do Painel Solar
+      Avançado. Faça §e2§r.
+    tasks:
+      - get: industrialupgrade:sunnarium:1 x2
+    rewards:
+      - xp: 4
+      - choice: [industrialupgrade:sunnarium:4 x4, industrialupgrade:iuplate:1 x6, minecraft:glowstone_dust x16]
+
+  - id: torio_irradiante
+    title: "Tório Radioativo"
+    type: optional
+    deps: [enriquecedor, torio]
+    icon: industrialupgrade:radiationresources:4
+    desc: |
+      No Enriquecedor: §eTório + Pó de Glowstone§r = §eTório Irradiante§r. Na Máquina de
+      Conservas Sólidas do IC2, uma Vareta de Combustível vazia + Tório Irradiante = §eBarra de
+      Tório§r, um combustível alternativo para o reator nuclear (leia o tooltip da barra para
+      ver calor e energia).
+    tasks:
+      - get: industrialupgrade:radiationresources:4
+    rewards:
+      - loot: comum
+
+  - id: barra_torio
+    title: "Barra de Tório"
+    type: optional
+    deps: [torio_irradiante]
+    icon: industrialupgrade:reactortoriySimple:1
+    desc: |
+      Vareta de Combustível (vazia) + Tório Irradiante na §eMáquina de Conservas Sólidas§r =
+      §eThorium Rod§r. Duas viram a Dupla e quatro a Quádrupla (com placas de ferro e cobre na
+      bancada). Quando esgotada, a Centrífuga Térmica devolve o tório.
+    tasks:
+      - get: industrialupgrade:reactortoriySimple:*
+    rewards:
+      - loot: comum
+
+  # ======================================================================
+  # FASE 11 — O TRANSFORMADOR MOLECULAR E O PRIMEIRO PAINEL
+  # ======================================================================
+  - id: nucleo_mt
+    title: "Núcleo do Transformador Molecular"
+    type: main
+    deps: [vidro_irradiante, circuito_nano, refletor_neutrons]
+    icon: industrialupgrade:ssp_crafting_items:3
+    desc: |
+      §e6 Superfícies de Vidro Irradiante§r, §e2 Circuitos Nano§r e um §eRefletor de Nêutrons§r
+      do IC2 no centro = §eMolecular Transformer Core§r.
+
+      É o coração da máquina mais importante deste volume. Também vai em pares (de três) no
+      Gerador de Energia Solar Melhorado.
+    tasks:
+      - get: industrialupgrade:ssp_crafting_items:3
+    rewards:
+      - xp: 4
+      - choice: [IC2:blockElectric:6, IC2:itemPartCircuitAdv x4, IC2:blockMachine:12 x2]
+
+  - id: transformador_molecular
+    title: "Transformador de Tudo"
+    type: milestone
+    deps: [nucleo_mt, carcacas_avancadas, transformadores_ev]
+    icon: industrialupgrade:molecular
+    banner: "Transformador Molecular"
+    subtitle: "Um item entra, outro sai"
+    desc: |
+      §64 Carcaças Avançadas, 2 Transformadores EV, 2 Circuitos Avançados e o Núcleo§r: está
+      montado o §eMolecular Transformer§r. Herói, isto aqui é alquimia com tomada!
+
+      Ele transforma um item em outro gastando §eenergia por operação§r (aparece na
+      interface). Aceita EU de §equalquer tensão§r — não explode. Algumas
+      transformações:
+      §e•§r Lingote de Irídio → §eNúcleo Avançado§r (só 1500 EU!);
+      §e•§r Lingote de Ferro → Minério de Irídio do IC2 (10 milhões de EU);
+      §e•§r Pó de Carvão → Diamante; Espinélio → Irídio; Ouro → Platina;
+      §e•§r Crânio de Esqueleto → Crânio de Wither → Estrela do Nether.
+
+      É também a máquina que sobe a escada de §eNúcleos§r dos painéis solares: 4 núcleos de um
+      tier = 1 do tier seguinte. Abra o NEI nele (U) e sonhe alto.
+    tasks:
+      - get: industrialupgrade:molecular
+    rewards:
+      - xp: 8
+      - kit: {name: "Kit do Alquimista Elétrico", items: [IC2:blockElectric:6, IC2:blockElectric:2, IC2:itemPartCircuitAdv x4, minecraft:diamond x4, industrialupgrade:iuingot:17 x2]}
+      - loot: raro
+
+  - id: nucleo_avancado
+    title: "Avanço da Ciência"
+    type: main
+    deps: [transformador_molecular, iridio]
+    icon: industrialupgrade:ItemCore
+    desc: |
+      Coloque um §eLingote de Irídio§r no Transformador Molecular: por míseros 1500 EU ele vira
+      um §eNúcleo Avançado§r (Advanced Core). Irídio do IU, do RotaryCraft ou de qualquer mod
+      do oredict serve.
+
+      Cada painel solar do IU tem o seu núcleo, e 4 núcleos de um tier viram 1 do próximo no
+      Transformador. Faça §e2§r — um vai para o painel, o outro fica de semente.
+    tasks:
+      - get: industrialupgrade:ItemCore x2
+    rewards:
+      - xp: 4
+      - choice: [industrialupgrade:iuingot:17 x2, industrialupgrade:iuingot:12 x4, minecraft:diamond x2]
+
+  - id: varetas_michalov
+    title: "Varetas de Michalov"
+    type: normal
+    deps: [michalov]
+    icon: industrialupgrade:IUstik
+    desc: |
+      Extrusão no Formador de Metal (ou na Extrusora): 1 lingote de Michalov = 1 §eVareta de
+      Michalov§r. O Vidro Avançado pede §e6§r em volta.
+    tasks:
+      - get: industrialupgrade:IUstik x6
+    rewards:
+      - xp: 2
+      - item: industrialupgrade:iuingot:0 x4
+
+  - id: vidro_avancado
+    title: "Vidro Avançado"
+    type: main
+    deps: [vidro_irradiante, placa_sunnarium, varetas_michalov]
+    icon: industrialupgrade:IUphotonglass
+    desc: |
+      Na bancada: §e6 Varetas de Michalov§r nas linhas de cima e de baixo, e no meio §ePlaca de
+      Sunnarium – Vidro Irradiante – Placa de Sunnarium§r = §eAdvanced Glass§r.
+
+      Cada painel do IU tem o seu vidro, sempre feito com o vidro anterior + varetas de um metal
+      + a Placa de Sunnarium daquele tier. Faça §e2§r.
+    tasks:
+      - get: industrialupgrade:IUphotonglass x2
+    rewards:
+      - xp: 4
+      - choice: [industrialupgrade:sunnarium:2, industrialupgrade:ssp_crafting_items:1 x2, industrialupgrade:iuingot:0 x8]
+
+  - id: painel_solar_avancado
+    title: "Ciência em Ação"
+    type: milestone
+    deps: [vidro_avancado, nucleo_avancado, placa_sunnarium_enriquecida, purificador]
+    icon: industrialupgrade:BlockSolarPanel
+    banner: "Painel Solar Avançado"
+    subtitle: "O primeiro degrau da escada do sol"
+    desc: |
+      E aqui está, Herói: o §ePainel Solar Avançado§r do Industrial Upgrade. A receita:
+
+      §eVidro Avançado – Núcleo Avançado – Vidro Avançado
+      Placa de Sunnarium Enriquecida – Painel Solar (IC2) – Placa de Sunnarium Enriquecida
+      Painel Solar (IC2) – Circuito Eletrônico – Painel Solar (IC2)§r
+
+      Ele gera §e5 EU/t de dia e de noite§r e guarda 3200 EU. Parece pouco? Cada painel seguinte
+      leva §e3 painéis do tier anterior§r e gera cerca de 4× mais: Híbrido (20), Perfeito (80),
+      Quântico (320), Espectral (1280)... e lá no fim, o Quark gera mais de 300 milhões de EU/t.
+
+      §cLembre:§r painéis do IU sujam (use o Purificador) e se desmontam com a Chave Inglesa. A
+      escada continua no §eIndustrial Upgrade II§r. Que orgulho!
+    tasks:
+      - get: industrialupgrade:BlockSolarPanel
+    rewards:
+      - xp: 8
+      - kit: {name: "Kit do Primeiro Sol", items: [IC2:blockGenerator:3 x3, industrialupgrade:sunnarium:4 x8, industrialupgrade:ssp_crafting_items:1 x2, industrialupgrade:ItemCore x2, IC2:itemPartCircuit x2]}
+      - loot: raro
+      - command: "/effect @p 16 2400 0"
+
+  - id: info_paineis
+    title: "Como Cuidar dos Painéis do IU"
+    type: info
+    deps: [painel_solar_avancado]
+    icon: industrialupgrade:Purifier:1
+    desc: |
+      Um resumo do que o próprio mod avisa na interface dos painéis:
+      §e•§r os painéis têm §eestágios de sujeira§r; cada estágio tira 25% da produção. Limpe com
+      o §ePurificador§r (Shift + clique direito) ou instale o §eMódulo Purificador§r;
+      §e•§r desmonte §esempre com a Chave Inglesa§r;
+      §e•§r os painéis têm §eslots de módulo§r: geração de dia/noite, armazenamento, saída,
+      tipo de painel (Ar, Terra, Nether, End, Noite, Dia, Chuva), carregar itens, RF,
+      sem fio, privacidade...;
+      §e•§r o botão de modo só funciona com o módulo RF;
+      §e•§r os §eKits de Upgrade de Painel§r (do Híbrido em diante) sobem o painel instalado
+      para o próximo tier sem desmontar.
+
+      Os módulos de painel estão no Volume II.
+    tasks:
+      - check
+    rewards:
+      - xp: 1
+
+  - id: gerador_solar_melhorado
+    title: "Mais Sol"
+    type: optional
+    deps: [transformador_molecular, gerador_energia_solar, michalov]
+    icon: industrialupgrade:advgenerator_se
+    desc: |
+      3 Núcleos do Transformador Molecular, 2 Geradores de Energia Solar, um lingote de
+      Michalov, 2 Placas Reforçadas de Irídio e um Circuito Avançado = §eImproved Solar Energy
+      Generator§r: junta luz do sol §e2× mais rápido§r. (O Avançado, com Caravky, é 4× — Volume
+      II.) Caro, mas para quem vai fazer centenas de fragmentos, vale.
+    tasks:
+      - get: industrialupgrade:advgenerator_se
+    rewards:
+      - loot: incomum
+
+  - id: fundamentos_completos
+    title: "Fundamentos das Melhorias"
+    type: milestone
+    deps: [painel_solar_avancado, fabrica_melhorada, metalurgia_iu, mfsu_iu]
+    icon: industrialupgrade:QuantumItems9
+    banner: "Fundamentos das Melhorias"
+    subtitle: "Industrial Upgrade I completo"
+    effect: 3
+    desc: |
+      Herói, pare um segundo e olhe a sua base. Dezessete metais novos nos baús. Dez ligas.
+      Uma fábrica de chips aquecida a 4500 graus. Máquinas que trabalham em dobro. Um MFSU que
+      ainda vai crescer muito. Sol engarrafado. Um Transformador Molecular. E o primeiro painel
+      solar do Volume das Melhorias brilhando no telhado.
+
+      §bA primeira parte do Volume das Melhorias está reescrita.§r
+
+      No §eIndustrial Upgrade II — Avançado§r você vai conhecer o §eFóton§r, o tier Quântico
+      (circuitos, caixas e máquinas Avançadas), o petróleo e o plástico, os módulos dos
+      painéis, os cabos de alta tensão, as armaduras reforçadas... e subir a escada solar até o
+      §ePainel Espectral§r. Eu já separei as páginas!
+    tasks:
+      - get: [industrialupgrade:BlockSolarPanel, industrialupgrade:molecular, industrialupgrade:electricblock:4]
+    rewards:
+      - xp: 10
+      - kit: {name: "Legado dos Fundamentos", items: [industrialupgrade:QuantumItems9 x4, industrialupgrade:nanobox x3, industrialupgrade:compresscarbon x4, industrialupgrade:ItemCore x4, IC2:itemBatLamaCrystal:26]}
+      - loot: [raro x2]
+
+  # ======================================================================
+  # PEÇAS DO IC2 QUE O IU PEDE (pré-requisitos)
+  # ======================================================================
+  - id: energia_rf
+    title: "EU, RF e Upgrades"
+    type: info
+    deps: [boas_vindas]
+    icon: IC2:upgradeModule
+    desc: |
+      Três coisas que valem para quase toda máquina do Industrial Upgrade:
+      §e•§r elas usam §eEU§r como o IC2; as máquinas multi (Melhoradas, Avançadas, Perfeitas)
+      passam a aceitar §eRF§r (4 RF = 1 EU, pela config do pack) quando você instala nelas o
+      §eMódulo RF§r (Volume II, clique direito com o módulo na máquina);
+      §e•§r elas aceitam os §eupgrades do IC2§r (Overclocker, Armazenador de Energia,
+      Transformador, Ejetor, Bomba de Fluido...);
+      §e•§r o tier de entrada padrão é §cLV (32 EU/t)§r: com explosões ligadas na config,
+      uma tensão maior que a suportada §cexplode a máquina§r. Use transformadores ou
+      Upgrades de Transformador. (O Transformador Molecular é a exceção: aceita qualquer
+      tensão.)
+    tasks:
+      - check
+    rewards:
+      - xp: 1
+
+  - id: cristais_energia
+    title: "Cristais de Energia em Série"
+    type: normal
+    deps: [boas_vindas]
+    icon: IC2:itemBatCrystal:26
+    desc: |
+      Cada §eCaixa de Ferramentas Nano§r leva um §eCristal de Energia§r do IC2 — e você vai
+      fazer pelo menos nove caixas só para o Fabricante de Ligas, o Fabricante de Circuitos e
+      o primeiro Triturador Melhorado. Monte uma linha de Pó de Energium → Cristal de Energia
+      (Compressor) e mostre §e3 Cristais de Energia§r.
+    tasks:
+      - get: IC2:itemBatCrystal:* x3
+    rewards:
+      - xp: 2
+      - item: minecraft:redstone x32
+
+  - id: forno_inducao
+    title: "Forno de Indução"
+    type: normal
+    deps: [boas_vindas]
+    icon: IC2:blockMachine:13
+    desc: |
+      O coração do Fabricante de Ligas é um §eForno de Indução§r do IC2 (Carcaça Avançada,
+      cobre e Fornalhas Elétricas). Se você ainda não tem um, é a hora — ele também funde
+      os pós dos metais do IU rapidinho quando aquece.
+    tasks:
+      - get: IC2:blockMachine:13
+    rewards:
+      - xp: 2
+      - item: IC2:itemIngot x12
+
+  - id: lapotrons
+    title: "Seis Lapotrons"
+    type: normal
+    deps: [boas_vindas]
+    icon: IC2:itemBatLamaCrystal:26
+    desc: |
+      O MFSU do IU pede §e6 Cristais de Lapotron§r (os mesmos do MFSU do IC2). Eles também vão
+      no Lappack Melhorado, nas armaduras reforçadas e nos primeiros transformadores do IU.
+      Junte §e6§r.
+    tasks:
+      - get: IC2:itemBatLamaCrystal:* x6
+    rewards:
+      - xp: 3
+      - item: minecraft:lapis_block x4
+
+  - id: paineis_ic2
+    title: "Painéis Solares do IC2"
+    type: normal
+    deps: [boas_vindas]
+    icon: IC2:blockGenerator:3
+    desc: |
+      O sol do IU começa no sol do IC2: o Fabricante de Sunnarium leva 3 Painéis Solares, o
+      Gerador de Energia Solar leva 1 e o Painel Solar Avançado leva mais 3. Junte §e7 Painéis
+      Solares§r do IC2.
+    tasks:
+      - get: IC2:blockGenerator:3 x7
+    rewards:
+      - xp: 3
+      - item: IC2:itemPartCircuit x4
+
+  - id: varetas_uranio
+    title: "Barras de Urânio para o Enriquecedor"
+    type: normal
+    deps: [boas_vindas]
+    icon: IC2:reactorUraniumSimple:1
+    desc: |
+      O Enriquecedor é montado com §e2 Barras de Combustível de Urânio§r do IC2 (Máquina de
+      Conservas Sólidas: vareta vazia + urânio). §cRadioativas§r — use o Traje Hazmat ao
+      carregá-las.
+    tasks:
+      - get: IC2:reactorUraniumSimple:* x2
+    rewards:
+      - xp: 2
+      - item: IC2:itemFuelRod x4
+
+  - id: vidro_reforcado
+    title: "Vidro Reforçado"
+    type: normal
+    deps: [boas_vindas]
+    icon: IC2:blockAlloyGlass
+    desc: |
+      Cada Urânio Irradiante + 1 §eVidro Reforçado§r do IC2 rende 2 Superfícies de Vidro
+      Irradiante. Você vai querer uns §e4 Vidros Reforçados§r para começar (vidro + Liga
+      Avançada na bancada).
+    tasks:
+      - get: IC2:blockAlloyGlass x4
+    rewards:
+      - xp: 2
+      - item: minecraft:glass x16
+
+  - id: refletor_neutrons
+    title: "Refletor de Nêutrons"
+    type: normal
+    deps: [boas_vindas]
+    icon: IC2:reactorReflector:1
+    desc: |
+      O Núcleo do Transformador Molecular tem um §eRefletor de Nêutrons§r do IC2 no centro
+      (cobre, estanho, pó de carvão). Qualquer durabilidade serve.
+    tasks:
+      - get: IC2:reactorReflector:*
+    rewards:
+      - xp: 2
+      - item: IC2:itemPlates x4
+
+  - id: carcacas_avancadas
+    title: "Quatro Carcaças Avançadas"
+    type: normal
+    deps: [boas_vindas]
+    icon: IC2:blockMachine:12
+    desc: |
+      O Transformador Molecular leva §e4 Carcaças da Máquina Avançada§r (Liga Avançada, Placa
+      de Carbono e Placas de Ferro Enriquecido) e o Enriquecedor leva mais uma. Junte §e5§r.
+    tasks:
+      - get: IC2:blockMachine:12 x5
+    rewards:
+      - xp: 3
+      - item: IC2:itemPartAlloy x4
+
+  - id: transformadores_ev
+    title: "Dois Transformadores EV"
+    type: normal
+    deps: [boas_vindas]
+    icon: IC2:blockElectric:6
+    desc: |
+      Os §e2 Transformadores EV§r do IC2 completam a receita do Transformador Molecular. Eles
+      também são o ponto de partida dos transformadores do IU (UMV, UHV, UEV...) no Volume II.
+    tasks:
+      - get: IC2:blockElectric:6 x2
+    rewards:
+      - xp: 3
+      - item: IC2:itemPartCircuitAdv x2
+
+  # ======================================================================
+  # EXTRAS
+  # ======================================================================
+  - id: aquecedor_liquido
+    title: "Aquecedor de Líquido"
+    type: optional
+    deps: [aquecedor, vanadio]
+    icon: industrialupgrade:BlockBaseMachine4:6
+    desc: |
+      Prefere economizar EU? O §eLiquid Heater§r (Trocador de Calor Líquido do IC2, 6 Placas
+      Densas de Tungstênio e 2 Placas de Vanádio) aquece queimando §clava§r do tanque interno
+      (cabe 12 000 mB). Ligue uma Bomba num lago de lava e esqueça o termômetro.
+    tasks:
+      - get: industrialupgrade:BlockBaseMachine4:6
+    rewards:
+      - loot: comum
+
+  - id: bolsa_avancada
+    title: "Bolsa Avançada"
+    type: optional
+    deps: [bolsa]
+    icon: industrialupgrade:adv_iu_bags:1
+    desc: |
+      A Bolsa no centro, Placas de Carbono em volta e uma Bateria Reutilizável em cima =
+      §eAdvanced Bag§r, com 45 espaços.
+    tasks:
+      - get: industrialupgrade:adv_iu_bags:*
+    rewards:
+      - loot: comum
+
+  - id: iridio_molecular
+    title: "Irídio Sem Mina"
+    type: optional
+    deps: [transformador_molecular, espinelio]
+    icon: industrialupgrade:iuingot:17
+    desc: |
+      Acabou o minério de irídio? No Transformador Molecular, §e1 Lingote de Espinélio§r vira
+      §e1 Lingote de Irídio§r (2,5 milhões de EU) — e daí, Núcleos Avançados à vontade.
+      Mostre §e4 Lingotes de Irídio§r.
+    tasks:
+      - get: ore:ingotIridium x4
+    rewards:
+      - loot: incomum
+
+  - id: extrusora_melhorada
+    title: "Extrusora Melhorada"
+    type: optional
+    deps: [macerador_melhorado, extrusora]
+    icon: industrialupgrade:machines_base2:5
+    desc: |
+      Receita padrão das Melhoradas com a Extrusora no centro: duas varetas de uma vez. Você
+      vai precisar de MUITAS varetas para os vidros dos painéis.
+    tasks:
+      - get: industrialupgrade:machines_base2:5
+    rewards:
+      - loot: comum
+
+  - id: cortadora_melhorada
+    title: "Cortadora Melhorada"
+    type: optional
+    deps: [macerador_melhorado, cortadora]
+    icon: industrialupgrade:machines_base2:9
+    desc: |
+      Receita padrão das Melhoradas com a Cortadora no centro: invólucros em dobro.
+    tasks:
+      - get: industrialupgrade:machines_base2:9
+    rewards:
+      - loot: comum
+
+  - id: calaverita
+    title: "Calaverita"
+    type: optional
+    deps: [separador_minerais]
+    icon: industrialupgrade:HeavyOre:1
+    desc: |
+      A §eCalaverita§r é o minério pesado mais cobiçado: no Separador de Minerais (3000 graus)
+      ela rende §eminério de platina§r, minério de ouro e minério de cobre. Traga uma.
+    tasks:
+      - get: industrialupgrade:HeavyOre:1
+    rewards:
+      - loot: comum
+
+  - id: galena
+    title: "Galena"
+    type: optional
+    deps: [separador_minerais]
+    icon: industrialupgrade:HeavyOre:2
+    desc: |
+      A §eGalena§r precisa de 5000 graus (o máximo do Aquecedor) e rende §eminério de prata§r e
+      minério de chumbo. Traga uma.
+    tasks:
+      - get: industrialupgrade:HeavyOre:2
+    rewards:
+      - loot: comum
+
+  - id: uraninita
+    title: "Uraninita"
+    type: optional
+    deps: [separador_minerais]
+    icon: industrialupgrade:HeavyOre:6
+    desc: |
+      A §eUraninita§r (4500 graus) rende §eminério de urânio§r do IC2 e §eminério de tório§r —
+      urânio para o Enriquecedor e tório para o Gerador de Energia Solar de uma vez só. Traga
+      uma.
+    tasks:
+      - get: industrialupgrade:HeavyOre:6
+    rewards:
+      - loot: comum

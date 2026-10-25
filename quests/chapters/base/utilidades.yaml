@@ -1,0 +1,1821 @@
+chapter:
+  id: utilidades
+  title: "Utilidades da Base"
+  prefix: ""
+  color: "§a"
+  order: 110
+  icon: IronChest:BlockIronChest
+  desc: |
+    §aO Volume do Conforto.§r Baús de ferro, gavetas, baús do Fim, Waystones, mochilas
+    com poderes, fornalhas melhores, rádios, telas e tubos universais — tudo o que deixa
+    a base organizada e a vida mais fácil.
+
+quests:
+  # ======================================================================
+  # ABERTURA E INTERFACE
+  # ======================================================================
+  - id: volume_conforto
+    title: "O Volume do Conforto"
+    type: info
+    icon: minecraft:chest
+    desc: |
+      Toda grande obra precisa de uma bancada arrumada, Herói. (A minha está um caos, mas
+      eu sou um livro, então tenho desculpa.)
+
+      Este Volume reúne as §eutilidades§r do pack: armazenamento (baús de ferro, gavetas,
+      baús do Fim), viagem (Waystones), mochilas, fornalhas melhores e as invenções da
+      §6Rede Akashic§r: rádios FM, alto-falantes, telas web e tubos universais.
+
+      Nada aqui é obrigatório para progredir — mas tudo economiza tempo. Comece por onde
+      a sua base estiver doendo mais!
+    tasks:
+      - check
+    rewards:
+      - xp: 1
+
+  - link: prologo:tomo_akashico
+
+  - id: tomo_lembrete
+    title: "Lembrete do Tomo"
+    type: info
+    deps: [volume_conforto]
+    icon: akashictome:tome
+    desc: |
+      Lembra do §eTomo Akáshico§r do Prólogo? Ele guarda todos os manuais de mods num livro
+      só. Conforme você fabricar manuais (Thaumonomicon, Lexica Botania, guias de máquinas,
+      o Livro-Guia do Armourer's Workshop...), junte-os ao tomo na bancada.
+
+      Para tirar um manual de volta, segure o tomo e troque de página; para separar, use a
+      opção do próprio tomo. Um inventário a menos de bagunça!
+    tasks:
+      - check
+    rewards:
+      - item: minecraft:book x2
+      - xp: 1
+
+  - id: interface_inventario
+    title: "Inventário Esperto"
+    type: info
+    deps: [volume_conforto]
+    icon: minecraft:chest
+    desc: |
+      Algumas ajudas de interface que já estão no pack:
+
+      §e• Bogo Sorter:§r botão de organizar em inventários e baús; §ereposição
+      automática§r da ferramenta que quebrou; §eCtrl + botão do meio§r fixa um slot
+      (pin) para ele não ser mexido.
+      §e• Inventory Tweaks:§r também organiza e repõe itens (veja as teclas em
+      Opções → Controles).
+      §e• Mão secundária (Backhand):§r tecla §eF§r troca o item da mão secundária.
+      §e• Armadura Cosmética:§r slots extras para usar a aparência de outra armadura.
+    tasks:
+      - check
+    rewards:
+      - xp: 1
+
+  - id: waila_info
+    title: "O Que É Isso?"
+    type: info
+    deps: [volume_conforto]
+    icon: minecraft:ender_eye
+    desc: |
+      Olhou para um bloco e apareceu uma caixinha no topo da tela com o nome dele e o mod?
+      Esse é o §eWAILA§r (com plugins). Ele mostra o progresso de máquinas, energia,
+      fluidos, o crescimento de plantas e até qual §eferramenta§r quebra o bloco (Waila
+      Harvestability: verde = sua ferramenta serve, vermelho = não serve).
+
+      É a lupa mais útil do jogo. Junto com o NEI (R/U), você nunca fica sem resposta.
+    tasks:
+      - check
+    rewards:
+      - xp: 1
+
+  - id: journeymap_info
+    title: "JourneyMap"
+    type: info
+    deps: [volume_conforto]
+    icon: minecraft:filled_map
+    desc: |
+      O §eJourneyMap§r desenha o mundo sozinho enquanto você explora.
+
+      §e• J:§r abre o mapa completo (modos de dia, noite, cavernas e relevo).
+      §e• B:§r cria um marcador (waypoint) onde você está.
+      §e• Minimapa§r no canto; dá para trocar o tamanho e a forma nas opções.
+      §a• Integração:§r toda §eWaystone§r que você ativa vira um marcador automático no
+      JourneyMap!
+    tasks:
+      - check
+    rewards:
+      - xp: 1
+
+  - id: morpheus_info
+    title: "Sono Compartilhado"
+    type: info
+    deps: [volume_conforto]
+    icon: minecraft:bed
+    desc: |
+      Num servidor, a noite só passa se dormir gente suficiente. O §eMorpheus§r cuida disso:
+      quando §e50% dos jogadores§r da dimensão estiverem na cama, amanhece para todo mundo.
+
+      O chat avisa quem foi dormir e quem saiu da cama. Quem está minerando lá embaixo
+      também conta no cálculo, então combine com o grupo! (E que a gente acorde com
+      "Bom dia a todos!", como manda o Morpheus.)
+    tasks:
+      - check
+    rewards:
+      - xp: 1
+
+  - id: voz_info
+    title: "Voz de Proximidade"
+    type: info
+    deps: [volume_conforto]
+    icon: minecraft:noteblock
+    desc: |
+      O servidor tem o §eAkashic Voice§r: chat de voz §eespacial§r — quem está perto ouve
+      você mais alto, quem está longe ouve baixinho (ou nada). Paredes e distância fazem
+      diferença, como na vida real.
+
+      Configure o microfone e as teclas em Opções → Controles. Combinar uma expedição em
+      grupo nunca foi tão fácil (nem tão barulhento).
+    tasks:
+      - check
+    rewards:
+      - xp: 1
+
+  # ======================================================================
+  # BAÚS DE FERRO (IRON CHESTS)
+  # ======================================================================
+  - id: bau_ferro
+    title: "Baú de Ferro"
+    type: main
+    deps: [volume_conforto]
+    icon: IronChest:BlockIronChest
+    desc: |
+      Um baú comum guarda 27 pilhas. Um §eBaú de Ferro§r (8 lingotes de ferro em volta de um
+      baú de madeira) guarda §e54§r — o dobro, no mesmo bloco.
+
+      Os baús de ferro seguem uma escada: §eCobre§r (45) → §eFerro§r (54) → §eAço§r (72) →
+      §eOuro§r (81) → §eDiamante§r (108) → §eCristal§r ou §eObsidiana§r → §eNetherita§r.
+      Fabrique §eum baú de ferro§r.
+    tasks:
+      - get: IronChest:BlockIronChest
+    rewards:
+      - xp: 3
+      - choice: [minecraft:iron_ingot x8, minecraft:chest x2, minecraft:gold_ingot x4]
+
+  - id: bau_cobre
+    title: "Baú de Cobre"
+    type: normal
+    deps: [bau_ferro]
+    icon: IronChest:BlockIronChest:3
+    desc: |
+      Sobrou cobre? Oito lingotes de cobre (de qualquer mod) em volta de um baú fazem o
+      §eBaú de Cobre§r (45 espaços). Ele também pode subir para ferro ou aço depois.
+
+      Fabrique §eum baú de cobre§r.
+    tasks:
+      - get: IronChest:BlockIronChest:3
+    rewards:
+      - item: ore:ingotCopper x4
+      - xp: 1
+
+  - id: bau_aco
+    title: "Baú de Aço"
+    type: optional
+    deps: [bau_cobre]
+    icon: IronChest:BlockIronChest:4
+    desc: |
+      Neste pack, o degrau intermediário é de §eaço§r (72 espaços): lingotes de aço (de
+      qualquer mod: IC2, Mekanism, Immersive, Tinkers...) em volta de um baú de cobre ou
+      de ferro. §7O jogo chama esse baú de "Baú de Prata" na tradução, mas a receita é de
+      aço.§r
+
+      Fabrique §eum baú de aço§r.
+    tasks:
+      - get: IronChest:BlockIronChest:4
+    rewards:
+      - loot: comum
+
+  - id: bau_ouro
+    title: "Baú de Ouro"
+    type: normal
+    deps: [bau_ferro]
+    icon: IronChest:BlockIronChest:1
+    desc: |
+      Oito lingotes de ouro em volta de um baú de ferro: §eBaú de Ouro§r, com §e81§r
+      espaços. (Também dá para chegar nele a partir do baú de aço, com ouro e vidro.)
+
+      Fabrique §eum baú de ouro§r.
+    tasks:
+      - get: IronChest:BlockIronChest:1
+    rewards:
+      - item: minecraft:gold_ingot x4
+      - xp: 2
+
+  - id: bau_diamante
+    title: "Baú de Diamante"
+    type: main
+    deps: [bau_ouro]
+    icon: IronChest:BlockIronChest:2
+    desc: |
+      Vidro e três diamantes em volta de um baú de ouro: §eBaú de Diamante§r, com §e108§r
+      espaços. É o "baú definitivo" de muitas bases.
+
+      Fabrique §eum baú de diamante§r.
+    tasks:
+      - get: IronChest:BlockIronChest:2
+    rewards:
+      - xp: 3
+      - choice: [minecraft:glass x16, minecraft:gold_ingot x8, minecraft:obsidian x8]
+
+  - id: bau_cristal
+    title: "Baú de Cristal"
+    type: optional
+    deps: [bau_diamante]
+    icon: IronChest:BlockIronChest:5
+    desc: |
+      Oito vidros em volta de um baú de diamante (ou de obsidiana): §eBaú de Cristal§r. Mesmo
+      espaço do diamante, mas §etransparente§r: você vê os itens principais girando lá
+      dentro sem abrir.
+
+      Fabrique §eum baú de cristal§r. Vitrine de colecionador!
+    tasks:
+      - get: IronChest:BlockIronChest:5
+    rewards:
+      - loot: comum
+
+  - id: bau_obsidiana
+    title: "Baú de Obsidiana"
+    type: normal
+    deps: [bau_diamante]
+    icon: IronChest:BlockIronChest:6
+    desc: |
+      Oito obsidianas em volta de um baú de diamante: §eBaú de Obsidiana§r. Mesmo espaço,
+      mas §eresistente a explosões§r — creeper nenhum leva seus tesouros.
+
+      Fabrique §eum baú de obsidiana§r.
+    tasks:
+      - get: IronChest:BlockIronChest:6
+    rewards:
+      - item: minecraft:obsidian x4
+      - xp: 2
+
+  - id: bau_netherita
+    title: "Baú de Netherita"
+    type: optional
+    deps: [bau_obsidiana, etfuturum:lingote_netherita]
+    icon: IronChest:BlockIronChest:8
+    desc: |
+      Obsidiana e dois §eLingotes de Netherita§r em volta de um baú de obsidiana: o §eBaú de
+      Netherita§r, o topo da escada dos baús de ferro.
+
+      Fabrique §eum§r. (Os lingotes vêm do capítulo "Ecos do Futuro".)
+    tasks:
+      - get: IronChest:BlockIronChest:8
+    rewards:
+      - loot: comum
+
+  - id: aprimoramentos_bau
+    title: "Aprimoramentos sem Esvaziar"
+    type: normal
+    deps: [bau_ferro]
+    icon: IronChest:woodIronUpgrade
+    desc: |
+      Esvaziar um baú cheio para trocar de tier? Nunca mais! Os §eAprimoramentos de Baú§r
+      transformam o baú §eno lugar, com tudo dentro§r: agache e clique com o aprimoramento.
+
+      Fabrique o §eAprimoramento de Madeira para Ferro§r (8 ferros em volta de uma tábua) e
+      o §ede Ferro para Ouro§r.
+    tasks:
+      - get: [IronChest:woodIronUpgrade, IronChest:ironGoldUpgrade]
+    rewards:
+      - item: minecraft:iron_ingot x8
+      - xp: 2
+
+  - id: bau_terra
+    title: "BaúDeSujeira 9000!"
+    type: optional
+    deps: [bau_ferro]
+    icon: IronChest:BlockIronChest:7
+    desc: |
+      Oito blocos de terra em volta de um baú. O resultado? O §eBaúDeSujeira 9000!§r, com
+      exatamente §eum espaço§r. Ele ainda vem com um livrinho de instruções muito sério.
+
+      Fabrique um. Por quê? Porque sim. A Akasha aprova piadas de mod.
+    tasks:
+      - get: IronChest:BlockIronChest:7
+    rewards:
+      - loot: comum
+
+  # ======================================================================
+  # STORAGE DRAWERS
+  # ======================================================================
+  - id: gaveta
+    title: "A Primeira Gaveta"
+    type: main
+    deps: [volume_conforto]
+    icon: StorageDrawers:fullDrawers1
+    desc: |
+      Um baú guarda de tudo um pouco. Uma §eGaveta§r guarda §emuito de uma coisa só§r: a
+      gaveta 1x1 (tábuas em volta de um baú) armazena §e32 pilhas§r do mesmo item, e você
+      vê o item e a quantidade na frente.
+
+      §e• Clique:§r coloca o item da mão. §e• Clique duplo:§r coloca todos daquele tipo do
+      inventário. §e• Soco:§r tira uma pilha (agachado, um item).
+
+      Fabrique §euma gaveta§r de qualquer madeira.
+    tasks:
+      - get: ore:drawerBasic
+    rewards:
+      - xp: 3
+      - choice: [minecraft:planks x32, minecraft:chest x2, minecraft:log x8]
+
+  - id: gavetas_multiplas
+    title: "Gavetas 2x2"
+    type: normal
+    deps: [gaveta]
+    icon: StorageDrawers:fullDrawers4
+    desc: |
+      Gavetas também vêm em §e1x2§r e §e2x2§r (cada compartimento guarda menos, mas são
+      vários itens num bloco só) e em versão §ecompacta§r (meia profundidade).
+
+      Fabrique §euma gaveta 2x2§r e §euma gaveta compacta 2x2§r (com lajes).
+    tasks:
+      - get: [StorageDrawers:fullDrawers4:*, StorageDrawers:halfDrawers4:*]
+    rewards:
+      - item: minecraft:chest x2
+      - xp: 2
+
+  - id: gaveta_compactadora
+    title: "Gaveta Compactadora"
+    type: main
+    deps: [gaveta]
+    icon: StorageDrawers:compDrawers
+    desc: |
+      Pedra, pistões, ferro e uma gaveta: §eGaveta Compactadora§r. Coloque lingotes de
+      ferro e ela mostra §eblocos, lingotes e pepitas§r ao mesmo tempo, convertendo
+      sozinha. Funciona com qualquer coisa que tenha versão 3x3 (redstone, lápis, carvão...).
+
+      Fabrique uma. É a melhor amiga de quem minera muito.
+    tasks:
+      - get: StorageDrawers:compDrawers
+    rewards:
+      - xp: 3
+      - choice: [minecraft:piston x2, minecraft:iron_ingot x8, minecraft:stone x32]
+
+  - id: controlador_gavetas
+    title: "Controlador de Gavetas"
+    type: main
+    deps: [gaveta_compactadora, mineracao_diamante_link]
+    icon: StorageDrawers:controller
+    desc: |
+      Um §eControlador de Gavetas§r (pedra, comparadores, uma gaveta e um diamante) junta
+      todas as gavetas encostadas (até §e12 blocos§r de distância, ligadas entre si) numa
+      rede só. Clique nele com itens e eles vão para a gaveta certa sozinhos!
+
+      Funis e tubos ligados ao controlador também enxergam a rede inteira. Fabrique um.
+    tasks:
+      - get: StorageDrawers:controller
+    rewards:
+      - xp: 3
+      - choice: [minecraft:comparator x2, minecraft:diamond, minecraft:hopper x2]
+
+  - id: mineracao_diamante_link
+    title: "Diamantes para a Base"
+    type: info
+    deps: [gaveta]
+    icon: minecraft:diamond
+    desc: |
+      Algumas utilidades deste Volume pedem §ediamantes§r (controlador de gavetas, baú de
+      diamante, Better Furnaces de diamante...). Se você ainda não minerou nenhum, o
+      capítulo §aPrimeiros Passos§r ensina onde e como encontrar.
+
+      Com 2 ou 3 diamantes no bolso, já dá para fazer muita coisa aqui.
+    tasks:
+      - check
+    rewards:
+      - xp: 1
+
+  - id: controlador_escravo
+    title: "Controlador Escravo"
+    type: optional
+    deps: [controlador_gavetas]
+    icon: StorageDrawers:controllerSlave
+    desc: |
+      Igual ao controlador, mas com ouro no lugar do diamante: o §eControlador Escravo§r
+      (Controller Slave) é um "ponto de acesso" extra da mesma rede — útil para colocar um
+      funil ou tubo em outro lado da parede de gavetas.
+
+      Fabrique um.
+    tasks:
+      - get: StorageDrawers:controllerSlave
+    rewards:
+      - loot: comum
+
+  - id: acabamento_gaveta
+    title: "Acabamento e Moldura"
+    type: optional
+    deps: [gaveta]
+    icon: StorageDrawers:framingTable
+    desc: |
+      §eAcabamentos§r (Trim) preenchem os vãos de uma parede de gavetas e também conectam a
+      rede do controlador. Seis deles fazem a §eMesa de Moldura§r (Framing Table), que
+      cobre gavetas "emolduradas" com a madeira (ou bloco) que você quiser.
+
+      Fabrique §euma mesa de moldura§r e §euma gaveta emoldurada§r.
+    tasks:
+      - get: [StorageDrawers:framingTable, StorageDrawers:fullCustom1]
+    rewards:
+      - loot: comum
+
+  - id: molde_aprimoramento
+    title: "Molde de Aprimoramento"
+    type: normal
+    deps: [gaveta]
+    icon: StorageDrawers:upgradeTemplate
+    desc: |
+      Oito gravetos em volta de uma gaveta fazem 2 §eMoldes de Aprimoramento§r (Upgrade
+      Template). Quase todo aprimoramento de gaveta começa com um deles.
+
+      Faça §e4 moldes§r.
+    tasks:
+      - get: StorageDrawers:upgradeTemplate x4
+    rewards:
+      - item: minecraft:stick x16
+      - xp: 1
+
+  - id: aprimoramento_ii
+    title: "Armazenamento II"
+    type: main
+    deps: [molde_aprimoramento]
+    icon: StorageDrawers:upgrade:2
+    desc: |
+      Molde + 4 lingotes de ferro + gravetos = §eAprimoramento de Armazenamento II§r. Clique
+      com ele numa gaveta (ou abra a gaveta e coloque nos slots de aprimoramento) e a
+      capacidade §edobra§r (x2).
+
+      Neste pack os multiplicadores são: §eII = x2, III = x3, IV = x5, V = x8, VI = x13§r
+      (e eles somam: dá para pôr vários na mesma gaveta). Fabrique §eum nível II§r.
+    tasks:
+      - get: StorageDrawers:upgrade:2
+    rewards:
+      - xp: 3
+      - choice: [minecraft:iron_ingot x8, minecraft:gold_ingot x4, StorageDrawers:upgradeTemplate x2]
+
+  - id: aprimoramento_iii_iv
+    title: "Armazenamento III e IV"
+    type: normal
+    deps: [aprimoramento_ii]
+    icon: StorageDrawers:upgrade:4
+    desc: |
+      Com §eouro§r no lugar do ferro: nível III (x3). Com §eobsidiana§r: nível IV (x5).
+
+      Fabrique §eum de cada§r.
+    tasks:
+      - get: [StorageDrawers:upgrade:3, StorageDrawers:upgrade:4]
+    rewards:
+      - item: minecraft:obsidian x4
+      - xp: 2
+
+  - id: aprimoramento_v_vi
+    title: "Armazenamento V e VI"
+    type: normal
+    deps: [aprimoramento_iii_iv]
+    icon: StorageDrawers:upgrade:6
+    desc: |
+      Com §ediamantes§r: nível V (x8). Com §eesmeraldas§r: nível VI (x13). Uma gaveta 1x1
+      com dois níveis VI já é um pequeno armazém!
+
+      Fabrique §eum de cada§r.
+    tasks:
+      - get: [StorageDrawers:upgrade:5, StorageDrawers:upgrade:6]
+    rewards:
+      - item: minecraft:emerald x2
+      - xp: 2
+
+  - id: aprimoramento_status
+    title: "Indicadores de Status"
+    type: optional
+    deps: [molde_aprimoramento]
+    icon: StorageDrawers:upgradeStatus:1
+    desc: |
+      Os §eAprimoramentos de Status§r colocam uma barrinha na frente da gaveta mostrando o
+      quanto ela está cheia. O nível I usa tochas de redstone; o II, comparadores.
+
+      Fabrique §eum nível I§r.
+    tasks:
+      - get: StorageDrawers:upgradeStatus:1
+    rewards:
+      - loot: comum
+
+  - id: aprimoramento_vazio
+    title: "Aprimoramento do Vazio"
+    type: normal
+    deps: [molde_aprimoramento]
+    icon: StorageDrawers:upgradeVoid
+    desc: |
+      Molde, obsidiana e gravetos: §eAprimoramento do Vazio§r. Quando a gaveta enche, ela
+      §edestrói o excesso§r em vez de travar. Perfeito para pedregulho, terra e outras
+      sobras de mineração automática.
+
+      §cCuidado:§r o que sobra some de verdade. Fabrique um.
+    tasks:
+      - get: StorageDrawers:upgradeVoid
+    rewards:
+      - item: minecraft:obsidian x2
+      - xp: 1
+
+  - id: aprimoramento_redstone
+    title: "Gaveta com Sinal"
+    type: optional
+    deps: [molde_aprimoramento]
+    icon: StorageDrawers:upgradeRedstone
+    desc: |
+      O §eAprimoramento de Redstone§r faz a gaveta emitir sinal conforme enche (como um
+      comparador lendo um baú). As versões Max e Min olham para o compartimento mais cheio
+      ou mais vazio.
+
+      Fabrique §eum aprimoramento de redstone§r.
+    tasks:
+      - get: StorageDrawers:upgradeRedstone
+    rewards:
+      - loot: comum
+
+  - id: chave_gaveta
+    title: "A Chave da Gaveta"
+    type: normal
+    deps: [molde_aprimoramento]
+    icon: StorageDrawers:upgradeLock
+    desc: |
+      Clique numa gaveta com a §eChave de Gaveta§r (Drawer Key) e ela fica §etrancada§r para
+      aquele item: mesmo vazia, continua reservada. Ótimo para paredes de gavetas
+      organizadas.
+
+      Variações: §eChave de Ocultação§r (esconde o ícone), §eChave de Quantidade§r (mostra o
+      número) e §eChave Pessoal§r (só o dono mexe). Fabrique §euma chave de gaveta§r.
+    tasks:
+      - get: StorageDrawers:upgradeLock
+    rewards:
+      - item: minecraft:gold_ingot x2
+      - xp: 1
+
+  - id: chave_pessoal
+    title: "Chave Pessoal"
+    type: optional
+    deps: [chave_gaveta]
+    icon: StorageDrawers:personalKey
+    desc: |
+      Chave de gaveta + etiqueta de nome = §eChave Pessoal§r. Use numa gaveta e só você
+      poderá mexer nela. Num servidor com muita gente, vale ouro!
+
+      Fabrique §euma chave pessoal§r e §euma de quantidade§r (chave + livro e pena).
+    tasks:
+      - get: [StorageDrawers:personalKey, StorageDrawers:quantifyKey]
+    rewards:
+      - loot: comum
+
+  - id: fita_embalagem
+    title: "Fita de Embalagem"
+    type: optional
+    deps: [gaveta]
+    icon: StorageDrawers:tape
+    desc: |
+      Papel e bola de slime: §eFita de Embalagem§r (Packing Tape). Use numa gaveta cheia e
+      ela vira um item §ecom tudo dentro§r — mudança de base sem dor de cabeça!
+
+      Fabrique uma fita. (A fita tem poucos usos, faça algumas.)
+    tasks:
+      - get: StorageDrawers:tape
+    rewards:
+      - loot: comum
+
+  - id: gavetas_forestry
+    title: "Gavetas de Madeiras Exóticas"
+    type: info
+    deps: [gaveta]
+    icon: StorageDrawersForestry:fullDrawers1A
+    desc: |
+      O pacote §eStorage Drawers: Forestry§r acrescenta gavetas com as madeiras do Forestry
+      (lariço, teca, ipê, sequoia, ébano...). Elas funcionam igual às outras e todas contam
+      como "gaveta básica" nas receitas.
+
+      §7Obs.: se a receita de uma madeira exótica não aparecer no NEI, use gavetas comuns e
+      a Mesa de Moldura para dar o visual que quiser.§r
+    tasks:
+      - check
+    rewards:
+      - xp: 1
+
+  - id: parede_gavetas
+    title: "A Parede de Gavetas"
+    type: milestone
+    deps: [controlador_gavetas, aprimoramento_v_vi, chave_gaveta, gavetas_multiplas, aprimoramento_vazio]
+    icon: StorageDrawers:fullDrawers4
+    banner: "A Parede de Gavetas!"
+    subtitle: "Cada coisa no seu lugar"
+    desc: |
+      Uma parede inteira de gavetas, ligadas a um controlador, com aprimoramentos, chaves e
+      um vazio comendo o excesso. Isso, Herói, é a sensação mais satisfatória do mundo
+      comum. Eu fico olhando os números subirem...
+
+      É também o primeiro passo para redes de armazenamento de verdade: lá no Volume do
+      §bApplied Energistics 2§r, tudo isso vira digital. Mas uma parede de gavetas bem
+      feita tem um charme que nenhum disco tem.
+
+      Toma um kit para expandir a parede!
+    tasks:
+      - check
+    rewards:
+      - kit:
+          name: "Kit do Organizador"
+          items: ["StorageDrawers:upgradeTemplate x4", "StorageDrawers:upgrade:2 x2", "StorageDrawers:trim x8", "minecraft:chest x4"]
+      - loot: incomum
+      - xp: 5
+
+  # ======================================================================
+  # ENDERSTORAGE
+  # ======================================================================
+  - id: bau_do_fim
+    title: "O Baú do Fim"
+    type: main
+    deps: [volume_conforto]
+    icon: EnderStorage:enderChest
+    desc: |
+      Varas de blaze, obsidiana, um baú, lã branca e uma pérola do fim: §eBaú do Fim§r do
+      EnderStorage. §e(O Baú do Fim vanilla não pode ser colocado neste pack.)§r
+
+      A tampa tem §etrês faixas de cor§r: clique em cada uma com §elã§r para escolher a
+      cor. Todo Baú do Fim com a §emesma combinação§r compartilha o mesmo inventário (27
+      espaços) — em qualquer lugar, em qualquer dimensão!
+
+      Fabrique um. Faça dois, e você terá um "teletransporte de itens" entre a mina e a base.
+    tasks:
+      - get: EnderStorage:enderChest
+    rewards:
+      - xp: 3
+      - choice: [minecraft:wool:* x8, minecraft:ender_pearl x2, minecraft:obsidian x8]
+
+  - id: bau_do_fim_pessoal
+    title: "Frequência Pessoal"
+    type: info
+    deps: [bau_do_fim]
+    icon: minecraft:diamond
+    desc: |
+      Num servidor, qualquer pessoa que acertar as mesmas três cores acessa o mesmo baú.
+      Para evitar visitas indesejadas, clique no "botão" da tampa com um §ediamante§r: o
+      baú vira §epessoal§r — só você abre aquela combinação.
+
+      O diamante fica preso no baú (ele volta se o baú for quebrado). Use combinações
+      diferentes para cada propósito: "minério", "comida", "fazenda"...
+    tasks:
+      - check
+    rewards:
+      - item: minecraft:diamond
+      - xp: 1
+
+  - id: tanque_do_fim
+    title: "Tanque do Fim"
+    type: normal
+    deps: [bau_do_fim]
+    icon: EnderStorage:enderChest:4096
+    desc: |
+      Mesma receita, mas com um §ecaldeirão§r no lugar do baú: §eTanque do Fim§r. Ele guarda
+      §e256 baldes§r de fluido e também usa as três cores para sincronizar entre tanques.
+
+      Água, lava, combustível... levados para qualquer lugar. Fabrique um.
+    tasks:
+      - get: EnderStorage:enderChest:4096
+    rewards:
+      - item: minecraft:bucket x2
+      - xp: 2
+
+  - id: bolsa_do_fim
+    title: "Bolsa do Fim"
+    type: normal
+    deps: [bau_do_fim]
+    icon: EnderStorage:enderPouch
+    desc: |
+      Couro, pó de blaze, uma pérola e lã: §eBolsa do Fim§r (Ender Pouch). Ela abre §ede
+      qualquer lugar§r o Baú do Fim com as mesmas cores. Para sincronizar, §eagache e
+      clique com a bolsa num Baú do Fim§r: ela copia as cores dele.
+
+      Fabrique uma e sincronize com o seu baú de minério. Inventário cheio nunca mais!
+    tasks:
+      - get: EnderStorage:enderPouch:*
+    rewards:
+      - item: minecraft:blaze_powder x4
+      - xp: 2
+
+  # ======================================================================
+  # WAYSTONES
+  # ======================================================================
+  - id: pedra_de_dobra
+    title: "A Pedra de Dobra"
+    type: main
+    deps: [volume_conforto]
+    icon: waystones:warpStone
+    desc: |
+      Lembra da Waystone do Prólogo? O coração dela é a §ePedra de Dobra§r (Warp Stone):
+      pérolas do fim, corante roxo e uma esmeralda.
+
+      Ela também funciona §esozinha§r: segure e use para abrir a lista de Waystones que você
+      já ativou e viajar até uma delas, de onde estiver. Tem recarga de §e5 minutos§r e
+      também cobra XP pela viagem. Fabrique uma.
+    tasks:
+      - get: waystones:warpStone
+    rewards:
+      - xp: 3
+      - choice: [minecraft:ender_pearl x4, minecraft:emerald x2, minecraft:dye:5 x4]
+
+  - id: custo_viagem
+    title: "O Preço da Viagem"
+    type: info
+    deps: [pedra_de_dobra]
+    icon: minecraft:experience_bottle
+    desc: |
+      Viajar por Waystone custa §enível de XP§r neste servidor:
+
+      §e• Mínimo:§r 5 níveis por viagem.
+      §e• Distância:§r viagens longas custam 1 nível a cada 100 blocos.
+      §e• Outra dimensão:§r 5 níveis.
+      §e• Recarga:§r 5 minutos entre usos da Pedra de Dobra e da Waystone.
+
+      O §ePergaminho de Retorno§r (Return Scroll) leva você à última Waystone ativada; ele
+      também aparece em baús de masmorras. §aDica:§r Waystones marcadas como §eglobais§r
+      aparecem para todos os jogadores.
+    tasks:
+      - check
+    rewards:
+      - item: waystones:warpScroll x2
+      - xp: 1
+
+  - id: waystones_mundo
+    title: "Waystones pelo Mundo"
+    type: info
+    deps: [pedra_de_dobra]
+    icon: waystones:waystone_mossy
+    desc: |
+      Neste pack, Waystones já nascem em vários lugares — ative todas que encontrar!
+
+      §e• Vilas§r (com o nome da vila), §etemplos do deserto e da selva§r,
+      §efortalezas subterrâneas§r e §eo ponto de spawn do mundo§r.
+      §e• Fortalezas do Nether§r: Waystone do Nether.
+      §e• Pilares do Fim§r (end spikes): Waystone do Fim.
+
+      Cada uma ativada vira um marcador no JourneyMap.
+    tasks:
+      - check
+    rewards:
+      - xp: 1
+
+  - id: waystones_variantes
+    title: "Waystones Temáticas"
+    type: optional
+    deps: [pedra_de_dobra]
+    icon: waystones:waystone_stonebrick
+    desc: |
+      Além da Waystone comum, existem versões de §earenito§r, §emusgo§r, §etijolos de
+      pedra§r, §etijolos musgosos§r, §eNether§r (tijolos do Nether) e §eFim§r (pedra do
+      Fim) — todas com a Pedra de Dobra no centro e obsidiana na base.
+
+      Fabrique §euma waystone de tijolos de pedra ou de musgo§r para combinar com a sua base.
+    tasks:
+      - one_of: [waystones:waystone_stonebrick, waystones:waystone_mossy, waystones:waystone_mossy_stonebrick, waystones:waystone_sandstone]
+    rewards:
+      - loot: comum
+
+  - id: waystone_nether
+    title: "Rede Interdimensional"
+    type: optional
+    deps: [waystones_variantes]
+    icon: waystones:waystone_nether
+    desc: |
+      Uma Waystone no Nether e outra no Fim fecham a sua rede interdimensional (aqui as
+      viagens entre dimensões são permitidas, custando 5 níveis extras).
+
+      Fabrique §euma Waystone do Nether§r ou §edo Fim§r.
+    tasks:
+      - one_of: [waystones:waystone_nether, waystones:waystone_end]
+    rewards:
+      - loot: comum
+
+  # ======================================================================
+  # ADVENTURE BACKPACK
+  # ======================================================================
+  - id: mochila_basica
+    title: "De Volta à Mochila"
+    type: main
+    deps: [volume_conforto]
+    icon: adventurebackpack:adventureBackpack
+    desc: |
+      Você fez uma Mochila do Aventureiro no Prólogo (se não fez, a receita pede couro,
+      ouro, um baú, dois §eTanques da Mochila§r e um §eSaco de Dormir§r). Hora de entender
+      tudo que ela faz!
+
+      §e• Vestir:§r segure Shift sobre a mochila para ver as teclas na dica do item; com
+      ela nas costas, a tecla "Abrir Inventário" do mod abre a mochila.
+      §e• Dois tanques§r de fluido, espaço de inventário, slots de ferramenta e uma área
+      de bancada.
+      §e• Ferramentas:§r com uma ferramenta na mão, a tecla indicada + roda do mouse
+      alterna as ferramentas guardadas nos slots de ferramenta.
+
+      Tenha uma mochila padrão com você.
+    tasks:
+      - get: adventurebackpack:adventureBackpack
+    rewards:
+      - xp: 3
+      - choice: [minecraft:leather x8, minecraft:glass x8, minecraft:wool x6]
+
+  - id: componentes_mochila
+    title: "Peças da Mochila"
+    type: normal
+    deps: [mochila_basica]
+    icon: adventurebackpack:backpackComponent:2
+    desc: |
+      Os componentes que montam a mochila também servem para outras coisas:
+
+      §e• Tanque da Mochila§r (vidro e ferro): os tanques de fluido.
+      §e• Saco de Dormir§r (lã e tapetes): durma em qualquer lugar.
+      §e• Bocal da Mangueira§r (ouro, ferro e alavanca): vira a Mangueira.
+
+      Fabrique §eum de cada§r.
+    tasks:
+      - get: [adventurebackpack:backpackComponent:2, adventurebackpack:backpackComponent:1, adventurebackpack:backpackComponent:3]
+    rewards:
+      - item: minecraft:iron_ingot x4
+      - xp: 2
+
+  - id: saco_dormir
+    title: "Dormir Sob as Estrelas"
+    type: normal
+    deps: [mochila_basica]
+    icon: adventurebackpack:backpackComponent:1
+    desc: |
+      Com a mochila vestida, use a tecla de retirar a mochila §esegurando Shift§r (veja a
+      dica do item) e o §eSaco de Dormir§r se abre no chão: você dorme sem precisar de
+      cama, em qualquer acampamento.
+
+      Também dá para colocar a mochila no chão e usar o saco dela. Fabrique um saco de
+      dormir extra para ter sempre à mão.
+    tasks:
+      - get: adventurebackpack:backpackComponent:1
+    rewards:
+      - item: minecraft:wool x3
+      - xp: 1
+
+  - id: mangueira
+    title: "A Mangueira"
+    type: normal
+    deps: [componentes_mochila]
+    icon: adventurebackpack:backpackHose
+    desc: |
+      Bocal + corante verde = §eMangueira§r. Com a mochila vestida, ela liga nos tanques:
+
+      §e• Sugar:§r enche o tanque com fluido de uma fonte ou tanque.
+      §e• Espirrar:§r despeja o fluido.
+      §e• Beber:§r bebe direto do tanque (água, leite, suco de melancia...).
+      A dica do item mostra as teclas para trocar o modo e o tanque ativo.
+      Fabrique uma.
+    tasks:
+      - get: adventurebackpack:backpackHose
+    rewards:
+      - item: minecraft:dye:2 x4
+      - xp: 1
+
+  - id: fogueira
+    title: "A Fogueira do Acampamento"
+    type: optional
+    deps: [mochila_basica]
+    icon: adventurebackpack:blockCampFire
+    desc: |
+      Gravetos, carvão e pedregulho: uma §eFogueira§r de acampamento. Ela ilumina e deixa
+      o acampamento com cara de aventura de verdade. (A opção de renascer na fogueira está
+      desligada neste servidor.)
+
+      Fabrique uma para a próxima expedição.
+    tasks:
+      - get: adventurebackpack:blockCampFire
+    rewards:
+      - loot: comum
+
+  - id: machete
+    title: "Machete"
+    type: normal
+    deps: [mochila_basica]
+    icon: adventurebackpack:machete
+    desc: |
+      Um §eCabo de Machete§r colorido (corantes, ferro e graveto) e dois lingotes de ferro:
+      §eMachete§r. Ela corta folhas, trepadeiras, teias e grama alta muito rápido — e é
+      uma arma decente.
+
+      Selvas nunca mais vão te prender. Fabrique uma.
+    tasks:
+      - get: adventurebackpack:machete
+    rewards:
+      - item: minecraft:iron_ingot x2
+      - xp: 1
+
+  - id: besta_mecanica
+    title: "Besta Mecânica"
+    type: optional
+    deps: [mochila_basica]
+    icon: adventurebackpack:clockworkCrossbow
+    desc: |
+      Arco, flecha, graveto e tábua: a §eBesta Mecânica§r (Clockwork Crossbow), uma arma de
+      disparo para quem gosta de mecanismos. Teste com flechas e compare com o arco!
+
+      Fabrique uma.
+    tasks:
+      - get: adventurebackpack:clockworkCrossbow
+    rewards:
+      - loot: comum
+
+  - id: traje_aventureiro
+    title: "O Traje do Aventureiro"
+    type: optional
+    deps: [mochila_basica]
+    icon: adventurebackpack:adventureHat
+    desc: |
+      Couro, lã e um toque de ouro: §eFedora§r, §eTerno§r e §eCalças do Aventureiro§r. Não é a
+      armadura mais forte do mundo... mas ninguém explora ruínas sem um chapéu desses.
+
+      Fabrique o §etraje completo§r (as três peças).
+    tasks:
+      - get: [adventurebackpack:adventureHat, adventurebackpack:adventureSuit, adventurebackpack:adventurePants]
+    rewards:
+      - loot: comum
+
+  - id: botas_pistao
+    title: "Botas de Pistão"
+    type: normal
+    deps: [mochila_basica]
+    icon: adventurebackpack:pistonBoots
+    desc: |
+      Botas de couro, dois pistões e uma bola de slime: §eBotas de Pistão§r. Neste pack
+      elas fazem você §esubir um bloco sem pular§r (passo automático), correr um pouco mais
+      rápido e pular até §e3 blocos§r.
+
+      Fabrique um par. Escadas? Quem precisa de escadas?
+    tasks:
+      - get: adventurebackpack:pistonBoots
+    rewards:
+      - item: minecraft:slime_ball x2
+      - xp: 2
+
+  - id: jetpack_carvao
+    title: "Jetpack a Carvão"
+    type: normal
+    deps: [componentes_mochila]
+    icon: adventurebackpack:coalJetpack
+    desc: |
+      Pedra, tábuas, um tanque, ouro, ferro e uma fornalha: §eJetpack a Carvão§r. Ele queima
+      combustível sólido para transformar a §eágua§r do tanque esquerdo em §evapor§r no
+      direito — e o vapor te empurra para cima!
+
+      Encha de água, coloque carvão, ligue (veja a tecla na dica do item) e espere esquentar.
+      Fabrique um. §cCuidado com o pouso.§r
+    tasks:
+      - get: adventurebackpack:coalJetpack
+    rewards:
+      - item: minecraft:coal x16
+      - xp: 2
+
+  - id: motor_helices
+    title: "Motor e Hélices"
+    type: normal
+    deps: [componentes_mochila]
+    icon: adventurebackpack:backpackComponent:5
+    desc: |
+      Para voar de verdade, você precisa de um §eMotor Diesel de Dois Cilindros§r (ferro,
+      ouro, pistões, caldeirão, fornalhas e obsidiana) e das §eHélices do Cóptero§r
+      (ferro e cercas).
+
+      Fabrique §eum de cada§r.
+    tasks:
+      - get: [adventurebackpack:backpackComponent:5, adventurebackpack:backpackComponent:6]
+    rewards:
+      - item: minecraft:iron_ingot x6
+      - xp: 2
+
+  - id: mochila_coptero
+    title: "Mochila-Cóptero"
+    type: main
+    deps: [motor_helices, mineracao_diamante_link]
+    icon: adventurebackpack:copterPack
+    desc: |
+      Hélices, tanque, motor, um diamante e mais um pouco: a §eMochila-Cóptero§r! Ela voa
+      queimando §ecombustível líquido§r no tanque.
+
+      Combustíveis aceitos (consumo em parênteses, menor = melhor): biodiesel (1.0),
+      bioetanol (1.5), combustível do BuildCraft (0.8), creosoto (7.0), lava (5.0), óleo
+      (3.0), gasolina de alta octanagem (0.16), nitrocombustível (0.4)... Há modo
+      §eflutuar§r (hover) durante o voo. Fabrique uma.
+    tasks:
+      - get: adventurebackpack:copterPack
+    rewards:
+      - xp: 3
+      - choice: [minecraft:lava_bucket, minecraft:iron_ingot x8, minecraft:diamond]
+
+  - id: bote_inflavel
+    title: "Bote Inflável"
+    type: optional
+    deps: [mochila_basica]
+    icon: adventurebackpack:backpackComponent:7
+    desc: |
+      Lã e areia fazem um §eBote Inflável§r: um bote que cabe no bolso. Coloque na água e
+      reme!
+
+      Fabrique um.
+    tasks:
+      - get: adventurebackpack:backpackComponent:7
+    rewards:
+      - loot: comum
+
+  - id: suco_melancia
+    title: "Suco de Melancia"
+    type: optional
+    deps: [mochila_basica]
+    icon: adventurebackpack:melonJuiceBottle
+    desc: |
+      Fatia de melancia + frasco com água = §eGarrafa de Suco de Melancia§r. Refrescante! (E
+      é exatamente o que a Mochila de Melancia produz sozinha... veja a seção de mochilas
+      especiais.)
+
+      Faça uma garrafa.
+    tasks:
+      - get: adventurebackpack:melonJuiceBottle
+    rewards:
+      - loot: comum
+
+  - id: mochilas_especiais
+    title: "Mochilas com Poderes"
+    type: info
+    deps: [mochila_basica]
+    icon: adventurebackpack:adventureBackpack:22
+    desc: |
+      Uma mochila padrão no centro da bancada, cercada pelos itens certos, ganha uma
+      §enova aparência§r — e algumas ganham §epoderes§r quando vestidas! Existem dezenas de
+      estilos (use R/U no NEI na mochila para ver todas as receitas).
+
+      §dCom poderes:§r Morcego, Lula, Pigman, Dragão, Arco-Íris, Cacto, Melancia, Vaca,
+      Coguvaca, Galinha, Creeper, Jaguatirica, Lobo, Slime, Girassol e Esqueleto. As
+      próximas páginas mostram cada uma.
+
+      §7Algumas não têm receita: Morcego (baús de masmorra e mina), Golem de Ferro (ferreiro
+      da vila), Pigman e Elétrica (por transformação).§r
+    tasks:
+      - check
+    rewards:
+      - xp: 1
+
+  - id: mochila_cacto
+    title: "Mochila de Cacto"
+    type: normal
+    deps: [mochilas_especiais]
+    icon: adventurebackpack:adventureBackpack:17
+    desc: |
+      Cactos, corante verde e areia em volta da mochila: §eMochila de Cacto§r. Na chuva, ela
+      §eenche os tanques de água§r sozinha (vestida ou colocada no chão).
+
+      Água infinita para quem vive viajando. Fabrique uma.
+    tasks:
+      - get: adventurebackpack:adventureBackpack:17
+    rewards:
+      - item: minecraft:cactus x4
+      - xp: 2
+
+  - id: mochila_melancia
+    title: "Mochila de Melancia"
+    type: normal
+    deps: [mochilas_especiais]
+    icon: adventurebackpack:adventureBackpack:42
+    desc: |
+      Fatias, um bloco de melancia e sementes: §eMochila de Melancia§r. Na chuva, ela enche
+      os tanques de §esuco de melancia§r — beba pela mangueira!
+
+      Fabrique uma.
+    tasks:
+      - get: adventurebackpack:adventureBackpack:42
+    rewards:
+      - item: minecraft:melon x8
+      - xp: 2
+
+  - id: mochila_vaca
+    title: "Mochila de Vaca"
+    type: normal
+    deps: [mochilas_especiais]
+    icon: adventurebackpack:adventureBackpack:1
+    desc: |
+      Carne, couro e um balde de leite: §eMochila de Vaca§r. Guarde §etrigo§r nela e,
+      vestida, ela vai §eproduzindo leite§r nos tanques. Leite remove efeitos de poção.
+
+      Fabrique uma. (A §eMochila de Coguvaca§r faz o mesmo com sopa de cogumelos!)
+    tasks:
+      - get: adventurebackpack:adventureBackpack:1
+    rewards:
+      - item: minecraft:wheat x16
+      - xp: 2
+
+  - id: mochila_coguvaca
+    title: "Mochila de Coguvaca"
+    type: optional
+    deps: [mochila_vaca]
+    icon: adventurebackpack:adventureBackpack:45
+    desc: |
+      Sopas, cogumelos e micélio: §eMochila de Coguvaca§r. Como a de vaca, ela consome trigo
+      guardado — mas produz §esopa de cogumelos§r nos tanques. Comida líquida infinita!
+
+      Fabrique uma.
+    tasks:
+      - get: adventurebackpack:adventureBackpack:45
+    rewards:
+      - loot: comum
+
+  - id: mochila_galinha
+    title: "Mochila de Galinha"
+    type: normal
+    deps: [mochilas_especiais]
+    icon: adventurebackpack:adventureBackpack:28
+    desc: |
+      Penas, pepitas de ouro e um ovo: §eMochila de Galinha§r. De tempos em tempos ela...
+      bota um §eovo§r. Ploc! Ovos aparecem no chão atrás de você.
+
+      Fabrique uma. É ridícula e eu amo.
+    tasks:
+      - get: adventurebackpack:adventureBackpack:28
+    rewards:
+      - item: minecraft:egg x8
+      - xp: 2
+
+  - id: mochila_morcego
+    title: "Mochila de Morcego"
+    type: optional
+    deps: [mochilas_especiais]
+    icon: adventurebackpack:adventureBackpack:2
+    desc: |
+      A §eMochila de Morcego§r não tem receita: ela aparece em §ebaús de masmorras e de minas
+      abandonadas§r. Vestida, ela dá §eVisão Noturna§r (ligue/desligue pela tecla de ações
+      da mochila).
+
+      Encontre uma. Cavernas escuras nunca mais!
+    tasks:
+      - get: adventurebackpack:adventureBackpack:2
+    rewards:
+      - loot: comum
+
+  - id: mochila_lula
+    title: "Mochila de Lula"
+    type: normal
+    deps: [mochilas_especiais]
+    icon: adventurebackpack:adventureBackpack:62
+    desc: |
+      Lã azul e bolsas de tinta: §eMochila de Lula§r. Vestida §edentro d'água§r, ela dá
+      §eRespiração Aquática§r (e visão noturna, com a tecla de ações).
+
+      Fabrique uma e explore os oceanos sem pressa.
+    tasks:
+      - get: adventurebackpack:adventureBackpack:62
+    rewards:
+      - item: minecraft:dye x4
+      - xp: 2
+
+  - id: mochila_porco_pigman
+    title: "Mochila de Porco e Pigman"
+    type: optional
+    deps: [mochilas_especiais]
+    icon: adventurebackpack:adventureBackpack:51
+    desc: |
+      A §eMochila de Porco§r (costeletas) só faz "óinc" de vez em quando. Mas se você for
+      §eatingido por um raio§r vestindo ela, ela vira a §eMochila de Pigman§r, que dá
+      §eResistência ao Fogo§r! (Do mesmo jeito, a Mochila de Diamante vira a §eElétrica§r.)
+
+      Arrisque-se numa tempestade e consiga §ea Mochila de Pigman§r. §cRaios doem.§r
+    tasks:
+      - get: adventurebackpack:adventureBackpack:51
+    rewards:
+      - loot: comum
+
+  - id: mochila_dragao
+    title: "Mochila de Dragão"
+    type: optional
+    deps: [mochilas_especiais]
+    icon: adventurebackpack:adventureBackpack:22
+    desc: |
+      Pedra do Fim, obsidiana, pérolas e... um §eOvo do Dragão§r! A §eMochila de Dragão§r dá
+      §eForça§r e §eRegeneração§r (e visão noturna com a tecla de ações). Neste pack o
+      ovo §enão é consumido§r na receita.
+
+      Traga uma depois de vencer o Dragão do Fim (Volume "O Fim").
+    tasks:
+      - get: adventurebackpack:adventureBackpack:22
+    rewards:
+      - loot: comum
+
+  - id: mochila_arco_iris
+    title: "Mochila Arco-Íris"
+    type: optional
+    deps: [mochilas_especiais]
+    icon: adventurebackpack:adventureBackpack:57
+    desc: |
+      Oito corantes e o disco "cat": §eMochila Arco-Íris§r. Ela dá §eVelocidade§r e §eSalto§r;
+      e se você comer uma maçã dourada vestindo ela... bom, prepare-se para o modo NYANCAT.
+
+      Fabrique uma (o disco cai de creepers mortos por flechas de esqueleto).
+    tasks:
+      - get: adventurebackpack:adventureBackpack:57
+    rewards:
+      - loot: comum
+
+  - id: mochila_girassol
+    title: "Mochila de Girassol"
+    type: normal
+    deps: [mochilas_especiais]
+    icon: adventurebackpack:adventureBackpack:63
+    desc: |
+      Oito girassóis em volta da mochila: §eMochila de Girassol§r. De dia, sob o céu aberto,
+      ela §ealimenta você aos poucos§r com a luz do sol. Fotossíntese de aventureiro!
+
+      Fabrique uma.
+    tasks:
+      - get: adventurebackpack:adventureBackpack:63
+    rewards:
+      - item: minecraft:double_plant x4
+      - xp: 2
+
+  - id: mochila_jaguatirica
+    title: "Mochila de Jaguatirica"
+    type: normal
+    deps: [mochilas_especiais]
+    icon: adventurebackpack:adventureBackpack:29
+    desc: |
+      Peixes e lã amarela: §eMochila de Jaguatirica§r. Creepers §efogem§r de quem a veste,
+      do mesmo jeito que fogem de gatos.
+
+      Fabrique uma. Sua base agradece.
+    tasks:
+      - get: adventurebackpack:adventureBackpack:29
+    rewards:
+      - item: minecraft:fish x4
+      - xp: 2
+
+  - id: mochila_lobo
+    title: "Mochila de Lobo"
+    type: optional
+    deps: [mochilas_especiais]
+    icon: adventurebackpack:adventureBackpack:73
+    desc: |
+      Ossos e lã branca: §eMochila de Lobo§r. Lobos por perto §edeixam de ser hostis§r com
+      você — eles reconhecem um membro da matilha.
+
+      Fabrique uma.
+    tasks:
+      - get: adventurebackpack:adventureBackpack:73
+    rewards:
+      - loot: comum
+
+  - id: mochila_slime
+    title: "Mochila de Slime"
+    type: optional
+    deps: [mochilas_especiais]
+    icon: adventurebackpack:adventureBackpack:67
+    desc: |
+      Oito bolas de slime: §eMochila de Slime§r. Ela deixa você um pouco mais rápido e faz
+      barulhinhos de slime pelo caminho. Splosh, splosh.
+
+      Fabrique uma.
+    tasks:
+      - get: adventurebackpack:adventureBackpack:67
+    rewards:
+      - loot: comum
+
+  - id: mochila_creeper
+    title: "Mochila de Creeper"
+    type: optional
+    deps: [mochilas_especiais]
+    icon: adventurebackpack:adventureBackpack:64
+    desc: |
+      Pólvora, uma cabeça de creeper e TNT: §eMochila de Creeper§r. Agache perto de outros
+      jogadores e ela faz o §echiado de um creeper prestes a explodir§r. É só uma
+      pegadinha... na maioria das vezes.
+
+      Fabrique uma (e use com responsabilidade).
+    tasks:
+      - get: adventurebackpack:adventureBackpack:64
+    rewards:
+      - loot: comum
+
+  - id: mochila_esqueleto
+    title: "Mochila de Esqueleto"
+    type: optional
+    deps: [mochilas_especiais]
+    icon: adventurebackpack:adventureBackpack:65
+    desc: |
+      Ossos, uma caveira, arcos e uma flecha: §eMochila de Esqueleto§r. Com ela vestida, o
+      seu arco §eusa as flechas guardadas dentro da mochila§r — liberando espaço no
+      inventário.
+
+      Fabrique uma, arqueiro.
+    tasks:
+      - get: adventurebackpack:adventureBackpack:65
+    rewards:
+      - loot: comum
+
+  - id: mochila_golem
+    title: "Mochila de Golem de Ferro"
+    type: optional
+    deps: [mochilas_especiais]
+    icon: adventurebackpack:adventureBackpack:11
+    desc: |
+      Essa não se fabrica: a §eMochila de Golem de Ferro§r só aparece nos §ebaús do ferreiro
+      das vilas§r. É puramente estética, mas é raríssima.
+
+      Encontre uma. Prova de que você saqueou muitas vilas (com respeito, eu espero).
+    tasks:
+      - get: adventurebackpack:adventureBackpack:11
+    rewards:
+      - loot: comum
+
+  - id: mochilas_estilo
+    title: "Mochila de Estilo"
+    type: normal
+    deps: [mochilas_especiais]
+    icon: adventurebackpack:adventureBackpack:4
+    desc: |
+      Nem toda mochila precisa de poder: há estilos de Blaze, Estante, Baú, Diamante, Ouro,
+      Esmeralda, Fim, Nether, Overworld, Quartzo, Abóbora, Bolo, Biscoito, cores de lã e
+      muito mais. Escolha a que combina com você!
+
+      Fabrique §equalquer uma destas§r: Blaze, Estante de Livros, Fim, Nether, Overworld ou
+      Ouro.
+    tasks:
+      - one_of: [adventurebackpack:adventureBackpack:4, adventurebackpack:adventureBackpack:15, adventurebackpack:adventureBackpack:27, adventurebackpack:adventureBackpack:46, adventurebackpack:adventureBackpack:50, adventurebackpack:adventureBackpack:9]
+    rewards:
+      - item: minecraft:leather x4
+      - xp: 1
+
+  - id: mestre_mochileiro
+    title: "Mestre Mochileiro"
+    type: milestone
+    deps: [mochila_coptero, jetpack_carvao, botas_pistao, mangueira, mochila_cacto, mochila_vaca, mochila_lula, mochila_jaguatirica]
+    icon: adventurebackpack:copterPack
+    banner: "Mestre Mochileiro!"
+    subtitle: "Voar, nadar, beber e nunca ficar sem espaço"
+    desc: |
+      Cóptero, jetpack, botas de pistão, mangueira e mochilas com poderes para cada
+      ocasião. Você transformou uma bolsa de couro num laboratório de aventura!
+
+      Agora qualquer expedição fica mais longa e mais segura: água infinita, leite, visão
+      no escuro, respiração debaixo d'água e creepers fugindo de você. Eu adoraria
+      viajar dentro de uma dessas mochilas... ah, espera, eu já viajo dentro do seu
+      inventário. ♥
+
+      Toma, para a próxima viagem.
+    tasks:
+      - check
+    rewards:
+      - kit:
+          name: "Kit do Mochileiro"
+          items: ["minecraft:lava_bucket", "minecraft:coal x32", "minecraft:cooked_beef x16", "minecraft:leather x8"]
+      - loot: incomum
+      - xp: 5
+
+  # ======================================================================
+  # BETTER FURNACES
+  # ======================================================================
+  - id: fornalha_ferro
+    title: "Fornalha de Ferro"
+    type: main
+    deps: [volume_conforto]
+    icon: FLabsBF:flabs.bf
+    desc: |
+      Oito lingotes de ferro em volta de uma fornalha: §eFornalha de Ferro§r (Better
+      Furnaces). Ela funde mais rápido que a comum e aceita §eaprimoramentos§r em slots
+      próprios.
+
+      A escada continua: §eOuro§r → §eDiamante§r → §eInferno§r (Hell) → §eExtrema§r. Cada
+      nível acelera a fundição. Fabrique §euma fornalha de ferro§r.
+    tasks:
+      - get: FLabsBF:flabs.bf
+    rewards:
+      - xp: 3
+      - choice: [minecraft:coal x16, minecraft:iron_ingot x8, minecraft:coal_block x2]
+
+  - id: fornalha_ouro
+    title: "Fornalha de Ouro"
+    type: normal
+    deps: [fornalha_ferro]
+    icon: FLabsBF:flabs.bf:1
+    desc: |
+      Oito lingotes de ouro em volta da fornalha de ferro: §eFornalha de Ouro§r, mais rápida.
+
+      Fabrique uma.
+    tasks:
+      - get: FLabsBF:flabs.bf:1
+    rewards:
+      - item: minecraft:gold_ingot x4
+      - xp: 2
+
+  - id: fornalha_diamante
+    title: "Fornalha de Diamante"
+    type: normal
+    deps: [fornalha_ouro, mineracao_diamante_link]
+    icon: FLabsBF:flabs.bf:2
+    desc: |
+      Vidro e quatro diamantes em volta da fornalha de ouro: §eFornalha de Diamante§r.
+
+      Fabrique uma.
+    tasks:
+      - get: FLabsBF:flabs.bf:2
+    rewards:
+      - item: minecraft:coal_block x2
+      - xp: 2
+
+  - id: fornalha_inferno
+    title: "Fornalha Infernal"
+    type: optional
+    deps: [fornalha_diamante]
+    icon: FLabsBF:flabs.bf:3
+    desc: |
+      Creme de magma, blocos de diamante, tijolos do Nether e TNT em volta da fornalha de
+      diamante: §eFornalha Infernal§r (Hell Furnace). Cara, quente e muito veloz.
+
+      Fabrique uma.
+    tasks:
+      - get: FLabsBF:flabs.bf:3
+    rewards:
+      - loot: comum
+
+  - id: fornalha_extrema
+    title: "Fornalha Extrema"
+    type: optional
+    deps: [fornalha_inferno]
+    icon: FLabsBF:flabs.bf:4
+    desc: |
+      Uma §eEstrela do Nether§r, olhos do fim, pedra do Fim e tijolos do Nether em volta da
+      fornalha infernal: §eFornalha Extrema§r, a mais rápida de todas.
+
+      Fabrique uma quando a estrela aparecer (Volume do Nether).
+    tasks:
+      - get: FLabsBF:flabs.bf:4
+    rewards:
+      - loot: comum
+
+  - id: upgrade_minerio
+    title: "Processamento de Minério"
+    type: main
+    deps: [fornalha_ferro]
+    icon: FLabsBF:flabs.upore
+    desc: |
+      Pedra, sílex e um pistão: §eAprimoramento de Processamento de Minério§r. Na fornalha,
+      ele faz cada minério render §eo dobro§r de lingotes. Ele tem durabilidade e se gasta
+      com o uso.
+
+      A versão §eAvançada§r (diamantes, pistões e obsidiana) dura muito mais. Fabrique §eum
+      aprimoramento de minério§r.
+    tasks:
+      - get: FLabsBF:flabs.upore
+    rewards:
+      - xp: 3
+      - choice: [minecraft:flint x8, minecraft:piston, etfuturum:raw_ore:1 x12]
+
+  - id: upgrade_combustivel
+    title: "Eficiência de Combustível"
+    type: normal
+    deps: [fornalha_ferro]
+    icon: FLabsBF:flabs.upender
+    desc: |
+      Blocos de lápis, pérolas do fim e carvão: §eAprimoramento de Eficiência de
+      Combustível§r. O combustível rende muito mais (também tem durabilidade; a versão
+      Avançada é melhor).
+
+      Fabrique um.
+    tasks:
+      - get: FLabsBF:flabs.upender
+    rewards:
+      - item: minecraft:coal x16
+      - xp: 2
+
+  - id: upgrade_liquido
+    title: "Combustível Líquido"
+    type: optional
+    deps: [fornalha_ferro]
+    icon: FLabsBF:flabs.upliquid
+    desc: |
+      Ferro, vidro e um balde: §eAprimoramento de Combustível Líquido§r. A fornalha passa a
+      ter um tanque e queima fluidos como §elava§r. Uma bomba de lava e pronto: fornalha que
+      nunca para.
+
+      Fabrique um.
+    tasks:
+      - get: FLabsBF:flabs.upliquid
+    rewards:
+      - loot: comum
+
+  - id: upgrade_automacao
+    title: "Entrada e Saída Automáticas"
+    type: normal
+    deps: [fornalha_ferro]
+    icon: FLabsBF:flabs.upoutput
+    desc: |
+      O §eAprimoramento de Saída Automática§r empurra os lingotes para um baú vizinho; o de
+      §eEntrada Automática§r puxa itens. Juntos (com diamantes) fazem o §eAprimoramento de
+      Fábrica§r. O de §eTubulação§r escolhe por quais lados a fornalha conversa com funis e
+      tubos.
+
+      Fabrique §eum de saída automática§r.
+    tasks:
+      - get: FLabsBF:flabs.upoutput
+    rewards:
+      - item: minecraft:hopper
+      - xp: 2
+
+  - id: upgrade_pacote
+    title: "Pacote de Aprimoramentos"
+    type: optional
+    deps: [upgrade_automacao]
+    icon: FLabsBF:flabs.uppackage
+    desc: |
+      O §ePacote de Aprimoramentos§r (ouro, bancadas e um baú) guarda vários aprimoramentos
+      num item só — economizando slots da fornalha. Também existe o de §eCor§r (para
+      pintar a fornalha) e o de §eOredict§r.
+
+      Fabrique um pacote.
+    tasks:
+      - get: FLabsBF:flabs.uppackage
+    rewards:
+      - loot: comum
+
+  # ======================================================================
+  # AKASHIC FM — RÁDIOS DO SERVIDOR
+  # ======================================================================
+  - id: radio_fm
+    title: "Rádio AkashicFM"
+    type: main
+    deps: [volume_conforto]
+    icon: akashicfm:radio
+    desc: |
+      Uma invenção da própria Rede Akashic! O §eRádio§r (tábuas, ferro, blocos musicais e
+      redstone) toca §estreams de internet§r de verdade dentro do jogo, em áudio 3D: quem
+      chega perto ouve, paredes abafam (lã abafa muito, vidro quase nada).
+
+      Clique para abrir: cole a URL de um stream (http/https), aperte Tocar, ajuste volume e
+      alcance (até 48 blocos) e salve as §efavoritas§r. Ele pode ser §epúblico ou
+      privado§r e reage à redstone. Fabrique um!
+    tasks:
+      - get: akashicfm:radio
+    rewards:
+      - xp: 3
+      - choice: [minecraft:noteblock x2, minecraft:redstone x16, minecraft:planks x32]
+
+  - id: caixa_som
+    title: "Caixas de Som"
+    type: normal
+    deps: [radio_fm]
+    icon: akashicfm:speaker
+    desc: |
+      Tábuas, lã, um bloco musical e redstone: §eCaixa de Som§r. Ela repete o áudio de uma
+      rádio em outro ponto (até 32 blocos da rádio, até 8 caixas por rádio) — som ambiente
+      pela casa toda!
+
+      Fabrique §e2 caixas de som§r.
+    tasks:
+      - get: akashicfm:speaker x2
+    rewards:
+      - item: minecraft:wool x4
+      - xp: 2
+
+  - id: sintonizador
+    title: "O Sintonizador"
+    type: normal
+    deps: [caixa_som]
+    icon: akashicfm:tuner
+    desc: |
+      Redstone, ferro e graveto: §eSintonizador§r. É ele que liga as caixas à rádio:
+
+      1. Clique com ele numa §ecaixa§r (ela fica selecionada).
+      2. Clique na §erádio§r (ou num iPod Player).
+      §e• Agachado + clique numa caixa§r troca o canal dela: mono, esquerdo, direito ou
+      estéreo. Duas caixas, uma em cada lado, e você tem som estéreo!
+    tasks:
+      - get: akashicfm:tuner
+    rewards:
+      - item: minecraft:redstone x4
+      - xp: 1
+
+  - id: alto_falante_teto
+    title: "Alto-falante de Teto"
+    type: optional
+    deps: [sintonizador]
+    icon: akashicfm:ceiling_speaker
+    desc: |
+      Uma caixa de som entre lajes vira 2 §eAlto-falantes de Teto§r: discretos, vão
+      embaixo de um bloco (teto) ou na lateral (parede). Ligue com o sintonizador como as
+      caixas comuns.
+
+      Fabrique um par e faça a sua loja (ou a sua festa) ter música ambiente.
+    tasks:
+      - get: akashicfm:ceiling_speaker x2
+    rewards:
+      - loot: comum
+
+  - id: transmissor_fm
+    title: "Transmissor de FM"
+    type: normal
+    deps: [radio_fm]
+    icon: akashicfm:transmitter
+    desc: |
+      Quer a sua própria estação? O §eTransmissor de FM§r põe um stream §eno ar numa
+      frequência§r, e qualquer rádio no modo §eFM§r sintonizada nela, dentro do alcance,
+      toca a sua estação.
+
+      §e• Alcance:§r 64 blocos + 32 por §eAntena§r empilhada em cima (até 512).
+      §e• Energia:§r neste servidor ele consome §e8 EU/t§r (ou RF, 4 RF = 1 EU) e guarda 8000
+      EU. Sem energia, fica fora do ar.
+      Fabrique §eum transmissor e 4 antenas§r.
+    tasks:
+      - get: [akashicfm:transmitter, akashicfm:antenna x4]
+    rewards:
+      - item: minecraft:iron_ingot x6
+      - xp: 2
+
+  - id: radio_portatil
+    title: "Rádio Portátil e Fone"
+    type: normal
+    deps: [radio_fm]
+    icon: akashicfm:portable_radio
+    desc: |
+      O §eRádio Portátil§r toca de §equalquer slot do inventário§r (botão direito: ajustes;
+      agachado + botão direito: liga/desliga). Sem fone, quem está até 16 blocos também
+      ouve. Com o §eFone de Ouvido§r (no capacete ou num slot do Baubles), só você ouve.
+
+      Fabrique §eum rádio portátil e um fone§r. Trilha sonora para a mineração!
+    tasks:
+      - get: [akashicfm:portable_radio, akashicfm:headphones]
+    rewards:
+      - item: minecraft:noteblock
+      - xp: 2
+
+  - id: ipod
+    title: "iPod e iPod Player"
+    type: optional
+    deps: [radio_portatil]
+    icon: akashicfm:ipod
+    desc: |
+      O §eiPod§r monta uma fila de músicas a partir de links (SoundCloud, e YouTube/Spotify
+      pelo espelho no SoundCloud) ou de buscas; o §eiPod Player§r é a versão de bloco, que
+      também liga caixas de som.
+
+      §7Obs.: o iPod depende de o servidor ter essa função ligada — se aparecer "o iPod
+      está desligado neste servidor", use as rádios por URL ou FM.§r Fabrique um iPod.
+    tasks:
+      - get: akashicfm:ipod
+    rewards:
+      - loot: comum
+
+  - id: etiqueta_radio
+    title: "Boas Maneiras no Rádio"
+    type: info
+    deps: [radio_fm]
+    icon: akashicfm:radio
+    desc: |
+      Algumas regras do servidor para as rádios:
+
+      §e• Limites:§r até 16 rádios por jogador, 4 por chunk e 4 transmissores por jogador.
+      §e• URLs:§r só http/https públicos; endereços locais são recusados.
+      §e• Silenciar:§r há teclas para silenciar todas as rádios ou só a que você está
+      olhando (Opções → Controles → AkashicFM).
+      §e• Proteção:§r rádios e caixas privadas não podem ser quebradas por outros.
+      Música boa é música compartilhada com respeito. ♪
+    tasks:
+      - check
+    rewards:
+      - xp: 1
+
+  # ======================================================================
+  # AKASHIC INDEX, AKASHIC WEB E OMNIPIPES
+  # ======================================================================
+  - id: alto_falante_index
+    title: "Alto-falante do Akashic Index"
+    type: normal
+    deps: [volume_conforto]
+    icon: akashicindex:speaker
+    desc: |
+      Pedra, um bloco musical e redstone: o §eAlto-falante§r do §eAkashic Index§r. Ele é um
+      §ecomponente do OpenComputers§r: encoste-o num computador (ou use o Adaptador) e o
+      computador ganha a habilidade de tocar notas, sons e áudio digital.
+
+      Ao conectar, ele também monta uma pequena "ROM" com o programa de música: num
+      computador com §ePlaca de Internet§r, rode §eakashic-music install§r e depois
+      §emusic§r. Detalhes de computadores no Volume do OpenComputers. Fabrique um.
+    tasks:
+      - get: akashicindex:speaker
+    rewards:
+      - item: minecraft:redstone x8
+      - xp: 2
+
+  - id: tela_web
+    title: "A Tela Web"
+    type: normal
+    deps: [volume_conforto]
+    icon: akashicweb:screen
+    desc: |
+      Ferro, vidro, redstone e pedra luminosa fazem 4 blocos de §eTela Web§r (AkashicWeb).
+      Monte um §eretângulo plano de 2x2 ou maior§r e clique com a mão vazia: a tela se forma
+      e vira um §enavegador de verdade§r dentro do jogo! A ajuda fica no botão "?" da barra
+      de endereço.
+
+      Só uma pessoa controla a tela por vez e sites locais são bloqueados. Fabrique §e4
+      blocos de tela§r e monte a sua.
+    tasks:
+      - get: akashicweb:screen x4
+    rewards:
+      - item: minecraft:glass_pane x8
+      - xp: 2
+
+  - id: tubo_omni
+    title: "O Tubo Universal"
+    type: main
+    deps: [volume_conforto]
+    icon: tuborapido:blocoTuboUniversal
+    desc: |
+      O §eOmni Pipe§r (OmniPipes) é um tubo universal: carrega §eitens, fluidos, gases,
+      RF e EU§r no mesmo cano, praticamente instantâneo. A receita é cara (ferro, vidro,
+      diamantes, redstone e uma §eEstrela do Nether§r para 8 tubos), então ele é coisa de
+      base avançada.
+
+      Os §ebocais§r aparecem sozinhos onde o tubo encosta numa máquina ou baú. Clicando
+      num bocal:
+      §e• Mão vazia:§r alterna o modo (entrada, saída, ambos...).
+      §e• Corante ou lã:§r define o §ecanal colorido§r (só canais iguais conversam).
+      §e• Redstone / pó de pedra luminosa:§r sobe / desce a prioridade.
+      §e• Papel:§r ajusta a retenção mínima. §e• Bloco de esmeralda:§r modo "Overall".
+      §e• Chave inglesa:§r liga/desliga energia. §e• Agachado:§r abre filtro e túnel.
+      Confira tudo no WAILA (canal, prioridade, retenção).
+    tasks:
+      - get: tuborapido:blocoTuboUniversal x8
+    rewards:
+      - xp: 3
+      - choice: [minecraft:diamond x2, minecraft:glass_pane x16, minecraft:iron_ingot x16]
+
+  - id: tunel_dimensional
+    title: "Túnel Dimensional"
+    type: info
+    deps: [tubo_omni]
+    icon: minecraft:ender_pearl
+    desc: |
+      Na tela de filtro do Omni Pipe (agachado + clique) há o §eTúnel Dimensional§r: dê um
+      §eID de túnel§r ao tubo, e todos os tubos com o mesmo ID ficam §eligados, mesmo em
+      dimensões diferentes§r.
+
+      Uma fazenda no Nether mandando itens direto para a base? É isso. A tela lista os
+      túneis ativos no servidor.
+    tasks:
+      - check
+    rewards:
+      - xp: 1
+
+  - id: omnicore
+    title: "Terminal OmniCore"
+    type: optional
+    deps: [tubo_omni]
+    icon: tuborapido:omniCore
+    desc: |
+      Diamantes, pó de pedra luminosa e uma Estrela do Nether: §eTerminal OmniCore§r. Use-o
+      para ver a rede de tubos: quantos tubos há, se itens e energia estão fluindo, o
+      túnel do tubo e um gráfico de atividade.
+
+      Fabrique um para monitorar a sua rede.
+    tasks:
+      - get: tuborapido:omniCore
+    rewards:
+      - loot: comum
+
+  # ======================================================================
+  # MARCO FINAL
+  # ======================================================================
+  - id: base_organizada
+    title: "Uma Base de Respeito"
+    type: milestone
+    deps: [bau_diamante, parede_gavetas, bolsa_do_fim, pedra_de_dobra, mestre_mochileiro, upgrade_minerio, caixa_som]
+    icon: IronChest:BlockIronChest:2
+    size: 48
+    banner: "Uma Base de Respeito!"
+    subtitle: "Organizada, conectada e com trilha sonora"
+    desc: |
+      Baús de diamante, uma parede de gavetas com controlador, baús e bolsas do Fim, uma
+      rede de Waystones, mochilas com poderes, fornalhas que dobram minério e música
+      tocando nas caixas de som. Herói... isso não é mais um acampamento. É um lar.
+
+      Com a base em ordem, qualquer Volume grande fica mais leve: as máquinas do IC2, os
+      altares da magia, as expedições aos Reinos Perdidos. Você sabe onde está cada coisa
+      — e eu sei onde você está. (No inventário. Sempre.)
+
+      Toma, uma recompensa para quem cuida bem da própria casa.
+    tasks:
+      - check
+    rewards:
+      - kit:
+          name: "Kit da Base de Respeito"
+          items: ["IronChest:woodIronUpgrade x2", "IronChest:ironGoldUpgrade x2", "StorageDrawers:upgrade:3", "waystones:warpScroll x3", "minecraft:ender_pearl x4"]
+      - loot: incomum
+      - xp: 5

@@ -1,0 +1,857 @@
+chapter:
+  id: gadomancy
+  title: "Gadomancy"
+  prefix: ""
+  order: 511
+  icon: gadomancy:BlockNodeManipulator:5
+  desc: |
+    §dO Volume das Engenhocas Arcanas.§r Jarros espelhados, golems de silverwood, a Garra de
+    Infusão, Núcleos de Aura e pilões, o Familiar Etéreo, o Manipulador de Nodos e o Portão
+    dos Andarilhos do Vazio rumo ao Labirinto Eldritch. (Gadomancy 1.5.14)
+
+quests:
+  # ======================================================================
+  # FASE 0 — PEQUENAS ENGENHOCAS
+  # ======================================================================
+  - id: gado_inicio
+    title: "Gadomancia"
+    type: info
+    icon: gadomancy:BlockRemoteJar
+    desc: |
+      "Gadget" + "taumaturgia" = §dGadomancia§r! Este Volume é cheio de aparelhos espertos
+      que conversam com o que você já sabe do Thaumcraft: jarros, golems, nodos e a parte
+      eldritch.
+
+      A aba §egadomancy§r do Taumonomicon tem pesquisas "pseudo" (Jarros e Rótulos, Fole
+      Arcano, Metal do Vazio, Núcleos de Golem...) que só existem para ligar as novas às do
+      Thaumcraft. Completou a original? A pseudo-pesquisa já aparece pronta.
+
+      Vamos começar pelos jarros — porque taumaturgo sem jarro não é taumaturgo.
+    tasks:
+      - check
+    rewards:
+      - xp: 1
+
+  - id: jarra_pegajosa
+    title: "Jarros Pegajosos"
+    type: normal
+    deps: [gado_inicio]
+    icon: gadomancy:BlockStickyJar
+    desc: |
+      Já tentou pendurar um jarro na parede no meio de um emaranhado de tubos? Agora dá! Na
+      Mesa Arcana, ponha um §eJarro Guardião§r (ou vários outros jarros de essência) com uma
+      §eBola de Slime§r logo abaixo dele: sai um §eSticky Jar§r, que gruda em qualquer face,
+      até de cabeça para baixo. Quebrar não tira a cola.
+    tasks:
+      - get: gadomancy:BlockStickyJar:* x2
+    rewards:
+      - xp: 2
+      - item: minecraft:slime_ball x8
+
+  - id: jarra_espelhada
+    title: "Jarros Espelhados"
+    type: main
+    deps: [gado_inicio]
+    icon: gadomancy:BlockRemoteJar
+    desc: |
+      Dois jarros que compartilham o mesmo espaço! O §eMirrored Jar§r leva um §eEspelho de
+      Essência§r dentro. Arcana (Aqua, Terra e Ordo 10): Toras de Greatwood, um Jarro Guardião
+      e o Espelho de Essência.
+
+      Coloque um no mundo e clique nele com outro: eles formam uma rede. Diferente dos
+      espelhos, a rede aceita §emais de dois§r jarros, e a capacidade soma (3 jarros = 3 jarros
+      de essência) e se equilibra sozinha.
+    tasks:
+      - get: gadomancy:BlockRemoteJar x2
+    rewards:
+      - xp: 4
+      - choice: [Thaumcraft:blockJar x4, Thaumcraft:blockMagicalLog x8, Thaumcraft:ItemResource:10 x2]
+
+  - id: dropper_arcano
+    title: "Dispensador Arcano"
+    type: normal
+    deps: [gado_inicio]
+    icon: gadomancy:BlockArcaneDropper
+    desc: |
+      Um dispensador que enxerga longe: o §eArcane Dropper§r trata os itens soltos numa área de
+      §e3×3×3§r à frente como se fossem um inventário — insere, retira e monitora. Passe a
+      varinha (sem foco) por cima para ver a área. Só as faces lisas interagem.
+
+      Arcana: Blocos de Pedra Arcana, um Dispensador, Construto Alquímico e 2 Foles Arcanos.
+    tasks:
+      - get: gadomancy:BlockArcaneDropper
+    rewards:
+      - xp: 2
+      - item: minecraft:hopper x2
+
+  # ======================================================================
+  # FASE 1 — GOLEMS
+  # ======================================================================
+  - id: golem_silverwood
+    title: "Golem de Silverwood"
+    type: main
+    deps: [gado_inicio]
+    icon: gadomancy:itemSilverwoodGolemPlacer:8
+    desc: |
+      "Só uma pitada de Substância X." Um golem esculpido numa tora de Silverwood guarda
+      §emais melhorias§r que os outros.
+
+      Infusão (instabilidade 7): §eTora de Silverwood§r no centro; Amuleto Primal, 2 Salis
+      Mundus, 2 Fragmentos de Conhecimento e 2 Mercúrios em volta.
+
+      §eAtributos:§r durabilidade média, força baixa, autorreparo médio, carga 8, rápido e
+      §e3 slots de melhoria§r. Coloque um núcleo e veja a diferença!
+    tasks:
+      - get: gadomancy:itemSilverwoodGolemPlacer:8
+    rewards:
+      - xp: 4
+      - choice: [Thaumcraft:ItemGolemUpgrade x2, Thaumcraft:ItemGolemUpgrade:4 x2, Thaumcraft:ItemResource:3 x4]
+
+  - id: escudo_runico_golem
+    title: "Escudo Rúnico para Golems"
+    type: normal
+    deps: [golem_silverwood]
+    icon: Thaumcraft:ItemGirdleRunic
+    desc: |
+      Proteção mágica para os seus amiguinhos! A melhoria §eGolemic Shielding§r é uma infusão
+      feita §eno próprio golem§r (o item do golem no centro) com um §eCinto de Proteção Rúnica§r
+      e 2 Salis Mundus. O golem ganha uma barreira rúnica que absorve quase todo dano até
+      descarregar (não protege de afogamento e alguns perigos do ambiente).
+
+      Esta quest pede os ingredientes: o resto é com o altar.
+    tasks:
+      - get: [Thaumcraft:ItemGirdleRunic, Thaumcraft:ItemResource:14 x2]
+    rewards:
+      - xp: 3
+      - item: Thaumcraft:ItemResource:14 x4
+
+  - id: nucleo_quebrar
+    title: "Núcleo de Golem: Quebrar"
+    type: normal
+    deps: [golem_silverwood]
+    icon: gadomancy:ItemGolemCoreBreak
+    desc: |
+      "Notícia de última hora!" Um golem com este núcleo vigia e §equebra os blocos marcados§r.
+      Dê uma ferramenta para ele usar e um bloco de exemplo no inventário. Melhoria de Ordem
+      escolhe a ferramenta por bloco; de Entropia ignora o metadado das ferramentas.
+
+      Infusão: §eNúcleo de Golem: Colher§r no centro; Pá do Movedor de Terra, Picareta do
+      Núcleo e Machado da Corrente em volta.
+    tasks:
+      - get: gadomancy:ItemGolemCoreBreak
+    rewards:
+      - xp: 3
+      - item: Thaumcraft:ItemGolemCore x2
+
+  - id: nucleo_guarda_costas
+    title: "Núcleo de Golem: Guarda-Costas"
+    type: normal
+    deps: [golem_silverwood]
+    icon: gadomancy:ItemGolemCoreBreak:1
+    desc: |
+      "Ninguém ataca o meu Mestre." Golems guardiões protegem uma área; o §eBodyguard§r
+      protege §evocê§r e segue você por aí como um lobo domado.
+
+      Infusão: §eNúcleo de Golem: Proteger§r no centro; Botas do Viajante, 2 Pérolas do Fim e
+      Espada de Zephyr em volta.
+    tasks:
+      - get: gadomancy:ItemGolemCoreBreak:1
+    rewards:
+      - xp: 3
+      - item: minecraft:ender_pearl x4
+
+  - id: garra_infusao
+    title: "Garra de Infusão"
+    type: milestone
+    deps: [nucleo_quebrar, pedestal_recarga]
+    icon: gadomancy:BlockInfusionClaw
+    banner: "Garra de Infusão"
+    subtitle: "Infusão no automático"
+    desc: |
+      Um Pedestal de Recarga que, em vez de segurar a varinha, §emove§r a varinha. Ele é meio
+      senciente e ligado à sua alma... seu olho anda tremendo? Deve ser nada.
+
+      Infusão (instabilidade 10): §ePedestal de Recarga de Varinha§r no centro; Foco Primal,
+      4 Blocos de Pedra Arcana, Núcleo de Golem: Usar, 2 Lingotes de Metal do Vazio, Amuleto
+      Primal e Cérebro de Zumbi.
+
+      Coloque a §eInfusion Claw§r em cima da Matriz Rúnica e ponha uma varinha ou cajado
+      dentro (por cima). Um sinal de redstone numa lateral inicia a infusão. §cEla adiciona
+      instabilidade§r conforme a varinha (cajados são mais estáveis). Dá até para montar uma
+      fábrica de Taumonomicons e Crisóis!
+    tasks:
+      - get: gadomancy:BlockInfusionClaw
+    rewards:
+      - xp: 8
+      - kit: {name: "Kit do Automatizador Arcano", items: ["Thaumcraft:ItemResource:16 x4", "Thaumcraft:blockCosmeticSolid:6 x8", "Thaumcraft:ItemResource:15", "minecraft:redstone x32"]}
+      - loot: raro
+
+  # ======================================================================
+  # FASE 2 — NÚCLEOS DE AURA
+  # ======================================================================
+  - id: nucleo_aura
+    title: "Núcleo de Aura"
+    type: main
+    deps: [gado_inicio]
+    icon: gadomancy:ItemAuraCore
+    desc: |
+      O Amuleto Primal vive cuspindo faíscas e mudando de cor. Envolto numa casca de táumio
+      cristalizado, ele se acalma e vira um §eAura Core§r.
+
+      Infusão (instabilidade 6): §eAmuleto Primal§r no centro; 4 Estilhaços Equilibrados e 8
+      Barras de Táumio em volta (os aspectos variam um pouco: Auram, Praecantatio, Alienis e
+      Vacuos).
+    tasks:
+      - get: gadomancy:ItemAuraCore
+    rewards:
+      - xp: 4
+      - choice: [Thaumcraft:ItemResource:2 x8, Thaumcraft:ItemShard:6 x4, Thaumcraft:ItemResource:15]
+
+  - id: sintonizar_nucleo
+    title: "Sintonizando o Núcleo"
+    type: normal
+    deps: [nucleo_aura]
+    icon: gadomancy:ItemAuraCore:2
+    desc: |
+      Um Núcleo de Aura em branco é sensível à aura do ambiente. Jogue-o no chão §eperto de um
+      Aglomerado de Cristal primal§r e §eenergize o cristal com a varinha§r (84 de vis daquele
+      primal): o núcleo se cobre de cristal e fica sintonizado.
+
+      Os que importam aqui: §eIgnis§r (Pilão de Aura), §eAqua§r (Condensador), §eAer§r
+      (Empacotador) e §eOrdo§r (Livro do Conhecimento). Um núcleo errado se "lava" no Crisol
+      (Praecantatio, Aqua e Sano). Sintonize qualquer um para começar.
+    tasks:
+      - one_of: [gadomancy:ItemAuraCore:1, gadomancy:ItemAuraCore:2, gadomancy:ItemAuraCore:3, gadomancy:ItemAuraCore:5]
+    rewards:
+      - xp: 3
+      - item: Thaumcraft:ItemShard:6 x2
+
+  - id: nucleo_ignis
+    title: "Núcleo de Aura: Ignis"
+    type: normal
+    deps: [sintonizar_nucleo]
+    icon: gadomancy:ItemAuraCore:2
+    desc: |
+      Núcleo em branco no chão perto de um §eAglomerado de Cristal de Fogo§r, varinha no
+      cristal (84 de Ignis) e pronto: §eNúcleo de Aura de Ignis§r. Ele vai no Topo do Pilão de
+      Aura, onde evapora essência para a aura.
+    tasks:
+      - get: gadomancy:ItemAuraCore:2
+    rewards:
+      - xp: 3
+      - item: Thaumcraft:ItemShard:1 x4
+
+  - id: nucleo_aqua
+    title: "Núcleo de Aura: Aqua"
+    type: normal
+    deps: [sintonizar_nucleo]
+    icon: gadomancy:ItemAuraCore:3
+    desc: |
+      Mesmo ritual, com um §eAglomerado de Cristal de Água§r (84 de Aqua): §eNúcleo de Aura de
+      Aqua§r. Ele estabiliza o fluxo de essência do Condensador de Essência.
+    tasks:
+      - get: gadomancy:ItemAuraCore:3
+    rewards:
+      - xp: 3
+      - item: Thaumcraft:ItemShard:2 x4
+
+  - id: nucleo_aer
+    title: "Núcleo de Aura: Aer"
+    type: normal
+    deps: [sintonizar_nucleo]
+    icon: gadomancy:ItemAuraCore:1
+    desc: |
+      Com um §eAglomerado de Cristal de Ar§r (84 de Aer): §eNúcleo de Aura de Aer§r. A pressão
+      dele é o que aperta os fios de Pannus no Empacotador Arcano.
+    tasks:
+      - get: gadomancy:ItemAuraCore:1
+    rewards:
+      - xp: 3
+      - item: Thaumcraft:ItemShard x4
+
+  - id: nucleo_ordo
+    title: "Núcleo de Aura: Ordo"
+    type: normal
+    deps: [sintonizar_nucleo]
+    icon: gadomancy:ItemAuraCore:5
+    desc: |
+      Com um §eAglomerado de Cristal de Ordem§r (84 de Ordo): §eNúcleo de Aura de Ordo§r — o
+      "cérebro organizado" do Livro do Conhecimento. Errou o cristal? Lave o núcleo no Crisol
+      com Praecantatio, Aqua e Sano e tente de novo.
+    tasks:
+      - get: gadomancy:ItemAuraCore:5
+    rewards:
+      - xp: 3
+      - item: Thaumcraft:ItemShard:4 x4
+
+  - id: pilao_aura
+    title: "Pilão de Aura"
+    type: main
+    deps: [nucleo_ignis]
+    icon: gadomancy:BlockAuraPylon:1
+    desc: |
+      Evaporar essência na aura local até ela §emudar o ambiente§r! O Pilão de Aura usa um
+      Núcleo de Aura de §eIgnis§r.
+
+      §e• Aura Pylon§r (Arcana): 4 Tubos de Essência Direcionais, 2 Toras de Silverwood e um
+      Jarro Guardião.
+      §e• Aura Pylon Peak§r (Arcana): Nitor, 2 Alumentum, o Núcleo de Ignis e um Pilão.
+
+      Empilhe §e3 Pilões e o Topo§r e forme com a varinha (150 de cada primal). Jogue no chão
+      uma §eEssência Cristalizada§r do aspecto desejado (a chama muda de cor) e encane essência
+      líquida por baixo.
+    tasks:
+      - get: [gadomancy:BlockAuraPylon x3, gadomancy:BlockAuraPylon:1]
+    rewards:
+      - xp: 4
+      - choice: [Thaumcraft:blockTube:6 x8, Thaumcraft:blockMagicalLog:1 x4, Thaumcraft:ItemResource x4]
+
+  - id: efeitos_aura
+    title: "O Que a Aura Faz"
+    type: info
+    deps: [pilao_aura]
+    icon: gadomancy:BlockAuraPylon:1
+    desc: |
+      Alguns efeitos que conferi no código (o pilão espalha na área):
+      §e• Aer / Motus / Iter:§r velocidade. §e• Aqua:§r respiração aquática.
+      §e• Terra / Tutamen:§r resistência. §e• Ordo / Sano:§r regeneração.
+      §e• Telum / Potentia:§r força. §e• Sensus:§r visão noturna. §e• Volatus:§r pulo.
+      §e• Instrumentum / Perfodio:§r pressa. §e• Humanus:§r vida extra.
+      §e• Praecantatio:§r desconto de vis. §e• Lucrum:§r sorte (mais drops).
+      §c• Perditio, Mortuus, Tenebrae, Venenum, Vinculum, Fames:§r efeitos ruins!
+      Outros (Herba, Arbor, Victus, Lux, Gelum, Vitium, Alienis...) mexem com blocos e
+      criaturas — teste com cuidado, como o livro sugere.
+    tasks:
+      - check
+    rewards:
+      - xp: 2
+
+  - id: empacotador
+    title: "Empacotador Arcano"
+    type: optional
+    deps: [nucleo_aer]
+    icon: gadomancy:BlockStoneMachine:4
+    desc: |
+      Sabe as bolsas de tesouro das masmorras? São uma malha de §dPannus§r estável. O §eArcane
+      Packager§r (com um Núcleo de Aura de §eAer§r) embrulha até §e9 pilhas§r de itens num
+      pacote que se abre direto no inventário — e pode até se disfarçar de bolsa de tesouro.
+      Funciona com redstone. Presente surpresa para os amigos!
+    tasks:
+      - get: gadomancy:BlockStoneMachine:4
+    rewards:
+      - loot: comum
+
+  - id: livro_conhecimento
+    title: "Livro do Conhecimento"
+    type: normal
+    deps: [nucleo_ordo]
+    icon: gadomancy:BlockKnowledgeBook
+    desc: |
+      Um livro animado que faz a papelada por você! Arcana: 2 Ferramentas de Escrita,
+      Taumonomicon, 2 Livros, Núcleo de Aura de §eOrdo§r, 2 Matrizes Mnemônicas e Óculos da
+      Descoberta.
+
+      Coloque o §eBook of Knowledge§r num §ePedestal Arcano§r, jogue uma §enota de pesquisa§r no
+      chão perto e forneça §dCognitio§r: ele pesquisa sozinho (devagar). Estantes por perto
+      aceleram um pouco, e ele ainda funciona como Taumonomicon.
+    tasks:
+      - get: gadomancy:BlockKnowledgeBook
+    rewards:
+      - xp: 3
+      - item: minecraft:bookshelf x4
+
+  - id: reservatorio_essencia
+    title: "Armazenamento Avançado"
+    type: normal
+    deps: [gado_inicio]
+    icon: Thaumcraft:blockEssentiaReservoir
+    desc: |
+      Antes do Condensador, o Gadomancy pede que você domine o armazenamento avançado do
+      próprio Thaumcraft: o §eReservatório de Essência§r (Essentia Reservoir), que guarda muita
+      essência num bloco só — e explode em fluxo se for quebrado cheio.
+
+      Faça um. É a pesquisa-porta "Advanced Essentia Storage" desta aba.
+    tasks:
+      - get: Thaumcraft:blockEssentiaReservoir
+    rewards:
+      - xp: 3
+      - item: Thaumcraft:blockTube x8
+
+  - id: elemento_trevas
+    title: "Elemento das Trevas"
+    type: normal
+    deps: [nucleo_aura]
+    icon: gadomancy:ItemElement
+    desc: |
+      Uma Semente do Vazio potencializada milhares de vezes, presa numa casca de cristal. O
+      §eElement of Darkness§r é estável... mas suga toda a luz em volta e §ccega quem o segura
+      ou fica perto dele§r quando está no chão.
+
+      Infusão (instabilidade 6): §eSemente do Vazio§r no centro; 2 Alumentum, 4 Lingotes de
+      Metal do Vazio e 2 Salis Mundus.
+    tasks:
+      - get: gadomancy:ItemElement
+    rewards:
+      - xp: 3
+      - item: Thaumcraft:ItemResource:17 x2
+
+  - id: condensador
+    title: "Condensador de Essência"
+    type: milestone
+    deps: [elemento_trevas, nucleo_aqua, reservatorio_essencia]
+    icon: gadomancy:BlockEssentiaCompressor
+    banner: "Condensador de Essência"
+    subtitle: "Armazenamento silencioso"
+    desc: |
+      Uma estrutura que guarda §etodos os aspectos§r num só lugar. Arcana (custo alto!): Toras
+      de Greatwood, Aglomerado de Cristal de Ordem, 2 Tubos Direcionais, o §eElemento das
+      Trevas§r e um Núcleo de Aura de §eAqua§r = 3 blocos. Empilhe os três e forme com a
+      varinha.
+
+      Capacidade inicial de 200; Elementos das Trevas num Pedestal Antigo por perto sobem até
+      §e3000 por aspecto§r. Ele não aceita tubos nem a mão: um §egolem§r põe a primeira
+      essência, e daí ele puxa sozinho dos jarros, reservatórios e espelhos num raio de 5.
+      Altares de infusão podem puxar dele por espelho.
+
+      §cQuebrar com essência dentro = explosão, fluxo e Taint na hora.§r
+    tasks:
+      - get: gadomancy:BlockEssentiaCompressor x3
+    rewards:
+      - xp: 10
+      - kit: {name: "Kit do Arquivista de Essências", items: ["Thaumcraft:blockJar x8", "Thaumcraft:blockTube:6 x8", "Thaumcraft:ItemResource:17 x2", "Thaumcraft:blockMirror:6"]}
+      - loot: raro
+
+  - id: emissor_enervacao
+    title: "Emissor de Enervação"
+    type: normal
+    deps: [gado_inicio]
+    icon: gadomancy:BlockStoneMachine:2
+    desc: |
+      "CHEGA DESSES CREEPERS!" O §eArcane Enervation Emitter§r espalha uma aura leve de §dOrdo§r:
+      creepers na área §enão explodem§r, Endermen não teleportam e outros comportamentos
+      destrutivos de mobs param (não afeta jogadores).
+
+      Arcana (Ordo e Terra 120): 2 Poções de Fraqueza, Nitor, 2 Tubos, Jarro, Tábuas de
+      Greatwood e Redstone. Alimente com Ordo e redstone; a força do sinal controla o tamanho.
+    tasks:
+      - get: gadomancy:BlockStoneMachine:2
+    rewards:
+      - xp: 3
+      - item: minecraft:redstone x16
+
+  # ======================================================================
+  # FASE 3 — FAMILIAR ETÉREO
+  # ======================================================================
+  - id: familiar_etereo
+    title: "Familiar Etéreo"
+    type: main
+    deps: [gado_inicio]
+    icon: gadomancy:ItemEtherealFamiliar
+    desc: |
+      Wisps atacam com uma rapidez surpreendente quando provocados. E se um deles protegesse
+      §evocê§r?
+
+      Infusão: §eAmuleto de Proteção Rúnica§r no centro; 2 §eEssências Etéreas§r do mesmo
+      aspecto, 2 Salis Mundus e 2 Nitor, mais 10 essências daquele aspecto. O aspecto define a
+      cor do familiar e o que as melhorias vão pedir.
+
+      Vista no slot de amuleto: ele dispara faíscas em quem ataca você, como uma torreta.
+    tasks:
+      - get: gadomancy:ItemEtherealFamiliar
+    rewards:
+      - xp: 4
+      - choice: [Thaumcraft:ItemResource:1 x4, Thaumcraft:ItemResource:14 x8, Thaumcraft:ItemShard:6 x4]
+
+  - id: familiar_choque
+    title: "Familiar: Impacto Relâmpago"
+    type: optional
+    deps: [familiar_etereo]
+    icon: gadomancy:ItemEtherealFamiliar
+    desc: |
+      §eLightning Impact§r: arcos bem mais fortes, com empurrão. Nível I (infusão no próprio
+      familiar): 4 Essências Etéreas, 2 Alumentum e 2 Âmbar (Motus e Aer). Gasta um pouquinho de
+      Aer e Perditio por ataque.
+    tasks:
+      - get: [Thaumcraft:ItemResource x2, Thaumcraft:ItemResource:6 x2]
+    rewards:
+      - loot: comum
+
+  - id: familiar_fogo
+    title: "Familiar: Queimadura Relâmpago"
+    type: optional
+    deps: [familiar_etereo]
+    icon: gadomancy:ItemEtherealFamiliar
+    desc: |
+      §eFlash Burn§r: em vez de dano, o familiar incendeia o inimigo e o deixa fraco à luz do
+      sol. Nível I: 4 Essências Etéreas e 4 Pós de Blaze (Ignis e Telum).
+    tasks:
+      - get: minecraft:blaze_powder x4
+    rewards:
+      - loot: comum
+
+  - id: familiar_veneno
+    title: "Familiar: Veneno Corrosivo"
+    type: optional
+    deps: [familiar_etereo]
+    icon: gadomancy:ItemEtherealFamiliar
+    desc: |
+      §eCorrosive Venom§r: injeta veneno forte e só ataca quem pode ser envenenado. Nível I: 4
+      Essências Etéreas, 2 Olhos de Aranha e 2 Carnes Podres (Aqua, Venenum e Alienis).
+    tasks:
+      - get: [minecraft:spider_eye x2, minecraft:rotten_flesh x2]
+    rewards:
+      - loot: comum
+
+  - id: familiar_enervacao
+    title: "Familiar: Enervação"
+    type: optional
+    deps: [familiar_etereo]
+    icon: gadomancy:ItemEtherealFamiliar
+    desc: |
+      §eEnervation§r: troca o dano por um dreno de energia — o alvo fica fraco e lento, fácil de
+      terminar com a espada. Nível I: 4 Essências Etéreas, 2 Arbustos Secos e 2 Linhas
+      (Mortuus, Auram, Alienis e Perditio).
+    tasks:
+      - get: [minecraft:deadbush x2, minecraft:string x2]
+    rewards:
+      - loot: comum
+
+  - id: familiar_dano
+    title: "Familiar: Amplificação do Arco"
+    type: optional
+    deps: [familiar_etereo]
+    icon: gadomancy:ItemEtherealFamiliar
+    desc: |
+      §eArc Amplification§r: concentra mais energia no wisp e §edobra o dano§r. Nível I: 4
+      Essências Etéreas, 2 Âmbar e 2 Pólvoras (Telum, Potentia e Ignis). Os níveis II e III
+      pedem Amuleto Primal, Semente do Vazio, Bloco de Âmbar, Espada do Vazio e Estrela do
+      Nether. Gasta um pouco de Ignis por ataque.
+    tasks:
+      - get: [Thaumcraft:ItemResource:6 x2, minecraft:gunpowder x2]
+    rewards:
+      - loot: comum
+
+  - id: familiar_alcance
+    title: "Familiar: Sensibilidade"
+    type: optional
+    deps: [familiar_etereo]
+    icon: gadomancy:ItemEtherealFamiliar
+    desc: |
+      §eSensitivity Boost§r: deixa o wisp mais sensível e §eaumenta o alcance§r. Nível I: 4
+      Essências Etéreas, 2 Estilhaços de Ordem e 2 Amuletos Primais (Auram, Alienis e Telum).
+      O nível II pede Nitor, Mercúrio, Alumentum e Estrelas do Nether.
+    tasks:
+      - get: [Thaumcraft:ItemShard:4 x2, Thaumcraft:ItemResource:15 x2]
+    rewards:
+      - loot: incomum
+
+  - id: familiar_velocidade
+    title: "Familiar: Sobrecarga de Frequência"
+    type: optional
+    deps: [familiar_dano, familiar_alcance]
+    icon: gadomancy:ItemEtherealFamiliar
+    desc: |
+      §eFrequency Emission Overdrive§r ("um certo Railgun científico"): o familiar ataca §e2×
+      mais rápido§r; no nível II, acerta §evários inimigos§r de uma vez. Nível I: Espada de
+      Zephyr, 4 Âmbar e 3 Essências Etéreas. O nível II pede Amuletos Primais, Estrela do
+      Nether e §ePérola Primordial§r.
+    tasks:
+      - get: [Thaumcraft:ItemSwordElemental, Thaumcraft:ItemResource:6 x4]
+    rewards:
+      - loot: incomum
+
+  # ======================================================================
+  # FASE 4 — ENCANTOS E DISFARCES
+  # ======================================================================
+  - id: visao_taumica
+    title: "Visão Táumica"
+    type: normal
+    deps: [gado_inicio]
+    icon: Thaumcraft:ItemGoggles
+    desc: |
+      Um encantamento que dá a §equalquer capacete§r o poder dos Óculos da Descoberta: ver
+      nodos e a essência nos jarros (sem o desconto de vis). É a §eThaumic Sight§r, pela
+      Infusão de Encantamento com Óculos da Descoberta e 2 Salis Mundus.
+
+      Perfeito para quem não quer tirar o capacete de Thauminita ou dos Guardiões!
+    tasks:
+      - get: [Thaumcraft:ItemGoggles, Thaumcraft:ItemResource:14 x2]
+    rewards:
+      - xp: 3
+      - item: Thaumcraft:ItemResource:14 x4
+
+  - id: disfarce_armadura
+    title: "Disfarce de Armadura"
+    type: info
+    deps: [visao_taumica]
+    icon: minecraft:leather_chestplate
+    desc: |
+      "Que comecem os jogos!" Pela infusão §eArmor Disguise§r, a armadura original vai no
+      pedestal central e a armadura do "visual" nos pedestais de fora: você mantém os efeitos
+      e fica com a aparência da outra (que é consumida).
+
+      Com uma §ePoção de Invisibilidade§r no lugar da armadura de visual, a peça fica
+      totalmente transparente. Para desfazer, jogue a armadura em §eFluido Purificante§r.
+    tasks:
+      - check
+    rewards:
+      - xp: 2
+
+  # ======================================================================
+  # FASE 5 — MANIPULAÇÃO DE NODOS
+  # ======================================================================
+  - id: pedestal_recarga
+    title: "Pedestais de Recarga"
+    type: normal
+    deps: [gado_inicio]
+    icon: Thaumcraft:blockStoneDevice:5
+    desc: |
+      A Garra de Infusão e o Manipulador de Nodo nascem de um §ePedestal de Recarga de
+      Varinha§r; os focos do manipulador nascem do §eComposto de Recarga de Focus§r (Compound
+      Recharge Focus), que vai em cima do pedestal e tira aspectos compostos dos nodos. Ambos
+      são pesquisas do Thaumcraft.
+
+      Tenha os dois em mãos: vão virar peças de máquinas bem mais estranhas.
+    tasks:
+      - get: [Thaumcraft:blockStoneDevice:5, Thaumcraft:blockStoneDevice:8]
+    rewards:
+      - xp: 3
+      - item: Thaumcraft:ItemResource:14 x4
+
+  - id: pedras_antigas
+    title: "Pedras Antigas"
+    type: normal
+    deps: [gado_inicio]
+    icon: Thaumcraft:blockCosmeticSolid:11
+    desc: |
+      Os aparelhos de nodo do Gadomancy são feitos com material dos labirintos eldritch:
+      §ePedra Antiga§r (Ancient Stone) e §ePedestal de Pedra Antiga§r. Neste pack a receita
+      alternativa de Pedra Antiga está §edesligada§r (config), então elas têm que vir das
+      §eTerras Exteriores§r do Thaumcraft.
+
+      Traga §e12 Pedras Antigas e 4 Pedestais de Pedra Antiga§r. Cuidado lá embaixo!
+    tasks:
+      - get: [Thaumcraft:blockCosmeticSolid:11 x12, Thaumcraft:blockCosmeticSolid:15 x4]
+    rewards:
+      - xp: 4
+      - item: Thaumcraft:ItemResource:16 x2
+
+  - id: manipulador_nodo
+    title: "Manipulador de Nodo"
+    type: main
+    deps: [pedras_antigas, pedestal_recarga]
+    icon: gadomancy:BlockNodeManipulator:5
+    desc: |
+      Um aparelho que funciona ao contrário do Pedestal de Recarga: tira vis da varinha e a
+      §eempurra de volta§r para o nodo, desestabilizando-o.
+
+      Infusão (instabilidade 10): §ePedestal de Recarga de Varinha§r no centro; Estabilizador de
+      Nodo, 2 Aglomerados de Cristal Misto, 2 Sementes do Vazio, 2 Pedras Antigas, 2 Nitor, 2
+      Amuletos Primais e Pedra Pavimentada Guardiã em volta.
+    tasks:
+      - get: gadomancy:BlockNodeManipulator:5
+    rewards:
+      - xp: 5
+      - choice: [Thaumcraft:ItemResource:15, Thaumcraft:ItemShard:6 x6, Thaumcraft:ItemResource:17 x2]
+
+  - id: foco_aleatorizacao
+    title: "Foco de Aleatorização"
+    type: main
+    deps: [manipulador_nodo]
+    icon: gadomancy:BlockStoneMachine
+    desc: |
+      O pedestal sozinho não aguenta mexer no nodo: precisa de um foco que segure a varinha.
+      O §eRandomization Focus§r é uma infusão (instabilidade 7) com o §eComposto de Recarga de
+      Focus§r no centro; 2 Amuletos Primais, 4 Metais do Vazio e 2 Aglomerados de Cristal Misto
+      em volta.
+    tasks:
+      - get: gadomancy:BlockStoneMachine
+    rewards:
+      - xp: 5
+      - choice: [Thaumcraft:ItemResource:16 x4, Thaumcraft:blockCrystal:6 x2, Thaumcraft:ItemResource:1 x4]
+
+  - id: manipulador_montado
+    title: "Roleta de Nodos"
+    type: milestone
+    deps: [foco_aleatorizacao]
+    icon: gadomancy:BlockNodeManipulator:5
+    banner: "Manipulador de Nodo"
+    subtitle: "Quase uma roleta"
+    desc: |
+      Monte a estrutura de §e3×3×3§r com o §enodo no topo§r:
+      §e• Camada do meio:§r o Foco de Aleatorização bem embaixo do nodo, com 4 Pedras Antigas
+      nos cantos.
+      §e• Camada de baixo:§r o Manipulador de Nodo no centro, com 4 Pedestais de Pedra Antiga
+      nos cantos.
+
+      Forme com a varinha (100 de cada primal). Depois ponha uma varinha ou cajado no
+      pedestal: ele começa sozinho e precisa de pelo menos §e70 de cada primal§r (mais vis dá
+      resultados melhores). O que acontece com o nodo? Nem o livro sabe — é uma roleta!
+      Com os Nodos Adicionais ativos no pack, pode surgir até um §eGrowing Node§r.
+    tasks:
+      - check
+    rewards:
+      - xp: 10
+      - kit: {name: "Kit do Apostador de Nodos", items: ["Thaumcraft:ItemShard:6 x8", "Thaumcraft:ItemResource:14 x8", "Thaumcraft:blockCosmeticSolid:11 x4", "Thaumcraft:ItemResource:1 x4"]}
+      - loot: raro
+
+  - id: nodo_crescente
+    title: "O Nodo que Cresce"
+    type: info
+    deps: [manipulador_montado]
+    icon: gadomancy:ItemExtendedNodeJar
+    desc: |
+      Um nodo... diferente. Inquieto. Parece procurar algo. O §eGrowing Node§r:
+      §e• absorve só coisas puras§r — wisps e orbes de aspecto principalmente; essência etérea,
+      cristalizada e feijões de mana valem pouco;
+      §e• guarda aspectos compostos§r sem quebrá-los em primais;
+      §e• dispara raios§r em seres vivos próximos (fique longe!);
+      §e• destrói nodos menores§r por perto, e estabilizadores não impedem.
+
+      Alimente com variedade: o mesmo aspecto repetido o satura e ele para de crescer. Quanto
+      mais saturado, mais agressivo. E se ele saturar de vez...?
+    tasks:
+      - check
+    rewards:
+      - xp: 3
+
+  # ======================================================================
+  # FASE 6 — O PORTÃO DOS ANDARILHOS DO VAZIO
+  # ======================================================================
+  - id: olho_eldritch
+    title: "Abrindo o Olho"
+    type: normal
+    deps: [manipulador_montado]
+    icon: Thaumcraft:ItemEldritchObject
+    desc: |
+      O Portão dos Andarilhos do Vazio come §eOlhos Eldritch§r (Eldritch Eye): 2 no Foco de
+      Redirecionamento e mais 4 nos pedestais. Eles vêm do lado eldritch do Thaumcraft — a
+      pesquisa-porta aqui é "Opening the Eye". Junte §e6§r antes de seguir.
+
+      §cAs pesquisas eldritch do Thaumcraft costumam dar Warp.§r Tenha Sabão Sanitizante por perto.
+    tasks:
+      - get: Thaumcraft:ItemEldritchObject x6
+    rewards:
+      - xp: 5
+      - item: Thaumcraft:ItemSanitySoap
+
+  - id: foco_redirecionamento
+    title: "Foco de Redirecionamento"
+    type: main
+    deps: [olho_eldritch]
+    icon: gadomancy:BlockStoneMachine:3
+    desc: |
+      "Quando você olha muito tempo para o abismo, o abismo olha para você."
+
+      Os obeliscos eldritch guardam um nodo que, com vis suficiente, vira um portal. O
+      §eRedirection Focus§r imita isso: infusão (instabilidade 7) com o §eComposto de Recarga
+      de Focus§r no centro; 2 §eOlhos Eldritch§r, 4 Aglomerados de Cristal de Entropia e 2
+      Metais do Vazio em volta.
+    tasks:
+      - get: gadomancy:BlockStoneMachine:3
+    rewards:
+      - xp: 6
+      - choice: [Thaumcraft:ItemResource:16 x4, Thaumcraft:blockCrystal:5 x2, Thaumcraft:ItemResource:15]
+
+  - id: pedestais_antigos
+    title: "Pedestais Antigos"
+    type: normal
+    deps: [foco_redirecionamento]
+    icon: gadomancy:BlockStoneMachine:1
+    desc: |
+      O portão precisa de §e4 Olhos Eldritch§r em §ePedestais Antigos§r espalhados em volta dele.
+      Arcana (Perditio e Ordo 25): 5 Pedras Antigas e 4 Pedestais de Pedra Antiga = 1
+      §eAncient Pedestal§r. Faça 4 — e arranje 4 Olhos Eldritch (Eldritch Eye) com o lado
+      eldritch do Thaumcraft.
+    tasks:
+      - get: [gadomancy:BlockStoneMachine:1 x4, Thaumcraft:ItemEldritchObject x4]
+    rewards:
+      - xp: 4
+      - item: Thaumcraft:blockCosmeticSolid:11 x8
+
+  - id: portao_vazio
+    title: "O Portão dos Andarilhos do Vazio"
+    type: portal
+    deps: [pedestais_antigos]
+    icon: gadomancy:BlockAdditionalEldritchPortal
+    banner: "Para Dentro do Abismo"
+    subtitle: "Portão dos Andarilhos do Vazio"
+    effect: 5
+    desc: |
+      Monte o Manipulador de Nodo como antes, mas com o §eFoco de Redirecionamento§r no lugar
+      do de Aleatorização (formar custa 150 de cada primal). Ponha os 4 Olhos Eldritch nos
+      Pedestais Antigos em volta e uma varinha com §e120 de cada primal§r no pedestal. Os olhos
+      são consumidos e o nodo se abre num §eportal eldritch§r.
+
+      O portão é forte, mas instável: §cnão aguenta mais que uma passagem§r. Não dá para voltar
+      por ele. Do outro lado está um §eLabirinto Eldritch só seu§r (dimensão "Outer Lands" do
+      Gadomancy, -73). Leve comida, armadura, tudo. Eu vou estar torcendo daqui.
+    tasks:
+      - visit: {dim: -73, name: "Labirinto Eldritch (Gadomancy)"}
+    rewards:
+      - xp: 10
+      - loot: epico
+
+  - id: labirinto_chefe
+    title: "O Guardião do Labirinto"
+    type: boss
+    deps: [portao_vazio]
+    icon: Thaumcraft:ItemEldritchObject:3
+    banner: "Labirinto Vencido"
+    subtitle: "Os olhos antigos se fecham"
+    task_logic: OR
+    desc: |
+      O labirinto que o portão abre é gerado pelo próprio Thaumcraft, com salas, armadilhas e
+      um §echefe§r no fim. Derrote o guardião: só então §eportais de saída§r se abrem pelo
+      labirinto (e o mod anota o seu tempo — tente bater o recorde!).
+
+      Os chefes eldritch do Thaumcraft são o §eEldritch Warden§r, o §eEldritch Construct§r e o
+      §ePraetor§r do Culto Carmesim. §cEles batem muito forte e alguns ignoram parte da
+      armadura.§r Desça com Proteção Rúnica carregada, poções e comida de sobra.
+    tasks:
+      - kill: "Thaumcraft.EldritchWarden x1"
+      - kill: "Thaumcraft.EldritchGolem x1"
+      - kill: "Thaumcraft.CultistLeader x1"
+    rewards:
+      - xp: 15
+      - loot: [epico, epico]
+
+  - id: decoracao_eldritch
+    title: "Decorações do Eldritch"
+    type: optional
+    deps: [pedras_antigas]
+    icon: Thaumcraft:blockEldritch:4
+    desc: |
+      As pedras dos labirintos têm magia de sobra. Com a pesquisa §eAncient Stones§r você faz
+      na Mesa Arcana a §ePedra Crostosa Brilhante§r (Nitor, Pedra Crostosa e Pó de Pedra
+      Luminosa), Pedra Crostosa a partir de pedregulho musgoso e outras peças eldritch para
+      decorar a sua torre sombria.
+    tasks:
+      - get: Thaumcraft:blockEldritch:4 x3
+    rewards:
+      - loot: comum
+
+  # ======================================================================
+  # FINAL
+  # ======================================================================
+  - id: mestre_gadomancia
+    title: "Mestre da Gadomancia"
+    type: milestone
+    deps: [labirinto_chefe, condensador, garra_infusao, pilao_aura]
+    icon: gadomancy:BlockNodeManipulator:5
+    banner: "Mestre da Gadomancia"
+    subtitle: "Engenhocas, nodos e o abismo"
+    desc: |
+      Jarros que compartilham espaço, golems que quebram e protegem, uma garra que faz
+      infusões sozinha, pilões mudando a aura, um condensador gigante... e você entrou e saiu
+      de um labirinto eldritch por um portão que você mesmo abriu. Uau.
+
+      O Volume das Engenhocas Arcanas está completo, Herói. Ele é uma das peças do §dSelo
+      Arcano§r: aquele lado eldritch que os Antigos tanto temiam agora trabalha para você.
+      Só não fique encarando o abismo por tempo demais, combinado?
+    tasks:
+      - check
+    rewards:
+      - xp: 12
+      - kit: {name: "Relicário do Gadomante", items: ["Thaumcraft:ItemResource:16 x8", "Thaumcraft:ItemShard:6 x16", "Thaumcraft:ItemResource:15 x2", "Thaumcraft:blockJar x8"]}
+      - loot: epico

@@ -1,0 +1,2608 @@
+chapter:
+  id: thermal
+  title: "Thermal Expansion"
+  prefix: ""
+  order: 315
+  icon: ThermalExpansion:Frame
+  desc: |
+    §bO Volume do Fluxo.§r Metais novos, ligas brilhantes, máquinas que sobem de nível,
+    elementais de gelo e fogo, Redstone Flux (RF) e o Tesserato que dobra o espaço.
+    (Thermal Expansion 4.1.5 + Thermal Foundation 1.2.6 + CoFH Core)
+
+quests:
+  # ======================================================================
+  # FASE 0 — A FUNDAÇÃO: MINÉRIOS E METAIS
+  # ======================================================================
+  - id: fundacao_termica
+    title: "A Fundação Térmica"
+    type: main
+    icon: ThermalFoundation:Ore
+    desc: |
+      Sabe o que eu mais amo neste Volume, Herói? Ele é organizado. Cada metal tem seu lugar,
+      cada máquina tem quatro níveis, cada liga tem uma receita certinha. Um paraíso para uma
+      bibliotecária!
+
+      O §eThermal Foundation§r espalha pelo mundo minérios de §eCobre, Estanho, Prata, Chumbo,
+      Ferroso§r (níquel) e §eBrilhante§r (platina). Comece pelo básico: o Cobre aparece entre
+      Y 40 e 96 (há duas faixas de geração), o Estanho entre Y 20 e 55. Funda e junte
+      §e8 lingotes de cada§r — de qualquer mod, o Thermal usa o oredict.
+
+      §aDica:§r nenhum minério do Thermal gera no Nether nem no Fim.
+    tasks:
+      - get: [ore:ingotCopper x8, ore:ingotTin x8]
+    rewards:
+      - xp: 3
+      - choice: [minecraft:iron_ingot x8, minecraft:coal x16, minecraft:torch x32]
+
+  - id: prata
+    title: "Prata"
+    type: normal
+    deps: [fundacao_termica]
+    icon: ThermalFoundation:Ore:2
+    desc: |
+      Prata brilha bonito, mas aqui ela é trabalho: bobinas de transmissão, Electro, Signalo,
+      Lúmio... quase tudo que é "avançado" no Thermal passa por ela.
+
+      O §eMinério de Prata§r gera fundo, entre §eY 5 e 30§r, e os veios vêm misturados com um
+      pouco de chumbo (e os de chumbo com um pouco de prata). Junte §e8 lingotes de prata§r.
+    tasks:
+      - get: ore:ingotSilver x8
+    rewards:
+      - xp: 2
+      - item: minecraft:redstone x8
+
+  - id: chumbo
+    title: "Chumbo"
+    type: normal
+    deps: [fundacao_termica]
+    icon: ThermalFoundation:Ore:3
+    desc: |
+      Pesado, cinzento e indispensável. O §eMinério de Chumbo§r aparece entre §eY 10 e 35§r
+      (às vezes com prata no meio). O chumbo vira a §eCélula de Energia de Leadstone§r, o
+      §eVidro Endurecido§r e os aumentos dos dínamos.
+
+      Junte §e8 lingotes de chumbo§r. Chumbo de outros mods (IC2, Immersive...) também serve.
+    tasks:
+      - get: ore:ingotLead x8
+    rewards:
+      - xp: 2
+      - item: minecraft:glass x8
+
+  - id: minerio_ferroso
+    title: "O Minério Ferroso"
+    type: main
+    deps: [fundacao_termica]
+    icon: ThermalFoundation:Ore:4
+    desc: |
+      Esse aqui é tímido. O §eMinério Ferroso§r (é o níquel, oredict `oreNickel`) gera em
+      veios pequenos, só §e3 por chunk entre Y 5 e 20§r. Mas sem ele não existe §6Invar§r — e
+      sem Invar não existe nenhuma máquina Endurecida.
+
+      Junte §e4 Barras Ferrosas§r. Quando tiver o Pulverizador, cada minério rende 2 pós e
+      ainda pode soltar um pouquinho de platina como subproduto.
+    tasks:
+      - get: ore:ingotNickel x4
+    rewards:
+      - xp: 3
+      - choice: [minecraft:iron_ingot x8, ore:ingotCopper x8, minecraft:torch x32]
+
+  - id: minerio_brilhante
+    title: "O Minério Brilhante"
+    type: optional
+    deps: [minerio_ferroso]
+    icon: ThermalFoundation:Ore:5
+    desc: |
+      O §eMinério Brilhante§r é a platina do Thermal — e é RARO: no máximo §eum veiozinho de
+      até 3 blocos por chunk§r, entre Y 5 e 30 (e 20% desses veios são de minério ferroso).
+
+      Você vai precisar dela lá na frente, para o §5Endério§r. Guarde cada barra! Outras fontes:
+      o subproduto do minério ferroso no Pulverizador e a platina de outros mods (mesmo oredict).
+    tasks:
+      - get: ore:ingotPlatinum
+    rewards:
+      - loot: incomum
+
+  - id: mana_infundido
+    title: "Um Metal que Não Nasce"
+    type: info
+    deps: [minerio_brilhante]
+    icon: ThermalFoundation:material:70
+    desc: |
+      Uma curiosidade, para você não perder tempo cavando: o Thermal registra o §dMinério
+      Infundido em Mana§r (mithril), mas a configuração de geração do pack
+      (`config/cofh/world/ThermalFoundation-Ores.json`) §cnão gera esse minério§r.
+
+      Se um dia aparecer uma Barra Infundida em Mana, ela terá vindo de outro caminho (troca,
+      outro mod, recompensa). Até lá, nada de procurar mithril embaixo da terra!
+    tasks:
+      - check
+    rewards:
+      - xp: 1
+
+  - id: engrenagens
+    title: "Engrenagens"
+    type: main
+    deps: [fundacao_termica]
+    icon: ThermalFoundation:material:129
+    desc: |
+      O Thermal adora engrenagens. Quatro lingotes em cruz com um §eLingote de Ferro§r no
+      centro viram uma engrenagem do metal escolhido (no pack as receitas usam engrenagens, não
+      lingotes).
+
+      Faça uma §eEngrenagem de Estanho§r (vai na Estrutura de Máquina) e duas §eEngrenagens de
+      Cobre§r (vão no fundo de quase toda máquina).
+    tasks:
+      - get: [ThermalFoundation:material:129, ThermalFoundation:material:128 x2]
+    rewards:
+      - xp: 3
+      - choice: [ore:ingotCopper x8, ore:ingotTin x8, minecraft:iron_ingot x8]
+
+  - id: forge_lexicon
+    title: "O Léxico da Forja"
+    type: optional
+    deps: [fundacao_termica]
+    icon: ThermalFoundation:lexicon
+    desc: |
+      Já ficou com três cobres diferentes no baú, cada um de um mod? O §eForge Lexicon§r
+      (livro + diamante + ouro + ferro + redstone) mostra os nomes do oredict de um item e
+      deixa você trocar uma versão pela outra.
+
+      É uma ferramenta de bibliotecária, então você já sabe que eu aprovo.
+    tasks:
+      - get: ThermalFoundation:lexicon
+    rewards:
+      - loot: comum
+
+  - id: ferramentas_metal
+    title: "Ferramentas de Metal Comum"
+    type: optional
+    deps: [fundacao_termica]
+    icon: ThermalFoundation:tool.pickaxeCopper
+    desc: |
+      O Thermal Foundation traz ferramentas e armaduras de quase todos os seus metais, além de
+      §eFoices§r (colhem plantações em área), §eTesouras§r, §eVaras de Pesca§r e §eArcos
+      reforçados§r.
+
+      Faça qualquer peça de cobre, estanho, prata, chumbo ou bronze. Nada revolucionário — mas
+      ajuda a guardar o ferro para as máquinas.
+    tasks:
+      - one_of: [ThermalFoundation:tool.pickaxeCopper, ThermalFoundation:tool.pickaxeTin, ThermalFoundation:tool.pickaxeSilver, ThermalFoundation:tool.pickaxeLead, ThermalFoundation:tool.pickaxeBronze, ThermalFoundation:tool.sickleCopper, ThermalFoundation:tool.sickleIron, ThermalFoundation:tool.sickleBronze]
+    rewards:
+      - loot: comum
+
+  - id: armadura_metal
+    title: "Armadura de Metal"
+    type: optional
+    deps: [ferramentas_metal]
+    icon: ThermalFoundation:armor.plateBronze
+    desc: |
+      Peitorais de cobre, estanho, prata, chumbo, bronze, invar, electro e até de platina (o
+      "Brilhante", o mais resistente da família). Faça um peitoral de qualquer metal do
+      Thermal e já fica mais difícil um creeper estragar o seu dia.
+    tasks:
+      - one_of: [ThermalFoundation:armor.plateCopper, ThermalFoundation:armor.plateTin, ThermalFoundation:armor.plateSilver, ThermalFoundation:armor.plateLead, ThermalFoundation:armor.plateBronze, ThermalFoundation:armor.plateNickel]
+    rewards:
+      - loot: comum
+
+  # ======================================================================
+  # FASE 1 — A PRIMEIRA MÁQUINA
+  # ======================================================================
+  - id: martelo
+    title: "Martelo Tramontina"
+    type: main
+    deps: [engrenagens]
+    icon: ThermalExpansion:wrench
+    desc: |
+      Sim, o jogo chama o §eCrescent Hammer§r de "Martelo Tramontina (Chave Inglesa)". Eu ri
+      por dez minutos. Ele é a chave inglesa do Thermal: gira máquinas, configura lados e,
+      agachado + clique, desmonta o bloco guardando o conteúdo.
+
+      Receita: 3 lingotes de ferro + 1 de estanho (confira o formato no NEI). Ele também
+      funciona como chave na maioria dos mods do pack.
+    tasks:
+      - get: ThermalExpansion:wrench
+    rewards:
+      - xp: 3
+      - choice: [minecraft:iron_ingot x8, minecraft:redstone x16, ore:ingotTin x8]
+
+  - id: bobinas
+    title: "Servo e Bobinas"
+    type: main
+    deps: [martelo, prata]
+    icon: ThermalExpansion:material:1
+    desc: |
+      Três peças que você vai fabricar centenas de vezes:
+      §e• Servo Pneumático§r — ferro, vidro e redstone; move itens e fluidos.
+      §e• Bobina Receptora de Redstone§r — ouro + 2 redstone; "recebe" energia (máquinas).
+      §e• Bobina Transmissora de Redstone§r — prata + 2 redstone; "envia" energia (dínamos).
+
+      Faça uma de cada. A Bobina Receptora vai no centro de baixo de toda máquina.
+    tasks:
+      - get: [ThermalExpansion:material, ThermalExpansion:material:1, ThermalExpansion:material:2]
+    rewards:
+      - xp: 3
+      - choice: [minecraft:redstone x16, minecraft:gold_ingot x4, ore:ingotSilver x4]
+
+  - id: estrutura_maquina
+    title: "Estrutura de Máquina"
+    type: main
+    deps: [engrenagens]
+    icon: ThermalExpansion:Frame
+    desc: |
+      O esqueleto de tudo! A §eEstrutura de Máquina (Básica)§r leva 4 lingotes de ferro, 4
+      vidros e uma Engrenagem de Estanho no centro.
+
+      Toda máquina do Thermal é: Estrutura no meio, a peça característica em cima, dois
+      materiais nas laterais, Engrenagens de Cobre nos cantos de baixo e a Bobina Receptora no
+      centro de baixo. Aprenda esse "molde" e o NEI vira só confirmação.
+    tasks:
+      - get: ThermalExpansion:Frame
+    rewards:
+      - xp: 3
+      - choice: [minecraft:glass x16, minecraft:iron_ingot x8, ore:ingotTin x8]
+
+  - id: energia_rf
+    title: "Aula: Redstone Flux"
+    type: info
+    deps: [estrutura_maquina]
+    icon: ThermalExpansion:meter
+    desc: |
+      O Thermal fala §bRF (Redstone Flux)§r, medido em RF/t. Quase todo mod tecnológico do pack
+      entende RF, então suas células e dínamos alimentam muita coisa além do Thermal.
+
+      §cAtenção:§r o pack §enão tem Thermal Dynamics§r (os condutos/"ducts" do Thermal). Para
+      levar energia, itens e fluidos você usa outros mods:
+      §e•§r Condutos do §bEnder IO§r; Cabos Universais e transmissores do §bMekanism§r;
+      §e•§r Tubos Cinéticos do §bBuildCraft§r (tubo + redstone);
+      §e•§r Nós e Tubos de Transferência do §bExtra Utilities§r;
+      §e•§r os Tubos Universais do §bOmni Pipes§r (mod do próprio pack).
+
+      Dínamo encostado na máquina também funciona: ele empurra RF para o bloco em frente ao
+      eixo. Máquinas do Thermal não explodem com "voltagem" — RF não tem tiers como o EU.
+    tasks:
+      - check
+    rewards:
+      - xp: 1
+
+  - id: fornalha_redstone
+    title: "Fornalha de Redstone"
+    type: main
+    deps: [estrutura_maquina, bobinas]
+    icon: ThermalExpansion:Machine
+    desc: |
+      A primeira máquina: uma fornalha elétrica rapidinha. Molde padrão com §eredstone em
+      cima§r e §etijolos§r nas laterais.
+
+      Ela funde tudo que a fornalha comum funde, gastando RF em vez de carvão. Coloque, ligue
+      numa fonte de energia e me diga se não é a coisa mais satisfatória do mundo ver aquele
+      botão vermelho brilhar!
+    tasks:
+      - get: ThermalExpansion:Machine
+    rewards:
+      - xp: 3
+      - choice: [minecraft:coal x16, ore:ingotCopper x8, minecraft:brick_block x8]
+
+  - id: dinamo_vapor
+    title: "Dínamo a Vapor"
+    type: main
+    deps: [bobinas]
+    icon: ThermalExpansion:Dynamo
+    desc: |
+      Energia! O §eDínamo a Vapor§r queima combustível sólido e precisa de §eágua§r (bombeie ou
+      coloque um balde... na prática, um Acumulador Aquoso ou outro mod de água ajuda muito).
+      Produz até §e80 RF/t§r.
+
+      Valores do pack: carvão = 48 000 RF, carvão vegetal = 32 000 RF. Ele empurra energia
+      pela face do eixo — gire com o Martelo para apontar para a máquina ou para a célula.
+      Ele também aceita vapor de outros mods no lugar da água + combustível.
+    tasks:
+      - get: ThermalExpansion:Dynamo
+    rewards:
+      - xp: 3
+      - choice: [minecraft:coal x32, minecraft:water_bucket, ore:ingotCopper x8]
+
+  - id: estrutura_leadstone
+    title: "Estrutura de Célula de Leadstone"
+    type: normal
+    deps: [chumbo, bobinas]
+    icon: ThermalExpansion:Frame:4
+    desc: |
+      Antes da célula vem a moldura: 4 chumbo, 4 vidros e um §eBloco de Redstone§r no centro.
+      Essa mesma estrutura aparece na receita do Crisol Magmático e do Infusor Energético,
+      então faça logo duas.
+    tasks:
+      - get: ThermalExpansion:Frame:4
+    rewards:
+      - xp: 2
+      - item: minecraft:redstone x9
+
+  - id: celula_leadstone
+    title: "Célula de Energia de Leadstone"
+    type: main
+    deps: [estrutura_leadstone, dinamo_vapor, eletro]
+    icon: ThermalExpansion:Cell:1
+    desc: |
+      Uma bateria de bloco: §e400 000 RF§r, entrada/saída de até §e200 RF/t§r (valores do
+      pack). Estrutura de Leadstone + cobre + uma §eBobina Condutora de Redstone§r (Electro +
+      2 redstone).
+
+      Clique com o Martelo para escolher que lados recebem (azul) e enviam (laranja). Ela
+      guarda a carga quando desmontada.
+    tasks:
+      - get: ThermalExpansion:Cell:1
+    rewards:
+      - xp: 3
+      - choice: [minecraft:redstone x16, ore:ingotLead x8, ore:ingotCopper x8]
+
+  - id: pulverizador
+    title: "Pulverizador"
+    type: main
+    deps: [fornalha_redstone]
+    icon: ThermalExpansion:Machine:1
+    desc: |
+      O coração do processamento: molde padrão com §epistão em cima§r e §esílex§r nas laterais
+      (no pack não precisa de diamante).
+
+      Cada minério vira §e2 pós§r, às vezes com um subproduto: minério de ouro solta Cinábrio,
+      ferroso solta platina, carvão solta Enxofre, arenito solta Salitre... Abra o NEI no
+      Pulverizador para ver os 260+ processos.
+    tasks:
+      - get: ThermalExpansion:Machine:1
+    rewards:
+      - xp: 3
+      - choice: [minecraft:iron_ore x8, minecraft:gold_ore x4, minecraft:redstone x16]
+
+  - id: pos_pulverizados
+    title: "Dobrando os Minérios"
+    type: normal
+    deps: [pulverizador]
+    icon: ThermalFoundation:material
+    desc: |
+      Pulverize e veja os números dobrarem! Junte §e16 Pós de Ferro Pulverizado§r e §e8 Pós de
+      Cobre Pulverizado§r e funda tudo na Fornalha de Redstone.
+
+      Os pós também são ingredientes: as misturas de liga (Invar, Electro, Bronze) se fazem na
+      bancada a partir deles.
+    tasks:
+      - get: [ThermalFoundation:material x16, ThermalFoundation:material:32 x8]
+    rewards:
+      - xp: 2
+      - item: minecraft:coal x16
+
+  - id: carvao_pulverizado
+    title: "Carvão Pulverizado"
+    type: normal
+    deps: [pulverizador]
+    icon: ThermalFoundation:material:2
+    desc: |
+      Carvão no Pulverizador vira §eCarvão Pulverizado§r — com chance de soltar §eEnxofre§r.
+      O pó de carvão é ingrediente do Pyrotheum, do aço na Fundição e do Carvão Liquefeito no
+      Crisol. Junte 8.
+    tasks:
+      - get: ThermalFoundation:material:2 x8
+    rewards:
+      - xp: 2
+      - item: minecraft:coal x16
+
+  - id: enxofre_salitre
+    title: "Enxofre e Salitre"
+    type: normal
+    deps: [carvao_pulverizado]
+    icon: ThermalFoundation:material:16
+    desc: |
+      Dois pós amarelinhos que a química do Thermal adora:
+      §e• Enxofre§r — subproduto do Pulverizador (carvão, Netherrack, minério de quartzo,
+      bastão de blaze...).
+      §e• Salitre (Niter)§r — subproduto do arenito no Pulverizador; o Blitz também deixa cair.
+
+      Junte §e4 de cada§r. O Enxofre vai no Pyrotheum e no Capacitor; o Salitre no Cryotheum,
+      no Aerotheum e na Fito-Gosma.
+    tasks:
+      - get: [ore:dustSulfur x4, ore:dustSaltpeter x4]
+    rewards:
+      - xp: 2
+      - item: minecraft:sandstone x16
+
+  - id: cinabrio
+    title: "Cristal de Cinábrio"
+    type: optional
+    deps: [pulverizador]
+    icon: ThermalFoundation:material:20
+    desc: |
+      Pulverize §eminério de redstone§r ou §eminério de ouro§r e, de vez em quando, sai um
+      §eCristal de Cinábrio§r. Guarde! Na Fundição Induzida, minério + Cinábrio rende §e3
+      lingotes§r (o fundente mais forte do Thermal).
+    tasks:
+      - get: ThermalFoundation:material:20
+    rewards:
+      - loot: comum
+
+  - id: serraria
+    title: "Serraria"
+    type: normal
+    deps: [fornalha_redstone]
+    icon: ThermalExpansion:Machine:2
+    desc: |
+      Molde padrão com §emachado de ferro em cima§r e §etábuas§r nas laterais. A Serraria tira
+      §e6 tábuas por tronco§r (multiplicador 1,5 do pack) e ainda solta §eSerragem§r.
+
+      Também desmonta escadas, baús e outras coisas de madeira de volta em tábuas.
+    tasks:
+      - get: ThermalExpansion:Machine:2
+    rewards:
+      - xp: 2
+      - item: minecraft:log x16
+
+  - id: serragem
+    title: "Serragem"
+    type: optional
+    deps: [serraria]
+    icon: ThermalExpansion:material:512
+    desc: |
+      8 Serragens em anel = §eSerragem Comprimida§r, que na fornalha vira carvão vegetal.
+      A Serragem também entra nos Florbs e na Fito-Gosma. Nada se perde no Thermal!
+    tasks:
+      - get: ThermalExpansion:material:513
+    rewards:
+      - loot: comum
+
+  - id: fundicao_inducao
+    title: "Fundição Induzida"
+    type: main
+    deps: [pulverizador, mistura_invar]
+    icon: ThermalExpansion:Machine:3
+    desc: |
+      Agora sim, metalurgia de verdade! Molde padrão com §ebalde em cima§r e §eInvar§r nas
+      laterais... espera, Invar? Pois é: a primeira Fundição precisa de 2 Barras de Invar.
+      Faça-as pela §eMistura de Invar§r (2 pós de ferro + 1 pó ferroso na bancada = 3
+      misturas) fundida na fornalha.
+
+      A Fundição tem duas entradas: liga metais, faz Vidro Endurecido, aço, e funde minério com
+      fundente (areia, Escória Rica, Cinábrio) para render mais lingotes.
+    tasks:
+      - get: ThermalExpansion:Machine:3
+    rewards:
+      - xp: 3
+      - choice: [minecraft:sand x32, minecraft:iron_ingot x12, ore:ingotNickel x2]
+
+  - id: invar
+    title: "Invar"
+    type: main
+    deps: [fundicao_inducao]
+    icon: ThermalFoundation:material:72
+    desc: |
+      §e2 ferros + 1 níquel = 3 Invar§r (na Fundição, com lingotes ou pós). Duro, resistente ao
+      calor e onipresente: Estrutura Endurecida, dínamo magmático, todas as atualizações de
+      nível Endurecido, ferramentas e a Picareta que o Quebrador de Terreno exige.
+
+      Junte §e16 Barras de Invar§r. Prometo que vai faltar mesmo assim.
+    tasks:
+      - get: ore:ingotInvar x16
+    rewards:
+      - xp: 3
+      - choice: [minecraft:iron_ingot x16, ore:ingotNickel x2, minecraft:redstone x16]
+
+  - id: eletro
+    title: "Electro"
+    type: main
+    deps: [fundicao_inducao, prata]
+    icon: ThermalFoundation:material:71
+    desc: |
+      O jogo em pt_BR chama o Electrum de §e"Electro"§r. É §eouro + prata = 2 barras§r. Condutor
+      perfeito: Bobina Condutora, Engrenagem de Electro (estrutura Endurecida), Dínamo de
+      Enervação, Multímetro...
+
+      Junte §e8 Barras de Electro§r.
+    tasks:
+      - get: ore:ingotElectrum x8
+    rewards:
+      - xp: 3
+      - choice: [minecraft:gold_ingot x6, ore:ingotSilver x6, minecraft:redstone x16]
+
+  - id: bronze
+    title: "Bronze"
+    type: normal
+    deps: [fundicao_inducao]
+    icon: ThermalFoundation:material:73
+    desc: |
+      §e3 cobres + 1 estanho = 4 bronzes§r. No Thermal o bronze vai no Dínamo Reagente, nos
+      aumentos de velocidade, no Tesserato e no Montador. Junte §e8§r.
+    tasks:
+      - get: ore:ingotBronze x8
+    rewards:
+      - xp: 2
+      - item: ore:ingotCopper x6
+
+  - id: mistura_invar
+    title: "Mistura de Invar"
+    type: main
+    deps: [pulverizador, minerio_ferroso]
+    icon: ThermalFoundation:material:40
+    desc: |
+      Antes da Fundição existir, existe a bancada. §e2 Pós de Ferro Pulverizado + 1 Pó Ferroso =
+      3 Misturas de Invar§r. Funda as misturas numa fornalha comum e pronto: Invar sem máquina
+      nenhuma.
+
+      Faça §e3 misturas§r. Duas barras vão para a Fundição Induzida, que pede Invar nas laterais.
+    tasks:
+      - get: ThermalFoundation:material:40 x3
+    rewards:
+      - xp: 3
+      - choice: [minecraft:iron_ore x6, ore:ingotNickel x1, minecraft:coal x16]
+
+  - id: outras_misturas
+    title: "Misturas de Bancada"
+    type: optional
+    deps: [mistura_invar, prata]
+    icon: ThermalFoundation:material:39
+    desc: |
+      O mesmo truque vale para outras ligas: §eMistura de Electro§r (pó de ouro + pó de prata = 2)
+      e §eMistura de Bronze§r (3 pós de cobre + 1 de estanho = 4). Pulverizar, misturar e fundir
+      dispensa a Fundição — só é mais trabalhoso. Faça qualquer uma.
+    tasks:
+      - one_of: [ThermalFoundation:material:39, ThermalFoundation:material:41]
+    rewards:
+      - loot: comum
+
+  - id: aula_lados
+    title: "Aula: Configurando os Lados"
+    type: info
+    deps: [fornalha_redstone]
+    icon: ThermalExpansion:wrench
+    desc: |
+      Toda máquina do Thermal tem uma aba de §eConfiguração§r na lateral da interface. Ali você vê
+      o bloco em 3D: clique em cada face para trocar a função dela — cada cor é uma função
+      (entrada, saída principal, saída secundária, entrada e saída...). Passe o mouse em cima para
+      ler o nome da função.
+
+      Também dá para clicar com o §eMartelo§r direto numa face da máquina. A aba de §eredstone§r
+      escolhe se ela ignora, exige ou é desligada por sinal. E, no pack, toda máquina já vem com
+      §aauto-entrada e auto-saída§r: ligue a aba de transferência e ela empurra sozinha para o
+      que estiver encostado.
+    tasks:
+      - check
+    rewards:
+      - xp: 1
+
+  - id: engrenagem_invar
+    title: "Engrenagem de Invar"
+    type: normal
+    deps: [invar]
+    icon: ThermalFoundation:material:136
+    desc: |
+      4 Invar + 1 ferro = §eEngrenagem de Invar§r. Vai no §eDínamo Magmático§r (duas!) e em
+      receitas de outros mods do pack. Faça 2.
+    tasks:
+      - get: ThermalFoundation:material:136 x2
+    rewards:
+      - xp: 2
+      - item: minecraft:iron_ingot x4
+
+  - id: engrenagem_eletro
+    title: "Engrenagem de Electro"
+    type: normal
+    deps: [eletro]
+    icon: ThermalFoundation:material:135
+    desc: |
+      4 Electros + 1 ferro. É a peça-chave do nível Endurecido (estrutura e cada atualização de
+      máquina leva uma), além do Multímetro, do Dínamo de Enervação e do Flux Transfuser.
+      Faça 2.
+    tasks:
+      - get: ThermalFoundation:material:135 x2
+    rewards:
+      - xp: 2
+      - item: minecraft:gold_ingot x4
+
+  - id: engrenagem_bronze
+    title: "Engrenagem de Bronze"
+    type: normal
+    deps: [bronze]
+    icon: ThermalFoundation:material:137
+    desc: |
+      4 bronzes + 1 ferro. Usada no §eDínamo Reagente§r e no §eFluiVac§r. Faça 2.
+    tasks:
+      - get: ThermalFoundation:material:137 x2
+    rewards:
+      - xp: 2
+      - item: ore:ingotCopper x6
+
+  - id: aco_fundicao
+    title: "Aço na Fundição"
+    type: optional
+    deps: [fundicao_inducao, carvao_pulverizado]
+    icon: minecraft:iron_ingot
+    desc: |
+      Como o pack tem aço (oredict `ingotSteel`), a Fundição Induzida ganha uma receita bônus:
+      §e1 ferro + 2 Carvões Pulverizados = 1 aço§r (ou 4 pós de carvão vegetal). Um atalho
+      ótimo para os mods que pedem aço.
+    tasks:
+      - get: ore:ingotSteel x2
+    rewards:
+      - loot: comum
+
+  - id: obsidiana_pulverizada
+    title: "Obsidiana Pulverizada"
+    type: normal
+    deps: [pulverizador]
+    icon: ThermalFoundation:material:4
+    desc: |
+      Obsidiana no Pulverizador vira §eObsidiana Pulverizada§r. Você vai precisar de MUITA: 4
+      por cada par de Vidro Endurecido. Junte §e8§r. (Extrusor Ígneo + Pulverizador = obsidiana
+      infinita, só uma dica para mais tarde.)
+    tasks:
+      - get: ThermalFoundation:material:4 x8
+    rewards:
+      - xp: 2
+      - item: minecraft:obsidian x8
+
+  - id: vidro_endurecido
+    title: "Vidro Endurecido"
+    type: main
+    deps: [obsidiana_pulverizada, fundicao_inducao, chumbo]
+    icon: ThermalExpansion:Glass
+    desc: |
+      Na Fundição: §e1 chumbo (lingote ou pó) + 4 Obsidianas Pulverizadas = 2 Vidros
+      Endurecidos§r. É à prova de explosão e é a base do nível Reforçado: estruturas, tanques,
+      caixas, células...
+
+      Junte §e8§r. O Alloy Smelter do Ender IO também faz, se preferir.
+    tasks:
+      - get: ThermalExpansion:Glass x8
+    rewards:
+      - xp: 3
+      - choice: [minecraft:obsidian x8, ore:ingotLead x6, minecraft:glass x16]
+
+  - id: escoria
+    title: "Escória e Escória Rica"
+    type: optional
+    deps: [fundicao_inducao]
+    icon: ThermalExpansion:material:515
+    desc: |
+      Fundir minério com areia solta §eEscória§r e às vezes §eEscória Rica§r. A Rica é ouro
+      disfarçado: minério + Escória Rica na Fundição rende §e3 lingotes§r. A Escória comum
+      vira Lã Rochosa na fornalha e é ingrediente dos Florbs.
+    tasks:
+      - get: [ThermalExpansion:material:514, ThermalExpansion:material:515]
+    rewards:
+      - loot: comum
+
+  - id: la_rochosa
+    title: "Lã Rochosa"
+    type: optional
+    deps: [escoria]
+    icon: ThermalExpansion:Rockwool
+    desc: |
+      Escória na fornalha vira §eLã Rochosa§r: um bloco de lã que não pega fogo. Tinja como lã
+      comum. Perfeita para decorar a casa das máquinas sem medo de incêndio.
+    tasks:
+      - get: ThermalExpansion:Rockwool:* x8
+    rewards:
+      - loot: comum
+
+  - id: rendimento_minerio
+    title: "Aula: Quanto Rende um Minério?"
+    type: info
+    deps: [fundicao_inducao]
+    icon: ThermalExpansion:Machine:3
+    desc: |
+      Vamos às contas, Herói (eu trouxe o caderninho):
+      §e• Fornalha:§r 1 minério = 1 lingote.
+      §e• Minério + Pó de Pyrotheum na bancada:§r 1 lingote, sem gastar combustível.
+      §e• Pulverizador:§r 1 minério = 2 pós (+ subproduto).
+      §e• Fundição + Areia:§r 1 minério = 2 lingotes (+ chance de Escória Rica).
+      §e• Fundição + Escória Rica ou Cinábrio:§r 1 minério = §63 lingotes§r.
+
+      Conclusão: guarde a Escória Rica e o Cinábrio para os minérios caros (prata, platina,
+      ferroso). Para os baratos, Pulverizador está ótimo.
+    tasks:
+      - check
+    rewards:
+      - xp: 1
+
+  - id: primeira_oficina
+    title: "A Primeira Oficina Térmica"
+    type: milestone
+    deps: [pulverizador, fundicao_inducao, celula_leadstone, invar, eletro]
+    icon: ThermalExpansion:Machine:1
+    banner: "A Oficina Térmica"
+    subtitle: "O Fluxo começa a correr"
+    desc: |
+      Olhe a sua bancada: Pulverizador dobrando minério, Fundição Induzida fazendo ligas, um
+      dínamo soprando vapor e uma Célula de Leadstone cheia de RF. Herói, este é o primeiro
+      capítulo inteiro do Volume do Fluxo reescrito!
+
+      Dicas de organização:
+      §e•§r Use o Martelo nas máquinas para configurar os lados (cada cor é uma função) e
+      ligue a §eauto-saída§r — no pack toda máquina já vem com auto-entrada/saída, lados
+      configuráveis e controle de redstone de fábrica.
+      §e•§r Ponha a Célula entre o dínamo e as máquinas: ela segura os picos.
+
+      Agora vêm os fluidos, os elementais e o nível §eEndurecido§r. Eu estou radiante!
+    tasks:
+      - get: [ThermalExpansion:Machine:1, ThermalExpansion:Machine:3, ThermalExpansion:Cell:1, ore:ingotInvar x4, ore:ingotElectrum x4]
+    rewards:
+      - xp: 6
+      - kit: {name: "Kit do Aprendiz Térmico", items: [ThermalExpansion:material:1 x4, ThermalExpansion:material:2 x2, ThermalFoundation:material:128 x4, ThermalFoundation:material:129 x2, minecraft:redstone x32]}
+      - loot: incomum
+
+  # ======================================================================
+  # FASE 2 — FLUIDOS, CRISOL E TRANSPOSITOR
+  # ======================================================================
+  - id: crisol_magmatico
+    title: "Crisol Magmático"
+    type: main
+    deps: [primeira_oficina, estrutura_leadstone]
+    icon: ThermalExpansion:Machine:4
+    desc: |
+      Uma máquina que derrete pedra! Molde padrão com uma §eEstrutura de Célula de Leadstone§r
+      em cima e §etijolos do Nether§r nas laterais. Gasta bastante energia (base 400 RF/t).
+
+      Ele transforma sólidos em fluidos: Redstone → §eRedstone Desestabilizada§r (100 mB),
+      Pó de Pedra Luminosa → §ePedra Luminosa Energizada§r (250 mB), Pérola do Ender →
+      §eEnder Ressonante§r (250 mB), pedregulho/pedra/obsidiana/Netherrack → lava, e os pós
+      elementais → seus fluidos.
+    tasks:
+      - get: ThermalExpansion:Machine:4
+    rewards:
+      - xp: 4
+      - choice: [minecraft:redstone x32, minecraft:netherrack x32, minecraft:nether_brick x16]
+
+  - id: transpositor
+    title: "Transpositor de Fluidos"
+    type: main
+    deps: [primeira_oficina]
+    icon: ThermalExpansion:Machine:5
+    desc: |
+      Molde padrão com §ebalde em cima§r e §evidro§r nas laterais. O §eTranspositor§r enche e
+      esvazia recipientes (baldes, Florbs, tanques portáteis) e faz receitas de "banho":
+      arenito + Ender Ressonante = Pedra do Fim, gelo + Cryotheum = gelo compactado, pó de
+      pedra luminosa + Redstone Desestabilizada = pó de blaze...
+
+      Use o botão da interface para alternar entre §eencher§r e §eesvaziar§r.
+    tasks:
+      - get: ThermalExpansion:Machine:5
+    rewards:
+      - xp: 4
+      - choice: [minecraft:bucket x4, minecraft:glass x16, minecraft:redstone x16]
+
+  - id: tanque_portatil
+    title: "Tanque Portátil"
+    type: normal
+    deps: [transpositor]
+    icon: ThermalExpansion:Tank:1
+    desc: |
+      Cobre no meio e 4 vidros em volta: um §eTanque Portátil§r de §e8 000 mB§r (config do
+      pack). Ele guarda o fluido quando quebrado — ótimo para carregar lava ou água. Também
+      sobe de nível com Invar, Vidro Endurecido e Endério.
+    tasks:
+      - get: ThermalExpansion:Tank:1
+    rewards:
+      - xp: 2
+      - item: minecraft:glass x8
+
+  - id: redstone_desestabilizada
+    title: "Redstone Desestabilizada"
+    type: main
+    deps: [crisol_magmatico, transpositor]
+    icon: ThermalFoundation:bucket
+    desc: |
+      Derreta redstone no Crisol e coloque o fluido num balde com o Transpositor: §eBalde de
+      Redstone Desestabilizada§r. Ela é o "sangue" do Signalo, das Células de Redstone e das
+      Ressonantes (4 000 mB por estrutura!).
+
+      §aDica:§r 1 Bloco de Redstone rende 900 mB de uma vez. Use blocos.
+    tasks:
+      - get: ThermalFoundation:bucket
+    rewards:
+      - xp: 4
+      - choice: [minecraft:redstone_block x4, minecraft:bucket x4, ore:ingotCopper x8]
+
+  - id: pedra_energizada
+    title: "Pedra Luminosa Energizada"
+    type: normal
+    deps: [redstone_desestabilizada]
+    icon: ThermalFoundation:bucket:1
+    desc: |
+      Pó de Pedra Luminosa no Crisol (ou blocos, que rendem 1 000 mB) e um balde no
+      Transpositor: §eBalde de Pedra Luminosa Energizada§r. É ingrediente do §eLúmio§r. Essa
+      coisa é tão leve que flutua... cuidado ao derramar!
+    tasks:
+      - get: ThermalFoundation:bucket:1
+    rewards:
+      - xp: 3
+      - item: minecraft:glowstone_dust x16
+
+  - id: ender_ressonante
+    title: "Ender Ressonante"
+    type: normal
+    deps: [redstone_desestabilizada]
+    icon: ThermalFoundation:bucket:2
+    desc: |
+      Pérolas do Ender no Crisol (250 mB cada) e um balde no Transpositor: §eBalde de Ender
+      Ressonante§r. Ele é a alma do §5Endério§r e enche a Estrutura do Tesserato (1 000 mB).
+
+      §cCuidado:§r esse fluido teleporta quem nada nele. Não faça piscina!
+    tasks:
+      - get: ThermalFoundation:bucket:2
+    rewards:
+      - xp: 3
+      - item: minecraft:ender_pearl x4
+
+  - id: signalo
+    title: "Signalo"
+    type: main
+    deps: [redstone_desestabilizada, prata]
+    icon: ThermalFoundation:material:74
+    desc: |
+      O §eSignalum§r (aqui "Signalo") é cobre com alma de redstone. Na bancada: §e3 pós de cobre
+      + 1 pó de prata + 1 Balde de Redstone Desestabilizada = 4 Misturas de Signalo§r (o balde
+      volta vazio). Funda as misturas (fornalha serve).
+
+      Junte §e8 Barras de Signalo§r: elas vão na Engrenagem de Signalo (estrutura Reforçada), na
+      Trava de Segurança, nas Placas e nas Lâmpadas.
+    tasks:
+      - get: ore:ingotSignalum x8
+    rewards:
+      - xp: 4
+      - choice: [ore:ingotCopper x12, ore:ingotSilver x4, minecraft:redstone_block x2]
+
+  - id: lumio
+    title: "Lúmio"
+    type: main
+    deps: [pedra_energizada]
+    icon: ThermalFoundation:material:75
+    desc: |
+      O §eLumium§r ("Lúmio") é estanho que brilha: §e3 pós de estanho + 1 pó de prata + 1 Balde
+      de Pedra Luminosa Energizada = 4 Misturas de Lúmio§r, fundidas na fornalha.
+
+      Junte §e4 Barras de Lúmio§r — uma engrenagem delas vai no Insolador Fitogênico, e o pó vira
+      lâmpadas lindas.
+    tasks:
+      - get: ore:ingotLumium x4
+    rewards:
+      - xp: 4
+      - choice: [ore:ingotTin x12, ore:ingotSilver x4, minecraft:glowstone x4]
+
+  - id: engrenagem_signalo
+    title: "Engrenagem de Signalo"
+    type: normal
+    deps: [signalo]
+    icon: ThermalFoundation:material:138
+    desc: |
+      4 Signalos + 1 ferro. Cada estrutura e cada atualização para o nível §eReforçado§r leva uma.
+      Faça 2 e já vá separando o Vidro Endurecido.
+    tasks:
+      - get: ThermalFoundation:material:138 x2
+    rewards:
+      - xp: 2
+      - item: minecraft:redstone x16
+
+  - id: engrenagem_lumio
+    title: "Engrenagem de Lúmio"
+    type: normal
+    deps: [lumio]
+    icon: ThermalFoundation:material:139
+    desc: |
+      4 Lúmios + 1 ferro. Ela vai em cima do §eInsolador Fitogênico§r, a estufa do Thermal.
+    tasks:
+      - get: ThermalFoundation:material:139
+    rewards:
+      - xp: 2
+      - item: minecraft:glowstone_dust x8
+
+  - id: balde_pyrotheum
+    title: "Balde de Pyrotheum"
+    type: normal
+    deps: [pyrotheum, transpositor]
+    icon: ThermalFoundation:bucket:3
+    desc: |
+      Derreta Pó de Pyrotheum no Crisol (250 mB por pó) e encha um balde no Transpositor. Esse
+      balde vale §e2 000 000 RF§r no Dínamo Magmático. §cO fluido queima tudo que encosta.§r
+    tasks:
+      - get: ThermalFoundation:bucket:3
+    rewards:
+      - xp: 3
+      - item: minecraft:blaze_rod x2
+
+  - id: balde_cryotheum
+    title: "Balde de Cryotheum"
+    type: optional
+    deps: [cryotheum, transpositor]
+    icon: ThermalFoundation:bucket:4
+    desc: |
+      Cryotheum derretido (sim, "derretido") num balde: o melhor refrigerante para o Dínamo de
+      Compressão. §cEle congela água e fere quem nadar nele.§r
+    tasks:
+      - get: ThermalFoundation:bucket:4
+    rewards:
+      - loot: comum
+
+  - id: carvao_liquefeito
+    title: "Carvão Liquefeito"
+    type: optional
+    deps: [carvao_pulverizado, crisol_magmatico, transpositor]
+    icon: ThermalFoundation:bucket:6
+    desc: |
+      Carvão Pulverizado no Crisol vira §eCarvão Liquefeito§r (100 mB por pó). No Dínamo de
+      Compressão rende 1 000 000 RF por balde — um combustível líquido feito só de carvão.
+    tasks:
+      - get: ThermalFoundation:bucket:6
+    rewards:
+      - loot: comum
+
+  - id: banhos_transpositor
+    title: "Banhos do Transpositor"
+    type: optional
+    deps: [ender_ressonante, pedra_energizada]
+    icon: minecraft:end_stone
+    desc: |
+      Três truques do Transpositor que conferi no NEI:
+      §e•§r Arenito + Ender Ressonante = §ePedra do Fim§r.
+      §e•§r Gelo + Cryotheum = §eGelo Compactado§r.
+      §e•§r Pó de Pedra Luminosa + Redstone Desestabilizada = §ePó de Blaze§r (Pyrotheum sem ir ao
+      Nether!).
+
+      Faça qualquer um deles.
+    tasks:
+      - one_of: [minecraft:end_stone x4, minecraft:packed_ice x4, minecraft:blaze_powder x4]
+    rewards:
+      - loot: comum
+
+  - id: florb_magmatico
+    title: "Florb Magmático"
+    type: optional
+    deps: [florbs]
+    icon: ThermalExpansion:florb:1
+    desc: |
+      Serragem + Escória + Creme de Magma (ou slime + pó de blaze) = 4 §eFlorbs Magmáticos§r. São
+      os únicos que aguentam lava e outros fluidos quentes. Encha um com lava e... use com
+      responsabilidade, por favor.
+    tasks:
+      - get: ThermalExpansion:florb:1
+    rewards:
+      - loot: comum
+
+  - id: florbs
+    title: "Florbs"
+    type: optional
+    deps: [transpositor, escoria, serragem]
+    icon: ThermalExpansion:florb
+    desc: |
+      Serragem + Escória + Bola de Slime = §e4 Florbs§r. Encha no Transpositor com 1 000 mB de
+      qualquer fluido e §earremesse§r: onde ele cair, vira um bloco de fluido. Com Creme de Magma
+      no lugar do slime saem os §eFlorbs Magmáticos§r, que aguentam fluidos quentes (lava!).
+
+      Sim, você pode jogar lava nos inimigos. Não, eu não recomendo dentro de casa.
+    tasks:
+      - get: ThermalExpansion:florb:*
+    rewards:
+      - loot: comum
+
+  - id: esponja_termica
+    title: "Esponjas Térmicas"
+    type: optional
+    deps: [serragem]
+    icon: ThermalExpansion:Sponge:1
+    desc: |
+      Barbante + Serragem + Bola de Slime = §eEsponja Simples§r (absorve água); com Creme de
+      Magma vira a §eEsponja Magmática§r, que também absorve lava. Ótimas para limpar aquele
+      vazamento que você jura que não foi culpa sua.
+    tasks:
+      - one_of: [ThermalExpansion:Sponge:1, ThermalExpansion:Sponge:2]
+    rewards:
+      - loot: comum
+
+  # ======================================================================
+  # FASE 3 — OS ELEMENTAIS
+  # ======================================================================
+  - id: elementais
+    title: "Aula: Os Elementais"
+    type: info
+    deps: [crisol_magmatico]
+    icon: ThermalFoundation:material:1024
+    desc: |
+      O Thermal Foundation tem três "primos" do Blaze, e cada um deixa cair um bastão:
+      §b• Blizz§r — biomas frios/nevados. Bastão de Blizz (+ bolas de neve).
+      §e• Blitz§r — planícies e biomas arenosos. Bastão de Blitz (+ Salitre).
+      §6• Basalz§r — montanhas e terras devastadas. Bastão de Basalz (+ Obsidiana Pulverizada).
+
+      Todos aparecem no escuro (luz 8 ou menos), em grupos de até 4, e atiram projéteis do seu
+      elemento. Bastões viram 2 pós na bancada ou no Pulverizador. E não esqueça do bom e velho
+      §cBlaze§r do Nether: o Pyrotheum precisa do pó dele.
+    tasks:
+      - check
+    rewards:
+      - xp: 1
+
+  - id: blaze
+    title: "Pó de Blaze"
+    type: normal
+    deps: [elementais]
+    icon: minecraft:blaze_powder
+    desc: |
+      Vá ao Nether e caçe Blazes nas fortalezas. No Pulverizador, cada §eBastão de Blaze§r rende
+      §e4 Pós de Blaze§r (+ enxofre de vez em quando), o dobro da bancada! Junte §e8 pós§r.
+    tasks:
+      - get: minecraft:blaze_powder x8
+    rewards:
+      - xp: 3
+      - item: minecraft:glowstone_dust x8
+
+  - id: pyrotheum
+    title: "Pyrotheum Ardente"
+    type: main
+    deps: [blaze, enxofre_salitre]
+    icon: ThermalFoundation:material:512
+    desc: |
+      O fogo engarrafado do Thermal! Na bancada: §eCarvão Pulverizado + Enxofre + Redstone + Pó
+      de Blaze = 2 Pós de Pyrotheum§r.
+
+      Ele vira fluido no Crisol (250 mB), que no Dínamo Magmático vale §e2 000 000 RF por
+      balde§r (11× a lava!). Também é fundente da Fundição (Endério!), vai nos aumentos de
+      velocidade e no Capacitor Ressonante. Junte §e8 pós§r.
+    tasks:
+      - get: ThermalFoundation:material:512 x8
+    rewards:
+      - xp: 4
+      - choice: [minecraft:blaze_rod x4, ThermalFoundation:material:2 x8, minecraft:redstone x16]
+
+  - id: blizz
+    title: "O Blizz"
+    type: normal
+    deps: [elementais]
+    icon: ThermalFoundation:material:1024
+    desc: |
+      Agasalhe-se e procure o §bBlizz§r em biomas nevados, à noite ou em cavernas. Ele atira
+      bolas de gelo que deixam você lento. Traga §e4 Bastões de Blizz§r.
+    tasks:
+      - get: ThermalFoundation:material:1024 x4
+    rewards:
+      - xp: 3
+      - item: minecraft:snowball x16
+
+  - id: cryotheum
+    title: "Cryotheum Gélido"
+    type: normal
+    deps: [blizz, enxofre_salitre]
+    icon: ThermalFoundation:material:513
+    desc: |
+      Bola de neve + Salitre + Redstone + Pó de Blizz = §e2 Pós de Cryotheum§r. É o melhor
+      refrigerante do Dínamo de Compressão (4 000 000 por balde contra 400 000 da água) e vai nos
+      aumentos de dínamo de nível III. Junte §e4§r.
+    tasks:
+      - get: ThermalFoundation:material:513 x4
+    rewards:
+      - xp: 3
+      - item: minecraft:snowball x16
+
+  - id: blitz
+    title: "O Blitz"
+    type: optional
+    deps: [elementais]
+    icon: ThermalFoundation:material:1026
+    desc: |
+      Um elemental de ar que gosta de planícies e desertos. Derrote alguns e traga §e2 Bastões
+      de Blitz§r. Bônus: ele deixa cair Salitre.
+    tasks:
+      - get: ThermalFoundation:material:1026 x2
+    rewards:
+      - loot: comum
+
+  - id: aerotheum
+    title: "Aerotheum Zéfiro"
+    type: optional
+    deps: [blitz, enxofre_salitre]
+    icon: ThermalFoundation:material:514
+    desc: |
+      Areia + Salitre + Redstone + Pó de Blitz = §e2 Pós de Aerotheum§r. Nesta versão os usos
+      são poucos: vira um fluido mais leve que o ar no Crisol e serve em algumas receitas de
+      outros mods (confira com U no NEI). Mais pela coleção que pela fábrica.
+    tasks:
+      - get: ThermalFoundation:material:514 x2
+    rewards:
+      - loot: comum
+
+  - id: basalz
+    title: "O Basalz"
+    type: optional
+    deps: [elementais]
+    icon: ThermalFoundation:material:1028
+    desc: |
+      Um elemental de pedra das montanhas e terras devastadas. Ele joga pedrinhas e deixa cair
+      Obsidiana Pulverizada. Traga §e2 Bastões de Basalz§r.
+    tasks:
+      - get: ThermalFoundation:material:1028 x2
+    rewards:
+      - loot: comum
+
+  - id: petrotheum
+    title: "Petrotheum Tectônico"
+    type: optional
+    deps: [basalz, obsidiana_pulverizada]
+    icon: ThermalFoundation:material:515
+    desc: |
+      Argila + Obsidiana Pulverizada + Redstone + Pó de Basalz = §e2 Pós de Petrotheum§r. Como o
+      Aerotheum, aqui é quase um item de coleção: vira fluido no Crisol. Completa o quarteto
+      elemental — e eu adoro um quarteto completo.
+    tasks:
+      - get: ThermalFoundation:material:515 x2
+    rewards:
+      - loot: comum
+
+  - id: quarteto_elemental
+    title: "O Quarteto Elemental"
+    type: optional
+    deps: [pyrotheum, cryotheum, aerotheum, petrotheum]
+    icon: ThermalFoundation:material:512
+    desc: |
+      Fogo, gelo, ar e terra numa mesma mochila! Junte 1 pó de cada elemento. Os Antigos
+      chamavam isso de "os quatro cantos da página". Eu chamo de "tarde produtiva".
+    tasks:
+      - get: [ThermalFoundation:material:512, ThermalFoundation:material:513, ThermalFoundation:material:514, ThermalFoundation:material:515]
+    rewards:
+      - loot: incomum
+
+  # ======================================================================
+  # FASE 4 — AS OUTRAS MÁQUINAS
+  # ======================================================================
+  - id: precipitador
+    title: "Precipitador Glacial"
+    type: normal
+    deps: [primeira_oficina]
+    icon: ThermalExpansion:Machine:6
+    desc: |
+      Molde padrão com §epistão em cima§r e §eInvar§r nas laterais. Ele congela água em §eneve,
+      blocos de neve e gelo§r usando energia. Bolas de neve para o Cryotheum, gelo para o
+      Transpositor... sem viajar até a tundra.
+    tasks:
+      - get: ThermalExpansion:Machine:6
+    rewards:
+      - xp: 2
+      - item: minecraft:water_bucket
+
+  - id: extrusor
+    title: "Extrusor Ígneo"
+    type: normal
+    deps: [primeira_oficina]
+    icon: ThermalExpansion:Machine:7
+    desc: |
+      Molde com §epistão em cima§r, §evidro§r nas laterais e um §eServo Pneumático§r no lugar da
+      bobina. Ele mistura lava e água para fazer rocha, sem gastar RF:
+      §e• Pedregulho:§r não consome nada.
+      §e• Pedra:§r consome água (1 000 mB).
+      §e• Obsidiana:§r consome 1 000 mB de lava e de água.
+
+      Obsidiana automática = Obsidiana Pulverizada infinita = Vidro Endurecido infinito.
+    tasks:
+      - get: ThermalExpansion:Machine:7
+    rewards:
+      - xp: 2
+      - item: minecraft:lava_bucket
+
+  - id: acumulador
+    title: "Acumulador Aquoso"
+    type: normal
+    deps: [primeira_oficina]
+    icon: ThermalExpansion:Machine:8
+    desc: |
+      Molde com §ebalde em cima§r, §evidro§r nas laterais e Servo embaixo. Coloque-o encostado em
+      §epelo menos 2 blocos-fonte de água§r e ele gera §e25 mB/t§r de graça (no pack não há
+      geração passiva sem as fontes). Água infinita para o Dínamo a Vapor e o Extrusor!
+    tasks:
+      - get: ThermalExpansion:Machine:8
+    rewards:
+      - xp: 2
+      - item: minecraft:water_bucket x2
+
+  - id: montador
+    title: "Montador Cíclico"
+    type: normal
+    deps: [primeira_oficina, bronze]
+    icon: ThermalExpansion:Machine:9
+    desc: |
+      Molde com §ebaú em cima§r e §eEngrenagens de Estanho§r nas laterais. O §eMontador
+      Cíclico§r é uma bancada automática: coloque um §eEsquema§r (2 papéis + corante azul)
+      gravado numa Bancada do Maquinista ou na própria máquina, alimente os ingredientes e ele
+      fabrica sozinho, com RF.
+    tasks:
+      - get: ThermalExpansion:Machine:9
+    rewards:
+      - xp: 2
+      - item: minecraft:paper x16
+
+  - id: infusor
+    title: "Infusor Energético"
+    type: normal
+    deps: [primeira_oficina, estrutura_leadstone]
+    icon: ThermalExpansion:Machine:10
+    desc: |
+      Molde com §eEstrutura de Leadstone em cima§r e §eBobinas Transmissoras§r nas laterais. Ele
+      §ecarrega itens com RF§r: capacitores, ferramentas elétricas, armaduras de outros mods...
+      Enfie a energia na máquina e o item no slot.
+    tasks:
+      - get: ThermalExpansion:Machine:10
+    rewards:
+      - xp: 2
+      - item: minecraft:redstone x16
+
+  - id: insolador
+    title: "Insolador Fitogênico"
+    type: normal
+    deps: [engrenagem_lumio]
+    icon: ThermalExpansion:Machine:11
+    desc: |
+      Molde com §eEngrenagem de Lúmio em cima§r e §eterra§r nas laterais. É uma estufa: semente +
+      fertilizante + água + RF = colheita (e mais sementes). Planta árvores, cana, cacto,
+      vinhas, melancias, cogumelos... (264 receitas no NEI!).
+    tasks:
+      - get: ThermalExpansion:Machine:11
+    rewards:
+      - xp: 3
+      - item: minecraft:wheat_seeds x16
+
+  - id: fito_gosma
+    title: "Fito-Gosma"
+    type: optional
+    deps: [insolador, escoria]
+    icon: ThermalExpansion:material:516
+    desc: |
+      O adubo do Insolador: Carvão Vegetal Pulverizado + Salitre + Escória = §e32 Fito-Gosmas§r
+      (ou 2 serragens + salitre + escória = 8). Com Escória Rica sai a §eFito-Gosma
+      Enriquecida§r, que no Insolador triplica a colheita. Funciona como farinha de osso também.
+    tasks:
+      - get: ThermalExpansion:material:516 x16
+    rewards:
+      - loot: comum
+
+  - id: dinamo_magmatico
+    title: "Dínamo Magmático"
+    type: main
+    deps: [engrenagem_invar, crisol_magmatico]
+    icon: ThermalExpansion:Dynamo:1
+    desc: |
+      O dínamo de Invar queima §efluidos quentes§r: lava vale §e180 000 RF por balde§r e
+      Pyrotheum fundido vale §e2 000 000 RF§r. Um Crisol derretendo Netherrack + um Dínamo
+      Magmático é a usina clássica do Thermal (o Crisol gasta, o dínamo devolve com lucro).
+
+      Produção base: 80 RF/t, como todos os dínamos — os aumentos multiplicam isso.
+    tasks:
+      - get: ThermalExpansion:Dynamo:1
+    rewards:
+      - xp: 4
+      - choice: [minecraft:lava_bucket x2, minecraft:netherrack x64, ore:ingotInvar x4]
+
+  - id: dinamo_compressao
+    title: "Dínamo de Compressão"
+    type: normal
+    deps: [dinamo_magmatico]
+    icon: ThermalExpansion:Dynamo:2
+    desc: |
+      De estanho. Queima §ecombustível líquido§r e precisa de §erefrigerante§r. Valores do pack:
+      Combustível do BuildCraft 1 500 000 RF/balde, Carvão Liquefeito 1 000 000, biocombustível e
+      etanol 500 000, petróleo 150 000. Refrigerante: água (400 000) ou, muito melhor,
+      §bCryotheum§r (4 000 000).
+
+      Ótimo par para a Refinaria do capítulo do BuildCraft!
+    tasks:
+      - get: ThermalExpansion:Dynamo:2
+    rewards:
+      - xp: 3
+      - item: minecraft:water_bucket
+
+  - id: dinamo_reagente
+    title: "Dínamo Reagente"
+    type: normal
+    deps: [dinamo_magmatico, engrenagem_bronze]
+    icon: ThermalExpansion:Dynamo:3
+    desc: |
+      De bronze. Usa um §efluido§r (Redstone Desestabilizada, Pedra Luminosa Energizada,
+      biomassa, creosoto, óleo de sementes, essência de mob, lodo...) junto de um §ereagente
+      sólido§r. Confira no NEI quais reagentes ele aceita — o tooltip do dínamo também mostra.
+      É a ponte perfeita com fazendas do MineFactory e do Forestry.
+    tasks:
+      - get: ThermalExpansion:Dynamo:3
+    rewards:
+      - xp: 3
+      - item: minecraft:sugar x16
+
+  - id: dinamo_enervacao
+    title: "Dínamo de Enervação"
+    type: normal
+    deps: [dinamo_magmatico, eletro]
+    icon: ThermalExpansion:Dynamo:4
+    desc: |
+      De Electro. Ele "suga" o fluxo de objetos: §eredstone§r (64 000 RF cada no pack) e itens
+      que guardam RF (capacitores e baterias cheias). Útil para esvaziar baterias velhas ou
+      queimar a redstone que sobra das minas.
+    tasks:
+      - get: ThermalExpansion:Dynamo:4
+    rewards:
+      - xp: 3
+      - item: minecraft:redstone x32
+
+  # ======================================================================
+  # FASE 5 — FERRAMENTAS E DISPOSITIVOS
+  # ======================================================================
+  - id: multimetro
+    title: "Multímetro"
+    type: normal
+    deps: [eletro]
+    icon: ThermalExpansion:meter
+    desc: |
+      Cobre, chumbo, uma Bobina Condutora e uma Engrenagem de Electro. O §eMultímetro§r mostra
+      energia, fluidos e estado de máquinas ao clicar nelas, e agachado configura alguns
+      dispositivos. Para quem gosta de números (oi!), é amor à primeira leitura.
+    tasks:
+      - get: ThermalExpansion:meter
+    rewards:
+      - xp: 2
+      - item: ore:ingotElectrum x2
+
+  - id: chave_batalha
+    title: "Chave Inglesa de Batalha"
+    type: optional
+    deps: [invar, martelo]
+    icon: ThermalExpansion:tool.battleWrenchInvar
+    desc: |
+      "90% martelo, 10% chave inglesa", diz o tooltip. A §eChave Inglesa de Batalha§r de Invar é
+      arma e ferramenta ao mesmo tempo. Perfeita para quem configura máquinas no meio de um
+      ataque de zumbis.
+    tasks:
+      - get: ThermalExpansion:tool.battleWrenchInvar
+    rewards:
+      - loot: comum
+
+  - id: ferramentas_invar
+    title: "Picareta de Invar"
+    type: normal
+    deps: [invar]
+    icon: ThermalFoundation:tool.pickaxeInvar
+    desc: |
+      A §ePicareta de Invar§r minera como uma de ferro com mais durabilidade — e é ingrediente
+      obrigatório do §eQuebrador de Terreno§r. Faça uma (e, se quiser, o resto do conjunto de
+      Invar: espada, pá, machado, enxada, foice...).
+    tasks:
+      - get: ThermalFoundation:tool.pickaxeInvar
+    rewards:
+      - xp: 2
+      - item: ore:ingotInvar x3
+
+  - id: armadura_invar
+    title: "Armadura de Invar"
+    type: optional
+    deps: [ferramentas_invar]
+    icon: ThermalFoundation:armor.plateInvar
+    desc: |
+      Invar resiste ao calor e às pancadas: a armadura dele é uma das mais duráveis entre os
+      metais comuns do Thermal. Vista as quatro peças.
+    tasks:
+      - get: [ThermalFoundation:armor.helmetInvar, ThermalFoundation:armor.plateInvar, ThermalFoundation:armor.legsInvar, ThermalFoundation:armor.bootsInvar]
+    rewards:
+      - loot: incomum
+
+  - id: capacitor_leadstone
+    title: "Capacitor de Flux de Leadstone"
+    type: normal
+    deps: [chumbo, enxofre_salitre]
+    icon: ThermalExpansion:capacitor:2
+    desc: |
+      Uma bateria de bolso: chumbo, cobre, redstone e §eEnxofre§r. Guarda §e80 000 RF§r (pack).
+      Agachado + clique ativa o modo de carregar os itens da sua barra de atalhos. Carregue-o no
+      Infusor Energético.
+    tasks:
+      - get: ThermalExpansion:capacitor:2
+    rewards:
+      - xp: 2
+      - item: minecraft:redstone x16
+
+  - id: capacitor_batata
+    title: "Capacitor de Batata"
+    type: optional
+    deps: [capacitor_leadstone]
+    icon: ThermalExpansion:capacitor:1
+    desc: |
+      Batata + redstone + pepita de chumbo = §eCapacitor de Flux Tuberoso§r. Vem com 32 000 RF e
+      §cnão recarrega§r. "Esperto! Mas não recarregável", diz o tooltip. Eu só queria que você
+      soubesse que isso existe.
+    tasks:
+      - get: ThermalExpansion:capacitor:1
+    rewards:
+      - loot: comum
+
+  - id: ferramentas_fluxo
+    title: "Ferramentas de Fluxo"
+    type: optional
+    deps: [capacitor_leadstone]
+    icon: ThermalExpansion:igniter
+    desc: |
+      Com um Capacitor de Leadstone no meio da receita, o Thermal faz quatro brinquedos:
+      §e• Ignição por Flux§r (acende fogo a distância), §e• Flux Chiller§r (congela a
+      distância), §e• FluiVac§r (bomba de fluidos portátil) e §e• Flux Transfuser§r (passa RF
+      entre itens e blocos). Faça qualquer um.
+    tasks:
+      - one_of: [ThermalExpansion:igniter, ThermalExpansion:chiller, ThermalExpansion:pump, ThermalExpansion:transfuser]
+    rewards:
+      - loot: comum
+
+  - id: ativador
+    title: "Ativador Autônomo"
+    type: normal
+    deps: [primeira_oficina]
+    icon: ThermalExpansion:Device:2
+    desc: |
+      Baú + pistão + Engrenagens de Estanho + Bobina Receptora. O §eAtivador Autônomo§r é um
+      "jogador falso": usa o item que estiver dentro dele (clique direito ou esquerdo, agachado
+      ou não). Planta, alimenta animais, usa ferramentas... "Faz mais do que um tooltip consegue
+      explicar."
+    tasks:
+      - get: ThermalExpansion:Device:2
+    rewards:
+      - xp: 2
+      - item: minecraft:wheat_seeds x16
+
+  - id: quebrador
+    title: "Quebrador de Terreno"
+    type: normal
+    deps: [ferramentas_invar]
+    icon: ThermalExpansion:Device:3
+    desc: |
+      Picareta de Invar + pistão + Engrenagens de Estanho + Servo. O §eQuebrador de Terreno§r
+      quebra o bloco à frente quando recebe sinal de redstone. Pedregulho do Extrusor + Quebrador
+      + Pulverizador = areia/cascalho automáticos. "Quebra blocos. Simples assim."
+    tasks:
+      - get: ThermalExpansion:Device:3
+    rewards:
+      - xp: 2
+      - item: minecraft:cobblestone x64
+
+  - id: coletor
+    title: "Aparelho de Aquisição"
+    type: normal
+    deps: [primeira_oficina]
+    icon: ThermalExpansion:Device:4
+    desc: |
+      Funil + pistão + Engrenagens de Estanho + Servo: o §eAcquisition Apparatus§r recolhe itens
+      caídos numa área à frente dele e guarda/empurra para um inventário. Par perfeito do
+      Quebrador.
+    tasks:
+      - get: ThermalExpansion:Device:4
+    rewards:
+      - xp: 2
+      - item: minecraft:hopper
+
+  - id: nulificador
+    title: "Nulificador"
+    type: normal
+    deps: [primeira_oficina, invar]
+    icon: ThermalExpansion:Device:5
+    desc: |
+      Invar + balde de lava + Engrenagens de Estanho + Servo. O §eNulificador§r "remove coisas da
+      existência": itens e fluidos que entram nele somem. Lixeira oficial para o pedregulho que
+      sobra das minas.
+    tasks:
+      - get: ThermalExpansion:Device:5
+    rewards:
+      - xp: 2
+      - item: minecraft:lava_bucket
+
+  - id: alocador
+    title: "Alocador de Itens"
+    type: normal
+    deps: [primeira_oficina]
+    icon: ThermalExpansion:Device:6
+    desc: |
+      Engrenagem de Cobre + funil + Engrenagens de Estanho + Servo. O §eItem Allocator§r guarda e
+      transfere itens — um pequeno buffer com entrada/saída configuráveis. Ótimo entre uma
+      máquina rápida e uma lenta.
+    tasks:
+      - get: ThermalExpansion:Device:6
+    rewards:
+      - xp: 2
+      - item: minecraft:chest x2
+
+  - id: caixa_forte
+    title: "Caixa Forte"
+    type: normal
+    deps: [fundacao_termica]
+    icon: ThermalExpansion:Strongbox:1
+    desc: |
+      Um baú com 4 estanhos em volta: a §eCaixa Forte§r. Ela §eguarda o conteúdo quando
+      quebrada§r (mudar de casa nunca foi tão fácil) e sobe de nível com Invar, Vidro Endurecido
+      e Endério, ganhando espaço a cada nível.
+    tasks:
+      - get: ThermalExpansion:Strongbox:1
+    rewards:
+      - xp: 2
+      - item: minecraft:chest x2
+
+  - id: estoque
+    title: "Estoque"
+    type: normal
+    deps: [fundacao_termica]
+    icon: ThermalExpansion:Cache:1
+    desc: |
+      Um tronco cercado de 4 estanhos: o §eEstoque (Cache)§r guarda MUITO de um único item —
+      §e10 000§r no básico, 40 000 no Endurecido, 160 000 no Reforçado e 640 000 no Ressonante
+      (pack). Cobblestone, terra, areia... seu baú agradece.
+    tasks:
+      - get: ThermalExpansion:Cache:1
+    rewards:
+      - xp: 2
+      - item: minecraft:log x8
+
+  - id: sacola
+    title: "Sacola"
+    type: normal
+    deps: [fundacao_termica]
+    icon: ThermalExpansion:satchel:1
+    desc: |
+      Lã, estanho e couro (ou Lã Rochosa): a §eSacola§r é uma mochila extra que você carrega na
+      mão. Cada nível (Endurecida, Reforçada, Ressonante) aumenta o espaço.
+    tasks:
+      - get: ThermalExpansion:satchel:1
+    rewards:
+      - xp: 2
+      - item: minecraft:leather x6
+
+  - id: bancada_maquinista
+    title: "Bancada do Maquinista"
+    type: optional
+    deps: [caixa_forte]
+    icon: ThermalExpansion:Workbench:1
+    desc: |
+      Uma bancada de trabalho com inventário próprio (mantido ao quebrar) e slots para
+      §eEsquemas§r: grave uma receita e refaça com um clique. Esquemas (2 papéis + corante azul)
+      também alimentam o Montador Cíclico.
+    tasks:
+      - get: [ThermalExpansion:Workbench:1, ThermalExpansion:diagram]
+    rewards:
+      - loot: comum
+
+  - id: planta_vermelha
+    title: "Planta Vermelha"
+    type: optional
+    deps: [bancada_maquinista]
+    icon: ThermalExpansion:diagram:1
+    desc: |
+      2 papéis + redstone = §ePlanta Vermelha (Redprint)§r. Clique numa máquina configurada para
+      copiar os lados e ajustes, e depois clique em outra para colar. Montar vinte
+      Pulverizadores iguais nunca foi tão rápido.
+    tasks:
+      - get: ThermalExpansion:diagram:1
+    rewards:
+      - loot: comum
+
+  - id: trava_seguranca
+    title: "Trava de Segurança"
+    type: optional
+    deps: [signalo]
+    icon: ThermalExpansion:material:16
+    desc: |
+      Bronze + pepitas de Signalo = §eTrava de Segurança§r. Combine com uma máquina, célula,
+      caixa ou sacola na bancada e ela passa a ter dono: público, amigos ou só você. Num servidor
+      cheio de gente curiosa, isso vale ouro.
+    tasks:
+      - get: ThermalExpansion:material:16
+    rewards:
+      - loot: comum
+
+  # ======================================================================
+  # FASE 6 — NÍVEL ENDURECIDO
+  # ======================================================================
+  - id: estrutura_endurecida
+    title: "Estrutura Endurecida"
+    type: main
+    deps: [primeira_oficina, engrenagem_eletro]
+    icon: ThermalExpansion:Frame:1
+    desc: |
+      Agora as máquinas sobem de nível! Estrutura Básica no centro + §e4 Invar + 1 Engrenagem de
+      Electro§r em cima = §eEstrutura de Máquina (Endurecida)§r.
+
+      Você pode fabricar máquinas novas já com essa estrutura... ou fazer melhor: atualizar as que
+      já tem (próxima quest).
+    tasks:
+      - get: ThermalExpansion:Frame:1
+    rewards:
+      - xp: 4
+      - choice: [ore:ingotInvar x4, ore:ingotElectrum x4, minecraft:iron_ingot x16]
+
+  - id: maquina_endurecida
+    title: "Máquina Endurecida"
+    type: main
+    deps: [estrutura_endurecida]
+    icon: ThermalExpansion:Machine:1
+    desc: |
+      Coloque uma máquina Básica no centro da bancada com o mesmo padrão da estrutura (§e4 Invar
+      + Engrenagem de Electro§r) e ela vira §eEndurecida§r, mantendo a configuração.
+
+      Cada nível dá §e+1 slot de aumento§r (Básico 3, Endurecido 4, Reforçado 5, Ressonante 6),
+      mais energia guardada e mais RF/t aceito. E só máquinas Endurecidas aceitam aumentos de
+      nível I. Atualize qualquer máquina.
+    tasks:
+      - {get: 'ThermalExpansion:Machine:* {Level:1b}', nbt: true}
+    rewards:
+      - xp: 4
+      - choice: [ore:ingotInvar x6, ThermalFoundation:material:135, ore:ingotBronze x6]
+
+  - id: aula_aumentos
+    title: "Aula: Aumentos"
+    type: info
+    deps: [maquina_endurecida]
+    icon: ThermalExpansion:augment:128
+    desc: |
+      Os §eAumentos§r (augments) entram na aba lateral das máquinas e dínamos. Regras que eu
+      conferi no próprio código do mod:
+      §e•§r Aumentos têm níveis I, II e III. §cEm máquinas, o nível I exige máquina Endurecida,
+      o II Reforçada e o III Ressonante.§r Dínamos não têm níveis e aceitam qualquer um.
+      §e•§r O nível II só funciona se o I também estiver instalado (e o III precisa do II).
+      §e•§r Não adianta repetir o mesmo aumento.
+      §e•§r Os aumentos "integrados" (auto-saída, auto-entrada, lados configuráveis e controle de
+      redstone) §ajá vêm embutidos em toda máquina deste pack§r — não precisa fabricá-los.
+
+      Velocidade: ×2/×4/×8, mas a máquina gasta +50%/+100%/+150% de energia por item.
+    tasks:
+      - check
+    rewards:
+      - xp: 1
+
+  - id: aumento_velocidade_1
+    title: "Velocidade I"
+    type: normal
+    deps: [aula_aumentos, bronze]
+    icon: ThermalExpansion:augment:128
+    desc: |
+      §eCaixa de Engrenagem Secundária§r: bronze + Bobina Receptora + redstone. Dobra a velocidade
+      de processamento. Comece pelo Pulverizador — é sempre ele o gargalo.
+    tasks:
+      - get: ThermalExpansion:augment:128
+    rewards:
+      - xp: 2
+      - item: ore:ingotBronze x4
+
+  - id: aumento_secundario_1
+    title: "Saída Secundária I"
+    type: normal
+    deps: [aula_aumentos, bronze]
+    icon: ThermalExpansion:augment:112
+    desc: |
+      §ePeneira Secundária§r: bronze + lã. Aumenta a chance de subprodutos (cinábrio, enxofre,
+      platina...) nas máquinas que os produzem. Para minérios raros, isso é dinheiro no bolso.
+    tasks:
+      - get: ThermalExpansion:augment:112
+    rewards:
+      - xp: 2
+      - item: minecraft:wool x4
+
+  - id: aumento_eficiencia_1
+    title: "Eficiência de Dínamo I"
+    type: normal
+    deps: [aula_aumentos]
+    icon: ThermalExpansion:augment:64
+    desc: |
+      §eOtimização de Ligação de Flux... quer dizer, o nível I:§r chumbo + Bobina Transmissora +
+      redstone. +10% de energia por unidade de combustível (até +85% com os três níveis). Para
+      quem queima coisa cara, como Pyrotheum.
+    tasks:
+      - get: ThermalExpansion:augment:64
+    rewards:
+      - xp: 2
+      - item: ore:ingotLead x4
+
+  - id: aumento_saida_1
+    title: "Potência de Dínamo I"
+    type: normal
+    deps: [aula_aumentos]
+    icon: ThermalExpansion:augment:80
+    desc: |
+      Cobre + Bobina Transmissora + redstone. O dínamo produz §e×2§r de RF/t, mas consome
+      combustível na mesma proporção e perde 15% de eficiência. Velocidade custa caro — mas às
+      vezes você precisa dela.
+    tasks:
+      - get: ThermalExpansion:augment:80
+    rewards:
+      - xp: 2
+      - item: ore:ingotCopper x4
+
+  - id: aumento_nulificador
+    title: "Câmara de Nulificação"
+    type: optional
+    deps: [aula_aumentos]
+    icon: ThermalExpansion:augment:144
+    desc: |
+      Prata, Invar, redstone e um balde de lava: este aumento §edestrói o excesso de produtos
+      secundários§r. Nunca mais uma máquina travada porque o slot de serragem encheu.
+    tasks:
+      - get: ThermalExpansion:augment:144
+    rewards:
+      - loot: comum
+
+  - id: aumento_culinaria
+    title: "Especialização Culinária"
+    type: optional
+    deps: [aula_aumentos]
+    icon: ThermalExpansion:augment:256
+    desc: |
+      Só para a Fornalha de Redstone: ela passa a §esó cozinhar comida§r, gastando 50% menos
+      energia e rendendo mais comida. Um restaurante industrial!
+    tasks:
+      - get: ThermalExpansion:augment:256
+    rewards:
+      - loot: comum
+
+  - id: aumento_extrusor_1
+    title: "Extrusão Acelerada"
+    type: optional
+    deps: [aula_aumentos, extrusor]
+    icon: ThermalExpansion:augment:312
+    desc: |
+      Só para o Extrusor Ígneo: produz rocha em lotes maiores (até 16 pedregulhos por operação no
+      nível I) e gasta menos água. Os níveis II e III levam o lote a 32 e 64.
+    tasks:
+      - get: ThermalExpansion:augment:312
+    rewards:
+      - loot: comum
+
+  - id: aumento_dinamo_dutos
+    title: "Aumentos de Dínamo Especiais"
+    type: optional
+    deps: [aula_aumentos]
+    icon: ThermalExpansion:augment:49
+    desc: |
+      Dois aumentos curiosos para dínamos:
+      §e• Bobina de Transmissão para Dutos§r — deixa inserir e retirar combustível pelo lado da
+      bobina.
+      §e• Limitador de Campo de Excitação§r — o dínamo pode descer a produção até 0 RF/t
+      quando a rede está cheia (exige o controle de redstone, que já vem embutido aqui).
+    tasks:
+      - one_of: [ThermalExpansion:augment:48, ThermalExpansion:augment:49]
+    rewards:
+      - loot: comum
+
+  - id: celula_endurecida
+    title: "Célula de Energia Endurecida"
+    type: main
+    deps: [estrutura_endurecida, celula_leadstone]
+    icon: ThermalExpansion:Cell:2
+    desc: |
+      Atualize a Célula de Leadstone com §e4 Invar§r (ou faça direto com a Estrutura de Célula
+      Endurecida). §e2 000 000 RF§r de capacidade e §e800 RF/t§r de entrada/saída. A energia
+      guardada vai junto na atualização.
+    tasks:
+      - get: ThermalExpansion:Cell:2
+    rewards:
+      - xp: 4
+      - choice: [ore:ingotInvar x4, minecraft:redstone_block x4, ore:ingotLead x6]
+
+  - id: tanque_endurecido
+    title: "Tanque Endurecido"
+    type: normal
+    deps: [tanque_portatil, estrutura_endurecida]
+    icon: ThermalExpansion:Tank:2
+    desc: |
+      Tanque Portátil + 4 Invar: §e32 000 mB§r. Lava para a semana inteira.
+    tasks:
+      - get: ThermalExpansion:Tank:2
+    rewards:
+      - xp: 2
+      - item: ore:ingotInvar x2
+
+  - id: caixa_endurecida
+    title: "Caixa Forte Endurecida"
+    type: normal
+    deps: [caixa_forte, invar]
+    icon: ThermalExpansion:Strongbox:2
+    desc: |
+      Caixa Forte + 4 Invar = mais espaço, o mesmo truque de levar tudo junto ao quebrar.
+    tasks:
+      - get: ThermalExpansion:Strongbox:2
+    rewards:
+      - xp: 2
+      - item: ore:ingotInvar x2
+
+  - id: estoque_endurecido
+    title: "Estoque Endurecido"
+    type: normal
+    deps: [estoque, invar]
+    icon: ThermalExpansion:Cache:2
+    desc: |
+      Estoque + 4 Invar = §e40 000 itens§r de um tipo. Clique agachado para travar o item e ele
+      nunca aceitar outro.
+    tasks:
+      - get: ThermalExpansion:Cache:2
+    rewards:
+      - xp: 2
+      - item: ore:ingotInvar x2
+
+  - id: sacola_endurecida
+    title: "Sacola Endurecida"
+    type: normal
+    deps: [sacola, invar]
+    icon: ThermalExpansion:satchel:2
+    desc: |
+      Sacola + Invar + pepitas de estanho: mais linhas de inventário para carregar por aí.
+    tasks:
+      - get: ThermalExpansion:satchel:2
+    rewards:
+      - xp: 2
+      - item: ore:ingotTin x4
+
+  - id: capacitor_endurecido
+    title: "Capacitor Endurecido"
+    type: normal
+    deps: [capacitor_leadstone, invar]
+    icon: ThermalExpansion:capacitor:3
+    desc: |
+      Capacitor de Leadstone + Invar + estanho + redstone: §e400 000 RF§r no bolso.
+    tasks:
+      - get: ThermalExpansion:capacitor:3
+    rewards:
+      - xp: 2
+      - item: minecraft:redstone x16
+
+  - id: bancada_endurecida
+    title: "Bancadas e Sacolas de Nível"
+    type: optional
+    deps: [bancada_maquinista, invar]
+    icon: ThermalExpansion:Workbench:2
+    desc: |
+      A Bancada do Maquinista também sobe de nível (Invar → Signalo → Endério), ganhando mais
+      slots de esquema e de inventário. Atualize a sua uma vez.
+    tasks:
+      - get: ThermalExpansion:Workbench:2
+    rewards:
+      - loot: comum
+
+  - id: placa_estrutura
+    title: "Placa de Estrutura"
+    type: optional
+    deps: [signalo, vidro_endurecido]
+    icon: ThermalExpansion:Plate
+    desc: |
+      Signalo, Invar e Vidro Endurecido = §ePlaca de Estrutura§r, a base das placas do Thermal:
+      blocos finos de chão que agem quando algo encosta. Confira no NEI as receitas de cada uma.
+    tasks:
+      - get: ThermalExpansion:Plate
+    rewards:
+      - loot: comum
+
+  - id: placas_basicas
+    title: "Placas de Sinal, Impulso e Translocação"
+    type: optional
+    deps: [placa_estrutura]
+    icon: ThermalExpansion:Plate:2
+    desc: |
+      §e• Placa de Redstone:§r emite sinal quando algo pisa.
+      §e• Placa de Impulso:§r arremessa o que tocar nela (configurável).
+      §e• Placa de Translocação:§r teleporta o que tocar para um ponto próximo.
+
+      Faça qualquer uma — e tente não se lançar no rio na primeira tentativa.
+    tasks:
+      - one_of: [ThermalExpansion:Plate:1, ThermalExpansion:Plate:2, ThermalExpansion:Plate:3]
+    rewards:
+      - loot: comum
+
+  - id: placas_avancadas
+    title: "Placas de Carga e de Excursão"
+    type: optional
+    deps: [placas_basicas]
+    icon: ThermalExpansion:Plate:4
+    desc: |
+      §e• Placa de Carga§r (atualização da de Redstone com Electro e diamante): carrega itens de
+      quem pisa nela.
+      §e• Placa de Excursão§r (atualização da de Impulso com Signalo e quartzo): projeta um feixe
+      de força que carrega você.
+    tasks:
+      - one_of: [ThermalExpansion:Plate:4, ThermalExpansion:Plate:5]
+    rewards:
+      - loot: incomum
+
+  - id: iluminador
+    title: "Iluminador de Pedra Luminosa"
+    type: optional
+    deps: [vidro_endurecido, signalo, transpositor]
+    icon: ThermalExpansion:Light
+    desc: |
+      Faça a §eEstrutura de Iluminador§r (Vidro Endurecido + quartzo + Signalo) e encha com Pedra
+      Luminosa Energizada no Transpositor. O §eIluminador§r acende por redstone e pode ter quase
+      qualquer cor (tinja na bancada). As §eLâmpadas de Lúmio§r são a versão de metal.
+    tasks:
+      - one_of: [ThermalExpansion:Light, ThermalExpansion:Light:1, ThermalExpansion:Light:2]
+    rewards:
+      - loot: comum
+
+  - id: vidro_lumio
+    title: "Vidro Endurecido de Lúmio"
+    type: optional
+    deps: [lumio, vidro_endurecido]
+    icon: ThermalExpansion:Glass:1
+    desc: |
+      Na Fundição, Lúmio + 4 Obsidianas Pulverizadas = §e2 Vidros Endurecidos de Lúmio§r: à prova
+      de explosão E iluminado. Janela de bunker com estilo.
+    tasks:
+      - get: ThermalExpansion:Glass:1 x2
+    rewards:
+      - loot: comum
+
+  - id: ferramentas_eletro
+    title: "Equipamento de Electro e Bronze"
+    type: optional
+    deps: [eletro, bronze]
+    icon: ThermalFoundation:tool.pickaxeElectrum
+    desc: |
+      O Electro faz ferramentas rapidíssimas (e frágeis); o bronze, ferramentas equilibradas.
+      Faça qualquer ferramenta de Electro — só para sentir a velocidade.
+    tasks:
+      - one_of: [ThermalFoundation:tool.pickaxeElectrum, ThermalFoundation:tool.swordElectrum, ThermalFoundation:tool.shovelElectrum, ThermalFoundation:tool.axeElectrum]
+    rewards:
+      - loot: comum
+
+  - id: oficina_endurecida
+    title: "Tudo Endurecido"
+    type: milestone
+    deps: [maquina_endurecida, celula_endurecida, dinamo_magmatico, aumento_velocidade_1, signalo]
+    icon: ThermalExpansion:Frame:1
+    banner: "Nível Endurecido"
+    subtitle: "Invar, Electro e engrenagens girando"
+    desc: |
+      Máquinas Endurecidas, aumentos de nível I, uma Célula de 2 milhões de RF e um Dínamo
+      Magmático roncando com lava. Herói, a sua fábrica deixou de ser uma oficina: ela virou uma
+      §busina§r.
+
+      Para o próximo nível você vai precisar de muito §eVidro Endurecido§r (pense no Extrusor +
+      Pulverizador fazendo obsidiana) e de §eSignalo§r para as engrenagens. E lá no fim espera o
+      §5Endério§r, com platina e Ender Ressonante. Bora?
+    tasks:
+      - get: [ThermalExpansion:Cell:2, ThermalExpansion:Dynamo:1, ThermalExpansion:augment:128]
+      - {get: 'ThermalExpansion:Machine:* {Level:1b}', nbt: true}
+    rewards:
+      - xp: 8
+      - kit: {name: "Kit do Engenheiro Térmico", items: [ore:ingotInvar x8, ore:ingotElectrum x4, ThermalExpansion:Glass x8, ThermalExpansion:material:1 x4, ThermalFoundation:material:512 x4]}
+      - loot: raro
+
+  # ======================================================================
+  # FASE 7 — NÍVEL REFORÇADO
+  # ======================================================================
+  - id: estrutura_reforcada
+    title: "Estrutura Reforçada"
+    type: main
+    deps: [oficina_endurecida, vidro_endurecido, engrenagem_signalo]
+    icon: ThermalExpansion:Frame:2
+    desc: |
+      Estrutura Endurecida + §e4 Vidros Endurecidos + 1 Engrenagem de Signalo§r = §eEstrutura
+      (Reforçada)§r. Com o mesmo padrão, máquinas Endurecidas viram Reforçadas.
+    tasks:
+      - get: ThermalExpansion:Frame:2
+    rewards:
+      - xp: 4
+      - choice: [ThermalExpansion:Glass x8, ore:ingotSignalum x4, ThermalFoundation:material:4 x16]
+
+  - id: maquina_reforcada
+    title: "Máquina Reforçada"
+    type: main
+    deps: [estrutura_reforcada]
+    icon: ThermalExpansion:Machine:3
+    desc: |
+      Atualize uma máquina Endurecida com 4 Vidros Endurecidos + Engrenagem de Signalo. Agora ela
+      tem §e5 slots de aumento§r e aceita aumentos de §enível II§r.
+    tasks:
+      - {get: 'ThermalExpansion:Machine:* {Level:2b}', nbt: true}
+    rewards:
+      - xp: 4
+      - choice: [ThermalExpansion:Glass x8, ThermalFoundation:material:138, ore:ingotSignalum x4]
+
+  - id: aumento_velocidade_2
+    title: "Velocidade II"
+    type: normal
+    deps: [maquina_reforcada, aumento_velocidade_1, pyrotheum]
+    icon: ThermalExpansion:augment:129
+    desc: |
+      §eCaixa de Engrenagem Modular com Overclock§r: bronze, ouro, redstone, Pyrotheum e a Bobina
+      Receptora. Junto da Velocidade I, a máquina fica §e×4§r mais rápida.
+    tasks:
+      - get: ThermalExpansion:augment:129
+    rewards:
+      - xp: 3
+      - item: ThermalFoundation:material:512 x2
+
+  - id: aumento_secundario_2
+    title: "Saída Secundária II"
+    type: normal
+    deps: [maquina_reforcada, aumento_secundario_1]
+    icon: ThermalExpansion:augment:113
+    desc: |
+      §eEstrutura Estabilizada§r: bronze, Vidro Endurecido, Lã Rochosa e pó de pedra luminosa.
+      Mais subprodutos ainda (precisa da Peneira Secundária instalada junto).
+    tasks:
+      - get: ThermalExpansion:augment:113
+    rewards:
+      - xp: 3
+      - item: minecraft:glowstone_dust x8
+
+  - id: aumento_eficiencia_2
+    title: "Eficiência de Dínamo II"
+    type: normal
+    deps: [aumento_eficiencia_1, pedra_energizada]
+    icon: ThermalExpansion:augment:65
+    desc: |
+      Chumbo, Electro, redstone e pedra luminosa. Somado ao nível I: +35% de energia por
+      combustível. Dínamos não têm níveis no Thermal 4: basta o nível I já instalado.
+    tasks:
+      - get: ThermalExpansion:augment:65
+    rewards:
+      - xp: 3
+      - item: ore:ingotLead x4
+
+  - id: aumento_saida_2
+    title: "Potência de Dínamo II"
+    type: normal
+    deps: [aumento_saida_1, pedra_energizada]
+    icon: ThermalExpansion:augment:81
+    desc: |
+      Cobre, prata, redstone e pedra luminosa: o dínamo vai a §e×4§r de RF/t (com -25% de
+      eficiência acumulada). Uma usina compacta, para quem tem combustível sobrando.
+    tasks:
+      - get: ThermalExpansion:augment:81
+    rewards:
+      - xp: 3
+      - item: ore:ingotSilver x4
+
+  - id: estrutura_celula_redstone
+    title: "Estrutura de Célula de Redstone"
+    type: normal
+    deps: [estrutura_reforcada, redstone_desestabilizada]
+    icon: ThermalExpansion:Frame:7
+    desc: |
+      Electro + Vidro Endurecido + um §ediamante§r no centro = Estrutura de Célula de Redstone
+      (Vazia). Leve ao Transpositor e encha com §e4 000 mB de Redstone Desestabilizada§r: ela vira
+      a versão (Cheia). Prepare uns 4 blocos de redstone por estrutura.
+    tasks:
+      - get: ThermalExpansion:Frame:7
+    rewards:
+      - xp: 3
+      - item: minecraft:redstone_block x4
+
+  - id: celula_redstone
+    title: "Célula de Energia de Redstone"
+    type: main
+    deps: [estrutura_celula_redstone, celula_endurecida]
+    icon: ThermalExpansion:Cell:3
+    desc: |
+      Estrutura Cheia + Electro + chumbo + Bobina Condutora: §e20 000 000 RF§r com §e8 000 RF/t§r
+      de entrada e saída. Esse é o "banco central" da maioria das bases.
+    tasks:
+      - get: ThermalExpansion:Cell:3
+    rewards:
+      - xp: 5
+      - choice: [ore:ingotElectrum x6, minecraft:redstone_block x6, ThermalExpansion:Glass x8]
+
+  - id: tanque_reforcado
+    title: "Tanque Reforçado"
+    type: normal
+    deps: [tanque_endurecido, estrutura_reforcada]
+    icon: ThermalExpansion:Tank:3
+    desc: |
+      Tanque Endurecido + 4 Vidros Endurecidos: §e128 000 mB§r. Um lago de bolso.
+    tasks:
+      - get: ThermalExpansion:Tank:3
+    rewards:
+      - xp: 2
+      - item: ThermalExpansion:Glass x4
+
+  - id: caixa_reforcada
+    title: "Caixa Forte Reforçada"
+    type: normal
+    deps: [caixa_endurecida, estrutura_reforcada]
+    icon: ThermalExpansion:Strongbox:3
+    desc: |
+      Caixa Forte Endurecida + 4 Vidros Endurecidos. Mais espaço, mesma portabilidade.
+    tasks:
+      - get: ThermalExpansion:Strongbox:3
+    rewards:
+      - xp: 2
+      - item: ThermalExpansion:Glass x4
+
+  - id: estoque_reforcado
+    title: "Estoque Reforçado"
+    type: normal
+    deps: [estoque_endurecido, estrutura_reforcada]
+    icon: ThermalExpansion:Cache:3
+    desc: |
+      Estoque Endurecido + 4 Vidros Endurecidos: §e160 000§r itens de um tipo.
+    tasks:
+      - get: ThermalExpansion:Cache:3
+    rewards:
+      - xp: 2
+      - item: ThermalExpansion:Glass x4
+
+  - id: sacola_reforcada
+    title: "Sacola Reforçada"
+    type: normal
+    deps: [sacola_endurecida, estrutura_reforcada]
+    icon: ThermalExpansion:satchel:3
+    desc: |
+      Sacola Endurecida + Vidro Endurecido + pepitas de Invar. Ainda mais espaço na mão.
+    tasks:
+      - get: ThermalExpansion:satchel:3
+    rewards:
+      - xp: 2
+      - item: ore:ingotInvar x2
+
+  - id: capacitor_redstone
+    title: "Capacitor de Redstone"
+    type: normal
+    deps: [capacitor_endurecido, estrutura_reforcada]
+    icon: ThermalExpansion:capacitor:4
+    desc: |
+      Capacitor Endurecido + Electro + diamante + redstone: §e4 000 000 RF§r no bolso.
+    tasks:
+      - get: ThermalExpansion:capacitor:4
+    rewards:
+      - xp: 2
+      - item: minecraft:redstone x16
+
+  - id: oficina_reforcada
+    title: "Reforçando o Fluxo"
+    type: milestone
+    deps: [maquina_reforcada, celula_redstone, aumento_velocidade_2]
+    icon: ThermalExpansion:Frame:2
+    banner: "Nível Reforçado"
+    subtitle: "Vidro Endurecido e Signalo"
+    desc: |
+      Uma Célula de Redstone com 20 milhões de RF, máquinas Reforçadas e Velocidade II girando as
+      engrenagens. Herói, poucas fábricas chegam até aqui sem tropeçar — e a sua nem suou.
+
+      O último degrau é o §5Ressonante§r: §eEndério§r (platina + Ender Ressonante + Pyrotheum) em
+      tudo. É caro, é lindo, e é onde o Tesserato mora. Vamos?
+    tasks:
+      - get: [ThermalExpansion:Cell:3, ThermalExpansion:augment:129]
+      - {get: 'ThermalExpansion:Machine:* {Level:2b}', nbt: true}
+    rewards:
+      - xp: 8
+      - kit: {name: "Kit do Reforço", items: [ThermalExpansion:Glass x16, ore:ingotSignalum x6, ThermalFoundation:material:512 x6, minecraft:ender_pearl x8, minecraft:redstone_block x4]}
+      - loot: raro
+
+  # ======================================================================
+  # FASE 8 — ENDÉRIO E O NÍVEL RESSONANTE
+  # ======================================================================
+  - id: mistura_enderio
+    title: "Mistura de Endério"
+    type: main
+    deps: [oficina_reforcada, ender_ressonante, minerio_brilhante]
+    icon: ThermalFoundation:material:44
+    desc: |
+      Agora a receita mais cara do Thermal. Na bancada: §e2 pós de estanho + 1 pó de prata + 1 pó
+      de platina + 1 Balde de Ender Ressonante = 4 Misturas de Endério§r.
+
+      Diferente das outras misturas, essa §cnão funde na fornalha§r. Leve para a Fundição.
+    tasks:
+      - get: ThermalFoundation:material:44 x4
+    rewards:
+      - xp: 4
+      - choice: [minecraft:ender_pearl x8, ore:ingotTin x8, ore:ingotSilver x4]
+
+  - id: enderio
+    title: "Endério"
+    type: main
+    deps: [mistura_enderio, pyrotheum]
+    icon: ThermalFoundation:material:76
+    desc: |
+      Na Fundição Induzida: §e2 Misturas de Endério + 1 Pó de Pyrotheum = 2 Barras de
+      Endério§r. Ele é o metal do nível Ressonante: Engrenagem de Endério, células, tanques,
+      caixas, capacitores e o Tesserato.
+
+      Junte §e8 Barras de Endério§r. (Você vai querer mais. Sempre mais.)
+    tasks:
+      - get: ore:ingotEnderium x8
+    rewards:
+      - xp: 5
+      - choice: [ThermalFoundation:material:512 x8, minecraft:ender_pearl x8, ore:ingotSilver x6]
+
+  - id: engrenagem_enderio
+    title: "Engrenagem de Endério"
+    type: normal
+    deps: [enderio]
+    icon: ThermalFoundation:material:140
+    desc: |
+      4 Endérios + 1 ferro. Cada estrutura e cada atualização para o nível §5Ressonante§r leva uma.
+      Faça 2 — dói no bolso, mas vale cada pepita.
+    tasks:
+      - get: ThermalFoundation:material:140 x2
+    rewards:
+      - xp: 3
+      - item: ore:ingotSilver x4
+
+  - id: estrutura_ressonante
+    title: "Estrutura Ressonante"
+    type: main
+    deps: [engrenagem_enderio]
+    icon: ThermalExpansion:Frame:3
+    desc: |
+      Estrutura Reforçada + §e4 pratas + 1 Engrenagem de Endério§r = §eEstrutura de Máquina
+      (Ressonante)§r, o topo da escada.
+    tasks:
+      - get: ThermalExpansion:Frame:3
+    rewards:
+      - xp: 5
+      - choice: [ore:ingotSilver x8, ore:ingotEnderium x2, ThermalExpansion:Glass x8]
+
+  - id: maquina_ressonante
+    title: "Máquina Ressonante"
+    type: main
+    deps: [estrutura_ressonante]
+    icon: ThermalExpansion:Machine:1
+    desc: |
+      Atualize uma máquina Reforçada (4 pratas + Engrenagem de Endério). §e6 slots de aumento§r e
+      acesso aos aumentos de §enível III§r. Seu Pulverizador agora é uma lenda.
+    tasks:
+      - {get: 'ThermalExpansion:Machine:* {Level:3b}', nbt: true}
+    rewards:
+      - xp: 5
+      - choice: [ThermalFoundation:material:140, ore:ingotSilver x8, ThermalFoundation:material:512 x6]
+
+  - id: aumento_velocidade_3
+    title: "Velocidade III"
+    type: normal
+    deps: [maquina_ressonante, aumento_velocidade_2]
+    icon: ThermalExpansion:augment:130
+    desc: |
+      §eUnificador de Espaço-Tempo de Flux§r: ouro, Pyrotheum, Pérolas do Ender e a Bobina
+      Receptora. Com os três níveis instalados: §e×8§r de velocidade (e bastante energia — a
+      máquina gasta +150% por item).
+    tasks:
+      - get: ThermalExpansion:augment:130
+    rewards:
+      - xp: 3
+      - item: minecraft:ender_pearl x4
+
+  - id: aumento_secundario_3
+    title: "Saída Secundária III"
+    type: normal
+    deps: [maquina_ressonante, aumento_secundario_2]
+    icon: ThermalExpansion:augment:114
+    desc: |
+      §eGiroServo Responsivo§r: Vidro Endurecido, Servo Pneumático, Cryotheum e pedra luminosa.
+      O máximo de subprodutos que o Thermal oferece.
+    tasks:
+      - get: ThermalExpansion:augment:114
+    rewards:
+      - xp: 3
+      - item: ThermalFoundation:material:513 x2
+
+  - id: aumento_eficiencia_3
+    title: "Eficiência de Dínamo III"
+    type: normal
+    deps: [aumento_eficiencia_2, cryotheum]
+    icon: ThermalExpansion:augment:66
+    desc: |
+      Electro, pedra luminosa e §eCryotheum§r: o Regulador de CrioBobina. Com os três níveis, cada
+      unidade de combustível rende §e+85%§r de energia. Pyrotheum num dínamo assim é quase
+      trapaça.
+    tasks:
+      - get: ThermalExpansion:augment:66
+    rewards:
+      - xp: 3
+      - item: ThermalFoundation:material:513 x2
+
+  - id: aumento_saida_3
+    title: "Potência de Dínamo III"
+    type: normal
+    deps: [aumento_saida_2, cryotheum]
+    icon: ThermalExpansion:augment:82
+    desc: |
+      Prata, pedra luminosa e Cryotheum: o Amplificador de CrioBobina. O dínamo chega a §e×8§r
+      de RF/t — e consome combustível no mesmo ritmo. Use com fluidos que você produz em massa.
+    tasks:
+      - get: ThermalExpansion:augment:82
+    rewards:
+      - xp: 3
+      - item: ore:ingotSilver x4
+
+  - id: aumento_extrusor_3
+    title: "Geração Piroclástica"
+    type: optional
+    deps: [aumento_extrusor_1, maquina_ressonante]
+    icon: ThermalExpansion:augment:314
+    desc: |
+      Os níveis II (Catalisador Ígneo) e III (Geração Piroclástica) do Extrusor: lotes de até 64
+      blocos e consumo de água bem menor. Faça o nível III (precisa do I e do II instalados e de
+      um Extrusor Ressonante).
+    tasks:
+      - get: [ThermalExpansion:augment:313, ThermalExpansion:augment:314]
+    rewards:
+      - loot: incomum
+
+  - id: estrutura_celula_ressonante
+    title: "Estrutura de Célula Ressonante"
+    type: normal
+    deps: [estrutura_celula_redstone, enderio]
+    icon: ThermalExpansion:Frame:9
+    desc: |
+      Estrutura de Célula de Redstone (Vazia) + 4 Endérios = a Ressonante (Vazia); encha no
+      Transpositor com §e4 000 mB de Redstone Desestabilizada§r. (Também dá para pôr Endério numa
+      estrutura de Redstone já cheia.)
+    tasks:
+      - get: ThermalExpansion:Frame:9
+    rewards:
+      - xp: 3
+      - item: minecraft:redstone_block x4
+
+  - id: celula_ressonante
+    title: "Célula de Energia Ressonante"
+    type: main
+    deps: [estrutura_celula_ressonante, celula_redstone]
+    icon: ThermalExpansion:Cell:4
+    desc: |
+      §e80 000 000 RF§r e §e32 000 RF/t§r de entrada e saída (valores do pack). Faça pela
+      estrutura ou atualize sua Célula de Redstone com 4 Endérios, mantendo a carga.
+
+      Quando ela estiver cheia, você vai ouvir um zumbido baixinho. (Mentira. Mas imagine.)
+    tasks:
+      - get: ThermalExpansion:Cell:4
+    rewards:
+      - xp: 6
+      - choice: [ore:ingotEnderium x3, minecraft:redstone_block x8, ThermalFoundation:material:512 x8]
+
+  - id: tanque_ressonante
+    title: "Tanque Ressonante"
+    type: normal
+    deps: [tanque_reforcado, enderio]
+    icon: ThermalExpansion:Tank:4
+    desc: |
+      Tanque Reforçado + 4 Endérios: §e512 000 mB§r. Um oceano portátil.
+    tasks:
+      - get: ThermalExpansion:Tank:4
+    rewards:
+      - xp: 3
+      - item: ore:ingotSilver x4
+
+  - id: caixa_ressonante
+    title: "Caixa Forte Ressonante"
+    type: normal
+    deps: [caixa_reforcada, enderio]
+    icon: ThermalExpansion:Strongbox:4
+    desc: |
+      Caixa Forte Reforçada + 4 Endérios: a maior Caixa Forte. Leve a base inteira na mochila.
+    tasks:
+      - get: ThermalExpansion:Strongbox:4
+    rewards:
+      - xp: 3
+      - item: ore:ingotSilver x4
+
+  - id: estoque_ressonante
+    title: "Estoque Ressonante"
+    type: normal
+    deps: [estoque_reforcado, enderio]
+    icon: ThermalExpansion:Cache:4
+    desc: |
+      Estoque Reforçado + 4 Endérios: §e640 000§r itens de um só tipo. Toda a sua pedregulhada
+      num bloco.
+    tasks:
+      - get: ThermalExpansion:Cache:4
+    rewards:
+      - xp: 3
+      - item: ore:ingotSilver x4
+
+  - id: sacola_ressonante
+    title: "Sacola Ressonante"
+    type: normal
+    deps: [sacola_reforcada, enderio]
+    icon: ThermalExpansion:satchel:4
+    desc: |
+      Sacola Reforçada + Endério + pepitas de Electro: a sacola mais espaçosa do Thermal.
+    tasks:
+      - get: ThermalExpansion:satchel:4
+    rewards:
+      - xp: 3
+      - item: ore:ingotElectrum x2
+
+  - id: capacitor_ressonante
+    title: "Capacitor Ressonante"
+    type: normal
+    deps: [capacitor_redstone, enderio, pyrotheum]
+    icon: ThermalExpansion:capacitor:5
+    desc: |
+      Capacitor de Redstone + Endério + Pyrotheum + redstone: §e20 000 000 RF§r, carregando até
+      16 000 RF/t nos seus itens. Ferramentas elétricas nunca mais descarregam.
+    tasks:
+      - get: ThermalExpansion:capacitor:5
+    rewards:
+      - xp: 3
+      - item: minecraft:redstone x16
+
+  - id: bancada_ressonante
+    title: "Bancada Ressonante"
+    type: optional
+    deps: [bancada_endurecida, enderio]
+    icon: ThermalExpansion:Workbench:4
+    desc: |
+      Bancada do Maquinista no topo (Invar → Signalo → Endério): o máximo de esquemas e de
+      inventário numa só bancada.
+    tasks:
+      - get: ThermalExpansion:Workbench:4
+    rewards:
+      - loot: incomum
+
+  - id: estrutura_tesserato
+    title: "Estrutura de Tesserato"
+    type: main
+    deps: [enderio, vidro_endurecido]
+    icon: ThermalExpansion:Frame:10
+    desc: |
+      A "Ender Frame" do Thermal: Endério + Vidro Endurecido + um diamante no centro = Estrutura
+      de Tesserato (Vazia). Encha no Transpositor com §e1 000 mB de Ender Ressonante§r para a
+      versão (Cheia). Você vai sentir o espaço "dobrar" em volta dela.
+    tasks:
+      - get: ThermalExpansion:Frame:11
+    rewards:
+      - xp: 5
+      - choice: [minecraft:ender_pearl x8, ore:ingotBronze x8, ore:ingotSilver x8]
+
+  - id: tesserato
+    title: "O Tesserato"
+    type: milestone
+    deps: [estrutura_tesserato]
+    icon: ThermalExpansion:Tesseract
+    banner: "O Tesserato"
+    subtitle: "Um ponto unificado no espaço-tempo"
+    desc: |
+      Estrutura Cheia + 4 bronzes + 4 pratas = §eTesserato§r. Herói... isso é o que os Antigos
+      tentaram construir para ler o Registro de qualquer lugar. Cuidado com o que deseja.
+
+      Como funciona: dois (ou mais) Tesseratos na §emesma frequência§r compartilham §eitens,
+      fluidos e RF§r, em qualquer distância — §ae entre dimensões§r. Na interface você escolhe a
+      frequência, se é pública/privada/de amigos (Trava de Segurança) e se cada canal envia,
+      recebe ou os dois.
+
+      §aDica:§r um Tesserato ao lado da mina e outro na base = minério chegando sozinho.
+    tasks:
+      - get: ThermalExpansion:Tesseract
+    rewards:
+      - xp: 8
+      - kit: {name: "Kit do Viajante do Fluxo", items: [ThermalExpansion:Glass x8, ore:ingotBronze x8, ore:ingotSilver x8, minecraft:ender_pearl x8, minecraft:diamond x2]}
+      - loot: raro
+
+  - id: placa_teleporte
+    title: "Placa de Teleporte"
+    type: optional
+    deps: [placas_basicas, enderio, celula_endurecida]
+    icon: ThermalExpansion:Plate:6
+    desc: |
+      Placa de Translocação + Endério + bronze + uma Célula Endurecida: a §ePlaca de Teleporte§r
+      leva quem pisa nela até outra placa ligada. Um metrô pessoal — gasta RF, claro.
+    tasks:
+      - get: ThermalExpansion:Plate:6
+    rewards:
+      - loot: incomum
+
+  - id: ferramentas_platina
+    title: "Equipamento Brilhante"
+    type: optional
+    deps: [minerio_brilhante]
+    icon: ThermalFoundation:tool.pickaxePlatinum
+    desc: |
+      Se você é do tipo que gasta platina em ferramenta (eu não julgo... muito), o Thermal
+      Foundation tem ferramentas e armaduras "Brilhantes", as mais resistentes da família. Faça
+      qualquer peça.
+    tasks:
+      - one_of: [ThermalFoundation:tool.pickaxePlatinum, ThermalFoundation:tool.swordPlatinum, ThermalFoundation:armor.platePlatinum, ThermalFoundation:armor.helmetPlatinum]
+    rewards:
+      - loot: incomum
+
+  - id: fito_rica
+    title: "Fito-Gosma Enriquecida"
+    type: optional
+    deps: [fito_gosma]
+    icon: ThermalExpansion:material:517
+    desc: |
+      Troque a Escória por §eEscória Rica§r na receita da Fito-Gosma e ela vira Enriquecida: no
+      Insolador, a colheita sai §etriplicada§r (multiplicador do pack). Use em culturas caras.
+    tasks:
+      - get: ThermalExpansion:material:517 x8
+    rewards:
+      - loot: comum
+
+  - id: foice
+    title: "A Foice"
+    type: optional
+    deps: [ferramentas_metal]
+    icon: ThermalFoundation:tool.sickleIron
+    desc: |
+      A §eFoice§r do Thermal Foundation corta plantas, grama e flores numa área em volta do bloco
+      atingido. Colher um campo de trigo com três golpes é terapêutico. Faça qualquer foice.
+    tasks:
+      - one_of: [ThermalFoundation:tool.sickleWood, ThermalFoundation:tool.sickleStone, ThermalFoundation:tool.sickleIron, ThermalFoundation:tool.sickleCopper, ThermalFoundation:tool.sickleInvar, ThermalFoundation:tool.sickleBronze]
+    rewards:
+      - loot: comum
+
+  - id: arco_reforcado
+    title: "Arco Reforçado"
+    type: optional
+    deps: [ferramentas_metal]
+    icon: ThermalFoundation:tool.bowIron
+    desc: |
+      Arcos reforçados com metal: mais durabilidade e um empurrãozinho no dano conforme o
+      material. Faça um de qualquer metal do Thermal.
+    tasks:
+      - one_of: [ThermalFoundation:tool.bowStone, ThermalFoundation:tool.bowIron, ThermalFoundation:tool.bowCopper, ThermalFoundation:tool.bowInvar, ThermalFoundation:tool.bowBronze, ThermalFoundation:tool.bowElectrum]
+    rewards:
+      - loot: comum
+
+  - id: estrutura_celula_endurecida
+    title: "Estrutura de Célula Endurecida"
+    type: optional
+    deps: [estrutura_leadstone, invar]
+    icon: ThermalExpansion:Frame:5
+    desc: |
+      Estrutura de Leadstone + 4 Invar. Com ela você fabrica uma Célula Endurecida do zero, sem
+      precisar de uma de Leadstone para atualizar. Útil quando você quer várias.
+    tasks:
+      - get: ThermalExpansion:Frame:5
+    rewards:
+      - loot: comum
+
+  - id: usina_netherrack
+    title: "A Usina de Netherrack"
+    type: optional
+    deps: [dinamo_magmatico]
+    icon: minecraft:netherrack
+    desc: |
+      A usina clássica do Thermal: um §eCrisol Magmático§r derretendo §eNetherrack§r (1 bloco =
+      1 000 mB de lava) e alimentando §eDínamos Magmáticos§r (180 000 RF por balde). O Crisol
+      gasta bastante, mas os dínamos devolvem mais — e Netherrack o Nether tem de sobra.
+
+      Mostre que você tem as peças: Crisol, Dínamo Magmático e 64 Netherracks.
+    tasks:
+      - get: [ThermalExpansion:Machine:4, ThermalExpansion:Dynamo:1, minecraft:netherrack x64]
+    rewards:
+      - loot: incomum
+
+  - id: pedreira_pedregulho
+    title: "Linha de Pedregulho"
+    type: optional
+    deps: [quebrador, coletor, extrusor]
+    icon: ThermalExpansion:Device:3
+    desc: |
+      Monte a primeira automação "de verdade": §eExtrusor Ígneo§r fazendo pedregulho, §eQuebrador
+      de Terreno§r quebrando, §eAparelho de Aquisição§r recolhendo e um Pulverizador transformando
+      em cascalho e areia. Areia infinita para a Fundição!
+    tasks:
+      - get: [ThermalExpansion:Machine:7, ThermalExpansion:Device:3, ThermalExpansion:Device:4]
+    rewards:
+      - loot: incomum
+
+  - id: rede_tesseratos
+    title: "Uma Rede Entre Dimensões"
+    type: optional
+    deps: [tesserato]
+    icon: ThermalExpansion:Tesseract
+    desc: |
+      Um Tesserato sozinho é só um enfeite caro. Faça §eo par§r, coloque um em outra dimensão (uma
+      base no Nether? uma mina no Mining Dimension?) e ligue os dois na mesma frequência. Itens,
+      fluidos e energia atravessando o espaço — eu me arrepiei aqui.
+    tasks:
+      - get: ThermalExpansion:Tesseract x2
+    rewards:
+      - loot: raro
+
+  - id: mestre_termico
+    title: "Mestre do Fluxo"
+    type: milestone
+    deps: [maquina_ressonante, celula_ressonante, tesserato, aumento_velocidade_3]
+    icon: ThermalExpansion:Cell:4
+    banner: "Mestre do Fluxo"
+    subtitle: "O Volume Térmico está completo"
+    desc: |
+      Máquinas Ressonantes com Velocidade III, uma Célula de 80 milhões de RF e um Tesserato
+      dobrando o espaço. Herói, o Volume do Fluxo está reescrito de ponta a ponta. Eu li cada
+      página de novo só para ter certeza... e está perfeito.
+
+      Daqui o RF que você domina alimenta meio pack: Ender IO, Mekanism, Applied Energistics,
+      Draconic Evolution... Leve o Thermal com você. E me chame quando quiser conversar sobre
+      aumentos — eu nunca canso.
+    tasks:
+      - get: [ThermalExpansion:Cell:4, ThermalExpansion:Tesseract, ThermalExpansion:augment:130]
+      - {get: 'ThermalExpansion:Machine:* {Level:3b}', nbt: true}
+    rewards:
+      - xp: 12
+      - kit: {name: "Relicário do Fluxo", items: [ore:ingotEnderium x8, ThermalFoundation:material:512 x16, ThermalFoundation:material:513 x8, ThermalExpansion:Glass x16, minecraft:diamond x4]}
+      - loot: epico

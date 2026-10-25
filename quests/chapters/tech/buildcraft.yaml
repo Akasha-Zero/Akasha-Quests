@@ -1,0 +1,1632 @@
+chapter:
+  id: buildcraft
+  title: "BuildCraft"
+  prefix: ""
+  order: 310
+  icon: "BuildCraft|Core:woodenGearItem"
+  desc: |
+    §bO Volume das Engrenagens.§r Motores que bombeiam, canos de todas as cores, pedreiras que
+    devoram o chão, petróleo virando combustível, lasers, portas lógicas e robôs.
+    (BuildCraft 7.1.63 + BuildCraft Compat 7.1.22)
+
+quests:
+  # ======================================================================
+  # FASE 0 — ENGRENAGENS
+  # ======================================================================
+  - id: engrenagem_madeira
+    title: "A Primeira Engrenagem"
+    type: main
+    icon: "BuildCraft|Core:woodenGearItem"
+    desc: |
+      Antes de qualquer cano, motor ou robô, existe uma roda dentada de madeira. É um dos Volumes
+      mais antigos do Registro, Herói — os Antigos aprenderam a automatizar com ele.
+
+      4 gravetos em cruz (centro vazio) = §eEngrenagem de Madeira§r. Daqui em diante cada
+      engrenagem usa a anterior no centro: madeira → pedra → ferro → ouro → diamante.
+    tasks:
+      - get: "BuildCraft|Core:woodenGearItem x2"
+    rewards:
+      - xp: 3
+      - choice: [minecraft:stick x32, minecraft:planks x32, minecraft:cobblestone x32]
+
+  - id: engrenagem_pedra
+    title: "Engrenagem de Pedra"
+    type: main
+    deps: [engrenagem_madeira]
+    icon: "BuildCraft|Core:stoneGearItem"
+    desc: |
+      4 pedregulhos em volta de uma Engrenagem de Madeira. A §eEngrenagem de Pedra§r vai na Chave
+      Inglesa, no Motor Stirling, na Mesa de Trabalho Automática e no Funil. Faça 4.
+    tasks:
+      - get: "BuildCraft|Core:stoneGearItem x4"
+    rewards:
+      - xp: 3
+      - choice: [minecraft:cobblestone x64, minecraft:iron_ingot x4, minecraft:stick x32]
+
+  - id: engrenagem_ferro
+    title: "Engrenagem de Ferro"
+    type: main
+    deps: [engrenagem_pedra]
+    icon: "BuildCraft|Core:ironGearItem"
+    desc: |
+      4 lingotes de ferro em volta de uma Engrenagem de Pedra. Motor de Combustão, Bomba, Pedreira,
+      Minerador de Poços... a §eEngrenagem de Ferro§r está em toda parte. Faça 4.
+
+      §aObs.:§r ela conta como `gearIron` no oredict, então serve em receitas de outros mods.
+    tasks:
+      - get: "BuildCraft|Core:ironGearItem x4"
+    rewards:
+      - xp: 3
+      - choice: [minecraft:iron_ingot x12, minecraft:redstone x16, minecraft:gold_ingot x4]
+
+  - id: engrenagem_ouro
+    title: "Engrenagem de Ouro"
+    type: main
+    deps: [engrenagem_ferro]
+    icon: "BuildCraft|Core:goldGearItem"
+    desc: |
+      4 de ouro em volta de uma de ferro. Vai na Pedreira, no Preenchedor, no Marco de Construção e
+      na Mesa de Carga. Faça 2.
+    tasks:
+      - get: "BuildCraft|Core:goldGearItem x2"
+    rewards:
+      - xp: 3
+      - choice: [minecraft:gold_ingot x8, minecraft:redstone x16, minecraft:iron_ingot x8]
+
+  - id: engrenagem_diamante
+    title: "Engrenagem de Diamante"
+    type: main
+    deps: [engrenagem_ouro]
+    icon: "BuildCraft|Core:diamondGearItem"
+    desc: |
+      4 diamantes em volta de uma de ouro. Cara? Muito. Mas é ela que gira a Pedreira, a
+      Refinaria, o Construtor, a Mesa de Arquitetura e as mesas de laser. Faça 2 quando puder.
+    tasks:
+      - get: "BuildCraft|Core:diamondGearItem x2"
+    rewards:
+      - xp: 4
+      - choice: [minecraft:diamond x2, minecraft:gold_ingot x8, minecraft:redstone_block x2]
+
+  - id: chave_inglesa
+    title: "Chave Inglesa"
+    type: normal
+    deps: [engrenagem_pedra]
+    icon: "BuildCraft|Core:wrenchItem"
+    desc: |
+      3 ferros e uma Engrenagem de Pedra. A §eChave Inglesa§r gira motores, muda a saída dos canos
+      de madeira/ferro e configura portas lógicas. Quase todo mod do pack aceita ela como chave.
+    tasks:
+      - get: "BuildCraft|Core:wrenchItem"
+    rewards:
+      - xp: 2
+      - item: minecraft:iron_ingot x4
+
+  - id: aula_energia
+    title: "Aula: Energia no BuildCraft 7"
+    type: info
+    deps: [engrenagem_madeira]
+    icon: "BuildCraft|Core:engineBlock"
+    desc: |
+      Antigamente o BuildCraft usava MJ. §bNa versão 7 tudo funciona em RF§r — o mesmo fluxo do
+      Thermal, do Ender IO e de meio pack. Motores do BuildCraft alimentam máquinas de outros mods
+      e vice-versa.
+
+      Regras importantes:
+      §e•§r Motores esquentam: azul → verde → amarelo → vermelho. §aNo pack os motores não
+      explodem§r (`canEnginesExplode=false`), mas superaquecidos param até esfriar.
+      §e•§r O §eMotor de Redstone§r só "empurra" canos (extração de canos de madeira); ele não
+      alimenta máquinas.
+      §e•§r Para levar RF use os §eTubos Cinéticos§r (tubo de itens + redstone).
+    tasks:
+      - check
+    rewards:
+      - xp: 1
+
+  # ======================================================================
+  # FASE 1 — MOTORES
+  # ======================================================================
+  - id: motor_redstone
+    title: "Motor de Redstone"
+    type: main
+    deps: [engrenagem_madeira]
+    icon: "BuildCraft|Core:engineBlock"
+    desc: |
+      Tábuas, vidro, um pistão e duas Engrenagens de Madeira. O §eMotor de Redstone§r é ligado
+      com um sinal de redstone (alavanca!) e serve para uma coisa: fazer o §eCano de Madeira§r
+      puxar itens de um baú. Fraquinho, mas nunca superaquece.
+    tasks:
+      - get: "BuildCraft|Core:engineBlock"
+    rewards:
+      - xp: 3
+      - choice: [minecraft:lever x4, minecraft:redstone x16, minecraft:planks x32]
+
+  - id: motor_stirling
+    title: "Motor Stirling"
+    type: main
+    deps: [motor_redstone, engrenagem_pedra]
+    icon: "BuildCraft|Core:engineBlock:1"
+    desc: |
+      O jogo em pt_BR chama de "Motor a Vapor", mas é o §eMotor Stirling§r: pedregulho, vidro,
+      pistão e Engrenagens de Pedra. Queima qualquer combustível de fornalha e gera RF de
+      verdade (~10 RF/t). Ligue com redstone, encoste numa máquina ou num Tubo Cinético de
+      Madeira.
+    tasks:
+      - get: "BuildCraft|Core:engineBlock:1"
+    rewards:
+      - xp: 3
+      - choice: [minecraft:coal x32, minecraft:cobblestone x64, minecraft:lever x4]
+
+  - id: motor_combustao
+    title: "Motor de Combustão"
+    type: main
+    deps: [motor_stirling, engrenagem_ferro]
+    icon: "BuildCraft|Core:engineBlock:2"
+    desc: |
+      Ferro, vidro, pistão e Engrenagens de Ferro. O §eMotor de Combustão§r queima combustíveis
+      líquidos — no pack: §ePetróleo 30 RF/t§r e §eCombustível 60 RF/t§r — e precisa de
+      §earrefecimento§r (água) para não superaquecer e parar.
+
+      Ele guarda até 100 000 RF de buffer. Bombeie água com uma Bomba, um Acumulador Aquoso do
+      Thermal ou nós de líquido do Extra Utilities.
+    tasks:
+      - get: "BuildCraft|Core:engineBlock:2"
+    rewards:
+      - xp: 4
+      - choice: [minecraft:water_bucket x2, minecraft:iron_ingot x12, minecraft:redstone x16]
+
+  # ======================================================================
+  # FASE 2 — CANOS DE ITENS
+  # ======================================================================
+  - id: aula_canos
+    title: "Aula: Como os Canos Pensam"
+    type: info
+    deps: [engrenagem_madeira]
+    icon: "BuildCraft|Transport:item.buildcraftPipe.pipeitemscobblestone"
+    desc: |
+      Um cano é: §e2 materiais com um vidro no meio§r, em linha = 8 canos. Regras de ouro:
+      §e•§r Itens §esó entram§r em canos por um §eCano de Madeira§r (ou Esmeralda) acionado por um
+      motor — ou por máquinas que empurram sozinhas.
+      §e•§r Canos de Pedregulho, Pedra e Quartzo §cnão se conectam entre si§r — use isso para
+      separar linhas vizinhas.
+      §e•§r Itens perdem velocidade no caminho (o pedregulho "freia" mais, o quartzo menos); o
+      §eCano de Ouro§r acelera.
+      §e•§r Num cruzamento sem regra, o item escolhe um caminho aleatório.
+    tasks:
+      - check
+    rewards:
+      - xp: 1
+
+  - id: cano_madeira
+    title: "Cano de Madeira"
+    type: main
+    deps: [aula_canos, motor_redstone]
+    icon: "BuildCraft|Transport:item.buildcraftPipe.pipeitemswood"
+    desc: |
+      Tábua + vidro + tábua. O §eCano de Transporte de Madeira§r é o "aspirador": com um motor
+      encostado, ele puxa itens do inventário ao lado. Use a Chave Inglesa para escolher de qual
+      lado ele puxa. Faça 8.
+    tasks:
+      - get: "BuildCraft|Transport:item.buildcraftPipe.pipeitemswood x8"
+    rewards:
+      - xp: 3
+      - choice: [minecraft:planks x32, minecraft:glass x16, minecraft:chest x2]
+
+  - id: cano_pedregulho
+    title: "Cano de Pedregulho"
+    type: main
+    deps: [cano_madeira]
+    icon: "BuildCraft|Transport:item.buildcraftPipe.pipeitemscobblestone"
+    desc: |
+      O cano mais barato e o mais "pegajoso": itens andam devagar. Perfeito para trechos curtos.
+      Faça 16 e leve os itens do Cano de Madeira até um baú.
+    tasks:
+      - get: "BuildCraft|Transport:item.buildcraftPipe.pipeitemscobblestone x16"
+    rewards:
+      - xp: 3
+      - choice: [minecraft:cobblestone x64, minecraft:glass x16, minecraft:chest x2]
+
+  - id: cano_pedra
+    title: "Cano de Pedra"
+    type: normal
+    deps: [cano_pedregulho]
+    icon: "BuildCraft|Transport:item.buildcraftPipe.pipeitemsstone"
+    desc: |
+      Pedra lisa + vidro. Atrito médio. Não se conecta ao de pedregulho nem ao de quartzo — ótimo
+      para correr duas linhas lado a lado sem misturar.
+    tasks:
+      - get: "BuildCraft|Transport:item.buildcraftPipe.pipeitemsstone x8"
+    rewards:
+      - xp: 2
+      - item: minecraft:stone x16
+
+  - id: cano_quartzo
+    title: "Cano de Quartzo"
+    type: normal
+    deps: [cano_pedregulho]
+    icon: "BuildCraft|Transport:item.buildcraftPipe.pipeitemsquartz"
+    desc: |
+      Bloco de quartzo + vidro. O cano básico de §emenor atrito§r: os itens deslizam longe.
+      Também não se conecta aos de pedra e pedregulho.
+    tasks:
+      - get: "BuildCraft|Transport:item.buildcraftPipe.pipeitemsquartz x8"
+    rewards:
+      - xp: 2
+      - item: minecraft:quartz x8
+
+  - id: cano_ouro
+    title: "Cano de Ouro"
+    type: normal
+    deps: [cano_pedregulho]
+    icon: "BuildCraft|Transport:item.buildcraftPipe.pipeitemsgold"
+    desc: |
+      Ouro + vidro. O §eCano de Ouro§r §eacelera§r os itens que passam por ele. Coloque um a cada
+      tantos blocos numa linha longa e nada fica parado no caminho.
+    tasks:
+      - get: "BuildCraft|Transport:item.buildcraftPipe.pipeitemsgold x4"
+    rewards:
+      - xp: 2
+      - item: minecraft:gold_ingot x2
+
+  - id: cano_ferro
+    title: "Cano de Ferro"
+    type: normal
+    deps: [cano_pedregulho, chave_inglesa]
+    icon: "BuildCraft|Transport:item.buildcraftPipe.pipeitemsiron"
+    desc: |
+      Ferro + vidro. O §eCano de Ferro§r tem §euma única saída§r: tudo que entra sai pelo lado
+      escolhido (gire com a Chave Inglesa ou por porta lógica). Ideal para impedir que itens voltem.
+    tasks:
+      - get: "BuildCraft|Transport:item.buildcraftPipe.pipeitemsiron x4"
+    rewards:
+      - xp: 2
+      - item: minecraft:iron_ingot x4
+
+  - id: cano_diamante
+    title: "Cano de Diamante"
+    type: main
+    deps: [cano_ouro, cano_ferro]
+    icon: "BuildCraft|Transport:item.buildcraftPipe.pipeitemsdiamond"
+    desc: |
+      O seletor! Diamante + vidro. Abra a interface do §eCano de Diamante§r: são 6 linhas
+      coloridas, uma para cada lado. Coloque um exemplar do item na linha da cor do lado por onde
+      ele deve sair. Itens sem regra vão pelos lados sem filtro.
+
+      É aqui que nasce a sua primeira triagem automática de minérios.
+    tasks:
+      - get: "BuildCraft|Transport:item.buildcraftPipe.pipeitemsdiamond x2"
+    rewards:
+      - xp: 4
+      - choice: [minecraft:diamond, minecraft:gold_ingot x6, minecraft:chest x4]
+
+  - id: cano_obsidiana
+    title: "Cano de Obsidiana"
+    type: normal
+    deps: [cano_pedregulho]
+    icon: "BuildCraft|Transport:item.buildcraftPipe.pipeitemsobsidian"
+    desc: |
+      Obsidiana + vidro. O §eCano de Obsidiana§r §esuga itens soltos§r no chão perto da ponta
+      aberta. Com um motor ligado, o alcance aumenta. Ótimo embaixo de uma fazenda de mobs.
+    tasks:
+      - get: "BuildCraft|Transport:item.buildcraftPipe.pipeitemsobsidian x2"
+    rewards:
+      - xp: 2
+      - item: minecraft:obsidian x4
+
+  - id: cano_esmeralda
+    title: "Cano de Esmeralda"
+    type: normal
+    deps: [cano_madeira]
+    icon: "BuildCraft|Transport:item.buildcraftPipe.pipeitemsemerald"
+    desc: |
+      O irmão rico do Cano de Madeira: extrai itens com §efiltro§r (lista branca, lista negra ou
+      rodízio em ordem). Precisa de motor, como o de madeira. Esmeralda + vidro.
+    tasks:
+      - get: "BuildCraft|Transport:item.buildcraftPipe.pipeitemsemerald x2"
+    rewards:
+      - xp: 2
+      - item: minecraft:emerald
+
+  - id: cano_arenito
+    title: "Cano de Arenito"
+    type: normal
+    deps: [cano_pedregulho]
+    icon: "BuildCraft|Transport:item.buildcraftPipe.pipeitemssandstone"
+    desc: |
+      Arenito + vidro. O §eCano de Arenito§r §esó se conecta a outros canos§r, nunca a baús ou
+      máquinas. Passe ao lado de um baú sem medo de os itens entrarem nele.
+    tasks:
+      - get: "BuildCraft|Transport:item.buildcraftPipe.pipeitemssandstone x8"
+    rewards:
+      - xp: 2
+      - item: minecraft:sandstone x16
+
+  - id: cano_vazio
+    title: "Cano do Vazio"
+    type: normal
+    deps: [cano_pedregulho]
+    icon: "BuildCraft|Transport:item.buildcraftPipe.pipeitemsvoid"
+    desc: |
+      Corante preto + vidro + redstone. Tudo que entra no §eCano Vazio§r §cdesaparece§r. Junte com
+      um Cano de Diamante para jogar fora só o pedregulho e a terra.
+    tasks:
+      - get: "BuildCraft|Transport:item.buildcraftPipe.pipeitemsvoid"
+    rewards:
+      - xp: 2
+      - item: minecraft:redstone x8
+
+  - id: cano_argila
+    title: "Cano de Argila"
+    type: normal
+    deps: [cano_pedregulho]
+    icon: "BuildCraft|Transport:item.buildcraftPipe.pipeitemsclay"
+    desc: |
+      Argila + vidro. O §eCano de Argila§r é de inserção: ele §eprioriza máquinas e baús vizinhos§r
+      antes de mandar itens adiante pelos canos. Bom para alimentar uma fileira de fornalhas.
+    tasks:
+      - get: "BuildCraft|Transport:item.buildcraftPipe.pipeitemsclay x4"
+    rewards:
+      - xp: 2
+      - item: minecraft:clay_ball x16
+
+  - id: cano_lapis
+    title: "Cano de Lápis-Lazúli"
+    type: optional
+    deps: [cano_diamante]
+    icon: "BuildCraft|Transport:item.buildcraftPipe.pipeitemslapis"
+    desc: |
+      Blocos de lápis + vidro. O §eCano de Lazuli§r §epinta§r os itens que passam com uma cor
+      (agachado + clique para trocar). Itens pintados podem ser roteados pelo Cano de Daizuli.
+    tasks:
+      - get: "BuildCraft|Transport:item.buildcraftPipe.pipeitemslapis"
+    rewards:
+      - loot: comum
+
+  - id: cano_daizuli
+    title: "Cano de Daizuli"
+    type: optional
+    deps: [cano_lapis]
+    icon: "BuildCraft|Transport:item.buildcraftPipe.pipeitemsdaizuli"
+    desc: |
+      Bloco de lápis + vidro + diamante. O §eDaizuli§r manda itens §eda cor escolhida§r para um
+      lado específico e os outros seguem o fluxo. Lazuli + Daizuli = triagem por cor.
+    tasks:
+      - get: "BuildCraft|Transport:item.buildcraftPipe.pipeitemsdaizuli"
+    rewards:
+      - loot: comum
+
+  - id: cano_emzuli
+    title: "Cano de Emzuli"
+    type: optional
+    deps: [cano_lapis, cano_esmeralda]
+    icon: "BuildCraft|Transport:item.buildcraftPipe.pipeitemsemzuli"
+    desc: |
+      Bloco de lápis + vidro + esmeralda. Um cano de §eextração com predefinições§r: até quatro
+      filtros que podem pintar os itens extraídos, trocados por portas lógicas. O sonho de quem
+      gosta de logística complicada (eu!).
+    tasks:
+      - get: "BuildCraft|Transport:item.buildcraftPipe.pipeitemsemzuli"
+    rewards:
+      - loot: comum
+
+  - id: cano_listrado
+    title: "Cano Listrado"
+    type: optional
+    deps: [cano_ouro, engrenagem_ouro]
+    icon: "BuildCraft|Transport:item.buildcraftPipe.pipeitemsstripes"
+    desc: |
+      Engrenagens de Ouro + vidro. O §eCano Listrado§r "usa" os itens que chegam à ponta dele:
+      coloca blocos, usa ferramentas, planta... Com energia, ele também pode se estender. Um
+      pequeno construtor de canos.
+    tasks:
+      - get: "BuildCraft|Transport:item.buildcraftPipe.pipeitemsstripes"
+    rewards:
+      - loot: comum
+
+  - id: cano_estrutura
+    title: "Cano de Estrutura"
+    type: optional
+    deps: [cano_pedregulho]
+    icon: "BuildCraft|Transport:item.buildcraftPipe.pipestructurecobblestone"
+    desc: |
+      Pedregulho + cascalho. O §eCano de Estrutura§r não transporta nada: serve de suporte para
+      portas lógicas, fios e fachadas. Quebrado em 4, vira §eTampa de Cano§r, que fecha um lado de
+      qualquer cano.
+    tasks:
+      - get: ["BuildCraft|Transport:item.buildcraftPipe.pipestructurecobblestone x4", "BuildCraft|Transport:pipePlug x4"]
+    rewards:
+      - loot: comum
+
+  - id: lentes_filtros
+    title: "Lentes e Filtros"
+    type: optional
+    deps: [cano_diamante, mesa_montagem]
+    icon: "BuildCraft|Transport:pipeLens"
+    desc: |
+      Na Mesa de Montagem: vidro + corante = 2 §eLentes§r; vidro + corante + barras de ferro = 2
+      §eFiltros§r. Encaixados num cano, a lente pinta os itens que passam e o filtro só deixa
+      passar itens daquela cor.
+    tasks:
+      - one_of: ["BuildCraft|Transport:pipeLens:*"]
+    rewards:
+      - loot: comum
+
+  - id: buffer_filtrado
+    title: "Buffer Filtrado"
+    type: optional
+    deps: [cano_diamante]
+    icon: "BuildCraft|Transport:filteredBufferBlock"
+    desc: |
+      Tábuas, baú, pistão e um Cano de Diamante. O §eBuffer Filtrado§r é um baú com 9 slots que só
+      aceita os itens que você marcar. Ótimo para alimentar máquinas com a quantia certinha.
+    tasks:
+      - get: "BuildCraft|Transport:filteredBufferBlock"
+    rewards:
+      - loot: comum
+
+  - id: funil_bc
+    title: "Funil do BuildCraft"
+    type: optional
+    deps: [engrenagem_pedra]
+    icon: "BuildCraft|Factory:blockHopper"
+    desc: |
+      Um funil comum + Engrenagem de Pedra (ou ferro, baú e engrenagem). O "Chute" do BuildCraft
+      despeja os itens direto em canos — e, com motor, empurra mais rápido.
+    tasks:
+      - get: "BuildCraft|Factory:blockHopper"
+    rewards:
+      - loot: comum
+
+  - id: bancada_automatica
+    title: "Mesa de Trabalho Automática"
+    type: normal
+    deps: [engrenagem_pedra]
+    icon: "BuildCraft|Factory:autoWorkbenchBlock"
+    desc: |
+      Uma bancada + 2 Engrenagens de Pedra. Monte a receita na grade, coloque os ingredientes no
+      inventário de baixo e ela fabrica sozinha (mais rápido com motor). Puxe o resultado com um
+      Cano de Madeira. Engrenagens automáticas? Sim, por favor.
+    tasks:
+      - get: "BuildCraft|Factory:autoWorkbenchBlock"
+    rewards:
+      - xp: 2
+      - item: minecraft:crafting_table x2
+
+  - id: triagem
+    title: "A Primeira Triagem"
+    type: milestone
+    deps: [cano_diamante, cano_vazio, motor_stirling, bancada_automatica]
+    icon: "BuildCraft|Transport:item.buildcraftPipe.pipeitemsdiamond"
+    banner: "Os Canos Vivem"
+    subtitle: "Itens correndo sozinhos"
+    desc: |
+      Motores batendo, Canos de Madeira puxando, Diamante separando, Vazio sumindo com o lixo e
+      uma Mesa de Trabalho fabricando sozinha. Herói, você acabou de ensinar a base a se
+      organizar!
+
+      Dicas:
+      §e•§r Coloque um §eCano de Ouro§r a cada 10–15 blocos em linhas longas.
+      §e•§r Use canos de §eArenito§r ao passar perto de baús que não devem receber itens.
+      §e•§r Itens que não acham destino §cvoltam ou caem no chão§r — sempre tenha um baú de
+      "sobras" no fim da linha.
+
+      Agora: fluidos, energia e... petróleo.
+    tasks:
+      - get: ["BuildCraft|Transport:item.buildcraftPipe.pipeitemsdiamond", "BuildCraft|Transport:item.buildcraftPipe.pipeitemsvoid", "BuildCraft|Core:engineBlock:1", "BuildCraft|Factory:autoWorkbenchBlock"]
+    rewards:
+      - xp: 6
+      - kit: {name: "Kit do Encanador", items: ["BuildCraft|Transport:item.buildcraftPipe.pipeitemscobblestone x32", "BuildCraft|Transport:item.buildcraftPipe.pipeitemsgold x4", "BuildCraft|Core:ironGearItem x2", minecraft:glass x16, minecraft:chest x2]}
+      - loot: incomum
+
+  # ======================================================================
+  # FASE 3 — FLUIDOS
+  # ======================================================================
+  - id: vedacao
+    title: "Vedação de Tubo"
+    type: main
+    deps: [cano_pedregulho]
+    icon: "BuildCraft|Transport:pipeWaterproof"
+    desc: |
+      §eVedação de Tubo§r = 1 corante verde de cacto (ou 1 cera de abelha do Forestry). Cano de
+      itens + vedação na bancada = §eCano de Fluido§r do mesmo material. Faça 4.
+    tasks:
+      - get: "BuildCraft|Transport:pipeWaterproof x4"
+    rewards:
+      - xp: 3
+      - choice: [minecraft:cactus x8, minecraft:dye:2 x8, minecraft:bucket x2]
+
+  - id: canos_fluido
+    title: "Canos de Fluido"
+    type: main
+    deps: [vedacao]
+    icon: "BuildCraft|Transport:item.buildcraftPipe.pipefluidscobblestone"
+    desc: |
+      Os canos de fluido seguem as regras dos de itens: §eMadeira§r extrai (com motor), §ePedra/
+      Pedregulho/Quartzo§r não se misturam, §eOuro§r leva mais por segundo, §eFerro§r é válvula
+      de mão única, §eArenito§r só liga em canos, §eVazio§r apaga, §eArgila§r insere.
+
+      Faça §e1 Cano de Fluido de Madeira§r e §e8 de Pedregulho§r.
+    tasks:
+      - get: ["BuildCraft|Transport:item.buildcraftPipe.pipefluidswood", "BuildCraft|Transport:item.buildcraftPipe.pipefluidscobblestone x8"]
+    rewards:
+      - xp: 3
+      - choice: [minecraft:bucket x4, minecraft:glass x16, minecraft:cobblestone x64]
+
+  - id: cano_fluido_ouro
+    title: "Cano de Fluido de Ouro"
+    type: normal
+    deps: [canos_fluido]
+    icon: "BuildCraft|Transport:item.buildcraftPipe.pipefluidsgold"
+    desc: |
+      Ouro tem a maior vazão entre os canos de fluido. Para levar combustível da Refinaria aos
+      motores, é ele que você quer. Faça 4.
+    tasks:
+      - get: "BuildCraft|Transport:item.buildcraftPipe.pipefluidsgold x4"
+    rewards:
+      - xp: 2
+      - item: minecraft:gold_ingot x2
+
+  - id: cano_fluido_esmeralda
+    title: "Canos de Fluido Especiais"
+    type: optional
+    deps: [canos_fluido]
+    icon: "BuildCraft|Transport:item.buildcraftPipe.pipefluidsdiamond"
+    desc: |
+      §e• Esmeralda:§r extrai com filtro de fluido. §e• Diamante:§r separa fluidos por lado (a
+      interface aceita qualquer recipiente como exemplo). §e• Ferro:§r válvula. §e• Vazio:§r
+      apaga fluidos. Faça qualquer um.
+    tasks:
+      - one_of: ["BuildCraft|Transport:item.buildcraftPipe.pipefluidsemerald", "BuildCraft|Transport:item.buildcraftPipe.pipefluidsdiamond", "BuildCraft|Transport:item.buildcraftPipe.pipefluidsiron", "BuildCraft|Transport:item.buildcraftPipe.pipefluidsvoid"]
+    rewards:
+      - loot: comum
+
+  - id: tanque_bc
+    title: "Tanque"
+    type: main
+    deps: [canos_fluido]
+    icon: "BuildCraft|Factory:tankBlock"
+    desc: |
+      8 vidros em anel. O §eTanque§r guarda §e16 baldes§r de um fluido e empilha: tanques um em
+      cima do outro viram uma coluna só. §cAtenção:§r ele não é portátil — quebrou, perdeu o
+      fluido. Faça 4.
+    tasks:
+      - get: "BuildCraft|Factory:tankBlock x4"
+    rewards:
+      - xp: 3
+      - choice: [minecraft:glass x32, minecraft:bucket x4, minecraft:water_bucket]
+
+  - id: bomba
+    title: "Bomba de Fluidos"
+    type: main
+    deps: [tanque_bc, engrenagem_ferro]
+    icon: "BuildCraft|Factory:pumpBlock"
+    desc: |
+      Ferro, redstone, Engrenagem de Ferro, dois Tanques e um balde. A §eBomba§r desce um tubo até
+      um fluido e o suga bloco a bloco, com RF. É ela que tira petróleo do chão (e lava do
+      Nether, para quem tiver coragem de levá-la até lá).
+    tasks:
+      - get: "BuildCraft|Factory:pumpBlock"
+    rewards:
+      - xp: 4
+      - choice: [minecraft:iron_ingot x12, "BuildCraft|Factory:tankBlock x2", minecraft:bucket x4]
+
+  - id: comporta
+    title: "Comporta Hidráulica"
+    type: optional
+    deps: [bomba]
+    icon: "BuildCraft|Factory:floodGateBlock"
+    desc: |
+      A Bomba ao contrário: a §eComporta§r espalha o fluido que recebe, preenchendo um lago ou um
+      fosso. Fosso de lava em volta da base? Você que sabe.
+    tasks:
+      - get: "BuildCraft|Factory:floodGateBlock"
+    rewards:
+      - loot: comum
+
+  # ======================================================================
+  # FASE 4 — ENERGIA: TUBOS CINÉTICOS
+  # ======================================================================
+  - id: cinetico_madeira
+    title: "Tubo Cinético de Madeira"
+    type: main
+    deps: [motor_stirling, cano_madeira]
+    icon: "BuildCraft|Transport:item.buildcraftPipe.pipepowerwood"
+    desc: |
+      Cano de itens + redstone = Tubo Cinético. O de §eMadeira§r é a entrada: encoste nos motores
+      (só ele aceita energia de motores). Depois a energia corre pelos outros tubos cinéticos até
+      as máquinas.
+    tasks:
+      - get: "BuildCraft|Transport:item.buildcraftPipe.pipepowerwood x2"
+    rewards:
+      - xp: 3
+      - choice: [minecraft:redstone x16, minecraft:planks x32, minecraft:coal x16]
+
+  - id: cinetico_pedregulho
+    title: "Tubos Cinéticos de Transporte"
+    type: main
+    deps: [cinetico_madeira]
+    icon: "BuildCraft|Transport:item.buildcraftPipe.pipepowercobblestone"
+    desc: |
+      Pedregulho, Pedra, Quartzo, Ouro e Diamante: cada material aguenta mais RF/t. O de
+      pedregulho basta para os primeiros motores; o de Ouro e o de Diamante carregam muito mais.
+
+      Faça §e8 Tubos Cinéticos de Pedregulho§r (ou de Pedra).
+    tasks:
+      - one_of: ["BuildCraft|Transport:item.buildcraftPipe.pipepowercobblestone x8", "BuildCraft|Transport:item.buildcraftPipe.pipepowerstone x8"]
+    rewards:
+      - xp: 3
+      - choice: [minecraft:redstone x16, minecraft:cobblestone x64, minecraft:glass x16]
+
+  - id: cinetico_ouro
+    title: "Tubos Cinéticos de Ouro e Diamante"
+    type: normal
+    deps: [cinetico_pedregulho]
+    icon: "BuildCraft|Transport:item.buildcraftPipe.pipepowergold"
+    desc: |
+      Para a Pedreira e a Refinaria você vai querer tubos que aguentem bastante RF. Faça 4 de
+      §eOuro§r (ou de Diamante, se estiver com diamante sobrando).
+    tasks:
+      - one_of: ["BuildCraft|Transport:item.buildcraftPipe.pipepowergold x4", "BuildCraft|Transport:item.buildcraftPipe.pipepowerdiamond x4"]
+    rewards:
+      - xp: 2
+      - item: minecraft:gold_ingot x4
+
+  - id: cinetico_especiais
+    title: "Tubos Cinéticos Especiais"
+    type: optional
+    deps: [cinetico_pedregulho]
+    icon: "BuildCraft|Transport:item.buildcraftPipe.pipepoweriron"
+    desc: |
+      §e• Ferro:§r limitador ajustável (Chave Inglesa ou portas lógicas mudam o limite).
+      §e• Esmeralda:§r outra entrada de energia, como a Madeira.
+      §e• Arenito:§r só se conecta a outros tubos.
+      Faça qualquer um.
+    tasks:
+      - one_of: ["BuildCraft|Transport:item.buildcraftPipe.pipepoweriron", "BuildCraft|Transport:item.buildcraftPipe.pipepoweremerald", "BuildCraft|Transport:item.buildcraftPipe.pipepowersandstone"]
+    rewards:
+      - loot: comum
+
+  - id: adaptador_energia
+    title: "Adaptador de Energia"
+    type: optional
+    deps: [cano_estrutura, cinetico_pedregulho]
+    icon: "BuildCraft|Transport:pipePowerAdapter"
+    desc: |
+      Canos de Estrutura + ouro + engrenagem: §e4 Adaptadores de Energia§r. Encaixe no lado de um
+      cano para ligar energia diretamente nele. Detalhe técnico, mas resolve aquela conexão chata.
+    tasks:
+      - get: "BuildCraft|Transport:pipePowerAdapter"
+    rewards:
+      - loot: comum
+
+  # ======================================================================
+  # FASE 5 — MINERAÇÃO
+  # ======================================================================
+  - id: minerador_poco
+    title: "Minerador de Poços"
+    type: main
+    deps: [engrenagem_ferro, cinetico_madeira]
+    icon: "BuildCraft|Factory:miningWellBlock"
+    desc: |
+      Ferro, redstone, Engrenagem de Ferro e uma picareta de ferro. O §eMinerador de Poços§r cava
+      §euma coluna reta§r até a camada mais funda, colocando Tubos de Mineração atrás de si e
+      cuspindo os blocos para um baú ou cano ao lado. Precisa de RF.
+    tasks:
+      - get: "BuildCraft|Factory:miningWellBlock"
+    rewards:
+      - xp: 4
+      - choice: [minecraft:iron_ingot x12, minecraft:chest x2, minecraft:coal x32]
+
+  - id: marcador
+    title: "Marcadores de Localização"
+    type: main
+    deps: [engrenagem_madeira]
+    icon: "BuildCraft|Core:markerBlock"
+    desc: |
+      Lápis-lazúli + tocha de redstone. O §eMarcador de Localização§r define áreas: coloque 3 (num
+      canto e em duas direções, até 64 blocos de distância pela config) e clique direito num
+      deles para ligar os lasers azuis. Pedreira, Mesa de Arquitetura e Preenchedor usam essa
+      área. Faça 4.
+    tasks:
+      - get: "BuildCraft|Core:markerBlock x4"
+    rewards:
+      - xp: 3
+      - choice: [minecraft:dye:4 x8, minecraft:redstone_torch x8, minecraft:torch x32]
+
+  - id: pedreira
+    title: "A Pedreira"
+    type: milestone
+    deps: [minerador_poco, marcador, engrenagem_diamante, engrenagem_ouro, cinetico_ouro]
+    icon: "BuildCraft|Builders:machineBlock"
+    banner: "A Pedreira"
+    subtitle: "Um buraco do tamanho da sua ambição"
+    desc: |
+      Engrenagens de Ferro, Ouro e Diamante, redstone e uma picareta de diamante: a §ePedreira§r.
+      Coloque-a encostada em uma área marcada (ou sozinha, para a área padrão), dê energia e
+      assista: ela ergue uma armação e escava camada por camada até o fundo, mandando tudo para um
+      baú ou cano encostado.
+
+      §cCuidados:§r
+      §e•§r Ela §cnão carrega chunks§r neste pack (`doChunkLoading=false`): fique por perto ou use
+      um carregador de chunks de outro mod.
+      §e•§r Ela traz MUITO pedregulho: tenha um Cano de Diamante + Cano Vazio na saída.
+      §e•§r Não deixe a Pedreira no meio da sua base. Sério.
+    tasks:
+      - get: "BuildCraft|Builders:machineBlock"
+    rewards:
+      - xp: 8
+      - kit: {name: "Kit do Minerador Automático", items: ["BuildCraft|Core:markerBlock x4", "BuildCraft|Transport:item.buildcraftPipe.pipeitemsvoid x2", "BuildCraft|Transport:item.buildcraftPipe.pipeitemsdiamond x2", minecraft:chest x4, minecraft:diamond x2]}
+      - loot: raro
+
+  - id: armacao
+    title: "Armação"
+    type: optional
+    deps: [pedreira]
+    icon: "BuildCraft|Builders:frameBlock"
+    desc: |
+      A §eArmação§r amarela que a Pedreira constrói em volta da área. Se você quebrar um pedaço,
+      ganha alguns blocos — decoração industrial com cara de canteiro de obras.
+    tasks:
+      - get: "BuildCraft|Builders:frameBlock x4"
+    rewards:
+      - loot: comum
+
+  # ======================================================================
+  # FASE 6 — PETRÓLEO E REFINARIA
+  # ======================================================================
+  - id: petroleo
+    title: "Ouro Negro"
+    type: main
+    deps: [bomba]
+    icon: "BuildCraft|Energy:bucketOil"
+    desc: |
+      §cAtenção, Herói:§r neste pack a geração de mundo do BuildCraft (poços e fontes de petróleo)
+      está §cdesligada§r (`worldgen.enable=false`). O petróleo que existe no mundo vem dos
+      §ebolsões subterrâneos gerados pelo Galacticraft§r no Overworld (é o mesmo fluido, "oil").
+      O Immersive Petroleum também extrai petróleo de reservatórios.
+
+      Ache um bolsão (às vezes ele aparece em cavernas e minas), desça a Bomba sobre ele e encha
+      um §eBalde de Petróleo§r. Petróleo no Motor de Combustão: 30 RF/t.
+    tasks:
+      - get: ore:container_oil
+    rewards:
+      - xp: 4
+      - choice: [minecraft:bucket x4, "BuildCraft|Factory:tankBlock x2", minecraft:iron_ingot x12]
+
+  - id: refinaria
+    title: "Refinaria"
+    type: main
+    deps: [petroleo, engrenagem_diamante]
+    icon: "BuildCraft|Factory:refineryBlock"
+    desc: |
+      Três Tanques, tochas de redstone e uma Engrenagem de Diamante. A §eRefinaria§r, com RF,
+      transforma §ePetróleo em Combustível§r. Coloque um filtro na interface com o fluido de
+      entrada, ligue tubos de fluido na entrada e na saída e alimente com energia.
+    tasks:
+      - get: "BuildCraft|Factory:refineryBlock"
+    rewards:
+      - xp: 5
+      - choice: ["BuildCraft|Factory:tankBlock x2", minecraft:gold_ingot x6, minecraft:redstone x32]
+
+  - id: combustivel
+    title: "Combustível"
+    type: main
+    deps: [refinaria]
+    icon: "BuildCraft|Energy:bucketFuel"
+    desc: |
+      Encha um §eBalde de Combustível§r com o que sai da Refinaria. No Motor de Combustão ele dá
+      §e60 RF/t§r (o dobro do petróleo), e no Dínamo de Compressão do Thermal vale 1 500 000 RF por
+      balde. Galacticraft e outros mods também usam.
+    tasks:
+      - get: "BuildCraft|Energy:bucketFuel"
+    rewards:
+      - xp: 5
+      - choice: [minecraft:bucket x4, "BuildCraft|Core:ironGearItem x2", minecraft:water_bucket x2]
+
+  - id: usina_combustao
+    title: "A Usina de Combustão"
+    type: milestone
+    deps: [combustivel, motor_combustao, cano_fluido_ouro]
+    icon: "BuildCraft|Core:engineBlock:2"
+    banner: "Ouro Negro"
+    subtitle: "Do subsolo ao motor"
+    desc: |
+      Bomba sugando petróleo, Refinaria fazendo combustível, Canos de Ouro levando até uma fileira
+      de Motores de Combustão refrigerados a água. Herói, você construiu uma §busina
+      petroquímica§r! O cheiro... bom, o Registro não guarda cheiros, ainda bem.
+
+      Mantenha os motores sempre com água (eles param se superaquecerem) e um tanque de reserva
+      de combustível. Cada motor dá 60 RF/t: oito deles alimentam muita coisa.
+    tasks:
+      - get: ["BuildCraft|Core:engineBlock:2 x2", "BuildCraft|Factory:refineryBlock", "BuildCraft|Energy:bucketFuel"]
+    rewards:
+      - xp: 8
+      - kit: {name: "Kit do Petroleiro", items: ["BuildCraft|Transport:item.buildcraftPipe.pipefluidsgold x8", "BuildCraft|Factory:tankBlock x4", minecraft:water_bucket x2, "BuildCraft|Core:ironGearItem x4", minecraft:bucket x4]}
+      - loot: raro
+
+  # ======================================================================
+  # FASE 7 — SILÍCIO: LASERS E MESAS
+  # ======================================================================
+  - id: laser
+    title: "Laser"
+    type: main
+    deps: [triagem, cinetico_pedregulho]
+    icon: "BuildCraft|Silicon:laserBlock"
+    desc: |
+      Obsidiana, redstone e diamantes. O §eLaser§r recebe RF e dispara um feixe na mesa de laser
+      mais próxima (aponte-o para ela ao colocar). Vários lasers numa mesa = trabalho mais
+      rápido.
+    tasks:
+      - get: "BuildCraft|Silicon:laserBlock x2"
+    rewards:
+      - xp: 4
+      - choice: [minecraft:obsidian x8, minecraft:redstone x32, minecraft:diamond]
+
+  - id: mesa_montagem
+    title: "Mesa de Montagem"
+    type: main
+    deps: [laser]
+    icon: "BuildCraft|Silicon:laserTableBlock"
+    desc: |
+      Obsidiana, diamante, redstone e uma Engrenagem de Diamante. A §eMesa de Montagem§r faz
+      receitas com energia de laser: coloque os ingredientes, clique na receita desejada e espere
+      os lasers trabalharem. É dela que saem chipsets, fios, lentes e portas lógicas (61 receitas
+      no NEI).
+    tasks:
+      - get: "BuildCraft|Silicon:laserTableBlock"
+    rewards:
+      - xp: 4
+      - choice: [minecraft:redstone x32, minecraft:gold_ingot x6, minecraft:obsidian x8]
+
+  - id: chipset_redstone
+    title: "Chipset de Redstone"
+    type: main
+    deps: [mesa_montagem]
+    icon: "BuildCraft|Silicon:redstoneChipset"
+    desc: |
+      1 redstone na Mesa de Montagem = §eChipset de Redstone§r. É a base de tudo: portas lógicas,
+      mesas avançadas, Copiadora de Portas. Faça 4.
+    tasks:
+      - get: "BuildCraft|Silicon:redstoneChipset x4"
+    rewards:
+      - xp: 3
+      - choice: [minecraft:redstone x32, minecraft:iron_ingot x8, minecraft:gold_ingot x4]
+
+  - id: chipsets_metal
+    title: "Chipsets de Ferro e Ouro"
+    type: normal
+    deps: [chipset_redstone]
+    icon: "BuildCraft|Silicon:redstoneChipset:1"
+    desc: |
+      Redstone + ferro = §eChipset de Ferro§r; redstone + ouro = §eChipset de Ouro§r. Cada um vira
+      uma porta lógica melhor. Faça um de cada.
+    tasks:
+      - get: ["BuildCraft|Silicon:redstoneChipset:1", "BuildCraft|Silicon:redstoneChipset:2"]
+    rewards:
+      - xp: 2
+      - item: minecraft:redstone x16
+
+  - id: chipset_diamante
+    title: "Chipset de Diamante"
+    type: normal
+    deps: [chipsets_metal]
+    icon: "BuildCraft|Silicon:redstoneChipset:3"
+    desc: |
+      Redstone + diamante. Vai na Porta Lógica de Diamante e, em dobro, no corpo do §eRobô§r.
+      Faça 2.
+    tasks:
+      - get: "BuildCraft|Silicon:redstoneChipset:3 x2"
+    rewards:
+      - xp: 2
+      - item: minecraft:redstone x16
+
+  - id: chipsets_especiais
+    title: "Chipsets Especiais"
+    type: optional
+    deps: [chipsets_metal]
+    icon: "BuildCraft|Silicon:redstoneChipset:4"
+    desc: |
+      §e• Pulsante§r (redstone + pérola do Ender = 2): expansão "Pulsar" das portas.
+      §e• Quartzo§r (redstone + quartzo): Porta de Quartzo e expansão "Temporizador".
+      §e• Comparador§r (redstone + comparador): expansão "Fader".
+      §e• Esmeralda§r (redstone + esmeralda): Porta de Esmeralda.
+      Faça qualquer um.
+    tasks:
+      - one_of: ["BuildCraft|Silicon:redstoneChipset:4", "BuildCraft|Silicon:redstoneChipset:5", "BuildCraft|Silicon:redstoneChipset:6", "BuildCraft|Silicon:redstoneChipset:7"]
+    rewards:
+      - loot: comum
+
+  - id: cristal_redstone
+    title: "Cristal de Redstone"
+    type: normal
+    deps: [mesa_montagem]
+    icon: "BuildCraft|Silicon:redstoneCrystal"
+    desc: |
+      Um Bloco de Redstone na Mesa de Montagem, com MUITA energia, vira o §eCristal de Redstone§r —
+      o "cérebro" do Robô. Prepare bastante RF (e paciência).
+    tasks:
+      - get: "BuildCraft|Silicon:redstoneCrystal"
+    rewards:
+      - xp: 3
+      - item: minecraft:redstone_block x2
+
+  - id: mesa_avancada
+    title: "Mesa de Trabalho Avançada"
+    type: normal
+    deps: [chipset_redstone]
+    icon: "BuildCraft|Silicon:laserTableBlock:1"
+    desc: |
+      Obsidiana, bancada, baú e um chipset. A §eMesa de Trabalho Avançada§r fabrica receitas
+      comuns automaticamente usando energia de laser, com inventário interno. Uma Mesa Automática
+      de luxo.
+    tasks:
+      - get: "BuildCraft|Silicon:laserTableBlock:1"
+    rewards:
+      - xp: 2
+      - item: minecraft:obsidian x4
+
+  - id: mesa_integracao
+    title: "Mesa de Integração"
+    type: normal
+    deps: [chipset_redstone, engrenagem_diamante]
+    icon: "BuildCraft|Silicon:laserTableBlock:2"
+    desc: |
+      Obsidiana, ouro, chipset e Engrenagem de Diamante. A §eMesa de Integração§r §ecombina§r
+      coisas: expansões em portas lógicas, fachadas com fachadas e a placa programada no Robô.
+    tasks:
+      - get: "BuildCraft|Silicon:laserTableBlock:2"
+    rewards:
+      - xp: 2
+      - item: minecraft:gold_ingot x4
+
+  - id: mesa_carga
+    title: "Mesa de Carga"
+    type: optional
+    deps: [chipset_redstone, engrenagem_ouro]
+    icon: "BuildCraft|Silicon:laserTableBlock:3"
+    desc: |
+      Obsidiana, redstone, chipset e Engrenagem de Ouro. A §eMesa de Carga§r usa os lasers para
+      carregar itens que guardam RF (como robôs). Uma tomada de laser!
+    tasks:
+      - get: "BuildCraft|Silicon:laserTableBlock:3"
+    rewards:
+      - loot: comum
+
+  - id: mesa_programacao
+    title: "Mesa de Programação"
+    type: normal
+    deps: [chipset_redstone, engrenagem_diamante]
+    icon: "BuildCraft|Silicon:laserTableBlock:4"
+    desc: |
+      Obsidiana, esmeralda, chipset e Engrenagem de Diamante. É aqui que as §ePlacas de Redstone§r
+      ganham um programa (lenhador, fazendeiro, minerador...). Coloque a placa, escolha o programa
+      e alimente os lasers.
+    tasks:
+      - get: "BuildCraft|Silicon:laserTableBlock:4"
+    rewards:
+      - xp: 2
+      - item: minecraft:emerald
+
+  - id: mesa_estampagem
+    title: "Mesa de Estampagem e Empacotador"
+    type: optional
+    deps: [mesa_avancada]
+    icon: "BuildCraft|Silicon:laserTableBlock:5"
+    desc: |
+      O §eEmpacotador de Receitas§r monta "Pacotes" com os ingredientes de uma receita, e a §eMesa
+      de Estampagem§r, com laser, transforma o pacote no item pronto. Logística de fábrica de
+      verdade — confira os detalhes nas interfaces.
+    tasks:
+      - one_of: ["BuildCraft|Silicon:laserTableBlock:5", "BuildCraft|Silicon:packagerBlock"]
+    rewards:
+      - loot: comum
+
+  # ======================================================================
+  # FASE 8 — PORTAS LÓGICAS E FIOS
+  # ======================================================================
+  - id: fios
+    title: "Fios de Tubo"
+    type: main
+    deps: [mesa_montagem]
+    icon: "BuildCraft|Transport:pipeWire"
+    desc: |
+      Na Mesa de Montagem: corante + redstone + ferro = §e8 Fios de Tubo§r da cor do corante
+      (vermelho, azul, verde, amarelo). Os fios correm por dentro dos canos e levam sinais entre
+      portas lógicas — cada cor é um canal independente. Faça os fios vermelhos e azuis.
+    tasks:
+      - get: ["BuildCraft|Transport:pipeWire x8", "BuildCraft|Transport:pipeWire:1 x8"]
+    rewards:
+      - xp: 3
+      - choice: [minecraft:redstone x32, minecraft:dye:1 x8, minecraft:dye:4 x8]
+
+  - id: fios_todos
+    title: "As Quatro Cores"
+    type: optional
+    deps: [fios]
+    icon: "BuildCraft|Transport:pipeWire:3"
+    desc: |
+      Complete a paleta com os fios §everdes§r e §eamarelos§r. As portas de Ouro e Quartzo usam três
+      cores; as de Diamante e Esmeralda, as quatro.
+    tasks:
+      - get: ["BuildCraft|Transport:pipeWire:2 x8", "BuildCraft|Transport:pipeWire:3 x8"]
+    rewards:
+      - loot: comum
+
+  - id: porta_basica
+    title: "Porta Lógica Básica"
+    type: main
+    deps: [fios, chipset_redstone]
+    icon: "BuildCraft|Transport:pipeGate"
+    desc: |
+      Chipset de Redstone + fio vermelho = §ePorta Lógica Básica§r. Encaixe num cano: ela lê
+      §egatilhos§r (inventário cheio, vazio, sinal de redstone, energia...) e executa §eações§r
+      (emitir redstone, sinal no fio, trocar a saída do Cano de Ferro...). Abra a interface e
+      brinque — eu passaria o dia nisso.
+    tasks:
+      - {get: 'BuildCraft|Transport:pipeGate {mat:0b}', nbt: true}
+    rewards:
+      - xp: 3
+      - choice: ["BuildCraft|Silicon:redstoneChipset x2", minecraft:redstone x16, "BuildCraft|Transport:item.buildcraftPipe.pipestructurecobblestone x8"]
+
+  - id: porta_ferro
+    title: "Porta Lógica de Ferro"
+    type: normal
+    deps: [porta_basica, chipsets_metal]
+    icon: "BuildCraft|Transport:pipeGate"
+    desc: |
+      Chipset de Ferro + fios vermelho e azul. A §ePorta de Ferro§r tem 2 gatilhos e 2 ações, em
+      lógica §eE§r (todos os gatilhos) ou §eOU§r (qualquer um) — troque na Mesa de Integração ou
+      escolha ao fabricar.
+    tasks:
+      - {get: 'BuildCraft|Transport:pipeGate {mat:1b}', nbt: true}
+    rewards:
+      - xp: 2
+      - item: minecraft:iron_ingot x4
+
+  - id: porta_ouro
+    title: "Porta Lógica de Ouro"
+    type: normal
+    deps: [porta_ferro, fios_todos]
+    icon: "BuildCraft|Transport:pipeGate"
+    desc: |
+      Chipset de Ouro + fios vermelho, azul e verde. Mais gatilhos, mais ações e parâmetros. Para
+      sistemas que precisam "pensar" um pouco mais.
+    tasks:
+      - {get: 'BuildCraft|Transport:pipeGate {mat:2b}', nbt: true}
+    rewards:
+      - xp: 2
+      - item: minecraft:gold_ingot x4
+
+  - id: porta_diamante
+    title: "Portas de Diamante e Esmeralda"
+    type: optional
+    deps: [porta_ouro, chipset_diamante]
+    icon: "BuildCraft|Transport:pipeGate"
+    desc: |
+      Chipset de Diamante (ou de Esmeralda) + os quatro fios = as portas mais poderosas, com 8
+      gatilhos/ações e as quatro cores de fio. A de Quartzo (chipset de quartzo + 3 fios) fica
+      no meio do caminho. Faça a de Diamante ou a de Esmeralda.
+    tasks:
+      - one_of: ['BuildCraft|Transport:pipeGate {mat:3b}', 'BuildCraft|Transport:pipeGate {mat:4b}']
+        nbt: true
+    rewards:
+      - loot: incomum
+
+  - id: expansoes_porta
+    title: "Expansões de Porta"
+    type: optional
+    deps: [porta_basica, mesa_integracao, chipsets_especiais]
+    icon: "BuildCraft|Silicon:redstoneChipset:4"
+    desc: |
+      Na Mesa de Integração, uma porta + um chipset especial = porta com §eexpansão§r:
+      §e• Pulsar§r (Chipset Pulsante): emite pulsos de energia/sinal — liga motores em intervalos.
+      §e• Temporizador§r (Chipset de Quartzo) e §e• Fader§r (Chipset Comparador): sinais que mudam
+      com o tempo. Mostre que tem os chipsets e a mesa.
+    tasks:
+      - get: ["BuildCraft|Silicon:laserTableBlock:2", "BuildCraft|Silicon:redstoneChipset:4"]
+    rewards:
+      - loot: comum
+
+  - id: copiadora
+    title: "Copiadora de Porta Lógica"
+    type: optional
+    deps: [porta_basica, chave_inglesa]
+    icon: "BuildCraft|Transport:gateCopier"
+    desc: |
+      Chave Inglesa + Chipset de Redstone. A §eCopiadora§r grava a configuração de uma porta e
+      cola em outra igual. Configurar vinte portas iguais? Uma só vez.
+    tasks:
+      - get: "BuildCraft|Transport:gateCopier"
+    rewards:
+      - loot: comum
+
+  - id: fachadas
+    title: "Fachadas"
+    type: optional
+    deps: [mesa_montagem, cano_estrutura]
+    icon: "BuildCraft|Transport:pipeFacade"
+    desc: |
+      Uma §eFachada§r cobre o lado de um cano com a textura de um bloco (pedra, madeira, vidro...)
+      e esconde a bagunça. Feitas na bancada/Mesa de Montagem a partir de canos de estrutura e do
+      bloco (confira no NEI: há milhares). Base bonita, Herói!
+    tasks:
+      - get: "BuildCraft|Transport:pipeFacade:*"
+    rewards:
+      - loot: comum
+
+  - id: pincel
+    title: "Pincel"
+    type: optional
+    deps: [engrenagem_madeira]
+    icon: "BuildCraft|Core:paintbrush"
+    desc: |
+      O §ePincel§r do BuildCraft pinta canos de 16 cores. Canos pintados de cores diferentes não se
+      conectam entre si: uma forma elegante de passar duas linhas coladinhas.
+    tasks:
+      - get: "BuildCraft|Core:paintbrush:*"
+    rewards:
+      - loot: comum
+
+  # ======================================================================
+  # FASE 9 — CONSTRUTORES
+  # ======================================================================
+  - id: modelo
+    title: "Modelo"
+    type: normal
+    deps: [marcador]
+    icon: "BuildCraft|Builders:templateItem"
+    desc: |
+      8 papéis + corante preto = §eModelo§r. Ele guarda só a §eforma§r de uma construção (blocos
+      cheios ou vazios), sem tipos de bloco.
+    tasks:
+      - get: "BuildCraft|Builders:templateItem"
+    rewards:
+      - xp: 2
+      - item: minecraft:paper x16
+
+  - id: diagrama
+    title: "Diagrama"
+    type: main
+    deps: [marcador]
+    icon: "BuildCraft|Builders:blueprintItem"
+    desc: |
+      8 papéis + lápis-lazúli = §eDiagrama (Blueprint)§r. Ao contrário do Modelo, ele guarda os
+      §eblocos exatos§r de uma construção. Faça 2.
+    tasks:
+      - get: "BuildCraft|Builders:blueprintItem x2"
+    rewards:
+      - xp: 3
+      - choice: [minecraft:paper x32, minecraft:dye:4 x8, minecraft:book x4]
+
+  - id: mesa_arquitetura
+    title: "Mesa de Arquitetura"
+    type: main
+    deps: [diagrama, engrenagem_diamante]
+    icon: "BuildCraft|Builders:architectBlock"
+    desc: |
+      Corantes, Marcador, bancada, Diagrama e Engrenagens de Diamante. Coloque a §eMesa de
+      Arquitetura§r encostada numa área marcada com Marcadores, ponha um Diagrama ou Modelo vazio e
+      ela §eescaneia a construção§r. Dê um nome e pronto: sua casa virou papel.
+    tasks:
+      - get: "BuildCraft|Builders:architectBlock"
+    rewards:
+      - xp: 4
+      - choice: ["BuildCraft|Builders:blueprintItem x2", "BuildCraft|Core:markerBlock x4", minecraft:diamond]
+
+  - id: construtor
+    title: "O Construtor"
+    type: milestone
+    deps: [mesa_arquitetura]
+    icon: "BuildCraft|Builders:builderBlock"
+    banner: "O Construtor"
+    subtitle: "Do papel para o mundo"
+    desc: |
+      Corantes, Marcador, bancada, baú e Engrenagens de Diamante: o §eConstrutor§r. Coloque um
+      Diagrama gravado e encha o inventário (ou um baú ao lado) com os blocos necessários — a
+      interface mostra a lista. Com RF, os lasers dele erguem a construção bloco a bloco.
+
+      Herói, você acabou de copiar uma página do mundo e colá-la em outro lugar. Os Antigos fariam
+      fila para ver isso.
+
+      §aDica:§r a §eBiblioteca de Diagramas§r guarda e troca diagramas com outros jogadores.
+    tasks:
+      - get: "BuildCraft|Builders:builderBlock"
+    rewards:
+      - xp: 8
+      - kit: {name: "Kit do Arquiteto", items: ["BuildCraft|Builders:blueprintItem x4", "BuildCraft|Builders:templateItem x2", "BuildCraft|Core:markerBlock x8", minecraft:stonebrick x64, minecraft:glass x32]}
+      - loot: raro
+
+  - id: preenchedor
+    title: "Preenchedor"
+    type: normal
+    deps: [marcador, engrenagem_ouro]
+    icon: "BuildCraft|Builders:fillerBlock"
+    desc: |
+      Corantes, Marcador, bancada, baú e Engrenagens de Ouro. O §ePreenchedor§r enche (ou limpa) a
+      área marcada seguindo um padrão escolhido na interface: preencher, limpar, caixa, pirâmide,
+      escada... Terraplanagem nunca foi tão preguiçosa.
+    tasks:
+      - get: "BuildCraft|Builders:fillerBlock"
+    rewards:
+      - xp: 3
+      - item: minecraft:cobblestone x64
+
+  - id: biblioteca
+    title: "Biblioteca de Diagramas"
+    type: optional
+    deps: [diagrama]
+    icon: "BuildCraft|Builders:libraryBlock"
+    desc: |
+      Ferro, Engrenagem de Ferro, estantes, um Diagrama e redstone. A §eBiblioteca Eletrônica§r
+      salva diagramas e modelos e permite copiá-los — inclusive trocar com amigos.
+    tasks:
+      - get: "BuildCraft|Builders:libraryBlock"
+    rewards:
+      - loot: comum
+
+  - id: marcadores_extras
+    title: "Marcadores de Caminho e de Construção"
+    type: optional
+    deps: [marcador]
+    icon: "BuildCraft|Core:pathMarkerBlock"
+    desc: |
+      O §eMarcador de Caminhos§r (corante verde + tocha de redstone) traça rotas; o §eMarco de
+      Construção§r (Engrenagem de Ouro + tocha de redstone) marca onde robôs construtores devem
+      trabalhar. Faça qualquer um.
+    tasks:
+      - one_of: ["BuildCraft|Core:pathMarkerBlock", "BuildCraft|Builders:constructionMarkerBlock"]
+    rewards:
+      - loot: comum
+
+  # ======================================================================
+  # FASE 10 — ROBÓTICA
+  # ======================================================================
+  - id: placa_redstone
+    title: "Placa de Redstone"
+    type: main
+    deps: [mesa_programacao]
+    icon: "BuildCraft|Robotics:redstone_board"
+    desc: |
+      8 papéis + redstone = §ePlaca de Redstone§r em branco. Leve à Mesa de Programação para
+      gravar um programa. Os programas disponíveis aparecem na interface da mesa.
+    tasks:
+      - get: "BuildCraft|Robotics:redstone_board"
+    rewards:
+      - xp: 3
+      - choice: [minecraft:paper x32, minecraft:redstone x32, minecraft:emerald]
+
+  - id: placa_programada
+    title: "Um Programa para o Robô"
+    type: main
+    deps: [placa_redstone]
+    icon: "BuildCraft|Robotics:redstone_board"
+    desc: |
+      Programe uma placa útil: §eLenhador, Plantador, Colheitadeira, Fazendeiro, Minerador,
+      Carregador, Entregador, Bomba...§r Cada programa define o "emprego" do robô.
+    tasks:
+      - one_of: ['BuildCraft|Robotics:redstone_board {id:"buildcraft:boardRobotLumberjack"}', 'BuildCraft|Robotics:redstone_board {id:"buildcraft:boardRobotPlanter"}', 'BuildCraft|Robotics:redstone_board {id:"buildcraft:boardRobotHarvester"}', 'BuildCraft|Robotics:redstone_board {id:"buildcraft:boardRobotFarmer"}', 'BuildCraft|Robotics:redstone_board {id:"buildcraft:miner"}', 'BuildCraft|Robotics:redstone_board {id:"buildcraft:boardRobotCarrier"}', 'BuildCraft|Robotics:redstone_board {id:"buildcraft:boardRobotDelivery"}', 'BuildCraft|Robotics:redstone_board {id:"buildcraft:boardRobotPump"}', 'BuildCraft|Robotics:redstone_board {id:"buildcraft:shovelman"}', 'BuildCraft|Robotics:redstone_board {id:"buildcraft:boardRobotButcher"}']
+        nbt: true
+    rewards:
+      - xp: 3
+      - choice: [minecraft:redstone x32, minecraft:iron_ingot x8, minecraft:paper x16]
+
+  - id: robo
+    title: "O Robô"
+    type: main
+    deps: [cristal_redstone, chipset_diamante]
+    icon: "BuildCraft|Robotics:robot"
+    desc: |
+      Ferro, um §eCristal de Redstone§r e dois §eChipsets de Diamante§r: o §eRobô§r. Sozinho ele não
+      faz nada — na Mesa de Integração, junte o robô com uma placa programada e ele ganha o
+      emprego.
+    tasks:
+      - get: "BuildCraft|Robotics:robot"
+    rewards:
+      - xp: 4
+      - choice: [minecraft:iron_ingot x12, "BuildCraft|Silicon:redstoneChipset:2 x2", minecraft:redstone_block x2]
+
+  - id: estacao
+    title: "Estação de Encaixe"
+    type: main
+    deps: [robo]
+    icon: "BuildCraft|Robotics:robotStation"
+    desc: |
+      Ferro + Chipset de Ouro. A §eEstação de Encaixe§r vai no lado de um cano: é a "casa" do robô,
+      onde ele recarrega (com RF vindo do cano) e troca itens e fluidos com o sistema. Com portas
+      lógicas na estação você controla o que o robô faz.
+    tasks:
+      - get: "BuildCraft|Robotics:robotStation x2"
+    rewards:
+      - xp: 4
+      - choice: [minecraft:iron_ingot x8, "BuildCraft|Silicon:redstoneChipset:2", minecraft:gold_ingot x4]
+
+  - id: planejador_setores
+    title: "Planejador de Setores"
+    type: optional
+    deps: [estacao]
+    icon: "BuildCraft|Robotics:zonePlan"
+    desc: |
+      Ferro, redstone, mapa e engrenagens de ouro e diamante. O §ePlanejador de Setores§r desenha
+      num mapa as áreas onde os robôs podem trabalhar (com o Mapa de Localização você marca
+      pontos). Robôs organizados, base organizada.
+    tasks:
+      - get: "BuildCraft|Robotics:zonePlan"
+    rewards:
+      - loot: incomum
+
+  - id: requisicoes
+    title: "Requisições"
+    type: optional
+    deps: [estacao]
+    icon: "BuildCraft|Robotics:requester"
+    desc: |
+      Ferro, pistão, engrenagens, baú e redstone. O bloco de §eRequisições§r pede itens que os
+      robôs entregadores vão buscar na sua rede. Uma "lista de compras" automatizada.
+    tasks:
+      - get: "BuildCraft|Robotics:requester"
+    rewards:
+      - loot: comum
+
+  - id: mapa_lista
+    title: "Mapa de Localização e Lista"
+    type: optional
+    deps: [modelo]
+    icon: "BuildCraft|Core:list"
+    desc: |
+      O §eMapa de Localização§r (8 papéis + corante amarelo) marca um ponto ou área para robôs e
+      portas lógicas; a §eLista§r (feita na Mesa de Montagem) guarda um conjunto de itens usado
+      como filtro. Faça qualquer um.
+    tasks:
+      - one_of: ["BuildCraft|Core:mapLocation", "BuildCraft|Core:list:*"]
+    rewards:
+      - loot: comum
+
+  - id: frota_robos
+    title: "A Frota de Robôs"
+    type: milestone
+    deps: [estacao, placa_programada]
+    icon: "BuildCraft|Robotics:robot"
+    banner: "Mãos de Metal"
+    subtitle: "Os robôs acordaram"
+    desc: |
+      Um robô programado, uma Estação de Encaixe no cano e energia correndo. Herói... ele está
+      §etrabalhando sozinho§r. Cortando árvores, colhendo, minerando, entregando. Eu confesso que
+      fiquei um pouco emocionada.
+
+      Mantenha as estações sempre com energia, ou os robôs param no meio do serviço. E dê nomes a
+      eles — não é obrigatório, mas é mais fofo.
+    tasks:
+      - get: ["BuildCraft|Robotics:robot x2", "BuildCraft|Robotics:robotStation x2"]
+    rewards:
+      - xp: 8
+      - kit: {name: "Kit do Roboticista", items: ["BuildCraft|Silicon:redstoneChipset:3 x2", "BuildCraft|Silicon:redstoneChipset:2 x2", "BuildCraft|Robotics:redstone_board x4", minecraft:iron_ingot x16, minecraft:redstone_block x2]}
+      - loot: raro
+
+  # ======================================================================
+  # INTEGRAÇÕES E FINAL
+  # ======================================================================
+  - id: robo_lenhador
+    title: "Robô Lenhador"
+    type: optional
+    deps: [estacao]
+    icon: "BuildCraft|Robotics:robot"
+    desc: |
+      Robô + placa programada na Mesa de Integração. Corta árvores perto da estação e traz a
+      madeira para casa. Com um robô Plantador repondo as mudas, você tem uma floresta infinita.
+    tasks:
+      - {get: 'BuildCraft|Robotics:robot {board:{id:"buildcraft:boardRobotLumberjack"}}', nbt: true}
+    rewards:
+      - loot: comum
+
+  - id: robo_plantador
+    title: "Robô Plantador"
+    type: optional
+    deps: [estacao]
+    icon: "BuildCraft|Robotics:robot"
+    desc: |
+      Robô + placa programada na Mesa de Integração. Planta mudas e sementes que encontra na
+      estação. O parceiro natural do Lenhador e do Colheitador.
+    tasks:
+      - {get: 'BuildCraft|Robotics:robot {board:{id:"buildcraft:boardRobotPlanter"}}', nbt: true}
+    rewards:
+      - loot: comum
+
+  - id: robo_colheitador
+    title: "Robô Colheitador"
+    type: optional
+    deps: [estacao]
+    icon: "BuildCraft|Robotics:robot"
+    desc: |
+      Robô + placa programada na Mesa de Integração. Colhe plantações maduras e devolve os
+      produtos à estação. Trigo, cenoura, batata... sem levantar um dedo.
+    tasks:
+      - {get: 'BuildCraft|Robotics:robot {board:{id:"buildcraft:boardRobotHarvester"}}', nbt: true}
+    rewards:
+      - loot: comum
+
+  - id: robo_fazendeiro
+    title: "Robô Fazendeiro"
+    type: optional
+    deps: [estacao]
+    icon: "BuildCraft|Robotics:robot"
+    desc: |
+      Robô + placa programada na Mesa de Integração. Ara a terra com enxada para preparar
+      canteiros. Com Plantador e Colheitador, fecha o ciclo da fazenda.
+    tasks:
+      - {get: 'BuildCraft|Robotics:robot {board:{id:"buildcraft:boardRobotFarmer"}}', nbt: true}
+    rewards:
+      - loot: comum
+
+  - id: robo_minerador
+    title: "Robô Minerador"
+    type: optional
+    deps: [estacao]
+    icon: "BuildCraft|Robotics:robot"
+    desc: |
+      Robô + placa programada na Mesa de Integração. Escava blocos dentro da área definida (Mapa
+      de Localização ou Planejador de Setores). Dê a ele uma picareta e uma área bem marcada!
+    tasks:
+      - {get: 'BuildCraft|Robotics:robot {board:{id:"buildcraft:miner"}}', nbt: true}
+    rewards:
+      - loot: comum
+
+  - id: robo_entregador
+    title: "Robôs Carregador e Entregador"
+    type: optional
+    deps: [estacao]
+    icon: "BuildCraft|Robotics:robot"
+    desc: |
+      Robô + placa programada na Mesa de Integração. O Carregador leva itens de uma estação para
+      outra; o Entregador atende às Requisições. Logística voadora!
+    tasks:
+      - one_of: ['BuildCraft|Robotics:robot {board:{id:"buildcraft:boardRobotCarrier"}}', 'BuildCraft|Robotics:robot {board:{id:"buildcraft:boardRobotDelivery"}}']
+        nbt: true
+    rewards:
+      - loot: comum
+
+  - id: robo_bomba
+    title: "Robô Bomba"
+    type: optional
+    deps: [estacao]
+    icon: "BuildCraft|Robotics:robot"
+    desc: |
+      Robô + placa programada na Mesa de Integração. Suga fluidos de uma área e leva para a
+      estação. Um balde voador muito educado.
+    tasks:
+      - {get: 'BuildCraft|Robotics:robot {board:{id:"buildcraft:boardRobotPump"}}', nbt: true}
+    rewards:
+      - loot: comum
+
+  - id: robo_guerreiro
+    title: "Robôs Cavaleiro e Açougueiro"
+    type: optional
+    deps: [estacao]
+    icon: "BuildCraft|Robotics:robot"
+    desc: |
+      Robô + placa programada na Mesa de Integração. O Cavaleiro ataca monstros por perto; o
+      Açougueiro abate animais. Segurança e churrasco, cada um com seu robô.
+    tasks:
+      - one_of: ['BuildCraft|Robotics:robot {board:{id:"buildcraft:boardRobotKnight"}}', 'BuildCraft|Robotics:robot {board:{id:"buildcraft:boardRobotButcher"}}']
+        nbt: true
+    rewards:
+      - loot: comum
+
+  - id: aula_gatilhos
+    title: "Aula: Gatilhos e Ações"
+    type: info
+    deps: [porta_basica]
+    icon: "BuildCraft|Transport:pipeGate"
+    desc: |
+      Uma porta lógica é um "se... então...". Na interface:
+      §e• Gatilhos (esquerda):§r condições — sinal de redstone, fio colorido ligado, inventário ao
+      lado cheio/vazio/com espaço, tanque cheio/vazio, motor quente, energia na estação...
+      §e• Ações (direita):§r o que fazer — emitir redstone, ligar um fio colorido, trocar a saída do
+      Cano de Ferro, ligar o motor, mandar o robô trabalhar...
+
+      Exemplo clássico: porta no cano que sai do motor com "Inventário cheio → desligar" e o motor
+      para quando o baú enche. Simples e econômico!
+    tasks:
+      - check
+    rewards:
+      - xp: 1
+
+  - id: porta_quartzo
+    title: "Porta Lógica de Quartzo"
+    type: optional
+    deps: [porta_ferro, chipsets_especiais]
+    icon: "BuildCraft|Transport:pipeGate"
+    desc: |
+      Chipset de Quartzo + fios vermelho, azul e verde. Uma porta intermediária entre a de Ouro e
+      a de Diamante — e o mesmo chipset vira a expansão de Temporizador.
+    tasks:
+      - {get: 'BuildCraft|Transport:pipeGate {mat:5b}', nbt: true}
+    rewards:
+      - loot: comum
+
+  - id: cano_fluido_argila
+    title: "Canos de Fluido de Argila e Arenito"
+    type: optional
+    deps: [canos_fluido]
+    icon: "BuildCraft|Transport:item.buildcraftPipe.pipefluidsclay"
+    desc: |
+      O de §eArgila§r prioriza tanques e máquinas vizinhos; o de §eArenito§r só conversa com outros
+      canos. Úteis para alimentar uma fileira de motores sem que o fluido "escape" para o lado
+      errado. Faça qualquer um.
+    tasks:
+      - one_of: ["BuildCraft|Transport:item.buildcraftPipe.pipefluidsclay", "BuildCraft|Transport:item.buildcraftPipe.pipefluidssandstone"]
+    rewards:
+      - loot: comum
+
+  - id: torre_tanques
+    title: "Torre de Tanques"
+    type: optional
+    deps: [tanque_bc]
+    icon: "BuildCraft|Factory:tankBlock"
+    desc: |
+      Empilhe tanques e eles viram uma coluna só: 8 tanques = 128 baldes. Reserve uma torre para
+      combustível e outra para a água dos motores.
+    tasks:
+      - get: "BuildCraft|Factory:tankBlock x8"
+    rewards:
+      - loot: comum
+
+  - id: banco_stirling
+    title: "Banco de Motores Stirling"
+    type: optional
+    deps: [motor_stirling, cinetico_madeira]
+    icon: "BuildCraft|Core:engineBlock:1"
+    desc: |
+      Um motor sozinho é tímido; quatro, lado a lado, ligados a Tubos Cinéticos de Madeira, já
+      tocam uma Pedreira pequena. Alimente com carvão por um funil ou Cano de Madeira.
+    tasks:
+      - get: "BuildCraft|Core:engineBlock:1 x4"
+    rewards:
+      - loot: comum
+
+  - id: canos_fluido_pedra
+    title: "Separando Linhas de Fluido"
+    type: optional
+    deps: [canos_fluido]
+    icon: "BuildCraft|Transport:item.buildcraftPipe.pipefluidsstone"
+    desc: |
+      Assim como os de itens, os canos de fluido de §ePedra§r e §eQuartzo§r não se conectam aos de
+      pedregulho. Faça uma linha de pedra ao lado da de pedregulho: água de um lado, petróleo do
+      outro, sem misturar.
+    tasks:
+      - one_of: ["BuildCraft|Transport:item.buildcraftPipe.pipefluidsstone x8", "BuildCraft|Transport:item.buildcraftPipe.pipefluidsquartz x8"]
+    rewards:
+      - loot: comum
+
+  - id: cano_apicultor
+    title: "Tubo do Apicultor"
+    type: optional
+    deps: [cano_diamante]
+    icon: "BuildCraft|Compat:item.buildcraftPipe.pipeitemspropolis"
+    desc: |
+      O BuildCraft Compat faz uma ponte com o Forestry: Cano de Diamante + 2 Própolis = §eTubo do
+      Apicultor§r, que separa abelhas por espécie, geração ou característica. Se você vai criar
+      abelhas, ele é ouro (ou mel).
+    tasks:
+      - get: "BuildCraft|Compat:item.buildcraftPipe.pipeitemspropolis"
+    rewards:
+      - loot: incomum
+
+  - id: mestre_engrenagens
+    title: "Mestre das Engrenagens"
+    type: milestone
+    deps: [pedreira, usina_combustao, construtor, frota_robos, porta_ouro]
+    icon: "BuildCraft|Core:diamondGearItem"
+    banner: "Mestre das Engrenagens"
+    subtitle: "O Volume do BuildCraft está completo"
+    desc: |
+      Pedreira, usina de combustão, Construtor e robôs: o Volume das Engrenagens está inteiro de
+      novo. Cada cano, cada porta lógica, cada laser — reescritos por você.
+
+      O BuildCraft conversa com o resto do pack em RF: os motores alimentam máquinas do Thermal,
+      do Ender IO e do Mekanism, e o combustível vai longe (Galacticraft adora). Obrigada por
+      cuidar desta página com tanto carinho, Herói.
+    tasks:
+      - get: ["BuildCraft|Builders:machineBlock", "BuildCraft|Factory:refineryBlock", "BuildCraft|Builders:builderBlock", "BuildCraft|Robotics:robot"]
+    rewards:
+      - xp: 12
+      - kit: {name: "Relicário das Engrenagens", items: ["BuildCraft|Core:diamondGearItem x4", "BuildCraft|Silicon:redstoneChipset:3 x4", "BuildCraft|Energy:bucketFuel x2", minecraft:diamond x4, minecraft:redstone_block x4]}
+      - loot: epico

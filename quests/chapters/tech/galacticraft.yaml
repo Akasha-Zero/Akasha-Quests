@@ -1,0 +1,2366 @@
+chapter:
+  id: galacticraft
+  title: "Galacticraft"
+  prefix: ""
+  order: 390
+  icon: GalacticraftCore:item.spaceship
+  desc: |
+    §bO Volume das Estrelas.§r Metais prensados, circuitos de silício, oxigênio engarrafado,
+    foguetes, a Lua, a Estação Espacial, Marte e o Cinturão de Asteroides.
+    (Galacticraft 4.0-Akashic — Core e Planets)
+
+quests:
+  # ======================================================================
+  # FASE 0 — METAIS DO ESPAÇO
+  # ======================================================================
+  - id: sonho_espacial
+    title: "Olhe para Cima"
+    type: info
+    icon: GalacticraftCore:item.spaceship
+    desc: |
+      Sabe aquela Lua que passa toda noite? Uma das páginas mais bonitas do Registro foi parar
+      lá em cima. E em Marte. E nos asteroides. E além...
+
+      O §bGalacticraft§r é o Volume das Estrelas. O caminho é longo:
+      §e1.§r metais prensados e circuitos de silício;
+      §e2.§r um foguete, combustível refinado e equipamento de oxigênio;
+      §e3.§r a Lua, o primeiro chefe e o esquemático do foguete de Nível 2;
+      §e4.§r Marte, o segundo chefe e o foguete de Nível 3;
+      §e5.§r o Cinturão de Asteroides e, depois, os capítulos de ExtraPlanets e Amun-Ra.
+
+      §aTeclas úteis:§r §eM§r abre o Mapa da Galáxia e §eF§r abre o combustível do foguete.
+      Os chefes espaciais são parte do §5Selo das Estrelas§r. Vamos?
+    tasks:
+      - check
+    rewards:
+      - xp: 2
+
+  - id: cobre_estanho
+    title: "Cobre e Estanho"
+    type: main
+    deps: [sonho_espacial]
+    icon: GalacticraftCore:tile.gcBlockCore:5
+    desc: |
+      Todo foguete começa com metal comum. O Galacticraft gera o próprio Minério de Cobre e
+      Minério de Estanho no mundo normal (a config do pack mantém ambos ligados) — e qualquer
+      cobre e estanho do oredict serve.
+
+      Junte §e16 lingotes de cobre§r e §e16 de estanho§r. Eles viram metais prensados, latas e
+      tanques de oxigênio.
+    tasks:
+      - get: [ore:ingotCopper x16, ore:ingotTin x16]
+    rewards:
+      - xp: 4
+      - choice: [minecraft:iron_ingot x16, minecraft:coal x24, minecraft:redstone x16]
+
+  - id: aluminio
+    title: "Alumínio"
+    type: main
+    deps: [sonho_espacial]
+    icon: GalacticraftCore:tile.gcBlockCore:7
+    desc: |
+      O metal leve dos foguetes. O §eMinério Alumínio§r do Galacticraft gera no mundo normal
+      (config ativa) e funde numa fornalha comum. Qualquer alumínio do oredict também vale.
+
+      Junte §e24 Barras de Alumínio§r: elas viram cabos, a Prensa e metade das máquinas do mod.
+    tasks:
+      - get: ore:ingotAluminum x24
+    rewards:
+      - xp: 4
+      - choice: [minecraft:iron_ingot x16, ore:ingotCopper x12, minecraft:wool x16]
+
+  - id: silicio
+    title: "Silício Bruto"
+    type: main
+    deps: [sonho_espacial]
+    icon: GalacticraftCore:tile.gcBlockCore:8
+    desc: |
+      Sem silício não existe circuito — e sem circuito o foguete não sabe nem para onde fica a
+      Lua.
+
+      O §eMinério de Silício§r do Galacticraft gera no subsolo do mundo normal e dropa §eSilício
+      Bruto§r. Junte §e16§r (qualquer "itemSilicon" do oredict é aceito pela config).
+    tasks:
+      - get: ore:itemSilicon x16
+    rewards:
+      - xp: 4
+      - choice: [minecraft:redstone x24, minecraft:diamond x2, minecraft:torch x32]
+
+  - id: aco
+    title: "Aço para o Casco"
+    type: main
+    deps: [sonho_espacial]
+    icon: IC2:itemIngot:3
+    desc: |
+      O casco de um foguete é aço prensado — muito aço prensado. Qualquer lingote de aço do
+      oredict serve (Ferro Refinado do IC2, aço do Immersive Engineering, Mekanism, Thermal...).
+
+      Junte §e16 lingotes de aço§r. §aSem aço ainda?§r A Prensa também faz Aço Prensado a partir de
+      Ferro Prensado com 2 carvões.
+    tasks:
+      - get: ore:ingotSteel x16
+    rewards:
+      - xp: 4
+      - choice: [minecraft:coal_block x4, minecraft:iron_ingot x16, ore:ingotCopper x12]
+
+  - id: cabo_aluminio
+    title: "Cabo de Alumínio"
+    type: normal
+    deps: [aluminio]
+    icon: GalacticraftCore:tile.aluminumWire
+    desc: |
+      3 barras de alumínio entre 6 lãs rendem §e6 Cabos de Alumínio§r: o fio da energia do
+      Galacticraft (gJ — que conversa com RF, EU e Joules de outros mods). O §eCabo de Alumínio
+      Pesado§r (lã + cabo + barra) aguenta muito mais energia.
+    tasks:
+      - get: GalacticraftCore:tile.aluminumWire x12
+    rewards:
+      - xp: 3
+      - item: minecraft:wool x12
+
+  - id: cabo_pesado
+    title: "Cabo de Alumínio Pesado"
+    type: optional
+    deps: [cabo_aluminio]
+    icon: GalacticraftCore:tile.aluminumWire:1
+    desc: |
+      Para máquinas famintas e para o Painel Solar Avançado: o §eCabo de Alumínio Pesado§r
+      transporta muito mais energia que o comum.
+    tasks:
+      - get: GalacticraftCore:tile.aluminumWire:1 x6
+    rewards:
+      - loot: comum
+
+  - id: gerador_carvao
+    title: "Gerador a Carvão"
+    type: main
+    deps: [cobre_estanho, cabo_aluminio]
+    icon: GalacticraftCore:tile.machine
+    desc: |
+      A primeira fonte de gJ: §eGerador a Carvão§r (cobre, ferro, uma fornalha e um Cabo de
+      Alumínio). Queima combustível sólido e leva um tempinho para "esquentar" até a potência
+      total.
+
+      Se você já tem uma rede de RF ou EU, ótimo: as máquinas do Galacticraft aceitam essas
+      energias diretamente (a config do pack deixa todas as conversões ligadas).
+    tasks:
+      - get: GalacticraftCore:tile.machine
+    rewards:
+      - xp: 4
+      - choice: [minecraft:coal_block x6, GalacticraftCore:tile.aluminumWire x8, minecraft:redstone x16]
+
+  - id: prensa
+    title: "A Prensa"
+    type: main
+    deps: [aluminio, cobre_estanho, wafer_basico]
+    icon: GalacticraftCore:tile.machine:12
+    desc: |
+      6 barras de alumínio, uma bigorna, um lingote de cobre e um §eWafer Básico§r: a §ePrensa§r.
+      Por isso o Fabricador de Circuitos vem antes — ele não pede wafer nenhum.
+
+      §eComo funciona:§r é uma bancada 3×3 que trabalha devagar, queimando combustível sólido
+      (sem energia elétrica). Duas barras iguais viram um §eMetal Prensado§r. Coloque o
+      combustível no espaço de baixo e espere.
+    tasks:
+      - get: GalacticraftCore:tile.machine:12
+    rewards:
+      - xp: 4
+      - choice: [minecraft:coal_block x4, minecraft:iron_ingot x16, ore:ingotTin x12]
+
+  - id: fabricador_circuitos
+    title: "Fabricador de Circuitos"
+    type: main
+    deps: [gerador_carvao, silicio]
+    icon: GalacticraftCore:tile.machine2:4
+    desc: |
+      Alumínio, alavanca, botões, fornalha, tocha de redstone e cabos: o §eFabricador de
+      Circuitos§r (não pede wafer, ufa!). Ele precisa de energia.
+
+      Receita fixa de entrada: §e1 diamante + 2 Silício Bruto + 1 redstone§r, mais um item que
+      decide o produto:
+      §e• Tocha de Redstone§r → 3 Wafers Básicos;
+      §e• Repetidor de Redstone§r → 1 Wafer Avançado;
+      §e• Lápis-Lazúli§r → 9 Wafers Solares Azuis.
+    tasks:
+      - get: GalacticraftCore:tile.machine2:4
+    rewards:
+      - xp: 5
+      - choice: [minecraft:diamond x3, ore:itemSilicon x6, minecraft:redstone x24]
+
+  - id: wafer_basico
+    title: "Wafer Básico"
+    type: main
+    deps: [fabricador_circuitos]
+    icon: GalacticraftCore:item.basicItem:13
+    desc: |
+      O circuito do dia a dia: Coletor de Oxigênio, Fornalha Elétrica, Carregador de Combustível,
+      Prensa, Tela de Exibição... Faça §e6 Wafers Básicos§r (duas rodadas com Tocha de Redstone).
+    tasks:
+      - get: ore:waferBasic x6
+    rewards:
+      - xp: 4
+      - choice: [minecraft:diamond x2, ore:itemSilicon x4, minecraft:redstone_torch x8]
+
+  - id: wafer_avancado
+    title: "Wafer Avançado"
+    type: main
+    deps: [wafer_basico]
+    icon: GalacticraftCore:item.basicItem:14
+    desc: |
+      Com um §eRepetidor de Redstone§r no lugar da tocha, o Fabricador faz §e1 Wafer Avançado§r
+      por rodada. Ele vai na Bancada de Trabalho NASA, na Prensa Elétrica, no Grupo de
+      Armazenagem de Energia e na Estação Espacial. Faça §e3§r.
+    tasks:
+      - get: ore:waferAdvanced x3
+    rewards:
+      - xp: 4
+      - choice: [minecraft:diamond x2, minecraft:repeater x4, ore:itemSilicon x4]
+
+  - id: wafer_solar
+    title: "Wafer Solar Azul"
+    type: normal
+    deps: [fabricador_circuitos]
+    icon: GalacticraftCore:item.basicItem:12
+    desc: |
+      Lápis-Lazúli no Fabricador rende §e9 Wafers Solares Azuis§r de uma vez. Eles viram Módulos
+      Solares, e o Galacticraft tem um segredo: §ena Estação Espacial os painéis rendem o dobro§r
+      (multiplicador 2,0 na config).
+    tasks:
+      - get: ore:waferSolar x9
+    rewards:
+      - xp: 3
+      - item: minecraft:dye:4 x8
+
+  - id: metais_prensados
+    title: "Metais Prensados"
+    type: main
+    deps: [prensa]
+    icon: GalacticraftCore:item.basicItem:6
+    desc: |
+      Duas barras iguais na Prensa = um metal prensado. Faça §e4 de cada§r: Cobre, Estanho,
+      Alumínio e Ferro Prensados. (O Bronze Prensado também sai de Cobre + Estanho Prensados.)
+    tasks:
+      - get: [ore:compressedCopper x4, ore:compressedTin x4, ore:compressedAluminum x4, ore:compressedIron x4]
+    rewards:
+      - xp: 5
+      - choice: [ore:ingotAluminum x8, ore:ingotTin x12, minecraft:coal_block x4]
+
+  - id: aco_prensado
+    title: "Aço Prensado"
+    type: main
+    deps: [metais_prensados, aco]
+    icon: GalacticraftCore:item.basicItem:9
+    desc: |
+      O material mais usado do mod inteiro. Duas barras de aço na Prensa = 1 Aço Prensado (ou
+      Ferro Prensado + 2 carvões, já que o "modo difícil" está desligado).
+
+      Faça §e16§r. Eu sei, eu sei. Mas um Foguete Nível 1 sozinho engole mais de uma dúzia.
+    tasks:
+      - get: ore:compressedSteel x16
+    rewards:
+      - xp: 5
+      - choice: [ore:ingotSteel x8, minecraft:coal_block x6, ore:compressedIron x4]
+
+  - id: bronze_prensado
+    title: "Bronze Prensado"
+    type: normal
+    deps: [metais_prensados]
+    icon: GalacticraftCore:item.basicItem:10
+    desc: |
+      Bronze Prensado (2 barras de bronze, ou Cobre Prensado + Estanho Prensado) vai na
+      Blindagem Pesada, na Chave Inglesa Padrão, na Prensa Elétrica e no Compressor de
+      Oxigênio. Faça §e6§r.
+    tasks:
+      - get: ore:compressedBronze x6
+    rewards:
+      - xp: 3
+      - item: ore:ingotCopper x8
+
+  - id: prensa_eletrica
+    title: "Prensa Elétrica"
+    type: normal
+    deps: [aco_prensado, wafer_avancado, bronze_prensado]
+    icon: GalacticraftCore:tile.machine2
+    desc: |
+      A Prensa a carvão é lenta. A §ePrensa Elétrica§r faz as mesmas receitas muito mais rápido
+      usando energia. Se você vai fazer foguetes de verdade, ela paga o investimento no
+      primeiro casco.
+    tasks:
+      - get: GalacticraftCore:tile.machine2
+    rewards:
+      - xp: 4
+      - item: ore:ingotSteel x8
+
+  - id: chave_padrao
+    title: "Chave Inglesa Padrão"
+    type: optional
+    deps: [bronze_prensado]
+    desc: |
+      Gira máquinas do Galacticraft (e muitas outras) sem quebrá-las. 2 Bronze Prensado e 1 Aço
+      Prensado.
+    tasks:
+      - get: GalacticraftCore:item.standardWrench
+    rewards:
+      - loot: comum
+
+  - id: bateria_gc
+    title: "Bateria"
+    type: normal
+    deps: [metais_prensados]
+    icon: GalacticraftCore:item.battery
+    desc: |
+      5 Estanho Prensado, carvão e redstone: uma §eBateria§r de 15 000 gJ. Ela alimenta
+      ferramentas e é ingrediente do Módulo de Armazenagem de Energia.
+    tasks:
+      - get: GalacticraftCore:item.battery x3
+    rewards:
+      - xp: 3
+      - item: minecraft:redstone x16
+
+  - id: armazenagem_energia
+    title: "Módulo de Armazenagem de Energia"
+    type: normal
+    deps: [bateria_gc, aco_prensado]
+    icon: GalacticraftCore:tile.machineTiered
+    desc: |
+      6 Aço Prensado e 3 Baterias: o banco de energia do Galacticraft. Ele também aparece em
+      receitas de Marte (a Base do Astrominerador pede um).
+    tasks:
+      - get: GalacticraftCore:tile.machineTiered
+    rewards:
+      - xp: 3
+      - item: GalacticraftCore:item.battery
+
+  - id: grupo_armazenagem
+    title: "Grupo de Armazenagem de Energia"
+    type: optional
+    deps: [armazenagem_energia, wafer_avancado]
+    icon: GalacticraftCore:tile.machineTiered:8
+    desc: |
+      Quatro Módulos de Armazenagem + Aço Prensado + um Wafer Avançado: a versão grande do
+      banco de energia.
+    tasks:
+      - get: GalacticraftCore:tile.machineTiered:8
+    rewards:
+      - loot: incomum
+
+  - id: fornalha_eletrica
+    title: "Fornalha Elétrica"
+    type: optional
+    deps: [aco_prensado, wafer_basico]
+    icon: GalacticraftCore:tile.machineTiered:4
+    desc: |
+      Uma fornalha a energia, sem carvão. Também é ingrediente do Sintetizador de Metano lá em
+      Marte e a base da Fornalha a Arco Voltaico.
+    tasks:
+      - get: GalacticraftCore:tile.machineTiered:4
+    rewards:
+      - loot: comum
+
+  - id: modulo_solar
+    title: "Módulos Solares"
+    type: normal
+    deps: [wafer_solar, cabo_aluminio]
+    icon: GalacticraftCore:item.basicItem
+    desc: |
+      Vidro, Wafers Solares e Cabos de Alumínio = 2 Módulos Solares. Seis módulos e cabos formam
+      um §ePainel Solar Completo§r.
+    tasks:
+      - get: GalacticraftCore:item.basicItem:1
+    rewards:
+      - xp: 3
+      - item: minecraft:glass x12
+
+  - id: painel_solar
+    title: "Painel Solar Básico"
+    type: normal
+    deps: [modulo_solar, wafer_basico, aco_prensado]
+    icon: GalacticraftCore:tile.solar
+    desc: |
+      O painel do Galacticraft gira para acompanhar o sol (é lindo de ver). Ocupa um espaço
+      maior que um bloco — deixe área livre em volta. Na Estação Espacial ele rende o dobro.
+    tasks:
+      - get: GalacticraftCore:tile.solar
+    rewards:
+      - xp: 4
+      - item: ore:waferSolar x9
+
+  - id: painel_solar_avancado
+    title: "Painel Solar Avançado"
+    type: optional
+    deps: [painel_solar, wafer_avancado, cabo_pesado]
+    icon: GalacticraftCore:tile.solar:4
+    desc: |
+      Mesmo Painel Solar Completo, mas com Cabos de Alumínio Pesados e um Wafer Avançado: mais
+      potência por painel.
+    tasks:
+      - get: GalacticraftCore:tile.solar:4
+    rewards:
+      - loot: incomum
+
+  - id: energia_info
+    title: "gJ, RF, EU e Companhia"
+    type: info
+    deps: [gerador_carvao]
+    icon: GalacticraftCore:tile.aluminumWire
+    desc: |
+      O Galacticraft mede energia em §egJ§r, mas conversa com todo mundo: a config do pack aceita
+      e entrega RF, EU (IC2), Joules (Mekanism) e MJ, sem perdas. Ou seja, você pode ligar as
+      máquinas do Galacticraft na sua rede de RF existente com um cabo do outro mod.
+
+      §aDica:§r se quiser ver a energia em RF ou EU no lugar de gJ, há uma opção na config do
+      cliente (Galacticraft → power).
+    tasks:
+      - check
+    rewards:
+      - xp: 2
+
+  - id: ferramentas_pesadas
+    title: "Equipamento para Trabalho Pesado"
+    type: optional
+    deps: [aco_prensado]
+    icon: GalacticraftCore:item.steel_pickaxe
+    desc: |
+      Aço Prensado vira ferramentas e armadura "para Trabalho Pesado": mais duráveis que as de
+      ferro. Uma boa picareta para as primeiras viagens.
+    tasks:
+      - one_of: [GalacticraftCore:item.steel_pickaxe, GalacticraftCore:item.steel_chestplate, GalacticraftCore:item.steel_sword]
+    rewards:
+      - loot: comum
+
+  - id: decoracao_estanho
+    title: "Bloco Decorativo de Estanho"
+    type: optional
+    deps: [metais_prensados]
+    icon: GalacticraftCore:tile.gcBlockCore:4
+    desc: |
+      Pedra + Estanho Prensado = 4 §eBlocos Decorativos de Estanho§r, o visual clássico de nave
+      espacial. Eles também cobrem cabos e canos: dois blocos + um cabo/cano de qualquer mod do
+      pack (cobre, AE2, BuildCraft, alumínio...) viram a versão §eselável§r, que não deixa o ar
+      vazar pela parede.
+    tasks:
+      - get: GalacticraftCore:tile.gcBlockCore:4 x16
+    rewards:
+      - loot: comum
+
+  - id: oficina_espacial
+    title: "A Oficina Espacial"
+    type: milestone
+    deps: [aco_prensado, wafer_avancado, gerador_carvao]
+    icon: GalacticraftCore:tile.machine2:4
+    banner: "A Oficina Espacial"
+    subtitle: "Metal prensado e silício"
+    desc: |
+      Prensa trabalhando, Fabricador de Circuitos cuspindo wafers, gerador zumbindo e uma pilha
+      de Aço Prensado. Herói, esta é a sala de montagem de onde vai sair o primeiro foguete do
+      Registro!
+
+      §aDicas de organização:§r deixe a Prensa (ou a Prensa Elétrica) sempre fazendo Aço
+      Prensado; automatize o Fabricador com funis (diamante, silício, redstone e o item do
+      tipo). Os próximos passos: Blindagem Pesada, peças do foguete e a Bancada NASA.
+    tasks:
+      - get: [GalacticraftCore:tile.machine:12, GalacticraftCore:tile.machine2:4, ore:compressedSteel x8, ore:waferAdvanced]
+    rewards:
+      - xp: 8
+      - kit: {name: "Kit do Técnico Espacial", items: [ore:ingotAluminum x16, ore:itemSilicon x8, minecraft:diamond x4, minecraft:repeater x4, GalacticraftCore:tile.aluminumWire x16]}
+      - loot: raro
+
+  # ======================================================================
+  # FASE 1 — O FOGUETE NÍVEL 1
+  # ======================================================================
+  - id: blindagem_pesada
+    title: "Blindagem Pesada"
+    type: main
+    deps: [oficina_espacial, bronze_prensado]
+    icon: GalacticraftCore:item.heavyPlating
+    desc: |
+      Na Prensa, duas linhas de §eAço Prensado + Alumínio Prensado + Bronze Prensado§r (6 metais
+      prensados no total) rendem §e2 Blindagens Pesadas§r.
+
+      O Foguete Nível 1 leva 8 no casco, mais as do nariz, das aletas e do motor. Faça §e16§r.
+    tasks:
+      - get: GalacticraftCore:item.heavyPlating x16
+    rewards:
+      - xp: 6
+      - choice: [ore:compressedSteel x6, ore:compressedAluminum x6, ore:compressedBronze x6]
+
+  - id: respirador
+    title: "Respirador"
+    type: normal
+    deps: [metais_prensados, aco_prensado]
+    icon: GalacticraftCore:item.airVent
+    desc: |
+      3 Estanho Prensado e 1 Aço Prensado: o §eRespirador§r. Peça pequena que aparece em tudo —
+      motor do foguete, equipamentos de oxigênio, coletores, seladores...
+    tasks:
+      - get: GalacticraftCore:item.airVent x4
+    rewards:
+      - xp: 3
+      - item: ore:compressedTin x4
+
+  - id: ventilador
+    title: "Ventilador"
+    type: normal
+    deps: [aco_prensado, wafer_basico]
+    icon: GalacticraftCore:item.airFan
+    desc: |
+      4 Aço Prensado, um Wafer Básico e redstone. O §eVentilador§r empurra oxigênio nos
+      coletores, distribuidores e seladores.
+    tasks:
+      - get: GalacticraftCore:item.airFan x3
+    rewards:
+      - xp: 3
+      - item: ore:compressedSteel x2
+
+  - id: latas
+    title: "Latas de Estanho e de Cobre"
+    type: normal
+    deps: [cobre_estanho]
+    icon: GalacticraftCore:item.canister
+    desc: |
+      7 barras de estanho (ou de cobre) em "U" rendem 2 latas. A §eLata de Estanho§r vira motor,
+      tanque de oxigênio e comida enlatada; a §eLata de Cobre§r vai na Refinaria.
+    tasks:
+      - get: [GalacticraftCore:item.canister x4, GalacticraftCore:item.canister:1 x2]
+    rewards:
+      - xp: 3
+      - item: ore:ingotTin x8
+
+  - id: nariz_foguete
+    title: "Nariz de Foguete"
+    type: main
+    deps: [blindagem_pesada]
+    icon: GalacticraftCore:item.noseCone
+    desc: |
+      3 Blindagens Pesadas em pirâmide e uma Tocha de Redstone na ponta: o §eNariz de
+      Foguete§r. Aerodinâmica de primeira!
+    tasks:
+      - get: GalacticraftCore:item.noseCone
+    rewards:
+      - xp: 4
+      - item: GalacticraftCore:item.heavyPlating x2
+
+  - id: aletas_foguete
+    title: "Aletas de Foguete"
+    type: main
+    deps: [blindagem_pesada]
+    icon: GalacticraftCore:item.rocketFins
+    desc: |
+      4 Blindagens Pesadas e 2 Aço Prensado por aleta. O Foguete Nível 1 leva §e4 aletas§r — sem
+      elas ele sobe girando igual pião.
+    tasks:
+      - get: GalacticraftCore:item.rocketFins x4
+    rewards:
+      - xp: 4
+      - item: ore:compressedSteel x4
+
+  - id: motor_t1
+    title: "Motor de Foguete Nível 1"
+    type: main
+    deps: [blindagem_pesada, respirador, latas]
+    icon: GalacticraftCore:item.engine
+    desc: |
+      4 Blindagens Pesadas, uma Lata de Estanho, um Respirador, um Isqueiro e um Botão. O
+      §eMotor de Foguete Nível 1§r é o coração do primeiro foguete.
+    tasks:
+      - get: GalacticraftCore:item.engine
+    rewards:
+      - xp: 4
+      - item: minecraft:flint_and_steel
+
+  - id: bancada_nasa
+    title: "Bancada de Trabalho NASA"
+    type: main
+    deps: [wafer_avancado, aco_prensado]
+    icon: GalacticraftCore:tile.rocketWorkbench
+    desc: |
+      Aço Prensado, uma bancada, alavancas, uma tocha de redstone e um Wafer Avançado: a
+      §eBancada de Trabalho NASA§r. Ela é um bloco de 3 de altura — deixe espaço!
+
+      Os foguetes, os veículos e as peças grandes são montados nela, numa grade com o formato do
+      foguete. Novos projetos são liberados colocando §eEsquemáticos§r na aba de esquemáticos da
+      bancada. O Foguete Nível 1 já vem liberado.
+    tasks:
+      - get: GalacticraftCore:tile.rocketWorkbench
+    rewards:
+      - xp: 6
+      - choice: [GalacticraftCore:item.heavyPlating x4, ore:compressedSteel x6, ore:waferAdvanced]
+
+  - id: foguete_t1
+    title: "Foguete Nível 1"
+    type: main
+    deps: [nariz_foguete, aletas_foguete, motor_t1, bancada_nasa]
+    icon: GalacticraftCore:item.spaceship
+    desc: |
+      Na Bancada NASA: §e1 Nariz, 8 Blindagens Pesadas, 4 Aletas e 1 Motor§r. Até 3 baús nos
+      espaços extras dão de 18 a 54 espaços de carga ao foguete.
+
+      Ele alcança §ea Lua§r e §ea órbita da Terra§r (onde você pode construir uma Estação
+      Espacial). Ainda falta: combustível, uma base de lançamento e, principalmente, §coxigênio§r.
+    tasks:
+      - get: GalacticraftCore:item.spaceship:*
+    rewards:
+      - xp: 6
+      - choice: [GalacticraftCore:item.heavyPlating x4, ore:compressedSteel x8, minecraft:chest x3]
+
+  - id: porao_carga
+    title: "Porão de Carga"
+    type: optional
+    deps: [foguete_t1]
+    icon: minecraft:chest
+    desc: |
+      Montando o foguete com §e3 baús§r nos espaços extras da Bancada NASA, ele ganha 54 espaços
+      de carga — o bastante para levar uma base inteira desmontada para a Lua.
+    tasks:
+      - get: GalacticraftCore:item.spaceship:3
+    rewards:
+      - loot: incomum
+
+  - id: base_lancamento
+    title: "Base de Lançamento"
+    type: main
+    deps: [metais_prensados]
+    icon: GalacticraftCore:tile.landingPad
+    desc: |
+      3 Ferros Prensados e 3 Blocos de Ferro rendem §e9 Bases de Lançamento de Foguetes§r —
+      exatamente o quadrado §e3×3§r que um foguete Nível 1, 2 ou 3 precisa.
+    tasks:
+      - get: GalacticraftCore:tile.landingPad x9
+    rewards:
+      - xp: 4
+      - item: minecraft:iron_block x2
+
+  # ======================================================================
+  # FASE 2 — COMBUSTÍVEL
+  # ======================================================================
+  - id: petroleo
+    title: "Ouro Negro"
+    type: main
+    deps: [sonho_espacial]
+    icon: GalacticraftCore:item.bucketOil
+    desc: |
+      Foguete bebe combustível, e combustível vem do petróleo. O Galacticraft espalha §elagos de
+      petróleo subterrâneos§r pelo mundo normal (a config aumenta a geração: fator 1,8). O
+      BuildCraft também gera petróleo — e os dois são o mesmo fluido.
+
+      Encha um balde de petróleo. §aDica:§r os lagos às vezes aparecem perto da superfície como
+      manchas pretas; um Extrator Portátil de Petróleo também funciona.
+    tasks:
+      - get: ore:container_oil
+    rewards:
+      - xp: 4
+      - choice: [minecraft:bucket x4, ore:ingotCopper x8, minecraft:coal x16]
+
+  - id: lata_vazia
+    title: "Lata Vazia"
+    type: normal
+    deps: [metais_prensados, aco_prensado, latas]
+    icon: GalacticraftCore:item.oilCanisterPartial:1001
+    desc: |
+      Estanho Prensado, Aço Prensado, vidro e uma Lata de Estanho: a §eLata Vazia§r, um tanque
+      portátil de 1 balde para petróleo ou combustível. Ela é ingrediente do Motor Auxiliar do
+      Foguete Nível 2 (cheia de combustível!).
+    tasks:
+      - get: GalacticraftCore:item.oilCanisterPartial:1001 x2
+    rewards:
+      - xp: 3
+      - item: ore:compressedTin x4
+
+  - id: refinaria
+    title: "Refinaria"
+    type: main
+    deps: [petroleo, aco_prensado, latas]
+    icon: GalacticraftCore:tile.refinery
+    desc: |
+      2 Latas de Cobre, 2 pedras, 2 Aço Prensado e uma fornalha: a §eRefinaria§r. Ela usa
+      energia para transformar §ePetróleo em Combustível§r. Coloque baldes ou latas de petróleo
+      na entrada e recipientes vazios na saída (ou ligue canos de fluido).
+    tasks:
+      - get: GalacticraftCore:tile.refinery
+    rewards:
+      - xp: 5
+      - choice: [minecraft:bucket x4, GalacticraftCore:item.canister:1 x2, minecraft:coal_block x4]
+
+  - id: combustivel
+    title: "Combustível de Foguete"
+    type: main
+    deps: [refinaria]
+    icon: GalacticraftCore:item.bucketFuel
+    task_logic: OR
+    desc: |
+      Refine petróleo até ter combustível. Um Foguete Nível 1 cheio queima bastante, então
+      pense em automatizar: bomba no lago → Refinaria → tanque → Carregador de Combustível.
+
+      §aCuriosidade:§r o Combustível do BuildCraft é o mesmo fluido, então a Refinaria do
+      BuildCraft também serve.
+    tasks:
+      - get: GalacticraftCore:item.bucketFuel
+      - get: BuildCraft|Energy:bucketFuel
+      - get: GalacticraftCore:item.fuelCanisterPartial:1
+    rewards:
+      - xp: 5
+      - choice: [minecraft:bucket x4, ore:compressedSteel x4, minecraft:redstone_block x2]
+
+  - id: carregador_combustivel
+    title: "Carregador de Combustível"
+    type: main
+    deps: [combustivel, base_lancamento, wafer_basico]
+    icon: GalacticraftCore:tile.fuelLoader
+    desc: |
+      Aço Prensado, Alumínio Prensado, uma Lata de Estanho e um Wafer Básico. Encoste o
+      §eCarregador de Combustível§r na base de lançamento, dê energia e coloque combustível
+      dentro: ele enche o foguete parado sobre a base. A tecla §eF§r mostra o tanque do foguete.
+    tasks:
+      - get: GalacticraftCore:tile.fuelLoader
+    rewards:
+      - xp: 5
+      - choice: [GalacticraftCore:item.bucketFuel, ore:compressedAluminum x4, ore:waferBasic x2]
+
+  - id: combustivel_lote
+    title: "Tanque Cheio"
+    type: normal
+    deps: [carregador_combustivel]
+    icon: GalacticraftCore:item.bucketFuel
+    desc: |
+      Uma ida e volta gasta bastante combustível, e foguetes maiores bebem mais (a config usa o
+      fator padrão de consumo). Automatize a Refinaria e guarde §e8 baldes de combustível§r
+      (do Galacticraft ou do BuildCraft) para emergências.
+    tasks:
+      - one_of: [GalacticraftCore:item.bucketFuel x8, BuildCraft|Energy:bucketFuel x8]
+    rewards:
+      - xp: 4
+      - item: minecraft:bucket x4
+
+  - id: extrator_portatil
+    title: "Extrator Portátil de Petróleo"
+    type: optional
+    deps: [petroleo]
+    desc: |
+      Use o §eExtrator Portátil§r em cima de um bloco de petróleo para puxá-lo direto para uma
+      lata, sem baldes. Prático para pegar o petróleo de lagos pequenos.
+    tasks:
+      - get: GalacticraftCore:item.oilExtractor
+    rewards:
+      - loot: comum
+
+  # ======================================================================
+  # FASE 3 — OXIGÊNIO
+  # ======================================================================
+  - id: oxigenio_info
+    title: "§cNo Espaço Não Tem Ar"
+    type: info
+    deps: [foguete_t1]
+    icon: GalacticraftCore:item.oxygenMask
+    desc: |
+      Antes de apertar o botão de lançamento: §cna Lua, em Marte e em quase tudo lá fora não
+      existe ar respirável§r. Sem oxigênio você sufoca em segundos.
+
+      O Galacticraft adiciona um §einventário extra§r (aba no seu inventário) com espaços para:
+      §e• Máscara de Oxigênio§r e §eEquipamento de Oxigênio§r — os dois são obrigatórios;
+      §e• 2 Tanques de Oxigênio§r — o ar que você carrega;
+      §e• Paraquedas§r — para voltar para a Terra sem virar panqueca;
+      §e• Módulo de Frequência§r — permite ouvir sons no vácuo;
+      §e• 4 peças de Traje Térmico§r — contra o frio de Marte e dos Asteroides.
+
+      Na base, use um §eCompressor de Oxigênio§r para encher os tanques.
+    tasks:
+      - check
+    rewards:
+      - xp: 2
+
+  - id: mascara_oxigenio
+    title: "Máscara de Oxigênio"
+    type: main
+    deps: [oxigenio_info]
+    icon: GalacticraftCore:item.oxygenMask
+    desc: |
+      Um Elmo de Ferro coberto por 8 Painéis de Vidro: a §eMáscara de Oxigênio§r. Ela vai no
+      espaço de máscara do inventário do Galacticraft (não no espaço do elmo comum).
+    tasks:
+      - get: GalacticraftCore:item.oxygenMask
+    rewards:
+      - xp: 4
+      - choice: [minecraft:glass_pane x16, minecraft:iron_ingot x8, ore:compressedTin x4]
+
+  - id: concentrador_oxigenio
+    title: "Concentrador de Oxigênio"
+    type: normal
+    deps: [respirador, latas, aco_prensado]
+    icon: GalacticraftCore:item.oxygenConcentrator
+    desc: |
+      Aço Prensado, Estanho Prensado, uma Lata de Estanho e um Respirador. O §eConcentrador§r é
+      a peça central do Equipamento de Oxigênio, do Coletor, do Compressor e da Porta
+      Pressurizada.
+    tasks:
+      - get: GalacticraftCore:item.oxygenConcentrator x3
+    rewards:
+      - xp: 3
+      - item: ore:compressedSteel x4
+
+  - id: cano_oxigenio
+    title: "Cano de Oxigênio"
+    type: normal
+    deps: [oxigenio_info]
+    icon: GalacticraftCore:tile.oxygenPipe
+    desc: |
+      6 Painéis de Vidro = 6 §eCanos de Oxigênio§r. Ligam coletores a compressores, seladores e
+      distribuidores. O Equipamento de Oxigênio também é feito com eles.
+    tasks:
+      - get: GalacticraftCore:tile.oxygenPipe x12
+    rewards:
+      - xp: 3
+      - item: minecraft:glass_pane x16
+
+  - id: equipamento_oxigenio
+    title: "Equipamento de Oxigênio"
+    type: main
+    deps: [concentrador_oxigenio, cano_oxigenio]
+    icon: GalacticraftCore:item.oxygenGear
+    desc: |
+      5 Canos de Oxigênio em volta de um Concentrador: o §eEquipamento de Oxigênio§r, que liga os
+      tanques à máscara. Sem ele, os tanques não servem para nada.
+    tasks:
+      - get: GalacticraftCore:item.oxygenGear
+    rewards:
+      - xp: 4
+      - choice: [GalacticraftCore:tile.oxygenPipe x8, ore:compressedTin x4, ore:compressedSteel x4]
+
+  - id: tanque_leve
+    title: "Tanque de Oxigênio Leve"
+    type: main
+    deps: [latas, metais_prensados]
+    icon: GalacticraftCore:item.oxygenTankLightFull
+    desc: |
+      Uma Lata de Estanho, Cobre Prensado e Lã Verde-Limão: o §eTanque Leve§r (900 unidades de
+      ar). Você usa dois ao mesmo tempo. Ele sai da bancada §evazio§r — encha no Compressor de
+      Oxigênio.
+    tasks:
+      - get: GalacticraftCore:item.oxygenTankLightFull x2
+    rewards:
+      - xp: 4
+      - choice: [minecraft:wool:5 x4, ore:compressedCopper x4, GalacticraftCore:item.canister x2]
+
+  - id: tanque_medio
+    title: "Tanque de Oxigênio Médio"
+    type: normal
+    deps: [tanque_leve]
+    icon: GalacticraftCore:item.oxygenTankMedFull
+    desc: |
+      O dobro de ar (1800): 2 Latas de Estanho, 2 Estanho Prensado e 2 Lãs Laranjas.
+    tasks:
+      - get: GalacticraftCore:item.oxygenTankMedFull
+    rewards:
+      - xp: 3
+      - item: minecraft:wool:1 x4
+
+  - id: tanque_pesado
+    title: "Tanque de Oxigênio Pesado"
+    type: normal
+    deps: [tanque_medio, aco_prensado]
+    icon: GalacticraftCore:item.oxygenTankHeavyFull
+    desc: |
+      O triplo do leve (2700): 3 Latas de Estanho, 3 Aço Prensado e 3 Lãs Vermelhas. Dois
+      desses dão muito tempo de exploração em Marte. Também é peça do Condensador e de outras
+      máquinas marcianas.
+    tasks:
+      - get: GalacticraftCore:item.oxygenTankHeavyFull
+    rewards:
+      - xp: 3
+      - item: minecraft:wool:14 x6
+
+  - id: coletor_oxigenio
+    title: "Coletor de Oxigênio"
+    type: main
+    deps: [concentrador_oxigenio, ventilador, wafer_basico]
+    icon: GalacticraftCore:tile.oxygenCollector
+    desc: |
+      O §eColetor de Oxigênio§r gera oxigênio usando energia. No mundo normal ele tira do próprio
+      ar; §efora da Terra ele depende de folhas e plantas por perto§r — leve mudas e terra para a
+      sua base na Lua!
+    tasks:
+      - get: GalacticraftCore:tile.oxygenCollector
+    rewards:
+      - xp: 4
+      - choice: [minecraft:sapling x8, minecraft:leaves x16, GalacticraftCore:tile.oxygenPipe x8]
+
+  - id: compressor_oxigenio
+    title: "Compressor de Oxigênio"
+    type: main
+    deps: [coletor_oxigenio, bronze_prensado]
+    icon: GalacticraftCore:tile.oxygenCompressor
+    desc: |
+      Ligue o Coletor ao §eCompressor de Oxigênio§r com Canos e coloque os tanques dentro: ele os
+      enche. O §eDescompressor§r faz o caminho inverso, esvaziando tanques para alimentar uma
+      rede de oxigênio.
+    tasks:
+      - get: GalacticraftCore:tile.oxygenCompressor
+    rewards:
+      - xp: 4
+      - choice: [ore:compressedAluminum x4, ore:compressedBronze x4, GalacticraftCore:item.oxygenTankLightFull]
+
+  - id: descompressor
+    title: "Descompressor de Oxigênio"
+    type: optional
+    deps: [compressor_oxigenio]
+    icon: GalacticraftCore:tile.oxygenCompressor:4
+    desc: |
+      Tira o oxigênio dos tanques e manda para canos. Útil para levar ar engarrafado de casa para
+      uma base distante.
+    tasks:
+      - get: GalacticraftCore:tile.oxygenCompressor:4
+    rewards:
+      - loot: comum
+
+  - id: paraquedas
+    title: "Paraquedas"
+    type: normal
+    deps: [oxigenio_info]
+    icon: GalacticraftCore:item.parachute
+    desc: |
+      3 Tecidos (linha e gravetos) e 3 linhas. Coloque-o no espaço de paraquedas do inventário
+      do Galacticraft: quando você voltar para a Terra, você cai de muito alto, e ele abre
+      sozinho. Dá para tingir com qualquer corante!
+    tasks:
+      - get: GalacticraftCore:item.parachute:*
+    rewards:
+      - xp: 3
+      - item: minecraft:string x16
+
+  - id: modulo_frequencia
+    title: "Módulo de Frequência"
+    type: normal
+    deps: [wafer_basico, metais_prensados]
+    icon: GalacticraftCore:item.basicItem:19
+    desc: |
+      No vácuo não há som... a não ser que você use o §eMódulo de Frequência§r no espaço dele.
+      Também é peça da Unidade de Telemetria e do Controle de Lançamento de Marte.
+    tasks:
+      - get: GalacticraftCore:item.basicItem:19
+    rewards:
+      - xp: 3
+      - item: minecraft:repeater x2
+
+  - id: distribuidor_oxigenio
+    title: "Distribuidor de Bolha de Oxigênio"
+    type: normal
+    deps: [compressor_oxigenio]
+    icon: GalacticraftCore:tile.distributor
+    desc: |
+      Alimentado com oxigênio e energia, o §eDistribuidor§r cria uma §ebolha de ar respirável§r em
+      volta dele (o tamanho é ajustável na GUI). Perfeito para uma primeira base na Lua.
+    tasks:
+      - get: GalacticraftCore:tile.distributor
+    rewards:
+      - xp: 3
+      - item: GalacticraftCore:item.airFan
+
+  - id: selador_oxigenio
+    title: "Selador de Oxigênio"
+    type: normal
+    deps: [compressor_oxigenio]
+    icon: GalacticraftCore:tile.sealer
+    desc: |
+      Para bases de verdade: o §eSelador de Oxigênio§r enche de ar uma sala §etotalmente
+      fechada§r. Se houver um buraco, ele avisa que não conseguiu selar. Vidro, portas
+      pressurizadas e blocos sólidos vedam; a config ainda permite selar com painéis de vidro.
+    tasks:
+      - get: GalacticraftCore:tile.sealer
+    rewards:
+      - xp: 3
+      - item: ore:compressedAluminum x4
+
+  - id: porta_pressurizada
+    title: "Porta Pressurizada"
+    type: optional
+    deps: [selador_oxigenio]
+    icon: GalacticraftCore:tile.airLockFrame
+    desc: |
+      Monte uma moldura com §eQuadros de Porta Pressurizada§r e coloque um §eControle§r nela: a
+      porta abre e fecha mantendo a sala selada. Configure quem pode passar na GUI do controle.
+    tasks:
+      - get: [GalacticraftCore:tile.airLockFrame x8, GalacticraftCore:tile.airLockFrame:1]
+    rewards:
+      - loot: incomum
+
+  - id: detector_oxigenio
+    title: "Detector de Oxigênio"
+    type: optional
+    deps: [selador_oxigenio]
+    desc: |
+      Emite redstone quando há ar respirável em volta. Ligue a um alarme e você saberá na hora se
+      uma parede da base foi furada.
+    tasks:
+      - get: GalacticraftCore:tile.oxygenDetector
+    rewards:
+      - loot: comum
+
+  - id: armazenagem_oxigenio
+    title: "Módulo de Armazenagem de Oxigênio"
+    type: optional
+    deps: [tanque_pesado]
+    icon: GalacticraftCore:tile.machine2:8
+    desc: |
+      6 Aço Prensado e 3 Tanques Pesados: uma "bateria" de oxigênio para a rede da sua base.
+    tasks:
+      - get: GalacticraftCore:tile.machine2:8
+    rewards:
+      - loot: comum
+
+  - id: comida_enlatada
+    title: "Comida Enlatada"
+    type: optional
+    deps: [latas]
+    icon: GalacticraftCore:item.basicItem:15
+    desc: |
+      Uma Lata de Estanho com 2 maçãs, cenouras, melancias ou batatas vira comida enlatada —
+      compacta para levar ao espaço. Ah, e o ExtraPlanets acrescenta carnes enlatadas também.
+    tasks:
+      - one_of: [GalacticraftCore:item.basicItem:15, GalacticraftCore:item.basicItem:16, GalacticraftCore:item.basicItem:17, GalacticraftCore:item.basicItem:18]
+    rewards:
+      - loot: comum
+
+  - id: tocha_luminosa
+    title: "Fogo Precisa de Ar"
+    type: normal
+    deps: [oxigenio_info]
+    icon: GalacticraftCore:tile.glowstoneTorch
+    desc: |
+      Tente acender uma tocha comum na Lua: ela §eapaga na hora§r — sem oxigênio, sem fogo. A
+      solução é a §eTocha de Pedra Luminosa§r (pó de pedra luminosa + graveto, rende 4), que
+      brilha em qualquer lugar. Leve um monte!
+    tasks:
+      - get: GalacticraftCore:tile.glowstoneTorch x16
+    rewards:
+      - xp: 3
+      - item: minecraft:glowstone_dust x8
+
+  - id: mapa_galaxia
+    title: "O Mapa da Galáxia"
+    type: info
+    deps: [foguete_t1]
+    icon: GalacticraftCore:item.spaceship
+    desc: |
+      A tecla §eM§r abre o §eMapa da Galáxia§r (Celestial Selection). Ele mostra estrelas, planetas
+      e luas — e o §enível de foguete§r exigido por cada um.
+
+      §e• Nível 1:§r Lua e órbita da Terra (Estação Espacial).
+      §e• Nível 2:§r Marte (e Fobos e Deimos, do ExtraPlanets).
+      §e• Nível 3:§r Asteroides, Vênus (ExtraPlanets) e o sistema Amun-Ra.
+      §e• Nível 4 a 10:§r os planetas exteriores do ExtraPlanets, até Kepler 22b.
+
+      Na hora do lançamento, o mesmo mapa aparece para você escolher o destino. Os nomes podem
+      ser buscados e cada corpo mostra gravidade e informações básicas.
+    tasks:
+      - check
+    rewards:
+      - xp: 2
+
+  - id: pronto_lancamento
+    title: "Pronto para o Lançamento"
+    type: milestone
+    deps: [foguete_t1, carregador_combustivel, equipamento_oxigenio, mascara_oxigenio, tanque_leve, compressor_oxigenio, paraquedas]
+    icon: GalacticraftCore:item.spaceship
+    banner: "T-menos 10..."
+    subtitle: "Foguete, combustível e ar"
+    desc: |
+      Foguete na base, Carregador cheio, tanques pressurizados, máscara no rosto e paraquedas nas
+      costas. Herói, eu estou com o coração na mão!
+
+      §eChecklist de lançamento:§r
+      §e•§r Foguete sobre a base 3×3, Carregador encostado na base, combustível no tanque (F).
+      §e•§r Máscara, Equipamento e 2 tanques cheios no inventário do Galacticraft.
+      §e•§r Paraquedas equipado (para a volta).
+      §e•§r Mudas, terra, um Coletor e um Distribuidor no porão de carga.
+
+      Entre no foguete, aperte §eespaço§r para dar a partida e, lá em cima, escolha o destino no
+      Mapa da Galáxia. §cFoguetes não decolam do Nether nem do Fim§r (config do pack). A Lua espera
+      por você!
+    tasks:
+      - get: [GalacticraftCore:item.spaceship:*, GalacticraftCore:item.oxygenMask, GalacticraftCore:item.oxygenGear, GalacticraftCore:item.oxygenTankLightFull x2, GalacticraftCore:item.parachute:*]
+    rewards:
+      - xp: 10
+      - kit: {name: "Kit do Astronauta", items: [GalacticraftCore:item.oxygenTankMedFull x2, GalacticraftCore:tile.distributor, minecraft:sapling x8, minecraft:dirt x16, GalacticraftCore:item.basicItem:15 x8]}
+      - loot: raro
+
+  # ======================================================================
+  # FASE 4 — A LUA
+  # ======================================================================
+  - id: lua
+    title: "A Lua"
+    type: portal
+    deps: [pronto_lancamento]
+    icon: GalacticraftCore:tile.moonBlock:5
+    banner: "Pequeno Passo, Grande Página"
+    subtitle: "Chegada à Lua"
+    effect: 3
+    desc: |
+      Você desce num Módulo Espacial, pisa na poeira cinza e... olhe para
+      trás. A Terra, azulzinha, lá no céu. Eu vou guardar esse momento para sempre no Registro.
+
+      §eA Lua:§r gravidade baixa (pulos enormes, queda suave), §csem ar respirável§r, noites
+      longas e meteoros caindo. Os monstros daqui são §eEvoluídos§r — mais fortes que os da
+      Terra.
+
+      §aPrimeira coisa a fazer:§r monte uma bolha de oxigênio ou uma sala selada perto do ponto de
+      pouso, guarde o foguete (quebre-o para levar) e marque as coordenadas!
+    tasks:
+      - visit: {dim: -28, name: "Lua"}
+    rewards:
+      - xp: 10
+      - loot: epico
+
+  - id: bandeira
+    title: "Fincar a Bandeira"
+    type: optional
+    deps: [lua]
+    icon: GalacticraftCore:item.flag
+    desc: |
+      3 Mastros de Bandeira (Aço Prensado) e 4 Tecidos: uma §eBandeira§r personalizável. Finque a
+      sua na Lua — é tradição!
+    tasks:
+      - get: GalacticraftCore:item.flag
+    rewards:
+      - loot: comum
+
+  - id: rocha_lunar
+    title: "Poeira de Outro Mundo"
+    type: normal
+    deps: [lua]
+    icon: GalacticraftCore:tile.moonBlock:4
+    desc: |
+      A superfície é Turfa e Terra Lunar; por baixo, §eRocha Lunar§r. Junte um pouco para
+      construir — ela vira lajes, escadas e paredes.
+    tasks:
+      - get: GalacticraftCore:tile.moonBlock:4 x32
+    rewards:
+      - xp: 4
+      - item: minecraft:torch x32
+
+  - id: minerios_lunares
+    title: "Minérios Lunares"
+    type: normal
+    deps: [lua]
+    icon: GalacticraftCore:tile.moonBlock
+    desc: |
+      A Lua tem os próprios Minérios de Cobre e de Estanho (a config deixa ambos ativos) —
+      ótimos para fazer Latas e Metais Prensados sem voltar para casa.
+    tasks:
+      - get: [GalacticraftCore:tile.moonBlock x8, GalacticraftCore:tile.moonBlock:1 x8]
+    rewards:
+      - xp: 4
+      - item: ore:ingotTin x8
+
+  - id: queijo
+    title: "A Lua É de Queijo!"
+    type: normal
+    deps: [lua]
+    icon: GalacticraftCore:tile.moonBlock:2
+    desc: |
+      Eu sempre disse! O §eMinério de Queijo§r dá §eGrãos de Queijo§r (que matam a fome).
+      8 grãos e um balde de leite viram um Bloco de Queijo. E o minério de queijo ainda é
+      ingrediente da Unidade Orion, mais para frente.
+    tasks:
+      - get: GalacticraftCore:item.cheeseCurd x8
+    rewards:
+      - xp: 3
+      - item: minecraft:milk_bucket
+
+  - id: bloco_queijo
+    title: "Bloco de Queijo"
+    type: optional
+    deps: [queijo]
+    icon: GalacticraftCore:tile.cheeseBlock
+    desc: |
+      Um bolo de queijo lunar. Você come em fatias, como um bolo comum. Nham!
+    tasks:
+      - get: GalacticraftCore:tile.cheeseBlock
+    rewards:
+      - loot: comum
+
+  - id: ferro_meteorico
+    title: "Ferro Meteórico"
+    type: main
+    deps: [lua]
+    icon: GalacticraftCore:item.meteoricIronRaw
+    desc: |
+      De noite, §emeteoros§r riscam o céu — na Terra e (muito mais) na Lua. Onde eles caem fica um
+      §eMeteorito§r que dropa §eMinério de Ferro Meteórico§r. §cCuidado: eles explodem ao cair!§r
+
+      Funda o minério para ter Barras de Ferro Meteórico. Esse metal é a base do Foguete Nível 2.
+      Junte §e16 barras§r.
+    tasks:
+      - get: GalacticraftCore:item.meteoricIronIngot x16
+    rewards:
+      - xp: 6
+      - choice: [GalacticraftCore:item.meteoricIronRaw x6, ore:compressedSteel x6, minecraft:golden_apple x2]
+
+  - id: ferro_meteorico_prensado
+    title: "Ferro Meteórico Prensado"
+    type: main
+    deps: [ferro_meteorico]
+    icon: GalacticraftCore:item.meteoricIronIngot:1
+    desc: |
+      Na Prensa, §e1 Barra de Ferro Meteórico → 1 Ferro Meteórico Prensado§r. Ele vai na
+      Blindagem Pesada de Nível 2, no Motor Auxiliar e em várias máquinas. Faça §e12§r.
+    tasks:
+      - get: ore:compressedMeteoricIron x12
+    rewards:
+      - xp: 6
+      - choice: [GalacticraftCore:item.meteoricIronIngot x6, GalacticraftCore:item.heavyPlating x4, ore:compressedSteel x6]
+
+  - id: lentes_sensoras
+    title: "Óculos Sensores"
+    type: optional
+    deps: [ferro_meteorico_prensado]
+    icon: GalacticraftCore:item.sensorGlasses
+    desc: |
+      Lentes Sensoras (redstone, vidro e Ferro Meteórico Prensado) viram §eÓculos Sensores§r.
+      Com eles (e a tecla §eK§r para o modo avançado) você enxerga minérios através das paredes e
+      vê informações extras de máquinas.
+    tasks:
+      - get: GalacticraftCore:item.sensorGlasses
+    rewards:
+      - loot: incomum
+
+  - id: fornalha_arco
+    title: "Fornalha a Arco Voltaico"
+    type: optional
+    deps: [ferro_meteorico, fornalha_eletrica]
+    icon: GalacticraftCore:tile.machineTiered:12
+    desc: |
+      Uma Fornalha Elétrica turbinada com Blindagem Pesada, Ferro Meteórico e um Wafer Avançado.
+      Mais rápida, mais forte — e ainda devolve um pouquinho a mais de alguns minérios.
+    tasks:
+      - get: GalacticraftCore:tile.machineTiered:12
+    rewards:
+      - loot: incomum
+
+  - id: monstros_evoluidos
+    title: "Os Evoluídos"
+    type: normal
+    deps: [lua]
+    icon: minecraft:rotten_flesh
+    task_logic: OR
+    desc: |
+      Zumbis, Esqueletos, Aranhas e Creepers Evoluídos aparecem no escuro da Lua e de Marte. Eles
+      são mais resistentes e não precisam de ar — você precisa. Derrote alguns para aprender o
+      ritmo da luta em gravidade baixa (os pulos deles também são altos!).
+    tasks:
+      - kill: {entity: "GalacticraftCore.EvolvedZombie", count: 3}
+      - kill: {entity: "GalacticraftCore.EvolvedSkeleton", count: 3}
+      - kill: {entity: "GalacticraftCore.EvolvedSpider", count: 3}
+      - kill: {entity: "GalacticraftCore.EvolvedCreeper", count: 3}
+    rewards:
+      - xp: 4
+      - item: minecraft:golden_apple
+
+  - id: vila_lunar
+    title: "Os Aldeões da Lua"
+    type: optional
+    deps: [lua]
+    icon: minecraft:emerald
+    desc: |
+      A Lua tem vilas de §eAldeões Alienígenas§r (a config deixa as vilas ligadas). Eles vivem
+      tranquilos sem ar nenhum — dá até inveja. Ache uma vila e confirme aqui. (E não, não vale
+      atacar os vizinhos.)
+    tasks:
+      - check
+    rewards:
+      - loot: incomum
+
+  - id: calabouco_lunar
+    title: "O Calabouço Lunar"
+    type: normal
+    deps: [lua]
+    icon: GalacticraftCore:tile.moonBlock:14
+    desc: |
+      Abaixo da superfície existem §eCalabouços Lunares§r feitos de Tijolos Lunares: corredores e
+      salas cheios de Evoluídos e, numa sala grande, o §cEsqueleto-Chefe Evoluído§r.
+
+      §aComo achar:§r explore cavernas e escave em linhas retas no subsolo; os Óculos Sensores
+      ajudam. Pegue alguns Tijolos Lunares quando achar um.
+    tasks:
+      - get: GalacticraftCore:tile.moonBlock:14 x8
+    rewards:
+      - xp: 4
+      - item: minecraft:arrow x32
+
+  - id: esqueleto_chefe
+    title: "O Esqueleto-Chefe Evoluído"
+    type: boss
+    deps: [calabouco_lunar]
+    icon: minecraft:skull
+    banner: "O Guardião da Lua Caiu"
+    subtitle: "Primeira estrela do Selo das Estrelas"
+    desc: |
+      Ele é gigante, atira flechas fortes e §ccarrega você e arremessa longe§r. A sala tem um
+      gerador que o invoca quando você entra.
+
+      §eDicas:§r armadura de verdade (Wyvern, Nano ou pelo menos diamante encantada), poções de
+      cura, comida e tanques cheios — a luta é longa. Fique em movimento e use os pilares para se
+      proteger das flechas. Ao morrer, ele deixa a §eChave de Calabouço Nível 1§r.
+
+      Este é o primeiro chefe do §5Selo das Estrelas§r. Eu acredito em você!
+    tasks:
+      - kill: {entity: "GalacticraftCore.EvolvedSkeletonBoss", count: 1}
+      - get: GalacticraftCore:item.key
+    rewards:
+      - xp: 15
+      - loot: [epico, epico]
+
+  - id: base_lunar
+    title: "Primeira Base Lunar"
+    type: normal
+    deps: [lua, coletor_oxigenio]
+    icon: GalacticraftCore:tile.sealer
+    task_logic: OR
+    desc: |
+      Antes de caçar o chefe, uma base: um Coletor de Oxigênio cercado de folhas e mudas (na Lua
+      ele só funciona com plantas por perto!), um Compressor para os tanques e um Selador ou
+      Distribuidor para ter onde respirar sem máscara. Mostre o Selador ou o Distribuidor.
+    tasks:
+      - get: GalacticraftCore:tile.sealer
+      - get: GalacticraftCore:tile.distributor
+    rewards:
+      - xp: 5
+      - item: minecraft:sapling x8
+
+  - id: ferro_meteorico_bloco
+    title: "Ferro Meteórico Maciço"
+    type: optional
+    deps: [ferro_meteorico]
+    icon: GalacticraftCore:tile.gcBlockCore:12
+    desc: |
+      9 Barras de Ferro Meteórico = um bloco de §eFerro Meteórico Maciço§r. Bom para guardar e
+      para decorar com um ar de "caiu do céu".
+    tasks:
+      - get: GalacticraftCore:tile.gcBlockCore:12
+    rewards:
+      - loot: comum
+
+  - id: decoracao_lunar
+    title: "Arquitetura Lunar"
+    type: optional
+    deps: [rocha_lunar, calabouco_lunar]
+    icon: GalacticraftCore:tile.moonBricksStairs
+    desc: |
+      Rocha Lunar e Tijolos Lunares viram lajes, escadas e paredes. Uma base que combina com a
+      paisagem é muito mais charmosa.
+    tasks:
+      - one_of: [GalacticraftCore:tile.moonStoneStairs x4, GalacticraftCore:tile.moonBricksStairs x4, GalacticraftCore:tile.wallGC:2 x6]
+    rewards:
+      - loot: comum
+
+  - id: tesouro_lunar
+    title: "O Baú do Tesouro Lunar"
+    type: main
+    deps: [esqueleto_chefe]
+    icon: GalacticraftCore:tile.treasureChest
+    task_logic: OR
+    desc: |
+      Clique com a Chave Nível 1 no §eBaú de Tesouro§r da sala do chefe. Dentro há um
+      §eEsquemático§r para a Bancada NASA: pode ser o do §eFoguete Nível 2§r, o do §eBuggy§r ou
+      (graças ao ExtraPlanets) o do §eMars Rover§r.
+
+      Se não veio o do Foguete Nível 2, não desanime: cada Calabouço Lunar tem o seu chefe e o seu
+      baú. Procure outro!
+    tasks:
+      - get: GalacticraftCore:item.schematic:1
+      - get: GalacticraftCore:item.schematic
+      - get: ExtraPlanets:item.schematicMarsRover
+    rewards:
+      - xp: 8
+      - choice: [GalacticraftCore:item.meteoricIronIngot x8, ore:compressedSteel x8, GalacticraftCore:item.heavyPlating x6]
+
+  - id: esquematicos_lunares
+    title: "Colecionador de Esquemáticos Lunares"
+    type: optional
+    deps: [tesouro_lunar]
+    icon: GalacticraftCore:item.schematic
+    desc: |
+      Cada baú lunar dá só um esquemático. Para ter o do Foguete Nível 2 §ee§r o do Buggy, você vai
+      precisar de mais de um calabouço — e mais de um Esqueleto-Chefe. Junte os dois.
+    tasks:
+      - get: [GalacticraftCore:item.schematic, GalacticraftCore:item.schematic:1]
+    rewards:
+      - loot: raro
+
+  - id: esquematico_t2
+    title: "Esquemático: Foguete Nível 2"
+    type: main
+    deps: [tesouro_lunar]
+    icon: GalacticraftCore:item.schematic:1
+    desc: |
+      Coloque o §eEsquemático do Foguete Nível 2§r na aba de esquemáticos da Bancada NASA e
+      clique em "Destravar". Pronto: o projeto fica liberado para sempre. Marte está chamando.
+    tasks:
+      - get: GalacticraftCore:item.schematic:1
+    rewards:
+      - xp: 8
+      - choice: [GalacticraftCore:item.meteoricIronIngot x8, ore:compressedMeteoricIron x6, GalacticraftCore:item.heavyPlating x8]
+
+  # ---- Buggy ----
+  - id: rodas_buggy
+    title: "Peças do Buggy"
+    type: optional
+    deps: [tesouro_lunar]
+    icon: GalacticraftCore:item.buggymat
+    desc: |
+      O §eBuggy Lunar§r é montado na Bancada NASA (com o esquemático do Buggy destravado): 4 Rodas
+      (couro + Aço Prensado), 1 Assento e até 3 Bagageiros com baú, além de Blindagens Pesadas.
+    tasks:
+      - get: [GalacticraftCore:item.buggymat x4, GalacticraftCore:item.buggymat:1]
+    rewards:
+      - loot: comum
+
+  - id: buggy
+    title: "Buggy Lunar"
+    type: optional
+    deps: [rodas_buggy]
+    icon: GalacticraftCore:item.buggy
+    desc: |
+      Corra pelas crateras! O Buggy usa combustível: abasteça numa §eBase de Abastecimento de
+      Buggy§r (3 Aço Prensado + 3 blocos de ferro rendem 9) com um Carregador de Combustível ao
+      lado.
+    tasks:
+      - get: GalacticraftCore:item.buggy:*
+    rewards:
+      - loot: incomum
+
+  # ======================================================================
+  # FASE 5 — A ESTAÇÃO ESPACIAL
+  # ======================================================================
+  - id: materiais_estacao
+    title: "Materiais da Estação"
+    type: main
+    deps: [pronto_lancamento]
+    icon: GalacticraftCore:tile.spaceStationBase
+    desc: |
+      Uma casa em órbita! Para criar uma §eEstação Espacial§r em volta da Terra você precisa ter no
+      inventário, na hora:
+      §e• 32 lingotes de estanho§r
+      §e• 16 barras de alumínio§r
+      §e• 24 lingotes de ferro§r
+      §e• 1 Wafer Avançado§r
+    tasks:
+      - get: [ore:ingotTin x32, ore:ingotAluminum x16, minecraft:iron_ingot x24, ore:waferAdvanced]
+    rewards:
+      - xp: 6
+      - choice: [ore:compressedSteel x8, ore:ingotTin x16, GalacticraftCore:tile.solar]
+
+  - id: estacao_espacial
+    title: "Estação Espacial"
+    type: milestone
+    deps: [materiais_estacao]
+    icon: GalacticraftCore:tile.spaceStationBase
+    banner: "Casa nas Estrelas"
+    subtitle: "Órbita da Terra"
+    desc: |
+      Lance o foguete e, no Mapa da Galáxia, selecione a §eTerra§r: aparece o botão para §ecriar
+      uma Estação Espacial§r (com os materiais no inventário). Você chega numa pequena plataforma
+      flutuando sobre o planeta.
+
+      §eNa estação:§r gravidade quase zero, sem ar (sele tudo!), dia curto e §epainéis solares com
+      o dobro de rendimento§r. Ela é um ótimo ponto de parada entre a Terra e os outros mundos.
+      Dá para nomear a estação e permitir visitantes (a config exige permissão).
+
+      Confirme aqui quando a sua estação existir.
+    tasks:
+      - check
+    rewards:
+      - xp: 10
+      - kit: {name: "Kit do Morador Orbital", items: [GalacticraftCore:tile.solar x2, GalacticraftCore:tile.sealer, GalacticraftCore:item.oxygenTankMedFull x2, GalacticraftCore:tile.landingPad x9]}
+      - loot: raro
+
+  - id: propulsor_pivotante
+    title: "Propulsor Pivotante"
+    type: optional
+    deps: [estacao_espacial, ferro_meteorico]
+    icon: GalacticraftCore:tile.spinThruster
+    desc: |
+      Coloque §ePropulsores Pivotantes§r na borda da estação e ela começa a §egirar§r, criando
+      gravidade artificial. É quase uma estação de filme!
+    tasks:
+      - get: GalacticraftCore:tile.spinThruster x2
+    rewards:
+      - loot: incomum
+
+  - id: telemetria
+    title: "Unidade de Telemetria"
+    type: optional
+    deps: [modulo_frequencia]
+    icon: GalacticraftCore:tile.telemetry
+    desc: |
+      A §eUnidade de Telemetria§r transmite dados (velocidade, altitude, saúde...) de um foguete ou
+      criatura vinculado a ela. Combine com a §eTela de Exibição§r para ver tudo da base.
+    tasks:
+      - get: GalacticraftCore:tile.telemetry
+    rewards:
+      - loot: comum
+
+  - id: tela_exibicao
+    title: "Tela de Exibição"
+    type: optional
+    deps: [telemetria]
+    icon: GalacticraftCore:tile.viewScreen
+    desc: |
+      Telas que se juntam formando painéis maiores e mostram mapas, dados de telemetria ou a
+      Terra vista do espaço. Perfeitas para o centro de controle da estação.
+    tasks:
+      - get: GalacticraftCore:tile.viewScreen x4
+    rewards:
+      - loot: comum
+
+  - id: carga
+    title: "Carregadores de Carga"
+    type: optional
+    deps: [foguete_t1]
+    icon: GalacticraftCore:tile.cargo
+    desc: |
+      O §eCarregador de Carga§r enche o porão do foguete parado na base, e o §eDescarregador§r o
+      esvazia na chegada. Essenciais para o Foguete de Carga automático de Marte.
+    tasks:
+      - get: [GalacticraftCore:tile.cargo, GalacticraftCore:tile.cargo:4]
+    rewards:
+      - loot: comum
+
+  # ======================================================================
+  # FASE 6 — MARTE
+  # ======================================================================
+  - id: blindagem_t2
+    title: "Blindagem Pesada Nível 2"
+    type: main
+    deps: [esquematico_t2, ferro_meteorico_prensado]
+    icon: GalacticraftMars:item.null:3
+    desc: |
+      Na Prensa: §e1 Blindagem Pesada + 1 Ferro Meteórico Prensado = 1 Blindagem Pesada de Nível
+      2§r. O Foguete Nível 2 leva §e10§r no casco e mais 3 no nariz... Mãos à obra.
+    tasks:
+      - get: GalacticraftMars:item.null:3 x10
+    rewards:
+      - xp: 8
+      - choice: [GalacticraftCore:item.heavyPlating x6, ore:compressedMeteoricIron x6, ore:compressedSteel x8]
+
+  - id: motor_auxiliar
+    title: "Motor de Foguete Auxiliar Nível 1"
+    type: main
+    deps: [ferro_meteorico_prensado, lata_vazia, combustivel]
+    icon: GalacticraftCore:item.engine:1
+    desc: |
+      4 Ferros Meteóricos Prensados, 2 Blindagens Pesadas, um Respirador, Lã Amarela e uma §eLata
+      de Combustível Cheia§r. O Foguete Nível 2 leva §e2 Motores Auxiliares§r além do motor
+      principal.
+    tasks:
+      - get: GalacticraftCore:item.engine:1 x2
+    rewards:
+      - xp: 6
+      - choice: [GalacticraftCore:item.bucketFuel, ore:compressedMeteoricIron x4, GalacticraftCore:item.airVent x2]
+
+  - id: foguete_t2
+    title: "Foguete Nível 2"
+    type: main
+    deps: [blindagem_t2, motor_auxiliar, motor_t1, aletas_foguete, nariz_foguete]
+    icon: GalacticraftMars:item.spaceshipTier2
+    desc: |
+      Na Bancada NASA, com o esquemático destravado: §eNariz, 10 Blindagens Nível 2, 4 Aletas,
+      1 Motor Nível 1 e 2 Motores Auxiliares§r (mais baús, se quiser carga).
+
+      O Nível 2 alcança §eMarte§r (e, com o ExtraPlanets, as luas Fobos e Deimos).
+    tasks:
+      - get: GalacticraftMars:item.spaceshipTier2:*
+    rewards:
+      - xp: 8
+      - choice: [GalacticraftMars:item.null:3 x4, GalacticraftCore:item.bucketFuel x2, ore:compressedSteel x8]
+
+  - id: tecido_termico
+    title: "Tecido Térmico"
+    type: normal
+    deps: [foguete_t2]
+    icon: GalacticraftMars:item.itemBasicAsteroids:7
+    desc: |
+      4 lãs e 1 redstone = §eTecido Térmico§r. Ele é o material do Traje Térmico, que protege do
+      frio extremo.
+    tasks:
+      - get: GalacticraftMars:item.itemBasicAsteroids:7 x24
+    rewards:
+      - xp: 4
+      - item: minecraft:wool x24
+
+  - id: traje_termico
+    title: "Traje Térmico"
+    type: main
+    deps: [tecido_termico]
+    icon: GalacticraftMars:item.thermalPadding:1
+    desc: |
+      Elmo (5 tecidos), Peitoral (8), Perneiras (7) e Botas (4). As peças vão nos espaços
+      térmicos do inventário do Galacticraft.
+
+      §ePor que precisa:§r Marte e os Asteroides são §cfrios§r. Sem as 4 peças, a sua temperatura
+      cai aos poucos até começar a causar dano. Dentro de ar respirável (bolha ou sala selada) ela
+      volta ao normal.
+    tasks:
+      - get: [GalacticraftMars:item.thermalPadding, GalacticraftMars:item.thermalPadding:1, GalacticraftMars:item.thermalPadding:2, GalacticraftMars:item.thermalPadding:3]
+    rewards:
+      - xp: 6
+      - choice: [GalacticraftMars:item.itemBasicAsteroids:7 x6, minecraft:wool x16, GalacticraftCore:item.oxygenTankMedFull]
+
+  - id: marte
+    title: "Marte"
+    type: portal
+    deps: [foguete_t2, traje_termico]
+    icon: GalacticraftMars:tile.mars:5
+    banner: "O Planeta Vermelho"
+    subtitle: "Chegada a Marte"
+    effect: 3
+    desc: |
+      Areia vermelha, céu alaranjado, gravidade ainda mais baixa que a da Lua e um frio de doer.
+      Bem-vindo(a) a §cMarte§r!
+
+      §eO que tem aqui:§r §eMinério de Desh§r (o metal marciano), cobre, estanho e ferro,
+      §eVinhas de Caverna§r que puxam você, Slimelings para adotar, Lodo Bacterial nas cavernas e
+      os §cCalabouços Marcianos§r com o Creeper-Chefe Evoluído.
+
+      Monte a base com oxigênio, vista o traje térmico e marque o ponto de pouso!
+    tasks:
+      - visit: {dim: -29, name: "Marte"}
+    rewards:
+      - xp: 10
+      - loot: epico
+
+  - id: minerios_marte
+    title: "Minérios Marcianos"
+    type: normal
+    deps: [marte]
+    icon: GalacticraftMars:tile.mars:3
+    desc: |
+      Além do Desh, Marte tem os próprios minérios de cobre, estanho e ferro (todos ativos na
+      config). Junte um pouco de cada para não depender de cargas vindas da Terra.
+    tasks:
+      - get: [GalacticraftMars:tile.mars x4, GalacticraftMars:tile.mars:1 x4, GalacticraftMars:tile.mars:3 x4]
+    rewards:
+      - xp: 4
+      - item: minecraft:iron_ingot x8
+
+  - id: pedra_marciana
+    title: "Pedra Vermelha"
+    type: optional
+    deps: [marte]
+    icon: GalacticraftMars:tile.mars:9
+    desc: |
+      Pedregulho marciano fundido vira §ePedra Marciana§r; os tijolos de calabouço e o pedregulho
+      viram lajes, escadas e paredes. Material de sobra para a colônia.
+    tasks:
+      - get: GalacticraftMars:tile.mars:4 x32
+    rewards:
+      - loot: comum
+
+  - id: sludgelings
+    title: "Sludgelings"
+    type: optional
+    deps: [lodo_bacterial]
+    icon: GalacticraftMars:item.bucketSludge
+    desc: |
+      Os Sludgelings saem do Lodo Bacterial e atacam em bando. Limpe uma caverna deles antes de
+      montar uma mina por perto.
+    tasks:
+      - kill: {entity: "GalacticraftMars.Sludgeling", count: 5}
+    rewards:
+      - loot: comum
+
+  - id: desh
+    title: "Desh"
+    type: main
+    deps: [marte]
+    icon: GalacticraftMars:tile.mars:2
+    desc: |
+      O §eMinério de Desh§r dropa §eDesh Bruto§r; funda para ter §eBarras de Desh§r (ou use o
+      minério com Pó de Pyrotheum na bancada). O Desh é a base de quase tudo que é marciano:
+      ferramentas, armaduras, máquinas e a Blindagem de Nível 3.
+
+      Junte §e24 Barras de Desh§r.
+    tasks:
+      - get: ore:ingotDesh x24
+    rewards:
+      - xp: 6
+      - choice: [GalacticraftMars:item.null x8, ore:compressedSteel x8, minecraft:diamond x3]
+
+  - id: desh_prensado
+    title: "Desh Prensado"
+    type: main
+    deps: [desh]
+    icon: GalacticraftMars:item.null:5
+    desc: |
+      Barras de Desh na Prensa viram §eDesh Prensado§r. Ele vai na Blindagem de Nível 3, nas
+      máquinas marcianas e na Base do Astrominerador. Faça §e12§r.
+    tasks:
+      - get: ore:compressedDesh x12
+    rewards:
+      - xp: 6
+      - choice: [ore:ingotDesh x8, GalacticraftMars:item.null:3 x4, ore:compressedSteel x8]
+
+  - id: ferramentas_desh
+    title: "Ferramentas de Desh"
+    type: optional
+    deps: [desh]
+    icon: GalacticraftMars:item.deshPick
+    desc: |
+      Picareta, machado, pá, enxada e espada de Desh: mais duráveis que as de diamante. A
+      §ePicareta de Desh Pegajosa§r (com gosma de slime) quebra blocos com Toque Suave — útil
+      para pegar gelo e vidro.
+    tasks:
+      - get: GalacticraftMars:item.deshPick
+    rewards:
+      - loot: incomum
+
+  - id: picareta_pegajosa
+    title: "Picareta de Desh Pegajosa"
+    type: optional
+    deps: [ferramentas_desh]
+    icon: GalacticraftMars:item.deshPickSlime
+    desc: |
+      Uma Picareta de Desh com gosma de slime: ela pega os blocos "inteiros", como Toque Suave.
+    tasks:
+      - get: GalacticraftMars:item.deshPickSlime
+    rewards:
+      - loot: comum
+
+  - id: armadura_desh
+    title: "Armadura de Desh"
+    type: optional
+    deps: [desh]
+    icon: GalacticraftMars:item.deshChestplate
+    desc: |
+      Elmo, peitoral, perneiras e botas de Desh. Uma armadura sólida para explorar Marte —
+      combina bem com o Traje Térmico, que fica nos espaços extras.
+    tasks:
+      - get: [GalacticraftMars:item.deshHelmet, GalacticraftMars:item.deshChestplate, GalacticraftMars:item.deshLeggings, GalacticraftMars:item.deshBoots]
+    rewards:
+      - loot: incomum
+
+  - id: slimeling
+    title: "Um Slimeling de Estimação"
+    type: optional
+    deps: [marte]
+    icon: GalacticraftMars:tile.slimelingEgg
+    desc: |
+      Às vezes aparecem §eOvos de Slimeling§r (vermelho, azul ou amarelo) no subsolo marciano. Um
+      ovo chocado dá um §eSlimeling§r, um bichinho de estimação que segue você e pode carregar uma
+      Mochila-Inventário (couro, diamante, gosma de slime e baú). Confira no NEI/no ovo como
+      coletar e chocar. Traga um ovo!
+    tasks:
+      - one_of: [GalacticraftMars:tile.slimelingEgg, GalacticraftMars:tile.slimelingEgg:1, GalacticraftMars:tile.slimelingEgg:2]
+    rewards:
+      - loot: incomum
+
+  - id: lodo_bacterial
+    title: "Lodo Bacterial"
+    type: optional
+    deps: [marte]
+    icon: GalacticraftMars:item.bucketSludge
+    desc: |
+      Lagos de §eLodo Bacterial§r escondem-se nas cavernas marcianas — e deles saem os
+      §cSludgelings§r, bichinhos que grudam e mordem. Encha um balde (com muito cuidado).
+    tasks:
+      - get: GalacticraftMars:item.bucketSludge
+    rewards:
+      - loot: comum
+
+  - id: vinhas_caverna
+    title: "Vinhas de Caverna"
+    type: optional
+    deps: [marte]
+    icon: GalacticraftMars:tile.cavernVines
+    desc: |
+      Elas brilham no teto das cavernas e §cpuxam para cima e envenenam§r quem encosta. Corte com
+      tesoura para levar uma de lembrança (ou para iluminar a base).
+    tasks:
+      - get: GalacticraftMars:tile.cavernVines
+    rewards:
+      - loot: comum
+
+  - id: calabouco_marciano
+    title: "O Calabouço Marciano"
+    type: normal
+    deps: [marte]
+    icon: GalacticraftMars:tile.mars:7
+    desc: |
+      Como na Lua, Marte esconde calabouços subterrâneos — de §eParedes de Calabouço Marciano§r.
+      Lá dentro mora o §cCreeper-Chefe Evoluído§r. Ache um e pegue alguns tijolos como prova.
+    tasks:
+      - get: GalacticraftMars:tile.mars:7 x8
+    rewards:
+      - xp: 4
+      - item: minecraft:arrow x32
+
+  - id: creeper_chefe
+    title: "O Creeper-Chefe Evoluído"
+    type: boss
+    deps: [calabouco_marciano]
+    icon: minecraft:skull:4
+    banner: "O Terror Vermelho Caiu"
+    subtitle: "Segunda estrela do Selo das Estrelas"
+    desc: |
+      Um creeper de três cabeças que §cdispara TNT§r em você. As explosões quebram blocos, então a
+      sala muda durante a luta.
+
+      §eDicas:§r Proteção contra Explosões, muita vida extra, arco forte e movimento constante.
+      Não lute encostado em paredes. Quando ele cair, pegue a §eChave de Calabouço Nível 2§r.
+
+      Mais um chefe do §5Selo das Estrelas§r. Força!
+    tasks:
+      - kill: {entity: "GalacticraftMars.CreeperBoss", count: 1}
+      - get: GalacticraftMars:item.key
+    rewards:
+      - xp: 15
+      - loot: [epico, epico]
+
+  - id: tesouro_marciano
+    title: "O Baú do Tesouro Marciano"
+    type: main
+    deps: [creeper_chefe]
+    icon: GalacticraftMars:tile.treasureT2
+    task_logic: OR
+    desc: |
+      A Chave Nível 2 abre o §eBaú de Tesouro Nível 2§r, que guarda um destes esquemáticos:
+      §e• Foguete Nível 3§r — o caminho para os Asteroides;
+      §e• Foguete de Carga Automático§r;
+      §e• Astrominerador§r.
+      O do Foguete Nível 3 é o que manda na história. Se não veio, procure outro calabouço!
+    tasks:
+      - get: GalacticraftMars:item.schematic
+      - get: GalacticraftMars:item.schematic:1
+      - get: GalacticraftMars:item.schematic:2
+    rewards:
+      - xp: 8
+      - choice: [ore:compressedDesh x6, ore:ingotDesh x12, GalacticraftMars:item.null:3 x6]
+
+  - id: esquematicos_marcianos
+    title: "Colecionador de Esquemáticos Marcianos"
+    type: optional
+    deps: [tesouro_marciano]
+    icon: GalacticraftMars:item.schematic:2
+    desc: |
+      Foguete Nível 3, Foguete de Carga e Astrominerador: os três projetos que os baús de Marte
+      podem dar. Junte os três (vai precisar de mais de um Creeper-Chefe).
+    tasks:
+      - get: [GalacticraftMars:item.schematic, GalacticraftMars:item.schematic:1, GalacticraftMars:item.schematic:2]
+    rewards:
+      - loot: raro
+
+  - id: esquematico_t3
+    title: "Esquemático: Foguete Nível 3"
+    type: main
+    deps: [tesouro_marciano]
+    icon: GalacticraftMars:item.schematic
+    desc: |
+      Destrave na Bancada NASA. O Foguete Nível 3 leva você ao §eCinturão de Asteroides§r — e,
+      com os addons do pack, a Vênus (ExtraPlanets) e ao sistema Amun-Ra.
+    tasks:
+      - get: GalacticraftMars:item.schematic
+    rewards:
+      - xp: 8
+      - choice: [ore:compressedDesh x8, GalacticraftMars:item.null:3 x8, ore:ingotDesh x12]
+
+  # ---- máquinas marcianas ----
+  - id: carbono_fragmentado
+    title: "Carbono Fragmentado"
+    type: optional
+    deps: [marte]
+    icon: GalacticraftMars:item.carbonFragments
+    desc: |
+      1 carvão na bancada = 8 Carbonos Fragmentados (1 carvão vegetal = 4). Matéria-prima de
+      máquinas químicas marcianas.
+    tasks:
+      - get: GalacticraftMars:item.carbonFragments x16
+    rewards:
+      - loot: comum
+
+  - id: oxigenio_liquido
+    title: "Oxigênio Líquido"
+    type: optional
+    deps: [condensador]
+    icon: GalacticraftMars:item.canisterPartialLOX:1
+    desc: |
+      Uma Lata de Oxigênio Líquido cheia, saída do Condensador. Na bancada, junto de um Tanque de
+      Oxigênio (leve, médio ou pesado), ela enche o tanque instantaneamente.
+    tasks:
+      - get: GalacticraftMars:item.canisterPartialLOX:1
+    rewards:
+      - loot: incomum
+
+  - id: manipulador_fluidos
+    title: "Manipulador de Fluidos"
+    type: normal
+    deps: [ferro_meteorico, wafer_avancado]
+    icon: GalacticraftMars:item.null:6
+    desc: |
+      Ferro Meteórico, Ventiladores, gosma de slime e um Wafer Avançado. Peça obrigatória de
+      todas as máquinas de gás de Marte: Condensador, Sintetizador de Metano e Eletrolisador.
+    tasks:
+      - get: GalacticraftMars:item.null:6
+    rewards:
+      - xp: 3
+      - item: minecraft:slime_ball x4
+
+  - id: eletrolisador
+    title: "Eletrolisador de Água"
+    type: optional
+    deps: [manipulador_fluidos, tanque_pesado]
+    icon: GalacticraftMars:tile.marsMachineT2:8
+    desc: |
+      Separa água em §eoxigênio e hidrogênio§r usando energia. O oxigênio vai para a rede da base;
+      o hidrogênio (por Canos de Hidrogênio, feitos de cobre) alimenta o Sintetizador de Metano.
+    tasks:
+      - get: GalacticraftMars:tile.marsMachineT2:8
+    rewards:
+      - loot: incomum
+
+  - id: sintetizador_metano
+    title: "Sintetizador de Metano"
+    type: optional
+    deps: [manipulador_fluidos, fornalha_eletrica]
+    icon: GalacticraftMars:tile.marsMachineT2:4
+    desc: |
+      Combina hidrogênio com carbono para produzir §eMetano§r. O §eCarbono Fragmentado§r (carvão
+      ou carvão vegetal na bancada) é uma das fontes de carbono. É o começo da linha de gases de
+      Marte — confira as entradas na GUI.
+    tasks:
+      - get: GalacticraftMars:tile.marsMachineT2:4
+    rewards:
+      - loot: incomum
+
+  - id: condensador
+    title: "Condensador"
+    type: optional
+    deps: [manipulador_fluidos, compressor_oxigenio, descompressor]
+    icon: GalacticraftMars:tile.marsMachineT2
+    desc: |
+      O §eCondensador§r liquefaz gases (metano, oxigênio, nitrogênio...). Uma §eLata de Oxigênio
+      Líquido§r cheia na bancada com um Tanque de Oxigênio enche o tanque na hora! A receita é cara
+      (tanques, compressor e descompressor de oxigênio, manipulador de fluidos, bronze).
+    tasks:
+      - get: GalacticraftMars:tile.marsMachineT2
+    rewards:
+      - loot: incomum
+
+  - id: cano_hidrogenio
+    title: "Cano de Hidrogênio"
+    type: optional
+    deps: [eletrolisador]
+    icon: GalacticraftMars:tile.hydrogenPipe
+    desc: |
+      6 lingotes de cobre = 6 Canos de Hidrogênio. Ligam o Eletrolisador ao Sintetizador de
+      Metano.
+    tasks:
+      - get: GalacticraftMars:tile.hydrogenPipe x6
+    rewards:
+      - loot: comum
+
+  - id: terraformador
+    title: "Terraformador"
+    type: optional
+    deps: [desh_prensado, concentrador_oxigenio]
+    icon: GalacticraftMars:tile.marsMachine
+    desc: |
+      Com energia, água, mudas e sementes, o §eTerraformador§r transforma pouco a pouco o chão
+      marciano em grama e planta árvores em volta. Leva tempo, mas é o primeiro passo para um
+      jardim vermelho... digo, verde!
+    tasks:
+      - get: GalacticraftMars:tile.marsMachine
+    rewards:
+      - loot: incomum
+
+  - id: camara_criogenica
+    title: "Câmara Criogênica"
+    type: optional
+    deps: [desh_prensado]
+    icon: GalacticraftMars:tile.marsMachine:4
+    desc: |
+      Uma cama de ficção científica: deite para "pular" a noite longa de Marte (ela tem um tempo de
+      recarga entre usos).
+    tasks:
+      - get: GalacticraftMars:tile.marsMachine:4
+    rewards:
+      - loot: comum
+
+  - id: controle_lancamento
+    title: "Controle de Lançamento"
+    type: optional
+    deps: [desh_prensado, modulo_frequencia, wafer_avancado]
+    icon: GalacticraftMars:tile.marsMachine:8
+    desc: |
+      Com ele, foguetes de carga decolam sozinhos para uma frequência de destino. A config do
+      pack também o faz manter o chunk carregado.
+    tasks:
+      - get: GalacticraftMars:tile.marsMachine:8
+    rewards:
+      - loot: incomum
+
+  - id: foguete_carga
+    title: "Foguete de Carga"
+    type: normal
+    deps: [tesouro_marciano, carga, controle_lancamento]
+    icon: GalacticraftMars:item.spaceshipTier2:11
+    desc: |
+      Com o esquemático do Foguete de Carga destravado, você monta um foguete §esem tripulante§r
+      que leva itens automaticamente entre duas bases com Controle de Lançamento. Carregador de
+      Carga na partida, Descarregador na chegada. Logística interplanetária!
+    tasks:
+      - get: GalacticraftMars:item.spaceshipTier2:11
+    rewards:
+      - xp: 4
+      - item: GalacticraftCore:item.bucketFuel x2
+
+  - id: arc_lamp
+    title: "Lâmpada a Arco Voltaico"
+    type: optional
+    deps: [desh]
+    icon: GalacticraftCore:tile.arclamp
+    desc: |
+      Desh, pó de pedra luminosa e uma bateria: uma luz fortíssima que espanta monstros de uma
+      área grande. Perfeita para a base marciana.
+    tasks:
+      - get: GalacticraftCore:tile.arclamp
+    rewards:
+      - loot: comum
+
+  - id: base_marte
+    title: "Base em Marte"
+    type: milestone
+    deps: [desh_prensado, creeper_chefe, traje_termico]
+    icon: GalacticraftMars:tile.mars:8
+    banner: "Colônia Vermelha"
+    subtitle: "Marte conquistado"
+    desc: |
+      Desh empilhado, o Creeper-Chefe derrotado, traje térmico no corpo e uma base respirando sob
+      a poeira vermelha. Herói, Marte agora tem um nome escrito no Registro: o seu.
+
+      §eDaqui para a frente:§r a Blindagem de Nível 3 (Desh Prensado), o Foguete Nível 3 e os
+      Asteroides — onde mora o titânio. O ExtraPlanets abre as luas Fobos e Deimos para o Nível 2
+      e Vênus para o Nível 3.
+    tasks:
+      - get: [ore:compressedDesh x4, GalacticraftMars:item.key, GalacticraftMars:tile.mars:8]
+    rewards:
+      - xp: 12
+      - kit: {name: "Kit do Colono Marciano", items: [ore:ingotDesh x16, GalacticraftCore:item.oxygenTankHeavyFull x2, GalacticraftMars:item.itemBasicAsteroids:7 x8, GalacticraftCore:item.bucketFuel x2]}
+      - loot: epico
+
+  # ======================================================================
+  # FASE 7 — O CINTURÃO DE ASTEROIDES
+  # ======================================================================
+  - id: blindagem_t3
+    title: "Blindagem Pesada Nível 3"
+    type: main
+    deps: [esquematico_t3, desh_prensado, blindagem_t2]
+    icon: GalacticraftMars:item.itemBasicAsteroids
+    desc: |
+      Na Prensa: §e1 Blindagem Nível 2 + 1 Desh Prensado = 1 Blindagem Pesada de Nível 3§r. O
+      Foguete Nível 3 usa dezenas delas (casco, nariz pesado, aletas pesadas e motor pesado).
+      Comece com §e18§r.
+    tasks:
+      - get: GalacticraftMars:item.itemBasicAsteroids x18
+    rewards:
+      - xp: 8
+      - choice: [ore:compressedDesh x6, GalacticraftMars:item.null:3 x6, ore:compressedSteel x8]
+
+  - id: nariz_pesado
+    title: "Nariz de Foguete Pesado"
+    type: main
+    deps: [blindagem_t3]
+    icon: GalacticraftMars:item.heavyNoseCone
+    desc: |
+      3 Blindagens Nível 3 e uma Tocha de Redstone. O nariz do Foguete Nível 3.
+    tasks:
+      - get: GalacticraftMars:item.heavyNoseCone
+    rewards:
+      - xp: 4
+      - item: GalacticraftMars:item.itemBasicAsteroids x2
+
+  - id: motor_pesado
+    title: "Motor de Foguete Pesado"
+    type: main
+    deps: [blindagem_t3, respirador]
+    icon: GalacticraftMars:item.itemBasicAsteroids:1
+    desc: |
+      4 Blindagens Nível 3, Lata de Estanho, Respirador, Isqueiro e Botão. O motor do Foguete
+      Nível 3 (que também usa Motores Auxiliares).
+    tasks:
+      - get: GalacticraftMars:item.itemBasicAsteroids:1
+    rewards:
+      - xp: 4
+      - item: GalacticraftCore:item.engine:1
+
+  - id: aletas_pesadas
+    title: "Aletas de Foguete Pesado"
+    type: main
+    deps: [blindagem_t3]
+    icon: GalacticraftMars:item.itemBasicAsteroids:2
+    desc: |
+      Blindagens Nível 3 (com Titânio Prensado numa das variações da receita). Faça §e4§r.
+    tasks:
+      - get: GalacticraftMars:item.itemBasicAsteroids:2 x4
+    rewards:
+      - xp: 4
+      - item: GalacticraftMars:item.itemBasicAsteroids x2
+
+  - id: foguete_t3
+    title: "Foguete Nível 3"
+    type: main
+    deps: [nariz_pesado, motor_pesado, aletas_pesadas, motor_auxiliar]
+    icon: GalacticraftMars:item.itemTier3Rocket
+    desc: |
+      Monte na Bancada NASA com o esquemático do Nível 3 (confira o desenho e as quantidades no
+      NEI). O Foguete Nível 3 é o seu passaporte para o §eCinturão de Asteroides§r, para §eVênus§r
+      (ExtraPlanets) e para os mundos de §eAmun-Ra§r.
+    tasks:
+      - get: GalacticraftMars:item.itemTier3Rocket:*
+    rewards:
+      - xp: 10
+      - choice: [GalacticraftMars:item.itemBasicAsteroids x6, GalacticraftCore:item.bucketFuel x3, ore:compressedDesh x8]
+
+  - id: asteroides
+    title: "O Cinturão de Asteroides"
+    type: portal
+    deps: [foguete_t3, traje_termico]
+    icon: GalacticraftMars:tile.asteroidsBlock
+    banner: "Entre as Rochas Flutuantes"
+    subtitle: "Chegada aos Asteroides"
+    effect: 3
+    desc: |
+      Aqui você §enão§r desce de módulo: chega numa §eCápsula de Entrada§r e cai sobre uma rocha
+      flutuando no vazio. Gravidade quase nenhuma, §cfrio intenso§r (traje térmico obrigatório) e
+      um abismo sem fundo embaixo de você.
+
+      §aPrimeiras regras:§r construa uma plataforma antes de qualquer coisa, leve blocos de sobra
+      e um Gancho (3 ferros + 2 linhas) para se puxar entre rochas. Os asteroides têm alumínio,
+      ferro e §eilmenita§r — a fonte de titânio.
+    tasks:
+      - visit: {dim: -30, name: "Asteroides"}
+    rewards:
+      - xp: 10
+      - loot: epico
+
+  - id: plataforma_asteroides
+    title: "Chão Firme no Vazio"
+    type: normal
+    deps: [asteroides]
+    icon: GalacticraftMars:tile.asteroidsBlock
+    desc: |
+      Rocha de Asteroide é o material de construção daqui. Junte bastante para fazer pontes entre
+      as rochas — e uma plataforma para a futura base.
+    tasks:
+      - get: GalacticraftMars:tile.asteroidsBlock:* x64
+    rewards:
+      - xp: 4
+      - item: GalacticraftCore:tile.glowstoneTorch x16
+
+  - id: minerios_asteroides
+    title: "Riquezas dos Asteroides"
+    type: normal
+    deps: [asteroides]
+    icon: GalacticraftMars:tile.asteroidsBlock:4
+    desc: |
+      Os asteroides têm minérios de alumínio, ferro e §eilmenita§r (todos ativos na config). A
+      ilmenita é a que importa: funda para titânio.
+    tasks:
+      - get: [GalacticraftMars:tile.asteroidsBlock:3 x4, GalacticraftMars:tile.asteroidsBlock:4 x8]
+    rewards:
+      - xp: 4
+      - item: minecraft:iron_ingot x8
+
+  - id: gancho
+    title: "Gancho"
+    type: optional
+    deps: [asteroides]
+    icon: GalacticraftMars:item.grapple
+    desc: |
+      Arremesse e se puxe até onde ele prender. No vazio dos asteroides, ele salva vidas.
+    tasks:
+      - get: GalacticraftMars:item.grapple
+    rewards:
+      - loot: comum
+
+  - id: titanio
+    title: "Titânio"
+    type: main
+    deps: [asteroides]
+    icon: GalacticraftMars:item.itemBasicAsteroids:5
+    desc: |
+      Minere o §eMinério de Ilmenita§r dos asteroides e funda: §eBarra de Titânio§r. (Estilhaços
+      de Titânio também fundem em barras; o minério com Pó de Pyrotheum funciona na bancada.)
+
+      Junte §e24 barras§r: o titânio constrói os blocos de feixe, a Telebase, o Astrominerador e é
+      a porta de entrada para os foguetes do ExtraPlanets e as naves-mãe de Amun-Ra.
+    tasks:
+      - get: ore:ingotTitanium x24
+    rewards:
+      - xp: 6
+      - choice: [GalacticraftMars:tile.asteroidsBlock:4 x6, ore:compressedDesh x6, minecraft:diamond x4]
+
+  - id: titanio_prensado
+    title: "Titânio Prensado"
+    type: main
+    deps: [titanio]
+    icon: GalacticraftMars:item.itemBasicAsteroids:6
+    desc: |
+      Duas Barras de Titânio na Prensa = §eTitânio Prensado§r. Faça §e12§r.
+    tasks:
+      - get: ore:compressedTitanium x12
+    rewards:
+      - xp: 6
+      - choice: [ore:ingotTitanium x8, GalacticraftMars:item.itemBasicAsteroids x4, ore:compressedDesh x6]
+
+  - id: gelo_denso
+    title: "Gelo Denso"
+    type: optional
+    deps: [asteroides]
+    icon: GalacticraftMars:tile.denseIce
+    desc: |
+      Alguns asteroides têm um núcleo de §eGelo Denso§r: a única fonte de água por perto. Leve
+      alguns para a base.
+    tasks:
+      - get: GalacticraftMars:tile.denseIce x8
+    rewards:
+      - loot: comum
+
+  - id: equipamento_titanio
+    title: "Equipamento de Titânio"
+    type: optional
+    deps: [titanio]
+    icon: GalacticraftMars:item.titanium_chestplate
+    desc: |
+      Ferramentas e armadura de titânio. Um bom upgrade para quem explora rochas flutuantes.
+    tasks:
+      - one_of: [GalacticraftMars:item.titanium_pickaxe, GalacticraftMars:item.titanium_chestplate, GalacticraftMars:item.titanium_sword]
+    rewards:
+      - loot: incomum
+
+  - id: armadura_titanio
+    title: "Armadura de Titânio"
+    type: optional
+    deps: [equipamento_titanio]
+    icon: GalacticraftMars:item.titanium_helmet
+    desc: |
+      As quatro peças de titânio. Leve e resistente — combina com o Traje Térmico nos espaços
+      extras do Galacticraft.
+    tasks:
+      - get: [GalacticraftMars:item.titanium_helmet, GalacticraftMars:item.titanium_chestplate, GalacticraftMars:item.titanium_leggings, GalacticraftMars:item.titanium_boots]
+    rewards:
+      - loot: incomum
+
+  - id: nucleo_feixe
+    title: "Núcleo de Feixe"
+    type: normal
+    deps: [titanio]
+    icon: GalacticraftMars:item.itemBasicAsteroids:8
+    desc: |
+      4 redstones, 4 Ferros Prensados e um Painel de Vidro. O §eNúcleo de Feixe§r é a peça dos
+      blocos de energia por laser, da Telebase, do Astrominerador e da Unidade Orion.
+    tasks:
+      - get: GalacticraftMars:item.itemBasicAsteroids:8 x4
+    rewards:
+      - xp: 3
+      - item: minecraft:redstone x16
+
+  - id: feixes_energia
+    title: "Energia por Feixe"
+    type: optional
+    deps: [nucleo_feixe, titanio_prensado]
+    icon: GalacticraftMars:tile.beamReflector
+    desc: |
+      Um §eReceptor de Feixe§r grudado numa máquina recebe energia por laser; §eRefletores§r
+      redirecionam o feixe pelo caminho. Energia sem cabo, atravessando o vazio.
+    tasks:
+      - get: [GalacticraftMars:tile.beamReceiver x2, GalacticraftMars:tile.beamReflector]
+    rewards:
+      - loot: incomum
+
+  - id: telebase
+    title: "Telebase de Curto Alcance"
+    type: optional
+    deps: [nucleo_feixe, titanio_prensado]
+    icon: GalacticraftMars:tile.telepadShort
+    desc: |
+      Duas Telebases configuradas uma para a outra formam um teletransportador de curto alcance
+      dentro da mesma dimensão. Pede Pérolas do Fim, titânio e energia.
+    tasks:
+      - get: GalacticraftMars:tile.telepadShort x2
+    rewards:
+      - loot: incomum
+
+  - id: passadico
+    title: "Passadiço"
+    type: optional
+    deps: [titanio_prensado]
+    icon: GalacticraftMars:tile.walkway
+    desc: |
+      Pisos de titânio vazados — e versões com cabo ou cano de oxigênio embutidos. Ótimos para
+      ligar rochas dos asteroides.
+    tasks:
+      - get: GalacticraftMars:tile.walkway x10
+    rewards:
+      - loot: comum
+
+  - id: astrominerador
+    title: "Astrominerador"
+    type: normal
+    deps: [tesouro_marciano, nucleo_feixe, desh_prensado]
+    icon: GalacticraftMars:item.itemAstroMiner
+    desc: |
+      Com o esquemático do Astrominerador, monte o robô minerador na Bancada NASA. Ele sai de uma
+      §eBase do Astrominerador§r (a receita rende 4 blocos, que juntos formam a base; leva Desh
+      Prensado, Núcleos de Feixe e um Módulo de Armazenagem de Energia) e escava os asteroides sozinho. A config permite até
+      6 por jogador.
+    tasks:
+      - get: [GalacticraftMars:item.itemAstroMiner, GalacticraftMars:tile.minerBase x4]
+    rewards:
+      - xp: 4
+      - item: ore:compressedTitanium x4
+
+  - id: unidade_orion
+    title: "Unidade Orion"
+    type: optional
+    deps: [nucleo_feixe, queijo, desh]
+    icon: GalacticraftMars:item.orionDrive
+    desc: |
+      Um item de colecionador: um Núcleo de Feixe cercado de §eminérios§r de diamante, lápis,
+      ouro, redstone, carvão, queijo, desh e ilmenita (os minérios, não os lingotes!). Ela é
+      ingrediente do Console de Navegação das Naves-Mãe de Amun-Ra.
+    tasks:
+      - get: GalacticraftMars:item.orionDrive
+    rewards:
+      - loot: raro
+
+  - id: valvula_atmosferica
+    title: "Válvula Atmosférica"
+    type: optional
+    deps: [desh]
+    icon: GalacticraftMars:item.atmosphericValve
+    desc: |
+      3 Barras de Desh e um Respirador. Componente de máquinas que puxam gases da atmosfera.
+    tasks:
+      - get: GalacticraftMars:item.atmosphericValve
+    rewards:
+      - loot: comum
+
+  - id: explorador_solar
+    title: "Explorador do Sistema Solar"
+    type: milestone
+    deps: [asteroides, titanio_prensado, esqueleto_chefe, creeper_chefe, estacao_espacial]
+    icon: GalacticraftMars:item.itemTier3Rocket
+    banner: "O Volume das Estrelas"
+    subtitle: "Lua, Marte, Asteroides e uma casa em órbita"
+    desc: |
+      A Terra ficou pequena lá atrás. Você pisou na Lua, enfrentou o Esqueleto-Chefe, construiu
+      uma Estação em órbita, derrotou o Creeper-Chefe em Marte e agora minera titânio entre rochas
+      flutuantes. Herói, o Volume das Estrelas do Galacticraft está escrito!
+
+      Esta página sustenta o §5Selo das Estrelas§r. Mas o céu continua: o §eExtraPlanets§r leva
+      você de Vênus até Kepler 22b (Foguetes Nível 4 a 10), e §eAmun-Ra§r abre outro sistema
+      estelar e as naves-mãe.
+    tasks:
+      - get: [GalacticraftMars:item.itemTier3Rocket:*, ore:compressedTitanium x4, GalacticraftCore:item.key, GalacticraftMars:item.key]
+    rewards:
+      - xp: 15
+      - kit: {name: "Kit do Navegador Estelar", items: [ore:ingotTitanium x16, GalacticraftMars:item.itemBasicAsteroids x8, GalacticraftCore:item.bucketFuel x4, GalacticraftCore:item.oxygenTankHeavyFull x2]}
+      - loot: lendario

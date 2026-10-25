@@ -1,0 +1,2137 @@
+# OBSERVAÇÃO PARA O COORDENADOR: o dump do registro não listou os metas dos blocos/itens-nó do
+# Electrical Age (Eln:Eln.SixNode, Eln:Eln.TransparentNode e Eln:Eln.sharedItemStackOne). Por
+# isso as quests desses itens usam `check`. O comentário `# real:` em cada uma traz o id:meta
+# verdadeiro (extraído do JAR e das receitas do pack) para trocar por `get` quando o registro
+# for refeito com esses metas.
+chapter:
+  id: eln
+  title: "Electrical Age"
+  prefix: ""
+  order: 340
+  icon: Eln:Eln.sharedItem:640
+  desc: |
+    §bO Volume da Eletricidade de Verdade.§r Volts, ampères, resistência, aterramento,
+    transformadores com núcleo de ferro, baterias que envelhecem e cabos que esquentam.
+    (Electrical Age 1.24.6 — build de jrddunbr)
+
+quests:
+  # ======================================================================
+  # FASE 0 — ENTENDENDO O SIMULADOR
+  # ======================================================================
+  - id: eln_intro
+    title: "Um Circuito de Verdade"
+    type: info
+    icon: Eln:Eln.sharedItem:640
+    desc: |
+      Esqueça "energia por tick" e pacotes. O §bElectrical Age§r (Eln) §bsimula circuitos
+      elétricos§r: cada cabo tem resistência, cada fonte tem tensão nominal, a corrente se divide
+      como na vida real, e o que passa do limite §cesquenta§r.
+
+      O que você precisa saber para começar:
+      §e• Tensão (V)§r empurra; §ecorrente (A)§r flui; §epotência (W) = V × A§r.
+      §e• Cada aparelho tem tensão nominal§r (50 V, 200 V...). Pouca tensão = funciona mal;
+      tensão demais = estraga.
+      §e• Cabos aquecem com a corrente§r. Cabo fino demais para a carga = cabo queimado.
+
+      Segure §eShift§r sobre qualquer item do Eln para ver detalhes, e §eCtrl§r para as notas de
+      "realismo". Este capítulo usa muitas caixas de confirmação: o Eln guarda seus blocos num
+      formato que o livro ainda não reconhece. Confirme só o que você construiu de verdade, combinado?
+    tasks:
+      - check
+    rewards:
+      - xp: 2
+
+  - id: tensoes
+    title: "As Quatro Tensões"
+    type: info
+    deps: [eln_intro]
+    icon: Eln:Eln.sharedItem:4160
+    desc: |
+      Os cabos de energia do Eln (valores do JAR):
+      §e• Baixa Tensão (LV):§r 50 V — cobre + borracha.
+      §e• Média Tensão (MV):§r 200 V.
+      §e• Alta Tensão (HV):§r 800 V.
+      §e• Extrema Alta Tensão (VHV):§r 3200 V — com liga de aço-tungstênio.
+      §e• Cabo de Sinal:§r 5 V, só para informação (sensores, lógica), nunca para potência.
+
+      Máquinas "50V" vão em cabo LV, "200V" em MV. Para mudar de tensão use um §bTransformador§r.
+      Mesma potência em tensão maior = menos corrente = menos calor e menos perda no cabo. É por
+      isso que linhas longas usam alta tensão.
+    tasks:
+      - check
+    rewards:
+      - xp: 1
+
+  - id: seguranca
+    title: "Segurança Elétrica"
+    type: info
+    deps: [eln_intro]
+    icon: Eln:Eln.sharedItem:6282
+    desc: |
+      §cLeia antes de ligar a primeira bateria!§r
+
+      §e• Fios queimam:§r corrente acima do que o cabo aguenta aquece o cabo (o limite térmico é
+      ~130 °C). Ele derrete e o circuito abre. Use cabos de bitola maior ou tensão maior.
+      §e• Sobretensão estraga aparelhos:§r ligar um aparelho de 50 V num cabo de 200 V o destrói.
+      O pack desligou as explosões do Eln (config "explosion=false"), mas §co aparelho se perde
+      mesmo assim§r.
+      §e• Curto-circuito:§r ligar uma fonte direto no terra, sem carga, é corrente sem limite →
+      cabo queimado na hora.
+      §e• Choque:§r neste build, encostar nos cabos não fere o jogador — o perigo é para os
+      equipamentos e para a sua carteira de cobre.
+      §e• Volantes (Flywheel)§r em alta rotação arremessam quem chega perto.
+
+      Fusíveis e disjuntores existem para isso. Use-os!
+    tasks:
+      - check
+    rewards:
+      - xp: 1
+
+  - id: aterramento
+    title: "Terra e Referência"
+    type: info
+    deps: [tensoes]
+    icon: Eln:Eln.sharedItem:4160
+    desc: |
+      Tensão é sempre §bmedida em relação a um ponto de 0 V§r. A §eHaste de Aterramento§r (Ground
+      Cable) força o ponto onde está a 0 V — por exemplo, o polo negativo de uma bateria ou de
+      componentes passivos montados por você.
+
+      A maioria das máquinas e geradores do Eln já tem a referência interna; o aterramento vira
+      importante quando você monta circuitos com resistores, capacitores, indutores e diodos.
+      O §eCruzamento de Cabos§r (Hub) deixa dois cabos se cruzarem num só bloco sem se ligarem.
+    tasks:
+      - check
+    rewards:
+      - xp: 1
+
+  # ======================================================================
+  # FASE 1 — MINÉRIOS E MATERIAIS
+  # ======================================================================
+  - id: minerios_eln
+    title: "Minérios do Eln"
+    type: info
+    deps: [eln_intro]
+    icon: Eln:Eln.Ore:5
+    desc: |
+      O Eln gera quatro minérios (todos ativos em config/Eln.cfg):
+      §e• Cobre:§r o mais comum, ~30 veios/chunk de 6–10 blocos, Y 0–80.
+      §e• Chumbo:§r ~8 veios/chunk de 3–9 blocos, Y 0–24.
+      §e• Tungstênio:§r ~6 veios/chunk de 3–9 blocos, Y 0–32.
+      §e• Cinábrio:§r raro, ~3 veios/chunk de 3–9 blocos, Y 0–32 — vira Mercúrio.
+
+      Cobre e chumbo do Eln valem como cobre e chumbo de qualquer mod (oredict). O tungstênio do
+      Eln usa o nome próprio §eoreElnTungsten§r e só serve às receitas do Eln.
+    tasks:
+      - check
+    rewards:
+      - xp: 1
+
+  - id: cobre
+    title: "Cobre"
+    type: main
+    deps: [minerios_eln]
+    icon: Eln:Eln.Ore:1
+    desc: |
+      Toda a eletricidade do Eln começa no cobre: fio de cobre, cabos LV, placas, aquecedores...
+      Junte §e24 lingotes de cobre§r (qualquer cobre). O minério do Eln é abundante abaixo de
+      Y 80.
+    tasks:
+      - get: ore:ingotCopper x24
+    rewards:
+      - xp: 4
+      - choice: [minecraft:iron_ingot x12, minecraft:coal x16, minecraft:redstone x16]
+
+  - id: chumbo
+    title: "Chumbo"
+    type: normal
+    deps: [minerios_eln]
+    icon: Eln:Eln.Ore:4
+    desc: |
+      As §bbaterias§r do Eln são feitas de chumbo (a mais simples leva seis lingotes!), assim como
+      o volante e as pilhas portáteis. Junte §e12 lingotes de chumbo§r. Fica abaixo de Y 24.
+    tasks:
+      - get: ore:ingotLead x12
+    rewards:
+      - xp: 3
+      - item: ore:ingotCopper x8
+
+  - id: tungstenio
+    title: "Tungstênio"
+    type: main
+    deps: [minerios_eln]
+    icon: Eln:Eln.Ore:5
+    desc: |
+      O §eMinério de Tungstênio§r (Y 0–32) funde em §eBarra de Tungstênio§r. É o filamento das
+      lâmpadas, os fios de resistência de alta temperatura e, misturado ao ferro e ao carvão, a
+      §bliga de aço-tungstênio§r das máquinas 200 V. Junte §e8 barras§r.
+    tasks:
+      - get: Eln:Eln.sharedItem:517 x8
+    rewards:
+      - xp: 4
+      - choice: [minecraft:iron_ingot x12, minecraft:coal x16, Eln:Eln.sharedItem:6 x4]
+
+  - id: cinabrio
+    title: "Cinábrio e Mercúrio"
+    type: optional
+    deps: [minerios_eln]
+    icon: Eln:Eln.Ore:6
+    desc: |
+      O raro §eMinério de Cinábrio§r vira pó no Macerador (ou com o martelo do IE), e o pó na
+      fornalha vira §eMercúrio§r. Guarde uma gota de prateado líquido para o futuro.
+    tasks:
+      - get: Eln:Eln.sharedItem:520
+    rewards:
+      - loot: comum
+
+  - id: fio_cobre
+    title: "Fio de Cobre"
+    type: main
+    deps: [cobre]
+    icon: Eln:Eln.sharedItem:4160
+    desc: |
+      Três lingotes de cobre em linha = §e12 Fios de Cobre§r. O fio nu ainda não é um cabo: ele
+      é matéria-prima de cabos, bobinas, resistores e blocos de máquina. Faça §e36§r.
+    tasks:
+      - get: Eln:Eln.sharedItem:4160 x36
+    rewards:
+      - xp: 4
+      - choice: [ore:ingotCopper x8, minecraft:iron_ingot x8, minecraft:redstone x16]
+
+  - id: fio_ferro
+    title: "Fio de Ferro"
+    type: main
+    deps: [eln_intro]
+    icon: Eln:Eln.sharedItem:4161
+    desc: |
+      Três ferros = §e12 Fios de Ferro§r. Eles fazem o Bloco de Máquina, o núcleo ferromagnético
+      dos transformadores, a Chave e a carcaça de quase todo aparelho. Faça §e36§r.
+    tasks:
+      - get: Eln:Eln.sharedItem:4161 x36
+    rewards:
+      - xp: 4
+      - choice: [minecraft:iron_ingot x12, ore:ingotCopper x8, minecraft:redstone x16]
+
+  - id: fio_tungstenio
+    title: "Fio de Tungstênio"
+    type: normal
+    deps: [tungstenio]
+    icon: Eln:Eln.sharedItem:4162
+    desc: |
+      Três barras de tungstênio = §e6 Fios de Tungstênio§r. Viram resistências térmicas de
+      tungstênio, que aguentam a maior temperatura (o Forno Elétrico e a Incubadora usam).
+    tasks:
+      - get: Eln:Eln.sharedItem:4162 x6
+    rewards:
+      - xp: 2
+      - item: Eln:Eln.sharedItem:517 x2
+
+  - id: resina
+    title: "Resina de Árvore"
+    type: main
+    deps: [eln_intro]
+    icon: Eln:Eln.sharedItem:4096
+    desc: |
+      Sem borracha não há cabo isolado. Duas fontes de §eResina de Árvore§r:
+      §e• Coletor de Resina:§r tábuas em "U"; só pode ser colocado na §blateral de um tronco§r e
+      produz resina com o tempo.
+      §e• Compressor do Eln:§r uma tora vira uma resina.
+      Junte §e8 resinas§r.
+    tasks:
+      - get: Eln:Eln.sharedItem:4096 x8
+    rewards:
+      - xp: 4
+      - choice: [minecraft:log x16, minecraft:planks x32, minecraft:sapling x8]
+
+  - id: borracha
+    title: "Borracha"
+    type: main
+    deps: [resina]
+    icon: Eln:Eln.sharedItem:4097
+    desc: |
+      Uma resina na fornalha = §e2 Borrachas§r. Qualquer borracha do oredict (IC2, MFR...) também
+      serve nas receitas do Eln. Junte §e16§r: cabos, interruptores, sensores e o isolamento de
+      tudo pedem borracha.
+    tasks:
+      - get: ore:itemRubber x16
+    rewards:
+      - xp: 4
+      - choice: [Eln:Eln.sharedItem:4096 x8, minecraft:coal x16, minecraft:log x16]
+
+  - id: bloco_maquina
+    title: "Bloco de Máquina"
+    type: main
+    deps: [fio_cobre, fio_ferro, resina]
+    icon: Eln:Eln.sharedItem:7682
+    desc: |
+      Resina nos cantos, fios de ferro nas laterais e um fio de cobre no centro = §eBloco de
+      Máquina§r. É a carcaça das máquinas de 50 V, turbinas e geradores básicos. Faça §e4§r.
+    tasks:
+      - get: Eln:Eln.sharedItem:7682 x4
+    rewards:
+      - xp: 4
+      - choice: [Eln:Eln.sharedItem:4161 x12, Eln:Eln.sharedItem:4096 x8, Eln:Eln.sharedItem:4160 x12]
+
+  # ======================================================================
+  # FASE 2 — OS PRIMEIROS CABOS E CIRCUITOS
+  # ======================================================================
+  - id: cabo_lv
+    title: "Cabo de Baixa Tensão"
+    type: main
+    deps: [fio_cobre, borracha]
+    icon: Eln:Eln.sharedItem:4160
+    # real: Eln:Eln.SixNode:2052
+    desc: |
+      Borracha + dois fios de cobre (sem forma) = §e2 Cabos de Baixa Tensão§r; ou 6 borrachas e
+      3 lingotes de cobre = 12. Cabos do Eln são "nós de seis faces": grudam no chão, parede ou
+      teto, e §bvários cabos diferentes cabem no mesmo bloco§r (um em cada face).
+
+      Faça pelo menos 16 cabos LV e confirme.
+    tasks:
+      - check
+    rewards:
+      - xp: 4
+      - choice: [ore:itemRubber x8, Eln:Eln.sharedItem:4160 x16, ore:ingotCopper x8]
+
+  - id: haste_terra
+    title: "Haste de Aterramento"
+    type: normal
+    deps: [cabo_lv, aterramento]
+    icon: Eln:Eln.sharedItem:4160
+    # real: Eln:Eln.SixNode:128 (Hub = SixNode:136)
+    desc: |
+      Cinco fios de cobre em "T" invertido = §eHaste de Aterramento§r. Coloque-a no circuito
+      para criar o ponto de 0 V. Faça também um §eCruzamento de Cabos§r (fios de ferro em X com
+      cobre no meio) para cruzar linhas sem curto.
+    tasks:
+      - check
+    rewards:
+      - xp: 3
+      - item: Eln:Eln.sharedItem:4160 x12
+
+  - id: chave
+    title: "A Chave"
+    type: normal
+    deps: [fio_ferro]
+    icon: Eln:Eln.sharedItem:4161
+    # real: Eln:Eln.sharedItem:7728 (Wrench)
+    desc: |
+      Quatro fios de ferro = §eChave§r (Wrench). Ela gira e desmonta aparelhos do Eln. Com
+      redstone e um circuito avançado vira a §eFerramenta de Copiar Configuração§r, que copia
+      ajustes de um aparelho para outro.
+    tasks:
+      - check
+    rewards:
+      - xp: 2
+      - item: Eln:Eln.sharedItem:4161 x12
+
+  - id: multimetro
+    title: "Multímetro"
+    type: main
+    deps: [chip_sonda_eletrica, borracha]
+    icon: Eln:Eln.sharedItem:7683
+    # real: Eln:Eln.sharedItemStackOne:896 (MultiMeter); Termômetro 897; Universal 898
+    desc: |
+      Borracha, vidro, redstone e um §eCircuito Integrado de Sonda Elétrica§r = §eMultímetro§r.
+      Clique em qualquer cabo ou aparelho para ver §btensão, corrente e potência§r. É o
+      instrumento que separa o eletricista do incendiário.
+
+      Com o chip de sonda de calor você faz o §eTermômetro§r; os dois juntos viram o
+      §eMultímetro e Termômetro§r universal.
+    tasks:
+      - check
+    rewards:
+      - xp: 4
+      - choice: [ore:itemRubber x8, minecraft:redstone x16, minecraft:glass_pane x16]
+
+  - id: chip_sonda_eletrica
+    title: "Chips de Sonda"
+    type: normal
+    deps: [cabo_lv]
+    icon: Eln:Eln.sharedItem:7683
+    desc: |
+      §eCircuito Integrado de Sonda Elétrica§r: quatro redstones em volta de um Cabo de Alta
+      Tensão. §eCircuito Integrado de Sonda Calor§r: cobre, redstone e fio de ferro. Eles vão no
+      multímetro, no termômetro, nas sondas de sinal e nas proteções das baterias. Faça um de cada.
+    tasks:
+      - get: [Eln:Eln.sharedItem:7683, Eln:Eln.sharedItem:7684]
+    rewards:
+      - xp: 2
+      - item: minecraft:redstone x16
+
+  - id: bateria_uso_unico
+    title: "Pilha Voltaica"
+    type: optional
+    deps: [cabo_lv]
+    icon: Eln:Eln.sharedItem:4160
+    # real: Eln:Eln.TransparentNode:1029
+    desc: |
+      Carvão (ou carvão vegetal) e cobre = §eBateria Não Recarregável§r, que imita uma pilha
+      voltaica. Uma fonte barata para o seu primeiro circuito de teste: bateria → cabo LV →
+      lâmpada.
+    tasks:
+      - check
+    rewards:
+      - loot: comum
+
+  - id: bateria_50v
+    title: "Bateria 50V"
+    type: main
+    deps: [cabo_lv, chumbo]
+    icon: Eln:Eln.sharedItem:516
+    # real: Eln:Eln.TransparentNode:1024 (Cost Oriented Battery)
+    desc: |
+      Dois Cabos de Baixa Tensão e §e6 lingotes de chumbo§r = §eBateria 50V§r. Baterias do Eln
+      têm resistência interna, capacidade e §bvida útil§r: elas envelhecem com os ciclos (o
+      pack usa meia-vida de 2 na config). Não descarregue até o fim sempre.
+
+      Ela tem dois polos; o lado com o "+" alimenta a carga. Monte e confirme.
+    tasks:
+      - check
+    rewards:
+      - xp: 4
+      - choice: [ore:ingotLead x6, Eln:Eln.sharedItem:4160 x12, ore:itemRubber x8]
+
+  - id: baterias_especiais
+    title: "Família das Baterias"
+    type: optional
+    deps: [bateria_50v]
+    icon: Eln:Eln.sharedItem:516
+    # real: Capacidade 1025, 200V 1026, Corrente 1027, Vida Útil 1028, Experimental 1030 (TransparentNode)
+    desc: |
+      A Bateria 50V é a base de cinco variantes (bateria no centro + dois itens nas laterais):
+      §e• Capacidade Melhorada§r (chumbo), §e• 200V§r (fios de ferro — duas em série),
+      §e• Corrente Melhorada§r (cobre — duas em paralelo), §e• Vida Útil Melhorada§r (ouro).
+      E as quatro + um diamante = §eBateria Experimental§r. Faça pelo menos a de 200V.
+    tasks:
+      - check
+    rewards:
+      - loot: incomum
+
+  - id: protecoes_bateria
+    title: "Proteções da Bateria"
+    type: normal
+    deps: [bateria_50v, chip_sonda_eletrica, chip_basico]
+    icon: Eln:Eln.sharedItem:321
+    desc: |
+      Chip de sonda + circuito básico + redstone = §e4 Proteções Contra Sobretensão§r (ou contra
+      Sobreaquecimento, com o chip de calor). Elas entram nos espaços da bateria e a desligam
+      antes de estragar. §aSempre proteja baterias caras.§r
+    tasks:
+      - get: [Eln:Eln.sharedItem:321, Eln:Eln.sharedItem:320]
+    rewards:
+      - xp: 3
+      - item: ore:ingotLead x4
+
+  - id: lampada_soquete
+    title: "Primeira Luz"
+    type: main
+    deps: [cabo_lv]
+    icon: minecraft:glass_pane
+    # real: Soquete Eln:Eln.SixNode:4102; Lâmpada de Carbono 50V Eln:Eln.sharedItemStackOne:261
+    desc: |
+      Lâmpadas do Eln são duas peças: o §esoquete§r (vários modelos — Soquete para Lâmpada,
+      Robusto, Plano, Suspenso, Poste de Iluminação...) e a §elâmpada§r encaixada nele.
+
+      Comece com a §eLâmpada Incandescente de Carbono 50V§r (vidro + carvão + cabo LV). Ligue o
+      soquete a uma bateria pelo cabo LV e... luz! §bLâmpadas acesas matam monstros num raio de
+      9 blocos§r neste pack. Monte e confirme.
+    tasks:
+      - check
+    rewards:
+      - xp: 4
+      - choice: [minecraft:glass_pane x16, minecraft:coal x16, minecraft:glowstone_dust x8]
+
+  - id: tipos_lampada
+    title: "Tecnologias de Lâmpada"
+    type: info
+    deps: [lampada_soquete]
+    icon: minecraft:glowstone_dust
+    desc: |
+      Vida útil nominal de cada lâmpada (config do pack):
+      §e• Carbono:§r 6 h — carvão.
+      §e• Incandescente de tungstênio:§r 16 h — barra de tungstênio.
+      §e• Econômica:§r 64 h — pó de pedra luminosa.
+      §e• Halógena:§r 128 h — tungstênio, com cabos.
+      §e• LED:§r 512 h — barras de silício.
+      Há versões 50 V e 200 V (pequenas e normais). A §eLâmpada Agrícola§r faz plantas crescerem.
+      Lâmpadas queimam com o tempo e com sobretensão — guarde reservas.
+    tasks:
+      - check
+    rewards:
+      - xp: 1
+
+  - id: lampada_led
+    title: "LED"
+    type: optional
+    deps: [tipos_lampada, silicio]
+    icon: Eln:Eln.sharedItem:7697
+    # real: Lâmpada de LED 50V Eln:Eln.sharedItemStackOne:293
+    desc: |
+      Três barras de silício, vidro e um cabo LV = 2 §eLâmpadas de LED 50V§r: 512 horas de vida,
+      pouco consumo. O futuro chegou ao Registro.
+    tasks:
+      - check
+    rewards:
+      - loot: comum
+
+  - id: lampada_agricola
+    title: "Lâmpada Agrícola"
+    type: optional
+    deps: [tipos_lampada, tungstenio]
+    icon: minecraft:wheat
+    # real: Lâmpada Agrícola 50V Eln:Eln.sharedItemStackOne:288
+    desc: |
+      Vidro, três tungstênios e cabo LV = 2 §eLâmpadas Agrícolas 50V§r. Elas iluminam plantações
+      subterrâneas e estufas para que as plantas cresçam sem sol.
+    tasks:
+      - check
+    rewards:
+      - loot: comum
+
+  - id: qdl
+    title: "Quadro de Distribuição de Luz"
+    type: optional
+    deps: [lampada_soquete]
+    icon: minecraft:iron_ingot
+    # real: Eln:Eln.SixNode:4160 (Lamp Supply / QDL)
+    desc: |
+      O §eQDL§r (Lamp Supply) alimenta lâmpadas próximas "pelas paredes", por canais com nome —
+      até 3 canais, cada um controlável por sinal sem fio. Alcance base de 32 blocos, +1 por cabo
+      extra no espaço de cabo. Iluminação de casa sem fio pendurado!
+    tasks:
+      - check
+    rewards:
+      - loot: comum
+
+  # ======================================================================
+  # FASE 3 — CHIPS E MÁQUINAS 50 V
+  # ======================================================================
+  - id: po_silicio
+    title: "Pó de Silício"
+    type: normal
+    deps: [macerador_50v]
+    icon: Eln:Eln.sharedItem:7696
+    desc: |
+      Areia no Macerador = §ePó de Silício§r. Parece pouca coisa, mas é daqui que saem todos os
+      chips, as lâmpadas de LED e o Termistor NTC. Junte §e8§r.
+    tasks:
+      - get: Eln:Eln.sharedItem:7696 x8
+    rewards:
+      - xp: 2
+      - item: minecraft:sand x32
+
+  - id: silicio
+    title: "Silício"
+    type: normal
+    deps: [po_silicio]
+    icon: Eln:Eln.sharedItem:7697
+    desc: |
+      O pó de silício na fornalha vira §eBarra de Silício§r. Ela é a base de todos os circuitos
+      integrados e das lâmpadas de LED. Junte §e8 barras§r.
+    tasks:
+      - get: Eln:Eln.sharedItem:7697 x8
+    rewards:
+      - xp: 3
+      - item: minecraft:sand x32
+
+  - id: chip_basico
+    title: "Circuito Integrado Básico"
+    type: main
+    deps: [silicio]
+    icon: Eln:Eln.sharedItem:7680
+    desc: |
+      Uma barra de silício cercada de redstone = §eCircuito Integrado Básico§r (oredict
+      §ecircuitBasic§r — serve também onde o IC2 ou o Mekanism pedem circuito básico!). Faça §e4§r.
+    tasks:
+      - get: Eln:Eln.sharedItem:7680 x4
+    rewards:
+      - xp: 4
+      - choice: [minecraft:redstone x24, Eln:Eln.sharedItem:7697 x4, minecraft:sand x32]
+
+  - id: chip_avancado
+    title: "Circuito Integrado Avançado"
+    type: main
+    deps: [chip_basico]
+    icon: Eln:Eln.sharedItem:7681
+    desc: |
+      Silício e redstone em volta de um chip básico = §eCircuito Integrado Avançado§r
+      (§ecircuitAdvanced§r). Máquinas 200 V, sensores sofisticados, a mineradora — todos pedem.
+      Faça §e4§r.
+    tasks:
+      - get: Eln:Eln.sharedItem:7681 x4
+    rewards:
+      - xp: 4
+      - choice: [minecraft:redstone x24, Eln:Eln.sharedItem:7697 x4, Eln:Eln.sharedItem:7680 x2]
+
+  - id: motor_eletrico
+    title: "Motor Elétrico"
+    type: main
+    deps: [cabo_lv, fio_ferro]
+    icon: Eln:Eln.sharedItem:640
+    desc: |
+      Três fios de ferro (o rotor) e três Cabos de Baixa Tensão (o enrolamento) = §eMotor
+      Elétrico§r. Ele move todas as máquinas 50 V. Faça §e4§r.
+    tasks:
+      - get: Eln:Eln.sharedItem:640 x4
+    rewards:
+      - xp: 4
+      - choice: [Eln:Eln.sharedItem:4161 x12, ore:itemRubber x8, ore:ingotCopper x8]
+
+  - id: macerador_50v
+    title: "Macerador 50V"
+    type: main
+    deps: [bloco_maquina, motor_eletrico]
+    icon: Eln:Eln.sharedItem:577
+    # real: Eln:Eln.TransparentNode:2112
+    desc: |
+      Bloco de Máquina, Motor Elétrico, fios de ferro, sílex e redstone = §eMacerador 50V§r.
+      Ele dobra minérios: §bminério → 2 pós§r (cobre, ferro, ouro, chumbo, tungstênio), carvão →
+      pó de carvão, areia → pó de silício, cinábrio → pó de cinábrio.
+
+      Ligue num Cabo de Baixa Tensão. A velocidade depende da potência entregue: §cbateria
+      fraca = máquina lenta§r. Monte e confirme.
+    tasks:
+      - check
+    rewards:
+      - xp: 4
+      - choice: [minecraft:iron_ore x8, Eln:Eln.Ore:1 x8, minecraft:flint x8]
+
+  - id: pos_macerador
+    title: "Dobrando Minérios"
+    type: normal
+    deps: [macerador_50v]
+    icon: Eln:Eln.sharedItem:577
+    desc: |
+      Prove o macerador: junte §e16 Pós de Cobre e 16 Pós de Ferro do Eln§r. Na fornalha, cada pó
+      vira um lingote — o dobro do minério cru.
+    tasks:
+      - get: [Eln:Eln.sharedItem:577 x16, Eln:Eln.sharedItem:578 x16]
+    rewards:
+      - xp: 3
+      - item: minecraft:coal x16
+
+  - id: po_tungstenio
+    title: "Pó de Tungstênio e de Carvão"
+    type: normal
+    deps: [macerador_50v, tungstenio]
+    icon: Eln:Eln.sharedItem:6
+    desc: |
+      O macerador também transforma tungstênio em §ePó de Tungstênio§r e carvão em §ePó de
+      Carvão§r — os dois ingredientes da liga. Junte §e8 pós de tungstênio e 4 de carvão§r.
+    tasks:
+      - get: [Eln:Eln.sharedItem:6 x8, Eln:Eln.sharedItem:8 x4]
+    rewards:
+      - xp: 2
+      - item: Eln:Eln.Ore:5 x4
+
+  - id: po_liga
+    title: "Pó de Aço-Tungstênio"
+    type: normal
+    deps: [po_tungstenio, pos_macerador]
+    icon: Eln:Eln.sharedItem:9
+    desc: |
+      Na bancada, sem forma: §e1 pó de ferro + 1 pó de carvão + 4 pós de tungstênio = 6 Pós de
+      Aço-Tungstênio§r. Faça §e12§r.
+    tasks:
+      - get: Eln:Eln.sharedItem:9 x12
+    rewards:
+      - xp: 2
+      - item: Eln:Eln.sharedItem:6 x4
+
+  - id: liga
+    title: "Aço-Tungstênio"
+    type: main
+    deps: [po_liga]
+    icon: Eln:Eln.sharedItem:519
+    desc: |
+      O pó de aço-tungstênio na fornalha vira §eBarra de Aço-Tungstênio§r (oredict
+      §eingotAlloy§r). É o metal das máquinas
+      200 V, do Cabo de Extrema Alta Tensão, dos ímãs avançados e do Tubo de Mineração. Junte
+      §e12 barras§r.
+    tasks:
+      - get: Eln:Eln.sharedItem:519 x12
+    rewards:
+      - xp: 4
+      - choice: [Eln:Eln.sharedItem:6 x8, Eln:Eln.sharedItem:578 x8, Eln:Eln.sharedItem:8 x8]
+
+  - id: forno_eletrico
+    title: "Forno Elétrico"
+    type: main
+    deps: [cabo_lv, resistencias]
+    icon: minecraft:furnace
+    # real: Eln:Eln.TransparentNode:2048
+    desc: |
+      Uma fornalha comum cercada de ferro com um Cabo de Baixa Tensão = §eForno Elétrico§r. Ele
+      precisa de uma §eResistência Térmica§r no espaço próprio — é ela que define a tensão de
+      trabalho e o calor. Tem desligamento automático e um ponto de ajuste de temperatura.
+    tasks:
+      - check
+    rewards:
+      - xp: 4
+      - choice: [minecraft:iron_ingot x12, minecraft:coal x16, Eln:Eln.sharedItem:4160 x16]
+
+  - id: resistencias
+    title: "Resistências Térmicas"
+    type: normal
+    deps: [fio_cobre, fio_ferro]
+    icon: Eln:Eln.sharedItem:4160
+    # real: Eln:Eln.sharedItemStackOne:64..79 (Pequena 50V Cobre = 64)
+    desc: |
+      Oito fios em "U" = §ePequena Resistência Térmica 50V§r (de cobre, ferro ou tungstênio). Duas
+      pequenas = uma normal; duas normais 50 V = uma pequena 200 V, e assim até 3,2 kV (só
+      tungstênio chega lá). Cobre é barato, ferro aguenta mais, tungstênio aguenta tudo.
+    tasks:
+      - check
+    rewards:
+      - xp: 2
+      - item: Eln:Eln.sharedItem:4161 x12
+
+  - id: maquina_placa_50v
+    title: "Máquina de Placa 50V"
+    type: normal
+    deps: [macerador_50v]
+    icon: Eln:Eln.sharedItem:7686
+    # real: Eln:Eln.TransparentNode:2368
+    desc: |
+      Bloco de Máquina, motor, fios de ferro e redstone = §eMáquina de Placa 50V§r. Ela lamina
+      §b1 lingote → 1 placa§r: cobre, chumbo, ferro, ouro, aço-tungstênio e silício (4 barras
+      por placa). Monte e prove com §e4 Placas de Cobre§r.
+    tasks:
+      - get: Eln:Eln.sharedItem:7686 x4
+    rewards:
+      - xp: 3
+      - item: ore:ingotCopper x8
+
+  - id: placas_catalogo
+    title: "Placas de Todos os Metais"
+    type: optional
+    deps: [maquina_placa_50v, liga]
+    icon: Eln:Eln.sharedItem:7691
+    desc: |
+      Ferro, ouro, chumbo, silício e aço-tungstênio: as placas do Eln entram em antenas, tomadas,
+      blocos avançados e discos de embreagem. Junte uma de cada.
+    tasks:
+      - get: [Eln:Eln.sharedItem:7687, Eln:Eln.sharedItem:7688, Eln:Eln.sharedItem:7689, Eln:Eln.sharedItem:7690, Eln:Eln.sharedItem:7691]
+    rewards:
+      - loot: incomum
+
+  - id: compressor_50v
+    title: "Compressor 50V"
+    type: normal
+    deps: [maquina_placa_50v]
+    icon: Eln:Eln.sharedItem:7692
+    # real: Eln:Eln.TransparentNode:2240
+    desc: |
+      Igual à máquina de placa, com placas de ferro: §eCompressor 50V§r. Receitas (do JAR):
+      §e• 4 pós de carvão → Placa de Carvão§r; §e4 placas de carvão → Barra de Grafite§r.
+      §e• Areia → Dielétrico§r; §etora → Resina de Árvore§r.
+      §e• 4 barras de grafite (agrupadas) → Diamante Sintético§r.
+      Prove com §e2 Placas de Carvão§r.
+    tasks:
+      - get: Eln:Eln.sharedItem:7692 x2
+    rewards:
+      - xp: 3
+      - item: Eln:Eln.sharedItem:8 x8
+
+  - id: magnetizador_50v
+    title: "Magnetizador 50V"
+    type: normal
+    deps: [maquina_placa_50v]
+    icon: Eln:Eln.sharedItem:7708
+    # real: Eln:Eln.TransparentNode:2304
+    desc: |
+      Dois motores num Bloco de Máquina = §eMagnetizador 50V§r. Receitas: §e2 ferros → Ímã de
+      Ferro§r; §e2 aço-tungstênio → Ímã de Aço-Tungstênio§r; §e3 ímãs de ferro → Núcleo
+      Ferromagnético Avançado§r; pó de cobre → redstone; e uma Lata Inerte → pérola do Fim!
+      Faça §e2 Ímãs de Ferro§r.
+    tasks:
+      - get: Eln:Eln.sharedItem:7708 x2
+    rewards:
+      - xp: 3
+      - item: minecraft:iron_ingot x8
+
+  - id: ima_avancado
+    title: "Ímã de Aço-Tungstênio"
+    type: normal
+    deps: [magnetizador_50v, liga]
+    icon: Eln:Eln.sharedItem:7709
+    desc: |
+      Magnetize duas barras de aço-tungstênio: §eÍmã de Aço-Tungstênio§r. Dois deles fazem o
+      §eMotor Elétrico Avançado§r. Faça §e2§r.
+    tasks:
+      - get: Eln:Eln.sharedItem:7709 x2
+    rewards:
+      - xp: 2
+      - item: Eln:Eln.sharedItem:519 x2
+
+  - id: bloco_avancado
+    title: "Bloco de Máquina Avançado"
+    type: main
+    deps: [placas_catalogo]
+    icon: Eln:Eln.sharedItem:7703
+    desc: |
+      Resina nos cantos, placas de aço-tungstênio nas laterais e fio de cobre no centro = §eBloco
+      de Máquina Avançado§r. Carcaça de todas as máquinas 200 V e dos grandes geradores. Faça §e4§r.
+    tasks:
+      - get: Eln:Eln.sharedItem:7703 x4
+    rewards:
+      - xp: 4
+      - choice: [Eln:Eln.sharedItem:7691 x4, Eln:Eln.sharedItem:4096 x8, Eln:Eln.sharedItem:519 x4]
+
+  - id: motor_avancado
+    title: "Motor Elétrico Avançado"
+    type: main
+    deps: [ima_avancado, cabo_mv]
+    icon: Eln:Eln.sharedItem:641
+    desc: |
+      Dois ímãs de aço-tungstênio, ferro, redstone e três Cabos de Média Tensão = §eMotor
+      Elétrico Avançado§r, o motor das máquinas 200 V. Faça §e2§r.
+    tasks:
+      - get: Eln:Eln.sharedItem:641 x2
+    rewards:
+      - xp: 4
+      - choice: [Eln:Eln.sharedItem:7709 x2, minecraft:redstone x16, Eln:Eln.sharedItem:519 x4]
+
+  - id: maquinas_200v
+    title: "Máquinas 200V"
+    type: milestone
+    deps: [bloco_avancado, motor_avancado, chip_avancado]
+    icon: Eln:Eln.sharedItem:7703
+    banner: "Máquinas 200V"
+    subtitle: "Mais tensão, mais velocidade"
+    # real: Macerador 200V TransparentNode:2116, Compressor 200V 2244, Placa 200V 2372, Magnetizador 200V 2308
+    desc: |
+      Cada máquina 50 V tem irmã de 200 V: Bloco de Máquina Avançado + Motor Avançado + circuito
+      avançado + aço-tungstênio (o macerador leva diamantes). Elas trabalham bem mais rápido —
+      e §cprecisam de Cabo de Média Tensão e de uma fonte de 200 V§r.
+
+      Monte ao menos um §eMacerador 200V§r e uma §eMáquina de Placa 200V§r e confirme. Para
+      celebrar, guarde os materiais que provam a caminhada: blocos avançados e motores.
+    tasks:
+      - get: [Eln:Eln.sharedItem:7703 x2, Eln:Eln.sharedItem:641 x2, Eln:Eln.sharedItem:7681 x2]
+    rewards:
+      - xp: 8
+      - kit: {name: "Kit do Técnico 200V", items: [Eln:Eln.sharedItem:519 x8, Eln:Eln.sharedItem:7681 x2, Eln:Eln.sharedItem:7709 x2, ore:itemRubber x16]}
+      - loot: raro
+
+  - id: impulsionador
+    title: "Aumentar Potência da Máquina"
+    type: optional
+    deps: [chip_avancado, motor_eletrico]
+    icon: Eln:Eln.sharedItem:640
+    # real: Eln:Eln.sharedItem:7702 (Machine Booster)
+    desc: |
+      Dois motores e um circuito avançado = §eMachine Booster§r: um upgrade que acelera máquinas
+      do Eln (gastando mais energia, claro).
+    tasks:
+      - check
+    rewards:
+      - loot: comum
+
+  # ======================================================================
+  # FASE 4 — TENSÕES, TRANSFORMADORES E PROTEÇÃO
+  # ======================================================================
+  - id: cabo_mv
+    title: "Cabo de Média Tensão"
+    type: main
+    deps: [cabo_lv, tensoes]
+    icon: Eln:Eln.sharedItem:4097
+    # real: Eln:Eln.SixNode:2056
+    desc: |
+      Borracha + Cabo de Baixa Tensão (sem forma) = §e2 Cabos de Média Tensão§r (200 V). Repetindo
+      com o MV sai o §eCabo de Alta Tensão§r (800 V). Mais isolamento, mais tensão suportada.
+    tasks:
+      - check
+    rewards:
+      - xp: 4
+      - choice: [ore:itemRubber x16, Eln:Eln.sharedItem:4160 x16, ore:ingotCopper x8]
+
+  - id: cabo_hv
+    title: "Cabo de Alta Tensão"
+    type: main
+    deps: [cabo_mv]
+    icon: Eln:Eln.sharedItem:4097
+    # real: Eln:Eln.SixNode:2060
+    desc: |
+      Borracha + Cabo de Média Tensão = §e2 Cabos de Alta Tensão§r (800 V). Ele também é
+      ingrediente do Chip de Sonda Elétrica e do Exportador de Energia.
+    tasks:
+      - check
+    rewards:
+      - xp: 4
+      - choice: [ore:itemRubber x16, Eln:Eln.sharedItem:7683, ore:ingotCopper x8]
+
+  - id: cabo_vhv
+    title: "Cabo de Extrema Alta Tensão"
+    type: normal
+    deps: [cabo_hv, liga]
+    icon: Eln:Eln.sharedItem:519
+    # real: Eln:Eln.SixNode:2064
+    desc: |
+      Seis borrachas e três barras de aço-tungstênio = §e12 Cabos de Extrema Alta Tensão§r
+      (3200 V). Para o Gerador 3200V e as linhas de transmissão de longa distância.
+    tasks:
+      - check
+    rewards:
+      - xp: 3
+      - item: Eln:Eln.sharedItem:519 x3
+
+  - id: cabos_corrente
+    title: "Cabos de Corrente"
+    type: optional
+    deps: [cabo_mv]
+    icon: Eln:Eln.sharedItem:4160
+    # real: Baixa 2112, Média 2113, Alta 2114 (SixNode)
+    desc: |
+      Além dos cabos "por tensão", existem §eCabos de Corrente§r (baixa, média, alta), pensados
+      para levar §bmuita corrente§r. O Cabo de Alta Corrente é ingrediente do Gerador e do Motor
+      de Partida grandes.
+    tasks:
+      - check
+    rewards:
+      - loot: comum
+
+  - id: nucleos
+    title: "Núcleos Ferromagnéticos"
+    type: normal
+    deps: [fio_ferro]
+    icon: Eln:Eln.sharedItem:448
+    desc: |
+      §eBásico§r: sete fios de ferro em "C". §eMédio§r: básico + placas de ferro. §eAvançado§r: médio
+      + mais placas (ou 3 ímãs de ferro no magnetizador). O núcleo vai no transformador: quanto
+      melhor, §bmenos perda§r na conversão. Faça um básico e um médio.
+    tasks:
+      - get: [Eln:Eln.sharedItem:448, Eln:Eln.sharedItem:449]
+    rewards:
+      - xp: 3
+      - item: Eln:Eln.sharedItem:4161 x12
+
+  - id: quadro_transformador
+    title: "Quadro do Transformador"
+    type: normal
+    deps: [fio_ferro]
+    icon: Eln:Eln.sharedItem:7733
+    desc: |
+      Oito fios de ferro em anel = §eQuadro do Transformador§r (Casing). Vai no transformador e no
+      Condensador Portátil. Faça §e2§r.
+    tasks:
+      - get: Eln:Eln.sharedItem:7733 x2
+    rewards:
+      - xp: 2
+      - item: Eln:Eln.sharedItem:4161 x8
+
+  - id: transformador
+    title: "Transformador T1"
+    type: main
+    deps: [nucleos, quadro_transformador, cabo_mv]
+    icon: Eln:Eln.sharedItem:449
+    # real: Eln:Eln.TransparentNode:130 (DC-DC Converter); Variável = 129
+    desc: |
+      Fios de cobre e ferro = §eTransformador T1§r (DC-DC Converter). Ele tem três espaços: o
+      §bnúcleo ferromagnético§r, o quadro e §bpilhas de cabos§r de cada lado.
+
+      A regra de ouro (do próprio tooltip): §ea razão de tensão é proporcional à razão entre as
+      quantidades de cabos§r. 4 cabos de um lado e 16 do outro = multiplica por 4 (50 V → 200 V).
+      O núcleo melhor reduz perdas. Monte um 50 V → 200 V e meça com o multímetro.
+    tasks:
+      - check
+    rewards:
+      - xp: 4
+      - choice: [Eln:Eln.sharedItem:450, Eln:Eln.sharedItem:7733 x2, Eln:Eln.sharedItem:4160 x16]
+
+  - id: fusiveis
+    title: "Fusíveis de Chumbo"
+    type: main
+    deps: [cabo_hv, seguranca]
+    icon: Eln:Eln.sharedItem:6279
+    desc: |
+      Borracha + cabo + borracha = §e4 Fusíveis§r da tensão do cabo usado. Num §eSoquete para
+      Fusível§r (dois fios de ferro), ele §cderrete se a corrente passar do limite§r e salva
+      tudo o que vem depois. Fusível queimado vira §eFusível Queimado§r — troque.
+
+      Faça fusíveis de baixa, média e alta tensão.
+    tasks:
+      - get: [Eln:Eln.sharedItem:6279 x4, Eln:Eln.sharedItem:6280 x4, Eln:Eln.sharedItem:6281 x4]
+    rewards:
+      - xp: 4
+      - choice: [ore:itemRubber x16, ore:ingotLead x6, Eln:Eln.sharedItem:4161 x12]
+
+  - id: disjuntor
+    title: "Disjuntor"
+    type: normal
+    deps: [protecoes_bateria, rele]
+    icon: Eln:Eln.sharedItem:321
+    # real: Eln:Eln.SixNode:6272
+    desc: |
+      Proteção contra sobretensão + Relé de Alta Tensão + proteção contra sobreaquecimento =
+      §eDisjuntor§r. Ele abre o contato se a tensão passar de um limite ajustável §bou§r se a
+      corrente passar do limite do cabo — e você religa depois de corrigir o problema.
+    tasks:
+      - check
+    rewards:
+      - xp: 3
+      - item: Eln:Eln.sharedItem:321 x2
+
+  - id: interruptores
+    title: "Interruptores"
+    type: normal
+    deps: [cabo_mv]
+    icon: minecraft:lever
+    # real: Interruptor BT 6209, MT 6210, AT 6208, EAT 6212 (SixNode)
+    desc: |
+      Interruptores manuais existem para cada tensão (baixa, média, alta e extrema), feitos com
+      fios de cobre, borracha e dois cabos da tensão. Clique para abrir/fechar o circuito.
+      §cDesligue antes de mexer na fiação!§r
+    tasks:
+      - check
+    rewards:
+      - xp: 2
+      - item: ore:itemRubber x8
+
+  - id: medidor_energia
+    title: "Medidor de Energia"
+    type: optional
+    deps: [chip_basico]
+    icon: Eln:Eln.sharedItem:7680
+    # real: Eln:Eln.SixNode:6276; Avançado 6277
+    desc: |
+      O §eMedidor de Energia Elétrica§r conta a energia que passa do lado §cvermelho§r para o
+      §9azul§r, em joules. Tem modo §bpré-pago§r: defina um crédito e, quando zera, ele abre o
+      contato. Com senha! Ótimo para "vender" energia ao vizinho.
+    tasks:
+      - check
+    rewards:
+      - loot: comum
+
+  - id: passivos
+    title: "Componentes Passivos"
+    type: optional
+    deps: [aterramento, fio_cobre]
+    icon: Eln:Eln.sharedItem:8
+    # real: Resistor 6180, Indutor 6178, Capacitor 6176, Diodo 10A 6144, Reostato 6181, Termistor 6182
+    desc: |
+      Para quem quer montar eletrônica de verdade: §eResistor§r (fios de cobre + pó de carvão),
+      §eIndutor§r (cobre + ferro), §eCapacitor§r (use com Dielétrico), §eDiodos§r de 10 e 25 A
+      (corrente só do ânodo ao cátodo), §eReostato§r e §eTermistor§r. Monte um divisor de tensão
+      com dois resistores e meça com o multímetro.
+    tasks:
+      - check
+    rewards:
+      - loot: incomum
+
+  - id: dieletrico
+    title: "Dielétrico"
+    type: optional
+    deps: [compressor_50v]
+    icon: Eln:Eln.sharedItem:7732
+    desc: |
+      Areia no compressor = §eDielétrico§r. Ele vai nos capacitores do Eln (aumenta a capacitância).
+    tasks:
+      - get: Eln:Eln.sharedItem:7732 x4
+    rewards:
+      - loot: comum
+
+  # ======================================================================
+  # FASE 5 — GERAÇÃO
+  # ======================================================================
+  - id: geracao_info
+    title: "De Onde Vem a Energia?"
+    type: info
+    deps: [bateria_50v]
+    icon: Eln:Eln.sharedItem:640
+    desc: |
+      Fontes de energia do Eln, da mais simples à mais pesada:
+      §e• Painéis solares§r (pequeno, 2×3, com rastreador do sol).
+      §e• Turbina eólica e turbina hidráulica.§r
+      §e• Gerador a combustível 50 V / 200 V§r (combustível líquido).
+      §e• Calor:§r Câmara de Aquecimento (combustível sólido) → cabo térmico → Turbina Térmica.
+      §e• Sistema de eixos:§r Turbina a Vapor / a Combustão / Motor Radial girando um eixo até o
+      Gerador 3200V — com volantes, embreagens e tacômetro.
+
+      Toda fonte tem §btensão nominal§r: use transformadores para casar com a rede.
+    tasks:
+      - check
+    rewards:
+      - xp: 1
+
+  - id: solar_pequeno
+    title: "Pequeno Painel Solar"
+    type: main
+    deps: [geracao_info, silicio, maquina_placa_50v]
+    icon: Eln:Eln.sharedItem:7690
+    # real: Eln:Eln.TransparentNode:3073
+    desc: |
+      Pó de lápis-lazúli, Placa de Silício, ferro e dois cabos LV = §ePequeno Painel Solar§r.
+      Energia de graça durante o dia. Combine com uma bateria para a noite. Monte e confirme.
+    tasks:
+      - check
+    rewards:
+      - xp: 4
+      - choice: [Eln:Eln.sharedItem:579 x8, Eln:Eln.sharedItem:7697 x4, minecraft:dye:4 x16]
+
+  - id: rastreador_solar
+    title: "Regulador do Painel Solar"
+    type: normal
+    deps: [solar_pequeno]
+    icon: minecraft:quartz
+    # real: Eln:Eln.sharedItem:704 (Solar Tracker); Painel Regulável 3074
+    desc: |
+      Vidro, redstone, quartzo e ferro = 4 §eReguladores do Painel Solar§r. Num §ePainel Solar
+      Regulável§r (painel pequeno + ferro), ele faz o painel acompanhar o sol: muito mais energia
+      ao longo do dia.
+    tasks:
+      - check
+    rewards:
+      - xp: 3
+      - item: minecraft:quartz x8
+
+  - id: solar_2x3
+    title: "Painel Solar 2x3"
+    type: normal
+    deps: [solar_pequeno]
+    icon: Eln:Eln.sharedItem:7690
+    # real: Eln:Eln.TransparentNode:3075; Regulável 3076
+    desc: |
+      Seis painéis pequenos + dois blocos de aço (ou de alumínio, ou blocos de máquina avançados)
+      = §ePainel Solar 2x3§r. Com motor e ferro, o 2x3 vira Regulável. Uma fazenda solar começa
+      aqui.
+    tasks:
+      - check
+    rewards:
+      - xp: 3
+      - item: Eln:Eln.sharedItem:7690 x2
+
+  - id: eolica
+    title: "Turbina Eólica"
+    type: main
+    deps: [geracao_info, motor_eletrico, bloco_maquina]
+    icon: minecraft:iron_ingot
+    # real: Eln:Eln.TransparentNode:3136
+    desc: |
+      Placas de ferro, motor e Bloco de Máquina = §eTurbina Eólica§r. Ela gira com o vento — o
+      §eAnemômetro§r mede a velocidade. Lugares altos e abertos rendem mais. Monte e confirme.
+    tasks:
+      - check
+    rewards:
+      - xp: 4
+      - choice: [ore:plateIron x6, Eln:Eln.sharedItem:640, minecraft:iron_ingot x12]
+
+  - id: hidraulica
+    title: "Turbina Hidráulica"
+    type: normal
+    deps: [eolica]
+    icon: minecraft:water_bucket
+    # real: Eln:Eln.TransparentNode:3152
+    desc: |
+      Mesmos ingredientes, outra forma: §eTurbina Hidráulica§r. Água correndo pela turbina gera
+      energia constante, dia e noite. Rios são fábricas esperando por você!
+    tasks:
+      - check
+    rewards:
+      - xp: 3
+      - item: minecraft:water_bucket
+
+  - id: gerador_combustivel
+    title: "Gerador a Combustível"
+    type: normal
+    deps: [geracao_info, regulador_analogico]
+    icon: minecraft:lava_bucket
+    # real: 50V Eln:Eln.TransparentNode:4289; 200V 4290
+    desc: |
+      Placas de ferro, Bloco de Máquina, motor, cabos LV e um §eRegulador Analógico§r = §eGerador a
+      Combustível 50V§r (o de 200 V usa blocos e motor avançados). Ele queima combustível líquido
+      (o tooltip lista os aceitos — gasolina é o principal; o capítulo de Petróleo produz). O tanque
+      dura 1200 s na potência nominal.
+    tasks:
+      - check
+    rewards:
+      - xp: 3
+      - item: minecraft:bucket x2
+
+  - id: regulador_analogico
+    title: "Reguladores"
+    type: normal
+    deps: [chip_basico]
+    icon: minecraft:redstone
+    # real: Regulador 1% Eln:Eln.sharedItem:192; 10% 193; Analógico 200
+    desc: |
+      Redstone e fio de ferro (+ chip básico no analógico) = reguladores on/off (1% e 10%) e o
+      §eRegulador Analógico§r. Eles controlam fornos e geradores mantendo um ponto de ajuste.
+    tasks:
+      - check
+    rewards:
+      - xp: 2
+      - item: minecraft:redstone x16
+
+  - id: camara_aquecimento
+    title: "Câmara de Aquecimento"
+    type: normal
+    deps: [geracao_info, cabo_termico]
+    icon: Eln:Eln.sharedItem:384
+    # real: Câmara de Aquecimento Eln:Eln.TransparentNode:192; Câmara de Combustão 193
+    desc: |
+      Pedras + §eMelhoria da Câmara de Aquecimento§r (4 pedras em losango) + cabo térmico = §eCâmara
+      de Aquecimento§r: queima combustível sólido e empurra §bcalor§r pelo cabo térmico. A versão
+      de ferro com motor, chip e caldeirão é a §eCâmara de Combustão§r, com queimadores de
+      combustível pequeno/médio/grande. Isolamento térmico (lã + pedra) reduz perdas.
+    tasks:
+      - get: [Eln:Eln.sharedItem:384, Eln:Eln.sharedItem:385 x4]
+    rewards:
+      - xp: 3
+      - item: minecraft:coal x16
+
+  - id: cabo_termico
+    title: "Cabo Térmico de Cobre"
+    type: normal
+    deps: [fio_cobre]
+    icon: minecraft:cobblestone
+    # real: Eln:Eln.SixNode:3073
+    desc: |
+      Pedregulho + fio de cobre = §eCabo Térmico de Cobre§r. Ele não leva eletricidade: leva
+      §bcalor§r, da câmara de aquecimento até a turbina térmica ou dissipadores.
+    tasks:
+      - check
+    rewards:
+      - xp: 2
+      - item: minecraft:cobblestone x32
+
+  - id: turbina_termica
+    title: "Turbina Térmica 50V"
+    type: normal
+    deps: [camara_aquecimento, motor_eletrico]
+    icon: Eln:Eln.sharedItem:640
+    # real: 50V Eln:Eln.TransparentNode:257; 200V 264
+    desc: |
+      Motor, dois cabos térmicos, Bloco de Máquina e cabo LV = §eTurbina Térmica 50V§r. Calor de
+      um lado, eletricidade do outro. Carvão virando luz — a usina termelétrica do Registro!
+    tasks:
+      - check
+    rewards:
+      - xp: 3
+      - item: minecraft:coal_block x2
+
+  - id: dissipadores
+    title: "Dissipadores Térmicos"
+    type: optional
+    deps: [cabo_termico]
+    icon: minecraft:packed_ice
+    # real: Passivo Eln:Eln.TransparentNode:4096; 50V 4128; 200V 4130
+    desc: |
+      O §eDissipador Térmico Passivo§r (cobre + cabos térmicos) joga calor fora; as versões ativas
+      com ventoinha (motor) dissipam muito mais. Use para resfriar o que esquenta demais.
+    tasks:
+      - check
+    rewards:
+      - loot: comum
+
+  - id: eixos_info
+    title: "O Sistema de Eixos"
+    type: info
+    deps: [geracao_info]
+    icon: Eln:Eln.sharedItem:7742
+    desc: |
+      Os geradores grandes do Eln são §bmecânicos§r: uma turbina gira um eixo, o eixo gira o
+      §eGerador 3200V§r. Peças (todas com Bloco de Máquina):
+      §e• Eixo, Cruzamento de Eixos e Eixo Fixo§r — levam rotação.
+      §e• Embreagem§r (com discos e pinos) — acopla/desacopla.
+      §e• Volante (Flywheel)§r de chumbo — guarda inércia. §cEm alta rotação ele arremessa quem
+      chega perto!§r
+      §e• Tacômetro§r — mede rad/s e manda sinal.
+      §e• Manivela (Crank Shaft)§r — você gira na mão.
+      Cada turbina tem rad/s ótimo e máximo: passe do máximo e o eixo se destrói.
+    tasks:
+      - check
+    rewards:
+      - xp: 1
+
+  - id: turbina_vapor
+    title: "Turbina a Vapor"
+    type: normal
+    deps: [eixos_info, bloco_avancado]
+    icon: minecraft:water_bucket
+    # real: Eln:Eln.TransparentNode:265; Grande 278
+    desc: |
+      Alumínio, um bloco de alumínio e Bloco de Máquina Avançado = §eTurbina a Vapor§r. Ela
+      transforma vapor (de caldeiras de outros mods) em rotação no eixo. O Eln aceita alumínio de
+      qualquer mod — inclusive o Arc Clay Ingot do próprio Eln.
+    tasks:
+      - check
+    rewards:
+      - xp: 3
+      - item: ore:ingotAluminum x4
+
+  - id: turbina_combustao
+    title: "Turbina a Combustão"
+    type: normal
+    deps: [eixos_info, motor_avancado]
+    icon: minecraft:blaze_powder
+    # real: Eln:Eln.TransparentNode:267; Grande 279; Motor Radial 275
+    desc: |
+      Motor avançado, aço, bloco de aço, cabo térmico e Bloco Avançado = §eTurbina a Combustão§r.
+      Ela queima combustíveis gasosos/líquidos direto no eixo (o tooltip mostra os fluidos e o
+      consumo em mB/s). O §eMotor Radial§r é outra opção de propulsão.
+    tasks:
+      - check
+    rewards:
+      - xp: 3
+      - item: ore:ingotSteel x4
+
+  - id: gerador_3200
+    title: "Gerador 3200V"
+    type: milestone
+    deps: [turbina_vapor, turbina_combustao, cabo_vhv]
+    deps_any: true
+    icon: Eln:Eln.sharedItem:641
+    banner: "Gerador 3200V"
+    subtitle: "Mecânica vira eletricidade"
+    # real: Gerador Eln:Eln.TransparentNode:266; Grande 280; Motor de Partida 272
+    desc: |
+      Quatro motores avançados, alumínio, Bloco de Máquina Avançado e Cabo de Alta Tensão =
+      §eGerador 3200V§r. Acople ao eixo de uma turbina e ele entrega energia em extrema alta
+      tensão (VHV). Ele também funciona ao contrário, como motor — mas mal.
+
+      Herói, isto é uma usina de verdade: vapor ou combustão girando aço, aço girando cobre,
+      cobre empurrando elétrons por quilômetros. Leve a energia para a base com Cabo VHV e desça
+      a tensão com transformadores. Que espetáculo!
+    tasks:
+      - get: [Eln:Eln.sharedItem:641 x4, Eln:Eln.sharedItem:7703]
+    rewards:
+      - xp: 10
+      - kit: {name: "Kit da Usina", items: [Eln:Eln.sharedItem:7703 x2, Eln:Eln.sharedItem:641 x2, Eln:Eln.sharedItem:519 x8, Eln:Eln.sharedItem:450 x2]}
+      - loot: raro
+
+  - id: pecas_grandes
+    title: "Peças das Máquinas Grandes"
+    type: optional
+    deps: [gerador_3200]
+    icon: Eln:Eln.sharedItem:7743
+    desc: |
+      As versões §eGrandes§r (Turbina a Vapor, a Combustão, Gerador e Motor de Partida) pedem
+      peças pesadas: §eCarenagem do Motor§r, §eEnrolamento Pesado§r, §eEixo Reforçado§r e §eConjunto
+      de Pás de Turbina§r. Fabrique uma de cada.
+    tasks:
+      - get: [Eln:Eln.sharedItem:7740, Eln:Eln.sharedItem:7741, Eln:Eln.sharedItem:7742, Eln:Eln.sharedItem:7743]
+    rewards:
+      - loot: epico
+
+  - id: embreagem
+    title: "Discos de Embreagem"
+    type: optional
+    deps: [eixos_info, po_tungstenio]
+    icon: Eln:Eln.sharedItem:7734
+    desc: |
+      Placa (ferro, ouro, cobre, chumbo ou carvão) cercada de pó de tungstênio = §eDisco de
+      Embreagem§r. Dois aços = 4 §ePinos de Embreagem§r (impedem que ela patine de novo depois de
+      parar). Faça um disco de ferro e um pino.
+    tasks:
+      - get: [Eln:Eln.sharedItem:7734, Eln:Eln.sharedItem:7735]
+    rewards:
+      - loot: comum
+
+  - id: carregador_baterias
+    title: "Carregador de Baterias"
+    type: normal
+    deps: [bateria_50v, chip_basico]
+    icon: Eln:Eln.sharedItem:516
+    # real: Lento 50V Eln:Eln.SixNode:4224; 50V 4225; 200V 4228
+    desc: |
+      Redstone, fios de ferro, um chip e um cabo = §eCarregador de Baterias§r (50 V ou 200 V).
+      Recarrega itens elétricos: lanternas, pilhas, detector de raio-X, furadeiras portáteis.
+    tasks:
+      - check
+    rewards:
+      - xp: 2
+      - item: minecraft:redstone x12
+
+  # ======================================================================
+  # FASE 6 — SINAIS E LÓGICA
+  # ======================================================================
+  - id: cabo_sinal
+    title: "Cabo de Sinal"
+    type: main
+    deps: [cabo_lv]
+    icon: Eln:Eln.sharedItem:4161
+    # real: Eln:Eln.SixNode:2048
+    desc: |
+      Borracha + dois fios de ferro = §e2 Cabos de Sinal§r. Um sinal é §binformação elétrica entre
+      0 e 5 V§r: 0 V = desligado, 5 V = ligado, e tudo entre eles é um valor analógico. Sensores
+      falam por ele, relés e máquinas obedecem. §cNunca use cabo de sinal para potência.§r
+    tasks:
+      - check
+    rewards:
+      - xp: 4
+      - choice: [ore:itemRubber x8, Eln:Eln.sharedItem:4161 x16, minecraft:redstone x16]
+
+  - id: fontes_sinal
+    title: "Interruptor e Botão de Sinal"
+    type: normal
+    deps: [cabo_sinal]
+    icon: minecraft:stone_button
+    # real: Interruptor de Sinal 6081; Botão 6088; Sinal Analógico 6080 (SixNode)
+    desc: |
+      §eInterruptor de Sinal§r e §eBotão de Sinal§r (borracha, redstone e cabo de sinal) geram 5 V
+      quando acionados. O §eSinal Analógico§r (Signal Trimmer) gera um valor ajustável entre 0 e
+      5 V — ótimo para regular coisas.
+    tasks:
+      - check
+    rewards:
+      - xp: 2
+      - item: ore:itemRubber x8
+
+  - id: rele
+    title: "Relés"
+    type: normal
+    deps: [cabo_sinal, cabo_hv]
+    icon: minecraft:glass_pane
+    # real: Relé BT 6016, MT 6017, AT 6018, EAT 6019, Sinal 6020 (SixNode)
+    desc: |
+      Um §erelé§r conduz corrente §bquando recebe sinal§r. Há um para cada tensão. A entrada se
+      comporta como um Schmitt Trigger, e você escolhe "normalmente aberto" ou "fechado". É assim
+      que o sinal de 5 V liga uma máquina de 200 V. Faça um Relé de Alta Tensão (vai no disjuntor).
+    tasks:
+      - check
+    rewards:
+      - xp: 3
+      - item: minecraft:glass_pane x16
+
+  - id: conversores_redstone
+    title: "Redstone ↔ Sinal"
+    type: normal
+    deps: [cabo_sinal, chip_basico]
+    icon: minecraft:redstone_torch
+    # real: Redstone→Sinal Eln:Eln.SixNode:6912; Sinal→Redstone 6913
+    desc: |
+      Tocha de redstone + chip básico (+ cabo de sinal) = §eConversor de Redstone para Sinal§r; o
+      inverso também existe. Agora pistões, portas e máquinas de outros mods conversam com o Eln.
+    tasks:
+      - check
+    rewards:
+      - xp: 2
+      - item: minecraft:redstone x16
+
+  - id: sensores_ambiente
+    title: "Sensores do Ambiente"
+    type: normal
+    deps: [conversores_redstone]
+    icon: minecraft:daylight_detector
+    # real: Luz Solar 6656; Luz 6657; Clima 6660; Anemômetro 6664; Presença 6668 (SixNode)
+    desc: |
+      O Eln sente o mundo: §eSensor de Luz Solar§r (0 V à noite, máximo ao meio-dia), §eSensor de
+      Luz§r, §eSensor de Clima§r (chuva/tempestade), §eAnemômetro§r (vento) e §eSensor de
+      Presença§r (criaturas se movendo). Monte um poste que acende sozinho ao anoitecer!
+    tasks:
+      - check
+    rewards:
+      - xp: 3
+      - item: minecraft:daylight_detector
+
+  - id: sondas
+    title: "Sondas Elétrica e Térmica"
+    type: normal
+    deps: [chip_sonda_eletrica, cabo_sinal]
+    icon: Eln:Eln.sharedItem:7684
+    # real: Sonda Elétrica 6400; Sonda de Tensão 6401; Sonda Calor 6464; Sonda Temperatura 6465
+    desc: |
+      Encaixadas num cabo, as sondas transformam o que medem em sinal: a §eSonda Elétrica§r mede
+      tensão, corrente ou potência; a de §eCalor§r mede temperatura. Você escolhe que valor vira
+      0% e 100% da saída. Base de qualquer automação séria.
+    tasks:
+      - check
+    rewards:
+      - xp: 3
+      - item: Eln:Eln.sharedItem:7683
+
+  - id: processador_sinal
+    title: "Processador de Sinal"
+    type: main
+    deps: [sondas, chip_basico]
+    icon: Eln:Eln.sharedItem:7680
+    # real: Eln:Eln.SixNode:6980
+    desc: |
+      Ferro, quatro cabos de sinal e um chip básico = §eProcessador de Sinal§r. Ele calcula uma
+      saída a partir de §b3 entradas (A, B, C) usando uma equação§r que você digita — operadores
+      matemáticos, booleanos e funções. Exemplo: "A > 0.5 & B < 0.2". Equações complexas pedem
+      mais redstone na receita interna.
+
+      Com ele, um único bloco faz a lógica de uma fábrica inteira.
+    tasks:
+      - check
+    rewards:
+      - xp: 4
+      - choice: [Eln:Eln.sharedItem:7680 x2, minecraft:redstone x24, Eln:Eln.sharedItem:4161 x16]
+
+  - id: portas_logicas
+    title: "Portas Lógicas"
+    type: optional
+    deps: [processador_sinal]
+    icon: minecraft:comparator
+    # real: chips lógicos/analógicos Eln:Eln.SixNode:7552..7563 e 7936..7941 (E, OU, NÃO, XOU, Flip-Flops, Oscilador, PID...)
+    desc: |
+      Para quem prefere eletrônica discreta: portas §eE, OU, NÃO, NE, NOU, XOU, XNOU, PAL§r,
+      §eFlip-Flops D e JK§r, §eSchmitt Trigger§r, oscilador, amplificador, filtro passa-baixa,
+      regulador PID, sample and hold... Todos com fios, chip e redstone. Monte um oscilador piscando
+      uma lâmpada.
+    tasks:
+      - check
+    rewards:
+      - loot: incomum
+
+  - id: temporizador
+    title: "Temporizador"
+    type: optional
+    deps: [cabo_sinal, chip_basico]
+    icon: minecraft:repeater
+    # real: Eln:Eln.SixNode:6976
+    desc: |
+      Repetidor + chip básico = §eTemporizador§r: um sinal alto mantém a saída ligada por um
+      intervalo configurável (e pode ser reativado). Luzes de escada que apagam sozinhas!
+    tasks:
+      - check
+    rewards:
+      - loot: comum
+
+  - id: monitores
+    title: "Monitores e Indicadores"
+    type: optional
+    deps: [cabo_sinal]
+    icon: minecraft:glass_pane
+    # real: Monitor de Registro 5952; Medidor Analógico 6528; LED de Sinal 6536; Display Digital 7494; Alarme 6593
+    desc: |
+      Mostre o que acontece: §eMonitor de Registro§r (gráfico em tempo real, 256 pontos, imprime),
+      §eMedidor Analógico§r, §eLED de Sinal§r, §eDisplay Digital§r, relógios e §eAlarmes§r
+      (padrão e nuclear!). Um painel de controle bonito é meio caminho andado.
+    tasks:
+      - check
+    rewards:
+      - loot: comum
+
+  - id: sem_fio
+    title: "Sinal Sem Fio"
+    type: normal
+    deps: [cabo_sinal, chip_basico]
+    icon: Eln:Eln.sharedItem:7713
+    # real: Receptor 5888; Transmissor 5896; Repetidor 5904; Botão sem fio 6092; Interruptor sem fio 6096
+    desc: |
+      Dois fios de ferro = §eAntena de Sinal§r. Com ela: §eTransmissor§r, §eReceptor§r e
+      §eRepetidor de Sinal sem Fio§r, mais botão e interruptor sem fio. Cada um usa um canal com
+      nome; o alcance de transmissão do pack é 32 blocos (repetidores estendem).
+    tasks:
+      - get: Eln:Eln.sharedItem:7713 x2
+    rewards:
+      - xp: 3
+      - item: Eln:Eln.sharedItem:4161 x8
+
+  - id: sensores_fumaca
+    title: "Detector de Fumaça"
+    type: optional
+    deps: [sensores_ambiente, chip_avancado]
+    icon: minecraft:flint_and_steel
+    # real: Sensor de Fumaça 6669; Detector de Fumaça 6670
+    desc: |
+      O §eSensor de Fumaça§r aumenta a tensão de saída quando detecta fogo; o §eDetector de
+      Fumaça§r é um alarme a bateria. Indispensável numa refinaria de petróleo, aliás.
+    tasks:
+      - check
+    rewards:
+      - loot: comum
+
+  # ======================================================================
+  # FASE 7 — FERRAMENTAS E EQUIPAMENTOS
+  # ======================================================================
+  - id: pilha
+    title: "Pilha"
+    type: normal
+    deps: [chumbo]
+    icon: Eln:Eln.sharedItem:516
+    # real: Pilha Eln:Eln.sharedItemStackOne:7808; Pacote 7809
+    desc: |
+      Ferro e chumbo = §ePilha§r (Portable Battery); quatro pilhas = §ePacote de Pilha§r. Elas
+      alimentam lanternas, furadeiras portáteis, a serra elétrica e o detector de raio-X.
+      Recarregue no Carregador de Baterias.
+    tasks:
+      - check
+    rewards:
+      - xp: 2
+      - item: ore:ingotLead x4
+
+  - id: lanterna
+    title: "Lanterna"
+    type: optional
+    deps: [pilha, lampada_soquete]
+    icon: minecraft:torch
+    # real: Lanterna Eln:Eln.sharedItemStackOne:7744; Melhorada 7745
+    desc: |
+      Vidro, lâmpada incandescente 50V, ferro e uma pilha = §eLanterna§r. A versão melhorada usa
+      LED e Pacote de Pilha. Luz que você carrega na mão (e recarrega).
+    tasks:
+      - check
+    rewards:
+      - loot: comum
+
+  - id: brocas
+    title: "Brocas de Mineração"
+    type: normal
+    deps: [motor_eletrico, chip_basico, tubo_mineracao]
+    icon: minecraft:iron_pickaxe
+    # real: Básica Eln:Eln.sharedItemStackOne:960; Média 961; Avançada 962; Turbo 963; Irresponsável 964
+    desc: |
+      Picareta de ferro, Tubo de Mineração, motor e chips = §eBroca de Mineração Básica§r. Ela
+      evolui: Média (diamante), Avançada (picareta de diamante + motores avançados), Turbo
+      (grafite + diamante sintético) e a §cIrresponsável§r (8 diamantes sintéticos). As brocas são
+      peças da Mineradora — e, com pilha, viram a §eBroca Elétrica§r portátil.
+    tasks:
+      - check
+    rewards:
+      - xp: 3
+      - item: minecraft:diamond x2
+
+  - id: serra_eletrica
+    title: "Serra Elétrica"
+    type: optional
+    deps: [pilha, motor_eletrico]
+    icon: minecraft:iron_axe
+    # real: Eln:Eln.sharedItemStackOne:7756
+    desc: |
+      Machado de ferro, motor e pilha = §eSerra Elétrica§r. Lenhador industrial.
+    tasks:
+      - check
+    rewards:
+      - loot: comum
+
+  - id: escaner_minerio
+    title: "Circuito Escaneador de Minério"
+    type: normal
+    deps: [chip_basico]
+    icon: minecraft:gold_ingot
+    # real: Eln:Eln.sharedItem:1024 (Ore Scanner); Raio-X Eln:Eln.sharedItemStackOne:7840
+    desc: |
+      Fios de ferro, ouro, redstone e chip básico = §eCircuito Escaneador de Minério§r, peça da
+      Mineradora. Com pilha e chip avançado, vira o §eDetector de Minério Raio-X§r portátil
+      (alcance de 5 blocos, enxerga minérios de outros mods também — config do pack).
+    tasks:
+      - check
+    rewards:
+      - xp: 3
+      - item: minecraft:gold_ingot x4
+
+  - id: tubo_mineracao
+    title: "Tubo de Mineração"
+    type: normal
+    deps: [liga]
+    icon: Eln:Eln.sharedItem:519
+    # real: Eln:Eln.sharedItem:1088 (Mining Pipe)
+    desc: |
+      Duas barras de aço-tungstênio = §e12 Tubos de Mineração§r. A Mineradora desce por eles: um
+      tubo por bloco de profundidade.
+    tasks:
+      - check
+    rewards:
+      - xp: 2
+      - item: Eln:Eln.sharedItem:519 x2
+
+  - id: mineradora
+    title: "Mineradora 800V"
+    type: milestone
+    deps: [brocas, escaner_minerio, tubo_mineracao, maquinas_200v, cabo_hv]
+    icon: minecraft:diamond_pickaxe
+    banner: "Mineradora 800V"
+    subtitle: "O Auto Miner"
+    # real: Eln:Eln.TransparentNode:2688
+    desc: |
+      Motores avançados, circuito avançado, Blocos de Máquina Avançados, o Escaneador de Minério e
+      Tubo de Mineração = §eMineradora 800V§r (Auto Miner).
+
+      Coloque um §bbaú atrás dela§r, uma broca, o escaneador e tubos nos espaços. Ela cava um poço
+      estreito e, depois de 10 blocos de profundidade, §bextrai minérios num raio de 10 blocos§r
+      (raio configurado no pack). Modo Toque Suave: metade da velocidade, triplo do consumo.
+      Precisa de §c800 V§r — Cabo de Alta Tensão e um transformador.
+
+      Herói, você automatizou a mineração com física de verdade. Os Antigos ficariam com inveja!
+    tasks:
+      - get: [Eln:Eln.sharedItem:641 x2, Eln:Eln.sharedItem:7703 x2, Eln:Eln.sharedItem:7681]
+    rewards:
+      - xp: 10
+      - kit: {name: "Kit do Minerador Elétrico", items: [Eln:Eln.sharedItem:519 x16, Eln:Eln.Ore:5 x8, Eln:Eln.Ore:4 x16, minecraft:diamond x2]}
+      - loot: raro
+
+  - id: ferramentas_cobre
+    title: "Ferramentas de Cobre"
+    type: optional
+    deps: [cobre]
+    icon: {id: "Eln:Eln.Copper Pickaxe"}
+    desc: |
+      O Eln traz um jogo completo de ferramentas e armadura de cobre — um degrau entre pedra e
+      ferro. Faça a picareta e a espada.
+    tasks:
+      - get: [{id: "Eln:Eln.Copper Pickaxe"}, {id: "Eln:Eln.Copper Sword"}]
+    rewards:
+      - loot: comum
+
+  - id: armadura_cobre
+    title: "Armadura de Cobre"
+    type: optional
+    deps: [ferramentas_cobre]
+    icon: {id: "Eln:Eln.Copper Chestplate"}
+    desc: |
+      Elmo, peitoral, calça e botas de cobre. Brilha bonito no sol.
+    tasks:
+      - get: [{id: "Eln:Eln.Copper Helmet"}, {id: "Eln:Eln.Copper Chestplate"}, {id: "Eln:Eln.Copper Leggings"}, {id: "Eln:Eln.Copper Boots"}]
+    rewards:
+      - loot: comum
+
+  - id: condensador_portatil
+    title: "Condensador Portátil"
+    type: normal
+    deps: [quadro_transformador]
+    icon: Eln:Eln.sharedItem:7733
+    # real: Eln:Eln.sharedItemStackOne:7824; Pacote 7825
+    desc: |
+      Redstone, fios de ferro e um Quadro do Transformador = §eCondensador Portátil§r. Ele guarda
+      energia e alimenta a Armadura de Grafeno.
+    tasks:
+      - check
+    rewards:
+      - xp: 2
+      - item: minecraft:redstone x8
+
+  - id: armadura_grafeno
+    title: "Armadura de Grafeno"
+    type: normal
+    deps: [condensador_portatil, compressor_50v]
+    icon: {id: "Eln:Eln.E-Coal Chestplate"}
+    desc: |
+      Placas de Carvão + um Condensador Portátil em cada peça = §eArmadura de Grafeno§r (E-Coal).
+      Uma armadura com condensador embutido — confira o tooltip de cada peça para ver a carga.
+      Faça as quatro.
+    tasks:
+      - get: [{id: "Eln:Eln.E-Coal Helmet"}, {id: "Eln:Eln.E-Coal Chestplate"}, {id: "Eln:Eln.E-Coal Leggings"}, {id: "Eln:Eln.E-Coal Boots"}]
+    rewards:
+      - xp: 3
+      - item: Eln:Eln.sharedItem:7692 x8
+
+  - id: rolos_pintura
+    title: "Rolos de Pintura"
+    type: optional
+    deps: [cabo_lv]
+    icon: minecraft:wool
+    # real: Eln:Eln.sharedItemStackOne:7616.. (Brush)
+    desc: |
+      Lã + fio de ferro = rolo de pintura; com corante, ele ganha cor. Pinte cabos para que
+      §bcabos de cores diferentes não se conectem§r no mesmo bloco — essencial para painéis cheios.
+    tasks:
+      - check
+    rewards:
+      - loot: comum
+
+  # ======================================================================
+  # FASE 8 — FORNO A ARCO, GRAFITE E ALTA TECNOLOGIA
+  # ======================================================================
+  - id: grafite
+    title: "Barras de Grafite"
+    type: normal
+    deps: [compressor_50v]
+    icon: Eln:Eln.sharedItem:4416
+    desc: |
+      Quatro Placas de Carvão no compressor = §eBarra de Grafite§r. Junte barras na bancada até
+      formar §e4x Barras de Grafite§r. O Forno a Arco e a Broca Turbo usam grafite.
+    tasks:
+      - get: [Eln:Eln.sharedItem:4416 x2, Eln:Eln.sharedItem:4419]
+    rewards:
+      - xp: 3
+      - item: Eln:Eln.sharedItem:7692 x4
+
+  - id: diamante_sintetico
+    title: "Diamante Sintético"
+    type: normal
+    deps: [grafite]
+    icon: Eln:Eln.sharedItem:4420
+    desc: |
+      Comprima um conjunto de §e4x Barras de Grafite§r: sai um §eDiamante Sintético§r (gasta
+      muita energia). Ele é peça do Forno a Arco e das brocas Turbo e Irresponsável.
+    tasks:
+      - get: Eln:Eln.sharedItem:4420
+    rewards:
+      - xp: 3
+      - item: Eln:Eln.sharedItem:4416 x4
+
+  - id: forno_arco
+    title: "Forno a Arco 800V"
+    type: main
+    deps: [diamante_sintetico, bloco_avancado, cabo_hv]
+    icon: Eln:Eln.sharedItem:4418
+    # real: Eln:Eln.TransparentNode:2176
+    desc: |
+      Aço-tungstênio, 3x Barras de Grafite, placas de ouro, Bloco Avançado e Diamante Sintético =
+      §eForno a Arco 800V§r. Receitas (do JAR): minério → 2 lingotes (ferro, ouro, cobre, chumbo,
+      tungstênio), minério de carvão → 2 carvões, de redstone → 6 redstones, de diamante/esmeralda
+      → 2; pó de liga → barra de liga; §e2 argilas → Arc Clay Ingot§r (alumínio!), §eferro → Arc
+      Metal Ingot§r (aço!) e Lata de Água → Lata de Água de Arco.
+    tasks:
+      - check
+    rewards:
+      - xp: 4
+      - choice: [Eln:Eln.sharedItem:4419, minecraft:clay_ball x32, minecraft:iron_ore x16]
+
+  - id: aluminio_arco
+    title: "Alumínio e Aço de Arco"
+    type: normal
+    deps: [forno_arco]
+    icon: Eln:Eln.sharedItem:4422
+    desc: |
+      O §eArc Clay Ingot§r conta como alumínio no OreDictionary e o §eArc Metal Ingot§r como aço.
+      O Eln fabrica sozinho os metais das turbinas grandes e dos postes de transmissão. Junte 8
+      de cada.
+    tasks:
+      - get: [Eln:Eln.sharedItem:4422 x8, Eln:Eln.sharedItem:4423 x8]
+    rewards:
+      - xp: 3
+      - item: minecraft:clay_ball x32
+
+  - id: latas
+    title: "Latas Inertes"
+    type: optional
+    deps: [forno_arco]
+    icon: Eln:Eln.sharedItem:4424
+    desc: |
+      Oito pós de lápis em volta de um pó de diamante = §eLata Inerte§r. Com água vira §eLata de
+      Água§r, que o Forno a Arco transforma em §eLata de Água de Arco§r. E uma lata inerte no
+      Magnetizador vira... pérola do Fim. Sério!
+    tasks:
+      - get: [Eln:Eln.sharedItem:4424, Eln:Eln.sharedItem:4428]
+    rewards:
+      - loot: incomum
+
+  - id: semicondutores
+    title: "Semicondutores"
+    type: optional
+    deps: [chip_avancado]
+    icon: Eln:Eln.sharedItem:8065
+    desc: |
+      O §eFabricador§r (Fabricator) cria chips a partir de placas de silício e de cobre: §eWafer de
+      Silício§r, §eTransistor§r, §eMemória Nibble§r e §eUnidade Lógica Aritmética§r. O §eTermistor
+      NTC§r se faz na bancada (fios de cobre + pó de silício). Junte um Transistor e um NTC.
+    tasks:
+      - get: [Eln:Eln.sharedItem:8065, Eln:Eln.sharedItem:8066]
+    rewards:
+      - loot: incomum
+
+  - id: incubadora
+    title: "Incubadora de Ovo"
+    type: optional
+    deps: [resistencias, chip_basico]
+    icon: minecraft:egg
+    # real: Eln:Eln.TransparentNode:2624
+    desc: |
+      Ferro, vidro, uma pequena resistência de tungstênio 50 V e chip = §eIncubadora de Ovo 50V§r:
+      choca ovos de galinha. Galinheiro elétrico!
+    tasks:
+      - check
+    rewards:
+      - loot: comum
+
+  - id: filtros
+    title: "Filtros de Entidade"
+    type: optional
+    deps: [sensores_ambiente]
+    icon: Eln:Eln.sharedItem:7713
+    # real: Jogador 7720; Monstro 7721; Animal 7722 (sharedItem)
+    desc: |
+      Vidro + corante = §eFiltros§r de Jogador (verde), Monstro (vermelho) e Animal (lápis). Eles
+      restringem o que o Sensor de Presença detecta — porta que só abre para você!
+    tasks:
+      - check
+    rewards:
+      - loot: comum
+
+  - id: teletransportador
+    title: "Teletransportador Experimental"
+    type: optional
+    deps: [chip_avancado, bloco_avancado]
+    icon: minecraft:ender_pearl
+    # real: Eln:Eln.TransparentNode:4160
+    desc: |
+      Seis circuitos avançados e dois Blocos Avançados = §eTeletransportador Experimental§r. Dê um
+      nome a cada um, escolha o destino e alimente: ele mostra a energia necessária pela
+      distância. "É experimental!", avisa o próprio tooltip.
+    tasks:
+      - check
+    rewards:
+      - loot: raro
+
+  - id: antenas_energia
+    title: "Energia Sem Fio"
+    type: optional
+    deps: [chip_avancado, maquina_placa_50v]
+    icon: minecraft:iron_bars
+    # real: Antenas TransparentNode:448..453 (transmissora/receptora baixa, média e alta)
+    desc: |
+      Antenas §eTransmissoras§r e §eReceptoras§r de energia (baixa, média e alta potência) mandam
+      energia pelo ar, com eficiência que depende da distância. Útil para torres isoladas.
+    tasks:
+      - check
+    rewards:
+      - loot: incomum
+
+  - id: postes_transmissao
+    title: "Postes e Torres de Transmissão"
+    type: normal
+    deps: [cabo_vhv, transformador]
+    icon: Eln:Eln.sharedItem:4423
+    # real: Poste T1 / com Transformador / Torre T2 / Transformador T2 / Grid Switch (TransparentNode:7875..7880)
+    desc: |
+      Toras e alumínio (ou aço) fazem o §ePoste de Transmissão§r; existe a versão com transformador,
+      a §eTorre de Transmissão§r (T2) e o §eTransformador T2§r para a rede. Com eles você leva a
+      energia do Gerador 3200V por longas distâncias, do jeito que a sua cidade faz.
+    tasks:
+      - check
+    rewards:
+      - xp: 3
+      - item: ore:ingotAluminum x8
+
+  - id: torre_defesa
+    title: "Torre de Defesa 800V"
+    type: optional
+    deps: [forno_arco, sensores_ambiente]
+    icon: minecraft:arrow
+    # real: TransparentNode (800V Defence Turret)
+    desc: |
+      Sim, o Eln tem uma §eTorre de Defesa 800V§r que atira em criaturas por perto. §cEla consome
+      muita energia e pode mirar em quem você não quer§r — leia o tooltip e configure antes de
+      ligar perto de outros jogadores. Confira a receita no jogo.
+    tasks:
+      - check
+    rewards:
+      - loot: incomum
+
+  # ======================================================================
+  # FASE 9 — INTEGRAÇÃO
+  # ======================================================================
+  - id: exportador
+    title: "Exportador de Energia"
+    type: main
+    deps: [cabo_hv, chip_avancado]
+    icon: Eln:eln.EnergyConverter
+    desc: |
+      Fios de ferro, Cabo de Alta Tensão, circuito avançado e ouro = §eExportador de Energia§r. Ele
+      converte energia do Eln para outros mods. Taxas do pack: §e3 J do Eln = 1 EU (IC2)§r e §e3 J
+      = 4 RF (Thermal)§r, além de OpenComputers.
+
+      O Eln não importa energia de volta — ele é a usina, os outros são os clientes. Agora a sua
+      Mineradora divide a rede com o Pulverizador do Thermal!
+    tasks:
+      - get: Eln:eln.EnergyConverter
+    rewards:
+      - xp: 4
+      - choice: [Eln:Eln.sharedItem:7681 x2, minecraft:gold_ingot x6, Eln:Eln.sharedItem:4161 x16]
+
+  - id: sonda_computador
+    title: "Sonda para Computadores"
+    type: optional
+    deps: [exportador, sem_fio]
+    icon: Eln:eln.ElnProbe
+    desc: |
+      Cabos de sinal, transmissor e receptor sem fio e circuito avançado = §eSonda Periférico
+      CC/OC§r. Ela deixa computadores do ComputerCraft/OpenComputers lerem e escreverem sinais do
+      Eln. Programe a sua usina!
+    tasks:
+      - get: Eln:eln.ElnProbe
+    rewards:
+      - loot: incomum
+
+  - id: agua_quente
+    title: "Água Quente e Fria"
+    type: optional
+    deps: [camara_aquecimento]
+    icon: Eln:hot_water_bucket
+    desc: |
+      Este build do Eln registra os fluidos §eÁgua Quente§r e §eÁgua Fria§r, ligados ao sistema
+      térmico (o Trocador de Calor Térmico, por exemplo, aquece com o refrigerante quente do IC2).
+      Procure no NEI quais aparelhos produzem e usam cada um, e encha um balde.
+    tasks:
+      - one_of: [Eln:hot_water_bucket, Eln:cold_water_bucket]
+    rewards:
+      - loot: comum
+
+
+  # ======================================================================
+  # EXTRAS
+  # ======================================================================
+  - id: placa_silicio
+    title: "Placa de Silício"
+    type: normal
+    deps: [silicio, maquina_placa_50v]
+    icon: Eln:Eln.sharedItem:7690
+    desc: |
+      Na Máquina de Placa, §e4 barras de silício → 1 Placa de Silício§r. É a célula do Pequeno
+      Painel Solar e matéria-prima do Fabricador. Faça §e2§r.
+    tasks:
+      - get: Eln:Eln.sharedItem:7690 x2
+    rewards:
+      - xp: 2
+      - item: Eln:Eln.sharedItem:7697 x4
+
+  - id: nucleo_avancado
+    title: "Núcleo Ferromagnético Avançado"
+    type: normal
+    deps: [nucleos, magnetizador_50v]
+    icon: Eln:Eln.sharedItem:450
+    desc: |
+      Médio + placas de ferro na bancada, ou 3 Ímãs de Ferro no Magnetizador = §eNúcleo
+      Ferromagnético Avançado§r. O melhor núcleo de transformador: quase sem perdas. As linhas de
+      transmissão (Transformador T2) também pedem.
+    tasks:
+      - get: Eln:Eln.sharedItem:450
+    rewards:
+      - xp: 3
+      - item: Eln:Eln.sharedItem:7708 x2
+
+  - id: pos_catalogo
+    title: "Pós Diversos"
+    type: optional
+    deps: [pos_macerador]
+    icon: Eln:Eln.sharedItem:580
+    desc: |
+      O Eln tem pó de quase tudo: §eouro, chumbo, lápis-lazúli e diamante§r. O pó de lápis vai no
+      painel solar e na Lata Inerte, o de diamante na Lata Inerte. Junte um de cada.
+    tasks:
+      - get: [Eln:Eln.sharedItem:7, Eln:Eln.sharedItem:5, Eln:Eln.sharedItem:579, Eln:Eln.sharedItem:580]
+    rewards:
+      - loot: comum
+
+  - id: po_cinabrio
+    title: "Pó de Cinábrio"
+    type: optional
+    deps: [cinabrio, macerador_50v]
+    icon: Eln:Eln.sharedItem:10
+    desc: |
+      Cinábrio no macerador (ou com o Martelo do IE) = §ePó de Cinábrio§r. Na fornalha, mercúrio.
+    tasks:
+      - get: Eln:Eln.sharedItem:10 x2
+    rewards:
+      - loot: comum
+
+  - id: blocos_arco
+    title: "Blocos de Arco"
+    type: optional
+    deps: [aluminio_arco]
+    icon: Eln:Eln.arc_clay_block
+    desc: |
+      Nove lingotes de arco = §eArc Clay Block§r (bloco de alumínio no oredict) ou §eArc Metal
+      Block§r (bloco de aço). O Painel Solar 2x3 aceita blocos de alumínio e de aço.
+    tasks:
+      - get: [Eln:Eln.arc_clay_block, Eln:Eln.arc_metal_block]
+    rewards:
+      - loot: incomum
+
+  - id: memoria
+    title: "Memória e ULA"
+    type: optional
+    deps: [semicondutores]
+    icon: Eln:Eln.sharedItem:8068
+    desc: |
+      Do Fabricador saem também o §eChip de Memória Nibble§r e a §eUnidade Lógica Aritmética§r.
+      Com eles o Eln começa a parecer um computador de verdade.
+    tasks:
+      - get: [Eln:Eln.sharedItem:8067, Eln:Eln.sharedItem:8068]
+    rewards:
+      - loot: incomum
+
+  - id: fusivel_vhv
+    title: "Fusível de Extrema Alta Tensão"
+    type: normal
+    deps: [fusiveis, cabo_vhv]
+    icon: Eln:Eln.sharedItem:6282
+    desc: |
+      Borracha + Cabo de Extrema Alta Tensão + borracha = §e4 Fusíveis de Extrema Alta Tensão§r.
+      Linha de 3200 V sem fusível é aposta, não engenharia.
+    tasks:
+      - get: Eln:Eln.sharedItem:6282 x4
+    rewards:
+      - xp: 3
+      - item: ore:itemRubber x16
+
+  - id: perdas_info
+    title: "Por Que Minha Linha Perde Energia?"
+    type: info
+    deps: [cabo_mv]
+    icon: Eln:Eln.sharedItem:4160
+    desc: |
+      Todo cabo tem §bresistência em série§r (o tooltip mostra em Ω). A potência perdida no cabo
+      cresce com o §equadrado da corrente§r. Então:
+      §e• Linhas curtas§r perdem menos.
+      §e• Tensão maior§r leva a mesma potência com menos corrente: 4× a tensão = 1/16 da perda.
+      §e• Cabos de corrente§r e várias linhas em paralelo dividem a carga.
+      Use o multímetro nas duas pontas: a diferença de tensão é a sua perda.
+    tasks:
+      - check
+    rewards:
+      - xp: 1
+
+  - id: oficina_50v
+    title: "A Oficina de 50V"
+    type: milestone
+    deps: [maquina_placa_50v, compressor_50v, magnetizador_50v, forno_eletrico, bateria_50v]
+    icon: Eln:Eln.sharedItem:7682
+    banner: "A Oficina de 50V"
+    subtitle: "Macerar, laminar, comprimir, magnetizar"
+    desc: |
+      Macerador dobrando minério, Máquina de Placa laminando cobre, Compressor espremendo carvão
+      em grafite, Magnetizador fazendo ímãs, Forno Elétrico assando sem fumaça — todos numa linha
+      de 50 V alimentada por bateria. Herói, isso é uma oficina elétrica de verdade!
+
+      Para crescer, o caminho é a §bmédia tensão§r: aço-tungstênio, Bloco de Máquina Avançado,
+      motores avançados e transformadores. Respire fundo e meça tudo com o multímetro.
+    tasks:
+      - get: [Eln:Eln.sharedItem:7686 x4, Eln:Eln.sharedItem:7692 x2, Eln:Eln.sharedItem:7708 x2, Eln:Eln.sharedItem:577 x8]
+    rewards:
+      - xp: 8
+      - kit: {name: "Kit do Eletricista 50V", items: [Eln:Eln.sharedItem:640 x2, Eln:Eln.sharedItem:7682 x2, ore:itemRubber x16, Eln:Eln.sharedItem:4160 x24]}
+      - loot: raro
+
+  - id: rede_transformada
+    title: "Rede Protegida"
+    type: milestone
+    deps: [transformador, fusiveis, disjuntor, nucleo_avancado]
+    icon: Eln:Eln.sharedItem:450
+    banner: "Rede Protegida"
+    subtitle: "Transformadores, fusíveis e disjuntores"
+    desc: |
+      Agora sua rede tem degraus de tensão e guardas em cada degrau: transformadores com núcleo
+      avançado, fusíveis por linha e disjuntores que desarmam antes do desastre.
+
+      Regra de ouro final: §egere em tensão alta, transporte em tensão alta, desça perto da
+      carga§r — e coloque um fusível entre cada etapa. Você aprendeu o que muito engenheiro
+      demora anos para respeitar.
+    tasks:
+      - get: [Eln:Eln.sharedItem:450, Eln:Eln.sharedItem:7733, Eln:Eln.sharedItem:6280 x4, Eln:Eln.sharedItem:6281 x4]
+    rewards:
+      - xp: 8
+      - kit: {name: "Kit da Subestação", items: [Eln:Eln.sharedItem:450 x2, Eln:Eln.sharedItem:7733 x4, Eln:Eln.sharedItem:6279 x8, ore:itemRubber x16]}
+      - loot: raro
+
+  - id: mestre_eletricista
+    title: "Mestre Eletricista"
+    type: milestone
+    deps: [gerador_3200, mineradora, exportador, processador_sinal, fusiveis]
+    icon: Eln:Eln.sharedItem:641
+    banner: "Mestre Eletricista"
+    subtitle: "O Volume da Eletricidade está completo"
+    effect: 6
+    desc: |
+      Você começou com uma resina pingando de uma árvore e uma pilha de carvão. Agora tem
+      turbinas girando eixos, transformadores com núcleo de ferro, fusíveis vigiando cada linha,
+      sensores conversando em 5 V e uma mineradora cavando a 800 V.
+
+      Isso não é mais "um mod de energia". É §beletrotécnica§r, Herói — a mesma que acende as
+      cidades do mundo de onde você veio. Eu aprendi junto com você (e só queimei três cabos
+      vendo você trabalhar).
+
+      O Registro guarda esta página com carinho especial: ela prova que entender vale mais que
+      decorar receitas.
+    tasks:
+      - get: [Eln:eln.EnergyConverter, Eln:Eln.sharedItem:641 x2, Eln:Eln.sharedItem:6282 x4]
+    rewards:
+      - xp: 12
+      - kit: {name: "Kit do Mestre Eletricista", items: [Eln:Eln.sharedItem:7703 x4, Eln:Eln.sharedItem:641 x4, Eln:Eln.sharedItem:450 x2, Eln:Eln.sharedItem:7681 x4]}
+      - loot: epico

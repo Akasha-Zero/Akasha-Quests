@@ -1,0 +1,901 @@
+chapter:
+  id: openblocks
+  title: "OpenBlocks"
+  prefix: ""
+  order: 365
+  icon: OpenBlocks:elevator
+  desc: |
+    §bO Volume dos Achados Curiosos.§r Elevadores de lã, asa-delta, experiência líquida,
+    bigorna automática, uma mala que anda sozinha, tintas, troféus e muitas engenhocas.
+    (OpenBlocks 1.12.20-GTNH + OpenModsLib)
+
+quests:
+  # ======================================================================
+  # INTRODUÇÃO
+  # ======================================================================
+  - id: livro_ob
+    title: "Dominação Mundial com OpenBlocks"
+    type: main
+    icon: OpenBlocks:infoBook
+    desc: |
+      Toda biblioteca que se preze tem aquele livro de capa engraçada na estante. O nosso é este:
+      §e"World Domination with OpenBlocks"§r. Uma bola de argila + um livro na bancada.
+
+      Ele é o manual do mod: cada bloco e item tem uma página com explicação e receita. Sempre que
+      eu disser "confira no livro", é dele que estou falando. Abra e dê uma folheada — prometo que
+      tem bastante coisa divertida aqui.
+    tasks:
+      - get: OpenBlocks:infoBook
+    rewards:
+      - xp: 2
+      - choice: [minecraft:clay_ball x16, minecraft:book x4, minecraft:ender_pearl x2]
+
+  - id: aviso_tumulos
+    title: "Aviso: Túmulos Desligados"
+    type: info
+    deps: [livro_ob]
+    icon: minecraft:skull
+    desc: |
+      O OpenBlocks é famoso pelos §etúmulos§r que guardam seus itens quando você morre. §cNeste pack
+      o bloco de túmulo está desativado§r (`grave=false` na config), então ao morrer os itens caem no
+      chão como no Minecraft normal. Volte rápido para buscá-los!
+
+      A config mantém o backup de inventário do OpenBlocks ativo (o comando §e/ob_inventory§r,
+      usado pela staff, pode restaurar um inventário salvo na morte). Em caso de acidente feio, fale
+      com a equipe do servidor.
+    tasks:
+      - check
+    rewards:
+      - xp: 1
+
+  # ======================================================================
+  # MOBILIDADE
+  # ======================================================================
+  - id: elevador
+    title: "Elevador"
+    type: main
+    deps: [livro_ob]
+    icon: OpenBlocks:elevator
+    desc: |
+      8 lãs em volta de uma pérola do Ender = §eElevador§r. Coloque um elevador acima de outro (pelo
+      menos 3 blocos de distância, até 20 pela config) e, em cima dele: §epule para subir§r e
+      §eagache para descer§r. Simples, silencioso e sem escadas.
+
+      Faça 2 e monte o primeiro andar da sua torre.
+    tasks:
+      - get: OpenBlocks:elevator:* x2
+    rewards:
+      - xp: 2
+      - choice: [minecraft:wool x16, minecraft:ender_pearl x2, minecraft:torch x32]
+
+  - id: elevador_colorido
+    title: "Elevadores Coloridos"
+    type: normal
+    deps: [elevador]
+    icon: OpenBlocks:elevator:14
+    desc: |
+      Clique num elevador com corante e ele muda de cor. O detalhe importante: §eo elevador só leva
+      a outro da mesma cor§r. Assim você monta várias "linhas" no mesmo poço — vermelha para a mina,
+      azul para o porão.
+    tasks:
+      - get: OpenBlocks:elevator:14 x2
+    rewards:
+      - xp: 1
+      - item: minecraft:dye:1 x4
+
+  - id: elevador_giratorio
+    title: "Elevador Giratório"
+    type: optional
+    deps: [elevador]
+    icon: OpenBlocks:elevator_rotating
+    desc: |
+      Um elevador com ferro na receita. Ao chegar, ele §evira você para a direção§r em que foi
+      colocado. Saia do elevador já olhando para a porta, que chique.
+    tasks:
+      - get: OpenBlocks:elevator_rotating:*
+    rewards:
+      - loot: comum
+
+  - id: asa_planador
+    title: "Asas do Planador"
+    type: normal
+    deps: [livro_ob]
+    icon: OpenBlocks:generic
+    desc: |
+      Couro e gravetos formam uma §eAsa do Planador§r. Você vai precisar de duas — uma para cada
+      lado, claro.
+    tasks:
+      - get: OpenBlocks:generic x2
+    rewards:
+      - xp: 1
+      - item: minecraft:leather x6
+
+  - id: planador
+    title: "Planador"
+    type: main
+    deps: [asa_planador]
+    icon: OpenBlocks:hangglider
+    desc: |
+      Duas asas e um graveto = §ePlanador§r. Segure na mão, clique para prendê-lo nas costas e
+      §epule de um lugar alto§r. Agachar acelera (e você perde altura mais rápido).
+
+      §aDica de voo:§r aperte §eV§r para ligar o variômetro acústico — ele "apita" quando há ar
+      subindo (térmicas, ativas no pack). Siga o bip e fique no ar por muito tempo. Eu sempre quis
+      voar... obrigada por me levar junto!
+    tasks:
+      - get: OpenBlocks:hangglider
+    rewards:
+      - xp: 3
+      - choice: [minecraft:feather x16, minecraft:cooked_beef x8, minecraft:leather x8]
+
+  - id: saco_dormir
+    title: "Saco de Dormir"
+    type: normal
+    deps: [livro_ob]
+    icon: OpenBlocks:sleepingBag
+    desc: |
+      Tapetes e lã. Vista o §eSaco de Dormir§r (no slot do peitoral) e durma em qualquer lugar —
+      §esem mudar o seu ponto de renascimento§r. Perfeito para longas expedições.
+    tasks:
+      - get: OpenBlocks:sleepingBag
+    rewards:
+      - xp: 2
+      - item: minecraft:wool x8
+
+  - id: escada_corda
+    title: "Escada de Corda"
+    type: normal
+    deps: [livro_ob]
+    icon: OpenBlocks:ropeladder
+    desc: |
+      Barbante e gravetos = 8 §eEscadas de Corda§r. Coloque uma na borda de um buraco e ela
+      §edesenrola até o chão§r, usando um item da pilha por bloco. Descer em ravinas nunca foi tão
+      fácil.
+    tasks:
+      - get: OpenBlocks:ropeladder x8
+    rewards:
+      - xp: 1
+      - item: minecraft:string x8
+
+  - id: escada_alcapao
+    title: "Escada Cansada"
+    type: optional
+    deps: [livro_ob]
+    icon: OpenBlocks:ladder
+    desc: |
+      Escada + alçapão = §eEscada Cansada§r (Jaded Ladder): ela funciona como escada e alçapão ao
+      mesmo tempo. Acabou aquele pulo desajeitado no topo da escada.
+    tasks:
+      - get: OpenBlocks:ladder
+    rewards:
+      - loot: comum
+
+  - id: andaime
+    title: "Andaime"
+    type: optional
+    deps: [livro_ob]
+    icon: OpenBlocks:scaffolding
+    desc: |
+      8 gravetos em anel = 8 §eAndaimes§r. Construa torres temporárias e elas §esomem sozinhas§r
+      depois de um tempo. Adeus, pilares de terra esquecidos no meio da paisagem!
+    tasks:
+      - get: OpenBlocks:scaffolding x8
+    rewards:
+      - loot: comum
+
+  - id: caminho
+    title: "Caminho"
+    type: optional
+    deps: [livro_ob]
+    icon: OpenBlocks:path
+    desc: |
+      Pedra + pedregulho = 2 §eCaminhos§r. "Não faz nada. Só é bonito!", diz o livro. Às vezes isso
+      basta.
+    tasks:
+      - get: OpenBlocks:path x8
+    rewards:
+      - loot: comum
+
+  - id: bandeira
+    title: "Bandeiras"
+    type: optional
+    deps: [livro_ob]
+    icon: OpenBlocks:flag
+    desc: |
+      Gravetos e tapetes = 3 §eBandeiras§r. Marque o caminho de volta numa caverna; agachado + clique
+      com a bandeira na mão muda a cor. Eu sempre deixo uma no portal, só por garantia.
+    tasks:
+      - get: OpenBlocks:flag x3
+    rewards:
+      - loot: comum
+
+  # ======================================================================
+  # FLUIDOS E EXPERIÊNCIA LÍQUIDA
+  # ======================================================================
+  - id: tanque_ob
+    title: "Tanque"
+    type: main
+    deps: [livro_ob]
+    icon: OpenBlocks:tank
+    desc: |
+      Obsidiana e painéis de vidro = 2 §eTanques§r de §e16 baldes§r cada (config do pack). Tanques
+      lado a lado §edividem o fluido entre si§r e guardam o conteúdo quando quebrados. Encha com
+      baldes ou canos.
+
+      O segredo deles: se o fluido for §eExperiência Líquida§r, clique com a mão vazia para receber o
+      XP de volta. Banco de experiência!
+    tasks:
+      - get: OpenBlocks:tank x2
+    rewards:
+      - xp: 2
+      - choice: [minecraft:obsidian x8, minecraft:glass_pane x16, minecraft:bucket x2]
+
+  - id: dreno_xp
+    title: "Dreno de Experiência"
+    type: main
+    deps: [tanque_ob]
+    icon: OpenBlocks:xpdrain
+    desc: |
+      9 barras de ferro = §eDreno de Experiência§r. Coloque §eem cima de um Tanque§r e fique em pé
+      nele: o seu XP escorre para dentro do tanque como §eExperiência Líquida§r (20 mB por ponto de
+      XP, pela config).
+    tasks:
+      - get: OpenBlocks:xpdrain
+    rewards:
+      - xp: 3
+      - choice: [minecraft:iron_bars x16, minecraft:experience_bottle x4, minecraft:obsidian x4]
+
+  - id: balde_xp
+    title: "Balde de Experiência"
+    type: normal
+    deps: [dreno_xp]
+    icon: OpenBlocks:filledbucket
+    desc: |
+      Encha um balde num tanque com Experiência Líquida: §eBalde de Experiência§r. Carregue XP de um
+      lado para o outro ou alimente máquinas que pedem XP líquido.
+    tasks:
+      - get: OpenBlocks:filledbucket
+    rewards:
+      - xp: 2
+      - item: minecraft:bucket x2
+
+  - id: engarrafador
+    title: "Engarrafador de Experiência"
+    type: normal
+    deps: [dreno_xp]
+    icon: OpenBlocks:xpbottler
+    desc: |
+      Ferro em volta de um frasco de vidro. O §eEngarrafador§r pega Experiência Líquida e enche
+      frascos, criando §eFrascos de Encantamento§r. Ótimo para levar XP no bolso ou para trocar.
+    tasks:
+      - get: OpenBlocks:xpbottler
+    rewards:
+      - xp: 2
+      - item: minecraft:glass_bottle x16
+
+  - id: chuveiro_xp
+    title: "Chuveiro de Experiência"
+    type: optional
+    deps: [dreno_xp]
+    icon: OpenBlocks:xpshower
+    desc: |
+      Ferro e obsidiana. Encostado num tanque de Experiência Líquida, o §eChuveiro§r despeja orbes
+      de XP. Banho de experiência! (Um Dreno ou o Esgoto do MineFactory recolhe de novo.)
+    tasks:
+      - get: OpenBlocks:xpshower
+    rewards:
+      - loot: comum
+
+  - id: funil_vacuo
+    title: "Funil a Vácuo"
+    type: normal
+    deps: [livro_ob]
+    icon: OpenBlocks:vacuumhopper
+    desc: |
+      Funil + obsidiana + olho do Ender. O §eFunil a Vácuo§r §esuga itens e orbes de XP§r ao redor e
+      guarda os itens no inventário e o XP num tanque interno. As abas da interface escolhem por
+      quais lados ele despeja. Embaixo de uma fazenda de mobs, é perfeito.
+    tasks:
+      - get: OpenBlocks:vacuumhopper
+    rewards:
+      - xp: 2
+      - item: minecraft:hopper
+
+  - id: mesa_encantamento_auto
+    title: "Mesa de Encantamento Automática"
+    type: main
+    deps: [dreno_xp]
+    icon: OpenBlocks:autoenchantmenttable
+    desc: |
+      Ferro, redstone e uma mesa de encantamento. Funciona como a mesa comum, mas gasta
+      §eExperiência Líquida§r em vez dos seus níveis — e pode ser totalmente automatizada (abas de
+      entrada/saída na interface). Precisa de estantes em volta para os níveis altos, igualzinho à
+      mesa vanilla.
+    tasks:
+      - get: OpenBlocks:autoenchantmenttable
+    rewards:
+      - xp: 4
+      - choice: [minecraft:bookshelf x8, minecraft:book x8, minecraft:lapis_block x2]
+
+  - id: bigorna_auto
+    title: "Bigorna Automática"
+    type: main
+    deps: [dreno_xp]
+    icon: OpenBlocks:autoanvil
+    desc: |
+      Ferro, redstone e uma bigorna. A §eBigorna Automática§r combina e repara itens com
+      §eExperiência Líquida§r e pode receber/entregar por canos. Clique e arraste a bigorna na aba
+      para girar e escolher os lados. Juntar livros encantados em série ficou fácil.
+    tasks:
+      - get: OpenBlocks:autoanvil
+    rewards:
+      - xp: 4
+      - choice: [minecraft:iron_block x2, minecraft:book x8, minecraft:experience_bottle x8]
+
+  - id: banco_experiencia
+    title: "O Banco de Experiência"
+    type: milestone
+    deps: [mesa_encantamento_auto, bigorna_auto, funil_vacuo, balde_xp]
+    icon: OpenBlocks:autoenchantmenttable
+    banner: "Experiência Líquida"
+    subtitle: "Nunca mais perca um nível"
+    desc: |
+      Um Funil a Vácuo engolindo orbes, um Dreno enchendo os tanques e uma Mesa e uma Bigorna
+      automáticas bebendo desse estoque. Herói, você acabou de criar um §ebanco de experiência§r!
+      Os Antigos guardavam conhecimento em livros; você guarda em tanques. Eu acho lindo.
+
+      Combine com uma fazenda de mobs (Espinhos do Extra Utilities, Esteiras) para encher os
+      tanques sem esforço.
+    tasks:
+      - get: [OpenBlocks:autoenchantmenttable, OpenBlocks:autoanvil, OpenBlocks:vacuumhopper, OpenBlocks:filledbucket]
+    rewards:
+      - xp: 6
+      - kit: {name: "Kit do Banqueiro de XP", items: [OpenBlocks:tank x4, minecraft:experience_bottle x16, minecraft:book x8, minecraft:bookshelf x8, minecraft:lapis_block x2]}
+      - loot: incomum
+
+  - id: borrifador
+    title: "Borrifador"
+    type: normal
+    deps: [tanque_ob]
+    icon: OpenBlocks:sprinkler
+    desc: |
+      Ferro, barras de ferro e uma tocha de redstone. Coloque o §eBorrifador§r §eem cima de um
+      Tanque com água§r: ele fertiliza plantações num raio de §e4 blocos§r. Com farinha de osso no
+      inventário dele, o crescimento acelera ainda mais. Ele também conta como fonte de água para a
+      terra arada.
+    tasks:
+      - get: OpenBlocks:sprinkler
+    rewards:
+      - xp: 2
+      - item: minecraft:dye:15 x16
+
+  - id: esponja_ob
+    title: "Esponja"
+    type: optional
+    deps: [livro_ob]
+    icon: OpenBlocks:sponge
+    desc: |
+      Lã + bola de slime = §eEsponja§r, que limpa pequenos bolsões de água ou lava (raio 3). A
+      §eEsponja no Palito§r faz o mesmo andando com você, mas se desgasta. Em lagos grandes...
+      prepare-se para a bagunça.
+    tasks:
+      - one_of: [OpenBlocks:sponge, OpenBlocks:spongeonastick]
+    rewards:
+      - loot: comum
+
+  # ======================================================================
+  # COMPANHEIROS E BUGIGANGAS
+  # ======================================================================
+  - id: bagagem
+    title: "Bagagem"
+    type: main
+    deps: [livro_ob]
+    icon: OpenBlocks:luggage
+    desc: |
+      Gravetos, um baú e um diamante. Coloque a §eBagagem§r no chão e ela vira seu novo melhor
+      amigo: §esegue você para todo lado e recolhe os itens do chão§r (nom nom nom). Clique para abrir;
+      agachado + clique para guardá-la de volta como item.
+
+      §aSegredo:§r se ela for §eatingida por um raio§r, fica maior e carrega mais coisas. Eu juro que
+      não estou com ciúmes dela.
+    tasks:
+      - get: OpenBlocks:luggage
+    rewards:
+      - xp: 3
+      - choice: [minecraft:chest x2, minecraft:diamond, minecraft:cooked_porkchop x8]
+
+  - id: olho_dourado
+    title: "Olho Dourado"
+    type: normal
+    deps: [livro_ob]
+    icon: OpenBlocks:goldenEye:100
+    desc: |
+      8 pepitas de ouro em volta de um olho do Ender. O §eOlho Dourado§r é um "Olho do Ender" que
+      aponta para §eestruturas§r do mundo (fortalezas, aldeias, templos, minas...). Cada uso gasta
+      carga; recarregue na bancada com §epérolas do Ender§r. Confira no livro como escolher a
+      estrutura.
+    tasks:
+      - get: OpenBlocks:goldenEye:*
+    rewards:
+      - xp: 2
+      - item: minecraft:ender_pearl x2
+
+  - id: cursor
+    title: "Cursor"
+    type: normal
+    deps: [livro_ob]
+    icon: OpenBlocks:cursor
+    desc: |
+      Lã branca em forma de seta. Agachado + clique num bloco para §evincular§r o §eCursor§r; depois,
+      de qualquer lugar (até 64 blocos), use o cursor para "clicar" naquele bloco. §cAtenção:§r cada
+      clique gasta um pouco do seu XP, proporcional à distância.
+    tasks:
+      - get: OpenBlocks:cursor
+    rewards:
+      - xp: 2
+      - item: minecraft:wool x8
+
+  - id: canhao_itens
+    title: "Canhão de Itens"
+    type: optional
+    deps: [cursor]
+    icon: OpenBlocks:cannon
+    desc: |
+      Um ejetor, barras de ferro, ferro e um bloco de redstone. Com sinal de redstone, o §eCanhão§r
+      §edispara os itens§r de um inventário vizinho. Mire com o §ePonteiro§r (lã em forma de seta
+      menor). Entrega expressa por via aérea!
+    tasks:
+      - get: [OpenBlocks:cannon, OpenBlocks:genericUnstackable]
+    rewards:
+      - loot: comum
+
+  - id: dev_null
+    title: "/dev/null"
+    type: normal
+    deps: [livro_ob]
+    icon: OpenBlocks:devnull
+    desc: |
+      Pedregulho + maçã. O §e/dev/null§r tem um slot: coloque, por exemplo, pedregulho. Ao minerar,
+      o pedregulho enche esse slot e §eo excesso é descartado§r automaticamente. Agachado + clique
+      com ele na mão coloca o bloco guardado. Mineração sem inventário lotado!
+    tasks:
+      - get: OpenBlocks:devnull
+    rewards:
+      - xp: 2
+      - item: minecraft:apple x4
+
+  - id: gosmalizador
+    title: "Gosmalizador"
+    type: optional
+    deps: [livro_ob]
+    icon: OpenBlocks:slimalyzer
+    desc: |
+      Ferro, vidro, slime e redstone. Ande com o §eGosmalizador§r na mão: ele acende quando você está
+      num §echunk onde slimes podem nascer§r. A fazenda de slime começa aqui.
+    tasks:
+      - get: OpenBlocks:slimalyzer
+    rewards:
+      - loot: comum
+
+  - id: pedometro
+    title: "Pedômetro"
+    type: optional
+    deps: [livro_ob]
+    icon: OpenBlocks:pedometer
+    desc: |
+      Tábuas, redstone e um relógio. O §ePedômetro§r mede distância, velocidade e tempo de viagem
+      desde o ponto em que você começou a contar. Perfeito para quem gosta de números (oi de novo).
+    tasks:
+      - get: OpenBlocks:pedometer
+    rewards:
+      - loot: comum
+
+  - id: realcador_aldeia
+    title: "Realçador de Aldeões"
+    type: optional
+    deps: [livro_ob]
+    icon: OpenBlocks:village_highlighter
+    desc: |
+      Tábuas, esmeralda e pedregulho. Com sinal de redstone dentro de uma aldeia, ele §edesenha o
+      perímetro dela§r e a área onde Golens de Ferro nascem. Essencial para fazendas de ferro.
+    tasks:
+      - get: OpenBlocks:village_highlighter
+    rewards:
+      - loot: comum
+
+  - id: argila_saborosa
+    title: "Argila Saborosa"
+    type: optional
+    deps: [livro_ob]
+    icon: OpenBlocks:tastyClay
+    desc: |
+      Argila + balde de leite + sementes de cacau = 2 §eArgilas Saborosas§r. Sim, dá para comer.
+      Não, eu não recomendo como dieta principal. É uma das piadinhas do mod.
+    tasks:
+      - get: OpenBlocks:tastyClay
+    rewards:
+      - loot: comum
+
+  - id: borracha_epica
+    title: "Borracha Épica"
+    type: optional
+    deps: [livro_ob]
+    icon: OpenBlocks:epicEraser
+    desc: |
+      Lápis + slime + lã. A §eBorracha Épica§r apaga a "história épica" que alguns itens ganham (o
+      OpenBlocks escreve lendas engraçadas nas descrições de itens). Para quem prefere itens sem
+      passado.
+    tasks:
+      - get: OpenBlocks:epicEraser
+    rewards:
+      - loot: comum
+
+  - id: barra_metal
+    title: "Grande Barra de Metal"
+    type: optional
+    deps: [livro_ob]
+    icon: OpenBlocks:wrench
+    desc: |
+      6 ferros. "Uma ferramenta extremamente sofisticada para transformações de objetos com
+      simetria octaédrica." Ou seja: uma chave inglesa para girar blocos. Eu adoro o humor desse
+      livro.
+    tasks:
+      - get: OpenBlocks:wrench
+    rewards:
+      - loot: comum
+
+  # ======================================================================
+  # REDSTONE E AUTOMAÇÃO SIMPLES
+  # ======================================================================
+  - id: quebrador_blocos
+    title: "Quebrador de Blocos"
+    type: normal
+    deps: [livro_ob]
+    icon: OpenBlocks:blockbreaker
+    desc: |
+      Ferro, pedregulho, redstone e uma picareta de diamante. Com um pulso de redstone, o
+      §eQuebrador de Blocos§r quebra o bloco à frente. Base de geradores de pedregulho e fazendas.
+    tasks:
+      - get: OpenBlocks:blockbreaker
+    rewards:
+      - xp: 2
+      - item: minecraft:redstone x16
+
+  - id: colocador_blocos
+    title: "Colocador de Blocos"
+    type: normal
+    deps: [quebrador_blocos]
+    icon: OpenBlocks:blockPlacer
+    desc: |
+      Ferro, pedregulho, redstone e um pistão. Com um pulso, o §eColocador§r põe à frente o bloco que
+      tiver dentro. Quebrador + Colocador = uma pequena linha de produção.
+    tasks:
+      - get: OpenBlocks:blockPlacer
+    rewards:
+      - xp: 2
+      - item: minecraft:cobblestone x32
+
+  - id: soltador_itens
+    title: "Soltador de Itens"
+    type: optional
+    deps: [quebrador_blocos]
+    icon: OpenBlocks:itemDropper
+    desc: |
+      Como o liberador vanilla, mas §esolta os itens reto para baixo§r. Ótimo para alimentar
+      fornalhas ou funis embaixo sem itens espirrando para os lados.
+    tasks:
+      - get: OpenBlocks:itemDropper
+    rewards:
+      - loot: comum
+
+  - id: ventilador
+    title: "Ventilador"
+    type: optional
+    deps: [livro_ob]
+    icon: OpenBlocks:fan
+    desc: |
+      Barras de ferro, ferro e laje. O §eVentilador§r sopra jogadores, mobs e itens na direção para
+      onde aponta (alcance de 10 blocos, ligado por redstone no pack). Um elevador de vento!
+    tasks:
+      - get: OpenBlocks:fan
+    rewards:
+      - loot: comum
+
+  - id: armadilha_urso
+    title: "Armadilha de Urso"
+    type: optional
+    deps: [livro_ob]
+    icon: OpenBlocks:beartrap
+    desc: |
+      Barras e lingotes de ferro. Clique para armar; o mob que pisar §efica preso§r. Ótima para
+      segurar aquele aldeão fujão.
+    tasks:
+      - get: OpenBlocks:beartrap
+    rewards:
+      - loot: comum
+
+  - id: alvo
+    title: "Alvo"
+    type: optional
+    deps: [livro_ob]
+    icon: OpenBlocks:target
+    desc: |
+      Lã e gravetos. O §eAlvo§r emite um sinal de redstone mais forte quanto mais perto do centro a
+      flecha acertar. Com sinal de redstone ele "levanta". Treino de arco com placar!
+    tasks:
+      - get: OpenBlocks:target
+    rewards:
+      - loot: comum
+
+  - id: botao_grande
+    title: "Botão Grande"
+    type: optional
+    deps: [livro_ob]
+    icon: OpenBlocks:bigbutton
+    desc: |
+      4 botões de pedra. Um §ebotão grande§r de parede. Agachado + clique abre um slot: cada item
+      colocado ali aumenta em 1 tick o tempo em que ele fica pressionado.
+    tasks:
+      - get: OpenBlocks:bigbutton
+    rewards:
+      - loot: comum
+
+  - id: bloco_ceu
+    title: "Bloco do Céu"
+    type: optional
+    deps: [livro_ob]
+    icon: OpenBlocks:sky
+    desc: |
+      Vidro, olhos do Ender e pedra do Fim = 6 §eBlocos do Céu§r. Com sinal de redstone, eles mostram
+      o céu lá de fora — traga a noite estrelada para dentro da base. Há uma versão invertida (com
+      tocha de redstone).
+    tasks:
+      - get: OpenBlocks:sky:*
+    rewards:
+      - loot: comum
+
+  - id: guia_construcao
+    title: "Guia de Construção Aprimorado"
+    type: normal
+    deps: [livro_ob]
+    icon: OpenBlocks:builder_guide
+    desc: |
+      Vidro, redstone, pérolas do Ender e uma tocha. Com redstone, o guia §eprojeta formas em blocos
+      fantasmas§r (esferas, cilindros, pirâmides...) para facilitar a construção; os botões das faces
+      mudam forma e tamanho. A versão aprimorada ainda §ecoloca blocos de verdade§r: clique no bloco
+      central com uma pilha. Cúpulas perfeitas sem calculadora!
+    tasks:
+      - get: OpenBlocks:builder_guide
+    rewards:
+      - xp: 2
+      - item: minecraft:glass x16
+
+  # ======================================================================
+  # DESENHO E PINTURA
+  # ======================================================================
+  - id: lapis_magico
+    title: "Lápis Mágico"
+    type: normal
+    deps: [livro_ob]
+    icon: OpenBlocks:imaginary
+    desc: |
+      Carvão, graveto, olho do Ender e slime. O §eLápis Mágico§r desenha §eblocos imaginários§r:
+      blocos que só existem para quem estiver usando os óculos certos. Cada lápis tem 10 usos. Com
+      corantes saem os §eGizes de Cera Mágicos§r coloridos.
+    tasks:
+      - get: OpenBlocks:imaginary:*
+    rewards:
+      - xp: 2
+      - item: minecraft:coal x8
+
+  - id: oculos_lapis
+    title: "Óculos de Lápis"
+    type: optional
+    deps: [lapis_magico]
+    icon: OpenBlocks:pencilGlasses
+    desc: |
+      Lápis Mágico + papel = §eÓculos de Lápis§r. Com eles você vê (e pisa em) os blocos desenhados a
+      lápis. Os §eÓculos de Giz de Cera§r fazem o mesmo para cada cor de giz. Passarelas secretas,
+      alguém?
+    tasks:
+      - one_of: [OpenBlocks:pencilGlasses, OpenBlocks:crayonGlasses:*]
+    rewards:
+      - loot: comum
+
+  - id: oculos_sonicos
+    title: "Óculos Sônicos"
+    type: optional
+    deps: [livro_ob]
+    icon: OpenBlocks:sonicglasses
+    desc: |
+      Ferro, um capacete de ferro, obsidiana e graveto. "Veja o que você ouve!": os §eÓculos
+      Sônicos§r mostram de onde vêm os sons ao redor. Achar aquele creeper escondido ficou mais
+      fácil.
+    tasks:
+      - get: OpenBlocks:sonicglasses
+    rewards:
+      - loot: comum
+
+  - id: misturador_tinta
+    title: "Misturador de Tinta"
+    type: normal
+    deps: [livro_ob]
+    icon: OpenBlocks:paintmixer
+    desc: |
+      Obsidiana e ferro. No §eMisturador de Tinta§r, ponha um balde de leite (ou uma lata velha) no
+      slot de cima e corantes §eciano, magenta, amarelo e preto§r nos outros, escolha a cor e clique
+      em misturar. Sai uma §eLata de Tinta§r de qualquer cor que você imaginar.
+    tasks:
+      - get: OpenBlocks:paintmixer
+    rewards:
+      - xp: 2
+      - item: minecraft:milk_bucket
+
+  - id: lata_tinta
+    title: "Lata de Tinta"
+    type: normal
+    deps: [misturador_tinta]
+    icon: OpenBlocks:paintcan
+    desc: |
+      Faça uma §eLata de Tinta§r no Misturador. Cada lata pinta um bom número de faces de bloco.
+      Hora de escolher a cor da sua base!
+    tasks:
+      - get: OpenBlocks:paintcan
+    rewards:
+      - xp: 1
+      - item: minecraft:dye:6 x4
+
+  - id: pincel_ob
+    title: "Pincel"
+    type: normal
+    deps: [lata_tinta]
+    icon: OpenBlocks:paintBrush
+    desc: |
+      Lã e gravetos. Molhe o §ePincel§r na Lata de Tinta e clique nos blocos para pintá-los. Funciona
+      em vários blocos vanilla e de outros mods, mas o melhor suporte é a §eTela (Canvas)§r.
+    tasks:
+      - get: OpenBlocks:paintBrush
+    rewards:
+      - xp: 1
+      - item: minecraft:wool x4
+
+  - id: tela
+    title: "Telas"
+    type: optional
+    deps: [pincel_ob]
+    icon: OpenBlocks:canvas
+    desc: |
+      8 papéis + cerca = 9 §eTelas§r, blocos perfeitamente brancos feitos para pintar. Existe também
+      a §eTela de Vidro§r. Monte um mural na entrada da base!
+    tasks:
+      - one_of: [OpenBlocks:canvas x9, OpenBlocks:canvasglass x4]
+    rewards:
+      - loot: comum
+
+  - id: estenceis
+    title: "Estênceis e a Mesa de Desenho"
+    type: optional
+    deps: [pincel_ob]
+    icon: OpenBlocks:drawingtable
+    desc: |
+      §eEstêncil não preparado§r (papel + ferro) + §eLápis de Esboço§r (carvão + gravetos) +
+      bancada = §eMesa de Desenho§r. Na mesa, escolha um padrão para o estêncil, coloque-o num bloco
+      e pinte por cima. Desenhos em paredes, letreiros, logotipos...
+    tasks:
+      - one_of: [OpenBlocks:drawingtable, OpenBlocks:stencil:*]
+    rewards:
+      - loot: comum
+
+  - id: rodo
+    title: "Rodo"
+    type: optional
+    deps: [pincel_ob, esponja_ob]
+    icon: OpenBlocks:squeegee
+    desc: |
+      Esponjas e gravetos. O §eRodo§r §eremove a tinta§r de um lado do bloco (agachado: de todos os
+      lados). Para quando a cor "verde-limão neon" não ficou tão boa quanto parecia.
+    tasks:
+      - get: OpenBlocks:squeegee
+    rewards:
+      - loot: comum
+
+  # ======================================================================
+  # MAPAS, GUINDASTE E TROFÉUS
+  # ======================================================================
+  - id: modulos_mapa
+    title: "Módulos de Mapa"
+    type: optional
+    deps: [livro_ob]
+    icon: OpenBlocks:generic:6
+    desc: |
+      §eMódulo Controlador§r (ouro + redstone) e §eMódulos de Memória§r (redstone + pepitas de ouro)
+      formam o §eMapa Vazio§r do OpenBlocks, que pode ser ampliado com mais memória. A base do
+      Cartógrafo.
+    tasks:
+      - get: [OpenBlocks:generic:6, OpenBlocks:generic:7 x4]
+    rewards:
+      - loot: comum
+
+  - id: cartografo
+    title: "Cartógrafo"
+    type: optional
+    deps: [modulos_mapa]
+    icon: OpenBlocks:cartographer
+    desc: |
+      Base do Assistente (ferro, pérola, redstone) + olho do Ender = §eCartógrafo§r, um pequeno
+      ajudante que desenha §emapas de altura§r com os Mapas Vazios do OpenBlocks. O §eProjetor de
+      Mapa de Altura§r mostra esses mapas como holograma. Confira no livro o passo a passo.
+    tasks:
+      - one_of: [OpenBlocks:cartographer, OpenBlocks:projector]
+    rewards:
+      - loot: incomum
+
+  - id: guindaste
+    title: "Mochila Guindaste"
+    type: optional
+    deps: [livro_ob]
+    icon: OpenBlocks:craneBackpack
+    desc: |
+      Motor do guindaste, ímã, holofotes, linha e couro = §eMochila Guindaste§r; ferro, redstone e
+      pedra luminosa = §eControle do Guindaste§r. Clique direito sobe, agachado desce, esquerdo
+      pega/solta: carregue mobs, itens e até blocos com um ímã pendurado. Absolutamente desnecessário
+      e absolutamente divertido.
+    tasks:
+      - get: [OpenBlocks:craneBackpack, OpenBlocks:craneControl]
+    rewards:
+      - loot: incomum
+
+  - id: trofeu
+    title: "Um Troféu na Estante"
+    type: optional
+    deps: [livro_ob]
+    icon: OpenBlocks:trophy
+    desc: |
+      Monstros e animais têm uma chance §cmuito pequena§r de deixar cair um §eTroféu§r de si mesmos
+      (a fórmula do pack usa a chance base de 0,1% e o seu nível de Pilhagem). Coloque-o na base e
+      clique: ele faz o som (e às vezes uma "ação") da criatura.
+
+      Encontre qualquer troféu. É sorte pura — e eu vou comemorar muito quando acontecer!
+    tasks:
+      - get: OpenBlocks:trophy
+    rewards:
+      - loot: raro
+
+  - id: estacao_doacao
+    title: "Estação de Doação"
+    type: optional
+    deps: [livro_ob]
+    icon: OpenBlocks:donationStation
+    desc: |
+      Um baú cercado de costeletas. Coloque qualquer item e, se o OpenBlocks conhecer a página de
+      doação do autor do mod, ele mostra o link. Uma forma bonita de lembrar que cada Volume do
+      Registro tem alguém que o escreveu.
+    tasks:
+      - get: OpenBlocks:donationStation
+    rewards:
+      - loot: comum
+
+  # ======================================================================
+  # FINAL
+  # ======================================================================
+  - id: mestre_curiosidades
+    title: "Colecionador de Curiosidades"
+    type: milestone
+    deps: [planador, elevador_colorido, banco_experiencia, bagagem, olho_dourado, guia_construcao]
+    icon: OpenBlocks:luggage
+    banner: "Colecionador de Curiosidades"
+    subtitle: "O Volume do OpenBlocks está completo"
+    desc: |
+      Elevadores coloridos, um planador nas costas, experiência engarrafada, uma Bagagem fiel
+      seguindo seus passos e um Olho Dourado apontando o caminho. Herói, o Volume dos Achados
+      Curiosos está reescrito!
+
+      O OpenBlocks não tem uma "progressão" grandiosa — ele tem §equalidade de vida§r. E qualidade de
+      vida, numa jornada tão longa quanto a nossa, vale ouro. Agora vá: os outros Volumes esperam
+      (de elevador, de preferência).
+    tasks:
+      - get: [OpenBlocks:hangglider, OpenBlocks:luggage, OpenBlocks:autoenchantmenttable, OpenBlocks:builder_guide]
+    rewards:
+      - xp: 8
+      - kit: {name: "Baú de Curiosidades", items: [OpenBlocks:elevator x4, OpenBlocks:tank x4, OpenBlocks:ropeladder x16, OpenBlocks:scaffolding x32, minecraft:experience_bottle x16]}
+      - loot: raro

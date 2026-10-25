@@ -1,0 +1,3149 @@
+chapter:
+  id: enderio
+  title: "Ender IO"
+  prefix: ""
+  order: 320
+  icon: EnderIO:itemYetaWrench
+  desc: |
+    §bO Volume das Ligas.§r Moinho SAG, Fundidora de Ligas, condutos que cabem num só bloco,
+    almas engarrafadas, viagens instantâneas e o Aço Negro. (Ender IO 2.10.39 + EnderCore)
+
+quests:
+  # ======================================================================
+  # FASE 0 — AS PRIMEIRAS PEÇAS
+  # ======================================================================
+  - id: engrenagem_basica
+    title: "Engrenagem Básica"
+    type: main
+    icon: EnderIO:itemMachinePart:1
+    desc: |
+      Você sabia que o Volume das Ligas começa com pedregulho e gravetos? É verdade! Os Antigos
+      que escreveram esta página gostavam de começar humilde.
+
+      A §eEngrenagem Básica§r leva 4 pedregulhos e 4 gravetos em volta de um espaço vazio. Ela
+      aparece no Gerador de Stirling, na Chave Yeta, no Gerador a Combustão e em outras peças
+      mecânicas do Ender IO.
+
+      Faça §e4 engrenagens§r — vamos usá-las já, já.
+    tasks:
+      - get: EnderIO:itemMachinePart:1 x4
+    rewards:
+      - xp: 3
+      - choice: [minecraft:cobblestone x32, minecraft:stick x32, minecraft:iron_ingot x6]
+
+  - id: info_rf
+    title: "O Volume das Ligas"
+    type: info
+    deps: [engrenagem_basica]
+    icon: minecraft:redstone
+    desc: |
+      Antes de ligar qualquer coisa, uma conversa rápida (prometo que é rápida!).
+
+      §bO Ender IO funciona com RF§r (Redstone Flux). Ao contrário do EU do IC2, o RF não tem
+      tensões: nenhuma máquina explode por receber energia demais. O limite é só a vazão do
+      conduto e da máquina.
+
+      O coração do mod são as §eligas§r: Aço Elétrico, Liga Energética, Liga Vibrante, Liga de
+      Redstone, Ferro Condutivo, Ferro Pulsante, Aço Negro e Almário — todas feitas na
+      §eFundidora de Ligas§r. Com elas vêm os §econdutos§r (vários num bloco só!), as máquinas
+      de almas e as viagens instantâneas.
+
+      §aDica:§r o NEI mostra as receitas da Fundidora, do Moinho SAG, do Tonel e da Fatia-e-Emenda.
+      Use R/U à vontade!
+    tasks:
+      - check
+    rewards:
+      - xp: 1
+
+  - id: capacitor_basico
+    title: "Capacitor Básico"
+    type: main
+    deps: [engrenagem_basica]
+    icon: EnderIO:itemBasicCapacitor
+    desc: |
+      Todo o Ender IO pulsa através de capacitores. Eles são o "coração" das máquinas — e
+      também o jeito de deixá-las mais rápidas depois.
+
+      O §eCapacitor Básico§r leva 4 lingotes de ouro, 2 redstone e 1 lingote de cobre no centro
+      (qualquer cobre do oredict). Faça §e4§r: um vai para o Chassi de Máquina e os outros vão
+      sobrar para Bancos de Capacitores e luzes.
+
+      §aCuriosidade:§r o pack também tem uma linha alternativa com prata e chumbo — o
+      §eCapacitor de Prata§r. Ele conta como "capacitor básico" nas receitas.
+    tasks:
+      - get: ore:capacitorBasic x4
+    rewards:
+      - xp: 4
+      - choice: [minecraft:gold_ingot x6, minecraft:redstone x16, ore:ingotCopper x8]
+
+  - id: chassi_maquina
+    title: "Chassi de Máquina"
+    type: main
+    deps: [capacitor_basico]
+    icon: EnderIO:itemMachinePart
+    desc: |
+      Toda máquina séria do Ender IO nasce de um §eChassi de Máquina§r: 4 barras de ferro nos
+      cantos, 4 lingotes de ferro nas laterais e um Capacitor Básico no centro.
+
+      Com ele você monta o Moinho SAG, a Fundidora de Ligas, o Tonel, a Estação de Cultivo e
+      muito mais. Faça §e2 chassis§r — os dois primeiros já têm destino certo.
+    tasks:
+      - get: EnderIO:itemMachinePart x2
+    rewards:
+      - xp: 4
+      - choice: [minecraft:iron_ingot x16, minecraft:iron_bars x16, minecraft:gold_ingot x4]
+
+  - id: gerador_stirling
+    title: "Gerador de Stirling"
+    type: main
+    deps: [engrenagem_basica]
+    desc: |
+      Fogo, pistão e engrenagem: a primeira faísca do Volume das Ligas!
+
+      O §eGerador de Stirling§r (5 tijolos de pedra, 1 fornalha, 1 pistão e 2 Engrenagens
+      Básicas) queima qualquer combustível sólido de fornalha e gera §b20 RF/t§r na versão base.
+      Colocando capacitores melhores no espaço de capacitor, ele gera mais e queima mais devagar.
+
+      §aDica:§r carvão vegetal funciona; blocos de carvão duram bem mais. Um baú com funil
+      encostado já garante energia por um bom tempo.
+    tasks:
+      - get: EnderIO:blockStirlingGenerator
+    rewards:
+      - xp: 4
+      - choice: [minecraft:coal x24, minecraft:coal:1 x24, minecraft:coal_block x3]
+
+  - id: moinho_sag
+    title: "Moinho SAG"
+    type: main
+    deps: [chassi_maquina, gerador_stirling]
+    desc: |
+      Ouviu esse barulho de pedra rachando? É o §eMoinho SAG§r — semi-autógeno, para quem gosta
+      de nomes chiques.
+
+      Receita: 3 pederneiras em cima, Chassi de Máquina no centro, lingotes de ferro e um
+      pistão. Ele mói minério em pó (§e1 minério → 2 pós§r, com chance de subprodutos: ferro dá
+      um pouco de estanho ou níquel, ouro dá cobre...) e transforma areia em §eSilício§r.
+
+      §aDica:§r ligue o Stirling encostado no moinho — máquinas do Ender IO aceitam energia
+      por qualquer face.
+    tasks:
+      - get: EnderIO:blockSagMill
+    rewards:
+      - xp: 4
+      - choice: [minecraft:iron_ore x8, minecraft:gold_ore x4, minecraft:flint x16]
+
+  - id: silicio
+    title: "Silício"
+    type: main
+    deps: [moinho_sag]
+    icon: EnderIO:itemMaterial
+    desc: |
+      Areia no Moinho SAG tem §e50% de chance§r de virar §eSilício§r. Parece pouco, mas areia é o
+      que não falta no mundo!
+
+      O silício entra no Aço Elétrico, na Liga de Redstone, nas Células Fotovoltaicas, nas luzes
+      e em várias cabeças da Fatia-e-Emenda. §aBônus:§r é também o silício que o Mekanism usa
+      para fazer Circuitos de Controle no Infusor Metalúrgico.
+
+      Junte §e16 Silícios§r.
+    tasks:
+      - get: ore:itemSilicon x16
+    rewards:
+      - xp: 3
+      - choice: [minecraft:sand x64, minecraft:redstone x16, minecraft:glass x16]
+
+  - id: po_carvao
+    title: "Pó de Carvão"
+    type: normal
+    deps: [moinho_sag]
+    icon: EnderIO:itemPowderIngot
+    desc: |
+      Carvão no Moinho SAG vira §ePó de Carvão§r (com chance de um pouco extra e até de
+      enxofre). Esse pó é ingrediente do Aço Elétrico e do Aço Negro.
+
+      Junte §e16 pós§r. Qualquer pó de carvão do oredict serve — o do IC2 ou do Thermal também.
+    tasks:
+      - get: ore:dustCoal x16
+    rewards:
+      - xp: 2
+      - item: minecraft:coal x16
+
+  - id: bolas_moagem
+    title: "Bolas de Moagem"
+    type: optional
+    deps: [moinho_sag, aco_eletrico]
+    icon: EnderIO:itemGrindingBall
+    desc: |
+      O Moinho SAG tem um espaço para §ebolas de moagem§r. Elas multiplicam a produção principal,
+      aumentam a chance dos subprodutos ou reduzem o gasto de energia — e se desgastam com o
+      uso (a pederneira também serve, só que é a mais fraca).
+
+      Cada liga do Ender IO vira 5 bolas na bancada (cruz de 5 lingotes): Aço Elétrico, Liga
+      Energética, Liga Vibrante, Aço Negro... Passe o mouse no espaço da bola dentro do moinho
+      para ver os bônus de cada uma. Faça qualquer bola!
+    tasks:
+      - one_of: [EnderIO:itemGrindingBall, EnderIO:itemGrindingBall:1, EnderIO:itemGrindingBall:2, EnderIO:itemGrindingBall:3, EnderIO:itemGrindingBall:4, EnderIO:itemGrindingBall:5, EnderIO:itemGrindingBall:6, EnderIO:itemGrindingBall:7, EnderIO:itemGrindingBall:8]
+    rewards:
+      - loot: comum
+
+  - id: fundidora_ligas
+    title: "Fundidora de Ligas"
+    type: main
+    deps: [chassi_maquina, gerador_stirling]
+    desc: |
+      Agora sim, Herói: a máquina que dá nome a este Volume!
+
+      A §eFundidora de Ligas§r (3 fornalhas, 1 caldeirão, 4 lingotes de ferro e um Chassi de
+      Máquina) tem três entradas e mistura até três ingredientes numa liga. Ela também funciona
+      como fornalha elétrica e faz as ligas do Thermal (bronze, invar, eletro...).
+
+      §aDica:§r a Fundidora tem botões de modo — "ligas", "fornalha" ou ambos. Se algo não
+      estiver saindo, confira o modo no GUI.
+    tasks:
+      - get: EnderIO:blockAlloySmelter
+    rewards:
+      - xp: 4
+      - choice: [minecraft:redstone x24, minecraft:gold_ingot x6, minecraft:iron_ingot x16]
+
+  - id: info_capacitores
+    title: "Máquinas mais Rápidas"
+    type: info
+    deps: [fundidora_ligas]
+    icon: EnderIO:itemBasicCapacitor:1
+    desc: |
+      Repare no espaço pequeno no canto do GUI das máquinas: é o §eespaço de capacitor§r.
+
+      Trocar o Capacitor Básico por um §eCapacitor de Dupla Camada§r ou §eOctádico§r deixa a
+      máquina mais rápida e aumenta a energia que ela guarda (e consome por tick). No Stirling,
+      aumenta a geração; na Estação de Cultivo, aumenta a área.
+
+      Este pack também tem capacitores de tier ainda maior (Cristalino, Melódico, Estelar...),
+      que chegam bem mais tarde. Por enquanto, o Dupla Camada já é um belo salto!
+    tasks:
+      - check
+    rewards:
+      - xp: 1
+
+  # ======================================================================
+  # FASE 1 — AS OITO LIGAS
+  # ======================================================================
+  - id: aco_eletrico
+    title: "Aço Elétrico"
+    type: main
+    deps: [fundidora_ligas, silicio, po_carvao]
+    icon: EnderIO:itemAlloy
+    desc: |
+      A liga mais usada do Volume inteiro. Se eu tivesse que salvar uma só página da Fratura,
+      talvez fosse esta.
+
+      Na Fundidora: §e1 lingote de ferro + 1 Pó de Carvão + 1 Silício = 1 Aço Elétrico§r.
+      Ele vira Chave Yeta, Tonel, Gerador a Combustão, Estação de Cultivo, Banco de Capacitores,
+      Transceptor... Faça §e16§r e deixe a Fundidora trabalhando nisso sempre que der.
+    tasks:
+      - get: ore:ingotElectricalSteel x16
+    rewards:
+      - xp: 4
+      - choice: [minecraft:iron_ingot x16, EnderIO:itemMaterial x8, ore:dustCoal x16]
+
+  - id: liga_energetica
+    title: "Liga Energética"
+    type: main
+    deps: [fundidora_ligas]
+    icon: EnderIO:itemAlloy:1
+    desc: |
+      Ouro, redstone e pó de pedra luminosa juntos na Fundidora — e sai uma liga laranja que
+      parece estar sempre zumbindo.
+
+      §e1 lingote de ouro + 1 redstone + 1 pó de pedra luminosa = 1 Liga Energética§r.
+      Ela faz o Capacitor de Dupla Camada, o Conduto de Energia Melhorado e as Células
+      Fotovoltaicas. E é a base da Liga Vibrante! Faça §e8§r.
+    tasks:
+      - get: ore:ingotEnergeticAlloy x8
+    rewards:
+      - xp: 4
+      - choice: [minecraft:gold_ingot x8, minecraft:glowstone_dust x16, minecraft:redstone x24]
+
+  - id: liga_vibrante
+    title: "Liga Vibrante"
+    type: main
+    deps: [liga_energetica]
+    icon: EnderIO:itemAlloy:2
+    desc: |
+      Uma pérola do Fim derretida dentro da Liga Energética. Sim, ela vibra. Não, não é
+      impressão sua.
+
+      §e1 Liga Energética + 1 Pérola do Fim = 1 Liga Vibrante§r. É dela que saem o Capacitor
+      Octádico, o Conduto de Energia do Fim, o Conduto de Fluidos do Fim e o §eCristal
+      Vibrante§r. Faça §e8§r — vale a pena caçar alguns Endermen!
+    tasks:
+      - get: ore:ingotVibrantAlloy x8
+    rewards:
+      - xp: 4
+      - choice: [minecraft:ender_pearl x6, ore:ingotEnergeticAlloy x4, minecraft:gold_ingot x8]
+
+  - id: liga_redstone
+    title: "Liga de Redstone"
+    type: main
+    deps: [fundidora_ligas, silicio]
+    icon: EnderIO:itemAlloy:3
+    desc: |
+      Redstone que finalmente aprendeu a ficar quieta num lingote.
+
+      §e1 redstone + 1 Silício = 1 Liga de Redstone§r. Três dessas na bancada viram 8
+      §eCondutos de Redstone§r, e ela também aparece nas Células Fotovoltaicas e no Conduto de
+      Rede do OpenComputers. Faça §e8§r.
+    tasks:
+      - get: ore:ingotRedstoneAlloy x8
+    rewards:
+      - xp: 4
+      - choice: [minecraft:redstone x32, EnderIO:itemMaterial x8, minecraft:sand x32]
+
+  - id: ferro_condutivo
+    title: "Ferro Condutivo"
+    type: main
+    deps: [fundidora_ligas]
+    icon: EnderIO:itemAlloy:4
+    desc: |
+      Ferro com um pouco de redstone — simples e honesto, como uma boa ferramenta.
+
+      §e1 lingote de ferro + 1 redstone = 1 Ferro Condutivo§r. Ele é o "fio" do §eConduto de
+      Energia§r básico e aparece no Eletroímã. Faça §e8§r: um conduto leva 3 lingotes e rende 8
+      peças.
+    tasks:
+      - get: ore:ingotConductiveIron x8
+    rewards:
+      - xp: 4
+      - choice: [minecraft:iron_ingot x12, minecraft:redstone x24, EnderIO:itemMaterial:1 x8]
+
+  - id: ferro_pulsante
+    title: "Ferro Pulsante"
+    type: main
+    deps: [fundidora_ligas]
+    icon: EnderIO:itemAlloy:5
+    desc: |
+      Pegue um lingote de ferro, junte uma Pérola do Fim e... ele começa a pulsar, como se
+      tivesse um coração verde lá dentro.
+
+      §e1 lingote de ferro + 1 Pérola do Fim = 1 Ferro Pulsante§r. Ele vira 9 pepitas (que
+      fazem o §eConduto de Itens§r e o §eCristal Pulsante§r) e entra na Célula Fotovoltaica
+      Avançada. Faça §e4§r.
+    tasks:
+      - get: ore:ingotPulsatingIron x4
+    rewards:
+      - xp: 4
+      - choice: [minecraft:ender_pearl x4, minecraft:iron_ingot x12, minecraft:diamond x1]
+
+  - id: aco_negro
+    title: "Aço Negro"
+    type: main
+    deps: [fundidora_ligas, po_carvao]
+    icon: EnderIO:itemAlloy:6
+    desc: |
+      Escuro, pesado e quase indestrutível. Os Antigos forjavam suas melhores armaduras com isto.
+
+      §e1 lingote de ferro + 1 Pó de Carvão + 1 obsidiana = 1 Aço Negro§r (gasta o dobro de
+      energia das outras ligas). Dele saem a espada "The Ender", a Picareta Negra, a armadura
+      negra, a Bigorna de Aço Negro, a Obsidiana Reforçada e o Cajado da Viagem.
+
+      Faça §e16§r — você vai querer todos!
+    tasks:
+      - get: ore:ingotDarkSteel x16
+    rewards:
+      - xp: 4
+      - choice: [minecraft:obsidian x16, ore:dustCoal x16, minecraft:iron_ingot x16]
+
+  - id: almario
+    title: "Almário"
+    type: main
+    deps: [fundidora_ligas]
+    icon: EnderIO:itemAlloy:7
+    desc: |
+      Esta liga tem algo de… vivo. Ou de quem já viveu. Eu fico arrepiada só de olhar.
+
+      O §eAlmário§r (Soularium) sai de §e1 Areia das Almas + 1 lingote de ouro§r. A areia das
+      almas vem do Nether. Ele é a base de tudo que mexe com almas: Frasco de Almas,
+      Vinculador de Almas, Fatia-e-Emenda, Obeliscos... Faça §e16§r.
+
+      §cCuidado no Nether:§r leve armadura, comida e blocos para cobrir lava.
+    tasks:
+      - get: ore:ingotSoularium x16
+    rewards:
+      - xp: 4
+      - choice: [minecraft:soul_sand x32, minecraft:gold_ingot x8, minecraft:nether_wart x8]
+
+  - id: end_steel
+    title: "Aço do Fim"
+    type: normal
+    deps: [aco_negro]
+    icon: EnderIO:itemAlloy:8
+    desc: |
+      O Aço Negro, quando encontra a pedra do Fim, vira algo ainda mais estranho.
+
+      Na Fundidora: §e1 Aço Negro + 1 pedra do Fim + 1 obsidiana = 1 End Steel§r. Ele é usado
+      na Célula Fotovoltaica Vibrante, no Gerador Ender, no Chassi de Aço do Fim e na armadura
+      de End Steel. Você precisa ter visitado o Fim para conseguir a pedra. Faça §e8§r.
+    tasks:
+      - get: ore:ingotEndSteel x8
+    rewards:
+      - xp: 3
+      - item: minecraft:end_stone x16
+
+  - id: ligas_completas
+    title: "A Fundição das Oito Ligas"
+    type: milestone
+    deps: [aco_eletrico, liga_energetica, liga_vibrante, liga_redstone, ferro_condutivo, ferro_pulsante, aco_negro, almario]
+    icon: EnderIO:itemAlloy:2
+    banner: "As Oito Ligas"
+    subtitle: "O Volume das Ligas desperta"
+    desc: |
+      Herói, olha esse inventário! Oito ligas, oito cores, oito páginas que estavam perdidas e
+      agora brilham de novo no Registro.
+
+      Um resuminho para colar na parede da oficina:
+      §e• Aço Elétrico§r — ferro + pó de carvão + silício
+      §e• Liga Energética§r — ouro + redstone + pó de pedra luminosa
+      §e• Liga Vibrante§r — Liga Energética + pérola do Fim
+      §e• Liga de Redstone§r — redstone + silício
+      §e• Ferro Condutivo§r — ferro + redstone
+      §e• Ferro Pulsante§r — ferro + pérola do Fim
+      §e• Aço Negro§r — ferro + pó de carvão + obsidiana
+      §e• Almário§r — ouro + areia das almas
+
+      Daqui em diante abrem-se os condutos, os bancos de capacitores, as máquinas de almas e as
+      viagens. Mostre um pouco de cada liga e comemore comigo!
+    tasks:
+      - get: [ore:ingotElectricalSteel x4, ore:ingotEnergeticAlloy x4, ore:ingotVibrantAlloy x2, ore:ingotRedstoneAlloy x4, ore:ingotConductiveIron x4, ore:ingotPulsatingIron x2, ore:ingotDarkSteel x4, ore:ingotSoularium x4]
+    rewards:
+      - xp: 8
+      - kit: {name: "Kit do Fundidor de Ligas", items: [minecraft:ender_pearl x8, minecraft:obsidian x16, minecraft:soul_sand x16, minecraft:glowstone_dust x16, EnderIO:itemMaterial x16]}
+      - loot: raro
+
+  - id: blocos_ligas
+    title: "Blocos de Liga"
+    type: optional
+    deps: [ligas_completas]
+    icon: EnderIO:blockIngotStorage:6
+    desc: |
+      Nove lingotes de qualquer liga viram um bloco decorativo (e organizam o baú!). O Bloco de
+      Aço Negro, em especial, é ingrediente da Bigorna de Aço Negro. Faça um bloco de qualquer
+      liga do Ender IO.
+    tasks:
+      - one_of: [EnderIO:blockIngotStorage, EnderIO:blockIngotStorage:1, EnderIO:blockIngotStorage:2, EnderIO:blockIngotStorage:3, EnderIO:blockIngotStorage:4, EnderIO:blockIngotStorage:5, EnderIO:blockIngotStorage:6, EnderIO:blockIngotStorage:7, EnderIO:blockIngotStorage:8]
+    rewards:
+      - loot: comum
+
+  - id: quartzo_fundido
+    title: "Quartzo Fundido"
+    type: normal
+    deps: [fundidora_ligas]
+    icon: EnderIO:blockFusedQuartz
+    desc: |
+      4 quartzos do Nether (ou 1 bloco de quartzo) na Fundidora viram §eQuartzo Fundido§r: um
+      vidro duríssimo, resistente a explosões, que conta como "vidro endurecido" no oredict.
+
+      Ele aparece em geradores, no IO do Fim, no Frasco de Almas, no Transceptor e nos condutos
+      de fluidos pressurizados. Junte §e16§r.
+    tasks:
+      - get: EnderIO:blockFusedQuartz x16
+    rewards:
+      - xp: 3
+      - item: minecraft:quartz x16
+
+  - id: vidros_ender
+    title: "Vidros Iluminados e Escuros"
+    type: optional
+    deps: [quartzo_fundido]
+    icon: EnderIO:blockFusedQuartz:2
+    desc: |
+      A Fundidora também faz variações: §eVidro Bem Transparente§r (areia), as versões
+      §eIluminadas§r (+ pó de pedra luminosa — emitem luz!) e as §eEscuras§r (+ corante preto —
+      bloqueiam luz). O Quartzo Fundido Iluminado é ingrediente das Células Fotovoltaicas
+      Avançadas. Faça qualquer variante iluminada ou escura.
+    tasks:
+      - one_of: [EnderIO:blockFusedQuartz:2, EnderIO:blockFusedQuartz:3, EnderIO:blockFusedQuartz:4, EnderIO:blockFusedQuartz:5]
+    rewards:
+      - loot: comum
+
+  - id: vidro_transparente
+    title: "Vidro Bem Transparente"
+    type: normal
+    deps: [fundidora_ligas]
+    icon: EnderIO:blockFusedQuartz:1
+    desc: |
+      Areia na Fundidora vira §eVidro Bem Transparente§r, sem aquelas bordas do vidro comum.
+      Além de bonito, ele é ingrediente dos §eCondutos de Fluidos§r e do §eConduto de Gases§r.
+      Faça §e16§r.
+    tasks:
+      - get: EnderIO:blockFusedQuartz:1 x16
+    rewards:
+      - xp: 2
+      - item: minecraft:sand x32
+
+  - id: cristal_pulsante
+    title: "Cristal Pulsante"
+    type: main
+    deps: [ferro_pulsante]
+    icon: EnderIO:itemMaterial:5
+    desc: |
+      8 §ePepitas de Ferro Pulsante§r em volta de um §ediamante§r = §eCristal Pulsante§r.
+
+      É ele que liga Âncoras de Viagem, Baús Aspiradores, Estações de Cultivo e Células
+      Fotovoltaicas Avançadas. No Moinho SAG, ele vira "Grains of Piezallity", que o pack usa
+      em ligas mais avançadas. Faça §e4§r.
+    tasks:
+      - get: EnderIO:itemMaterial:5 x4
+    rewards:
+      - xp: 4
+      - choice: [minecraft:diamond x2, ore:ingotPulsatingIron x4, minecraft:ender_pearl x4]
+
+  - id: cristal_vibrante
+    title: "Cristal Vibrante"
+    type: main
+    deps: [liga_vibrante]
+    icon: EnderIO:itemMaterial:6
+    desc: |
+      8 §ePepitas de Liga Vibrante§r em volta de uma §eesmeralda§r = §eCristal Vibrante§r.
+
+      Ele vai para o Banco de Capacitores Vibrante, o Invocador Elétrico, o Eletroímã e é o
+      primeiro upgrade de energia da armadura negra. E, no Vinculador de Almas, vira o precioso
+      §eCristal do Fim§r. Faça §e4§r.
+    tasks:
+      - get: EnderIO:itemMaterial:6 x4
+    rewards:
+      - xp: 4
+      - choice: [minecraft:emerald x2, ore:ingotVibrantAlloy x4, minecraft:ender_pearl x4]
+
+  - id: capacitor_dupla
+    title: "Capacitor de Dupla Camada"
+    type: main
+    deps: [capacitor_basico, liga_energetica]
+    icon: EnderIO:itemBasicCapacitor:1
+    desc: |
+      Dois Capacitores Básicos, um Pó de Carvão no meio e duas Ligas Energéticas por cima e por
+      baixo = §eCapacitor de Dupla Camada§r.
+
+      Coloque um no espaço de capacitor do Moinho SAG ou da Fundidora e veja a velocidade subir.
+      Ele também faz o Banco de Capacitores comum. Faça §e3§r.
+    tasks:
+      - get: EnderIO:itemBasicCapacitor:1 x3
+    rewards:
+      - xp: 4
+      - choice: [ore:ingotEnergeticAlloy x4, minecraft:gold_ingot x8, minecraft:redstone_block x2]
+
+  - id: capacitor_octadico
+    title: "Capacitor Octádico"
+    type: main
+    deps: [capacitor_dupla, liga_vibrante]
+    icon: EnderIO:itemBasicCapacitor:2
+    desc: |
+      Dois Capacitores de Dupla Camada, uma pedra luminosa (bloco) e duas Ligas Vibrantes =
+      §eCapacitor Octádico§r, o melhor capacitor "clássico" do Ender IO.
+
+      Ele acelera máquinas, faz o Banco de Capacitores Vibrante, o Telepad, o Transceptor
+      Dimensional e o Carregador Sem-Fio. Faça §e2§r.
+    tasks:
+      - get: EnderIO:itemBasicCapacitor:2 x2
+    rewards:
+      - xp: 4
+      - choice: [ore:ingotVibrantAlloy x4, minecraft:glowstone x8, EnderIO:itemBasicCapacitor:1 x1]
+
+  - id: capacitores_prata
+    title: "A Linha de Prata"
+    type: optional
+    deps: [capacitor_basico]
+    icon: EnderIO:itemBasicCapacitor:7
+    desc: |
+      Sem ouro sobrando? O pack tem uma linha paralela: o §eCapacitor de Prata§r (prata, chumbo e
+      redstone) funciona como Capacitor Básico. Com Prata Energética e Liga Vívida ele sobe para
+      Endergetic e Endergised, equivalentes ao Dupla Camada e ao Octádico. Faça qualquer um.
+    tasks:
+      - one_of: [EnderIO:itemBasicCapacitor:7, EnderIO:itemBasicCapacitor:8, EnderIO:itemBasicCapacitor:9]
+    rewards:
+      - loot: comum
+
+  - id: chave_yeta
+    title: "Chave Yeta"
+    type: normal
+    deps: [aco_eletrico]
+    icon: EnderIO:itemYetaWrench
+    desc: |
+      A ferramenta mais querida de quem mexe com Ender IO! (Eu tenho uma de estimação.)
+
+      A §eChave Yeta§r (4 Aço Elétrico + 1 Engrenagem Básica) gira máquinas, e com §eShift +
+      clique direito§r desmonta máquinas e condutos na hora. Segurando-a, as fachadas ficam
+      transparentes; §eShift + roda do mouse§r escolhe qual tipo de conduto aparece; e
+      §eShift + clique esquerdo§r num conduto abre as configurações dele.
+    tasks:
+      - get: EnderIO:itemYetaWrench
+    rewards:
+      - xp: 3
+      - item: ore:ingotElectricalSteel x4
+
+  # ======================================================================
+  # FASE 2 — CONDUTOS
+  # ======================================================================
+  - id: composto_capa
+    title: "Composto de Capa"
+    type: main
+    deps: [engrenagem_basica]
+    icon: EnderIO:itemMaterial:2
+    desc: |
+      Todo conduto do Ender IO é embrulhado numa capa cerâmica. E essa capa começa como...
+      lama. Bom, quase.
+
+      6 cascalhos, 2 areias e 1 argila (bloco) na bancada = §e8 Compostos de Capa§r. Faça
+      §e16§r — é material barato, e condutos gastam bastante.
+    tasks:
+      - get: EnderIO:itemMaterial:2 x16
+    rewards:
+      - xp: 3
+      - choice: [minecraft:gravel x32, minecraft:sand x32, minecraft:clay x8]
+
+  - id: capa_conduto
+    title: "Capa de Conduto"
+    type: main
+    deps: [composto_capa]
+    icon: EnderIO:itemMaterial:1
+    desc: |
+      Asse o Composto de Capa numa fornalha (ou na Fundidora, em modo fornalha) e ele vira
+      §eCapa de Conduto§r. Seis capas + três lingotes de uma liga = 8 condutos.
+
+      Também é ingrediente das Âncoras de Viagem e das Fachadas. Junte §e32§r.
+    tasks:
+      - get: EnderIO:itemMaterial:1 x32
+    rewards:
+      - xp: 4
+      - choice: [EnderIO:itemMaterial:2 x16, minecraft:coal x16, minecraft:clay x8]
+
+  - id: conduto_energia
+    title: "Conduto de Energia"
+    type: main
+    deps: [capa_conduto, ferro_condutivo]
+    icon: EnderIO:itemPowerConduit
+    desc: |
+      Chega de encostar gerador em máquina! O §eConduto de Energia§r (6 capas + 3 Ferro
+      Condutivo = 8 condutos) leva RF de um lado para o outro.
+
+      O básico aguenta §b640 RF/t§r. Ele puxa energia de geradores e entrega em máquinas
+      automaticamente. Faça §e16§r e organize a sua oficina.
+    tasks:
+      - get: EnderIO:itemPowerConduit x16
+    rewards:
+      - xp: 4
+      - choice: [ore:ingotConductiveIron x6, EnderIO:itemMaterial:1 x12, minecraft:redstone x16]
+
+  - id: info_condutos
+    title: "Vários Condutos, um Bloco"
+    type: info
+    deps: [conduto_energia]
+    icon: EnderIO:itemConduitProbe
+    desc: |
+      A mágica do Ender IO: §ecabem vários tipos de conduto no mesmo bloco§r — energia, itens,
+      fluidos, redstone, ME, gases... Basta clicar com outro tipo de conduto num conduto já
+      colocado.
+
+      §e• Conexões:§r cada face pode ser ligada ou desligada. Use a Chave Yeta: clique na
+      conexão para alternar; §eShift + clique esquerdo§r abre o painel do conduto.
+      §e• Modos (itens e fluidos):§r Inserir, Extrair, Inserir/Extrair ou Desativado, com
+      controle por redstone e canais de cor.
+      §e• Energia:§r tiers diferentes de conduto de energia §cnão se conectam entre si§r nesta
+      configuração do pack — use um tier por linha (ou um Buffer no meio).
+
+      §aDica:§r Shift + roda do mouse com a Yeta escolhe qual camada de conduto fica visível.
+    tasks:
+      - check
+    rewards:
+      - xp: 1
+
+  - id: conduto_energia_melhorado
+    title: "Conduto de Energia Melhorado"
+    type: normal
+    deps: [conduto_energia, liga_energetica]
+    icon: EnderIO:itemPowerConduit:1
+    desc: |
+      Trocou os geradores pequenos por algo maior? A linha precisa acompanhar.
+
+      6 capas + 3 Ligas Energéticas = 8 §eCondutos de Energia Melhorados§r, com §b5120 RF/t§r.
+      Faça §e8§r.
+    tasks:
+      - get: EnderIO:itemPowerConduit:1 x8
+    rewards:
+      - xp: 3
+      - item: ore:ingotEnergeticAlloy x3
+
+  - id: conduto_energia_fim
+    title: "Conduto de Energia do Fim"
+    type: normal
+    deps: [conduto_energia_melhorado, liga_vibrante]
+    icon: EnderIO:itemPowerConduit:2
+    desc: |
+      O topo clássico: 6 capas + 3 Ligas Vibrantes = 8 §eCondutos de Energia do Fim§r, com
+      §b20480 RF/t§r. É o que você vai querer saindo de um Banco de Capacitores grande ou de um
+      reator.
+
+      §aSabia?§r o pack também tem condutos "Endergy" (Ferro, Ouro, Cobre, Prata, Eletro,
+      Cristalino, Melódico, Estelar...) — confira a capacidade de cada um no tooltip.
+    tasks:
+      - get: EnderIO:itemPowerConduit:2 x8
+    rewards:
+      - xp: 3
+      - item: ore:ingotVibrantAlloy x3
+
+  - id: condutos_endergy
+    title: "Condutos Endergy"
+    type: optional
+    deps: [conduto_energia]
+    icon: EnderIO:itemPowerConduitEndergy:3
+    desc: |
+      Este Ender IO veio com uma família extra de condutos de energia, feitos com metais de
+      outros mods: Ferro, Alumínio, Ouro, Cobre, Prata, Eletro, Prata Energética e as ligas
+      Cristalina, Melódica e Estelar. A receita é sempre a mesma — 6 capas + 3 lingotes.
+
+      Faça qualquer um deles e compare a capacidade no tooltip.
+    tasks:
+      - one_of: [EnderIO:itemPowerConduitEndergy:1, EnderIO:itemPowerConduitEndergy:2, EnderIO:itemPowerConduitEndergy:3, EnderIO:itemPowerConduitEndergy:4, EnderIO:itemPowerConduitEndergy:5, EnderIO:itemPowerConduitEndergy:6, EnderIO:itemPowerConduitEndergy:7]
+    rewards:
+      - loot: comum
+
+  - id: conduto_itens
+    title: "Conduto de Itens"
+    type: main
+    deps: [capa_conduto, ferro_pulsante]
+    icon: EnderIO:itemItemConduit
+    desc: |
+      Itens viajando pelos canos sem nenhum barulho, sem nenhum cano entupido de pedregulho...
+      quer dizer, até você esquecer um filtro.
+
+      6 capas + 3 §ePepitas de Ferro Pulsante§r = 8 §eCondutos de Itens§r. Coloque a face de
+      um baú em §eExtrair§r e a da máquina em §eInserir§r (a cor do canal tem que bater). Os
+      itens vão para o destino mais próximo, ou em rodízio se você ligar o "round robin".
+
+      Faça §e16§r.
+    tasks:
+      - get: EnderIO:itemItemConduit x16
+    rewards:
+      - xp: 4
+      - choice: [ore:ingotPulsatingIron x2, EnderIO:itemMaterial:1 x12, minecraft:chest x4]
+
+  - id: filtro_basico
+    title: "Filtro de Itens Básico"
+    type: normal
+    deps: [conduto_itens]
+    icon: EnderIO:itemBasicFilterUpgrade
+    desc: |
+      Quer que só o minério vá para o Moinho SAG? Coloque um §eFiltro de Itens Básico§r (4
+      papéis + 1 funil) no espaço de filtro da conexão do conduto e marque os itens permitidos
+      (ou bloqueados, no modo lista negra).
+
+      O §eFiltro Avançado§r (precisa de um Controlador Z-Lógica) tem mais espaços e opções de
+      oredict, NBT e dano. Faça um filtro básico.
+    tasks:
+      - get: EnderIO:itemBasicFilterUpgrade
+    rewards:
+      - xp: 2
+      - item: minecraft:paper x16
+
+  - id: upgrade_velocidade_itens
+    title: "Melhoria de Velocidade dos Condutos"
+    type: optional
+    deps: [conduto_itens, aco_eletrico]
+    icon: EnderIO:itemExtractSpeedUpgrade
+    desc: |
+      Por padrão, um conduto extrai poucos itens por vez. A §eMelhoria de Velocidade§r (ferro,
+      Aço Elétrico, pistão e tocha de redstone) adiciona §e4 itens por extração§r e empilha até
+      §e15§r no mesmo espaço. Já a "Downgrade" (com bola de slime) reduz para 1 item.
+    tasks:
+      - get: EnderIO:itemExtractSpeedUpgrade
+    rewards:
+      - loot: comum
+
+  - id: filtros_especiais
+    title: "Filtros Especiais"
+    type: optional
+    deps: [filtro_avancado]
+    icon: EnderIO:itemModItemFilter
+    desc: |
+      Para quem gosta de logística fina:
+      §e• Filtro de Itens Existentes§r — deixa passar só o que já existe no destino.
+      §e• Filtro de Itens de Mod§r — filtra por mod inteiro (feito com a Chave Yeta).
+      §e• Filtro de Item Carregável§r — separa itens por carga de energia.
+      §e• Limited Item Filter§r — limita a quantidade mantida no destino.
+      §e• Big Item Filter§r — muito mais espaços.
+      Faça qualquer um.
+    tasks:
+      - one_of: [EnderIO:itemExistingItemFilter, EnderIO:itemModItemFilter, EnderIO:itemPowerItemFilter, EnderIO:itemLimitedItemFilter, EnderIO:itemBigFilterUpgrade]
+    rewards:
+      - loot: comum
+
+  - id: conduto_fluidos
+    title: "Conduto de Fluidos"
+    type: normal
+    deps: [capa_conduto, vidro_transparente]
+    icon: EnderIO:itemLiquidConduit
+    desc: |
+      6 capas + 3 Vidros Bem Transparentes = 8 §eCondutos de Fluidos§r. Dá para ver o fluido
+      passando lá dentro (eu fico hipnotizada).
+
+      O conduto básico respeita a gravidade e a viscosidade, e carrega só um fluido por rede.
+      Extrai §b50 mB/t§r de cada conexão. Faça §e8§r.
+    tasks:
+      - get: EnderIO:itemLiquidConduit x8
+    rewards:
+      - xp: 2
+      - item: minecraft:bucket x2
+
+  - id: conduto_fluidos_pressurizado
+    title: "Conduto de Fluidos Pressurizado"
+    type: normal
+    deps: [conduto_fluidos, quartzo_fundido]
+    icon: EnderIO:itemLiquidConduit:1
+    desc: |
+      Trocando o vidro por §eQuartzo Fundido§r, o conduto aguenta pressão: §b100 mB/t§r de
+      extração e mais vazão total. Ainda é um fluido por rede. Faça §e8§r.
+    tasks:
+      - get: EnderIO:itemLiquidConduit:1 x8
+    rewards:
+      - xp: 2
+      - item: minecraft:quartz x8
+
+  - id: conduto_fluidos_fim
+    title: "Conduto de Fluidos do Fim"
+    type: normal
+    deps: [conduto_fluidos_pressurizado, liga_vibrante]
+    icon: EnderIO:itemLiquidConduit:2
+    desc: |
+      Agora sim: 6 capas + 2 Quartzos Fundidos + 1 Liga Vibrante = 8 §eCondutos de Fluidos do
+      Fim§r. O fluido é §eteleportado instantaneamente§r e cada conexão pode ter um filtro —
+      ou seja, §evários fluidos na mesma linha§r, separados por canal de cor. Faça §e8§r.
+    tasks:
+      - get: EnderIO:itemLiquidConduit:2 x8
+    rewards:
+      - xp: 3
+      - item: ore:ingotVibrantAlloy x2
+
+  - id: conduto_redstone
+    title: "Conduto de Redstone"
+    type: normal
+    deps: [liga_redstone]
+    icon: EnderIO:itemRedstoneConduit:2
+    desc: |
+      Sinais de redstone com 16 canais de cor, sem perder força pelo caminho.
+
+      Três Ligas de Redstone viram 8 condutos simples; com capas por cima e por baixo, viram
+      §e8 Condutos de Redstone Isolados§r, que só conversam com o que você conectar e escolhem a
+      cor do canal em cada face. Faça §e8 isolados§r.
+    tasks:
+      - get: EnderIO:itemRedstoneConduit:2 x8
+    rewards:
+      - xp: 2
+      - item: minecraft:redstone x16
+
+  - id: interruptor_conduto
+    title: "Interruptor de Conduto"
+    type: optional
+    deps: [conduto_redstone]
+    icon: EnderIO:itemRedstoneConduit:1
+    desc: |
+      Uma alavanca que mora dentro do feixe de condutos! O §eInterruptor de Conduto§r (4
+      alavancas, 4 capas e 1 Conduto de Redstone) liga e desliga sinais sem ocupar mais um
+      bloco.
+    tasks:
+      - get: EnderIO:itemRedstoneConduit:1
+    rewards:
+      - loot: comum
+
+  - id: conduto_gases
+    title: "Conduto de Gases"
+    type: optional
+    deps: [capa_conduto, aco_eletrico, vidro_transparente]
+    icon: EnderIO:itemGasConduit
+    desc: |
+      Você vai brincar com o Mekanism? Então guarde esta página: o §eConduto de Gases§r (capas,
+      Aço Elétrico e Vidro Bem Transparente) transporta §egases compatíveis com o Mekanism§r
+      (oxigênio, hidrogênio, cloro...) dentro do mesmo feixe dos outros condutos.
+    tasks:
+      - get: EnderIO:itemGasConduit x8
+    rewards:
+      - loot: comum
+
+  - id: conduto_me
+    title: "Conduto ME"
+    type: optional
+    deps: [capa_conduto]
+    icon: EnderIO:itemMEConduit
+    desc: |
+      Para quem já mexe com Applied Energistics 2: 6 Capas de Conduto + 2 Cristais de Fluix
+      + 1 Fibra de Quartzo = 4 §eCondutos ME§r. Eles levam a rede ME (com seus canais) no mesmo
+      bloco dos outros condutos. O §eConduto ME Denso§r (4 Condutos ME + 5 capas) carrega bem
+      mais canais, como o cabo denso do AE2. Faça qualquer um.
+    tasks:
+      - one_of: [EnderIO:itemMEConduit, EnderIO:itemMEConduit:1]
+    rewards:
+      - loot: comum
+
+  - id: conduto_oc
+    title: "Conduto de Rede (OpenComputers)"
+    type: optional
+    deps: [capa_conduto, liga_redstone]
+    icon: EnderIO:itemOCConduit
+    desc: |
+      Computadores do OpenComputers também podem conversar pelos condutos: 6 capas + 2 Ligas de
+      Redstone + 1 ferro = 8 §eNetwork Conduits (OC)§r, que funcionam como cabos de rede.
+    tasks:
+      - get: EnderIO:itemOCConduit
+    rewards:
+      - loot: comum
+
+  - id: fachada
+    title: "Fachada de Condutos"
+    type: optional
+    deps: [capa_conduto]
+    icon: EnderIO:itemConduitFacade
+    desc: |
+      Condutos à mostra estragam a decoração? A §eFachada de Condutos§r (8 capas) cobre o feixe
+      como se fosse um bloco qualquer — pinte-a na Máquina de Pintura com o bloco que quiser.
+      A versão §eendurecida§r (com pó de obsidiana) resiste a explosões. Com a Chave Yeta na
+      mão, a fachada fica transparente.
+    tasks:
+      - one_of: [EnderIO:itemConduitFacade, EnderIO:itemConduitFacade:1]
+    rewards:
+      - loot: comum
+
+  - id: maquina_pintura
+    title: "Máquina de Pintura"
+    type: optional
+    deps: [aco_eletrico, chassi_maquina]
+    icon: EnderIO:blockPainter
+    desc: |
+      A §eMáquina de Pintura§r (quartzo, diamante, Aço Elétrico e Chassi) "pinta" fachadas,
+      escadas, cercas, portões, lajes, muros, armações de quartzo fundido, pedra luminosa,
+      tapetes e Âncoras de Viagem com a aparência de outro bloco. Gasta 2000 RF por pintura.
+    tasks:
+      - get: EnderIO:blockPainter
+    rewards:
+      - loot: comum
+
+  - id: sonda_condutos
+    title: "Sonda de Condutos"
+    type: optional
+    deps: [conduto_energia, conduto_redstone]
+    icon: EnderIO:itemConduitProbe
+    desc: |
+      Quem nunca ficou se perguntando "por que essa energia não chega?". Clique com a §eSonda
+      de Condutos§r numa rede para ver os detalhes dela. No modo copiar/colar (Shift + roda do
+      mouse), Shift + clique copia as configurações de um feixe e clique direito cola em outro.
+    tasks:
+      - get: EnderIO:itemConduitProbe
+    rewards:
+      - loot: comum
+
+  - id: rede_condutos
+    title: "A Rede de Condutos"
+    type: milestone
+    deps: [conduto_energia_melhorado, conduto_itens, conduto_fluidos_pressurizado, conduto_redstone, info_condutos]
+    icon: EnderIO:blockConduitBundle
+    banner: "A Rede de Condutos"
+    subtitle: "Energia, itens, fluidos e sinais num só cano"
+    desc: |
+      Energia, itens, fluidos e redstone correndo lado a lado no mesmo bloco. Herói, isso é
+      §bengenharia de verdade§r!
+
+      Três dicas de quem já desmontou muita rede embolada:
+      §e• Canais de cor:§r use cores diferentes para separar rotas de itens/fluidos.
+      §e• Prioridades:§r nas conexões de inserção dá para dar prioridade a um destino.
+      §e• Redstone:§r cada conexão pode ser ligada/desligada por sinal — ótimo para pausar
+      uma linha quando o baú encher.
+
+      Agora a sua base pode crescer sem virar um espaguete. Para comemorar, mostre um pouco de
+      cada conduto!
+    tasks:
+      - get: [EnderIO:itemPowerConduit:1 x4, EnderIO:itemItemConduit x4, EnderIO:itemLiquidConduit:1 x4, EnderIO:itemRedstoneConduit:2 x4]
+    rewards:
+      - xp: 8
+      - kit: {name: "Kit do Encanador Ender", items: [EnderIO:itemMaterial:1 x32, EnderIO:itemBasicFilterUpgrade x2, ore:ingotConductiveIron x6, ore:ingotPulsatingIron x2, EnderIO:blockFusedQuartz x8]}
+      - loot: raro
+
+  # ======================================================================
+  # FASE 3 — ENERGIA
+  # ======================================================================
+  - id: capbank_basico
+    title: "Banco de Capacitores Básico"
+    type: main
+    deps: [capacitor_basico]
+    icon: EnderIO:blockCapBank:1
+    desc: |
+      Energia gerada à noite que ninguém usa é energia jogada fora. Hora de guardar!
+
+      O §eBanco de Capacitores Básico§r (4 Capacitores Básicos, 4 ferros e 1 bloco de redstone)
+      armazena §b1 000 000 RF§r e entra/sai a até §b1000 RF/t§r. Também carrega itens de RF
+      colocados nos espaços dele.
+    tasks:
+      - get: EnderIO:blockCapBank:1
+    rewards:
+      - xp: 4
+      - choice: [minecraft:redstone_block x2, minecraft:iron_ingot x12, EnderIO:itemBasicCapacitor x2]
+
+  - id: info_capbank
+    title: "Bancos que Crescem"
+    type: info
+    deps: [capbank_basico]
+    icon: EnderIO:blockCapBank:2
+    desc: |
+      Bancos de Capacitores §edo mesmo tipo§r colocados lado a lado se juntam num só multibloco:
+      a capacidade e a vazão somam.
+
+      §e• Faces:§r com a Chave Yeta você escolhe, face a face, se o banco recebe, envia ou fica
+      desligado.
+      §e• Mostrador:§r Shift + clique direito com a mão vazia numa face muda o painel de
+      informação.
+      §e• Redstone:§r o GUI tem controle por redstone para entrada e saída.
+
+      §aDica:§r um Monitor de Força ligado à rede emite redstone conforme o nível de carga —
+      ótimo para ligar geradores só quando precisa.
+    tasks:
+      - check
+    rewards:
+      - xp: 1
+
+  - id: capbank
+    title: "Banco de Capacitores"
+    type: main
+    deps: [capbank_basico, capacitor_dupla, aco_eletrico]
+    icon: EnderIO:blockCapBank:2
+    desc: |
+      O segundo degrau: 4 Capacitores de Dupla Camada, 4 Aços Elétricos e 1 bloco de redstone
+      (ou dois Bancos Básicos melhorados com Liga Energética).
+
+      §b5 000 000 RF§r de capacidade e §b5000 RF/t§r de vazão por bloco. Três ou quatro desses
+      juntos já seguram uma base média com folga.
+    tasks:
+      - get: EnderIO:blockCapBank:2
+    rewards:
+      - xp: 4
+      - choice: [ore:ingotElectricalSteel x8, minecraft:redstone_block x3, EnderIO:itemBasicCapacitor:1 x2]
+
+  - id: capbank_vibrante
+    title: "Banco de Capacitores Vibrante"
+    type: normal
+    deps: [capbank, capacitor_octadico, cristal_vibrante]
+    icon: EnderIO:blockCapBank:3
+    desc: |
+      4 Capacitores Octádicos, Aço Elétrico e um §eCristal Vibrante§r no centro (ou dois
+      Bancos comuns melhorados com Liga Vibrante). Resultado: §b25 000 000 RF§r e §b25 000
+      RF/t§r por bloco. Um paredão desses aguenta reatores inteiros!
+    tasks:
+      - get: EnderIO:blockCapBank:3
+    rewards:
+      - xp: 3
+      - item: ore:ingotVibrantAlloy x4
+
+  - id: monitor_forca
+    title: "Monitor de Força"
+    type: optional
+    deps: [conduto_energia, sonda_condutos]
+    icon: EnderIO:blockPowerMonitor
+    desc: |
+      O §eMonitor de Força§r (Aço Elétrico, Chassi, Sonda de Condutos e Conduto de Energia)
+      precisa estar ligado a um conduto do Ender IO. Ele mostra quanto a rede gera, gasta e
+      guarda — e emite redstone conforme o nível de carga dos bancos.
+    tasks:
+      - get: EnderIO:blockPowerMonitor
+    rewards:
+      - loot: comum
+
+  - id: buffers
+    title: "Buffers"
+    type: optional
+    deps: [aco_eletrico]
+    icon: EnderIO:blockBuffer:2
+    desc: |
+      Pequenos "pulmões" para a automação: o §eBuffer de Itens§r guarda itens, o §eBuffer de
+      Energia§r guarda RF, e os dois juntos na bancada viram o §eOniBuffer§r. Úteis para ligar
+      linhas de condutos de tiers diferentes. Faça qualquer um.
+    tasks:
+      - one_of: [EnderIO:blockBuffer, EnderIO:blockBuffer:1, EnderIO:blockBuffer:2]
+    rewards:
+      - loot: comum
+
+  - id: tanque_fluidos
+    title: "Tanque de Fluidos"
+    type: normal
+    deps: [engrenagem_basica]
+    icon: EnderIO:blockTank
+    desc: |
+      Barras de ferro, ferro e vidro: o §eTanque de Fluidos§r guarda 16 baldes e enche/esvazia
+      recipientes nos espaços do GUI. Ele é ingrediente do Gerador a Combustão, do Tonel e do
+      Painel de Inventário. Faça §e2§r.
+
+      O §eTanque Pressurizado§r (Aço Negro e vidro endurecido) guarda bem mais.
+    tasks:
+      - get: EnderIO:blockTank x2
+    rewards:
+      - xp: 2
+      - item: minecraft:bucket x3
+
+  - id: reservatorio
+    title: "Reservatório"
+    type: normal
+    deps: [quartzo_fundido]
+    icon: EnderIO:blockReservoir
+    desc: |
+      Água infinita com estilo! Monte §e4 Reservatórios num quadrado 2×2§r (eles saem 2 por
+      receita), coloque dois baldes de água e pronto: §eum balde por segundo§r para sempre.
+      Clique com uma chave para ligar a saída automática. Perfeito para o Gerador a Combustão e
+      para o Tonel.
+    tasks:
+      - get: EnderIO:blockReservoir x4
+    rewards:
+      - xp: 2
+      - item: minecraft:water_bucket
+
+  - id: gerador_combustao
+    title: "Gerador a Combustão"
+    type: main
+    deps: [aco_eletrico, tanque_fluidos]
+    icon: EnderIO:blockCombustionGenerator
+    desc: |
+      O Stirling é fofo, mas chegou a hora de algo maior.
+
+      O §eGerador a Combustão§r (Aço Elétrico, 2 Tanques de Fluidos, Chassi, engrenagens e
+      pistão) queima §ecombustível líquido§r e precisa de §erefrigerante§r (água serve) num
+      segundo tanque. A geração depende do combustível: §eAguardente§r 60 RF/t, §eÁgua de
+      Fogo§r 80 RF/t e §eCombustível para Foguetes§r 160 RF/t (valores base deste pack).
+
+      §aDica:§r ligue um Reservatório para a água e o Tonel para o combustível.
+    tasks:
+      - get: EnderIO:blockCombustionGenerator
+    rewards:
+      - xp: 4
+      - choice: [minecraft:water_bucket x2, ore:ingotElectricalSteel x6, minecraft:gunpowder x16]
+
+  - id: tonel
+    title: "O Tonel"
+    type: main
+    deps: [aco_eletrico, tanque_fluidos]
+    icon: EnderIO:blockVat
+    desc: |
+      Bem-vindo à destilaria mais estranha do Registro!
+
+      §eO Tonel§r (Aço Elétrico, caldeirão, 2 Tanques, Chassi e fornalha) pega um fluido de
+      entrada e §edois ingredientes§r (um em cada espaço) para fermentar um fluido novo. Cada
+      ingrediente tem um multiplicador — o NEI mostra as combinações. Ele gasta 20 RF/t.
+
+      §aDica:§r comece pela §eAguardente§r: água + batatas (ou maçãs, trigo, sementes) +
+      açúcar.
+    tasks:
+      - get: EnderIO:blockVat
+    rewards:
+      - xp: 4
+      - choice: [minecraft:potato x32, minecraft:reeds x32, minecraft:apple x16]
+
+  - id: aguardente
+    title: "Aguardente"
+    type: main
+    deps: [tonel]
+    icon: EnderIO:bucketHootch
+    desc: |
+      Água + algo amiláceo (batata, batata venenosa, maçã, trigo ou sementes) + açúcar =
+      §eAguardente§r (Hootch). Batata venenosa rende mais!
+
+      §cNão beba.§r Sério. Ela é combustível fraco no Gerador a Combustão e, principalmente, a
+      §ebase do Combustível para Foguetes e da Água de Fogo§r. Encha um balde para mostrar.
+    tasks:
+      - get: EnderIO:bucketHootch
+    rewards:
+      - xp: 4
+      - choice: [minecraft:sugar x32, minecraft:poisonous_potato x8, minecraft:bucket x4]
+
+  - id: combustivel_foguete
+    title: "Combustível para Foguetes"
+    type: main
+    deps: [aguardente]
+    icon: EnderIO:bucketRocket_fuel
+    desc: |
+      Aguardente + §epólvora§r + §eredstone§r no Tonel = §eCombustível para Foguetes§r, o
+      melhor combustível do Gerador a Combustão (§b160 RF/t§r base).
+
+      §aAutomação:§r Tonel → Conduto de Fluidos → Gerador. Com uma fazenda de creepers (ou de
+      cana para o açúcar) a usina fica autossuficiente. Encha um balde!
+    tasks:
+      - get: EnderIO:bucketRocket_fuel
+    rewards:
+      - xp: 4
+      - choice: [minecraft:gunpowder x24, minecraft:redstone x24, minecraft:bucket x4]
+
+  - id: agua_fogo
+    title: "Água de Fogo"
+    type: normal
+    deps: [aguardente]
+    icon: EnderIO:bucketFire_water
+    desc: |
+      Aguardente + §epó de blaze§r + redstone = §eÁgua de Fogo§r. Ela gera menos por tick que o
+      Combustível para Foguetes (80 RF/t), mas queima por bem mais tempo. E é a base do
+      Liquid Sunshine. Encha um balde.
+    tasks:
+      - get: EnderIO:bucketFire_water
+    rewards:
+      - xp: 3
+      - item: minecraft:blaze_powder x8
+
+  - id: destilado_nutrientes
+    title: "Destilado de Nutrientes"
+    type: normal
+    deps: [tonel]
+    icon: EnderIO:bucketNutrient_distillation
+    desc: |
+      Água + algo nojento (carne podre, carne crua, cérebro de zumbi, cabeças) + algo
+      fermentável (açúcar, cogumelos, fungo do Nether, olho de aranha fermentado) =
+      §eDestilado de Nutrientes§r.
+
+      Parece uma sopa que ninguém pediu, mas é o combustível do §eGerador Zumbi§r, do
+      §eJoe Matador§r e do §ePainel de Inventário§r. Encha um balde.
+    tasks:
+      - get: EnderIO:bucketNutrient_distillation
+    rewards:
+      - xp: 3
+      - item: minecraft:rotten_flesh x16
+
+  - id: fluidos_clima
+    title: "Sol Líquido e Semente de Nuvem"
+    type: optional
+    deps: [agua_fogo]
+    icon: EnderIO:bucketLiquid_sunshine
+    desc: |
+      O Tonel também prepara fluidos para o §eObelisco do Clima§r:
+      §e• Liquid Sunshine§r — Água de Fogo + pedra luminosa + girassol (céu limpo).
+      §e• Cloud Seed§r — água + sal/argila + neve/gelo (chuva).
+      §e• Concentrated Cloud Seed§r — Cloud Seed concentrada (tempestade).
+      Encha um balde de qualquer um.
+    tasks:
+      - one_of: [EnderIO:bucketLiquid_sunshine, EnderIO:bucketCloud_seed, EnderIO:bucketCloud_seed_concentrated]
+    rewards:
+      - loot: comum
+
+  - id: orvalho_vazio
+    title: "Dew of the Void"
+    type: optional
+    deps: [destilado_nutrientes, cristal_fim]
+    icon: EnderIO:bucketEnder_distillation
+    desc: |
+      Destilado de Nutrientes + Grains of Piezallity (Cristal Pulsante moído) + Grains of the
+      End (Cristal do Fim moído) = §eDew of the Void§r, o combustível do §eGerador Ender§r. Com
+      Grains of Prescience no lugar, sai o §eVapor of Levity§r. Encha um balde de qualquer um.
+    tasks:
+      - one_of: [EnderIO:bucketEnder_distillation, EnderIO:bucketVapor_of_levity]
+    rewards:
+      - loot: comum
+
+  - id: painel_solar
+    title: "Célula Fotovoltaica"
+    type: main
+    deps: [liga_energetica, liga_redstone, silicio, quartzo_fundido]
+    icon: EnderIO:blockSolarPanel
+    desc: |
+      Energia de graça, vinda do céu. Os Antigos chamavam isso de "pegar sol com a mão".
+
+      A §eCélula Fotovoltaica§r leva Liga Energética, Quartzo Fundido (vidro endurecido),
+      Silício, Liga de Redstone e um Sensor de Luz Solar. Gera até §b10 RF/t§r de dia, com o
+      céu aberto. Células encostadas umas nas outras se juntam e compartilham a saída. Faça
+      §e2§r.
+    tasks:
+      - get: EnderIO:blockSolarPanel x2
+    rewards:
+      - xp: 4
+      - choice: [minecraft:daylight_detector x2, ore:ingotEnergeticAlloy x4, EnderIO:itemMaterial x8]
+
+  - id: painel_solar_avancado
+    title: "Célula Fotovoltaica Avançada"
+    type: normal
+    deps: [painel_solar, cristal_pulsante, vidros_ender]
+    icon: EnderIO:blockSolarPanel:1
+    desc: |
+      Ferro Pulsante, Cristais Pulsantes, Quartzo Fundido Iluminado, Aço Elétrico e Sensor de
+      Luz Solar = §eCélula Fotovoltaica Avançada§r, com até §b40 RF/t§r de dia — quatro vezes
+      a básica.
+    tasks:
+      - get: EnderIO:blockSolarPanel:1
+    rewards:
+      - xp: 3
+      - item: EnderIO:itemMaterial:5
+
+  - id: painel_solar_vibrante
+    title: "Célula Fotovoltaica Vibrante"
+    type: optional
+    deps: [painel_solar_avancado, end_steel, cristal_vibrante]
+    icon: EnderIO:blockSolarPanel:2
+    desc: |
+      Liga Vibrante, Cristais Vibrantes, Quartzo Iluminado e End Steel: a §eVibrant Photovoltaic
+      Cell§r gera até §b160 RF/t§r ao sol. Um telhado disso e a noite deixa de ser problema
+      (com bancos de capacitores, claro).
+    tasks:
+      - get: EnderIO:blockSolarPanel:2
+    rewards:
+      - loot: incomum
+
+  - id: luz_eletrica
+    title: "Luz Elétrica"
+    type: optional
+    deps: [silicio, capacitor_basico]
+    icon: EnderIO:blockElectricLight
+    desc: |
+      A §eLuz Elétrica§r (vidro, silício, pó de pedra luminosa e Capacitor Básico) ilumina uma
+      área grande quando recebe energia e sinal de redstone; a versão invertida acende sem sinal.
+      Com um Ressoador do Fim ela vira §esem fio§r e puxa energia do Carregador Sem-Fio.
+    tasks:
+      - one_of: [EnderIO:blockElectricLight, EnderIO:blockElectricLight:1, EnderIO:blockElectricLight:4, EnderIO:blockElectricLight:5]
+    rewards:
+      - loot: comum
+
+  - id: usina_ligas
+    title: "A Usina das Ligas"
+    type: milestone
+    deps: [capbank, gerador_combustao, combustivel_foguete, painel_solar]
+    icon: EnderIO:blockCombustionGenerator
+    banner: "A Usina das Ligas"
+    subtitle: "Combustível, sol e bancos cheios"
+    desc: |
+      Um Gerador a Combustão rugindo com Combustível para Foguetes, células solares no telhado e
+      Bancos de Capacitores enchendo. Herói, a sua base nunca mais vai ficar no escuro!
+
+      Uma planta de usina que funciona muito bem:
+      §e• Tonel§r (aguardente → combustível) → §eGerador a Combustão§r
+      §e• Reservatório§r → água de refrigeração
+      §e• Geradores e células → Banco de Capacitores → condutos → máquinas§r
+
+      Com a energia garantida, as máquinas de almas e de viagem ficam ao seu alcance. Mostre o
+      Gerador a Combustão e um Banco de Capacitores!
+    tasks:
+      - get: [EnderIO:blockCombustionGenerator, EnderIO:blockCapBank:2]
+    rewards:
+      - xp: 8
+      - kit: {name: "Kit da Usina Ender", items: [EnderIO:bucketRocket_fuel x2, EnderIO:blockReservoir x4, EnderIO:itemPowerConduit:1 x8, EnderIO:itemBasicCapacitor:1 x2, minecraft:gunpowder x16]}
+      - loot: raro
+
+  # ======================================================================
+  # FASE 4 — ALMAS E CABEÇAS
+  # ======================================================================
+  - id: espada_ender
+    title: "\"The Ender\""
+    type: main
+    deps: [aco_negro]
+    icon: EnderIO:item.darkSteel_sword
+    desc: |
+      Toda página sobre almas começa com uma lâmina. Desculpa, é o jeito dos Antigos.
+
+      A espada §e"The Ender"§r (2 Aço Negro + graveto) é mais forte que diamante e tem dois
+      truques: Endermen que ela mata §esempre soltam pérola§r (mais com Pilhagem), e mobs com
+      cabeça (zumbis, esqueletos, creepers, Endermen) têm §echance de soltar a cabeça§r.
+      Carregada com energia (upgrades na bigorna), ela bate ainda mais forte.
+    tasks:
+      - get: EnderIO:item.darkSteel_sword
+    rewards:
+      - xp: 4
+      - choice: [ore:ingotDarkSteel x4, minecraft:cooked_beef x16, minecraft:arrow x32]
+
+  - id: cabecas_mobs
+    title: "Coleção de Cabeças"
+    type: normal
+    deps: [espada_ender]
+    icon: minecraft:skull:2
+    desc: |
+      Macabro? Um pouco. Útil? Muito!
+
+      Com a "The Ender" na mão, cace até conseguir uma §ecabeça de Zumbi§r e um §ecrânio de
+      Esqueleto§r. As cabeças de zumbi são as mais pedidas: Eletrodo Zumbi, Controlador
+      Z-Lógica... E o Vinculador de Almas pede as quatro (zumbi, esqueleto, creeper e Enderman).
+    tasks:
+      - get: [minecraft:skull:2 x2, minecraft:skull]
+    rewards:
+      - xp: 3
+      - item: minecraft:bone x16
+
+  - id: cabeca_enderman
+    title: "Cabeça de Enderman"
+    type: normal
+    deps: [espada_ender]
+    icon: EnderIO:blockEndermanSkull
+    desc: |
+      O Ender IO adiciona a §eCabeça de Enderman§r. Ela cai de Endermen — com a "The Ender" a
+      chance é de 10% (mais com Pilhagem); espadas comuns têm só uma chancezinha. Ela entra no Vinculador de Almas, no
+      Ressoador do Fim e na Cabeça de Enderman Atormentado.
+
+      §cCuidado:§r não olhe para eles antes de estar com armadura. Junte §e2 cabeças§r.
+    tasks:
+      - get: EnderIO:blockEndermanSkull x2
+    rewards:
+      - xp: 3
+      - item: minecraft:ender_pearl x4
+
+  - id: cabeca_creeper
+    title: "Cabeça de Creeper"
+    type: normal
+    deps: [espada_ender]
+    icon: minecraft:skull:4
+    desc: |
+      Falta só uma para completar a coleção do Vinculador de Almas: a §ecabeça de Creeper§r.
+      A "The Ender" também decapita creepers — é só ser mais rápido do que o "tsssss".
+    tasks:
+      - get: minecraft:skull:4
+    rewards:
+      - xp: 2
+      - item: minecraft:gunpowder x8
+
+  - id: slice_splice
+    title: "Fatia-e-Emenda"
+    type: main
+    deps: [almario, chassi_maquina, cabecas_mobs]
+    icon: EnderIO:blockSliceAndSplice
+    desc: |
+      Eu juro que esta máquina tem um nome mais assustador do que o que ela faz. (Quase.)
+
+      A §eFatia-e-Emenda§r (Slice'N'Splice — Almário, uma cabeça, machado de ferro, tesoura e
+      Chassi) "costura" cabeças de mob com ligas e silício para criar componentes vivos:
+      Eletrodo Zumbi, Controlador Z-Lógica, Ressoador do Fim, Guardian Diode...
+
+      §aImportante:§r ela precisa de um §emachado§r e uma §etesoura§r nos espaços de
+      ferramenta, e eles se desgastam a cada operação.
+    tasks:
+      - get: EnderIO:blockSliceAndSplice
+    rewards:
+      - xp: 4
+      - choice: [minecraft:iron_axe x2, minecraft:shears x2, ore:ingotSoularium x4]
+
+  - id: z_logica
+    title: "Controlador Z-Lógica"
+    type: main
+    deps: [slice_splice]
+    icon: EnderIO:itemFrankenSkull:1
+    desc: |
+      Um cérebro de zumbi que aprendeu a seguir ordens. Ele não é muito esperto, mas é muito
+      obediente.
+
+      Na Fatia-e-Emenda: §e2 Almário + cabeça de Zumbi + 2 Silício + 1 redstone§r. O
+      §eControlador Z-Lógica§r é o "processador" da Estação de Cultivo, do Fabricador, do
+      Invocador Elétrico e do Filtro Avançado. Faça §e3§r.
+    tasks:
+      - get: EnderIO:itemFrankenSkull:1 x3
+    rewards:
+      - xp: 4
+      - choice: [minecraft:skull:2 x1, ore:ingotSoularium x4, EnderIO:itemMaterial x8]
+
+  - id: eletrodo_zumbi
+    title: "Eletrodo Zumbi"
+    type: normal
+    deps: [slice_splice]
+    icon: EnderIO:itemFrankenSkull
+    desc: |
+      Liga Energética + cabeça de Zumbi + Silício + Capacitor Básico na Fatia-e-Emenda =
+      §eEletrodo Zumbi§r. Ele é o coração do §eGerador Zumbi§r — que transforma Destilado de
+      Nutrientes em energia.
+    tasks:
+      - get: EnderIO:itemFrankenSkull
+    rewards:
+      - xp: 3
+      - item: minecraft:rotten_flesh x16
+
+  - id: gerador_zumbi
+    title: "Gerador Zumbi"
+    type: normal
+    deps: [eletrodo_zumbi, destilado_nutrientes]
+    icon: EnderIO:blockZombieGenerator
+    desc: |
+      Aço Elétrico, Quartzo Fundido e um Eletrodo Zumbi: o §eGerador Zumbi§r consome §eDestilado
+      de Nutrientes§r e gera §b80 RF/t§r. Uma fazenda de mobs (carne podre!) + Tonel + gerador =
+      energia renovável e um pouco perturbadora.
+    tasks:
+      - get: EnderIO:blockZombieGenerator
+    rewards:
+      - xp: 3
+      - item: EnderIO:bucketNutrient_distillation
+
+  - id: guardian_diode
+    title: "Guardian Diode"
+    type: optional
+    deps: [slice_splice, cristal_pulsante]
+    icon: EnderIO:itemFrankenSkull:6
+    desc: |
+      2 Ligas Energéticas, um diamante, 2 Cristais Pulsantes e Silício na Fatia-e-Emenda =
+      §eGuardian Diode§r. É ele que vai no centro de cada peça da armadura de §eEnd Steel§r.
+    tasks:
+      - get: EnderIO:itemFrankenSkull:6
+    rewards:
+      - loot: incomum
+
+  - id: contraente_esqueletico
+    title: "Skeletal Contractor"
+    type: optional
+    deps: [slice_splice]
+    icon: EnderIO:itemFrankenSkull:5
+    desc: |
+      Almário, crânio de Esqueleto, carne podre e Silício viram o §eSkeletal Contractor§r — a
+      peça que faz o §eBig Item Filter§r, o filtro com mais espaços do mod.
+    tasks:
+      - get: EnderIO:itemFrankenSkull:5
+    rewards:
+      - loot: comum
+
+  - id: frasco_almas
+    title: "Frasco de Almas"
+    type: main
+    deps: [almario, quartzo_fundido]
+    icon: EnderIO:itemSoulVessel
+    desc: |
+      Um frasquinho de Quartzo Fundido com tampa de Almário. O que vai dentro? Uma alma,
+      claro. (Com todo o respeito à alma.)
+
+      Clique direito num mob com o §eFrasco de Almas§r para capturá-lo vivo; clique de novo num
+      bloco para soltá-lo. Frascos cheios são o "ingrediente" do Vinculador de Almas e dos
+      Obeliscos. §cChefes não podem ser capturados§r neste pack. Faça §e4§r.
+    tasks:
+      - get: EnderIO:itemSoulVessel x4
+    rewards:
+      - xp: 4
+      - choice: [ore:ingotSoularium x4, EnderIO:blockFusedQuartz x8, minecraft:lead x4]
+
+  - id: vinculador_almas
+    title: "Vinculador de Almas"
+    type: main
+    deps: [frasco_almas, cabeca_enderman, cabeca_creeper, cabecas_mobs, chassi_maquina]
+    icon: EnderIO:blockSoulBinder
+    desc: |
+      Quatro cabeças olhando para você de quatro lados. Eu disse que esse Volume era estranho!
+
+      O §eVinculador de Almas§r leva Almário, Chassi de Máquina e as cabeças de §eEnderman,
+      Creeper, Zumbi e Esqueleto§r. Ele "funde" a alma de um Frasco com um item, gastando
+      §eenergia e níveis de XP§r. O frasco volta vazio.
+
+      Receitas principais (veja no NEI):
+      §e• Cristal Vibrante + alma de Enderman§r → Cristal do Fim
+      §e• Esmeralda + alma de Aldeão§r → Cristal Atraente
+      §e• Cristal Pulsante + alma de Enderman§r → Precient Crystal
+      §e• Z-Lógica + alma de Zumbi§r → Frankenzumbi
+      §e• Invocador Quebrado + qualquer alma§r → muda o tipo do invocador
+    tasks:
+      - get: EnderIO:blockSoulBinder
+    rewards:
+      - xp: 4
+      - choice: [minecraft:experience_bottle x16, EnderIO:itemSoulVessel x2, minecraft:emerald x2]
+
+  - id: cristal_fim
+    title: "Cristal do Fim"
+    type: main
+    deps: [vinculador_almas, cristal_vibrante]
+    icon: EnderIO:itemMaterial:8
+    desc: |
+      Capture um Enderman no Frasco, ponha junto de um §eCristal Vibrante§r no Vinculador e
+      espere (10 níveis e 100 000 RF). Sai um §eCristal do Fim§r, roxo e cintilante.
+
+      Ele é a chave das viagens: §eCajado da Viagem§r, §eTransceptor Dimensional§r e o upgrade
+      §eViagem§r das ferramentas negras. Faça §e3§r.
+    tasks:
+      - get: EnderIO:itemMaterial:8 x3
+    rewards:
+      - xp: 4
+      - choice: [minecraft:experience_bottle x16, EnderIO:itemMaterial:6 x1, minecraft:ender_pearl x8]
+
+  - id: cristal_atraente
+    title: "Cristal Atraente"
+    type: normal
+    deps: [vinculador_almas]
+    icon: EnderIO:itemMaterial:9
+    desc: |
+      Uma esmeralda com a alma de um Aldeão (ele vai ficar bem, eu prometo... ok, mais ou menos)
+      vira o §eCristal Atraente§r. Ele é o núcleo do §eObelisco Atraidor§r.
+
+      §aDica:§r antes de capturar aldeões, faça uma reserva de aldeões perto de casa.
+    tasks:
+      - get: EnderIO:itemMaterial:9
+    rewards:
+      - xp: 3
+      - item: minecraft:emerald x2
+
+  - id: cristal_presciente
+    title: "Precient Crystal"
+    type: optional
+    deps: [vinculador_almas, cristal_pulsante]
+    icon: EnderIO:itemMaterial:13
+    desc: |
+      Cristal Pulsante + alma de Enderman no Vinculador = §ePrecient Crystal§r. Ele é usado no
+      §eCapacitor Estelar§r e, moído no SAG (Grains of Prescience), no Vapor of Levity.
+    tasks:
+      - get: EnderIO:itemMaterial:13
+    rewards:
+      - loot: incomum
+
+  - id: frankenzumbi
+    title: "Frankenzumbi"
+    type: normal
+    deps: [vinculador_almas, z_logica]
+    icon: EnderIO:itemFrankenSkull:2
+    desc: |
+      Um Controlador Z-Lógica + a alma de um Zumbi = §eFrank'N'Zombie§r. "Está vivo!", gritaria
+      um cientista maluco. Eu só grito "que lindo!".
+
+      Ele vai no §eFrank'N'Zombie Generator§r (Destilado de Nutrientes → §b120 RF/t§r) e no
+      §eJoe Matador§r.
+    tasks:
+      - get: EnderIO:itemFrankenSkull:2
+    rewards:
+      - xp: 3
+      - item: EnderIO:bucketNutrient_distillation
+
+  - id: gerador_frankenzumbi
+    title: "Gerador Frank'N'Zombie"
+    type: optional
+    deps: [frankenzumbi, gerador_zumbi]
+    icon: EnderIO:blockFrankenzombieGenerator
+    desc: |
+      Almário, Quartzo Fundido e o Frankenzumbi: o §eFrank'N'Zombie Generator§r gasta o mesmo
+      Destilado de Nutrientes, mas gera §b120 RF/t§r em vez de 80.
+    tasks:
+      - get: EnderIO:blockFrankenzombieGenerator
+    rewards:
+      - loot: incomum
+
+  - id: ressoador_fim
+    title: "Ressoador do Fim"
+    type: normal
+    deps: [slice_splice, cabeca_enderman, liga_vibrante]
+    icon: EnderIO:itemFrankenSkull:3
+    desc: |
+      Almário, Cabeça de Enderman, Silício e uma Liga Vibrante na Fatia-e-Emenda = §eRessoador do
+      Fim§r. Ele "escuta" o espaço entre os lugares — e por isso vai no §eTransceptor
+      Dimensional§r, no §eCarregador Sem-Fio§r, no §eGerador Ender§r e nas luzes sem fio.
+    tasks:
+      - get: EnderIO:itemFrankenSkull:3
+    rewards:
+      - xp: 3
+      - item: ore:ingotSoularium x4
+
+  - id: sentient_ender
+    title: "Sentient Ender"
+    type: normal
+    deps: [ressoador_fim, vinculador_almas]
+    icon: EnderIO:itemFrankenSkull:4
+    desc: |
+      Ressoador do Fim + alma de uma §eBruxa§r no Vinculador = §eSentient Ender§r. Um cérebro do
+      Fim que pensa. E pensa muito.
+
+      Ele é o centro do §ePainel de Inventário§r e de todo o equipamento §eEstelar§r. Capture a
+      bruxa com cuidado — ela joga poções!
+    tasks:
+      - get: EnderIO:itemFrankenSkull:4
+    rewards:
+      - xp: 3
+      - item: minecraft:glass_bottle x8
+
+  - id: cabeca_atormentada
+    title: "Cabeça de Enderman Atormentado"
+    type: optional
+    deps: [slice_splice, cabeca_enderman]
+    icon: EnderIO:blockEndermanSkull:2
+    desc: |
+      Almário, Cabeça de Enderman, um Capacitor Básico e duas poções (confira quais no NEI) na
+      Fatia-e-Emenda. A §eCabeça Atormentada§r faz o §eObelisco de Aversão§r — o que impede mobs
+      de nascerem por perto.
+    tasks:
+      - get: EnderIO:blockEndermanSkull:2
+    rewards:
+      - loot: comum
+
+  - id: invocador_quebrado
+    title: "Invocador Quebrado"
+    type: normal
+    deps: [espada_ender]
+    icon: EnderIO:itemBrokenSpawner
+    desc: |
+      Achou uma masmorra com gerador de monstros? Não destrua por raiva — destrua por lucro!
+
+      Neste pack, quebrar um gerador de monstros (spawner) §esempre§r solta um §eInvocador
+      Quebrado§r que lembra qual mob ele criava. Ele é a semente do Invocador Elétrico. Traga
+      um!
+    tasks:
+      - get: EnderIO:itemBrokenSpawner
+    rewards:
+      - xp: 3
+      - item: minecraft:torch x32
+
+  - id: invocador_eletrico
+    title: "Invocador Elétrico"
+    type: main
+    deps: [z_logica, cristal_vibrante, invocador_quebrado, vinculador_almas]
+    icon: EnderIO:blockPoweredSpawner
+    desc: |
+      Monstros sob demanda. Isso é... ou genial ou perigoso. Provavelmente os dois.
+
+      O §eInvocador Elétrico§r leva Aço Elétrico, uma cabeça, Chassi, 2 Cristais Vibrantes e um
+      Controlador Z-Lógica. Ele nasce vazio: para definir o mob, junte-o com um §eInvocador
+      Quebrado§r numa §ebigorna§r (custa 30 níveis). Com energia, ele cria mobs sem precisar de
+      jogador por perto; capacitores aceleram.
+    tasks:
+      - get: EnderIO:blockPoweredSpawner
+    rewards:
+      - xp: 4
+      - choice: [minecraft:experience_bottle x24, EnderIO:itemBasicCapacitor:1 x2, minecraft:anvil x1]
+
+  - id: info_invocador
+    title: "Reprogramando Invocadores"
+    type: info
+    deps: [invocador_eletrico]
+    icon: minecraft:anvil
+    desc: |
+      Não achou um gerador do mob que você quer? Dá para "reprogramar"!
+
+      §e1.§r Capture o mob desejado num Frasco de Almas.
+      §e2.§r No Vinculador de Almas, junte o frasco com um Invocador Quebrado (15 níveis e
+      2 500 000 RF): o invocador passa a ser daquele mob.
+      §e3.§r Na bigorna, combine o Invocador Elétrico com o Invocador Quebrado (30 níveis).
+
+      §cAtenção:§r o invocador respeita um limite de mobs por perto — mate-os rápido (Joe Matador!)
+      ou ele para de criar.
+    tasks:
+      - check
+    rewards:
+      - xp: 1
+
+  - id: vara_xp
+    title: "Vara de Experiência"
+    type: normal
+    deps: [almario, liga_energetica]
+    icon: EnderIO:itemXpTransfer
+    desc: |
+      Almário e Liga Energética = §eVara de Experiência§r. Clique num tanque com XP líquido
+      para absorver níveis; Shift + clique para guardar seus níveis no tanque. Ela é a peça
+      central do Obelisco de Experiência.
+    tasks:
+      - get: EnderIO:itemXpTransfer
+    rewards:
+      - xp: 3
+
+  - id: obelisco_xp
+    title: "Obelisco de Experiência"
+    type: normal
+    deps: [vara_xp, chassi_maquina]
+    icon: EnderIO:blockExperienceObelisk
+    desc: |
+      Um banco para os seus níveis! O §eObelisco de Experiência§r guarda XP, devolve quantos
+      níveis você pedir e entrega XP líquido para tanques ao lado. Ótimo para alimentar o
+      Vinculador de Almas, o Encantador e a bigorna sem perder nada ao morrer.
+    tasks:
+      - get: EnderIO:blockExperienceObelisk
+    rewards:
+      - xp: 5
+
+  - id: joe_matador
+    title: "Joe Matador"
+    type: optional
+    deps: [frankenzumbi, aco_negro, quartzo_fundido]
+    icon: EnderIO:blockKillerJoe
+    desc: |
+      Aço Negro, Quartzo Fundido e um Frankenzumbi: o §eJoe Matador§r é um zumbi num pote que
+      ataca tudo o que chega perto, usando a espada que você der a ele e bebendo Destilado de
+      Nutrientes. O XP sai como XP líquido pelos condutos de fluidos. O par perfeito do
+      Invocador Elétrico!
+    tasks:
+      - get: EnderIO:blockKillerJoe
+    rewards:
+      - loot: incomum
+
+  - id: obelisco_atraidor
+    title: "Obelisco Atraidor"
+    type: optional
+    deps: [cristal_atraente]
+    icon: EnderIO:blockAttractor
+    desc: |
+      Com o Cristal Atraente no topo, o §eObelisco Atraidor§r puxa mobs para perto dele. Para
+      escolher quais, coloque Frascos de Almas daqueles mobs dentro do obelisco. Alcance e
+      consumo crescem com capacitores.
+    tasks:
+      - get: EnderIO:blockAttractor
+    rewards:
+      - loot: comum
+
+  - id: obelisco_aversao
+    title: "Obelisco de Aversão"
+    type: optional
+    deps: [cabeca_atormentada]
+    icon: EnderIO:blockSpawnGuard
+    desc: |
+      Cansado de creepers no jardim? O §eObelisco de Aversão§r (com a Cabeça de Enderman
+      Atormentado) impede mobs de nascerem numa área grande enquanto tiver energia.
+    tasks:
+      - get: EnderIO:blockSpawnGuard
+    rewards:
+      - loot: comum
+
+  - id: obelisco_clima
+    title: "Obelisco do Clima"
+    type: optional
+    deps: [fluidos_clima]
+    icon: EnderIO:blockWeatherObelisk
+    desc: |
+      Quer sol para a colheita ou chuva para o Gerador Eólico de alguém? O §eWeather Obelisk§r
+      muda o clima: precisa de um §efoguete de fogos de artifício§r e 1000 mB de Liquid
+      Sunshine (sol), Cloud Seed (chuva) ou Concentrated Cloud Seed (tempestade). A receita do
+      Weather Crystal está no NEI.
+    tasks:
+      - get: EnderIO:blockWeatherObelisk
+    rewards:
+      - loot: comum
+
+  - id: mestre_almas
+    title: "Mestre das Almas"
+    type: milestone
+    deps: [invocador_eletrico, cristal_fim, frankenzumbi, sentient_ender]
+    icon: EnderIO:blockSoulBinder
+    banner: "Mestre das Almas"
+    subtitle: "Cabeças, frascos e cristais"
+    desc: |
+      Herói... você engarrafou almas, costurou cabeças e acendeu cristais que nem os Antigos
+      conseguiam fazer direito. Eu deveria estar com medo, mas estou é muito orgulhosa!
+
+      Recapitulando a "química das almas":
+      §e• Enderman§r → Cristal do Fim e Precient Crystal
+      §e• Aldeão§r → Cristal Atraente
+      §e• Zumbi§r → Frankenzumbi
+      §e• Bruxa§r → Sentient Ender
+      §e• Qualquer mob§r → Invocador Quebrado reprogramado
+
+      Com o Cristal do Fim nas mãos, as viagens instantâneas estão logo ali. Mostre seu
+      Cristal do Fim, o Frankenzumbi e o Sentient Ender!
+    tasks:
+      - get: [EnderIO:itemMaterial:8, EnderIO:itemFrankenSkull:2, EnderIO:itemFrankenSkull:4]
+    rewards:
+      - xp: 8
+      - kit: {name: "Kit do Vinculador", items: [EnderIO:itemSoulVessel x4, minecraft:experience_bottle x32, EnderIO:itemMaterial:6 x2, ore:ingotSoularium x8, minecraft:emerald x2]}
+      - loot: raro
+
+  # ======================================================================
+  # FASE 5 — AUTOMAÇÃO
+  # ======================================================================
+  - id: estacao_cultivo
+    title: "Estação de Cultivo"
+    type: main
+    deps: [z_logica, cristal_pulsante, aco_eletrico]
+    icon: EnderIO:blockFarmStation
+    desc: |
+      Uma fazenda que se cuida sozinha. Os Antigos sonhavam com isso enquanto colhiam trigo
+      com a mão!
+
+      A §eEstação de Cultivo§r (Aço Elétrico, enxada de diamante, Chassi, 2 Cristais Pulsantes e
+      Z-Lógica) planta, colhe e corta árvores em volta dela. Precisa de energia e das
+      ferramentas certas nos espaços: §eenxada§r (qualquer uma da lista do pack), §emachado§r e,
+      opcionalmente, tesoura. Pilhagem/Fortuna nas ferramentas valem na colheita!
+
+      Ela começa com uma área 7×7 e cresce com capacitores (gastando mais energia).
+    tasks:
+      - get: EnderIO:blockFarmStation
+    rewards:
+      - xp: 4
+      - choice: [minecraft:wheat_seeds x32, minecraft:sapling x16, minecraft:dye:15 x32]
+
+  - id: fabricador
+    title: "Fabricador"
+    type: normal
+    deps: [z_logica]
+    icon: EnderIO:blockCrafter
+    desc: |
+      Ferro, bancada, Chassi e Z-Lógica = §eFabricador§r (Crafter), uma bancada automática.
+      Monte a receita nos espaços-fantasma, alimente com itens e energia (2500 RF por
+      fabricação) e ele repete para sempre. Capacitores aumentam a velocidade.
+    tasks:
+      - get: EnderIO:blockCrafter
+    rewards:
+      - xp: 3
+      - item: minecraft:crafting_table x2
+
+  - id: bau_aspirador
+    title: "Baú Aspirador"
+    type: normal
+    deps: [cristal_pulsante]
+    icon: EnderIO:blockVacuumChest
+    desc: |
+      Ferro, baú e um Cristal Pulsante: o §eBaú Aspirador§r puxa itens soltos num raio de 6
+      blocos. Perfeito debaixo de fazendas de mobs, Estações de Cultivo e Joe Matador. Aceita
+      filtro para escolher o que aspirar.
+    tasks:
+      - get: EnderIO:blockVacuumChest
+    rewards:
+      - xp: 3
+      - item: minecraft:hopper x2
+
+  - id: filtro_avancado
+    title: "Filtro de Itens Avançado"
+    type: normal
+    deps: [filtro_basico, z_logica]
+    icon: EnderIO:itemBasicFilterUpgrade:1
+    desc: |
+      Papel, redstone e um Controlador Z-Lógica = §eFiltro de Itens Avançado§r. Mais espaços e
+      opções para combinar por dano, NBT e §eoredict§r (ótimo para "qualquer minério"). Ele é a
+      base dos filtros especiais.
+    tasks:
+      - get: EnderIO:itemBasicFilterUpgrade:1
+    rewards:
+      - xp: 3
+      - item: minecraft:paper x16
+
+  - id: consciencia_remota
+    title: "Remote Awareness Upgrade"
+    type: normal
+    deps: [conduto_itens, silicio]
+    icon: EnderIO:itemFunctionUpgrade
+    desc: |
+      Capas, Silício, Olho do Fim e Aço Elétrico = §eRemote Awareness Upgrade§r. Instalado
+      numa conexão de conduto de itens, ele deixa o §ePainel de Inventário§r enxergar e retirar
+      itens daquele inventário — sem precisar colocar o conduto em modo extrair.
+    tasks:
+      - get: EnderIO:itemFunctionUpgrade
+    rewards:
+      - xp: 3
+      - item: minecraft:ender_eye x2
+
+  - id: painel_inventario
+    title: "Painel de Inventário"
+    type: normal
+    deps: [sentient_ender, consciencia_remota, aco_negro, tanque_fluidos]
+    icon: EnderIO:blockInventoryPanel
+    desc: |
+      Um terminal que mostra todos os baús conectados! O §eInventory Panel§r (Aço Negro, Remote
+      Awareness Upgrade, Cristais Pulsantes, Sentient Ender e Tanque de Fluidos) se liga a uma
+      rede de condutos de itens e lista o conteúdo de todos os inventários com o upgrade.
+
+      Ele gasta §eDestilado de Nutrientes§r como "combustível" e tem uma bancada que guarda a
+      receita. Não é um AE2, mas é uma delícia de usar.
+    tasks:
+      - get: EnderIO:blockInventoryPanel
+    rewards:
+      - xp: 3
+      - item: EnderIO:bucketNutrient_distillation x2
+
+  - id: encantador
+    title: "Encantador"
+    type: normal
+    deps: [aco_negro]
+    icon: EnderIO:blockEnchanter
+    desc: |
+      Diamantes, livro e Aço Negro = §eEncantador§r. Coloque um §eLivro e Pena§r, o item de cada
+      encantamento (o NEI lista quais) e pague em XP: sai um livro encantado com exatamente o
+      encantamento que você escolheu. Sem sorteio!
+    tasks:
+      - get: EnderIO:blockEnchanter
+    rewards:
+      - xp: 4
+      - item: minecraft:book x8
+
+  - id: bigorna_negra
+    title: "Bigorna de Aço Negro"
+    type: optional
+    deps: [blocos_ligas]
+    icon: EnderIO:blockDarkSteelAnvil
+    desc: |
+      3 Blocos de Aço Negro + 4 lingotes = §eBigorna de Aço Negro§r. Ela funciona como a bigorna
+      comum, mas dura §ebem mais§r — e você vai usar bigorna o tempo todo para os upgrades da
+      armadura negra.
+    tasks:
+      - get: EnderIO:blockDarkSteelAnvil
+    rewards:
+      - loot: incomum
+
+  - id: obsidiana_reforcada
+    title: "Obsidiana Reforçada"
+    type: optional
+    deps: [aco_negro]
+    icon: EnderIO:blockReinforcedObsidian
+    desc: |
+      Obsidiana cercada por Aço Negro e Barras de Ferro Negro. A §eObsidiana Reforçada§r aguenta
+      explosões fortíssimas (inclusive do Wither). Ótima para salas de teste — de reatores,
+      principalmente.
+    tasks:
+      - get: EnderIO:blockReinforcedObsidian x4
+    rewards:
+      - loot: comum
+
+  - id: decoracao_negra
+    title: "Escadas e Placas Negras"
+    type: optional
+    deps: [aco_negro]
+    icon: EnderIO:blockDarkSteelLadder
+    desc: |
+      Dois mimos do Aço Negro: a §eEscada de Aço Negro§r (sobe mais rápido que a de madeira) e a
+      §ePlaca de Pressão Negra§r, que só é ativada por jogadores (a versão com lã é silenciosa).
+      Faça qualquer um.
+    tasks:
+      - one_of: [EnderIO:blockDarkSteelLadder, EnderIO:blockDarkSteelPressurePlate, EnderIO:blockDarkSteelPressurePlate:1]
+    rewards:
+      - loot: comum
+
+  - id: eletroima
+    title: "Eletroímã"
+    type: normal
+    deps: [ferro_condutivo, aco_eletrico, cristal_vibrante]
+    icon: EnderIO:itemMagnet
+    desc: |
+      Aço Elétrico, Ferro Condutivo e um Cristal Vibrante = §eEletroímã§r. Ele puxa itens num
+      raio de 5 blocos. Precisa estar carregado, ativo (Shift + clique direito) e na barra
+      rápida — ou no espaço de amuleto do Baubles.
+    tasks:
+      - get: EnderIO:itemMagnet:*
+    rewards:
+      - xp: 3
+      - item: minecraft:redstone x16
+
+  - id: enderios
+    title: "\"Enderios\""
+    type: optional
+    deps: [moinho_sag]
+    icon: EnderIO:itemEnderFood
+    desc: |
+      Um cereal matinal com 253 g de açúcar e pó de pérola do Fim. Efeitos colaterais: náusea,
+      tontura e... teleporte aleatório. Tigela, balde de leite, trigo e pó de pérola do Fim
+      (pérola moída no SAG). Coma por sua conta e risco. Eu avisei!
+    tasks:
+      - get: EnderIO:itemEnderFood
+    rewards:
+      - loot: comum
+
+  - id: fabrica_autonoma
+    title: "A Fábrica Autônoma"
+    type: milestone
+    deps: [estacao_cultivo, fabricador, bau_aspirador, filtro_avancado]
+    icon: EnderIO:blockFarmStation
+    banner: "A Fábrica Autônoma"
+    subtitle: "Ela trabalha enquanto você explora"
+    desc: |
+      Plantar, colher, aspirar, filtrar, fabricar — tudo sozinho. Herói, você ensinou a sua
+      base a trabalhar sem você!
+
+      Uma linha clássica do Ender IO para inspirar:
+      §e• Estação de Cultivo§r → §eBaú Aspirador§r → §eConduto de Itens com filtro§r →
+      §eTonel§r (trigo e batata viram Aguardente) → §eGerador a Combustão§r.
+
+      Agora sobra tempo para o que interessa: viajar. Mostre a Estação, o Fabricador e o Baú
+      Aspirador!
+    tasks:
+      - get: [EnderIO:blockFarmStation, EnderIO:blockCrafter, EnderIO:blockVacuumChest]
+    rewards:
+      - xp: 8
+      - kit: {name: "Kit do Automatizador", items: [EnderIO:itemFrankenSkull:1, EnderIO:itemExtractSpeedUpgrade x4, EnderIO:itemBasicFilterUpgrade:1 x2, EnderIO:itemItemConduit x16, minecraft:diamond_hoe]}
+      - loot: raro
+
+  # ======================================================================
+  # FASE 6 — VIAGEM
+  # ======================================================================
+  - id: ancora_viagem
+    title: "Âncora de Viagem"
+    type: main
+    deps: [capa_conduto, cristal_pulsante]
+    icon: EnderIO:blockTravelAnchor
+    desc: |
+      Lembra quando você andava? Que tempos!
+
+      A §eÂncora de Viagem§r (ferro, 4 grupos de Capas de Conduto e um Cristal Pulsante) é um
+      ponto de teleporte. Fique em cima de uma âncora, §eolhe para outra e pule§r: você vai
+      parar lá. Neste pack o alcance entre âncoras é de §e48 blocos§r. Faça §e2§r e teste!
+
+      §aDica:§r pinte as âncoras na Máquina de Pintura para escondê-las no chão.
+    tasks:
+      - get: EnderIO:blockTravelAnchor x2
+    rewards:
+      - xp: 4
+      - choice: [EnderIO:itemMaterial:1 x16, EnderIO:itemMaterial:5 x1, minecraft:ender_pearl x6]
+
+  - id: io_fim
+    title: "IO do Fim"
+    type: normal
+    deps: [aco_eletrico, quartzo_fundido]
+    icon: EnderIO:blockEnderIo
+    desc: |
+      Aço Elétrico, Quartzo Fundido e um Olho do Fim = §eIO do Fim§r (o bloco "Ender IO"). Ao ser
+      ativado — de uma Âncora ou com o Cajado da Viagem — ele dá §eacesso remoto aos blocos
+      perto dele§r: abre baús e máquinas sem você estar ao lado.
+    tasks:
+      - get: EnderIO:blockEnderIo
+    rewards:
+      - xp: 3
+      - item: minecraft:ender_eye x2
+
+  - id: cajado_viagem
+    title: "Cajado da Viagem"
+    type: main
+    deps: [cristal_fim, aco_negro, ancora_viagem]
+    icon: EnderIO:itemTravelStaff:16
+    desc: |
+      Dois Aços Negros e um §eCristal do Fim§r. Simples assim — e tudo muda.
+
+      Com o §eCajado da Viagem§r na mão, as Âncoras e os blocos IO do Fim ficam visíveis de longe
+      (até 128 blocos) e você §eteleporta clicando nelas§r. Com §eShift + clique direito§r, ele
+      dá um "piscar" de até 16 blocos para onde você olha (atravessa paredes, menos bedrock e
+      blocos protegidos). Gasta RF a cada viagem — carregue num Banco de Capacitores.
+
+      Ele cabe no espaço universal do Baubles e tem tecla de atalho!
+    tasks:
+      - get: EnderIO:itemTravelStaff:*
+    rewards:
+      - xp: 4
+      - choice: [EnderIO:blockTravelAnchor x2, ore:ingotDarkSteel x4, minecraft:ender_pearl x8]
+
+  - id: info_viagem
+    title: "Mapas de Âncoras"
+    type: info
+    deps: [cajado_viagem]
+    icon: EnderIO:blockTravelAnchor
+    desc: |
+      Algumas ideias para uma rede de viagem que não deixa ninguém perdido:
+      §e• Âncoras a cada ~40 blocos§r formam "estradas" que se percorrem só pulando.
+      §e• O GUI da Âncora§r deixa dar um nome a ela e marcá-la como pública ou privada.
+      §e• Combine com o IO do Fim§r: uma âncora no meio dos baús, um IO do Fim do lado, e você
+      acessa o estoque de qualquer lugar da rede.
+      §e• O upgrade Viagem§r da espada ou da picareta negra faz o mesmo que o cajado.
+    tasks:
+      - check
+    rewards:
+      - xp: 1
+
+  - id: seletor_coordenadas
+    title: "Seletor de Coordenadas"
+    type: normal
+    deps: [aco_eletrico]
+    icon: EnderIO:itemCoordSelector
+    desc: |
+      Aço Elétrico, Pérola do Fim e Bússola = §eCoordinate Selector§r. Clique num bloco (até de
+      longe!) para gravar a posição ao lado dele; Shift + clique grava o próprio bloco. Ele
+      também grava a dimensão em que você está.
+
+      §aGuarde bem:§r neste pack, o §eTelepad não aceita coordenadas digitadas§r — o destino
+      precisa ser gravado com este seletor.
+    tasks:
+      - get: EnderIO:itemCoordSelector
+    rewards:
+      - xp: 3
+      - item: minecraft:compass
+
+  - id: telepad
+    title: "Telepad"
+    type: main
+    deps: [cajado_viagem, capacitor_octadico, seletor_coordenadas]
+    icon: EnderIO:blockTelePad
+    desc: |
+      Agora sim: teleporte para §equalquer lugar§r, até para outra dimensão.
+
+      Cada §eTelepad Block§r leva Quartzo Fundido, um Cajado da Viagem, uma Âncora de Viagem,
+      Aço Negro e um Capacitor Octádico — sim, §eum cajado por bloco§r! Monte §e9 blocos num
+      quadrado 3×3§r (um multibloco 3×1×3). Ele gasta bastante energia (1000 RF/t enquanto carrega).
+
+      §eComo definir o destino:§r grave o lugar com o §eSeletor de Coordenadas§r e clique com
+      ele no Telepad — a configuração deste pack trava a digitação de coordenadas no GUI.
+    tasks:
+      - get: EnderIO:blockTelePad x9
+    rewards:
+      - xp: 4
+      - choice: [EnderIO:blockCapBank:2 x1, minecraft:ender_pearl x16, EnderIO:itemBasicCapacitor:2 x1]
+
+  - id: transceptor
+    title: "Transceptor Dimensional"
+    type: main
+    deps: [ressoador_fim, cristal_fim, capacitor_octadico]
+    icon: EnderIO:blockTransceiver
+    desc: |
+      Itens, fluidos e energia atravessando o mundo — e as dimensões — sem nenhum cabo.
+
+      O §eTransceptor Dimensional§r (Aço Elétrico, Ressoador do Fim, Quartzo Fundido, Cristal do
+      Fim e Capacitor Octádico) envia e recebe por §ecanais§r que você cria no GUI. Dois
+      transceptores no mesmo canal trocam o que você configurar. Ele cobra uma manutenção de
+      10 RF/t e perde 10% da energia transmitida.
+
+      Perfeito para levar o minério da base mineira para casa, ou energia da usina para o
+      Nether.
+    tasks:
+      - get: EnderIO:blockTransceiver x2
+    rewards:
+      - xp: 4
+      - choice: [EnderIO:itemMaterial:8 x1, ore:ingotElectricalSteel x8, EnderIO:blockFusedQuartz x8]
+
+  - id: trilho_fim
+    title: "Trilho do Fim"
+    type: optional
+    deps: [transceptor]
+    icon: EnderIO:blockEnderRail
+    desc: |
+      Para os fãs de trem: o §eTrilho do Fim§r (feito no Vinculador de Almas a partir de um
+      trilho detector) colocado em cima de um Transceptor teleporta carrinhos para o destino
+      escolhido na aba de trilhos do transceptor. Shift + clique com chave muda a direção.
+    tasks:
+      - get: EnderIO:blockEnderRail
+    rewards:
+      - loot: incomum
+
+  - id: carregador_sem_fio
+    title: "Carregador Sem-Fio"
+    type: optional
+    deps: [ressoador_fim, capacitor_octadico]
+    icon: EnderIO:blockWirelessCharger
+    desc: |
+      Aço Elétrico, Ressoador do Fim e Capacitor Octádico: o §eCarregador Sem-Fio§r recarrega os
+      itens de RF dos jogadores num raio de 24 blocos — inclusive a armadura negra e o Cajado.
+      Também alimenta as Luzes Elétricas Sem Fio.
+    tasks:
+      - get: EnderIO:blockWirelessCharger
+    rewards:
+      - loot: incomum
+
+  - id: senhor_distancias
+    title: "Senhor das Distâncias"
+    type: milestone
+    deps: [cajado_viagem, telepad, transceptor]
+    icon: EnderIO:blockTelePad
+    banner: "Senhor das Distâncias"
+    subtitle: "A distância deixou de existir"
+    effect: 6
+    desc: |
+      Um pulo de âncora em âncora, um clique do cajado, um Telepad brilhando... Herói, você
+      dobrou o espaço como quem dobra uma folha de papel!
+
+      Os Antigos usavam exatamente esta técnica para circular entre as alas do Registro. Quando
+      a Fratura aconteceu, as âncoras deles se apagaram. Hoje, uma delas acendeu de novo — a
+      sua.
+
+      Com o Transceptor, até os seus recursos viajam sozinhos. Daqui para frente o que falta é
+      o equipamento: a armadura negra e seus upgrades. Mostre o Cajado, o Telepad e o
+      Transceptor!
+    tasks:
+      - get: [EnderIO:itemTravelStaff:*, EnderIO:blockTelePad, EnderIO:blockTransceiver]
+    rewards:
+      - xp: 8
+      - kit: {name: "Kit do Viajante Ender", items: [EnderIO:blockTravelAnchor x4, EnderIO:blockEnderIo, EnderIO:itemMaterial:8, EnderIO:blockCapBank:2, minecraft:ender_pearl x16]}
+      - loot: raro
+
+  # ======================================================================
+  # EXTRAS — PROCESSAMENTO, PÓS E DECORAÇÃO
+  # ======================================================================
+  - id: dobrar_minerios
+    title: "Dobrando Minérios"
+    type: normal
+    deps: [moinho_sag]
+    icon: EnderIO:itemPowderIngot:1
+    desc: |
+      Por que fundir um minério e ganhar 1 lingote, se o Moinho SAG te dá 2?
+
+      Passe minérios de ferro e ouro pelo SAG: cada um vira §e2 pós§r (e às vezes um subproduto —
+      o ferro pode soltar estanho ou níquel; o ouro, cobre). Depois é só fundir o pó. Junte
+      §e16 pós de ferro§r e §e8 de ouro§r.
+
+      §aDica:§r um conduto de itens ligando o SAG à Fundidora (em modo fornalha) faz isso sozinho.
+    tasks:
+      - get: [ore:dustIron x16, ore:dustGold x8]
+    rewards:
+      - xp: 3
+      - item: minecraft:iron_ore x8
+
+  - id: po_perola
+    title: "Pó de Pérola do Fim"
+    type: optional
+    deps: [moinho_sag]
+    icon: minecraft:ender_pearl
+    desc: |
+      Pérolas do Fim no Moinho SAG viram §ePó de Pérola do Fim§r — ingrediente dos "Enderios" e
+      de receitas de outros mods. Moa uma ou duas (não todas, a Liga Vibrante agradece).
+    tasks:
+      - get: ore:dustEnderPearl
+    rewards:
+      - loot: comum
+
+  - id: po_obsidiana
+    title: "Pó de Obsidiana"
+    type: optional
+    deps: [moinho_sag]
+    icon: EnderIO:itemPowderIngot:7
+    desc: |
+      Obsidiana moída no SAG vira §ePó de Obsidiana§r, que reforça as fachadas (Fachada
+      Endurecida, à prova de explosão) e faz o Big Item Filter. Junte §e4§r.
+    tasks:
+      - get: ore:dustObsidian x4
+    rewards:
+      - loot: comum
+
+  - id: ligas_thermal
+    title: "Ligas de Outros Volumes"
+    type: optional
+    deps: [fundidora_ligas]
+    icon: minecraft:gold_ingot
+    desc: |
+      A Fundidora também conhece as receitas do Thermal: §eBronze§r (3 cobre + 1 estanho),
+      §eInvar§r (2 ferro + 1 níquel), §eEletro§r (ouro + prata), além de Enderium, Sinálio e
+      Lumium. Útil quando você ainda não tem as máquinas do Thermal! Faça bronze, invar ou eletro.
+    tasks:
+      - one_of: [ore:ingotBronze x4, ore:ingotInvar x3, ore:ingotElectrum x2]
+    rewards:
+      - loot: comum
+
+  - id: graos_piezallity
+    title: "Grains of Piezallity"
+    type: normal
+    deps: [cristal_pulsante, moinho_sag]
+    icon: EnderIO:itemMaterial:14
+    desc: |
+      Um Cristal Pulsante moído no SAG vira §eGrains of Piezallity§r. Pode doer moer um cristal
+      tão bonito, mas esses grãos são ingrediente da §eLiga Cristalina§r, do Crystalline Pink
+      Slime, do Dew of the Void e do Vapor of Levity. Junte §e4§r.
+    tasks:
+      - get: EnderIO:itemMaterial:14 x4
+    rewards:
+      - xp: 3
+      - item: minecraft:diamond
+
+  - id: graos_magicos
+    title: "Grãos Vibrantes, do Fim e de Presciência"
+    type: optional
+    deps: [graos_piezallity]
+    icon: EnderIO:itemMaterial:15
+    desc: |
+      Os outros cristais também viram grãos no SAG: Cristal Vibrante → §eGrains of Vibrancy§r
+      (Capacitor Totêmico), Cristal do Fim → §eGrains of the End§r (Dew of the Void) e Precient
+      Crystal → §eGrains of Prescience§r (Vapor of Levity). Faça qualquer um.
+    tasks:
+      - one_of: [EnderIO:itemMaterial:15, EnderIO:itemMaterial:16, EnderIO:itemMaterial:17]
+    rewards:
+      - loot: comum
+
+  - id: info_endergy
+    title: "A Família Endergy"
+    type: info
+    deps: [ligas_completas]
+    icon: EnderIO:itemAlloyEndergy:3
+    desc: |
+      Este Ender IO veio com páginas extras que eu não conhecia — as ligas "Endergy":
+      §e• Clay Compound§r — cascalho + argila + pedregulho (o começo de tudo).
+      §e• Prata Energética / Liga Vívida§r — a linha de prata dos capacitores.
+      §e• Liga Cristalina§r — ouro + Grains of Piezallity.
+      §e• Crystalline Pink Slime§r — slime rosa + Grains of Piezallity.
+      §e• Liga Melódica§r — End Steel + Olho do Fim.
+      §e• Liga Estelar§r — Estrela do Nether + Liga Melódica + argila.
+
+      Com elas vêm capacitores maiores (Cristalino → Melódico → Estelar), condutos de energia e
+      de fluidos absurdos e o equipamento Estelar. É o "endgame" do Volume das Ligas.
+    tasks:
+      - check
+    rewards:
+      - xp: 1
+
+  - id: barras_negras
+    title: "Barras de Ferro Negro"
+    type: optional
+    deps: [aco_negro]
+    icon: EnderIO:blockDarkIronBars
+    desc: |
+      6 Aços Negros = 16 §eBarras de Ferro Negro§r. Elas fazem a Obsidiana Reforçada, a Escada de
+      Aço Negro e o Tanque Pressurizado — e ficam lindas numa janela de masmorra.
+    tasks:
+      - get: EnderIO:blockDarkIronBars x16
+    rewards:
+      - loot: comum
+
+  - id: tanque_pressurizado
+    title: "Tanque de Fluidos Pressurizado"
+    type: optional
+    deps: [barras_negras, tanque_fluidos]
+    icon: EnderIO:blockTank:1
+    desc: |
+      Aço Negro, Barras de Ferro Negro e vidro endurecido (Quartzo Fundido): o §eTanque
+      Pressurizado§r guarda bem mais que o comum e mantém o conteúdo quando quebrado. Perfeito
+      para estocar Combustível para Foguetes.
+    tasks:
+      - get: EnderIO:blockTank:1
+    rewards:
+      - loot: comum
+
+  - id: picareta_energizada
+    title: "Picareta Energizada"
+    type: normal
+    deps: [picareta_negra, upgrade_energia]
+    icon: EnderIO:item.darkSteel_pickaxe
+    desc: |
+      Lembra do Cristal Vibrante na bigorna? Ele funciona na §ePicareta Negra§r também! Com
+      Energia, ela minera duas vezes mais rápido, atravessa obsidiana como se fosse terra e
+      gasta RF no lugar da durabilidade.
+
+      Mostre a Picareta Negra com qualquer nível de Energia.
+    tasks:
+      - one_of:
+          - 'EnderIO:item.darkSteel_pickaxe {"enderio.darksteel.upgrade.energyUpgrade":{unlocalized_name:"enderio.darksteel.upgrade.empowered_one"}}'
+          - 'EnderIO:item.darkSteel_pickaxe {"enderio.darksteel.upgrade.energyUpgrade":{unlocalized_name:"enderio.darksteel.upgrade.empowered_two"}}'
+          - 'EnderIO:item.darkSteel_pickaxe {"enderio.darksteel.upgrade.energyUpgrade":{unlocalized_name:"enderio.darksteel.upgrade.empowered_three"}}'
+          - 'EnderIO:item.darkSteel_pickaxe {"enderio.darksteel.upgrade.energyUpgrade":{unlocalized_name:"enderio.darksteel.upgrade.empowered_four"}}'
+          - 'EnderIO:item.darkSteel_pickaxe {"enderio.darksteel.upgrade.energyUpgrade":{unlocalized_name:"enderio.darksteel.upgrade.empowered_five"}}'
+        nbt: true
+    rewards:
+      - xp: 3
+      - item: minecraft:obsidian x16
+
+  - id: espada_energizada
+    title: "\"The Ender\" Energizada"
+    type: optional
+    deps: [espada_ender, upgrade_energia]
+    icon: EnderIO:item.darkSteel_sword
+    desc: |
+      A "The Ender" com o upgrade Energia gasta RF a cada golpe e bate bem mais forte. Mostre a
+      espada com qualquer nível de Energia!
+    tasks:
+      - one_of:
+          - 'EnderIO:item.darkSteel_sword {"enderio.darksteel.upgrade.energyUpgrade":{unlocalized_name:"enderio.darksteel.upgrade.empowered_one"}}'
+          - 'EnderIO:item.darkSteel_sword {"enderio.darksteel.upgrade.energyUpgrade":{unlocalized_name:"enderio.darksteel.upgrade.empowered_two"}}'
+          - 'EnderIO:item.darkSteel_sword {"enderio.darksteel.upgrade.energyUpgrade":{unlocalized_name:"enderio.darksteel.upgrade.empowered_three"}}'
+          - 'EnderIO:item.darkSteel_sword {"enderio.darksteel.upgrade.energyUpgrade":{unlocalized_name:"enderio.darksteel.upgrade.empowered_four"}}'
+          - 'EnderIO:item.darkSteel_sword {"enderio.darksteel.upgrade.energyUpgrade":{unlocalized_name:"enderio.darksteel.upgrade.empowered_five"}}'
+        nbt: true
+    rewards:
+      - loot: incomum
+
+  - id: livro_sob_medida
+    title: "Livro Encantado sob Medida"
+    type: optional
+    deps: [encantador]
+    icon: minecraft:enchanted_book
+    desc: |
+      Use o Encantador: Livro e Pena + o item do encantamento + XP = um §elivro encantado§r com
+      exatamente o que você queria. Abra o NEI no Encantador (U) para ver o item de cada
+      encantamento. Traga um livro encantado!
+    tasks:
+      - get: minecraft:enchanted_book:*
+    rewards:
+      - loot: comum
+
+  - id: blocos_pintados
+    title: "Arquitetura Disfarçada"
+    type: optional
+    deps: [maquina_pintura]
+    icon: EnderIO:blockPaintedStair
+    desc: |
+      Escadas, lajes, cercas, portões, muros e tapetes do Ender IO podem ter a aparência de
+      qualquer bloco depois de passar pela Máquina de Pintura. Uma escada de diamante? Uma cerca
+      de esmeralda? Pode! Faça qualquer bloco pintado.
+    tasks:
+      - one_of: ['EnderIO:blockPaintedStair:*', 'EnderIO:blockPaintedSlab:*', 'EnderIO:blockPaintedFence:*', 'EnderIO:blockPaintedFenceGate:*', 'EnderIO:blockPaintedWall:*', 'EnderIO:blockPaintedCarpet:*', 'EnderIO:blockPaintedGlowstone:*']
+    rewards:
+      - loot: comum
+
+  - id: armacao_quartzo
+    title: "Armação de Quartzo Fundido"
+    type: optional
+    deps: [capa_conduto, quartzo_fundido]
+    icon: EnderIO:itemFusedQuartzFrame
+    desc: |
+      Capas de Conduto e gravetos fazem a §eArmação de Quartzo Fundido§r. Clique com ela num
+      bloco de Quartzo Fundido para dar a ele uma moldura com a aparência de outro bloco
+      (pintada na Máquina de Pintura). Janelas à prova de explosão, com estilo.
+    tasks:
+      - get: EnderIO:itemFusedQuartzFrame
+    rewards:
+      - loot: comum
+
+  - id: filtro_grande_avancado
+    title: "Big Advanced Item Filter"
+    type: optional
+    deps: [filtros_especiais, liga_melodica]
+    icon: EnderIO:itemBigFilterUpgrade:1
+    desc: |
+      O filtro supremo: um Big Item Filter cercado por End Steel e Ligas Melódicas. Muitos
+      espaços e todas as opções avançadas (oredict, NBT, dano). Para redes de itens gigantes.
+    tasks:
+      - get: EnderIO:itemBigFilterUpgrade:1
+    rewards:
+      - loot: incomum
+
+  # ======================================================================
+  # FASE 7 — EQUIPAMENTO DE AÇO NEGRO E UPGRADES
+  # ======================================================================
+  - id: picareta_negra
+    title: "Picareta Negra"
+    type: main
+    deps: [aco_negro]
+    icon: EnderIO:item.darkSteel_pickaxe
+    desc: |
+      3 Aços Negros e 2 gravetos. Simples por fora, poderosa por dentro.
+
+      A §ePicareta Negra§r minera como diamante e dura muito mais. Com energia (upgrade
+      Energia), ela fica §eduas vezes mais rápida§r, quebra §eobsidiana§r num instante (gastando
+      RF) e usa energia no lugar de durabilidade. Neste pack ela também minera §eArdite§r do
+      Tinkers'.
+    tasks:
+      - get: EnderIO:item.darkSteel_pickaxe
+    rewards:
+      - xp: 4
+      - choice: [ore:ingotDarkSteel x4, minecraft:torch x64, minecraft:cooked_porkchop x16]
+
+  - id: machado_negro
+    title: "Machado Negro"
+    type: normal
+    deps: [aco_negro]
+    icon: EnderIO:item.darkSteel_axe
+    desc: |
+      O §eMachado Negro§r (3 Aços Negros e 2 gravetos) corta mais rápido com energia e, com
+      Shift, derruba a árvore inteira de uma vez (gastando bem mais energia). Lenhadores do
+      Registro, uni-vos!
+    tasks:
+      - get: EnderIO:item.darkSteel_axe
+    rewards:
+      - xp: 3
+      - item: minecraft:sapling x8
+
+  - id: tesoura_negra
+    title: "Tesoura Negra"
+    type: optional
+    deps: [aco_negro]
+    icon: EnderIO:item.darkSteel_shears
+    desc: |
+      Dois Aços Negros em diagonal = §eDark Shears§r. Com energia, ela corta uma área maior de
+      folhas e tosquia várias ovelhas de uma vez. Dura cinco vezes mais que a tesoura comum.
+    tasks:
+      - get: EnderIO:item.darkSteel_shears
+    rewards:
+      - loot: comum
+
+  - id: elmo_negro
+    title: "Elmo Negro"
+    type: normal
+    deps: [aco_negro]
+    icon: EnderIO:item.darkSteel_helmet
+    desc: |
+      5 Aços Negros no formato de capacete. O §eElmo Negro§r protege como diamante e é a peça que
+      recebe os upgrades de cabeça: §eVisão Noturna§r, §eLocalizador de Sons§r e §eSolar§r.
+    tasks:
+      - get: EnderIO:item.darkSteel_helmet
+    rewards:
+      - xp: 3
+      - item: ore:ingotDarkSteel x2
+
+  - id: peitoral_negro
+    title: "Peitoral Negro"
+    type: normal
+    deps: [aco_negro]
+    icon: EnderIO:item.darkSteel_chestplate
+    desc: |
+      8 Aços Negros = §ePeitoral Negro§r. É nele que vai a bateria da armadura (upgrade
+      §eEnergia§r) e as §eAsas de Planador§r.
+    tasks:
+      - get: EnderIO:item.darkSteel_chestplate
+    rewards:
+      - xp: 3
+      - item: ore:ingotDarkSteel x2
+
+  - id: perneiras_negras
+    title: "Perneiras Negras"
+    type: normal
+    deps: [aco_negro]
+    icon: EnderIO:item.darkSteel_leggings
+    desc: |
+      7 Aços Negros = §ePerneiras Negras§r. Elas recebem o upgrade de §eVelocidade§r — correr
+      nunca mais vai ser a mesma coisa.
+    tasks:
+      - get: EnderIO:item.darkSteel_leggings
+    rewards:
+      - xp: 3
+      - item: ore:ingotDarkSteel x2
+
+  - id: botas_negras
+    title: "Botas Negras"
+    type: normal
+    deps: [aco_negro]
+    icon: EnderIO:item.darkSteel_boots
+    desc: |
+      4 Aços Negros = §eBotas Negras§r. Com energia, elas amortecem quedas; com upgrades, dão
+      §ePulo§r (até pulo triplo!), subida automática de degraus e §eNado§r mais rápido.
+    tasks:
+      - get: EnderIO:item.darkSteel_boots
+    rewards:
+      - xp: 3
+      - item: minecraft:feather x8
+
+  - id: info_upgrades
+    title: "Upgrades na Bigorna"
+    type: info
+    deps: [peitoral_negro]
+    icon: minecraft:anvil
+    desc: |
+      Os itens de Aço Negro se melhoram na §ebigorna§r: coloque a peça à esquerda, o item de
+      upgrade à direita e pague os níveis. Segure Shift sobre a peça para ver os upgrades
+      disponíveis.
+
+      §e• Energia I→V§r (peças e ferramentas): Cristal Vibrante, depois Capacitor Básico, Dupla
+      Camada, Octádico e Cristalino. A energia absorve parte do dano e alimenta tudo.
+      §e• Peitoral:§r Asas de Planador. §e• Perneiras:§r Velocidade I-III (poção de Velocidade).
+      §e• Botas:§r Pulo I-III (pistão), Nado (vitória-régia).
+      §e• Elmo:§r Visão Noturna (poção), Localizador de Sons (bloco musical), Solar I-III (Célula
+      Fotovoltaica).
+      §e• Picareta:§r Colher (pá de diamante). §e• Picareta/Espada:§r Viagem (Cristal do Fim).
+
+      §aDica:§r a §eBigorna de Aço Negro§r quebra muito menos — vale o investimento.
+    tasks:
+      - check
+    rewards:
+      - xp: 2
+
+  - id: upgrade_energia
+    title: "Energia I"
+    type: main
+    deps: [peitoral_negro, cristal_vibrante, info_upgrades]
+    icon: EnderIO:itemMaterial:6
+    desc: |
+      Uma armadura que bebe RF! Na bigorna, Peitoral Negro + §eCristal Vibrante§r (10 níveis) =
+      upgrade §eEnergia I§r: a peça guarda 100 000 RF e parte do dano recebido é absorvido pela
+      energia em vez da durabilidade.
+
+      Mostre um Peitoral Negro com qualquer nível de Energia. Depois aplique o mesmo upgrade nas
+      outras peças e ferramentas!
+    tasks:
+      - one_of:
+          - 'EnderIO:item.darkSteel_chestplate {"enderio.darksteel.upgrade.energyUpgrade":{unlocalized_name:"enderio.darksteel.upgrade.empowered_one"}}'
+          - 'EnderIO:item.darkSteel_chestplate {"enderio.darksteel.upgrade.energyUpgrade":{unlocalized_name:"enderio.darksteel.upgrade.empowered_two"}}'
+          - 'EnderIO:item.darkSteel_chestplate {"enderio.darksteel.upgrade.energyUpgrade":{unlocalized_name:"enderio.darksteel.upgrade.empowered_three"}}'
+          - 'EnderIO:item.darkSteel_chestplate {"enderio.darksteel.upgrade.energyUpgrade":{unlocalized_name:"enderio.darksteel.upgrade.empowered_four"}}'
+          - 'EnderIO:item.darkSteel_chestplate {"enderio.darksteel.upgrade.energyUpgrade":{unlocalized_name:"enderio.darksteel.upgrade.empowered_five"}}'
+        nbt: true
+    rewards:
+      - xp: 4
+      - choice: [minecraft:experience_bottle x16, EnderIO:itemMaterial:6 x2, EnderIO:itemBasicCapacitor x3]
+
+  - id: upgrade_energia_avancado
+    title: "Energia IV"
+    type: normal
+    deps: [upgrade_energia, capacitor_octadico]
+    icon: EnderIO:itemBasicCapacitor:2
+    desc: |
+      Suba a bateria degrau por degrau: Capacitor Básico (Energia II, 150k RF), Dupla Camada
+      (III, 250k RF), Octádico (IV, 1M RF) — e, neste pack, até o §eCapacitor Cristalino§r
+      (Energia V, 2,5M RF). Quanto maior o nível, mais dano a energia absorve.
+
+      Mostre o Peitoral Negro com §eEnergia IV ou V§r.
+    tasks:
+      - one_of:
+          - 'EnderIO:item.darkSteel_chestplate {"enderio.darksteel.upgrade.energyUpgrade":{unlocalized_name:"enderio.darksteel.upgrade.empowered_four"}}'
+          - 'EnderIO:item.darkSteel_chestplate {"enderio.darksteel.upgrade.energyUpgrade":{unlocalized_name:"enderio.darksteel.upgrade.empowered_five"}}'
+        nbt: true
+    rewards:
+      - xp: 3
+      - item: minecraft:experience_bottle x16
+
+  - id: asas_planador
+    title: "Asas de Planador"
+    type: normal
+    deps: [aco_negro]
+    icon: EnderIO:itemGliderWing:1
+    desc: |
+      Couro e Aço Negro fazem uma §eAsa de Planador§r; duas asas + Aço Negro fazem as §eAsas de
+      Planador§r. Sozinhas elas não fazem nada — mas na bigorna, com o Peitoral Negro...
+    tasks:
+      - get: EnderIO:itemGliderWing:1
+    rewards:
+      - xp: 2
+      - item: minecraft:leather x8
+
+  - id: upgrade_planador
+    title: "Planador"
+    type: normal
+    deps: [asas_planador, peitoral_negro]
+    icon: EnderIO:itemGliderWing:1
+    desc: |
+      Peitoral Negro + Asas de Planador na bigorna (10 níveis) = upgrade §ePlanador§r. Pule de um
+      lugar alto e segure o pulo para planar; correndo, você desce mais rápido e voa mais longe.
+      Dá para ligar/desligar pelo menu de upgrades.
+
+      §cAviso de amiga:§r planar sobre lava é emocionante só nos filmes.
+    tasks:
+      - get: 'EnderIO:item.darkSteel_chestplate {"enderio.darksteel.upgrade.glide":{unlocalized_name:"enderio.darksteel.upgrade.glider"}}'
+        nbt: true
+    rewards:
+      - xp: 3
+      - item: minecraft:feather x16
+
+  - id: upgrade_pulo
+    title: "Pulo"
+    type: normal
+    deps: [botas_negras]
+    icon: minecraft:piston
+    desc: |
+      Botas Negras + §epistão§r na bigorna = §ePulo I§r: pulo mais alto e subida automática de
+      degraus. Mais dois pistões levam a Pulo II (pulo duplo!) e Pulo III (pulo triplo). Cada
+      pulo extra gasta um pouco de energia.
+    tasks:
+      - one_of:
+          - 'EnderIO:item.darkSteel_boots {"enderio.darksteel.upgrade.jumpBoost":{unlocalized_name:"enderio.darksteel.upgrade.jump_one"}}'
+          - 'EnderIO:item.darkSteel_boots {"enderio.darksteel.upgrade.jumpBoost":{unlocalized_name:"enderio.darksteel.upgrade.jump_two"}}'
+          - 'EnderIO:item.darkSteel_boots {"enderio.darksteel.upgrade.jumpBoost":{unlocalized_name:"enderio.darksteel.upgrade.jump_three"}}'
+        nbt: true
+    rewards:
+      - xp: 3
+      - item: minecraft:piston x2
+
+  - id: upgrade_nado
+    title: "Nado"
+    type: optional
+    deps: [botas_negras]
+    icon: minecraft:waterlily
+    desc: |
+      Botas Negras + §evitória-régia§r na bigorna = upgrade §eNado§r: você nada bem mais rápido.
+      Ótimo para explorar o fundo do oceano sem virar comida de lula.
+    tasks:
+      - get: 'EnderIO:item.darkSteel_boots {"enderio.darksteel.upgrade.swim":{unlocalized_name:"enderio.darksteel.upgrade.swim"}}'
+        nbt: true
+    rewards:
+      - loot: comum
+
+  - id: upgrade_velocidade
+    title: "Velocidade"
+    type: normal
+    deps: [perneiras_negras]
+    icon: minecraft:potion:8194
+    desc: |
+      Perneiras Negras + §epoção de Velocidade§r na bigorna = §eVelocidade I§r. Andar e correr
+      ficam mais rápidos (gastando energia enquanto você se move). Mais poções levam a
+      Velocidade II e III — confira no tooltip qual poção cada nível pede.
+    tasks:
+      - one_of:
+          - 'EnderIO:item.darkSteel_leggings {"enderio.darksteel.upgrade.speedBoost":{unlocalized_name:"enderio.darksteel.upgrade.speed_one"}}'
+          - 'EnderIO:item.darkSteel_leggings {"enderio.darksteel.upgrade.speedBoost":{unlocalized_name:"enderio.darksteel.upgrade.speed_two"}}'
+          - 'EnderIO:item.darkSteel_leggings {"enderio.darksteel.upgrade.speedBoost":{unlocalized_name:"enderio.darksteel.upgrade.speed_three"}}'
+        nbt: true
+    rewards:
+      - xp: 3
+      - item: minecraft:sugar x16
+
+  - id: upgrade_visao_noturna
+    title: "Visão Noturna"
+    type: optional
+    deps: [elmo_negro]
+    icon: minecraft:golden_carrot
+    desc: |
+      Elmo Negro + §epoção de Visão Noturna§r na bigorna. Cavernas escuras viram dia claro — e dá
+      para ligar e desligar o efeito.
+    tasks:
+      - get: 'EnderIO:item.darkSteel_helmet {"enderio.darksteel.upgrade.nightVision":{unlocalized_name:"enderio.darksteel.upgrade.nightVision"}}'
+        nbt: true
+    rewards:
+      - loot: comum
+
+  - id: upgrade_sons
+    title: "Localizador de Sons"
+    type: optional
+    deps: [elmo_negro]
+    icon: minecraft:noteblock
+    desc: |
+      Elmo Negro + §ebloco musical§r = §eLocalizador de Sons§r: os sons por perto aparecem como
+      marcadores na tela. Creeper escondido atrás da parede? Não mais!
+    tasks:
+      - get: 'EnderIO:item.darkSteel_helmet {"enderio.darksteel.upgrade.soundDetector":{unlocalized_name:"enderio.darksteel.upgrade.sound"}}'
+        nbt: true
+    rewards:
+      - loot: comum
+
+  - id: upgrade_solar
+    title: "Elmo Solar"
+    type: optional
+    deps: [elmo_negro, painel_solar]
+    icon: EnderIO:blockSolarPanel
+    desc: |
+      Elmo Negro + §eCélula Fotovoltaica§r = §eSolar I§r: o elmo gera energia ao sol e, neste
+      pack, recarrega também as outras peças da armadura. As células avançada e vibrante levam a
+      Solar II e III.
+    tasks:
+      - one_of:
+          - 'EnderIO:item.darkSteel_helmet {"enderio.darksteel.upgrade.speedBoost":{unlocalized_name:"enderio.darksteel.upgrade.solar_one"}}'
+          - 'EnderIO:item.darkSteel_helmet {"enderio.darksteel.upgrade.speedBoost":{unlocalized_name:"enderio.darksteel.upgrade.solar_two"}}'
+          - 'EnderIO:item.darkSteel_helmet {"enderio.darksteel.upgrade.speedBoost":{unlocalized_name:"enderio.darksteel.upgrade.solar_three"}}'
+        nbt: true
+    rewards:
+      - loot: incomum
+
+  - id: upgrade_colher
+    title: "Colher"
+    type: normal
+    deps: [picareta_negra]
+    icon: minecraft:diamond_shovel
+    desc: |
+      "Quem precisa de pá quando tem uma colher?" Picareta Negra + §epá de diamante§r na bigorna =
+      upgrade §eColher§r: a picareta passa a cavar terra, areia e cascalho na velocidade de uma pá.
+      Uma ferramenta só para quase tudo!
+    tasks:
+      - get: 'EnderIO:item.darkSteel_pickaxe {"enderio.darksteel.upgrade.spoon":{unlocalized_name:"enderio.darksteel.upgrade.spoon"}}'
+        nbt: true
+    rewards:
+      - xp: 3
+      - item: minecraft:diamond
+
+  - id: upgrade_viagem
+    title: "Viagem"
+    type: normal
+    deps: [cristal_fim, picareta_negra]
+    icon: EnderIO:itemMaterial:8
+    desc: |
+      Picareta Negra (ou "The Ender") + §eCristal do Fim§r na bigorna (30 níveis) = upgrade
+      §eViagem§r. A ferramenta passa a funcionar como o Cajado da Viagem: Shift + clique direito
+      para piscar ou ativar Âncoras e IO do Fim. Um item a menos na barra!
+    tasks:
+      - one_of:
+          - 'EnderIO:item.darkSteel_pickaxe {"enderio.darksteel.upgrade.travel":{unlocalized_name:"enderio.darksteel.upgrade.travel"}}'
+          - 'EnderIO:item.darkSteel_sword {"enderio.darksteel.upgrade.travel":{unlocalized_name:"enderio.darksteel.upgrade.travel"}}'
+        nbt: true
+    rewards:
+      - xp: 3
+      - item: minecraft:experience_bottle x16
+
+  - id: armadura_negra
+    title: "A Armadura Negra"
+    type: milestone
+    deps: [elmo_negro, peitoral_negro, perneiras_negras, botas_negras, upgrade_energia, upgrade_pulo, upgrade_velocidade, upgrade_planador]
+    icon: EnderIO:item.darkSteel_chestplate
+    banner: "A Armadura Negra"
+    subtitle: "Energizada, veloz e com asas"
+    desc: |
+      Herói, olha só você: elmo, peitoral, perneiras e botas de Aço Negro, a energia zumbindo,
+      as pernas leves, um pulo que desafia a gravidade e asas nas costas. Se os Antigos te
+      vissem agora, iam querer um autógrafo!
+
+      §aLembretes:§r
+      §e• Mantenha a armadura carregada§r — um Carregador Sem-Fio ou o Elmo Solar ajudam.
+      §e• Upgrades com energia§r (pulo extra, velocidade) gastam RF a cada uso.
+      §e• Ligue e desligue upgrades§r pelo menu do Ender IO quando quiser.
+
+      Mostre o conjunto completo vestido ou no inventário!
+    tasks:
+      - get: [EnderIO:item.darkSteel_helmet, EnderIO:item.darkSteel_chestplate, EnderIO:item.darkSteel_leggings, EnderIO:item.darkSteel_boots]
+    rewards:
+      - xp: 8
+      - kit: {name: "Kit do Cavaleiro Negro", items: [EnderIO:blockDarkSteelAnvil, minecraft:experience_bottle x32, EnderIO:itemBasicCapacitor:1 x2, minecraft:piston x2, ore:ingotDarkSteel x8]}
+      - loot: raro
+
+  # ======================================================================
+  # FASE 8 — END STEEL E AS LIGAS ENDERGY
+  # ======================================================================
+  - id: haste_aco_negro
+    title: "Haste de Aço Negro"
+    type: normal
+    deps: [end_steel]
+    icon: EnderIO:itemMaterial:12
+    desc: |
+      Três Aços Negros na diagonal, cercados por quatro Pepitas de End Steel = §eDark Steel
+      Rod§r. Ela substitui o graveto em todas as ferramentas de End Steel e Estelares. Faça §e4§r.
+    tasks:
+      - get: EnderIO:itemMaterial:12 x4
+    rewards:
+      - xp: 3
+      - item: ore:ingotDarkSteel x4
+
+  - id: ferramentas_end_steel
+    title: "Ferramentas de End Steel"
+    type: normal
+    deps: [haste_aco_negro]
+    icon: EnderIO:item.endSteel_pickaxe
+    desc: |
+      End Steel + Hastes de Aço Negro: §eEnd Steel Pick§r, §eEnd Steel Axe§r e a espada §eThe
+      Ender MKII§r. Mais duráveis e fortes que as negras, e aceitam os mesmos upgrades. Faça a
+      picareta (e as outras, se quiser!).
+    tasks:
+      - get: EnderIO:item.endSteel_pickaxe
+    rewards:
+      - xp: 3
+      - item: ore:ingotEndSteel x4
+
+  - id: espada_mkii
+    title: "The Ender MKII"
+    type: optional
+    deps: [haste_aco_negro]
+    icon: EnderIO:item.endSteel_sword
+    desc: |
+      2 End Steel e uma Haste de Aço Negro: a §eThe Ender MKII§r. Mesmos truques da original
+      (pérolas e cabeças), com mais dano e durabilidade.
+    tasks:
+      - get: EnderIO:item.endSteel_sword
+    rewards:
+      - loot: incomum
+
+  - id: armadura_end_steel
+    title: "Armadura de End Steel"
+    type: normal
+    deps: [end_steel, guardian_diode]
+    icon: EnderIO:item.endSteel_chestplate
+    desc: |
+      Cada peça de End Steel leva o formato normal de armadura com um §eGuardian Diode§r no
+      meio. A proteção e a durabilidade ficam bem acima da negra, e todos os upgrades continuam
+      valendo. Faça as quatro peças — são 4 Guardian Diodes!
+    tasks:
+      - get: [EnderIO:item.endSteel_helmet, EnderIO:item.endSteel_chestplate, EnderIO:item.endSteel_leggings, EnderIO:item.endSteel_boots]
+    rewards:
+      - xp: 5
+      - item: ore:ingotEndSteel x6
+
+  - id: gerador_ender
+    title: "Ender Generator"
+    type: optional
+    deps: [ressoador_fim, end_steel, orvalho_vazio]
+    icon: EnderIO:blockEnderGenerator
+    desc: |
+      End Steel, Quartzo Fundido e um Ressoador do Fim: o §eEnder Generator§r consome §eDew of
+      the Void§r e gera §b360 RF/t§r — o gerador mais forte do Ender IO.
+    tasks:
+      - get: EnderIO:blockEnderGenerator
+    rewards:
+      - loot: incomum
+
+  - id: chassis_avancados
+    title: "Chassis de Almário e de End Steel"
+    type: optional
+    deps: [end_steel, almario]
+    icon: EnderIO:itemMachinePart:2
+    desc: |
+      Variantes do Chassi de Máquina: o §eSoul Machine Chassis§r (Barras de Almário e Almário) e
+      o §eEnd Steel Chassis§r (Barras de End Steel e End Steel), ambos com um Capacitor Básico no
+      centro. Confira no NEI (U) onde eles são usados neste pack.
+    tasks:
+      - one_of: [EnderIO:itemMachinePart:2, EnderIO:itemMachinePart:3]
+    rewards:
+      - loot: comum
+
+  - id: argila_composta
+    title: "Clay Compound"
+    type: optional
+    deps: [fundidora_ligas]
+    icon: EnderIO:itemAlloyEndergy
+    desc: |
+      A liga mais humilde da família "Endergy": cascalho + argila + pedregulho na Fundidora =
+      §eClay Compound§r. Ela faz o conduto de energia mais fraco (e bolas de moagem). Barata e
+      honesta!
+    tasks:
+      - get: EnderIO:itemAlloyEndergy
+    rewards:
+      - loot: comum
+
+  - id: prata_energetica
+    title: "Prata Energética e Liga Vívida"
+    type: normal
+    deps: [fundidora_ligas]
+    icon: EnderIO:itemAlloyEndergy:5
+    desc: |
+      A irmã prateada da Liga Energética: §eprata + redstone + pó de pedra luminosa = Prata
+      Energética§r. Com uma pérola do Fim, ela vira §eLiga Vívida§r (a "Vibrante de prata").
+      Elas fazem os Capacitores Endergetic/Endergised e condutos próprios. Faça uma Liga Vívida.
+    tasks:
+      - get: EnderIO:itemAlloyEndergy:6
+    rewards:
+      - xp: 3
+      - item: ore:ingotSilver x4
+
+  - id: liga_cristalina
+    title: "Liga Cristalina"
+    type: normal
+    deps: [graos_piezallity, info_endergy]
+    icon: EnderIO:itemAlloyEndergy:1
+    desc: |
+      Moa um Cristal Pulsante no SAG para obter §eGrains of Piezallity§r. Na Fundidora:
+      §elingote de ouro + Grains of Piezallity = Liga Cristalina§r. Ela abre o próximo degrau
+      dos capacitores e o Conduto de Energia Cristalino. Faça §e4§r.
+    tasks:
+      - get: ore:ingotCrystallineAlloy x4
+    rewards:
+      - xp: 3
+      - item: minecraft:gold_ingot x8
+
+  - id: capacitor_cristalino
+    title: "Capacitor Cristalino"
+    type: normal
+    deps: [liga_cristalina, capacitor_octadico]
+    icon: EnderIO:itemBasicCapacitor:3
+    desc: |
+      2 Capacitores Octádicos (ou Endergised), 2 Ligas Cristalinas e um §eestilhaço de
+      prismarinho§r (do Et Futurum ou o Fragmento de Prismarinho do Botania) = §eCrystalline
+      Capacitor§r. Máquinas ainda mais rápidas — e é ele que leva a armadura a §eEnergia V§r.
+    tasks:
+      - get: EnderIO:itemBasicCapacitor:3
+    rewards:
+      - xp: 3
+      - item: ore:ingotCrystallineAlloy x2
+
+  - id: limo_rosa_cristalino
+    title: "Crystalline Pink Slime"
+    type: optional
+    deps: [liga_cristalina]
+    icon: EnderIO:itemAlloyEndergy:4
+    desc: |
+      Uma liga gosmenta e cintilante: 2 §ebolas de slime rosa§r (do MineFactory Reloaded) +
+      Grains of Piezallity na Fundidora. Ela faz um conduto de energia e um conduto de fluidos
+      do Fim de alta vazão.
+    tasks:
+      - get: EnderIO:itemAlloyEndergy:4
+    rewards:
+      - loot: comum
+
+  - id: liga_melodica
+    title: "Liga Melódica"
+    type: normal
+    deps: [end_steel, liga_cristalina]
+    icon: EnderIO:itemAlloyEndergy:2
+    desc: |
+      Dizem que dá para ouvir uma música baixinha se encostar o ouvido nela. (Eu ouvi. Juro.)
+
+      §eEnd Steel + Olho do Fim = Liga Melódica§r na Fundidora. Ela faz o §eCapacitor Melódico§r,
+      o Big Advanced Item Filter e condutos de altíssima vazão. Faça §e4§r.
+    tasks:
+      - get: ore:ingotMelodicAlloy x4
+    rewards:
+      - xp: 3
+      - item: minecraft:ender_eye x4
+
+  - id: capacitor_melodico
+    title: "Capacitor Melódico"
+    type: normal
+    deps: [liga_melodica, capacitor_cristalino]
+    icon: EnderIO:itemBasicCapacitor:4
+    desc: |
+      2 Capacitores Cristalinos + 1 End Steel + 2 Ligas Melódicas = §eMelodic Capacitor§r. Cada
+      degrau deixa as máquinas mais rápidas e famintas — confira o tooltip do capacitor.
+    tasks:
+      - get: EnderIO:itemBasicCapacitor:4
+    rewards:
+      - xp: 3
+      - item: ore:ingotMelodicAlloy x2
+
+  - id: liga_estelar
+    title: "Liga Estelar"
+    type: main
+    deps: [liga_melodica]
+    icon: EnderIO:itemAlloyEndergy:3
+    desc: |
+      Uma estrela do Nether derretida junto com a melodia do Fim. Herói, isto aqui é material
+      de lenda.
+
+      Na Fundidora: §eEstrela do Nether + Liga Melódica + 4 bolas de argila = 2 Ligas Estelares§r. Sim,
+      você vai precisar enfrentar o §cWither§r (ou ter estrelas guardadas). Ela faz o Capacitor
+      Estelar, o conduto de energia praticamente ilimitado e o equipamento Estelar. Faça §e4§r.
+    tasks:
+      - get: ore:ingotStellarAlloy x4
+    rewards:
+      - xp: 6
+      - choice: [ore:ingotMelodicAlloy x2, minecraft:clay_ball x16, minecraft:experience_bottle x32]
+
+  - id: capacitor_estelar
+    title: "Capacitor Estelar"
+    type: normal
+    deps: [liga_estelar, capacitor_melodico, cristal_presciente]
+    icon: EnderIO:itemBasicCapacitor:5
+    desc: |
+      2 Capacitores Melódicos + 1 Precient Crystal + 2 Ligas Estelares = §eStellar Capacitor§r, o
+      topo da escada de capacitores deste Ender IO.
+    tasks:
+      - get: EnderIO:itemBasicCapacitor:5
+    rewards:
+      - xp: 4
+      - item: ore:ingotStellarAlloy x1
+
+  - id: capacitor_totemico
+    title: "Capacitor Totêmico"
+    type: optional
+    deps: [capacitor_cristalino, slice_splice]
+    icon: EnderIO:itemBasicCapacitor:6
+    desc: |
+      Um capacitor feito na Fatia-e-Emenda: Almário, uma §emaçã dourada encantada§r, Grains of
+      Vibrancy e um Capacitor Cristalino. O §eTotemic Capacitor§r é um capacitor especial —
+      passe o mouse sobre ele para ver onde ele brilha.
+    tasks:
+      - get: EnderIO:itemBasicCapacitor:6
+    rewards:
+      - loot: incomum
+
+  - id: condutos_supremos
+    title: "Condutos de Fluidos Supremos"
+    type: optional
+    deps: [conduto_fluidos_fim, liga_cristalina]
+    icon: EnderIO:itemLiquidConduit:6
+    desc: |
+      Os Condutos de Fluidos do Fim ganham versões turbinadas trocando a Liga Vibrante por Liga
+      Cristalina, Crystalline Pink Slime, Melódica ou Estelar. A vazão sobe de 200 até 20 000
+      mB/t de extração na versão Estelar! Faça qualquer um.
+    tasks:
+      - one_of: [EnderIO:itemLiquidConduit:3, EnderIO:itemLiquidConduit:4, EnderIO:itemLiquidConduit:5, EnderIO:itemLiquidConduit:6]
+    rewards:
+      - loot: incomum
+
+  - id: conduto_estelar
+    title: "Conduto de Energia Estelar"
+    type: optional
+    deps: [liga_estelar, condutos_endergy]
+    icon: EnderIO:itemPowerConduitEndergy:11
+    desc: |
+      6 capas + 3 Ligas Estelares = 8 §eStellar Energy Conduits§r, o conduto de energia com a
+      maior capacidade do pack (confira no tooltip). Ideal para despejar um reator inteiro numa
+      linha só.
+    tasks:
+      - get: EnderIO:itemPowerConduitEndergy:11
+    rewards:
+      - loot: raro
+
+  - id: equipamento_estelar
+    title: "Ferramentas Estelares"
+    type: normal
+    deps: [liga_estelar, sentient_ender, haste_aco_negro]
+    icon: EnderIO:item.stellar_pickaxe
+    desc: |
+      Liga Estelar, Haste de Aço Negro e um §eSentient Ender§r em cada uma: §eStellar Pick§r,
+      §eStellar Axe§r e §eThe Ender MKIV§r. As ferramentas mais poderosas do Ender IO, com a
+      maior durabilidade e dano. Faça a picareta!
+    tasks:
+      - get: EnderIO:item.stellar_pickaxe
+    rewards:
+      - xp: 5
+      - item: ore:ingotStellarAlloy x2
+
+  - id: armadura_estelar
+    title: "Armadura Estelar"
+    type: milestone
+    deps: [liga_estelar, sentient_ender, armadura_end_steel]
+    icon: EnderIO:item.stellar_chestplate
+    banner: "A Armadura Estelar"
+    subtitle: "Feita de estrelas do Nether"
+    desc: |
+      Cada peça leva Liga Estelar e um §eSentient Ender§r no lugar do diodo. Quatro peças =
+      quatro Sentient Enders, quatro bruxas capturadas e muitas estrelas do Nether.
+
+      Herói... você vestiu uma constelação. É a melhor armadura que o Volume das Ligas sabe
+      fazer, e ela aceita todos os upgrades da armadura negra. Eu fico até sem palavras (e isso
+      é raríssimo, você sabe).
+
+      Mostre as quatro peças Estelares!
+    tasks:
+      - get: [EnderIO:item.stellar_helmet, EnderIO:item.stellar_chestplate, EnderIO:item.stellar_leggings, EnderIO:item.stellar_boots]
+    rewards:
+      - xp: 12
+      - kit: {name: "Relíquias Estelares", items: [ore:ingotStellarAlloy x4, minecraft:nether_star, EnderIO:itemBasicCapacitor:4, minecraft:experience_bottle x64]}
+      - loot: epico
+
+  # ======================================================================
+  # MARCO FINAL
+  # ======================================================================
+  - id: mestre_ligas
+    title: "Mestre das Ligas"
+    type: milestone
+    deps: [ligas_completas, rede_condutos, usina_ligas, mestre_almas, fabrica_autonoma, senhor_distancias, armadura_negra, capbank_vibrante]
+    icon: EnderIO:itemYetaWrench
+    banner: "Mestre das Ligas"
+    subtitle: "O Volume das Ligas está completo"
+    effect: 3
+    desc: |
+      Herói. Vem cá, senta um pouquinho.
+
+      Você começou com pedregulho e gravetos — uma engrenagem tão simples que ninguém daria nada
+      por ela. Depois vieram o Moinho SAG, a Fundidora e as oito ligas. Vieram os condutos que
+      cabem num bloco só, o Tonel borbulhando Combustível para Foguetes, as almas engarrafadas
+      (com todo o respeito), o Cristal do Fim, o Cajado, o Telepad. E agora você caminha de
+      armadura negra, com asas, sem medo de nada.
+
+      §bO Volume das Ligas está reescrito.§r Ele vai sustentar muitos outros: os condutos levam
+      os gases do Mekanism, os bancos guardam a energia dos reatores, o Telepad encurta as
+      viagens até os Reinos Perdidos.
+
+      E se ainda sobrar fome de ligas, as §eestrelas§r estão esperando: Liga Estelar e a Armadura
+      Estelar. Obrigada por consertar mais esta página do meu livro.
+    tasks:
+      - get: [EnderIO:blockCapBank:3, EnderIO:blockTelePad, EnderIO:blockSoulBinder, EnderIO:item.darkSteel_chestplate]
+    rewards:
+      - xp: 12
+      - kit: {name: "Legado do Mestre das Ligas", items: [EnderIO:itemBasicCapacitor:2 x2, EnderIO:itemMaterial:8 x2, ore:ingotVibrantAlloy x16, EnderIO:itemPowerConduit:2 x16, EnderIO:blockTravelAnchor x4]}
+      - loot: [epico]
+      - command: "/effect @p 1 1200 1"

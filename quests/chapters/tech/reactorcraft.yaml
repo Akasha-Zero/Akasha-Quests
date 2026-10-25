@@ -1,0 +1,1436 @@
+chapter:
+  id: reactorcraft
+  title: "ReactorCraft"
+  prefix: ""
+  order: 346
+  icon: ReactorCraft:reactorcraft_item_placer
+  desc: |
+    §bO Volume do Átomo.§r Fluorita, pechblenda e enriquecimento; fissão com turbinas que
+    giram os eixos do RotaryCraft; sódio, HTGR, tório e o tokamak da fusão. Radiação e
+    meltdown são reais aqui. (ReactorCraft V33a, Reika)
+
+quests:
+  # ======================================================================
+  # FASE 0 — MINÉRIOS E O MANUAL
+  # ======================================================================
+  - id: fluorita
+    title: "Fluorita"
+    type: main
+    icon: ReactorCraft:reactorcraft_block_fluoriteore
+    desc: |
+      Herói, conhece aquele brilho colorido nas paredes da caverna? É §eFluorita§r — e ela
+      §efluoresce perto de nêutrons e radiação§r, servindo de "contador Geiger" improvisado.
+      Também é a fonte de flúor que o enriquecimento de urânio exige.
+
+      Ela gera no Overworld entre §eY 32 e 60§r, em oito cores (todas valem). Funda o
+      minério e junte §e16 Cristais de Fluorita§r.
+    tasks:
+      - get: ore:gemFluorite x16
+    rewards:
+      - xp: 4
+      - choice: [minecraft:iron_ingot x16, minecraft:torch x32, minecraft:coal x16]
+
+  - id: manual_rec
+    title: "O Manual ReactorCraft"
+    type: main
+    deps: [fluorita]
+    deps_hidden: [rotarycraft:aco_hsla]
+    icon: ReactorCraft:reactorcraft_item_book
+    desc: |
+      O ReactorCraft é um "filho" do RotaryCraft: as máquinas são montadas na §eMesa de
+      Trabalho§r, quase tudo leva §eAço HSLA§r e as turbinas entregam §epotência de eixo§r.
+      Se você ainda não fez o capítulo do RotaryCraft, comece por lá.
+
+      O §eManual ReactorCraft§r (2 cristais de fluorita, 1 HSLA e 6 papéis) explica física
+      nuclear, cada máquina e cada estrutura. §cAqui, erro de projeto não é bug — é
+      meltdown.§r Leia antes de ligar qualquer coisa.
+    tasks:
+      - get: ReactorCraft:reactorcraft_item_book
+    rewards:
+      - xp: 4
+      - choice: [RotaryCraft:rotarycraft_item_shaftcraft:1 x16, minecraft:paper x16, minecraft:iron_ingot x16]
+
+  - id: info_nuclear
+    title: "Fissão e Fusão"
+    type: info
+    deps: [manual_rec]
+    icon: ReactorCraft:reactorcraft_item_fuel
+    desc: |
+      Do Manual, resumido pela sua arquivista favorita:
+
+      * §bFissão:§r um átomo pesado (urânio, plutônio) absorve um nêutron, se parte, libera
+        muito calor e mais nêutrons — reação em cadeia. Deixa §clixo radioativo§r.
+      * §bFusão:§r átomos leves (deutério + trítio) são forçados a se unir sob calor e pressão
+        absurdos. Não gera cadeia nem lixo, mas é muito mais difícil.
+      * Em qualquer usina: o calor ferve um fluido, o §evapor gira uma turbina§r e a turbina
+        gira um eixo.
+
+      Neste pack, os nêutrons da fissão §esó andam na horizontal§r (config) — projete os
+      reatores em camadas.
+    tasks:
+      - check
+    rewards:
+      - xp: 1
+
+  - id: pechblenda
+    title: "Pechblenda"
+    type: main
+    deps: [manual_rec]
+    icon: ReactorCraft:reactorcraft_block_ore:1
+    desc: |
+      O urânio deste Volume vem da §ePechblenda§r. No Overworld ela aparece fundo, entre
+      §eY 8 e 24§r, em veios grandes porém raros; no §eFim§r há uma variante bem mais comum
+      (Y 0–64). Funda o minério: sai §eLingote de Urânio Bruto§r.
+
+      Junte §e16 lingotes§r. (Conquista "Mine pechblenda"!)
+    tasks:
+      - get: ReactorCraft:reactorcraft_item_ingots x16
+    rewards:
+      - xp: 4
+      - choice: [minecraft:iron_pickaxe, minecraft:torch x64, minecraft:cooked_beef x16]
+
+  - id: cadmio_indio
+    title: "Cádmio e Índio"
+    type: normal
+    deps: [manual_rec]
+    icon: ReactorCraft:reactorcraft_item_ingots:1
+    desc: |
+      Dois metais para as hastes de controle: §eCádmio§r (Y 12–32) e §eÍndio§r (Y 0–16,
+      raro). Fundidos na fornalha, ou com Pó de Pirotéo (sem forma) na bancada. Com prata, eles
+      formam a §eLiga Pr-In-Cad§r no Forno de Calor do RotaryCraft.
+    tasks:
+      - get: [ReactorCraft:reactorcraft_item_ingots:1 x4, ReactorCraft:reactorcraft_item_ingots:2 x4]
+    rewards:
+      - xp: 3
+      - item: ore:ingotSilver x4
+
+  - id: calcita_magnetita
+    title: "Calcita e Magnetita"
+    type: normal
+    deps: [manual_rec]
+    icon: ReactorCraft:reactorcraft_item_raw:6
+    desc: |
+      §eCalcita§r (Y 32–60) dá §eCalcita Cristalizada§r, que na fornalha vira §eCal§r
+      (quicklime) para a amônia. §eMagnetita§r (Y 60–128, montanhas) dá §ePedra-Ímã§r: base
+      dos lingotes ferromagnéticos e dos ímãs permanentes da fusão.
+    tasks:
+      - get: [ReactorCraft:reactorcraft_item_raw:5 x8, ReactorCraft:reactorcraft_item_raw:6 x8]
+    rewards:
+      - xp: 3
+      - item: minecraft:iron_pickaxe
+
+  - id: minerios_nether
+    title: "Amônia e Torita do Nether"
+    type: optional
+    deps: [manual_rec]
+    icon: ReactorCraft:reactorcraft_block_ore:9
+    desc: |
+      No Nether: §eCloreto de Amônia§r (para a amônia) e §eTorita§r (Y 0–32), o minério de
+      tório do reator de sal fundido. Funda a torita para obter §ePó de Tório§r.
+    tasks:
+      - get: [ReactorCraft:reactorcraft_item_raw:3 x4, ReactorCraft:reactorcraft_item_raw:7 x4]
+    rewards:
+      - loot: comum
+
+  - id: detector_magnetico
+    title: "Detector de Minérios Magnéticos"
+    type: optional
+    deps: [calcita_magnetita]
+    icon: ReactorCraft:reactorcraft_item_ironfinder
+    desc: |
+      Duas Pedras-Ímã com HSLA = um detector que fareja minérios magnéticos por perto. Útil
+      para achar a magnetita (e o ferro) sem cavar às cegas.
+    tasks:
+      - get: ReactorCraft:reactorcraft_item_ironfinder
+    rewards:
+      - loot: comum
+
+  # ======================================================================
+  # FASE 1 — PROTEÇÃO RADIOLÓGICA
+  # ======================================================================
+  - id: info_radiacao
+    title: "Radiação"
+    type: info
+    deps: [pechblenda]
+    icon: ReactorCraft:reactorcraft_item_geiger
+    desc: |
+      §cRadiação envenena seres vivos.§r Em nível baixo dá tontura e náusea; em nível alto
+      (como depois de um meltdown) §cmata rápido§r. Ela mata grama e plantas, não pode ser
+      limpa "na mão" e decai com o tempo — a chuva ajuda a lavar.
+
+      Lixo nuclear segurado ou largado no mundo contamina tudo em volta. Plutônio é ainda pior.
+      Neste pack os minérios combustíveis §enão§r são radioativos (config) — o perigo começa
+      no reator.
+
+      Blindagem eficaz, segundo o código: §eaço, concreto, água, blocos de lingote de rocha
+      matriz, chumbo, obsidiana e vidro anti-explosão§r.
+    tasks:
+      - check
+    rewards:
+      - xp: 2
+
+  - id: tecido_antirradiacao
+    title: "Tecido Anti-Radiação"
+    type: normal
+    deps: [info_radiacao]
+    icon: ReactorCraft:reactorcraft_item_crafting:15
+    desc: |
+      Couro costurado com §echumbo§r (2 tecidos por receita) ou com urânio empobrecido = §eTecido
+      Anti-Radiação§r. É a matéria-prima do traje. Junte §e24§r.
+    tasks:
+      - get: ReactorCraft:reactorcraft_item_crafting:15 x24
+    rewards:
+      - xp: 3
+      - item: minecraft:leather x16
+
+  - id: traje_hazmat
+    title: "Traje Anti-Radiação"
+    type: main
+    deps: [tecido_antirradiacao]
+    icon: ReactorCraft:reactorcraft_item_hazchest
+    desc: |
+      Capacete, roupa, calças e botas anti-radiação: o formato de armadura de sempre, com
+      tecido. §eUse o conjunto completo§r sempre que for mexer em combustível, lixo ou num
+      reator ligado. Eu não quero ver o meu Herói brilhando no escuro.
+    tasks:
+      - get: [ReactorCraft:reactorcraft_item_hazhelmet, ReactorCraft:reactorcraft_item_hazchest, ReactorCraft:reactorcraft_item_hazlegs, ReactorCraft:reactorcraft_item_hazboots]
+    rewards:
+      - xp: 5
+      - choice: [minecraft:golden_apple x2, minecraft:milk_bucket x2, minecraft:cooked_beef x16]
+
+  - id: contador_geiger
+    title: "Contador Geiger"
+    type: normal
+    deps: [info_radiacao]
+    icon: ReactorCraft:reactorcraft_item_geiger
+    desc: |
+      Clica mais forte quanto maior a radiação. Radar e Tela do RotaryCraft, com HSLA e
+      uma Engrenagem de Aço: monte e leve sempre no bolso.
+    tasks:
+      - get: ReactorCraft:reactorcraft_item_geiger
+    rewards:
+      - xp: 3
+      - item: RotaryCraft:rotarycraft_item_shaftcraft:1 x6
+
+  - id: oculos_radiacao
+    title: "Óculos de Radiação"
+    type: optional
+    deps: [contador_geiger]
+    icon: ReactorCraft:reactorcraft_item_goggles
+    desc: |
+      Tornam a radiação §evisível§r — ótimo para desviar de áreas contaminadas e planejar a
+      limpeza.
+    tasks:
+      - get: ReactorCraft:reactorcraft_item_goggles
+    rewards:
+      - loot: comum
+
+  - id: limpeza_radiacao
+    title: "Emancipador de Radiação"
+    type: optional
+    deps: [contador_geiger]
+    icon: ReactorCraft:reactorcraft_item_cleanup
+    desc: |
+      A ferramenta de limpeza borrifa água numa área e lava aos poucos as partículas
+      radioativas. Carrega com água (veja o Manual). Tomara que você nunca precise dela.
+    tasks:
+      - get: ReactorCraft:reactorcraft_item_cleanup:*
+    rewards:
+      - loot: comum
+
+  - id: concreto
+    title: "Concreto"
+    type: normal
+    deps: [info_radiacao]
+    icon: ReactorCraft:reactorcraft_block_mats
+    desc: |
+      Argila + areia + cascalho + balde de água (sem forma) = 4 §eConcretos§r; com óleo no
+      lugar da água sai 6. É barato e bom de blindagem. Envolva o seu futuro reator — e
+      deixe espaço para manutenção.
+    tasks:
+      - get: ReactorCraft:reactorcraft_block_mats x64
+    rewards:
+      - xp: 3
+      - item: minecraft:clay x16
+
+  # ======================================================================
+  # FASE 2 — ENRIQUECIMENTO DE URÂNIO
+  # ======================================================================
+  - id: processador_uranio
+    title: "Processador de Urânio"
+    type: main
+    deps: [pechblenda, fluorita]
+    icon: ReactorCraft:reactorcraft_item_placer:9
+    desc: |
+      O §eProcessador de Urânio§r §enão precisa de potência§r, só de água encanada. Ele
+      dissolve §efluorita§r na água para fazer §eácido fluorídrico§r e depois dissolve
+      §eurânio§r (qualquer lingote do oredict ingotUranium) nesse ácido, formando
+      §eHexafluoreto de Urânio (UF6)§r, um gás.
+
+      O UF6 segue para a Centrífuga de Isótopos. Monte na Mesa de Trabalho (receita no NEI ou
+      no Manual).
+    tasks:
+      - get: ReactorCraft:reactorcraft_item_placer:9
+    rewards:
+      - xp: 4
+      - choice: [ore:gemFluorite x16, minecraft:water_bucket x2, ReactorCraft:reactorcraft_item_ingots x8]
+
+  - id: duto_gas
+    title: "Duto de Gás"
+    type: normal
+    deps: [processador_uranio]
+    icon: ReactorCraft:reactorcraft_item_placer:24
+    desc: |
+      Ácido fluorídrico e UF6 corroem tubo comum: os §eDutos de Gás§r são de argila
+      justamente para não reagir. Ligue o processador à centrífuga com eles.
+    tasks:
+      - get: ReactorCraft:reactorcraft_item_placer:24 x8
+    rewards:
+      - xp: 3
+      - item: minecraft:clay x16
+
+  - id: recipientes
+    title: "Recipientes"
+    type: normal
+    deps: [manual_rec]
+    icon: ReactorCraft:reactorcraft_item_canister
+    desc: |
+      Quatro ferros em volta de um vidro = §e16 Recipientes vazios§r. Eles carregam os gases
+      e líquidos do Volume (UF6, sódio, deutério, trítio, CO2...) — enchidos por máquinas de
+      fluido como o Transposador do Thermal.
+    tasks:
+      - get: ReactorCraft:reactorcraft_item_canister x16
+    rewards:
+      - xp: 3
+      - item: minecraft:glass x8
+
+  - id: centrifuga_isotopos
+    title: "Centrífuga de Isótopos"
+    type: main
+    deps: [processador_uranio]
+    icon: ReactorCraft:reactorcraft_item_placer:8
+    desc: |
+      Só 1% do urânio é U-235, o útil. A §eCentrífuga de Isótopos§r separa os isótopos girando
+      a uma velocidade insana: §c262.144 rad/s mínimos§r (código do pack), potência por baixo,
+      UF6 por cima.
+
+      Isso é uma Turbina de Avião numa caixa 4:1 em aceleração, ou uma Microturbina numa 2:1
+      — com §etungstênio ou melhor§r na transmissão (aço não aguenta). Sai muito pó
+      empobrecido e pouco enriquecido.
+    tasks:
+      - get: ReactorCraft:reactorcraft_item_placer:8
+    rewards:
+      - xp: 5
+      - choice: [RotaryCraft:rotarycraft_item_bucket:1 x4, RotaryCraft:rotarycraft_item_compacts:12 x8, RotaryCraft:rotarycraft_item_gearbox:1]
+
+  - id: po_enriquecido
+    title: "Pó de Urânio Enriquecido"
+    type: main
+    deps: [centrifuga_isotopos]
+    icon: ReactorCraft:reactorcraft_item_raw:1
+    desc: |
+      Cada pó consome 50 mB de UF6 e a chance de sair enriquecido é baixa. Seja paciente e
+      junte §e8 Pós de Urânio Enriquecido§r (o pó empobrecido também é útil — guarde).
+    tasks:
+      - get: ReactorCraft:reactorcraft_item_raw:1 x8
+    rewards:
+      - xp: 5
+      - choice: [ReactorCraft:reactorcraft_item_ingots x16, ore:gemFluorite x16, RotaryCraft:rotarycraft_item_bucket:1 x2]
+
+  - id: pastilha_uranio
+    title: "Pastilha de Urânio"
+    type: main
+    deps: [po_enriquecido]
+    icon: ReactorCraft:reactorcraft_item_fuel
+    desc: |
+      Quatro pós enriquecidos na bancada = §e2 Pastilhas de Urânio (Fresh)§r, o combustível da
+      fissão. Elas se gastam devagar e viram urânio empobrecido quando o U-235 acaba.
+      Conquista "Fissão" chegando!
+    tasks:
+      - get: ReactorCraft:reactorcraft_item_fuel x4
+    rewards:
+      - xp: 5
+      - choice: [ReactorCraft:reactorcraft_item_raw:1 x4, ReactorCraft:reactorcraft_block_mats x32, minecraft:golden_apple]
+
+  - id: uranio_empobrecido
+    title: "Urânio Empobrecido"
+    type: normal
+    deps: [centrifuga_isotopos]
+    icon: ReactorCraft:reactorcraft_item_depleted
+    desc: |
+      Quatro pós empobrecidos = 2 §eUrânios Empobrecidos§r (oredict depletedUranium). Usos:
+      tecido anti-radiação, o Volante de Urânio Empobrecido do RotaryCraft (o mais denso
+      depois da rocha matriz) e o combustível do reator reprodutor.
+    tasks:
+      - get: ReactorCraft:reactorcraft_item_depleted x8
+    rewards:
+      - xp: 3
+      - item: minecraft:leather x8
+
+  # ======================================================================
+  # FASE 3 — O REATOR DE FISSÃO
+  # ======================================================================
+  - id: nucleo_combustivel
+    title: "Núcleo de Combustível"
+    type: main
+    deps: [pastilha_uranio]
+    icon: ReactorCraft:reactorcraft_item_placer
+    desc: |
+      O §eNúcleo de Combustível§r guarda as pastilhas e é a fonte de todos os nêutrons e de
+      todo o calor. Carregado, ele emite nêutrons §ena horizontal§r; se baterem em outro
+      núcleo carregado, podem causar fissão (mais 3 nêutrons, calor e consumo de
+      combustível). Com o tempo acumula §elixo§r, que atrapalha a reação.
+
+      Faça §e4 núcleos§r — um reator de um núcleo só quase não reage.
+    tasks:
+      - get: ReactorCraft:reactorcraft_item_placer x4
+    rewards:
+      - xp: 5
+      - choice: [ReactorCraft:reactorcraft_block_mats x32, RotaryCraft:rotarycraft_item_shaftcraft:1 x16, RotaryCraft:rotarycraft_block_blastglass x8]
+
+  - id: haste_controle
+    title: "Hastes de Controle"
+    type: main
+    deps: [nucleo_combustivel, vara_absorcao]
+    icon: ReactorCraft:reactorcraft_item_placer:1
+    desc: |
+      As §eHastes de Controle§r interceptam nêutrons e controlam a velocidade da reação. Vêm
+      §einseridas§r por padrão; quem manda recolher é a CPU. Em emergência elas caem sozinhas:
+      o famoso §cSCRAM§r. (A Vara de Absorção leva Liga Pr-In-Cad, grafite e HSLA.)
+    tasks:
+      - get: ReactorCraft:reactorcraft_item_placer:1 x4
+    rewards:
+      - xp: 5
+      - choice: [ReactorCraft:reactorcraft_item_ingots:1 x8, ReactorCraft:reactorcraft_item_ingots:2 x4, ore:ingotSilver x8]
+
+  - id: cpu_reator
+    title: "Controle Central"
+    type: main
+    deps: [haste_controle]
+    icon: ReactorCraft:reactorcraft_item_placer:3
+    desc: |
+      A §eCPU do reator§r comanda cada haste (ou todas de uma vez), sente a temperatura e
+      §edispara um SCRAM sozinha§r se esquentar demais. Ela consome §b1.024 W por haste§r de
+      potência de eixo — e, como num reator real, §ese a CPU perder potência, as hastes caem§r
+      e a reação para.
+    tasks:
+      - get: ReactorCraft:reactorcraft_item_placer:3
+    rewards:
+      - xp: 5
+      - choice: [RotaryCraft:rotarycraft_item_engine:4, RotaryCraft:rotarycraft_item_shaft x8, RotaryCraft:rotarycraft_item_borecraft:4 x2]
+
+  - id: controle_remoto
+    title: "Controle Remoto da CPU"
+    type: optional
+    deps: [cpu_reator]
+    icon: ReactorCraft:reactorcraft_item_remote
+    desc: |
+      Comande a CPU de longe, sem entrar no reator. Sim, eu insisto: de longe é melhor.
+    tasks:
+      - get: ReactorCraft:reactorcraft_item_remote:*
+    rewards:
+      - loot: comum
+
+  - id: celula_refrigeracao
+    title: "Célula de Refrigeração"
+    type: normal
+    deps: [nucleo_combustivel]
+    icon: ReactorCraft:reactorcraft_item_placer:2
+    desc: |
+      Tira calor do reator — mas esse calor é desperdiçado (não vira vapor). Serve para
+      §edistribuir e estabilizar§r a temperatura de reatores grandes. Não substitui caldeiras!
+    tasks:
+      - get: ReactorCraft:reactorcraft_item_placer:2 x2
+    rewards:
+      - xp: 3
+      - item: minecraft:water_bucket x2
+
+  - id: refletor_neutrons
+    title: "Refletor de Nêutrons"
+    type: optional
+    deps: [nucleo_combustivel]
+    icon: ReactorCraft:reactorcraft_item_placer:32
+    desc: |
+      Tem chance de devolver o nêutron na direção de onde veio: reator mais eficiente com
+      menos combustível. Nêutrons não refletidos podem ser absorvidos.
+    tasks:
+      - get: ReactorCraft:reactorcraft_item_placer:32 x4
+    rewards:
+      - loot: incomum
+
+  - id: caldeira
+    title: "Caldeira"
+    type: main
+    deps: [nucleo_combustivel]
+    icon: ReactorCraft:reactorcraft_item_placer:11
+    desc: |
+      A §eCaldeira§r absorve calor das máquinas vizinhas e ferve o líquido (água entra por
+      baixo, vapor sai por cima; 200 mB de água por unidade de vapor). §cSe o vapor não for
+      retirado, ela para de esfriar o reator — e isso costuma terminar em meltdown.§r
+
+      Coloque caldeiras encostadas nos núcleos e garanta água sem parar (Bombas do
+      RotaryCraft).
+    tasks:
+      - get: ReactorCraft:reactorcraft_item_placer:11 x4
+    rewards:
+      - xp: 5
+      - choice: [RotaryCraft:rotarycraft_item_machine:16, RotaryCraft:rotarycraft_item_machine:17 x16, minecraft:water_bucket x4]
+
+  - id: duto_vapor
+    title: "Duto de Vapor"
+    type: main
+    deps: [caldeira]
+    icon: ReactorCraft:reactorcraft_item_placer:6
+    desc: |
+      Os §eDutos de Vapor§r levam o vapor até a turbina. A capacidade é infinita (a config
+      deste pack confirma) — por isso §cquebrar um duto cheio desperdiça muita energia
+      armazenada§r.
+    tasks:
+      - get: ReactorCraft:reactorcraft_item_placer:6 x16
+    rewards:
+      - xp: 4
+      - choice: [ReactorCraft:reactorcraft_block_mats x16, RotaryCraft:rotarycraft_item_shaftcraft:1 x8, minecraft:glass x16]
+
+  - id: grade_vapor
+    title: "Grade de Vapor"
+    type: normal
+    deps: [duto_vapor]
+    icon: ReactorCraft:reactorcraft_item_placer:12
+    desc: |
+      Solta o vapor dos dutos no mundo (até 1 bloco por tick). O vapor sobe até bater em
+      algo e se espalha — o ideal é que ele suba §edireto para dentro de uma turbina§r.
+    tasks:
+      - get: ReactorCraft:reactorcraft_item_placer:12
+    rewards:
+      - xp: 3
+      - item: minecraft:iron_bars x8
+
+  - id: turbina
+    title: "Turbina"
+    type: main
+    deps: [grade_vapor]
+    icon: ReactorCraft:reactorcraft_item_placer:4
+    desc: |
+      A §eTurbina§r extrai a energia do vapor que passa por ela: acelera aos poucos e o torque
+      é proporcional ao fluxo de vapor. Ela entrega potência de eixo para o RotaryCraft (até
+      65.536 rad/s neste código) e §eprecisa de lubrificante§r.
+
+      §cTurbinas são frágeis§r, especialmente rápidas: qualquer coisa nas pás quebra tudo —
+      inclusive as bolas de energia do ChromatiCraft, se você também mexe com ele.
+    tasks:
+      - get: ReactorCraft:reactorcraft_item_placer:4 x2
+    rewards:
+      - xp: 5
+      - choice: [RotaryCraft:rotarycraft_item_bucket x4, RotaryCraft:rotarycraft_item_machine:13 x16, RotaryCraft:rotarycraft_item_compacts:12 x8]
+
+  - id: info_meltdown
+    title: "Meltdown"
+    type: info
+    deps: [caldeira]
+    icon: ReactorCraft:reactorcraft_block_mats:1
+    desc: |
+      §cO que acontece quando dá errado§r (limites do código deste pack):
+
+      * §e800 °C:§r o revestimento dos núcleos começa a sofrer; fumaça e vapor.
+      * §e1.400 °C:§r a água se quebra e acumula §chidrogênio§r — inflamável, explode e
+        arremessa pedaços do reator.
+      * §e1.800 °C:§r combustível e aço derretem em §cCório§r, um "magma" intensamente
+        radioativo. Radiação extrema numa área grande.
+
+      Prevenção: caldeiras com água garantida, vapor sempre saindo, CPU alimentada (ela faz
+      SCRAM sozinha), blindagem em volta e §esempre testar com pouco combustível§r.
+    tasks:
+      - check
+    rewards:
+      - xp: 2
+
+  - id: primeira_fissao
+    title: "Fissão!"
+    type: milestone
+    deps: [turbina, cpu_reator, info_meltdown]
+    icon: ReactorCraft:reactorcraft_item_fuel
+    banner: "Fissão!"
+    subtitle: "O primeiro reator do Registro"
+    desc: |
+      Núcleos com pastilhas, hastes comandadas pela CPU, caldeiras fervendo, vapor subindo
+      pela grade e uma turbina girando a sua fábrica. Você dividiu o átomo, Herói.
+
+      Os Antigos também dominaram isso... e foi a ganância deles que rachou o Registro. Use
+      com cuidado: monitore a temperatura, retire o lixo, mantenha a blindagem.
+
+      Agora vem a eficiência: condensar e reaproveitar a água, usar amônia, turbinas de alta
+      pressão e geradores para mandar essa potência para outros mods.
+    tasks:
+      - get: [ReactorCraft:reactorcraft_item_placer, ReactorCraft:reactorcraft_item_placer:3, ReactorCraft:reactorcraft_item_placer:4]
+    rewards:
+      - xp: 10
+      - kit: {name: "Kit do Operador de Reator", items: [ReactorCraft:reactorcraft_item_fuel x4, ReactorCraft:reactorcraft_block_mats x64, RotaryCraft:rotarycraft_item_bucket x4, RotaryCraft:rotarycraft_block_blastglass x16]}
+      - loot: raro
+
+  - id: blindagem
+    title: "Blindagem"
+    type: normal
+    deps: [primeira_fissao]
+    icon: RotaryCraft:rotarycraft_block_blastglass
+    desc: |
+      Reatores disparam nêutrons de alta energia que ferem seres vivos, e um meltdown espalha
+      radiação letal. Uma boa casca de §eConcreto§r, §eVidro Anti-Explosão§r (para enxergar)
+      e água limita os danos. Pegue os dois materiais e revista o seu reator.
+    tasks:
+      - get: [ReactorCraft:reactorcraft_block_mats x64, RotaryCraft:rotarycraft_block_blastglass x16]
+    rewards:
+      - xp: 4
+      - item: minecraft:obsidian x16
+
+  - id: condensador
+    title: "Condensador"
+    type: normal
+    deps: [primeira_fissao]
+    icon: ReactorCraft:reactorcraft_item_placer:5
+    desc: |
+      O §eCondensador§r recolhe os blocos de vapor e os transforma de volta em líquido (saída
+      por cima) — só que em §ebaixa pressão§r, que precisa ser repressurizado. Com água, não
+      compensa muito; com amônia, compensa demais.
+    tasks:
+      - get: ReactorCraft:reactorcraft_item_placer:5
+    rewards:
+      - xp: 4
+      - item: RotaryCraft:rotarycraft_item_machine:17 x8
+
+  - id: pressurizador
+    title: "Pressurizador"
+    type: normal
+    deps: [condensador]
+    icon: ReactorCraft:reactorcraft_item_placer:13
+    desc: |
+      Um compressor centrífugo que devolve a pressão à água ou amônia de baixa pressão,
+      fechando o ciclo. Pede §b1.024 Nm e 16 kW§r por baixo; líquido entra por cima e sai
+      pelo lado.
+    tasks:
+      - get: ReactorCraft:reactorcraft_item_placer:13
+    rewards:
+      - xp: 4
+      - item: RotaryCraft:rotarycraft_item_gearbox:3
+
+  - id: amonia
+    title: "Sintetizador de Amônia"
+    type: normal
+    deps: [pressurizador, calcita_magnetita]
+    icon: ReactorCraft:reactorcraft_item_placer:14
+    desc: |
+      §eAmônia§r é um fluido de trabalho melhor que água. O §eSintetizador§r a produz com água,
+      §eCloreto de Amônia§r e §eCal§r (calcita cristalizada na fornalha), a §e220 °C§r.
+
+      §cCuidado:§r numa caldeira acima de §c650 °C§r, a amônia §cdetona§r. Controle a
+      temperatura antes de trocar a água por ela.
+    tasks:
+      - get: [ReactorCraft:reactorcraft_item_placer:14, ReactorCraft:reactorcraft_item_raw:4 x4]
+    rewards:
+      - xp: 4
+      - item: ReactorCraft:reactorcraft_item_raw:3 x8
+
+  - id: turbina_alta_pressao
+    title: "Turbina de Alta Pressão"
+    type: main
+    deps: [primeira_fissao, pressurizador]
+    icon: ReactorCraft:reactorcraft_item_placer:36
+    desc: |
+      A grande: a §eTurbina de Alta Pressão§r recebe vapor direto dos dutos pelos
+      §eInjetores de Vapor§r, é muito mais eficiente, tem até §e7 estágios§r (a comum, 5) e
+      uma carcaça que a protege. Gira até 131.072 rad/s neste código — e pede muito vapor.
+
+      Monte a estrutura com §eLâminas de Turbina§r, §eAlojamento de Turbina§r e §eInjetores§r
+      (o Manual mostra o formato). Líquido de baixa pressão sai por baixo da traseira.
+      Redstone em qualquer injetor desliga.
+    tasks:
+      - get: [ReactorCraft:reactorcraft_item_placer:36, ReactorCraft:reactorcraft_block_turbinemulti x4, ReactorCraft:reactorcraft_block_turbinemulti:1 x4, ReactorCraft:reactorcraft_block_turbinemulti:2 x2]
+    rewards:
+      - xp: 6
+      - choice: [RotaryCraft:rotarycraft_item_compacts:11 x8, RotaryCraft:rotarycraft_item_misccraft:5 x8, RotaryCraft:rotarycraft_item_compacts:12 x8]
+
+  - id: nucleo_turbina_vapor
+    title: "Núcleo de Turbina a Vapor"
+    type: optional
+    deps: [turbina_alta_pressao]
+    icon: ReactorCraft:reactorcraft_item_crafting:18
+    desc: |
+      Carboneto de tungstênio (flocos de tungstênio + pó de carvão, depois Fornalha de Pulso)
+      em volta de uma Turbina Composta. Peça de construção avançada das turbinas.
+    tasks:
+      - get: ReactorCraft:reactorcraft_item_crafting:18
+    rewards:
+      - loot: incomum
+
+  - id: gerador_turbina
+    title: "Gerador de Turbina"
+    type: normal
+    deps: [turbina_alta_pressao]
+    icon: ReactorCraft:reactorcraft_item_placer:33
+    desc: |
+      O §eGerador de Turbina§r é um multibloco (Rotor, Enrolamento, Câmara e Esponja de Vapor)
+      ligado direto à turbina, que converte a potência de eixo em energia de outros mods
+      (troque o modo com a Chave de Fenda). §cA saída é tão grande que derrete muitos cabos§r
+      — o EU Splitter do ElectriCraft existe por isso.
+    tasks:
+      - get: [ReactorCraft:reactorcraft_item_placer:33, ReactorCraft:reactorcraft_block_generatormulti, ReactorCraft:reactorcraft_block_generatormulti:1]
+    rewards:
+      - xp: 4
+      - item: ReactorCraft:reactorcraft_item_crafting:8 x8
+
+  - id: volante_turbina
+    title: "Volante e Dinamômetro de Turbina"
+    type: optional
+    deps: [turbina]
+    icon: ReactorCraft:reactorcraft_item_placer:31
+    desc: |
+      O §eVolante de Turbina§r estabiliza a saída de uma turbina de baixa pressão; o
+      §eDinamômetro de Turbina§r (embaixo dela) manda um sinal de comparador proporcional à
+      velocidade. Qualquer um dos dois.
+    tasks:
+      - one_of: [ReactorCraft:reactorcraft_item_placer:31, ReactorCraft:reactorcraft_item_placer:35]
+    rewards:
+      - loot: comum
+
+  - id: difusor_vapor
+    title: "Difusor de Vapor"
+    type: optional
+    deps: [duto_vapor]
+    icon: ReactorCraft:reactorcraft_item_placer:37
+    desc: |
+      Expande e resfria o vapor quente de alta pressão do reator para o vapor "comum" das
+      turbinas de outros mods (as feitas para caldeiras a carvão).
+    tasks:
+      - get: ReactorCraft:reactorcraft_item_placer:37
+    rewards:
+      - loot: comum
+
+  - id: gigaturbina
+    title: "Usina Nuclear"
+    type: milestone
+    deps: [turbina_alta_pressao, condensador, blindagem]
+    icon: ReactorCraft:reactorcraft_item_placer:36
+    banner: "Usina Nuclear"
+    subtitle: "Turbina de alta pressão e ciclo fechado"
+    desc: |
+      Reator blindado, turbina de alta pressão, condensador e pressurizador fechando o ciclo.
+      Isso não é mais um experimento: é uma §eusina§r. O Manual tem conquistas para turbinas
+      gigantes e para 50 gigawatts — elas estão ao seu alcance.
+
+      O que falta agora é o que separa engenheiros de lendas: §ereatores reprodutores§r (que
+      fabricam o próprio combustível), §ereatores a gás de alta temperatura§r, o §etório§r e,
+      no topo de tudo, a §efusão§r.
+    tasks:
+      - get: [ReactorCraft:reactorcraft_item_placer:36, ReactorCraft:reactorcraft_item_placer:5, ReactorCraft:reactorcraft_item_placer:13]
+    rewards:
+      - xp: 12
+      - kit: {name: "Kit da Usina Nuclear", items: [ReactorCraft:reactorcraft_item_fuel x8, ReactorCraft:reactorcraft_item_placer:6 x16, RotaryCraft:rotarycraft_item_bucket x8, RotaryCraft:rotarycraft_item_compacts:12 x16]}
+      - loot: epico
+
+  # ======================================================================
+  # FASE 4 — LIXO NUCLEAR
+  # ======================================================================
+  - id: lixo_nuclear
+    title: "Lixo Nuclear"
+    type: normal
+    deps: [primeira_fissao]
+    icon: ReactorCraft:reactorcraft_item_waste:10
+    desc: |
+      O lado feio da fissão: o §eLixo Nuclear§r se acumula nos núcleos e atrapalha a reação,
+      então precisa ser retirado (com o traje!). Segurado ou largado no mundo, ele contamina
+      tudo em volta. Retire um pouco do seu reator.
+    tasks:
+      - get: ReactorCraft:reactorcraft_item_waste:*
+    rewards:
+      - xp: 4
+      - item: ReactorCraft:reactorcraft_item_crafting:15 x8
+
+  - id: recipiente_combustivel_gasto
+    title: "Contêiner de Combustível Gasto"
+    type: normal
+    deps: [lixo_nuclear]
+    icon: ReactorCraft:reactorcraft_item_placer:10
+    desc: |
+      O primeiro destino do lixo: o lixo de meia-vida curta decai aqui dentro, gerando calor e
+      nêutrons. Para manter frio e blindado, §eele precisa ficar debaixo d'água§r.
+    tasks:
+      - get: ReactorCraft:reactorcraft_item_placer:10
+    rewards:
+      - xp: 4
+      - item: minecraft:water_bucket x2
+
+  - id: tambor_lixo
+    title: "Tambor de Lixo Nuclear"
+    type: normal
+    deps: [recipiente_combustivel_gasto]
+    icon: ReactorCraft:reactorcraft_item_placer:21
+    desc: |
+      O lixo de vida longa vai para o §eTambor de Armazenamento§r, que pode ficar enterrado
+      para sempre sem vazar. Lixo com meia-vida abaixo de 6 anos esquenta demais para ele.
+      §cChegar perto de um tambor cheio continua perigosíssimo.§r
+    tasks:
+      - get: ReactorCraft:reactorcraft_item_placer:21
+    rewards:
+      - xp: 4
+      - item: ReactorCraft:reactorcraft_block_mats x32
+
+  - id: duto_lixo
+    title: "Duto de Lixo e Fissão Forçada"
+    type: optional
+    deps: [tambor_lixo]
+    icon: ReactorCraft:reactorcraft_item_placer:45
+    desc: |
+      Para automatizar: o §eTubo de Lixo Nuclear§r move o lixo sem você encostar, e a
+      §eCâmara de Fissão Forçada§r bombardeia o lixo com nêutrons para quebrá-lo em produtos
+      mais fáceis de descartar (melhor perto de 400 °C). Qualquer uma das duas.
+    tasks:
+      - one_of: [ReactorCraft:reactorcraft_item_placer:39, ReactorCraft:reactorcraft_item_placer:45]
+    rewards:
+      - loot: incomum
+
+  # ======================================================================
+  # FASE 5 — REATOR REPRODUTOR (SÓDIO)
+  # ======================================================================
+  - id: eletrolisador
+    title: "Eletrolisador"
+    type: normal
+    deps: [primeira_fissao]
+    icon: ReactorCraft:reactorcraft_item_placer:16
+    desc: |
+      Descargas elétricas separam substâncias: §esal → sódio + cloro§r, água → hidrogênio +
+      oxigênio. O produto mais pesado sai por baixo, o mais leve por cima. Sólidos precisam
+      derreter antes: o sal funde a §e801 °C§r (código), então ponha calor embaixo.
+
+      O sal sai da Cama de Secagem do RotaryCraft (ou do Mekanism).
+    tasks:
+      - get: ReactorCraft:reactorcraft_item_placer:16
+    rewards:
+      - xp: 4
+      - item: RotaryCraft:rotarycraft_item_powders:5 x16
+
+  - id: sodio
+    title: "Sódio Derretido"
+    type: normal
+    deps: [eletrolisador, recipientes]
+    icon: ReactorCraft:reactorcraft_item_canister:4
+    desc: |
+      O refrigerante do reator reprodutor é §esódio metálico líquido§r. Encha um recipiente de
+      sódio a partir do eletrolisador.
+    tasks:
+      - get: ReactorCraft:reactorcraft_item_canister:4
+    rewards:
+      - xp: 4
+      - item: RotaryCraft:rotarycraft_item_powders:5 x16
+
+  - id: combustivel_reprodutor
+    title: "Combustível de Reator Reprodutor"
+    type: normal
+    deps: [uranio_empobrecido, pastilha_uranio]
+    icon: ReactorCraft:reactorcraft_item_breederfuel
+    desc: |
+      Urânio enriquecido embrulhado em urânio empobrecido: 1 pastilha cercada de 4
+      empobrecidos = §e4 Combustíveis de Reator Reprodutor§r. Com o tempo, os nêutrons
+      convertem o empobrecido em §eplutônio§r (o item mostra a % convertida).
+    tasks:
+      - get: ReactorCraft:reactorcraft_item_breederfuel x4
+    rewards:
+      - xp: 4
+      - item: ReactorCraft:reactorcraft_item_depleted x8
+
+  - id: nucleo_reprodutor
+    title: "Núcleo de Reator Reprodutor"
+    type: main
+    deps: [combustivel_reprodutor, gigaturbina]
+    icon: ReactorCraft:reactorcraft_item_placer:18
+    desc: |
+      Funciona como o núcleo comum, mas §esó aceita combustível reprodutor§r, é o único núcleo
+      que serve num reator reprodutor (LMFBR) e §eesquenta mais rápido§r. Faça alguns e prepare
+      a refrigeração a sódio.
+    tasks:
+      - get: ReactorCraft:reactorcraft_item_placer:18 x4
+    rewards:
+      - xp: 6
+      - choice: [ReactorCraft:reactorcraft_item_breederfuel x4, ReactorCraft:reactorcraft_block_mats x32, RotaryCraft:rotarycraft_block_blastglass x16]
+
+  - id: aquecedor_sodio
+    title: "Aquecedor de Sódio"
+    type: normal
+    deps: [nucleo_reprodutor, sodio]
+    icon: ReactorCraft:reactorcraft_item_placer:19
+    desc: |
+      A "caldeira" do reprodutor: acumula calor dos vizinhos e aquece o sódio bombeado (entra
+      por baixo); a partir de §e300 °C§r sai §esódio quente§r por cima, pronto para o Trocador
+      de Calor.
+    tasks:
+      - get: ReactorCraft:reactorcraft_item_placer:19 x2
+    rewards:
+      - xp: 4
+      - item: ReactorCraft:reactorcraft_item_canister:4 x2
+
+  - id: trocador_calor
+    title: "Permutador de Calor"
+    type: normal
+    deps: [aquecedor_sodio]
+    icon: ReactorCraft:reactorcraft_item_placer:20
+    desc: |
+      Recebe fluido quente por cima (sódio, CO2...), esfria-o e passa o calor para máquinas
+      vizinhas — inclusive caldeiras comuns. Precisa de potência para empurrar o fluido:
+      §b512 rad/s e 8 kW§r por baixo. O fluido frio sai pelos lados.
+    tasks:
+      - get: ReactorCraft:reactorcraft_item_placer:20
+    rewards:
+      - xp: 4
+      - item: RotaryCraft:rotarycraft_item_machine:24 x8
+
+  - id: plutonio
+    title: "Plutônio"
+    type: milestone
+    deps: [trocador_calor]
+    icon: ReactorCraft:reactorcraft_item_plutonium
+    banner: "Plutônio"
+    subtitle: "O reator que cria combustível"
+    desc: |
+      O reator reprodutor transformou urânio empobrecido em §ePastilhas de Plutônio§r — um
+      combustível artificial para a fissão. Você praticamente imprimiu energia.
+
+      §cPlutônio é extremamente perigoso§r: mais volátil que urânio e com lixo pior. Há até
+      uma conquista por se envenenar com ele — não a pegue. Traje completo, sempre.
+    tasks:
+      - get: ReactorCraft:reactorcraft_item_plutonium
+    rewards:
+      - xp: 12
+      - kit: {name: "Kit do Reprodutor", items: [ReactorCraft:reactorcraft_item_breederfuel x8, ReactorCraft:reactorcraft_item_canister:4 x4, ReactorCraft:reactorcraft_item_crafting:15 x16]}
+      - loot: epico
+
+  # ======================================================================
+  # FASE 6 — HTGR (LEITO DE SEIXOS)
+  # ======================================================================
+  - id: grafite
+    title: "Grafite"
+    type: normal
+    deps: [manual_rec]
+    icon: ReactorCraft:reactorcraft_item_crafting:13
+    desc: |
+      Pó de carvão aquecido pelo §eFriccionador§r do RotaryCraft vira §eGrafite§r (9 viram um
+      bloco). Ele modera nêutrons: vai nas varas de absorção e nas pastilhas TRISO.
+    tasks:
+      - get: ReactorCraft:reactorcraft_item_crafting:13 x16
+    rewards:
+      - xp: 3
+      - item: minecraft:coal x32
+
+  - id: pastilha_triso
+    title: "Pastilha TRISO"
+    type: normal
+    deps: [grafite, pechblenda]
+    icon: ReactorCraft:reactorcraft_item_pellet
+    desc: |
+      Urânio bruto moído (Lingote de Urânio Bruto no Triturador = §ePó de Urânio§r) misturado
+      com grafite no Forno de Calor = §ePastilha de Combustível TRISO§r, o combustível do
+      reator a gás de alta temperatura. Sem enriquecimento!
+    tasks:
+      - get: ReactorCraft:reactorcraft_item_pellet x8
+    rewards:
+      - xp: 4
+      - item: ReactorCraft:reactorcraft_item_crafting:13 x16
+
+  - id: coletor_gas
+    title: "Coletor de Gás"
+    type: normal
+    deps: [manual_rec]
+    icon: ReactorCraft:reactorcraft_item_placer:28
+    desc: |
+      Colocado numa fornalha queimando carvão ou madeira, o §eColetor de Gás§r recolhe o
+      §edióxido de carbono§r da combustão. É o fluido de trabalho do HTGR.
+    tasks:
+      - get: ReactorCraft:reactorcraft_item_placer:28
+    rewards:
+      - xp: 3
+      - item: minecraft:coal x32
+
+  - id: leito_seixos
+    title: "Núcleo de Leito de Seixos"
+    type: main
+    deps: [pastilha_triso, primeira_fissao]
+    icon: ReactorCraft:reactorcraft_item_placer:29
+    desc: |
+      Carregue o §eNúcleo de Leito de Seixos§r com pastilhas TRISO e elas fissionam sozinhas,
+      gerando calor. Ele opera a partir de §e800 °C§r, superaquece acima de 1.200 °C e §cfalha
+      por volta de 4.400 °C§r (código). O calor vai melhor para um trocador de CO2.
+    tasks:
+      - get: ReactorCraft:reactorcraft_item_placer:29
+    rewards:
+      - xp: 6
+      - choice: [ReactorCraft:reactorcraft_item_pellet x8, ReactorCraft:reactorcraft_block_mats:5 x4, RotaryCraft:rotarycraft_block_blastglass x16]
+
+  - id: trocador_co2
+    title: "Permutador de Calor de CO2"
+    type: normal
+    deps: [leito_seixos, coletor_gas]
+    icon: ReactorCraft:reactorcraft_item_placer:30
+    desc: |
+      Absorve o calor do leito de seixos e o passa ao CO2 bombeado. Quando chega a §e800 °C§r,
+      solta §eCO2 quente§r por cima, que vai para um Permutador de Calor comum → caldeiras →
+      turbina. Use Tubos de Contenção Magnética para gases muito quentes.
+    tasks:
+      - get: ReactorCraft:reactorcraft_item_placer:30
+    rewards:
+      - xp: 4
+      - item: ReactorCraft:reactorcraft_item_canister x8
+
+  - id: htgr
+    title: "Reator a Gás de Alta Temperatura"
+    type: milestone
+    deps: [trocador_co2, trocador_calor]
+    icon: ReactorCraft:reactorcraft_item_pellet
+    banner: "HTGR"
+    subtitle: "Calor de seixos e gás"
+    desc: |
+      Pastilhas TRISO, leito de seixos, CO2 aquecido a 800 °C, trocadores de calor e caldeiras:
+      o seu §eReator a Gás de Alta Temperatura§r funciona sem centrífuga de isótopos — só
+      urânio moído e grafite. Elegante!
+
+      Lembre: o leito de seixos não para sozinho como a fissão com hastes. Mantenha o calor
+      saindo, sempre.
+    tasks:
+      - get: [ReactorCraft:reactorcraft_item_placer:29, ReactorCraft:reactorcraft_item_placer:30]
+    rewards:
+      - xp: 10
+      - kit: {name: "Kit do HTGR", items: [ReactorCraft:reactorcraft_item_pellet x16, ReactorCraft:reactorcraft_item_canister x16, ReactorCraft:reactorcraft_block_mats:5 x8]}
+      - loot: raro
+
+  # ======================================================================
+  # FASE 7 — TÓRIO
+  # ======================================================================
+  - id: extrator_fluidos
+    title: "Centrífuga Extratora de Fluidos"
+    type: normal
+    deps: [primeira_fissao]
+    icon: ReactorCraft:reactorcraft_item_placer:7
+    desc: |
+      Submersa e cercada de fonte de um fluido, ela centrifuga traços de outro: §eágua pesada§r
+      no fundo de oceanos (abaixo de Y 45, com bastante água acima e nos lados) ou §elítio
+      derretido§r na superfície da lava. Pede §b512 Nm e 65 kW§r.
+    tasks:
+      - get: ReactorCraft:reactorcraft_item_placer:7
+    rewards:
+      - xp: 4
+      - item: minecraft:bucket x4
+
+  - id: agua_pesada
+    title: "Água Pesada"
+    type: normal
+    deps: [extrator_fluidos]
+    icon: ReactorCraft:reactorcraft_item_bucket
+    desc: |
+      A água pesada tem deutério no lugar do hidrogênio e afunda no fundo do mar. Encha um
+      §eBalde de Água Pesada§r. O eletrolisador tira o §edeutério§r dela — combustível da fusão.
+    tasks:
+      - get: ReactorCraft:reactorcraft_item_bucket
+    rewards:
+      - xp: 4
+      - item: ReactorCraft:reactorcraft_item_canister x8
+
+  - id: litio
+    title: "Lítio e FLiBe"
+    type: normal
+    deps: [extrator_fluidos, processador_uranio]
+    icon: ReactorCraft:reactorcraft_item_canister:13
+    desc: |
+      Lítio skimado da lava, dissolvido em ácido fluorídrico no Processador de Urânio, forma
+      §eFLiBe§r (fluoreto de lítio-berílio), o sal fundido do reator de tório. Encha um
+      recipiente.
+    tasks:
+      - get: ReactorCraft:reactorcraft_item_canister:13
+    rewards:
+      - xp: 4
+      - item: ReactorCraft:reactorcraft_item_canister:12 x2
+
+  - id: nucleo_torio
+    title: "Núcleo de Combustível de Tório"
+    type: normal
+    deps: [litio, minerios_nether]
+    icon: ReactorCraft:reactorcraft_item_placer:38
+    desc: |
+      O reator de tório é diferente: usa §esal fundido§r (FLiBe enriquecido com tório) e §enão
+      se sustenta sozinho§r — precisa de calor e fluxo de nêutrons para começar. Quanto mais
+      quente, menos reativo (uma salvaguarda natural), e gera menos lixo.
+    tasks:
+      - get: ReactorCraft:reactorcraft_item_placer:38
+    rewards:
+      - xp: 4
+      - item: ReactorCraft:reactorcraft_item_raw:7 x8
+
+  - id: valvula_descarga
+    title: "Válvula de Descarga de Combustível"
+    type: normal
+    deps: [nucleo_torio]
+    icon: ReactorCraft:reactorcraft_item_placer:40
+    desc: |
+      Colocada embaixo da coluna de combustível, ela §edespeja o combustível sozinha§r se o
+      reator de tório passar de §c1.100 °C§r, evitando o meltdown — mas pode vazar radiação.
+      Melhor nunca precisar dela; pior é não tê-la.
+    tasks:
+      - get: ReactorCraft:reactorcraft_item_placer:40
+    rewards:
+      - xp: 4
+      - item: ReactorCraft:reactorcraft_block_mats x32
+
+  # ======================================================================
+  # FASE 8 — FUSÃO (TOKAMAK)
+  # ======================================================================
+  - id: ima_permanente
+    title: "Ímãs Permanentes"
+    type: normal
+    deps: [calcita_magnetita]
+    icon: ReactorCraft:reactorcraft_item_magnet
+    desc: |
+      4 Pedras-Ímã no §eCompactador§r do RotaryCraft = 2 §eÍmãs Permanentes (1 mT)§r. Cada 4
+      ímãs de um nível viram 2 do próximo: 4 mT, 16 mT... até §e16,384 T§r. O Ímã Central do
+      solenoide pede três desses; o Auxiliar, três de 4,096 T. Comece a escada.
+    tasks:
+      - get: ReactorCraft:reactorcraft_item_magnet:1 x2
+    rewards:
+      - xp: 4
+      - item: ReactorCraft:reactorcraft_item_raw:6 x16
+
+  - id: ferromagnetico
+    title: "Lingote Ferromagnético"
+    type: normal
+    deps: [calcita_magnetita]
+    icon: ReactorCraft:reactorcraft_item_crafting:10
+    desc: |
+      HSLA + ferro + Pedra-Ímã no Forno de Calor = §eLingote Ferromagnético§r. Três viram 3
+      §ePlacas Ferromagnéticas§r; 8 placas formam um §eNúcleo Magnético§r. É o "aço" do
+      tokamak.
+    tasks:
+      - get: [ReactorCraft:reactorcraft_item_crafting:10 x8, ReactorCraft:reactorcraft_item_crafting:5 x6]
+    rewards:
+      - xp: 4
+      - item: RotaryCraft:rotarycraft_item_shaftcraft:1 x16
+
+  - id: histerese
+    title: "Placas de Histerese e Anel de Retardo"
+    type: normal
+    deps: [ferromagnetico]
+    icon: ReactorCraft:reactorcraft_item_crafting:12
+    desc: |
+      Ferro + HSLA + ferro = 3 §ePlacas de Histerese§r; 8 placas = um §eAnel de Retardo§r. Com
+      os §eFios de Ouro§r (3 ouros na diagonal), essas peças montam o injetor, o pré-aquecedor
+      e o solenoide.
+    tasks:
+      - get: [ReactorCraft:reactorcraft_item_crafting:11 x9, ReactorCraft:reactorcraft_item_crafting:12, ReactorCraft:reactorcraft_item_crafting:8 x8]
+    rewards:
+      - xp: 4
+      - item: minecraft:gold_ingot x12
+
+  - id: deuterio_tritio
+    title: "Deutério e Trítio"
+    type: normal
+    deps: [agua_pesada, eletrolisador]
+    icon: ReactorCraft:reactorcraft_item_canister:6
+    desc: |
+      O combustível da fusão: §edeutério§r (da água pesada) e §etrítio§r. O trítio nasce na
+      §eCâmara de Irradiação de Nêutrons§r, colocada no núcleo de um reator de fissão: ela
+      absorve nêutrons e converte o deutério guardado (entra por cima, sai por baixo).
+    tasks:
+      - get: [ReactorCraft:reactorcraft_item_placer:17, ReactorCraft:reactorcraft_item_canister:5, ReactorCraft:reactorcraft_item_canister:6]
+    rewards:
+      - xp: 5
+      - item: ReactorCraft:reactorcraft_item_canister x16
+
+  - id: pre_aquecedor
+    title: "Pré-Aquecedor de Hidrogênio"
+    type: main
+    deps: [deuterio_tritio, histerese, gigaturbina]
+    icon: ReactorCraft:reactorcraft_item_placer:23
+    desc: |
+      Deutério + trítio viram §eplasma§r a §e150 milhões de °C§r no §ePré-Aquecedor§r. Ele
+      precisa da carcaça multibloco (Quinas, Cantos e Faces da Câmara, Núcleos de Isolamento
+      Térmico e a §eLente de Concentração de Laser§r) e de ficar §eno caminho do feixe de um
+      Raio de Calor§r do RotaryCraft. Hidrogênio entra pelos lados; plasma sai por cima.
+    tasks:
+      - get: [ReactorCraft:reactorcraft_item_placer:23, ReactorCraft:reactorcraft_block_heatermulti]
+    rewards:
+      - xp: 6
+      - choice: [RotaryCraft:rotarycraft_item_compacts:5 x8, RotaryCraft:rotarycraft_block_blastglass x16, ReactorCraft:reactorcraft_item_canister:5 x4]
+
+  - id: injetor_plasma
+    title: "Injetor de Plasma"
+    type: main
+    deps: [pre_aquecedor]
+    icon: ReactorCraft:reactorcraft_item_placer:22
+    desc: |
+      Leva o plasma para dentro do tokamak. Também é um multibloco: Base, Cantos, Painéis
+      Laterais, Topo, Bobina de Indução, Colunas e o Núcleo de Histerese do injetor (receitas
+      na bancada, com placas ferromagnéticas e de histerese).
+    tasks:
+      - get: [ReactorCraft:reactorcraft_item_placer:22, ReactorCraft:reactorcraft_block_injectormulti:7]
+    rewards:
+      - xp: 6
+      - choice: [ReactorCraft:reactorcraft_item_crafting:5 x9, ReactorCraft:reactorcraft_item_crafting:11 x9, minecraft:gold_ingot x16]
+
+  - id: toroide
+    title: "Ímãs Toroidais"
+    type: main
+    deps: [injetor_plasma]
+    icon: ReactorCraft:reactorcraft_item_placer:15
+    desc: |
+      Os §eAnéis-Ímã Toroidais§r são o corpo do tokamak: confinam o plasma num feixe fino no
+      centro. Precisam ser colocados e girados corretamente (não cabem em chão plano, pelo
+      tamanho) e mantidos §emuito frios§r — nitrogênio líquido do RotaryCraft. O §eGuia de
+      Construção Tokamak§r mostra onde vai cada peça.
+    tasks:
+      - get: [ReactorCraft:reactorcraft_item_placer:15 x8, ReactorCraft:reactorcraft_item_placer:34]
+    rewards:
+      - xp: 6
+      - choice: [RotaryCraft:rotarycraft_item_bucket:3 x4, ReactorCraft:reactorcraft_item_crafting:6 x2, RotaryCraft:rotarycraft_item_shaftcraft:1 x32]
+
+  - id: solenoide
+    title: "Ímã Solenoide"
+    type: main
+    deps: [toroide, ima_permanente]
+    icon: ReactorCraft:reactorcraft_item_placer:27
+    desc: |
+      O §eSolenoide§r curva o feixe de plasma num círculo e permite atingir a densidade da
+      fusão. Sem ele, o plasma §cdispara numa direção aleatória§r. É outro multibloco grande
+      (Base Ferromagnética, Ligações, Ímã Central e Auxiliares, Hastes de Histerese, Centro)
+      e precisa girar: §b32.768 Nm§r de torque, entre 256 e 8.192 rad/s.
+    tasks:
+      - get: [ReactorCraft:reactorcraft_item_placer:27, ReactorCraft:reactorcraft_block_solenoidmulti:2]
+    rewards:
+      - xp: 6
+      - choice: [RotaryCraft:rotarycraft_item_advgear:3, RotaryCraft:rotarycraft_item_gearcraft:69, ReactorCraft:reactorcraft_item_magnet:5 x2]
+
+  - id: tubo_contencao
+    title: "Tubos de Contenção Magnética"
+    type: normal
+    deps: [injetor_plasma]
+    icon: ReactorCraft:reactorcraft_item_placer:25
+    desc: |
+      Para gases quentíssimos (plasma, CO2 quente): um campo magnético mantém o conteúdo
+      longe das paredes. Precisa de §ecarga elétrica de um Gerador Van De Graaff§r do
+      RotaryCraft.
+    tasks:
+      - get: [ReactorCraft:reactorcraft_item_placer:25 x8, RotaryCraft:rotarycraft_item_machine:103]
+    rewards:
+      - xp: 4
+      - item: RotaryCraft:rotarycraft_item_shaftcraft:1 x16
+
+  - id: absorvedor_neutrons
+    title: "Absorvedor de Nêutrons"
+    type: normal
+    deps: [toroide]
+    icon: ReactorCraft:reactorcraft_item_placer:26
+    desc: |
+      Na fusão, a energia vem de nêutrons velozes. O §eAbsorvedor§r os intercepta, transforma
+      a energia em calor e passa para as caldeiras vizinhas. É ele que liga o tokamak às suas
+      turbinas.
+    tasks:
+      - get: ReactorCraft:reactorcraft_item_placer:26 x8
+    rewards:
+      - xp: 4
+      - item: ReactorCraft:reactorcraft_item_placer:11 x4
+
+  - id: fusao
+    title: "Fusão Nuclear"
+    type: milestone
+    deps: [solenoide, absorvedor_neutrons, tubo_contencao]
+    icon: ReactorCraft:reactorcraft_item_placer:15
+    banner: "Fusão!"
+    subtitle: "Uma estrela dentro de um anel"
+    effect: 4
+    desc: |
+      Deutério e trítio, aquecidos por um Raio de Calor a 150 milhões de graus, injetados num
+      anel de ímãs congelados, curvados por um solenoide girando a 32 mil newton-metros...
+      e os nêutrons esquentando caldeiras. §6Você acendeu uma estrela, Herói.§r
+
+      A fusão não deixa lixo nem reação em cadeia — mas se um ímã falhar, o plasma escapa.
+      Mantenha tudo frio, tudo girando, tudo blindado.
+
+      Esta página do Registro brilhava como um sol. Agora ela brilha de novo.
+    tasks:
+      - get: [ReactorCraft:reactorcraft_item_placer:22, ReactorCraft:reactorcraft_item_placer:27, ReactorCraft:reactorcraft_item_placer:15 x8]
+    rewards:
+      - xp: 15
+      - kit: {name: "Kit da Estrela Artificial", items: [ReactorCraft:reactorcraft_item_canister:5 x8, ReactorCraft:reactorcraft_item_canister:6 x8, RotaryCraft:rotarycraft_item_bucket:3 x8, ReactorCraft:reactorcraft_item_magnet:6 x2]}
+      - loot: epico
+
+  - id: liga_princad
+    title: "Liga Pr-In-Cad"
+    type: normal
+    deps: [cadmio_indio]
+    icon: ReactorCraft:reactorcraft_item_crafting:3
+    desc: |
+      Cádmio + índio + prata no §eForno de Calor§r do RotaryCraft = 3 §eLingotes de Liga
+      Pr-In-Cad§r, ótimos absorvedores de nêutrons. Eles vão na Vara de Absorção e no
+      Recipiente de Combustível.
+    tasks:
+      - get: ReactorCraft:reactorcraft_item_crafting:3 x6
+    rewards:
+      - xp: 3
+      - item: ReactorCraft:reactorcraft_item_ingots:1 x4
+
+  - id: vara_absorcao
+    title: "Vara de Absorção"
+    type: normal
+    deps: [liga_princad, grafite]
+    icon: ReactorCraft:reactorcraft_item_crafting:1
+    desc: |
+      HSLA nos cantos, Liga Pr-In-Cad nos lados e §eGrafite§r no meio = §eVara de Absorção§r, o
+      coração das Hastes de Controle. Faça uma por haste que pretende usar.
+    tasks:
+      - get: ReactorCraft:reactorcraft_item_crafting:1 x4
+    rewards:
+      - xp: 3
+      - item: ReactorCraft:reactorcraft_item_crafting:13 x8
+
+  - id: pacote_refrigeracao
+    title: "Pacote de Refrigeração"
+    type: normal
+    deps: [manual_rec]
+    icon: ReactorCraft:reactorcraft_item_crafting:7
+    desc: |
+      HSLA, um painel de vidro e um Tubo de Líquidos do RotaryCraft formam o §ePacote de
+      Refrigeração§r, peça das células de refrigeração e de máquinas que lidam com calor.
+    tasks:
+      - get: ReactorCraft:reactorcraft_item_crafting:7 x2
+    rewards:
+      - xp: 3
+      - item: RotaryCraft:rotarycraft_item_machine:17 x8
+
+  - id: lente_laser
+    title: "Lente de Concentração de Laser"
+    type: normal
+    deps: [histerese]
+    deps_hidden: [rotarycraft:lentes_rc]
+    icon: ReactorCraft:reactorcraft_block_heatermulti
+    desc: |
+      As §eLentes§r do RotaryCraft cercadas de Tungstênio Sinterizado e Vidro Anti-Explosão: a
+      lente que concentra o feixe do Raio de Calor dentro do pré-aquecedor. Os Núcleos de
+      Isolamento Térmico (lã ou lã de rocha em volta de HSLA) formam o resto da carcaça.
+    tasks:
+      - get: [ReactorCraft:reactorcraft_block_heatermulti, ReactorCraft:reactorcraft_block_heatermulti:1 x8]
+    rewards:
+      - xp: 4
+      - item: RotaryCraft:rotarycraft_item_compacts:5 x4
+
+  - id: purificador_vapor
+    title: "Purificador de Vapor"
+    type: optional
+    deps: [grade_vapor]
+    icon: ReactorCraft:reactorcraft_block_mats:3
+    desc: |
+      Grades de ferro, lã e um Tubo de Líquidos: o §ePurificador de Vapor§r (Steam Scrubber)
+      é um bloco de apoio para lidar com o vapor solto. Veja no Manual onde colocá-lo.
+    tasks:
+      - get: ReactorCraft:reactorcraft_block_mats:3
+    rewards:
+      - loot: comum
+
+  - id: duto_calor
+    title: "Duto de Calor"
+    type: optional
+    deps: [trocador_calor]
+    icon: ReactorCraft:reactorcraft_item_placer:44
+    desc: |
+      Transporta calor entre máquinas do reator. Confira no Manual a capacidade e as conexões
+      antes de usar num projeto sério.
+    tasks:
+      - get: ReactorCraft:reactorcraft_item_placer:44
+    rewards:
+      - loot: comum
+
+  - id: tanque_obsidiana
+    title: "Tanque de Obsidiana"
+    type: optional
+    deps: [manual_rec]
+    deps_hidden: [rotarycraft:vidro_explosao]
+    icon: ReactorCraft:reactorcraft_item_crafting:2
+    desc: |
+      Oito Vidros Anti-Explosão em anel = §eTanque de Obsidiana§r, um recipiente que aguenta
+      fluidos agressivos. Peça de algumas máquinas do Volume.
+    tasks:
+      - get: ReactorCraft:reactorcraft_item_crafting:2
+    rewards:
+      - loot: comum
+
+  - id: recipiente_uf6
+    title: "Recipiente de UF6"
+    type: optional
+    deps: [recipientes, processador_uranio]
+    icon: ReactorCraft:reactorcraft_item_canister:1
+    desc: |
+      Quer levar UF6 para uma centrífuga longe? Encha um recipiente com o gás usando uma
+      máquina de fluido (Transposador de Fluidos do Thermal ou o Engarrafador). Útil para
+      quem separa o processamento da usina.
+    tasks:
+      - get: ReactorCraft:reactorcraft_item_canister:1
+    rewards:
+      - loot: comum
+
+  # ======================================================================
+  # FASE 9 — EXTRAS
+  # ======================================================================
+  - id: sodio_solar
+    title: "Sódio na Torre Solar"
+    type: optional
+    deps: [sodio]
+    deps_hidden: [rotarycraft:torre_solar]
+    icon: ReactorCraft:reactorcraft_item_placer:41
+    desc: |
+      Dois blocos do §ePermutador de Calor a Sódio§r no topo da torre solar do RotaryCraft e o
+      §eCirculador de Sódio§r embaixo trocam a água por sódio fundido: muito mais potência.
+      Qualquer um dos dois blocos completa esta quest.
+    tasks:
+      - one_of: [ReactorCraft:reactorcraft_item_placer:41, ReactorCraft:reactorcraft_item_placer:42]
+    rewards:
+      - loot: incomum
+
+  - id: lampada_tritio
+    title: "Lâmpada de Trítio"
+    type: optional
+    deps: [fluorita]
+    icon: ReactorCraft:reactorcraft_block_lamp
+    desc: |
+      Fluorita, HSLA e obsidiana: as §eLâmpadas de Trítio§r brilham na cor do cristal usado.
+      Decoração com cara de laboratório nuclear (no bom sentido).
+    tasks:
+      - get: ReactorCraft:reactorcraft_block_lamp:*
+    rewards:
+      - loot: comum
+
+  - id: blocos_fluorita
+    title: "Blocos de Fluorita"
+    type: optional
+    deps: [fluorita]
+    icon: ReactorCraft:reactorcraft_block_fluorite:3
+    desc: |
+      Nove cristais = um bloco de fluorita, em qualquer uma das oito cores. Ele brilha perto de
+      radiação — um alarme bonito em volta do reator.
+    tasks:
+      - get: ReactorCraft:reactorcraft_block_fluorite:* x4
+    rewards:
+      - loot: comum
+
+  - id: mestre_nuclear
+    title: "Mestre do Átomo"
+    type: milestone
+    deps: [fusao, plutonio, htgr, tambor_lixo]
+    icon: ReactorCraft:reactorcraft_item_book
+    banner: "Mestre do Átomo"
+    subtitle: "Fissão, reprodução, gás e fusão"
+    effect: 6
+    desc: |
+      Fissão com água e amônia, reprodutor a sódio fabricando plutônio, leito de seixos a
+      800 °C e um tokamak aceso. E, o mais importante, §eo lixo guardado direitinho§r e
+      nenhum meltdown no currículo (eu espero!).
+
+      Os Antigos rasgaram o Registro por não saber parar. Você aprendeu a controlar o fogo
+      mais perigoso do mundo. Esta conquista pesa no §6Selo da Engrenagem§r — e eu não podia
+      estar mais orgulhosa.
+    tasks:
+      - get: [ReactorCraft:reactorcraft_item_plutonium, ReactorCraft:reactorcraft_item_placer:29, ReactorCraft:reactorcraft_item_placer:27, ReactorCraft:reactorcraft_item_placer:21]
+    rewards:
+      - xp: 15
+      - kit: {name: "Kit do Mestre do Átomo", items: [ReactorCraft:reactorcraft_item_fuel x16, ReactorCraft:reactorcraft_item_pellet x16, ReactorCraft:reactorcraft_block_mats x64, RotaryCraft:rotarycraft_block_blastglass x32]}
+      - loot: epico
