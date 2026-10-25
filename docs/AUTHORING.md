@@ -79,7 +79,8 @@ ore:ingotCopper x8       qualquer item do OreDictionary "ingotCopper"
 minecraft:diamond_sword x1 {ench:[{id:16s,lvl:3s}],display:{Name:"Lâmina do Herói"}}
 ```
 
-Forma longa: `{id: mod:nome, meta: 5, count: 16, nbt: "{...}"}`. NBT usa a sintaxe de
+Forma longa: `{id: mod:nome, meta: 5, count: 16, nbt: "{...}"}` — **obrigatória quando o id
+tem espaço** (ex.: `{id: "BiblioCraft:Armor Stand"}`; o `reg.py` já mostra nesse formato). NBT usa a sintaxe de
 comando do Minecraft (sufixos `b s L f d`, listas `[...]`, `[I;1,2]` para int array).
 Prefira **oredict** quando qualquer variante servir (cobre de IC2/Thermal/Mekanism etc.).
 

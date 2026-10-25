@@ -9,6 +9,10 @@
   reg.py dims | biomes [regex]                   dimensions / biomes
   reg.py recipe <item_id[:meta]>                 crafting-table recipes that output the item
   reg.py uses <item_id[:meta]>                   crafting-table recipes that consume the item
+  reg.py handlers [regex]                        NEI recipe handlers (machines, altars...) and counts
+  reg.py neiout <item_id[:meta]> [--handler RX]  NEI recipes (any machine) that output the item
+  reg.py neiin <item_id[:meta]> [--handler RX]   NEI recipes (any machine) that consume the item
+  reg.py nei <handler regex>                     every recipe of matching handlers
   reg.py research <regex>                        Thaumcraft research keys
   reg.py mods                                    loaded mods (modid, name, version)
 """
@@ -25,13 +29,19 @@ REG = os.path.join(ROOT, 'registry')
 
 
 def rows(name):
-    with gzip.open(os.path.join(REG, name + '.jsonl.gz'), 'rt', encoding='utf-8') as f:
+    path = os.path.join(REG, name + '.jsonl.gz')
+    if not os.path.exists(path):
+        print('(%s not available yet: the NEI/world dump has not been imported)' % name)
+        return
+    with gzip.open(path, 'rt', encoding='utf-8') as f:
         for line in f:
             yield json.loads(line)
 
 
 def fmt_item(r):
     spec = r['id'] if r['meta'] == 0 else '%s:%d' % (r['id'], r['meta'])
+    if ' ' in r['id']:
+        spec = '{id: "%s", meta: %d}' % (r['id'], r['meta'])
     extra = []
     if r.get('ore'):
         extra.append('ore=' + ','.join(r['ore'][:4]))
@@ -58,6 +68,7 @@ def main():
     ap.add_argument('arg', nargs='?', default='')
     ap.add_argument('--mod')
     ap.add_argument('--limit', type=int, default=60)
+    ap.add_argument('--handler')
     a = ap.parse_args()
     rx = re.compile(a.arg, re.I) if a.arg else None
     n = 0
@@ -114,6 +125,32 @@ def main():
         for r in rows('recipes_furnace'):
             if (a.cmd == 'recipe' and spec_match(r['out'], a.arg)) or (a.cmd == 'uses' and spec_match(r['in'], a.arg)):
                 out('FURNACE %s:%s -> %s:%s' % (r['in']['id'], r['in']['meta'], r['out']['id'], r['out']['meta']))
+    elif a.cmd == 'handlers':
+        for r in rows('nei_handlers'):
+            hay = r['name'] + ' ' + r['cls'] + ' ' + ' '.join(r.get('ids') or [])
+            if not rx or rx.search(hay):
+                out('%6d  %-40s %-30s %s' % (r.get('recipes', 0), r['name'][:40], ','.join(r.get('ids') or [])[:30], r['cls']))
+    elif a.cmd in ('neiout', 'neiin', 'nei'):
+        hrx = re.compile(a.handler, re.I) if a.handler else None
+
+        def st(lst):
+            return '/'.join('%s:%s%s' % (x['id'], x.get('meta'), (' x%d' % x['count']) if x.get('count', 1) > 1 else '') for x in lst[:2]) or '-'
+        for r in rows('nei_recipes'):
+            hname = r.get('handler', '') + ' ' + r.get('id', '')
+            if a.cmd == 'nei':
+                if not rx.search(hname):
+                    continue
+            else:
+                if hrx and not hrx.search(hname):
+                    continue
+                if a.cmd == 'neiout':
+                    pool = [r.get('out', [])] + r.get('other', [])
+                else:
+                    pool = r.get('in', [])
+                if not any(spec_match(x, a.arg) for slot in pool for x in slot):
+                    continue
+            out('[%s] %s  =>  %s%s' % (r.get('handler'), ' + '.join(st(sl) for sl in r.get('in', [])), st(r.get('out', [])),
+                                        ('  (+ ' + ', '.join(st(o) for o in r.get('other', [])) + ')') if r.get('other') else ''))
     elif a.cmd == 'research':
         for r in rows('thaumcraft_research'):
             if rx.search(r['key'] + ' ' + str(r.get('name')) + ' ' + r['cat']):

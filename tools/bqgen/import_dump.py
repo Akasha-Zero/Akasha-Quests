@@ -32,10 +32,18 @@ def main(dump):
     pt = {}
     for r in read(os.path.join(dump, 'items_pt_BR.jsonl')):
         pt[(r['id'], r['meta'], r.get('nbt'))] = r['name']
+    # Cosmetic NBT variants (one per block in the game) that are useless as quest targets.
+    collapse = {'ForgeMicroblock:microblock', 'BuildCraft|Transport:pipeFacade',
+                'ExtraUtilities:microblocks', 'appliedenergistics2:item.ItemFacade'}
+    kept = set()
     items = []
     for r in read(os.path.join(dump, 'items_en_US.jsonl')):
         if r['id'] is None:
             continue
+        if r['id'] in collapse and r.get('nbt'):
+            if r['id'] in kept:
+                continue
+            kept.add(r['id'])
         rec = {
             'id': r['id'], 'meta': r['meta'], 'name': r['name'],
             'name_pt': pt.get((r['id'], r['meta'], r.get('nbt')), r['name']),

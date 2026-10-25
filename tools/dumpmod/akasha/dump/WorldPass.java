@@ -52,6 +52,8 @@ public class WorldPass {
                 case 2:
                     log("world ready; dumping NEI");
                     dumpNei();
+                    log("dumping dims");
+                    dumpDims();
                     log("dumping BQ");
                     dumpBq();
                     stage = 3;
@@ -183,6 +185,25 @@ public class WorldPass {
             System.out.println("[AkashaDump/World] handler " + name + "/" + id + " failed: " + t);
         }
         return n;
+    }
+
+    private void dumpDims() {
+        try (PrintWriter w = open("dimensions_world.jsonl")) {
+            for (Integer id : net.minecraftforge.common.DimensionManager.getStaticDimensionIDs()) {
+                JsonObject j = new JsonObject();
+                j.addProperty("num", id);
+                try {
+                    net.minecraft.world.WorldProvider p = net.minecraftforge.common.DimensionManager.createProviderFor(id);
+                    j.addProperty("cls", p.getClass().getName());
+                    try { j.addProperty("name", p.getDimensionName()); } catch (Throwable t) { j.addProperty("name", "<err>"); }
+                } catch (Throwable t) {
+                    j.addProperty("err", t.toString());
+                }
+                w.println(GSON.toJson(j));
+            }
+        } catch (Throwable t) {
+            log("dims failed " + t);
+        }
     }
 
     @SuppressWarnings("unchecked")

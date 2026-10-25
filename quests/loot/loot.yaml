@@ -1,0 +1,70 @@
+# Baús de Saque (bq_standard:loot_chest). Cada grupo é uma raridade; cada entrada é um pacote
+# coerente. `weight` = chance relativa da entrada dentro do grupo. Ver docs/design/RECOMPENSAS.md.
+groups:
+  comum:
+    name: "§fBaú de Saque Comum"
+    entries:
+      - {weight: 12, items: ["minecraft:torch x32", "minecraft:coal x16"]}
+      - {weight: 12, items: ["minecraft:bread x16", "minecraft:cooked_beef x8"]}
+      - {weight: 10, items: ["minecraft:iron_ingot x12", "minecraft:gold_ingot x4"]}
+      - {weight: 10, items: ["ThermalFoundation:material:64 x12", "ThermalFoundation:material:65 x8"]}
+      - {weight: 8, items: ["minecraft:leather x12", "minecraft:string x16"]}
+      - {weight: 8, items: ["minecraft:redstone x24", "minecraft:glowstone_dust x8"]}
+      - {weight: 8, items: ["minecraft:wheat_seeds x16", "minecraft:melon_seeds x4", "minecraft:pumpkin_seeds x4", "minecraft:bone x16"]}
+      - {weight: 6, items: ["minecraft:ender_pearl x2", "minecraft:arrow x32"]}
+      - {weight: 6, items: ["minecraft:log x32", "minecraft:sapling x8"]}
+      - {weight: 6, items: ["minecraft:experience_bottle x8"]}
+      - {weight: 5, items: ["minecraft:bucket", "minecraft:water_bucket", "minecraft:lava_bucket"]}
+      - {weight: 5, items: ["minecraft:obsidian x8", "minecraft:flint_and_steel"]}
+      - {weight: 4, items: ["minecraft:saddle", "minecraft:name_tag x2", "minecraft:lead x2"]}
+  incomum:
+    name: "§aBaú de Saque Incomum"
+    entries:
+      - {weight: 10, items: ["ThermalFoundation:material:73 x16", "ThermalFoundation:material:72 x8"]}
+      - {weight: 10, items: ["IC2:itemIngot:3 x12", "IC2:itemPartCircuit x4"]}
+      - {weight: 9, items: ["minecraft:diamond x4", "minecraft:emerald x4"]}
+      - {weight: 8, items: ["minecraft:ender_pearl x8", "minecraft:blaze_rod x6"]}
+      - {weight: 8, items: ["ThermalFoundation:material:66 x8", "ThermalFoundation:material:67 x8", "ThermalFoundation:material:68 x8"]}
+      - {weight: 7, items: ["Thaumcraft:ItemShard:0 x8", "Thaumcraft:ItemShard:1 x8", "Thaumcraft:ItemShard:2 x8", "Thaumcraft:ItemShard:3 x8", "Thaumcraft:ItemShard:4 x8", "Thaumcraft:ItemShard:5 x8"]}
+      - {weight: 7, items: ["Botania:manaResource x8", "Botania:manaResource:1 x4"]}
+      - {weight: 7, items: ["Mekanism:Ingot:1 x12", "Mekanism:EnrichedAlloy x6"]}
+      - {weight: 6, items: ["minecraft:golden_apple x3", "minecraft:experience_bottle x16"]}
+      - {weight: 6, items: ["TConstruct:materials:3 x4", "TConstruct:materials:4 x4"]}
+      - {weight: 6, items: ["minecraft:quartz x32", "minecraft:glowstone x8"]}
+      - {weight: 5, items: ["minecraft:slime_ball x12", "minecraft:magma_cream x6"]}
+  raro:
+    name: "§9Baú de Saque Raro"
+    entries:
+      - {weight: 10, items: ["minecraft:diamond_block x2", "minecraft:emerald x12"]}
+      - {weight: 9, items: ["IC2:itemPartCircuitAdv x8", "IC2:itemPartAlloy x8"]}
+      - {weight: 9, items: ["Thaumcraft:ItemResource:2 x12", "Thaumcraft:ItemResource:3 x8"]}
+      - {weight: 8, items: ["Botania:manaResource:4 x4", "Botania:manaResource:2 x4"]}
+      - {weight: 8, items: ["ThermalFoundation:material:74 x8", "ThermalFoundation:material:75 x8"]}
+      - {weight: 8, items: ["Mekanism:ReinforcedAlloy x8", "Mekanism:Ingot:0 x8"]}
+      - {weight: 7, items: ["DraconicEvolution:draconiumIngot x8", "minecraft:ender_eye x8"]}
+      - {weight: 7, items: ["TConstruct:materials:5 x6", "TConstruct:materials:14 x4"]}
+      - {weight: 6, items: ["AWWayofTime:reinforcedSlate x8", "AWWayofTime:imbuedSlate x4"]}
+      - {weight: 6, items: ["minecraft:golden_apple:1", "minecraft:experience_bottle x32"]}
+      - {weight: 5, items: ["minecraft:nether_star"]}
+  epico:
+    name: "§5Baú de Saque Épico"
+    entries:
+      - {weight: 10, items: ["minecraft:nether_star x2", "minecraft:diamond_block x4"]}
+      - {weight: 9, items: ["ThermalFoundation:material:76 x16"]}
+      - {weight: 9, items: ["DraconicEvolution:draconicCore x4", "DraconicEvolution:wyvernCore"]}
+      - {weight: 8, items: ["Mekanism:AtomicAlloy x12"]}
+      - {weight: 8, items: ["Botania:manaResource:5 x2", "Botania:manaResource:7 x16"]}
+      - {weight: 8, items: ["IC2:itemPartIridium x8"]}
+      - {weight: 7, items: ["AWWayofTime:demonicSlate x8", "AWWayofTime:bloodMagicBaseItems:27 x2"]}
+      - {weight: 6, items: ["minecraft:dragon_egg"]}
+      - {weight: 6, items: ["Avaritia:Resource:2 x8"]}
+  lendario:
+    name: "§6Baú de Saque Lendário"
+    entries:
+      - {weight: 10, items: ["allthemodiumlegacy:allthemodium_ingot x8"]}
+      - {weight: 8, items: ["allthemodiumlegacy:vibranium_ingot x6"]}
+      - {weight: 6, items: ["allthemodiumlegacy:unobtainium_ingot x4"]}
+      - {weight: 8, items: ["Avaritia:Resource:4 x4", "Avaritia:Resource:1 x8"]}
+      - {weight: 8, items: ["minecraft:nether_star x8"]}
+      - {weight: 6, items: ["DraconicEvolution:wyvernCore x4", "DraconicEvolution:draconicCore x16"]}
+      - {weight: 5, items: ["Botania:manaResource:5 x8"]}
