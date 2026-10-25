@@ -1,0 +1,2253 @@
+chapter:
+  id: "forestry"
+  title: "Forestry"
+  prefix: ""
+  order: 600
+  icon: "Forestry:factory:1"
+  desc: |
+    §eO Volume das Florestas.§r Apatita, turfa e bronze; motores, Carpinteiro e biomassa;
+    Fazendas Multibloco, genética de árvores, borboletas, mochilas e correio.
+    (Forestry 4.11.36)
+
+quests:
+  - id: "apatita"
+    title: "O Mineral das Florestas"
+    type: "main"
+    icon: "Forestry:resources"
+    desc: |
+      Toda floresta precisa de alguém que cuide dela — e o Volume das Florestas começa com uma pedra
+      azulada, Herói. Estranho? Nem tanto: a §eApatita§r é o adubo dos Antigos.
+
+      O §eMinério de Apatita§r do Forestry nasce no alto: um único veio grande (até 36 blocos) em
+      cerca de 80% dos chunks, sempre de Y 56 para cima — procure nas encostas das montanhas e colinas.
+      Cada minério solta Apatita; Fortuna ajuda muito.
+
+      Junte §e8 Apatitas§r. Elas viram fertilizante, selos e, lá na frente, válvulas eletrônicas.
+    tasks:
+      - {"get": "ore:gemApatite x8"}
+    rewards:
+      - {"xp": 3}
+      - {"choice": ["minecraft:bread x8", "minecraft:torch x16", "minecraft:iron_ingot x4"]}
+
+  - id: "cobre"
+    title: "Cobre do Forestry"
+    type: "normal"
+    icon: "Forestry:resources:1"
+    deps: ["apatita"]
+    desc: |
+      O Forestry traz seu próprio §eMinério de Cobre§r: cerca de 20 veios pequenos (6 blocos) por chunk,
+      entre Y 32 e 107. Qualquer cobre do oredict serve — o do IC2, do Thermal ou do Mekanism também.
+
+      Junte §e16 lingotes de cobre§r: eles viram engrenagens, a Centrífuga, o Motor de Turfa e os
+      blocos da Fazenda.
+    tasks:
+      - {"get": "ore:ingotCopper x16"}
+    rewards:
+      - {"xp": 2}
+      - {"item": "minecraft:coal x8"}
+
+  - id: "estanho"
+    title: "Estanho do Forestry"
+    type: "normal"
+    icon: "Forestry:resources:2"
+    deps: ["apatita"]
+    desc: |
+      O §eMinério de Estanho§r do Forestry aparece em uns 18 veios por chunk, de Y 16 a 91.
+
+      Junte §e16 lingotes de estanho§r. Latas, o Hidratador, as Placas de Circuito e o Motor Elétrico
+      dependem dele. (Sim, o mundo está cheio de estanho. Os Antigos eram fãs de latinha.)
+    tasks:
+      - {"get": "ore:ingotTin x16"}
+    rewards:
+      - {"xp": 2}
+      - {"item": "minecraft:coal x8"}
+
+  - id: "bronze"
+    title: "Bronze"
+    type: "main"
+    icon: "Forestry:ingotBronze"
+    deps: ["cobre", "estanho"]
+    desc: |
+      Cobre e estanho sozinhos são moles. Juntos, viram a liga que sustenta quase todo o Forestry!
+
+      Na bancada, §e3 lingotes de cobre + 1 de estanho§r (sem forma) rendem §e4 lingotes de Bronze§r —
+      a receita está ativa na config do pack. Junte §e16§r: a Carcaça Resistente sozinha come 8.
+
+      §aDica:§r o bronze de outros mods (IC2, Thermal, Tinkers) também vale nas receitas do Forestry.
+    tasks:
+      - {"get": "ore:ingotBronze x16"}
+    rewards:
+      - {"xp": 3}
+      - {"choice": ["Forestry:ingotCopper x9", "Forestry:ingotTin x6", "minecraft:iron_ingot x6"]}
+
+  - id: "bloco_bronze"
+    title: "Blocos de Armazenamento"
+    type: "optional"
+    deps: ["bronze"]
+    desc: |
+      Arrumação é amor-próprio! Nove lingotes viram um bloco: o Forestry tem blocos de §eApatita,
+      Cobre, Estanho e Bronze§r. Faça um Bloco de Bronze para guardar a sua liga com estilo.
+    tasks:
+      - {"get": "Forestry:resourceStorage:3"}
+    rewards:
+      - {"loot": "comum"}
+
+  - id: "ferramentas_sobrevivente"
+    title: "Ferramentas do Sobrevivente"
+    type: "optional"
+    deps: ["bronze"]
+    desc: |
+      A §ePicareta§r e a §ePá do Sobrevivente§r são de bronze e quebram de um jeito curioso: viram
+      ferramentas "quebradas" em vez de sumir. Guarde os cacos! No Carpinteiro, uma Picareta Quebrada
+      devolve 2 lingotes de bronze e uma Pá Quebrada devolve 1.
+    tasks:
+      - {"one_of": ["Forestry:bronzePickaxe", "Forestry:bronzeShovel"]}
+    rewards:
+      - {"loot": "comum"}
+
+  - id: "chave_forestry"
+    title: "Chave Inglesa"
+    type: "optional"
+    deps: ["bronze"]
+    desc: |
+      Motores do Forestry empurram energia para o lado em que estão virados. A §eChave Inglesa§r de
+      bronze (4 lingotes em "Y") gira motores e máquinas sem precisar quebrá-los. Pequena, mas salva
+      muita paciência.
+    tasks:
+      - {"get": "Forestry:wrench"}
+    rewards:
+      - {"loot": "comum"}
+
+  - id: "fertilizante"
+    title: "Fertilizante"
+    type: "main"
+    deps: ["apatita"]
+    desc: |
+      Lembra que eu disse que a apatita era adubo? Pois é! §eAreia + Apatita + Areia§r (em coluna)
+      rendem §e8 Fertilizantes§r neste pack. Com cinzas em volta de uma apatita, saem 16.
+
+      Fertilizante faz mudas crescerem na hora (como farinha de osso) e é o combustível das
+      §bFazendas Multibloco§r — sem ele, nenhuma fazenda trabalha. Junte §e16§r.
+    tasks:
+      - {"get": "Forestry:fertilizerCompound x16"}
+    rewards:
+      - {"xp": 3}
+      - {"choice": ["Forestry:apatite x8", "minecraft:sand x32", "minecraft:dye:15 x16"]}
+
+  - id: "adubo"
+    title: "Adubo"
+    type: "optional"
+    deps: ["fertilizante"]
+    desc: |
+      O §eAdubo§r (composto) é a versão "caseira": 4 trigos (ou cevada, aveia, centeio do HarvestCraft)
+      em volta de 1 terra rendem 4. Com cinzas no lugar do trigo, sai 1. Ele serve para fazer Húmus e
+      pode ser fermentado.
+    tasks:
+      - {"get": "Forestry:fertilizerBio x8"}
+    rewards:
+      - {"loot": "comum"}
+
+  - id: "humus"
+    title: "Húmus"
+    type: "optional"
+    deps: ["adubo"]
+    desc: |
+      Oito terras em volta de um adubo (ou fertilizante) viram §e8 Húmus§r. É um solo que acelera o
+      crescimento de árvores e se degrada em terra com o tempo — ótimo para as fazendas de árvores
+      (Arboreto). Também sai do Carpinteiro: 8 terras + 1 bagaço + 1000 mB de água = 9 húmus.
+    tasks:
+      - {"get": "Forestry:soil x8"}
+    rewards:
+      - {"loot": "comum"}
+
+  - id: "terra_pantano"
+    title: "Terra do Pântano"
+    type: "main"
+    deps: ["apatita"]
+    desc: |
+      Agora vamos plantar... combustível! A §eTerra do Pântano§r é feita com 4 terras, 4 areias e um
+      balde de água no centro (6 unidades; com lata, cápsula ou célula d'água saem 8).
+
+      Coloque a terra do pântano §eencostada em água§r: com o tempo ela "amadurece" e vira Turfa.
+      Junte §e16 blocos§r para montar o seu primeiro turfal.
+    tasks:
+      - {"get": "Forestry:soil:1 x16"}
+    rewards:
+      - {"xp": 3}
+      - {"choice": ["minecraft:water_bucket", "minecraft:dirt x32", "minecraft:sand x32"]}
+
+  - id: "turfa"
+    title: "Turfa"
+    type: "main"
+    deps: ["terra_pantano"]
+    desc: |
+      Uma terra que vira combustível — a natureza é a melhor engenheira!
+
+      A Terra do Pântano encostada em água muda de aparência aos poucos até ficar escura e madura.
+      Quebre-a com uma §epá§r para colher §eTurfa§r (e um pouco de terra). Replante e espere de novo.
+
+      Junte §e16 Turfas§r: elas vão alimentar o seu primeiro motor. Mais tarde a Fazenda Turfeira faz
+      isso sozinha.
+    tasks:
+      - {"get": "Forestry:peat x16"}
+    rewards:
+      - {"xp": 3}
+      - {"choice": ["Forestry:soil:1 x8", "minecraft:iron_shovel", "minecraft:coal x8"]}
+
+  - id: "engrenagem_pedra"
+    title: "Engrenagem de Pedra"
+    type: "normal"
+    deps: ["bronze"]
+    desc: |
+      As engrenagens do Forestry têm um "miolo" de pedra: a §eEngrenagem de Pedra§r do BuildCraft
+      (4 pedregulhos em volta de... confira no NEI). Faça §e3§r — uma para cada engrenagem metálica.
+    tasks:
+      - {"get": "ore:gearStone x3"}
+    rewards:
+      - {"xp": 2}
+      - {"item": "minecraft:cobblestone x32"}
+
+  - id: "engrenagens"
+    title: "Engrenagens Metálicas"
+    type: "main"
+    icon: "Forestry:gearBronze"
+    deps: ["engrenagem_pedra"]
+    desc: |
+      Quatro lingotes em volta de uma Engrenagem de Pedra viram uma engrenagem de metal. Faça uma de
+      cada: §eCobre§r (Motor de Turfa, Humidificador), §eEstanho§r (Motor Elétrico, Fazenda, Fazedor
+      de Chuva) e §eBronze§r (Motor de Biogás, Fermentador).
+
+      As engrenagens do Thermal Expansion contam também — o oredict é o mesmo.
+    tasks:
+      - {"get": ["ore:gearCopper", "ore:gearTin", "ore:gearBronze"]}
+    rewards:
+      - {"xp": 3}
+      - {"choice": ["Forestry:ingotCopper x8", "Forestry:ingotTin x8", "Forestry:ingotBronze x6"]}
+
+  - id: "carcaca_resistente"
+    title: "Carcaça Resistente"
+    type: "main"
+    deps: ["bronze"]
+    desc: |
+      Oito lingotes de bronze em anel formam a §eCarcaça Resistente§r, o coração de quase toda máquina
+      do Forestry: Carpinteiro, Hidratador, Centrífuga, Fermentador, Refinador, Fabricador, Analisador,
+      Caixa de Correio...
+
+      Vá juntando bronze, Herói. Você vai precisar de várias!
+    tasks:
+      - {"get": "Forestry:sturdyMachine"}
+    rewards:
+      - {"xp": 3}
+      - {"choice": ["Forestry:ingotBronze x8", "minecraft:glass x16", "Forestry:peat x8"]}
+
+  - id: "info_energia"
+    title: "Como Pensam os Motores"
+    type: "info"
+    icon: "Forestry:engine:1"
+    deps: ["engrenagens"]
+    desc: |
+      Uma aulinha antes de ligar qualquer coisa (prometo que é rápida!).
+
+      §b• Unidade:§r os motores do Forestry geram §eRF/t§r (Redstone Flux por tick; 20 ticks = 1 s).
+      §b• Direção:§r o motor empurra energia para a máquina §epara onde está virado§r. Use a Chave
+      Inglesa para girá-lo.
+      §b• Liga/desliga:§r os motores de combustível precisam de um §esinal de redstone§r (alavanca).
+      §b• Calor:§r se a energia não for consumida, o motor esquenta. §cAo chegar ao limite ele entra em
+      resfriamento forçado e perde boa parte da energia guardada.§r Não deixe motor ligado à toa!
+
+      As dicas da aba "?" de cada motor (no próprio GUI) repetem isso — leia quando quiser.
+    tasks:
+      - {"check": true}
+    rewards:
+      - {"xp": 1}
+
+  - id: "motor_engrenagem"
+    title: "Motor de Engrenagem"
+    type: "normal"
+    deps: ["engrenagens"]
+    desc: |
+      O avô de todos os motores: tábuas, vidro, uma engrenagem de cobre, um pistão e um §erelógio§r.
+
+      O §eMotor de Engrenagem§r funciona na mão: clique nele para dar corda. Cada volta gasta um
+      pouquinho da sua fome e a energia vai caindo devagar. §cSe der corda demais, a mola machuca
+      (3 corações)!§r Serve para um empurrão inicial, não para uma fábrica.
+    tasks:
+      - {"get": "Forestry:engine:4"}
+    rewards:
+      - {"xp": 2}
+      - {"item": "minecraft:bread x6"}
+
+  - id: "motor_turfa"
+    title: "Motor de Turfa"
+    type: "main"
+    deps: ["engrenagens", "turfa"]
+    desc: |
+      Agora sim, energia de verdade! Três lingotes de cobre, vidro, duas engrenagens de cobre e um
+      pistão formam o §eMotor de Turfa§r.
+
+      Ele queima Turfa (§e10 RF/t por 5000 ticks§r) ou Turfa Betuminosa (§e20 RF/t por 6000 ticks§r) e
+      deixa §eCinzas§r nos slots de resíduo. Ligue-o com redstone, vire-o para uma máquina e pronto.
+
+      §aDica:§r um motor desligado continua terminando a turfa que já começou a queimar — sem gerar nada.
+    tasks:
+      - {"get": "Forestry:engine:1"}
+    rewards:
+      - {"xp": 4}
+      - {"choice": ["Forestry:peat x16", "Forestry:ingotCopper x8", "minecraft:lever x4"]}
+
+  - id: "cinzas"
+    title: "Cinzas"
+    type: "normal"
+    icon: "Forestry:ash"
+    deps: ["motor_turfa"]
+    desc: |
+      O Motor de Turfa deixa §eCinzas§r para trás. Não jogue fora: cinzas em volta de uma apatita viram
+      16 fertilizantes, e 2 cinzas + 2 turfas + 1 própolis viram Turfa Betuminosa. Junte §e16§r.
+    tasks:
+      - {"get": "ore:dustAsh x16"}
+    rewards:
+      - {"xp": 2}
+      - {"item": "Forestry:apatite x4"}
+
+  - id: "turfa_betuminosa"
+    title: "Turfa Betuminosa"
+    type: "optional"
+    deps: ["cinzas"]
+    desc: |
+      Duas turfas, duas cinzas e uma §ePrópolis§r (vem das abelhas — veja o capítulo de Apicultura)
+      formam a §eTurfa Betuminosa§r: o dobro de potência no Motor de Turfa (20 RF/t).
+    tasks:
+      - {"get": "Forestry:bituminousPeat x4"}
+    rewards:
+      - {"loot": "comum"}
+
+  - id: "motor_eletrico"
+    title: "Motor Elétrico"
+    type: "optional"
+    deps: ["engrenagens"]
+    desc: |
+      Tem IC2 por perto? O §eMotor Elétrico§r (estanho, vidro, engrenagens de estanho e pistão) recebe
+      §bEU§r e devolve RF para as máquinas do Forestry. Aceita baterias no slot e pode receber uma
+      placa de circuito para regular a saída (veja "Circuitos do Motor").
+    tasks:
+      - {"get": "Forestry:engine"}
+    rewards:
+      - {"loot": "comum"}
+
+  - id: "circuitos_motor"
+    title: "Circuitos do Motor Elétrico"
+    type: "optional"
+    icon: "Forestry:chipsets:1"
+    deps: ["motor_eletrico", "ferro_solda", "valvulas_metalicas"]
+    desc: |
+      O Motor Elétrico tem soquete de circuito. Solde válvulas numa placa (Ferro de Solda):
+      §e• Estanho:§r Impulso Elétrico I (+20 RF/t, +7 EU/t)
+      §e• Bronze:§r Impulso Elétrico II (+40 RF/t, +15 EU/t)
+      §e• Cobre:§r Choque Elétrico (-10 RF/t, -2 EU/t)
+      §e• Ferro:§r Eficiência Elétrica (-1 EU/t)
+      Mostre uma Placa Aprimorada e uma válvula de bronze.
+    tasks:
+      - {"get": ["Forestry:chipsets:1", "Forestry:thermionicTubes:2"]}
+    rewards:
+      - {"loot": "comum"}
+
+  - id: "hidratador"
+    title: "Hidratador"
+    type: "main"
+    deps: ["carcaca_resistente", "motor_turfa"]
+    desc: |
+      O nome em português engana: o §eHidratador§r (Squeezer) é uma §bprensa§r. Ele espreme coisas
+      e tira líquido delas.
+
+      Receita: estanho, vidro e a Carcaça Resistente no meio. Ligue um motor nele e experimente:
+      sementes viram §eÓleo Vegetal§r, maçãs viram suco + bagaço, cactos viram água.
+    tasks:
+      - {"get": "Forestry:factory:5"}
+    rewards:
+      - {"xp": 4}
+      - {"choice": ["minecraft:wheat_seeds x32", "minecraft:apple x8", "Forestry:peat x16"]}
+
+  - id: "oleo_vegetal"
+    title: "Óleo Vegetal"
+    type: "main"
+    icon: "Forestry:bucketSeedOil"
+    deps: ["hidratador"]
+    desc: |
+      O §eÓleo Vegetal§r é a "cola" da marcenaria do Forestry. No Hidratador, cada semente (trigo,
+      abóbora, melancia) rende 10 mB neste pack; Nozes e Castanhas das árvores do Forestry rendem
+      muito mais.
+
+      Encha §eum balde, uma lata ou uma cápsula com 1000 mB§r. O Carpinteiro vai pedir óleo para o
+      Invólucro Impregnado, as Varas Impregnadas e a Escrivaninha.
+    tasks:
+      - {"fluid": "seedoil x1000"}
+    rewards:
+      - {"xp": 4}
+      - {"choice": ["minecraft:wheat_seeds x64", "minecraft:bucket x2", "Forestry:canEmpty x8"]}
+
+  - id: "latas"
+    title: "Latas"
+    type: "normal"
+    deps: ["estanho"]
+    desc: |
+      Duas linhas de estanho (receita em "U" invertido — confira no NEI) rendem §e12 Latas§r neste pack.
+      Latas carregam 1000 mB de qualquer líquido do Forestry e cabem em pilhas: muito melhores que
+      baldes para levar óleo, biomassa e etanol de um lado para o outro.
+    tasks:
+      - {"get": "Forestry:canEmpty x12"}
+    rewards:
+      - {"xp": 2}
+      - {"item": "Forestry:ingotTin x4"}
+
+  - id: "suco"
+    title: "Suco de Fruta"
+    type: "optional"
+    icon: "Forestry:bucketJuice"
+    deps: ["hidratador"]
+    desc: |
+      Maçãs no Hidratador rendem §e200 mB de Suco§r e um pouco de §eBagaço§r. Limões, mamões e outras
+      frutas do Forestry também viram suco. Suco é combustível fraco (10 RF/t) no Motor de Biogás, mas
+      melhora muito o rendimento do Fermentador!
+    tasks:
+      - {"fluid": "juice x1000"}
+    rewards:
+      - {"loot": "comum"}
+
+  - id: "bagaco"
+    title: "Bagaço"
+    type: "optional"
+    deps: ["suco"]
+    desc: |
+      O §eBagaço§r (Mulch) que sobra das frutas vira solo: 8 terras + 1 bagaço no Carpinteiro rendem 9
+      Húmus; terra, areia e bagaço rendem Terra do Pântano. Nada se perde no Volume das Florestas!
+    tasks:
+      - {"get": "Forestry:mulch x8"}
+    rewards:
+      - {"loot": "comum"}
+
+  - id: "carpinteiro"
+    title: "Carpinteiro"
+    type: "main"
+    deps: ["carcaca_resistente", "motor_turfa"]
+    desc: |
+      Se o Forestry tivesse um coração, seria este. O §eCarpinteiro§r é uma bancada motorizada com
+      tanque: muitas receitas pedem um §elíquido§r (água, óleo vegetal, mel) além dos itens.
+
+      Receita: bronze, vidro e a Carcaça Resistente. Encha o tanque com água (balde ou cano), ligue um
+      motor e abra o NEI no Carpinteiro para ver tudo o que ele faz.
+
+      §aDica:§r o Carpinteiro também empacota itens em §eCaixotes§r para economizar espaço.
+    tasks:
+      - {"get": "Forestry:factory:1"}
+    rewards:
+      - {"xp": 4}
+      - {"choice": ["minecraft:water_bucket", "Forestry:ingotBronze x6", "minecraft:log x16"]}
+
+  - id: "involucro_impregnado"
+    title: "Invólucro Impregnado"
+    type: "main"
+    deps: ["carpinteiro", "oleo_vegetal"]
+    desc: |
+      Madeira tratada com óleo dura para sempre. No Carpinteiro: §e8 troncos em anel + 250 mB de
+      Óleo Vegetal§r = §eInvólucro Impregnado§r.
+
+      Ele é a base do §eApiário§r e do §eApiaryum§r — a porta de entrada para a apicultura séria.
+      Faça um e guarde; o capítulo de Apicultura vai pedir.
+    tasks:
+      - {"get": "Forestry:impregnatedCasing"}
+    rewards:
+      - {"xp": 4}
+      - {"choice": ["minecraft:log x16", "Forestry:canEmpty x6", "minecraft:planks x32"]}
+
+  - id: "vara_impregnada"
+    title: "Vara Impregnada"
+    type: "normal"
+    deps: ["carpinteiro", "oleo_vegetal"]
+    desc: |
+      Dois troncos em coluna + 100 mB de óleo vegetal = §e2 Varas Impregnadas§r. Elas formam o Quadro
+      Impregnado das colmeias (muito mais durável que o comum). Faça §e4§r.
+    tasks:
+      - {"get": "Forestry:oakStick x4"}
+    rewards:
+      - {"xp": 2}
+      - {"item": "minecraft:string x4"}
+
+  - id: "polpa_madeira"
+    title: "Polpa de Árvore"
+    type: "normal"
+    deps: ["carpinteiro"]
+    desc: |
+      Um tronco + 250 mB de água no Carpinteiro viram §e4 Polpas de Árvore§r. Duas polpas em coluna dão
+      papel; quatro em losango dão 2 Cartões (para os kits de ferramenta); seis viram uma Carta.
+      Junte §e8§r.
+    tasks:
+      - {"get": "Forestry:woodPulp x8"}
+    rewards:
+      - {"xp": 2}
+      - {"item": "minecraft:log x8"}
+
+  - id: "escrivaninha"
+    title: "Escrivaninha"
+    type: "normal"
+    deps: ["carpinteiro", "oleo_vegetal"]
+    desc: |
+      Cientista que se preze tem uma mesa! A §eEscrivaninha§r (Escritoire) sai do Carpinteiro com
+      tábuas e 500 mB de óleo vegetal.
+
+      Coloque um espécime genético (abelha, muda, borboleta) no centro e outros nas ranhuras da
+      esquerda: é um minijogo de pesquisa que pode render §eNotas do Sengir§r e dicas sobre mutações.
+    tasks:
+      - {"get": "Forestry:core:1"}
+    rewards:
+      - {"xp": 2}
+      - {"item": "minecraft:paper x8"}
+
+  - id: "mesa_trabalho"
+    title: "Mesa de Trabalho"
+    type: "optional"
+    deps: ["carpinteiro"]
+    desc: |
+      Livro + bancada + baú (em coluna) = §eMesa de Trabalho§r. Ela tem inventário próprio e §elembra
+      as últimas receitas§r que você fez — um clique repete o craft. Quem fabrica placa de circuito em
+      lote agradece.
+    tasks:
+      - {"get": "Forestry:factory2:2"}
+    rewards:
+      - {"loot": "comum"}
+
+  - id: "caixotes"
+    title: "Caixotes"
+    type: "optional"
+    deps: ["carpinteiro"]
+    desc: |
+      Quatro troncos em losango no Carpinteiro (com água) rendem §e24 Caixas§r vazias. Depois, 9 itens
+      iguais + 1 caixa = 1 §eCaixote§r cheio. Funciona com troncos, pedra, minérios, combs... Seu baú
+      agradece.
+    tasks:
+      - {"get": "Forestry:cratedWood"}
+    rewards:
+      - {"loot": "comum"}
+
+  - id: "kits_ferramenta"
+    title: "Kits de Ferramentas"
+    type: "optional"
+    deps: ["ferramentas_sobrevivente", "polpa_madeira"]
+    desc: |
+      Um Cartão de papelão + bronze e gravetos no Carpinteiro formam um §eKit de Picaretas§r (ou de Pás):
+      uma ferramenta embalada para presente. Abra com clique direito. E lembre: as ferramentas quebradas
+      voltam a ser bronze no Carpinteiro.
+    tasks:
+      - {"one_of": ["Forestry:kitPickaxe", "Forestry:kitShovel"]}
+    rewards:
+      - {"loot": "comum"}
+
+  - id: "placa_basica"
+    title: "Placa de Circuito Básica"
+    type: "main"
+    deps: ["carpinteiro"]
+    desc: |
+      Circuitos de madeira? Não — de redstone! No Carpinteiro, §e1 estanho + 6 redstones + 1000 mB de
+      água§r = §ePlaca de Circuito Básica§r.
+
+      Placas recebem §eválvulas eletrônicas§r soldadas e viram "programas": dizem a uma Fazenda o que
+      plantar, ou regulam o Motor Elétrico. A básica tem 1 soquete.
+    tasks:
+      - {"get": "Forestry:chipsets"}
+    rewards:
+      - {"xp": 4}
+      - {"choice": ["minecraft:redstone x16", "Forestry:ingotTin x6", "Forestry:ingotBronze x4"]}
+
+  - id: "placas_avancadas"
+    title: "Placas Maiores"
+    type: "normal"
+    icon: "Forestry:chipsets:3"
+    deps: ["placa_basica"]
+    desc: |
+      Troque o estanho por outro metal e ganhe soquetes:
+      §e• Aprimorada§r (bronze): 2 soquetes
+      §e• Refinada§r (ferro): 3 soquetes
+      §e• Intrincada§r (ouro): 4 soquetes
+      Todas com redstone e 1000 mB de água no Carpinteiro. A Intrincada é a favorita das Fazendas —
+      um circuito para cada lado.
+    tasks:
+      - {"get": ["Forestry:chipsets:1", "Forestry:chipsets:2", "Forestry:chipsets:3"]}
+    rewards:
+      - {"xp": 2}
+      - {"item": "minecraft:redstone x16"}
+
+  - id: "ferro_solda"
+    title: "Ferro de Solda"
+    type: "normal"
+    deps: ["placa_basica"]
+    desc: |
+      Ferro e bronze no Carpinteiro (1000 mB de água) viram o §eFerro de Solda§r. Clique direito com ele
+      para abrir a bancada de solda: coloque a placa e as válvulas, escolha o diagrama (Fazenda
+      Gerenciada, Fazenda Manual, Motor Elétrico...) e solde.
+    tasks:
+      - {"get": "Forestry:solderingIron"}
+    rewards:
+      - {"xp": 2}
+      - {"item": "minecraft:iron_ingot x4"}
+
+  - id: "fermentador"
+    title: "Fermentador"
+    type: "main"
+    deps: ["carpinteiro", "engrenagens"]
+    desc: |
+      Hora de transformar planta em combustível! O §eFermentador§r (engrenagens de bronze, vidro e
+      Carcaça Resistente) mistura material vegetal com água e produz §eBiomassa§r.
+
+      Ele também aceita §eFertilizante ou Adubo§r num slot próprio, que acelera a fermentação.
+    tasks:
+      - {"get": "Forestry:factory:3"}
+    rewards:
+      - {"xp": 4}
+      - {"choice": ["minecraft:sapling x16", "Forestry:fertilizerCompound x8", "minecraft:reeds x16"]}
+
+  - id: "biomassa"
+    title: "Biomassa"
+    type: "main"
+    icon: "Forestry:bucketBiomass"
+    deps: ["fermentador"]
+    desc: |
+      Neste pack, cada §emuda§r rende 250 mB de biomassa no Fermentador; trigo, cana, cacto e cogumelos
+      rendem 50; batata rende o dobro do trigo. Usar §esuco ou mel§r no lugar da água aumenta o
+      rendimento (o NEI mostra os números).
+
+      Encha §e1000 mB de Biomassa§r. Ela move o Motor de Biogás (50 RF/t) e vira etanol no Refinador.
+    tasks:
+      - {"fluid": "biomass x1000"}
+    rewards:
+      - {"xp": 4}
+      - {"choice": ["minecraft:sapling x32", "Forestry:canEmpty x8", "minecraft:wheat x32"]}
+
+  - id: "motor_biogas"
+    title: "Motor de Biogás"
+    type: "main"
+    deps: ["motor_turfa", "biomassa"]
+    desc: |
+      Bronze, vidro, engrenagens de bronze e pistão: o §eMotor de Biogás§r queima líquidos!
+
+      §e• Biomassa:§r 50 RF/t — a melhor
+      §e• Óleo vegetal:§r 30 RF/t
+      §e• Mel:§r 20 RF/t
+      §e• Suco, água, leite:§r 10 RF/t
+
+      §cÁgua é terrivelmente ineficiente§r e faz o motor consumir lava sem parar. Fique com biomassa.
+      Uma vantagem: desligado, ele não desperdiça o combustível que está no tanque.
+    tasks:
+      - {"get": "Forestry:engine:2"}
+    rewards:
+      - {"xp": 4}
+      - {"choice": ["Forestry:gearBronze x2", "Forestry:canEmpty x8", "minecraft:lever x4"]}
+
+  - id: "refinador"
+    title: "Refinador"
+    type: "main"
+    deps: ["fermentador"]
+    desc: |
+      O §eRefinador§r (Still) é a destilaria do Forestry: redstone, vidro e Carcaça Resistente.
+      Ele transforma §e10 mB de biomassa em 3 mB de Etanol§r — e Hidromel em Mead, para quem cria
+      abelhas.
+    tasks:
+      - {"get": "Forestry:factory:6"}
+    rewards:
+      - {"xp": 4}
+      - {"choice": ["minecraft:redstone x16", "Forestry:canEmpty x8", "minecraft:glass x16"]}
+
+  - id: "etanol"
+    title: "Etanol"
+    type: "main"
+    icon: "Forestry:bucketEthanol"
+    deps: ["refinador"]
+    desc: |
+      O combustível verde! Encha §e1000 mB de Etanol§r no Refinador.
+
+      O §eBio Gerador§r do Forestry queima etanol a §b32 EU/t§r (biomassa só dá 8). Muitos outros mods
+      do pack aceitam etanol como combustível — é um ótimo produto de exportação da sua fazenda.
+    tasks:
+      - {"fluid": "bioethanol x1000"}
+    rewards:
+      - {"xp": 4}
+      - {"choice": ["Forestry:canEmpty x12", "minecraft:sapling x32", "minecraft:bucket x2"]}
+
+  - id: "bio_gerador"
+    title: "Bio Gerador"
+    type: "optional"
+    deps: ["etanol"]
+    desc: |
+      Ouro, vidro e Carcaça Resistente: o §eBio Gerador§r queima etanol ou biomassa e entrega §bEU§r
+      (IC2) — 32 EU/t com etanol, 8 EU/t com biomassa. É a ponte entre a sua fazenda e a rede elétrica.
+    tasks:
+      - {"get": "Forestry:engine:3"}
+    rewards:
+      - {"loot": "comum"}
+
+  - id: "humidificador"
+    title: "Humidificador"
+    type: "normal"
+    deps: ["carcaca_resistente", "engrenagens"]
+    desc: |
+      O §eHumidificador§r (Moistener) não usa energia nenhuma: precisa de §eescuridão§r (luz 11 ou menos
+      em cima dele — quanto mais escuro, mais rápido), água e "combustível" de trigo que vai mofando.
+
+      Ele transforma sementes em §eMicélio§r, pedregulho em §ePedregulho com Musgo§r e tijolos de pedra
+      em §eTijolos com Musgo§r. Engrenagens de cobre, vidro e Carcaça Resistente.
+    tasks:
+      - {"get": "Forestry:factory:4"}
+    rewards:
+      - {"xp": 2}
+      - {"item": "minecraft:wheat x16"}
+
+  - id: "musgo"
+    title: "Musgo e Micélio"
+    type: "optional"
+    icon: "minecraft:mossy_cobblestone"
+    deps: ["humidificador"]
+    desc: |
+      Mostre um resultado do Humidificador: §eMicélio, Pedregulho com Musgo ou Tijolo de Pedra com
+      Musgo§r. Os construtores adoram — e o micélio é solo de fazenda de cogumelos.
+    tasks:
+      - {"one_of": ["minecraft:mycelium", "minecraft:mossy_cobblestone", "minecraft:stonebrick:1"]}
+    rewards:
+      - {"loot": "comum"}
+
+  - id: "centrifuga"
+    title: "Centrífuga"
+    type: "main"
+    deps: ["carcaca_resistente", "motor_turfa"]
+    desc: |
+      Cobre, vidro e Carcaça Resistente formam a §eCentrífuga§r. Ela gira favos de mel e separa cera,
+      gotas de mel, própolis, melaço...
+
+      No Forestry ela é a ponte para a §dApicultura§r — leve-a para o capítulo das abelhas quando a
+      primeira colmeia zumbir.
+    tasks:
+      - {"get": "Forestry:factory:2"}
+    rewards:
+      - {"xp": 4}
+      - {"choice": ["Forestry:ingotCopper x8", "minecraft:glass x16", "Forestry:peat x16"]}
+
+  - id: "engarrafador"
+    title: "Engarrafador"
+    type: "optional"
+    deps: ["latas", "carcaca_resistente"]
+    desc: |
+      Latas, vidro e Carcaça Resistente: o §eEngarrafador§r enche (e esvazia) latas, cápsulas e baldes
+      de forma automática. Útil para mandar óleo e etanol por tubos.
+    tasks:
+      - {"get": "Forestry:factory"}
+    rewards:
+      - {"loot": "comum"}
+
+  - id: "tanque_chuva"
+    title: "Tanque de Chuva"
+    type: "optional"
+    deps: ["carcaca_resistente"]
+    desc: |
+      Ferro, vidro e Carcaça Resistente. O §eTanque de Chuva§r recolhe água quando chove — mesmo sem
+      energia. Para engarrafar a água, aí sim precisa de um motor. Bom para bases longe de rios.
+    tasks:
+      - {"get": "Forestry:factory2:1"}
+    rewards:
+      - {"loot": "comum"}
+
+  - id: "fabricador"
+    title: "Fabricador Termiônico"
+    type: "main"
+    deps: ["carcaca_resistente", "motor_turfa"]
+    desc: |
+      Ouro, vidro, a Carcaça Resistente e um baú: o §eFabricador Termiônico§r derrete areia e vidro em
+      §eVidro Líquido§r e molda com ele as peças finas do Forestry.
+
+      Ele precisa de energia para §eaquecer§r antes de derreter: areia pede mais calor que vidro. Depois,
+      o tanque de vidro líquido alimenta a "bancada" da direita.
+    tasks:
+      - {"get": "Forestry:factory2"}
+    rewards:
+      - {"xp": 4}
+      - {"choice": ["minecraft:sand x32", "minecraft:gold_ingot x4", "minecraft:glass x16"]}
+
+  - id: "vidro_liquido"
+    title: "Vidro Líquido"
+    type: "normal"
+    icon: "Forestry:bucketGlass"
+    deps: ["fabricador"]
+    desc: |
+      Um bloco de vidro rende 1000 mB; areia também rende 1000 mB (mas pede mais calor); arenito rende
+      4000 mB; um painel de vidro rende 375 mB. Encha §e1000 mB de Vidro Líquido§r num balde ou lata.
+    tasks:
+      - {"fluid": "glass x1000"}
+    rewards:
+      - {"xp": 2}
+      - {"item": "minecraft:sand x32"}
+
+  - id: "valvulas_basicas"
+    title: "Válvulas Eletrônicas"
+    type: "main"
+    icon: "Forestry:thermionicTubes:1"
+    deps: ["vidro_liquido"]
+    desc: |
+      Essas lampadinhas são o "código" dos circuitos do Forestry! No Fabricador: §e5 do material + 2
+      redstones + 500 mB de vidro líquido = 4 Válvulas Eletrônicas§r.
+
+      Faça §e4 de Cobre e 4 de Estanho§r. A de estanho entra no Bloco da Fazenda; a de cobre programa o
+      Arboreto (fazenda de árvores).
+    tasks:
+      - {"get": ["Forestry:thermionicTubes x4", "Forestry:thermionicTubes:1 x4"]}
+    rewards:
+      - {"xp": 4}
+      - {"choice": ["minecraft:redstone x16", "Forestry:ingotCopper x8", "Forestry:ingotTin x8"]}
+
+  - id: "valvulas_metalicas"
+    title: "Válvulas de Bronze, Ferro e Ouro"
+    type: "normal"
+    icon: "Forestry:thermionicTubes:4"
+    deps: ["valvulas_basicas"]
+    desc: |
+      Mais válvulas, mais programas: §eBronze§r (fazenda de cereais), §eFerro§r (vegetais) e §eOuro§r
+      (suculentas; e peça do Apiaryum: Ventilador, Aquecedor e o Controle da Fazenda).
+    tasks:
+      - {"get": ["Forestry:thermionicTubes:2", "Forestry:thermionicTubes:3", "Forestry:thermionicTubes:4"]}
+    rewards:
+      - {"xp": 2}
+      - {"item": "minecraft:redstone x16"}
+
+  - id: "valvulas_preciosas"
+    title: "Válvulas Preciosas"
+    type: "normal"
+    icon: "Forestry:thermionicTubes:5"
+    deps: ["valvulas_metalicas"]
+    desc: |
+      Agora com pedras: §e"Diamantine"§r (diamante — Enxame do Apiaryum, Mutator), §eEsmeralda§r,
+      §eApatita§r (fazenda de cogumelos) e §eLápis-lazúli§r (plantação de cacau). Faça uma de cada.
+    tasks:
+      - {"get": ["Forestry:thermionicTubes:5", "Forestry:thermionicTubes:9", "Forestry:thermionicTubes:10", "Forestry:thermionicTubes:11"]}
+    rewards:
+      - {"xp": 3}
+      - {"item": "minecraft:diamond"}
+
+  - id: "valvulas_exoticas"
+    title: "Válvulas Exóticas"
+    type: "optional"
+    icon: "Forestry:thermionicTubes:7"
+    deps: ["valvulas_preciosas"]
+    desc: |
+      As mais estranhas: §eObsidiana§r (fazenda de morangas), §eArdente§r (pó de blaze — fazenda
+      infernal), §eEnder§r (olho do fim + pedra do fim) e §eEmborrachada§r (borracha — plantação de
+      seringueira). Faça pelo menos a ardente e a de obsidiana.
+    tasks:
+      - {"get": ["Forestry:thermionicTubes:6", "Forestry:thermionicTubes:7"]}
+    rewards:
+      - {"loot": "incomum"}
+
+  - id: "molde_cera"
+    title: "Molde de Cera e Vidro Colorido"
+    type: "optional"
+    deps: ["vidro_liquido"]
+    desc: |
+      Oito ceras de abelha em anel formam o §eMolde de Cera§r. No Fabricador, com o molde no slot,
+      §e1 corante + 1 própolis + 4000 mB de vidro líquido§r viram 4 vidros coloridos. Arte e apicultura!
+    tasks:
+      - {"get": "Forestry:waxCast"}
+    rewards:
+      - {"loot": "comum"}
+
+  - id: "madeira_antichamas"
+    title: "Madeira à Prova de Fogo"
+    type: "optional"
+    icon: "Forestry:logsFireproof"
+    deps: ["vidro_liquido", "madeiras_forestry"]
+    desc: |
+      Troncos e tábuas do Forestry ganham versão §eà prova de fogo§r no Fabricador, com Cera em Pó
+      (refractory wax, das abelhas do Nether) e 500 mB de vidro líquido. Ótimo para casas perto de lava.
+    tasks:
+      - {"get": "Forestry:logsFireproof:*"}
+    rewards:
+      - {"loot": "comum"}
+
+  - id: "capsulas"
+    title: "Cápsulas"
+    type: "optional"
+    icon: "Forestry:waxCapsule"
+    deps: ["latas"]
+    desc: |
+      Além das latas, o Forestry tem §eCápsulas de Cera§r (3 ceras de abelha = 4) e §eCápsulas
+      Refratárias§r (3 ceras em pó = 4; aguentam lava). São baratas e o Hidratador recicla a cera.
+    tasks:
+      - {"one_of": ["Forestry:waxCapsule", "Forestry:refractoryEmpty"]}
+    rewards:
+      - {"loot": "comum"}
+
+  - id: "pipeta"
+    title: "Pipeta"
+    type: "optional"
+    deps: ["carpinteiro"]
+    desc: |
+      Sobrou um restinho de líquido preso no tanque de uma máquina? Clique no tanque com a §ePipeta§r
+      (lã e painéis de vidro) para esvaziá-lo. Pequena e preciosa.
+    tasks:
+      - {"get": "Forestry:pipette"}
+    rewards:
+      - {"loot": "comum"}
+
+  - id: "revestimento_endurecido"
+    title: "Revestimento Endurecido"
+    type: "normal"
+    deps: ["carpinteiro"]
+    desc: |
+      Quatro diamantes em volta de uma Carcaça Resistente, mais 5000 mB de água no Carpinteiro, formam o
+      §eRevestimento Endurecido§r. Caro? Um pouco. Ele é a base do Fazedor de Chuva.
+    tasks:
+      - {"get": "Forestry:hardenedMachine"}
+    rewards:
+      - {"xp": 2}
+      - {"item": "Forestry:ingotBronze x8"}
+
+  - id: "fazedor_chuva"
+    title: "Fazedor de Chuva"
+    type: "normal"
+    deps: ["revestimento_endurecido", "engrenagens"]
+    desc: |
+      Controlar o tempo! O §eFazedor de Chuva§r (engrenagens de estanho, vidro, Revestimento Endurecido)
+      não usa energia: você coloca uma §ecarga§r nele e ele muda o clima.
+
+      §e• Cápsula de Iodo:§r chuva
+      §e• Cápsula Fosfórica de Iodo:§r tempestade
+      §e• Carga de Dissipação:§r céu limpo
+      Abelhas que não voam na chuva vão adorar a última.
+    tasks:
+      - {"get": "Forestry:factory:7"}
+    rewards:
+      - {"xp": 3}
+      - {"item": "minecraft:gunpowder x8"}
+
+  - id: "capsula_iodo"
+    title: "Cápsula de Iodo"
+    type: "optional"
+    deps: ["fazedor_chuva"]
+    desc: |
+      Lata vazia, gotas de mel, pólvora e Conjuntos de Pólem (das abelhas Industriais) no Carpinteiro =
+      §eCápsula de Iodo§r. Coloque no Fazedor de Chuva e... chove.
+    tasks:
+      - {"get": "Forestry:iodineCapsule"}
+    rewards:
+      - {"loot": "comum"}
+
+  - id: "carga_dissipacao"
+    title: "Carga de Dissipação"
+    type: "optional"
+    deps: ["fazedor_chuva"]
+    desc: |
+      Lata vazia, melaço, pólvora e Geléia Real no Carpinteiro = §eCarga de Dissipação§r: limpa o céu.
+    tasks:
+      - {"get": "Forestry:craftingMaterial:4"}
+    rewards:
+      - {"loot": "comum"}
+
+  - id: "capsula_fosforica"
+    title: "Tempestade Engarrafada"
+    type: "optional"
+    deps: ["capsula_iodo"]
+    desc: |
+      Uma Cápsula de Iodo cercada de §eFósforo§r (das abelhas do Nether) no Carpinteiro vira a
+      §eCápsula Fosfórica de Iodo§r: tempestade com raios. §cCuidado com o que estiver lá fora.§r
+    tasks:
+      - {"get": "Forestry:phosphoricIodineCapsule"}
+    rewards:
+      - {"loot": "comum"}
+
+  - id: "oficina_forestry"
+    title: "A Oficina da Floresta"
+    type: "milestone"
+    icon: "Forestry:factory:1"
+    deps: ["carpinteiro", "hidratador", "fermentador", "refinador", "centrifuga", "fabricador"]
+    banner: "A Oficina da Floresta"
+    subtitle: "Turfa, óleo e biomassa"
+    desc: |
+      Olhe para essa oficina, Herói! Prensa, marceneiro, fermentador, destilaria, centrífuga e um forno
+      de vidro — todos movidos a turfa e biomassa. Você reescreveu a página da §bindústria verde§r.
+
+      Daqui o caminho se abre em três trilhas:
+      §e• Fazendas Multibloco§r — automação de verdade.
+      §e• Arboricultura§r — genética de árvores com o Arvoranalizador.
+      §e• Apicultura§r — o capítulo das abelhas espera por você.
+
+      Respire, organize a base e escolha por onde começar. Eu estou radiante!
+    tasks:
+      - {"get": ["Forestry:factory:1", "Forestry:factory:5", "Forestry:factory:3", "Forestry:factory:6", "Forestry:factory:2", "Forestry:factory2"]}
+    rewards:
+      - {"xp": 8}
+      - {"kit": {"name": "Kit do Mestre-Marceneiro", "items": ["Forestry:sturdyMachine x2", "Forestry:ingotBronze x16", "Forestry:canEmpty x12", "Forestry:peat x32", "Forestry:fertilizerCompound x16"]}}
+      - {"loot": "raro"}
+
+  - id: "info_fazenda"
+    title: "A Fazenda Multibloco"
+    type: "info"
+    icon: "Forestry:ffarm"
+    deps: ["valvulas_basicas"]
+    desc: |
+      A Fazenda é uma estrutura que planta, cuida e colhe sozinha. Regras (conferidas no código):
+
+      §e• Tamanho:§r base de 3×3 até 5×5 blocos e §eexatamente 4 de altura§r (mínimo 36 blocos).
+      §e• A 3ª camada§r (de baixo para cima) precisa ser só de §eBlocos da Fazenda comuns§r; o interior
+      também.
+      §e• É obrigatório§r ter pelo menos uma §eCaixa de Engrenagens§r (recebe o motor ou a energia).
+      §e• Hachuras§r tiram/põem itens; §eVálvulas§r recebem água; o §eControle§r aceita redstone.
+      §e• Fertilizante§r é obrigatório; quase todas as fazendas precisam de água.
+
+      Na interface: solo à esquerda, sementes/mudas à direita, e um slot para a §ePlaca de Circuito§r —
+      cada soquete da placa programa a fazenda para um dos lados ao redor dela.
+    tasks:
+      - {"check": true}
+    rewards:
+      - {"xp": 1}
+
+  - id: "bloco_fazenda"
+    title: "Bloco da Fazenda"
+    type: "main"
+    deps: ["info_fazenda"]
+    desc: |
+      Cobre, uma laje de madeira, uma Válvula de Estanho e um bloco "de base" (tijolos de pedra, tijolo,
+      arenito liso, tijolo do Nether...) formam o §eBloco da Fazenda§r — a base escolhida só muda a
+      aparência.
+
+      Uma fazenda 3×3×4 tem 36 blocos, e as peças especiais saem de Blocos da Fazenda. Faça §e24§r para
+      começar.
+    tasks:
+      - {"get": "Forestry:ffarm x24"}
+    rewards:
+      - {"xp": 4}
+      - {"choice": ["Forestry:ingotCopper x16", "Forestry:thermionicTubes:1 x6", "minecraft:stonebrick x32"]}
+
+  - id: "caixa_engrenagens"
+    title: "Caixa de Engrenagens da Fazenda"
+    type: "main"
+    deps: ["bloco_fazenda"]
+    desc: |
+      Um Bloco da Fazenda sobre três engrenagens de estanho: a §eCaixa de Engrenagens§r. Encoste um motor
+      (ou cabo de RF) nela. Sem ela, a fazenda nem se forma.
+    tasks:
+      - {"get": "Forestry:ffarm:2"}
+    rewards:
+      - {"xp": 3}
+      - {"item": "Forestry:gearTin x2"}
+
+  - id: "hachura"
+    title: "Hachura da Fazenda"
+    type: "normal"
+    deps: ["bloco_fazenda"]
+    desc: |
+      A §eHachura§r (escotilha) é a melhor amiga dos tubos: ela empurra a colheita para fora e aceita
+      sementes, solo e fertilizante. Bloco da Fazenda + alçapão + engrenagens de estanho.
+    tasks:
+      - {"get": "Forestry:ffarm:3"}
+    rewards:
+      - {"xp": 2}
+      - {"item": "minecraft:hopper"}
+
+  - id: "valvula_fazenda"
+    title: "Válvula da Fazenda"
+    type: "normal"
+    deps: ["bloco_fazenda"]
+    desc: |
+      Quase toda fazenda bebe água. A §eVálvula§r aceita água por cano ou bomba (Bloco da Fazenda + vidro
+      + engrenagem de estanho). Sem automação, encha o tanque com baldes pela interface.
+    tasks:
+      - {"get": "Forestry:ffarm:4"}
+    rewards:
+      - {"xp": 2}
+      - {"item": "minecraft:water_bucket"}
+
+  - id: "controle_fazenda"
+    title: "Controle da Fazenda"
+    type: "optional"
+    deps: ["bloco_fazenda", "valvulas_metalicas"]
+    desc: |
+      Redstone e uma Válvula de Ouro sob um Bloco da Fazenda = §eControle§r. Com ele um sinal de
+      redstone liga e desliga a fazenda inteira.
+    tasks:
+      - {"get": "Forestry:ffarm:5"}
+    rewards:
+      - {"loot": "comum"}
+
+  - id: "fertilizante_fazenda"
+    title: "Estoque de Fertilizante"
+    type: "normal"
+    deps: ["fertilizante", "info_fazenda"]
+    desc: |
+      §cTodas as fazendas precisam de fertilizante para funcionar§r — adubo ou bagaço não bastam.
+      Neste pack cada fertilizante vale bastante (2000 de "carga"), mas a fazenda gasta sem parar.
+      Mostre §e64 Fertilizantes§r e pense numa linha de apatita.
+    tasks:
+      - {"get": "Forestry:fertilizerCompound x64"}
+    rewards:
+      - {"xp": 2}
+      - {"item": "Forestry:apatite x16"}
+
+  - id: "placa_fazenda"
+    title: "Programando a Fazenda"
+    type: "main"
+    icon: "Forestry:chipsets:3"
+    deps: ["ferro_solda", "placas_avancadas", "caixa_engrenagens"]
+    desc: |
+      Agora a mágica! Pegue uma §ePlaca de Circuito Intrincada§r (4 soquetes) e o Ferro de Solda.
+      Escolha o diagrama §eFazenda Gerenciada§r e solde §e4 Válvulas de Cobre§r: isso cria quatro
+      circuitos de §eArboreto§r — a fazenda planta e corta árvores nos quatro lados.
+
+      Coloque a placa na interface da fazenda, mudas à direita, solo (terra/húmus) à esquerda.
+      Mostre a placa intrincada e as válvulas, e marque quando a fazenda estiver programada.
+    tasks:
+      - {"get": ["Forestry:chipsets:3", "Forestry:thermionicTubes x4"]}
+      - {"check": true}
+    rewards:
+      - {"xp": 4}
+      - {"choice": ["minecraft:sapling x32", "Forestry:soil x16", "Forestry:fertilizerCompound x32"]}
+
+  - id: "fazenda_montada"
+    title: "A Fazenda que Trabalha Sozinha"
+    type: "milestone"
+    icon: "Forestry:ffarm"
+    deps: ["placa_fazenda", "hachura", "valvula_fazenda", "fertilizante_fazenda"]
+    banner: "A Fazenda Desperta"
+    subtitle: "Plantar, adubar, colher"
+    desc: |
+      Herói, olha isso: uma estrutura de 36 blocos plantando, adubando e colhendo enquanto você vai
+      explorar. A página da §bagricultura automática§r está de volta ao Registro!
+
+      Prove que o Arboreto funciona: colha §e128 troncos e 32 mudas§r com ele.
+
+      A partir daqui, troque as válvulas para programar outros tipos de fazenda (cereais, turfa,
+      cogumelos, cacau...) — cada uma tem a sua quest neste capítulo.
+    tasks:
+      - {"get": ["ore:logWood x128", "ore:treeSapling x32"]}
+    rewards:
+      - {"xp": 8}
+      - {"kit": {"name": "Kit do Fazendeiro Automatizado", "items": ["Forestry:fertilizerCompound x64", "Forestry:thermionicTubes:1 x4", "Forestry:thermionicTubes:2 x4", "Forestry:chipsets:1 x2", "Forestry:soil x32"]}}
+      - {"loot": "raro"}
+
+  - id: "fazenda_turfa"
+    title: "Turfeira Gerenciada"
+    type: "normal"
+    deps: ["fazenda_montada"]
+    desc: |
+      A Turfeira transforma terra do pântano em turfa e colhe sozinha. Precisa de água por perto (a fazenda espalha).
+
+      Circuito: §eFazenda Gerenciada§r + §eVálvula de Estanho§r. As fazendas gerenciadas montam o terreno
+      sozinhas, usando o solo que você colocar no inventário.
+    tasks:
+      - {"get": "Forestry:peat x64"}
+    rewards:
+      - {"xp": 3}
+      - {"item": "Forestry:fertilizerCompound x16"}
+
+  - id: "fazenda_cereal"
+    title: "Colheita de Cereais"
+    type: "normal"
+    deps: ["fazenda_montada"]
+    desc: |
+      Planta e colhe trigo (e outros cereais) sobre a terra arada que a fazenda prepara com o solo do inventário.
+
+      Circuito: §eFazenda Gerenciada§r + §eVálvula de Bronze§r. As fazendas gerenciadas montam o terreno
+      sozinhas, usando o solo que você colocar no inventário.
+    tasks:
+      - {"get": "minecraft:wheat x64"}
+    rewards:
+      - {"xp": 3}
+      - {"item": "Forestry:fertilizerCompound x16"}
+
+  - id: "fazenda_vegetal"
+    title: "Fazenda de Vegetais"
+    type: "optional"
+    deps: ["fazenda_montada"]
+    desc: |
+      Batatas e cenouras — mostre 64 batatas. Batata é o dobro do trigo no Fermentador!
+
+      Circuito: §eFazenda Gerenciada§r + §eVálvula de Ferro§r. As fazendas gerenciadas montam o terreno
+      sozinhas, usando o solo que você colocar no inventário.
+    tasks:
+      - {"get": "minecraft:potato x64"}
+    rewards:
+      - {"loot": "comum"}
+
+  - id: "fazenda_infernal"
+    title: "Fazenda Infernal"
+    type: "optional"
+    deps: ["fazenda_montada"]
+    desc: |
+      Fungo do Nether sobre areia de almas. Alquimistas e abelhas do Nether agradecem.
+
+      Circuito: §eFazenda Gerenciada§r + §eVálvula de Ardente§r. As fazendas gerenciadas montam o terreno
+      sozinhas, usando o solo que você colocar no inventário.
+    tasks:
+      - {"get": "minecraft:nether_wart x32"}
+    rewards:
+      - {"loot": "comum"}
+
+  - id: "fazenda_cogumelos"
+    title: "Fazenda de Cogumelos"
+    type: "optional"
+    deps: ["fazenda_montada"]
+    desc: |
+      Cogumelos sobre micélio (o Humidificador faz micélio!). Eles também viram biomassa.
+
+      Circuito: §eFazenda Gerenciada§r + §eVálvula de Apatita§r. As fazendas gerenciadas montam o terreno
+      sozinhas, usando o solo que você colocar no inventário.
+    tasks:
+      - {"get": "minecraft:red_mushroom x32"}
+    rewards:
+      - {"loot": "comum"}
+
+  - id: "fazenda_pomar"
+    title: "Pomar"
+    type: "optional"
+    deps: ["fazenda_montada"]
+    desc: |
+      O Pomar colhe as frutas das árvores do Forestry sem derrubá-las (cerejas, nozes, limões, mamões...). Mostre 16 de uma fruta.
+
+      Circuito: §eFazenda Manual§r + §eVálvula de Cobre§r. As fazendas §emanuais§r só mantêm e colhem —
+      você planta e prepara o terreno.
+    tasks:
+      - {"one_of": ["Forestry:fruits x16", "Forestry:fruits:1 x16", "Forestry:fruits:2 x16", "Forestry:fruits:3 x16", "Forestry:fruits:4 x16", "Forestry:fruits:5 x16", "Forestry:fruits:6 x16"]}
+    rewards:
+      - {"loot": "comum"}
+
+  - id: "fazenda_suculenta"
+    title: "Fazenda de Suculentas"
+    type: "optional"
+    deps: ["fazenda_montada"]
+    desc: |
+      Cuida e colhe cactos que você mesmo plantou.
+
+      Circuito: §eFazenda Manual§r + §eVálvula de Ouro§r. As fazendas §emanuais§r só mantêm e colhem —
+      você planta e prepara o terreno.
+    tasks:
+      - {"get": "minecraft:cactus x64"}
+    rewards:
+      - {"loot": "comum"}
+
+  - id: "fazenda_junco"
+    title: "Fazenda de Junco"
+    type: "optional"
+    deps: ["fazenda_montada"]
+    desc: |
+      Colhe cana-de-açúcar plantada à beira d'água.
+
+      Circuito: §eFazenda Manual§r + §eVálvula de Diamantine§r. As fazendas §emanuais§r só mantêm e colhem —
+      você planta e prepara o terreno.
+    tasks:
+      - {"get": "minecraft:reeds x64"}
+    rewards:
+      - {"loot": "comum"}
+
+  - id: "fazenda_morangas"
+    title: "Fazenda de Morangas"
+    type: "optional"
+    deps: ["fazenda_montada"]
+    desc: |
+      Colhe melancias e abóboras dos talos já plantados.
+
+      Circuito: §eFazenda Manual§r + §eVálvula de Obsidiana§r. As fazendas §emanuais§r só mantêm e colhem —
+      você planta e prepara o terreno.
+    tasks:
+      - {"one_of": ["minecraft:melon x64", "minecraft:pumpkin x16"]}
+    rewards:
+      - {"loot": "comum"}
+
+  - id: "fazenda_cacau"
+    title: "Plantação de Cacau"
+    type: "optional"
+    deps: ["fazenda_montada"]
+    desc: |
+      Colhe cacau das árvores da selva.
+
+      Circuito: §eFazenda Manual§r + §eVálvula de Lápis-lazúli§r. As fazendas §emanuais§r só mantêm e colhem —
+      você planta e prepara o terreno.
+    tasks:
+      - {"get": "minecraft:dye:3 x32"}
+    rewards:
+      - {"loot": "comum"}
+
+  - id: "fazenda_seringueira"
+    title: "Plantação de Seringueira"
+    type: "optional"
+    deps: ["fazenda_montada"]
+    desc: |
+      Extrai resina das árvores de borracha do IC2 (circuito da integração IC2).
+
+      Circuito: §eFazenda Manual§r + §eVálvula de Emborrachada§r. As fazendas §emanuais§r só mantêm e colhem —
+      você planta e prepara o terreno.
+    tasks:
+      - {"get": "IC2:itemHarz x32"}
+    rewards:
+      - {"loot": "comum"}
+
+  - id: "arvoranalisador"
+    title: "Arvoranalizador"
+    type: "main"
+    deps: ["carpinteiro"]
+    desc: |
+      Cada árvore guarda um livro inteiro dentro da semente, Herói. Vamos lê-lo!
+
+      O §eArvoranalizador§r (Treealyzer) sai do Carpinteiro: cobre, painéis de vidro, redstone, um
+      diamante e 2000 mB de água. Cada análise gasta §euma Gota de Mel ou um Melaço§r (das abelhas)
+      no slot de energia.
+
+      §aTruque:§r uma §emuda vanilla§r colocada nele vira a muda "genética" equivalente do Forestry.
+    tasks:
+      - {"get": "Forestry:treealyzer"}
+    rewards:
+      - {"xp": 4}
+      - {"choice": ["minecraft:sapling x8", "minecraft:sapling:2 x8", "minecraft:sapling:1 x8"]}
+
+  - id: "muda_genetica"
+    title: "A Primeira Muda Genética"
+    type: "main"
+    icon: "Forestry:sapling {Genome:{Chromosomes:[{Slot:0b,UID0:\"forestry.treeOak\",UID1:\"forestry.treeOak\"}]}}"
+    deps: ["arvoranalisador"]
+    desc: |
+      Coloque uma muda de carvalho, bétula, pinheiro, selva, acácia ou carvalho escuro no
+      Arvoranalizador: ela vira uma §eMuda do Forestry§r com genes (altura, frutas, fertilidade,
+      maturação...). Analise e leia a ficha. Qualquer muda do Forestry conta.
+    tasks:
+      - {"one_of": ["Forestry:sapling {Genome:{Chromosomes:[{Slot:0b,UID0:\"forestry.treeOak\",UID1:\"forestry.treeOak\"}]}}", "Forestry:sapling {Genome:{Chromosomes:[{Slot:0b,UID0:\"forestry.treeBirch\",UID1:\"forestry.treeBirch\"}]}}", "Forestry:sapling {Genome:{Chromosomes:[{Slot:0b,UID0:\"forestry.treeSpruce\",UID1:\"forestry.treeSpruce\"}]}}", "Forestry:sapling {Genome:{Chromosomes:[{Slot:0b,UID0:\"forestry.treeJungle\",UID1:\"forestry.treeJungle\"}]}}", "Forestry:sapling {Genome:{Chromosomes:[{Slot:0b,UID0:\"forestry.treeDarkOak\",UID1:\"forestry.treeDarkOak\"}]}}", "Forestry:sapling {Genome:{Chromosomes:[{Slot:0b,UID0:\"forestry.treeAcaciaVanilla\",UID1:\"forestry.treeAcaciaVanilla\"}]}}"], "nbt": true}
+    rewards:
+      - {"xp": 4}
+      - {"choice": ["Forestry:fertilizerCompound x16", "Forestry:soil x16", "minecraft:dye:15 x16"]}
+
+  - id: "info_polinizacao"
+    title: "Como Árvores se Cruzam"
+    type: "info"
+    icon: "Forestry:leaves"
+    deps: ["muda_genetica"]
+    desc: |
+      §e• Folhas são flores.§r Folhas do Forestry (e das árvores vanilla, ativado na config) podem ser
+      polinizadas por §eabelhas§r (dentro do território delas) e por §eborboletas§r.
+      §e• Polinizou, mudou.§r A folha polinizada passa a carregar os genes das duas árvores; as mudas
+      que caírem dela podem §emutar§r para uma espécie nova.
+      §e• O Enxerto§r arranca folhas e aumenta muito a chance de muda.
+      §e• O NEI sabe tudo:§r abra a aba §eTree Breeding§r numa muda para ver os cruzamentos.
+
+      §aSobre as quests:§r as mudas pedidas aqui precisam ser §epuras§r (as duas cópias do gene de
+      espécie iguais — confira no Arvoranalizador). Plante uma híbrida, colha de novo e selecione.
+    tasks:
+      - {"check": true}
+    rewards:
+      - {"xp": 1}
+
+  - id: "enxerto"
+    title: "Enxerto"
+    type: "normal"
+    deps: ["muda_genetica"]
+    desc: |
+      Bronze e dois gravetos formam o §eEnxerto§r (Grafter): use nas folhas para tirar mudas com chance
+      muito maior. Ele tem poucos usos — faça alguns de reserva.
+    tasks:
+      - {"get": "Forestry:grafter"}
+    rewards:
+      - {"xp": 2}
+      - {"item": "Forestry:ingotBronze x4"}
+
+  - id: "bau_arborista"
+    title: "Baú do Arborista"
+    type: "optional"
+    deps: ["muda_genetica"]
+    desc: |
+      Um baú de vidro cercado de mudas: o §eBaú do Arborista§r guarda só material genético de árvores,
+      com muito espaço. Organização genética, Herói!
+    tasks:
+      - {"get": "Forestry:arboriculture"}
+    rewards:
+      - {"loot": "comum"}
+
+  - id: "lima"
+    title: "Lima Prateada"
+    type: "main"
+    icon: "Forestry:sapling {Genome:{Chromosomes:[{Slot:0b,UID0:\"forestry.treeLime\",UID1:\"forestry.treeLime\"}]}}"
+    deps: ["info_polinizacao"]
+    desc: |
+      Cruzamento: §eVidoeiro × Carvalho§r — §e15%§r de chance.
+
+      É a porta para quase todas as árvores frutíferas.
+
+      Mostre uma §emuda pura§r da espécie (os dois genes de espécie iguais no Arvoranalizador). A aba
+      §eTree Breeding§r do NEI confirma os pais.
+    tasks:
+      - {"get": "Forestry:sapling {Genome:{Chromosomes:[{Slot:0b,UID0:\"forestry.treeLime\",UID1:\"forestry.treeLime\"}]}}", "nbt": true}
+    rewards:
+      - {"xp": 3}
+      - {"choice": ["Forestry:fertilizerCompound x16", "Forestry:grafter", "Forestry:soil x16"]}
+
+  - id: "cereja"
+    title: "Cereja do Monte"
+    type: "normal"
+    icon: "Forestry:sapling {Genome:{Chromosomes:[{Slot:0b,UID0:\"forestry.treeCherry\",UID1:\"forestry.treeCherry\"}]}}"
+    deps: ["lima"]
+    desc: |
+      Cruzamento: §eLima × Carvalho ou Vidoeiro§r — §e10%§r de chance.
+
+      Dá §eCerejas§r (óleo vegetal no Hidratador) e flores rosadas lindas.
+
+      Mostre uma §emuda pura§r da espécie (os dois genes de espécie iguais no Arvoranalizador). A aba
+      §eTree Breeding§r do NEI confirma os pais.
+    tasks:
+      - {"get": "Forestry:sapling {Genome:{Chromosomes:[{Slot:0b,UID0:\"forestry.treeCherry\",UID1:\"forestry.treeCherry\"}]}}", "nbt": true}
+    rewards:
+      - {"xp": 3}
+      - {"choice": ["Forestry:fertilizerCompound x16", "Forestry:grafter", "Forestry:soil x16"]}
+
+  - id: "nogueira"
+    title: "Nogueira Comum"
+    type: "normal"
+    icon: "Forestry:sapling {Genome:{Chromosomes:[{Slot:0b,UID0:\"forestry.treeWalnut\",UID1:\"forestry.treeWalnut\"}]}}"
+    deps: ["cereja"]
+    desc: |
+      Cruzamento: §eLima × Cereja§r — §e10%§r de chance.
+
+      As §eNozes§r são ótimas no Hidratador: muito óleo vegetal por fruta.
+
+      Mostre uma §emuda pura§r da espécie (os dois genes de espécie iguais no Arvoranalizador). A aba
+      §eTree Breeding§r do NEI confirma os pais.
+    tasks:
+      - {"get": "Forestry:sapling {Genome:{Chromosomes:[{Slot:0b,UID0:\"forestry.treeWalnut\",UID1:\"forestry.treeWalnut\"}]}}", "nbt": true}
+    rewards:
+      - {"xp": 3}
+      - {"choice": ["Forestry:fertilizerCompound x16", "Forestry:grafter", "Forestry:soil x16"]}
+
+  - id: "castanheira"
+    title: "Castanha Doce"
+    type: "normal"
+    icon: "Forestry:sapling {Genome:{Chromosomes:[{Slot:0b,UID0:\"forestry.treeChestnut\",UID1:\"forestry.treeChestnut\"}]}}"
+    deps: ["nogueira"]
+    desc: |
+      Cruzamento: §eNogueira × Lima ou Cereja§r — §e10%§r de chance.
+
+      A §eCastanha§r é a campeã de óleo vegetal do Forestry.
+
+      Mostre uma §emuda pura§r da espécie (os dois genes de espécie iguais no Arvoranalizador). A aba
+      §eTree Breeding§r do NEI confirma os pais.
+    tasks:
+      - {"get": "Forestry:sapling {Genome:{Chromosomes:[{Slot:0b,UID0:\"forestry.treeChestnut\",UID1:\"forestry.treeChestnut\"}]}}", "nbt": true}
+    rewards:
+      - {"xp": 3}
+      - {"choice": ["Forestry:fertilizerCompound x16", "Forestry:grafter", "Forestry:soil x16"]}
+
+  - id: "limoeiro"
+    title: "Limoeiro"
+    type: "normal"
+    icon: "Forestry:sapling {Genome:{Chromosomes:[{Slot:0b,UID0:\"forestry.treeLemon\",UID1:\"forestry.treeLemon\"}]}}"
+    deps: ["cereja"]
+    desc: |
+      Cruzamento: §eLima × Cereja§r — §e5%§r de chance.
+
+      §eLimões§r viram suco no Hidratador.
+
+      Mostre uma §emuda pura§r da espécie (os dois genes de espécie iguais no Arvoranalizador). A aba
+      §eTree Breeding§r do NEI confirma os pais.
+    tasks:
+      - {"get": "Forestry:sapling {Genome:{Chromosomes:[{Slot:0b,UID0:\"forestry.treeLemon\",UID1:\"forestry.treeLemon\"}]}}", "nbt": true}
+    rewards:
+      - {"xp": 3}
+      - {"choice": ["Forestry:fertilizerCompound x16", "Forestry:grafter", "Forestry:soil x16"]}
+
+  - id: "ameixeira"
+    title: "Ameixeira"
+    type: "optional"
+    icon: "Forestry:sapling {Genome:{Chromosomes:[{Slot:0b,UID0:\"forestry.treePlum\",UID1:\"forestry.treePlum\"}]}}"
+    deps: ["limoeiro"]
+    desc: |
+      Cruzamento: §eLimoeiro × Cereja§r — §e5%§r de chance.
+
+      Ameixas: pouco suco, muito bagaço.
+
+      Mostre uma §emuda pura§r da espécie (os dois genes de espécie iguais no Arvoranalizador). A aba
+      §eTree Breeding§r do NEI confirma os pais.
+    tasks:
+      - {"get": "Forestry:sapling {Genome:{Chromosomes:[{Slot:0b,UID0:\"forestry.treePlum\",UID1:\"forestry.treePlum\"}]}}", "nbt": true}
+    rewards:
+      - {"loot": "comum"}
+
+  - id: "larico"
+    title: "Lariço Mundano"
+    type: "normal"
+    icon: "Forestry:sapling {Genome:{Chromosomes:[{Slot:0b,UID0:\"forestry.treeLarch\",UID1:\"forestry.treeLarch\"}]}}"
+    deps: ["info_polinizacao"]
+    desc: |
+      Cruzamento: §eAbeto × Vidoeiro ou Carvalho§r — §e10%§r de chance.
+
+      A primeira conífera nova — abre o ramo das gigantes.
+
+      Mostre uma §emuda pura§r da espécie (os dois genes de espécie iguais no Arvoranalizador). A aba
+      §eTree Breeding§r do NEI confirma os pais.
+    tasks:
+      - {"get": "Forestry:sapling {Genome:{Chromosomes:[{Slot:0b,UID0:\"forestry.treeLarch\",UID1:\"forestry.treeLarch\"}]}}", "nbt": true}
+    rewards:
+      - {"xp": 3}
+      - {"choice": ["Forestry:fertilizerCompound x16", "Forestry:grafter", "Forestry:soil x16"]}
+
+  - id: "pinheiro"
+    title: "Pinheiro Touro"
+    type: "optional"
+    icon: "Forestry:sapling {Genome:{Chromosomes:[{Slot:0b,UID0:\"forestry.treePine\",UID1:\"forestry.treePine\"}]}}"
+    deps: ["larico"]
+    desc: |
+      Cruzamento: §eAbeto × Lariço§r — §e10%§r de chance.
+
+      Madeira clara e resinosa.
+
+      Mostre uma §emuda pura§r da espécie (os dois genes de espécie iguais no Arvoranalizador). A aba
+      §eTree Breeding§r do NEI confirma os pais.
+    tasks:
+      - {"get": "Forestry:sapling {Genome:{Chromosomes:[{Slot:0b,UID0:\"forestry.treePine\",UID1:\"forestry.treePine\"}]}}", "nbt": true}
+    rewards:
+      - {"loot": "comum"}
+
+  - id: "bordo"
+    title: "Bordo de Açúcar"
+    type: "optional"
+    icon: "Forestry:sapling {Genome:{Chromosomes:[{Slot:0b,UID0:\"forestry.treeMaple\",UID1:\"forestry.treeMaple\"}]}}"
+    deps: ["larico"]
+    desc: |
+      Cruzamento: §eAbeto × Lariço§r — §e5%§r de chance.
+
+      Folhas vermelhas de outono o ano inteiro.
+
+      Mostre uma §emuda pura§r da espécie (os dois genes de espécie iguais no Arvoranalizador). A aba
+      §eTree Breeding§r do NEI confirma os pais.
+    tasks:
+      - {"get": "Forestry:sapling {Genome:{Chromosomes:[{Slot:0b,UID0:\"forestry.treeMaple\",UID1:\"forestry.treeMaple\"}]}}", "nbt": true}
+    rewards:
+      - {"loot": "comum"}
+
+  - id: "sequoia"
+    title: "Sequóia da Costa"
+    type: "normal"
+    icon: "Forestry:sapling {Genome:{Chromosomes:[{Slot:0b,UID0:\"forestry.treeSequioa\",UID1:\"forestry.treeSequioa\"}]}}"
+    deps: ["pinheiro"]
+    desc: |
+      Cruzamento: §eLariço × Pinheiro§r — §e5%§r de chance.
+
+      Árvore enorme: muita madeira por muda. §aDica:§r árvores grandes precisam de espaço livre para crescer.
+
+      Mostre uma §emuda pura§r da espécie (os dois genes de espécie iguais no Arvoranalizador). A aba
+      §eTree Breeding§r do NEI confirma os pais.
+    tasks:
+      - {"get": "Forestry:sapling {Genome:{Chromosomes:[{Slot:0b,UID0:\"forestry.treeSequioa\",UID1:\"forestry.treeSequioa\"}]}}", "nbt": true}
+    rewards:
+      - {"xp": 3}
+      - {"choice": ["Forestry:fertilizerCompound x16", "Forestry:grafter", "Forestry:soil x16"]}
+
+  - id: "teca"
+    title: "Teca"
+    type: "normal"
+    icon: "Forestry:sapling {Genome:{Chromosomes:[{Slot:0b,UID0:\"forestry.treeTeak\",UID1:\"forestry.treeTeak\"}]}}"
+    deps: ["info_polinizacao"]
+    desc: |
+      Cruzamento: §eCarvalho Escuro × Selva§r — §e10%§r de chance.
+
+      Abre o ramo tropical.
+
+      Mostre uma §emuda pura§r da espécie (os dois genes de espécie iguais no Arvoranalizador). A aba
+      §eTree Breeding§r do NEI confirma os pais.
+    tasks:
+      - {"get": "Forestry:sapling {Genome:{Chromosomes:[{Slot:0b,UID0:\"forestry.treeTeak\",UID1:\"forestry.treeTeak\"}]}}", "nbt": true}
+    rewards:
+      - {"xp": 3}
+      - {"choice": ["Forestry:fertilizerCompound x16", "Forestry:grafter", "Forestry:soil x16"]}
+
+  - id: "sumauma"
+    title: "Sumaúma"
+    type: "normal"
+    icon: "Forestry:sapling {Genome:{Chromosomes:[{Slot:0b,UID0:\"forestry.treeKapok\",UID1:\"forestry.treeKapok\"}]}}"
+    deps: ["teca"]
+    desc: |
+      Cruzamento: §eSelva × Teca§r — §e10%§r de chance.
+
+      Gigante da floresta tropical.
+
+      Mostre uma §emuda pura§r da espécie (os dois genes de espécie iguais no Arvoranalizador). A aba
+      §eTree Breeding§r do NEI confirma os pais.
+    tasks:
+      - {"get": "Forestry:sapling {Genome:{Chromosomes:[{Slot:0b,UID0:\"forestry.treeKapok\",UID1:\"forestry.treeKapok\"}]}}", "nbt": true}
+    rewards:
+      - {"xp": 3}
+      - {"choice": ["Forestry:fertilizerCompound x16", "Forestry:grafter", "Forestry:soil x16"]}
+
+  - id: "ipe"
+    title: "Ipê"
+    type: "optional"
+    icon: "Forestry:sapling {Genome:{Chromosomes:[{Slot:0b,UID0:\"forestry.treeIpe\",UID1:\"forestry.treeIpe\"}]}}"
+    deps: ["teca"]
+    desc: |
+      Cruzamento: §eTeca × Carvalho Escuro§r — §e10%§r de chance.
+
+      Madeira dura e escura — e um nome bem brasileiro!
+
+      Mostre uma §emuda pura§r da espécie (os dois genes de espécie iguais no Arvoranalizador). A aba
+      §eTree Breeding§r do NEI confirma os pais.
+    tasks:
+      - {"get": "Forestry:sapling {Genome:{Chromosomes:[{Slot:0b,UID0:\"forestry.treeIpe\",UID1:\"forestry.treeIpe\"}]}}", "nbt": true}
+    rewards:
+      - {"loot": "comum"}
+
+  - id: "ebano"
+    title: "Murta de Ébano"
+    type: "optional"
+    icon: "Forestry:sapling {Genome:{Chromosomes:[{Slot:0b,UID0:\"forestry.treeEbony\",UID1:\"forestry.treeEbony\"}]}}"
+    deps: ["sumauma"]
+    desc: |
+      Cruzamento: §eCarvalho Escuro × Sumaúma§r — §e10%§r de chance.
+
+      A madeira mais escura do Forestry.
+
+      Mostre uma §emuda pura§r da espécie (os dois genes de espécie iguais no Arvoranalizador). A aba
+      §eTree Breeding§r do NEI confirma os pais.
+    tasks:
+      - {"get": "Forestry:sapling {Genome:{Chromosomes:[{Slot:0b,UID0:\"forestry.treeEbony\",UID1:\"forestry.treeEbony\"}]}}", "nbt": true}
+    rewards:
+      - {"loot": "comum"}
+
+  - id: "meranti"
+    title: "Meranti Amarelo"
+    type: "optional"
+    icon: "Forestry:sapling {Genome:{Chromosomes:[{Slot:0b,UID0:\"forestry.treeMahogony\",UID1:\"forestry.treeMahogony\"}]}}"
+    deps: ["ebano"]
+    desc: |
+      Cruzamento: §eSumaúma × Ébano§r — §e10%§r de chance.
+
+      O "mogno" do Forestry.
+
+      Mostre uma §emuda pura§r da espécie (os dois genes de espécie iguais no Arvoranalizador). A aba
+      §eTree Breeding§r do NEI confirma os pais.
+    tasks:
+      - {"get": "Forestry:sapling {Genome:{Chromosomes:[{Slot:0b,UID0:\"forestry.treeMahogony\",UID1:\"forestry.treeMahogony\"}]}}", "nbt": true}
+    rewards:
+      - {"loot": "comum"}
+
+  - id: "sipiri"
+    title: "Sipiri"
+    type: "optional"
+    icon: "Forestry:sapling {Genome:{Chromosomes:[{Slot:0b,UID0:\"forestry.treeSipiri\",UID1:\"forestry.treeSipiri\"}]}}"
+    deps: ["meranti"]
+    desc: |
+      Cruzamento: §eSumaúma × Meranti (clima quente e úmido)§r — §e10%§r de chance.
+
+      Só muta em clima §equente e úmido§r.
+
+      Mostre uma §emuda pura§r da espécie (os dois genes de espécie iguais no Arvoranalizador). A aba
+      §eTree Breeding§r do NEI confirma os pais.
+    tasks:
+      - {"get": "Forestry:sapling {Genome:{Chromosomes:[{Slot:0b,UID0:\"forestry.treeSipiri\",UID1:\"forestry.treeSipiri\"}]}}", "nbt": true}
+    rewards:
+      - {"loot": "comum"}
+
+  - id: "balsa"
+    title: "Balsa"
+    type: "normal"
+    icon: "Forestry:sapling {Genome:{Chromosomes:[{Slot:0b,UID0:\"forestry.treeBalsa\",UID1:\"forestry.treeBalsa\"}]}}"
+    deps: ["teca"]
+    desc: |
+      Cruzamento: §eTeca × Acácia§r — §e10%§r de chance.
+
+      Madeira levíssima; abre o ramo das acácias.
+
+      Mostre uma §emuda pura§r da espécie (os dois genes de espécie iguais no Arvoranalizador). A aba
+      §eTree Breeding§r do NEI confirma os pais.
+    tasks:
+      - {"get": "Forestry:sapling {Genome:{Chromosomes:[{Slot:0b,UID0:\"forestry.treeBalsa\",UID1:\"forestry.treeBalsa\"}]}}", "nbt": true}
+    rewards:
+      - {"xp": 3}
+      - {"choice": ["Forestry:fertilizerCompound x16", "Forestry:grafter", "Forestry:soil x16"]}
+
+  - id: "acacia_deserto"
+    title: "Acácia do Deserto"
+    type: "optional"
+    icon: "Forestry:sapling {Genome:{Chromosomes:[{Slot:0b,UID0:\"forestry.treeAcacia\",UID1:\"forestry.treeAcacia\"}]}}"
+    deps: ["balsa"]
+    desc: |
+      Cruzamento: §eTeca × Balsa§r — §e10%§r de chance.
+
+      Prima da acácia vanilla, adaptada ao deserto.
+
+      Mostre uma §emuda pura§r da espécie (os dois genes de espécie iguais no Arvoranalizador). A aba
+      §eTree Breeding§r do NEI confirma os pais.
+    tasks:
+      - {"get": "Forestry:sapling {Genome:{Chromosomes:[{Slot:0b,UID0:\"forestry.treeAcacia\",UID1:\"forestry.treeAcacia\"}]}}", "nbt": true}
+    rewards:
+      - {"loot": "comum"}
+
+  - id: "pau_brasil"
+    title: "Pau-Brasil (Padauk)"
+    type: "optional"
+    icon: "Forestry:sapling {Genome:{Chromosomes:[{Slot:0b,UID0:\"forestry.treePadauk\",UID1:\"forestry.treePadauk\"}]}}"
+    deps: ["info_polinizacao"]
+    desc: |
+      Cruzamento: §eAcácia × Selva§r — §e10%§r de chance.
+
+      Madeira vermelha — o jogo traduziu o Padauk como Pau-Brasil.
+
+      Mostre uma §emuda pura§r da espécie (os dois genes de espécie iguais no Arvoranalizador). A aba
+      §eTree Breeding§r do NEI confirma os pais.
+    tasks:
+      - {"get": "Forestry:sapling {Genome:{Chromosomes:[{Slot:0b,UID0:\"forestry.treePadauk\",UID1:\"forestry.treePadauk\"}]}}", "nbt": true}
+    rewards:
+      - {"loot": "comum"}
+
+  - id: "cocobolo"
+    title: "Cocobolo"
+    type: "optional"
+    icon: "Forestry:sapling {Genome:{Chromosomes:[{Slot:0b,UID0:\"forestry.treeCocobolo\",UID1:\"forestry.treeCocobolo\"}]}}"
+    deps: ["acacia_deserto"]
+    desc: |
+      Cruzamento: §eAcácia do Deserto × Carvalho Escuro§r — §e10%§r de chance.
+
+      Madeira listrada e nobre.
+
+      Mostre uma §emuda pura§r da espécie (os dois genes de espécie iguais no Arvoranalizador). A aba
+      §eTree Breeding§r do NEI confirma os pais.
+    tasks:
+      - {"get": "Forestry:sapling {Genome:{Chromosomes:[{Slot:0b,UID0:\"forestry.treeCocobolo\",UID1:\"forestry.treeCocobolo\"}]}}", "nbt": true}
+    rewards:
+      - {"loot": "comum"}
+
+  - id: "wenge"
+    title: "Wengué"
+    type: "optional"
+    icon: "Forestry:sapling {Genome:{Chromosomes:[{Slot:0b,UID0:\"forestry.treeWenge\",UID1:\"forestry.treeWenge\"}]}}"
+    deps: ["cocobolo"]
+    desc: |
+      Cruzamento: §eCocobolo × Balsa§r — §e10%§r de chance.
+
+      Quase preta, com veios.
+
+      Mostre uma §emuda pura§r da espécie (os dois genes de espécie iguais no Arvoranalizador). A aba
+      §eTree Breeding§r do NEI confirma os pais.
+    tasks:
+      - {"get": "Forestry:sapling {Genome:{Chromosomes:[{Slot:0b,UID0:\"forestry.treeWenge\",UID1:\"forestry.treeWenge\"}]}}", "nbt": true}
+    rewards:
+      - {"loot": "comum"}
+
+  - id: "baoba"
+    title: "Baobá de Grandidier"
+    type: "normal"
+    icon: "Forestry:sapling {Genome:{Chromosomes:[{Slot:0b,UID0:\"forestry.treeBaobab\",UID1:\"forestry.treeBaobab\"}]}}"
+    deps: ["wenge"]
+    desc: |
+      Cruzamento: §eBalsa × Wengué§r — §e10%§r de chance.
+
+      A árvore-garrafa: tronco gordo e copa pequena.
+
+      Mostre uma §emuda pura§r da espécie (os dois genes de espécie iguais no Arvoranalizador). A aba
+      §eTree Breeding§r do NEI confirma os pais.
+    tasks:
+      - {"get": "Forestry:sapling {Genome:{Chromosomes:[{Slot:0b,UID0:\"forestry.treeBaobab\",UID1:\"forestry.treeBaobab\"}]}}", "nbt": true}
+    rewards:
+      - {"xp": 3}
+      - {"choice": ["Forestry:fertilizerCompound x16", "Forestry:grafter", "Forestry:soil x16"]}
+
+  - id: "sequoia_gigante"
+    title: "Sequóia Gigante"
+    type: "normal"
+    icon: "Forestry:sapling {Genome:{Chromosomes:[{Slot:0b,UID0:\"forestry.treeGigant\",UID1:\"forestry.treeGigant\"}]}}"
+    deps: ["sequoia", "baoba"]
+    desc: |
+      Cruzamento: §eSequóia da Costa × Baobá§r — §e1%§r de chance.
+
+      §cSó 1% de chance!§r Paciência, muitas folhas polinizadas e o Enxerto. Ela é colossal.
+
+      Mostre uma §emuda pura§r da espécie (os dois genes de espécie iguais no Arvoranalizador). A aba
+      §eTree Breeding§r do NEI confirma os pais.
+    tasks:
+      - {"get": "Forestry:sapling {Genome:{Chromosomes:[{Slot:0b,UID0:\"forestry.treeGigant\",UID1:\"forestry.treeGigant\"}]}}", "nbt": true}
+    rewards:
+      - {"xp": 3}
+      - {"choice": ["Forestry:fertilizerCompound x16", "Forestry:grafter", "Forestry:soil x16"]}
+
+  - id: "pau_de_sebo"
+    title: "Pau-de-Sebo (Mahoe)"
+    type: "optional"
+    icon: "Forestry:sapling {Genome:{Chromosomes:[{Slot:0b,UID0:\"forestry.treeMahoe\",UID1:\"forestry.treeMahoe\"}]}}"
+    deps: ["acacia_deserto"]
+    desc: |
+      Cruzamento: §eBalsa × Acácia do Deserto§r — §e5%§r de chance.
+
+      Madeira azulada.
+
+      Mostre uma §emuda pura§r da espécie (os dois genes de espécie iguais no Arvoranalizador). A aba
+      §eTree Breeding§r do NEI confirma os pais.
+    tasks:
+      - {"get": "Forestry:sapling {Genome:{Chromosomes:[{Slot:0b,UID0:\"forestry.treeMahoe\",UID1:\"forestry.treeMahoe\"}]}}", "nbt": true}
+    rewards:
+      - {"loot": "comum"}
+
+  - id: "salgueiro"
+    title: "Salgueiro Branco"
+    type: "normal"
+    icon: "Forestry:sapling {Genome:{Chromosomes:[{Slot:0b,UID0:\"forestry.treeWillow\",UID1:\"forestry.treeWillow\"}]}}"
+    deps: ["lima"]
+    desc: |
+      Cruzamento: §eCarvalho, Vidoeiro e Lima entre si (clima quente e úmido)§r — §e10%§r de chance.
+
+      Só muta em clima §equente e úmido§r (pântanos, selvas).
+
+      Mostre uma §emuda pura§r da espécie (os dois genes de espécie iguais no Arvoranalizador). A aba
+      §eTree Breeding§r do NEI confirma os pais.
+    tasks:
+      - {"get": "Forestry:sapling {Genome:{Chromosomes:[{Slot:0b,UID0:\"forestry.treeWillow\",UID1:\"forestry.treeWillow\"}]}}", "nbt": true}
+    rewards:
+      - {"xp": 3}
+      - {"choice": ["Forestry:fertilizerCompound x16", "Forestry:grafter", "Forestry:soil x16"]}
+
+  - id: "alamo"
+    title: "Álamo Branco"
+    type: "optional"
+    icon: "Forestry:sapling {Genome:{Chromosomes:[{Slot:0b,UID0:\"forestry.treePoplar\",UID1:\"forestry.treePoplar\"}]}}"
+    deps: ["salgueiro"]
+    desc: |
+      Cruzamento: §eSalgueiro × Vidoeiro, Carvalho ou Lima§r — §e5%§r de chance.
+
+      Alto e fino.
+
+      Mostre uma §emuda pura§r da espécie (os dois genes de espécie iguais no Arvoranalizador). A aba
+      §eTree Breeding§r do NEI confirma os pais.
+    tasks:
+      - {"get": "Forestry:sapling {Genome:{Chromosomes:[{Slot:0b,UID0:\"forestry.treePoplar\",UID1:\"forestry.treePoplar\"}]}}", "nbt": true}
+    rewards:
+      - {"loot": "comum"}
+
+  - id: "zebrano"
+    title: "Zebrano"
+    type: "optional"
+    icon: "Forestry:sapling {Genome:{Chromosomes:[{Slot:0b,UID0:\"forestry.treeZebrawood\",UID1:\"forestry.treeZebrawood\"}]}}"
+    deps: ["ebano", "alamo"]
+    desc: |
+      Cruzamento: §eÉbano × Álamo§r — §e5%§r de chance.
+
+      Listras de zebra na madeira!
+
+      Mostre uma §emuda pura§r da espécie (os dois genes de espécie iguais no Arvoranalizador). A aba
+      §eTree Breeding§r do NEI confirma os pais.
+    tasks:
+      - {"get": "Forestry:sapling {Genome:{Chromosomes:[{Slot:0b,UID0:\"forestry.treeZebrawood\",UID1:\"forestry.treeZebrawood\"}]}}", "nbt": true}
+    rewards:
+      - {"loot": "comum"}
+
+  - id: "mamoeiro"
+    title: "Mamoeiro"
+    type: "normal"
+    icon: "Forestry:sapling {Genome:{Chromosomes:[{Slot:0b,UID0:\"forestry.treePapaya\",UID1:\"forestry.treePapaya\"}]}}"
+    deps: ["cereja"]
+    desc: |
+      Cruzamento: §eSelva × Cereja§r — §e5%§r de chance.
+
+      §eMamões§r rendem muito suco no Hidratador.
+
+      Mostre uma §emuda pura§r da espécie (os dois genes de espécie iguais no Arvoranalizador). A aba
+      §eTree Breeding§r do NEI confirma os pais.
+    tasks:
+      - {"get": "Forestry:sapling {Genome:{Chromosomes:[{Slot:0b,UID0:\"forestry.treePapaya\",UID1:\"forestry.treePapaya\"}]}}", "nbt": true}
+    rewards:
+      - {"xp": 3}
+      - {"choice": ["Forestry:fertilizerCompound x16", "Forestry:grafter", "Forestry:soil x16"]}
+
+  - id: "tamareira"
+    title: "Tamareira"
+    type: "optional"
+    icon: "Forestry:sapling {Genome:{Chromosomes:[{Slot:0b,UID0:\"forestry.treeDate\",UID1:\"forestry.treeDate\"}]}}"
+    deps: ["mamoeiro"]
+    desc: |
+      Cruzamento: §eSelva × Mamoeiro§r — §e5%§r de chance.
+
+      Palmeira de tâmaras.
+
+      Mostre uma §emuda pura§r da espécie (os dois genes de espécie iguais no Arvoranalizador). A aba
+      §eTree Breeding§r do NEI confirma os pais.
+    tasks:
+      - {"get": "Forestry:sapling {Genome:{Chromosomes:[{Slot:0b,UID0:\"forestry.treeDate\",UID1:\"forestry.treeDate\"}]}}", "nbt": true}
+    rewards:
+      - {"loot": "comum"}
+
+  - id: "frutas"
+    title: "A Cesta de Frutas"
+    type: "normal"
+    icon: "Forestry:fruits"
+    deps: ["cereja"]
+    desc: |
+      Árvores frutíferas do Forestry soltam frutas maduras das folhas: §eCereja, Noz, Castanha, Limão,
+      Ameixa, Tâmara e Mamão§r. Nozes e castanhas viram óleo; limão e mamão viram suco.
+      Mostre §e8 de qualquer fruta§r.
+    tasks:
+      - {"one_of": ["Forestry:fruits x8", "Forestry:fruits:1 x8", "Forestry:fruits:2 x8", "Forestry:fruits:3 x8", "Forestry:fruits:4 x8", "Forestry:fruits:5 x8", "Forestry:fruits:6 x8"]}
+    rewards:
+      - {"xp": 2}
+      - {"item": "minecraft:sugar x8"}
+
+  - id: "madeiras_forestry"
+    title: "Madeiras do Mundo Inteiro"
+    type: "optional"
+    icon: "Forestry:planks"
+    deps: ["lima"]
+    desc: |
+      Cada espécie nova do Forestry tem tronco, tábuas, escadas, lajes e cercas próprios. Mostre
+      §e64 tábuas do Forestry§r de qualquer espécie — e construa algo bonito com elas!
+    tasks:
+      - {"get": "Forestry:planks:* x64"}
+    rewards:
+      - {"loot": "comum"}
+
+  - id: "arborista_mestre"
+    title: "Arborista Mestre"
+    type: "milestone"
+    icon: "Forestry:sapling {Genome:{Chromosomes:[{Slot:0b,UID0:\"forestry.treeChestnut\",UID1:\"forestry.treeChestnut\"}]}}"
+    deps: ["castanheira", "limoeiro", "sequoia", "sumauma", "baoba", "salgueiro", "mamoeiro"]
+    banner: "Arborista Mestre"
+    subtitle: "O arquivo verde reescrito"
+    desc: |
+      Frutas, gigantes, madeiras tropicais... Herói, você cruzou árvores como os Antigos faziam nos
+      arquivos verdes do Registro. A página da §earboricultura§r está completa o bastante para florescer
+      sozinha.
+
+      Leve as frutas para o Pomar, as gigantes para o Arboreto e as nozes para o Hidratador. E se quiser
+      ir ainda mais longe, o capítulo §eBinnie§r (Extra Trees) tem centenas de espécies novas.
+    tasks:
+      - {"check": true}
+    rewards:
+      - {"xp": 8}
+      - {"kit": {"name": "Kit do Arborista", "items": ["Forestry:grafter x2", "Forestry:fertilizerCompound x64", "Forestry:soil x32", "Forestry:treealyzer"]}}
+      - {"loot": "raro"}
+
+  - id: "borboleta"
+    title: "Borboletas"
+    type: "normal"
+    icon: "Forestry:butterflyGE {Genome:{Chromosomes:[{Slot:0b,UID0:\"forestry.lepiCabbageWhite\",UID1:\"forestry.lepiCabbageWhite\"}]}}"
+    deps: ["muda_genetica"]
+    desc: |
+      Viu algo colorido voando entre as folhas? São as §eborboletas e mariposas§r do Forestry — elas
+      nascem das folhas das árvores e também polinizam outras folhas!
+
+      Para pegar uma, clique nela com uma §ePuça§r (Scoop: gravetos e lã). Mostre uma das espécies comuns
+      (Couve-branca, Mariposa-limão, Borboleta-limão, Malhada, Rabo-de-andorinha...), de linhagem pura
+      como vem da natureza.
+    tasks:
+      - {"one_of": ["Forestry:butterflyGE {Genome:{Chromosomes:[{Slot:0b,UID0:\"forestry.mothBrimstone\",UID1:\"forestry.mothBrimstone\"}]}}", "Forestry:butterflyGE {Genome:{Chromosomes:[{Slot:0b,UID0:\"forestry.lepiCabbageWhite\",UID1:\"forestry.lepiCabbageWhite\"}]}}", "Forestry:butterflyGE {Genome:{Chromosomes:[{Slot:0b,UID0:\"forestry.lepiBrimstone\",UID1:\"forestry.lepiBrimstone\"}]}}", "Forestry:butterflyGE {Genome:{Chromosomes:[{Slot:0b,UID0:\"forestry.lepiCitrusSwallow\",UID1:\"forestry.lepiCitrusSwallow\"}]}}", "Forestry:butterflyGE {Genome:{Chromosomes:[{Slot:0b,UID0:\"forestry.lepiBlackSwallow\",UID1:\"forestry.lepiBlackSwallow\"}]}}", "Forestry:butterflyGE {Genome:{Chromosomes:[{Slot:0b,UID0:\"forestry.lepiSpeckledWood\",UID1:\"forestry.lepiSpeckledWood\"}]}}"], "nbt": true}
+    rewards:
+      - {"xp": 2}
+      - {"item": "minecraft:string x8"}
+
+  - id: "flutterlyzer"
+    title: "Lepidopteranalisador"
+    type: "normal"
+    deps: ["borboleta", "carpinteiro"]
+    desc: |
+      Igual aos outros analisadores: bronze, painéis de vidro, redstone, diamante e 2000 mB de água no
+      Carpinteiro. O §eFlutterlyzer§r lê os genes das borboletas (gasta mel por análise).
+    tasks:
+      - {"get": "Forestry:flutterlyzer"}
+    rewards:
+      - {"xp": 2}
+      - {"item": "Forestry:ingotBronze x4"}
+
+  - id: "bau_lepidopterista"
+    title: "Baú do Lepidopterista"
+    type: "optional"
+    deps: ["borboleta"]
+    desc: |
+      Seis borboletas em volta de um baú com vidro em cima = §eBaú do Lepidopterista§r (o jogo chama de
+      "Heteropterologista"). Coleção de asas organizada!
+    tasks:
+      - {"get": "Forestry:lepidopterology"}
+    rewards:
+      - {"loot": "comum"}
+
+  - id: "mochila_lepidopterista"
+    title: "Mochila do Lepidopterista"
+    type: "optional"
+    deps: ["bau_lepidopterista"]
+    desc: |
+      Linha, lã, gravetos e o Baú do Lepidopterista no centro: uma mochila para levar borboletas nas
+      expedições.
+    tasks:
+      - {"get": "Forestry:lepidopteristBag"}
+    rewards:
+      - {"loot": "comum"}
+
+  - id: "mochila_minerador"
+    title: "Bolsa do Minerador"
+    type: "normal"
+    deps: ["bronze"]
+    desc: |
+      Mochilas do Forestry são inteligentes: §eitens do tipo certo vão direto para elas§r quando você os
+      pega (segure-a ou mude o modo com Shift + clique direito).
+
+      A §eBolsa do Minerador§r (linha, lã, ferro e um baú) recolhe minérios, pedras preciosas, pós e
+      carvão. Faça a sua antes da próxima caverna!
+    tasks:
+      - {"get": "Forestry:minerBag"}
+    rewards:
+      - {"xp": 2}
+      - {"item": "minecraft:torch x32"}
+
+  - id: "mochila_escavador"
+    title: "Bolsa do Escavador"
+    type: "optional"
+    deps: ["mochila_minerador"]
+    desc: |
+      Mesma receita da Bolsa do Minerador, trocando o ferro por §epedra no lugar do ferro§r. Ela recolhe §eterra, pedregulho, areia, cascalho§r.
+    tasks:
+      - {"get": "Forestry:diggerBag"}
+    rewards:
+      - {"loot": "comum"}
+
+  - id: "mochila_lenhador"
+    title: "Bolsa do Lenhador"
+    type: "optional"
+    deps: ["mochila_minerador"]
+    desc: |
+      Mesma receita da Bolsa do Minerador, trocando o ferro por §etroncos§r. Ela recolhe §etroncos, mudas, folhas, frutas§r.
+    tasks:
+      - {"get": "Forestry:foresterBag"}
+    rewards:
+      - {"loot": "comum"}
+
+  - id: "mochila_cacador"
+    title: "Bolsa do Caçador"
+    type: "optional"
+    deps: ["mochila_minerador"]
+    desc: |
+      Mesma receita da Bolsa do Minerador, trocando o ferro por §epenas§r. Ela recolhe §edrops de mobs§r.
+    tasks:
+      - {"get": "Forestry:hunterBag"}
+    rewards:
+      - {"loot": "comum"}
+
+  - id: "mochila_aventureiro"
+    title: "Bolsa do Aventureiro"
+    type: "optional"
+    deps: ["mochila_minerador"]
+    desc: |
+      Mesma receita da Bolsa do Minerador, trocando o ferro por §eossos§r. Ela recolhe §eitens de exploração§r.
+    tasks:
+      - {"get": "Forestry:adventurerBag"}
+    rewards:
+      - {"loot": "comum"}
+
+  - id: "mochila_construtor"
+    title: "Bolsa do Construtor"
+    type: "optional"
+    deps: ["mochila_minerador"]
+    desc: |
+      Mesma receita da Bolsa do Minerador, trocando o ferro por §eargila§r. Ela recolhe §eblocos de construção§r.
+    tasks:
+      - {"get": "Forestry:builderBag"}
+    rewards:
+      - {"loot": "comum"}
+
+  - id: "mochila_t2"
+    title: "Mochilas Tecidas"
+    type: "optional"
+    icon: "Forestry:minerBagT2"
+    deps: ["mochila_minerador", "carpinteiro"]
+    desc: |
+      Qualquer mochila vira a versão §eTecida§r (o dobro de espaço) no Carpinteiro: 7 Tecidos de Seda +
+      1 diamante + a mochila + 1000 mB de água. O Tecido de Seda vem das abelhas tropicais (capítulo de
+      Apicultura). Mostre qualquer mochila tecida.
+    tasks:
+      - {"one_of": ["Forestry:minerBagT2", "Forestry:diggerBagT2", "Forestry:foresterBagT2", "Forestry:hunterBagT2", "Forestry:adventurerBagT2", "Forestry:builderBagT2"]}
+    rewards:
+      - {"loot": "incomum"}
+
+  - id: "carta"
+    title: "Cartas"
+    type: "normal"
+    deps: ["polpa_madeira"]
+    desc: |
+      O Forestry tem um §ecorreio§r entre jogadores — num servidor como o da Akashic, isso é ouro!
+
+      Uma §eCarta§r sai de papel + própolis (sem forma) ou, no Carpinteiro, de 6 Polpas de Árvore +
+      250 mB de água. Escreva o destinatário e anexe itens.
+    tasks:
+      - {"get": "Forestry:letters"}
+    rewards:
+      - {"xp": 2}
+      - {"item": "minecraft:paper x8"}
+
+  - id: "selos"
+    title: "Selos"
+    type: "normal"
+    icon: "Forestry:stamps"
+    deps: ["carta"]
+    desc: |
+      Carta sem selo não viaja. O envio custa §e1n de base + 1n por anexo§r. Selos: 3 do material + 3
+      papéis + 3 Gotas de Mel = 9 selos (1n apatita, 2n cobre, 5n estanho, 10n ouro). Os selos de 20n,
+      50n e 100n estão desativados para fabricação neste pack. Mostre §e9 selos§r quaisquer.
+    tasks:
+      - {"get": "Forestry:stamps:* x9"}
+    rewards:
+      - {"xp": 2}
+      - {"item": "Forestry:apatite x6"}
+
+  - id: "caixa_correio"
+    title: "Caixa de Correio"
+    type: "normal"
+    deps: ["selos", "carcaca_resistente"]
+    desc: |
+      Estanho, a Carcaça Resistente e três baús: a §eCaixa de Correio§r. Coloque a carta selada dentro
+      para enviar; as cartas que chegam para você aparecem nela. Agora dá para mandar presentes para
+      os amigos do servidor sem sair de casa!
+    tasks:
+      - {"get": "Forestry:mail"}
+    rewards:
+      - {"xp": 3}
+      - {"item": "Forestry:stamps:1 x9"}
+
+  - id: "catalogo"
+    title: "Catálogo"
+    type: "optional"
+    deps: ["caixa_correio"]
+    desc: |
+      Um selo + um livro = §eCatálogo§r: a lista dos Postos de Troca que existem no mundo e o que cada
+      um oferece.
+    tasks:
+      - {"get": "Forestry:catalogue"}
+    rewards:
+      - {"loot": "comum"}
+
+  - id: "posto_troca"
+    title: "Posto de Troca"
+    type: "normal"
+    deps: ["caixa_correio", "placas_avancadas", "valvulas_metalicas"]
+    desc: |
+      O §ePosto de Troca§r é uma lojinha automática: você define o que vende e o que quer em troca, e
+      outros jogadores compram mandando cartas para o endereço dele. Válvulas de bronze e ferro, uma
+      Placa Refinada, a Carcaça Resistente e baús.
+    tasks:
+      - {"get": "Forestry:mail:1"}
+    rewards:
+      - {"xp": 3}
+      - {"item": "Forestry:stamps:2 x9"}
+
+  - id: "trigo_mofado"
+    title: "Trigo Mofado"
+    type: "optional"
+    deps: ["humidificador"]
+    desc: |
+      O "combustível" do Humidificador apodrece em etapas: §eTrigo → Trigo Mofado → Trigo em
+      Decomposição§r. Cada etapa continua alimentando a máquina. Mostre um Trigo em Decomposição — prova
+      de que o seu porão está bem escuro!
+    tasks:
+      - {"get": "Forestry:decayingWheat"}
+    rewards:
+      - {"loot": "comum"}
+
+  - id: "cartao"
+    title: "Cartão"
+    type: "optional"
+    deps: ["polpa_madeira"]
+    desc: |
+      Quatro Polpas de Árvore em losango + 1000 mB de água no Carpinteiro rendem §e2 Cartões§r — a
+      embalagem dos Kits de Ferramenta.
+    tasks:
+      - {"get": "Forestry:carton x2"}
+    rewards:
+      - {"loot": "comum"}
+
+  - id: "notas_sengir"
+    title: "Notas do Sengir"
+    type: "optional"
+    deps: ["escrivaninha"]
+    desc: |
+      Acertou a pesquisa na Escrivaninha? Ela pode recompensar com §eNotas do Sengir§r, anotações que
+      revelam uma mutação. Ler é a melhor forma de não cruzar no escuro.
+    tasks:
+      - {"get": "Forestry:researchNote"}
+    rewards:
+      - {"loot": "incomum"}
+
+  - id: "refinaria_oleo"
+    title: "Refinaria de Óleo"
+    type: "optional"
+    icon: "Forestry:canSeedOil"
+    deps: ["nogueira", "oleo_vegetal"]
+    desc: |
+      Com Nogueiras e Castanheiras no Pomar, o Hidratador vira um poço de petróleo verde. Encha §e4000 mB
+      de Óleo Vegetal§r (4 baldes ou latas).
+    tasks:
+      - {"fluid": "seedoil x4000"}
+    rewards:
+      - {"loot": "incomum"}
+
+  - id: "estoque_etanol"
+    title: "Estoque de Etanol"
+    type: "optional"
+    icon: "Forestry:canEthanol"
+    deps: ["etanol"]
+    desc: |
+      Uma base que roda a etanol precisa de reserva. Mostre §e8000 mB de Etanol§r em latas ou baldes.
+    tasks:
+      - {"fluid": "bioethanol x8000"}
+    rewards:
+      - {"loot": "incomum"}
+
+  - id: "gelo_picado"
+    title: "Gelo Picado"
+    type: "optional"
+    icon: "Forestry:bucketIce"
+    deps: ["hidratador"]
+    desc: |
+      Uma bola de neve + 4 Cacos de Gelo (das abelhas Geladas) no Hidratador rendem §e4000 mB de Gelo
+      Picado§r — um refrigerante que vários mods aceitam.
+    tasks:
+      - {"fluid": "ice x1000"}
+    rewards:
+      - {"loot": "comum"}
+
+  - id: "lava_fosforo"
+    title: "Lava de Fósforo"
+    type: "optional"
+    icon: "minecraft:lava_bucket"
+    deps: ["hidratador"]
+    desc: |
+      Fósforo (das abelhas do Nether) com areia, pedregulho ou terra no Hidratador vira §elava§r
+      (1600–2000 mB, conforme o bloco). Lava renovável, sem ir ao Nether toda hora.
+    tasks:
+      - {"fluid": "lava x1000"}
+    rewards:
+      - {"loot": "comum"}
+
+  - id: "suco_tropical"
+    title: "Suco Tropical"
+    type: "optional"
+    icon: "Forestry:canJuice"
+    deps: ["mamoeiro", "suco"]
+    desc: |
+      Mamões rendem bastante suco. Junte §e4000 mB de Suco§r: com ele o Fermentador rende mais biomassa
+      do que com água.
+    tasks:
+      - {"fluid": "juice x4000"}
+    rewards:
+      - {"loot": "comum"}
+
+  - id: "mestre_florestal"
+    title: "Guardião das Florestas"
+    type: "milestone"
+    icon: "Forestry:factory:7"
+    deps: ["oficina_forestry", "fazenda_montada", "arborista_mestre", "fazedor_chuva", "posto_troca"]
+    banner: "Guardião das Florestas"
+    subtitle: "O Volume das Florestas está completo"
+    effect: 3
+    desc: |
+      Herói... olhe pela janela. Turfais escurecendo à beira d'água, uma fazenda que se planta sozinha,
+      árvores que os Antigos só conheciam nos livros, o céu obedecendo ao Fazedor de Chuva e cartas
+      indo e vindo pelo correio. O §eVolume das Florestas§r está reescrito!
+
+      Este é um dos pilares do §6Selo da Vida§r. O outro pilar zumbe: se ainda não começou, o capítulo
+      de §eApicultura§r é o próximo passo natural — as abelhas polinizam as suas árvores e alimentam o
+      seu Arvoranalizador com mel.
+
+      Eu fiquei tão orgulhosa que nasceu uma folha nova no Registro. Sério!
+    tasks:
+      - {"get": ["Forestry:factory:7", "Forestry:mail:1", "Forestry:treealyzer"]}
+    rewards:
+      - {"xp": 12}
+      - {"kit": {"name": "Kit do Guardião das Florestas", "items": ["Forestry:hardenedMachine", "Forestry:chipsets:3 x2", "Forestry:thermionicTubes:5 x4", "Forestry:fertilizerCompound x64", "Forestry:impregnatedCasing x2"]}}
+      - {"loot": "epico"}

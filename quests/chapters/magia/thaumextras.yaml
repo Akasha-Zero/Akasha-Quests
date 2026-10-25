@@ -1,0 +1,973 @@
+chapter:
+  id: thaumextras
+  title: "Thaumic Energistics, Boots e o Warp"
+  prefix: ""
+  order: 513
+  icon: thaumicenergistics:thaumicenergistics.block.infusion.provider
+  desc: |
+    §dO Volume das Pontes e das Cicatrizes.§r Essência guardada em bytes na rede ME, botas
+    celestiais combinadas, as invenções estranhas do Thaumic Insurgence e, por fim, o preço
+    de tudo isso: o Warp e as formas (caras) de se livrar dele. (Thaumic Energistics
+    1.7.58-GTNH, Thaumic Boots 1.5.12, Thaumic Insurgence 0.4.1 e WarpTheory 1.5.7-GTNH)
+
+quests:
+  # ======================================================================
+  # PARTE 1 — THAUMIC ENERGISTICS
+  # ======================================================================
+  - id: te_inicio
+    title: "Magia em Bytes"
+    type: info
+    icon: thaumicenergistics:material
+    deps_hidden: [thaumcraft:essencia_destilada, ae2:primeira_rede]
+    desc: |
+      Herói, você já tem uma rede ME e já destila essência. E se as duas coisas
+      conversassem? O §eThaumic Energistics§r guarda essência §edigitalmente§r, alimenta o
+      altar de infusão direto da rede e até fabrica itens arcanos sozinho.
+
+      A aba §eEnergistics§r do Taumonomicon já começa aberta. As pesquisas seguintes pedem
+      as do Thaumcraft correspondentes (Destilação, Tubo Filtrado, Infusão, Poder do Vis...).
+
+      §7Nesta versão o antigo Terminal de Essência foi aposentado (aparece como
+      "DEPRECATED"): a essência digital é um tipo próprio de pilha da rede ME.§r
+    tasks:
+      - check
+    rewards:
+      - xp: 1
+
+  - id: nucleos_conversao
+    title: "Núcleos de Difusão e Coalescência"
+    type: main
+    deps: [te_inicio]
+    deps_hidden: [ae2:nucleos]
+    icon: thaumicenergistics:material
+    desc: |
+      Essência é corrosiva demais para circuitos comuns; é preciso uma capa de mercúrio.
+      Na Mesa Arcana, sem formato:
+
+      §e•§r §eNúcleo de Difusão§r: 3 Gotas de Mercúrio + Estilhaço de Entropia + §eNúcleo
+      de Aniquilação§r (Aqua 2, Perditio 2).
+      §e•§r §eNúcleo de Coalescência§r: 3 Gotas de Mercúrio + Estilhaço de Ordem + §eNúcleo
+      de Formação§r (Aqua 2, Ordo 2).
+
+      Quase tudo neste Volume leva um deles. Faça 2 de cada.
+    tasks:
+      - get: [thaumicenergistics:material x2, thaumicenergistics:material:1 x2]
+    rewards:
+      - xp: 4
+      - choice: [Thaumcraft:ItemNugget:5 x12, appliedenergistics2:item.ItemMultiMaterial:43 x2, appliedenergistics2:item.ItemMultiMaterial:44 x2]
+
+  - id: caixa_celula
+    title: "Caixa de Célula de Essência"
+    type: normal
+    deps: [te_inicio]
+    icon: thaumicenergistics:storage.casing
+    desc: |
+      A carcaça das células de essência, na bancada comum: §eVidro Guardião§r, pó de
+      redstone e §eLingotes de Táumio§r (W R W / R _ R / T T T).
+
+      Componente + caixa (sem formato) = célula. Ou faça tudo de uma vez com o componente
+      no meio da receita da caixa.
+    tasks:
+      - get: thaumicenergistics:storage.casing x2
+    rewards:
+      - xp: 2
+      - item: Thaumcraft:blockCosmeticOpaque:2 x8
+
+  - id: celula_1k
+    title: "Célula de Essência 1k"
+    type: main
+    deps: [caixa_celula]
+    deps_hidden: [ae2:celula_1k]
+    icon: thaumicenergistics:storage.essentia
+    desc: |
+      Quartzo Certus infundido de essência guarda essência digital. O §eComponente 1k§r é
+      Arcano (Ignis 3, Ordo 1): 2 §eEssências Etéreas§r, 4 Quartzos Certus (qualquer
+      variante) e um §eProcessador Lógico§r no centro.
+
+      Junte com a caixa e enfie a célula num Drive. Seus jarros agradecem a folga.
+    tasks:
+      - get: thaumicenergistics:storage.essentia
+    rewards:
+      - xp: 4
+      - item: Thaumcraft:ItemWispEssence x4
+
+  - id: celula_4k
+    title: "Célula de Essência 4k"
+    type: normal
+    deps: [celula_1k]
+    icon: thaumicenergistics:storage.essentia:1
+    desc: |
+      Cada nível usa os componentes do nível anterior. §e4k§r (Ignis 3, Ordo 2): 3
+      Componentes 1k, 4 Essências Etéreas, §eProcessador de Cálculo§r e §eVidro de
+      Quartzo§r.
+    tasks:
+      - get: thaumicenergistics:storage.essentia:1
+    rewards:
+      - xp: 3
+      - item: appliedenergistics2:item.ItemMultiMaterial:23 x2
+
+  - id: celula_16k
+    title: "Célula de Essência 16k"
+    type: normal
+    deps: [celula_4k]
+    icon: thaumicenergistics:storage.essentia:2
+    desc: |
+      §e16k§r (Ignis 3, Ordo 4): 3 Componentes 4k, 2 Essências Etéreas, 2 §eSalis Mundus§r,
+      §eProcessador de Engenharia§r e Vidro de Quartzo.
+    tasks:
+      - get: thaumicenergistics:storage.essentia:2
+    rewards:
+      - xp: 4
+      - item: Thaumcraft:ItemResource:14 x8
+
+  - id: celula_64k
+    title: "Célula de Essência 64k"
+    type: normal
+    deps: [celula_16k]
+    icon: thaumicenergistics:storage.essentia:3
+    desc: |
+      §e64k§r (Ignis 3, Ordo 8): 4 Componentes 16k, 4 Salis Mundus, Processador de
+      Engenharia e Vidro de Quartzo. Já dá para guardar a produção de uma fazenda de
+      essência inteira.
+    tasks:
+      - get: thaumicenergistics:storage.essentia:3
+    rewards:
+      - xp: 5
+      - loot: comum
+
+  - id: celula_256k
+    title: "Células de 256k e 1024k"
+    type: optional
+    deps: [celula_64k]
+    icon: thaumicenergistics:storage.essentia:5
+    desc: |
+      §e256k§r (Ordo 16): 4 Componentes 64k, 4 Salis Mundus, Processador de Engenharia e
+      §eVidro Guardião§r. §e1024k§r (Ordo 32): troca o Salis por 4 §eSementes do Vazio§r.
+
+      Qualquer uma das duas serve.
+    tasks:
+      - one_of: [thaumicenergistics:storage.essentia:5, thaumicenergistics:storage.essentia:6]
+    rewards:
+      - xp: 6
+      - loot: raro
+
+  - id: celula_16384k
+    title: "Células Colossais"
+    type: optional
+    deps: [celula_256k]
+    icon: thaumicenergistics:storage.essentia:8
+    desc: |
+      §e4096k§r (Ordo 64): componentes 1024k + 4 §eLingotes de Metal do Vazio§r.
+      §e16384k§r (Ordo 128): componentes 4096k + 4 §eAmuletos Primais§r, com Metal do
+      Vazio no lugar do processador e um §eReservatório de Essência§r no centro.
+
+      Faça a de 16384k. Exagero? Talvez. Bonito? Com certeza.
+    tasks:
+      - get: thaumicenergistics:storage.essentia:8
+    rewards:
+      - xp: 8
+      - loot: raro
+
+  - id: celula_quantica
+    title: "Célula Quântica de Essência"
+    type: optional
+    deps: [celula_16384k]
+    deps_hidden: [ae2:anel_quantico]
+    icon: thaumicenergistics:storage.essentia:9
+    desc: |
+      Bancada comum: 4 §eAnéis Quânticos§r nos cantos, 4 Componentes 16384k e uma §eCélula
+      de Energia Densa§r no centro. E 8 delas em volta de um §eCondensador ME§r viram a
+      §eCélula de Singularidade Digital§r.
+    tasks:
+      - one_of: [thaumicenergistics:storage.essentia:9, thaumicenergistics:storage.essentia:10]
+    rewards:
+      - xp: 10
+      - loot: epico
+
+  - id: barramentos_io
+    title: "Barramentos de Essência"
+    type: main
+    deps: [nucleos_conversao, celula_1k]
+    icon: thaumicenergistics:part.base:3
+    desc: |
+      Hora de mover essência para dentro e para fora da rede. Arcano (Ignis 2, Terra 2,
+      Aqua 1), em duas linhas:
+
+      §e•§r §eImportação§r: Jarro Guardião, Núcleo de Difusão, Jarro / Ferro, §eTubo
+      Filtrado§r, Ferro.
+      §e•§r §eExportação§r: o mesmo com o Núcleo de Coalescência.
+
+      Ligue num tubo de essência. Os barramentos aceitam cartões de capacidade, redstone e
+      velocidade (a exportação também aceita fabricação).
+    tasks:
+      - get: [thaumicenergistics:part.base, thaumicenergistics:part.base:3]
+    rewards:
+      - xp: 4
+      - item: Thaumcraft:blockTube:3 x4
+
+  - id: barramento_armazenamento
+    title: "Barramento de Armazenamento de Essência"
+    type: normal
+    deps: [barramentos_io]
+    icon: thaumicenergistics:part.base:2
+    desc: |
+      Junta importação e exportação num só: seus jarros e reservatórios viram parte da
+      rede. Arcano (Ignis 3, Terra 3, Aqua 1): Núcleo de Difusão, Tubo Filtrado, Núcleo de
+      Coalescência / Ferro, Vidro Guardião, Ferro.
+
+      Truque: num §eVoid na Jarra§r (com o botão "permitir anular" ligado) e prioridade
+      baixa, ele apaga o excesso de essência da rede.
+    tasks:
+      - get: thaumicenergistics:part.base:2
+    rewards:
+      - xp: 3
+      - item: Thaumcraft:blockJar x4
+
+  - id: provedor_essencia
+    title: "Provedor de Essência"
+    type: main
+    deps: [barramentos_io]
+    deps_hidden: [thaumcraft:infusao, ae2:interface]
+    icon: thaumicenergistics:thaumicenergistics.block.essentia.provider
+    desc: |
+      Construtos alquímicos que pedem qualquer essência direto da rede! Infusão
+      (instabilidade 3) sobre uma §eInterface ME§r: 2 Tubos Filtrados, 2 Salis Mundus, 2
+      Estilhaços de Água, um Núcleo de Coalescência e um de Difusão (Machina 64,
+      Praecantatio 32, Ordo 32, Permutatio 16).
+
+      Conecte à rede e ao aparelho; ele faz o resto, com sucção baixa (8), como um buffer.
+    tasks:
+      - get: thaumicenergistics:thaumicenergistics.block.essentia.provider
+    rewards:
+      - xp: 6
+      - choice: [Thaumcraft:ItemShard:2 x6, Thaumcraft:ItemResource:14 x6, appliedenergistics2:tile.BlockInterface]
+
+  - id: provedor_infusao
+    title: "Provedor de Infusão"
+    type: milestone
+    deps: [provedor_essencia]
+    icon: thaumicenergistics:thaumicenergistics.block.infusion.provider
+    banner: "Altar Conectado"
+    subtitle: "Essência direto da rede"
+    desc: |
+      Perto do altar, o §eProvedor de Infusão§r se comporta como um jarro guardião: o altar
+      puxa a essência §edireto da rede§r. Se faltar um aspecto, ele tenta encomendar §e32§r
+      dele, caso exista padrão e CPU de fabricação.
+
+      Infusão (instabilidade 4) sobre uma Interface ME: 2 §eEspelhos de Essência§r, 2 Salis
+      Mundus, 2 Núcleos de Coalescência e 2 Estilhaços de Ar (Machina 64, Praecantatio 32,
+      Ordo 32, Permutatio 16).
+
+      Nada mais de corredores de jarros, Herói!
+    tasks:
+      - get: thaumicenergistics:thaumicenergistics.block.infusion.provider
+    rewards:
+      - xp: 10
+      - kit: {name: "Kit do Altar Digital", items: ["Thaumcraft:blockMirror:6 x2", "Thaumcraft:ItemResource:14 x8", "thaumicenergistics:material:1 x2", "Thaumcraft:ItemShard x4"]}
+      - loot: raro
+
+  - id: provedor_avancado
+    title: "Provedor de Infusão Avançado"
+    type: normal
+    deps: [provedor_infusao]
+    icon: thaumicenergistics:thaumicenergistics.block.advanced.infusion.provider
+    desc: |
+      Cansou de esperar a infusão chupar aspecto por aspecto? O §eProvedor Avançado§r injeta
+      §ede uma vez§r toda a essência pedida e encomenda a quantidade exata do que faltar.
+      Liga-se a várias matrizes até 12 blocos na horizontal e 5 na vertical.
+
+      Infusão (instabilidade 10!) sobre um Provedor de Infusão: 2 Amuletos Primais, 4
+      Estilhaços Equilibrados e 2 Núcleos de Difusão (Machina, Praecantatio, Permutatio,
+      Cognitio e Lucrum, 64 de cada). Estabilize bem o altar antes.
+    tasks:
+      - get: thaumicenergistics:thaumicenergistics.block.advanced.infusion.provider
+    rewards:
+      - xp: 10
+      - loot: epico
+
+  - id: camara_vibracao
+    title: "Câmara de Vibração de Essência"
+    type: optional
+    deps: [nucleos_conversao]
+    icon: thaumicenergistics:thaumicenergistics.block.essentia.vibration.chamber
+    desc: |
+      Energia para a rede queimando §eIgnis§r ou §ePotentia§r destilados. As notas do
+      Taumonomicon estimam uns §e350% a mais§r de energia do que queimar o carvão direto, e
+      Potentia rende mais que Ignis.
+
+      Arcano sem formato (Aqua 2, Perditio 4, Ignis 7, Ordo 4): §eCâmara de Vibração§r do
+      AE2 + Núcleo de Difusão + Jarro Guardião. Encha por barramento de exportação,
+      provedor ou tubo.
+    tasks:
+      - get: thaumicenergistics:thaumicenergistics.block.essentia.vibration.chamber
+    rewards:
+      - xp: 3
+      - loot: comum
+
+  - id: codificador_destilacao
+    title: "Codificador de Padrões de Destilação"
+    type: normal
+    deps: [barramentos_io]
+    deps_hidden: [ae2:padrao_branco]
+    icon: thaumicenergistics:thaumicenergistics.block.distillation.encoder
+    desc: |
+      Ensine a rede a fabricar essência! Coloque um item no espaço do Taumômetro, escolha o
+      aspecto e grave tudo num §ePadrão Codificado§r. Com isso a rede encomenda aspectos que
+      faltam, e o Provedor de Infusão passa a pedir sozinho.
+
+      Arcano (Ordo 5, Perditio 5, Ignis 3): ferro, §ePainel Iluminado§r, ferro / Taumômetro
+      / ferro, Processador de Engenharia, ferro.
+    tasks:
+      - get: thaumicenergistics:thaumicenergistics.block.distillation.encoder
+    rewards:
+      - xp: 4
+      - item: appliedenergistics2:item.ItemMultiMaterial:24 x2
+
+  - id: terminal_arcano
+    title: "Terminal de Fabricação Arcana"
+    type: main
+    deps: [te_inicio]
+    deps_hidden: [ae2:terminal]
+    icon: thaumicenergistics:part.base:5
+    desc: |
+      Uma Mesa Arcana dentro do terminal: fabrique receitas arcanas puxando os ingredientes
+      direto da rede. Ele ainda guarda um conjunto de armadura para trocar rápido quando
+      precisar do desconto de vis.
+
+      Arcano sem formato (10 de cada primal): §eTerminal ME§r + §eMesa de Manufatura
+      Arcana§r + Processador de Cálculo.
+    tasks:
+      - get: thaumicenergistics:part.base:5
+    rewards:
+      - xp: 5
+      - choice: [Thaumcraft:ItemShard x4, Thaumcraft:ItemShard:3 x4, appliedenergistics2:item.ItemMultiMaterial:23 x2]
+
+  - id: interface_vis
+    title: "Interface de Retransmissor de Vis"
+    type: normal
+    deps: [terminal_arcano]
+    deps_hidden: [thaumcraft2:rele_vis]
+    icon: thaumicenergistics:part.base:6
+    desc: |
+      Vis pela rede ME, como num túnel P2P. Coloque um §eRetransmissor de Vis§r com a base
+      encostada na interface. Para ligar um aparelho, use um §eCartão de Memória§r: shift +
+      clique na interface e depois clique no aparelho (cada aparelho liga em uma interface só).
+
+      Ela carrega a varinha do Terminal Arcano e enche o vis do Montador Arcano.
+
+      Arcano sem formato (2 de cada primal): Estilhaço Equilibrado + §eTúnel P2P ME§r.
+    tasks:
+      - get: thaumicenergistics:part.base:6
+    rewards:
+      - xp: 4
+      - item: Thaumcraft:ItemShard:6 x4
+
+  - id: montador_arcano
+    title: "Montador Arcano"
+    type: milestone
+    deps: [interface_vis]
+    deps_hidden: [ae2:montador_molecular, thaumcraft2:cetro]
+    icon: thaumicenergistics:thaumicenergistics.block.arcane.assembler
+    banner: "Fábrica Arcana"
+    subtitle: "Receitas arcanas no automático"
+    desc: |
+      Um Montador Molecular que entende de vis. Infusão (instabilidade 7) sobre um
+      §eMontador Molecular§r: um §eCetro de Silverwood§r §ccarregado por completo§r e os 7
+      estilhaços (6 primais + Equilibrado). Aspectos: Fabrico 64, Permutatio 32, Auram 16,
+      Praecantatio 16, Metallum 8, Vitreus 8.
+
+      Ele herda o desconto do cetro (e de armaduras de desconto colocadas nele). Cartões de
+      aceleração cortam 20% do tempo cada, mas pedem 50% mais energia. §cCada ponto de Warp
+      do equipamento colocado aumenta o consumo em 15%.§r
+    tasks:
+      - get: thaumicenergistics:thaumicenergistics.block.arcane.assembler
+    rewards:
+      - xp: 12
+      - kit: {name: "Kit do Montador Arcano", items: ["Thaumcraft:ItemShard x4", "Thaumcraft:ItemShard:1 x4", "Thaumcraft:ItemShard:2 x4", "Thaumcraft:ItemShard:3 x4", "Thaumcraft:ItemShard:4 x4", "Thaumcraft:ItemShard:5 x4"]}
+      - loot: raro
+
+  - id: inscritor_conhecimento
+    title: "Inscritor e Núcleo de Conhecimento"
+    type: normal
+    deps: [montador_arcano]
+    icon: thaumicenergistics:thaumicenergistics.block.knowledge.inscriber
+    desc: |
+      O montador não guarda receitas: o §eNúcleo de Conhecimento§r guarda. Coloque o núcleo
+      no espaço de cima à direita do §eInscritor§r, monte a receita na grade (precisa ter a
+      pesquisa) e salve.
+
+      §e•§r Núcleo (Aqua 3, Ordo 3, Terra 1): Vidro Vibrante, lápis, Cérebro de Zumbi e
+      Processador de Cálculo.
+      §e•§r Inscritor (5 de cada primal): ferro, Painel Iluminado, Taumonomicon e
+      Processador Lógico.
+    tasks:
+      - get: [thaumicenergistics:thaumicenergistics.block.knowledge.inscriber, thaumicenergistics:knowledge.core]
+    rewards:
+      - xp: 5
+      - item: Thaumcraft:ItemZombieBrain x2
+
+  - id: caixa_engrenagens
+    title: "Caixa de Engrenagens de Ferro"
+    type: optional
+    deps: [te_inicio]
+    icon: thaumicenergistics:thaumicenergistics.block.gear.box
+    desc: |
+      Uma manivela para girar várias máquinas ao mesmo tempo (moedores, carregadores...). A
+      força se divide entre os aparelhos virados para ela, e várias pessoas podem girar
+      juntas.
+
+      Arcano: §eEngrenagem de Ferro§r (ferro em volta de uma engrenagem de madeira; Terra 1,
+      Ignis 1) e a caixa (pedregulho + 5 engrenagens de ferro; Aer 2, Ordo 2).
+    tasks:
+      - get: thaumicenergistics:thaumicenergistics.block.gear.box
+    rewards:
+      - xp: 2
+      - item: minecraft:iron_ingot x8
+
+  - id: caixa_taumio
+    title: "Caixa de Engrenagens de Táumio"
+    type: optional
+    deps: [caixa_engrenagens]
+    deps_hidden: [thaumcraft2:nucleo_usar]
+    icon: thaumicenergistics:thaumicenergistics.block.golem.gear.box
+    desc: |
+      Agora alguém gira por você: um golem com §eNúcleo de Uso§r consegue girar a §eCaixa de
+      Táumio§r. No Crisol: Caixa de Ferro + 16 Metallum e 16 Praecantatio.
+    tasks:
+      - get: thaumicenergistics:thaumicenergistics.block.golem.gear.box
+    rewards:
+      - xp: 3
+      - loot: comum
+
+  - id: mochila_golem
+    title: "Mochila Sem Fio para Golens"
+    type: normal
+    deps: [te_inicio]
+    deps_hidden: [thaumcraft:nucleo_coletar]
+    icon: thaumicenergistics:golem.wifi.backpack
+    desc: |
+      Golens que entregam direto na rede, sem baú no meio! Precisa de um §ePonto de Acesso§r
+      por perto; ligue a mochila à rede no Terminal de Segurança. Dois Nitor recarregam a
+      mochila em ciclos curtos.
+
+      Coletar deposita, Preencher retira itens, Decantar retira fluidos e Alquimia mexe com
+      essência. Melhoria de Ordem e golens avançados rendem mais por carga.
+
+      Arcano (Aer 6, Ignis 4, Ordo 3): táumio, Interface ME (parte), táumio / Nitor,
+      §eReceptor Sem Fio§r, Nitor / Fluix, §eCarregador§r, Fluix.
+    tasks:
+      - get: thaumicenergistics:golem.wifi.backpack
+    rewards:
+      - xp: 4
+      - item: Thaumcraft:ItemResource:1 x4
+
+  - id: foco_chave
+    title: "Foco: Chave do AE"
+    type: optional
+    deps: [te_inicio]
+    icon: thaumicenergistics:focus.aewrench
+    desc: |
+      Um foco de varinha que funciona como chave do AE2: agachado + clique esquerdo gira,
+      agachado + clique direito desmonta.
+
+      Arcano (Aer 10, Ignis 10): Estilhaços de Ar e Fogo, Quartzo do Nether e a §eChave de
+      Quartzo Certus§r no centro.
+    tasks:
+      - get: thaumicenergistics:focus.aewrench
+    rewards:
+      - xp: 2
+      - item: minecraft:quartz x8
+
+  - id: microscopio
+    title: "Microscópio de Células"
+    type: optional
+    deps: [celula_4k]
+    icon: thaumicenergistics:cell.microscope
+    desc: |
+      Escaneia tudo o que há dentro de uma célula de armazenamento como se fosse um
+      Taumômetro (a célula precisa estar no chão). Ótimo para pesquisa em massa!
+
+      Arcano caro (Aer, Terra e Ordo, 300 de cada): Espelhos de Essência, Taumômetro,
+      Singularidades, Ligação Quântica e um Túnel P2P de itens.
+    tasks:
+      - get: thaumicenergistics:cell.microscope
+    rewards:
+      - xp: 5
+      - loot: raro
+
+  - id: duplicar_quartzo
+    title: "Duplicando Quartzo"
+    type: info
+    deps: [te_inicio]
+    icon: appliedenergistics2:item.ItemMultiMaterial
+    desc: |
+      Com a Duplicação Alquímica do Thaumcraft, a pesquisa §eCertus Quartz Duplication§r
+      libera no Crisol:
+
+      §e•§r Cristal de Quartzo Certus + 4 Vitreus, 2 Aqua = 2 cristais.
+      §e•§r Quartzo do Nether + 4 Vitreus, 2 Aqua, 2 Potentia = 2 quartzos.
+
+      Ajuda muito nos componentes das células.
+    tasks:
+      - check
+    rewards:
+      - xp: 2
+      - item: appliedenergistics2:item.ItemMultiMaterial x4
+
+  # ======================================================================
+  # PARTE 2 — THAUMIC BOOTS
+  # ======================================================================
+  - id: tb_inicio
+    title: "Sapataria Taumatúrgica"
+    type: info
+    icon: thaumicboots:item.ItemArcaniumInterfacer
+    deps_hidden: [thaumcraft:taumio, thaumcraft:botas_viajante]
+    desc: |
+      O §eThaumic Boots§r junta botas mágicas de mods diferentes em versões combinadas. A aba
+      §eThaumic Boots§r abre com a pesquisa do Táumio.
+
+      Dois aspectos novos aparecem: §dTabernus§r (botas, travessia: Tutamen + Iter) e
+      §dCaelum§r (espaço celeste: Vitreus + Metallum). Pérolas e olhos do Fim, vara e pó de
+      blaze, além das próprias botas, carregam esses aspectos.
+
+      As botas aceitam teclas para regular o impulso de velocidade e de pulo, o
+      passo-assistido, o modo omnidirecional e o cancelamento de inércia no voo (ligado na
+      config do pack). Confira em Controles.
+    tasks:
+      - check
+    rewards:
+      - xp: 1
+
+  - id: lente_arcanio
+    title: "Lente de Arcânio"
+    type: main
+    deps: [tb_inicio]
+    icon: thaumicboots:item.ItemArcaniumInterfacer
+    desc: |
+      O "combinador taumatúrgico": quase toda bota combinada é uma infusão com esta lente no
+      centro. No Crisol: §eLingote de Táumio§r + 25 Tabernus, 25 Permutatio e 25 Caelum.
+
+      Faça 2: cada combinação consome uma.
+    tasks:
+      - get: thaumicboots:item.ItemArcaniumInterfacer x2
+    rewards:
+      - xp: 4
+      - item: Thaumcraft:ItemResource:2 x4
+
+  - id: botas_preguica
+    title: "Botas da Preguiça"
+    type: optional
+    deps: [lente_arcanio]
+    icon: thaumicboots:item.ItemSlowBoots
+    desc: |
+      Uma "maldição de lentidão" reproduzível: as botas te deixam §emais devagar§r, mas
+      anulam o dano de queda. No Crisol: Botas do Viajante + 25 Vinculum, 25 Tabernus e 10
+      Permutatio. Coisa de colecionador.
+    tasks:
+      - get: thaumicboots:item.ItemSlowBoots
+    rewards:
+      - loot: comum
+
+  - id: botas_estacoes
+    title: "Botas das Estações"
+    type: optional
+    deps: [lente_arcanio]
+    icon: thaumicboots:item.ItemSeasonBoots
+    desc: |
+      Energia mágica que surge em certas épocas do ano, presa num par de botas. Infusão
+      (instabilidade 10) sobre as Botas do Viajante: 2 fogos de artifício, corante
+      verde-limão, livro, espada de ferro, lanterna de abóbora, §eFoco de Gelo§r e muda de
+      pinheiro (Tabernus 75, Lux 50, Praecantatio 50, Motus 50, Auram 25).
+
+      Dizem que, em dezembro, elas viram outra coisa no Crisol...
+    tasks:
+      - get: thaumicboots:item.ItemSeasonBoots
+    rewards:
+      - xp: 5
+      - loot: comum
+
+  - id: botas_combinadas
+    title: "Meteoro Gelado"
+    type: main
+    deps: [lente_arcanio]
+    deps_hidden: [texploration:botas_meteoro, texploration:botas_cometa]
+    icon: thaumicboots:item.ItemCometMeteor
+    desc: |
+      As Botas do Meteoro e do Cometa (do Thaumic Exploration) numa só! Infusão
+      (instabilidade 0) com a §eLente de Arcânio§r no centro: Botas do Cometa, Botas do
+      Meteoro, 4 Salis Mundus, um Estilhaço de Fogo e um Equilibrado (Permutatio 75,
+      Praecantatio 50, Fabrico 50, Caelum 25, Tabernus 25).
+
+      Resultado: §eBotas Geladas do Meteoro Congelado§r, com pulo e corrida, ganho de
+      velocidade em corridas longas, sem dano de queda e efeitos na água.
+    tasks:
+      - get: thaumicboots:item.ItemCometMeteor
+    rewards:
+      - xp: 6
+      - item: Thaumcraft:ItemResource:14 x8
+
+  - id: botas_meteoricas
+    title: "Cometa Meteórico"
+    type: optional
+    deps: [botas_combinadas]
+    icon: thaumicboots:item.ItemMeteoricComet
+    desc: |
+      O "outro método" de juntar as duas botas: a mesma infusão, trocando o Estilhaço de
+      Fogo por um de Ar. O resultado tem os mesmos números, só muda a aparência. Escolha o
+      seu estilo!
+    tasks:
+      - get: thaumicboots:item.ItemMeteoricComet
+    rewards:
+      - xp: 3
+      - loot: comum
+
+  - id: botas_vazio_meteoro
+    title: "Botas Meteóricas do Andarilho do Vazio"
+    type: normal
+    deps: [botas_combinadas]
+    icon: thaumicboots:item.ItemVoidMeteor
+    desc: |
+      Os corpos celestes do Vazio! As §eBotas do Andarilho do Vazio§r (Tainted Magic)
+      combinadas às do Meteoro. Infusão sobre a Lente de Arcânio: Botas do Andarilho do
+      Vazio, Botas do Meteoro, 4 Salis Mundus e 2 Estilhaços Equilibrados (mesmos aspectos
+      das outras combinações).
+
+      Pulo enorme, 5% de desconto de vis... §ce 5 de Warp enquanto estiverem nos pés.§r
+    tasks:
+      - get: thaumicboots:item.ItemVoidMeteor
+    rewards:
+      - xp: 8
+      - loot: raro
+
+  - id: botas_vazio_cometa
+    title: "Botas Maculadas do Cometa Eldritch"
+    type: normal
+    deps: [botas_combinadas]
+    icon: thaumicboots:item.ItemVoidComet
+    desc: |
+      A versão "cometa": Botas do Andarilho do Vazio + Botas do Cometa, com o mesmo resto da
+      receita. Mais velocidade que qualquer outra bota do pack (impulso de 0,645), 5% de
+      desconto de vis e, claro, §c5 de Warp§r.
+    tasks:
+      - get: thaumicboots:item.ItemVoidComet
+    rewards:
+      - xp: 8
+      - loot: raro
+
+  - id: sapateiro_mestre
+    title: "Sapateiro Celestial"
+    type: milestone
+    deps: [botas_vazio_meteoro, botas_vazio_cometa]
+    icon: thaumicboots:item.ItemVoidComet
+    banner: "Sapateiro Celestial"
+    subtitle: "As botas do Vazio e das estrelas"
+    desc: |
+      Dois pares de botas do Vazio com poder celeste. Agora você corre, pula e voa como
+      ninguém. Só não esqueça: o Warp das botas soma com o resto. A Parte 4 deste Volume
+      ensina a cuidar disso.
+    tasks:
+      - get: [thaumicboots:item.ItemVoidMeteor, thaumicboots:item.ItemVoidComet]
+    rewards:
+      - xp: 12
+      - kit: {name: "Kit do Sapateiro", items: ["thaumicboots:item.ItemArcaniumInterfacer x2", "Thaumcraft:ItemResource:14 x8", "Thaumcraft:ItemShard:6 x4", "minecraft:ender_eye x4"]}
+      - loot: epico
+
+  # ======================================================================
+  # PARTE 3 — THAUMIC INSURGENCE
+  # ======================================================================
+  - id: ti_inicio
+    title: "Insurgência Táumica"
+    type: info
+    icon: thaumicinsurgence:infusionIntercepter
+    deps_hidden: [thaumcraft:infusao]
+    desc: |
+      A aba §eThaumic Insurgence§r tem textos... estranhos. Alguém fez um pacto com uma
+      [Entidade] e deixou anotações em colchetes, gritos e propagandas. Não ligue: por trás
+      da loucura há invenções úteis para quem mexe com infusão e com Warp.
+
+      Blocos de mármore, pilares, pedestais, a Coroa Vermelha e a Primeira Varinha de Alastor
+      existem no mod, mas não têm receita neste pack.
+    tasks:
+      - check
+    rewards:
+      - xp: 1
+
+  - id: interceptador
+    title: "Interceptador de Infusão"
+    type: main
+    deps: [ti_inicio]
+    icon: thaumicinsurgence:infusionIntercepter
+    desc: |
+      "Cansado da infusão lenta? Eu desbloqueio sua matriz!" O §eInterceptador§r vai
+      §ediretamente embaixo do pedestal central§r do altar e recebe essência pela face de
+      baixo, por tubos ou pelo Provedor de Essência do Thaumic Energistics.
+
+      Infusão (instabilidade 10) sobre um §eConstruto Alquímico§r: 4 Alambiques Arcanos e 4
+      Construtos Alquímicos alternados (Praecantatio 100, Fames 100, Instrumentum 75,
+      Vinculum 50, Machina 50, Permutatio 25). §cA pesquisa custa 4 de Warp.§r
+    tasks:
+      - get: thaumicinsurgence:infusionIntercepter
+    rewards:
+      - xp: 8
+      - item: Thaumcraft:blockMetalDevice:1 x2
+      - loot: raro
+
+  - id: lente_louco
+    title: "Lente do Louco"
+    type: optional
+    deps: [ti_inicio]
+    icon: thaumicinsurgence:item.ItemThaumicInterfacer
+    desc: |
+      Um Taumômetro "mexido". Clique numa §ematriz de infusão§r e ela diz a
+      §einstabilidade§r atual; clique num nodo e ela mostra o equivalente em primais
+      energizados. Infusão sobre o Taumômetro com 2 Alambiques Arcanos e Ignis 8. A
+      instabilidade da receita é 64, então espere faíscas.
+    tasks:
+      - get: thaumicinsurgence:item.ItemThaumicInterfacer
+    rewards:
+      - xp: 3
+      - loot: comum
+
+  - id: sabao_trosma
+    title: "Sabão Trosma Sláintíochta"
+    type: normal
+    deps: [ti_inicio]
+    deps_hidden: [thaumcraft2:sabao]
+    icon: thaumicinsurgence:item.ItemSanitySoapAlpha
+    desc: |
+      O Sabão Sanitizante, turbinado. No Crisol: Sabão Sanitizante + 16 Sano e 32 Ordo.
+
+      Usado até o fim, ele apaga todo o Warp temporário e tem §e50%§r de chance de tirar 1 de
+      Warp normal (+25% sob Warp Ward, +25% dentro do Fluido Purificador). Ou seja: com os
+      dois, sempre funciona!
+    tasks:
+      - get: thaumicinsurgence:item.ItemSanitySoapAlpha x4
+    rewards:
+      - xp: 4
+      - item: Thaumcraft:ItemBathSalts x2
+
+  - id: sabao_alastor
+    title: "Sabão de Alastor"
+    type: optional
+    deps: [sabao_trosma]
+    icon: thaumicinsurgence:item.ItemSanitySoapBeta
+    desc: |
+      O único sabão que mexe no §eWarp permanente§r, e com um preço. No Crisol: Sabão Trosma
+      + 16 Alienis, 32 Permutatio e 32 Sano.
+
+      Chance de §e10%§r (+15% sob Warp Ward, +15% no Fluido Purificador) de transformar 1 de
+      Warp permanente em §e2 de Warp normal§r. Se falhar, você ganha 2 de Warp temporário.
+      Depois, limpe o normal com o Sabão Trosma.
+    tasks:
+      - get: thaumicinsurgence:item.ItemSanitySoapBeta x2
+    rewards:
+      - xp: 5
+      - loot: raro
+
+  - id: big_shot
+    title: "[Hyperlink Blocked]"
+    type: optional
+    deps: [ti_inicio]
+    icon: thaumicinsurgence:item.ItemBIGSHOT
+    desc: |
+      "[BIG SHOT]!" Óculos da Descoberta no Crisol com 128 Lucrum, 64 Alienis, 64 Tenebrae,
+      64 Permutatio e 32 Vinculum. Mostra nodos, dá 8% de desconto de vis, se conserta
+      sozinho... e §cdá 5 de Warp§r. Um negócio que você vai [Lamentar] pelo resto da vida?
+    tasks:
+      - get: thaumicinsurgence:item.ItemBIGSHOT
+    rewards:
+      - xp: 4
+      - loot: raro
+
+  # ======================================================================
+  # PARTE 4 — WARPTHEORY
+  # ======================================================================
+  - id: wt_inicio
+    title: "Teoria do Warp"
+    type: info
+    icon: WarpTheory:item.warptheory.paper
+    deps_hidden: [thaumcraft2:warp]
+    desc: |
+      Neste pack o §eWarpTheory§r soma dezenas de eventos novos aos do Thaumcraft. Cada
+      evento tem um §eWarp mínimo§r (somando permanente, normal e temporário): quanto mais
+      Warp, mais coisas podem acontecer, e algumas mexem no mundo ao seu redor.
+
+      A aba §eWarp Theory§r se abre pelo Sabão Sanitizante e pela Ciência Eldritch.
+      Algumas pesquisas só aparecem depois que você escaneia o sabão.
+    tasks:
+      - check
+    rewards:
+      - xp: 1
+
+  - id: papel_tornassol
+    title: "Papel de Tornassol Arcano"
+    type: main
+    deps: [wt_inicio]
+    icon: WarpTheory:item.warptheory.paper
+    desc: |
+      Medir o Warp sem adivinhar. Arcano sem formato (Aqua 8): Salis Mundus + papel + Salis
+      Mundus.
+
+      Clique direito: até 10 de Warp, "sem reação"; até 25, o papel fica com cor doentia;
+      até 50, ele se desfaz; acima disso, §cpega fogo§r. O chat mostra os três tipos de
+      Warp separados. Com até 10 de Warp, o papel não é gasto.
+    tasks:
+      - get: WarpTheory:item.warptheory.paper x4
+    rewards:
+      - xp: 3
+      - item: minecraft:paper x16
+
+  - id: eventos_leves
+    title: "Eventos de Warp: os primeiros sinais"
+    type: info
+    deps: [papel_tornassol]
+    icon: minecraft:pumpkin
+    desc: |
+      Alguns eventos do WarpTheory e o Warp mínimo (config do pack):
+      §e5§r mensagens estranhas no chat • §e10§r explosão falsa • §e15§r moeda aos seus pés,
+      abóbora • §e20§r fantasmas, botar ovos • §e25§r Creeper falso, chuva falsa • §e30§r
+      morcegos • §e35§r sangue, Enderman falso • §e40§r Creeper amigável • §e45§r pulo e
+      náusea • §e50§r insônia (não dá para dormir), dreno da varinha • §e55§r chuva •
+      §e60§r morcegos de fogo • §e65§r cegueira e veneno • §e70§r chuva de animais.
+
+      Na maioria, só sustos. Daqui para cima a coisa fica séria.
+    tasks:
+      - check
+    rewards:
+      - xp: 2
+
+  - id: eventos_graves
+    title: "Eventos de Warp: a loucura"
+    type: info
+    deps: [eventos_leves]
+    icon: minecraft:skull:1
+    desc: |
+      §e75§r Doppelgänger (uma cópia sua, ligada a você) • §e80§r endermen de verdade e
+      poção de Wither • §e85§r vento • §e90§r tossir pérola do Fim • §e95§r bola de fogo de
+      blaze • §e100§r lixo "de presente" • §e110§r obsidiana • §e120§r raios • §e125§r troca
+      de inventário • §e130§r teleporte aleatório • §e140§r aceleração • §e150§r inventário
+      embaralhado, Wither falso • §e160§r §cbomba com contagem regressiva§r • §e170§r
+      cogumelos • §e175§r neve • §e180§r decadência • §e190§r pântano (árvores aleatórias) •
+      §e200§r §4um Wither de verdade§r.
+
+      Moral da história, Herói: não deixe o Warp chegar lá.
+    tasks:
+      - check
+    rewards:
+      - xp: 2
+
+  - id: pedaco_algo
+    title: "Um Pedaço de Alguma Coisa"
+    type: optional
+    deps: [wt_inicio]
+    icon: WarpTheory:item.warptheory.something
+    desc: |
+      Carne crua (frango, boi, porco ou peixe) exposta à energia eldritch vira... isso. No
+      Crisol: carne + 16 Alienis e 8 Permutatio. A pesquisa custa 2 de Warp.
+
+      "Provavelmente comestível." §cComer dá Warp dos três tipos.§r Só para
+      colecionadores, ou para quem quer Warp de propósito para as pesquisas Eldritch.
+    tasks:
+      - get: WarpTheory:item.warptheory.something
+    rewards:
+      - loot: comum
+
+  - id: lagrima_impura
+    title: "Lágrima Impura"
+    type: main
+    deps: [papel_tornassol]
+    deps_hidden: [thaumcraft2:epifania]
+    icon: WarpTheory:item.warptheory.cleanserminor
+    desc: |
+      O primeiro remédio de verdade. Infusão (instabilidade 5) sobre uma §eEstrela do
+      Nether§r: 2 Salis Mundus, 2 Lágrimas de Ghast, 2 diamantes e 2 quartzos do Nether
+      (Alienis 16, Permutatio 16).
+
+      Só funciona com §e50 de Warp ou mais§r e tira 5 por vez. Não zera nada, mas te afasta
+      dos piores eventos.
+    tasks:
+      - get: WarpTheory:item.warptheory.cleanserminor
+    rewards:
+      - xp: 6
+      - item: minecraft:ghast_tear x4
+
+  - id: lagrima_pura
+    title: "Lágrima Pura"
+    type: normal
+    deps: [lagrima_impura]
+    icon: WarpTheory:item.warptheory.cleanser
+    desc: |
+      Outra Estrela do Nether no centro, agora com 2 §eLágrimas Impuras§r no lugar das de
+      Ghast (o resto igual). Ela apaga §etodo§r o seu Warp, inclusive o permanente (a config
+      do pack permite).
+
+      §cO preço:§r toda essa energia sai de uma vez. Vários eventos de Warp disparam na
+      hora, e nem o Warp Ward segura esses. Use num lugar seguro, longe da base.
+    tasks:
+      - get: WarpTheory:item.warptheory.cleanser
+    rewards:
+      - xp: 8
+      - loot: raro
+
+  - id: talisma_purificacao
+    title: "Talismã de Purificação"
+    type: milestone
+    deps: [lagrima_pura]
+    icon: WarpTheory:item.warptheory.amulet
+    banner: "Mente em Paz"
+    subtitle: "O Warp escorre aos poucos"
+    desc: |
+      Duas Lágrimas Puras num amuleto, liberando o Warp devagar, sem a indigestão. Infusão
+      (instabilidade 10) sobre um §eAmuleto Mundano§r: 2 Lágrimas Puras, 2 ouros, 2
+      diamantes e 2 Salis Mundus (Alienis 32, Permutatio 32, Praecantatio 64).
+
+      Vestido, ele de vez em quando dispara um evento e tira o custo dele do seu Warp.
+      Quanto mais Warp, mais vezes. São §e6 Estrelas do Nether§r ao todo; valeu cada
+      Wither, não foi?
+    tasks:
+      - get: WarpTheory:item.warptheory.amulet
+    rewards:
+      - xp: 12
+      - kit: {name: "Kit da Mente Limpa", items: ["Thaumcraft:ItemSanitySoap x4", "Thaumcraft:ItemBathSalts x4", "WarpTheory:item.warptheory.paper x4", "minecraft:nether_star"]}
+      - loot: epico
+
+  - id: pocao_esquecimento
+    title: "Poção do Doce Esquecimento"
+    type: optional
+    deps: [wt_inicio]
+    icon: WarpTheory:item.warptheory.oblivionpotion
+    desc: |
+      O último recurso, desbloqueado desde o início. Arcano (25 de cada primal): Mercúrio,
+      Cérebro de Zumbi, Mercúrio / Estilhaço de Entropia, frasco de água, Estilhaço de
+      Entropia / Lágrima de Ghast, Estilhaço de Entropia, Lágrima de Ghast.
+
+      §4BEBER APAGA TODO O WARP E TAMBÉM TODAS AS PESQUISAS, ITENS ESCANEADOS E ASPECTOS
+      DESCOBERTOS.§r O jogo avisa e pede 10 segundos bebendo para confirmar. Esta quest só
+      pede que você §etenha§r a poção. Guarde-a num baú e torça para nunca precisar.
+    tasks:
+      - get: WarpTheory:item.warptheory.oblivionpotion
+    rewards:
+      - xp: 3
+
+  # ======================================================================
+  # FINAL
+  # ======================================================================
+  - id: mestre_extras
+    title: "Ponte entre Mundos"
+    type: milestone
+    deps: [montador_arcano, provedor_avancado, sapateiro_mestre, talisma_purificacao, interceptador]
+    icon: thaumicenergistics:thaumicenergistics.block.advanced.infusion.provider
+    banner: "Ponte entre Mundos"
+    subtitle: "Ciência, magia e sanidade"
+    desc: |
+      Essência na rede, infusões que se alimentam sozinhas, receitas arcanas no automático,
+      botas que correm entre as estrelas e o Vazio, e um talismã que mantém sua cabeça no
+      lugar. A ponte entre a máquina e a magia está de pé, Herói.
+
+      Agora sim: o Warp que as pesquisas mais perigosas trazem já não assusta tanto. O Selo
+      Arcano espera por você!
+    tasks:
+      - check
+    rewards:
+      - xp: 15
+      - loot: epico
