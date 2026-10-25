@@ -598,10 +598,40 @@ quests:
     rewards:
       - loot: incomum
 
+  - id: miofibra
+    title: "Miofibra de Carbono"
+    type: normal
+    deps: [fiacao]
+    icon: powersuits:powerArmorComponent:13
+    desc: |
+      A "fibra muscular" do traje: §eMiofibra de Carbono§r — 9 Placas de Carbono (IC2), aço negro
+      e bolas de aço negro (EnderIO) ou carvão pulverizado e carvão liquefeito (Thermal). Confira
+      a sua variante no NEI e faça §e6§r.
+    tasks:
+      - get: powersuits:powerArmorComponent:13 x6
+    rewards:
+      - xp: 3
+      - item: minecraft:coal x16
+
+  - id: gel_miofibra
+    title: "Gel de Miofibra"
+    type: normal
+    deps: [miofibra]
+    icon: powersuits:powerArmorComponent:15
+    desc: |
+      Creme de magma com placas de carbono e resina (IC2), aço negro (EnderIO) ou lã de rocha e
+      carvão pulverizado (Thermal) = §eGel de Miofibra§r, o "lubrificante" que mantém as fibras
+      unidas. Faça §e2§r.
+    tasks:
+      - get: powersuits:powerArmorComponent:15 x2
+    rewards:
+      - xp: 3
+      - item: minecraft:magma_cream x2
+
   - id: musculo_artificial
     title: "Músculo Artificial"
     type: optional
-    deps: [servomotor]
+    deps: [gel_miofibra]
     icon: powersuits:powerArmorComponent:16
     desc: |
       §eMiofibra de Carbono§r (placas de carbono do IC2, aço negro do EnderIO ou carvão pulverizado
@@ -613,11 +643,24 @@ quests:
     rewards:
       - loot: incomum
 
+  - id: assistencia_mecanica
+    title: "Módulo: Assistência Mecânica"
+    type: optional
+    deps: [musculo_artificial]
+    icon: powersuits:powerArmorComponent:16
+    desc: |
+      "Assistência robótica para reduzir o efeito do peso no usuário." O módulo §eAssistência
+      Mecânica§r custa §e4 Músculos Artificiais§r — o melhor amigo de quem empilhou blindagens e
+      baterias e passou do limite de 25 kg.
+    tasks:
+      - get: powersuits:powerArmorComponent:16 x4
+    rewards:
+      - loot: raro
+
   - id: em_movimento
     title: "Céu, Terra e Mar"
     type: milestone
     deps: [jetpack, assistente_corrida, planador, paraquedas]
-    deps_any: false
     icon: powersuits:powerArmorComponent:4
     banner: "Céu, Terra e Mar"
     subtitle: "O traje aprende a se mover"
