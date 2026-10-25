@@ -1,0 +1,700 @@
+chapter:
+  id: atm_comeco
+  title: Capítulo 1 — O Começo
+  prefix: ATM
+  order: 905
+  icon: minecraft:log
+  desc: |
+    §6Toda lenda tem uma primeira árvore.§r Do tronco ao ferro, do ferro ao Nether, do Nether ao
+    Fim, e do Fim ao pacote que destranca o Allthemodium: oito lingotes de Enderium, oito de
+    Soularium e uma Estrela do Nether. Este capítulo é a espinha dorsal da série.
+quests:
+- id: primeira_arvore
+  title: A Primeira Árvore
+  type: main
+  desc: |
+    Todo Herói começa batendo numa árvore, e não há vergonha nenhuma nisso. Eu mesma comecei
+    assim, só que com mais livros.
+
+    Soque o tronco de uma árvore comum e junte §e8 troncos§r. Madeira vai virar bancada,
+    ferramenta, tocha, porta... e muito mais do que você imagina. Plante uma muda depois, o
+    mundo agradece.
+  tasks:
+  - get: minecraft:log:* x8
+  rewards:
+  - xp: 2
+  - item:
+    - minecraft:apple x4
+    - minecraft:bread x4
+- id: bancada_inicial
+  title: Bancada de Trabalho
+  type: main
+  deps: [primeira_arvore]
+  desc: |
+    Quatro tábuas em quadrado e pronto: a §eBancada§r, o altar da criação! É nela que quase toda
+    receita nasce, então coloque uma bem no meio da sua primeira base.
+
+    §aDica:§r se esquecer uma receita, o NEI mostra tudo. Aperte R com o mouse sobre o item.
+  tasks:
+  - craft: minecraft:crafting_table
+  rewards:
+  - xp: 2
+  - item:
+    - minecraft:stick x16
+- id: picareta_madeira
+  title: Picareta de Madeira
+  type: main
+  deps: [bancada_inicial]
+  desc: |
+    Duas varetas e três tábuas: sua primeira §ePicareta§r. Ela é fraquinha, mas é a única coisa
+    que arranca pedra sem desmoronar na sua mão.
+
+    Faça uma e vá direto à primeira rocha que encontrar.
+  tasks:
+  - craft: minecraft:wooden_pickaxe
+  rewards:
+  - xp: 2
+  - item:
+    - minecraft:torch x8
+- id: pedra_e_fornalha
+  title: Pedra e Fornalha
+  type: main
+  deps: [picareta_madeira]
+  desc: |
+    Minere §e32 pedras§r (elas viram pedregulho) e monte uma §eFornalha§r em volta de um
+    quadrado vazio de 8 pedregulhos. Com ela você assa comida e funde minério.
+
+    Não esqueça de combustível: carvão, lenha, o que tiver à mão.
+  tasks:
+  - get: minecraft:cobblestone x32
+  - craft: minecraft:furnace
+  rewards:
+  - xp: 3
+  - item:
+    - minecraft:coal x16
+- id: luz_e_carvao
+  title: Luz na Escuridão
+  deps: [pedra_e_fornalha]
+  desc: |
+    Mobs gostam do escuro e você, de continuar inteiro. Minere §e16 carvões§r e faça §eTochas§r
+    para marcar cavernas e iluminar sua base.
+
+    §aDica:§r tocha à direita ao descer, assim você acha o caminho de volta.
+  tasks:
+  - get: minecraft:coal x16
+  - craft: minecraft:torch
+  rewards:
+  - xp: 3
+  - item:
+    - minecraft:torch x32
+- id: ferro_bruto
+  title: Ferro de Verdade
+  type: main
+  deps: [pedra_e_fornalha]
+  desc: |
+    Hora do metal! Desça até as camadas médias, ache minério de ferro e passe pela fornalha:
+    junte §e12 lingotes de ferro§r. Ferro é o pão com manteiga do equipamento.
+
+    Cuidado com cavernas fundas: leve água e blocos.
+  tasks:
+  - get: minecraft:iron_ingot x12
+  rewards:
+  - xp: 4
+  - item:
+    - minecraft:bread x8
+- id: picareta_ferro
+  title: Picareta de Ferro
+  type: main
+  deps: [ferro_bruto]
+  desc: |
+    Três lingotes e duas varetas: a §ePicareta de Ferro§r minera diamante e ouro. Ela abre o
+    próximo andar da sua jornada, Herói.
+
+    Guarde a de pedra de reserva para quando a de ferro estiver gasta.
+  tasks:
+  - craft: minecraft:iron_pickaxe
+  rewards:
+  - xp: 4
+  - item:
+    - minecraft:iron_ingot x8
+- id: armadura_ferro
+  title: Armadura de Ferro
+  deps: [ferro_bruto]
+  desc: |
+    Peitoral de ferro: oito lingotes, nenhum arrependimento. Com ele (e o resto do conjunto, se
+    der) você sobrevive a creepers com mais folga e a esqueletos com menos susto.
+
+    §aDica:§r o NEI mostra a receita de elmo, calças e botas também.
+  tasks:
+  - craft: minecraft:iron_chestplate
+  rewards:
+  - xp: 4
+  - item:
+    - minecraft:cooked_beef x16
+- id: balde_agua
+  title: Balde de Ferro
+  deps: [ferro_bruto]
+  desc: |
+    Três lingotes em V formam o §eBalde§r. Ele carrega água (para apagar fogo e fazer obsidiana)
+    e lava (para quase tudo que importa depois).
+
+    Leve sempre um na mochila. Água salva vidas, e a sua vez vai chegar.
+  tasks:
+  - craft: minecraft:bucket
+  rewards:
+  - xp: 3
+  - item:
+    - minecraft:water_bucket
+- id: comida_boa
+  title: Comida Decente
+  deps: [picareta_ferro]
+  desc: |
+    Herói faminto é Herói devagar. Cozinhe §e16 bifes§r (ou pratos equivalentes) e coma antes de
+    entrar em perigo, não depois.
+
+    Bom estoque de comida vai ser essencial no Nether e, mais ainda, nas dimensões do capítulo
+    seguinte.
+  tasks:
+  - get: minecraft:cooked_beef x16
+  rewards:
+  - xp: 3
+  - item:
+    - minecraft:golden_carrot x8
+- id: cama
+  title: Cama e Ponto de Retorno
+  deps: [bancada_inicial]
+  desc: |
+    Durma uma noite e a cama marca seu ponto de renascimento. Três lãs e três tábuas.
+
+    Isso conta muito quando uma tentativa de enfrentar chefes dá errado. Volte, recupere itens e
+    tente de novo com a cabeça fria.
+  tasks:
+  - craft: minecraft:bed
+  rewards:
+  - xp: 3
+  - item:
+    - minecraft:iron_ingot x6
+- id: diamantes
+  title: Brilho Azul
+  type: main
+  deps: [picareta_ferro]
+  desc: |
+    Desça até as camadas bem fundas (perto da bedrock) e procure o brilho azul. Junte §e5
+    diamantes§r.
+
+    §cPerigo:§r lava costuma morar nessa altura. Nunca cave direto para baixo!
+  tasks:
+  - get: minecraft:diamond x5
+  rewards:
+  - xp: 5
+  - item:
+    - minecraft:diamond x2
+- id: picareta_diamante
+  title: Picareta de Diamante
+  type: main
+  deps: [diamantes]
+  desc: |
+    Duas varetas e três diamantes. Essa §ePicareta de Diamante§r quebra obsidiana, a pedra que
+    protege o portal do Nether, e muita coisa mais.
+
+    Se a durabilidade assustar, o encantamento vem logo em seguida.
+  tasks:
+  - craft: minecraft:diamond_pickaxe
+  rewards:
+  - xp: 5
+  - item:
+    - minecraft:obsidian x4
+- id: mesa_encantamento
+  title: Mesa de Encantamento
+  deps: [picareta_diamante]
+  desc: |
+    Um livro, dois diamantes e quatro blocos de obsidiana viram a §eMesa de Encantamento§r.
+    Rodeie-a de estantes de livros para liberar encantamentos melhores.
+
+    Encante a picareta, a espada e a armadura. Mais tarde você vai agradecer.
+  tasks:
+  - craft: minecraft:enchanting_table
+  rewards:
+  - xp: 5
+  - item:
+    - minecraft:bookshelf x8
+    - minecraft:book x8
+- id: nivel_xp
+  title: Experiência Acumulada
+  deps: [mesa_encantamento]
+  desc: |
+    Matar monstros, fundir minério e cozinhar rendem experiência. Alcance o §enível 20§r para
+    gastar bem na mesa de encantamento.
+
+    Não gaste tudo de uma vez. Guarde um pouco para o martelo e a bigorna.
+  tasks:
+  - xp: 20
+  rewards:
+  - xp: 3
+  - item:
+    - minecraft:experience_bottle x8
+- id: obsidiana
+  title: Obsidiana
+  type: main
+  deps: [picareta_diamante]
+  desc: |
+    Água sobre lava parada vira §eobsidiana§r. Você precisa de §e10 blocos§r para a moldura do
+    portal do Nether, só com picareta de diamante.
+
+    §aDica:§r um balde de água no lugar certo evita ficar parado perto da lava.
+  tasks:
+  - get: minecraft:obsidian x10
+  rewards:
+  - xp: 4
+  - item:
+    - minecraft:flint_and_steel
+- id: isqueiro
+  title: Pederneira e Aço
+  type: main
+  deps: [obsidiana]
+  desc: |
+    Um lingote de ferro e uma pederneira. Com o §eIsqueiro§r você acende o portal do Nether e
+    põe fogo em tudo que precisar queimar.
+
+    Leve também uma picareta de reserva, blocos de pedra e comida antes de atravessar.
+  tasks:
+  - craft: minecraft:flint_and_steel
+  rewards:
+  - xp: 3
+  - item:
+    - minecraft:cobblestone x32
+    - minecraft:bread x8
+- id: entrar_nether
+  title: O Nether
+  type: portal
+  deps: [isqueiro]
+  desc: |
+    Monte a moldura 4x5 de obsidiana (os cantos podem ficar vazios), acenda com o isqueiro e
+    cruze o portal. Você acaba de entrar no §eNether§r.
+
+    §cPerigo:§r ghasts, lava e piglins. Em dúvida, volte. Marque o ponto do portal com um bloco
+    colorido.
+  tasks:
+  - visit:
+      dim: -1
+      name: O Nether
+  rewards:
+  - xp: 8
+  - kit:
+      name: Kit do Nether
+      items:
+      - minecraft:cobblestone x64
+      - minecraft:cooked_beef x16
+      - minecraft:torch x32
+- id: quartzo_nether
+  title: Quartzo do Nether
+  deps: [entrar_nether]
+  desc: |
+    Brilhando nas paredes de netherrack, o §eQuartzo§r é a base de muita tecnologia:
+    comparadores, sensores, ME. Junte §e16 unidades§r.
+
+    Use óculos mentais: lava flui a qualquer hora naqueles túneis.
+  tasks:
+  - get: minecraft:quartz x16
+  rewards:
+  - xp: 4
+  - item:
+    - minecraft:quartz x16
+- id: ouro_nether
+  title: Ouro
+  type: main
+  deps: [entrar_nether]
+  desc: |
+    Ouro é abundante no Nether. Junte §e16 lingotes§r (minérios de ouro de lá, ou escambo com
+    piglins).
+
+    Você vai precisar dele para o Soularium e, mais adiante, para outras ligas.
+  tasks:
+  - get: minecraft:gold_ingot x16
+  rewards:
+  - xp: 4
+  - item:
+    - minecraft:gold_ingot x8
+- id: areia_almas
+  title: Areia das Almas
+  type: main
+  deps: [entrar_nether]
+  desc: |
+    Lenta e pegajosa, a §eAreia das Almas§r aparece no Vale das Almas e em áreas espalhadas pelo
+    Nether. Pegue §e16 blocos§r: servem para o Soularium e para invocar o Wither.
+
+    §aDica:§r o Wither pede quatro blocos dela, em forma de T.
+  tasks:
+  - get: minecraft:soul_sand x16
+  rewards:
+  - xp: 4
+  - item:
+    - minecraft:soul_sand x8
+- id: cacar_blazes
+  title: Caçada aos Blazes
+  deps: [areia_almas]
+  desc: |
+    Em fortalezas do Nether, spawners geram §eBlazes§r: fogo ambulante que atira bolas
+    flamejantes. Mate §e6§r e fuja do fogo.
+
+    §aDica:§r leve bolas de neve ou uma poção de resistência ao fogo.
+  tasks:
+  - kill: Blaze x6
+  rewards:
+  - xp: 6
+  - item:
+    - minecraft:blaze_powder x4
+- id: varas_blaze
+  title: Varas Incandescentes
+  type: main
+  deps: [cacar_blazes]
+  desc: |
+    As varas dos Blazes alimentam fornalhas, poções e as receitas dos Olhos do Fim. Junte §e8
+    Varas§r.
+
+    Elas também aparecem no comprimido de blocos de vara mais à frente no livro de materiais.
+  tasks:
+  - get: minecraft:blaze_rod x8
+  rewards:
+  - xp: 5
+  - item:
+    - minecraft:blaze_rod x4
+- id: cacar_ghasts
+  title: Lamentos no Ar
+  type: optional
+  deps: [entrar_nether]
+  desc: |
+    Se ouvir um choro estranho, olhe para o céu. Os §eGhasts§r flutuam, soltam bolas explosivas
+    e dropam lágrimas. Rebata a bola de fogo com um golpe e derrube-os.
+
+    Mate §e2§r. Sim, é perigoso. Sim, vale a pena.
+  tasks:
+  - kill: Ghast x2
+  rewards:
+  - xp: 6
+  - item:
+    - minecraft:ghast_tear x2
+    - minecraft:gunpowder x16
+- id: crania_wither
+  title: Três Crânios
+  type: main
+  deps: [areia_almas]
+  desc: |
+    Esqueletos Wither guardam fortalezas do Nether. Cada um tem chance de soltar um §eCrânio de
+    Esqueleto Wither§r. Junte §e3§r para invocar o Wither.
+
+    Leve uma espada afiada e seja paciente: a chance não é alta.
+  tasks:
+  - get: minecraft:skull:1 x3
+  rewards:
+  - xp: 8
+  - item:
+    - minecraft:diamond x4
+- id: invocar_wither
+  title: O Wither
+  type: boss
+  deps: [crania_wither]
+  desc: |
+    Quatro blocos de areia das almas em T, três crânios no topo: o §eWither§r desperta! Faça
+    isso numa arena ampla e aberta, longe da base.
+
+    §cPerigo:§r a explosão inicial é grande. Armadura de diamante e poções de cura ajudam.
+    Mantenha o equipamento bom e vá com cuidado.
+  tasks:
+  - kill: WitherBoss x1
+  rewards:
+  - xp: 20
+  - loot: raro
+- id: estrela_nether
+  title: Estrela do Nether
+  type: milestone
+  deps: [invocar_wither]
+  desc: |
+    O Wither deixa cair uma §eEstrela do Nether§r. Essa joia é uma das três exigências para
+    abrir o Allthemodium, e também ingrediente de faróis, ligas e peças da Estrela ATM.
+
+    Guarde com carinho: ela vai para o Alloy Smelter daqui a pouco.
+  tasks:
+  - get: minecraft:nether_star
+  rewards:
+  - xp: 10
+  - item:
+    - minecraft:nether_star
+- id: netherita
+  title: Detritos Antigos
+  type: main
+  deps: [ouro_nether, varas_blaze]
+  desc: |
+    Escavando em níveis profundos do Nether você acha o §eDetrito Antigo§r (cortesia do Et
+    Futurum). Com ele, ouro e a forja certa, sai a §eNetherita§r. Junte §e1 lingote de
+    netherita§r.
+
+    Ela é o primeiro degrau da escada: ferramentas de netherita viram ferramentas de
+    Allthemodium.
+  tasks:
+  - get: etfuturum:netherite_ingot
+  rewards:
+  - xp: 10
+  - item:
+    - etfuturum:netherite_ingot
+- id: cacar_piglins
+  title: Escambo no Nether
+  type: optional
+  deps: [ouro_nether]
+  desc: |
+    Piglins trocam itens por ouro e atacam quem não usa nada dourado. Derrube §e3§r e confira os
+    drops.
+
+    §aDica:§r uma peça de armadura de ouro os acalma, mas não impede de todo.
+  tasks:
+  - kill: netherlicious.Piglin x3
+  rewards:
+  - xp: 5
+  - item:
+    - minecraft:gold_ingot x6
+- id: cacar_endermen
+  title: Olhos Roxos
+  type: main
+  deps: [picareta_ferro]
+  desc: |
+    Endermen teletransportam e odeiam quem os encara. À noite ou no Nether, mate §e8§r para
+    juntar pérolas. Olhe para os pés deles, não para o rosto.
+
+    §aDica:§r em um teto de dois blocos de altura você escapa dos golpes.
+  tasks:
+  - kill: Enderman x8
+  rewards:
+  - xp: 6
+  - item:
+    - minecraft:ender_pearl x4
+- id: perolas_ender
+  title: Pérolas do Ender
+  type: main
+  deps: [cacar_endermen]
+  desc: |
+    Cada pérola é meio caminho do Fim. Junte §e12 Pérolas do Ender§r: elas viram Olhos do Fim
+    com pó de blaze, e um punhado servirá ao Enderium.
+
+    Jogue uma pérola para se teletransportar, mas cuidado com o dano de queda.
+  tasks:
+  - get: minecraft:ender_pearl x12
+  rewards:
+  - xp: 6
+  - item:
+    - minecraft:ender_pearl x4
+- id: olhos_fim
+  title: Olhos do Fim
+  type: main
+  deps: [perolas_ender, varas_blaze]
+  desc: |
+    Pó de blaze mais pérola: §eOlho do Fim§r. Eles apontam o caminho até a fortaleza oculta e
+    ativam o portal para o Fim. Faça §e12§r por segurança.
+
+    Lance um olho e siga a direção em que ele voa.
+  tasks:
+  - get: minecraft:ender_eye x12
+  rewards:
+  - xp: 8
+  - item:
+    - minecraft:ender_eye x4
+- id: entrar_fim
+  title: O Fim
+  type: portal
+  deps: [olhos_fim]
+  desc: |
+    Ache o portal na fortaleza subterrânea, encaixe os olhos na moldura e pule. Bem-vindo ao
+    §eFim§r.
+
+    §cPerigo:§r o vazio engole quem cai. Leve blocos para pontes e esteja pronto para o dragão.
+  tasks:
+  - visit:
+      dim: 1
+      name: O Fim
+  rewards:
+  - xp: 10
+  - kit:
+      name: Kit do Fim
+      items:
+      - minecraft:cobblestone x64
+      - minecraft:cooked_beef x16
+      - minecraft:ender_pearl x4
+- id: derrotar_dragao
+  title: O Dragão do Fim
+  type: boss
+  deps: [entrar_fim]
+  desc: |
+    O grande §eDragão§r guarda a ilha. Destrua os cristais nos pilares (cuidado: alguns têm
+    jaulas) e depois enfrente o dragão enquanto ele pousa para respirar.
+
+    Arco, flechas e blocos para se esconder ajudam. Boa sorte, Herói.
+  tasks:
+  - kill: etfuturum.ender_dragon x1
+  rewards:
+  - xp: 30
+  - loot: epico
+- id: ovo_dragao
+  title: O Ovo do Dragão
+  type: optional
+  deps: [derrotar_dragao]
+  desc: |
+    No pedestal, depois da morte do dragão, repousa o §eOvo do Dragão§r. Ele muda de lugar
+    quando tocado, então use um pistão ou tocha para empurrá-lo.
+
+    Troféu perfeito para uma base respeitável.
+  tasks:
+  - get: minecraft:dragon_egg
+  rewards:
+  - xp: 10
+  - item:
+    - minecraft:ender_pearl x8
+- id: cacar_shulkers
+  title: Caixas Voadoras
+  type: optional
+  deps: [entrar_fim]
+  desc: |
+    Nas cidades do Fim vivem os §eShulkers§r, cuja casca vira Caixa de Shulker (Et Futurum).
+    Derrube §e2§r para ver se algum deixa cair a casca.
+
+    Os projéteis dão levitação. Fique no chão de pedra.
+  tasks:
+  - kill: etfuturum.shulker x2
+  rewards:
+  - xp: 6
+  - item:
+    - minecraft:ender_pearl x4
+- id: gerador_stirling
+  title: Primeira Energia
+  deps: [picareta_ferro]
+  desc: |
+    O §eAlloy Smelter§r do EnderIO e o Allthemodium pedem RF. Comece com um §eGerador de
+    Stirling§r (ele queima combustível sólido) e alimente de carvão ou lenha.
+
+    Nada de pressa. Energia estável vale mais que energia rápida.
+  tasks:
+  - craft: EnderIO:blockStirlingGenerator
+  rewards:
+  - xp: 5
+  - item:
+    - minecraft:coal x32
+- id: banco_capacitores
+  title: Banco de Capacitores
+  deps: [gerador_stirling]
+  desc: |
+    Receitas grandes consomem muito RF de uma vez. Um §eBanco de Capacitores§r guarda a energia,
+    e o Alloy Smelter puxa dele.
+
+    O pedido mais caro da série é o do Allthemodium: 150.000 RF. Construa um banco antes.
+  tasks:
+  - craft: EnderIO:blockCapBank:1
+  rewards:
+  - xp: 6
+  - item:
+    - minecraft:redstone x32
+- id: alloy_smelter
+  title: Fundidora de Ligas
+  type: main
+  deps: [banco_capacitores]
+  desc: |
+    A §eFundidora de Ligas§r (Alloy Smelter) do EnderIO é o coração deste capítulo: é nela que
+    você junta metais e outros ingredientes. Ligue à energia e coloque ingredientes nos três
+    slots.
+
+    §aDica:§r confira a receita de cada liga no NEI (tecla U com o item em foco).
+  tasks:
+  - craft: EnderIO:blockAlloySmelter
+  rewards:
+  - xp: 8
+  - item:
+    - minecraft:iron_ingot x16
+- id: soularium
+  title: Soularium
+  type: main
+  deps: [alloy_smelter, areia_almas, ouro_nether]
+  desc: |
+    Uma areia das almas e um lingote de ouro na Fundidora de Ligas dão o §eSoularium§r (aqui
+    chamado Almário). O Allthemodium pede §e8 lingotes§r dele.
+
+    §aDica:§r junte tudo de uma vez e deixe a máquina trabalhar.
+  tasks:
+  - get: EnderIO:itemAlloy:7 x8
+  rewards:
+  - xp: 8
+  - item:
+    - minecraft:soul_sand x16
+    - minecraft:gold_ingot x8
+- id: chumbo_platina
+  title: Chumbo e Platina
+  type: main
+  deps: [alloy_smelter, perolas_ender]
+  desc: |
+    Enderium é uma liga do Thermal: leva §echumbo§r e §eplatina§r (e pérolas). Ache os minérios,
+    funda e junte §e8 lingotes de chumbo§r e §e4 de platina§r.
+
+    Se não achar platina de cara, o NEI revela onde ela nasce e como alternativas de
+    processamento.
+  tasks:
+  - get: ore:ingotLead x8
+  - get: ore:ingotPlatinum x4
+  rewards:
+  - xp: 8
+  - item:
+    - minecraft:ender_pearl x8
+- id: enderium
+  title: Enderium
+  type: main
+  deps: [chumbo_platina]
+  desc: |
+    Pó de pyrotheum, chumbo, platina e pérolas rendem a liga Enderium. As máquinas do Thermal e
+    do EnderIO conseguem. Junte §e8 lingotes de Enderium§r.
+
+    Confira a rota que combina melhor com sua base e deixe automatizado se puder.
+  tasks:
+  - get: ThermalFoundation:material:76 x8
+  rewards:
+  - xp: 10
+  - item:
+    - ThermalFoundation:material:76 x4
+- id: o_pacote
+  title: O Pacote do Allthemodium
+  type: milestone
+  deps: [enderium, soularium, estrela_nether]
+  desc: |
+    Tudo reunido, Herói: §e8 Enderium§r, §e8 Soularium§r e §e1 Estrela do Nether§r. Isso é o que
+    abre o metal mais lendário do Registro.
+
+    Coloque os três na §eFundidora de Ligas§r com energia suficiente (150.000 RF) e a máquina
+    vai cuspir o primeiro §eAllthemodium bruto§r.
+  tasks:
+  - get: ThermalFoundation:material:76 x8
+  - get: EnderIO:itemAlloy:7 x8
+  - get: minecraft:nether_star
+  rewards:
+  - xp: 15
+  - kit:
+      name: Kit do Pacote
+      items:
+      - minecraft:redstone x64
+      - minecraft:blaze_rod x4
+  - loot: raro
+- id: allthemodium_bruto
+  title: O Primeiro Allthemodium
+  type: milestone
+  icon: allthemodiumlegacy:raw_allthemodium
+  deps: [o_pacote]
+  desc: |
+    Ele nasceu! §eAllthemodium bruto§r, feito no Alloy Smelter com o pacote. É a chave de tudo o
+    que vem a seguir: lingotes, ferramentas, a Plataforma de Teletransporte e as três dimensões.
+
+    O Capítulo 2 conta o resto. Respire fundo, Herói: o Volume dos Metais Impossíveis está
+    aberto.
+  tasks:
+  - get: allthemodiumlegacy:raw_allthemodium
+  rewards:
+  - xp: 20
+  - loot: epico
+  - kit:
+      name: Kit ATM
+      items:
+      - allthemodiumlegacy:raw_allthemodium x2
+      - allthemodiumlegacy:processing_hammer
+      - allthemodiumlegacy:legacy_guide

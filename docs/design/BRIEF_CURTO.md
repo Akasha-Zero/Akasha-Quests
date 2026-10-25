@@ -27,7 +27,9 @@ Nunca entregue desc de uma linha só. Exemplo do padrão esperado:
 > Sabe aquele brilho vermelho nas cavernas fundas? É §eRubi§r! Minere com picareta de ferro
 > ou melhor e funda na fornalha. Dois rubis e um graveto viram uma §eEspada de Rubi§r —
 > bem mais forte que diamante contra os bichos estranhos deste Volume.
-> §aDica:§r guarde alguns para a armadura; os chefes do OreSpawn não perdoam. Bora, Herói! Destaques com `§e` (item), `§a` (dica), `§c` (perigo). Nada inventado:
+> §aDica:§r guarde alguns para a armadura; os chefes do OreSpawn não perdoam. Bora, Herói!
+
+(Exemplo só de estilo — fatos sempre conferidos no registro/NEI.) Destaques com `§e` (item), `§a` (dica), `§c` (perigo). Nada inventado:
 se não souber, oriente a conferir no NEI.
 
 ## Formato (resumo)
