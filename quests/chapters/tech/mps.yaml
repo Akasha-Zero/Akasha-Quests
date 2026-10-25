@@ -1,0 +1,895 @@
+chapter:
+  id: mps
+  title: "Modular Powersuits"
+  prefix: ""
+  order: 380
+  icon: powersuits:item.powerArmorChestplate
+  desc: |
+    §bO Volume da Armadura Modular.§r Uma Mesa de Trabalho, uma armadura vazia e dezenas de
+    módulos: jetpack, voo, escudos, ferramentas, canhão de plasma... monte o seu traje peça por
+    peça. (Modular Powersuits 0.11.1 + Numina)
+
+quests:
+  # ======================================================================
+  # FASE 0 — A BANCADA E OS PRIMEIROS COMPONENTES
+  # ======================================================================
+  - id: receitas_mps
+    title: "Três Caminhos para o Mesmo Traje"
+    type: info
+    icon: powersuits:powerArmorComponent
+    desc: |
+      Bem-vindo ao Volume mais "faça você mesmo" do Registro! O Modular Powersuits é um traje
+      §everdadeiramente modular§r: as peças vêm vazias e você instala os módulos que quiser.
+
+      Uma particularidade deste pack: as receitas do MPS existem em §etrês versões§r, uma para
+      cada "família" de tecnologia:
+      §e• Thermal Expansion§r (invar, electrum, bobinas e estruturas do Thermal);
+      §e• Ender IO§r (aço elétrico, capacitores do EnderIO, aço negro);
+      §e• IndustrialCraft 2§r (placas de ferro, circuitos, placas de carbono, baterias do IC2).
+      Use a que combinar com a sua base — abra o NEI (tecla R) em cada componente e veja as
+      opções.
+    tasks:
+      - check
+    rewards:
+      - xp: 1
+
+  - id: fiacao
+    title: "Fiação"
+    type: main
+    deps: [receitas_mps]
+    icon: powersuits:powerArmorComponent
+    desc: |
+      Todo traje começa com fios. A §eFiação§r sai em lotes de 8: 6 cobres + 3 pratas (Thermal)
+      ou 2 Cabos de Ouro + redstone (IC2), entre outras opções no NEI.
+
+      Ela está em quase tudo: peças da armadura, solenoides, servos, capacitores... Faça §e16§r.
+    tasks:
+      - get: powersuits:powerArmorComponent x16
+    rewards:
+      - xp: 4
+      - choice: [ore:ingotCopper x12, ore:ingotSilver x6, minecraft:redstone x16]
+
+  - id: mesa
+    title: "Mesa de Trabalho Power Armor"
+    type: main
+    deps: [fiacao]
+    icon: powersuits:tile.tinkerTable
+    desc: |
+      O coração deste Volume: a §eMesa de Trabalho Power Armor§r (Tinker Table). Receitas: electrum,
+      esmeralda, Estrutura de Máquina e Bobina Transmissora (Thermal); ou aço elétrico,
+      esmeralda, Capacitor Básico e Chassi (EnderIO); ou placas de ferro, esmeralda, circuito e
+      Carcaça Básica (IC2).
+
+      Clique nela com qualquer peça do traje no inventário e a mágica começa.
+    tasks:
+      - get: powersuits:tile.tinkerTable
+    rewards:
+      - xp: 4
+      - choice: [minecraft:emerald x2, ore:ingotElectrum x4, ore:ingotInvar x4]
+
+  - id: mesa_info
+    title: "Como Usar a Mesa"
+    type: info
+    deps: [mesa]
+    icon: powersuits:tile.tinkerTable
+    desc: |
+      Na interface da Mesa:
+      §e1.§r Escolha uma peça do seu inventário (elmo, peitoral, perneiras, botas ou Power Fist).
+      §e2.§r A lista mostra §esó os módulos compatíveis§r com aquela peça e o §ecusto de
+      instalação§r (componentes que serão consumidos do seu inventário).
+      §e3.§r Instale. Depois, na aba de ajustes, mexa nos §econtroles deslizantes§r: mais
+      potência costuma significar mais gasto de energia, mais peso ou mais calor.
+      §e4.§r Desinstalar devolve parte dos componentes (a config usa 90%).
+
+      Lembre: a peça vazia não faz nada — nem guarda energia — até receber módulos.
+    tasks:
+      - check
+    rewards:
+      - xp: 1
+
+  - id: solenoide
+    title: "Solenoide"
+    type: main
+    deps: [fiacao]
+    icon: powersuits:powerArmorComponent:1
+    desc: |
+      6 Fiações + invar (Thermal), ferro + Liga Energética (EnderIO) ou ferro + circuito (IC2) =
+      §eSolenoide§r. É o "músculo elétrico" das ferramentas, do Servomotor, do Propulsor Iônico e
+      do Railgun. Faça §e4§r.
+    tasks:
+      - get: powersuits:powerArmorComponent:1 x4
+    rewards:
+      - xp: 4
+      - choice: [powersuits:powerArmorComponent x8, ore:ingotInvar x4, minecraft:iron_ingot x8]
+
+  - id: servomotor
+    title: "Servomotor"
+    type: main
+    deps: [solenoide]
+    icon: powersuits:powerArmorComponent:2
+    desc: |
+      2 Fiações + 2 Solenoides + um Servo Pneumático (Thermal), um Chassi (EnderIO) ou uma
+      Carcaça Básica (IC2) = §eServomotor§r. Movimento assistido: corrida, pulo, escalada,
+      amortecedor. Faça §e4§r.
+    tasks:
+      - get: powersuits:powerArmorComponent:2 x4
+    rewards:
+      - xp: 4
+      - choice: [powersuits:powerArmorComponent:1 x2, powersuits:powerArmorComponent x8, minecraft:redstone x16]
+
+  - id: capacitor_lv
+    title: "Capacitor LV"
+    type: main
+    deps: [fiacao]
+    icon: powersuits:powerArmorComponent:5
+    desc: |
+      A primeira bateria do traje! O §eCapacitor LV§r leva Fiação e uma fonte de energia básica:
+      uma Estrutura de Célula de Leadstone (Thermal), um Capacitor Básico (EnderIO) ou uma Bateria
+      Reutilizável (IC2). Ele é o custo do módulo §eBateria Básica§r.
+    tasks:
+      - get: powersuits:powerArmorComponent:5
+    rewards:
+      - xp: 4
+      - choice: [powersuits:powerArmorComponent x8, minecraft:redstone x16, minecraft:gold_ingot x4]
+
+  - id: capacitor_mv
+    title: "Capacitor MV"
+    type: normal
+    deps: [capacitor_lv]
+    icon: powersuits:powerArmorComponent:6
+    desc: |
+      4 Fiações + uma Estrutura de Célula Endurecida (Thermal), um Capacitor de Dupla Camada
+      (EnderIO) ou um Cristal de Energia (IC2) = §eCapacitor MV§r. Ele vira a §eBateria
+      Avançada§r e entra no Lança-Lâminas.
+    tasks:
+      - get: powersuits:powerArmorComponent:6
+    rewards:
+      - xp: 3
+      - item: powersuits:powerArmorComponent x8
+
+  - id: capacitor_hv
+    title: "Capacitor HV"
+    type: normal
+    deps: [capacitor_mv]
+    icon: powersuits:powerArmorComponent:7
+    desc: |
+      4 Fiações + uma Estrutura de Célula Ressonante (Thermal), um Capacitor Octádico (EnderIO) ou
+      um Cristal Lapotron (IC2) = §eCapacitor HV§r. Bateria Elite, Canhão de Plasma, Railgun e
+      Invocador de Raios dependem dele.
+    tasks:
+      - get: powersuits:powerArmorComponent:7
+    rewards:
+      - xp: 3
+      - item: powersuits:powerArmorComponent x8
+
+  - id: emissor_campo
+    title: "Emissor de Campo de Força"
+    type: normal
+    deps: [solenoide]
+    icon: powersuits:powerArmorComponent:11
+    desc: |
+      4 Solenoides + 4 pérolas do Fim + uma Estrutura de Tesserato cheia (Thermal), um Capacitor
+      Octádico (EnderIO) ou um Circuito Avançado (IC2) = §eEmissor de Campo de Força§r. Escudos,
+      propulsores, canhão de plasma, Blink Drive... Faça §e2§r.
+    tasks:
+      - get: powersuits:powerArmorComponent:11 x2
+    rewards:
+      - xp: 3
+      - item: minecraft:ender_pearl x4
+
+  - id: emissor_holograma
+    title: "Emissor de Holograma"
+    type: normal
+    deps: [fiacao]
+    icon: powersuits:powerArmorComponent:12
+    desc: |
+      Vidro, glowstone, corantes azul/verde/vermelho e uma bobina, capacitor ou circuito (conforme
+      a família) = §eEmissor de Holograma§r. Ele é a base dos módulos de visão: Visão Noturna,
+      Binóculos, Armadura Transparente e Camuflagem.
+    tasks:
+      - get: powersuits:powerArmorComponent:12
+    rewards:
+      - xp: 3
+      - item: minecraft:glowstone_dust x8
+
+  - id: circuito_controle
+    title: "Sobre o Circuito de Controle"
+    type: info
+    deps: [mesa_info]
+    icon: Mekanism:ControlCircuit:1
+    desc: |
+      §cUm aviso honesto, Herói.§r Vários módulos (Controle de Voo, Visão Noturna, geradores,
+      Ímã, Auto-Alimentador, Relógio, Bússola...) pedem um §eCircuito de Controle§r do MPS no
+      custo de instalação.
+
+      Neste pack, a receita do MPS para esse circuito aparece no NEI §egerando o Circuito de
+      Controle Avançado do Mekanism§r (os dois dividem o mesmo nome no dicionário de minérios), e
+      a Mesa exige o item exato do MPS. Antes de planejar esses módulos, confira no NEI/na Mesa
+      se o seu servidor oferece o Circuito de Controle do MPS. Os módulos deste capítulo foram
+      escolhidos para não depender dele.
+    tasks:
+      - check
+    rewards:
+      - xp: 1
+
+  # ======================================================================
+  # FASE 1 — AS PEÇAS DO TRAJE
+  # ======================================================================
+  - id: elmo
+    title: "Elmo Power Armor"
+    type: main
+    deps: [mesa]
+    icon: powersuits:item.powerArmorHelmet
+    desc: |
+      3 lingotes de invar + 2 Fiações (Thermal) — ou ferro + Capacitores Básicos (EnderIO), ou
+      placas de ferro + circuitos (IC2) — = §eElmo Power Armor§r. Sozinho é só um capacete de
+      metal; com módulos, vira visão noturna, binóculos, respiração submarina...
+    tasks:
+      - get: powersuits:item.powerArmorHelmet
+    rewards:
+      - xp: 4
+      - choice: [powersuits:powerArmorComponent x8, ore:ingotInvar x4, minecraft:iron_ingot x8]
+
+  - id: peitoral
+    title: "Peitoral Power Armor"
+    type: main
+    deps: [mesa]
+    icon: powersuits:item.powerArmorChestplate
+    desc: |
+      6 lingotes de invar + 2 Fiações (ou as variantes do EnderIO/IC2) = §ePeitoral Power
+      Armor§r. É a peça mais versátil: jetpack, planador, paraquedas, escudos, baterias...
+    tasks:
+      - get: powersuits:item.powerArmorChestplate
+    rewards:
+      - xp: 4
+      - choice: [powersuits:powerArmorComponent x8, ore:ingotInvar x6, minecraft:iron_ingot x12]
+
+  - id: perneiras
+    title: "Perneiras Power Armor"
+    type: main
+    deps: [mesa]
+    icon: powersuits:item.powerArmorLeggings
+    desc: |
+      5 lingotes de invar + 2 Fiações = §ePerneiras Power Armor§r. Nelas vão os servos de corrida,
+      pulo, natação e escalada. Correr como um trem-bala começa aqui.
+    tasks:
+      - get: powersuits:item.powerArmorLeggings
+    rewards:
+      - xp: 4
+      - choice: [powersuits:powerArmorComponent:2 x1, ore:ingotInvar x5, minecraft:iron_ingot x10]
+
+  - id: botas
+    title: "Botas Power Armor"
+    type: main
+    deps: [mesa]
+    icon: powersuits:item.powerArmorBoots
+    desc: |
+      2 lingotes de invar + 2 Fiações = §eBotas Power Armor§r. Bota-jatos, amortecedor de queda...
+      seus tornozelos agradecem.
+    tasks:
+      - get: powersuits:item.powerArmorBoots
+    rewards:
+      - xp: 4
+      - choice: [powersuits:powerArmorComponent:2 x1, ore:ingotInvar x2, minecraft:iron_ingot x6]
+
+  - id: power_fist
+    title: "Power Fist"
+    type: main
+    deps: [mesa]
+    icon: powersuits:item.powerFist
+    desc: |
+      Electrum + 3 Fiações (Thermal) — ou placas de ferro + circuitos (IC2) — = §ePower Fist§r, a
+      "ferramenta universal" do traje. Vazio, ele é só um soco. Com módulos: picareta, machado,
+      pá, tesoura, enxada, canhão de plasma, railgun, chave universal... tudo numa mão só.
+    tasks:
+      - get: powersuits:item.powerFist
+    rewards:
+      - xp: 4
+      - choice: [powersuits:powerArmorComponent:1 x2, ore:ingotElectrum x4, minecraft:iron_ingot x8]
+
+  - id: energia_peso_calor
+    title: "Energia, Peso e Calor"
+    type: info
+    deps: [elmo, peitoral, perneiras, botas, power_fist]
+    icon: powersuits:powerArmorComponent:5
+    desc: |
+      Três números governam o seu traje (aparecem no HUD e na Mesa):
+
+      §e• Energia:§r sem módulo de bateria, a peça não guarda nada. Instale uma §eBateria§r e
+      recarregue o traje em carregadores de §eRF ou de EU§r (o MPS aceita os dois).
+      §e• Peso:§r cada módulo pesa. Passando do limite do pack (§e25 kg§r), você fica mais lento.
+      Blindagens são pesadas; escudos de energia, leves.
+      §e• Calor:§r alguns módulos aquecem o traje (geradores, armas). Calor demais = fogo! Placas
+      aumentam a capacidade de calor; Dissipadores e Sistemas de Resfriamento ajudam.
+
+      Planeje o traje como um engenheiro: cada módulo é uma troca.
+    tasks:
+      - check
+    rewards:
+      - xp: 1
+
+  - id: bateria_basica
+    title: "Módulo: Bateria Básica"
+    type: main
+    deps: [energia_peso_calor, capacitor_lv]
+    icon: powersuits:powerArmorComponent:5
+    desc: |
+      O primeiro módulo de qualquer traje! A §eBateria Básica§r custa §e1 Capacitor LV§r e deixa a
+      peça guardar energia (o controle deslizante aumenta a capacidade, com mais peso).
+
+      Instale uma em cada peça que vai usar módulos que gastam energia — ou concentre baterias
+      no peitoral. Tenha §e2 Capacitores LV§r em mãos.
+    tasks:
+      - get: powersuits:powerArmorComponent:5 x2
+    rewards:
+      - xp: 4
+      - choice: [powersuits:powerArmorComponent x16, minecraft:redstone x32, powersuits:powerArmorComponent:1 x2]
+
+  - id: bateria_avancada
+    title: "Módulo: Bateria Avançada"
+    type: normal
+    deps: [bateria_basica, capacitor_mv]
+    icon: powersuits:powerArmorComponent:6
+    desc: |
+      A §eBateria Avançada§r custa §e1 Capacitor MV§r e guarda muito mais energia que a básica (pela
+      config, a base é 5× maior). Indispensável para jetpack e armas.
+    tasks:
+      - get: powersuits:powerArmorComponent:6
+    rewards:
+      - xp: 3
+      - item: powersuits:powerArmorComponent x8
+
+  - id: bateria_elite
+    title: "Módulo: Bateria Elite"
+    type: optional
+    deps: [bateria_avancada, capacitor_hv]
+    icon: powersuits:powerArmorComponent:7
+    desc: |
+      §eBateria Elite§r: 1 Capacitor HV para a maior reserva de energia do traje. Para quem voa o
+      dia inteiro e dispara plasma no fim da tarde.
+    tasks:
+      - get: powersuits:powerArmorComponent:7
+    rewards:
+      - loot: incomum
+
+  # ======================================================================
+  # FASE 2 — PROTEÇÃO
+  # ======================================================================
+  - id: blindagem_ferro
+    title: "Módulo: Blindagem de Ferro"
+    type: normal
+    deps: [energia_peso_calor]
+    icon: powersuits:powerArmorComponent:9
+    desc: |
+      A §eBlindagem Básica§r (5 ferros + engrenagem de invar, capacitor ou circuito) é o custo do
+      módulo §eBlindagem de Ferro§r: "pesada, mas protetora". Instale nas peças que levam dano.
+      Ela também aumenta a capacidade de calor. O pack limita a armadura a §e6 pontos por peça§r.
+    tasks:
+      - get: powersuits:powerArmorComponent:9
+    rewards:
+      - xp: 3
+      - item: minecraft:iron_ingot x8
+
+  - id: blindagem_diamante
+    title: "Módulo: Blindagem de Diamante"
+    type: optional
+    deps: [blindagem_ferro]
+    icon: powersuits:powerArmorComponent:10
+    desc: |
+      A §eBlindagem Avançada§r (5 diamantes + engrenagem de electrum, capacitor ou circuito
+      avançado) vira o módulo §eBlindagem de Diamante§r: mais leve, mais dura e mais protetora que
+      a de ferro. Bem mais cara, claro.
+    tasks:
+      - get: powersuits:powerArmorComponent:10
+    rewards:
+      - loot: incomum
+
+  - id: campo_energia
+    title: "Módulo: Campo de Energia"
+    type: normal
+    deps: [emissor_campo, bateria_basica]
+    icon: powersuits:powerArmorComponent:11
+    desc: |
+      Quer proteção sem carregar chapas de metal? O §eCampo de Energia§r custa §e2 Emissores de
+      Campo de Força§r: é muito mais leve que blindagem, mas §egasta energia§r. Combine com uma
+      boa bateria e voe sem pesar uma tonelada.
+    tasks:
+      - get: powersuits:powerArmorComponent:11 x2
+    rewards:
+      - xp: 3
+      - item: minecraft:ender_pearl x4
+
+  - id: dissipador
+    title: "Módulo: Dissipador de Calor"
+    type: optional
+    deps: [blindagem_ferro]
+    icon: powersuits:powerArmorComponent:9
+    desc: |
+      O §eDissipador de Calor§r também custa uma Blindagem Básica: "uma camada grossa para absorver
+      calor". Ele aumenta o calor máximo antes de pegar fogo. Essencial com canhão de plasma e
+      geradores.
+    tasks:
+      - get: powersuits:powerArmorComponent:9
+    rewards:
+      - loot: comum
+
+  - id: traje_protegido
+    title: "O Traje Desperta"
+    type: milestone
+    deps: [bateria_basica, blindagem_ferro, campo_energia]
+    icon: powersuits:item.powerArmorChestplate
+    banner: "O Traje Desperta"
+    subtitle: "Energia e proteção"
+    desc: |
+      Quatro peças de armadura, um Power Fist, baterias pulsando e blindagens no lugar. Herói, o
+      seu traje §eacordou§r!
+
+      Uma configuração inicial equilibrada:
+      §e• Peitoral:§r Bateria + Campo de Energia (leve, protege bem com energia sobrando).
+      §e• Outras peças:§r Blindagem de Ferro onde o peso não incomodar.
+      §e• Power Fist:§r Bateria + Picareta (próxima fase!).
+
+      Daqui pra frente o traje vai §ecorrer, voar e lutar§r. Eu estou pulando de empolgação —
+      literalmente, se eu tivesse um Assistente de Pulo.
+    tasks:
+      - get: [powersuits:item.powerArmorHelmet, powersuits:item.powerArmorChestplate, powersuits:item.powerArmorLeggings, powersuits:item.powerArmorBoots, powersuits:item.powerFist]
+    rewards:
+      - xp: 8
+      - kit: {name: "Kit do Engenheiro de Trajes", items: [powersuits:powerArmorComponent x16, powersuits:powerArmorComponent:1 x4, powersuits:powerArmorComponent:2 x2, powersuits:powerArmorComponent:5 x1, minecraft:ender_pearl x4]}
+      - loot: raro
+
+  # ======================================================================
+  # FASE 3 — MOVIMENTO
+  # ======================================================================
+  - id: propulsor_ionico
+    title: "Propulsor Iônico"
+    type: main
+    deps: [emissor_campo]
+    icon: powersuits:powerArmorComponent:4
+    desc: |
+      2 Emissores de Campo, 2 Solenoides, glowstone e electrum/Fiação (Thermal) — ou Carcaça
+      Básica e Circuito Avançado (IC2) — = §ePropulsor Iônico§r. É o motor do jetpack e das
+      bota-jatos. Comece com §eum§r; o Jetpack pede quatro!
+    tasks:
+      - get: powersuits:powerArmorComponent:4
+    rewards:
+      - xp: 4
+      - choice: [powersuits:powerArmorComponent:11 x1, powersuits:powerArmorComponent:1 x2, minecraft:glowstone_dust x16]
+
+  - id: jetpack
+    title: "Módulo: Jetpack"
+    type: main
+    deps: [propulsor_ionico, bateria_avancada, traje_protegido]
+    icon: powersuits:powerArmorComponent:4
+    desc: |
+      O sonho de todo engenheiro! O §eJetpack§r custa §e4 Propulsores Iônicos§r e vai no peitoral:
+      segure o pulo para subir "indefinidamente, ou ao menos até a energia acabar".
+
+      No ajuste, o controle de "Empuxo" troca força por consumo de energia. Leve uma Bateria
+      Avançada — e não esqueça de olhar o HUD no meio do voo!
+    tasks:
+      - get: powersuits:powerArmorComponent:4 x4
+    rewards:
+      - xp: 5
+      - choice: [powersuits:powerArmorComponent:6 x1, powersuits:powerArmorComponent:11 x2, minecraft:glowstone_dust x16]
+
+  - id: bota_jatos
+    title: "Módulo: Bota-Jatos"
+    type: normal
+    deps: [propulsor_ionico]
+    icon: powersuits:item.powerArmorBoots
+    desc: |
+      As §eBota-Jatos§r custam §e2 Propulsores Iônicos§r. Não são tão fortes quanto o jetpack, mas
+      "fortes o bastante para vencer a gravidade". Juntas com o jetpack, dão um empurrão extra.
+    tasks:
+      - get: powersuits:powerArmorComponent:4 x2
+    rewards:
+      - xp: 3
+      - item: minecraft:glowstone_dust x8
+
+  - id: planador
+    title: "Módulo: Planador"
+    type: normal
+    deps: [solenoide]
+    icon: powersuits:powerArmorComponent:3
+    desc: |
+      A §eAsa de Planador§r (5 Quartzos Fundidos do EnderIO ou Placas de Carbono do IC2, Solenoide e
+      invar/ferro). O módulo §ePlanador§r custa §e2 asas§r: §ecaindo, segure Shift + frente§r para
+      transformar a queda em velocidade horizontal. Pule de uma montanha com estilo!
+    tasks:
+      - get: powersuits:powerArmorComponent:3 x2
+    rewards:
+      - xp: 3
+      - item: powersuits:powerArmorComponent:1 x2
+
+  - id: paraquedas
+    title: "Módulo: Paraquedas"
+    type: normal
+    deps: [fiacao]
+    icon: powersuits:powerArmorComponent:8
+    desc: |
+      Lã, linha e lã de rocha (Thermal), aço elétrico (EnderIO) ou placas de carbono (IC2) =
+      §eParaquedas§r. O módulo custa §e2 Paraquedas§r: no ar, aperte §eShift§r para descer
+      devagar. O seguro de vida mais barato do Registro.
+    tasks:
+      - get: powersuits:powerArmorComponent:8 x2
+    rewards:
+      - xp: 3
+      - item: minecraft:wool x8
+
+  - id: assistente_corrida
+    title: "Módulo: Assistente de Corrida"
+    type: main
+    deps: [servomotor, perneiras]
+    icon: powersuits:powerArmorComponent:2
+    desc: |
+      §e4 Servomotores§r nas perneiras = §eAssistente de Corrida§r: você anda e corre (toque duplo
+      para frente) muito mais rápido. Os controles permitem ajustar a velocidade — e o consumo.
+    tasks:
+      - get: powersuits:powerArmorComponent:2 x4
+    rewards:
+      - xp: 4
+      - choice: [powersuits:powerArmorComponent:1 x4, powersuits:powerArmorComponent x16, minecraft:sugar x16]
+
+  - id: assistente_pulo
+    title: "Módulo: Assistente de Pulo"
+    type: normal
+    deps: [assistente_corrida]
+    icon: powersuits:item.powerArmorLeggings
+    desc: |
+      "Outro conjunto de servos para pular mais alto": o §eAssistente de Pulo§r também custa
+      §e4 Servomotores§r. Pular por cima de uma casa nunca foi tão fácil.
+    tasks:
+      - get: powersuits:powerArmorComponent:2 x4
+    rewards:
+      - xp: 3
+      - item: powersuits:powerArmorComponent:1 x2
+
+  - id: amortecedor
+    title: "Módulo: Amortecedor"
+    type: optional
+    deps: [assistente_pulo]
+    icon: powersuits:item.powerArmorBoots
+    desc: |
+      Pulou alto demais? O §eAmortecedor§r (nas botas) anula parte do dano de queda. Neste pack o
+      custo foi ajustado na config: §e2 lãs + 2 Servomotores§r.
+    tasks:
+      - get: [minecraft:wool x2, powersuits:powerArmorComponent:2 x2]
+    rewards:
+      - loot: comum
+
+  - id: assistente_escalada
+    title: "Módulo: Assistente de Escalada"
+    type: optional
+    deps: [servomotor]
+    icon: powersuits:powerArmorComponent:2
+    desc: |
+      Um par de servos dedicados = §eAssistente de Escalada§r (2 Servomotores): você sobe
+      degraus de 1 bloco sem pular. Escalar montanhas vira uma caminhada.
+    tasks:
+      - get: powersuits:powerArmorComponent:2 x2
+    rewards:
+      - loot: comum
+
+  - id: impulso_natacao
+    title: "Módulo: Impulso de Natação"
+    type: optional
+    deps: [propulsor_ionico]
+    icon: powersuits:powerArmorComponent:4
+    desc: |
+      Um Propulsor Iônico adaptado para a água + 2 Solenoides = §eImpulso de Natação§r: empurrão
+      extra para frente (ou para trás) debaixo d'água. Oceano Monumento, aí vamos nós!
+    tasks:
+      - get: [powersuits:powerArmorComponent:4, powersuits:powerArmorComponent:1 x2]
+    rewards:
+      - loot: comum
+
+  - id: blink_drive
+    title: "Módulo: Blink Drive"
+    type: optional
+    deps: [propulsor_ionico, emissor_campo]
+    icon: powersuits:powerArmorComponent:11
+    desc: |
+      "Ir do ponto A ao ponto C passando pelo ponto B, que é uma dobra no espaço-tempo." O §eBlink
+      Drive§r (1 Propulsor Iônico + 2 Emissores de Campo) teleporta você na direção em que olha —
+      o alcance cresce com o ajuste, e o gasto de energia também.
+    tasks:
+      - get: [powersuits:powerArmorComponent:4, powersuits:powerArmorComponent:11 x2]
+    rewards:
+      - loot: incomum
+
+  - id: musculo_artificial
+    title: "Músculo Artificial"
+    type: optional
+    deps: [servomotor]
+    icon: powersuits:powerArmorComponent:16
+    desc: |
+      §eMiofibra de Carbono§r (placas de carbono do IC2, aço negro do EnderIO ou carvão pulverizado
+      e carvão liquefeito do Thermal) + §eGel de Miofibra§r (com creme de magma) = §eMúsculo
+      Artificial§r. 4 deles formam o módulo §eAssistência Mecânica§r, que reduz o efeito do peso do
+      traje. Faça um Músculo Artificial.
+    tasks:
+      - get: powersuits:powerArmorComponent:16
+    rewards:
+      - loot: incomum
+
+  - id: em_movimento
+    title: "Céu, Terra e Mar"
+    type: milestone
+    deps: [jetpack, assistente_corrida, planador, paraquedas]
+    deps_any: false
+    icon: powersuits:powerArmorComponent:4
+    banner: "Céu, Terra e Mar"
+    subtitle: "O traje aprende a se mover"
+    desc: |
+      Jetpack nas costas, servos nas pernas, asas e paraquedas para a descida. Herói, você agora
+      §ecorre como o vento e voa como um pássaro§r (um pássaro movido a energia, mas ainda assim).
+
+      Dicas de piloto:
+      §e• Energia:§r o jetpack gasta muito. Bateria Avançada no peitoral, sempre.
+      §e• Descida:§r Planador para viajar longe, Paraquedas para pousar suave.
+      §e• Peso:§r cada módulo pesa — confira o total na Mesa antes de decolar.
+
+      Próximo passo: transformar o Power Fist numa caixa de ferramentas... e num canhão.
+    tasks:
+      - get: [powersuits:item.powerArmorChestplate, powersuits:item.powerArmorLeggings]
+    rewards:
+      - xp: 10
+      - kit: {name: "Kit do Piloto", items: [powersuits:powerArmorComponent:4 x2, powersuits:powerArmorComponent:2 x2, powersuits:powerArmorComponent:6 x1, powersuits:powerArmorComponent:8 x1, minecraft:glowstone_dust x16]}
+      - loot: raro
+
+  # ======================================================================
+  # FASE 4 — VISÃO E UTILIDADES
+  # ======================================================================
+  - id: visao_noturna
+    title: "Módulo: Visão Noturna"
+    type: normal
+    deps: [emissor_holograma, elmo, circuito_controle]
+    icon: powersuits:item.powerArmorHelmet
+    desc: |
+      "Óculos de visão aumentada para enxergar à noite e debaixo d'água." O módulo §eVisão
+      Noturna§r (no elmo) custa §e1 Emissor de Holograma§r §ee 1 Circuito de Controle§r do MPS —
+      leia o aviso sobre o circuito antes. Tenha o Emissor em mãos.
+    tasks:
+      - get: powersuits:powerArmorComponent:12
+    rewards:
+      - xp: 3
+      - item: minecraft:golden_carrot x4
+
+  - id: binoculos
+    title: "Módulo: Binóculos"
+    type: optional
+    deps: [emissor_holograma, elmo]
+    icon: powersuits:powerArmorComponent:12
+    desc: |
+      §eBinóculos§r: 1 Emissor de Holograma no elmo = zoom ajustável. Ótimo para procurar
+      meteoritos do AE2 ou espiar androides renegados de longe.
+    tasks:
+      - get: powersuits:powerArmorComponent:12
+    rewards:
+      - loot: comum
+
+  - id: armadura_transparente
+    title: "Módulos Cosméticos"
+    type: optional
+    deps: [emissor_holograma]
+    icon: powersuits:powerArmorComponent:12
+    desc: |
+      Estilo também conta! A §eArmadura Transparente§r (1 Emissor de Holograma) deixa a peça
+      invisível sem perder a proteção, e o §eMódulo de Cores Personalizáveis§r e o §eMódulo de
+      Brilho§r mudam a aparência do traje. Monte o visual do seu jeito.
+    tasks:
+      - get: powersuits:powerArmorComponent:12
+    rewards:
+      - loot: comum
+
+  - id: eletrolisador
+    title: "Módulo: Eletrolisador de Água"
+    type: optional
+    deps: [capacitor_lv, elmo]
+    icon: powersuits:powerArmorComponent:5
+    desc: |
+      Quando o ar acaba debaixo d'água, o §eEletrolisador de Água§r "dá um choque" na água em volta
+      e cria uma bolha para você respirar. Custo: 1 Capacitor LV. Mergulho sem medo!
+    tasks:
+      - get: powersuits:powerArmorComponent:5
+    rewards:
+      - loot: comum
+
+  - id: capacitor_luz
+    title: "Módulo: Capacitor de Luz"
+    type: optional
+    deps: [power_fist]
+    icon: powersuits:tile.luxCapacitor
+    desc: |
+      Pó de glowstone + 2 ferros = módulo §eCapacitor de Luz§r no Power Fist: "lance um número
+      praticamente infinito de luzes atraentes na parede". Tochas nunca mais! Cada disparo gasta
+      energia e cria um bloco de luz.
+    tasks:
+      - get: [minecraft:glowstone_dust, minecraft:iron_ingot x2]
+    rewards:
+      - loot: comum
+
+  # ======================================================================
+  # FASE 5 — FERRAMENTAS DO POWER FIST
+  # ======================================================================
+  - id: ferramentas_fist
+    title: "Módulos: Ferramentas"
+    type: main
+    deps: [power_fist, solenoide, bateria_basica]
+    icon: powersuits:item.powerFist
+    desc: |
+      O Power Fist vira uma caixa de ferramentas inteira:
+      §e• Picareta§r e §ePá§r — 3 ferros + 1 Solenoide cada.
+      §e• Machado§r — 1 Solenoide. §e• Enxada (Motocultivadora)§r — 1 Solenoide.
+      §e• Tesoura§r — 2 ferros + 1 Solenoide.
+      O Power Fist escolhe a ferramenta certa sozinho conforme o bloco. A "sobrecarga" no ajuste
+      aumenta a velocidade (e o gasto). Junte material para picareta + pá + machado.
+    tasks:
+      - get: [minecraft:iron_ingot x6, powersuits:powerArmorComponent:1 x3]
+    rewards:
+      - xp: 4
+      - choice: [powersuits:powerArmorComponent:1 x2, minecraft:iron_ingot x8, powersuits:powerArmorComponent:5 x1]
+
+  - id: broca_diamante
+    title: "Módulo: Broca de Diamante"
+    type: normal
+    deps: [ferramentas_fist]
+    icon: minecraft:diamond
+    desc: |
+      O §eMelhoramento da Broca de Diamante§r (3 diamantes + 1 Solenoide) deixa o módulo Picareta
+      minerar §eobsidiana§r. Atenção: ele §esó funciona com a Picareta instalada§r.
+    tasks:
+      - get: [minecraft:diamond x3, powersuits:powerArmorComponent:1]
+    rewards:
+      - xp: 3
+      - item: minecraft:obsidian x4
+
+  - id: assistente_golpes
+    title: "Módulo: Assistente de Golpes"
+    type: normal
+    deps: [power_fist, servomotor, capacitor_lv]
+    icon: powersuits:item.powerFist
+    desc: |
+      "Um complemento simples: seus socos batem mais forte." O §eAssistente de Golpes§r custa §e2
+      Servomotores + 1 Capacitor LV§r. Combate corpo a corpo com o Power Fist, sem precisar de
+      espada.
+    tasks:
+      - get: [powersuits:powerArmorComponent:2 x2, powersuits:powerArmorComponent:5]
+    rewards:
+      - xp: 3
+      - item: powersuits:powerArmorComponent x8
+
+  # ======================================================================
+  # FASE 6 — ARMAS
+  # ======================================================================
+  - id: canhao_plasma
+    title: "Módulo: Canhão de Plasma"
+    type: main
+    deps: [assistente_golpes, capacitor_hv, emissor_campo]
+    icon: powersuits:powerArmorComponent:11
+    desc: |
+      "Use arcos elétricos num campo de contenção para superaquecer o ar até virar plasma e
+      dispará-lo nos inimigos." O §eCanhão de Plasma§r custa §e2 Emissores de Campo de Força + 2
+      Capacitores HV§r. Segure o clique para carregar o tiro.
+
+      §cCuidado:§r ele gasta muita energia e esquenta. Dissipador de Calor e Bateria Elite são
+      bons amigos.
+    tasks:
+      - get: [powersuits:powerArmorComponent:11 x2, powersuits:powerArmorComponent:7 x2]
+    rewards:
+      - xp: 5
+      - choice: [powersuits:powerArmorComponent:7 x1, powersuits:powerArmorComponent:11 x2, minecraft:ender_pearl x8]
+
+  - id: railgun
+    title: "Módulo: Railgun"
+    type: optional
+    deps: [canhao_plasma]
+    icon: powersuits:powerArmorComponent:1
+    desc: |
+      "Acelera um projétil a velocidades supersônicas usando força magnética. Coice forte." O
+      §eRailgun§r custa §e6 Solenoides + 1 Capacitor HV§r. Prepare-se para ser empurrado para trás
+      a cada tiro!
+    tasks:
+      - get: [powersuits:powerArmorComponent:1 x6, powersuits:powerArmorComponent:7]
+    rewards:
+      - loot: incomum
+
+  - id: lanca_laminas
+    title: "Módulo: Lança-Lâminas"
+    type: optional
+    deps: [assistente_golpes, capacitor_mv]
+    icon: powersuits:powerArmorComponent:2
+    desc: |
+      "Lança uma lâmina giratória da morte (ou de tosquia)." O §eLança-Lâminas§r custa 1
+      Servomotor + 1 Capacitor MV. Funciona contra mobs — e em ovelhas.
+    tasks:
+      - get: [powersuits:powerArmorComponent:2, powersuits:powerArmorComponent:6]
+    rewards:
+      - loot: comum
+
+  - id: invocador_raios
+    title: "Módulo: Invocador de Raios"
+    type: optional
+    deps: [canhao_plasma]
+    icon: powersuits:powerArmorComponent:7
+    desc: |
+      Para os dramáticos: o §eInvocador de Raios§r (1 Capacitor HV, 2 Solenoides e 2 Emissores de
+      Campo) chama um raio no ponto em que você mira — com um custo de energia enorme. Thor
+      ficaria com inveja.
+    tasks:
+      - get: [powersuits:powerArmorComponent:7, powersuits:powerArmorComponent:1 x2, powersuits:powerArmorComponent:11 x2]
+    rewards:
+      - loot: incomum
+
+  # ======================================================================
+  # FASE 7 — RESFRIAMENTO E COMPONENTES AVANÇADOS
+  # ======================================================================
+  - id: componentes_avancados
+    title: "Componentes Avançados"
+    type: optional
+    deps: [capacitor_hv]
+    icon: powersuits:powerArmorComponent:19
+    desc: |
+      Alguns componentes de topo (receitas variam por família — veja o NEI):
+      §e• Solar Panel§r — para os geradores solares do traje.
+      §e• Magnet§r — base do Ímã e do Repulsor de Mobs.
+      §e• Computer Chip§r — Escâner de Minérios e Gerador Solar Avançado.
+      §e• Insulated Rubber Hose§r e §eLiquid Nitrogen Bucket§r — resfriamento a nitrogênio.
+      Faça qualquer um. (Vários módulos que os usam também pedem o Circuito de Controle — lembre
+      do aviso!)
+    tasks:
+      - one_of: [powersuits:powerArmorComponent:17, powersuits:powerArmorComponent:18, powersuits:powerArmorComponent:19, powersuits:powerArmorComponent:20, powersuits:powerArmorComponent:21]
+    rewards:
+      - loot: incomum
+
+  # ======================================================================
+  # MARCO FINAL
+  # ======================================================================
+  - id: arsenal_traje
+    title: "O Arsenal do Traje"
+    type: milestone
+    deps: [ferramentas_fist, canhao_plasma]
+    icon: powersuits:item.powerFist
+    banner: "O Arsenal do Traje"
+    subtitle: "Ferramenta e arma numa mão só"
+    desc: |
+      Picareta, pá e machado que se escolhem sozinhos, socos turbinados e um Canhão de Plasma
+      carregando na palma da mão. Herói, o seu Power Fist é agora a ferramenta mais completa do
+      Registro.
+
+      §aDica de quem já sofreu:§r o canhão e as ferramentas dividem a mesma bateria. Use a roda do
+      mouse para alternar os modos do Power Fist e não descarregue o traje inteiro minerando.
+    tasks:
+      - get: powersuits:item.powerFist
+    rewards:
+      - xp: 10
+      - kit: {name: "Kit do Artilheiro de Plasma", items: [powersuits:powerArmorComponent:7 x1, powersuits:powerArmorComponent:11 x2, powersuits:powerArmorComponent:1 x4, powersuits:powerArmorComponent:9 x1, minecraft:diamond x3]}
+      - loot: raro
+
+  - id: mestre_traje
+    title: "Mestre da Armadura Modular"
+    type: milestone
+    deps: [traje_protegido, em_movimento, arsenal_traje]
+    icon: powersuits:item.powerArmorChestplate
+    banner: "Mestre da Armadura Modular"
+    subtitle: "O Volume da Armadura Modular está completo"
+    effect: 3
+    desc: |
+      Herói, dá uma voltinha para eu ver.
+
+      Um traje que começou como quatro peças de metal vazias e uma luva sem graça. Agora? Ele
+      guarda energia, absorve golpes com campos de força, corre, pula, voa com jetpack, plana,
+      cai de paraquedas, minera obsidiana e dispara plasma. E cada módulo foi escolhido e
+      ajustado por você.
+
+      §bO Volume da Armadura Modular está reescrito.§r Esta página ajuda a acender o §6Selo da
+      Engrenagem§r: toda grande indústria precisa de quem vá até onde as máquinas não chegam.
+
+      E lembre: um traje modular nunca está "pronto". Sempre cabe mais um módulo.
+    tasks:
+      - get: [powersuits:item.powerArmorHelmet, powersuits:item.powerArmorChestplate, powersuits:item.powerArmorLeggings, powersuits:item.powerArmorBoots, powersuits:item.powerFist]
+    rewards:
+      - xp: 12
+      - kit: {name: "Legado do Mestre dos Trajes", items: [powersuits:powerArmorComponent:7 x2, powersuits:powerArmorComponent:10 x1, powersuits:powerArmorComponent:4 x2, powersuits:powerArmorComponent:11 x2, powersuits:powerArmorComponent:16 x1]}
+      - loot: [epico]

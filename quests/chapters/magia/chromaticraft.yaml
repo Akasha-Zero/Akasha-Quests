@@ -2371,6 +2371,596 @@ quests:
       - loot: raro
 
   # ======================================================================
+  # FASE 15 — FERRAMENTAS, UTILIDADES E INTEGRAÇÕES
+  # ======================================================================
+  - id: rastreador_aura
+    title: "Aura Tracker"
+    type: normal
+    deps: [sala_fundicao, ruinas]
+    icon: ChromatiCraft:chromaticraft_item_structurefinder
+    desc: |
+      Uma ferramenta de runa que §erastreia estruturas§r geradas pela aura delas (pede as
+      runas e uma estrutura já encontrada). Ótima para caçar os Shrines, Burrows e
+      Outposts que o outro mundo exige.
+    tasks:
+      - get: ChromatiCraft:chromaticraft_item_structurefinder:*
+    rewards:
+      - xp: 3
+      - item: minecraft:cooked_beef x16
+
+  - id: mapa_artefatos
+    title: "Artifact Distribution Map"
+    type: optional
+    deps: [torre_dados, artefato]
+    icon: ChromatiCraft:chromaticraft_item_structmap
+    desc: |
+      Feito na piscina de chroma com um Memory Crystal e artefatos, este mapa mostra onde
+      os §eUnknown Artefacts§r costumam aparecer.
+    tasks:
+      - get: ChromatiCraft:chromaticraft_item_structmap
+    rewards:
+      - loot: comum
+
+  - id: tablete_retorno
+    title: "Recall Tablet"
+    type: optional
+    deps: [caverna_funda, sala_fundicao]
+    icon: ChromatiCraft:chromaticraft_item_warpcapsule
+    desc: |
+      Marca um ponto e te leva de volta a ele. Para quem desce fundo nas cavernas e não
+      quer subir tudo de novo (pede "Lower Layers").
+    tasks:
+      - get: ChromatiCraft:chromaticraft_item_warpcapsule
+    rewards:
+      - loot: comum
+
+  - id: rota_caverna
+    title: "Subterranean Route Finder"
+    type: optional
+    deps: [caverna_funda, ruinas]
+    icon: ChromatiCraft:chromaticraft_item_cavepather
+    desc: |
+      Receita básica que calcula o caminho de volta à superfície a partir do fundo de uma
+      caverna. Simples e salva vidas.
+    tasks:
+      - get: ChromatiCraft:chromaticraft_item_cavepather
+    rewards:
+      - loot: comum
+
+  - id: arma_luz
+    title: "Illumination Gun"
+    type: optional
+    deps: [caverna_funda, ruinas]
+    icon: ChromatiCraft:chromaticraft_item_lightgun
+    desc: |
+      Dispara pontos de luz nas paredes da caverna. Tochas a distância, sem tochas.
+    tasks:
+      - get: ChromatiCraft:chromaticraft_item_lightgun
+    rewards:
+      - loot: comum
+
+  - id: cristais_exame
+    title: "Examination Crystals"
+    type: optional
+    deps: [ruinas]
+    icon: ChromatiCraft:chromaticraft_item_probe
+    desc: |
+      Cristais de sondagem (receita básica) que examinam blocos e estruturas do
+      ChromatiCraft. Úteis nos quebra-cabeças.
+    tasks:
+      - get: ChromatiCraft:chromaticraft_item_probe:*
+    rewards:
+      - loot: comum
+
+  - id: celula_blindada
+    title: "Corrosion Resistant Cell"
+    type: optional
+    deps: [artefato]
+    icon: ChromatiCraft:chromaticraft_item_shieldedcell
+    desc: |
+      Lembra que o Unknown Artefact é perigoso de carregar? Esta célula blindada (pede a
+      descoberta "Mysterious Relics") guarda coisas corrosivas com segurança.
+    tasks:
+      - get: ChromatiCraft:chromaticraft_item_shieldedcell
+    rewards:
+      - loot: comum
+
+  - id: cristal_interferencia
+    title: "Spawner Interference Crystal"
+    type: optional
+    deps: [spawner_cc, sala_fundicao]
+    icon: ChromatiCraft:chromaticraft_item_spawnerbypass
+    desc: |
+      Um cristal que interfere em spawners próximos — atravesse salas de spawner sem
+      enxames. Pede ter encontrado um spawner.
+    tasks:
+      - get: ChromatiCraft:chromaticraft_item_spawnerbypass:*
+    rewards:
+      - loot: comum
+
+  - id: olho_ender
+    title: "Enhanced Ender Eye"
+    type: optional
+    deps: [teto_nether, templo_fundicao]
+    icon: ChromatiCraft:chromaticraft_item_endereye
+    desc: |
+      Os olhos do ender comuns têm alcance curto e estouram no ar. Esta versão aprimorada
+      é confiável e muito mais poderosa para achar fortalezas. (Pede "A second layer".)
+    tasks:
+      - get: ChromatiCraft:chromaticraft_item_endereye
+    rewards:
+      - loot: comum
+
+  - id: balde_vazio
+    title: "Voidlinked Bucket"
+    type: optional
+    deps: [fim_cc, sala_fundicao]
+    icon: ChromatiCraft:chromaticraft_item_enderbucket
+    desc: |
+      Um balde ligado a um tanque distante: busque e despeje líquidos da sua base de
+      qualquer lugar. Pede o Fim.
+    tasks:
+      - get: ChromatiCraft:chromaticraft_item_enderbucket:*
+    rewards:
+      - loot: comum
+
+  - id: anel_absorcao
+    title: "Absorption Ring"
+    type: optional
+    deps: [templo_fundicao]
+    icon: ChromatiCraft:chromaticraft_item_widecollector
+    desc: |
+      Puxa itens soltos em volta de você. Receita multibloco simples e conforto garantido.
+    tasks:
+      - get: ChromatiCraft:chromaticraft_item_widecollector
+    rewards:
+      - loot: comum
+
+  - id: cristal_nether
+    title: "Nether Layer Crystal"
+    type: normal
+    deps: [nether_cc, sala_fundicao]
+    icon: ChromatiCraft:chromaticraft_item_netherkey
+    desc: |
+      O cristal que leva você através do teto de rocha matriz do Nether (pede o Nether e
+      uma estrutura encontrada). É o caminho mais limpo para "A second layer".
+    tasks:
+      - get: ChromatiCraft:chromaticraft_item_netherkey:*
+    rewards:
+      - xp: 3
+      - item: minecraft:ender_pearl x4
+
+  - id: tablete_receita
+    title: "Recipe Tablet"
+    type: optional
+    deps: [templo_fundicao]
+    icon: ChromatiCraft:chromaticraft_item_recipecache
+    desc: |
+      Guarda receitas de fundição para consultar e automatizar. Indispensável quando a
+      lista de runas fica grande.
+    tasks:
+      - get: ChromatiCraft:chromaticraft_item_recipecache
+    rewards:
+      - loot: comum
+
+  - id: capsula_luma
+    title: "Luma Capsule"
+    type: optional
+    deps: [luma, fim_cc, templo_fundicao]
+    icon: ChromatiCraft:chromaticraft_item_etherpendant
+    desc: |
+      Um pingente de Luma Etérea (pede a Luma e o Fim). Leve um pouco do "líquido de
+      energia e espaço" com você.
+    tasks:
+      - get: ChromatiCraft:chromaticraft_item_etherpendant
+    rewards:
+      - loot: comum
+
+  - id: cristais_aura
+    title: "Aura Visualization Crystals"
+    type: optional
+    deps: [repetidor_cristal]
+    icon: ChromatiCraft:chromaticraft_item_bottleneck
+    desc: |
+      Mostram os §egargalos§r da sua rede de repetidores. Quando a energia não chega, use
+      isto antes de reconstruir tudo.
+    tasks:
+      - get: ChromatiCraft:chromaticraft_item_bottleneck
+    rewards:
+      - loot: comum
+
+  - id: armas_cristal
+    title: "Armas de Cristal"
+    type: optional
+    deps: [templo_fundicao, torreta_lumen]
+    icon: ChromatiCraft:chromaticraft_item_chaingun
+    desc: |
+      Para quem caça mobs (descoberta "Monster Slayer"): §eChain Gun§r, §eSplash Gun§r ou
+      §eBezier Crystals§r. Qualquer uma.
+    tasks:
+      - one_of: [ChromatiCraft:chromaticraft_item_chaingun, ChromatiCraft:chromaticraft_item_splashgun, ChromatiCraft:chromaticraft_item_splineattack]
+    rewards:
+      - loot: comum
+
+  - id: estrelas_natureza
+    title: "Capture e Growth Star"
+    type: optional
+    deps: [templo_fundicao]
+    icon: ChromatiCraft:chromaticraft_item_growth
+    desc: |
+      A §eCapture Star§r prende criaturas; a §eGrowth Star§r acelera plantas (pede a
+      descoberta "Crop Collection"). Qualquer uma.
+    tasks:
+      - one_of: [ChromatiCraft:chromaticraft_item_capture, ChromatiCraft:chromaticraft_item_growth]
+    rewards:
+      - loot: comum
+
+  - id: bolsa_aura
+    title: "Aura Pouch"
+    type: optional
+    deps: [templo_fundicao]
+    icon: ChromatiCraft:chromaticraft_item_aurapouch
+    desc: |
+      Uma bolsa extra, energizada. Inventário nunca é demais.
+    tasks:
+      - get: ChromatiCraft:chromaticraft_item_aurapouch
+    rewards:
+      - loot: comum
+
+  - id: celula_cristal
+    title: "Crystal Cell"
+    type: optional
+    deps: [templo_fundicao, energia_interna]
+    icon: ChromatiCraft:chromaticraft_item_crystalcell
+    desc: |
+      Uma célula de energia portátil para as ferramentas de cristal (pede "Energy
+      Internalization").
+    tasks:
+      - get: ChromatiCraft:chromaticraft_item_crystalcell
+    rewards:
+      - loot: comum
+
+  - id: cristal_ender
+    title: "Ender Crystal"
+    type: optional
+    deps: [fim_cc, ligacao_pylon]
+    icon: ChromatiCraft:chromaticraft_item_endercrystal
+    desc: |
+      Você precisava dos cristais pulsantes do Fim, mas mexer neles explodia na sua cara.
+      Este item de Pylon permite pegá-los e guardá-los com delicadeza.
+    tasks:
+      - get: ChromatiCraft:chromaticraft_item_endercrystal:*
+    rewards:
+      - loot: comum
+
+  - id: gema_purificacao
+    title: "Aura Purification Gem"
+    type: optional
+    deps: [ligacao_pylon, arvore_arco_iris, liga_chroma]
+    icon: ChromatiCraft:chromaticraft_item_purify
+    desc: |
+      Uma gema que purifica a aura (contra o Taint e o Warp do Thaumcraft). Pede a Rainbow
+      Tree e as ligas.
+    tasks:
+      - get: ChromatiCraft:chromaticraft_item_purify:*
+    rewards:
+      - loot: comum
+
+  - id: gema_eficiencia
+    title: "Anti-Attenuation Gem"
+    type: optional
+    deps: [monumento]
+    icon: ChromatiCraft:chromaticraft_item_efficiency
+    desc: |
+      Receita de maestria: reduz a atenuação da energia lúmen. A recompensa de quem
+      restaurou o Monumento.
+    tasks:
+      - get: ChromatiCraft:chromaticraft_item_efficiency
+    rewards:
+      - loot: comum
+
+  - id: chave_eterea
+    title: "Ethereal Key e Barrier"
+    type: optional
+    deps: [ruinas]
+    icon: ChromatiCraft:chromaticraft_item_key
+    desc: |
+      A §eEthereal Barrier§r é uma porta de energia; a §eEthereal Key§r a abre. Uma chave
+      pode ser copiada na bancada. Segurança com estilo.
+    tasks:
+      - get: [ChromatiCraft:chromaticraft_item_key, ChromatiCraft:chromaticraft_block_door]
+    rewards:
+      - loot: comum
+
+  - id: torreta_lumen
+    title: "Lumen Turret"
+    type: normal
+    deps: [ruinas]
+    icon: ChromatiCraft:chromaticraft_item_placer:53
+    desc: |
+      Se você ganhasse uma esmeralda por cada creeper na porta... A §eLumen Turret§r
+      (receita básica, pede a descoberta "Monster Slayer" — mate alguns mobs hostis) atira
+      energia nos hostis. Runas embaixo dela mudam o comportamento.
+    tasks:
+      - get: ChromatiCraft:chromaticraft_item_placer:53
+    rewards:
+      - xp: 3
+      - item: minecraft:arrow x32
+
+  - id: fio_lumen
+    title: "Lumen Wire"
+    type: optional
+    deps: [ruinas]
+    icon: ChromatiCraft:chromaticraft_item_placer:70
+    desc: |
+      Um "fio de armadilha" bonito e configurável (só hostis, só drops, todos os vivos;
+      por padrão só o dono). Detector sem gambiarra de redstone.
+    tasks:
+      - get: ChromatiCraft:chromaticraft_item_placer:70
+    rewards:
+      - loot: comum
+
+  - id: orquestra
+    title: "Crystal Orchestra"
+    type: optional
+    deps: [ruinas]
+    icon: ChromatiCraft:chromaticraft_item_placer:50
+    desc: |
+      Música feita de cristal (aceita até arquivos MIDI pequenos, pela config). Porque
+      toda base mágica merece trilha sonora.
+    tasks:
+      - get: ChromatiCraft:chromaticraft_item_placer:50
+    rewards:
+      - loot: comum
+
+  - id: painel_propulsao
+    title: "Vertical Propulsion Panel"
+    type: optional
+    deps: [ruinas]
+    icon: ChromatiCraft:chromaticraft_item_placer:103
+    desc: |
+      Um painel que lança você para cima (força 1.0 na config). Elevador expresso.
+    tasks:
+      - get: ChromatiCraft:chromaticraft_item_placer:103
+    rewards:
+      - loot: comum
+
+  - id: caixa_ferramentas
+    title: "Tool Compression Crate"
+    type: optional
+    deps: [ruinas]
+    icon: ChromatiCraft:chromaticraft_item_placer:104
+    desc: |
+      Guarda muitas ferramentas num bloco só. Para a coleção de picaretas que todo Herói
+      acumula.
+    tasks:
+      - get: ChromatiCraft:chromaticraft_item_placer:104
+    rewards:
+      - loot: comum
+
+  - id: pedestal_conhecimento
+    title: "Knowledge Entanglement Pedestal"
+    type: normal
+    deps: [ruinas]
+    icon: ChromatiCraft:chromaticraft_item_placer:94
+    desc: |
+      Em servidor isto é ouro: o pedestal §eliga o progresso§r de jogadores no
+      ChromatiCraft, para que amigos compartilhem descobertas. Receita básica.
+    tasks:
+      - get: ChromatiCraft:chromaticraft_item_placer:94
+    rewards:
+      - xp: 3
+      - item: minecraft:book x4
+
+  - id: cerca_lumen
+    title: "Lumen Fence"
+    type: optional
+    deps: [templo_fundicao]
+    icon: ChromatiCraft:chromaticraft_item_placer:18
+    desc: |
+      O emissor projeta um feixe e os relés da cerca redirecionam, desenhando um perímetro
+      (limite de 64 segmentos na config). Agachado + Manipulador define a saída.
+    tasks:
+      - get: [ChromatiCraft:chromaticraft_item_placer:18, ChromatiCraft:chromaticraft_block_fence x4]
+    rewards:
+      - loot: comum
+
+  - id: simulador_inventario
+    title: "Inventory Simulator"
+    type: optional
+    deps: [templo_fundicao]
+    icon: ChromatiCraft:chromaticraft_item_placer:27
+    desc: |
+      Faz itens no inventário dele "rodarem" como se estivessem com um jogador. Útil para
+      itens que só funcionam carregados.
+    tasks:
+      - get: ChromatiCraft:chromaticraft_item_placer:27
+    rewards:
+      - loot: comum
+
+  - id: farol_camuflagem
+    title: "Cloaking Beacon"
+    type: optional
+    deps: [templo_fundicao, torreta_lumen]
+    icon: ChromatiCraft:chromaticraft_item_placer:56
+    desc: |
+      Uma torre que esconde a sua base dos mobs (pede "Monster Slayer").
+    tasks:
+      - get: ChromatiCraft:chromaticraft_item_placer:56
+    rewards:
+      - loot: comum
+
+  - id: roteador
+    title: "Item Distribution Node"
+    type: optional
+    deps: [templo_fundicao]
+    icon: ChromatiCraft:chromaticraft_item_placer:86
+    desc: |
+      Um roteador de itens: o nó central e os Extraction/Insertion Nodes formam uma rede
+      de logística mágica.
+    tasks:
+      - get: [ChromatiCraft:chromaticraft_item_placer:86, ChromatiCraft:chromaticraft_block_routernode:* x2]
+    rewards:
+      - loot: comum
+
+  - id: injetor_fundicao
+    title: "Casting Stand Insertion Focus"
+    type: optional
+    deps: [templo_fundicao]
+    icon: ChromatiCraft:chromaticraft_item_placer:99
+    desc: |
+      Automatize a mesa: o §eInsertion Focus§r e os relés colocam os itens nos Suportes de
+      Fundição por você.
+    tasks:
+      - get: ChromatiCraft:chromaticraft_item_placer:99
+    rewards:
+      - loot: comum
+
+  - id: radiadores
+    title: "Radiadores de Energia"
+    type: optional
+    deps: [sala_fundicao, energia_interna]
+    icon: ChromatiCraft:chromaticraft_item_placer:48
+    desc: |
+      Distribuição sem cabos: o §eRedstone Flux Radiator§r (RF), o §eFluid Radiator§r e o
+      §eFluid Link Anchor§r. Qualquer um.
+    tasks:
+      - one_of: [ChromatiCraft:chromaticraft_item_placer:48, ChromatiCraft:chromaticraft_item_placer:75, ChromatiCraft:chromaticraft_item_placer:79]
+    rewards:
+      - loot: comum
+
+  - id: decompositor
+    title: "Enchantment Decomposer"
+    type: optional
+    deps: [sala_fundicao, coletor_chroma, energia_interna]
+    icon: ChromatiCraft:chromaticraft_item_placer:69
+    desc: |
+      Desmancha livros e itens encantados de volta em chroma — reciclagem de encantamentos
+      ruins.
+    tasks:
+      - get: ChromatiCraft:chromaticraft_item_placer:69
+    rewards:
+      - loot: comum
+
+  - id: infusor_pessoal
+    title: "Personal Infusion Stand"
+    type: normal
+    deps: [suporte_infusao]
+    icon: ChromatiCraft:chromaticraft_item_placer:101
+    desc: |
+      A infusão aplicada a §evocê§r: a estrutura do Infusion Fountain (pede "Resourceful
+      Experience"). Confira no Léxico o que ela infunde.
+    tasks:
+      - get: ChromatiCraft:chromaticraft_item_placer:101
+    rewards:
+      - xp: 3
+      - item: ChromatiCraft:chromaticraft_item_bucket
+
+  - id: colhedor_elemental
+    title: "Elemental Harvester"
+    type: optional
+    deps: [ligacao_pylon]
+    icon: ChromatiCraft:chromaticraft_item_placer:41
+    desc: |
+      Colheita automática movida a energia lúmen (pede "Crop Collection").
+    tasks:
+      - get: ChromatiCraft:chromaticraft_item_placer:41
+    rewards:
+      - loot: comum
+
+  - id: delegado_fundicao
+    title: "Casting Delegate"
+    type: optional
+    deps: [ligacao_pylon]
+    icon: ChromatiCraft:chromaticraft_item_placer:44
+    desc: |
+      Automação completa da Mesa de Fundição: o §eCasting Delegate§r faz receitas sem você
+      estar lá. Receita de endgame.
+    tasks:
+      - get: ChromatiCraft:chromaticraft_item_placer:44
+    rewards:
+      - loot: comum
+
+  - id: laser_avolita
+    title: "Avolite Defence Beam"
+    type: optional
+    deps: [ligacao_pylon]
+    icon: ChromatiCraft:chromaticraft_item_placer:84
+    desc: |
+      Defesa de endgame movida a Avolita, um dos minérios raros que você só enxerga com
+      muito conhecimento.
+    tasks:
+      - get: ChromatiCraft:chromaticraft_item_placer:84
+    rewards:
+      - loot: comum
+
+  - id: clarificador
+    title: "Lumen Clarifier"
+    type: optional
+    deps: [ligacao_pylon]
+    icon: ChromatiCraft:chromaticraft_item_placer:97
+    desc: |
+      Um obelisco que purifica e otimiza a sua rede de energia lúmen (estrutura Lumen
+      Purification Obelisk).
+    tasks:
+      - get: ChromatiCraft:chromaticraft_item_placer:97
+    rewards:
+      - loot: comum
+
+  - id: no_lumen
+    title: "Lumen Node"
+    type: optional
+    deps: [penhascos_luminosos, usar_energia]
+    icon: ChromatiCraft:chromaticraft_item_placer:90
+    desc: |
+      Os pontos de luz que piscam sobre os mares dos Luminous Cliffs são §eLumen Nodes§r —
+      e você pode fazer os seus para atravessar os mares com a rede de energia.
+    tasks:
+      - get: ChromatiCraft:chromaticraft_item_placer:90
+    rewards:
+      - loot: comum
+
+  - id: integracao_thaum
+    title: "ChromatiCraft e Thaumcraft"
+    type: optional
+    deps: [sala_fundicao, energia_interna]
+    icon: ChromatiCraft:chromaticraft_item_placer:61
+    desc: |
+      Pontes com o Thaumcraft (pedem a descoberta "Energy Inlet" — achar um nó de aura):
+      §eEssentia Relay§r, §eAspect Jar§r e §eAspect Former§r. A config usa a integração
+      "mais difícil" com o Thaumcraft. Qualquer uma.
+    tasks:
+      - one_of: [ChromatiCraft:chromaticraft_item_placer:61, ChromatiCraft:chromaticraft_item_placer:32, ChromatiCraft:chromaticraft_item_placer:33]
+    rewards:
+      - loot: comum
+
+  - id: integracao_abelhas
+    title: "ChromatiCraft e Forestry"
+    type: optional
+    deps: [colmeia_cristal, sala_fundicao]
+    icon: ChromatiCraft:chromaticraft_item_beeframe
+    desc: |
+      Para apicultores: a §eLifecycle Acceleration Frame§r, o §eGenetic Storage
+      Container§r e o §eLumen Alveary Booster§r. Qualquer um.
+    tasks:
+      - one_of: [ChromatiCraft:chromaticraft_item_beeframe, ChromatiCraft:chromaticraft_item_placer:105, ChromatiCraft:chromaticraft_item_placer:85]
+    rewards:
+      - loot: comum
+
+  - id: integracao_ae2
+    title: "ChromatiCraft e AE2"
+    type: optional
+    deps: [templo_fundicao]
+    icon: ChromatiCraft:chromaticraft_item_placer:46
+    desc: |
+      O §eME Item Distributor§r liga a sua rede ME às construções do ChromatiCraft; a
+      §eVoid Cell§r (endgame) é uma célula de armazenamento especial.
+    tasks:
+      - one_of: [ChromatiCraft:chromaticraft_item_placer:46, ChromatiCraft:chromaticraft_item_voidcell]
+    rewards:
+      - loot: comum
+
+  # ======================================================================
   # FASE 14 — ENDGAME E MAESTRIA ELEMENTAL
   # ======================================================================
   - id: turbo_pylon
