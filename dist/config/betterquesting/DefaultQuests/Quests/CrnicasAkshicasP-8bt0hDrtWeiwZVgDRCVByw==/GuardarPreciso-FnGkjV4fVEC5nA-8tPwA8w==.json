@@ -1,15 +1,15 @@
 {
   "preRequisites:9": {
     "0:10": {
-      "questIDHigh:4": -867966117252738364,
-      "questIDLow:4": -4986438548504842320
+      "questIDHigh:4": 8224199117524587338,
+      "questIDLow:4": -6387044815365260805
     }
   },
   "properties:10": {
     "betterquesting:10": {
       "autoClaim:1": 0,
-      "completion_animation:8": "slam",
-      "completion_particle:8": "firework",
+      "completion_animation:8": "default",
+      "completion_particle:8": "default",
       "confetti_icon:10": {
         "Count:3": 0,
         "Damage:2": 0,
@@ -17,21 +17,21 @@
         "id:8": "minecraft:stick"
       },
       "countAsQuest:1": 1,
-      "desc:8": "d",
+      "desc:8": "Seu inventário vai lotar. Rápido. Fabrique um §eBaú§r e comece a organizar a bagunça.\n\nMais pra frente você vai ter gavetas, baús de ferro e até redes de armazenamento digital\n(o Volume de Utilidades e o de Applied Energistics esperam por você). Mas todo grande\narmazém começou como um baú de madeira.",
       "globalShare:1": 1,
       "icon:10": {
         "Count:3": 1,
         "Damage:2": 0,
         "OreDict:8": "",
-        "id:8": "minecraft:book"
+        "id:8": "minecraft:chest"
       },
       "isGlobal:1": 0,
-      "isMain:1": 1,
+      "isMain:1": 0,
       "isSilent:1": 0,
       "lockedProgress:1": 1,
-      "name:8": "§c§lB",
+      "name:8": "Guardar é Preciso",
       "notification_duration:5": -1.0,
-      "notification_effect:3": 3,
+      "notification_effect:3": -1,
       "notification_fade_in:5": -1.0,
       "notification_fade_out:5": -1.0,
       "notification_icon_offset_y:3": -2147483648,
@@ -56,68 +56,48 @@
       "visibility:8": "NORMAL"
     }
   },
-  "questIDHigh:4": -1573942940237865764,
-  "questIDLow:4": -8012682864994815349,
+  "questIDHigh:4": 1617254668279174208,
+  "questIDLow:4": -5072161777161338637,
   "rewards:9": {
     "0:10": {
-      "choices:9": {
-        "0:10": {
-          "Count:3": 4,
-          "Damage:2": 0,
-          "OreDict:8": "",
-          "id:8": "minecraft:iron_ingot"
-        },
-        "1:10": {
-          "Count:3": 2,
-          "Damage:2": 0,
-          "OreDict:8": "ingotIron",
-          "id:8": "minecraft:iron_ingot"
-        }
-      },
       "ignoreDisabled:1": 0,
       "index:3": 0,
-      "rewardID:8": "bq_standard:choice"
-    },
-    "1:10": {
-      "ignoreDisabled:1": 0,
-      "index:3": 1,
       "rewardID:8": "bq_standard:item",
       "rewards:9": {
         "0:10": {
-          "Count:3": 1,
-          "Damage:2": 104,
+          "Count:3": 2,
+          "Damage:2": 0,
           "OreDict:8": "",
-          "id:8": "bq_standard:loot_chest",
-          "tag:10": {
-            "fixedLootList:9": {
-              "0:10": {
-                "Count:3": 16,
-                "Damage:2": 0,
-                "OreDict:8": "",
-                "id:8": "minecraft:torch"
-              }
-            },
-            "fixedLootName:8": "Kit",
-            "hideLootInfo:1": 1
-          }
+          "id:8": "minecraft:chest"
         }
       }
+    },
+    "1:10": {
+      "amount:3": 1,
+      "ignoreDisabled:1": 0,
+      "index:3": 1,
+      "isLevels:1": 1,
+      "rewardID:8": "bq_standard:xp"
     }
   },
   "tasks:9": {
     "0:10": {
-      "damageType:8": "",
+      "allowAnvil:1": 0,
+      "allowCraft:1": 1,
+      "allowCraftedFromStatistics:1": 0,
+      "allowSmelt:1": 1,
       "ignoreNBT:1": 1,
       "index:3": 0,
-      "required:3": 3,
-      "subtypes:1": 1,
-      "target:8": "Zombie",
-      "targetNBT:10": {},
-      "taskID:8": "bq_standard:hunt"
-    },
-    "1:10": {
-      "index:3": 1,
-      "taskID:8": "bq_standard:checkbox"
+      "partialMatch:1": 1,
+      "requiredItems:9": {
+        "0:10": {
+          "Count:3": 1,
+          "Damage:2": 0,
+          "OreDict:8": "",
+          "id:8": "minecraft:chest"
+        }
+      },
+      "taskID:8": "bq_standard:crafting"
     }
   }
 }

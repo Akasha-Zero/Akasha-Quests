@@ -29,6 +29,51 @@ public class WorldPass {
     private final File outDir;
     private int stage = 0;
     private int wait = 0;
+    private int lastCount = -1;
+    private int stable = 0;
+
+    /**
+     * NEI loads IConfigureNEI plugins in one stream.forEach on a background thread; a single
+     * plugin failure (or a hang) silently drops every plugin after it. Load each one here,
+     * isolated; NEI ignores handlers whose id is already registered.
+     */
+    @SuppressWarnings("unchecked")
+    private void loadPluginsManually() {
+        int ok = 0, fail = 0;
+        try {
+            Class<?> cfg = Class.forName("codechicken.nei.NEIClientConfig");
+            try {
+                Field f = cfg.getDeclaredField("pluginNEIConfigLoaded");
+                f.setAccessible(true);
+                log("pluginNEIConfigLoaded=" + f.get(null) + " handlers=" + handlerCount());
+            } catch (Throwable ignored) {}
+            Set<Class<?>> plugins = (Set<Class<?>>) cfg.getField("pluginsList").get(null);
+            for (Class<?> c : new java.util.ArrayList<>(plugins)) {
+                try {
+                    Object o = c.getConstructor().newInstance();
+                    o.getClass().getMethod("loadConfig").invoke(o);
+                    ok++;
+                } catch (Throwable t) {
+                    fail++;
+                    Throwable root = t.getCause() != null ? t.getCause() : t;
+                    System.out.println("[AkashaDump/World] plugin " + c.getName() + " failed: " + root);
+                }
+            }
+        } catch (Throwable t) {
+            log("manual plugin load failed " + t);
+        }
+        log("plugins ok=" + ok + " failed=" + fail + " handlers=" + handlerCount());
+    }
+
+    @SuppressWarnings("unchecked")
+    private static int handlerCount() {
+        try {
+            Class<?> gcr = Class.forName("codechicken.nei.recipe.GuiCraftingRecipe");
+            return ((List<Object>) gcr.getField("craftinghandlers").get(null)).size();
+        } catch (Throwable t) {
+            return -1;
+        }
+    }
 
     public WorldPass(File outDir) {
         this.outDir = outDir;
@@ -46,7 +91,14 @@ public class WorldPass {
                     return false;
                 case 1:
                     if (mc.thePlayer == null || mc.theWorld == null) return false;
-                    if (++wait < 400) return false;
+                    ++wait;
+                    if (wait % 100 == 0) {
+                        int n = handlerCount();
+                        if (n == lastCount) stable++; else { stable = 0; lastCount = n; }
+                        log("waiting for NEI: handlers=" + n + " stable=" + stable + " wait=" + wait);
+                    }
+                    if (wait < 1200 || (stable < 8 && wait < 12000)) return false;
+                    loadPluginsManually();
                     stage = 2;
                     return false;
                 case 2:

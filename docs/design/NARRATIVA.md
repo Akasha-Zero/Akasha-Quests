@@ -39,6 +39,11 @@ alternando com **"Viajante"**, **"parceiro(a) de aventura"** e simplesmente **"v
 Ela fala de si no feminino ("eu fiquei tão orgulhosa!") e usa português brasileiro
 informal, com "você", exclamações e frases curtas.
 
+**Gênero do jogador:** não sabemos quem está jogando. Trate o jogador pelo título "Herói"
+e por "você", e prefira construções neutras ("quem for engenheiro de verdade" → "toda boa
+engenharia precisa de café"; "você está pronto?" → "tudo pronto?"). Não use substantivos ou
+adjetivos femininos/masculinos que descrevam o jogador além do título "Herói".
+
 ## 3. Regras de escrita das descrições
 
 1. **Gancho → explicação → incentivo.** Um parágrafo de fantasia/emoção, um (ou dois) de

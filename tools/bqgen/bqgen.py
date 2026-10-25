@@ -43,6 +43,10 @@ LOOT_TIERS = OrderedDict([
     ('comum', 0), ('incomum', 25), ('raro', 50), ('epico', 75), ('lendario', 100),
 ])
 
+LOOT_NAMES = {'comum': '§fBaú de Saque Comum', 'incomum': '§aBaú de Saque Incomum',
+              'raro': '§9Baú de Saque Raro', 'epico': '§5Baú de Saque Épico',
+              'lendario': '§6Baú de Saque Lendário'}
+
 # Quest "type" presets: icon size on the map, main flag, notification extras.
 TYPES = {
     'normal':    dict(size=24, main=False),
@@ -164,6 +168,9 @@ class Registry:
         metas = sorted({r['meta'] for r in recs})
         return 'item %s has no meta %d (known: %s)' % (iid, meta, metas[:24])
 
+    def damageable(self, iid):
+        return any(r.get('maxDmg', 0) > 0 for r in self.by_id.get(iid, ()))
+
     def name_of(self, iid, meta):
         r = self.items.get((iid, meta)) or (self.by_id.get(iid) or [None])[0]
         return r.get('name_pt') or r.get('name') if r else None
@@ -237,8 +244,15 @@ def as_list(v):
 
 # --------------------------------------------------------------------------- tasks
 
-def _item_list(v, ctx, reg):
-    return OrderedDict(('%d:10' % i, parse_item(s, '%s[%d]' % (ctx, i), reg)) for i, s in enumerate(as_list(v)))
+def _item_list(v, ctx, reg, task=False):
+    out = OrderedDict()
+    for i, s in enumerate(as_list(v)):
+        it = parse_item(s, '%s[%d]' % (ctx, i), reg)
+        # Tools, armour and electric items change damage with use/charge: match any damage.
+        if task and not it['OreDict:8'] and reg.damageable(it['id:8']):
+            it['Damage:2'] = WILDCARD
+        out['%d:10' % i] = it
+    return out
 
 
 def build_task(t, idx, ctx, reg):
@@ -259,7 +273,7 @@ def build_task(t, idx, ctx, reg):
         o['index:3'] = idx
         o['partialMatch:1'] = 1
         o['requireOnlyOneItem:1'] = 1 if kind == 'one_of' else 0
-        o['requiredItems:9'] = _item_list(v, c, reg)
+        o['requiredItems:9'] = _item_list(v, c, reg, task=True)
         o['taskID:8'] = 'bq_standard:optional_retrieval' if kind == 'optional' else 'bq_standard:retrieval'
     elif kind == 'craft':
         o['allowAnvil:1'] = 1 if opts.get('anvil') else 0
@@ -269,7 +283,7 @@ def build_task(t, idx, ctx, reg):
         o['ignoreNBT:1'] = 1
         o['index:3'] = idx
         o['partialMatch:1'] = 1
-        o['requiredItems:9'] = _item_list(v, c, reg)
+        o['requiredItems:9'] = _item_list(v, c, reg, task=True)
         o['taskID:8'] = 'bq_standard:crafting'
     elif kind == 'kill':
         if isinstance(v, str):
@@ -343,8 +357,9 @@ def build_task(t, idx, ctx, reg):
 def loot_chest(tier, count, ctx, reg):
     if tier not in LOOT_TIERS:
         raise GenError('%s: unknown loot tier %r (use %s)' % (ctx, tier, ', '.join(LOOT_TIERS)))
+    tag = OrderedDict([('display:10', {'Name:8': LOOT_NAMES[tier]}), ('hideLootInfo:1', 1)])
     return OrderedDict([('Count:3', count), ('Damage:2', LOOT_TIERS[tier]), ('OreDict:8', ''),
-                        ('id:8', 'bq_standard:loot_chest'), ('tag:10', {'hideLootInfo:1': 1})])
+                        ('id:8', 'bq_standard:loot_chest'), ('tag:10', tag)])
 
 
 def build_reward(r, idx, ctx, reg):
@@ -380,9 +395,8 @@ def build_reward(r, idx, ctx, reg):
         for i, s in enumerate(as_list(v['items'])):
             it = parse_item(s, '%s[%d]' % (c, i), reg)
             lst['%d:10' % i] = it
-        tag = OrderedDict([('fixedLootList:9', lst), ('fixedLootName:8', v['name']), ('hideLootInfo:1', 1)])
-        if v.get('label'):
-            tag['display:10'] = {'Name:8': v['label']}
+        tag = OrderedDict([('display:10', {'Name:8': '§e' + v.get('label', v['name'])}),
+                           ('fixedLootList:9', lst), ('fixedLootName:8', v['name']), ('hideLootInfo:1', 1)])
         chest = OrderedDict([('Count:3', 1), ('Damage:2', 104), ('OreDict:8', ''),
                              ('id:8', 'bq_standard:loot_chest'), ('tag:10', tag)])
         o['rewardID:8'] = 'bq_standard:item'

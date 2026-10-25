@@ -1,0 +1,4257 @@
+chapter:
+  id: ic2
+  title: "IndustrialCraft 2"
+  prefix: ""
+  order: 300
+  icon: IC2:itemToolWrench
+  desc: |
+    §bO Volume da Indústria.§r Da gota de resina ao Traje Quântico: borracha, cobre,
+    geradores, tensões que explodem, aço, reatores nucleares e Matéria UU.
+    (IndustrialCraft 2 Experimental 2.2.828)
+
+quests:
+  # ======================================================================
+  # FASE 0 — RESINA E BORRACHA
+  # ======================================================================
+  - id: arvore_borracha
+    title: "A Árvore que Chora"
+    type: main
+    icon: IC2:blockRubSapling
+    desc: |
+      Esta é uma das primeiras páginas do Volume da Indústria que eu consegui colar de volta,
+      Herói. E ela começa... numa árvore. Juro!
+
+      As §eÁrvores de Borracha§r nascem em florestas, pântanos e selvas (os pântanos são os
+      melhores lugares para procurar). O tronco tem manchas escuras que escorrem resina — é
+      daí que vem toda a borracha da eletricidade: isolamento de cabos, botas, condutores de
+      calor...
+
+      Corte alguns troncos de §eMadeira de Borracha§r, mas guarde ao menos uma árvore viva
+      perto de casa. Vamos precisar dela de novo daqui a pouco!
+    tasks:
+      - get: IC2:blockRubWood x4
+    rewards:
+      - xp: 3
+      - choice: [minecraft:apple x4, minecraft:bread x8, minecraft:cooked_porkchop x6]
+
+  - id: torneira_resina
+    title: "Torneira de Resina"
+    type: main
+    deps: [arvore_borracha]
+    desc: |
+      Bater no tronco com a mão não adianta (eu tentei, a árvore não gostou).
+
+      A §eTorneira de Resina§r é feita com 5 tábuas (formato de "T" torto — confira no NEI).
+      Clique com ela numa §emancha de resina úmida§r do tronco de borracha ainda de pé: sai de
+      1 a 3 Resinas e a mancha seca. Com o tempo ela volta a escorrer, então não derrube a
+      árvore!
+
+      §aDica:§r a torneira tem durabilidade baixa. Faça duas de uma vez.
+    tasks:
+      - get: IC2:itemTreetap
+    rewards:
+      - xp: 3
+      - choice: [minecraft:planks x16, minecraft:log x8, minecraft:torch x16]
+
+  - id: resina
+    title: "Lágrimas Pegajosas"
+    type: main
+    deps: [torneira_resina]
+    desc: |
+      Resina! Tá vendo como gruda? Os Antigos chamavam isso de "ouro mole".
+
+      Junte §e8 Resinas§r. Elas viram borracha de dois jeitos: na fornalha comum (1 resina →
+      1 borracha) ou, bem melhor, no §bExtrator§r (1 resina → 3 borrachas). Se der para
+      esperar, guarde a resina para o Extrator — vamos construí-lo logo, logo.
+
+      §aCuriosidade:§r resina também deixa pistões pegajosos e dinamites grudentas.
+    tasks:
+      - get: IC2:itemHarz x8
+    rewards:
+      - xp: 3
+      - choice: [minecraft:coal x8, minecraft:redstone x8, minecraft:iron_ingot x4]
+
+  - id: borracha
+    title: "Borracha"
+    type: main
+    deps: [resina]
+    desc: |
+      Sem borracha não existe cabo isolado — e cabo sem isolamento dá choque, vaza energia e
+      deixa o Herói com o cabelo em pé.
+
+      Asse a resina na fornalha (ou espere o Extrator) até ter §e8 Borrachas§r. Qualquer
+      borracha do oredict vale, inclusive a do MineFactory.
+
+      §aDica:§r a muda e até a própria madeira de borracha também rendem borracha no Extrator.
+    tasks:
+      - get: ore:itemRubber x8
+    rewards:
+      - xp: 3
+      - choice: [IC2:itemHarz x4, minecraft:iron_ingot x6, minecraft:coal x12]
+
+  - id: rebento_borracha
+    title: "Plantando o Futuro"
+    type: optional
+    deps: [arvore_borracha]
+    desc: |
+      Uma árvore só é sorte; uma fazenda de seringueiras é indústria!
+
+      Pegue um §eRebento de Árvore de Borracha§r (cai das folhas) e plante perto da base.
+      Uma dúzia delas garante resina pra sempre. §aDica:§r farinha de osso acelera.
+    tasks:
+      - get: IC2:blockRubSapling x4
+    rewards:
+      - loot: comum
+
+  - id: folha_borracha
+    title: "Folha de Borracha"
+    type: optional
+    deps: [borracha]
+    desc: |
+      Seis borrachas na bancada viram três §eFolhas de Borracha§r — um bloco macio de
+      borracha. Experimente pular em cima dele e me conte o que acontece (eu já sei, mas é
+      mais divertido descobrir).
+    tasks:
+      - get: IC2:blockRubber
+    rewards:
+      - loot: comum
+
+  - id: botas_borracha
+    title: "Botas de Borracha"
+    type: optional
+    deps: [borracha]
+    desc: |
+      Borracha + lã = §eBotas de Borracha§r. Elas amortecem quedas e, mais importante, fazem
+      parte do §eTraje Hazmat§r completo — e, lá no fim, viram ingrediente das Botas
+      Quânticas. Não jogue fora!
+    tasks:
+      - get: IC2:itemArmorRubBoots
+    rewards:
+      - loot: comum
+
+  - id: bote_borracha
+    title: "Bote de Borracha"
+    type: optional
+    deps: [borracha]
+    desc: |
+      Cinco borrachas em "U" = §eBote de Borracha§r. Mais leve que o de madeira, mas não
+      encoste em nada pontudo... se ele furar, vira um Bote Danificado (que se conserta com
+      mais borracha na bancada).
+    tasks:
+      - get: IC2:itemBoat:1
+    rewards:
+      - loot: comum
+
+  # ======================================================================
+  # FASE 1 — COBRE, ESTANHO E A FORJA À MÃO
+  # ======================================================================
+  - id: cobre
+    title: "Cobre"
+    type: main
+    deps: [arvore_borracha]
+    icon: IC2:blockOreCopper
+    desc: |
+      Lembra quando eu disse que a eletricidade começa numa árvore? Ela continua numa mina.
+
+      O §eMinério de Cobre§r do IC2 é bem comum: veios grandes entre as camadas Y 10 e 68,
+      mais denso no meio. Funda o minério na fornalha (por enquanto) e junte §e16 lingotes
+      de cobre§r. Cobre de qualquer mod serve — o IC2 usa o oredict.
+
+      §aDica:§r quando o Triturador chegar, cada minério vai render o dobro. Se tiver
+      paciência, guarde alguns minérios crus!
+    tasks:
+      - get: ore:ingotCopper x16
+    rewards:
+      - xp: 3
+      - choice: [minecraft:iron_ingot x8, minecraft:coal x16, minecraft:torch x32]
+
+  - id: estanho
+    title: "Estanho"
+    type: main
+    deps: [arvore_borracha]
+    icon: IC2:blockOreTin
+    desc: |
+      O irmão menor e mais tímido do cobre. O §eMinério de Estanho§r aparece em veios menores
+      porém muito numerosos, das camadas Y 0 a 39.
+
+      Junte §e16 lingotes de estanho§r: eles viram cabos de baixa tensão, invólucros das
+      baterias e, misturados ao cobre, o §6bronze§r.
+    tasks:
+      - get: ore:ingotTin x16
+    rewards:
+      - xp: 3
+      - choice: [minecraft:iron_ingot x8, minecraft:coal x16, minecraft:glass x16]
+
+  - id: martelo_forja
+    title: "Martelo de Forja"
+    type: main
+    deps: [cobre, estanho]
+    desc: |
+      Antes das prensas elétricas, havia braço. O §eMartelo de Forja§r (lingotes de ferro e
+      gravetos) é uma ferramenta de bancada: coloque-o junto de um lingote para martelar uma
+      §ePlaca§r, ou junto de uma placa para fazer §e2 Invólucros§r.
+
+      Ele gasta durabilidade a cada uso, então tenha ferro de reserva. Mais tarde o
+      §bFormador de Metal§r faz isso de graça.
+    tasks:
+      - get: IC2:itemToolForgeHammer
+    rewards:
+      - xp: 3
+      - choice: [minecraft:iron_ingot x8, ore:ingotCopper x8, ore:ingotTin x8]
+
+  - id: placas
+    title: "Placas Metálicas"
+    type: main
+    deps: [martelo_forja]
+    icon: IC2:itemPlates:4
+    desc: |
+      Quase toda receita do IC2 pede placas no lugar de lingotes. É mais trabalho, eu sei —
+      mas máquina boa é máquina bem chapeada!
+
+      Martele §e8 Placas de Ferro§r, §e4 de Cobre§r e §e4 de Estanho§r. As de ferro serão a
+      Carcaça das máquinas; as de cobre e estanho viram cabos e invólucros.
+    tasks:
+      - get: [ore:plateIron x8, ore:plateCopper x4, ore:plateTin x4]
+    rewards:
+      - xp: 3
+      - choice: [minecraft:iron_ingot x8, minecraft:redstone x12, ore:ingotCopper x8]
+
+  - id: alicate
+    title: "Alicate"
+    type: normal
+    deps: [placas]
+    desc: |
+      Placa + §eAlicate§r na bancada = fios! Uma placa de cobre rende 2 cabos de cobre, uma de
+      estanho rende 3 cabos de estanho, uma de ouro rende 4 de ouro.
+
+      O Alicate é feito com placas e lingotes de ferro e também se gasta. Depois, o Formador
+      de Metal corta e extruda cabos sem gastar ferramenta.
+    tasks:
+      - get: IC2:itemToolCutter
+    rewards:
+      - xp: 2
+      - item: ore:ingotCopper x4
+
+  - id: involucros
+    title: "Invólucros"
+    type: normal
+    deps: [placas]
+    icon: IC2:itemCasing:1
+    desc: |
+      Invólucros são as "latinhas" que embrulham baterias, motores e células. Martele placas
+      para fazer §e4 Invólucros de Estanho§r e §e4 Invólucros de Ferro§r (cada placa rende 2).
+
+      §aObs.:§r o jogo escreve "Invólcruo" — é a mesma coisa, só a tradução que tropeçou.
+    tasks:
+      - get: [IC2:itemCasing:1 x4, IC2:itemCasing:4 x4]
+    rewards:
+      - xp: 2
+      - item: ore:ingotTin x4
+
+  - id: cabo_cobre
+    title: "Cabo de Cobre Isolado"
+    type: main
+    deps: [alicate, borracha]
+    icon: IC2:itemCable
+    desc: |
+      Agora sim, a borracha entra em cena! Um §eCabo de Cobre§r sem isolamento + 1 Borracha
+      (sem forma, na bancada) = §eCabo de Cobre Isolado§r.
+
+      Ele aguenta até §b128 EU/t§r (tensão média, MV) e é o cabo que as receitas de circuito
+      pedem. Faça §e16§r — vão sumir mais rápido do que você imagina.
+    tasks:
+      - get: IC2:itemCable x16
+    rewards:
+      - xp: 3
+      - choice: [IC2:itemHarz x6, minecraft:redstone x12, minecraft:iron_ingot x6]
+
+  - id: cabo_estanho
+    title: "Cabo de Estanho Isolado"
+    type: normal
+    deps: [alicate, borracha]
+    icon: IC2:itemCable:13
+    desc: |
+      O §eCabo de Estanho§r é o mais barato e carrega só §b32 EU/t§r (LV) — perfeito para ligar
+      geradores pequenos às primeiras máquinas. Isolado com borracha, ele perde quase nada
+      por bloco.
+
+      Faça §e8 Cabos de Estanho Isolados§r: a Bateria e a BatBox pedem esse cabo.
+    tasks:
+      - get: IC2:itemCable:13 x8
+    rewards:
+      - xp: 2
+      - item: ore:ingotTin x4
+
+  - id: info_cabos
+    title: "Cabos, Perdas e Choques"
+    type: info
+    deps: [cabo_cobre]
+    icon: IC2:itemCable:9
+    desc: |
+      Uma aulinha rápida, prometo! (…mais ou menos.)
+
+      Todo cabo tem §bcapacidade§r (o maior pacote que suporta) e §bperda§r (EU perdida por bloco):
+      §e• Estanho:§r 32 EU/t — isolado perde 0,025/bloco
+      §e• Cobre:§r 128 EU/t — isolado perde 0,2/bloco
+      §e• Ouro:§r 512 EU/t — isolado perde 0,45/bloco
+      §e• HV:§r 2048 EU/t — isolado perde 0,95/bloco
+      §e• Fibra de Vidro:§r 8192 EU/t — perde só 0,025/bloco
+
+      §cPacote acima da capacidade derrete o cabo.§r Cabo sem isolamento dá choque em quem
+      encosta. Use sempre o cabo mais fraco que dê conta da tensão — e mantenha as linhas
+      curtas!
+    tasks:
+      - check
+    rewards:
+      - xp: 1
+
+  # ======================================================================
+  # FASE 2 — A PRIMEIRA FAÍSCA
+  # ======================================================================
+  - id: bateria_re
+    title: "Bateria Reutilizável"
+    type: main
+    deps: [cabo_estanho, involucros]
+    icon: IC2:itemBatRE:1
+    desc: |
+      Energia que você pode carregar no bolso! A §eBateria Reutilizável§r (RE) guarda 10 000 EU.
+
+      Receita: 1 Cabo de Estanho Isolado em cima, 4 Invólucros de Estanho nas laterais e 2 de
+      redstone no meio. Ela sai vazia — vai ser carregada pelo gerador ou pela BatBox.
+
+      O Gerador, a BatBox e várias ferramentas pedem baterias. Comece com uma!
+    tasks:
+      - one_of: [IC2:itemBatREDischarged, IC2:itemBatRE:*]
+    rewards:
+      - xp: 3
+      - choice: [minecraft:redstone x16, ore:ingotTin x6, IC2:itemCasing:1 x4]
+
+  - id: carcaca_maquina
+    title: "Carcaça da Máquina Básica"
+    type: main
+    deps: [placas]
+    desc: |
+      Oito Placas de Ferro em anel e... voilà, o esqueleto de quase toda máquina do IC2: a
+      §eCarcaça da Máquina Básica§r.
+
+      §cImportante:§r se você quebrar uma máquina do IC2 com picareta, ela pode cair só como
+      carcaça! A ferramenta certa para desmontar máquinas é a §eChave Inglesa§r (já já
+      chegamos lá).
+    tasks:
+      - get: IC2:blockMachine x2
+    rewards:
+      - xp: 3
+      - choice: [minecraft:iron_ingot x10, minecraft:redstone x12, ore:ingotCopper x8]
+
+  - id: fornalha_ferro
+    title: "Fornalha de Ferro"
+    type: normal
+    deps: [placas]
+    desc: |
+      Uma fornalha comum envolta em placas de ferro vira a §eFornalha de Ferro§r: queima
+      combustível como a de pedra, só que um pouco mais rápido e eficiente.
+
+      Mais do que isso, ela é peça de receita: Gerador, Fornalha Elétrica e Gerador de Calor
+      pedem uma.
+    tasks:
+      - get: IC2:blockMachine:1
+    rewards:
+      - xp: 2
+      - item: minecraft:coal x8
+
+  - id: gerador
+    title: "Faça-se a Luz: o Gerador"
+    type: main
+    deps: [bateria_re, carcaca_maquina, fornalha_ferro]
+    desc: |
+      É agora, Herói. A primeira faísca! (Desculpa, eu estou MUITO empolgada.)
+
+      O §eGerador§r queima qualquer combustível de fornalha e produz §b10 EU/t§r — um carvão
+      rende 4 000 EU. Receita: Bateria em cima, Carcaça (ou 3 Placas de Ferro) no meio e
+      Fornalha de Ferro (ou Fornalha comum com a Carcaça) embaixo.
+
+      Ele carrega baterias no slot de cima e empurra energia para cabos e máquinas encostadas.
+      §aDica:§r sucata também queima nele.
+    tasks:
+      - get: IC2:blockGenerator
+    rewards:
+      - xp: 3
+      - choice: [minecraft:coal x24, minecraft:coal_block x2, IC2:itemCable:13 x6]
+
+  - id: info_eu
+    title: "EU, Tensão e Explosões"
+    type: info
+    deps: [gerador]
+    icon: IC2:itemToolMEter
+    desc: |
+      §cLeia isto antes de ligar qualquer coisa grande!§r
+
+      O IC2 mede energia em §bEU§r e entrega em pacotes de tensão. Cada máquina tem um tier:
+      §e• LV:§r até 32 EU/t (máquinas básicas, BatBox)
+      §e• MV:§r até 128 EU/t (CESU)
+      §e• HV:§r até 512 EU/t (MFE)
+      §e• EV:§r até 2048 EU/t (MFSU)
+
+      §cSe uma máquina receber um pacote acima do seu tier, ela EXPLODE.§r Sem aviso. Com seus
+      itens dentro. Para descer a tensão, use §eTransformadores§r; para uma máquina aceitar
+      tensão maior, use o §eUpgrade de Transformador§r.
+
+      §aRegra de ouro:§r antes de ligar um banco de energia novo, confira o tier da saída
+      com o Leitor de EU.
+    tasks:
+      - check
+    rewards:
+      - xp: 1
+
+  - id: circuito
+    title: "Circuito Eletrônico"
+    type: main
+    deps: [cabo_cobre, placas]
+    desc: |
+      O "cérebro" de toda máquina: 6 Cabos de Cobre Isolados, 2 de redstone e 1 Placa de Ferro
+      no centro formam o §eCircuito Eletrônico§r.
+
+      Você vai fazer DEZENAS deles. Vale montar uma reservinha de cabos isolados só para isso.
+      Circuitos básicos de outros mods do oredict (Mekanism, Electrical Age) também servem nas
+      receitas do IC2 neste pack.
+    tasks:
+      - get: IC2:itemPartCircuit x4
+    rewards:
+      - xp: 3
+      - choice: [minecraft:redstone x16, IC2:itemCable x8, minecraft:iron_ingot x8]
+
+  - id: leitor_eu
+    title: "Leitor de EU"
+    type: optional
+    deps: [circuito]
+    desc: |
+      Um multímetro! Clique com o §eLeitor de EU§r num cabo ou máquina: a janela que abre
+      mostra a energia que entra e sai e a tensão (dá para alternar o modo de medição nela).
+
+      É a melhor ferramenta para descobrir onde a sua rede está vazando — ou prestes a
+      explodir.
+    tasks:
+      - get: IC2:itemToolMEter
+    rewards:
+      - loot: comum
+
+  - id: triturador
+    title: "Triturador"
+    type: main
+    deps: [circuito, carcaca_maquina]
+    desc: |
+      Lembra que eu pedi para guardar minérios crus? Este é o motivo!
+
+      O §eTriturador§r (Macerator) — 3 sílex, 2 pedregulhos, Carcaça e Circuito — transforma
+      §e1 minério em 2 Minérios Triturados§r. Funda os triturados na fornalha e pronto: o
+      dobro de metal!
+
+      Ele também mói lingotes em pó, carvão em Pó de Carvão, diamante em Pó de Diamante... e
+      pedregulho em areia. Consome 2 EU/t; ligue-o ao Gerador com Cabo de Estanho.
+    tasks:
+      - get: IC2:blockMachine:3
+    rewards:
+      - xp: 3
+      - choice: [minecraft:coal x16, IC2:itemCable:13 x8, minecraft:flint x8]
+
+  - id: minerio_triturado
+    title: "O Dobro de Tudo"
+    type: main
+    deps: [triturador]
+    icon: IC2:itemCrushedOre
+    desc: |
+      Hora de ver a mágica (bem, a física) acontecer. Passe minérios pelo Triturador até ter
+      §e16 Minérios Triturados§r de qualquer metal.
+
+      Cada um vira 1 lingote na fornalha — ou, mais tarde, segue para a Lavadora de Minérios
+      e o Centrifugador Térmico, rendendo ainda um pouquinho mais. §aDica:§r não funda tudo
+      agora se quiser experimentar a linha completa depois.
+    tasks:
+      - get: IC2:itemCrushedOre:* x16
+    rewards:
+      - xp: 3
+      - choice: [minecraft:coal x16, minecraft:redstone x16, IC2:itemPartCircuit x2]
+      - command: "/effect @p 3 600 1"
+
+  - id: po_carvao
+    title: "Pó de Carvão"
+    type: normal
+    deps: [triturador]
+    icon: IC2:itemDust:2
+    desc: |
+      Carvão triturado vira §ePó de Carvão§r — e esse pó tem futuro! Ele vira Fibra de
+      Carbono (rumo à NanoSuit), Bola de Carvão (rumo a diamantes!), Painel Solar e Bateria
+      de Uso Único.
+
+      Junte §e16§r.
+    tasks:
+      - get: IC2:itemDust:2 x16
+    rewards:
+      - xp: 2
+      - item: minecraft:coal x8
+
+  - id: bronze
+    title: "A Idade do Bronze"
+    type: main
+    deps: [triturador]
+    icon: IC2:itemIngot:2
+    desc: |
+      No IC2 o bronze nasce do pó: §e3 Pós de Cobre + 1 Pó de Estanho§r (sem forma) = §e4 Pós
+      de Bronze§r. Moa lingotes no Triturador para conseguir os pós e funda o bronze.
+
+      §aObs.:§r o jogo chama o Pó de Estanho de "Pó de ferro" — é erro de tradução, confira o
+      nome em inglês com F3+H.
+
+      Bronze de outros mods do pack também vale. Junte §e12 lingotes§r: Chave Inglesa,
+      invólucros de bronze e ferramentas esperam por eles.
+    tasks:
+      - get: ore:ingotBronze x12
+    rewards:
+      - xp: 3
+      - choice: [ore:ingotCopper x12, ore:ingotTin x6, minecraft:iron_ingot x8]
+
+  - id: chave_inglesa
+    title: "Chave Inglesa"
+    type: main
+    deps: [bronze]
+    desc: |
+      A ferramenta mais importante do capítulo, e não estou exagerando.
+
+      Com a §eChave Inglesa§r (6 lingotes de bronze) você §egira§r as máquinas: clique numa face
+      e ela vira a frente (com Shift, a frente vai para o lado oposto). Clique na face que §ejá
+      é§r a frente e a máquina é §edesmontada§r inteira. Quebrar com picareta pode te devolver
+      só a carcaça!
+
+      Bancos de energia desmontados guardam 80% da carga neste pack. Tenha sempre uma no
+      cinto.
+    tasks:
+      - get: IC2:itemToolWrench
+    rewards:
+      - xp: 3
+      - choice: [ore:ingotBronze x6, IC2:itemPartCircuit x2, minecraft:redstone x16]
+
+  - id: ferramentas_bronze
+    title: "Ferramentas de Bronze"
+    type: optional
+    deps: [bronze]
+    icon: IC2:itemToolBronzePickaxe
+    desc: |
+      O bronze fica entre o ferro e o diamante... na nostalgia, pelo menos. Picareta,
+      machado, pá, espada e enxada de bronze usam as receitas clássicas. Faça qualquer uma
+      para comemorar a nova liga.
+    tasks:
+      - one_of: [IC2:itemToolBronzePickaxe, IC2:itemToolBronzeAxe, IC2:itemToolBronzeSpade, IC2:itemToolBronzeSword, IC2:itemToolBronzeHoe]
+    rewards:
+      - loot: comum
+
+  - id: armadura_bronze
+    title: "Armadura de Bronze"
+    type: optional
+    deps: [bronze]
+    icon: IC2:itemArmorBronzeChestplate
+    desc: |
+      Explorar mina atrás de estanho com armadura de couro? Nem pensar, Herói!
+
+      Um conjunto completo de §eArmadura de Bronze§r (elmo, peitoral, calças e botas) é uma
+      ótima proteção de início de jogo enquanto você explora atrás de cobre e estanho.
+    tasks:
+      - get: [IC2:itemArmorBronzeHelmet, IC2:itemArmorBronzeChestplate, IC2:itemArmorBronzeLegs, IC2:itemArmorBronzeBoots]
+    rewards:
+      - loot: comum
+
+  - id: extrator
+    title: "Extrator"
+    type: main
+    deps: [circuito, carcaca_maquina, torneira_resina]
+    desc: |
+      Lembra da resina guardada? Chegou a hora! O §eExtrator§r (4 Torneiras de Resina,
+      Carcaça e Circuito) arranca §e3 Borrachas de cada Resina§r. Também extrai borracha de
+      mudas e madeira de borracha, Pó de Enxofre da pólvora e mais.
+
+      Ele vai ser essencial para a Bateria Avançada (enxofre!) e para manter o estoque de
+      borracha sempre cheio.
+    tasks:
+      - get: IC2:blockMachine:4
+    rewards:
+      - xp: 3
+      - choice: [IC2:itemHarz x8, minecraft:gunpowder x4, IC2:itemCable:13 x8]
+
+  - id: compressor
+    title: "Compressor"
+    type: main
+    deps: [circuito, carcaca_maquina]
+    desc: |
+      Pressão, Herói, muita pressão! O §eCompressor§r (6 pedras, Carcaça e Circuito)
+      espreme coisas: 9 lingotes viram bloco, neve vira gelo, Liga de Metais vira §eLiga
+      Avançada§r, Malha de Carbono vira §ePlaca de Carbono§r, Pó de Energium vira §eCristal de
+      Energia§r e Células Vazias viram §eCélulas de Ar Comprimido§r.
+
+      Ou seja: metade do mid-game passa por aqui.
+    tasks:
+      - get: IC2:blockMachine:5
+    rewards:
+      - xp: 3
+      - choice: [minecraft:redstone x16, ore:ingotCopper x10, minecraft:coal x16]
+
+  - id: fornalha_eletrica
+    title: "Fornalha Elétrica"
+    type: main
+    deps: [circuito, fornalha_ferro]
+    desc: |
+      Chega de carregar carvão! A §eFornalha Elétrica§r (Fornalha de Ferro + Circuito + 2
+      redstone) cozinha qualquer receita de fornalha usando apenas EU.
+
+      É mais rápida que a Fornalha de Ferro e, com Overclockers, fica absurdamente veloz. Ela
+      é também a base do Forno de Indução lá na frente.
+    tasks:
+      - get: IC2:blockMachine:2
+    rewards:
+      - xp: 3
+      - choice: [minecraft:redstone x16, IC2:itemCable:13 x8, minecraft:iron_ingot x8]
+
+  - id: batbox
+    title: "Caixa de Baterias (BatBox)"
+    type: main
+    deps: [bateria_re, cabo_estanho]
+    icon: IC2:blockElectric
+    desc: |
+      Gerador ligado direto na máquina desperdiça tudo quando a máquina para. A §eCaixa de
+      Baterias§r (BatBox) guarda §b40 000 EU§r e entrega até §b32 EU/t§r (LV).
+
+      Receita: tábuas, 1 Cabo de Estanho Isolado e 3 Baterias Reutilizáveis. §cAtenção:§r a
+      face com o ponto é a §esaída§r; as outras cinco são entradas. Gire com a Chave Inglesa.
+    tasks:
+      - get: IC2:blockElectric
+    rewards:
+      - xp: 3
+      - choice: [minecraft:redstone x16, IC2:itemCable:13 x8, ore:ingotTin x8]
+
+  - id: primeira_fabrica
+    title: "A Primeira Fábrica"
+    type: milestone
+    deps: [gerador, triturador, extrator, compressor, fornalha_eletrica, batbox]
+    icon: IC2:blockMachine:3
+    banner: "A Primeira Fábrica"
+    subtitle: "O Volume da Indústria desperta"
+    desc: |
+      Olha isso... um gerador zumbindo, cabos cruzando o chão, um Triturador mastigando
+      minério, um Extrator espremendo resina, um Compressor esmagando tudo e uma BatBox
+      cheinha. Herói, você acabou de reescrever a primeira página elétrica do Registro!
+
+      Dica de organização para a sua fábrica:
+      §e• Gerador → BatBox → máquinas§r, sempre com a saída da BatBox apontada para os cabos.
+      §e• Cabo de Estanho Isolado§r basta enquanto tudo for LV (32 EU/t).
+      §e• Use a Chave Inglesa§r para mudar qualquer máquina de lugar.
+
+      A partir daqui o caminho se abre: ligas e aço na Fornalha Industrial, a rede de tensões
+      com transformadores, energia renovável e as primeiras ferramentas elétricas. Eu estou
+      tão orgulhosa que até brilhei um pouquinho!
+    tasks:
+      - get: [IC2:blockGenerator, IC2:blockMachine:3, IC2:blockMachine:4, IC2:blockMachine:5, IC2:blockMachine:2, IC2:blockElectric]
+    rewards:
+      - xp: 5
+      - kit: {name: "Kit do Eletricista Iniciante", items: [IC2:itemCable:13 x16, IC2:itemCable x16, IC2:itemPartCircuit x4, IC2:itemBatREDischarged x2, minecraft:redstone x32]}
+      - loot: incomum
+
+  - id: bateria_uso_unico
+    title: "Bateria de Uso Único"
+    type: optional
+    deps: [po_carvao]
+    icon: IC2:itemBatSU
+    desc: |
+      Um cabo de cobre, redstone e Pó de Carvão rendem §e5 Baterias de Uso Único§r. Não se
+      recarregam, mas são baratíssimas e servem como combustível de emergência para
+      ferramentas elétricas. (Com Pó de Carvão Hidratado a receita rende 8!)
+    tasks:
+      - get: IC2:itemBatSU x5
+    rewards:
+      - loot: comum
+
+  - id: bola_carvao
+    title: "Diamantes de Carvão"
+    type: optional
+    deps: [po_carvao, compressor]
+    icon: IC2:itemPartCoalChunk
+    desc: |
+      Uma receita que parece alquimia (e eu amo alquimia): 8 Pós de Carvão + 1 sílex = §eBola
+      de Carvão§r → Compressor → §eBola de Carvão Comprimida§r. Oito delas em volta de 1
+      obsidiana = §eChunk de Carvão§r → Compressor → §bum Diamante§r!
+
+      É caro, mas é diamante infinito vindo do carvão. Faça um Chunk de Carvão para provar
+      que dá certo.
+    tasks:
+      - get: IC2:itemPartCoalChunk
+    rewards:
+      - loot: comum
+
+  - id: reciclador
+    title: "Reciclador e Sucata"
+    type: normal
+    deps: [compressor]
+    icon: IC2:blockMachine:11
+    desc: |
+      Lixo de um é tesouro de outro. O §eReciclador§r (Compressor + terra + pó de glowstone +
+      ferro) tritura qualquer item e, de vez em quando, cospe §eSucata§r.
+
+      Nove sucatas fazem uma §eCaixa de Sucata§r — clique com o botão direito para um item
+      aleatório! E a sucata vai ser preciosa lá no Fabricador de Massa. Junte §e9 Sucatas§r.
+    tasks:
+      - get: [IC2:blockMachine:11, IC2:itemScrap x9]
+    rewards:
+      - xp: 2
+      - item: minecraft:glowstone_dust x8
+
+  - id: caixa_sucata
+    title: "Caixa Surpresa"
+    type: optional
+    deps: [reciclador]
+    desc: |
+      Toda indústria tem seu cantinho da sorte.
+
+      Uma §eCaixa de Sucata§r cheia de possibilidades! Abra algumas e veja o que o Registro
+      te devolve. (Às vezes é terra. Às vezes é diamante. É a vida.)
+    tasks:
+      - get: IC2:itemScrapbox
+    rewards:
+      - loot: comum
+
+  # ======================================================================
+  # FASE 3 — LIGAS, CALOR E AÇO
+  # ======================================================================
+  - id: bobina
+    title: "Bobina"
+    type: normal
+    deps: [alicate]
+    icon: IC2:itemRecipePart
+    desc: |
+      Oito Cabos de Cobre §lsem§r isolamento enrolados num lingote de ferro = §eBobina§r.
+
+      Bobinas vão para o Formador de Metal, transformadores, motores elétricos e o
+      Centrifugador Térmico. Faça §e6§r para começar.
+    tasks:
+      - get: IC2:itemRecipePart x6
+    rewards:
+      - xp: 2
+      - item: ore:ingotCopper x6
+
+  - id: motor_eletrico
+    title: "Motor Elétrico"
+    type: main
+    deps: [bobina, involucros]
+    icon: IC2:itemRecipePart:1
+    desc: |
+      Agora as coisas começam a GIRAR. O §eMotor Elétrico§r leva 2 Bobinas, 2 Invólucros de
+      Estanho e 1 lingote de ferro.
+
+      Ele aparece em tudo que se mexe: Lavadora de Minérios, Gerador Cinético, Unidade de
+      Potência das ferramentas elétricas, Cortador de Blocos, ventiladores do reator... Faça
+      §e4§r.
+    tasks:
+      - get: IC2:itemRecipePart:1 x4
+    rewards:
+      - xp: 3
+      - choice: [IC2:itemCasing:1 x6, IC2:itemRecipePart x2, minecraft:iron_ingot x8]
+
+  - id: caixa_ferramentas
+    title: "Caixa de Ferramentas"
+    type: normal
+    deps: [bronze]
+    icon: IC2:itemToolbox
+    desc: |
+      Um baú cercado por 5 Invólucros de Bronze = §eCaixa de Ferramentas§r. Ela guarda
+      ferramentas e itens elétricos no seu inventário (clique direito para abrir)... e duas
+      delas são peça do §bFormador de Metal§r!
+    tasks:
+      - get: IC2:itemToolbox x2
+    rewards:
+      - xp: 2
+      - item: ore:ingotBronze x4
+
+  - id: formador_metal
+    title: "Formador de Metal"
+    type: main
+    deps: [bobina, caixa_ferramentas, circuito, carcaca_maquina]
+    icon: IC2:blockMachine2:4
+    desc: |
+      Aposente o martelo e o alicate! O §eFormador de Metal§r (Circuito, 2 Caixas de
+      Ferramentas, Carcaça e 3 Bobinas) tem §b3 modos§r, trocados por um botão na janela:
+      §e• Laminação:§r lingote → placa, placa → 2 invólucros.
+      §e• Corte:§r placa → cabos.
+      §e• Extrusão:§r lingote → cabos, Placa de Estanho → 3 Células Vazias, Placa de Ferro →
+      Barra de Combustível Vazia, Bloco de Ferro → Eixo de Ferro.
+
+      Consome 10 EU/t e não gasta ferramenta nenhuma. É a §eúnica§r máquina que faz Células
+      Vazias, e o caminho mais simples do IC2 para as Placas de Ferro Enriquecido.
+    tasks:
+      - get: IC2:blockMachine2:4
+    rewards:
+      - xp: 3
+      - choice: [ore:ingotTin x12, minecraft:iron_ingot x12, minecraft:redstone x16]
+
+  - id: celula_vazia
+    title: "Células Vazias"
+    type: main
+    deps: [formador_metal]
+    icon: IC2:itemCellEmpty
+    desc: |
+      As §eCélulas Vazias§r são os "baldinhos" do IC2: carregam água, lava, ar comprimido,
+      refrigerante, Matéria UU... Extruda Placas de Estanho no Formador de Metal (3 células por
+      placa).
+
+      Junte §e16§r. Uma célula vazia + balde d'água na bancada = Célula com Água; com lava =
+      Célula com Lava.
+    tasks:
+      - get: IC2:itemCellEmpty x16
+    rewards:
+      - xp: 3
+      - choice: [ore:ingotTin x8, minecraft:bucket x2, IC2:itemPlates:1 x4]
+
+  - id: celula_universal
+    title: "Célula de Fluidos Universal"
+    type: normal
+    deps: [involucros]
+    icon: IC2:itemFluidCell
+    desc: |
+      Diferente da Célula Vazia, a §eCélula de Fluidos Universal§r (4 Invólucros de Estanho +
+      1 painel de vidro) aceita qualquer fluido de qualquer mod, um balde por vez.
+
+      Várias máquinas a usam como peça: Gerador Semifluido, Gerador de Calor por Líquidos,
+      Porta de Fluidos do reator, jetpack... Faça §e4§r.
+    tasks:
+      - get: IC2:itemFluidCell x4
+    rewards:
+      - xp: 2
+      - item: minecraft:glass_pane x8
+
+  - id: celulas_agua_lava
+    title: "Água e Lava Engarrafadas"
+    type: optional
+    deps: [celula_vazia]
+    icon: IC2:itemCellEmpty:2
+    desc: |
+      Célula Vazia + balde = célula cheia (e o balde volta vazio). Faça uma §eCélula com Água§r
+      e uma §eCélula com Lava§r. A de lava alimenta o Gerador Geotérmico; duas de cada na
+      bancada viram... obsidiana!
+    tasks:
+      - get: [IC2:itemCellEmpty:1, IC2:itemCellEmpty:2]
+    rewards:
+      - loot: comum
+
+  - id: ar_comprimido
+    title: "Ar Comprimido"
+    type: normal
+    deps: [celula_vazia, compressor]
+    icon: IC2:itemCellEmpty:5
+    desc: |
+      Uma Célula Vazia no Compressor sai como §eCélula de Ar Comprimido§r. Parece bobo, mas a
+      Fornalha Industrial come §e6 delas para cada lingote§r de Ferro Refinado (ela devolve as
+      células vazias, ainda bem).
+
+      Faça §e12§r. Elas também enchem o fôlego do Capacete de Respiração debaixo d'água.
+    tasks:
+      - get: IC2:itemCellEmpty:5 x12
+    rewards:
+      - xp: 2
+      - item: IC2:itemCellEmpty x6
+
+  - id: condutor_calor
+    title: "Condutor de Calor"
+    type: normal
+    deps: [borracha, placas]
+    icon: IC2:itemRecipePart:5
+    desc: |
+      Bem-vindo ao sistema de §6calor (hU)§r da versão Experimental! O §eCondutor de Calor§r
+      (6 Borrachas + 3 Placas de Cobre) é a peça que transfere calor entre blocos.
+
+      Ele é o coração dos Geradores de Calor, do Gerador Stirling, do Gerador de Vapor, da
+      Fornalha Industrial e do Trocador de Calor Líquido. Faça §e3§r.
+    tasks:
+      - get: IC2:itemRecipePart:5 x3
+    rewards:
+      - xp: 2
+      - item: IC2:itemRubber x6
+
+  - id: gerador_calor_solido
+    title: "Gerador de Calor por Sólidos"
+    type: main
+    deps: [condutor_calor, carcaca_maquina]
+    icon: IC2:blockHeatGenerator
+    desc: |
+      Como o Gerador, só que em vez de EU ele solta §6calor (hU)§r pela face frontal. Queima
+      qualquer combustível sólido.
+
+      Receita: Condutor de Calor em cima, Carcaça (ou 3 Placas de Ferro) e Fornalha (de Ferro
+      ou comum). §aDica:§r use a Chave Inglesa para virar a face de calor exatamente para a
+      máquina que vai aquecer — a Fornalha Industrial, por exemplo!
+    tasks:
+      - get: IC2:blockHeatGenerator
+    rewards:
+      - xp: 3
+      - choice: [minecraft:coal_block x3, minecraft:coal x24, minecraft:log x16]
+
+  - id: fornalha_industrial
+    title: "Fornalha Industrial"
+    type: main
+    deps: [condutor_calor, involucros, carcaca_maquina]
+    icon: IC2:blockMachine3:1
+    desc: |
+      O IC2 Experimental não faz aço na fornalha comum. Ele exige um §eAlto-Forno§r de verdade:
+      a §eFornalha Industrial§r (7 Invólucros de Ferro, Carcaça e Condutor de Calor).
+
+      Ela não usa EU, e sim §6calor§r: encoste um Gerador de Calor com a face de calor virada
+      para a fornalha. Ela precisa chegar a §e50 000 hU§r antes de começar, e esfria se ficar
+      ociosa (um sinal de redstone mantém o calor).
+    tasks:
+      - get: IC2:blockMachine3:1
+    rewards:
+      - xp: 3
+      - choice: [minecraft:iron_ingot x12, minecraft:coal_block x3, IC2:itemCellEmpty x6]
+
+  - id: ferro_refinado
+    title: "Ferro Refinado"
+    type: main
+    deps: [fornalha_industrial, gerador_calor_solido, ar_comprimido]
+    icon: IC2:itemIngot:3
+    desc: |
+      Com a Fornalha Industrial quente, coloque ferro (lingote, minério, pó ou triturado) na
+      entrada e §e6 Células de Ar Comprimido§r no slot de ar. Depois de §e5 minutos§r sai um
+      §eFerro Refinado§r + Escória, e as células voltam vazias.
+
+      É lento, eu sei! Monte duas fornalhas, ou automatize o ar com um Compressor ao lado.
+      O Ferro Refinado (oredict §eingotSteel§r) vale como aço em vários mods — e o aço de
+      outros mods também vale aqui. Junte §e8§r.
+    tasks:
+      - get: ore:ingotSteel x8
+    rewards:
+      - xp: 3
+      - choice: [minecraft:iron_block x2, IC2:itemCellEmpty:5 x6, minecraft:coal_block x4]
+
+  - id: escoria
+    title: "Escória"
+    type: optional
+    deps: [ferro_refinado]
+    icon: IC2:itemSlag
+    desc: |
+      Uma lição que os Antigos esqueceram: na indústria, quase nada é lixo de verdade.
+
+      Todo lingote de Ferro Refinado deixa §eEscória§r para trás. Não jogue fora: no
+      Centrifugador Térmico ela vira pó de carvão e um pouquinho de ouro!
+    tasks:
+      - get: IC2:itemSlag x4
+    rewards:
+      - loot: comum
+
+  - id: placa_aco
+    title: "Placa de Ferro Enriquecido"
+    type: normal
+    deps: [ferro_refinado, formador_metal]
+    icon: IC2:itemPlates:5
+    desc: |
+      Lamine Ferro Refinado no Formador de Metal para obter a §ePlaca de Ferro Enriquecido§r
+      (é a placa de aço do IC2). Não há receita de martelo para ela!
+
+      Faça §e8§r: a Carcaça Avançada pede 4, a Ferramenta de Torno pede 1 e as pás de turbina
+      pedem um monte.
+    tasks:
+      - get: ore:plateSteel x8
+    rewards:
+      - xp: 2
+      - item: IC2:itemCellEmpty:5 x6
+
+  - id: liga_metais
+    title: "Liga de Metais"
+    type: normal
+    deps: [bronze, placas]
+    icon: IC2:itemIngot:4
+    desc: |
+      Um sanduíche metálico: 3 Placas de Ferro em cima, 3 de Bronze no meio e 3 de Estanho
+      embaixo = §e2 Lingotes de Liga de Metais§r.
+
+      Sozinha ela não faz nada... mas espere só até ela entrar no Compressor!
+    tasks:
+      - get: IC2:itemIngot:4 x4
+    rewards:
+      - xp: 2
+      - item: ore:ingotBronze x6
+
+  - id: liga_avancada
+    title: "Liga Avançada"
+    type: main
+    deps: [liga_metais, compressor]
+    icon: IC2:itemPartAlloy
+    desc: |
+      Liga de Metais no Compressor = §eLiga Avançada§r, uma das peças mais importantes do
+      capítulo: Carcaça Avançada, Vidro Reforçado, Laser de Mineração, Sabre Nano, placas do
+      reator, Placa de Irídio...
+
+      Faça §e8§r. Você vai precisar de MUITO mais, então mantenha a produção de bronze e estanho
+      em dia.
+    tasks:
+      - get: IC2:itemPartAlloy x8
+    rewards:
+      - xp: 3
+      - choice: [IC2:itemPlates:2 x6, IC2:itemPlates:1 x6, IC2:itemPlates:4 x6]
+
+  - id: fibra_carbono
+    title: "Fibra de Carbono Bruta"
+    type: normal
+    deps: [po_carvao]
+    icon: IC2:itemPartCarbonFibre
+    desc: |
+      Quatro Pós de Carvão em quadrado = §eFibra de Carbono Bruta§r. Duas fibras (sem forma)
+      viram uma §eMalha de Carbono Bruta§r. Faça §e4 Malhas§r — o próximo passo é o
+      Compressor.
+    tasks:
+      - get: IC2:itemPartCarbonMesh x4
+    rewards:
+      - xp: 2
+      - item: minecraft:coal x16
+
+  - id: placa_carbono
+    title: "Placa de Carbono"
+    type: main
+    deps: [fibra_carbono, compressor]
+    icon: IC2:itemPartCarbonPlate
+    desc: |
+      Malha de Carbono no Compressor = §ePlaca de Carbono§r. Leve, dura e linda.
+
+      Ela vai para a Carcaça Avançada, os rotores de carbono, a canoa e — guarde essa
+      informação no coração — §dtoda a NanoSuit§r. Faça §e4§r por enquanto.
+    tasks:
+      - get: IC2:itemPartCarbonPlate x4
+    rewards:
+      - xp: 3
+      - choice: [minecraft:coal_block x4, IC2:itemDust:2 x16, minecraft:coal x24]
+
+  - id: ligas_industria
+    title: "Ligas da Indústria"
+    type: milestone
+    deps: [ferro_refinado, liga_avancada, placa_carbono, celula_vazia]
+    icon: IC2:itemPartAlloy
+    banner: "Ligas da Indústria"
+    subtitle: "Aço, liga e carbono"
+    desc: |
+      Herói... você tem Ferro Refinado saindo de um alto-forno aquecido a 50 000 hU, Liga
+      Avançada espremida no Compressor e Placas de Carbono tecidas de pó de carvão. Isso não é
+      mais uma oficina: é uma §bindústria§r.
+
+      Esses três materiais destravam a §eCarcaça da Máquina Avançada§r e, com ela, o segundo
+      andar do IC2: Forno de Indução, Cortador de Blocos, Torno, Teletransportador, Fabricador
+      de Massa... Também abrem caminho para os geradores cinéticos e de vapor.
+
+      §aSugestão:§r automatize agora a produção de Células de Ar Comprimido (Compressor
+      encostado na Fornalha Industrial, com um Upgrade de Ejetor) — o aço vai ser o seu
+      gargalo por um bom tempo. Bem-vindo ao Ato II das Engrenagens!
+    tasks:
+      - get: [ore:ingotSteel x4, IC2:itemPartAlloy x4, IC2:itemPartCarbonPlate x2]
+    rewards:
+      - xp: 8
+      - kit: {name: "Kit do Metalúrgico", items: [IC2:itemCellEmpty:5 x12, ore:ingotBronze x16, ore:ingotTin x16, minecraft:coal_block x4, IC2:itemPartCircuit x4]}
+      - loot: raro
+
+  # ======================================================================
+  # FASE 4 — MÁQUINAS AVANÇADAS, TORNO E PROCESSAMENTO
+  # ======================================================================
+  - id: circuito_avancado
+    title: "Circuito Avançado"
+    type: main
+    deps: [circuito]
+    icon: IC2:itemPartCircuitAdv
+    desc: |
+      O irmão inteligente do circuito. Em volta de um Circuito Eletrônico vão 4 redstone, 2
+      pós de glowstone e 2 lápis-lazúli = §eCircuito Avançado§r.
+
+      Lapotron, Laser de Mineração, transformadores HV/EV, Teletransportador, MFSU... Faça
+      §e4§r e deixe uma fazenda de glowstone/lápis no seu radar.
+    tasks:
+      - get: IC2:itemPartCircuitAdv x4
+    rewards:
+      - xp: 4
+      - choice: [minecraft:glowstone_dust x16, minecraft:redstone x24, minecraft:dye:4 x12]
+
+  - id: carcaca_avancada
+    title: "Carcaça da Máquina Avançada"
+    type: main
+    deps: [ligas_industria, placa_aco]
+    icon: IC2:blockMachine:12
+    desc: |
+      Carcaça Básica no centro, 2 Ligas Avançadas, 2 Placas de Carbono e 4 Placas de Ferro
+      Enriquecido em volta: a §eCarcaça da Máquina Avançada§r.
+
+      É a base de todas as máquinas "sérias": Forno de Indução, Cortador de Blocos,
+      Centrifugador Térmico, MFSU, Teletransportador, Fabricador de Massa, Examinador,
+      Replicador, Terraformer... Faça §e2§r.
+    tasks:
+      - get: IC2:blockMachine:12 x2
+    rewards:
+      - xp: 4
+      - choice: [IC2:itemPartAlloy x4, IC2:itemPartCarbonPlate x4, ore:plateSteel x4]
+
+  - id: forno_inducao
+    title: "Forno de Indução"
+    type: normal
+    deps: [carcaca_avancada, fornalha_eletrica]
+    icon: IC2:blockMachine:13
+    desc: |
+      Uma Fornalha Elétrica dentro de uma Carcaça Avançada, cercada por 7 lingotes de cobre: o
+      §eForno de Indução§r. Ele tem duas entradas e fica cada vez mais rápido conforme
+      §6esquenta§r — e um sinal de redstone o mantém aquecido mesmo sem itens.
+
+      Para fundir montanhas de minério triturado, não existe nada melhor no IC2.
+    tasks:
+      - get: IC2:blockMachine:13
+    rewards:
+      - xp: 3
+      - item: ore:ingotCopper x8
+
+  - id: lavadora_minerios
+    title: "Máquina de Lavagem de Minérios"
+    type: main
+    deps: [motor_eletrico, minerio_triturado]
+    icon: IC2:blockMachine2:5
+    desc: |
+      O segundo estágio do processamento! A §eMáquina de Lavagem de Minérios§r (3 Placas de
+      Ferro, 2 baldes, Carcaça, 2 Motores Elétricos e Circuito) lava cada Minério Triturado
+      com §b1000 mB de água§r e devolve:
+      §e• 1 Minério Triturado Purificado§r
+      §e• 2 Pequenos Montes de Pó§r (do mesmo metal na maioria; urânio dá chumbo e chumbo dá
+      3 de enxofre)
+      §e• 1 Pó de Pedra§r
+
+      Alimente a água com baldes, células ou uma Bomba. Consome 16 EU/t.
+    tasks:
+      - get: IC2:blockMachine2:5
+    rewards:
+      - xp: 4
+      - choice: [minecraft:water_bucket x2, IC2:itemRecipePart:1 x2, minecraft:iron_ingot x12]
+
+  - id: minerio_purificado
+    title: "Minério Purificado"
+    type: normal
+    deps: [lavadora_minerios]
+    icon: IC2:itemPurifiedCrushedOre
+    desc: |
+      Lave §e16 Minérios Triturados§r até virarem §eMinérios Triturados Purificados§r. Cada
+      um ainda funde em 1 lingote — mas o bônus de pequenos montes de pó já faz cada minério
+      render mais que 2 lingotes!
+
+      §aConta rápida:§r 9 Pequenos Montes de Pó = 1 pó (na bancada).
+    tasks:
+      - get: IC2:itemPurifiedCrushedOre:* x16
+    rewards:
+      - xp: 3
+      - item: minecraft:iron_ingot x8
+
+  - id: po_pedra
+    title: "Pó de Pedra"
+    type: optional
+    deps: [lavadora_minerios]
+    icon: IC2:itemDust:9
+    desc: |
+      Até a sujeira que sai da lavagem tem utilidade no IC2 — eu adoro isso.
+
+      A Lavadora deixa §ePó de Pedra§r como subproduto (e lavar cascalho também dá). Ele é
+      ingrediente do §ePó de Espuma de Construção§r — guarde uma pilha.
+    tasks:
+      - get: IC2:itemDust:9 x16
+    rewards:
+      - loot: comum
+
+  - id: eixo_ferro
+    title: "Eixo de Ferro"
+    type: normal
+    deps: [formador_metal]
+    icon: IC2:itemRecipePart:11
+    desc: |
+      Tudo que gira precisa de um eixo, e o IC2 Experimental gira MUITO.
+
+      Extruda um §ebloco de ferro§r inteiro no Formador de Metal para obter um §eEixo de
+      Ferro§r. Eixos transmitem movimento: Torno, Moinho de Vento Cinético, Gerador Cinético,
+      rotores... Faça §e4§r.
+    tasks:
+      - get: IC2:itemRecipePart:11 x4
+    rewards:
+      - xp: 2
+      - item: minecraft:iron_block x2
+
+  - id: eixo_aco
+    title: "Eixo de Ferro Enriquecido"
+    type: normal
+    deps: [eixo_ferro, ferro_refinado]
+    icon: IC2:itemRecipePart:12
+    desc: |
+      O mesmo truque, agora com um §eBloco de Ferro Refinado§r (9 lingotes — o jogo chama de
+      "Steel Block") no modo extrusão: §eEixo de Ferro Enriquecido§r. Só o Rotor de Fibra de
+      Carbono precisa dele, mas é um rotor que vale a pena.
+    tasks:
+      - get: IC2:itemRecipePart:12
+    rewards:
+      - xp: 2
+      - item: ore:ingotSteel x4
+
+  - id: torno
+    title: "Torno (Turning Table)"
+    type: main
+    deps: [eixo_ferro]
+    icon: IC2:blockMachine3:8
+    desc: |
+      Algumas peças do IC2 precisam ser §etorneadas§r à mão, e para isso existe o §eTorno§r
+      (2 Invólucros de Ferro, 2 Eixos de Ferro, Carcaça e 3 Placas de Ferro).
+
+      Você coloca um §eBloco de Torneamento§r (blank) e a §eFerramenta de Torno§r, e na janela
+      desbasta cada um dos 5 segmentos até formar o perfil pedido. Cada corte gasta
+      durabilidade da ferramenta.
+    tasks:
+      - get: IC2:blockMachine3:8
+    rewards:
+      - xp: 4
+      - choice: [IC2:itemCasing:4 x6, minecraft:iron_ingot x12, ore:plateSteel x2]
+
+  - id: ferramenta_torno
+    title: "Ferramenta de Torno e Blanks"
+    type: normal
+    deps: [torno, placa_aco]
+    icon: IC2:itemLathingTool
+    desc: |
+      A §eFerramenta de Torno§r (Lathing Tool) leva 1 Placa de Ferro Enriquecido e 2 Invólucros
+      de Ferro. O §eBloco de Torneamento de Ferro§r (Iron Turning Blank) sai de 2 lingotes de
+      ferro + 1 Invólucro de Ferro; existe também a versão de madeira.
+
+      Faça a ferramenta e §e2 blanks de ferro§r para treinar.
+    tasks:
+      - get: [IC2:itemLathingTool:*, IC2:itemTurningBlanks:* x2]
+    rewards:
+      - xp: 2
+      - item: IC2:itemCasing:4 x4
+
+  - id: info_torno
+    title: "Perfis do Torno"
+    type: info
+    deps: [ferramenta_torno]
+    icon: IC2:itemTurningBlanks:349525
+    desc: |
+      Cada blank tem 5 segmentos; um blank novo de ferro tem raio 5 em todos (5-5-5-5-5). Os
+      perfis que o IC2 usa:
+      §e• Haste (Handle) 4-3-2-2-2§r → Laser de Mineração
+      §e• Broca (Drill) 5-4-3-2-1§r → Broca de Diamante
+      §e• Eixo Canelado 4-3-4-3-4§r → Gerador de Água Cinético
+      §e• Eixo Canelado Fino 3-2-3-2-3§r → Gerador Stirling Cinético
+
+      O nome do perfil aparece na dica do item. §aNa dúvida, abra o NEI§r no item final: o
+      handler do Torno mostra o formato exato. Errou um corte? Não tem volta — faça outro blank.
+    tasks:
+      - check
+    rewards:
+      - xp: 1
+
+  - id: cortador_blocos
+    title: "Deformador e Cortador de Blocos"
+    type: normal
+    deps: [carcaca_avancada, motor_eletrico, eixo_ferro, circuito_avancado]
+    icon: IC2:blockMachine3:2
+    desc: |
+      O §eCortador de Blocos§r (Circuito Avançado, Carcaça Avançada, 2 Motores e 1 Eixo de
+      Ferro) fatia blocos inteiros: §e1 bloco de metal → 9 placas§r, toras → 6 tábuas, tábuas
+      → gravetos.
+
+      Ele precisa de uma §elâmina§r forte o bastante para a dureza do bloco: ferro para
+      cobre/estanho/bronze/ouro, aço para ferro e lápis, diamante para aço e obsidiana.
+    tasks:
+      - get: IC2:blockMachine3:2
+    rewards:
+      - xp: 3
+      - item: minecraft:iron_block x2
+
+  - id: laminas_corte
+    title: "Lâminas de Corte"
+    type: normal
+    deps: [cortador_blocos]
+    icon: IC2:itemIronBlockCuttingBlade
+    desc: |
+      Três lâminas, três durezas:
+      §e• Lâmina de Ferro§r — 8 Placas de Ferro + pedra.
+      §e• Lâmina de Ferro Enriquecido§r — 8 Placas de Ferro Enriquecido + ferro.
+      §e• Lâmina de Diamante§r — 8 diamantes + Ferro Refinado.
+
+      Faça a de ferro e a de aço. A de diamante, só quando precisar cortar obsidiana ou blocos
+      de aço.
+    tasks:
+      - get: [IC2:itemIronBlockCuttingBlade, IC2:itemAdvIronBlockCuttingBlade]
+    rewards:
+      - xp: 2
+      - item: ore:plateSteel x2
+
+  - id: lamina_diamante
+    title: "Lâmina de Diamante"
+    type: optional
+    deps: [laminas_corte]
+    desc: |
+      A lâmina mais cara, para os blocos mais teimosos.
+
+      Para cortar Blocos de Aço e obsidiana em placas, só a §eLâmina de Diamante§r resolve. Um
+      bloco de obsidiana rende 9 Placas de Obsidiana.
+    tasks:
+      - get: IC2:itemDiamondBlockCuttingBlade
+    rewards:
+      - loot: comum
+
+  - id: laser_mineracao
+    title: "Laser de Mineração"
+    type: main
+    deps: [liga_avancada, circuito_avancado, cristal_energia, info_torno]
+    icon: IC2:itemToolMiningLaser:1
+    desc: |
+      Pew pew! O §eLaser de Mineração§r (3 Ligas Avançadas, Circuito Avançado, Cristal de
+      Energia, 2 redstone e uma peça torneada no perfil §eHaste 4-3-2-2-2§r) dispara feixes
+      que escavam túneis. A tecla de modo do IC2 (veja em Controles) + clique direito alterna
+      entre Mineração, Baixo Foco, Longa Distância, Horizontal, Super Calor, Dispersar e
+      Explosivo.
+
+      Ele guarda 300 000 EU e é peça do §bCentrifugador Térmico§r e do Padrão de
+      Armazenamento. §cCuidado com o modo explosivo dentro de casa!§r
+    tasks:
+      - get: IC2:itemToolMiningLaser:*
+    rewards:
+      - xp: 4
+      - choice: [IC2:itemPartAlloy x4, IC2:itemPartCircuitAdv x2, minecraft:redstone x32]
+
+  - id: centrifuga_termica
+    title: "Centrifugador Térmico"
+    type: main
+    deps: [laser_mineracao, carcaca_avancada, motor_eletrico, lavadora_minerios]
+    icon: IC2:blockMachine2:3
+    desc: |
+      O terceiro e último estágio! O §eCentrifugador Térmico§r (2 Bobinas, Laser de Mineração,
+      4 lingotes de ferro, Carcaça Avançada e Motor) gira os minérios a alta temperatura.
+
+      Ele §6esquenta§r com EU (48 EU/t) e cada receita exige um calor mínimo (cobre 500,
+      ferro 1500, ouro/chumbo 2000, urânio 3000...). Do Minério Purificado sai §e1 pó +
+      subproduto§r (ferro dá ouro, cobre dá estanho...). É também aqui que o urânio vira
+      U-238 e U-235!
+    tasks:
+      - get: IC2:blockMachine2:3
+    rewards:
+      - xp: 4
+      - choice: [IC2:itemRecipePart x4, IC2:itemRecipePart:1 x2, minecraft:iron_ingot x16]
+
+  - id: processamento_completo
+    title: "Linha de Processamento"
+    type: milestone
+    deps: [centrifuga_termica, minerio_purificado]
+    icon: IC2:itemPurifiedCrushedOre:2
+    banner: "Linha de Processamento"
+    subtitle: "Triturar, lavar, centrifugar"
+    desc: |
+      Triturador → Lavadora → Centrifugador. Herói, você montou a linha completa de minério do
+      IC2! Vamos às contas, que eu amo contas:
+
+      §e1 Minério de Ferro§r → 2 Triturados → 2 Purificados + 4 pequenos montes de ferro →
+      2 Pós de Ferro + 2 pequenos montes de ouro. Ou seja, cerca de §e2,4 lingotes de ferro
+      e ainda ouro de brinde§r por minério.
+
+      §aSendo honesta:§r o IC2 sozinho fica perto de 2×. Rendimentos de 3× ou mais são coisa de
+      Mekanism ou do Industrial Upgrade — mas o que você aprendeu aqui é a base de todos eles.
+
+      Para fundir essa montanha de pó, nada como um Forno de Indução com Overclockers.
+      Mostre-me §e8 Pós de Ouro§r (o ouro adora a centrífuga) e celebre!
+    tasks:
+      - get: ore:dustGold x8
+    rewards:
+      - xp: 8
+      - kit: {name: "Kit do Refinador", items: [IC2:itemPlates:1 x8, IC2:itemDust:12 x8, minecraft:water_bucket x2, IC2:itemRecipePart:1 x2, minecraft:redstone x32]}
+      - loot: raro
+      - command: "/effect @p 3 1200 1"
+
+  # ======================================================================
+  # FASE 5 — A REDE ELÉTRICA (CESU, MFE, MFSU, TRANSFORMADORES)
+  # ======================================================================
+  - id: chumbo
+    title: "Chumbo"
+    type: normal
+    deps: [triturador]
+    icon: IC2:blockOreLead
+    desc: |
+      O §eMinério de Chumbo§r é mais raro (veios pequenos, Y 0–63). Por enquanto, você precisa
+      dele moído como §ePó de Chumbo§r para a Bateria Avançada — mas lá na frente o chumbo vira
+      §cblindagem nuclear§r: câmaras do reator, placas densas, Caixa de Contenção...
+
+      Junte §e8 lingotes§r.
+    tasks:
+      - get: ore:ingotLead x8
+    rewards:
+      - xp: 2
+      - item: minecraft:iron_ingot x6
+
+  - id: po_enxofre
+    title: "Pó de Enxofre"
+    type: normal
+    deps: [extrator]
+    icon: IC2:itemDust:13
+    desc: |
+      Cheiro de ovo podre? É o cheiro da energia portátil, Herói.
+
+      Pólvora no Extrator vira §ePó de Enxofre§r (que existe em vários mods — qualquer um
+      serve). Ele é o "ácido" da Bateria Avançada. Junte §e4§r.
+    tasks:
+      - get: ore:dustSulfur x4
+    rewards:
+      - xp: 2
+      - item: minecraft:gunpowder x4
+
+  - id: bateria_avancada
+    title: "Bateria Recarregável Avançada"
+    type: main
+    deps: [chumbo, po_enxofre, bronze]
+    icon: IC2:itemAdvBat:1
+    desc: |
+      A §eBateria Avançada§r guarda §b100 000 EU§r (10× a comum) e trabalha em MV.
+
+      Receita: 2 Cabos de Cobre Isolados, 5 Invólucros de Bronze, 1 Pó de Enxofre e 1 Pó de
+      Chumbo. Faça §e3§r — a CESU pede exatamente três.
+    tasks:
+      - get: IC2:itemAdvBat:* x3
+    rewards:
+      - xp: 4
+      - choice: [IC2:itemPlates:2 x6, ore:dustSulfur x4, IC2:itemCable x8]
+
+  - id: cesu
+    title: "CESU"
+    type: main
+    deps: [bateria_avancada]
+    icon: IC2:blockElectric:7
+    desc: |
+      O segundo banco de energia: a §eCESU§r guarda §b300 000 EU§r e entrega §b128 EU/t (MV)§r.
+
+      Receita: 5 Placas de Bronze, 1 Cabo de Cobre Isolado e 3 Baterias Avançadas.
+      §cCuidado:§r 128 EU/t explode máquinas LV! Ligue a saída da CESU num LV-Transformador
+      antes das máquinas básicas.
+    tasks:
+      - get: IC2:blockElectric:7
+    rewards:
+      - xp: 4
+      - choice: [IC2:itemCable x16, IC2:itemPlates:2 x6, minecraft:redstone x24]
+
+  - id: transformador_lv
+    title: "LV-Transformador"
+    type: normal
+    deps: [bobina, cabo_estanho]
+    icon: IC2:blockElectric:3
+    desc: |
+      Tábuas, 2 Cabos de Estanho Isolados e 1 Bobina = §eLV-Transformador§r. Ele converte
+      entre §bMV (128) e LV (32)§r.
+
+      A face com os pontos é o lado de alta tensão. Na janela (ou com sinal de redstone) você
+      escolhe se ele abaixa ou eleva a tensão.
+    tasks:
+      - get: IC2:blockElectric:3
+    rewards:
+      - xp: 2
+      - item: IC2:itemCable:13 x8
+
+  - id: transformador_mv
+    title: "MV-Transformador"
+    type: main
+    deps: [cabo_cobre, carcaca_maquina]
+    icon: IC2:blockElectric:4
+    desc: |
+      Uma Carcaça entre 2 Cabos de Cobre Isolados = §eMV-Transformador§r, que converte entre
+      §bHV (512) e MV (128)§r.
+
+      Ele é também peça do HV-Transformador, do Upgrade de Transformador e da Bobina de Tesla.
+      Faça §e2§r.
+    tasks:
+      - get: IC2:blockElectric:4 x2
+    rewards:
+      - xp: 4
+      - choice: [IC2:itemCable x16, minecraft:iron_ingot x12, IC2:itemPartCircuit x2]
+
+  - id: po_diamante
+    title: "Pó de Diamante"
+    type: normal
+    deps: [triturador]
+    icon: IC2:itemDust2:1
+    desc: |
+      Sim, vamos moer diamantes. Dói no coração, eu sei. Mas o §ePó de Diamante§r é o
+      ingrediente do Energium, e o Energium é o caminho para os Cristais de Energia!
+
+      Junte §e4§r (1 diamante = 1 pó).
+    tasks:
+      - get: ore:dustDiamond x4
+    rewards:
+      - xp: 2
+      - item: minecraft:redstone x16
+
+  - id: po_energium
+    title: "Pó de Energium"
+    type: normal
+    deps: [po_diamante]
+    icon: IC2:itemDust2:2
+    desc: |
+      Quatro Pós de Diamante intercalados com 5 redstone = §e9 Pós de Energium§r. Esse pó
+      vermelho brilhante guarda energia como nenhum outro.
+
+      Faça §e9§r — um Cristal de Energia inteiro.
+    tasks:
+      - get: IC2:itemDust2:2 x9
+    rewards:
+      - xp: 2
+      - item: minecraft:redstone x16
+
+  - id: cristal_energia
+    title: "Cristal de Energia"
+    type: main
+    deps: [po_energium, compressor]
+    icon: IC2:itemBatCrystal:1
+    desc: |
+      Nove Pós de Energium no Compressor = §eCristal de Energia§r, uma "bateria" HV de
+      §b1 000 000 EU§r.
+
+      Ele é peça da MFE (4 cristais!), do Laser, da NanoSuit, do Sabre Nano, do Lapotron...
+      Faça §e4§r. §aDica:§r cristais podem ser carregados em qualquer banco de energia.
+    tasks:
+      - get: IC2:itemBatCrystal:* x4
+    rewards:
+      - xp: 4
+      - choice: [minecraft:redstone_block x4, minecraft:diamond x2, IC2:itemDust2:1 x2]
+
+  - id: cabo_ouro
+    title: "Cabo de Ouro Isolado"
+    type: normal
+    deps: [alicate, borracha]
+    icon: IC2:itemCable:3
+    desc: |
+      Placa de Ouro + Alicate = 4 Cabos de Ouro. Com §e2 Borrachas§r cada, vira §eCabo de Ouro
+      Isolado§r: §b512 EU/t (HV)§r. Faça §e8§r: a MFE e o HV-Transformador o pedem.
+    tasks:
+      - get: IC2:itemCable:3 x8
+    rewards:
+      - xp: 2
+      - item: minecraft:gold_ingot x4
+
+  - id: mfe
+    title: "MFE"
+    type: main
+    deps: [cristal_energia, cabo_ouro, carcaca_maquina]
+    icon: IC2:blockElectric:1
+    desc: |
+      Agora sim, um banco de respeito: a §eMFE§r guarda §b4 000 000 EU§r e entrega §b512 EU/t
+      (HV)§r.
+
+      Receita: Carcaça no centro, 4 Cristais de Energia e 4 Cabos de Ouro Isolados.
+      §c512 EU/t vaporiza máquinas LV e MV.§r Sempre passe por transformadores!
+    tasks:
+      - get: IC2:blockElectric:1
+    rewards:
+      - xp: 4
+      - choice: [IC2:itemCable:3 x8, minecraft:gold_ingot x8, IC2:itemPartCircuitAdv x2]
+
+  - id: transformador_hv
+    title: "HV-Transformador"
+    type: normal
+    deps: [transformador_mv, bateria_avancada, cabo_ouro]
+    icon: IC2:blockElectric:5
+    desc: |
+      Subindo mais um degrau na escada das tensões!
+
+      MV-Transformador + 2 Cabos de Ouro Isolados + Circuito + Bateria Avançada =
+      §eHV-Transformador§r, que converte entre §bEV (2048) e HV (512)§r. Dois deles vão no
+      Replicador.
+    tasks:
+      - get: IC2:blockElectric:5
+    rewards:
+      - xp: 3
+      - item: IC2:itemCable:3 x6
+
+  - id: cabo_hv
+    title: "Cabo HV Isolado"
+    type: normal
+    deps: [formador_metal]
+    icon: IC2:itemCable:6
+    desc: |
+      Cabo HV (extrudado de ferro no Formador de Metal, ou cortado de Placa de Ferro) +
+      §e3 Borrachas§r = §eCabo HV Isolado§r: §b2048 EU/t§r. Perde mais energia por bloco que os
+      outros, então use-o só onde a tensão é EV. Faça §e8§r.
+    tasks:
+      - get: IC2:itemCable:6 x8
+    rewards:
+      - xp: 2
+      - item: IC2:itemRubber x8
+
+  - id: fibra_vidro
+    title: "Cabo de Fibra de Vidro"
+    type: normal
+    deps: [po_energium]
+    icon: IC2:itemCable:9
+    desc: |
+      O melhor cabo do IC2: §b8192 EU/t§r e perda de só 0,025 por bloco. Receita: 6 vidros,
+      2 Pós de Energium e 1 Pó de Prata (minério de prata de qualquer mod no Triturador).
+
+      É caro, mas uma linha longa de fibra de vidro se paga sozinha. Faça §e2§r — o
+      Teletransportador pede.
+    tasks:
+      - get: IC2:itemCable:9 x2
+    rewards:
+      - xp: 2
+      - item: minecraft:glass x16
+
+  - id: cristal_lapotron
+    title: "Cristal Lapotron"
+    type: main
+    deps: [cristal_energia, circuito_avancado]
+    icon: IC2:itemBatLamaCrystal:1
+    desc: |
+      Um Cristal de Energia, 2 Circuitos Avançados e 6 Pós de Lápis-Lazúli = §eCristal
+      Lapotron§r (o jogo escreve "Lapatron"): §b10 000 000 EU§r, tier EV.
+
+      A MFSU pede §e6§r, e toda a QuantumSuit também. Comece com §e2§r e uma boa fonte de
+      lápis.
+    tasks:
+      - get: IC2:itemBatLamaCrystal:* x2
+    rewards:
+      - xp: 4
+      - choice: [minecraft:lapis_block x4, IC2:itemPartCircuitAdv x2, IC2:itemDust:12 x12]
+
+  - id: transformador_ev
+    title: "EV-Transformador"
+    type: normal
+    deps: [transformador_hv, cristal_lapotron, cabo_hv]
+    icon: IC2:blockElectric:6
+    desc: |
+      HV-Transformador + 2 Cabos HV Isolados + Circuito Avançado + Cristal Lapotron =
+      §eEV-Transformador§r, que liga §bEV (2048)§r a §b8192 EU/t§r. Útil para linhas de fibra de
+      vidro e para a saída de reatores grandes.
+    tasks:
+      - get: IC2:blockElectric:6
+    rewards:
+      - xp: 3
+      - item: IC2:itemPartCircuitAdv x2
+
+  - id: rede_eletrica
+    title: "A Rede Elétrica"
+    type: milestone
+    deps: [cesu, mfe, transformador_lv, transformador_mv]
+    icon: IC2:blockElectric:1
+    banner: "A Rede Elétrica"
+    subtitle: "LV, MV, HV — e nenhuma explosão"
+    desc: |
+      CESU, MFE e transformadores. Herói, você agora fala a língua das tensões!
+
+      Um desenho de rede que funciona muito bem:
+      §e• Geradores → MFE§r (o "tanque" central, HV).
+      §e• MFE → MV-Transformador → CESU / máquinas MV.§r
+      §e• → LV-Transformador → máquinas básicas.§r
+
+      §aDicas de quem já viu muita fumaça:§r o lado dos pontos do transformador é sempre o de
+      tensão mais alta; use o Leitor de EU antes de ligar uma linha nova; e cabo de ouro em
+      HV, cobre em MV, estanho em LV.
+
+      Daqui em diante, com tensão de sobra, as máquinas podem receber Overclockers e Upgrades
+      de Transformador. Vamos acelerar tudo!
+    tasks:
+      - get: [IC2:blockElectric:7, IC2:blockElectric:1, IC2:blockElectric:3, IC2:blockElectric:4]
+    rewards:
+      - xp: 8
+      - kit: {name: "Kit do Engenheiro de Redes", items: [IC2:itemCable:3 x16, IC2:itemCable x32, IC2:itemCable:13 x32, IC2:itemPartCircuit x4, minecraft:gold_ingot x8]}
+      - loot: raro
+
+  - id: mfsu
+    title: "MFSU"
+    type: milestone
+    deps: [cristal_lapotron, mfe, carcaca_avancada]
+    icon: IC2:blockElectric:2
+    banner: "MFSU"
+    subtitle: "Quarenta milhões de EU"
+    desc: |
+      O maior banco de energia do IC2: a §eMFSU§r guarda §b40 000 000 EU§r e entrega
+      §b2048 EU/t (EV)§r.
+
+      Receita: uma MFE no centro, 6 Cristais Lapotron, 1 Circuito Avançado e 1 Carcaça
+      Avançada embaixo. É caro, eu sei — mas é aqui que o IC2 deixa de ser "uma fábrica" e
+      passa a ser uma §6usina§r.
+
+      §cTodo cuidado é pouco:§r 2048 EU/t explode quase tudo. Use EV/HV-Transformadores e
+      Cabo HV ou Fibra de Vidro. §aDica:§r o §eKit de Upgrade MFSU§r transforma uma MFE já
+      instalada em MFSU sem desmontar nada.
+
+      A MFSU é também a bateria dos grandes projetos: reator, Fabricador de Massa,
+      Teletransportador e as QuantumSuits. Eu estou literalmente faiscando de alegria!
+    tasks:
+      - get: IC2:blockElectric:2
+    rewards:
+      - xp: 12
+      - kit: {name: "Kit da Usina", items: [IC2:itemCable:6 x16, IC2:itemCable:9 x4, IC2:itemPartCircuitAdv x4, minecraft:lapis_block x6, minecraft:glowstone x4]}
+      - loot: epico
+
+  - id: kit_upgrade_mfsu
+    title: "Kit de Upgrade MFSU"
+    type: optional
+    deps: [cristal_lapotron, mfe]
+    icon: IC2:itemupgradekit
+    desc: |
+      Uma Chave Inglesa no centro, 6 Lapotrons, Circuito Avançado e Carcaça Avançada =
+      §eKit de Upgrade MFSU§r. Clique com ele numa MFE (ou num Bloco de Carregar MFE) já
+      instalada e ela vira a versão MFSU, mantendo cabos e carga.
+    tasks:
+      - get: IC2:itemupgradekit
+    rewards:
+      - loot: incomum
+
+  - id: cabos_especiais
+    title: "Cabos Detector e Separador"
+    type: optional
+    deps: [cabo_hv]
+    icon: IC2:itemCable:11
+    desc: |
+      Dois cabos com cérebro, feitos de Cabo HV Isolado e redstone:
+      §e• Cabo Detector de EU§r — emite redstone quando passa energia.
+      §e• Cabo Separador de EU§r — corta a passagem de energia quando recebe redstone.
+
+      Ótimos para desligar máquinas automaticamente ou alarmes de "banco cheio".
+    tasks:
+      - get: [IC2:itemCable:11, IC2:itemCable:12]
+    rewards:
+      - loot: comum
+
+  - id: blocos_carregar
+    title: "Bloco de Carregar"
+    type: optional
+    deps: [batbox]
+    icon: IC2:blockChargepad
+    desc: |
+      Um banco de energia com placa de pressão: pise no §eBloco de Carregar§r e ele recarrega
+      as baterias e ferramentas do seu inventário. Existe nas versões BatBox, CESU, MFE e MFSU
+      (2 Circuitos, placa de pressão de pedra, 2 Borrachas e o banco correspondente).
+    tasks:
+      - one_of: [IC2:blockChargepad, IC2:blockChargepad:1, IC2:blockChargepad:2, IC2:blockChargepad:3]
+    rewards:
+      - loot: comum
+
+  # ======================================================================
+  # UPGRADES
+  # ======================================================================
+  - id: maquina_conservas
+    title: "Máquina de Conservas"
+    type: normal
+    deps: [involucros, carcaca_maquina, circuito]
+    icon: IC2:blockMachine:6
+    desc: |
+      A §eMáquina de Conservas (Fluidos/Sólidos)§r — 7 Invólucros de Estanho, Carcaça e
+      Circuito — é um canivete suíço com 4 modos na janela: enlatar, esvaziar célula no tanque,
+      encher célula do tanque e §eenriquecer fluido§r.
+
+      No modo enriquecer: §eágua + Pó de Lápis-Lazúli = Fluido Refrigerante§r, água + Pó de
+      Espuma = Espuma de Construção, água + Joio Natural = Biomassa. No modo enlatar ela também
+      monta as §cbarras de combustível nuclear§r.
+    tasks:
+      - get: IC2:blockMachine:6
+    rewards:
+      - xp: 3
+      - item: IC2:itemDust:12 x8
+
+  - id: refrigerante
+    title: "Fluido Refrigerante"
+    type: normal
+    deps: [maquina_conservas, celula_vazia]
+    icon: IC2:itemCellEmpty:9
+    desc: |
+      Coloque água (ou Água Destilada) no tanque da Máquina de Conservas, Pó de Lápis-Lazúli no
+      slot e use o modo §eenriquecer§r. Depois, no modo "encher célula", passe o §eFluido
+      Refrigerante§r para células.
+
+      Mostre-me §e1 balde de refrigerante§r em qualquer recipiente (Célula de Refrigerante ou
+      Célula Universal). Ele vira Células Refrigerantes — para os Overclockers e para o reator!
+    tasks:
+      - fluid: "ic2coolant x1000"
+    rewards:
+      - xp: 3
+      - item: IC2:itemDust:12 x8
+
+  - id: celula_refrigerante_10k
+    title: "10k Célula Refrigerante"
+    type: normal
+    deps: [refrigerante]
+    icon: IC2:reactorCoolantSimple:1
+    desc: |
+      4 Placas de Estanho em volta de um recipiente com Fluido Refrigerante = §e10k Célula
+      Refrigerante§r. Ela absorve até 10 000 de calor.
+
+      Três delas fazem 2 Overclockers. No reator nuclear, elas são o resfriamento mais simples.
+      Faça §e3§r.
+    tasks:
+      - get: IC2:reactorCoolantSimple:* x3
+    rewards:
+      - xp: 3
+      - item: IC2:itemPlates:1 x8
+
+  - id: upgrade_overclocker
+    title: "Upgrade de Overclocker"
+    type: main
+    deps: [celula_refrigerante_10k]
+    icon: IC2:upgradeModule
+    desc: |
+      Velocidade! 3 Células Refrigerantes 10k, 2 Cabos de Cobre Isolados e 1 Circuito =
+      §e2 Overclockers§r. Cada um no slot de upgrade de uma máquina deixa o processo bem mais
+      rápido — em troca de muito mais EU por operação.
+
+      §cAtenção:§r com vários Overclockers a máquina devora EU muito mais depressa — combine
+      com o Upgrade de Armazenamento e, se for alimentá-la por uma linha de tensão maior, com
+      o Upgrade de Transformador.
+    tasks:
+      - get: IC2:upgradeModule x4
+    rewards:
+      - xp: 4
+      - choice: [IC2:itemPlates:1 x8, IC2:itemDust:12 x12, IC2:itemPartCircuit x4]
+
+  - id: upgrade_transformador
+    title: "Upgrade de Transformador"
+    type: normal
+    deps: [transformador_mv, cabo_ouro]
+    icon: IC2:upgradeModule:1
+    desc: |
+      5 vidros, 2 Cabos de Ouro Isolados, 1 MV-Transformador e 1 Circuito = §eUpgrade de
+      Transformador§r. Cada um sobe em §b1 tier§r a tensão que a máquina aceita (LV → MV → HV).
+      Com ele, dá para ligar máquinas direto na CESU ou na MFE sem explosões.
+    tasks:
+      - get: IC2:upgradeModule:1
+    rewards:
+      - xp: 3
+      - item: IC2:itemCable:3 x4
+
+  - id: upgrade_armazenamento
+    title: "Upgrade de Armazenamento de Energia"
+    type: normal
+    deps: [bateria_re, circuito]
+    icon: IC2:upgradeModule:2
+    desc: |
+      Tábuas, 2 Cabos de Cobre Isolados, 1 Bateria e 1 Circuito = §eUpgrade de Armazenamento
+      de Energia§r. Aumenta o buffer interno da máquina — essencial quando há Overclockers e a
+      operação passa a custar mais EU do que cabe na máquina.
+    tasks:
+      - get: IC2:upgradeModule:2
+    rewards:
+      - xp: 2
+      - item: IC2:itemBatREDischarged
+
+  - id: upgrade_ejetor
+    title: "Upgrade de Ejetor"
+    type: normal
+    deps: [circuito]
+    icon: IC2:upgradeModule:3
+    desc: |
+      2 pistões, 1 funil, 2 Cabos de Cobre Isolados e 1 Circuito = §eUpgrade de Ejetor§r. A
+      máquina passa a empurrar o resultado para o inventário vizinho (baú, outra máquina...).
+
+      Triturador → Fornalha Elétrica sem tocar em nada? É com ele.
+    tasks:
+      - get: IC2:upgradeModule:3
+    rewards:
+      - xp: 2
+      - item: minecraft:hopper
+
+  - id: upgrade_puxador
+    title: "Upgrade de Puxador"
+    type: optional
+    deps: [upgrade_ejetor]
+    icon: IC2:upgradeModule:6
+    desc: |
+      Por que levar os itens até a máquina se a máquina pode buscá-los?
+
+      O contrário do ejetor: o §ePulling Upgrade§r (pistões grudentos, funil, cabos e
+      circuito) faz a máquina §epuxar§r itens do inventário vizinho para dentro dela.
+    tasks:
+      - get: IC2:upgradeModule:6
+    rewards:
+      - loot: comum
+
+  - id: upgrade_ejetor_fluidos
+    title: "Upgrade de Ejetor de Fluidos"
+    type: optional
+    deps: [motor_eletrico]
+    icon: IC2:upgradeModule:4
+    desc: |
+      4 Placas de Estanho + 1 Motor Elétrico = §eUpgrade de Ejetor de Fluidos§r. Empurra os
+      fluidos produzidos (vapor, biogás, refrigerante...) para tanques e canos vizinhos. É
+      também peça do Distribuidor de Fluidos.
+    tasks:
+      - get: IC2:upgradeModule:4
+    rewards:
+      - loot: comum
+
+  - id: upgrade_inversor
+    title: "Upgrade Inversor de Redstone"
+    type: optional
+    deps: [placas]
+    icon: IC2:upgradeModule:5
+    desc: |
+      4 Placas de Estanho + 1 alavanca = §eRedstone Signal Inverter Upgrade§r. Inverte a
+      lógica de redstone da máquina: o que antes ligava, agora desliga. Ótimo para controle
+      automático com Cabos Detectores.
+    tasks:
+      - get: IC2:upgradeModule:5
+    rewards:
+      - loot: comum
+
+  # ======================================================================
+  # FASE 6 — ENERGIA RENOVÁVEL, CALOR E MOVIMENTO
+  # ======================================================================
+  - id: geotermico
+    title: "Gerador Geotérmico"
+    type: main
+    deps: [gerador, celula_vazia, involucros]
+    icon: IC2:blockGenerator:1
+    desc: |
+      O Nether tem lava infinita, e a lava tem muita energia. O §eGerador Geotérmico§r (4
+      vidros, 2 Células Vazias, 2 Invólucros de Ferro e 1 Gerador) produz §b20 EU/t§r
+      queimando lava de baldes, células ou canos.
+
+      §aDica:§r uma bomba em um lago de lava do Nether (ou um mod de lava infinita) alimenta
+      vários geotérmicos de uma vez — o dobro do Gerador, sem carvão!
+    tasks:
+      - get: IC2:blockGenerator:1
+    rewards:
+      - xp: 4
+      - choice: [minecraft:lava_bucket x2, IC2:itemCellEmpty:2 x4, minecraft:glass x16]
+
+  - id: painel_solar
+    title: "Painel Solar"
+    type: main
+    deps: [gerador, po_carvao, circuito]
+    icon: IC2:blockGenerator:3
+    desc: |
+      Energia de graça, para sempre — desde que o sol esteja olhando. O §ePainel Solar§r (3 Pós
+      de Carvão, 3 vidros, 2 Circuitos e 1 Gerador) produz §b1 EU/t§r de dia, com céu aberto
+      acima dele (chuva e noite param a produção).
+
+      É pouco? É. Mas uma fileira de 16 painéis numa BatBox mantém uma fábrica pequena
+      zumbindo sem você mexer um dedo.
+    tasks:
+      - get: IC2:blockGenerator:3 x4
+    rewards:
+      - xp: 4
+      - choice: [IC2:itemDust:2 x12, minecraft:glass x24, IC2:itemPartCircuit x2]
+
+  - id: capacete_solar
+    title: "Capacete Solar"
+    type: optional
+    deps: [painel_solar]
+    icon: IC2:itemSolarHelmet
+    desc: |
+      Um Painel Solar no topo de um capacete de ferro (com cabos de cobre) = §eCapacete Solar§r.
+      Debaixo do sol, ele recarrega aos pouquinhos o item elétrico §evestido no peito§r — uma
+      Mochila de Baterias, por exemplo, que por sua vez carrega a broca na sua mão.
+    tasks:
+      - get: IC2:itemSolarHelmet
+    rewards:
+      - loot: comum
+
+  - id: semifluido
+    title: "Gerador Semifluido"
+    type: normal
+    deps: [geotermico, celula_universal]
+    icon: IC2:blockGenerator:7
+    desc: |
+      Um Geotérmico cercado por 4 Células de Fluidos Universais e 4 Invólucros de Ferro vira o
+      §eGerador Semifluido§r, que queima §ecombustíveis líquidos§r: Biogás (do Fermentador),
+      Biomassa, Bioetanol, óleo e combustível de outros mods.
+
+      É o destino natural do biogás da sua fazenda!
+    tasks:
+      - get: IC2:blockGenerator:7
+    rewards:
+      - xp: 3
+      - item: IC2:itemFluidCell x2
+
+  - id: gerador_cinetico
+    title: "Gerador Cinético de Energia"
+    type: main
+    deps: [motor_eletrico, eixo_ferro, gerador]
+    icon: IC2:blockGenerator:9
+    desc: |
+      Na Experimental, vento, água e vapor não geram EU direto: eles geram §denergia cinética
+      (kU)§r. O §eGerador Cinético de Energia§r (6 Invólucros de Ferro, Gerador, Motor Elétrico
+      e Eixo de Ferro) converte §b4 kU em 1 EU§r.
+
+      Encoste o lado de entrada no gerador cinético (moinho, turbina...) — use a Chave Inglesa
+      para alinhar as faces.
+    tasks:
+      - get: IC2:blockGenerator:9
+    rewards:
+      - xp: 4
+      - choice: [IC2:itemRecipePart:11 x2, IC2:itemCasing:4 x6, IC2:itemRecipePart:1 x2]
+
+  - id: moinho_vento_cinetico
+    title: "Moinho de Vento Cinético"
+    type: main
+    deps: [eixo_ferro, carcaca_maquina]
+    icon: IC2:blockKineticGenerator
+    desc: |
+      Carcaça entre 2 Eixos de Ferro = §eMoinho de Vento Cinético§r. Ele precisa de um
+      §erotor§r e de espaço livre na frente para girar; quanto mais alto, mais vento.
+
+      O antigo Moinho de Vento (que dava EU direto) não tem receita nesta versão — o caminho
+      agora é este. Encoste a traseira no Gerador Cinético de Energia.
+    tasks:
+      - get: IC2:blockKineticGenerator
+    rewards:
+      - xp: 4
+      - choice: [minecraft:planks x24, minecraft:log x12, minecraft:iron_ingot x8]
+
+  - id: rotor_madeira
+    title: "Rotor de Madeira"
+    type: normal
+    deps: [moinho_vento_cinetico]
+    icon: IC2:itemwoodrotor:1
+    desc: |
+      Pás de Rotor de Madeira (6 tábuas + 3 toras, cada) × 4 em volta de um lingote de ferro =
+      §eRotor de Madeira§r. É o rotor mais barato e menor; se gasta com o tempo e não aguenta
+      vento forte (a janela avisa quando o vento está danificando o rotor).
+    tasks:
+      - get: IC2:itemwoodrotor:*
+    rewards:
+      - xp: 3
+      - item: minecraft:log x16
+
+  - id: rotor_ferro
+    title: "Rotor de Ferro"
+    type: normal
+    deps: [rotor_madeira]
+    icon: IC2:itemironrotor:1
+    desc: |
+      Pás de Rotor de Ferro (6 Placas de Ferro + 3 lingotes de ferro) × 4 em volta de um Eixo
+      de Ferro = §eRotor de Ferro§r. Dura muito mais e é maior que o de madeira.
+    tasks:
+      - get: IC2:itemironrotor:*
+    rewards:
+      - xp: 3
+      - item: minecraft:iron_ingot x12
+
+  - id: rotor_aco
+    title: "Rotor de Ferro Enriquecido"
+    type: normal
+    deps: [rotor_ferro, placa_aco]
+    icon: IC2:itemsteelrotor:1
+    desc: |
+      Pás de Ferro Enriquecido (6 Placas de Ferro Enriquecido + 3 Ferros Refinados) × 4 + Eixo
+      de Ferro = §eRotor de Ferro Enriquecido§r. Aguenta ventos mais fortes e vive o dobro do
+      de ferro.
+    tasks:
+      - get: IC2:itemsteelrotor:*
+    rewards:
+      - xp: 3
+      - item: ore:ingotSteel x4
+
+  - id: rotor_carbono
+    title: "Rotor de Fibra de Carbono"
+    type: optional
+    deps: [rotor_aco, eixo_aco, placa_carbono]
+    icon: IC2:itemwcarbonrotor:1
+    desc: |
+      O rei dos rotores: Pás de Fibra de Carbono (6 Placas de Carbono + 3 Malhas) × 4 em volta
+      de um Eixo de Ferro Enriquecido. Enorme, levíssimo e duradouro. Precisa de MUITO espaço
+      livre na frente — instale bem alto!
+    tasks:
+      - get: IC2:itemwcarbonrotor:*
+    rewards:
+      - loot: incomum
+
+  - id: medidor_vento
+    title: "Medidor de Vento"
+    type: optional
+    deps: [moinho_vento_cinetico, unidade_potencia_pequena]
+    icon: IC2:windmeter:1
+    desc: |
+      Invólucros de Estanho e Bronze + Pequena Unidade de Potência = §eMedidor de Vento§r.
+      Clique direito para ver a força do vento onde você está. Ótimo para escolher a altura
+      certa dos moinhos sem destruir rotores.
+    tasks:
+      - get: IC2:windmeter:*
+    rewards:
+      - loot: comum
+
+  - id: cinetico_manual
+    title: "Gerador Cinético Manual"
+    type: optional
+    deps: [carcaca_maquina]
+    icon: IC2:blockKineticGenerator:3
+    desc: |
+      Carcaça + alavanca (sem forma) = §eManual Kinetic Generator§r. Clique e gire a manivela
+      você mesmo! Não vai alimentar uma fábrica, mas é ótimo para entender o kU antes de
+      construir moinhos. Ninguém disse que reconstruir o mundo seria sem suor.
+    tasks:
+      - get: IC2:blockKineticGenerator:3
+    rewards:
+      - loot: comum
+
+  - id: cinetico_agua
+    title: "Gerador de Água Cinético"
+    type: normal
+    deps: [info_torno, rotor_madeira]
+    icon: IC2:blockKineticGenerator:4
+    desc: |
+      4 Eixos de Ferro, Carcaça e uma peça torneada no perfil §eEixo Canelado 4-3-4-3-4§r =
+      §eGerador de Água Cinético§r. Como o moinho de vento, ele usa um rotor, mas gira com a
+      correnteza: §cfunciona só em biomas de Oceano e Rio§r (a janela avisa se o bioma estiver
+      errado).
+    tasks:
+      - get: IC2:blockKineticGenerator:4
+    rewards:
+      - xp: 3
+      - item: IC2:itemRecipePart:11 x2
+
+  - id: cinetico_eletrico
+    title: "Gerador Cinético Elétrico"
+    type: optional
+    deps: [motor_eletrico, eixo_ferro, bateria_re]
+    icon: IC2:blockKineticGenerator:2
+    desc: |
+      O caminho inverso: o §eElectric Kinetic Generator§r transforma EU em kU. Coloque §eMotores
+      Elétricos§r nos slots para aumentar a saída. Útil para testar máquinas cinéticas ou
+      levar energia a sistemas que só aceitam kU.
+    tasks:
+      - get: IC2:blockKineticGenerator:2
+    rewards:
+      - loot: comum
+
+  - id: stirling
+    title: "Gerador Stirling"
+    type: normal
+    deps: [gerador, condutor_calor]
+    icon: IC2:blockGenerator:8
+    desc: |
+      Gerador + Condutor de Calor + 7 Invólucros de Ferro = §eGerador Stirling§r. Ele recebe
+      §6calor (hU)§r de um Gerador de Calor encostado e converte §b2 hU em 1 EU§r.
+
+      Junte com um Gerador de Calor por Sólidos e você tem um gerador a carvão "em duas
+      peças"... ou com um Gerador de Calor por Radioisótopos, uma usina silenciosa.
+    tasks:
+      - get: IC2:blockGenerator:8
+    rewards:
+      - xp: 3
+      - item: IC2:itemCasing:4 x6
+
+  - id: cinetico_stirling
+    title: "Gerador Stirling Cinético"
+    type: optional
+    deps: [info_torno, stirling]
+    icon: IC2:blockKineticGenerator:5
+    desc: |
+      6 frascos de vidro, 1 pistão, Carcaça e a peça torneada §eEixo Canelado Fino 3-2-3-2-3§r
+      = §eStirling Kinetic Generator§r: transforma calor (hU) em kU em vez de EU. Uma ponte
+      entre os sistemas de calor e de movimento.
+    tasks:
+      - get: IC2:blockKineticGenerator:5
+    rewards:
+      - loot: comum
+
+  - id: calor_liquido
+    title: "Gerador de Calor por Líquidos"
+    type: normal
+    deps: [condutor_calor, celula_universal]
+    icon: IC2:blockHeatGenerator:1
+    desc: |
+      4 Invólucros de Ferro, 4 Células de Fluidos Universais e um Condutor de Calor = §eGerador
+      de Calor por Líquidos§r. Queima os mesmos combustíveis do Gerador Semifluido (biogás,
+      biomassa, óleo...), mas solta §6calor§r em vez de EU.
+    tasks:
+      - get: IC2:blockHeatGenerator:1
+    rewards:
+      - xp: 3
+      - item: IC2:itemFluidCell x2
+
+  - id: calor_eletrico
+    title: "Gerador de Calor Elétrico"
+    type: optional
+    deps: [condutor_calor, bateria_re, circuito]
+    icon: IC2:blockHeatGenerator:3
+    desc: |
+      Invólucros de Ferro, Bateria, Circuito e Condutor de Calor = §eGerador de Calor
+      Elétrico§r: EU entra, calor sai. Coloque §eBobinas§r nos slots para aumentar a saída. É o
+      jeito mais limpo de esquentar uma Fornalha Industrial numa base com energia sobrando.
+    tasks:
+      - get: IC2:blockHeatGenerator:3
+    rewards:
+      - loot: comum
+
+  - id: caldeira_cobre
+    title: "Caldeira de Cobre"
+    type: normal
+    deps: [martelo_forja]
+    icon: IC2:itemRecipePart:6
+    desc: |
+      Oito Invólucros de Cobre em anel = §eCaldeira de Cobre§r, o coração do sistema de vapor.
+      Ela vai para o Gerador de Vapor e para o Gerador de Vapor Cinético.
+    tasks:
+      - get: IC2:itemRecipePart:6 x2
+    rewards:
+      - xp: 2
+      - item: ore:ingotCopper x8
+
+  - id: gerador_vapor
+    title: "Gerador de Vapor"
+    type: normal
+    deps: [caldeira_cobre, condutor_calor]
+    icon: IC2:blockMachine3
+    desc: |
+      7 Invólucros de Ferro, Caldeira de Cobre e Condutor de Calor = §eGerador de Vapor§r.
+      Ele recebe §6calor (hU)§r e água e produz §eVapor§r — ou §eVapor Superaquecido§r se a
+      pressão e a temperatura subirem (a janela mostra calor, pressão e uma válvula ajustável).
+
+      §cÁgua comum calcifica a caldeira§r (depois de 100 000 mB ela trava): use §eÁgua
+      Destilada§r do Destilador Solar ou do Condensador.
+    tasks:
+      - get: IC2:blockMachine3
+    rewards:
+      - xp: 3
+      - item: IC2:itemCasing:4 x6
+
+  - id: turbina_vapor
+    title: "Turbina a Vapor"
+    type: normal
+    deps: [placa_aco]
+    icon: IC2:itemSteamTurbine:1
+    desc: |
+      Pá de Turbina = 8 Placas de Ferro Enriquecido + 1 Ferro Refinado. Três pás = §eTurbina a
+      Vapor§r. Ela vai no slot do Gerador de Vapor Cinético e se desgasta com o uso.
+    tasks:
+      - get: IC2:itemSteamTurbine:*
+    rewards:
+      - xp: 3
+      - item: ore:plateSteel x4
+
+  - id: cinetico_vapor
+    title: "Gerador de Vapor Cinético"
+    type: normal
+    deps: [turbina_vapor, caldeira_cobre, eixo_ferro, celula_universal]
+    icon: IC2:blockKineticGenerator:1
+    desc: |
+      5 Invólucros de Ferro Enriquecido, Caldeira de Cobre, 2 Eixos de Ferro e 1 Célula
+      Universal = §eKinetic Steam Generator§r. Instale a Turbina a Vapor e alimente com vapor:
+      sai §dkU§r para o Gerador Cinético.
+
+      Parte do vapor condensa em água; um §eUpgrade de Ejetor de Fluidos§r no slot dele ajuda
+      a esvaziar. É assim que o reator de fluido vira eletricidade lá na frente!
+    tasks:
+      - get: IC2:blockKineticGenerator:1
+    rewards:
+      - xp: 3
+      - item: IC2:upgradeModule:4
+
+  - id: destilador_solar
+    title: "Destilador Solar"
+    type: optional
+    deps: [celula_universal]
+    icon: IC2:blockMachine3:3
+    desc: |
+      5 vidros, 2 Células Universais e Carcaça = §eDestilador Solar§r. Debaixo do sol, ele
+      transforma água em §eÁgua Destilada§r devagarzinho, de graça. Perfeito para a caldeira
+      do Gerador de Vapor.
+    tasks:
+      - get: IC2:blockMachine3:3
+    rewards:
+      - loot: comum
+
+  - id: condensador
+    title: "Condensador"
+    type: optional
+    deps: [celula_vazia, involucros, circuito]
+    icon: IC2:blockMachine2:15
+    desc: |
+      O §eCondensador§r (4 Células Vazias, 3 Invólucros de Ferro, Circuito e Carcaça)
+      transforma vapor de volta em Água Destilada usando EU. Coloque §eRespiradouros de Calor§r
+      nos slots para acelerar. Fecha o ciclo do vapor!
+    tasks:
+      - get: IC2:blockMachine2:15
+    rewards:
+      - loot: comum
+
+  - id: fermentador
+    title: "Fermentador e Biogás"
+    type: optional
+    deps: [condutor_calor, celula_vazia, maquina_conservas]
+    icon: IC2:blockMachine2:13
+    desc: |
+      Plantas no Triturador viram §eJoio Natural§r; Joio + água na Máquina de Conservas
+      (enriquecer) viram §eBiomassa§r. O §eFermentador§r recebe Biomassa e §6calor§r e produz
+      §eBiogás§r (neste pack: 10 mB de biomassa → 200 mB de biogás por ciclo de 8000 hU), mais
+      Fertilizante como resíduo.
+
+      Biogás alimenta o Gerador Semifluido e o Jetpack a combustível!
+    tasks:
+      - get: IC2:blockMachine2:13
+    rewards:
+      - loot: comum
+
+  - id: energia_renovavel
+    title: "Vento, Sol e Lava"
+    type: milestone
+    deps: [geotermico, painel_solar, gerador_cinetico, rotor_ferro]
+    icon: IC2:blockKineticGenerator
+    banner: "Vento, Sol e Lava"
+    subtitle: "Energia que não acaba"
+    desc: |
+      Carvão acaba. Sol, vento e lava do Nether, não. Herói, a sua base agora respira sozinha!
+
+      O que você domina a partir daqui:
+      §e• Solar§r — pouco, mas eterno.
+      §e• Geotérmico§r — 20 EU/t com lava.
+      §e• Cinético§r — moinhos e turbinas geram kU; o Gerador Cinético converte 4 kU → 1 EU.
+      §e• Calor§r — Geradores de Calor alimentam Stirling (2 hU → 1 EU), Alto-Forno, vapor.
+
+      §aDica de projeto:§r moinhos funcionam melhor bem altos e espaçados (rotores não podem se
+      sobrepor). Use o Medidor de Vento para escolher a altura certa.
+
+      Isso também é treino: o reator de fluido do fim do capítulo usa exatamente essa cadeia
+      de calor → vapor → movimento → EU.
+    tasks:
+      - get: [IC2:blockGenerator:1, IC2:blockGenerator:3, IC2:blockGenerator:9, IC2:blockKineticGenerator]
+    rewards:
+      - xp: 8
+      - kit: {name: "Kit da Energia Limpa", items: [IC2:itemironrotor:1, IC2:blockGenerator:3 x2, minecraft:lava_bucket x2, IC2:itemRecipePart:11 x2, IC2:itemCable x16]}
+      - loot: raro
+
+  # ======================================================================
+  # FASE 7 — FERRAMENTAS ELÉTRICAS
+  # ======================================================================
+  - id: unidade_potencia
+    title: "Unidade de Potência"
+    type: normal
+    deps: [motor_eletrico, bateria_re, circuito]
+    icon: IC2:itemRecipePart:2
+    desc: |
+      3 Baterias, 2 Cabos de Cobre (sem isolamento), 2 Invólucros de Ferro, Circuito e Motor
+      Elétrico = §eUnidade de Potência§r: o "motor de bolso" da Broca de Mineração e da
+      Motosserra.
+    tasks:
+      - get: IC2:itemRecipePart:2 x2
+    rewards:
+      - xp: 3
+      - item: IC2:itemBatREDischarged x2
+
+  - id: unidade_potencia_pequena
+    title: "Pequena Unidade de Potência"
+    type: normal
+    deps: [motor_eletrico, bateria_re, circuito]
+    icon: IC2:itemRecipePart:3
+    desc: |
+      Nem toda ferramenta precisa de um motorzão.
+
+      A versão compacta, com só 1 Bateria: §ePequena Unidade de Potência§r. Ela vira Chave
+      Inglesa Elétrica, Torneira Elétrica, Enxada Elétrica e o Medidor de Vento.
+    tasks:
+      - get: IC2:itemRecipePart:3 x2
+    rewards:
+      - xp: 3
+      - item: IC2:itemCasing:4 x4
+
+  - id: broca
+    title: "Broca de Mineração"
+    type: main
+    deps: [unidade_potencia]
+    icon: IC2:itemToolDrill:1
+    desc: |
+      Adeus, picaretas quebradas! A §eBroca de Mineração§r (6 Placas de Ferro + Unidade de
+      Potência) guarda 30 000 EU e minera pedra, terra e minérios gastando energia em vez de
+      durabilidade.
+
+      Recarregue numa BatBox, num Bloco de Carregar ou com Mochila de Baterias.
+    tasks:
+      - get: IC2:itemToolDrill:*
+    rewards:
+      - xp: 4
+      - choice: [IC2:itemBatREDischarged x2, minecraft:torch x64, minecraft:redstone x24]
+
+  - id: motosserra
+    title: "Motosserra"
+    type: normal
+    deps: [unidade_potencia]
+    icon: IC2:itemToolChainsaw:1
+    desc: |
+      6 Placas de Ferro + Unidade de Potência = §eMotosserra§r (30 000 EU). Derruba madeira num
+      piscar de olhos, tosquia ovelhas e folhas (um modo desliga a tosquia) e é uma arma
+      respeitável. Diz a lenda que creepers têm pavor dela.
+    tasks:
+      - get: IC2:itemToolChainsaw:*
+    rewards:
+      - xp: 3
+      - item: minecraft:log x16
+
+  - id: broca_diamante
+    title: "Broca de Diamante"
+    type: main
+    deps: [broca, info_torno]
+    icon: IC2:itemToolDDrill:1
+    desc: |
+      3 diamantes, a Broca de Mineração e uma peça torneada no perfil §eBroca 5-4-3-2-1§r =
+      §eBroca de Diamante§r. Mais rápida, minera obsidiana e tudo que a picareta de diamante
+      minera.
+
+      Primeira grande desculpa para usar o Torno de verdade!
+    tasks:
+      - get: IC2:itemToolDDrill:*
+    rewards:
+      - xp: 4
+      - choice: [minecraft:diamond x2, IC2:itemBatREDischarged x3, minecraft:obsidian x8]
+
+  - id: chave_eletrica
+    title: "Chave Inglesa Elétrica"
+    type: normal
+    deps: [chave_inglesa, unidade_potencia_pequena]
+    icon: IC2:itemToolWrenchElectric:1
+    desc: |
+      Chave Inglesa + Pequena Unidade de Potência (sem forma) = §eChave Inglesa Elétrica§r. Ela
+      usa EU em vez de se desgastar e tem um modo §eSem perdas§r, que garante que a máquina
+      desmontada volte inteira. Indispensável antes de mexer em MFE e reatores!
+    tasks:
+      - get: IC2:itemToolWrenchElectric:*
+    rewards:
+      - xp: 3
+      - item: IC2:itemBatREDischarged
+
+  - id: torneira_eletrica
+    title: "Torneira de Resina Elétrica"
+    type: optional
+    deps: [unidade_potencia_pequena]
+    icon: IC2:itemTreetapElectric:1
+    desc: |
+      Lembra da primeira torneira de madeira, quebrando a cada dúzia de usos? Pois é.
+
+      Torneira + Pequena Unidade de Potência = §eTorneira Elétrica§r. Nunca quebra e coloca a
+      resina direto no inventário. As seringueiras agradecem.
+    tasks:
+      - get: IC2:itemTreetapElectric:*
+    rewards:
+      - loot: comum
+
+  - id: enxada_eletrica
+    title: "Enxada Elétrica"
+    type: optional
+    deps: [unidade_potencia_pequena]
+    icon: IC2:itemToolHoe:1
+    desc: |
+      Agricultura também é indústria (e o meu lado jardineira concorda).
+
+      3 Placas de Ferro + Pequena Unidade de Potência = §eEnxada Elétrica§r. Lavra a terra com
+      energia, sem desgaste. Para quem cuida de plantações (inclusive as do IC2).
+    tasks:
+      - get: IC2:itemToolHoe:*
+    rewards:
+      - loot: comum
+
+  - id: scanner_od
+    title: "Scanner OD"
+    type: main
+    deps: [bateria_avancada, circuito]
+    icon: IC2:itemScanner:1
+    desc: |
+      Onde está o urânio?! O §eScanner OD§r (Ore Density) — 2 Invólucros de Ouro, glowstone,
+      2 Circuitos, Bateria Avançada e 3 Cabos de Cobre Isolados — analisa o terreno em volta e
+      lista os minérios e a quantidade de cada um.
+
+      Ele é também o "olho" do §eMinerador§r: colocado no slot, faz a máquina buscar minérios.
+    tasks:
+      - get: IC2:itemScanner:*
+    rewards:
+      - xp: 4
+      - choice: [minecraft:gold_ingot x6, minecraft:glowstone_dust x12, IC2:itemAdvBat:26]
+
+  - id: scanner_ov
+    title: "Scanner OV"
+    type: normal
+    deps: [scanner_od, cristal_energia, circuito_avancado, cabo_ouro]
+    icon: IC2:itemScannerAdv:1
+    desc: |
+      Scanner OD + Cristal de Energia + Circuito Avançado + 2 glowstone + 2 Cabos de Ouro
+      Isolados + 2 Invólucros de Ouro = §eScanner OV§r (Ore Value). Alcance maior e 1 000 000
+      EU de bateria. No Minerador, ele cobre uma área bem maior.
+    tasks:
+      - get: IC2:itemScannerAdv:*
+    rewards:
+      - xp: 3
+      - item: minecraft:glowstone_dust x12
+
+  - id: tubo_mineracao
+    title: "Tubos de Mineração"
+    type: normal
+    deps: [placas, torneira_resina]
+    icon: IC2:blockMiningPipe
+    desc: |
+      6 Placas de Ferro + 1 Torneira de Resina = §e8 Tubos de Mineração§r. O Minerador desce
+      empurrando esses tubos até o bedrock — e a Bomba também precisa deles. Faça §e64§r.
+    tasks:
+      - get: IC2:blockMiningPipe x64
+    rewards:
+      - xp: 2
+      - item: minecraft:iron_ingot x12
+
+  - id: minerador
+    title: "Minerador"
+    type: normal
+    deps: [tubo_mineracao, circuito]
+    icon: IC2:blockMachine:7
+    desc: |
+      O §eMinerador§r (baú, 2 Circuitos, Carcaça e 1 Tubo de Mineração) cava um poço até o
+      fundo do mundo. Com um §eScanner OD/OV§r no slot, ele busca os minérios em volta do poço
+      e deixa a pedra em paz.
+
+      §aObs. do pack:§r o slot de bateria do Minerador só aceita baterias de tier 1
+      (`minerDischargeTier = 1`). Ligue-o por cabo.
+    tasks:
+      - get: IC2:blockMachine:7
+    rewards:
+      - xp: 3
+      - item: IC2:blockMiningPipe x32
+
+  - id: bomba
+    title: "Bomba"
+    type: normal
+    deps: [tubo_mineracao, celula_vazia, circuito]
+    icon: IC2:blockMachine:8
+    desc: |
+      4 Células Vazias, Circuito, Carcaça, 2 Tubos de Mineração e uma Torneira = §eBomba§r. Ela
+      suga fluidos abaixo (água, lava...) para células ou para canos e máquinas vizinhas.
+      Lava infinita para o Geotérmico? Bomba num lago de lava!
+    tasks:
+      - get: IC2:blockMachine:8
+    rewards:
+      - xp: 3
+      - item: IC2:itemCellEmpty x8
+
+  - id: pulverizador_cf
+    title: "Espuma de Construção"
+    type: optional
+    deps: [celula_universal, po_pedra, maquina_conservas]
+    icon: IC2:itemFoamSprayer
+    desc: |
+      Pó de Espuma (6 Pós de Pedra, 2 areias, 1 argila) + água na Máquina de Conservas
+      (enriquecer) = §eEspuma de Construção§r. Carregue o §ePulverizador CF§r (3 Invólucros de
+      Ferro + Célula Universal) e borrife: a espuma endurece em paredes que podem ser pintadas
+      com os Rolos de Pintura.
+
+      Faça o pulverizador para começar a brincar de arquiteta(o).
+    tasks:
+      - get: IC2:itemFoamSprayer
+    rewards:
+      - loot: comum
+
+  - id: pedra_reforcada
+    title: "Pedra Reforçada"
+    type: normal
+    deps: [pulverizador_cf, andaime_ferro]
+    icon: IC2:blockAlloy
+    desc: |
+      Borrife Espuma de Construção sobre §eAndaimes de Ferro§r: ela vira Espuma Reforçada e,
+      com o tempo, endurece em §ePedra Reforçada§r — resistente a explosões. Não há receita de
+      bancada; é só assim.
+
+      Ela é peça do Padrão de Armazenamento e do Replicador, e uma ótima parede para a sala do
+      reator. Junte §e8§r.
+    tasks:
+      - get: IC2:blockAlloy x8
+    rewards:
+      - xp: 3
+      - item: IC2:itemPartCFPowder x8
+
+  - id: mochila_cf
+    title: "Mochila CF"
+    type: optional
+    deps: [pulverizador_cf]
+    icon: IC2:itemArmorCFPack:1
+    desc: |
+      Para obras grandes, um pulverizador só é pouco.
+
+      Uma mochila-tanque de espuma: 2 Pulverizadores CF, 4 Células Universais, Invólucro de
+      Ferro e Circuito. Vestida, ela abastece o pulverizador na sua mão por muito mais tempo.
+    tasks:
+      - get: IC2:itemArmorCFPack:*
+    rewards:
+      - loot: comum
+
+  - id: obscurador
+    title: "Obscurador"
+    type: optional
+    deps: [bateria_avancada, circuito_avancado, cabo_ouro]
+    icon: IC2:obscurator:1
+    desc: |
+      Redstone, Bateria Avançada, 2 Cabos de Ouro Isolados e Circuito Avançado = §eObscurador§r.
+      Ele copia a aparência de um bloco e aplica em cabos, para esconder a fiação dentro das
+      paredes. Decoração com eletricidade!
+    tasks:
+      - get: IC2:obscurator:*
+    rewards:
+      - loot: comum
+
+  - id: arsenal_eletrico
+    title: "Arsenal Elétrico"
+    type: milestone
+    deps: [broca_diamante, motosserra, scanner_od, chave_eletrica]
+    icon: IC2:itemToolDDrill:1
+    banner: "Arsenal Elétrico"
+    subtitle: "Ferramentas que não quebram"
+    desc: |
+      Broca de Diamante, Motosserra, Chave Elétrica e Scanner OD no cinto. Herói, você virou um
+      §bcanivete suíço ambulante§r — e nenhuma dessas ferramentas quebra: elas só pedem EU.
+
+      O próximo problema é óbvio: carregar tudo isso. Por isso a próxima página do Registro é
+      sobre §eenergia portátil§r — Mochilas de Baterias, Energypack, baterias de carregar — e,
+      claro, sobre a armadura que transforma energia em proteção: a §dNanoSuit§r.
+
+      §aDica:§r com o Scanner OD, procure §eurânio§r e §echumbo§r desde já. O reator nuclear
+      não vai esperar para sempre!
+    tasks:
+      - get: [IC2:itemToolDDrill:*, IC2:itemToolChainsaw:*, IC2:itemScanner:*, IC2:itemToolWrenchElectric:*]
+    rewards:
+      - xp: 8
+      - kit: {name: "Kit do Minerador Elétrico", items: [IC2:itemAdvBat:26 x2, IC2:blockMiningPipe x32, minecraft:torch x64, minecraft:diamond x2]}
+      - loot: raro
+
+  # ======================================================================
+  # FASE 8 — ARMADURAS E ENERGIA PORTÁTIL
+  # ======================================================================
+  - id: traje_hazmat
+    title: "Traje Hazmat"
+    type: normal
+    deps: [borracha, botas_borracha]
+    icon: IC2:itemArmorHazmatChestplate
+    desc: |
+      Borracha, corante laranja, vidro e barras de ferro: §eCapacete de Respiração§r, §ePeitoral
+      de Chumbo§r e §eCalças de Proteção§r. Com as §eBotas de Borracha§r, o conjunto completo
+      protege contra a §cradiação§r dos itens de urânio e plutônio.
+
+      O capacete ainda usa §eCélulas de Ar Comprimido§r para te dar fôlego debaixo d'água!
+    tasks:
+      - get: [IC2:itemArmorHazmatHelmet, IC2:itemArmorHazmatChestplate, IC2:itemArmorHazmatLeggings, IC2:itemArmorRubBoots]
+    rewards:
+      - xp: 3
+      - item: IC2:itemCellEmpty:5 x4
+
+  - id: colete_reforcado
+    title: "Colete Reforçado"
+    type: optional
+    deps: [liga_avancada]
+    icon: IC2:itemArmorAlloyChestplate
+    desc: |
+      Nem toda proteção precisa de bateria.
+
+      Um peitoral de couro + um de ferro + 6 Ligas Avançadas = §eColete Reforçado§r (Composite
+      Vest). Proteção alta sem gastar energia — ótimo antes da NanoSuit.
+    tasks:
+      - get: IC2:itemArmorAlloyChestplate
+    rewards:
+      - loot: comum
+
+  - id: botas_estaticas
+    title: "Botas Estáticas"
+    type: optional
+    deps: [cabo_cobre]
+    icon: IC2:itemStaticBoots
+    desc: |
+      Ferro, lã e cabos de cobre (ou botas de ferro + lã + cabos) = §eBotas Estáticas§r. A cada
+      passo elas geram um pouquinho de eletricidade estática para o item elétrico §evestido no
+      peito§r (Mochila de Baterias, Energypack...). Andar nunca foi tão produtivo!
+    tasks:
+      - get: IC2:itemStaticBoots
+    rewards:
+      - loot: comum
+
+  - id: mochila_baterias
+    title: "Mochila de Baterias"
+    type: normal
+    deps: [bateria_re, circuito]
+    icon: IC2:itemArmorBatpack:1
+    desc: |
+      Cansado de voltar para a BatBox no meio da mina? Leve a BatBox com você!
+
+      6 Baterias Reutilizáveis, Circuito e tábuas = §eMochila de Baterias§r (BatPack), 60 000 EU
+      nas costas. Vestida no lugar do peitoral, ela recarrega as ferramentas elétricas na sua
+      mão.
+    tasks:
+      - get: IC2:itemArmorBatpack:*
+    rewards:
+      - xp: 3
+      - item: minecraft:redstone x16
+
+  - id: mochila_avancada
+    title: "Mochila Avançada"
+    type: normal
+    deps: [mochila_baterias, bateria_avancada]
+    icon: IC2:itemArmorAdvBatpack:1
+    desc: |
+      Mais baterias, mais escavação, menos viagens de volta.
+
+      6 Baterias Avançadas, Circuito e 1 Invólucro de Cobre = §eAdv.Batpack§r: 600 000 EU. Dez
+      vezes a mochila comum, para jornadas longas de mineração.
+    tasks:
+      - get: IC2:itemArmorAdvBatpack:*
+    rewards:
+      - xp: 3
+      - item: IC2:itemPlates:2 x6
+
+  - id: energypack
+    title: "Energypack"
+    type: normal
+    deps: [mochila_avancada, cristal_energia, circuito_avancado]
+    icon: IC2:itemArmorEnergypack:1
+    desc: |
+      2 Cristais de Energia, 2 Circuitos Avançados e 4 Invólucros de Ferro = §eEnergypack§r:
+      2 000 000 EU de energia portátil — o tanque ideal para o Laser de Mineração e a Broca de
+      Irídio.
+    tasks:
+      - get: IC2:itemArmorEnergypack:*
+    rewards:
+      - xp: 3
+      - item: IC2:itemPartCircuitAdv x2
+
+  - id: jetpack
+    title: "Jetpack a Biogás"
+    type: optional
+    deps: [celula_universal, circuito]
+    icon: IC2:itemArmorJetpack:1
+    desc: |
+      4 Invólucros de Ferro, Circuito, Célula Universal e 2 redstone = §eJetpack§r. Ele queima
+      §eBiogás§r (do Fermentador); encha-o com biogás como qualquer recipiente de fluido (a
+      Engarrafadora de Líquidos ajuda). Segure pular para subir e, por favor, olhe o combustível antes de sobrevoar lava.
+    tasks:
+      - get: IC2:itemArmorJetpack:*
+    rewards:
+      - loot: incomum
+
+  - id: jetpack_eletrico
+    title: "Jetpack Elétrico"
+    type: normal
+    deps: [batbox, circuito_avancado]
+    icon: IC2:itemArmorJetpackElectric:1
+    desc: |
+      4 Invólucros de Ferro, Circuito Avançado, uma §eBatBox§r inteira e 2 glowstone =
+      §eJetpack Elétrico§r (30 000 EU). Voa com EU, recarrega em qualquer banco de energia e é
+      peça do §dPeitoral Quântico§r. Guarde com carinho!
+    tasks:
+      - get: IC2:itemArmorJetpackElectric:*
+    rewards:
+      - xp: 3
+      - item: minecraft:glowstone_dust x12
+
+  - id: iluminador
+    title: "Iluminador"
+    type: optional
+    deps: [cabo_cobre, involucros]
+    icon: IC2:blockLuminatorDark
+    desc: |
+      Vidro, Invólucros de Ferro, Cabo de Cobre Isolado e Cabo de Estanho = §e8 Iluminadores§r,
+      lâmpadas elétricas que brilham enquanto recebem EU. Também são peça dos Óculos de Visão
+      Noturna e do Examinador.
+    tasks:
+      - get: IC2:blockLuminatorDark x8
+    rewards:
+      - loot: comum
+
+  - id: vidro_reforcado
+    title: "Vidro Reforçado"
+    type: normal
+    deps: [liga_avancada]
+    icon: IC2:blockAlloyGlass
+    desc: |
+      7 vidros + 2 Ligas Avançadas = §e7 Vidros Reforçados§r, resistentes a explosões. Use nas
+      janelas da sala do reator. É também peça dos Óculos, do Capacete Quântico, do Examinador
+      e do Replicador.
+    tasks:
+      - get: IC2:blockAlloyGlass x7
+    rewards:
+      - xp: 3
+      - item: minecraft:glass x16
+
+  - id: placa_lapis
+    title: "Placa de Lápis-Lazúli"
+    type: normal
+    deps: [compressor, triturador]
+    icon: IC2:itemPlates:8
+    desc: |
+      O lápis-lazúli também sabe ser metal... quase.
+
+      Pó de Lápis-Lazúli no Compressor = §ePlaca de Lápis-Lazúli§r. Ela entra no Trocador de
+      Calor Avançado (rumo aos Óculos e à bateria de carregar de lapotron). Faça §e4§r.
+    tasks:
+      - get: ore:plateLapis x4
+    rewards:
+      - xp: 2
+      - item: minecraft:dye:4 x8
+
+  - id: trocador_calor
+    title: "Trocador de Calor"
+    type: normal
+    deps: [circuito, placas]
+    icon: IC2:reactorHeatSwitch:1
+    desc: |
+      5 Placas de Cobre, 3 de Estanho e 1 Circuito = §eTrocador de Calor§r. No reator, ele
+      equaliza o calor entre componentes vizinhos e o casco. Fora do reator, é peça de baterias
+      de carregar e de trocadores melhores. Faça §e3§r.
+    tasks:
+      - get: IC2:reactorHeatSwitch:* x3
+    rewards:
+      - xp: 2
+      - item: IC2:itemPlates x6
+
+  - id: trocador_avancado
+    title: "Trocador de Calor Avançado"
+    type: normal
+    deps: [trocador_calor, placa_lapis]
+    icon: IC2:reactorHeatSwitchDiamond:1
+    desc: |
+      2 Trocadores de Calor, 4 Placas de Lápis, 2 Circuitos e 1 Placa de Cobre = §eTrocador de
+      Calor Avançado§r. No reator, move bastante calor; fora dele, é peça dos §eÓculos de Visão
+      Noturna§r (que levam 2). Faça §e2§r.
+    tasks:
+      - get: IC2:reactorHeatSwitchDiamond:* x2
+    rewards:
+      - xp: 3
+      - item: IC2:itemPartCircuit x2
+
+  - id: oculos_visao_noturna
+    title: "Óculos de Visão Noturna"
+    type: main
+    deps: [trocador_avancado, bateria_avancada, iluminador, vidro_reforcado, circuito_avancado]
+    icon: IC2:itemNightvisionGoggles:1
+    desc: |
+      2 Trocadores de Calor Avançados, Bateria Avançada, 2 Iluminadores, Vidro Reforçado, 2
+      Borrachas e Circuito Avançado = §eÓculos de Visão Noturna§r. Ative-os pelas teclas do IC2
+      (veja em Controles) e a noite vira dia — mas em lugares muito claros eles ofuscam!
+
+      Eles são o ingrediente central do §dCapacete NanoSuit§r.
+    tasks:
+      - get: IC2:itemNightvisionGoggles:*
+    rewards:
+      - xp: 4
+      - choice: [IC2:itemPartCarbonPlate x4, IC2:itemBatCrystal:26, minecraft:glowstone_dust x16]
+
+  - id: baterias_carregar
+    title: "Bateria de Carregar"
+    type: optional
+    deps: [bateria_re, circuito]
+    icon: IC2:itemBatChargeRE:1
+    desc: |
+      4 Baterias e 4 Circuitos = §eCharging RE Battery§r: ela fica no inventário e §erecarrega
+      os outros itens elétricos§r que você carrega. Existem versões maiores com Bateria
+      Avançada, Cristal de Energia e Lapotron (cada uma usa um tipo de Trocador de Calor).
+    tasks:
+      - one_of: [IC2:itemBatChargeRE:*, IC2:itemBatChargeAdv:*, IC2:itemBatChargeCrystal:*, IC2:itemBatChargeLamaCrystal:*]
+    rewards:
+      - loot: incomum
+
+  - id: nano_capacete
+    title: "Capacete NanoSuit"
+    type: main
+    deps: [oculos_visao_noturna, placa_carbono, cristal_energia]
+    icon: IC2:itemArmorNanoHelmet:1
+    desc: |
+      4 Placas de Carbono, 1 Cristal de Energia e os Óculos de Visão Noturna = §dCapacete
+      NanoSuit§r. A NanoSuit absorve dano gastando EU (1 000 000 EU por peça) e o capacete
+      mantém a visão noturna dos óculos.
+    tasks:
+      - get: IC2:itemArmorNanoHelmet:*
+    rewards:
+      - xp: 4
+      - choice: [IC2:itemPartCarbonPlate x6, IC2:itemDust2:2 x9, minecraft:diamond x2]
+
+  - id: nano_peitoral
+    title: "Armadura NanoSuit"
+    type: main
+    deps: [placa_carbono, cristal_energia]
+    icon: IC2:itemArmorNanoChestplate:1
+    desc: |
+      7 Placas de Carbono + 1 Cristal de Energia = §dArmadura NanoSuit§r (o peitoral). A peça
+      que mais absorve dano. Recarregue num banco HV (MFE) ou com um Energypack... ah, espera,
+      o Energypack também vai no peito. Use Blocos de Carregar!
+    tasks:
+      - get: IC2:itemArmorNanoChestplate:*
+    rewards:
+      - xp: 4
+      - choice: [IC2:itemPartCarbonPlate x6, IC2:itemDust2:2 x9, minecraft:diamond x2]
+
+  - id: nano_calcas
+    title: "Calças NanoSuit"
+    type: main
+    deps: [placa_carbono, cristal_energia]
+    icon: IC2:itemArmorNanoLegs:1
+    desc: |
+      Terceira peça! A NanoSuit está quase completa, eu já estou dando pulinhos.
+
+      6 Placas de Carbono + 1 Cristal de Energia = §dCalças NanoSuit§r. Elegantes e muito
+      resistentes. (Eu escolheria a cor, mas o IC2 só faz preto-futurista.)
+    tasks:
+      - get: IC2:itemArmorNanoLegs:*
+    rewards:
+      - xp: 4
+      - choice: [IC2:itemPartCarbonPlate x6, IC2:itemDust2:2 x9, minecraft:diamond x2]
+
+  - id: nano_botas
+    title: "Botas NanoSuit"
+    type: main
+    deps: [placa_carbono, cristal_energia]
+    icon: IC2:itemArmorNanoBoots:1
+    desc: |
+      4 Placas de Carbono + 1 Cristal de Energia = §dBotas NanoSuit§r. Elas absorvem o dano de
+      queda gastando energia — pule de penhascos com (um pouco mais de) confiança.
+    tasks:
+      - get: IC2:itemArmorNanoBoots:*
+    rewards:
+      - xp: 4
+      - choice: [IC2:itemPartCarbonPlate x6, IC2:itemDust2:2 x9, minecraft:diamond x2]
+
+  - id: nano_completo
+    title: "NanoSuit Completa"
+    type: milestone
+    deps: [nano_capacete, nano_peitoral, nano_calcas, nano_botas]
+    icon: IC2:itemArmorNanoChestplate:1
+    banner: "NanoSuit"
+    subtitle: "Fibra de carbono e eletricidade"
+    desc: |
+      Capacete, armadura, calças e botas de nanofibra. Herói... você está brilhando (não
+      literalmente, mas quase)!
+
+      A §dNanoSuit§r completa transforma §bEU em proteção§r: cada golpe recebido drena energia
+      em vez da sua vida. Ela não é invencível — sem carga, vira roupa de festa — então:
+      §e• carregue sempre num banco HV ou Bloco de Carregar MFE;§r
+      §e• leve uma Bateria de Carregar de Cristal no inventário;§r
+      §e• o capacete tem visão noturna; as botas absorvem quedas.§r
+
+      Guarde cada peça: a §6QuantumSuit§r é feita EM CIMA da Nano. Para chegar lá, falta o
+      material mais raro do IC2 — o §eIrídio§r — e Cristais Lapotron. Vamos?
+    tasks:
+      - get: [IC2:itemArmorNanoHelmet:*, IC2:itemArmorNanoChestplate:*, IC2:itemArmorNanoLegs:*, IC2:itemArmorNanoBoots:*]
+    rewards:
+      - xp: 8
+      - kit: {name: "Kit do Nanotécnico", items: [IC2:itemAdvBat:26 x2, IC2:itemPartCarbonPlate x8, IC2:itemBatCrystal:26, minecraft:golden_apple x2]}
+      - loot: raro
+
+  - id: sabre_nano
+    title: "Sabre Nano"
+    type: normal
+    deps: [placa_carbono, liga_avancada, cristal_energia]
+    icon: IC2:itemNanoSaber:1
+    desc: |
+      2 glowstone, 2 Ligas Avançadas, 2 Placas de Carbono e 1 Cristal de Energia = §eSabre
+      Nano§r. Clique direito para acender a lâmina de energia — desligado ele é só um cabo
+      bonito; ligado, corta quase tudo, gastando EU enquanto estiver aceso.
+    tasks:
+      - get: IC2:itemNanoSaber:*
+    rewards:
+      - xp: 4
+      - item: minecraft:glowstone_dust x16
+
+  # ======================================================================
+  # FASE 9 — IRÍDIO E QUANTUMSUIT
+  # ======================================================================
+  - id: minerio_iridio
+    title: "Minério de Irídio"
+    type: main
+    deps: [mfsu]
+    icon: IC2:itemOreIridium
+    desc: |
+      O metal mais raro do Volume da Indústria. O IC2 §cnão gera irídio no mundo§r: o caminho
+      oficial é o §eReplicador de Matéria UU§r (veja a parte de Matéria UU deste capítulo), e
+      9 Fragmentos de Irídio no Compressor também viram 1 minério.
+
+      Outros mods do pack podem oferecer atalhos — abra o NEI no Minério de Irídio (tecla R)
+      para ver todas as receitas. Junte §e4 Minérios de Irídio§r.
+    tasks:
+      - get: IC2:itemOreIridium x4
+    rewards:
+      - xp: 6
+      - choice: [IC2:itemPartAlloy x8, minecraft:diamond x4, IC2:itemPartCircuitAdv x4]
+
+  - id: placa_iridio
+    title: "Placa Reforçada de Irídio"
+    type: main
+    deps: [minerio_iridio, liga_avancada]
+    icon: IC2:itemPartIridium
+    desc: |
+      4 Minérios de Irídio, 4 Ligas Avançadas e 1 diamante no centro = §ePlaca Reforçada de
+      Irídio§r. Cada peça da QuantumSuit pede 2 a 4 delas, a Broca de Irídio pede 3.
+
+      Sim, é o material mais caro do capítulo. Sim, vale cada gota de UU.
+    tasks:
+      - get: IC2:itemPartIridium x2
+    rewards:
+      - xp: 6
+      - choice: [IC2:itemPartAlloy x8, minecraft:diamond x4, IC2:itemBatLamaCrystal:26]
+
+  - id: broca_iridio
+    title: "Broca de Irídio"
+    type: optional
+    deps: [broca_diamante, placa_iridio, cristal_energia]
+    icon: IC2:itemToolIridiumDrill:1
+    desc: |
+      Broca de Diamante + 3 Placas de Irídio + Cristal de Energia = §eBroca de Irídio§r: 300 000
+      EU, Fortuna III de fábrica e um modo §eToque Suave§r. A última picareta que você vai
+      precisar no IC2.
+    tasks:
+      - get: IC2:itemToolIridiumDrill:*
+    rewards:
+      - loot: incomum
+
+  - id: quantum_capacete
+    title: "Capacete QuantumSuit"
+    type: main
+    deps: [nano_capacete, placa_iridio, cristal_lapotron, traje_hazmat, vidro_reforcado]
+    icon: IC2:itemArmorQuantumHelmet:1
+    desc: |
+      Capacete Nano + Capacete de Respiração (Hazmat) + 2 Placas de Irídio + Lapotron + 2
+      Vidros Reforçados + 2 Circuitos Avançados = §6Capacete QuantumSuit§r.
+
+      Ele dá respiração debaixo d'água, visão noturna, cura venenos, wither e radiação e
+      ainda te §ealimenta com Latas de Estanho Cheias§r do inventário. (Vale a pena montar a
+      Máquina de Conservas Sólidas!)
+    tasks:
+      - get: IC2:itemArmorQuantumHelmet:*
+    rewards:
+      - xp: 6
+      - choice: [IC2:itemTinCan x32, IC2:itemPartIridium, minecraft:golden_apple x2]
+
+  - id: quantum_peitoral
+    title: "Armadura QuantumSuit"
+    type: main
+    deps: [nano_peitoral, jetpack_eletrico, placa_iridio, cristal_lapotron]
+    icon: IC2:itemArmorQuantumChestplate:1
+    desc: |
+      Armadura Nano + §eJetpack Elétrico§r + 4 Placas de Irídio + Lapotron + 2 Ligas Avançadas
+      = §6Armadura QuantumSuit§r.
+
+      Ela absorve quase qualquer dano com energia e traz o jetpack embutido: você §dvoa§r (com
+      modo de pairar). 10 000 000 EU por peça — carregue numa MFSU!
+    tasks:
+      - get: IC2:itemArmorQuantumChestplate:*
+    rewards:
+      - xp: 6
+      - choice: [IC2:itemBatLamaCrystal:26, IC2:itemPartIridium, minecraft:diamond_block]
+
+  - id: quantum_calcas
+    title: "Calças QuantumSuit"
+    type: main
+    deps: [nano_calcas, placa_iridio, cristal_lapotron]
+    icon: IC2:itemArmorQuantumLegs:1
+    desc: |
+      Calças Nano + Placas de Irídio + Lapotron + 2 Carcaças de Máquina + 2 glowstone = §6Calças
+      QuantumSuit§r. Corra e sinta o vento: elas dão uma §evelocidade absurda§r — neste pack o
+      impulso ativa §esó de correr§r (sprint), sem segurar tecla extra.
+    tasks:
+      - get: IC2:itemArmorQuantumLegs:*
+    rewards:
+      - xp: 6
+      - choice: [IC2:itemBatLamaCrystal:26, IC2:itemPartIridium, minecraft:diamond_block]
+
+  - id: quantum_botas
+    title: "Botas QuantumSuit"
+    type: main
+    deps: [nano_botas, botas_borracha, placa_iridio, cristal_lapotron]
+    icon: IC2:itemArmorQuantumBoots:1
+    desc: |
+      Botas Nano + §e2 Botas de Borracha§r + 2 Placas de Irídio + Lapotron = §6Botas
+      QuantumSuit§r.
+      Pulos altíssimos e nenhum dano de queda (enquanto houver energia). Lembra daquelas botas
+      de borracha do começo? Eu disse que não era pra jogar fora!
+    tasks:
+      - get: IC2:itemArmorQuantumBoots:*
+    rewards:
+      - xp: 6
+      - choice: [IC2:itemBatLamaCrystal:26, IC2:itemPartIridium, minecraft:diamond_block]
+
+  - id: quantum_completo
+    title: "QuantumSuit Completa"
+    type: milestone
+    deps: [quantum_capacete, quantum_peitoral, quantum_calcas, quantum_botas]
+    icon: IC2:itemArmorQuantumChestplate:1
+    banner: "QuantumSuit"
+    subtitle: "A armadura mais poderosa do IC2"
+    effect: 3
+    desc: |
+      ...Herói. Deixa eu só olhar um pouquinho. Pronto. Agora posso falar.
+
+      A §6QuantumSuit§r completa é o ápice da armadura do IC2:
+      §e• Capacete:§r respira debaixo d'água, visão noturna, cura venenos e radiação, te
+      alimenta com Latas de Estanho.
+      §e• Armadura:§r voo com jetpack embutido e absorção massiva de dano.
+      §e• Calças:§r velocidade extrema ao correr.
+      §e• Botas:§r superpulos e zero dano de queda.
+
+      Cada peça guarda 10 milhões de EU. §aMantenha uma MFSU com Bloco de Carregar§r em casa e
+      uma Bateria de Carregar de Lapotron no inventário em expedições longas.
+
+      Os Antigos tentaram vestir algo assim antes da Fratura. Você conseguiu — e com as
+      próprias mãos.
+    tasks:
+      - get: [IC2:itemArmorQuantumHelmet:*, IC2:itemArmorQuantumChestplate:*, IC2:itemArmorQuantumLegs:*, IC2:itemArmorQuantumBoots:*]
+    rewards:
+      - xp: 12
+      - kit: {name: "Kit do Viajante Quântico", items: [IC2:itemBatLamaCrystal:26, IC2:itemTinCan x64, minecraft:golden_apple:1, minecraft:diamond_block x2]}
+      - loot: epico
+
+  # ======================================================================
+  # FASE 10 — NUCLEAR
+  # ======================================================================
+  - id: info_radiacao
+    title: "Antes de Tocar no Urânio"
+    type: info
+    deps: [centrifuga_termica]
+    icon: IC2:itemArmorHazmatHelmet
+    desc: |
+      §cHerói, preciso que você me escute com atenção agora.§r
+
+      §e1. Radiação.§r U-238, U-235, Combustível Enriquecido, MOX, Plutônio, Pelotas RTG e
+      barras esgotadas são §cradioativos§r: só de estarem no seu inventário causam radiação.
+      Use o §eTraje Hazmat completo§r e guarde-os na §eCaixa de Contenção§r.
+
+      §e2. Calor.§r Um reator acima de 40% de calor incendeia em volta; acima de 50% evapora
+      água; acima de 70% fere quem está perto; acima de 85% derrete blocos; a 100%
+      §cEXPLODE§r. Neste pack a potência da explosão é limitada (45, TNT = 4) — ainda assim
+      destrói a sua sala inteira.
+
+      §e3. Planeje.§r Monte o layout num simulador de reator do IC2 1.7.10 antes de colocar
+      a primeira barra. Teste com pouca barra, observando o calor.
+
+      Prometo que, seguindo isso, a parte nuclear é a mais divertida do capítulo.
+    tasks:
+      - check
+    rewards:
+      - xp: 2
+
+  - id: minerio_uranio
+    title: "Minério de Urânio"
+    type: main
+    deps: [info_radiacao]
+    icon: IC2:blockOreUran
+    desc: |
+      O §eMinério de Urânio§r aparece em veios pequenos (até 3 blocos) entre Y 0 e 63. O
+      Scanner OD é seu melhor amigo aqui.
+
+      Triture cada minério (2 Urânios Triturados), lave e centrifugue. O minério em si é seguro;
+      o perigo começa nos produtos. Junte §e8 minérios§r.
+    tasks:
+      - get: ore:oreUranium x8
+    rewards:
+      - xp: 6
+      - choice: [IC2:itemCellEmpty:5 x6, minecraft:water_bucket x2, ore:ingotLead x8]
+
+  - id: uranio_238
+    title: "Urânio 238 e 235"
+    type: main
+    deps: [minerio_uranio]
+    icon: IC2:itemUran238
+    desc: |
+      No Centrifugador Térmico (calor 3000):
+      §e• Urânio Triturado§r → 1 Pequeno Monte de U-235 + 4 U-238 + Pó de Pedra
+      §e• Urânio Purificado§r → 2 Pequenos Montes de U-235 + 5 U-238
+
+      Ou seja: §elave antes de centrifugar§r. Junte §e12 U-238§r e §e6 Pequenos Montes de
+      U-235§r (9 montes = 1 U-235 inteiro).
+    tasks:
+      - get: [IC2:itemUran238 x12, IC2:itemUran235small x6]
+    rewards:
+      - xp: 6
+      - choice: [IC2:itemCasing:6 x8, IC2:itemCellEmpty:5 x8, minecraft:water_bucket x2]
+
+  - id: caixa_contencao
+    title: "Caixa de Contenção"
+    type: normal
+    deps: [chumbo, martelo_forja]
+    icon: IC2:itemContainmentbox
+    desc: |
+      Radiação no bolso, nunca mais.
+
+      Um baú dentro de 8 Invólucros de Chumbo = §eCaixa de Contenção§r. Itens radioativos lá
+      dentro não te afetam. Leve sempre uma ao mexer no reator.
+    tasks:
+      - get: IC2:itemContainmentbox
+    rewards:
+      - xp: 4
+      - item: ore:ingotLead x6
+
+  - id: combustivel_enriquecido
+    title: "Combustível de Urânio Enriquecido"
+    type: main
+    deps: [uranio_238]
+    icon: IC2:itemUran
+    desc: |
+      6 U-238 nas bordas e 3 Pequenos Montes de U-235 no meio = §eCombustível Nuclear de Urânio
+      Enriquecido§r. §aDica do pack:§r receitas de urânio aceitam `ingotUranium` no lugar do
+      U-238 — incluindo o Yellorium do Big Reactors!
+
+      Faça §e2§r. Ele ainda precisa ir para dentro de uma barra.
+    tasks:
+      - get: IC2:itemUran x2
+    rewards:
+      - xp: 6
+      - choice: [IC2:itemPlates:4 x6, ore:ingotLead x8, IC2:itemCellEmpty:5 x8]
+
+  - id: barra_vazia
+    title: "Barra de Combustível Vazia"
+    type: normal
+    deps: [formador_metal]
+    icon: IC2:itemFuelRod
+    desc: |
+      Antes do fogo atômico, a garrafa que vai guardá-lo.
+
+      Extruda uma Placa de Ferro no Formador de Metal para obter uma §eBarra de Combustível
+      Vazia§r. Faça §e4§r.
+
+      Uma barra vazia vira barra de urânio ou de MOX na Máquina de Conservas.
+    tasks:
+      - get: IC2:itemFuelRod x4
+    rewards:
+      - xp: 4
+      - item: IC2:itemPlates:4 x4
+
+  - id: barra_uranio
+    title: "Barra de Combustível de Urânio"
+    type: main
+    deps: [combustivel_enriquecido, barra_vazia, maquina_conservas]
+    icon: IC2:reactorUraniumSimple:1
+    desc: |
+      Na §eMáquina de Conservas§r (modo enlatar), coloque a Barra Vazia e o Combustível
+      Enriquecido: sai uma §eBarra de Combustível (Urânio)§r.
+
+      Cada barra gera energia e calor, e "conversa" com barras vizinhas por pulsos de
+      nêutrons — quanto mais barras juntas, mais energia e MUITO mais calor. Faça §e2§r.
+    tasks:
+      - get: IC2:reactorUraniumSimple:* x2
+    rewards:
+      - xp: 6
+      - choice: [IC2:reactorCoolantSimple:1 x2, IC2:itemPlates:4 x8, IC2:itemPlates:1 x8]
+
+  - id: barra_dupla
+    title: "Barra Dupla de Urânio"
+    type: normal
+    deps: [barra_uranio]
+    icon: IC2:reactorUraniumDual:1
+    desc: |
+      2 Barras de Urânio + 1 Placa de Ferro = §eBarra Dupla§r. Ocupa um slot só e pulsa como duas
+      barras grudadas — mais energia e mais calor por slot.
+    tasks:
+      - get: IC2:reactorUraniumDual:*
+    rewards:
+      - xp: 4
+      - item: IC2:itemPlates:4 x4
+
+  - id: barra_quadrupla
+    title: "Barra Quádrupla de Urânio"
+    type: normal
+    deps: [barra_dupla]
+    icon: IC2:reactorUraniumQuad:1
+    desc: |
+      4 Barras de Urânio + 3 Placas de Ferro + 2 de Cobre = §eBarra Quádrupla§r. O máximo de
+      combustível num slot. §cGera calor de verdade§r: só use em layouts testados.
+    tasks:
+      - get: IC2:reactorUraniumQuad:*
+    rewards:
+      - xp: 4
+      - item: IC2:itemPlates x4
+
+  - id: placa_chumbo_densa
+    title: "Placa de Chumbo Densa"
+    type: normal
+    deps: [chumbo, compressor, martelo_forja]
+    icon: IC2:itemDensePlates:6
+    desc: |
+      Chumbo é a muralha entre você e a radiação — e quanto mais denso, melhor.
+
+      9 Placas de Chumbo no Compressor = §ePlaca de Chumbo Densa§r ("Chumbro" no jogo —
+      perdoe a tradução). O Reator Nuclear pede §e4§r.
+    tasks:
+      - get: ore:plateDenseLead x4
+    rewards:
+      - xp: 4
+      - item: ore:ingotLead x8
+
+  - id: camara_reator
+    title: "Câmara do Reator"
+    type: normal
+    deps: [chumbo, carcaca_maquina, martelo_forja]
+    icon: IC2:blockReactorChamber
+    desc: |
+      Uma Carcaça cercada por 4 Placas de Chumbo = §eCâmara do Reator§r. O reator precisa de 3
+      na receita; colocadas encostadas nele (até 6), cada câmara §eamplia a grade interna§r
+      em uma coluna (de 3 até 9 colunas de 6 slots).
+    tasks:
+      - get: IC2:blockReactorChamber x3
+    rewards:
+      - xp: 4
+      - item: ore:ingotLead x8
+
+  - id: reator
+    title: "Reator Nuclear"
+    type: main
+    deps: [camara_reator, placa_chumbo_densa, circuito_avancado, gerador]
+    icon: IC2:blockGenerator:5
+    desc: |
+      4 Placas de Chumbo Densas, Circuito Avançado, 3 Câmaras do Reator e 1 Gerador = §eReator
+      Nuclear§r.
+
+      Ele §esó funciona com sinal de redstone§r — use uma alavanca como "chave de segurança".
+      Sem câmaras, a grade tem 3×6 slots. No modo comum (EU) a saída vai direto para cabos; a
+      janela mostra a produção e a temperatura do núcleo.
+
+      §cNão ligue sem resfriamento!§r Próximas quests: os componentes.
+    tasks:
+      - get: IC2:blockGenerator:5
+    rewards:
+      - xp: 6
+      - choice: [IC2:reactorCoolantSimple:1 x4, IC2:itemRecipePart:1 x2, ore:ingotLead x16]
+
+  - id: info_componentes
+    title: "Como Pensa um Reator"
+    type: info
+    deps: [reator]
+    icon: IC2:reactorVent:1
+    desc: |
+      Cada componente da grade tem um papel:
+      §e• Barras§r geram EU e calor; barras vizinhas trocam pulsos (mais EU, mais calor).
+      §e• Células Refrigerantes§r guardam calor (10k/30k/60k) até encher.
+      §e• Respiradouros§r jogam calor fora (alguns puxam do casco, outros dos vizinhos).
+      §e• Trocadores§r equilibram calor entre componentes e o casco.
+      §e• Refletores§r devolvem pulsos às barras (mais EU, sem calor extra próprio).
+      §e• Condensadores§r absorvem muito calor e são recarregados com redstone/lápis.
+      §e• Placas§r aumentam o calor máximo do casco ou reduzem a explosão.
+
+      O calor que ninguém tira vai para o §ecasco§r. Casco a 100% = adeus. §aRegra:§r um
+      layout estável é aquele em que o calor do casco fica parado em 0.
+    tasks:
+      - check
+    rewards:
+      - xp: 2
+
+  - id: celula_refrigerante_30k
+    title: "30k Célula Refrigerante"
+    type: normal
+    deps: [celula_refrigerante_10k, info_componentes]
+    icon: IC2:reactorCoolantTriple:1
+    desc: |
+      Mais calor guardado por slot significa mais espaço para barras.
+
+      3 Células 10k + 6 Placas de Estanho = §e30k Célula Refrigerante§r. Guarda o triplo de
+      calor no mesmo slot.
+
+      §cAtenção:§r se o calor acumulado chegar ao limite, a célula se desfaz — combine com
+      respiradouros que a resfriem.
+    tasks:
+      - get: IC2:reactorCoolantTriple:*
+    rewards:
+      - xp: 4
+      - item: IC2:itemPlates:1 x6
+
+  - id: celula_refrigerante_60k
+    title: "60k Célula Refrigerante"
+    type: normal
+    deps: [celula_refrigerante_30k]
+    icon: IC2:reactorCoolantSix:1
+    desc: |
+      A maior célula refrigerante do IC2.
+
+      2 Células 30k + 6 Placas de Estanho + 1 Placa de Ferro = §e60k Célula Refrigerante§r.
+      Lembre: células só §eguardam§r calor; quando enchem, quebram. Combine com respiradouros.
+    tasks:
+      - get: IC2:reactorCoolantSix:*
+    rewards:
+      - xp: 4
+      - item: IC2:itemPlates:1 x6
+
+  - id: respiradouro
+    title: "Respiradouro de Calor"
+    type: normal
+    deps: [info_componentes, motor_eletrico]
+    icon: IC2:reactorVent:1
+    desc: |
+      4 barras de ferro, 4 Placas de Ferro e 1 Motor Elétrico = §eRespiradouro de Calor§r. Ele
+      dissipa o calor que §eele mesmo§r recebe. É a base de todos os outros respiradouros.
+      Faça §e4§r.
+    tasks:
+      - get: IC2:reactorVent:* x4
+    rewards:
+      - xp: 4
+      - item: IC2:itemRecipePart:1 x2
+
+  - id: respiradouro_reator
+    title: "Respiradouro de Calor de Reator"
+    type: normal
+    deps: [respiradouro]
+    icon: IC2:reactorVentCore:1
+    desc: |
+      O casco do reator também precisa respirar.
+
+      Respiradouro + 8 Placas de Cobre = §eRespiradouro de Reator§r. Ele §epuxa calor do casco§r
+      e dissipa. Ótimo para manter o casco em zero.
+    tasks:
+      - get: IC2:reactorVentCore:*
+    rewards:
+      - xp: 4
+      - item: IC2:itemPlates x8
+
+  - id: respiradouro_overclock
+    title: "Respiradouro com Overclocker"
+    type: normal
+    deps: [respiradouro_reator]
+    icon: IC2:reactorVentGold:1
+    desc: |
+      Respiradouro de Reator + 4 Placas de Ouro = §eRespiradouro com Overclocker§r. Puxa ainda
+      mais calor do casco — às vezes mais do que consegue dissipar sozinho. Cerque-o de
+      Respiradouros Componentes.
+    tasks:
+      - get: IC2:reactorVentGold:*
+    rewards:
+      - xp: 4
+      - item: IC2:itemPlates:3 x4
+
+  - id: respiradouro_componente
+    title: "Respiradouro Componente"
+    type: normal
+    deps: [respiradouro]
+    icon: IC2:reactorVentSpread
+    desc: |
+      Às vezes quem esquenta não é o casco, são os vizinhos.
+
+      Respiradouro + 4 barras de ferro + 4 Placas de Estanho = §eRespiradouro Componente§r. Ele
+      §eresfria os componentes vizinhos§r (os 4 lados), sem tocar no casco.
+    tasks:
+      - get: IC2:reactorVentSpread:*
+    rewards:
+      - xp: 4
+      - item: IC2:itemPlates:1 x6
+
+  - id: respiradouro_avancado
+    title: "Respiradouro Avançado"
+    type: normal
+    deps: [respiradouro]
+    icon: IC2:reactorVentDiamond:1
+    desc: |
+      Um diamante bem investido — esse respiradouro aguenta o tranco.
+
+      2 Respiradouros + 6 barras de ferro + 1 diamante = §eRespiradouro Avançado§r. Dissipa
+      bem mais calor próprio que o comum. O preferido de muitos layouts estáveis.
+    tasks:
+      - get: IC2:reactorVentDiamond:*
+    rewards:
+      - xp: 4
+      - item: minecraft:diamond
+
+  - id: trocador_reator
+    title: "Trocador de Calor de Reator"
+    type: normal
+    deps: [trocador_calor, info_componentes]
+    icon: IC2:reactorHeatSwitchCore:1
+    desc: |
+      Calor parado no casco é calor perigoso.
+
+      Trocador de Calor + 8 Placas de Cobre = §eTrocador de Calor de Reator§r. Troca calor
+      principalmente com o §ecasco§r — o par perfeito dos Respiradouros de Reator.
+    tasks:
+      - get: IC2:reactorHeatSwitchCore:*
+    rewards:
+      - xp: 4
+      - item: IC2:itemPlates x8
+
+  - id: trocador_componente
+    title: "Trocador de Calor Componente"
+    type: normal
+    deps: [trocador_calor, info_componentes]
+    icon: IC2:reactorHeatSwitchSpread:1
+    desc: |
+      Trocador de Calor + 4 Placas de Ouro = §eTrocador de Calor Componente§r. Equilibra o calor
+      só entre os §ecomponentes vizinhos§r. Também é peça da Bateria de Carregar de Cristal.
+    tasks:
+      - get: IC2:reactorHeatSwitchSpread:*
+    rewards:
+      - xp: 4
+      - item: IC2:itemPlates:3 x4
+
+  - id: refletor
+    title: "Refletor de Nêutrons"
+    type: normal
+    deps: [info_componentes]
+    icon: IC2:reactorReflector:1
+    desc: |
+      4 Pós de Estanho, 4 Pós de Carvão e 1 Placa de Cobre = §eRefletor de Nêutrons§r. Ao lado
+      de uma barra, devolve os pulsos dela: §emais EU sem gastar combustível extra§r. Desgasta
+      com o tempo.
+    tasks:
+      - get: IC2:reactorReflector:* x2
+    rewards:
+      - xp: 4
+      - item: IC2:itemDust:2 x8
+
+  - id: refletor_grosso
+    title: "Refletor de Nêutrons Grosso"
+    type: normal
+    deps: [refletor]
+    icon: IC2:reactorReflectorThick:1
+    desc: |
+      Mais duradouro, mais confiável.
+
+      4 Refletores + 5 Placas de Cobre = §eRefletor Grosso§r: dura muito mais. (Ele também é
+      peça de uma certa... Nuke. Mas vamos fingir que eu não disse isso.)
+    tasks:
+      - get: IC2:reactorReflectorThick:*
+    rewards:
+      - xp: 4
+      - item: IC2:itemPlates x5
+
+  - id: condensador_rsh
+    title: "Condensador RSH"
+    type: normal
+    deps: [respiradouro, trocador_calor]
+    icon: IC2:reactorCondensator:1
+    desc: |
+      7 redstone + Respiradouro + Trocador de Calor = §eCondensador RSH§r. Ele absorve calor
+      até encher e então §erecarrega com redstone§r (combine com um bloco de redstone na
+      bancada). Ótimo para reatores que funcionam em ciclos.
+    tasks:
+      - get: IC2:reactorCondensator:*
+    rewards:
+      - xp: 4
+      - item: minecraft:redstone_block x2
+
+  - id: condensador_lzh
+    title: "Condensador LZH"
+    type: normal
+    deps: [condensador_rsh, respiradouro_reator, trocador_reator]
+    icon: IC2:reactorCondensatorLap:1
+    desc: |
+      O primo rico do RSH.
+
+      2 Condensadores RSH, Respiradouro de Reator, Trocador de Reator, redstone e um bloco de
+      lápis = §eCondensador LZH§r. Absorve muito mais calor e §erecarrega com blocos de
+      lápis-lazúli§r.
+    tasks:
+      - get: IC2:reactorCondensatorLap:*
+    rewards:
+      - xp: 4
+      - item: minecraft:lapis_block x2
+
+  - id: placas_reator
+    title: "Placas do Reator"
+    type: normal
+    deps: [info_componentes, liga_avancada]
+    icon: IC2:reactorPlating
+    desc: |
+      Placa de Chumbo + Liga Avançada = §ePlaca de Reator§r (+ calor máximo do casco). Com 8
+      Placas de Cobre vira §ePlaca de Capacidade de Calor§r (ainda mais calor máximo); com 2
+      Ligas a mais vira §ePlaca de Contenção§r (reduz a explosão).
+
+      Faça uma de cada.
+    tasks:
+      - get: [IC2:reactorPlating, IC2:reactorPlatingHeat, IC2:reactorPlatingExplosive]
+    rewards:
+      - xp: 4
+      - item: IC2:itemPartAlloy x4
+
+  - id: reator_nuclear
+    title: "Fogo Atômico"
+    type: milestone
+    deps: [reator, barra_uranio, respiradouro_avancado, respiradouro_reator, trocador_reator]
+    icon: IC2:blockGenerator:5
+    banner: "Fogo Atômico"
+    subtitle: "O primeiro reator nuclear"
+    desc: |
+      O reator está montado, as barras dentro, os respiradouros girando. Herói... respira
+      fundo. Agora puxe a alavanca.
+
+      ...
+
+      Está zumbindo! Olha esse EU/t!
+
+      §aChecklist do operador responsável:§r
+      §e• Calor do casco parado em 0§r depois de alguns minutos? Ótimo.
+      §e• Subindo?§r Desligue a redstone, retire uma barra e reforce os respiradouros.
+      §e• Sala§r de Pedra Reforçada e Vidro Reforçado, longe da base.
+      §e• Traje Hazmat§r e Caixa de Contenção para trocar barras esgotadas.
+
+      As barras esgotadas não são lixo: no Centrifugador Térmico viram U-238 e §ePlutônio§r —
+      o caminho para o combustível MOX e os geradores RTG. Eu tô tremendo de orgulho!
+    tasks:
+      - get: [IC2:blockGenerator:5, IC2:reactorUraniumSimple:*, IC2:reactorVentDiamond:*]
+    rewards:
+      - xp: 12
+      - kit: {name: "Kit do Operador Nuclear", items: [IC2:reactorVentDiamond:1 x2, IC2:reactorHeatSwitchCore:1 x2, IC2:itemPlates:1 x16, IC2:blockAlloyGlass x8, IC2:itemContainmentbox]}
+      - loot: epico
+
+  - id: plutonio
+    title: "Barra Esgotada e Plutônio"
+    type: normal
+    deps: [reator_nuclear]
+    icon: IC2:itemPlutonium
+    desc: |
+      Barras esgotadas no Centrifugador Térmico (calor 4000+) devolvem U-238, pó de ferro e
+      §ePequenos Montes de Plutônio§r (9 = 1 Plutônio). As de MOX esgotadas rendem bem mais
+      plutônio.
+
+      Junte §e3 Plutônios§r — com cuidado, ele é bem radioativo.
+    tasks:
+      - get: IC2:itemPlutonium x3
+    rewards:
+      - xp: 4
+      - item: IC2:itemUran238 x6
+
+  - id: mox
+    title: "Combustível MOX"
+    type: normal
+    deps: [plutonio]
+    icon: IC2:itemMOX
+    desc: |
+      6 U-238 + 3 Plutônios = §eCombustível Nuclear MOX§r. Enlatado numa Barra Vazia (Máquina de
+      Conservas) vira §eBarra de MOX§r. No reator EU, a MOX rende §emais quanto mais quente o
+      casco§r — poderosa, mas exige mão firme no controle do calor.
+    tasks:
+      - get: IC2:reactorMOXSimple:*
+    rewards:
+      - xp: 4
+      - item: IC2:itemFuelRod x2
+
+  - id: mox_dupla
+    title: "Barra Dupla de MOX"
+    type: optional
+    deps: [mox]
+    icon: IC2:reactorMOXDual:1
+    desc: |
+      Duas barras de MOX, um slot só.
+
+      Como a de urânio: 2 Barras de MOX + 1 Placa de Ferro = §eBarra Dupla de MOX§r.
+
+      Lembre que barras agrupadas esquentam mais: ajuste o resfriamento antes de trocar.
+    tasks:
+      - get: IC2:reactorMOXDual:*
+    rewards:
+      - loot: incomum
+
+  - id: mox_quadrupla
+    title: "Barra Quádrupla de MOX"
+    type: optional
+    deps: [mox_dupla]
+    icon: IC2:reactorMOXQuad:1
+    desc: |
+      4 Barras de MOX + 3 Placas de Ferro + 2 de Cobre = §eBarra Quádrupla de MOX§r. Só para
+      quem já domina o reator. Eu vou ficar olhando daqui... de bem longe.
+    tasks:
+      - get: IC2:reactorMOXQuad:*
+    rewards:
+      - loot: incomum
+
+  - id: pelotas_rtg
+    title: "Pelotas de Combustível RTG"
+    type: normal
+    deps: [plutonio]
+    icon: IC2:itemRTGPellet
+    desc: |
+      Plutônio que não explode? Existe, e é lindo.
+
+      6 Placas de Ferro Densas + 3 Plutônios = §ePelotas de Combustível RTG§r. Elas
+      alimentam geradores de radioisótopos — energia lenta, silenciosa e praticamente eterna.
+    tasks:
+      - get: IC2:itemRTGPellet
+    rewards:
+      - xp: 4
+      - item: IC2:itemDensePlates:4 x3
+
+  - id: gerador_rtg
+    title: "Gerador Termoelétrico Radioisótopo"
+    type: normal
+    deps: [pelotas_rtg, camara_reator]
+    icon: IC2:blockGenerator:6
+    desc: |
+      7 Invólucros de Ferro, 1 Câmara do Reator e 1 Gerador = §eRTG§r. Coloque Pelotas RTG: cada
+      pelota a mais §edobra§r a produção. Sem calor, sem explosão, sem manutenção — só EU
+      pingando para sempre.
+    tasks:
+      - get: IC2:blockGenerator:6
+    rewards:
+      - xp: 4
+      - item: IC2:itemCasing:4 x6
+
+  - id: calor_radioisotopo
+    title: "Gerador de Calor por Radioisótopos"
+    type: optional
+    deps: [pelotas_rtg, camara_reator, condutor_calor]
+    icon: IC2:blockHeatGenerator:2
+    desc: |
+      Calor eterno, sem uma gota de combustível.
+
+      A versão "calor" do RTG: Invólucros de Ferro, Câmara do Reator e Condutor de Calor. Com
+      Pelotas RTG, ele aquece Stirlings, Alto-Fornos e Geradores de Vapor eternamente.
+    tasks:
+      - get: IC2:blockHeatGenerator:2
+    rewards:
+      - loot: incomum
+
+  - id: vaso_pressao
+    title: "Cuba do Reator"
+    type: normal
+    deps: [reator_nuclear]
+    icon: IC2:blockreactorvessel
+    desc: |
+      Reatores de §efluido§r são o modo "profissional" da Experimental. A casca é feita de
+      §eCubas do Reator§r (Reactor Pressure Vessel): 5 Placas de Chumbo + 4 pedras = 4 cubas.
+
+      Você vai precisar de um cubo §e5×5×5§r oco — são 98 blocos de casca (alguns serão portas).
+      Comece juntando §e64§r.
+    tasks:
+      - get: IC2:blockreactorvessel x64
+    rewards:
+      - xp: 4
+      - item: ore:ingotLead x16
+
+  - id: portas_reator
+    title: "Portas do Reator de Fluido"
+    type: normal
+    deps: [vaso_pressao, celula_universal]
+    icon: IC2:blockReactorFluidPort
+    desc: |
+      Três blocos especiais substituem cubas da casca (cada um = 8 cubas + 1 item):
+      §e• Porta de Fluidos§r (+ Célula Universal) — entra refrigerante frio, sai refrigerante
+      quente.
+      §e• Escotilha de Acesso§r (+ alçapão) — abre a janela do reator por fora.
+      §e• Porta de Redstone§r (+ redstone) — leva o sinal de liga/desliga ao núcleo.
+
+      Faça §e2 Portas de Fluidos§r, 1 Escotilha e 1 Porta de Redstone.
+    tasks:
+      - get: [IC2:blockReactorFluidPort x2, IC2:blockReactorAccessHatch, IC2:blockReactorRedstonePort]
+    rewards:
+      - xp: 4
+      - item: IC2:itemFluidCell x4
+
+  - id: trocador_liquido
+    title: "Trocador de Calor Líquido"
+    type: normal
+    deps: [condutor_calor, celula_vazia, reator_nuclear]
+    icon: IC2:blockMachine2:12
+    desc: |
+      4 vidros, 2 Células Vazias, 2 Invólucros de Ferro e um Condutor de Calor = §eTrocador de
+      Calor Líquido§r. Ele recebe §eFluido Refrigerante Quente§r, devolve refrigerante frio e
+      emite §6calor (hU)§r. Coloque §eCondutores de Calor§r nos slots para acelerar.
+
+      Também converte lava em calor (sobra Magma Semi-Sólido)!
+    tasks:
+      - get: IC2:blockMachine2:12
+    rewards:
+      - xp: 4
+      - item: IC2:itemRecipePart:5 x4
+
+  - id: reator_fluido
+    title: "O Reator de Fluido"
+    type: milestone
+    deps: [portas_reator, trocador_liquido, gerador_vapor, cinetico_vapor]
+    icon: IC2:blockReactorFluidPort
+    banner: "Reator de Fluido"
+    subtitle: "Calor, vapor e movimento"
+    desc: |
+      Este é o desafio mais técnico do capítulo. Respira, eu explico.
+
+      §e1. Estrutura:§r o Reator Nuclear fica no centro de um cubo §e5×5×5§r. A casca externa é
+      toda de Cubas do Reator (Portas de Fluidos, Escotilha e Porta de Redstone podem substituir
+      cubas). O interior 3×3×3 só pode ter o núcleo, Câmaras, ar ou refrigerante.
+      §e2. Modo fluido:§r com a casca completa, o reator para de gerar EU e passa a aquecer
+      §eFluido Refrigerante§r (entra frio, sai quente). A janela avisa: em modo EU a saída é
+      reduzida a 50%; em modo fluido você aproveita 100%.
+      §e3. Calor → EU:§r refrigerante quente → §eTrocador de Calor Líquido§r (hU) → §eGerador de
+      Vapor§r (com Água Destilada) → §eGerador de Vapor Cinético§r (kU) → §eGerador Cinético§r
+      (EU). Ou hU → Gerador Stirling.
+
+      §cOs mesmos riscos de calor valem aqui.§r Se o refrigerante parar de circular, o núcleo
+      esquenta. Planeje bombas e tanques de sobra. Mostre-me o reator e a primeira porta de
+      fluidos instalada — e muito orgulho!
+    tasks:
+      - get: [IC2:blockGenerator:5, IC2:blockReactorFluidPort, IC2:blockMachine2:12]
+    rewards:
+      - xp: 12
+      - kit: {name: "Kit do Engenheiro Térmico", items: [IC2:itemRecipePart:5 x8, IC2:itemSteamTurbine:1, IC2:upgradeModule:4 x2, IC2:itemFluidCell x8]}
+      - loot: epico
+
+  # ======================================================================
+  # FASE 11 — MATÉRIA UU
+  # ======================================================================
+  - id: fabricador_massa
+    title: "Fabricador de Massa"
+    type: main
+    deps: [carcaca_avancada, cristal_lapotron, circuito_avancado]
+    icon: IC2:blockMachine:14
+    desc: |
+      Energia vira matéria. Literalmente. O §eFabricador de Massa§r (4 glowstone, 2 Circuitos
+      Avançados, 2 Carcaças Avançadas e 1 Lapotron) produz §dMatéria UU§r.
+
+      O preço é brutal: §c1 000 000 EU para cada 1 mB§r de UU (entrada HV). Coloque §eSucata§r
+      (ou Caixas de Sucata) no slot amplificador: enquanto houver sucata, cada EU que entra vale
+      até 6. Ou seja: o Reciclador acabou de virar a máquina mais importante da sua base.
+    tasks:
+      - get: IC2:blockMachine:14
+    rewards:
+      - xp: 6
+      - choice: [IC2:itemScrapbox x8, IC2:itemScrap x64, IC2:itemPartCircuitAdv x4]
+
+  - id: materia_uu_balde
+    title: "Matéria UU"
+    type: normal
+    deps: [fabricador_massa]
+    icon: IC2:itemCellEmpty:3
+    desc: |
+      O Fabricador enche um tanque interno de §dMatéria UU§r; tire-a com células (slot de
+      recipiente) ou canos. Junte §e100 mB§r em qualquer recipiente.
+
+      Parece pouco. Não é. Faça as contas e chore um pouquinho comigo.
+    tasks:
+      - fluid: "ic2uumatter x100"
+    rewards:
+      - xp: 4
+      - item: IC2:itemScrap x32
+
+  - id: cristal_memoria
+    title: "Cristal de Memória"
+    type: normal
+    deps: [centrifuga_termica]
+    icon: IC2:itemcrystalmemory
+    desc: |
+      5 Dióxidos de Silício (4 Pós de Argila no Centrifugador Térmico) + 4 Pós de Obsidiana =
+      §eCristal de Memória Bruto§r → fornalha → §eCristal de Memória§r. Ele guarda um padrão de
+      replicação e é peça do Padrão de Armazenamento (que pede 2).
+    tasks:
+      - get: IC2:itemcrystalmemory x2
+    rewards:
+      - xp: 4
+      - item: minecraft:obsidian x8
+
+  - id: teleportador
+    title: "Teletransportador"
+    type: normal
+    deps: [carcaca_avancada, fibra_vidro, transmissor_frequencia, circuito_avancado]
+    icon: IC2:blockMachine2
+    desc: |
+      4 Circuitos Avançados, Transmissor de Frequência, 2 Cabos de Fibra de Vidro, Carcaça
+      Avançada e 1 diamante = §eTeletransportador§r. Ligue dois deles com o Transmissor (clique
+      num, depois no outro) e pise para viajar — gastando EU conforme a distância e o peso do
+      seu inventário (`teleporterUseInventoryWeight = true` neste pack).
+
+      O Replicador pede §e3§r deles. Sim, três.
+    tasks:
+      - get: IC2:blockMachine2
+    rewards:
+      - xp: 4
+      - item: IC2:itemPartCircuitAdv x2
+
+  - id: transmissor_frequencia
+    title: "Transmissor de Frequência"
+    type: normal
+    deps: [circuito]
+    icon: IC2:itemFreq
+    desc: |
+      Uma pecinha simples que conversa à distância.
+
+      Circuito + Cabo de Cobre Isolado = §eTransmissor de Frequência§r. Ele "pareia" coisas à
+      distância: Teletransportadores e a Dinamite Remota.
+
+      Clique direito num Teletransportador, depois no outro, e eles ficam pareados.
+    tasks:
+      - get: IC2:itemFreq
+    rewards:
+      - xp: 3
+      - item: IC2:itemCable x8
+
+  - id: examinador
+    title: "Examinador (Scanner)"
+    type: normal
+    deps: [carcaca_avancada, vidro_reforcado, iluminador, circuito_avancado]
+    icon: IC2:blockMachine2:7
+    desc: |
+      Placas de Ferro, Vidro Reforçado, 2 Motores, Iluminador, 2 Circuitos Avançados e Carcaça
+      Avançada = §eExaminador§r. Coloque um item e ele o §eescaneia§r (gastando EU) para
+      descobrir quanta UU custa replicá-lo. O resultado vai para um Padrão de Armazenamento
+      encostado.
+    tasks:
+      - get: IC2:blockMachine2:7
+    rewards:
+      - xp: 4
+      - item: IC2:itemRecipePart:1 x2
+
+  - id: padrao_armazenamento
+    title: "Padrão de Armazenamento"
+    type: normal
+    deps: [cristal_memoria, laser_mineracao, pedra_reforcada]
+    icon: IC2:blockMachine2:6
+    desc: |
+      3 Pedras Reforçadas, 2 Cristais de Memória, Carcaça Avançada, Circuito Avançado e §e2
+      Lasers de Mineração§r = §ePadrão de Armazenamento§r. Ele guarda os padrões escaneados (e
+      importa/exporta padrões para Cristais de Memória).
+    tasks:
+      - get: IC2:blockMachine2:6
+    rewards:
+      - xp: 4
+      - item: IC2:blockAlloy x4
+
+  - id: replicador
+    title: "Replicador"
+    type: main
+    deps: [teleportador, examinador, padrao_armazenamento, mfe, transformador_hv]
+    icon: IC2:blockMachine2:8
+    desc: |
+      2 Pedras Reforçadas, Vidro Reforçado, 3 Teletransportadores, 2 HV-Transformadores e 1
+      MFE = §eReplicador§r. Encostado no Padrão de Armazenamento, ele escolhe um padrão e
+      §ereconstrói o item§r a partir de Matéria UU e EU (modo único ou repetir).
+
+      Escaneie um Minério de Irídio e... bom, você entendeu. É assim que se alimenta a
+      QuantumSuit.
+    tasks:
+      - get: IC2:blockMachine2:8
+    rewards:
+      - xp: 6
+      - choice: [IC2:itemScrapbox x16, IC2:itemPartIridium, IC2:itemBatLamaCrystal:26]
+
+  - id: materia_uu
+    title: "Matéria do Nada"
+    type: milestone
+    deps: [replicador, materia_uu_balde]
+    icon: IC2:itemCellEmpty:3
+    banner: "Matéria do Nada"
+    subtitle: "Energia virou coisa"
+    effect: 4
+    desc: |
+      Fabricador de Massa, Examinador, Padrão de Armazenamento e Replicador. Herói, você
+      transformou §beletricidade em matéria§r. Os Antigos chamavam isso de "a pena que escreve
+      sozinha" — e foi tentando escrever páginas demais com ela que eles racharam o Registro.
+
+      §aUse com sabedoria:§r
+      §e• Replique o que é raro§r (Irídio, diamantes), não o que é fácil de minerar.
+      §e• Amplifique com sucata§r: Reciclador → sucata → Fabricador.
+      §e• Escaneie antes§r: cada item só precisa ser escaneado uma vez.
+
+      Para fechar a página, mostre-me um §eMinério de Irídio§r saindo do Replicador... ou de
+      onde for, eu não vou contar a ninguém.
+    tasks:
+      - get: [IC2:blockMachine2:8, IC2:itemOreIridium]
+    rewards:
+      - xp: 12
+      - kit: {name: "Kit do Alquimista Industrial", items: [IC2:itemScrapbox x16, IC2:itemcrystalmemory x2, IC2:itemPartCircuitAdv x4, IC2:blockAlloy x8]}
+      - loot: epico
+
+  # ======================================================================
+  # FASE 12 — UTILIDADES, AUTOMAÇÃO E CURIOSIDADES
+  # ======================================================================
+  - id: andaime
+    title: "Andaime"
+    type: optional
+    deps: [arvore_borracha]
+    icon: IC2:blockScaffold
+    desc: |
+      Antes de tudo ficar alto e elétrico, a gente precisa alcançar o alto.
+
+      Tábuas e gravetos = §e4 Andaimes§r. Dá para subir por eles como por uma escada — ótimos
+      para construir alto (os moinhos de vento agradecem).
+    tasks:
+      - get: IC2:blockScaffold x8
+    rewards:
+      - loot: comum
+
+  - id: andaime_ferro
+    title: "Cerca e Andaime de Ferro"
+    type: normal
+    deps: [formador_metal]
+    icon: IC2:blockIronScaffold
+    desc: |
+      Extruda Invólucros de Ferro no Formador de Metal para fazer §eCercas de Ferro§r. 6 Placas
+      de Ferro + 3 Cercas = §e16 Andaimes de Ferro§r — a base para a Pedra Reforçada e para o
+      Magnetizador.
+    tasks:
+      - get: [IC2:blockFenceIron x4, IC2:blockIronScaffold x16]
+    rewards:
+      - xp: 3
+      - item: IC2:itemPlates:4 x6
+
+  - id: magnetizador
+    title: "Magnetizador"
+    type: optional
+    deps: [andaime_ferro]
+    icon: IC2:blockMachine:9
+    desc: |
+      6 redstone, 2 Cercas de Ferro e Carcaça = §eMagnetizador§r. Ele magnetiza uma coluna de
+      Cercas de Ferro acima dele: quem estiver com §ebotas de metal§r sobe e desce como num
+      elevador. (A janela avisa se detectou suas botas.)
+    tasks:
+      - get: IC2:blockMachine:9
+    rewards:
+      - loot: comum
+
+  - id: bobina_tesla
+    title: "Bobina de Tesla"
+    type: optional
+    deps: [transformador_mv, circuito]
+    icon: IC2:blockMachine2:1
+    desc: |
+      5 redstone, MV-Transformador, Circuito e 2 Invólucros de Ferro = §eBobina de Tesla§r. Com
+      energia e sinal de redstone, ela dá choques em criaturas próximas. Defesa elétrica de
+      base — mantenha os amigos longe!
+    tasks:
+      - get: IC2:blockMachine2:1
+    rewards:
+      - loot: incomum
+
+  - id: terraformer
+    title: "Transformador de Bioma"
+    type: optional
+    deps: [carcaca_avancada, circuito_avancado]
+    icon: IC2:blockMachine:15
+    desc: |
+      O §eTerraformer§r (TFBP vazio, glowstone, terra e Carcaça Avançada) usa §eprojetos TFBP§r
+      para remodelar o terreno em volta: plantar, irrigar, resfriar, desertificar, aplainar ou
+      espalhar cogumelos. O TFBP vazio leva 1 Circuito, 1 Circuito Avançado e 2 redstone.
+    tasks:
+      - get: [IC2:blockMachine:15, IC2:itemTFBP]
+    rewards:
+      - loot: incomum
+
+  - id: tfbp_projetos
+    title: "Projetos TFBP"
+    type: optional
+    deps: [terraformer]
+    icon: IC2:itemTFBPCultivation
+    desc: |
+      Cada projeto nasce de um TFBP vazio cercado por 4 itens-tema:
+      §e• Cultivação§r (sementes) • §eIrrigação§r (baldes d'água) • §eRefrigeração§r (bolas de
+      neve) • §eDesertificação§r (areia) • §ePlanificação§r (terra) • §eCogumelos§r (cogumelos
+      e micélio).
+
+      Faça qualquer um e veja o mundo mudar ao redor da máquina. §cUse longe da base!§r
+    tasks:
+      - one_of: [IC2:itemTFBPCultivation, IC2:itemTFBPIrrigation, IC2:itemTFBPChilling, IC2:itemTFBPDesertification, IC2:itemTFBPFlatification, IC2:itemTFBPMushroom]
+    rewards:
+      - loot: incomum
+
+  - id: cofre_pessoal
+    title: "Cofres e Comércio"
+    type: optional
+    deps: [circuito, carcaca_maquina]
+    icon: IC2:blockPersonal
+    desc: |
+      Três blocos para servidores (oi, Rede Akashic!):
+      §e• Cofre Pessoal§r — só o dono abre.
+      §e• Trade-O-Mat§r — vende itens por itens, sem você estar lá.
+      §e• Energy-O-Mat§r — vende energia.
+
+      Faça qualquer um deles.
+    tasks:
+      - one_of: [IC2:blockPersonal, IC2:blockPersonal:1, IC2:blockPersonal:2]
+    rewards:
+      - loot: comum
+
+  - id: porta_reforcada
+    title: "Porta Reforçada"
+    type: optional
+    deps: [chumbo, placas]
+    icon: IC2:itemDoorAlloy
+    desc: |
+      Placas de Ferro e de Chumbo = §ePorta Reforçada§r, resistente a explosões. A porta ideal
+      para a sala do reator (e para o seu quarto, se você tem irmãos com TNT).
+    tasks:
+      - get: IC2:itemDoorAlloy
+    rewards:
+      - loot: comum
+
+  - id: explosivos
+    title: "TNT Industrial e Dinamite"
+    type: optional
+    deps: [resina]
+    icon: IC2:blockITNT
+    desc: |
+      TNT + sílex = §e4 TNTs Industriais§r; TNT Industrial + linha = §e8 Dinamites§r para
+      arremessar; Dinamite + Resina = Dinamite Grudenta. Com um Transmissor de Frequência, dá até
+      para fazer a §eDinamite Remota§r. Mineração com estilo (e com cuidado)!
+    tasks:
+      - one_of: [IC2:blockITNT, IC2:itemDynamite, IC2:itemDynamiteSticky]
+    rewards:
+      - loot: comum
+
+  - id: nuke
+    title: "A Página Proibida"
+    type: optional
+    deps: [refletor_grosso, carcaca_avancada]
+    icon: IC2:blockNuke
+    visibility: hidden
+    desc: |
+      ...você achou. Eu escondi essa página por um motivo.
+
+      A §cNuke§r (6 Refletores Grossos, 2 Circuitos Avançados e Carcaça Avançada) está
+      §cHABILITADA§r neste pack, com potência limitada a 60 (TNT = 4). Isso ainda apaga um bairro
+      inteiro. Em servidor, detoná-la perto de outros jogadores é griefing — e a Akasha vai
+      ficar MUITO decepcionada.
+
+      Construa só para colecionar. Por favor.
+    tasks:
+      - get: IC2:blockNuke
+    rewards:
+      - loot: incomum
+
+  - id: estacas_plantacao
+    title: "Plantações do IC2"
+    type: optional
+    deps: [arvore_borracha]
+    icon: IC2:blockCrop
+    desc: |
+      4 gravetos = 2 §eEstacas de Plantação§r. Plante sementes nelas; para §ecruzar§r espécies,
+      coloque uma estaca dupla (clique de novo com estacas) entre duas plantas maduras. Assim
+      nascem plantas como Ferru (ferro!), Aurelia (ouro!) e Cyprium (cobre!).
+
+      Coloque 8 estacas no inventário para começar a sua fazenda genética.
+    tasks:
+      - get: IC2:blockCrop x8
+    rewards:
+      - loot: comum
+
+  - id: analisador_plantacao
+    title: "Analisador de Plantação"
+    type: optional
+    deps: [estacas_plantacao, circuito]
+    icon: IC2:itemCropnalyzer:1
+    desc: |
+      Cabos, redstone, vidro e Circuito = §eAnalisador de Plantação§r (Cropnalyzer). Ele lê os
+      pacotes de sementes do IC2 e mostra a espécie e os atributos (crescimento, ganho e
+      resistência). Essencial para melhorar suas linhagens.
+    tasks:
+      - get: IC2:itemCropnalyzer:*
+    rewards:
+      - loot: comum
+
+  - id: semente_ic2
+    title: "Sementes Cruzadas"
+    type: optional
+    deps: [analisador_plantacao]
+    icon: IC2:itemCropSeed
+    desc: |
+      Colha uma planta cruzada e ganhe um §ePacote de Sementes§r do IC2 — qualquer espécie
+      vale. Quanto melhores os atributos, melhor a próxima geração. O Registro também tem
+      páginas de botânica, sabia?
+    tasks:
+      - get: IC2:itemCropSeed
+    rewards:
+      - loot: incomum
+
+  - id: crop_matron
+    title: "Crop-Matron e Colheitadeira"
+    type: optional
+    deps: [estacas_plantacao, celula_vazia, circuito]
+    icon: IC2:blockMachine2:2
+    desc: |
+      O §eCrop-Matron§r cuida das plantações em volta: aplica Fertilizante (sucata + farinha de
+      osso) e hidrata com água ou Células de Hidratação. A §eColheitadeira§r (Crop Harvester,
+      mesma receita com tesoura no lugar das células) colhe tudo sozinha.
+
+      Faça qualquer um dos dois.
+    tasks:
+      - one_of: [IC2:blockMachine2:2, IC2:blockMachine3:7]
+    rewards:
+      - loot: comum
+
+  - id: cafe
+    title: "Café Industrial"
+    type: optional
+    deps: [estacas_plantacao]
+    icon: IC2:itemMugCoffee:2
+    desc: |
+      Toda boa engenharia precisa de café. Cultive Café nas estacas, moa os grãos (bancada ou
+      Triturador), junte Caneca de Pedra + Pó de Café + água = Café Frio → fornalha → Café
+      Preto → + açúcar + leite = §eCafé§r. Energia para o jogador, finalmente!
+    tasks:
+      - get: IC2:itemMugCoffee:2
+    rewards:
+      - loot: comum
+
+  - id: lata_estanho
+    title: "Comida Enlatada"
+    type: normal
+    deps: [formador_metal, maquina_conservas]
+    icon: IC2:itemTinCanFilled
+    desc: |
+      Extruda Invólucros de Estanho para fazer §eLatas de Estanho§r. Na §eMáquina de Conservas
+      Sólidas§r (2 latas, 2 Circuitos e Carcaça) — ou na Máquina de Conservas comum, no modo
+      enlatar — comida + latas = §eLatas Cheias§r.
+
+      O Capacete Quântico come essas latas sozinho quando você tem fome. Faça §e16§r.
+    tasks:
+      - get: IC2:itemTinCanFilled x16
+    rewards:
+      - xp: 3
+      - item: minecraft:cooked_beef x16
+
+  - id: logistica_ic2
+    title: "Logística do IC2"
+    type: optional
+    deps: [upgrade_ejetor, upgrade_ejetor_fluidos]
+    icon: IC2:blockMachine3:5
+    desc: |
+      O IC2 também tem automação própria:
+      §e• Máquina de Classificação§r (6 Upgrades de Ejetor, Circuito, Carcaça, baú) — separa
+      itens por destino.
+      §e• Tampão de Itens§r — um buffer de itens entre máquinas.
+      §e• Distribuidor de Fluidos§r (5 Upgrades de Ejetor de Fluidos) — reparte ou concentra
+      fluidos.
+      §e• Regulador de Fluidos§r — controla a vazão.
+      §e• Engarrafador de Líquidos§r — enche e esvazia recipientes.
+
+      Faça qualquer um.
+    tasks:
+      - one_of: [IC2:blockMachine3:5, IC2:blockMachine3:6, IC2:blockMachine3:4, IC2:blockMachine2:14, IC2:blockMachine2:10]
+    rewards:
+      - loot: incomum
+
+  - id: rolos_pintura
+    title: "Rolos de Pintura"
+    type: optional
+    deps: [pulverizador_cf]
+    icon: IC2:itemToolPainterRed
+    desc: |
+      Lã e ferro = §eRolo de Pintura§r; com um corante, ele pega a cor. Use-o nas paredes de
+      Espuma de Construção para colorir a sua base industrial. São 16 cores!
+    tasks:
+      - one_of: [IC2:itemToolPainterBlack:*, IC2:itemToolPainterRed:*, IC2:itemToolPainterGreen:*, IC2:itemToolPainterBrown:*, IC2:itemToolPainterBlue:*, IC2:itemToolPainterPurple:*, IC2:itemToolPainterCyan:*, IC2:itemToolPainterLightGrey:*, IC2:itemToolPainterDarkGrey:*, IC2:itemToolPainterPink:*, IC2:itemToolPainterLime:*, IC2:itemToolPainterYellow:*, IC2:itemToolPainterCloud:*, IC2:itemToolPainterMagenta:*, IC2:itemToolPainterOrange:*, IC2:itemToolPainterWhite:*]
+    rewards:
+      - loot: comum
+
+  - id: barcos_ic2
+    title: "Canoa de Carbono e Bote Elétrico"
+    type: optional
+    deps: [placa_carbono, rotor_ferro]
+    icon: IC2:itemBoat
+    desc: |
+      5 Placas de Carbono = §eCanoa de Fibra de Carbono§r, resistente e rápida. Para os fãs de
+      velocidade: o §eBote Elétrico§r leva Placas de Ferro, cabos, Motor Elétrico e um Rotor
+      de Ferro. Faça qualquer um e vá passear — você merece.
+    tasks:
+      - one_of: [IC2:itemBoat, IC2:itemBoat:3]
+    rewards:
+      - loot: comum
+
+  # ======================================================================
+  # MARCO FINAL
+  # ======================================================================
+  - id: mestre_industrial
+    title: "Mestre da Indústria"
+    type: milestone
+    deps: [quantum_completo, reator_nuclear, materia_uu, mfsu]
+    icon: IC2:itemArmorQuantumHelmet:1
+    banner: "Mestre da Indústria"
+    subtitle: "O Volume da Indústria está completo"
+    effect: 3
+    desc: |
+      Herói. Senta aqui um minutinho comigo.
+
+      Você começou batendo numa árvore que chorava resina. Depois veio o cobre, o primeiro
+      gerador, a BatBox que você ligou com a mão tremendo. Veio o aço de um alto-forno a 50 000
+      hU, a rede de tensões sem nenhuma explosão (ok, quase nenhuma), o vento, o sol, o vapor.
+      Veio o átomo — e você o domou. Veio a Matéria UU — e você a usou com sabedoria. E agora
+      você veste uma §6QuantumSuit§r.
+
+      §bO Volume da Indústria está reescrito.§r Esta página brilha no §6Selo da Engrenagem§r —
+      uma das oito luzes que vão fechar a Fratura.
+
+      E a história das máquinas não termina aqui: o §eIndustrial Upgrade§r continua exatamente
+      de onde o IC2 parou — painéis solares absurdos, máquinas de tier altíssimo, novos
+      minérios e muito mais. É o próximo passo natural (procure os capítulos §eIndustrial
+      Upgrade I, II e III§r).
+
+      Eu nunca vou esquecer este dia. Obrigada por consertar o meu livro.
+    tasks:
+      - get: [IC2:itemArmorQuantumChestplate:*, IC2:blockGenerator:5, IC2:blockMachine2:8, IC2:blockElectric:2]
+    rewards:
+      - xp: 15
+      - kit: {name: "Legado do Mestre da Indústria", items: [IC2:itemPartIridium x4, IC2:itemBatLamaCrystal:26 x2, IC2:upgradeModule x8, IC2:upgradeModule:1 x4, IC2:upgradeModule:2 x4]}
+      - loot: [epico x2]
+      - command: "/effect @p 1 1200 1"

@@ -55,7 +55,16 @@ def main(dump):
             rec['nbt'] = r['nbt']
         items.append(rec)
     write('items.jsonl.gz', items)
-    for name in ('oredict', 'entities', 'fluids', 'biomes', 'dimensions', 'mods',
+    # Dimensions registered at server start (Galacticraft & co.) only exist in the world pass.
+    if os.path.exists(os.path.join(dump, 'dimensions_world.jsonl')):
+        write('dimensions.jsonl.gz', read(os.path.join(dump, 'dimensions_world.jsonl')))
+    else:
+        write('dimensions.jsonl.gz', read(os.path.join(dump, 'dimensions.jsonl')))
+    for name in ('nei_handlers', 'nei_recipes'):
+        p = os.path.join(dump, name + '.jsonl')
+        if os.path.exists(p):
+            write(name + '.jsonl.gz', read(p))
+    for name in ('oredict', 'entities', 'fluids', 'biomes', 'mods',
                  'recipes_crafting', 'recipes_furnace', 'thaumcraft_research'):
         p = os.path.join(dump, name + '.jsonl')
         if os.path.exists(p):

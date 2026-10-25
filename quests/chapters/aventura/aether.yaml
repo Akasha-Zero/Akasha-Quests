@@ -1,0 +1,1609 @@
+# O Aether — Aether Legacy v1.1.2.5 (namespace aether_legacy, dimensão 4).
+# Ato III, Reino Perdido nº 2: o Reino dos Céus e a Chave dos Céus.
+# Fontes: registro do pack, lang en_US (textos "lore" do Book of Lore, falas dos chefes),
+# classes AetherRegistries (Altar/Freezer), loot das masmorras e config/aether/AetherI.cfg.
+# Ver docs/mods/aether.md.
+chapter:
+  id: aether
+  title: "O Aether"
+  order: 210
+  icon: aether_legacy:dungeon_key:2
+  desc: |
+    §2Ato III — Reino Perdido dos Céus.§r Ilhas flutuantes acima das nuvens, onde as
+    Valquírias juraram proteger as páginas do céu. Vença as três masmorras e liberte a
+    §6Chave dos Céus§r das mãos do Espírito do Sol.
+
+quests:
+  # ------------------------------------------------------------------ Chegada
+  - id: ceus_inicio
+    title: "O Reino dos Céus"
+    type: info
+    desc: |
+      Olhe para cima. Lá, acima das nuvens, fica o segundo arquivo perdido do Registro: o
+      §bAether§r. As §eValquírias§r juraram proteger as páginas do céu, mas o §eEspírito do
+      Sol§r tomou o reino e as mantém como reféns sob um dia que nunca acaba.
+
+      §eO caminho:§r madeira Skyroot → pedra Holystone → gemas de Zanite → máquinas (Altar,
+      Freezer, Incubator) → Gravitite. Depois, as três masmorras: §6Bronze§r (Slider),
+      §7Prata§r (Rainha Valquíria) e §eOuro§r (Espírito do Sol).
+
+      §cRegra número um do céu:§r cair de uma ilha é cair no Mundo Normal, de muito alto.
+      Leve paraquedas. Vamos?
+    tasks:
+      - check
+    rewards:
+      - xp: 2
+
+  - id: pedra_luminosa
+    title: "Uma Moldura de Luz"
+    type: main
+    deps: [ceus_inicio]
+    desc: |
+      O portal para o Aether é parecido com o do Nether, mas feito de luz: uma moldura de
+      §eblocos de Pedra Luminosa (Glowstone)§r no formato de portal (4 de largura por 5 de
+      altura, os cantos são opcionais).
+
+      Junte 10 blocos de Pedra Luminosa. O Nether tem de sobra, e cada bloco são 4 pós.
+    tasks:
+      - get: minecraft:glowstone x10
+    rewards:
+      - xp: 5
+      - choice: ["minecraft:water_bucket", "minecraft:feather x16", "minecraft:cooked_chicken x16"]
+
+  - id: portal_aether
+    title: "Paraíso Hostil"
+    type: portal
+    deps: [pedra_luminosa]
+    banner: "O Reino dos Céus"
+    subtitle: "O segundo arquivo perdido"
+    desc: |
+      Monte a moldura e despeje um §eBalde de Água§r dentro dela: a água vira um portal azul.
+      Atravesse!
+
+      Bem-vindo(a) ao §bAether§r: ilhas de grama clara, nuvens sólidas e uma música que eu
+      poderia ouvir para sempre. Na primeira visita você ganha um §eBook of Lore§r e um
+      §eGolden Parachute§r de presente.
+
+      §cAtenção:§r ferramentas da Superfície funcionam mal com os blocos daqui. Comece pela
+      madeira Skyroot.
+    tasks:
+      - visit: {dim: 4, name: "Aether"}
+    rewards:
+      - xp: 8
+      - loot: raro
+
+  - id: presentes_chegada
+    title: "Presentes de Boas-Vindas"
+    deps: [portal_aether]
+    desc: |
+      O §eBook of Lore§r é a enciclopédia do Aether: coloque qualquer item dele no livro e leia
+      a descrição. O §eGolden Parachute§r abre sozinho quando você cai de muito alto (20 usos).
+
+      Tenha os dois no inventário. §aDica:§r se perder o livro, faça outro com Livro + Fragmento
+      de Ambrósio (ou Sílex, ou Pó de Pedra Luminosa).
+    tasks:
+      - get: [aether_legacy:lore_book, aether_legacy:golden_parachute]
+    rewards:
+      - xp: 3
+      - item: minecraft:bread x8
+
+  - id: livro_no_livro
+    title: "Lore-cepção!"
+    type: optional
+    deps: [presentes_chegada]
+    desc: |
+      Uma piada interna do Aether: o que acontece se você colocar um Book of Lore dentro de
+      outro Book of Lore? Faça um segundo livro e descubra (vale uma conquista!).
+    tasks:
+      - get: aether_legacy:lore_book x2
+    rewards:
+      - loot: comum
+
+  - id: paraquedas_frio
+    title: "Paraquedas de Nuvem"
+    deps: [portal_aether]
+    desc: |
+      As §eCold Aerclouds§r (nuvens brancas) são sólidas o suficiente para segurar quedas. Quatro
+      delas em quadrado viram um §eCold Parachute§r de um uso.
+
+      Faça um. Nunca é demais ter um paraquedas a mais no céu.
+    tasks:
+      - craft: aether_legacy:cold_parachute
+    rewards:
+      - xp: 3
+      - item: aether_legacy:aercloud x8
+
+  - id: quicksoil
+    title: "Areia Escorregadia"
+    deps: [portal_aether]
+    desc: |
+      A §eQuicksoil§r fica nas bordas das ilhas e é tão escorregadia que você desliza... direto
+      para o vazio. Cuidado ao coletá-la!
+
+      Junte 8 (uma pá ajuda). Mais tarde, o Altar a transforma em vidro.
+    tasks:
+      - get: aether_legacy:quicksoil x8
+    rewards:
+      - xp: 3
+      - item: aether_legacy:aercloud x4
+
+  # ------------------------------------------------------------------ Skyroot
+  - id: tronco_skyroot
+    title: "Madeira do Céu"
+    type: main
+    deps: [portal_aether]
+    desc: |
+      As árvores do Aether dão §eSkyroot Logs§r. Cada tronco vira 4 Skyroot Planks, e as tábuas
+      fazem bancada, baú, porta e escada como a madeira normal.
+
+      Corte 16 troncos. Os Golden Oaks (árvores douradas) também dão Skyroot quando cortados
+      com machado comum.
+    tasks:
+      - get: aether_legacy:skyroot_log x16
+    rewards:
+      - xp: 5
+      - choice: ["aether_legacy:skyroot_planks x16", "minecraft:apple x8", "minecraft:torch x32"]
+
+  - id: gravetos_skyroot
+    title: "Gravetos de Skyroot"
+    type: main
+    deps: [tronco_skyroot]
+    desc: |
+      Todas as ferramentas do Aether usam §eSkyroot Sticks§r como cabo (2 tábuas de Skyroot = 4
+      gravetos). Eles também contam como graveto comum em receitas de outros mods.
+
+      Faça um lote.
+    tasks:
+      - craft: aether_legacy:skyroot_stick
+    rewards:
+      - xp: 5
+      - choice: ["aether_legacy:skyroot_planks x16", "aether_legacy:skyroot_log x8", "minecraft:string x8"]
+
+  - id: picareta_skyroot
+    title: "Picareta de Skyroot"
+    type: main
+    deps: [gravetos_skyroot]
+    desc: |
+      As ferramentas de Skyroot são fracas, mas têm um truque: §edobram os drops§r. A picareta
+      dobra Holystone e Ambrosium; o machado dobra troncos; a pá dobra terra e Quicksoil; a
+      espada dobra os drops de criaturas.
+
+      Faça a picareta (formato normal, tábuas de Skyroot + gravetos de Skyroot).
+    tasks:
+      - craft: aether_legacy:skyroot_pickaxe
+    rewards:
+      - xp: 5
+      - choice: ["aether_legacy:skyroot_planks x16", "aether_legacy:skyroot_stick x8", "minecraft:cooked_porkchop x8"]
+
+  - id: ferramentas_skyroot
+    title: "O Kit de Skyroot"
+    deps: [picareta_skyroot]
+    desc: |
+      Complete o conjunto inicial: §eSkyroot Axe§r, §eShovel§r e §eSword§r. Usar a espada de
+      Skyroot nos animais do Aether rende o dobro de comida.
+
+      Faça as três.
+    tasks:
+      - get: [aether_legacy:skyroot_axe, aether_legacy:skyroot_shovel, aether_legacy:skyroot_sword]
+    rewards:
+      - xp: 3
+      - item: aether_legacy:skyroot_log x8
+
+  - id: balde_skyroot
+    title: "Balde de Skyroot"
+    deps: [gravetos_skyroot]
+    desc: |
+      Sem ferro por aqui? Sem problema: 3 tábuas de Skyroot em "V" fazem um §eSkyroot Bucket§r.
+      Ele carrega água e leite, e também §eveneno§r de Aechor Plant (mais sobre isso depois).
+
+      Faça um balde.
+    tasks:
+      - craft: aether_legacy:skyroot_bucket
+    rewards:
+      - xp: 3
+      - item: aether_legacy:skyroot_planks x8
+
+  - id: cama_skyroot
+    title: "Dormir nas Nuvens"
+    type: optional
+    deps: [tronco_skyroot]
+    desc: |
+      A §eSkyroot Bed§r (tábuas de Skyroot + lã) só deixa dormir à noite, mas durante o dia
+      serve para marcar o seu ponto de renascimento no Aether. Muito útil se você cair!
+
+      Faça uma cama.
+    tasks:
+      - craft: aether_legacy:skyroot_bed_item
+    rewards:
+      - loot: comum
+
+  - id: estante_skyroot
+    title: "Estante de Skyroot"
+    type: optional
+    deps: [tronco_skyroot]
+    desc: |
+      Uma biblioteca nas nuvens? Agora você está falando a minha língua! A §eSkyroot
+      Bookshelf§r funciona como estante normal para a mesa de encantamento.
+
+      Faça uma (tábuas de Skyroot + livros).
+    tasks:
+      - craft: aether_legacy:skyroot_bookshelf
+    rewards:
+      - loot: comum
+
+  - id: mudas_aether
+    title: "Mudas do Céu"
+    deps: [tronco_skyroot]
+    desc: |
+      As folhas de Skyroot soltam §eSkyroot Saplings§r; as dos Golden Oaks soltam §eGolden Oak
+      Saplings§r, que crescem em árvores enormes e douradas (aceitam farinha de osso).
+
+      Junte uma de cada. Elas só crescem em grama ou terra do Aether.
+    tasks:
+      - get: [aether_legacy:skyroot_sapling, aether_legacy:golden_oak_sapling]
+    rewards:
+      - xp: 3
+      - item: minecraft:dye:15 x8
+
+  # ------------------------------------------------------------------ Holystone e Ambrosium
+  - id: holystone
+    title: "A Pedra Sagrada"
+    type: main
+    deps: [picareta_skyroot]
+    desc: |
+      A §eHolystone§r é a rocha nativa do Aether: o "pedregulho" daqui. Com picareta de
+      Skyroot ela sai em dobro.
+
+      Junte 16. A versão com musgo (Mossy Holystone) costuma ficar perto das masmorras:
+      fique de olho!
+    tasks:
+      - get: aether_legacy:holystone x16
+    rewards:
+      - xp: 5
+      - choice: ["aether_legacy:skyroot_stick x8", "minecraft:torch x32", "minecraft:cooked_beef x8"]
+
+  - id: picareta_holystone
+    title: "Ferramentas de Pedra Sagrada"
+    type: main
+    deps: [holystone]
+    desc: |
+      As ferramentas de Holystone são o "tier de pedra" do Aether, com um bônus: de vez em quando
+      soltam §eAmbrosium Shards§r enquanto você trabalha.
+
+      Faça a §eHolystone Pickaxe§r. Ela já consegue minerar Zanite!
+    tasks:
+      - craft: aether_legacy:holystone_pickaxe
+    rewards:
+      - xp: 5
+      - choice: ["aether_legacy:holystone x16", "aether_legacy:skyroot_stick x8", "minecraft:bread x12"]
+
+  - id: ferramentas_holystone
+    title: "O Kit de Holystone"
+    deps: [picareta_holystone]
+    desc: |
+      Complete com §eHolystone Axe§r, §eShovel§r e §eSword§r. A pá de Holystone minera Quicksoil;
+      a espada também pode soltar Ambrosium ao atacar.
+
+      Faça as três.
+    tasks:
+      - get: [aether_legacy:holystone_axe, aether_legacy:holystone_shovel, aether_legacy:holystone_sword]
+    rewards:
+      - xp: 3
+      - item: aether_legacy:holystone x16
+
+  - id: tijolos_holystone
+    title: "Tijolos Sagrados"
+    type: optional
+    deps: [holystone]
+    desc: |
+      Quatro Holystones em quadrado viram 4 §eHolystone Bricks§r, mais resistentes e bonitos.
+      Ótimos para a sua primeira base nas nuvens.
+
+      Junte 16.
+    tasks:
+      - get: aether_legacy:holystone_brick x16
+    rewards:
+      - loot: comum
+
+  - id: ambrosio
+    title: "Fragmentos de Ambrósio"
+    type: main
+    deps: [picareta_skyroot]
+    desc: |
+      O §eAmbrosium§r é o "carvão" do Aether: minério comum que solta fragmentos dourados. Os
+      fragmentos são combustível do Altar e, se comidos, curam um pouquinho de vida.
+
+      Junte 8 §eAmbrosium Shards§r (picareta de Skyroot dobra os drops).
+    tasks:
+      - get: aether_legacy:ambrosium_shard x8
+    rewards:
+      - xp: 5
+      - choice: ["aether_legacy:skyroot_stick x8", "minecraft:coal x8", "aether_legacy:blueberry x8"]
+
+  - id: tocha_ambrosio
+    title: "Tocha de Ambrósio"
+    deps: [ambrosio]
+    desc: |
+      A luz do Aether: §eAmbrosium Shard + Skyroot Stick§r = 2 Ambrosium Torches. Elas também são
+      o combustível do Incubator.
+
+      Faça um lote de tochas.
+    tasks:
+      - craft: aether_legacy:ambrosium_torch
+    rewards:
+      - xp: 3
+      - item: aether_legacy:ambrosium_shard x4
+
+  - id: frutas_azuis
+    title: "Frutas Azuis"
+    deps: [portal_aether]
+    desc: |
+      Os §eBerry Bushes§r espalhados pelas ilhas dão §eBlue Berries§r: comida fraquinha, mas
+      fácil. O arbusto vira um caule e volta a dar frutas com o tempo.
+
+      §aTruque:§r use um Ambrosium Shard (botão direito) na grama do Aether para criar
+      §eEnchanted Aether Grass§r; arbustos plantados nela dão o dobro de frutas.
+      Colete 12.
+    tasks:
+      - get: aether_legacy:blueberry x12
+    rewards:
+      - xp: 3
+      - item: aether_legacy:ambrosium_shard x2
+
+  - id: primeiros_passos_ceus
+    title: "Morador das Nuvens"
+    type: milestone
+    deps: [ferramentas_holystone, tocha_ambrosio]
+    banner: "Morador das Nuvens"
+    subtitle: "Skyroot, Holystone e Ambrósio"
+    desc: |
+      Ferramentas de madeira e pedra do céu, tochas de ambrósio, comida no bolso... você já sabe
+      viver aqui em cima!
+
+      Agora vem a primeira gema de verdade: a §dZanite§r, o "ferro" do Aether. Depois dela,
+      as máquinas do céu: o Altar of Light, o Freezer e o Incubator.
+
+      §aDica de Akasha:§r marque o portal com tochas de ambrósio. Ilhas se parecem muito umas
+      com as outras.
+    tasks:
+      - check
+    rewards:
+      - xp: 10
+      - kit: {name: "Kit do Morador das Nuvens", items: ["aether_legacy:ambrosium_shard x16", "aether_legacy:blueberry x16", "aether_legacy:cold_parachute x2", "aether_legacy:skyroot_planks x32"]}
+      - loot: raro
+
+  # ------------------------------------------------------------------ Zanite
+  - id: zanite
+    title: "Gemas de Zanite"
+    type: main
+    deps: [picareta_holystone]
+    desc: |
+      Brilho roxo na pedra? É §eZanite Ore§r, um pouco rara. Ela só solta a gema com picareta de
+      Holystone (ou melhor).
+
+      Junte 8 §eZanite Gemstones§r: elas são o "ferro" do céu.
+    tasks:
+      - get: aether_legacy:zanite_gemstone x8
+    rewards:
+      - xp: 5
+      - choice: ["aether_legacy:skyroot_stick x8", "aether_legacy:holystone x16", "aether_legacy:ambrosium_torch x16"]
+
+  - id: picareta_zanite
+    title: "Picareta de Zanite"
+    type: main
+    deps: [zanite]
+    desc: |
+      As ferramentas de Zanite têm uma personalidade curiosa: §eficam mais rápidas quanto mais
+      gastas estão§r. Consertá-las (no Altar) as deixa lentas de novo.
+
+      Faça a §eZanite Pickaxe§r. Ela minera tudo que a de ferro minera, incluindo a Gravitite.
+    tasks:
+      - craft: aether_legacy:zanite_pickaxe
+    rewards:
+      - xp: 5
+      - choice: ["aether_legacy:zanite_gemstone x3", "aether_legacy:holystone x32", "minecraft:cooked_beef x12"]
+
+  - id: espada_zanite
+    title: "Espada de Zanite"
+    deps: [zanite]
+    desc: |
+      A §eZanite Sword§r começa com o dano de uma espada de madeira e vai subindo até o nível de
+      diamante conforme gasta. Uma espada que amadurece com você!
+
+      Faça uma.
+    tasks:
+      - craft: aether_legacy:zanite_sword
+    rewards:
+      - xp: 3
+      - item: aether_legacy:skyroot_stick x4
+
+  - id: ferramentas_zanite
+    title: "Machado e Pá de Zanite"
+    deps: [picareta_zanite]
+    desc: |
+      Complete as ferramentas: §eZanite Axe§r e §eZanite Shovel§r. O machado de Zanite tem um
+      bônus importante: ele arranca §eGolden Amber§r dos troncos de Golden Oak.
+
+      Faça os dois.
+    tasks:
+      - get: [aether_legacy:zanite_axe, aether_legacy:zanite_shovel]
+    rewards:
+      - xp: 3
+      - item: aether_legacy:zanite_gemstone x2
+
+  - id: armadura_zanite
+    title: "Armadura de Zanite"
+    deps: [zanite]
+    desc: |
+      A armadura de Zanite segue a mesma lógica: §ea proteção aumenta conforme a durabilidade
+      cai§r. 24 gemas no total para as quatro peças.
+
+      Faça o conjunto completo.
+    tasks:
+      - get: [aether_legacy:zanite_helmet, aether_legacy:zanite_chestplate, aether_legacy:zanite_leggings, aether_legacy:zanite_boots]
+    rewards:
+      - xp: 3
+      - item: aether_legacy:ambrosium_shard x8
+
+  - id: luvas_zanite
+    title: "Luvas de Zanite"
+    deps: [armadura_zanite, acessorios]
+    desc: |
+      No Aether, os conjuntos de armadura têm uma quinta peça: as §eluvas§r, que ficam no
+      inventário de acessórios. 2 gemas (uma de cada lado) fazem as §eZanite Gloves§r.
+
+      Faça e equipe as luvas.
+    tasks:
+      - craft: aether_legacy:zanite_gloves
+    rewards:
+      - xp: 3
+      - item: aether_legacy:zanite_gemstone x2
+
+  - id: bloco_zanite
+    title: "Bloco de Zanite"
+    type: optional
+    deps: [zanite]
+    desc: |
+      Nove gemas formam um §eZanite Block§r, que serve de base para Sinalizadores e é lindo como
+      decoração.
+    tasks:
+      - craft: aether_legacy:zanite_block
+    rewards:
+      - loot: incomum
+
+  # ------------------------------------------------------------------ Máquinas do céu
+  - id: altar_luz
+    title: "Você Acredita em Magia?"
+    type: main
+    deps: [zanite]
+    desc: |
+      O §eAltar of Light§r é o encantador do Aether: 8 Holystones em volta de 1 Zanite Gemstone.
+      Ele funciona como uma fornalha, mas o combustível são §eAmbrosium Shards§r e, em vez de
+      cozinhar, ele "encanta" itens: transforma materiais e conserta ferramentas e armaduras.
+
+      Faça o altar. §aDica:§r um bloco de Enchanted Gravitite embaixo dele acelera muito o
+      processo.
+    tasks:
+      - craft: aether_legacy:enchanter
+    rewards:
+      - xp: 5
+      - choice: ["aether_legacy:ambrosium_shard x16", "aether_legacy:holystone x16", "aether_legacy:blueberry x16"]
+
+  - id: pedra_cura
+    title: "Pedra da Cura"
+    deps: [altar_luz]
+    desc: |
+      Coloque Holystone no Altar e saia uma §eHealing Stone§r: uma "pedra" comestível (de sabor
+      surpreendentemente suculento) que dá Regeneração.
+
+      Faça 4. Elas salvam vidas nas masmorras.
+    tasks:
+      - get: aether_legacy:healing_stone x4
+    rewards:
+      - xp: 3
+      - item: aether_legacy:ambrosium_shard x8
+
+  - id: fruta_encantada
+    title: "Frutas Encantadas"
+    deps: [altar_luz, frutas_azuis]
+    desc: |
+      Uma Blue Berry no Altar vira uma §eEnchanted Berry§r, que mata muito mais a fome. É a
+      melhor comida simples do Aether.
+
+      Faça 8.
+    tasks:
+      - get: aether_legacy:enchanted_blueberry x8
+    rewards:
+      - xp: 3
+      - item: aether_legacy:blueberry x16
+
+  - id: vidro_quicksoil
+    title: "Vidro de Quicksoil"
+    type: optional
+    deps: [altar_luz, quicksoil]
+    desc: |
+      Quicksoil no Altar vira §eQuicksoil Glass§r, um vidro levemente escorregadio e tingido de
+      dourado. Uma janela com vista para as nuvens!
+
+      Faça 8.
+    tasks:
+      - get: aether_legacy:quicksoil_glass x8
+    rewards:
+      - loot: comum
+
+  - id: conserto_altar
+    title: "Consertando no Altar"
+    type: info
+    deps: [altar_luz]
+    desc: |
+      Um segredo útil: o Altar of Light §econserta§r ferramentas e armaduras do Aether
+      (Skyroot, Holystone, Zanite, Gravitite) e também ferramentas, armaduras e arcos da
+      Superfície. Basta colocar o item danificado e alimentar com Ambrosium.
+
+      Lembre: ferramentas de Zanite consertadas voltam a ficar lentas.
+    tasks:
+      - check
+    rewards:
+      - xp: 2
+
+  - id: icestone
+    title: "Pedra de Gelo"
+    deps: [picareta_holystone]
+    desc: |
+      A §eIcestone§r é uma pedra comum que congela a água e a lava em volta dela. Ela é o
+      combustível do Freezer.
+
+      Junte 8.
+    tasks:
+      - get: aether_legacy:icestone x8
+    rewards:
+      - xp: 3
+      - item: aether_legacy:holystone x16
+
+  - id: congelador
+    title: "O Freezer"
+    type: main
+    deps: [icestone, altar_luz]
+    desc: |
+      O §eFreezer§r é o "contrário" do Altar: congela coisas usando Icestone como combustível.
+      Receita: Holystone em cima e nos lados, Icestone no centro e 3 tábuas de Skyroot embaixo.
+
+      Ele transforma nuvens brancas em azuis, folhas em folhas de cristal, baldes de água em
+      gelo, gelo em gelo compactado e até anéis e pingentes em versões de gelo.
+      §aDica:§r Icestone embaixo do Freezer acelera o processo.
+    tasks:
+      - craft: aether_legacy:freezer
+    rewards:
+      - xp: 5
+      - choice: ["aether_legacy:icestone x8", "aether_legacy:aercloud x16", "aether_legacy:holystone x32"]
+
+  - id: nuvem_azul
+    title: "Ao Infinito e Além!"
+    deps: [congelador]
+    desc: |
+      Uma Cold Aercloud congelada no Freezer vira §eBlue Aercloud§r: uma nuvem azul que te
+      arremessa para o alto quando você pisa nela. Elas também aparecem perto do chão das ilhas.
+
+      Junte 4 nuvens azuis e quique em uma!
+    tasks:
+      - get: aether_legacy:aercloud:1 x4
+    rewards:
+      - xp: 3
+      - item: aether_legacy:aercloud x8
+
+  - id: folhas_cristal
+    title: "Folhas de Cristal"
+    type: optional
+    deps: [congelador]
+    desc: |
+      Folhas de Skyroot (ou de Golden Oak) congeladas viram §eCrystal Leaves§r, as mesmas das
+      árvores de cristal que dão maçãs brancas. Lindas para decorar.
+
+      Faça 8.
+    tasks:
+      - get: aether_legacy:crystal_leaves x8
+    rewards:
+      - loot: comum
+
+  - id: incubadora
+    title: "A Incubadora"
+    type: main
+    deps: [tocha_ambrosio, holystone]
+    desc: |
+      O §eIncubator§r choca ovos de Moa. Receita: 8 Holystones em volta de uma Ambrosium Torch.
+      O combustível são as próprias §eAmbrosium Torches§r.
+
+      O processo é demorado, mas o resultado (uma Moa só sua) vale cada tocha.
+    tasks:
+      - craft: aether_legacy:incubator
+    rewards:
+      - xp: 5
+      - choice: ["aether_legacy:ambrosium_torch x16", "aether_legacy:aechor_petal x4", "aether_legacy:holystone x32"]
+
+  - id: discos_aether
+    title: "Músicas do Céu"
+    type: optional
+    deps: [altar_luz]
+    desc: |
+      Sabia que o Altar também "encanta" discos de música? Discos comuns viram discos do Aether,
+      como o §eAether Tune§r e o §eLegacy§r. E o disco da Valquíria (Ascending Dawn), congelado
+      no Freezer, vira §eWelcoming Skies§r.
+
+      Tenha qualquer disco do Aether. (Sim, eu danço quando ninguém está vendo.)
+    tasks:
+      - one_of: [aether_legacy:aether_tune, aether_legacy:legacy, aether_legacy:welcoming_skies, aether_legacy:ascending_dawn]
+    rewards:
+      - loot: incomum
+
+  - id: oficina_celeste
+    title: "Oficina Celeste"
+    type: milestone
+    deps: [altar_luz, congelador, incubadora]
+    banner: "Oficina Celeste"
+    subtitle: "Altar, Freezer e Incubator"
+    desc: |
+      Altar para encantar, Freezer para congelar, Incubator para chocar: a sua oficina nas
+      nuvens está completa!
+
+      Com isso você já pode chegar ao metal mais raro do céu, a §dGravitite§r, que precisa do
+      Altar para ganhar vida. E as masmorras... ah, as masmorras estão esperando.
+
+      As Valquírias, lá na Masmorra de Prata, vigiavam os Lich do Crepúsculo e os Faraós das
+      Areias. Elas devem saber de muita coisa.
+    tasks:
+      - check
+    rewards:
+      - xp: 10
+      - kit: {name: "Kit da Oficina Celeste", items: ["aether_legacy:ambrosium_shard x32", "aether_legacy:icestone x16", "aether_legacy:ambrosium_torch x16", "aether_legacy:zanite_gemstone x4"]}
+      - loot: raro
+
+  # ------------------------------------------------------------------ Gravitite
+  - id: minerio_gravitite
+    title: "O Minério que Flutua"
+    type: main
+    deps: [picareta_zanite]
+    desc: |
+      A §eGravitite Ore§r é o minério mais raro do Aether, quase sempre perto da parte de baixo
+      das ilhas. Ela §eflutua para cima§r quando não há nada em cima dela!
+
+      Minere 4 blocos com a picareta de Zanite. §cCuidado:§r se você minerar o bloco de baixo,
+      ela pode subir e escapar.
+    tasks:
+      - get: aether_legacy:gravitite_ore x4
+    rewards:
+      - xp: 5
+      - choice: ["aether_legacy:ambrosium_shard x16", "aether_legacy:zanite_gemstone x3", "aether_legacy:healing_stone x2"]
+
+  - id: gravitite_encantada
+    title: "Gravitite Encantada"
+    type: main
+    deps: [minerio_gravitite, altar_luz]
+    desc: |
+      O minério de Gravitite no Altar vira §eEnchanted Gravitite§r, o material das ferramentas e
+      armaduras mais fortes do Aether. Um bloco dela, energizado com redstone, também flutua!
+
+      Faça 4 blocos de Enchanted Gravitite.
+    tasks:
+      - get: aether_legacy:enchanted_gravitite x4
+    rewards:
+      - xp: 5
+      - choice: ["aether_legacy:ambrosium_shard x16", "aether_legacy:skyroot_stick x8", "aether_legacy:enchanted_blueberry x8"]
+
+  - id: picareta_gravitite
+    title: "Rosa é o Novo Azul"
+    type: main
+    deps: [gravitite_encantada]
+    desc: |
+      A §eGravitite Pickaxe§r minera qualquer minério e tem um poder lindo: clique com o direito
+      num bloco de pedra e ele §elevita§r.
+
+      Faça a picareta (3 Enchanted Gravitite + 2 Skyroot Sticks).
+    tasks:
+      - craft: aether_legacy:gravitite_pickaxe
+    rewards:
+      - xp: 5
+      - choice: ["aether_legacy:gravitite_ore x2", "aether_legacy:zanite_gemstone x4", "aether_legacy:healing_stone x4"]
+
+  - id: espada_gravitite
+    title: "Espada de Gravitite"
+    deps: [gravitite_encantada]
+    desc: |
+      A §eGravitite Sword§r joga para o alto tudo o que acerta, causando dano de queda de
+      brinde. Funciona até com a espada recarregando!
+
+      Faça uma.
+    tasks:
+      - craft: aether_legacy:gravitite_sword
+    rewards:
+      - xp: 3
+      - item: aether_legacy:ambrosium_shard x8
+
+  - id: ferramentas_gravitite
+    title: "Machado e Pá de Gravitite"
+    deps: [picareta_gravitite]
+    desc: |
+      O §eGravitite Axe§r faz blocos de madeira levitarem (e tira Golden Amber dos Golden Oaks);
+      a §eGravitite Shovel§r faz terra e areia flutuarem.
+
+      Faça os dois.
+    tasks:
+      - get: [aether_legacy:gravitite_axe, aether_legacy:gravitite_shovel]
+    rewards:
+      - xp: 3
+      - item: aether_legacy:gravitite_ore x2
+
+  - id: armadura_gravitite
+    title: "Armadura de Gravitite"
+    deps: [gravitite_encantada]
+    desc: |
+      Com o conjunto completo de §eArmadura de Gravitite§r você ganha um §esuper pulo§r. Isso
+      muda completamente a forma de andar entre as ilhas.
+
+      Faça as quatro peças (são muitos blocos de Gravitite; paciência!).
+    tasks:
+      - get: [aether_legacy:gravitite_helmet, aether_legacy:gravitite_chestplate, aether_legacy:gravitite_leggings, aether_legacy:gravitite_boots]
+    rewards:
+      - xp: 3
+      - item: minecraft:golden_apple x2
+
+  - id: luvas_gravitite
+    title: "Luvas de Gravitite"
+    deps: [armadura_gravitite]
+    desc: |
+      Para o bônus do conjunto valer por completo, faltam as §eGravitite Gloves§r no espaço de
+      acessórios.
+
+      Faça as luvas.
+    tasks:
+      - craft: aether_legacy:gravitite_gloves
+    rewards:
+      - xp: 3
+      - item: aether_legacy:enchanted_blueberry x8
+
+  - id: mestre_gravitite
+    title: "Senhor da Gravidade"
+    type: milestone
+    deps: [picareta_gravitite, armadura_gravitite]
+    banner: "Senhor da Gravidade"
+    subtitle: "O metal mais raro do céu"
+    desc: |
+      Pedras que flutuam, inimigos voando, pulos enormes... a Gravitite é o metal que o Registro
+      usava para "levantar" as páginas do céu. Você agora domina o melhor equipamento que se
+      pode fabricar no Aether.
+
+      O resto só existe dentro das masmorras. Prontos(as) para a de Bronze?
+    tasks:
+      - check
+    rewards:
+      - xp: 10
+      - kit: {name: "Kit do Senhor da Gravidade", items: ["aether_legacy:enchanted_gravitite x2", "aether_legacy:healing_stone x8", "aether_legacy:golden_parachute", "minecraft:golden_apple x2"]}
+      - loot: raro
+
+  # ------------------------------------------------------------------ Natureza
+  - id: maca_branca
+    title: "A Maçã Branca"
+    deps: [portal_aether]
+    desc: |
+      As árvores de cristal (de folhas transparentes) dão §eWhite Apples§r: uma das poucas curas
+      para o veneno do Aether.
+
+      Colete 2 e guarde para quando algo te envenenar.
+    tasks:
+      - get: aether_legacy:white_apple x2
+    rewards:
+      - xp: 3
+      - item: aether_legacy:blueberry x8
+
+  - id: ambar_dourado
+    title: "Âmbar Dourado"
+    deps: [ferramentas_zanite]
+    desc: |
+      Os troncos de §eGolden Oak§r guardam esferas douradas de §eGolden Amber§r. Corte-os com
+      machado de Zanite, de Gravitite (ou de diamante) para que o âmbar saia junto.
+
+      Junte 6. Ele é o material dos dardos e dos atiradores de dardos.
+    tasks:
+      - get: aether_legacy:golden_amber x6
+    rewards:
+      - xp: 3
+      - item: aether_legacy:skyroot_stick x8
+
+  - id: paraquedas_dourado
+    title: "Paraquedas Dourado"
+    deps: [paraquedas_frio]
+    desc: |
+      As §eGolden Aerclouds§r ficam mais altas no céu e são raras. Quatro delas em quadrado
+      fazem um §eGolden Parachute§r de 20 usos: o melhor seguro contra quedas que existe.
+
+      Faça um.
+    tasks:
+      - craft: aether_legacy:golden_parachute
+    rewards:
+      - xp: 3
+      - item: aether_legacy:aercloud x8
+
+  - id: aerogel
+    title: "Aerogel"
+    type: optional
+    deps: [portal_aether]
+    desc: |
+      Lava não se comporta normalmente no clima do Aether: despejada aqui, ela vira §eAerogel§r,
+      um bloco translúcido e resistente a explosões.
+
+      Junte 8 (traga um balde de lava da Superfície).
+    tasks:
+      - get: aether_legacy:aerogel x8
+    rewards:
+      - loot: comum
+
+  - id: flores_aether
+    title: "Flores do Céu"
+    type: optional
+    deps: [portal_aether]
+    desc: |
+      As §ePurple Flowers§r viram corante roxo; as §eWhite Flowers§r têm um perfume incrível
+      (um bom presente para alguém especial).
+
+      Colete uma de cada.
+    tasks:
+      - get: [aether_legacy:purple_flower, aether_legacy:white_flower]
+    rewards:
+      - loot: comum
+
+  - id: planta_aechor
+    title: "A Planta Aechor"
+    deps: [portal_aether]
+    desc: |
+      Aquela flor enorme no chão não é decoração: é uma §eAechor Plant§r, que cospe espinhos
+      venenosos. Derrote 2 e recolha as §eAechor Petals§r, a comida favorita das Moas.
+
+      §cO veneno do Aether é perigoso:§r leve uma White Apple.
+    tasks:
+      - kill: {entity: "aether_legacy.aechor_plant", count: 2}
+      - get: aether_legacy:aechor_petal x2
+    rewards:
+      - xp: 3
+      - item: aether_legacy:white_apple
+
+  - id: balde_veneno
+    title: "Balde de Veneno"
+    deps: [planta_aechor, balde_skyroot]
+    desc: |
+      Use um Skyroot Bucket vazio numa Aechor Plant viva e você coleta o veneno dela: §eSkyroot
+      Poison Bucket§r. §cNão beba!§r Ele é ingrediente dos dardos venenosos.
+
+      Encha um balde.
+    tasks:
+      - get: aether_legacy:skyroot_bucket:2
+    rewards:
+      - xp: 3
+      - item: aether_legacy:skyroot_planks x8
+
+  - id: balde_remedio
+    title: "O Remédio"
+    deps: [balde_veneno, altar_luz]
+    desc: |
+      O que mata também cura: o balde de veneno, encantado no Altar, vira §eSkyroot Remedy
+      Bucket§r. Bebê-lo cura o veneno e te protege dele por um tempo.
+
+      Faça um.
+    tasks:
+      - get: aether_legacy:skyroot_bucket:3
+    rewards:
+      - xp: 3
+      - item: aether_legacy:white_apple x2
+
+  - id: swet
+    title: "Swets Pegajosos"
+    deps: [portal_aether]
+    desc: |
+      Os §eSwets§r são gosmas que tentam te engolir e te arrastar por aí. Derrote 3 e colete as
+      §eSwet Balls§r.
+
+      As bolas de Swet servem de adubo (fazem terra do Aether virar grama) e, com linha, viram
+      uma guia (Lead).
+    tasks:
+      - kill: {entity: "aether_legacy.swet", count: 3}
+      - get: aether_legacy:swet_ball x2
+    rewards:
+      - xp: 3
+      - item: minecraft:string x4
+
+  # ------------------------------------------------------------------ Criaturas e Moas
+  - id: fauna_ceus
+    title: "A Fauna dos Céus"
+    type: info
+    deps: [portal_aether]
+    desc: |
+      Os animais do Aether são uma fofura:
+      §ePhyg§r: porco com asas (sele e voe!). §eFlying Cow§r: vaca com asas, também montável.
+      §eSheepuff§r: ovelha que, com lã demais, sai flutuando. §eAerbunny§r: coelho que sobe na
+      sua cabeça e te faz cair devagar. §eAerwhale§r: baleias voando entre as ilhas. §eMoa§r: a
+      ave gigante que você vai chocar e montar.
+
+      Os perigosos: Zephyrs (bolas de neve que empurram), Cockatrices (veneno), Whirlwinds
+      (redemoinhos), Swets, Aechor Plants e, nas masmorras, Sentries e Mimics.
+    tasks:
+      - check
+    rewards:
+      - xp: 2
+
+  - id: phyg_voador
+    title: "Quando os Porcos Voam"
+    type: optional
+    deps: [fauna_ceus]
+    desc: |
+      Coloque uma sela num §ePhyg§r e suba nele: ele voa! (Conquista "When Phygs fly".)
+
+      Tenha uma Sela e marque quando tiver voado. A Flying Cow funciona do mesmo jeito.
+    tasks:
+      - get: minecraft:saddle
+      - check
+    rewards:
+      - loot: comum
+
+  - id: zephyr
+    title: "Zephyrs"
+    deps: [fauna_ceus]
+    desc: |
+      Os §eZephyrs§r são nuvens com cara de mau que cospem bolas de neve. O dano é pequeno, mas o
+      empurrão pode te jogar para fora da ilha!
+
+      Derrote 3. Lute longe das bordas (ou com Sentry Boots e paraquedas no inventário).
+    tasks:
+      - kill: {entity: "aether_legacy.zephyr", count: 3}
+    rewards:
+      - xp: 3
+      - item: aether_legacy:cold_parachute
+
+  - id: cockatrice
+    title: "Cockatrices"
+    deps: [fauna_ceus]
+    desc: |
+      As §eCockatrices§r são aves agressivas que disparam agulhas venenosas e aparecem quando
+      escurece. Derrote 2.
+
+      Leve White Apples ou um balde de remédio.
+    tasks:
+      - kill: {entity: "aether_legacy.cockatrice", count: 2}
+    rewards:
+      - xp: 3
+      - item: minecraft:feather x8
+
+  - id: ovo_moa
+    title: "Um Ovo de Moa"
+    type: main
+    deps: [incubadora, fauna_ceus]
+    desc: |
+      As §eMoas§r selvagens botam ovos de vez em quando. A cor do ovo é a cor da Moa que o
+      botou: Azul (3 pulos no ar, a mais comum), Laranja (2 pulos, muito rápida), Branca (4
+      pulos) e Preta (8 pulos, a mais rara!).
+
+      Encontre um ovo de Moa de qualquer cor.
+    tasks:
+      - get: aether_legacy:moa_egg
+    rewards:
+      - xp: 5
+      - choice: ["aether_legacy:aechor_petal x8", "aether_legacy:ambrosium_torch x16", "aether_legacy:enchanted_blueberry x8"]
+
+  - id: chocar_moa
+    title: "Agora Você é Família"
+    deps: [ovo_moa]
+    desc: |
+      Coloque o ovo no Incubator com Ambrosium Torches e espere. Quando o filhote nascer, dê a
+      ele §eAechor Petals§r até virar adulto. Uma Moa criada por você pode ser montada e pula
+      no ar várias vezes.
+
+      Marque quando sua Moa tiver nascido. (Conquista "Now you're family".)
+    tasks:
+      - get: aether_legacy:aechor_petal x4
+      - check
+    rewards:
+      - xp: 3
+      - item: aether_legacy:aechor_petal x8
+
+  - id: cajado_natureza
+    title: "Cajado da Natureza"
+    deps: [chocar_moa]
+    desc: |
+      O §eNature Staff§r (Zanite + Skyroot Stick) dá ordens às suas Moas: com ele, elas sentam e
+      ficam esperando no lugar.
+
+      Faça um.
+    tasks:
+      - craft: aether_legacy:nature_staff
+    rewards:
+      - xp: 3
+      - item: aether_legacy:aechor_petal x4
+
+  - id: moa_negra
+    title: "A Moa Negra"
+    type: optional
+    deps: [ovo_moa]
+    desc: |
+      A §eBlack Moa§r é a mais rara: 8 pulos no ar! Ache um §eBlack Moa Egg§r.
+    tasks:
+      - get: "aether_legacy:moa_egg {typeId:2}"
+        nbt: true
+    rewards:
+      - loot: incomum
+
+  # ------------------------------------------------------------------ Dardos
+  - id: dardo_dourado
+    title: "Dardos Dourados"
+    deps: [ambar_dourado]
+    desc: |
+      Os §eGolden Darts§r são a munição do Aether: Pena + Skyroot Stick + Golden Amber, em
+      coluna.
+
+      Faça um lote.
+    tasks:
+      - craft: aether_legacy:dart
+    rewards:
+      - xp: 3
+      - item: minecraft:feather x8
+
+  - id: atirador_dardo
+    title: "Atirador de Dardos"
+    deps: [dardo_dourado]
+    desc: |
+      O §eGolden Dart Shooter§r (Golden Amber + 2 tábuas de Skyroot) dispara Golden Darts. É
+      silencioso e preciso.
+
+      Faça um atirador.
+    tasks:
+      - craft: aether_legacy:dart_shooter
+    rewards:
+      - xp: 3
+      - item: aether_legacy:golden_amber x2
+
+  - id: dardo_veneno
+    title: "Dardos Venenosos"
+    type: optional
+    deps: [atirador_dardo, balde_veneno]
+    desc: |
+      8 Golden Darts em volta de um Skyroot Poison Bucket = 8 §ePoison Darts§r. O atirador comum
+      + balde de veneno vira o §ePoison Dart Shooter§r.
+
+      Faça os dardos venenosos.
+    tasks:
+      - get: aether_legacy:dart:1 x8
+    rewards:
+      - loot: incomum
+
+  - id: dardo_encantado
+    title: "Dardos Encantados"
+    type: optional
+    deps: [atirador_dardo, altar_luz]
+    desc: |
+      No Altar, Golden Darts viram §eEnchanted Darts§r (os mais fortes) e o atirador dourado vira
+      o §eEnchanted Dart Shooter§r.
+
+      Faça um Enchanted Dart Shooter.
+    tasks:
+      - get: aether_legacy:dart_shooter:2
+    rewards:
+      - loot: incomum
+
+  # ------------------------------------------------------------------ Acessórios
+  - id: acessorios
+    title: "O Inventário de Acessórios"
+    type: info
+    deps: [portal_aether]
+    desc: |
+      O Aether adiciona um §einventário de acessórios§r (procure o botão na tela do inventário):
+      espaços para luvas, anéis, pingentes e capas.
+
+      §eLuvas§r completam os conjuntos de armadura (sem elas o bônus do conjunto não vale);
+      §eanéis e pingentes§r dão efeitos (os de Zanite aceleram a mineração, os de gelo congelam
+      água e lava sob seus pés); §ecapas§r dão poderes (a Swet Cape faz os Swets ficarem
+      amigos, a Invisibility Cloak te deixa invisível...).
+    tasks:
+      - check
+    rewards:
+      - xp: 2
+
+  - id: primeiras_luvas
+    title: "Luvas de Viajante"
+    deps: [acessorios]
+    desc: |
+      Comece com o básico: luvas de Couro, Ferro, Ouro ou Diamante (2 itens, um de cada lado).
+      Elas completam os conjuntos de armadura da Superfície.
+
+      Faça qualquer par.
+    tasks:
+      - one_of: [aether_legacy:leather_gloves, aether_legacy:iron_gloves, aether_legacy:golden_gloves, aether_legacy:diamond_gloves]
+    rewards:
+      - xp: 3
+      - item: minecraft:leather x4
+
+  - id: pingente
+    title: "Pingentes"
+    deps: [acessorios]
+    desc: |
+      Os pingentes de §eFerro§r e de §eOuro§r (4 lingotes em losango com uma linha no centro de
+      baixo) são enfeites... até você levá-los ao Freezer.
+
+      Faça um pingente de Ferro ou de Ouro.
+    tasks:
+      - one_of: [aether_legacy:iron_pendant, aether_legacy:golden_pendant]
+    rewards:
+      - xp: 3
+      - item: minecraft:iron_ingot x4
+
+  - id: anel_gelo
+    title: "Gelo nos Pés"
+    type: optional
+    deps: [pingente, congelador]
+    desc: |
+      Um pingente (ou anel) de ferro ou ouro no Freezer vira §eIce Pendant§r (ou Ice Ring): com
+      ele equipado, você congela água e lava ao andar por cima. Atravessar lagos de lava nunca
+      foi tão elegante.
+
+      Faça um item de gelo.
+    tasks:
+      - one_of: [aether_legacy:ice_pendant, aether_legacy:ice_ring]
+    rewards:
+      - loot: incomum
+
+  - id: capa_branca
+    title: "Capa Branca"
+    type: optional
+    deps: [acessorios]
+    desc: |
+      Seis lãs brancas fazem uma §eWhite Cape§r. Só estilo, mas que estilo! As capas coloridas e
+      as mágicas aparecem nas masmorras.
+    tasks:
+      - craft: aether_legacy:white_cape
+    rewards:
+      - loot: comum
+
+  # ------------------------------------------------------------------ Masmorra de Bronze
+  - id: masmorra_bronze
+    title: "A Masmorra de Bronze"
+    type: main
+    deps: [mestre_gravitite]
+    desc: |
+      Dentro de algumas ilhas há salas de §eCarved Stone§r: a §eMasmorra de Bronze§r. Ela é
+      guardada por §eSentries§r, cubos que pulam em você e explodem. Alguns blocos de pedra são
+      armadilhas que liberam mais Sentries.
+
+      Ache a masmorra e derrote 3 Sentries. §aDica:§r os blocos da masmorra são inquebráveis
+      até o chefe cair; entre pela porta.
+    tasks:
+      - kill: {entity: "aether_legacy.sentry", count: 3}
+    rewards:
+      - xp: 5
+      - choice: ["aether_legacy:healing_stone x4", "aether_legacy:enchanted_blueberry x8", "minecraft:golden_apple x2"]
+
+  - id: mimico
+    title: "Isso Não é um Baú"
+    type: optional
+    deps: [masmorra_bronze]
+    desc: |
+      Nas masmorras de Bronze e Prata, alguns baús são §eMimics§r: abra e um monstro de dentes
+      pula em você. Os baús de verdade guardam comida, acessórios e ferramentas.
+
+      Derrote um Mimic. (Desculpa pelo susto. Eu também levei.)
+    tasks:
+      - kill: {entity: "aether_legacy.mimic", count: 1}
+    rewards:
+      - loot: incomum
+
+  - id: slider
+    title: "Como um Chefão!"
+    type: boss
+    deps: [masmorra_bronze]
+    banner: "O Slider foi derrotado!"
+    subtitle: "A Masmorra de Bronze está livre"
+    task_logic: OR
+    desc: |
+      No centro da masmorra dorme o §eSlider§r, um bloco de pedra gigante e vivo. Ele desliza em
+      linha reta e esmaga tudo pelo caminho.
+
+      §cSó picaretas machucam o Slider§r (espadas não adiantam: ele mesmo avisa). Use a melhor
+      picareta que tiver, ataque e saia da frente quando ele "carregar" o deslize. Quando ele
+      ficar vermelho, está furioso e mais rápido.
+
+      Ele deixa a §eBronze Key§r, que abre o baú do tesouro.
+    tasks:
+      - kill: {entity: "aether_legacy.slider", count: 1}
+      - get: aether_legacy:dungeon_key
+    rewards:
+      - xp: 10
+      - loot: epico
+
+  - id: chave_bronze
+    title: "A Chave de Bronze"
+    type: main
+    deps: [slider]
+    desc: |
+      Use a §eBronze Key§r no Treasure Chest da sala do chefe e o tesouro da masmorra salta para
+      fora. Qualquer chave abre qualquer baú de tesouro, mas o saque depende da masmorra.
+
+      Guarde a chave (ou use-a já, e marque esta quest antes).
+    tasks:
+      - get: aether_legacy:dungeon_key
+    rewards:
+      - xp: 5
+      - choice: ["aether_legacy:enchanted_gravitite", "aether_legacy:healing_stone x6", "minecraft:golden_apple x2"]
+
+  - id: botas_sentinela
+    title: "Botas de Sentinela"
+    deps: [chave_bronze]
+    desc: |
+      As §eSentry Boots§r anulam o dano de queda: você pode pular de qualquer altura. No Aether,
+      isso é praticamente um superpoder.
+
+      Encontre um par no tesouro de Bronze.
+    tasks:
+      - get: aether_legacy:sentry_boots
+    rewards:
+      - xp: 3
+      - item: aether_legacy:cold_parachute x2
+
+  - id: tesouro_bronze
+    title: "O Tesouro de Bronze"
+    type: optional
+    deps: [chave_bronze]
+    desc: |
+      O tesouro de Bronze guarda armas lendárias: a §eFlaming Sword§r (incendeia e faz animais
+      soltarem carne assada), o §eHammer of Notch§r (dispara projéteis), o §ePhoenix Bow§r
+      (flechas de fogo), o §eCloud Staff§r (invoca nuvens que atiram), as §eLightning Knives§r,
+      o §eShield of Repulsion§r, a §eValkyrie Lance§r e a §eAgility Cape§r.
+
+      Tenha qualquer um desses tesouros.
+    tasks:
+      - one_of: [aether_legacy:flaming_sword, aether_legacy:notch_hammer, aether_legacy:phoenix_bow, aether_legacy:cloud_staff, aether_legacy:lightning_knife, aether_legacy:repulsion_shield, aether_legacy:valkyrie_lance, aether_legacy:agility_cape]
+    rewards:
+      - loot: incomum
+
+  - id: gomas_swet
+    title: "Gomas de Swet"
+    type: optional
+    deps: [masmorra_bronze]
+    desc: |
+      As §eGummy Swets§r (azuis ou douradas) enchem a fome de uma vez: perfeitas para lutas de
+      chefe. Aparecem nos baús das masmorras de Bronze e Prata.
+
+      Junte 2.
+    tasks:
+      - get: aether_legacy:gummy_swet:* x2
+    rewards:
+      - loot: comum
+
+  - id: capa_swet
+    title: "Amigo dos Swets"
+    type: optional
+    deps: [masmorra_bronze]
+    desc: |
+      Com a §eSwet Cape§r equipada, os Swets ficam amigáveis e você pode montá-los. Ela é um
+      achado comum nos baús de Bronze.
+    tasks:
+      - get: aether_legacy:swet_cape
+    rewards:
+      - loot: comum
+
+  # ------------------------------------------------------------------ Masmorra de Prata
+  - id: valquirias
+    title: "As Valquírias"
+    type: main
+    deps: [chave_bronze]
+    desc: |
+      Sobre leitos de nuvens, entre pilares de pedra angelical, fica a §eMasmorra de Prata§r: o
+      santuário onde as §eValquírias§r descansam. Elas falam com você antes de lutar; aceite o
+      desafio.
+
+      Derrote 3 Valquírias. §cElas teleportam e batem forte§r: cuidado com as bordas das
+      nuvens.
+    tasks:
+      - kill: {entity: "aether_legacy.valkyrie", count: 3}
+    rewards:
+      - xp: 5
+      - choice: ["aether_legacy:healing_stone x4", "aether_legacy:enchanted_blueberry x8", "aether_legacy:golden_parachute"]
+
+  - id: medalhas
+    title: "Medalhas da Vitória"
+    type: main
+    deps: [valquirias]
+    desc: |
+      Cada Valquíria derrotada entrega uma §eVictory Medal§r. A Rainha só aceita lutar com quem
+      trouxer §e10 medalhas§r das suas subordinadas.
+
+      Junte 10 medalhas.
+    tasks:
+      - get: aether_legacy:victory_medal x10
+    rewards:
+      - xp: 5
+      - choice: ["minecraft:golden_apple x3", "aether_legacy:healing_stone x8", "aether_legacy:gummy_swet x2"]
+
+  - id: rainha_valquiria
+    title: "Destronada"
+    type: boss
+    deps: [medalhas]
+    banner: "A Rainha Valquíria se rende!"
+    subtitle: "As guardiãs do céu reconhecem você"
+    task_logic: OR
+    desc: |
+      A §eRainha Valquíria§r espera no salão principal. Fale com ela, mostre as medalhas e
+      prepare-se: "Esta será a sua batalha final!"
+
+      §cTática:§r ela teleporta, voa e dispara raios. Fique longe das bordas e acerte quando ela
+      pousar. A Valkyrie Lance (de alcance longo) é ótima aqui.
+
+      Vencida, ela reconhece seu valor e entrega a §eSilver Key§r. As Valquírias vigiavam o
+      Crepúsculo e as Areias lá de cima; agora vigiam com você.
+    tasks:
+      - kill: {entity: "aether_legacy.valkyrie_queen", count: 1}
+      - get: aether_legacy:dungeon_key:1
+    rewards:
+      - xp: 10
+      - loot: epico
+
+  - id: chave_prata
+    title: "A Chave de Prata"
+    type: main
+    deps: [rainha_valquiria]
+    desc: |
+      A §eSilver Key§r abre o tesouro deixado pela Rainha. Use-a no Treasure Chest da sala dela.
+
+      Tenha a chave de prata.
+    tasks:
+      - get: aether_legacy:dungeon_key:1
+    rewards:
+      - xp: 5
+      - choice: ["aether_legacy:enchanted_gravitite x2", "minecraft:golden_apple x3", "aether_legacy:healing_stone x8"]
+
+  - id: armadura_valquiria
+    title: "Armadura da Valquíria"
+    type: optional
+    deps: [chave_prata]
+    desc: |
+      Com o conjunto completo de §eArmadura da Valquíria§r (incluindo as luvas), você ganha
+      §evoo temporário§r. As peças aparecem no tesouro de Prata.
+
+      Junte as cinco peças.
+    tasks:
+      - get: [aether_legacy:valkyrie_helmet, aether_legacy:valkyrie_chestplate, aether_legacy:valkyrie_leggings, aether_legacy:valkyrie_boots, aether_legacy:valkyrie_gloves]
+    rewards:
+      - loot: incomum
+
+  - id: ferramentas_valquiria
+    title: "Ferramentas da Valquíria"
+    type: optional
+    deps: [chave_prata]
+    desc: |
+      As ferramentas da Valquíria têm alcance quase dobrado: a picareta minera embaixo das ilhas
+      sem você chegar perto da borda, e o machado bate muito forte (mas recarrega devagar).
+
+      Tenha qualquer ferramenta da Valquíria.
+    tasks:
+      - one_of: [aether_legacy:valkyrie_pickaxe, aether_legacy:valkyrie_axe, aether_legacy:valkyrie_shovel]
+    rewards:
+      - loot: incomum
+
+  - id: espadas_prata
+    title: "Espadas Sagradas"
+    type: optional
+    deps: [chave_prata]
+    desc: |
+      A §eHoly Sword§r causa dano enorme em mortos-vivos (ótima na Superfície e em Atum!) e a
+      §eLightning Sword§r chama raios sobre os inimigos.
+
+      Tenha qualquer uma das duas.
+    tasks:
+      - one_of: [aether_legacy:holy_sword, aether_legacy:lightning_sword]
+    rewards:
+      - loot: incomum
+
+  - id: armadura_netuno
+    title: "Armadura de Netuno"
+    type: optional
+    deps: [chave_prata]
+    desc: |
+      A §eArmadura de Netuno§r (com luvas) deixa você andar debaixo d'água como se estivesse em
+      terra. Combinada com uma Iron Bubble, templos submarinos viram passeio.
+
+      Junte as cinco peças.
+    tasks:
+      - get: [aether_legacy:neptune_helmet, aether_legacy:neptune_chestplate, aether_legacy:neptune_leggings, aether_legacy:neptune_boots, aether_legacy:neptune_gloves]
+    rewards:
+      - loot: incomum
+
+  - id: pedra_regeneracao
+    title: "Pedra da Regeneração"
+    type: optional
+    deps: [chave_prata]
+    desc: |
+      A §eRegeneration Stone§r, usada como acessório, cura seus ferimentos aos poucos, e o efeito
+      soma com outras pedras iguais.
+
+      Encontre uma no tesouro de Prata.
+    tasks:
+      - get: aether_legacy:regeneration_stone
+    rewards:
+      - loot: incomum
+
+  - id: capa_valquiria
+    title: "Capa da Valquíria"
+    type: optional
+    deps: [chave_prata]
+    desc: |
+      A §eValkyrie Cape§r te deixa mais leve que o ar: você cai devagar. Neste pack ela está
+      ativa no saque das masmorras de Prata.
+    tasks:
+      - get: aether_legacy:valkyrie_cape
+    rewards:
+      - loot: incomum
+
+  # ------------------------------------------------------------------ Masmorra de Ouro
+  - id: masmorra_ouro
+    title: "A Ilha do Sol"
+    type: main
+    deps: [chave_prata]
+    desc: |
+      As maiores ilhas do Aether escondem, por dentro, a §eMasmorra de Ouro§r: salas de
+      §eHellfire Stone§r vermelha e quente. Lá vive o Espírito do Sol, que mantém o Aether num
+      dia eterno.
+
+      Quando a luta começar, ele invoca §eFire Minions§r. Derrote 3 deles para provar que
+      chegou à câmara.
+    tasks:
+      - kill: {entity: "aether_legacy.fire_minion", count: 3}
+    rewards:
+      - xp: 5
+      - choice: ["minecraft:potion:8259 x3", "aether_legacy:healing_stone x8", "minecraft:golden_apple x3"]
+
+  - id: espirito_sol
+    title: "Extinto"
+    type: boss
+    deps: [masmorra_ouro]
+    banner: "O Espírito do Sol se apagou!"
+    subtitle: "O sol do Aether finalmente se põe"
+    task_logic: OR
+    desc: |
+      "Eu sou um espírito do sol, a encarnação do dia eterno do Aether." Ele não está mentindo:
+      §cnenhuma arma comum fere o Espírito do Sol§r.
+
+      §eO segredo:§r ele lança bolas de fogo e §ecristais de gelo§r. Acerte os cristais de gelo
+      de volta nele: só eles causam dano. Desvie do fogo, cuide dos Fire Minions e tenha
+      poções de resistência ao fogo.
+
+      Ele deixa a §eGolden Key§r e o §eSun Altar§r. As Valquírias reféns estão livres.
+    tasks:
+      - kill: {entity: "aether_legacy.sun_spirit", count: 1}
+      - get: aether_legacy:dungeon_key:2
+    rewards:
+      - xp: 10
+      - loot: epico
+
+  - id: chave_ouro
+    title: "A Chave de Ouro"
+    type: main
+    deps: [espirito_sol]
+    desc: |
+      A §eGolden Key§r abre o tesouro lendário na sala dos fundos da Masmorra de Ouro.
+
+      Tenha a chave de ouro.
+    tasks:
+      - get: aether_legacy:dungeon_key:2
+    rewards:
+      - xp: 5
+      - choice: ["aether_legacy:enchanted_gravitite x3", "minecraft:golden_apple x4", "minecraft:diamond x3"]
+
+  - id: altar_sol
+    title: "O Altar do Sol"
+    deps: [espirito_sol]
+    desc: |
+      O §eSun Altar§r controla o próprio sol: com ele você escolhe a hora do dia no Aether.
+
+      §cNo servidor:§r a configuração do pack exige permissão de operador para usá-lo. Mesmo
+      assim, guarde-o: é o símbolo da sua vitória.
+    tasks:
+      - get: aether_legacy:sun_altar
+    rewards:
+      - xp: 3
+      - item: minecraft:glowstone x8
+
+  - id: fragmento_vida
+    title: "Fragmento de Vida"
+    deps: [chave_ouro]
+    desc: |
+      O §eLife Shard§r é o tesouro mais raro da Masmorra de Ouro: usá-lo te dá §eum coração
+      extra permanente§r. Neste pack, o limite é de 10 fragmentos por jogador.
+
+      Encontre um e use-o. A sensação é estranha e difícil de descrever.
+    tasks:
+      - get: aether_legacy:life_shard
+    rewards:
+      - xp: 3
+      - item: minecraft:golden_apple x2
+
+  - id: armadura_fenix
+    title: "Armadura da Fênix"
+    type: optional
+    deps: [chave_ouro]
+    desc: |
+      A §eArmadura da Fênix§r completa (com luvas) dá resistência ao fogo: dá até para nadar em
+      lava! Mas §ccuidado com a água§r: molhada, ela se transforma em Armadura de Obsidiana.
+
+      Junte as cinco peças.
+    tasks:
+      - get: [aether_legacy:phoenix_helmet, aether_legacy:phoenix_chestplate, aether_legacy:phoenix_leggings, aether_legacy:phoenix_boots, aether_legacy:phoenix_gloves]
+    rewards:
+      - loot: incomum
+
+  - id: armadura_obsidiana
+    title: "Armadura de Obsidiana"
+    type: optional
+    deps: [armadura_fenix]
+    desc: |
+      Quer a armadura mais resistente do Aether? Fique na água vestindo a Armadura da Fênix: ela
+      esfria e vira §eArmadura de Obsidiana§r, mais forte que diamante (mas sem a proteção contra
+      fogo).
+
+      Tenha a peça de peito de Obsidiana. Pense bem antes: a transformação não volta.
+    tasks:
+      - get: aether_legacy:obsidian_chestplate
+    rewards:
+      - loot: incomum
+
+  - id: tesouro_ouro
+    title: "O Tesouro do Sol"
+    type: optional
+    deps: [chave_ouro]
+    desc: |
+      Além da armadura da Fênix, o tesouro de Ouro pode trazer a §eVampire Blade§r (rouba vida),
+      a §ePig Slayer§r (derruba criaturas-porco num golpe; útil no Nether) e a §eIron Bubble§r
+      (respirar debaixo d'água por mais tempo).
+
+      Tenha qualquer um desses itens.
+    tasks:
+      - one_of: [aether_legacy:vampire_blade, aether_legacy:pig_slayer, aether_legacy:iron_bubble]
+    rewards:
+      - loot: incomum
+
+  # ------------------------------------------------------------------ Conclusão
+  - id: tres_masmorras
+    title: "Vencedor das Três Masmorras"
+    type: milestone
+    deps: [slider, rainha_valquiria, espirito_sol]
+    banner: "Vencedor das Três Masmorras"
+    subtitle: "Bronze, Prata e Ouro"
+    desc: |
+      Bronze, Prata e Ouro: as três masmorras do céu caíram diante de você. O Slider parou, a
+      Rainha se rendeu e o Espírito do Sol se apagou.
+
+      Agora o sol do Aether finalmente pode se pôr, e as Valquírias voltam a guardar as páginas
+      do céu, desta vez ao seu lado.
+    tasks:
+      - get: [aether_legacy:dungeon_key, aether_legacy:dungeon_key:1, aether_legacy:dungeon_key:2]
+    rewards:
+      - xp: 10
+      - kit: {name: "Kit do Herói dos Céus", items: ["aether_legacy:enchanted_gravitite x4", "aether_legacy:healing_stone x16", "aether_legacy:golden_parachute", "minecraft:diamond x4"]}
+      - loot: raro
+
+  - id: chave_ceus
+    title: "A Chave dos Céus"
+    type: finale
+    deps: [rainha_valquiria, espirito_sol]
+    banner: "A Chave dos Céus"
+    subtitle: "O segundo Reino Perdido foi restaurado"
+    desc: |
+      Quando o Espírito do Sol se apagou, uma luz suave desceu sobre as nuvens. Era a §6Chave
+      dos Céus§r, que ele mantinha presa junto com as Valquírias.
+
+      A Rainha me contou (bom, contou para você, eu só estava ouvindo do livro): as Valquírias
+      vigiavam lá de cima o acordo entre os §dLich do Crepúsculo§r e os §eFaraós das Areias§r.
+      Quando a Fratura veio, cada reino trancou suas páginas atrás de um guardião.
+
+      Duas chaves a menos, Herói. Esta aqui vai brilhar no Selo dos Céus.
+    tasks:
+      - check
+    rewards:
+      - xp: 20
+      - kit: {name: "Chave dos Céus", items: ["aether_legacy:enchanted_gravitite x8", "aether_legacy:zanite_block x4", "aether_legacy:golden_parachute", "aether_legacy:healing_stone x16"]}
+      - loot: [epico x2]
+
+  - link: twilight:chave_crepusculo
+  - link: atum:chave_areias

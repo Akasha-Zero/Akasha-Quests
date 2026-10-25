@@ -1,0 +1,2476 @@
+# Floresta do Crepúsculo — Twilight Forest 2.7.39 (namespace TwilightForest, dimensão 7).
+# Ato III, Reino Perdido nº 1: o Reino do Crepúsculo e a Chave do Crepúsculo.
+# Fontes: registro do pack, lang en_US do JAR (conquistas e "progressionBook"), classes
+# TFTreasure / entidades (drops) e config/TwilightForest.cfg. Ver docs/mods/twilight.md.
+chapter:
+  id: twilight
+  title: "Floresta do Crepúsculo"
+  order: 200
+  icon: TwilightForest:item.magicMapFocus
+  desc: |
+    §2Ato III — Reino Perdido do Crepúsculo.§r Uma floresta presa num entardecer eterno,
+    onde os Lordes Lich guardavam as páginas do tempo. Vença os chefes na ordem certa,
+    quebre as maldições dos biomas e recupere a §6Chave do Crepúsculo§r.
+
+quests:
+  # ------------------------------------------------------------------ Chegada
+  - id: reino_crepusculo
+    title: "O Reino do Crepúsculo"
+    type: info
+    desc: |
+      Antes da Fratura, existiam três arquivos fora do Registro: o Crepúsculo, os Céus e as
+      Areias. Este aqui é o primeiro, e o mais traiçoeiro. Os §dLordes Lich§r eram
+      arquivistas que tentaram guardar as páginas do tempo... e o tempo os devorou.
+
+      §eComo o reino funciona:§r cada região está trancada por uma maldição (mosquitos,
+      cegueira, nevasca, chuva ácida...). Vencer o chefe certo quebra a maldição do
+      próximo bioma. A ordem é: §eNaga → Lich → Minoshroom → Hidra → Cavaleiros Fantasmas
+      → Ur-Ghast → Yeti Alfa → Rainha da Neve§r, e depois as Terras Altas.
+
+      Se uma estrutura estiver protegida por um campo mágico, não force: é sinal de que
+      falta um chefe anterior. Vamos juntos, Herói?
+    tasks:
+      - check
+    rewards:
+      - xp: 2
+
+  - id: lago_flores
+    title: "O Lago de Flores"
+    type: main
+    deps: [reino_crepusculo]
+    desc: |
+      Sabe o que abre a porta do Crepúsculo? Um lago pequeno, flores e um presente brilhante.
+
+      Cave uma poça de água (2x2 já serve; o pack aceita até 15x15) e cerque cada borda com
+      grama ou terra. Em cima de §etodos§r os blocos ao redor coloque flores, mudas, cogumelos
+      ou grama alta. Depois, §ejogue um Diamante na água§r (tecla Q). Um raio cai e a poça vira
+      portal.
+      §cCuidado:§r o raio incendeia tudo em volta. Nada de madeira por perto!
+
+      Junte o diamante e me chame quando estiver pronto.
+    tasks:
+      - get: minecraft:diamond
+    rewards:
+      - xp: 5
+      - choice: ["minecraft:cooked_beef x16", "minecraft:arrow x32", "minecraft:torch x32"]
+
+  - id: portal_crepusculo
+    title: "Atravessando o Véu"
+    type: portal
+    deps: [lago_flores]
+    banner: "O Reino do Crepúsculo"
+    subtitle: "O primeiro arquivo perdido"
+    desc: |
+      Pule no portal. O ar fica frio, o céu nunca escurece nem clareia... bem-vindo(a) à
+      §2Floresta do Crepúsculo§r!
+
+      §ePrimeiras regras de sobrevivência:§r a copa das árvores é tão densa que o chão fica
+      escuro e monstros aparecem com facilidade; leve tochas. O portal de volta é o mesmo pelo
+      qual você chegou: anote as coordenadas!
+
+      Ah, e respire fundo. Este lugar guarda o cheiro do Registro antigo. Senti saudade.
+    tasks:
+      - visit: {dim: 7, name: "Floresta do Crepúsculo"}
+    rewards:
+      - xp: 8
+      - loot: raro
+
+  - id: madeiras_crepusculo
+    title: "Madeiras do Crepúsculo"
+    deps: [portal_crepusculo]
+    desc: |
+      Carvalho do Crepúsculo, Árvore do Dossel, Mangue, Madeira Sombria... cada uma tem a sua
+      cor e todas viram tábuas normais (4 por tronco) que funcionam em qualquer receita de
+      madeira.
+
+      Corte 16 troncos de qualquer tipo. As Canopy Trees gigantes são ótimas para isso,
+      e a Darkwood (das Florestas Sombrias) é a mais escura de todas para decorar.
+    tasks:
+      - get: TwilightForest:tile.TFLog:* x16
+    rewards:
+      - xp: 3
+      - item: minecraft:torch x16
+
+  - id: raizes_vivas
+    title: "Raízes Vivas"
+    deps: [portal_crepusculo]
+    desc: |
+      Debaixo da terra do Crepúsculo, as raízes das árvores formam túneis inteiros. Algumas
+      ainda pulsam: são as §eLiveroots§r.
+
+      Cave perto das raízes (blocos marrons de "Roots" nas cavernas rasas) e procure as
+      variantes mais claras. Quebrá-las rende o item §eLiveroot§r, base do Ironwood.
+      Junte 3.
+    tasks:
+      - get: TwilightForest:item.liveRoot x3
+    rewards:
+      - xp: 3
+      - item: minecraft:gold_nugget x6
+
+  - id: pena_corvo
+    title: "Pena de Corvo"
+    deps: [portal_crepusculo]
+    desc: |
+      Os Forest Ravens são tímidos: pousam no chão, olham pra você e fogem. Mas uma pena
+      deles guarda memória de tudo o que viram do alto.
+
+      Derrube um corvo e pegue uma §eRaven's Feather§r. Ela é um dos ingredientes do Foco do
+      Mapa Mágico.
+    tasks:
+      - get: TwilightForest:item.tfFeather
+    rewards:
+      - xp: 3
+      - item: minecraft:glowstone_dust x2
+
+  - id: frutos_tocha
+    title: "Frutos-Tocha"
+    deps: [portal_crepusculo]
+    desc: |
+      Sabe aquelas frutinhas brilhantes penduradas no teto das cavernas? São as Torchberries.
+      Iluminam, alimentam e entram em receitas.
+
+      Colha 4 §eTorchberries§r das Torchberry Plants (penduradas sob as raízes) ou derrote
+      Skeleton Druids, que costumam carregá-las.
+    tasks:
+      - get: TwilightForest:item.torchberries x4
+    rewards:
+      - xp: 3
+      - item: minecraft:bread x8
+
+  - id: foco_mapa
+    title: "Com Fogo Ele Escreve"
+    type: main
+    deps: [pena_corvo, frutos_tocha]
+    desc: |
+      Uma pena, uma fruta-tocha e pó de pedra luminosa. Junto, isso vira um §eMagic Map
+      Focus§r: a lente que deixa um mapa enxergar a magia do reino.
+
+      Receita sem forma: §eRaven's Feather + Torchberries + Pó de Pedra Luminosa§r.
+      Na próxima quest ele vai virar um mapa de verdade!
+    tasks:
+      - craft: TwilightForest:item.magicMapFocus
+    rewards:
+      - xp: 5
+      - choice: ["minecraft:paper x8", "minecraft:glowstone_dust x8", "TwilightForest:item.torchberries x8"]
+
+  - id: mapa_magico
+    title: "Eu Vejo a Quilômetros"
+    type: main
+    deps: [foco_mapa]
+    desc: |
+      Coloque o Foco no centro e 8 papéis em volta: nasce o §eBlank Magic Map§r. Clique com o
+      direito para ativá-lo e ele vira um Magic Map de verdade.
+
+      Ele mostra os biomas do Crepúsculo e marca as grandes estruturas: pátio da Naga, Torres
+      do Lich, Labirintos, covil da Hidra, Torres Sombrias... É o seu guia para tudo daqui pra
+      frente. (Cada mapa cobre uma área; faça outros conforme for viajando.)
+    tasks:
+      - get: TwilightForest:item.magicMap:*
+    rewards:
+      - xp: 5
+      - choice: ["minecraft:compass", "minecraft:paper x16", "minecraft:cooked_porkchop x16"]
+
+  - id: carne_veado
+    title: "Caçador do Crepúsculo"
+    deps: [portal_crepusculo]
+    desc: |
+      Os Wild Deer correm em bandos pela floresta. Carne de veado assada (§eVenison Steak§r) é
+      das melhores comidas do reino.
+
+      Cace um veado, asse a carne crua numa fornalha e guarde algumas para as expedições. Os
+      javalis e as ovelhas-bighorn daqui também dão carne e lã como os da Superfície.
+    tasks:
+      - get: TwilightForest:item.venisonCooked x4
+    rewards:
+      - xp: 3
+      - item: minecraft:coal x8
+
+  - id: vagalumes
+    title: "Pote de Vaga-lumes"
+    type: optional
+    deps: [portal_crepusculo]
+    desc: |
+      Pequenos, tranquilos e brilhantes: os vaga-lumes pousam nos troncos das árvores. Quebre
+      um com cuidado e você leva o bichinho para casa.
+
+      Um vaga-lume + um Frasco de Vidro = §eFirefly Jar§r, uma luminária linda que não precisa
+      de energia. Cigarras (Cicadas) cantam e Moonworms brilham do mesmo jeito.
+    tasks:
+      - craft: TwilightForest:tile.TFFireflyJar
+    rewards:
+      - loot: incomum
+
+  - id: criaturinhas
+    title: "Cigarras e Vermes-da-Lua"
+    type: optional
+    deps: [vagalumes]
+    desc: |
+      Mais dois moradores pequenininhos: a §eCicada§r (que canta sem parar) e o §eMoonworm§r
+      (que brilha em azul). Ambos ficam presos nos troncos e podem ser recolhidos e colocados
+      de novo em qualquer parede.
+
+      Junte um de cada para a sua coleção. Prometo que eles não mordem.
+    tasks:
+      - get: [TwilightForest:item.critter:1, TwilightForest:item.critter:2]
+    rewards:
+      - loot: incomum
+
+  # ------------------------------------------------------------------ Ironwood e Steeleaf
+  - id: ironwood_bruto
+    title: "Materiais Brutos de Ironwood"
+    type: main
+    deps: [raizes_vivas]
+    desc: |
+      Ironwood é o "ferro" do Crepúsculo: madeira viva que endurece com metal.
+
+      Receita sem forma: §eLiveroot + Lingote de Ferro + Pepita de Ouro§r = Raw Ironwood
+      Materials. Na próxima etapa você vai fundi-lo.
+    tasks:
+      - craft: TwilightForest:item.ironwoodRaw
+    rewards:
+      - xp: 5
+      - choice: ["minecraft:iron_ingot x4", "minecraft:gold_nugget x9", "minecraft:coal x16"]
+
+  - id: lingote_ironwood
+    title: "Lingote de Ironwood"
+    type: main
+    deps: [ironwood_bruto]
+    desc: |
+      Leve o material bruto à fornalha: cada um rende §e2 Ironwood Ingots§r. Dobro de metal
+      pelo mesmo ferro, nada mal!
+
+      §aDica:§r se você tiver Pó de Pyrotheum (Thermal), existe também uma receita de bancada
+      com ele que funde o material na hora. Confira no NEI.
+    tasks:
+      - craft: TwilightForest:item.ironwoodIngot x4
+    rewards:
+      - xp: 5
+      - choice: ["minecraft:stick x16", "minecraft:iron_ingot x4", "minecraft:leather x6"]
+
+  - id: ferramentas_ironwood
+    title: "Ferramentas de Ironwood"
+    deps: [lingote_ironwood]
+    desc: |
+      Ferramentas de Ironwood são um pouco melhores que as de ferro e já saem da bancada com
+      um encantamento de brinde: a picareta com Eficiência, o machado com Fortuna e a espada
+      com Repulsão.
+
+      Faça qualquer uma delas (receitas iguais às de ferro, com lingotes de Ironwood).
+    tasks:
+      - one_of: [TwilightForest:item.ironwoodPick, TwilightForest:item.ironwoodAxe, TwilightForest:item.ironwoodSword, TwilightForest:item.ironwoodShovel, TwilightForest:item.ironwoodHoe]
+    rewards:
+      - xp: 3
+      - item: TwilightForest:item.ironwoodIngot x2
+
+  - id: armadura_ironwood
+    title: "Armadura de Ironwood"
+    deps: [lingote_ironwood]
+    desc: |
+      Antes de enfrentar a Naga, eu queria você bem protegido(a).
+
+      A armadura de Ironwood também vem encantada (Proteção no peito e nas calças, Afinidade
+      Aquática no elmo e Queda Suave nas botas). Faça as quatro peças: são 24 lingotes no
+      total, então aproveite as raízes vivas que encontrar.
+    tasks:
+      - get: [TwilightForest:item.ironwoodHelm, TwilightForest:item.ironwoodPlate, TwilightForest:item.ironwoodLegs, TwilightForest:item.ironwoodBoots]
+    rewards:
+      - xp: 3
+      - item: minecraft:golden_apple x2
+
+  - id: steeleaf
+    title: "Folha-de-Aço"
+    deps: [portal_crepusculo]
+    desc: |
+      Steeleaf é uma folha tão dura quanto metal. Ela não se planta nem se fabrica: você a
+      encontra em §ebaús§r das Colinas Ocas, dos Labirintos de Sebe e de outras ruínas do
+      Crepúsculo.
+
+      Junte 6 Steeleaf. Elas viram ferramentas e armaduras próprias, e também são material
+      do Tinkers' Construct neste pack.
+    tasks:
+      - get: TwilightForest:item.steeleafIngot x6
+    rewards:
+      - xp: 3
+      - item: minecraft:stick x8
+
+  - id: ferramentas_steeleaf
+    title: "Ferramentas de Steeleaf"
+    type: optional
+    deps: [steeleaf]
+    desc: |
+      As ferramentas de Steeleaf nascem encantadas: a picareta com Fortuna e a espada com
+      Pilhagem. São ótimas para multiplicar minérios e drops de monstros.
+
+      Faça qualquer ferramenta de Steeleaf.
+    tasks:
+      - one_of: [TwilightForest:item.steeleafPick, TwilightForest:item.steeleafSword, TwilightForest:item.steeleafAxe, TwilightForest:item.steeleafShovel, TwilightForest:item.steeleafHoe]
+    rewards:
+      - loot: incomum
+
+  - id: armadura_steeleaf
+    title: "Armadura de Steeleaf"
+    type: optional
+    deps: [steeleaf]
+    desc: |
+      A armadura de Steeleaf vem com proteções especiais: contra projéteis, explosões, fogo e
+      quedas (uma em cada peça). Complementa bem a de Ironwood.
+
+      Faça as quatro peças.
+    tasks:
+      - get: [TwilightForest:item.steeleafHelm, TwilightForest:item.steeleafPlate, TwilightForest:item.steeleafLegs, TwilightForest:item.steeleafBoots]
+    rewards:
+      - loot: incomum
+
+  - id: primeiros_passos_crepusculo
+    title: "Explorador do Crepúsculo"
+    type: milestone
+    deps: [mapa_magico, armadura_ironwood]
+    banner: "Explorador do Crepúsculo"
+    subtitle: "Mapa na mão, Ironwood no corpo"
+    desc: |
+      Mapa mágico na mochila, armadura de Ironwood no corpo... agora sim você parece alguém
+      que pertence a este lugar!
+
+      O próximo passo é o primeiro chefe: a §eNaga§r. Use o Magic Map para achar o pátio de
+      pedra cercado de sebes. Antes, se quiser, explore as Colinas Ocas e os Labirintos de
+      Sebe: o saque deles é ótimo para começar.
+
+      §aDica de Akasha:§r a Torre do Lich, o Labirinto e quase tudo depois daqui está
+      protegido por magia. Não adianta cavar; siga a ordem dos chefes.
+    tasks:
+      - check
+    rewards:
+      - xp: 10
+      - kit: {name: "Kit do Explorador do Crepúsculo", items: ["TwilightForest:item.torchberries x16", "TwilightForest:item.venisonCooked x16", "TwilightForest:item.ironwoodIngot x4", "minecraft:torch x64"]}
+      - loot: raro
+
+  # ------------------------------------------------------------------ Estruturas menores
+  - id: colina_pequena
+    title: "As Botas São Minhas!"
+    deps: [portal_crepusculo]
+    desc: |
+      As §eColinas Ocas§r (Hollow Hills) são montes de terra com uma caverna por dentro, cheia de
+      minérios, baús e goblins. As pequenas são guardadas por Redcaps: duendes de gorro
+      vermelho que adoram uma picareta.
+
+      Entre numa colina pequena e derrote 3 Redcaps. §aDica:§r há spawners lá dentro;
+      quebre-os primeiro.
+    tasks:
+      - kill: {entity: "TwilightForest.Redcap", count: 3}
+    rewards:
+      - xp: 3
+      - item: minecraft:iron_ingot x4
+
+  - id: colina_media
+    title: "Que Barulho Foi Esse?"
+    deps: [colina_pequena]
+    desc: |
+      As colinas médias têm um morador mais perigoso: o §eRedcap Sapper§r, que carrega TNT.
+
+      Derrote um Sapper. §cMantenha distância§r quando ele acender o pavio, ou a colina
+      vira cratera, e você também.
+    tasks:
+      - kill: {entity: "TwilightForest.Redcap Sapper", count: 1}
+    rewards:
+      - xp: 3
+      - item: minecraft:iron_ingot x6
+
+  - id: colina_grande
+    title: "Eu Vejo Através de Você"
+    deps: [colina_media]
+    desc: |
+      Nas colinas grandes moram os §eTwilight Wraiths§r: espectros que voam através das paredes.
+      O saque aqui é o melhor das colinas (diamantes e até Steeleaf aparecem).
+
+      Derrote um Wraith. Eles somem e reaparecem; fique de costas para uma parede sólida.
+    tasks:
+      - kill: {entity: "TwilightForest.Twilight Wraith", count: 1}
+    rewards:
+      - xp: 3
+      - item: minecraft:diamond
+
+  - id: labirinto_sebe
+    title: "Esmagador de Insetos"
+    deps: [portal_crepusculo]
+    desc: |
+      Os §eLabirintos de Sebe§r são cercados de arbustos espinhentos (que machucam ao toque).
+      Dentro deles moram Hedge Spiders e há baús nos becos sem saída.
+
+      Derrote 4 Hedge Spiders. §aDica:§r cortar as sebes também funciona, mas elas
+      machucam ao quebrar com a mão; use uma ferramenta.
+    tasks:
+      - kill: {entity: "TwilightForest.Hedge Spider", count: 4}
+    rewards:
+      - xp: 3
+      - item: minecraft:string x8
+
+  # ------------------------------------------------------------------ Árvores mágicas
+  - id: arvore_oca
+    title: "O Tesouro da Árvore Oca"
+    deps: [portal_crepusculo]
+    desc: |
+      Algumas árvores do Crepúsculo são colossais e ocas. Escale uma delas (pelas raízes e
+      galhos) e procure, no alto da copa, um esconderijo de folhas com um baú guardado por
+      aranhas.
+
+      Esse baú é o §eTree Cache§r: é de lá que vêm as mudas mágicas (Tempo,
+      Transformação, Mineração e Separação) e os Charms. Traga qualquer muda rara do
+      Crepúsculo: o Robust Twilight Oak ou a Rainbow Oak contam também.
+    tasks:
+      - one_of: [TwilightForest:tile.TFSapling:4, TwilightForest:tile.TFSapling:5, TwilightForest:tile.TFSapling:6, TwilightForest:tile.TFSapling:7, TwilightForest:tile.TFSapling:8, TwilightForest:tile.TFSapling:9]
+    rewards:
+      - xp: 3
+      - item: minecraft:dye:15 x16
+
+  - id: arvore_tempo
+    title: "A Árvore do Tempo"
+    type: optional
+    deps: [arvore_oca]
+    desc: |
+      Esta é a minha favorita. O §eTimewood Clock§r, no tronco da Árvore do Tempo, acelera tudo
+      ao redor: plantações, fornalhas e qualquer bloco que receba ticks.
+
+      Plante uma §eTree of Time Sapling§r num lugar com espaço (ela cresce alto) e espere.
+      Muitos jogadores usam esse coração para acelerar fazendas. (O pack não acelera
+      portais.)
+    tasks:
+      - get: TwilightForest:tile.TFSapling:5
+    rewards:
+      - loot: incomum
+
+  - id: arvore_transformacao
+    title: "A Árvore da Transformação"
+    type: optional
+    deps: [arvore_oca]
+    desc: |
+      O §eHeart of Transformation§r muda lentamente o bioma ao redor da árvore. É a ferramenta
+      mais elegante que eu conheço para "consertar" uma região.
+
+      Plante uma §eTree of Transformation Sapling§r. §cCuidado:§r o efeito é permanente nos
+      chunks em volta; plante longe da sua base se gostar do bioma atual.
+    tasks:
+      - get: TwilightForest:tile.TFSapling:6
+    rewards:
+      - loot: incomum
+
+  - id: arvore_mineracao
+    title: "A Árvore do Minerador"
+    type: optional
+    deps: [arvore_oca]
+    desc: |
+      O §eMinewood Core§r procura minérios nos blocos ao redor e os traz para perto do tronco,
+      transformando a pedra em volta. Mineração passiva, movida a madeira!
+
+      Plante uma §eMiner's Tree Sapling§r e veja os minérios chegarem. Confira o alcance no
+      NEI ou no wiki antes de construir em volta.
+    tasks:
+      - get: TwilightForest:tile.TFSapling:7
+    rewards:
+      - loot: incomum
+
+  - id: arvore_separacao
+    title: "A Árvore da Separação"
+    type: optional
+    deps: [arvore_oca]
+    desc: |
+      O §eSortingwood Engine§r organiza o conteúdo de baús próximos, juntando itens iguais.
+      É como ter um bibliotecário no quintal. (Sim, eu me identifico.)
+
+      Plante uma §eSorting Tree Sapling§r perto de onde guarda seus baús.
+    tasks:
+      - get: TwilightForest:tile.TFSapling:8
+    rewards:
+      - loot: incomum
+
+  - id: tabuas_magicas
+    title: "Madeiras Mágicas"
+    type: optional
+    deps: [arvore_tempo, arvore_transformacao, arvore_mineracao, arvore_separacao]
+    deps_any: true
+    desc: |
+      Os troncos das árvores mágicas (Timewood, Transwood, Minewood e Sortingwood) viram
+      tábuas com texturas únicas, perfeitas para uma casa que pareça encantada.
+
+      Faça tábuas de qualquer madeira mágica. Só não corte o tronco onde fica o "coração"!
+    tasks:
+      - one_of: [TwilightForest:tile.TFPlank:4, TwilightForest:tile.TFPlank:5, TwilightForest:tile.TFPlank:6, TwilightForest:tile.TFPlank:7]
+    rewards:
+      - loot: incomum
+
+  - id: amuleto_vida
+    title: "Amuleto da Vida"
+    deps: [arvore_oca]
+    desc: |
+      Um §eCharm of Life§r salva você da morte uma vez: em vez de morrer, você é curado(a) e o
+      amuleto se desfaz. Ele aparece em baús do Crepúsculo (Tree Cache, colinas, torres).
+
+      Guarde um no inventário (ou num espaço de Baubles) para as lutas de chefe.
+    tasks:
+      - get: TwilightForest:item.charmOfLife1
+    rewards:
+      - xp: 3
+      - item: minecraft:golden_apple
+
+  - id: amuleto_vida_2
+    title: "Amuleto da Vida II"
+    type: optional
+    deps: [amuleto_vida]
+    desc: |
+      Quatro Charms of Life I numa bancada viram um §eCharm of Life II§r, ainda mais forte na
+      hora do desespero.
+
+      É caro, eu sei. Mas eu prefiro você vivo(a) e com menos amuletos do que o contrário.
+    tasks:
+      - craft: TwilightForest:item.charmOfLife2
+    rewards:
+      - loot: incomum
+
+  - id: amuleto_guarda
+    title: "Amuleto da Guarda"
+    deps: [arvore_oca]
+    desc: |
+      O §eCharm of Keeping§r faz você manter parte do inventário ao morrer: o nível I guarda a
+      armadura, o II também a barra de atalhos e o III tudo.
+
+      Encontre um em baús (as Maze Slimes também podem largar um).
+    tasks:
+      - get: TwilightForest:item.charmOfKeeping1
+    rewards:
+      - xp: 3
+      - item: minecraft:experience_bottle x4
+
+  - id: amuleto_guarda_3
+    title: "Guarda Total"
+    type: optional
+    deps: [amuleto_guarda]
+    desc: |
+      4 Charms of Keeping I = um de nível II; 4 de nível II = um de nível III, que guarda o
+      inventário inteiro numa morte.
+
+      Monte um §eCharm of Keeping III§r. É a apólice de seguro mais cara do reino.
+    tasks:
+      - craft: TwilightForest:item.charmOfKeeping3
+    rewards:
+      - loot: incomum
+
+  # ------------------------------------------------------------------ Naga
+  - id: patio_naga
+    title: "O Pátio de Pedra"
+    type: main
+    deps: [primeiros_passos_crepusculo]
+    desc: |
+      Ouviu esse barulho de escamas? No meio da floresta há um pátio de pedra decorada,
+      cercado de sebes: o §ePátio da Naga§r. As pedras de Nagastone mostram desenhos de uma
+      serpente enorme.
+
+      Aproxime-se do pátio e quebre um bloco de Nagastone gravada (Etched Nagastone) para
+      provar que o encontrou. A Naga dorme no centro... por enquanto.
+    tasks:
+      - one_of: [TwilightForest:tile.TFNagastoneEtched, TwilightForest:tile.TFNagastoneEtchedMossy, TwilightForest:tile.TFNagastoneEtchedWeathered, TwilightForest:tile.TFNagastoneBody]
+    rewards:
+      - xp: 5
+      - choice: ["minecraft:golden_apple x2", "minecraft:arrow x48", "minecraft:potion:8229 x2"]
+
+  - id: naga
+    title: "Caçador de Naga"
+    type: boss
+    deps: [patio_naga]
+    banner: "A Naga foi derrotada!"
+    subtitle: "A primeira maldição se desfaz"
+    task_logic: OR
+    desc: |
+      A Naga guarda o pátio de pedra no coração da floresta. §cEla dá investidas fortes§r:
+      lute em campo aberto, desvie para o lado quando ela vier em linha reta e acerte a
+      cabeça, porque o corpo absorve os golpes. Quando ela ficar lenta, é hora de atacar.
+
+      Derrote-a e ela larga as §eNaga Scales§r e o seu troféu. Com as escamas, a barreira da
+      Torre do Lich vai ceder.
+
+      Eu confio em você. (E traga a escama, eu quero ver!)
+    tasks:
+      - kill: {entity: "TwilightForest.Naga", count: 1}
+      - get: TwilightForest:item.trophy:1
+    rewards:
+      - xp: 10
+      - loot: epico
+
+  - id: escama_naga
+    title: "Escama Cintilante"
+    type: main
+    deps: [naga]
+    desc: |
+      Esta escama verde ainda brilha com a magia da Naga. Ela é a chave para atravessar a
+      proteção da Torre do Lich (a conquista se chama "Shimmering Scale").
+
+      Guarde §e8 Naga Scales§r: elas também viram uma armadura excelente nas próximas quests.
+    tasks:
+      - get: TwilightForest:item.nagaScale x8
+    rewards:
+      - xp: 5
+      - choice: ["TwilightForest:item.ironwoodIngot x6", "minecraft:ender_pearl x4", "minecraft:golden_apple x2"]
+
+  - id: tunica_naga
+    title: "Túnica de Escamas"
+    deps: [escama_naga]
+    desc: |
+      Oito escamas no formato de peitoral (sem o centro de cima) viram a §eNaga Scale Tunic§r,
+      que protege mais que ferro.
+
+      Faça a túnica.
+    tasks:
+      - craft: TwilightForest:item.plateNaga
+    rewards:
+      - xp: 3
+      - item: minecraft:iron_ingot x4
+
+  - id: calcas_naga
+    title: "Armeiro da Naga"
+    deps: [tunica_naga]
+    desc: |
+      Sete escamas no formato de calças viram as §eNaga Scale Leggings§r. Com as duas peças,
+      você ganha a conquista "Naga Armorer".
+
+      Faça as calças. (Precisou caçar outra Naga? Elas existem em vários pátios pelo mundo.)
+    tasks:
+      - craft: TwilightForest:item.legsNaga
+    rewards:
+      - xp: 3
+      - item: minecraft:iron_ingot x4
+
+  # ------------------------------------------------------------------ Lich
+  - id: torre_lich
+    title: "A Torre Pontuda"
+    type: main
+    deps: [escama_naga]
+    desc: |
+      As Torres do Lich são altas, de pedra e com telhados pontudos. Antes da Naga, uma
+      maldição protegia os tijolos. Agora você pode entrar.
+
+      Lá dentro moram §eDeath Tomes§r (livros voadores que atacam) e esqueletos; há
+      bibliotecas com baús. Derrote 3 Death Tomes enquanto sobe a escadaria.
+      §aDica:§r as estantes da torre podem largar livros e papel; ótimo para mapas.
+    tasks:
+      - kill: {entity: "TwilightForest.Death Tome", count: 3}
+    rewards:
+      - xp: 5
+      - choice: ["minecraft:book x6", "minecraft:paper x16", "minecraft:arrow x48"]
+
+  - id: lich
+    title: "O Arquivista Caído"
+    type: boss
+    deps: [torre_lich]
+    banner: "O Lich foi derrotado!"
+    subtitle: "Um arquivista finalmente descansa"
+    task_logic: OR
+    desc: |
+      No topo da torre está o §dLich§r: um dos antigos arquivistas do Registro. Ele tentou
+      guardar as páginas do tempo e elas o consumiram. Dizem que ele negociava páginas com os
+      Faraós das Areias...
+
+      §cA luta tem três fases:§r primeiro ele se protege com escudos que orbitam em volta
+      (insista nos golpes até rompê-los) e lança projéteis mágicos; depois invoca lacaios
+      zumbis; por fim desce e luta corpo a corpo. Ele também cria cópias ilusórias de si
+      mesmo: mire no verdadeiro.
+
+      Ele larga um dos três §eCetros§r e o troféu. Vá em paz, velho bibliotecário.
+    tasks:
+      - kill: {entity: "TwilightForest.Twilight Lich", count: 1}
+      - get: TwilightForest:item.trophy:2
+    rewards:
+      - xp: 10
+      - loot: epico
+
+  - id: cetro_crepusculo
+    title: "Cetro do Crepúsculo"
+    deps: [lich]
+    desc: |
+      O §eScepter of Twilight§r dispara projéteis mágicos que causam dano à distância.
+
+      Quando as cargas acabarem, recarregue-o na bancada: §ecetro + Pérola do Fim§r.
+    tasks:
+      - get: TwilightForest:item.scepterTwilight
+    rewards:
+      - xp: 3
+      - item: minecraft:ender_pearl x2
+
+  - id: cetro_vida
+    title: "Cetro da Drenagem de Vida"
+    deps: [lich]
+    desc: |
+      O §eScepter of Life Draining§r rouba a vida do alvo para você. Excelente contra monstros
+      que regeneram.
+
+      Recarga: §ecetro + Olho de Aranha Fermentado§r.
+    tasks:
+      - get: TwilightForest:item.scepterLifeDrain
+    rewards:
+      - xp: 3
+      - item: minecraft:fermented_spider_eye x2
+
+  - id: cetro_zumbi
+    title: "Cetro Zumbi"
+    deps: [lich]
+    desc: |
+      O §eZombie Scepter§r invoca zumbis leais que lutam do seu lado por um tempo. Um exército
+      de bolso!
+
+      Recarga: §ecetro + Carne Podre + Poção de Força§r.
+    tasks:
+      - get: TwilightForest:item.scepterZombie
+    rewards:
+      - xp: 3
+      - item: minecraft:rotten_flesh x8
+
+  - id: maestria_cetros
+    title: "Maestria dos Cetros"
+    type: optional
+    deps: [cetro_crepusculo, cetro_vida, cetro_zumbi]
+    deps_any: true
+    desc: |
+      Cada Lich larga §eapenas um cetro aleatório§r. Para ter os três, você vai precisar
+      visitar outras Torres do Lich (há várias pelo mundo).
+
+      Tenha os três cetros ao mesmo tempo. É a conquista "Scepter Mastery"!
+    tasks:
+      - get: [TwilightForest:item.scepterTwilight, TwilightForest:item.scepterLifeDrain, TwilightForest:item.scepterZombie]
+    rewards:
+      - loot: incomum
+
+  # ------------------------------------------------------------------ Pântano e Labirinto
+  - id: pantano
+    title: "O Pântano dos Mosquitos"
+    type: main
+    deps: [lich]
+    desc: |
+      Os mosquitos do Pântano do Crepúsculo não são naturais: são uma maldição. Antes do Lich,
+      eles drenavam a sua fome sem parar. Agora o feitiço enfraqueceu.
+
+      Visite o §eTwilight Swamp§r. Debaixo dele ficam os Labirintos dos Minotauros, e o mapa
+      mágico mostra onde.
+    tasks:
+      - visit: {dim: 7, biome: 46, name: "Twilight Swamp"}
+    rewards:
+      - xp: 5
+      - choice: ["minecraft:cooked_beef x16", "TwilightForest:item.venisonCooked x16", "minecraft:bread x24"]
+
+  - id: labirinto
+    title: "O Labirinto"
+    type: main
+    deps: [pantano]
+    desc: |
+      Encontre a entrada do Labirinto (uma escadaria descendo no pântano) e mergulhe nos
+      corredores de Mazestone. Os §eMinotauros§r atacam com investidas e machados.
+
+      Derrote 5 Minotauros. Eles largam carne de Meef e, às vezes, o precioso Maze Map Focus.
+      §aDica:§r marque as paredes com tochas para não se perder.
+    tasks:
+      - kill: {entity: "TwilightForest.Minotaur", count: 5}
+    rewards:
+      - xp: 5
+      - choice: ["minecraft:torch x64", "minecraft:arrow x48", "minecraft:golden_apple x2"]
+
+  - id: meef
+    title: "Meef?"
+    deps: [labirinto]
+    desc: |
+      Sim, "Meef". É a carne dos minotauros, e ela dá um bife ótimo.
+
+      Asse 4 §eRaw Meef§r na fornalha para obter Meef Steak. Comida boa para as caminhadas
+      longas pelo labirinto.
+    tasks:
+      - get: TwilightForest:item.meefSteak x4
+    rewards:
+      - xp: 3
+      - item: minecraft:coal x8
+
+  - id: maze_slime
+    title: "Gosma do Labirinto"
+    type: optional
+    deps: [labirinto]
+    desc: |
+      As §eMaze Slimes§r são slimes feitas de pedra do labirinto. Raramente largam um Charm of
+      Keeping!
+
+      Derrote 6 delas.
+    tasks:
+      - kill: {entity: "TwilightForest.Maze Slime", count: 6}
+    rewards:
+      - loot: incomum
+
+  - id: foco_labirinto
+    title: "Foco do Labirinto"
+    type: main
+    deps: [labirinto]
+    desc: |
+      O §eMaze Map Focus§r é o tesouro mais útil dos minotauros: ele permite criar mapas do
+      labirinto e a Uncrafting Table.
+
+      Ele cai de minotauros e aparece em baús do labirinto. Encontre um.
+    tasks:
+      - get: TwilightForest:item.mazeMapFocus
+    rewards:
+      - xp: 5
+      - choice: ["minecraft:paper x8", "minecraft:crafting_table x4", "minecraft:iron_ingot x6"]
+
+  - id: mapa_labirinto
+    title: "Agora, Achar a Saída"
+    deps: [foco_labirinto]
+    desc: |
+      Foco do Labirinto no centro e 8 papéis em volta: §eBlank Maze Map§r. Ative-o dentro do
+      labirinto e ele desenha os corredores à sua volta.
+
+      Faça o mapa do labirinto.
+    tasks:
+      - craft: TwilightForest:item.emptyMazeMap
+    rewards:
+      - xp: 3
+      - item: minecraft:torch x32
+
+  - id: mapa_minerio
+    title: "Como Isso Pode Valer a Pena?"
+    type: optional
+    deps: [mapa_labirinto]
+    desc: |
+      O §eMaze/Ore Map§r mostra também os minérios. A receita é absurda: mapa do labirinto
+      + Bloco de Ouro + Bloco de Diamante + Bloco de Ferro. (O nome da conquista diz tudo.)
+
+      Faça um se tiver recursos sobrando. Eu não julgo... muito.
+    tasks:
+      - craft: TwilightForest:item.emptyOreMap
+    rewards:
+      - loot: incomum
+
+  - id: mesa_desmontar
+    title: "A Mesa de Desmontar"
+    type: main
+    deps: [foco_labirinto]
+    desc: |
+      Oito Bancadas de Trabalho em volta de um Maze Map Focus formam a §eUncrafting Table§r:
+      ela desfaz um item de volta nos ingredientes da receita, cobrando níveis de experiência.
+
+      Útil para recuperar materiais de armaduras e ferramentas achadas em baús.
+      §aDica:§r o custo em XP cresce com os encantamentos do item; veja antes de confirmar.
+    tasks:
+      - craft: TwilightForest:tile.TFUncraftingTable
+    rewards:
+      - xp: 5
+      - choice: ["minecraft:experience_bottle x8", "minecraft:iron_ingot x8", "minecraft:gold_ingot x6"]
+
+  - id: minoshroom
+    title: "O Minoshroom"
+    type: boss
+    deps: [labirinto]
+    banner: "O Minoshroom caiu!"
+    subtitle: "O labirinto está em silêncio"
+    task_logic: OR
+    desc: |
+      No andar mais fundo do labirinto há uma sala com cogumelos: o covil do §eMinoshroom§r,
+      um minotauro coberto de fungos que comanda os outros. Ele é o "mago" que sustentava a
+      maldição do Pântano de Fogo.
+
+      §cEle carrega investidas devastadoras§r: quando ele baixar a cabeça, saia da frente e
+      ataque pelas costas. Ele larga o troféu, o §eMinotaur Axe§r e um prato de Meef
+      Stroganoff.
+    tasks:
+      - kill: {entity: "TwilightForest.Minoshroom", count: 1}
+      - get: TwilightForest:item.trophy:5
+    rewards:
+      - xp: 10
+      - loot: epico
+
+  - id: stroganoff
+    title: "Poderoso Strogonoff"
+    type: main
+    deps: [minoshroom]
+    desc: |
+      O §eMeef Stroganoff§r do Minoshroom não é só comida: comer esse ensopado de carne com
+      cogumelos te prepara para o calor do Pântano de Fogo ("Mighty Stroganoff").
+
+      Pegue o prato. Coma quando a fome estiver baixa, e não deixe para depois.
+    tasks:
+      - get: TwilightForest:item.meefStroganoff
+    rewards:
+      - xp: 5
+      - choice: ["minecraft:potion:8259 x2", "minecraft:golden_apple x2", "minecraft:cooked_beef x16"]
+
+  - id: machado_minotauro
+    title: "Machado do Minotauro"
+    deps: [minoshroom]
+    desc: |
+      O §eMinotaur Axe§r causa dano extra quando você ataca correndo (em investida), igual ao
+      dono original.
+
+      Guarde-o: é uma arma excelente para a próxima luta.
+    tasks:
+      - get: TwilightForest:item.minotaurAxe
+    rewards:
+      - xp: 3
+      - item: minecraft:diamond
+
+  - id: quebra_labirinto
+    title: "Quebrando o Labirinto"
+    type: optional
+    deps: [minoshroom]
+    desc: |
+      Escondido no labirinto existe um cofre secreto (paredes diferentes, cheias de
+      armadilhas de TNT). Dentro dele pode estar a §eMazebreaker§r, a picareta encantada que
+      quebra Mazestone com facilidade.
+
+      Encontre-a. §cCuidado§r: cofres secretos costumam ter armadilhas.
+    tasks:
+      - get: TwilightForest:item.mazebreakerPick
+    rewards:
+      - loot: incomum
+
+  # ------------------------------------------------------------------ Pântano de Fogo e Hidra
+  - id: pantano_fogo
+    title: "O Pântano de Fogo"
+    type: main
+    deps: [stroganoff]
+    desc: |
+      Lava, fumaça e jatos de fogo saindo do chão: o §eFire Swamp§r é o lar da Hidra. Sem o
+      Stroganoff, o calor deste lugar te queimaria sem parar.
+
+      Visite o bioma. §aLeve§r poções de resistência ao fogo e não pise nos blocos de Fire
+      Jet que soltam fumaça: eles explodem em chamas.
+    tasks:
+      - visit: {dim: 7, biome: 58, name: "Fire Swamp"}
+    rewards:
+      - xp: 5
+      - choice: ["minecraft:potion:8259 x3", "minecraft:water_bucket", "minecraft:golden_apple x2"]
+
+  - id: hidra
+    title: "Matadora de Hidras"
+    type: boss
+    deps: [pantano_fogo]
+    banner: "A Hidra caiu!"
+    subtitle: "O fogo do pântano se apaga"
+    task_logic: OR
+    desc: |
+      Três cabeças, um corpo gigante e um temperamento péssimo: a §eHidra§r vive numa cratera
+      no centro do Pântano de Fogo. Cada cabeça morde, cospe fogo e lança bombas.
+
+      §cTática:§r ataque as cabeças quando abrirem a boca; elas recebem mais dano por dentro.
+      Quando uma cabeça "morre", ela volta depois de um tempo, então pressione até derrubar o
+      corpo. Arco com flechas ajuda muito.
+
+      Ela larga §eFiery Blood§r, §eHydra Chops§r e o troféu. Esse sangue vai te proteger da
+      cegueira da Floresta Sombria.
+    tasks:
+      - kill: {entity: "TwilightForest.Hydra", count: 1}
+      - get: TwilightForest:item.trophy:0
+    rewards:
+      - xp: 10
+      - loot: epico
+
+  - id: sangue_fogo
+    title: "Do Mesmo Sangue"
+    type: main
+    deps: [hidra]
+    desc: |
+      Uma gota de §eFiery Blood§r nos olhos e a maldição de cegueira da Floresta Sombria não te
+      pega mais ("Of One Blood").
+
+      Guarde o sangue: ele também é o ingrediente do metal ardente.
+    tasks:
+      - get: TwilightForest:item.fieryBlood x4
+    rewards:
+      - xp: 5
+      - choice: ["minecraft:iron_ingot x8", "minecraft:blaze_rod x2", "minecraft:potion:8259 x2"]
+
+  - id: costela_hidra
+    title: "Costelas Gigantes"
+    deps: [hidra]
+    desc: |
+      A §eHydra Chop§r é tão nutritiva que enche a barra de fome inteira. Comê-la com a fome
+      zerada rende a conquista "Massive Chops".
+
+      Guarde uma para emergências.
+    tasks:
+      - get: TwilightForest:item.hydraChop
+    rewards:
+      - xp: 3
+      - item: minecraft:cooked_beef x8
+
+  - id: lingote_ardente
+    title: "Lingote Ardente"
+    type: main
+    deps: [sangue_fogo]
+    desc: |
+      Sangue de fogo + ferro = metal vivo em brasa. Receita sem forma: §eFiery Blood (ou Fiery
+      Tears) + Lingote de Ferro§r = Fiery Ingot.
+
+      Faça 4 lingotes. Eles também derretem na Smeltery do Tinkers como "Fiery Metal".
+    tasks:
+      - craft: TwilightForest:item.fieryIngot x4
+    rewards:
+      - xp: 5
+      - choice: ["minecraft:iron_ingot x8", "minecraft:blaze_rod x2", "minecraft:obsidian x8"]
+
+  - id: picareta_ardente
+    title: "Picareta Ardente"
+    deps: [lingote_ardente]
+    desc: |
+      A §eFiery Pick§r funde o que minera: ferro e ouro já saem em lingotes (auto-fundição).
+
+      Receita: 3 Fiery Ingots em cima e 2 Varas de Blaze como cabo.
+    tasks:
+      - craft: TwilightForest:item.fieryPick
+    rewards:
+      - xp: 3
+      - item: minecraft:blaze_rod x2
+
+  - id: espada_ardente
+    title: "Espada Ardente"
+    deps: [lingote_ardente]
+    desc: |
+      A §eFiery Sword§r põe fogo nos alvos. Receita: 2 Fiery Ingots + 1 Vara de Blaze.
+
+      Faça a espada. §aDica:§r o fogo não funciona bem contra o que já é imune a fogo.
+    tasks:
+      - craft: TwilightForest:item.fierySword
+    rewards:
+      - xp: 3
+      - item: minecraft:blaze_rod
+
+  - id: armadura_ardente
+    title: "Galões de Sangue e Lágrimas"
+    type: optional
+    deps: [picareta_ardente, espada_ardente]
+    deps_any: true
+    desc: |
+      A armadura Fiery queima quem te ataca. Há dois caminhos: as receitas comuns com Fiery
+      Ingots, ou §eupgrade da armadura de ferro§r com Fiery Blood/Tears em volta (confira no
+      NEI).
+
+      Faça as quatro peças. Empunhar uma ferramenta Fiery vestindo uma peça rende a conquista
+      "Gallons of Blood and Tears".
+    tasks:
+      - get: [TwilightForest:item.fieryHelm, TwilightForest:item.fieryPlate, TwilightForest:item.fieryLegs, TwilightForest:item.fieryBoots]
+    rewards:
+      - loot: incomum
+
+  # ------------------------------------------------------------------ Floresta Sombria e Cavaleiros
+  - id: floresta_sombria
+    title: "A Floresta Sombria"
+    type: main
+    deps: [sangue_fogo]
+    desc: |
+      Árvores negras, quase nenhuma luz, e uma maldição de §ecegueira§r que agora não te
+      atinge mais. Bem-vindo(a) à §eDark Forest§r.
+
+      Visite o bioma. Aqui moram Kobolds, Mist Wolves, King Spiders e, debaixo da terra, os
+      goblins do Stronghold dos Cavaleiros.
+    tasks:
+      - visit: {dim: 7, biome: 56, name: "Dark Forest"}
+    rewards:
+      - xp: 5
+      - choice: ["minecraft:torch x64", "minecraft:potion:8262 x2", "minecraft:golden_apple x2"]
+      - command: "/effect @p 16 300 0"
+
+  - id: lobo_nevoa
+    title: "Lobos da Névoa"
+    type: optional
+    deps: [floresta_sombria]
+    desc: |
+      Os §eMist Wolves§r da Floresta Sombria são maiores e mais perigosos que os lobos comuns,
+      e suas mordidas escurecem a visão.
+
+      Derrote 4 deles. Lute de costas para uma árvore para não ser cercado(a).
+    tasks:
+      - kill: {entity: "TwilightForest.Mist Wolf", count: 4}
+    rewards:
+      - loot: incomum
+
+  - id: aranha_rei
+    title: "A Aranha-Rei"
+    type: optional
+    deps: [floresta_sombria]
+    desc: |
+      A §eKing Spider§r é enorme e costuma carregar uma Druida Esqueleto nas costas. Ela vive
+      nas florestas escuras.
+
+      Derrote uma.
+    tasks:
+      - kill: {entity: "TwilightForest.King Spider", count: 1}
+    rewards:
+      - loot: incomum
+
+  - id: stronghold_cavaleiros
+    title: "As Ruínas dos Cavaleiros"
+    type: main
+    deps: [floresta_sombria]
+    desc: |
+      Debaixo da Floresta Sombria há um enorme §eStronghold§r, construído por cavaleiros e
+      hoje infestado de goblins de armadura. Procure uma escadaria descendo no meio do bioma
+      (o mapa mágico ajuda).
+
+      Derrote 4 §eLower Goblin Knights§r. Eles e seus parceiros Upper Goblin Knights (que
+      andam montados neles) largam pedaços de armadura.
+    tasks:
+      - kill: {entity: "TwilightForest.Lower Goblin Knight", count: 4}
+    rewards:
+      - xp: 5
+      - choice: ["minecraft:iron_ingot x8", "minecraft:arrow x48", "minecraft:golden_apple x2"]
+
+  - id: goblin_corrente
+    title: "Goblin da Bola e Corrente"
+    type: optional
+    deps: [stronghold_cavaleiros]
+    desc: |
+      O §eBlock and Chain Goblin§r gira uma bola de ferro presa numa corrente. Ele acerta de
+      longe e derruba blocos!
+
+      Derrote um. A arma dele pode ser fabricada mais tarde com Knightmetal.
+    tasks:
+      - kill: {entity: "TwilightForest.Block&Chain Goblin", count: 1}
+    rewards:
+      - loot: incomum
+
+  - id: caranguejo_elmo
+    title: "Caranguejo de Elmo"
+    type: optional
+    deps: [floresta_sombria]
+    desc: |
+      Os §eHelmet Crabs§r usam um capacete de cavaleiro como casco. Eles também largam pedaços
+      de armadura (Armor Shards).
+
+      Derrote 4 deles.
+    tasks:
+      - kill: {entity: "TwilightForest.Helmet Crab", count: 4}
+    rewards:
+      - loot: incomum
+
+  - id: estilhacos
+    title: "Estilhaços de Armadura"
+    type: main
+    deps: [stronghold_cavaleiros]
+    desc: |
+      Cada goblin derrotado larga §eArmor Shards§r. Nove estilhaços na bancada formam um
+      §eArmor Shard Cluster§r, que vai para a fornalha.
+
+      Junte 9 estilhaços e monte o aglomerado.
+    tasks:
+      - craft: TwilightForest:item.shardCluster
+    rewards:
+      - xp: 5
+      - choice: ["minecraft:coal x16", "minecraft:iron_ingot x6", "minecraft:lava_bucket"]
+
+  - id: knightmetal
+    title: "Metal dos Cavaleiros"
+    type: main
+    deps: [estilhacos]
+    desc: |
+      Funda o Armor Shard Cluster e nasce o §eKnightmetal Ingot§r: o metal mais forte que os
+      goblins guardavam.
+
+      Faça 4 lingotes. (Com Pyrotheum também há uma receita direta na bancada; e ele derrete na
+      Smeltery como "Knightmetal".)
+    tasks:
+      - craft: TwilightForest:item.knightMetal x4
+    rewards:
+      - xp: 5
+      - choice: ["minecraft:stick x16", "minecraft:iron_ingot x8", "minecraft:diamond x2"]
+
+  - id: armadura_cavaleiro
+    title: "Armadura do Cavaleiro"
+    deps: [knightmetal]
+    desc: |
+      A armadura de Knightmetal (Knightly) é das mais resistentes do Crepúsculo.
+
+      Faça as quatro peças: elmo, peitoral, grevas e botas.
+    tasks:
+      - get: [TwilightForest:item.knightlyHelm, TwilightForest:item.knightlyPlate, TwilightForest:item.knightlyLegs, TwilightForest:item.knightlyBoots]
+    rewards:
+      - xp: 3
+      - item: minecraft:golden_apple x2
+
+  - id: espada_cavaleiro
+    title: "Espada do Cavaleiro"
+    deps: [knightmetal]
+    desc: |
+      A §eKnightly Sword§r (e a picareta) causa dano extra em alvos com armadura. O machado faz
+      o contrário: dano extra em quem está sem armadura.
+
+      Faça a espada.
+    tasks:
+      - craft: TwilightForest:item.knightlySword
+    rewards:
+      - xp: 3
+      - item: minecraft:iron_ingot x4
+
+  - id: ferramentas_cavaleiro
+    title: "Picareta e Machado do Cavaleiro"
+    type: optional
+    deps: [espada_cavaleiro]
+    desc: |
+      Complete o arsenal: §eKnightly Pick§r e §eKnightly Axe§r.
+
+      O machado é especialmente bom contra criaturas sem armadura, como os Yetis que você vai
+      encontrar mais adiante.
+    tasks:
+      - get: [TwilightForest:item.knightlyPick, TwilightForest:item.knightlyAxe]
+    rewards:
+      - loot: incomum
+
+  - id: bola_corrente
+    title: "Bola e Corrente"
+    type: optional
+    deps: [knightmetal]
+    desc: |
+      Primeiro um §eKnightmetal Loop§r (4 lingotes em forma de cruz vazada). Depois:
+      Loop + 3 lingotes + 1 Bloco de Knightmetal = §eBlock and Chain§r, a arma arremessável dos
+      goblins, que quebra blocos e acerta inimigos de longe.
+
+      Monte a sua.
+    tasks:
+      - craft: TwilightForest:item.chainBlock
+    rewards:
+      - loot: incomum
+
+  - id: pedestal_trofeu
+    title: "Campeão Trofeado"
+    type: main
+    deps: [stronghold_cavaleiros, hidra]
+    desc: |
+      Bem no fundo das ruínas existe um §ePedestal de Troféu§r cercado de blocos de escudo. Os
+      cavaleiros colocavam ali o troféu de um grande inimigo para provar seu valor.
+
+      Coloque um troféu de chefe (o da Hidra é o mais indicado) no pedestal. As paredes de
+      escudo se abrem e liberam a parte principal do Stronghold. Marque quando tiver feito.
+    tasks:
+      - one_of: [TwilightForest:item.trophy:0, TwilightForest:item.trophy:1, TwilightForest:item.trophy:2, TwilightForest:item.trophy:5]
+      - check
+    rewards:
+      - xp: 5
+      - choice: ["minecraft:golden_apple x3", "minecraft:arrow x64", "minecraft:potion:8229 x2"]
+
+  - id: cavaleiros_fantasmas
+    title: "Os Cavaleiros Fantasmas"
+    type: boss
+    deps: [pedestal_trofeu]
+    banner: "Os Cavaleiros Fantasmas descansam"
+    subtitle: "A tumba do Stronghold silencia"
+    task_logic: OR
+    desc: |
+      Na Tumba dos Cavaleiros, seis §eKnight Phantoms§r se levantam e voam em formação. Eles
+      atacam um de cada vez e trocam de arma, e quando poucos restam ficam mais rápidos.
+
+      §cDica:§r fique perto do centro da sala, mantenha a vida cheia e derrube um por vez. Ao
+      final aparece um baú de tesouro com o troféu e peças da §eArmadura Fantasma§r.
+
+      Com eles em paz, os mecanismos da Torre Sombria passam a te obedecer.
+    tasks:
+      - kill: {entity: "TwilightForest.Knight Phantom", count: 6}
+      - get: TwilightForest:item.trophy:6
+    rewards:
+      - xp: 10
+      - loot: epico
+
+  - id: armadura_fantasma
+    title: "Nem a Morte nos Separa"
+    type: optional
+    deps: [cavaleiros_fantasmas]
+    desc: |
+      O §ePhantom Helm§r e o §ePhantom Plate§r são especiais: com eles você não perde essas
+      peças ao morrer ("Even the death won't do you part").
+
+      Pegue as duas no tesouro dos Fantasmas.
+    tasks:
+      - get: [TwilightForest:item.phantomHelm, TwilightForest:item.phantomPlate]
+    rewards:
+      - loot: incomum
+
+  # ------------------------------------------------------------------ Torre Sombria e Ur-Ghast
+  - id: centro_sombrio
+    title: "Onde as Folhas Ficam Vermelhas"
+    type: main
+    deps: [cavaleiros_fantasmas]
+    desc: |
+      No centro da Floresta Sombria, as folhas ficam vermelhas e a grama morre. Ali se ergue a
+      §eTorre Sombria§r (Dark Tower), feita de Towerwood, com antenas no topo que alimentam a
+      nevasca do norte.
+
+      Visite o §eDark Forest Center§r.
+    tasks:
+      - visit: {dim: 7, biome: 54, name: "Dark Forest Center"}
+    rewards:
+      - xp: 5
+      - choice: ["minecraft:redstone x16", "minecraft:arrow x48", "minecraft:golden_apple x2"]
+
+  - id: broca_torre
+    title: "Brocas da Torre"
+    deps: [centro_sombrio]
+    desc: |
+      As paredes da torre escondem §eTowerwood Borers§r: cupins que saem de blocos infestados e
+      roem a madeira.
+
+      Derrote-os e junte 4 §eBorer Essence§r. Ela é a base da Carminite.
+    tasks:
+      - get: TwilightForest:item.borerEssence x4
+    rewards:
+      - xp: 3
+      - item: minecraft:redstone x8
+
+  - id: carminite
+    title: "Carminite"
+    deps: [broca_torre]
+    desc: |
+      A §eCarminite§r é o cristal vermelho que alimenta os mecanismos da torre.
+
+      Receita: §e4 Borer Essence + 4 Redstone + 1 Lágrima de Ghast§r no centro. Também aparece
+      em baús e no tesouro do chefe.
+    tasks:
+      - get: TwilightForest:item.carminite
+    rewards:
+      - xp: 3
+      - item: minecraft:redstone x8
+
+  - id: chave_torre
+    title: "A Chave da Torre"
+    type: main
+    deps: [centro_sombrio]
+    desc: |
+      Os mecanismos da Dark Tower (blocos que somem, construtores de Carminite) agora
+      respondem a você. Algumas passagens têm blocos trancados que só abrem com uma §eTower
+      Key§r.
+
+      As chaves ficam em baús nas alas da torre. Encontre uma e use-a nos blocos trancados.
+    tasks:
+      - get: TwilightForest:item.towerKey
+    rewards:
+      - xp: 5
+      - choice: ["minecraft:redstone x16", "minecraft:arrow x48", "minecraft:potion:8229 x2"]
+
+  - id: ghastlings
+    title: "Ghastlings de Carminite"
+    deps: [chave_torre]
+    desc: |
+      No topo da torre, pequenos §eCarminite Ghastlings§r flutuam ao redor das armadilhas de
+      ghast (Ghast Traps). Matar ghastlings perto de uma armadilha a carrega; armadilhas
+      carregadas ajudam a puxar o chefe para baixo.
+
+      Derrote 6 Ghastlings perto das Ghast Traps.
+    tasks:
+      - kill: {entity: "TwilightForest.Mini Ghast", count: 6}
+    rewards:
+      - xp: 3
+      - item: minecraft:arrow x32
+
+  - id: ur_ghast
+    title: "Lágrimas de Fogo"
+    type: boss
+    deps: [ghastlings]
+    banner: "O Ur-Ghast foi derrotado!"
+    subtitle: "A nevasca começa a enfraquecer"
+    task_logic: OR
+    desc: |
+      O §eUr-Ghast§r é o ghast mais antigo e chorão que existe. Ele voa no topo da Torre Sombria
+      e lança bolas de fogo em rajadas.
+
+      §cTática:§r com as Ghast Traps carregadas, acione-as com redstone para prender o
+      Ur-Ghast e puxá-lo para perto; aí é hora de bater com tudo. Rebata as bolas de fogo com a
+      espada. Ao morrer, ele deixa um baú com §eFiery Tears§r, Carminite e o troféu.
+
+      As lágrimas dele protegem você do frio da Floresta de Neve.
+    tasks:
+      - kill: {entity: "TwilightForest.Tower Boss", count: 1}
+      - get: TwilightForest:item.trophy:3
+    rewards:
+      - xp: 10
+      - loot: epico
+
+  - id: lagrimas_fogo
+    title: "Lágrimas Ardentes"
+    type: main
+    deps: [ur_ghast]
+    desc: |
+      Toque nas §eFiery Tears§r e o frio mágico da Floresta de Neve deixa de te paralisar
+      ("Tears of Fire"). Elas também servem, como o Fiery Blood, para fazer Fiery Ingots.
+
+      Junte 3 lágrimas.
+    tasks:
+      - get: TwilightForest:item.fieryTears x3
+    rewards:
+      - xp: 5
+      - choice: ["minecraft:potion:8259 x2", "minecraft:iron_ingot x8", "minecraft:wool x16"]
+
+  - id: fortaleza_crepusculo
+    title: "Forja do Crepúsculo"
+    type: milestone
+    deps: [lingote_ardente, knightmetal, lagrimas_fogo]
+    banner: "Forja do Crepúsculo"
+    subtitle: "Ironwood, Fiery e Knightmetal"
+    desc: |
+      Olha só o seu arsenal: Ironwood das raízes, metal ardente do sangue da Hidra, Knightmetal
+      dos goblins... Você domina toda a metalurgia do Crepúsculo!
+
+      Metade do reino já está livre. Os Lich e os Faraós tinham um acordo antigo de trocar
+      páginas, sabia? Se você estiver explorando as Areias de Atum também, vai entender por
+      que os dois reinos se parecem tanto: tumbas, guardiões, maldições.
+
+      Agora vem o frio. Prepare-se para a Floresta de Neve.
+    tasks:
+      - check
+    rewards:
+      - xp: 10
+      - kit: {name: "Kit do Ferreiro do Crepúsculo", items: ["TwilightForest:item.knightMetal x4", "TwilightForest:item.fieryIngot x4", "TwilightForest:item.ironwoodIngot x8", "minecraft:golden_apple x2"]}
+      - loot: raro
+
+  # ------------------------------------------------------------------ Floresta de Neve e Yeti
+  - id: floresta_neve
+    title: "A Nevasca Sem Fim"
+    type: main
+    deps: [lagrimas_fogo]
+    desc: |
+      Ao norte, a §eFloresta de Neve§r (Snowy Forest) vive sob uma nevasca mágica. Agora que você
+      tocou as lágrimas do Ur-Ghast, o frio não te prende mais.
+
+      Lá vivem os §eYetis§r. Derrote 4 deles. Cuidado: eles agarram e arremessam!
+    tasks:
+      - kill: {entity: "TwilightForest.Yeti", count: 4}
+    rewards:
+      - xp: 5
+      - choice: ["minecraft:cooked_beef x16", "minecraft:potion:8259 x2", "minecraft:golden_apple x2"]
+
+  - id: lobo_inverno
+    title: "Lobos do Inverno"
+    type: optional
+    deps: [floresta_neve]
+    desc: |
+      Os §eWinter Wolves§r sopram rajadas de gelo. Como os Yetis, eles largam §eArctic Fur§r.
+
+      Derrote 4.
+    tasks:
+      - kill: {entity: "TwilightForest.WinterWolf", count: 4}
+    rewards:
+      - loot: incomum
+
+  - id: pelo_artico
+    title: "Pelo Ártico"
+    deps: [floresta_neve]
+    desc: |
+      A §eArctic Fur§r é quentinha e resistente. Yetis e Winter Wolves a largam.
+
+      Junte 8 peles.
+    tasks:
+      - get: TwilightForest:item.arcticFur x8
+    rewards:
+      - xp: 3
+      - item: minecraft:leather x8
+
+  - id: armadura_artica
+    title: "Armadura Ártica"
+    type: optional
+    deps: [pelo_artico]
+    desc: |
+      Com Arctic Fur nas receitas comuns de armadura você faz a §eArmadura Ártica§r (Arctic Hood,
+      Jacket, Leggings e Boots), que pode ser tingida como couro.
+
+      Faça as quatro peças.
+    tasks:
+      - get: [TwilightForest:item.arcticHelm, TwilightForest:item.arcticPlate, TwilightForest:item.arcticLegs, TwilightForest:item.arcticBoots]
+    rewards:
+      - loot: incomum
+
+  - id: yeti_alfa
+    title: "O Yeti Alfa"
+    type: boss
+    deps: [floresta_neve]
+    banner: "O Yeti Alfa foi vencido!"
+    subtitle: "A nevasca finalmente para"
+    task_logic: OR
+    desc: |
+      Numa caverna de gelo da Floresta de Neve vive o §eYeti Alfa§r: o líder de todos os Yetis e a
+      fonte da nevasca. Ele arremessa blocos de gelo, faz estalactites caírem do teto e te
+      agarra.
+
+      §cTática:§r fique em movimento para fugir das estalactites e bata quando ele estiver
+      cansado (ofegante). Ele larga §eAlpha Yeti Fur§r, Ice Bombs e o troféu.
+    tasks:
+      - kill: {entity: "TwilightForest.Yeti Boss", count: 1}
+      - get: TwilightForest:item.trophy:7
+    rewards:
+      - xp: 10
+      - loot: epico
+
+  - id: pelo_alfa
+    title: "Pelo Alfa"
+    type: main
+    deps: [yeti_alfa]
+    desc: |
+      Forrar as roupas com o pelo macio do Yeti Alfa te protege do frio da Geleira ("Alpha Fur").
+
+      Junte 4 §eAlpha Yeti Fur§r.
+    tasks:
+      - get: TwilightForest:item.alphaFur x4
+    rewards:
+      - xp: 5
+      - choice: ["minecraft:wool x16", "minecraft:potion:8259 x2", "minecraft:golden_apple x2"]
+
+  - id: armadura_yeti
+    title: "Armadura do Yeti"
+    deps: [pelo_alfa]
+    desc: |
+      Alpha Yeti Fur nas receitas de armadura vira a §eArmadura do Yeti§r: já vem com Proteção
+      (e Queda Suave nas botas) e congela quem te ataca.
+
+      Faça as quatro peças: elmo com chifres, jaqueta, calças e botas.
+    tasks:
+      - get: [TwilightForest:item.yetiHelm, TwilightForest:item.yetiPlate, TwilightForest:item.yetiLegs, TwilightForest:item.yetiBoots]
+    rewards:
+      - xp: 3
+      - item: minecraft:golden_apple x2
+
+  - id: bomba_gelo
+    title: "Bombas de Gelo"
+    type: optional
+    deps: [yeti_alfa]
+    desc: |
+      As §eIce Bombs§r do Yeti Alfa explodem numa nuvem gelada que congela água e desacelera
+      inimigos.
+
+      Guarde 4 delas.
+    tasks:
+      - get: TwilightForest:item.iceBomb x4
+    rewards:
+      - loot: incomum
+
+  # ------------------------------------------------------------------ Geleira e Rainha da Neve
+  - id: geleira
+    title: "O Palácio da Aurora"
+    type: main
+    deps: [pelo_alfa]
+    desc: |
+      Além da Floresta de Neve está a §eGeleira§r, e sobre ela o §ePalácio da Aurora§r, feito de
+      blocos que brilham com as cores da aurora polar.
+
+      Os corredores são guardados por §eSnow Guardians§r e cristais de gelo. Derrote 4 Snow
+      Guardians e explore as alas do palácio.
+    tasks:
+      - kill: {entity: "TwilightForest.SnowGuardian", count: 4}
+    rewards:
+      - xp: 5
+      - choice: ["minecraft:arrow x64", "minecraft:potion:8229 x2", "minecraft:golden_apple x2"]
+
+  - id: bloco_aurora
+    title: "Blocos da Aurora"
+    type: optional
+    deps: [geleira]
+    desc: |
+      Os §eAurora Blocks§r mudam de cor conforme a posição: um arco-íris gelado para construir.
+      Eles aparecem nos baús do palácio e podem ser coletados.
+
+      Junte 16.
+    tasks:
+      - get: TwilightForest:tile.TFAuroraBrick x16
+    rewards:
+      - loot: incomum
+
+  - id: nucleo_gelo
+    title: "Núcleos Instáveis"
+    type: optional
+    deps: [geleira]
+    desc: |
+      Os §eUnstable Ice Cores§r explodem em gelo quando morrem, e os Stable Ice Cores atiram
+      bolas de neve. Ambos protegem o palácio.
+
+      Derrote 4 Unstable Ice Cores, de longe se possível.
+    tasks:
+      - kill: {entity: "TwilightForest.Unstable Ice Core", count: 4}
+    rewards:
+      - loot: incomum
+
+  - id: rainha_neve
+    title: "Céus Limpos"
+    type: boss
+    deps: [geleira]
+    banner: "A Rainha da Neve caiu!"
+    subtitle: "A chuva ácida das Terras Altas cessa"
+    task_logic: OR
+    desc: |
+      No topo do Palácio da Aurora reina a §eRainha da Neve§r, a feiticeira do clima que
+      sustenta a chuva ácida das Terras Altas.
+
+      §cTática:§r ela se cerca de cristais de gelo que a protegem e atacam; destrua-os primeiro.
+      Depois ela parte para ataques diretos: não fique parado(a) e use arcos à distância.
+
+      Ela larga o troféu e um dos arcos lendários (Tri-bow ou Seeker Bow). Com ela vencida, o
+      caminho para o fim do reino se abre.
+    tasks:
+      - kill: {entity: "TwilightForest.Snow Queen", count: 1}
+      - get: TwilightForest:item.trophy:4
+    rewards:
+      - xp: 10
+      - loot: epico
+
+  - id: arcos_rainha
+    title: "Os Arcos da Rainha"
+    deps: [rainha_neve]
+    desc: |
+      O §eTri-bow§r dispara três flechas de uma vez; o §eSeeker Bow§r atira flechas que perseguem
+      o alvo. A Rainha da Neve larga um deles.
+
+      Tenha qualquer um dos dois.
+    tasks:
+      - one_of: [TwilightForest:item.tripleBow, TwilightForest:item.seekerBow]
+    rewards:
+      - xp: 3
+      - item: minecraft:arrow x64
+
+  - id: tesouros_palacio
+    title: "Tesouros da Aurora"
+    type: optional
+    deps: [geleira]
+    desc: |
+      Os baús do Palácio da Aurora guardam armas raras: o §eIce Bow§r (flechas que congelam), o
+      §eEnder Bow§r (troca de lugar com o alvo), a §eIce Sword§r e a frágil mas poderosa
+      §eGlass Sword§r.
+
+      Encontre qualquer uma delas.
+    tasks:
+      - one_of: [TwilightForest:item.iceBow, TwilightForest:item.enderBow, TwilightForest:item.iceSword, TwilightForest:item.glassSword]
+    rewards:
+      - loot: incomum
+
+  # ------------------------------------------------------------------ Terras Altas, Trolls e Espinhos
+  - id: terras_altas
+    title: "As Terras Altas"
+    type: main
+    deps: [rainha_neve]
+    desc: |
+      Montanhas, rochas e pinheiros enormes: as §eTwilight Highlands§r. Antes da Rainha da Neve,
+      uma chuva ácida tornava a viagem impossível.
+
+      Visite o bioma. Debaixo das montanhas ficam as §eCavernas dos Trolls§r.
+    tasks:
+      - visit: {dim: 7, biome: 44, name: "Twilight Highlands"}
+    rewards:
+      - xp: 5
+      - choice: ["minecraft:torch x64", "minecraft:golden_apple x2", "minecraft:cooked_beef x16"]
+
+  - id: trolls
+    title: "Os Trolls das Cavernas"
+    type: main
+    deps: [terras_altas]
+    desc: |
+      As Cavernas dos Trolls são enormes, com pedra Deadrock e jardins de Trollvidr. Os §eCave
+      Trolls§r arremessam rochas e batem forte.
+
+      Derrote 3 Cave Trolls. Eles podem largar §eMagic Beans§r.
+    tasks:
+      - kill: {entity: "TwilightForest.Troll", count: 3}
+    rewards:
+      - xp: 5
+      - choice: ["minecraft:arrow x64", "minecraft:golden_apple x2", "minecraft:potion:8229 x2"]
+
+  - id: trollsteinn
+    title: "Trollsteinn"
+    type: optional
+    deps: [trolls]
+    desc: |
+      A §eTrollsteinn§r é uma pedra que brilha quando há luz perto (e escurece na sombra).
+      Aparece nas cavernas e nos jardins dos trolls.
+
+      Junte 6 para decorar.
+    tasks:
+      - get: TwilightForest:tile.TrollSteinn x6
+    rewards:
+      - loot: incomum
+
+  - id: feijoes_magicos
+    title: "Feijões Mágicos"
+    deps: [trolls]
+    desc: |
+      Sim, como no conto. §eMagic Beans§r plantados em §eUberous Soil§r crescem num pé de feijão
+      gigante que sobe até as nuvens, onde vivem os gigantes.
+
+      Junte um feijão e um bloco de Uberous Soil (os dois aparecem nos jardins dos trolls).
+    tasks:
+      - get: [TwilightForest:item.magicBeans, TwilightForest:tile.UberousSoil]
+    rewards:
+      - xp: 3
+      - item: minecraft:dye:15 x16
+
+  - id: gigantes
+    title: "Lá em Cima, os Gigantes"
+    type: optional
+    deps: [feijoes_magicos]
+    desc: |
+      Suba o pé de feijão até as nuvens. Lá moram §eGiant Miners§r e §eArmored Giants§r: versões
+      enormes de jogadores, num mundo de blocos gigantes.
+
+      Derrote um Giant Miner. Ele pode deixar a §eGiant's Pickaxe§r, que quebra os blocos
+      gigantes. Cuidado com a queda!
+    tasks:
+      - kill: {entity: "TwilightForest.Giant Miner", count: 1}
+    rewards:
+      - loot: incomum
+
+  - id: ferramentas_gigantes
+    title: "Ferramentas de Gigante"
+    type: optional
+    deps: [gigantes]
+    desc: |
+      A §eGiant's Pickaxe§r e a §eGiant's Sword§r têm alcance enorme. Elas também podem ser
+      feitas com Giant Cobblestone e Giant Log, os blocos do castelo das nuvens.
+
+      Tenha qualquer uma das duas.
+    tasks:
+      - one_of: [TwilightForest:item.giantPick, TwilightForest:item.giantSword]
+    rewards:
+      - loot: incomum
+
+  - id: lampada_cinzas
+    title: "Eu Quero Mais Fogo"
+    type: main
+    deps: [trolls]
+    desc: |
+      No cofre da caverna dos trolls está a §eLamp of Cinders§r: uma lâmpada que queima as
+      barreiras de espinhos das Thornlands.
+
+      Encontre o cofre (procure portas e salas fechadas nas cavernas maiores) e pegue a
+      lâmpada.
+    tasks:
+      - get: TwilightForest:item.lampOfCinders
+    rewards:
+      - xp: 5
+      - choice: ["minecraft:golden_apple x2", "minecraft:potion:8259 x2", "minecraft:arrow x64"]
+
+  - id: terras_espinhos
+    title: "Além dos Espinhos"
+    type: main
+    deps: [lampada_cinzas]
+    desc: |
+      As §eThornlands§r são um mar de espinhos (Thorns) que machucam e não podem ser quebrados à
+      mão. Use a Lamp of Cinders para queimá-los e abrir caminho.
+
+      Visite as Thornlands.
+    tasks:
+      - visit: {dim: 7, biome: 59, name: "Thornlands"}
+    rewards:
+      - xp: 5
+      - choice: ["minecraft:golden_apple x2", "minecraft:cooked_beef x16", "minecraft:torch x64"]
+
+  - id: rosa_espinhos
+    title: "Rosa de Espinhos"
+    type: optional
+    deps: [terras_espinhos]
+    desc: |
+      Entre os espinhos às vezes floresce uma §eThorn Rose§r. Leve uma para casa: é a flor mais
+      teimosa do reino.
+    tasks:
+      - get: TwilightForest:tile.TFThornRose
+    rewards:
+      - loot: incomum
+
+  - id: castelo_final
+    title: "O Castelo no Platô"
+    type: main
+    deps: [terras_espinhos]
+    desc: |
+      No centro das Terras Altas, cercado pelas Thornlands, ergue-se o platô final com um
+      §eCastelo§r de tijolos e runas coloridas, protegido por campos de força.
+
+      §eHonestidade de Akasha:§r nesta versão do mod o castelo ainda é um mistério sem chefe;
+      é um lugar para explorar e admirar. Visite o §eHighlands Center§r e veja com seus
+      próprios olhos. ("So Castle Very Wow".)
+    tasks:
+      - visit: {dim: 7, biome: 55, name: "Highlands Center"}
+    rewards:
+      - xp: 5
+      - choice: ["minecraft:diamond x3", "minecraft:emerald x4", "minecraft:golden_apple x2"]
+
+  - id: tijolos_castelo
+    title: "Tijolos do Castelo"
+    type: optional
+    deps: [castelo_final]
+    desc: |
+      Os §eCastle Bricks§r e as runas coloridas do castelo são lindos para construir.
+
+      Junte 16 tijolos de castelo (qualquer variante).
+    tasks:
+      - get: TwilightForest:tile.CastleBrick:* x16
+    rewards:
+      - loot: incomum
+
+  # ------------------------------------------------------------------ Encantos variados
+  - id: carneiro_buscador
+    title: "Baaah Consumado"
+    type: optional
+    deps: [floresta_encantada]
+    desc: |
+      Na Floresta Encantada vive o §eQuesting Ram§r, um carneiro com o
+      pelo sem cor. Dê a ele um bloco de lã de cada uma das 16 cores e ele te recompensa com
+      tesouros, incluindo a §eCrumble Horn§r (uma corneta que esfarela pedra e terra).
+
+      Traga a Crumble Horn. §aDica:§r a Floresta Encantada tem árvores coloridas e é fácil de
+      reconhecer no mapa mágico.
+    tasks:
+      - get: TwilightForest:item.crumbleHorn
+    rewards:
+      - loot: incomum
+
+  - id: leque_pavao
+    title: "Leque de Pena de Pavão"
+    type: optional
+    deps: [colina_media]
+    desc: |
+      O §ePeacock Feather Fan§r cria uma rajada de vento que empurra criaturas e, usado no ar,
+      te dá um impulso para cima.
+
+      Ele aparece em baús de colinas e outras ruínas. Encontre um.
+    tasks:
+      - get: TwilightForest:item.peacockFan
+    rewards:
+      - loot: incomum
+
+  - id: ima_minerio
+    title: "Ímã de Minério"
+    type: optional
+    deps: [colina_pequena]
+    desc: |
+      O §eOre Magnet§r puxa veios de minério na direção em que você aponta. Mineração
+      preguiçosa, eu aprovo!
+
+      Ache um em baús das Colinas Ocas.
+    tasks:
+      - get: TwilightForest:item.oreMagnet
+    rewards:
+      - loot: incomum
+
+  - id: rainha_vermes
+    title: "A Rainha dos Vermes-da-Lua"
+    type: optional
+    deps: [criaturinhas]
+    desc: |
+      A §eMoonworm Queen§r dispara Moonworms que grudam nas paredes e iluminam o caminho: a
+      tocha infinita do explorador. Recarregue-a na bancada com Torchberries.
+
+      Encontre uma em baús.
+    tasks:
+      - get: TwilightForest:item.moonwormQueen
+    rewards:
+      - loot: incomum
+
+  - id: po_transformacao
+    title: "Pó da Transformação"
+    type: optional
+    deps: [colina_grande]
+    desc: |
+      O §eTransformation Powder§r, usado num animal ou monstro, transforma-o na versão do
+      Crepúsculo (ou vice-versa). Um vislumbre do poder da Árvore da Transformação.
+
+      Junte 4 punhados (baús de colinas e do Tree Cache).
+    tasks:
+      - get: TwilightForest:item.transformPowder x4
+    rewards:
+      - loot: incomum
+
+  - id: kobolds
+    title: "Kobolds Ladrões"
+    type: optional
+    deps: [portal_crepusculo]
+    desc: |
+      Os §eKobolds§r são pequenos, barulhentos e adoram pão. Eles andam em bandos nas florestas.
+
+      Derrote 5 Kobolds.
+    tasks:
+      - kill: {entity: "TwilightForest.Twilight Kobold", count: 5}
+    rewards:
+      - loot: comum
+
+  - id: druidas
+    title: "Druidas Esqueletos"
+    type: optional
+    deps: [frutos_tocha]
+    desc: |
+      Os §eSkeleton Druids§r são esqueletos de enxada na mão que lançam feitiços de natureza.
+      Aparecem nas partes escuras da floresta.
+
+      Derrote 3 druidas: eles costumam largar Torchberries.
+    tasks:
+      - kill: {entity: "TwilightForest.Skeleton Druid", count: 3}
+    rewards:
+      - loot: comum
+
+  - id: experimento_115
+    title: "Experimento 115"
+    type: optional
+    deps: [labirinto]
+    desc: |
+      Um bolo misterioso chamado §eExperiment 115§r aparece em alguns baús do reino. Ninguém sabe
+      quem o assou. Ninguém sabe por que ele é tão gostoso.
+
+      Encontre um (e coma uma fatia em minha homenagem).
+    tasks:
+      - get: TwilightForest:item.experiment115
+    rewards:
+      - loot: comum
+
+  - id: wafer_labirinto
+    title: "Biscoito do Labirinto"
+    type: optional
+    deps: [labirinto]
+    desc: |
+      O §eMaze Wafer§r é a ração dos exploradores do labirinto: aparece nos baús dos corredores.
+
+      Junte 8.
+    tasks:
+      - get: TwilightForest:item.mazeWafer x8
+    rewards:
+      - loot: comum
+
+  - id: pedras_naga
+    title: "Construindo com Nagastone"
+    type: optional
+    deps: [naga]
+    desc: |
+      Depois que a Naga cai, os blocos decorados do pátio podem ser coletados: Nagastone,
+      pilares e escadas. Ótimos para um templo particular.
+
+      Junte 16 blocos de Nagastone (o corpo da serpente esculpida).
+    tasks:
+      - get: TwilightForest:tile.TFNagastoneBody x16
+    rewards:
+      - loot: incomum
+
+  - id: pedra_labirinto
+    title: "Construindo com Mazestone"
+    type: optional
+    deps: [minoshroom]
+    desc: |
+      Com o Minoshroom derrotado, a Mazestone fica mais fácil de quebrar (e a Mazebreaker a
+      corta como manteiga). Os tijolos do labirinto são lindos.
+
+      Junte 32 blocos de Mazestone (qualquer variante).
+    tasks:
+      - get: TwilightForest:tile.TFMazestone:* x32
+    rewards:
+      - loot: incomum
+
+  - id: madeira_torre
+    title: "Towerwood"
+    type: optional
+    deps: [ur_ghast]
+    desc: |
+      As tábuas de Towerwood da Torre Sombria têm um ar de fortaleza antiga. Algumas estão
+      infestadas de cupins: quebre com cuidado.
+
+      Junte 16 Towerwood Planks.
+    tasks:
+      - get: TwilightForest:tile.TFTowerStone x16
+    rewards:
+      - loot: incomum
+
+  - id: tinkers_crepusculo
+    title: "Materiais para o Tinkers"
+    type: optional
+    deps: [lingote_ardente, knightmetal]
+    deps_any: true
+    desc: |
+      Neste pack, a integração do Tinkers' Construct está ativa: Fiery Metal, Knightmetal,
+      Naga Scale e Steeleaf são materiais de ferramenta, cada um com seus modificadores.
+
+      As "Notes on the Twilight Materials" explicam tudo. Receita: §ePadrão em Branco (Tinkers)
+      + Papel + Magic Map Focus§r.
+    tasks:
+      - craft: TwilightForest:manualBook
+    rewards:
+      - loot: incomum
+
+  # ------------------------------------------------------------------ Biomas, flora e fauna
+  - id: maldicoes_reino
+    title: "O Mapa das Maldições"
+    type: info
+    deps: [portal_crepusculo]
+    desc: |
+      Deixa eu resumir o que o caderno de um explorador antigo (sim, eu li!) diz sobre as
+      maldições do reino:
+
+      §ePântano§r: mosquitos que roubam a fome → vença o §eLich§r.
+      §ePântano de Fogo§r: calor que queima → coma o Stroganoff do §eMinoshroom§r.
+      §eFloresta Sombria§r: cegueira → use o sangue da §eHidra§r.
+      §eTorre Sombria§r: mecanismos travados → acalme os §eCavaleiros Fantasmas§r.
+      §eFloresta de Neve§r: nevasca → toque as lágrimas do §eUr-Ghast§r.
+      §eGeleira§r: frio extremo → vista o pelo do §eYeti Alfa§r.
+      §eTerras Altas§r: chuva ácida → derrote a §eRainha da Neve§r.
+      §eThornlands§r: espinhos → queime com a Lamp of Cinders.
+
+      Quando encontrar um "livro de anotações" perto de uma barreira, leia: ele diz o que falta.
+    tasks:
+      - check
+    rewards:
+      - xp: 2
+
+  - id: mudas_crepusculo
+    title: "Mudas do Crepúsculo"
+    deps: [madeiras_crepusculo]
+    desc: |
+      Quer um pedaço do Crepúsculo em casa? As árvores daqui também deixam mudas: a do
+      Dossel (Canopy Tree), a de Mangue e a de Madeira Sombria (Darkwood).
+
+      Junte uma de cada. Elas crescem na Superfície também.
+    tasks:
+      - get: [TwilightForest:tile.TFSapling:1, TwilightForest:tile.TFSapling:2, TwilightForest:tile.TFSapling:3]
+    rewards:
+      - xp: 3
+      - item: minecraft:dye:15 x16
+
+  - id: flora_crepusculo
+    title: "Flora do Crepúsculo"
+    type: optional
+    deps: [portal_crepusculo]
+    desc: |
+      O chão da floresta é cheio de plantinhas que não existem em nenhum outro lugar: o
+      §eMayapple§r, o §eFiddlehead§r (samambaia enroladinha) e o §eMoss Patch§r (musgo rasteiro).
+
+      Colete uma de cada. (Algumas só saem com tesoura; se não cair nada, tente com ela.)
+    tasks:
+      - get: [TwilightForest:tile.TFPlant:4, TwilightForest:tile.TFPlant:8, TwilightForest:tile.TFPlant:3]
+    rewards:
+      - loot: comum
+
+  - id: floresta_encantada
+    title: "A Floresta Encantada"
+    deps: [mapa_magico]
+    desc: |
+      Árvores de folhas coloridas e uma luz azulada: a §eEnchanted Forest§r é rara e fácil de
+      reconhecer no mapa mágico. É lá que mora o Questing Ram e onde crescem os Rainbow Oaks.
+
+      Visite o bioma.
+    tasks:
+      - visit: {dim: 7, biome: 57, name: "Enchanted Forest"}
+    rewards:
+      - xp: 3
+      - item: minecraft:wool x16
+
+  - id: carvalho_arco_iris
+    title: "Carvalho Arco-Íris"
+    type: optional
+    deps: [floresta_encantada]
+    desc: |
+      As folhas do §eRainbow Oak§r mudam de cor conforme o lugar. Uma árvore assim no jardim é
+      pura alegria.
+
+      Consiga uma Rainbow Oak Sapling.
+    tasks:
+      - get: TwilightForest:tile.TFSapling:9
+    rewards:
+      - loot: incomum
+
+  - id: floresta_vagalumes
+    title: "A Floresta dos Vaga-lumes"
+    type: optional
+    deps: [vagalumes]
+    desc: |
+      Postes de luz antigos, vaga-lumes por toda parte: a §eFirefly Forest§r é o lugar mais
+      bonito do reino à "noite".
+
+      Visite o bioma.
+    tasks:
+      - visit: {dim: 7, biome: 52, name: "Firefly Forest"}
+    rewards:
+      - loot: comum
+
+  - id: floresta_cogumelos
+    title: "A Floresta de Cogumelos"
+    type: optional
+    deps: [portal_crepusculo]
+    desc: |
+      Cogumelos gigantes no lugar das árvores: a §eMushroom Forest§r. Mais para dentro fica a
+      Deep Mushroom Forest, ainda mais escura.
+
+      Visite a Mushroom Forest.
+    tasks:
+      - visit: {dim: 7, biome: 45, name: "Mushroom Forest"}
+    rewards:
+      - loot: comum
+
+  - id: mushgloom
+    title: "Mushgloom"
+    type: optional
+    deps: [floresta_cogumelos]
+    desc: |
+      O §eMushgloom§r é um cogumelo que brilha de leve, típico das florestas de cogumelos
+      profundas. Junte 4.
+    tasks:
+      - get: TwilightForest:tile.TFPlant:9 x4
+    rewards:
+      - loot: comum
+
+  - id: vitorias_regias
+    title: "Folhas de Lírio Gigantes"
+    type: optional
+    deps: [pantano]
+    desc: |
+      Nos lagos e pântanos do Crepúsculo flutuam §eHuge Lily Pads§r e §eHuge Water Lilies§r, tão
+      grandes que dá para andar em cima.
+
+      Colete uma de cada.
+    tasks:
+      - get: [TwilightForest:tile.HugeLilyPad, TwilightForest:tile.HugeWaterLily]
+    rewards:
+      - loot: comum
+
+  - id: mosquitos
+    title: "Nuvem de Mosquitos"
+    type: optional
+    deps: [pantano]
+    desc: |
+      Mesmo com a maldição enfraquecida, os §eMosquito Swarms§r continuam zumbindo no pântano.
+
+      Espante 5 nuvens. Elas são frágeis, mas irritantes.
+    tasks:
+      - kill: {entity: "TwilightForest.Mosquito Swarm", count: 5}
+    rewards:
+      - loot: comum
+
+  - id: besouros
+    title: "Os Três Besouros"
+    type: optional
+    deps: [portal_crepusculo]
+    desc: |
+      No subterrâneo do Crepúsculo vivem três besouros enormes: o §eFire Beetle§r (cospe fogo),
+      o §eSlime Beetle§r (cospe gosma) e o §ePinch Beetle§r (te agarra com as pinças).
+
+      Derrote um de cada.
+    tasks:
+      - kill: {entity: "TwilightForest.Fire Beetle", count: 1}
+      - kill: {entity: "TwilightForest.Slime Beetle", count: 1}
+      - kill: {entity: "TwilightForest.Pinch Beetle", count: 1}
+    rewards:
+      - loot: incomum
+
+  - id: aranhas_enxame
+    title: "Aranhas do Enxame"
+    type: optional
+    deps: [colina_pequena]
+    desc: |
+      As §eSwarm Spiders§r são pequenas e vêm em bando, saindo de spawners nas colinas e
+      cavernas.
+
+      Derrote 8.
+    tasks:
+      - kill: {entity: "TwilightForest.Swarm Spider", count: 8}
+    rewards:
+      - loot: comum
+
+  - id: lobos_hostis
+    title: "Lobos Hostis"
+    type: optional
+    deps: [portal_crepusculo]
+    desc: |
+      Nem todo lobo do Crepúsculo quer carinho. Os §eHostile Wolves§r atacam à primeira vista.
+
+      Derrote 4.
+    tasks:
+      - kill: {entity: "TwilightForest.Hostile Wolf", count: 4}
+    rewards:
+      - loot: comum
+
+  - id: madeira_sombria
+    title: "Madeira Sombria"
+    deps: [floresta_sombria]
+    desc: |
+      A §eDarkwood§r das Florestas Sombrias é quase preta: a madeira favorita de quem quer uma
+      base com cara de castelo assombrado.
+
+      Corte 16 troncos de Darkwood.
+    tasks:
+      - get: TwilightForest:tile.TFLog:3 x16
+    rewards:
+      - xp: 3
+      - item: minecraft:torch x32
+
+  - id: goblin_superior
+    title: "Cavaleiros Goblin Superiores"
+    type: optional
+    deps: [stronghold_cavaleiros]
+    desc: |
+      Os §eUpper Goblin Knights§r andam montados nos Lower Goblin Knights, com lança e escudo.
+      Separe os dois e derrote o de cima.
+
+      Derrote 2.
+    tasks:
+      - kill: {entity: "TwilightForest.Upper Goblin Knight", count: 2}
+    rewards:
+      - loot: incomum
+
+  - id: golem_carminite
+    title: "Golem de Carminite"
+    deps: [chave_torre]
+    desc: |
+      Os §eCarminite Golems§r patrulham a Torre Sombria e batem com força. São lentos: use isso
+      a seu favor.
+
+      Derrote 2.
+    tasks:
+      - kill: {entity: "TwilightForest.Tower Golem", count: 2}
+    rewards:
+      - xp: 3
+      - item: minecraft:iron_ingot x6
+
+  - id: guarda_ghast
+    title: "Guardas Ghast"
+    type: optional
+    deps: [ghastlings]
+    desc: |
+      Os §eCarminite Ghastguards§r são ghasts de verdade que guardam o topo da torre. Rebata as
+      bolas de fogo deles com a espada.
+
+      Derrote 3.
+    tasks:
+      - kill: {entity: "TwilightForest.Tower Ghast", count: 3}
+    rewards:
+      - loot: incomum
+
+  - id: cristais_gelo
+    title: "Cristais de Gelo"
+    type: optional
+    deps: [geleira]
+    desc: |
+      Os §eIce Crystals§r são os escudos vivos da Rainha da Neve. Aprenda a derrubá-los rápido:
+      a luta contra ela depende disso.
+
+      Derrote 4.
+    tasks:
+      - kill: {entity: "TwilightForest.Ice Crystal", count: 4}
+    rewards:
+      - loot: incomum
+
+  - id: gigante_blindado
+    title: "O Gigante Blindado"
+    type: optional
+    deps: [gigantes]
+    desc: |
+      O §eArmored Giant§r é o guerreiro dos gigantes das nuvens: armadura completa e uma espada
+      do tamanho de uma árvore.
+
+      Derrote um.
+    tasks:
+      - kill: {entity: "TwilightForest.Armored Giant", count: 1}
+    rewards:
+      - loot: incomum
+
+  - id: blocos_gigantes
+    title: "Blocos Gigantes"
+    type: optional
+    deps: [gigantes]
+    desc: |
+      No mundo dos gigantes, até os blocos são enormes: §eGiant Cobblestone§r e §eGiant Log§r
+      ocupam um espaço de 4x4x4. São eles que viram as ferramentas de gigante.
+
+      Colete um de cada (você vai precisar da Giant's Pickaxe ou de muita paciência).
+    tasks:
+      - get: [TwilightForest:tile.GiantCobble, TwilightForest:tile.GiantLog]
+    rewards:
+      - loot: incomum
+
+  - id: nuvens_gigantes
+    title: "Nuvens Fofas"
+    type: optional
+    deps: [feijoes_magicos]
+    desc: |
+      No alto do pé de feijão, o chão é feito de §eFluffy Clouds§r. Pegue 4 blocos de nuvem para
+      provar que chegou lá em cima, e não olhe para baixo.
+    tasks:
+      - get: TwilightForest:tile.FluffyCloud x4
+    rewards:
+      - loot: comum
+
+  - id: rocha_morta
+    title: "Rocha Morta"
+    type: optional
+    deps: [trolls]
+    desc: |
+      A §eDeadrock§r forma as paredes das cavernas dos trolls, em versões normal, rachada e
+      desgastada. Ótima pedra escura para construir.
+
+      Junte 16 (qualquer variante).
+    tasks:
+      - get: TwilightForest:tile.TFDeadrock:* x16
+    rewards:
+      - loot: comum
+
+  - id: tijolos_espiral
+    title: "Tijolos em Espiral"
+    type: optional
+    deps: [portal_crepusculo]
+    desc: |
+      Os §eSpiral Stone Bricks§r são um bloco decorativo do Crepúsculo feito na bancada com
+      pedra (ou tijolos de pedra) e lajes de pedra. Confira o formato no NEI.
+
+      Faça um lote.
+    tasks:
+      - craft: TwilightForest:tile.TFSpiralBricks
+    rewards:
+      - loot: comum
+
+  - id: blocos_crepusculo
+    title: "Base de Sinalizador"
+    type: optional
+    deps: [lingote_ironwood]
+    desc: |
+      Ironwood, Steeleaf, Knightmetal, Fiery Metal, Carminite e Arctic Fur têm blocos
+      compactos (9 itens = 1 bloco), e todos servem de base para Sinalizadores (Beacons)!
+
+      Faça qualquer um desses blocos.
+    tasks:
+      - one_of: [TwilightForest:tile.IronwoodBlock, TwilightForest:tile.SteeleafBlock, TwilightForest:tile.KnightmetalBlock, TwilightForest:tile.FieryBlock, TwilightForest:tile.CarminiteBlock, TwilightForest:tile.ArcticFurBlock]
+    rewards:
+      - loot: incomum
+
+  - id: mapa_labirinto_vivo
+    title: "O Labirinto no Papel"
+    type: optional
+    deps: [mapa_labirinto]
+    desc: |
+      Ative o Blank Maze Map dentro do labirinto e veja os corredores aparecerem enquanto você
+      anda. Nunca mais perdido(a)!
+
+      Tenha um Maze Map ativado.
+    tasks:
+      - get: TwilightForest:item.mazeMap:*
+    rewards:
+      - loot: comum
+
+  - id: amuleto_guarda_2
+    title: "Amuleto da Guarda II"
+    type: optional
+    deps: [amuleto_guarda]
+    desc: |
+      Quatro Charms of Keeping I formam um §eCharm of Keeping II§r: na morte, você mantém a
+      armadura e a barra de atalhos.
+
+      Monte um.
+    tasks:
+      - craft: TwilightForest:item.charmOfKeeping2
+    rewards:
+      - loot: incomum
+
+  - id: fundicao_crepusculo
+    title: "Fundição do Crepúsculo"
+    type: optional
+    deps: [tinkers_crepusculo]
+    desc: |
+      Na Smeltery do Tinkers' Construct, Fiery Ingots viram §eMolten Fiery Metal§r e Knightmetal
+      vira §eMolten Knightmetal§r. Fiery Blood e Fiery Tears podem ser despejados em tanques do
+      Tinkers e viram §eFiery Essence§r líquida.
+
+      Encha um balde com qualquer um desses três líquidos.
+    tasks:
+      - one_of: [TwilightForest:buckets, TwilightForest:buckets:1, TwilightForest:buckets:2]
+    rewards:
+      - loot: incomum
+
+  - id: sebes
+    title: "Sebes Espinhentas"
+    type: optional
+    deps: [labirinto_sebe]
+    desc: |
+      As §eHedges§r dos labirintos machucam quem encosta. Isso também faz delas uma cerca
+      defensiva ótima para a sua base!
+
+      Colete 16 blocos de sebe (use uma ferramenta, não a mão).
+    tasks:
+      - get: TwilightForest:tile.TFHedge x16
+    rewards:
+      - loot: comum
+
+  - id: cogumelos_profundos
+    title: "A Floresta de Cogumelos Profunda"
+    type: optional
+    deps: [floresta_cogumelos]
+    desc: |
+      No miolo das florestas de cogumelos, os chapéus gigantes fecham o céu: a §eDeep Mushroom
+      Forest§r. É escura, úmida e cheia de Mushgloom.
+
+      Visite o bioma.
+    tasks:
+      - visit: {dim: 7, biome: 53, name: "Deep Mushroom Forest"}
+    rewards:
+      - loot: comum
+
+  - id: lago_crepusculo
+    title: "O Grande Lago"
+    type: optional
+    deps: [portal_crepusculo]
+    desc: |
+      O §eTwilight Lake§r é um lago enorme e calmo, ótimo para pescar e para descansar os olhos
+      entre uma luta e outra. Dizem que o Reino inteiro foi desenhado em volta dele.
+
+      Visite o lago.
+    tasks:
+      - visit: {dim: 7, biome: 41, name: "Twilight Lake"}
+    rewards:
+      - loot: comum
+
+  - id: senhor_terras_altas
+    title: "O Fim do Reino"
+    type: milestone
+    deps: [castelo_final]
+    banner: "O Fim do Reino do Crepúsculo"
+    subtitle: "Das raízes ao platô final"
+    desc: |
+      Do lago de flores ao castelo no platô: você atravessou o Reino do Crepúsculo inteiro.
+      Cada maldição que caiu devolveu uma página ao Registro.
+
+      Daqui de cima dá para ver tudo: a Torre do Lich, a Torre Sombria, o brilho do Palácio
+      da Aurora. Eu fiquei com os olhos marejados (sim, livros choram).
+
+      Se ainda faltar algum troféu, a Sala de Troféus te espera.
+    tasks:
+      - check
+    rewards:
+      - xp: 10
+      - kit: {name: "Kit do Desbravador das Terras Altas", items: ["minecraft:diamond x4", "minecraft:golden_apple x4", "TwilightForest:item.torchberries x32", "minecraft:experience_bottle x16"]}
+      - loot: raro
+
+  # ------------------------------------------------------------------ Coleção e Chave
+  - id: sala_trofeus
+    title: "Sala de Troféus"
+    type: milestone
+    deps: [naga, lich, minoshroom, hidra, cavaleiros_fantasmas, ur_ghast, yeti_alfa, rainha_neve]
+    banner: "Sala de Troféus"
+    subtitle: "Oito chefes, oito troféus"
+    desc: |
+      Oito chefes. Oito troféus. Uma parede inteira de histórias!
+
+      Junte os troféus de todos os chefes do Crepúsculo: Naga, Lich, Minoshroom, Hidra,
+      Cavaleiro Fantasma, Ur-Ghast, Yeti Alfa e Rainha da Neve. Eles podem ser colocados como
+      blocos para montar a sua sala de troféus.
+
+      (Em grupo, só quem pegar o troféu o terá. Combinem quem fica com cada um!)
+    tasks:
+      - get: [TwilightForest:item.trophy:1, TwilightForest:item.trophy:2, TwilightForest:item.trophy:5, TwilightForest:item.trophy:0, TwilightForest:item.trophy:6, TwilightForest:item.trophy:3, TwilightForest:item.trophy:7, TwilightForest:item.trophy:4]
+    rewards:
+      - xp: 10
+      - kit: {name: "Relicário dos Troféus", items: ["minecraft:diamond_block x2", "minecraft:emerald x8", "minecraft:experience_bottle x16"]}
+      - loot: raro
+
+  - id: chave_crepusculo
+    title: "A Chave do Crepúsculo"
+    type: finale
+    deps: [lich, ur_ghast, rainha_neve]
+    banner: "A Chave do Crepúsculo"
+    subtitle: "O primeiro Reino Perdido foi restaurado"
+    desc: |
+      ...você conseguiu. O Lich descansa, o Ur-Ghast parou de chorar e a Rainha da Neve não
+      governa mais o clima. As páginas do tempo que os arquivistas guardavam voltaram para o
+      Registro, e com elas surge a §6Chave do Crepúsculo§r.
+
+      Eu li uma das páginas recuperadas: os Lordes Lich trocavam segredos com os §eFaraós de
+      Atum§r (o tempo pelo destino), e as §eValquírias§r do Aether vigiavam essa troca lá de
+      cima. Três reinos, três chaves, um mesmo segredo.
+
+      Guarde esta conquista com carinho, Herói. Ela é o primeiro dos Selos do Ato IV.
+    tasks:
+      - check
+    rewards:
+      - xp: 20
+      - kit: {name: "Chave do Crepúsculo", items: ["TwilightForest:tile.KnightmetalBlock x2", "TwilightForest:tile.FieryBlock x2", "TwilightForest:item.charmOfLife2", "TwilightForest:item.charmOfKeeping2"]}
+      - loot: [epico x2]
+
+  - link: aether:chave_ceus
+  - link: atum:chave_areias

@@ -1,0 +1,543 @@
+chapter:
+  id: prologo
+  title: "Crônicas Akáshicas: Prólogo — O Despertar"
+  color: "§6"
+  order: 0
+  icon: akashictome:tome
+  desc: |
+    Onde tudo começa. Akasha, a Guardiã do Registro Akáshico, desperta você num mundo que
+    esqueceu como funciona — e te ensina a ler este livro.
+
+quests:
+  - id: despertar
+    title: "O Despertar"
+    type: finale
+    size: 40
+    icon: questbook:ItemQuestBook
+    banner: "Bem-vindo, Herói!"
+    subtitle: "As Crônicas Akáshicas começaram"
+    desc: |
+      Ei... ei! Você consegue me ouvir? Ah, que alívio!
+
+      Meu nome é §6Akasha§r. Eu sou — ou melhor, eu era — a Guardiã do §eRegistro Akáshico§r,
+      a biblioteca onde cada segredo do universo estava escrito. Cada engrenagem, cada feitiço,
+      cada estrela. Até que um dia ele se partiu, e as páginas se espalharam por todos os mundos.
+
+      O que sobrou de mim cabe neste livro que você está segurando. E você... bom, você acabou
+      de acordar num mundo que esqueceu como as coisas funcionam.
+
+      Eu preciso de ajuda pra reescrever o Registro. E acho que você precisa de ajuda pra
+      sobreviver. Que tal sermos parceiros? Marque a caixinha e vamos nessa, Herói!
+    tasks:
+      - check
+    rewards:
+      - kit:
+          name: "Kit do Despertar"
+          items: ["minecraft:bread x8", "minecraft:torch x16", "minecraft:apple x4"]
+      - xp: 1
+
+  - id: a_fratura
+    title: "A Fratura"
+    type: info
+    deps: [despertar]
+    icon: minecraft:book
+    desc: |
+      Deixa eu te contar o que aconteceu, rapidinho.
+
+      Há muito tempo, uma civilização que eu chamo de §eos Antigos§r quis ler a última página do
+      Registro: a que descreve o §dInfinito§r. O Registro não aguentou e rachou. Eu chamo esse
+      dia de §cA Fratura§r.
+
+      Pelas rachaduras vazou o §5Proibido§r — essa corrupção que você vai ver por aí como Taint,
+      Warp, criaturas do Vazio e coisas que nem deviam existir. E as páginas? Viraram
+      conhecimento perdido: cada mod deste mundo é um §eVolume§r do Registro esperando ser
+      reescrito.
+
+      Toda vez que você completa uma quest, uma frase volta pro lugar. Sério. Eu sinto daqui.
+    tasks:
+      - check
+    rewards:
+      - xp: 1
+
+  - id: como_ler
+    title: "Como Ler Este Livro"
+    type: info
+    deps: [despertar]
+    icon: minecraft:writable_book
+    desc: |
+      Um tour rápido pela interface, prometo que é útil:
+
+      §e• Capítulos§r ficam na lista à esquerda. Os §6dourados§r contam a história; os outros são
+      Volumes de cada mod (§aBase§r, §2Aventura§r, §bTecnologia§r, §dMagia§r, §eVida§r).
+      §e• Tamanho do ícone§r importa: grandes são marcos e chefes; pequenos são passos e desvios.
+      §e• Cores do título§r: §e§lamarelo§r = trilha principal, §7cinza§r = opcional,
+      §c§lvermelho§r = chefe, §5§lroxo§r = portal para outra dimensão, §b§lazul§r = explicação.
+      §e• Linhas§r mostram o que vem antes do quê.
+
+      §aDica:§r os Volumes de mod §lnão trancam§r nada. Você pode começar qualquer um a qualquer
+      momento — as quests são um guia, não uma prisão.
+    tasks:
+      - check
+    rewards:
+      - xp: 1
+
+  - id: recompensas
+    title: "Recompensas e Baús de Saque"
+    type: info
+    deps: [como_ler]
+    icon: bq_standard:loot_chest:50
+    desc: |
+      Toda quest concluída tem uma recompensa esperando o botão §eResgatar§r.
+
+      Algumas são fixas, outras deixam você §eescolher§r um item, e as mais divertidas são os
+      §eBaús de Saque§r. Clique com o botão direito num baú pra abri-lo:
+
+      §fComum§r → §aIncomum§r → §9Raro§r → §5Épico§r → §6Lendário§r
+
+      Quanto mais raro o baú, melhor o pacote lá dentro (e de vez em quando a sorte sorri e
+      você tira um tier acima!). Os §eKits§r são baús com um conjunto fixo e nomeado — sempre
+      pensados pro que você vai precisar logo em seguida.
+
+      Toma, um presentinho pra você testar como funciona.
+    tasks:
+      - check
+    rewards:
+      - loot: comum
+      - xp: 1
+
+  - id: em_grupo
+    title: "Juntos é Melhor"
+    type: info
+    deps: [como_ler]
+    icon: minecraft:cake
+    desc: |
+      Vai jogar com amigos? Crie um §eGrupo§r (o botão de grupos fica na tela inicial do livro).
+
+      Em grupo, o progresso das quests é compartilhado: quando alguém completa uma tarefa,
+      todo mundo do grupo avança junto — e cada um ainda resgata as próprias recompensas.
+
+      Reconstruir o Registro sozinho é possível. Mas com amigos é muito mais rápido... e muito
+      mais divertido quando alguém explode a base sem querer. (Não vou citar nomes.)
+    tasks:
+      - check
+    rewards:
+      - xp: 1
+
+  - id: nei
+    title: "O Olho que Tudo Vê (NEI)"
+    type: info
+    deps: [como_ler]
+    icon: minecraft:ender_eye
+    desc: |
+      Esse painel de itens no canto da tela é o §eNEI§r — o seu melhor amigo neste mundo.
+
+      §e• R§r em cima de um item: mostra como §efabricá-lo§r (em qualquer máquina!).
+      §e• U§r em cima de um item: mostra para que ele §eserve§r.
+      §e• A§r adiciona aos favoritos; a barra de pesquisa aceita §e@nomedomod§r.
+
+      Sempre que eu falar "veja a receita", é aqui que você olha. Eu explico o caminho; o NEI
+      mostra o mapa exato. Juntos, a gente não se perde.
+    tasks:
+      - check
+    rewards:
+      - xp: 1
+
+  - id: tomo_akashico
+    title: "O Tomo Akáshico"
+    type: main
+    deps: [a_fratura]
+    icon: akashictome:tome
+    desc: |
+      Olha só que nome familiar! O §eTomo Akáshico§r é um pedacinho do Registro que sobreviveu
+      inteiro.
+
+      Ele guarda todos os §emanuais de mods§r num único livro: coloque manuais dentro dele
+      (fabricando o tomo junto com o manual) e troque entre eles quando quiser. Menos espaço no
+      inventário, mais conhecimento na mão.
+
+      Fabrique um (receita no NEI) e mantenha sempre com você. Eu me sinto em casa ali dentro.
+    tasks:
+      - get: akashictome:tome
+    rewards:
+      - xp: 2
+      - item: minecraft:book x4
+
+  - id: primeira_madeira
+    title: "A Primeira Árvore"
+    type: main
+    deps: [despertar]
+    icon: minecraft:log
+    desc: |
+      Tudo começa com uma árvore. Literalmente tudo.
+
+      Soque uma árvore até conseguir §e16 troncos§r (qualquer tipo serve). Eu sei, parece
+      primitivo pra quem vai construir reatores de fusão... mas até reatores começam com uma
+      bancada de madeira.
+    tasks:
+      - get: ore:logWood x16
+    rewards:
+      - item: minecraft:apple x2
+      - xp: 1
+
+  - id: bancada
+    title: "Mãos à Obra"
+    deps: [primeira_madeira]
+    desc: |
+      Transforme troncos em tábuas e as tábuas numa §eBancada de Trabalho§r.
+
+      A grade 3×3 da bancada é onde a maior parte das receitas vive. Coloque-a num canto
+      seguro: ela vai ser o coração da sua primeira base.
+    tasks:
+      - craft: minecraft:crafting_table
+    rewards:
+      - item: minecraft:stick x16
+      - xp: 1
+
+  - id: picareta
+    title: "Picareta em Punho"
+    deps: [bancada]
+    icon: minecraft:stone_pickaxe
+    desc: |
+      Sem picareta, sem pedra. Sem pedra, sem fornalha. Sem fornalha... bom, você entendeu.
+
+      Faça uma picareta de madeira, minere pedra e logo troque por uma de §epedra§r — ela
+      quebra mais rápido e já consegue minerar §eferro§r.
+    tasks:
+      - one_of: [minecraft:stone_pickaxe, minecraft:iron_pickaxe]
+    rewards:
+      - item: minecraft:torch x8
+      - xp: 1
+
+  - id: pedregulho
+    title: "Uma Pilha de Pedras"
+    deps: [picareta]
+    icon: minecraft:cobblestone
+    desc: |
+      Junte §e64 pedregulhos§r. Você vai usar pedra para quase tudo nas primeiras horas:
+      fornalhas, ferramentas, paredes, abrigos...
+
+      §aDica:§r cave uma escada para baixo em zigue-zague em vez de cavar reto. Cair num buraco de
+      lava logo no primeiro dia não é o começo épico que eu imaginei pra você.
+    tasks:
+      - get: minecraft:cobblestone x64
+    rewards:
+      - item: minecraft:coal x4
+      - xp: 1
+
+  - id: fornalha
+    title: "O Fogo Controlado"
+    type: main
+    deps: [pedregulho]
+    desc: |
+      Sabe qual foi a primeira página que eu consegui recuperar depois da Fratura? A do fogo
+      controlado. Pode parecer bobo, mas tudo — TUDO — que vem depois começa aqui.
+
+      Monte uma §eFornalha§r com 8 pedregulhos e asse alguma coisa.
+      §aDica:§r carvão vegetal (tronco na fornalha) funciona tão bem quanto carvão mineral.
+    tasks:
+      - craft: minecraft:furnace
+    rewards:
+      - item: minecraft:coal x8
+      - xp: 2
+
+  - id: carvao
+    title: "Combustível"
+    deps: [fornalha]
+    icon: minecraft:coal
+    desc: |
+      Carvão mineral aparece em veios pretos na pedra. Carvão vegetal sai da fornalha quando
+      você assa troncos. Os dois servem de combustível e viram tochas.
+
+      Tenha §e16 carvões§r de qualquer tipo. Combustível é a primeira forma de energia — e
+      acredite, você vai ver MUITAS formas de energia por aqui.
+    tasks:
+      - one_of: [minecraft:coal x16, minecraft:coal:1 x16]
+    rewards:
+      - item: minecraft:torch x16
+      - xp: 1
+
+  - id: tochas
+    title: "Luz na Escuridão"
+    deps: [carvao]
+    icon: minecraft:torch
+    desc: |
+      Monstros nascem no escuro. Tochas resolvem. Simples assim.
+
+      Tenha §e32 tochas§r e ilumine o caminho das suas minas e o entorno da sua casa. Eu
+      durmo muito melhor quando você está em lugar iluminado. (Tá, eu não durmo. Mas você
+      entendeu.)
+    tasks:
+      - get: minecraft:torch x32
+    rewards:
+      - xp: 1
+
+  - id: ferro
+    title: "A Idade do Ferro"
+    type: main
+    deps: [fornalha]
+    icon: minecraft:iron_ingot
+    desc: |
+      O minério de ferro tem pintinhas cor de pêssego. Funda na fornalha e você terá a espinha
+      dorsal de quase todo mod deste mundo.
+
+      Junte §e16 lingotes de ferro§r. Quando chegar a hora, máquinas vão dobrar e até triplicar
+      cada minério que você minerar — então, por enquanto, não se preocupe em ser eficiente.
+      Só não pare de minerar!
+    tasks:
+      - get: minecraft:iron_ingot x16
+    rewards:
+      - item: minecraft:iron_ingot x4
+      - xp: 2
+
+  - id: cama
+    title: "Um Lugar Seguro"
+    deps: [primeira_madeira]
+    icon: minecraft:bed
+    desc: |
+      Uma §eCama§r pula a noite e, mais importante, define onde você renasce.
+
+      Três lãs (tosquie ou mate ovelhas) e três tábuas. Durma nela uma vez para marcar seu
+      ponto de retorno — e por favor, não durma no Nether. Confia em mim.
+    tasks:
+      - get: minecraft:bed
+    rewards:
+      - item: minecraft:wool x3
+      - xp: 1
+
+  - id: bau
+    title: "Guardar é Preciso"
+    deps: [bancada]
+    icon: minecraft:chest
+    desc: |
+      Seu inventário vai lotar. Rápido. Fabrique um §eBaú§r e comece a organizar a bagunça.
+
+      Mais pra frente você vai ter gavetas, baús de ferro e até redes de armazenamento digital
+      (o Volume de Utilidades e o de Applied Energistics esperam por você). Mas todo grande
+      armazém começou como um baú de madeira.
+    tasks:
+      - craft: minecraft:chest
+    rewards:
+      - item: minecraft:chest x2
+      - xp: 1
+
+  - id: refeicao
+    title: "Barriga Cheia"
+    deps: [fornalha]
+    icon: minecraft:cooked_beef
+    desc: |
+      Herói com fome não salva mundo nenhum.
+
+      Tenha comida §ecozida§r de verdade: pão, carne assada ou batata assada. Comida melhor
+      enche mais a barra de §esaturação§r, e isso quer dizer regenerar vida por mais tempo.
+      O Volume §eCozinha e Banquetes§r vai transformar você num chef — mas hoje, só não passe fome.
+    tasks:
+      - one_of: [minecraft:bread x8, minecraft:cooked_beef x8, minecraft:cooked_porkchop x8, minecraft:baked_potato x8, minecraft:cooked_chicken x8]
+    rewards:
+      - item: minecraft:wheat_seeds x8
+      - xp: 1
+
+  - id: waystone
+    title: "Pedras do Caminho"
+    deps: [ferro]
+    icon: waystones:waystone
+    desc: |
+      Às vezes você vai encontrar §ePedras do Caminho§r (Waystones) em vilas e pelo mundo.
+      Clique com o botão direito numa delas para ativá-la; depois, use outra Waystone (ou um
+      §ePergaminho de Retorno§r) para viajar entre as que você já ativou.
+
+      Fabrique uma (veja no NEI) e coloque na sua base. Assim, não importa o quão longe a
+      aventura te leve, o caminho de casa fica a um clique.
+    tasks:
+      - get: waystones:waystone
+    rewards:
+      - item: waystones:warpScroll x2
+      - xp: 2
+
+  - id: mochila
+    title: "A Mochila do Aventureiro"
+    type: optional
+    deps: [ferro]
+    icon: adventurebackpack:adventureBackpack
+    desc: |
+      Uma mochila resolve aquele drama de "inventário cheio no meio da caverna".
+
+      As §eMochilas do Aventureiro§r têm tanques de fluido, espaço extra e existem em dezenas de
+      estilos (algumas com habilidades especiais!). Fabrique a sua e vista nas costas. Estilo
+      também é importante, Herói.
+    tasks:
+      - get: adventurebackpack:adventureBackpack
+    rewards:
+      - loot: comum
+      - xp: 1
+
+  - id: bussola_natureza
+    title: "A Bússola da Natureza"
+    type: optional
+    deps: [ferro]
+    icon: naturescompass:NaturesCompass
+    desc: |
+      Procurando um bioma específico? Selva, deserto, pântano, um bioma de mod bem raro?
+
+      A §eBússola da Natureza§r aponta para o bioma que você escolher. Ela vai economizar horas
+      de exploração — especialmente quando os Volumes de magia e agricultura pedirem plantas e
+      criaturas de lugares específicos.
+    tasks:
+      - get: naturescompass:NaturesCompass
+    rewards:
+      - xp: 2
+
+  - id: caminho_tecnologia
+    title: "O Caminho da Engrenagem"
+    type: info
+    deps: [ferro]
+    icon: IC2:itemToolWrench
+    desc: |
+      Se o seu coração bate mais forte com máquinas, cabos e números subindo, os Volumes de
+      §bTecnologia§r são pra você.
+
+      Bons pontos de partida: §bIndustrialCraft 2§r (energia EU e processamento de minério),
+      §bThermal Expansion§r (máquinas RF elegantes) e §bTinkers' Construct§r (ferramentas
+      personalizáveis e fundição). Daí em diante: Mekanism, Ender IO, Applied Energistics,
+      Draconic Evolution... e até foguetes no Galacticraft.
+    tasks:
+      - check
+    rewards:
+      - xp: 1
+
+  - id: caminho_magia
+    title: "O Caminho Arcano"
+    type: info
+    deps: [ferro]
+    icon: Thaumcraft:ItemThaumonomicon
+    desc: |
+      Prefere varinhas, rituais e flores que comem coisas? Os Volumes de §dMagia§r te esperam.
+
+      Comece pelo §dThaumcraft§r (faça uma Varinha e clique numa estante para criar o
+      Thaumonomicon) ou pela §dBotania§r (jogue um livro e uma flor mística... digo, comece pelo
+      Lexica Botania). Depois vêm Blood Magic, Witchery, Ars Magica, ChromatiCraft e uma família
+      inteira de addons do Thaumcraft.
+
+      §cAtenção:§r magia proibida tem preço. Fique de olho no §5Warp§r.
+    tasks:
+      - check
+    rewards:
+      - xp: 1
+
+  - id: caminho_aventura
+    title: "O Caminho do Aventureiro"
+    type: info
+    deps: [ferro]
+    icon: minecraft:iron_sword
+    desc: |
+      Se o que você quer é explorar, lutar e voltar com troféus, os Volumes de §2Aventura§r
+      são o seu lugar.
+
+      Existem reinos inteiros esperando: a §2Floresta do Crepúsculo§r, o §2Aether§r lá nas
+      nuvens, as areias de §2Atum§r, as masmorras rúnicas, dinossauros, fósseis, e um
+      bestiário que vai fazer você dormir de luz acesa. Equipe-se bem antes de atravessar
+      qualquer portal!
+    tasks:
+      - check
+    rewards:
+      - xp: 1
+
+  - id: caminho_vida
+    title: "O Caminho da Vida"
+    type: info
+    deps: [ferro]
+    icon: minecraft:wheat
+    desc: |
+      Toda grande civilização precisa de comida, plantas e... abelhas. Muitas abelhas.
+
+      Os Volumes de §eVida§r cobrem cozinha (HarvestCraft), agricultura (AgriCraft, Magical
+      Crops), florestas e genética (Forestry, Binnie) e a arte fascinante da §eapicultura§r.
+      É um caminho tranquilo e extremamente recompensador — e no fim ele também guarda um
+      dos oito Selos do Registro.
+    tasks:
+      - check
+    rewards:
+      - xp: 1
+
+  - id: memorias
+    title: "Memórias de Outros Heróis"
+    type: info
+    deps: [como_ler]
+    icon: minecraft:map
+    desc: |
+      Você não é o primeiro a passar por aqui. Alguns capítulos guardam ecos de jornadas
+      antigas:
+
+      §3AEDF3:§r são as memórias de uma era lendária de aventureiros brasileiros — a
+      §3Era do Futuro§r. Siga os passos deles: vilas, painéis solares, armaduras quânticas,
+      magos com golens e caçadas a chefes.
+
+      §6ATM:§r é o §6Volume dos Metais Impossíveis§r — Allthemodium, Vibranium, Unobtainium —
+      e o caminho até a lendária §6Estrela ATM§r.
+    tasks:
+      - check
+    rewards:
+      - xp: 1
+
+  - id: os_tres_reinos
+    title: "Os Três Reinos Perdidos"
+    type: info
+    deps: [caminho_aventura]
+    icon: minecraft:map
+    desc: |
+      Antes da Fratura, três reinos eram os arquivos externos do Registro:
+
+      §2O Reino do Crepúsculo§r, onde os Lich guardavam as páginas do tempo.
+      §bO Reino dos Céus§r, protegido pelas Valquírias.
+      §6O Reino das Areias§r, onde os Faraós escreveram o Livro dos Mortos.
+
+      Cada reino guarda uma §eChave§r. Os Lich e os Faraós tinham um acordo antigo, e as
+      Valquírias vigiavam os dois lá de cima... Quando você estiver pronto, o §6Ato III§r conta
+      essa história inteira.
+    tasks:
+      - check
+    rewards:
+      - xp: 1
+
+  - id: os_oito_selos
+    title: "Os Oito Selos"
+    type: info
+    deps: [os_tres_reinos, caminho_tecnologia, caminho_magia, caminho_vida]
+    icon: minecraft:nether_star
+    desc: |
+      Para fechar a Fratura, o Registro precisa dos §6Oito Selos§r: Crepúsculo, Céus, Areias,
+      Abismo, Estrelas, Arcano, Engrenagem e Vida. Cada um é a prova de que um pedaço do mundo
+      voltou a fazer sentido.
+
+      Quando os oito brilharem, as portas para as dimensões dos §6metais impossíveis§r se abrem —
+      e com elas, o caminho para a §6Estrela ATM§r.
+
+      É uma jornada longa. Muito longa. Ainda bem que eu tenho tempo... e você tem a mim.
+    tasks:
+      - check
+    rewards:
+      - xp: 2
+
+  - id: fim_do_prologo
+    title: "Tudo Pronto para a Jornada"
+    type: milestone
+    banner: "Prólogo Concluído!"
+    subtitle: "O Ato I — Raízes — começou"
+    deps: [ferro, cama, refeicao, tochas, bau, waystone, tomo_akashico, recompensas, nei]
+    icon: minecraft:iron_pickaxe
+    desc: |
+      Olha só pra você! Ferramentas, comida, luz, uma cama e um caminho de volta pra casa.
+      Há pouco tempo você nem lembrava o que era uma fornalha.
+
+      O Prólogo acabou, Herói. Daqui em diante o mundo inteiro se abre: escolha um Volume que
+      chame sua atenção e mergulhe. O §6Ato I — Raízes§r vai acompanhar seus primeiros passos de
+      verdade em tecnologia, magia e aventura.
+
+      Toma esse kit. Eu montei pensando em você. ♥
+    tasks:
+      - check
+    rewards:
+      - kit:
+          name: "Kit do Herói Iniciante"
+          items: ["minecraft:iron_pickaxe", "minecraft:iron_sword", "minecraft:iron_axe", "minecraft:bread x16", "minecraft:torch x32", "waystones:warpScroll x2"]
+      - loot: incomum
+      - xp: 5

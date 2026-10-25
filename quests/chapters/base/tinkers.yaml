@@ -1,0 +1,2379 @@
+chapter:
+  id: tinkers
+  title: "Tinkers' Construct"
+  prefix: ""
+  order: 120
+  icon: TConstruct:ToolStationBlock
+  desc: |
+    O Volume das Ferramentas Vivas: estênceis, peças, a Fundição, ligas do Nether e ferramentas que sobem de nível com você. Com as regras do Iguana Tweaks deste pack.
+
+quests:
+  # ------------------------------------------------------------------ Fase 1: a oficina
+  - id: t_bem_vindo
+    title: "O Volume das Ferramentas Vivas"
+    type: info
+    icon: TConstruct:manualBook
+    desc: |
+      Achei! Uma página inteirinha sobre ferramentas que §enascem de peças§r e §eaprendem com o uso§r. Os Antigos chamavam isso de "construir", não de "fabricar". Lindo, né?
+
+      No Tinkers' Construct você não faz uma picareta: você faz uma cabeça, um cabo e um conector, e junta tudo numa estação. Cada material muda durabilidade, velocidade, nível de mineração e efeitos. Passe o mouse sobre as peças: o §bTiC Tooltips§r mostra as estatísticas.
+
+      §cNeste pack o Iguana Tweaks muda bastante coisa§r: ferramentas novas sem modificadores, picaretas que precisam "acordar" e peças restritas por material. Eu vou te avisando no caminho!
+    tasks:
+      - check
+    rewards:
+      - xp: 1
+
+  - id: estencil_branco
+    title: "Uma Tábua Furada"
+    type: main
+    deps: [t_bem_vindo]
+    desc: |
+      Tudo começa com uma tábua vazia esperando um formato. O §eEstêncil em Branco§r sai de 2 tábuas e 2 gravetos em xadrez (rende 4).
+
+      Ele é a base de quase tudo aqui: as mesas da oficina são feitas colocando um estêncil em cima de outro bloco, e os estênceis com formato são "carimbados" a partir dele. Faça uma boa pilha, você vai gastar bastante.
+    tasks:
+      - get: TConstruct:blankPattern x8
+    rewards:
+      - xp: 3
+      - choice: [minecraft:planks x16, minecraft:log x4, minecraft:stick x16]
+
+  - id: livro_materiais_v1
+    title: "Materiais e Você, Volume 1"
+    type: normal
+    deps: [t_bem_vindo]
+    desc: |
+      Você deve ter acordado com este livrinho no bolso (o pack entrega um ao nascer). Se perdeu, é só juntar §eEstêncil em Branco + Papel§r na bancada.
+
+      Ele explica a oficina, os arbustos de frutas de minério, canais de slime e o começo da Fundição. Clique com o botão direito para ler: é o manual oficial, e eu adoro uma leitura de cabeceira!
+    tasks:
+      - get: TConstruct:manualBook
+    rewards:
+      - xp: 1
+      - item: minecraft:paper x8
+
+  - id: mesa_estenceis
+    title: "Mesa de Estênceis"
+    type: main
+    deps: [estencil_branco]
+    desc: |
+      Estêncil em cima de §etábuas§r = §eMesa de Estênceis§r. A cor da madeira muda só a aparência.
+
+      Coloque um Estêncil em Branco nela e use as setas para escolher o formato: cabo, cabeça de picareta, lâmina, conector… Cada formato é reutilizável para sempre, então não precisa repetir.
+    tasks:
+      - get: ore:tconstructStencilTable
+    rewards:
+      - xp: 3
+      - choice: [TConstruct:blankPattern x8, minecraft:planks x16]
+
+  - id: construtor_partes
+    title: "Construtor de Partes"
+    type: main
+    deps: [estencil_branco]
+    desc: |
+      Estêncil em cima de um §etronco§r vira o §eConstrutor de Partes§r. Aqui você junta um estêncil com formato + material e sai uma peça.
+
+      Materiais que funcionam aqui: madeira, pedra, pederneira, cacto, osso, papel, slime, rocha do Nether, obsidiana… §cMetais não!§r Neste pack, peças de metal só saem fundidas na Fundição. Com o Iguana, você também pode usar uma peça velha como material para outra.
+    tasks:
+      - get: ore:tconstructPartBuilder
+    rewards:
+      - xp: 3
+      - choice: [minecraft:log x8, minecraft:cobblestone x32, minecraft:flint x6]
+
+  - id: estacao_ferramentas
+    title: "Estação de Ferramentas"
+    type: main
+    deps: [estencil_branco]
+    desc: |
+      Estêncil em cima de uma §ebancada§r = §eEstação de Ferramentas§r. É aqui que as peças viram ferramentas (as de 2 e 3 peças), que você aplica modificadores e renomeia suas criações.
+
+      Os ícones à esquerda mostram cada ferramenta e onde vai cada peça. Ela também conserta: coloque a ferramenta e o material da cabeça.
+    tasks:
+      - get: TConstruct:ToolStationBlock
+    rewards:
+      - xp: 3
+      - choice: [TConstruct:blankPattern x6, minecraft:stick x16]
+
+  - id: bau_moldes
+    title: "Baú de Moldes"
+    type: optional
+    deps: [mesa_estenceis]
+    desc: |
+      Estênceis espalhados pelo chão? Não no meu Registro! O §eBaú de Moldes§r (estêncil + baú) guarda só estênceis e moldes .
+
+      Deixe-o ao lado das mesas da oficina para ter todos os formatos à mão.
+    tasks:
+      - get: TConstruct:ToolStationBlock:5
+    rewards:
+      - loot: comum
+
+  - id: estacao_trabalho
+    title: "Estação de Trabalho"
+    type: optional
+    deps: [estacao_ferramentas]
+    desc: |
+      Um mimo da oficina: a §eEstação de Trabalho§r é uma bancada (uma bancada sozinha na grade de fabricação) que §emantém os itens§r quando você fecha e enxerga baús colocados ao lado.
+
+      Ótima para quem vive esquecendo receitas pela metade. Eu, por exemplo.
+    tasks:
+      - get: TConstruct:CraftingStation
+    rewards:
+      - loot: comum
+
+  - id: livro_materiais_v2
+    title: "Materiais e Você, Volume 2"
+    type: normal
+    deps: [livro_materiais_v1]
+    desc: |
+      O primeiro volume na bancada sozinho vira o §eVolume 2§r: o guia de todas as ferramentas, materiais, traços (Reforçado, Pedregoso, Dentado, Escrevível…) e modificadores.
+
+      Os livros se encadeiam: v1 → v2 → Fundições Poderosas → Arsenal do Construtor → Diário. Cada um com um livro comum rende duas cópias.
+    tasks:
+      - get: TConstruct:manualBook:1
+    rewards:
+      - xp: 1
+      - item: minecraft:book x2
+
+  - id: livro_fundicao
+    title: "Fundições Poderosas"
+    type: normal
+    deps: [livro_materiais_v2]
+    desc: |
+      O Volume 2 na bancada vira §eFundições Poderosas§r, o manual da Fundição: montagem, moldes, ligas e líquidos estranhos (sangue, esmeralda, cola, ender).
+
+      Leia antes de montar a sua. Eu espero. …Já leu? Ótimo!
+    tasks:
+      - get: TConstruct:manualBook:2
+    rewards:
+      - xp: 1
+      - item: minecraft:clay_ball x16
+
+  - id: livro_arsenal
+    title: "Arsenal do Construtor"
+    type: normal
+    deps: [livro_fundicao]
+    desc: |
+      Fundições Poderosas na bancada vira o §eArsenal do Construtor§r: facas de arremesso, shuriken, dardos, arcos curtos e longos, bestas, flechas e virotes.
+
+      Tudo explicado por um xerife chamado Bownana. Não me pergunte.
+    tasks:
+      - get: TConstruct:manualBook:4
+    rewards:
+      - xp: 1
+      - item: minecraft:feather x16
+
+  - id: livro_diario
+    title: "Diário de um Construtor"
+    type: optional
+    deps: [livro_arsenal]
+    desc: |
+      O Arsenal na bancada vira o §eDiário de um Construtor§r, o diário de um tinkerer anônimo que perdeu a picareta "Betsy" e inventou as mesas furadas.
+
+      Não ensina receita nova, mas é a página mais fofa deste Volume. Guardei com carinho.
+    tasks:
+      - get: TConstruct:manualBook:3
+    rewards:
+      - loot: comum
+
+  - id: regras_iguana
+    title: "As Regras da Casa"
+    type: info
+    deps: [estacao_ferramentas]
+    desc: |
+      Antes da primeira ferramenta, as regras do §eIguana Tweaks§r deste pack:
+
+      • Ferramentas novas nascem com §c0 modificadores§r. Elas ganham +1 slot nos níveis 2, 4 e 6 e um bônus aleatório útil a cada nível (até o 6).
+      • §ePicaretas e martelos nascem com nível de mineração −1§r e "melhoram" com o uso ou com cabeças de mob.
+      • Peças de §cpedra só servem para fazer moldes§r.
+      • Madeira, pederneira, osso, cacto e papel só fazem algumas peças (por exemplo: não existe lâmina de espada sem metal).
+      • 3 cascalhos = 1 pederneira; cascalho não dropa pederneira.
+      • Uma linha serve como conector.
+    tasks:
+      - check
+    rewards:
+      - xp: 1
+
+  # ------------------------------------------------------------------ Fase 2: pedra lascada
+  - id: pederneira
+    title: "Pederneira, do Jeito Difícil"
+    type: normal
+    deps: [construtor_partes]
+    desc: |
+      Neste pack o cascalho §cnão dropa pederneira§r. Em compensação, §e3 cascalhos na bancada viram 1 pederneira§r.
+
+      A pederneira é o melhor material do comecinho: faz cabeça de picareta, pá, machado, lâmina de faca, ponta de flecha e shuriken. Junte uma boa quantidade.
+    tasks:
+      - get: minecraft:flint x6
+    rewards:
+      - xp: 1
+      - item: minecraft:gravel x18
+
+  - id: estencil_cabo
+    title: "Estêncil de Cabo"
+    type: normal
+    deps: [mesa_estenceis]
+    desc: |
+      Toda ferramenta tem um cabo, então este é o estêncil mais usado do mod. Selecione-o na Mesa de Estênceis.
+
+      Cabos influenciam bastante a durabilidade: osso e madeira são ok no começo; metais depois ficam bem melhores.
+    tasks:
+      - get: TConstruct:woodPattern:1
+    rewards:
+      - xp: 1
+      - item: TConstruct:blankPattern x4
+
+  - id: estencil_picareta
+    title: "Estêncil de Cabeça de Picareta"
+    type: normal
+    deps: [mesa_estenceis]
+    desc: |
+      O formato da cabeça que mais importa: é ela que define o §enível de mineração§r da picareta.
+
+      Aproveite e faça também o §eEstêncil de Cabeça de Pá§r e o §eEstêncil de Cabeça de Machado§r — eles aparecem nas próximas páginas.
+    tasks:
+      - get: TConstruct:woodPattern:2
+    rewards:
+      - xp: 1
+      - item: TConstruct:blankPattern x4
+
+  - id: estencil_conector
+    title: "Estêncil de Conector"
+    type: normal
+    deps: [mesa_estenceis]
+    desc: |
+      Picaretas, enxadões e outras ferramentas de 3 peças precisam de um §econector§r prendendo a cabeça no cabo.
+
+      Dica do Iguana: uma §elinha§r comum também serve como conector na Estação de Ferramentas. Mas um conector de verdade (madeira, cacto, papel, slime) influencia a ferramenta e conta como peça trocável.
+    tasks:
+      - get: TConstruct:woodPattern:9
+    rewards:
+      - xp: 1
+      - item: minecraft:string x4
+
+  - id: cabo_madeira
+    title: "Um Bom Cabo"
+    type: normal
+    deps: [estencil_cabo, construtor_partes]
+    desc: |
+      No Construtor de Partes: Estêncil de Cabo + tábuas (ou gravetos, ossos, cacto…) = cabo.
+
+      Qualquer cabo serve aqui. Cabo de osso dura mais que o de madeira; cabo de papel deixa a ferramenta com §emais um modificador§r (traço Escrevível). Experimente!
+    tasks:
+      - get: TConstruct:toolRod:*
+    rewards:
+      - xp: 1
+      - item: minecraft:bone x8
+
+  - id: cabeca_picareta_pederneira
+    title: "Cabeça de Pederneira"
+    type: main
+    deps: [estencil_picareta, pederneira]
+    desc: |
+      Estêncil de Cabeça de Picareta + pederneira no Construtor de Partes. Simples assim!
+
+      A pederneira tem nível de mineração §eFerro§r, mas lembre da regra do Iguana: a picareta nova começa um nível abaixo (Pedra) e precisa §emelhorar§r antes de quebrar minério de ferro.
+    tasks:
+      - get: TConstruct:pickaxeHead:3
+    rewards:
+      - xp: 3
+      - choice: [minecraft:flint x6, minecraft:gravel x24]
+
+  - id: conector
+    title: "Conector"
+    type: normal
+    deps: [estencil_conector, construtor_partes]
+    desc: |
+      Conector de madeira, cacto, papel ou slime — qualquer um conta aqui.
+
+      É a terceira peça da picareta. Quem tiver pressa pode usar uma linha no lugar, mas eu gosto de ver a ferramenta completinha!
+    tasks:
+      - get: TConstruct:binding:*
+    rewards:
+      - xp: 1
+      - item: minecraft:planks x8
+
+  - id: primeira_picareta
+    title: "A Primeira Picareta"
+    type: main
+    deps: [cabeca_picareta_pederneira, cabo_madeira, estacao_ferramentas]
+    banner: "Primeira Ferramenta Viva"
+    desc: |
+      O momento chegou! Na Estação de Ferramentas, escolha o ícone da picareta e coloque §ecabeça + cabo + conector§r (ou linha). Dê um nome se quiser: ela vai crescer com você.
+
+      Passe o mouse e veja: §eNível de Habilidade§r, §eXP de Habilidade§r e §eNível de Mineração§r. Segure Shift para os números. Quebre pedra e ela aprende. Quando quebrar, ela não some: fica "quebrada" e é só consertar.
+
+      Isso! Eu sabia que você ia conseguir. Primeira página das ferramentas, reescrita.
+    tasks:
+      - get: TConstruct:pickaxe
+    rewards:
+      - xp: 3
+      - choice: [minecraft:flint x8, minecraft:torch x32, minecraft:cooked_beef x8]
+
+  - id: xp_ferramenta
+    title: "Ferramentas que Aprendem"
+    type: info
+    deps: [primeira_picareta]
+    desc: |
+      Cada uso dá §eXP de Habilidade§r. No nível seguinte, o Iguana sorteia um §ebônus útil§r para o tipo da ferramenta (Pressa, Sorte, Reforçado, Auto-Reparo, Ataque, Flamejante, Toque de Seda…) — níveis 2 a 6.
+
+      Nos níveis §e2, 4 e 6§r ela ganha §e+1 slot de modificador§r. Como as ferramentas nascem com zero, isso é precioso: não descarte uma ferramenta upada por uma nova "melhor" sem pensar.
+
+      Trocar peças na Estação (cabeça nova numa ferramenta velha) mantém o nível.
+    tasks:
+      - check
+    rewards:
+      - xp: 1
+
+  - id: impulso_mineracao
+    title: "O Clarão na Ponta"
+    type: info
+    deps: [primeira_picareta]
+    desc: |
+      Picaretas e martelos têm uma segunda barra: §eXP de Mineração§r. Quando ela enche, aparece "De repente, um clarão de luz brilha da ponta…" e o nível de mineração sobe para o nível real do material (tooltip: §aMelhorado§r).
+
+      Antes disso, uma picareta de pederneira só quebra o que uma de pedra quebraria, e uma de ferro não pega diamante. §aMinere bastante pedra com ela logo cedo§r e o problema some.
+
+      Atalho: cabeças de mob na Estação de Ferramentas também melhoram a picareta (próximas páginas).
+    tasks:
+      - check
+    rewards:
+      - xp: 1
+
+  - id: reparo
+    title: "Remendos"
+    type: info
+    deps: [primeira_picareta]
+    desc: |
+      Ferramenta do Tinkers não some quando a durabilidade zera: ela fica §cquebrada§r e para de funcionar. Para consertar, coloque-a na Estação de Ferramentas com o material da §ecabeça§r (pederneira para pederneira, lingote para metal…).
+
+      Neste pack dá até para consertar direto na bancada (ferramenta + material). E ao morrer, a ferramenta perde 10% da durabilidade, mas não se destrói se cair no chão.
+    tasks:
+      - check
+    rewards:
+      - xp: 1
+
+  - id: pa_tinkers
+    title: "Pá"
+    type: normal
+    deps: [primeira_picareta]
+    desc: |
+      Cabeça de pá + cabo. Duas peças, Estação de Ferramentas, pronto!
+
+      Uma boa pá de pederneira ou osso já cava terra e cascalho num piscar — e você vai precisar de MUITO cascalho, areia e argila para a Fundição.
+    tasks:
+      - get: TConstruct:shovel
+    rewards:
+      - xp: 2
+      - item: minecraft:clay_ball x8
+
+  - id: machadinha
+    title: "Machadinha"
+    type: normal
+    deps: [primeira_picareta]
+    desc: |
+      Cabeça de machado + cabo = machadinha. Corta madeira e folhas e ainda serve como arma de emergência.
+
+      Pederneira e osso aceitam cabeça de machado neste pack.
+    tasks:
+      - get: TConstruct:hatchet
+    rewards:
+      - xp: 2
+      - item: minecraft:log x8
+
+  - id: enxadao
+    title: "Enxadão"
+    type: normal
+    deps: [pa_tinkers, machadinha]
+    desc: |
+      Cabeça de machado + cabo + cabeça de pá = §eEnxadão§r (Mattock). Ara a terra como uma enxada e ainda cava e corta razoavelmente.
+
+      É a "enxada" do Tinkers: perfeito para quem vai cuidar de horta (o capítulo de Cozinha agradece).
+    tasks:
+      - get: TConstruct:mattock
+    rewards:
+      - xp: 2
+      - item: minecraft:wheat_seeds x8
+
+  - id: adaga
+    title: "Adaga"
+    type: normal
+    deps: [primeira_picareta]
+    desc: |
+      Sem metal não há lâmina de espada neste pack, mas há §elâmina de faca§r! Pederneira, osso ou cacto + Estêncil de Lâmina de Faca; junte cabo e §eprotetor curto§r (madeira ou osso).
+
+      A §eAdaga§r é leve, rápida e pode ser arremessada com o botão direito. Ótima até você chegar à Fundição.
+    tasks:
+      - get: TConstruct:dagger
+    rewards:
+      - xp: 2
+      - item: minecraft:bread x6
+
+  - id: ferramenta_osso
+    title: "Ossos do Ofício"
+    type: optional
+    deps: [cabo_madeira]
+    desc: |
+      Osso faz cabo, cabeça de pá e de machado, protetor curto, lâmina de faca, ponta de flecha e partes de arco. É mais durável que a madeira e farto: esqueletos não faltam à noite.
+
+      Faça qualquer peça de osso para registrar a descoberta.
+    tasks:
+      - one_of: [TConstruct:toolRod:5, TConstruct:shovelHead:5, TConstruct:hatchetHead:5, TConstruct:knifeBlade:5, TConstruct:crossbar:5]
+    rewards:
+      - loot: comum
+
+  - id: resma_papel
+    title: "Escrevível"
+    type: optional
+    deps: [cabo_madeira]
+    desc: |
+      4 papéis = §eResma de Papel§r. Papel é fraquinho, mas tem o traço §eEscrevível§r: §a+1 modificador por peça§r.
+
+      Com o Iguana zerando os slots de ferramentas novas, um cabo ou conector de papel vale ouro para quem quer modificar logo cedo. Faça um cabo ou conector de papel.
+    tasks:
+      - one_of: [TConstruct:toolRod:9, TConstruct:binding:9]
+    rewards:
+      - item: minecraft:paper x16
+
+  - id: cacto_pecas
+    title: "Espinhos Úteis"
+    type: optional
+    deps: [cabo_madeira]
+    desc: |
+      Cacto faz cabo, conector, lâmina de faca e shuriken. Tem o traço Dentado e é fácil de cultivar no deserto.
+
+      Faça qualquer peça de cacto.
+    tasks:
+      - one_of: [TConstruct:toolRod:4, TConstruct:binding:4, TConstruct:knifeBlade:4]
+    rewards:
+      - loot: comum
+
+  - id: cabecas_mob
+    title: "Troféus que Ensinam"
+    type: optional
+    deps: [impulso_mineracao]
+    desc: |
+      Uma cabeça de mob aplicada a uma picareta (ou martelo) na Estação de Ferramentas faz a §emelhoria§r na hora, sem gastar modificador — mas só até um limite (tooltip "Aplicável até"):
+
+      • Zumbi → Ferro • Esqueleto, Creeper, Pigman → Redstone
+      • Blaze, Blizz → Obsidiana • Enderman, Esqueleto Wither → Cobalto
+      • Estrela do Nether → Manyullyn
+
+      As cabeças caem com 5% de chance (+2% por nível de Decapitação). Consiga qualquer uma.
+    tasks:
+      - one_of: [minecraft:skull:2, minecraft:skull, minecraft:skull:4, minecraft:skull:1, IguanaTweaksTConstruct:skullItem:*]
+    rewards:
+      - loot: comum
+
+  - id: picareta_rocha_nether
+    title: "Pedra que Queima"
+    type: optional
+    deps: [primeira_picareta]
+    desc: |
+      Achou o Nether? A §erocha do Nether§r faz cabeça de picareta com nível §eRedstone§r — depois de melhorada, já quebra diamante e redstone, antes de qualquer metal!
+
+      Ela tem o traço Pedregoso (minera mais rápido quanto mais gasta). Faça uma cabeça de picareta de rocha do Nether.
+    tasks:
+      - get: TConstruct:pickaxeHead:7
+    rewards:
+      - loot: comum
+
+  - id: picareta_obsidiana
+    title: "Vidro Vulcânico"
+    type: optional
+    deps: [picareta_rocha_nether]
+    desc: |
+      Obsidiana no Construtor de Partes faz cabeça de picareta de nível §eObsidiana§r (melhorada). É frágil, mas abre caminho até o Alumite.
+
+      Você precisa de blocos de obsidiana, que exigem nível Obsidiana para minerar — uma picareta de diamante comum resolve (as ferramentas de outros mods funcionam normalmente neste pack).
+    tasks:
+      - get: TConstruct:pickaxeHead:6
+    rewards:
+      - loot: comum
+
+  # ------------------------------------------------------------------ Fase 3: a Fundição
+  - id: argamassa
+    title: "Argamassa"
+    type: main
+    deps: [primeira_picareta]
+    desc: |
+      Agora o coração deste Volume: a §eFundição§r. Ela é feita de tijolos especiais, que nascem da §eArgamassa§r: 1 argila + 1 areia + 1 cascalho = 2 Argamassas (ou um bloco de argila + 4 areias + 4 cascalhos = 8).
+
+      Uma Fundição pequena consome mais de cem Argamassas no total. Pá na mão e bora cavar!
+    tasks:
+      - get: TConstruct:CraftedSoil:1 x32
+    rewards:
+      - xp: 3
+      - choice: [minecraft:clay_ball x16, minecraft:sand x32, minecraft:gravel x32]
+
+  - id: tijolo_fundicao
+    title: "Tijolo da Fundição"
+    type: main
+    deps: [argamassa]
+    desc: |
+      Asse a Argamassa na fornalha: cada uma vira um §eTijolo da Fundição§r (o item). 4 tijolos formam um bloco de §eTijolo da Fundição§r.
+
+      Deixe uma fornalha rodando o tempo todo. Carvão vegetal funciona muito bem.
+    tasks:
+      - get: TConstruct:materials:2 x32
+    rewards:
+      - xp: 3
+      - choice: [TConstruct:CraftedSoil:1 x16, minecraft:coal x16]
+
+  - id: blocos_fundicao
+    title: "Paredes Quentes"
+    type: normal
+    deps: [tijolo_fundicao]
+    desc: |
+      A menor Fundição tem um piso 3×3 (9 blocos) e uma parede ao redor do espaço interno 3×3 (12 posições, onde também entram o Controle, Tanques e Drenos).
+
+      Junte pelo menos 18 blocos de Tijolo da Fundição. Sobrou? Eles são decorativos e seguros para construir.
+    tasks:
+      - get: TConstruct:Smeltery:2 x18
+    rewards:
+      - xp: 2
+      - item: TConstruct:CraftedSoil:1 x16
+
+  - id: controlador
+    title: "Controle da Fundição"
+    type: main
+    deps: [tijolo_fundicao]
+    desc: |
+      O cérebro de tudo: 8 Tijolos da Fundição em anel na bancada. Ele precisa ficar na parede, uma camada acima do piso, voltado para fora.
+
+      Quando a estrutura estiver certa, ele acende. Clicando nele você vê os slots de derretimento e a temperatura.
+    tasks:
+      - get: TConstruct:Smeltery
+    rewards:
+      - xp: 3
+      - choice: [TConstruct:materials:2 x16, minecraft:coal x16]
+
+  - id: tanque_fundicao
+    title: "Tanque da Fundição"
+    type: normal
+    deps: [tijolo_fundicao]
+    desc: |
+      8 tijolos ao redor de um vidro. O §eTanque da Fundição§r guarda líquidos e mantém o conteúdo quando quebrado.
+
+      A Fundição precisa de pelo menos um tanque na parede §ecom lava§r: é o combustível. Encha com baldes de lava pelo botão direito.
+    tasks:
+      - get: TConstruct:LavaTank
+    rewards:
+      - xp: 2
+      - item: minecraft:lava_bucket
+
+  - id: dreno_fundicao
+    title: "Dreno"
+    type: normal
+    deps: [tijolo_fundicao]
+    desc: |
+      O §eDreno§r é a porta de entrada e saída de líquidos da Fundição. Coloque-o na parede com o lado pequeno para fora.
+
+      É nele que vai a Torneira para despejar o metal. Também aceita receber líquidos de volta.
+    tasks:
+      - get: TConstruct:Smeltery:1
+    rewards:
+      - xp: 2
+      - item: TConstruct:materials:2 x8
+
+  - id: torneira
+    title: "Torneira"
+    type: normal
+    deps: [dreno_fundicao]
+    desc: |
+      3 tijolos em "V". A §eTorneira§r vai presa no Dreno (ou num Tanque) e despeja o líquido no que estiver embaixo quando você clica nela.
+
+      Neste pack ela também pode ser acionada por redstone — ótimo para automatizar depois.
+    tasks:
+      - get: TConstruct:SearedBlock:1
+    rewards:
+      - xp: 2
+      - item: minecraft:redstone x8
+
+  - id: mesa_fundicao
+    title: "Mesa de Fundição"
+    type: normal
+    deps: [dreno_fundicao]
+    desc: |
+      A §eMesa de Fundição§r fica embaixo da torneira. Vazia, ela recebe ouro ou alumínio-bronze e forma um Molde em Branco; com um molde em cima, forma barras, pepitas e peças.
+
+      Retire o resultado com o botão direito.
+    tasks:
+      - get: TConstruct:SearedBlock
+    rewards:
+      - xp: 2
+      - item: TConstruct:materials:2 x8
+
+  - id: bacia_fundicao
+    title: "Bacia de Fundição"
+    type: normal
+    deps: [dreno_fundicao]
+    desc: |
+      A irmã maior da mesa: a §eBacia de Fundição§r forma §eblocos§r inteiros (blocos de metal, Pedra da Fundição, Vidro Limpo, Fim Sólido…).
+
+      Para fazer a Forja de Ferramentas você vai querer blocos de metal; a bacia faz isso direto do líquido.
+    tasks:
+      - get: TConstruct:SearedBlock:2
+    rewards:
+      - xp: 2
+      - item: TConstruct:materials:2 x8
+
+  - id: fundicao_montada
+    title: "A Fornalha dos Construtores"
+    type: milestone
+    deps: [controlador, blocos_fundicao, tanque_fundicao, torneira, mesa_fundicao]
+    banner: "A Fundição Desperta"
+    subtitle: "Metalurgia de verdade, finalmente"
+    desc: |
+      Lembra quando eu disse que a humanidade esqueceu a metalurgia? Pois é. Hoje você lembra.
+
+      §eMontagem:§r piso 3×3 de tijolos; uma camada acima, a parede ao redor do espaço 3×3 com o Controle virado para fora, um Tanque com lava e um Dreno (lado pequeno para fora). Torneira no Dreno e Mesa embaixo dela. O Controle acende quando está tudo certo. Quer mais capacidade? Empilhe mais camadas de parede.
+
+      Jogue minérios ou lingotes dentro (pela interface ou até atirando os itens dentro), espere derreter e abra a torneira. §aMinério rende 2 lingotes aqui§r — o dobro da fornalha.
+
+      §cCuidado:§r o interior é quente e machuca quem cai lá dentro.
+    tasks:
+      - get: [TConstruct:Smeltery, TConstruct:Smeltery:1, TConstruct:LavaTank, TConstruct:SearedBlock, TConstruct:SearedBlock:1]
+    rewards:
+      - xp: 5
+      - kit: {name: "Kit do Fundidor", items: [minecraft:lava_bucket, minecraft:lava_bucket, TConstruct:materials:2 x16, minecraft:gold_ingot x4]}
+      - loot: incomum
+
+  - id: dobro_minerio
+    title: "O Dobro do Minério"
+    type: info
+    deps: [fundicao_montada]
+    desc: |
+      A Fundição guarda o valor cheio do minério: §e1 minério = 2 lingotes§r (144 mB por lingote). Fornalha só dá 1.
+
+      Ligas se formam sozinhas quando os metais certos estão juntos. Se não quiser uma liga, não derreta os dois ao mesmo tempo! E a interface mostra a ordem dos líquidos: o de baixo é o que sai primeiro pela torneira.
+    tasks:
+      - check
+    rewards:
+      - xp: 1
+
+  - id: frutas_minerio
+    title: "Frutas de Minério"
+    type: optional
+    deps: [fundicao_montada]
+    desc: |
+      Lá embaixo, no escuro, crescem §eArbustos de Frutas de Minério§r (ferro, ouro, cobre, estanho e alumínio). Eles só frutificam quase sem luz e machucam um pouquinho ao tocar.
+
+      Cada fruta equivale a uma pepita; derreta na Fundição ou junte na bancada. Colha qualquer uma.
+    tasks:
+      - one_of: [TConstruct:oreBerries, TConstruct:oreBerries:1, TConstruct:oreBerries:2, TConstruct:oreBerries:3, TConstruct:oreBerries:4]
+    rewards:
+      - loot: comum
+
+  - id: fruta_essencia
+    title: "Sabor de Creeper"
+    type: optional
+    deps: [frutas_minerio]
+    desc: |
+      O arbusto mais raro dá a §eFruta de Essência Concentrada§r: coma ou use para ganhar experiência. Dizem que tem gosto de Creeper. Eu não provei. Juro.
+    tasks:
+      - get: TConstruct:oreBerries:5
+    rewards:
+      - loot: comum
+
+  - id: pedra_queimada
+    title: "Pedra da Fundição"
+    type: optional
+    deps: [bacia_fundicao, fundicao_montada]
+    desc: |
+      Derreta pedregulho ou pedra na Fundição e despeje o líquido na Bacia: sai §ePedra da Fundição§r, que dá uma família de blocos decorativos (pavimento, calçada, tijolos talhados com o cinzel).
+
+      §cAtenção:§r a estrutura da Fundição só aceita tijolos, tanques e drenos; a Pedra da Fundição é para decorar. Mas fica lindo!
+    tasks:
+      - get: TConstruct:Smeltery:4 x4
+    rewards:
+      - loot: comum
+
+  - id: vidro_limpo
+    title: "Vidro Limpo"
+    type: optional
+    deps: [bacia_fundicao, fundicao_montada]
+    desc: |
+      Areia derretida vira Vidro Derretido. Na Bacia sai §eVidro Limpo§r (sem aquelas linhas do vidro comum), que se conecta lindamente.
+
+      6 blocos na bancada rendem 16 painéis de vidro limpo.
+    tasks:
+      - get: TConstruct:GlassBlock x8
+    rewards:
+      - loot: comum
+
+  - id: janela_fundicao
+    title: "Olhando o Metal Derreter"
+    type: optional
+    deps: [tanque_fundicao]
+    desc: |
+      Variações do Tanque com mais vidro: §eVidro da Fundição§r e §eJanela da Fundição§r. Funcionam como tanques na parede e deixam você ver o metal lá dentro.
+    tasks:
+      - one_of: [TConstruct:LavaTank:1, TConstruct:LavaTank:2]
+    rewards:
+      - loot: comum
+
+  - id: canal_fundicao
+    title: "Canal de Fundição"
+    type: optional
+    deps: [torneira]
+    desc: |
+      Tijolos em "U" (rende 4) fazem o §eCanal de Fundição§r, que conduz o líquido da torneira para várias mesas e bacias de uma vez.
+
+      Útil quando a Fundição começar a produzir em escala.
+    tasks:
+      - get: TConstruct:CastingChannel
+    rewards:
+      - loot: comum
+
+  - id: fundicao_nether
+    title: "Fundição do Nether"
+    type: optional
+    deps: [fundicao_montada]
+    desc: |
+      Existe uma versão escura da Fundição! A §eArgamassa do Nether§r (fungo do Nether + areia das almas + cascalho, rende 2) assada vira tijolo do Nether, que monta Controle, Drenos, Tanques e mesas idênticos aos normais.
+
+      Faça um Controle da Fundição do Nether.
+    tasks:
+      - get: TConstruct:SmelteryNether
+    rewards:
+      - loot: comum
+
+  - id: balde_argila
+    title: "Balde de Argila"
+    type: optional
+    deps: [fundicao_montada]
+    desc: |
+      Presente do Iguana: 3 argilas em "U" fazem um Balde de Argila Cru; asse na fornalha. O §eBalde de Argila Cozido§r carrega água, lava, leite e até metais derretidos da Fundição.
+
+      Ele quebra fácil se você abusar, então não confie a ele o seu último lingote de Manyullyn.
+    tasks:
+      - get: IguanaTweaksTConstruct:clayBucketFired
+    rewards:
+      - loot: comum
+
+  # ------------------------------------------------------------------ Fase 4: moldes
+  - id: molde_branco
+    title: "Molde em Branco"
+    type: normal
+    deps: [fundicao_montada]
+    desc: |
+      Despeje §eouro§r ou §ealumínio-bronze§r derretido numa Mesa de Fundição vazia: sai um §eMolde em Branco§r. Ele é ingrediente de minas terrestres e de algumas receitas, e pode ser derretido de volta.
+
+      Neste pack os moldes de metal são feitos com ouro ou alumínio-bronze; guarde ouro!
+    tasks:
+      - get: TConstruct:blankPattern:1
+    rewards:
+      - xp: 2
+      - item: minecraft:gold_ingot x2
+
+  - id: molde_barra
+    title: "Molde de Barra"
+    type: main
+    deps: [fundicao_montada]
+    desc: |
+      Coloque um lingote qualquer na Mesa de Fundição e despeje ouro ou alumínio-bronze em volta. O metal endurece ao redor e forma o §eMolde de Barra§r.
+
+      §cAtenção (Iguana):§r o item usado para criar o molde é §cconsumido§r. Use um lingote barato ou um tijolo.
+
+      Com o molde na mesa, cada despejo vira um lingote. Seu primeiro ferro fundido está a um clique!
+    tasks:
+      - get: TConstruct:metalPattern
+    rewards:
+      - xp: 3
+      - choice: [minecraft:gold_ingot x4, minecraft:iron_ingot x6]
+
+  - id: pecas_pedra
+    title: "Peças de Pedra: Só para Moldes"
+    type: normal
+    deps: [construtor_partes, molde_barra]
+    desc: |
+      Regra do Iguana: peças de §epedra§r não montam ferramentas, mas são perfeitas para fazer moldes, já que a peça é destruída no processo.
+
+      Faça uma cabeça de picareta de pedra no Construtor de Partes e guarde para a próxima página. Faça também cabo, conector, lâminas… de pedra, conforme for precisando de moldes.
+    tasks:
+      - get: TConstruct:pickaxeHead:1
+    rewards:
+      - xp: 1
+      - item: minecraft:cobblestone x32
+
+  - id: molde_picareta
+    title: "Molde de Cabeça de Picareta"
+    type: main
+    deps: [pecas_pedra]
+    desc: |
+      Peça na mesa + ouro ou alumínio-bronze por cima = molde daquela peça. Comece pela mais importante: §eMolde de Cabeça de Picareta§r.
+
+      A partir dele, qualquer metal derretido vira cabeça de picareta. Vale para todos os outros moldes também.
+    tasks:
+      - get: TConstruct:metalPattern:2
+    rewards:
+      - xp: 3
+      - choice: [minecraft:gold_ingot x4, minecraft:iron_ingot x6]
+
+  - id: molde_cabo
+    title: "Molde de Cabo"
+    type: normal
+    deps: [pecas_pedra]
+    desc: |
+      Um §eMolde de Cabo§r permite cabos de metal, bem mais resistentes. Ele também é a base dos virotes da besta: um cabo na mesa recebe metal na ponta.
+    tasks:
+      - get: TConstruct:metalPattern:1
+    rewards:
+      - xp: 2
+      - item: minecraft:gold_ingot x2
+
+  - id: molde_conector
+    title: "Molde de Conector"
+    type: normal
+    deps: [pecas_pedra]
+    desc: |
+      Conectores de metal completam picaretas e enxadões de metal. Cada material novo muda um pouquinho a ferramenta — teste combinações!
+    tasks:
+      - get: TConstruct:metalPattern:9
+    rewards:
+      - xp: 2
+      - item: minecraft:gold_ingot x2
+
+  - id: molde_pa_machado
+    title: "Moldes de Pá e Machado"
+    type: normal
+    deps: [pecas_pedra]
+    desc: |
+      Os moldes de §eCabeça de Pá§r e de §eCabeça de Machado§r completam o trio de ferramentas básicas (e o enxadão).
+    tasks:
+      - get: [TConstruct:metalPattern:3, TConstruct:metalPattern:4]
+    rewards:
+      - xp: 2
+      - item: minecraft:gold_ingot x2
+
+  - id: molde_lamina
+    title: "Molde de Lâmina de Espada"
+    type: normal
+    deps: [pecas_pedra]
+    desc: |
+      Lembra que não existe lâmina de espada sem metal neste pack? Pois aqui está a solução. O §eMolde de Lâmina de Espada§r abre as espadas larga, longa, rapieira e cutelo.
+    tasks:
+      - get: TConstruct:metalPattern:5
+    rewards:
+      - xp: 2
+      - item: minecraft:gold_ingot x2
+
+  - id: molde_guardas
+    title: "Moldes de Proteção"
+    type: normal
+    deps: [molde_lamina]
+    desc: |
+      Cada espada tem um protetor diferente: §eProtetor Largo§r (espada larga), §eProtetor de Mão§r (espada longa) e §eProtetor Curto§r (rapieira e adaga). Faça os três moldes.
+    tasks:
+      - get: [TConstruct:metalPattern:6, TConstruct:metalPattern:7, TConstruct:metalPattern:8]
+    rewards:
+      - xp: 2
+      - item: minecraft:gold_ingot x3
+
+  - id: molde_faca
+    title: "Molde de Lâmina de Faca"
+    type: optional
+    deps: [pecas_pedra]
+    desc: |
+      Lâminas de faca de metal fazem adagas e facas de arremesso de verdade. Bem mais afiadas que a pederneira.
+    tasks:
+      - get: TConstruct:metalPattern:12
+    rewards:
+      - loot: comum
+
+  - id: molde_pepita_gema
+    title: "Pepitas e Gemas"
+    type: optional
+    deps: [molde_barra]
+    desc: |
+      O §eMolde de Pepita§r despeja só 16 mB (ótimo para sobras) e o §eMolde de Gema§r forma gemas a partir de líquidos como a Esmeralda Liquefeita. Faça qualquer um dos dois.
+    tasks:
+      - one_of: [TConstruct:metalPattern:27, TConstruct:metalPattern:26]
+    rewards:
+      - loot: comum
+
+  - id: molde_ponta_flecha
+    title: "Molde de Ponta de Flecha"
+    type: normal
+    deps: [pecas_pedra]
+    desc: |
+      Pontas de flecha de metal pesam mais e atravessam armaduras. Também são a ponta dos dardos (javelins).
+    tasks:
+      - get: TConstruct:metalPattern:25
+    rewards:
+      - xp: 2
+      - item: minecraft:feather x16
+
+  - id: molde_utilidades
+    title: "Frigideira, Placa e Cinzel"
+    type: optional
+    deps: [pecas_pedra]
+    desc: |
+      Moldes de §eFrigideira§r, §ePlaca Larga§r (a "placa de batalha") e §eCabeça de Cinzel§r: ferramentas divertidas e úteis. Faça qualquer um.
+    tasks:
+      - one_of: [TConstruct:metalPattern:10, TConstruct:metalPattern:11, TConstruct:metalPattern:13]
+    rewards:
+      - loot: comum
+
+  - id: moldes_pesados
+    title: "Moldes Pesados"
+    type: normal
+    deps: [molde_cabo, molde_conector]
+    desc: |
+      As ferramentas grandes da Forja usam peças grandes: §eCabo Grande§r, §eConector Grande§r e §ePlaca Grande§r. Faça os três moldes.
+
+      Dica: faça as peças de pedra correspondentes no Construtor de Partes primeiro (são caras em pedra, mas pedra é de graça).
+    tasks:
+      - get: [TConstruct:metalPattern:14, TConstruct:metalPattern:15, TConstruct:metalPattern:16]
+    rewards:
+      - xp: 2
+      - item: minecraft:gold_ingot x4
+
+  - id: molde_martelo
+    title: "Molde de Cabeça de Martelo"
+    type: normal
+    deps: [moldes_pesados]
+    desc: |
+      Cabeça de martelo: o coração da ferramenta que minera 3×3. É a peça mais cara de todas, então use um metal que valha a pena.
+    tasks:
+      - get: TConstruct:metalPattern:21
+    rewards:
+      - xp: 2
+      - item: minecraft:gold_ingot x2
+
+  - id: molde_machado_largo
+    title: "Molde de Machado Largo"
+    type: normal
+    deps: [moldes_pesados]
+    desc: |
+      A §eCabeça de Machado Largo§r faz o Machado de Lenhador (derruba a árvore inteira) e o Machado de Batalha (duas cabeças!).
+    tasks:
+      - get: TConstruct:metalPattern:17
+    rewards:
+      - xp: 2
+      - item: minecraft:gold_ingot x2
+
+  - id: molde_escavador
+    title: "Molde de Cabeça de Escavador"
+    type: normal
+    deps: [moldes_pesados]
+    desc: |
+      O Escavador é a pá 3×3. Com ele, aquelas montanhas de cascalho e areia para Argamassa somem num instante.
+    tasks:
+      - get: TConstruct:metalPattern:19
+    rewards:
+      - xp: 2
+      - item: minecraft:gold_ingot x2
+
+  - id: molde_foice
+    title: "Molde de Lâmina de Foice"
+    type: optional
+    deps: [moldes_pesados]
+    desc: |
+      A Foice colhe plantações e folhas em área 3×3×3 e ainda acerta vários inimigos de uma vez. Uma beleza para fazendas.
+    tasks:
+      - get: TConstruct:metalPattern:18
+    rewards:
+      - loot: comum
+
+  - id: molde_lamina_larga
+    title: "Molde de Lâmina Grande"
+    type: optional
+    deps: [moldes_pesados]
+    desc: |
+      A §eLâmina Grande§r é a peça do Cutelo, a arma pesada que decapita monstros (e deixa as cabeças para você melhorar picaretas!).
+    tasks:
+      - get: TConstruct:metalPattern:20
+    rewards:
+      - loot: comum
+
+  - id: moldes_arco
+    title: "Moldes de Arco e Besta"
+    type: normal
+    deps: [moldes_pesados]
+    desc: |
+      Limbos de arco de metal são lentos, mas fortes; a besta precisa de §eLimbo da Besta§r e §eCorpo da Besta§r. Faça o molde de limbo de arco e os dois da besta.
+    tasks:
+      - get: [TConstruct:Cast:3, TConstruct:Cast:1, TConstruct:Cast:2]
+    rewards:
+      - xp: 2
+      - item: minecraft:string x8
+
+  - id: moldes_argila
+    title: "Moldes de Argila"
+    type: optional
+    deps: [molde_barra]
+    desc: |
+      Este pack também tem §emoldes de argila§r (Blank Clay Cast e versões de cada peça) — uma alternativa mais barata aos moldes de ouro. Abra o NEI no "Blank Clay Cast" para ver como produzi-los e quais peças existem.
+    tasks:
+      - one_of: [TConstruct:blankPattern:3, TConstruct:clayPattern:*]
+    rewards:
+      - loot: comum
+
+  - id: biblioteca_moldes
+    title: "Biblioteca de Moldes"
+    type: milestone
+    deps: [molde_picareta, molde_cabo, molde_conector, molde_lamina, moldes_pesados]
+    banner: "Biblioteca de Moldes"
+    subtitle: "Formas para qualquer metal"
+    desc: |
+      Moldes são o vocabulário da metalurgia: com eles, qualquer metal derretido vira qualquer peça. E você agora fala essa língua fluentemente!
+
+      Guarde-os num §eBaú de Moldes§r ao lado das mesas. Lembre: moldes de metal não se gastam, então um conjunto basta para a vida toda. Quando aparecer um metal novo, é só despejar.
+    tasks:
+      - get: [TConstruct:metalPattern:1, TConstruct:metalPattern:2, TConstruct:metalPattern:5, TConstruct:metalPattern:9, TConstruct:metalPattern:14, TConstruct:metalPattern:16]
+    rewards:
+      - xp: 5
+      - kit: {name: "Kit do Modelador", items: [TConstruct:ToolStationBlock:5, minecraft:gold_ingot x8, TConstruct:materials:14 x4]}
+      - loot: incomum
+
+  # ------------------------------------------------------------------ Fase 5: metais e ligas
+  - id: picareta_ferro
+    title: "Ferro Fundido"
+    type: main
+    deps: [molde_picareta]
+    desc: |
+      Derreta ferro, despeje no Molde de Cabeça de Picareta e monte sua §ePicareta de Ferro§r de verdade.
+
+      Ferro tem nível §eRedstone§r — mas lembre do Iguana: nasce no nível Ferro e só quebra diamante depois de §amelhorada§r. Minere com ela e, em pouco tempo, a ponta brilha.
+    tasks:
+      - get: TConstruct:pickaxeHead:2
+    rewards:
+      - xp: 3
+      - choice: [minecraft:iron_ingot x8, minecraft:lava_bucket, minecraft:torch x32]
+
+  - id: cobre_estanho
+    title: "Cobre e Estanho"
+    type: normal
+    deps: [fundicao_montada]
+    desc: |
+      Neste pack, o Tinkers não gera cobre nem estanho no subsolo (só cascalhos de minério raros na superfície e frutas de minério). Use os minérios de qualquer mod: a Fundição aceita todos pelo OreDictionary.
+
+      Junte cobre e estanho em lingotes (ou derreta os minérios direto).
+    tasks:
+      - get: [ore:ingotCopper x9, ore:ingotTin x3]
+    rewards:
+      - xp: 2
+      - item: minecraft:coal x8
+
+  - id: bronze
+    title: "Bronze"
+    type: main
+    deps: [cobre_estanho, picareta_ferro]
+    desc: |
+      Derreta §e3 partes de cobre e 1 de estanho§r juntas: a Fundição faz a liga sozinha e devolve 4 de bronze.
+
+      O bronze tem o mesmo nível do ferro (Redstone), mas é mais durável e rápido. Também é ingrediente das Asas do Viajante e da Forja de Bronze.
+    tasks:
+      - get: TConstruct:materials:13 x4
+    rewards:
+      - xp: 3
+      - choice: [ThermalFoundation:material:64 x6, ThermalFoundation:material:65 x2, minecraft:lava_bucket]
+
+  - id: ferramenta_bronze
+    title: "Ferramenta de Bronze"
+    type: normal
+    deps: [bronze]
+    desc: |
+      Faça qualquer cabeça de bronze: picareta, pá, machado ou lâmina de espada.
+
+      Monte uma ferramenta e compare com a de ferro na Estação. Os números não mentem!
+    tasks:
+      - one_of: [TConstruct:pickaxeHead:14, TConstruct:shovelHead:14, TConstruct:hatchetHead:14, TConstruct:swordBlade:14]
+    rewards:
+      - xp: 2
+      - item: ThermalFoundation:material:64 x4
+
+  - id: aluminio
+    title: "Alumínio"
+    type: normal
+    deps: [fundicao_montada]
+    desc: |
+      O Minério de Alumínio do Tinkers aparece no subsolo (do fundo até Y 64), e há arbustos de frutas de alumínio. Outros mods também têm alumínio no OreDictionary.
+
+      Sozinho é fraquinho, mas é a base de duas ligas fundamentais. Junte alguns lingotes.
+    tasks:
+      - get: ore:ingotAluminum x8
+    rewards:
+      - xp: 2
+      - item: minecraft:iron_ingot x4
+
+  - id: aluminio_bronze
+    title: "Alumínio-Bronze"
+    type: main
+    deps: [aluminio, cobre_estanho]
+    desc: |
+      §e3 de alumínio + 1 de cobre§r na Fundição = 4 de §eAlumínio-Bronze§r. É o metal oficial dos moldes neste pack (junto com o ouro) e serve para o Pano de Seda.
+
+      Com ele, ouro deixa de ser problema para os seus moldes.
+    tasks:
+      - get: TConstruct:materials:14 x4
+    rewards:
+      - xp: 3
+      - choice: [TConstruct:materials:11 x6, ThermalFoundation:material:64 x4]
+
+  - id: lingote_obsidiana
+    title: "Obsidiana Derretida"
+    type: normal
+    deps: [fundicao_montada]
+    desc: |
+      Blocos de obsidiana derretem na Fundição. Despeje no Molde de Barra para ter §eBarras de Obsidiana§r.
+
+      §cNeste pack a Fundição não cria obsidiana misturando água e lava§r: você precisa minerar os blocos (nível Obsidiana).
+    tasks:
+      - get: TConstruct:materials:18 x2
+    rewards:
+      - xp: 2
+      - item: minecraft:obsidian x4
+
+  - id: liga_alumite
+    title: "Alumite"
+    type: milestone
+    deps: [aluminio_bronze, lingote_obsidiana]
+    banner: "Alumite"
+    subtitle: "A primeira liga de nível Cobalto"
+    desc: |
+      Agora sim, uma liga de respeito! Derreta juntos §ealumínio, ferro e obsidiana na proporção 5 : 2 : 2§r e a Fundição devolve 3 de §eAlumite§r.
+
+      Por que isso importa? O Alumite tem nível de mineração §eCobalto§r. Uma picareta de Alumite §amelhorada§r é a sua chave para os minérios do Nether — cobalto e ardite — e para a Manyullyn.
+
+      Confira as quantidades exatas em mB no NEI ou no livro Fundições Poderosas.
+    tasks:
+      - get: TConstruct:materials:15 x3
+    rewards:
+      - xp: 5
+      - kit: {name: "Kit do Ligador", items: [minecraft:obsidian x8, minecraft:iron_ingot x8, minecraft:lava_bucket]}
+      - loot: incomum
+
+  - id: ferramenta_alumite
+    title: "Picareta de Alumite"
+    type: main
+    deps: [liga_alumite]
+    desc: |
+      Faça a cabeça de picareta de Alumite e monte uma picareta. Ela nasce no nível Obsidiana; minere até o clarão e ela chega a §eCobalto§r.
+
+      Alternativa: a de Aço tem o mesmo nível, e cabeças de Enderman ou de Esqueleto Wither melhoram a picareta até Cobalto na hora.
+    tasks:
+      - get: TConstruct:pickaxeHead:15
+    rewards:
+      - xp: 3
+      - choice: [minecraft:obsidian x4, TConstruct:materials:11 x8]
+
+  - id: gusa
+    title: "Gusa"
+    type: normal
+    deps: [picareta_ferro]
+    desc: |
+      Uma liga meio macabra: §eFerro + Sangue + Esmeralda§r. O sangue aparece quando criaturas tomam dano dentro da Fundição; a esmeralda vem derretendo esmeraldas (ou aldeões… este pack permite, mas eu fico triste).
+
+      A Gusa tem nível Obsidiana e o traço §eSaborosa§r (às vezes dropa comida!). Faça uma barra.
+    tasks:
+      - get: TConstruct:materials:34
+    rewards:
+      - xp: 2
+      - item: minecraft:emerald x2
+
+  - id: aco
+    title: "Aço"
+    type: normal
+    deps: [picareta_ferro]
+    desc: |
+      O Tinkers não produz aço, mas derrete o de outros mods (Immersive Engineering, IC2, Mekanism…). Funda o aço e despeje no molde de cabeça de picareta.
+
+      Aço tem nível §eCobalto§r e é muito resistente. Ótima alternativa ao Alumite.
+    tasks:
+      - get: TConstruct:pickaxeHead:16
+    rewards:
+      - xp: 2
+      - item: minecraft:iron_ingot x6
+
+  - id: blocos_metal
+    title: "Blocos Maciços"
+    type: optional
+    deps: [bacia_fundicao, bronze]
+    desc: |
+      Despeje um bloco inteiro de metal (1296 mB) na Bacia de Fundição. Blocos de cobre, bronze, estanho, alumínio, alumínio-bronze, alumite e aço servem de base de sinalizador e para a Forja de Ferramentas.
+    tasks:
+      - one_of: [TConstruct:MetalBlock:3, TConstruct:MetalBlock:4, TConstruct:MetalBlock:5, TConstruct:MetalBlock:6, TConstruct:MetalBlock:7, TConstruct:MetalBlock:8, TConstruct:MetalBlock:9]
+    rewards:
+      - loot: comum
+
+  - id: fim_solido
+    title: "Fim Sólido"
+    type: optional
+    deps: [bacia_fundicao, fundicao_montada]
+    desc: |
+      Pérolas do Fim derretem em §eEnder Liquefeito§r. Na Bacia, vira §eBloco de Fim Sólido§r. Também serve para alguns materiais e receitas de outros mods.
+    tasks:
+      - get: TConstruct:MetalBlock:10
+    rewards:
+      - loot: comum
+
+  # ------------------------------------------------------------------ Fase 6: o Nether
+  - id: rumo_nether
+    title: "Minério do Inferno"
+    type: normal
+    deps: [ferramenta_alumite]
+    desc: |
+      Cobalto e ardite só existem de verdade no §cNether§r (densidade alta, espalhados entre a rocha do Nether). Leve a picareta de Alumite melhorada, comida, armadura e blocos para se proteger. §cNão quebre o minério em cima da lava.§r
+
+      O capítulo do Nether tem mais detalhes sobre a dimensão. Aqui, basta chegar lá.
+    tasks:
+      - visit: {dim: -1, name: "O Nether"}
+    rewards:
+      - xp: 2
+      - item: minecraft:cooked_porkchop x8
+
+  - id: nivel_cobalto
+    title: "Nível Cobalto"
+    type: info
+    deps: [rumo_nether]
+    desc: |
+      Cobalto e ardite exigem nível de mineração §eCobalto (4)§r. Nenhuma picareta vanilla chega lá. Opções neste pack:
+
+      • Picareta de §eAlumite§r ou §eAço§r (ou Knightmetal, Brilhante…) §amelhorada§r;
+      • Aplicar uma §eCabeça de Enderman§r ou §eCrânio de Esqueleto Wither§r numa picareta de nível Obsidiana;
+      • Ferramentas de outros mods com esse nível.
+
+      Confira no tooltip: "Nível de Mineração: Cobalto".
+    tasks:
+      - check
+    rewards:
+      - xp: 1
+
+  - id: minerio_cobalto
+    title: "Cobalto"
+    type: main
+    deps: [nivel_cobalto]
+    desc: |
+      O azul brilhante do Nether! O §eMinério de Cobalto§r é duro como poucos. Outros mods também registram minério de cobalto no OreDictionary (o NEI mostra quais), e todos derretem na Fundição.
+
+      Cobalto puro é muito rápido e durável, com nível Cobalto.
+    tasks:
+      - get: ore:oreCobalt x4
+    rewards:
+      - xp: 3
+      - choice: [minecraft:lava_bucket, minecraft:cooked_beef x12, minecraft:torch x32]
+
+  - id: minerio_ardite
+    title: "Ardite"
+    type: main
+    deps: [nivel_cobalto]
+    desc: |
+      O irmão laranja e áspero do cobalto. O §eMinério de Ardite§r fica no Nether com a mesma frequência. Ardite tem o traço Pedregoso: fica mais rápido conforme se desgasta.
+    tasks:
+      - get: ore:oreArdite x4
+    rewards:
+      - xp: 3
+      - choice: [minecraft:lava_bucket, minecraft:cooked_beef x12, minecraft:torch x32]
+
+  - id: lingotes_nether
+    title: "Barras do Nether"
+    type: normal
+    deps: [minerio_cobalto, minerio_ardite]
+    desc: |
+      Derreta os minérios (2 barras por minério) e funda as §eBarras de Cobalto§r e §eBarras de Ardite§r.
+    tasks:
+      - get: [TConstruct:materials:3 x4, TConstruct:materials:4 x4]
+    rewards:
+      - xp: 2
+      - item: minecraft:lava_bucket
+
+  - id: manyullyn
+    title: "Manyullyn"
+    type: milestone
+    deps: [lingotes_nether]
+    banner: "Manyullyn"
+    subtitle: "A liga do Nether"
+    desc: |
+      Cobalto e ardite derretidos juntos, na mesma quantidade, se fundem em §5Manyullyn§r — a liga mais forte da metalurgia do Tinkers, com nível de mineração §eManyullyn (5)§r.
+
+      Neste pack a liga rende pouco (o retorno da Manyullyn é um dos mais baixos entre as ligas), então cada barra é preciosa. Confira as quantidades no NEI antes de despejar.
+
+      Eu sabia que você ia descer até o inferno e voltar com uma liga lendária. Página reescrita!
+    tasks:
+      - get: TConstruct:materials:5 x3
+    rewards:
+      - xp: 5
+      - kit: {name: "Kit do Nether", items: [minecraft:lava_bucket, minecraft:golden_apple, minecraft:cooked_beef x16]}
+      - loot: incomum
+
+  - id: picareta_manyullyn
+    title: "Picareta de Manyullyn"
+    type: main
+    deps: [manyullyn]
+    desc: |
+      Cabeça de picareta de Manyullyn: o topo da metalurgia do Tinkers no Ato I. Melhorada, ela minera qualquer coisa que o Tinkers conhece.
+
+      Combine com um cabo de cobalto ou de osso e muitos modificadores, e você terá uma ferramenta para o resto do jogo.
+    tasks:
+      - get: TConstruct:pickaxeHead:12
+    rewards:
+      - xp: 3
+      - choice: [minecraft:diamond x2, minecraft:redstone x32, minecraft:dye:4 x16]
+
+  - id: blocos_nether
+    title: "Tesouro Azul e Laranja"
+    type: optional
+    deps: [lingotes_nether]
+    desc: |
+      Blocos de Cobalto, Ardite e Manyullyn são bases de sinalizador e o material das Forjas mais bonitas do jogo. Faça qualquer um.
+    tasks:
+      - one_of: [TConstruct:MetalBlock, TConstruct:MetalBlock:1, TConstruct:MetalBlock:2]
+    rewards:
+      - loot: comum
+
+  # ------------------------------------------------------------------ Fase 7: modificadores
+  - id: modificadores_intro
+    title: "Modificadores"
+    type: info
+    deps: [xp_ferramenta]
+    desc: |
+      Na Estação de Ferramentas, coloque a ferramenta e o item modificador nos slots ao lado. Cada modificador gasta §eslots§r ("Modificadores" no tooltip).
+
+      Neste pack as ferramentas nascem com §c0 slots§r: você ganha 1 nos níveis 2, 4 e 6, e pode comprar mais (bloco de ouro + diamante, maçã dourada encantada + bloco de diamante, Estrela do Nether — cada um uma vez por ferramenta). Peças de Papel (e de Táumio) adicionam slots.
+
+      O livro "Materiais e Você v2" lista todos os modificadores.
+    tasks:
+      - check
+    rewards:
+      - xp: 1
+
+  - id: mod_redstone
+    title: "Pressa (Redstone)"
+    type: normal
+    deps: [modificadores_intro]
+    desc: |
+      Redstone aumenta a velocidade de mineração: cada pó soma um pouquinho, e muitos pós cabem num mesmo slot. Inútil em armas.
+
+      Junte redstone e deixe a picareta voando.
+    tasks:
+      - get: minecraft:redstone x32
+    rewards:
+      - xp: 2
+      - item: minecraft:redstone x16
+
+  - id: mod_lapis
+    title: "Sorte (Lápis-Lazúli)"
+    type: normal
+    deps: [modificadores_intro]
+    desc: |
+      Lápis dá §eFortuna§r em ferramentas e §eSaque§r em armas, subindo de nível conforme você adiciona mais lápis. §cNão combina com Toque de Seda nem com Auto-Fundição.§r
+    tasks:
+      - get: minecraft:dye:4 x32
+    rewards:
+      - xp: 2
+      - item: minecraft:dye:4 x16
+
+  - id: mod_quartzo
+    title: "Afiada (Quartzo)"
+    type: normal
+    deps: [modificadores_intro]
+    desc: |
+      Quartzo do Nether na lâmina aumenta o dano. É o modificador básico de toda espada.
+    tasks:
+      - get: minecraft:quartz x16
+    rewards:
+      - xp: 2
+      - item: minecraft:quartz x8
+
+  - id: mod_diamante
+    title: "Diamante"
+    type: normal
+    deps: [modificadores_intro]
+    desc: |
+      Um diamante na ferramenta: §e+500 de durabilidade§r e o nível de mineração sobe para §eObsidiana§r (se estiver abaixo). Uma vez por ferramenta.
+
+      Truque clássico para uma picareta de ferro quebrar obsidiana antes do Alumite.
+    tasks:
+      - get: minecraft:diamond
+    rewards:
+      - xp: 2
+      - item: minecraft:iron_ingot x4
+
+  - id: mod_esmeralda
+    title: "Esmeralda"
+    type: normal
+    deps: [modificadores_intro]
+    desc: |
+      Uma esmeralda: §e+50% de durabilidade§r e o nível sobe para §eRedstone§r (se estiver abaixo). Uma vez por ferramenta.
+    tasks:
+      - get: minecraft:emerald
+    rewards:
+      - xp: 2
+      - item: minecraft:iron_ingot x4
+
+  - id: bola_musgo
+    title: "Bola de Musgo"
+    type: normal
+    deps: [modificadores_intro]
+    desc: |
+      9 pedregulhos musgosos (ou tijolos de pedra musgosos) = §eBola de Musgo§r. Na ferramenta, ela se §econserta sozinha§r aos poucos, mais rápido sob o sol.
+    tasks:
+      - get: TConstruct:materials:6
+    rewards:
+      - xp: 2
+      - item: minecraft:mossy_cobblestone x9
+
+  - id: cristal_lava
+    title: "Cristal de Lava"
+    type: normal
+    deps: [modificadores_intro]
+    desc: |
+      Varas de blaze e cargas de fogo em volta de um balde de lava: §eCristal de Lava§r. Dá §eAuto-Fundição§r (minério já sai fundido) e põe fogo nos mobs.
+
+      §cIncompatível com Toque de Seda.§r Combina lindamente com Sorte.
+    tasks:
+      - get: TConstruct:materials:7
+    rewards:
+      - xp: 2
+      - item: minecraft:blaze_rod x2
+
+  - id: mod_flamejante
+    title: "Flamejante (Pó de Blaze)"
+    type: optional
+    deps: [modificadores_intro]
+    desc: |
+      Pó de blaze numa arma ateia fogo nos inimigos; a cada 5 pós, mais um segundo de chamas.
+    tasks:
+      - get: minecraft:blaze_powder x10
+    rewards:
+      - loot: comum
+
+  - id: pano_seda
+    title: "Pano de Seda"
+    type: normal
+    deps: [modificadores_intro]
+    desc: |
+      8 linhas ao redor de um lingote de ouro ou de alumínio-bronze (neste pack é lingote, não pepita) = §ePano de Seda§r. Ele é metade do caminho para o Toque de Seda.
+    tasks:
+      - get: TConstruct:materials:25 x4
+    rewards:
+      - xp: 2
+      - item: minecraft:string x16
+
+  - id: joia_seda
+    title: "Joia de Seda"
+    type: normal
+    deps: [pano_seda]
+    desc: |
+      4 Panos de Seda ao redor de uma esmeralda = §eJoia de Seda§r. Aplicada na ferramenta, dá §eToque de Seda§r; numa foice, ela vira tesoura. §cNão combina com Sorte nem Auto-Fundição.§r
+    tasks:
+      - get: TConstruct:materials:26
+    rewards:
+      - xp: 2
+      - item: minecraft:emerald
+
+  - id: osso_necrotico
+    title: "Osso Necrótico"
+    type: normal
+    deps: [modificadores_intro]
+    desc: |
+      O osso escuro dos Esqueletos Wither, ou — neste pack — §e3 Wither Essence§r do Magical Crops em diagonal na bancada. Numa arma, dá §eRouba Vida§r (cura ao acertar monstros).
+
+      Também é ingrediente da Lata de Coração Vermelho.
+    tasks:
+      - get: TConstruct:materials:8
+    rewards:
+      - xp: 2
+      - item: minecraft:bone x8
+
+  - id: reforco
+    title: "Reforço"
+    type: normal
+    deps: [modificadores_intro, fundicao_montada]
+    desc: |
+      O modificador §eReforçado§r dá chance de não gastar durabilidade (10% por nível, acumula). Neste pack ele usa o item §eReforço§r.
+
+      A receita do Reforço não aparece na bancada: abra o NEI (tecla R) sobre ele para ver como produzi-lo nesta versão.
+    tasks:
+      - get: TConstruct:materials:43
+    rewards:
+      - xp: 2
+      - item: minecraft:obsidian x4
+
+  - id: mod_repulsao
+    title: "Repulsão (Pistão)"
+    type: optional
+    deps: [modificadores_intro]
+    desc: |
+      Um pistão na arma empurra os inimigos para longe. Ótimo para manter creepers a uma distância saudável.
+    tasks:
+      - get: minecraft:piston
+    rewards:
+      - loot: comum
+
+  - id: terra_consagrada
+    title: "Terra Sagrada"
+    type: optional
+    deps: [modificadores_intro]
+    desc: |
+      Terra + carne podre + farinha de osso = §eTerra de Cemitério§r (fere mortos-vivos). Asse na fornalha: §eTerra Sagrada§r. Na arma, dá §eJulgamento§r (dano extra contra mortos-vivos).
+    tasks:
+      - get: TConstruct:CraftedSoil:4
+    rewards:
+      - loot: comum
+
+  - id: mod_fluxo
+    title: "Fluxo"
+    type: optional
+    deps: [modificadores_intro]
+    desc: |
+      Para quem já mexe com Thermal Expansion: um §eCapacitor de Flux Endurecido§r ou uma §eCélula de Energia de Leadstone§r faz a ferramenta usar RF no lugar da durabilidade.
+
+      §cNeste pack o Fluxo custa 2 slots de modificador.§r
+    tasks:
+      - one_of: [ThermalExpansion:capacitor:3, ThermalExpansion:Cell:1]
+    rewards:
+      - loot: comum
+
+  - id: slots_extras
+    title: "Mais Espaço"
+    type: normal
+    deps: [modificadores_intro]
+    desc: |
+      Sem slots? Compre! §eBloco de ouro + diamante§r na Estação adiciona 1 slot (uma vez por ferramenta). Depois: §emaçã dourada encantada + bloco de diamante§r, e por fim uma §eEstrela do Nether§r.
+
+      Comece pelo primeiro.
+    tasks:
+      - get: [minecraft:gold_block, minecraft:diamond]
+    rewards:
+      - xp: 2
+      - item: minecraft:gold_ingot x4
+
+  - id: slot_estrela
+    title: "O Brilho da Estrela"
+    type: optional
+    deps: [slots_extras]
+    desc: |
+      A Estrela do Nether, aplicada na Estação de Ferramentas, dá o terceiro slot comprado. O Iguana também a reconhece como item de melhoria de picareta até o nível Manyullyn.
+
+      Um troféu do Wither. Muito caro, muito bonito.
+    tasks:
+      - get: minecraft:nether_star
+    rewards:
+      - loot: comum
+
+  - id: supertic_taumaturgia
+    title: "Aumento Taumatúrgico"
+    type: optional
+    deps: [slots_extras]
+    desc: |
+      Para taumaturgos: o SuperTic adiciona a pesquisa §dThaumic Augmentation§r (aba Artifice do Thaumonomicon). Com ela, a §dMatriz de Infusão§r adiciona §e+1 modificador§r a uma ferramenta do Tinkers — só uma vez por ferramenta.
+
+      Marque quando tiver a pesquisa (veja o capítulo de Thaumcraft para chegar lá).
+    tasks:
+      - check
+    rewards:
+      - loot: comum
+
+  - id: supertic_ritual
+    title: "Feitiço do Construtor Diligente"
+    type: optional
+    deps: [slots_extras]
+    desc: |
+      Para magos de sangue: o SuperTic adiciona o ritual de Blood Magic §cSpell of the diligent Tinkerer§r (100 000 LP), que também concede um modificador extra às ferramentas.
+
+      Rituais começam com uma §ePedra Ritual Mestre§r; o arranjo das pedras aparece no NEI/manual do Blood Magic.
+    tasks:
+      - get: AWWayofTime:masterStone
+    rewards:
+      - loot: comum
+
+  # ------------------------------------------------------------------ Fase 8: a Forja
+  - id: forja
+    title: "Forja de Ferramentas"
+    type: main
+    deps: [bacia_fundicao, picareta_ferro]
+    desc: |
+      Para as ferramentas de 4 peças: 3 blocos de Tijolo da Fundição em cima, a Estação de Ferramentas no centro e §e4 blocos de metal§r (ferro, ouro, cobre, bronze, estanho, alumínio, alumínio-bronze, alumite, aço, cobalto, ardite, manyullyn, diamante ou esmeralda) nos cantos e laterais de baixo.
+
+      O metal só muda a cor. Ferro é o mais barato.
+    tasks:
+      - get: TConstruct:ToolForgeBlock:*
+    rewards:
+      - xp: 3
+      - choice: [minecraft:iron_ingot x9, TConstruct:materials:2 x16]
+
+  - id: pecas_grandes
+    title: "Peças Grandes"
+    type: normal
+    deps: [forja, moldes_pesados]
+    desc: |
+      Funda um §eCabo Grande§r, um §eConector Grande§r e uma §ePlaca Grande§r (de qualquer material). Eles custam bem mais metal que as peças comuns.
+
+      Rocha do Nether e obsidiana também fazem várias peças grandes no Construtor de Partes.
+    tasks:
+      - get: [TConstruct:toughRod:*, TConstruct:toughBinding:*, TConstruct:heavyPlate:*]
+    rewards:
+      - xp: 2
+      - item: minecraft:iron_ingot x8
+
+  - id: martelo
+    title: "Martelo"
+    type: main
+    deps: [pecas_grandes, molde_martelo]
+    desc: |
+      Cabeça de martelo + 2 placas grandes + cabo grande: o §eMartelo§r minera em §e3×3§r, tem durabilidade enorme e bate forte em mortos-vivos.
+
+      Como é uma "picareta", ele também nasce com −1 nível e precisa melhorar.
+    tasks:
+      - get: TConstruct:hammer
+    rewards:
+      - xp: 3
+      - choice: [minecraft:torch x64, minecraft:iron_ingot x8]
+
+  - id: machado_lenhador
+    title: "Machado de Lenhador"
+    type: normal
+    deps: [pecas_grandes, molde_machado_largo]
+    desc: |
+      Cabeça de machado largo + placa grande + cabo grande + conector grande. O §eMachado de Lenhador§r derruba a árvore inteira (até 30 blocos de altura) de uma vez.
+
+      Perfeito para alimentar fornalhas com carvão vegetal.
+    tasks:
+      - get: TConstruct:lumberaxe
+    rewards:
+      - xp: 2
+      - item: minecraft:sapling x8
+
+  - id: escavador
+    title: "Escavador"
+    type: normal
+    deps: [pecas_grandes, molde_escavador]
+    desc: |
+      Cabeça de escavador + placa grande + cabo grande + conector grande. Cava terra, areia, cascalho e neve em §e3×3§r.
+    tasks:
+      - get: TConstruct:excavator
+    rewards:
+      - xp: 2
+      - item: TConstruct:CraftedSoil:1 x16
+
+  - id: foice
+    title: "Foice"
+    type: optional
+    deps: [pecas_grandes, molde_foice]
+    desc: |
+      Lâmina de foice + cabo grande + conector grande + cabo grande. Colhe plantações e folhas em 3×3×3 e ataca em área. Com Joia de Seda, corta como tesoura.
+    tasks:
+      - get: TConstruct:scythe
+    rewards:
+      - loot: comum
+
+  - id: cutelo
+    title: "Cutelo"
+    type: optional
+    deps: [pecas_grandes, molde_lamina_larga]
+    desc: |
+      Lâmina grande + placa grande + 2 cabos grandes. Lento, pesado e com §eDecapitação II§r natural: os monstros deixam a cabeça. Ótimo para coletar cabeças de melhoria!
+    tasks:
+      - get: TConstruct:cleaver
+    rewards:
+      - loot: comum
+
+  - id: machado_batalha
+    title: "Machado de Batalha"
+    type: optional
+    deps: [pecas_grandes, molde_machado_largo]
+    desc: |
+      Duas cabeças de machado largo + cabo grande + conector grande. Arma ofensiva que empurra os inimigos para longe e ainda corta troncos numa coluna.
+    tasks:
+      - get: TConstruct:battleaxe
+    rewards:
+      - loot: comum
+
+  - id: mestre_forja
+    title: "Mestre da Forja"
+    type: milestone
+    deps: [martelo, machado_lenhador, escavador]
+    banner: "Mestre da Forja"
+    subtitle: "Ferramentas grandes para obras grandes"
+    desc: |
+      Martelo, Machado de Lenhador e Escavador: você agora move montanhas — literalmente, 3×3 de cada vez.
+
+      §aDica:§r ferramentas grandes custam muito para reparar; dê a elas Auto-Reparo (Bola de Musgo) ou Reforçado assim que tiverem slots. E lembre que cada uma sobe de nível separadamente.
+    tasks:
+      - get: [TConstruct:hammer, TConstruct:lumberaxe, TConstruct:excavator]
+    rewards:
+      - xp: 5
+      - kit: {name: "Kit do Grande Ferreiro", items: [minecraft:iron_block x2, minecraft:mossy_cobblestone x9, minecraft:redstone x32]}
+      - loot: incomum
+
+  # ------------------------------------------------------------------ Fase 9: armas
+  - id: espada_larga
+    title: "Espada Larga"
+    type: normal
+    deps: [molde_guardas, picareta_ferro]
+    desc: |
+      Lâmina de espada + cabo + protetor largo. A §eEspada Larga§r é a arma defensiva clássica: segure o botão direito para bloquear e reduzir vários tipos de dano pela metade.
+    tasks:
+      - get: TConstruct:broadsword
+    rewards:
+      - xp: 2
+      - item: minecraft:quartz x8
+
+  - id: espada_longa
+    title: "Espada Longa"
+    type: normal
+    deps: [molde_guardas, picareta_ferro]
+    desc: |
+      Lâmina + cabo + protetor de mão. A §eEspada Longa§r dá um avanço (botão direito) e causa 1,5× de dano e repulsão correndo.
+    tasks:
+      - get: TConstruct:longsword
+    rewards:
+      - xp: 2
+      - item: minecraft:quartz x8
+
+  - id: rapieira
+    title: "Rapieira"
+    type: normal
+    deps: [molde_guardas, picareta_ferro]
+    desc: |
+      Lâmina + cabo + protetor curto. Dano baixo, mas §eignora armadura e bloqueio§r e atordoa menos. Botão direito dá um pulinho para trás. Elegância!
+    tasks:
+      - get: TConstruct:rapier
+    rewards:
+      - xp: 2
+      - item: minecraft:quartz x8
+
+  - id: cutlass
+    title: "Cutelo de Pirata"
+    type: optional
+    deps: [molde_guardas]
+    desc: |
+      Lâmina + cabo + §eproteção completa§r (molde de Proteção Completa) = Cutlass. Uma espada rápida com jeito de pirata. Arr!
+    tasks:
+      - get: TConstruct:cutlass
+    rewards:
+      - loot: comum
+
+  - id: arsenal
+    title: "Arsenal do Registro"
+    type: milestone
+    deps: [espada_larga, espada_longa, rapieira]
+    banner: "Arsenal do Registro"
+    subtitle: "Três lâminas, três estilos"
+    desc: |
+      Bloquear, avançar, perfurar armaduras: você domina os três estilos de espada do Tinkers. As criaturas que vazaram pela Fratura que se cuidem!
+
+      §aDica:§r armas ganham XP batendo; os bônus aleatórios de arma incluem Ataque, Flamejante, Julgamento, Decapitação, Rouba Vida e Chance Crítica.
+    tasks:
+      - get: [TConstruct:broadsword, TConstruct:longsword, TConstruct:rapier]
+    rewards:
+      - xp: 5
+      - kit: {name: "Kit do Espadachim", items: [minecraft:quartz x24, minecraft:golden_apple, minecraft:cooked_beef x16]}
+      - loot: incomum
+
+  - id: frigideira
+    title: "Frigideira"
+    type: optional
+    deps: [molde_utilidades]
+    desc: |
+      Frigideira + cabo. Bate, atordoa, bloqueia e — com Shift + botão direito — vira um prato no chão que cozinha comida. Tem até conquista: matar um animal com ela e cozinhar a carne nela mesma.
+    tasks:
+      - get: TConstruct:frypan
+    rewards:
+      - loot: comum
+
+  - id: placa_batalha
+    title: "Placa de Batalha"
+    type: optional
+    deps: [molde_utilidades]
+    desc: |
+      Placa larga + cabo. Uma placa de aviso usada como arma (e bloqueio). Shift + botão direito coloca a placa no chão com até cinco linhas de texto. A arma-piada mais séria do mod.
+    tasks:
+      - get: TConstruct:battlesign
+    rewards:
+      - loot: comum
+
+  - id: cinzel
+    title: "Cinzel"
+    type: optional
+    deps: [molde_utilidades]
+    desc: |
+      Cabeça de cinzel + cabo. Botão direito transforma blocos em versões decorativas (tijolos da fundição talhados, calçamentos, tijolos de metal…); algumas só funcionam com o cinzel na bancada.
+    tasks:
+      - get: TConstruct:chisel
+    rewards:
+      - loot: comum
+
+  - id: faca_arremesso
+    title: "Faca de Arremesso"
+    type: normal
+    deps: [adaga]
+    desc: |
+      Lâmina de faca + cabo, montados como §eFaca de Arremesso§r: uma pilha de facas num item só. Segure o botão direito para mirar e solte para lançar.
+    tasks:
+      - get: TConstruct:ThrowingKnife
+    rewards:
+      - xp: 2
+      - item: minecraft:flint x8
+
+  - id: shuriken
+    title: "Shuriken"
+    type: optional
+    deps: [faca_arremesso]
+    desc: |
+      4 peças de shuriken (pederneira ou cacto já servem). Lançadas direto do pulso, sem mira; dano baixo, mas você carrega muitas. Ninja ninja.
+    tasks:
+      - get: TConstruct:Shuriken
+    rewards:
+      - loot: comum
+
+  - id: dardo
+    title: "Dardo"
+    type: optional
+    deps: [faca_arremesso, pecas_grandes]
+    desc: |
+      Uma ponta de flecha sobre cabos grandes: o §eDardo§r (Javelin) é arma de corpo a corpo razoável e, arremessado, causa muito dano. Você carrega poucos, então recolha depois! O Arsenal do Construtor traz a montagem.
+    tasks:
+      - get: TConstruct:Javelin
+    rewards:
+      - loot: comum
+
+  # ------------------------------------------------------------------ Fase 10: arcos
+  - id: corda_arco
+    title: "Corda de Arco"
+    type: normal
+    deps: [mesa_estenceis, construtor_partes]
+    desc: |
+      Estêncil de Corda de Arco + linha no Construtor de Partes = §eCorda de Arco§r. Peça obrigatória de todo arco e besta.
+    tasks:
+      - get: TConstruct:bowstring
+    rewards:
+      - xp: 1
+      - item: minecraft:string x8
+
+  - id: plumas
+    title: "Plumas"
+    type: normal
+    deps: [mesa_estenceis, construtor_partes]
+    desc: |
+      Estêncil de Pluma + pena, folha, slime ou folha pegajosa = §ePluma§r. Penas são precisas; folhas são leves; slime é estável.
+    tasks:
+      - get: TConstruct:fletching:*
+    rewards:
+      - xp: 1
+      - item: minecraft:feather x16
+
+  - id: limbo_arco
+    title: "Limbo de Arco"
+    type: normal
+    deps: [mesa_estenceis, construtor_partes]
+    desc: |
+      Limbos de madeira, osso ou slime saem no Construtor de Partes; os de metal, da Fundição. Materiais orgânicos puxam rápido; metais são lentos, mas dão mais força.
+    tasks:
+      - get: TConstruct:BowLimbPart:*
+    rewards:
+      - xp: 1
+      - item: minecraft:planks x8
+
+  - id: arco_curto
+    title: "Arco Curto"
+    type: normal
+    deps: [corda_arco, limbo_arco]
+    desc: |
+      Dois limbos + corda de arco = §eArco Curto§r: rápido e prático. Ele usa as flechas do Tinkers. Em arcos, só Redstone e Lápis afetam o tiro.
+    tasks:
+      - get: TConstruct:ShortBow
+    rewards:
+      - xp: 2
+      - item: minecraft:feather x16
+
+  - id: flechas
+    title: "Flechas Modulares"
+    type: normal
+    deps: [plumas, arco_curto]
+    desc: |
+      Ponta de flecha + haste + pluma = uma pilha de flechas num único item. Hastes válidas: graveto, cana-de-açúcar, osso, vara de blaze. A ponta define o peso: pesada atravessa armadura; leve vai mais longe.
+    tasks:
+      - get: TConstruct:ArrowAmmo
+    rewards:
+      - xp: 2
+      - item: minecraft:flint x8
+
+  - id: arco_longo
+    title: "Arco Longo"
+    type: optional
+    deps: [arco_curto, pecas_grandes]
+    desc: |
+      O irmão mais velho: dois limbos, corda e placa grande. Demora mais para puxar, mas as flechas voam muito mais rápido e vão mais longe.
+    tasks:
+      - get: TConstruct:LongBow
+    rewards:
+      - loot: comum
+
+  - id: pecas_besta
+    title: "Peças de Besta"
+    type: normal
+    deps: [moldes_arco]
+    desc: |
+      Funda um §eLimbo da Besta§r e um §eCorpo da Besta§r (madeira, osso e slime também fazem no Construtor de Partes).
+    tasks:
+      - get: [TConstruct:CrossbowLimbPart:*, TConstruct:CrossbowBodyPart:*]
+    rewards:
+      - xp: 2
+      - item: minecraft:string x8
+
+  - id: besta
+    title: "Besta"
+    type: normal
+    deps: [pecas_besta, corda_arco, pecas_grandes]
+    desc: |
+      Corpo + limbo + corda + conector grande. A §eBesta§r é carregada antes (botão direito e espere a animação) e dispara na hora. Agache + botão direito para cancelar ou descarregar.
+    tasks:
+      - get: TConstruct:Crossbow
+    rewards:
+      - xp: 2
+      - item: minecraft:iron_ingot x4
+
+  - id: virotes
+    title: "Virotes"
+    type: normal
+    deps: [besta, molde_cabo]
+    desc: |
+      Coloque um §ecabo§r na Mesa de Fundição e despeje metal: a ponta é revestida e vira a peça do virote. Junte uma pluma na Estação e pronto. Virotes são pesados e ótimos contra armaduras.
+    tasks:
+      - get: TConstruct:BoltAmmo
+    rewards:
+      - xp: 2
+      - item: minecraft:feather x16
+
+  - id: corda_encantada
+    title: "Corda Encantada"
+    type: optional
+    deps: [corda_arco]
+    desc: |
+      Existe uma §eCorda de Arco Encantada§r, mais poderosa. Confira no NEI como fazê-la no Construtor de Partes.
+    tasks:
+      - get: TConstruct:bowstring:1
+    rewards:
+      - loot: comum
+
+  # ------------------------------------------------------------------ Fase 11: Viajante e corações
+  - id: mochila
+    title: "Mochila"
+    type: normal
+    deps: [moldes_pesados, picareta_ferro]
+    desc: |
+      Couro em volta, 2 §ecabos grandes de ferro§r nas laterais e um lingote de ouro (ou alumínio-bronze) no centro. A §eMochila§r vai num slot de acessório do Tinkers e guarda itens extras.
+
+      Abra a aba do Tinkers no inventário para ver os slots de acessórios e os corações.
+    tasks:
+      - get: TConstruct:knapsack
+    rewards:
+      - xp: 2
+      - item: minecraft:leather x8
+
+  - id: oculos_viajante
+    title: "Óculos do Viajante"
+    type: normal
+    deps: [mochila]
+    desc: |
+      Couro, 2 vidros e 2 lingotes de ouro. Aceitam o modificador de §eVisão Noturna§r (a receita está no "Materiais e Você v1").
+    tasks:
+      - get: TConstruct:travelGoggles
+    rewards:
+      - xp: 2
+      - item: minecraft:golden_carrot x2
+
+  - id: vestes_viajante
+    title: "Vestes do Viajante"
+    type: normal
+    deps: [mochila]
+    desc: |
+      Couro, lã e um lingote de alumínio. Aceitam §eEsquiva Perfeita§r e §eFurtividade§r (invisível agachado) como modificadores.
+    tasks:
+      - get: TConstruct:travelVest
+    rewards:
+      - xp: 2
+      - item: TConstruct:materials:11 x2
+
+  - id: asas_viajante
+    title: "Asas do Viajante"
+    type: normal
+    deps: [mochila, bronze]
+    desc: |
+      Ouro, bronze e uma pérola do Fim. Com slime vira §eQueda de Pena§r (plana devagar), e o §ePulo Duplo§r também cabe aqui.
+    tasks:
+      - get: TConstruct:travelWings
+    rewards:
+      - xp: 2
+      - item: minecraft:slime_ball x8
+
+  - id: botas_viajante
+    title: "Botas do Viajante"
+    type: normal
+    deps: [mochila]
+    desc: |
+      Couro, linha e um lingote de alumínio. Aceitam §eSolas Pegajosas§r, §eAndar na Água§r, §eBotas de Chumbo§r (andar no fundo) e Pulo Duplo.
+    tasks:
+      - get: TConstruct:travelBoots
+    rewards:
+      - xp: 2
+      - item: minecraft:leather x6
+
+  - id: luvas_viajante
+    title: "Luvas do Viajante"
+    type: normal
+    deps: [mochila]
+    desc: |
+      Couro em formato de luva. Acessório que aceita §eRedstone§r para minerar mais rápido.
+    tasks:
+      - get: TConstruct:travelGlove
+    rewards:
+      - xp: 2
+      - item: minecraft:redstone x16
+
+  - id: cinto_viajante
+    title: "Cinto do Viajante"
+    type: normal
+    deps: [mochila]
+    desc: |
+      Couro, 2 lingotes de alumínio e um baú: o acessório de cintura do conjunto do Viajante. Veja no livro e no tooltip o que ele faz.
+    tasks:
+      - get: TConstruct:travelBelt
+    rewards:
+      - xp: 2
+      - item: minecraft:leather x6
+
+  - id: viajante_completo
+    title: "O Viajante"
+    type: milestone
+    deps: [oculos_viajante, vestes_viajante, asas_viajante, botas_viajante, luvas_viajante, cinto_viajante]
+    banner: "O Viajante"
+    subtitle: "Pronto para qualquer estrada"
+    desc: |
+      Óculos, vestes, asas, botas, luvas e cinto: o conjunto completo do Viajante! Ele protege pouco, mas é todo modificável — e o §eAuto-Reparo§r (musgo) funciona em todas as peças.
+
+      Os efeitos de cada modificador de armadura estão no "Materiais e Você v1", na seção de modificadores de armadura. Óculos, vestes, asas e botas ocupam os slots de armadura; luvas, cinto e mochila vão nos slots de acessório do Tinkers.
+    tasks:
+      - get: [TConstruct:travelGoggles, TConstruct:travelVest, TConstruct:travelWings, TConstruct:travelBoots, TConstruct:travelGlove, TConstruct:travelBelt]
+    rewards:
+      - xp: 5
+      - kit: {name: "Kit do Viajante", items: [TConstruct:materials:6 x2, minecraft:ghast_tear x2, minecraft:slime_ball x16]}
+      - loot: incomum
+
+  - id: lata_vazia
+    title: "Lata Vazia"
+    type: normal
+    deps: [cobre_estanho]
+    desc: |
+      4 lingotes de estanho em volta de um osso (ou 4 de alumínio em quadrado) = §eLata Vazia§r, o recipiente dos corações extras.
+    tasks:
+      - get: TConstruct:heartCanister
+    rewards:
+      - xp: 2
+      - item: minecraft:bone x4
+
+  - id: mini_coracao
+    title: "Mini Coração"
+    type: normal
+    deps: [lata_vazia]
+    desc: |
+      Monstros hostis às vezes deixam cair um §eMini Coração Amarelo§r. Neste pack, um Mini Coração Amarelo na bancada vira um §eMini Coração Vermelho§r.
+
+      Comidos, eles curam (10 ou 20 corações), mas valem muito mais dentro de uma lata.
+    tasks:
+      - one_of: [TConstruct:heartCanister:1, TConstruct:heartCanister:3]
+    rewards:
+      - xp: 2
+      - item: minecraft:cooked_beef x8
+
+  - id: maca_adornada
+    title: "Maçã Adornada"
+    type: normal
+    deps: [lata_vazia]
+    desc: |
+      Uma maçã com 4 diamantes em volta: a §eMaçã Adornada§r. Ingrediente da Lata de Coração Vermelho. Caríssima, eu sei.
+    tasks:
+      - get: TConstruct:diamondApple
+    rewards:
+      - xp: 2
+      - item: minecraft:apple x4
+
+  - id: coracao_vermelho
+    title: "Lata de Coração Vermelho"
+    type: normal
+    deps: [mini_coracao, maca_adornada, osso_necrotico]
+    desc: |
+      Maçã Adornada + Osso Necrótico + Lata Vazia + Mini Coração Vermelho. Coloque a lata no slot de coração (aba do Tinkers no inventário) para ganhar §evida máxima permanente§r. Neste pack, as latas §anão caem ao morrer§r.
+    tasks:
+      - get: TConstruct:heartCanister:2
+    rewards:
+      - xp: 2
+      - item: minecraft:golden_apple
+
+  - id: coracao_amarelo
+    title: "Lata de Coração Amarelo"
+    type: optional
+    deps: [coracao_vermelho]
+    desc: |
+      Lata de Coração Vermelho + Mini Coração Amarelo + maçã dourada encantada = §eLata de Coração Amarelo§r, ainda mais vida. A versão verde não tem receita neste pack.
+    tasks:
+      - get: TConstruct:heartCanister:4
+    rewards:
+      - loot: comum
+
+  - id: cabeca_dourada
+    title: "Cabeça Dourada"
+    type: optional
+    deps: [cabecas_mob]
+    desc: |
+      Uma cabeça de jogador (Steve) cercada por 8 lingotes de ouro. Dizem que comer a cabeça de um inimigo derrotado fortalece o sangue… Eu prefiro torta.
+    tasks:
+      - get: TConstruct:goldHead
+    rewards:
+      - loot: comum
+
+  # ------------------------------------------------------------------ Fase 12: slime
+  - id: ilha_slime
+    title: "Ilhas de Gelatina"
+    type: normal
+    deps: [t_bem_vindo]
+    desc: |
+      Às vezes o céu do Overworld tem ilhas flutuantes azuis: as §eIlhas de Slime§r, com grama pegajosa, árvores de slime e um lago de slime líquido no meio. São raras, procure de longe.
+
+      Traga qualquer bloco da ilha (slime congelado, grama pegajosa, terra de slime ou folhas).
+    tasks:
+      - one_of: [TConstruct:slime.gel, TConstruct:slime.grass, TConstruct:CraftedSoil:5, TConstruct:slime.leaves]
+    rewards:
+      - xp: 2
+      - item: minecraft:slime_ball x4
+
+  - id: slime_azul
+    title: "Slime-Azul"
+    type: normal
+    deps: [ilha_slime]
+    desc: |
+      Nas ilhas vivem os §eSlimes-Azuis§r (e, às vezes, o enorme Slime Rei). Eles dropam §eSlime Gelatinoso§r, que é comestível (mais ou menos…) e vira material.
+    tasks:
+      - get: TConstruct:strangeFood x4
+    rewards:
+      - xp: 2
+      - item: minecraft:bread x6
+
+  - id: cristal_slime
+    title: "Cristais de Slime"
+    type: normal
+    deps: [slime_azul]
+    desc: |
+      §eLama Viscosa§r: 4 bolas de slime (ou 4 Slimes Gelatinosos) + areia + terra. Asse na fornalha e sai um §eCristal de Slime§r verde ou azul — o material das peças de slime.
+
+      Slime é macio e quase não quebra: ótimo em cabos e conectores. Faça um cristal azul.
+    tasks:
+      - get: TConstruct:materials:17
+    rewards:
+      - xp: 2
+      - item: minecraft:sand x8
+
+  - id: ferramenta_slime
+    title: "Ferramenta Pegajosa"
+    type: optional
+    deps: [cristal_slime]
+    desc: |
+      Faça um cabo ou conector de slime (verde ou azul). Durabilidade alta, quase nenhuma força: perfeitos como peça de suporte.
+    tasks:
+      - one_of: [TConstruct:toolRod:8, TConstruct:toolRod:17, TConstruct:binding:8, TConstruct:binding:17]
+    rewards:
+      - loot: comum
+
+  - id: muda_slime
+    title: "Muda Pegajosa"
+    type: optional
+    deps: [ilha_slime]
+    desc: |
+      As árvores das ilhas dão §eMudas Pegajosas§r. Plante e cultive sua própria floresta de gelatina.
+    tasks:
+      - get: TConstruct:slime.sapling
+    rewards:
+      - loot: comum
+
+  - id: canal_slime
+    title: "Canais e Almofadas"
+    type: optional
+    deps: [ilha_slime]
+    desc: |
+      4 bolas de slime + redstone = §eCanal de Slime§r (move itens e criaturas como água colocável). Canal + slime = §eAlmofada de Salto§r. Monte um parque de diversões!
+    tasks:
+      - one_of: [TConstruct:slime.channel, TConstruct:slime.pad]
+    rewards:
+      - loot: comum
+
+  - id: botas_slime
+    title: "Botas e Estilingue"
+    type: optional
+    deps: [ilha_slime]
+    desc: |
+      Com slime congelado verde (4 bolas de slime) você faz as §eSlime Boots§r (quicam e evitam dano de queda) e o §eSlimesling§r (te arremessa no ar). Faça qualquer um. Boing!
+    tasks:
+      - one_of: [TConstruct:slime_boots, TConstruct:slimesling]
+    rewards:
+      - loot: comum
+
+  - id: sdx
+    title: "SDX"
+    type: optional
+    deps: [ilha_slime]
+    desc: |
+      Slime + dinamite = §eSDX§r, o explosivo pegajoso do Tinkers. §cUse longe da base, por favor.§r
+    tasks:
+      - get: TConstruct:explosive.slime
+    rewards:
+      - loot: comum
+
+  - id: slime_rei
+    title: "O Slime Rei"
+    type: optional
+    deps: [slime_azul]
+    desc: |
+      O soberano das ilhas: o §eSlime Rei§r. Gigante e pula alto; quando se divide, os pedaços também brigam. Lute na borda da ilha com cuidado para não cair!
+    tasks:
+      - kill: "TConstruct.KingSlime x1"
+    rewards:
+      - loot: comum
+
+  # ------------------------------------------------------------------ Fase 13: varal
+  - id: varal
+    title: "Cabide de Secagem"
+    type: normal
+    deps: [t_bem_vindo]
+    desc: |
+      3 lajes de madeira em linha = §eCabide de Secagem§r. Pendure carne crua (botão direito) e espere: ela vira §echarque§r, que não estraga e alimenta melhor que carne crua.
+
+      Coloque vários lado a lado debaixo de um telhado.
+    tasks:
+      - get: TConstruct:Armor.DryingRack
+    rewards:
+      - xp: 2
+      - item: minecraft:beef x6
+
+  - id: charque
+    title: "Charque"
+    type: normal
+    deps: [varal]
+    desc: |
+      Carne bovina no cabide = §eCharque de Carne§r. Comida de viagem perfeita: leve, durável e saborosa (para uma comida seca).
+    tasks:
+      - get: TConstruct:jerky x4
+    rewards:
+      - xp: 2
+      - item: minecraft:porkchop x6
+
+  - id: charques_variados
+    title: "Cardápio de Charques"
+    type: optional
+    deps: [charque]
+    desc: |
+      Galinha, porco e peixe também secam: §eCharque de Galinha§r, §eCharque de Bacon§r e §eCharque de Peixe§r. Faça qualquer um.
+    tasks:
+      - one_of: [TConstruct:jerky:1, TConstruct:jerky:2, TConstruct:jerky:4]
+    rewards:
+      - loot: comum
+
+  - id: charque_monstro
+    title: "Charque de Monstro"
+    type: normal
+    deps: [charque]
+    desc: |
+      Carne podre no cabide vira §eCharque de Monstro§r — sem a fome que a carne podre dá. Finalmente uma utilidade para aqueles zumbis todos!
+    tasks:
+      - get: TConstruct:jerky:5 x4
+    rewards:
+      - xp: 2
+      - item: minecraft:rotten_flesh x16
+
+  - id: gota_slime
+    title: "Gota de Slime"
+    type: optional
+    deps: [charque, slime_azul]
+    desc: |
+      Slime Gelatinoso no cabide vira §eGota de Slime Gelatinoso§r, um petisco borrachudo. Experiência gastronômica, digamos.
+    tasks:
+      - get: TConstruct:jerky:6
+    rewards:
+      - loot: comum
+
+  # ------------------------------------------------------------------ Fase 14: utilidades e materiais exóticos
+  - id: utilidades_pedra
+    title: "Tochas e Escadas de Pedra"
+    type: optional
+    deps: [pecas_pedra]
+    desc: |
+      Cabos de pedra têm utilidade, sim: carvão + cabo de pedra = 4 tochas de pedra; 7 cabos de pedra em "H" = 3 escadas de pedra.
+    tasks:
+      - one_of: [TConstruct:decoration.stonetorch, TConstruct:decoration.stoneladder]
+    rewards:
+      - loot: comum
+
+  - id: armadilhas
+    title: "Armadilhas"
+    type: optional
+    deps: [t_bem_vindo]
+    desc: |
+      Para as primeiras noites: §eVaras Punji§r (5 canas-de-açúcar em X, machucam quem pisa) e §eBarricadas§r (2 troncos, acumulam até 4 por bloco). E se tiver um Molde em Branco: §eMinas Terrestres§r.
+    tasks:
+      - one_of: [TConstruct:trap.punji, TConstruct:trap.barricade.oak, TConstruct:trap.barricade.spruce, TConstruct:trap.barricade.birch, TConstruct:trap.barricade.jungle, TConstruct:Redstone.Landmine:*]
+    rewards:
+      - loot: comum
+
+  - id: tijolos_decorativos
+    title: "Tijolos Bonitos"
+    type: optional
+    deps: [cinzel]
+    desc: |
+      O cinzel transforma blocos de ferro, ouro, lápis, diamante, redstone, osso, obsidiana, arenito, pedra do Fim e slime em tijolos decorativos (alguns emitem redstone, outros quicam!). Faça qualquer um.
+    tasks:
+      - one_of: [TConstruct:decoration.multibrick:*, TConstruct:decoration.multibrickfancy:*, TConstruct:decoration.multibrickmetal:*]
+    rewards:
+      - loot: comum
+
+  - id: serras_multipart
+    title: "Serras de Microblocos"
+    type: optional
+    deps: [lingotes_nether]
+    desc: |
+      O Iguana devolve as serras do ForgeMultipart em versão Tinkers: §eSerra de Cobalto, de Ardite e de Manyullyn§r (gravetos, cabos de pedra e um cabo do metal). Cortam blocos em microblocos com durabilidade enorme.
+    tasks:
+      - one_of: [IguanaTweaksTConstruct:sawCobalt, IguanaTweaksTConstruct:sawArdite, IguanaTweaksTConstruct:sawManyullyn]
+    rewards:
+      - loot: comum
+
+  - id: metais_thermal
+    title: "Metais do Thermal"
+    type: optional
+    deps: [biblioteca_moldes]
+    desc: |
+      Os metais do Thermal Foundation também derretem e viram peças: §eInvar, Ferrous (níquel), Chumbo, Prata, Brilhante (platina) e Electrum§r. O Brilhante tem nível Cobalto; Invar e Prata, nível Redstone.
+
+      Faça qualquer cabeça de picareta de um deles.
+    tasks:
+      - one_of: [TConstruct:pickaxeHead:1020, TConstruct:pickaxeHead:1021, TConstruct:pickaxeHead:1022, TConstruct:pickaxeHead:1023, TConstruct:pickaxeHead:1024, TConstruct:pickaxeHead:1025]
+    rewards:
+      - loot: comum
+
+  - id: metais_crepusculo
+    title: "Metais do Crepúsculo"
+    type: optional
+    deps: [biblioteca_moldes]
+    desc: |
+      Da Floresta do Crepúsculo vêm o §eMetal Flamejante§r (Fiery, nível Obsidiana) e o §eKnightmetal§r (nível Cobalto), ambos fundíveis. Os Lich guardavam bem essas páginas…
+
+      Faça uma cabeça de picareta de qualquer um.
+    tasks:
+      - one_of: [TConstruct:pickaxeHead:42, TConstruct:pickaxeHead:43]
+    rewards:
+      - loot: comum
+
+  - id: materiais_exoticos
+    title: "Materiais Exóticos"
+    type: optional
+    deps: [biblioteca_moldes]
+    desc: |
+      O Tinkers deste pack conhece 45 materiais! Além dos já vistos: Táumio (Thaumcraft), Aço HSLA e Rocha Matriz (RotaryCraft), Tritanium (Matter Overdrive), Blood Infused (Blood Arsenal), Plástico e Slime Rosa (MFR), Bedrockium e Unstable (Extra Utilities), Chromastone, Neutronium/Infinity (Avaritia) e os metais ATM.
+
+      Faça um cabo de Táumio, Aço HSLA, Tritanium ou Plástico — confira no NEI como cada um é processado.
+    tasks:
+      - one_of: [TConstruct:toolRod:31, TConstruct:toolRod:81, TConstruct:toolRod:201, TConstruct:toolRod:1000]
+    rewards:
+      - loot: comum
