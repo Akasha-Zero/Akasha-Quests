@@ -163,7 +163,7 @@ quests:
     title: "Locomotiva Levitacional"
     type: optional
     deps: [ima_cinetico]
-    icon: ThaumicTinkerer:Levitational Locomotive
+    icon: {id: "ThaumicTinkerer:Levitational Locomotive"}
     desc: |
       Dois §eLevitational Locomotive Relays§r em linha reta projetam um feixe; um §eLevitador
       Locomotivo§r colocado no feixe vai e volta carregando o bloco que estiver em cima. Elevador
@@ -646,7 +646,7 @@ quests:
     title: "Foco: Fenda do Fim"
     type: optional
     deps: [foco_distorcao]
-    deps_hidden: [thaumcraft:foco_buraco, thaumcraft:espelho_magico]
+    deps_hidden: [thaumcraft2:foco_buraco, thaumcraft:espelho_magico]
     icon: ThaumicTinkerer:focusEnderChest
     desc: |
       Abra o seu §eBaú do Fim§r de qualquer lugar. Espelho Mágico, olho do Fim e Foco de Buraco
@@ -1158,3 +1158,36 @@ quests:
       - xp: 12
       - kit: {name: "Kit do Kami", items: [ThaumicTinkerer:kamiResource x8, ThaumicTinkerer:kamiResource:2 x4, ThaumicTinkerer:kamiResource:1 x4, minecraft:nether_star]}
       - loot: epico
+
+  # ======================================================================
+  # EXTRAS
+  # ======================================================================
+  - id: mineracao_profunda
+    title: "Mineração Abaixo de Tudo"
+    type: optional
+    deps: [dimensao_rochamae]
+    icon: minecraft:diamond_ore
+    desc: |
+      A Dimensão da Rocha-Mãe é praticamente um muro de minérios. Ligue a Picareta Desperta no modo
+      5×5 ou linha e encha o inventário. Traga §e16 minérios de diamante§r ou §e32 diamantes§r —
+      qualquer um vale.
+    task_logic: OR
+    tasks:
+      - get: ore:oreDiamond x16
+      - get: ore:gemDiamond x32
+    rewards:
+      - loot: raro
+
+  - id: colecao_almas
+    title: "Colecionador de Almas"
+    type: optional
+    deps: [tabuleta_necromancia]
+    icon: ThaumicTinkerer:mobAspect:5
+    desc: |
+      Cada criatura colhida pela Lâmina do Espírito rende um Aspecto de Alma do seu aspecto
+      principal. Junte §e9 almas§r (qualquer tipo) — nove iguais viram um bloco para a infusão do
+      Aspecto de Alma Infundido.
+    tasks:
+      - get: ThaumicTinkerer:mobAspect:* x9
+    rewards:
+      - loot: incomum

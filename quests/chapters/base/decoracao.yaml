@@ -1,0 +1,2319 @@
+chapter:
+  id: decoracao
+  title: "Arquitetura e Decoração"
+  prefix: ""
+  color: "§a"
+  order: 125
+  icon: chisel:chisel
+  desc: |
+    §aO Volume da Beleza.§r Cinzéis e mármore, blocos do carpinteiro, peças minúsculas,
+    móveis da BiblioCraft, Ztones, portas animadas, refletores, jardins de ferro forjado
+    e visuais de armadura. Com desafios de construção para provar o talento!
+
+quests:
+  # ======================================================================
+  # ABERTURA
+  # ======================================================================
+  - id: volume_beleza
+    title: "O Volume da Beleza"
+    type: info
+    icon: minecraft:red_flower
+    desc: |
+      Os Antigos não escreveram só sobre máquinas e feitiços. Uma parte enorme do Registro
+      fala de §ebeleza§r: colunas, jardins, bibliotecas, janelas que pegam a luz do fim de
+      tarde... Eu guardo essas páginas com um carinho especial.
+
+      Este Volume é um §ecatálogo§r dos mods de construção do pack — §eChisel§r,
+      §eCarpenter's Blocks§r, §eLittleTiles§r, §eBiblioCraft§r, §eZtones§r, §eMalisis'
+      Doors§r, §eFloodLights§r, §eGarden Stuff§r e §eArmourer's Workshop§r — com §edesafios
+      de construção§r no caminho.
+
+      Não há pressa nem ordem certa. Construa o que te deixar feliz!
+    tasks:
+      - check
+    rewards:
+      - xp: 1
+
+  # ======================================================================
+  # CHISEL
+  # ======================================================================
+  - id: cinzel
+    title: "O Cinzel"
+    type: main
+    deps: [volume_beleza]
+    icon: chisel:chisel
+    desc: |
+      Um lingote de ferro e um graveto: o §eCinzel§r. Clique com o botão direito para abrir
+      o menu, coloque blocos no espaço de entrada e escolha uma das §edezenas de
+      variações§r — pedra, tijolos, madeira, vidro, lã, metais, mármore...
+
+      O cinzel de ferro gasta durabilidade a cada bloco. Use o NEI (aba "Chisel") para ver
+      todas as variações de um bloco. Fabrique um!
+    tasks:
+      - get: chisel:chisel
+    rewards:
+      - xp: 3
+      - choice: [minecraft:stone x64, minecraft:stonebrick x32, minecraft:iron_ingot x6]
+
+  - id: marmore
+    title: "Mármore"
+    type: main
+    deps: [cinzel]
+    icon: chisel:marble
+    desc: |
+      O Chisel espalha bolsões de §eMármore§r branco pelo subterrâneo do mundo (veios de
+      vários blocos, como pedras decorativas). Quebre com picareta e você terá uma das
+      pedras mais nobres da arquitetura.
+
+      Junte §e32 mármores§r.
+    tasks:
+      - get: chisel:marble:* x32
+    rewards:
+      - xp: 3
+      - choice: [minecraft:torch x32, chisel:marble x16, minecraft:iron_ingot x6]
+
+  - id: calcario
+    title: "Calcário"
+    type: normal
+    deps: [cinzel]
+    icon: chisel:limestone
+    desc: |
+      Parecido com o mármore, mas amarelado: o §eCalcário§r também gera em bolsões no
+      subterrâneo. Ele combina lindamente com arenito e madeiras claras.
+
+      Junte §e16 calcários§r.
+    tasks:
+      - get: chisel:limestone:* x16
+    rewards:
+      - item: minecraft:sandstone x16
+      - xp: 1
+
+  - id: marmore_variado
+    title: "Mármore Trabalhado"
+    type: normal
+    deps: [marmore]
+    icon: chisel:marble:4
+    desc: |
+      Coloque mármore no cinzel e transforme em tijolos, ladrilhos, entalhes, arcos... São
+      mais de dez variações.
+
+      Tenha §e4 variações diferentes§r de mármore (pelo menos 4 de cada).
+    tasks:
+      - get: [chisel:marble:1 x4, chisel:marble:2 x4, chisel:marble:3 x4, chisel:marble:4 x4]
+    rewards:
+      - item: chisel:marble x16
+      - xp: 2
+
+  - id: pilar_marmore
+    title: "Pilares de Mármore"
+    type: normal
+    deps: [marmore]
+    icon: chisel:marble_pillar
+    desc: |
+      Seis mármores em duas colunas fazem 6 §ePilares de Mármore§r — que também têm suas
+      próprias variações no cinzel (bases, capitéis, colunas caneladas...).
+
+      Faça §e12 pilares§r. Uma entrada com colunas dá outra vida à base.
+    tasks:
+      - get: chisel:marble_pillar:* x12
+    rewards:
+      - item: chisel:marble x8
+      - xp: 2
+
+  - id: cinzel_diamante
+    title: "Cinzel de Diamante"
+    type: normal
+    deps: [cinzel]
+    icon: chisel:diamondChisel
+    desc: |
+      Com um diamante no lugar do ferro: §eCinzel de Diamante§r. Ele dura muito mais e tem
+      opções extras de cinzelar blocos já colocados no mundo — confira os modos e
+      instruções na dica do item e no próprio menu do cinzel.
+
+      Fabrique um. Reformar uma parede inteira nunca foi tão rápido.
+    tasks:
+      - get: chisel:diamondChisel
+    rewards:
+      - item: minecraft:stone x32
+      - xp: 2
+
+  - id: cinzel_obsidiana
+    title: "Cinzel de Obsidiana"
+    type: optional
+    deps: [cinzel_diamante]
+    icon: chisel:obsidianChisel
+    desc: |
+      Uma obsidiana e um graveto: §eCinzel de Obsidiana§r, outra versão resistente do
+      cinzel. Escolha o seu favorito!
+
+      Fabrique um.
+    tasks:
+      - get: chisel:obsidianChisel
+    rewards:
+      - loot: comum
+
+  - id: cinzel_estrela
+    title: "Cinzel da Estrela do Nether"
+    type: optional
+    deps: [cinzel_diamante]
+    icon: chisel:netherStarChisel
+    desc: |
+      Quatro Estrelas do Nether num cinzel? Pois é: o §eCinzel da Estrela do Nether§r é o
+      mais durável de todos. É mais uma declaração de amor à arquitetura do que uma
+      necessidade.
+
+      Fabrique um, se tiver estrelas sobrando (Volume do Nether).
+    tasks:
+      - get: chisel:netherStarChisel
+    rewards:
+      - loot: comum
+
+  - id: auto_cinzel
+    title: "O Cinzel Automático"
+    type: normal
+    deps: [cinzel]
+    icon: chisel:autoChisel
+    desc: |
+      Lajes de pedra e ferro: §eCinzel Automático§r. Coloque um cinzel nele, um bloco
+      de referência (o "alvo") e os blocos a transformar: ele trabalha sozinho e aceita
+      funis. O §eAprimoramento de Velocidade§r (esmeraldas, açúcar, redstone) acelera.
+
+      Fabrique um cinzel automático.
+    tasks:
+      - get: chisel:autoChisel
+    rewards:
+      - item: minecraft:hopper
+      - xp: 2
+
+  - id: vidro_chisel
+    title: "Vitrais"
+    type: normal
+    deps: [cinzel]
+    icon: chisel:glass:3
+    desc: |
+      Vidro comum no cinzel vira §evitrais§r: molduras, padrões, quadriculados, bolhas...
+      Eles mudam completamente a cara de uma janela.
+
+      Tenha §e16 vidros cinzelados§r (qualquer padrão).
+    tasks:
+      - get: chisel:glass:* x16
+    rewards:
+      - item: minecraft:glass x16
+      - xp: 1
+
+  - id: bloco_fabrica
+    title: "Blocos de Fábrica"
+    type: normal
+    deps: [cinzel]
+    icon: chisel:factoryblock
+    desc: |
+      Pedra e ferro fazem 32 §eBlocos de Fábrica§r: placas metálicas, grades, faixas de
+      perigo, rebites... O visual perfeito para quem vai construir uma base tecnológica.
+
+      Faça §e32 blocos de fábrica§r.
+    tasks:
+      - get: chisel:factoryblock:* x32
+    rewards:
+      - item: minecraft:iron_ingot x4
+      - xp: 1
+
+  - id: bloco_tecnico
+    title: "Blocos Técnicos"
+    type: normal
+    deps: [bloco_fabrica]
+    icon: chisel:technical
+    desc: |
+      Mais um para os engenheiros: os §eBlocos Técnicos§r (pedra e ferro, 32 por receita)
+      têm painéis, ventiladores, canos e luzes de aviso. Algumas variações são até
+      transparentes ou animadas.
+
+      Faça §e32 blocos técnicos§r.
+    tasks:
+      - get: chisel:technical:* x32
+    rewards:
+      - item: minecraft:iron_ingot x4
+      - xp: 1
+
+  - id: bloco_laboratorio
+    title: "Blocos de Laboratório"
+    type: optional
+    deps: [bloco_fabrica]
+    icon: chisel:laboratoryblock
+    desc: |
+      Pedra e quartzo: §eBlocos de Laboratório§r, brancos, limpos e cheios de painéis — para
+      aquele laboratório de ciência maluca.
+
+      Faça §e8§r.
+    tasks:
+      - get: chisel:laboratoryblock:* x8
+    rewards:
+      - loot: comum
+
+  - id: futura
+    title: "Blocos Futura"
+    type: optional
+    deps: [bloco_fabrica]
+    icon: chisel:futura
+    desc: |
+      Pedra, tijolos de pedra e redstone: §eBlocos Futura§r, com telas e circuitos
+      animados. Sci-fi puro.
+
+      Faça §e8§r.
+    tasks:
+      - get: chisel:futura:* x8
+    rewards:
+      - loot: comum
+
+  - id: pedra_vazio
+    title: "Pedra do Vazio"
+    type: normal
+    deps: [cinzel]
+    icon: chisel:voidstone
+    desc: |
+      Obsidiana, pedra e uma pérola do fim: §ePedra do Vazio§r (Voidstone), escura e com
+      reflexos de estrelas. Com olho do fim em vez da pérola, vira a versão
+      §eEnergizada§r, que pulsa.
+
+      Faça §e8 pedras do vazio§r.
+    tasks:
+      - get: chisel:voidstone:* x8
+    rewards:
+      - item: minecraft:obsidian x4
+      - xp: 1
+
+  - id: pedras_elementais
+    title: "Pedra de Lava e Pedra de Água"
+    type: optional
+    deps: [cinzel]
+    icon: chisel:lavastone
+    desc: |
+      Oito pedras em volta de um balde de lava: §ePedra de Lava§r, com lava "escorrendo"
+      animada. Com balde de água: §ePedra de Água§r. Seguras, bonitas e hipnotizantes.
+
+      Faça §e8 de cada§r.
+    tasks:
+      - get: [chisel:lavastone:* x8, chisel:waterstone:* x8]
+    rewards:
+      - loot: comum
+
+  - id: templo_tyrian
+    title: "Templo e Tyrian"
+    type: optional
+    deps: [cinzel]
+    icon: chisel:templeblock
+    desc: |
+      §eBlocos de Templo§r (pedra + corante azul) para ruínas antigas e §eTyrian§r (pedra +
+      ferro) para estruturas alienígenas. Dois estilos que parecem saídos de outros Volumes.
+
+      Faça §e8 de cada§r.
+    tasks:
+      - get: [chisel:templeblock:* x8, chisel:tyrian:* x8]
+    rewards:
+      - loot: comum
+
+  - id: papel_parede
+    title: "Papel de Parede"
+    type: normal
+    deps: [cinzel]
+    icon: chisel:paperwall
+    desc: |
+      Papel e graveto fazem 8 §ePapéis de Parede§r (Paperwall) em estilo japonês: painéis
+      finos com padrões. Quatro deles viram um bloco inteiro.
+
+      Faça §e8 papéis de parede§r. Uma sala de chá com shoji (veja as portas Malisis!) fica
+      perfeita.
+    tasks:
+      - get: chisel:paperwall:* x8
+    rewards:
+      - item: minecraft:paper x8
+      - xp: 1
+
+  - id: neonite
+    title: "Neonite e GloTek"
+    type: optional
+    deps: [cinzel]
+    icon: chisel:neonite
+    desc: |
+      Esmeraldas e pó de pedra luminosa: §eNeonite§r, blocos coloridos que brilham como
+      letreiros de néon. Com mais pedra luminosa, a Neonite vira §eGloTek§r.
+
+      Faça §e8 neonites§r.
+    tasks:
+      - get: chisel:neonite:* x8
+    rewards:
+      - loot: comum
+
+  - id: concreto_canhamo
+    title: "Concreto de Cânhamo"
+    type: normal
+    deps: [cinzel]
+    icon: chisel:hempcrete
+    desc: |
+      Areia e samambaia fazem §ePó de Hempcrete§r; na fornalha ele vira §eHempcrete§r
+      (concreto de cânhamo), com variações em todas as cores. Com cascalho, hempcrete vira
+      §eBloco de Estrada§r — e as §eLinhas de Estrada§r pintam faixas no chão.
+
+      Faça §e8 hempcretes§r.
+    tasks:
+      - get: chisel:hempcrete:* x8
+    rewards:
+      - item: minecraft:sand x16
+      - xp: 1
+
+  - id: estrada
+    title: "Estradas de Verdade"
+    type: optional
+    deps: [concreto_canhamo]
+    icon: chisel:road
+    desc: |
+      Hempcrete e cascalho: 32 §eBlocos de Estrada§r. Combine com §eLinhas de Estrada§r
+      (corante branco e redstone) e você terá avenidas ligando as partes da sua base.
+
+      Faça §e16 blocos de estrada§r.
+    tasks:
+      - get: chisel:road:* x16
+    rewards:
+      - loot: comum
+
+  - id: lanterna_chisel
+    title: "Lanternas do Chisel"
+    type: optional
+    deps: [cinzel]
+    icon: chisel:lantern
+    desc: |
+      Ferro, pó de pedra luminosa e uma pedra luminosa: §eLanterna§r do Chisel, um bloco de
+      luz com moldura metálica (e variações no cinzel).
+
+      Faça §euma§r.
+    tasks:
+      - get: chisel:lantern:*
+    rewards:
+      - loot: comum
+
+  - id: nuvem_garrafa
+    title: "Nuvem na Garrafa"
+    type: optional
+    deps: [cinzel]
+    icon: chisel:cloudinabottle
+    desc: |
+      Vidro e quartzo: §eNuvem na Garrafa§r. Arremesse e ela cria §enuvens§r de verdade no
+      lugar — blocos fofos para decorar o céu da sua base. Quem nunca quis morar numa nuvem?
+
+      Fabrique uma.
+    tasks:
+      - get: chisel:cloudinabottle
+    rewards:
+      - loot: comum
+
+  - id: bola_musgo
+    title: "Bola de Musgo"
+    type: optional
+    deps: [cinzel]
+    icon: chisel:ballomoss
+    desc: |
+      Trepadeiras e gravetos: §eBola de Musgo§r (Ball O' Moss). Arremesse e ela deixa os
+      blocos de pedra em volta §emusgosos§r. Envelhecer uma construção nunca foi tão fácil.
+
+      Fabrique uma.
+    tasks:
+      - get: chisel:ballomoss
+    rewards:
+      - loot: comum
+
+  - id: tapete_chisel
+    title: "Tapetes Estampados"
+    type: optional
+    deps: [cinzel]
+    icon: chisel:carpet_block
+    desc: |
+      Lã e linha fazem 8 blocos de §eTapete§r estampado do Chisel; duas fileiras deles
+      viram tapetes finos para o chão. Tapete persa na sala? Sim, por favor.
+
+      Faça §e8 blocos de tapete§r.
+    tasks:
+      - get: chisel:carpet_block:* x8
+    rewards:
+      - loot: comum
+
+  - id: mestre_cinzel
+    title: "A Arte do Cinzel"
+    type: milestone
+    deps: [marmore_variado, pilar_marmore, vidro_chisel, bloco_tecnico, pedra_vazio, papel_parede, auto_cinzel]
+    icon: chisel:diamondChisel
+    banner: "A Arte do Cinzel!"
+    subtitle: "Toda pedra esconde uma estátua"
+    desc: |
+      Mármore trabalhado, pilares, vitrais, blocos técnicos, pedra do vazio, papel de
+      parede e até um cinzel que trabalha sozinho. Você descobriu o segredo dos
+      escultores antigos: §etoda pedra já tem uma forma bonita lá dentro§r — é só tirar o
+      excesso.
+
+      Diz a lenda que os Antigos tinham uma biblioteca inteira de mármore no Registro. Eu
+      não lembro mais como ela era... mas acho que você vai construir uma melhor.
+
+      Toma, material para a próxima obra-prima.
+    tasks:
+      - check
+    rewards:
+      - kit:
+          name: "Kit do Escultor"
+          items: ["chisel:marble x64", "chisel:limestone x32", "minecraft:glass x32", "minecraft:iron_ingot x4"]
+      - loot: incomum
+      - xp: 5
+
+  # ======================================================================
+  # CARPENTER'S BLOCKS
+  # ======================================================================
+  - id: bloco_carpinteiro
+    title: "O Bloco do Carpinteiro"
+    type: main
+    deps: [volume_beleza]
+    icon: CarpentersBlocks:blockCarpentersBlock
+    desc: |
+      Oito gravetos em volta de uma tábua: 5 §eBlocos do Carpinteiro§r. Sozinhos eles parecem
+      uma moldura de madeira. A mágica: clique neles com §equalquer bloco§r e ele vira a
+      "capa" — o bloco assume a aparência daquele material!
+
+      Quase todas as peças do mod (rampas, escadas, portas, camas...) são feitas a partir
+      dele. Faça §e16 blocos do carpinteiro§r.
+    tasks:
+      - get: CarpentersBlocks:blockCarpentersBlock x16
+    rewards:
+      - xp: 3
+      - choice: [minecraft:planks x32, minecraft:stick x32, minecraft:log x8]
+
+  - id: martelo_carpinteiro
+    title: "Martelo do Carpinteiro"
+    type: main
+    deps: [bloco_carpinteiro]
+    icon: CarpentersBlocks:itemCarpentersHammer
+    desc: |
+      Ferro e blocos do carpinteiro: §eMartelo do Carpinteiro§r. Ele é a ferramenta de
+      ajuste: §egira§r e muda a forma de rampas e escadas, abre/fecha portas de garagem e,
+      com o botão esquerdo, §eremove§r capas, tintas e sobreposições.
+
+      Fabrique um. Sem ele, o carpinteiro fica de mãos atadas.
+    tasks:
+      - get: CarpentersBlocks:itemCarpentersHammer
+    rewards:
+      - xp: 3
+      - choice: [minecraft:iron_ingot x6, CarpentersBlocks:blockCarpentersBlock x8, minecraft:dye:15 x8]
+
+  - id: cinzel_carpinteiro
+    title: "Cinzel do Carpinteiro"
+    type: normal
+    deps: [martelo_carpinteiro]
+    icon: CarpentersBlocks:itemCarpentersChisel
+    desc: |
+      Ferro e um bloco do carpinteiro: §eCinzel do Carpinteiro§r. Ele entalha §edesenhos§r
+      (padrões) nos blocos cobertos — clique para alternar entre os desenhos disponíveis.
+
+      Fabrique um.
+    tasks:
+      - get: CarpentersBlocks:itemCarpentersChisel
+    rewards:
+      - item: CarpentersBlocks:blockCarpentersBlock x4
+      - xp: 1
+
+  - id: capas_carpinteiro
+    title: "Capas, Tintas e Sobreposições"
+    type: info
+    deps: [bloco_carpinteiro]
+    icon: minecraft:dye:1
+    desc: |
+      O guia rápido do carpinteiro:
+
+      §e• Capa:§r clique com um bloco qualquer (pedra, lã, vidro, mármore...).
+      §e• Tinta:§r clique com um §ecorante§r para tingir a capa.
+      §e• Sobreposição:§r alguns materiais (como trepadeiras e neve) cobrem só a
+      superfície do bloco — o manual do mod lista todos.
+      §e• Tirar:§r botão esquerdo com o Martelo remove a última coisa aplicada.
+      Rampas e escadas se encaixam sozinhas com as vizinhas; o Martelo ajusta o resto.
+    tasks:
+      - check
+    rewards:
+      - xp: 1
+
+  - id: rampas
+    title: "Rampas"
+    type: main
+    deps: [martelo_carpinteiro]
+    icon: CarpentersBlocks:blockCarpentersSlope
+    desc: |
+      Blocos do carpinteiro e gravetos: 6 §eRampas do Carpinteiro§r. Uma rampa vira canto
+      interno, externo, prisma ou oblíqua conforme as vizinhas — e o Martelo ajusta.
+
+      Telhados de verdade, Herói! Faça §e12 rampas§r.
+    tasks:
+      - get: CarpentersBlocks:blockCarpentersSlope x12
+    rewards:
+      - xp: 3
+      - choice: [CarpentersBlocks:blockCarpentersBlock x12, minecraft:stick x16, minecraft:planks x24]
+
+  - id: escadas_carpinteiro
+    title: "Escadas do Carpinteiro"
+    type: normal
+    deps: [martelo_carpinteiro]
+    icon: CarpentersBlocks:blockCarpentersStairs
+    desc: |
+      Em formato de escada, blocos do carpinteiro viram 4 §eEscadas do Carpinteiro§r, que
+      também aceitam qualquer capa — escada de mármore, de lã, de vidro...
+
+      Faça §e8 escadas§r.
+    tasks:
+      - get: CarpentersBlocks:blockCarpentersStairs x8
+    rewards:
+      - item: CarpentersBlocks:blockCarpentersBlock x4
+      - xp: 1
+
+  - id: porta_cama_carpinteiro
+    title: "Porta e Cama do Carpinteiro"
+    type: normal
+    deps: [bloco_carpinteiro]
+    icon: CarpentersBlocks:itemCarpentersDoor
+    desc: |
+      §ePorta do Carpinteiro§r (6 blocos do carpinteiro) e §eCama do Carpinteiro§r (lã +
+      blocos). As duas aceitam capa — a porta tem vários estilos (mude com o Martelo) e a
+      cama pode ter a madeira e o tecido que você quiser.
+
+      Fabrique §euma de cada§r.
+    tasks:
+      - get: [CarpentersBlocks:itemCarpentersDoor, CarpentersBlocks:itemCarpentersBed]
+    rewards:
+      - item: minecraft:wool x3
+      - xp: 2
+
+  - id: alcapao_portao
+    title: "Alçapão e Portão"
+    type: normal
+    deps: [bloco_carpinteiro]
+    icon: CarpentersBlocks:blockCarpentersHatch
+    desc: |
+      §eAlçapão do Carpinteiro§r e §ePortão do Carpinteiro§r: versões "cobríveis" do alçapão
+      e do portão de cerca, com estilos que o Martelo alterna.
+
+      Fabrique §eum de cada§r.
+    tasks:
+      - get: [CarpentersBlocks:blockCarpentersHatch, CarpentersBlocks:blockCarpentersGate]
+    rewards:
+      - item: minecraft:stick x8
+      - xp: 1
+
+  - id: redstone_carpinteiro
+    title: "Redstone Disfarçada"
+    type: optional
+    deps: [bloco_carpinteiro]
+    icon: CarpentersBlocks:blockCarpentersLever
+    desc: |
+      §eAlavanca§r, §eBotão§r, §ePlaca de Pressão§r e até §eSensor de Luz Solar§r do
+      carpinteiro: todos aceitam capa. Uma alavanca de mármore numa parede de mármore? Quase
+      invisível!
+
+      Fabrique §euma alavanca e uma placa de pressão§r do carpinteiro.
+    tasks:
+      - get: [CarpentersBlocks:blockCarpentersLever, CarpentersBlocks:blockCarpentersPressurePlate]
+    rewards:
+      - loot: comum
+
+  - id: cofre_carpinteiro
+    title: "O Cofre"
+    type: optional
+    deps: [bloco_carpinteiro]
+    icon: CarpentersBlocks:blockCarpentersSafe
+    desc: |
+      Blocos do carpinteiro, um bloco de ferro e redstone: §eCofre do Carpinteiro§r. Ele
+      pode ser trancado para que só o dono abra, e também aceita capa.
+
+      Fabrique um para os seus diamantes.
+    tasks:
+      - get: CarpentersBlocks:blockCarpentersSafe
+    rewards:
+      - loot: comum
+
+  - id: bloco_desmontavel
+    title: "Bloco Desmontável"
+    type: optional
+    deps: [martelo_carpinteiro]
+    icon: CarpentersBlocks:blockCarpentersCollapsibleBlock
+    desc: |
+      O §eBloco Desmontável§r (Collapsible Block) deixa você ajustar a altura de cada canto
+      com o Martelo, criando §eterrenos suaves§r, dunas e encostas.
+
+      Faça §e9 blocos desmontáveis§r e esculpa uma colina.
+    tasks:
+      - get: CarpentersBlocks:blockCarpentersCollapsibleBlock x9
+    rewards:
+      - loot: comum
+
+  - id: detalhes_carpinteiro
+    title: "Detalhes de Acabamento"
+    type: optional
+    deps: [bloco_carpinteiro]
+    icon: CarpentersBlocks:blockCarpentersTorch
+    desc: |
+      Para os detalhistas: §eTocha§r, §eVaso§r, §eEscada de Mão§r, §eBarreira§r (cerca/muro)
+      e §eLadrilho§r do carpinteiro — este último é uma placa fina para pisos e paredes.
+
+      Fabrique §euma tocha, um vaso e ladrilhos§r do carpinteiro.
+    tasks:
+      - get: [CarpentersBlocks:blockCarpentersTorch, CarpentersBlocks:blockCarpentersFlowerPot, CarpentersBlocks:itemCarpentersTile]
+    rewards:
+      - loot: comum
+
+  - id: garagem_carpinteiro
+    title: "Porta de Garagem do Carpinteiro"
+    type: optional
+    deps: [martelo_carpinteiro]
+    icon: CarpentersBlocks:blockCarpentersGarageDoor
+    desc: |
+      Empilhe §ePortas de Garagem do Carpinteiro§r e elas abrem e fecham juntas, enrolando
+      como uma porta de garagem de verdade. Aceitam capa, claro.
+
+      Faça §e8 portas de garagem§r.
+    tasks:
+      - get: CarpentersBlocks:blockCarpentersGarageDoor x8
+    rewards:
+      - loot: comum
+
+  # ======================================================================
+  # LITTLETILES
+  # ======================================================================
+  - id: martelo_pequeno
+    title: "O Mundo em Miniatura"
+    type: main
+    deps: [volume_beleza]
+    icon: littletiles:hammer
+    desc: |
+      E se um bloco pudesse ser dividido em pedacinhos? O §eLittleTiles§r faz exatamente
+      isso: cada bloco vira uma grade de peças minúsculas que você posiciona livremente.
+
+      O §eMartelinho§r (Little Hammer: ferro e lápis-lazúli) é a primeira ferramenta para
+      trabalhar com peças pequenas, nas formas do mod (caixa, rampa, parede, pilar...). A
+      tecla de configuração de ferramenta (Controles → Little Tiles) escolhe forma e
+      tamanho; segure Shift sobre o item para ver as instruções. Fabrique um.
+    tasks:
+      - get: littletiles:hammer
+    rewards:
+      - xp: 3
+      - choice: [minecraft:iron_ingot x6, minecraft:dye:4 x8, minecraft:stone x32]
+
+  - id: ferramentas_pequenas
+    title: "Serra e Chave Pequenas"
+    type: normal
+    deps: [martelo_pequeno]
+    icon: littletiles:saw
+    desc: |
+      A §eSerrinha§r (Little Saw) aumenta ou diminui uma peça já colocada; a §eChavinha§r
+      (Little Wrench) ajusta peças e estruturas (veja a dica de cada item). Juntas, elas
+      permitem detalhes que nenhum outro mod alcança.
+
+      Fabrique §euma serra e uma chave§r.
+    tasks:
+      - get: [littletiles:saw, littletiles:wrench]
+    rewards:
+      - item: minecraft:iron_ingot x2
+      - xp: 2
+
+  - id: recipiente_pequeno
+    title: "Caixinha de Peças"
+    type: normal
+    deps: [martelo_pequeno]
+    icon: littletiles:container
+    desc: |
+      O §eRecipiente Pequeno§r (Little Container) guarda as peças miúdas que sobram quando
+      você corta blocos — elas não somem! Ferro em volta de um martelinho.
+
+      Fabrique um.
+    tasks:
+      - get: littletiles:container
+    rewards:
+      - item: minecraft:iron_ingot x4
+      - xp: 1
+
+  - id: tubo_cor
+    title: "Tubo de Cor e Martelo de Borracha"
+    type: optional
+    deps: [martelo_pequeno]
+    icon: littletiles:colorTube
+    desc: |
+      O §eTubo de Cor§r (corantes e ferro) §epinta§r peças pequenas de qualquer cor; o
+      §eMartelo de Borracha§r (lã e lápis) empurra peças de leve. Para os perfeccionistas.
+
+      Fabrique §eos dois§r.
+    tasks:
+      - get: [littletiles:colorTube, littletiles:rubberMallet]
+    rewards:
+      - loot: comum
+
+  - id: miniatura_info
+    title: "Dicas de Miniaturista"
+    type: info
+    deps: [martelo_pequeno]
+    icon: littletiles:hammer
+    desc: |
+      Algumas dicas para trabalhar com o LittleTiles:
+
+      §e• Modos de colocação:§r Normal (só onde há espaço), Preencher, Sobrescrever e
+      Estêncil (remove onde sobrepõe) — troque na configuração da ferramenta.
+      §e• Teclas:§r há atalhos para girar e espelhar a peça antes de colocar.
+      §e• Peças guardam o material:§r use qualquer bloco (pedra, madeira, vidro...).
+      Comece pequeno: um móvel, um vaso, uma moldura. Depois, o céu é o limite.
+    tasks:
+      - check
+    rewards:
+      - xp: 1
+
+  - id: mestre_marceneiro
+    title: "Carpintaria Fina"
+    type: milestone
+    deps: [rampas, escadas_carpinteiro, porta_cama_carpinteiro, cinzel_carpinteiro, ferramentas_pequenas, recipiente_pequeno]
+    icon: CarpentersBlocks:itemCarpentersHammer
+    banner: "Carpintaria Fina!"
+    subtitle: "Rampas, telhados e detalhes em miniatura"
+    desc: |
+      Rampas que se encaixam, escadas de qualquer material, portas e camas sob medida e
+      peças tão pequenas que cabem na palma da mão. Você domina a carpintaria fina, Herói!
+
+      O Bloco do Carpinteiro e o LittleTiles são as ferramentas preferidas dos grandes
+      construtores: com eles, qualquer formato vira possível. Telhado curvo? Mesa com
+      toalha? Um mini-Registro em cima da estante? Tudo ao seu alcance.
+
+      Toma, mais madeira para a oficina.
+    tasks:
+      - check
+    rewards:
+      - kit:
+          name: "Kit do Marceneiro"
+          items: ["CarpentersBlocks:blockCarpentersBlock x32", "minecraft:planks x64", "minecraft:dye:1 x4", "minecraft:dye:4 x4"]
+      - loot: incomum
+      - xp: 5
+
+  # ======================================================================
+  # BIBLIOCRAFT
+  # ======================================================================
+  - id: estante_biblio
+    title: "Estante de Livros de Verdade"
+    type: main
+    deps: [volume_beleza]
+    icon: BiblioCraft:Bibliotheca
+    desc: |
+      Uma estante que §eguarda livros de verdade§r e mostra cada um na prateleira! A
+      §eEstante de Livros§r da BiblioCraft (tábuas e lajes) aceita livros, manuais, mapas e
+      livros encantados.
+
+      Ela existe em várias madeiras. Faça §e4 estantes§r. (Eu me sinto em casa só de olhar.)
+    tasks:
+      - get: BiblioCraft:Bibliotheca:* x4
+    rewards:
+      - xp: 3
+      - choice: [minecraft:book x8, minecraft:planks x32, minecraft:wooden_slab x16]
+
+  - id: prateleira
+    title: "Prateleira"
+    type: normal
+    deps: [estante_biblio]
+    icon: BiblioCraft:BiblioShelf
+    desc: |
+      A §ePrateleira§r (lajes e tábua) expõe §equalquer item§r em 4 espaços: ferramentas,
+      minérios, troféus... É uma vitrine que guarda de verdade.
+
+      Faça §e2 prateleiras§r.
+    tasks:
+      - get: BiblioCraft:BiblioShelf:* x2
+    rewards:
+      - item: minecraft:wooden_slab x8
+      - xp: 1
+
+  - id: porta_ferramentas
+    title: "Porta-Ferramentas"
+    type: normal
+    deps: [estante_biblio]
+    icon: BiblioCraft:BiblioRack
+    desc: |
+      O §ePorta-Ferramentas§r (Tool Rack: lajes e ferro) pendura até 4 ferramentas, armas ou
+      armaduras na parede. Sua coleção de picaretas merece ser vista!
+
+      Faça §eum§r.
+    tasks:
+      - get: BiblioCraft:BiblioRack:*
+    rewards:
+      - item: minecraft:iron_ingot x2
+      - xp: 1
+
+  - id: estante_pocoes
+    title: "Estante de Poções"
+    type: normal
+    deps: [estante_biblio]
+    icon: BiblioCraft:BiblioPotionShelf
+    desc: |
+      Lajes, tábuas e um frasco: §eEstante de Poções§r, que mostra cada frasco em fileiras
+      coloridas. Laboratório de alquimista com classe.
+
+      Faça §euma§r.
+    tasks:
+      - get: BiblioCraft:BiblioPotionShelf:*
+    rewards:
+      - item: minecraft:glass_bottle x6
+      - xp: 1
+
+  - id: estojo
+    title: "Estojo de Exposição"
+    type: optional
+    deps: [prateleira]
+    icon: BiblioCraft:BiblioCase
+    desc: |
+      Lajes, vidro e lã: §eEstojo§r (Display Case). Ele guarda um item sob uma tampa de vidro,
+      como num museu. Perfeito para aquele drop raríssimo de chefe.
+
+      Faça §eum§r.
+    tasks:
+      - get: BiblioCraft:BiblioCase:*
+    rewards:
+      - loot: comum
+
+  - id: etiqueta_biblio
+    title: "Etiquetas"
+    type: normal
+    deps: [estante_biblio]
+    icon: BiblioCraft:BiblioLabel
+    desc: |
+      Seis lajes de madeira: §eEtiqueta§r (Label). Prenda na frente de baús ou gavetas e
+      coloque até 3 itens nela para mostrar o que tem dentro. Organização bonita!
+
+      Faça §e4 etiquetas§r.
+    tasks:
+      - get: BiblioCraft:BiblioLabel:* x4
+    rewards:
+      - item: minecraft:wooden_slab x8
+      - xp: 1
+
+  - id: escrivaninha
+    title: "A Escrivaninha"
+    type: main
+    deps: [estante_biblio]
+    icon: BiblioCraft:BiblioDesk
+    desc: |
+      Tocha, pena, lajes e tábuas: §eEscrivaninha§r. Coloque um livro nela para lê-lo aberto
+      sobre a mesa; ela também "puxa" livros das estantes vizinhas para leitura.
+
+      Toda biblioteca precisa de uma. Faça a sua.
+    tasks:
+      - get: BiblioCraft:BiblioDesk:*
+    rewards:
+      - xp: 3
+      - choice: [minecraft:feather x8, minecraft:book x6, minecraft:torch x16]
+
+  - id: mesa_assento
+    title: "Mesa e Assentos"
+    type: normal
+    deps: [escrivaninha]
+    icon: BiblioCraft:BiblioSeats
+    desc: |
+      §eMesa§r (lajes e tábuas) aceita uma toalha (tapete) e itens em cima. §eAssento§r (lã,
+      laje, gravetos e placa de pressão) é uma cadeira onde dá para sentar de verdade —
+      adicione um §eEncosto§r na bancada para mudar o estilo.
+
+      Faça §euma mesa e 2 assentos§r.
+    tasks:
+      - get: [BiblioCraft:BiblioTable:*, BiblioCraft:BiblioSeats:* x2]
+    rewards:
+      - item: minecraft:wool x4
+      - xp: 2
+
+  - id: suporte_armadura_biblio
+    title: "Suporte de Armadura (BiblioCraft)"
+    type: normal
+    deps: [estante_biblio]
+    icon: {id: "BiblioCraft:Armor Stand"}
+    desc: |
+      Ferro e lajes de pedra: o §eSuporte de Armadura§r da BiblioCraft. Diferente do suporte
+      do Et Futurum, ele tem um inventário próprio: abra e coloque as quatro peças.
+
+      Faça §eum§r.
+    tasks:
+      - get: {id: "BiblioCraft:Armor Stand"}
+    rewards:
+      - item: minecraft:iron_ingot x2
+      - xp: 1
+
+  - id: pedestal_espada
+    title: "Pedestal de Espada"
+    type: optional
+    deps: [suporte_armadura_biblio]
+    icon: BiblioCraft:BiblioSwordPedestal
+    desc: |
+      Lajes de pedra e lã: §ePedestal de Espada§r. Ele exibe uma espada (ou arma) deitada
+      numa almofada, como relíquia sagrada. Pode também receber cor com corante.
+
+      Faça §eum§r para a sua arma favorita.
+    tasks:
+      - get: BiblioCraft:BiblioSwordPedestal:*
+    rewards:
+      - loot: comum
+
+  - id: iluminacao_biblio
+    title: "Lampiões e Lamparinas"
+    type: normal
+    deps: [estante_biblio]
+    icon: BiblioCraft:BiblioLantern
+    desc: |
+      §eLampião Sofisticado§r (painéis de vidro, ouro ou ferro, pó de pedra luminosa e
+      tocha) e §eLamparina Sofisticada§r (vidro, pedra luminosa e ouro ou ferro). Ambos
+      aceitam cores e ficam no chão, na parede ou pendurados.
+
+      Faça §eum lampião e uma lamparina§r (ouro ou ferro).
+    tasks:
+      - one_of: [BiblioCraft:BiblioLantern:*, BiblioCraft:BiblioIronLantern:*]
+      - one_of: [BiblioCraft:BiblioLamp:*, BiblioCraft:BiblioIronLamp:*]
+    rewards:
+      - item: minecraft:glowstone_dust x4
+      - xp: 2
+
+  - id: relogio_biblio
+    title: "Relógio de Parede"
+    type: optional
+    deps: [estante_biblio]
+    icon: BiblioCraft:BiblioClock
+    desc: |
+      Lajes, um relógio, graveto e ouro: §eRelógio§r da BiblioCraft. Ele mostra a hora do jogo
+      com ponteiros, faz tique-taque (dá para desligar) e pode emitir redstone em horários
+      definidos.
+
+      Faça §eum relógio§r.
+    tasks:
+      - get: BiblioCraft:BiblioClock:*
+    rewards:
+      - loot: comum
+
+  - id: placa_sofisticada
+    title: "Placa Sofisticada"
+    type: optional
+    deps: [etiqueta_biblio]
+    icon: BiblioCraft:BiblioFancySign
+    desc: |
+      Etiqueta, placa e papel: §ePlaca Sofisticada§r. Mais texto, tamanhos de letra
+      diferentes e até itens desenhados nela. Para lojas, portas e avisos caprichados.
+
+      Faça §euma§r.
+    tasks:
+      - get: BiblioCraft:BiblioFancySign:*
+    rewards:
+      - loot: comum
+
+  - id: serra_encaixilhamento
+    title: "Serra de Encaixilhamento"
+    type: main
+    deps: [estante_biblio]
+    icon: BiblioCraft:item.FramingSaw
+    desc: |
+      Ferro e tábuas: §eSerra de Encaixilhamento§r (Framing Saw). Com ela você corta tábuas em
+      §eFolhas§r e §ePranchas de Encaixilhamento§r — o material dos móveis "emoldurados",
+      que copiam a aparência de qualquer bloco.
+
+      Fabrique a serra e corte §e4 folhas de encaixilhamento§r.
+    tasks:
+      - get: [BiblioCraft:item.FramingSaw, BiblioCraft:item.FramingSheet x4]
+    rewards:
+      - xp: 3
+      - choice: [minecraft:planks x32, minecraft:iron_ingot x4, minecraft:log x8]
+
+  - id: bau_encaixilhado
+    title: "Baú Encaixilhado"
+    type: optional
+    deps: [serra_encaixilhamento]
+    icon: BiblioCraft:tile.BiblioFramedChest
+    desc: |
+      Folhas de encaixilhamento e uma etiqueta: §eBaú Encaixilhado§r, que tem a etiqueta na
+      frente e pode receber o visual de outros blocos. Ele pode virar baú duplo.
+
+      Fabrique um.
+    tasks:
+      - get: BiblioCraft:tile.BiblioFramedChest:*
+    rewards:
+      - loot: comum
+
+  - id: paineladora
+    title: "A Paineladora de Mobília"
+    type: optional
+    deps: [serra_encaixilhamento]
+    icon: BiblioCraft:BiblioPaneler
+    desc: |
+      Ferro, a serra, lajes e tábuas: §ePaineladora de Mobília§r (Furniture Paneler). Ela
+      recobre os móveis da BiblioCraft com §equalquer bloco§r — uma estante de mármore? Uma
+      escrivaninha de ardósia? Sim!
+
+      Fabrique uma.
+    tasks:
+      - get: BiblioCraft:BiblioPaneler:*
+    rewards:
+      - loot: comum
+
+  - id: pinturas
+    title: "O Ateliê de Pintura"
+    type: normal
+    deps: [estante_biblio]
+    icon: BiblioCraft:item.PaintingCanvas
+    desc: |
+      Gravetos, linha e lã fazem a §eTela de Pintura§r. A §ePrensa de Pintura§r (ferro e um
+      quadro) imprime nela uma das pinturas, e as §eMolduras§r (simples, sofisticada,
+      sem borda...) a exibem na parede em vários tamanhos.
+
+      Fabrique §euma tela e uma prensa de pintura§r.
+    tasks:
+      - get: [BiblioCraft:item.PaintingCanvas, BiblioCraft:BiblioPaintPress]
+    rewards:
+      - item: minecraft:string x4
+      - xp: 2
+
+  - id: maquina_escrever
+    title: "Máquina de Escrever"
+    type: optional
+    deps: [escrivaninha]
+    icon: BiblioCraft:BiblioTypewriter
+    desc: |
+      Ferro, blocos de ferro, papel e argila tingida: §eMáquina de Escrever§r. Ela digita
+      livros com texto mais organizado — e faz um barulhinho adorável.
+
+      Fabrique uma.
+    tasks:
+      - get: BiblioCraft:BiblioTypewriter:*
+    rewards:
+      - loot: comum
+
+  - id: imprensa
+    title: "A Imprensa"
+    type: optional
+    deps: [escrivaninha]
+    icon: {id: "BiblioCraft:Printing Press"}
+    desc: |
+      A §eMesa Tipográfica§r (com o Entalhe de Prensa) cria uma §eChapa de Impressão§r a partir
+      de um livro escrito; a §ePrensa de Impressão§r (ferro, vara de blaze, placa de pressão
+      pesada) copia o livro em série usando a chapa e tinta.
+
+      Fabrique §ea mesa tipográfica e a prensa§r. Hora de publicar o seu próprio livro!
+    tasks:
+      - get: [{id: "BiblioCraft:Typesetting Machine"}, {id: "BiblioCraft:Printing Press"}]
+    rewards:
+      - loot: comum
+
+  - id: atlas
+    title: "O Atlas"
+    type: normal
+    deps: [estante_biblio]
+    icon: BiblioCraft:item.AtlasBook
+    desc: |
+      O §eAtlas§r guarda vários mapas num livro só e pode criar mapas novos sozinho conforme
+      você anda. Ele pede o §eCompasso de Rascunho§r (Map Tool), um livro com esconderijo e
+      um mapa.
+
+      Fabrique §eum atlas§r.
+    tasks:
+      - get: BiblioCraft:item.AtlasBook
+    rewards:
+      - item: minecraft:paper x16
+      - xp: 2
+
+  - id: bussola_marcador
+    title: "Bússola de Marcador"
+    type: optional
+    deps: [atlas]
+    icon: BiblioCraft:item.BiblioWayPointCompass
+    desc: |
+      Ouro e uma bússola: §eBússola de Marcador§r. Ela aponta para um ponto salvo (um
+      marcador de mapa do atlas, por exemplo) em vez do spawn.
+
+      Fabrique uma.
+    tasks:
+      - get: BiblioCraft:item.BiblioWayPointCompass
+    rewards:
+      - loot: comum
+
+  - id: ferramentas_biblio
+    title: "Instrumentos do Construtor"
+    type: normal
+    deps: [estante_biblio]
+    icon: BiblioCraft:item.tapeMeasure
+    desc: |
+      Para medir antes de construir: a §eFita Métrica§r (ferro e rolo de fita) mede distâncias
+      e áreas; o §ePrumo§r (linhas e ouro) mostra a altura até o chão; e os §eÓculos de
+      Leitura§r mostram detalhes de móveis da BiblioCraft.
+
+      Fabrique §ea fita métrica e os óculos§r.
+    tasks:
+      - get: [BiblioCraft:item.tapeMeasure, BiblioCraft:item.BiblioGlasses]
+    rewards:
+      - item: minecraft:string x8
+      - xp: 1
+
+  - id: catalogo_almoxarifado
+    title: "Catálogo do Almoxarifado"
+    type: optional
+    deps: [etiqueta_biblio]
+    icon: BiblioCraft:item.StockroomCatalog
+    desc: |
+      Papel, corante verde e um livro e pena: §eCatálogo do Almoxarifado§r. Agache e clique
+      em baús para registrá-los; depois, abra o catálogo para ver §eo que tem em cada um§r e
+      ser guiado até o baú certo.
+
+      Fabrique um. Bibliotecária aprova.
+    tasks:
+      - get: BiblioCraft:item.StockroomCatalog
+    rewards:
+      - loot: comum
+
+  - id: miudezas_biblio
+    title: "Miudezas Charmosas"
+    type: optional
+    deps: [estante_biblio]
+    icon: BiblioCraft:BiblioStuffs
+    desc: |
+      Um §ePote de Biscoitos§r (vidro, ferro, biscoito, redstone), um §eSino de Recepção§r
+      (ferro, botão e redstone) e uma §ePrancheta§r para listas de tarefas. Pequenas coisas
+      que fazem uma base parecer habitada.
+
+      Fabrique §eo pote de biscoitos e o sino§r.
+    tasks:
+      - get: [BiblioCraft:BiblioStuffs:*, BiblioCraft:BiblioBell]
+    rewards:
+      - loot: comum
+
+  - id: bancada_sofisticada
+    title: "Bancada Sofisticada"
+    type: optional
+    deps: [escrivaninha]
+    icon: BiblioCraft:BiblioWorkbench
+    desc: |
+      Uma bancada comum, uma estante, pena, corante e lajes: §eBancada de Trabalho
+      Sofisticada§r. Ela §eguarda os itens§r da grade e tem espaço para livros de receitas.
+
+      Fabrique uma.
+    tasks:
+      - get: BiblioCraft:BiblioWorkbench:*
+    rewards:
+      - loot: comum
+
+  - id: livros_especiais
+    title: "Livros Curiosos"
+    type: optional
+    deps: [estante_biblio]
+    icon: BiblioCraft:item.BigBook
+    desc: |
+      O §eLivro Grande§r (Big Book) tem páginas enormes para textos longos, e o §eLivro com
+      Esconderijo§r (Slotted Book) esconde um item dentro dele — guarde na estante e
+      ninguém desconfia.
+
+      Fabrique §eos dois§r.
+    tasks:
+      - get: [BiblioCraft:item.BigBook, BiblioCraft:item.SlottedBook]
+    rewards:
+      - loot: comum
+
+  # ======================================================================
+  # ZTONES
+  # ======================================================================
+  - id: ofanix
+    title: "O Ofanix"
+    type: main
+    deps: [volume_beleza]
+    icon: Ztones:ofanix
+    desc: |
+      Uma pérola do fim, ferro, baldes de água e de lava e uma bancada: §eOfanix§r, a
+      ferramenta do §eZtones§r. Na bancada, um bloco do Ztones + o Ofanix gira entre as
+      §e16 variações§r daquele bloco.
+
+      Os blocos do Ztones também funcionam no Cinzel. Fabrique um Ofanix.
+    tasks:
+      - get: Ztones:ofanix
+    rewards:
+      - xp: 3
+      - choice: [minecraft:stone x64, minecraft:ender_pearl x2, minecraft:glass x16]
+
+  - id: ladrilho_ztones
+    title: "Ladrilhos de Pedra"
+    type: main
+    deps: [ofanix]
+    icon: Ztones:stoneTile
+    desc: |
+      Lajes de pedra em volta de uma pedra fazem 8 §eLadrilhos§r (Tile ①). Eles são a base de
+      tudo no Ztones: §e8 ladrilhos em volta de um "catalisador"§r criam uma família nova
+      de blocos — lápis, lã, ouro, obsidiana, areia das almas, gelo, slime, cana, pólvora...
+
+      Faça §e32 ladrilhos§r e confira os catalisadores com U sobre o ladrilho no NEI.
+    tasks:
+      - get: Ztones:stoneTile:* x32
+    rewards:
+      - xp: 3
+      - choice: [minecraft:stone_slab x16, minecraft:dye:4 x8, minecraft:stone x32]
+
+  - id: familias_ztones
+    title: "Famílias do Ztones"
+    type: normal
+    deps: [ladrilho_ztones]
+    icon: Ztones:tile.zaneBlock
+    desc: |
+      Cada família do Ztones tem nome curioso (Agon, Azur, Bitt, Cray, Fort, Glaxx, Iszm,
+      Jelt, Korp, Kryp, Lair, Lave, Mint, Myst, Reds, Reed, Roen, Sols, Sync, Tank, Vect,
+      Vena, Zane, Zech, Zest, Zeta, Zion, Zkul, Zoea, Zome, Zone, Zorg, Ztyl, Zyth...) e 16
+      padrões.
+
+      Crie blocos de §etrês famílias diferentes§r (8 de cada).
+    tasks:
+      - one_of: [Ztones:tile.zaneBlock:* x8, Ztones:tile.azurBlock:* x8, Ztones:tile.fortBlock:* x8, Ztones:tile.lairBlock:* x8]
+      - one_of: [Ztones:tile.mintBlock:* x8, Ztones:tile.mystBlock:* x8, Ztones:tile.redsBlock:* x8, Ztones:tile.reedBlock:* x8]
+      - one_of: [Ztones:tile.zionBlock:* x8, Ztones:tile.zorgBlock:* x8, Ztones:tile.krypBlock:* x8, Ztones:tile.glaxx:* x8, Ztones:tile.syncBlock:* x8, Ztones:tile.laveBlock:* x8]
+    rewards:
+      - item: Ztones:stoneTile x16
+      - xp: 2
+
+  - id: aurora
+    title: "Bloco Aurora"
+    type: optional
+    deps: [ofanix]
+    icon: Ztones:auroraBlock
+    desc: |
+      Vidro e corante: §eAurora§r, um vidro que muda de cor suavemente, como a aurora boreal.
+      (Ele também é catalisador de uma família de ladrilhos!)
+
+      Faça §e8 auroras§r.
+    tasks:
+      - get: Ztones:auroraBlock x8
+    rewards:
+      - loot: comum
+
+  - id: lampadas_ztones
+    title: "Lâmpadas Planas"
+    type: normal
+    deps: [ofanix]
+    icon: Ztones:lampf
+    desc: |
+      Ferro, vidro e pó de pedra luminosa fazem 16 §eLâmpadas Planas§r (Flat Lamp): placas
+      de luz finas para tetos e pisos. Na bancada, alternam entre as versões clara, escura e
+      transparente.
+
+      Faça §e8 lâmpadas planas§r.
+    tasks:
+      - get: Ztones:lampf x8
+    rewards:
+      - item: minecraft:glowstone_dust x4
+      - xp: 1
+
+  - id: impulsionador
+    title: "Impulsionador"
+    type: optional
+    deps: [ofanix]
+    icon: Ztones:booster
+    desc: |
+      Blocos de redstone fazem 9 §eImpulsionadores§r (Booster): placas no chão que
+      §eaceleram§r quem passa por cima. Uma pista de corrida na base? Por que não!
+
+      Faça §e9§r.
+    tasks:
+      - get: Ztones:booster x9
+    rewards:
+      - loot: comum
+
+  - id: miudezas_ztones
+    title: "Miudezas do Ztones"
+    type: optional
+    deps: [ofanix]
+    icon: Ztones:minicoal
+    desc: |
+      Mais curiosidades do Ztones: §eMini Carvão§r (1 carvão = 8 minis, cada um funde um
+      item), §eSolo de Jardim§r limpo (terra, sementes e areia) e a §ePílula MSG§r, que
+      mata a fome... de um jeito questionável.
+
+      Faça §e8 mini carvões e 8 solos de jardim§r.
+    tasks:
+      - get: [Ztones:minicoal x8, Ztones:cleanDirt x8]
+    rewards:
+      - loot: comum
+
+  # ======================================================================
+  # MALISIS' DOORS
+  # ======================================================================
+  - id: portas_animadas
+    title: "Portas que Deslizam"
+    type: main
+    deps: [volume_beleza]
+    icon: malisisdoors:item.door_spruce
+    desc: |
+      O §eMalisis' Doors§r substitui portas e portões por versões §eanimadas§r que abrem
+      suavemente. E traz portas novas!
+
+      Comece por uma §eporta de madeira animada§r (pinheiro, eucalipto, selva, acácia ou
+      carvalho escuro). Repare na animação. Lindo, né?
+    tasks:
+      - one_of: [malisisdoors:item.door_spruce, malisisdoors:item.door_birch, malisisdoors:item.door_jungle, malisisdoors:item.door_acacia, malisisdoors:item.door_dark_oak]
+    rewards:
+      - xp: 3
+      - choice: [minecraft:planks x32, minecraft:glass x16, minecraft:iron_ingot x4]
+
+  - id: porta_vidro
+    title: "Portas de Vidro"
+    type: normal
+    deps: [portas_animadas]
+    icon: malisisdoors:item.wood_sliding_door
+    desc: |
+      Tábuas (ou ferro) com vidro: §ePortas de Vidro Deslizantes§r. Elas correm para o lado
+      em vez de girar. A de ferro precisa de redstone.
+
+      Fabrique §euma de madeira e uma de ferro§r.
+    tasks:
+      - get: [malisisdoors:item.wood_sliding_door, malisisdoors:item.iron_sliding_door]
+    rewards:
+      - item: minecraft:glass x8
+      - xp: 2
+
+  - id: portas_especiais
+    title: "Cela, Laboratório e Fábrica"
+    type: normal
+    deps: [portas_animadas]
+    icon: malisisdoors:item.laboratory_door
+    desc: |
+      Três portas temáticas: §ePorta de Cela§r (barras de ferro), §ePorta de Laboratório§r
+      (ferro e ouro) e §ePorta de Fábrica§r (ferro e ouro, estilo industrial) — cada uma
+      com a sua animação.
+
+      Fabrique §eduas delas§r.
+    tasks:
+      - one_of: [malisisdoors:item.jail_door, malisisdoors:item.laboratory_door]
+      - get: malisisdoors:item.factory_door
+    rewards:
+      - item: minecraft:iron_ingot x4
+      - xp: 2
+
+  - id: shoji_saloon
+    title: "Shoji e Saloon"
+    type: optional
+    deps: [portas_animadas]
+    icon: malisisdoors:item.shoji_door
+    desc: |
+      A §ePorta Shoji§r (tábuas e papel) desliza como as casas japonesas; a §ePorta de
+      Saloon§r balança para os dois lados, como nos filmes de faroeste.
+
+      Fabrique §euma de cada§r.
+    tasks:
+      - get: [malisisdoors:item.shoji_door, malisisdoors:item.saloon]
+    rewards:
+      - loot: comum
+
+  - id: cortinas
+    title: "Cortinas"
+    type: normal
+    deps: [portas_animadas]
+    icon: malisisdoors:item.curtain_red
+    desc: |
+      Seis lãs da mesma cor: §eCortina§r. Ela abre e fecha com um clique, deixando a luz
+      entrar quando você quiser. Existe em todas as 16 cores.
+
+      Fabrique §e2 cortinas§r de qualquer cor.
+    tasks:
+      - one_of: [malisisdoors:item.curtain_red x2, malisisdoors:item.curtain_white x2, malisisdoors:item.curtain_black x2, malisisdoors:item.curtain_blue x2, malisisdoors:item.curtain_green x2, malisisdoors:item.curtain_purple x2, malisisdoors:item.curtain_yellow x2, malisisdoors:item.curtain_brown x2]
+    rewards:
+      - item: minecraft:wool x6
+      - xp: 1
+
+  - id: portas_grandes
+    title: "Portões Monumentais"
+    type: optional
+    deps: [portas_animadas]
+    icon: malisisdoors:medieval_door
+    desc: |
+      Para castelos e fortalezas: a §ePorta Medieval§r e a §ePorta de Carruagem§r são portas
+      enormes, de vários blocos, com animação imponente. A §ePorta de Garagem§r sobe em
+      painéis.
+
+      Fabrique §euma porta medieval ou de carruagem§r (receitas no NEI).
+    tasks:
+      - one_of: [malisisdoors:medieval_door, malisisdoors:carriage_door]
+    rewards:
+      - loot: comum
+
+  - id: quadro_desaparecer
+    title: "Quadro do Desaparecimento"
+    type: normal
+    deps: [portas_animadas]
+    icon: malisisdoors:vanishing_block
+    desc: |
+      Redstone, uma pérola do fim e madeira (ou ferro, ouro, diamante): 4 §eQuadros de
+      Desaparecimento§r. Coloque um bloco dentro do quadro e ele assume aquela aparência;
+      com sinal de redstone, §eo bloco some§r e você atravessa. Passagens secretas!
+
+      Faça §e4 quadros§r.
+    tasks:
+      - get: malisisdoors:vanishing_block:* x4
+    rewards:
+      - item: minecraft:redstone x8
+      - xp: 2
+
+  - id: misturador_blocos
+    title: "Misturador de Blocos"
+    type: optional
+    deps: [quadro_desaparecer]
+    icon: malisisdoors:block_mixer
+    desc: |
+      Ferro e pistões: §eMisturador de Blocos§r. Coloque dois blocos e ele cria um §eBloco
+      Misto§r com metade de cada um, em diagonal. Transições suaves entre materiais!
+
+      Fabrique um.
+    tasks:
+      - get: malisisdoors:block_mixer
+    rewards:
+      - loot: comum
+
+  - id: sensor_jogador
+    title: "Sensor de Jogador"
+    type: optional
+    deps: [portas_animadas]
+    icon: malisisdoors:player_sensor
+    desc: |
+      Ferro, redstone e vidro: §eSensor de Jogador§r. Colocado ao lado de uma porta, ele a
+      abre quando um jogador se aproxima. Porta automática de shopping!
+
+      Fabrique um.
+    tasks:
+      - get: malisisdoors:player_sensor
+    rewards:
+      - loot: comum
+
+  - id: fabrica_portas
+    title: "A Fábrica de Portas"
+    type: optional
+    deps: [porta_vidro]
+    icon: malisisdoors:door_factory
+    desc: |
+      Ferro, porta de ferro, pistão e redstone: §eFábrica de Portas§r. Nela você cria §eportas
+      personalizadas§r — escolhe a moldura, o material e o tipo de movimento.
+
+      Fabrique uma e invente a sua porta.
+    tasks:
+      - get: malisisdoors:door_factory
+    rewards:
+      - loot: comum
+
+  - id: campo_forca
+    title: "Campo de Força"
+    type: optional
+    deps: [fabrica_portas]
+    icon: malisisdoors:item.forcefieldItem
+    desc: |
+      Diamantes, obsidiana, repetidores, um comparador e um olho do fim: §eControlador de
+      Campo de Força§r. Ele cria uma "porta" de energia translúcida entre dois pontos que
+      liga e desliga. Ficção científica na sua entrada!
+
+      Fabrique um.
+    tasks:
+      - get: malisisdoors:item.forcefieldItem
+    rewards:
+      - loot: comum
+
+  - id: alcapoes_malisis
+    title: "Alçapões e Escadas Enferrujadas"
+    type: optional
+    deps: [portas_animadas]
+    icon: malisisdoors:rustyHatch
+    desc: |
+      O §eAlçapão Deslizante§r (ferro e ouro) corre de lado; a §eEscotilha Enferrujada§r (com
+      uma alça enferrujada) e a §eEscada Enferrujada§r têm aquele charme de submarino velho.
+
+      Fabrique §euma escotilha enferrujada e um alçapão deslizante§r.
+    tasks:
+      - get: [malisisdoors:rustyHatch, malisisdoors:sliding_trapdoor]
+    rewards:
+      - loot: comum
+
+  # ======================================================================
+  # FLOODLIGHTS
+  # ======================================================================
+  - id: filamento
+    title: "O Filamento"
+    type: normal
+    deps: [volume_beleza]
+    icon: FloodLights:glowingFilament
+    desc: |
+      Ouro, redstone e pó de pedra luminosa: §eFilamento Bruto§r. Na fornalha, ele vira
+      §eFilamento Incandescente§r — o coração das luzes do §eFloodLights§r.
+
+      Faça §e2 filamentos incandescentes§r.
+    tasks:
+      - get: FloodLights:glowingFilament x2
+    rewards:
+      - item: minecraft:glowstone_dust x4
+      - xp: 1
+
+  - id: lampada_incandescente
+    title: "Lâmpada Incandescente"
+    type: normal
+    deps: [filamento]
+    icon: FloodLights:electricIncandescentLightBulb
+    desc: |
+      Painéis de vidro, um filamento e ferro: §eLâmpada Incandescente Elétrica§r. Ela é o
+      componente de quase todos os refletores.
+
+      Faça §e2 lâmpadas§r.
+    tasks:
+      - get: FloodLights:electricIncandescentLightBulb x2
+    rewards:
+      - item: minecraft:glass_pane x8
+      - xp: 1
+
+  - id: refletor_eletrico
+    title: "Refletor Elétrico"
+    type: main
+    deps: [lampada_incandescente]
+    icon: FloodLights:electricFloodlight
+    desc: |
+      Pedregulho, ferro, vidro e uma lâmpada: §eRefletor Elétrico§r. Ele projeta luz §ea até
+      64 blocos§r numa direção (com o modo cone, 32) — ilumina campos, fazendas e paredes de
+      castelo sem espalhar tochas.
+
+      Ele consome §eRF§r (20 RF/t; o dobro no modo cone) e liga com redstone. Fabrique um. Os
+      Volumes de tecnologia fornecem a energia.
+    tasks:
+      - get: FloodLights:electricFloodlight
+    rewards:
+      - xp: 3
+      - choice: [minecraft:redstone x16, minecraft:iron_ingot x6, minecraft:glowstone_dust x8]
+
+  - id: luz_fluorescente
+    title: "Luz Fluorescente"
+    type: normal
+    deps: [lampada_incandescente]
+    icon: FloodLights:smallElectricFloodlightMetaBlock
+    desc: |
+      Vidro, ferro e uma lâmpada fazem 2 §eLuzes Fluorescentes Pequenas§r: luminárias finas
+      para tetos e paredes, que gastam só §e2 RF/t§r. Na bancada, viram a versão quadrada.
+
+      Faça §e2§r.
+    tasks:
+      - get: FloodLights:smallElectricFloodlightMetaBlock:* x2
+    rewards:
+      - item: minecraft:iron_ingot x2
+      - xp: 1
+
+  - id: refletor_carvao
+    title: "Refletor a Carvão"
+    type: optional
+    deps: [refletor_eletrico]
+    icon: FloodLights:carbonFloodlight
+    desc: |
+      Sem energia? O §eRefletor Não-Elétrico§r queima §ecarvão§r (cada carvão dura 300 s;
+      um quarto disso no modo cone). Ele precisa de uma §eLanterna Não-Elétrica§r, feita com
+      §eCamisa§r (linha e redstone) e §eDissolvedor de Combustível§r.
+
+      Fabrique §eum refletor a carvão§r.
+    tasks:
+      - get: FloodLights:carbonFloodlight
+    rewards:
+      - loot: comum
+
+  - id: refletor_uv
+    title: "Refletor UV"
+    type: optional
+    deps: [refletor_eletrico]
+    icon: FloodLights:uvFloodlight
+    desc: |
+      Com vidro preto: §eRefletor UV§r. Ele não ilumina para você, mas §efere monstros§r
+      (4 de dano por segundo) no feixe! Gasta 80 RF/t. Defesa de base com estilo de balada.
+
+      Fabrique um.
+    tasks:
+      - get: FloodLights:uvFloodlight
+    rewards:
+      - loot: comum
+
+  - id: luz_cultivo
+    title: "Luz de Cultivo"
+    type: optional
+    deps: [refletor_eletrico]
+    icon: FloodLights:growLight
+    desc: |
+      Com vidro rosa: §eLuz de Cultivo§r (Grow Light). Além de iluminar, ela dá §echances
+      extras de crescimento§r às plantas embaixo (40 RF/t). Fazenda subterrânea? Resolvido.
+
+      Fabrique uma.
+    tasks:
+      - get: FloodLights:growLight
+    rewards:
+      - loot: comum
+
+  # ======================================================================
+  # GARDEN STUFF
+  # ======================================================================
+  - id: composteira_jardim
+    title: "A Composteira de Jardim"
+    type: main
+    deps: [volume_beleza]
+    icon: GardenCore:compost_bin
+    desc: |
+      Gravetos e lajes de madeira: §eComposteira§r (Compost Bin) do Garden Core. Encha com
+      restos orgânicos (folhas, mudas, sementes, plantas...) e, com o tempo, ela produz
+      §eComposto§r.
+
+      O composto é a base do jardim: solo de jardim, mudas especiais, trepadeiras. Fabrique
+      uma composteira.
+    tasks:
+      - get: GardenCore:compost_bin
+    rewards:
+      - xp: 3
+      - choice: [minecraft:sapling x8, minecraft:wheat_seeds x16, minecraft:leaves x16]
+
+  - id: composto
+    title: "Composto"
+    type: normal
+    deps: [composteira_jardim]
+    icon: GardenCore:compost_pile
+    desc: |
+      Recolha §e8 de Composto§r da composteira. Ele também serve de adubo: aplique em plantas
+      como farinha de osso.
+
+      §aDica:§r encha a composteira com aquele monte de mudas que sobra de cortar árvores.
+    tasks:
+      - get: GardenCore:compost_pile x8
+    rewards:
+      - item: minecraft:sapling x8
+      - xp: 1
+
+  - id: solo_jardim
+    title: "Solo de Jardim"
+    type: normal
+    deps: [composto]
+    icon: GardenCore:garden_soil
+    desc: |
+      Terra + composto = §eSolo de Jardim§r, um solo fértil para canteiros. Com a §ePá de
+      Jardim§r (Trowel) você planta e mexe nas plantas dos vasos com precisão.
+
+      Faça §e4 solos de jardim§r e uma pá de jardim.
+    tasks:
+      - get: [GardenCore:garden_soil x4, GardenCore:garden_trowel]
+    rewards:
+      - item: minecraft:dirt x16
+      - xp: 1
+
+  - id: kit_solo
+    title: "Kit de Teste de Solo"
+    type: optional
+    deps: [solo_jardim]
+    icon: GardenCore:soil_test_kit
+    desc: |
+      Corantes vermelho e verde e frascos: §eKit de Teste de Solo§r. Use num bloco de terra e
+      ele mostra as características do solo daquele lugar. Ciência de jardinagem!
+
+      Fabrique um.
+    tasks:
+      - get: GardenCore:soil_test_kit
+    rewards:
+      - loot: comum
+
+  - id: vasos_grandes
+    title: "Vasos Grandes"
+    type: normal
+    deps: [composteira_jardim]
+    icon: GardenContainers:large_pot
+    desc: |
+      Argila endurecida em formato de vaso faz 3 §eVasos Grandes§r — que aceitam terra e
+      várias plantas, inclusive mudas e flores altas. Existem em todas as cores (argila
+      tingida) e em versão média.
+
+      Faça §e4 vasos grandes§r (de qualquer cor).
+    tasks:
+      - one_of: [GardenContainers:large_pot x4, GardenContainers:large_pot_colored:* x4]
+    rewards:
+      - item: minecraft:hardened_clay x8
+      - xp: 1
+
+  - id: floreira_janela
+    title: "Floreiras de Janela"
+    type: normal
+    deps: [composteira_jardim]
+    icon: GardenContainers:wood_window_box
+    desc: |
+      Tábuas (ou pedras) com um vaso de flor no meio: §eFloreira de Janela§r. Ela fica presa
+      embaixo das janelas com flores brotando — pura casa de vó.
+
+      Faça §e4 floreiras§r de qualquer material.
+    tasks:
+      - one_of: [GardenContainers:wood_window_box:* x4, GardenContainers:stone_window_box:* x4]
+    rewards:
+      - item: minecraft:red_flower x4
+      - xp: 1
+
+  - id: vaso_decorativo
+    title: "Vasos de Quartzo"
+    type: optional
+    deps: [vasos_grandes]
+    icon: GardenContainers:decorative_pot
+    desc: |
+      Blocos de quartzo em formato de taça: §eVaso Decorativo§r (liso, cinzelado ou de
+      pilar). Elegância de palácio para o jardim.
+
+      Faça §e3 vasos decorativos§r.
+    tasks:
+      - get: GardenContainers:decorative_pot:* x3
+    rewards:
+      - loot: comum
+
+  - id: mesa_ceramica
+    title: "Mesa de Cerâmica"
+    type: optional
+    deps: [vasos_grandes]
+    icon: GardenContainers:pottery_table
+    desc: |
+      Argila e uma bancada: §eMesa de Cerâmica§r. Com §eCarimbos de Padrão§r, ela estampa
+      desenhos nos vasos grandes. Os carimbos não têm receita de bancada; confira no NEI
+      como obtê-los.
+
+      Fabrique a mesa.
+    tasks:
+      - get: GardenContainers:pottery_table
+    rewards:
+      - loot: comum
+
+  - id: forno_florescimento
+    title: "O Forno de Florescimento"
+    type: main
+    deps: [volume_beleza]
+    icon: GardenStuff:bloomery_furnace
+    desc: |
+      Tijolos em volta de uma fornalha: §eForno de Florescimento§r (Bloomery Furnace). Ele
+      junta §eferro§r (lingote ou minério) com §eareia§r e combustível para produzir
+      §eFerro Forjado§r (Wrought Iron), devolvendo carvão vegetal de brinde.
+
+      No NEI, a aba "Bloomery Process" mostra as receitas. Fabrique o forno.
+    tasks:
+      - get: GardenStuff:bloomery_furnace
+    rewards:
+      - xp: 3
+      - choice: [minecraft:sand x16, minecraft:iron_ingot x6, minecraft:coal x16]
+
+  - id: ferro_forjado
+    title: "Ferro Forjado"
+    type: main
+    deps: [forno_florescimento]
+    icon: GardenStuff:wrought_iron_ingot
+    desc: |
+      Produza §e8 Lingotes de Ferro Forjado§r no forno de florescimento. Esse ferro escuro e
+      rústico é o material de cercas, treliças, lanternas, candelabros e correntes do
+      Garden Stuff.
+    tasks:
+      - get: GardenStuff:wrought_iron_ingot x8
+    rewards:
+      - xp: 3
+      - choice: [minecraft:iron_ingot x6, minecraft:sand x16, minecraft:coal x8]
+
+  - id: trelica
+    title: "Treliças"
+    type: normal
+    deps: [ferro_forjado]
+    icon: GardenStuff:lattice_wood
+    desc: |
+      Em formato de "+", tábuas fazem 8 §eTreliças de Madeira§r e ferro (ou ferro forjado)
+      faz 16 §eTreliças de Ferro§r. Trepadeiras sobem por elas, e com trepadeira na bancada
+      elas ficam musgosas.
+
+      Faça §e8 treliças§r (madeira ou ferro).
+    tasks:
+      - one_of: [GardenStuff:lattice_wood:* x8, GardenStuff:lattice:* x8]
+    rewards:
+      - item: minecraft:vine x8
+      - xp: 1
+
+  - id: cerca_ferro_forjado
+    title: "Cerca de Ferro Forjado"
+    type: normal
+    deps: [ferro_forjado]
+    icon: GardenStuff:fence
+    desc: |
+      Seis lingotes de ferro forjado: 16 §eCercas de Ferro Forjado§r, com ponteiras
+      decorativas (na bancada, elas alternam entre 4 estilos).
+
+      Faça §e16 cercas§r e cerque o jardim com elegância.
+    tasks:
+      - get: GardenStuff:fence:* x16
+    rewards:
+      - item: GardenStuff:wrought_iron_ingot x2
+      - xp: 1
+
+  - id: lanterna_jardim
+    title: "Lanterna de Jardim"
+    type: normal
+    deps: [ferro_forjado]
+    icon: GardenStuff:lantern
+    desc: |
+      Ferro forjado e cercas fazem 4 §eLanternas de Jardim§r; com um painel de vidro tingido
+      no meio, a lanterna ganha cor. Dentro dela você pode colocar uma tocha, uma vela ou
+      outras fontes de luz.
+
+      Faça §e4 lanternas de jardim§r.
+    tasks:
+      - get: GardenStuff:lantern:* x4
+    rewards:
+      - item: minecraft:torch x16
+      - xp: 1
+
+  - id: correntes_jardim
+    title: "Correntes"
+    type: optional
+    deps: [ferro_forjado]
+    icon: GardenStuff:heavy_chain
+    desc: |
+      Pepitas viram §eElos de Corrente§r (ferro, ouro ou ferro forjado), e os elos viram
+      §eCorrentes Leves§r ou §ePesadas§r para pendurar lanternas e vasos. Com trepadeira, ficam
+      musgosas.
+
+      Faça §e4 correntes pesadas§r.
+    tasks:
+      - get: GardenStuff:heavy_chain:* x4
+    rewards:
+      - loot: comum
+
+  - id: vela_candelabro
+    title: "Velas e Candelabros"
+    type: optional
+    deps: [ferro_forjado]
+    icon: GardenStuff:candelabra
+    desc: |
+      Linha e §ecera§r fazem §eVelas§r; a cera vem da §eCandelila§r (arbusto de biomas quentes e
+      arenosos — funda as folhas) e outras ceras do oredict também servem. Velas e ferro
+      forjado fazem §eCandelabros§r de 1, 2 ou 3 braços.
+
+      Faça §eum candelabro§r.
+    tasks:
+      - get: GardenStuff:candelabra:*
+    rewards:
+      - loot: comum
+
+  - id: postes_madeira
+    title: "Postes de Madeira"
+    type: normal
+    deps: [composteira_jardim]
+    icon: GardenTrees:thin_log
+    desc: |
+      Um machado de madeira + um tronco na bancada: 4 §ePostes de Madeira§r (troncos finos).
+      Com linha, viram §eCercas de Poste§r — cercas rústicas para hortas e currais. Funciona
+      com troncos vanilla e de vários mods.
+
+      Faça §e8 postes§r e §e3 cercas de poste§r.
+    tasks:
+      - get: [GardenTrees:thin_log:* x8, GardenTrees:thin_log_fence:* x3]
+    rewards:
+      - item: minecraft:log x8
+      - xp: 1
+
+  - id: mudas_jardim
+    title: "Mudas de Jardineiro"
+    type: optional
+    deps: [composto]
+    icon: GardenTrees:sapling
+    desc: |
+      Uma muda comum + composto vira uma muda especial do Garden Trees: §ePinheiro§r (de
+      pinheiro), §ePântano§r (de carvalho, com trepadeira) ou §eBétula Alta§r. Plante para
+      árvores de formato diferente. A §eHera do Diabo§r (trepadeira + composto) dá um toque
+      selvagem.
+
+      Faça §euma muda especial e uma hera§r.
+    tasks:
+      - get: [GardenTrees:sapling:*, GardenTrees:ivy]
+    rewards:
+      - loot: comum
+
+  - id: pasta_musgo
+    title: "Pasta de Musgo"
+    type: optional
+    deps: [composteira_jardim]
+    icon: GardenStuff:moss_paste
+    desc: |
+      Trepadeiras e argila: §ePasta de Musgo§r, usada para dar aparência envelhecida e
+      musgosa a pedras e tijolos (confira os usos com U no NEI). Jardins antigos têm musgo
+      em tudo!
+
+      Faça §euma pasta de musgo§r.
+    tasks:
+      - get: GardenStuff:moss_paste
+    rewards:
+      - loot: comum
+
+  # ======================================================================
+  # ARMOURER'S WORKSHOP
+  # ======================================================================
+  - id: cubo_equipamento
+    title: "Cubos de Equipamento"
+    type: main
+    deps: [volume_beleza]
+    icon: armourersWorkshop:block.colourable
+    desc: |
+      O §eArmourer's Workshop§r deixa você usar §evisuais personalizados§r (skins) em armas,
+      ferramentas e armaduras — sem mudar os atributos. Tudo começa com o §eCubo de
+      Equipamento§r (lã e ferro: 16 cubos), que é ingrediente de quase todas as peças do mod.
+
+      Faça §e16 cubos§r.
+    tasks:
+      - get: armourersWorkshop:block.colourable x16
+    rewards:
+      - xp: 3
+      - choice: [minecraft:wool x16, minecraft:iron_ingot x6, minecraft:dye:1 x8]
+
+  - id: livro_guia_aw
+    title: "O Livro-Guia do Armeiro"
+    type: normal
+    deps: [cubo_equipamento]
+    icon: armourersWorkshop:guideBook
+    desc: |
+      Um livro e um cubo: §eLivro-Guia§r do Armourer's Workshop. Ele explica tudo com
+      calma (e cabe no Tomo Akáshico!).
+
+      Fabrique o guia. Eu recomendo de verdade: este mod tem muitos detalhes.
+    tasks:
+      - get: armourersWorkshop:guideBook
+    rewards:
+      - item: minecraft:book x2
+      - xp: 1
+
+  - id: modelo_visual
+    title: "Modelo de Visual"
+    type: normal
+    deps: [cubo_equipamento]
+    icon: armourersWorkshop:equipmentSkinTemplate
+    desc: |
+      Quatro cubos fazem 8 §eModelos de Visual de Equipamento§r (Equipment Skin Template): o
+      "papel em branco" onde um visual é salvo ou copiado.
+
+      Faça §e8 modelos§r.
+    tasks:
+      - get: armourersWorkshop:equipmentSkinTemplate x8
+    rewards:
+      - item: armourersWorkshop:block.colourable x4
+      - xp: 1
+
+  - id: mesa_visuais
+    title: "Mesa de Aplicação de Visuais"
+    type: main
+    deps: [modelo_visual]
+    icon: armourersWorkshop:block.skinningTable
+    desc: |
+      Pedra, lã vermelha, cubo e modelos: §eMesa de Aplicação de Visuais§r (Skinning Table).
+      Coloque um item (espada, picareta, peça de armadura) e um §eVisual§r: o item passa a
+      ter aquela aparência. Dá para remover depois com §eSabão§r.
+
+      Fabrique a mesa.
+    tasks:
+      - get: armourersWorkshop:block.skinningTable
+    rewards:
+      - xp: 3
+      - choice: [armourersWorkshop:equipmentSkinTemplate x4, minecraft:wool:14 x8, minecraft:iron_ingot x4]
+
+  - id: biblioteca_visuais
+    title: "Biblioteca de Equipamentos"
+    type: normal
+    deps: [cubo_equipamento]
+    icon: armourersWorkshop:block.armourLibrary
+    desc: |
+      Pedra, lã vermelha, livros e um cubo: §eBiblioteca de Equipamentos§r. Ela salva e
+      carrega visuais em modelos — é onde você guarda e compartilha criações. A §eBiblioteca
+      Global de Visuais§r (com pérola do fim) acessa visuais publicados por outros
+      jogadores.
+
+      Fabrique §euma biblioteca de equipamentos§r.
+    tasks:
+      - get: armourersWorkshop:block.armourLibrary
+    rewards:
+      - item: minecraft:book x4
+      - xp: 2
+
+  - id: ferramentas_pintura
+    title: "Pincel e Rolo"
+    type: normal
+    deps: [cubo_equipamento]
+    icon: armourersWorkshop:paintbrush
+    desc: |
+      O §ePincel§r pinta um cubo de cada vez; o §eRolo de Pintura§r pinta áreas. O
+      §eSelecionador de Cores§r copia uma cor de qualquer bloco. São as ferramentas de quem
+      esculpe visuais (cubos coloridos formam o modelo).
+
+      Fabrique §eo pincel e o rolo§r.
+    tasks:
+      - get: [armourersWorkshop:paintbrush, armourersWorkshop:paintRoller]
+    rewards:
+      - item: minecraft:dye:4 x4
+      - xp: 1
+
+  - id: ferramentas_tom
+    title: "Tons e Sombras"
+    type: optional
+    deps: [ferramentas_pintura]
+    icon: armourersWorkshop:hueTool
+    desc: |
+      Para artistas: §eFerramenta de Escurecimento§r, §ede Clareamento§r, §ede Matiz§r, §ede
+      Tons de Cor§r, §ede Tons de Sombra§r e §ede Mesclagem§r — cada uma ajusta as cores dos
+      cubos de um jeito. E o §eSelecionador de Cores§r para copiar tons.
+
+      Fabrique §eo selecionador de cores e a ferramenta de matiz§r.
+    tasks:
+      - get: [armourersWorkshop:colourPicker, armourersWorkshop:hueTool]
+    rewards:
+      - loot: comum
+
+  - id: manequim
+    title: "O Manequim"
+    type: normal
+    deps: [cubo_equipamento]
+    icon: armourersWorkshop:block.mannequin
+    desc: |
+      Abóbora, tábuas e um cubo: §eManequim§r. Ele veste armaduras e visuais, pode ter a
+      skin de um jogador (é só dar um nome) e assume poses com a §eFerramenta de Manequim§r.
+
+      Fabrique um manequim. Vitrine de loja com classe!
+    tasks:
+      - get: armourersWorkshop:block.mannequin
+    rewards:
+      - item: minecraft:pumpkin
+      - xp: 2
+
+  - id: holograma
+    title: "Projetor de Holograma"
+    type: optional
+    deps: [cubo_equipamento]
+    icon: armourersWorkshop:block.hologramProjector
+    desc: |
+      Ferro, vidro azul-claro e um cubo: §eProjetor de Holograma§r. Ele projeta um visual do
+      Armourer's Workshop no ar, girando — ótimo como estátua ou letreiro.
+
+      Fabrique um.
+    tasks:
+      - get: armourersWorkshop:block.hologramProjector
+    rewards:
+      - loot: comum
+
+  - id: guarda_roupa
+    title: "O Guarda-Roupa"
+    type: info
+    deps: [mesa_visuais]
+    icon: armourersWorkshop:skinUnlock
+    desc: |
+      Além de aplicar visuais em itens, você tem um §eGuarda-Roupa de Equipamentos§r: slots
+      próprios para usar visuais por cima da armadura (comece com 3 slots). Os §eDesbloqueios
+      de Visual§r (peça de diamante + modelo + Estrela do Nether) liberam slots extras.
+
+      §7Obs.: o bloco §eArmeiro§r (onde se esculpem visuais do zero) não tem receita neste
+      pack. Use as bibliotecas para obter visuais prontos.§r
+    tasks:
+      - check
+    rewards:
+      - xp: 1
+
+  - id: sabao
+    title: "Sabão"
+    type: optional
+    deps: [mesa_visuais]
+    icon: armourersWorkshop:soap
+    desc: |
+      Um balde de água, carne podre e slime (eca!) fazem §eSabão§r. Na bancada, item com
+      visual + sabão = item limpo, com a aparência original de volta.
+
+      Fabrique um sabão.
+    tasks:
+      - get: armourersWorkshop:soap
+    rewards:
+      - loot: comum
+
+  # ======================================================================
+  # DESAFIOS DE CONSTRUÇÃO
+  # ======================================================================
+  - id: desafios_info
+    title: "Desafios de Construção"
+    type: info
+    deps: [volume_beleza]
+    icon: minecraft:brick_block
+    desc: |
+      Nas próximas páginas eu proponho §edesafios de construção§r. Cada um pede um conjunto
+      de peças (que eu consigo conferir no seu inventário) para você usar numa obra.
+
+      Não precisa construir exatamente do jeito que eu imagino — use as peças, invente,
+      misture mods. Quando terminar, tire um print e mostre no servidor! (Eu vou ficar
+      espiando pelo canto da página.)
+    tasks:
+      - check
+    rewards:
+      - xp: 1
+
+  - id: desafio_biblioteca
+    title: "Desafio: A Biblioteca"
+    type: milestone
+    deps: [desafios_info, escrivaninha, mesa_assento, iluminacao_biblio, etiqueta_biblio]
+    icon: BiblioCraft:BiblioDesk
+    banner: "A Biblioteca!"
+    subtitle: "Um pedaço do Registro em casa"
+    desc: |
+      O meu desafio favorito, claro. Construa uma §ebiblioteca§r: estantes cheias, uma
+      escrivaninha com livro aberto, cadeiras, luz quente e etiquetas organizando tudo.
+
+      Junte as peças: §e8 estantes§r, §euma escrivaninha§r, §e2 assentos§r, §e2 lamparinas
+      ou lampiões§r e §e4 etiquetas§r. Encha as estantes com seus manuais!
+
+      Quando eu vejo uma biblioteca assim... é como se o Registro estivesse um pouquinho
+      menos partido. Obrigada, Herói. ♥
+    tasks:
+      - get: [BiblioCraft:Bibliotheca:* x8, BiblioCraft:BiblioDesk:*, BiblioCraft:BiblioSeats:* x2, BiblioCraft:BiblioLabel:* x4]
+      - one_of: [BiblioCraft:BiblioLamp:* x2, BiblioCraft:BiblioIronLamp:* x2, BiblioCraft:BiblioLantern:* x2, BiblioCraft:BiblioIronLantern:* x2]
+    rewards:
+      - kit:
+          name: "Kit da Bibliotecária"
+          items: ["minecraft:book x16", "minecraft:feather x8", "minecraft:dye x8", "minecraft:bookshelf x4"]
+      - loot: incomum
+      - xp: 5
+
+  - id: desafio_jardim
+    title: "Desafio: O Jardim Secreto"
+    type: milestone
+    deps: [desafios_info, vasos_grandes, floreira_janela, trelica, lanterna_jardim, postes_madeira]
+    icon: GardenContainers:large_pot
+    banner: "O Jardim Secreto!"
+    subtitle: "Flores, ferro forjado e trepadeiras"
+    desc: |
+      Construa um §ejardim§r cercado: vasos grandes com mudas, floreiras nas janelas,
+      treliças cobertas de trepadeiras, lanternas de jardim e uma cerca de postes ou de
+      ferro forjado.
+
+      Peças: §e6 vasos grandes§r, §e4 floreiras§r, §e8 treliças§r, §e2 lanternas de jardim§r e
+      §e8 cercas de poste§r (ou de ferro forjado).
+
+      Toda biblioteca antiga tinha um jardim do lado. Os Antigos liam ao ar livre, sabia?
+    tasks:
+      - one_of: [GardenContainers:large_pot x6, GardenContainers:large_pot_colored:* x6]
+      - one_of: [GardenContainers:wood_window_box:* x4, GardenContainers:stone_window_box:* x4]
+      - one_of: [GardenStuff:lattice_wood:* x8, GardenStuff:lattice:* x8]
+      - get: GardenStuff:lantern:* x2
+      - one_of: [GardenTrees:thin_log_fence:* x8, GardenStuff:fence:* x8]
+    rewards:
+      - kit:
+          name: "Kit do Jardineiro"
+          items: ["minecraft:sapling:* x8", "minecraft:red_flower x8", "minecraft:yellow_flower x8", "minecraft:vine x16", "GardenCore:compost_pile x8"]
+      - loot: incomum
+      - xp: 5
+
+  - id: desafio_palacio
+    title: "Desafio: O Palácio de Mármore"
+    type: milestone
+    deps: [desafios_info, marmore_variado, pilar_marmore, vidro_chisel]
+    icon: chisel:marble_pillar
+    banner: "O Palácio de Mármore!"
+    subtitle: "Colunas, vitrais e escadarias"
+    desc: |
+      Agora algo grandioso: um §epalácio de mármore§r. Colunatas na entrada, piso de mármore
+      trabalhado, vitrais nas janelas e telhado de rampas do carpinteiro cobertas de mármore.
+
+      Peças: §e128 mármores§r (qualquer variação), §e24 pilares§r, §e16 vitrais§r do Chisel e
+      §e16 rampas do carpinteiro§r.
+
+      É muito mármore, eu sei. Mas palácio de verdade dá trabalho!
+    tasks:
+      - get: [chisel:marble:* x128, chisel:marble_pillar:* x24, chisel:glass:* x16, CarpentersBlocks:blockCarpentersSlope x16]
+    rewards:
+      - kit:
+          name: "Kit do Arquiteto Clássico"
+          items: ["chisel:marble x64", "chisel:marble_pillar x16", "minecraft:glass x32", "minecraft:gold_ingot x4"]
+      - loot: incomum
+      - xp: 5
+
+  - id: desafio_fabrica
+    title: "Desafio: A Fábrica"
+    type: milestone
+    deps: [desafios_info, bloco_tecnico, refletor_eletrico, portas_especiais]
+    icon: chisel:factoryblock
+    banner: "A Fábrica!"
+    subtitle: "Aço, faixas de perigo e refletores"
+    desc: |
+      Para quem vai montar máquinas: uma §efábrica com cara de fábrica§r. Paredes de blocos
+      de fábrica, painéis técnicos, refletores iluminando o galpão, uma porta de fábrica e
+      uma porta de garagem para os veículos.
+
+      Peças: §e64 blocos de fábrica§r, §e32 blocos técnicos§r, §e2 refletores elétricos§r,
+      §euma porta de fábrica§r e §e4 portas de garagem§r (Malisis ou do carpinteiro).
+
+      Depois é só encher de máquinas dos Volumes de Tecnologia!
+    tasks:
+      - get: [chisel:factoryblock:* x64, chisel:technical:* x32, FloodLights:electricFloodlight x2, malisisdoors:item.factory_door]
+      - one_of: [malisisdoors:garage_door x4, CarpentersBlocks:blockCarpentersGarageDoor x4]
+    rewards:
+      - kit:
+          name: "Kit do Engenheiro-Arquiteto"
+          items: ["minecraft:iron_ingot x16", "minecraft:redstone x16", "chisel:factoryblock x32", "minecraft:glass x16"]
+      - loot: incomum
+      - xp: 5
+
+  - id: desafio_casa_japonesa
+    title: "Desafio: A Casa de Chá"
+    type: milestone
+    deps: [desafios_info, papel_parede, shoji_saloon, rampas]
+    icon: malisisdoors:item.shoji_door
+    banner: "A Casa de Chá!"
+    subtitle: "Papel, madeira e silêncio"
+    desc: |
+      Um desafio mais calmo: uma §ecasa de chá§r em estilo japonês. Paredes de papel,
+      portas shoji deslizando, telhado curvo de rampas, lanternas e, se quiser, cerejeiras do
+      Et Futurum em volta.
+
+      Peças: §e16 papéis de parede§r, §e2 portas shoji§r, §e16 rampas do carpinteiro§r e §e2
+      lanternas§r (do Et Futurum, do Chisel ou da BiblioCraft).
+
+      Prepare um chá (de verdade, aí do seu lado) e aprecie a vista. Você merece uma pausa.
+    tasks:
+      - get: [chisel:paperwall:* x16, malisisdoors:item.shoji_door x2, CarpentersBlocks:blockCarpentersSlope x16]
+      - one_of: [etfuturum:lantern x2, chisel:lantern:* x2, BiblioCraft:BiblioLantern:* x2, BiblioCraft:BiblioIronLantern:* x2]
+    rewards:
+      - kit:
+          name: "Kit da Casa de Chá"
+          items: ["minecraft:paper x32", "minecraft:planks:1 x32", "etfuturum:cherry_log x8", "minecraft:red_flower x4"]
+      - loot: incomum
+      - xp: 5
+
+  - id: desafio_galeria
+    title: "Desafio: A Galeria de Troféus"
+    type: milestone
+    deps: [desafios_info, estojo, porta_ferramentas, suporte_armadura_biblio, manequim]
+    icon: BiblioCraft:BiblioCase
+    banner: "A Galeria de Troféus!"
+    subtitle: "Cada conquista em exposição"
+    desc: |
+      Você já conquistou tanta coisa... que tal uma §egaleria§r para exibir? Estojos com
+      drops raros, porta-ferramentas com suas picaretas aposentadas, suportes de armadura
+      com cada conjunto e um manequim vestindo seu melhor visual.
+
+      Peças: §e4 estojos§r, §e2 porta-ferramentas§r, §e2 suportes de armadura§r (BiblioCraft) e
+      §eum manequim§r.
+
+      Eu vou ser a guia do museu. "À esquerda, a primeira picareta de diamante do Herói..."
+    tasks:
+      - get: [BiblioCraft:BiblioCase:* x4, BiblioCraft:BiblioRack:* x2, {id: "BiblioCraft:Armor Stand", count: 2}, armourersWorkshop:block.mannequin]
+    rewards:
+      - kit:
+          name: "Kit do Curador"
+          items: ["minecraft:glass x16", "minecraft:wool:14 x8", "minecraft:gold_ingot x4", "minecraft:item_frame x4"]
+      - loot: incomum
+      - xp: 5
+
+  - id: arquiteto_registro
+    title: "A Beleza do Registro"
+    type: milestone
+    deps: [mestre_cinzel, mestre_marceneiro, desafio_biblioteca, desafio_jardim, desafio_palacio, desafio_fabrica]
+    icon: chisel:netherStarChisel
+    size: 48
+    banner: "A Beleza do Registro!"
+    subtitle: "A beleza também foi reescrita"
+    desc: |
+      Herói... olha o que você construiu. Uma biblioteca, um jardim secreto, um palácio de
+      mármore, uma fábrica — e as ferramentas de cinzel e de carpintaria dominadas.
+
+      Quando o Registro se partiu, as páginas de beleza foram as primeiras a se perder: em
+      tempos difíceis, ninguém pensa em jardins. Mas foi exatamente você quem lembrou que
+      um mundo que vale a pena salvar precisa de lugares bonitos para morar.
+
+      Obrigada por isso. De todo o coração de papel que eu tenho. ♥
+    tasks:
+      - check
+    rewards:
+      - kit:
+          name: "Kit do Arquiteto do Registro"
+          items: ["minecraft:diamond x2", "chisel:marble x64", "CarpentersBlocks:blockCarpentersBlock x32", "minecraft:glowstone x8", "minecraft:experience_bottle x16"]
+      - loot: incomum
+      - xp: 5

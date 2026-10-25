@@ -1,0 +1,17 @@
+chapter:
+  id: abelhas
+  title: "T"
+  order: 605
+  icon: Forestry:core
+  desc: "x"
+quests:
+  - id: a
+    title: "A"
+    type: main
+    desc: "x"
+    tasks:
+      - {one_of: ['Forestry:beeDroneGE {Genome:{Chromosomes:[{UID0:"forestry.speciesCommon"}]}}', 'Forestry:beePrincessGE {Genome:{Chromosomes:[{UID1:"forestry.speciesCommon"}]}}'], nbt: true}
+      - get: Forestry:beeCombs:8
+      - get: Forestry:propolis:2
+    rewards:
+      - xp: 1

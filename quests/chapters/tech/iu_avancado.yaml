@@ -370,3 +370,2120 @@ quests:
       - xp: 8
       - kit: {name: "Kit da Perfeição Solar", items: [industrialupgrade:ItemCore:1 x4, industrialupgrade:sunnariumpanel x2, IC2:itemPartIridium x2, industrialupgrade:iuplate x4, industrialupgrade:IUstik:9 x6]}
       - loot: raro
+
+  # ======================================================================
+  # FASE 2 — CIRCUITOS QUÂNTICOS
+  # ======================================================================
+  - id: capacitor_quantico
+    title: "Capacitor Quântico"
+    type: main
+    deps: [boas_vindas_ii]
+    deps_hidden: [iu_base:circuito_nano]
+    icon: industrialupgrade:basecircuit:1
+    desc: |
+      De volta ao Fabricante de Circuitos (a 4500 graus, lembra?): §eAlumínio + Redstone +
+      Magnésio + Prata + Ouro§r = §eQuantum Capacitor§r. Aqui os lingotes podem ser de qualquer
+      mod do oredict.
+
+      Como no tier Nano, cada Circuito Quântico consome §e4 capacitores§r. Faça §e4§r.
+    tasks:
+      - get: industrialupgrade:basecircuit:1 x4
+    rewards:
+      - xp: 4
+      - choice: [industrialupgrade:iuingot:1 x8, industrialupgrade:iuingot:7 x6, minecraft:redstone_block x4]
+
+  - id: varetas_prata
+    title: "Varetas de Prata"
+    type: normal
+    deps: [boas_vindas_ii]
+    icon: industrialupgrade:IUstik:14
+    desc: |
+      Prata extrudada: §e8 Varetas de Prata§r cercam o Capacitor Quântico no chip SOIC. Os chips
+      SOIC Espectrais também são feitos de varetas de prata — faça um bom estoque.
+    tasks:
+      - get: industrialupgrade:IUstik:14 x8
+    rewards:
+      - xp: 2
+      - item: industrialupgrade:iuingot:14 x6
+
+  - id: soic_quantico
+    title: "Chip SOIC Quântico"
+    type: main
+    deps: [capacitor_quantico, varetas_prata]
+    icon: industrialupgrade:basecircuit:4
+    desc: |
+      §e8 Varetas de Prata§r em volta de §e1 Capacitor Quântico§r = §eQuantum SOIC Chip§r.
+    tasks:
+      - get: industrialupgrade:basecircuit:4
+    rewards:
+      - xp: 3
+      - item: industrialupgrade:iuingot:14 x4
+
+  - id: qfp_quantico
+    title: "Chip QFP Quântico"
+    type: main
+    deps: [capacitor_quantico]
+    icon: industrialupgrade:basecircuit:7
+    desc: |
+      3 Placas de Carbono em cima, §e2 Capacitores Quânticos§r com um §eCircuito Avançado§r no
+      meio e 3 §ePlacas de Ferro Enriquecido§r embaixo = §eQuantum QFP Chip§r.
+    tasks:
+      - get: industrialupgrade:basecircuit:7
+    rewards:
+      - xp: 3
+      - item: IC2:itemPlates:5 x6
+
+  - id: circuito_quantico
+    title: "O Mundo Quântico"
+    type: milestone
+    deps: [soic_quantico, qfp_quantico]
+    icon: industrialupgrade:QuantumItems8
+    banner: "Circuito Quântico"
+    subtitle: "O segundo andar da microeletrônica"
+    desc: |
+      No Fabricante de Circuitos: §eNíquel + Cobalto + Capacitor Quântico + SOIC Quântico + QFP
+      Quântico§r = §eQuantum Circuit§r!
+
+      Ele é a chave de tudo neste volume: máquinas Avançadas, Overclocker Avançado, ferramentas
+      Quânticas, Sabre Quântico, módulos de painel, MFSU Avançado, transformadores do IU, a
+      Estação de Modificação e o Transformador Molecular Avançado.
+
+      §aDica:§r monte uma linha automática com três Fabricantes de Circuitos (capacitores,
+      chips e circuitos) e um Aquecedor encostado em cada. Mostre §e2 Circuitos Quânticos§r!
+    tasks:
+      - get: industrialupgrade:QuantumItems8 x2
+    rewards:
+      - xp: 8
+      - kit: {name: "Kit do Físico Quântico", items: [industrialupgrade:basecircuit:1 x4, industrialupgrade:iuingot:8 x4, industrialupgrade:iuingot:6 x4, IC2:itemPartCircuitAdv x4, IC2:itemPlates:5 x6]}
+      - loot: raro
+
+  # ======================================================================
+  # FASE 3 — CAIXAS E MÁQUINAS AVANÇADAS
+  # ======================================================================
+  - id: caixa_nano_avancada
+    title: "Caixa Nano Avançada"
+    type: main
+    deps: [foton]
+    icon: industrialupgrade:QuantumItems7
+    desc: |
+      §e4 Fótons§r em cruz em volta de uma §eCaixa de Ferramentas Nano§r = §eAdvanced Nano
+      Toolbox§r. Ela é o miolo da Caixa Quântica Melhorada, do Rotor Espectral, da Broca Nano
+      e do Tanque Perfeito. Faça §e1§r.
+    tasks:
+      - get: industrialupgrade:QuantumItems7
+    rewards:
+      - xp: 4
+      - choice: [industrialupgrade:nanobox x2, industrialupgrade:photoniy x2, industrialupgrade:compresscarbon x4]
+
+  - id: iridio_denso
+    title: "Irídio Denso"
+    type: normal
+    deps: [boas_vindas_ii]
+    icon: industrialupgrade:IUdoubleplate:17
+    desc: |
+      §e9 Placas de Irídio§r (do lingote de irídio do IU, no Formador de Metal) no Compressor =
+      §ePlaca Densa de Irídio§r. A Caixa Quântica leva 2, a Caixa Quântica Melhorada mais 2.
+      Faça §e4§r — o Espinélio → Irídio do Transformador ajuda aqui.
+    tasks:
+      - get: ore:doubleplateIridium x4
+    rewards:
+      - xp: 3
+      - item: industrialupgrade:iuingot:12 x6
+
+  - id: caixa_quantica
+    title: "Caixa de Ferramentas Quântica"
+    type: main
+    deps: [iridio_denso, minerio_iridio_ic2]
+    deps_hidden: [iu_base:caixa_nano, iu_base:composito_comprimido]
+    icon: industrialupgrade:QuantumItems6
+    desc: |
+      §e2 Placas Densas de Irídio§r em cima, §e2 Compósitos Comprimidos§r ao lado de uma §eCaixa
+      Nano§r, e embaixo §eMinério de Irídio (IC2) – Carbono Comprimido – Minério de Irídio§r
+      (com mais um Carbono Comprimido em cima) = §eQuantum Toolbox§r.
+
+      São §e3 por máquina Avançada§r, e também vão nas ferramentas Quânticas, no Reator
+      Avançado e na Estação de Modificação. Faça §e3§r.
+    tasks:
+      - get: industrialupgrade:QuantumItems6 x3
+    rewards:
+      - xp: 4
+      - choice: [IC2:itemOreIridium x2, industrialupgrade:compresscarbonultra x2, industrialupgrade:nanobox x2]
+
+  - id: placa_iridio_comprimida
+    title: "Placa de Irídio Comprimida"
+    type: normal
+    deps: [placas_iridio]
+    icon: industrialupgrade:QuantumItems2
+    desc: |
+      §e4 Placas Reforçadas de Irídio§r no Compressor = §eCompressed Iridium Plate§r. Ela está no
+      Painel Espectral, no Rotor Espectral, no Módulo Sem Fio, no Sabre Espectral, no Lappack
+      Perfeito... E 9 delas viram a §ePlaca de Irídio Comprimida Melhorada§r dos painéis
+      gigantes. Faça §e2§r.
+    tasks:
+      - get: industrialupgrade:QuantumItems2 x2
+    rewards:
+      - xp: 3
+      - item: IC2:itemPartIridium x2
+
+  - id: platina_vitalio_densos
+    title: "Platina e Vitálio Densos"
+    type: normal
+    deps: [boas_vindas_ii]
+    deps_hidden: [iu_base:vitalio]
+    icon: industrialupgrade:alloysdoubleplate:7
+    desc: |
+      As máquinas Avançadas trocam o Alumínio e o Alumel densos por §ePlatina densa§r (1) e
+      §eVitálio denso§r (2). Faça §e1 Placa Densa de Platina e 2 de Vitálio§r.
+    tasks:
+      - get: [ore:doubleplatePlatinum, ore:doubleplateVitalium x2]
+    rewards:
+      - xp: 3
+      - item: industrialupgrade:alloysingot:7 x9
+
+  - id: macerador_avancado
+    title: "Triturador Avançado"
+    type: main
+    deps: [caixa_quantica, circuito_quantico, platina_vitalio_densos]
+    deps_hidden: [iu_base:macerador_melhorado]
+    icon: industrialupgrade:machines_base:1
+    desc: |
+      Receita das Avançadas: §eVitálio denso – Platina densa – Vitálio denso / Circuito Quântico
+      – máquina Melhorada – Circuito Quântico / 3 Caixas Quânticas§r.
+
+      O §eAdvanced Macerator§r trabalha §e3 itens ao mesmo tempo§r. Ou use o §eKit de Máquina
+      Avançada§r direto num Triturador Melhorado instalado.
+    tasks:
+      - get: industrialupgrade:machines_base:1
+    rewards:
+      - xp: 4
+      - choice: [industrialupgrade:upgrademodule x2, industrialupgrade:QuantumItems8, industrialupgrade:alloysdoubleplate:7]
+
+  - id: compressor_avancado
+    title: "Compressor Avançado"
+    type: normal
+    deps: [macerador_avancado]
+    icon: industrialupgrade:machines_base:4
+    desc: |
+      O Compressor Melhorado no centro: três compressões de uma vez. Com tantas placas densas
+      e Carbonos Comprimidos para fazer, este aqui se paga rápido.
+    tasks:
+      - get: industrialupgrade:machines_base:4
+    rewards:
+      - xp: 3
+      - item: IC2:itemPartCarbonPlate x9
+
+  - id: fornalha_avancada
+    title: "Fornalha Elétrica Avançada"
+    type: normal
+    deps: [macerador_avancado]
+    icon: industrialupgrade:machines_base:7
+    desc: |
+      A Fornalha Elétrica Melhorada no centro: três fundições simultâneas.
+    tasks:
+      - get: industrialupgrade:machines_base:7
+    rewards:
+      - xp: 3
+      - item: minecraft:coal_block x6
+
+  - id: extrator_avancado
+    title: "Extrator Avançado"
+    type: optional
+    deps: [macerador_avancado]
+    icon: industrialupgrade:machines_base:10
+    desc: |
+      O Extrator Melhorado no centro: três extrações por vez.
+    tasks:
+      - get: industrialupgrade:machines_base:10
+    rewards:
+      - loot: comum
+
+  - id: formador_avancado
+    title: "Formador de Metal Avançado"
+    type: normal
+    deps: [macerador_avancado]
+    icon: industrialupgrade:machines_base:13
+    desc: |
+      O Formador Melhorado no centro: três lingotes viram placas, varetas ou invólucros de uma
+      vez. Para a escada de vidros e placas de Sunnarium, ele é ouro.
+    tasks:
+      - get: industrialupgrade:machines_base:13
+    rewards:
+      - xp: 3
+      - item: industrialupgrade:iuingot:1 x9
+
+  - id: reciclador_avancado
+    title: "Reciclador Avançado"
+    type: optional
+    deps: [macerador_avancado]
+    icon: industrialupgrade:machines_base1:1
+    desc: |
+      O Reciclador Melhorado no centro: três reciclagens por vez, para o Fabricante de Massa
+      não parar nunca.
+    tasks:
+      - get: industrialupgrade:machines_base1:1
+    rewards:
+      - loot: comum
+
+  - id: kit_maquina_avancada
+    title: "Kit de Máquina Avançada"
+    type: normal
+    deps: [macerador_avancado]
+    icon: industrialupgrade:upgradekitMachineIU:1
+    desc: |
+      A receita da máquina Avançada sem a máquina do centro. Clique com o §eAdvanced Machine
+      Upgrade Kit§r numa máquina §eMelhorada§r do IU instalada e ela vira Avançada no lugar,
+      mantendo direção, upgrades e módulos.
+    tasks:
+      - get: industrialupgrade:upgradekitMachineIU:1
+    rewards:
+      - xp: 3
+      - item: industrialupgrade:QuantumItems6
+
+  - id: overclocker_avancado
+    title: "Overclocker Avançado"
+    type: normal
+    deps: [circuito_quantico]
+    deps_hidden: [iu_base:overclocker_melhorado]
+    icon: industrialupgrade:upgrademodule:1
+    desc: |
+      §e4 Circuitos Quânticos§r em volta do §eOverclocker Melhorado§r = §eAdvanced Overclocker
+      Upgrade§r: tempo ×0,4 e consumo ×1,2 por upgrade. Quatro destes numa máquina Avançada e
+      ela parece que nem para.
+    tasks:
+      - get: industrialupgrade:upgrademodule:1
+    rewards:
+      - xp: 3
+      - item: industrialupgrade:upgrademodule
+
+  - id: transformador_x4
+    title: "Upgrade de Transformador x4"
+    type: optional
+    deps: [circuito_quantico]
+    deps_hidden: [iu_base:transformador_x2]
+    icon: industrialupgrade:upgrademodule:3
+    desc: |
+      §e4 Circuitos Quânticos§r, §e4 Placas de Alclad§r e o Upgrade de Transformador x2 no centro
+      = §eTransformer Upgrade x4§r: +4 tiers de tensão de entrada numa peça só.
+    tasks:
+      - get: industrialupgrade:upgrademodule:3
+    rewards:
+      - loot: comum
+
+  - id: maquinas_metal_avancadas
+    title: "Laminadora, Extrusora e Cortadora Avançadas"
+    type: optional
+    deps: [macerador_avancado]
+    icon: industrialupgrade:machines_base2:2
+    desc: |
+      A mesma receita das Avançadas, com a versão Melhorada de cada máquina de metal no centro.
+      Faça qualquer uma.
+    tasks:
+      - one_of: [industrialupgrade:machines_base2:2, industrialupgrade:machines_base2:6, industrialupgrade:machines_base2:10]
+    rewards:
+      - loot: comum
+
+  - id: fazenda_melhorada
+    title: "Fazenda Autônoma Melhorada"
+    type: optional
+    deps: [boas_vindas_ii]
+    deps_hidden: [iu_base:fazenda_autonoma]
+    icon: industrialupgrade:machines_base3:1
+    desc: |
+      A Fazenda Autônoma (e o Montador de Sucata) sobem de tier como as outras máquinas multi:
+      Melhorada (Caixa Nano e Circuito Nano), Avançada (Caixa Quântica e Circuito Quântico)...
+      Faça a Fazenda ou o Montador de Sucata Melhorados.
+    tasks:
+      - one_of: [industrialupgrade:machines_base3:1, industrialupgrade:machines_base3:5]
+    rewards:
+      - loot: comum
+
+  - id: bomba_avancada
+    title: "Bomba Avançada"
+    type: optional
+    deps: [macerador_avancado]
+    deps_hidden: [iu_base:bomba_melhorada]
+    icon: industrialupgrade:BlockBaseMachine3:7
+    desc: |
+      A Bomba Melhorada no centro da receita Avançada = §eAdvanced Pump§r.
+    tasks:
+      - get: industrialupgrade:BlockBaseMachine3:7
+    rewards:
+      - loot: comum
+
+  - id: geradores_avancados
+    title: "Geradores Avançados"
+    type: optional
+    deps: [circuito_quantico]
+    icon: industrialupgrade:machines:11
+    desc: |
+      Os geradores Melhorados do Volume I sobem com Circuitos Quânticos e Carbono Comprimido: o
+      §eGerador Avançado§r (14 EU/t, 16 000 EU de buffer), o §eGeotérmico Avançado§r e o
+      §eGerador Cinético Avançado§r (receita padrão das Avançadas). Faça qualquer um.
+    tasks:
+      - one_of: [industrialupgrade:machines:11, industrialupgrade:BlockBaseMachine2:5, industrialupgrade:BlockBaseMachine2:1]
+    rewards:
+      - loot: comum
+
+  - id: fabrica_avancada
+    title: "A Fábrica Avançada"
+    type: milestone
+    deps: [macerador_avancado, compressor_avancado, fornalha_avancada, overclocker_avancado]
+    icon: industrialupgrade:machines_base:4
+    banner: "A Fábrica Avançada"
+    subtitle: "Três operações de cada vez"
+    desc: |
+      Triturador, Compressor e Fornalha Avançados lado a lado, com Overclockers Avançados.
+      Herói, sua linha de produção agora triplica sem crescer um bloco!
+
+      §aDicas para as máquinas multi do IU§r (clique direito com o módulo na máquina — só um
+      destes três por máquina):
+      §e•§r §eMódulo RF§r — a máquina passa a aceitar RF;
+      §e•§r §eMódulo Pilha§r (Stack) — processa a pilha inteira de uma vez, gastando a energia
+      proporcional;
+      §e•§r §eMódulo Instantâneo§r — termina a operação num tick, gastando 100× a energia.
+      E ainda dá para pôr um §eMódulo de Painel Solar§r dentro dela: a máquina gera a própria
+      energia!
+    tasks:
+      - get: [industrialupgrade:machines_base:1, industrialupgrade:machines_base:4, industrialupgrade:machines_base:7]
+    rewards:
+      - xp: 8
+      - kit: {name: "Kit da Fábrica Avançada", items: [industrialupgrade:upgrademodule:1 x2, industrialupgrade:upgrademodule x2, industrialupgrade:QuantumItems8 x2, industrialupgrade:QuantumItems6 x2, IC2:upgradeModule:1 x4]}
+      - loot: raro
+      - command: "/effect @p 3 1200 1"
+
+  # ======================================================================
+  # FASE 4 — PAINEL QUÂNTICO
+  # ======================================================================
+  - id: nucleo_quantico
+    title: "Núcleo Quântico"
+    type: main
+    deps: [nucleo_perfeito]
+    icon: industrialupgrade:ItemCore:3
+    desc: |
+      §e4 Núcleos Perfeitos → 1 Núcleo Quântico§r (300 000 EU). Faça §e2§r.
+    tasks:
+      - get: industrialupgrade:ItemCore:3 x2
+    rewards:
+      - xp: 4
+      - choice: [industrialupgrade:ItemCore:2 x2, industrialupgrade:iuingot:17 x8, industrialupgrade:iuingot:12 x8]
+
+  - id: placa_sunnarium_quantica
+    title: "Placa de Sunnarium Quântica"
+    type: main
+    deps: [placa_sunnarium_perfeita]
+    icon: industrialupgrade:sunnariumpanel:2
+    desc: |
+      §ePlaca Perfeita + Placa de Cromo§r = §eQuantum Sunnarium Plate§r. Faça §e2§r.
+    tasks:
+      - get: industrialupgrade:sunnariumpanel:2 x2
+    rewards:
+      - xp: 4
+      - choice: [industrialupgrade:sunnariumpanel:1, industrialupgrade:iuplate:11 x4, industrialupgrade:sunnarium:2 x2]
+
+  - id: varetas_cromo
+    title: "Varetas de Cromo"
+    type: normal
+    deps: [varetas_platina]
+    icon: industrialupgrade:IUstik:11
+    desc: |
+      §e6 Varetas de Cromo§r para o Vidro Quântico. (O Vidro Fotônico, lá no Volume III, também
+      pede varetas de cromo.)
+    tasks:
+      - get: industrialupgrade:IUstik:11 x6
+    rewards:
+      - xp: 2
+      - item: industrialupgrade:iuingot:11 x4
+
+  - id: vidro_quantico
+    title: "Vidro Quântico"
+    type: main
+    deps: [vidro_perfeito, placa_sunnarium_quantica, varetas_cromo]
+    icon: industrialupgrade:IUphotonglass:3
+    desc: |
+      §e6 Varetas de Cromo§r + §eVidro Perfeito§r + §e2 Placas de Sunnarium Quânticas§r =
+      §eQuantum Glass§r. Faça §e2§r.
+    tasks:
+      - get: industrialupgrade:IUphotonglass:3 x2
+    rewards:
+      - xp: 4
+      - choice: [industrialupgrade:IUphotonglass:2, industrialupgrade:sunnariumpanel:2, industrialupgrade:iuingot:11 x6]
+
+  - id: painel_quantico
+    title: "Quantificação da Energia Verde"
+    type: milestone
+    deps: [painel_perfeito, nucleo_quantico, vidro_quantico]
+    icon: industrialupgrade:BlockSolarPanel:3
+    banner: "Painel Solar Quântico"
+    subtitle: "320 EU/t de sol"
+    desc: |
+      §e2 Vidros Quânticos, Núcleo Quântico, 2 Placas Reforçadas de Irídio, 3 Painéis Híbridos
+      Perfeitos e um Circuito Avançado§r = §eQuantum Solar Panel§r.
+
+      §e320 EU/t de dia§r, 1 milhão de EU de buffer, saída de 640 EU/t — acima do limite de um
+      cabo de ouro! Hora de pensar nos §eCabos Espectrais§r e no §eMFSU Melhorado§r do IU.
+
+      E lembre: cada painel acima pede 3 deste. Herói, o seu telhado vai ficar bem cheio...
+    tasks:
+      - get: industrialupgrade:BlockSolarPanel:3
+    rewards:
+      - xp: 8
+      - kit: {name: "Kit do Sol Quântico", items: [industrialupgrade:ItemCore:2 x4, industrialupgrade:sunnariumpanel:1 x2, IC2:itemPartIridium x2, industrialupgrade:iuplate:11 x4, industrialupgrade:IUstik:11 x6]}
+      - loot: raro
+
+  # ======================================================================
+  # FASE 5 — PETRÓLEO, REFINO E PLÁSTICO
+  # ======================================================================
+  - id: sonda_petroleo
+    title: "Em Busca de Petróleo"
+    type: main
+    deps: [boas_vindas_ii]
+    icon: industrialupgrade:BlockQuarryOil
+    desc: |
+      O petróleo do IU fica escondido no subsolo de cada chunk, e quem descobre é a §eCore
+      Search Drilling Rig§r (Sonda de Busca): 2 Circuitos, 2 Motores Elétricos, 2 Ligas
+      Avançadas, um Minerador do IC2 e 2 Pás de Rotor de Ferro Enriquecido.
+
+      Coloque-a no chunk e ligue: ela analisa por cerca de 1 minuto (5 EU/t). Na maioria das
+      vezes marca um §edepósito de petróleo§r (que às vezes vem vazio) — os §edesertos§r e os §eoceanos§r costumam ter
+      os maiores. Às vezes, em vez de petróleo, ela acha um §eveio de minério pesado§r (útil
+      para a Pedreira Quântica do Volume III).
+    tasks:
+      - get: industrialupgrade:BlockQuarryOil
+    rewards:
+      - xp: 4
+      - choice: [IC2:itemRecipePart:1 x4, IC2:itemPartAlloy x4, IC2:itemPartCircuit x4]
+
+  - id: bomba_petroleo
+    title: "Bombeando Petróleo"
+    type: main
+    deps: [sonda_petroleo]
+    icon: industrialupgrade:BlockOilGetter
+    desc: |
+      O §ePumpjack§r (Carcaça, 2 Motores Elétricos e 2 Placas de Carbono) bombeia o depósito
+      encontrado pela sonda §eno mesmo chunk§r, gastando 10 EU por mB. Ponha uma Célula
+      Avançada (ou balde) no slot para tirar o petróleo, ou puxe com tubos.
+
+      Alguns desertos também têm pequenos lagos de petróleo na superfície (o bloco de fluido
+      do IU) — dá para recolher com balde ou célula.
+    tasks:
+      - get: industrialupgrade:BlockOilGetter
+    rewards:
+      - xp: 4
+      - choice: [industrialupgrade:cell x4, IC2:itemRecipePart:1 x2, minecraft:bucket x4]
+
+  - id: petroleo
+    title: "Ouro Negro"
+    type: main
+    deps: [bomba_petroleo]
+    icon: industrialupgrade:cell:3
+    desc: |
+      Mostre §e4 Células de Petróleo§r (Oil Cell) ou 4 baldes de petróleo do IU. Cuidado com as
+      mãos — e com as roupas.
+    tasks:
+      - one_of: [industrialupgrade:cell:3 x4, industrialupgrade:ItemBucketIU:2 x4]
+    rewards:
+      - xp: 4
+      - choice: [industrialupgrade:cell x4, minecraft:bucket x4, IC2:itemPartCircuitAdv x2]
+
+  - id: refinaria
+    title: "Refino de Petróleo"
+    type: main
+    deps: [petroleo]
+    icon: industrialupgrade:OilRefiner
+    desc: |
+      A §eOil Refinery§r (6 Células Avançadas, Carcaça Avançada, Motor Elétrico e um Circuito)
+      separa §e1000 mB de petróleo em 600 de Gasolina e 400 de Diesel§r. Os dois viram
+      combustível para geradores próprios.
+    tasks:
+      - get: industrialupgrade:OilRefiner
+    rewards:
+      - xp: 4
+      - choice: [industrialupgrade:cell x4, IC2:blockMachine:12, IC2:itemPartCircuit x4]
+
+  - id: gasolina_diesel
+    title: "Gasolina e Diesel"
+    type: normal
+    deps: [refinaria]
+    icon: industrialupgrade:cell:4
+    desc: |
+      Encha Células Avançadas na saída da Refinaria e mostre uma §eCélula de Gasolina§r e uma de
+      §eDiesel§r.
+    tasks:
+      - one_of: [industrialupgrade:cell:4, industrialupgrade:ItemBucketIU:3]
+      - one_of: [industrialupgrade:cell:5, industrialupgrade:ItemBucketIU:4]
+    rewards:
+      - xp: 3
+      - item: industrialupgrade:cell x4
+
+  - id: gerador_gasolina
+    title: "Gerador a Gasolina"
+    type: optional
+    deps: [gasolina_diesel]
+    deps_hidden: [iu_base:muntz, iu_base:alclad]
+    icon: industrialupgrade:BlockBaseMachine3:5
+    desc: |
+      Um Gerador do IC2 cercado por 6 Células de Gasolina, com uma Placa de Muntz e uma de
+      Alclad = §eGasoline Generator§r. Ele queima gasolina e gera EU.
+    tasks:
+      - get: industrialupgrade:BlockBaseMachine3:5
+    rewards:
+      - loot: comum
+
+  - id: gerador_diesel
+    title: "Gerador a Diesel"
+    type: optional
+    deps: [gasolina_diesel]
+    deps_hidden: [iu_base:nicromo, iu_base:duraluminio]
+    icon: industrialupgrade:BlockBaseMachine3:4
+    desc: |
+      O mesmo esquema com 6 Células de Diesel, uma Placa de Nicromo e uma de Duralumínio =
+      §eDiesel Generator§r.
+    tasks:
+      - get: industrialupgrade:BlockBaseMachine3:4
+    rewards:
+      - loot: comum
+
+  - id: refinaria_avancada
+    title: "Refino Avançado"
+    type: main
+    deps: [refinaria]
+    icon: industrialupgrade:OilAdvRefiner
+    desc: |
+      A §eAdvanced Oil Refinery§r é a Refinaria com um Circuito Avançado no lugar do Circuito
+      comum. Ela separa §e1000 mB de petróleo em 500 de Polietileno e 500 de Polipropileno§r —
+      os dois ingredientes do plástico.
+    tasks:
+      - get: industrialupgrade:OilAdvRefiner
+    rewards:
+      - xp: 4
+      - choice: [industrialupgrade:cell x6, IC2:itemPartCircuitAdv x2, IC2:blockMachine:12]
+
+  - id: polimeros
+    title: "Polietileno e Polipropileno"
+    type: main
+    deps: [refinaria_avancada]
+    icon: industrialupgrade:cell:6
+    desc: |
+      Mostre uma §eCélula de Polietileno§r e uma de §ePolipropileno§r (ou os baldes). Na Fábrica
+      Química, uma de cada + 1000 mB de água = 1 Plástico.
+    tasks:
+      - one_of: [industrialupgrade:cell:6, industrialupgrade:ItemBucketIU:5]
+      - one_of: [industrialupgrade:cell:7, industrialupgrade:ItemBucketIU:6]
+    rewards:
+      - xp: 4
+      - choice: [industrialupgrade:cell x6, minecraft:water_bucket x2, IC2:itemCellEmpty x8]
+
+  - id: anodo_catodo
+    title: "Eletrodos + e −"
+    type: normal
+    deps: [boas_vindas_ii]
+    deps_hidden: [iu_base:muntz, iu_base:alumel]
+    icon: industrialupgrade:anode
+    desc: |
+      Uma Célula Avançada cercada por 6 Placas de §eMuntz§r = §eAnodo§r (Anode); por 6 Placas de
+      §eAlumel§r = §eCatodo§r (Cathode). São as duas peças do Eletrolisador e se desgastam com o
+      uso (1000 de durabilidade).
+    tasks:
+      - get: [industrialupgrade:anode:*, industrialupgrade:cathode:*]
+    rewards:
+      - xp: 3
+      - item: industrialupgrade:cell x2
+
+  - id: eletrolisador
+    title: "Eletrólise"
+    type: main
+    deps: [anodo_catodo]
+    icon: industrialupgrade:BlockBaseMachine3:15
+    desc: |
+      O §eElectrolyzer§r do IU (Carcaça Avançada, Anodo, Catodo, 2 Motores, 2 Pás de Rotor de
+      Fibra de Carbono e 2 Circuitos) quebra a água: §e1000 mB de água → 500 mB de Hidrogênio +
+      250 mB de Oxigênio§r.
+
+      O §eOxigênio§r é o que transforma Plástico em Placa de Plástico; o Hidrogênio alimenta o
+      Gerador de Hidrogênio.
+    tasks:
+      - get: industrialupgrade:BlockBaseMachine3:15
+    rewards:
+      - xp: 4
+      - choice: [industrialupgrade:cell x6, IC2:itemRecipePart:1 x2, minecraft:water_bucket x2]
+
+  - id: oxigenio
+    title: "O Oxidante que Respiramos"
+    type: normal
+    deps: [eletrolisador]
+    icon: industrialupgrade:cell:8
+    desc: |
+      Mostre §e4 Células de Oxigênio§r (ou baldes). Cada Placa de Plástico consome 1000 mB.
+    tasks:
+      - one_of: [industrialupgrade:cell:8 x4, industrialupgrade:ItemBucketIU:7 x4]
+    rewards:
+      - xp: 3
+      - item: industrialupgrade:cell x4
+
+  - id: gerador_hidrogenio
+    title: "Gerador sem Fumaça"
+    type: optional
+    deps: [eletrolisador]
+    icon: industrialupgrade:BlockBaseMachine3:9
+    desc: |
+      Um Gerador cercado por 6 Células de Hidrogênio e 2 Caixas Nano = §eHydrogen Generator§r,
+      que queima o hidrogênio da eletrólise. Ele também é a base do §eGerador de Hélio§r.
+    tasks:
+      - get: industrialupgrade:BlockBaseMachine3:9
+    rewards:
+      - loot: comum
+
+  - id: gerador_helio
+    title: "Gerador de Hélio"
+    type: optional
+    deps: [gerador_hidrogenio]
+    deps_hidden: [iu_base:nicromo, iu_base:duraluminio]
+    icon: industrialupgrade:BlockBaseMachine3:14
+    desc: |
+      O Gerador de Hidrogênio no centro, 6 Células Avançadas, Nicromo e Duralumínio = §eHelium
+      Generator§r. Ele §efabrica Hélio§r gastando EU (1 milhão de EU por 1000 mB). Hélio líquido
+      em Células Avançadas é o combustível do §eReator de Fusão Nuclear§r do Volume III.
+    tasks:
+      - get: industrialupgrade:BlockBaseMachine3:14
+    rewards:
+      - loot: incomum
+
+  - id: fabrica_quimica
+    title: "A Era do Plástico"
+    type: main
+    deps: [polimeros]
+    icon: industrialupgrade:BlockBaseMachine3:11
+    desc: |
+      A §eChemical Plant§r (Distribuidor de Fluidos do IC2, 2 Ligas Avançadas, 2 Condutores de
+      Calor e 4 Motores Elétricos) junta §e1 Célula de Polietileno + 1 de Polipropileno + 1000 mB
+      de água§r num §ePlástico§r.
+    tasks:
+      - get: industrialupgrade:BlockBaseMachine3:11
+    rewards:
+      - xp: 4
+      - choice: [IC2:itemRecipePart:1 x4, IC2:itemRecipePart:5 x2, industrialupgrade:cell x6]
+
+  - id: plastico
+    title: "Plástico"
+    type: main
+    deps: [fabrica_quimica]
+    icon: industrialupgrade:plast
+    desc: |
+      Mostre §e4 Plásticos§r. Eles vão para a Máquina de Placas de Plástico (e quatro deles na
+      receita dela).
+    tasks:
+      - get: industrialupgrade:plast x4
+    rewards:
+      - xp: 4
+      - choice: [industrialupgrade:cell:6 x2, industrialupgrade:cell:7 x2, industrialupgrade:cell x6]
+
+  - id: maquina_placas_plastico
+    title: "Máquina de Placas de Plástico"
+    type: main
+    deps: [plastico, eletrolisador]
+    icon: industrialupgrade:BlockBaseMachine3:13
+    desc: |
+      A §ePlastic Plate Machine§r (4 Plásticos, Circuito Avançado, Carcaça Avançada, 2 Placas de
+      Contenção do Reator e uma Bobina) faz §ePlástico + 1000 mB de Oxigênio → Placa de
+      Plástico§r.
+    tasks:
+      - get: industrialupgrade:BlockBaseMachine3:13
+    rewards:
+      - xp: 4
+      - choice: [industrialupgrade:plast x2, industrialupgrade:cell:8 x4, IC2:itemPartCircuitAdv x2]
+
+  - id: placa_plastico
+    title: "Placas de Plástico"
+    type: milestone
+    deps: [maquina_placas_plastico, oxigenio]
+    icon: industrialupgrade:plastic_plate
+    banner: "A Era do Plástico"
+    subtitle: "Do petróleo à placa"
+    desc: |
+      Sonda, Pumpjack, Refinaria Avançada, Eletrolisador, Fábrica Química e Máquina de Placas:
+      Herói, você montou uma §epetroquímica inteira§r! Cada Placa de Plástico carrega um pouco
+      de deserto, de água e de eletricidade.
+
+      Para que tanto trabalho? O §eModelo de Módulo§r leva 4 Placas de Plástico — e TODOS os
+      módulos de painel, de pedreira e de modificação dependem dele. O §eAnalisador§r da
+      Pedreira Quântica também pede placas de plástico.
+
+      Mostre §e8 Placas de Plástico§r e deixe a linha rodando.
+    tasks:
+      - get: industrialupgrade:plastic_plate x8
+    rewards:
+      - xp: 8
+      - kit: {name: "Kit do Petroquímico", items: [industrialupgrade:cell x12, industrialupgrade:plast x4, industrialupgrade:cell:8 x4, industrialupgrade:iuingot:5 x2, industrialupgrade:iuplate:15 x4]}
+      - loot: raro
+
+  # ======================================================================
+  # FASE 6 — MÓDULOS
+  # ======================================================================
+  - id: modelo_modulo
+    title: "Modelo de Módulo"
+    type: main
+    deps: [placa_plastico, caravky]
+    icon: industrialupgrade:module_schedule
+    desc: |
+      O §eModule Template§r: uma Placa de Vanádio em cima, 4 Placas de Plástico, 2 Placas de Zinco
+      e um §eLingote de Caravky§r no centro.
+
+      Ele é a "folha em branco" dos módulos: de painel (com placas de metal), de máquina (Pilha,
+      Instantâneo, Experiência), de pedreira, de privacidade e, no Transformador Molecular
+      Avançado, todos os §emódulos de modificação§r de ferramentas e armaduras. Faça §e4§r.
+    tasks:
+      - get: industrialupgrade:module_schedule x4
+    rewards:
+      - xp: 4
+      - choice: [industrialupgrade:plastic_plate x4, industrialupgrade:iuingot:5 x2, industrialupgrade:iuplate:15 x4]
+
+  - id: modulo_dia
+    title: "Módulo: Geração Diurna I"
+    type: normal
+    deps: [placa_plastico, circuito_quantico]
+    icon: industrialupgrade:module1
+    desc: |
+      3 Placas de Electrum em cima, 2 Placas de Cobalto ao lado de um Circuito Quântico, e
+      embaixo Plástico – Vitálio denso – Plástico = §eModule: Generate at Day I§r. Os quatro
+      módulos básicos de painel (Diurno, Noturno, Armazenamento, Saída) não usam o Modelo:
+      só placas, plástico e o circuito.
+
+      Coloque no slot de módulo de um painel do IU: a geração de dia aumenta (confira a
+      porcentagem no tooltip). §cSó um módulo por slot§r, e o tier do módulo não pode passar o
+      do painel.
+    tasks:
+      - get: industrialupgrade:module1
+    rewards:
+      - xp: 3
+      - item: industrialupgrade:plastic_plate x2
+
+  - id: modulo_noite
+    title: "Módulo: Geração Noturna I"
+    type: normal
+    deps: [modulo_dia]
+    icon: industrialupgrade:module2
+    desc: |
+      3 Placas Densas de Ferromanganês, 2 Placas Densas de Latão Vermelho, Circuito Quântico, 2
+      Placas de Plástico e Vitálio denso = §eModule: Generate at Night I§r. Aumenta a geração
+      noturna do painel.
+    tasks:
+      - get: industrialupgrade:module2
+    rewards:
+      - xp: 3
+      - item: industrialupgrade:plastic_plate x2
+
+  - id: modulo_armazenamento
+    title: "Módulo: Armazenamento I"
+    type: normal
+    deps: [modulo_dia]
+    icon: industrialupgrade:module3
+    desc: |
+      3 Placas de Ferromanganês, 2 Placas Densas de Alumel, Circuito Quântico, Plástico e
+      Vitálio denso = §eModule: Storage I§r. Aumenta o buffer de energia do painel.
+    tasks:
+      - get: industrialupgrade:module3
+    rewards:
+      - xp: 3
+      - item: industrialupgrade:plastic_plate x2
+
+  - id: modulo_saida
+    title: "Módulo: Saída I"
+    type: optional
+    deps: [modulo_dia]
+    icon: industrialupgrade:module4
+    desc: |
+      O mais caro dos quatro: 3 §ePlacas de Irídio Comprimidas Melhoradas§r (9 Placas
+      Comprimidas cada!), 2 Placas Densas de Muntz, Circuito Quântico, Plástico e Vitálio denso.
+      O §eModule: Output I§r aumenta a saída máxima de EU/t do painel.
+    tasks:
+      - get: industrialupgrade:module4
+    rewards:
+      - loot: incomum
+
+  - id: modulo_rf
+    title: "Módulo RF"
+    type: normal
+    deps: [modelo_modulo]
+    icon: industrialupgrade:module7:4
+    desc: |
+      3 Compósitos Comprimidos, 2 Placas Densas de Vanádio-Alumínio, o Modelo, 2 Circuitos Nano e
+      uma Placa Densa de Duralumínio = §eModule: RF-Energy§r.
+      §e•§r num §epainel ou armazenamento§r do IU: passa a gerar/converter RF;
+      §e•§r numa §emáquina multi§r do IU (clique direito com o módulo): a máquina aceita RF.
+    tasks:
+      - get: industrialupgrade:module7:4
+    rewards:
+      - xp: 3
+      - item: industrialupgrade:compresscarbonultra x2
+
+  - id: modulos_maquina
+    title: "Módulos Pilha e Instantâneo"
+    type: optional
+    deps: [modelo_modulo, overclocker_avancado]
+    icon: industrialupgrade:module_stack
+    desc: |
+      Dois módulos de máquina multi (instale com clique direito; só um por máquina):
+      §e•§r §eModule: Stack§r (Modelo, 2 Overclockers do IC2, 2 Upgrades de Transformador x2, 2
+      Placas de Alumel) — processa a pilha inteira de uma vez;
+      §e•§r §eModule: Instant§r (Modelo + 2 Overclockers Avançados) — cada operação termina num
+      tick, a 100× o consumo.
+      Faça qualquer um.
+    tasks:
+      - one_of: [industrialupgrade:module_stack, industrialupgrade:module_quickly]
+    rewards:
+      - loot: incomum
+
+  - id: modulo_painel_maquina
+    title: "Painel Solar dentro da Máquina"
+    type: optional
+    deps: [painel_hibrido]
+    icon: industrialupgrade:module6:1
+    desc: |
+      Na bancada, qualquer painel solar do IU vira o seu §eMódulo de Painel§r (e volta a ser
+      painel do mesmo jeito). Clique direito com ele numa máquina multi do IU: a máquina passa a
+      gerar a própria energia como aquele painel. Trocar de módulo devolve o anterior. Faça o
+      módulo do Painel Híbrido.
+    tasks:
+      - get: industrialupgrade:module6:1
+    rewards:
+      - loot: comum
+
+  - id: modulo_privacidade
+    title: "Módulo de Privacidade"
+    type: optional
+    deps: [modelo_modulo]
+    deps_hidden: [iu_base:invar, iu_base:electrum]
+    icon: industrialupgrade:module7
+    desc: |
+      2 Placas de Caravky, 2 de Electrum, 2 de Invar e o Modelo = §eModule: Privacy§r. No painel,
+      só o dono abre a interface e só o dono desmonta. Para servidores, é paz de espírito.
+    tasks:
+      - get: industrialupgrade:module7
+    rewards:
+      - loot: comum
+
+  - id: modulo_purificador
+    title: "Módulo Purificador"
+    type: normal
+    deps: [boas_vindas_ii]
+    deps_hidden: [iu_base:purificador]
+    icon: industrialupgrade:module7:9
+    desc: |
+      Cansado de limpar painel? Um §ePurificador§r no centro, 4 Caixas Nano e 4 Circuitos
+      Avançados = §eModule: Purifier§r. Instalado no painel, ele cuida da sujeira sozinho.
+    tasks:
+      - get: industrialupgrade:module7:9
+    rewards:
+      - xp: 3
+      - item: industrialupgrade:nanobox x2
+
+  - id: modulo_sem_fio
+    title: "Módulo Sem Fio"
+    type: normal
+    deps: [placa_iridio_comprimida, circuito_quantico]
+    icon: industrialupgrade:WirelessModule1
+    desc: |
+      3 Placas de Zinco, 2 Circuitos Nano, um Bloco de Vanádio, 2 Placas Densas de Platina e uma
+      Placa de Irídio Comprimida = §eWireless Module§r.
+
+      Como usar (o próprio armazenamento explica): coloque o módulo no slot de um armazenamento
+      do IU para "gravar" a ligação, depois coloque-o no painel — a energia do painel vai para o
+      armazenamento sem cabos. Também liga a Pedreira Quântica ao Analisador.
+    tasks:
+      - get: industrialupgrade:WirelessModule1
+    rewards:
+      - xp: 3
+      - item: industrialupgrade:iuplate:15 x4
+
+  - id: ajustador_sem_fio
+    title: "Ajustador Sem Fio e Privatizador"
+    type: optional
+    deps: [modulo_sem_fio, modulo_privacidade]
+    icon: industrialupgrade:BlockBaseMachine4:3
+    desc: |
+      Carcaça + Circuito + Módulo Sem Fio = §eWireless Adjuster§r; com o Módulo de Privacidade =
+      §ePrivatizer§r. São bancadas de apoio para configurar os módulos. Faça qualquer um.
+    tasks:
+      - one_of: [industrialupgrade:BlockBaseMachine4:3, industrialupgrade:BlockBaseMachine4:2]
+    rewards:
+      - loot: comum
+
+  - id: transformadores_umv_uhv
+    title: "Transformadores UMV e UHV"
+    type: normal
+    deps: [cabo_protonico]
+    icon: industrialupgrade:IUTransformer:1
+    desc: |
+      Os transformadores do IU continuam a escada do IC2 depois do EV:
+      §e•§r §eUMV-Transformer§r: Transformador EV + 2 Cabos Espectrais + Circuito Nano + Cristal
+      de Lapotron;
+      §e•§r §eUHV-Transformer§r: o UMV + 2 Cabos Protônicos + Circuito Nano + Lapotron.
+      Depois vêm UEV, UMH, UMEV, UHEV e HEEV, um tier acima a cada degrau. Mostre o UHV.
+    tasks:
+      - get: industrialupgrade:IUTransformer:1
+    rewards:
+      - xp: 3
+      - item: IC2:itemBatLamaCrystal:26
+
+  - id: transformador_molecular_avancado
+    title: "Transformação com Vingança"
+    type: milestone
+    deps: [transformadores_umv_uhv, circuito_quantico]
+    deps_hidden: [iu_base:transformador_molecular]
+    icon: industrialupgrade:doublemolecular
+    banner: "Transformador Molecular Avançado"
+    subtitle: "Dois itens entram, um sai"
+    desc: |
+      §e4 Carcaças Avançadas, 2 Circuitos Quânticos, 2 Transformadores UHV e um Transformador
+      Molecular§r = §eAdvanced Molecular Transformer§r. Ele junta §edois§r itens num só, e é a
+      única fonte de:
+      §e•§r §eMódulos de painel II e III§r: 2 Módulos I → 1 Módulo II (7,5 M EU); 2 II → 1 III
+      (10 M EU) — dia, noite, armazenamento e saída;
+      §e•§r os §eMódulos de Modificação§r: Modelo de Módulo + um ingrediente (2,5 M a 4 M EU).
+      Exemplos: Placa Densa de Bronze de Alumínio → Velocidade de Mineração; Cristal de Energia
+      → Eficiência Energética; Placa Densa de Duralumínio → Proteção; 4 gemas de Cúrio →
+      Profundidade; Teia → Toque Suave; Estrela do Nether → Wither; poções → efeitos de
+      armadura.
+
+      O NEI dele mostra a lista inteira (39 receitas). Agora começa a parte divertida!
+    tasks:
+      - get: industrialupgrade:doublemolecular
+    rewards:
+      - xp: 8
+      - kit: {name: "Kit da Dupla Transformação", items: [industrialupgrade:module_schedule x4, industrialupgrade:module1, industrialupgrade:module2, industrialupgrade:QuantumItems8 x2, IC2:itemBatCrystal:26 x2]}
+      - loot: raro
+
+  - id: modulo_dia_ii
+    title: "Módulos de Painel II"
+    type: optional
+    deps: [transformador_molecular_avancado, modulo_dia]
+    icon: industrialupgrade:genmodule
+    desc: |
+      No Transformador Molecular Avançado, dois Módulos de Geração Diurna I viram um §eModule:
+      Generate at Day II§r (7,5 milhões de EU). O mesmo vale para noite, armazenamento e saída.
+      Faça qualquer módulo de painel de nível II.
+    tasks:
+      - one_of: [industrialupgrade:genmodule, industrialupgrade:gennightmodule, industrialupgrade:storagemodule, industrialupgrade:outputmodule]
+    rewards:
+      - loot: incomum
+
+  - id: estacao_modificacao
+    title: "Estação de Modificação"
+    type: main
+    deps: [transformador_molecular_avancado, caixa_quantica]
+    deps_hidden: [iu_base:vanadio_aluminio]
+    icon: industrialupgrade:BlockUpgrade
+    desc: |
+      3 Placas Densas de Vanádio-Alumínio, 2 Circuitos Quânticos, uma Carcaça Avançada e 3 Caixas
+      Quânticas = §eModification Station§r.
+
+      Nela você instala §eMódulos de Modificação§r nas ferramentas, armas e armaduras do IU. Cada
+      item tem um número de slots livres
+      (aparece no tooltip) — coloque o item e o módulo nos slots da Estação e retire o item
+      modificado. Brocas e ferramentas aceitam Área, Velocidade, Profundidade e
+      Eficiência; capacetes solares aceitam Geração e Proteção; arcos, Dano e Eficiência...
+    tasks:
+      - get: industrialupgrade:BlockUpgrade
+    rewards:
+      - xp: 4
+      - choice: [industrialupgrade:module_schedule x2, industrialupgrade:QuantumItems6, industrialupgrade:alloysdoubleplate:6 x2]
+
+  - id: modulo_velocidade
+    title: "Módulo: Velocidade de Mineração"
+    type: normal
+    deps: [estacao_modificacao]
+    deps_hidden: [iu_base:bronze_aluminio]
+    icon: industrialupgrade:iu_upgrademodule:3
+    desc: |
+      Modelo de Módulo + §ePlaca Densa de Bronze de Alumínio§r no Transformador Molecular
+      Avançado = §eModification Module: Mining Speed§r. Instale numa picareta ou broca do IU na
+      Estação de Modificação e sinta a diferença.
+    tasks:
+      - get: industrialupgrade:iu_upgrademodule:3
+    rewards:
+      - xp: 3
+      - item: industrialupgrade:module_schedule
+
+  - id: modulo_eficiencia
+    title: "Módulo: Eficiência Energética"
+    type: optional
+    deps: [estacao_modificacao]
+    icon: industrialupgrade:iu_upgrademodule:16
+    desc: |
+      Modelo + §eCristal de Energia§r = módulo de Eficiência Energética para ferramentas: a broca
+      gasta menos EU por bloco.
+    tasks:
+      - get: industrialupgrade:iu_upgrademodule:16
+    rewards:
+      - loot: comum
+
+  - id: modulo_profundidade
+    title: "Módulo: Profundidade"
+    type: optional
+    deps: [estacao_modificacao]
+    deps_hidden: [iu_base:minerios_radioativos]
+    icon: industrialupgrade:iu_upgrademodule:6
+    desc: |
+      Modelo + §e4 Gemas de Cúrio§r = módulo de Profundidade de Escavação. Lembra daquelas gemas
+      radioativas que eu pedi para guardar no Volume I? Aqui está o primeiro uso.
+    tasks:
+      - get: industrialupgrade:iu_upgrademodule:6
+    rewards:
+      - loot: comum
+
+  - id: modulo_protecao
+    title: "Módulo: Proteção"
+    type: optional
+    deps: [estacao_modificacao]
+    deps_hidden: [iu_base:duraluminio]
+    icon: industrialupgrade:iu_upgrademodule:2
+    desc: |
+      Modelo + §ePlaca Densa de Duralumínio§r = módulo de Proteção, para capacetes solares e a
+      Armadura Quântica Espectral do Volume III.
+    tasks:
+      - get: industrialupgrade:iu_upgrademodule:2
+    rewards:
+      - loot: comum
+
+  # ======================================================================
+  # FASE 7 — ARMAZENAMENTO, CABOS E ALTA TENSÃO
+  # ======================================================================
+  - id: mfsu_melhorado
+    title: "MFSU Melhorado"
+    type: main
+    deps: [lingote_foton]
+    deps_hidden: [iu_base:mfsu_iu]
+    icon: industrialupgrade:electricblock
+    desc: |
+      §e4 Cristais de Lapotron§r nos cantos, §e4 Lingotes de Fóton§r nas laterais e o §eMFSU do
+      IU§r no centro = §eImproved MFSU§r: §e100 milhões de EU§r, saída tier 5 (32 768 EU/t).
+
+      §cCuidado:§r 32 768 EU/t é mais do que qualquer cabo do IC2 aguenta. Use os §eCabos
+      Espectrais§r do IU (ou Fibra de Vidro com transformadores) para tirar energia dele.
+    tasks:
+      - get: industrialupgrade:electricblock
+    rewards:
+      - xp: 4
+      - choice: [IC2:itemBatLamaCrystal:26 x2, industrialupgrade:photoniy x2, industrialupgrade:upgradekitIU:2]
+
+  - id: mfsu_avancado
+    title: "MFSU Avançado"
+    type: main
+    deps: [mfsu_melhorado, circuito_quantico]
+    icon: industrialupgrade:electricblock:1
+    desc: |
+      §e4 Circuitos Quânticos + 4 Lingotes de Fóton + MFSU Melhorado§r = §eAdvanced MFSU§r:
+      §e400 milhões de EU§r, tier 6. O próximo, o MFSU Perfeito (1,6 bilhão), já pede núcleos
+      e circuitos Espectrais — fica para o fim deste volume.
+
+      §aLembre:§r os Kits de Armazenamento sobem o bloco no lugar sem perder a carga.
+    tasks:
+      - get: industrialupgrade:electricblock:1
+    rewards:
+      - xp: 4
+      - choice: [industrialupgrade:QuantumItems8 x2, industrialupgrade:photoniy_ingot, IC2:itemBatLamaCrystal:26 x2]
+
+  - id: cabo_espectral
+    title: "Cabo Espectral"
+    type: main
+    deps: [boas_vindas_ii]
+    deps_hidden: [iu_base:uranio_irradiante]
+    icon: industrialupgrade:cable
+    desc: |
+      §e3 Urânios Irradiantes§r entre §e2 Cabos de Fibra de Vidro§r = §e2 Cabos Espectrais§r
+      (Spectral Cable), que levam §e32 768 EU/t§r com perda mínima. Os cabos do IU começam aqui e
+      sobem até mais de um trilhão de EU/t.
+    tasks:
+      - get: industrialupgrade:cable x8
+    rewards:
+      - xp: 4
+      - choice: [IC2:itemCable:9 x8, industrialupgrade:ssp_crafting_items x2, minecraft:glowstone x8]
+
+  - id: cabo_protonico
+    title: "Cabo Protônico"
+    type: normal
+    deps: [cabo_espectral]
+    deps_hidden: [iu_base:cobalto]
+    icon: industrialupgrade:cable:1
+    desc: |
+      2 Cabos Espectrais, um lingote de Cobalto e 2 Placas Densas de Estanho = §e2 Cabos
+      Protônicos§r, 131 072 EU/t.
+    tasks:
+      - get: industrialupgrade:cable:1 x4
+    rewards:
+      - xp: 3
+      - item: IC2:itemDensePlates:1 x4
+
+  - id: cabo_singular
+    title: "Cabo Singular"
+    type: normal
+    deps: [cabo_protonico]
+    icon: industrialupgrade:cable:2
+    desc: |
+      2 Cabos Protônicos, uma Placa Densa de Estanho e 2 Ligas Avançadas = §e2 Cabos Singulares§r,
+      524 288 EU/t.
+    tasks:
+      - get: industrialupgrade:cable:2 x4
+    rewards:
+      - xp: 3
+      - item: IC2:itemPartAlloy x4
+
+  - id: cabo_mitico
+    title: "Cabos Mítico e Quântico"
+    type: optional
+    deps: [cabo_singular]
+    deps_hidden: [iu_base:latao_vermelho, iu_base:espinelio]
+    icon: industrialupgrade:cable:4
+    desc: |
+      §eCabo Mítico§r (2,1 milhões de EU/t): Cabos Singulares + Placas Densas de Ouro e Chumbo +
+      Liga Avançada. §eCabo Quântico§r (8,4 milhões de EU/t): Cabos Míticos + 4 lingotes de Latão
+      Vermelho + 2 de Espinélio + uma Placa de Carbono. Faça qualquer um dos dois.
+    tasks:
+      - one_of: [industrialupgrade:cable:3, industrialupgrade:cable:4]
+    rewards:
+      - loot: comum
+
+  - id: transformador_uev
+    title: "Transformador UEV"
+    type: optional
+    deps: [transformadores_umv_uhv, cabo_singular, circuito_quantico]
+    icon: industrialupgrade:IUTransformer:2
+    desc: |
+      O UHV + 2 Cabos Singulares + Circuito Quântico + Lapotron = §eUEV-Transformer§r, mais um
+      degrau de tensão. Os seguintes (UMH, UMEV, UHEV, HEEV) pedem o Cristal de Energia
+      Melhorado — Volume III.
+    tasks:
+      - get: industrialupgrade:IUTransformer:2
+    rewards:
+      - loot: comum
+
+  - id: gerador_solar_avancado_se
+    title: "Vício Solar"
+    type: optional
+    deps: [caravky]
+    deps_hidden: [iu_base:gerador_solar_melhorado]
+    icon: industrialupgrade:impgenerator_se
+    desc: |
+      3 Núcleos do Transformador Molecular, 2 Geradores de Energia Solar Melhorados, um lingote de
+      Caravky, um Circuito Nano e 2 Placas Reforçadas de Irídio = §eAdvanced Solar Energy
+      Generator§r, que junta luz §e4× mais rápido§r que o original. Fragmentos de Sunnarium para
+      a escada inteira!
+    tasks:
+      - get: industrialupgrade:impgenerator_se
+    rewards:
+      - loot: incomum
+
+  - id: rotores_espectral_mitico
+    title: "Rotores Espectral e Mítico"
+    type: optional
+    deps: [caixa_nano_avancada, placa_iridio_comprimida]
+    deps_hidden: [iu_base:rotor_iridio_comprimido]
+    icon: industrialupgrade:spectral:1
+    desc: |
+      O Rotor de Irídio Comprimido + 2 Placas de Irídio Comprimidas + 2 Caixas Nano Avançadas =
+      §eRotor Espectral§r (eficiência 8). Com 2 Circuitos Quânticos e 2 Caixas Quânticas ele vira
+      o §eRotor Mítico§r (eficiência 16). Faça qualquer um.
+    tasks:
+      - one_of: [industrialupgrade:spectral:*, industrialupgrade:myphical:*]
+    rewards:
+      - loot: comum
+
+  # ======================================================================
+  # FASE 8 — ARMADURAS, FERRAMENTAS E ARMAS
+  # ======================================================================
+  - id: capacete_nano_reforcado
+    title: "Capacete Nano Reforçado"
+    type: normal
+    deps: [boas_vindas_ii]
+    deps_hidden: [iu_base:circuito_nano, iu_base:alclad, iu_base:ferromanganes]
+    icon: industrialupgrade:itemArmorNanoHelmet:1
+    desc: |
+      O Capacete NanoSuit do IC2 no centro, 2 Placas Densas de Alclad, um Lapotron, 2 Carbonos
+      Comprimidos, 2 Placas Densas de Ferromanganês e um Circuito Nano = §eReinforced Nano
+      Helmet§r: 10 milhões de EU, tier 5. Ele dá visão noturna embaixo da terra (Y < 60, no
+      escuro), como permite a config do pack.
+    tasks:
+      - get: industrialupgrade:itemArmorNanoHelmet:*
+    rewards:
+      - xp: 3
+      - item: industrialupgrade:compresscarbon x2
+
+  - id: peitoral_nano_reforcado
+    title: "Peitoral Nano Reforçado"
+    type: normal
+    deps: [capacete_nano_reforcado]
+    deps_hidden: [iu_base:lappack_melhorado]
+    icon: industrialupgrade:itemArmorNanoChestplate:1
+    desc: |
+      O Peitoral NanoSuit + §eLappack Melhorado§r + §eJetpack Elétrico§r do IC2 + 2 Lapotrons + 2
+      Carbonos Comprimidos + 2 Compósitos Comprimidos = §eReinforced Nano Chestplate§r: 30
+      milhões de EU, e ainda voa.
+    tasks:
+      - get: industrialupgrade:itemArmorNanoChestplate:*
+    rewards:
+      - xp: 3
+      - item: industrialupgrade:compresscarbonultra x2
+
+  - id: calcas_nano_reforcadas
+    title: "Calças Nano Reforçadas"
+    type: normal
+    deps: [capacete_nano_reforcado]
+    deps_hidden: [iu_base:latao_vermelho, iu_base:bronze_aluminio]
+    icon: industrialupgrade:itemArmorNanoLegs:1
+    desc: |
+      As Calças NanoSuit + 2 Placas de Latão Vermelho + 2 Placas de Bronze de Alumínio + Lapotron
+      + 2 Carbonos Comprimidos + Circuito Nano = §eReinforced Nano Leggings§r.
+    tasks:
+      - get: industrialupgrade:itemArmorNanoLegs:*
+    rewards:
+      - xp: 3
+      - item: industrialupgrade:alloysingot:2 x6
+
+  - id: botas_nano_reforcadas
+    title: "Botas Nano Reforçadas"
+    type: normal
+    deps: [capacete_nano_reforcado]
+    icon: industrialupgrade:itemArmorNanoBoots:1
+    desc: |
+      As Botas NanoSuit + 2 Placas Densas de Latão Vermelho + Lapotron + 2 Carbonos Comprimidos +
+      Circuito Nano = §eReinforced Nano Boots§r.
+    tasks:
+      - get: industrialupgrade:itemArmorNanoBoots:*
+    rewards:
+      - xp: 3
+      - item: industrialupgrade:compresscarbon x2
+
+  - id: nano_reforcada
+    title: "NanoSuit Reforçada"
+    type: milestone
+    deps: [capacete_nano_reforcado, peitoral_nano_reforcado, calcas_nano_reforcadas, botas_nano_reforcadas]
+    icon: industrialupgrade:itemArmorNanoChestplate:1
+    banner: "NanoSuit Reforçada"
+    subtitle: "Tier 5, 60 milhões de EU no corpo"
+    desc: |
+      As quatro peças da §eNanoSuit Reforçada§r: 10 + 30 + 10 + 10 milhões de EU, tier 5 e
+      transferência de 5000 EU/t — recarrega rapidinho num MFSU Melhorado.
+
+      §aE o caminho continua:§r as peças reforçadas (ou a QuantumSuit do IC2) viram a §dArmadura
+      Quântica Espectral§r do IU no Volume III, com 100 a 300 milhões de EU por peça e espaço
+      para módulos de modificação.
+    tasks:
+      - get: [industrialupgrade:itemArmorNanoHelmet:*, industrialupgrade:itemArmorNanoChestplate:*, industrialupgrade:itemArmorNanoLegs:*, industrialupgrade:itemArmorNanoBoots:*]
+    rewards:
+      - xp: 8
+      - kit: {name: "Kit do Guerreiro Reforçado", items: [IC2:itemBatLamaCrystal:26 x2, industrialupgrade:QuantumItems9 x2, industrialupgrade:compresscarbon x4, minecraft:golden_apple x2, minecraft:cooked_beef x16]}
+      - loot: raro
+
+  - id: capacete_solar_avancado
+    title: "Capacete Solar Avançado"
+    type: optional
+    deps: [capacete_nano_reforcado]
+    deps_hidden: [iu_base:painel_solar_avancado]
+    icon: industrialupgrade:advanced_solar_helmet:1
+    desc: |
+      Um Painel Solar Avançado do IU no topo do Capacete Nano Reforçado (com Carbono Comprimido,
+      Compósito e 2 Circuitos Nano) = §eAdvanced Solar Helmet§r: o capacete gera energia ao sol
+      e carrega a sua armadura. Ele aceita módulos de geração, proteção e armazenamento na
+      Estação de Modificação.
+    tasks:
+      - get: industrialupgrade:advanced_solar_helmet:*
+    rewards:
+      - loot: comum
+
+  - id: capacete_solar_hibrido
+    title: "Capacetes Solares Híbrido e Perfeito"
+    type: optional
+    deps: [painel_hibrido, circuito_quantico, placas_iridio]
+    icon: industrialupgrade:hybrid_solar_helmet:1
+    desc: |
+      §eHybrid Solar Helmet§r: o Capacete QuantumSuit do IC2 + Painel Híbrido + 2 Placas
+      Reforçadas de Irídio + 2 Circuitos Quânticos + Compósito. O §ePerfect Solar Helmet§r usa o
+      Híbrido + Painel Perfeito. No Volume III vêm o Espectral e o Singular. Faça qualquer um.
+    tasks:
+      - one_of: [industrialupgrade:hybrid_solar_helmet:*, industrialupgrade:ultimate_solar_helmet:*]
+    rewards:
+      - loot: incomum
+
+  - id: broca_nano
+    title: "Broca Nano"
+    type: normal
+    deps: [caixa_nano_avancada, lingote_foton]
+    deps_hidden: [iu_base:ferramentas_nano]
+    icon: industrialupgrade:nanodrill:1
+    desc: |
+      Picareta Nano + Pá Nano + Caixa Nano Avançada + 2 Lingotes de Fóton = §eNano Drill§r, picareta
+      e pá numa ferramenta só. Na Estação de Modificação ela aceita §eÁrea§r, §eVelocidade§r,
+      §eProfundidade§r e §eEficiência§r.
+    tasks:
+      - get: industrialupgrade:nanodrill:*
+    rewards:
+      - xp: 3
+      - item: IC2:itemBatCrystal:26
+
+  - id: picareta_quantica
+    title: "Picareta Quântica"
+    type: normal
+    deps: [caixa_quantica, circuito_quantico]
+    deps_hidden: [iu_base:picareta_nano, iu_base:muntz]
+    icon: industrialupgrade:quantumpickaxe:1
+    desc: |
+      A Picareta Nano + 2 Placas Densas de Muntz + 3 Circuitos Quânticos + 2 Caixas Quânticas + um
+      Lapotron = §eQuantum Pickaxe§r: 10 milhões de EU, §eEficiência III e Fortuna II§r de
+      fábrica. O Machado e a Pá Quânticos seguem a mesma receita.
+    tasks:
+      - get: industrialupgrade:quantumpickaxe:*
+    rewards:
+      - xp: 3
+      - item: IC2:itemBatLamaCrystal:26
+
+  - id: broca_quantica
+    title: "Broca Quântica"
+    type: normal
+    deps: [picareta_quantica]
+    icon: industrialupgrade:quantumdrill:1
+    desc: |
+      Dois caminhos para a §eQuantum Drill§r:
+      §e•§r Picareta Quântica + Pá Quântica + Caixa Quântica + 2 Circuitos Quânticos; ou
+      §e•§r a §eBroca Nano§r no centro da receita das ferramentas Quânticas.
+      Eficiência III, Fortuna II e 10 milhões de EU.
+    tasks:
+      - get: industrialupgrade:quantumdrill:*
+    rewards:
+      - xp: 3
+      - item: industrialupgrade:QuantumItems8
+
+  - id: sabre_quantico
+    title: "Sabre Quântico"
+    type: normal
+    deps: [circuito_quantico]
+    deps_hidden: [iu_base:carbono_comprimido]
+    icon: industrialupgrade:itemNanoSaber1:1
+    desc: |
+      O §eSabre Nano§r do IC2 + 2 Carbonos Comprimidos + 2 Circuitos Quânticos + Glowstone + um
+      Lapotron = §eQuantum Saber§r. Ligado (clique direito), ele causa §c40 de dano§r; desligado,
+      8. Guarda 200 000 EU.
+
+      O Sabre Espectral (60 de dano) espera por você no Volume III.
+    tasks:
+      - get: industrialupgrade:itemNanoSaber1:*
+    rewards:
+      - xp: 3
+      - item: IC2:itemBatLamaCrystal:26
+
+  - id: arco_quantico
+    title: "Arco Quântico"
+    type: optional
+    deps: [circuito_quantico, placas_iridio]
+    deps_hidden: [iu_base:arco_nano, iu_base:alclad]
+    icon: industrialupgrade:quantum_bow:1
+    desc: |
+      O Arco Nano + 2 Placas Reforçadas de Irídio + 2 Cristais de Energia + 2 Circuitos Quânticos
+      + 2 Placas Densas de Alclad = §eQuantum Bow§r (80 000 EU, tier 3), com os mesmos modos do
+      Arco Nano.
+    tasks:
+      - get: industrialupgrade:quantum_bow:*
+    rewards:
+      - loot: comum
+
+  - id: jetpack_avancado
+    title: "Jetpack Elétrico Avançado"
+    type: optional
+    deps: [caixa_quantica, circuito_quantico]
+    deps_hidden: [iu_base:jetpack_melhorado]
+    icon: industrialupgrade:impjetpack:1
+    desc: |
+      O Jetpack Melhorado + 2 Placas Densas de Muntz + 3 Circuitos Quânticos + 2 Caixas Quânticas +
+      Bateria Reutilizável = §eAdvanced Electric Jetpack§r (120 000 EU, tier 3).
+    tasks:
+      - get: industrialupgrade:impjetpack:*
+    rewards:
+      - loot: comum
+
+  - id: lappacks
+    title: "Lappacks Avançado e Perfeito"
+    type: optional
+    deps: [circuito_quantico, placa_iridio_comprimida]
+    deps_hidden: [iu_base:lappack_melhorado]
+    icon: industrialupgrade:per_lappack:1
+    desc: |
+      §eAdvanced Lappack§r: Lappack Melhorado + 4 Placas Densas de Ferromanganês + 2 Circuitos Nano
+      + 2 Lapotrons (20 milhões de EU). §ePerfect Lappack§r: o Avançado + 4 Placas Densas de
+      Vitálio + 2 Circuitos Quânticos + 2 Placas de Irídio Comprimidas (50 milhões de EU). Faça
+      qualquer um.
+    tasks:
+      - one_of: [industrialupgrade:imp_lappack:*, industrialupgrade:per_lappack:*]
+    rewards:
+      - loot: incomum
+
+  - id: ima_melhorado
+    title: "Ímã Melhorado"
+    type: optional
+    deps: [boas_vindas_ii]
+    deps_hidden: [iu_base:ima, iu_base:duraluminio, iu_base:invar]
+    icon: industrialupgrade:impmagnet:1
+    desc: |
+      O Ímã Permanente + 2 lingotes de Duralumínio + 3 Placas Densas de Invar = §eImproved
+      Magnet§r: 200 000 EU e raio de 11 blocos.
+    tasks:
+      - get: industrialupgrade:impmagnet:*
+    rewards:
+      - loot: comum
+
+  - id: coletor_magnetico
+    title: "Coletor Magnético"
+    type: optional
+    deps: [ima_melhorado]
+    icon: industrialupgrade:BlockBaseMachine2:14
+    desc: |
+      O §eMagnetic Generator§r (Ímã, Carcaça, Ligas Avançadas, Bronze de Alumínio) gera um fio de
+      energia (0,5 EU/t). Com o Ímã Melhorado, Nicromo e Carbono Comprimido ele vira o
+      §eMagnetic Catcher§r, que puxa os itens soltos num raio de 10 blocos para dentro dele.
+      Perfeito do lado de uma fazenda de mobs!
+    tasks:
+      - get: industrialupgrade:BlockBaseMachine2:14
+    rewards:
+      - loot: comum
+
+  - id: cristal_carga_avancado
+    title: "Cristal de Energia de Carga Avançado"
+    type: optional
+    deps: [circuito_quantico]
+    icon: industrialupgrade:itemadvBatChargeCrystal:1
+    desc: |
+      6 Lapotrons em volta do Cristal de Lapotron de Carga do IC2, com 2 Circuitos Quânticos =
+      §eCharging Advanced Energy Crystal§r: uma bateria de carga de 100 milhões de EU que
+      recarrega o inventário inteiro (clique direito troca o modo).
+    tasks:
+      - get: industrialupgrade:itemadvBatChargeCrystal:*
+    rewards:
+      - loot: incomum
+
+  # ======================================================================
+  # FASE 9 — REATORES DO IU
+  # ======================================================================
+  - id: reator_melhorado
+    title: "Reator Nuclear Melhorado"
+    type: normal
+    deps: [boas_vindas_ii]
+    deps_hidden: [ic2:reator_nuclear, iu_base:circuito_nano]
+    icon: industrialupgrade:BlockBaseMachine2:7
+    desc: |
+      O Reator Nuclear do IC2 + 3 Placas Reforçadas de Irídio + 2 Circuitos Nano + 3 Caixas Nano =
+      §eImproved Nuclear Reactor§r. Ele já gera §eEU direto§r (×1,2 em relação ao cálculo base) e
+      usa as próprias câmaras: com as 6 §eCâmaras de Reator Melhoradas§r a grade chega a 10×6.
+
+      §cAtenção:§r neste pack os reatores do IU estão configurados para §enão explodir§r — mas, ao
+      superaquecer, §co reator e as câmaras simplesmente somem§r, junto com tudo dentro. Teste o
+      layout com calma.
+    tasks:
+      - get: industrialupgrade:BlockBaseMachine2:7
+    rewards:
+      - xp: 3
+      - item: IC2:reactorCoolantSix:1 x2
+
+  - id: camara_melhorada
+    title: "Câmara de Reator Melhorada"
+    type: normal
+    deps: [reator_melhorado]
+    icon: industrialupgrade:AdvChamber
+    desc: |
+      4 Caixas Nano em volta de uma Câmara de Reator do IC2 = §eImproved Reactor Chamber§r. Encoste
+      até 6 no Reator Melhorado — cada uma abre mais uma coluna na grade.
+    tasks:
+      - get: industrialupgrade:AdvChamber x6
+    rewards:
+      - xp: 3
+      - item: industrialupgrade:nanobox x2
+
+  - id: celulas_refrigerantes
+    title: "Células Refrigerantes 120k e 240k"
+    type: optional
+    deps: [reator_melhorado]
+    icon: industrialupgrade:reactorCoolanttwelve:1
+    desc: |
+      Duas Células Refrigerantes de 60k do IC2 + Placa de Ferro + 6 Placas de Estanho = §e120k
+      Coolant Cell§r; duas de 120k fazem a de §e240k§r. Mais calor guardado por espaço da grade.
+    tasks:
+      - one_of: [industrialupgrade:reactorCoolanttwelve:*, industrialupgrade:reactorCoolantmax:*]
+    rewards:
+      - loot: comum
+
+  - id: componentes_reator
+    title: "Ventiladores e Trocadores do IU"
+    type: optional
+    deps: [reator_melhorado]
+    icon: industrialupgrade:reactoradvVent:1
+    desc: |
+      Com a receita padrão das Melhoradas (Caixas Nano, Circuitos Nano, Alumínio e Alumel densos)
+      em volta de um componente do IC2 saem as versões do IU: §ePerfect Heat Vent§r (do
+      Ventilador de Ouro), §ePerfect Component Heat Vent§r e §ePerfect Heat Exchanger§r. Na
+      receita Avançada, elas viram as versões "Hybrid". Leia os tooltips para os números.
+    tasks:
+      - one_of: [industrialupgrade:reactoradvVent:*, industrialupgrade:advventspread, industrialupgrade:advheatswitch:*]
+    rewards:
+      - loot: comum
+
+  - id: reator_avancado
+    title: "Reator Nuclear Avançado"
+    type: optional
+    deps: [camara_melhorada, caixa_quantica, placa_iridio_comprimida]
+    icon: industrialupgrade:BlockBaseMachine2:8
+    desc: |
+      O Reator Melhorado + 3 Placas de Irídio Comprimidas + 2 Circuitos Quânticos + 3 Caixas
+      Quânticas = §eAdvanced Nuclear Reactor§r (×1,4, grade até 11×6). As §eCâmaras Avançadas§r
+      saem da Câmara Melhorada + 4 Fótons + 4 Caixas Quânticas.
+    tasks:
+      - get: industrialupgrade:BlockBaseMachine2:8
+    rewards:
+      - loot: incomum
+
+  # ======================================================================
+  # FASE 10 — PAINÉIS DO BOTANIA
+  # ======================================================================
+  - id: placas_botania
+    title: "Placas de Manasteel e Elementium"
+    type: normal
+    deps: [boas_vindas_ii]
+    deps_hidden: [botania:altar_runico]
+    icon: industrialupgrade:manasteel_plate
+    desc: |
+      O IU conversa com o §dBotania§r! No Compressor do IC2: §eLingote de Manasteel → Placa de
+      Manasteel§r, §eLingote de Elementium → Placa de Elementium§r e §eLingote de Terrasteel →
+      Placa de Terrasteel§r. (Elementium exige uma visita a Alfheim pelo Portal Élfico.)
+
+      Mostre uma Placa de Manasteel e uma de Elementium.
+    tasks:
+      - get: [industrialupgrade:manasteel_plate, industrialupgrade:elementium_plate]
+    rewards:
+      - xp: 3
+      - item: Botania:manaResource x4
+
+  - id: runas_iu
+    title: "Runas do Sol, da Noite e da Energia"
+    type: normal
+    deps: [placas_botania, lingote_foton]
+    icon: industrialupgrade:rune_sun
+    desc: |
+      No §dAltar Rúnico§r do Botania (12 000 de mana cada), com Urânio Irradiante e Lingote de
+      Irídio do IU em todas:
+      §e•§r §eRuna da Energia§r: Runas da Água e do Fogo + Fóton + Placa de Elementium + Compósito
+      Comprimido;
+      §e•§r §eRuna do Sol§r: Runas da Primavera e do Ar + Lingote de Fóton + Placa de Elementium +
+      Carbono Comprimido;
+      §e•§r §eRuna da Noite§r: Runas do Inverno e do Verão + Cristal de Energia + Placa de
+      Manasteel + Pedaço de Carvão.
+    tasks:
+      - get: [industrialupgrade:rune_energy, industrialupgrade:rune_sun, industrialupgrade:rune_night]
+    rewards:
+      - xp: 3
+      - item: industrialupgrade:ssp_crafting_items x3
+
+  - id: nucleo_manasteel
+    title: "Núcleo de Manasteel"
+    type: normal
+    deps: [runas_iu]
+    deps_hidden: [iu_base:nucleo_avancado]
+    icon: industrialupgrade:manasteel_core
+    desc: |
+      As três runas em cima, Lingote de Fóton – Núcleo Avançado – Lingote de Fóton no meio e 2
+      Placas de Manasteel + Circuito Avançado = §eManasteel Core§r. Os núcleos do Botania sobem em
+      cadeia: Manasteel → Elementium → Terrasteel (cada um com novo trio de runas).
+    tasks:
+      - get: industrialupgrade:manasteel_core
+    rewards:
+      - xp: 3
+      - item: industrialupgrade:photoniy_ingot
+
+  - id: painel_manasteel
+    title: "Painel Solar de Manasteel"
+    type: normal
+    deps: [nucleo_manasteel]
+    deps_hidden: [iu_base:painel_solar_avancado]
+    icon: industrialupgrade:blockBotSolarPanel
+    desc: |
+      §e4 Painéis Solares Avançados§r em cruz em volta do Núcleo de Manasteel = §eManasteel Solar
+      Panel§r: 80 EU/t (como o Perfeito), tier 3 — um atalho mágico para quem já domina o
+      Botania.
+    tasks:
+      - get: industrialupgrade:blockBotSolarPanel
+    rewards:
+      - xp: 4
+      - item: Botania:manaResource x8
+
+  - id: painel_elementium
+    title: "Painel Solar de Elementium"
+    type: optional
+    deps: [painel_manasteel]
+    icon: industrialupgrade:blockBotSolarPanel:1
+    desc: |
+      Núcleo de Elementium (Placas de Elementium, 2 Lingotes de Fóton, o Núcleo de Manasteel, um
+      Circuito Avançado e as três runas) + §e4 Painéis de Manasteel§r = §eElementium Solar
+      Panel§r: 320 EU/t, tier 4.
+    tasks:
+      - get: industrialupgrade:blockBotSolarPanel:1
+    rewards:
+      - loot: incomum
+
+  - id: painel_terrasteel
+    title: "Painel Solar de Terrasteel"
+    type: optional
+    deps: [painel_elementium]
+    icon: industrialupgrade:blockBotSolarPanel:2
+    desc: |
+      Núcleo de Terrasteel (3 Placas de Terrasteel, 2 Superfícies de Vidro Irradiante, Liga
+      Avançada e as três runas) + §e4 Painéis de Elementium§r = §eTerrasteel Solar Panel§r:
+      1280 EU/t (igual ao Espectral!), tier 5.
+    tasks:
+      - get: industrialupgrade:blockBotSolarPanel:2
+    rewards:
+      - loot: raro
+
+  - id: broca_terrasteel
+    title: "Broca de Terrasteel"
+    type: optional
+    deps: [placas_botania]
+    deps_hidden: [iu_base:overclocker_melhorado]
+    icon: industrialupgrade:teraDDrill:1
+    desc: |
+      O §dTerra-Destruidor§r (Terra Shatterer) do Botania + Broca de Diamante do IC2 + 2
+      Overclockers Melhorados + 3 Placas de Terrasteel = §eTerrasteel Drill§r, uma broca elétrica
+      (45 000 EU) com alma de mana.
+    tasks:
+      - get: industrialupgrade:teraDDrill:*
+    rewards:
+      - loot: incomum
+
+  - id: barra_terrasteel
+    title: "Barra de Terrasteel"
+    type: optional
+    deps: [placas_botania]
+    icon: industrialupgrade:reactorterastrellSimple:1
+    desc: |
+      Vareta de Combustível vazia + Lingote de Terrasteel na Máquina de Conservas Sólidas = §eBarra
+      de Terrasteel§r, combustível de reator que esquenta pouco. Esgotada, ela volta a ser
+      Terrasteel no Compressor.
+    tasks:
+      - get: industrialupgrade:reactorterastrellSimple:*
+    rewards:
+      - loot: comum
+
+  # ======================================================================
+  # FASE 11 — O ESPECTRO: CIRCUITO ESPECTRAL, MÁQUINAS PERFEITAS, PAINEL ESPECTRAL
+  # ======================================================================
+  - id: capacitor_espectral
+    title: "Capacitor Espectral"
+    type: main
+    deps: [caravky, painel_quantico]
+    deps_hidden: [iu_base:germanio, iu_base:michalov]
+    icon: industrialupgrade:basecircuit:2
+    desc: |
+      O último capacitor, no Fabricante de Circuitos: §eGermânio + Redstone + Michalov + Caravky
+      + Diamante§r (ou Esmeralda no lugar do diamante) = §eSpectral Capacitor§r. §cAqui os três
+      lingotes precisam ser os do próprio IU§r (o NEI não mostra alternativas).
+
+      Faça §e4§r.
+    tasks:
+      - get: industrialupgrade:basecircuit:2 x4
+    rewards:
+      - xp: 4
+      - choice: [industrialupgrade:iuingot:5 x4, industrialupgrade:iuingot:18 x4, minecraft:diamond x4]
+
+  - id: soic_espectral
+    title: "Chip SOIC Espectral"
+    type: main
+    deps: [capacitor_espectral, varetas_prata]
+    icon: industrialupgrade:basecircuit:5
+    desc: |
+      Varetas de Prata em volta de um §eCapacitor Espectral§r = §eSpectral SOIC Chip§r (confira a
+      receita exata no NEI).
+    tasks:
+      - get: industrialupgrade:basecircuit:5
+    rewards:
+      - xp: 3
+      - item: industrialupgrade:IUstik:14 x8
+
+  - id: qfp_espectral
+    title: "Chip QFP Espectral"
+    type: main
+    deps: [capacitor_espectral]
+    deps_hidden: [iu_base:circuito_nano, iu_base:espinelio]
+    icon: industrialupgrade:basecircuit:8
+    desc: |
+      3 Placas de Carbono, §e2 Capacitores Espectrais§r com um §eCircuito Nano§r no meio, e 3
+      lingotes de §eEspinélio§r embaixo = §eSpectral QFP Chip§r.
+    tasks:
+      - get: industrialupgrade:basecircuit:8
+    rewards:
+      - xp: 3
+      - item: industrialupgrade:iuingot:12 x6
+
+  - id: circuito_espectral
+    title: "Espectro"
+    type: milestone
+    deps: [soic_espectral, qfp_espectral]
+    icon: industrialupgrade:QuantumItems5
+    banner: "Circuito Espectral"
+    subtitle: "O topo da microeletrônica do IU"
+    desc: |
+      No Fabricante de Circuitos: §eVanádio + Titânio + Capacitor Espectral + SOIC Espectral + QFP
+      Espectral§r = §eSpectral Circuit§r. Herói, este é o circuito mais alto do Volume das
+      Melhorias!
+
+      Ele está nas máquinas §ePerfeitas§r, nos MFSU Perfeito e acima, nos painéis Fotônico em
+      diante, nos módulos de Pedreira, no Sabre e no Arco Espectrais, nos Geradores de Matéria
+      e no Combinador de Painéis. Mostre §e2§r.
+    tasks:
+      - get: industrialupgrade:QuantumItems5 x2
+    rewards:
+      - xp: 8
+      - kit: {name: "Kit do Espectroscopista", items: [industrialupgrade:basecircuit:2 x4, industrialupgrade:iuingot:2 x4, industrialupgrade:iuingot:10 x4, industrialupgrade:QuantumItems9 x2, minecraft:diamond x4]}
+      - loot: raro
+
+  - id: involucro_iridio
+    title: "Invólucro de Irídio"
+    type: normal
+    deps: [iridio_denso]
+    icon: industrialupgrade:iucasing:17
+    desc: |
+      Uma Placa de Irídio no modo de corte do Formador de Metal = §eInvólucro de Irídio§r. Ele é a
+      peça central de cima da Caixa Quântica Melhorada. Faça §e2§r.
+    tasks:
+      - get: ore:casingIridium x2
+    rewards:
+      - xp: 2
+      - item: industrialupgrade:iuingot:17 x2
+
+  - id: caixa_quantica_melhorada
+    title: "Caixa Quântica Melhorada"
+    type: main
+    deps: [caixa_nano_avancada, involucro_iridio, placa_iridio_comprimida, lingote_foton]
+    icon: industrialupgrade:QuantumItems3
+    desc: |
+      §e4 Lingotes de Fóton§r nos cantos, §eInvólucro de Irídio§r em cima, §e2 Placas Densas de
+      Irídio§r ao lado da §eCaixa Nano Avançada§r e uma §ePlaca de Irídio Comprimida§r embaixo =
+      §eImproved Quantum Toolbox§r.
+
+      São 3 por máquina Perfeita, 4 no Cristal de Energia Melhorado, e ela aparece nas
+      ferramentas Espectrais, no Reator Perfeito e na Pedreira Quântica. Faça §e3§r.
+    tasks:
+      - get: industrialupgrade:QuantumItems3 x3
+    rewards:
+      - xp: 4
+      - choice: [industrialupgrade:photoniy_ingot x2, industrialupgrade:QuantumItems7, IC2:itemPartIridium x4]
+
+  - id: espinelio_cobalto_densos
+    title: "Espinélio, Cobalto e Manganês Densos"
+    type: normal
+    deps: [boas_vindas_ii]
+    deps_hidden: [iu_base:espinelio, iu_base:cobalto, iu_base:manganes]
+    icon: industrialupgrade:IUdoubleplate:12
+    desc: |
+      As máquinas Perfeitas pedem §e1 Placa Densa de Espinélio§r e §e2 de Cobalto§r (Triturador,
+      Compressor, Fornalha, Extrator e Formador) ou §e2 de Manganês§r (as demais). Faça uma de
+      Espinélio e duas de Cobalto.
+    tasks:
+      - get: [ore:doubleplateSpinel, ore:doubleplateCobalt x2]
+    rewards:
+      - xp: 3
+      - item: industrialupgrade:iuingot:12 x9
+
+  - id: macerador_perfeito
+    title: "Triturador Perfeito"
+    type: main
+    deps: [caixa_quantica_melhorada, circuito_espectral, espinelio_cobalto_densos, macerador_avancado]
+    icon: industrialupgrade:machines_base:2
+    desc: |
+      Receita das Perfeitas: §eCobalto denso – Espinélio denso – Cobalto denso / Circuito
+      Espectral – máquina Avançada – Circuito Espectral / 3 Caixas Quânticas Melhoradas§r.
+
+      O §ePerfect Macerator§r trabalha §e4 itens ao mesmo tempo§r — o topo da escada das máquinas
+      multi do IU.
+    tasks:
+      - get: industrialupgrade:machines_base:2
+    rewards:
+      - xp: 4
+      - choice: [industrialupgrade:upgrademodule:1 x2, industrialupgrade:QuantumItems5, industrialupgrade:QuantumItems3]
+
+  - id: maquinas_perfeitas
+    title: "Mais Máquinas Perfeitas"
+    type: normal
+    deps: [macerador_perfeito]
+    icon: industrialupgrade:machines_base:5
+    desc: |
+      Compressor, Fornalha Elétrica, Extrator e Formador de Metal Perfeitos usam a mesma receita
+      com a versão Avançada no centro. Faça qualquer um.
+    tasks:
+      - one_of: [industrialupgrade:machines_base:5, industrialupgrade:machines_base:8, industrialupgrade:machines_base:11, industrialupgrade:machines_base:14]
+    rewards:
+      - xp: 3
+      - item: industrialupgrade:QuantumItems3
+
+  - id: kit_maquina_perfeita
+    title: "Kit de Máquina Perfeita"
+    type: optional
+    deps: [macerador_perfeito]
+    icon: industrialupgrade:upgradekitMachineIU:2
+    desc: |
+      A receita Perfeita sem a máquina do centro (Espinélio e Manganês densos, Circuitos
+      Espectrais, Caixas Quânticas Melhoradas). Clique numa máquina Avançada instalada e ela vira
+      Perfeita.
+    tasks:
+      - get: industrialupgrade:upgradekitMachineIU:2
+    rewards:
+      - loot: incomum
+
+  - id: info_macerador_combinado
+    title: "E o Triturador Combinado?"
+    type: info
+    deps: [macerador_perfeito]
+    icon: industrialupgrade:machines_base1:6
+    desc: |
+      O IU tem um §eCombined Macerator§r (Triturador do IC2, Circuito Espectral, 2 Núcleos
+      Espectrais e 4 Caixas Quânticas Melhoradas) que, segundo a config, daria §e3 minérios
+      triturados por minério§r.
+
+      §cSendo honesta:§r no catálogo do NEI deste pack ele aparece §esem nenhuma receita§r, e o
+      código desta versão do mod registra a lista dele vazia. Antes de gastar dois Núcleos
+      Espectrais nele, coloque um minério e veja se funciona. Para 3× ou mais, o Mekanism e o
+      Thermal são apostas mais seguras.
+    tasks:
+      - check
+    rewards:
+      - xp: 1
+
+  - id: nucleo_espectral
+    title: "Núcleo Espectral"
+    type: main
+    deps: [nucleo_quantico]
+    icon: industrialupgrade:ItemCore:4
+    desc: |
+      §e4 Núcleos Quânticos → 1 Núcleo Espectral§r (1,5 milhão de EU). Faça §e2§r — a partir daqui,
+      cada degrau de núcleo começa a custar caro de verdade.
+    tasks:
+      - get: industrialupgrade:ItemCore:4 x2
+    rewards:
+      - xp: 4
+      - choice: [industrialupgrade:ItemCore:3 x2, industrialupgrade:iuingot:17 x8, industrialupgrade:iuingot:12 x8]
+
+  - id: placa_sunnarium_espectral
+    title: "Placa de Sunnarium Espectral"
+    type: main
+    deps: [placa_sunnarium_quantica]
+    deps_hidden: [iu_base:electrum]
+    icon: industrialupgrade:sunnariumpanel:3
+    desc: |
+      §ePlaca Quântica + Placa de Electrum§r = §eSpectral Sunnarium Plate§r. Faça §e2§r.
+    tasks:
+      - get: industrialupgrade:sunnariumpanel:3 x2
+    rewards:
+      - xp: 4
+      - choice: [industrialupgrade:sunnariumpanel:2, industrialupgrade:iuplate:13 x4, industrialupgrade:sunnarium:2 x2]
+
+  - id: varetas_electrum
+    title: "Varetas de Electrum"
+    type: normal
+    deps: [varetas_cromo]
+    icon: industrialupgrade:IUstik:13
+    desc: |
+      §e6 Varetas de Electrum§r para o Vidro Espectral.
+    tasks:
+      - get: industrialupgrade:IUstik:13 x6
+    rewards:
+      - xp: 2
+      - item: industrialupgrade:iuingot:13 x4
+
+  - id: vidro_espectral
+    title: "Vidro Espectral"
+    type: main
+    deps: [vidro_quantico, placa_sunnarium_espectral, varetas_electrum]
+    icon: industrialupgrade:IUphotonglass:4
+    desc: |
+      §e6 Varetas de Electrum§r + §eVidro Quântico§r + §e2 Placas de Sunnarium Espectrais§r =
+      §eSpectral Glass§r. Faça §e2§r.
+    tasks:
+      - get: industrialupgrade:IUphotonglass:4 x2
+    rewards:
+      - xp: 4
+      - choice: [industrialupgrade:IUphotonglass:3, industrialupgrade:sunnariumpanel:3, industrialupgrade:iuingot:13 x6]
+
+  - id: painel_espectral
+    title: "Espectrograma"
+    type: milestone
+    deps: [painel_quantico, nucleo_espectral, vidro_espectral, placa_iridio_comprimida]
+    icon: industrialupgrade:BlockSolarPanel:4
+    banner: "Painel Solar Espectral"
+    subtitle: "1280 EU/t de dia, 640 de noite"
+    desc: |
+      §e2 Vidros Espectrais, Núcleo Espectral, 2 Placas de Irídio Comprimidas, 3 Painéis Quânticos e
+      um Circuito Nano§r = §eSpectral Solar Panel§r.
+
+      §e1280 EU/t de dia e 640 de noite§r, 5 milhões de EU de buffer, saída de 2560 EU/t. Um único
+      painel destes vale 1280 painéis solares do IC2. Herói... você colocou um arco-íris no
+      telhado!
+
+      E isso é só a metade da escada. Protônico, Singular, Difrativo, Fotônico, Nêutron,
+      Bárion, Hádron, Gráviton e §6Quark§r esperam por você no §eIndustrial Upgrade III§r.
+    tasks:
+      - get: industrialupgrade:BlockSolarPanel:4
+    rewards:
+      - xp: 8
+      - kit: {name: "Kit do Espectro Solar", items: [industrialupgrade:ItemCore:3 x4, industrialupgrade:sunnariumpanel:2 x2, industrialupgrade:QuantumItems2 x2, industrialupgrade:iuplate:13 x4, industrialupgrade:IUstik:13 x6]}
+      - loot: raro
+
+  - id: avancado_completo
+    title: "Mestre do Tier Quântico"
+    type: milestone
+    deps: [painel_espectral, fabrica_avancada, macerador_perfeito, mfsu_avancado, transformador_molecular_avancado, placa_plastico]
+    icon: industrialupgrade:QuantumItems5
+    banner: "Industrial Upgrade II"
+    subtitle: "O Volume das Melhorias, parte II, está completo"
+    effect: 3
+    desc: |
+      Herói, olha o caminho que você fez: transformou ferro em irídio e irídio em luz. Montou uma
+      petroquímica. Fabricou circuitos Quânticos e Espectrais. Suas máquinas trabalham três,
+      quatro itens ao mesmo tempo. Um MFSU de 400 milhões de EU zumbe no porão. E um Painel
+      Espectral brilha no telhado.
+
+      §bA segunda parte do Volume das Melhorias está reescrita.§r
+
+      O §eIndustrial Upgrade III — Endgame§r é o capítulo dos números absurdos: núcleos de
+      bilhões de EU, o §eGerador de Partículas de Nêutron§r, o §eReator de Fusão Nuclear§r, a
+      §ePedreira Quântica§r, a §dArmadura Quântica Espectral§r, MFSUs de centenas de bilhões e,
+      no topo, o §6Painel Solar Quark§r. Eu já estou tremendo de empolgação!
+    tasks:
+      - get: [industrialupgrade:BlockSolarPanel:4, industrialupgrade:machines_base:2, industrialupgrade:electricblock:1, industrialupgrade:doublemolecular]
+    rewards:
+      - xp: 12
+      - kit: {name: "Legado do Tier Quântico", items: [industrialupgrade:QuantumItems5 x2, industrialupgrade:QuantumItems8 x4, industrialupgrade:QuantumItems3 x2, industrialupgrade:ItemCore:4, industrialupgrade:photoniy_ingot x4]}
+      - loot: [raro x2]
+
+  # ======================================================================
+  # EXTRAS
+  # ======================================================================
+  - id: tanques_avancados
+    title: "Tanques Maiores"
+    type: optional
+    deps: [foton]
+    deps_hidden: [iu_base:tanque_liquidos]
+    icon: industrialupgrade:BlockTank:2
+    desc: |
+      O Tanque de Líquidos sobe de tier: §eAdvanced Liquid Tank§r (Placas de Latão Vermelho e de
+      Vanádio-Alumínio), §eImproved Liquid Tank§r (Fótons e Caixas Nano) e §ePerfect Liquid
+      Tank§r (Lingotes de Fóton e Caixas Nano Avançadas). Petróleo nenhum vai sobrar. Faça
+      qualquer um.
+    tasks:
+      - one_of: [industrialupgrade:BlockTank:1, industrialupgrade:BlockTank:2, industrialupgrade:BlockTank:3]
+    rewards:
+      - loot: comum
+
+  - id: ferramentas_quanticas
+    title: "Machado e Pá Quânticos"
+    type: optional
+    deps: [picareta_quantica]
+    icon: industrialupgrade:quantumaxe:1
+    desc: |
+      A receita da Picareta Quântica com o Machado Nano ou a Pá Nano no centro. A Pá Quântica é
+      metade da Broca Quântica.
+    tasks:
+      - get: [industrialupgrade:quantumaxe:*, industrialupgrade:quantumshovel:*]
+    rewards:
+      - loot: comum
+
+  - id: modulo_experiencia
+    title: "Módulo de Experiência"
+    type: optional
+    deps: [modelo_modulo]
+    deps_hidden: [iu_base:armazenamento_xp]
+    icon: industrialupgrade:expmodule
+    desc: |
+      Modelo de Módulo + Garrafa de Experiência = §eModule: Experience Storage§r, que vai no slot
+      próprio do §eArmazenamento de Experiência§r do Volume I. Confira no tooltip o que ele muda
+      na sua versão.
+    tasks:
+      - get: industrialupgrade:expmodule
+    rewards:
+      - xp: 5
+
+  - id: kit_mfsu_melhorado
+    title: "Kit de MFSU Melhorado"
+    type: optional
+    deps: [mfsu_melhorado]
+    icon: industrialupgrade:upgradekitIU:2
+    desc: |
+      Chave Inglesa + MFSU Melhorado = §eImproved MFSU Upgrade Kit§r. Clique com ele num MFSU do
+      IU já carregado: ele vira MFSU Melhorado sem perder um EU sequer. Há kits para todos os
+      degraus até o Quark.
+    tasks:
+      - get: industrialupgrade:upgradekitIU:2
+    rewards:
+      - loot: comum
+
+  - id: nucleo_elementium
+    title: "Núcleo de Elementium"
+    type: normal
+    deps: [nucleo_manasteel]
+    deps_hidden: [botania:elementium]
+    icon: industrialupgrade:elementium_core
+    desc: |
+      As três runas, 2 Placas de Elementium, 2 Lingotes de Fóton, um Circuito Avançado e o §eNúcleo
+      de Manasteel§r no centro = §eElementium Core§r — o coração do Painel de Elementium.
+    tasks:
+      - get: industrialupgrade:elementium_core
+    rewards:
+      - xp: 3
+      - item: industrialupgrade:photoniy_ingot
+
+  - id: placa_terrasteel
+    title: "Placa de Terrasteel"
+    type: optional
+    deps: [placas_botania]
+    deps_hidden: [botania:terrasteel]
+    icon: industrialupgrade:terrasteel_plate
+    desc: |
+      Um Lingote de Terrasteel no Compressor = §ePlaca de Terrasteel§r. O Núcleo de Terrasteel
+      leva 3, e a Broca de Terrasteel também. Faça §e3§r.
+    tasks:
+      - get: industrialupgrade:terrasteel_plate x3
+    rewards:
+      - loot: incomum
+
+  - id: modulo_toque_suave
+    title: "Módulo: Toque Suave"
+    type: optional
+    deps: [estacao_modificacao]
+    icon: industrialupgrade:iu_upgrademodule:21
+    desc: |
+      Modelo de Módulo + uma §eTeia de Aranha§r no Transformador Molecular Avançado = módulo de
+      Toque Suave para as brocas e picaretas do IU.
+    tasks:
+      - get: industrialupgrade:iu_upgrademodule:21
+    rewards:
+      - loot: comum
+
+  - id: modulo_arco
+    title: "Módulos de Arco"
+    type: optional
+    deps: [estacao_modificacao, arco_quantico]
+    icon: industrialupgrade:iu_upgrademodule:11
+    desc: |
+      Para os arcos elétricos: §eDano (Arco)§r sai do Modelo + uma poção (veja qual no NEI do
+      Transformador Molecular Avançado); §eEficiência Energética (Arco)§r sai do Modelo + Placa
+      Densa de Nicromo. Faça qualquer um.
+    tasks:
+      - one_of: [industrialupgrade:iu_upgrademodule:11, industrialupgrade:iu_upgrademodule:4]
+    rewards:
+      - loot: comum
+
+  - id: modulo_sabre
+    title: "Módulo: Eficiência do Sabre"
+    type: optional
+    deps: [estacao_modificacao, sabre_quantico]
+    deps_hidden: [iu_base:minerios_radioativos]
+    icon: industrialupgrade:iu_upgrademodule:5
+    desc: |
+      Modelo de Módulo + §e4 Gemas de Netúnio§r = módulo de Eficiência Energética para o Sabre
+      Espectral (cada golpe gasta menos EU). Prepare-o agora para o Volume III.
+    tasks:
+      - get: industrialupgrade:iu_upgrademodule:5
+    rewards:
+      - loot: comum

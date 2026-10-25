@@ -1,0 +1,894 @@
+chapter:
+  id: bigreactors
+  title: "Big Reactors"
+  prefix: ""
+  order: 330
+  icon: BigReactors:BRReactorPart:1
+  desc: |
+    §bO Volume do Núcleo Amarelo.§r Yellorite, reatores multibloco passivos e ativos,
+    moderadores, turbinas a vapor, Cyanite, Blutonium e Ludicrite. (Big Reactors 0.5.4A)
+
+quests:
+  # ======================================================================
+  # FASE 0 — YELLORITE E GRAFITE
+  # ======================================================================
+  - id: yellorite
+    title: "Yellorite"
+    type: main
+    icon: BigReactors:YelloriteOre
+    desc: |
+      Um minério amarelo-esverdeado que parece estar sempre de bom humor. Não se engane: lá dentro
+      dorme o átomo.
+
+      O §eMinério de Yellorite§r aparece no Mundo Normal §eabaixo da camada Y 50§r, em até 5
+      aglomerados por chunk com até 10 blocos cada (a config desliga a geração nas dimensões de id
+      negativo, como as do Galacticraft). Junte §e16 minérios§r.
+
+      §aDica:§r ele conta como `oreUranium`, então outros mods também o aceitam.
+    tasks:
+      - get: BigReactors:YelloriteOre x16
+    rewards:
+      - xp: 4
+      - choice: [minecraft:iron_pickaxe, minecraft:torch x32, minecraft:cooked_beef x12]
+
+  - id: info_fornalha_yellorite
+    title: "Cuidado com a Fornalha!"
+    type: info
+    deps: [yellorite]
+    icon: minecraft:furnace
+    desc: |
+      §cUma pegadinha deste pack:§r fundir o Minério de Yellorite §edireto numa fornalha§r dá um
+      "Uranium Ingot" do Amun-Ra, e não a Barra de Yellorium! (A config do Big Reactors funde o
+      minério em `ingotUranium`, e o primeiro do oredict é o do Amun-Ra.)
+
+      Esse lingote funciona nas receitas de bancada do Big Reactors (elas pedem `ingotUranium`),
+      mas para ter a §eBarra de Yellorium§r de verdade:
+      §e• Moa o minério§r (Moinho SAG, Câmara de Enriquecimento, Triturador do IC2, Pulverizador...)
+      — rende 2 pós — e funda o §ePó de Yellorium§r.
+      §e• Ou use a Fundição Induzida do Thermal§r (com areia ou Pyrotheum).
+      §e• Ou combine minério + Pó de Pyrotheum§r na bancada.
+    tasks:
+      - check
+    rewards:
+      - xp: 1
+
+  - id: po_yellorium
+    title: "Pó de Yellorium"
+    type: normal
+    deps: [info_fornalha_yellorite]
+    icon: BigReactors:BRIngot:4
+    desc: |
+      Moa o Yellorite em qualquer moedor do pack: Moinho SAG (Ender IO), Câmara de Enriquecimento
+      (Mekanism), Pulverizador (Thermal), Triturador (IC2)... Cada minério vira §e2 Pós de
+      Yellorium§r. Junte §e16§r.
+    tasks:
+      - get: ore:dustYellorium x16
+    rewards:
+      - xp: 3
+      - item: BigReactors:YelloriteOre x4
+
+  - id: yellorium
+    title: "Barra de Yellorium"
+    type: main
+    deps: [po_yellorium]
+    icon: BigReactors:BRIngot
+    desc: |
+      Funda o pó: §eBarra de Yellorium§r! É o combustível dos reatores e também ingrediente das
+      peças (Alojamento, Controlador, Hastes). Ela conta como `ingotUranium` em outros mods —
+      inclusive no IC2. Junte §e32§r.
+    tasks:
+      - get: ore:ingotYellorium x32
+    rewards:
+      - xp: 4
+      - choice: [minecraft:coal x32, minecraft:iron_ingot x16, BigReactors:YelloriteOre x8]
+
+  - id: info_br
+    title: "O Volume do Núcleo Amarelo"
+    type: info
+    deps: [yellorium]
+    icon: BigReactors:BRReactorPart:1
+    desc: |
+      O Big Reactors é todo feito de §emultiblocos que você desenha§r:
+      §e• Reator:§r uma caixa de Alojamentos com Hastes de Combustível dentro. Ele queima
+      Yellorium (ou Blutonium) e gera §bRF§r direto (reator §epassivo§r) ou §evapor§r (reator
+      §eativo§r, com Portas de Refrigeração).
+      §e• Turbina:§r transforma o vapor em RF de forma muito mais eficiente.
+      §e• Tamanho:§r neste pack o reator pode ter até 64 de largura e 192 de altura; a turbina, até
+      64 de largura e 128 de altura. A produção do reator e da turbina tem multiplicadores altos
+      na config (×5).
+
+      O GUI do Controlador mostra temperatura, combustível, resíduos e produção. Leia com carinho!
+    tasks:
+      - check
+    rewards:
+      - xp: 1
+
+  - id: grafite
+    title: "Barra de Grafite"
+    type: main
+    deps: [yellorium]
+    icon: BigReactors:BRIngot:2
+    desc: |
+      Carvão mineral ou vegetal na fornalha = §eBarra de Grafite§r (é uma opção da config deste
+      pack). O grafite segura os nêutrons do reator e aparece em quase todas as peças. Junte §e32§r.
+    tasks:
+      - get: ore:ingotGraphite x32
+    rewards:
+      - xp: 4
+      - choice: [minecraft:coal x32, minecraft:coal:1 x32, minecraft:coal_block x4]
+
+  - id: blocos_br
+    title: "Blocos de Grafite e Yellorium"
+    type: optional
+    deps: [grafite]
+    icon: BigReactors:BRMetalBlock:2
+    desc: |
+      Nove barras = um bloco. O §eBloco de Grafite§r é um ótimo §emoderador§r dentro do reator, e o
+      §eBloco de Yellorium§r guarda combustível (e também entra no reator pela Porta de Acesso).
+      Faça qualquer um.
+    tasks:
+      - one_of: [BigReactors:BRMetalBlock, BigReactors:BRMetalBlock:2]
+    rewards:
+      - loot: comum
+
+  # ======================================================================
+  # FASE 1 — O REATOR PASSIVO
+  # ======================================================================
+  - id: alojamento_reator
+    title: "Alojamento do Reator"
+    type: main
+    deps: [grafite]
+    icon: BigReactors:BRReactorPart
+    desc: |
+      4 ferros, 4 grafites e 1 lingote de urânio (Yellorium) = §e4 Alojamentos do Reator§r. São as
+      arestas e as paredes do reator. Um reator mínimo de 3×3×3 tem 26 blocos de carcaça (contando
+      as peças especiais). Junte §e24 Alojamentos§r.
+    tasks:
+      - get: BigReactors:BRReactorPart x24
+    rewards:
+      - xp: 4
+      - choice: [minecraft:iron_ingot x16, ore:ingotGraphite x8, ore:ingotYellorium x4]
+
+  - id: vidro_reator
+    title: "Vidro do Reator"
+    type: normal
+    deps: [alojamento_reator]
+    icon: BigReactors:BRMultiblockGlass
+    desc: |
+      Vidro + Alojamento + vidro = §eVidro do Reator§r. Ele pode substituir alojamentos nas
+      §efaces§r (nunca nas arestas) para você ver as hastes brilhando. Faça §e4§r.
+    tasks:
+      - get: BigReactors:BRMultiblockGlass x4
+    rewards:
+      - xp: 2
+      - item: minecraft:glass x16
+
+  - id: haste_combustivel
+    title: "Haste de Combustível de Yellorium"
+    type: main
+    deps: [alojamento_reator]
+    icon: BigReactors:YelloriumFuelRod
+    desc: |
+      6 ferros, 2 grafites e 1 lingote de urânio = §eHaste de Combustível§r. Elas formam
+      §ecolunas verticais§r no interior do reator, do chão até o teto. Mais hastes = mais energia
+      (e mais calor). Faça §e4§r.
+    tasks:
+      - get: BigReactors:YelloriumFuelRod x4
+    rewards:
+      - xp: 4
+      - choice: [ore:ingotGraphite x8, minecraft:iron_ingot x12, ore:ingotYellorium x4]
+
+  - id: haste_controle
+    title: "Haste de Controle do Reator"
+    type: main
+    deps: [haste_combustivel]
+    icon: BigReactors:BRReactorPart:2
+    desc: |
+      4 Alojamentos, 2 grafites, 1 redstone e 1 lingote de urânio = §eHaste de Controle§r. Ela
+      fica §eno teto, em cima de cada coluna§r de Hastes de Combustível. No GUI dela você define a
+      "inserção" (0–100%): mais inserção = menos reação, menos calor e menos energia.
+    tasks:
+      - get: BigReactors:BRReactorPart:2 x4
+    rewards:
+      - xp: 4
+      - choice: [minecraft:redstone x24, ore:ingotGraphite x8, BigReactors:BRReactorPart x4]
+
+  - id: controlador_reator
+    title: "Controlador do Reator"
+    type: main
+    deps: [alojamento_reator]
+    icon: BigReactors:BRReactorPart:1
+    desc: |
+      4 Alojamentos, 2 lingotes de urânio, 1 diamante e 1 redstone = §eControlador do Reator§r. Todo
+      reator precisa de §eexatamente um§r, numa face (não numa aresta). É nele que você liga e
+      desliga o reator e vê tudo o que está acontecendo lá dentro.
+    tasks:
+      - get: BigReactors:BRReactorPart:1
+    rewards:
+      - xp: 4
+      - choice: [minecraft:diamond x1, minecraft:redstone x24, ore:ingotYellorium x4]
+
+  - id: porta_energia
+    title: "Porta de Energia do Reator"
+    type: main
+    deps: [alojamento_reator]
+    icon: BigReactors:BRReactorPart:3
+    desc: |
+      4 Alojamentos + 4 redstone = §ePorta de Energia§r (Power Tap). Num reator §epassivo§r é por
+      ela que sai a energia, em RF. Ligue qualquer cabo de RF (Conduto de Energia, Cabo Universal...)
+      na face externa.
+    tasks:
+      - get: BigReactors:BRReactorPart:3
+    rewards:
+      - xp: 4
+      - choice: [EnderIO:itemPowerConduit:1 x8, Mekanism:PartTransmitter:1 x8, minecraft:redstone x24]
+
+  - id: porta_acesso
+    title: "Porta de Acesso do Reator"
+    type: main
+    deps: [alojamento_reator]
+    icon: BigReactors:BRReactorPart:4
+    desc: |
+      4 Alojamentos, 1 baú e 1 pistão = §ePorta de Acesso§r. É por ela que o §ecombustível entra§r
+      (Yellorium, em barras ou blocos) e os §eresíduos saem§r (Cyanite). Clique no botão do GUI
+      para alternar entre modo entrada e modo saída — use duas portas para automatizar.
+    tasks:
+      - get: BigReactors:BRReactorPart:4
+    rewards:
+      - xp: 4
+      - choice: [minecraft:chest x4, minecraft:hopper x2, ore:ingotYellorium x8]
+
+  - id: info_reator
+    title: "Montando o Reator"
+    type: info
+    deps: [controlador_reator, porta_energia, porta_acesso, haste_controle]
+    icon: BigReactors:BRReactorPart
+    desc: |
+      §e1.§r Uma caixa retangular (mínimo 3×3×3). §eArestas e cantos§r: só Alojamentos.
+      §e2.§r Nas §efaces§r: Alojamentos, Vidros e as peças especiais (Controlador, Porta de
+      Energia ou de Refrigeração, Porta de Acesso, Porta de Redstone, Porta de Computador...).
+      §e3.§r Dentro: §ecolunas de Hastes de Combustível§r indo do chão ao teto, cada uma com uma
+      §eHaste de Controle no teto§r, em cima dela.
+      §e4.§r O resto do interior: ar ou §emoderadores§r (blocos e fluidos que melhoram a reação).
+
+      Quando tudo estiver certo, o Controlador acende. Coloque Yellorium na Porta de Acesso,
+      ligue no GUI e veja o calor subir!
+    tasks:
+      - check
+    rewards:
+      - xp: 2
+
+  - id: reator_passivo
+    title: "O Reator Passivo"
+    type: milestone
+    deps: [info_reator]
+    icon: BigReactors:BRReactorPart:3
+    banner: "O Reator Passivo"
+    subtitle: "O átomo, domado pela primeira vez"
+    desc: |
+      Herói! O Controlador acendeu, as hastes estão brilhando e a Porta de Energia está jorrando
+      RF. Você acabou de dividir o átomo — e ele está trabalhando para você!
+
+      §aPara um reator passivo saudável:§r
+      §e• Inserção das hastes de controle:§r comece alta e vá baixando até a temperatura
+      estabilizar.
+      §e• Energia acumulada:§r se o buffer interno encher, o reator desperdiça combustível. Ligue
+      a Porta de Energia a um banco grande (Banco de Capacitores, Cubo, Matriz de Indução).
+      §e• Resíduos:§r esvazie o Cyanite pela Porta de Acesso.
+
+      Mostre as peças do seu primeiro reator!
+    tasks:
+      - get: [BigReactors:BRReactorPart:1, BigReactors:BRReactorPart:3, BigReactors:BRReactorPart:4, BigReactors:BRReactorPart:2, BigReactors:YelloriumFuelRod]
+    rewards:
+      - xp: 8
+      - kit: {name: "Kit do Operador de Reator", items: [ore:ingotYellorium x16, BigReactors:BRReactorPart x16, BigReactors:YelloriumFuelRod x4, BigReactors:BRReactorPart:2 x2, ore:ingotGraphite x16]}
+      - loot: raro
+
+  - id: info_moderadores
+    title: "Moderadores"
+    type: info
+    deps: [reator_passivo]
+    icon: BigReactors:BRMetalBlock:2
+    desc: |
+      O espaço vazio dentro do reator pode ser preenchido com §emoderadores§r, que mudam como os
+      nêutrons e o calor se comportam:
+      §e• Blocos:§r Grafite, Ferro, Ouro, Diamante, Esmeralda, Cobre, Ósmio, Bronze, Aço, Invar,
+      Prata, Chumbo, Eletro, Platina, Enderium, Vidro, Gelo, Neve...
+      §e• Fluidos:§r Água e, com o Thermal, Redstone Desestabilizada, Pedra Luminosa Energizada,
+      Cryotheum Gélido, Ender Ressoante e Pyrotheum.
+      §e• E (por diversão)§r — a config ativa até carne, slime rosa e esgoto. Sim, de verdade.
+
+      Experimente: o GUI mostra a diferença na temperatura e na produção. Moderadores bons
+      costumam ser os blocos de diamante, esmeralda, grafite e os fluidos do Thermal.
+    tasks:
+      - check
+    rewards:
+      - xp: 2
+
+  - id: moderador_grafite
+    title: "Recheio de Grafite"
+    type: normal
+    deps: [info_moderadores, blocos_br]
+    icon: BigReactors:BRMetalBlock:2
+    desc: |
+      O moderador mais fácil de conseguir: §eBlocos de Grafite§r entre as colunas de combustível.
+      Junte §e8 blocos§r e preencha o seu reator.
+    tasks:
+      - get: BigReactors:BRMetalBlock:2 x8
+    rewards:
+      - xp: 3
+      - item: minecraft:coal_block x4
+
+  - id: moderador_fluido
+    title: "Moderadores Líquidos"
+    type: optional
+    deps: [info_moderadores]
+    icon: ThermalFoundation:bucket:4
+    desc: |
+      Fluidos do Thermal costumam ser moderadores excelentes. Traga um balde de §eCryotheum
+      Gélido§r ou de §eEnder Ressoante§r para encher os espaços do reator.
+    tasks:
+      - one_of: [ThermalFoundation:bucket:4, ThermalFoundation:bucket:2]
+    rewards:
+      - loot: incomum
+
+  - id: rendimento_triplo
+    title: "Mais Yellorium por Minério"
+    type: optional
+    deps: [po_yellorium]
+    icon: ThermalExpansion:Machine:3
+    desc: |
+      Quer espremer cada minério? A §eFundição Induzida§r do Thermal funde Yellorite com areia ou
+      com outros fundentes (Cinábrio, Pyrotheum...) e rende 2 e, em algumas combinações, até 3
+      barras por minério — veja todas no NEI (U no minério). Junte §e48 Barras de Yellorium§r.
+    tasks:
+      - get: ore:ingotYellorium x48
+    rewards:
+      - loot: incomum
+
+  - id: estoque_combustivel
+    title: "Estoque de Combustível"
+    type: normal
+    deps: [reator_passivo]
+    icon: BigReactors:BRMetalBlock
+    desc: |
+      Um reator ligado queima combustível sem parar. Deixe um estoque de §e4 Blocos de Yellorium§r
+      perto da Porta de Acesso — cada bloco vale 9 barras.
+    tasks:
+      - get: BigReactors:BRMetalBlock x4
+    rewards:
+      - xp: 3
+      - item: ore:ingotGraphite x8
+
+  - id: armazenar_rf
+    title: "Onde Guardar Tanto RF?"
+    type: normal
+    deps: [porta_energia]
+    icon: EnderIO:blockCapBank:2
+    desc: |
+      Um reator passivo enche o próprio buffer rapidinho — e, com o buffer cheio, ele desperdiça
+      combustível. Ligue a Porta de Energia a um armazenamento de verdade: um §eBanco de
+      Capacitores§r do Ender IO, um §eCubo de Energia§r do Mekanism ou algo maior. Mostre um deles.
+    tasks:
+      - one_of: [EnderIO:blockCapBank:2, EnderIO:blockCapBank:3, Mekanism:EnergyCube, Mekanism:BasicBlock2:2]
+    rewards:
+      - xp: 3
+      - item: minecraft:redstone_block x4
+
+  - id: portas_acesso_auto
+    title: "Combustível Automático"
+    type: optional
+    deps: [cyanite]
+    icon: BigReactors:BRReactorPart:4
+    desc: |
+      Duas Portas de Acesso: uma em modo §eentrada§r (um conduto empurrando Yellorium) e outra em
+      modo §esaída§r (um conduto levando o Cyanite para um baú — ou direto para o Centrifugador
+      Térmico). Reator que se cuida sozinho! Faça §e2 Portas de Acesso§r.
+    tasks:
+      - get: BigReactors:BRReactorPart:4 x2
+    rewards:
+      - loot: comum
+
+  - id: moderador_precioso
+    title: "Moderadores Preciosos"
+    type: optional
+    deps: [info_moderadores]
+    icon: minecraft:diamond_block
+    desc: |
+      Para quem tem riqueza sobrando: blocos de §ediamante§r e de §eesmeralda§r estão entre os
+      melhores moderadores sólidos. Junte §e4 blocos§r de um deles e compare a produção no GUI.
+    tasks:
+      - one_of: [minecraft:diamond_block x4, minecraft:emerald_block x4]
+    rewards:
+      - loot: incomum
+
+  - id: porta_redstone
+    title: "Porta de Redstone do Reator"
+    type: normal
+    deps: [reator_passivo]
+    icon: BigReactors:BRReactorRedstonePort
+    desc: |
+      4 Alojamentos, 4 redstone e 1 lingote de ouro = §ePorta de Redstone§r. Ela pode §eemitir§r
+      sinal (temperatura alta, buffer cheio, combustível baixo...) ou §ereceber§r sinal (ligar /
+      desligar, ajustar hastes). Junte com o Monitor de Força do Ender IO ou o Adaptador do Mekanism
+      para automatizar.
+    tasks:
+      - get: BigReactors:BRReactorRedstonePort
+    rewards:
+      - xp: 3
+      - item: minecraft:redstone x16
+
+  - id: porta_computador
+    title: "Entrada de Computador do Reator"
+    type: optional
+    deps: [reator_passivo]
+    icon: BigReactors:BRReactorPart:7
+    desc: |
+      4 Alojamentos, redstone, 2 ouros e um repetidor = §eEntrada de Computador§r. Um computador do
+      §eOpenComputers§r (ou ComputerCraft) ligado a ela lê e controla o reator inteiro por código.
+      Para quem gosta de reatores "inteligentes"!
+    tasks:
+      - get: BigReactors:BRReactorPart:7
+    rewards:
+      - loot: incomum
+
+  - id: porta_rednet
+    title: "Porta RedNet do Reator"
+    type: optional
+    deps: [reator_passivo]
+    icon: BigReactors:BRReactorPart:6
+    desc: |
+      Para os fãs do MineFactory Reloaded: 4 Alojamentos, cabos RedNet e ouro = §ePorta RedNet§r,
+      que conversa com a rede de 16 canais do MFR.
+    tasks:
+      - get: BigReactors:BRReactorPart:6
+    rewards:
+      - loot: comum
+
+  # ======================================================================
+  # FASE 2 — RESÍDUOS: CYANITE, BLUTONIUM E LUDICRITE
+  # ======================================================================
+  - id: cyanite
+    title: "Cyanite"
+    type: main
+    deps: [reator_passivo]
+    icon: BigReactors:BRIngot:1
+    desc: |
+      O combustível que já queimou vira §eCyanite§r, um resíduo azulado que sai pela Porta de
+      Acesso (em modo saída). Não jogue fora: ele é ingrediente da turbina e vira Blutonium!
+
+      §aAtalho deste pack:§r 1 lingote de urânio + 1 areia na bancada também dá 1 Barra de Cyanite.
+      Junte §e16§r.
+    tasks:
+      - get: ore:ingotCyanite x16
+    rewards:
+      - xp: 4
+      - choice: [minecraft:sand x32, ore:ingotYellorium x8, minecraft:chest x2]
+
+  - link: ic2:centrifuga_termica
+
+  - id: blutonium
+    title: "Blutonium"
+    type: main
+    deps: [cyanite]
+    icon: BigReactors:BRIngot:3
+    desc: |
+      Cyanite tem um segredo: girando rápido o bastante, ele se transforma.
+
+      Neste pack, o Big Reactors registra uma receita no §eCentrifugador Térmico do IC2§r:
+      §e1 Barra de Cyanite → 1 Barra de Blutonium§r (com o centrifugador aquecido a pelo menos
+      4000 de calor — confira no NEI). O Blutonium é `ingotPlutonium`, é §ecombustível de
+      reator§r tão bom quanto o Yellorium e é obrigatório no §eControlador da Turbina§r. Junte §e8§r.
+    tasks:
+      - get: ore:ingotBlutonium x8
+    rewards:
+      - xp: 5
+      - choice: [ore:ingotCyanite x8, minecraft:diamond x2, IC2:itemCellEmpty:5 x8]
+
+  - id: blocos_residuos
+    title: "Blocos de Cyanite e Blutonium"
+    type: optional
+    deps: [blutonium]
+    icon: BigReactors:BRMetalBlock:3
+    desc: |
+      Nove barras = um §eBloco de Cyanite§r ou de §eBlutonium§r. O bloco de Blutonium também entra no
+      reator como combustível (vale 9 barras). Faça qualquer um.
+    tasks:
+      - one_of: [BigReactors:BRMetalBlock:1, BigReactors:BRMetalBlock:3]
+    rewards:
+      - loot: comum
+
+  - id: ludicrite
+    title: "Ludicrite"
+    type: normal
+    deps: [blutonium]
+    icon: BigReactors:BRMetalBlock:4
+    desc: |
+      Um metal com nome de piada e propriedades nada engraçadas: o melhor material de bobina de
+      turbina do Big Reactors.
+
+      Duas receitas de §eBloco de Ludicrite§r:
+      §e• 4 Blutonium + 2 pérolas do Fim + 2 blocos de esmeralda + 1 estrela do Nether.§r
+      §e• 4 Blutonium + 2 varas de blaze + 2 blocos de Enderium (Thermal).§r
+      Faça §e1 bloco§r.
+    tasks:
+      - get: BigReactors:BRMetalBlock:4
+    rewards:
+      - xp: 4
+      - item: ore:ingotBlutonium x4
+
+  # ======================================================================
+  # FASE 3 — O REATOR ATIVO E A TURBINA
+  # ======================================================================
+  - id: porta_refrigeracao
+    title: "Porta de Refrigeração do Reator"
+    type: main
+    deps: [reator_passivo]
+    icon: BigReactors:BRReactorPart:5
+    desc: |
+      4 Alojamentos, 2 ferros, 1 balde e 1 pistão = §ePorta de Refrigeração§r. Troque a Porta de
+      Energia por duas destas e o reator vira §eativo§r: em vez de RF, ele ferve §eágua em vapor§r.
+      Uma porta em modo entrada (água) e outra em modo saída (vapor). Faça §e2§r.
+    tasks:
+      - get: BigReactors:BRReactorPart:5 x2
+    rewards:
+      - xp: 4
+      - choice: [minecraft:water_bucket x2, EnderIO:blockReservoir x4, ore:ingotGraphite x8]
+
+  - id: fonte_agua
+    title: "Água para o Reator"
+    type: normal
+    deps: [porta_refrigeracao]
+    icon: EnderIO:blockReservoir
+    desc: |
+      Um reator ativo bebe muita água. Opções do pack: §eReservatórios§r do Ender IO (2×2, água
+      infinita), §eBomba Elétrica§r do Mekanism num lago, ou bombas de outros mods. Mostre uma delas.
+    tasks:
+      - one_of: [EnderIO:blockReservoir x4, Mekanism:MachineBlock:12]
+    rewards:
+      - xp: 3
+      - item: minecraft:water_bucket x2
+
+  - id: condutos_vapor
+    title: "Canos de Vapor"
+    type: normal
+    deps: [porta_refrigeracao]
+    icon: EnderIO:itemLiquidConduit:1
+    desc: |
+      O vapor precisa viajar do reator até a turbina — e a água condensada voltar. Use condutos de
+      fluido de boa vazão: §eConduto de Fluidos Pressurizado ou do Fim§r (Ender IO) ou §eTubos
+      Mecânicos Avançados ou melhores§r (Mekanism). Faça §e8§r.
+    tasks:
+      - one_of: [EnderIO:itemLiquidConduit:1 x8, EnderIO:itemLiquidConduit:2 x8, Mekanism:PartTransmitter:5 x8, Mekanism:PartTransmitter:6 x8, Mekanism:PartTransmitter:7 x8]
+    rewards:
+      - xp: 3
+      - item: minecraft:bucket x4
+
+  - id: info_reator_ativo
+    title: "Reator Ativo"
+    type: info
+    deps: [porta_refrigeracao]
+    icon: BigReactors:BRReactorPart:5
+    desc: |
+      No modo ativo o reator §enão produz RF§r: ele usa o calor para ferver água. O GUI mostra
+      quanto vapor sai por tick.
+      §e• Água:§r precisa de bastante! Reservatórios do Ender IO, Bombas Elétricas do Mekanism ou
+      bombas de outros mods.
+      §e• Vapor:§r vai por condutos/tubos de fluido até as turbinas.
+      §e• Por que vale a pena:§r reator ativo + turbina rende §ebem mais energia§r por combustível
+      que o reator passivo sozinho.
+    tasks:
+      - check
+    rewards:
+      - xp: 2
+
+  - id: reator_ativo
+    title: "O Reator Ativo"
+    type: milestone
+    deps: [info_reator_ativo, porta_redstone]
+    icon: BigReactors:BRReactorPart:5
+    banner: "O Reator Ativo"
+    subtitle: "Do calor nasce o vapor"
+    desc: |
+      As Portas de Refrigeração engolindo água e cuspindo vapor. Herói, o seu reator acabou de
+      virar uma caldeira atômica!
+
+      Agora falta a outra metade: a §eTurbina§r, que transforma esse vapor em montanhas de RF. Uma
+      boa regra para começar: um reator ativo pequeno alimenta bem uma turbina pequena. Mostre as
+      suas Portas de Refrigeração e o Controlador!
+    tasks:
+      - get: [BigReactors:BRReactorPart:5 x2, BigReactors:BRReactorPart:1]
+    rewards:
+      - xp: 8
+      - kit: {name: "Kit do Engenheiro de Vapor", items: [ore:ingotCyanite x8, ore:ingotGraphite x16, minecraft:iron_ingot x16, minecraft:quartz x8, minecraft:water_bucket x2]}
+      - loot: raro
+
+  - id: alojamento_turbina
+    title: "Alojamento da Turbina"
+    type: main
+    deps: [cyanite]
+    icon: BigReactors:BRTurbinePart
+    desc: |
+      4 ferros, 2 grafites, 2 quartzos do Nether e 1 Cyanite = §e4 Alojamentos da Turbina§r. São as
+      paredes da turbina. Uma turbina mínima pede um bom tanto deles: junte §e48§r.
+    tasks:
+      - get: BigReactors:BRTurbinePart x48
+    rewards:
+      - xp: 4
+      - choice: [minecraft:quartz x16, ore:ingotGraphite x16, minecraft:iron_ingot x16]
+
+  - id: vidro_turbina
+    title: "Vidro da Turbina"
+    type: optional
+    deps: [alojamento_turbina]
+    icon: BigReactors:BRMultiblockGlass:1
+    desc: |
+      Vidro + Alojamento da Turbina + vidro = §eVidro da Turbina§r. Nas faces, ele deixa você ver
+      o rotor girando. Hipnotizante.
+    tasks:
+      - get: BigReactors:BRMultiblockGlass:1 x4
+    rewards:
+      - loot: comum
+
+  - id: controlador_turbina
+    title: "Controlador da Turbina"
+    type: main
+    deps: [alojamento_turbina, blutonium]
+    icon: BigReactors:BRTurbinePart:1
+    desc: |
+      4 Alojamentos da Turbina, §e2 Blutonium§r e 1 diamante = §eControlador da Turbina§r. Ele liga
+      a turbina, define a vazão de vapor e liga/desliga a indução (as bobinas). É aqui que o
+      Blutonium faz falta!
+    tasks:
+      - get: BigReactors:BRTurbinePart:1
+    rewards:
+      - xp: 4
+      - choice: [minecraft:diamond x1, ore:ingotBlutonium x2, BigReactors:BRTurbinePart x8]
+
+  - id: portas_turbina
+    title: "Portas da Turbina"
+    type: main
+    deps: [alojamento_turbina]
+    icon: BigReactors:BRTurbinePart:3
+    desc: |
+      Duas portas essenciais:
+      §e• Porta de Energia da Turbina§r (4 Alojamentos + 4 redstone) — por onde sai o RF.
+      §e• Porta de Fluídos da Turbina§r (4 Alojamentos, 2 ferros, balde e pistão) — uma em modo
+      entrada (vapor), outra em modo saída (água condensada, que pode voltar ao reator!).
+      Faça 1 de energia e 2 de fluido.
+    tasks:
+      - get: [BigReactors:BRTurbinePart:2, BigReactors:BRTurbinePart:3 x2]
+    rewards:
+      - xp: 4
+      - choice: [minecraft:redstone x24, minecraft:bucket x4, EnderIO:itemLiquidConduit:1 x8]
+
+  - id: haste_rotor
+    title: "Haste do Rotor"
+    type: normal
+    deps: [alojamento_turbina]
+    icon: BigReactors:BRTurbineRotorPart
+    desc: |
+      Ferro, Cyanite e ferro numa linha = §eHaste do Rotor da Turbina§r. As hastes formam uma linha
+      reta que sai do Rolamento e atravessa a turbina. Faça §e6§r.
+    tasks:
+      - get: BigReactors:BRTurbineRotorPart x6
+    rewards:
+      - xp: 3
+      - item: ore:ingotCyanite x4
+
+  - id: lamina_rotor
+    title: "Lâmina do Rotor"
+    type: normal
+    deps: [haste_rotor]
+    icon: BigReactors:BRTurbineRotorPart:1
+    desc: |
+      Cyanite e 2 ferros = §eLâmina do Rotor da Turbina§r. As lâminas saem da haste nas quatro
+      direções, formando "hélices" na parte da turbina onde o vapor passa. Cada lâmina dá conta
+      de uma quantidade de vapor — o GUI do controlador avisa se faltam lâminas. Faça §e16§r.
+    tasks:
+      - get: BigReactors:BRTurbineRotorPart:1 x16
+    rewards:
+      - xp: 3
+      - item: minecraft:iron_ingot x16
+
+  - id: rolamento
+    title: "Rolamento do Rotor"
+    type: normal
+    deps: [haste_rotor]
+    icon: BigReactors:BRTurbinePart:4
+    desc: |
+      4 Alojamentos, 2 Hastes do Rotor e 3 diamantes = §eRolamento do Rotor§r. Ele fica no
+      §ecentro de uma face§r da turbina e é dele que a haste do rotor sai, em linha reta, até a
+      face oposta.
+    tasks:
+      - get: BigReactors:BRTurbinePart:4
+    rewards:
+      - xp: 3
+      - item: minecraft:diamond
+
+  - id: bobina_turbina
+    title: "A Bobina de Indução"
+    type: normal
+    deps: [rolamento]
+    icon: minecraft:gold_block
+    desc: |
+      A bobina não é uma peça: são §eblocos de metal§r colocados em volta da haste do rotor, numa
+      parte da turbina §esem lâminas§r. Quanto melhor o metal, mais energia:
+      §e• Ferro§r (fraco) → §eOuro§r → Cobre/Bronze/Aço/Invar/Prata → §eEletro§r → §ePlatina§r →
+      §eEnderium§r → §eLudicrite§r (o melhor).
+
+      Comece com §e8 blocos de ouro§r — é uma bobina honesta e fácil.
+    tasks:
+      - get: minecraft:gold_block x8
+    rewards:
+      - xp: 3
+      - item: minecraft:gold_ingot x8
+
+  - id: info_turbina
+    title: "Montando a Turbina"
+    type: info
+    deps: [controlador_turbina, portas_turbina, lamina_rotor, bobina_turbina]
+    icon: BigReactors:BRTurbinePart
+    desc: |
+      §e1.§r Caixa de Alojamentos (no mínimo 5×5 de base). Arestas: só Alojamento.
+      §e2.§r §eRolamento§r no centro de uma face; a §eHaste do Rotor§r sai dele em linha reta.
+      §e3.§r Na parte da haste perto da entrada de vapor: §eLâminas§r nas 4 direções.
+      §e4.§r Na outra parte: §eblocos de metal§r em volta da haste (a bobina), sem lâminas ali.
+      §e5.§r Nas faces: Controlador, Porta de Energia, 2 Portas de Fluidos (vapor entra, água sai)
+      e Vidros, se quiser.
+
+      §aPonto ideal:§r a turbina gera melhor perto de §e900 ou 1800 RPM§r. Ajuste a vazão de vapor
+      no GUI e ligue/desligue a indução para controlar a velocidade.
+    tasks:
+      - check
+    rewards:
+      - xp: 2
+
+  - id: turbina
+    title: "A Turbina"
+    type: milestone
+    deps: [info_turbina, reator_ativo]
+    icon: BigReactors:BRTurbinePart:4
+    banner: "A Turbina"
+    subtitle: "1800 rotações por minuto"
+    desc: |
+      Ouviu esse assobio subindo? É o rotor chegando em 1800 RPM! O vapor do seu reator ativo
+      está girando lâminas de Cyanite e o ouro (ou o Ludicrite) está cuspindo RF como nunca.
+
+      Herói, isso é o ciclo completo de uma usina nuclear: §ecombustível → calor → vapor → rotação
+      → energia§r — e a água condensada ainda volta para o reator. Os engenheiros Antigos ficariam
+      de queixo caído.
+
+      Mostre o Controlador, o Rolamento e as lâminas da sua turbina!
+    tasks:
+      - get: [BigReactors:BRTurbinePart:1, BigReactors:BRTurbinePart:4, BigReactors:BRTurbineRotorPart:1 x8]
+    rewards:
+      - xp: 10
+      - kit: {name: "Kit da Turbina Atômica", items: [BigReactors:BRTurbineRotorPart:1 x8, BigReactors:BRTurbineRotorPart x4, minecraft:gold_block x4, ore:ingotCyanite x8, ore:ingotBlutonium x2]}
+      - loot: raro
+
+  - id: bobina_thermal
+    title: "Bobinas de Metais Nobres"
+    type: optional
+    deps: [turbina]
+    icon: ThermalFoundation:Storage:7
+    desc: |
+      Entre o ouro e o Enderium existem bobinas intermediárias muito boas: blocos de §eEletro§r e de
+      §ePlatina§r (Thermal). Junte §e4 blocos§r de um deles.
+    tasks:
+      - one_of: [ore:blockElectrum x4, ore:blockPlatinum x4]
+    rewards:
+      - loot: incomum
+
+  - id: duas_turbinas
+    title: "Duas Turbinas"
+    type: optional
+    deps: [turbina]
+    icon: BigReactors:BRTurbinePart:1
+    desc: |
+      Um reator ativo grande produz vapor para mais de uma turbina. Monte uma segunda turbina e
+      divida o vapor entre as duas — o reator agradece, e o seu banco de energia mais ainda.
+      Faça um §esegundo Controlador da Turbina§r.
+    tasks:
+      - get: BigReactors:BRTurbinePart:1 x2
+    rewards:
+      - loot: raro
+
+  - id: bobina_ludicrite
+    title: "Bobina de Ludicrite"
+    type: optional
+    deps: [turbina, ludicrite]
+    icon: BigReactors:BRMetalBlock:4
+    desc: |
+      Trocar o ouro por §eLudicrite§r é o maior salto de produção que uma turbina pode ter. Junte
+      §e4 Blocos de Ludicrite§r para começar a sua bobina suprema.
+    tasks:
+      - get: BigReactors:BRMetalBlock:4 x4
+    rewards:
+      - loot: epico
+
+  - id: bobina_enderium
+    title: "Bobina de Enderium"
+    type: optional
+    deps: [turbina]
+    icon: ThermalFoundation:Storage:12
+    desc: |
+      Sem estrelas do Nether para o Ludicrite? O §eEnderium§r do Thermal é quase tão bom. Junte §e4
+      Blocos de Enderium§r para a bobina.
+    tasks:
+      - get: ore:blockEnderium x4
+    rewards:
+      - loot: raro
+
+  - id: reator_grande
+    title: "Um Reator de Verdade"
+    type: optional
+    deps: [reator_ativo]
+    icon: BigReactors:YelloriumFuelRod
+    desc: |
+      Reatores maiores, com muitas colunas de combustível separadas por moderadores, são bem mais
+      eficientes. Junte §e32 Hastes de Combustível§r e §e8 Hastes de Controle§r para um reator
+      "de gente grande".
+    tasks:
+      - get: [BigReactors:YelloriumFuelRod x32, BigReactors:BRReactorPart:2 x8]
+    rewards:
+      - loot: raro
+
+  - id: turbina_grande
+    title: "Uma Turbina de Verdade"
+    type: optional
+    deps: [turbina]
+    icon: BigReactors:BRTurbineRotorPart:1
+    desc: |
+      Uma turbina grande aceita muito mais vapor: haste longa e muitas lâminas. Junte §e12 Hastes
+      do Rotor§r e §e48 Lâminas§r.
+    tasks:
+      - get: [BigReactors:BRTurbineRotorPart x12, BigReactors:BRTurbineRotorPart:1 x48]
+    rewards:
+      - loot: raro
+
+  - id: combustivel_blutonium
+    title: "Combustível de Blutonium"
+    type: optional
+    deps: [blutonium]
+    icon: BigReactors:BRMetalBlock:3
+    desc: |
+      O Blutonium também é combustível: coloque-o na Porta de Acesso como se fosse Yellorium. Ele
+      também vira Cyanite ao queimar — um ciclo quase fechado. Traga §e9 Barras de Blutonium§r
+      (ou um bloco) para abastecer o reator.
+    tasks:
+      - one_of: [ore:ingotBlutonium x9, BigReactors:BRMetalBlock:3]
+    rewards:
+      - loot: incomum
+
+  # ======================================================================
+  # MARCO FINAL
+  # ======================================================================
+  - id: mestre_reatores
+    title: "Mestre dos Reatores"
+    type: milestone
+    deps: [reator_passivo, reator_ativo, turbina, ludicrite, moderador_grafite]
+    icon: BigReactors:BRReactorPart:1
+    banner: "Mestre dos Reatores"
+    subtitle: "O Volume do Núcleo Amarelo está completo"
+    effect: 3
+    desc: |
+      Herói. Vem cá, quero te mostrar uma coisa.
+
+      Está vendo aquele minério amarelo que você achou lá embaixo da camada 50? Ele virou pó,
+      virou barra, virou haste. O reator acendeu, aprendeu a ferver água, e a turbina aprendeu a
+      cantar a 1800 RPM. O resíduo virou Cyanite, o Cyanite virou Blutonium, o Blutonium virou
+      Ludicrite. Nada se perdeu — tudo se transformou.
+
+      §bO Volume do Núcleo Amarelo está reescrito.§r E ele não brilha sozinho: esta página é uma das
+      luzes do §6Selo da Engrenagem§r, ao lado do IndustrialCraft, do Mekanism e das grandes
+      máquinas do Registro.
+
+      Obrigada por domar o átomo com tanto cuidado. Eu sabia que podia confiar em você.
+    tasks:
+      - get: [BigReactors:BRReactorPart:1, BigReactors:BRTurbinePart:1, BigReactors:BRMetalBlock:4, ore:ingotBlutonium x4]
+    rewards:
+      - xp: 12
+      - kit: {name: "Legado do Mestre dos Reatores", items: [ore:ingotYellorium x32, ore:ingotBlutonium x8, BigReactors:YelloriumFuelRod x8, BigReactors:BRTurbineRotorPart:1 x16, minecraft:gold_block x8]}
+      - loot: [epico x2]
+      - command: "/effect @p 1 1200 1"

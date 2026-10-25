@@ -520,10 +520,55 @@ quests:
       - xp: 4
       - choice: [minecraft:stone x32, ore:shardCrystal x8, minecraft:compass]
 
+  - id: ruinas
+    title: "Buried Ruins"
+    type: main
+    deps: [mesa_fundicao]
+    icon: minecraft:mossy_cobblestone
+    desc: |
+      "De quadrados de pedregulho a minas antigas, parece que outros vieram antes de você."
+      Encontre §equalquer estrutura gerada§r — uma dungeon de pedregulho, um mineshaft, ou uma
+      das estruturas do próprio ChromatiCraft (descoberta "Buried Ruins").
+
+      §ePor que importa:§r no código do mod, o nível de pesquisa "Basic Crafting" do Léxico —
+      que libera as receitas básicas da Mesa de Fundição (Pedra Cristalina, Chroma Collector,
+      Bússola de Pylon, runas...) — exige exatamente essa descoberta. Sem ela, a mesa fica
+      quase inútil.
+    tasks:
+      - check
+    rewards:
+      - xp: 4
+      - choice: [minecraft:torch x64, minecraft:iron_pickaxe, minecraft:bread x16]
+
+  - id: info_niveis
+    title: "Os Níveis do Léxico"
+    type: info
+    deps: [ruinas]
+    icon: ChromatiCraft:chromaticraft_item_help
+    desc: |
+      As pesquisas do Léxico se agrupam em níveis, e cada nível tem uma condição (conferida no
+      código):
+
+      * §eExploration§r: ter achado cristais.
+      * §eBasic Crafting§r: ter achado uma estrutura gerada.
+      * §eRune Crafting§r: ter fundido uma receita básica.
+      * §eEnergy And Elements§r: ter visto um Pylon e drenado energia dele.
+      * §eMultiblock Casting§r: ter fundido uma receita com runas.
+      * §eTransmitting Energy§r: ter fundido uma receita multibloco.
+      * §ePylon Casting§r: ter o Crystal Repeater ("Broadcasting").
+      * §eEndgame§r: ter fundido uma receita de Pylon.
+      * §eElemental Mastery§r: ter restaurado o Monumento.
+
+      As quests deste capítulo seguem essa escada.
+    tasks:
+      - check
+    rewards:
+      - xp: 1
+
   - id: pedra_cristalina
     title: "Crystalline Stone"
     type: normal
-    deps: [mesa_fundicao]
+    deps: [ruinas]
     icon: ChromatiCraft:chromaticraft_block_pylonstruct
     desc: |
       Todas as estruturas mágicas do mundo usam uma §epedra escura e lisa§r que conduz energia
@@ -539,7 +584,7 @@ quests:
   - id: runas
     title: "Crystal Rune"
     type: main
-    deps: [mesa_fundicao]
+    deps: [ruinas, todas_as_cores]
     icon: ChromatiCraft:chromaticraft_block_rune:12
     desc: |
       Pedras gravadas com símbolos brilhantes, como as que ficam em volta dos Pylons: as
@@ -567,7 +612,7 @@ quests:
   - id: luz_cristal
     title: "Crystal Glow"
     type: optional
-    deps: [mesa_fundicao]
+    deps: [ruinas]
     icon: ChromatiCraft:chromaticraft_block_glow
     desc: |
       Um fragmento montado sobre uma base de outro material = uma luz decorativa de parede,
@@ -580,7 +625,7 @@ quests:
   - id: cristal_bruto
     title: "Raw Crystal"
     type: normal
-    deps: [mesa_fundicao]
+    deps: [ruinas]
     icon: ChromatiCraft:chromaticraft_item_crafting:4
     desc: |
       O §eCristal Bruto§r é uma peça base de várias receitas, feita direto na Mesa de Fundição.
@@ -594,7 +639,7 @@ quests:
   - id: vidro_cristal
     title: "Crystal Glass"
     type: optional
-    deps: [mesa_fundicao]
+    deps: [ruinas]
     icon: ChromatiCraft:chromaticraft_block_glass:4
     desc: |
       Vidro tingido de energia, feito na Mesa de Fundição. (O §eDefensive Glass§r, uma
@@ -644,7 +689,7 @@ quests:
   - id: bussola_pylon
     title: "Pylon Compass"
     type: normal
-    deps: [pylon, mesa_fundicao]
+    deps: [pylon, ruinas]
     icon: ChromatiCraft:chromaticraft_item_finder
     desc: |
       A §eBússola de Pylon§r analisa o campo de energia e aponta o Pylon mais próximo de cada
@@ -709,3 +754,1069 @@ quests:
     rewards:
       - xp: 4
       - choice: [minecraft:golden_apple, ChromatiCraft:chromaticraft_item_berry:13 x8, minecraft:cooked_beef x16]
+
+  # ======================================================================
+  # FASE 5 — FUNDIÇÃO COM RUNAS (CASTING ROOM)
+  # ======================================================================
+  - id: sala_fundicao
+    title: "Weak Magical Foci"
+    type: main
+    deps: [todas_as_cores, runas, pedra_cristalina]
+    icon: ChromatiCraft:chromaticraft_item_cluster
+    desc: |
+      Você ainda não domina os Pylons, mas as runas são um foco mais brando. Construa em volta
+      da Mesa de Fundição a §eCasting Room§r — o anel de Pedra Cristalina e Runas que o Léxico
+      desenha (página "Casting II") — e a mesa passa a aceitar §ereceitas com runas§r.
+
+      A primeira prova: um §eGrupo de Cristais Vermelho§r (Red Crystal Group), fundido com runas.
+      Descoberta "Weak Magical Foci"!
+    tasks:
+      - get: ChromatiCraft:chromaticraft_item_cluster
+    rewards:
+      - xp: 4
+      - choice: [minecraft:glowstone_dust x16, ChromatiCraft:chromaticraft_block_pylonstruct x32, ore:shardCrystal x16]
+
+  - id: grupos_cristal
+    title: "Crystal Groups"
+    type: normal
+    deps: [sala_fundicao]
+    icon: ChromatiCraft:chromaticraft_item_cluster:3
+    desc: |
+      Raramente um elemento trabalha sozinho. Os §eGrupos de Cristais§r (Vermelho, Verde,
+      Laranja e Branco) juntam vários fragmentos e são a base dos Cachos, Aglomerados, Núcleos
+      e da Estrela de Cristal. Faça os quatro grupos.
+    tasks:
+      - get: [ChromatiCraft:chromaticraft_item_cluster, ChromatiCraft:chromaticraft_item_cluster:1, ChromatiCraft:chromaticraft_item_cluster:2, ChromatiCraft:chromaticraft_item_cluster:3]
+    rewards:
+      - xp: 3
+      - item: ore:shardCrystal x16
+
+  - id: sementes_cristal
+    title: "Crystal Seeds"
+    type: normal
+    deps: [sala_fundicao]
+    icon: ChromatiCraft:chromaticraft_item_seed:13
+    desc: |
+      Caçar cristais cansa. Imprima a magia dos fragmentos numa semente e ela vira uma §eCrystal
+      Bloom§r — uma flor de cristal decorativa que ainda dá um pequeno bônus de fragmentos.
+    tasks:
+      - get: ChromatiCraft:chromaticraft_item_seed:*
+    rewards:
+      - xp: 3
+      - item: minecraft:wheat_seeds x16
+
+  - id: suporte_itens
+    title: "Item Casting Stand"
+    type: main
+    deps: [sala_fundicao]
+    icon: ChromatiCraft:chromaticraft_item_placer:13
+    desc: |
+      Ideias grandiosas não cabem em 9 slots. Os §eSuportes de Fundição§r seguram itens em volta
+      da mesa e ampliam a grade para §e5×5§r. O anel de fora precisa ficar um bloco mais alto,
+      com linha de visão para a mesa. Faça vários — o Léxico mostra quantos a estrutura pede.
+    tasks:
+      - get: ChromatiCraft:chromaticraft_item_placer:13 x8
+    rewards:
+      - xp: 4
+      - choice: [ChromatiCraft:chromaticraft_block_pylonstruct x32, ore:shardCrystal x16, minecraft:gold_ingot x8]
+
+  - id: encantador_cromatico
+    title: "Chromatic Enchanter"
+    type: normal
+    deps: [sala_fundicao, coletor_chroma]
+    icon: ChromatiCraft:chromaticraft_item_placer:1
+    desc: |
+      Encantar sem sorteio! O §eEncantador Cromático§r usa §echroma líquido§r (experiência
+      concentrada) para aplicar exatamente os encantamentos que você escolher. Itens já
+      encantados dão desconto, e colocar o Encantador embaixo de uma mesa de encantamento
+      "normal" com estantes reduz ainda mais o custo.
+    tasks:
+      - get: ChromatiCraft:chromaticraft_item_placer:1
+    rewards:
+      - xp: 3
+      - item: minecraft:book x8
+
+  - id: fenda_itens
+    title: "Item Rift"
+    type: optional
+    deps: [sala_fundicao, energia_interna]
+    icon: ChromatiCraft:chromaticraft_item_placer:20
+    desc: |
+      "Teletransporta" itens entre dois inventários com linha de visão — sem tubos. Uma ideia
+      antiga que você finalmente conseguiu fazer funcionar.
+    tasks:
+      - get: ChromatiCraft:chromaticraft_item_placer:20 x2
+    rewards:
+      - loot: comum
+
+  - id: flores_magicas
+    title: "Flores Encantadas"
+    type: optional
+    deps: [sala_fundicao]
+    icon: ChromatiCraft:chromaticraft_item_placer:64
+    desc: |
+      Plantas-máquina da Casting Room: §eHeat Lily§r, §eCoalescence Orchid§r (gera pedregulho),
+      §eReversion Lotus§r e §eEnrichment Vine§r (acelera plantas). Faça qualquer uma.
+    tasks:
+      - one_of: [ChromatiCraft:chromaticraft_item_placer:25, ChromatiCraft:chromaticraft_item_placer:64, ChromatiCraft:chromaticraft_item_placer:63, ChromatiCraft:chromaticraft_item_placer:65]
+    rewards:
+      - loot: comum
+
+  - id: picareta_minerio
+    title: "Ore-Finding Pickaxe"
+    type: normal
+    deps: [sala_fundicao]
+    icon: ChromatiCraft:chromaticraft_item_orepick
+    desc: |
+      Uma picareta que §efareja minério§r. Para liberar a receita, o Léxico pede a descoberta
+      "Resource Acquisition" (minerar os seus primeiros minérios). Ela é carregada por energia
+      cristalina, como as outras ferramentas deste Volume.
+    tasks:
+      - get: ChromatiCraft:chromaticraft_item_orepick
+    rewards:
+      - xp: 3
+      - item: minecraft:iron_ore x16
+
+  - id: ferramentas_runicas
+    title: "Ore Harvester e Multitool"
+    type: optional
+    deps: [picareta_minerio]
+    icon: ChromatiCraft:chromaticraft_item_oresilk
+    desc: |
+      O §eOre Harvester§r colhe o bloco de minério inteiro (Toque Suave sem encantar) e a
+      §eMultitool§r faz o trabalho de várias ferramentas. Qualquer uma.
+    tasks:
+      - one_of: [ChromatiCraft:chromaticraft_item_oresilk, ChromatiCraft:chromaticraft_item_multitool]
+    rewards:
+      - loot: comum
+
+  - id: ligador
+    title: "Linker"
+    type: normal
+    deps: [sala_fundicao]
+    icon: ChromatiCraft:chromaticraft_item_linktool
+    desc: |
+      Várias construções vêm em pares e precisam ser ligadas: o §eLinker§r grava uma posição e
+      a liga a outra. Simples e essencial.
+    tasks:
+      - get: ChromatiCraft:chromaticraft_item_linktool
+    rewards:
+      - xp: 2
+      - item: minecraft:ender_pearl x2
+
+  - id: utilidades_runicas
+    title: "Utilidades da Casting Room"
+    type: optional
+    deps: [sala_fundicao]
+    icon: ChromatiCraft:chromaticraft_item_placer:62
+    desc: |
+      Mais construções de runa: §eItem Inserter§r, §eLumen Lamp Controller§r, §eSubterranean
+      Illuminator§r (ilumina cavernas; pede a descoberta "Lower Layers") e o §eItem Mover§r.
+      Qualquer uma.
+    tasks:
+      - one_of: [ChromatiCraft:chromaticraft_item_placer:62, ChromatiCraft:chromaticraft_item_placer:37, ChromatiCraft:chromaticraft_item_placer:58, ChromatiCraft:chromaticraft_item_bulkmover]
+    rewards:
+      - loot: comum
+
+  - id: caminho
+    title: "Travel Path"
+    type: optional
+    deps: [sala_fundicao]
+    icon: ChromatiCraft:chromaticraft_block_path
+    desc: |
+      Blocos de caminho com energia que aceleram quem anda sobre eles. Estrada entre a base e os
+      Pylons, resolvida.
+    tasks:
+      - get: ChromatiCraft:chromaticraft_block_path:* x16
+    rewards:
+      - loot: comum
+
+  # ======================================================================
+  # FASE 6 — CHROMA LÍQUIDO
+  # ======================================================================
+  - id: coletor_chroma
+    title: "Chroma Collector"
+    type: main
+    deps: [ruinas]
+    icon: ChromatiCraft:chromaticraft_item_placer:4
+    desc: |
+      "Um coletor, mas de quê, e a partir do quê?" De §eexperiência§r! O §eChroma Collector§r
+      (receita básica da mesa) converte XP — drenada de você ou bombeada como líquido — em
+      §echroma líquido§r, usando fragmentos como catalisador. Descoberta "Magic Liquid".
+    tasks:
+      - get: ChromatiCraft:chromaticraft_item_placer:4
+    rewards:
+      - xp: 6
+      - choice: [minecraft:experience_bottle x16, minecraft:bucket x4, ore:shardCrystal x8]
+
+  - id: balde_chroma
+    title: "Liquid Chroma"
+    type: main
+    deps: [coletor_chroma]
+    icon: ChromatiCraft:chromaticraft_item_bucket
+    desc: |
+      Encha um §eBalde de Chroma Líquido§r. Esse líquido iridescente é a "tinta" mágica do
+      Volume: encantamentos, ligas, fragmentos carregados, infusão... Pisar nele dá uma leve
+      regeneração (descoberta "Liquid Effects").
+    tasks:
+      - get: ChromatiCraft:chromaticraft_item_bucket
+    rewards:
+      - xp: 4
+      - choice: [minecraft:experience_bottle x16, minecraft:bucket x4, ChromatiCraft:chromaticraft_item_berry:13 x8]
+
+  - id: info_piscina
+    title: "A Piscina de Chroma"
+    type: info
+    deps: [balde_chroma]
+    icon: ChromatiCraft:chromaticraft_block_chroma
+    desc: |
+      Muitas receitas deste Volume são feitas §ejogando itens numa poça de chroma líquido§r
+      (blocos-fonte no mundo). O chroma dissolve o que cai nele e devolve algo mais energizado.
+      Monte uma piscina pequena, rasa e fácil de esvaziar, longe de ralos.
+
+      §aDica:§r a "decodificação de fragmentos" também pode ser feita jogando fragmentos no
+      chroma (o Léxico diz isso com um certo deboche).
+    tasks:
+      - check
+    rewards:
+      - xp: 1
+
+  - id: fragmento_carregado
+    title: "Enriching Solvent"
+    type: main
+    deps: [info_piscina, sala_fundicao, frutinhas]
+    icon: ChromatiCraft:chromaticraft_item_shard:27
+    desc: |
+      Dissolva §efrutinhas§r no chroma e ele passa a §ecarregar§r os fragmentos de cristal da mesma
+      cor que você jogar dentro: saem §eFragmentos Carregados§r (Charged/Boosted Shards), muito
+      mais potentes. O código exige, antes disso, a Casting Room (runas) e as Árvores Tingidas.
+
+      Carregue §e4 fragmentos§r de qualquer cor.
+    tasks:
+      - one_of: [ChromatiCraft:chromaticraft_item_shard:16 x4, ChromatiCraft:chromaticraft_item_shard:17 x4, ChromatiCraft:chromaticraft_item_shard:18 x4, ChromatiCraft:chromaticraft_item_shard:19 x4, ChromatiCraft:chromaticraft_item_shard:20 x4, ChromatiCraft:chromaticraft_item_shard:21 x4, ChromatiCraft:chromaticraft_item_shard:22 x4, ChromatiCraft:chromaticraft_item_shard:23 x4, ChromatiCraft:chromaticraft_item_shard:24 x4, ChromatiCraft:chromaticraft_item_shard:25 x4, ChromatiCraft:chromaticraft_item_shard:26 x4, ChromatiCraft:chromaticraft_item_shard:27 x4, ChromatiCraft:chromaticraft_item_shard:28 x4, ChromatiCraft:chromaticraft_item_shard:29 x4, ChromatiCraft:chromaticraft_item_shard:30 x4, ChromatiCraft:chromaticraft_item_shard:31 x4]
+    rewards:
+      - xp: 5
+      - choice: [ChromatiCraft:chromaticraft_item_berry:4 x8, ChromatiCraft:chromaticraft_item_berry:11 x8, ChromatiCraft:chromaticraft_item_berry:14 x8]
+
+  - id: cervejaria
+    title: "Crystal Brewery"
+    type: optional
+    deps: [fragmento_carregado]
+    icon: ChromatiCraft:chromaticraft_item_placer:7
+    desc: |
+      Poções sem verruga do Nether: a §eCrystal Brewery§r faz poções direto de garrafas de água
+      com fragmentos. Fragmento comum = nível I por 3:00; fragmento carregado = nível II por
+      8:00. Alguns fragmentos modificam a poção.
+    tasks:
+      - get: ChromatiCraft:chromaticraft_item_placer:7
+    rewards:
+      - loot: comum
+
+  - id: po_cromico
+    title: "Chromic Dust"
+    type: normal
+    deps: [balde_chroma]
+    icon: ChromatiCraft:chromaticraft_item_tiered
+    desc: |
+      Com o seu conhecimento crescendo, você passa a notar §eplantas e rochas mágicas§r que antes
+      pareciam comuns (Léxico: "Plants" e "Buried Secrets") — elas só aparecem quando você
+      sabe o bastante. Colha com Fortuna. Delas sai, entre outros, o §ePó Crômico§r.
+    tasks:
+      - get: ChromatiCraft:chromaticraft_item_tiered x16
+    rewards:
+      - xp: 3
+      - item: minecraft:iron_ingot x8
+
+  - id: liga_chroma
+    title: "Chroma Alloy Ingot"
+    type: main
+    deps: [po_cromico, fragmento_carregado, templo_fundicao]
+    icon: ChromatiCraft:chromaticraft_item_crafting:11
+    desc: |
+      §e1 lingote de ferro + 16 Pós Crômicos§r jogados na piscina de chroma = §eLingote de Liga
+      de Chroma§r. Descoberta "Magic Alloying" — que o código só libera depois dos fragmentos
+      carregados, do Casting Temple e dos efeitos do chroma.
+
+      O ouro e outros pós dão as demais ligas: o Léxico (página "Alloying") lista todas.
+    tasks:
+      - get: ChromatiCraft:chromaticraft_item_crafting:11 x2
+    rewards:
+      - xp: 5
+      - choice: [minecraft:iron_ingot x16, minecraft:gold_ingot x8, ChromatiCraft:chromaticraft_item_tiered x8]
+
+  - id: ligas_avancadas
+    title: "Ligas Elementais"
+    type: normal
+    deps: [liga_chroma]
+    icon: ChromatiCraft:chromaticraft_item_crafting:16
+    desc: |
+      Mais ligas da piscina: §eFiraxite Alloy§r (ouro + firaxite + pó de blaze), §eResonating
+      Ingot§r (ferro + pó de enderstone + pérola), §eFluidic Essence Ingot§r, §eRadiative Alloy§r
+      (ouro + redstone + pó transmissivo) e §eAura Conducting Ingot§r. Faça duas delas.
+    tasks:
+      - one_of: [ChromatiCraft:chromaticraft_item_crafting:16 x2, ChromatiCraft:chromaticraft_item_crafting:17 x2, ChromatiCraft:chromaticraft_item_crafting:18 x2, ChromatiCraft:chromaticraft_item_crafting:19 x2, ChromatiCraft:chromaticraft_item_crafting:20 x2]
+    rewards:
+      - xp: 3
+      - item: minecraft:gold_ingot x8
+
+  - id: tanque_liga
+    title: "Alloying Tank"
+    type: optional
+    deps: [ligas_avancadas, ligacao_pylon]
+    icon: ChromatiCraft:chromaticraft_item_placer:67
+    desc: |
+      Cansou de jogar itens na piscina? O §eAlloying Tank§r faz as ligas num tanque de vidro
+      blindado, gastando 3 baldes de chroma por ciclo. É receita de Pylon (fundição de topo).
+    tasks:
+      - get: ChromatiCraft:chromaticraft_item_placer:67
+    rewards:
+      - loot: incomum
+
+  # ======================================================================
+  # FASE 7 — O CASTING TEMPLE (MULTIBLOCO)
+  # ======================================================================
+  - id: vila_fracassada
+    title: "A...less than honorable attempt"
+    type: normal
+    deps: [sala_fundicao]
+    icon: minecraft:emerald
+    desc: |
+      Você não foi a única pessoa a tentar. Em §evilas§r há construções de madeira ou em ruínas
+      onde os aldeões tentaram — e falharam feio — manipular energia cristalina. Encontre uma e
+      examine (descoberta "A...less than honorable attempt").
+
+      §eImportante:§r no código deste pack, a fundição multibloco (Casting Temple) §eexige§r essa
+      descoberta. Procure vilas cedo!
+    tasks:
+      - check
+    rewards:
+      - xp: 3
+      - item: minecraft:emerald x4
+
+  - id: templo_fundicao
+    title: "More Complex Crafting"
+    type: main
+    deps: [suporte_itens, vila_fracassada, energia_interna]
+    icon: ChromatiCraft:chromaticraft_item_crafting
+    desc: |
+      Construa o §eCasting Temple§r: a Casting Room ampliada, com os Suportes de Fundição no anel
+      elevado (o Léxico mostra camada por camada). Agora a mesa aceita receitas §e5×5§r
+      (descoberta "More Complex Crafting").
+
+      Primeira receita multibloco: o §eVoid Core§r, um núcleo que abre um furo para o vazio.
+    tasks:
+      - get: ChromatiCraft:chromaticraft_item_crafting
+    rewards:
+      - xp: 5
+      - choice: [ore:shardCrystal x24, ChromatiCraft:chromaticraft_block_pylonstruct x32, minecraft:ender_pearl x4]
+
+  - id: nucleos
+    title: "Energy e Transformation Core"
+    type: normal
+    deps: [templo_fundicao]
+    icon: ChromatiCraft:chromaticraft_item_crafting:5
+    desc: |
+      Construções com funções especiais precisam de núcleos: além do Void Core, o §eEnergy Core§r
+      e o §eTransformation Core§r. Faça os dois.
+    tasks:
+      - get: [ChromatiCraft:chromaticraft_item_crafting:5, ChromatiCraft:chromaticraft_item_crafting:7]
+    rewards:
+      - xp: 3
+      - item: ore:shardCrystal x8
+
+  - id: optica_cristal
+    title: "Lens, Focus e Mirror"
+    type: normal
+    deps: [templo_fundicao]
+    icon: ChromatiCraft:chromaticraft_item_crafting:1
+    desc: |
+      Peças ópticas de cristal: §eCrystal Lens§r, §eCrystal Focus§r e §eCrystal Mirror§r. Elas
+      concentram e redirecionam energia em repetidores, lasers e transmissores.
+    tasks:
+      - get: [ChromatiCraft:chromaticraft_item_crafting:1, ChromatiCraft:chromaticraft_item_crafting:2, ChromatiCraft:chromaticraft_item_crafting:3]
+    rewards:
+      - xp: 3
+      - item: minecraft:glass x16
+
+  - id: unidade_elemental
+    title: "Elemental Core"
+    type: normal
+    deps: [templo_fundicao]
+    icon: ChromatiCraft:chromaticraft_item_crafting:8
+    desc: |
+      O §eElemental Core§r (Element Unit) reúne a energia de várias cores numa peça só — base de
+      muitas construções de nível alto.
+    tasks:
+      - get: ChromatiCraft:chromaticraft_item_crafting:8
+    rewards:
+      - xp: 3
+      - item: ore:shardCrystal x8
+
+  - id: nucleo_estrela
+    title: "Crystal Core e Crystal Star"
+    type: normal
+    deps: [grupos_cristal, templo_fundicao]
+    icon: ChromatiCraft:chromaticraft_item_cluster:11
+    desc: |
+      Grupos viram Cachos, Cachos viram Aglomerados, Aglomerados viram o §eCrystal Core§r — e o
+      topo é a §eCrystal Star§r, que une todas as cores. Faça o Núcleo e a Estrela.
+    tasks:
+      - get: [ChromatiCraft:chromaticraft_item_cluster:10, ChromatiCraft:chromaticraft_item_cluster:11]
+    rewards:
+      - xp: 4
+      - item: ore:shardCrystal x16
+
+  - id: pingente
+    title: "Pendant"
+    type: normal
+    deps: [templo_fundicao]
+    icon: ChromatiCraft:chromaticraft_item_pendant:4
+    desc: |
+      Por que carregar um cristal de caverna inteiro? O §ePendant§r é um pedacinho do cristal
+      que você §eveste§r e que aplica o efeito do elemento onde você estiver (pede a descoberta
+      de poções — "Ambient Effects"). Mais tarde existe a versão Enhanced.
+    tasks:
+      - get: ChromatiCraft:chromaticraft_item_pendant:*
+    rewards:
+      - xp: 3
+      - item: minecraft:string x8
+
+  - id: cristal_armazenamento
+    title: "Energy Storage Crystal"
+    type: main
+    deps: [templo_fundicao]
+    icon: ChromatiCraft:chromaticraft_item_storage
+    desc: |
+      Juntar um pouco de todas as cores rende um cristal que §eguarda energia§r como uma bateria
+      — para construções portáteis demais para a rede de cristal. Descoberta "Lumen Storage".
+    tasks:
+      - get: ChromatiCraft:chromaticraft_item_storage:*
+    rewards:
+      - xp: 5
+      - choice: [ore:shardCrystal x16, minecraft:glowstone_dust x16, minecraft:diamond]
+
+  - id: carregador
+    title: "Storage Crystal Charger"
+    type: normal
+    deps: [cristal_armazenamento]
+    icon: ChromatiCraft:chromaticraft_item_placer:14
+    desc: |
+      Energia crua sobrecarregaria o cristal. O §eCarregador§r é uma moldura que blinda as
+      bordas e foca a energia no centro (e gira — não pergunte). Carregue um cristal nele:
+      descoberta "Lumen Storage II".
+    tasks:
+      - get: ChromatiCraft:chromaticraft_item_placer:14
+    rewards:
+      - xp: 4
+      - item: ChromatiCraft:chromaticraft_block_pylonstruct x16
+
+  - id: suporte_infusao
+    title: "Infusion Stand"
+    type: main
+    deps: [liga_chroma]
+    icon: ChromatiCraft:chromaticraft_item_placer:22
+    desc: |
+      Fragmentos purificados não respondem a ser jogados no chroma. O §eInfusion Stand§r
+      segura o item e, cercado por um §efosso de chroma§r, cria um vórtice que infunde a
+      energia (descoberta "Resourceful Experience", que vem depois das ligas). O Léxico
+      mostra a estrutura.
+    tasks:
+      - get: ChromatiCraft:chromaticraft_item_placer:22
+    rewards:
+      - xp: 5
+      - choice: [ChromatiCraft:chromaticraft_item_bucket x2, ChromatiCraft:chromaticraft_item_crafting:11 x2, ore:shardCrystal x16]
+
+  - id: cristal_iridescente
+    title: "Iridescent Crystal"
+    type: normal
+    deps: [suporte_infusao]
+    icon: ChromatiCraft:chromaticraft_item_crafting:10
+    desc: |
+      Purificados e infundidos com chroma, os fragmentos viram §eIridescent Crystal Shards§r, que
+      se juntam em §eIridescent Crystal Chunks§r — as peças dos Power Crystals. Faça um Chunk.
+    tasks:
+      - get: ChromatiCraft:chromaticraft_item_crafting:10
+    rewards:
+      - xp: 4
+      - item: ChromatiCraft:chromaticraft_item_bucket
+
+  - id: estrelas_ferramenta
+    title: "Transition e Excavation Star"
+    type: optional
+    deps: [templo_fundicao]
+    icon: ChromatiCraft:chromaticraft_item_transition
+    desc: |
+      A energia cinza transforma: a §eTransition Star§r troca grandes áreas de um bloco por
+      outro. A energia da terra escava: a §eExcavation Star§r limpa uma área de blocos iguais
+      conectados. Qualquer uma das duas.
+    tasks:
+      - one_of: [ChromatiCraft:chromaticraft_item_transition, ChromatiCraft:chromaticraft_item_excavator]
+    rewards:
+      - loot: comum
+
+  - id: portal_inventario
+    title: "Inventory Warp"
+    type: optional
+    deps: [templo_fundicao]
+    icon: ChromatiCraft:chromaticraft_item_link
+    desc: |
+      Liga um item a um inventário distante e dá acesso a ele de onde você estiver. Pratique a
+      arte de nunca mais voltar para casa buscar algo.
+    tasks:
+      - get: ChromatiCraft:chromaticraft_item_link
+    rewards:
+      - loot: comum
+
+  - id: lampada_elemental
+    title: "Elemental Lamp"
+    type: optional
+    deps: [fragmento_carregado, templo_fundicao]
+    icon: ChromatiCraft:chromaticraft_item_placer:35
+    desc: |
+      Uma lâmpada que mantém mobs afastados num raio que cresce com cada elemento adicionado
+      (com fragmentos carregados). Proteção bonita para a base.
+    tasks:
+      - get: ChromatiCraft:chromaticraft_item_placer:35
+    rewards:
+      - loot: incomum
+
+  - id: chama_transmutacao
+    title: "Transmutation Flame"
+    type: optional
+    deps: [fragmento_carregado, templo_fundicao]
+    icon: ChromatiCraft:chromaticraft_item_placer:60
+    desc: |
+      Queima itens que você tem de sobra e usa a energia para fundir o que falta (diamante,
+      fragmentos, ferro) — a aba "Lumen Transmutation" do NEI lista mais de 800 conversões.
+      §cA contenção é imperfeita:§r ela vaza e, cheia demais, solta descargas.
+    tasks:
+      - get: ChromatiCraft:chromaticraft_item_placer:60
+    rewards:
+      - loot: incomum
+
+  - id: estrelas_mobilidade
+    title: "Construction e Mobility Star"
+    type: optional
+    deps: [templo_fundicao]
+    icon: ChromatiCraft:chromaticraft_item_builder
+    desc: |
+      Mais ferramentas-estrela: a §eConstruction Star§r (constrói em massa) e a §eMobility
+      Star§r (teleporte curto). Qualquer uma.
+    tasks:
+      - one_of: [ChromatiCraft:chromaticraft_item_builder, ChromatiCraft:chromaticraft_item_teleport]
+    rewards:
+      - loot: comum
+
+  # ======================================================================
+  # FASE 8 — TRANSMISSÃO DE ENERGIA LÚMEN
+  # ======================================================================
+  - id: repetidor_lumen
+    title: "Lumen Repeater"
+    type: main
+    deps: [sala_fundicao, coletor_chroma, energia_interna]
+    icon: ChromatiCraft:chromaticraft_item_placer:68
+    desc: |
+      Um Pylon transmite energia por feixes retos (as "ley lines") com alcance limitado, e
+      quase tudo que não é ar ou vidro bloqueia o feixe. Para trazer energia até a base você
+      precisa de §erepetidores§r — e o primeiro é o §eLumen Repeater§r de madeira.
+
+      É uma primeira tentativa, de qualidade... questionável. Cada repetidor atenua um pouco o
+      sinal; planeje o caminho. (A pesquisa pede ter visto um Pylon e feito chroma.)
+    tasks:
+      - get: ChromatiCraft:chromaticraft_item_placer:68 x4
+    rewards:
+      - xp: 4
+      - choice: [minecraft:log x16, ChromatiCraft:chromaticraft_block_pylonstruct x16, ore:shardCrystal x8]
+
+  - id: usar_energia
+    title: "Lumen Harnessing"
+    type: info
+    deps: [repetidor_lumen, pylon]
+    icon: ChromatiCraft:chromaticraft_item_placer:68
+    desc: |
+      Conecte um Pylon à sua base com Lumen Repeaters (use o Manipulador para testar a ligação)
+      e alimente alguma construção com ele: descoberta "Lumen Harnessing". O código exige,
+      antes, o Pylon e a Casting Room.
+    tasks:
+      - check
+    rewards:
+      - xp: 2
+
+  - id: sobrecarga
+    title: "Lumen Overload"
+    type: info
+    deps: [usar_energia]
+    icon: minecraft:fire_charge
+    desc: |
+      "Esses focos de madeira parecem funcionar bem..." — até explodirem. Os Lumen Repeaters
+      são §cvulneráveis a falhas violentas§r, e o próprio ChromatiCraft trata isso como uma
+      lição: a descoberta "Lumen Overload" (estourar um repetidor de madeira) é
+      §epré-requisito§r do Crystal Repeater. Faça em local seguro, com um repetidor sobrando.
+    tasks:
+      - check
+    rewards:
+      - xp: 2
+
+  - id: cristais_foco
+    title: "Focus Crystals"
+    type: normal
+    deps: [usar_energia]
+    icon: ChromatiCraft:chromaticraft_item_placer:87
+    desc: |
+      Esmeraldas "refinadas" de forma rústica viram §eFocus Crystals§r (descoberta "Refractory
+      Gems"), que aumentam a potência das estruturas de fundição. Elas existem em níveis
+      (Flawed, normal, Refined, Exquisite).
+    tasks:
+      - get: ChromatiCraft:chromaticraft_item_placer:87
+    rewards:
+      - xp: 3
+      - item: minecraft:emerald x4
+
+  - id: reles
+    title: "Lumen Relay"
+    type: normal
+    deps: [usar_energia]
+    icon: ChromatiCraft:chromaticraft_block_relay:4
+    desc: |
+      Nem toda construção puxa energia direto dos repetidores. Algumas (usadas em grupo ou
+      debaixo da terra) recebem por §eLumen Relays§r, que repassam a energia de uma §eRelay
+      Source§r de relé em relé, com linha de visão. Descoberta "Compact Transmission".
+    tasks:
+      - get: [ChromatiCraft:chromaticraft_item_placer:31, ChromatiCraft:chromaticraft_block_relay:* x4]
+    rewards:
+      - xp: 3
+      - item: ore:shardCrystal x8
+
+  - id: ideia_energia
+    title: "Refined Transmission"
+    type: info
+    deps: [cristais_foco, reles]
+    icon: ChromatiCraft:chromaticraft_item_crafting:2
+    desc: |
+      "Repetidores de madeira e de chroma são de qualidade marginal." Depois de lidar com
+      focos e relés, você entende como transmitir melhor: descoberta "Refined Transmission",
+      pré-requisito do Crystal Repeater. Confirme quando o Léxico registrar.
+    tasks:
+      - check
+    rewards:
+      - xp: 2
+
+  - id: fundicao_pessoal
+    title: "Casting Personalization"
+    type: info
+    deps: [templo_fundicao, balde_chroma]
+    icon: ChromatiCraft:chromaticraft_item_placer:5
+    desc: |
+      Receitas cada vez mais complexas exigem §e"imprimir" você mesmo§r na estrutura de fundição
+      (página "Personalized Casting"). O código libera isso depois das runas, do chroma e do
+      Casting Temple — e é o terceiro pré-requisito do Crystal Repeater. Siga a página do Léxico
+      e confirme.
+    tasks:
+      - check
+    rewards:
+      - xp: 2
+
+  - id: repetidor_cristal
+    title: "Crystal Repeater"
+    type: main
+    deps: [sobrecarga, ideia_energia, fundicao_pessoal]
+    icon: ChromatiCraft:chromaticraft_item_placer:11
+    desc: |
+      Cristal, e não madeira: o §eCrystal Repeater§r foca e repete a energia sem vazar (descoberta
+      "Broadcasting"). Ele fica sobre uma pequena torre de Pedra Cristalina e, com uma §eruna§r da
+      cor certa, transmite só aquela cor, ainda melhor.
+
+      §aDica:§r clique duas vezes com o Manipulador ("double-ping") para ver o alcance de conexão.
+    tasks:
+      - get: ChromatiCraft:chromaticraft_item_placer:11 x4
+    rewards:
+      - xp: 5
+      - choice: [ChromatiCraft:chromaticraft_block_pylonstruct x32, ChromatiCraft:chromaticraft_block_rune:4 x2, ore:shardCrystal x16]
+
+  - id: repetidor_multi
+    title: "Multi-Aura Repeater"
+    type: normal
+    deps: [repetidor_cristal]
+    icon: ChromatiCraft:chromaticraft_item_placer:30
+    desc: |
+      Uma trilha de repetidores para cada cor é bagunça. O §eMulti-Aura Repeater§r carrega §eas
+      16 cores ao mesmo tempo§r, ao custo de mais atenuação por nó — use pouco e bem. Pode ser
+      montado na horizontal trocando colunas por vigas.
+    tasks:
+      - get: ChromatiCraft:chromaticraft_item_placer:30
+    rewards:
+      - xp: 4
+      - item: ChromatiCraft:chromaticraft_block_pylonstruct x16
+
+  - id: farol_lumen
+    title: "Lumen Beacon Transmitter"
+    type: normal
+    deps: [repetidor_cristal]
+    icon: ChromatiCraft:chromaticraft_item_placer:55
+    desc: |
+      Um transmissor de longo alcance para a rede: o §eLumen Beacon Transmitter§r (estrutura
+      "Lumen Beacon") encurta caminhos enormes de repetidores.
+    tasks:
+      - get: ChromatiCraft:chromaticraft_item_placer:55
+    rewards:
+      - xp: 3
+      - item: ChromatiCraft:chromaticraft_block_pylonstruct x16
+
+  - id: distribuidor_ambiente
+    title: "Ambient Lumen Distributor"
+    type: optional
+    deps: [usar_energia, templo_fundicao]
+    icon: ChromatiCraft:chromaticraft_item_placer:72
+    desc: |
+      Algumas construções só funcionam perto de um nó que §eirradia§r energia fraca em volta —
+      até através de paredes (com menos eficiência). Esse é o distribuidor ambiente.
+    tasks:
+      - get: ChromatiCraft:chromaticraft_item_placer:72
+    rewards:
+      - loot: comum
+
+  - id: ligacao_pylon
+    title: "Top-tier Crafting"
+    type: milestone
+    deps: [repetidor_cristal, pylon]
+    icon: ChromatiCraft:chromaticraft_item_placer:8
+    banner: "Top-tier Crafting"
+    subtitle: "A fundição alimentada por Pylons"
+    desc: |
+      Finalmente você domina os Pylons! Construa o §eCasting Complex§r (a estrutura máxima da
+      mesa) e ligue-o por Crystal Repeaters aos Pylons das cores que a receita pede. A energia
+      lúmen flui direto para a mesa: §ereceitas de Pylon§r (descoberta "Top-tier Crafting").
+
+      Prova: uma §eGuardian Stone§r, que protege um raio em volta contra quem você não confia
+      (quebrar, colocar blocos e abrir interfaces). Seus Pylons drenam com o uso e recarregam
+      devagar — planeje.
+    tasks:
+      - get: ChromatiCraft:chromaticraft_item_placer:8
+    rewards:
+      - xp: 10
+      - kit: {name: "Kit do Engenheiro Lúmen", items: [ChromatiCraft:chromaticraft_block_pylonstruct x64, ChromatiCraft:chromaticraft_item_bucket x2, ore:shardCrystal x32, minecraft:emerald x4]}
+      - loot: raro
+
+  # ======================================================================
+  # FASE 9 — FUNDIÇÃO DE PYLON
+  # ======================================================================
+  - id: fornalha_cristal
+    title: "Crystal Furnace"
+    type: normal
+    deps: [ligacao_pylon, picareta_minerio]
+    icon: ChromatiCraft:chromaticraft_item_placer:15
+    desc: |
+      Fundir com fogo e §eenergia de aprimoramento§r: a §eCrystal Furnace§r §emultiplica a saída§r
+      de quase tudo que funde (exceto pós de lingote) — a aba "Crystal Smelting" do NEI lista
+      mais de mil receitas. (Pede a descoberta "Resource Acquisition".)
+    tasks:
+      - get: ChromatiCraft:chromaticraft_item_placer:15
+    rewards:
+      - xp: 4
+      - item: minecraft:iron_ore x16
+
+  - id: fabricador
+    title: "Item Fabricator"
+    type: normal
+    deps: [ligacao_pylon]
+    icon: ChromatiCraft:chromaticraft_item_placer:23
+    desc: |
+      O inverso de queimar: o §eItem Fabricator§r junta energia cristalina em grandes pás e §ecria
+      itens§r a partir de um modelo — só itens simples, e o custo cresce com a energia contida
+      no item. Veja a aba "Item Fabrication" do NEI.
+    tasks:
+      - get: ChromatiCraft:chromaticraft_item_placer:23
+    rewards:
+      - xp: 4
+      - item: ore:shardCrystal x16
+
+  - id: tanque_cristal
+    title: "Crystal Tank"
+    type: normal
+    deps: [ligacao_pylon]
+    icon: ChromatiCraft:chromaticraft_item_placer:17
+    desc: |
+      Um tanque multibloco de qualquer forma e tamanho, preso a um furo para o vazio: o §eCrystal
+      Tank Controller§r e os §eCrystal Tank Blocks§r. A capacidade cresce com o quadrado do número
+      de blocos. (A pesquisa pede ter encontrado um Ocean Temple.)
+    tasks:
+      - get: [ChromatiCraft:chromaticraft_item_placer:17, ChromatiCraft:chromaticraft_block_tank x8]
+    rewards:
+      - xp: 4
+      - item: minecraft:glass x16
+
+  - id: reprogramador
+    title: "Spawner Reprogrammer"
+    type: optional
+    deps: [ligacao_pylon]
+    icon: ChromatiCraft:chromaticraft_item_placer:3
+    desc: |
+      Finalmente: §etrocar o mob§r de um spawner. O §eSpawner Reprogrammer§r personaliza as
+      "gaiolas de metal escuro" espalhadas pelo mundo.
+    tasks:
+      - get: ChromatiCraft:chromaticraft_item_placer:3
+    rewards:
+      - loot: incomum
+
+  - id: fenda_mundo
+    title: "World Rift"
+    type: normal
+    deps: [ligacao_pylon]
+    icon: ChromatiCraft:chromaticraft_item_rift
+    desc: |
+      Liga dois lugares quaisquer — qualquer distância, qualquer dimensão — por um elo com o
+      vazio: itens, fluidos, redstone e energia de todos os tipos atravessam. Sempre em pares; o
+      que entra num lado sai pelo lado oposto da outra fenda. O lado de itens se escolhe com o
+      Manipulador.
+    tasks:
+      - get: ChromatiCraft:chromaticraft_item_rift x2
+    rewards:
+      - xp: 4
+      - item: minecraft:ender_pearl x4
+
+  - id: laser_cristal
+    title: "Crystal Laser"
+    type: optional
+    deps: [ligacao_pylon]
+    icon: ChromatiCraft:chromaticraft_item_placer:12
+    desc: |
+      Um feixe fino de energia de qualquer cor, aplicando o efeito dela nos blocos e criaturas
+      ao longo da linha. Uma das construções mais versáteis do Volume.
+    tasks:
+      - get: ChromatiCraft:chromaticraft_item_placer:12
+    rewards:
+      - loot: incomum
+
+  - id: construcoes_pylon
+    title: "Construções de Pylon"
+    type: optional
+    deps: [ligacao_pylon]
+    icon: ChromatiCraft:chromaticraft_item_placer:26
+    desc: |
+      Mais receitas de Pylon: §eItem Collector§r, §eTeleportation Pump§r (bombeia fluido de
+      longe), §eExplosion Shield§r, §eMeteor Tower Core§r (defesa) e §eMana Booster§r (com
+      Botania). Qualquer uma.
+    tasks:
+      - one_of: [ChromatiCraft:chromaticraft_item_placer:26, ChromatiCraft:chromaticraft_item_placer:29, ChromatiCraft:chromaticraft_item_placer:93, ChromatiCraft:chromaticraft_item_placer:74, ChromatiCraft:chromaticraft_item_placer:95]
+    rewards:
+      - loot: incomum
+
+  - id: nucleos_energizados
+    title: "Energized Cores"
+    type: normal
+    deps: [ligacao_pylon, nucleos]
+    icon: ChromatiCraft:chromaticraft_item_crafting:25
+    desc: |
+      Os núcleos comuns "carecem de algo". As versões §eEnergized§r (Void, Transformation e
+      Energy) são receitas de Pylon caras e trabalhosas — e peças das construções de endgame.
+      Faça qualquer uma.
+    tasks:
+      - one_of: [ChromatiCraft:chromaticraft_item_crafting:23, ChromatiCraft:chromaticraft_item_crafting:24, ChromatiCraft:chromaticraft_item_crafting:25]
+    rewards:
+      - xp: 4
+      - item: ore:shardCrystal x16
+
+  - id: acelerador
+    title: "Tile Accelerator"
+    type: main
+    deps: [ligacao_pylon]
+    icon: ChromatiCraft:chromaticraft_item_adjacency:12
+    desc: |
+      O famoso §eTile Accelerator§r: um upgrade de adjacência Galazio (tempo) que faz as máquinas
+      encostadas nele trabalharem mais rápido. Ele tem níveis e consome energia (a config deste
+      pack exige energia para os upgrades de adjacência), e há um limite de lag por acelerador.
+
+      Existem 15 outros upgrades de adjacência, um por cor (Efficiency Augment, Protection Core,
+      Growth Accelerator...).
+    tasks:
+      - get: ChromatiCraft:chromaticraft_item_adjacency:12
+    rewards:
+      - xp: 6
+      - choice: [ChromatiCraft:chromaticraft_item_shard:28 x8, ore:shardCrystal x24, ChromatiCraft:chromaticraft_item_bucket x2]
+
+  - id: upgrades_adjacencia
+    title: "Adjacency Upgrades"
+    type: optional
+    deps: [acelerador]
+    icon: ChromatiCraft:chromaticraft_item_adjacency:2
+    desc: |
+      Escolha mais um upgrade de adjacência para a sua linha de produção: §eGrowth Accelerator§r
+      (verde), §eMineral Enricher§r (marrom), §eHealing Core§r (magenta), §eHeat Relay§r (laranja)...
+    tasks:
+      - one_of: [ChromatiCraft:chromaticraft_item_adjacency:2, ChromatiCraft:chromaticraft_item_adjacency:3, ChromatiCraft:chromaticraft_item_adjacency:13, ChromatiCraft:chromaticraft_item_adjacency:14, ChromatiCraft:chromaticraft_item_adjacency]
+    rewards:
+      - loot: incomum
+
+  - id: aprimoramentos
+    title: "Upgrades de Construção"
+    type: optional
+    deps: [ligacao_pylon, cristal_armazenamento]
+    icon: ChromatiCraft:chromaticraft_item_misc:1
+    desc: |
+      Construções que rodam com energia cristalina aceitam bônus: §eSilk Touch Bonus§r, §eOperation
+      Speed Bonus§r e §eEnergy Efficiency Bonus§r (o Léxico chama de "Upgrades").
+    tasks:
+      - one_of: [ChromatiCraft:chromaticraft_item_misc, ChromatiCraft:chromaticraft_item_misc:1, ChromatiCraft:chromaticraft_item_misc:2]
+    rewards:
+      - loot: incomum
+
+  - id: pingente_aprimorado
+    title: "Enhanced Pendant"
+    type: optional
+    deps: [pingente, ligacao_pylon]
+    icon: ChromatiCraft:chromaticraft_item_pendant3:13
+    desc: |
+      A versão de Pylon do pingente, com efeito mais forte. (Nesta config, ela não precisa ser
+      recarregada.)
+    tasks:
+      - get: ChromatiCraft:chromaticraft_item_pendant3:*
+    rewards:
+      - loot: incomum
+
+  - id: estrelas_pylon
+    title: "Replication e Hover Star"
+    type: optional
+    deps: [ligacao_pylon]
+    icon: ChromatiCraft:chromaticraft_item_duplicator
+    desc: |
+      Ferramentas de Pylon: a §eReplication Star§r (copia estruturas — nesta config, sem copiar
+      TileEntities e até 1000 blocos) e a §eHover Star§r. Qualquer uma.
+    tasks:
+      - one_of: [ChromatiCraft:chromaticraft_item_duplicator, ChromatiCraft:chromaticraft_item_hoverwand]
+    rewards:
+      - loot: incomum
+
+  - id: tnt_ender
+    title: "Ender TNT"
+    type: optional
+    deps: [ligacao_pylon]
+    icon: ChromatiCraft:chromaticraft_block_tnt
+    desc: |
+      Uma explosão em qualquer coordenada, em qualquer dimensão. §cUse com responsabilidade — e
+      com as regras do servidor em mente.§r
+    tasks:
+      - get: ChromatiCraft:chromaticraft_block_tnt
+    rewards:
+      - loot: comum
+
+  # ======================================================================
+  # FASE 10 — RITUAIS E HABILIDADES
+  # ======================================================================
+  - id: mesa_ritual
+    title: "Ritual Table"
+    type: main
+    deps: [energia_interna, mesa_fundicao]
+    icon: ChromatiCraft:chromaticraft_item_placer:16
+    desc: |
+      Habilidades especiais exigem infundir grandes quantidades de energia em você — com um
+      ritual. A §eRitual Table§r é uma receita básica da mesa; o §eRitual Altar§r em volta dela
+      (estrutura no Léxico) e a energia dos Pylons fazem o resto.
+    tasks:
+      - get: ChromatiCraft:chromaticraft_item_placer:16
+    rewards:
+      - xp: 4
+      - choice: [ChromatiCraft:chromaticraft_block_pylonstruct x32, ore:shardCrystal x16, minecraft:golden_apple]
+
+  - id: info_habilidades
+    title: "As Habilidades"
+    type: info
+    deps: [mesa_ritual]
+    icon: ChromatiCraft:chromaticraft_item_abilityfocus
+    desc: |
+      Em vez de carregar 41 ferramentas, imbua o próprio corpo com poderes acionáveis, movidos
+      pela sua energia pessoal. Alguns exemplos (nomes do jogo): §eReach Boost§r, §eMagnetism§r,
+      §eHealth Boost§r, §eDexterity§r, §eWater Strider§r, §eArrow Shield§r, §eRegeneration§r,
+      §eLumen Dash§r, §ePylon Surge Protection§r e §eItem Preservation§r.
+
+      Cada ritual pede energia de certas cores (veja no Léxico). Use a tecla de seleção de
+      habilidades para ligar e desligar.
+    tasks:
+      - check
+    rewards:
+      - xp: 2
+
+  - id: primeira_habilidade
+    title: "Personal Enhancement"
+    type: milestone
+    deps: [info_habilidades, ligacao_pylon]
+    icon: ChromatiCraft:chromaticraft_item_placer:16
+    banner: "Personal Enhancement"
+    subtitle: "A primeira habilidade"
+    desc: |
+      "Máquinas você melhora. Ferramentas você encanta. Você mesmo?" Realize o seu primeiro
+      ritual de habilidade (descoberta "Personal Enhancement"). O código só libera isso
+      depois de você ter internalizado energia de um Pylon §ee§r dominado a fundição de Pylon.
+
+      Comece por algo útil e barato — muita gente escolhe Pylon Surge Protection para parar de
+      levar choque, ou Reach Boost.
+    tasks:
+      - check
+    rewards:
+      - xp: 10
+      - kit: {name: "Kit do Ritualista", items: [ChromatiCraft:chromaticraft_item_berry:13 x16, ChromatiCraft:chromaticraft_item_berry:11 x16, minecraft:golden_apple x2]}
+      - loot: raro
+
+  - id: foco_energia
+    title: "Energy Focus"
+    type: optional
+    deps: [energia_interna, templo_fundicao]
+    icon: ChromatiCraft:chromaticraft_item_placer:49
+    desc: |
+      Voar até cada Pylon para recarregar é cansativo. O §eEnergy Focus§r é uma imitação de Pylon
+      só para carregar §evocê§r (não alimenta outras construções) — e é bonito na sala.
+    tasks:
+      - get: ChromatiCraft:chromaticraft_item_placer:49
+    rewards:
+      - loot: incomum
+
+  # ======================================================================
+  # FASE 11 — CRISTAIS DE PODER E A ÁRVORE LÚMEN
+  # ======================================================================
+  - id: cristal_poder
+    title: "Power Crystal"
+    type: main
+    deps: [ligacao_pylon, carregador, energia_interna, cristal_iridescente]
+    icon: ChromatiCraft:chromaticraft_item_placer:21
+    desc: |
+      Pylons não são infinitos: perdem a cor ao serem drenados e recarregam devagar. Os §ePower
+      Crystals§r — energia elemental crua em forma de cristal — aceleram muito a recarga, e §eum
+      anel completo e equilibrado de 8§r em volta do Pylon acelera enormemente (descoberta
+      "Recharge").
+
+      No código, essa descoberta pede fundição de Pylon, cristal de armazenamento, energia
+      internalizada e a infusão.
+    tasks:
+      - get: ChromatiCraft:chromaticraft_item_placer:21
+    rewards:
+      - xp: 6
+      - choice: [ChromatiCraft:chromaticraft_item_crafting:10 x2, ChromatiCraft:chromaticraft_item_bucket x4, ore:shardCrystal x32]
+
+  - id: anel_poder
+    title: "Anel de Recarga"
+    type: normal
+    deps: [cristal_poder]
+    icon: ChromatiCraft:chromaticraft_item_placer:21
+    desc: |
+      Um cristal ajuda; oito em anel, balanceados, transformam o Pylon. Faça os §e8 Power
+      Crystals§r do anel do seu Pylon mais usado.
+    tasks:
+      - get: ChromatiCraft:chromaticraft_item_placer:21 x8
+    rewards:
+      - xp: 4
+      - item: ChromatiCraft:chromaticraft_block_pylonstruct x32
+
+  - id: arvore_lumen
+    title: "Luminescent Battery"
+    type: main
+    deps: [cristal_poder]
+    icon: ChromatiCraft:chromaticraft_item_placer:36
+    desc: |
+      Uma bateria que §ecresce§r: o §eLuminescent Battery§r é a base da §eLumen Tree§r, cujas
+      folhas guardam energia (capacidade cresce com o número de folhas). Ela §eprecisa ver o
+      céu§r e de energia pura. Das folhas dá até para se recarregar — mas quebrar uma folha
+      perde a energia guardada nela. Descoberta "Stockpiling Energy".
+    tasks:
+      - get: ChromatiCraft:chromaticraft_item_placer:36
+    rewards:
+      - xp: 6
+      - choice: [ChromatiCraft:chromaticraft_item_bucket x4, ChromatiCraft:chromaticraft_item_shard:26 x8, ore:shardCrystal x32]

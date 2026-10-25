@@ -1,0 +1,1072 @@
+chapter:
+  id: amunra
+  title: "Amun-Ra"
+  prefix: ""
+  order: 392
+  icon: GalacticraftAmunRa:item.itemShuttle
+  desc: |
+    §bO Volume do Sol Duplo.§r Um sistema estelar inteiro com nomes de deuses egípcios,
+    pirâmides com um Faraó Morto-Vivo, ônibus espaciais e naves-mãe que você mesmo constrói.
+    (Amun-Ra 0.8.14 — requer o capítulo do Galacticraft)
+
+quests:
+  # ======================================================================
+  # FASE 0 — O SISTEMA AMUN-RA
+  # ======================================================================
+  - link: galacticraft:foguete_t3
+
+  - id: sistema_amunra
+    title: "Um Sol, Dois Nomes"
+    type: info
+    icon: GalacticraftAmunRa:item.itemShuttle
+    desc: |
+      Sabe de onde os Faraós de Atum tiraram os nomes dos seus deuses? Eu tenho uma teoria: de
+      um sistema estelar que o Registro chama de §eAmun-Ra§r.
+
+      No Mapa da Galáxia (tecla M), procure o sistema §eAmun-Ra§r. Na config deste pack todos os
+      mundos alcançáveis pedem só o §eFoguete Nível 3§r do Galacticraft:
+      §e• Planetas:§r §eHorus§r (quente, com pirâmides e vulcões) e §eAnubis§r (gelado, com vilas).
+      §e• Luas:§r §eSeth§r (lua de Sekhmet, vulcânica), §eNeper§r (lua de Baal) e §eMaahes§r.
+      §e• O Cinturão de Mehen§r: asteroides cheios de gemas e Matéria Escura.
+
+      §cAviso honesto:§r a config deste pack §cdesliga a geração de minérios§r nos planetas e luas
+      de Amun-Ra. Os minérios daqui vêm do §eCinturão de Mehen§r e do saque das pirâmides.
+    tasks:
+      - check
+    rewards:
+      - xp: 3
+
+  - id: multisensor_info
+    title: "Termômetro de Bolso"
+    type: info
+    deps: [sistema_amunra]
+    icon: GalacticraftAmunRa:item.baseItem:18
+    desc: |
+      Cada mundo de Amun-Ra tem gravidade, temperatura e atmosfera diferentes. Anubis é
+      §cgeladíssimo§r; Horus é §cquente§r. O §eMulti-Sensor§r (logo ali) mostra gravidade, nível
+      térmico, luz solar, gases da atmosfera e duração do dia do lugar onde você está.
+
+      Para o frio e o calor daqui, o Amun-Ra tem a sua própria §eThermoregulation Armor§r. Mesmo
+      assim, leve máscara, tanques cheios e, se puder, monte uma base selada logo na chegada.
+    tasks:
+      - check
+    rewards:
+      - xp: 2
+
+  # ======================================================================
+  # FASE 1 — PREPARAÇÃO
+  # ======================================================================
+  - id: regulador_termico
+    title: "Portable Thermal Regulator"
+    type: main
+    deps: [multisensor_info]
+    icon: GalacticraftAmunRa:item.baseItem:17
+    desc: |
+      Um Wafer Avançado, 2 Latas de Estanho, redstone e um Respirador rendem §e2 Portable Thermal
+      Regulators§r — o coração da armadura de termorregulação. As quatro peças pedem §e7§r no total.
+    tasks:
+      - get: GalacticraftAmunRa:item.baseItem:17 x8
+    rewards:
+      - xp: 6
+      - choice: [ore:waferAdvanced x2, GalacticraftCore:item.airVent x4, GalacticraftCore:item.canister x6]
+
+  - id: armadura_termorregulacao
+    title: "Thermoregulation Armor"
+    type: main
+    deps: [regulador_termico]
+    icon: GalacticraftAmunRa:item.thermalSuit:1
+    desc: |
+      Tecido Térmico do Galacticraft + Thermal Regulators: Helmet (4 tecidos + 1 regulador), Chest
+      (6 + 2), Leggings (5 + 2) e Boots (2 + 2). O tooltip mostra o "Thermal Level" de cada peça.
+      Vista-a nos espaços térmicos do inventário do Galacticraft.
+    tasks:
+      - get: [GalacticraftAmunRa:item.thermalSuit, GalacticraftAmunRa:item.thermalSuit:1, GalacticraftAmunRa:item.thermalSuit:2, GalacticraftAmunRa:item.thermalSuit:3]
+    rewards:
+      - xp: 6
+      - choice: [GalacticraftCore:item.oxygenTankHeavyFull x2, GalacticraftMars:item.itemBasicAsteroids:7 x8, GalacticraftAmunRa:item.baseItem:17 x2]
+
+  - id: multisensor
+    title: "Multi-Sensor"
+    type: normal
+    deps: [multisensor_info, bateria_nuclear]
+    icon: GalacticraftAmunRa:item.baseItem:18
+    desc: |
+      Estanho Prensado, Módulo de Frequência, Wafer Avançado, Painel de Vidro, Botão e uma §eNuclear
+      Battery§r. Clique para medir o mundo à sua volta.
+    tasks:
+      - get: GalacticraftAmunRa:item.baseItem:18
+    rewards:
+      - xp: 4
+      - item: GalacticraftCore:item.basicItem:19
+
+  - id: wafer_ender
+    title: "Ender Wafer"
+    type: main
+    deps: [sistema_amunra]
+    icon: GalacticraftAmunRa:item.baseItem
+    desc: |
+      O Amun-Ra acrescenta receitas ao §eFabricador de Circuitos§r do Galacticraft. A mais
+      importante é o §eEnder Wafer§r — ele vai nas baterias, nas armas, nos geradores e nos
+      terminais das naves-mãe. Confira a receita no NEI (U no Fabricador de Circuitos). Faça §e4§r.
+    tasks:
+      - get: GalacticraftAmunRa:item.baseItem x4
+    rewards:
+      - xp: 6
+      - choice: [minecraft:ender_pearl x8, minecraft:diamond x3, ore:itemSilicon x8]
+
+  - id: ouro_prensado
+    title: "Compressed Gold e Gold Foil"
+    type: normal
+    deps: [sistema_amunra]
+    icon: GalacticraftAmunRa:item.baseItem:20
+    desc: |
+      Ouro também vai para a Prensa: §eCompressed Gold§r. Com 5 dele e 4 Alumínios Prensados você
+      faz a §eGold Foil§r, isolante dos Propulsores Iônicos.
+    tasks:
+      - get: [ore:compressedGold x5, GalacticraftAmunRa:item.baseItem:20]
+    rewards:
+      - xp: 4
+      - item: minecraft:gold_ingot x10
+
+  - id: transformador
+    title: "Transformer"
+    type: normal
+    deps: [sistema_amunra]
+    icon: GalacticraftAmunRa:item.baseItem:21
+    desc: |
+      6 Ferros Meteóricos Prensados e 3 Cabos de Alumínio Pesado. O §eTransformer§r vai na Base do
+      Propulsor Iônico e no Gerador de Gravidade Artificial.
+    tasks:
+      - get: GalacticraftAmunRa:item.baseItem:21
+    rewards:
+      - xp: 4
+      - item: GalacticraftCore:tile.aluminumWire:1 x4
+
+  - id: bateria_avancada_ar
+    title: "Advanced Battery"
+    type: normal
+    deps: [wafer_ender]
+    icon: GalacticraftAmunRa:item.battery-ender
+    desc: |
+      5 Alumínios Prensados, um Bloco de Redstone e um Ender Wafer: 60 000 gJ. É a primeira das
+      baterias do Amun-Ra — as armas e o Multitool aceitam qualquer uma delas.
+    tasks:
+      - get: GalacticraftAmunRa:item.battery-ender
+    rewards:
+      - xp: 4
+      - item: minecraft:redstone_block x2
+
+  - id: gerador_radioisotopo
+    title: "Radioisotope Generator"
+    type: normal
+    deps: [wafer_ender]
+    icon: GalacticraftAmunRa:tile.machines1
+    desc: |
+      Aço Prensado, um Wafer Avançado, um Wafer Solar Azul, um Cabo de Alumínio e um §elingote de
+      urânio§r. Ele gera energia sozinho, praticamente para sempre (meia-vida enorme). §eQuanto
+      mais quente o lugar, menos ele gera§r — ótimo para Anubis, fraco em Horus.
+    tasks:
+      - get: GalacticraftAmunRa:tile.machines1
+    rewards:
+      - xp: 4
+      - item: ore:compressedSteel x6
+
+  # ======================================================================
+  # FASE 2 — CHEGANDO AO SISTEMA
+  # ======================================================================
+  - id: horus
+    title: "Horus"
+    type: portal
+    deps: [armadura_termorregulacao]
+    deps_hidden: [galacticraft:foguete_t3]
+    icon: GalacticraftAmunRa:tile.baseBlockRock:1
+    banner: "O Olho de Hórus"
+    subtitle: "Chegada a Horus"
+    effect: 3
+    desc: |
+      Basalto, obsidiana, vulcões e um calor que faz a armadura suar. Horus é o planeta das
+      §epirâmides§r — e dentro de uma delas mora o §cFaraó Morto-Vivo§r.
+
+      Use o Foguete Nível 3, a armadura de termorregulação e oxigênio de sobra.
+    tasks:
+      - visit: {dim: 23, name: "Horus"}
+    rewards:
+      - xp: 10
+      - loot: epico
+
+  - id: anubis
+    title: "Anubis"
+    type: portal
+    deps: [armadura_termorregulacao]
+    deps_hidden: [galacticraft:foguete_t3]
+    icon: GalacticraftAmunRa:tile.baseFalling:2
+    banner: "O Guardião dos Mortos"
+    subtitle: "Chegada a Anubis"
+    effect: 3
+    desc: |
+      O planeta mais frio que você vai pisar até agora — o nível térmico daqui é muito mais baixo
+      que o dos Asteroides. Anubis tem §evilas§r com casas abobadadas e campos solares, onde vivem
+      aldeões robôs.
+
+      Termorregulação obrigatória e um Gerador de Radioisótopo rende muito bem no frio!
+    tasks:
+      - visit: {dim: 22, name: "Anubis"}
+    rewards:
+      - xp: 10
+      - loot: epico
+
+  - id: seth
+    title: "Seth"
+    type: normal
+    deps: [armadura_termorregulacao]
+    deps_hidden: [galacticraft:foguete_t3]
+    icon: GalacticraftAmunRa:tile.baseBlockRock:2
+    desc: |
+      Uma lua de Sekhmet coberta de água e gelo, com argila endurecida, algas profundas, §eCoral
+      Brilhante§r e vulcões. Visite e use o Multi-Sensor para entender o lugar.
+    tasks:
+      - visit: {dim: 24, name: "Seth"}
+    rewards:
+      - xp: 5
+      - loot: raro
+
+  - id: neper
+    title: "Neper"
+    type: normal
+    deps: [armadura_termorregulacao]
+    deps_hidden: [galacticraft:foguete_t3]
+    icon: minecraft:grass
+    desc: |
+      Uma lua do gigante Baal que parece... a Terra! Pedra, terra, grama e até vacas, porcos,
+      ovelhas e cavalos. No meio da paisagem há ruínas de §eUrbolite§r — concreto antigo de alguém
+      que esteve aqui antes de nós.
+    tasks:
+      - visit: {dim: 20, name: "Neper"}
+    rewards:
+      - xp: 5
+      - loot: raro
+
+  - id: maahes
+    title: "Maahes"
+    type: normal
+    deps: [armadura_termorregulacao]
+    deps_hidden: [galacticraft:foguete_t3]
+    icon: GalacticraftAmunRa:tile.wood1
+    desc: |
+      Uma lua de basalto coberta de §eRedgrass§r, com árvores §eVirilig§r e as estranhas plantas
+      §eLumipod§r. Lá vivem os Pincer Bugs e os Porcodons — sim, porcos espaciais.
+    tasks:
+      - visit: {dim: 21, name: "Maahes"}
+    rewards:
+      - xp: 5
+      - loot: raro
+
+  - id: mehen
+    title: "O Cinturão de Mehen"
+    type: portal
+    deps: [armadura_termorregulacao]
+    deps_hidden: [galacticraft:foguete_t3]
+    icon: GalacticraftAmunRa:tile.asteroidMultiOre1
+    banner: "Pedras Preciosas no Vazio"
+    subtitle: "Chegada ao Cinturão de Mehen"
+    desc: |
+      Um cinturão de asteroides — e, neste pack, §ea principal fonte de minério de Amun-Ra§r. As
+      rochas de Mehen têm §eRubi, Esmeralda, Diamante, Chumbo, Urânio e Cobre§r, além da
+      misteriosa §eMatéria Escura§r.
+
+      Mesmas regras dos Asteroides do Galacticraft: plataforma primeiro, gancho no bolso e cuidado
+      com o vazio.
+    tasks:
+      - visit: {dim: 25, name: "Cinturão de Mehen"}
+    rewards:
+      - xp: 10
+      - loot: epico
+
+  - id: basalto
+    title: "Basalto e Obsidiana"
+    type: optional
+    deps: [horus]
+    icon: GalacticraftAmunRa:tile.baseBlockRock:1
+    desc: |
+      Horus e outros mundos são feitos de §eBasalto§r (pedregulho de basalto fundido), Areia e
+      Cascalho de Obsidiana. O basalto vira tijolos e Basalto Liso; a obsidiana vira Tijolos de
+      Obsidiana.
+    tasks:
+      - get: GalacticraftAmunRa:tile.baseBlockRock:1 x32
+    rewards:
+      - loot: comum
+
+  - id: madeiras_alienigenas
+    title: "Madeiras Alienígenas"
+    type: optional
+    deps: [maahes]
+    icon: GalacticraftAmunRa:tile.wood1
+    task_logic: OR
+    desc: |
+      A §eLumipod Bark§r e o tronco §eVirilig§r viram tábuas, lajes e escadas alienígenas. (Curiosidade:
+      as mudas daqui podem ser fundidas e viram um ingrediente do Witchery!)
+    tasks:
+      - get: GalacticraftAmunRa:tile.wood1 x8
+      - get: GalacticraftAmunRa:tile.log1 x8
+    rewards:
+      - loot: comum
+
+  - id: porcodon
+    title: "Porcodon"
+    type: optional
+    deps: [maahes]
+    icon: GalacticraftAmunRa:item.baseItem:1
+    desc: |
+      Um porco alienígena que "cheira a gasolina". A carne é comestível (e é melhor assada).
+    tasks:
+      - get: GalacticraftAmunRa:item.baseItem:1 x4
+    rewards:
+      - loot: comum
+
+  - id: vilas_anubis
+    title: "Aldeões Robôs"
+    type: optional
+    deps: [anubis]
+    icon: minecraft:emerald
+    desc: |
+      As vilas de Anubis são feitas de casas-caixa, cúpulas e campos solares. Os moradores são
+      §eRobot Villagers§r. Visite uma vila e conheça os vizinhos de metal. (Sem ataques, por favor!)
+    tasks:
+      - check
+    rewards:
+      - loot: incomum
+
+  - id: urbolita
+    title: "Ruínas de Urbolite"
+    type: optional
+    deps: [neper]
+    icon: GalacticraftAmunRa:tile.oldConcreteOre
+    desc: |
+      A §eSteel-bearing Urbolite§r das ruínas de Neper solta §eAncient Rebar§r, que na fornalha vira
+      um §eSteel Ingot§r. Aço reciclado de uma civilização perdida — o Registro adora isso.
+    tasks:
+      - get: GalacticraftAmunRa:item.baseItem:13 x4
+    rewards:
+      - loot: incomum
+
+  - id: coral_brilhante
+    title: "Coral Brilhante"
+    type: optional
+    deps: [seth]
+    icon: GalacticraftAmunRa:tile.baseBlockCrystal
+    desc: |
+      No fundo dos mares de Seth cresce o §eGlowing Coral§r, que ilumina a água. Leve um pedaço para
+      o aquário da nave-mãe.
+    tasks:
+      - get: GalacticraftAmunRa:tile.baseBlockCrystal
+    rewards:
+      - loot: comum
+
+  - id: insetos_pinca
+    title: "Pincer Bugs"
+    type: optional
+    deps: [maahes]
+    icon: minecraft:string
+    desc: |
+      Os §ePincer Bugs§r de Maahes atacam em grupo e deixam cair linha. Derrote alguns antes de
+      montar acampamento.
+    tasks:
+      - kill: {entity: "alienBug", count: 4}
+    rewards:
+      - loot: comum
+
+  # ======================================================================
+  # FASE 3 — O CINTURÃO DE MEHEN
+  # ======================================================================
+  - id: rubi
+    title: "Ruby"
+    type: main
+    deps: [mehen]
+    icon: GalacticraftAmunRa:item.baseItem:6
+    desc: |
+      O §eMinério de Rubi§r dos asteroides funde em §eRuby§r (ou rende 1 com o Martelo de Engenheiro).
+      O rubi faz o §eLaser Diode§r, o coração do Blaster e o drop dos Sentinelas. Junte §e8§r.
+    tasks:
+      - get: ore:gemRuby x8
+    rewards:
+      - xp: 6
+      - choice: [minecraft:diamond x3, minecraft:emerald x6, ore:compressedAluminum x6]
+
+  - id: minerios_mehen
+    title: "Riquezas de Mehen"
+    type: normal
+    deps: [mehen]
+    icon: GalacticraftAmunRa:tile.asteroidMultiOre1:7
+    desc: |
+      Os asteroides de Mehen também têm diamante, esmeralda, chumbo, urânio e cobre. O §eurânio§r é
+      o que mais importa: Geradores de Radioisótopo e a Nuclear Battery dependem dele. Junte
+      §e8 lingotes de urânio§r.
+    tasks:
+      - get: ore:ingotUranium x8
+    rewards:
+      - xp: 4
+      - item: minecraft:diamond x2
+
+  - id: materia_escura
+    title: "Matéria Escura"
+    type: main
+    deps: [mehen]
+    icon: GalacticraftAmunRa:item.baseItem:26
+    desc: |
+      Alguns asteroides escondem blocos de §eDark Matter§r. Quebre com picareta e recolha os §eDark
+      Matter Shards§r — eles vão no Gerador de Gravidade Artificial e no Disruptor de Gravidade.
+      Junte §e4§r.
+    tasks:
+      - get: GalacticraftAmunRa:item.baseItem:26 x4
+    rewards:
+      - xp: 6
+      - choice: [minecraft:obsidian x16, minecraft:ender_pearl x8, ore:compressedTitanium x4]
+
+  # ======================================================================
+  # FASE 4 — AS PIRÂMIDES E O FARAÓ
+  # ======================================================================
+  - id: piramide
+    title: "As Pirâmides de Horus"
+    type: normal
+    deps: [horus]
+    icon: minecraft:sandstone
+    desc: |
+      Atravesse as planícies de Horus e procure as §ePirâmides§r. Por dentro há salas de baús, um
+      poço e, no centro, a §csala do chefe§r.
+
+      Os baús de pirâmide guardam coisas que não existem em mais lugar nenhum neste pack:
+      §eChionite§r, §eSpodumene§r, §eNanite Clusters§r, Rubis e o curioso §eAlien Book§r.
+      Abra pelo menos um baú e mostre o livro.
+    tasks:
+      - get: GalacticraftAmunRa:item.baseItem:9
+    rewards:
+      - xp: 5
+      - item: minecraft:golden_apple x2
+
+  - id: farao
+    title: "O Faraó Morto-Vivo"
+    type: boss
+    deps: [piramide]
+    icon: GalacticraftAmunRa:item.baseItem:29
+    banner: "O Faraó Descansa"
+    subtitle: "O guardião de Amun-Ra caiu"
+    desc: |
+      Lembra que os Lich negociavam páginas com os Faraós de Atum? Este aqui fugiu para as
+      estrelas... e não quer devolver nada.
+
+      O §cUndead Pharaoh§r surge na sala central da pirâmide. Ele dispara §cbolas de fogo§r e tem
+      muita vida (a config usa o multiplicador padrão de vida de chefes do Galacticraft). Leve
+      Resistência ao Fogo, a melhor armadura que tiver e mantenha distância.
+
+      Ao cair, ele deixa §eMummy Dust§r, ouro e o §eShuttle Schematic§r. Este é o chefe de Amun-Ra
+      no §5Selo das Estrelas§r!
+    tasks:
+      - kill: {entity: "osirisBoss", count: 1}
+    rewards:
+      - xp: 15
+      - loot: [epico, epico]
+
+  - id: esquematico_shuttle
+    title: "Shuttle Schematic"
+    type: main
+    deps: [farao]
+    icon: GalacticraftAmunRa:item.schematic
+    desc: |
+      O tesouro do Faraó: o §eShuttle Schematic§r. Destrave na Bancada NASA e você poderá montar o
+      §eShuttle Rocket§r — um ônibus espacial que pousa em naves-mãe e estações.
+    tasks:
+      - get: GalacticraftAmunRa:item.schematic
+    rewards:
+      - xp: 8
+      - choice: [ore:compressedTitanium x8, GalacticraftCore:item.bucketFuel x3, ore:compressedTin x12]
+
+  - id: po_mumia
+    title: "Mummy Dust"
+    type: optional
+    deps: [farao]
+    icon: GalacticraftAmunRa:item.baseItem:29
+    desc: |
+      O pó que o Faraó deixa. Ele conta como corante marrom no oredict. Um souvenir sinistro.
+    tasks:
+      - get: GalacticraftAmunRa:item.baseItem:29
+    rewards:
+      - loot: comum
+
+  - id: saque_piramide
+    title: "Tesouros da Pirâmide"
+    type: normal
+    deps: [piramide]
+    icon: GalacticraftAmunRa:item.baseItem:27
+    task_logic: OR
+    desc: |
+      Os baús das pirâmides são a fonte de três materiais especiais: §eChionite§r (para o Cryo
+      Diode), §eSpodumene§r (lítio) e §eNanite Cluster§r (para o Nanite Multitool). Traga qualquer um.
+    tasks:
+      - get: GalacticraftAmunRa:item.baseItem:3
+      - get: GalacticraftAmunRa:item.baseItem:7
+      - get: GalacticraftAmunRa:item.baseItem:27
+    rewards:
+      - xp: 4
+      - item: minecraft:gold_ingot x8
+
+  # ======================================================================
+  # FASE 5 — ARMAS, BATERIAS E FERRAMENTAS
+  # ======================================================================
+  - id: diodo_laser
+    title: "Laser Diode"
+    type: normal
+    deps: [rubi]
+    deps_hidden: [galacticraft:nucleo_feixe]
+    icon: GalacticraftAmunRa:item.baseItem:4
+    desc: |
+      6 Alumínios Prensados, um Painel de Vidro, um Ruby e um Núcleo de Feixe. Os §eSentinelas§r
+      (robôs de Amun-Ra) também deixam cair diodos de laser.
+    tasks:
+      - get: GalacticraftAmunRa:item.baseItem:4
+    rewards:
+      - xp: 4
+      - item: ore:compressedAluminum x4
+
+  - id: sentinelas
+    title: "Sentinelas"
+    type: optional
+    deps: [sistema_amunra]
+    icon: GalacticraftAmunRa:item.baseItem:4
+    desc: |
+      Os §eSentries§r são robôs-sentinela de Amun-Ra que atacam intrusos — e às vezes deixam cair um
+      §eLaser Diode§r inteiro. Derrote alguns.
+    tasks:
+      - kill: {entity: "sentryRobot", count: 3}
+    rewards:
+      - loot: incomum
+
+  - id: blaster
+    title: "Blaster"
+    type: normal
+    deps: [diodo_laser, wafer_ender, bateria_avancada_ar]
+    icon: GalacticraftAmunRa:item.raygun
+    desc: |
+      Laser Diode, Ender Wafer, 2 Aço Prensado, um Botão e uma bateria. Uma arma de raio que gasta
+      energia em vez de flechas. Troque a bateria na bancada (arma + bateria nova).
+    tasks:
+      - get: GalacticraftAmunRa:item.raygun
+    rewards:
+      - xp: 4
+      - item: GalacticraftAmunRa:item.battery-ender
+
+  - id: diodo_crio
+    title: "Cryo Diode"
+    type: optional
+    deps: [saque_piramide]
+    deps_hidden: [galacticraft:nucleo_feixe]
+    icon: GalacticraftAmunRa:item.baseItem:5
+    desc: |
+      Igual ao Laser Diode, mas com §eChionite§r no lugar do rubi. Como os minérios de Amun-Ra estão
+      desligados neste pack, a Chionite só vem dos baús das pirâmides.
+    tasks:
+      - get: GalacticraftAmunRa:item.baseItem:5
+    rewards:
+      - loot: incomum
+
+  - id: raio_congelante
+    title: "Freeze Ray"
+    type: optional
+    deps: [diodo_crio, bateria_avancada_ar]
+    icon: GalacticraftAmunRa:item.cryogun
+    desc: |
+      O irmão gelado do Blaster: congela os alvos. Mesma receita, com o Cryo Diode.
+    tasks:
+      - get: GalacticraftAmunRa:item.cryogun
+    rewards:
+      - loot: incomum
+
+  - id: malha_litio
+    title: "Lithium Mesh"
+    type: normal
+    deps: [saque_piramide]
+    icon: GalacticraftAmunRa:item.baseItem:8
+    desc: |
+      O §eSpodumene§r (lítio) das pirâmides vira §eLithium Mesh§r — veja a receita no NEI. Ela faz a
+      §eLithium Battery§r, o Advanced Radioisotope Generator e o Nanite Control Module.
+    tasks:
+      - get: GalacticraftAmunRa:item.baseItem:8
+    rewards:
+      - xp: 4
+      - item: ore:compressedAluminum x4
+
+  - id: bateria_litio
+    title: "Lithium Battery"
+    type: optional
+    deps: [malha_litio, wafer_ender]
+    icon: GalacticraftAmunRa:item.battery-lithium
+    desc: |
+      5 Alumínios Prensados, Lithium Mesh e Ender Wafer: 240 000 gJ.
+    tasks:
+      - get: GalacticraftAmunRa:item.battery-lithium
+    rewards:
+      - loot: incomum
+
+  - id: malha_uranio
+    title: "Uranium-Lithium Mesh"
+    type: normal
+    deps: [malha_litio, minerios_mehen]
+    icon: GalacticraftAmunRa:item.baseItem:22
+    desc: |
+      Lítio e urânio numa malha só (confira a receita no NEI). É o coração da Nuclear Battery.
+    tasks:
+      - get: GalacticraftAmunRa:item.baseItem:22
+    rewards:
+      - xp: 4
+      - item: ore:ingotUranium x2
+
+  - id: bateria_nuclear
+    title: "Nuclear Battery"
+    type: normal
+    deps: [malha_uranio, wafer_ender]
+    icon: GalacticraftAmunRa:item.battery-nuclear
+    desc: |
+      5 Alumínios Prensados, Uranium-Lithium Mesh e Ender Wafer. Ela guarda pouca energia, mas §ese
+      recarrega sozinha§r com o decaimento do urânio. Ingrediente do Multi-Sensor e do Disruptor de
+      Gravidade.
+    tasks:
+      - get: GalacticraftAmunRa:item.battery-nuclear
+    rewards:
+      - xp: 4
+      - item: GalacticraftAmunRa:item.baseItem x2
+
+  - id: bateria_quantica
+    title: "Quantum Battery"
+    type: optional
+    deps: [bateria_litio]
+    icon: GalacticraftAmunRa:item.battery-quantum
+    desc: |
+      A maior bateria do Amun-Ra: 960 000 gJ. Confira a receita no NEI.
+    tasks:
+      - get: GalacticraftAmunRa:item.battery-quantum
+    rewards:
+      - loot: raro
+
+  - id: modulo_nanitas
+    title: "Nanite Control Module"
+    type: normal
+    deps: [saque_piramide, malha_litio]
+    deps_hidden: [galacticraft:nucleo_feixe]
+    icon: GalacticraftAmunRa:item.baseItem:28
+    desc: |
+      Estanho Prensado, um Nanite Cluster, 2 Módulos de Frequência, um Núcleo de Feixe e uma
+      Lithium Mesh. O cérebro do Nanite Multitool.
+    tasks:
+      - get: GalacticraftAmunRa:item.baseItem:28
+    rewards:
+      - xp: 4
+      - item: GalacticraftCore:item.basicItem:19 x2
+
+  - id: multiferramenta
+    title: "Nanite Multitool"
+    type: normal
+    deps: [modulo_nanitas]
+    icon: GalacticraftAmunRa:item.nanotool
+    desc: |
+      2 Nanite Clusters, o Nanite Control Module, Titânio Prensado e uma bateria. Uma ferramenta que
+      vira §epicareta, machado, pá, enxada, tesoura, chave inglesa e até bancada de trabalho§r —
+      troque o modo e trabalhe.
+    tasks:
+      - get: GalacticraftAmunRa:item.nanotool
+    rewards:
+      - xp: 5
+      - item: GalacticraftAmunRa:item.battery-ender
+
+  - id: gerador_radioisotopo_avancado
+    title: "Advanced Radioisotope Generator"
+    type: optional
+    deps: [gerador_radioisotopo, malha_litio]
+    icon: GalacticraftAmunRa:tile.machines1:1
+    desc: |
+      Titânio Prensado, Ender Wafer, um Bloco de Urânio, Cabo de Alumínio Pesado e Lithium Mesh: a
+      versão forte do gerador eterno.
+    tasks:
+      - get: GalacticraftAmunRa:tile.machines1:1
+    rewards:
+      - loot: raro
+
+  - id: baus_metal
+    title: "Baús de Metal"
+    type: optional
+    deps: [sistema_amunra]
+    icon: GalacticraftAmunRa:tile.steelChest
+    task_logic: OR
+    desc: |
+      §eAluminum Chest§r (8 Alumínios Prensados): mesma capacidade de um baú de madeira, forma baú
+      duplo. §eSteel Chest§r (8 Aços Prensados): o dobro de espaço, mas não forma baú duplo. Leves
+      e ótimos para naves-mãe (a massa conta!).
+    tasks:
+      - get: GalacticraftAmunRa:tile.aluChest
+      - get: GalacticraftAmunRa:tile.steelChest
+    rewards:
+      - loot: comum
+
+  - id: bancada_metal
+    title: "Bancada de Metal"
+    type: optional
+    deps: [sistema_amunra]
+    icon: GalacticraftAmunRa:tile.baseBlockRock:13
+    desc: |
+      4 Ferros Prensados formam uma §eBancada de Trabalho§r de metal — funciona como a de madeira, mas
+      combina muito mais com uma nave espacial.
+    tasks:
+      - get: GalacticraftAmunRa:tile.baseBlockRock:13
+    rewards:
+      - loot: comum
+
+  - id: caixas_aluminio
+    title: "Aluminum Box"
+    type: optional
+    deps: [sistema_amunra]
+    icon: GalacticraftAmunRa:tile.baseBlockRock:6
+    desc: |
+      4 Alumínios Prensados rendem §e32 Aluminum Boxes§r: blocos de construção baratos e leves, com
+      lajes e escadas. Massa baixa = nave-mãe rápida.
+    tasks:
+      - get: GalacticraftAmunRa:tile.baseBlockRock:6 x32
+    rewards:
+      - loot: comum
+
+  - id: hidroponia
+    title: "Hydroponics Unit"
+    type: normal
+    deps: [sistema_amunra]
+    icon: GalacticraftAmunRa:tile.machines4:1
+    desc: |
+      Vidro, 2 Coletores de Oxigênio, terra e Titânio Prensado (rende 2). A §eHydroponics Unit§r
+      planta trigo e extrai o oxigênio produzido — perfeita para naves e bases sem folhas por perto.
+    tasks:
+      - get: GalacticraftAmunRa:tile.machines4:1
+    rewards:
+      - xp: 4
+      - item: minecraft:wheat_seeds x16
+
+  # ======================================================================
+  # FASE 6 — O ÔNIBUS ESPACIAL
+  # ======================================================================
+  - id: pecas_shuttle
+    title: "Peças do Shuttle"
+    type: main
+    deps: [esquematico_shuttle]
+    deps_hidden: [galacticraft:titanio_prensado]
+    icon: GalacticraftAmunRa:item.baseItem:16
+    desc: |
+      §e• Shuttle Nose Cone:§r 3 Titânios Prensados + 1 Lightweight Plate.
+      §e• Shuttle Legs:§r 3 Titânios Prensados + 2 Mastros de Bandeira.
+      §e• Shuttle Fuel Tank:§r 8 Estanhos Prensados + uma Lata de Estanho.
+      A §eLightweight Plate§r vem da Prensa (confira no NEI). Junte as peças para montar o shuttle.
+    tasks:
+      - get: [GalacticraftAmunRa:item.baseItem:16, GalacticraftAmunRa:item.baseItem:14, GalacticraftAmunRa:item.baseItem:23, GalacticraftAmunRa:item.baseItem:15]
+    rewards:
+      - xp: 6
+      - choice: [ore:compressedTitanium x6, ore:compressedTin x8, GalacticraftCore:item.steelPole x4]
+
+  - id: shuttle
+    title: "Shuttle Rocket"
+    type: main
+    deps: [pecas_shuttle]
+    icon: GalacticraftAmunRa:item.itemShuttle
+    desc: |
+      Monte o §eShuttle Rocket§r na Bancada NASA (a aba do esquemático mostra o formato e as
+      variantes com carga). O shuttle viaja entre corpos e pousa em §enaves-mãe e estações§r —
+      inclusive acoplando numa Shuttle Dock.
+    tasks:
+      - get: GalacticraftAmunRa:item.itemShuttle:*
+    rewards:
+      - xp: 8
+      - choice: [GalacticraftCore:item.bucketFuel x4, ore:compressedTitanium x6, GalacticraftAmunRa:item.baseItem:23]
+
+  - id: pecas_doca
+    title: "Porta e Passarela da Doca"
+    type: optional
+    deps: [shuttle]
+    icon: GalacticraftAmunRa:item.baseItem:25
+    desc: |
+      §eDock Door:§r 6 Aços Prensados + 3 Alumínios Prensados. §eDock Gangway:§r 6 Mastros de Bandeira +
+      3 Lãs Pretas. As duas peças da Shuttle Dock.
+    tasks:
+      - get: [GalacticraftAmunRa:item.baseItem:25, GalacticraftAmunRa:item.baseItem:24]
+    rewards:
+      - loot: comum
+
+  - id: doca_shuttle
+    title: "Shuttle Dock"
+    type: optional
+    deps: [pecas_doca]
+    icon: GalacticraftAmunRa:tile.machines4
+    desc: |
+      Encaixe a §eShuttle Dock§r numa parede de uma nave-mãe ou estação: o shuttle acopla do lado de
+      fora e você entra sem sair no vácuo. Receita: Quadros e Controles de Porta Pressurizada, Dock
+      Door, Dock Gangway e um Liberador.
+    tasks:
+      - get: GalacticraftAmunRa:tile.machines4
+    rewards:
+      - loot: incomum
+
+  # ======================================================================
+  # FASE 7 — AS NAVES-MÃE
+  # ======================================================================
+  - id: naves_mae_info
+    title: "Como Funciona uma Nave-Mãe"
+    type: info
+    deps: [sistema_amunra]
+    icon: GalacticraftAmunRa:tile.machines1:2
+    desc: |
+      Uma §eNave-Mãe§r é uma estação espacial que §evoa§r. Você constrói, ela orbita um corpo celeste
+      e, com motores, viaja até outro — levando a sua base junto.
+
+      §e• Criação:§r no Mapa da Galáxia, ao selecionar um corpo onde ela pode ser criada, aparece
+      "A Mothership can be built here!". Precisa ter no inventário §e64 Estanhos Prensados, 16
+      Alumínios Prensados, 24 lingotes de ferro e 1 Mothership Navigation Console§r. Não há limite de
+      naves por jogador (config).
+      §e• Motores:§r uma fileira de Bases com um Jato numa ponta. Mais bases = motor maior.
+      §e• Massa:§r cada bloco tem massa; mais massa exige mais empuxo e mais combustível. A §eBlock
+      Scale§r mostra a massa do bloco em cima dela.
+      §e• Viagem:§r o Console escolhe o destino e mostra distância, tempo, empuxo e combustível. A
+      config limita viagens longas demais.
+      §cCuidado:§r cair da borda de uma nave-mãe é morte certa, e ficar atrás de um motor ligado
+      também.
+    tasks:
+      - check
+    rewards:
+      - xp: 3
+
+  - id: console_navegacao
+    title: "Mothership Navigation Console"
+    type: main
+    deps: [naves_mae_info, wafer_ender]
+    deps_hidden: [galacticraft:unidade_orion]
+    icon: GalacticraftAmunRa:tile.machines1:2
+    desc: |
+      5 Titânios Prensados, um Ender Wafer, um Módulo de Frequência, um Painel de Vidro e uma
+      §eUnidade Orion§r (aquela que leva um minério de cada tipo!). É o volante da nave-mãe e
+      também um ingrediente da criação dela.
+    tasks:
+      - get: GalacticraftAmunRa:tile.machines1:2
+    rewards:
+      - xp: 8
+      - choice: [ore:compressedTitanium x6, ore:compressedTin x16, ore:compressedAluminum x8]
+
+  - id: materiais_nave_mae
+    title: "Materiais da Nave-Mãe"
+    type: main
+    deps: [console_navegacao]
+    icon: GalacticraftAmunRa:tile.baseBlockRock:12
+    desc: |
+      Tudo no inventário: §e64 Estanhos Prensados, 16 Alumínios Prensados, 24 lingotes de ferro e o
+      Mothership Navigation Console§r.
+    tasks:
+      - get: [ore:compressedTin x64, ore:compressedAluminum x16, minecraft:iron_ingot x24, GalacticraftAmunRa:tile.machines1:2]
+    rewards:
+      - xp: 6
+      - choice: [ore:compressedTitanium x8, GalacticraftCore:item.bucketFuel x4, GalacticraftCore:tile.sealer]
+
+  - id: nave_mae
+    title: "A Nave-Mãe"
+    type: milestone
+    deps: [materiais_nave_mae]
+    icon: GalacticraftAmunRa:tile.baseBlockRock:12
+    banner: "Uma Casa que Voa"
+    subtitle: "A primeira nave-mãe do Registro"
+    desc: |
+      Lance um foguete, abra o Mapa da Galáxia, escolha o corpo e crie a nave-mãe. Você chega numa
+      plataforma de §eMothership Base Blocks§r flutuando no espaço — o casco da sua futura cidade
+      voadora.
+
+      §ePrimeiros passos a bordo:§r sele uma área com oxigênio, instale a Hydroponics Unit para ar
+      renovável, coloque o Console de Navegação e o §eMothership Configuration Terminal§r (nome,
+      ícone no mapa e permissões de pouso e de uso).
+
+      Confirme aqui quando a nave existir.
+    tasks:
+      - check
+    rewards:
+      - xp: 12
+      - kit: {name: "Kit do Capitão", items: [GalacticraftAmunRa:tile.machines4:1 x2, GalacticraftCore:tile.sealer, GalacticraftAmunRa:tile.steelChest x2, GalacticraftCore:item.oxygenTankHeavyFull x2]}
+      - loot: epico
+
+  - id: terminal_configuracao
+    title: "Mothership Configuration Terminal"
+    type: normal
+    deps: [console_navegacao]
+    icon: GalacticraftAmunRa:tile.machines1:3
+    desc: |
+      Titânio Prensado, Ender Wafer, Módulo de Frequência, Painel de Vidro e uma Alavanca. Muda o
+      nome e o ícone da nave no mapa e define quem pode pousar nela e usar seus blocos (dono, todos,
+      lista branca ou negra).
+    tasks:
+      - get: GalacticraftAmunRa:tile.machines1:3
+    rewards:
+      - xp: 4
+      - item: ore:compressedTitanium x4
+
+  - id: motor_foguete_nave
+    title: "Rocket Engine"
+    type: main
+    deps: [nave_mae]
+    deps_hidden: [galacticraft:motor_pesado]
+    icon: GalacticraftAmunRa:tile.machines2
+    desc: |
+      O motor químico das naves-mãe:
+      §e• Rocket Engine Jet:§r 4 Titânios Prensados, um Motor de Foguete Pesado e um Motor Auxiliar.
+      §e• Rocket Engine Base:§r 6 Titânios Prensados, 2 Motores Auxiliares e uma Lata de Estanho.
+      Coloque uma fileira de Bases e o Jato numa ponta. Ele queima §ecombustível de foguete§r
+      (o mesmo "fuel" da Refinaria). Faça um jato e pelo menos 3 bases.
+    tasks:
+      - get: [GalacticraftAmunRa:tile.machines2, GalacticraftAmunRa:tile.msBoosters1 x3]
+    rewards:
+      - xp: 8
+      - choice: [GalacticraftCore:item.bucketFuel x6, ore:compressedTitanium x8, GalacticraftCore:item.engine:1 x2]
+
+  - id: propulsor_ionico
+    title: "Ion Thruster"
+    type: main
+    deps: [nave_mae, ouro_prensado, transformador]
+    deps_hidden: [galacticraft:nucleo_feixe]
+    icon: GalacticraftAmunRa:tile.machines2:1
+    desc: |
+      O motor elétrico:
+      §e• Ion Thruster Jet:§r 6 Titânios Prensados, um Núcleo de Feixe e Gold Foil.
+      §e• Ion Thruster Base:§r 5 Titânios Prensados, um Transformer, 2 Núcleos de Feixe e Gold Foil.
+      Em vez de combustível, ele usa §eenergia§r e §eNitrogênio Líquido§r como refrigerante (config).
+      O Condensador de Marte produz nitrogênio líquido.
+    tasks:
+      - get: [GalacticraftAmunRa:tile.machines2:1, GalacticraftAmunRa:tile.msBoosters1:1 x3]
+    rewards:
+      - xp: 8
+      - choice: [GalacticraftAmunRa:item.baseItem:20 x2, ore:compressedTitanium x8, GalacticraftAmunRa:item.baseItem:21 x2]
+
+  - id: combustivel_nave
+    title: "Tanques da Nave"
+    type: normal
+    deps: [motor_foguete_nave]
+    icon: GalacticraftCore:item.bucketFuel
+    desc: |
+      Motores de foguete de nave-mãe queimam muito §ecombustível§r — e quanto mais pesada a nave, mais.
+      Guarde §e16 baldes§r de combustível (do Galacticraft ou do BuildCraft) antes da primeira viagem.
+    tasks:
+      - one_of: [GalacticraftCore:item.bucketFuel x16, BuildCraft|Energy:bucketFuel x16]
+    rewards:
+      - xp: 4
+      - item: minecraft:bucket x8
+
+  - id: nitrogenio_ionico
+    title: "Refrigerante Iônico"
+    type: normal
+    deps: [propulsor_ionico]
+    deps_hidden: [galacticraft:condensador]
+    icon: GalacticraftMars:item.canisterPartialLN2:1
+    desc: |
+      Os Propulsores Iônicos usam §eNitrogênio Líquido§r como refrigerante (config do pack). O
+      Condensador do Galacticraft liquefaz o nitrogênio — encha uma lata.
+    tasks:
+      - get: GalacticraftMars:item.canisterPartialLN2:1
+    rewards:
+      - xp: 4
+      - item: GalacticraftCore:item.oilCanisterPartial:1001 x2
+
+  - id: motores_maiores
+    title: "Mais Empuxo"
+    type: optional
+    deps: [motor_foguete_nave]
+    icon: GalacticraftAmunRa:tile.msBoosters1
+    task_logic: OR
+    desc: |
+      Empuxo insuficiente? Cada Base a mais na fileira deixa o motor maior. Junte §e8 bases§r de
+      qualquer tipo para uma nave grande de verdade.
+    tasks:
+      - get: GalacticraftAmunRa:tile.msBoosters1 x8
+      - get: GalacticraftAmunRa:tile.msBoosters1:1 x8
+    rewards:
+      - loot: raro
+
+  - id: balanca
+    title: "Block Scale"
+    type: optional
+    deps: [nave_mae]
+    icon: GalacticraftAmunRa:tile.machines3
+    desc: |
+      Coloque um bloco em cima da §eBlock Scale§r e ela mostra a massa dele. Ajuda a construir naves
+      leves (que voam mais rápido e gastam menos).
+    tasks:
+      - get: GalacticraftAmunRa:tile.machines3
+    rewards:
+      - loot: comum
+
+  - id: gravidade_artificial
+    title: "Artificial Gravity Generator"
+    type: normal
+    deps: [nave_mae, materia_escura, transformador]
+    deps_hidden: [galacticraft:nucleo_feixe]
+    icon: GalacticraftAmunRa:tile.machines3:1
+    desc: |
+      Titânio Prensado, Núcleo de Feixe, Dark Matter Shard, Transformer e Ender Wafer. Ele cria uma
+      força para baixo (ou para cima!) numa área configurável. O gasto de energia depende do volume
+      e da força. Adeus, flutuar pela nave-mãe!
+    tasks:
+      - get: GalacticraftAmunRa:tile.machines3:1
+    rewards:
+      - xp: 5
+      - item: GalacticraftAmunRa:item.baseItem:26 x2
+
+  - id: disruptor_gravidade
+    title: "Artificial Gravity Disruptor"
+    type: optional
+    deps: [gravidade_artificial, bateria_nuclear]
+    icon: GalacticraftAmunRa:item.baseItem:30
+    desc: |
+      Ligado, ele impede que os Geradores de Gravidade Artificial afetem você. Para quando você
+      quer flutuar de propósito.
+    tasks:
+      - get: GalacticraftAmunRa:item.baseItem:30
+    rewards:
+      - loot: incomum
+
+  - id: primeira_viagem
+    title: "Primeira Viagem da Nave-Mãe"
+    type: milestone
+    deps: [motor_foguete_nave, propulsor_ionico]
+    deps_any: true
+    icon: GalacticraftAmunRa:tile.machines2:1
+    banner: "Motores Ligados"
+    subtitle: "A nave-mãe zarpou"
+    desc: |
+      Motores montados, combustível (ou nitrogênio e energia) carregado, destino escolhido no
+      Console... "Launch!". A nave inteira, com você e a sua base, atravessa o espaço até o novo
+      corpo celeste.
+
+      §aDicas:§r o Console mostra empuxo e combustível necessários antes de você confirmar; se o
+      empuxo for insuficiente, adicione bases aos motores ou alivie a nave. A config permite que a
+      nave-mãe alcance corpos até o Nível 10 — ou seja, quase todo o mapa.
+
+      Confirme quando completar a primeira viagem.
+    tasks:
+      - check
+    rewards:
+      - xp: 12
+      - kit: {name: "Kit do Navegador de Naves-Mãe", items: [GalacticraftCore:item.bucketFuel x8, ore:compressedTitanium x8, GalacticraftAmunRa:tile.msBoosters1 x2]}
+      - loot: epico
+
+  - id: mestre_amunra
+    title: "Senhor do Sol Duplo"
+    type: milestone
+    deps: [farao, primeira_viagem, multiferramenta, mehen, anubis]
+    icon: GalacticraftAmunRa:item.itemShuttle
+    banner: "O Volume do Sol Duplo"
+    subtitle: "Amun-Ra está escrito"
+    desc: |
+      O Faraó foragido derrotado, o shuttle no hangar, uma nave-mãe cruzando as estrelas e o
+      Multitool de nanitas na mão. Herói, o Volume do Sol Duplo está completo!
+
+      O Faraó de Amun-Ra é o último guardião do §5Selo das Estrelas§r. Junte-o aos chefes da Lua, de
+      Marte e aos sete do ExtraPlanets e o céu inteiro vai brilhar no Registro. Os Faraós de Atum vão
+      ficar sabendo... e eu acho que eles vão ficar com um pouquinho de ciúme.
+    tasks:
+      - get: [GalacticraftAmunRa:item.nanotool, GalacticraftAmunRa:item.itemShuttle:*]
+    rewards:
+      - xp: 15
+      - loot: lendario

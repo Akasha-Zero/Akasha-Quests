@@ -1,0 +1,1618 @@
+chapter:
+  id: matteroverdrive
+  title: "Matter Overdrive"
+  prefix: ""
+  order: 375
+  icon: mo:replicator
+  desc: |
+    §bO Volume da Matéria.§r Tritânio e dilítio, decompor e replicar qualquer coisa, armas de
+    fase, corpos androides, anomalias gravitacionais, fusão e um mapa da galáxia inteira.
+    (Matter Overdrive: Community Edition)
+
+quests:
+  # ======================================================================
+  # FASE 0 — TRITÂNIO E DILÍTIO
+  # ======================================================================
+  - id: minerio_tritanio
+    title: "Minério de Tritânio"
+    type: main
+    icon: mo:tritanium_ore
+    desc: |
+      Prepare-se, Herói: esta página do Registro parece ter sido escrita por gente que viajava
+      entre as estrelas. Tudo nela começa com um metal "duas vezes mais duro que o diamante".
+
+      O §eTritanium Ore§r gera no mundo normal §eabaixo da camada Y 64§r (a config desliga os
+      minérios do mod no Nether). Qualquer picareta serve. Junte §e8 minérios§r — e guarde
+      alguns para triturar depois, que rende mais.
+    tasks:
+      - get: mo:tritanium_ore x8
+    rewards:
+      - xp: 4
+      - choice: [minecraft:iron_pickaxe x1, minecraft:torch x32, minecraft:cooked_beef x16]
+
+  - id: lingote_tritanio
+    title: "Lingote de Tritânio"
+    type: main
+    deps: [minerio_tritanio]
+    icon: mo:tritanium_ingot
+    desc: |
+      Fornalha comum funde o minério em §eTritanium Ingot§r. Triturar antes dobra o rendimento:
+      o Pulverizador do Thermal, o Moinho SAG do EnderIO ou o Crusher do IE dão 2 pós por
+      minério — e a Fundição por Indução do Thermal chega a 3 lingotes (confira o fundente
+      no NEI)!
+
+      Junte §e16 lingotes§r. Quase toda máquina deste Volume é feita de tritânio.
+    tasks:
+      - get: ore:ingotTritanium x16
+    rewards:
+      - xp: 4
+      - choice: [minecraft:coal x16, minecraft:iron_ingot x8, minecraft:gold_ingot x4]
+
+  - id: dilitio
+    title: "Cristal de Dilítio"
+    type: main
+    deps: [minerio_tritanio]
+    icon: mo:dilithium_crystal
+    desc: |
+      O cristal que "mantém partículas carregadas longe da sua rede cristalina" (palavras do
+      Data Pad — eu só repito, com muito orgulho). O §eDilithium Ore§r gera §eabaixo de Y 32§r
+      e precisa de picareta de §eferro ou melhor§r. Cada minério solta 1 cristal; com Fortuna
+      máxima, até 3.
+
+      Junte §e8 Cristais de Dilítio§r: baterias, matrizes, inscritor... tudo pede dilítio.
+    tasks:
+      - get: ore:gemDilithium x8
+    rewards:
+      - xp: 4
+      - choice: [minecraft:diamond_pickaxe x1, minecraft:redstone x16, minecraft:torch x32]
+
+  - id: placa_tritanio
+    title: "Placa de Tritânio"
+    type: main
+    deps: [lingote_tritanio]
+    icon: mo:tritanium_plate
+    desc: |
+      Dois lingotes de tritânio na bancada = uma §eTritanium Plate§r. Ela é o "chapa" das
+      máquinas, das armas e da blindagem contra radiação do Replicador. Faça §e8§r.
+    tasks:
+      - get: mo:tritanium_plate x8
+    rewards:
+      - xp: 4
+      - choice: [ore:ingotTritanium x4, minecraft:iron_ingot x8, minecraft:redstone x16]
+
+  - id: pepitas_tritanio
+    title: "Pepitas de Tritânio"
+    type: optional
+    deps: [lingote_tritanio]
+    icon: mo:tritanium_nugget
+    desc: |
+      Um lingote vira 9 §eTritanium Nuggets§r (e 9 pepitas voltam a ser um lingote). Útil para
+      ajustar quantidades — e fica bonitinho no baú.
+    tasks:
+      - get: mo:tritanium_nugget x9
+    rewards:
+      - loot: comum
+
+  - id: ferramentas_tritanio
+    title: "Ferramentas de Tritânio"
+    type: optional
+    deps: [lingote_tritanio]
+    icon: mo:tritanium_pickaxe
+    desc: |
+      Com lingotes e gravetos, o tritânio vira picareta, machado, espada e enxada com
+      §edurabilidade enorme§r (mais de 3000 usos!). Faça qualquer uma.
+    tasks:
+      - one_of: [mo:tritanium_pickaxe, mo:tritanium_axe, mo:tritanium_sword, mo:tritanium_hoe]
+    rewards:
+      - loot: comum
+
+  - id: armadura_tritanio
+    title: "Armadura de Tritânio"
+    type: optional
+    deps: [circuito_mk2]
+    icon: mo:tritanium_chestplate
+    desc: |
+      Capacete, peitoral e perneiras de tritânio levam um §eIsolinear Circuit Mk2§r junto com os
+      lingotes; as botas, só lingotes. Uma armadura resistente para encarar androides
+      renegados. Faça as quatro peças.
+    tasks:
+      - get: [mo:tritanium_helmet, mo:tritanium_chestplate, mo:tritanium_leggings, mo:tritanium_boots]
+    rewards:
+      - loot: incomum
+
+  - id: chave_tritanio
+    title: "Chave de Tritânio"
+    type: normal
+    deps: [lingote_tritanio]
+    icon: mo:tritanium_wrench
+    desc: |
+      3 lingotes de tritânio e uma lã amarela = §eTritanium Wrench§r. Ela gira blocos e, com
+      Shift + clique direito, §edesmonta máquinas instantaneamente§r, que voltam com
+      configurações, itens, matéria e energia. Também funciona em máquinas de outros mods.
+    tasks:
+      - get: mo:tritanium_wrench
+    rewards:
+      - xp: 2
+      - item: minecraft:wool:4 x4
+
+  - id: vidro_tritanio
+    title: "Vidro de Tritânio"
+    type: optional
+    deps: [placa_tritanio]
+    icon: mo:force_glass
+    desc: |
+      4 vidros em volta de uma placa de tritânio = §e4 Tritanium Glass§r. Um vidro com cara de
+      nave estelar para as suas janelas. (Vidro não bloqueia a visão dos Estabilizadores
+      Gravitacionais, lembre disso lá na frente!)
+    tasks:
+      - get: mo:force_glass x4
+    rewards:
+      - loot: comum
+
+  - id: caixotes_tritanio
+    title: "Caixotes de Tritânio"
+    type: optional
+    deps: [placa_tritanio]
+    icon: mo:tritanium_crate.blue
+    desc: |
+      Placas de tritânio + um baú + um corante = §eTritanium Crate§r da cor escolhida (16
+      cores). Armazenamento com estilo de doca espacial. Faça qualquer um.
+    tasks:
+      - one_of: [mo:tritanium_crate.black, mo:tritanium_crate.red, mo:tritanium_crate.green, mo:tritanium_crate.blue, mo:tritanium_crate.white, mo:tritanium_crate.gray, mo:tritanium_crate.cyan, mo:tritanium_crate.purple]
+    rewards:
+      - loot: comum
+
+  - id: circuito_isolinear
+    title: "Circuito Isolinear Mk1"
+    type: main
+    deps: [lingote_tritanio]
+    icon: mo:isolinear_circuit
+    desc: |
+      Ferro, redstone e vidro = §eIsolinear Circuit Mk1§r, o chip básico do mod. Ele aparece em
+      praticamente tudo: carcaças, cabos de rede, pen drives, ímãs... Faça §e8§r.
+    tasks:
+      - get: mo:isolinear_circuit x8
+    rewards:
+      - xp: 4
+      - choice: [minecraft:redstone x16, minecraft:glass x16, minecraft:iron_ingot x8]
+
+  - id: data_pad
+    title: "Data Pad"
+    type: normal
+    deps: [circuito_isolinear]
+    icon: mo:data_pad
+    desc: |
+      Um livro + um Circuito Isolinear = §eData Pad§r. Ele "guarda informações sobre todo o
+      Matter Overdrive": é o manual do mod, com páginas sobre máquinas, armas, androides e o
+      reator de fusão. Também acompanha os Contratos aceitos. Leia sempre que eu disser
+      "confira no Data Pad"!
+    tasks:
+      - get: mo:data_pad
+    rewards:
+      - xp: 2
+      - item: minecraft:book x2
+
+  - id: carcaca_maquina
+    title: "Carcaça de Máquina"
+    type: main
+    deps: [placa_tritanio, circuito_isolinear]
+    icon: mo:machine_casing
+    desc: |
+      2 lingotes de tritânio, 2 ouros, uma placa de tritânio e redstone = §eMachine Casing§r.
+      É o esqueleto de quase todas as máquinas e matrizes do mod. Faça §e4§r — você vai
+      precisar de muitas.
+    tasks:
+      - get: mo:machine_casing x4
+    rewards:
+      - xp: 4
+      - choice: [minecraft:gold_ingot x8, ore:ingotTritanium x6, minecraft:redstone x16]
+
+  - id: casco_maquina
+    title: "Casco de Máquina"
+    type: normal
+    deps: [placa_tritanio]
+    icon: mo:machine_hull
+    desc: |
+      4 placas de tritânio = §eMachine Hull§r, um bloco de estrutura. Ele preenche o anel do
+      §eReator de Fusão§r, lá no fim do capítulo. Por enquanto, guarde uns quantos.
+    tasks:
+      - get: mo:machine_hull x4
+    rewards:
+      - xp: 2
+      - item: ore:ingotTritanium x4
+
+  - id: inscritor
+    title: "Inscritor Molecular"
+    type: main
+    deps: [carcaca_maquina, dilitio]
+    icon: mo:inscriber
+    desc: |
+      Segundo o Data Pad, o §eMolecular Inscriber§r é "a única máquina precisa o bastante para
+      gravar os circuitos isolineares". Receita: ferro, placas de tritânio, redstone, um
+      dilítio, um pistão e uma Carcaça.
+
+      Ele usa §eRF§r. Coloque o circuito base e o material de gravação: cada nível tem o seu.
+    tasks:
+      - get: mo:inscriber
+    rewards:
+      - xp: 4
+      - choice: [mo:isolinear_circuit x4, minecraft:gold_ingot x4, mo:dilithium_crystal x2]
+
+  - id: energia_mo
+    title: "Energia para a Matéria"
+    type: info
+    deps: [inscritor]
+    icon: mo:battery
+    desc: |
+      Todas as máquinas do Matter Overdrive usam §eRF§r. Algumas fontes:
+      §e• Painel Solar§r do próprio mod (luz do sol).
+      §e• Baterias§r: a Bateria comum guarda 524 288 RF e a de Alta Capacidade 1 048 576 RF
+      (valores do NBT do registro).
+      §e• Qualquer gerador de RF§r de outros mods (dínamos do Thermal, geradores do EnderIO).
+      §e• Reator de Fusão§r, o objetivo final de energia deste Volume.
+
+      Decompor e replicar gastam MUITA energia: 8 000 RF por decomposição e 16 000 RF por
+      replicação, pela config do pack.
+    tasks:
+      - check
+    rewards:
+      - xp: 1
+
+  - id: circuito_mk2
+    title: "Circuito Isolinear Mk2"
+    type: normal
+    deps: [inscritor]
+    icon: mo:isolinear_circuit:1
+    desc: |
+      No Inscritor: §eCircuito Mk1 + lingote de ouro = Isolinear Circuit Mk2§r. Ele vai nas
+      matrizes, no painel solar, na armadura de tritânio e nos drives de padrão. Faça §e4§r.
+    tasks:
+      - get: mo:isolinear_circuit:1 x4
+    rewards:
+      - xp: 3
+      - item: minecraft:gold_ingot x4
+
+  - id: circuito_mk3
+    title: "Circuito Isolinear Mk3"
+    type: normal
+    deps: [circuito_mk2]
+    icon: mo:isolinear_circuit:2
+    desc: |
+      §eCircuito Mk2 + diamante = Mk3§r. O Decompositor, o Replicador, o Analisador, o Scanner,
+      as armas... todos pedem Mk3. Faça §e4§r e mantenha um estoque de diamantes.
+    tasks:
+      - get: mo:isolinear_circuit:2 x4
+    rewards:
+      - xp: 3
+      - item: minecraft:diamond
+
+  - id: circuito_mk4
+    title: "Circuito Isolinear Mk4"
+    type: optional
+    deps: [circuito_mk3]
+    icon: mo:isolinear_circuit:3
+    desc: |
+      §eCircuito Mk3 + esmeralda = Mk4§r, o circuito de topo. Por enquanto, a receita mais
+      famosa que pede um é o §eIon Sniper§r.
+    tasks:
+      - get: mo:isolinear_circuit:3
+    rewards:
+      - loot: incomum
+
+  - id: ima_supercondutor
+    title: "Ímã Supercondutor"
+    type: main
+    deps: [lingote_tritanio]
+    icon: mo:s_magnet
+    desc: |
+      6 redstones, 2 lingotes de tritânio e uma pérola do Fim = §e4 Superconductor Magnets§r.
+      Eles confinam plasma: canos de matéria, emissores de campo de força, bobinas do reator,
+      núcleos de plasma das armas... Faça §e8§r.
+    tasks:
+      - get: mo:s_magnet x8
+    rewards:
+      - xp: 4
+      - choice: [minecraft:ender_pearl x2, minecraft:redstone x32, ore:ingotTritanium x4]
+
+  - id: bateria
+    title: "Bateria"
+    type: main
+    deps: [dilitio, lingote_tritanio]
+    icon: mo:battery
+    desc: |
+      4 lingotes de tritânio, redstone, ouro e um dilítio = §eBateria§r. Ela guarda energia,
+      entra no Phaser, no Power Upgrade e nos Energy Packs. Também é o "estômago" dos
+      androides, mais adiante.
+    tasks:
+      - get: mo:battery
+    rewards:
+      - xp: 4
+      - choice: [mo:dilithium_crystal x2, ore:ingotTritanium x4, minecraft:redstone x16]
+
+  - id: bateria_hc
+    title: "Bateria de Alta Capacidade"
+    type: normal
+    deps: [bateria, placa_tritanio]
+    icon: mo:hc_battery
+    desc: |
+      Bateria + 2 dilítios + 2 placas de tritânio = §eHigh Capacity Battery§r: o dobro de
+      energia. O Transportador, a Estação de Recarga e o Power Storage Upgrade pedem uma.
+    tasks:
+      - get: mo:hc_battery
+    rewards:
+      - xp: 3
+      - item: mo:dilithium_crystal x2
+
+  - id: painel_solar
+    title: "Painel Solar"
+    type: normal
+    deps: [carcaca_maquina, circuito_mk2]
+    icon: mo:solar_panel
+    desc: |
+      Vidro, carvão, quartzo do Nether, 2 Circuitos Mk2 e uma Carcaça = §eSolar Panel§r: RF de
+      graça enquanto o sol brilha. Não sustenta um Replicador sozinho, mas ajuda a encher
+      baterias.
+    tasks:
+      - get: mo:solar_panel
+    rewards:
+      - xp: 3
+      - item: minecraft:quartz x4
+
+  - id: matriz_integracao
+    title: "Matriz de Integração"
+    type: main
+    deps: [carcaca_maquina, circuito_mk2, dilitio]
+    icon: mo:integration_matrix
+    desc: |
+      Vidro, 2 dilítios, uma Carcaça, um Circuito Mk2 e uma pérola do Fim = §eIntegration
+      Matrix§r. É uma das três "peças nobres" das máquinas de matéria (Decompositor,
+      Replicador, Analisador, Reciclador, Transportador).
+    tasks:
+      - get: mo:integration_matrix
+    rewards:
+      - xp: 4
+      - choice: [mo:dilithium_crystal x2, minecraft:ender_pearl x2, mo:isolinear_circuit:1 x2]
+
+  - id: matriz_conversao
+    title: "Matriz de Conversão Matéria-Energia"
+    type: main
+    deps: [circuito_mk2, dilitio]
+    icon: mo:me_conversion_matrix
+    desc: |
+      4 pérolas do Fim, 2 Circuitos Mk2, 2 ferros e um dilítio = §eMatter-Energy Conversion
+      Matrix§r: a peça que converte matéria em energia e vice-versa. O Decompositor e o
+      Replicador levam uma cada.
+    tasks:
+      - get: mo:me_conversion_matrix
+    rewards:
+      - xp: 4
+      - choice: [minecraft:ender_pearl x4, mo:isolinear_circuit:1 x2, minecraft:iron_ingot x8]
+
+  - id: compensador_heisenberg
+    title: "Compensador de Heisenberg"
+    type: normal
+    deps: [carcaca_maquina, circuito_mk2]
+    icon: mo:h_compensator
+    desc: |
+      Um nome que me faz sorrir: o §eHeisenberg Compensator§r (Circuitos Mk1 e Mk2, 2 dilítios,
+      uma Carcaça e um olho do Fim) "compensa" a incerteza na hora de recriar partículas. O
+      Replicador e o Transportador precisam dele.
+    tasks:
+      - get: mo:h_compensator
+    rewards:
+      - xp: 3
+      - item: minecraft:ender_eye x2
+
+  - id: pecas_materia
+    title: "As Peças da Matéria"
+    type: milestone
+    deps: [matriz_integracao, matriz_conversao, compensador_heisenberg, circuito_mk3]
+    icon: mo:me_conversion_matrix
+    banner: "As Peças da Matéria"
+    subtitle: "Matrizes, compensadores e circuitos"
+    desc: |
+      Matriz de Integração, Matriz de Conversão, Compensador de Heisenberg e Circuitos Mk3.
+      Herói, você tem nas mãos as peças que os Antigos usavam para desmontar e remontar a
+      realidade, átomo por átomo!
+
+      Com elas, as duas máquinas centrais deste Volume ficam ao alcance:
+      §e• Decompositor:§r transforma itens em §eMatter Plasma§r.
+      §e• Replicador:§r transforma Matter Plasma de volta em itens — de qualquer padrão que você
+      tenha escaneado.
+
+      §aDica:§r monte agora uma pequena usina de RF. O que vem a seguir é faminto.
+    tasks:
+      - get: [mo:integration_matrix, mo:me_conversion_matrix, mo:h_compensator, mo:isolinear_circuit:2 x2]
+    rewards:
+      - xp: 8
+      - kit: {name: "Kit do Físico de Matéria", items: [mo:dilithium_crystal x4, mo:tritanium_plate x8, mo:isolinear_circuit:1 x4, mo:machine_casing x2, minecraft:ender_pearl x4]}
+      - loot: raro
+
+  # ======================================================================
+  # FASE 1 — DECOMPOR
+  # ======================================================================
+  - id: decompositor
+    title: "Decompositor de Matéria"
+    type: main
+    deps: [pecas_materia]
+    icon: mo:decomposer
+    desc: |
+      O §eMatter Decomposer§r (3 placas de tritânio, 2 pistões grudentos, Matriz de
+      Integração, Circuito Mk3 e Matriz de Conversão) desmonta itens em §eMatter Plasma§r, um
+      fluido.
+
+      Coloque um item com matéria no slot de entrada: o tanque interno enche proporcionalmente.
+      §aPara saber quanta matéria um item tem, segure Shift no tooltip.§r Há uma pequena chance
+      de falha, que gera Pó de Matéria em vez de plasma.
+    tasks:
+      - get: mo:decomposer
+    rewards:
+      - xp: 5
+      - choice: [minecraft:sticky_piston x2, mo:tritanium_plate x4, minecraft:cobblestone x64]
+
+  - id: plasma_materia
+    title: "Matter Plasma"
+    type: info
+    deps: [decompositor]
+    icon: mo:matter_container_full
+    desc: |
+      O §eMatter Plasma§r é o "combustível" da replicação. Algumas regras:
+      §e• Transporte:§r §eMatter Transport Pipes§r ou qualquer cano de fluido.
+      §e• Armazenamento:§r o tanque interno das máquinas, upgrades de matéria ou §eMatter
+      Containers§r (enchidos num Transposador do Thermal ou num Engarrafador do IC2).
+      §e• Quanto vale cada item:§r Shift no tooltip. O pack calcula a matéria automaticamente
+      a partir das receitas e da fornalha.
+
+      Decompor pedregulho em massa é a forma clássica de juntar plasma (se o pedregulho tiver
+      valor de matéria no seu mundo — confira!).
+    tasks:
+      - check
+    rewards:
+      - xp: 1
+
+  - id: cano_materia
+    title: "Cano de Transporte de Matéria"
+    type: normal
+    deps: [ima_supercondutor, decompositor]
+    icon: mo:matter_pipe
+    desc: |
+      2 ferros, 2 vidros e um Ímã Supercondutor = §e8 Matter Transport Pipes§r. Ligue a saída
+      do Decompositor ao Replicador (ou a um tanque). A versão §eHeavy Duty§r (placas de
+      tritânio, redstone e 3 ímãs) carrega mais.
+    tasks:
+      - get: mo:matter_pipe x8
+    rewards:
+      - xp: 3
+      - item: mo:s_magnet x2
+
+  - id: cano_pesado
+    title: "Cano de Matéria Reforçado"
+    type: optional
+    deps: [cano_materia]
+    icon: mo:heavy_matter_pipe
+    desc: |
+      §eHeavy Duty Matter Transport Pipe§r: mais vazão para redes grandes de decompositores e
+      replicadores. Faça um lote de 8.
+    tasks:
+      - get: mo:heavy_matter_pipe x8
+    rewards:
+      - loot: comum
+
+  - id: conteiner_materia
+    title: "Contêiner de Matéria"
+    type: optional
+    deps: [ima_supercondutor, decompositor]
+    icon: mo:matter_container
+    desc: |
+      3 lingotes de tritânio e um Ímã = §e4 Empty Matter Containers§r. Encha num Transposador
+      do Thermal (ou Engarrafador do IC2) para levar plasma no bolso. O contêiner vazio também
+      é peça do §eNúcleo de Plasma§r das armas!
+    tasks:
+      - get: mo:matter_container x4
+    rewards:
+      - loot: comum
+
+  - id: po_materia
+    title: "Pó de Matéria"
+    type: normal
+    deps: [decompositor]
+    icon: mo:matter_dust
+    desc: |
+      Toda máquina erra às vezes. Quando o Decompositor ou o Replicador falham, sai §eMatter
+      Dust§r ("coloque num reciclador para refinar", diz o tooltip). Guarde-o: com um
+      Reciclador, ele volta para o ciclo.
+    tasks:
+      - get: mo:matter_dust
+    rewards:
+      - xp: 2
+      - item: minecraft:redstone x8
+
+  - id: reciclador
+    title: "Reciclador de Matéria"
+    type: normal
+    deps: [po_materia]
+    icon: mo:matter_recycler
+    desc: |
+      O §eMatter Recycler§r refina Pó de Matéria em §eRefined Matter Dust§r, que pode ser
+      decomposto de volta em plasma. Nada se perde! Receita: placas de tritânio, Circuitos Mk1
+      e Mk2, Matriz de Integração, pistão e Matriz de Conversão.
+    tasks:
+      - get: mo:matter_recycler
+    rewards:
+      - xp: 3
+      - item: minecraft:piston x2
+
+  - id: po_refinado
+    title: "Pó de Matéria Refinado"
+    type: optional
+    deps: [reciclador]
+    icon: mo:matter_dust_refined
+    desc: |
+      Refine um pouco de pó no Reciclador e jogue o §eRefined Matter Dust§r no Decompositor.
+      Círculo fechado: falhas viram plasma de novo.
+    tasks:
+      - get: mo:matter_dust_refined
+    rewards:
+      - loot: comum
+
+  - id: decompositor_portatil
+    title: "Decompositor Portátil"
+    type: optional
+    deps: [decompositor]
+    icon: mo:portable_decomposer
+    desc: |
+      O §ePortable Decomposer§r decompõe automaticamente os itens que você pega e que estejam
+      "atribuídos" a ele (atribua numa §ebigorna§r, junto com o item — e a atribuição não sai
+      mais). É menos eficiente que a máquina; esvazie clicando num tanque de matéria.
+      Lixeira de pedregulho de bolso!
+    tasks:
+      - get: mo:portable_decomposer
+    rewards:
+      - loot: comum
+
+  # ======================================================================
+  # FASE 2 — PADRÕES, REDE E REPLICAÇÃO
+  # ======================================================================
+  - id: cabo_rede
+    title: "Cabo de Rede de Matéria"
+    type: main
+    deps: [circuito_isolinear]
+    icon: mo:network_pipe
+    desc: |
+      As máquinas de matéria conversam por uma rede própria: §eMatter Network Cable§r (ferro,
+      ouro, vidro e um Circuito Mk1 rendem 16). Repare no Data Pad: muitas máquinas só se
+      conectam à rede pela §eface de trás§r.
+    tasks:
+      - get: mo:network_pipe x16
+    rewards:
+      - xp: 4
+      - choice: [minecraft:gold_ingot x4, minecraft:glass x16, mo:isolinear_circuit x4]
+
+  - id: pendrive_rede
+    title: "Pen Drive de Rede"
+    type: normal
+    deps: [circuito_isolinear]
+    icon: mo:network_flash_drive
+    desc: |
+      2 redstones + um Circuito Mk1 = §eNetwork Flash Drive§r. Ele serve de §efiltro§r nas
+      máquinas de rede (limita com quem cada uma conversa) e entra nas receitas do Replicador,
+      do Analisador, do Switch e do Pattern Monitor. Faça §e4§r.
+    tasks:
+      - get: mo:network_flash_drive x4
+    rewards:
+      - xp: 2
+      - item: minecraft:redstone x8
+
+  - id: switch_rede
+    title: "Switch de Rede de Matéria"
+    type: normal
+    deps: [cabo_rede, pendrive_rede, carcaca_maquina]
+    icon: mo:network_switch
+    desc: |
+      O §eMatter Network Switch§r conecta máquinas numa rede local. Ele é também ingrediente
+      do Pattern Monitor. Para ligar sub-redes diferentes, existe o §eMatter Network Router§r.
+    tasks:
+      - get: mo:network_switch
+    rewards:
+      - xp: 3
+      - item: mo:isolinear_circuit x2
+
+  - id: roteador_rede
+    title: "Roteador de Rede de Matéria"
+    type: optional
+    deps: [switch_rede]
+    icon: mo:network_router
+    desc: |
+      O §eMatter Network Router§r encaminha máquinas e switches de uma sub-rede local para outra.
+      Para laboratórios grandes, com vários replicadores em salas diferentes.
+    tasks:
+      - get: mo:network_router
+    rewards:
+      - loot: comum
+
+  - id: drive_padroes
+    title: "Drive de Padrões"
+    type: main
+    deps: [carcaca_maquina, circuito_mk2]
+    icon: mo:pattern_drive
+    desc: |
+      Para replicar algo, a rede precisa do "molde" desse algo: o §epadrão§r. O §ePattern
+      Drive§r (redstone, pérola do Fim, Carcaça e Circuito Mk2) guarda §e2 padrões de item§r.
+      Faça §e2§r — um deles vai na receita do Replicador!
+    tasks:
+      - get: mo:pattern_drive x2
+    rewards:
+      - xp: 4
+      - choice: [minecraft:ender_pearl x2, mo:isolinear_circuit:1 x2, minecraft:redstone x16]
+
+  - id: armazenamento_padroes
+    title: "Armazenamento de Padrões"
+    type: main
+    deps: [drive_padroes, cabo_rede]
+    icon: mo:pattern_storage
+    desc: |
+      O §ePattern Storage§r guarda §e6 Pattern Drives§r e os disponibiliza para a rede (ligue o
+      cabo pela face de trás). É o único jeito de deixar padrões acessíveis ao Replicador.
+      Receita: lã preta, tritânio, Circuitos Mk1/Mk2/Mk3, baú e Carcaça.
+    tasks:
+      - get: mo:pattern_storage
+    rewards:
+      - xp: 4
+      - choice: [mo:pattern_drive x1, minecraft:chest x4, mo:isolinear_circuit:2 x1]
+
+  - id: scanner
+    title: "Scanner de Matéria"
+    type: main
+    deps: [circuito_mk3]
+    icon: mo:matter_scanner
+    desc: |
+      O §eMatter Scanner§r (ferro, ouro, um Circuito Mk3 e redstone) escaneia §eblocos no
+      mundo§r para criar padrões. Cada escaneamento aumenta o "progresso" do padrão.
+
+      Como o escaneamento leva o padrão para o Armazenamento de Padrões e os detalhes de uso
+      (mirar, segurar o botão) são próprios do mod, abra o §eData Pad§r na página do Scanner
+      antes de começar.
+    tasks:
+      - get: mo:matter_scanner
+    rewards:
+      - xp: 4
+      - choice: [minecraft:gold_ingot x4, mo:isolinear_circuit:1 x2, minecraft:iron_ingot x8]
+
+  - id: analisador
+    title: "Analisador de Matéria"
+    type: main
+    deps: [armazenamento_padroes, scanner]
+    icon: mo:matter_analyzer
+    desc: |
+      O §eMatter Analyzer§r é a versão em bloco do Scanner — e §eo único jeito de escanear
+      itens§r. Coloque um item no slot: ele é analisado (e §cdestruído§r) e o padrão ganha
+      §e20%§r de progresso, o dobro do Scanner.
+
+      Ele procura um Pattern Drive livre na rede (conexão pela face de trás) e pausa se não
+      encontrar. Receita: Pattern Drive, 2 blocos de ferro, Circuito Mk3, as duas Matrizes e
+      um Pen Drive de Rede.
+    tasks:
+      - get: mo:matter_analyzer
+    rewards:
+      - xp: 4
+      - choice: [minecraft:iron_block x2, mo:pattern_drive x1, mo:network_flash_drive x2]
+
+  - id: escaneamento_info
+    title: "Progresso de Padrões"
+    type: info
+    deps: [analisador]
+    icon: mo:pattern_drive
+    desc: |
+      Como os padrões funcionam:
+
+      §e• Cada análise destrói o item§r e soma progresso ao padrão (20% no Analisador).
+      §e• Padrão a 100%§r replica sem erro (fora a chance normal de falha).
+      §e• Padrão incompleto§r replica com mais falhas: a 10% de progresso, falha cerca de 10% das
+      vezes, gerando Pó de Matéria.
+      §e• Nem tudo tem matéria:§r itens sem valor de matéria (Shift no tooltip) não podem ser
+      replicados.
+
+      Ou seja: sacrifique 5 diamantes no Analisador e tenha diamantes para sempre. Vale a pena!
+    tasks:
+      - check
+    rewards:
+      - xp: 1
+
+  - id: replicador
+    title: "Replicador de Matéria"
+    type: main
+    deps: [escaneamento_info, decompositor, cano_materia]
+    icon: mo:replicator
+    desc: |
+      A máquina mais famosa do Volume! O §eMatter Replicator§r (Pattern Drive, ferro, Matriz de
+      Integração, Circuito Mk3, Compensador de Heisenberg, placa de tritânio, Pen Drive e
+      Matriz de Conversão) usa §eMatter Plasma§r + RF para materializar itens a partir dos
+      padrões da rede.
+
+      Conecte-o à rede pela face de trás, dê plasma e energia. Dependendo da configuração de
+      redstone, ele pode precisar de sinal para trabalhar.
+    tasks:
+      - get: mo:replicator
+    rewards:
+      - xp: 5
+      - choice: [mo:tritanium_plate x5, mo:isolinear_circuit:2 x2, mo:h_compensator x1]
+
+  - id: radiacao
+    title: "Radiação do Replicador"
+    type: info
+    deps: [replicador]
+    icon: mo:tritanium_plate
+    desc: |
+      §cLeia antes de ligar!§r O processo de replicação emite §eradiação§r. Sem proteção,
+      criaturas por perto recebem doses pesadas: Fome, Náusea, Fadiga, Fraqueza e Veneno.
+
+      A proteção vem de §eaté 5 Placas de Tritânio§r instaladas no próprio Replicador; cada placa
+      também reduz a área afetada. Instale as 5 e trabalhe tranquilo. Eu cuido de você!
+    tasks:
+      - check
+    rewards:
+      - xp: 1
+
+  - id: placa_holografica
+    title: "Placa Holográfica"
+    type: normal
+    deps: [circuito_isolinear, placa_tritanio]
+    icon: mo:holo_sign
+    desc: |
+      Vidro, glowstone, um Circuito Mk1 e uma placa de tritânio = §eHolographic Sign§r: uma
+      placa de texto holográfica, com várias linhas, que se junta às vizinhas na horizontal.
+      Ela é peça do Pattern Monitor, do Estabilizador Gravitacional e do Controlador de Fusão.
+    tasks:
+      - get: mo:holo_sign
+    rewards:
+      - xp: 2
+      - item: minecraft:glowstone_dust x8
+
+  - id: monitor_padroes
+    title: "Monitor de Padrões"
+    type: main
+    deps: [replicador, switch_rede, placa_holografica]
+    icon: mo:pattern_monitor
+    desc: |
+      O §ePattern Monitor§r (2 Circuitos Mk2, Placa Holográfica, Switch e Pen Drive) mostra
+      todos os padrões guardados na rede e §eenvia tarefas de replicação§r para os replicadores
+      conectados. Escolha o item, a quantidade, e pronto!
+    tasks:
+      - get: mo:pattern_monitor
+    rewards:
+      - xp: 5
+      - choice: [mo:pattern_drive x1, mo:network_flash_drive x2, mo:holo_sign x2]
+
+  - id: primeira_replicacao
+    title: "A Primeira Replicação"
+    type: milestone
+    deps: [monitor_padroes, radiacao, armazenamento_padroes]
+    icon: mo:replicator
+    banner: "A Primeira Replicação"
+    subtitle: "Matéria em forma de qualquer coisa"
+    desc: |
+      Um item entra no Analisador e vira padrão. Pedregulho entra no Decompositor e vira
+      plasma. E, do outro lado da sala, o Replicador brilha... e devolve o item. Herói, você
+      §erecriou a matéria§r!
+
+      Uma linha de replicação que funciona:
+      §e• Decompositor(es)§r → Canos de Matéria → §eReplicador§r.
+      §e• Analisador + Pattern Storage + Monitor§r ligados por Cabos de Rede (face de trás!).
+      §e• 5 Placas de Tritânio§r no Replicador.
+      §e• Energia de sobra.§r
+
+      Os Antigos chamavam isso de "abundância". Use com sabedoria — e lembre que replicar
+      gasta bem mais energia do que minerar.
+    tasks:
+      - get: [mo:replicator, mo:decomposer, mo:matter_analyzer, mo:pattern_storage, mo:pattern_monitor]
+    rewards:
+      - xp: 10
+      - kit: {name: "Kit do Replicador", items: [mo:pattern_drive x2, mo:tritanium_plate x5, mo:matter_pipe x8, mo:network_pipe x16, mo:hc_battery x1]}
+      - loot: raro
+
+  - id: racao_emergencia
+    title: "Ração de Emergência"
+    type: optional
+    deps: [primeira_replicacao]
+    icon: mo:emergency_ration
+    desc: |
+      Os "cubos de ração" têm o valor nutritivo de um bife e, segundo o Data Pad, §esó podem ser
+      replicados§r. Se encontrar uma, escaneie-a e replique. (Ou só coma. Eu não julgo.)
+    tasks:
+      - get: mo:emergency_ration
+    rewards:
+      - loot: comum
+
+  - id: bebidas_estelares
+    title: "Chá. Earl Grey. Quente."
+    type: optional
+    deps: [primeira_replicacao]
+    icon: mo:earl_gray_tea
+    desc: |
+      Toda nave estelar que se preze tem um replicador de bebidas. O Matter Overdrive tem o
+      §eTea. Earl Grey. Hot.§r e a §eRomulan Ale§r (azul e "altamente intoxicante"). Consiga uma
+      delas e brinde à ciência.
+    tasks:
+      - one_of: [mo:earl_gray_tea, mo:romulan_ale]
+    rewards:
+      - loot: comum
+
+  # ======================================================================
+  # FASE 3 — MELHORIAS DE MÁQUINA
+  # ======================================================================
+  - id: casca_upgrade
+    title: "Casca de Upgrade"
+    type: normal
+    deps: [circuito_isolinear, placa_tritanio]
+    icon: mo:upgrade
+    desc: |
+      Redstone, um Circuito Mk1 e uma placa de tritânio = §eUpgrade Shell§r, a base de todos os
+      upgrades de máquina do mod. Faça §e4§r.
+    tasks:
+      - get: mo:upgrade x4
+    rewards:
+      - xp: 2
+      - item: minecraft:redstone x8
+
+  - id: upgrade_velocidade
+    title: "Upgrade de Velocidade"
+    type: normal
+    deps: [casca_upgrade]
+    icon: mo:upgrade:1
+    desc: |
+      Glowstone, redstone e esmeralda na casca = §eSpeed Upgrade§r. As máquinas trabalham mais
+      rápido. §cAtenção:§r no Decompositor, ele também aumenta a chance de falha. Equilibre com
+      o Fail-Safe!
+    tasks:
+      - get: mo:upgrade:1
+    rewards:
+      - xp: 2
+      - item: minecraft:emerald
+
+  - id: upgrade_failsafe
+    title: "Upgrade Fail-Safe"
+    type: normal
+    deps: [casca_upgrade]
+    icon: mo:upgrade:3
+    desc: |
+      Diamante, ouro e redstone na casca = §eFail-Safe Upgrade§r: diminui a chance de falha (e
+      de Pó de Matéria) no Replicador e no Decompositor. Indispensável quando se usa Speed.
+    tasks:
+      - get: mo:upgrade:3
+    rewards:
+      - xp: 2
+      - item: minecraft:gold_ingot x2
+
+  - id: upgrade_energia
+    title: "Upgrade de Energia"
+    type: optional
+    deps: [casca_upgrade, bateria]
+    icon: mo:upgrade:2
+    desc: |
+      Uma Bateria, quartzo do Nether e redstone na casca = §ePower Upgrade§r: as máquinas
+      gastam menos energia. Seu gerador agradece.
+    tasks:
+      - get: mo:upgrade:2
+    rewards:
+      - loot: comum
+
+  - id: upgrade_alcance
+    title: "Upgrade de Alcance"
+    type: optional
+    deps: [casca_upgrade]
+    icon: mo:upgrade:4
+    desc: |
+      Pérola do Fim, ouro e redstone = §eRange Upgrade§r: aumenta o alcance do Transportador e
+      da Estação de Recarga. Vários se somam (e aumentam o consumo).
+    tasks:
+      - get: mo:upgrade:4
+    rewards:
+      - loot: comum
+
+  - id: upgrade_armazenamento
+    title: "Upgrades de Armazenamento"
+    type: optional
+    deps: [casca_upgrade, bateria_hc]
+    icon: mo:upgrade:5
+    desc: |
+      Dois upgrades de "tanque":
+      §e• Power Storage§r (com Bateria de Alta Capacidade) — mais energia guardada.
+      §e• Matter Storage§r (com 2 Ímãs Supercondutores) — mais plasma guardado.
+      Faça qualquer um.
+    tasks:
+      - one_of: [mo:upgrade:5, mo:upgrade:7]
+    rewards:
+      - loot: comum
+
+  - id: upgrade_hiper
+    title: "Upgrade Hiper-Velocidade"
+    type: optional
+    deps: [upgrade_velocidade]
+    icon: mo:upgrade:6
+    desc: |
+      Speed Upgrade + dilítio + §eEstrela do Nether§r = §eHyper Speed Upgrade§r, a versão
+      avançada do de velocidade. Caro, mas os replicadores ficam incríveis.
+    tasks:
+      - get: mo:upgrade:6
+    rewards:
+      - loot: incomum
+
+  # ======================================================================
+  # FASE 4 — TRANSPORTE E UTILIDADES
+  # ======================================================================
+  - id: pendrive_transporte
+    title: "Pen Drive de Transporte"
+    type: normal
+    deps: [circuito_isolinear]
+    icon: mo:transport_flash_drive
+    desc: |
+      Circuito Mk1, ferro e redstone = §eTransport Flash Drive§r: marca localizações para usar
+      rapidamente no Transportador. Prático para não digitar coordenadas toda hora.
+    tasks:
+      - get: mo:transport_flash_drive
+    rewards:
+      - xp: 2
+      - item: minecraft:redstone x8
+
+  - id: transportador
+    title: "Transportador"
+    type: main
+    deps: [primeira_replicacao, bateria_hc, pendrive_transporte]
+    icon: mo:transporter
+    desc: |
+      "Energize!" — eu sempre quis dizer isso. O §eTransporter§r (placas de tritânio, Circuitos
+      Mk2, Matriz de Integração, glowstone, Matriz de Conversão, Bateria HC e Compensador de
+      Heisenberg) teleporta §etudo que estiver em cima dele§r para coordenadas configuradas.
+
+      O custo em RF depende da distância. O alcance padrão é pequeno: aumente com §eRange
+      Upgrades§r. Cada destino pode ser salvo e renomeado.
+    tasks:
+      - get: mo:transporter
+    rewards:
+      - xp: 5
+      - choice: [mo:upgrade:4 x1, mo:hc_battery x1, minecraft:ender_pearl x4]
+
+  - id: protocolo_seguranca
+    title: "Protocolo de Segurança"
+    type: optional
+    deps: [circuito_isolinear]
+    icon: mo:security_protocol
+    desc: |
+      3 papéis + um Circuito Mk1 = §eSecurity Protocol§r. Com Shift + clique você alterna o
+      tipo: §eClaim§r (reivindica máquinas), §eAccess§r (dá acesso a quem o carrega) e
+      §eRemove§r (remove a reivindicação). Em servidor, protege o seu laboratório.
+    tasks:
+      - get: mo:security_protocol
+    rewards:
+      - loot: comum
+
+  - id: mercado_contratos
+    title: "Mercado de Contratos"
+    type: optional
+    deps: [carcaca_maquina, data_pad]
+    icon: mo:contract_market
+    desc: |
+      O §eContract Market§r (ouro, tritânio, esmeralda e Carcaça) gera §eContratos§r: missões
+      paralelas do próprio mod (matar criaturas, coletar itens, escanear, descobrir lugares...)
+      com recompensas e XP. Acompanhe-os no Data Pad. Missões dentro das missões!
+    tasks:
+      - get: mo:contract_market
+    rewards:
+      - loot: comum
+
+  - id: utilidades_mo
+    title: "Laboratório Conectado"
+    type: milestone
+    deps: [transportador, upgrade_velocidade, upgrade_failsafe]
+    icon: mo:transporter
+    banner: "Laboratório Conectado"
+    subtitle: "Velocidade, segurança e teleporte"
+    desc: |
+      Replicadores turbinados com Speed e Fail-Safe, um Transportador zumbindo no canto da sala.
+      Herói, o seu laboratório agora parece a ponte de uma nave estelar!
+
+      Ideia de base: coloque um Transportador em cada ponto importante (mina, fazenda, portal
+      do Nether) e use Pen Drives de Transporte para trocar de destino rapidinho.
+      §cCuidado:§r tudo que estiver em cima vai junto. Inclusive aquele Creeper curioso.
+    tasks:
+      - get: [mo:transporter, mo:upgrade:1, mo:upgrade:3]
+    rewards:
+      - xp: 10
+      - kit: {name: "Kit do Oficial de Ciência", items: [mo:upgrade x4, mo:upgrade:4 x2, mo:transport_flash_drive x2, mo:dilithium_crystal x4, mo:hc_battery x1]}
+      - loot: raro
+
+  # ======================================================================
+  # FASE 5 — ARMAS DE ENERGIA
+  # ======================================================================
+  - id: empunhadura
+    title: "Empunhadura de Arma"
+    type: normal
+    deps: [lingote_tritanio]
+    icon: mo:weapon_handle
+    desc: |
+      Toda arma de energia começa por onde se segura: §eWeapon Handle§r (tritânio, ferro e lã
+      preta).
+    tasks:
+      - get: mo:weapon_handle
+    rewards:
+      - xp: 2
+      - item: minecraft:wool:15 x2
+
+  - id: receptor_arma
+    title: "Receptor de Arma"
+    type: normal
+    deps: [lingote_tritanio]
+    icon: mo:weapon_receiver
+    desc: |
+      Ferro, tritânio e redstone = §eWeapon Receiver§r, o "corpo" das armas maiores (rifle,
+      escopeta, sniper, Omni Tool).
+    tasks:
+      - get: mo:weapon_receiver
+    rewards:
+      - xp: 2
+      - item: minecraft:iron_ingot x4
+
+  - id: nucleo_plasma
+    title: "Núcleo de Plasma"
+    type: normal
+    deps: [conteiner_materia, ima_supercondutor]
+    icon: mo:plasma_core
+    desc: |
+      Vidro, 2 Ímãs Supercondutores, ferro e um §eContêiner de Matéria vazio§r = §ePlasma Core§r:
+      o coração que gera os disparos. Toda arma de energia leva pelo menos um.
+    tasks:
+      - get: mo:plasma_core
+    rewards:
+      - xp: 2
+      - item: mo:s_magnet x2
+
+  - id: phaser
+    title: "Phaser"
+    type: main
+    deps: [empunhadura, nucleo_plasma, circuito_mk3]
+    icon: mo:phaser
+    desc: |
+      O §ePhaser§r (ferro, lã, vidro, Núcleo de Plasma, Circuito Mk3 e Empunhadura) é uma pistola
+      de energia que pode §eatordoar ou matar§r, com níveis entre os dois. Ele guarda até 64k RF
+      (e usa baterias). Recarregue com §eEnergy Packs§r, que ele usa sozinho quando zera.
+    tasks:
+      - get: mo:phaser
+    rewards:
+      - xp: 5
+      - choice: [mo:battery x1, mo:plasma_core x1, minecraft:gunpowder x16]
+
+  - id: pacote_energia
+    title: "Pacotes de Energia"
+    type: normal
+    deps: [phaser]
+    icon: mo:energy_pack
+    desc: |
+      Placa de tritânio + Bateria + pólvora = §e16 Energy Packs§r (com a Bateria HC, 32). Basta
+      tê-los no inventário: quando a arma zera, ela "recarrega" sozinha. Munição de ficção
+      científica!
+    tasks:
+      - get: mo:energy_pack x16
+    rewards:
+      - xp: 2
+      - item: minecraft:gunpowder x8
+
+  - id: emissor_campo
+    title: "Emissor de Campo de Força"
+    type: normal
+    deps: [ima_supercondutor, dilitio, placa_tritanio]
+    icon: mo:forcefield_emitter
+    desc: |
+      4 Ímãs, 2 placas de tritânio, vidro, dilítio e um Circuito Mk1 = §eForce Field Emitter§r.
+      Ele vai na Estação de Armas, na Estação de Androides, na Estação de Recarga, no Mapa
+      Estelar e no Omni Tool. Faça §e2§r.
+    tasks:
+      - get: mo:forcefield_emitter x2
+    rewards:
+      - xp: 3
+      - item: mo:s_magnet x4
+
+  - id: estacao_armas
+    title: "Estação de Armas"
+    type: main
+    deps: [emissor_campo, phaser, carcaca_maquina]
+    icon: mo:weapon_station
+    desc: |
+      A §eWeapon Station§r (glowstone, Circuito Mk3, Emissor de Campo, Carcaça, redstone e
+      Bateria) carrega armas e instala §emódulos§r: canos especiais, cores e miras. Cada arma
+      aceita alguns tipos (o Phaser e o Omni Tool não usam miras).
+    tasks:
+      - get: mo:weapon_station
+    rewards:
+      - xp: 5
+      - choice: [mo:energy_pack x16, mo:dilithium_crystal x2, minecraft:glowstone_dust x16]
+
+  - id: modulos_cano
+    title: "Módulos de Cano"
+    type: optional
+    deps: [estacao_armas]
+    icon: mo:weapon_module_barrel:1
+    desc: |
+      Módulos que mudam o disparo:
+      §e• Dilithium Focusing Matrix§r — foco de dilítio.
+      §e• Incendiary Filter§r — disparos de fogo (varas incandescentes, bola de fogo).
+      §e• Burst Inductive Drum§r — rajadas (TNT, diamantes).
+      §e• Regenerative Converter§r — regeneração (maçã dourada, esmeraldas).
+      Faça qualquer um e instale na Estação de Armas.
+    tasks:
+      - one_of: [mo:weapon_module_barrel, mo:weapon_module_barrel:1, mo:weapon_module_barrel:2, mo:weapon_module_barrel:3]
+    rewards:
+      - loot: comum
+
+  - id: modulo_cor
+    title: "Módulo de Cor"
+    type: optional
+    deps: [estacao_armas]
+    icon: mo:weapon_module_color
+    desc: |
+      Os §eColor Modules§r mudam a cor da arma e dos disparos. Segundo o Data Pad, eles §esó são
+      encontrados em baús de masmorra§r — não se fabricam nem se replicam. Ache um e personalize
+      o seu Phaser!
+    tasks:
+      - one_of: [mo:weapon_module_color, mo:weapon_module_color:1, mo:weapon_module_color:2, mo:weapon_module_color:3, mo:weapon_module_color:4, mo:weapon_module_color:5, mo:weapon_module_color:6, mo:weapon_module_color:7, mo:weapon_module_color:8, mo:weapon_module_color:9]
+    rewards:
+      - loot: incomum
+
+  - id: rifle_phaser
+    title: "Rifle Phaser"
+    type: normal
+    deps: [estacao_armas, receptor_arma]
+    icon: mo:phaser_rifle
+    desc: |
+      O §ePhaser Rifle§r dispara rajadas rápidas de energia e permite zoom (aceita miras).
+      Receita: ferro, Receptor, lã, Núcleo de Plasma, Empunhadura, Circuito Mk3 e Bateria.
+      Androides renegados de longo alcance também usam um — e podem largá-lo!
+    tasks:
+      - get: mo:phaser_rifle
+    rewards:
+      - xp: 3
+      - item: mo:energy_pack x16
+
+  - id: escopeta_plasma
+    title: "Escopeta de Plasma"
+    type: optional
+    deps: [rifle_phaser]
+    icon: mo:plasma_shotgun
+    desc: |
+      Curto alcance, muito estrago: a §ePlasma Shotgun§r dispara vários raios de uma vez. Segure
+      o botão para §ecarregar§r e soltar um único tiro poderoso, que vai o dobro da distância.
+      Leva 2 Receptores e 2 Núcleos de Plasma.
+    tasks:
+      - get: mo:plasma_shotgun
+    rewards:
+      - loot: incomum
+
+  - id: sniper_ion
+    title: "Ion Sniper"
+    type: optional
+    deps: [rifle_phaser, circuito_mk4]
+    icon: mo:ion_sniper
+    desc: |
+      Tiros únicos e devastadores de longe: o §eIon Sniper§r (com um Circuito Mk4 e 2 Núcleos de
+      Plasma) é a arma que mais aproveita a §eSniper Scope§r. Combine os dois e acerte androides
+      do outro lado do vale.
+    tasks:
+      - get: mo:ion_sniper
+    rewards:
+      - loot: incomum
+
+  - id: mira_sniper
+    title: "Mira de Precisão"
+    type: optional
+    deps: [emissor_campo, circuito_mk2]
+    icon: mo:sniper_scope
+    desc: |
+      Ferro, vidraças tingidas verde-limão, Emissor de Campo e Circuito Mk2 = §eSniper Scope§r.
+      Instale no Rifle ou no Ion Sniper pela Estação de Armas.
+    tasks:
+      - get: mo:sniper_scope
+    rewards:
+      - loot: comum
+
+  - id: omni_tool
+    title: "Omni Tool"
+    type: normal
+    deps: [estacao_armas, receptor_arma]
+    icon: mo:omni_tool
+    desc: |
+      Ferramenta e arma ao mesmo tempo: o §eOmni Tool§r §eminera blocos à distância§r (segure o
+      clique direito) e também dispara raios de plasma (mais fracos que o rifle). Receita:
+      Receptor, Emissor de Campo, Núcleo de Plasma, Bateria, Circuito Mk3 e Empunhadura.
+      Minera inclusive dilítio!
+    tasks:
+      - get: mo:omni_tool
+    rewards:
+      - xp: 3
+      - item: mo:energy_pack x16
+
+  - id: arsenal_fase
+    title: "O Arsenal da Frota"
+    type: milestone
+    deps: [phaser, rifle_phaser, omni_tool, estacao_armas]
+    icon: mo:phaser_rifle
+    banner: "O Arsenal da Frota"
+    subtitle: "Energia em forma de disparo"
+    desc: |
+      Phaser no coldre, rifle nas costas, Omni Tool para cavar e uma Estação de Armas para
+      afinar tudo. Herói, §etudo pronto§r para enfrentar o que vem por aí.
+
+      E o que vem por aí são os §eAndroides Renegados§r: eles aparecem no mundo normal, no
+      Nether e no Fim (até 4 por chunk, pela config) e usam essas mesmas armas — as versões
+      §6Lendárias§r, largadas pelos androides lendários, têm atributos melhores.
+
+      §aLembrete:§r Energy Packs no inventário, sempre.
+    tasks:
+      - get: [mo:phaser, mo:phaser_rifle, mo:omni_tool]
+    rewards:
+      - xp: 10
+      - kit: {name: "Kit do Oficial de Segurança", items: [mo:energy_pack x32, mo:weapon_module_barrel x1, mo:plasma_core x1, mo:battery x1, mo:tritanium_plate x4]}
+      - loot: raro
+
+  # ======================================================================
+  # FASE 6 — ANDROIDES
+  # ======================================================================
+  - id: androides_renegados
+    title: "Androides Renegados"
+    type: normal
+    deps: [arsenal_fase]
+    icon: mo:rouge_android_part
+    desc: |
+      §cEles estão vindo.§r Os §eRogue Androids§r — corpo a corpo e à distância — aparecem no
+      mundo normal, no Nether e no Fim (exceto em alguns biomas, como os de cogumelo). Os de
+      longo alcance usam armas de energia de verdade.
+
+      Derrote §e5 Androides Renegados de Combate Corpo a Corpo§r. Armadura de tritânio e um
+      Phaser carregado fazem toda a diferença.
+    tasks:
+      - kill: "rogue_android x5"
+    rewards:
+      - xp: 3
+      - item: mo:energy_pack x16
+
+  - id: partes_androide
+    title: "Partes de Androide"
+    type: main
+    deps: [androides_renegados]
+    icon: mo:rouge_android_part:3
+    desc: |
+      Os androides renegados podem largar §epartes§r: §eAndroid Head, Arm, Leg e Torso§r. Junte
+      um conjunto completo (as quatro).
+
+      Para que servem? Para a coisa mais radical deste Volume: §edeixar de ser humano§r. Calma,
+      eu explico na próxima página. (Eu também acho assustador. E fascinante.)
+    tasks:
+      - get: [mo:rouge_android_part, mo:rouge_android_part:1, mo:rouge_android_part:2, mo:rouge_android_part:3]
+    rewards:
+      - xp: 5
+      - choice: [mo:battery x1, mo:energy_pack x16, minecraft:golden_apple x2]
+
+  - id: transformacao_info
+    title: "O Cientista Louco"
+    type: info
+    deps: [partes_androide]
+    icon: mo:android_pill
+    desc: |
+      §cDecisão séria, Herói.§r Leve um conjunto completo de Partes de Androide a um §eCientista
+      Louco (Mad Scientist)§r numa vila. Ele oferece a transformação em §eAndroide§r.
+
+      Como androide (palavras dele): §evocê não precisa mais de comida, sono nem oxigênio§r, e
+      pode instalar habilidades numa Estação de Androides. Em troca, você vive de §eenergia§r
+      (Estação de Recarga, baterias). §cA transformação é um processo violento — a config deste
+      pack mantém a "morte da transformação" ativa.§r
+
+      Para desfazer: a §eBlue Pill§r. Para reiniciar as habilidades: a §eYellow Pill§r. Pense
+      bem antes!
+    tasks:
+      - check
+    rewards:
+      - xp: 2
+
+  - id: pilulas
+    title: "Pílulas Coloridas"
+    type: optional
+    deps: [transformacao_info]
+    icon: mo:android_pill:1
+    desc: |
+      "Tome a pílula azul e você acorda na sua cama sem saber de nada." As pílulas do mod:
+      §eRed Pill§r, §eBlue Pill§r (desfaz a transformação — o Cientista diz que ela aparece em
+      masmorras ou com quem a vende) e §eYellow Pill§r (reinicia as habilidades androides).
+      Consiga qualquer uma.
+    tasks:
+      - one_of: [mo:android_pill, mo:android_pill:1, mo:android_pill:2]
+    rewards:
+      - loot: incomum
+
+  - id: estacao_androide
+    title: "Estação de Androides"
+    type: main
+    deps: [partes_androide, emissor_campo, circuito_mk3]
+    icon: mo:android_station
+    desc: |
+      A §eAndroid Station§r gerencia os upgrades de um androide. Repare na receita: ela consome
+      §eTorso, Cabeça e Braço de androide§r, além de Circuitos Mk2/Mk3, glowstone, Emissor de
+      Campo, Carcaça e redstone — então você vai precisar de §emais partes§r do que um conjunto.
+
+      Só androides conseguem usá-la ("Entidade Biológica Detectada! Acesso Negado!"). Nela se
+      desbloqueiam habilidades e se vestem as partes de androide.
+    tasks:
+      - get: mo:android_station
+    rewards:
+      - xp: 5
+      - choice: [mo:hc_battery x1, mo:isolinear_circuit:2 x2, mo:forcefield_emitter x1]
+
+  - id: estacao_recarga
+    title: "Estação de Recarga"
+    type: normal
+    deps: [estacao_androide, bateria_hc]
+    icon: mo:charging_station
+    desc: |
+      Androides comem RF. A §eCharging Station§r (olho do Fim, 2 Baterias HC, Emissor de Campo,
+      dilítio, Carcaça e repetidor) recarrega androides num raio de §e8 blocos§r (config), que
+      Range Upgrades aumentam. Coloque uma em casa — e outra na base de mineração.
+    tasks:
+      - get: mo:charging_station
+    rewards:
+      - xp: 3
+      - item: mo:dilithium_crystal x2
+
+  - id: habilidades_info
+    title: "Habilidades Biônicas"
+    type: info
+    deps: [estacao_androide]
+    icon: mo:android_station
+    desc: |
+      Algumas habilidades que um androide pode desbloquear na Estação (nomes do mod):
+      §e• Nanobots§r (cura com plasma e energia) · §eNano Armor§r (absorve dano)
+      §e• Limb Overclocking§r (velocidade) · §eHigh Jump§r · §eAir Bags§r (flutuar na água)
+      §e• Ender Teleporter§r (teleporte curto; até 32 blocos pela config)
+      §e• Night Vision§r · §eCloak§r (invisibilidade) · §ePlasma Shield§r (contra projéteis)
+      §e• Attack Boost§r · §eSonic Shockwave§r · §eFlash Cooling§r · §eMinimap§r
+      §e• Space-Time Equalizer§r interno (contra anomalias gravitacionais)
+
+      Várias habilidades consomem energia por uso ou por tick — mantenha a bateria cheia.
+    tasks:
+      - check
+    rewards:
+      - xp: 2
+
+  - id: corpo_metal
+    title: "Corpo de Metal"
+    type: milestone
+    deps: [estacao_androide, estacao_recarga, habilidades_info]
+    icon: mo:android_station
+    banner: "Corpo de Metal"
+    subtitle: "Estação de Androides e Recarga"
+    desc: |
+      Uma Estação de Androides montada, uma Estação de Recarga zumbindo e um catálogo inteiro de
+      habilidades biônicas esperando. Herói, você tem tudo que um androide precisa — seja você
+      um, ou ainda pensando no assunto.
+
+      Se escolheu o caminho de metal: lembre-se da energia, evite a radiação dos replicadores
+      sem placas (mesmo de metal, eu me preocupo!) e aproveite o teleporte curto, que é
+      divertidíssimo.
+
+      Se escolheu continuar humano: tudo bem também. O Registro ama você do jeitinho que é.
+    tasks:
+      - get: [mo:android_station, mo:charging_station]
+    rewards:
+      - xp: 12
+      - kit: {name: "Kit do Androide", items: [mo:hc_battery x2, mo:energy_pack x32, mo:isolinear_circuit:2 x2, mo:dilithium_crystal x4, mo:upgrade:4 x1]}
+      - loot: epico
+
+  # ======================================================================
+  # FASE 7 — ANOMALIAS GRAVITACIONAIS E FUSÃO
+  # ======================================================================
+  - id: anomalia_info
+    title: "Anomalias Gravitacionais"
+    type: info
+    deps: [primeira_replicacao]
+    icon: mo:gravitational_anomaly
+    desc: |
+      §cIsto aqui morde.§r As §eGravitational Anomalies§r surgem naturalmente (no mundo normal,
+      no Nether e na dimensão 2, pela config), §eentre as camadas Y 4 e 64§r. Elas puxam
+      criaturas, quebram blocos e §ecrescem§r a cada coisa que engolem — as grandes destroem até
+      obsidiana.
+
+      §e• Proteção:§r o §eSpace-Time Equalizer§r no peito anula a atração (mas deixa você bem
+      lento).
+      §e• Contenção:§r §eEstabilizadores Gravitacionais§r com linha de visão livre até a anomalia.
+      §e• Colapso:§r jogar uma §eEstrela do Nether§r nela a faz colapsar — §cexplodindo§r.
+
+      E elas são o coração do Reator de Fusão!
+    tasks:
+      - check
+    rewards:
+      - xp: 2
+
+  - id: equalizador
+    title: "Equalizador Espaço-Temporal"
+    type: normal
+    deps: [anomalia_info, compensador_heisenberg, ima_supercondutor]
+    icon: mo:spacetime_equalizer
+    desc: |
+      2 pérolas do Fim, 2 Ímãs e um Compensador de Heisenberg = §eSpace-Time Equalizer§r. Vista
+      no peito: ele anula a gravidade das anomalias e protege como armadura de ferro — mas
+      deixa você §elento como uma lesma§r. Indispensável para trabalhar perto de uma.
+    tasks:
+      - get: mo:spacetime_equalizer
+    rewards:
+      - xp: 3
+      - item: minecraft:ender_pearl x2
+
+  - id: estabilizador
+    title: "Estabilizador Gravitacional"
+    type: normal
+    deps: [equalizador, placa_holografica]
+    icon: mo:gravitational_stabilizer
+    desc: |
+      O §eGravitational Stabilizer§r (placas de tritânio, 2 Ímãs, Placa Holográfica,
+      Equalizador e Carcaça) reduz a força destrutiva de uma anomalia — coloque um de cada
+      lado. Ele precisa de §elinha de visão livre§r: blocos sólidos no meio o desligam, mas
+      blocos transparentes (como o Vidro de Tritânio) não. Ele também mostra o raio da anomalia.
+    tasks:
+      - get: mo:gravitational_stabilizer
+    rewards:
+      - xp: 3
+      - item: mo:force_glass x8
+
+  - id: bobina_fusao
+    title: "Bobinas do Reator de Fusão"
+    type: main
+    deps: [estabilizador, ima_supercondutor]
+    icon: mo:fusion_reactor_coil
+    desc: |
+      O Reator de Fusão gera energia do plasma de matéria aquecido num campo gravitacional
+      fortíssimo. A §eFusion Reactor Coil§r (2 placas de tritânio, 4 Ímãs e 2 Circuitos Mk1)
+      confina esse plasma. O Data Pad pede §e11 bobinas§r no anel.
+    tasks:
+      - get: mo:fusion_reactor_coil x11
+    rewards:
+      - xp: 5
+      - choice: [mo:s_magnet x8, mo:tritanium_plate x8, mo:isolinear_circuit x8]
+
+  - id: controlador_fusao
+    title: "Controlador do Reator de Fusão"
+    type: main
+    deps: [bobina_fusao, circuito_mk3]
+    icon: mo:fusion_reactor_controller
+    desc: |
+      O §eFusion Reactor Controller§r (4 bobinas, Circuitos Mk2/Mk3, Placa Holográfica, Carcaça
+      e placa de tritânio) é o cérebro do reator. Coloque-o perto de uma anomalia: ele
+      §edestaca exatamente onde a anomalia precisa estar§r (a no máximo 3 blocos, pela config) e
+      o anel a ser construído em volta dela.
+    tasks:
+      - get: mo:fusion_reactor_controller
+    rewards:
+      - xp: 5
+      - choice: [mo:machine_hull x8, mo:holo_sign x2, mo:isolinear_circuit:2 x2]
+
+  - id: io_fusao
+    title: "Porta do Reator de Fusão"
+    type: optional
+    deps: [controlador_fusao]
+    icon: mo:fusion_reactor_io
+    desc: |
+      A §eFusion Reactor IO§r substitui uma bobina do anel e funciona como entrada de plasma e
+      saída de energia — sem precisar usar o controlador para isso. Vários IO são permitidos.
+    tasks:
+      - get: mo:fusion_reactor_io
+    rewards:
+      - loot: comum
+
+  - id: reator_info
+    title: "Montando o Reator"
+    type: info
+    deps: [controlador_fusao, casco_maquina]
+    icon: mo:fusion_reactor_coil
+    desc: |
+      Passo a passo do Data Pad:
+
+      §e1.§r Encontre uma §eAnomalia Gravitacional§r e coloque o Controlador perto; ele mostra o
+      anel.
+      §e2.§r Coloque as §e11 Bobinas§r no anel destacado (ou Portas IO no lugar de algumas).
+      §e3.§r Preencha o resto com §eMachine Hulls§r. Dois §eDecompositores§r podem ficar ao lado
+      do controlador, no lugar de bobinas.
+      §e4.§r Bombeie §eMatter Plasma§r para dentro (canos de matéria ou de fluido).
+      §e5.§r Dê a partida com outra fonte de energia para os decompositores; quando o reator
+      tiver plasma suficiente, ele passa a gerar energia (até 2048 RF/t pela config) e se
+      sustenta.
+    tasks:
+      - check
+    rewards:
+      - xp: 2
+
+  - id: reator_fusao
+    title: "A Estrela Engarrafada"
+    type: milestone
+    deps: [reator_info, bobina_fusao, controlador_fusao]
+    icon: mo:fusion_reactor_controller
+    banner: "A Estrela Engarrafada"
+    subtitle: "O Reator de Fusão desperta"
+    effect: 4
+    desc: |
+      Uma anomalia gravitacional presa num anel de bobinas, plasma de matéria girando lá dentro
+      e o Controlador mostrando a energia subindo. Herói, você §eengarrafou uma estrela§r!
+
+      Os Antigos tinham medo das anomalias — elas engoliam cidades. Você transformou uma delas
+      numa usina. Isso é o que eu chamo de virar o jogo.
+
+      §aDicas finais:§r Estabilizadores com linha de visão livre, Equalizador no peito durante
+      a obra, e nunca, NUNCA jogue uma Estrela do Nether ali dentro por curiosidade.
+    tasks:
+      - get: [mo:fusion_reactor_controller, mo:fusion_reactor_coil x11, mo:machine_hull x8]
+    rewards:
+      - xp: 12
+      - kit: {name: "Kit do Engenheiro de Fusão", items: [mo:hc_battery x2, mo:s_magnet x8, mo:gravitational_stabilizer x1, mo:matter_pipe x16, mo:dilithium_crystal x8]}
+      - loot: epico
+
+  # ======================================================================
+  # FASE 8 — A GALÁXIA
+  # ======================================================================
+  - id: mapa_estelar
+    title: "Mapa Estelar"
+    type: main
+    deps: [emissor_campo, circuito_mk3, protocolo_seguranca]
+    icon: mo:star_map
+    desc: |
+      Agora eu fiquei sem fôlego. O §eStar Map§r (2 Circuitos Mk3, glowstone, Protocolo de
+      Segurança, Emissor de Campo, Carcaça e redstone) é usado para a §egestão da galáxia§r: um
+      mapa de milhares de estrelas geradas (a config cria entre 2048 e 2304), com sistemas
+      planetários e planetas.
+    tasks:
+      - get: mo:star_map
+    rewards:
+      - xp: 5
+      - choice: [mo:isolinear_circuit:2 x2, minecraft:glowstone x8, mo:forcefield_emitter x1]
+
+  - id: galaxia_info
+    title: "Gestão da Galáxia"
+    type: info
+    deps: [mapa_estelar]
+    icon: mo:star_map
+    desc: |
+      O Mapa Estelar tem páginas de §eGaláxia§r, §eSistema Planetário§r, §ePlaneta§r e
+      §eEstatísticas§r. Pelo que o próprio mod descreve:
+      §e• Base§r — a construção principal de um planeta ("necessária para tudo").
+      §e• Ship Factory§r — permite construir naves.
+      §e• Scout Ship§r — nave rápida para explorar planetas.
+      §e• Colonizer Ship§r — reivindica planetas construindo uma Base ao chegar.
+      §e• Outras construções:§r Extrator de Matéria, Residências, Hangar, Gerador de Energia.
+
+      Os tempos de construção e viagem usam multiplicadores 1,0 na config. Explore a interface
+      com calma — é um jogo de estratégia inteiro dentro do Registro!
+    tasks:
+      - check
+    rewards:
+      - xp: 2
+
+  - id: mestre_materia
+    title: "Mestre da Matéria"
+    type: milestone
+    deps: [primeira_replicacao, utilidades_mo, reator_fusao, corpo_metal, galaxia_info]
+    icon: mo:replicator
+    banner: "Mestre da Matéria"
+    subtitle: "O Volume da Matéria está completo"
+    effect: 3
+    desc: |
+      Herói, olha onde chegamos.
+
+      Começou com um metal mais duro que diamante e um cristal que mantém partículas no lugar.
+      Depois veio o Inscritor, as matrizes, o Decompositor transformando pedra em plasma e o
+      Replicador transformando plasma em... tudo. Teleporte. Armas de fase. Androides
+      renegados — e, talvez, um corpo de metal. Uma anomalia que engolia montanhas, agora
+      presa num reator. E, por fim, um mapa de milhares de estrelas.
+
+      §bO Volume da Matéria está reescrito.§r Esta página brilha junto do §6Selo da
+      Engrenagem§r: dominar a matéria é dominar a própria indústria.
+
+      Obrigada, de verdade. E, se for explorar a galáxia... me manda um cartão-postal.
+    tasks:
+      - get: [mo:replicator, mo:transporter, mo:fusion_reactor_controller, mo:star_map]
+    rewards:
+      - xp: 15
+      - kit: {name: "Legado do Mestre da Matéria", items: [mo:upgrade:6 x1, mo:upgrade:3 x2, mo:pattern_drive x2, mo:hc_battery x2, mo:isolinear_circuit:3 x2]}
+      - loot: [epico x2]
