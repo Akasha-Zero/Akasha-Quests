@@ -1307,7 +1307,8 @@ quests:
     desc: |
       Outra estrela, outro céu... e §eflorestas de bordos coloridos§r: azuis, vermelhos, roxos,
       amarelos, verdes e marrons. Kepler 22b é o planeta mais parecido com a Terra que existe no
-      Registro — sem frio nem calor extremos e com gravidade baixíssima.
+      Registro — sem frio nem calor extremos e com a gravidade mais próxima da terrestre entre
+      todos os mundos do mod.
 
       §eRecursos:§r §ediamantes coloridos§r (Blue, Red, Purple, Yellow e Green Diamond), §ePlatinum§r
       e §eDense Coal§r. Respire fundo... na máscara, claro.
@@ -1595,6 +1596,152 @@ quests:
       - check
     rewards:
       - loot: raro
+
+  - id: cristal_reforcado
+    title: "Compressed Reinforced Crystal"
+    type: normal
+    deps: [cristal]
+    icon: ExtraPlanets:tier7Items:6
+    desc: |
+      Dois Compressed Crystal juntos na Prensa viram §eCompressed Reinforced Crystal§r — o
+      ingrediente da Blindagem Nível 7. Faça §e8§r antes de começar o foguete.
+    tasks:
+      - get: ExtraPlanets:tier7Items:6 x8
+    rewards:
+      - xp: 4
+      - item: ore:ingotCrystal x8
+
+  - id: pecas_rover_t2
+    title: "Rodas e Bateria Nível 2"
+    type: optional
+    deps: [blindagem_t4, pecas_rover_t1]
+    icon: ExtraPlanets:item.electricParts:3
+    desc: |
+      §eTier 2 Wheel:§r 4 Heavy-Duty Plates Nível 4 + uma Tier 1 Wheel. §eTier 2 Battery:§r 5 lingotes
+      de chumbo + 4 Heavy-Duty Plates Nível 4. São as peças do Venus Rover.
+    tasks:
+      - get: [ExtraPlanets:item.electricParts:3 x4, ExtraPlanets:item.electricParts:1]
+    rewards:
+      - loot: incomum
+
+  - id: cinzas
+    title: "Cinzas Vulcânicas"
+    type: optional
+    deps: [marreta]
+    icon: ExtraPlanets:tier4Items:6
+    desc: |
+      Sledge Hammer + Ash Block = 2 Ash Shards; 4 shards = 1 Ash. As cinzas são ingrediente da Fire
+      Bomb.
+    tasks:
+      - get: ExtraPlanets:tier4Items:6 x4
+    rewards:
+      - loot: comum
+
+  - id: vilas_planetarias
+    title: "Vizinhos Planetários"
+    type: optional
+    deps: [venus]
+    icon: minecraft:emerald
+    desc: |
+      Quase todos os mundos do ExtraPlanets têm §evilas§r (todas ativas na config): de Mercúrio a
+      Éris, passando pelas luas. Encontre uma vila fora da Terra, da Lua e de Marte e confirme
+      aqui.
+    tasks:
+      - check
+    rewards:
+      - loot: incomum
+
+  - id: mares_saturno
+    title: "Mares Estranhos"
+    type: optional
+    deps: [saturno]
+    icon: ExtraPlanets:bucket_infected_water
+    task_logic: OR
+    desc: |
+      Saturno tem mares de §eHidrocarboneto Líquido§r e terras com §cÁgua Infectada§r. Encha um balde
+      de qualquer um dos dois — com cuidado.
+    tasks:
+      - get: ExtraPlanets:bucket_infected_water
+      - get: ExtraPlanets:bucket_liquid_hydrocarbon
+    rewards:
+      - loot: comum
+
+  - id: metano_tita
+    title: "Os Lagos de Titã"
+    type: optional
+    deps: [tita]
+    icon: ExtraPlanets:bucket_methane
+    desc: |
+      Titã tem mares e colinas de §eMetano Líquido§r. Encha um balde: é a mesma molécula que o
+      Sintetizador de Metano de Marte fabrica.
+    tasks:
+      - get: ExtraPlanets:bucket_methane
+    rewards:
+      - loot: comum
+
+  - id: nitrogenio_congelado
+    title: "Nitrogênio Congelado"
+    type: optional
+    deps: [urano]
+    icon: ExtraPlanets:frozenNitrogen
+    task_logic: OR
+    desc: |
+      Os mundos gelados guardam fluidos estranhos: §eNitrogênio Líquido§r e §eÁgua Congelada§r. Um
+      balde de nitrogênio na bancada vira 2 blocos de Frozen Nitrogen. Traga um balde de qualquer um.
+    tasks:
+      - get: ExtraPlanets:bucket_nitrogen
+      - get: ExtraPlanets:bucket_frozen_water
+    rewards:
+      - loot: comum
+
+  - id: evoluidos_quentes
+    title: "Evoluídos do Fogo"
+    type: optional
+    deps: [venus]
+    icon: minecraft:blaze_rod
+    task_logic: OR
+    desc: |
+      Os mundos quentes do ExtraPlanets têm suas próprias criaturas evoluídas: §eBlazes§r e §eCubos
+      de Magma§r Evoluídos. Derrote alguns (a config deixa todos ligados).
+    tasks:
+      - kill: {entity: "extraplanets.EvolvedBlaze", count: 3}
+      - kill: {entity: "extraplanets.EvolvedMagmaCube", count: 3}
+    rewards:
+      - loot: comum
+
+  - id: evoluidos_gelados
+    title: "Evoluídos do Gelo"
+    type: optional
+    deps: [urano]
+    icon: minecraft:snowball
+    task_logic: OR
+    desc: |
+      Nos mundos gelados aparecem §eSlimes de Gelo§r e §eCreepers Azuis§r Evoluídos. Derrote alguns.
+    tasks:
+      - kill: {entity: "extraplanets.EvolvedIceSlime", count: 3}
+      - kill: {entity: "extraplanets.EvolvedBlueCreeper", count: 3}
+    rewards:
+      - loot: comum
+
+  - id: evoluidos_estranhos
+    title: "Bestiário Planetário"
+    type: optional
+    deps: [jupiter]
+    icon: minecraft:spider_eye
+    task_logic: OR
+    desc: |
+      Endermen e Mini-Endermen Evoluídos, Aranhas Gigantes, Bruxas, Esqueletos Poderosos e Creepers
+      Vermelhos — o ExtraPlanets tem um zoológico inteiro. Derrote 3 de qualquer uma dessas
+      espécies.
+    tasks:
+      - kill: {entity: "extraplanets.EvolvedEnderman", count: 3}
+      - kill: {entity: "extraplanets.EvolvedMiniEnderman", count: 3}
+      - kill: {entity: "extraplanets.EvolvedGiantSpider", count: 3}
+      - kill: {entity: "extraplanets.EvolvedWitch", count: 3}
+      - kill: {entity: "extraplanets.EvolvedPowerSkeleton", count: 3}
+      - kill: {entity: "extraplanets.EvolvedRedCreeper", count: 3}
+    rewards:
+      - loot: comum
 
   # ======================================================================
   # FERRAMENTAS E ARMADURAS PLANETÁRIAS

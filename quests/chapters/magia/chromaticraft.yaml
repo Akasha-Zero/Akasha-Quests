@@ -1,0 +1,711 @@
+chapter:
+  id: chromaticraft
+  title: "ChromatiCraft"
+  prefix: ""
+  order: 580
+  icon: ChromatiCraft:chromaticraft_item_help
+  desc: |
+    §dO Volume das Dezesseis Cores.§r Cristais elementais, Pylons que ferem quem chega perto,
+    a Mesa de Fundição e seus templos, energia lúmen viajando por repetidores, rituais,
+    habilidades e um mundo volátil chamado Proxima. Aqui o conhecimento é conquistado por
+    descobertas. (ChromatiCraft V33a, Reika)
+
+quests:
+  # ======================================================================
+  # FASE 0 — O LÉXICO E O MANIPULADOR
+  # ======================================================================
+  - id: lexico
+    title: "Chromic Lexicon"
+    type: main
+    desc: |
+      Herói, este Volume é diferente de todos que eu guardo. O ChromatiCraft §enão te entrega
+      as receitas§r: você §edescobre§r o mundo, e cada descoberta acrescenta páginas ao seu
+      caderno, o §eChromic Lexicon§r.
+
+      Você nasce com ele (config do pack). Se perder: 6 fragmentos de cristal (preto, azul,
+      verde, amarelo, vermelho, branco), 2 pós de glowstone e 1 livro. O mod não tem tradução
+      para o português — os nomes aparecem em inglês, e eu traduzo por aqui.
+
+      §aDica:§r abrir o Léxico §eagachado§r acelera o aprendizado e adiciona os fragmentos que
+      você estiver carregando.
+    tasks:
+      - get: ChromatiCraft:chromaticraft_item_help
+    rewards:
+      - xp: 4
+      - choice: [minecraft:glowstone_dust x16, minecraft:book x4, minecraft:torch x32]
+
+  - id: info_progresso
+    title: "Conhecimento por Descoberta"
+    type: info
+    deps: [lexico]
+    icon: ChromatiCraft:chromaticraft_item_fragment
+    desc: |
+      O ChromatiCraft tem a sua própria §eprogressão§r (os "Progress Stages"): achar cristais,
+      ver um Pylon, levar um choque dele, encontrar estruturas, visitar o Nether... Cada etapa
+      tem pré-requisitos e libera pesquisas no Léxico — e §eprecisa acontecer na ordem§r. Não
+      adianta pular: se uma receita não aparece, falta uma descoberta antes dela.
+
+      As quests deste capítulo seguem essa ordem real (conferida no código do mod). Quando
+      uma quest é uma descoberta sem item, eu peço só a confirmação — mas faça a descoberta de
+      verdade, ou o mod não deixa você avançar.
+
+      §cAtenção:§r o Léxico avisa que, ao morrer, você também perde parte do conhecimento e da
+      energia acumulada.
+    tasks:
+      - check
+    rewards:
+      - xp: 1
+
+  - id: fragmentos
+    title: "Info Fragment"
+    type: normal
+    deps: [info_progresso]
+    icon: ChromatiCraft:chromaticraft_item_fragment
+    desc: |
+      Pelo mundo há §eFragmentos de Informação§r (Info Fragments): anotações incompletas que,
+      juntas, explicam as leis deste Volume. Eles aparecem em baús de estruturas e como
+      recompensa de descobertas. Abra o Léxico agachado para incorporá-los.
+
+      Um fragmento + papel = 2 cópias (para dividir com amigos). Mais tarde, com chroma
+      líquido, você poderá "decodificá-los" escolhendo um tema (Fragment Decoding).
+    tasks:
+      - get: ChromatiCraft:chromaticraft_item_fragment
+    rewards:
+      - xp: 2
+      - item: minecraft:paper x8
+
+  - id: info_cores
+    title: "As Dezesseis Cores"
+    type: info
+    deps: [lexico]
+    icon: ChromatiCraft:chromaticraft_item_shard:15
+    desc: |
+      A magia deste mundo se divide em §e16 elementos§r, um para cada cor de corante, cada um
+      com nome próprio: Kuro (preto), Karmir (vermelho), Kijani (verde), Ruskea (marrom), Nila
+      (azul), Zambarau (roxo), Vadali (ciano), Argia (cinza-claro), Ykri (cinza), Ruzova (rosa),
+      Asveste (lima), Kitrino (amarelo), Galazio (azul-claro), Kurauri (magenta), Portokali
+      (laranja) e Tahara (branco).
+
+      O Léxico diz que essa energia "não é um monte de ritos arbitrários" — é uma força da
+      natureza, como a gravidade. Dá para medir, guardar e transportar. Que delícia.
+    tasks:
+      - check
+    rewards:
+      - xp: 1
+
+  # ======================================================================
+  # FASE 1 — CRISTAIS E OS 16 ELEMENTOS
+  # ======================================================================
+  - id: cristais_caverna
+    title: "Tangible Energy"
+    type: main
+    deps: [lexico]
+    icon: ChromatiCraft:chromaticraft_block_crystal:4
+    desc: |
+      Quando a energia cristalina se concentra demais, ela §ecristaliza§r. Os §eCristais de
+      Caverna§r crescem no subsolo, brilham na cor do elemento e irradiam o efeito dele em
+      volta. Quebrados, eles soltam §eFragmentos de Cristal§r (Crystal Shards), a matéria-prima
+      de quase tudo aqui.
+
+      Desça às cavernas e junte §e16 fragmentos§r de qualquer cor. Esta é a descoberta
+      "Tangible Energy" — a primeira do Léxico.
+    tasks:
+      - get: ore:shardCrystal x16
+    rewards:
+      - xp: 4
+      - choice: [minecraft:torch x64, minecraft:iron_pickaxe, minecraft:cooked_beef x16]
+
+  - id: manipulador
+    title: "Elemental Manipulator"
+    type: main
+    deps: [cristais_caverna]
+    icon: ChromatiCraft:chromaticraft_item_tool
+    desc: |
+      Um fragmento de cristal no topo de dois gravetos = o §eManipulador Elemental§r, a "varinha"
+      do ChromatiCraft. Ele ativa construções, muda configurações, testa a conexão de redes de
+      cristal e, mais tarde, §esuga energia de um Pylon para dentro de você§r.
+
+      Ele é ligado à sua pessoa — não se perde fácil. Guarde no slot 1, você vai usá-lo o
+      tempo todo.
+    tasks:
+      - get: ChromatiCraft:chromaticraft_item_tool
+    rewards:
+      - xp: 4
+      - choice: [minecraft:stick x16, ore:shardCrystal x4, minecraft:glowstone_dust x8]
+
+  - id: elemento_kuro
+    title: "Kuro"
+    type: normal
+    deps: [cristais_caverna]
+    icon: ChromatiCraft:chromaticraft_item_shard:0
+    desc: |
+      §dKuro§r é o elemento preto.
+      Segundo o Léxico, ele representa a base de todas as outras energias — a própria magia.
+
+      Encontre um §eCristal de Caverna preto§r no subsolo e quebre-o para obter §e4 Fragmentos
+      de Cristal Kuro§r. Perto do cristal você sente o efeito do elemento — cada cor irradia o
+      seu.
+    tasks:
+      - get: ChromatiCraft:chromaticraft_item_shard:0 x4
+    rewards:
+      - xp: 2
+      - item: ChromatiCraft:chromaticraft_item_berry:0 x2
+
+  - id: elemento_karmir
+    title: "Karmir"
+    type: normal
+    deps: [cristais_caverna]
+    icon: ChromatiCraft:chromaticraft_item_shard:1
+    desc: |
+      §dKarmir§r é o elemento vermelho.
+      Segundo o Léxico, ele representa proteção e defesa.
+
+      Encontre um §eCristal de Caverna vermelho§r no subsolo e quebre-o para obter §e4 Fragmentos
+      de Cristal Karmir§r. Perto do cristal você sente o efeito do elemento — cada cor irradia o
+      seu.
+    tasks:
+      - get: ChromatiCraft:chromaticraft_item_shard:1 x4
+    rewards:
+      - xp: 2
+      - item: ChromatiCraft:chromaticraft_item_berry:1 x2
+
+  - id: elemento_kijani
+    title: "Kijani"
+    type: normal
+    deps: [cristais_caverna]
+    icon: ChromatiCraft:chromaticraft_item_shard:2
+    desc: |
+      §dKijani§r é o elemento verde.
+      Segundo o Léxico, ele representa a natureza e os seres vivos.
+
+      Encontre um §eCristal de Caverna verde§r no subsolo e quebre-o para obter §e4 Fragmentos
+      de Cristal Kijani§r. Perto do cristal você sente o efeito do elemento — cada cor irradia o
+      seu.
+    tasks:
+      - get: ChromatiCraft:chromaticraft_item_shard:2 x4
+    rewards:
+      - xp: 2
+      - item: ChromatiCraft:chromaticraft_item_berry:2 x2
+
+  - id: elemento_ruskea
+    title: "Ruskea"
+    type: normal
+    deps: [cristais_caverna]
+    icon: ChromatiCraft:chromaticraft_item_shard:3
+    desc: |
+      §dRuskea§r é o elemento marrom.
+      Segundo o Léxico, ele representa a terra, que permeia rocha e chão.
+
+      Encontre um §eCristal de Caverna marrom§r no subsolo e quebre-o para obter §e4 Fragmentos
+      de Cristal Ruskea§r. Perto do cristal você sente o efeito do elemento — cada cor irradia o
+      seu.
+    tasks:
+      - get: ChromatiCraft:chromaticraft_item_shard:3 x4
+    rewards:
+      - xp: 2
+      - item: ChromatiCraft:chromaticraft_item_berry:3 x2
+
+  - id: elemento_nila
+    title: "Nila"
+    type: normal
+    deps: [cristais_caverna]
+    icon: ChromatiCraft:chromaticraft_item_shard:4
+    desc: |
+      §dNila§r é o elemento azul.
+      Segundo o Léxico, ele representa a luz, que espanta a escuridão.
+
+      Encontre um §eCristal de Caverna azul§r no subsolo e quebre-o para obter §e4 Fragmentos
+      de Cristal Nila§r. Perto do cristal você sente o efeito do elemento — cada cor irradia o
+      seu.
+    tasks:
+      - get: ChromatiCraft:chromaticraft_item_shard:4 x4
+    rewards:
+      - xp: 2
+      - item: ChromatiCraft:chromaticraft_item_berry:4 x2
+
+  - id: elemento_zambarau
+    title: "Zambarau"
+    type: normal
+    deps: [cristais_caverna]
+    icon: ChromatiCraft:chromaticraft_item_shard:5
+    desc: |
+      §dZambarau§r é o elemento roxo.
+      Segundo o Léxico, ele representa amplificar e fortalecer os outros elementos.
+
+      Encontre um §eCristal de Caverna roxo§r no subsolo e quebre-o para obter §e4 Fragmentos
+      de Cristal Zambarau§r. Perto do cristal você sente o efeito do elemento — cada cor irradia o
+      seu.
+    tasks:
+      - get: ChromatiCraft:chromaticraft_item_shard:5 x4
+    rewards:
+      - xp: 2
+      - item: ChromatiCraft:chromaticraft_item_berry:5 x2
+
+  - id: elemento_vadali
+    title: "Vadali"
+    type: normal
+    deps: [cristais_caverna]
+    icon: ChromatiCraft:chromaticraft_item_shard:6
+    desc: |
+      §dVadali§r é o elemento ciano.
+      Segundo o Léxico, ele representa os fluidos e o fluxo dos líquidos.
+
+      Encontre um §eCristal de Caverna ciano§r no subsolo e quebre-o para obter §e4 Fragmentos
+      de Cristal Vadali§r. Perto do cristal você sente o efeito do elemento — cada cor irradia o
+      seu.
+    tasks:
+      - get: ChromatiCraft:chromaticraft_item_shard:6 x4
+    rewards:
+      - xp: 2
+      - item: ChromatiCraft:chromaticraft_item_berry:6 x2
+
+  - id: elemento_argia
+    title: "Argia"
+    type: normal
+    deps: [cristais_caverna]
+    icon: ChromatiCraft:chromaticraft_item_shard:7
+    desc: |
+      §dArgia§r é o elemento cinza-claro.
+      Segundo o Léxico, ele representa surpresa e engano.
+
+      Encontre um §eCristal de Caverna cinza-claro§r no subsolo e quebre-o para obter §e4 Fragmentos
+      de Cristal Argia§r. Perto do cristal você sente o efeito do elemento — cada cor irradia o
+      seu.
+    tasks:
+      - get: ChromatiCraft:chromaticraft_item_shard:7 x4
+    rewards:
+      - xp: 2
+      - item: ChromatiCraft:chromaticraft_item_berry:7 x2
+
+  - id: elemento_ykri
+    title: "Ykri"
+    type: normal
+    deps: [cristais_caverna]
+    icon: ChromatiCraft:chromaticraft_item_shard:8
+    desc: |
+      §dYkri§r é o elemento cinza.
+      Segundo o Léxico, ele representa o fluxo, a mudança.
+
+      Encontre um §eCristal de Caverna cinza§r no subsolo e quebre-o para obter §e4 Fragmentos
+      de Cristal Ykri§r. Perto do cristal você sente o efeito do elemento — cada cor irradia o
+      seu.
+    tasks:
+      - get: ChromatiCraft:chromaticraft_item_shard:8 x4
+    rewards:
+      - xp: 2
+      - item: ChromatiCraft:chromaticraft_item_berry:8 x2
+
+  - id: elemento_ruzova
+    title: "Ruzova"
+    type: normal
+    deps: [cristais_caverna]
+    icon: ChromatiCraft:chromaticraft_item_shard:9
+    desc: |
+      §dRuzova§r é o elemento rosa.
+      Segundo o Léxico, ele representa força e agressão (sentida em mobs hostis).
+
+      Encontre um §eCristal de Caverna rosa§r no subsolo e quebre-o para obter §e4 Fragmentos
+      de Cristal Ruzova§r. Perto do cristal você sente o efeito do elemento — cada cor irradia o
+      seu.
+    tasks:
+      - get: ChromatiCraft:chromaticraft_item_shard:9 x4
+    rewards:
+      - xp: 2
+      - item: ChromatiCraft:chromaticraft_item_berry:9 x2
+
+  - id: elemento_asveste
+    title: "Asveste"
+    type: normal
+    deps: [cristais_caverna]
+    icon: ChromatiCraft:chromaticraft_item_shard:10
+    desc: |
+      §dAsveste§r é o elemento lima.
+      Segundo o Léxico, ele representa o movimento e a mobilidade.
+
+      Encontre um §eCristal de Caverna lima§r no subsolo e quebre-o para obter §e4 Fragmentos
+      de Cristal Asveste§r. Perto do cristal você sente o efeito do elemento — cada cor irradia o
+      seu.
+    tasks:
+      - get: ChromatiCraft:chromaticraft_item_shard:10 x4
+    rewards:
+      - xp: 2
+      - item: ChromatiCraft:chromaticraft_item_berry:10 x2
+
+  - id: elemento_kitrino
+    title: "Kitrino"
+    type: normal
+    deps: [cristais_caverna]
+    icon: ChromatiCraft:chromaticraft_item_shard:11
+    desc: |
+      §dKitrino§r é o elemento amarelo.
+      Segundo o Léxico, ele representa energia bruta.
+
+      Encontre um §eCristal de Caverna amarelo§r no subsolo e quebre-o para obter §e4 Fragmentos
+      de Cristal Kitrino§r. Perto do cristal você sente o efeito do elemento — cada cor irradia o
+      seu.
+    tasks:
+      - get: ChromatiCraft:chromaticraft_item_shard:11 x4
+    rewards:
+      - xp: 2
+      - item: ChromatiCraft:chromaticraft_item_berry:11 x2
+
+  - id: elemento_galazio
+    title: "Galazio"
+    type: normal
+    deps: [cristais_caverna]
+    icon: ChromatiCraft:chromaticraft_item_shard:12
+    desc: |
+      §dGalazio§r é o elemento azul-claro.
+      Segundo o Léxico, ele representa o tempo e a sua passagem.
+
+      Encontre um §eCristal de Caverna azul-claro§r no subsolo e quebre-o para obter §e4 Fragmentos
+      de Cristal Galazio§r. Perto do cristal você sente o efeito do elemento — cada cor irradia o
+      seu.
+    tasks:
+      - get: ChromatiCraft:chromaticraft_item_shard:12 x4
+    rewards:
+      - xp: 2
+      - item: ChromatiCraft:chromaticraft_item_berry:12 x2
+
+  - id: elemento_kurauri
+    title: "Kurauri"
+    type: normal
+    deps: [cristais_caverna]
+    icon: ChromatiCraft:chromaticraft_item_shard:13
+    desc: |
+      §dKurauri§r é o elemento magenta.
+      Segundo o Léxico, ele representa a cura — o elemento da vida.
+
+      Encontre um §eCristal de Caverna magenta§r no subsolo e quebre-o para obter §e4 Fragmentos
+      de Cristal Kurauri§r. Perto do cristal você sente o efeito do elemento — cada cor irradia o
+      seu.
+    tasks:
+      - get: ChromatiCraft:chromaticraft_item_shard:13 x4
+    rewards:
+      - xp: 2
+      - item: ChromatiCraft:chromaticraft_item_berry:13 x2
+
+  - id: elemento_portokali
+    title: "Portokali"
+    type: normal
+    deps: [cristais_caverna]
+    icon: ChromatiCraft:chromaticraft_item_shard:14
+    desc: |
+      §dPortokali§r é o elemento laranja.
+      Segundo o Léxico, ele representa o calor, o fogo e a lava.
+
+      Encontre um §eCristal de Caverna laranja§r no subsolo e quebre-o para obter §e4 Fragmentos
+      de Cristal Portokali§r. Perto do cristal você sente o efeito do elemento — cada cor irradia o
+      seu.
+    tasks:
+      - get: ChromatiCraft:chromaticraft_item_shard:14 x4
+    rewards:
+      - xp: 2
+      - item: ChromatiCraft:chromaticraft_item_berry:14 x2
+
+  - id: elemento_tahara
+    title: "Tahara"
+    type: normal
+    deps: [cristais_caverna]
+    icon: ChromatiCraft:chromaticraft_item_shard:15
+    desc: |
+      §dTahara§r é o elemento branco.
+      Segundo o Léxico, ele representa a pureza que une todas as cores em harmonia.
+
+      Encontre um §eCristal de Caverna branco§r no subsolo e quebre-o para obter §e4 Fragmentos
+      de Cristal Tahara§r. Perto do cristal você sente o efeito do elemento — cada cor irradia o
+      seu.
+    tasks:
+      - get: ChromatiCraft:chromaticraft_item_shard:15 x4
+    rewards:
+      - xp: 2
+      - item: ChromatiCraft:chromaticraft_item_berry:15 x2
+
+  # ======================================================================
+  # FASE 2 — ÁRVORES TINGIDAS
+  # ======================================================================
+  - id: arvores_tingidas
+    title: "Technicolor Trees"
+    type: main
+    deps: [lexico]
+    icon: ChromatiCraft:chromaticraft_block_dyesapling:10
+    desc: |
+      Árvores de todas as cores pontilham o mundo — e às vezes formam florestas onde a magia é
+      forte a ponto de afastar mobs hostis. Corte as folhas: elas derrubam §emudas§r, §ecorante
+      de árvore§r e §efrutinhas§r da mesma cor.
+
+      Junte §e4 mudas tingidas§r de qualquer cor e plante perto de casa. Esta é a descoberta
+      "Technicolor Trees", necessária para carregar fragmentos lá na frente.
+    tasks:
+      - get: ChromatiCraft:chromaticraft_block_dyesapling:* x4
+    rewards:
+      - xp: 4
+      - choice: [minecraft:dye:15 x16, minecraft:sapling x8, minecraft:iron_axe]
+
+  - id: corante_arvore
+    title: "Tree Dye"
+    type: normal
+    deps: [arvores_tingidas]
+    icon: ChromatiCraft:chromaticraft_item_dye:13
+    desc: |
+      O §eCorante de Árvore§r funciona como corante comum (está no oredict de cada cor). Uma
+      fazenda de árvores tingidas resolve todos os corantes da sua base para sempre.
+    tasks:
+      - get: ChromatiCraft:chromaticraft_item_dye:* x16
+    rewards:
+      - xp: 2
+      - item: minecraft:dye:15 x16
+
+  - id: frutinhas
+    title: "Chroma Berries"
+    type: normal
+    deps: [arvores_tingidas]
+    icon: ChromatiCraft:chromaticraft_item_berry:14
+    desc: |
+      As §eFrutinhas de Chroma§r têm gosto horrível, mas formigam de energia: elas recarregam
+      um pouco da sua energia pessoal e, dissolvidas em chroma líquido, §ecarregam os
+      fragmentos de cristal§r. Junte uma boa variedade de cores.
+    tasks:
+      - get: ChromatiCraft:chromaticraft_item_berry:* x16
+    rewards:
+      - xp: 2
+      - item: minecraft:bone x8
+
+  - id: bloco_corante
+    title: "Dye Block"
+    type: optional
+    deps: [corante_arvore]
+    icon: ChromatiCraft:chromaticraft_block_dye:5
+    desc: |
+      Nove corantes de uma cor = um §eBloco de Corante§r. Decoração de cores puras e um jeito
+      compacto de estocar corante.
+    tasks:
+      - get: ChromatiCraft:chromaticraft_block_dye:*
+    rewards:
+      - loot: comum
+
+  - id: folhas_tingidas
+    title: "Folhas e Flores Tingidas"
+    type: optional
+    deps: [arvores_tingidas]
+    icon: ChromatiCraft:chromaticraft_block_dyeflower:9
+    desc: |
+      Folhas tingidas (com tesoura) e as §eFlores§r tingidas dos campos coloridos: decoração
+      viva e fonte de corante. Qualquer uma das duas.
+    tasks:
+      - one_of: [ChromatiCraft:chromaticraft_block_dyeleaf:*, ChromatiCraft:chromaticraft_block_dyeflower:*]
+    rewards:
+      - loot: comum
+
+  # ======================================================================
+  # FASE 3 — A MESA DE FUNDIÇÃO (BÁSICO)
+  # ======================================================================
+  - id: mesa_fundicao
+    title: "Casting Table"
+    type: main
+    deps: [cristais_caverna]
+    icon: ChromatiCraft:chromaticraft_item_placer:5
+    desc: |
+      Uma bancada comum não aguenta magia. A §eMesa de Fundição§r (Casting Table): pedra,
+      bancada e pedra em cima; pedra, fragmento e pedra no meio; três fragmentos embaixo.
+      Descoberta "Fabrication"!
+
+      No começo ela só faz receitas básicas. Para avançar, você vai construir §eestruturas em
+      volta dela§r (o Léxico mostra cada uma). §eImportante:§r nas receitas exibidas, §eo lado de
+      cima é o Norte§r — e a mesa depende do campo de energia do mundo (sem Pylons por perto
+      no mundo, só o básico funciona).
+    tasks:
+      - get: ChromatiCraft:chromaticraft_item_placer:5
+    rewards:
+      - xp: 4
+      - choice: [minecraft:stone x32, ore:shardCrystal x8, minecraft:compass]
+
+  - id: pedra_cristalina
+    title: "Crystalline Stone"
+    type: normal
+    deps: [mesa_fundicao]
+    icon: ChromatiCraft:chromaticraft_block_pylonstruct
+    desc: |
+      Todas as estruturas mágicas do mundo usam uma §epedra escura e lisa§r que conduz energia
+      cristalina. Fabrique a §ePedra Cristalina§r na Mesa de Fundição; depois ela pode ser
+      remodelada em colunas, vigas, tijolos e cantos (e volta ao formato liso com calor). Você
+      vai precisar de MUITA.
+    tasks:
+      - get: ChromatiCraft:chromaticraft_block_pylonstruct x32
+    rewards:
+      - xp: 3
+      - item: minecraft:stone x64
+
+  - id: runas
+    title: "Crystal Rune"
+    type: main
+    deps: [mesa_fundicao]
+    icon: ChromatiCraft:chromaticraft_block_rune:12
+    desc: |
+      Pedras gravadas com símbolos brilhantes, como as que ficam em volta dos Pylons: as
+      §eRunas de Cristal§r focam e direcionam a energia de uma cor. Elas são o coração de
+      quase todas as estruturas. Faça §eruna(s) de várias cores§r na Mesa de Fundição.
+    tasks:
+      - get: ChromatiCraft:chromaticraft_block_rune:* x8
+    rewards:
+      - xp: 4
+      - choice: [ore:shardCrystal x8, ChromatiCraft:chromaticraft_block_pylonstruct x16, minecraft:glowstone_dust x16]
+
+  - id: lampada_cristal
+    title: "Crystal Lamp"
+    type: optional
+    deps: [mesa_fundicao]
+    icon: ChromatiCraft:chromaticraft_block_lamp:11
+    desc: |
+      Tochas são chatas, glowstone é caro. A §eLâmpada de Cristal§r usa o brilho dos fragmentos
+      para iluminar com estilo — e bem mais forte.
+    tasks:
+      - get: ChromatiCraft:chromaticraft_block_lamp:*
+    rewards:
+      - loot: comum
+
+  - id: luz_cristal
+    title: "Crystal Glow"
+    type: optional
+    deps: [mesa_fundicao]
+    icon: ChromatiCraft:chromaticraft_block_glow
+    desc: |
+      Um fragmento montado sobre uma base de outro material = uma luz decorativa de parede,
+      em qualquer combinação de cor e base.
+    tasks:
+      - get: ChromatiCraft:chromaticraft_block_glow:*
+    rewards:
+      - loot: comum
+
+  - id: cristal_bruto
+    title: "Raw Crystal"
+    type: normal
+    deps: [mesa_fundicao]
+    icon: ChromatiCraft:chromaticraft_item_crafting:4
+    desc: |
+      O §eCristal Bruto§r é uma peça base de várias receitas, feita direto na Mesa de Fundição.
+      Faça alguns para ter em estoque.
+    tasks:
+      - get: ChromatiCraft:chromaticraft_item_crafting:4 x4
+    rewards:
+      - xp: 2
+      - item: ore:shardCrystal x4
+
+  - id: vidro_cristal
+    title: "Crystal Glass"
+    type: optional
+    deps: [mesa_fundicao]
+    icon: ChromatiCraft:chromaticraft_block_glass:4
+    desc: |
+      Vidro tingido de energia, feito na Mesa de Fundição. (O §eDefensive Glass§r, uma
+      variante, deixa passar só quem você quiser.) Qualquer cor serve.
+    tasks:
+      - get: ChromatiCraft:chromaticraft_block_glass:*
+    rewards:
+      - loot: comum
+
+  # ======================================================================
+  # FASE 4 — PYLONS
+  # ======================================================================
+  - id: pylon
+    title: "Energy Beacons"
+    type: main
+    deps: [cristais_caverna]
+    icon: ChromatiCraft:chromaticraft_item_placer:10
+    desc: |
+      Onde o campo de energia é mais forte, você encontra estruturas de pedra escura coroadas
+      por um orbe que brilha e zune: os §eCrystal Pylons§r. Cada um é de uma cor. Neste pack eles
+      §eaparecem só no Overworld§r (config).
+
+      Encontre um Pylon e olhe para ele de perto (descoberta "Energy Beacons"). §cNão fique
+      grudado nele:§r eles são poderosos e instáveis. Anote as coordenadas!
+    tasks:
+      - check
+    rewards:
+      - xp: 4
+      - choice: [minecraft:golden_apple, minecraft:cooked_beef x16, minecraft:compass]
+
+  - id: choque
+    title: "Damaging Discharge"
+    type: info
+    deps: [pylon]
+    icon: ChromatiCraft:chromaticraft_block_pylonstruct:5
+    desc: |
+      "Pylons parecem amigáveis... será?" — §cnão são§r. Chegar perto demais de um Pylon rende
+      uma §cdescarga na cara§r (descoberta "Damaging Discharge"). Vá com a vida cheia, com
+      comida e sem nada valioso que você não queira perder.
+
+      Mais tarde, a habilidade §ePylon Surge Protection§r te protege disso.
+    tasks:
+      - check
+    rewards:
+      - xp: 2
+
+  - id: bussola_pylon
+    title: "Pylon Compass"
+    type: normal
+    deps: [pylon, mesa_fundicao]
+    icon: ChromatiCraft:chromaticraft_item_finder
+    desc: |
+      A §eBússola de Pylon§r analisa o campo de energia e aponta o Pylon mais próximo de cada
+      cor. Ela tem um pouco de imprecisão, mas te deixa a uma caminhada curta do alvo. Feita
+      na Mesa de Fundição (receita básica) — indispensável para caçar as 16 cores.
+    tasks:
+      - get: ChromatiCraft:chromaticraft_item_finder
+    rewards:
+      - xp: 3
+      - item: minecraft:cooked_beef x16
+
+  - id: cristais_incrustados
+    title: "Lumen-Encrusted Crystals"
+    type: optional
+    deps: [pylon]
+    icon: ChromatiCraft:chromaticraft_block_encrusted:3
+    desc: |
+      Quando um Pylon está cheio e a energia não tem para onde ir, ela §econdensa§r em pequenas
+      incrustações de cristal sobre a pedra da estrutura. Colha algumas com cuidado (e longe
+      da descarga).
+    tasks:
+      - get: ChromatiCraft:chromaticraft_block_encrusted:*
+    rewards:
+      - loot: incomum
+
+  - id: todas_as_cores
+    title: "Elemental Awareness"
+    type: milestone
+    deps: [pylon, elemento_kuro, elemento_karmir, elemento_kijani, elemento_ruskea, elemento_nila, elemento_zambarau, elemento_vadali, elemento_argia, elemento_ykri, elemento_ruzova, elemento_asveste, elemento_kitrino, elemento_galazio, elemento_kurauri, elemento_portokali, elemento_tahara]
+    icon: ChromatiCraft:chromaticraft_item_shard:13
+    banner: "Elemental Awareness"
+    subtitle: "Dezesseis cores, dezesseis energias"
+    desc: |
+      "Vermelho, verde, azul, laranja... quantas são?" Agora você sabe: §edezesseis§r, cada uma
+      com sua cor, seu ícone e sua propriedade. No código do mod, essa descoberta (Elemental
+      Awareness) só vem §edepois de ter visto um Pylon§r — e ela, junto com a Mesa de Fundição,
+      é o que libera as runas na fundição.
+
+      Este é o primeiro grande portão do ChromatiCraft. A partir daqui a Mesa vira um
+      §etemplo§r.
+    tasks:
+      - get: [ChromatiCraft:chromaticraft_item_shard x2, ChromatiCraft:chromaticraft_item_shard:1 x2, ChromatiCraft:chromaticraft_item_shard:2 x2, ChromatiCraft:chromaticraft_item_shard:3 x2, ChromatiCraft:chromaticraft_item_shard:4 x2, ChromatiCraft:chromaticraft_item_shard:5 x2, ChromatiCraft:chromaticraft_item_shard:6 x2, ChromatiCraft:chromaticraft_item_shard:7 x2, ChromatiCraft:chromaticraft_item_shard:8 x2, ChromatiCraft:chromaticraft_item_shard:9 x2, ChromatiCraft:chromaticraft_item_shard:10 x2, ChromatiCraft:chromaticraft_item_shard:11 x2, ChromatiCraft:chromaticraft_item_shard:12 x2, ChromatiCraft:chromaticraft_item_shard:13 x2, ChromatiCraft:chromaticraft_item_shard:14 x2, ChromatiCraft:chromaticraft_item_shard:15 x2]
+    rewards:
+      - xp: 8
+      - kit: {name: "Kit do Aprendiz Cromático", items: [ChromatiCraft:chromaticraft_block_pylonstruct x32, minecraft:glowstone_dust x16, minecraft:stone x64, minecraft:cooked_beef x16]}
+      - loot: raro
+
+  - id: energia_interna
+    title: "Energy Internalization"
+    type: main
+    deps: [pylon, manipulador]
+    icon: ChromatiCraft:chromaticraft_item_tool
+    desc: |
+      "Se os Pylons e as árvores guardam energia, talvez você também possa." E pode: use o
+      §eManipulador Elemental num Pylon§r para drenar energia para dentro de você. O processo é
+      "mais perigoso do que agradável" — leve vida cheia.
+
+      No início você só guarda pouca energia; com experiência a capacidade cresce. Essa energia
+      pessoal alimenta habilidades e ferramentas. (Descoberta "Energy Internalization".)
+    tasks:
+      - check
+    rewards:
+      - xp: 4
+      - choice: [minecraft:golden_apple, ChromatiCraft:chromaticraft_item_berry:13 x8, minecraft:cooked_beef x16]

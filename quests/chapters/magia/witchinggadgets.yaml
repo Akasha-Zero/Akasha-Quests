@@ -1,0 +1,1008 @@
+chapter:
+  id: witchinggadgets
+  title: "Witching Gadgets"
+  prefix: ""
+  order: 512
+  icon: WitchingGadgets:item.WG_Cloak
+  desc: |
+    §dO Volume do Alfaiate Arcano.§r Roca de fiar, tecidos mágicos, bolsas e capas, adornos,
+    cápsulas de cristal, o Terraformador, aglomerados e o Alto-Forno Infernal, gemas
+    lapidadas e o equipamento Primordial. (Witching Gadgets 1.8.49-GTNH)
+
+quests:
+  # ======================================================================
+  # FASE 0 — FIAR E TECER
+  # ======================================================================
+  - id: wg_inicio
+    title: "Engenhocas de Bruxa"
+    type: info
+    icon: WitchingGadgets:WG_WoodenDevice
+    desc: |
+      Linha, agulha e taumaturgia! O §eWitching Gadgets§r tem a aba §eWitching Gadgets§r no
+      Taumonomicon (pesquisas com o prefixo §e[WG]§r). A primeira página, §eStatus Effects§r,
+      lista os efeitos novos do mod: Resistência a Empurrão, Dissolução e Capa de Cinzas.
+
+      §aDica de ouro:§r neste pack o Taumonomicon ganhou uma §ebusca§r (config do WG) — use-a
+      para achar qualquer pesquisa rapidinho.
+
+      §cAtenção:§r várias pesquisas avançadas deste Volume dão MUITO Warp (até 25). Eu aviso
+      em cada uma.
+    tasks:
+      - check
+    rewards:
+      - xp: 1
+
+  - id: roca_fiar
+    title: "A Roca de Fiar"
+    type: main
+    deps: [wg_inicio]
+    icon: WitchingGadgets:WG_WoodenDevice
+    desc: |
+      Muitos magos desprezam fiar e tecer — e subestimam o poder disso. Toda veste de
+      taumaturgo começa num fio!
+
+      Arcana (Ordo e Aer 5): um §eLingote de Ferro§r, uma §eTábua§r e uma §eMesa§r do
+      Thaumcraft = §eSpinning Wheel§r. Coloque linha e o material extra nela e ela fia.
+    tasks:
+      - get: WitchingGadgets:WG_WoodenDevice
+    rewards:
+      - xp: 4
+      - choice: [minecraft:string x32, minecraft:gold_nugget x16, Thaumcraft:ItemNugget:6 x8]
+
+  - id: fio
+    title: "Fio"
+    type: normal
+    deps: [roca_fiar]
+    icon: WitchingGadgets:item.WG_Material
+    desc: |
+      Na Roca: §e4 Linhas§r = §e2 Fios§r (Yarn). É a base de quase todo tecido daqui. Fie
+      bastante — vai faltar!
+    tasks:
+      - get: WitchingGadgets:item.WG_Material x8
+    rewards:
+      - xp: 2
+      - item: minecraft:string x16
+
+  - id: fio_ouro
+    title: "Fio de Ouro"
+    type: normal
+    deps: [roca_fiar]
+    icon: WitchingGadgets:item.WG_Material:1
+    desc: |
+      Na Roca: §e2 Linhas e 2 Pepitas de Ouro§r = §e2 Fios de Ouro§r (Golden Thread).
+      Elegância e magia andam juntas.
+    tasks:
+      - get: WitchingGadgets:item.WG_Material:1 x4
+    rewards:
+      - xp: 2
+      - item: minecraft:gold_nugget x8
+
+  - id: fio_taumio
+    title: "Fio de Táumio"
+    type: normal
+    deps: [roca_fiar]
+    icon: WitchingGadgets:item.WG_Material:2
+    desc: |
+      Na Roca: §e2 Linhas e 2 Pepitas de Táumio§r = §e2 Fios de Táumio§r (Thaumium Thread).
+      É o fio que segura a magia dentro do tecido.
+    tasks:
+      - get: WitchingGadgets:item.WG_Material:2 x8
+    rewards:
+      - xp: 2
+      - item: Thaumcraft:ItemNugget:6 x8
+
+  - id: tecido_dobras
+    title: "Tecido de Dobras Espaçosas"
+    type: main
+    deps: [fio, fio_taumio]
+    icon: WitchingGadgets:item.WG_Material:3
+    desc: |
+      Uma trama que tem §emais espaço dentro do que parece por fora§r! Arcana sem formato (15
+      de cada primal): §e2 Fios e 4 Fios de Táumio§r = §e2 Cloth of Spacious Folds§r.
+
+      É o tecido das bolsas mágicas e da capa de bolsos.
+    tasks:
+      - get: WitchingGadgets:item.WG_Material:3 x8
+    rewards:
+      - xp: 4
+      - choice: [WitchingGadgets:item.WG_Material x4, WitchingGadgets:item.WG_Material:2 x4, minecraft:chest x4]
+
+  - id: la_enfeiticada
+    title: "Lã Enfeitiçada"
+    type: main
+    deps: [fio, fio_ouro, fio_taumio]
+    icon: WitchingGadgets:item.WG_Material:5
+    desc: |
+      Tocando de leve o lado sombrio da taumaturgia, sai uma trama riquíssima em magia.
+      Arcana sem formato (15 de cada primal): §eFio, 2 Fios de Táumio e Fio de Ouro§r =
+      §eBewitched Fleece§r.
+
+      Ela é ingrediente das vestes enfeitiçadas, de bolsas avançadas, do manto espectral e da
+      Manopla Primordial.
+    tasks:
+      - get: WitchingGadgets:item.WG_Material:5 x4
+    rewards:
+      - xp: 4
+      - choice: [WitchingGadgets:item.WG_Material:1 x4, WitchingGadgets:item.WG_Material:2 x4, Thaumcraft:ItemResource:7 x4]
+
+  - id: vestes_enfeiticadas
+    title: "Vestes Enfeitiçadas"
+    type: normal
+    deps: [la_enfeiticada]
+    icon: WitchingGadgets:item.WG_AdvancedRobeChest
+    desc: |
+      Melhore o seu Robe e a Calça do Taumaturgo: Arcana (Ordo e Perditio 25, Aer 15) com a
+      peça original no centro e §e3 Lãs Enfeitiçadas§r em volta (" C ", "CRC"). Saem o
+      §eBewitched Robe§r e as §eBewitched Leggings§r, mais potentes em magia.
+    tasks:
+      - one_of: [WitchingGadgets:item.WG_AdvancedRobeChest, WitchingGadgets:item.WG_AdvancedRobeLegs]
+    rewards:
+      - xp: 3
+      - item: WitchingGadgets:item.WG_Material:5 x2
+
+  # ======================================================================
+  # FASE 1 — BOLSAS
+  # ======================================================================
+  - id: bolsa_truques
+    title: "Bolsa de Truques"
+    type: main
+    deps: [tecido_dobras]
+    icon: WitchingGadgets:item.WG_Bag
+    desc: |
+      Espaço de sobra para levar no corpo! Arcana (Ordo 50, Aer 30): §e7 Tecidos de Dobras
+      Espaçosas§r em formato de bolsa = §eBag of Tricks§r.
+
+      Ela é protetora: §cmachuca quem não for o dono§r e tentar abrir (Shift + clique direito
+      liga/desliga isso). Dá para tingir; sem corante na bancada ela volta à cor original.
+    tasks:
+      - get: WitchingGadgets:item.WG_Bag
+    rewards:
+      - xp: 4
+      - choice: [WitchingGadgets:item.WG_Material:3 x4, minecraft:dye:4 x8, minecraft:leather x8]
+
+  - id: bolsa_faminta
+    title: "Bolsa Faminta"
+    type: normal
+    deps: [bolsa_truques]
+    icon: WitchingGadgets:item.WG_Bag:3
+    desc: |
+      Portabilidade da bolsa + apetite do Baú Faminto: a §eHungry Bag§r guarda sozinha os itens
+      que você pega do chão. Arcana: §eBaú Faminto§r em cima, a Bolsa de Truques no meio e 2
+      Tecidos de Dobras. §c(+2 de Warp na pesquisa.)§r
+    tasks:
+      - get: WitchingGadgets:item.WG_Bag:3
+    rewards:
+      - xp: 3
+      - item: WitchingGadgets:item.WG_Material:3 x2
+
+  - id: bolsa_vazio
+    title: "Bolsa Ligada ao Vazio"
+    type: normal
+    deps: [bolsa_truques]
+    icon: WitchingGadgets:item.WG_Bag:1
+    desc: |
+      Odeia pegar pedregulho inútil? A §eVoidlinked Bag§r destrói os itens que você marcar e
+      devolve um aspecto primal aleatório deles como §evis para a sua varinha§r. Abra e coloque
+      exemplos dos itens; só funciona com itens pegos do chão. §c(+4 de Warp.)§r
+
+      Infusão: Bolsa de Truques no centro; 2 Sementes do Vazio e 2 Tecidos de Dobras.
+    tasks:
+      - get: WitchingGadgets:item.WG_Bag:1
+    rewards:
+      - xp: 3
+      - item: Thaumcraft:ItemResource:17
+
+  - id: bolsa_ender
+    title: "Bolsa Ligada ao Fim"
+    type: optional
+    deps: [bolsa_truques, la_enfeiticada]
+    icon: WitchingGadgets:item.WG_Bag:2
+    desc: |
+      Sintonizada com o seu Baú do Fim: a §eEnderlinked Bag§r abre o conteúdo dele de qualquer
+      lugar. "Não tente virá-la do avesso." §c(A pesquisa dá 15 de Warp neste pack!)§r
+
+      Infusão: Bolsa de Truques no centro; Baú do Fim, 2 Lãs Enfeitiçadas e Olho do Fim.
+    tasks:
+      - get: WitchingGadgets:item.WG_Bag:2
+    rewards:
+      - loot: incomum
+
+  # ======================================================================
+  # FASE 2 — CAPAS
+  # ======================================================================
+  - id: capa
+    title: "A Capa"
+    type: main
+    deps: [wg_inicio]
+    icon: WitchingGadgets:item.WG_Cloak
+    desc: |
+      O Tecido Encantado tem um "balanço" excelente. Arcana (Aer 7): §e7 Tecidos Encantados§r
+      (" F ", "FFF", "FFF") = §eCloak§r. Sozinha ela não faz nada especial, mas é a base de
+      todos os mantos mágicos.
+
+      Ela vai no §eslot de Capa do Baubles Expanded§r. Os mantos com habilidade ligam e
+      desligam por uma tecla do Witching Gadgets (confira em Controles).
+    tasks:
+      - get: WitchingGadgets:item.WG_Cloak
+    rewards:
+      - xp: 4
+      - choice: [Thaumcraft:ItemResource:7 x4, minecraft:dye:1 x8, minecraft:feather x8]
+
+  - id: pele_lobo
+    title: "Pele de Lobo"
+    type: normal
+    deps: [capa]
+    icon: WitchingGadgets:item.WG_Material:6
+    desc: |
+      Lobos derrotados podem soltar §eWolf Pelt§r (várias tentativas; Pilhagem ajuda). É
+      ingrediente do Manto de Lobo e dos Braceletes do Berserker. Lobos selvagens, por favor —
+      deixe os domados em paz!
+    tasks:
+      - get: WitchingGadgets:item.WG_Material:6 x5
+    rewards:
+      - xp: 2
+      - item: minecraft:bone x8
+
+  - id: capa_lobo
+    title: "Manto de Lobo"
+    type: normal
+    deps: [pele_lobo]
+    icon: WitchingGadgets:item.WG_Cloak:3
+    desc: |
+      Os berserkers das lendas lutavam envoltos em pele de lobo. Ao levar dano usando o
+      §eWolven Cloak§r, você ganha dano e velocidade extras.
+
+      Arcana (Ignis 10, Perditio 20, Terra 15): a Capa no centro e §e3 Peles de Lobo§r (" W ",
+      "WCW").
+    tasks:
+      - get: WitchingGadgets:item.WG_Cloak:3
+    rewards:
+      - xp: 3
+      - item: minecraft:cooked_beef x8
+
+  - id: manto_corvo
+    title: "Manto do Corvo"
+    type: normal
+    deps: [capa]
+    icon: WitchingGadgets:item.WG_Cloak:4
+    desc: |
+      Os Corvos da Floresta do Crepúsculo são acrobatas do ar. Com §e5 Penas de Corvo§r, um
+      §eEstilhaço de Ar§r e a Capa na Mesa Arcana (Aer e Ordo 15) sai o §eMantle of the
+      Raven§r: mais velocidade voando e, sem voo, você §eplana§r (dá para desligar).
+    tasks:
+      - get: WitchingGadgets:item.WG_Cloak:4
+    rewards:
+      - xp: 3
+      - item: TwilightForest:item.tfFeather x4
+
+  - id: manto_espectral
+    title: "Manto Espectral"
+    type: normal
+    deps: [capa, la_enfeiticada]
+    icon: WitchingGadgets:item.WG_Cloak:1
+    desc: |
+      Deslize para o plano dos espectros e fique §einvisível§r para quase todos os inimigos.
+      Em troca, você não ataca, não usa itens nem mexe em blocos, e gasta 1 de Aer a cada 5
+      segundos.
+
+      Infusão: a Capa no centro; Poção de Invisibilidade longa, 2 Lãs Enfeitiçadas e Pérola do
+      Fim. §cAinda te veem:§r Guardiões, Wardens e Construtos Eldritch, Pretores, chefes como
+      Wither e Dragão, aranhas, slimes e quem usa Óculos da Descoberta.
+    tasks:
+      - get: WitchingGadgets:item.WG_Cloak:1
+    rewards:
+      - xp: 3
+      - item: minecraft:ender_pearl x4
+
+  # ======================================================================
+  # FASE 3 — ADORNOS (BAUBLES)
+  # ======================================================================
+  - id: adornos
+    title: "Adornos de Bruxa"
+    type: normal
+    deps: [wg_inicio]
+    icon: WitchingGadgets:item.WG_Baubles:7
+    desc: |
+      Parece catálogo de loja de bruxaria, mas são esquemas mágicos! §c(+4 de Warp na
+      pesquisa Witching Wearables.)§r Todos vão nos slots do Baubles.
+
+      Comece pelas bases, na Mesa Arcana: §eEmpty Leather Charm§r (couro, linha e um lingote de
+      ferro) e §eLeather Vambraces§r (couro em volta de um lingote de ferro).
+    tasks:
+      - get: [WitchingGadgets:item.WG_Baubles:7, WitchingGadgets:item.WG_Baubles:8]
+    rewards:
+      - xp: 3
+      - item: minecraft:leather x8
+
+  - id: amuleto_serafim
+    title: "Amuleto do Serafim"
+    type: normal
+    deps: [adornos]
+    icon: WitchingGadgets:item.WG_Baubles
+    desc: |
+      Voar é magia avançada, mas um §esegundo pulo no ar§r está ao seu alcance! O §eSeraph's
+      Charm§r cria asas mágicas para um pulo duplo.
+
+      Infusão: o Amuleto de Couro Vazio no centro; 3 §eFocos de Mapa Mágico§r (Floresta do
+      Crepúsculo), 2 Lingotes de Prata (ou ferro, se não houver prata) e um Estilhaço de Ar.
+    tasks:
+      - get: WitchingGadgets:item.WG_Baubles
+    rewards:
+      - xp: 3
+      - item: minecraft:feather x16
+
+  - id: amuleto_firme
+    title: "Amuleto da Firmeza"
+    type: optional
+    deps: [adornos]
+    icon: WitchingGadgets:item.WG_Baubles:1
+    desc: |
+      Feio, mas eficiente: o §eSteadfast Charm§r dá §e60% de resistência a empurrão§r. Arcana
+      (Terra 50, Aer 15): o Amuleto de Couro Vazio, 3 Aglomerados de Cristal de Terra e
+      Lingotes de Ferro.
+    tasks:
+      - get: WitchingGadgets:item.WG_Baubles:1
+    rewards:
+      - loot: comum
+
+  - id: braceletes_berserker
+    title: "Braceletes do Berserker"
+    type: optional
+    deps: [adornos, pele_lobo]
+    icon: WitchingGadgets:item.WG_Baubles:2
+    desc: |
+      Peludinhos e ferozes: §e+2 de dano de ataque§r. Arcana: os Braceletes de Couro no centro,
+      3 Peles de Lobo e um Lingote de Ferro.
+    tasks:
+      - get: WitchingGadgets:item.WG_Baubles:2
+    rewards:
+      - loot: comum
+
+  - id: braceletes_progresso
+    title: "Braceletes do Progresso Constante"
+    type: optional
+    deps: [adornos]
+    icon: WitchingGadgets:item.WG_Baubles:3
+    desc: |
+      Projeto de taumaturgos anões: aumentam a §evelocidade de mineração§r embaixo d'água, no ar
+      e em materiais duros, e ainda sobem escadas mais rápido. Infusão: Braceletes de Couro no
+      centro; Lingote de Ouro, 2 Açúcares e Poção de Velocidade.
+    tasks:
+      - get: WitchingGadgets:item.WG_Baubles:3
+    rewards:
+      - loot: comum
+
+  - id: anel_atirador
+    title: "Anel do Atirador"
+    type: optional
+    deps: [adornos]
+    icon: WitchingGadgets:item.WG_Baubles:6
+    desc: |
+      Você anda mais rápido puxando o arco e, agachado com a flecha armada, dá um "zoom" no
+      alvo. Infusão: §eAnel Mundano§r no centro e as §e6 Flechas Primais§r em volta.
+    tasks:
+      - get: WitchingGadgets:item.WG_Baubles:6
+    rewards:
+      - loot: comum
+
+  - id: moeda_sorte
+    title: "Moeda da Sorte"
+    type: normal
+    deps: [adornos]
+    icon: Thaumcraft:ItemResource:18
+    desc: |
+      As Moedas de Ouro do Thaumcraft (aquelas dos tesouros) têm uso! Na Mesa Arcana (Ordo 30), 5
+      §eMoedas de Ouro§r em cruz com 4 §eLivros Encantados§r nos cantos (qualquer encantamento
+      serve) viram uma §eLucky Gold Coin§r, já encantada com Fortuna e Pilhagem — a base do
+      Anel da Moeda Cobiçosa.
+    tasks:
+      - get: Thaumcraft:ItemResource:18 x5
+    rewards:
+      - xp: 3
+      - item: minecraft:book x4
+
+  - id: anel_cobica
+    title: "Anel da Moeda Cobiçosa"
+    type: optional
+    deps: [moeda_sorte]
+    icon: WitchingGadgets:item.WG_Baubles:4
+    desc: |
+      Sorte nunca é demais: §e+2 níveis de Fortuna e Pilhagem§r enquanto usar. Infusão: a
+      §eMoeda da Sorte§r no centro; Lingote de Ouro, 4 Lápis-Lazúli e 3 Lingotes de Prata (ou
+      ferro, se não houver prata).
+    tasks:
+      - get: WitchingGadgets:item.WG_Baubles:4
+    rewards:
+      - loot: incomum
+
+  # ======================================================================
+  # FASE 4 — FERRAMENTAS DO DIA A DIA
+  # ======================================================================
+  - id: capsula_cristal
+    title: "Cápsula de Cristal"
+    type: main
+    deps: [wg_inicio]
+    icon: WitchingGadgets:item.WG_CrystalFlask
+    desc: |
+      Todo mundo sabe usar balde... só que alguns líquidos odeiam balde. A §eCrystal Capsule§r
+      é moldada de essência e pega §equalquer bloco de fluido§r, por mais quente ou viscoso.
+
+      No Crisol: §eBalde§r + 2 §dVacuos§r e 4 §dVitreus§r. Use como um balde.
+    tasks:
+      - get: WitchingGadgets:item.WG_CrystalFlask:* x4
+    rewards:
+      - xp: 4
+      - choice: [minecraft:bucket x4, minecraft:glass x16, Thaumcraft:ItemShard:6 x2]
+
+  - id: abaco_arcano
+    title: "Ábaco Arcano"
+    type: normal
+    deps: [wg_inicio]
+    icon: WitchingGadgets:item.WG_Material:7
+    desc: |
+      Taumaturgo que se preza não faz conta. O §eArcane Abacus§r (Arcana: gravetos e corantes
+      vermelho, azul e verde) faz por você: num nodo, converte os aspectos compostos em
+      primais; numa Matriz de Infusão, mostra estabilidade, posição dos estabilizadores e a
+      instabilidade da infusão atual.
+    tasks:
+      - get: WitchingGadgets:item.WG_Material:7
+    rewards:
+      - xp: 2
+      - item: Thaumcraft:blockCandle x4
+
+  - id: escrita_iluminada
+    title: "Ferramentas de Escrita Iluminadas"
+    type: normal
+    deps: [wg_inicio]
+    icon: WitchingGadgets:item.WG_AdvancedScribingTools
+    desc: |
+      Caçar lula para ter tinta? Nunca mais! As §eIlluminated Scribing Tools§r têm §e10× mais
+      tinta§r. Arcana sem formato (50 de cada primal), com a Floresta do Crepúsculo no pack: 3
+      Pós de Ouro, 4 Pós de Pedra Luminosa, um §eFoco de Mapa Mágico§r e um Frasco de Vidro.
+    tasks:
+      - get: WitchingGadgets:item.WG_AdvancedScribingTools
+    rewards:
+      - xp: 3
+      - item: minecraft:glowstone_dust x16
+
+  - id: iconografo
+    title: "Iconógrafo Táumico"
+    type: optional
+    deps: [escrita_iluminada]
+    icon: WitchingGadgets:item.WG_ScanCamera
+    desc: |
+      Uma "câmera" táumica! A §eThaumic Iconograph Box§r (Arcana: Taumômetro, Vidro Espelhado,
+      Painel de Vidro, couro e tábuas de greatwood) escaneia como o Taumômetro, gastando um
+      Vidro Espelhado, e gera uma §eIconographic Plate§r. Revele a placa (Arcana) e estude o
+      §eDeveloped Iconograph§r para ganhar os aspectos — ótimo para pesquisar coisas longe de
+      casa.
+    tasks:
+      - get: WitchingGadgets:item.WG_ScanCamera
+    rewards:
+      - loot: comum
+
+  - id: fio_guia
+    title: "Fio Guia"
+    type: optional
+    deps: [fio_ouro, fio_taumio]
+    icon: WitchingGadgets:item.WG_Material:11
+    desc: |
+      Labirintos guardam segredos — o perigo é não achar a saída. O §eGuiding Thread§r deixa um
+      rastro de luz por onde você passa (botão direito liga/desliga; agachado + clique apaga a
+      memória). A luz só aparece com ele na mão. Perfeito para as Terras Exteriores!
+
+      Infusão: §eTora de Silverwood§r no centro; Pérola do Fim, 2 Fios de Táumio, 2 Fios de Ouro
+      e Aglomerado de Cristal de Ordem.
+    tasks:
+      - get: WitchingGadgets:item.WG_Material:11
+    rewards:
+      - loot: comum
+
+  - id: biblioteca_aspectos
+    title: "Biblioteca de Aspectos"
+    type: optional
+    deps: [wg_inicio]
+    icon: WitchingGadgets:WG_WoodenDevice:5
+    desc: |
+      Chega de esfregar frasco em rótulo! A §eAspect Library§r (Arcana: Livro, Rótulo de Jarra,
+      Ferramenta de Escrita e Mesa) lembra todos os aspectos que você já descobriu: ponha um
+      rótulo nela e escolha o aspecto.
+    tasks:
+      - get: WitchingGadgets:WG_WoodenDevice:5
+    rewards:
+      - loot: comum
+
+  - id: tesoura_vinha
+    title: "Tesoura de Táumio e Vinhas de Rosa"
+    type: optional
+    deps: [wg_inicio]
+    icon: WitchingGadgets:WG_RoseVine
+    desc: |
+      Duas coisinhas de jardinagem: a §eThaumium Shears§r (bancada) e as §eRose Vines§r, feitas
+      no Crisol com uma §eRoseira§r + 4 §dHerba§r, 4 §dPerditio§r e 4 §dPraecantatio§r. As vinhas
+      crescem rápido e espetam — um perímetro de segurança natural. Colha com tesoura.
+    tasks:
+      - one_of: [WitchingGadgets:item.WG_ThaumiumShears, WitchingGadgets:WG_RoseVine]
+    rewards:
+      - loot: comum
+
+  # ======================================================================
+  # FASE 5 — PEDRAS E MÁQUINAS ARCANAS
+  # ======================================================================
+  - id: parede_eterea
+    title: "Parede Etérea"
+    type: normal
+    deps: [wg_inicio]
+    icon: WitchingGadgets:WG_StoneDevice
+    desc: |
+      Uma pedra arcana que, com §esinal de redstone§r, vira §enão-corpórea§r: dá para atravessar
+      (e o efeito passa para as paredes etéreas encostadas). Clique nela com um bloco para
+      disfarçá-la com a textura dele; agachado e mão vazia remove. Porta secreta perfeita!
+      §c(+3 de Warp.)§r
+
+      Arcana (Ordo 15, Terra 5): Blocos de Pedra Arcana, 2 Aglomerados de Cristal e uma Lâmpada
+      de Redstone = 6 paredes.
+    tasks:
+      - get: WitchingGadgets:WG_StoneDevice x6
+    rewards:
+      - xp: 3
+      - item: Thaumcraft:blockCosmeticSolid:6 x8
+
+  - id: pedra_envelhecimento
+    title: "Pedra do Envelhecimento"
+    type: normal
+    deps: [parede_eterea]
+    icon: WitchingGadgets:WG_StoneDevice:1
+    desc: |
+      Filhotes crescendo bem mais rápido! A §eAgeing Stone§r acelera o crescimento dos animais
+      comuns numa área de 7×7×5 em volta dela (mais pedras, mais efeito). §c(+1 de Warp.)§r
+
+      Arcana (Ordo e Perditio 10): Pedra Arcana, 2 Estilhaços e um Relógio.
+    tasks:
+      - get: WitchingGadgets:WG_StoneDevice:1
+    rewards:
+      - xp: 3
+      - item: minecraft:wheat x16
+
+  - id: extrusor_pedra
+    title: "Extrusor de Pedra Táumico"
+    type: normal
+    deps: [wg_inicio]
+    icon: WitchingGadgets:WG_WoodenDevice:2
+    desc: |
+      Gerador de pedregulho automático! O §eThaumic Stone Extruder§r cria pedregulho, quebra e
+      põe num inventário conectado. Para com o inventário cheio ou com redstone; gire com a
+      varinha. §c(+2 de Warp.)§r
+
+      Infusão: §eObsidiana§r no centro; Pistão Grudento, 2 Aglomerados de Entropia, 2 de Terra,
+      Balde de Lava, Balde de Água, Redstone e Picareta Táumica.
+    tasks:
+      - get: WitchingGadgets:WG_WoodenDevice:2
+    rewards:
+      - xp: 3
+      - item: minecraft:chest x2
+
+  - id: geladeira_magica
+    title: "Solidificador de Gelo e Bola de Neve"
+    type: optional
+    deps: [extrusor_pedra]
+    icon: WitchingGadgets:WG_WoodenDevice:6
+    desc: |
+      O extrusor ao contrário: o §eThaumic Ice Solidifier§r faz gelo (centro de Obsidiana, com
+      Pistão Grudento, Aglomerados de Água e Ordem, Gelo, Gelo Compactado e Redstone) e o
+      §eThaumic Snowballer§r faz bolas de neve (centro de Caldeirão). Vá construir um iglu!
+      §c(+3 de Warp no Solidificador.)§r
+    tasks:
+      - one_of: [WitchingGadgets:WG_WoodenDevice:6, WitchingGadgets:WG_WoodenDevice:1]
+    rewards:
+      - loot: comum
+
+  - id: sauna
+    title: "Fogão de Sauna Táumico"
+    type: normal
+    deps: [wg_inicio]
+    icon: WitchingGadgets:WG_WoodenDevice:4
+    desc: |
+      Spa de taumaturgo! O §eThaumic Sauna Stove§r enche a área de vapor purificante: enquanto
+      estiver nele você fica §eprotegido dos efeitos de Warp§r e tem uma chance de reduzir o
+      Warp temporário (mas sai com fome!). Um balde de água dura 10 minutos.
+
+      Infusão: §eBalde de Lava§r no centro; Balde, 2 Lajes de Pedra e 5 Tábuas de Greatwood.
+    tasks:
+      - get: WitchingGadgets:WG_WoodenDevice:4
+    rewards:
+      - xp: 3
+      - item: minecraft:water_bucket
+
+  - id: bomba_essencia
+    title: "Bomba de Essência"
+    type: normal
+    deps: [wg_inicio]
+    icon: WitchingGadgets:WG_MetalDevice
+    desc: |
+      Espelhos de Essência servem ao Altar de Infusão, mas quase nada mais os usa. A
+      §eEssentia Pump§r, presa num sistema de tubos, sente a sucção dele e §epuxa o aspecto
+      certo dos espelhos próximos§r.
+
+      Infusão: §eBuffer de Essência§r no centro; 4 Foles Arcanos, 2 Pistões Grudentos e 2 Funis.
+    tasks:
+      - get: WitchingGadgets:WG_MetalDevice
+    rewards:
+      - xp: 3
+      - item: Thaumcraft:blockTube x8
+
+  # ======================================================================
+  # FASE 6 — O TERRAFORMADOR
+  # ======================================================================
+  - id: terraformador
+    title: "Reformador Terrestre Arcano"
+    type: milestone
+    deps: [bomba_essencia]
+    icon: WitchingGadgets:WG_MetalDevice:2
+    banner: "Terraformação Táumica"
+    subtitle: "Mudando o próprio bioma"
+    desc: |
+      Quando jardinagem não basta, quando você quer neve em vez de chuva, ou quando as abelhas
+      se recusam a trabalhar no clima atual: §eArcane Terrestrial Reformer§r! §c(A pesquisa
+      dá 10 de Warp.)§r
+
+      Infusão (instabilidade 3): §eConstruto Alquímico§r no centro; Estilhaço Equilibrado, 2
+      Lingotes de Ferro, 2 Tubos de Essência e Muda de Silverwood.
+
+      Ponha um §eFoco Terrestre§r em cima. Ele consome essência do aspecto do foco e vis de
+      §dTerra§r: a cada 4 essências + 4 vis, muda o bioma de um ponto num raio de 16 blocos.
+    tasks:
+      - get: WitchingGadgets:WG_MetalDevice:2
+    rewards:
+      - xp: 8
+      - kit: {name: "Kit do Paisagista Arcano", items: ["Thaumcraft:blockJar x8", "Thaumcraft:blockTube x16", "Thaumcraft:ItemShard:6 x4", "Thaumcraft:ItemShard:3 x8"]}
+      - loot: raro
+
+  - id: focos_terrestres
+    title: "Focos Terrestres"
+    type: normal
+    deps: [terraformador]
+    icon: WitchingGadgets:WG_MetalDevice:3
+    desc: |
+      Focos de Arcana (Estilhaço Equilibrado, Lingotes de Ferro, um Tubo e o bloco do bioma):
+      §e• Plains§r (Grama) — §dHerba§r. §e• Cold Taiga§r (Gelo) — §dGelum§r.
+      §e• Desert§r (Areia) — §dIgnis§r. §e• Jungle§r (Tora da Selva) — §dArbor§r.
+      §e• Mushroom Island§r (Micélio) — §dLimus§r.
+      §e• Hell§r (Tijolo do Nether) — §dInfernus§r §c(o item dá 1 de Warp; pesquisa +2)§r.
+      Faça o foco do bioma que você quer e alimente o Reformador com a essência certa.
+    tasks:
+      - one_of: [WitchingGadgets:WG_MetalDevice:3, WitchingGadgets:WG_MetalDevice:4, WitchingGadgets:WG_MetalDevice:5, WitchingGadgets:WG_MetalDevice:6, WitchingGadgets:WG_MetalDevice:7, WitchingGadgets:WG_MetalDevice:9]
+    rewards:
+      - xp: 3
+      - item: minecraft:grass x16
+
+  - id: focos_terrestres_infusao
+    title: "Focos Terrestres Avançados"
+    type: optional
+    deps: [focos_terrestres]
+    icon: WitchingGadgets:WG_MetalDevice:11
+    desc: |
+      Estes saem do Altar de Infusão (Estilhaço Equilibrado, 4 Lingotes de Ferro e um Tubo):
+      §e• River§r (centro: Balde de Água) e §e• Ocean§r (centro: Foco River) — §dAqua§r.
+      §e• End§r (centro: Pedra do Fim) — §dAlienis§r §c(item dá 2 de Warp)§r.
+      §e• Tainted Lands§r (centro: Crosta Maculada) — §dVitium§r §c(item dá 2 de Warp)§r.
+      Sim, Taint artificial em escala de bioma. Só para pesquisa, né?
+    tasks:
+      - one_of: [WitchingGadgets:WG_MetalDevice:10, WitchingGadgets:WG_MetalDevice:11, WitchingGadgets:WG_MetalDevice:12, WitchingGadgets:WG_MetalDevice:8]
+    rewards:
+      - loot: incomum
+
+  # ======================================================================
+  # FASE 7 — METALURGIA ARCANA
+  # ======================================================================
+  - id: aglomerados_nativos
+    title: "Purificação de Metais"
+    type: main
+    deps: [wg_inicio]
+    icon: Thaumcraft:ItemNugget:16
+    desc: |
+      Os §eAglomerados Nativos§r do Thaumcraft (minério + Metallum e Ordo no Crisol) rendem o
+      dobro ao serem fundidos. O WG reorganiza essas pesquisas na aba dele (Metal
+      Purification) e acrescenta o §eAglomerado Nativo de Cinábrio§r (rende o dobro de
+      mercúrio).
+
+      Junte §e8 Aglomerados Nativos de Ferro§r. Eles vão brilhar no Alto-Forno Infernal.
+    tasks:
+      - get: Thaumcraft:ItemNugget:16 x8
+    rewards:
+      - xp: 4
+      - choice: [minecraft:iron_ore x8, Thaumcraft:ItemShard:4 x4, minecraft:coal x16]
+
+  - id: aglomerado_cinabrio
+    title: "Aglomerado de Cinábrio"
+    type: optional
+    deps: [aglomerados_nativos]
+    icon: Thaumcraft:ItemNugget:21
+    desc: |
+      O minério de Cinábrio também se purifica: no Crisol ele vira §eAglomerado Nativo de
+      Cinábrio§r, que na fornalha dá o dobro de Mercúrio — e no Alto-Forno Infernal, 3
+      Mercúrios e uma Gota de Mercúrio de bônus.
+    tasks:
+      - get: Thaumcraft:ItemNugget:21 x4
+    rewards:
+      - loot: comum
+
+  - id: perfeicao_metalurgica
+    title: "Perfeição Metalúrgica"
+    type: normal
+    deps: [aglomerados_nativos]
+    icon: WitchingGadgets:item.WG_Cluster:2032
+    desc: |
+      Uma teoria geral da purificação! O WG estende os aglomerados a §eoutros metais do pack§r:
+      Cobalto, Ardita, Alumínio, Níquel, Manganês, Zinco, Paládio, Irídio e mais (minério +
+      Metallum e Ordo no Crisol). §c(A pesquisa dá 10 de Warp neste pack!)§r A pesquisa irmã,
+      §eTransmutation§r, multiplica pepitas com Metallum (também 10 de Warp).
+
+      Faça um aglomerado de qualquer metal novo.
+    tasks:
+      - get: WitchingGadgets:item.WG_Cluster:*
+    rewards:
+      - xp: 3
+      - item: Thaumcraft:ItemShard:4 x4
+
+  - id: alto_forno_infernal
+    title: "Alto-Forno Infernal"
+    type: milestone
+    deps: [aglomerados_nativos]
+    icon: minecraft:nether_brick
+    banner: "Alto-Forno Infernal"
+    subtitle: "Queima! ...quer dizer, funde"
+    desc: |
+      A resposta do taumaturgo aos engenheiros: um alto-forno de chama mágica que transforma
+      §ecada aglomerado em 3 lingotes§r (às vezes com uma pepita de bônus) e ainda faz §eaço§r
+      a partir de lingotes ou blocos de ferro.
+
+      Sem Railcraft no pack, a estrutura (3×3×3) usa blocos vanilla:
+      §e• Base:§r 8 Tijolos do Nether em volta de 1 Obsidiana.
+      §e• Meio:§r Obsidiana nos 4 cantos, Areia das Almas nas laterais e no centro.
+      §e• Topo:§r 8 Escadas de Tijolo do Nether §evirando para o centro§r em volta de 1 Lava.
+      Forme com a varinha (Ignis, Terra e Perditio 50) — §cisso dá 3 de Warp "grudento"§r.
+
+      Jogue os aglomerados na lava do topo. §cO que não for receita evapora — inclusive você.§r
+    tasks:
+      - get: [minecraft:nether_brick x8, minecraft:obsidian x5, minecraft:soul_sand x5, minecraft:nether_brick_stairs x8]
+    rewards:
+      - xp: 8
+      - kit: {name: "Kit do Fundidor Infernal", items: ["Thaumcraft:ItemNugget:16 x8", "Thaumcraft:ItemNugget:31 x4", "minecraft:lava_bucket", "minecraft:coal_block x4"]}
+      - loot: raro
+
+  - id: aco_infernal
+    title: "Aço da Chama Impura"
+    type: optional
+    deps: [alto_forno_infernal]
+    icon: ImmersiveEngineering:metal:7
+    desc: |
+      A chama "impura" do Alto-Forno Infernal transforma Lingotes de Ferro em §eAço§r e Blocos
+      de Ferro em Blocos de Aço (o NEI mostra o aço do Immersive Engineering). Jogue ferro na
+      lava do topo e espere.
+    tasks:
+      - get: ore:ingotSteel x8
+    rewards:
+      - loot: incomum
+
+  # ======================================================================
+  # FASE 8 — LAPIDAÇÃO
+  # ======================================================================
+  - id: lapidacao
+    title: "Lapidação"
+    type: normal
+    deps: [wg_inicio]
+    icon: WitchingGadgets:item.WG_Material:8
+    desc: |
+      Gema infundida guarda magia que §equalquer pessoa§r pode usar. Bancada: Quartzo, Pederneira
+      e Lingote de Ferro em cima de 3 Gravetos = §eGemcutter's Tools§r. Coloque as ferramentas
+      §eem cima de uma Mesa§r do Thaumcraft para formar a §eCutting Table§r.
+
+      Na mesa: gema à esquerda, Essências Etéreas ou Frascos de Essência do mesmo aspecto nos
+      três slots, escolha o corte nas setas e retire à direita.
+    tasks:
+      - get: WitchingGadgets:item.WG_Material:8
+    rewards:
+      - xp: 3
+      - item: minecraft:quartz x8
+
+  - id: gemas_infundidas
+    title: "Gemas Infundidas"
+    type: normal
+    deps: [lapidacao]
+    icon: WitchingGadgets:item.WG_InfusedGem
+    desc: |
+      §eCorte Ponta§r (Point): esmague a gema para liberar o efeito — Aer pulo alto, Terra
+      firmeza, Ignis luz, Aqua congela água e lava em volta, Ordo cura, Perditio... dá Warp
+      temporário.
+      §eCorte Oval§r: guarda mais energia, solta aos poucos e §erecarrega com vis§r — Aer
+      impulso, Ignis fogo, Aqua bloco de água, Ordo aponta o nodo mais próximo, e outros.
+
+      Gemas com afinidade natural pelo aspecto ganham "Brilliance"; com aversão, ficam
+      quebradiças.
+    tasks:
+      - get: WitchingGadgets:item.WG_InfusedGem
+    rewards:
+      - xp: 3
+      - item: minecraft:emerald x2
+
+  # ======================================================================
+  # FASE 9 — ENCANTAMENTOS
+  # ======================================================================
+  - id: encantamentos_wg
+    title: "Encantamentos de Bruxa"
+    type: info
+    deps: [wg_inicio]
+    icon: minecraft:enchanted_book
+    desc: |
+      Pela Infusão de Encantamento:
+      §e• Translucency:§r armadura invisível (com poção de invisibilidade, ninguém te vê).
+      §e• Unveiling:§r nos Óculos — você vê criaturas invisíveis.
+      §e• Stealth:§r botas/calças; chance de não ser detectado agachado §c(+2 Warp)§r.
+      §e• Backstab:§r +20% de dano por nível pelas costas, +40% se o alvo não te viu §c(+2
+      Warp)§r.
+      §e• Throwoff:§r capacete; quem montar em você é arremessado.
+      §e• Soul Tethered:§r o item volta com você depois da morte (também em livro, pela Mesa
+      Arcana). Funciona até com o inventário de Baubles (config).
+    tasks:
+      - check
+    rewards:
+      - xp: 2
+
+  # ======================================================================
+  # FASE 10 — O EQUIPAMENTO PRIMORDIAL
+  # ======================================================================
+  - id: perola_sem_poder
+    title: "A Pérola Exaurida"
+    type: normal
+    deps: [wg_inicio]
+    icon: WitchingGadgets:item.WG_Material:12
+    desc: |
+      O equipamento Primordial usa §ePérolas Primordiais§r — e devolve cada uma como §ePowerless
+      Pearl§r, sem poder. Mas dá para recarregar!
+
+      Infusão (instabilidade 3): a Pérola sem Poder no centro e §eum estilhaço de cada primal§r
+      em volta = a Pérola Primordial de novo. A pesquisa §ePearl Revitalization§r aparece quando
+      você segura uma Pérola sem Poder.
+    tasks:
+      - get: Thaumcraft:ItemEldritchObject:3
+    rewards:
+      - xp: 4
+      - item: Thaumcraft:ItemShard:6 x4
+
+  - id: manopla_primordial
+    title: "Manopla Primordial"
+    type: main
+    deps: [perola_sem_poder, la_enfeiticada, gemas_infundidas]
+    icon: WitchingGadgets:item.WG_PrimordialGlove
+    desc: |
+      Dos rabiscos eldritch, só a manopla foi decifrável. A §ePrimordial Gauntlet§r tem um
+      §eTransdutor de Nodo§r embutido: prende um nodo e nunca o solta. Os §e5 encaixes§r aceitam
+      gemas infundidas, que nunca quebram e recarregam conforme os aspectos do nodo. Troque a
+      gema ativa com a tecla de trocar focos (agachado abre o inventário dela).
+      §c(A pesquisa dá 15 de Warp!)§r
+
+      Infusão (instabilidade 6): §eTransdutor de Nodo§r no centro; Lã Enfeitiçada, 2 Sementes do
+      Vazio, 2 Metais do Vazio e a Pérola Primordial (que volta como Pérola sem Poder).
+    tasks:
+      - get: WitchingGadgets:item.WG_PrimordialGlove
+    rewards:
+      - xp: 6
+      - choice: [Thaumcraft:ItemResource:16 x4, Thaumcraft:ItemResource:17 x2, Thaumcraft:ItemShard:6 x6]
+
+  - id: armas_primordiais
+    title: "Claymore Primordial"
+    type: main
+    deps: [manopla_primordial]
+    icon: WitchingGadgets:item.WG_PrimordialSword
+    desc: |
+      Feitas só para matar criaturas do mal. §c(A pesquisa dá 25 de Warp!)§r
+      §e• Claymore:§r mira no pescoço — decapitações frequentes.
+      §e• Warhammer:§r dano dobrado em slimes e aranhas, concussões, e quebra 3×3 (exceto
+      agachado).
+      §e• Greataxe:§r corta madeira como manteiga e racha armaduras.
+
+      Infusão (instabilidade 10): §eBloco de Metal do Vazio§r (do WG) no centro; 6 Essências
+      Etéreas, 2 Pérolas Primordiais, 2 Amuletos Primais, Haste de Greatwood e 2 ferramentas do
+      Vazio (2 Espadas para a Claymore; Picareta + Espada para o Martelo; 2 Machados para o
+      Machado). Comece pela §eClaymore Primordial§r.
+    tasks:
+      - get: WitchingGadgets:item.WG_PrimordialSword
+    rewards:
+      - xp: 6
+      - choice: [Thaumcraft:ItemResource:16 x6, Thaumcraft:ItemResource:15 x2, minecraft:nether_star]
+
+  - id: martelo_primordial
+    title: "Martelo de Guerra Primordial"
+    type: optional
+    deps: [armas_primordiais]
+    icon: WitchingGadgets:item.WG_PrimordialHammer
+    desc: |
+      O §ePrimordial Warhammer§r esmaga: dano dobrado em slimes e aranhas, chance de concussão
+      em todo o resto e mineração em §e3×3§r (agachado minera um bloco só). Mesma infusão da
+      Claymore, trocando as espadas por uma §ePicareta do Vazio§r e uma §eEspada do Vazio§r.
+    tasks:
+      - get: WitchingGadgets:item.WG_PrimordialHammer
+    rewards:
+      - loot: raro
+
+  - id: machado_primordial
+    title: "Machado Primordial"
+    type: optional
+    deps: [armas_primordiais]
+    icon: WitchingGadgets:item.WG_PrimordialAxe
+    desc: |
+      O §ePrimordial Greataxe§r corta madeira como faca quente na manteiga e §erasga armaduras§r:
+      o dano sobe com a armadura do inimigo, e a armadura dele se desgasta mais. Mesma infusão
+      da Claymore, com 2 §eMachados do Vazio§r.
+    tasks:
+      - get: WitchingGadgets:item.WG_PrimordialAxe
+    rewards:
+      - loot: raro
+
+  - id: afinidades_primordiais
+    title: "Afinidades Primais"
+    type: info
+    deps: [armas_primordiais]
+    icon: WitchingGadgets:item.WG_PrimordialHammer
+    desc: |
+      Armas e armaduras primordiais trocam de §eafinidade primal§r (armadura: Shift + clique
+      direito):
+      §e• Armas —§r Aer: acerta vários; Terra: resistência ao bloquear; Ignis: fogo e cinzas;
+      Aqua: dissolução que dá essência cristalizada; Ordo: muito mais XP; Perditio: fraqueza e
+      fome.
+      §e• Armadura —§r Aer: devolve projéteis; Terra: proteção contra perfuração; Ignis: fogo e
+      explosões; Aqua: cura venenos/cegueira/wither/náusea; Ordo: reduz efeitos de Warp;
+      Perditio: cega e lentifica quem te bate.
+    tasks:
+      - check
+    rewards:
+      - xp: 3
+
+  - id: armadura_primordial
+    title: "Armadura Primordial"
+    type: milestone
+    deps: [armas_primordiais]
+    icon: WitchingGadgets:item.WG_PrimordialChest
+    banner: "Armadura Primordial"
+    subtitle: "Preparando o conflito com o Vazio"
+    desc: |
+      A proteção definitiva do taumaturgo: bloqueia muito dano sozinha, aceita reforços rúnicos
+      e Óculos da Descoberta/máscaras como a Armadura de Fortaleza. §c(A pesquisa dá 25 de
+      Warp.)§r
+
+      Cada peça é uma infusão (instabilidade 10) com §eBloco de Metal do Vazio§r no centro e,
+      em volta, §e3 Pérolas Primordiais§r (devolvidas como Pérolas sem Poder), 4 Essências
+      Etéreas, 2 Amuletos Primais, 2 Metais do Vazio e a peça correspondente do §eTainted
+      Magic§r: Capacete, Peitoral e Calças da Fortaleza Sombria e as Botas do Andarilho do
+      Vazio.
+
+      Haja Pérola Primordial... mas olha só para você agora, Herói!
+    tasks:
+      - get: [WitchingGadgets:item.WG_PrimordialHelm, WitchingGadgets:item.WG_PrimordialChest, WitchingGadgets:item.WG_PrimordialLegs, WitchingGadgets:item.WG_PrimordialBoots]
+    rewards:
+      - xp: 12
+      - kit: {name: "Kit do Ferreiro Primordial", items: ["Thaumcraft:ItemResource:16 x8", "Thaumcraft:ItemShard:6 x16", "Thaumcraft:ItemResource:15 x2", "minecraft:nether_star"]}
+      - loot: epico
+
+  - id: mestre_wg
+    title: "Alfaiate do Abismo"
+    type: milestone
+    deps: [armadura_primordial, terraformador, alto_forno_infernal, bolsa_vazio, manto_espectral]
+    icon: WitchingGadgets:item.WG_PrimordialHelm
+    banner: "Alfaiate do Abismo"
+    subtitle: "Do fio ao Primordial"
+    desc: |
+      Começou com quatro linhas numa roca de fiar. Terminou com uma armadura forjada de Pérolas
+      Primordiais, um reformador de biomas e um alto-forno de chama infernal. Isso é que é
+      evolução!
+
+      O Volume do Alfaiate Arcano está completo. O equipamento Primordial é uma das melhores
+      cartas para o §dSelo Arcano§r — só cuide do Warp acumulado (o Fogão de Sauna e o
+      Rosehip Syrup do Thaumic Bases ajudam).
+    tasks:
+      - check
+    rewards:
+      - xp: 12
+      - kit: {name: "Baú do Alfaiate do Abismo", items: ["WitchingGadgets:item.WG_Material:5 x8", "WitchingGadgets:item.WG_Material:3 x8", "Thaumcraft:ItemResource:16 x8", "Thaumcraft:ItemShard:6 x8"]}
+      - loot: epico

@@ -173,6 +173,23 @@ public class AkashaDump {
         return null;
     }
 
+    private static final java.util.Map<String, java.util.List<Integer>> EXTRA = new java.util.HashMap<>();
+
+    static {
+        String f = System.getProperty("akashadump.extra");
+        if (f != null) {
+            try {
+                for (String line : Files.readAllLines(new File(f).toPath(), StandardCharsets.UTF_8)) {
+                    int i = line.lastIndexOf(' ');
+                    if (i <= 0) continue;
+                    EXTRA.computeIfAbsent(line.substring(0, i), k -> new ArrayList<>()).add(Integer.parseInt(line.substring(i + 1).trim()));
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
     private List<ItemStack> subItems(Item item) {
         List<ItemStack> out = new ArrayList<>();
         Set<String> seen = new HashSet<>();
@@ -181,6 +198,12 @@ public class AkashaDump {
             for (CreativeTabs t : item.getCreativeTabs()) tabs.add(t);
         } catch (Throwable ignored) {}
         if (tabs.isEmpty()) tabs.add(null);
+        // Some mods (Electrical Age, parts of IE) only list variants for one specific tab
+        // object: try every tab for items with subtypes.
+        if (item.getHasSubtypes()) {
+            for (CreativeTabs t : CreativeTabs.creativeTabArray) if (t != null && !tabs.contains(t)) tabs.add(t);
+            if (!tabs.contains(null)) tabs.add(null);
+        }
         for (CreativeTabs tab : tabs) {
             List<ItemStack> l = new ArrayList<>();
             try {
@@ -192,6 +215,14 @@ public class AkashaDump {
                 if (s == null || s.getItem() == null) continue;
                 String key = regName(s.getItem()) + "@" + s.getItemDamage() + "@" + s.stackTagCompound;
                 if (seen.add(key)) out.add(s);
+            }
+        }
+        // Variants attested by recipes but not listed by getSubItems (akashadump.extra file).
+        java.util.List<Integer> extra = EXTRA.get(regName(item));
+        if (extra != null) {
+            for (int meta : extra) {
+                String key = regName(item) + "@" + meta + "@null";
+                if (seen.add(key)) out.add(new ItemStack(item, 1, meta));
             }
         }
         return out;
