@@ -1030,35 +1030,6 @@ quests:
       - xp: 4
       - item: industrialupgrade:alloysingot:5 x4
 
-  - id: cabos_extremos
-    title: "Cabos Perfeito, Universe, Difrativo e Infinito"
-    type: optional
-    deps: [cabos_altos]
-    icon: industrialupgrade:cable:10
-    desc: |
-      Para os painéis de cima: §ePerfeito§r (537 milhões de EU/t, Fótons e Lingote de Fóton),
-      §eUniverse§r (8,6 bilhões), §eDifrativo§r (440 bilhões, com Circuito Quântico) e §eInfinito§r
-      (1,76 trilhão de EU/t, com Circuitos Espectrais e Vanádio-Alumínio denso). Faça qualquer um.
-    tasks:
-      - one_of: [industrialupgrade:cable:7, industrialupgrade:cable:8, industrialupgrade:cable:9, industrialupgrade:cable:10]
-    rewards:
-      - loot: incomum
-
-  - id: transformadores_finais
-    title: "Transformadores UMH até HEEV"
-    type: optional
-    deps: [cristal_energia_melhorado, cabos_altos]
-    deps_hidden: [iu_avancado:transformador_uev]
-    icon: industrialupgrade:IUTransformer:6
-    desc: |
-      Cada transformador seguinte leva o anterior + 2 cabos do tier certo + um circuito + um §eCristal
-      de Energia Melhorado§r: §eUMH§r (Cabos Míticos), §eUMEV§r (Quânticos), §eUHEV§r (Fotônicos,
-      Circuito Espectral) e §eHEEV§r (de Nêutron), este último no tier 11. Faça qualquer um.
-    tasks:
-      - one_of: [industrialupgrade:IUTransformer:3, industrialupgrade:IUTransformer:4, industrialupgrade:IUTransformer:5, industrialupgrade:IUTransformer:6]
-    rewards:
-      - loot: incomum
-
   # ======================================================================
   # FASE 8 — ARSENAL ESPECTRAL
   # ======================================================================
@@ -1780,3 +1751,329 @@ quests:
       - kit: {name: "Legado das Melhorias", items: [industrialupgrade:ItemCore:13, industrialupgrade:QuantumItems5 x8, industrialupgrade:QuantumItems3 x4, industrialupgrade:itemBatLamaCrystal:26 x2, industrialupgrade:neutroniumingot x4]}
       - loot: [epico x2, lendario]
       - command: "/effect @p 1 2400 2"
+
+  # ======================================================================
+  # CATÁLOGO — OS OITO TIPOS DE MATÉRIA SÓLIDA
+  # ======================================================================
+  - id: materia_ar
+    title: "Matéria do Ar"
+    type: optional
+    deps: [gerador_materia_solida]
+    icon: industrialupgrade:matter:7
+    desc: |
+      O gerador deste tipo leva, além do Transformador Molecular e dos 2 Núcleos Protônicos,
+      Placas de Cobalto e Invólucros de Electrum e de Irídio. Cada 50 milhões de EU rendem uma §eMatéria do Ar§r.
+      No Transformador Molecular ela vira a §eLente do Ar§r (painel 150% acima de Y 130). Mostre o gerador e uma matéria.
+    tasks:
+      - get: [industrialupgrade:BlockSolidMatter:0, industrialupgrade:matter:7]
+    rewards:
+      - loot: incomum
+
+  - id: materia_agua
+    title: "Matéria da Água"
+    type: optional
+    deps: [gerador_materia_solida]
+    icon: industrialupgrade:matter:2
+    desc: |
+      O gerador deste tipo leva, além do Transformador Molecular e dos 2 Núcleos Protônicos,
+      Placas de Platina e Invólucros de Magnésio e de Cobalto. Cada 50 milhões de EU rendem uma §eMatéria da Água§r.
+      No Transformador Molecular ela vira a §eLente da Chuva§r (painel 150% na chuva). Mostre o gerador e uma matéria.
+    tasks:
+      - get: [industrialupgrade:BlockSolidMatter:1, industrialupgrade:matter:2]
+    rewards:
+      - loot: incomum
+
+  - id: materia_terra
+    title: "Matéria da Terra"
+    type: optional
+    deps: [gerador_materia_solida]
+    icon: industrialupgrade:matter:5
+    desc: |
+      O gerador deste tipo leva, além do Transformador Molecular e dos 2 Núcleos Protônicos,
+      Placas Densas de Alclad e Invólucros de Cromo e de Michalov. Cada 50 milhões de EU rendem uma §eMatéria da Terra§r.
+      No Transformador Molecular ela vira a §eLente da Terra§r (painel 150% abaixo de Y 30). Mostre o gerador e uma matéria.
+    tasks:
+      - get: [industrialupgrade:BlockSolidMatter:2, industrialupgrade:matter:5]
+    rewards:
+      - loot: incomum
+
+  - id: materia_ender
+    title: "Matéria do Ender"
+    type: optional
+    deps: [gerador_materia_solida]
+    icon: industrialupgrade:matter:6
+    desc: |
+      O gerador deste tipo leva, além do Transformador Molecular e dos 2 Núcleos Protônicos,
+      Placas Densas de Duralumínio e Invólucros de Caravky e de Vanádio. Cada 50 milhões de EU rendem uma §eMatéria do Ender§r.
+      No Transformador Molecular ela vira a §eLente do Ender§r (painel que funciona no End). Mostre o gerador e uma matéria.
+    tasks:
+      - get: [industrialupgrade:BlockSolidMatter:3, industrialupgrade:matter:6]
+    rewards:
+      - loot: incomum
+
+  - id: materia_comum
+    title: "Matéria Sólida Comum"
+    type: optional
+    deps: [gerador_materia_solida]
+    icon: industrialupgrade:matter:0
+    desc: |
+      O gerador deste tipo leva, além do Transformador Molecular e dos 2 Núcleos Protônicos,
+      Placas Densas de Manganês e Invólucros de Espinélio e de Alumínio. Cada 50 milhões de EU rendem uma §eMatéria Sólida Comum§r.
+      No Transformador Molecular ela vira o principal "combustível" do §eTransformador de Matéria Sólida§r (esta não vira lente). Mostre o gerador e uma matéria.
+    tasks:
+      - get: [industrialupgrade:BlockSolidMatter:4, industrialupgrade:matter:0]
+    rewards:
+      - loot: incomum
+
+  - id: materia_nether
+    title: "Matéria do Nether"
+    type: optional
+    deps: [gerador_materia_solida]
+    icon: industrialupgrade:matter:3
+    desc: |
+      O gerador deste tipo leva, além do Transformador Molecular e dos 2 Núcleos Protônicos,
+      Placas Densas de Titânio e Invólucros de Invar e de Tungstênio. Cada 50 milhões de EU rendem uma §eMatéria do Nether§r.
+      No Transformador Molecular ela vira a §eLente do Nether§r (painel que funciona no Nether). Mostre o gerador e uma matéria.
+    tasks:
+      - get: [industrialupgrade:BlockSolidMatter:5, industrialupgrade:matter:3]
+    rewards:
+      - loot: incomum
+
+  - id: materia_noite
+    title: "Matéria da Noite"
+    type: optional
+    deps: [gerador_materia_solida]
+    icon: industrialupgrade:matter:4
+    desc: |
+      O gerador deste tipo leva, além do Transformador Molecular e dos 2 Núcleos Protônicos,
+      Placas Densas de Latão Vermelho e Invólucros de Cromo e de Manganês. Cada 50 milhões de EU rendem uma §eMatéria da Noite§r.
+      No Transformador Molecular ela vira a §eLente da Noite§r (painel noturno e o módulo Segundo Sol). Mostre o gerador e uma matéria.
+    tasks:
+      - get: [industrialupgrade:BlockSolidMatter:6, industrialupgrade:matter:4]
+    rewards:
+      - loot: incomum
+
+  - id: materia_sol
+    title: "Matéria do Sol"
+    type: optional
+    deps: [gerador_materia_solida]
+    icon: industrialupgrade:matter:1
+    desc: |
+      O gerador deste tipo leva, além do Transformador Molecular e dos 2 Núcleos Protônicos,
+      Placas Densas de Alumel e Invólucros de Cobalto e de Vanádio. Cada 50 milhões de EU rendem uma §eMatéria do Sol§r.
+      No Transformador Molecular ela vira a §eLente do Sol§r (painel 150% só de dia). Mostre o gerador e uma matéria.
+    tasks:
+      - get: [industrialupgrade:BlockSolidMatter:7, industrialupgrade:matter:1]
+    rewards:
+      - loot: incomum
+
+
+  # ======================================================================
+  # EXTRAS DO ENDGAME
+  # ======================================================================
+  - id: berquelio
+    title: "Berquélio"
+    type: optional
+    deps: [californio]
+    icon: industrialupgrade:radiationresources:6
+    desc: |
+      §eCalifórnio + Célula de Hélio§r no Reator de Fusão = §eGema de Berquélio§r (18%). Mostre uma.
+    tasks:
+      - get: industrialupgrade:radiationresources:6
+    rewards:
+      - loot: incomum
+
+  - id: einstenio
+    title: "Einstênio"
+    type: optional
+    deps: [berquelio]
+    icon: industrialupgrade:radiationresources:7
+    desc: |
+      §eBerquélio + Célula de Hélio§r = §eGema de Einstênio§r (16%). Mais um passo e chega o
+      Mendelévio.
+    tasks:
+      - get: industrialupgrade:radiationresources:7
+    rewards:
+      - loot: incomum
+
+  - id: plutonio_fusao
+    title: "Plutônio de Fusão"
+    type: optional
+    deps: [reator_fusao]
+    icon: IC2:itemPlutonium
+    desc: |
+      §eGema de Netúnio + Tório§r no Reator de Fusão = §ePlutônio§r (14%). Prótons sem esperar o
+      reator do IC2 esgotar barras!
+    tasks:
+      - get: IC2:itemPlutonium x4
+    rewards:
+      - loot: incomum
+
+  - id: barras_leves
+    title: "Barras de Amerício, Netúnio e Cúrio"
+    type: optional
+    deps: [boas_vindas_iii]
+    deps_hidden: [iu_base:minerios_radioativos]
+    icon: industrialupgrade:reactoramericiumSimple:1
+    desc: |
+      As gemas dos minérios radioativos do Volume I viram barras na Máquina de Conservas Sólidas
+      (com Vareta de Combustível vazia). Pela config: Amerício e Netúnio esquentam pouco e geram
+      pouco; o Cúrio já esquenta e gera mais. Faça qualquer uma.
+    tasks:
+      - one_of: [industrialupgrade:reactoramericiumSimple:*, industrialupgrade:reactorneptuniumSimple:*, industrialupgrade:reactorcuriumSimple:*]
+    rewards:
+      - loot: incomum
+
+  - id: transformador_umh
+    title: "Transformador UMH"
+    type: normal
+    deps: [cristal_energia_melhorado]
+    deps_hidden: [iu_avancado:transformador_uev, iu_avancado:cabo_mitico]
+    icon: industrialupgrade:IUTransformer:3
+    desc: |
+      O UEV + 2 Cabos Míticos + Circuito Quântico + Cristal de Energia Melhorado = §eUMH-Transformer§r
+      (tier 8). É ele que conversa com o MFSU Bárion.
+    tasks:
+      - get: industrialupgrade:IUTransformer:3
+    rewards:
+      - xp: 4
+      - item: industrialupgrade:cable:3 x4
+
+  - id: transformador_heev
+    title: "Transformador HEEV"
+    type: optional
+    deps: [transformador_umh, cabos_altos]
+    icon: industrialupgrade:IUTransformer:6
+    desc: |
+      UMH → §eUMEV§r (Cabos Quânticos) → §eUHEV§r (Cabos Fotônicos, Circuito Espectral) → §eHEEV§r
+      (Cabos de Nêutron, Circuito Espectral), cada um com um Cristal de Energia Melhorado. O HEEV
+      trabalha no tier 11, o mesmo do MFSU Quark.
+    tasks:
+      - get: industrialupgrade:IUTransformer:6
+    rewards:
+      - loot: epico
+
+  - id: cabo_universe
+    title: "Cabo Universe"
+    type: optional
+    deps: [cabos_altos]
+    icon: industrialupgrade:cable:8
+    desc: |
+      Cabos Perfeitos (com Fótons e Lingote de Fóton) → §eCabo Universe§r (3 Lingotes de Fóton entre
+      6 Cabos Perfeitos): 8,6 bilhões de EU/t. Mostre 2.
+    tasks:
+      - get: industrialupgrade:cable:8 x2
+    rewards:
+      - loot: incomum
+
+  - id: cabo_infinito
+    title: "Cabo Infinito"
+    type: optional
+    deps: [cabo_universe]
+    icon: industrialupgrade:cable:10
+    desc: |
+      6 Cabos Universe + 2 Lingotes de Fóton + Circuito Quântico = §eCabo Difrativo§r; 6 Difrativos +
+      2 Circuitos Espectrais + Vanádio-Alumínio denso = §eCabo Infinito§r: 1,76 trilhão de EU/t. O
+      Painel Quark nunca vai entupir.
+    tasks:
+      - get: industrialupgrade:cable:10
+    rewards:
+      - loot: epico
+
+  - id: eficiencia_v
+    title: "Eficiência V"
+    type: optional
+    deps: [modulos_pedreira, nucleo_hadron]
+    icon: industrialupgrade:module9:5
+    desc: |
+      A escada de Eficiência da pedreira: I (Overclocker Avançado + Núcleos Híbridos), II (Núcleos
+      Perfeitos), III (Núcleos Singulares), IV (Núcleos Fotônicos) e §eV§r (4 Módulos IV + 4 Núcleos
+      Hádron + Irídio Comprimido Melhorado). No V, a pedreira gasta 25% menos.
+    tasks:
+      - get: industrialupgrade:module9:5
+    rewards:
+      - loot: epico
+
+  - id: sorte_iii
+    title: "Sorte III"
+    type: optional
+    deps: [modulos_pedreira]
+    icon: industrialupgrade:module9:8
+    desc: |
+      Sorte I (Núcleos Espectrais + Fótons + Circuito Espectral) → II → §eIII§r (com Núcleos
+      Protônicos e Irídio Comprimido Melhorado). Cada nível multiplica os cristais e gemas por
+      acerto.
+    tasks:
+      - get: industrialupgrade:module9:8
+    rewards:
+      - loot: epico
+
+  - id: regiao_7x7
+    title: "Região 7×7"
+    type: optional
+    deps: [modulos_pedreira]
+    icon: industrialupgrade:module9:11
+    desc: |
+      Região 3×3 (Núcleos Quânticos + Fótons) → 5×5 → §e7×7§r (Lingotes de Fóton e Circuitos
+      Espectrais). Mais "blocos" por operação — e o custo sobe junto. Combine com Eficiência.
+    tasks:
+      - get: industrialupgrade:module9:11
+    rewards:
+      - loot: epico
+
+  - id: fundir_minerios
+    title: "Módulo: Fundir Minérios"
+    type: optional
+    deps: [modulos_pedreira]
+    icon: industrialupgrade:module9
+    desc: |
+      Circuito Quântico + placas densas de Prata, Electrum, Latão Vermelho e Alclad = §eModule:
+      Smelting ores§r. Com ele, a Pedreira entrega lingotes direto, sem passar pela fornalha.
+    tasks:
+      - get: industrialupgrade:module9
+    rewards:
+      - loot: incomum
+
+  - id: modulos_cacador
+    title: "Módulos do Caçador"
+    type: optional
+    deps: [modulo_cacador]
+    icon: industrialupgrade:spawner_module
+    desc: |
+      Para o Caçador Automático: §eSaque I–III§r (o I sai do Módulo de Sorte I da pedreira com
+      Nicromo denso), §eVelocidade§r, §eExperiência +25% / +50%§r (Garrafas de Experiência) e §e2 ou
+      3 Mobs§r (Módulos de Caçador de Mob fundidos no Transformador Molecular Avançado). Faça
+      qualquer um.
+    tasks:
+      - one_of: [industrialupgrade:spawner_module, industrialupgrade:spawner_module:1, industrialupgrade:spawner_module:2, industrialupgrade:spawner_module:3, industrialupgrade:spawner_module:4, industrialupgrade:spawner_module:5, industrialupgrade:spawner_module:6, industrialupgrade:spawner_module:7]
+    rewards:
+      - loot: incomum
+
+  - id: modulos_painel_iii
+    title: "Módulos de Painel III"
+    type: optional
+    deps: [boas_vindas_iii]
+    deps_hidden: [iu_avancado:modulo_dia_ii]
+    icon: industrialupgrade:genmodule1
+    desc: |
+      2 Módulos II no Transformador Molecular Avançado (10 milhões de EU) = §eMódulo III§r de
+      Geração Diurna, Noturna, Armazenamento ou Saída — o máximo que um painel aceita. Faça
+      qualquer um.
+    tasks:
+      - one_of: [industrialupgrade:genmodule1, industrialupgrade:gennightmodule1, industrialupgrade:storagemodule1, industrialupgrade:outputmodule1]
+    rewards:
+      - loot: epico
+
+  - id: recarga_sem_fio
+    title: "Recarga Instantânea Sem Fio"
+    type: optional
+    deps: [modulo_carregar_itens]
+    icon: industrialupgrade:module7:5
+    desc: |
+      Módulo de Carregar Itens + Módulo Sem Fio = §eInstant Wireless Armor/Tool Charging§r (e as
+      versões RF). Ponha no armazenamento do IU ligado sem fio: Shift + clique direito nele
+      recarrega na hora a sua armadura ou ferramentas, gastando a energia do bloco.
+    tasks:
+      - one_of: [industrialupgrade:module7:5, industrialupgrade:module7:6, industrialupgrade:module7:7, industrialupgrade:module7:8]
+    rewards:
+      - loot: incomum
