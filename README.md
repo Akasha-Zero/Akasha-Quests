@@ -42,6 +42,19 @@ operador pode rodar `/bq_admin default load`.
 * `DefaultQuests/` — o banco de quests (formato multi-arquivo do BQ GTNH).
 * `DefaultLoot.json` — os grupos dos Baús de Saque (Comum → Lendário). É lido apenas na
   primeira carga de um mundo; mundos existentes mantêm o `QuestLoot.json` deles.
+* `saved_quests/AkashaQuests.json` — o mesmo livro em arquivo único (22 MB), para carregar por comando.
+
+### Carregar por comando (`saved_quests`)
+
+1. Copie `dist/config/betterquesting/saved_quests/AkashaQuests.json` para
+   `config/betterquesting/saved_quests/` do servidor.
+2. Como operador, rode `/bq_admin default load AkashaQuests` — substitui o banco de quests do
+   mundo atual (o progresso é mantido, pois os UUIDs são fixos).
+3. Opcional: `/bq_admin default set AkashaQuests` o grava como `DefaultQuests.json` dos mundos
+   novos. O BQ só usa esse arquivo se a pasta `DefaultQuests/` não existir.
+
+Regenere com `python3 tools/bqgen/export_saved.py` após um `build` (`--folder` gera também a
+versão multi-arquivo `saved_quests/AkashaQuests/`, que o BQ prefere quando existe).
 
 ## Estrutura do repositório
 
