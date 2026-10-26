@@ -32,11 +32,9 @@ quests:
     deps: [inicio_fossil]
     icon: fossil:fossil
     desc: |
-      O §eBloco de Fóssil§r aparece em camadas profundas e em desertos. Quando o quebrar, ele
-      solta o essencial da arqueologia.
+      O §eBloco de Fóssil§r aparece em camadas profundas e em desertos. Quando o quebrar, ele solta o essencial da arqueologia.
 
-      Leve uma picareta de ferro e tochas. Se encontrar uma dessas na superfície, é sinal de sítio
-      arqueológico por perto.
+      Leve uma picareta de ferro e tochas. Se encontrar uma dessas na superfície, é sinal de sítio arqueológico por perto. Explore com calma, Herói, e se não souber onde procurar, aperte R ou U no NEI. Boa escavação, hein!
     tasks:
       - get: fossil:fossil
     rewards:
@@ -49,11 +47,9 @@ quests:
     deps: [bloco_fossil]
     icon: fossil:bioFossil
     desc: |
-      Do bloco sai o §eBio-Fóssil§r: carne e osso petrificados com DNA dentro. Junte alguns,
-      porque você vai gastar dezenas.
+      Do bloco sai o §eBio-Fóssil§r: carne e osso petrificados com DNA dentro. Junte alguns, porque você vai gastar dezenas. A tarefa pede §e8§r.
 
-      Também aparece o §eFóssil Vegetal§r e o §eFóssil de Piche§r, úteis para outras linhas de
-      pesquisa.
+      Também aparece o §eFóssil Vegetal§r e o §eFóssil de Piche§r, úteis para outras linhas de pesquisa. Escave com paciência, Herói, e guarde tudo na mochila. Se tiver dúvida sobre os usos, o NEI (R/U) responde.
     tasks:
       - get: fossil:bioFossil x8
     rewards:
@@ -65,8 +61,8 @@ quests:
     deps: [bio_fossil]
     icon: fossil:plantFossil
     desc: |
-      Folhas e troncos petrificados. Servem para estudar a flora da era dos dinossauros e, claro,
-      para o Dinopedia dos botânicos.
+      Folhas e troncos petrificados! Servem para estudar a flora da era dos dinossauros e, claro, para o Dinopedia dos botânicos.
+      Junte §e2§r, Herói. Eles aparecem nas escavações, junto dos outros fósseis, então continue quebrando blocos de fóssil. Se quiser ver outros usos, aperte R ou U no NEI ou consulte o manual do mod. Bom achado, e boa leitura!
     tasks:
       - get: fossil:plantFossil x2
     rewards:
@@ -77,8 +73,8 @@ quests:
     deps: [bio_fossil]
     icon: fossil:tar_fossil
     desc: |
-      Quem fica preso no betume vira fóssil de piche. Procure em poços de piche (§etar§r) nas
-      partes profundas do mundo.
+      Quem fica preso no betume vira fóssil de piche. Procure em poços de piche (§etar§r) nas partes profundas do mundo.
+      Leve tochas e uma picareta, Herói, porque lá embaixo a visibilidade não ajuda. Se não achar de primeira, tente outra região ou aperte R ou U no NEI para ver como ele é obtido. Vai fundo na escavação!
     tasks:
       - get: fossil:tar_fossil
     rewards:
@@ -91,10 +87,9 @@ quests:
     deps: [bio_fossil]
     icon: fossil:relicScrap
     desc: |
-      Pequenos pedaços de metal antigo e peças de vaso aparecem nos mesmos sítios. A §eSucata de
-      Relíquia§r é item-chave: sem ela, nada de Analisador.
+      Pequenos pedaços de metal antigo e peças de vaso aparecem nos mesmos sítios. A §eSucata de Relíquia§r é item-chave: sem ela, nada de Analisador. A tarefa pede §e2§r.
 
-      Quebre blocos de fóssil e procure nas escavações.
+      Quebre blocos de fóssil e procure nas escavações. Paciência, Herói, que o laboratório depende dela. Se precisar rever onde obter, aperte R ou U no NEI. Bora escavar!
     tasks:
       - get: fossil:relicScrap x2
     rewards:
@@ -107,10 +102,9 @@ quests:
     deps: [bio_fossil]
     icon: fossil:dinoPedia
     desc: |
-      Livro mais um Bio-Fóssil. O §eDinopédia§r é seu guia de campo: clique em qualquer criatura e
-      ele conta tudo, da dieta à vida social.
+      Livro mais um Bio-Fóssil. O §eDinopédia§r é seu guia de campo: clique em qualquer criatura e ele conta tudo, da dieta à vida social.
 
-      Útil demais, Herói. Leve sempre no atalho.
+      Útil demais, Herói. Leve sempre no atalho. Se a receita não encaixar, aperte R ou U no NEI ou consulte o manual do mod. Boa leitura, e boas descobertas pré-históricas!
     tasks:
       - get: fossil:dinoPedia
     rewards:
@@ -123,11 +117,9 @@ quests:
     deps: [sucata_reliquia, bio_fossil]
     icon: fossil:analyzer
     desc: |
-      O §eAnalisador§r é o coração do laboratório: ferro em volta, uma Sucata de Relíquia e um
-      Bio-Fóssil (grade completa no NEI).
+      O §eAnalisador§r é o coração do laboratório: ferro em volta, uma Sucata de Relíquia e um Bio-Fóssil (grade completa no NEI).
 
-      Coloque fósseis nele para extrair §eDNA§r aleatório de criaturas pré-históricas. Quanto mais
-      fósseis, mais variedade.
+      Coloque fósseis nele para extrair §eDNA§r aleatório de criaturas pré-históricas. Quanto mais fósseis, mais variedade. Posicione-o num lugar fixo da sua base, Herói. Se a grade confundir, aperte R ou U no NEI e veja a receita!
     tasks:
       - get: fossil:analyzer
     rewards:
@@ -140,10 +132,9 @@ quests:
     deps: [bio_fossil]
     icon: fossil:fossilworkbench
     desc: |
-      Papel e uma bancada de madeira dão a §eMesa de Arqueologia§r. É nela que você restaura
-      ossos, vasos e armas quebradas antes de expor ou usar.
+      Papel e uma bancada de madeira dão a §eMesa de Arqueologia§r. É nela que você restaura ossos, vasos e armas quebradas antes de expor ou usar.
 
-      Fique de olho nos slots: ela só aceita fragmentos do mesmo tipo.
+      Fique de olho nos slots: ela só aceita fragmentos do mesmo tipo. Organize os achados antes de começar, Herói. Se a receita não encaixar, confira no NEI (R/U). Que a restauração seja linda!
     tasks:
       - get: fossil:fossilworkbench
     rewards:
@@ -156,10 +147,9 @@ quests:
     deps: [mesa_arqueologia]
     icon: fossil:sifter
     desc: |
-      Corda, tábuas e grades de ferro: a §ePeneira§r separa o tesouro da areia. Deixe cascalho e
-      areia nela e veja o que sai.
+      Corda, tábuas e grades de ferro: a §ePeneira§r separa o tesouro da areia. Deixe cascalho e areia nela e veja o que sai.
 
-      Vale o tempo, Herói: caquinhos, sucata e até gemas aparecem.
+      Vale o tempo, Herói: caquinhos, sucata e até gemas aparecem. É opcional, mas dá aquela sensação de garimpo. Se a receita não encaixar, aperte R ou U no NEI ou consulte o manual do mod. Bom garimpo!
     tasks:
       - get: fossil:sifter
     rewards:
@@ -172,8 +162,8 @@ quests:
     deps: [peneira]
     icon: fossil:strongGlass
     desc: |
-      Areia densa na fornalha dá o §eVidro Reforçado§r, usado na Cuba de Cultura e em vitrines de
-      museu.
+      Areia densa na fornalha dá o §eVidro Reforçado§r, usado na Cuba de Cultura e em vitrines de museu. A tarefa pede §e4§r.
+      É opcional, Herói, mas vai te poupar tempo mais adiante. Reúna a areia densa, acenda a fornalha e espere. Se a receita não encaixar, aperte R ou U no NEI ou consulte o manual do mod. Vai ficar bonito!
     tasks:
       - get: fossil:strongGlass x4
     rewards:
@@ -184,8 +174,8 @@ quests:
     deps: [mesa_arqueologia]
     icon: fossil:stoneTablet
     desc: |
-      Escrita antiga em pedra. A §eTábua de Pedra§r é rara, mas tem muita história. Se achar uma,
-      leia com o Dinopédia na mão.
+      Escrita antiga em pedra. A §eTábua de Pedra§r é rara, mas tem muita história. Se achar uma, leia com o Dinopédia na mão.
+      Continue explorando as escavações, Herói, que um dia ela aparece! Se quiser saber de onde vem, aperte R ou U no NEI ou consulte o manual do mod. Boa sorte, e muita paciência!
     tasks:
       - get: fossil:stoneTablet
     rewards:
@@ -197,8 +187,8 @@ quests:
     deps: [mesa_arqueologia]
     icon: fossil:potteryShard
     desc: |
-      Os arqueólogos choram quando um vaso quebra; você, Herói, vai juntar os cacos! Reúna §e6
-      Cacos de Cerâmica§r (7 para o maior vaso).
+      Os arqueólogos choram quando um vaso quebra; você, Herói, vai juntar os cacos! Reúna §e6 Cacos de Cerâmica§r (7 para o maior vaso).
+      Eles aparecem nos sítios de escavação, então continue quebrando blocos de fóssil e peneirando. Se tiver dúvida de onde achar, aperte R ou U no NEI ou consulte o manual do mod. Cacos reunidos, vaso garantido!
     tasks:
       - get: fossil:potteryShard x7
     rewards:
@@ -210,10 +200,9 @@ quests:
     deps: [cacos_ceramica]
     icon: fossil:vaseAmphora
     desc: |
-      Seis ou sete cacos, uma bancada e pronto: um §eVaso§r, que pode ser Ânfora, Kylix ou Volute.
-      Faça os três para completar o set.
+      Seis ou sete cacos, uma bancada e pronto: um §eVaso§r, que pode ser Ânfora, Kylix ou Volute. Faça os três para completar o set.
 
-      Restaurar vasos é terapêutico.
+      Restaurar vasos é terapêutico, Herói! Respire fundo, junte os cacos e vá montando. Se a receita não encaixar, aperte R ou U no NEI ou consulte o manual do mod. Que coleção linda vai ficar!
     tasks:
       - get: fossil:vaseAmphora
       - get: fossil:vaseKylix
@@ -228,8 +217,8 @@ quests:
     deps: [vasos_quebrados]
     icon: fossil:vaseAmphora:2
     desc: |
-      Vasos de §efigura vermelha§r, §efigura negra§r e §eporcelana§r valem mais que ouro para os
-      colecionadores. Confira no NEI como os melhorar.
+      Vasos de §efigura vermelha§r, §efigura negra§r e §eporcelana§r valem mais que ouro para os colecionadores. Confira no NEI como os melhorar.
+      É opcional, Herói, mas a coleção fica bem mais bonita. Comece pelos vasos que você já restaurou e aperte R ou U no NEI para ver o caminho. Capriche no acabamento, hein!
     tasks:
       - one_of: [fossil:vaseAmphora:2, fossil:vaseAmphora:3, fossil:vaseAmphora:4, fossil:vaseKylix:2, fossil:vaseKylix:3, fossil:vaseKylix:4, fossil:vaseVolute:2, fossil:vaseVolute:3, fossil:vaseVolute:4]
     rewards:
@@ -240,8 +229,8 @@ quests:
     deps: [mesa_arqueologia]
     icon: fossil:brokenAncientSword
     desc: |
-      Restos de uma espada de outra era. Junte a §eEspada Antiga Quebrada§r e o §eElmo Antigo
-      Quebrado§r para a restauração.
+      Restos de uma espada de outra era. Junte a §eEspada Antiga Quebrada§r e o §eElmo Antigo Quebrado§r para a restauração.
+      Eles aparecem nas escavações, Herói, então continue explorando os sítios. Depois a Mesa de Arqueologia faz o resto. Se não achar, aperte R ou U no NEI ou consulte o manual do mod. Boa escavação!
     tasks:
       - get: fossil:brokenAncientSword
       - get: fossil:brokenAncientHelmet
@@ -254,10 +243,9 @@ quests:
     deps: [espada_quebrada]
     icon: fossil:ancientSword
     desc: |
-      Restaurada, a §eEspada Antiga§r e o §eElmo Antigo§r voltam à vida. Bonitas e fortes,
-      melhores que muita coisa moderna.
+      Restaurada, a §eEspada Antiga§r e o §eElmo Antigo§r voltam à vida. Bonitas e fortes, melhores que muita coisa moderna.
 
-      Procure no NEI como completar a restauração.
+      Procure no NEI como completar a restauração, Herói (R/U). Leve as peças quebradas para a Mesa de Arqueologia e vá com calma. Que orgulho de ver a história renascer!
     tasks:
       - get: fossil:ancientSword
       - get: fossil:ancientHelmet
@@ -271,8 +259,8 @@ quests:
     deps: [mesa_arqueologia]
     icon: fossil:figurine:15
     desc: |
-      Entre os escombros aparecem estatuetas de madeira, de Steve, esqueleto, zumbi e outros, em
-      estados quebrado, danificado e impecável. A §eMisteriosa§r é a mais rara.
+      Entre os escombros aparecem estatuetas de madeira, de Steve, esqueleto, zumbi e outros, em estados quebrado, danificado e impecável. A §eMisteriosa§r é a mais rara.
+      É opcional, Herói, mas dá um charme incrível à coleção. Continue escavando e, se quiser ver todas as variações, aperte R ou U no NEI. Boa caça às estatuetas!
     tasks:
       - one_of: [fossil:figurine, fossil:figurine:1, fossil:figurine:2, fossil:figurine:3, fossil:figurine:4, fossil:figurine:5, fossil:figurine:6, fossil:figurine:7, fossil:figurine:8, fossil:figurine:9, fossil:figurine:10, fossil:figurine:11, fossil:figurine:12, fossil:figurine:13, fossil:figurine:14, fossil:figurine:15]
     rewards:
@@ -284,8 +272,8 @@ quests:
     deps: [dinopedia]
     icon: fossil:toothDagger
     desc: |
-      Um dente de predador vira lâmina. Veja a receita no NEI e deixe a adaga afiada para a
-      cozinha pré-histórica.
+      Um dente de predador vira lâmina. Veja a receita no NEI e deixe a adaga afiada para a cozinha pré-histórica.
+      É opcional, Herói, mas que charme! Reúna os itens indicados na receita, vá até a bancada e monte a Adaga de Dente. Se tiver dúvida, aperte R ou U no NEI ou consulte o manual do mod. Boa culinária jurássica!
     tasks:
       - get: fossil:toothDagger
     rewards:
@@ -296,8 +284,8 @@ quests:
     deps: [mesa_arqueologia]
     icon: fossil:skullBlock
     desc: |
-      Bonito, assustador, ótimo na parede do museu. O §eCrânio§r como bloco exibe seus achados.
-      Ele pode virar §eLanterna§r, §eCajado§r e até capacete.
+      Bonito, assustador, ótimo na parede do museu. O §eCrânio§r como bloco exibe seus achados. Ele pode virar §eLanterna§r, §eCajado§r e até capacete.
+      Posicione-o com carinho, Herói, e deixe o museu com cara de sítio arqueológico. Se a receita não encaixar, aperte R ou U no NEI ou consulte o manual do mod. Que arrepio bom!
     tasks:
       - get: fossil:skullBlock
     rewards:
@@ -310,6 +298,7 @@ quests:
     icon: fossil:skullLantern
     desc: |
       Crânio mais tocha: uma lanterna que dá medo e ilumina. Fica ótima na entrada da caverna.
+      É opcional, Herói, mas dá um toque bem temático à sua base ou ao museu. Se a receita não encaixar, aperte R ou U no NEI ou consulte o manual do mod. Coloque uma na entrada e espante o susto dos visitantes (ou chame mais!).
     tasks:
       - get: fossil:skullLantern
     rewards:
@@ -321,8 +310,8 @@ quests:
     deps: [bloco_cranio]
     icon: fossil:skullStick
     desc: |
-      Bloco de crânio e um graveto, só isso. Olha o Rex na ponta do bastão! Mais um enfeite que
-      arma.
+      Bloco de crânio e um graveto, só isso. Olha o Rex na ponta do bastão! Mais um enfeite que arma.
+      É opcional, Herói, mas divertidíssimo de ostentar. Se a receita não encaixar de primeira, aperte R ou U no NEI ou consulte o manual do mod. Vai por mim: ninguém vai esquecer a sua entrada triunfal!
     tasks:
       - get: fossil:skullStick
     rewards:
@@ -333,8 +322,8 @@ quests:
     deps: [bloco_cranio]
     icon: fossil:skullHelmet
     desc: |
-      Capacete de crânio, costelas, caneleiras e pés de osso: uma armadura pré-histórica completa.
-      Mais pelo visual do que pela proteção, mas muito divertida!
+      Capacete de crânio, costelas, caneleiras e pés de osso: uma armadura pré-histórica completa. Mais pelo visual do que pela proteção, mas muito divertida!
+      Reúna as quatro peças, Herói, e vista tudo para mostrar. Se alguma receita não encaixar, aperte R ou U no NEI ou consulte o manual do mod. Prepare-se para virar a estrela do museu!
     tasks:
       - get: fossil:skullHelmet
       - get: fossil:ribCage
@@ -350,8 +339,8 @@ quests:
     deps: [mesa_arqueologia]
     icon: fossil:skull:2
     desc: |
-      Crânios, patas, vértebras, garras e ossos de braço de dezenas de espécies. Junte o crânio do
-      §eTiranossauro§r, do §eTricerátopo§r e do §eEstegossauro§r para começar a coleção.
+      Junte o crânio do §eTiranossauro§r, do §eTricerátopo§r e do §eEstegossauro§r para começar a coleção. Crânios, patas, vértebras, garras e ossos de braço de dezenas de espécies existem por aí.
+      É opcional, Herói, mas o museu agradece. Se não souber como obter cada um, aperte R ou U no NEI ou consulte o manual do mod.
     tasks:
       - get: fossil:skull:2
       - get: fossil:skull
@@ -366,8 +355,8 @@ quests:
     deps: [ossos_dino]
     icon: fossil:skull:5
     desc: |
-      Os mares guardavam gigantes. Crânios de §eMosassauro§r, §ePlesiossauro§r e §ePteranodonte§r
-      completam a ala aquática e aérea do museu.
+      Os mares guardavam gigantes. Crânios de §eMosassauro§r, §ePlesiossauro§r e §ePteranodonte§r completam a ala aquática e aérea do museu.
+      É opcional, Herói, mas fica uma beleza na exposição. Se não souber como obter cada crânio, aperte R ou U no NEI ou consulte o manual do mod. Boa expedição, e cuidado com o fundo do mar!
     tasks:
       - get: fossil:skull:5
       - get: fossil:skull:4
@@ -381,8 +370,8 @@ quests:
     deps: [ossos_dino]
     icon: fossil:skull:30
     desc: |
-      Mamute, Smilodon, Quagga e Elasmotério: crânios de mamíferos da Era do Gelo. Lindos no
-      museu.
+      Mamute, Smilodon, Quagga e Elasmotério: crânios de mamíferos da Era do Gelo. Lindos no museu.
+      É opcional, Herói, mas dá um toque especial à exposição. Continue explorando e, se não souber como obter cada crânio, aperte R ou U no NEI ou consulte o manual do mod. Boa caçada, e capriche na vitrine!
     tasks:
       - get: fossil:skull:30
       - get: fossil:skull:31
@@ -397,10 +386,9 @@ quests:
     deps: [analisador]
     icon: fossil:dnaVelociraptor
     desc: |
-      Ponha Bio-Fósseis no Analisador. A cada rodada ele devolve um §eDNA§r aleatório (às vezes de
-      animais da fazenda, para sua alegria).
+      Ponha Bio-Fósseis no Analisador. A cada rodada ele devolve um §eDNA§r aleatório (às vezes de animais da fazenda, para sua alegria).
 
-      Quando conseguir qualquer um, está no caminho certo.
+      Quando conseguir qualquer um, está no caminho certo. Insista, Herói: é puro sorteio, então tenha paciência e bastante Bio-Fóssil. Se precisar relembrar o processo, aperte R ou U no NEI. Já pode comemorar o primeiro fio!
     tasks:
       - one_of: [fossil:dnaTriceratops, fossil:dnaVelociraptor, fossil:dnaTyrannosaurus, fossil:dnaStegosaurus, fossil:dnaDilophosaurus, fossil:dnaBrachiosaurus, fossil:dnaSpinosaurus, fossil:dnaCompsognathus, fossil:dnaAnkylosaurus, fossil:dnaPachycephalosaurus, fossil:dnaDeinonychus, fossil:dnaGallimimus, fossil:dnaAllosaurus, fossil:dnaCeratosaurus, fossil:dnaDryosaurus, fossil:dnaTherizinosaurus, fossil:dnaParasaurolophus, fossil:dnaMammoth, fossil:dnaSmilodon, fossil:dnaPig, fossil:dnaCow, fossil:dnaSheep, fossil:dnaHorse]
     rewards:
@@ -412,9 +400,8 @@ quests:
     deps: [dna_primeiro]
     icon: fossil:dnaCompsognathus
     desc: |
-      Os menores têm bons dentes e muito apetite. Reúna o DNA de §eCompsognathus§r,
-      §eVelociraptor§r, §eDeinonychus§r, §eDilofossauro§r, §eDryosaurus§r, §eGalimimo§r e
-      §ePaquicefalossauro§r.
+      Os menores têm bons dentes e muito apetite. Reúna o DNA de §eCompsognathus§r, §eVelociraptor§r, §eDeinonychus§r, §eDilofossauro§r, §eDryosaurus§r, §eGalimimo§r e §ePaquicefalossauro§r.
+      O Analisador entrega DNA aleatório, Herói, então tenha paciência e Bio-Fósseis de sobra. Se tiver dúvida do processo, aperte R ou U no NEI. Vai com tudo!
     tasks:
       - get: fossil:dnaCompsognathus
       - get: fossil:dnaVelociraptor
@@ -432,8 +419,8 @@ quests:
     deps: [dna_primeiro]
     icon: fossil:dnaBrachiosaurus
     desc: |
-      Os pesos-pesados da era Jurássica: §eTricerátopo§r, §eEstegossauro§r, §eBraquiossauro§r,
-      §eAnquilossauro§r e §eParassaurolofo§r.
+      Os pesos-pesados da era Jurássica: §eTricerátopo§r, §eEstegossauro§r, §eBraquiossauro§r, §eAnquilossauro§r e §eParassaurolofo§r.
+      Reúna o DNA de cada um, Herói. O Analisador entrega DNA aleatório, então tenha paciência e Bio-Fósseis de sobra para ir repetindo. Se quiser relembrar o processo, aperte R ou U no NEI ou consulte o Dinopédia. Os gigantes esperam por você!
     tasks:
       - get: fossil:dnaTriceratops
       - get: fossil:dnaStegosaurus
@@ -449,8 +436,8 @@ quests:
     deps: [dna_pequenos]
     icon: fossil:dnaTyrannosaurus
     desc: |
-      O topo da cadeia: §eTiranossauro§r, §eSpinosaurus§r, §eAllosaurus§r, §eCeratosaurus§r e
-      §eTherizinosaurus§r. Rendem em quantidade, então tenha muito Bio-Fóssil.
+      O topo da cadeia alimentar: §eTiranossauro§r, §eSpinosaurus§r, §eAllosaurus§r, §eCeratosaurus§r e §eTherizinosaurus§r. Rendem em quantidade, então tenha muito Bio-Fóssil.
+      O DNA sai aleatório do Analisador, Herói, e pode demorar para vir o que você quer. Insista com calma e, se precisar de ajuda, aperte R ou U no NEI ou leia o Dinopédia. Os predadores estão chamando!
     tasks:
       - get: fossil:dnaTyrannosaurus
       - get: fossil:dnaSpinosaurus
@@ -466,8 +453,8 @@ quests:
     deps: [dna_primeiro]
     icon: fossil:dnaMosasaurus
     desc: |
-      Répteis marinhos: §ePlesiossauro§r, §eMosassauro§r, §eLiopleurodonte§r, §eIcthyosaurus§r,
-      §eHenodus§r, §eSarcosuchus§r e §eNautilus§r.
+      Répteis marinhos para a sua coleção: §ePlesiossauro§r, §eMosassauro§r, §eLiopleurodonte§r, §eIcthyosaurus§r, §eHenodus§r, §eSarcosuchus§r e §eNautilus§r.
+      O DNA sai aleatório do Analisador, Herói, então vá analisando Bio-Fósseis até completar a lista. Se tiver dúvida do processo, aperte R ou U no NEI ou consulte o Dinopédia. Boa pesca, quer dizer, boa pesquisa!
     tasks:
       - get: fossil:dnaPlesiosaur
       - get: fossil:dnaMosasaurus
@@ -485,8 +472,8 @@ quests:
     deps: [dna_primeiro]
     icon: fossil:dnaCoelacanth
     desc: |
-      Peixes que viram fósseis: §eCelacanto§r, §ePeixe-jacaré§r e §eEsturjão§r. Fáceis de criar,
-      difíceis de achar.
+      Peixes que viram fósseis: §eCelacanto§r, §ePeixe-jacaré§r e §eEsturjão§r. Fáceis de criar, difíceis de achar.
+      Continue passando Bio-Fósseis pelo Analisador, Herói, porque o DNA sai aleatório e a sorte tem de ajudar. Se precisar relembrar o processo, aperte R ou U no NEI ou consulte o Dinopédia. Tenha paciência: o aquário agradece!
     tasks:
       - get: fossil:dnaCoelacanth
       - get: fossil:dnaAlligator_Gar
@@ -500,8 +487,8 @@ quests:
     deps: [dna_primeiro]
     icon: fossil:dnaPterosaur
     desc: |
-      Penas e asas: §ePteranodonte§r, §eConfuciusornis§r, §eDodo§r, §eGastornis§r, §eKelenken§r,
-      §eFororraco§r e §eTitanis§r.
+      Penas e asas: §ePteranodonte§r, §eConfuciusornis§r, §eDodo§r, §eGastornis§r, §eKelenken§r, §eFororraco§r e §eTitanis§r.
+      O Analisador entrega DNA aleatório, Herói, então vá repetindo com Bio-Fósseis até completar a lista. Se tiver dúvida do processo, aperte R ou U no NEI ou consulte o Dinopédia. Que o céu e o chão do museu se encham de penas!
     tasks:
       - get: fossil:dnaPterosaur
       - get: fossil:dnaConfuciusornis
@@ -519,8 +506,8 @@ quests:
     deps: [dna_primeiro]
     icon: fossil:dnaMammoth
     desc: |
-      Os peludos: §eMamute§r, §eSmilodon§r, §eQuagga§r e §eElasmotério§r. Para estes, em vez de
-      ovo você vai precisar de §eembriões§r.
+      Os peludos da Era do Gelo: §eMamute§r, §eSmilodon§r, §eQuagga§r e §eElasmotério§r. Para estes, em vez de ovo você vai precisar de §eembriões§r.
+      O DNA sai aleatório do Analisador, Herói, então tenha paciência e Bio-Fósseis de sobra. Se tiver dúvida do processo, aperte R ou U no NEI ou consulte o Dinopédia. Que frio na barriga, hein!
     tasks:
       - get: fossil:dnaMammoth
       - get: fossil:dnaSmilodon
@@ -536,8 +523,8 @@ quests:
     deps: [dna_primeiro]
     icon: fossil:dnaPig
     desc: |
-      Porco, vaca, ovelha, cavalo e galinha também aparecem no Analisador. São baratos para testar
-      a Cuba antes dos grandes.
+      Porco, vaca, ovelha, cavalo e galinha também aparecem no Analisador. São baratos para testar a Cuba antes dos grandes.
+      É opcional, Herói, mas bem útil para treinar sem gastar DNA raro. Ao receber, guarde bem e use quando for testar a Cuba de Cultura. Se tiver dúvida do processo, aperte R ou U no NEI ou consulte o Dinopédia. Bom treino!
     tasks:
       - get: fossil:dnaPig
       - get: fossil:dnaCow
@@ -553,10 +540,9 @@ quests:
     deps: [dna_primeiro, vidro_reforcado]
     icon: fossil:cultureVat
     desc: |
-      A §eCuba de Cultura§r é a incubadora do futuro: vidro, corante verde, balde de água e ferro
-      (grade no NEI).
+      A §eCuba de Cultura§r é a incubadora do futuro: vidro, corante verde, balde de água e ferro (grade no NEI).
 
-      Coloque o DNA, forneça os ingredientes e espere o embrião ou ovo. Pronto: o bicho está vivo!
+      Coloque o DNA, forneça os ingredientes e espere o embrião ou ovo. Pronto: o bicho está vivo! Quase mágico, né, Herói? Se tiver dúvida na receita ou nos ingredientes, aperte R ou U no NEI ou consulte o Dinopédia. Vai fundo!
     tasks:
       - get: fossil:cultureVat
     rewards:
@@ -569,8 +555,8 @@ quests:
     deps: [cuba_cultura, dna_fazenda]
     icon: fossil:embryoPig
     desc: |
-      Treino com animais conhecidos: cultive embriões de §eporco§r, §evaca§r, §eovelha§r e
-      §ecavalo§r para entender o processo.
+      Treino com animais conhecidos: cultive embriões de §eporco§r, §evaca§r, §eovelha§r e §ecavalo§r para entender o processo.
+      É opcional, Herói, mas muito bom para aprender a usar a Cuba antes de gastar DNA de dinossauro. Use o DNA da Fazenda e acompanhe o resultado. Se tiver dúvida, aperte R ou U no NEI ou consulte o Dinopédia. Bom treino!
     tasks:
       - get: fossil:embryoPig
       - get: fossil:embryoCow
@@ -585,9 +571,8 @@ quests:
     deps: [cuba_cultura, dna_pequenos]
     icon: fossil:eggVelociraptor
     desc: |
-      Cultive os ovos de §eVelociraptor§r, §eCompsognathus§r, §eDeinonychus§r, §eDilofossauro§r,
-      §eDryosaurus§r, §eGalimimo§r e §ePaquicefalossauro§r. Use o Dinopédia para descobrir a
-      dieta.
+      Cultive os ovos de §eVelociraptor§r, §eCompsognathus§r, §eDeinonychus§r, §eDilofossauro§r, §eDryosaurus§r, §eGalimimo§r e §ePaquicefalossauro§r. Use o Dinopédia para descobrir a dieta.
+      O DNA vai na Cuba de Cultura, Herói, e depois é só esperar. Se tiver dúvida do processo, aperte R ou U no NEI. Bem-vindos ao mundo, pequenos!
     tasks:
       - get: fossil:eggVelociraptor
       - get: fossil:eggCompsognathus
@@ -605,8 +590,8 @@ quests:
     deps: [cuba_cultura, dna_gigantes]
     icon: fossil:eggTriceratops
     desc: |
-      §eTricerátopo§r, §eEstegossauro§r, §eBraquiossauro§r, §eAnquilossauro§r e
-      §eParassaurolofo§r. Cuide para ter espaço suficiente antes de chocar.
+      §eTricerátopo§r, §eEstegossauro§r, §eBraquiossauro§r, §eAnquilossauro§r e §eParassaurolofo§r nascem de ovos que você cultiva na Cuba de Cultura. Cuide para ter espaço suficiente antes de chocar.
+      Os gigantes crescem muito, Herói! Prepare o recinto antes de chocar e consulte o Dinopédia para requisitos. Se tiver dúvida, aperte R ou U no NEI. Bem-vindos, grandões!
     tasks:
       - get: fossil:eggTriceratops
       - get: fossil:eggStegosaurus
@@ -623,10 +608,9 @@ quests:
     deps: [ovos_pequenos, dna_predadores]
     icon: fossil:eggTyrannosaurus
     desc: |
-      O sonho de todo paleontólogo: um ovo de §eTiranossauro§r. Também faça o de §eSpinosaurus§r,
-      §eAllosaurus§r e §eCeratosaurus§r se tiver DNA.
+      O sonho de todo paleontólogo: um ovo de §eTiranossauro§r. Também faça o de §eSpinosaurus§r, §eAllosaurus§r e §eCeratosaurus§r se tiver DNA.
 
-      §cPerigo:§r depois de chocar, ele é seu pet... e seu maior inimigo. Cerque!
+      §cPerigo:§r depois de chocar, ele é seu pet... e seu maior inimigo. Cerque! Prepare o recinto antes, Herói, e consulte o Dinopédia. Se tiver dúvida do processo, aperte R ou U no NEI. Boa sorte, domador!
     tasks:
       - get: fossil:eggTyrannosaurus
     rewards:
@@ -638,8 +622,8 @@ quests:
     deps: [ovo_rex]
     icon: fossil:eggSpinosaurus
     desc: |
-      Complete a ala dos caçadores: §eSpinosaurus§r, §eAllosaurus§r, §eCeratosaurus§r e
-      §eTherizinosaurus§r.
+      Complete a ala dos caçadores: §eSpinosaurus§r, §eAllosaurus§r, §eCeratosaurus§r e §eTherizinosaurus§r.
+      Os predadores dão trabalho, Herói: prepare o recinto antes de chocar e consulte o Dinopédia sobre a dieta. O DNA vai na Cuba de Cultura. Se tiver dúvida do processo, aperte R ou U no NEI. Boa sorte, e cuidado com as mordidas!
     tasks:
       - get: fossil:eggSpinosaurus
       - get: fossil:eggAllosaurus
@@ -654,10 +638,9 @@ quests:
     deps: [cuba_cultura, dna_marinhos]
     icon: fossil:eggMosasaurus
     desc: |
-      Répteis marinhos desovam em §esacos§r e ovos: §ePlesiossauro§r, §eMosassauro§r,
-      §eLiopleurodonte§r, §eIcthyosaurus§r, §eHenodus§r, §eSarcosuchus§r e §eNautilus§r.
+      Répteis marinhos desovam em §esacos§r e ovos: §ePlesiossauro§r, §eMosassauro§r, §eLiopleurodonte§r, §eIcthyosaurus§r, §eHenodus§r, §eSarcosuchus§r e §eNautilus§r.
 
-      Precisa de um lago grande. Veja a Dinopédia para os requisitos.
+      Precisa de um lago grande. Veja a Dinopédia para os requisitos, Herói. Se tiver dúvida do processo, aperte R ou U no NEI. Deixe a água pronta antes de soltar os bichinhos!
     tasks:
       - get: fossil:eggPlesiosaur
       - get: fossil:eggMosasaurus
@@ -676,6 +659,7 @@ quests:
     icon: fossil:eggCoelacanth
     desc: |
       Celacanto, peixe-jacaré e esturjão. Soltos em um tanque, populam sozinhos depois.
+      Só precisa de um bom tanque, Herói, e do DNA na Cuba de Cultura para começar. Depois deixe a natureza fazer o resto. Se tiver dúvida do processo ou da receita, aperte R ou U no NEI ou consulte o Dinopédia. O aquário vai ficar uma beleza!
     tasks:
       - get: fossil:eggCoelacanth
       - get: fossil:eggAlligator_Gar
@@ -690,6 +674,7 @@ quests:
     icon: fossil:eggPterosaur
     desc: |
       Um pterossauro no seu telhado! O ovo de §ePteranodonte§r exige cuidados. Use a Dinopédia.
+      Ele voa, Herói, então prepare um recinto firme e seguro antes de chocar. O DNA vai na Cuba de Cultura. Se tiver dúvida do processo, aperte R ou U no NEI. Não deixe a criatura fugir pelos céus e boa sorte com o seu novo pet!
     tasks:
       - get: fossil:eggPterosaur
     rewards:
@@ -701,8 +686,8 @@ quests:
     deps: [cuba_cultura, dna_aves]
     icon: fossil:eggCultivatedDodo
     desc: |
-      Aves de grande porte saem de §eovos cultivados§r: §eDodo§r, §eGastornis§r, §eKelenken§r,
-      §eFororraco§r, §eTitanis§r e §eConfuciusornis§r. Às vezes o Dodo vira o mascote do clube.
+      Aves de grande porte saem de §eovos cultivados§r: §eDodo§r, §eGastornis§r, §eKelenken§r, §eFororraco§r, §eTitanis§r e §eConfuciusornis§r. Às vezes o Dodo vira o mascote do clube.
+      O DNA vai na Cuba de Cultura, Herói. Cuide do espaço antes de chocar. Se tiver dúvida do processo, aperte R ou U no NEI ou consulte o Dinopédia. Bom cultivo!
     tasks:
       - get: fossil:eggCultivatedDodo
       - get: fossil:eggCultivatedGastornis
@@ -719,8 +704,8 @@ quests:
     deps: [cuba_cultura, dna_mamiferos]
     icon: fossil:embryoMammoth
     desc: |
-      Mamíferos crescem em útero. Cultive os embriões de §eMamute§r, §eSmilodon§r, §eQuagga§r e
-      §eElasmotério§r. Depois, precisam de uma fêmea receptora (confira no NEI e na Dinopédia).
+      Mamíferos crescem em útero. Cultive os embriões de §eMamute§r, §eSmilodon§r, §eQuagga§r e §eElasmotério§r. Depois, precisam de uma fêmea receptora (confira no NEI e na Dinopédia).
+      Faça com calma, Herói, e reúna o DNA necessário primeiro. Se tiver dúvida do processo, aperte R ou U no NEI. A Era do Gelo está voltando à vida!
     tasks:
       - get: fossil:embryoMammoth
       - get: fossil:embryoSmilodon
@@ -735,8 +720,8 @@ quests:
     deps: [dinopedia]
     icon: fossil:feederIdle
     desc: |
-      Dinossauros precisam comer! O §eComedouro§r recebe carne, peixe ou vegetais e alimenta os
-      bichos do recinto. Ferro, vidro, botão e balde (grade no NEI).
+      Dinossauros precisam comer! O §eComedouro§r recebe carne, peixe ou vegetais e alimenta os bichos do recinto. Ferro, vidro, botão e balde (grade no NEI).
+      Posicione-o dentro do recinto, Herói, para os bichos alcançarem, e consulte o Dinopédia sobre a dieta de cada um. Se a receita não encaixar, aperte R ou U no NEI. Bom apetite aos bichos!
     tasks:
       - get: fossil:feederIdle
     rewards:
@@ -749,8 +734,8 @@ quests:
     deps: [comedouro]
     icon: fossil:toyBall
     desc: |
-      Dinossauros felizes brincam! A §eBola§r vem em 16 cores. Chute para perto da criatura e veja
-      o show.
+      Dinossauros felizes brincam! A §eBola§r vem em 16 cores. Chute para perto da criatura e veja o show.
+      É opcional, Herói, mas o bichinho agradece. Escolha uma cor bonita e leve para o recinto. Se a receita não encaixar, aperte R ou U no NEI ou consulte o Dinopédia para saber o que cada criatura gosta. Aproveite a brincadeira!
     tasks:
       - one_of: [fossil:toyBall, fossil:toyBall:1, fossil:toyBall:2, fossil:toyBall:3, fossil:toyBall:4, fossil:toyBall:5, fossil:toyBall:6, fossil:toyBall:7, fossil:toyBall:8, fossil:toyBall:9, fossil:toyBall:10, fossil:toyBall:11, fossil:toyBall:12, fossil:toyBall:13, fossil:toyBall:14, fossil:toyBall:15]
     rewards:
@@ -763,6 +748,7 @@ quests:
     icon: fossil:toyScratchingPost
     desc: |
       Para os felinos pré-históricos afiarem as garras (e para você manter a mobília inteira).
+      É opcional, Herói, mas deixa os bichos mais contentes. Coloque dentro do recinto, perto de onde os felinos andam. Se a receita não encaixar, aperte R ou U no NEI ou consulte o Dinopédia. Seus sofás agradecem, e o Smilodon também!
     tasks:
       - get: fossil:toyScratchingPost
     rewards:
@@ -774,8 +760,8 @@ quests:
     deps: [comedouro]
     icon: fossil:toyTetheredLog
     desc: |
-      Um tronco preso por corda: diversão garantida para herbívoros. Fabrique e coloque no
-      recinto.
+      Um tronco preso por corda: diversão garantida para herbívoros. Fabrique e coloque no recinto.
+      É opcional, Herói, mas dá um toque de carinho ao cativeiro. Escolha um lugar com espaço livre para o bicho brincar. Se a receita não encaixar, aperte R ou U no NEI ou consulte o Dinopédia. Os herbívoros vão adorar!
     tasks:
       - get: fossil:toyTetheredLog
     rewards:
@@ -787,8 +773,8 @@ quests:
     deps: [dinopedia]
     icon: fossil:whip
     desc: |
-      Corda e graveto: o §eChicote§r. Com ele você consegue direcionar a atenção de um dinossauro
-      domado. Fica ótimo com chapéu de aventureiro.
+      Corda e graveto: o §eChicote§r. Com ele você consegue direcionar a atenção de um dinossauro domado. Fica ótimo com chapéu de aventureiro.
+      É opcional, Herói, mas dá aquele ar de explorador. Se a receita não encaixar, aperte R ou U no NEI ou consulte o Dinopédia. Use com carinho e responsabilidade, tá? Ninguém merece bicho bravo!
     tasks:
       - get: fossil:whip
     rewards:
@@ -801,6 +787,7 @@ quests:
     icon: fossil:fossil_drum
     desc: |
       Um tambor de fósseis! Faz barulho e anima o recinto. Confira a receita no NEI.
+      É opcional, Herói, mas deixa o cativeiro bem mais animado. Reúna os itens indicados no NEI (R/U), faça o Tambor de Osso e coloque no recinto. Se tiver dúvida, consulte o Dinopédia ou o manual do mod. Bora fazer barulho com ritmo!
     tasks:
       - get: fossil:fossil_drum
     rewards:
@@ -812,8 +799,8 @@ quests:
     deps: [comedouro]
     icon: fossil:bubbleMachine
     desc: |
-      Ouro e água: uma máquina de bolhas que agrada aos filhotes e aos aquáticos. Fofo e inútil,
-      igual a todo bom enfeite.
+      Ouro e água: uma máquina de bolhas que agrada aos filhotes e aos aquáticos. Fofo e inútil, igual a todo bom enfeite.
+      É opcional, Herói, mas dá um toque de alegria ao recinto. Se a receita não encaixar, aperte R ou U no NEI ou consulte o Dinopédia. Instale perto dos bichos e aproveite a festa de bolhas!
     tasks:
       - get: fossil:bubbleMachine
     rewards:
@@ -825,8 +812,8 @@ quests:
     deps: [cuba_cultura]
     icon: fossil:cookedChickenSoup
     desc: |
-      A sopa que cura tudo. Misture os ingredientes (veja o NEI), cozinhe e prove. Uma tradição
-      entre os arqueólogos.
+      A sopa que cura tudo. Misture os ingredientes (veja o NEI), cozinhe e prove. Uma tradição entre os arqueólogos.
+      É opcional, Herói, mas aquece a alma depois de um dia inteiro de escavação. Reúna os ingredientes mostrados no NEI (R/U), leve ao forno e aproveite. Se tiver dúvida, consulte o manual do mod. Bom apetite!
     tasks:
       - get: fossil:cookedChickenSoup
     rewards:
@@ -839,9 +826,8 @@ quests:
     deps: [cuba_cultura]
     icon: fossil:cookedVelociraptor
     desc: |
-      Os dinossauros pequenos também rendem carne: §eVelociraptor§r, §eCompsognathus§r,
-      §eDeinonychus§r, §eDilofossauro§r, §eDryosaurus§r, §eGalimimo§r, §ePaquicefalossauro§r
-      assados na fornalha.
+      Os dinossauros pequenos também rendem carne: §eVelociraptor§r, §eCompsognathus§r, §eDeinonychus§r, §eDilofossauro§r, §eDryosaurus§r, §eGalimimo§r, §ePaquicefalossauro§r assados na fornalha.
+      É opcional, Herói, mas a coleção culinária fica completa. Se não souber como obter cada carne, aperte R ou U no NEI ou consulte o Dinopédia. Bom apetite! Vai com tudo!
     tasks:
       - get: fossil:cookedVelociraptor
       - get: fossil:cookedCompsognathus
@@ -859,8 +845,8 @@ quests:
     deps: [cuba_cultura]
     icon: fossil:cookedTriceratops
     desc: |
-      Cortes enormes de §eTricerátopo§r, §eEstegossauro§r, §eBraquiossauro§r, §eAnquilossauro§r e
-      §eParassaurolofo§r.
+      Cortes enormes de §eTricerátopo§r, §eEstegossauro§r, §eBraquiossauro§r, §eAnquilossauro§r e §eParassaurolofo§r assados na fornalha.
+      É opcional, Herói, mas é um banquete e tanto! Se não souber como obter cada carne, aperte R ou U no NEI ou consulte o Dinopédia. Cozinhe tudo com calma e aproveite o banquete dos gigantes!
     tasks:
       - get: fossil:cookedTriceratops
       - get: fossil:cookedStegosaurus
@@ -876,8 +862,8 @@ quests:
     deps: [cuba_cultura]
     icon: fossil:cookedTyrannosaurus
     desc: |
-      Para os mais corajosos: carne assada de §eTiranossauro§r, §eSpinosaurus§r, §eAllosaurus§r,
-      §eCeratosaurus§r e §eTherizinosaurus§r.
+      Para os mais corajosos: carne assada de §eTiranossauro§r, §eSpinosaurus§r, §eAllosaurus§r, §eCeratosaurus§r e §eTherizinosaurus§r.
+      É opcional, Herói, mas só para quem encara o desafio! Se não souber como obter cada carne, aperte R ou U no NEI ou consulte o Dinopédia. Cozinhe tudo na fornalha, com cuidado, e bom apetite!
     tasks:
       - get: fossil:cookedTyrannosaurus
       - get: fossil:cookedSpinosaurus
@@ -893,9 +879,8 @@ quests:
     deps: [cuba_cultura]
     icon: fossil:cookedMosasaurus
     desc: |
-      Frutos do mar pré-históricos: §eMosassauro§r, §ePlesiossauro§r, §eLiopleurodonte§r,
-      §eIcthyosaurus§r, §eHenodus§r, §eSarcosuchus§r, §eCelacanto§r, §ePeixe-jacaré§r e
-      §eEsturjão§r.
+      Frutos do mar pré-históricos: §eMosassauro§r, §ePlesiossauro§r, §eLiopleurodonte§r, §eIcthyosaurus§r, §eHenodus§r, §eSarcosuchus§r, §eCelacanto§r, §ePeixe-jacaré§r e §eEsturjão§r.
+      É opcional, Herói, mas é um banquete e tanto. Se não souber como obter cada carne, aperte R ou U no NEI ou consulte o Dinopédia. Bom apetite! Vai fundo! Mãos à obra e capriche, viu?
     tasks:
       - get: fossil:cookedMosasaurus
       - get: fossil:cookedPlesiosaur
@@ -915,8 +900,8 @@ quests:
     deps: [cuba_cultura]
     icon: fossil:cookedMammoth
     desc: |
-      Mamute, Smilodon, Quagga, Elasmotério, Dodo, Gastornis, Kelenken, Fororraco, Titanis,
-      Confuciusornis e Pteranodonte: um banquete completo para a era do gelo e das aves.
+      Mamute, Smilodon, Quagga, Elasmotério, Dodo, Gastornis, Kelenken, Fororraco, Titanis, Confuciusornis e Pteranodonte: um banquete completo para a era do gelo e das aves.
+      É opcional, Herói, mas uma beleza de coleção culinária. Se não souber como obter cada carne, aperte R ou U no NEI ou consulte o Dinopédia. Cozinhe tudo na fornalha e bom apetite!
     tasks:
       - get: fossil:cookedMammoth
       - get: fossil:cookedSmilodon
@@ -937,10 +922,9 @@ quests:
     deps: [fossil_piche]
     icon: fossil:tar_bucket
     desc: |
-      Poços de §ebetume§r escondem fósseis. Encha um balde de piche (mesa de balde, ou o que você
-      tiver) e use-o para escavar com segurança.
+      Poços de §ebetume§r escondem fósseis. Encha um balde de piche (mesa de balde, ou o que você tiver) e use-o para escavar com segurança.
 
-      §aDica:§r o piche é lento; leve mantimentos.
+      §aDica:§r o piche é lento; leve mantimentos. Vá com calma, Herói, e confira no NEI (R/U) como obter o balde certo. Se tiver dúvida, consulte o manual do mod. Boa escavação!
     tasks:
       - get: fossil:tar_bucket
     rewards:
@@ -953,8 +937,8 @@ quests:
     deps: [balde_piche]
     icon: fossil:tardrop
     desc: |
-      As gotas de piche pingam das criaturas de piche. Junte algumas para usar no Dinopédia e nas
-      receitas.
+      As gotas de piche pingam das criaturas de piche. Junte algumas para usar no Dinopédia e nas receitas.
+      É opcional, Herói, mas as gotas ajudam bastante em outras receitas. Procure as criaturas nos poços de piche e junte §e4§r. Se tiver dúvida de onde achar ou do uso, aperte R ou U no NEI ou consulte o Dinopédia. Vai com cuidado!
     tasks:
       - get: fossil:tardrop x4
     rewards:
@@ -967,6 +951,7 @@ quests:
     icon: fossil:tardrop
     desc: |
       O §eLodo de Piche§r nasce nos poços. Mate três e colete o que deixarem.
+      Cuidado onde pisa, Herói: esses bichinhos grudam em tudo e o piche é lento. Leve uma boa arma e uma armadura firme. Se tiver dúvida de onde achar, aperte R ou U no NEI ou consulte o Dinopédia. Derrote §e3 lodos§r e volte para me contar!
     tasks:
       - kill: {entity: "fossil.TarSlime", count: 3}
     rewards:
@@ -979,8 +964,8 @@ quests:
     deps: [cuba_cultura]
     icon: fossil:failuresaurusFlesh
     desc: |
-      Quando a Cuba dá errado, sai um §eFailuresaurus§r, uma lesma branca e dócil. Mate uma (sem
-      culpa!) e junte a carne.
+      Quando a Cuba dá errado, sai um §eFailuresaurus§r, uma lesma branca e dócil. Mate uma (sem culpa!) e junte a carne.
+      É opcional, Herói, e mais cômico do que perigoso. Se a Cuba falhar por algum motivo, o bicho aparece. Se tiver dúvida do processo, aperte R ou U no NEI ou consulte o Dinopédia. Paciência, e ânimo!
     tasks:
       - kill: {entity: "fossil.Failuresaurus", count: 1}
     rewards:
@@ -992,8 +977,8 @@ quests:
     deps: [bio_fossil]
     icon: fossil:amberOre
     desc: |
-      Mosquitos presos em resina há milhões de anos guardam DNA. O §eMinério de Âmbar§r aparece em
-      profundidades médias.
+      Mosquitos presos em resina há milhões de anos guardam DNA. O §eMinério de Âmbar§r aparece em profundidades médias.
+      Vá com picareta e tochas, Herói, e explore as cavernas. Se tiver dificuldade de achar, aperte R ou U no NEI para ver onde ele costuma gerar, ou consulte o Dinopédia. Que descoberta incrível te espera lá embaixo!
     tasks:
       - get: fossil:amberOre
     rewards:
@@ -1006,6 +991,7 @@ quests:
     icon: fossil:DominicanAmber
     desc: |
       O §eÂmbar Dominicano§r contém DNA muito bom. Lapide com cuidado e passe pelo Analisador.
+      Se você ainda não sabe o passo a passo, Herói, confira no NEI (R/U) ou no Dinopédia. Respire fundo, trabalhe com calma e tenha paciência com o processo. O DNA dos mosquitos pré-históricos vale cada minutinho. Vai fundo!
     tasks:
       - get: fossil:DominicanAmber
     rewards:
@@ -1018,10 +1004,9 @@ quests:
     deps: [bio_fossil]
     icon: fossil:scarabGem
     desc: |
-      Um brilho azul no bloco de fóssil! A §eGema de Escaravelho§r é rara e mágica. Procure em
-      blocos de fóssil de todos os cantos.
+      Um brilho azul no bloco de fóssil! A §eGema de Escaravelho§r é rara e mágica. Procure em blocos de fóssil de todos os cantos.
 
-      Com ela você faz ferramentas muito melhores que o ouro.
+      Com ela você faz ferramentas muito melhores que o ouro. Paciência, Herói: é uma gema rara e pode demorar. Se tiver dúvida de onde ela aparece, aperte R ou U no NEI. Boa sorte na caçada!
     tasks:
       - get: fossil:scarabGem
     rewards:
@@ -1033,8 +1018,8 @@ quests:
     deps: [gema_escaravelho]
     icon: fossil:scarabPickAxe
     desc: |
-      Pegue uma ferramenta de ouro ou diamante e uma gema: a §eFerramenta de Escaravelho§r é muito
-      poderosa. Faça pelo menos uma e depois a coleção toda.
+      Pegue uma ferramenta de ouro ou diamante e uma gema: a §eFerramenta de Escaravelho§r é muito poderosa. Faça pelo menos uma e depois a coleção toda.
+      Escolha a ferramenta que você mais usa, Herói, e comece por ela. Se a receita não encaixar, aperte R ou U no NEI ou consulte o Dinopédia. Que orgulho de ver você com equipamento tão bom!
     tasks:
       - one_of: [fossil:scarabAxe, fossil:scarabPickAxe, fossil:scarabSword, fossil:scarabHoe, fossil:scarabShovel]
     rewards:
@@ -1047,8 +1032,8 @@ quests:
     deps: [ambar_dominicano, gema_escaravelho]
     icon: fossil:AquaticScarabGem
     desc: |
-      Âmbar Dominicano mais Gema de Escaravelho: a §eGema Aquática§r. Confira no NEI e no
-      Dinopédia o que ela faz.
+      Âmbar Dominicano mais Gema de Escaravelho: a §eGema Aquática§r. Confira no NEI e no Dinopédia o que ela faz.
+      É opcional, Herói, mas guarde com carinho. Reúna os dois ingredientes, vá à bancada e monte a gema. Se a receita não encaixar, aperte R ou U no NEI ou consulte o manual do mod. Que combinação bonita, né?
     tasks:
       - get: fossil:AquaticScarabGem
     rewards:
@@ -1063,8 +1048,8 @@ quests:
     subtitle: "A Máquina do Tempo é sua"
     icon: fossil:timeMachine
     desc: |
-      Gemas de Escaravelho, Estrela do Nether, pérolas, ouro e obsidiana (grade no NEI) formam a
-      §eMáquina do Tempo§r. Craftar já é uma façanha, Herói!
+      Chegou o grande momento, Herói! Gemas de Escaravelho, Estrela do Nether, pérolas, ouro e obsidiana (grade completa no NEI) formam a §eMáquina do Tempo§r. Craftar já é uma façanha!
+      Reúna todos os materiais com calma antes de montar, porque vários deles são raros e vão demandar exploração. Se a grade confundir, aperte R ou U no NEI para conferir a receita, ou consulte o Dinopédia. Respire fundo, monte peça por peça e comemore quando ela ficar pronta. Eu estou muito orgulhosa de você!
     tasks:
       - get: fossil:timeMachine
     rewards:
@@ -1078,8 +1063,8 @@ quests:
     deps: [bio_fossil]
     icon: fossil:palaeorapheSapling
     desc: |
-      Uma palmeira de 100 milhões de anos! Plante a §eMuda de Palaeoraphe§r e colha tronco, folhas
-      e tábuas.
+      Uma palmeira de 100 milhões de anos! Plante a §eMuda de Palaeoraphe§r e colha tronco, folhas e tábuas.
+      É opcional, Herói, mas dá um toque pré-histórico ao seu jardim e rende madeira diferente para construir. Se não souber onde achar a muda, aperte R ou U no NEI ou consulte o manual do mod. Plante com carinho e aguarde a árvore crescer!
     tasks:
       - get: fossil:palaeorapheSapling
       - get: fossil:palaeorapheLog
@@ -1093,8 +1078,8 @@ quests:
     deps: [mesa_arqueologia]
     icon: fossil:ancientStone
     desc: |
-      Blocos decorativos de uma civilização perdida: §ePedra Antiga§r, §eMadeira Antiga§r, §eVidro
-      Antigo§r e variantes. Ótimos para construir seu templo.
+      Blocos decorativos de uma civilização perdida: §ePedra Antiga§r, §eMadeira Antiga§r, §eVidro Antigo§r e variantes. Ótimos para construir seu templo.
+      É opcional, Herói, mas deixa a base com aquele ar de ruína majestosa. Se não souber como obter cada bloco, aperte R ou U no NEI ou consulte o Dinopédia. Construa um templo digno de lenda!
     tasks:
       - get: fossil:ancientStone
       - get: fossil:ancientWood
@@ -1109,6 +1094,7 @@ quests:
     icon: fossil:volcanicRock
     desc: |
       Cinzas e tijolos vulcânicos para casas escuras e firmes. Confira a lista de blocos no NEI.
+      É opcional, Herói, mas dá uma pegada bem diferente às construções. Se não souber como obter cada bloco, aperte R ou U no NEI ou consulte o Dinopédia. Junte um pouco de cada para ver qual combina mais com a sua base!
     tasks:
       - get: fossil:volcanicAsh
       - get: fossil:volcanicBrick
@@ -1122,8 +1108,8 @@ quests:
     deps: [vulcanica]
     icon: fossil:obsidianSpikes
     desc: |
-      Um bloco perigoso: os §eEspinhos de Obsidiana§r causam dano a quem passar. Ótimo para
-      armadilhas.
+      Um bloco perigoso: os §eEspinhos de Obsidiana§r causam dano a quem passar. Ótimo para armadilhas.
+      É opcional, Herói, mas cuidado onde você posiciona, para não se espetar sem querer! Se a receita não encaixar, aperte R ou U no NEI ou consulte o Dinopédia. Instale com carinho e proteja a sua base com estilo.
     tasks:
       - get: fossil:obsidianSpikes
     rewards:
@@ -1135,8 +1121,8 @@ quests:
     deps: [bio_fossil]
     icon: fossil:permafrost
     desc: |
-      Gelo eterno guarda mamutes congelados. Procure em biomas gelados o §ePermafrost§r, a §ePedra
-      Gelada§r e a §eCarne Congelada§r.
+      Gelo eterno guarda mamutes congelados. Procure em biomas gelados o §ePermafrost§r, a §ePedra Gelada§r e a §eCarne Congelada§r.
+      Vá bem agasalhado, Herói, e leve tochas. É opcional, mas curioso para explorar. Se não souber onde ficam, aperte R ou U no NEI ou consulte o Dinopédia. Boa exploração, e cuidado com o frio!
     tasks:
       - get: fossil:permafrost
       - get: fossil:icedStone
@@ -1151,8 +1137,8 @@ quests:
     deps: [fossil_vegetal]
     icon: fossil:fernSeeds
     desc: |
-      Samambaias e plantas antigas voltam à vida: as §eSementes de Samambaia§r e outras mudas pré-
-      históricas crescem em jardins temáticos.
+      Samambaias e plantas antigas voltam à vida: as §eSementes de Samambaia§r e outras mudas pré-históricas crescem em jardins temáticos.
+      É opcional, Herói, mas deixa o museu verdinho e vivo. Se não souber onde achar as sementes, aperte R ou U no NEI ou consulte o Dinopédia. Plante com carinho e monte o seu jardim jurássico!
     tasks:
       - get: fossil:fernSeeds
     rewards:
@@ -1165,6 +1151,7 @@ quests:
     icon: fossil:record_bones
     desc: |
       Música da Terra antes dos homens. Ache um dos §eDiscos Fósseis§r e coloque na vitrola.
+      É opcional, Herói, mas dá um clima de exploração delicioso. Procure nas ruínas e escavações; se não souber onde ficam, aperte R ou U no NEI ou consulte o Dinopédia. Depois é só dar o play e curtir a trilha da pré-história!
     tasks:
       - one_of: [fossil:record_bones, fossil:record_bones_disc, fossil:record_scarab, fossil:record_discovery]
     rewards:
@@ -1176,10 +1163,9 @@ quests:
     deps: [maquina_tempo]
     icon: fossil:anu_block
     desc: |
-      Algo sinistro dorme sob a terra... Procure a §eEstátua de Anu§r (o Ídolo Misterioso): ela
-      fica em ruínas e estruturas antigas.
+      Algo sinistro dorme sob a terra... Procure a §eEstátua de Anu§r (o Ídolo Misterioso): ela fica em ruínas e estruturas antigas.
 
-      Ela é a chave para a Terra das Trevas. Leve armadura boa, poções e comida, Herói.
+      Ela é a chave para a Terra das Trevas. Leve armadura boa, poções e comida, Herói. Se não souber onde achar, aperte R ou U no NEI ou consulte o Dinopédia. Respire fundo e vá com cautela!
     tasks:
       - get: fossil:anu_block
     rewards:
@@ -1209,8 +1195,8 @@ quests:
     deps: [portal_anu]
     icon: fossil:AnubiteStatue
     desc: |
-      Estátuas que andam! Os §eAnubitas§r guardam a Terra das Trevas. Derrote três com uma boa
-      espada e cuidado com as investidas.
+      Estátuas que andam! Os §eAnubitas§r guardam a Terra das Trevas. Derrote três com uma boa espada e cuidado com as investidas.
+      Leve armadura e arma de respeito, Herói, e nada de correr para o meio deles sem plano. Leve poções de cura e comida. Se precisar de ajuda com o equipamento, aperte R ou U no NEI. Derrote §e3 Anubitas§r e volte para me contar!
     tasks:
       - kill: {entity: "fossil.Anubite", count: 3}
     rewards:
@@ -1223,6 +1209,7 @@ quests:
     icon: minecraft:rotten_flesh
     desc: |
       Pigmen em armadura escura vigiam Anu. Derrote dois §eSentinelas§r para limpar o caminho.
+      Vá com armadura boa e uma arma afiada, Herói, e fique de olho na vida: eles não perdoam. Leve também poções e comida. Se precisar de ideias de equipamento, aperte R ou U no NEI. Derrote §e2 Sentinelas§r e abra caminho!
     tasks:
       - kill: {entity: "fossil.SentryPigman", count: 2}
     rewards:
@@ -1237,11 +1224,9 @@ quests:
     subtitle: "A Terra das Trevas respira de novo"
     icon: fossil:anu_block
     desc: |
-      O governante do submundo acorda. §eAnu§r é um porcão colossal com muita vida, invoca raios e
-      chama seus súditos para a luta.
+      O governante do submundo acorda, Herói! §eAnu§r é um porcão colossal com muita vida, invoca raios e chama seus súditos para a luta.
 
-      §cTática:§r combata em área ampla, arqueiros nas pontas, poções de cura e armadura
-      encantada. Ele derruba a §eChave Antiga§r.
+      §cTática:§r combata em área ampla, arqueiros nas pontas, poções de cura e armadura encantada. Ele derruba a §eChave Antiga§r. Leve comida de sobra, mantenha o foco no chefe e não se deixe cercar pelos súditos. Se precisar de ideias de equipamento, aperte R ou U no NEI. Respire fundo, confie no seu preparo e no seu equipamento, e lembre que cada golpe te aproxima da Chave Antiga. Eu acredito em você!
     tasks:
       - kill: {entity: "fossil.PigBoss", count: 1}
     rewards:
@@ -1254,8 +1239,8 @@ quests:
     deps: [anu]
     icon: fossil:ancientKey
     desc: |
-      Anu largou a §eChave Antiga§r. Ela abre a porta mais secreta de todas: a Sala do Tesouro
-      Antigo.
+      Anu largou a §eChave Antiga§r. Ela abre a porta mais secreta de todas: a Sala do Tesouro Antigo.
+      Guarde bem, Herói, que não dá para fazer outra! Se não souber onde usar, aperte R ou U no NEI ou consulte o Dinopédia. A próxima quest já te leva até a sala. Prepare o inventário e se prepare para as relíquias!
     tasks:
       - get: fossil:ancientKey
     rewards:
@@ -1269,10 +1254,9 @@ quests:
     effect: 4
     icon: fossil:ancientChest
     desc: |
-      Use a chave no local indicado e entre na §eSala do Tesouro Antigo§r (dimensão 62). É um
-      cofre do tempo: baús, armadilhas e relíquias.
+      Use a chave no local indicado e entre na §eSala do Tesouro Antigo§r (dimensão 62). É um cofre do tempo: baús, armadilhas e relíquias.
 
-      Leve espaço no inventário!
+      Leve espaço no inventário, Herói, e vá com calma: onde há tesouro também há armadilha. Se precisar relembrar o caminho ou o que levar, aperte R ou U no NEI ou consulte o Dinopédia. Que as relíquias sejam todas suas! Boa exploração, viu? Confie no seu instinto, desvie das armadilhas e volte com a mochila cheia de histórias para contar à Akasha.
     tasks:
       - visit: {dim: 62, name: "Sala do Tesouro Antigo"}
     rewards:
@@ -1285,8 +1269,8 @@ quests:
     deps: [sala_tesouro]
     icon: fossil:ancientChest
     desc: |
-      O §eBaú do Tesouro Antigo§r guarda as melhores relíquias do mod. Abra com cuidado e leve
-      tudo.
+      O §eBaú do Tesouro Antigo§r guarda as melhores relíquias do mod. Abra com cuidado e leve tudo.
+      Vá com espaço no inventário, Herói! Cuidado com as armadilhas ao redor, e se tiver dúvida do que fazer lá dentro, aperte R ou U no NEI ou consulte o Dinopédia. Você merece cada relíquia depois de tanta jornada!
     tasks:
       - get: fossil:ancientChest
     rewards:
@@ -1299,8 +1283,8 @@ quests:
     deps: [sala_tesouro]
     icon: fossil:ancientClock
     desc: |
-      Um relógio parado há eras. Dizem que ele marca a hora em que os fósseis voltam a viver.
-      Confira no Dinopédia.
+      Um relógio parado há eras. Dizem que ele marca a hora em que os fósseis voltam a viver. Confira no Dinopédia.
+      É opcional, Herói, mas cheio de mistério. Se não souber como obter ou usar, aperte R ou U no NEI ou consulte o manual do mod. Guarde com carinho: quem sabe a hora certa não chega?
     tasks:
       - get: fossil:ancientClock
     rewards:
@@ -1312,8 +1296,8 @@ quests:
     deps: [espada_antiga]
     icon: fossil:ancientJavelin
     desc: |
-      Arremessos antigos! Experimente os dardos de madeira, pedra, ferro, ouro, diamante e o mais
-      raro, o §eAntigo§r.
+      Arremessos antigos! Experimente os dardos de madeira, pedra, ferro, ouro, diamante e o mais raro, o §eAntigo§r.
+      É opcional, Herói, mas uma delícia de usar! Faça qualquer um e teste a pontaria. Se a receita não encaixar, aperte R ou U no NEI ou consulte o Dinopédia. Boa mira, e cuidado para não arremessar no pet!
     tasks:
       - one_of: [fossil:woodJavelin, fossil:stoneJavelin, fossil:ironJavelin, fossil:goldJavelin, fossil:diamondJavelin, fossil:ancientJavelin]
     rewards:
@@ -1326,6 +1310,7 @@ quests:
     icon: fossil:sarcophagus
     desc: |
       Dentro das tumbas há sarcófagos lacrados. Abra um com a chave certa e veja o que sai.
+      É opcional, Herói, mas cheio de mistério. Leve a chave e fique atento ao que há por perto, porque nunca se sabe. Se tiver dúvida de onde achar ou como abrir, aperte R ou U no NEI ou consulte o Dinopédia. Coragem, e boa sorte!
     tasks:
       - get: fossil:sarcophagus
     rewards:
@@ -1339,10 +1324,9 @@ quests:
     subtitle: "O passado agora é seu"
     icon: fossil:dinoPedia
     desc: |
-      Do bloco de fóssil ao Rei dos Mortos, Herói. Você tem o laboratório, os ovos, as armas dos
-      antigos e a chave de Anu.
+      Do bloco de fóssil ao Rei dos Mortos, Herói. Você tem o laboratório, os ovos, as armas dos antigos e a chave de Anu.
 
-      Agora o Registro tem um capítulo novo sobre você. Continue, tem mais mundo para desenterrar!
+      Agora o Registro tem um capítulo novo sobre você. Continue, tem mais mundo para desenterrar! Respire fundo, olhe tudo o que construiu e se orgulhe. Foi uma jornada e tanto, e eu estou muito feliz de ter caminhado com você. Quando estiver pronto, o próximo capítulo te espera. Vamos? Que jornada, Herói! Guarde tudo o que conquistou e vá com calma rumo ao próximo desafio.
     tasks:
       - check
     rewards:
