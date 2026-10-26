@@ -58,8 +58,9 @@ quests:
     deps: [gerador_calor]
     icon: MekanismGenerators:SolarPanel
     desc: |
-      3 vidraças, 2 redstone, 1 Liga Enriquecida e 3 Barras de Ósmio = §ePainel Solar§r. Sozinho
-      ele não faz nada — é a peça do Gerador a Energia Solar. Faça §e3§r.
+      3 vidraças, 2 redstone, 1 Liga Enriquecida e 3 Barras de Ósmio = §ePainel Solar§r. Sozinho ele não faz nada: é a peça do Gerador a Energia Solar.
+
+      Faça §e3§r, Herói, e guarde para o próximo passo. Se esquecer a receita, aperte R ou U no NEI ou consulte o manual do Mekanism.
     tasks:
       - get: MekanismGenerators:SolarPanel x3
     rewards:
@@ -72,9 +73,9 @@ quests:
     deps: [painel_solar]
     icon: MekanismGenerators:Generator:1
     desc: |
-      3 Painéis Solares, 2 Ligas Enriquecidas, 1 ferro, 2 Pós de Ósmio e 1 Tablete de Energia =
-      §eGerador a Energia Solar§r. Precisa ver o céu e só funciona de dia (com chuva, rende menos).
-      Pouca energia, mas de graça e para sempre.
+      3 Painéis Solares, 2 Ligas Enriquecidas, 1 ferro, 2 Pós de Ósmio e 1 Tablete de Energia = §eGerador a Energia Solar§r. Precisa ver o céu e só funciona de dia (com chuva, rende menos).
+
+      É pouca energia, mas de graça e para sempre! Receita no NEI (R/U), Herói.
     tasks:
       - get: MekanismGenerators:Generator:1
     rewards:
@@ -87,9 +88,9 @@ quests:
     deps: [gerador_solar]
     icon: MekanismGenerators:Generator:5
     desc: |
-      4 Geradores Solares, 2 Ligas Enriquecidas e 3 ferros = §eGerador a Energia Solar
-      Avançado§r, um painel grande (ocupa mais de um bloco) que gera §e6 vezes§r o solar comum
-      neste pack. Deixe espaço livre em cima dele.
+      4 Geradores Solares, 2 Ligas Enriquecidas e 3 ferros = §eGerador a Energia Solar Avançado§r, um painel grande (ocupa mais de um bloco) que gera §e6 vezes§r o solar comum neste pack.
+
+      Deixe espaço livre em cima dele, Herói. Se esquecer a receita, aperte R ou U no NEI.
     tasks:
       - get: MekanismGenerators:Generator:5
     rewards:
@@ -102,9 +103,9 @@ quests:
     deps: [gerador_solar_avancado]
     icon: MekanismGenerators:Generator:5
     desc: |
-      Um campo de painéis brilhando ao sol é uma das vistas mais bonitas do Registro. Monte §e4
-      Geradores Solares Avançados§r ligados a um Cubo de Energia — e nunca mais se preocupe com a
-      energia diurna.
+      Um campo de painéis brilhando ao sol é uma das vistas mais bonitas do Registro! Monte §e4 Geradores Solares Avançados§r ligados a um Cubo de Energia e nunca mais se preocupe com a energia diurna.
+
+      Tarefa opcional, Herói, mas lindíssima. Receita no NEI (R/U) ou no manual do Mekanism.
     tasks:
       - get: MekanismGenerators:Generator:5 x4
     rewards:
@@ -116,9 +117,9 @@ quests:
     deps: [gerador_calor]
     icon: MekanismGenerators:Generator:4
     desc: |
-      2 redstone, 2 Ligas Enriquecidas, 2 Biocombustíveis, 1 Circuito Básico e 2 ferros =
-      §eBiogerador§r. Ele queima §eBiocombustível§r (plantas no Triturador). Uma fazenda
-      automática + Triturador + Biogerador = energia verde de verdade.
+      2 redstone, 2 Ligas Enriquecidas, 2 Biocombustíveis, 1 Circuito Básico e 2 ferros = §eBiogerador§r. Ele queima §eBiocombustível§r (plantas no Triturador).
+
+      Uma fazenda automática + Triturador + Biogerador = energia verde de verdade! Faça um, Herói. Receita no NEI (R/U) ou no manual do Mekanism, se precisar, e deixe a fazenda abastecendo o gerador sem parar.
     tasks:
       - get: MekanismGenerators:Generator:4
     rewards:
@@ -149,8 +150,9 @@ quests:
     deps: [gerador_eolico]
     icon: MekanismGenerators:Generator:6
     desc: |
-      Uma montanha alta, quatro torres girando e cabos descendo até a base. Monte §e4 Geradores
-      Eólicos§r — de preferência bem acima do nível do mar, onde o vento é mais forte.
+      Uma montanha alta, quatro torres girando e cabos descendo até a base. Monte §e4 Geradores Eólicos§r, de preferência bem acima do nível do mar, onde o vento é mais forte.
+
+      Tarefa opcional, Herói, mas rende uma vista linda e muita energia. Receita no NEI (R/U) ou no manual do Mekanism.
     tasks:
       - get: MekanismGenerators:Generator:6 x4
     rewards:
@@ -205,9 +207,9 @@ quests:
     deps: [gerador_gas]
     icon: Mekanism:GasTank
     desc: |
-      O Mekanism reconhece os combustíveis líquidos do BuildCraft: §eCombustível§r e §eÓleo§r
-      viram "Combustível Vaporizado" e "Óleo Vaporizado" no Condensentrador Rotativo, e o
-      Gerador a Queima de Gás aceita os dois. Traga um tanque com Combustível Vaporizado.
+      O Mekanism reconhece os combustíveis líquidos do BuildCraft: §eCombustível§r e §eÓleo§r viram "Combustível Vaporizado" e "Óleo Vaporizado" no Condensentrador Rotativo, e o Gerador a Queima de Gás aceita os dois.
+
+      Traga um tanque com Combustível Vaporizado, Herói. Tarefa opcional. Se esquecer o processo, aperte R ou U no NEI ou consulte o manual do Mekanism e do BuildCraft. Um tanque é suficiente para provar que a conversão funciona.
     tasks:
       - get: 'Mekanism:GasTank {stored:{gasName:"fuel"}}'
         nbt: true
@@ -235,8 +237,9 @@ quests:
     deps: [calor_lava]
     icon: MekanismGenerators:Generator
     desc: |
-      Uma fileira de §e4 Geradores a Calor§r cercados de lava, todos ligados por Cabos Universais a
-      um Cubo de Energia. Simples, barata e confiável no começo do Mekanism.
+      Uma fileira de §e4 Geradores a Calor§r cercados de lava, todos ligados por Cabos Universais a um Cubo de Energia. Simples, barata e confiável no começo do Mekanism!
+
+      Cuidado com a lava, Herói. Tarefa opcional. Receita no NEI (R/U) ou no manual do Mekanism, se precisar.
     tasks:
       - get: MekanismGenerators:Generator x4
     rewards:
@@ -248,8 +251,9 @@ quests:
     deps: [gerador_solar]
     icon: MekanismGenerators:Generator:1
     desc: |
-      Antes do Solar Avançado, um telhado com §e4 Geradores Solares§r comuns já mantém um Cubo de
-      Energia cheio durante o dia — e é o caminho para o Avançado (que leva 4 deles).
+      Antes do Solar Avançado, um telhado com §e4 Geradores Solares§r comuns já mantém um Cubo de Energia cheio durante o dia, e é o caminho para o Avançado (que leva 4 deles).
+
+      Tarefa opcional, Herói, mas um ótimo primeiro passo. Receita no NEI (R/U) ou no manual do mod.
     tasks:
       - get: MekanismGenerators:Generator:1 x4
     rewards:
@@ -262,9 +266,9 @@ quests:
     deps_hidden: [mekanism:biocombustivel]
     icon: Mekanism:BioFuel
     desc: |
-      Um Biogerador come §eBiocombustível§r sem parar. Automatize: uma fazenda (a Estação de
-      Cultivo do Ender IO, por exemplo) → Triturador do Mekanism → Biogerador. Junte §e64
-      Biocombustíveis§r para provar que a linha funciona.
+      Um Biogerador come §eBiocombustível§r sem parar. Automatize: uma fazenda (a Estação de Cultivo do Ender IO, por exemplo) → Triturador do Mekanism → Biogerador.
+
+      Junte §e64 Biocombustíveis§r para provar que a linha funciona, Herói. Receitas no NEI (R/U) ou no manual do Mekanism, se precisar. Quem automatiza cedo vive melhor, e esta linha cresce junto com sua base.
     tasks:
       - get: Mekanism:BioFuel x64
     rewards:
@@ -277,8 +281,9 @@ quests:
     deps: [combustivel_verde]
     icon: MekanismGenerators:Generator:4
     desc: |
-      Uma fazenda grande pede vários geradores. Monte §e4 Biogeradores§r alimentados por
-      transportadores logísticos a partir do Triturador.
+      Uma fazenda grande pede vários geradores. Monte §e4 Biogeradores§r alimentados por transportadores logísticos a partir do Triturador.
+
+      Tarefa opcional, Herói, mas rende muita energia verde. Se esquecer algo, aperte R ou U no NEI ou consulte o manual do Mekanism. Aproveite e organize bem os transportadores!
     tasks:
       - get: MekanismGenerators:Generator:4 x4
     rewards:
@@ -335,8 +340,9 @@ quests:
     deps: [usina_simples]
     icon: MekanismGenerators:TurbineBlade
     desc: |
-      4 Barras de Aço em cruz com uma Liga Enriquecida no centro = §eHélice de Turbina§r. Cada
-      Rotor de Turbina segura §e2 hélices§r. Faça §e8§r para uma turbina pequena.
+      4 Barras de Aço em cruz com uma Liga Enriquecida no centro = §eHélice de Turbina§r. Cada Rotor de Turbina segura §e2 hélices§r.
+
+      Faça §e8§r para uma turbina pequena, Herói. Se esquecer a receita, aperte R ou U no NEI ou consulte o manual do Mekanism. Já estamos construindo a turbina!
     tasks:
       - get: MekanismGenerators:TurbineBlade x8
     rewards:
@@ -349,8 +355,9 @@ quests:
     deps: [usina_simples]
     icon: MekanismGenerators:Generator:7
     desc: |
-      6 Barras de Aço e 3 Ligas Enriquecidas = §eRotor de Turbina§r, a haste central. Os rotores
-      ficam empilhados no centro da turbina, a partir do chão. Faça §e4§r.
+      6 Barras de Aço e 3 Ligas Enriquecidas = §eRotor de Turbina§r, a haste central. Os rotores ficam empilhados no centro da turbina, a partir do chão.
+
+      Faça §e4§r, Herói. Se esquecer a receita, aperte R ou U no NEI ou consulte o manual do Mekanism. Vamos erguendo a turbina peça por peça!
     tasks:
       - get: MekanismGenerators:Generator:7 x4
     rewards:
@@ -363,8 +370,9 @@ quests:
     deps: [rotor_turbina]
     icon: MekanismGenerators:Generator:8
     desc: |
-      Aço, Ligas Enriquecidas e 2 Circuitos Avançados = §eComplexo Rotacional§r. Ele vai §eem cima
-      do último rotor§r e transmite a rotação para as Bobinas Eletromagnéticas.
+      Aço, Ligas Enriquecidas e 2 Circuitos Avançados = §eComplexo Rotacional§r. Ele vai §eem cima do último rotor§r e transmite a rotação para as Bobinas Eletromagnéticas.
+
+      Faça um, Herói. Se esquecer a receita, aperte R ou U no NEI ou consulte o manual do Mekanism. É a peça que liga os dois mundos da turbina!
     tasks:
       - get: MekanismGenerators:Generator:8
     rewards:
@@ -377,9 +385,9 @@ quests:
     deps: [usina_simples]
     icon: MekanismGenerators:Generator:9
     desc: |
-      4 aços, 4 ouros e um Tablete de Energia = §eBobina Eletromagnética§r. Elas ficam encostadas
-      no Complexo Rotacional e transformam rotação em energia. Neste pack, §ecada bobina dá conta
-      de 4 hélices§r — faça bobinas suficientes para todas as suas hélices. Faça §e2§r.
+      4 aços, 4 ouros e um Tablete de Energia = §eBobina Eletromagnética§r. Elas ficam encostadas no Complexo Rotacional e transformam rotação em energia. Neste pack, cada bobina dá conta de 4 hélices.
+
+      Faça bobinas suficientes para todas as suas hélices, §e2§r por enquanto, Herói. Receita no NEI (R/U), se precisar.
     tasks:
       - get: MekanismGenerators:Generator:9 x2
     rewards:
@@ -392,9 +400,9 @@ quests:
     deps: [usina_simples]
     icon: MekanismGenerators:Generator:10
     desc: |
-      4 Barras de Aço + 1 Barra de Ósmio = 4 §eMolduras de Turbina§r. São as paredes, o chão e o
-      teto da turbina (Vidro Estrutural do Mekanism também vale nas paredes). Uma turbina pequena
-      já pede dezenas: junte §e64§r.
+      4 Barras de Aço + 1 Barra de Ósmio = 4 §eMolduras de Turbina§r. São as paredes, o chão e o teto da turbina (Vidro Estrutural do Mekanism também vale nas paredes).
+
+      Uma turbina pequena já pede dezenas: junte §e64§r, Herói. Receita no NEI (R/U), se precisar.
     tasks:
       - get: MekanismGenerators:Generator:10 x64
     rewards:
@@ -407,8 +415,9 @@ quests:
     deps: [moldura_turbina]
     icon: MekanismGenerators:Generator:11
     desc: |
-      4 Molduras + 1 Circuito Avançado = 2 §eVálvulas de Turbina§r. Elas recebem o §evapor§r e
-      entregam a §eenergia§r. Com o Configurador, alterne o modo de cada válvula. Faça §e2§r.
+      4 Molduras + 1 Circuito Avançado = 2 §eVálvulas de Turbina§r. Elas recebem o §evapor§r e entregam a energia. Com o Configurador, alterne o modo de cada válvula.
+
+      Faça §e2§r, Herói. Se esquecer a receita, aperte R ou U no NEI ou consulte o manual do Mekanism. Está ficando lindo!
     tasks:
       - get: MekanismGenerators:Generator:11 x2
     rewards:
@@ -421,9 +430,9 @@ quests:
     deps: [moldura_turbina]
     icon: MekanismGenerators:Generator:12
     desc: |
-      4 Molduras + 1 barra de ferro = 2 §eRespiradouros§r. Eles ficam nas paredes §eno nível do
-      Complexo Rotacional ou acima§r e liberam o vapor já usado (que vira água de novo se houver
-      Condensador Saturante). Mais respiradouros = mais vazão. Faça §e4§r.
+      4 Molduras + 1 barra de ferro = 2 §eRespiradouros§r. Eles ficam nas paredes no nível do Complexo Rotacional ou acima e liberam o vapor já usado (que vira água de novo se houver Condensador Saturante). Mais respiradouros = mais vazão.
+
+      Faça §e4§r, Herói. Receita no NEI (R/U), se precisar, e confira a posição certa na parede antes de instalar.
     tasks:
       - get: MekanismGenerators:Generator:12 x4
     rewards:
@@ -437,9 +446,9 @@ quests:
     deps_hidden: [mekanism:aco_mek]
     icon: Mekanism:BasicBlock2:6
     desc: |
-      Aço, barras de ferro e uma Liga Enriquecida = §eDispersor de Pressão§r. Na turbina, eles
-      preenchem §etoda a camada do Complexo Rotacional§r (menos o próprio complexo), separando a
-      câmara de vapor de baixo da sala das bobinas em cima.
+      Aço, barras de ferro e uma Liga Enriquecida = §eDispersor de Pressão§r. Na turbina, eles preenchem §etoda a camada do Complexo Rotacional§r (menos o próprio complexo), separando a câmara de vapor de baixo da sala das bobinas em cima.
+
+      Faça §e8§r, Herói. Receita no NEI (R/U).
     tasks:
       - get: Mekanism:BasicBlock2:6 x8
     rewards:
@@ -452,9 +461,9 @@ quests:
     deps: [moldura_turbina]
     icon: MekanismGenerators:Generator:13
     desc: |
-      Aço, estanho e um balde = §eSaturating Condenser§r. Dentro da sala das bobinas, ele
-      transforma parte do vapor usado em §eágua§r de volta, que sai pelas válvulas — ótimo para
-      fechar o ciclo com a Caldeira.
+      Aço, estanho e um balde = §eSaturating Condenser§r. Dentro da sala das bobinas, ele transforma parte do vapor usado em §eágua§r de volta, que sai pelas válvulas. É ótimo para fechar o ciclo com a Caldeira.
+
+      Tarefa opcional, Herói. Receita no NEI (R/U) ou no manual do Mekanism.
     tasks:
       - get: MekanismGenerators:Generator:13
     rewards:
@@ -548,9 +557,9 @@ quests:
     deps: [turbina_industrial]
     icon: MekanismGenerators:TurbineBlade
     desc: |
-      Uma turbina maior aceita muito mais vapor. Para uma torre alta você vai precisar de bem
-      mais peças: §e16 Hélices§r, §e8 Rotores§r e §e4 Bobinas§r (lembrando: 1 bobina a cada 4
-      hélices).
+      Uma turbina maior aceita muito mais vapor. Para uma torre alta você vai precisar de bem mais peças: §e16 Hélices§r, §e8 Rotores§r e §e4 Bobinas§r (lembrando: 1 bobina a cada 4 hélices).
+
+      Tarefa opcional, Herói, mas rende muita energia. Receitas no NEI (R/U) ou no manual do Mekanism.
     tasks:
       - get: [MekanismGenerators:TurbineBlade x16, MekanismGenerators:Generator:7 x8, MekanismGenerators:Generator:9 x4]
     rewards:
@@ -593,9 +602,9 @@ quests:
     deps_hidden: [mekanism:agua_pesada]
     icon: Mekanism:HeavyWaterBucket
     desc: |
-      Água Pesada no §eSeparador Eletrolítico§r = §eDeutério§r + oxigênio. A Bomba Elétrica com
-      Upgrade de Filtro produz água pesada devagar; vale deixar algumas trabalhando em paralelo.
-      Encha um Tanque de Gás com deutério.
+      Água Pesada no §eSeparador Eletrolítico§r = §eDeutério§r + oxigênio. A Bomba Elétrica com Upgrade de Filtro produz água pesada devagar; vale deixar algumas trabalhando em paralelo.
+
+      Encha um Tanque de Gás com deutério, Herói. Se esquecer o processo, aperte R ou U no NEI ou consulte o manual do Mekanism.
     tasks:
       - get: 'Mekanism:GasTank {stored:{gasName:"deuterium"}}'
         nbt: true
@@ -612,9 +621,9 @@ quests:
     deps_hidden: [mekanism:ativador_neutronico]
     icon: Mekanism:MachineBlock3:1
     desc: |
-      Lítio líquido (Torre de Evaporação) → Condensentrador Rotativo → §eLítio§r gasoso →
-      §eAtivador Neutrônico Solar§r ao sol = §eTrítio§r. Ele é lento: monte vários ativadores num
-      campo aberto. Encha um Tanque de Gás com trítio.
+      Lítio líquido (Torre de Evaporação) → Condensentrador Rotativo → §eLítio§r gasoso → §eAtivador Neutrônico Solar§r ao sol = §eTrítio§r. Ele é lento: monte vários ativadores num campo aberto.
+
+      Encha um Tanque de Gás com trítio, Herói. Se esquecer o processo, aperte R ou U no NEI ou consulte o manual do Mekanism.
     tasks:
       - get: 'Mekanism:GasTank {stored:{gasName:"tritium"}}'
         nbt: true
@@ -629,9 +638,9 @@ quests:
     deps_hidden: [mekanism:litio_liquido]
     icon: Mekanism:LithiumBucket
     desc: |
-      O Ativador Neutrônico Solar não aceita lítio líquido: passe o §eLítio§r da Torre de
-      Evaporação pelo §eCondensentrador Rotativo§r (modo líquido → gás). Encha um Tanque de Gás
-      com §eLítio§r gasoso.
+      O Ativador Neutrônico Solar não aceita lítio líquido: passe o §eLítio§r da Torre de Evaporação pelo §eCondensentrador Rotativo§r (modo líquido → gás).
+
+      Encha um Tanque de Gás com lítio gasoso, Herói. Se esquecer o processo, aperte R ou U no NEI ou consulte o manual do Mekanism. Cada passo te leva mais perto do reator!
     tasks:
       - get: 'Mekanism:GasTank {stored:{gasName:"lithium"}}'
         nbt: true
@@ -645,8 +654,9 @@ quests:
     deps: [tritio]
     icon: Mekanism:MachineBlock3:1
     desc: |
-      Um Ativador Neutrônico Solar sozinho é lentíssimo. Monte §e4§r num campo aberto, todos
-      puxando lítio de um tanque e mandando trítio para outro.
+      Um Ativador Neutrônico Solar sozinho é lentíssimo. Monte §e4§r num campo aberto, todos puxando lítio de um tanque e mandando trítio para outro.
+
+      Tarefa opcional, Herói, mas acelera bastante a produção de trítio. Se esquecer algo, aperte R ou U no NEI ou consulte o manual do Mekanism.
     tasks:
       - get: Mekanism:MachineBlock3:1 x4
     rewards:
@@ -658,8 +668,9 @@ quests:
     deps: [deuterio]
     icon: Mekanism:MachineBlock:12
     desc: |
-      O mesmo vale para o deutério: §e3 Bombas Elétricas§r com Upgrade de Filtro sobre um oceano
-      enchem tanques de Água Pesada bem mais rápido.
+      O mesmo vale para o deutério: §e3 Bombas Elétricas§r com Upgrade de Filtro sobre um oceano enchem tanques de Água Pesada bem mais rápido.
+
+      Tarefa opcional, Herói, mas ótima para quem não quer esperar. Se esquecer algo, aperte R ou U no NEI ou consulte o manual do Mekanism.
     tasks:
       - get: [Mekanism:MachineBlock:12 x3, Mekanism:FilterUpgrade x3]
     rewards:
@@ -671,8 +682,9 @@ quests:
     deps: [combustivel_dt]
     icon: Mekanism:GasTank
     desc: |
-      Um reator ligado bebe combustível sem parar. Guarde D-T num §eTanque de Gás de Elite ou
-      Final§r para não ficar na mão no meio da reação.
+      Um reator ligado bebe combustível sem parar. Guarde D-T num §eTanque de Gás de Elite ou Final§r para não ficar na mão no meio da reação.
+
+      Tarefa opcional, Herói, mas segurança nunca é demais. Se esquecer algo, aperte R ou U no NEI ou consulte o manual do Mekanism. Reserva cheia, coração tranquilo!
     tasks:
       - one_of:
           - 'Mekanism:GasTank {tier:2,stored:{gasName:"fusionFuelDT"}}'
@@ -687,9 +699,9 @@ quests:
     deps: [deuterio, tritio]
     icon: Mekanism:GasTank
     desc: |
-      Deutério + Trítio no §eInfusor Químico§r = §eCombustível D-T§r (cada 1 + 1 rende 2). É o
-      combustível da ignição e também pode ser injetado no reator em funcionamento (ou você pode
-      mandar deutério e trítio separados para as portas). Encha um tanque!
+      Deutério + Trítio no §eInfusor Químico§r = §eCombustível D-T§r (cada 1 + 1 rende 2). É o combustível da ignição e também pode ser injetado no reator em funcionamento (ou você pode mandar deutério e trítio separados para as portas).
+
+      Encha um tanque, Herói! Receita no NEI (R/U) ou no manual do Mekanism, se precisar.
     tasks:
       - get: 'Mekanism:GasTank {stored:{gasName:"fusionFuelDT"}}'
         nbt: true
@@ -703,10 +715,9 @@ quests:
     deps: [info_fusao]
     icon: MekanismGenerators:Hohlraum
     desc: |
-      "Hohlraum" é alemão para "espaço oco" — uma cápsula dourada onde a fusão começa.
+      "Hohlraum" é alemão para "espaço oco", uma cápsula dourada onde a fusão começa.
 
-      No Infusor Metalúrgico: §e4 pós de ouro + infusão de Carbono§r = §eHohlraum§r vazio. Faça um
-      e guarde-o para encher com Combustível D-T.
+      No Infusor Metalúrgico: §e4 pós de ouro + infusão de Carbono§r = §eHohlraum§r vazio. Faça um e guarde-o para encher com Combustível D-T, Herói. Se esquecer a receita, aperte R ou U no NEI.
     tasks:
       - get: MekanismGenerators:Hohlraum
     rewards:
@@ -719,9 +730,9 @@ quests:
     deps: [hohlraum, combustivel_dt]
     icon: MekanismGenerators:Hohlraum
     desc: |
-      Coloque o Hohlraum no espaço de itens de um Tanque de Gás cheio de §eCombustível D-T§r: ele
-      se enche com uma pequena dose. É essa cápsula que vai no Controlador do Reator para a
-      ignição. Traga o Hohlraum abastecido!
+      Coloque o Hohlraum no espaço de itens de um Tanque de Gás cheio de §eCombustível D-T§r: ele se enche com uma pequena dose. É essa cápsula que vai no Controlador do Reator para a ignição.
+
+      Traga o Hohlraum abastecido, Herói! Se esquecer algo, aperte R ou U no NEI ou consulte o manual do Mekanism.
     tasks:
       - get: 'MekanismGenerators:Hohlraum {stored:{gasName:"fusionFuelDT"}}'
         nbt: true
@@ -739,9 +750,9 @@ quests:
     deps_hidden: [mekanism:liga_atomica]
     icon: MekanismGenerators:Reactor:1
     desc: |
-      4 Carcaças de Aço em volta de uma §eLiga Atômica§r = 4 §eArmações do Reator§r. São as
-      paredes do Reator de Fusão. Um reator completo tem 54 blocos de carcaça (armações, vidros,
-      portas, matriz focal e o controlador). Junte §e40§r.
+      4 Carcaças de Aço em volta de uma §eLiga Atômica§r = 4 §eArmações do Reator§r. São as paredes do Reator de Fusão. Um reator completo tem 54 blocos de carcaça (armações, vidros, portas, matriz focal e o controlador).
+
+      Junte §e40§r, Herói. Receita no NEI (R/U).
     tasks:
       - get: MekanismGenerators:Reactor:1 x40
     rewards:
@@ -754,8 +765,9 @@ quests:
     deps: [armacao_reator]
     icon: MekanismGenerators:ReactorGlass
     desc: |
-      4 Armações + 1 vidro = 4 §eVidros do Reator§r. Eles substituem armações nas faces para você
-      ver o plasma lá dentro (lindo!). Faça §e4§r.
+      4 Armações + 1 vidro = 4 §eVidros do Reator§r. Eles substituem armações nas faces para você ver o plasma lá dentro (lindo!).
+
+      Faça §e4§r, Herói. Se esquecer a receita, aperte R ou U no NEI ou consulte o manual do Mekanism. Esse visual vale cada vidro!
     tasks:
       - get: MekanismGenerators:ReactorGlass x4
     rewards:
@@ -769,9 +781,9 @@ quests:
     deps_hidden: [mekanism:circuito_final]
     icon: MekanismGenerators:Reactor:3
     desc: |
-      4 Armações + 1 §eCircuito de Controle Final§r = 2 §ePortas do Reator§r. Elas recebem
-      combustível (D-T, ou deutério e trítio) e água, e entregam energia e vapor. Com o
-      Configurador, alterne entre entrada e saída. Faça §e4§r.
+      4 Armações + 1 §eCircuito de Controle Final§r = 2 §ePortas do Reator§r. Elas recebem combustível (D-T, ou deutério e trítio) e água, e entregam energia e vapor. Com o Configurador, alterne entre entrada e saída.
+
+      Faça §e4§r, Herói. Receita no NEI (R/U), se precisar.
     tasks:
       - get: MekanismGenerators:Reactor:3 x4
     rewards:
@@ -784,9 +796,9 @@ quests:
     deps: [vidro_reator]
     icon: MekanismGenerators:ReactorGlass:1
     desc: |
-      4 Vidros do Reator + 1 bloco de redstone = 2 §eMatrizes Focais do Laser§r. Uma delas vai numa
-      face do reator e recebe o disparo do Amplificador de Laser — é por ela que a ignição
-      acontece.
+      4 Vidros do Reator + 1 bloco de redstone = 2 §eMatrizes Focais do Laser§r. Uma delas vai numa face do reator e recebe o disparo do Amplificador de Laser; é por ela que a ignição acontece.
+
+      Faça uma, Herói, e guarde as outras. Receita no NEI (R/U), se precisar.
     tasks:
       - get: MekanismGenerators:ReactorGlass:1
     rewards:
@@ -799,9 +811,9 @@ quests:
     deps: [armacao_reator]
     icon: MekanismGenerators:Reactor:4
     desc: |
-      Uma Armação com 4 redstone = §eAdaptador Lógico do Reator§r. Ele emite redstone conforme o
-      estado do reator (pronto para ignição, sem combustível, temperatura alta...). Perfeito para
-      desligar a injeção automaticamente.
+      Uma Armação com 4 redstone = §eAdaptador Lógico do Reator§r. Ele emite redstone conforme o estado do reator (pronto para ignição, sem combustível, temperatura alta...). Perfeito para desligar a injeção automaticamente.
+
+      Tarefa opcional, Herói, mas dá muita segurança. Receita no NEI (R/U) ou no manual do Mekanism.
     tasks:
       - get: MekanismGenerators:Reactor:4
     rewards:
@@ -832,9 +844,9 @@ quests:
     deps_hidden: [mekanism:amplificador_laser]
     icon: Mekanism:MachineBlock2:13
     desc: |
-      A ignição pede uma rajada de energia enorme. Monte vários §eLasers§r apontados para um
-      §eAmplificador de Laser§r; o amplificador acumula a energia e dispara tudo de uma vez na
-      Matriz Focal. Junte §e4 Lasers§r e um Amplificador.
+      A ignição pede uma rajada de energia enorme. Monte vários §eLasers§r apontados para um §eAmplificador de Laser§r; o amplificador acumula a energia e dispara tudo de uma vez na Matriz Focal.
+
+      Junte §e4 Lasers§r e um Amplificador, Herói. Receitas no NEI (R/U) ou no manual do Mekanism.
     tasks:
       - get: [Mekanism:MachineBlock2:13 x4, Mekanism:MachineBlock2:14]
     rewards:
