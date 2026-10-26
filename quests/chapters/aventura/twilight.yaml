@@ -111,11 +111,8 @@ quests:
     title: "Pena de Corvo"
     deps: [portal_crepusculo]
     desc: |
-      Os Forest Ravens são tímidos: pousam no chão, olham pra você e fogem. Mas uma pena
-      deles guarda memória de tudo o que viram do alto.
-
-      Derrube um corvo e pegue uma §eRaven's Feather§r. Ela é um dos ingredientes do Foco do
-      Mapa Mágico.
+      Os Forest Ravens são tímidos: pousam no chão, olham pra você e fogem. Mas uma pena deles guarda a memória de tudo o que viram do alto, e eu adoro esse tipo de lembrança!
+      Derrube um corvo e pegue uma §eRaven's Feather§r. Ela é um dos ingredientes do Foco do Mapa Mágico, então guarde com carinho. Se o corvo escapar, não desanime: aproxime-se devagar e tente de novo. Confira a receita no NEI (R/U).
     tasks:
       - get: TwilightForest:item.tfFeather
     rewards:
@@ -126,11 +123,8 @@ quests:
     title: "Frutos-Tocha"
     deps: [portal_crepusculo]
     desc: |
-      Sabe aquelas frutinhas brilhantes penduradas no teto das cavernas? São as Torchberries.
-      Iluminam, alimentam e entram em receitas.
-
-      Colha 4 §eTorchberries§r das Torchberry Plants (penduradas sob as raízes) ou derrote
-      Skeleton Druids, que costumam carregá-las.
+      Sabe aquelas frutinhas brilhantes penduradas no teto das cavernas? São as Torchberries, Herói! Elas iluminam, alimentam e ainda entram em receitas.
+      Colha 4 §eTorchberries§r das Torchberry Plants (penduradas sob as raízes) ou derrote Skeleton Druids, que costumam carregá-las. Leve as quatro com você: vão ser úteis mais adiante, e dá para conferir os usos no NEI (R/U). Boa colheita!
     tasks:
       - get: TwilightForest:item.torchberries x4
     rewards:
@@ -221,10 +215,8 @@ quests:
     type: main
     deps: [raizes_vivas]
     desc: |
-      Ironwood é o "ferro" do Crepúsculo: madeira viva que endurece com metal.
-
-      Receita sem forma: §eLiveroot + Lingote de Ferro + Pepita de Ouro§r = Raw Ironwood
-      Materials. Na próxima etapa você vai fundi-lo.
+      Ironwood é o "ferro" do Crepúsculo: madeira viva que endurece com metal. Hora de começar a trabalhar com ela!
+      Receita sem forma: §eLiveroot + Lingote de Ferro + Pepita de Ouro§r = Raw Ironwood Materials. Junte os três na bancada e pronto. Na próxima etapa você vai fundi-lo, então já faça o suficiente para o que planeja. Em dúvida, o NEI (R/U) mostra a receita certinha.
     tasks:
       - craft: TwilightForest:item.ironwoodRaw
     rewards:
@@ -298,10 +290,8 @@ quests:
     type: optional
     deps: [steeleaf]
     desc: |
-      As ferramentas de Steeleaf nascem encantadas: a picareta com Fortuna e a espada com
-      Pilhagem. São ótimas para multiplicar minérios e drops de monstros.
-
-      Faça qualquer ferramenta de Steeleaf.
+      Que tal ferramentas que já nascem encantadas? As de Steeleaf vêm assim: a picareta com Fortuna e a espada com Pilhagem. São ótimas para multiplicar minérios e drops de monstros.
+      Faça qualquer ferramenta de Steeleaf. Não precisa ser todas, mas a picareta rende bastante no dia a dia. Confira as receitas no NEI (R/U) e aproveite, Herói!
     tasks:
       - one_of: [TwilightForest:item.steeleafPick, TwilightForest:item.steeleafSword, TwilightForest:item.steeleafAxe, TwilightForest:item.steeleafShovel, TwilightForest:item.steeleafHoe]
     rewards:
@@ -312,10 +302,8 @@ quests:
     type: optional
     deps: [steeleaf]
     desc: |
-      A armadura de Steeleaf vem com proteções especiais: contra projéteis, explosões, fogo e
-      quedas (uma em cada peça). Complementa bem a de Ironwood.
-
-      Faça as quatro peças.
+      A armadura de Steeleaf vem com proteções especiais: contra projéteis, explosões, fogo e quedas (uma em cada peça). Complementa muito bem a de Ironwood e deixa você com muito mais segurança por aí.
+      Faça as quatro peças: elmo, peitoral, calças e botas. Se não lembrar as receitas, aperte R sobre cada item no NEI. Vai ficar com um visual lindo e protegido, você merece!
     tasks:
       - get: [TwilightForest:item.steeleafHelm, TwilightForest:item.steeleafPlate, TwilightForest:item.steeleafLegs, TwilightForest:item.steeleafBoots]
     rewards:
@@ -365,10 +353,8 @@ quests:
     title: "Que Barulho Foi Esse?"
     deps: [colina_pequena]
     desc: |
-      As colinas médias têm um morador mais perigoso: o §eRedcap Sapper§r, que carrega TNT.
-
-      Derrote um Sapper. §cMantenha distância§r quando ele acender o pavio, ou a colina
-      vira cratera, e você também.
+      Tem um barulhinho estranho vindo das colinas médias... As colinas têm um morador mais perigoso: o §eRedcap Sapper§r, que carrega TNT.
+      Derrote um Sapper. §cMantenha distância§r quando ele acender o pavio, ou a colina vira cratera, e você também. Ataque de longe ou recue depressa depois do golpe. Acredito em você, e prefiro ver você de pé!
     tasks:
       - kill: {entity: "TwilightForest.Redcap Sapper", count: 1}
     rewards:
@@ -379,10 +365,8 @@ quests:
     title: "Eu Vejo Através de Você"
     deps: [colina_media]
     desc: |
-      Nas colinas grandes moram os §eTwilight Wraiths§r: espectros que voam através das paredes.
-      O saque aqui é o melhor das colinas (diamantes e até Steeleaf aparecem).
-
-      Derrote um Wraith. Eles somem e reaparecem; fique de costas para uma parede sólida.
+      Nas colinas grandes moram os §eTwilight Wraiths§r: espectros que voam através das paredes. O saque aqui é o melhor das colinas (diamantes e até Steeleaf aparecem), então vale a coragem!
+      Derrote um Wraith. Eles somem e reaparecem; fique de costas para uma parede sólida para não ser surpreendido(a). Paciência e boa mira, Herói: a recompensa compensa o susto.
     tasks:
       - kill: {entity: "TwilightForest.Twilight Wraith", count: 1}
     rewards:
@@ -473,10 +457,8 @@ quests:
     type: optional
     deps: [arvore_oca]
     desc: |
-      O §eSortingwood Engine§r organiza o conteúdo de baús próximos, juntando itens iguais.
-      É como ter um bibliotecário no quintal. (Sim, eu me identifico.)
-
-      Plante uma §eSorting Tree Sapling§r perto de onde guarda seus baús.
+      O §eSortingwood Engine§r organiza o conteúdo de baús próximos, juntando itens iguais. É como ter um bibliotecário no quintal. (Sim, eu me identifico.)
+      Plante uma §eSorting Tree Sapling§r perto de onde guarda seus baús. A árvore precisa de espaço para crescer, então escolha um cantinho livre. Detalhes de funcionamento estão no NEI (R/U). Sua base vai ficar uma beleza!
     tasks:
       - get: TwilightForest:tile.TFSapling:8
     rewards:
@@ -488,10 +470,8 @@ quests:
     deps: [arvore_tempo, arvore_transformacao, arvore_mineracao, arvore_separacao]
     deps_any: true
     desc: |
-      Os troncos das árvores mágicas (Timewood, Transwood, Minewood e Sortingwood) viram
-      tábuas com texturas únicas, perfeitas para uma casa que pareça encantada.
-
-      Faça tábuas de qualquer madeira mágica. Só não corte o tronco onde fica o "coração"!
+      Os troncos das árvores mágicas (Timewood, Transwood, Minewood e Sortingwood) viram tábuas com texturas únicas, perfeitas para uma casa que pareça encantada.
+      Faça tábuas de qualquer madeira mágica. Só não corte o tronco onde fica o "coração" da árvore! Cada árvore dá uma textura diferente, então experimente todas. Quer conferir? O NEI (R/U) mostra as receitas. Divirta-se decorando, Herói!
     tasks:
       - one_of: [TwilightForest:tile.TFPlank:4, TwilightForest:tile.TFPlank:5, TwilightForest:tile.TFPlank:6, TwilightForest:tile.TFPlank:7]
     rewards:
@@ -516,10 +496,8 @@ quests:
     type: optional
     deps: [amuleto_vida]
     desc: |
-      Quatro Charms of Life I numa bancada viram um §eCharm of Life II§r, ainda mais forte na
-      hora do desespero.
-
-      É caro, eu sei. Mas eu prefiro você vivo(a) e com menos amuletos do que o contrário.
+      Quatro Charms of Life I numa bancada viram um §eCharm of Life II§r, ainda mais forte na hora do desespero, quando você mais precisa de uma segunda chance.
+      É caro, eu sei. Mas eu prefiro você vivo(a) e com menos amuletos do que o contrário. Monte os quatro de nível I primeiro e junte tudo. Confira a receita no NEI (R/U). Esse é um investimento que vale cada pedaço!
     tasks:
       - craft: TwilightForest:item.charmOfLife2
     rewards:
@@ -529,10 +507,8 @@ quests:
     title: "Amuleto da Guarda"
     deps: [arvore_oca]
     desc: |
-      O §eCharm of Keeping§r faz você manter parte do inventário ao morrer: o nível I guarda a
-      armadura, o II também a barra de atalhos e o III tudo.
-
-      Encontre um em baús (as Maze Slimes também podem largar um).
+      O §eCharm of Keeping§r faz você manter parte do inventário ao morrer: o nível I guarda a armadura, o II também a barra de atalhos e o III tudo. Um seguro e tanto, Herói!
+      Encontre um em baús (as Maze Slimes também podem largar um). Mantenha o amuleto no inventário e explore sem medo. Se não achar logo, continue vasculhando os baús das masmorras; a sorte chega!
     tasks:
       - get: TwilightForest:item.charmOfKeeping1
     rewards:
@@ -544,10 +520,8 @@ quests:
     type: optional
     deps: [amuleto_guarda]
     desc: |
-      4 Charms of Keeping I = um de nível II; 4 de nível II = um de nível III, que guarda o
-      inventário inteiro numa morte.
-
-      Monte um §eCharm of Keeping III§r. É a apólice de seguro mais cara do reino.
+      4 Charms of Keeping I = um de nível II; 4 de nível II = um de nível III, que guarda o inventário inteiro numa morte. Parece muito, mas o descanso da alma não tem preço.
+      Monte um §eCharm of Keeping III§r. É a apólice de seguro mais cara do reino. Vá juntando amuletos no seu ritmo e confira a receita no NEI (R/U) quando for montar. Vai valer a pena!
     tasks:
       - craft: TwilightForest:item.charmOfKeeping3
     rewards:
@@ -599,10 +573,8 @@ quests:
     type: main
     deps: [naga]
     desc: |
-      Esta escama verde ainda brilha com a magia da Naga. Ela é a chave para atravessar a
-      proteção da Torre do Lich (a conquista se chama "Shimmering Scale").
-
-      Guarde §e8 Naga Scales§r: elas também viram uma armadura excelente nas próximas quests.
+      Esta escama verde ainda brilha com a magia da Naga. Ela é a chave para atravessar a proteção da Torre do Lich (a conquista se chama "Shimmering Scale"), então cuide bem delas!
+      Guarde §e8 Naga Scales§r: elas também viram uma armadura excelente nas próximas quests. Não gaste as escamas à toa antes de terminar o conjunto. Se faltar, volte a caçar Nagas. Força, Herói!
     tasks:
       - get: TwilightForest:item.nagaScale x8
     rewards:
@@ -613,10 +585,8 @@ quests:
     title: "Túnica de Escamas"
     deps: [escama_naga]
     desc: |
-      Oito escamas no formato de peitoral (sem o centro de cima) viram a §eNaga Scale Tunic§r,
-      que protege mais que ferro.
-
-      Faça a túnica.
+      Oito escamas no formato de peitoral (sem o centro de cima) viram a §eNaga Scale Tunic§r, que protege mais que ferro. O verde combina com você!
+      Faça a túnica. Posicione as oito escamas deixando vazio o espaço do meio, na fileira de cima. Se o formato embaralhar sua cabeça, é só abrir o NEI (R/U) e conferir a receita. Falta pouco para o conjunto completo!
     tasks:
       - craft: TwilightForest:item.plateNaga
     rewards:
@@ -627,10 +597,8 @@ quests:
     title: "Armeiro da Naga"
     deps: [tunica_naga]
     desc: |
-      Sete escamas no formato de calças viram as §eNaga Scale Leggings§r. Com as duas peças,
-      você ganha a conquista "Naga Armorer".
-
-      Faça as calças. (Precisou caçar outra Naga? Elas existem em vários pátios pelo mundo.)
+      Sete escamas no formato de calças viram as §eNaga Scale Leggings§r. Com as duas peças, você ganha a conquista "Naga Armorer". Estilo e proteção juntos!
+      Faça as calças. (Precisou caçar outra Naga? Elas existem em vários pátios pelo mundo.) Se tiver dúvida no formato, aperte R sobre o item no NEI para ver a receita. Você está quase lá, Herói!
     tasks:
       - craft: TwilightForest:item.legsNaga
     rewards:
@@ -684,9 +652,8 @@ quests:
     title: "Cetro do Crepúsculo"
     deps: [lich]
     desc: |
-      O §eScepter of Twilight§r dispara projéteis mágicos que causam dano à distância.
-
-      Quando as cargas acabarem, recarregue-o na bancada: §ecetro + Pérola do Fim§r.
+      O §eScepter of Twilight§r dispara projéteis mágicos que causam dano à distância, ótimo para lutar sem se expor demais.
+      Quando as cargas acabarem, recarregue-o na bancada: §ecetro + Pérola do Fim§r. Guarde sempre uma Pérola reserva na mochila para não ficar na mão no meio da batalha. Confira detalhes no NEI (R/U). Mire bem, Herói!
     tasks:
       - get: TwilightForest:item.scepterTwilight
     rewards:
@@ -697,10 +664,8 @@ quests:
     title: "Cetro da Drenagem de Vida"
     deps: [lich]
     desc: |
-      O §eScepter of Life Draining§r rouba a vida do alvo para você. Excelente contra monstros
-      que regeneram.
-
-      Recarga: §ecetro + Olho de Aranha Fermentado§r.
+      O §eScepter of Life Draining§r rouba a vida do alvo para você. Excelente contra monstros que regeneram, porque o que eles perdem vira vida sua!
+      Recarga: §ecetro + Olho de Aranha Fermentado§r, na bancada. Tenha sempre um Olho de reserva e confira no NEI (R/U) se quiser rever a receita. Use com sabedoria e saia das lutas bem de vida!
     tasks:
       - get: TwilightForest:item.scepterLifeDrain
     rewards:
@@ -711,10 +676,8 @@ quests:
     title: "Cetro Zumbi"
     deps: [lich]
     desc: |
-      O §eZombie Scepter§r invoca zumbis leais que lutam do seu lado por um tempo. Um exército
-      de bolso!
-
-      Recarga: §ecetro + Carne Podre + Poção de Força§r.
+      O §eZombie Scepter§r invoca zumbis leais que lutam do seu lado por um tempo. Um exército de bolso, Herói! Dá até vontade de rir.
+      Recarga: §ecetro + Carne Podre + Poção de Força§r. Prepare os ingredientes com antecedência para não ser pego sem cargas na hora de uma luta difícil. O NEI (R/U) mostra a receita. Chame seus amigos mortos-vivos!
     tasks:
       - get: TwilightForest:item.scepterZombie
     rewards:
@@ -727,10 +690,8 @@ quests:
     deps: [cetro_crepusculo, cetro_vida, cetro_zumbi]
     deps_any: true
     desc: |
-      Cada Lich larga §eapenas um cetro aleatório§r. Para ter os três, você vai precisar
-      visitar outras Torres do Lich (há várias pelo mundo).
-
-      Tenha os três cetros ao mesmo tempo. É a conquista "Scepter Mastery"!
+      Cada Lich larga §eapenas um cetro aleatório§r. Para ter os três, você vai precisar visitar outras Torres do Lich (há várias pelo mundo). Exige paciência, mas é uma bela jornada!
+      Tenha os três cetros ao mesmo tempo no inventário. É a conquista "Scepter Mastery"! Anote onde estão as torres que já visitou e leve equipamento reserva. Você consegue, Herói!
     tasks:
       - get: [TwilightForest:item.scepterTwilight, TwilightForest:item.scepterLifeDrain, TwilightForest:item.scepterZombie]
     rewards:
@@ -742,11 +703,8 @@ quests:
     type: main
     deps: [lich]
     desc: |
-      Os mosquitos do Pântano do Crepúsculo não são naturais: são uma maldição. Antes do Lich,
-      eles drenavam a sua fome sem parar. Agora o feitiço enfraqueceu.
-
-      Visite o §eTwilight Swamp§r. Debaixo dele ficam os Labirintos dos Minotauros, e o mapa
-      mágico mostra onde.
+      Os mosquitos do Pântano do Crepúsculo não são naturais: são uma maldição. Antes do Lich, eles drenavam a sua fome sem parar. Agora o feitiço enfraqueceu, e dá para explorar com mais calma.
+      Visite o §eTwilight Swamp§r. Debaixo dele ficam os Labirintos dos Minotauros, e o mapa mágico mostra onde. Leve comida e tochas, e aproveite a vista nebulosa. Boa exploração!
     tasks:
       - visit: {dim: 7, biome: 46, name: "Twilight Swamp"}
     rewards:
@@ -773,10 +731,8 @@ quests:
     title: "Meef?"
     deps: [labirinto]
     desc: |
-      Sim, "Meef". É a carne dos minotauros, e ela dá um bife ótimo.
-
-      Asse 4 §eRaw Meef§r na fornalha para obter Meef Steak. Comida boa para as caminhadas
-      longas pelo labirinto.
+      Sim, "Meef". É a carne dos minotauros, e ela dá um bife ótimo. Não é brincadeira minha, juro!
+      Asse 4 §eRaw Meef§r na fornalha para obter Meef Steak. Comida boa para as caminhadas longas pelo labirinto, então estoque bastante e deixe na barra de atalhos. Se precisar de mais, é só caçar outro minotauro. Bom apetite, Herói!
     tasks:
       - get: TwilightForest:item.meefSteak x4
     rewards:
@@ -788,10 +744,8 @@ quests:
     type: optional
     deps: [labirinto]
     desc: |
-      As §eMaze Slimes§r são slimes feitas de pedra do labirinto. Raramente largam um Charm of
-      Keeping!
-
-      Derrote 6 delas.
+      As §eMaze Slimes§r são slimes feitas de pedra do labirinto. Raramente largam um Charm of Keeping, aquele amuleto que salva seus itens!
+      Derrote 6 delas. Elas moram dentro dos labirintos, então leve boa espada, comida e luz. Não desanime se o amuleto não vier de primeira: raro é raro, mas a tentativa vale a pena. Vai com tudo!
     tasks:
       - kill: {entity: "TwilightForest.Maze Slime", count: 6}
     rewards:
@@ -802,10 +756,8 @@ quests:
     type: main
     deps: [labirinto]
     desc: |
-      O §eMaze Map Focus§r é o tesouro mais útil dos minotauros: ele permite criar mapas do
-      labirinto e a Uncrafting Table.
-
-      Ele cai de minotauros e aparece em baús do labirinto. Encontre um.
+      O §eMaze Map Focus§r é o tesouro mais útil dos minotauros: ele permite criar mapas do labirinto e a Uncrafting Table. Duas utilidades enormes num item só!
+      Ele cai de minotauros e aparece em baús do labirinto. Encontre um e guarde bem. Se quiser saber mais usos, confira no NEI (R/U). Boa caça, Herói!
     tasks:
       - get: TwilightForest:item.mazeMapFocus
     rewards:
@@ -816,10 +768,8 @@ quests:
     title: "Agora, Achar a Saída"
     deps: [foco_labirinto]
     desc: |
-      Foco do Labirinto no centro e 8 papéis em volta: §eBlank Maze Map§r. Ative-o dentro do
-      labirinto e ele desenha os corredores à sua volta.
-
-      Faça o mapa do labirinto.
+      Foco do Labirinto no centro e 8 papéis em volta: §eBlank Maze Map§r. Ative-o dentro do labirinto e ele desenha os corredores à sua volta, um alívio para quem se perde fácil.
+      Faça o mapa do labirinto. Leve papel suficiente, porque os mapas em branco são feitos um a um. A receita também aparece no NEI (R/U). Chega de ficar rodando em círculos!
     tasks:
       - craft: TwilightForest:item.emptyMazeMap
     rewards:
@@ -831,10 +781,8 @@ quests:
     type: optional
     deps: [mapa_labirinto]
     desc: |
-      O §eMaze/Ore Map§r mostra também os minérios. A receita é absurda: mapa do labirinto
-      + Bloco de Ouro + Bloco de Diamante + Bloco de Ferro. (O nome da conquista diz tudo.)
-
-      Faça um se tiver recursos sobrando. Eu não julgo... muito.
+      O §eMaze/Ore Map§r mostra também os minérios. A receita é absurda: mapa do labirinto + Bloco de Ouro + Bloco de Diamante + Bloco de Ferro. (O nome da conquista diz tudo.)
+      Faça um se tiver recursos sobrando. Eu não julgo... muito. Como é opcional, só vá atrás depois de resolver o essencial. Confira os detalhes no NEI (R/U).
     tasks:
       - craft: TwilightForest:item.emptyOreMap
     rewards:
@@ -883,10 +831,8 @@ quests:
     type: main
     deps: [minoshroom]
     desc: |
-      O §eMeef Stroganoff§r do Minoshroom não é só comida: comer esse ensopado de carne com
-      cogumelos te prepara para o calor do Pântano de Fogo ("Mighty Stroganoff").
-
-      Pegue o prato. Coma quando a fome estiver baixa, e não deixe para depois.
+      O §eMeef Stroganoff§r do Minoshroom não é só comida: comer esse ensopado de carne com cogumelos te prepara para o calor do Pântano de Fogo ("Mighty Stroganoff").
+      Pegue o prato. Coma quando a fome estiver baixa, e não deixe para depois, para não desperdiçar nada. Você mereceu essa refeição depois da luta, Herói. Bom apetite!
     tasks:
       - get: TwilightForest:item.meefStroganoff
     rewards:
@@ -897,10 +843,8 @@ quests:
     title: "Machado do Minotauro"
     deps: [minoshroom]
     desc: |
-      O §eMinotaur Axe§r causa dano extra quando você ataca correndo (em investida), igual ao
-      dono original.
-
-      Guarde-o: é uma arma excelente para a próxima luta.
+      O §eMinotaur Axe§r causa dano extra quando você ataca correndo (em investida), igual ao dono original. Sinta-se um touro furioso!
+      Guarde-o: é uma arma excelente para a próxima luta. Corra na direção do inimigo e golpeie no embalo para aproveitar o bônus. Para detalhes, dê uma olhada no NEI (R/U). Boa investida!
     tasks:
       - get: TwilightForest:item.minotaurAxe
     rewards:
@@ -912,11 +856,8 @@ quests:
     type: optional
     deps: [minoshroom]
     desc: |
-      Escondido no labirinto existe um cofre secreto (paredes diferentes, cheias de
-      armadilhas de TNT). Dentro dele pode estar a §eMazebreaker§r, a picareta encantada que
-      quebra Mazestone com facilidade.
-
-      Encontre-a. §cCuidado§r: cofres secretos costumam ter armadilhas.
+      Escondido no labirinto existe um cofre secreto (paredes diferentes, cheias de armadilhas de TNT). Dentro dele pode estar a §eMazebreaker§r, a picareta encantada que quebra Mazestone com facilidade.
+      Encontre-a. §cCuidado§r: cofres secretos costumam ter armadilhas. Vá devagar, observe as paredes e leve equipamento reserva. Opcional, mas super útil. Boa sorte, Herói!
     tasks:
       - get: TwilightForest:item.mazebreakerPick
     rewards:
@@ -968,10 +909,8 @@ quests:
     type: main
     deps: [hidra]
     desc: |
-      Uma gota de §eFiery Blood§r nos olhos e a maldição de cegueira da Floresta Sombria não te
-      pega mais ("Of One Blood").
-
-      Guarde o sangue: ele também é o ingrediente do metal ardente.
+      Uma gota de §eFiery Blood§r nos olhos e a maldição de cegueira da Floresta Sombria não te pega mais ("Of One Blood"). Que truque bacana!
+      Guarde o sangue: ele também é o ingrediente do metal ardente, então não gaste à toa. Reúna o que a quest pede e siga em frente. Se tiver dúvida sobre os usos, o NEI (R/U) responde. Força nessa!
     tasks:
       - get: TwilightForest:item.fieryBlood x4
     rewards:
@@ -982,10 +921,8 @@ quests:
     title: "Costelas Gigantes"
     deps: [hidra]
     desc: |
-      A §eHydra Chop§r é tão nutritiva que enche a barra de fome inteira. Comê-la com a fome
-      zerada rende a conquista "Massive Chops".
-
-      Guarde uma para emergências.
+      A §eHydra Chop§r é tão nutritiva que enche a barra de fome inteira. Comê-la com a fome zerada rende a conquista "Massive Chops". Uma refeição de herói!
+      Guarde uma para emergências, ou aproveite para pegar a conquista: coma quando a fome estiver bem baixa. Tenha cuidado para não perdê-la numa morte. Bom apetite!
     tasks:
       - get: TwilightForest:item.hydraChop
     rewards:
@@ -997,10 +934,8 @@ quests:
     type: main
     deps: [sangue_fogo]
     desc: |
-      Sangue de fogo + ferro = metal vivo em brasa. Receita sem forma: §eFiery Blood (ou Fiery
-      Tears) + Lingote de Ferro§r = Fiery Ingot.
-
-      Faça 4 lingotes. Eles também derretem na Smeltery do Tinkers como "Fiery Metal".
+      Sangue de fogo + ferro = metal vivo em brasa. Receita sem forma: §eFiery Blood (ou Fiery Tears) + Lingote de Ferro§r = Fiery Ingot.
+      Faça 4 lingotes. Eles também derretem na Smeltery do Tinkers como "Fiery Metal". Vão servir para as ferramentas ardentes a seguir, então não os gaste à toa. Confira no NEI (R/U) se travar. Mãos à obra, Herói!
     tasks:
       - craft: TwilightForest:item.fieryIngot x4
     rewards:
@@ -1011,9 +946,8 @@ quests:
     title: "Picareta Ardente"
     deps: [lingote_ardente]
     desc: |
-      A §eFiery Pick§r funde o que minera: ferro e ouro já saem em lingotes (auto-fundição).
-
-      Receita: 3 Fiery Ingots em cima e 2 Varas de Blaze como cabo.
+      A §eFiery Pick§r funde o que minera: ferro e ouro já saem em lingotes (auto-fundição). Economiza fornalha e tempo, que beleza!
+      Receita: 3 Fiery Ingots em cima e 2 Varas de Blaze como cabo. Monte na bancada como uma picareta comum. Se o desenho confundir, o NEI (R/U) mostra tudo. Aproveite a mineração!
     tasks:
       - craft: TwilightForest:item.fieryPick
     rewards:
@@ -1024,9 +958,8 @@ quests:
     title: "Espada Ardente"
     deps: [lingote_ardente]
     desc: |
-      A §eFiery Sword§r põe fogo nos alvos. Receita: 2 Fiery Ingots + 1 Vara de Blaze.
-
-      Faça a espada. §aDica:§r o fogo não funciona bem contra o que já é imune a fogo.
+      A §eFiery Sword§r põe fogo nos alvos. Receita: 2 Fiery Ingots + 1 Vara de Blaze, montadas como uma espada comum na bancada.
+      Faça a espada. §aDica:§r o fogo não funciona bem contra o que já é imune a fogo, então escolha bem seus alvos. Em caso de dúvida, o NEI (R/U) ajuda. Que queime tudo, Herói!
     tasks:
       - craft: TwilightForest:item.fierySword
     rewards:
@@ -1056,11 +989,8 @@ quests:
     type: main
     deps: [sangue_fogo]
     desc: |
-      Árvores negras, quase nenhuma luz, e uma maldição de §ecegueira§r que agora não te
-      atinge mais. Bem-vindo(a) à §eDark Forest§r.
-
-      Visite o bioma. Aqui moram Kobolds, Mist Wolves, King Spiders e, debaixo da terra, os
-      goblins do Stronghold dos Cavaleiros.
+      Árvores negras, quase nenhuma luz, e uma maldição de §ecegueira§r que agora não te atinge mais. Bem-vindo(a) à §eDark Forest§r!
+      Visite o bioma. Aqui moram Kobolds, Mist Wolves, King Spiders e, debaixo da terra, os goblins do Stronghold dos Cavaleiros. Leve armas boas e muita comida. Respire fundo e vá em frente, eu estou de olho!
     tasks:
       - visit: {dim: 7, biome: 56, name: "Dark Forest"}
     rewards:
@@ -1073,10 +1003,8 @@ quests:
     type: optional
     deps: [floresta_sombria]
     desc: |
-      Os §eMist Wolves§r da Floresta Sombria são maiores e mais perigosos que os lobos comuns,
-      e suas mordidas escurecem a visão.
-
-      Derrote 4 deles. Lute de costas para uma árvore para não ser cercado(a).
+      Os §eMist Wolves§r da Floresta Sombria são maiores e mais perigosos que os lobos comuns, e suas mordidas escurecem a visão.
+      Derrote 4 deles. Lute de costas para uma árvore para não ser cercado(a). Mantenha a vida cheia e leve comida para se recuperar entre as lutas. É opcional, mas treina bem a mira. Vai com tudo, Herói!
     tasks:
       - kill: {entity: "TwilightForest.Mist Wolf", count: 4}
     rewards:
@@ -1087,10 +1015,8 @@ quests:
     type: optional
     deps: [floresta_sombria]
     desc: |
-      A §eKing Spider§r é enorme e costuma carregar uma Druida Esqueleto nas costas. Ela vive
-      nas florestas escuras.
-
-      Derrote uma.
+      A §eKing Spider§r é enorme e costuma carregar uma Druida Esqueleto nas costas. Ela vive nas florestas escuras e não é pequena, viu?
+      Derrote uma. Leve boa armadura e armas, e observe a Druida que a acompanha, porque ela também ataca. Ataque com calma e recue se precisar. Opcional, mas divertida. Boa caçada, Herói!
     tasks:
       - kill: {entity: "TwilightForest.King Spider", count: 1}
     rewards:
@@ -1118,10 +1044,8 @@ quests:
     type: optional
     deps: [stronghold_cavaleiros]
     desc: |
-      O §eBlock and Chain Goblin§r gira uma bola de ferro presa numa corrente. Ele acerta de
-      longe e derruba blocos!
-
-      Derrote um. A arma dele pode ser fabricada mais tarde com Knightmetal.
+      O §eBlock and Chain Goblin§r gira uma bola de ferro presa numa corrente. Ele acerta de longe e derruba blocos! Cuidado com a sua construção.
+      Derrote um. A arma dele pode ser fabricada mais tarde com Knightmetal. Mantenha distância segura do alcance da corrente e ataque nos intervalos. Opcional, mas rende um bom treino. Força, Herói!
     tasks:
       - kill: {entity: "TwilightForest.Block&Chain Goblin", count: 1}
     rewards:
@@ -1132,10 +1056,8 @@ quests:
     type: optional
     deps: [floresta_sombria]
     desc: |
-      Os §eHelmet Crabs§r usam um capacete de cavaleiro como casco. Eles também largam pedaços
-      de armadura (Armor Shards).
-
-      Derrote 4 deles.
+      Os §eHelmet Crabs§r usam um capacete de cavaleiro como casco. Eles também largam pedaços de armadura (Armor Shards), que vão ser muito úteis daqui a pouco.
+      Derrote 4 deles. São bichinhos fofos e bem resistentes, então leve uma boa arma e recolha tudo o que cair. Confira os usos dos Armor Shards no NEI (R/U). Bom trabalho!
     tasks:
       - kill: {entity: "TwilightForest.Helmet Crab", count: 4}
     rewards:
@@ -1146,10 +1068,8 @@ quests:
     type: main
     deps: [stronghold_cavaleiros]
     desc: |
-      Cada goblin derrotado larga §eArmor Shards§r. Nove estilhaços na bancada formam um
-      §eArmor Shard Cluster§r, que vai para a fornalha.
-
-      Junte 9 estilhaços e monte o aglomerado.
+      Cada goblin derrotado larga §eArmor Shards§r. Nove estilhaços na bancada formam um §eArmor Shard Cluster§r, que vai para a fornalha.
+      Junte 9 estilhaços e monte o aglomerado. Se faltar, volte a caçar goblins e caranguejos de elmo na Floresta Sombria. Confira a receita no NEI (R/U). Cada pedacinho conta, Herói!
     tasks:
       - craft: TwilightForest:item.shardCluster
     rewards:
@@ -1161,11 +1081,8 @@ quests:
     type: main
     deps: [estilhacos]
     desc: |
-      Funda o Armor Shard Cluster e nasce o §eKnightmetal Ingot§r: o metal mais forte que os
-      goblins guardavam.
-
-      Faça 4 lingotes. (Com Pyrotheum também há uma receita direta na bancada; e ele derrete na
-      Smeltery como "Knightmetal".)
+      Funda o Armor Shard Cluster e nasce o §eKnightmetal Ingot§r: o metal mais forte que os goblins guardavam. Que orgulho de ver você chegar aqui!
+      Faça 4 lingotes. (Com Pyrotheum também há uma receita direta na bancada; e ele derrete na Smeltery como "Knightmetal".) Dúvidas sobre o passo a passo? Confira no NEI (R/U). Hora de forjar, Herói!
     tasks:
       - craft: TwilightForest:item.knightMetal x4
     rewards:
@@ -1176,9 +1093,8 @@ quests:
     title: "Armadura do Cavaleiro"
     deps: [knightmetal]
     desc: |
-      A armadura de Knightmetal (Knightly) é das mais resistentes do Crepúsculo.
-
-      Faça as quatro peças: elmo, peitoral, grevas e botas.
+      A armadura de Knightmetal (Knightly) é das mais resistentes do Crepúsculo, e você já tem o metal para ela. Que conquista, Herói!
+      Faça as quatro peças: elmo, peitoral, grevas e botas. Cada peça usa lingotes de Knightmetal, então confira as quantidades no NEI (R/U) antes de começar. Depois de vestir tudo, vá encarar as próximas ameaças com muito mais confiança.
     tasks:
       - get: [TwilightForest:item.knightlyHelm, TwilightForest:item.knightlyPlate, TwilightForest:item.knightlyLegs, TwilightForest:item.knightlyBoots]
     rewards:
@@ -1189,10 +1105,8 @@ quests:
     title: "Espada do Cavaleiro"
     deps: [knightmetal]
     desc: |
-      A §eKnightly Sword§r (e a picareta) causa dano extra em alvos com armadura. O machado faz
-      o contrário: dano extra em quem está sem armadura.
-
-      Faça a espada.
+      A §eKnightly Sword§r (e a picareta) causa dano extra em alvos com armadura. O machado faz o contrário: dano extra em quem está sem armadura. Cada arma tem seu momento!
+      Faça a espada. Ela vai brilhar contra inimigos blindados, como os cavaleiros e goblins. Se precisar rever a receita, aperte R sobre o item no NEI. Boa luta, Herói!
     tasks:
       - craft: TwilightForest:item.knightlySword
     rewards:
@@ -1204,10 +1118,8 @@ quests:
     type: optional
     deps: [espada_cavaleiro]
     desc: |
-      Complete o arsenal: §eKnightly Pick§r e §eKnightly Axe§r.
-
-      O machado é especialmente bom contra criaturas sem armadura, como os Yetis que você vai
-      encontrar mais adiante.
+      Hora de completar o arsenal: §eKnightly Pick§r e §eKnightly Axe§r.
+      O machado é especialmente bom contra criaturas sem armadura, como os Yetis que você vai encontrar mais adiante. É opcional, mas ter as duas ferramentas deixa a exploração mais confortável. Confira as receitas no NEI (R/U) e faça no seu tempo. Você está indo muito bem!
     tasks:
       - get: [TwilightForest:item.knightlyPick, TwilightForest:item.knightlyAxe]
     rewards:
@@ -1218,11 +1130,8 @@ quests:
     type: optional
     deps: [knightmetal]
     desc: |
-      Primeiro um §eKnightmetal Loop§r (4 lingotes em forma de cruz vazada). Depois:
-      Loop + 3 lingotes + 1 Bloco de Knightmetal = §eBlock and Chain§r, a arma arremessável dos
-      goblins, que quebra blocos e acerta inimigos de longe.
-
-      Monte a sua.
+      Primeiro um §eKnightmetal Loop§r (4 lingotes em forma de cruz vazada). Depois: Loop + 3 lingotes + 1 Bloco de Knightmetal = §eBlock and Chain§r, a arma arremessável dos goblins, que quebra blocos e acerta inimigos de longe.
+      Monte a sua. Dá um trabalhinho, mas é divertida de usar. Em dúvida no formato, o NEI (R/U) mostra tudo. Bom divertimento, Herói!
     tasks:
       - craft: TwilightForest:item.chainBlock
     rewards:
@@ -1272,10 +1181,8 @@ quests:
     type: optional
     deps: [cavaleiros_fantasmas]
     desc: |
-      O §ePhantom Helm§r e o §ePhantom Plate§r são especiais: com eles você não perde essas
-      peças ao morrer ("Even the death won't do you part").
-
-      Pegue as duas no tesouro dos Fantasmas.
+      O §ePhantom Helm§r e o §ePhantom Plate§r são especiais: com eles você não perde essas peças ao morrer ("Even the death won't do you part"). Um presente do além!
+      Pegue as duas no tesouro dos Fantasmas. Procure os baús com atenção e confira o NEI (R/U) se quiser saber mais. Opcional, mas muito útil para quem arrisca o pescoço. Coragem!
     tasks:
       - get: [TwilightForest:item.phantomHelm, TwilightForest:item.phantomPlate]
     rewards:
@@ -1287,11 +1194,8 @@ quests:
     type: main
     deps: [cavaleiros_fantasmas]
     desc: |
-      No centro da Floresta Sombria, as folhas ficam vermelhas e a grama morre. Ali se ergue a
-      §eTorre Sombria§r (Dark Tower), feita de Towerwood, com antenas no topo que alimentam a
-      nevasca do norte.
-
-      Visite o §eDark Forest Center§r.
+      No centro da Floresta Sombria, as folhas ficam vermelhas e a grama morre. Ali se ergue a §eTorre Sombria§r (Dark Tower), feita de Towerwood, com antenas no topo que alimentam a nevasca do norte.
+      Visite o §eDark Forest Center§r. Chegue com equipamento reserva e comida: a torre é traiçoeira. Respire fundo, Herói, e vá com calma!
     tasks:
       - visit: {dim: 7, biome: 54, name: "Dark Forest Center"}
     rewards:
@@ -1302,10 +1206,8 @@ quests:
     title: "Brocas da Torre"
     deps: [centro_sombrio]
     desc: |
-      As paredes da torre escondem §eTowerwood Borers§r: cupins que saem de blocos infestados e
-      roem a madeira.
-
-      Derrote-os e junte 4 §eBorer Essence§r. Ela é a base da Carminite.
+      As paredes da torre escondem §eTowerwood Borers§r: cupins que saem de blocos infestados e roem a madeira. Pequenos, mas irritantes!
+      Derrote-os e junte 4 §eBorer Essence§r. Ela é a base da Carminite, o próximo passo desta jornada. Se faltar essência, quebre mais blocos infestados e continue a caça. Vamos nessa!
     tasks:
       - get: TwilightForest:item.borerEssence x4
     rewards:
@@ -1316,10 +1218,8 @@ quests:
     title: "Carminite"
     deps: [broca_torre]
     desc: |
-      A §eCarminite§r é o cristal vermelho que alimenta os mecanismos da torre.
-
-      Receita: §e4 Borer Essence + 4 Redstone + 1 Lágrima de Ghast§r no centro. Também aparece
-      em baús e no tesouro do chefe.
+      A §eCarminite§r é o cristal vermelho que alimenta os mecanismos da torre. Dá para fabricar ou achar pronta!
+      Receita: §e4 Borer Essence + 4 Redstone + 1 Lágrima de Ghast§r no centro. Também aparece em baús e no tesouro do chefe. Confira o desenho exato no NEI (R/U). Guarde a Carminite com carinho, Herói: ela abre caminhos!
     tasks:
       - get: TwilightForest:item.carminite
     rewards:
@@ -1331,11 +1231,8 @@ quests:
     type: main
     deps: [centro_sombrio]
     desc: |
-      Os mecanismos da Dark Tower (blocos que somem, construtores de Carminite) agora
-      respondem a você. Algumas passagens têm blocos trancados que só abrem com uma §eTower
-      Key§r.
-
-      As chaves ficam em baús nas alas da torre. Encontre uma e use-a nos blocos trancados.
+      Os mecanismos da Dark Tower (blocos que somem, construtores de Carminite) agora respondem a você. Algumas passagens têm blocos trancados que só abrem com uma §eTower Key§r.
+      As chaves ficam em baús nas alas da torre. Encontre uma e use-a nos blocos trancados. Explore sem pressa e abra todos os baús que achar. Boa busca, Herói!
     tasks:
       - get: TwilightForest:item.towerKey
     rewards:
@@ -1346,11 +1243,8 @@ quests:
     title: "Ghastlings de Carminite"
     deps: [chave_torre]
     desc: |
-      No topo da torre, pequenos §eCarminite Ghastlings§r flutuam ao redor das armadilhas de
-      ghast (Ghast Traps). Matar ghastlings perto de uma armadilha a carrega; armadilhas
-      carregadas ajudam a puxar o chefe para baixo.
-
-      Derrote 6 Ghastlings perto das Ghast Traps.
+      No topo da torre, pequenos §eCarminite Ghastlings§r flutuam ao redor das armadilhas de ghast (Ghast Traps). Matar ghastlings perto de uma armadilha a carrega; armadilhas carregadas ajudam a puxar o chefe para baixo.
+      Derrote 6 Ghastlings perto das Ghast Traps. Cuidado com as bolas de fogo deles, e mantenha a vida em dia. Você consegue!
     tasks:
       - kill: {entity: "TwilightForest.Mini Ghast", count: 6}
     rewards:
@@ -1385,10 +1279,8 @@ quests:
     type: main
     deps: [ur_ghast]
     desc: |
-      Toque nas §eFiery Tears§r e o frio mágico da Floresta de Neve deixa de te paralisar
-      ("Tears of Fire"). Elas também servem, como o Fiery Blood, para fazer Fiery Ingots.
-
-      Junte 3 lágrimas.
+      Toque nas §eFiery Tears§r e o frio mágico da Floresta de Neve deixa de te paralisar ("Tears of Fire"). Elas também servem, como o Fiery Blood, para fazer Fiery Ingots.
+      Junte 3 lágrimas. Guarde todas elas com cuidado, porque são úteis tanto para o frio quanto para o metal ardente. Confira os usos no NEI (R/U). Que calorzinho bom, Herói!
     tasks:
       - get: TwilightForest:item.fieryTears x3
     rewards:
@@ -1423,10 +1315,8 @@ quests:
     type: main
     deps: [lagrimas_fogo]
     desc: |
-      Ao norte, a §eFloresta de Neve§r (Snowy Forest) vive sob uma nevasca mágica. Agora que você
-      tocou as lágrimas do Ur-Ghast, o frio não te prende mais.
-
-      Lá vivem os §eYetis§r. Derrote 4 deles. Cuidado: eles agarram e arremessam!
+      Ao norte, a §eFloresta de Neve§r (Snowy Forest) vive sob uma nevasca mágica. Agora que você tocou as lágrimas do Ur-Ghast, o frio não te prende mais.
+      Lá vivem os §eYetis§r. Derrote 4 deles. §cCuidado§r: eles agarram e arremessam! Mantenha distância, ataque nos intervalos e leve comida. Vista-se bem e vá com tudo!
     tasks:
       - kill: {entity: "TwilightForest.Yeti", count: 4}
     rewards:
@@ -1438,9 +1328,8 @@ quests:
     type: optional
     deps: [floresta_neve]
     desc: |
-      Os §eWinter Wolves§r sopram rajadas de gelo. Como os Yetis, eles largam §eArctic Fur§r.
-
-      Derrote 4.
+      Os §eWinter Wolves§r sopram rajadas de gelo. Como os Yetis, eles largam §eArctic Fur§r, o material que vai render roupas quentinhas.
+      Derrote 4. Mantenha a vida cheia e fique em movimento para desviar das rajadas. É opcional, mas ajuda a juntar pele para as próximas quests. Confira os drops no NEI (R/U). Agasalhe-se, Herói!
     tasks:
       - kill: {entity: "TwilightForest.WinterWolf", count: 4}
     rewards:
@@ -1450,9 +1339,8 @@ quests:
     title: "Pelo Ártico"
     deps: [floresta_neve]
     desc: |
-      A §eArctic Fur§r é quentinha e resistente. Yetis e Winter Wolves a largam.
-
-      Junte 8 peles.
+      A §eArctic Fur§r é quentinha e resistente. Yetis e Winter Wolves a largam, então a caçada nesta floresta rende bastante.
+      Junte 8 peles. Elas servem para a armadura ártica, então não gaste à toa e guarde tudo no baú. Se faltar, volte a caçar os bichos da neve. Confira os usos no NEI (R/U). Bom trabalho!
     tasks:
       - get: TwilightForest:item.arcticFur x8
     rewards:
@@ -1464,10 +1352,8 @@ quests:
     type: optional
     deps: [pelo_artico]
     desc: |
-      Com Arctic Fur nas receitas comuns de armadura você faz a §eArmadura Ártica§r (Arctic Hood,
-      Jacket, Leggings e Boots), que pode ser tingida como couro.
-
-      Faça as quatro peças.
+      Com Arctic Fur nas receitas comuns de armadura você faz a §eArmadura Ártica§r (Arctic Hood, Jacket, Leggings e Boots), que pode ser tingida como couro. Um jeito estiloso de enfrentar o frio!
+      Faça as quatro peças. Basta usar o formato normal de armadura trocando o material pela pele. Confira no NEI (R/U) se travar, Herói.
     tasks:
       - get: [TwilightForest:item.arcticHelm, TwilightForest:item.arcticPlate, TwilightForest:item.arcticLegs, TwilightForest:item.arcticBoots]
     rewards:
@@ -1499,9 +1385,8 @@ quests:
     type: main
     deps: [yeti_alfa]
     desc: |
-      Forrar as roupas com o pelo macio do Yeti Alfa te protege do frio da Geleira ("Alpha Fur").
-
-      Junte 4 §eAlpha Yeti Fur§r.
+      Forrar as roupas com o pelo macio do Yeti Alfa te protege do frio da Geleira ("Alpha Fur"). Quentinho de verdade!
+      Junte 4 §eAlpha Yeti Fur§r. Elas caem do Yeti Alfa, então se prepare para a luta. Guarde o pelo para a Armadura do Yeti logo a seguir. Confira os detalhes no NEI (R/U). Agasalhe-se bem, Herói!
     tasks:
       - get: TwilightForest:item.alphaFur x4
     rewards:
@@ -1512,10 +1397,8 @@ quests:
     title: "Armadura do Yeti"
     deps: [pelo_alfa]
     desc: |
-      Alpha Yeti Fur nas receitas de armadura vira a §eArmadura do Yeti§r: já vem com Proteção
-      (e Queda Suave nas botas) e congela quem te ataca.
-
-      Faça as quatro peças: elmo com chifres, jaqueta, calças e botas.
+      Alpha Yeti Fur nas receitas de armadura vira a §eArmadura do Yeti§r: já vem com Proteção (e Queda Suave nas botas) e congela quem te ataca. Que pose!
+      Faça as quatro peças: elmo com chifres, jaqueta, calças e botas. Monte tudo na bancada com o formato normal de armadura. Se precisar de ajuda, aperte R no NEI. Está ficando lindo, Herói!
     tasks:
       - get: [TwilightForest:item.yetiHelm, TwilightForest:item.yetiPlate, TwilightForest:item.yetiLegs, TwilightForest:item.yetiBoots]
     rewards:
@@ -1527,10 +1410,8 @@ quests:
     type: optional
     deps: [yeti_alfa]
     desc: |
-      As §eIce Bombs§r do Yeti Alfa explodem numa nuvem gelada que congela água e desacelera
-      inimigos.
-
-      Guarde 4 delas.
+      As §eIce Bombs§r do Yeti Alfa explodem numa nuvem gelada que congela água e desacelera inimigos. Uma ferramenta bem esperta para quem gosta de estratégia.
+      Guarde 4 delas. Use quando precisar segurar um inimigo no lugar, e confira mais detalhes no NEI (R/U). Opcional, mas divertido. Boa sorte, Herói!
     tasks:
       - get: TwilightForest:item.iceBomb x4
     rewards:
@@ -1558,10 +1439,8 @@ quests:
     type: optional
     deps: [geleira]
     desc: |
-      Os §eAurora Blocks§r mudam de cor conforme a posição: um arco-íris gelado para construir.
-      Eles aparecem nos baús do palácio e podem ser coletados.
-
-      Junte 16.
+      Os §eAurora Blocks§r mudam de cor conforme a posição: um arco-íris gelado para construir. Dá vontade de decorar a base inteira!
+      Eles aparecem nos baús do palácio e podem ser coletados. Junte 16. Procure nos baús do Palácio da Aurora e quebre os blocos com carinho. Confira no NEI (R/U) se tiver dúvida. Capriche na construção!
     tasks:
       - get: TwilightForest:tile.TFAuroraBrick x16
     rewards:
@@ -1572,10 +1451,8 @@ quests:
     type: optional
     deps: [geleira]
     desc: |
-      Os §eUnstable Ice Cores§r explodem em gelo quando morrem, e os Stable Ice Cores atiram
-      bolas de neve. Ambos protegem o palácio.
-
-      Derrote 4 Unstable Ice Cores, de longe se possível.
+      Os §eUnstable Ice Cores§r explodem em gelo quando morrem, e os Stable Ice Cores atiram bolas de neve. Ambos protegem o palácio.
+      Derrote 4 Unstable Ice Cores, de longe se possível, para evitar a explosão gelada. Use arco ou cetro para manter distância. Opcional, mas treina bem a pontaria. Mire bem, Herói!
     tasks:
       - kill: {entity: "TwilightForest.Unstable Ice Core", count: 4}
     rewards:
@@ -1608,10 +1485,8 @@ quests:
     title: "Os Arcos da Rainha"
     deps: [rainha_neve]
     desc: |
-      O §eTri-bow§r dispara três flechas de uma vez; o §eSeeker Bow§r atira flechas que perseguem
-      o alvo. A Rainha da Neve larga um deles.
-
-      Tenha qualquer um dos dois.
+      O §eTri-bow§r dispara três flechas de uma vez; o §eSeeker Bow§r atira flechas que perseguem o alvo. A Rainha da Neve larga um deles. Dois arcos incríveis!
+      Tenha qualquer um dos dois. Qualquer um serve para a quest, então fique com o que mais combinar com seu estilo. Leve bastante flecha na mochila. Boa pontaria, Herói!
     tasks:
       - one_of: [TwilightForest:item.tripleBow, TwilightForest:item.seekerBow]
     rewards:
@@ -1623,11 +1498,8 @@ quests:
     type: optional
     deps: [geleira]
     desc: |
-      Os baús do Palácio da Aurora guardam armas raras: o §eIce Bow§r (flechas que congelam), o
-      §eEnder Bow§r (troca de lugar com o alvo), a §eIce Sword§r e a frágil mas poderosa
-      §eGlass Sword§r.
-
-      Encontre qualquer uma delas.
+      Os baús do Palácio da Aurora guardam armas raras: o §eIce Bow§r (flechas que congelam), o §eEnder Bow§r (troca de lugar com o alvo), a §eIce Sword§r e a frágil mas poderosa §eGlass Sword§r.
+      Encontre qualquer uma delas. Vasculhe todos os baús do palácio com paciência. Qualquer arma conta, Herói, então boa caça!
     tasks:
       - one_of: [TwilightForest:item.iceBow, TwilightForest:item.enderBow, TwilightForest:item.iceSword, TwilightForest:item.glassSword]
     rewards:
@@ -1639,10 +1511,8 @@ quests:
     type: main
     deps: [rainha_neve]
     desc: |
-      Montanhas, rochas e pinheiros enormes: as §eTwilight Highlands§r. Antes da Rainha da Neve,
-      uma chuva ácida tornava a viagem impossível.
-
-      Visite o bioma. Debaixo das montanhas ficam as §eCavernas dos Trolls§r.
+      Montanhas, rochas e pinheiros enormes: as §eTwilight Highlands§r. Antes da Rainha da Neve, uma chuva ácida tornava a viagem impossível. Agora o caminho está livre!
+      Visite o bioma. Debaixo das montanhas ficam as §eCavernas dos Trolls§r. Leve tochas e boa armadura para a próxima etapa. Aproveite a paisagem, Herói!
     tasks:
       - visit: {dim: 7, biome: 44, name: "Twilight Highlands"}
     rewards:
@@ -1654,10 +1524,8 @@ quests:
     type: main
     deps: [terras_altas]
     desc: |
-      As Cavernas dos Trolls são enormes, com pedra Deadrock e jardins de Trollvidr. Os §eCave
-      Trolls§r arremessam rochas e batem forte.
-
-      Derrote 3 Cave Trolls. Eles podem largar §eMagic Beans§r.
+      As Cavernas dos Trolls são enormes, com pedra Deadrock e jardins de Trollvidr. Os §eCave Trolls§r arremessam rochas e batem forte.
+      Derrote 3 Cave Trolls. Eles podem largar §eMagic Beans§r, então fique de olho no que cair. Mantenha a vida cheia, use cobertura e leve armadura boa. Coragem, Herói, eu torço por você!
     tasks:
       - kill: {entity: "TwilightForest.Troll", count: 3}
     rewards:
@@ -1669,10 +1537,8 @@ quests:
     type: optional
     deps: [trolls]
     desc: |
-      A §eTrollsteinn§r é uma pedra que brilha quando há luz perto (e escurece na sombra).
-      Aparece nas cavernas e nos jardins dos trolls.
-
-      Junte 6 para decorar.
+      A §eTrollsteinn§r é uma pedra que brilha quando há luz perto (e escurece na sombra). Linda para construções cheias de personalidade!
+      Aparece nas cavernas e nos jardins dos trolls. Junte 6 para decorar. Procure com calma e leve uma picareta decente. Confira os detalhes no NEI (R/U). Capriche na decoração!
     tasks:
       - get: TwilightForest:tile.TrollSteinn x6
     rewards:
@@ -1698,11 +1564,8 @@ quests:
     type: optional
     deps: [feijoes_magicos]
     desc: |
-      Suba o pé de feijão até as nuvens. Lá moram §eGiant Miners§r e §eArmored Giants§r: versões
-      enormes de jogadores, num mundo de blocos gigantes.
-
-      Derrote um Giant Miner. Ele pode deixar a §eGiant's Pickaxe§r, que quebra os blocos
-      gigantes. Cuidado com a queda!
+      Suba o pé de feijão até as nuvens. Lá moram §eGiant Miners§r e §eArmored Giants§r: versões enormes de jogadores, num mundo de blocos gigantes.
+      Derrote um Giant Miner. Ele pode deixar a §eGiant's Pickaxe§r, que quebra os blocos gigantes. §cCuidado com a queda!§r Olhe onde pisa e vá devagar. Boa aventura, Herói!
     tasks:
       - kill: {entity: "TwilightForest.Giant Miner", count: 1}
     rewards:
@@ -1713,10 +1576,8 @@ quests:
     type: optional
     deps: [gigantes]
     desc: |
-      A §eGiant's Pickaxe§r e a §eGiant's Sword§r têm alcance enorme. Elas também podem ser
-      feitas com Giant Cobblestone e Giant Log, os blocos do castelo das nuvens.
-
-      Tenha qualquer uma das duas.
+      A §eGiant's Pickaxe§r e a §eGiant's Sword§r têm alcance enorme. Elas também podem ser feitas com Giant Cobblestone e Giant Log, os blocos do castelo das nuvens.
+      Tenha qualquer uma das duas. Confira as receitas no NEI (R/U) para saber como combinar os blocos. Opcional, mas muito divertido de usar!
     tasks:
       - one_of: [TwilightForest:item.giantPick, TwilightForest:item.giantSword]
     rewards:
@@ -1727,11 +1588,8 @@ quests:
     type: main
     deps: [trolls]
     desc: |
-      No cofre da caverna dos trolls está a §eLamp of Cinders§r: uma lâmpada que queima as
-      barreiras de espinhos das Thornlands.
-
-      Encontre o cofre (procure portas e salas fechadas nas cavernas maiores) e pegue a
-      lâmpada.
+      No cofre da caverna dos trolls está a §eLamp of Cinders§r: uma lâmpada que queima as barreiras de espinhos das Thornlands.
+      Encontre o cofre (procure portas e salas fechadas nas cavernas maiores) e pegue a lâmpada. Leve tochas e paciência: as cavernas são grandes. Confira no NEI (R/U) se quiser saber mais. Você chega lá, Herói!
     tasks:
       - get: TwilightForest:item.lampOfCinders
     rewards:
@@ -1743,10 +1601,8 @@ quests:
     type: main
     deps: [lampada_cinzas]
     desc: |
-      As §eThornlands§r são um mar de espinhos (Thorns) que machucam e não podem ser quebrados à
-      mão. Use a Lamp of Cinders para queimá-los e abrir caminho.
-
-      Visite as Thornlands.
+      As §eThornlands§r são um mar de espinhos (Thorns) que machucam e não podem ser quebrados à mão. Use a Lamp of Cinders para queimá-los e abrir caminho.
+      Visite as Thornlands. Leve a lâmpada na barra de atalhos e vá abrindo a trilha com calma, sem encostar nos espinhos. Respire fundo e avance, Herói!
     tasks:
       - visit: {dim: 7, biome: 59, name: "Thornlands"}
     rewards:
@@ -1758,8 +1614,8 @@ quests:
     type: optional
     deps: [terras_espinhos]
     desc: |
-      Entre os espinhos às vezes floresce uma §eThorn Rose§r. Leve uma para casa: é a flor mais
-      teimosa do reino.
+      Entre os espinhos às vezes floresce uma §eThorn Rose§r, a flor mais teimosa do reino. Leve uma para casa, Herói!
+      Pegue uma enquanto explora as Thornlands, de preferência depois de queimar um caminho com a lâmpada. É opcional e serve de enfeite lindo. Aproveite o passeio e capriche na decoração!
     tasks:
       - get: TwilightForest:tile.TFThornRose
     rewards:
@@ -1787,9 +1643,8 @@ quests:
     type: optional
     deps: [castelo_final]
     desc: |
-      Os §eCastle Bricks§r e as runas coloridas do castelo são lindos para construir.
-
-      Junte 16 tijolos de castelo (qualquer variante).
+      Os §eCastle Bricks§r e as runas coloridas do castelo são lindos para construir. Dá para fazer uma fortaleza inteira!
+      Junte 16 tijolos de castelo (qualquer variante). Qualquer um serve para a quest, então escolha os que mais combinam com seu projeto. Confira as variantes no NEI (R/U). Bom divertimento na construção!
     tasks:
       - get: TwilightForest:tile.CastleBrick:* x16
     rewards:
@@ -1817,10 +1672,8 @@ quests:
     type: optional
     deps: [colina_media]
     desc: |
-      O §ePeacock Feather Fan§r cria uma rajada de vento que empurra criaturas e, usado no ar,
-      te dá um impulso para cima.
-
-      Ele aparece em baús de colinas e outras ruínas. Encontre um.
+      O §ePeacock Feather Fan§r cria uma rajada de vento que empurra criaturas e, usado no ar, te dá um impulso para cima. Que estilo!
+      Ele aparece em baús de colinas e outras ruínas. Encontre um. Vasculhe as ruínas com paciência e leve uma picareta para o caminho. Confira mais usos no NEI (R/U). Boa sorte, Herói!
     tasks:
       - get: TwilightForest:item.peacockFan
     rewards:
@@ -1831,10 +1684,8 @@ quests:
     type: optional
     deps: [colina_pequena]
     desc: |
-      O §eOre Magnet§r puxa veios de minério na direção em que você aponta. Mineração
-      preguiçosa, eu aprovo!
-
-      Ache um em baús das Colinas Ocas.
+      O §eOre Magnet§r puxa veios de minério na direção em que você aponta. Mineração preguiçosa, eu aprovo!
+      Ache um em baús das Colinas Ocas. Procure com calma e abra todo baú que encontrar. Se quiser conferir detalhes, o NEI (R/U) ajuda. Depois é só apontar e coletar. Boa sorte, Herói!
     tasks:
       - get: TwilightForest:item.oreMagnet
     rewards:
@@ -1845,10 +1696,8 @@ quests:
     type: optional
     deps: [criaturinhas]
     desc: |
-      A §eMoonworm Queen§r dispara Moonworms que grudam nas paredes e iluminam o caminho: a
-      tocha infinita do explorador. Recarregue-a na bancada com Torchberries.
-
-      Encontre uma em baús.
+      A §eMoonworm Queen§r dispara Moonworms que grudam nas paredes e iluminam o caminho: a tocha infinita do explorador. Recarregue-a na bancada com Torchberries.
+      Encontre uma em baús. Explore com paciência e deixe algumas Torchberries na bolsa para a recarga. Confira detalhes no NEI (R/U). Boa exploração, Herói!
     tasks:
       - get: TwilightForest:item.moonwormQueen
     rewards:
@@ -1859,10 +1708,8 @@ quests:
     type: optional
     deps: [colina_grande]
     desc: |
-      O §eTransformation Powder§r, usado num animal ou monstro, transforma-o na versão do
-      Crepúsculo (ou vice-versa). Um vislumbre do poder da Árvore da Transformação.
-
-      Junte 4 punhados (baús de colinas e do Tree Cache).
+      O §eTransformation Powder§r, usado num animal ou monstro, transforma-o na versão do Crepúsculo (ou vice-versa). Um vislumbre do poder da Árvore da Transformação.
+      Junte 4 punhados (baús de colinas e do Tree Cache). Procure com atenção e guarde o pó em segurança. Confira no NEI (R/U) se tiver dúvida. Boa busca, Herói!
     tasks:
       - get: TwilightForest:item.transformPowder x4
     rewards:
@@ -1873,9 +1720,8 @@ quests:
     type: optional
     deps: [portal_crepusculo]
     desc: |
-      Os §eKobolds§r são pequenos, barulhentos e covardes. Eles andam em bandos nas florestas.
-
-      Derrote 5 Kobolds.
+      Os §eKobolds§r são pequenos, barulhentos e covardes. Eles andam em bandos nas florestas e adoram fazer algazarra.
+      Derrote 5 Kobolds. Fique atento, porque eles aparecem em grupo, mas não são difíceis. Mantenha uma arma à mão e a vida em dia. Opcional e rapidinho. Divirta-se, Herói!
     tasks:
       - kill: {entity: "TwilightForest.Twilight Kobold", count: 5}
     rewards:
@@ -1886,10 +1732,8 @@ quests:
     type: optional
     deps: [frutos_tocha]
     desc: |
-      Os §eSkeleton Druids§r são esqueletos de enxada na mão que lançam feitiços de natureza.
-      Aparecem nas partes escuras da floresta.
-
-      Derrote 3 druidas: eles costumam largar Torchberries.
+      Os §eSkeleton Druids§r são esqueletos de enxada na mão que lançam feitiços de natureza. Aparecem nas partes escuras da floresta.
+      Derrote 3 druidas: eles costumam largar Torchberries. Fique de olho nos feitiços e use cobertura. Aproveite o saque para estocar luz e comida. Boa caçada, Herói!
     tasks:
       - kill: {entity: "TwilightForest.Skeleton Druid", count: 3}
     rewards:
@@ -1900,10 +1744,8 @@ quests:
     type: optional
     deps: [labirinto]
     desc: |
-      Um bolo misterioso chamado §eExperiment 115§r aparece em alguns baús do reino. Ninguém sabe
-      quem o assou. Ninguém sabe por que ele é tão gostoso.
-
-      Encontre um (e coma uma fatia em minha homenagem).
+      Um bolo misterioso chamado §eExperiment 115§r aparece em alguns baús do reino. Ninguém sabe quem o assou. Ninguém sabe por que ele é tão gostoso.
+      Encontre um (e coma uma fatia em minha homenagem). Procure nos baús com paciência; confira dicas no NEI (R/U). Boa sorte e bom apetite, Herói!
     tasks:
       - get: TwilightForest:item.experiment115
     rewards:
@@ -1914,9 +1756,8 @@ quests:
     type: optional
     deps: [labirinto]
     desc: |
-      O §eMaze Wafer§r é a ração dos exploradores do labirinto: aparece nos baús dos corredores.
-
-      Junte 8.
+      O §eMaze Wafer§r é a ração dos exploradores do labirinto: aparece nos baús dos corredores. Um lanchinho que nasceu para as caminhadas longas.
+      Junte 8. Abra todos os baús que encontrar e guarde os biscoitos para a próxima aventura. Confira o NEI (R/U) se quiser saber mais. Bom proveito, Herói!
     tasks:
       - get: TwilightForest:item.mazeWafer x8
     rewards:
@@ -1927,10 +1768,8 @@ quests:
     type: optional
     deps: [naga]
     desc: |
-      Depois que a Naga cai, os blocos decorados do pátio podem ser coletados: Nagastone,
-      pilares e escadas. Ótimos para um templo particular.
-
-      Junte 8 blocos de Etched Nagastone de um mesmo tipo (normal, com musgo ou desgastada).
+      Depois que a Naga cai, os blocos decorados do pátio podem ser coletados: Nagastone, pilares e escadas. Ótimos para um templo particular.
+      Junte 8 blocos de Etched Nagastone de um mesmo tipo (normal, com musgo ou desgastada). Escolha a variante que mais combina com seu projeto. Confira no NEI (R/U) se tiver dúvida. Bom divertimento, Herói!
     task_logic: OR
     tasks:
       - get: TwilightForest:tile.TFNagastoneEtched x8
@@ -1944,10 +1783,8 @@ quests:
     type: optional
     deps: [minoshroom]
     desc: |
-      Com o Minoshroom derrotado, a Mazestone fica mais fácil de quebrar (e a Mazebreaker a
-      corta como manteiga). Os tijolos do labirinto são lindos.
-
-      Junte 32 blocos de Mazestone (qualquer variante).
+      Com o Minoshroom derrotado, a Mazestone fica mais fácil de quebrar (e a Mazebreaker a corta como manteiga). Os tijolos do labirinto são lindos para construir!
+      Junte 32 blocos de Mazestone (qualquer variante). Escolha as que combinarem com seu projeto e leve uma boa picareta. Confira as variantes no NEI (R/U). Boa construção, Herói!
     tasks:
       - get: TwilightForest:tile.TFMazestone:* x32
     rewards:
@@ -1958,10 +1795,8 @@ quests:
     type: optional
     deps: [ur_ghast]
     desc: |
-      As tábuas de Towerwood da Torre Sombria têm um ar de fortaleza antiga. Algumas estão
-      infestadas de cupins: quebre com cuidado.
-
-      Junte 16 Towerwood Planks.
+      As tábuas de Towerwood da Torre Sombria têm um ar de fortaleza antiga, perfeitas para dar personalidade à sua base. Algumas estão infestadas de cupins: §cquebre com cuidado§r.
+      Junte 16 Towerwood Planks. Confira no NEI (R/U) como obter e quais variantes existem. Mãos à obra, Herói, e cuidado com os borers!
     tasks:
       - get: TwilightForest:tile.TFTowerStone x16
     rewards:
@@ -1973,11 +1808,8 @@ quests:
     deps: [lingote_ardente, knightmetal]
     deps_any: true
     desc: |
-      Neste pack, a integração do Tinkers' Construct está ativa: Fiery Metal, Knightmetal,
-      Naga Scale e Steeleaf são materiais de ferramenta, cada um com seus modificadores.
-
-      As "Notes on the Twilight Materials" explicam tudo. Receita: §ePadrão em Branco (Tinkers)
-      + Papel + Magic Map Focus§r.
+      Neste pack, a integração do Tinkers' Construct está ativa: Fiery Metal, Knightmetal, Naga Scale e Steeleaf são materiais de ferramenta, cada um com seus modificadores.
+      As "Notes on the Twilight Materials" explicam tudo. Receita: §ePadrão em Branco (Tinkers) + Papel + Magic Map Focus§r. Leia com calma, que o livro vale ouro!
     tasks:
       - craft: TwilightForest:manualBook
     rewards:
@@ -2011,10 +1843,8 @@ quests:
     title: "Mudas do Crepúsculo"
     deps: [madeiras_crepusculo]
     desc: |
-      Quer um pedaço do Crepúsculo em casa? As árvores daqui também deixam mudas: a do
-      Dossel (Canopy Tree), a de Mangue e a de Madeira Sombria (Darkwood).
-
-      Junte uma de cada. Elas crescem na Superfície também.
+      Quer um pedaço do Crepúsculo em casa? As árvores daqui também deixam mudas: a do Dossel (Canopy Tree), a de Mangue e a de Madeira Sombria (Darkwood).
+      Junte uma de cada. Elas crescem na Superfície também, então dá para plantar no seu quintal. Folhas de árvore costumam soltar mudas, então tenha paciência. Boa jardinagem, Herói!
     tasks:
       - get: [TwilightForest:tile.TFSapling:1, TwilightForest:tile.TFSapling:2, TwilightForest:tile.TFSapling:3]
     rewards:
@@ -2026,10 +1856,8 @@ quests:
     type: optional
     deps: [portal_crepusculo]
     desc: |
-      O chão da floresta é cheio de plantinhas que não existem em nenhum outro lugar: o
-      §eMayapple§r, o §eFiddlehead§r (samambaia enroladinha) e o §eMoss Patch§r (musgo rasteiro).
-
-      Colete uma de cada. (Algumas só saem com tesoura; se não cair nada, tente com ela.)
+      O chão da floresta é cheio de plantinhas que não existem em nenhum outro lugar: o §eMayapple§r, o §eFiddlehead§r (samambaia enroladinha) e o §eMoss Patch§r (musgo rasteiro).
+      Colete uma de cada. (Algumas só saem com tesoura; se não cair nada, tente com ela.) Procure nos cantinhos da floresta. Divirta-se explorando!
     tasks:
       - get: [TwilightForest:tile.TFPlant:4, TwilightForest:tile.TFPlant:8, TwilightForest:tile.TFPlant:3]
     rewards:
@@ -2039,10 +1867,8 @@ quests:
     title: "A Floresta Encantada"
     deps: [mapa_magico]
     desc: |
-      Árvores de folhas coloridas e uma luz azulada: a §eEnchanted Forest§r é rara e fácil de
-      reconhecer no mapa mágico. É lá que mora o Questing Ram e onde crescem os Rainbow Oaks.
-
-      Visite o bioma.
+      Árvores de folhas coloridas e uma luz azulada: a §eEnchanted Forest§r é rara e fácil de reconhecer no mapa mágico. É lá que mora o Questing Ram e onde crescem os Rainbow Oaks.
+      Visite o bioma. Use o mapa mágico para achar o caminho e aproveite a vista, Herói. Vale cada passo!
     tasks:
       - visit: {dim: 7, biome: 57, name: "Enchanted Forest"}
     rewards:
@@ -2054,10 +1880,8 @@ quests:
     type: optional
     deps: [floresta_encantada]
     desc: |
-      As folhas do §eRainbow Oak§r mudam de cor conforme o lugar. Uma árvore assim no jardim é
-      pura alegria.
-
-      Consiga uma Rainbow Oak Sapling.
+      As folhas do §eRainbow Oak§r mudam de cor conforme o lugar. Uma árvore assim no jardim é pura alegria, não acha?
+      Consiga uma Rainbow Oak Sapling. Ela costuma ser encontrada na Floresta Encantada; confira no NEI (R/U) como obtê-la. Plante e acompanhe o crescimento, Herói. Que lindeza!
     tasks:
       - get: TwilightForest:tile.TFSapling:9
     rewards:
@@ -2068,10 +1892,8 @@ quests:
     type: optional
     deps: [vagalumes]
     desc: |
-      Postes de luz antigos, vaga-lumes por toda parte: a §eFirefly Forest§r é o lugar mais
-      bonito do reino à "noite".
-
-      Visite o bioma.
+      Postes de luz antigos, vaga-lumes por toda parte: a §eFirefly Forest§r é o lugar mais bonito do reino à "noite", e eu fico emocionada só de lembrar.
+      Visite o bioma. Use o mapa mágico para se orientar, caminhe com calma e aproveite o brilho, Herói. Opcional, mas é um passeio que aquece o coração!
     tasks:
       - visit: {dim: 7, biome: 52, name: "Firefly Forest"}
     rewards:
@@ -2082,10 +1904,8 @@ quests:
     type: optional
     deps: [portal_crepusculo]
     desc: |
-      Cogumelos gigantes no lugar das árvores: a §eMushroom Forest§r. Mais para dentro fica a
-      Deep Mushroom Forest, ainda mais escura.
-
-      Visite a Mushroom Forest.
+      Cogumelos gigantes no lugar das árvores: a §eMushroom Forest§r. Mais para dentro fica a Deep Mushroom Forest, ainda mais escura.
+      Visite a Mushroom Forest. Use o mapa mágico para achar o caminho e leve tochas, pois a luz é pouca. Aproveite o passeio por esse mundo meio de fábula, Herói!
     tasks:
       - visit: {dim: 7, biome: 45, name: "Mushroom Forest"}
     rewards:
@@ -2096,8 +1916,8 @@ quests:
     type: optional
     deps: [floresta_cogumelos]
     desc: |
-      O §eMushgloom§r é um cogumelo que brilha de leve, típico das florestas de cogumelos
-      profundas. Junte 4.
+      O §eMushgloom§r é um cogumelo que brilha de leve, típico das florestas de cogumelos profundas, e dá um clima encantado a qualquer cantinho.
+      Junte 4. Procure nas partes mais escuras da Mushroom Forest e colete com cuidado. Se quiser saber mais usos, confira o NEI (R/U). Vai ficar lindo, Herói!
     tasks:
       - get: TwilightForest:tile.TFPlant:9 x4
     rewards:
@@ -2108,10 +1928,8 @@ quests:
     type: optional
     deps: [pantano]
     desc: |
-      Nos lagos e pântanos do Crepúsculo flutuam §eHuge Lily Pads§r e §eHuge Water Lilies§r, tão
-      grandes que dá para andar em cima.
-
-      Colete uma de cada.
+      Nos lagos e pântanos do Crepúsculo flutuam §eHuge Lily Pads§r e §eHuge Water Lilies§r, tão grandes que dá para andar em cima. Quase uma pontezinha natural!
+      Colete uma de cada. Procure pelos lagos e pântanos e leve uma tesoura, se precisar. Confira no NEI (R/U) mais detalhes. Bom passeio, Herói!
     tasks:
       - get: [TwilightForest:tile.HugeLilyPad, TwilightForest:tile.HugeWaterLily]
     rewards:
@@ -2122,9 +1940,8 @@ quests:
     type: optional
     deps: [pantano]
     desc: |
-      Mesmo com a maldição enfraquecida, os §eMosquito Swarms§r continuam zumbindo no pântano.
-
-      Espante 5 nuvens. Elas são frágeis, mas irritantes.
+      Mesmo com a maldição enfraquecida, os §eMosquito Swarms§r continuam zumbindo no pântano, só para atrapalhar seu passeio.
+      Espante 5 nuvens. Elas são frágeis, mas irritantes, então ataque rápido e mantenha a vida em dia. Opcional e rapidinho. Prepare a espada e mostre quem manda, Herói!
     tasks:
       - kill: {entity: "TwilightForest.Mosquito Swarm", count: 5}
     rewards:
@@ -2135,10 +1952,8 @@ quests:
     type: optional
     deps: [portal_crepusculo]
     desc: |
-      No subterrâneo do Crepúsculo vivem três besouros enormes: o §eFire Beetle§r (cospe fogo),
-      o §eSlime Beetle§r (cospe gosma) e o §ePinch Beetle§r (te agarra com as pinças).
-
-      Derrote um de cada.
+      No subterrâneo do Crepúsculo vivem três besouros enormes: o §eFire Beetle§r (cospe fogo), o §eSlime Beetle§r (cospe gosma) e o §ePinch Beetle§r (te agarra com as pinças).
+      Derrote um de cada. Cada um tem um truque, então observe antes de atacar e mantenha distância dos cuspes. Boa caçada, Herói!
     tasks:
       - kill: {entity: "TwilightForest.Fire Beetle", count: 1}
       - kill: {entity: "TwilightForest.Slime Beetle", count: 1}
@@ -2151,10 +1966,8 @@ quests:
     type: optional
     deps: [colina_pequena]
     desc: |
-      As §eSwarm Spiders§r são pequenas e vêm em bando, saindo de spawners nas colinas e
-      cavernas.
-
-      Derrote 8.
+      As §eSwarm Spiders§r são pequenas e vêm em bando, saindo de spawners nas colinas e cavernas. Parecem inofensivas, mas em grupo incomodam bastante.
+      Derrote 8. Procure perto de spawners e lute com a espada à mão, de preferência em um corredor estreito. Opcional, mas treina bem a paciência. Vai com tudo, Herói!
     tasks:
       - kill: {entity: "TwilightForest.Swarm Spider", count: 8}
     rewards:
@@ -2165,9 +1978,8 @@ quests:
     type: optional
     deps: [portal_crepusculo]
     desc: |
-      Nem todo lobo do Crepúsculo quer carinho. Os §eHostile Wolves§r atacam à primeira vista.
-
-      Derrote 4.
+      Nem todo lobo do Crepúsculo quer carinho. Os §eHostile Wolves§r atacam à primeira vista, então fique esperto(a).
+      Derrote 4. Lute de costas para uma parede ou árvore e mantenha a vida cheia para não ser cercado(a). Opcional, mas rende uma boa prática de combate. Boa sorte, Herói!
     tasks:
       - kill: {entity: "TwilightForest.Hostile Wolf", count: 4}
     rewards:
@@ -2177,10 +1989,8 @@ quests:
     title: "Madeira Sombria"
     deps: [floresta_sombria]
     desc: |
-      A §eDarkwood§r das Florestas Sombrias é quase preta: a madeira favorita de quem quer uma
-      base com cara de castelo assombrado.
-
-      Corte 16 troncos de Darkwood.
+      A §eDarkwood§r das Florestas Sombrias é quase preta: a madeira favorita de quem quer uma base com cara de castelo assombrado. Eu adoro esse clima!
+      Corte 16 troncos de Darkwood. Leve um bom machado e fique atento aos monstros da floresta. Guarde a madeira, que ela serve para construção e outros usos. Confira no NEI (R/U).
     tasks:
       - get: TwilightForest:tile.TFLog:3 x16
     rewards:
@@ -2192,10 +2002,8 @@ quests:
     type: optional
     deps: [stronghold_cavaleiros]
     desc: |
-      Os §eUpper Goblin Knights§r andam montados nos Lower Goblin Knights, com lança e escudo.
-      Separe os dois e derrote o de cima.
-
-      Derrote 2.
+      Os §eUpper Goblin Knights§r andam montados nos Lower Goblin Knights, com lança e escudo. Separe os dois e derrote o de cima.
+      Derrote 2. Foque primeiro no cavaleiro de baixo para derrubar o de cima, ou ataque por trás do escudo. Leve armadura boa. Opcional, mas emocionante. Coragem, Herói!
     tasks:
       - kill: {entity: "TwilightForest.Upper Goblin Knight", count: 2}
     rewards:
@@ -2205,10 +2013,8 @@ quests:
     title: "Golem de Carminite"
     deps: [chave_torre]
     desc: |
-      Os §eCarminite Golems§r patrulham a Torre Sombria e batem com força. São lentos: use isso
-      a seu favor.
-
-      Derrote 2.
+      Os §eCarminite Golems§r patrulham a Torre Sombria e batem com força. São lentos: use isso a seu favor, Herói!
+      Derrote 2. Dê golpes e recue, sem ficar ao alcance deles. Mantenha a vida cheia e leve armadura sólida. Dentro da torre, preste atenção aos corredores estreitos. Você consegue!
     tasks:
       - kill: {entity: "TwilightForest.Tower Golem", count: 2}
     rewards:
@@ -2220,10 +2026,8 @@ quests:
     type: optional
     deps: [ghastlings]
     desc: |
-      Os §eCarminite Ghastguards§r são ghasts de verdade que guardam o topo da torre. Rebata as
-      bolas de fogo deles com a espada.
-
-      Derrote 3.
+      Os §eCarminite Ghastguards§r são ghasts de verdade que guardam o topo da torre. Rebata as bolas de fogo deles com a espada, igual ao ghast comum.
+      Derrote 3. Mire no momento em que a bola de fogo chega e bata com a espada de volta. Opcional, mas muito satisfatório. Vai fundo, Herói!
     tasks:
       - kill: {entity: "TwilightForest.Tower Ghast", count: 3}
     rewards:
@@ -2234,10 +2038,8 @@ quests:
     type: optional
     deps: [geleira]
     desc: |
-      Os §eIce Crystals§r são os escudos vivos da Rainha da Neve. Aprenda a derrubá-los rápido:
-      a luta contra ela depende disso.
-
-      Derrote 4.
+      Os §eIce Crystals§r são os escudos vivos da Rainha da Neve. Aprenda a derrubá-los rápido: a luta contra ela depende disso.
+      Derrote 4. Aproveite para treinar o ritmo de golpes e a pontaria antes da batalha final do palácio. Confira dicas no NEI (R/U). Opcional, mas boa prática. Vai nessa, Herói!
     tasks:
       - kill: {entity: "TwilightForest.Ice Crystal", count: 4}
     rewards:
@@ -2248,10 +2050,8 @@ quests:
     type: optional
     deps: [gigantes]
     desc: |
-      O §eArmored Giant§r é o guerreiro dos gigantes das nuvens: armadura completa e uma espada
-      do tamanho de uma árvore.
-
-      Derrote um.
+      O §eArmored Giant§r é o guerreiro dos gigantes das nuvens: armadura completa e uma espada do tamanho de uma árvore. Um desafio e tanto!
+      Derrote um. Mantenha distância dos golpes e ataque nos intervalos; leve armadura forte e comida. §cCuidado com a queda§r nas nuvens. Opcional e épico. Coragem, Herói!
     tasks:
       - kill: {entity: "TwilightForest.Armored Giant", count: 1}
     rewards:
@@ -2262,10 +2062,8 @@ quests:
     type: optional
     deps: [gigantes]
     desc: |
-      No mundo dos gigantes, até os blocos são enormes: §eGiant Cobblestone§r e §eGiant Log§r
-      ocupam um espaço de 4x4x4. São eles que viram as ferramentas de gigante.
-
-      Colete um de cada (você vai precisar da Giant's Pickaxe ou de muita paciência).
+      No mundo dos gigantes, até os blocos são enormes: §eGiant Cobblestone§r e §eGiant Log§r ocupam um espaço de 4x4x4. São eles que viram as ferramentas de gigante.
+      Colete um de cada (você vai precisar da Giant's Pickaxe ou de muita paciência). Confira no NEI (R/U) como obtê-los. Boa sorte, Herói!
     tasks:
       - get: [TwilightForest:tile.GiantCobble, TwilightForest:tile.GiantLog]
     rewards:
@@ -2276,8 +2074,8 @@ quests:
     type: optional
     deps: [feijoes_magicos]
     desc: |
-      No alto do pé de feijão, o chão é feito de §eFluffy Clouds§r. Pegue 4 blocos de nuvem para
-      provar que chegou lá em cima, e não olhe para baixo.
+      No alto do pé de feijão, o chão é feito de §eFluffy Clouds§r. Pegue 4 blocos de nuvem para provar que chegou lá em cima, e não olhe para baixo!
+      Colete com cuidado e fique longe da borda para não despencar. Opcional, mas uma lembrança bem fofinha. Aproveite a vista, Herói, e volte inteiro(a) por favor!
     tasks:
       - get: TwilightForest:tile.FluffyCloud x4
     rewards:
@@ -2288,10 +2086,8 @@ quests:
     type: optional
     deps: [trolls]
     desc: |
-      A §eDeadrock§r forma as paredes das cavernas dos trolls, em versões normal, rachada e
-      desgastada. Ótima pedra escura para construir.
-
-      Junte 16 (qualquer variante).
+      A §eDeadrock§r forma as paredes das cavernas dos trolls, em versões normal, rachada e desgastada. Ótima pedra escura para construir.
+      Junte 16 (qualquer variante). Escolha as versões que mais combinam com seu projeto e leve uma picareta decente. Confira no NEI (R/U) os detalhes. Boa construção, Herói!
     tasks:
       - get: TwilightForest:tile.TFDeadrock:* x16
     rewards:
@@ -2302,10 +2098,8 @@ quests:
     type: optional
     deps: [portal_crepusculo]
     desc: |
-      Os §eSpiral Stone Bricks§r são um bloco decorativo do Crepúsculo feito na bancada com
-      pedra (ou tijolos de pedra) e lajes de pedra. Confira o formato no NEI.
-
-      Faça um lote.
+      Os §eSpiral Stone Bricks§r são um bloco decorativo do Crepúsculo feito na bancada com pedra (ou tijolos de pedra) e lajes de pedra. Confira o formato no NEI.
+      Faça um lote. Aproveite para testar o desenho e usar nas suas construções. Fica muito bonito em paredes e pisos. Divirta-se criando, Herói!
     tasks:
       - craft: TwilightForest:tile.TFSpiralBricks
     rewards:
@@ -2316,10 +2110,8 @@ quests:
     type: optional
     deps: [lingote_ironwood]
     desc: |
-      Ironwood, Steeleaf, Knightmetal, Fiery Metal, Carminite e Arctic Fur têm blocos
-      compactos (9 itens = 1 bloco), e todos servem de base para Sinalizadores (Beacons)!
-
-      Faça qualquer um desses blocos.
+      Ironwood, Steeleaf, Knightmetal, Fiery Metal, Carminite e Arctic Fur têm blocos compactos (9 itens = 1 bloco), e todos servem de base para Sinalizadores (Beacons)!
+      Faça qualquer um desses blocos. Escolha o material que você tiver de sobra e confira a receita no NEI (R/U). Que brilho vai sair daí, Herói!
     tasks:
       - one_of: [TwilightForest:tile.IronwoodBlock, TwilightForest:tile.SteeleafBlock, TwilightForest:tile.KnightmetalBlock, TwilightForest:tile.FieryBlock, TwilightForest:tile.CarminiteBlock, TwilightForest:tile.ArcticFurBlock]
     rewards:
@@ -2330,10 +2122,8 @@ quests:
     type: optional
     deps: [mapa_labirinto]
     desc: |
-      Ative o Blank Maze Map dentro do labirinto e veja os corredores aparecerem enquanto você
-      anda. Nunca mais perdido(a)!
-
-      Tenha um Maze Map ativado.
+      Ative o Blank Maze Map dentro do labirinto e veja os corredores aparecerem enquanto você anda. Nunca mais perdido(a)!
+      Tenha um Maze Map ativado. Use o mapa logo na entrada do labirinto e vá explorando; ele se desenha sozinho conforme você caminha. Opcional, mas salva muito tempo. Boa exploração, Herói!
     tasks:
       - get: TwilightForest:item.mazeMap:*
     rewards:
@@ -2344,10 +2134,8 @@ quests:
     type: optional
     deps: [amuleto_guarda]
     desc: |
-      Quatro Charms of Keeping I formam um §eCharm of Keeping II§r: na morte, você mantém a
-      armadura e a barra de atalhos.
-
-      Monte um.
+      Quatro Charms of Keeping I formam um §eCharm of Keeping II§r: na morte, você mantém a armadura e a barra de atalhos. Um seguro bem melhor, Herói!
+      Monte um. Junte os quatro de nível I e leve a receita no NEI (R/U) se esquecer. Guarde no inventário e explore sem medo, que eu fico mais tranquila!
     tasks:
       - craft: TwilightForest:item.charmOfKeeping2
     rewards:
@@ -2358,11 +2146,8 @@ quests:
     type: optional
     deps: [tinkers_crepusculo]
     desc: |
-      Na Smeltery do Tinkers' Construct, Fiery Ingots viram §eMolten Fiery Metal§r e Knightmetal
-      vira §eMolten Knightmetal§r. Fiery Blood e Fiery Tears podem ser despejados em tanques do
-      Tinkers e viram §eFiery Essence§r líquida.
-
-      Encha um balde com qualquer um desses três líquidos.
+      Na Smeltery do Tinkers' Construct, Fiery Ingots viram §eMolten Fiery Metal§r e Knightmetal vira §eMolten Knightmetal§r. Fiery Blood e Fiery Tears podem ser despejados em tanques do Tinkers e viram §eFiery Essence§r líquida.
+      Encha um balde com qualquer um desses três líquidos. Confira o NEI (R/U) se travar. Boa fundição, Herói!
     tasks:
       - one_of: [TwilightForest:buckets, TwilightForest:buckets:1, TwilightForest:buckets:2]
     rewards:
@@ -2373,10 +2158,8 @@ quests:
     type: optional
     deps: [floresta_cogumelos]
     desc: |
-      No miolo das florestas de cogumelos, os chapéus gigantes fecham o céu: a §eDeep Mushroom
-      Forest§r. É escura, úmida e cheia de Mushgloom.
-
-      Visite o bioma.
+      No miolo das florestas de cogumelos, os chapéus gigantes fecham o céu: a §eDeep Mushroom Forest§r. É escura, úmida e cheia de Mushgloom.
+      Visite o bioma. Leve tochas, comida e um mapa mágico para se orientar. Opcional, mas lindo de ver. Aproveite o passeio, Herói!
     tasks:
       - visit: {dim: 7, biome: 53, name: "Deep Mushroom Forest"}
     rewards:
@@ -2387,10 +2170,8 @@ quests:
     type: optional
     deps: [portal_crepusculo]
     desc: |
-      O §eTwilight Lake§r é um lago enorme e calmo, ótimo para pescar e para descansar os olhos
-      entre uma luta e outra. Dizem que o Reino inteiro foi desenhado em volta dele.
-
-      Visite o lago.
+      O §eTwilight Lake§r é um lago enorme e calmo, ótimo para pescar e para descansar os olhos entre uma luta e outra. Dizem que o Reino inteiro foi desenhado em volta dele.
+      Visite o lago. Respire fundo, aproveite o silêncio e talvez jogue uma linha. Você merece esse descanso, Herói!
     tasks:
       - visit: {dim: 7, biome: 41, name: "Twilight Lake"}
     rewards:
