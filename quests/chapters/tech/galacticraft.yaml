@@ -59,10 +59,8 @@ quests:
     deps: [sonho_espacial]
     icon: GalacticraftCore:tile.gcBlockCore:7
     desc: |
-      O metal leve dos foguetes. O §eMinério Alumínio§r do Galacticraft gera no mundo normal
-      (config ativa) e funde numa fornalha comum. Qualquer alumínio do oredict também vale.
-
-      Junte §e24 Barras de Alumínio§r: elas viram cabos, a Prensa e metade das máquinas do mod.
+      Todo foguete começa com um metal leve, Herói! O §eMinério Alumínio§r do Galacticraft gera no mundo normal (se a config estiver ativa) e funde numa fornalha comum. Qualquer alumínio do oredict também vale, então use o que já tiver.
+      Junte §e24 Barras de Alumínio§r: elas viram cabos, a Prensa e metade das máquinas do mod. Se não achar o minério, aperte R ou U no NEI para conferir onde ele aparece.
     tasks:
       - get: ore:ingotAluminum x24
     rewards:
@@ -109,9 +107,8 @@ quests:
     deps: [aluminio]
     icon: GalacticraftCore:tile.aluminumWire
     desc: |
-      3 barras de alumínio entre 6 lãs rendem §e6 Cabos de Alumínio§r: o fio da energia do
-      Galacticraft (gJ — que conversa com RF, EU e Joules de outros mods). O §eCabo de Alumínio
-      Pesado§r (lã + cabo + barra) aguenta muito mais energia.
+      Chegou a hora de ligar as máquinas! 3 barras de alumínio entre 6 lãs rendem §e6 Cabos de Alumínio§r: o fio da energia do Galacticraft (gJ, que conversa com RF, EU e Joules de outros mods). Faça o bastante para ligar suas máquinas.
+      O §eCabo de Alumínio Pesado§r (lã + cabo + barra) aguenta muito mais energia, mas o comum já resolve por enquanto. Veja as receitas no NEI com R.
     tasks:
       - get: GalacticraftCore:tile.aluminumWire x12
     rewards:
@@ -124,8 +121,8 @@ quests:
     deps: [cabo_aluminio]
     icon: GalacticraftCore:tile.aluminumWire:1
     desc: |
-      Para máquinas famintas e para o Painel Solar Avançado: o §eCabo de Alumínio Pesado§r
-      transporta muito mais energia que o comum.
+      Máquinas famintas pedem fios mais parrudos, Herói. O §eCabo de Alumínio Pesado§r transporta muito mais energia que o comum e é a escolha certa para o Painel Solar Avançado e para as máquinas que mais consomem.
+      É opcional, então faça só quando o cabo comum começar a ficar curto. Se tiver dúvida sobre a receita, aperte R no NEI com o cabo na mão e confira.
     tasks:
       - get: GalacticraftCore:tile.aluminumWire:1 x6
     rewards:
@@ -193,8 +190,8 @@ quests:
     deps: [fabricador_circuitos]
     icon: GalacticraftCore:item.basicItem:13
     desc: |
-      O circuito do dia a dia: Coletor de Oxigênio, Fornalha Elétrica, Carregador de Combustível,
-      Prensa, Tela de Exibição... Faça §e6 Wafers Básicos§r (duas rodadas com Tocha de Redstone).
+      Este é o circuito do dia a dia! O Wafer Básico entra no Coletor de Oxigênio, na Fornalha Elétrica, no Carregador de Combustível, na Prensa, na Tela de Exibição e em muito mais.
+      Faça §e6 Wafers Básicos§r no Fabricador de Circuitos (duas rodadas com Tocha de Redstone). Vale produzir de uma vez, porque você vai usar bastante. Se algo não encaixar, o NEI (R/U) mostra a receita.
     tasks:
       - get: ore:waferBasic x6
     rewards:
@@ -207,9 +204,8 @@ quests:
     deps: [wafer_basico]
     icon: GalacticraftCore:item.basicItem:14
     desc: |
-      Com um §eRepetidor de Redstone§r no lugar da tocha, o Fabricador faz §e1 Wafer Avançado§r
-      por rodada. Ele vai na Bancada de Trabalho NASA, na Prensa Elétrica, no Grupo de
-      Armazenagem de Energia e na Estação Espacial. Faça §e3§r.
+      Hora de subir de nível, Herói! Com um §eRepetidor de Redstone§r no lugar da tocha, o Fabricador faz §e1 Wafer Avançado§r por rodada. Ele vai na Bancada de Trabalho NASA, na Prensa Elétrica, no Grupo de Armazenagem de Energia e na Estação Espacial.
+      Faça §e3§r e guarde com carinho: é uma peça cara, então não desperdice redstone à toa. Confira detalhes no NEI (R/U).
     tasks:
       - get: ore:waferAdvanced x3
     rewards:
@@ -222,9 +218,8 @@ quests:
     deps: [fabricador_circuitos]
     icon: GalacticraftCore:item.basicItem:12
     desc: |
-      Lápis-Lazúli no Fabricador rende §e9 Wafers Solares Azuis§r de uma vez. Eles viram Módulos
-      Solares, e o Galacticraft tem um segredo: §ena Estação Espacial os painéis rendem o dobro§r
-      (multiplicador 2,0 na config).
+      Quer energia do sol? Coloque Lápis-Lazúli no Fabricador de Circuitos e saem §e9 Wafers Solares Azuis§r de uma vez. Eles viram Módulos Solares, que formam os painéis.
+      E o Galacticraft guarda um segredo, Herói: §ena Estação Espacial os painéis rendem o dobro§r (multiplicador 2,0 na config). Faça os 9 wafers e siga para os módulos. Em dúvida, aperte R no NEI para ver a receita.
     tasks:
       - get: ore:waferSolar x9
     rewards:
@@ -237,8 +232,8 @@ quests:
     deps: [prensa]
     icon: GalacticraftCore:item.basicItem:6
     desc: |
-      Duas barras iguais na Prensa = um metal prensado. Faça §e4 de cada§r: Cobre, Estanho,
-      Alumínio e Ferro Prensados. (O Bronze Prensado também sai de Cobre + Estanho Prensados.)
+      Metal prensado é a base de quase tudo por aqui! Duas barras iguais na Prensa viram um metal prensado. Faça §e4 de cada§r: Cobre, Estanho, Alumínio e Ferro Prensados.
+      O Bronze Prensado também sai de Cobre + Estanho Prensados, e você vai precisar dele logo adiante. A Prensa é lenta no começo, mas dá para ter paciência, Herói. Confira as receitas no NEI (R/U) se travar.
     tasks:
       - get: [ore:compressedCopper x4, ore:compressedTin x4, ore:compressedAluminum x4, ore:compressedIron x4]
     rewards:
@@ -267,9 +262,8 @@ quests:
     deps: [metais_prensados]
     icon: GalacticraftCore:item.basicItem:10
     desc: |
-      Bronze Prensado (2 barras de bronze, ou Cobre Prensado + Estanho Prensado) vai na
-      Blindagem Pesada, na Chave Inglesa Padrão, na Prensa Elétrica e no Compressor de
-      Oxigênio. Faça §e6§r.
+      O Bronze Prensado é daqueles materiais que aparecem em todo lugar. Ele sai de 2 barras de bronze, ou de Cobre Prensado + Estanho Prensado, e vai na Blindagem Pesada, na Chave Inglesa Padrão, na Prensa Elétrica e no Compressor de Oxigênio.
+      Faça §e6§r e guarde. Já deve ter os prensados da etapa anterior sobrando, então é só combinar. Se precisar, o NEI (R/U) mostra o caminho.
     tasks:
       - get: ore:compressedBronze x6
     rewards:
@@ -282,9 +276,8 @@ quests:
     deps: [aco_prensado, wafer_avancado, bronze_prensado]
     icon: GalacticraftCore:tile.machine2
     desc: |
-      A Prensa a carvão é lenta. A §ePrensa Elétrica§r faz as mesmas receitas muito mais rápido
-      usando energia. Se você vai fazer foguetes de verdade, ela paga o investimento no
-      primeiro casco.
+      A Prensa a carvão é lenta, Herói, e foguete de verdade pede muito metal prensado. A §ePrensa Elétrica§r faz as mesmas receitas muito mais rápido usando energia, e paga o investimento já no primeiro casco.
+      Ligue ela nos seus cabos de alumínio e deixe trabalhando. Ela usa Bronze Prensado e Wafer Avançado, então confira os materiais no NEI (R/U) antes de montar.
     tasks:
       - get: GalacticraftCore:tile.machine2
     rewards:
@@ -296,8 +289,8 @@ quests:
     type: optional
     deps: [bronze_prensado]
     desc: |
-      Gira máquinas do Galacticraft (e muitas outras) sem quebrá-las. 2 Bronze Prensado e 1 Aço
-      Prensado.
+      Uma ferramenta que todo engenheiro merece! A Chave Inglesa Padrão gira máquinas do Galacticraft (e muitas outras) sem precisar quebrá-las, o que poupa muito tempo e material.
+      A receita leva 2 Bronze Prensado e 1 Aço Prensado. É opcional, mas você vai agradecer na primeira vez que precisar virar uma máquina de lado. Confira a receita no NEI com R, Herói.
     tasks:
       - get: GalacticraftCore:item.standardWrench
     rewards:
@@ -309,8 +302,8 @@ quests:
     deps: [metais_prensados]
     icon: GalacticraftCore:item.battery
     desc: |
-      5 Estanho Prensado, carvão e redstone: uma §eBateria§r de 15 000 gJ. Ela alimenta
-      ferramentas e é ingrediente do Módulo de Armazenagem de Energia.
+      Energia que cabe no bolso! Com 5 Estanho Prensado, carvão e redstone você faz uma §eBateria§r de 15 000 gJ. Ela alimenta ferramentas e é ingrediente do Módulo de Armazenagem de Energia.
+      A missão pede §e3 Baterias§r, então prepare estanho prensado suficiente antes de começar. Qualquer dúvida na receita, o NEI (R/U) resolve, Herói.
     tasks:
       - get: GalacticraftCore:item.battery x3
     rewards:
@@ -323,8 +316,8 @@ quests:
     deps: [bateria_gc, aco_prensado]
     icon: GalacticraftCore:tile.machineTiered
     desc: |
-      6 Aço Prensado e 3 Baterias: o banco de energia do Galacticraft. Ele também aparece em
-      receitas de Marte (a Base do Astrominerador pede um).
+      Hora de guardar energia! Com 6 Aço Prensado e 3 Baterias você monta o banco de energia do Galacticraft, o Módulo de Armazenagem. Ele estabiliza a rede e evita que suas máquinas fiquem sem fôlego.
+      Vale a pena fazer logo, Herói: ele também aparece em receitas de Marte (a Base do Astrominerador pede um). Confira o passo a passo no NEI com R ou U.
     tasks:
       - get: GalacticraftCore:tile.machineTiered
     rewards:
@@ -337,8 +330,8 @@ quests:
     deps: [armazenagem_energia, wafer_avancado]
     icon: GalacticraftCore:tile.machineTiered:8
     desc: |
-      Quatro Módulos de Armazenagem + Aço Prensado + um Wafer Avançado: a versão grande do
-      banco de energia.
+      Quer um banco de energia gigante? Junte quatro Módulos de Armazenagem + Aço Prensado + um Wafer Avançado e saia com o §eGrupo de Armazenagem de Energia§r, a versão grande do banco de energia.
+      É opcional, mas ótimo para bases com muitas máquinas ligadas. Prepare os módulos primeiro, Herói, e confira a receita no NEI (R/U) para não errar a posição.
     tasks:
       - get: GalacticraftCore:tile.machineTiered:8
     rewards:
@@ -350,8 +343,8 @@ quests:
     deps: [aco_prensado, wafer_basico]
     icon: GalacticraftCore:tile.machineTiered:4
     desc: |
-      Uma fornalha a energia, sem carvão. Também é ingrediente do Sintetizador de Metano lá em
-      Marte e a base da Fornalha a Arco Voltaico.
+      Que tal uma fornalha que não pede carvão? A §eFornalha Elétrica§r funciona só com energia, é opcional, mas muito prática. Ela também é ingrediente do Sintetizador de Metano lá em Marte e a base da Fornalha a Arco Voltaico.
+      Ligue-a na sua rede de cabos de alumínio e aproveite, Herói. Se a receita der trabalho, aperte R no NEI para conferir os componentes.
     tasks:
       - get: GalacticraftCore:tile.machineTiered:4
     rewards:
@@ -363,8 +356,8 @@ quests:
     deps: [wafer_solar, cabo_aluminio]
     icon: GalacticraftCore:item.basicItem
     desc: |
-      Vidro, Wafers Solares e Cabos de Alumínio = 2 Módulos Solares. Seis módulos e cabos formam
-      um §ePainel Solar Completo§r.
+      Vamos transformar sol em energia! Vidro, Wafers Solares e Cabos de Alumínio rendem 2 Módulos Solares por rodada. Seis módulos e cabos formam um §ePainel Solar Completo§r, então junte o bastante.
+      Se não lembrar a posição na bancada, aperte R com o módulo no NEI, Herói. Quanto mais módulos, mais painéis você poderá montar depois.
     tasks:
       - get: GalacticraftCore:item.basicItem:1
     rewards:
@@ -377,8 +370,8 @@ quests:
     deps: [modulo_solar, wafer_basico, aco_prensado]
     icon: GalacticraftCore:tile.solar
     desc: |
-      O painel do Galacticraft gira para acompanhar o sol (é lindo de ver). Ocupa um espaço
-      maior que um bloco — deixe área livre em volta. Na Estação Espacial ele rende o dobro.
+      Esse painel é lindo de ver! O Painel Solar do Galacticraft gira para acompanhar o sol. Ele ocupa um espaço maior que um bloco, então deixe área livre em volta antes de posicionar, para não dar problema.
+      Na Estação Espacial ele rende o dobro, Herói. Ligue-o nos seus cabos de alumínio e deixe a energia fluir. Receita no NEI (R/U) se precisar.
     tasks:
       - get: GalacticraftCore:tile.solar
     rewards:
@@ -391,8 +384,8 @@ quests:
     deps: [painel_solar, wafer_avancado, cabo_pesado]
     icon: GalacticraftCore:tile.solar:4
     desc: |
-      Mesmo Painel Solar Completo, mas com Cabos de Alumínio Pesados e um Wafer Avançado: mais
-      potência por painel.
+      Quer mais potência por painel? O Painel Solar Avançado usa o mesmo Painel Solar Completo, mas com Cabos de Alumínio Pesados e um Wafer Avançado, e entrega mais energia do que o básico.
+      É opcional, mas ótimo para quem quer base eficiente. Prepare os cabos pesados primeiro, Herói, e confira a receita no NEI com R ou U.
     tasks:
       - get: GalacticraftCore:tile.solar:4
     rewards:
@@ -421,8 +414,8 @@ quests:
     deps: [aco_prensado]
     icon: GalacticraftCore:item.steel_pickaxe
     desc: |
-      Aço Prensado vira ferramentas e armadura "para Trabalho Pesado": mais duráveis que as de
-      ferro. Uma boa picareta para as primeiras viagens.
+      Quer uma ferramenta de respeito? O Aço Prensado vira ferramentas e armadura "para Trabalho Pesado", mais duráveis que as de ferro. Basta fazer uma peça para completar: picareta, peitoral ou espada.
+      Uma boa picareta ajuda muito nas primeiras viagens, Herói, quando você ainda vai minerar bastante lá fora. Veja as receitas no NEI (R/U) e escolha a sua.
     tasks:
       - one_of: [GalacticraftCore:item.steel_pickaxe, GalacticraftCore:item.steel_chestplate, GalacticraftCore:item.steel_sword]
     rewards:
@@ -474,10 +467,8 @@ quests:
     deps: [oficina_espacial, bronze_prensado]
     icon: GalacticraftCore:item.heavyPlating
     desc: |
-      Na Prensa, duas linhas de §eAço Prensado + Alumínio Prensado + Bronze Prensado§r (6 metais
-      prensados no total) rendem §e2 Blindagens Pesadas§r.
-
-      O Foguete Nível 1 leva 8 no casco, mais as do nariz, das aletas e do motor. Faça §e16§r.
+      Foguete sem casco forte não decola! Na Prensa, duas linhas de §eAço Prensado + Alumínio Prensado + Bronze Prensado§r (6 metais prensados no total) rendem §e2 Blindagens Pesadas§r.
+      O Foguete Nível 1 leva 8 no casco, mais as do nariz, das aletas e do motor. Faça §e16§r, Herói. Ou seja: muito metal prensado vem por aí, então vá com calma. Confira no NEI (R/U).
     tasks:
       - get: GalacticraftCore:item.heavyPlating x16
     rewards:
@@ -490,8 +481,8 @@ quests:
     deps: [metais_prensados, aco_prensado]
     icon: GalacticraftCore:item.airVent
     desc: |
-      3 Estanho Prensado e 1 Aço Prensado: o §eRespirador§r. Peça pequena que aparece em tudo —
-      motor do foguete, equipamentos de oxigênio, coletores, seladores...
+      Respirar no espaço dá trabalho! Com 3 Estanho Prensado e 1 Aço Prensado você faz o §eRespirador§r, uma peça pequena que aparece em tudo: motor do foguete, equipamentos de oxigênio, coletores, seladores...
+      Faça §e4§r de uma vez, Herói, porque você vai usar várias. Se esquecer a receita, aperte R no NEI e confira.
     tasks:
       - get: GalacticraftCore:item.airVent x4
     rewards:
@@ -504,8 +495,8 @@ quests:
     deps: [aco_prensado, wafer_basico]
     icon: GalacticraftCore:item.airFan
     desc: |
-      4 Aço Prensado, um Wafer Básico e redstone. O §eVentilador§r empurra oxigênio nos
-      coletores, distribuidores e seladores.
+      O Ventilador empurra oxigênio pelos coletores, distribuidores e seladores, então sem ele nada de ar na sua base. A receita leva 4 Aço Prensado, um Wafer Básico e redstone.
+      Faça §e3 Ventiladores§r, Herói. Eles são pequenos, mas essenciais para manter tudo respirável. Se precisar, o NEI (R/U) mostra o desenho da receita.
     tasks:
       - get: GalacticraftCore:item.airFan x3
     rewards:
@@ -518,8 +509,8 @@ quests:
     deps: [cobre_estanho]
     icon: GalacticraftCore:item.canister
     desc: |
-      7 barras de estanho (ou de cobre) em "U" rendem 2 latas. A §eLata de Estanho§r vira motor,
-      tanque de oxigênio e comida enlatada; a §eLata de Cobre§r vai na Refinaria.
+      Latas são úteis demais! 7 barras de estanho (ou de cobre) em "U" rendem 2 latas. A §eLata de Estanho§r vira motor, tanque de oxigênio e comida enlatada; a §eLata de Cobre§r vai na Refinaria.
+      Faça 4 de estanho e 2 de cobre, Herói. É bastante metal, mas vale cada barra. Confira no NEI com R ou U se travar.
     tasks:
       - get: [GalacticraftCore:item.canister x4, GalacticraftCore:item.canister:1 x2]
     rewards:
@@ -532,8 +523,8 @@ quests:
     deps: [blindagem_pesada]
     icon: GalacticraftCore:item.noseCone
     desc: |
-      3 Blindagens Pesadas em pirâmide e uma Tocha de Redstone na ponta: o §eNariz de
-      Foguete§r. Aerodinâmica de primeira!
+      O topo do foguete merece capricho! Monte 3 Blindagens Pesadas em pirâmide e coloque uma Tocha de Redstone na ponta: pronto, o §eNariz de Foguete§r. Aerodinâmica de primeira!
+      É uma das peças principais do Foguete Nível 1, então não pule. Veja a posição exata na bancada pelo NEI (R/U), Herói.
     tasks:
       - get: GalacticraftCore:item.noseCone
     rewards:
@@ -546,8 +537,8 @@ quests:
     deps: [blindagem_pesada]
     icon: GalacticraftCore:item.rocketFins
     desc: |
-      4 Blindagens Pesadas e 2 Aço Prensado por aleta. O Foguete Nível 1 leva §e4 aletas§r — sem
-      elas ele sobe girando igual pião.
+      Sem as aletas, o foguete sobe girando igual pião! Cada aleta leva 4 Blindagens Pesadas e 2 Aço Prensado, e o Foguete Nível 1 precisa de §e4 aletas§r.
+      Prepare bastante metal prensado antes, Herói. É um bom momento para conferir o estoque de blindagens. Qualquer dúvida na receita, aperte R no NEI.
     tasks:
       - get: GalacticraftCore:item.rocketFins x4
     rewards:
@@ -560,8 +551,8 @@ quests:
     deps: [blindagem_pesada, respirador, latas]
     icon: GalacticraftCore:item.engine
     desc: |
-      4 Blindagens Pesadas, uma Lata de Estanho, um Respirador, um Isqueiro e um Botão. O
-      §eMotor de Foguete Nível 1§r é o coração do primeiro foguete.
+      Agora vem o coração do primeiro foguete! O §eMotor de Foguete Nível 1§r leva 4 Blindagens Pesadas, uma Lata de Estanho, um Respirador, um Isqueiro e um Botão.
+      Reúna tudo com calma na bancada, Herói. Se faltar alguma peça, confira a receita no NEI (R/U) para ver onde cada item entra. Quase lá!
     tasks:
       - get: GalacticraftCore:item.engine
     rewards:
@@ -609,8 +600,8 @@ quests:
     deps: [foguete_t1]
     icon: minecraft:chest
     desc: |
-      Montando o foguete com §e3 baús§r nos espaços extras da Bancada NASA, ele ganha 54 espaços
-      de carga — o bastante para levar uma base inteira desmontada para a Lua.
+      Quer levar a mudança inteira? Monte o foguete com §e3 baús§r nos espaços extras da Bancada NASA e ele ganha 54 espaços de carga, o bastante para levar uma base inteira desmontada para a Lua.
+      É opcional, mas muito útil para quem gosta de viajar com bagagem, Herói. Confira o encaixe na Bancada pelo NEI (R/U).
     tasks:
       - get: GalacticraftCore:item.spaceship:3
     rewards:
@@ -622,8 +613,8 @@ quests:
     deps: [metais_prensados]
     icon: GalacticraftCore:tile.landingPad
     desc: |
-      3 Ferros Prensados e 3 Blocos de Ferro rendem §e9 Bases de Lançamento de Foguetes§r —
-      exatamente o quadrado §e3×3§r que um foguete Nível 1, 2 ou 3 precisa.
+      Todo foguete precisa de um lugar para decolar! 3 Ferros Prensados e 3 Blocos de Ferro rendem §e9 Bases de Lançamento de Foguetes§r, exatamente o quadrado §e3×3§r que um foguete Nível 1, 2 ou 3 precisa.
+      Monte o quadrado em terreno firme e livre, Herói. Se tiver dúvida na receita, aperte R no NEI.
     tasks:
       - get: GalacticraftCore:tile.landingPad x9
     rewards:
@@ -657,9 +648,8 @@ quests:
     deps: [metais_prensados, aco_prensado, latas]
     icon: GalacticraftCore:item.oilCanisterPartial:1001
     desc: |
-      Estanho Prensado, Aço Prensado, vidro e uma Lata de Estanho: a §eLata Vazia§r, um tanque
-      portátil de 1 balde para petróleo ou combustível. Ela é ingrediente do Motor Auxiliar do
-      Foguete Nível 2 (cheia de combustível!).
+      Precisa de um tanquinho portátil? Com Estanho Prensado, Aço Prensado, vidro e uma Lata de Estanho você faz a §eLata Vazia§r, um tanque de 1 balde para petróleo ou combustível.
+      Ela é ingrediente do Motor Auxiliar do Foguete Nível 2 (cheia de combustível!). Faça §e2§r, Herói, e guarde para mais tarde. Receita no NEI (R/U).
     tasks:
       - get: GalacticraftCore:item.oilCanisterPartial:1001 x2
     rewards:
@@ -672,9 +662,8 @@ quests:
     deps: [petroleo, aco_prensado, latas]
     icon: GalacticraftCore:tile.refinery
     desc: |
-      2 Latas de Cobre, 2 pedras, 2 Aço Prensado e uma fornalha: a §eRefinaria§r. Ela usa
-      energia para transformar §ePetróleo em Combustível§r. Coloque baldes ou latas de petróleo
-      na entrada e recipientes vazios na saída (ou ligue canos de fluido).
+      Chegou a hora do petróleo! 2 Latas de Cobre, 2 pedras, 2 Aço Prensado e uma fornalha formam a §eRefinaria§r. Ela usa energia para transformar §ePetróleo em Combustível§r.
+      Coloque baldes ou latas de petróleo na entrada e recipientes vazios na saída (ou ligue canos de fluido). Boa, Herói! Se precisar, o NEI (R/U) mostra a receita.
     tasks:
       - get: GalacticraftCore:tile.refinery
     rewards:
@@ -688,11 +677,8 @@ quests:
     icon: GalacticraftCore:item.bucketFuel
     task_logic: OR
     desc: |
-      Refine petróleo até ter combustível. Um Foguete Nível 1 cheio queima bastante, então
-      pense em automatizar: bomba no lago → Refinaria → tanque → Carregador de Combustível.
-
-      §aCuriosidade:§r o Combustível do BuildCraft é o mesmo fluido, então a Refinaria do
-      BuildCraft também serve.
+      O foguete bebe bastante! Refine petróleo até ter combustível. Um Foguete Nível 1 cheio queima muito, então pense em automatizar: bomba no lago → Refinaria → tanque → Carregador de Combustível.
+      §aCuriosidade:§r o Combustível do BuildCraft é o mesmo fluido, então a Refinaria do BuildCraft também serve. Qualquer um desses combustíveis conta, Herói!
     tasks:
       - get: GalacticraftCore:item.bucketFuel
       - get: BuildCraft|Energy:bucketFuel
@@ -707,9 +693,8 @@ quests:
     deps: [combustivel, base_lancamento, wafer_basico]
     icon: GalacticraftCore:tile.fuelLoader
     desc: |
-      Aço Prensado, Alumínio Prensado, uma Lata de Estanho e um Wafer Básico. Encoste o
-      §eCarregador de Combustível§r na base de lançamento, dê energia e coloque combustível
-      dentro: ele enche o foguete parado sobre a base. A tecla §eF§r mostra o tanque do foguete.
+      Abastecer na mão cansa! Com Aço Prensado, Alumínio Prensado, uma Lata de Estanho e um Wafer Básico, você monta o §eCarregador de Combustível§r. Encoste na base de lançamento, dê energia e coloque combustível dentro: ele enche o foguete parado sobre a base.
+      A tecla §eF§r mostra o tanque do foguete. Boa, Herói! Se faltar algo, aperte R no NEI.
     tasks:
       - get: GalacticraftCore:tile.fuelLoader
     rewards:
@@ -722,9 +707,8 @@ quests:
     deps: [carregador_combustivel]
     icon: GalacticraftCore:item.bucketFuel
     desc: |
-      Uma ida e volta gasta bastante combustível, e foguetes maiores bebem mais (a config usa o
-      fator padrão de consumo). Automatize a Refinaria e guarde §e8 baldes de combustível§r
-      (do Galacticraft ou do BuildCraft) para emergências.
+      Uma ida e volta gasta bastante combustível, e foguetes maiores bebem mais (a config usa o fator padrão de consumo). Automatize a Refinaria e guarde §e8 baldes de combustível§r (do Galacticraft ou do BuildCraft) para emergências.
+      É o seguro do viajante, Herói: ninguém quer ficar parado no meio do espaço sem combustível. Confira detalhes no NEI (R/U).
     tasks:
       - one_of: [GalacticraftCore:item.bucketFuel x8, BuildCraft|Energy:bucketFuel x8]
     rewards:
@@ -736,8 +720,8 @@ quests:
     type: optional
     deps: [petroleo]
     desc: |
-      Use o §eExtrator Portátil§r em cima de um bloco de petróleo para puxá-lo direto para uma
-      lata, sem baldes. Prático para pegar o petróleo de lagos pequenos.
+      Prefere pegar petróleo sem baldes? Use o §eExtrator Portátil§r em cima de um bloco de petróleo para puxá-lo direto para uma lata. É prático para pegar o petróleo de lagos pequenos.
+      É opcional, Herói, mas economiza viagens e baldes. Se precisar da receita, aperte R no NEI.
     tasks:
       - get: GalacticraftCore:item.oilExtractor
     rewards:
@@ -774,8 +758,8 @@ quests:
     deps: [oxigenio_info]
     icon: GalacticraftCore:item.oxygenMask
     desc: |
-      Um Elmo de Ferro coberto por 8 Painéis de Vidro: a §eMáscara de Oxigênio§r. Ela vai no
-      espaço de máscara do inventário do Galacticraft (não no espaço do elmo comum).
+      Antes de pisar fora da atmosfera, proteja o rosto! Um Elmo de Ferro coberto por 8 Painéis de Vidro faz a §eMáscara de Oxigênio§r. Ela vai no espaço de máscara do inventário do Galacticraft (não no espaço do elmo comum).
+      Confira o encaixe com cuidado, Herói. Receita no NEI (R/U) se tiver dúvida.
     tasks:
       - get: GalacticraftCore:item.oxygenMask
     rewards:
@@ -788,9 +772,8 @@ quests:
     deps: [respirador, latas, aco_prensado]
     icon: GalacticraftCore:item.oxygenConcentrator
     desc: |
-      Aço Prensado, Estanho Prensado, uma Lata de Estanho e um Respirador. O §eConcentrador§r é
-      a peça central do Equipamento de Oxigênio, do Coletor, do Compressor e da Porta
-      Pressurizada.
+      O Concentrador é a peça central de todo equipamento de oxigênio! Ele leva Aço Prensado, Estanho Prensado, uma Lata de Estanho e um Respirador, e é usado no Equipamento de Oxigênio, no Coletor, no Compressor e na Porta Pressurizada.
+      Faça §e3§r, Herói. Vai precisar de bastante! Confira a receita no NEI (R/U).
     tasks:
       - get: GalacticraftCore:item.oxygenConcentrator x3
     rewards:
@@ -803,8 +786,8 @@ quests:
     deps: [oxigenio_info]
     icon: GalacticraftCore:tile.oxygenPipe
     desc: |
-      6 Painéis de Vidro = 6 §eCanos de Oxigênio§r. Ligam coletores a compressores, seladores e
-      distribuidores. O Equipamento de Oxigênio também é feito com eles.
+      Oxigênio precisa de caminho! 6 Painéis de Vidro rendem 6 §eCanos de Oxigênio§r, que ligam coletores a compressores, seladores e distribuidores. O Equipamento de Oxigênio também é feito com eles.
+      Faça §e12§r, Herói. Vidro é fácil de conseguir, então é só fundir areia. Se travar, aperte R no NEI.
     tasks:
       - get: GalacticraftCore:tile.oxygenPipe x12
     rewards:
@@ -817,8 +800,8 @@ quests:
     deps: [concentrador_oxigenio, cano_oxigenio]
     icon: GalacticraftCore:item.oxygenGear
     desc: |
-      5 Canos de Oxigênio em volta de um Concentrador: o §eEquipamento de Oxigênio§r, que liga os
-      tanques à máscara. Sem ele, os tanques não servem para nada.
+      Quase pronto para respirar! 5 Canos de Oxigênio em volta de um Concentrador formam o §eEquipamento de Oxigênio§r, que liga os tanques à máscara. Sem ele, os tanques não servem para nada, Herói.
+      Cuide para não esquecer essa peça na hora de montar o conjunto completo. Receita no NEI (R/U).
     tasks:
       - get: GalacticraftCore:item.oxygenGear
     rewards:
@@ -831,9 +814,8 @@ quests:
     deps: [latas, metais_prensados]
     icon: GalacticraftCore:item.oxygenTankLightFull
     desc: |
-      Uma Lata de Estanho, Cobre Prensado e Lã Verde-Limão: o §eTanque Leve§r (900 unidades de
-      ar). Você usa dois ao mesmo tempo. Ele sai da bancada §evazio§r — encha no Compressor de
-      Oxigênio.
+      Comece pelo tanque leve! Uma Lata de Estanho, Cobre Prensado e Lã Verde-Limão fazem o §eTanque Leve§r (900 unidades de ar). Você usa dois ao mesmo tempo.
+      Ele sai da bancada §evazio§r, então encha no Compressor de Oxigênio antes de sair, Herói. Confira a receita no NEI (R/U) se precisar.
     tasks:
       - get: GalacticraftCore:item.oxygenTankLightFull x2
     rewards:
@@ -846,7 +828,8 @@ quests:
     deps: [tanque_leve]
     icon: GalacticraftCore:item.oxygenTankMedFull
     desc: |
-      O dobro de ar (1800): 2 Latas de Estanho, 2 Estanho Prensado e 2 Lãs Laranjas.
+      Quer mais fôlego? O Tanque Médio guarda o dobro de ar (1800): 2 Latas de Estanho, 2 Estanho Prensado e 2 Lãs Laranjas. Ótimo para expedições mais longas.
+      Lembre que ele sai vazio, Herói, então passe pelo Compressor de Oxigênio antes de sair da base. Se precisar, o NEI (R/U) mostra a receita.
     tasks:
       - get: GalacticraftCore:item.oxygenTankMedFull
     rewards:
@@ -859,9 +842,8 @@ quests:
     deps: [tanque_medio, aco_prensado]
     icon: GalacticraftCore:item.oxygenTankHeavyFull
     desc: |
-      O triplo do leve (2700): 3 Latas de Estanho, 3 Aço Prensado e 3 Lãs Vermelhas. Dois
-      desses dão muito tempo de exploração em Marte. Também é peça do Condensador e de outras
-      máquinas marcianas.
+      O Tanque Pesado guarda o triplo do leve (2700): 3 Latas de Estanho, 3 Aço Prensado e 3 Lãs Vermelhas. Dois desses dão muito tempo de exploração em Marte.
+      Também é peça do Condensador e de outras máquinas marcianas, então nada de desperdício, Herói. Receita no NEI (R/U) se precisar.
     tasks:
       - get: GalacticraftCore:item.oxygenTankHeavyFull
     rewards:
@@ -874,9 +856,8 @@ quests:
     deps: [concentrador_oxigenio, ventilador, wafer_basico]
     icon: GalacticraftCore:tile.oxygenCollector
     desc: |
-      O §eColetor de Oxigênio§r gera oxigênio usando energia. No mundo normal ele tira do próprio
-      ar; §efora da Terra ele depende de folhas e plantas por perto§r — leve mudas e terra para a
-      sua base na Lua!
+      Hora de fabricar ar, Herói! O §eColetor de Oxigênio§r gera oxigênio usando energia. No mundo normal ele tira do próprio ar; §efora da Terra ele depende de folhas e plantas por perto§r.
+      Leve mudas e terra para a sua base na Lua e plante em volta do coletor. Sem vegetação, nada de ar! Se travar na receita, aperte R no NEI.
     tasks:
       - get: GalacticraftCore:tile.oxygenCollector
     rewards:
@@ -889,9 +870,8 @@ quests:
     deps: [coletor_oxigenio, bronze_prensado]
     icon: GalacticraftCore:tile.oxygenCompressor
     desc: |
-      Ligue o Coletor ao §eCompressor de Oxigênio§r com Canos e coloque os tanques dentro: ele os
-      enche. O §eDescompressor§r faz o caminho inverso, esvaziando tanques para alimentar uma
-      rede de oxigênio.
+      Já tem o Coletor? Ligue-o ao §eCompressor de Oxigênio§r com Canos e coloque os tanques dentro: o compressor os enche para você sair em expedição.
+      O §eDescompressor§r faz o caminho inverso, esvaziando tanques para alimentar uma rede de oxigênio. Cuide da energia, Herói, porque as duas máquinas dependem dela. Receitas no NEI (R/U).
     tasks:
       - get: GalacticraftCore:tile.oxygenCompressor
     rewards:
@@ -904,8 +884,8 @@ quests:
     deps: [compressor_oxigenio]
     icon: GalacticraftCore:tile.oxygenCompressor:4
     desc: |
-      Tira o oxigênio dos tanques e manda para canos. Útil para levar ar engarrafado de casa para
-      uma base distante.
+      Quer levar ar engarrafado de casa para longe? O Descompressor tira o oxigênio dos tanques e manda para os canos, alimentando uma rede de oxigênio na sua base distante.
+      É opcional, mas muito prático para quem monta postos avançados, Herói. Ele é a variante do Compressor, então confira a receita e o uso no NEI (R/U).
     tasks:
       - get: GalacticraftCore:tile.oxygenCompressor:4
     rewards:
@@ -917,9 +897,8 @@ quests:
     deps: [oxigenio_info]
     icon: GalacticraftCore:item.parachute
     desc: |
-      3 Tecidos (linha e gravetos) e 3 linhas. Coloque-o no espaço de paraquedas do inventário
-      do Galacticraft: quando você voltar para a Terra, você cai de muito alto, e ele abre
-      sozinho. Dá para tingir com qualquer corante!
+      Cair da Lua não dá certo sem um bom paraquedas! São 3 Tecidos (linha e gravetos) e 3 linhas. Coloque-o no espaço de paraquedas do inventário do Galacticraft: quando você voltar para a Terra, cai de muito alto, e ele abre sozinho.
+      Dá para tingir com qualquer corante, Herói, então capriche no estilo! Receita no NEI (R/U).
     tasks:
       - get: GalacticraftCore:item.parachute:*
     rewards:
@@ -932,8 +911,8 @@ quests:
     deps: [wafer_basico, metais_prensados]
     icon: GalacticraftCore:item.basicItem:19
     desc: |
-      No vácuo não há som... a não ser que você use o §eMódulo de Frequência§r no espaço dele.
-      Também é peça da Unidade de Telemetria e do Controle de Lançamento de Marte.
+      No vácuo não há som... a não ser que você use o §eMódulo de Frequência§r no espaço dele! Com ele, os sons voltam a funcionar quando você está no espaço.
+      Também é peça da Unidade de Telemetria e do Controle de Lançamento de Marte, então faça logo, Herói. Se faltar algo, aperte R no NEI.
     tasks:
       - get: GalacticraftCore:item.basicItem:19
     rewards:
@@ -946,8 +925,8 @@ quests:
     deps: [compressor_oxigenio]
     icon: GalacticraftCore:tile.distributor
     desc: |
-      Alimentado com oxigênio e energia, o §eDistribuidor§r cria uma §ebolha de ar respirável§r em
-      volta dele (o tamanho é ajustável na GUI). Perfeito para uma primeira base na Lua.
+      Quer respirar sem tanque na sua primeira base? O §eDistribuidor de Bolha de Oxigênio§r, alimentado com oxigênio e energia, cria uma §ebolha de ar respirável§r em volta dele. O tamanho é ajustável na GUI.
+      Perfeito para uma primeira base na Lua, Herói. Cuide para ligar os canos de oxigênio. Receita no NEI (R/U).
     tasks:
       - get: GalacticraftCore:tile.distributor
     rewards:
@@ -960,9 +939,8 @@ quests:
     deps: [compressor_oxigenio]
     icon: GalacticraftCore:tile.sealer
     desc: |
-      Para bases de verdade: o §eSelador de Oxigênio§r enche de ar uma sala §etotalmente
-      fechada§r. Se houver um buraco, ele avisa que não conseguiu selar. Vidro, portas
-      pressurizadas e blocos sólidos vedam; a config ainda permite selar com painéis de vidro.
+      Para bases de verdade, o §eSelador de Oxigênio§r enche de ar uma sala §etotalmente fechada§r. Se houver um buraco, ele avisa que não conseguiu selar.
+      Vidro, portas pressurizadas e blocos sólidos vedam, e a config ainda permite selar com painéis de vidro. Confira a sala antes de ligar, Herói. Mais detalhes no NEI (R/U).
     tasks:
       - get: GalacticraftCore:tile.sealer
     rewards:
@@ -975,8 +953,8 @@ quests:
     deps: [selador_oxigenio]
     icon: GalacticraftCore:tile.airLockFrame
     desc: |
-      Monte uma moldura com §eQuadros de Porta Pressurizada§r e coloque um §eControle§r nela: a
-      porta abre e fecha mantendo a sala selada. Configure quem pode passar na GUI do controle.
+      Quer entrar e sair sem vazar ar? Monte uma moldura com §eQuadros de Porta Pressurizada§r e coloque um §eControle§r nela: a porta abre e fecha mantendo a sala selada.
+      Configure quem pode passar na GUI do controle. É opcional, Herói, mas deixa a base com cara de profissional. Receitas no NEI (R/U).
     tasks:
       - get: [GalacticraftCore:tile.airLockFrame x8, GalacticraftCore:tile.airLockFrame:1]
     rewards:
@@ -987,8 +965,8 @@ quests:
     type: optional
     deps: [selador_oxigenio]
     desc: |
-      Emite redstone quando há ar respirável em volta. Ligue a um alarme e você saberá na hora se
-      uma parede da base foi furada.
+      Medo de furo na parede? O Detector de Oxigênio emite redstone quando há ar respirável em volta. Ligue a um alarme e você saberá na hora se uma parede da base foi furada.
+      É opcional, mas salva vidas, Herói, principalmente em bases grandes. Se precisar da receita, aperte R no NEI.
     tasks:
       - get: GalacticraftCore:tile.oxygenDetector
     rewards:
@@ -1000,7 +978,8 @@ quests:
     deps: [tanque_pesado]
     icon: GalacticraftCore:tile.machine2:8
     desc: |
-      6 Aço Prensado e 3 Tanques Pesados: uma "bateria" de oxigênio para a rede da sua base.
+      Uma "bateria" de oxigênio para a rede da sua base! Com 6 Aço Prensado e 3 Tanques Pesados, o Módulo de Armazenagem de Oxigênio guarda reserva para quando a produção falhar.
+      É opcional, Herói, mas dá uma folga enorme. Antes, faça os tanques pesados. Se tiver dúvida, o NEI (R/U) mostra a receita completa.
     tasks:
       - get: GalacticraftCore:tile.machine2:8
     rewards:
@@ -1012,8 +991,8 @@ quests:
     deps: [latas]
     icon: GalacticraftCore:item.basicItem:15
     desc: |
-      Uma Lata de Estanho com 2 maçãs, cenouras, melancias ou batatas vira comida enlatada —
-      compacta para levar ao espaço. Ah, e o ExtraPlanets acrescenta carnes enlatadas também.
+      Comida que cabe na mochila! Uma Lata de Estanho com 2 maçãs, cenouras, melancias ou batatas vira comida enlatada, compacta para levar ao espaço. Ah, e o ExtraPlanets acrescenta carnes enlatadas também.
+      Qualquer uma conta, Herói! Escolha a que preferir. Confira a receita no NEI (R/U).
     tasks:
       - one_of: [GalacticraftCore:item.basicItem:15, GalacticraftCore:item.basicItem:16, GalacticraftCore:item.basicItem:17, GalacticraftCore:item.basicItem:18]
     rewards:
@@ -1025,9 +1004,8 @@ quests:
     deps: [oxigenio_info]
     icon: GalacticraftCore:tile.glowstoneTorch
     desc: |
-      Tente acender uma tocha comum na Lua: ela §eapaga na hora§r — sem oxigênio, sem fogo. A
-      solução é a §eTocha de Pedra Luminosa§r (pó de pedra luminosa + graveto, rende 4), que
-      brilha em qualquer lugar. Leve um monte!
+      Tente acender uma tocha comum na Lua: ela §eapaga na hora§r, porque sem oxigênio não há fogo. A solução é a §eTocha de Pedra Luminosa§r (pó de pedra luminosa + graveto, rende 4), que brilha em qualquer lugar.
+      Leve um monte, Herói: junte §e16§r antes de explorar. Receita no NEI (R/U).
     tasks:
       - get: GalacticraftCore:tile.glowstoneTorch x16
     rewards:
@@ -1115,8 +1093,8 @@ quests:
     deps: [lua]
     icon: GalacticraftCore:item.flag
     desc: |
-      3 Mastros de Bandeira (Aço Prensado) e 4 Tecidos: uma §eBandeira§r personalizável. Finque a
-      sua na Lua — é tradição!
+      Chegou o momento histórico! Com 3 Mastros de Bandeira (Aço Prensado) e 4 Tecidos você faz uma §eBandeira§r personalizável.
+      Finque a sua na Lua, Herói, é tradição! É opcional, mas dá uma satisfação enorme ver sua marca em outro mundo. Se precisar, aperte R no NEI para conferir a receita.
     tasks:
       - get: GalacticraftCore:item.flag
     rewards:
@@ -1128,8 +1106,8 @@ quests:
     deps: [lua]
     icon: GalacticraftCore:tile.moonBlock:4
     desc: |
-      A superfície é Turfa e Terra Lunar; por baixo, §eRocha Lunar§r. Junte um pouco para
-      construir — ela vira lajes, escadas e paredes.
+      A superfície é Turfa e Terra Lunar, mas por baixo está a §eRocha Lunar§r. Junte §e32§r para construir: ela vira lajes, escadas e paredes, perfeita para sua base.
+      Use a picareta e cave com calma, Herói. Cuide do oxigênio ao explorar. Se tiver dúvida de onde achar, aperte U no NEI.
     tasks:
       - get: GalacticraftCore:tile.moonBlock:4 x32
     rewards:
@@ -1142,8 +1120,8 @@ quests:
     deps: [lua]
     icon: GalacticraftCore:tile.moonBlock
     desc: |
-      A Lua tem os próprios Minérios de Cobre e de Estanho (a config deixa ambos ativos) —
-      ótimos para fazer Latas e Metais Prensados sem voltar para casa.
+      A Lua tem os próprios Minérios de Cobre e de Estanho (a config deixa ambos ativos). Junte §e8 de cada§r, Herói, e use para fazer Latas e Metais Prensados sem voltar para casa.
+      É a forma mais fácil de manter a base lunar abastecida. Se travar, aperte R ou U no NEI.
     tasks:
       - get: [GalacticraftCore:tile.moonBlock x8, GalacticraftCore:tile.moonBlock:1 x8]
     rewards:
@@ -1156,9 +1134,8 @@ quests:
     deps: [lua]
     icon: GalacticraftCore:tile.moonBlock:2
     desc: |
-      Eu sempre disse! O §eMinério de Queijo§r dá §eGrãos de Queijo§r (que matam a fome).
-      8 grãos e um balde de leite viram um Bloco de Queijo. E o minério de queijo ainda é
-      ingrediente da Unidade Orion, mais para frente.
+      Eu sempre disse! O §eMinério de Queijo§r dá §eGrãos de Queijo§r (que matam a fome). Junte §e8§r, Herói. 8 grãos e um balde de leite viram um Bloco de Queijo.
+      E o minério de queijo ainda é ingrediente da Unidade Orion, mais para frente, então guarde. Receita e detalhes no NEI (R/U).
     tasks:
       - get: GalacticraftCore:item.cheeseCurd x8
     rewards:
@@ -1171,7 +1148,8 @@ quests:
     deps: [queijo]
     icon: GalacticraftCore:tile.cheeseBlock
     desc: |
-      Um bolo de queijo lunar. Você come em fatias, como um bolo comum. Nham!
+      Um bolo de queijo lunar! Você come em fatias, como um bolo comum. Nham! É opcional, Herói, mas uma delícia de lanchinho, uma ótima comida de exploração.
+      Para fazer, junte 8 grãos de queijo e um balde de leite. Se precisar conferir o encaixe da receita, aperte R no NEI.
     tasks:
       - get: GalacticraftCore:tile.cheeseBlock
     rewards:
@@ -1200,8 +1178,8 @@ quests:
     deps: [ferro_meteorico]
     icon: GalacticraftCore:item.meteoricIronIngot:1
     desc: |
-      Na Prensa, §e1 Barra de Ferro Meteórico → 1 Ferro Meteórico Prensado§r. Ele vai na
-      Blindagem Pesada de Nível 2, no Motor Auxiliar e em várias máquinas. Faça §e12§r.
+      Na Prensa, §e1 Barra de Ferro Meteórico → 1 Ferro Meteórico Prensado§r. Ele vai na Blindagem Pesada de Nível 2, no Motor Auxiliar e em várias máquinas.
+      Faça §e12§r, Herói. Precisa de bastante barra, então junte um estoque de ferro meteórico antes de começar. Se travar, o NEI (R/U) mostra o caminho.
     tasks:
       - get: ore:compressedMeteoricIron x12
     rewards:
@@ -1214,9 +1192,8 @@ quests:
     deps: [ferro_meteorico_prensado]
     icon: GalacticraftCore:item.sensorGlasses
     desc: |
-      Lentes Sensoras (redstone, vidro e Ferro Meteórico Prensado) viram §eÓculos Sensores§r.
-      Com eles (e a tecla §eK§r para o modo avançado) você enxerga minérios através das paredes e
-      vê informações extras de máquinas.
+      Quer enxergar através das paredes? Lentes Sensoras (redstone, vidro e Ferro Meteórico Prensado) viram §eÓculos Sensores§r.
+      Com eles (e a tecla §eK§r para o modo avançado) você enxerga minérios através das paredes e vê informações extras de máquinas. É opcional, Herói, mas divertido. Receita no NEI (R/U).
     tasks:
       - get: GalacticraftCore:item.sensorGlasses
     rewards:
@@ -1228,8 +1205,8 @@ quests:
     deps: [ferro_meteorico, fornalha_eletrica]
     icon: GalacticraftCore:tile.machineTiered:12
     desc: |
-      Uma Fornalha Elétrica turbinada com Blindagem Pesada, Ferro Meteórico e um Wafer Avançado.
-      Mais rápida, mais forte — e ainda devolve um pouquinho a mais de alguns minérios.
+      Uma Fornalha Elétrica turbinada! Com Blindagem Pesada, Ferro Meteórico e um Wafer Avançado você monta a Fornalha a Arco Voltaico: mais rápida, mais forte, e ainda devolve um pouquinho a mais de alguns minérios.
+      É opcional, Herói. Prepare a Fornalha Elétrica antes. Receita no NEI (R/U).
     tasks:
       - get: GalacticraftCore:tile.machineTiered:12
     rewards:
@@ -1242,9 +1219,8 @@ quests:
     icon: minecraft:rotten_flesh
     task_logic: OR
     desc: |
-      Zumbis, Esqueletos, Aranhas e Creepers Evoluídos aparecem no escuro da Lua e de Marte. Eles
-      são mais resistentes e não precisam de ar — você precisa. Derrote alguns para aprender o
-      ritmo da luta em gravidade baixa (os pulos deles também são altos!).
+      Zumbis, Esqueletos, Aranhas e Creepers Evoluídos aparecem no escuro da Lua e de Marte. Eles são mais resistentes e não precisam de ar, você precisa.
+      Derrote alguns para aprender o ritmo da luta em gravidade baixa (os pulos deles também são altos!). Cuide do oxigênio, Herói, e entre na luta com calma.
     tasks:
       - kill: {entity: "GalacticraftCore.EvolvedZombie", count: 3}
       - kill: {entity: "GalacticraftCore.EvolvedSkeleton", count: 3}
@@ -1260,9 +1236,8 @@ quests:
     deps: [lua]
     icon: minecraft:emerald
     desc: |
-      A Lua tem vilas de §eAldeões Alienígenas§r (a config deixa as vilas ligadas). Eles vivem
-      tranquilos sem ar nenhum — dá até inveja. Ache uma vila e confirme aqui. (E não, não vale
-      atacar os vizinhos.)
+      A Lua tem vilas de §eAldeões Alienígenas§r (a config deixa as vilas ligadas). Eles vivem tranquilos sem ar nenhum, dá até inveja.
+      Ache uma vila e confirme aqui, Herói. E não, não vale atacar os vizinhos! Se não encontrar, aperte U no NEI para ver onde aparecem, e explore com calma.
     tasks:
       - check
     rewards:
@@ -1331,8 +1306,8 @@ quests:
     deps: [ferro_meteorico]
     icon: GalacticraftCore:tile.gcBlockCore:12
     desc: |
-      9 Barras de Ferro Meteórico = um bloco de §eFerro Meteórico Maciço§r. Bom para guardar e
-      para decorar com um ar de "caiu do céu".
+      9 Barras de Ferro Meteórico formam um bloco de §eFerro Meteórico Maciço§r. É bom para guardar e para decorar com um ar de "caiu do céu".
+      É opcional, Herói, mas dá charme à base e organiza o estoque. Se tiver dúvida na receita, aperte R no NEI.
     tasks:
       - get: GalacticraftCore:tile.gcBlockCore:12
     rewards:
@@ -1344,8 +1319,8 @@ quests:
     deps: [rocha_lunar, calabouco_lunar]
     icon: GalacticraftCore:tile.moonBricksStairs
     desc: |
-      Rocha Lunar e Tijolos Lunares viram lajes, escadas e paredes. Uma base que combina com a
-      paisagem é muito mais charmosa.
+      Rocha Lunar e Tijolos Lunares viram lajes, escadas e paredes. Uma base que combina com a paisagem é muito mais charmosa, não acha, Herói?
+      Faça alguns degraus e blocos para decorar. Qualquer um dos itens listados vale para a missão. Confira as receitas no NEI (R/U).
     tasks:
       - one_of: [GalacticraftCore:tile.moonStoneStairs x4, GalacticraftCore:tile.moonBricksStairs x4, GalacticraftCore:tile.wallGC:2 x6]
     rewards:
@@ -1378,8 +1353,8 @@ quests:
     deps: [tesouro_lunar]
     icon: GalacticraftCore:item.schematic
     desc: |
-      Cada baú lunar dá só um esquemático. Para ter o do Foguete Nível 2 §ee§r o do Buggy, você vai
-      precisar de mais de um calabouço — e mais de um Esqueleto-Chefe. Junte os dois.
+      Cada baú lunar dá só um esquemático. Para ter o do Foguete Nível 2 §ee§r o do Buggy, você vai precisar de mais de um calabouço, e mais de um Esqueleto-Chefe.
+      Junte os dois, Herói! É um bom desafio para quem quer completar a coleção. Se tiver dúvida, o NEI (R/U) ajuda a localizar.
     tasks:
       - get: [GalacticraftCore:item.schematic, GalacticraftCore:item.schematic:1]
     rewards:
@@ -1391,8 +1366,8 @@ quests:
     deps: [tesouro_lunar]
     icon: GalacticraftCore:item.schematic:1
     desc: |
-      Coloque o §eEsquemático do Foguete Nível 2§r na aba de esquemáticos da Bancada NASA e
-      clique em "Destravar". Pronto: o projeto fica liberado para sempre. Marte está chamando.
+      Coloque o §eEsquemático do Foguete Nível 2§r na aba de esquemáticos da Bancada NASA e clique em "Destravar". Pronto: o projeto fica liberado para sempre.
+      Marte está chamando, Herói! Se o botão não aparecer, confira se o esquemático está no slot certo. Mais detalhes no NEI (R/U).
     tasks:
       - get: GalacticraftCore:item.schematic:1
     rewards:
@@ -1406,8 +1381,8 @@ quests:
     deps: [tesouro_lunar]
     icon: GalacticraftCore:item.buggymat
     desc: |
-      O §eBuggy Lunar§r é montado na Bancada NASA (com o esquemático do Buggy destravado): 4 Rodas
-      (couro + Aço Prensado), 1 Assento e até 3 Bagageiros com baú, além de Blindagens Pesadas.
+      O §eBuggy Lunar§r é montado na Bancada NASA (com o esquemático do Buggy destravado). Você vai precisar de 4 Rodas (couro + Aço Prensado), 1 Assento e até 3 Bagageiros com baú, além de Blindagens Pesadas.
+      É opcional, Herói, mas muito divertido. Veja as receitas no NEI (R/U).
     tasks:
       - get: [GalacticraftCore:item.buggymat x4, GalacticraftCore:item.buggymat:1]
     rewards:
@@ -1419,9 +1394,8 @@ quests:
     deps: [rodas_buggy]
     icon: GalacticraftCore:item.buggy
     desc: |
-      Corra pelas crateras! O Buggy usa combustível: abasteça numa §eBase de Abastecimento de
-      Buggy§r (3 Aço Prensado + 3 blocos de ferro rendem 9) com um Carregador de Combustível ao
-      lado.
+      Corra pelas crateras! O Buggy usa combustível: abasteça numa §eBase de Abastecimento de Buggy§r (3 Aço Prensado + 3 blocos de ferro rendem 9) com um Carregador de Combustível ao lado.
+      É opcional, Herói, mas faz a exploração lunar render muito mais. Receita no NEI (R/U).
     tasks:
       - get: GalacticraftCore:item.buggy:*
     rewards:
@@ -1436,12 +1410,12 @@ quests:
     deps: [pronto_lancamento]
     icon: GalacticraftCore:tile.spaceStationBase
     desc: |
-      Uma casa em órbita! Para criar uma §eEstação Espacial§r em volta da Terra você precisa ter no
-      inventário, na hora:
+      Uma casa em órbita! Para criar uma §eEstação Espacial§r em volta da Terra você precisa ter no inventário, na hora:
       §e• 32 lingotes de estanho§r
       §e• 16 barras de alumínio§r
-      §e• 24 lingotes de ferro§r
-      §e• 1 Wafer Avançado§r
+      • 24 lingotes de ferro
+      • 1 Wafer Avançado
+      Separe tudo antes de usar, Herói! Se faltar algo, confira no NEI (R/U).
     tasks:
       - get: [ore:ingotTin x32, ore:ingotAluminum x16, minecraft:iron_ingot x24, ore:waferAdvanced]
     rewards:
@@ -1478,8 +1452,8 @@ quests:
     deps: [estacao_espacial, ferro_meteorico]
     icon: GalacticraftCore:tile.spinThruster
     desc: |
-      Coloque §ePropulsores Pivotantes§r na borda da estação e ela começa a §egirar§r, criando
-      gravidade artificial. É quase uma estação de filme!
+      Coloque §ePropulsores Pivotantes§r na borda da estação e ela começa a §egirar§r, criando gravidade artificial. É quase uma estação de filme!
+      É opcional, Herói, mas dá um toque especial e deixa a vida na órbita mais confortável. Se precisar da receita, aperte R no NEI.
     tasks:
       - get: GalacticraftCore:tile.spinThruster x2
     rewards:
@@ -1491,8 +1465,8 @@ quests:
     deps: [modulo_frequencia]
     icon: GalacticraftCore:tile.telemetry
     desc: |
-      A §eUnidade de Telemetria§r transmite dados (velocidade, altitude, saúde...) de um foguete ou
-      criatura vinculado a ela. Combine com a §eTela de Exibição§r para ver tudo da base.
+      A §eUnidade de Telemetria§r transmite dados (velocidade, altitude, saúde...) de um foguete ou criatura vinculado a ela. Combine com a §eTela de Exibição§r para ver tudo da base.
+      É opcional, Herói, mas muito legal para o centro de controle. Veja a receita e o uso no NEI (R/U).
     tasks:
       - get: GalacticraftCore:tile.telemetry
     rewards:
@@ -1504,8 +1478,8 @@ quests:
     deps: [telemetria]
     icon: GalacticraftCore:tile.viewScreen
     desc: |
-      Telas que se juntam formando painéis maiores e mostram mapas, dados de telemetria ou a
-      Terra vista do espaço. Perfeitas para o centro de controle da estação.
+      Telas que se juntam formando painéis maiores e mostram mapas, dados de telemetria ou a Terra vista do espaço. Perfeitas para o centro de controle da estação, Herói!
+      Faça §e4§r para começar e vá ampliando. Combine com a Unidade de Telemetria. Se travar na receita, o NEI (R/U) resolve.
     tasks:
       - get: GalacticraftCore:tile.viewScreen x4
     rewards:
@@ -1517,8 +1491,8 @@ quests:
     deps: [foguete_t1]
     icon: GalacticraftCore:tile.cargo
     desc: |
-      O §eCarregador de Carga§r enche o porão do foguete parado na base, e o §eDescarregador§r o
-      esvazia na chegada. Essenciais para o Foguete de Carga automático de Marte.
+      Automatize a carga! O §eCarregador de Carga§r enche o porão do foguete parado na base, e o §eDescarregador§r o esvazia na chegada. Essenciais para o Foguete de Carga automático de Marte.
+      É opcional, Herói, mas economiza muito trabalho nas viagens. Ligue o carregador ao foguete na base e confira as receitas no NEI (R/U).
     tasks:
       - get: [GalacticraftCore:tile.cargo, GalacticraftCore:tile.cargo:4]
     rewards:
@@ -1533,8 +1507,8 @@ quests:
     deps: [esquematico_t2, ferro_meteorico_prensado]
     icon: GalacticraftMars:item.null:3
     desc: |
-      Na Prensa: §e1 Blindagem Pesada + 1 Ferro Meteórico Prensado = 1 Blindagem Pesada de Nível
-      2§r. O Foguete Nível 2 leva §e10§r no casco e mais 3 no nariz... Mãos à obra.
+      Marte pede blindagem melhor! Na Prensa: §e1 Blindagem Pesada + 1 Ferro Meteórico Prensado = 1 Blindagem Pesada de Nível 2§r. O Foguete Nível 2 leva §e10§r no casco e mais 3 no nariz...
+      Mãos à obra, Herói! Junte bastante Ferro Meteórico Prensado. Receita no NEI (R/U).
     tasks:
       - get: GalacticraftMars:item.null:3 x10
     rewards:
@@ -1547,9 +1521,8 @@ quests:
     deps: [ferro_meteorico_prensado, lata_vazia, combustivel]
     icon: GalacticraftCore:item.engine:1
     desc: |
-      4 Ferros Meteóricos Prensados, 2 Blindagens Pesadas, um Respirador, Lã Amarela e uma §eLata
-      de Combustível Cheia§r. O Foguete Nível 2 leva §e2 Motores Auxiliares§r além do motor
-      principal.
+      Motor extra para a viagem! São 4 Ferros Meteóricos Prensados, 2 Blindagens Pesadas, um Respirador, Lã Amarela e uma §eLata de Combustível Cheia§r. O Foguete Nível 2 leva §e2 Motores Auxiliares§r além do motor principal.
+      Faça os dois antes de montar o foguete, Herói, e não esqueça da lata cheia de combustível. Receita no NEI (R/U).
     tasks:
       - get: GalacticraftCore:item.engine:1 x2
     rewards:
@@ -1562,10 +1535,8 @@ quests:
     deps: [blindagem_t2, motor_auxiliar, motor_t1, aletas_foguete, nariz_foguete]
     icon: GalacticraftMars:item.spaceshipTier2
     desc: |
-      Na Bancada NASA, com o esquemático destravado: §eNariz, 10 Blindagens Nível 2, 4 Aletas,
-      1 Motor Nível 1 e 2 Motores Auxiliares§r (mais baús, se quiser carga).
-
-      O Nível 2 alcança §eMarte§r (e, com o ExtraPlanets, as luas Fobos e Deimos).
+      Chegou o grande momento! Na Bancada NASA, com o esquemático destravado, monte: §eNariz, 10 Blindagens Nível 2, 4 Aletas, 1 Motor Nível 1 e 2 Motores Auxiliares§r (mais baús, se quiser carga).
+      O Nível 2 alcança §eMarte§r (e, com o ExtraPlanets, as luas Fobos e Deimos). Boa viagem, Herói!
     tasks:
       - get: GalacticraftMars:item.spaceshipTier2:*
     rewards:
@@ -1578,8 +1549,8 @@ quests:
     deps: [foguete_t2]
     icon: GalacticraftMars:item.itemBasicAsteroids:7
     desc: |
-      4 lãs e 1 redstone = §eTecido Térmico§r. Ele é o material do Traje Térmico, que protege do
-      frio extremo.
+      Contra o frio extremo, nada como um bom traje! 4 lãs e 1 redstone rendem §eTecido Térmico§r. Ele é o material do Traje Térmico, que protege do frio extremo.
+      Faça §e24§r, Herói, pois o traje completo consome bastante. Se precisar da receita, aperte R no NEI.
     tasks:
       - get: GalacticraftMars:item.itemBasicAsteroids:7 x24
     rewards:
@@ -1634,8 +1605,8 @@ quests:
     deps: [marte]
     icon: GalacticraftMars:tile.mars:3
     desc: |
-      Além do Desh, Marte tem os próprios minérios de cobre, estanho e ferro (todos ativos na
-      config). Junte um pouco de cada para não depender de cargas vindas da Terra.
+      Além do Desh, Marte tem os próprios minérios de cobre, estanho e ferro (todos ativos na config). Junte §e4 de cada§r, Herói, para não depender de cargas vindas da Terra.
+      É a forma mais fácil de manter a base marciana abastecida. Se travar, aperte U no NEI.
     tasks:
       - get: [GalacticraftMars:tile.mars x4, GalacticraftMars:tile.mars:1 x4, GalacticraftMars:tile.mars:3 x4]
     rewards:
@@ -1648,8 +1619,8 @@ quests:
     deps: [marte]
     icon: GalacticraftMars:tile.mars:9
     desc: |
-      Pedregulho marciano fundido vira §ePedra Marciana§r; os tijolos de calabouço e o pedregulho
-      viram lajes, escadas e paredes. Material de sobra para a colônia.
+      Pedregulho marciano fundido vira §ePedra Marciana§r; os tijolos de calabouço e o pedregulho viram lajes, escadas e paredes. Material de sobra para a colônia, Herói!
+      Junte §e32§r e decore à vontade. É opcional, mas combina com a paisagem. Em dúvida, aperte R no NEI para ver a receita.
     tasks:
       - get: GalacticraftMars:tile.mars:4 x32
     rewards:
@@ -1661,8 +1632,8 @@ quests:
     deps: [lodo_bacterial]
     icon: GalacticraftMars:item.bucketSludge
     desc: |
-      Os Sludgelings saem do Lodo Bacterial e atacam em bando. Limpe uma caverna deles antes de
-      montar uma mina por perto.
+      Os Sludgelings saem do Lodo Bacterial e atacam em bando. Derrote §e5§r deles, Herói, e limpe uma caverna deles antes de montar uma mina por perto.
+      É opcional, mas evita surpresas desagradáveis depois. Fique de olho no oxigênio e na vida. Se precisar, o NEI (R/U) ajuda a ver os drops.
     tasks:
       - kill: {entity: "GalacticraftMars.Sludgeling", count: 5}
     rewards:
@@ -1691,8 +1662,8 @@ quests:
     deps: [desh]
     icon: GalacticraftMars:item.null:5
     desc: |
-      Barras de Desh na Prensa viram §eDesh Prensado§r. Ele vai na Blindagem de Nível 3, nas
-      máquinas marcianas e na Base do Astrominerador. Faça §e12§r.
+      Marte pede um metal próprio! Barras de Desh na Prensa viram §eDesh Prensado§r. Ele vai na Blindagem de Nível 3, nas máquinas marcianas e na Base do Astrominerador.
+      Faça §e12§r, Herói. Junte bastante Desh antes de começar, porque a Prensa trabalha uma barra de cada vez. Se precisar conferir a receita, aperte R ou U no NEI.
     tasks:
       - get: ore:compressedDesh x12
     rewards:
@@ -1705,9 +1676,8 @@ quests:
     deps: [desh]
     icon: GalacticraftMars:item.deshPick
     desc: |
-      Picareta, machado, pá, enxada e espada de Desh: mais duráveis que as de diamante. A
-      §ePicareta de Desh Pegajosa§r (com gosma de slime) quebra blocos com Toque Suave — útil
-      para pegar gelo e vidro.
+      Chegou a hora de ferramentas de respeito! Picareta, machado, pá, enxada e espada de Desh são mais duráveis que as de diamante, ótimas para explorar Marte.
+      A §ePicareta de Desh Pegajosa§r (com gosma de slime) quebra blocos com Toque Suave, o que é útil para pegar gelo e vidro. É opcional, Herói. Confira receitas no NEI (R/U).
     tasks:
       - get: GalacticraftMars:item.deshPick
     rewards:
@@ -1719,7 +1689,8 @@ quests:
     deps: [ferramentas_desh]
     icon: GalacticraftMars:item.deshPickSlime
     desc: |
-      Uma Picareta de Desh com gosma de slime: ela pega os blocos "inteiros", como Toque Suave.
+      Quer levar gelo e vidro inteiros? Uma Picareta de Desh com gosma de slime pega os blocos "inteiros", como Toque Suave, sem quebrar nem perder o item.
+      É opcional, Herói, mas muito prática para quem constrói bases de vidro. Faça primeiro a picareta de Desh comum e depois acrescente a gosma. Receita no NEI (R/U).
     tasks:
       - get: GalacticraftMars:item.deshPickSlime
     rewards:
@@ -1731,8 +1702,8 @@ quests:
     deps: [desh]
     icon: GalacticraftMars:item.deshChestplate
     desc: |
-      Elmo, peitoral, perneiras e botas de Desh. Uma armadura sólida para explorar Marte —
-      combina bem com o Traje Térmico, que fica nos espaços extras.
+      Elmo, peitoral, perneiras e botas de Desh: uma armadura sólida para explorar Marte. Ela combina bem com o Traje Térmico, que fica nos espaços extras do inventário do Galacticraft.
+      É opcional, Herói, mas deixa as expedições bem mais seguras. Junte Desh Prensado e confira as receitas no NEI (R/U).
     tasks:
       - get: [GalacticraftMars:item.deshHelmet, GalacticraftMars:item.deshChestplate, GalacticraftMars:item.deshLeggings, GalacticraftMars:item.deshBoots]
     rewards:
@@ -1759,8 +1730,8 @@ quests:
     deps: [marte]
     icon: GalacticraftMars:item.bucketSludge
     desc: |
-      Lagos de §eLodo Bacterial§r escondem-se nas cavernas marcianas — e deles saem os
-      §cSludgelings§r, bichinhos que grudam e mordem. Encha um balde (com muito cuidado).
+      Cuidado nas cavernas, Herói! Lagos de §eLodo Bacterial§r escondem-se nas cavernas marcianas, e deles saem os §cSludgelings§r, bichinhos que grudam e mordem.
+      Encha um balde com muito cuidado, de preferência sem monstros por perto. É opcional, mas dá a missão por completa. Se precisar de ajuda, aperte U no NEI.
     tasks:
       - get: GalacticraftMars:item.bucketSludge
     rewards:
@@ -1772,8 +1743,8 @@ quests:
     deps: [marte]
     icon: GalacticraftMars:tile.cavernVines
     desc: |
-      Elas brilham no teto das cavernas e §cpuxam para cima e envenenam§r quem encosta. Corte com
-      tesoura para levar uma de lembrança (ou para iluminar a base).
+      Elas brilham no teto das cavernas e §cpuxam para cima e envenenam§r quem encosta, então cuidado, Herói!
+      Corte com tesoura para levar uma de lembrança (ou para iluminar a base). É opcional, mas dá um visual lindo. Mantenha distância ao se aproximar e confira os detalhes no NEI (R/U).
     tasks:
       - get: GalacticraftMars:tile.cavernVines
     rewards:
@@ -1785,8 +1756,8 @@ quests:
     deps: [marte]
     icon: GalacticraftMars:tile.mars:7
     desc: |
-      Como na Lua, Marte esconde calabouços subterrâneos — de §eParedes de Calabouço Marciano§r.
-      Lá dentro mora o §cCreeper-Chefe Evoluído§r. Ache um e pegue alguns tijolos como prova.
+      Como na Lua, Marte esconde calabouços subterrâneos, feitos de §eParedes de Calabouço Marciano§r. Lá dentro mora o §cCreeper-Chefe Evoluído§r.
+      Ache um e pegue alguns tijolos como prova: junte §e8§r, Herói. Leve armadura, oxigênio de sobra e cuidado com o chefe. Se precisar, aperte U no NEI.
     tasks:
       - get: GalacticraftMars:tile.mars:7 x8
     rewards:
@@ -1841,8 +1812,8 @@ quests:
     deps: [tesouro_marciano]
     icon: GalacticraftMars:item.schematic:2
     desc: |
-      Foguete Nível 3, Foguete de Carga e Astrominerador: os três projetos que os baús de Marte
-      podem dar. Junte os três (vai precisar de mais de um Creeper-Chefe).
+      Foguete Nível 3, Foguete de Carga e Astrominerador: os três projetos que os baús de Marte podem dar. Junte os três, Herói!
+      Vai precisar de mais de um Creeper-Chefe, então prepare-se para visitar vários calabouços. É opcional, mas completa a coleção. Confira detalhes e esquemáticos no NEI (R/U).
     tasks:
       - get: [GalacticraftMars:item.schematic, GalacticraftMars:item.schematic:1, GalacticraftMars:item.schematic:2]
     rewards:
@@ -1854,8 +1825,8 @@ quests:
     deps: [tesouro_marciano]
     icon: GalacticraftMars:item.schematic
     desc: |
-      Destrave na Bancada NASA. O Foguete Nível 3 leva você ao §eCinturão de Asteroides§r — e,
-      com os addons do pack, a Vênus (ExtraPlanets) e ao sistema Amun-Ra.
+      Hora de destravar o próximo foguete! Coloque o esquemático na Bancada NASA e clique em Destravar. O Foguete Nível 3 leva você ao §eCinturão de Asteroides§r e, com os addons do pack, a Vênus (ExtraPlanets) e ao sistema Amun-Ra.
+      Boa, Herói! Se tiver dúvida, o NEI (R/U) ajuda.
     tasks:
       - get: GalacticraftMars:item.schematic
     rewards:
@@ -1869,8 +1840,8 @@ quests:
     deps: [marte]
     icon: GalacticraftMars:item.carbonFragments
     desc: |
-      1 carvão na bancada = 8 Carbonos Fragmentados (1 carvão vegetal = 4). Matéria-prima de
-      máquinas químicas marcianas.
+      Matéria-prima de máquinas químicas marcianas! 1 carvão na bancada rende 8 Carbonos Fragmentados (1 carvão vegetal rende 4). Junte §e16§r, Herói.
+      É opcional, mas as máquinas de gás do mod vão pedir bastante. Se a receita der dúvida, aperte R no NEI. Carvão é fácil de conseguir, então vá com calma.
     tasks:
       - get: GalacticraftMars:item.carbonFragments x16
     rewards:
@@ -1882,8 +1853,8 @@ quests:
     deps: [condensador]
     icon: GalacticraftMars:item.canisterPartialLOX:1
     desc: |
-      Uma Lata de Oxigênio Líquido cheia, saída do Condensador. Na bancada, junto de um Tanque de
-      Oxigênio (leve, médio ou pesado), ela enche o tanque instantaneamente.
+      Respire fundo! Uma Lata de Oxigênio Líquido cheia sai do Condensador. Na bancada, junto de um Tanque de Oxigênio (leve, médio ou pesado), ela enche o tanque instantaneamente.
+      É opcional, Herói, mas economiza tempo no Compressor. Receita e detalhes no NEI (R/U). Se ainda não tiver o Condensador, comece por ele.
     tasks:
       - get: GalacticraftMars:item.canisterPartialLOX:1
     rewards:
@@ -1895,8 +1866,8 @@ quests:
     deps: [ferro_meteorico, wafer_avancado]
     icon: GalacticraftMars:item.null:6
     desc: |
-      Ferro Meteórico, Ventiladores, gosma de slime e um Wafer Avançado. Peça obrigatória de
-      todas as máquinas de gás de Marte: Condensador, Sintetizador de Metano e Eletrolisador.
+      Peça obrigatória de todas as máquinas de gás de Marte: Condensador, Sintetizador de Metano e Eletrolisador. O Manipulador de Fluidos leva Ferro Meteórico, Ventiladores, gosma de slime e um Wafer Avançado.
+      Faça um e guarde, Herói, porque vai usar muito. Se faltar algo, aperte R no NEI.
     tasks:
       - get: GalacticraftMars:item.null:6
     rewards:
@@ -1909,8 +1880,8 @@ quests:
     deps: [manipulador_fluidos, tanque_pesado]
     icon: GalacticraftMars:tile.marsMachineT2:8
     desc: |
-      Separa água em §eoxigênio e hidrogênio§r usando energia. O oxigênio vai para a rede da base;
-      o hidrogênio (por Canos de Hidrogênio, feitos de cobre) alimenta o Sintetizador de Metano.
+      Separar água em gases é divertido! O Eletrolisador divide água em §eoxigênio e hidrogênio§r usando energia. O oxigênio vai para a rede da base; o hidrogênio (por Canos de Hidrogênio, feitos de cobre) alimenta o Sintetizador de Metano.
+      É opcional, Herói. Veja as entradas na GUI e a receita no NEI (R/U).
     tasks:
       - get: GalacticraftMars:tile.marsMachineT2:8
     rewards:
@@ -1922,9 +1893,8 @@ quests:
     deps: [manipulador_fluidos, fornalha_eletrica]
     icon: GalacticraftMars:tile.marsMachineT2:4
     desc: |
-      Combina hidrogênio com carbono para produzir §eMetano§r. O §eCarbono Fragmentado§r (carvão
-      ou carvão vegetal na bancada) é uma das fontes de carbono. É o começo da linha de gases de
-      Marte — confira as entradas na GUI.
+      Combine hidrogênio com carbono e produza §eMetano§r! O §eCarbono Fragmentado§r (carvão ou carvão vegetal na bancada) é uma das fontes de carbono.
+      É o começo da linha de gases de Marte, Herói, então confira as entradas na GUI da máquina. É opcional, mas abre portas. Detalhes e receita no NEI (R/U).
     tasks:
       - get: GalacticraftMars:tile.marsMachineT2:4
     rewards:
@@ -1936,9 +1906,8 @@ quests:
     deps: [manipulador_fluidos, compressor_oxigenio, descompressor]
     icon: GalacticraftMars:tile.marsMachineT2
     desc: |
-      O §eCondensador§r liquefaz gases (metano, oxigênio, nitrogênio...). Uma §eLata de Oxigênio
-      Líquido§r cheia na bancada com um Tanque de Oxigênio enche o tanque na hora! A receita é cara
-      (tanques, compressor e descompressor de oxigênio, manipulador de fluidos, bronze).
+      O §eCondensador§r liquefaz gases (metano, oxigênio, nitrogênio...). Uma §eLata de Oxigênio Líquido§r cheia na bancada com um Tanque de Oxigênio enche o tanque na hora!
+      A receita é cara (tanques, compressor e descompressor de oxigênio, manipulador de fluidos, bronze), então junte tudo antes, Herói. Confira no NEI (R/U).
     tasks:
       - get: GalacticraftMars:tile.marsMachineT2
     rewards:
@@ -1950,8 +1919,8 @@ quests:
     deps: [eletrolisador]
     icon: GalacticraftMars:tile.hydrogenPipe
     desc: |
-      6 lingotes de cobre = 6 Canos de Hidrogênio. Ligam o Eletrolisador ao Sintetizador de
-      Metano.
+      Gás precisa de encanamento! 6 lingotes de cobre rendem 6 Canos de Hidrogênio, que ligam o Eletrolisador ao Sintetizador de Metano.
+      É opcional, Herói, mas essencial para a linha química de Marte. Cobre é fácil de conseguir, então faça um estoque. Se precisar da receita, aperte R no NEI.
     tasks:
       - get: GalacticraftMars:tile.hydrogenPipe x6
     rewards:
@@ -1963,9 +1932,8 @@ quests:
     deps: [desh_prensado, concentrador_oxigenio]
     icon: GalacticraftMars:tile.marsMachine
     desc: |
-      Com energia, água, mudas e sementes, o §eTerraformador§r transforma pouco a pouco o chão
-      marciano em grama e planta árvores em volta. Leva tempo, mas é o primeiro passo para um
-      jardim vermelho... digo, verde!
+      Sonha com um jardim em Marte? Com energia, água, mudas e sementes, o §eTerraformador§r transforma pouco a pouco o chão marciano em grama e planta árvores em volta.
+      Leva tempo, mas é o primeiro passo para um jardim vermelho... digo, verde! Seja paciente, Herói. Receita no NEI (R/U).
     tasks:
       - get: GalacticraftMars:tile.marsMachine
     rewards:
@@ -1977,8 +1945,8 @@ quests:
     deps: [desh_prensado]
     icon: GalacticraftMars:tile.marsMachine:4
     desc: |
-      Uma cama de ficção científica: deite para "pular" a noite longa de Marte (ela tem um tempo de
-      recarga entre usos).
+      Uma cama de ficção científica! Deite na Câmara Criogênica para "pular" a noite longa de Marte. Ela tem um tempo de recarga entre usos, então não abuse.
+      É opcional, Herói, mas torna a vida na colônia bem mais confortável. Se precisar da receita, aperte R no NEI.
     tasks:
       - get: GalacticraftMars:tile.marsMachine:4
     rewards:
@@ -1990,8 +1958,8 @@ quests:
     deps: [desh_prensado, modulo_frequencia, wafer_avancado]
     icon: GalacticraftMars:tile.marsMachine:8
     desc: |
-      Com ele, foguetes de carga decolam sozinhos para uma frequência de destino. A config do
-      pack também o faz manter o chunk carregado.
+      Com o Controle de Lançamento, foguetes de carga decolam sozinhos para uma frequência de destino. A config do pack também o faz manter o chunk carregado.
+      É opcional, Herói, mas essencial para automatizar a logística entre bases. Ele trabalha junto do Foguete de Carga. Confira a receita no NEI (R/U).
     tasks:
       - get: GalacticraftMars:tile.marsMachine:8
     rewards:
@@ -2003,9 +1971,8 @@ quests:
     deps: [tesouro_marciano, carga, controle_lancamento]
     icon: GalacticraftMars:item.spaceshipTier2:11
     desc: |
-      Com o esquemático do Foguete de Carga destravado, você monta um foguete §esem tripulante§r
-      que leva itens automaticamente entre duas bases com Controle de Lançamento. Carregador de
-      Carga na partida, Descarregador na chegada. Logística interplanetária!
+      Logística interplanetária! Com o esquemático do Foguete de Carga destravado, você monta um foguete §esem tripulante§r que leva itens automaticamente entre duas bases com Controle de Lançamento.
+      Coloque um Carregador de Carga na partida e um Descarregador na chegada, Herói. Confira a receita completa no NEI (R/U).
     tasks:
       - get: GalacticraftMars:item.spaceshipTier2:11
     rewards:
@@ -2018,8 +1985,8 @@ quests:
     deps: [desh]
     icon: GalacticraftCore:tile.arclamp
     desc: |
-      Desh, pó de pedra luminosa e uma bateria: uma luz fortíssima que espanta monstros de uma
-      área grande. Perfeita para a base marciana.
+      Luz forte e proteção de uma vez! Desh, pó de pedra luminosa e uma bateria fazem uma Lâmpada a Arco Voltaico: uma luz fortíssima que espanta monstros de uma área grande.
+      Perfeita para a base marciana, Herói. É opcional, mas deixa a colônia mais segura. Confira a receita no NEI (R/U).
     tasks:
       - get: GalacticraftCore:tile.arclamp
     rewards:
@@ -2055,9 +2022,8 @@ quests:
     deps: [esquematico_t3, desh_prensado, blindagem_t2]
     icon: GalacticraftMars:item.itemBasicAsteroids
     desc: |
-      Na Prensa: §e1 Blindagem Nível 2 + 1 Desh Prensado = 1 Blindagem Pesada de Nível 3§r. O
-      Foguete Nível 3 usa dezenas delas (casco, nariz pesado, aletas pesadas e motor pesado).
-      Comece com §e18§r.
+      O Foguete Nível 3 pede blindagem melhor! Na Prensa: §e1 Blindagem Nível 2 + 1 Desh Prensado = 1 Blindagem Pesada de Nível 3§r.
+      Ele usa dezenas delas (casco, nariz pesado, aletas pesadas e motor pesado). Comece com §e18§r, Herói. Junte bastante Desh Prensado antes. Receita no NEI (R/U).
     tasks:
       - get: GalacticraftMars:item.itemBasicAsteroids x18
     rewards:
@@ -2070,7 +2036,8 @@ quests:
     deps: [blindagem_t3]
     icon: GalacticraftMars:item.heavyNoseCone
     desc: |
-      3 Blindagens Nível 3 e uma Tocha de Redstone. O nariz do Foguete Nível 3.
+      O topo do foguete grande! Junte 3 Blindagens Nível 3 e uma Tocha de Redstone e monte o nariz do Foguete Nível 3, o §eNariz de Foguete Pesado§r.
+      Prepare as blindagens antes, Herói, e monte na bancada de trabalho. Se tiver dúvida na posição, aperte R no NEI.
     tasks:
       - get: GalacticraftMars:item.heavyNoseCone
     rewards:
@@ -2083,8 +2050,8 @@ quests:
     deps: [blindagem_t3, respirador]
     icon: GalacticraftMars:item.itemBasicAsteroids:1
     desc: |
-      4 Blindagens Nível 3, Lata de Estanho, Respirador, Isqueiro e Botão. O motor do Foguete
-      Nível 3 (que também usa Motores Auxiliares).
+      O coração do Nível 3! Use 4 Blindagens Nível 3, Lata de Estanho, Respirador, Isqueiro e Botão para montar o Motor de Foguete Pesado, o motor do Foguete Nível 3 (que também usa Motores Auxiliares).
+      Separe as peças com calma, Herói. Confira a receita no NEI (R/U).
     tasks:
       - get: GalacticraftMars:item.itemBasicAsteroids:1
     rewards:
@@ -2097,7 +2064,8 @@ quests:
     deps: [blindagem_t3]
     icon: GalacticraftMars:item.itemBasicAsteroids:2
     desc: |
-      Blindagens Nível 3 (com Titânio Prensado numa das variações da receita). Faça §e4§r.
+      As aletas pesadas seguram o foguete no rumo! Elas levam Blindagens Nível 3 (com Titânio Prensado numa das variações da receita). Faça §e4§r, Herói.
+      Se não lembrar qual variação usar, aperte R no NEI com a aleta na mão. Prepare os materiais antes de montar, e não se esqueça do titânio.
     tasks:
       - get: GalacticraftMars:item.itemBasicAsteroids:2 x4
     rewards:
@@ -2110,9 +2078,8 @@ quests:
     deps: [nariz_pesado, motor_pesado, aletas_pesadas, motor_auxiliar]
     icon: GalacticraftMars:item.itemTier3Rocket
     desc: |
-      Monte na Bancada NASA com o esquemático do Nível 3 (confira o desenho e as quantidades no
-      NEI). O Foguete Nível 3 é o seu passaporte para o §eCinturão de Asteroides§r, para §eVênus§r
-      (ExtraPlanets) e para os mundos de §eAmun-Ra§r.
+      Hora de montar o foguete grande! Faça na Bancada NASA com o esquemático do Nível 3 (confira o desenho e as quantidades no NEI). Ele é o seu passaporte para o §eCinturão de Asteroides§r, para §eVênus§r (ExtraPlanets) e para os mundos de §eAmun-Ra§r.
+      Reúna todas as peças, Herói, e boa viagem!
     tasks:
       - get: GalacticraftMars:item.itemTier3Rocket:*
     rewards:
@@ -2147,8 +2114,8 @@ quests:
     deps: [asteroides]
     icon: GalacticraftMars:tile.asteroidsBlock
     desc: |
-      Rocha de Asteroide é o material de construção daqui. Junte bastante para fazer pontes entre
-      as rochas — e uma plataforma para a futura base.
+      Rocha de Asteroide é o material de construção daqui. Junte §e64§r, Herói, para fazer pontes entre as rochas e uma plataforma para a futura base.
+      Cuidado com o vazio lá embaixo, onde não há chão! Fique de olho no oxigênio. Se precisar de ajuda para localizar, aperte U no NEI.
     tasks:
       - get: GalacticraftMars:tile.asteroidsBlock:* x64
     rewards:
@@ -2161,8 +2128,8 @@ quests:
     deps: [asteroides]
     icon: GalacticraftMars:tile.asteroidsBlock:4
     desc: |
-      Os asteroides têm minérios de alumínio, ferro e §eilmenita§r (todos ativos na config). A
-      ilmenita é a que importa: funda para titânio.
+      Os asteroides têm minérios de alumínio, ferro e §eilmenita§r (todos ativos na config). A ilmenita é a que importa: funda para titânio.
+      Junte §e4§r de um tipo e §e8§r do outro, Herói, e leve o que sobrar para a base. Confira onde achar no NEI (R/U).
     tasks:
       - get: [GalacticraftMars:tile.asteroidsBlock:3 x4, GalacticraftMars:tile.asteroidsBlock:4 x8]
     rewards:
@@ -2175,7 +2142,8 @@ quests:
     deps: [asteroides]
     icon: GalacticraftMars:item.grapple
     desc: |
-      Arremesse e se puxe até onde ele prender. No vazio dos asteroides, ele salva vidas.
+      Arremesse e se puxe até onde ele prender! No vazio dos asteroides, o Gancho salva vidas, Herói, principalmente quando um pulo sai errado.
+      É opcional, mas muito útil. Treine o uso antes de se arriscar longe da base. Se precisar da receita, aperte R no NEI.
     tasks:
       - get: GalacticraftMars:item.grapple
     rewards:
@@ -2204,7 +2172,8 @@ quests:
     deps: [titanio]
     icon: GalacticraftMars:item.itemBasicAsteroids:6
     desc: |
-      Duas Barras de Titânio na Prensa = §eTitânio Prensado§r. Faça §e12§r.
+      Titânio é o metal dos asteroides! Duas Barras de Titânio na Prensa viram §eTitânio Prensado§r.
+      Faça §e12§r, Herói. Ele vai nas aletas pesadas e em várias outras peças do Nível 3. Fique de olho no estoque de ilmenita, porque ela dá o titânio. Receitas no NEI (R/U).
     tasks:
       - get: ore:compressedTitanium x12
     rewards:
@@ -2217,8 +2186,8 @@ quests:
     deps: [asteroides]
     icon: GalacticraftMars:tile.denseIce
     desc: |
-      Alguns asteroides têm um núcleo de §eGelo Denso§r: a única fonte de água por perto. Leve
-      alguns para a base.
+      Água no vazio é raridade! Alguns asteroides têm um núcleo de §eGelo Denso§r: a única fonte de água por perto. Leve §e8§r para a base, Herói.
+      É opcional, mas ajuda muito na logística. Cuidado ao minerar, porque o vazio é traiçoeiro. Se precisar, aperte U no NEI.
     tasks:
       - get: GalacticraftMars:tile.denseIce x8
     rewards:
@@ -2230,7 +2199,8 @@ quests:
     deps: [titanio]
     icon: GalacticraftMars:item.titanium_chestplate
     desc: |
-      Ferramentas e armadura de titânio. Um bom upgrade para quem explora rochas flutuantes.
+      Ferramentas e armadura de titânio: um bom upgrade para quem explora rochas flutuantes. Escolha uma peça qualquer para cumprir a missão, Herói.
+      É opcional, mas faz diferença na durabilidade. Junte Titânio Prensado e confira as receitas no NEI (R/U). Combine com o Traje Térmico se for a lugares gelados, e lembre de levar oxigênio de reserva.
     tasks:
       - one_of: [GalacticraftMars:item.titanium_pickaxe, GalacticraftMars:item.titanium_chestplate, GalacticraftMars:item.titanium_sword]
     rewards:
@@ -2242,8 +2212,8 @@ quests:
     deps: [equipamento_titanio]
     icon: GalacticraftMars:item.titanium_helmet
     desc: |
-      As quatro peças de titânio. Leve e resistente — combina com o Traje Térmico nos espaços
-      extras do Galacticraft.
+      As quatro peças de titânio: leve e resistente, combina com o Traje Térmico nos espaços extras do Galacticraft.
+      É opcional, Herói, mas dá segurança extra nas explorações. Junte Titânio Prensado suficiente para as quatro peças antes de começar. Receitas no NEI (R/U). Se faltar alguma peça, o NEI (R/U) mostra a receita individual.
     tasks:
       - get: [GalacticraftMars:item.titanium_helmet, GalacticraftMars:item.titanium_chestplate, GalacticraftMars:item.titanium_leggings, GalacticraftMars:item.titanium_boots]
     rewards:
@@ -2255,8 +2225,8 @@ quests:
     deps: [titanio]
     icon: GalacticraftMars:item.itemBasicAsteroids:8
     desc: |
-      4 redstones, 4 Ferros Prensados e um Painel de Vidro. O §eNúcleo de Feixe§r é a peça dos
-      blocos de energia por laser, da Telebase, do Astrominerador e da Unidade Orion.
+      Energia por laser vem aí! Com 4 redstones, 4 Ferros Prensados e um Painel de Vidro você faz o §eNúcleo de Feixe§r, a peça dos blocos de energia por laser, da Telebase, do Astrominerador e da Unidade Orion.
+      Faça §e4§r, Herói. Receita no NEI (R/U).
     tasks:
       - get: GalacticraftMars:item.itemBasicAsteroids:8 x4
     rewards:
@@ -2269,8 +2239,8 @@ quests:
     deps: [nucleo_feixe, titanio_prensado]
     icon: GalacticraftMars:tile.beamReflector
     desc: |
-      Um §eReceptor de Feixe§r grudado numa máquina recebe energia por laser; §eRefletores§r
-      redirecionam o feixe pelo caminho. Energia sem cabo, atravessando o vazio.
+      Energia sem cabo, atravessando o vazio! Um §eReceptor de Feixe§r grudado numa máquina recebe energia por laser; §eRefletores§r redirecionam o feixe pelo caminho.
+      É opcional, Herói, mas muito útil nos asteroides, onde cabos ficariam esticados demais. Confira receitas e uso no NEI (R/U). Se precisar de lembrar a receita, é só apertar R no NEI.
     tasks:
       - get: [GalacticraftMars:tile.beamReceiver x2, GalacticraftMars:tile.beamReflector]
     rewards:
@@ -2282,8 +2252,8 @@ quests:
     deps: [nucleo_feixe, titanio_prensado]
     icon: GalacticraftMars:tile.telepadShort
     desc: |
-      Duas Telebases configuradas uma para a outra formam um teletransportador de curto alcance
-      dentro da mesma dimensão. Pede Pérolas do Fim, titânio e energia.
+      Duas Telebases configuradas uma para a outra formam um teletransportador de curto alcance dentro da mesma dimensão. Pede Pérolas do Fim, titânio e energia.
+      Faça §e2§r, Herói, e configure uma para a outra. É opcional, mas muito prático. Receita no NEI (R/U). Se travar, o NEI (R/U) mostra onde cada item entra.
     tasks:
       - get: GalacticraftMars:tile.telepadShort x2
     rewards:
@@ -2295,8 +2265,8 @@ quests:
     deps: [titanio_prensado]
     icon: GalacticraftMars:tile.walkway
     desc: |
-      Pisos de titânio vazados — e versões com cabo ou cano de oxigênio embutidos. Ótimos para
-      ligar rochas dos asteroides.
+      Pisos de titânio vazados, e versões com cabo ou cano de oxigênio embutidos: o Passadiço é ótimo para ligar rochas dos asteroides.
+      Faça §e10§r, Herói. É opcional, mas ajuda muito a montar a base sem precisar de pontes grandes. Se precisar da receita, aperte R no NEI.
     tasks:
       - get: GalacticraftMars:tile.walkway x10
     rewards:
@@ -2324,9 +2294,8 @@ quests:
     deps: [nucleo_feixe, queijo, desh]
     icon: GalacticraftMars:item.orionDrive
     desc: |
-      Um item de colecionador: um Núcleo de Feixe cercado de §eminérios§r de diamante, lápis,
-      ouro, redstone, carvão, queijo, desh e ilmenita (os minérios, não os lingotes!). Ela é
-      ingrediente do Console de Navegação das Naves-Mãe de Amun-Ra.
+      Um item de colecionador! A Unidade Orion leva um Núcleo de Feixe cercado de §eminérios§r de diamante, lápis, ouro, redstone, carvão, queijo, desh e ilmenita (os minérios, não os lingotes!).
+      Ela é ingrediente do Console de Navegação das Naves-Mãe de Amun-Ra. Boa sorte, Herói! Confira no NEI (R/U).
     tasks:
       - get: GalacticraftMars:item.orionDrive
     rewards:
@@ -2338,7 +2307,8 @@ quests:
     deps: [desh]
     icon: GalacticraftMars:item.atmosphericValve
     desc: |
-      3 Barras de Desh e um Respirador. Componente de máquinas que puxam gases da atmosfera.
+      Componente de máquinas que puxam gases da atmosfera! A Válvula Atmosférica leva 3 Barras de Desh e um Respirador.
+      É opcional, Herói, mas as máquinas de gás vão pedir. Se ainda não tiver o respirador, faça antes. Confira a receita no NEI (R/U) se precisar.
     tasks:
       - get: GalacticraftMars:item.atmosphericValve
     rewards:
