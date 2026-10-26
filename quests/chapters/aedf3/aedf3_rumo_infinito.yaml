@@ -1,0 +1,303 @@
+chapter:
+  id: aedf3_rumo_infinito
+  title: Rumo ao Infinito
+  prefix: AEDF3
+  order: 813.125
+  icon: Avaritia:Infinity_Sword
+  desc: |
+    §6Memórias de outros heróis, página catorze.§r Nas servidoras mais ousadas da Era do Futuro, o fim da estrada não era um dragão: era um número que não acaba. Mesas de crafting empilhadas, nêutrons coletados um por um, singularidades guardadas em baús e, no final, a Espada do Infinito. Chegou a hora de sonhar grande, Herói.
+quests:
+- id: mesa_compressada
+  title: Mesa de Crafting Compressada
+  type: main
+  deps_hidden: ['aedf3_evolucao_draconica:draconico_milestone']
+  desc: |
+    O primeiro degrau do Avaritia é a bancada empilhada: a §eMesa de Crafting Comprimida§r, com grade 5x5. Faça com bancadas e blocos de diamante. A partir dela, tudo ganha outro tamanho.
+  tasks:
+  - {get: 'Avaritia:Double_Craft'}
+  rewards:
+  - {xp: 5}
+  - choice: ['minecraft:crafting_table x4', 'minecraft:diamond x4']
+- id: mesa_dupla
+  title: Mesa de Crafting Dupla
+  type: main
+  deps: [mesa_compressada]
+  desc: |
+    A segunda: uma grade 7x7 para peças mais complexas. Combine materiais de diamante e esmeralda. É pesada e cara, mas o NEI mostra tudo o que dá para fazer com ela.
+  tasks:
+  - {get: 'Avaritia:Triple_Craft'}
+  rewards:
+  - {xp: 5}
+  - choice: ['minecraft:diamond x8', 'minecraft:emerald x4']
+- id: rede_diamante
+  title: Rede de Diamante
+  type: main
+  deps: [mesa_dupla]
+  desc: |
+    Diamante entrelaçado como uma rede: o §eDiamond Lattice§r é a base de peças e de componentes do Avaritia. Feito com blocos de diamante e muita paciência. Guarde alguns.
+  tasks:
+  - {get: 'Avaritia:Resource'}
+  rewards:
+  - {xp: 5}
+  - choice: ['minecraft:diamond x8', 'minecraft:iron_ingot x16']
+- id: matriz_de_cristal
+  title: Cristal Matricial
+  type: main
+  deps: [rede_diamante]
+  desc: |
+    O §eLingote de Cristal Matricial§r é uma liga luminosa de diamante, ender e outros. Resistente e linda, é a primeira prova de que você está no caminho. Use para a Dire Table.
+  tasks:
+  - {get: 'Avaritia:Resource:1'}
+  rewards:
+  - {xp: 5}
+  - choice: ['minecraft:diamond x8', 'minecraft:nether_star']
+- id: bloco_cristal
+  title: Bloco de Matriz
+  type: normal
+  deps: [matriz_de_cristal]
+  desc: |
+    Um bloco brilhante que faz as vezes de estrutura e decoração. O §eBloco de Matriz de Cristal§r é lindo e raro. Combine em uma parede para mostrar sua conquista.
+  tasks:
+  - {get: 'Avaritia:Crystal_Matrix'}
+  rewards:
+  - {xp: 3}
+  - choice: ['Avaritia:Resource:1 x2', 'minecraft:diamond x4']
+- id: estrela_combustivel
+  title: Combustível Estelar
+  type: normal
+  deps: [bloco_cristal]
+  desc: |
+    O §eCombustível Estelar§r é uma energia concentrada, líquida e intensa. Usada em receitas poderosas do Avaritia. Pegue com cuidado e guarde em local seguro.
+  tasks:
+  - {get: 'Avaritia:Resource:8'}
+  rewards:
+  - {xp: 3}
+  - choice: ['minecraft:blaze_rod x8', 'minecraft:nether_star']
+- id: coletor_de_neutrons
+  title: Coletor de Nêutrons
+  type: main
+  deps: [estrela_combustivel]
+  desc: |
+    Máquina lenta e paciente: o §eColetor de Nêutrons§r produz pó de nêutron pouco a pouco, sem precisar de energia. Faça vários e deixe trabalhando. Um herói que espera sempre chega.
+  tasks:
+  - {get: 'Avaritia:Neutron_Collector'}
+  rewards:
+  - {xp: 5}
+  - choice: ['Avaritia:Resource x2', 'minecraft:diamond x8']
+- id: compressor_neutronio
+  title: Compressor de Neutrônio
+  type: main
+  deps: [coletor_de_neutrons]
+  desc: |
+    O §eCompressor de Neutrônio§r transforma pó em pepitas, lingotes e blocos. Também comprime materiais comuns em singularidades. Muito caro e vale a pena, pois é a máquina mais icônica da série.
+  tasks:
+  - {get: 'Avaritia:Neutronium_Compressor'}
+  rewards:
+  - {xp: 5}
+  - choice: ['Avaritia:Resource:9', 'minecraft:diamond x8']
+- id: pepita_neutronio
+  title: Pepita de Neutrônio
+  type: normal
+  deps: [compressor_neutronio]
+  desc: |
+    Cada pepita de §eNeutrônio§r vem de pó coletado. Junte nove para um lingote. A parte difícil é a espera, não a receita. Boas pepitas valem muito mais que o esforço.
+  tasks:
+  - {get: 'Avaritia:Resource:3 x9'}
+  rewards:
+  - {xp: 3}
+  - choice: ['Avaritia:Resource:2 x4', 'minecraft:diamond x4']
+- id: lingote_neutronio
+  title: Lingote de Neutrônio
+  type: main
+  deps: [pepita_neutronio]
+  desc: |
+    O §eLingote de Neutrônio§r é pesado e denso, quase sem peso. Material de ferramentas e armaduras fortes. Segure um na mão e sinta o poder do cosmos.
+  tasks:
+  - {get: 'Avaritia:Resource:4'}
+  rewards:
+  - {xp: 5}
+  - choice: ['Avaritia:Resource:3 x9', 'minecraft:diamond x4']
+- id: engrenagem_neutronio
+  title: Engrenagem de Neutrônio
+  type: normal
+  deps: [lingote_neutronio]
+  desc: |
+    Peças de máquina que giram por toda a eternidade. A §eEngrenagem de Neutrônio§r está no Compressor e em outras máquinas. Faça uma e guarde.
+  tasks:
+  - {get: 'Avaritia:Resource:9'}
+  rewards:
+  - {xp: 3}
+  - choice: ['Avaritia:Resource:4 x2', 'minecraft:diamond x4']
+- id: singularidade_ferro
+  title: Singularidade de Ferro
+  type: normal
+  deps: [engrenagem_neutronio]
+  desc: |
+    Um monte de ferro comprimido num ponto. A §eSingularidade de Ferro§r é um ingrediente do Catalisador. Faça no compressor de neutrônio e use paciência.
+  tasks:
+  - {get: 'Avaritia:Singularity'}
+  rewards:
+  - {xp: 3}
+  - choice: ['minecraft:iron_block x8', 'minecraft:diamond x2']
+- id: singularidade_ouro
+  title: Singularidade de Ouro
+  type: normal
+  deps: [singularidade_ferro]
+  desc: |
+    Ouro comprimido ao máximo. A §eSingularidade de Ouro§r brilha com luz própria. Parte da receita do Catalisador Infinito, junto com outras singularidades.
+  tasks:
+  - {get: 'Avaritia:Singularity:1'}
+  rewards:
+  - {xp: 3}
+  - choice: ['minecraft:gold_block x8', 'minecraft:diamond x2']
+- id: singularidade_redstone
+  title: Singularidade de Redstone
+  type: normal
+  deps: [singularidade_ouro]
+  desc: |
+    Redstone ao nível do infinito. A §eSingularidade de Redstone§r é elétrica e instável. Mantenha perto do compressor. Uma peça simples, mas valiosa.
+  tasks:
+  - {get: 'Avaritia:Singularity:3'}
+  rewards:
+  - {xp: 3}
+  - choice: ['minecraft:redstone_block x8', 'minecraft:diamond x2']
+- id: singularidade_lapis
+  title: Singularidade de Lápis
+  type: normal
+  deps: [singularidade_redstone]
+  desc: |
+    Azul profundo e de aparência cósmica. A §eSingularidade de Lápis§r é outra peça do catalisador. Combine com as demais num baú organizado.
+  tasks:
+  - {get: 'Avaritia:Singularity:2'}
+  rewards:
+  - {xp: 3}
+  - choice: ['minecraft:lapis_block x8', 'minecraft:diamond x2']
+- id: singularidade_quartzo
+  title: Singularidade de Quartzo
+  type: normal
+  deps: [singularidade_lapis]
+  desc: |
+    Quartzo branco e puro, em forma de ponto. A §eSingularidade de Quartzo§r completa um conjunto. Guarde as cinco juntas e prepare o catalisador.
+  tasks:
+  - {get: 'Avaritia:Singularity:4'}
+  rewards:
+  - {xp: 3}
+  - choice: ['minecraft:quartz_block x8', 'minecraft:diamond x2']
+- id: perola_endest
+  title: Pérola do Endest
+  type: main
+  deps: [singularidade_quartzo]
+  desc: |
+    Pérolas do Fim em versão superior. A §eEndest Pearl§r teletransporta com mais alcance e sem dano. Feita no Dire Crafting. Um passo a mais para o Infinito.
+  tasks:
+  - {get: 'Avaritia:Endest_Pearl'}
+  rewards:
+  - {xp: 5}
+  - choice: ['minecraft:ender_pearl x8', 'minecraft:diamond x4']
+- id: catalisador
+  title: Catalisador Infinito
+  type: main
+  deps: [perola_endest]
+  desc: |
+    A peça-chave de todo o ramo. O §eCatalisador Infinito§r mistura singularidades e neutrônio na Dire Table. Fazer uma é uma epopeia. Quando ele brilhar em suas mãos, saiba que está a um passo do fim.
+  tasks:
+  - {get: 'Avaritia:Resource:5'}
+  rewards:
+  - {xp: 5}
+  - choice: ['Avaritia:Resource:4 x2', 'minecraft:nether_star x2']
+- id: mesa_dire
+  title: Mesa de Crafting Dire
+  type: main
+  deps: [catalisador]
+  desc: |
+    A grade 9x9 do Avaritia: a §eMesa de Crafting Dire§r. Todas as receitas finais saem daqui, incluindo armas, armaduras e ferramentas infinitas. Siga as receitas no NEI e boa sorte.
+  tasks:
+  - {get: 'Avaritia:Dire_Crafting'}
+  rewards:
+  - {xp: 5}
+  - choice: ['Avaritia:Resource:5', 'Avaritia:Resource:1 x4']
+- id: ensopado
+  title: Ensopado Definitivo
+  type: optional
+  deps: [mesa_dire]
+  desc: |
+    O prato mais forte do Avaritia. O §eUltimate Stew§r cura toda a fome e dá saciedade enorme. Uma obra-prima culinária, ótima para homenagear a padaria dos golens. Herói, até comida tem seu endgame!
+  tasks:
+  - {get: 'Avaritia:Ultimate_Stew'}
+  rewards:
+  - {xp: 3}
+  - choice: ['minecraft:cooked_beef x32', 'minecraft:golden_apple x4']
+- id: almondegas
+  title: Almôndegas Cósmicas
+  type: optional
+  deps: [ensopado]
+  desc: |
+    A irmã gêmea do ensopado, com sabor intergaláctico. As §eAlmôndegas Cósmicas§r são perfeitas para o jantar de comemoração. Prepare e divida com os amigos.
+  tasks:
+  - {get: 'Avaritia:Cosmic_Meatballs'}
+  rewards:
+  - {xp: 3}
+  - choice: ['minecraft:cooked_beef x32', 'minecraft:golden_apple x4']
+- id: espada_caveira
+  title: Espada Caveira de Fogo
+  type: optional
+  deps: [almondegas]
+  desc: |
+    A §eSkullfire Sword§r mistura crânios de Wither com poder infinito. Uma arma impressionante e perigosa. Use com cuidado e brilhe nos duelos.
+  tasks:
+  - {get: 'Avaritia:Skull_Sword'}
+  rewards:
+  - {xp: 3}
+  - choice: ['minecraft:skull:1 x3', 'minecraft:diamond x4']
+- id: picareta_infinita
+  title: Picareta do Fim do Mundo
+  type: main
+  deps: [espada_caveira]
+  desc: |
+    O §eWorld Breaker§r quebra qualquer bloco instantaneamente e em área gigante. Dá até para fazer buracos no bedrock. Uma ferramenta que redefine o que é "minerar".
+  tasks:
+  - {get: 'Avaritia:Infinity_Pickaxe'}
+  rewards:
+  - {xp: 5}
+  - choice: ['Avaritia:Resource:6 x2', 'minecraft:diamond x8']
+- id: espada_infinita
+  title: Espada do Infinito
+  type: boss
+  deps: [picareta_infinita]
+  icon: Avaritia:Infinity_Sword
+  desc: |
+    A lendária §eEspada do Infinito§r, a arma mais forte do jogo. Seu golpe é fatal para quase tudo. O brilho não é só decoração: é a materialização de todos os seus esforços. Parabéns, Herói, você chegou ao infinito.
+  tasks:
+  - {get: 'Avaritia:Infinity_Sword'}
+  rewards:
+  - {xp: 20}
+  - choice: ['Avaritia:Resource:6 x4', 'minecraft:diamond x16']
+  - {loot: epico}
+- id: armadura_infinita
+  title: Armadura do Infinito
+  type: main
+  deps: [espada_infinita]
+  desc: |
+    Capacete, peitoral, calças e botas. A armadura do Infinito protege contra tudo e dá voo livre. Quem veste sente que o mundo é um brinquedo. Cuidado para não esquecer os amigos lá embaixo.
+  tasks:
+  - get: ['Avaritia:Infinity_Helm', 'Avaritia:Infinity_Chest', 'Avaritia:Infinity_Pants', 'Avaritia:Infinity_Shoes']
+  rewards:
+  - {xp: 5}
+  - choice: ['Avaritia:Resource:6 x4', 'minecraft:diamond x16']
+- id: infinito_milestone
+  title: O Infinito
+  type: milestone
+  deps: [armadura_infinita]
+  desc: |
+    O caminho foi longo, de uma árvore a uma espada que não acaba. Cada tronco, cada cabo de cobre, cada dragão vencido está aqui, dentro desse lingote brilhante. Os heróis da Era do Futuro sonhavam com isso em silêncio.
+
+    Antes do fim, porém, falta uma fronteira. Há uma Lua esperando, Herói. Prepare o foguete: vamos à §eCorrida Espacial§r!
+  tasks:
+  - get: ['Avaritia:Resource:5', 'Avaritia:Infinity_Sword', 'Avaritia:Infinity_Pickaxe', 'Avaritia:Dire_Crafting']
+  rewards:
+  - {xp: 25}
+  - kit:
+      name: Kit do Infinito
+      items: ['Avaritia:Resource:6 x4', 'Avaritia:Resource:4 x8', 'minecraft:nether_star x4', 'minecraft:diamond
+          x32', 'minecraft:golden_apple x8']
+  - {loot: raro}

@@ -56,10 +56,11 @@ quests:
       O mapa deste volume, de ponta a ponta:
 
       §e1.§r §bMesas§r: Comprimida, Dupla e a §eMesa de Trabalho Extrema§r (Dire Crafting
-      Table). §e2.§r §bNeutrônio§r: Coletor de Nêutrons, Compressor, lingotes. §e3.§r
-      §bSingularidades§r: o capítulo "Singularidades Eternas" cuida delas. §e4.§r §bCatalisador
-      do Infinito§r: comida absurda, pérola e singularidades. §e5.§r §bLingote do Infinito§r e o
-      equipamento: armadura, ferramentas, arco.
+         Table).
+      §e2.§r §bNeutrônio§r: Coletor de Nêutrons, Compressor, lingotes.
+      §e3.§r §bSingularidades§r: o capítulo "Singularidades Eternas" cuida delas.
+      §e4.§r §bCatalisador do Infinito§r: comida absurda, pérola e singularidades.
+      §e5.§r §bLingote do Infinito§r e o equipamento: armadura, ferramentas, arco.
 
       Todo o crafting pesado acontece na Mesa Extrema (grade 9x9). No NEI, procure o handler
       "Xtreme Crafting".
@@ -134,7 +135,10 @@ quests:
     deps: [mapa_epilogo]
     icon: minecraft:quartz_block
     desc: |
-      O Coletor de Nêutrons pede §e10 blocos de quartzo§r. O Nether é generoso com o quartzo.
+      O Coletor de Nêutrons pede §e10 blocos de quartzo§r. O Nether é generoso: minere os veios
+      de quartzo e faça blocos na bancada (4 quartzos cada).
+
+      Pegue um pouco mais para decoração, se gostar.
     tasks:
       - get: minecraft:quartz_block x16
     rewards:
@@ -147,7 +151,10 @@ quests:
     deps: [mapa_epilogo]
     icon: minecraft:redstone_block
     desc: |
-      O Coletor pede 20 blocos de redstone e o Compressor mais dois. Junte §e32§r.
+      O Coletor pede 20 blocos de redstone e o Compressor mais dois, fora a Singularidade de
+      Redstone da Mesa Automática. Junte §e32 blocos§r (9 pós cada).
+
+      Uma fazenda de bruxas dá redstone sem parar.
     tasks:
       - get: minecraft:redstone_block x32
     rewards:
@@ -160,7 +167,8 @@ quests:
     deps: [mapa_epilogo]
     icon: minecraft:hopper
     desc: |
-      O Compressor de Neutrônio usa três funis, o Decompressor de Clusters também. Faça §e6§r.
+      O Compressor de Neutrônio usa três funis e o Decompressor de Clusters mais três. Faça
+      §e6§r (5 ferros e 1 baú cada) e sobre uns de reserva para a automação de coleta.
     tasks:
       - get: minecraft:hopper x6
     rewards:
@@ -238,7 +246,9 @@ quests:
     icon: Avaritia:Triple_Craft
     desc: |
       Nove Mesas Comprimidas formam a §eMesa Dupla Comprimida§r (Double Compressed Crafting
-      Table). Ela ainda não faz mágica, mas é o coração da próxima.
+      Table). Ela ainda não faz mágica, mas é o coração da Mesa Extrema.
+
+      Isso são 81 bancadas no total, e uma bela mesa para exibir na base.
     tasks:
       - get: Avaritia:Triple_Craft
     rewards:
@@ -318,7 +328,9 @@ quests:
     icon: Avaritia:Resource
     desc: |
       Para quatro lingotes de Matriz, §e16 Treliças de Diamante§r (80 diamantes). Se for
-      programar a bancada, um padrão no AE2 resolve.
+      programar a bancada, um padrão no AE2 resolve rápido.
+
+      Cada Treliça é cinco diamantes em cruz, na bancada comum.
     tasks:
       - get: Avaritia:Resource x16
     rewards:
@@ -346,7 +358,10 @@ quests:
     deps: [matriz_64]
     icon: Avaritia:Resource:1
     desc: |
-      O Lingote do Infinito pede muita Matriz. Com §e128 lingotes§r você respira.
+      O Lingote do Infinito pede muita Matriz, e as ferramentas e a armadura usam blocos dela.
+      Com §e128 lingotes§r você respira; isso são 2.560 diamantes e 256 Estrelas do Nether.
+
+      É o ponto onde a automação deixa de ser luxo.
     tasks:
       - get: Avaritia:Resource:1 x128
     rewards:
@@ -376,8 +391,10 @@ quests:
     deps: [matriz_lingote]
     icon: Avaritia:Resource:1
     desc: |
-      O Coletor pede 7 lingotes de Matriz, o Compressor 10, a Mesa 8... Antes de continuar, faça
-      um estoque de §e32 lingotes§r.
+      O Coletor pede 7 lingotes de Matriz, o Compressor 10, a Mesa 8, o Decompressor 6... Antes
+      de continuar, faça um estoque de §e32 lingotes§r (640 diamantes e 64 Estrelas do Nether).
+
+      Mantenha um padrão no AE2 para essa receita.
     tasks:
       - get: Avaritia:Resource:1 x32
     rewards:
@@ -441,8 +458,10 @@ quests:
     deps: [pilha_neutrons]
     icon: Avaritia:Resource:3
     desc: |
-      Nove Pilhas de Nêutrons formam uma §ePepita de Neutrônio Cósmico§r. Nove pepitas, um
-      lingote. Faça §e9 pepitas§r.
+      Nove Pilhas de Nêutrons formam uma §ePepita de Neutrônio Cósmico§r, e nove pepitas formam
+      um lingote. Faça §e9 pepitas§r para o primeiro lingote.
+
+      Você pode desfazer a conta quando quiser: o lingote volta em nove pepitas.
     tasks:
       - get: Avaritia:Resource:3 x9
     rewards:
@@ -468,8 +487,10 @@ quests:
     deps: [lingote_neutronio]
     icon: Avaritia:Resource:4
     desc: |
-      O Compressor de Neutrônio pede §e16 lingotes§r de Neutrônio, mais um bloco inteiro. Junte
-      a conta e organize as coletas.
+      O Compressor de Neutrônio pede §e16 lingotes§r de Neutrônio, mais um bloco inteiro (que
+      são nove). Junte a conta e organize as coletas.
+
+      Isso são 1.296 Pilhas de Nêutrons: seu parque de coletores precisa estar rodando.
     tasks:
       - get: Avaritia:Resource:4 x16
     rewards:
@@ -497,7 +518,10 @@ quests:
     deps: [lingote_neutronio]
     icon: Avaritia:Resource:4
     desc: |
-      A Pérola Endest usa quatro lingotes de Neutrônio. Um marco rápido: §e4 lingotes§r.
+      A Pérola Endest usa quatro lingotes de Neutrônio. Um marco rápido: §e4 lingotes§r, o que
+      equivale a 324 Pilhas de Nêutrons.
+
+      Se estiver demorando, adicione coletores: a produção é linear com o número deles.
     tasks:
       - get: Avaritia:Resource:4 x4
     rewards:
@@ -510,7 +534,10 @@ quests:
     deps: [lingote_neutronio_64]
     icon: Avaritia:Resource:4
     desc: |
-      A armadura sozinha usa mais de 120 lingotes de Neutrônio. Estoque de §e128§r.
+      A armadura sozinha usa mais de 120 lingotes de Neutrônio, e as ferramentas acrescentam
+      mais 21. Estoque de §e128§r, o que vale uns 10 mil Nêutrons Cósmicos.
+
+      Aqui seu parque de coletores é o que dita o ritmo da campanha.
     tasks:
       - get: Avaritia:Resource:4 x128
     rewards:
@@ -591,8 +618,10 @@ quests:
     deps: [lingote_neutronio]
     icon: Avaritia:Resource:9
     desc: |
-      Quatro lingotes de Neutrônio e uma vareta na bancada: uma §eEngrenagem de Neutrônio§r. É
-      peça decorativa e de colecionador.
+      Quatro Lingotes de Neutrônio e uma vareta na bancada: uma §eEngrenagem de Neutrônio§r. É
+      uma peça decorativa e de colecionador (não entra nas receitas do Infinito).
+
+      Uma boa vitrine para a sala de troféus.
     tasks:
       - get: Avaritia:Resource:9
     rewards:
@@ -613,6 +642,176 @@ quests:
       - xp: 8
       - loot: raro
 
+  - id: contas_armadura
+    title: "As Contas da Armadura"
+    type: info
+    deps: [catalisador]
+    icon: Avaritia:Infinity_Pants
+    desc: |
+      Somando as quatro peças da armadura: §e69 Lingotes do Infinito§r, §e121 Lingotes de
+      Neutrônio§r, §e3 Blocos de Matriz de Cristal§r e §e4 Catalisadores§r. As contas saem
+      direto das receitas da Mesa Extrema. Guarde a lista antes de começar.
+    tasks:
+      - check
+    rewards:
+      - xp: 3
+
+  - id: contas_arsenal
+    title: "As Contas do Arsenal"
+    type: info
+    deps: [catalisador]
+    icon: Avaritia:Infinity_Pickaxe
+    desc: |
+      As cinco ferramentas pedem, juntas: §e66 Lingotes do Infinito§r (mais um Bloco para a Pá),
+      §e21 de Neutrônio§r, §e4 lingotes e 2 blocos de Matriz§r e §e1 Catalisador§r. É menos que
+      a armadura, mas ainda é uma fortuna.
+    tasks:
+      - check
+    rewards:
+      - xp: 3
+
+  - id: matriz_blocos_5
+    title: "Cinco Blocos de Matriz"
+    type: normal
+    deps: [matriz_bloco]
+    icon: Avaritia:Crystal_Matrix
+    desc: |
+      O Peitoral usa um Bloco de Matriz, as Calças usam dois, a Picareta um e o Arco um: §e5
+      blocos§r no total. Cada um custa nove lingotes.
+    tasks:
+      - get: Avaritia:Crystal_Matrix x5
+    rewards:
+      - xp: 14
+      - loot: epico
+
+  - id: neutronio_32
+    title: "Trinta e Dois de Neutrônio"
+    type: normal
+    deps: [neutronio_16]
+    icon: Avaritia:Resource:4
+    desc: |
+      Meio caminho para o estoque grande: §e32 lingotes§r. Confira se seus coletores têm as
+      saídas livres e se o armazenamento não está cheio.
+
+      Um parque de coletores bem montado compensa a espera.
+    tasks:
+      - get: Avaritia:Resource:4 x32
+    rewards:
+      - xp: 16
+      - loot: epico
+
+  - id: g_orbe_transcendente
+    title: "Do Blood Magic: Orbe Transcendente"
+    type: optional
+    deps: [catalisador, bloodmagic:orbe_transcendente]
+    icon: AWWayofTime:transcendentBloodOrb
+    desc: |
+      A Orbe de Sangue de Armok pede quatro Orbes Transcendentes do Blood Magic. Cada uma é uma
+      jornada no altar: prepare-se, ou nem tente.
+    tasks:
+      - get: AWWayofTime:transcendentBloodOrb x4
+    rewards:
+      - xp: 14
+      - loot: epico
+
+  - id: g_batatinhas
+    title: "Do Botania: Batatinhas"
+    type: optional
+    deps: [catalisador, botania:batatinha]
+    icon: Botania:tinyPotato
+    desc: |
+      O Infinitato pede 73 §eBatatinhas§r do Botania. O Botania tem uma flor-geradora e um tipo
+      de planta para cultivá-las; deixe alguns canteiros crescendo.
+
+      Reservei esta página porque Infinitato é a coisa mais divertida do Epílogo.
+    tasks:
+      - get: Botania:tinyPotato x73
+    rewards:
+      - xp: 10
+      - item: minecraft:potato x16
+
+  - id: mais_mesas
+    title: "Mais de Uma Mesa Extrema"
+    type: optional
+    deps: [mesa_extrema]
+    icon: Avaritia:Dire_Crafting
+    desc: |
+      Uma Mesa Extrema basta, mas se for ligar vários padrões no AE2 ou receitas em paralelo,
+      uma segunda poupa espera. Cada uma custa oito lingotes de Matriz e uma Mesa Dupla.
+    tasks:
+      - get: Avaritia:Dire_Crafting x2
+    rewards:
+      - xp: 10
+      - loot: epico
+
+  - id: mais_compressores
+    title: "Mais de Um Compressor"
+    type: optional
+    deps: [compressor_neutronio]
+    icon: Avaritia:Neutronium_Compressor
+    desc: |
+      As singularidades são lentas; dois compressores dobram o ritmo, três triplicam. Se você
+      planeja fazer as vinte e tantas singularidades do catálogo, eles se pagam.
+    tasks:
+      - get: Avaritia:Neutronium_Compressor x2
+    rewards:
+      - xp: 14
+      - loot: epico
+
+  - id: coleta_automatica
+    title: "Coleta Automática"
+    type: info
+    deps: [coletor_neutrons]
+    icon: minecraft:hopper
+    desc: |
+      Coloque funis sob cada coletor, ligados a um baú ou à rede ME. Dá para cobrir um parque
+      inteiro de coletores com algumas linhas de funis e uma interface.
+
+      Para as pilhas não ficarem presas, confira se há espaço de saída.
+    tasks:
+      - check
+    rewards:
+      - xp: 3
+
+  - id: reflexao_mesa
+    title: "O Que a Mesa Revela"
+    type: info
+    deps: [mesa_extrema]
+    icon: Avaritia:Dire_Crafting
+    desc: |
+      Uma grade de 9x9 e um aviso: para fazer algo imenso, é preciso muita paciência. Eu fico
+      feliz de ver que você sabe esperar.
+    tasks:
+      - check
+    rewards:
+      - xp: 3
+
+  - id: reflexao_neutronio
+    title: "Poeira de Estrela"
+    type: info
+    deps: [lingote_neutronio]
+    icon: Avaritia:Resource:4
+    desc: |
+      Neutrônio é aquilo que sobra quando uma estrela morre. Cada lingote que você segura levou
+      milhares de ciclos de coleta. Tem algo de belo nisso.
+    tasks:
+      - check
+    rewards:
+      - xp: 3
+
+  - id: reflexao_compressor
+    title: "Um Mundo em um Ponto"
+    type: info
+    deps: [compressor_neutronio]
+    icon: Avaritia:Neutronium_Compressor
+    desc: |
+      Um bloco inteiro de metal vira um ponto sem tamanho. O Registro não sabe medir isso,
+      Herói, mas eu sei dizer: é muito.
+    tasks:
+      - check
+    rewards:
+      - xp: 3
+
   # ======================================================================
   # FASE 4 — O CATALISADOR DO INFINITO
   # ======================================================================
@@ -626,8 +825,10 @@ quests:
       Pede:
 
       §e•§r um bloco de esmeralda e um de Aço (Steel), um de Aço Negro (Dark Steel), um de
-      Manyullyn; §e•§r um §eEnsopado Supremo§r e §eAlmôndegas Cósmicas§r; §e•§r uma §ePérola
-      Endest§r; §e•§r as singularidades do IU (16 tipos) e a §eSingularidade Eterna§r.
+         Manyullyn;
+      §e•§r um §eEnsopado Supremo§r e §eAlmôndegas Cósmicas§r;
+      §e•§r uma §ePérola Endest§r;
+      §e•§r as singularidades do IU (16 tipos) e a §eSingularidade Eterna§r.
 
       Calma, cada item tem a sua página. Vamos por partes.
     tasks:
@@ -641,7 +842,10 @@ quests:
     deps: [catalisador_info]
     icon: minecraft:emerald_block
     desc: |
-      O primeiro pedaço, o mais simples: um §eBloco de Esmeralda§r vanilla.
+      O primeiro ingrediente do Catalisador, o mais simples: um §eBloco de Esmeralda§r vanilla
+      (9 esmeraldas na bancada). Se você chegou à Estrela, já deve ter dezenas.
+
+      Guarde este para a receita final.
     tasks:
       - get: minecraft:emerald_block
     rewards:
@@ -655,7 +859,10 @@ quests:
     icon: ImmersiveEngineering:storage:7
     desc: |
       Um §eBloco de Aço§r, do Immersive Engineering ou do Tinkers' Construct (qualquer um
-      serve).
+      serve). O aço sai do alto-forno do IE ou da Smeltery do Tinkers; nove lingotes fazem o
+      bloco.
+
+      Um só bloco basta para o Catalisador.
     tasks:
       - one_of: [ImmersiveEngineering:storage:7, TConstruct:MetalBlock:9]
     rewards:
@@ -682,7 +889,10 @@ quests:
     deps: [catalisador_info, tinkers:manyullyn]
     icon: TConstruct:MetalBlock:2
     desc: |
-      Um §eBloco de Manyullyn§r do Tinkers' Construct (cobalto e ardita fundidos na Smeltery).
+      Um §eBloco de Manyullyn§r do Tinkers' Construct. O manyullyn sai da Smeltery quando
+      cobalto e ardite se fundem; nove lingotes fazem o bloco.
+
+      Um só bloco basta para o Catalisador.
     tasks:
       - get: TConstruct:MetalBlock:2
     rewards:
@@ -742,7 +952,10 @@ quests:
     deps: [ensopado_basico]
     icon: witchery:garlic
     desc: |
-      O §eAlho§r do Witchery tempera o ensopado. Plante e colha; ele também afasta vampiros.
+      O §eAlho§r do Witchery tempera o ensopado. Plante e colha; o alho também afasta vampiros e
+      aparece em outras receitas do Volume das Bruxas.
+
+      Um alho já resolve; mas tenha uma boa horta para o resto.
     tasks:
       - get: witchery:garlic
     rewards:
@@ -756,7 +969,9 @@ quests:
     icon: netherlicious:HellderBerryItem
     desc: |
       A §eHellderberry§r vem do Netherlicious, no Nether. Colha os arbustos e leve as sementes
-      para casa.
+      para casa; ela cresce em solo do Nether.
+
+      Um pé só já é suficiente para o ensopado.
     tasks:
       - get: netherlicious:HellderBerryItem
     rewards:
@@ -811,12 +1026,15 @@ quests:
     deps: [almondegas_carnes_base]
     icon: harvestcraft:muttonrawItem
     desc: |
-      O §eCarneiro Cru§r do HarvestCraft fecha a lista de carnes.
+      O §eCarneiro Cru§r do HarvestCraft fecha a lista de carnes. Ele cai de ovelhas (confira a
+      configuração do HarvestCraft no seu perfil).
+
+      Reserve um por receita e pronto.
     tasks:
       - get: harvestcraft:muttonrawItem
     rewards:
       - xp: 5
-      - item: minecraft:mutton x8
+      - item: minecraft:cooked_porkchop x8
 
   - id: almondegas_carnes_base
     title: "Almôndegas: Carnes Comuns"
@@ -1000,8 +1218,10 @@ quests:
     deps: [neutronio_16]
     icon: Avaritia:Resource:4
     desc: |
-      Um conjunto completo do Infinito pede centenas de lingotes de Neutrônio. Comece com §e64§r
-      e multiplique os coletores.
+      Um conjunto completo do Infinito pede centenas de lingotes de Neutrônio, e a Pérola Endest
+      e o Compressor também comem. Comece com §e64§r e multiplique os coletores.
+
+      O ritmo depende só do número de coletores e de funis livres.
     tasks:
       - get: Avaritia:Resource:4 x64
     rewards:
@@ -1034,7 +1254,9 @@ quests:
     deps: [lingote_infinito]
     icon: Avaritia:Resource:6
     desc: |
-      Dez lingotes. O equipamento pede mais, mas é um bom marco.
+      Dez Lingotes do Infinito. O equipamento pede mais, mas é um bom marco para comemorar. O
+      Lingote custa Catalisadores, Matriz e Neutrônio em quantidade; este marco prova que a
+      linha de produção está de pé.
     tasks:
       - get: Avaritia:Resource:6 x10
     rewards:
@@ -1047,7 +1269,8 @@ quests:
     deps: [infinito_10]
     icon: Avaritia:Resource:6
     desc: |
-      Trinta lingotes: o peitoral e a armadura já se aproximam.
+      Trinta Lingotes do Infinito: o Peitoral (24) já fica ao alcance, com sobra para
+      ferramentas pequenas. Aproveite para conferir o inventário e a rede ME antes de seguir.
     tasks:
       - get: Avaritia:Resource:6 x30
     rewards:
@@ -1074,7 +1297,10 @@ quests:
     deps: [infinito_30]
     icon: Avaritia:Resource:6
     desc: |
-      Sessenta lingotes: metade da armadura e uma ferramenta já saem.
+      Sessenta Lingotes do Infinito: a armadura (69) ou o arsenal (66) quase se fecham. Escolha
+      uma das duas frentes e vá até o fim.
+
+      A outra vai exigir mais sessenta, então a produção não pode parar.
     tasks:
       - get: Avaritia:Resource:6 x60
     rewards:
@@ -1334,7 +1560,7 @@ quests:
   - id: infinitato
     title: "Infinitato"
     type: optional
-    deps: [catalisador]
+    deps: [catalisador, g_batatinhas]
     icon: Avaritia:infinitato
     desc: |
       73 Batatinhas do Botania, 7 diamantes e 1 Catalisador do Infinito. Sim, é exatamente o que
@@ -1348,7 +1574,7 @@ quests:
   - id: orbe_armok
     title: "Orbe de Sangue de Armok"
     type: optional
-    deps: [lingote_infinito, infinito_30]
+    deps: [lingote_infinito, infinito_30, g_orbe_transcendente]
     icon: Avaritia:Orb_Armok
     desc: |
       18 Lingotes de Neutrônio, 16 do Infinito, 4 Orbes de Sangue Transcendentes do Blood Magic
@@ -1366,8 +1592,8 @@ quests:
     deps: [mesa_extrema]
     icon: avaritiaddons:CompressedChest
     desc: |
-      Nove baús formam o §eBaú Comprimido§r (Avaritia Addons): um baú gigante. Ele é a base do
-      Baú do Infinito.
+      Nove baús formam o §eBaú Comprimido§r (Avaritia Addons): um baú gigante para guardar seus
+      estoques de neutrônio, e a base do Baú do Infinito.
     tasks:
       - get: avaritiaddons:CompressedChest
     rewards:

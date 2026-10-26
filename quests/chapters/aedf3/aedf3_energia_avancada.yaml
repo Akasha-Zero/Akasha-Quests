@@ -1,0 +1,259 @@
+chapter:
+  id: aedf3_energia_avancada
+  title: Energia Avançada
+  prefix: AEDF3
+  order: 811.25
+  icon: BigReactors:BRReactorPart:1
+  desc: |
+    §6Memórias de outros heróis, página doze.§r "Qual é a melhor energia?" era uma pergunta que rendia brigas na Era do Futuro. Alguns juravam pelos reatores nucleares do IC2, outros pelo reator do Big Reactors com turbinas girando sem parar. Aqui você prova os dois e, no final, decide qual combina com a sua base.
+quests:
+- id: ciclo_do_uranio
+  title: Minério de Urânio
+  type: main
+  deps_hidden: ['aedf3_armazenamento_digital:autocraft']
+  desc: |
+    O combustível da era nuclear. O §eUrânio§r aparece em veios verdes e brilhantes. Minere com picareta de ferro ou melhor e leve para o triturador. Use o traje hazmat se for ficar perto por muito tempo.
+  tasks:
+  - {get: 'ore:oreUranium x8'}
+  rewards:
+  - {xp: 5}
+  - choice: ['minecraft:iron_ingot x8', 'minecraft:coal x16']
+- id: uranio_238_235
+  title: Urânio 238 e 235
+  type: main
+  deps: [ciclo_do_uranio]
+  desc: |
+    Processando o minério, saem dois tipos de urânio: o §e238§r (fértil) e o §e235§r (físsil). Combine as partes pequenas para fazer células de combustível. Guarde numa caixa de contenção.
+  tasks:
+  - get: ['IC2:itemUran238 x12', 'IC2:itemUran235small x6']
+  rewards:
+  - {xp: 5}
+  - choice: ['IC2:itemContainmentbox', 'minecraft:iron_ingot x8']
+- id: barras_de_combustivel
+  title: Barras de Combustível
+  type: main
+  deps: [uranio_238_235]
+  desc: |
+    Urânio enriquecido e uma barra vazia formam a §eBarra de Combustível§r. Há versões simples, duplas e quádruplas. Comece com as simples. Elas geram calor e energia dentro do reator.
+  tasks:
+  - get: ['IC2:reactorUraniumSimple:* x2', 'IC2:itemFuelRod x4']
+  rewards:
+  - {xp: 5}
+  - choice: ['IC2:itemPartCircuit x4', 'minecraft:iron_ingot x8']
+- id: camara_do_reator
+  title: Câmara do Reator
+  type: main
+  deps: [barras_de_combustivel]
+  desc: |
+    As §eCâmaras§r aumentam o espaço interno do reator. Coloque em volta e conecte ao reator principal. Quanto mais câmaras, mais barras cabem. Prepare materiais para as paredes.
+  tasks:
+  - {get: 'IC2:blockReactorChamber x3'}
+  rewards:
+  - {xp: 5}
+  - choice: ['IC2:reactorVent:* x4', 'minecraft:iron_ingot x16']
+- id: reator_nuclear_ic2
+  title: O Reator Nuclear
+  type: main
+  deps: [camara_do_reator]
+  desc: |
+    O §eReator Nuclear§r do IC2 produz EU em quantidade, mas aquece. Monte barras, vents e coolant numa grade que funciona. Teste primeiro com poucos componentes. Heróis lendários perderam bases inteiras por pressa.
+
+    §cPerigo:§r reator sem refrigeração explode.
+  tasks:
+  - {get: 'IC2:blockGenerator:5'}
+  rewards:
+  - {xp: 5}
+  - choice: ['IC2:reactorCoolantSimple:* x3', 'IC2:reactorVent:* x4']
+- id: celulas_refrigerantes
+  title: Células Refrigerantes
+  type: normal
+  deps: [reator_nuclear_ic2]
+  desc: |
+    As §eCélulas de Refrigeração§r absorvem calor dentro do reator. Há de 10k, 30k e 60k. Misture com vents para dissipar. Uma boa grade é a diferença entre vitória e desastre.
+  tasks:
+  - {get: 'IC2:reactorCoolantSimple:* x3'}
+  rewards:
+  - {xp: 3}
+  - choice: ['IC2:reactorCoolantTriple:*', 'minecraft:iron_ingot x8']
+- id: respiradouros
+  title: Respiradouros de Calor
+  type: normal
+  deps: [celulas_refrigerantes]
+  desc: |
+    Os respiradouros soltam calor acumulado. Cada tipo dissipa uma quantidade diferente. Combine com trocadores de calor para equilibrar. O jogo dessa grade é como montar um quebra-cabeça de engenharia.
+  tasks:
+  - {get: 'IC2:reactorVent:* x4'}
+  rewards:
+  - {xp: 3}
+  - choice: ['IC2:reactorVentDiamond:*', 'minecraft:iron_ingot x8']
+- id: placas_de_chumbo
+  title: Placas de Chumbo
+  type: normal
+  deps: [respiradouros]
+  desc: |
+    O chumbo denso protege o reator e forma as paredes. Junte placas e prepare a estrutura. Também é ingrediente de blindagem e componentes de segurança. Tem pouca utilidade fora desse mundo.
+  tasks:
+  - {get: 'ore:plateDenseLead x4'}
+  rewards:
+  - {xp: 3}
+  - choice: ['ore:ingotLead x8', 'minecraft:iron_ingot x8']
+- id: reator_br_yellorite
+  title: Yellorite
+  type: main
+  deps: [placas_de_chumbo]
+  desc: |
+    O §eYellorite§r é o minério amarelo do Big Reactors. Procure em cavernas profundas, junto da bedrock. Quebre e leve para fundição. O reator ativo precisa de muito dele, então faça um bom estoque.
+  tasks:
+  - {get: 'BigReactors:YelloriteOre x16'}
+  rewards:
+  - {xp: 5}
+  - choice: ['minecraft:iron_ingot x8', 'minecraft:coal x16']
+- id: yellorium
+  title: Yellorium
+  type: main
+  deps: [reator_br_yellorite]
+  desc: |
+    Funda o Yellorite e junte §e32 lingotes de Yellorium§r: o combustível do reator. Parece muito, mas cada barra consome pouco. Com um bom estoque, o reator funciona dias sem parar.
+  tasks:
+  - {get: 'ore:ingotYellorium x32'}
+  rewards:
+  - {xp: 5}
+  - choice: ['ore:ingotGraphite x8', 'minecraft:redstone x32']
+- id: carcaca_do_reator
+  title: Carcaça do Reator
+  type: main
+  deps: [yellorium]
+  desc: |
+    A estrutura do reator é um bloco multiblock: paredes de carcaça, vidro, portas. Monte um cubo oco e coloque o controlador no centro de uma parede. O tamanho é livre, mas o desempenho cresce com ele.
+  tasks:
+  - {get: 'BigReactors:BRReactorPart x24'}
+  rewards:
+  - {xp: 5}
+  - choice: ['BigReactors:BRMultiblockGlass x4', 'ore:ingotGraphite x8']
+- id: controlador_br
+  title: Controlador do Reator
+  type: main
+  deps: [carcaca_do_reator]
+  desc: |
+    O painel de comando! O §eControlador§r liga, desliga e ajusta a potência. Coloque numa parede do cubo e abra a tela para ver os dados. Cuide para que o reator nunca fique sem refrigerante no modo ativo.
+  tasks:
+  - {get: 'BigReactors:BRReactorPart:1'}
+  rewards:
+  - {xp: 5}
+  - choice: ['BigReactors:BRReactorPart:3', 'BigReactors:BRReactorPart:4']
+- id: hastes_de_controle
+  title: Hastes e Combustível
+  type: main
+  deps: [controlador_br]
+  desc: |
+    Barras de combustível de Yellorium com hastes de controle em cima. Elas regulam a reação. Quanto mais fundo, menos energia. Ajuste com cuidado para equilibrar energia e calor.
+  tasks:
+  - get: ['BigReactors:YelloriumFuelRod x4', 'BigReactors:BRReactorPart:2 x4']
+  rewards:
+  - {xp: 5}
+  - choice: ['ore:ingotYellorium x16', 'ore:ingotGraphite x8']
+- id: reator_passivo
+  title: Reator Passivo
+  type: main
+  deps: [hastes_de_controle]
+  desc: |
+    O mais simples: sem refrigerante, só gera RF. É o §eReator Passivo§r, perfeito para começar. Rende menos, mas quase não dá trabalho. Os heróis lendários começavam por aqui antes de arriscar o modo ativo.
+  tasks:
+  - get: ['BigReactors:BRReactorPart:1', 'BigReactors:BRReactorPart:3', 'BigReactors:BRReactorPart:4']
+  rewards:
+  - {xp: 5}
+  - choice: ['BigReactors:BRMetalBlock x2', 'minecraft:redstone x32']
+- id: reator_ativo
+  title: Reator Ativo
+  type: main
+  deps: [reator_passivo]
+  desc: |
+    Com portas de refrigeração e líquido, o reator vira vapor, e o vapor move turbinas. Mais complexo e mais potente. É o caminho da energia grande. Não se esqueça da água.
+  tasks:
+  - {get: 'BigReactors:BRReactorPart:5 x2'}
+  rewards:
+  - {xp: 5}
+  - choice: ['BigReactors:BRTurbinePart x4', 'ore:ingotYellorium x16']
+- id: turbina
+  title: A Turbina
+  type: main
+  deps: [reator_ativo]
+  desc: |
+    A turbina gira com vapor e gera RF. Monte o rotor com hastes e lâminas, alinhe o rolamento e coloque bobinas. Cada lâmina a mais aumenta a eficiência. Ouvir o ronco de uma turbina em movimento é a trilha sonora do futuro.
+  tasks:
+  - get: ['BigReactors:BRTurbinePart:1', 'BigReactors:BRTurbinePart:4']
+  rewards:
+  - {xp: 5}
+  - choice: ['BigReactors:BRTurbineRotorPart x6', 'minecraft:gold_block x4']
+- id: bobinas
+  title: Bobinas de Eletrum
+  type: normal
+  deps: [turbina]
+  desc: |
+    As bobinas convertem rotação em energia. Ouro rende pouco, eletrum rende mais, e metais raros rendem muito. Escolha conforme o material disponível. A bobina define o fôlego do seu reator.
+  tasks:
+  - {get: 'ore:blockElectrum x4'}
+  rewards:
+  - {xp: 3}
+  - choice: ['minecraft:gold_block x4', 'minecraft:redstone x32']
+- id: bateria_de_rf
+  title: Banco de Capacitores
+  type: normal
+  deps: [bobinas]
+  desc: |
+    A energia vai precisar de lugar para morar. Um §eBanco de Capacitores§r Vibrante guarda uma quantidade enorme de RF. Coloque ao lado do reator e ligue a saída aos consumidores. Combine com cabos de energia.
+  tasks:
+  - {get: 'EnderIO:blockCapBank:3'}
+  rewards:
+  - {xp: 3}
+  - choice: ['ThermalExpansion:Cell:4', 'minecraft:redstone x64']
+- id: cubo_mekanism_final
+  title: Cubo Supremo
+  type: optional
+  deps: [bateria_de_rf]
+  desc: |
+    Para guardar J do Mekanism. O §eCubo Supremo§r tem espaço enorme e aceita conversão. Dê uma volta pela base e escolha o lugar ideal. Este é o cofre de energia dos heróis mais ricos.
+  tasks:
+  - {get: 'Mekanism:EnergyCube {tier:"Ultimate"}'}
+  rewards:
+  - {xp: 3}
+  - choice: ['Mekanism:EnergyTablet x4', 'minecraft:diamond x4']
+- id: comparador_de_energia
+  title: Medidor de Potência
+  type: optional
+  deps: [cubo_mekanism_final]
+  desc: |
+    Para ver tudo funcionando, use leitores de EU, comparadores e lâmpadas de redstone. Faça um painel na sala de controle com alarmes. Sem informação, você corre risco.
+  tasks:
+  - get: ['IC2:itemToolMEter', 'minecraft:comparator x2']
+  rewards:
+  - {xp: 3}
+  - choice: ['minecraft:redstone x32', 'minecraft:quartz x16']
+- id: energia_ludicrite
+  title: Ludicrite
+  type: optional
+  deps: [comparador_de_energia]
+  desc: |
+    O metal mais forte do Big Reactors. A §eLudicrite§r serve como bobina de altíssima eficiência. Difícil de produzir, vale cada esforço. Quem conseguiu ficou com a fama de ter a melhor usina da vila.
+  tasks:
+  - {get: 'BigReactors:BRMetalBlock:4'}
+  rewards:
+  - {xp: 3}
+  - choice: ['minecraft:diamond x4', 'minecraft:ender_pearl x8']
+- id: energia_milestone
+  title: A Melhor Energia
+  type: milestone
+  deps: [energia_ludicrite]
+  desc: |
+    Um reator IC2 respirando bem, um reator Big Reactors girando a turbina e um banco de capacitores cheio. Qual é "a melhor energia"? Os heróis da Era do Futuro nunca chegaram a um acordo, e você tem o direito de escolher.
+
+    Agora, a energia é grande, mas a fome é maior. Há dragões no horizonte, Herói, e eles têm nome: §eEvolução Dracônica§r.
+  tasks:
+  - get: ['IC2:blockGenerator:5', 'BigReactors:BRReactorPart:1', 'BigReactors:BRTurbinePart:1', 'EnderIO:blockCapBank:3']
+  rewards:
+  - {xp: 25}
+  - kit:
+      name: Kit Energético
+      items: ['IC2:reactorUraniumQuad:*', 'IC2:reactorVentDiamond:* x4', 'ore:ingotYellorium x32', 'ore:ingotGraphite
+          x16', 'minecraft:diamond x8']
+  - {loot: raro}

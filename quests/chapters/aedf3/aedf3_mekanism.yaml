@@ -1,0 +1,302 @@
+chapter:
+  id: aedf3_mekanism
+  title: Mekanism
+  prefix: AEDF3
+  order: 808.438
+  icon: Mekanism:MachineBlock
+  desc: |
+    §6Memórias de outros heróis, página nove.§r Triplicar, quadruplicar, quintuplicar minérios! Foi com o Mekanism que muitos heróis da Era do Futuro deixaram de reclamar da falta de metal. O osmium, o teletransporte, o jetpack e o minerador digital viraram marca registrada daquela época. Prepare as cores e bora processar.
+quests:
+- id: osmio
+  title: Minério de Ósmio
+  type: main
+  deps_hidden: ['aedf3_automacao_industria:industria_milestone']
+  desc: |
+    O §eÓsmio§r é o metal azul-prateado do Mekanism e a base de quase tudo. Procure o minério em cavernas, bem abaixo da superfície, com picareta de ferro ou melhor. Junte 16 blocos. Fácil de achar, bom de usar.
+  tasks:
+  - {get: 'ore:oreOsmium x16'}
+  rewards:
+  - {xp: 5}
+  - choice: ['minecraft:iron_ingot x8', 'minecraft:coal x16']
+- id: lingote_osmio
+  title: Lingote de Ósmio
+  type: main
+  deps: [osmio]
+  desc: |
+    Funda na fornalha e junte §e16 lingotes de Ósmio§r. Tudo no Mekanism passa por ele: máquinas, ferramentas, tubos, cabos. Se estiver faltando minério, procure mais fundo, ou use a Pedreira da fase anterior.
+  tasks:
+  - {get: 'ore:ingotOsmium x16'}
+  rewards:
+  - {xp: 5}
+  - choice: ['ore:ingotOsmium x8', 'minecraft:redstone x16']
+- id: infusor_metalurgico
+  title: Infusor Metalúrgico
+  type: main
+  deps: [lingote_osmio]
+  desc: |
+    O §eInfusor Metalúrgico§r mistura metal com redstone, diamante ou carvão para fazer ligas. É o primeiro passo na produção de aço e no ciclo de processamento. Coloque energia e matéria-prima e veja a mágica.
+  tasks:
+  - {get: 'Mekanism:MachineBlock:8'}
+  rewards:
+  - {xp: 5}
+  - choice: ['Mekanism:EnrichedIron x8', 'minecraft:redstone x32']
+- id: ferro_enriquecido
+  title: Ferro Enriquecido
+  type: normal
+  deps: [infusor_metalurgico]
+  desc: |
+    Ferro misturado com carbono vira §eFerro Enriquecido§r, base do aço e de muita coisa no Mekanism. Faça 16 no infusor e use em tudo. Parece pouco, mas rende bastante.
+  tasks:
+  - {get: 'Mekanism:EnrichedIron x16'}
+  rewards:
+  - {xp: 3}
+  - choice: ['minecraft:iron_ingot x8', 'minecraft:coal x16']
+- id: aco_do_mekanism
+  title: Aço
+  type: normal
+  deps: [ferro_enriquecido]
+  desc: |
+    O §eAço§r serve de armação para máquinas maiores e de estrutura para tanques. Passe o ferro enriquecido na fornalha de ferro para produzir. Pegue uma boa quantidade e deixe as máquinas rolarem.
+  tasks:
+  - {get: 'ore:ingotSteel x32'}
+  rewards:
+  - {xp: 3}
+  - choice: ['ore:ingotOsmium x8', 'minecraft:coal x32']
+- id: liga_enriquecida
+  title: Liga Enriquecida
+  type: normal
+  deps: [aco_do_mekanism]
+  desc: |
+    O primeiro nível de liga do Mekanism. A §eLiga Enriquecida§r nasce no Infusor e vira cabos, circuitos e máquinas básicas. Muito, muito importante para toda a linha. Faça com calma.
+  tasks:
+  - {get: 'Mekanism:EnrichedAlloy x16'}
+  rewards:
+  - {xp: 3}
+  - choice: ['minecraft:redstone x32', 'minecraft:iron_ingot x8']
+- id: camara_enriquecimento
+  title: Câmara de Enriquecimento
+  type: main
+  deps: [liga_enriquecida]
+  desc: |
+    Você acaba de montar a §eCâmara de Enriquecimento§r, a máquina que dobra minérios! Dois pós por bloco de minério, igualzinho a um triturador, só que com a graça do Mekanism. Posicione-a no início da linha de processamento.
+  tasks:
+  - {get: 'Mekanism:MachineBlock'}
+  rewards:
+  - {xp: 5}
+  - choice: ['Mekanism:EnrichedIron x8', 'minecraft:redstone x16']
+- id: fundicao_energizada
+  title: Fundição Energizada
+  type: normal
+  deps: [camara_enriquecimento]
+  desc: |
+    Fornalha elétrica do Mekanism: mais rápida, mais limpa e aceita melhorias. Posicione ao lado da câmara de enriquecimento e processe tudo no mesmo ritmo. Sem fumaça e sem cansaço.
+  tasks:
+  - {get: 'Mekanism:MachineBlock:10'}
+  rewards:
+  - {xp: 3}
+  - choice: ['minecraft:coal x32', 'minecraft:iron_ingot x8']
+- id: cubo_de_energia
+  title: Cubo de Energia
+  type: main
+  deps: [fundicao_energizada]
+  desc: |
+    O §eCubo de Energia§r guarda J para quando as máquinas pedirem. Fica ao lado do gerador e aceita fios por qualquer lado. Mais para frente você poderá subir para cubos Avançados, Elite e Supremos.
+  tasks:
+  - {get: 'Mekanism:EnergyCube {tier:"Basic"}'}
+  rewards:
+  - {xp: 5}
+  - choice: ['Mekanism:EnergyTablet x2', 'minecraft:redstone x32']
+- id: cabo_universal
+  title: Cabo Universal
+  type: normal
+  deps: [cubo_de_energia]
+  desc: |
+    Um cabo só serve para tudo: energia, fluidos, itens. O §eCabo Universal§r do Mekanism é barato e flexível. Comece por ele e substitua por tipos melhores com o tempo.
+  tasks:
+  - {get: 'Mekanism:PartTransmitter x16'}
+  rewards:
+  - {xp: 3}
+  - choice: ['minecraft:redstone x16', 'ore:ingotOsmium x8']
+- id: configurador
+  title: Configurador
+  type: normal
+  deps: [cabo_universal]
+  desc: |
+    Com o §eConfigurador§r você escolhe quais lados da máquina recebem e entregam itens. Use sempre que montar uma linha. Evita que as máquinas se confundam e deixa tudo organizado.
+  tasks:
+  - {get: 'Mekanism:Configurator'}
+  rewards:
+  - {xp: 3}
+  - choice: ['minecraft:iron_ingot x8', 'minecraft:redstone x16']
+- id: camara_purificacao
+  title: Câmara de Purificação
+  type: main
+  deps: [configurador]
+  desc: |
+    A segunda geração de processamento! A §eCâmara de Purificação§r exige oxigênio e entrega o minério em 3x. Dê a ela energia e matéria e perceba a diferença. Mais minério para o mesmo esforço.
+  tasks:
+  - {get: 'Mekanism:MachineBlock:9'}
+  rewards:
+  - {xp: 5}
+  - choice: ['Mekanism:DirtyDust:* x9', 'minecraft:redstone x32']
+- id: separador_eletrolitico
+  title: Separador Eletrolítico
+  type: normal
+  deps: [camara_purificacao]
+  desc: |
+    Separa a água em hidrogênio e oxigênio. O §eSeparador Eletrolítico§r é a fonte dos gases usados no processamento. Também alimenta o jetpack. Uma máquina simples, mas indispensável.
+  tasks:
+  - {get: 'Mekanism:MachineBlock2:4'}
+  rewards:
+  - {xp: 3}
+  - choice: ['Mekanism:ElectrolyticCore', 'minecraft:iron_ingot x8']
+- id: injecao_quimica
+  title: Câmara de Injeção Química
+  type: main
+  deps: [separador_eletrolitico]
+  desc: |
+    Para o processamento 4x, a §eCâmara de Injeção Química§r aplica ácido sulfúrico ao minério. O rendimento é ótimo, mas exige uma pequena rede de gás. Vale cada tubulação.
+  tasks:
+  - {get: 'Mekanism:MachineBlock2:3'}
+  rewards:
+  - {xp: 5}
+  - choice: ['Mekanism:Shard:* x9', 'minecraft:redstone x32']
+- id: cristalizador
+  title: Cristalizador Químico
+  type: main
+  deps: [injecao_quimica]
+  desc: |
+    A última máquina do ciclo 5x. O §eCristalizador Químico§r transforma lavagem em cristais, que viram pó e depois em lingotes. Você chegou ao topo da cadeia, Herói, e o baú está explodindo de minério.
+  tasks:
+  - {get: 'Mekanism:MachineBlock2:8'}
+  rewards:
+  - {xp: 5}
+  - choice: ['Mekanism:Crystal:* x9', 'minecraft:diamond']
+- id: tanque_de_gas
+  title: Tanque de Gás
+  type: normal
+  deps: [cristalizador]
+  desc: |
+    Gases como oxigênio e hidrogênio são guardados em §eTanques de Gás§r. Eles se enchem pelos tubos pressurizados. Mantenha um estoque separado por tipo.
+  tasks:
+  - {get: 'Mekanism:GasTank x4 {tier:0}'}
+  rewards:
+  - {xp: 3}
+  - choice: ['Mekanism:PartTransmitter:8 x8', 'minecraft:iron_ingot x8']
+- id: minerador_digital
+  title: Minerador Digital
+  type: main
+  deps: [tanque_de_gas]
+  desc: |
+    O §eMinerador Digital§r escava uma grande área sozinho, escolhendo exatamente o que minerar. Configure o filtro no menu e deixe trabalhar. Uma das máquinas mais amadas pela turma, e uma das mais caras!
+  tasks:
+  - {get: 'Mekanism:MachineBlock:4'}
+  rewards:
+  - {xp: 5}
+  - choice: ['minecraft:diamond x4', 'Mekanism:ControlCircuit:3 x2']
+- id: teleporte_nucleo
+  title: Núcleos de Teleporte
+  type: normal
+  deps: [minerador_digital]
+  desc: |
+    Para teletransportar blocos, você precisa de §eNúcleos de Teleporte§r. Feitos de pérola, diamante e outros materiais. Três bastam para o teleporte e o portátil. Esse é o início da viagem instantânea.
+  tasks:
+  - {get: 'Mekanism:TeleportationCore x3'}
+  rewards:
+  - {xp: 3}
+  - choice: ['minecraft:ender_pearl x4', 'minecraft:diamond x2']
+- id: teleportador_portatil
+  title: Teleportador Portátil
+  type: main
+  deps: [teleporte_nucleo]
+  desc: |
+    Teleportar-se de um lugar a outro sem gastar passos! O §eTeleportador Portátil§r é o item sonhado de qualquer explorador. Ele precisa de energia e de um quadro de teletransporte no destino. Um clássico da Era do Futuro.
+  tasks:
+  - {get: 'Mekanism:PortableTeleporter:*'}
+  rewards:
+  - {xp: 5}
+  - choice: ['Mekanism:EnergyTablet x2', 'minecraft:ender_pearl x8']
+- id: jetpack
+  title: Jetpack
+  type: main
+  deps: [teleportador_portatil]
+  desc: |
+    O §eJetpack§r do Mekanism voa com hidrogênio. Sem baterias, mas com um tanque de gás. Pressione o botão de salto e se solte. Os modos podem ser ajustados com o atalho de teclado. Uma delícia de usar.
+  tasks:
+  - {get: 'Mekanism:Jetpack'}
+  rewards:
+  - {xp: 5}
+  - choice: ['Mekanism:GasTank {stored:{gasName:"hydrogen"}}', 'minecraft:diamond x2']
+- id: mascara_scuba
+  title: Máscara e Tanque
+  type: normal
+  deps: [jetpack]
+  desc: |
+    Explorar oceanos sem se afogar! Use a §eMáscara de Gás§r e o §eTanque de Oxigênio§r (cheio, claro). Dá para mergulhar fundo, passar por gases perigosos e respirar em áreas tóxicas. Muito útil na fase seguinte.
+  tasks:
+  - get: ['Mekanism:GasMask', 'Mekanism:ScubaTank']
+  rewards:
+  - {xp: 3}
+  - choice: ['minecraft:iron_ingot x8', 'minecraft:glass x16']
+- id: desintegrador
+  title: Desintegrador Atômico
+  type: main
+  deps: [mascara_scuba]
+  desc: |
+    A ferramenta definitiva do Mekanism. O §eDesintegrador Atômico§r quebra, corta e escava quase tudo, com modos selecionáveis. É caro, mas vale cada diamante. Combine com um bom cubo de energia.
+  tasks:
+  - {get: 'Mekanism:AtomicDisassembler:*'}
+  rewards:
+  - {xp: 5}
+  - choice: ['Mekanism:EnergyTablet x4', 'minecraft:diamond x4']
+- id: botas_de_corrida
+  title: Botas de Corrida
+  type: optional
+  deps: [desintegrador]
+  desc: |
+    As §eBotas Livres§r deixam você andar rápido e pular grande altura sem sofrer dano. Elas gastam energia, então carregue. Um complemento perfeito para o jetpack.
+  tasks:
+  - {get: 'Mekanism:FreeRunners:*'}
+  rewards:
+  - {xp: 3}
+  - choice: ['Mekanism:EnergyTablet x2', 'minecraft:diamond x2']
+- id: paxel_de_osmio
+  title: Paxel de Ósmio
+  type: normal
+  deps: [botas_de_corrida]
+  desc: |
+    O §ePaxel§r junta picareta, machado e pá numa ferramenta só. A de Ósmio é resistente e rápida. Prática para quem não quer trocar de item toda hora.
+  tasks:
+  - {get: 'MekanismTools:OsmiumPaxel'}
+  rewards:
+  - {xp: 3}
+  - choice: ['ore:ingotOsmium x8', 'minecraft:diamond x2']
+- id: cubo_supremo
+  title: Cubo Supremo
+  type: optional
+  deps: [paxel_de_osmio]
+  desc: |
+    O melhor armazenamento de energia do Mekanism em bloco único. O §eCubo Supremo§r guarda uma quantidade absurda de J. Poucos heróis chegaram a ter vários, e quem tem se sente rei do mundo.
+  tasks:
+  - {get: 'Mekanism:EnergyCube {tier:"Ultimate"}'}
+  rewards:
+  - {xp: 3}
+  - choice: ['Mekanism:EnergyTablet x4', 'minecraft:diamond x4']
+- id: mekanism_milestone
+  title: Cinco Vezes Mais
+  type: milestone
+  deps: [cubo_supremo]
+  desc: |
+    Câmara, purificação, injeção, minerador digital e jetpack cheio de hidrogênio. É assim que os heróis lendários descreviam a sensação do Mekanism: ter minério sobrando e voar por cima da própria fábrica.
+
+    Agora é hora de pegar essa riqueza e transformá-la em algo bonito. O sonho de toda a Era do Futuro está a um passo: a §eCasa do Futuro§r.
+  tasks:
+  - get: ['Mekanism:MachineBlock', 'Mekanism:MachineBlock:9', 'Mekanism:MachineBlock2:3', 'Mekanism:MachineBlock:4',
+      'Mekanism:Jetpack']
+  rewards:
+  - {xp: 25}
+  - kit:
+      name: Kit do Ósmio
+      items: ['ore:ingotOsmium x32', 'ore:ingotSteel x16', 'Mekanism:EnergyTablet x4', 'minecraft:diamond
+          x8', 'minecraft:redstone x64']
+  - {loot: raro}

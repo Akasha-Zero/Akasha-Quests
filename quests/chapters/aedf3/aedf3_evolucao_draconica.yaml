@@ -1,0 +1,363 @@
+chapter:
+  id: aedf3_evolucao_draconica
+  title: Evolução Dracônica
+  prefix: AEDF3
+  order: 812.188
+  icon: DraconicEvolution:draconicCore
+  desc: |
+    §6Memórias de outros heróis, página treze.§r No fundo do Fim, um minério roxo e pulsante chamava os heróis da Era do Futuro. Draconium. Dele nasciam núcleos, armaduras Wyvern, o Dragão renascido e, para os mais ousados, o temido Guardião do Caos. Esta é a escada dracônica, degrau por degrau, sem pressa e sem medo.
+quests:
+- id: ida_ao_fim
+  title: A Jornada ao Fim
+  type: portal
+  deps_hidden: ['aedf3_energia_avancada:energia_milestone']
+  desc: |
+    O draconium nasce nas ilhas do Fim. Atravesse o portal de novo (se ainda não for veterano) e prepare as ferramentas. Leve armadura boa, um balde, blocos e uma picareta de diamante. A viagem é longa, mas recompensa.
+  tasks:
+  - visit: {dim: 1, name: O Fim}
+  rewards:
+  - {xp: 3}
+  - choice: ['minecraft:ender_pearl x8', 'minecraft:cooked_beef x16']
+- id: minerio_draconium
+  title: Minério de Draconium
+  type: main
+  deps: [ida_ao_fim]
+  desc: |
+    No Fim, os veios roxos brilhantes são o §eMinério de Draconium§r. Quebre com picareta de diamante e tome cuidado com Endermen. O veio é rico, e o fim é cheio de coisas boas para encontrar. Junte 16 blocos.
+  tasks:
+  - {get: 'DraconicEvolution:draconiumOre x16'}
+  rewards:
+  - {xp: 5}
+  - choice: ['minecraft:diamond x4', 'minecraft:experience_bottle x8']
+- id: po_draconium
+  title: Pó de Draconium
+  type: main
+  deps: [minerio_draconium]
+  desc: |
+    Triturando o minério, sai o §ePó de Draconium§r. Faça no pulverizador do Thermal, no triturador ou no Mekanism. Pó é o ponto de partida para os lingotes. Quanto mais, melhor.
+  tasks:
+  - {get: 'ore:dustDraconium x16'}
+  rewards:
+  - {xp: 5}
+  - choice: ['minecraft:redstone x32', 'minecraft:diamond x2']
+- id: lingote_draconium
+  title: Lingote de Draconium
+  type: main
+  deps: [po_draconium]
+  desc: |
+    Funda o pó e junte §e16 lingotes§r. Cada um vale ouro, e o brilho roxo combina com quem ama estilo. Guarde e use com cuidado: todo o ramo dracônico passa por esse metal.
+  tasks:
+  - {get: 'ore:ingotDraconium x16'}
+  rewards:
+  - {xp: 5}
+  - choice: ['DraconicEvolution:nugget x9', 'minecraft:diamond x2']
+- id: nucleo_draconico
+  title: Núcleo Dracônico
+  type: main
+  deps: [lingote_draconium]
+  desc: |
+    Ouro, Draconium e um diamante: o §eNúcleo Dracônico§r é a base de todo item do ramo. Faça quatro para começar. Ele é a porta de entrada para máquinas, armas e armaduras.
+  tasks:
+  - {get: 'DraconicEvolution:draconicCore x4'}
+  rewards:
+  - {xp: 5}
+  - choice: ['minecraft:gold_ingot x8', 'minecraft:diamond x4']
+- id: obsidiana_infundida
+  title: Obsidiana Infundida
+  type: normal
+  deps: [nucleo_draconico]
+  desc: |
+    Obsidiana infundida com Draconium: mais forte e brilhante. Usada em estruturas, núcleos e máquinas. Quatro bastam para os primeiros projetos, mas faça um estoque.
+  tasks:
+  - {get: 'DraconicEvolution:infusedObsidian x4'}
+  rewards:
+  - {xp: 3}
+  - choice: ['minecraft:obsidian x16', 'minecraft:diamond x2']
+- id: infusor_de_energia
+  title: Infusor de Energia
+  type: main
+  deps: [obsidiana_infundida]
+  desc: |
+    O §eInfusor de Energia§r transforma materiais comuns em versões carregadas de poder, em troca de RF. Ele é essencial para evoluir itens e núcleos. Coloque perto de uma boa fonte de energia.
+  tasks:
+  - {get: 'DraconicEvolution:energyInfuser'}
+  rewards:
+  - {xp: 5}
+  - choice: ['DraconicEvolution:draconicCore x2', 'minecraft:diamond x2']
+- id: modificador_de_melhorias
+  title: Modificador de Melhorias
+  type: normal
+  deps: [infusor_de_energia]
+  desc: |
+    Aqui as ferramentas ganham vantagens. O §eModificador§r permite acrescentar melhorias às suas armas e armaduras. É onde nasce a personalização do herói. Combine com baterias grandes.
+  tasks:
+  - {get: 'DraconicEvolution:upgradeModifier'}
+  rewards:
+  - {xp: 3}
+  - choice: ['DraconicEvolution:draconicCore x2', 'minecraft:diamond x2']
+- id: nucleo_energia_wyvern
+  title: Núcleo de Energia Wyvern
+  type: main
+  deps: [modificador_de_melhorias]
+  desc: |
+    A moeda dos itens Wyvern. O §eNúcleo de Energia§r guarda e fornece RF para armas e armaduras. Faça quatro. O Wyvern é o primeiro nível do arsenal dracônico.
+  tasks:
+  - {get: 'DraconicEvolution:draconiumEnergyCore x4'}
+  rewards:
+  - {xp: 5}
+  - choice: ['DraconicEvolution:draconicCore x2', 'minecraft:redstone x64']
+- id: estrela_nether_draconica
+  title: Estrela do Nether
+  type: main
+  deps: [nucleo_energia_wyvern]
+  desc: |
+    O Wither precisa estar morto, mas é para isso que servem as estrelas. Cada núcleo Wyvern leva uma, então junte as que puder. Se faltar, volte ao capítulo infernal e dê aquele susto no Wither.
+  tasks:
+  - {get: 'minecraft:nether_star'}
+  rewards:
+  - {xp: 5}
+  - choice: ['minecraft:diamond x2', 'minecraft:obsidian x4']
+- id: nucleo_wyvern
+  title: Núcleo Wyvern
+  type: main
+  deps: [estrela_nether_draconica]
+  desc: |
+    O primeiro item "de verdade" do Draconic. O §eNúcleo Wyvern§r vira armas, ferramentas e armaduras. Sua forja precisa de Draconium, Estrela do Nether e muito RF. Guarde bem.
+  tasks:
+  - {get: 'DraconicEvolution:wyvernCore'}
+  rewards:
+  - {xp: 5}
+  - choice: ['minecraft:nether_star', 'minecraft:diamond x4']
+- id: picareta_wyvern
+  title: Picareta Wyvern
+  type: main
+  deps: [nucleo_wyvern]
+  desc: |
+    Uma picareta poderosa, com área de mineração e energia própria. A §ePicareta Wyvern§r mina em 3x3 ou 5x5 e é feita para quem faz grandes obras. Os heróis dizem que sentir o primeiro golpe dá arrepios.
+  tasks:
+  - {get: 'DraconicEvolution:wyvernPickaxe'}
+  rewards:
+  - {xp: 5}
+  - choice: ['DraconicEvolution:draconiumEnergyCore', 'minecraft:diamond x2']
+- id: espada_wyvern
+  title: Espada Wyvern
+  type: main
+  deps: [picareta_wyvern]
+  desc: |
+    Dano alto, golpes rápidos e visual roxo e dourado. A §eEspada Wyvern§r usa RF e se melhora no Modificador. Vale cada lingote, principalmente nos próximos chefes.
+  tasks:
+  - {get: 'DraconicEvolution:wyvernSword'}
+  rewards:
+  - {xp: 5}
+  - choice: ['DraconicEvolution:draconiumEnergyCore', 'minecraft:diamond x2']
+- id: arco_wyvern
+  title: Arco Wyvern
+  type: optional
+  deps: [espada_wyvern]
+  desc: |
+    Um arco potente, com flechas especiais. O §eArco Wyvern§r acerta de longe e causa danos extras. Combine com as flechas de Ender e derrube inimigos antes de chegarem perto.
+  tasks:
+  - {get: 'DraconicEvolution:wyvernBow'}
+  rewards:
+  - {xp: 3}
+  - choice: ['DraconicEvolution:enderArrow x4', 'minecraft:arrow x32']
+- id: armadura_wyvern
+  title: Armadura Wyvern
+  type: main
+  deps: [arco_wyvern]
+  desc: |
+    Peças que combinam bem com tudo que você já conquistou: capacete, peitoral, calças e botas Wyvern. Resistentes, recarregáveis e lindas. É o primeiro nível de armadura dracônica de verdade.
+  tasks:
+  - get: ['DraconicEvolution:wyvernHelm', 'DraconicEvolution:wyvernChest', 'DraconicEvolution:wyvernLeggs',
+      'DraconicEvolution:wyvernBoots']
+  rewards:
+  - {xp: 5}
+  - choice: ['DraconicEvolution:draconiumEnergyCore x2', 'minecraft:diamond x8']
+- id: nucleo_de_energia
+  title: Núcleo de Energia
+  type: main
+  deps: [armadura_wyvern]
+  desc: |
+    O §eNúcleo de Energia§r é um tanque multibloco gigantesco. Cerca de 45 milhões de RF no nível 1 e centenas de bilhões nos maiores. Coloque no centro de um salão e construa o resto em volta. É a grande bateria da lenda.
+  tasks:
+  - {get: 'DraconicEvolution:energyStorageCore'}
+  rewards:
+  - {xp: 5}
+  - choice: ['DraconicEvolution:particleGenerator x4', 'minecraft:redstone_block x4']
+- id: geradores_de_particulas
+  title: Geradores de Partículas
+  type: normal
+  deps: [nucleo_de_energia]
+  desc: |
+    Quatro geradores de partículas ativam a estrutura e dão aquele visual de poder. Posicione em volta do Núcleo, a no máximo dez blocos. Quando a energia flui, a sala inteira brilha.
+  tasks:
+  - {get: 'DraconicEvolution:particleGenerator x4'}
+  rewards:
+  - {xp: 3}
+  - choice: ['DraconicEvolution:draconicCore x2', 'minecraft:diamond x2']
+- id: pilares_de_energia
+  title: Pilares de Energia
+  type: normal
+  deps: [geradores_de_particulas]
+  desc: |
+    Pilares enviam e recebem RF do Núcleo. Coloque dois, um para entrada e outro para saída. Alinhe com vidro entre o pilar e o núcleo.
+  tasks:
+  - {get: 'DraconicEvolution:energyPylon x2'}
+  rewards:
+  - {xp: 3}
+  - choice: ['DraconicEvolution:draconicCore x2', 'minecraft:glass x16']
+- id: nucleo_nivel_3
+  title: Núcleo Nível 3
+  type: optional
+  deps: [pilares_de_energia]
+  desc: |
+    Quanto maior o núcleo, mais RF. O nível 3 exige §e26 blocos de Draconium§r e dá mais de um bilhão de RF. Um bom projeto para o final de semana.
+  tasks:
+  - {get: 'ore:blockDraconium x26'}
+  rewards:
+  - {xp: 3}
+  - choice: ['minecraft:redstone_block x26', 'minecraft:diamond x4']
+- id: coracao_do_dragao
+  title: O Coração do Dragão
+  type: main
+  deps: [nucleo_nivel_3]
+  desc: |
+    Item raro: o §eCoração do Dragão§r vem do Dragão do Fim. Guarde com muito cuidado, porque é o ingrediente do ritual de despertar. Sem ele, nada de Draconium Despertado.
+  tasks:
+  - {get: 'DraconicEvolution:dragonHeart'}
+  rewards:
+  - {xp: 5}
+  - choice: ['minecraft:diamond x4', 'minecraft:experience_bottle x16']
+- id: ritual_ressurreicao
+  title: Ritual de Ressurreição
+  type: main
+  deps: [coracao_do_dragao]
+  desc: |
+    Monte o altar no centro do Fim: Pedra de Ressurreição, glowstone, obsidiana, diamante e blocos carregados. Ao ativar, o dragão renasce. É o momento mais épico da série. Prepare arena, armadura e arco.
+  tasks:
+  - {get: 'DraconicEvolution:draconium:1'}
+  rewards:
+  - {xp: 5}
+  - choice: ['minecraft:glowstone x4', 'minecraft:obsidian x4']
+- id: dragao_renascido
+  title: Dragão Renascido
+  type: boss
+  deps: [ritual_ressurreicao]
+  icon: DraconicEvolution:dragonHeart
+  desc: |
+    O Dragão ressurge, mais forte. Esta versão ataca com sopros e investidas, e cura-se com cristais. Derrube os cristais primeiro, depois ataque a cabeça. Tenha arco e armadura e a coragem dos antigos. Do coração dele nasce o Draconium Despertado.
+  tasks:
+  - kill: {entity: DraconicEvolution.EnderDragon, count: 1}
+  rewards:
+  - {xp: 20}
+  - choice: ['DraconicEvolution:dragonHeart', 'minecraft:experience_bottle x32']
+  - {loot: epico}
+- id: draconium_despertado
+  title: Draconium Despertado
+  type: main
+  deps: [dragao_renascido]
+  desc: |
+    O metal definitivo, dourado e vivo. O §eDraconium Despertado§r é o material das armaduras e ferramentas dracônicas. Cada bloco custa uma fortuna em RF e matéria. Mas cada brilho vale a pena.
+  tasks:
+  - {get: 'ore:blockDraconiumAwakened'}
+  rewards:
+  - {xp: 5}
+  - choice: ['DraconicEvolution:awakenedCore', 'minecraft:diamond x4']
+- id: nucleo_despertado
+  title: Núcleo Despertado
+  type: main
+  deps: [draconium_despertado]
+  desc: |
+    O §eNúcleo Despertado§r é a base de tudo no topo da escada. Feito de Draconium Despertado e Núcleos de Draconium. Faça um por vez, pois exige muita matéria-prima.
+  tasks:
+  - {get: 'DraconicEvolution:awakenedCore'}
+  rewards:
+  - {xp: 5}
+  - choice: ['minecraft:diamond x4', 'DraconicEvolution:draconiumEnergyCore:1']
+- id: picareta_draconica
+  title: Picareta Dracônica
+  type: main
+  deps: [nucleo_despertado]
+  desc: |
+    A ferramenta mais poderosa que um herói pode segurar. A §ePicareta Dracônica§r mina em 7x7, com alcance e velocidade absurdos. Guarde e use com respeito. Foi essa que cavou a montanha das lendas.
+  tasks:
+  - {get: 'DraconicEvolution:draconicPickaxe'}
+  rewards:
+  - {xp: 5}
+  - choice: ['DraconicEvolution:draconiumEnergyCore:1', 'minecraft:diamond x4']
+- id: espada_draconica
+  title: Espada Dracônica
+  type: main
+  deps: [picareta_draconica]
+  desc: |
+    Dano enorme, golpes que atravessam armaduras e brilho dourado. A §eEspada Dracônica§r é a arma do último capítulo. Cuidado com o consumo de RF e com a vaidade.
+  tasks:
+  - {get: 'DraconicEvolution:draconicSword'}
+  rewards:
+  - {xp: 5}
+  - choice: ['DraconicEvolution:draconiumEnergyCore:1', 'minecraft:diamond x4']
+- id: armadura_draconica
+  title: Armadura Dracônica
+  type: main
+  deps: [espada_draconica]
+  desc: |
+    Capacete, peitoral, calças e botas Dracônicos. A armadura mais resistente do pack, com habilidades próprias e energia embutida. Quem veste sente que o céu pode cair, e ele nem se importa.
+  tasks:
+  - get: ['DraconicEvolution:draconicHelm', 'DraconicEvolution:draconicChest', 'DraconicEvolution:draconicLeggs',
+      'DraconicEvolution:draconicBoots']
+  rewards:
+  - {xp: 5}
+  - choice: ['DraconicEvolution:draconiumEnergyCore:1', 'minecraft:diamond x8']
+- id: guardiao_do_caos
+  title: O Guardião do Caos
+  type: boss
+  deps: [armadura_draconica]
+  icon: DraconicEvolution:chaosShard
+  desc: |
+    Nas ilhas do Caos, a 10 mil blocos do centro, um gigante de cristal vigia. O §cGuardião do Caos§r é o chefe final do mod, com rajadas, cristais e fúria. Armadura dracônica carregada e energia de sobra, Herói. Dizem que poucos o enfrentaram. Seja um deles.
+  tasks:
+  - kill: {entity: DraconicEvolution.ChaosGuardian, count: 1}
+  rewards:
+  - {xp: 20}
+  - choice: ['DraconicEvolution:chaosShard x5', 'minecraft:experience_bottle x32']
+  - {loot: epico}
+- id: nucleo_caotico
+  title: Núcleo Caótico
+  type: main
+  deps: [guardiao_do_caos]
+  desc: |
+    Das lascas do Guardião nasce o §eNúcleo Caótico§r, o maior de todos. Aqui você alcança o auge da engenharia dracônica. É também ingrediente do Reator e de equipamentos finais.
+  tasks:
+  - {get: 'DraconicEvolution:chaoticCore'}
+  rewards:
+  - {xp: 5}
+  - choice: ['DraconicEvolution:chaosShard x5', 'minecraft:diamond x8']
+- id: reator_draconico
+  title: Reator Dracônico
+  type: optional
+  deps: [nucleo_caotico]
+  desc: |
+    O §eReator Dracônico§r produz energia em escala absurda, mas não perdoa erros. Monte estabilizadores, injetores e portões de fluxo direitinho. Estude o manual e jamais se apresse.
+  tasks:
+  - {get: 'DraconicEvolution:reactorCore'}
+  rewards:
+  - {xp: 3}
+  - choice: ['DraconicEvolution:reactorStabilizer x4', 'DraconicEvolution:reactorEnergyInjector']
+- id: draconico_milestone
+  title: A Evolução Completa
+  type: milestone
+  deps: [reator_draconico]
+  desc: |
+    Wyvern, Despertado, Caótico e a picareta de sete por sete. Você subiu a escada inteira, Herói, e olhe o que há lá no topo: uma ferramenta capaz de cavar um mundo. Os heróis da Era do Futuro iam ficar de queixo caído.
+
+    Só falta um degrau, o que ninguém tem certeza de que existe. Nas lendas, alguns falavam num metal que não pesa e numa espada que não acaba. Preparado para o §eInfinito§r?
+  tasks:
+  - get: ['DraconicEvolution:wyvernCore', 'DraconicEvolution:awakenedCore', 'DraconicEvolution:chaoticCore',
+      'DraconicEvolution:draconicPickaxe']
+  rewards:
+  - {xp: 25}
+  - kit:
+      name: Kit Dracônico
+      items: ['DraconicEvolution:draconiumEnergyCore:1 x2', 'DraconicEvolution:chaosShard x5', 'ore:blockDraconium
+          x8', 'minecraft:diamond x16', 'minecraft:experience_bottle x32']
+  - {loot: raro}

@@ -367,7 +367,7 @@ quests:
       Um orbe que guarda um ponto de habilidade inteiro! Os azuis, verdes e vermelhos aparecem
       em baús de masmorras e são o prêmio garantido de cada Guardião.
 
-      Encontre um e use-o (clique direito) para ganhar o ponto. (Se usar sem estar pronto, a
+      Encontre um e use-o (clique direito) para ganhar o ponto. (Se usar antes da hora, a
       mensagem é... criativa. Eu ri.)
     tasks:
       - one_of: [arsmagica2:rune:17, arsmagica2:rune:18, arsmagica2:rune:19]
@@ -618,7 +618,7 @@ quests:
       - get: arsmagica2:spellBase
     rewards:
       - xp: 8
-      - kit: {name: "Kit do Aprendiz Arcano", items: [arsmagica2:rune:1 x8, arsmagica2:itemOre x16, arsmagica2:lesserManaPotion x4, arsmagica2:spellParchment x4, minecraft:writable_book x2]}
+      - kit: {name: "Kit de Aprendizado Arcano", items: [arsmagica2:rune:1 x8, arsmagica2:itemOre x16, arsmagica2:lesserManaPotion x4, arsmagica2:spellParchment x4, minecraft:writable_book x2]}
       - loot: raro
 
   - id: livro_feiticos
@@ -1301,7 +1301,7 @@ quests:
       - get: [arsmagica2:obelisk, arsmagica2:celestialPrism, arsmagica2:blackAurem]
     rewards:
       - xp: 8
-      - kit: {name: "Kit do Engenheiro de Etherium", items: [arsmagica2:essenceConduit x4, arsmagica2:manaBattery, ore:arcaneAsh x8, arsmagica2:itemOre:3 x4]}
+      - kit: {name: "Kit da Rede de Etherium", items: [arsmagica2:essenceConduit x4, arsmagica2:manaBattery, ore:arcaneAsh x8, arsmagica2:itemOre:3 x4]}
       - loot: raro
 
   - id: bateria_mana
@@ -1618,7 +1618,7 @@ quests:
       - get: [arsmagica2:mageHood, arsmagica2:mageArmor, arsmagica2:mageLeggings, arsmagica2:mageBoots]
     rewards:
       - xp: 8
-      - kit: {name: "Kit do Alfaiate Arcano", items: [arsmagica2:standardManaPotion x4, arsmagica2:manaCake x3, arsmagica2:rune:1 x8, minecraft:wool:10 x16]}
+      - kit: {name: "Kit de Alfaiataria Arcana", items: [arsmagica2:standardManaPotion x4, arsmagica2:manaCake x3, arsmagica2:rune:1 x8, minecraft:wool:10 x16]}
       - loot: raro
 
   - id: inlay_redstone
@@ -1728,7 +1728,7 @@ quests:
     type: milestone
     deps: [capacete_batalha, peitoral_batalha, calcas_batalha, botas_batalha]
     icon: arsmagica2:battlemageArmor
-    banner: "Mago de Batalha"
+    banner: "Armadura de Batalha"
     subtitle: "Obsidiana, ouro e quatro elementos"
     desc: |
       Diadema, armadura, calças e botas de §eMago de Batalha§r! Agora sim você aguenta uma luta
@@ -2383,11 +2383,11 @@ quests:
     type: portal
     deps: [receptaculo, livro_sinistro, obelisco]
     icon: arsmagica2:cowHorn
-    banner: "Bem-vindo à Moo Moo Farm"
+    banner: "A Moo Moo Farm"
     subtitle: "Muuuuuuuu."
     effect: 5
     desc: |
-      Tá preparado para a página mais esquisita do Registro inteiro?
+      Tudo pronto para a página mais esquisita do Registro inteiro?
 
       Monte um §ePortal§r completo (Receptáculo + anel de tijolos de pedra e escadas) ligado a
       uma fonte de §bEtherium§r. Segure o §eLivro de Aparência Maligna§r na mão e §eclique

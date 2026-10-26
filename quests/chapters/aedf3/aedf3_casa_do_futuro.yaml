@@ -1,0 +1,291 @@
+chapter:
+  id: aedf3_casa_do_futuro
+  title: A Casa do Futuro
+  prefix: AEDF3
+  order: 809.375
+  icon: chisel:futura
+  desc: |
+    §6Memórias de outros heróis, página dez.§r Uma das tradições mais amadas da Era do Futuro era o desafio da §eCasa do Futuro§r: um lar moderno, cheio de luz, com quarto, biblioteca, cozinha, floresta no telhado e, nos episódios mais loucos, até uma versão no espaço. Não há regra de estilo. Só vontade, blocos bonitos e muito capricho.
+quests:
+- id: projeto_da_casa
+  title: O Projeto
+  type: main
+  deps_hidden: ['aedf3_mekanism:mekanism_milestone']
+  desc: |
+    Antes de colocar o primeiro bloco, desenhe. Papel, tinta e uma boa ideia: quantos quartos? E a sala de estar? Os heróis lendários rabiscavam plantas em guardanapos, medindo tudo em blocos. Quando tiver uma planta decente, pegue o material e comece. Capricho é a parte mais importante.
+  tasks:
+  - get: ['minecraft:paper x8', 'minecraft:dye:* x4']
+  rewards:
+  - {xp: 5}
+  - choice: ['minecraft:planks x32', 'minecraft:glass x16']
+- id: cinzel_basico
+  title: O Cinzel
+  type: main
+  deps: [projeto_da_casa]
+  desc: |
+    O §eCinzel§r transforma um bloco em suas variantes: pedra vira tijolo, mármore ganha desenhos, vidro ganha cor. Clique com o cinzel em um bloco e escolha o novo visual. É a base de qualquer construção bonita.
+  tasks:
+  - {get: 'chisel:chisel'}
+  rewards:
+  - {xp: 5}
+  - choice: ['chisel:marble:* x16', 'minecraft:stonebrick x32']
+- id: marmore_elegante
+  title: Mármore
+  type: normal
+  deps: [cinzel_basico]
+  desc: |
+    Paredes de mármore dão ar de mansão. Pilares, cantos e tetos trabalhados deixam a casa elegante. Reúna §e32 blocos§r e use o cinzel para trocar o desenho de cada um. Misture texturas e evite repetir demais.
+  tasks:
+  - {get: 'chisel:marble:* x32'}
+  rewards:
+  - {xp: 3}
+  - choice: ['chisel:limestone:* x16', 'minecraft:glass x16']
+- id: blocos_futura
+  title: Visual Futurista
+  type: main
+  deps: [marmore_elegante]
+  desc: |
+    Linhas finas, brilho azul, painéis metálicos. Os blocos §eFutura§r são a cara da Casa do Futuro. Use no piso, nas paredes e nos balcões. Combine com vidro e luzes embutidas e o resultado impressiona qualquer visita.
+  tasks:
+  - {get: 'chisel:futura:* x8'}
+  rewards:
+  - {xp: 5}
+  - choice: ['chisel:technical:* x16', 'chisel:laboratoryblock:* x8']
+- id: vidro_cinzelado
+  title: Vidro Cinzelado
+  type: normal
+  deps: [blocos_futura]
+  desc: |
+    Janelas grandes, estufas e claraboias merecem um §eVidro Cinzelado§r bonito. Há dezenas de variações: molduras, vidro fosco, colorido. Misture e capriche nas vistas, porque vista é metade da casa.
+  tasks:
+  - {get: 'chisel:glass:* x16'}
+  rewards:
+  - {xp: 3}
+  - choice: ['minecraft:glass x32', 'minecraft:dye:* x8']
+- id: blocos_carpinteiro
+  title: Blocos do Carpinteiro
+  type: normal
+  deps: [vidro_cinzelado]
+  desc: |
+    Os blocos do Carpinteiro "vestem" outros blocos. Isso permite portas, escadas e rampas com a aparência de qualquer material. Muito versátil para telhados e formas diferentes. Pegue 16 e experimente.
+  tasks:
+  - {get: 'CarpentersBlocks:blockCarpentersBlock x16'}
+  rewards:
+  - {xp: 3}
+  - choice: ['CarpentersBlocks:itemCarpentersHammer', 'CarpentersBlocks:itemCarpentersChisel']
+- id: rampas_e_telhados
+  title: Telhados e Rampas
+  type: normal
+  deps: [blocos_carpinteiro]
+  desc: |
+    Telhado plano é sem graça. Use rampas do Carpinteiro para criar inclinações suaves, beirais e cumeeiras. Dá para cobrir qualquer forma com um visual limpo e moderno. Imagine o telhado com um jardim em cima!
+  tasks:
+  - {get: 'CarpentersBlocks:blockCarpentersSlope x12'}
+  rewards:
+  - {xp: 3}
+  - choice: ['CarpentersBlocks:blockCarpentersStairs x8', 'minecraft:glass x16']
+- id: quarto_principal
+  title: O Quarto
+  type: main
+  deps: [rampas_e_telhados]
+  desc: |
+    Uma cama de verdade com visual personalizado. A §eCama do Carpinteiro§r veste a cor e o material que você quiser. Complemente com criado-mudo, tapete e luz suave. O quarto é o lugar onde o herói recarrega as baterias.
+  tasks:
+  - {get: 'CarpentersBlocks:itemCarpentersBed'}
+  rewards:
+  - {xp: 5}
+  - choice: ['minecraft:wool:* x16', 'minecraft:painting x2']
+- id: biblioteca_bibliocraft
+  title: A Biblioteca
+  type: main
+  deps: [quarto_principal]
+  desc: |
+    O BiblioCraft trouxe estantes lindas, com livros de verdade à mostra. Faça quatro §eBibliothecas§r e preencha com seus livros. Uma sala de leitura com poltrona e lareira é o sonho de qualquer mago.
+  tasks:
+  - {get: 'BiblioCraft:Bibliotheca:* x4'}
+  rewards:
+  - {xp: 5}
+  - choice: ['BiblioCraft:BiblioShelf:* x2', 'minecraft:book x16']
+- id: escrivaninha
+  title: Escrivaninha
+  type: normal
+  deps: [biblioteca_bibliocraft]
+  desc: |
+    A §eEscrivaninha§r tem lugar para livro, vela e tinteiro. Posicione junto à janela e deixe as anotações da jornada ali. Os heróis lendários tinham uma para cada projeto.
+  tasks:
+  - {get: 'BiblioCraft:BiblioDesk:*'}
+  rewards:
+  - {xp: 3}
+  - choice: ['BiblioCraft:BiblioClock:*', 'minecraft:paper x16']
+- id: mesa_e_cadeiras
+  title: Mesa e Cadeiras
+  type: normal
+  deps: [escrivaninha]
+  desc: |
+    Uma sala de jantar não é nada sem §eMesa§r e §eCadeiras§r. Reúna a família (ou os amigos) para um jantar de verdade. Padaria dos golens pode fornecer o pão. Vai ser bonito de ver.
+  tasks:
+  - get: ['BiblioCraft:BiblioTable:*', 'BiblioCraft:BiblioSeats:* x2']
+  rewards:
+  - {xp: 3}
+  - choice: ['BiblioCraft:BiblioPotionShelf:*', 'minecraft:bread x8']
+- id: cozinha
+  title: A Cozinha
+  type: normal
+  deps: [mesa_e_cadeiras]
+  desc: |
+    Uma casa do futuro tem cozinha completa: fogão, despensa, bancada. Use fornalha, baús, gavetas e mesa. Mantenha pão, carne e vegetais ao alcance. Cozinhar para os amigos é uma das melhores lembranças.
+  tasks:
+  - get: ['minecraft:furnace', 'minecraft:bread x16', 'minecraft:cooked_beef x16']
+  rewards:
+  - {xp: 3}
+  - choice: ['minecraft:cake', 'minecraft:pumpkin_pie x4']
+- id: iluminacao
+  title: Iluminação
+  type: normal
+  deps: [cozinha]
+  desc: |
+    Refletores elétricos iluminam jardins, salas e a rua em frente. Precisam de energia e fazem grande diferença no visual noturno. Instale em pontos estratégicos e deixe a casa brilhar.
+  tasks:
+  - {get: 'FloodLights:electricFloodlight'}
+  rewards:
+  - {xp: 3}
+  - choice: ['FloodLights:glowingFilament x2', 'minecraft:redstone x16']
+- id: lanternas
+  title: Lanternas de BiblioCraft
+  type: optional
+  deps: [iluminacao]
+  desc: |
+    Luz de ambiente também é decoração. As lanternas de parede e de mesa do BiblioCraft combinam com tudo. Coloque ao lado das estantes e das camas.
+  tasks:
+  - one_of: ['BiblioCraft:BiblioLantern:*', 'BiblioCraft:BiblioIronLantern:*']
+  rewards:
+  - {xp: 3}
+  - choice: ['minecraft:torch x32', 'minecraft:glowstone x8']
+- id: portas_deslizantes
+  title: Portas Deslizantes
+  type: normal
+  deps: [lanternas]
+  desc: |
+    A porta que desliza para o lado em silêncio, como em filme de ficção científica. Instale na entrada e nos corredores internos. Dá um toque futurista de verdade, e as visitas vão adorar.
+  tasks:
+  - {get: 'malisisdoors:item.wood_sliding_door'}
+  rewards:
+  - {xp: 3}
+  - choice: ['malisisdoors:item.iron_sliding_door', 'minecraft:redstone x16']
+- id: jardim_no_telhado
+  title: A Floresta do Telhado
+  type: main
+  deps: [portas_deslizantes]
+  desc: |
+    Um dos charmes da Casa do Futuro era o jardim no topo, com árvores, flores e até uma pequena floresta. Use vasos, terra e mudas. Regue com um balde e cuide com carinho. De manhã, o telhado cheira a mata.
+  tasks:
+  - get: ['GardenContainers:large_pot x4', 'minecraft:sapling x8']
+  rewards:
+  - {xp: 5}
+  - choice: ['minecraft:dye:15 x16', 'minecraft:dirt x32']
+- id: floreiras
+  title: Floreiras de Janela
+  type: optional
+  deps: [jardim_no_telhado]
+  desc: |
+    Uma casa bonita tem flores nas janelas. As floreiras de madeira ou pedra completam a fachada. Plante flores de várias cores e deixe a vida entrar.
+  tasks:
+  - one_of: ['GardenContainers:wood_window_box:* x4', 'GardenContainers:stone_window_box:* x4']
+  rewards:
+  - {xp: 3}
+  - choice: ['minecraft:dye:* x8', 'minecraft:sapling x4']
+- id: piso_ztones
+  title: Piso de Ztones
+  type: optional
+  deps: [floreiras]
+  desc: |
+    Os blocos Ztones têm padrões modernos para piso e parede. Misture com o Chisel para variar. O resultado fica limpo e sofisticado. O trabalho é pequeno e o efeito, enorme.
+  tasks:
+  - {get: 'Ztones:stoneTile:* x32'}
+  rewards:
+  - {xp: 3}
+  - choice: ['Ztones:auroraBlock x8', 'Ztones:lampf x8']
+- id: pintura_e_cor
+  title: Pintura e Cor
+  type: optional
+  deps: [piso_ztones]
+  desc: |
+    O §ePintor§r do EnderIO aplica a aparência de qualquer bloco em máquinas, portas e cabos. Dá para esconder as máquinas no meio das paredes. Uma casa limpa tem as máquinas disfarçadas como decoração.
+  tasks:
+  - {get: 'EnderIO:blockPainter'}
+  rewards:
+  - {xp: 3}
+  - choice: ['minecraft:dye:* x16', 'minecraft:iron_ingot x8']
+- id: molduras_e_arte
+  title: Galeria de Arte
+  type: optional
+  deps: [pintura_e_cor]
+  desc: |
+    Com o BiblioCraft você faz suas próprias pinturas. Pendure na sala e preencha a casa com arte. Até mesmo uma reprodução dos seus troféus de boss é bem-vinda. Cada tela conta uma história.
+  tasks:
+  - get: ['BiblioCraft:item.PaintingCanvas', 'BiblioCraft:BiblioPaintPress']
+  rewards:
+  - {xp: 3}
+  - choice: ['minecraft:painting x4', 'minecraft:dye:* x16']
+- id: pedestal_espadas
+  title: Pedestal de Espadas
+  type: optional
+  deps: [molduras_e_arte]
+  desc: |
+    Exiba suas melhores armas no §ePedestal§r. Pode ser o Sabre Nano, a espada de diamante, a lâmina do Tinkers. Fica lindo e dá um ar de sala de troféus. Os heróis da lenda adoravam isso.
+  tasks:
+  - {get: 'BiblioCraft:BiblioSwordPedestal:*'}
+  rewards:
+  - {xp: 3}
+  - choice: ['minecraft:diamond_sword', 'minecraft:golden_apple']
+- id: mobilia_biblio
+  title: Estante de Troféus
+  type: main
+  deps: [pedestal_espadas]
+  desc: |
+    Sua sala de troféus: cabeça de Naga, Lich, Hidra e todo mundo que você enfrentou, bem enfileirados. Se ainda não tem a estante, volte ao capítulo dos Caçadores e pegue um pedestal. Uma casa sem troféus é só uma casa.
+  tasks:
+  - {get: 'TwilightForest:tile.TFTrophyPedestal'}
+  rewards:
+  - {xp: 5}
+  - choice: ['BiblioCraft:BiblioShelf:* x2', 'minecraft:item_frame x8']
+- id: mapa_da_casa
+  title: Mapa e Atlas
+  type: optional
+  deps: [mobilia_biblio]
+  desc: |
+    Um atlas guarda todos os mapas da jornada. Pendure na sala e mostre aos visitantes por onde andou. Combina com o relógio de parede do BiblioCraft e com a bússola de marcador.
+  tasks:
+  - {get: 'BiblioCraft:item.AtlasBook'}
+  rewards:
+  - {xp: 3}
+  - choice: ['minecraft:filled_map', 'minecraft:compass']
+- id: caixa_de_ferramentas
+  title: Oficina na Garagem
+  type: optional
+  deps: [mapa_da_casa]
+  desc: |
+    Nem só de salas bonitas vive uma casa: toda casa tem uma oficina. A bancada sofisticada serve para guardar ferramentas e fazer trabalhos. Posicione na garagem ou no porão.
+  tasks:
+  - {get: 'BiblioCraft:BiblioWorkbench:*'}
+  rewards:
+  - {xp: 3}
+  - choice: ['minecraft:iron_ingot x16', 'minecraft:diamond']
+- id: casa_milestone
+  title: A Casa do Futuro
+  type: milestone
+  deps: [caixa_de_ferramentas]
+  desc: |
+    Sala, quarto, biblioteca, floresta no telhado e portas que deslizam. A Casa do Futuro está de pé, Herói! Quando os heróis da lenda mostravam as suas, havia sempre aquele silêncio de orgulho antes de alguém dizer "falta um quarto".
+
+    Descanse no seu lar novo, que você merece. Mas não por muito tempo: as máquinas pedem organização, e a memória dos itens precisa de lugar. A §eRede de Armazenamento Digital§r vem a seguir.
+  tasks:
+  - get: ['chisel:futura:*', 'BiblioCraft:Bibliotheca:*', 'malisisdoors:item.wood_sliding_door', 'GardenContainers:large_pot',
+      'CarpentersBlocks:itemCarpentersBed']
+  rewards:
+  - {xp: 25}
+  - kit:
+      name: Kit do Decorador
+      items: ['chisel:diamondChisel', 'CarpentersBlocks:itemCarpentersHammer', 'minecraft:glass x64',
+        'minecraft:dye:* x32', 'minecraft:painting x4', 'minecraft:item_frame x8']
+  - {loot: raro}

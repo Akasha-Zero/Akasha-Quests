@@ -38,17 +38,19 @@ quests:
   - id: arvore_estrela
     title: "A Árvore da Estrela"
     type: info
-    deps: [atm_allthemodium:guia_akashic]
+    deps: [abertura]
     icon: allthemodiumlegacy:atm_star_shard_1
     desc: |
       O mapa completo, para você pregar na parede:
 
       §e•§r §dEstrela ATM§r = os §e5 Fragmentos de etapa§r (1/5 a 5/5), cada um com receita
-      própria. §e•§r Cada fragmento pede §ecomponentes§r: Alma de Dragão, Semente Dimensional,
-      Dispositivo de Probabilidade Improvável, Emissor Nexium, Buraco Negro Pulsante, Fragmento
-      do Esquecimento, Bússola do Wither, Combustível do Filósofo, Patrick Estrela e
-      AllTheCatalystium. §e•§r Os componentes pedem Núcleos Despertados, Irídio, Endério,
-      Almário, Liga Vibrante, Corações de Piglich e blocos compactados.
+         própria.
+      §e•§r Cada fragmento pede §ecomponentes§r: Alma de Dragão, Semente Dimensional,
+         Dispositivo de Probabilidade Improvável, Emissor Nexium, Buraco Negro Pulsante,
+         Fragmento do Esquecimento, Bússola do Wither, Combustível do Filósofo, Patrick Estrela
+         e AllTheCatalystium.
+      §e•§r Os componentes pedem Núcleos Despertados, Irídio, Endério, Almário, Liga Vibrante,
+         Corações de Piglich e blocos compactados.
 
       Não bastam cinco cópias do mesmo fragmento: são cinco etapas diferentes.
     tasks:
@@ -114,8 +116,10 @@ quests:
     deps: [abertura]
     icon: minecraft:glowstone_dust
     desc: |
-      A Liga Energética também pede pó de glowstone. As cavernas do Nether têm de sobra; junte
-      §e64§r.
+      A Liga Energética leva ouro, redstone e §ePó de Glowstone§r no Alloy Smelter. O pó vem das
+      cavernas do Nether (pedras luminosas no teto) e também cai de bruxas.
+
+      Junte §e64§r e deixe uma pilha reservada: o Ender IO come bastante.
     tasks:
       - get: minecraft:glowstone_dust x64
     rewards:
@@ -156,8 +160,10 @@ quests:
     deps: [abertura]
     icon: minecraft:emerald
     desc: |
-      A Esmeralda 4x da Semente vem de blocos de esmeralda. Aldeões compram trigo e carvão por
-      esmeraldas; junte §e64§r.
+      A Esmeralda 4x da Semente nasce de blocos de esmeralda, que nascem destes pedaços verdes.
+      Aldeões compram trigo e carvão por esmeraldas, e as montanhas têm veios.
+
+      Junte §e64 esmeraldas§r para começar os blocos.
     tasks:
       - get: minecraft:emerald x64
     rewards:
@@ -198,7 +204,11 @@ quests:
     deps: [abertura]
     icon: minecraft:end_stone
     desc: |
-      O End dá pedra de sobra. Leve uma picareta eficiente e junte §e128§r.
+      O End dá pedra de sobra: a Alma de Dragão leva dois blocos 1x e a Semente leva um 5x. Leve
+      uma picareta eficiente (ou um Quebrador do Thermal) e junte §e128 blocos§r de pedra do
+      End.
+
+      §aDica:§r os Endermen ficam de olho em você. Olhe para o chão enquanto minera.
     tasks:
       - get: minecraft:end_stone x128
     rewards:
@@ -211,8 +221,9 @@ quests:
     deps: [abertura]
     icon: minecraft:coal_block
     desc: |
-      Dois compactados de Carvão 2x dão no Combustível do Filósofo. Comece com §e64 blocos de
-      carvão§r.
+      Dois Carvões 2x entram no Combustível do Filósofo: cada um vale 81 blocos de carvão.
+      Comece juntando §e64 blocos de carvão§r (faça na bancada com 9 carvões cada) e pense em
+      uma fazenda de madeira com carvão vegetal, ou no Thermal, para o resto.
     tasks:
       - get: minecraft:coal_block x64
     rewards:
@@ -293,6 +304,56 @@ quests:
     rewards:
       - xp: 4
 
+  - id: contas_estrela
+    title: "As Contas da Estrela"
+    type: info
+    deps: [arvore_estrela]
+    icon: allthemodiumlegacy:atm_star
+    desc: |
+      Somando as receitas de todos os componentes e fragmentos, a Estrela pede:
+
+      §e•§r §e10 Awakened Cores§r (40 Wyvern Cores e 50 lingotes despertados);
+      §e•§r §e12 Placas de Irídio§r, §e8 Almários§r, §e7 Ligas Vibrantes§r e §e6 Endérios§r
+         soltos;
+      §e•§r §e4 Blocos de Coração do Piglich§r (36 corações);
+      §e•§r cerca de §e99 mil Estrelas do Nether§r em blocos compactados;
+      §e•§r §e252 lingotes§r da liga Unobtainium-Allthemodium e dois blocos de
+         Unobtainium-Vibranium.
+
+      Os números saem direto das receitas; confira no NEI se o seu perfil mudou algo.
+    tasks:
+      - check
+    rewards:
+      - xp: 4
+
+  - id: g_capbank
+    title: "Do Ender IO: Capacitor Bank"
+    type: normal
+    deps: [g_alloy_smelter, enderio:capbank]
+    icon: EnderIO:blockCapBank
+    desc: |
+      Os brutos custam centenas de milhares de RF por peça. Um §eCapacitor Bank§r (ou vários,
+      empilhados) segura a energia entre uma fornada e outra. Ligue direto ao Alloy Smelter.
+    tasks:
+      - get: EnderIO:blockCapBank:2
+    rewards:
+      - xp: 5
+      - item: minecraft:redstone_block x8
+
+  - id: g_alloy_smelter_4
+    title: "Quatro Fundidoras em Paralelo"
+    type: normal
+    deps: [g_alloy_smelter, g_capbank]
+    icon: EnderIO:blockAlloySmelter
+    desc: |
+      Uma só Fundidora de Ligas leva uma vida para os 252 lingotes da liga. Monte §e4§r, ligadas
+      à mesma rede de energia e alimentadas por condutos do Ender IO ou pela rede ME.
+    tasks:
+      - get: EnderIO:blockAlloySmelter x4
+    rewards:
+      - xp: 8
+      - loot: raro
+
   - id: g_platina
     title: "Do Thermal: Platina"
     type: normal
@@ -347,7 +408,11 @@ quests:
     deps: [g_diamantes, ic2:minerio_iridio]
     icon: IC2:itemOreIridium
     desc: |
-      O §eMinério de Irídio§r é raríssimo, mas a placa só existe com ele. Junte §e16§r.
+      O §eMinério de Irídio§r do IC2 é raríssimo, mas a Placa de Irídio só existe com ele (a
+      bancada exige o minério, ligas avançadas e um diamante no centro). Procure nos veios
+      fundos e guarde §e16§r.
+
+      §aDica:§r a Matéria UU também produz irídio no Replicador, se você tiver a fábrica.
     tasks:
       - get: IC2:itemOreIridium x16
     rewards:
@@ -405,8 +470,10 @@ quests:
     deps: [g_lingote_draconio, g_ouro, draconic:nucleo_draconico]
     icon: DraconicEvolution:draconicCore
     desc: |
-      Cada Wyvern Core nasce de quatro §eNúcleos Dracônicos§r. Faça §e32§r como estoque (ouro,
-      Draconium e diamante na bancada).
+      Cada Wyvern Core nasce de quatro §eNúcleos Dracônicos§r (ouro, Draconium e diamante na
+      bancada). Para 40 Wyvern Cores, são 160 núcleos: automatize a produção.
+
+      Faça §e32§r agora, para ter fôlego, e depois mantenha o ritmo.
     tasks:
       - get: DraconicEvolution:draconicCore x32
     rewards:
@@ -745,8 +812,12 @@ quests:
     deps: [atm_allthemodium:liga_unob_vib]
     icon: allthemodiumlegacy:unobtainium_vibranium_alloy_block
     desc: |
-      O bloco da liga Unobtainium-Vibranium entra nos Fragmentos 3 e 4: um em cada. Faça §e2
-      blocos§r quando puder.
+      O bloco da liga Unobtainium-Vibranium (nove lingotes) entra nos Fragmentos 3 e 4: um em
+      cada. Faça §e2 blocos§r. Cada lingote consome um Coração de Piglich, então o estoque de
+      corações é o limite.
+
+      §aDica:§r use a rota em pó, a Fundição Induzida ou a Smeltery se o Alloy Smelter estiver
+      ocupado.
     tasks:
       - get: allthemodiumlegacy:unobtainium_vibranium_alloy_block x2
     rewards:
@@ -840,8 +911,10 @@ quests:
     deps: [info_compactados, g_diamantes]
     icon: allthemodiumlegacy:diamond_block_compressed
     desc: |
-      Nove blocos de diamante, um §eBloco de Diamante 1x§r. O Dispositivo de Probabilidade
-      Improvável usa dois.
+      Nove blocos de diamante na bancada formam o §eDiamante 1x§r: 81 diamantes num só bloco. O
+      Dispositivo de Probabilidade Improvável usa dois, e todos os outros níveis nascem destes.
+
+      Faça §e2§r por enquanto.
     tasks:
       - get: allthemodiumlegacy:diamond_block_compressed x2
     rewards:
@@ -924,7 +997,10 @@ quests:
     deps: [pedra_end_4x]
     icon: allthemodiumlegacy:end_stone_compressed:4
     desc: |
-      A Semente Dimensional também usa um §eBloco de Pedra do End 5x§r.
+      §ePedra do End 5x§r: nove blocos do 4x, 59.049 blocos comuns. A Semente Dimensional leva
+      um único bloco deste nível.
+
+      A conta é reversível, então se sobrar um 5x você pode quebrá-lo de volta em nove 4x.
     tasks:
       - get: allthemodiumlegacy:end_stone_compressed:4
     rewards:
@@ -994,7 +1070,10 @@ quests:
     deps: [diamante_1x]
     icon: allthemodiumlegacy:diamond_block_compressed:1
     desc: |
-      Nove Diamante 1x viram um §e2x§r. O caminho para o 4x passa por aqui.
+      §eDiamante 2x§r: nove blocos de Diamante 1x na bancada 3x3, ou seja 729 diamantes. É um
+      degrau no caminho do 4x da Semente Dimensional, que você precisa ao todo.
+
+      A conta é reversível: um sem forma desfaz em nove blocos do nível anterior.
     tasks:
       - get: allthemodiumlegacy:diamond_block_compressed:1
     rewards:
@@ -1007,7 +1086,10 @@ quests:
     deps: [diamante_2x]
     icon: allthemodiumlegacy:diamond_block_compressed:2
     desc: |
-      Mais um nível: §eDiamante 3x§r. Nove deles dão o 4x da Semente Dimensional.
+      §eDiamante 3x§r: nove blocos do 2x. Mais um degrau e chegamos ao 4x, que a Semente exige.
+      São 6.561 diamantes por bloco, então a fazenda de diamantes precisa estar firme.
+
+      Se algum erro de conta acontecer, desfaça: o bloco volta ao nível anterior.
     tasks:
       - get: allthemodiumlegacy:diamond_block_compressed:2
     rewards:
@@ -1020,7 +1102,10 @@ quests:
     deps: [g_esmeraldas]
     icon: allthemodiumlegacy:emerald_block_compressed
     desc: |
-      Nove blocos de esmeralda formam o primeiro compactado, o §e1x§r (81 esmeraldas).
+      §eEsmeralda 1x§r: nove blocos de esmeralda na bancada, 81 esmeraldas em um só bloco. É o
+      primeiro degrau da escada até o 4x da Semente Dimensional.
+
+      Faça um agora; cada nível sobe multiplicando por nove.
     tasks:
       - get: allthemodiumlegacy:emerald_block_compressed
     rewards:
@@ -1033,7 +1118,10 @@ quests:
     deps: [esmeralda_1x]
     icon: allthemodiumlegacy:emerald_block_compressed:1
     desc: |
-      Nove 1x viram um §e2x§r: 729 esmeraldas num bloco.
+      §eEsmeralda 2x§r: nove blocos do 1x numa grade 3x3, 729 esmeraldas. Dois degraus até o 4x
+      que a Semente pede.
+
+      A conta é reversível: sem forma, ele se desfaz em nove blocos 1x.
     tasks:
       - get: allthemodiumlegacy:emerald_block_compressed:1
     rewards:
@@ -1046,7 +1134,10 @@ quests:
     deps: [esmeralda_2x]
     icon: allthemodiumlegacy:emerald_block_compressed:2
     desc: |
-      Mais um nível, o §e3x§r. Nove deles dão o 4x da Semente.
+      §eEsmeralda 3x§r: nove blocos do 2x, 6.561 esmeraldas. Um bloco a mais e a Semente fica
+      satisfeita com o 4x.
+
+      Se tiver dúvida do nível, olhe o nome do bloco: ele mostra a indicação.
     tasks:
       - get: allthemodiumlegacy:emerald_block_compressed:2
     rewards:
@@ -1059,7 +1150,10 @@ quests:
     deps: [obsidiana_2x]
     icon: allthemodiumlegacy:obsidian_compressed:2
     desc: |
-      Obsidiana §e3x§r: 729 blocos de obsidiana. Falta pouco para a Obsidiana 5x.
+      §eObsidiana 3x§r: nove blocos do 2x, 729 blocos de obsidiana comuns. É o degrau do meio
+      até a Obsidiana 5x da Semente Dimensional.
+
+      Faça uma fazenda de obsidiana com água sobre lava e um quebrador: vai ser preciso.
     tasks:
       - get: allthemodiumlegacy:obsidian_compressed:2
     rewards:
@@ -1072,7 +1166,10 @@ quests:
     deps: [obsidiana_3x]
     icon: allthemodiumlegacy:obsidian_compressed:3
     desc: |
-      Obsidiana §e4x§r: 6.561 blocos. Mais um degrau e a Semente fica satisfeita.
+      §eObsidiana 4x§r: nove blocos do 3x, 6.561 blocos de obsidiana. O próximo degrau, o 5x, é
+      o que a Semente Dimensional realmente come.
+
+      Lembre-se que dá para desfazer o bloco quando precisar do nível abaixo.
     tasks:
       - get: allthemodiumlegacy:obsidian_compressed:3
     rewards:
@@ -1085,7 +1182,10 @@ quests:
     deps: [pedra_end_1x]
     icon: allthemodiumlegacy:end_stone_compressed:1
     desc: |
-      Pedra do End §e2x§r: 729 blocos num só.
+      §ePedra do End 2x§r: nove blocos do 1x na grade 3x3, 81 blocos comuns de pedra do End. O
+      caminho passa pelo 3x e 4x até o 5x da Semente.
+
+      Pegue um estoque grande de pedra do End: o End dá sem limite.
     tasks:
       - get: allthemodiumlegacy:end_stone_compressed:1
     rewards:
@@ -1098,7 +1198,10 @@ quests:
     deps: [pedra_end_2x]
     icon: allthemodiumlegacy:end_stone_compressed:2
     desc: |
-      Pedra do End §e3x§r. Já dá para fundar um castelo com isto.
+      §ePedra do End 3x§r: nove blocos do 2x, 729 blocos comuns. Dois degraus ainda até o 5x que
+      a Semente Dimensional exige.
+
+      Ocupa pouco espaço no inventário. Use isso a seu favor.
     tasks:
       - get: allthemodiumlegacy:end_stone_compressed:2
     rewards:
@@ -1111,7 +1214,9 @@ quests:
     deps: [pedra_end_3x]
     icon: allthemodiumlegacy:end_stone_compressed:3
     desc: |
-      Pedra do End §e4x§r: 6.561 blocos. O 5x é o próximo.
+      §ePedra do End 4x§r: nove blocos do 3x, 6.561 blocos comuns. Mais um e fecha o 5x.
+
+      Guarde as sobras num baú ou na rede ME; nada se perde, a compactação conserva tudo.
     tasks:
       - get: allthemodiumlegacy:end_stone_compressed:3
     rewards:
@@ -1124,7 +1229,10 @@ quests:
     deps: [g_netherrack]
     icon: allthemodiumlegacy:netherrack_compressed
     desc: |
-      Nove blocos de netherrack, um §e1x§r. É o primeiro passo dos seis até o 6x.
+      §eNetherrack 1x§r: nove blocos de netherrack na bancada, o primeiro degrau dos seis até o
+      6x. Cada nível multiplica por nove, então a conta cresce rápido.
+
+      Um quebrador automático no Nether alimenta tudo isso.
     tasks:
       - get: allthemodiumlegacy:netherrack_compressed
     rewards:
@@ -1137,7 +1245,11 @@ quests:
     deps: [netherrack_1x]
     icon: allthemodiumlegacy:netherrack_compressed:2
     desc: |
-      Netherrack §e3x§r: 729 blocos num só. Metade do caminho.
+      §eNetherrack 3x§r: 729 blocos de netherrack comuns num só bloco. Metade do caminho até o
+      6x.
+
+      O Nether tem netherrack de sobra; o gargalo é o tempo de fabricar os blocos, não a
+      matéria-prima.
     tasks:
       - get: allthemodiumlegacy:netherrack_compressed:2
     rewards:
@@ -1150,7 +1262,10 @@ quests:
     deps: [netherrack_3x]
     icon: allthemodiumlegacy:netherrack_compressed:4
     desc: |
-      Netherrack §e5x§r: 59.049 blocos. Só falta nove vezes mais.
+      §eNetherrack 5x§r: 59.049 blocos comuns. Falta um degrau, o 6x, que a Semente Dimensional
+      pede.
+
+      Quando chegar nele, você terá mais de meio milhão de blocos num só item.
     tasks:
       - get: allthemodiumlegacy:netherrack_compressed:4
     rewards:
@@ -1364,7 +1479,7 @@ quests:
   - id: combustivel_filosofo
     title: "Combustível do Filósofo"
     type: main
-    deps: [carvao_2x, blaze_1x, bloco_coracao, g_enderium, g_vibrante, g_iridio, g_nucleo_despertado]
+    deps: [carvao_2x, blaze_1x, blocos_coracao_4, g_enderium, g_vibrante, g_iridio, g_nucleo_despertado]
     icon: allthemodiumlegacy:philosophers_fuel
     desc: |
       Componente do Fragmento 4: dois Carvões 2x, duas Varetas de Blaze 1x, um Bloco de Coração
@@ -1396,7 +1511,7 @@ quests:
   - id: allthecatalystium
     title: "AllTheCatalystium"
     type: main
-    deps: [atm_allthemodium:liga_vib_atm, atm_allthemodium:liga_unob_atm, atm_allthemodium:liga_unob_vib, g_enderium, g_iridio, g_nucleo_despertado, g_vibrante, g_almario, bloco_coracao]
+    deps: [atm_allthemodium:liga_vib_atm, atm_allthemodium:liga_unob_atm, atm_allthemodium:liga_unob_vib, g_enderium, g_iridio, g_nucleo_despertado, g_vibrante, g_almario, blocos_coracao_4]
     icon: allthemodiumlegacy:allthecatalystium
     desc: |
       Componente do Fragmento 5: uma de cada liga (Vibranium-Allthemodium,
@@ -1474,7 +1589,7 @@ quests:
   - id: fragmento_4
     title: "Fragmento de Estrela 4/5"
     type: milestone
-    deps: [combustivel_filosofo, bussola_wither, bloco_liga_uv, g_nucleo_despertado]
+    deps: [combustivel_filosofo, bussola_wither, bloco_liga_uv, g_nucleos_10]
     icon: allthemodiumlegacy:atm_star_shard_4
     banner: "Fragmento 4/5"
     subtitle: "O Fogo e a Bússola"
@@ -1724,7 +1839,8 @@ quests:
     icon: allthemodiumlegacy:atm_star_shard_4
     desc: |
       Para o Fragmento 4: §eCombustível do Filósofo§r, §eBússola do Wither§r, 1 Bloco de Liga
-      U-V e 1 Awakened Core.
+      Unobtainium-Vibranium e 1 Awakened Core. A receita é pequena, mas cada peça já é um
+      projeto. Confira se tem todos os quatro antes de ir à bancada.
     tasks:
       - check
     rewards:
@@ -1736,8 +1852,9 @@ quests:
     deps: [arvore_estrela]
     icon: allthemodiumlegacy:atm_star_shard_5
     desc: |
-      Para o Fragmento 5: §ePatrick Estrela§r e §eAllTheCatalystium§r. Só isso. Nunca desdenhe
-      das receitas curtas.
+      Para o Fragmento 5: §ePatrick Estrela§r e §eAllTheCatalystium§r. Só dois ingredientes, sem
+      forma fixa. Nunca desdenhe das receitas curtas, Herói: o AllTheCatalystium sozinho pede as
+      três ligas, um Awakened Core e um Bloco de Coração.
     tasks:
       - check
     rewards:
@@ -1773,7 +1890,11 @@ quests:
     deps: [g_nucleo_wyvern, g_estrelas_64]
     icon: DraconicEvolution:wyvernCore
     desc: |
-      Quatro Awakened Cores pedem §e16 Wyvern Cores§r. Cada um consome uma Estrela do Nether.
+      Quatro Awakened Cores pedem §e16 Wyvern Cores§r. Cada um consome uma Estrela do Nether e
+      quatro Núcleos Dracônicos.
+
+      É um bom ponto para conferir a produção de Estrelas: se estiver baixa, é hora de ampliar a
+      fazenda de Wither.
     tasks:
       - get: DraconicEvolution:wyvernCore x16
     rewards:
@@ -1786,8 +1907,10 @@ quests:
     deps: [g_wyvern_16]
     icon: DraconicEvolution:wyvernCore
     desc: |
-      Dez Awakened Cores pedem §e40 Wyvern Cores§r. Se chegou aqui, a fazenda de Wither é sua
-      amiga.
+      Dez Awakened Cores pedem §e40 Wyvern Cores§r: quarenta Estrelas e 160 Núcleos Dracônicos.
+      Se chegou aqui, a fazenda de Wither é sua melhor amiga.
+
+      Prepare uma rede ME só para esses itens e deixe o Montador Molecular fazer o resto.
     tasks:
       - get: DraconicEvolution:wyvernCore x40
     rewards:
@@ -1814,8 +1937,10 @@ quests:
     deps: [g_lingotes_25]
     icon: DraconicEvolution:draconicIngot
     desc: |
-      Os dez Awakened Cores da Estrela pedem §e50 lingotes despertados§r. Seis blocos do Ritual
-      cobrem tudo, com sobra.
+      Os dez Awakened Cores da Estrela pedem §e50 lingotes despertados§r. Seis blocos de
+      Draconium Despertado cobrem tudo, com sobra.
+
+      O Ritual repete quantas vezes você quiser, desde que o Dragão volte.
     tasks:
       - get: DraconicEvolution:draconicIngot x50
     rewards:
@@ -1828,7 +1953,10 @@ quests:
     deps: [g_iridio]
     icon: IC2:itemPartIridium
     desc: |
-      Contando componentes e metais brutos, §e32 Placas de Irídio§r dão uma folga confortável.
+      Contando todos os componentes e os metais brutos, §e32 Placas de Irídio§r dão folga
+      confortável. A Estrela em si usa 12, e o Vibranium Bruto usa uma por unidade.
+
+      Automatize a Placa no IC2: vale a pena.
     tasks:
       - get: IC2:itemPartIridium x32
     rewards:
@@ -1856,7 +1984,9 @@ quests:
     icon: EnderIO:itemAlloy:7
     desc: |
       Cada Coração de Piglich consome oito Almários. Com §e64 barras§r no estoque, os primeiros
-      corações saem sem esforço.
+      corações saem sem esforço, e sobra para os componentes e para a Liga.
+
+      Uma linha de Alloy Smelters com areia das almas e ouro automatizada dá conta.
     tasks:
       - get: ore:ingotSoularium x64
     rewards:
@@ -1869,8 +1999,10 @@ quests:
     deps: [g_vibrante]
     icon: EnderIO:itemAlloy:2
     desc: |
-      Um Unobtainium Bruto pede oito Ligas Vibrantes; os componentes pedem mais algumas. Estoque
-      de §e64 lingotes§r.
+      Um Unobtainium Bruto pede oito Ligas Vibrantes; os componentes pedem mais algumas. Com
+      §e64 lingotes§r você não para a produção do Unobtainium por falta de liga.
+
+      A Liga Vibrante nasce de uma Liga Energética e uma Pérola do Ender no Alloy Smelter.
     tasks:
       - get: ore:ingotVibrantAlloy x64
     rewards:

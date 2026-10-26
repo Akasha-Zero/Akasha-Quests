@@ -60,13 +60,57 @@ quests:
     rewards:
       - xp: 3
 
+  - id: ordem_recomendada
+    title: "Por Onde Começar"
+    type: info
+    deps: [catalogo_abertura]
+    icon: Avaritia:Singularity
+    desc: |
+      Comece pelas mais baratas (Ferro, Ouro, Lápis, Redstone, Quartzo), porque você já tem
+      quantidade dos blocos. Depois passe para os metais do Thermal (Cobre, Estanho, Chumbo,
+      Prata, Níquel, Endério). A Argila é a mais curiosa e a menos importante.
+    tasks:
+      - check
+    rewards:
+      - xp: 3
+
+  - id: blocos_vanilla
+    title: "Blocos Vanilla"
+    type: normal
+    deps: [ordem_recomendada]
+    icon: minecraft:iron_block
+    desc: |
+      Ferro, ouro, lápis-lazúli, redstone e quartzo: cinco tipos de bloco vanilla viram cinco
+      singularidades. Junte um estoque de cada (centenas de blocos no total, confira no NEI) e
+      deixe o Compressor trabalhar.
+    tasks:
+      - get: [minecraft:iron_block, minecraft:gold_block, minecraft:lapis_block, minecraft:redstone_block, minecraft:quartz_block]
+    rewards:
+      - xp: 6
+      - item: minecraft:iron_block x8
+
+  - id: blocos_thermal
+    title: "Blocos de Metal do Thermal"
+    type: normal
+    deps: [ordem_recomendada, thermal:mestre_termico]
+    icon: ThermalFoundation:Storage
+    desc: |
+      Cobre, estanho, prata, chumbo, níquel e Endério têm blocos no Thermal Foundation (alguns
+      também no Immersive Engineering e no Tinkers' Construct; qualquer um vale). Um estoque de
+      cada.
+    tasks:
+      - get: [ThermalFoundation:Storage, ThermalFoundation:Storage:1, ThermalFoundation:Storage:2, ThermalFoundation:Storage:3, ThermalFoundation:Storage:4, ThermalFoundation:Storage:12]
+    rewards:
+      - xp: 8
+      - item: minecraft:iron_block x8
+
   # ======================================================================
   # FASE 1 — AS DO AVARITIA
   # ======================================================================
   - id: sing_ferro
     title: "Singularidade de Ferro"
     type: normal
-    deps: [catalogo_abertura, avaritia:compressor_neutronio]
+    deps: [catalogo_abertura, avaritia:compressor_neutronio, blocos_vanilla]
     icon: Avaritia:Singularity
     desc: |
       A primeira, a mais humilde: um §eBloco de Ferro§r comprimido no Compressor de Neutrônio.
@@ -80,11 +124,14 @@ quests:
   - id: sing_ouro
     title: "Singularidade de Ouro"
     type: normal
-    deps: [catalogo_abertura, avaritia:compressor_neutronio]
+    deps: [catalogo_abertura, avaritia:compressor_neutronio, blocos_vanilla]
     icon: Avaritia:Singularity:1
     desc: |
-      Um §eBloco de Ouro§r no Compressor. Ouro das fazendas de porcos-zumbis do Nether rende
-      bastante.
+      Um §eBloco de Ouro§r no Compressor de Neutrônio vira uma Singularidade de Ouro. Ouro das
+      fazendas de porcos-zumbis do Nether rende bastante, e o Thermal tem fundição para
+      multiplicar.
+
+      Confira no NEI quantos blocos a máquina pede.
     tasks:
       - get: Avaritia:Singularity:1
     rewards:
@@ -94,11 +141,14 @@ quests:
   - id: sing_lapis
     title: "Singularidade de Lápis-Lazúli"
     type: normal
-    deps: [catalogo_abertura, avaritia:compressor_neutronio]
+    deps: [catalogo_abertura, avaritia:compressor_neutronio, blocos_vanilla]
     icon: Avaritia:Singularity:2
     desc: |
-      Um §eBloco de Lápis-Lazúli§r no Compressor. Mineração ou troca com aldeões render lápis em
-      quantidade.
+      Um §eBloco de Lápis-Lazúli§r no Compressor vira esta singularidade. Mineração e troca com
+      aldeões rendem lápis em quantidade; a Dimensão de Mineração tem camadas de minérios
+      vanilla.
+
+      Confira o custo exato no NEI, handler "Neutronium Compressor".
     tasks:
       - get: Avaritia:Singularity:2
     rewards:
@@ -108,11 +158,13 @@ quests:
   - id: sing_redstone
     title: "Singularidade de Redstone"
     type: normal
-    deps: [catalogo_abertura, avaritia:compressor_neutronio]
+    deps: [catalogo_abertura, avaritia:compressor_neutronio, blocos_vanilla]
     icon: Avaritia:Singularity:3
     desc: |
-      Um §eBloco de Redstone§r no Compressor. Essa também é usada na Mesa Extrema Automática do
-      Avaritia Addons, então faça uma de sobra.
+      Um §eBloco de Redstone§r no Compressor vira a Singularidade de Redstone. Essa também é
+      usada na Mesa Extrema Automática do Avaritia Addons, então faça uma de sobra.
+
+      Uma fazenda de bruxas resolve a redstone sem sofrimento.
     tasks:
       - get: Avaritia:Singularity:3
     rewards:
@@ -122,10 +174,13 @@ quests:
   - id: sing_quartzo
     title: "Singularidade de Quartzo"
     type: normal
-    deps: [catalogo_abertura, avaritia:compressor_neutronio]
+    deps: [catalogo_abertura, avaritia:compressor_neutronio, blocos_vanilla]
     icon: Avaritia:Singularity:4
     desc: |
-      Um §eBloco de Quartzo§r do Nether no Compressor. O Nether tem de sobra.
+      Um §eBloco de Quartzo§r do Nether no Compressor vira a Singularidade de Quartzo. O Nether
+      tem de sobra: minere o minério de quartzo ou use o quebrador do Thermal.
+
+      Veja o custo em blocos no NEI.
     tasks:
       - get: Avaritia:Singularity:4
     rewards:
@@ -135,11 +190,13 @@ quests:
   - id: sing_cobre
     title: "Singularidade de Cobre"
     type: normal
-    deps: [catalogo_abertura, avaritia:compressor_neutronio]
+    deps: [catalogo_abertura, avaritia:compressor_neutronio, blocos_thermal]
     icon: Avaritia:Singularity:5
     desc: |
-      Cobre: entrada §eBloco de Cobre§r (Thermal Foundation ou Immersive Engineering, qualquer
-      um vale). Use um dos dois conforme sua fábrica.
+      Cobre: um §eBloco de Cobre§r (Thermal Foundation ou Immersive Engineering, qualquer um
+      vale). Use o que já tiver na sua fábrica; o cobre é um dos metais mais fáceis de acumular.
+
+      Veja o custo exato no NEI, handler "Neutronium Compressor".
     tasks:
       - get: Avaritia:Singularity:5
     rewards:
@@ -149,10 +206,13 @@ quests:
   - id: sing_estanho
     title: "Singularidade de Estanho"
     type: normal
-    deps: [catalogo_abertura, avaritia:compressor_neutronio]
+    deps: [catalogo_abertura, avaritia:compressor_neutronio, blocos_thermal]
     icon: Avaritia:Singularity:6
     desc: |
-      Estanho: §eBloco de Estanho§r (Thermal ou Tinkers' Construct).
+      Estanho: um §eBloco de Estanho§r (Thermal Foundation ou Tinkers' Construct, o Compressor
+      aceita qualquer um). Funda o minério na Smeltery ou use o Pulverizador do Thermal.
+
+      A entrada exata e o custo estão no NEI, handler "Neutronium Compressor".
     tasks:
       - get: Avaritia:Singularity:6
     rewards:
@@ -162,10 +222,13 @@ quests:
   - id: sing_chumbo
     title: "Singularidade de Chumbo"
     type: normal
-    deps: [catalogo_abertura, avaritia:compressor_neutronio]
+    deps: [catalogo_abertura, avaritia:compressor_neutronio, blocos_thermal]
     icon: Avaritia:Singularity:7
     desc: |
-      Chumbo: §eBloco de Chumbo§r (Thermal ou Immersive Engineering).
+      Chumbo: um §eBloco de Chumbo§r (Thermal Foundation ou Immersive Engineering, qualquer um
+      vale). O chumbo é comum nas camadas médias do mundo e rende bem com o Pulverizador.
+
+      Veja o custo exato no NEI, handler "Neutronium Compressor".
     tasks:
       - get: Avaritia:Singularity:7
     rewards:
@@ -175,10 +238,13 @@ quests:
   - id: sing_prata
     title: "Singularidade de Prata"
     type: normal
-    deps: [catalogo_abertura, avaritia:compressor_neutronio]
+    deps: [catalogo_abertura, avaritia:compressor_neutronio, blocos_thermal]
     icon: Avaritia:Singularity:8
     desc: |
-      Prata: §eBloco de Prata§r (Thermal ou Immersive Engineering).
+      Prata: um §eBloco de Prata§r (Thermal Foundation ou Immersive Engineering). A prata
+      aparece em veios fundos; a Fundição Induzida do Thermal dobra o rendimento do minério.
+
+      Veja o custo exato no NEI, handler "Neutronium Compressor".
     tasks:
       - get: Avaritia:Singularity:8
     rewards:
@@ -188,10 +254,13 @@ quests:
   - id: sing_niquel
     title: "Singularidade de Níquel"
     type: normal
-    deps: [catalogo_abertura, avaritia:compressor_neutronio]
+    deps: [catalogo_abertura, avaritia:compressor_neutronio, blocos_thermal]
     icon: Avaritia:Singularity:9
     desc: |
-      Níquel: §eBloco de Níquel§r (Thermal ou Immersive Engineering).
+      Níquel: um §eBloco de Níquel§r (Thermal Foundation ou Immersive Engineering). O níquel vem
+      de veios fundos e é metade do Invar; a Smeltery ou o Pulverizador rendem bem.
+
+      Veja o custo exato no NEI, handler "Neutronium Compressor".
     tasks:
       - get: Avaritia:Singularity:9
     rewards:
@@ -201,11 +270,14 @@ quests:
   - id: sing_enderio
     title: "Singularidade de Endério"
     type: normal
-    deps: [catalogo_abertura, avaritia:compressor_neutronio]
+    deps: [catalogo_abertura, avaritia:compressor_neutronio, blocos_thermal]
     icon: Avaritia:Singularity:10
     desc: |
-      Endério: §eBloco de Endério§r do Thermal Foundation. Essa já usa o metal que você domina
-      desde a Estrela ATM.
+      Endério: um §eBloco de Endério§r do Thermal Foundation. Essa singularidade já usa o metal
+      que você domina desde a Estrela ATM; se tiver fazenda de platina, chumbo e pérolas, é só
+      repetir.
+
+      Veja o custo exato no NEI, handler "Neutronium Compressor".
     tasks:
       - get: Avaritia:Singularity:10
     rewards:
@@ -215,11 +287,13 @@ quests:
   - id: sing_argila
     title: "Singularidade de Argila"
     type: normal
-    deps: [catalogo_abertura, avaritia:compressor_neutronio]
+    deps: [catalogo_abertura, avaritia:compressor_neutronio, blocos_thermal]
     icon: Avaritia:Singularity:11
     desc: |
-      Argila: uma curiosidade fora da Singularidade Eterna, mas parte da família. Veja a entrada
-      no NEI.
+      Argila: uma curiosidade fora da Singularidade Eterna, mas parte da família de doze. A
+      entrada do Compressor está no NEI (handler "Neutronium Compressor").
+
+      Pode fazer por último, só para completar o Catálogo.
     tasks:
       - get: Avaritia:Singularity:11
     rewards:
@@ -235,7 +309,10 @@ quests:
     subtitle: "Um ponto para cada metal"
     desc: |
       As doze singularidades do Avaritia, uma de cada. Herói, o Catálogo está quase inteiro.
-      Falta só juntar onze delas na Singularidade Eterna.
+      Falta só juntar onze delas (a Argila fica de fora) na Singularidade Eterna, no próximo
+      degrau.
+
+      Guarde todas na rede ME, ou numa Célula de Singularidade, até lá.
     tasks:
       - get: [Avaritia:Singularity, Avaritia:Singularity:1, Avaritia:Singularity:2, Avaritia:Singularity:3, Avaritia:Singularity:4, Avaritia:Singularity:5, Avaritia:Singularity:6, Avaritia:Singularity:7, Avaritia:Singularity:8, Avaritia:Singularity:9, Avaritia:Singularity:10, Avaritia:Singularity:11]
     rewards:
@@ -264,6 +341,21 @@ quests:
       - kit: {name: "Kit do Eterno", items: [Avaritia:Resource:1 x8, minecraft:nether_star x2]}
       - loot: lendario
 
+  - id: blocos_iu
+    title: "Blocos de Metal do IU"
+    type: normal
+    deps: [info_custos, eternal_singularity]
+    icon: industrialupgrade:IUBlock
+    desc: |
+      Os blocos dos metais do Industrial Upgrade (Michalov, Vanádio, Titânio, Cromo, Espinélio,
+      Caravky, Manganês, Irídio, Germânio e outros) geram as singularidades do IU. Quase todos
+      vêm das cadeias do Volume do Industrial Upgrade que você já fez.
+    tasks:
+      - get: [industrialupgrade:IUBlock, industrialupgrade:IUBlock:2, industrialupgrade:IUBlock:10, industrialupgrade:IUBlock:12, industrialupgrade:baseblock1:1]
+    rewards:
+      - xp: 8
+      - item: minecraft:iron_block x8
+
   # ======================================================================
   # FASE 3 — AS DO INDUSTRIAL UPGRADE
   # ======================================================================
@@ -286,7 +378,7 @@ quests:
   - id: iu_michalov
     title: "Singularidade de Michalov"
     type: normal
-    deps: [info_iu, avaritia:compressor_neutronio]
+    deps: [info_iu, blocos_iu, avaritia:compressor_neutronio]
     icon: industrialupgrade:avaritia_iu_singularity
     desc: |
       Singularidade de Michalov sai do Compressor de Neutrônio: um §eBloco de Michalov§r vira
@@ -300,7 +392,7 @@ quests:
   - id: iu_aluminio
     title: "Singularidade de Alumínio"
     type: normal
-    deps: [info_iu, avaritia:compressor_neutronio]
+    deps: [info_iu, blocos_iu, avaritia:compressor_neutronio]
     icon: industrialupgrade:avaritia_iu_singularity:1
     desc: |
       Singularidade de Alumínio sai do Compressor de Neutrônio: um §eBloco de Alumínio§r vira
@@ -314,7 +406,7 @@ quests:
   - id: iu_vanadio
     title: "Singularidade de Vanádio"
     type: normal
-    deps: [info_iu, avaritia:compressor_neutronio]
+    deps: [info_iu, blocos_iu, avaritia:compressor_neutronio]
     icon: industrialupgrade:avaritia_iu_singularity:2
     desc: |
       Singularidade de Vanádio sai do Compressor de Neutrônio: um §eBloco de Vanádio§r vira esta
@@ -328,7 +420,7 @@ quests:
   - id: iu_tungstenio
     title: "Singularidade de Tungstênio"
     type: normal
-    deps: [info_iu, avaritia:compressor_neutronio]
+    deps: [info_iu, blocos_iu, avaritia:compressor_neutronio]
     icon: industrialupgrade:avaritia_iu_singularity:3
     desc: |
       Singularidade de Tungstênio sai do Compressor de Neutrônio: um §eBloco de Tungstênio§r
@@ -342,7 +434,7 @@ quests:
   - id: iu_cobalto
     title: "Singularidade de Cobalto"
     type: normal
-    deps: [info_iu, avaritia:compressor_neutronio]
+    deps: [info_iu, blocos_iu, avaritia:compressor_neutronio]
     icon: industrialupgrade:avaritia_iu_singularity:4
     desc: |
       Singularidade de Cobalto sai do Compressor de Neutrônio: um §eBloco de Cobalto§r vira esta
@@ -356,7 +448,7 @@ quests:
   - id: iu_magnesio
     title: "Singularidade de Magnésio"
     type: normal
-    deps: [info_iu, avaritia:compressor_neutronio]
+    deps: [info_iu, blocos_iu, avaritia:compressor_neutronio]
     icon: industrialupgrade:avaritia_iu_singularity:5
     desc: |
       Singularidade de Magnésio sai do Compressor de Neutrônio: um §eBloco de Magnésio§r vira
@@ -370,7 +462,7 @@ quests:
   - id: iu_platina
     title: "Singularidade de Platina"
     type: normal
-    deps: [info_iu, avaritia:compressor_neutronio]
+    deps: [info_iu, blocos_iu, avaritia:compressor_neutronio]
     icon: industrialupgrade:avaritia_iu_singularity:6
     desc: |
       Singularidade de Platina sai do Compressor de Neutrônio: um §eBloco de Platina
@@ -385,7 +477,7 @@ quests:
   - id: iu_titanio
     title: "Singularidade de Titânio"
     type: normal
-    deps: [info_iu, avaritia:compressor_neutronio]
+    deps: [info_iu, blocos_iu, avaritia:compressor_neutronio]
     icon: industrialupgrade:avaritia_iu_singularity:7
     desc: |
       Singularidade de Titânio sai do Compressor de Neutrônio: um §eBloco de Titânio§r vira esta
@@ -399,7 +491,7 @@ quests:
   - id: iu_cromo
     title: "Singularidade de Cromo"
     type: normal
-    deps: [info_iu, avaritia:compressor_neutronio]
+    deps: [info_iu, blocos_iu, avaritia:compressor_neutronio]
     icon: industrialupgrade:avaritia_iu_singularity:8
     desc: |
       Singularidade de Cromo sai do Compressor de Neutrônio: um §eBloco de Cromo§r vira esta
@@ -413,7 +505,7 @@ quests:
   - id: iu_espinelio
     title: "Singularidade de Espinélio"
     type: normal
-    deps: [info_iu, avaritia:compressor_neutronio]
+    deps: [info_iu, blocos_iu, avaritia:compressor_neutronio]
     icon: industrialupgrade:avaritia_iu_singularity:9
     desc: |
       Singularidade de Espinélio sai do Compressor de Neutrônio: um §eBloco de Espinélio§r vira
@@ -427,7 +519,7 @@ quests:
   - id: iu_zinco
     title: "Singularidade de Zinco"
     type: normal
-    deps: [info_iu, avaritia:compressor_neutronio]
+    deps: [info_iu, blocos_iu, avaritia:compressor_neutronio]
     icon: industrialupgrade:avaritia_iu_singularity:10
     desc: |
       Singularidade de Zinco sai do Compressor de Neutrônio: um §eBloco de Zinco§r vira esta
@@ -441,7 +533,7 @@ quests:
   - id: iu_manganes
     title: "Singularidade de Manganês"
     type: normal
-    deps: [info_iu, avaritia:compressor_neutronio]
+    deps: [info_iu, blocos_iu, avaritia:compressor_neutronio]
     icon: industrialupgrade:avaritia_iu_singularity:11
     desc: |
       Singularidade de Manganês sai do Compressor de Neutrônio: um §eBloco de Manganês§r vira
@@ -455,7 +547,7 @@ quests:
   - id: iu_invar
     title: "Singularidade de Invar"
     type: normal
-    deps: [info_iu, avaritia:compressor_neutronio]
+    deps: [info_iu, blocos_iu, avaritia:compressor_neutronio]
     icon: industrialupgrade:avaritia_iu_singularity:12
     desc: |
       Singularidade de Invar sai do Compressor de Neutrônio: um §eBloco de Invar§r vira esta
@@ -469,7 +561,7 @@ quests:
   - id: iu_caravky
     title: "Singularidade de Caravky"
     type: normal
-    deps: [info_iu, avaritia:compressor_neutronio]
+    deps: [info_iu, blocos_iu, avaritia:compressor_neutronio]
     icon: industrialupgrade:avaritia_iu_singularity:13
     desc: |
       Singularidade de Caravky sai do Compressor de Neutrônio: um §eBloco de Caravky§r vira esta
@@ -483,7 +575,7 @@ quests:
   - id: iu_electrum
     title: "Singularidade de Electrum"
     type: normal
-    deps: [info_iu, avaritia:compressor_neutronio]
+    deps: [info_iu, blocos_iu, avaritia:compressor_neutronio]
     icon: industrialupgrade:avaritia_iu_singularity:14
     desc: |
       Singularidade de Electrum sai do Compressor de Neutrônio: um §eBloco de Electrum§r vira
@@ -497,7 +589,7 @@ quests:
   - id: iu_iridio
     title: "Singularidade de Irídio"
     type: normal
-    deps: [info_iu, avaritia:compressor_neutronio]
+    deps: [info_iu, blocos_iu, avaritia:compressor_neutronio]
     icon: industrialupgrade:avaritia_iu_singularity:15
     desc: |
       Singularidade de Irídio sai do Compressor de Neutrônio: um §eBloco de Irídio§r vira esta
@@ -511,7 +603,7 @@ quests:
   - id: iu_germanio
     title: "Singularidade de Germânio"
     type: normal
-    deps: [info_iu, avaritia:compressor_neutronio]
+    deps: [info_iu, blocos_iu, avaritia:compressor_neutronio]
     icon: industrialupgrade:avaritia_iu_singularity:16
     desc: |
       Singularidade de Germânio sai do Compressor de Neutrônio: um §eBloco de Germânio§r vira
@@ -538,6 +630,63 @@ quests:
       - xp: 40
       - loot: lendario
 
+  - id: blocos_extraplanets
+    title: "Blocos de Metal de ExtraPlanets"
+    type: optional
+    deps: [info_iu]
+    icon: ExtraPlanets:tile.pluto:7
+    desc: |
+      Alguns blocos de metal do IU têm um equivalente em ExtraPlanets (Tungstênio de Plutão,
+      Magnésio de Saturno, Zinco de Netuno, Platina de Kepler 22b). O Compressor aceita qualquer
+      um dos dois. Se você já explorou aqueles mundos, aproveite.
+    tasks:
+      - one_of: [ExtraPlanets:tile.pluto:7, ExtraPlanets:tile.saturn:7, ExtraPlanets:tile.neptune:7, ExtraPlanets:tile.kepler22b:14]
+    rewards:
+      - xp: 6
+      - loot: incomum
+
+  - id: reserva_me
+    title: "Reserva na Rede ME"
+    type: info
+    deps: [info_custos]
+    icon: appliedenergistics2:tile.BlockController
+    desc: |
+      Cada singularidade custa centenas de blocos. Dedique à rede ME um armazenamento só para o
+      Catálogo, com células grandes para blocos de metal e outra para as singularidades prontas.
+      Trabalhar sem rede aqui vai te custar muito tempo.
+    tasks:
+      - check
+    rewards:
+      - xp: 3
+
+  - id: automatizar_compressor
+    title: "Automatizando o Compressor"
+    type: info
+    deps: [info_custos]
+    icon: Avaritia:Neutronium_Compressor
+    desc: |
+      O Compressor aceita automação por funis e interfaces. Coloque uma interface do AE2
+      apontando para ele, escreva um padrão para cada singularidade, e deixe a rede alimentar
+      tudo. É mais simples do que parece.
+    tasks:
+      - check
+    rewards:
+      - xp: 3
+
+  - id: reflexao_ponto
+    title: "Por que Tantos Pontos?"
+    type: info
+    deps: [sing_avaritia_12]
+    icon: eternalsingularity:eternal_singularity
+    desc: |
+      Pode parecer exagero coletar uma de cada. Mas cada singularidade é a memória de um metal
+      inteiro, e a Eterna é o registro de todos eles juntos. Em termos de Akasha: é o índice do
+      Registro, escrito em pontos.
+    tasks:
+      - check
+    rewards:
+      - xp: 3
+
   # ======================================================================
   # FASE 4 — OUTRAS SINGULARIDADES
   # ======================================================================
@@ -563,7 +712,8 @@ quests:
     icon: appliedenergistics2:item.ItemMultiMaterial:47
     desc: |
       A §eSingularidade§r do AE2 é ingrediente de Pares Quânticos e de células enormes. Confira
-      no NEI como obtê-la no seu perfil de mods.
+      no NEI como obtê-la no seu perfil de mods; ela não entra no Catalisador, mas é parente das
+      singularidades do Compressor.
     tasks:
       - get: appliedenergistics2:item.ItemMultiMaterial:47
     rewards:
@@ -577,7 +727,9 @@ quests:
     icon: appliedenergistics2:item.ItemMultiMaterial:48
     desc: |
       A §eSingularidade Quanticamente Entrelaçada§r é a base do Quantum Link do AE2: duas
-      singularidades emparelhadas conversam à distância.
+      singularidades emparelhadas conversam à distância. Confira o NEI para ver como obtê-las.
+
+      Não entra no Catalisador, é só um complemento do Catálogo.
     tasks:
       - get: appliedenergistics2:item.ItemMultiMaterial:48
     rewards:
@@ -605,7 +757,9 @@ quests:
     icon: appliedenergistics2:item.ItemExtremeStorageCell.Singularity
     desc: |
       A §eCélula de Armazenamento Digital de Singularidade§r do AE2 Extreme. Para as
-      singularidades do Compressor, é a célula perfeita.
+      singularidades do Compressor e os blocos de metal do Catálogo, é a célula perfeita.
+
+      Veja a receita no NEI e monte com sua rede ME.
     tasks:
       - get: appliedenergistics2:item.ItemExtremeStorageCell.Singularity
     rewards:

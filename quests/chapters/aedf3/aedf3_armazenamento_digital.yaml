@@ -1,0 +1,312 @@
+chapter:
+  id: aedf3_armazenamento_digital
+  title: Armazenamento Digital
+  prefix: AEDF3
+  order: 810.312
+  icon: appliedenergistics2:tile.BlockController
+  desc: |
+    §6Memórias de outros heróis, página onze.§r Baús espalhados por todo canto são charmosos até o dia em que você procura um prego e não acha. Foi então que os heróis da Era do Futuro descobriram o §eAE2§r: uma rede que guarda tudo em cristal, enxerga tudo num terminal e ainda fabrica sozinha. "A organização", como diziam, mudou tudo.
+quests:
+- id: certus
+  title: Cristal de Quartzo Certus
+  type: main
+  deps_hidden: ['aedf3_casa_do_futuro:casa_milestone']
+  desc: |
+    O primeiro passo da jornada digital: o §eQuartzo Certus§r, cristais azulados que ficam enterrados em cavernas e em geodos. Junte 16 e guarde. Servem de base para ferramentas, fluix, cabos e cristais que viram a memória da rede.
+  tasks:
+  - {get: 'ore:crystalCertusQuartz x16'}
+  rewards:
+  - {xp: 5}
+  - choice: ['minecraft:quartz x16', 'minecraft:redstone x32']
+- id: certus_carregado
+  title: Certus Carregado
+  type: normal
+  deps: [certus]
+  desc: |
+    Um raio de energia transforma o cristal em §eCertus Carregado§r, que brilha e serve para criar fluix e energia. Use o Carregador (precisa de energia) ou espere uma tempestade. Parte importante da produção.
+  tasks:
+  - {get: 'appliedenergistics2:item.ItemMultiMaterial:1 x4'}
+  rewards:
+  - {xp: 3}
+  - choice: ['appliedenergistics2:item.ItemMultiMaterial:7 x4', 'minecraft:redstone x16']
+- id: fluix
+  title: Cristal de Fluix
+  type: main
+  deps: [certus_carregado]
+  desc: |
+    Mistura de certus carregado, redstone e quartzo na água: nasce o §eFluix§r, cristal de cor rosada que é a alma das cordas da rede. Junte oito cristais e coloque um balde de água por perto. Parece mágica, e é.
+  tasks:
+  - {get: 'appliedenergistics2:item.ItemMultiMaterial:7 x8'}
+  rewards:
+  - {xp: 5}
+  - choice: ['minecraft:quartz x16', 'minecraft:redstone x32']
+- id: rebolo
+  title: O Rebolo
+  type: normal
+  deps: [fluix]
+  desc: |
+    Hora de moer! O §eRebolo§r transforma cristais em pó, que depois vira circuitos. A manivela gira com sua mão ou com um motor. Barulhento e satisfatório. Dê várias voltas e veja o pó escorrer.
+  tasks:
+  - get: ['appliedenergistics2:tile.BlockGrinder', 'appliedenergistics2:tile.BlockCrank']
+  rewards:
+  - {xp: 3}
+  - choice: ['appliedenergistics2:item.ItemMultiMaterial:2 x8', 'minecraft:iron_ingot x8']
+- id: pedra_celeste
+  title: Pedra Celeste
+  type: main
+  deps: [rebolo]
+  desc: |
+    De tempos em tempos, meteoritos caem do céu, deixando crateras e blocos escuros. A §ePedra Celeste§r é o material para as prensas e para a memória da rede. Use a Bússola Celeste para achar o meteorito. Ele pode estar longe, mas vale a viagem.
+  tasks:
+  - {get: 'appliedenergistics2:tile.BlockSkyStone x16'}
+  rewards:
+  - {xp: 5}
+  - choice: ['appliedenergistics2:tile.BlockSkyCompass', 'minecraft:iron_ingot x16']
+- id: prensas
+  title: As Quatro Prensas
+  type: main
+  deps: [pedra_celeste]
+  desc: |
+    Dentro do meteorito, quatro prensas de ouro, diamante, ferro e silício esperam por você. Elas são o molde para cada tipo de circuito. Guarde com cuidado, pois só dá para fazer uma cópia com o Inscritor.
+  tasks:
+  - get: ['appliedenergistics2:item.ItemMultiMaterial:13', 'appliedenergistics2:item.ItemMultiMaterial:14',
+      'appliedenergistics2:item.ItemMultiMaterial:15', 'appliedenergistics2:item.ItemMultiMaterial:19']
+  rewards:
+  - {xp: 5}
+  - choice: ['appliedenergistics2:tile.BlockInscriber', 'minecraft:iron_ingot x8']
+- id: inscritor
+  title: O Inscritor
+  type: main
+  deps: [prensas]
+  desc: |
+    A máquina central do ramo AE2. O §eInscritor§r prensa circuitos, copia prensas e produz processadores. Alimente com energia e coloque os materiais certos entre as placas. Cada processador sai com um clique.
+  tasks:
+  - {get: 'appliedenergistics2:tile.BlockInscriber'}
+  rewards:
+  - {xp: 5}
+  - choice: ['appliedenergistics2:item.ItemMultiMaterial:13', 'minecraft:iron_ingot x8']
+- id: silicio
+  title: Silício
+  type: normal
+  deps: [inscritor]
+  desc: |
+    Para circuitos, você precisa de §eSilício§r: areia quartzo na fornalha. Junte oito e já faça mais, pois todo processador consome um. Se tiver Mekanism ou IC2, há outras fontes. Escolha a mais barata.
+  tasks:
+  - {get: 'ore:itemSilicon x8'}
+  rewards:
+  - {xp: 3}
+  - choice: ['minecraft:sand x32', 'minecraft:coal x16']
+- id: circuito_de_calculo
+  title: Circuito de Cálculo
+  type: normal
+  deps: [silicio]
+  desc: |
+    O §eCircuito de Cálculo§r nasce do certus puro e do silício no Inscritor. É a parte inteligente dos processadores e das memórias. Faça quatro e guarde.
+  tasks:
+  - {get: 'appliedenergistics2:item.ItemMultiMaterial:16 x4'}
+  rewards:
+  - {xp: 3}
+  - choice: ['appliedenergistics2:item.ItemMultiMaterial:23 x2', 'minecraft:redstone x16']
+- id: circuito_de_engenharia
+  title: Circuito de Engenharia
+  type: normal
+  deps: [circuito_de_calculo]
+  desc: |
+    Diamante e silício no Inscritor: o §eCircuito de Engenharia§r entra em quase todas as máquinas do AE2. Procure diamantes para fabricar quantos precisar. Prepare uma boa reserva.
+  tasks:
+  - {get: 'appliedenergistics2:item.ItemMultiMaterial:17 x4'}
+  rewards:
+  - {xp: 3}
+  - choice: ['appliedenergistics2:item.ItemMultiMaterial:24 x2', 'minecraft:diamond']
+- id: circuito_logico
+  title: Circuito Lógico
+  type: normal
+  deps: [circuito_de_engenharia]
+  desc: |
+    Ouro, silício e prensa: sai o §eCircuito Lógico§r, base do processamento lógico. Faça quatro. Esses circuitos serão constantemente consumidos pela rede.
+  tasks:
+  - {get: 'appliedenergistics2:item.ItemMultiMaterial:18 x4'}
+  rewards:
+  - {xp: 3}
+  - choice: ['appliedenergistics2:item.ItemMultiMaterial:22 x2', 'minecraft:gold_ingot x8']
+- id: processadores
+  title: Processadores
+  type: main
+  deps: [circuito_logico]
+  desc: |
+    Processadores de lógica, cálculo e engenharia: o cérebro de toda a rede. Cada um precisa de silício, circuito impresso e redstone. Faça dois de cada para as primeiras instalações.
+  tasks:
+  - get: ['appliedenergistics2:item.ItemMultiMaterial:22 x2', 'appliedenergistics2:item.ItemMultiMaterial:23
+        x2', 'appliedenergistics2:item.ItemMultiMaterial:24 x2']
+  rewards:
+  - {xp: 5}
+  - choice: ['appliedenergistics2:item.ItemMultiMaterial:7 x4', 'minecraft:redstone x32']
+- id: celula_de_energia_ae
+  title: Célula de Energia
+  type: normal
+  deps: [processadores]
+  desc: |
+    Sua rede consome energia e uma §eCélula§r guarda um estoque. Conecte à rede e carregue com um Aceitador de Energia. Boa para o caso de queda de eletricidade e para picos de uso.
+  tasks:
+  - {get: 'appliedenergistics2:tile.BlockEnergyCell'}
+  rewards:
+  - {xp: 3}
+  - choice: ['appliedenergistics2:tile.BlockEnergyAcceptor', 'minecraft:redstone x32']
+- id: cabos_de_vidro
+  title: Cabos de Vidro
+  type: main
+  deps: [celula_de_energia_ae]
+  desc: |
+    Fibra de quartzo e vidro: o §eCabo de Vidro§r transporta o sinal da rede. Faça 16 e comece a interligar tudo. Cada cabo suporta até oito canais, e cada máquina conectada usa um.
+  tasks:
+  - {get: 'appliedenergistics2:item.ItemMultiPart:16 x16'}
+  rewards:
+  - {xp: 5}
+  - choice: ['appliedenergistics2:item.ItemMultiPart:36 x8', 'minecraft:redstone x16']
+- id: controlador
+  title: O Controlador
+  type: main
+  deps: [cabos_de_vidro]
+  desc: |
+    O coração da rede. O §eControlador§r dá vida à ME e permite mais canais por cabo. Posicione perto do centro, conecte energia e os cabos. Quando a luz azul acender, a rede acorda.
+  tasks:
+  - {get: 'appliedenergistics2:tile.BlockController'}
+  rewards:
+  - {xp: 5}
+  - choice: ['appliedenergistics2:item.ItemMultiMaterial:7 x4', 'minecraft:diamond x2']
+- id: drive_me
+  title: O Drive
+  type: main
+  deps: [controlador]
+  desc: |
+    O §eDrive§r abriga as células de armazenamento. Conecte à rede e insira as células nos slots. Cada drive tem dez espaços e pode virar um armazém gigantesco. Uma rede boa começa com um bom drive.
+  tasks:
+  - {get: 'appliedenergistics2:tile.BlockDrive'}
+  rewards:
+  - {xp: 5}
+  - choice: ['appliedenergistics2:item.ItemMultiMaterial:39 x2', 'minecraft:iron_ingot x8']
+- id: celula_1k
+  title: Célula de 1k
+  type: main
+  deps: [drive_me]
+  desc: |
+    Seu primeiro disco rígido! A §eCélula de 1k§r guarda 1000 bytes de itens (até 63 tipos). Pouco, mas já substitui dois baús. Faça outras, de 4k, 16k e 64k, conforme avança.
+  tasks:
+  - {get: 'appliedenergistics2:item.ItemBasicStorageCell.1k'}
+  rewards:
+  - {xp: 5}
+  - choice: ['appliedenergistics2:item.ItemMultiMaterial:35 x2', 'minecraft:redstone x16']
+- id: celula_64k
+  title: Células Maiores
+  type: normal
+  deps: [celula_1k]
+  desc: |
+    Cada salto de capacidade pede componentes melhores. A de §e64k§r já guarda uma loja inteira. Compre peças de vidro, quartzo e ouro, e monte uma coleção. Cada célula pesa pouco e vale muito.
+  tasks:
+  - get: ['appliedenergistics2:item.ItemBasicStorageCell.4k', 'appliedenergistics2:item.ItemBasicStorageCell.16k',
+      'appliedenergistics2:item.ItemBasicStorageCell.64k']
+  rewards:
+  - {xp: 3}
+  - choice: ['appliedenergistics2:item.ItemMultiMaterial:39 x4', 'minecraft:diamond x4']
+- id: terminal
+  title: O Terminal
+  type: main
+  deps: [celula_64k]
+  desc: |
+    Painel que mostra tudo o que há na rede, com busca e organização. O §eTerminal§r é seu painel de controle diário. Instale na parede ao lado do trabalho e nunca mais abra um baú. É viciante!
+  tasks:
+  - {get: 'appliedenergistics2:item.ItemMultiPart:380'}
+  rewards:
+  - {xp: 5}
+  - choice: ['appliedenergistics2:item.ItemMultiPart:360', 'minecraft:redstone x16']
+- id: terminal_craft
+  title: Terminal de Fabricação
+  type: normal
+  deps: [terminal]
+  desc: |
+    Com o §eTerminal de Fabricação§r você cria itens direto da rede, sem abrir a bancada. Coloque os ingredientes e o resultado vai para o inventário. Parte do sonho do herói preguiçoso.
+  tasks:
+  - {get: 'appliedenergistics2:item.ItemMultiPart:360'}
+  rewards:
+  - {xp: 3}
+  - choice: ['appliedenergistics2:item.ItemMultiPart:340', 'minecraft:crafting_table']
+- id: primeira_rede
+  title: A Primeira Rede
+  type: milestone
+  deps: [terminal_craft]
+  desc: |
+    Controlador no centro, drive cheio, terminal na parede. Sua primeira rede ME está viva, Herói! Pergunte a qualquer item onde mora e a rede responde com um sorriso. A lenda dizia que esse dia vira festa.
+
+    Mas a rede ainda é manual; vamos fazê-la trabalhar sozinha? Interfaces, padrões e montadores esperam por você logo abaixo.
+  tasks:
+  - get: ['appliedenergistics2:tile.BlockController', 'appliedenergistics2:tile.BlockDrive', 'appliedenergistics2:item.ItemBasicStorageCell.1k',
+      'appliedenergistics2:item.ItemMultiPart:380']
+  rewards:
+  - {xp: 25}
+  - kit:
+      name: Kit ME
+      items: ['appliedenergistics2:item.ItemMultiMaterial:7 x16', 'appliedenergistics2:item.ItemMultiPart:16
+          x16', 'appliedenergistics2:item.ItemMultiMaterial:39 x4', 'minecraft:diamond x8']
+  - {loot: raro}
+- id: interface_me
+  title: Interface ME
+  type: main
+  deps: [primeira_rede]
+  desc: |
+    A §eInterface§r conecta a rede a máquinas, baús e fábricas. Ela entrega itens que as máquinas precisam e aceita os produtos. É a ponte para a automação.
+  tasks:
+  - {get: 'appliedenergistics2:tile.BlockInterface'}
+  rewards:
+  - {xp: 5}
+  - choice: ['appliedenergistics2:item.ItemMultiMaterial:23 x2', 'minecraft:iron_ingot x8']
+- id: terminal_padroes
+  title: Terminal de Padrões
+  type: main
+  deps: [interface_me]
+  desc: |
+    Aqui você grava as receitas! No §eTerminal de Padrões§r, coloque os ingredientes e o resultado: a rede passa a saber fabricar. O trabalho é grande no começo e compensa depois.
+  tasks:
+  - {get: 'appliedenergistics2:item.ItemMultiPart:340'}
+  rewards:
+  - {xp: 5}
+  - choice: ['appliedenergistics2:item.ItemEncodedPattern', 'minecraft:paper x8']
+- id: montador_molecular
+  title: Montador Molecular
+  type: main
+  deps: [terminal_padroes]
+  desc: |
+    O §eMontador Molecular§r fabrica itens da rede sozinho, seguindo seus padrões. Aceita aceleradores e trabalha em silêncio. Os heróis lendários diziam que era como ter um exército de carpinteiros invisíveis.
+  tasks:
+  - {get: 'appliedenergistics2:tile.BlockMolecularAssembler'}
+  rewards:
+  - {xp: 5}
+  - choice: ['appliedenergistics2:item.ItemMultiMaterial:24 x2', 'minecraft:diamond x2']
+- id: crafting_unit
+  title: Unidade de Fabricação
+  type: main
+  deps: [montador_molecular]
+  desc: |
+    A "CPU" da rede: unidades de fabricação com armazenamento. Quanto mais armazenamento, maiores os pedidos que a rede aceita. Monte um bloco 3x3 e instale um monitor. Pronto para o autocraft.
+  tasks:
+  - get: ['appliedenergistics2:tile.BlockCraftingUnit x2', 'appliedenergistics2:tile.BlockCraftingStorage']
+  rewards:
+  - {xp: 5}
+  - choice: ['appliedenergistics2:item.ItemMultiMaterial:22 x2', 'minecraft:iron_ingot x8']
+- id: autocraft
+  title: Primeiro Autocraft
+  type: milestone
+  deps: [crafting_unit]
+  desc: |
+    Montador, CPU, interface e padrões gravados: a rede fabrica por conta própria. Você pede um item, aperta o botão e a máquina cuida de tudo. É mágica pura, Herói.
+
+    Nos tempos lendários, isso significava que o dia não acabava mais. Agora vamos guardar a energia do futuro: reatores, turbinas e muita potência. É a §eEnergia Avançada§r.
+  tasks:
+  - get: ['appliedenergistics2:tile.BlockMolecularAssembler', 'appliedenergistics2:tile.BlockCraftingStorage',
+      'appliedenergistics2:tile.BlockInterface']
+  rewards:
+  - {xp: 25}
+  - kit:
+      name: Kit de Autocraft
+      items: ['appliedenergistics2:item.ItemMultiMaterial:23 x4', 'appliedenergistics2:item.ItemMultiMaterial:24
+          x4', 'appliedenergistics2:item.ItemMultiMaterial:22 x4', 'minecraft:diamond x8']
+  - {loot: raro}
