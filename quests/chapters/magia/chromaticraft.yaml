@@ -337,12 +337,8 @@ quests:
     deps: [cristais_caverna]
     icon: ChromatiCraft:chromaticraft_item_shard:11
     desc: |
-      §dKitrino§r é o elemento amarelo.
-      Segundo o Léxico, ele representa energia bruta.
-
-      Encontre um §eCristal de Caverna amarelo§r no subsolo e quebre-o para obter §e4 Fragmentos
-      de Cristal Kitrino§r. Perto do cristal você sente o efeito do elemento — cada cor irradia o
-      seu.
+      Cada cor tem sua personalidade, Herói, e o §dKitrino§r é o amarelo: a energia bruta, segundo o Léxico.
+      Encontre um §eCristal de Caverna amarelo§r no subsolo e quebre-o para obter §e4 Fragmentos de Cristal Kitrino§r. Perto do cristal você sente o efeito do elemento, porque cada cor irradia o seu. Bora garimpar!
     tasks:
       - get: ChromatiCraft:chromaticraft_item_shard:11 x4
     rewards:
@@ -448,8 +444,8 @@ quests:
     deps: [arvores_tingidas]
     icon: ChromatiCraft:chromaticraft_item_dye:13
     desc: |
-      O §eCorante de Árvore§r funciona como corante comum (está no oredict de cada cor). Uma
-      fazenda de árvores tingidas resolve todos os corantes da sua base para sempre.
+      Pintar tudo na mão? Nem pensar! O §eCorante de Árvore§r funciona como corante comum (está no oredict de cada cor).
+      Monte uma fazenda de árvores tingidas e os corantes da sua base ficam resolvidos para sempre. Junte 16 deles, Herói, e deixe a natureza trabalhar por você.
     tasks:
       - get: ChromatiCraft:chromaticraft_item_dye:* x16
     rewards:
@@ -462,9 +458,8 @@ quests:
     deps: [arvores_tingidas]
     icon: ChromatiCraft:chromaticraft_item_berry:14
     desc: |
-      As §eFrutinhas de Chroma§r têm gosto horrível, mas formigam de energia: elas recarregam
-      um pouco da sua energia pessoal e, dissolvidas em chroma líquido, §ecarregam os
-      fragmentos de cristal§r. Junte uma boa variedade de cores.
+      Têm gosto horrível, mas formigam de energia! As §eFrutinhas de Chroma§r recarregam um pouco da sua energia pessoal e, dissolvidas em chroma líquido, §ecarregam os fragmentos de cristal§r.
+      Junte uma boa variedade de cores, 16 no total. Vale cada mordida estranha!
     tasks:
       - get: ChromatiCraft:chromaticraft_item_berry:* x16
     rewards:
@@ -477,8 +472,8 @@ quests:
     deps: [corante_arvore]
     icon: ChromatiCraft:chromaticraft_block_dye:5
     desc: |
-      Nove corantes de uma cor = um §eBloco de Corante§r. Decoração de cores puras e um jeito
-      compacto de estocar corante.
+      Quer guardar corante sem bagunça? Nove corantes de uma cor viram um §eBloco de Corante§r.
+      É decoração de cores puras e um jeito compacto de estocar corante. Capricha na paleta, Herói, esta missão é opcional e só pelo estilo!
     tasks:
       - get: ChromatiCraft:chromaticraft_block_dye:*
     rewards:
@@ -490,8 +485,8 @@ quests:
     deps: [arvores_tingidas]
     icon: ChromatiCraft:chromaticraft_block_dyeflower:9
     desc: |
-      Folhas tingidas (com tesoura) e as §eFlores§r tingidas dos campos coloridos: decoração
-      viva e fonte de corante. Qualquer uma das duas.
+      Que tal deixar a base viva e colorida? Pegue folhas tingidas (use tesoura) ou as §eFlores§r tingidas dos campos coloridos.
+      São decoração viva e fonte de corante. Qualquer uma das duas serve, Herói. Missão opcional, só para enfeitar!
     tasks:
       - one_of: [ChromatiCraft:chromaticraft_block_dyeleaf:*, ChromatiCraft:chromaticraft_block_dyeflower:*]
     rewards:
@@ -587,9 +582,8 @@ quests:
     deps: [ruinas, todas_as_cores]
     icon: ChromatiCraft:chromaticraft_block_rune:12
     desc: |
-      Pedras gravadas com símbolos brilhantes, como as que ficam em volta dos Pylons: as
-      §eRunas de Cristal§r focam e direcionam a energia de uma cor. Elas são o coração de
-      quase todas as estruturas. Faça §eruna(s) de várias cores§r na Mesa de Fundição.
+      Olha só que beleza: pedras gravadas com símbolos brilhantes, como as que ficam em volta dos Pylons! As §eRunas de Cristal§r focam e direcionam a energia de uma cor e são o coração de quase todas as estruturas.
+      Faça §eruna(s) de várias cores§r na Mesa de Fundição, 8 no total. Você vai precisar de muitas, Herói!
     tasks:
       - get: ChromatiCraft:chromaticraft_block_rune:* x8
     rewards:
@@ -602,8 +596,8 @@ quests:
     deps: [mesa_fundicao]
     icon: ChromatiCraft:chromaticraft_block_lamp:11
     desc: |
-      Tochas são chatas, glowstone é caro. A §eLâmpada de Cristal§r usa o brilho dos fragmentos
-      para iluminar com estilo — e bem mais forte.
+      Tochas são chatas e glowstone é caro, né? A §eLâmpada de Cristal§r usa o brilho dos fragmentos para iluminar com estilo, e bem mais forte.
+      Faça uma para a sua base. Quem diria que iluminar podia ser tão chique, Herói? Opcional, mas lindo!
     tasks:
       - get: ChromatiCraft:chromaticraft_block_lamp:*
     rewards:
@@ -615,8 +609,8 @@ quests:
     deps: [ruinas]
     icon: ChromatiCraft:chromaticraft_block_glow
     desc: |
-      Um fragmento montado sobre uma base de outro material = uma luz decorativa de parede,
-      em qualquer combinação de cor e base.
+      Quer uma luz de parede com a sua cara? Monte um fragmento sobre uma base de outro material e pronto: uma luz decorativa, em qualquer combinação de cor e base.
+      Confira a receita no NEI (R/U) e brinque com as combinações, Herói. Missão opcional, só por diversão!
     tasks:
       - get: ChromatiCraft:chromaticraft_block_glow:*
     rewards:
@@ -629,7 +623,7 @@ quests:
     icon: ChromatiCraft:chromaticraft_item_crafting:4
     desc: |
       O §eCristal Bruto§r é uma peça base de várias receitas, feita direto na Mesa de Fundição.
-      Faça alguns para ter em estoque.
+      Faça 4 para ter em estoque, Herói. Pode acreditar: logo, logo você vai agradecer por ter adiantado o serviço!
     tasks:
       - get: ChromatiCraft:chromaticraft_item_crafting:4 x4
     rewards:
@@ -642,8 +636,8 @@ quests:
     deps: [ruinas]
     icon: ChromatiCraft:chromaticraft_block_glass:4
     desc: |
-      Vidro tingido de energia, feito na Mesa de Fundição. (O §eDefensive Glass§r, uma
-      variante, deixa passar só quem você quiser.) Qualquer cor serve.
+      Vidro tingido de energia, feito na Mesa de Fundição, e qualquer cor serve! O §eDefensive Glass§r, uma variante, deixa passar só quem você quiser.
+      Uma ótima ideia para janelas e proteção da base. Missão opcional, Herói, mas fica um charme!
     tasks:
       - get: ChromatiCraft:chromaticraft_block_glass:*
     rewards:
@@ -707,9 +701,8 @@ quests:
     deps: [pylon]
     icon: ChromatiCraft:chromaticraft_block_encrusted:3
     desc: |
-      Quando um Pylon está cheio e a energia não tem para onde ir, ela §econdensa§r em pequenas
-      incrustações de cristal sobre a pedra da estrutura. Colha algumas com cuidado (e longe
-      da descarga).
+      Sabia que a energia também sobra? Quando um Pylon está cheio e ela não tem para onde ir, §econdensa§r em pequenas incrustações de cristal sobre a pedra da estrutura.
+      Colha algumas com cuidado, e longe da descarga, Herói! Missão opcional, mas dá um orgulho!
     tasks:
       - get: ChromatiCraft:chromaticraft_block_encrusted:*
     rewards:
@@ -782,9 +775,8 @@ quests:
     deps: [sala_fundicao]
     icon: ChromatiCraft:chromaticraft_item_cluster:3
     desc: |
-      Raramente um elemento trabalha sozinho. Os §eGrupos de Cristais§r (Vermelho, Verde,
-      Laranja e Branco) juntam vários fragmentos e são a base dos Cachos, Aglomerados, Núcleos
-      e da Estrela de Cristal. Faça os quatro grupos.
+      Raramente um elemento trabalha sozinho, Herói! Os §eGrupos de Cristais§r (Vermelho, Verde, Laranja e Branco) juntam vários fragmentos e são a base dos Cachos, Aglomerados, Núcleos e da Estrela de Cristal.
+      Faça os quatro grupos. É o primeiro passo rumo ao topo da cadeia de cristais!
     tasks:
       - get: [ChromatiCraft:chromaticraft_item_cluster, ChromatiCraft:chromaticraft_item_cluster:1, ChromatiCraft:chromaticraft_item_cluster:2, ChromatiCraft:chromaticraft_item_cluster:3]
     rewards:
@@ -797,8 +789,8 @@ quests:
     deps: [sala_fundicao]
     icon: ChromatiCraft:chromaticraft_item_seed:13
     desc: |
-      Caçar cristais cansa. Imprima a magia dos fragmentos numa semente e ela vira uma §eCrystal
-      Bloom§r — uma flor de cristal decorativa que ainda dá um pequeno bônus de fragmentos.
+      Caçar cristais cansa, não é? Imprima a magia dos fragmentos numa semente e ela vira uma §eCrystal Bloom§r, uma flor de cristal decorativa que ainda dá um pequeno bônus de fragmentos.
+      Confira a receita no NEI (R/U). Plante e deixe os cristais virem até você, Herói!
     tasks:
       - get: ChromatiCraft:chromaticraft_item_seed:*
     rewards:
@@ -826,10 +818,8 @@ quests:
     deps: [sala_fundicao, coletor_chroma]
     icon: ChromatiCraft:chromaticraft_item_placer:1
     desc: |
-      Encantar sem sorteio! O §eEncantador Cromático§r usa §echroma líquido§r (experiência
-      concentrada) para aplicar exatamente os encantamentos que você escolher. Itens já
-      encantados dão desconto, e colocar o Encantador embaixo de uma mesa de encantamento
-      "normal" com estantes reduz ainda mais o custo.
+      Encantar sem sorteio? É aqui! O §eEncantador Cromático§r usa §echroma líquido§r (experiência concentrada) para aplicar exatamente os encantamentos que você escolher.
+      Itens já encantados dão desconto, e colocar o Encantador embaixo de uma mesa de encantamento "normal" com estantes reduz ainda mais o custo. Que luxo, Herói!
     tasks:
       - get: ChromatiCraft:chromaticraft_item_placer:1
     rewards:
@@ -842,8 +832,8 @@ quests:
     deps: [sala_fundicao, energia_interna]
     icon: ChromatiCraft:chromaticraft_item_placer:20
     desc: |
-      "Teletransporta" itens entre dois inventários com linha de visão — sem tubos. Uma ideia
-      antiga que você finalmente conseguiu fazer funcionar.
+      Uma ideia antiga que você finalmente conseguiu fazer funcionar! A §eFenda de Itens§r "teletransporta" itens entre dois inventários com linha de visão, sem tubos.
+      Faça 2 e posicione cada uma de frente para um inventário. Missão opcional, Herói, mas adeus tubulação!
     tasks:
       - get: ChromatiCraft:chromaticraft_item_placer:20 x2
     rewards:
@@ -855,8 +845,8 @@ quests:
     deps: [sala_fundicao]
     icon: ChromatiCraft:chromaticraft_item_placer:64
     desc: |
-      Plantas-máquina da Casting Room: §eHeat Lily§r, §eCoalescence Orchid§r (gera pedregulho),
-      §eReversion Lotus§r e §eEnrichment Vine§r (acelera plantas). Faça qualquer uma.
+      Plantas-máquina da Casting Room, Herói! Temos a §eHeat Lily§r, a §eCoalescence Orchid§r (gera pedregulho), a §eReversion Lotus§r e a §eEnrichment Vine§r (acelera plantas).
+      Faça qualquer uma delas e veja o jardim trabalhando para você. Opcional, mas muito útil!
     tasks:
       - one_of: [ChromatiCraft:chromaticraft_item_placer:25, ChromatiCraft:chromaticraft_item_placer:64, ChromatiCraft:chromaticraft_item_placer:63, ChromatiCraft:chromaticraft_item_placer:65]
     rewards:
@@ -868,9 +858,8 @@ quests:
     deps: [sala_fundicao]
     icon: ChromatiCraft:chromaticraft_item_orepick
     desc: |
-      Uma picareta que §efareja minério§r. Para liberar a receita, o Léxico pede a descoberta
-      "Resource Acquisition" (minerar os seus primeiros minérios). Ela é carregada por energia
-      cristalina, como as outras ferramentas deste Volume.
+      Que tal uma picareta que §efareja minério§r? Para liberar a receita, o Léxico pede a descoberta "Resource Acquisition" (minerar os seus primeiros minérios).
+      Ela é carregada por energia cristalina, como as outras ferramentas deste Volume. Mãos à obra, Herói, e boa caça!
     tasks:
       - get: ChromatiCraft:chromaticraft_item_orepick
     rewards:
@@ -883,8 +872,8 @@ quests:
     deps: [picareta_minerio]
     icon: ChromatiCraft:chromaticraft_item_oresilk
     desc: |
-      O §eOre Harvester§r colhe o bloco de minério inteiro (Toque Suave sem encantar) e a
-      §eMultitool§r faz o trabalho de várias ferramentas. Qualquer uma.
+      O §eOre Harvester§r colhe o bloco de minério inteiro (Toque Suave sem encantar) e a §eMultitool§r faz o trabalho de várias ferramentas.
+      Qualquer uma das duas serve, Herói. Missão opcional, mas sua mochila vai agradecer!
     tasks:
       - one_of: [ChromatiCraft:chromaticraft_item_oresilk, ChromatiCraft:chromaticraft_item_multitool]
     rewards:
@@ -896,8 +885,8 @@ quests:
     deps: [sala_fundicao]
     icon: ChromatiCraft:chromaticraft_item_linktool
     desc: |
-      Várias construções vêm em pares e precisam ser ligadas: o §eLinker§r grava uma posição e
-      a liga a outra. Simples e essencial.
+      Várias construções vêm em pares e precisam ser ligadas, Herói! O §eLinker§r grava uma posição e a liga a outra. Simples e essencial.
+      Faça um logo, porque vai ser usado o tempo todo. Confira a receita no NEI (R/U) se travar!
     tasks:
       - get: ChromatiCraft:chromaticraft_item_linktool
     rewards:
@@ -910,9 +899,8 @@ quests:
     deps: [sala_fundicao]
     icon: ChromatiCraft:chromaticraft_item_placer:62
     desc: |
-      Mais construções de runa: §eItem Inserter§r, §eLumen Lamp Controller§r, §eSubterranean
-      Illuminator§r (ilumina cavernas; pede a descoberta "Lower Layers") e o §eItem Mover§r.
-      Qualquer uma.
+      Mais construções de runa para a sua coleção! Temos o §eItem Inserter§r, o §eLumen Lamp Controller§r, o §eSubterranean Illuminator§r (ilumina cavernas; pede a descoberta "Lower Layers") e o §eItem Mover§r.
+      Qualquer uma serve, Herói. Missão opcional, mas pura praticidade!
     tasks:
       - one_of: [ChromatiCraft:chromaticraft_item_placer:62, ChromatiCraft:chromaticraft_item_placer:37, ChromatiCraft:chromaticraft_item_placer:58, ChromatiCraft:chromaticraft_item_bulkmover]
     rewards:
@@ -924,8 +912,8 @@ quests:
     deps: [sala_fundicao]
     icon: ChromatiCraft:chromaticraft_block_path
     desc: |
-      Blocos de caminho com energia que aceleram quem anda sobre eles. Estrada entre a base e os
-      Pylons, resolvida.
+      Estrada entre a base e os Pylons, resolvida! Blocos de caminho com energia aceleram quem anda sobre eles.
+      Junte 16 blocos e comece a pavimentar, Herói. Missão opcional, mas que ganho de tempo!
     tasks:
       - get: ChromatiCraft:chromaticraft_block_path:* x16
     rewards:
@@ -940,9 +928,8 @@ quests:
     deps: [ruinas]
     icon: ChromatiCraft:chromaticraft_item_placer:4
     desc: |
-      "Um coletor, mas de quê, e a partir do quê?" De §eexperiência§r! O §eChroma Collector§r
-      (receita básica da mesa) converte XP — drenada de você ou bombeada como líquido — em
-      §echroma líquido§r, usando fragmentos como catalisador. Descoberta "Magic Liquid".
+      "Um coletor, mas de quê, e a partir do quê?" De §eexperiência§r, Herói! O §eChroma Collector§r (receita básica da mesa) converte XP, drenada de você ou bombeada como líquido, em §echroma líquido§r, usando fragmentos como catalisador.
+      Pede a descoberta "Magic Liquid". Hora de transformar XP em magia!
     tasks:
       - get: ChromatiCraft:chromaticraft_item_placer:4
     rewards:
@@ -955,9 +942,8 @@ quests:
     deps: [coletor_chroma]
     icon: ChromatiCraft:chromaticraft_item_bucket
     desc: |
-      Encha um §eBalde de Chroma Líquido§r. Esse líquido iridescente é a "tinta" mágica do
-      Volume: encantamentos, ligas, fragmentos carregados, infusão... Pisar nele dá uma leve
-      regeneração (descoberta "Liquid Effects").
+      Encha um §eBalde de Chroma Líquido§r, Herói! Esse líquido iridescente é a "tinta" mágica do Volume: encantamentos, ligas, fragmentos carregados, infusão...
+      Pisar nele dá uma leve regeneração (descoberta "Liquid Effects"). Cuidado para não se apaixonar!
     tasks:
       - get: ChromatiCraft:chromaticraft_item_bucket
     rewards:
@@ -1004,9 +990,8 @@ quests:
     deps: [fragmento_carregado]
     icon: ChromatiCraft:chromaticraft_item_placer:7
     desc: |
-      Poções sem verruga do Nether: a §eCrystal Brewery§r faz poções direto de garrafas de água
-      com fragmentos. Fragmento comum = nível I por 3:00; fragmento carregado = nível II por
-      8:00. Alguns fragmentos modificam a poção.
+      Poções sem verruga do Nether? Pode crer! A §eCrystal Brewery§r faz poções direto de garrafas de água com fragmentos.
+      Fragmento comum = nível I por 3:00; fragmento carregado = nível II por 8:00. Alguns fragmentos modificam a poção. Missão opcional, Herói, mas divertida de experimentar!
     tasks:
       - get: ChromatiCraft:chromaticraft_item_placer:7
     rewards:
@@ -1018,9 +1003,8 @@ quests:
     deps: [balde_chroma]
     icon: ChromatiCraft:chromaticraft_item_tiered
     desc: |
-      Com o seu conhecimento crescendo, você passa a notar §eplantas e rochas mágicas§r que antes
-      pareciam comuns (Léxico: "Plants" e "Buried Secrets") — elas só aparecem quando você
-      sabe o bastante. Colha com Fortuna. Delas sai, entre outros, o §ePó Crômico§r.
+      Com o seu conhecimento crescendo, você passa a notar §eplantas e rochas mágicas§r que antes pareciam comuns (Léxico: "Plants" e "Buried Secrets"). Elas só aparecem quando você sabe o bastante.
+      Colha com Fortuna! Delas sai, entre outros, o §ePó Crômico§r. Junte 16, Herói!
     tasks:
       - get: ChromatiCraft:chromaticraft_item_tiered x16
     rewards:
@@ -1050,9 +1034,8 @@ quests:
     deps: [liga_chroma]
     icon: ChromatiCraft:chromaticraft_item_crafting:16
     desc: |
-      Mais ligas da piscina: §eFiraxite Alloy§r (ouro + firaxite + pó de blaze), §eResonating
-      Ingot§r (ferro + pó de enderstone + pérola), §eFluidic Essence Ingot§r, §eRadiative Alloy§r
-      (ouro + redstone + pó transmissivo) e §eAura Conducting Ingot§r. Faça duas delas.
+      Mais ligas da piscina, Herói! Temos §eFiraxite Alloy§r (ouro + firaxite + pó de blaze), §eResonating Ingot§r (ferro + pó de enderstone + pérola), §eFluidic Essence Ingot§r, §eRadiative Alloy§r (ouro + redstone + pó transmissivo) e §eAura Conducting Ingot§r.
+      Faça duas delas. Metal bonito é metal que brilha!
     tasks:
       - one_of: [ChromatiCraft:chromaticraft_item_crafting:16 x2, ChromatiCraft:chromaticraft_item_crafting:17 x2, ChromatiCraft:chromaticraft_item_crafting:18 x2, ChromatiCraft:chromaticraft_item_crafting:19 x2, ChromatiCraft:chromaticraft_item_crafting:20 x2]
     rewards:
@@ -1065,8 +1048,8 @@ quests:
     deps: [ligas_avancadas, ligacao_pylon]
     icon: ChromatiCraft:chromaticraft_item_placer:67
     desc: |
-      Cansou de jogar itens na piscina? O §eAlloying Tank§r faz as ligas num tanque de vidro
-      blindado, gastando 3 baldes de chroma por ciclo. É receita de Pylon (fundição de topo).
+      Cansou de jogar itens na piscina? O §eAlloying Tank§r faz as ligas num tanque de vidro blindado, gastando 3 baldes de chroma por ciclo.
+      É receita de Pylon (fundição de topo). Missão opcional, Herói, mas bem mais confortável!
     tasks:
       - get: ChromatiCraft:chromaticraft_item_placer:67
     rewards:
@@ -1116,8 +1099,8 @@ quests:
     deps: [templo_fundicao]
     icon: ChromatiCraft:chromaticraft_item_crafting:5
     desc: |
-      Construções com funções especiais precisam de núcleos: além do Void Core, o §eEnergy Core§r
-      e o §eTransformation Core§r. Faça os dois.
+      Construções com funções especiais precisam de núcleos! Além do Void Core, temos o §eEnergy Core§r e o §eTransformation Core§r.
+      Faça os dois, Herói. Se faltar receita, dê uma espiada no NEI (R/U)!
     tasks:
       - get: [ChromatiCraft:chromaticraft_item_crafting:5, ChromatiCraft:chromaticraft_item_crafting:7]
     rewards:
@@ -1130,8 +1113,8 @@ quests:
     deps: [templo_fundicao]
     icon: ChromatiCraft:chromaticraft_item_crafting:1
     desc: |
-      Peças ópticas de cristal: §eCrystal Lens§r, §eCrystal Focus§r e §eCrystal Mirror§r. Elas
-      concentram e redirecionam energia em repetidores, lasers e transmissores.
+      Peças ópticas de cristal: §eCrystal Lens§r, §eCrystal Focus§r e §eCrystal Mirror§r. Elas concentram e redirecionam energia em repetidores, lasers e transmissores.
+      Faça as três, Herói. Pense em óptica, só que mágica!
     tasks:
       - get: [ChromatiCraft:chromaticraft_item_crafting:1, ChromatiCraft:chromaticraft_item_crafting:2, ChromatiCraft:chromaticraft_item_crafting:3]
     rewards:
@@ -1144,8 +1127,8 @@ quests:
     deps: [templo_fundicao]
     icon: ChromatiCraft:chromaticraft_item_crafting:8
     desc: |
-      O §eElemental Core§r (Element Unit) reúne a energia de várias cores numa peça só — base de
-      muitas construções de nível alto.
+      O §eElemental Core§r (Element Unit) reúne a energia de várias cores numa peça só.
+      É base de muitas construções de nível alto, Herói. Faça um e prepare-se para o que vem pela frente!
     tasks:
       - get: ChromatiCraft:chromaticraft_item_crafting:8
     rewards:
@@ -1158,8 +1141,8 @@ quests:
     deps: [grupos_cristal, templo_fundicao]
     icon: ChromatiCraft:chromaticraft_item_cluster:11
     desc: |
-      Grupos viram Cachos, Cachos viram Aglomerados, Aglomerados viram o §eCrystal Core§r — e o
-      topo é a §eCrystal Star§r, que une todas as cores. Faça o Núcleo e a Estrela.
+      Grupos viram Cachos, Cachos viram Aglomerados, Aglomerados viram o §eCrystal Core§r, e o topo é a §eCrystal Star§r, que une todas as cores.
+      Faça o Núcleo e a Estrela, Herói. É a cereja do bolo da cadeia de cristais!
     tasks:
       - get: [ChromatiCraft:chromaticraft_item_cluster:10, ChromatiCraft:chromaticraft_item_cluster:11]
     rewards:
@@ -1172,9 +1155,8 @@ quests:
     deps: [templo_fundicao]
     icon: ChromatiCraft:chromaticraft_item_pendant:4
     desc: |
-      Por que carregar um cristal de caverna inteiro? O §ePendant§r é um pedacinho do cristal
-      que você §eveste§r e que aplica o efeito do elemento onde você estiver (pede a descoberta
-      de poções — "Ambient Effects"). Mais tarde existe a versão Enhanced.
+      Por que carregar um cristal de caverna inteiro? O §ePendant§r é um pedacinho do cristal que você §eveste§r e que aplica o efeito do elemento onde você estiver (pede a descoberta de poções, "Ambient Effects").
+      Mais tarde existe a versão Enhanced. Que tal um acessório mágico, Herói?
     tasks:
       - get: ChromatiCraft:chromaticraft_item_pendant:*
     rewards:
@@ -1187,8 +1169,8 @@ quests:
     deps: [templo_fundicao]
     icon: ChromatiCraft:chromaticraft_item_storage
     desc: |
-      Juntar um pouco de todas as cores rende um cristal que §eguarda energia§r como uma bateria
-      — para construções portáteis demais para a rede de cristal. Descoberta "Lumen Storage".
+      Juntar um pouco de todas as cores rende um cristal que §eguarda energia§r como uma bateria, ideal para construções portáteis demais para a rede de cristal.
+      Pede a descoberta "Lumen Storage". Faça o seu, Herói!
     tasks:
       - get: ChromatiCraft:chromaticraft_item_storage:*
     rewards:
@@ -1201,9 +1183,8 @@ quests:
     deps: [cristal_armazenamento]
     icon: ChromatiCraft:chromaticraft_item_placer:14
     desc: |
-      Energia crua sobrecarregaria o cristal. O §eCarregador§r é uma moldura que blinda as
-      bordas e foca a energia no centro (e gira — não pergunte). Carregue um cristal nele:
-      descoberta "Lumen Storage II".
+      Energia crua sobrecarregaria o cristal! O §eCarregador§r é uma moldura que blinda as bordas e foca a energia no centro (e gira, não pergunte).
+      Carregue um cristal nele: descoberta "Lumen Storage II". Faça o seu, Herói!
     tasks:
       - get: ChromatiCraft:chromaticraft_item_placer:14
     rewards:
@@ -1216,10 +1197,8 @@ quests:
     deps: [liga_chroma]
     icon: ChromatiCraft:chromaticraft_item_placer:22
     desc: |
-      Fragmentos purificados não respondem a ser jogados no chroma. O §eInfusion Stand§r
-      segura o item e, cercado por um §efosso de chroma§r, cria um vórtice que infunde a
-      energia (descoberta "Resourceful Experience", que vem depois das ligas). O Léxico
-      mostra a estrutura.
+      Fragmentos purificados não respondem a ser jogados no chroma, Herói. O §eInfusion Stand§r segura o item e, cercado por um §efosso de chroma§r, cria um vórtice que infunde a energia (descoberta "Resourceful Experience", que vem depois das ligas).
+      O Léxico mostra a estrutura. Mãos à obra!
     tasks:
       - get: ChromatiCraft:chromaticraft_item_placer:22
     rewards:
@@ -1232,8 +1211,8 @@ quests:
     deps: [suporte_infusao]
     icon: ChromatiCraft:chromaticraft_item_crafting:10
     desc: |
-      Purificados e infundidos com chroma, os fragmentos viram §eIridescent Crystal Shards§r, que
-      se juntam em §eIridescent Crystal Chunks§r — as peças dos Power Crystals. Faça um Chunk.
+      Purificados e infundidos com chroma, os fragmentos viram §eIridescent Crystal Shards§r, que se juntam em §eIridescent Crystal Chunks§r, as peças dos Power Crystals.
+      Faça um Chunk, Herói. Brilhando cada vez mais!
     tasks:
       - get: ChromatiCraft:chromaticraft_item_crafting:10
     rewards:
@@ -1246,9 +1225,8 @@ quests:
     deps: [templo_fundicao]
     icon: ChromatiCraft:chromaticraft_item_transition
     desc: |
-      A energia cinza transforma: a §eTransition Star§r troca grandes áreas de um bloco por
-      outro. A energia da terra escava: a §eExcavation Star§r limpa uma área de blocos iguais
-      conectados. Qualquer uma das duas.
+      A energia cinza transforma: a §eTransition Star§r troca grandes áreas de um bloco por outro. A energia da terra escava: a §eExcavation Star§r limpa uma área de blocos iguais conectados.
+      Qualquer uma das duas serve, Herói. Missão opcional, mas poderosa!
     tasks:
       - one_of: [ChromatiCraft:chromaticraft_item_transition, ChromatiCraft:chromaticraft_item_excavator]
     rewards:
@@ -1260,8 +1238,8 @@ quests:
     deps: [templo_fundicao]
     icon: ChromatiCraft:chromaticraft_item_link
     desc: |
-      Liga um item a um inventário distante e dá acesso a ele de onde você estiver. Pratique a
-      arte de nunca mais voltar para casa buscar algo.
+      Pratique a arte de nunca mais voltar para casa buscar algo, Herói! O §eInventory Warp§r liga um item a um inventário distante e dá acesso a ele de onde você estiver.
+      Confira a receita no NEI (R/U). Missão opcional, mas é puro conforto!
     tasks:
       - get: ChromatiCraft:chromaticraft_item_link
     rewards:
@@ -1273,8 +1251,8 @@ quests:
     deps: [fragmento_carregado, templo_fundicao]
     icon: ChromatiCraft:chromaticraft_item_placer:35
     desc: |
-      Uma lâmpada que mantém mobs afastados num raio que cresce com cada elemento adicionado
-      (com fragmentos carregados). Proteção bonita para a base.
+      Uma lâmpada que mantém mobs afastados, Herói! A §eElemental Lamp§r protege num raio que cresce com cada elemento adicionado (com fragmentos carregados).
+      Proteção bonita para a base. Missão opcional, mas dorme-se bem com ela!
     tasks:
       - get: ChromatiCraft:chromaticraft_item_placer:35
     rewards:
@@ -1286,9 +1264,8 @@ quests:
     deps: [fragmento_carregado, templo_fundicao]
     icon: ChromatiCraft:chromaticraft_item_placer:60
     desc: |
-      Queima itens que você tem de sobra e usa a energia para fundir o que falta (diamante,
-      fragmentos, ferro) — a aba "Lumen Transmutation" do NEI lista mais de 800 conversões.
-      §cA contenção é imperfeita:§r ela vaza e, cheia demais, solta descargas.
+      Queime os itens que sobram e use a energia para fundir o que falta (diamante, fragmentos, ferro)! A aba "Lumen Transmutation" do NEI lista mais de 800 conversões.
+      §cA contenção é imperfeita:§r ela vaza e, cheia demais, solta descargas. Cuidado, Herói, mas vale a aventura!
     tasks:
       - get: ChromatiCraft:chromaticraft_item_placer:60
     rewards:
@@ -1300,8 +1277,8 @@ quests:
     deps: [templo_fundicao]
     icon: ChromatiCraft:chromaticraft_item_builder
     desc: |
-      Mais ferramentas-estrela: a §eConstruction Star§r (constrói em massa) e a §eMobility
-      Star§r (teleporte curto). Qualquer uma.
+      Mais ferramentas-estrela chegando, Herói! A §eConstruction Star§r constrói em massa e a §eMobility Star§r faz teleporte curto.
+      Faça qualquer uma das duas. Missão opcional, mas é muito prático!
     tasks:
       - one_of: [ChromatiCraft:chromaticraft_item_builder, ChromatiCraft:chromaticraft_item_teleport]
     rewards:
@@ -1334,9 +1311,8 @@ quests:
     deps: [repetidor_lumen, pylon]
     icon: ChromatiCraft:chromaticraft_item_placer:68
     desc: |
-      Conecte um Pylon à sua base com Lumen Repeaters (use o Manipulador para testar a ligação)
-      e alimente alguma construção com ele: descoberta "Lumen Harnessing". O código exige,
-      antes, o Pylon e a Casting Room.
+      Hora de usar a energia! Conecte um Pylon à sua base com Lumen Repeaters (use o Manipulador para testar a ligação) e alimente alguma construção com ele: descoberta "Lumen Harnessing".
+      O código exige, antes, o Pylon e a Casting Room. Conferiu tudo, Herói? Então é só confirmar!
     tasks:
       - check
     rewards:
@@ -1363,9 +1339,8 @@ quests:
     deps: [usar_energia]
     icon: ChromatiCraft:chromaticraft_item_placer:87
     desc: |
-      Esmeraldas "refinadas" de forma rústica viram §eFocus Crystals§r (descoberta "Refractory
-      Gems"), que aumentam a potência das estruturas de fundição. Elas existem em níveis
-      (Flawed, normal, Refined, Exquisite).
+      Esmeraldas "refinadas" de forma rústica viram §eFocus Crystals§r (descoberta "Refractory Gems"), que aumentam a potência das estruturas de fundição.
+      Elas existem em níveis: Flawed, normal, Refined e Exquisite. Faça o seu, Herói, e veja a diferença!
     tasks:
       - get: ChromatiCraft:chromaticraft_item_placer:87
     rewards:
@@ -1378,9 +1353,8 @@ quests:
     deps: [usar_energia]
     icon: ChromatiCraft:chromaticraft_block_relay:4
     desc: |
-      Nem toda construção puxa energia direto dos repetidores. Algumas (usadas em grupo ou
-      debaixo da terra) recebem por §eLumen Relays§r, que repassam a energia de uma §eRelay
-      Source§r de relé em relé, com linha de visão. Descoberta "Compact Transmission".
+      Nem toda construção puxa energia direto dos repetidores, Herói! Algumas (usadas em grupo ou debaixo da terra) recebem por §eLumen Relays§r, que repassam a energia de uma §eRelay Source§r de relé em relé, com linha de visão.
+      Faça o Source e 4 relés. Descoberta "Compact Transmission".
     tasks:
       - get: [ChromatiCraft:chromaticraft_item_placer:31, ChromatiCraft:chromaticraft_block_relay:* x4]
     rewards:
@@ -1393,9 +1367,8 @@ quests:
     deps: [cristais_foco, reles]
     icon: ChromatiCraft:chromaticraft_item_crafting:2
     desc: |
-      "Repetidores de madeira e de chroma são de qualidade marginal." Depois de lidar com
-      focos e relés, você entende como transmitir melhor: descoberta "Refined Transmission",
-      pré-requisito do Crystal Repeater. Confirme quando o Léxico registrar.
+      "Repetidores de madeira e de chroma são de qualidade marginal." Depois de lidar com focos e relés, você entende como transmitir melhor: descoberta "Refined Transmission", pré-requisito do Crystal Repeater.
+      Confirme quando o Léxico registrar, Herói. Dever de casa feito!
     tasks:
       - check
     rewards:
@@ -1439,9 +1412,8 @@ quests:
     deps: [repetidor_cristal]
     icon: ChromatiCraft:chromaticraft_item_placer:30
     desc: |
-      Uma trilha de repetidores para cada cor é bagunça. O §eMulti-Aura Repeater§r carrega §eas
-      16 cores ao mesmo tempo§r, ao custo de mais atenuação por nó — use pouco e bem. Pode ser
-      montado na horizontal trocando colunas por vigas.
+      Uma trilha de repetidores para cada cor é bagunça! O §eMulti-Aura Repeater§r carrega §eas 16 cores ao mesmo tempo§r, ao custo de mais atenuação por nó, então use pouco e bem.
+      Pode ser montado na horizontal trocando colunas por vigas. Confira a estrutura no Léxico, Herói!
     tasks:
       - get: ChromatiCraft:chromaticraft_item_placer:30
     rewards:
@@ -1454,8 +1426,8 @@ quests:
     deps: [repetidor_cristal]
     icon: ChromatiCraft:chromaticraft_item_placer:55
     desc: |
-      Um transmissor de longo alcance para a rede: o §eLumen Beacon Transmitter§r (estrutura
-      "Lumen Beacon") encurta caminhos enormes de repetidores.
+      Precisa de um transmissor de longo alcance para a rede? O §eLumen Beacon Transmitter§r (estrutura "Lumen Beacon") encurta caminhos enormes de repetidores.
+      Monte o seu seguindo o Léxico, Herói. Menos fio, mais energia!
     tasks:
       - get: ChromatiCraft:chromaticraft_item_placer:55
     rewards:
@@ -1468,8 +1440,8 @@ quests:
     deps: [usar_energia, templo_fundicao]
     icon: ChromatiCraft:chromaticraft_item_placer:72
     desc: |
-      Algumas construções só funcionam perto de um nó que §eirradia§r energia fraca em volta —
-      até através de paredes (com menos eficiência). Esse é o distribuidor ambiente.
+      Algumas construções só funcionam perto de um nó que §eirradia§r energia fraca em volta, até através de paredes (com menos eficiência). Esse é o distribuidor ambiente.
+      Confira a receita no NEI (R/U) e faça um, Herói. Missão opcional, mas cheia de utilidade!
     tasks:
       - get: ChromatiCraft:chromaticraft_item_placer:72
     rewards:
@@ -1506,9 +1478,8 @@ quests:
     deps: [ligacao_pylon, picareta_minerio]
     icon: ChromatiCraft:chromaticraft_item_placer:15
     desc: |
-      Fundir com fogo e §eenergia de aprimoramento§r: a §eCrystal Furnace§r §emultiplica a saída§r
-      de quase tudo que funde (exceto pós de lingote) — a aba "Crystal Smelting" do NEI lista
-      mais de mil receitas. (Pede a descoberta "Resource Acquisition".)
+      Fundir com fogo e §eenergia de aprimoramento§r! A §eCrystal Furnace§r §emultiplica a saída§r de quase tudo que funde (exceto pós de lingote), e a aba "Crystal Smelting" do NEI lista mais de mil receitas.
+      Pede a descoberta "Resource Acquisition". Dobre o seu lucro, Herói!
     tasks:
       - get: ChromatiCraft:chromaticraft_item_placer:15
     rewards:
@@ -1521,9 +1492,8 @@ quests:
     deps: [ligacao_pylon]
     icon: ChromatiCraft:chromaticraft_item_placer:23
     desc: |
-      O inverso de queimar: o §eItem Fabricator§r junta energia cristalina em grandes pás e §ecria
-      itens§r a partir de um modelo — só itens simples, e o custo cresce com a energia contida
-      no item. Veja a aba "Item Fabrication" do NEI.
+      O inverso de queimar! O §eItem Fabricator§r junta energia cristalina em grandes pás e §ecria itens§r a partir de um modelo. Só itens simples, e o custo cresce com a energia contida no item.
+      Veja a aba "Item Fabrication" do NEI, Herói. Criar do nada é a melhor parte!
     tasks:
       - get: ChromatiCraft:chromaticraft_item_placer:23
     rewards:
@@ -1536,9 +1506,8 @@ quests:
     deps: [ligacao_pylon]
     icon: ChromatiCraft:chromaticraft_item_placer:17
     desc: |
-      Um tanque multibloco de qualquer forma e tamanho, preso a um furo para o vazio: o §eCrystal
-      Tank Controller§r e os §eCrystal Tank Blocks§r. A capacidade cresce com o quadrado do número
-      de blocos. (A pesquisa pede ter encontrado um Ocean Temple.)
+      Um tanque multibloco de qualquer forma e tamanho, preso a um furo para o vazio: o §eCrystal Tank Controller§r e os §eCrystal Tank Blocks§r (faça 8 blocos).
+      A capacidade cresce com o quadrado do número de blocos. A pesquisa pede ter encontrado um Ocean Temple. Bora, Herói!
     tasks:
       - get: [ChromatiCraft:chromaticraft_item_placer:17, ChromatiCraft:chromaticraft_block_tank x8]
     rewards:
@@ -1551,8 +1520,8 @@ quests:
     deps: [ligacao_pylon]
     icon: ChromatiCraft:chromaticraft_item_placer:3
     desc: |
-      Finalmente: §etrocar o mob§r de um spawner. O §eSpawner Reprogrammer§r personaliza as
-      "gaiolas de metal escuro" espalhadas pelo mundo.
+      Finalmente, Herói: §etrocar o mob§r de um spawner! O §eSpawner Reprogrammer§r personaliza as "gaiolas de metal escuro" espalhadas pelo mundo.
+      Confira a receita no NEI (R/U). Missão opcional, mas que sonho para fazer fazendas de mobs!
     tasks:
       - get: ChromatiCraft:chromaticraft_item_placer:3
     rewards:
@@ -1580,8 +1549,8 @@ quests:
     deps: [ligacao_pylon]
     icon: ChromatiCraft:chromaticraft_item_placer:12
     desc: |
-      Um feixe fino de energia de qualquer cor, aplicando o efeito dela nos blocos e criaturas
-      ao longo da linha. Uma das construções mais versáteis do Volume.
+      Um feixe fino de energia de qualquer cor, aplicando o efeito dela nos blocos e criaturas ao longo da linha.
+      É uma das construções mais versáteis do Volume, Herói. Faça um Crystal Laser e invente usos! Missão opcional.
     tasks:
       - get: ChromatiCraft:chromaticraft_item_placer:12
     rewards:
@@ -1593,9 +1562,8 @@ quests:
     deps: [ligacao_pylon]
     icon: ChromatiCraft:chromaticraft_item_placer:26
     desc: |
-      Mais receitas de Pylon: §eItem Collector§r, §eTeleportation Pump§r (bombeia fluido de
-      longe), §eExplosion Shield§r, §eMeteor Tower Core§r (defesa) e §eMana Booster§r (com
-      Botania). Qualquer uma.
+      Mais receitas de Pylon, Herói! Temos o §eItem Collector§r, a §eTeleportation Pump§r (bombeia fluido de longe), o §eExplosion Shield§r, o §eMeteor Tower Core§r (defesa) e o §eMana Booster§r (com Botania).
+      Faça qualquer uma. Missão opcional, mas poderosa!
     tasks:
       - one_of: [ChromatiCraft:chromaticraft_item_placer:26, ChromatiCraft:chromaticraft_item_placer:29, ChromatiCraft:chromaticraft_item_placer:93, ChromatiCraft:chromaticraft_item_placer:74, ChromatiCraft:chromaticraft_item_placer:95]
     rewards:
@@ -1607,9 +1575,8 @@ quests:
     deps: [ligacao_pylon, nucleos]
     icon: ChromatiCraft:chromaticraft_item_crafting:25
     desc: |
-      Os núcleos comuns "carecem de algo". As versões §eEnergized§r (Void, Transformation e
-      Energy) são receitas de Pylon caras e trabalhosas — e peças das construções de endgame.
-      Faça qualquer uma.
+      Os núcleos comuns "carecem de algo". As versões §eEnergized§r (Void, Transformation e Energy) são receitas de Pylon caras e trabalhosas, e peças das construções de endgame.
+      Faça qualquer uma, Herói. Paciência e muita energia, que vale a pena!
     tasks:
       - one_of: [ChromatiCraft:chromaticraft_item_crafting:23, ChromatiCraft:chromaticraft_item_crafting:24, ChromatiCraft:chromaticraft_item_crafting:25]
     rewards:
@@ -1640,8 +1607,8 @@ quests:
     deps: [acelerador]
     icon: ChromatiCraft:chromaticraft_item_adjacency:2
     desc: |
-      Escolha mais um upgrade de adjacência para a sua linha de produção: §eGrowth Accelerator§r
-      (verde), §eMineral Enricher§r (marrom), §eHealing Core§r (magenta), §eHeat Relay§r (laranja)...
+      Escolha mais um upgrade de adjacência para a sua linha de produção, Herói: §eGrowth Accelerator§r (verde), §eMineral Enricher§r (marrom), §eHealing Core§r (magenta), §eHeat Relay§r (laranja)...
+      Confira as demais opções no NEI (R/U). Missão opcional, mas turbina o seu setup!
     tasks:
       - one_of: [ChromatiCraft:chromaticraft_item_adjacency:2, ChromatiCraft:chromaticraft_item_adjacency:3, ChromatiCraft:chromaticraft_item_adjacency:13, ChromatiCraft:chromaticraft_item_adjacency:14, ChromatiCraft:chromaticraft_item_adjacency]
     rewards:
@@ -1653,8 +1620,8 @@ quests:
     deps: [ligacao_pylon, cristal_armazenamento]
     icon: ChromatiCraft:chromaticraft_item_misc:1
     desc: |
-      Construções que rodam com energia cristalina aceitam bônus: §eSilk Touch Bonus§r, §eOperation
-      Speed Bonus§r e §eEnergy Efficiency Bonus§r (o Léxico chama de "Upgrades").
+      Construções que rodam com energia cristalina aceitam bônus, Herói: §eSilk Touch Bonus§r, §eOperation Speed Bonus§r e §eEnergy Efficiency Bonus§r (o Léxico chama de "Upgrades").
+      Faça qualquer um. Missão opcional, mas deixa tudo mais eficiente!
     tasks:
       - one_of: [ChromatiCraft:chromaticraft_item_misc, ChromatiCraft:chromaticraft_item_misc:1, ChromatiCraft:chromaticraft_item_misc:2]
     rewards:
@@ -1666,8 +1633,8 @@ quests:
     deps: [pingente, ligacao_pylon]
     icon: ChromatiCraft:chromaticraft_item_pendant3:13
     desc: |
-      A versão de Pylon do pingente, com efeito mais forte. (Nesta config, ela não precisa ser
-      recarregada.)
+      A versão de Pylon do pingente, com efeito mais forte! Nesta config, ela não precisa ser recarregada.
+      Confira a receita no NEI (R/U) e faça o seu, Herói. Missão opcional, mas é um upgrade e tanto!
     tasks:
       - get: ChromatiCraft:chromaticraft_item_pendant3:*
     rewards:
@@ -1679,8 +1646,8 @@ quests:
     deps: [ligacao_pylon]
     icon: ChromatiCraft:chromaticraft_item_duplicator
     desc: |
-      Ferramentas de Pylon: a §eReplication Star§r (copia estruturas — nesta config, sem copiar
-      TileEntities e até 1000 blocos) e a §eHover Star§r. Qualquer uma.
+      Ferramentas de Pylon, Herói! A §eReplication Star§r copia estruturas (nesta config, sem copiar TileEntities e até 1000 blocos) e a §eHover Star§r faz você flutuar.
+      Qualquer uma serve. Missão opcional, mas muito divertida!
     tasks:
       - one_of: [ChromatiCraft:chromaticraft_item_duplicator, ChromatiCraft:chromaticraft_item_hoverwand]
     rewards:
@@ -1692,8 +1659,8 @@ quests:
     deps: [ligacao_pylon]
     icon: ChromatiCraft:chromaticraft_block_tnt
     desc: |
-      Uma explosão em qualquer coordenada, em qualquer dimensão. §cUse com responsabilidade — e
-      com as regras do servidor em mente.§r
+      Uma explosão em qualquer coordenada, em qualquer dimensão! §cUse com responsabilidade, e com as regras do servidor em mente.§r
+      Confira a receita no NEI (R/U). Missão opcional, Herói. Poder demais exige juízo!
     tasks:
       - get: ChromatiCraft:chromaticraft_block_tnt
     rewards:
@@ -1708,9 +1675,8 @@ quests:
     deps: [energia_interna, mesa_fundicao]
     icon: ChromatiCraft:chromaticraft_item_placer:16
     desc: |
-      Habilidades especiais exigem infundir grandes quantidades de energia em você — com um
-      ritual. A §eRitual Table§r é uma receita básica da mesa; o §eRitual Altar§r em volta dela
-      (estrutura no Léxico) e a energia dos Pylons fazem o resto.
+      Habilidades especiais exigem infundir grandes quantidades de energia em você, com um ritual! A §eRitual Table§r é uma receita básica da mesa.
+      O §eRitual Altar§r em volta dela (estrutura no Léxico) e a energia dos Pylons fazem o resto. Prepare-se, Herói!
     tasks:
       - get: ChromatiCraft:chromaticraft_item_placer:16
     rewards:
@@ -1762,8 +1728,8 @@ quests:
     deps: [energia_interna, templo_fundicao]
     icon: ChromatiCraft:chromaticraft_item_placer:49
     desc: |
-      Voar até cada Pylon para recarregar é cansativo. O §eEnergy Focus§r é uma imitação de Pylon
-      só para carregar §evocê§r (não alimenta outras construções) — e é bonito na sala.
+      Voar até cada Pylon para recarregar é cansativo, né? O §eEnergy Focus§r é uma imitação de Pylon só para carregar §evocê§r (não alimenta outras construções), e ainda é bonito na sala.
+      Confira a receita no NEI (R/U). Missão opcional, Herói!
     tasks:
       - get: ChromatiCraft:chromaticraft_item_placer:49
     rewards:
@@ -1797,8 +1763,8 @@ quests:
     deps: [cristal_poder]
     icon: ChromatiCraft:chromaticraft_item_placer:21
     desc: |
-      Um cristal ajuda; oito em anel, balanceados, transformam o Pylon. Faça os §e8 Power
-      Crystals§r do anel do seu Pylon mais usado.
+      Um cristal ajuda; oito em anel, balanceados, transformam o Pylon!
+      Faça os §e8 Power Crystals§r do anel do seu Pylon mais usado, Herói. Confira a estrutura no Léxico se precisar!
     tasks:
       - get: ChromatiCraft:chromaticraft_item_placer:21 x8
     rewards:
@@ -1830,9 +1796,8 @@ quests:
     deps: [arvores_tingidas]
     icon: ChromatiCraft:chromaticraft_block_rainbowsapling
     desc: |
-      Dizem que há florestas inteiras de árvores coloridas, com magia forte o bastante para
-      afastar o mal. Encontre uma §eRainbow Forest§r (bioma do ChromatiCraft; nesta config os
-      animais lá são calmos e plantas anti-Taint crescem nela). Descoberta "Magical Forests".
+      Dizem que há florestas inteiras de árvores coloridas, com magia forte o bastante para afastar o mal. Encontre uma §eRainbow Forest§r, bioma do ChromatiCraft!
+      Nesta config os animais lá são calmos e plantas anti-Taint crescem nela. Descoberta "Magical Forests". Boa exploração, Herói!
     tasks:
       - visit: {dim: 0, biome: 48, name: "Rainbow Forest"}
     rewards:
@@ -1860,8 +1825,8 @@ quests:
     deps: [arvore_arco_iris]
     icon: ChromatiCraft:chromaticraft_block_mud
     desc: |
-      Sob as árvores arco-íris, o chão fica §elamacento§r com resíduos de um líquido mágico. O
-      Léxico sugere que esse solo "regado por magia" ajuda certas plantas. Colete um pouco.
+      Sob as árvores arco-íris, o chão fica §elamacento§r com resíduos de um líquido mágico. O Léxico sugere que esse solo "regado por magia" ajuda certas plantas.
+      Colete um pouco, Herói. Missão opcional, mas fica o registro!
     tasks:
       - get: ChromatiCraft:chromaticraft_block_mud
     rewards:
@@ -1873,9 +1838,8 @@ quests:
     deps: [lexico]
     icon: ChromatiCraft:chromaticraft_block_cliffstone:2
     desc: |
-      Nem toda região mágica é floresta. Os §eLuminous Cliffs§r são penhascos em terraços com uma
-      atmosfera muito estranha — e raros (peso de bioma baixo nesta config). Encontre um:
-      descoberta "Glowing Terraces".
+      Nem toda região mágica é floresta, Herói! Os §eLuminous Cliffs§r são penhascos em terraços com uma atmosfera muito estranha, e raros (peso de bioma baixo nesta config).
+      Encontre um: descoberta "Glowing Terraces". Paciência e boa caminhada!
     tasks:
       - visit: {dim: 0, biome: 49, name: "Luminous Cliffs"}
     rewards:
@@ -1888,8 +1852,8 @@ quests:
     deps: [penhascos_luminosos]
     icon: ChromatiCraft:chromaticraft_item_bucket:3
     desc: |
-      Bem fundo sob os penhascos, perto de fendas que soltam gases, há poças de um líquido "de
-      energia e de espaço": a §eLuma Etérea§r. Encha um balde (descoberta "Ethereal Luma").
+      Bem fundo sob os penhascos, perto de fendas que soltam gases, há poças de um líquido "de energia e de espaço": a §eLuma Etérea§r.
+      Encha um balde, Herói (descoberta "Ethereal Luma"). Vale a escavação!
     tasks:
       - get: ChromatiCraft:chromaticraft_item_bucket:3
     rewards:
@@ -1902,8 +1866,8 @@ quests:
     deps: [lexico]
     icon: ChromatiCraft:chromaticraft_item_bucket:1
     desc: |
-      Uma floresta com poças de §eEssência Líquida de Ender§r, que arremessa quem encosta numa
-      direção aleatória. Encha um balde: ela é útil em tudo que envolve viajar pelo espaço.
+      Uma floresta com poças de §eEssência Líquida de Ender§r, que arremessa quem encosta numa direção aleatória. Encontre a Ender Forest e encha um balde!
+      Ela é útil em tudo que envolve viajar pelo espaço. Missão opcional, Herói, mas vale a visita!
     tasks:
       - visit: {dim: 0, biome: 47, name: "Ender Forest"}
       - get: ChromatiCraft:chromaticraft_item_bucket:1
@@ -1917,7 +1881,7 @@ quests:
     icon: ChromatiCraft:chromaticraft_block_crystal:7
     desc: |
       Câmaras enterradas na rocha, cheias de cristais e algum saque: os §eCrystal Shrines§r.
-      Encontre um (descoberta "Buried Hollows"). §eÉ um dos requisitos do outro mundo.§r
+      Encontre um (descoberta "Buried Hollows"). §eÉ um dos requisitos do outro mundo.§r Boa exploração, Herói!
     tasks:
       - check
     rewards:
@@ -1930,8 +1894,8 @@ quests:
     deps: [ruinas]
     icon: ChromatiCraft:chromaticraft_block_lamp:4
     desc: |
-      À noite, pontos de luz no chão que não são lava nem fogo... são §eCrystal Burrows§r, tocas
-      escondidas com alguns itens iniciais. Encontre uma (descoberta "Secret Burrows").
+      À noite, pontos de luz no chão que não são lava nem fogo... são §eCrystal Burrows§r, tocas escondidas com alguns itens iniciais!
+      Encontre uma (descoberta "Secret Burrows"). Olho aberto na escuridão, Herói!
     tasks:
       - check
     rewards:
@@ -1944,9 +1908,8 @@ quests:
     deps: [ruinas]
     icon: minecraft:water_bucket
     desc: |
-      Histórias falam de estruturas no fundo do oceano — e são verdadeiras. O §eOcean Temple§r
-      do ChromatiCraft é maior do que parece e §cnão é amigável§r. Leve respiração aquática.
-      (Descoberta "Ocean Temples"; libera também o Crystal Tank.)
+      Histórias falam de estruturas no fundo do oceano, e são verdadeiras! O §eOcean Temple§r do ChromatiCraft é maior do que parece e §cnão é amigável§r. Leve respiração aquática.
+      Descoberta "Ocean Temples"; libera também o Crystal Tank. Coragem, Herói!
     tasks:
       - check
     rewards:
@@ -1959,8 +1922,8 @@ quests:
     deps: [ruinas]
     icon: minecraft:sandstone
     desc: |
-      Além das pirâmides (explosivas), os desertos escondem os §eSandy Burrows§r: ocos subterrâneos
-      cheios de saque — e de perigo. Encontre um (descoberta "Sandy Burrows").
+      Além das pirâmides (explosivas), os desertos escondem os §eSandy Burrows§r: ocos subterrâneos cheios de saque e de perigo.
+      Encontre um (descoberta "Sandy Burrows"). Prepare-se bem, Herói!
     tasks:
       - check
     rewards:
@@ -1974,7 +1937,7 @@ quests:
     icon: minecraft:packed_ice
     desc: |
       Gelo até onde a vista alcança... e um §eFrozen Outpost§r abandonado guardando alguma coisa.
-      Encontre um (descoberta "Snowy Outposts"). Cuidado com o chão de Mirrorstone.
+      Encontre um (descoberta "Snowy Outposts"). Cuidado com o chão de Mirrorstone. Agasalhe-se, Herói!
     tasks:
       - check
     rewards:
@@ -1987,8 +1950,8 @@ quests:
     deps: [ruinas]
     icon: ChromatiCraft:chromaticraft_item_datacrystal
     desc: |
-      Torres antigas coroadas por um cristal luminoso cheio de informação: as §eAncient Data
-      Towers§r. O §eMemory Crystal§r delas serve de cinzel (Inscrição) e para mapas de artefatos.
+      Torres antigas coroadas por um cristal luminoso cheio de informação: as §eAncient Data Towers§r.
+      O §eMemory Crystal§r delas serve de cinzel (Inscrição) e para mapas de artefatos. Missão opcional, Herói, mas curiosa!
     tasks:
       - get: ChromatiCraft:chromaticraft_item_datacrystal
     rewards:
@@ -2000,9 +1963,8 @@ quests:
     deps: [ruinas]
     icon: ChromatiCraft:chromaticraft_item_artefact
     desc: |
-      Em certas regiões, raramente, há uma "coisa" em forma de estrela enterrada logo abaixo da
-      superfície. §cÉ perigosa de carregar§r (os aldeões que o digam). O Léxico guarda segredos
-      sobre ela.
+      Em certas regiões, raramente, há uma "coisa" em forma de estrela enterrada logo abaixo da superfície. §cÉ perigosa de carregar§r (os aldeões que o digam).
+      O Léxico guarda segredos sobre ela. Missão opcional, Herói, vá com cuidado!
     tasks:
       - get: ChromatiCraft:chromaticraft_item_artefact:*
     rewards:
@@ -2014,8 +1976,8 @@ quests:
     deps: [ruinas]
     icon: ChromatiCraft:chromaticraft_block_hive
     desc: |
-      Abelhas no escuro? Há colmeias cristalinas subterrâneas com abelhas adaptadas (integração
-      com Forestry). Encontre uma §eCrystal Hive§r — ela libera pesquisas de abelhas.
+      Abelhas no escuro? Há colmeias cristalinas subterrâneas com abelhas adaptadas (integração com Forestry).
+      Encontre uma §eCrystal Hive§r, Herói. Ela libera pesquisas de abelhas!
     tasks:
       - get: ChromatiCraft:chromaticraft_block_hive:*
     rewards:
@@ -2027,10 +1989,8 @@ quests:
     deps: [cristais_caverna]
     icon: minecraft:stone_pickaxe
     desc: |
-      As cavernas descem muito mais do que parece. Explore um sistema de cavernas bem fundo
-      (descoberta "Lower Layers") e depois chegue à §erocha matriz§r, "a barreira impenetrável"
-      (descoberta "World Floor"). O código encadeia: cavernas fundas → rocha matriz → Nether →
-      Fim.
+      As cavernas descem muito mais do que parece, Herói! Explore um sistema de cavernas bem fundo (descoberta "Lower Layers") e depois chegue à §erocha matriz§r, "a barreira impenetrável" (descoberta "World Floor").
+      O código encadeia: cavernas fundas, rocha matriz, Nether e Fim. Desça com coragem!
     tasks:
       - check
     rewards:
@@ -2043,9 +2003,8 @@ quests:
     deps: [caverna_funda]
     icon: minecraft:netherrack
     desc: |
-      "Então as histórias de portais de obsidiana para um pesadelo de fogo eram verdade..."
-      Entre no Nether (descoberta "The Evil Realm"). Para o ChromatiCraft, ela só conta depois de
-      você ter chegado à rocha matriz.
+      "Então as histórias de portais de obsidiana para um pesadelo de fogo eram verdade..." Entre no Nether, Herói (descoberta "The Evil Realm")!
+      Para o ChromatiCraft, ela só conta depois de você ter chegado à rocha matriz. Boa viagem!
     tasks:
       - visit: {dim: -1, name: "Nether"}
     rewards:
@@ -2075,7 +2034,7 @@ quests:
     icon: minecraft:end_stone
     desc: |
       "Nada poderia ser mais estranho que aquele mundo de lava e águas-vivas voadoras..." Pode.
-      Visite o Fim (descoberta "The Alien Realm") — mais um requisito do outro mundo.
+      Visite o Fim, Herói (descoberta "The Alien Realm"). É mais um requisito do outro mundo. Boa viagem!
     tasks:
       - visit: {dim: 1, name: "O Fim"}
     rewards:
@@ -2088,9 +2047,8 @@ quests:
     deps: [fim_cc]
     icon: minecraft:dragon_egg
     desc: |
-      Um dragão gigante cuja destruição dá recompensa "física e conceitual". Derrote o §eDragão
-      do Ender§r (descoberta "Aerial Predator"). O Léxico também lembra dos cristais do Fim: o
-      §eEnder Crystal§r do ChromatiCraft permite pegá-los sem explodir.
+      Um dragão gigante cuja destruição dá recompensa "física e conceitual"! Derrote o §eDragão do Ender§r, Herói (descoberta "Aerial Predator").
+      O Léxico também lembra dos cristais do Fim: o §eEnder Crystal§r do ChromatiCraft permite pegá-los sem explodir. Boa sorte na batalha!
     tasks:
       - kill: "EnderDragon x1"
     rewards:
@@ -2103,8 +2061,8 @@ quests:
     deps: [nether_cc]
     icon: minecraft:nether_star
     desc: |
-      "Quatro areias das almas, três crânios de wither..." O §eWither§r solta uma estrela
-      misteriosa e valiosa — que, por acaso, é o centro da Auroral Battery do ElectriCraft.
+      "Quatro areias das almas, três crânios de wither..." Você conhece a receita, Herói! O §eWither§r solta uma estrela misteriosa e valiosa que, por acaso, é o centro da Auroral Battery do ElectriCraft.
+      Prepare-se bem para a luta e derrote o chefe. Missão opcional, mas a recompensa é das boas!
     tasks:
       - kill: "WitherBoss x1"
     rewards:
@@ -2117,8 +2075,8 @@ quests:
     deps: [ruinas]
     icon: minecraft:mob_spawner
     desc: |
-      "O que é essa caixa em chamas?" Encontre um spawner e destrua-o (descobertas "Endless Mobs"
-      e "Stopping the Torrent"), o que libera o Spawner Interference Crystal e outros truques.
+      "O que é essa caixa em chamas?" Encontre um spawner e destrua-o (descobertas "Endless Mobs" e "Stopping the Torrent").
+      Isso libera o Spawner Interference Crystal e outros truques, Herói. Boa caçada!
     tasks:
       - check
     rewards:
@@ -2155,8 +2113,8 @@ quests:
     deps: [pronto_para_proxima]
     icon: ChromatiCraft:chromaticraft_block_portal
     desc: |
-      Falar de um mundo especial não adianta sem um jeito de chegar lá. O §ePortal§r é uma
-      receita de Pylon com a sua estrutura própria (Portal Beacon, no Léxico). Monte-o.
+      Falar de um mundo especial não adianta sem um jeito de chegar lá, Herói! O §ePortal§r é uma receita de Pylon com a sua estrutura própria (Portal Beacon, no Léxico).
+      Monte-o e abra caminho para Proxima. Que emoção!
     tasks:
       - get: ChromatiCraft:chromaticraft_block_portal
     rewards:
@@ -2190,9 +2148,8 @@ quests:
     deps: [proxima]
     icon: ChromatiCraft:chromaticraft_block_portal
     desc: |
-      No começo o portal está "fora de fase", como um rádio mal sintonizado: áreas inteiras
-      ficam inacessíveis e várias formações não podem ser usadas. O Léxico (página "Portal
-      Tuning") explica como afinar essa sintonia para interagir de verdade com o mundo.
+      No começo o portal está "fora de fase", como um rádio mal sintonizado: áreas inteiras ficam inacessíveis e várias formações não podem ser usadas.
+      O Léxico (página "Portal Tuning") explica como afinar essa sintonia para interagir de verdade com o mundo. Leia com calma, Herói, e confirme depois!
     tasks:
       - check
     rewards:
@@ -2204,7 +2161,8 @@ quests:
     deps: [proxima]
     icon: ChromatiCraft:chromaticraft_block_crystal:15
     desc: |
-      Explore os biomas de Proxima. Comece pelas §eCrystal Plains§r e pelas §eCrystal Forests§r.
+      Hora de explorar os biomas de Proxima, Herói! Comece pelas §eCrystal Plains§r e pelas §eCrystal Forests§r.
+      Visite os dois e aproveite o passeio. Leve suprimentos e olhos curiosos!
     tasks:
       - visit: {dim: 60, biome: 102, name: "Crystal Plains"}
       - visit: {dim: 60, biome: 104, name: "Crystal Forest"}
@@ -2218,8 +2176,8 @@ quests:
     deps: [planicies_cristal]
     icon: ChromatiCraft:chromaticraft_item_dimgen:7
     desc: |
-      Mais longe: os §eAura Oceans§r e as §eCrystal Mountains§r. Cada bioma tem materiais que só
-      existem aqui.
+      Mais longe, Herói: os §eAura Oceans§r e as §eCrystal Mountains§r. Cada bioma tem materiais que só existem aqui.
+      Visite os dois e fique de olho no que encontrar pelo caminho. Boa exploração!
     tasks:
       - visit: {dim: 60, biome: 106, name: "Aura Ocean"}
       - visit: {dim: 60, biome: 105, name: "Crystal Mountains"}
@@ -2233,7 +2191,8 @@ quests:
     deps: [oceano_aura]
     icon: ChromatiCraft:chromaticraft_item_dimgen:1
     desc: |
-      Ilhas flutuando no céu de Proxima. Leve uma forma de voar — ou as Floatstone Boots.
+      Ilhas flutuando no céu de Proxima! Leve uma forma de voar, ou as Floatstone Boots.
+      Visite as §eLumen Skylands§r, Herói. Missão opcional, mas a vista compensa!
     tasks:
       - visit: {dim: 60, biome: 101, name: "Lumen Skylands"}
     rewards:
@@ -2245,8 +2204,8 @@ quests:
     deps: [planicies_cristal]
     icon: ChromatiCraft:chromaticraft_item_dimgen:1
     desc: |
-      Recursos de Proxima: §eFloatstone§r (pedra que flutua), §eAqua Dust§r e §eRestorative Gel§r
-      (das fontes de Lifewater). Junte os três.
+      Recursos de Proxima, Herói: §eFloatstone§r (pedra que flutua), §eAqua Dust§r e §eRestorative Gel§r (das fontes de Lifewater).
+      Junte os três. Se travar, confira onde cada um aparece no NEI (R/U)!
     tasks:
       - get: [ChromatiCraft:chromaticraft_item_dimgen:1 x4, ChromatiCraft:chromaticraft_item_dimgen:2 x4, ChromatiCraft:chromaticraft_item_dimgen:3 x4]
     rewards:
@@ -2259,8 +2218,8 @@ quests:
     deps: [materiais_proxima]
     icon: ChromatiCraft:chromaticraft_item_dimgen:5
     desc: |
-      Mais raridades: §eGeode Gem§r, §eAura Glass Shard§r e §eOrtho Crystals§r. Qualquer uma delas
-      já prova que você explorou a fundo.
+      Mais raridades de Proxima: §eGeode Gem§r, §eAura Glass Shard§r e §eOrtho Crystals§r.
+      Qualquer uma delas já prova que você explorou a fundo, Herói. Garimpe à vontade!
     tasks:
       - one_of: [ChromatiCraft:chromaticraft_item_dimgen:5 x4, ChromatiCraft:chromaticraft_item_dimgen:8 x4, ChromatiCraft:chromaticraft_item_dimgen:4 x4]
     rewards:
@@ -2274,7 +2233,7 @@ quests:
     icon: ChromatiCraft:chromaticraft_item_dimgen:9
     desc: |
       Das §eEnergy Fissures§r sai §eLumen Essence§r; do §eMiasma§r, a §eMiasmatic Essence§r.
-      Ambos entram em receitas de endgame. Qualquer um.
+      Ambos entram em receitas de endgame, Herói. Pegue qualquer um dos dois. Missão opcional, mas valiosa!
     tasks:
       - one_of: [ChromatiCraft:chromaticraft_item_dimgen:9 x4, ChromatiCraft:chromaticraft_item_dimgen x4]
     rewards:
@@ -2286,8 +2245,8 @@ quests:
     deps: [proxima]
     icon: ChromatiCraft:chromaticraft_item_tiered:26
     desc: |
-      Um pó com propriedade ressonante, quase uma forma tangível do mundo onde foi achado:
-      §eProximal Essence§r. O Léxico só diz "imagina-se que significado isso teria..."
+      Um pó com propriedade ressonante, quase uma forma tangível do mundo onde foi achado: a §eProximal Essence§r.
+      O Léxico só diz "imagina-se que significado isso teria..." Junte 4, Herói, e tire suas conclusões!
     tasks:
       - get: ChromatiCraft:chromaticraft_item_tiered:26 x4
     rewards:
@@ -2320,9 +2279,8 @@ quests:
     banner: "Dimensional Cores"
     subtitle: "Dezesseis orbes"
     desc: |
-      Cada estrutura de Proxima guarda um §eDimensional Core§r de uma cor. Junte §eos dezesseis§r
-      (descoberta "Dimensional Cores"). Como o mundo é volátil, cada visita traz estruturas
-      novas — é uma jornada, não uma tarde.
+      Cada estrutura de Proxima guarda um §eDimensional Core§r de uma cor. Junte §eos dezesseis§r, Herói (descoberta "Dimensional Cores")!
+      Como o mundo é volátil, cada visita traz estruturas novas. É uma jornada, não uma tarde. Marco épico, bora!
     tasks:
       - get: ChromatiCraft:chromaticraft_item_placer:43 x16
     rewards:
@@ -2336,9 +2294,8 @@ quests:
     deps: [proxima]
     icon: minecraft:compass
     desc: |
-      O Léxico brinca com as "Far Lands": Proxima também tem §eregiões externas§r, bem longe do
-      centro, com terreno alto e quebrado (descoberta "Outer Regions"). É requisito do Mineral
-      Extractor.
+      O Léxico brinca com as "Far Lands": Proxima também tem §eregiões externas§r, bem longe do centro, com terreno alto e quebrado (descoberta "Outer Regions").
+      É requisito do Mineral Extractor. Aventure-se, Herói!
     tasks:
       - check
     rewards:
@@ -2350,8 +2307,8 @@ quests:
     deps: [materiais_proxima]
     icon: ChromatiCraft:chromaticraft_item_floatboots
     desc: |
-      Botas de Floatstone, receita de Pylon. Flutuar sobre os oceanos de aura nunca foi tão
-      elegante.
+      Botas de Floatstone, receita de Pylon! Flutuar sobre os oceanos de aura nunca foi tão elegante.
+      Confira a receita no NEI (R/U) e faça as suas, Herói. Missão opcional, mas é puro estilo!
     tasks:
       - get: ChromatiCraft:chromaticraft_item_floatboots
     rewards:
@@ -2363,8 +2320,8 @@ quests:
     deps: [proxima]
     icon: ChromatiCraft:chromaticraft_item_vacuumgun
     desc: |
-      Duas receitas que pedem ter visitado Proxima: a §eVacuum Gun§r e o §ePersistence Crystal§r
-      (um carregador de chunks). Qualquer uma.
+      Duas receitas que pedem ter visitado Proxima, Herói: a §eVacuum Gun§r e o §ePersistence Crystal§r (um carregador de chunks).
+      Qualquer uma serve. Missão opcional, mas ambas ajudam muito!
     tasks:
       - one_of: [ChromatiCraft:chromaticraft_item_vacuumgun, ChromatiCraft:chromaticraft_block_chunkloader]
     rewards:
@@ -2379,9 +2336,8 @@ quests:
     deps: [sala_fundicao, ruinas]
     icon: ChromatiCraft:chromaticraft_item_structurefinder
     desc: |
-      Uma ferramenta de runa que §erastreia estruturas§r geradas pela aura delas (pede as
-      runas e uma estrutura já encontrada). Ótima para caçar os Shrines, Burrows e
-      Outposts que o outro mundo exige.
+      Uma ferramenta de runa que §erastreia estruturas§r geradas pela aura delas (pede as runas e uma estrutura já encontrada).
+      Ótima para caçar os Shrines, Burrows e Outposts que o outro mundo exige. Faça uma, Herói!
     tasks:
       - get: ChromatiCraft:chromaticraft_item_structurefinder:*
     rewards:
@@ -2394,8 +2350,8 @@ quests:
     deps: [torre_dados, artefato]
     icon: ChromatiCraft:chromaticraft_item_structmap
     desc: |
-      Feito na piscina de chroma com um Memory Crystal e artefatos, este mapa mostra onde
-      os §eUnknown Artefacts§r costumam aparecer.
+      Feito na piscina de chroma com um Memory Crystal e artefatos, este mapa mostra onde os §eUnknown Artefacts§r costumam aparecer.
+      Confira a receita no NEI (R/U), Herói. Missão opcional, mas poupa muita caminhada!
     tasks:
       - get: ChromatiCraft:chromaticraft_item_structmap
     rewards:
@@ -2407,8 +2363,8 @@ quests:
     deps: [caverna_funda, sala_fundicao]
     icon: ChromatiCraft:chromaticraft_item_warpcapsule
     desc: |
-      Marca um ponto e te leva de volta a ele. Para quem desce fundo nas cavernas e não
-      quer subir tudo de novo (pede "Lower Layers").
+      Marca um ponto e te leva de volta a ele! Para quem desce fundo nas cavernas e não quer subir tudo de novo (pede "Lower Layers").
+      Faça o seu tablete, Herói. Missão opcional, mas as costas agradecem!
     tasks:
       - get: ChromatiCraft:chromaticraft_item_warpcapsule
     rewards:
@@ -2420,8 +2376,8 @@ quests:
     deps: [caverna_funda, ruinas]
     icon: ChromatiCraft:chromaticraft_item_cavepather
     desc: |
-      Receita básica que calcula o caminho de volta à superfície a partir do fundo de uma
-      caverna. Simples e salva vidas.
+      Uma receita básica que calcula o caminho de volta à superfície a partir do fundo de uma caverna. Simples e salva vidas!
+      Faça o seu, Herói, e nunca mais se perca. Missão opcional.
     tasks:
       - get: ChromatiCraft:chromaticraft_item_cavepather
     rewards:
@@ -2433,7 +2389,8 @@ quests:
     deps: [caverna_funda, ruinas]
     icon: ChromatiCraft:chromaticraft_item_lightgun
     desc: |
-      Dispara pontos de luz nas paredes da caverna. Tochas a distância, sem tochas.
+      Dispara pontos de luz nas paredes da caverna. Tochas a distância, sem tochas!
+      Confira a receita no NEI (R/U) e faça a sua Illumination Gun, Herói. Missão opcional.
     tasks:
       - get: ChromatiCraft:chromaticraft_item_lightgun
     rewards:
@@ -2445,8 +2402,8 @@ quests:
     deps: [ruinas]
     icon: ChromatiCraft:chromaticraft_item_probe
     desc: |
-      Cristais de sondagem (receita básica) que examinam blocos e estruturas do
-      ChromatiCraft. Úteis nos quebra-cabeças.
+      Cristais de sondagem (receita básica) que examinam blocos e estruturas do ChromatiCraft.
+      São úteis nos quebra-cabeças, Herói. Faça alguns! Missão opcional.
     tasks:
       - get: ChromatiCraft:chromaticraft_item_probe:*
     rewards:
@@ -2458,8 +2415,8 @@ quests:
     deps: [artefato]
     icon: ChromatiCraft:chromaticraft_item_shieldedcell
     desc: |
-      Lembra que o Unknown Artefact é perigoso de carregar? Esta célula blindada (pede a
-      descoberta "Mysterious Relics") guarda coisas corrosivas com segurança.
+      Lembra que o Unknown Artefact é perigoso de carregar? Esta célula blindada (pede a descoberta "Mysterious Relics") guarda coisas corrosivas com segurança.
+      Faça uma, Herói. Missão opcional, mas seguro morreu de velho!
     tasks:
       - get: ChromatiCraft:chromaticraft_item_shieldedcell
     rewards:
@@ -2471,8 +2428,8 @@ quests:
     deps: [spawner_cc, sala_fundicao]
     icon: ChromatiCraft:chromaticraft_item_spawnerbypass
     desc: |
-      Um cristal que interfere em spawners próximos — atravesse salas de spawner sem
-      enxames. Pede ter encontrado um spawner.
+      Um cristal que interfere em spawners próximos, para atravessar salas de spawner sem enxames! Pede ter encontrado um spawner.
+      Faça o seu, Herói. Missão opcional, mas poupa muita dor de cabeça!
     tasks:
       - get: ChromatiCraft:chromaticraft_item_spawnerbypass:*
     rewards:
@@ -2484,8 +2441,8 @@ quests:
     deps: [teto_nether, templo_fundicao]
     icon: ChromatiCraft:chromaticraft_item_endereye
     desc: |
-      Os olhos do ender comuns têm alcance curto e estouram no ar. Esta versão aprimorada
-      é confiável e muito mais poderosa para achar fortalezas. (Pede "A second layer".)
+      Os olhos do ender comuns têm alcance curto e estouram no ar. Esta versão aprimorada é confiável e muito mais poderosa para achar fortalezas. (Pede "A second layer".)
+      Faça um, Herói. Missão opcional, mas ajuda demais na viagem!
     tasks:
       - get: ChromatiCraft:chromaticraft_item_endereye
     rewards:
@@ -2497,8 +2454,8 @@ quests:
     deps: [fim_cc, sala_fundicao]
     icon: ChromatiCraft:chromaticraft_item_enderbucket
     desc: |
-      Um balde ligado a um tanque distante: busque e despeje líquidos da sua base de
-      qualquer lugar. Pede o Fim.
+      Um balde ligado a um tanque distante! Busque e despeje líquidos da sua base de qualquer lugar. Pede o Fim.
+      Confira a receita no NEI (R/U), Herói. Missão opcional, mas é conforto puro!
     tasks:
       - get: ChromatiCraft:chromaticraft_item_enderbucket:*
     rewards:
@@ -2510,7 +2467,8 @@ quests:
     deps: [templo_fundicao]
     icon: ChromatiCraft:chromaticraft_item_widecollector
     desc: |
-      Puxa itens soltos em volta de você. Receita multibloco simples e conforto garantido.
+      Puxa itens soltos em volta de você! É uma receita multibloco simples e conforto garantido.
+      Faça o seu Absorption Ring, Herói, e deixe o loot vir até você. Missão opcional.
     tasks:
       - get: ChromatiCraft:chromaticraft_item_widecollector
     rewards:
@@ -2522,8 +2480,8 @@ quests:
     deps: [nether_cc, sala_fundicao]
     icon: ChromatiCraft:chromaticraft_item_netherkey
     desc: |
-      O cristal que leva você através do teto de rocha matriz do Nether (pede o Nether e
-      uma estrutura encontrada). É o caminho mais limpo para "A second layer".
+      O cristal que leva você através do teto de rocha matriz do Nether (pede o Nether e uma estrutura encontrada)!
+      É o caminho mais limpo para "A second layer". Faça o seu, Herói!
     tasks:
       - get: ChromatiCraft:chromaticraft_item_netherkey:*
     rewards:
@@ -2536,8 +2494,8 @@ quests:
     deps: [templo_fundicao]
     icon: ChromatiCraft:chromaticraft_item_recipecache
     desc: |
-      Guarda receitas de fundição para consultar e automatizar. Indispensável quando a
-      lista de runas fica grande.
+      Guarda receitas de fundição para consultar e automatizar. Indispensável quando a lista de runas fica grande, Herói!
+      Faça o seu Recipe Tablet. Missão opcional, mas organização é tudo!
     tasks:
       - get: ChromatiCraft:chromaticraft_item_recipecache
     rewards:
@@ -2549,8 +2507,8 @@ quests:
     deps: [luma, fim_cc, templo_fundicao]
     icon: ChromatiCraft:chromaticraft_item_etherpendant
     desc: |
-      Um pingente de Luma Etérea (pede a Luma e o Fim). Leve um pouco do "líquido de
-      energia e espaço" com você.
+      Um pingente de Luma Etérea (pede a Luma e o Fim). Leve um pouco do "líquido de energia e espaço" com você, Herói!
+      Confira a receita no NEI (R/U). Missão opcional.
     tasks:
       - get: ChromatiCraft:chromaticraft_item_etherpendant
     rewards:
@@ -2562,8 +2520,8 @@ quests:
     deps: [repetidor_cristal]
     icon: ChromatiCraft:chromaticraft_item_bottleneck
     desc: |
-      Mostram os §egargalos§r da sua rede de repetidores. Quando a energia não chega, use
-      isto antes de reconstruir tudo.
+      Mostram os §egargalos§r da sua rede de repetidores. Quando a energia não chega, Herói, use isto antes de reconstruir tudo!
+      Faça os cristais de visualização e ache o problema. Missão opcional.
     tasks:
       - get: ChromatiCraft:chromaticraft_item_bottleneck
     rewards:
@@ -2575,8 +2533,8 @@ quests:
     deps: [templo_fundicao, torreta_lumen]
     icon: ChromatiCraft:chromaticraft_item_chaingun
     desc: |
-      Para quem caça mobs (descoberta "Monster Slayer"): §eChain Gun§r, §eSplash Gun§r ou
-      §eBezier Crystals§r. Qualquer uma.
+      Para quem caça mobs (descoberta "Monster Slayer"), Herói: §eChain Gun§r, §eSplash Gun§r ou §eBezier Crystals§r.
+      Faça qualquer uma. Missão opcional, mas os monstros que se cuidem!
     tasks:
       - one_of: [ChromatiCraft:chromaticraft_item_chaingun, ChromatiCraft:chromaticraft_item_splashgun, ChromatiCraft:chromaticraft_item_splineattack]
     rewards:
@@ -2588,8 +2546,8 @@ quests:
     deps: [templo_fundicao]
     icon: ChromatiCraft:chromaticraft_item_growth
     desc: |
-      A §eCapture Star§r prende criaturas; a §eGrowth Star§r acelera plantas (pede a
-      descoberta "Crop Collection"). Qualquer uma.
+      A §eCapture Star§r prende criaturas e a §eGrowth Star§r acelera plantas (pede a descoberta "Crop Collection").
+      Qualquer uma serve, Herói. Missão opcional, mas a natureza agradece!
     tasks:
       - one_of: [ChromatiCraft:chromaticraft_item_capture, ChromatiCraft:chromaticraft_item_growth]
     rewards:
@@ -2601,7 +2559,8 @@ quests:
     deps: [templo_fundicao]
     icon: ChromatiCraft:chromaticraft_item_aurapouch
     desc: |
-      Uma bolsa extra, energizada. Inventário nunca é demais.
+      Uma bolsa extra, energizada! Inventário nunca é demais, Herói.
+      Confira a receita no NEI (R/U) e faça a sua Aura Pouch. Missão opcional.
     tasks:
       - get: ChromatiCraft:chromaticraft_item_aurapouch
     rewards:
@@ -2613,8 +2572,8 @@ quests:
     deps: [templo_fundicao, energia_interna]
     icon: ChromatiCraft:chromaticraft_item_crystalcell
     desc: |
-      Uma célula de energia portátil para as ferramentas de cristal (pede "Energy
-      Internalization").
+      Uma célula de energia portátil para as ferramentas de cristal (pede "Energy Internalization").
+      Faça a sua Crystal Cell, Herói. Missão opcional, mas energia na mão é outra história!
     tasks:
       - get: ChromatiCraft:chromaticraft_item_crystalcell
     rewards:
@@ -2626,8 +2585,8 @@ quests:
     deps: [fim_cc, ligacao_pylon]
     icon: ChromatiCraft:chromaticraft_item_endercrystal
     desc: |
-      Você precisava dos cristais pulsantes do Fim, mas mexer neles explodia na sua cara.
-      Este item de Pylon permite pegá-los e guardá-los com delicadeza.
+      Você precisava dos cristais pulsantes do Fim, mas mexer neles explodia na sua cara, né? Este item de Pylon permite pegá-los e guardá-los com delicadeza.
+      Faça o seu Ender Crystal, Herói. Missão opcional.
     tasks:
       - get: ChromatiCraft:chromaticraft_item_endercrystal:*
     rewards:
@@ -2639,8 +2598,8 @@ quests:
     deps: [ligacao_pylon, arvore_arco_iris, liga_chroma]
     icon: ChromatiCraft:chromaticraft_item_purify
     desc: |
-      Uma gema que purifica a aura (contra o Taint e o Warp do Thaumcraft). Pede a Rainbow
-      Tree e as ligas.
+      Uma gema que purifica a aura (contra o Taint e o Warp do Thaumcraft). Pede a Rainbow Tree e as ligas.
+      Faça a sua, Herói. Missão opcional, mas ótima para manter a base limpa!
     tasks:
       - get: ChromatiCraft:chromaticraft_item_purify:*
     rewards:
@@ -2652,8 +2611,8 @@ quests:
     deps: [monumento]
     icon: ChromatiCraft:chromaticraft_item_efficiency
     desc: |
-      Receita de maestria: reduz a atenuação da energia lúmen. A recompensa de quem
-      restaurou o Monumento.
+      Receita de maestria: reduz a atenuação da energia lúmen. É a recompensa de quem restaurou o Monumento.
+      Faça a sua Anti-Attenuation Gem, Herói. Missão opcional, mas você mereceu!
     tasks:
       - get: ChromatiCraft:chromaticraft_item_efficiency
     rewards:
@@ -2665,8 +2624,8 @@ quests:
     deps: [ruinas]
     icon: ChromatiCraft:chromaticraft_item_key
     desc: |
-      A §eEthereal Barrier§r é uma porta de energia; a §eEthereal Key§r a abre. Uma chave
-      pode ser copiada na bancada. Segurança com estilo.
+      A §eEthereal Barrier§r é uma porta de energia; a §eEthereal Key§r a abre. Uma chave pode ser copiada na bancada.
+      Faça as duas, Herói. Segurança com estilo! Missão opcional.
     tasks:
       - get: [ChromatiCraft:chromaticraft_item_key, ChromatiCraft:chromaticraft_block_door]
     rewards:
@@ -2678,9 +2637,8 @@ quests:
     deps: [ruinas]
     icon: ChromatiCraft:chromaticraft_item_placer:53
     desc: |
-      Se você ganhasse uma esmeralda por cada creeper na porta... A §eLumen Turret§r
-      (receita básica, pede a descoberta "Monster Slayer" — mate alguns mobs hostis) atira
-      energia nos hostis. Runas embaixo dela mudam o comportamento.
+      Se você ganhasse uma esmeralda por cada creeper na porta... A §eLumen Turret§r (receita básica, pede a descoberta "Monster Slayer", então mate alguns mobs hostis) atira energia nos hostis.
+      Runas embaixo dela mudam o comportamento. Faça uma, Herói!
     tasks:
       - get: ChromatiCraft:chromaticraft_item_placer:53
     rewards:
@@ -2693,8 +2651,8 @@ quests:
     deps: [ruinas]
     icon: ChromatiCraft:chromaticraft_item_placer:70
     desc: |
-      Um "fio de armadilha" bonito e configurável (só hostis, só drops, todos os vivos;
-      por padrão só o dono). Detector sem gambiarra de redstone.
+      Um "fio de armadilha" bonito e configurável (só hostis, só drops, todos os vivos; por padrão só o dono).
+      É um detector sem gambiarra de redstone, Herói. Faça o seu Lumen Wire. Missão opcional.
     tasks:
       - get: ChromatiCraft:chromaticraft_item_placer:70
     rewards:
@@ -2706,8 +2664,8 @@ quests:
     deps: [ruinas]
     icon: ChromatiCraft:chromaticraft_item_placer:50
     desc: |
-      Música feita de cristal (aceita até arquivos MIDI pequenos, pela config). Porque
-      toda base mágica merece trilha sonora.
+      Música feita de cristal! A §eCrystal Orchestra§r aceita até arquivos MIDI pequenos, pela config.
+      Porque toda base mágica merece trilha sonora, Herói. Confira a receita no NEI (R/U) e comece o espetáculo. Missão opcional!
     tasks:
       - get: ChromatiCraft:chromaticraft_item_placer:50
     rewards:
@@ -2719,7 +2677,8 @@ quests:
     deps: [ruinas]
     icon: ChromatiCraft:chromaticraft_item_placer:103
     desc: |
-      Um painel que lança você para cima (força 1.0 na config). Elevador expresso.
+      Quer subir rapidinho? Este painel lança você para cima (força 1.0 na config). É um elevador expresso!
+      Confira a receita do §eVertical Propulsion Panel§r no NEI (R/U), Herói. Missão opcional, mas divertida.
     tasks:
       - get: ChromatiCraft:chromaticraft_item_placer:103
     rewards:
@@ -2731,8 +2690,8 @@ quests:
     deps: [ruinas]
     icon: ChromatiCraft:chromaticraft_item_placer:104
     desc: |
-      Guarda muitas ferramentas num bloco só. Para a coleção de picaretas que todo Herói
-      acumula.
+      Guarda muitas ferramentas num bloco só! Perfeita para a coleção de picaretas que todo Herói acumula.
+      Faça a sua §eTool Compression Crate§r e libere espaço no inventário. Missão opcional!
     tasks:
       - get: ChromatiCraft:chromaticraft_item_placer:104
     rewards:
@@ -2744,8 +2703,8 @@ quests:
     deps: [ruinas]
     icon: ChromatiCraft:chromaticraft_item_placer:94
     desc: |
-      Em servidor isto é ouro: o pedestal §eliga o progresso§r de jogadores no
-      ChromatiCraft, para que amigos compartilhem descobertas. Receita básica.
+      Em servidor isto é ouro, Herói! O pedestal §eliga o progresso§r de jogadores no ChromatiCraft, para que amigos compartilhem descobertas.
+      É uma receita básica. Faça o seu e avance junto com a turma!
     tasks:
       - get: ChromatiCraft:chromaticraft_item_placer:94
     rewards:
@@ -2758,8 +2717,8 @@ quests:
     deps: [templo_fundicao]
     icon: ChromatiCraft:chromaticraft_item_placer:18
     desc: |
-      O emissor projeta um feixe e os relés da cerca redirecionam, desenhando um perímetro
-      (limite de 64 segmentos na config). Agachado + Manipulador define a saída.
+      O emissor projeta um feixe e os relés da cerca redirecionam, desenhando um perímetro (limite de 64 segmentos na config). Agachado + Manipulador define a saída.
+      Faça o emissor e 4 blocos de cerca, Herói. Missão opcional, mas cerca bonita e inteligente!
     tasks:
       - get: [ChromatiCraft:chromaticraft_item_placer:18, ChromatiCraft:chromaticraft_block_fence x4]
     rewards:
@@ -2771,8 +2730,8 @@ quests:
     deps: [templo_fundicao]
     icon: ChromatiCraft:chromaticraft_item_placer:27
     desc: |
-      Faz itens no inventário dele "rodarem" como se estivessem com um jogador. Útil para
-      itens que só funcionam carregados.
+      Faz itens no inventário dele "rodarem" como se estivessem com um jogador. Útil para itens que só funcionam carregados!
+      Confira a receita do §eInventory Simulator§r no NEI (R/U), Herói. Missão opcional.
     tasks:
       - get: ChromatiCraft:chromaticraft_item_placer:27
     rewards:
@@ -2785,6 +2744,7 @@ quests:
     icon: ChromatiCraft:chromaticraft_item_placer:56
     desc: |
       Uma torre que esconde a sua base dos mobs (pede "Monster Slayer").
+      Faça o §eCloaking Beacon§r, Herói, e durma tranquilo. Missão opcional!
     tasks:
       - get: ChromatiCraft:chromaticraft_item_placer:56
     rewards:
@@ -2796,8 +2756,8 @@ quests:
     deps: [templo_fundicao]
     icon: ChromatiCraft:chromaticraft_item_placer:86
     desc: |
-      Um roteador de itens: o nó central e os Extraction/Insertion Nodes formam uma rede
-      de logística mágica.
+      Um roteador de itens, Herói! O nó central e os Extraction/Insertion Nodes formam uma rede de logística mágica.
+      Faça o nó central e 2 nós de extração/inserção. Missão opcional, mas a automação agradece!
     tasks:
       - get: [ChromatiCraft:chromaticraft_item_placer:86, ChromatiCraft:chromaticraft_block_routernode:* x2]
     rewards:
@@ -2809,8 +2769,8 @@ quests:
     deps: [templo_fundicao]
     icon: ChromatiCraft:chromaticraft_item_placer:99
     desc: |
-      Automatize a mesa: o §eInsertion Focus§r e os relés colocam os itens nos Suportes de
-      Fundição por você.
+      Automatize a mesa, Herói! O §eInsertion Focus§r e os relés colocam os itens nos Suportes de Fundição por você.
+      Confira a receita no NEI (R/U). Missão opcional, mas poupa muito clique!
     tasks:
       - get: ChromatiCraft:chromaticraft_item_placer:99
     rewards:
@@ -2822,8 +2782,8 @@ quests:
     deps: [sala_fundicao, energia_interna]
     icon: ChromatiCraft:chromaticraft_item_placer:48
     desc: |
-      Distribuição sem cabos: o §eRedstone Flux Radiator§r (RF), o §eFluid Radiator§r e o
-      §eFluid Link Anchor§r. Qualquer um.
+      Distribuição sem cabos, Herói: o §eRedstone Flux Radiator§r (RF), o §eFluid Radiator§r e o §eFluid Link Anchor§r.
+      Qualquer um serve. Missão opcional, mas é uma delícia ficar sem fio!
     tasks:
       - one_of: [ChromatiCraft:chromaticraft_item_placer:48, ChromatiCraft:chromaticraft_item_placer:75, ChromatiCraft:chromaticraft_item_placer:79]
     rewards:
@@ -2835,8 +2795,8 @@ quests:
     deps: [sala_fundicao, coletor_chroma, energia_interna]
     icon: ChromatiCraft:chromaticraft_item_placer:69
     desc: |
-      Desmancha livros e itens encantados de volta em chroma — reciclagem de encantamentos
-      ruins.
+      Desmancha livros e itens encantados de volta em chroma, uma reciclagem de encantamentos ruins!
+      Faça o §eEnchantment Decomposer§r, Herói. Missão opcional, mas nada se perde.
     tasks:
       - get: ChromatiCraft:chromaticraft_item_placer:69
     rewards:
@@ -2848,8 +2808,8 @@ quests:
     deps: [suporte_infusao]
     icon: ChromatiCraft:chromaticraft_item_placer:101
     desc: |
-      A infusão aplicada a §evocê§r: a estrutura do Infusion Fountain (pede "Resourceful
-      Experience"). Confira no Léxico o que ela infunde.
+      A infusão aplicada a §evocê§r, Herói! É a estrutura do Infusion Fountain (pede "Resourceful Experience").
+      Confira no Léxico o que ela infunde e monte a sua. Que poder!
     tasks:
       - get: ChromatiCraft:chromaticraft_item_placer:101
     rewards:
@@ -2863,6 +2823,7 @@ quests:
     icon: ChromatiCraft:chromaticraft_item_placer:41
     desc: |
       Colheita automática movida a energia lúmen (pede "Crop Collection").
+      Faça o §eElemental Harvester§r, Herói. Missão opcional, mas a fazenda trabalha sozinha!
     tasks:
       - get: ChromatiCraft:chromaticraft_item_placer:41
     rewards:
@@ -2874,8 +2835,8 @@ quests:
     deps: [ligacao_pylon]
     icon: ChromatiCraft:chromaticraft_item_placer:44
     desc: |
-      Automação completa da Mesa de Fundição: o §eCasting Delegate§r faz receitas sem você
-      estar lá. Receita de endgame.
+      Automação completa da Mesa de Fundição, Herói! O §eCasting Delegate§r faz receitas sem você estar lá.
+      É receita de endgame. Missão opcional, mas é sonho de quem odeia ficar parado!
     tasks:
       - get: ChromatiCraft:chromaticraft_item_placer:44
     rewards:
@@ -2887,8 +2848,8 @@ quests:
     deps: [ligacao_pylon]
     icon: ChromatiCraft:chromaticraft_item_placer:84
     desc: |
-      Defesa de endgame movida a Avolita, um dos minérios raros que você só enxerga com
-      muito conhecimento.
+      Defesa de endgame movida a Avolita, um dos minérios raros que você só enxerga com muito conhecimento.
+      Confira a receita do §eAvolite Defence Beam§r no NEI (R/U), Herói. Missão opcional.
     tasks:
       - get: ChromatiCraft:chromaticraft_item_placer:84
     rewards:
@@ -2900,8 +2861,8 @@ quests:
     deps: [ligacao_pylon]
     icon: ChromatiCraft:chromaticraft_item_placer:97
     desc: |
-      Um obelisco que purifica e otimiza a sua rede de energia lúmen (estrutura Lumen
-      Purification Obelisk).
+      Um obelisco que purifica e otimiza a sua rede de energia lúmen (estrutura Lumen Purification Obelisk).
+      Confira a estrutura no Léxico e monte o seu §eLumen Clarifier§r, Herói. Missão opcional!
     tasks:
       - get: ChromatiCraft:chromaticraft_item_placer:97
     rewards:
@@ -2913,8 +2874,8 @@ quests:
     deps: [penhascos_luminosos, usar_energia]
     icon: ChromatiCraft:chromaticraft_item_placer:90
     desc: |
-      Os pontos de luz que piscam sobre os mares dos Luminous Cliffs são §eLumen Nodes§r —
-      e você pode fazer os seus para atravessar os mares com a rede de energia.
+      Os pontos de luz que piscam sobre os mares dos Luminous Cliffs são §eLumen Nodes§r, e você pode fazer os seus para atravessar os mares com a rede de energia!
+      Confira a receita no NEI (R/U), Herói. Missão opcional.
     tasks:
       - get: ChromatiCraft:chromaticraft_item_placer:90
     rewards:
@@ -2926,9 +2887,8 @@ quests:
     deps: [sala_fundicao, energia_interna]
     icon: ChromatiCraft:chromaticraft_item_placer:61
     desc: |
-      Pontes com o Thaumcraft (pedem a descoberta "Energy Inlet" — achar um nó de aura):
-      §eEssentia Relay§r, §eAspect Jar§r e §eAspect Former§r. A config usa a integração
-      "mais difícil" com o Thaumcraft. Qualquer uma.
+      Pontes com o Thaumcraft, Herói (pedem a descoberta "Energy Inlet", ou seja, achar um nó de aura): §eEssentia Relay§r, §eAspect Jar§r e §eAspect Former§r.
+      A config usa a integração "mais difícil" com o Thaumcraft. Faça qualquer uma!
     tasks:
       - one_of: [ChromatiCraft:chromaticraft_item_placer:61, ChromatiCraft:chromaticraft_item_placer:32, ChromatiCraft:chromaticraft_item_placer:33]
     rewards:
@@ -2940,8 +2900,8 @@ quests:
     deps: [colmeia_cristal, sala_fundicao]
     icon: ChromatiCraft:chromaticraft_item_beeframe
     desc: |
-      Para apicultores: a §eLifecycle Acceleration Frame§r, o §eGenetic Storage
-      Container§r e o §eLumen Alveary Booster§r. Qualquer um.
+      Para apicultores, Herói: a §eLifecycle Acceleration Frame§r, o §eGenetic Storage Container§r e o §eLumen Alveary Booster§r.
+      Qualquer um serve. Missão opcional, mas as abelhas vão adorar!
     tasks:
       - one_of: [ChromatiCraft:chromaticraft_item_beeframe, ChromatiCraft:chromaticraft_item_placer:105, ChromatiCraft:chromaticraft_item_placer:85]
     rewards:
@@ -2953,8 +2913,8 @@ quests:
     deps: [templo_fundicao]
     icon: ChromatiCraft:chromaticraft_item_placer:46
     desc: |
-      O §eME Item Distributor§r liga a sua rede ME às construções do ChromatiCraft; a
-      §eVoid Cell§r (endgame) é uma célula de armazenamento especial.
+      O §eME Item Distributor§r liga a sua rede ME às construções do ChromatiCraft; a §eVoid Cell§r (endgame) é uma célula de armazenamento especial.
+      Faça qualquer um dos dois, Herói. Missão opcional!
     tasks:
       - one_of: [ChromatiCraft:chromaticraft_item_placer:46, ChromatiCraft:chromaticraft_item_voidcell]
     rewards:
@@ -2988,8 +2948,8 @@ quests:
     deps: [ligacao_pylon]
     icon: ChromatiCraft:chromaticraft_item_placer:19
     desc: |
-      Energia Karmir (proteção) irradiada no ar: enquanto tiver energia (e gasta muita), o
-      §eProtection Beacon§r te deixa praticamente imortal no alcance — e protege seus bichos.
+      Energia Karmir (proteção) irradiada no ar! Enquanto tiver energia (e gasta muita), o §eProtection Beacon§r te deixa praticamente imortal no alcance, e protege seus bichos.
+      Faça o seu, Herói. Missão opcional, mas é uma beleza!
     tasks:
       - get: ChromatiCraft:chromaticraft_item_placer:19
     rewards:
@@ -3001,8 +2961,8 @@ quests:
     deps: [ligacao_pylon, floresta_arco_iris]
     icon: ChromatiCraft:chromaticraft_item_placer:34
     desc: |
-      Ajuste o clima "como quem pinta uma tela": o §eBiome Painter§r troca biomas em volta.
-      Perfeito para abelhas exigentes. (Pede a Rainbow Forest.)
+      Ajuste o clima "como quem pinta uma tela", Herói! O §eBiome Painter§r troca biomas em volta, perfeito para abelhas exigentes. (Pede a Rainbow Forest.)
+      Confira a receita no NEI (R/U). Missão opcional.
     tasks:
       - get: ChromatiCraft:chromaticraft_item_placer:34
     rewards:
@@ -3014,8 +2974,8 @@ quests:
     deps: [ligacao_pylon, fim_cc]
     icon: ChromatiCraft:chromaticraft_item_placer:78
     desc: |
-      Uma rede de portões de teletransporte entre as suas bases: o §eTransposition Core§r e a
-      estrutura do Transposition Gate. Modo privado, só chegada ou só partida. (Pede o Fim.)
+      Uma rede de portões de teletransporte entre as suas bases! O §eTransposition Core§r e a estrutura do Transposition Gate funcionam em modo privado, só chegada ou só partida. (Pede o Fim.)
+      Faça o seu, Herói. Missão opcional!
     tasks:
       - get: ChromatiCraft:chromaticraft_item_placer:78
     rewards:
@@ -3027,9 +2987,8 @@ quests:
     deps: [regioes_distantes, picareta_minerio]
     icon: ChromatiCraft:chromaticraft_item_placer:24
     desc: |
-      Chega de 50 baús de pedregulho: o §eMineral Extractor§r sente minérios e valores no mundo e
-      os extrai direto. Escaneia a área depois de colocado (ou com o Manipulador). Receita de
-      maestria — pede as Regiões Distantes.
+      Chega de 50 baús de pedregulho, Herói! O §eMineral Extractor§r sente minérios e valores no mundo e os extrai direto. Escaneia a área depois de colocado (ou com o Manipulador).
+      É receita de maestria e pede as Regiões Distantes. Missão opcional!
     tasks:
       - get: ChromatiCraft:chromaticraft_item_placer:24
     rewards:

@@ -29,8 +29,8 @@ quests:
     deps: [giz_magico]
     icon: runicdungeons:tile.survivalRunicBrick
     desc: |
-      Oito §eTijolos de Pedra§r em volta de um Giz Mágico geram §eDungeon Bricks§r (versão de
-      sobrevivência, que quebram). Faça uma pilha para decorar a base e para o portal.
+      Hora de entrar nas masmorras, Herói! Oito §eTijolos de Pedra§r em volta de um Giz Mágico geram §eDungeon Bricks§r (versão de sobrevivência, que quebram).
+      Faça uma pilha de 8 para decorar a base e para o portal. Bora!
     tasks:
       - get: runicdungeons:tile.survivalRunicBrick x8
     rewards:
@@ -43,8 +43,8 @@ quests:
     deps: [tijolos_masmorra]
     icon: runicdungeons:tile.survivalRunicBrick:3
     desc: |
-      Um Dungeon Brick (rachado) vira §eRunic Dungeon Brick§r numa receita simples. Confira a
-      cadeia de variantes no NEI.
+      Um Dungeon Brick (rachado) vira §eRunic Dungeon Brick§r numa receita simples.
+      Confira a cadeia de variantes no NEI, Herói, e faça 4. Missão opcional, mas fica uma beleza!
     tasks:
       - get: runicdungeons:tile.survivalRunicBrick:3 x4
     rewards:
@@ -56,9 +56,8 @@ quests:
     deps: [tijolos_masmorra]
     icon: runicdungeons:tile.runicPortal
     desc: |
-      Com o giz você abre um §ePortal das Masmorras§r. O texto do mod diz que §capenas operadores
-      podem criar portais§r (se não conseguir, peça para a administração liberar). Entre e você
-      chega à dimensão Dungeon.
+      Chegou a hora, Herói! Com o giz você abre um §ePortal das Masmorras§r. O texto do mod diz que §capenas operadores podem criar portais§r, então, se não conseguir, peça para a administração liberar.
+      Entre e você chega à dimensão Dungeon. Leve boa armadura, comida e coragem de sobra, porque lá embaixo a aventura é de verdade. Estou torcendo por você!
     tasks:
       - visit: {dim: -34, name: "Dungeon"}
     rewards:
@@ -71,9 +70,8 @@ quests:
     deps: [portal_runico]
     icon: runicdungeons:tile.runeSpawner
     desc: |
-      Os §eDungeon Guardians§r protegem as salas. São fortes e atacam em grupo: lute em corredor,
-      com armadura boa e comida. Cada guardião derrotado conta como a conquista 'Guardian of the
-      Depths'.
+      Os §eDungeon Guardians§r protegem as salas, Herói. São fortes e atacam em grupo: lute em corredor, com armadura boa e comida.
+      Cada guardião derrotado conta como a conquista 'Guardian of the Depths'. Coragem!
     tasks:
       - kill: "Guardian x1"
     rewards:
@@ -86,8 +84,8 @@ quests:
     deps: [guardiao]
     icon: runicdungeons:item.key
     desc: |
-      Procure uma §eDungeon Key§r em baús ou com guardiões. Ela abre as §eDungeon Keyholes§r
-      (fechaduras) das salas trancadas. Isso conta como a conquista 'The Key to Progress!'.
+      Procure uma §eDungeon Key§r em baús ou com guardiões, Herói. Ela abre as §eDungeon Keyholes§r (fechaduras) das salas trancadas.
+      Isso conta como a conquista 'The Key to Progress!'. Boa busca!
     tasks:
       - get: runicdungeons:item.key
     rewards:
@@ -100,8 +98,8 @@ quests:
     deps: [chave_masmorra]
     icon: runicdungeons:tile.runicKeyhole
     desc: |
-      Use a chave numa §eDungeon Keyhole§r e a porta se abre. Se não houver fechadura, ela
-      provavelmente está só mais fundo. Confira no NEI o que a chave faz.
+      Use a chave numa §eDungeon Keyhole§r e a porta se abre, Herói! Se não houver fechadura, ela provavelmente está só mais fundo.
+      Confira no NEI o que a chave faz. Missão opcional, mas curiosa!
     tasks:
       - get: runicdungeons:tile.runicKeyhole
     rewards:
@@ -113,8 +111,8 @@ quests:
     deps: [portal_runico]
     icon: runicdungeons:tile.runicCircle
     desc: |
-      As §eMysterious Runes§r no chão marcam salas especiais. Pisar nelas pode ativar armadilhas
-      ou guardiões, então tome cuidado. Colete uma para estudar.
+      As §eMysterious Runes§r no chão marcam salas especiais, Herói. Pisar nelas pode ativar armadilhas ou guardiões, então tome cuidado!
+      Colete uma para estudar. Missão opcional, mas bem interessante.
     tasks:
       - one_of: [runicdungeons:tile.runicCircle, runicdungeons:tile.runicCircleSmall, runicdungeons:tile.runicCircleLarge]
     rewards:
@@ -126,8 +124,8 @@ quests:
     deps: [giz_magico]
     icon: runicdungeons:item.trapRemover
     desc: |
-      §eTrap Nullification Wand§r: lã amarela, ouro e giz. Ela desarma as armadilhas da masmorra.
-      Faça antes de ir fundo.
+      §eTrap Nullification Wand§r: lã amarela, ouro e giz. Ela desarma as armadilhas da masmorra, Herói!
+      Faça antes de ir fundo. Seguro morreu de velho!
     tasks:
       - craft: runicdungeons:item.trapRemover
     rewards:
@@ -140,8 +138,8 @@ quests:
     deps: [giz_magico]
     icon: runicdungeons:item.magicstaff
     desc: |
-      Esmeralda, diamante, ouro e três Gizes dão o §eMagical Staff§r. Confira o formato da receita
-      no NEI.
+      Esmeralda, diamante, ouro e três Gizes dão o §eMagical Staff§r, Herói.
+      Confira o formato da receita no NEI e faça o seu. Missão opcional, mas um cajado sempre cai bem!
     tasks:
       - craft: runicdungeons:item.magicstaff
     rewards:
@@ -153,7 +151,8 @@ quests:
     deps: [giz_magico]
     icon: runicdungeons:tile.runicGlass
     desc: |
-      Vidro em volta do giz: oito §eRunic Glass§r. Bom para janelas do estilo da masmorra.
+      Vidro em volta do giz: oito §eRunic Glass§r, Herói!
+      Bom para janelas do estilo da masmorra. Missão opcional, mas deixa a base com cara de aventura.
     tasks:
       - get: runicdungeons:tile.runicGlass x8
     rewards:
@@ -165,7 +164,8 @@ quests:
     deps: [tijolos_masmorra]
     icon: runicdungeons:tile.survivalRunicLamp
     desc: |
-      Tijolo da masmorra + Pedra Luminosa, receita sem forma. Rendem 4 lâmpadas.
+      Tijolo da masmorra + Pedra Luminosa, receita sem forma. Rendem 4 lâmpadas, Herói!
+      Missão opcional, mas ilumina com estilo.
     tasks:
       - get: runicdungeons:tile.survivalRunicLamp x4
     rewards:
@@ -177,7 +177,8 @@ quests:
     deps: [tijolos_masmorra]
     icon: runicdungeons:tile.survivalRunicPillar
     desc: |
-      Dois tijolos da masmorra rendem 4 pilares. Aposto que vai ficar lindo.
+      Dois tijolos da masmorra rendem 4 pilares, Herói. Aposto que vai ficar lindo!
+      Missão opcional, mas capricha na decoração.
     tasks:
       - get: runicdungeons:tile.survivalRunicPillar x4
     rewards:
@@ -189,8 +190,8 @@ quests:
     deps: [portal_runico]
     icon: runicdungeons:tile.chaoticSand
     desc: |
-      Areia e Pedra do Fim intercaladas na bancada: Areia Caótica. Confira no NEI como ela se
-      comporta.
+      Areia e Pedra do Fim intercaladas na bancada: Areia Caótica, Herói!
+      Confira no NEI como ela se comporta. Missão opcional, mas intrigante.
     tasks:
       - get: runicdungeons:tile.chaoticSand x9
     rewards:
@@ -203,7 +204,7 @@ quests:
     icon: runicdungeons:tile.compressedObsidian
     desc: |
       Nove blocos de obsidiana viram um bloco de §eCompressed Obsidian§r, resistente a explosões.
-      Bom para fortalecer a base.
+      Bom para fortalecer a base, Herói. Missão opcional, mas segurança é tudo!
     tasks:
       - get: runicdungeons:tile.compressedObsidian
     rewards:
@@ -215,8 +216,8 @@ quests:
     deps: [chave_masmorra]
     icon: runicdungeons:item.runicSteel
     desc: |
-      O §eRunic Steel§r não tem receita de bancada no pack: ele vem de dentro das masmorras.
-      Confira no NEI e explore baús e salas. Quando juntar 4 lingotes, comece a forjar.
+      O §eRunic Steel§r não tem receita de bancada no pack: ele vem de dentro das masmorras, Herói.
+      Confira no NEI e explore baús e salas. Quando juntar 4 lingotes, comece a forjar!
     tasks:
       - get: runicdungeons:item.runicSteel x4
     rewards:
@@ -229,7 +230,8 @@ quests:
     deps: [aco_runico]
     icon: runicdungeons:item.runicSteelSword
     desc: |
-      Dois lingotes e um graveto: §eRunic Steel Sword§r. Resistente e forte.
+      Dois lingotes e um graveto: §eRunic Steel Sword§r, Herói!
+      Uma espada resistente e forte para a batalha. Mãos à obra!
     tasks:
       - craft: runicdungeons:item.runicSteelSword
     rewards:
@@ -242,8 +244,8 @@ quests:
     deps: [aco_runico]
     icon: runicdungeons:item.runicSteelPickaxe
     desc: |
-      Para extrair o que a masmorra tem: três lingotes e dois gravetos na bancada, formato de
-      picareta.
+      Para extrair o que a masmorra tem, Herói: três lingotes e dois gravetos na bancada, formato de picareta.
+      Missão opcional, mas é a ferramenta certa para o trabalho!
     tasks:
       - craft: runicdungeons:item.runicSteelPickaxe
     rewards:
@@ -255,7 +257,8 @@ quests:
     deps: [aco_runico]
     icon: runicdungeons:tile.runicSteelBlock
     desc: |
-      Nove lingotes viram um bloco de §eRunic Steel§r, para decorar ou guardar.
+      Nove lingotes viram um bloco de §eRunic Steel§r, Herói, para decorar ou guardar.
+      Missão opcional, mas fica imponente!
     tasks:
       - get: runicdungeons:tile.runicSteelBlock
     rewards:
@@ -267,8 +270,8 @@ quests:
     deps: [chave_masmorra]
     icon: runicdungeons:item.airCrystal
     desc: |
-      Os cristais de §eAr, Terra, Fogo e Água§r aparecem nas masmorras. Quatro tesouros, um de
-      cada elemento. Pegue o que encontrar.
+      Os cristais de §eAr, Terra, Fogo e Água§r aparecem nas masmorras, Herói. Quatro tesouros, um de cada elemento.
+      Pegue o que encontrar. Boa caçada!
     tasks:
       - one_of: [runicdungeons:item.airCrystal, runicdungeons:item.earthCrystal, runicdungeons:item.fireCrystal, runicdungeons:item.waterCrystal]
     rewards:
@@ -281,7 +284,8 @@ quests:
     deps: [cristais_elementais]
     icon: runicdungeons:item.fireCrystal
     desc: |
-      Quando você achar o de Fogo, guarde. A Masmorra Demoníaca tem mais.
+      Quando você achar o cristal de Fogo, Herói, guarde. A Masmorra Demoníaca tem mais!
+      Missão opcional, mas vale a coleção.
     tasks:
       - get: runicdungeons:item.fireCrystal
     rewards:
@@ -293,7 +297,8 @@ quests:
     deps: [cristais_elementais]
     icon: runicdungeons:item.waterCrystal
     desc: |
-      Se encontrar o cristal da água, guarde bem: confira no NEI se ele serve em alguma receita.
+      Se encontrar o cristal da água, Herói, guarde bem.
+      Confira no NEI se ele serve em alguma receita. Missão opcional!
     tasks:
       - get: runicdungeons:item.waterCrystal
     rewards:
@@ -305,8 +310,8 @@ quests:
     deps: [giz_magico]
     icon: runicdungeons:item.basicBelt
     desc: |
-      Couro, lingote de ouro e mais couro: §eBasic Belt Base§r. É a base de todos os cintos,
-      Herói.
+      Couro, lingote de ouro e mais couro: §eBasic Belt Base§r, Herói. É a base de todos os cintos!
+      Faça o seu e comece a montar o conjunto.
     tasks:
       - craft: runicdungeons:item.basicBelt
     rewards:
@@ -319,7 +324,8 @@ quests:
     deps: [cinto_basico]
     icon: runicdungeons:item.beltArrow
     desc: |
-      Flecha, cinto e flecha em linha: Arrow Belt. Útil para quem usa arco.
+      Flecha, cinto e flecha em linha: Arrow Belt, Herói. Útil para quem usa arco!
+      Missão opcional, mas pratica na hora do combate.
     tasks:
       - craft: runicdungeons:item.beltArrow
     rewards:
@@ -331,8 +337,8 @@ quests:
     deps: [cinto_basico]
     icon: runicdungeons:item.advancedBelt
     desc: |
-      Cinto básico + Estrela do Nether (sem forma): §eAdvanced Belt Base§r. Só dá para fazer
-      depois do Wither, no capítulo do Nether.
+      Cinto básico + Estrela do Nether (sem forma): §eAdvanced Belt Base§r, Herói. Só dá para fazer depois do Wither, no capítulo do Nether.
+      Guarde a ideia e volte quando estiver pronto!
     tasks:
       - craft: runicdungeons:item.advancedBelt
     rewards:
@@ -345,8 +351,8 @@ quests:
     deps: [cinto_avancado]
     icon: runicdungeons:item.flyBelt
     desc: |
-      Pena, Advanced Belt e pena. §eBelt of Flight§r! Você fica no ar, Herói. Aproveite com
-      cuidado: confira o gasto de durabilidade no NEI.
+      Pena, Advanced Belt e pena: §eBelt of Flight§r! Você fica no ar, Herói, e eu fico emocionada só de imaginar a cena.
+      Aproveite com cuidado e confira o gasto de durabilidade no NEI antes de se empolgar demais. Esse é um marco e tanto na sua jornada pelas masmorras, então comemore! Você chegou longe, e o céu agora é seu quintal.
     tasks:
       - craft: runicdungeons:item.flyBelt
     rewards:
@@ -359,8 +365,8 @@ quests:
     deps: [portal_runico]
     icon: runicdungeons:tile.survivalDemonicBrick
     desc: |
-      Tijolos do Nether em volta do giz fazem §eDemonic Bricks§r: a conquista 'Fire and Brimstone'
-      leva à Masmorra Demoníaca. Perigosa! Guarde recursos e entre de armadura completa.
+      Tijolos do Nether em volta do giz fazem §eDemonic Bricks§r: a conquista 'Fire and Brimstone' leva à Masmorra Demoníaca.
+      §cPerigosa!§r Guarde recursos e entre de armadura completa, Herói. Missão opcional, mas com muita fama!
     tasks:
       - get: runicdungeons:tile.survivalDemonicBrick x8
     rewards:
@@ -372,7 +378,8 @@ quests:
     deps: [cinto_basico]
     icon: runicdungeons:item.rider
     desc: |
-      Rédea + sela, receita sem forma: Rider (WIP). Experimental, use por sua conta e risco.
+      Rédea + sela, receita sem forma: Rider (WIP).
+      Experimental, Herói. Use por sua conta e risco! Missão opcional.
     tasks:
       - get: runicdungeons:item.rider
     rewards:
@@ -384,7 +391,8 @@ quests:
     deps: [portal_runico]
     icon: runicdungeons:tile.ancientBookshelf
     desc: |
-      A §eAncient Bookshelf§r aparece nas salas. Traga uma para a base como lembrança, Herói.
+      A §eAncient Bookshelf§r aparece nas salas, Herói.
+      Traga uma para a base como lembrança. Missão opcional, mas um charme de recordação!
     tasks:
       - get: runicdungeons:tile.ancientBookshelf
     rewards:
@@ -396,8 +404,8 @@ quests:
     deps: [chave_masmorra, espada_runica, cinto_voo]
     icon: runicdungeons:item.runicSteel
     desc: |
-      Você já tem chave, aço, cristais e cinto. Mostre que dominou os salões: derrote mais
-      guardiões e traga o Aço Rúnico completo. Este é o marco do capítulo.
+      Você já tem chave, aço, cristais e cinto, Herói, e está na hora de provar o seu valor! Mostre que dominou os salões: derrote mais guardiões e traga o Aço Rúnico completo.
+      Este é o marco do capítulo, e eu não poderia estar mais orgulhosa da sua jornada até aqui. Respire fundo, confira a armadura e a comida, e vá com tudo. Os salões das masmorras são seus!
     tasks:
       - kill: "Guardian x5"
     rewards:
