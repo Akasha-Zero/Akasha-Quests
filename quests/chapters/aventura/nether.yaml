@@ -41,10 +41,9 @@ quests:
     deps: [isqueiro]
     icon: minecraft:obsidian
     desc: |
-      Atravesse o portal, Herói. O Nether é o Registro mais quente que eu guardo: teto de pedra,
-      lagos de lava e uma paisagem que pulsa. §cNão cave em linha reta para baixo§r e cuidado com
-      lava. Dica: ao voltar, o portal leva você ao ponto correspondente (1 bloco no Nether = 8 no
-      Overworld).
+      Atravesse o portal, Herói! Você chegou longe só para ver este momento. O Nether é o Registro mais quente que eu guardo: teto de pedra, lagos de lava e uma paisagem que pulsa.
+
+      §cNão cave em linha reta para baixo§r e cuidado com lava. Dica: ao voltar, o portal leva você ao ponto correspondente (1 bloco no Nether = 8 no Overworld), então anote as coordenadas antes de sair explorando. Leve comida, armadura boa e blocos para atravessar buracos. O que vem a seguir é conhecer fortalezas e biomas novos. Que a sorte te acompanhe!
     tasks:
       - visit: {dim: -1, name: "O Nether"}
     rewards:
@@ -112,8 +111,9 @@ quests:
     deps: [netherrack]
     icon: minecraft:nether_brick
     desc: |
-      Asse netherrack na fornalha para obter §eTijolos do Nether§r. São a base da fortaleza e de várias variantes do Netherlicious (vermelho, distorcido, foxfire…).
-      Confira as receitas no NEI (R/U) e faça 16, Herói. Dá um belo estoque!
+      Vamos ao básico do Nether, Herói! Asse netherrack na fornalha para obter §eTijolos do Nether§r. São a base da fortaleza e de várias variantes do Netherlicious (vermelho, distorcido, foxfire…).
+
+      Confira as receitas no NEI (R/U) e faça 16 tijolos. Dá um belo estoque para construir e decorar, e você ainda ganha prática com a fornalha!
     tasks:
       - get: minecraft:nether_brick x16
     rewards:
@@ -210,8 +210,9 @@ quests:
     deps: [blaze]
     icon: minecraft:blaze_rod
     desc: |
-      As §eVaras Incandescentes§r viram pó de blaze (que alimenta o suporte de poções) e combustível.
-      Pegue um punhado, Herói: vamos precisar delas. Oito para começar já ajudam bastante!
+      Hora de enfrentar os Blazes! As §eVaras Incandescentes§r viram pó de blaze (que alimenta o suporte de poções) e combustível para suas máquinas.
+
+      Pegue um punhado, Herói: vamos precisar delas por todo o capítulo. Oito para começar já ajudam bastante. Leve resistência ao fogo e cuide da vida, que eles não perdoam descuido!
     tasks:
       - get: minecraft:blaze_rod x8
     rewards:
@@ -267,8 +268,9 @@ quests:
     deps: [entrar_nether]
     icon: netherlicious:CrimsonNylium
     desc: |
-      O Netherlicious trouxe biomas novos! Na §eFloresta Carmesim§r o chão é de §eCrimson Nylium§r e as árvores são enormes fungos vermelhos.
-      Cuidado com Piglins e Hoglins, Herói. Ache o bioma e colete o nylium com Toque Suave.
+      O Netherlicious trouxe biomas novos, Herói! Na §eFloresta Carmesim§r o chão é de §eCrimson Nylium§r e as árvores são enormes fungos vermelhos.
+
+      Cuidado com Piglins e Hoglins por lá. Ache o bioma e colete o nylium com Toque Suave (Silk Touch), senão ele vira netherrack comum. Vá com calma e boa exploração!
     tasks:
       - get: netherlicious:CrimsonNylium
     rewards:
@@ -321,8 +323,9 @@ quests:
     deps: [entrar_nether]
     icon: netherlicious:Basalt
     desc: |
-      Colunas de §eBasalto§r, chaminés e lava por todo lado. É um bioma perigoso, Herói: leve blocos para atravessar e cuidado com os Magma Cubes.
-      Traga basalto de lá, uns oito blocos já bastam. Boa sorte!
+      Cenário de tirar o fôlego! Nos Deltas de Basalto, colunas de §eBasalto§r, chaminés e lava aparecem por todo lado. É um bioma perigoso, Herói: leve blocos para atravessar e cuidado com os Magma Cubes.
+
+      Traga basalto de lá, uns oito blocos já bastam. Ande devagar, olhe onde pisa e boa sorte!
     tasks:
       - get: netherlicious:Basalt x8
     rewards:
@@ -376,8 +379,9 @@ quests:
     deps: [floresta_carmesim]
     icon: netherlicious:WeepingVines
     desc: |
-      As §eWeeping Vines§r pendem do teto e as §eTwisting Vines§r crescem do chão. As twisting servem para subir e descer; coletar com tesoura facilita.
-      Missão opcional, Herói, mas bem útil para explorar o Nether sem escadas.
+      As §eWeeping Vines§r pendem do teto e as §eTwisting Vines§r crescem do chão. As twisting servem para subir e descer, e coletar com tesoura facilita bastante. Basta uma das duas para completar.
+
+      Missão opcional, Herói, mas bem útil para explorar o Nether sem escadas. Guarde algumas na bolsa para as próximas aventuras!
     tasks:
       - one_of: [netherlicious:WeepingVines, netherlicious:TwistingVines]
     rewards:
@@ -429,8 +433,9 @@ quests:
     deps: [blaze]
     icon: netherlicious:HeavyBlazeHelmet
     desc: |
-      O §eBlaze Knight§r é um blaze blindado que aparece no Netherlicious. Mais duro que o comum.
-      Leve armadura boa e resistência ao fogo, Herói, e vá sem pressa. Boa luta!
+      Prepare-se para um duelo, Herói! O §eBlaze Knight§r é um blaze blindado que aparece no Netherlicious, bem mais duro que o comum.
+
+      Leve armadura boa e resistência ao fogo, e vá sem pressa, estudando o ritmo dos ataques dele. Um só já cumpre a quest. Se precisar de ajuda para achar o bicho, o NEI (R/U) mostra onde ele nasce. Boa luta!
     tasks:
       - kill: "netherlicious.BlazeKnight x1"
     rewards:
@@ -485,8 +490,9 @@ quests:
     deps: [minerio_efrine]
     icon: netherlicious:Ingot
     desc: |
-      No NEI (R/U), o §eLingote de Efrine§r sai do minério com Pó de Pirotheum (máquina do pack). Também dá para juntar 9 pepitas na bancada.
-      Faça 8 lingotes, Herói, que as ferramentas e armaduras vão pedir bastante.
+      Um metal novo para o seu arsenal! No NEI (R/U), o §eLingote de Efrine§r sai do minério com Pó de Pirotheum (máquina do pack). Também dá para juntar 9 pepitas na bancada.
+
+      Faça 8 lingotes, Herói, que as ferramentas e armaduras vão pedir bastante. Guarde as pepitas que sobrarem, porque elas sempre voltam a ser úteis!
     tasks:
       - get: netherlicious:Ingot x8
     rewards:
@@ -542,8 +548,9 @@ quests:
     deps: [entrar_nether]
     icon: netherlicious:CrystalShard
     desc: |
-      Os §eNether Crystals§r crescem em aglomerados coloridos (branco, azul, verde, amarelo, magenta). Pegue cacos (Crystal Shards) com picareta; dão lâmpadas e óculos.
-      Missão opcional, Herói, mas lindíssima. Junte oito!
+      Os §eNether Crystals§r crescem em aglomerados coloridos (branco, azul, verde, amarelo, magenta). Pegue cacos (Crystal Shards) com picareta; eles rendem lâmpadas e óculos.
+
+      Missão opcional, Herói, mas lindíssima. Junte oito cacos e deixe sua base com um brilho de arco-íris. Confira as receitas no NEI (R/U) para ver tudo o que dá para fazer!
     tasks:
       - get: netherlicious:CrystalShard x8
     rewards:
@@ -638,8 +645,9 @@ quests:
     deps: [floresta_carmesim]
     icon: netherlicious:HellderBerryItem
     desc: |
-      O §eHellderberry§r cresce em arbustos no Nether e rende sucos, biscoitos e mais.
-      Tenha o seu estoque de comida lá, Herói! Junte quatro frutinhas e confira as receitas no NEI (R/U). Missão opcional, mas gostosa!
+      O §eHellderberry§r cresce em arbustos no Nether e rende sucos, biscoitos e mais. É um alimento ótimo para ter sempre à mão.
+
+      Tenha o seu estoque de comida lá, Herói! Junte quatro frutinhas e confira as receitas no NEI (R/U) para variar o cardápio. Missão opcional, mas bem gostosa de cumprir!
     tasks:
       - get: netherlicious:HellderBerryItem x4
     rewards:
@@ -738,8 +746,8 @@ quests:
     icon: minecraft:beacon
     desc: |
       Estrela do Nether, vidro e obsidiana fazem o §eSinalizador§r. Uma alternativa de menor custo é a §eNether Beacon§r do Netherlicious (veja a receita no NEI (R/U)): vidro, estrela, tijolos e quartzo.
-      Escolha o seu caminho, Herói, e monte o farol para ganhar bônus poderosos.
-      Você merece essa comemoração. Parabéns por mais uma conquista!
+
+      Escolha o seu caminho, Herói, e monte o farol para ganhar bônus poderosos. Depois de enfrentar o Wither e atravessar tantos perigos, esse feixe de luz é a sua recompensa visível. Posicione-o onde você passa mais tempo, para aproveitar os efeitos. Você merece essa comemoração. Parabéns por mais uma conquista, e vamos em frente para o que vem a seguir!
     tasks:
       - one_of: [minecraft:beacon, netherlicious:NetherBeacon]
     rewards:
@@ -753,8 +761,9 @@ quests:
     deps: [ancora]
     icon: netherlicious:SoulTorch
     desc: |
-      Último passo, Herói: monte um pequeno refúgio com Respawn Anchor ou cama, tochas de alma e baús.
-      Assim o Nether vira sua segunda casa. Você já é digno! Missão opcional, mas aconchegante.
+      Último passo deste capítulo, Herói: monte um pequeno refúgio no Nether com Respawn Anchor ou cama, tochas de alma e baús. A quest pede quatro tochas de alma.
+
+      Assim o Nether vira sua segunda casa e você ganha um ponto seguro para voltar. Você já é digno de morar por lá! Missão opcional, mas aconchegante e muito prática.
     tasks:
       - get: netherlicious:SoulTorch x4
     rewards:
