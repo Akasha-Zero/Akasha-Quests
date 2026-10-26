@@ -1,0 +1,282 @@
+chapter:
+  id: aedf3_o_fim
+  title: O Fim
+  prefix: AEDF3
+  order: 815.0
+  icon: minecraft:tnt
+  desc: |
+    §6Memórias de outros heróis, última página.§r Toda grande série tem seu último episódio. Na Era do Futuro, as despedidas eram feitas à moda antiga: um passeio pela vila, uma música tocando, um banquete na mesa grande e, quem sabe, um grande estrondo final. Aqui você revê o caminho todo, uma lembrança por capítulo, e fecha o livro com um sorriso.
+quests:
+- id: reunir_a_vila
+  title: Reunir a Vila
+  type: main
+  deps_hidden: ['aedf3_corrida_espacial:estacao_milestone']
+  desc: |
+    Todo mundo na praça! Cama arrumada, mesa posta e pão quentinho. Lembre da primeira noite, quando era só você e um pedaço de madeira. Aquela vila de sonho ainda está de pé, e mesmo sem amigos por perto, a memória continua cheia de risadas.
+  tasks:
+  - get: ['minecraft:bed', 'minecraft:bread x16']
+  rewards:
+  - {xp: 5}
+  - choice: ['minecraft:cake', 'minecraft:cooked_beef x16']
+- id: memoria_ferro
+  title: Lembrança do Ferro
+  type: main
+  deps: [reunir_a_vila]
+  desc: |
+    Nas minas, o cheiro de fundição, o som das marteladas, a primeira picareta de ferro. A §eFundição§r ainda guarda o calor daquela época. Basta um olhar para sentir de novo a emoção de voltar ao mundo com o inventário cheio.
+  tasks:
+  - {get: 'TConstruct:Smeltery'}
+  rewards:
+  - {xp: 5}
+  - choice: ['minecraft:iron_ingot x16', 'minecraft:coal x16']
+- id: memoria_industrial
+  title: Lembrança da Indústria
+  type: main
+  deps: [memoria_ferro]
+  desc: |
+    O primeiro gerador roncando, o primeiro cabo, o MFSU cheio de energia. A fábrica deu trabalho, mas foi ali que o mundo começou a mudar. Cada cabo bem ligado ainda zumbe na memória, e você sabe o nome de cada máquina.
+  tasks:
+  - {get: 'IC2:blockElectric:2'}
+  rewards:
+  - {xp: 5}
+  - choice: ['IC2:itemBatLamaCrystal:*', 'IC2:itemCable x16']
+- id: memoria_infernal
+  title: Lembrança do Inferno
+  type: main
+  deps: [memoria_industrial]
+  desc: |
+    Portal roxo, gritos de ghast, fortaleza escura. E então o Wither, derrotado, deixando cair uma estrela. A §eEstrela do Nether§r brilha igual àquele dia, e você conta a história da luta para quem quiser ouvir.
+  tasks:
+  - {get: 'minecraft:nether_star'}
+  rewards:
+  - {xp: 5}
+  - choice: ['minecraft:diamond x4', 'minecraft:experience_bottle x8']
+- id: memoria_solar
+  title: Lembrança do Sol
+  type: main
+  deps: [memoria_infernal]
+  desc: |
+    Aquele painel perfeito, no telhado, sem queimar uma pedra de carvão. A energia limpa que os heróis tanto amavam. Todo dia, o sol nasce mais uma vez sobre a vila, e a fábrica acorda com ele.
+  tasks:
+  - {get: 'industrialupgrade:BlockSolarPanel:2'}
+  rewards:
+  - {xp: 5}
+  - choice: ['IC2:itemBatLamaCrystal:*', 'minecraft:diamond x2']
+- id: memoria_armadura
+  title: Lembrança do Traje
+  type: main
+  deps: [memoria_solar]
+  desc: |
+    O peitoral Quantum, brilhando de energia. Lembre o dia em que você vestiu a armadura completa e se sentiu invencível. Cada peça foi conquistada com irídio, paciência e cabos. Ela está com a mesma pose de herói de sempre.
+  tasks:
+  - {get: 'IC2:itemArmorQuantumChestplate:*'}
+  rewards:
+  - {xp: 5}
+  - choice: ['IC2:itemBatLamaCrystal:*', 'minecraft:golden_apple x2']
+- id: memoria_magia
+  title: Lembrança da Magia
+  type: main
+  deps: [memoria_armadura]
+  desc: |
+    O golem de madeira fiel, carregando trigo, assando pão, sempre calado. Lembra do chapéu pontudo e das noites em claro lendo o Thaumonomicon? A padaria dos golens continua firme, e o cheiro ainda vem pela janela.
+  tasks:
+  - {get: 'Thaumcraft:ItemGolemPlacer:1'}
+  rewards:
+  - {xp: 5}
+  - choice: ['Thaumcraft:ItemResource:2 x4', 'minecraft:book x4']
+- id: memoria_bosses
+  title: Lembrança dos Chefes
+  type: main
+  deps: [memoria_magia]
+  desc: |
+    Naga, Hidra, Lich e todos os demais enfileirados na estante. Cada cabeça tem uma história: a fuga, a vitória, o grito de comemoração. Passe o dedo na prateleira e conte os troféus. Está tudo aí.
+  tasks:
+  - get: ['TwilightForest:item.trophy:1', 'TwilightForest:item.trophy:0']
+  rewards:
+  - {xp: 5}
+  - choice: ['minecraft:experience_bottle x16', 'minecraft:golden_apple']
+- id: memoria_fabrica
+  title: Lembrança da Fábrica
+  type: main
+  deps: [memoria_bosses]
+  desc: |
+    Máquinas rodando dia e noite, pós voando, lingotes caindo. A sala de máquinas era o orgulho da vila. Fecha os olhos e escute: dá para ouvir o zumbido do pulverizador e o tilintar do ouro. Música para quem ama indústria.
+  tasks:
+  - {get: 'ThermalExpansion:Machine:3'}
+  rewards:
+  - {xp: 5}
+  - choice: ['minecraft:iron_ingot x16', 'minecraft:redstone x32']
+- id: memoria_osmio
+  title: Lembrança do Ósmio
+  type: main
+  deps: [memoria_fabrica]
+  desc: |
+    O jetpack nas costas, o céu aberto, a fábrica minúscula lá embaixo. Foi voando que muitos heróis viram pela primeira vez a vila inteira, de cima. Que vista! Valeu cada lingote de ósmio.
+  tasks:
+  - {get: 'Mekanism:Jetpack'}
+  rewards:
+  - {xp: 5}
+  - choice: ['Mekanism:EnergyTablet x2', 'minecraft:diamond x2']
+- id: memoria_casa
+  title: Lembrança da Casa
+  type: main
+  deps: [memoria_osmio]
+  desc: |
+    A Casa do Futuro, com todo o seu brilho. Quarto, biblioteca, jardim no telhado. Cada detalhe tem uma lembrança: o dia em que acabou o vidro, a noite em que a luz acendeu pela primeira vez. Casa de herói é casa de memória.
+  tasks:
+  - get: ['chisel:futura:*', 'BiblioCraft:Bibliotheca:*']
+  rewards:
+  - {xp: 5}
+  - choice: ['minecraft:painting x2', 'minecraft:item_frame x4']
+- id: memoria_rede
+  title: Lembrança da Rede
+  type: main
+  deps: [memoria_casa]
+  desc: |
+    A rede ME brilhando no escuro, todos os itens à mão, sem um baú sequer. Já foi um caos, e agora é um escritório digital. Um mundo organizado, com os suprimentos de toda a vila no mesmo lugar.
+  tasks:
+  - {get: 'appliedenergistics2:tile.BlockController'}
+  rewards:
+  - {xp: 5}
+  - choice: ['appliedenergistics2:item.ItemMultiMaterial:7 x4', 'minecraft:diamond x2']
+- id: memoria_reator
+  title: Lembrança da Energia
+  type: main
+  deps: [memoria_rede]
+  desc: |
+    A turbina girando, o reator cantando baixinho. Energia por todo lado, e todos concordando que "a melhor energia" era sempre a que não parava de rodar. Os heróis da Era do Futuro riam disso.
+  tasks:
+  - {get: 'BigReactors:BRTurbinePart:1'}
+  rewards:
+  - {xp: 5}
+  - choice: ['ore:ingotYellorium x16', 'minecraft:diamond x2']
+- id: memoria_draconica
+  title: Lembrança do Dragão
+  type: main
+  deps: [memoria_reator]
+  desc: |
+    O roxo do draconium no escuro, o dragão renascido, o rugido do Guardião. O Núcleo Wyvern guarda o brilho daquelas noites no Fim. Quanta coragem foi preciso reunir, Herói, e quanta você tinha.
+  tasks:
+  - {get: 'DraconicEvolution:wyvernCore'}
+  rewards:
+  - {xp: 5}
+  - choice: ['minecraft:experience_bottle x16', 'minecraft:diamond x4']
+- id: memoria_infinito
+  title: Lembrança do Infinito
+  type: main
+  deps: [memoria_draconica]
+  desc: |
+    O Catalisador do Infinito, quase tão raro quanto uma estrela. Foi o passo mais ousado de todos. Cada singularidade foi um desafio, e juntas fazem este brilho. Uma conquista do tamanho do universo.
+  tasks:
+  - {get: 'Avaritia:Resource:5'}
+  rewards:
+  - {xp: 5}
+  - choice: ['Avaritia:Resource:4', 'minecraft:nether_star']
+- id: memoria_espaco
+  title: Lembrança do Espaço
+  type: main
+  deps: [memoria_infinito]
+  desc: |
+    Uma bandeira fincada na Lua. Aquele primeiro passo, o silêncio, a Terra azul no céu. Tantos heróis olharam para cima e sonharam com isso. Você chegou lá, e ninguém pode tirar isso de você.
+  tasks:
+  - {get: 'GalacticraftCore:item.flag'}
+  rewards:
+  - {xp: 5}
+  - choice: ['GalacticraftCore:item.oxygenTankLightFull', 'minecraft:diamond x2']
+- id: trilha_sonora
+  title: A Trilha Sonora
+  type: optional
+  deps: [memoria_espaco]
+  desc: |
+    Nenhuma despedida é completa sem música. Instale um §eJukebox§r na praça e blocos de nota em volta. Toque uma canção que combine com a nostalgia. Cada herói tinha a sua preferida, e todos se calavam quando começava o refrão.
+  tasks:
+  - get: ['minecraft:jukebox', 'minecraft:noteblock x4']
+  rewards:
+  - {xp: 3}
+  - choice: ['minecraft:record_13', 'minecraft:record_cat']
+- id: bandeira_da_vila
+  title: Bandeira da Vila
+  type: optional
+  deps: [trilha_sonora]
+  desc: |
+    Toda vila tem uma bandeira. Faça a sua com lã e corantes e hasteie no ponto mais alto. Ela vai tremular quando o vento soprar, e quem chegar saberá que aqui mora gente querida.
+  tasks:
+  - {get: 'minecraft:banner:*'}
+  rewards:
+  - {xp: 3}
+  - choice: ['minecraft:dye:* x16', 'minecraft:wool:* x8']
+- id: fogos_de_artificio
+  title: Fogos de Artifício
+  type: normal
+  deps: [bandeira_da_vila]
+  desc: |
+    Gunpowder, papel e um corante. Acenda cem foguetes de uma vez e deixe o céu piscar em todas as cores. Os heróis lendários não gostavam de despedidas tristes, preferiam festa com estrondo. Tome cuidado com a mão.
+  tasks:
+  - {get: 'minecraft:fireworks x16'}
+  rewards:
+  - {xp: 3}
+  - choice: ['minecraft:gunpowder x16', 'minecraft:paper x16']
+- id: bolo_final
+  title: O Bolo
+  type: optional
+  deps: [fogos_de_artificio]
+  desc: |
+    Leite, açúcar, ovo e trigo: o clássico bolo. Faça dois, um para você e outro para quem estiver por perto. Se a padaria dos golens ainda estiver funcionando, a farinha nunca vai faltar. Aproveite!
+  tasks:
+  - {get: 'minecraft:cake x2'}
+  rewards:
+  - {xp: 3}
+  - choice: ['minecraft:cooked_beef x16', 'minecraft:golden_apple']
+- id: cartao_postal
+  title: Mapa-Múndi
+  type: optional
+  deps: [bolo_final]
+  desc: |
+    Desenhe os mapas das terras que você visitou: vila, Nether, Fim, Lua, Marte. Pendure na parede da sala. Cada marca é uma saudade, e cada rota é um caminho percorrido com carinho.
+  tasks:
+  - {get: 'minecraft:filled_map x2'}
+  rewards:
+  - {xp: 3}
+  - choice: ['minecraft:paper x16', 'minecraft:compass']
+- id: visita_aether
+  title: Um Passeio no Aether
+  type: optional
+  deps: [cartao_postal]
+  icon: minecraft:golden_apple
+  desc: |
+    Antes do último ato, uma pausa nas nuvens. O Aether, com suas ilhas brancas e suas criaturas gentis, é um bom lugar para respirar fundo. Passeie sem pressa e relembre o caminho. Às vezes, o melhor da jornada é parar.
+  tasks:
+  - visit: {dim: 4, name: Aether}
+  rewards:
+  - {xp: 3}
+  - choice: ['minecraft:golden_apple x2', 'minecraft:experience_bottle x16']
+- id: pavio_final
+  title: O Pavio
+  type: main
+  deps: [visita_aether]
+  desc: |
+    Dizem que, num certo último episódio, a vila foi pelos ares para encerrar a história. Não faça isso com a sua casa de verdade, Herói! Reúna a dinamite e monte um cenário de brincadeira longe de tudo: uma cópia pequena da vila, só para ter graça.
+
+    §cPerigo:§r explosão de verdade destrói construções, itens e lembranças.
+  tasks:
+  - get: ['minecraft:tnt x16', 'minecraft:flint_and_steel']
+  rewards:
+  - {xp: 5}
+  - choice: ['minecraft:gunpowder x32', 'minecraft:sand x16']
+- id: o_fim_final
+  title: O Fim
+  type: finale
+  deps: [pavio_final]
+  desc: |
+    É isso, Herói. Dezessete páginas, uma vila, um céu cheio de fogos. Você passou pela pedra e pelo ferro, acendeu geradores, venceu o Wither, vestiu o futuro, aprendeu magia, caçou chefes, dominou máquinas, construiu uma casa, guardou o universo em cristal, domou reatores, acordou dragões, tocou o infinito e pisou na Lua.
+
+    Os heróis da Era do Futuro me ensinaram que toda série termina, mas a vontade de construir continua. Esta lenda agora é sua. Apague as luzes devagar, deixe a porta encostada e volte quando quiser. O Registro Akáshico estará aqui, esperando mais uma história. Obrigada por me acompanhar até o fim. §6Até a próxima era!§r
+  tasks:
+  - get: ['minecraft:tnt x16', 'minecraft:cake', 'minecraft:fireworks x16']
+  rewards:
+  - {xp: 40}
+  - kit:
+      name: Kit da Despedida
+      items: ['minecraft:cake x2', 'minecraft:fireworks x32', 'minecraft:golden_apple x8', 'minecraft:experience_bottle
+          x64', 'minecraft:diamond x32']
+  - {loot: lendario}
