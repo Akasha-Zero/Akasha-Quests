@@ -1,0 +1,353 @@
+chapter:
+  id: aedf3_corrida_espacial
+  title: Corrida Espacial
+  prefix: AEDF3
+  order: 814.062
+  icon: GalacticraftCore:tile.rocketWorkbench
+  desc: |
+    §6Memórias de outros heróis, página quinze.§r Dos primeiros episódios aos últimos, a Era do Futuro sempre olhou para cima. Foguetes de madeira e latão, uma dungeon na Lua, aliens estranhos e uma Casa do Futuro que um dia foi parar no espaço. Neste pack o Galacticraft existe, então a Corrida Espacial é completa: Lua, Marte e Asteroides.
+quests:
+- id: metais_espaciais
+  title: Metais para o Espaço
+  type: main
+  deps_hidden: ['aedf3_rumo_infinito:infinito_milestone']
+  desc: |
+    Aço e alumínio, os dois metais do astronauta. Procure o minério, passe pela fundição e junte as quantidades. É um projeto de construção, e a lista de compras é longa. Faça uma pausa para respirar e vá em frente.
+  tasks:
+  - get: ['ore:ingotAluminum x24', 'ore:ingotSteel x16']
+  rewards:
+  - {xp: 5}
+  - choice: ['ore:ingotCopper x16', 'ore:ingotTin x16']
+- id: silicio_wafers
+  title: Wafers de Silício
+  type: main
+  deps: [metais_espaciais]
+  desc: |
+    Para circuitos, silício e wafers. O Fabricador de Circuitos junta os materiais e entrega os wafers. Os heróis lendários chamavam isso de "pão de astronauta". Prepare um estoque.
+  tasks:
+  - get: ['ore:itemSilicon x16', 'ore:waferBasic x6']
+  rewards:
+  - {xp: 5}
+  - choice: ['ore:waferAdvanced x3', 'minecraft:redstone x32']
+- id: gerador_gc
+  title: Gerador de Carvão
+  type: normal
+  deps: [silicio_wafers]
+  desc: |
+    As máquinas do Galacticraft têm sua própria energia (GJ). O §eGerador de Carvão§r é o primeiro degrau, simples e honesto. Ligue a fios de alumínio. Painéis solares e baterias vêm depois.
+  tasks:
+  - {get: 'GalacticraftCore:tile.machine'}
+  rewards:
+  - {xp: 3}
+  - choice: ['GalacticraftCore:item.battery x3', 'minecraft:coal x32']
+- id: painel_solar_gc
+  title: Painel Solar do Espaço
+  type: normal
+  deps: [gerador_gc]
+  desc: |
+    No espaço, o sol é o seu melhor amigo. O §ePainel Solar Básico§r do Galacticraft gera energia sem queimar nada. Combine com baterias e conecte à base lunar. Em planetas com mais luz, rende ainda mais.
+  tasks:
+  - {get: 'GalacticraftCore:tile.solar'}
+  rewards:
+  - {xp: 3}
+  - choice: ['GalacticraftCore:tile.aluminumWire x12', 'minecraft:redstone x32']
+- id: prensa_de_compressao
+  title: Compressor
+  type: main
+  deps: [painel_solar_gc]
+  desc: |
+    A compressão é o coração do foguete. O §eCompressor§r (carvão) transforma lingotes em placas densas. Aço comprimido é o material estrutural de todo o foguete. Faça 16 placas.
+  tasks:
+  - get: ['GalacticraftCore:tile.machine:12', 'ore:compressedSteel x16']
+  rewards:
+  - {xp: 5}
+  - choice: ['ore:compressedCopper x4', 'ore:compressedBronze x6']
+- id: fabricador_de_circuitos
+  title: Fabricador de Circuitos
+  type: normal
+  deps: [prensa_de_compressao]
+  desc: |
+    Com ele você fabrica wafers e circuitos usados em quase tudo. Dê energia, coloque silício e redstone. É lento, mas valioso. Perfeito para ligar e esquecer.
+  tasks:
+  - {get: 'GalacticraftCore:tile.machine2:4'}
+  rewards:
+  - {xp: 3}
+  - choice: ['ore:waferBasic x6', 'minecraft:redstone x32']
+- id: bancada_nasa
+  title: Bancada da NASA
+  type: main
+  deps: [fabricador_de_circuitos]
+  desc: |
+    Aqui nasce o foguete! A §eBancada de Foguete§r (NASA) exige aço comprimido e muita paciência. Uma estrutura bonita, com encaixes precisos. Cada peça do foguete tem seu lugar.
+  tasks:
+  - {get: 'GalacticraftCore:tile.rocketWorkbench'}
+  rewards:
+  - {xp: 5}
+  - choice: ['ore:compressedSteel x8', 'minecraft:iron_ingot x16']
+- id: motor_e_aletas
+  title: Motor e Aletas
+  type: main
+  deps: [bancada_nasa]
+  desc: |
+    Peças do foguete: o motor, as aletas e o cone. Feitos com aço comprimido, latas de combustível e outros. Cada peça carrega a ambição de quem quer chegar ao céu.
+  tasks:
+  - get: ['GalacticraftCore:item.engine', 'GalacticraftCore:item.rocketFins x4']
+  rewards:
+  - {xp: 5}
+  - choice: ['GalacticraftCore:item.noseCone', 'minecraft:iron_ingot x16']
+- id: foguete_t1
+  title: Foguete T1
+  type: main
+  deps: [motor_e_aletas]
+  desc: |
+    Foguete montado! O §eFoguete Tier 1§r leva até a Lua com combustível e oxigênio. Ainda falta a plataforma de lançamento e o combustível. Quando ele estiver parado na plataforma, tire uma foto, Herói.
+  tasks:
+  - {get: 'GalacticraftCore:item.spaceship:*'}
+  rewards:
+  - {xp: 5}
+  - choice: ['GalacticraftCore:item.canister x4', 'minecraft:iron_ingot x16']
+- id: plataforma
+  title: Plataforma de Lançamento
+  type: main
+  deps: [foguete_t1]
+  desc: |
+    A plataforma de lançamento é um quadrado 3x3 de blocos de pouso. Posicione o foguete no centro e conecte o carregador de combustível ao lado. Segurança em primeiro lugar!
+  tasks:
+  - {get: 'GalacticraftCore:tile.landingPad x9'}
+  rewards:
+  - {xp: 5}
+  - choice: ['GalacticraftCore:tile.fuelLoader', 'minecraft:iron_ingot x16']
+- id: petroleo_e_refinaria
+  title: Petróleo e Refinaria
+  type: main
+  deps: [plataforma]
+  desc: |
+    O combustível sai do óleo. A §eRefinaria§r transforma petróleo em combustível de foguete. Procure poças de petróleo (as manchas escuras no deserto e no oceano) e use o extrator. Boa sorte!
+  tasks:
+  - {get: 'GalacticraftCore:tile.refinery'}
+  rewards:
+  - {xp: 5}
+  - choice: ['GalacticraftCore:item.oilExtractor', 'minecraft:iron_ingot x16']
+- id: combustivel
+  title: Combustível
+  type: main
+  deps: [petroleo_e_refinaria]
+  desc: |
+    Um balde de §eCombustível§r na mão significa que a Lua está ao alcance. O foguete T1 precisa de pelo menos um tanque cheio. Mantenha reservas e jamais decole com o tanque pela metade.
+  tasks:
+  - {get: 'GalacticraftCore:item.bucketFuel'}
+  rewards:
+  - {xp: 5}
+  - choice: ['GalacticraftCore:item.canister x2', 'minecraft:iron_ingot x8']
+- id: mascara_oxigenio
+  title: Máscara e Tanque
+  type: main
+  deps: [combustivel]
+  desc: |
+    Sem oxigênio, o astronauta sufoca em segundos. Use a §eMáscara de Oxigênio§r, o equipamento e os tanques cheios. Encha no Compressor de Oxigênio e confira o medidor.
+  tasks:
+  - get: ['GalacticraftCore:item.oxygenMask', 'GalacticraftCore:item.oxygenGear']
+  rewards:
+  - {xp: 5}
+  - choice: ['GalacticraftCore:item.oxygenTankLightFull x2', 'minecraft:iron_ingot x8']
+- id: paraquedas
+  title: Paraquedas
+  type: normal
+  deps: [mascara_oxigenio]
+  desc: |
+    Caso o foguete falhe, o paraquedas salva. Faça com lã e fios, e use quando precisar pousar sozinho. Os heróis lendários nunca decolavam sem um no inventário.
+  tasks:
+  - {get: 'GalacticraftCore:item.parachute:*'}
+  rewards:
+  - {xp: 3}
+  - choice: ['minecraft:wool:* x8', 'minecraft:string x16']
+- id: coletor_oxigenio
+  title: Coletor de Oxigênio
+  type: normal
+  deps: [paraquedas]
+  desc: |
+    Plantas viram oxigênio. O §eColetor§r puxa o ar produzido por folhas e árvores próximas. Combine com um Selador e uma base, e você respira sem tanque. Uma estufa no espaço é um sonho antigo.
+  tasks:
+  - {get: 'GalacticraftCore:tile.oxygenCollector'}
+  rewards:
+  - {xp: 3}
+  - choice: ['GalacticraftCore:tile.oxygenPipe x12', 'minecraft:iron_ingot x8']
+- id: selador_oxigenio
+  title: Selador
+  type: normal
+  deps: [coletor_oxigenio]
+  desc: |
+    O §eSelador§r veda a base e o §eDistribuidor§r espalha o oxigênio. Cuide para que não haja vazamentos. Uma bolha de ar pode salvar a vida e a expedição.
+  tasks:
+  - get: ['GalacticraftCore:tile.sealer', 'GalacticraftCore:tile.distributor']
+  rewards:
+  - {xp: 3}
+  - choice: ['GalacticraftCore:tile.airLockFrame x8', 'minecraft:iron_ingot x16']
+- id: lua
+  title: A Lua
+  type: portal
+  deps: [selador_oxigenio]
+  icon: GalacticraftCore:item.flag
+  desc: |
+    Um pequeno passo para o Herói. O silêncio é absoluto, a poeira é cinza e a Terra pende no céu, azul. Planeje um posto de base, instale o selador e explore com cuidado. As lendas diziam que a Lua é cheia de dungeons e mistérios.
+  tasks:
+  - visit: {dim: -28, name: Lua}
+  rewards:
+  - {xp: 3}
+  - choice: ['GalacticraftCore:item.flag', 'GalacticraftCore:item.oxygenTankLightFull']
+- id: ferro_meteorico
+  title: Ferro Meteórico
+  type: normal
+  deps: [lua]
+  desc: |
+    Meteoritos caem de vez em quando, trazendo §eFerro Meteórico§r. Quebre os blocos e funda. O metal é denso, resistente e indispensável para o segundo tier. Guarde bastante.
+  tasks:
+  - {get: 'GalacticraftCore:item.meteoricIronIngot x16'}
+  rewards:
+  - {xp: 3}
+  - choice: ['ore:compressedMeteoricIron x4', 'minecraft:iron_ingot x16']
+- id: minerios_lunares
+  title: Minérios da Lua
+  type: normal
+  deps: [ferro_meteorico]
+  desc: |
+    Cobre, estanho e queijo lunar (sim, existe!) esperam sob a poeira. Minere e leve para casa. A mineração lunar não tem mistério, mas exige tanque de oxigênio cheio.
+  tasks:
+  - get: ['GalacticraftCore:tile.moonBlock x8', 'GalacticraftCore:tile.moonBlock:1 x8']
+  rewards:
+  - {xp: 3}
+  - choice: ['minecraft:iron_ingot x16', 'minecraft:redstone x32']
+- id: queijo_lunar
+  title: Queijo da Lua
+  type: optional
+  deps: [minerios_lunares]
+  desc: |
+    A lenda é verdade, Herói: a Lua tem queijo. Procure as formas esbranquiçadas e colete. Faça um bloco e deixe no refeitório da base. Os heróis do passado nunca explicaram como isso é possível.
+  tasks:
+  - {get: 'GalacticraftCore:item.cheeseCurd x8'}
+  rewards:
+  - {xp: 3}
+  - choice: ['GalacticraftCore:tile.cheeseBlock', 'minecraft:cooked_beef x8']
+- id: monstros_evoluidos
+  title: Monstros Evoluídos
+  type: normal
+  deps: [queijo_lunar]
+  icon: GalacticraftCore:item.sensorGlasses
+  desc: |
+    No espaço, zumbis, esqueletos e creepers evoluíram, ficando mais fortes e respirando o vazio. Leve armadura boa e combata em grupo. Derrote §e3 zumbis evoluídos§r e colete os itens que deixam.
+  tasks:
+  - kill: {entity: GalacticraftCore.EvolvedZombie, count: 3}
+  rewards:
+  - {xp: 3}
+  - choice: ['GalacticraftCore:item.sensorGlasses', 'minecraft:experience_bottle x8']
+- id: calabouco_lunar
+  title: Calabouço Lunar
+  type: boss
+  deps: [monstros_evoluidos]
+  icon: GalacticraftCore:item.key
+  desc: |
+    Sob a superfície, o calabouço do §cEsqueleto Chefe§r guarda a chave dos tesouros. Entre pelo labirinto, enfrente os guardiões e vença o chefe. A recompensa são esquemáticos para novos foguetes. Uma das lutas mais emocionantes da Lua.
+  tasks:
+  - kill: {entity: GalacticraftCore.EvolvedSkeletonBoss, count: 1}
+  rewards:
+  - {xp: 20}
+  - choice: ['GalacticraftCore:item.schematic', 'GalacticraftCore:item.schematic:1']
+  - {loot: epico}
+- id: buggy_lunar
+  title: O Buggy Lunar
+  type: optional
+  deps: [calabouco_lunar]
+  desc: |
+    Um carrinho para passear na Lua! O §eBuggy§r precisa de esquemático, rodas e combustível. Perfeito para explorar a superfície. Um pouco de diversão no meio de tanto trabalho.
+  tasks:
+  - {get: 'GalacticraftCore:item.buggy:*'}
+  rewards:
+  - {xp: 3}
+  - choice: ['GalacticraftCore:item.buggymat x2', 'minecraft:iron_ingot x16']
+- id: foguete_t2
+  title: Foguete T2
+  type: main
+  deps: [buggy_lunar]
+  desc: |
+    Com ferro meteórico, painéis de blindagem e um esquemático, o §eFoguete Tier 2§r chega a Marte. Mais complicado e mais caro, mas o resultado é uma máquina bonita. Boa viagem, Herói.
+  tasks:
+  - {get: 'GalacticraftMars:item.spaceshipTier2:*'}
+  rewards:
+  - {xp: 5}
+  - choice: ['GalacticraftMars:item.thermalPadding', 'minecraft:diamond x4']
+- id: marte
+  title: Marte
+  type: portal
+  deps: [foguete_t2]
+  icon: GalacticraftMars:tile.mars
+  desc: |
+    O planeta vermelho! Poeira laranja, vulcões de lodo e cavernas gigantes. Marte tem criaturas diferentes, minérios novos e uma dungeon sinistra. Marque a plataforma de pouso e descubra tudo. Aproveite o céu rosa.
+  tasks:
+  - visit: {dim: -29, name: Marte}
+  rewards:
+  - {xp: 3}
+  - choice: ['GalacticraftMars:item.deshPick', 'minecraft:diamond x4']
+- id: desh
+  title: Lingotes de Desh
+  type: main
+  deps: [marte]
+  desc: |
+    O metal marciano: §eDesh§r. Forte, leve e brilhante. Minere os blocos azulados e funda. Vai virar ferramentas, armaduras e peças de foguete. Muito valioso.
+  tasks:
+  - {get: 'ore:ingotDesh x24'}
+  rewards:
+  - {xp: 5}
+  - choice: ['ore:compressedDesh x4', 'minecraft:diamond x4']
+- id: creeper_chefe
+  title: Creeper Chefe de Marte
+  type: boss
+  deps: [desh]
+  icon: GalacticraftMars:item.key
+  desc: |
+    O calabouço marciano guarda um §cCreeper gigante§r que explode ao menor deslize. Entre com cuidado, desvie das armadilhas e golpeie de longe. Tesouros esperam no fundo. É um dos grandes momentos da corrida espacial.
+  tasks:
+  - kill: {entity: GalacticraftMars.CreeperBoss, count: 1}
+  rewards:
+  - {xp: 20}
+  - choice: ['GalacticraftMars:item.schematic', 'GalacticraftMars:item.schematic:1']
+  - {loot: epico}
+- id: asteroides
+  title: Os Asteroides
+  type: portal
+  deps: [creeper_chefe]
+  icon: GalacticraftMars:tile.asteroidsBlock
+  desc: |
+    Com o Foguete Tier 3, o céu se abre: o cinturão de asteroides flutua como ilhas de rocha. Salte entre eles com cuidado, pois não há chão embaixo. Leve gancho e tanque cheio. Titânio e gelo denso esperam por você.
+  tasks:
+  - visit: {dim: -30, name: Asteroides}
+  rewards:
+  - {xp: 3}
+  - choice: ['GalacticraftMars:item.grapple', 'minecraft:diamond x4']
+- id: titanio
+  title: Lingotes de Titânio
+  type: normal
+  deps: [asteroides]
+  desc: |
+    O metal dos asteroides, leve e resistente. O §eTitânio§r faz armaduras e ferramentas de ponta. Reúna 24 lingotes e guarde para o futuro.
+  tasks:
+  - {get: 'ore:ingotTitanium x24'}
+  rewards:
+  - {xp: 3}
+  - choice: ['ore:compressedTitanium x4', 'minecraft:diamond x4']
+- id: estacao_milestone
+  title: A Casa no Espaço
+  type: milestone
+  deps: [titanio]
+  desc: |
+    Lua, Marte e Asteroides, o céu inteiro na palma da mão. Nos episódios mais loucos da Era do Futuro, a Casa do Futuro foi parar no espaço, e alguém até levou porcos para lá. Agora, com a sua nave pronta, você pode fazer o mesmo.
+
+    Mas toda jornada termina, Herói. A última página já se abre, e ela guarda a despedida. Leve o coração cheio e as mãos limpas: chegou §eO Fim§r.
+  tasks:
+  - get: ['GalacticraftMars:item.itemTier3Rocket:*', 'GalacticraftMars:item.deshPick', 'GalacticraftCore:tile.sealer']
+  rewards:
+  - {xp: 25}
+  - kit:
+      name: Kit Espacial
+      items: ['GalacticraftCore:item.oxygenTankLightFull x4', 'GalacticraftMars:item.thermalPadding',
+        'ore:compressedDesh x8', 'ore:compressedTitanium x8', 'minecraft:diamond x16']
+  - {loot: raro}
