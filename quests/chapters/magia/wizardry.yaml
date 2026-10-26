@@ -58,8 +58,9 @@ quests:
     deps: [minerio_cristal]
     icon: wizardry:crystal_flower
     desc: |
-      Já viu uma florzinha brilhando no mato? É uma §eFlor de Cristal§r, fonte natural de mana
-      na superfície. Na bancada, uma flor vira §e2 Cristais Mágicos§r. Colha §e4§r.
+      Já viu uma florzinha brilhando no mato, Herói? É uma §eFlor de Cristal§r, fonte natural de mana na superfície.
+
+      Na bancada, uma flor vira §e2 Cristais Mágicos§r. Colha §e4§r e comece sua jornada arcana!
     tasks:
       - get: wizardry:crystal_flower x4
     rewards:
@@ -72,7 +73,9 @@ quests:
     deps: [minerio_cristal]
     icon: wizardry:crystal_block
     desc: |
-      Nove cristais = um §eBloco de Cristal§r. Bonito, compacto e brilhante — o seu cofre de mana.
+      Nove cristais = um §eBloco de Cristal§r. Bonito, compacto e brilhante: o seu cofre de mana!
+
+      Missão opcional, Herói. Perfeita para quem gosta de guardar tudo com estilo.
     tasks:
       - get: wizardry:crystal_block
     rewards:
@@ -86,8 +89,7 @@ quests:
     desc: |
       Livro + Cristal Mágico = §eThe Wizard's Handbook§r. Se perder, é só fazer outro.
 
-      Ele explica mana, varinhas, tiers, elementos, armaduras e torres — com as receitas. Leia
-      com carinho: o autor (Electroblob) caprichou.
+      Ele explica mana, varinhas, tiers, elementos, armaduras e torres, com as receitas. Leia com carinho: o autor (Electroblob) caprichou, Herói!
     tasks:
       - get: wizardry:wizard_handbook
     rewards:
@@ -205,8 +207,9 @@ quests:
     deps: [pergaminho_branco]
     icon: wizardry:scroll:1
     desc: |
-      Grave (ou encontre) um pergaminho de qualquer feitiço. Eles também aparecem em baús de
-      masmorra e nas lojas dos magos.
+      Grave (ou encontre) um pergaminho de qualquer feitiço, Herói. Eles também aparecem em baús de masmorra e nas lojas dos magos.
+
+      Missão opcional, mas ótima para dar o primeiro gostinho de magia. Dúvida? NEI (R/U).
     tasks:
       - get: wizardry:scroll:*
     rewards:
@@ -233,8 +236,9 @@ quests:
     deps: [modo_descoberta]
     icon: wizardry:identification_scroll
     desc: |
-      Encontrado em baús ou comprado de magos, o §ePergaminho de Identificação§r revela um
-      feitiço desconhecido sem riscos. Guarde alguns para os livros de Mestre!
+      Encontrado em baús ou comprado de magos, o §ePergaminho de Identificação§r revela um feitiço desconhecido sem riscos.
+
+      Guarde alguns para os livros de Mestre, Herói!
     tasks:
       - get: wizardry:identification_scroll
     rewards:
@@ -272,10 +276,9 @@ quests:
     deps: [elementos]
     icon: wizardry:spell_book:2
     desc: |
-      Encontre (ou compre) qualquer livro de feitiço de §4Fogo§r: Ignição, Bola de Fogo, Raio de
-      Chamas, Bomba de Fogo, Selo de Fogo, Anel de Fogo, Detonar, Pele de Fogo, Meteoro...
+      Encontre (ou compre) qualquer livro de feitiço de §4Fogo§r: Ignição, Bola de Fogo, Raio de Chamas, Bomba de Fogo, Selo de Fogo, Anel de Fogo, Detonar, Pele de Fogo, Meteoro...
 
-      §cFogo põe fogo em tudo, inclusive na sua base.§r
+      §cFogo põe fogo em tudo, inclusive na sua base.§r Cuidado, Herói!
     tasks:
       - one_of: [wizardry:spell_book:2, wizardry:spell_book:13, wizardry:spell_book:14, wizardry:spell_book:15, wizardry:spell_book:16, wizardry:spell_book:17, wizardry:spell_book:48, wizardry:spell_book:49, wizardry:spell_book:50, wizardry:spell_book:51, wizardry:spell_book:52, wizardry:spell_book:53, wizardry:spell_book:91, wizardry:spell_book:92, wizardry:spell_book:93, wizardry:spell_book:111, wizardry:spell_book:114, wizardry:spell_book:124, wizardry:spell_book:125]
     rewards:
@@ -288,10 +291,9 @@ quests:
     deps: [elementos]
     icon: wizardry:spell_book:3
     desc: |
-      Qualquer livro de §bGelo§r: Congelar, Bola de Neve, Raio Gélido, Estilhaço de Gelo,
-      Estátua de Gelo, Nevasca, Machado de Gelo, Era do Gelo, Gigante de Gelo...
+      Encontre qualquer livro de §bGelo§r: Congelar, Bola de Neve, Raio Gélido, Estilhaço de Gelo, Estátua de Gelo, Nevasca, Machado de Gelo, Era do Gelo, Gigante de Gelo...
 
-      §aDica:§r Congelar transforma água em gelo — pontes instantâneas!
+      §aDica:§r Congelar transforma água em gelo, ou seja, pontes instantâneas!
     tasks:
       - one_of: [wizardry:spell_book:3, wizardry:spell_book:4, wizardry:spell_book:18, wizardry:spell_book:19, wizardry:spell_book:20, wizardry:spell_book:21, wizardry:spell_book:22, wizardry:spell_book:54, wizardry:spell_book:55, wizardry:spell_book:56, wizardry:spell_book:57, wizardry:spell_book:58, wizardry:spell_book:94, wizardry:spell_book:95, wizardry:spell_book:96, wizardry:spell_book:126, wizardry:spell_book:127, wizardry:spell_book:128, wizardry:spell_book:136]
     rewards:
@@ -304,10 +306,9 @@ quests:
     deps: [elementos]
     icon: wizardry:spell_book:5
     desc: |
-      Qualquer livro de §3Raio§r: Arco Elétrico, Trovão, Raio Contínuo, Bomba de Faíscas,
-      Faísca Teleguiada, Raio em Cadeia, Invocar Tempo, Martelo de Raio, Tempestade...
+      Encontre qualquer livro de §3Raio§r: Arco Elétrico, Trovão, Raio Contínuo, Bomba de Faíscas, Faísca Teleguiada, Raio em Cadeia, Invocar Tempo, Martelo de Raio, Tempestade...
 
-      §cRaio carrega creepers.§r Você foi avisado.
+      §cRaio carrega creepers.§r Você foi avisado, Herói!
     tasks:
       - one_of: [wizardry:spell_book:5, wizardry:spell_book:6, wizardry:spell_book:23, wizardry:spell_book:24, wizardry:spell_book:25, wizardry:spell_book:26, wizardry:spell_book:27, wizardry:spell_book:59, wizardry:spell_book:60, wizardry:spell_book:61, wizardry:spell_book:62, wizardry:spell_book:63, wizardry:spell_book:64, wizardry:spell_book:97, wizardry:spell_book:98, wizardry:spell_book:129, wizardry:spell_book:137, wizardry:spell_book:138]
     rewards:
@@ -320,11 +321,9 @@ quests:
     deps: [elementos]
     icon: wizardry:spell_book:7
     desc: |
-      Qualquer livro de §5Necromancia§r: Invocar Zumbi, Dreno de Vida, Invocar Esqueleto,
-      Murchar, Controle Mental, Caveira de Wither, Orbe das Trevas, Decadência, Legião de
-      Esqueletos...
+      Encontre qualquer livro de §5Necromancia§r: Invocar Zumbi, Dreno de Vida, Invocar Esqueleto, Murchar, Controle Mental, Caveira de Wither, Orbe das Trevas, Decadência, Legião de Esqueletos...
 
-      Necromantes não são necessariamente maus. Só... incompreendidos.
+      Necromantes não são necessariamente maus. Só... incompreendidos!
     tasks:
       - one_of: [wizardry:spell_book:7, wizardry:spell_book:28, wizardry:spell_book:29, wizardry:spell_book:30, wizardry:spell_book:31, wizardry:spell_book:65, wizardry:spell_book:66, wizardry:spell_book:67, wizardry:spell_book:68, wizardry:spell_book:69, wizardry:spell_book:70, wizardry:spell_book:71, wizardry:spell_book:99, wizardry:spell_book:100, wizardry:spell_book:101, wizardry:spell_book:112, wizardry:spell_book:115, wizardry:spell_book:116, wizardry:spell_book:130]
     rewards:
@@ -337,10 +336,9 @@ quests:
     deps: [elementos]
     icon: wizardry:spell_book:8
     desc: |
-      Qualquer livro de §2Terra§r: Armadilha, Dardo, Veneno, Aura de Crescimento, Bolha,
-      Redemoinho, Lobo Espiritual, Tornado, Planar, Cavalo Espiritual, Voo, Terremoto...
+      Encontre qualquer livro de §2Terra§r: Armadilha, Dardo, Veneno, Aura de Crescimento, Bolha, Redemoinho, Lobo Espiritual, Tornado, Planar, Cavalo Espiritual, Voo, Terremoto...
 
-      O elemento mais variado: ataque, defesa e utilidade.
+      É o elemento mais variado: ataque, defesa e utilidade. Boa escolha, Herói!
     tasks:
       - one_of: [wizardry:spell_book:8, wizardry:spell_book:9, wizardry:spell_book:32, wizardry:spell_book:33, wizardry:spell_book:34, wizardry:spell_book:35, wizardry:spell_book:36, wizardry:spell_book:37, wizardry:spell_book:72, wizardry:spell_book:73, wizardry:spell_book:74, wizardry:spell_book:75, wizardry:spell_book:76, wizardry:spell_book:77, wizardry:spell_book:102, wizardry:spell_book:103, wizardry:spell_book:104, wizardry:spell_book:113, wizardry:spell_book:117, wizardry:spell_book:118, wizardry:spell_book:131, wizardry:spell_book:139]
     rewards:
@@ -353,11 +351,9 @@ quests:
     deps: [elementos]
     icon: wizardry:spell_book:10
     desc: |
-      Qualquer livro de §aFeitiçaria§r: Luz, Telecinese, Piscar, Agilidade, Conjurar Espada/
-      Picareta/Arco, Flecha de Força, Petrificar, Invisibilidade, Levitação, Transporte, Buraco
-      Negro...
+      Encontre qualquer livro de §aFeitiçaria§r: Luz, Telecinese, Piscar, Agilidade, Conjurar Espada/Picareta/Arco, Flecha de Força, Petrificar, Invisibilidade, Levitação, Transporte, Buraco Negro...
 
-      Força e mudança: a magia de quem gosta de dobrar as regras.
+      Força e mudança: a magia de quem gosta de dobrar as regras, Herói!
     tasks:
       - one_of: [wizardry:spell_book:10, wizardry:spell_book:11, wizardry:spell_book:38, wizardry:spell_book:39, wizardry:spell_book:40, wizardry:spell_book:41, wizardry:spell_book:42, wizardry:spell_book:43, wizardry:spell_book:78, wizardry:spell_book:79, wizardry:spell_book:80, wizardry:spell_book:81, wizardry:spell_book:82, wizardry:spell_book:83, wizardry:spell_book:84, wizardry:spell_book:85, wizardry:spell_book:105, wizardry:spell_book:106, wizardry:spell_book:107, wizardry:spell_book:108, wizardry:spell_book:119, wizardry:spell_book:120, wizardry:spell_book:121, wizardry:spell_book:132]
     rewards:
@@ -370,10 +366,9 @@ quests:
     deps: [elementos]
     icon: wizardry:spell_book:12
     desc: |
-      Qualquer livro de §eCura§r: Curar, Escudo, Saciar Fome, Curar Efeitos, Curar Aliado, Cura
-      Maior, Aura de Cura, Campo de Força, Carne de Ferro, Carne de Diamante, Fonte de Mana...
+      Encontre qualquer livro de §eCura§r: Curar, Escudo, Saciar Fome, Curar Efeitos, Curar Aliado, Cura Maior, Aura de Cura, Campo de Força, Carne de Ferro, Carne de Diamante, Fonte de Mana...
 
-      Indispensável em combate. Eu fico mais tranquila sabendo que você tem um.
+      Indispensável em combate. Eu fico mais tranquila sabendo que você tem um!
     tasks:
       - one_of: [wizardry:spell_book:12, wizardry:spell_book:44, wizardry:spell_book:45, wizardry:spell_book:46, wizardry:spell_book:47, wizardry:spell_book:86, wizardry:spell_book:87, wizardry:spell_book:88, wizardry:spell_book:89, wizardry:spell_book:90, wizardry:spell_book:109, wizardry:spell_book:110, wizardry:spell_book:122, wizardry:spell_book:123, wizardry:spell_book:133, wizardry:spell_book:134, wizardry:spell_book:135, wizardry:spell_book:140]
     rewards:
@@ -466,8 +461,9 @@ quests:
     deps: [varinha_aprendiz]
     icon: wizardry:spell_book:79
     desc: |
-      Feitiços §9Avançados§r dão poderes sobre-humanos: Invisibilidade, Levitação, Pele de Fogo,
-      Mente Controlada, Transporte, Campo de Força... Encontre qualquer livro deste tier.
+      Feitiços §9Avançados§r dão poderes sobre-humanos: Invisibilidade, Levitação, Pele de Fogo, Mente Controlada, Transporte, Campo de Força...
+
+      Encontre qualquer livro deste tier, Herói. Procure em baús e com magos, e prepare-se para o salto de poder!
     tasks:
       - one_of: [wizardry:spell_book:48, wizardry:spell_book:49, wizardry:spell_book:50, wizardry:spell_book:51, wizardry:spell_book:52, wizardry:spell_book:53, wizardry:spell_book:54, wizardry:spell_book:55, wizardry:spell_book:56, wizardry:spell_book:57, wizardry:spell_book:58, wizardry:spell_book:59, wizardry:spell_book:60, wizardry:spell_book:61, wizardry:spell_book:62, wizardry:spell_book:63, wizardry:spell_book:64, wizardry:spell_book:65, wizardry:spell_book:66, wizardry:spell_book:67, wizardry:spell_book:68, wizardry:spell_book:69, wizardry:spell_book:70, wizardry:spell_book:71, wizardry:spell_book:72, wizardry:spell_book:73, wizardry:spell_book:74, wizardry:spell_book:75, wizardry:spell_book:76, wizardry:spell_book:77, wizardry:spell_book:78, wizardry:spell_book:79, wizardry:spell_book:80, wizardry:spell_book:81, wizardry:spell_book:82, wizardry:spell_book:83, wizardry:spell_book:84, wizardry:spell_book:85, wizardry:spell_book:86, wizardry:spell_book:87, wizardry:spell_book:88, wizardry:spell_book:89, wizardry:spell_book:90, wizardry:spell_book:124, wizardry:spell_book:125, wizardry:spell_book:126, wizardry:spell_book:127, wizardry:spell_book:128, wizardry:spell_book:129, wizardry:spell_book:130, wizardry:spell_book:131, wizardry:spell_book:132, wizardry:spell_book:133, wizardry:spell_book:134, wizardry:spell_book:135]
     rewards:
@@ -480,8 +476,9 @@ quests:
     deps: [livro_avancado]
     icon: wizardry:arcane_tome:2
     desc: |
-      O tomo de §9Avançado§r é mais raro. Procure em baús de masmorras e templos, ou pague caro
-      a um mago. Ele só funciona numa varinha de Aprendiz.
+      O tomo de §9Avançado§r é mais raro. Procure em baús de masmorras e templos, ou pague caro a um mago.
+
+      Atenção: ele só funciona numa varinha de Aprendiz. Boa caçada, Herói!
     tasks:
       - get: wizardry:arcane_tome:2
     rewards:
@@ -532,8 +529,9 @@ quests:
     deps: [livro_mestre]
     icon: wizardry:arcane_tome:3
     desc: |
-      O tomo mais raro de todos. Ele transforma uma varinha Avançada em §dMestre§r. Baús raros e
-      os magos mais ricos são a sua melhor aposta.
+      O tomo mais raro de todos! Ele transforma uma varinha Avançada em §dMestre§r.
+
+      Baús raros e os magos mais ricos são a sua melhor aposta, Herói. Vale a busca!
     tasks:
       - get: wizardry:arcane_tome:3
     rewards:
@@ -584,9 +582,9 @@ quests:
     deps: [varinha_elemental, varinha_mestre]
     icon: wizardry:master_fire_wand
     desc: |
-      O sonho de todo especialista: uma varinha elemental de §dMestre§r (Mestre Piromante, Mago
-      do Gelo, Mago da Tempestade, Necromante, Mago da Terra, Feiticeiro ou Curandeiro). Suba uma
-      varinha elemental com os três tomos, ou encontre uma.
+      O sonho de todo especialista: uma varinha elemental de §dMestre§r (Mestre Piromante, Mago do Gelo, Mago da Tempestade, Necromante, Mago da Terra, Feiticeiro ou Curandeiro).
+
+      Suba uma varinha elemental com os três tomos, ou encontre uma. Missão opcional, Herói.
     tasks:
       - one_of: [wizardry:master_fire_wand, wizardry:master_ice_wand, wizardry:master_lightning_wand, wizardry:master_necromancy_wand, wizardry:master_earth_wand, wizardry:master_sorcery_wand, wizardry:master_healing_wand]
     rewards:
@@ -617,8 +615,9 @@ quests:
     deps: [upgrades_varinha]
     icon: wizardry:storage_upgrade
     desc: |
-      Aumenta a §emana máxima§r da varinha. (Com ele, a varinha vazia pode não pegar um número
-      exato de cristais.)
+      O Upgrade de Armazenamento aumenta a §emana máxima§r da varinha. (Com ele, a varinha vazia pode não pegar um número exato de cristais.)
+
+      Missão opcional, Herói. Mais mana, mais magia!
     tasks:
       - get: wizardry:storage_upgrade
     rewards:
@@ -630,8 +629,9 @@ quests:
     deps: [upgrades_varinha]
     icon: wizardry:siphon_upgrade
     desc: |
-      A varinha §erecupera mana quando você mata criaturas§r. Excelente para quem vive em
-      combate.
+      Com o Upgrade de Sifão, a varinha §erecupera mana quando você mata criaturas§r.
+
+      Excelente para quem vive em combate, Herói. Missão opcional, mas muito satisfatória.
     tasks:
       - get: wizardry:siphon_upgrade
     rewards:
@@ -643,8 +643,9 @@ quests:
     deps: [upgrades_varinha]
     icon: wizardry:condenser_upgrade
     desc: |
-      A varinha §eregenera mana sozinha§r, devagarzinho, com o passar do tempo. Menos viagens à
-      bancada!
+      Com o Upgrade de Condensador, a varinha §eregenera mana sozinha§r, devagarzinho, com o passar do tempo.
+
+      Menos viagens à bancada, Herói! Missão opcional.
     tasks:
       - get: wizardry:condenser_upgrade
     rewards:
@@ -656,7 +657,9 @@ quests:
     deps: [upgrades_varinha]
     icon: wizardry:range_upgrade
     desc: |
-      Aumenta o §ealcance§r dos feitiços lançados com a varinha.
+      O Upgrade de Alcance aumenta o §ealcance§r dos feitiços lançados com a varinha.
+
+      Se ainda não sabe como conseguir um, confira no NEI (R/U) ou no manual do mod. Missão opcional, Herói, mas dá um alcance de respeito aos seus feitiços!
     tasks:
       - get: wizardry:range_upgrade
     rewards:
@@ -668,7 +671,9 @@ quests:
     deps: [upgrades_varinha]
     icon: wizardry:duration_upgrade
     desc: |
-      Aumenta a §eduração§r de efeitos e invocações.
+      O Upgrade de Duração aumenta a §eduração§r de efeitos e invocações.
+
+      Se precisar de ajuda para obter um, confira no NEI (R/U) ou no manual do mod. Missão opcional, Herói, mas ótima para quem gosta de invocar aliados.
     tasks:
       - get: wizardry:duration_upgrade
     rewards:
@@ -680,7 +685,9 @@ quests:
     deps: [upgrades_varinha]
     icon: wizardry:cooldown_upgrade
     desc: |
-      Reduz o §etempo de recarga§r entre um lançamento e outro.
+      O Upgrade de Recarga reduz o §etempo de recarga§r entre um lançamento e outro.
+
+      Se precisar de ajuda para obter um, confira no NEI (R/U) ou no manual do mod. Missão opcional, Herói, mas faz toda a diferença no meio de uma luta!
     tasks:
       - get: wizardry:cooldown_upgrade
     rewards:
@@ -692,7 +699,9 @@ quests:
     deps: [upgrades_varinha]
     icon: wizardry:blast_upgrade
     desc: |
-      Aumenta o §eraio§r dos feitiços de área e explosões. §cMais raio = mais estrago na base.§r
+      O Upgrade de Explosão aumenta o §eraio§r dos feitiços de área e explosões. §cMais raio = mais estrago na base.§r
+
+      Confira no NEI (R/U) ou no manual do mod como obtê-lo. Missão opcional, Herói. Cuidado onde conjura!
     tasks:
       - get: wizardry:blast_upgrade
     rewards:
@@ -704,8 +713,9 @@ quests:
     deps: [upgrades_varinha]
     icon: wizardry:attunement_upgrade
     desc: |
-      Cada §eUpgrade de Sintonia§r libera §emais um slot de feitiço§r na varinha (o padrão é 5).
-      O meu favorito!
+      Cada §eUpgrade de Sintonia§r libera §emais um slot de feitiço§r na varinha (o padrão é 5). O meu favorito!
+
+      Se precisar de ajuda para obter um, confira no NEI (R/U) ou no manual do mod. Missão opcional, Herói, mas seu repertório agradece.
     tasks:
       - get: wizardry:attunement_upgrade
     rewards:
@@ -720,8 +730,9 @@ quests:
     deps: [minerio_cristal]
     icon: wizardry:magic_silk
     desc: |
-      Quatro linhas em volta de um Cristal Mágico = §e2 Sedas Mágicas§r. É o tecido de todas as
-      vestes de mago. São necessárias 24 sedas para o conjunto inteiro.
+      Quatro linhas em volta de um Cristal Mágico = §e2 Sedas Mágicas§r, o tecido de todas as vestes de mago.
+
+      São necessárias 24 sedas para o conjunto inteiro, então já vá juntando, Herói. Faça 8 por agora.
     tasks:
       - get: wizardry:magic_silk x8
     rewards:
@@ -734,9 +745,9 @@ quests:
     deps: [seda_magica]
     icon: wizardry:wizard_hat
     desc: |
-      Cinco sedas no formato de capacete. As roupas de mago §enão quebram§r: usam energia
-      arcana para proteger, então precisam ser §ecarregadas com cristais§r na Bancada Arcana (ou
-      com Frasco de Mana). Sem carga, elas não protegem nada!
+      Cinco sedas no formato de capacete formam o §eChapéu de Mago§r. As roupas de mago §enão quebram§r: usam energia arcana para proteger, então precisam ser §ecarregadas com cristais§r na Bancada Arcana (ou com Frasco de Mana).
+
+      §cSem carga, elas não protegem nada!§r
     tasks:
       - get: wizardry:wizard_hat
     rewards:
@@ -749,7 +760,9 @@ quests:
     deps: [seda_magica]
     icon: wizardry:wizard_robe
     desc: |
-      Oito sedas no formato de peitoral = §eWizard Robes§r. Elas gastam pouca mana — mas gastam.
+      Oito sedas no formato de peitoral = §eWizard Robes§r. Elas gastam pouca mana, mas gastam.
+
+      Lembre de carregar a veste com cristais na Bancada Arcana, Herói. Falta a receita? Aperte R no NEI.
     tasks:
       - get: wizardry:wizard_robe
     rewards:
@@ -763,6 +776,8 @@ quests:
     icon: wizardry:wizard_leggings
     desc: |
       Sete sedas no formato de calça = §eWizard Leggings§r.
+
+      Mais uma peça do seu traje arcano, Herói! Lembre de carregar com cristais na Bancada Arcana quando terminar o conjunto.
     tasks:
       - get: wizardry:wizard_leggings
     rewards:
@@ -776,6 +791,8 @@ quests:
     icon: wizardry:wizard_boots
     desc: |
       Quatro sedas no formato de botas = §eWizard Boots§r.
+
+      Com isso o conjunto de mago fica completo, Herói! Carregue as peças com cristais na Bancada Arcana e desfile com estilo pelo Registro.
     tasks:
       - get: wizardry:wizard_boots
     rewards:
@@ -810,6 +827,8 @@ quests:
     icon: wizardry:wizard_robe_fire
     desc: |
       Encontre qualquer peça das §4vestes de Piromante§r (chapéu, túnica, calças ou botas).
+
+      Se precisar de pistas, confira no NEI (R/U) ou no manual do mod. Missão opcional, Herói, mas perfeita para quem ama um bom fogo!
     tasks:
       - one_of: [wizardry:wizard_hat_fire, wizardry:wizard_robe_fire, wizardry:wizard_leggings_fire, wizardry:wizard_boots_fire]
     rewards:
@@ -822,6 +841,8 @@ quests:
     icon: wizardry:wizard_robe_ice
     desc: |
       Encontre qualquer peça das §bvestes do Mago do Gelo§r.
+
+      Se precisar de pistas, confira no NEI (R/U) ou no manual do mod. Missão opcional, Herói, para quem prefere o frio elegante!
     tasks:
       - one_of: [wizardry:wizard_hat_ice, wizardry:wizard_robe_ice, wizardry:wizard_leggings_ice, wizardry:wizard_boots_ice]
     rewards:
@@ -834,6 +855,8 @@ quests:
     icon: wizardry:wizard_robe_lightning
     desc: |
       Encontre qualquer peça das §3vestes do Mago da Tempestade§r.
+
+      Se precisar de pistas, confira no NEI (R/U) ou no manual do mod. Missão opcional, Herói, mas com um toque elétrico!
     tasks:
       - one_of: [wizardry:wizard_hat_lightning, wizardry:wizard_robe_lightning, wizardry:wizard_leggings_lightning, wizardry:wizard_boots_lightning]
     rewards:
@@ -846,6 +869,8 @@ quests:
     icon: wizardry:wizard_robe_necromancy
     desc: |
       Encontre qualquer peça das §5vestes do Necromante§r.
+
+      Se precisar de pistas, confira no NEI (R/U) ou no manual do mod. Missão opcional, Herói, para quem tem um lado sombrio (mas simpático).
     tasks:
       - one_of: [wizardry:wizard_hat_necromancy, wizardry:wizard_robe_necromancy, wizardry:wizard_leggings_necromancy, wizardry:wizard_boots_necromancy]
     rewards:
@@ -858,6 +883,8 @@ quests:
     icon: wizardry:wizard_robe_earth
     desc: |
       Encontre qualquer peça das §2vestes do Mago da Terra§r.
+
+      Se precisar de pistas, confira no NEI (R/U) ou no manual do mod. Missão opcional, Herói, para quem tem os pés bem firmes no chão!
     tasks:
       - one_of: [wizardry:wizard_hat_earth, wizardry:wizard_robe_earth, wizardry:wizard_leggings_earth, wizardry:wizard_boots_earth]
     rewards:
@@ -870,6 +897,8 @@ quests:
     icon: wizardry:wizard_robe_sorcery
     desc: |
       Encontre qualquer peça das §avestes de Feitiçaria§r (Sorcerer).
+
+      Se precisar de pistas, confira no NEI (R/U) ou no manual do mod. Missão opcional, Herói, para os mestres de dobrar as regras!
     tasks:
       - one_of: [wizardry:wizard_hat_sorcery, wizardry:wizard_robe_sorcery, wizardry:wizard_leggings_sorcery, wizardry:wizard_boots_sorcery]
     rewards:
@@ -882,6 +911,8 @@ quests:
     icon: wizardry:wizard_robe_healing
     desc: |
       Encontre qualquer peça das §evestes do Curandeiro§r.
+
+      Se precisar de pistas, confira no NEI (R/U) ou no manual do mod. Missão opcional, Herói, mas todo grupo agradece um curandeiro!
     tasks:
       - one_of: [wizardry:wizard_hat_healing, wizardry:wizard_robe_healing, wizardry:wizard_leggings_healing, wizardry:wizard_boots_healing]
     rewards:
@@ -893,9 +924,9 @@ quests:
     deps: [traje_feiticeiro]
     icon: wizardry:armour_upgrade
     desc: |
-      "Uma lenda fala de um selo arcano usado pelos magos mais poderosos para melhorar muito
-      suas armaduras." O §eSelo Arcano de Proteção§r (só como saque) transforma qualquer peça de
-      armadura de mago em §6Lendária§r. Aplique na Bancada Arcana.
+      "Uma lenda fala de um selo arcano usado pelos magos mais poderosos para melhorar muito suas armaduras."
+
+      O §eSelo Arcano de Proteção§r (só como saque) transforma qualquer peça de armadura de mago em §6Lendária§r. Aplique na Bancada Arcana. Missão opcional, Herói, mas lendária!
     tasks:
       - get: wizardry:armour_upgrade
     rewards:
@@ -927,8 +958,9 @@ quests:
     deps: [torre_mago]
     icon: minecraft:emerald
     desc: |
-      Compre algo de um mago. Os mais úteis no começo: um §ePergaminho de Identificação§r ou um
-      §eTomo de Arcana de Aprendiz§r.
+      Compre algo de um mago, Herói! Os mais úteis no começo: um §ePergaminho de Identificação§r ou um §eTomo de Arcana de Aprendiz§r.
+
+      Troque umas esmeraldas e leve para casa. Os magos agradecem a freguesia!
     tasks:
       - one_of: [wizardry:identification_scroll, wizardry:arcane_tome:1]
     rewards:
@@ -963,8 +995,9 @@ quests:
     deps: [livro_feiticaria, varinha_aprendiz]
     icon: wizardry:spectral_sword
     desc: |
-      O feitiço de Aprendiz §eConjurar Espada§r cria uma §eEspada Espectral§r (força de espada de
-      ferro) que dura §e30 segundos§r e some. Conjure uma e me mostre antes que ela evapore!
+      O feitiço de Aprendiz §eConjurar Espada§r cria uma §eEspada Espectral§r (força de espada de ferro) que dura §e30 segundos§r e some.
+
+      Conjure uma e me mostre antes que ela evapore, Herói!
     tasks:
       - get: wizardry:spectral_sword
     rewards:
@@ -977,8 +1010,9 @@ quests:
     deps: [livro_feiticaria, varinha_aprendiz]
     icon: wizardry:spectral_pickaxe
     desc: |
-      §eConjurar Picareta§r cria uma §ePicareta Espectral§r de força igual à de ferro por 30
-      segundos. Ferramenta sem desgaste, à vontade!
+      §eConjurar Picareta§r cria uma §ePicareta Espectral§r de força igual à de ferro por 30 segundos.
+
+      Ferramenta sem desgaste, à vontade! Conjure uma, Herói, e mostre antes que ela suma.
     tasks:
       - get: wizardry:spectral_pickaxe
     rewards:
@@ -991,7 +1025,9 @@ quests:
     deps: [livro_feiticaria, varinha_aprendiz]
     icon: wizardry:spectral_bow
     desc: |
-      §eConjurar Arco§r: um §eArco Espectral§r com flechas ilimitadas por 30 segundos.
+      §eConjurar Arco§r cria um §eArco Espectral§r com flechas ilimitadas por 30 segundos.
+
+      Conjure um e mostre antes que o tempo acabe, Herói. Mire bem!
     tasks:
       - get: wizardry:spectral_bow
     rewards:
@@ -1004,9 +1040,9 @@ quests:
     deps: [livro_cura, varinha_avancada]
     icon: wizardry:spectral_chestplate
     desc: |
-      O feitiço Avançado de Cura §eConjurar Armadura§r cobre você com armadura espectral
-      equivalente à de ferro por 60 segundos (precisa de slots de armadura vazios). Mostre
-      qualquer peça.
+      O feitiço Avançado de Cura §eConjurar Armadura§r cobre você com armadura espectral equivalente à de ferro por 60 segundos (precisa de slots de armadura vazios).
+
+      Conjure e mostre qualquer peça, Herói. Missão opcional!
     tasks:
       - one_of: [wizardry:spectral_helmet, wizardry:spectral_chestplate, wizardry:spectral_leggings, wizardry:spectral_boots]
     rewards:
@@ -1018,8 +1054,9 @@ quests:
     deps: [varinha_avancada]
     icon: wizardry:flaming_axe
     desc: |
-      Dois feitiços Avançados criam machados temporários (30 s): o §4Machado Flamejante§r (põe
-      fogo no alvo) e o §bMachado de Gelo§r (congela). Conjure um deles.
+      Dois feitiços Avançados criam machados temporários (30 s): o §4Machado Flamejante§r (põe fogo no alvo) e o §bMachado de Gelo§r (congela).
+
+      Conjure um deles, Herói. Missão opcional, mas bem impressionante!
     tasks:
       - one_of: [wizardry:flaming_axe, wizardry:frost_axe]
     rewards:
@@ -1031,8 +1068,9 @@ quests:
     deps: [minerio_cristal]
     icon: wizardry:firebomb
     desc: |
-      Frasco, pólvora e dois de: pó de blaze (§4Bomba de Fogo§r), olho de aranha (§2Bomba de
-      Veneno§r) ou carvão (§7Bomba de Fumaça§r). Cada receita rende 3. Arremesse e corra!
+      Frasco, pólvora e dois de: pó de blaze (§4Bomba de Fogo§r), olho de aranha (§2Bomba de Veneno§r) ou carvão (§7Bomba de Fumaça§r). Cada receita rende 3.
+
+      Arremesse e corra, Herói! Faça qualquer uma.
     tasks:
       - one_of: [wizardry:firebomb, wizardry:poison_bomb, wizardry:smoke_bomb]
     rewards:
@@ -1044,9 +1082,9 @@ quests:
     deps: [minerio_cristal]
     icon: wizardry:transportation_stone
     desc: |
-      Quatro pedras em volta de um Cristal Mágico = §e2 Pedras de Transporte§r. Faça um §ecírculo
-      de pedras§r, clique nele com a varinha para memorizá-lo e, com o feitiço Avançado
-      §eTransporte§r, você volta para lá de onde estiver (na mesma dimensão).
+      Quatro pedras em volta de um Cristal Mágico = §e2 Pedras de Transporte§r. Faça um §ecírculo de pedras§r, clique nele com a varinha para memorizá-lo e, com o feitiço Avançado §eTransporte§r, você volta para lá de onde estiver (na mesma dimensão).
+
+      Faça 4, Herói!
     tasks:
       - get: wizardry:transportation_stone x4
     rewards:
@@ -1108,7 +1146,7 @@ quests:
     desc: |
       O básico que salva vidas: §eHeal§r (Novato, Cura) recupera 2 corações por 5 de mana. Vincule e nunca mais tire da varinha.
 
-      Encontre ou compre o livro deste feitiço.
+      Encontre ou compre o livro deste feitiço. Missão opcional, Herói, mas minha favorita!
     tasks:
       - get: wizardry:spell_book:12
     rewards:
@@ -1120,9 +1158,9 @@ quests:
     deps: [livro_gelo]
     icon: wizardry:spell_book:3
     desc: |
-      §eFreeze§r (Novato, Gelo) congela o alvo por 10 segundos e também §etransforma água em gelo§r (e cobre o chão de neve): atravesse rios sem barco.
+      §eFreeze§r (Novato, Gelo) congela o alvo por 10 segundos e também §etransforma água em gelo§r (e cobre o chão de neve): atravesse rios sem barco!
 
-      Encontre ou compre o livro deste feitiço.
+      Encontre ou compre o livro deste feitiço, Herói. Missão opcional.
     tasks:
       - get: wizardry:spell_book:3
     rewards:
@@ -1134,9 +1172,9 @@ quests:
     deps: [livro_feiticaria]
     icon: wizardry:spell_book:10
     desc: |
-      §eLight§r (Novato, Feitiçaria) cria um ponto de luz mágica que ilumina a área por 30 segundos.
+      §eLight§r (Novato, Feitiçaria) cria um ponto de luz mágica que ilumina a área por 30 segundos. Perfeito para cavernas escuras!
 
-      Encontre ou compre o livro deste feitiço.
+      Encontre ou compre o livro deste feitiço, Herói. Missão opcional.
     tasks:
       - get: wizardry:spell_book:10
     rewards:
@@ -1150,7 +1188,7 @@ quests:
     desc: |
       §eTelekinesis§r (Novato) puxa um item ou objeto pequeno até você, ou clica no bloco que você mira. No pack, também §edesarma jogadores§r (opção ligada na config).
 
-      Encontre ou compre o livro deste feitiço.
+      Encontre ou compre o livro deste feitiço, Herói. Missão opcional.
     tasks:
       - get: wizardry:spell_book:11
     rewards:
@@ -1164,7 +1202,7 @@ quests:
     desc: |
       §eLeap§r (Novato, Terra) lança você para o alto e para frente. Combina muito bem com uma queda amortecida...
 
-      Encontre ou compre o livro deste feitiço.
+      Encontre ou compre o livro deste feitiço, Herói. Missão opcional, mas bem divertida!
     tasks:
       - get: wizardry:spell_book:113
     rewards:
@@ -1176,9 +1214,9 @@ quests:
     deps: [livro_fogo]
     icon: wizardry:spell_book:13
     desc: |
-      §eFireball§r (Aprendiz, Fogo): o clássico projétil explosivo de chamas. §cNão use dentro de casa de madeira.§r
+      §eFireball§r (Aprendiz, Fogo) é o clássico projétil explosivo de chamas. §cNão use dentro de casa de madeira.§r
 
-      Encontre ou compre o livro deste feitiço.
+      Encontre ou compre o livro deste feitiço, Herói. Missão opcional, mas poderosa!
     tasks:
       - get: wizardry:spell_book:13
     rewards:
@@ -1190,9 +1228,9 @@ quests:
     deps: [livro_feiticaria]
     icon: wizardry:spell_book:38
     desc: |
-      §eBlink§r (Aprendiz, Feitiçaria) teletransporta você alguns blocos para onde estiver olhando. Fuga ou perseguição em um clique.
+      §eBlink§r (Aprendiz, Feitiçaria) teletransporta você alguns blocos para onde estiver olhando. Fuga ou perseguição em um clique!
 
-      Encontre ou compre o livro deste feitiço.
+      Encontre ou compre o livro deste feitiço, Herói. Missão opcional.
     tasks:
       - get: wizardry:spell_book:38
     rewards:
@@ -1206,7 +1244,7 @@ quests:
     desc: |
       §eShield§r (Aprendiz, Cura) cria uma barreira de força que bloqueia projéteis e magia e ainda dá uma leve resistência. Funciona enquanto você segura o botão, gastando mana.
 
-      Encontre ou compre o livro deste feitiço.
+      Encontre ou compre o livro deste feitiço, Herói. Missão opcional.
     tasks:
       - get: wizardry:spell_book:44
     rewards:
@@ -1220,7 +1258,7 @@ quests:
     desc: |
       §ePocket Workbench§r (Aprendiz) abre uma bancada de trabalho onde você estiver. Pequenas magias também são magias!
 
-      Encontre ou compre o livro deste feitiço.
+      Encontre ou compre o livro deste feitiço, Herói. Missão opcional, mas muito prática.
     tasks:
       - get: wizardry:spell_book:120
     rewards:
@@ -1232,9 +1270,9 @@ quests:
     deps: [livro_fogo]
     icon: wizardry:spell_book:114
     desc: |
-      §ePocket Furnace§r (Aprendiz, Fogo) funde na hora até 5 itens do seu inventário (os da barra de atalhos primeiro). Minério vira lingote antes de sair da mina.
+      §ePocket Furnace§r (Aprendiz, Fogo) funde na hora até 5 itens do seu inventário (os da barra de atalhos primeiro). Minério vira lingote antes de sair da mina!
 
-      Encontre ou compre o livro deste feitiço.
+      Encontre ou compre o livro deste feitiço, Herói. Missão opcional.
     tasks:
       - get: wizardry:spell_book:114
     rewards:
@@ -1248,7 +1286,7 @@ quests:
     desc: |
       §eInvisibility§r (Avançado, Feitiçaria) deixa você invisível por 30 segundos. Perfeito para passar por perigos sem lutar.
 
-      Encontre ou compre o livro deste feitiço.
+      Encontre ou compre o livro deste feitiço, Herói. Missão opcional, mas muito esperta.
     tasks:
       - get: wizardry:spell_book:79
     rewards:
@@ -1262,7 +1300,7 @@ quests:
     desc: |
       §eLevitation§r (Avançado) faz você subir enquanto segura o botão e, usado antes de tocar o chão, anula o dano de queda.
 
-      Encontre ou compre o livro deste feitiço.
+      Encontre ou compre o livro deste feitiço, Herói. Missão opcional, mas bem útil!
     tasks:
       - get: wizardry:spell_book:80
     rewards:
@@ -1274,9 +1312,9 @@ quests:
     deps: [pedra_transporte]
     icon: wizardry:spell_book:82
     desc: |
-      §eTransportation§r (Avançado) leva você de volta ao círculo de Pedras de Transporte memorizado. O "voltar para casa" do feiticeiro.
+      §eTransportation§r (Avançado) leva você de volta ao círculo de Pedras de Transporte memorizado. O "voltar para casa" do feiticeiro!
 
-      Encontre ou compre o livro deste feitiço.
+      Encontre ou compre o livro deste feitiço, Herói. Missão opcional.
     tasks:
       - get: wizardry:spell_book:82
     rewards:
@@ -1288,9 +1326,9 @@ quests:
     deps: [livro_mestre]
     icon: wizardry:spell_book:103
     desc: |
-      §eFlight§r (Mestre, Terra): voe livremente enquanto segurar o botão e houver mana. Sim, voar de verdade!
+      §eFlight§r (Mestre, Terra) deixa você voar livremente enquanto segurar o botão e houver mana. Sim, voar de verdade!
 
-      Encontre ou compre o livro deste feitiço.
+      Encontre ou compre o livro deste feitiço, Herói. Missão opcional, mas inesquecível.
     tasks:
       - get: wizardry:spell_book:103
     rewards:
@@ -1302,9 +1340,9 @@ quests:
     deps: [livro_mestre]
     icon: wizardry:spell_book:91
     desc: |
-      §eMeteor§r (Mestre, Fogo) derruba um meteoro do céu. §cDestrói terreno — nunca perto da sua base.§r
+      §eMeteor§r (Mestre, Fogo) derruba um meteoro do céu. §cDestrói terreno, então nunca use perto da sua base.§r
 
-      Encontre ou compre o livro deste feitiço.
+      Encontre ou compre o livro deste feitiço, Herói. Missão opcional, mas de arrepiar!
     tasks:
       - get: wizardry:spell_book:91
     rewards:
@@ -1318,7 +1356,7 @@ quests:
     desc: |
       §eBlack Hole§r (Mestre, Feitiçaria) cria um buraco negro que suga criaturas e blocos. §cUm dos feitiços mais destrutivos do Volume.§r
 
-      Encontre ou compre o livro deste feitiço.
+      Encontre ou compre o livro deste feitiço, Herói. Missão opcional, e use com muita cautela!
     tasks:
       - get: wizardry:spell_book:105
     rewards:
@@ -1330,9 +1368,9 @@ quests:
     deps: [livro_mestre]
     icon: wizardry:spell_book:140
     desc: |
-      §eFont of Mana§r (Mestre, Cura) é um mistério até para mim: o livro só traz o trecho queimado do diário de um mago esquecido, falando de uma energia mágica intensa. Leia o livro (clique direito) e descubra.
+      §eFont of Mana§r (Mestre, Cura) é um mistério até para mim: o livro só traz o trecho queimado do diário de um mago esquecido, falando de uma energia mágica intensa.
 
-      Encontre ou compre o livro deste feitiço.
+      Encontre ou compre o livro deste feitiço, leia (clique direito) e descubra, Herói. Missão opcional.
     tasks:
       - get: wizardry:spell_book:140
     rewards:
