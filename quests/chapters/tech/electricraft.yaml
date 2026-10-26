@@ -113,9 +113,9 @@ quests:
     deps_hidden: [rotarycraft:fornalha_pulso]
     icon: RotaryCraft:rotarycraft_item_compacts:6
     desc: |
-      A §eLiga Indutiva§r do RotaryCraft: §eMistura de Metal Indutiva§r (redstone + pó de ouro,
-      ou + flocos de ouro do Extrator, sem forma) fundida na §eFornalha de Pulso a Jato§r. É o
-      primeiro upgrade do motor: aceita 2 fontes em vez de 1.
+      A §eLiga Indutiva§r do RotaryCraft nasce da §eMistura de Metal Indutiva§r (redstone + pó de ouro, ou + flocos de ouro do Extrator, sem forma) fundida na §eFornalha de Pulso a Jato§r.
+
+      É o primeiro upgrade do motor: aceita 2 fontes em vez de 1. Bom trabalho, engenheiro!
     tasks:
       - get: RotaryCraft:rotarycraft_item_compacts:6
     rewards:
@@ -172,9 +172,9 @@ quests:
     deps: [info_fios]
     icon: ElectriCraft:electricraft_item_wire:4
     desc: |
-      Todo fio começa §enu§r: o §eFio de Cobre§r sai da Mesa de Trabalho. Ele já conduz, mas
-      §cdá choque em quem encosta§r — e em tensão alta o choque mata. Faça alguns e depois
-      a versão isolada (receita no Manual).
+      Todo fio começa §enu§r: o §eFio de Cobre§r sai da Mesa de Trabalho. Ele já conduz, mas §cdá choque em quem encosta§r, e em tensão alta o choque mata.
+
+      Faça alguns e depois a versão isolada (receita no Manual). Segurança em primeiro lugar!
     tasks:
       - get: ElectriCraft:electricraft_item_wire:4 x8
     rewards:
@@ -187,8 +187,9 @@ quests:
     deps: [minerios_ec]
     icon: ElectriCraft:electricraft_block_ore:5
     desc: |
-      O metal mais raro do ElectriCraft: §ePlatina§r, entre Y 0 e 16. Ela faz o segundo
-      melhor fio do mod. Vale a pena guardar cada lingote.
+      O metal mais raro do ElectriCraft: §ePlatina§r, entre Y 0 e 16.
+
+      Ela faz o segundo melhor fio do mod, então vale a pena guardar cada lingote. Boa mineração, Herói!
     tasks:
       - get: ore:ingotPlatinum x4
     rewards:
@@ -201,7 +202,8 @@ quests:
     icon: ElectriCraft:electricraft_item_ingots:4
     desc: |
       §eAlumínio§r gera alto (Y 60–128, morros e montanhas) e §ePrata§r gera fundo (Y 0–32).
-      São os metais dos fios médios e pesados. Funda um pouco de cada.
+
+      São os metais dos fios médios e pesados. Funda um pouco de cada e prepare a rede elétrica!
     tasks:
       - get: [ore:ingotAluminum x8, ore:ingotSilver x8]
     rewards:
@@ -213,8 +215,9 @@ quests:
     deps: [fio_nu]
     icon: ElectriCraft:electricraft_item_wire:20
     desc: |
-      O fio "de trabalho": §eCobre Isolado§r, 4.096 A e resistência baixa. Faça §e16§r. (Fios
-      nus funcionam, mas pense em quem vai encostar neles.)
+      O fio "de trabalho" é o §eCobre Isolado§r, com 4.096 A e resistência baixa.
+
+      Faça §e16§r. Fios nus funcionam, mas pense em quem vai encostar neles. Segurança é coisa séria!
     tasks:
       - get: ElectriCraft:electricraft_item_wire:20 x16
     rewards:
@@ -227,8 +230,9 @@ quests:
     deps: [info_fios]
     icon: ElectriCraft:electricraft_item_wire:18
     desc: |
-      Para correntes baixas, §eEstanho§r (64 A) e §eNíquel§r (256 A) são baratos. Faça alguns de
-      cada, isolados.
+      Para correntes baixas, §eEstanho§r (64 A) e §eNíquel§r (256 A) são baratos.
+
+      Faça alguns de cada, isolados. Simples e econômico, Herói!
     tasks:
       - get: [ElectriCraft:electricraft_item_wire:17 x8, ElectriCraft:electricraft_item_wire:18 x8]
     rewards:
@@ -241,8 +245,9 @@ quests:
     deps: [info_fios]
     icon: ElectriCraft:electricraft_item_wire:19
     desc: |
-      §eAlumínio§r: 1.024 A, o meio-termo leve. Bom destino para o alumínio que o ElectriCraft
-      gera nas montanhas.
+      §eAlumínio§r: 1.024 A, o meio-termo leve.
+
+      É um bom destino para o alumínio que o ElectriCraft gera nas montanhas. Faça seu fio isolado e siga em frente!
     tasks:
       - get: ElectriCraft:electricraft_item_wire:19 x8
     rewards:
@@ -255,8 +260,9 @@ quests:
     deps: [fio_cobre]
     icon: ElectriCraft:electricraft_item_wire:21
     desc: |
-      §ePrata§r: 32.768 A e a menor resistência dos metais comuns. É o fio das linhas longas e
-      pesadas.
+      §ePrata§r: 32.768 A e a menor resistência dos metais comuns.
+
+      É o fio das linhas longas e pesadas. Faça o seu fio isolado de prata e conduza com estilo!
     tasks:
       - get: ElectriCraft:electricraft_item_wire:21 x8
     rewards:
@@ -269,8 +275,9 @@ quests:
     deps: [fio_prata]
     icon: ElectriCraft:electricraft_item_wire:23
     desc: |
-      Para correntes gigantes: §eOuro§r (65.536 A) e §ePlatina§r (131.072 A). A platina é rara
-      (Y 0–16); use com sabedoria.
+      Para correntes gigantes: §eOuro§r (65.536 A) e §ePlatina§r (131.072 A).
+
+      A platina é rara (Y 0–16), então use com sabedoria. Uma rede de respeito está a caminho!
     tasks:
       - one_of: [ElectriCraft:electricraft_item_wire:22 x8, ElectriCraft:electricraft_item_wire:23 x8]
     rewards:
@@ -283,8 +290,9 @@ quests:
     deps: [info_fios]
     icon: ElectriCraft:electricraft_item_wire
     desc: |
-      Aço é o pior condutor (16 A, resistência alta), mas é barato para quem já tem HSLA
-      sobrando. Ótimo para sinais e cargas mínimas.
+      Aço é o pior condutor (16 A, resistência alta), mas é barato para quem já tem HSLA sobrando.
+
+      É ótimo para sinais e cargas mínimas. Opcional, mas aproveita o que sobrou do estoque!
     tasks:
       - get: ElectriCraft:electricraft_item_wire x8
     rewards:
@@ -296,9 +304,9 @@ quests:
     deps: [fio_ouro_platina]
     icon: ElectriCraft:electricraft_item_wire:24
     desc: |
-      O fio perfeito: §eresistência zero§r, §esem perda§r e §esem limite de corrente§r. O
-      §eSupercondutor§r é caro e precisa de refrigeração (o Manual explica como ele é
-      preenchido) — mas uma linha dele leva qualquer potência a qualquer distância.
+      O fio perfeito: §eresistência zero§r, §esem perda§r e §esem limite de corrente§r!
+
+      O §eSupercondutor§r é caro e precisa de refrigeração (o Manual explica como ele é preenchido), mas uma linha dele leva qualquer potência a qualquer distância. Vale cada esforço, Herói!
     tasks:
       - get: ElectriCraft:electricraft_item_wire:24 x8
     rewards:
@@ -314,8 +322,9 @@ quests:
     deps: [fio_cobre]
     icon: ElectriCraft:electricraft_item_placer:7
     desc: |
-      Emendado num fio, o §eMedidor Elétrico§r mostra corrente, tensão e potência que passam por
-      ali, sem afetar nada. É o Dinamômetro do ElectriCraft.
+      Emendado num fio, o §eMedidor Elétrico§r mostra corrente, tensão e potência que passam por ali, sem afetar nada.
+
+      É o Dinamômetro do ElectriCraft. Ótimo para entender a sua rede!
     tasks:
       - get: ElectriCraft:electricraft_item_placer:7
     rewards:
@@ -328,8 +337,9 @@ quests:
     deps: [fio_cobre]
     icon: ElectriCraft:electricraft_item_placer:4
     desc: |
-      O §eRelé§r é um interruptor controlado por redstone: com sinal, conecta o caminho; sem
-      sinal, corta. Sem perda e sem limite de potência.
+      O §eRelé§r é um interruptor controlado por redstone: com sinal, conecta o caminho; sem sinal, corta.
+
+      Sem perda e sem limite de potência. Perfeito para automatizar a sua rede!
     tasks:
       - get: ElectriCraft:electricraft_item_placer:4 x2
     rewards:
@@ -359,6 +369,8 @@ quests:
     icon: ElectriCraft:electricraft_item_placer:15
     desc: |
       Igual ao resistor, mas com três faixas de dígitos em vez de duas. Mesmo código de cores.
+
+      É o §eResistor de Precisão§r, para quem gosta de ajustar tudo certinho. Confira o NEI (R/U) se precisar!
     tasks:
       - get: ElectriCraft:electricraft_item_placer:15
     rewards:
@@ -370,8 +382,9 @@ quests:
     deps: [medidor]
     icon: ElectriCraft:electricraft_item_placer:13
     desc: |
-      Um §eFusível§r corta o circuito se a corrente passar do limite dele (há versões de 32,
-      128, 1.024 e 8.192 A). Barato e salva fios caros de derreter.
+      Um §eFusível§r corta o circuito se a corrente passar do limite dele (há versões de 32, 128, 1.024 e 8.192 A).
+
+      É barato e salva fios caros de derreter. Instale um e durma tranquilo!
     tasks:
       - get: ElectriCraft:electricraft_item_placer:13
     rewards:
@@ -420,9 +433,9 @@ quests:
     deps: [po_cristal]
     icon: ElectriCraft:electricraft_item_crystal
     desc: |
-      Pó de cristal de energia na fornalha = §eCristal de Energia de Redstone§r, o núcleo da
-      bateria mais simples. Cada tier seguinte junta 4 cristais do anterior com redstone e um
-      "catalisador" no meio.
+      Pó de cristal de energia na fornalha = §eCristal de Energia de Redstone§r, o núcleo da bateria mais simples.
+
+      Cada tier seguinte junta 4 cristais do anterior com redstone e um "catalisador" no meio. Vamos subir a escada!
     tasks:
       - get: ElectriCraft:electricraft_item_crystal x8
     rewards:
@@ -435,9 +448,9 @@ quests:
     deps: [cristal_redstone, eixo_eletrico]
     icon: ElectriCraft:electricraft_item_battery
     desc: |
-      Baterias guardam energia elétrica com corrente, tensão e potência de saída constantes.
-      Recebem pelos lados e §eentregam pelo topo quando recebem sinal de redstone§r. Elas mantêm
-      a carga quando quebradas. Comece pela §eBateria de Redstone§r.
+      Baterias guardam energia elétrica com corrente, tensão e potência de saída constantes. Elas recebem pelos lados e §eentregam pelo topo quando recebem sinal de redstone§r.
+
+      Mantêm a carga quando quebradas. Comece pela §eBateria de Redstone§r, Herói!
     tasks:
       - get: ElectriCraft:electricraft_item_battery
     rewards:
@@ -451,6 +464,8 @@ quests:
     icon: ElectriCraft:electricraft_item_crystal:1
     desc: |
       4 Cristais de Redstone + 4 redstones + §eglowstone§r no meio = §eCristal Lustroso§r.
+
+      É o segundo degrau da escada de cristais. Brilhe!
     tasks:
       - get: ElectriCraft:electricraft_item_crystal:1 x2
     rewards:
@@ -464,6 +479,8 @@ quests:
     icon: ElectriCraft:electricraft_item_crystal:2
     desc: |
       4 Lustrosos + redstone + um §ebloco de lápis-lazúli§r = §eCristal Azulante§r.
+
+      Mais um degrau da escada! Continue firme, falta pouco para o topo.
     tasks:
       - get: ElectriCraft:electricraft_item_crystal:2 x2
     rewards:
@@ -477,6 +494,8 @@ quests:
     icon: ElectriCraft:electricraft_item_crystal:3
     desc: |
       4 Azulantes + redstone + um §eolho do ender§r = §eCristal Procyon§r.
+
+      A escada de cristais fica cada vez mais poderosa. Siga em frente!
     tasks:
       - get: ElectriCraft:electricraft_item_crystal:3 x2
     rewards:
@@ -490,6 +509,8 @@ quests:
     icon: ElectriCraft:electricraft_item_crystal:4
     desc: |
       4 Procyon + redstone + um §ebloco de esmeralda§r = §eCristal de Grafeno§r.
+
+      Falta só o último degrau. Que evolução, Herói!
     tasks:
       - get: ElectriCraft:electricraft_item_crystal:4 x2
     rewards:
@@ -502,8 +523,9 @@ quests:
     deps: [cristal_grafeno]
     icon: ElectriCraft:electricraft_item_crystal:5
     desc: |
-      O topo da escada: 4 Grafenos + redstone + uma §eestrela do Nether§r = §eCristal
-      Auroral§r. É também a base dos cristais de RF e de EU.
+      O topo da escada: 4 Grafenos + redstone + uma §eestrela do Nether§r = §eCristal Auroral§r.
+
+      É também a base dos cristais de RF e de EU. Que conquista brilhante!
     tasks:
       - get: ElectriCraft:electricraft_item_crystal:5
     rewards:
@@ -516,8 +538,9 @@ quests:
     deps: [bateria_redstone, cristal_azulant]
     icon: ElectriCraft:electricraft_item_battery:2
     desc: |
-      Cada tier de bateria tem mais capacidade e mais potência de saída que o anterior. Faça
-      uma §eBateria Lustrosa§r ou uma §eAzulante§r.
+      Cada tier de bateria tem mais capacidade e mais potência de saída que o anterior.
+
+      Faça uma §eBateria Lustrosa§r ou uma §eAzulante§r. Confira as receitas no NEI (R/U) e comece a guardar energia!
     tasks:
       - one_of: [ElectriCraft:electricraft_item_battery:1, ElectriCraft:electricraft_item_battery:2]
     rewards:
@@ -530,8 +553,9 @@ quests:
     deps: [baterias_medias, cristal_grafeno]
     icon: ElectriCraft:electricraft_item_battery:4
     desc: |
-      Os tiers avançados: §eProcyon§r e §eGrafeno§r. Um banco destas no meio da rede segura a
-      fábrica inteira por um bom tempo.
+      Os tiers avançados: §eProcyon§r e §eGrafeno§r.
+
+      Um banco destas no meio da rede segura a fábrica inteira por um bom tempo. Capriche, Herói!
     tasks:
       - one_of: [ElectriCraft:electricraft_item_battery:3, ElectriCraft:electricraft_item_battery:4]
     rewards:
@@ -546,9 +570,9 @@ quests:
     banner: "Bateria Auroral"
     subtitle: "A maior bateria elétrica"
     desc: |
-      A §eBateria Auroral§r é a última da escada: uma estrela do Nether presa num cristal,
-      guardando uma quantidade de energia difícil de imaginar. Agora a sua rede elétrica tem
-      pulmão: os motores continuam girando mesmo quando a turbina para.
+      A §eBateria Auroral§r é a última da escada: uma estrela do Nether presa num cristal, guardando uma quantidade de energia difícil de imaginar.
+
+      Agora a sua rede elétrica tem pulmão: os motores continuam girando mesmo quando a turbina para. Parabéns, engenheiro, que obra de arte!
     tasks:
       - get: ElectriCraft:electricraft_item_battery:5
     rewards:
@@ -565,8 +589,9 @@ quests:
     deps: [cristal_auroral]
     icon: ElectriCraft:electricraft_item_crystal:6
     desc: |
-      Um Cristal Auroral cercado de §eblocos de redstone§r = §eCristal de Energia RF§r, o
-      coração da Bateria de RF.
+      Um Cristal Auroral cercado de §eblocos de redstone§r = §eCristal de Energia RF§r, o coração da Bateria de RF.
+
+      É a ponte para o mundo do RF. Faça o seu e siga adiante!
     tasks:
       - get: ElectriCraft:electricraft_item_crystal:6
     rewards:
@@ -579,9 +604,9 @@ quests:
     deps: [manual_ec]
     icon: ElectriCraft:electricraft_item_placer:6
     desc: |
-      Um fio especializado em RF: transmite uma quantidade §eilimitada§r de RF por tick, com o
-      máximo da rede configurável. Ótimo para ligar o Dínamo Rotacional do RotaryCraft ao
-      resto da base.
+      Um fio especializado em RF: transmite uma quantidade §eilimitada§r de RF por tick, com o máximo da rede configurável.
+
+      É ótimo para ligar o Dínamo Rotacional do RotaryCraft ao resto da base. Boa ligação!
     tasks:
       - get: ElectriCraft:electricraft_item_placer:6 x16
     rewards:
@@ -595,8 +620,8 @@ quests:
     icon: ElectriCraft:electricraft_item_rfbattery
     desc: |
       Graças ao cristal especial, a §eBateria de RF§r guarda uma quantidade §eenorme§r de RF.
-      Entra pelos lados, sai pelo topo; dá para "puxar" sempre, e com redstone ela empurra
-      para quem estiver encostado. A barra lateral é logarítmica.
+
+      Entra pelos lados, sai pelo topo; dá para "puxar" sempre, e com redstone ela empurra para quem estiver encostado. A barra lateral é logarítmica. Que potência!
     tasks:
       - get: ElectriCraft:electricraft_item_rfbattery
     rewards:
@@ -610,8 +635,9 @@ quests:
     deps_hidden: [ic2:mfsu]
     icon: ElectriCraft:electricraft_item_crystal:7
     desc: |
-      Um Cristal Auroral com §eCristais Lapotron§r e §ePlacas de Carbono§r do IC2 = §eCristal
-      de Energia EU§r. Você precisa ter avançado no IC2 para isso.
+      Um Cristal Auroral com §eCristais Lapotron§r e §ePlacas de Carbono§r do IC2 = §eCristal de Energia EU§r.
+
+      Você precisa ter avançado no IC2 para isso. Se estiver faltando algo, confira o NEI (R/U).
     tasks:
       - get: ElectriCraft:electricraft_item_crystal:7
     rewards:
@@ -624,8 +650,9 @@ quests:
     deps: [cristal_eu]
     icon: ElectriCraft:electricraft_item_eubattery
     desc: |
-      A §eRBSU§r guarda quantidades massivas de EU e entrega em pacotes grandes. Mesmo
-      funcionamento da bateria de RF: lados entram, topo sai, redstone empurra.
+      A §eRBSU§r guarda quantidades massivas de EU e entrega em pacotes grandes.
+
+      O funcionamento é igual ao da bateria de RF: lados entram, topo sai, redstone empurra. Energia de sobra, Herói!
     tasks:
       - get: ElectriCraft:electricraft_item_eubattery
     rewards:
@@ -674,10 +701,9 @@ quests:
     deps: [placa_sem_fio]
     icon: ElectriCraft:electricraft_block_chargepad:2
     desc: |
-      Materiais melhores = mais vazão e mais eficiência: o núcleo da receita passa de redstone
-      para §eouro§r (Improved), §ediamante§r (Advanced), §eLiga Indutiva§r com vidro
-      anti-explosão (High-Tech) e §eEnderium§r (Superconducting). Faça qualquer placa a partir
-      da Improved.
+      Materiais melhores = mais vazão e mais eficiência: o núcleo da receita passa de redstone para §eouro§r (Improved), §ediamante§r (Advanced), §eLiga Indutiva§r com vidro anti-explosão (High-Tech) e §eEnderium§r (Superconducting).
+
+      Faça qualquer placa a partir da Improved. Suba de nível com calma!
     tasks:
       - one_of: [ElectriCraft:electricraft_block_chargepad:1, ElectriCraft:electricraft_block_chargepad:2, ElectriCraft:electricraft_block_chargepad:3, ElectriCraft:electricraft_block_chargepad:4]
     rewards:
@@ -690,8 +716,9 @@ quests:
     deps: [placas_tier]
     icon: ElectriCraft:electricraft_block_chargepad:4
     desc: |
-      O tier máximo, com Enderium do Thermal no centro. Transferência sem fio com a melhor
-      eficiência possível.
+      O tier máximo, com Enderium do Thermal no centro!
+
+      A §eSuperconducting Wireless Pad§r oferece transferência sem fio com a melhor eficiência possível. Opcional, mas é o grand finale. Mostre seu talento, Herói!
     tasks:
       - get: ElectriCraft:electricraft_block_chargepad:4
     rewards:
