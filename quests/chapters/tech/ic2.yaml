@@ -95,9 +95,7 @@ quests:
     deps: [arvore_borracha]
     desc: |
       Uma árvore só é sorte; uma fazenda de seringueiras é indústria!
-
-      Pegue um §eRebento de Árvore de Borracha§r (cai das folhas) e plante perto da base.
-      Uma dúzia delas garante resina pra sempre. §aDica:§r farinha de osso acelera.
+      Pegue §e4 Rebentos de Árvore de Borracha§r (eles caem das folhas) e plante tudo perto da base. Uma dúzia delas garante resina pra sempre. §aDica:§r farinha de osso acelera o crescimento. Não sabe de onde sai a resina? Confira no NEI (R/U).
     tasks:
       - get: IC2:blockRubSapling x4
     rewards:
@@ -108,9 +106,8 @@ quests:
     type: optional
     deps: [borracha]
     desc: |
-      Seis borrachas na bancada viram três §eFolhas de Borracha§r — um bloco macio de
-      borracha. Experimente pular em cima dele e me conte o que acontece (eu já sei, mas é
-      mais divertido descobrir).
+      Quer um chão que devolve o pulo? Seis borrachas na bancada viram três §eFolhas de Borracha§r, um bloco macio de borracha.
+      Coloque no chão, pule em cima dele e me conte o que acontece (eu já sei, mas é mais divertido descobrir). Dá para fazer uma pista de testes bem divertida, Herói!
     tasks:
       - get: IC2:blockRubber
     rewards:
@@ -121,9 +118,8 @@ quests:
     type: optional
     deps: [borracha]
     desc: |
-      Borracha + lã = §eBotas de Borracha§r. Elas amortecem quedas e, mais importante, fazem
-      parte do §eTraje Hazmat§r completo — e, lá no fim, viram ingrediente das Botas
-      Quânticas. Não jogue fora!
+      Borracha + lã = §eBotas de Borracha§r. Elas amortecem quedas e, mais importante, fazem parte do §eTraje Hazmat§r completo. Lá no fim da jornada, ainda viram ingrediente das Botas Quânticas.
+      Por isso, guarde com carinho e não jogue fora. Se tiver dúvida na receita, o NEI (R/U) mostra o caminho.
     tasks:
       - get: IC2:itemArmorRubBoots
     rewards:
@@ -134,9 +130,8 @@ quests:
     type: optional
     deps: [borracha]
     desc: |
-      Cinco borrachas em "U" = §eBote de Borracha§r. Mais leve que o de madeira, mas não
-      encoste em nada pontudo... se ele furar, vira um Bote Danificado (que se conserta com
-      mais borracha na bancada).
+      Que tal navegar com estilo? Cinco borrachas em "U" = §eBote de Borracha§r. Ele é mais leve que o de madeira, mas não encoste em nada pontudo...
+      Se ele furar, vira um Bote Danificado, que se conserta com mais borracha na bancada. Leve borracha de reserva nas viagens, tá bom?
     tasks:
       - get: IC2:itemBoat:1
     rewards:
@@ -238,10 +233,9 @@ quests:
     deps: [placas]
     icon: IC2:itemCasing:1
     desc: |
-      Invólucros são as "latinhas" que embrulham baterias, motores e células. Martele placas
-      para fazer §e4 Invólucros de Estanho§r e §e4 Invólucros de Ferro§r (cada placa rende 2).
+      Invólucros são as "latinhas" que embrulham baterias, motores e células. Martele placas para fazer §e4 Invólucros de Estanho§r e §e4 Invólucros de Ferro§r (cada placa rende 2). Você vai usá-los em muita coisa daqui pra frente!
 
-      §aObs.:§r o jogo escreve "Invólcruo" — é a mesma coisa, só a tradução que tropeçou.
+      §aObs.:§r o jogo escreve "Invólcruo". É a mesma coisa, só a tradução que tropeçou.
     tasks:
       - get: [IC2:itemCasing:1 x4, IC2:itemCasing:4 x4]
     rewards:
@@ -479,11 +473,9 @@ quests:
     deps: [triturador]
     icon: IC2:itemDust:2
     desc: |
-      Carvão triturado vira §ePó de Carvão§r — e esse pó tem futuro! Ele vira Fibra de
-      Carbono (rumo à NanoSuit), Bola de Carvão (rumo a diamantes!), Painel Solar e Bateria
-      de Uso Único.
+      Carvão triturado vira §ePó de Carvão§r, e esse pó tem futuro! Ele vira Fibra de Carbono (rumo à NanoSuit), Bola de Carvão (rumo a diamantes!), Painel Solar e Bateria de Uso Único.
 
-      Junte §e16§r.
+      Junte §e16§r no Triturador e guarde o estoque. Se faltar carvão, uma mineração rápida resolve, Herói!
     tasks:
       - get: IC2:itemDust:2 x16
     rewards:
@@ -536,9 +528,8 @@ quests:
     deps: [bronze]
     icon: IC2:itemToolBronzePickaxe
     desc: |
-      O bronze fica entre o ferro e o diamante... na nostalgia, pelo menos. Picareta,
-      machado, pá, espada e enxada de bronze usam as receitas clássicas. Faça qualquer uma
-      para comemorar a nova liga.
+      O bronze fica entre o ferro e o diamante... na nostalgia, pelo menos. Picareta, machado, pá, espada e enxada de bronze usam as receitas clássicas.
+      Faça qualquer uma para comemorar a nova liga. Se não lembrar a receita, é só olhar no NEI (R/U). É um ótimo jeito de testar o bronze que você acabou de produzir!
     tasks:
       - one_of: [IC2:itemToolBronzePickaxe, IC2:itemToolBronzeAxe, IC2:itemToolBronzeSpade, IC2:itemToolBronzeSword, IC2:itemToolBronzeHoe]
     rewards:
@@ -552,8 +543,7 @@ quests:
     desc: |
       Explorar mina atrás de estanho com armadura de couro? Nem pensar, Herói!
 
-      Um conjunto completo de §eArmadura de Bronze§r (elmo, peitoral, calças e botas) é uma
-      ótima proteção de início de jogo enquanto você explora atrás de cobre e estanho.
+      Um conjunto completo de §eArmadura de Bronze§r (elmo, peitoral, calças e botas) é uma ótima proteção de início de jogo enquanto você explora atrás de cobre e estanho. Forje as quatro peças e saia com confiança para as cavernas!
     tasks:
       - get: [IC2:itemArmorBronzeHelmet, IC2:itemArmorBronzeChestplate, IC2:itemArmorBronzeLegs, IC2:itemArmorBronzeBoots]
     rewards:
@@ -659,9 +649,9 @@ quests:
     deps: [po_carvao]
     icon: IC2:itemBatSU
     desc: |
-      Um cabo de cobre, redstone e Pó de Carvão rendem §e5 Baterias de Uso Único§r. Não se
-      recarregam, mas são baratíssimas e servem como combustível de emergência para
-      ferramentas elétricas. (Com Pó de Carvão Hidratado a receita rende 8!)
+      Um cabo de cobre, redstone e Pó de Carvão rendem §e5 Baterias de Uso Único§r. Elas não se recarregam, mas são baratíssimas e servem como combustível de emergência para ferramentas elétricas.
+
+      §aDica:§r com Pó de Carvão Hidratado a receita rende 8! Tenha algumas no bolso para quando a energia acabar.
     tasks:
       - get: IC2:itemBatSU x5
     rewards:
@@ -708,8 +698,7 @@ quests:
     desc: |
       Toda indústria tem seu cantinho da sorte.
 
-      Uma §eCaixa de Sucata§r cheia de possibilidades! Abra algumas e veja o que o Registro
-      te devolve. (Às vezes é terra. Às vezes é diamante. É a vida.)
+      Uma §eCaixa de Sucata§r cheia de possibilidades! Abra algumas e veja o que o Registro te devolve. (Às vezes é terra. Às vezes é diamante. É a vida.) Para saber como conseguir mais caixas, dê uma olhada no NEI (R/U). Boa sorte, Herói!
     tasks:
       - get: IC2:itemScrapbox
     rewards:
@@ -724,10 +713,9 @@ quests:
     deps: [alicate]
     icon: IC2:itemRecipePart
     desc: |
-      Oito Cabos de Cobre §lsem§r isolamento enrolados num lingote de ferro = §eBobina§r.
+      Oito Cabos de Cobre §lsem§r isolamento enrolados num lingote de ferro = §eBobina§r. Cuidado para não usar os cabos isolados!
 
-      Bobinas vão para o Formador de Metal, transformadores, motores elétricos e o
-      Centrifugador Térmico. Faça §e6§r para começar.
+      Bobinas vão para o Formador de Metal, transformadores, motores elétricos e o Centrifugador Térmico. Faça §e6§r para começar, vai ser bem útil. Se tiver dúvida, o NEI (R/U) mostra a receita.
     tasks:
       - get: IC2:itemRecipePart x6
     rewards:
@@ -758,9 +746,9 @@ quests:
     deps: [bronze]
     icon: IC2:itemToolbox
     desc: |
-      Um baú cercado por 5 Invólucros de Bronze = §eCaixa de Ferramentas§r. Ela guarda
-      ferramentas e itens elétricos no seu inventário (clique direito para abrir)... e duas
-      delas são peça do §bFormador de Metal§r!
+      Um baú cercado por 5 Invólucros de Bronze = §eCaixa de Ferramentas§r. Ela guarda ferramentas e itens elétricos no seu inventário (clique direito para abrir), liberando espaço precioso.
+
+      E tem mais: duas delas são peça do §bFormador de Metal§r! Por isso, faça §e2§r e já fique adiantado.
     tasks:
       - get: IC2:itemToolbox x2
     rewards:
@@ -829,9 +817,9 @@ quests:
     deps: [celula_vazia]
     icon: IC2:itemCellEmpty:2
     desc: |
-      Célula Vazia + balde = célula cheia (e o balde volta vazio). Faça uma §eCélula com Água§r
-      e uma §eCélula com Lava§r. A de lava alimenta o Gerador Geotérmico; duas de cada na
-      bancada viram... obsidiana!
+      Célula Vazia + balde = célula cheia (e o balde volta vazio). Faça uma §eCélula com Água§r e uma §eCélula com Lava§r.
+
+      A de lava alimenta o Gerador Geotérmico, e duas de cada na bancada viram... obsidiana! Magia pura, Herói. Se precisar da receita exata, o NEI (R/U) mostra tudo.
     tasks:
       - get: [IC2:itemCellEmpty:1, IC2:itemCellEmpty:2]
     rewards:
@@ -934,8 +922,7 @@ quests:
     desc: |
       Uma lição que os Antigos esqueceram: na indústria, quase nada é lixo de verdade.
 
-      Todo lingote de Ferro Refinado deixa §eEscória§r para trás. Não jogue fora: no
-      Centrifugador Térmico ela vira pó de carvão e um pouquinho de ouro!
+      Todo lingote de Ferro Refinado deixa §eEscória§r para trás. Junte §e4§r e não jogue fora: no Centrifugador Térmico ela vira pó de carvão e um pouquinho de ouro! É um bônus gostoso para quem aproveita tudo.
     tasks:
       - get: IC2:itemSlag x4
     rewards:
@@ -964,10 +951,9 @@ quests:
     deps: [bronze, placas]
     icon: IC2:itemIngot:4
     desc: |
-      Um sanduíche metálico: 3 Placas de Ferro em cima, 3 de Bronze no meio e 3 de Estanho
-      embaixo = §e2 Lingotes de Liga de Metais§r.
+      Um sanduíche metálico: 3 Placas de Ferro em cima, 3 de Bronze no meio e 3 de Estanho embaixo = §e2 Lingotes de Liga de Metais§r. Faça o suficiente para ter §e4§r.
 
-      Sozinha ela não faz nada... mas espere só até ela entrar no Compressor!
+      Sozinha ela não faz nada... mas espere só até ela entrar no Compressor! Dica de confiança: você vai ver para que ela serve logo logo.
     tasks:
       - get: IC2:itemIngot:4 x4
     rewards:
@@ -998,9 +984,9 @@ quests:
     deps: [po_carvao]
     icon: IC2:itemPartCarbonFibre
     desc: |
-      Quatro Pós de Carvão em quadrado = §eFibra de Carbono Bruta§r. Duas fibras (sem forma)
-      viram uma §eMalha de Carbono Bruta§r. Faça §e4 Malhas§r — o próximo passo é o
-      Compressor.
+      Quatro Pós de Carvão em quadrado = §eFibra de Carbono Bruta§r. Duas fibras (sem forma) viram uma §eMalha de Carbono Bruta§r.
+
+      Faça §e4 Malhas§r, Herói. O próximo passo é o Compressor, onde elas ganham forma de verdade. Se a receita confundir, o NEI (R/U) resolve rapidinho.
     tasks:
       - get: IC2:itemPartCarbonMesh x4
     rewards:
@@ -1015,8 +1001,7 @@ quests:
     desc: |
       Malha de Carbono no Compressor = §ePlaca de Carbono§r. Leve, dura e linda.
 
-      Ela vai para a Carcaça Avançada, os rotores de carbono, a canoa e — guarde essa
-      informação no coração — §dtoda a NanoSuit§r. Faça §e4§r por enquanto.
+      Ela vai para a Carcaça Avançada, os rotores de carbono, a canoa e (guarde essa informação no coração) §dtoda a NanoSuit§r. Faça §e4§r por enquanto e fique de olho, porque vai precisar de bem mais depois!
     tasks:
       - get: IC2:itemPartCarbonPlate x4
     rewards:
@@ -1058,11 +1043,9 @@ quests:
     deps: [circuito]
     icon: IC2:itemPartCircuitAdv
     desc: |
-      O irmão inteligente do circuito. Em volta de um Circuito Eletrônico vão 4 redstone, 2
-      pós de glowstone e 2 lápis-lazúli = §eCircuito Avançado§r.
+      O irmão inteligente do circuito. Em volta de um Circuito Eletrônico vão 4 redstone, 2 pós de glowstone e 2 lápis-lazúli = §eCircuito Avançado§r.
 
-      Lapotron, Laser de Mineração, transformadores HV/EV, Teletransportador, MFSU... Faça
-      §e4§r e deixe uma fazenda de glowstone/lápis no seu radar.
+      Lapotron, Laser de Mineração, transformadores HV/EV, Teletransportador, MFSU... tudo pede um. Faça §e4§r e deixe uma fazenda de glowstone e lápis no seu radar. Boa produção, Herói!
     tasks:
       - get: IC2:itemPartCircuitAdv x4
     rewards:
@@ -1148,10 +1131,9 @@ quests:
     deps: [lavadora_minerios]
     icon: IC2:itemDust:9
     desc: |
-      Até a sujeira que sai da lavagem tem utilidade no IC2 — eu adoro isso.
+      Até a sujeira que sai da lavagem tem utilidade no IC2, e eu adoro isso.
 
-      A Lavadora deixa §ePó de Pedra§r como subproduto (e lavar cascalho também dá). Ele é
-      ingrediente do §ePó de Espuma de Construção§r — guarde uma pilha.
+      A Lavadora deixa §ePó de Pedra§r como subproduto (e lavar cascalho também dá). Junte §e16§r: ele é ingrediente do §ePó de Espuma de Construção§r, então guarde uma pilha. Na dúvida, confira no NEI (R/U).
     tasks:
       - get: IC2:itemDust:9 x16
     rewards:
@@ -1165,9 +1147,7 @@ quests:
     desc: |
       Tudo que gira precisa de um eixo, e o IC2 Experimental gira MUITO.
 
-      Extruda um §ebloco de ferro§r inteiro no Formador de Metal para obter um §eEixo de
-      Ferro§r. Eixos transmitem movimento: Torno, Moinho de Vento Cinético, Gerador Cinético,
-      rotores... Faça §e4§r.
+      Extruda um §ebloco de ferro§r inteiro no Formador de Metal para obter um §eEixo de Ferro§r. Eixos transmitem movimento: Torno, Moinho de Vento Cinético, Gerador Cinético, rotores... Faça §e4§r e deixe a fábrica rodando, Herói.
     tasks:
       - get: IC2:itemRecipePart:11 x4
     rewards:
@@ -1180,9 +1160,9 @@ quests:
     deps: [eixo_ferro, ferro_refinado]
     icon: IC2:itemRecipePart:12
     desc: |
-      O mesmo truque, agora com um §eBloco de Ferro Refinado§r (9 lingotes — o jogo chama de
-      "Steel Block") no modo extrusão: §eEixo de Ferro Enriquecido§r. Só o Rotor de Fibra de
-      Carbono precisa dele, mas é um rotor que vale a pena.
+      O mesmo truque, agora com um §eBloco de Ferro Refinado§r (9 lingotes; o jogo chama de "Steel Block") no modo extrusão do Formador de Metal: sai o §eEixo de Ferro Enriquecido§r.
+
+      Só o Rotor de Fibra de Carbono precisa dele, mas é um rotor que vale a pena. Vá com calma e confira o modo no NEI (R/U).
     tasks:
       - get: IC2:itemRecipePart:12
     rewards:
@@ -1288,8 +1268,7 @@ quests:
     desc: |
       A lâmina mais cara, para os blocos mais teimosos.
 
-      Para cortar Blocos de Aço e obsidiana em placas, só a §eLâmina de Diamante§r resolve. Um
-      bloco de obsidiana rende 9 Placas de Obsidiana.
+      Para cortar Blocos de Aço e obsidiana em placas, só a §eLâmina de Diamante§r resolve. Um bloco de obsidiana rende 9 Placas de Obsidiana. Vale o investimento se você pretende construir muito mais adiante. Confira a receita no NEI (R/U).
     tasks:
       - get: IC2:itemDiamondBlockCuttingBlade
     rewards:
@@ -1390,8 +1369,7 @@ quests:
     desc: |
       Cheiro de ovo podre? É o cheiro da energia portátil, Herói.
 
-      Pólvora no Extrator vira §ePó de Enxofre§r (que existe em vários mods — qualquer um
-      serve). Ele é o "ácido" da Bateria Avançada. Junte §e4§r.
+      Pólvora no Extrator vira §ePó de Enxofre§r (que existe em vários mods, então qualquer um serve). Ele é o "ácido" da Bateria Avançada. Junte §e4§r e guarde, que o próximo passo está logo ali.
     tasks:
       - get: ore:dustSulfur x4
     rewards:
@@ -1406,8 +1384,7 @@ quests:
     desc: |
       A §eBateria Avançada§r guarda §b100 000 EU§r (10× a comum) e trabalha em MV.
 
-      Receita: 2 Cabos de Cobre Isolados, 5 Invólucros de Bronze, 1 Pó de Enxofre e 1 Pó de
-      Chumbo. Faça §e3§r — a CESU pede exatamente três.
+      Receita: 2 Cabos de Cobre Isolados, 5 Invólucros de Bronze, 1 Pó de Enxofre e 1 Pó de Chumbo. Faça §e3§r, porque a CESU pede exatamente três. Prepare os ingredientes antes, Herói, e a bancada agradece!
     tasks:
       - get: IC2:itemAdvBat:* x3
     rewards:
@@ -1454,11 +1431,9 @@ quests:
     deps: [cabo_cobre, carcaca_maquina]
     icon: IC2:blockElectric:4
     desc: |
-      Uma Carcaça entre 2 Cabos de Cobre Isolados = §eMV-Transformador§r, que converte entre
-      §bHV (512) e MV (128)§r.
+      Uma Carcaça entre 2 Cabos de Cobre Isolados = §eMV-Transformador§r, que converte entre §bHV (512) e MV (128)§r.
 
-      Ele é também peça do HV-Transformador, do Upgrade de Transformador e da Bobina de Tesla.
-      Faça §e2§r.
+      Ele também é peça do HV-Transformador, do Upgrade de Transformador e da Bobina de Tesla, então vai ser bem requisitado. Faça §e2§r e guarde um para os próximos passos.
     tasks:
       - get: IC2:blockElectric:4 x2
     rewards:
@@ -1471,10 +1446,9 @@ quests:
     deps: [triturador]
     icon: IC2:itemDust2:1
     desc: |
-      Sim, vamos moer diamantes. Dói no coração, eu sei. Mas o §ePó de Diamante§r é o
-      ingrediente do Energium, e o Energium é o caminho para os Cristais de Energia!
+      Sim, vamos moer diamantes. Dói no coração, eu sei. Mas o §ePó de Diamante§r é o ingrediente do Energium, e o Energium é o caminho para os Cristais de Energia!
 
-      Junte §e4§r (1 diamante = 1 pó).
+      Junte §e4§r (1 diamante = 1 pó) no Triturador. Vale cada brilho, prometo. Confira os detalhes no NEI (R/U) se precisar.
     tasks:
       - get: ore:dustDiamond x4
     rewards:
@@ -1487,10 +1461,9 @@ quests:
     deps: [po_diamante]
     icon: IC2:itemDust2:2
     desc: |
-      Quatro Pós de Diamante intercalados com 5 redstone = §e9 Pós de Energium§r. Esse pó
-      vermelho brilhante guarda energia como nenhum outro.
+      Quatro Pós de Diamante intercalados com 5 redstone = §e9 Pós de Energium§r. Esse pó vermelho brilhante guarda energia como nenhum outro.
 
-      Faça §e9§r — um Cristal de Energia inteiro.
+      Faça §e9§r, o equivalente a um Cristal de Energia inteiro. É o tipo de passo que parece pequeno, mas abre a porta para as baterias poderosas. Confira o NEI (R/U) se precisar.
     tasks:
       - get: IC2:itemDust2:2 x9
     rewards:
@@ -1520,8 +1493,9 @@ quests:
     deps: [alicate, borracha]
     icon: IC2:itemCable:3
     desc: |
-      Placa de Ouro + Alicate = 4 Cabos de Ouro. Com §e2 Borrachas§r cada, vira §eCabo de Ouro
-      Isolado§r: §b512 EU/t (HV)§r. Faça §e8§r: a MFE e o HV-Transformador o pedem.
+      Placa de Ouro + Alicate = 4 Cabos de Ouro. Com §e2 Borrachas§r cada, vira §eCabo de Ouro Isolado§r: §b512 EU/t (HV)§r.
+
+      Faça §e8§r, porque a MFE e o HV-Transformador pedem. Sem isolamento o cabo solta choque, então não esqueça a borracha, Herói! Boa sorte!
     tasks:
       - get: IC2:itemCable:3 x8
     rewards:
@@ -1534,11 +1508,9 @@ quests:
     deps: [cristal_energia, cabo_ouro, carcaca_maquina]
     icon: IC2:blockElectric:1
     desc: |
-      Agora sim, um banco de respeito: a §eMFE§r guarda §b4 000 000 EU§r e entrega §b512 EU/t
-      (HV)§r.
+      Agora sim, um banco de respeito: a §eMFE§r guarda §b4 000 000 EU§r e entrega §b512 EU/t (HV)§r.
 
-      Receita: Carcaça no centro, 4 Cristais de Energia e 4 Cabos de Ouro Isolados.
-      §c512 EU/t vaporiza máquinas LV e MV.§r Sempre passe por transformadores!
+      Receita: Carcaça no centro, 4 Cristais de Energia e 4 Cabos de Ouro Isolados. §c512 EU/t vaporiza máquinas LV e MV.§r Sempre passe por transformadores! Monte com calma e confira o NEI (R/U) se travar.
     tasks:
       - get: IC2:blockElectric:1
     rewards:
@@ -1553,9 +1525,7 @@ quests:
     desc: |
       Subindo mais um degrau na escada das tensões!
 
-      MV-Transformador + 2 Cabos de Ouro Isolados + Circuito + Bateria Avançada =
-      §eHV-Transformador§r, que converte entre §bEV (2048) e HV (512)§r. Dois deles vão no
-      Replicador.
+      MV-Transformador + 2 Cabos de Ouro Isolados + Circuito + Bateria Avançada = §eHV-Transformador§r, que converte entre §bEV (2048) e HV (512)§r. Dois deles vão no Replicador, então já tenha ingredientes de sobra para repetir a receita, Herói.
     tasks:
       - get: IC2:blockElectric:5
     rewards:
@@ -1568,9 +1538,9 @@ quests:
     deps: [formador_metal]
     icon: IC2:itemCable:6
     desc: |
-      Cabo HV (extrudado de ferro no Formador de Metal, ou cortado de Placa de Ferro) +
-      §e3 Borrachas§r = §eCabo HV Isolado§r: §b2048 EU/t§r. Perde mais energia por bloco que os
-      outros, então use-o só onde a tensão é EV. Faça §e8§r.
+      Cabo HV (extrudado de ferro no Formador de Metal, ou cortado de Placa de Ferro) + §e3 Borrachas§r = §eCabo HV Isolado§r: §b2048 EU/t§r.
+
+      Ele perde mais energia por bloco que os outros, então use-o só onde a tensão é EV. Faça §e8§r e planeje bem o traçado da sua rede.
     tasks:
       - get: IC2:itemCable:6 x8
     rewards:
@@ -1600,11 +1570,9 @@ quests:
     deps: [cristal_energia, circuito_avancado]
     icon: IC2:itemBatLamaCrystal:1
     desc: |
-      Um Cristal de Energia, 2 Circuitos Avançados e 6 Pós de Lápis-Lazúli = §eCristal
-      Lapotron§r (o jogo escreve "Lapatron"): §b10 000 000 EU§r, tier EV.
+      Um Cristal de Energia, 2 Circuitos Avançados e 6 Pós de Lápis-Lazúli = §eCristal Lapotron§r (o jogo escreve "Lapatron"): §b10 000 000 EU§r, tier EV.
 
-      A MFSU pede §e6§r, e toda a QuantumSuit também. Comece com §e2§r e uma boa fonte de
-      lápis.
+      A MFSU pede §e6§r, e toda a QuantumSuit também. Comece com §e2§r e uma boa fonte de lápis. Vai ser uma longa estrada, mas você consegue!
     tasks:
       - get: IC2:itemBatLamaCrystal:* x2
     rewards:
@@ -1617,9 +1585,9 @@ quests:
     deps: [transformador_hv, cristal_lapotron, cabo_hv]
     icon: IC2:blockElectric:6
     desc: |
-      HV-Transformador + 2 Cabos HV Isolados + Circuito Avançado + Cristal Lapotron =
-      §eEV-Transformador§r, que liga §bEV (2048)§r a §b8192 EU/t§r. Útil para linhas de fibra de
-      vidro e para a saída de reatores grandes.
+      HV-Transformador + 2 Cabos HV Isolados + Circuito Avançado + Cristal Lapotron = §eEV-Transformador§r, que liga §bEV (2048)§r a §b8192 EU/t§r.
+
+      É útil para linhas de fibra de vidro e para a saída de reatores grandes. Prepare os ingredientes antes, e se travar, o NEI (R/U) mostra a receita certinha.
     tasks:
       - get: IC2:blockElectric:6
     rewards:
@@ -1688,9 +1656,9 @@ quests:
     deps: [cristal_lapotron, mfe]
     icon: IC2:itemupgradekit
     desc: |
-      Uma Chave Inglesa no centro, 6 Lapotrons, Circuito Avançado e Carcaça Avançada =
-      §eKit de Upgrade MFSU§r. Clique com ele numa MFE (ou num Bloco de Carregar MFE) já
-      instalada e ela vira a versão MFSU, mantendo cabos e carga.
+      Quer evoluir a MFE sem desmontar nada? Uma Chave Inglesa no centro, 6 Lapotrons, Circuito Avançado e Carcaça Avançada = §eKit de Upgrade MFSU§r.
+
+      Clique com ele numa MFE (ou num Bloco de Carregar MFE) já instalada e ela vira a versão MFSU, mantendo cabos e carga. Simples e elegante, Herói!
     tasks:
       - get: IC2:itemupgradekit
     rewards:
@@ -1718,9 +1686,9 @@ quests:
     deps: [batbox]
     icon: IC2:blockChargepad
     desc: |
-      Um banco de energia com placa de pressão: pise no §eBloco de Carregar§r e ele recarrega
-      as baterias e ferramentas do seu inventário. Existe nas versões BatBox, CESU, MFE e MFSU
-      (2 Circuitos, placa de pressão de pedra, 2 Borrachas e o banco correspondente).
+      Um banco de energia com placa de pressão: pise no §eBloco de Carregar§r e ele recarrega as baterias e ferramentas do seu inventário.
+
+      Existe nas versões BatBox, CESU, MFE e MFSU (2 Circuitos, placa de pressão de pedra, 2 Borrachas e o banco correspondente). Faça qualquer uma e deixe sua base mais prática!
     tasks:
       - one_of: [IC2:blockChargepad, IC2:blockChargepad:1, IC2:blockChargepad:2, IC2:blockChargepad:3]
     rewards:
@@ -1772,11 +1740,9 @@ quests:
     deps: [refrigerante]
     icon: IC2:reactorCoolantSimple:1
     desc: |
-      4 Placas de Estanho em volta de um recipiente com Fluido Refrigerante = §e10k Célula
-      Refrigerante§r. Ela absorve até 10 000 de calor.
+      4 Placas de Estanho em volta de um recipiente com Fluido Refrigerante = §e10k Célula Refrigerante§r. Ela absorve até 10 000 de calor.
 
-      Três delas fazem 2 Overclockers. No reator nuclear, elas são o resfriamento mais simples.
-      Faça §e3§r.
+      Três delas fazem 2 Overclockers. No reator nuclear, são o resfriamento mais simples. Faça §e3§r e fique tranquilo, Herói: segurança térmica em primeiro lugar!
     tasks:
       - get: IC2:reactorCoolantSimple:* x3
     rewards:
@@ -1823,9 +1789,9 @@ quests:
     deps: [bateria_re, circuito]
     icon: IC2:upgradeModule:2
     desc: |
-      Tábuas, 2 Cabos de Cobre Isolados, 1 Bateria e 1 Circuito = §eUpgrade de Armazenamento
-      de Energia§r. Aumenta o buffer interno da máquina — essencial quando há Overclockers e a
-      operação passa a custar mais EU do que cabe na máquina.
+      Tábuas, 2 Cabos de Cobre Isolados, 1 Bateria e 1 Circuito = §eUpgrade de Armazenamento de Energia§r.
+
+      Ele aumenta o buffer interno da máquina, o que é essencial quando há Overclockers e a operação passa a custar mais EU do que cabe na máquina. Confira o NEI (R/U) para o encaixe certo.
     tasks:
       - get: IC2:upgradeModule:2
     rewards:
@@ -1838,10 +1804,9 @@ quests:
     deps: [circuito]
     icon: IC2:upgradeModule:3
     desc: |
-      2 pistões, 1 funil, 2 Cabos de Cobre Isolados e 1 Circuito = §eUpgrade de Ejetor§r. A
-      máquina passa a empurrar o resultado para o inventário vizinho (baú, outra máquina...).
+      2 pistões, 1 funil, 2 Cabos de Cobre Isolados e 1 Circuito = §eUpgrade de Ejetor§r. A máquina passa a empurrar o resultado para o inventário vizinho (baú, outra máquina...).
 
-      Triturador → Fornalha Elétrica sem tocar em nada? É com ele.
+      Triturador → Fornalha Elétrica sem tocar em nada? É com ele. Automação é a alma da indústria, Herói, aproveite!
     tasks:
       - get: IC2:upgradeModule:3
     rewards:
@@ -1856,8 +1821,7 @@ quests:
     desc: |
       Por que levar os itens até a máquina se a máquina pode buscá-los?
 
-      O contrário do ejetor: o §ePulling Upgrade§r (pistões grudentos, funil, cabos e
-      circuito) faz a máquina §epuxar§r itens do inventário vizinho para dentro dela.
+      O contrário do ejetor: o §ePulling Upgrade§r (pistões grudentos, funil, cabos e circuito) faz a máquina §epuxar§r itens do inventário vizinho para dentro dela. Combine com o ejetor e monte linhas de produção sozinhas. Confira a receita no NEI (R/U).
     tasks:
       - get: IC2:upgradeModule:6
     rewards:
@@ -1869,9 +1833,9 @@ quests:
     deps: [motor_eletrico]
     icon: IC2:upgradeModule:4
     desc: |
-      4 Placas de Estanho + 1 Motor Elétrico = §eUpgrade de Ejetor de Fluidos§r. Empurra os
-      fluidos produzidos (vapor, biogás, refrigerante...) para tanques e canos vizinhos. É
-      também peça do Distribuidor de Fluidos.
+      4 Placas de Estanho + 1 Motor Elétrico = §eUpgrade de Ejetor de Fluidos§r. Ele empurra os fluidos produzidos (vapor, biogás, refrigerante...) para tanques e canos vizinhos.
+
+      Também é peça do Distribuidor de Fluidos. Se for montar uma linha de fluidos, vale a pena fazer um agora, Herói. O NEI (R/U) ajuda se precisar.
     tasks:
       - get: IC2:upgradeModule:4
     rewards:
@@ -1883,9 +1847,9 @@ quests:
     deps: [placas]
     icon: IC2:upgradeModule:5
     desc: |
-      4 Placas de Estanho + 1 alavanca = §eRedstone Signal Inverter Upgrade§r. Inverte a
-      lógica de redstone da máquina: o que antes ligava, agora desliga. Ótimo para controle
-      automático com Cabos Detectores.
+      Às vezes a máquina precisa pensar ao contrário. 4 Placas de Estanho + 1 alavanca = §eRedstone Signal Inverter Upgrade§r.
+
+      Ele inverte a lógica de redstone da máquina: o que antes ligava, agora desliga. É ótimo para controle automático com Cabos Detectores. Se travar na receita, o NEI (R/U) mostra o caminho, Herói.
     tasks:
       - get: IC2:upgradeModule:5
     rewards:
@@ -1950,11 +1914,9 @@ quests:
     deps: [geotermico, celula_universal]
     icon: IC2:blockGenerator:7
     desc: |
-      Um Geotérmico cercado por 4 Células de Fluidos Universais e 4 Invólucros de Ferro vira o
-      §eGerador Semifluido§r, que queima §ecombustíveis líquidos§r: Biogás (do Fermentador),
-      Biomassa, Bioetanol, óleo e combustível de outros mods.
+      Um Geotérmico cercado por 4 Células de Fluidos Universais e 4 Invólucros de Ferro vira o §eGerador Semifluido§r, que queima §ecombustíveis líquidos§r: Biogás (do Fermentador), Biomassa, Bioetanol, óleo e combustível de outros mods.
 
-      É o destino natural do biogás da sua fazenda!
+      É o destino natural do biogás da sua fazenda! Monte um e dê uso ao que você produz.
     tasks:
       - get: IC2:blockGenerator:7
     rewards:
@@ -2017,8 +1979,9 @@ quests:
     deps: [rotor_madeira]
     icon: IC2:itemironrotor:1
     desc: |
-      Pás de Rotor de Ferro (6 Placas de Ferro + 3 lingotes de ferro) × 4 em volta de um Eixo
-      de Ferro = §eRotor de Ferro§r. Dura muito mais e é maior que o de madeira.
+      Hora de colocar o vento para trabalhar! Pás de Rotor de Ferro (6 Placas de Ferro + 3 lingotes de ferro) × 4 em volta de um Eixo de Ferro = §eRotor de Ferro§r.
+
+      Dura muito mais e é maior que o de madeira. Se a receita das pás confundir, o NEI (R/U) mostra tudo, Herói. Boas rajadas!
     tasks:
       - get: IC2:itemironrotor:*
     rewards:
@@ -2031,9 +1994,9 @@ quests:
     deps: [rotor_ferro, placa_aco]
     icon: IC2:itemsteelrotor:1
     desc: |
-      Pás de Ferro Enriquecido (6 Placas de Ferro Enriquecido + 3 Ferros Refinados) × 4 + Eixo
-      de Ferro = §eRotor de Ferro Enriquecido§r. Aguenta ventos mais fortes e vive o dobro do
-      de ferro.
+      Mais um passo na escada dos rotores! Pás de Ferro Enriquecido (6 Placas de Ferro Enriquecido + 3 Ferros Refinados) × 4 + Eixo de Ferro = §eRotor de Ferro Enriquecido§r.
+
+      Ele aguenta ventos mais fortes e vive o dobro do de ferro. Vale a pena para quem quer um moinho de vento confiável. Confira o NEI (R/U) se precisar.
     tasks:
       - get: IC2:itemsteelrotor:*
     rewards:
@@ -2046,9 +2009,9 @@ quests:
     deps: [rotor_aco, eixo_aco, placa_carbono]
     icon: IC2:itemwcarbonrotor:1
     desc: |
-      O rei dos rotores: Pás de Fibra de Carbono (6 Placas de Carbono + 3 Malhas) × 4 em volta
-      de um Eixo de Ferro Enriquecido. Enorme, levíssimo e duradouro. Precisa de MUITO espaço
-      livre na frente — instale bem alto!
+      O rei dos rotores: Pás de Fibra de Carbono (6 Placas de Carbono + 3 Malhas) × 4 em volta de um Eixo de Ferro Enriquecido.
+
+      Ele é enorme, levíssimo e duradouro. Precisa de MUITO espaço livre na frente, então instale bem alto, Herói! Se faltar alguma peça, o NEI (R/U) ajuda a achar a receita.
     tasks:
       - get: IC2:itemwcarbonrotor:*
     rewards:
@@ -2060,9 +2023,9 @@ quests:
     deps: [moinho_vento_cinetico, unidade_potencia_pequena]
     icon: IC2:windmeter:1
     desc: |
-      Invólucros de Estanho e Bronze + Pequena Unidade de Potência = §eMedidor de Vento§r.
-      Clique direito para ver a força do vento onde você está. Ótimo para escolher a altura
-      certa dos moinhos sem destruir rotores.
+      Antes de plantar um moinho de vento, que tal medir o vento? Invólucros de Estanho e Bronze + Pequena Unidade de Potência = §eMedidor de Vento§r.
+
+      Clique direito para ver a força do vento onde você está. Ótimo para escolher a altura certa dos moinhos sem destruir rotores. Teste em vários pontos antes de decidir!
     tasks:
       - get: IC2:windmeter:*
     rewards:
@@ -2074,9 +2037,9 @@ quests:
     deps: [carcaca_maquina]
     icon: IC2:blockKineticGenerator:3
     desc: |
-      Carcaça + alavanca (sem forma) = §eManual Kinetic Generator§r. Clique e gire a manivela
-      você mesmo! Não vai alimentar uma fábrica, mas é ótimo para entender o kU antes de
-      construir moinhos. Ninguém disse que reconstruir o mundo seria sem suor.
+      Carcaça + alavanca (sem forma) = §eManual Kinetic Generator§r. Clique e gire a manivela você mesmo!
+
+      Não vai alimentar uma fábrica, mas é ótimo para entender o kU antes de construir moinhos. Ninguém disse que reconstruir o mundo seria sem suor, Herói. Confira o NEI (R/U) para ver o que ele aceita.
     tasks:
       - get: IC2:blockKineticGenerator:3
     rewards:
@@ -2104,9 +2067,9 @@ quests:
     deps: [motor_eletrico, eixo_ferro, bateria_re]
     icon: IC2:blockKineticGenerator:2
     desc: |
-      O caminho inverso: o §eElectric Kinetic Generator§r transforma EU em kU. Coloque §eMotores
-      Elétricos§r nos slots para aumentar a saída. Útil para testar máquinas cinéticas ou
-      levar energia a sistemas que só aceitam kU.
+      O caminho inverso: o §eElectric Kinetic Generator§r transforma EU em kU. Coloque §eMotores Elétricos§r nos slots para aumentar a saída.
+
+      É útil para testar máquinas cinéticas ou levar energia a sistemas que só aceitam kU. Se tiver dúvida sobre a receita, o NEI (R/U) mostra os ingredientes. Missão opcional, mas muito prática!
     tasks:
       - get: IC2:blockKineticGenerator:2
     rewards:
@@ -2135,9 +2098,9 @@ quests:
     deps: [info_torno, stirling]
     icon: IC2:blockKineticGenerator:5
     desc: |
-      6 frascos de vidro, 1 pistão, Carcaça e a peça torneada §eEixo Canelado Fino 3-2-3-2-3§r
-      = §eStirling Kinetic Generator§r: transforma calor (hU) em kU em vez de EU. Uma ponte
-      entre os sistemas de calor e de movimento.
+      6 frascos de vidro, 1 pistão, Carcaça e a peça torneada §eEixo Canelado Fino 3-2-3-2-3§r = §eStirling Kinetic Generator§r.
+
+      Ele transforma calor (hU) em kU em vez de EU, fazendo uma ponte entre os sistemas de calor e de movimento. Um bom brinquedo para quem curte engenharia, Herói. A peça torneada sai do Torno.
     tasks:
       - get: IC2:blockKineticGenerator:5
     rewards:
@@ -2149,9 +2112,9 @@ quests:
     deps: [condutor_calor, celula_universal]
     icon: IC2:blockHeatGenerator:1
     desc: |
-      4 Invólucros de Ferro, 4 Células de Fluidos Universais e um Condutor de Calor = §eGerador
-      de Calor por Líquidos§r. Queima os mesmos combustíveis do Gerador Semifluido (biogás,
-      biomassa, óleo...), mas solta §6calor§r em vez de EU.
+      4 Invólucros de Ferro, 4 Células de Fluidos Universais e um Condutor de Calor = §eGerador de Calor por Líquidos§r.
+
+      Ele queima os mesmos combustíveis do Gerador Semifluido (biogás, biomassa, óleo...), mas solta §6calor§r em vez de EU. É o elo entre sua produção de combustível e as máquinas que pedem calor. Confira o NEI (R/U).
     tasks:
       - get: IC2:blockHeatGenerator:1
     rewards:
@@ -2164,9 +2127,9 @@ quests:
     deps: [condutor_calor, bateria_re, circuito]
     icon: IC2:blockHeatGenerator:3
     desc: |
-      Invólucros de Ferro, Bateria, Circuito e Condutor de Calor = §eGerador de Calor
-      Elétrico§r: EU entra, calor sai. Coloque §eBobinas§r nos slots para aumentar a saída. É o
-      jeito mais limpo de esquentar uma Fornalha Industrial numa base com energia sobrando.
+      Invólucros de Ferro, Bateria, Circuito e Condutor de Calor = §eGerador de Calor Elétrico§r: EU entra, calor sai.
+
+      Coloque §eBobinas§r nos slots para aumentar a saída. É o jeito mais limpo de esquentar uma Fornalha Industrial numa base com energia sobrando. Sem fumaça, sem combustível, Herói. Veja a receita no NEI (R/U).
     tasks:
       - get: IC2:blockHeatGenerator:3
     rewards:
@@ -2178,8 +2141,9 @@ quests:
     deps: [martelo_forja]
     icon: IC2:itemRecipePart:6
     desc: |
-      Oito Invólucros de Cobre em anel = §eCaldeira de Cobre§r, o coração do sistema de vapor.
-      Ela vai para o Gerador de Vapor e para o Gerador de Vapor Cinético.
+      Aqui começa o capítulo do vapor! Oito Invólucros de Cobre em anel = §eCaldeira de Cobre§r, o coração do sistema de vapor.
+
+      Faça §e2§r: elas vão para o Gerador de Vapor e para o Gerador de Vapor Cinético. Se precisar rever a receita, o NEI (R/U) mostra certinho, Herói.
     tasks:
       - get: IC2:itemRecipePart:6 x2
     rewards:
@@ -2210,8 +2174,9 @@ quests:
     deps: [placa_aco]
     icon: IC2:itemSteamTurbine:1
     desc: |
-      Pá de Turbina = 8 Placas de Ferro Enriquecido + 1 Ferro Refinado. Três pás = §eTurbina a
-      Vapor§r. Ela vai no slot do Gerador de Vapor Cinético e se desgasta com o uso.
+      Pá de Turbina = 8 Placas de Ferro Enriquecido + 1 Ferro Refinado. Três pás = §eTurbina a Vapor§r.
+
+      Ela vai no slot do Gerador de Vapor Cinético e se desgasta com o uso, então tenha uma reserva de pás à mão. Se a receita ficar confusa, confira no NEI (R/U). O vapor agradece, Herói!
     tasks:
       - get: IC2:itemSteamTurbine:*
     rewards:
@@ -2242,9 +2207,9 @@ quests:
     deps: [celula_universal]
     icon: IC2:blockMachine3:3
     desc: |
-      5 vidros, 2 Células Universais e Carcaça = §eDestilador Solar§r. Debaixo do sol, ele
-      transforma água em §eÁgua Destilada§r devagarzinho, de graça. Perfeito para a caldeira
-      do Gerador de Vapor.
+      Quer água pura sem gastar um centavo de energia? 5 vidros, 2 Células Universais e Carcaça = §eDestilador Solar§r.
+
+      Debaixo do sol, ele transforma água em §eÁgua Destilada§r devagarzinho, de graça. Perfeito para a caldeira do Gerador de Vapor. Coloque onde o céu esteja aberto e deixe o sol trabalhar!
     tasks:
       - get: IC2:blockMachine3:3
     rewards:
@@ -2256,9 +2221,9 @@ quests:
     deps: [celula_vazia, involucros, circuito]
     icon: IC2:blockMachine2:15
     desc: |
-      O §eCondensador§r (4 Células Vazias, 3 Invólucros de Ferro, Circuito e Carcaça)
-      transforma vapor de volta em Água Destilada usando EU. Coloque §eRespiradouros de Calor§r
-      nos slots para acelerar. Fecha o ciclo do vapor!
+      O §eCondensador§r (4 Células Vazias, 3 Invólucros de Ferro, Circuito e Carcaça) transforma vapor de volta em Água Destilada usando EU.
+
+      Coloque §eRespiradouros de Calor§r nos slots para acelerar. Fecha o ciclo do vapor, nada se desperdiça! Se precisar rever a receita, o NEI (R/U) mostra tudo, Herói.
     tasks:
       - get: IC2:blockMachine2:15
     rewards:
@@ -2318,9 +2283,9 @@ quests:
     deps: [motor_eletrico, bateria_re, circuito]
     icon: IC2:itemRecipePart:2
     desc: |
-      3 Baterias, 2 Cabos de Cobre (sem isolamento), 2 Invólucros de Ferro, Circuito e Motor
-      Elétrico = §eUnidade de Potência§r: o "motor de bolso" da Broca de Mineração e da
-      Motosserra.
+      3 Baterias, 2 Cabos de Cobre (sem isolamento), 2 Invólucros de Ferro, Circuito e Motor Elétrico = §eUnidade de Potência§r: o "motor de bolso" da Broca de Mineração e da Motosserra.
+
+      Faça §e2§r para ter uma de reserva. Cuidado para usar cabos sem isolamento, ou a receita não encaixa!
     tasks:
       - get: IC2:itemRecipePart:2 x2
     rewards:
@@ -2335,8 +2300,7 @@ quests:
     desc: |
       Nem toda ferramenta precisa de um motorzão.
 
-      A versão compacta, com só 1 Bateria: §ePequena Unidade de Potência§r. Ela vira Chave
-      Inglesa Elétrica, Torneira Elétrica, Enxada Elétrica e o Medidor de Vento.
+      A versão compacta, com só 1 Bateria: §ePequena Unidade de Potência§r. Faça §e2§r, porque ela vira Chave Inglesa Elétrica, Torneira Elétrica, Enxada Elétrica e o Medidor de Vento. Pequena no tamanho, grande na utilidade, Herói! A receita está no NEI (R/U).
     tasks:
       - get: IC2:itemRecipePart:3 x2
     rewards:
@@ -2349,11 +2313,9 @@ quests:
     deps: [unidade_potencia]
     icon: IC2:itemToolDrill:1
     desc: |
-      Adeus, picaretas quebradas! A §eBroca de Mineração§r (6 Placas de Ferro + Unidade de
-      Potência) guarda 30 000 EU e minera pedra, terra e minérios gastando energia em vez de
-      durabilidade.
+      Adeus, picaretas quebradas! A §eBroca de Mineração§r (6 Placas de Ferro + Unidade de Potência) guarda 30 000 EU e minera pedra, terra e minérios gastando energia em vez de durabilidade.
 
-      Recarregue numa BatBox, num Bloco de Carregar ou com Mochila de Baterias.
+      Recarregue numa BatBox, num Bloco de Carregar ou com Mochila de Baterias. Cave sem medo, Herói!
     tasks:
       - get: IC2:itemToolDrill:*
     rewards:
@@ -2366,9 +2328,9 @@ quests:
     deps: [unidade_potencia]
     icon: IC2:itemToolChainsaw:1
     desc: |
-      6 Placas de Ferro + Unidade de Potência = §eMotosserra§r (30 000 EU). Derruba madeira num
-      piscar de olhos, tosquia ovelhas e folhas (um modo desliga a tosquia) e é uma arma
-      respeitável. Diz a lenda que creepers têm pavor dela.
+      6 Placas de Ferro + Unidade de Potência = §eMotosserra§r (30 000 EU). Ela derruba madeira num piscar de olhos, tosquia ovelhas e folhas (um modo desliga a tosquia) e é uma arma respeitável.
+
+      Diz a lenda que creepers têm pavor dela. Recarregue sempre que puder e confira os modos no manual do mod!
     tasks:
       - get: IC2:itemToolChainsaw:*
     rewards:
@@ -2381,11 +2343,9 @@ quests:
     deps: [broca, info_torno]
     icon: IC2:itemToolDDrill:1
     desc: |
-      3 diamantes, a Broca de Mineração e uma peça torneada no perfil §eBroca 5-4-3-2-1§r =
-      §eBroca de Diamante§r. Mais rápida, minera obsidiana e tudo que a picareta de diamante
-      minera.
+      3 diamantes, a Broca de Mineração e uma peça torneada no perfil §eBroca 5-4-3-2-1§r = §eBroca de Diamante§r.
 
-      Primeira grande desculpa para usar o Torno de verdade!
+      Ela é mais rápida, minera obsidiana e tudo que a picareta de diamante minera. É a primeira grande desculpa para usar o Torno de verdade! Se tiver dúvida sobre a peça, confira o NEI (R/U), Herói.
     tasks:
       - get: IC2:itemToolDDrill:*
     rewards:
@@ -2398,9 +2358,9 @@ quests:
     deps: [chave_inglesa, unidade_potencia_pequena]
     icon: IC2:itemToolWrenchElectric:1
     desc: |
-      Chave Inglesa + Pequena Unidade de Potência (sem forma) = §eChave Inglesa Elétrica§r. Ela
-      usa EU em vez de se desgastar e tem um modo §eSem perdas§r, que garante que a máquina
-      desmontada volte inteira. Indispensável antes de mexer em MFE e reatores!
+      Chave Inglesa + Pequena Unidade de Potência (sem forma) = §eChave Inglesa Elétrica§r.
+
+      Ela usa EU em vez de se desgastar e tem um modo §eSem perdas§r, que garante que a máquina desmontada volte inteira. Indispensável antes de mexer em MFE e reatores! Cuidado para ativar o modo certo antes de desmontar.
     tasks:
       - get: IC2:itemToolWrenchElectric:*
     rewards:
@@ -2415,8 +2375,7 @@ quests:
     desc: |
       Lembra da primeira torneira de madeira, quebrando a cada dúzia de usos? Pois é.
 
-      Torneira + Pequena Unidade de Potência = §eTorneira Elétrica§r. Nunca quebra e coloca a
-      resina direto no inventário. As seringueiras agradecem.
+      Torneira + Pequena Unidade de Potência = §eTorneira Elétrica§r. Ela nunca quebra e coloca a resina direto no inventário. As seringueiras agradecem. Se faltar resina, é só voltar às árvores de borracha. Confira o NEI (R/U) para a receita.
     tasks:
       - get: IC2:itemTreetapElectric:*
     rewards:
@@ -2430,8 +2389,7 @@ quests:
     desc: |
       Agricultura também é indústria (e o meu lado jardineira concorda).
 
-      3 Placas de Ferro + Pequena Unidade de Potência = §eEnxada Elétrica§r. Lavra a terra com
-      energia, sem desgaste. Para quem cuida de plantações (inclusive as do IC2).
+      3 Placas de Ferro + Pequena Unidade de Potência = §eEnxada Elétrica§r. Ela lavra a terra com energia, sem desgaste. Perfeita para quem cuida de plantações, inclusive as do IC2, Herói. Se precisar, a receita está no NEI (R/U).
     tasks:
       - get: IC2:itemToolHoe:*
     rewards:
@@ -2475,8 +2433,9 @@ quests:
     deps: [placas, torneira_resina]
     icon: IC2:blockMiningPipe
     desc: |
-      6 Placas de Ferro + 1 Torneira de Resina = §e8 Tubos de Mineração§r. O Minerador desce
-      empurrando esses tubos até o bedrock — e a Bomba também precisa deles. Faça §e64§r.
+      6 Placas de Ferro + 1 Torneira de Resina = §e8 Tubos de Mineração§r. O Minerador desce empurrando esses tubos até o bedrock, e a Bomba também precisa deles.
+
+      Faça §e64§r, ou seja, uma pilha cheia. Pode parecer muito, mas o Minerador vai devorar tubos, Herói. Confira a receita no NEI (R/U) se precisar.
     tasks:
       - get: IC2:blockMiningPipe x64
     rewards:
@@ -2507,9 +2466,9 @@ quests:
     deps: [tubo_mineracao, celula_vazia, circuito]
     icon: IC2:blockMachine:8
     desc: |
-      4 Células Vazias, Circuito, Carcaça, 2 Tubos de Mineração e uma Torneira = §eBomba§r. Ela
-      suga fluidos abaixo (água, lava...) para células ou para canos e máquinas vizinhas.
-      Lava infinita para o Geotérmico? Bomba num lago de lava!
+      4 Células Vazias, Circuito, Carcaça, 2 Tubos de Mineração e uma Torneira = §eBomba§r.
+
+      Ela suga fluidos abaixo (água, lava...) para células ou para canos e máquinas vizinhas. Lava infinita para o Geotérmico? Bomba num lago de lava! Cuidado ao chegar perto de lava, Herói. A receita está no NEI (R/U).
     tasks:
       - get: IC2:blockMachine:8
     rewards:
@@ -2559,8 +2518,7 @@ quests:
     desc: |
       Para obras grandes, um pulverizador só é pouco.
 
-      Uma mochila-tanque de espuma: 2 Pulverizadores CF, 4 Células Universais, Invólucro de
-      Ferro e Circuito. Vestida, ela abastece o pulverizador na sua mão por muito mais tempo.
+      Uma mochila-tanque de espuma: 2 Pulverizadores CF, 4 Células Universais, Invólucro de Ferro e Circuito. Vestida, ela abastece o pulverizador na sua mão por muito mais tempo. Uma boa ajuda para quem constrói muito. Confira o NEI (R/U) se precisar.
     tasks:
       - get: IC2:itemArmorCFPack:*
     rewards:
@@ -2572,9 +2530,9 @@ quests:
     deps: [bateria_avancada, circuito_avancado, cabo_ouro]
     icon: IC2:obscurator:1
     desc: |
-      Redstone, Bateria Avançada, 2 Cabos de Ouro Isolados e Circuito Avançado = §eObscurador§r.
-      Ele copia a aparência de um bloco e aplica em cabos, para esconder a fiação dentro das
-      paredes. Decoração com eletricidade!
+      Que tal esconder a fiação e deixar a base bonita? Redstone, Bateria Avançada, 2 Cabos de Ouro Isolados e Circuito Avançado = §eObscurador§r.
+
+      Ele copia a aparência de um bloco e aplica em cabos, para esconder a fiação dentro das paredes. Decoração com eletricidade, Herói! A receita completa está no NEI (R/U).
     tasks:
       - get: IC2:obscurator:*
     rewards:
@@ -2632,8 +2590,7 @@ quests:
     desc: |
       Nem toda proteção precisa de bateria.
 
-      Um peitoral de couro + um de ferro + 6 Ligas Avançadas = §eColete Reforçado§r (Composite
-      Vest). Proteção alta sem gastar energia — ótimo antes da NanoSuit.
+      Um peitoral de couro + um de ferro + 6 Ligas Avançadas = §eColete Reforçado§r (Composite Vest). Proteção alta sem gastar energia, ótimo antes da NanoSuit. Se faltar Liga Avançada, volte um passo e produza mais, Herói. O NEI (R/U) mostra a receita.
     tasks:
       - get: IC2:itemArmorAlloyChestplate
     rewards:
@@ -2645,9 +2602,9 @@ quests:
     deps: [cabo_cobre]
     icon: IC2:itemStaticBoots
     desc: |
-      Ferro, lã e cabos de cobre (ou botas de ferro + lã + cabos) = §eBotas Estáticas§r. A cada
-      passo elas geram um pouquinho de eletricidade estática para o item elétrico §evestido no
-      peito§r (Mochila de Baterias, Energypack...). Andar nunca foi tão produtivo!
+      Ferro, lã e cabos de cobre (ou botas de ferro + lã + cabos) = §eBotas Estáticas§r.
+
+      A cada passo elas geram um pouquinho de eletricidade estática para o item elétrico §evestido no peito§r (Mochila de Baterias, Energypack...). Andar nunca foi tão produtivo, Herói! Confira a receita no NEI (R/U).
     tasks:
       - get: IC2:itemStaticBoots
     rewards:
@@ -2661,9 +2618,7 @@ quests:
     desc: |
       Cansado de voltar para a BatBox no meio da mina? Leve a BatBox com você!
 
-      6 Baterias Reutilizáveis, Circuito e tábuas = §eMochila de Baterias§r (BatPack), 60 000 EU
-      nas costas. Vestida no lugar do peitoral, ela recarrega as ferramentas elétricas na sua
-      mão.
+      6 Baterias Reutilizáveis, Circuito e tábuas = §eMochila de Baterias§r (BatPack), 60 000 EU nas costas. Vestida no lugar do peitoral, ela recarrega as ferramentas elétricas na sua mão. Boas escavações!
     tasks:
       - get: IC2:itemArmorBatpack:*
     rewards:
@@ -2678,8 +2633,7 @@ quests:
     desc: |
       Mais baterias, mais escavação, menos viagens de volta.
 
-      6 Baterias Avançadas, Circuito e 1 Invólucro de Cobre = §eAdv.Batpack§r: 600 000 EU. Dez
-      vezes a mochila comum, para jornadas longas de mineração.
+      6 Baterias Avançadas, Circuito e 1 Invólucro de Cobre = §eAdv.Batpack§r: 600 000 EU. Dez vezes a mochila comum, para jornadas longas de mineração. Vista no lugar do peitoral e saia explorando, Herói. A receita está no NEI (R/U).
     tasks:
       - get: IC2:itemArmorAdvBatpack:*
     rewards:
@@ -2692,9 +2646,9 @@ quests:
     deps: [mochila_avancada, cristal_energia, circuito_avancado]
     icon: IC2:itemArmorEnergypack:1
     desc: |
-      2 Cristais de Energia, 2 Circuitos Avançados e 4 Invólucros de Ferro = §eEnergypack§r:
-      2 000 000 EU de energia portátil — o tanque ideal para o Laser de Mineração e a Broca de
-      Irídio.
+      Chegou a hora de carregar energia de verdade. 2 Cristais de Energia, 2 Circuitos Avançados e 4 Invólucros de Ferro = §eEnergypack§r: 2 000 000 EU de energia portátil.
+
+      É o tanque ideal para o Laser de Mineração e a Broca de Irídio. Vista no lugar do peitoral, Herói. Se precisar, o NEI (R/U) mostra a receita.
     tasks:
       - get: IC2:itemArmorEnergypack:*
     rewards:
@@ -2707,9 +2661,9 @@ quests:
     deps: [celula_universal, circuito]
     icon: IC2:itemArmorJetpack:1
     desc: |
-      4 Invólucros de Ferro, Circuito, Célula Universal e 2 redstone = §eJetpack§r. Ele queima
-      §eBiogás§r (do Fermentador); encha-o com biogás como qualquer recipiente de fluido (a
-      Engarrafadora de Líquidos ajuda). Segure pular para subir e, por favor, olhe o combustível antes de sobrevoar lava.
+      4 Invólucros de Ferro, Circuito, Célula Universal e 2 redstone = §eJetpack§r. Ele queima §eBiogás§r (do Fermentador); encha-o com biogás como qualquer recipiente de fluido (a Engarrafadora de Líquidos ajuda).
+
+      Segure pular para subir e, por favor, §colhe o combustível antes de sobrevoar lava§r. Boa viagem, Herói!
     tasks:
       - get: IC2:itemArmorJetpack:*
     rewards:
@@ -2721,9 +2675,9 @@ quests:
     deps: [batbox, circuito_avancado]
     icon: IC2:itemArmorJetpackElectric:1
     desc: |
-      4 Invólucros de Ferro, Circuito Avançado, uma §eBatBox§r inteira e 2 glowstone =
-      §eJetpack Elétrico§r (30 000 EU). Voa com EU, recarrega em qualquer banco de energia e é
-      peça do §dPeitoral Quântico§r. Guarde com carinho!
+      4 Invólucros de Ferro, Circuito Avançado, uma §eBatBox§r inteira e 2 glowstone = §eJetpack Elétrico§r (30 000 EU).
+
+      Ele voa com EU, recarrega em qualquer banco de energia e é peça do §dPeitoral Quântico§r. Guarde com carinho! Se tiver dúvida na receita, o NEI (R/U) resolve, Herói. Céu aberto, aí vamos nós!
     tasks:
       - get: IC2:itemArmorJetpackElectric:*
     rewards:
@@ -2736,9 +2690,9 @@ quests:
     deps: [cabo_cobre, involucros]
     icon: IC2:blockLuminatorDark
     desc: |
-      Vidro, Invólucros de Ferro, Cabo de Cobre Isolado e Cabo de Estanho = §e8 Iluminadores§r,
-      lâmpadas elétricas que brilham enquanto recebem EU. Também são peça dos Óculos de Visão
-      Noturna e do Examinador.
+      Vidro, Invólucros de Ferro, Cabo de Cobre Isolado e Cabo de Estanho = §e8 Iluminadores§r, lâmpadas elétricas que brilham enquanto recebem EU.
+
+      Também são peça dos Óculos de Visão Noturna e do Examinador, então guarde alguns. Perfeito para iluminar a base sem tochas, Herói! A receita está no NEI (R/U).
     tasks:
       - get: IC2:blockLuminatorDark x8
     rewards:
@@ -2750,9 +2704,9 @@ quests:
     deps: [liga_avancada]
     icon: IC2:blockAlloyGlass
     desc: |
-      7 vidros + 2 Ligas Avançadas = §e7 Vidros Reforçados§r, resistentes a explosões. Use nas
-      janelas da sala do reator. É também peça dos Óculos, do Capacete Quântico, do Examinador
-      e do Replicador.
+      7 vidros + 2 Ligas Avançadas = §e7 Vidros Reforçados§r, resistentes a explosões. Use nas janelas da sala do reator.
+
+      É também peça dos Óculos, do Capacete Quântico, do Examinador e do Replicador, então ele vai aparecer bastante daqui pra frente. Segurança e utilidade no mesmo bloco, Herói! Confira o NEI (R/U) se precisar.
     tasks:
       - get: IC2:blockAlloyGlass x7
     rewards:
@@ -2767,8 +2721,7 @@ quests:
     desc: |
       O lápis-lazúli também sabe ser metal... quase.
 
-      Pó de Lápis-Lazúli no Compressor = §ePlaca de Lápis-Lazúli§r. Ela entra no Trocador de
-      Calor Avançado (rumo aos Óculos e à bateria de carregar de lapotron). Faça §e4§r.
+      Pó de Lápis-Lazúli no Compressor = §ePlaca de Lápis-Lazúli§r. Ela entra no Trocador de Calor Avançado (rumo aos Óculos e à bateria de carregar de lapotron). Faça §e4§r, Herói, e guarde com carinho. A receita está no NEI (R/U).
     tasks:
       - get: ore:plateLapis x4
     rewards:
@@ -2781,9 +2734,9 @@ quests:
     deps: [circuito, placas]
     icon: IC2:reactorHeatSwitch:1
     desc: |
-      5 Placas de Cobre, 3 de Estanho e 1 Circuito = §eTrocador de Calor§r. No reator, ele
-      equaliza o calor entre componentes vizinhos e o casco. Fora do reator, é peça de baterias
-      de carregar e de trocadores melhores. Faça §e3§r.
+      5 Placas de Cobre, 3 de Estanho e 1 Circuito = §eTrocador de Calor§r. No reator, ele equaliza o calor entre componentes vizinhos e o casco.
+
+      Fora do reator, é peça de baterias de carregar e de trocadores melhores. Faça §e3§r, Herói. Reator é coisa séria: se tiver dúvida, confira no NEI (R/U).
     tasks:
       - get: IC2:reactorHeatSwitch:* x3
     rewards:
@@ -2796,9 +2749,9 @@ quests:
     deps: [trocador_calor, placa_lapis]
     icon: IC2:reactorHeatSwitchDiamond:1
     desc: |
-      2 Trocadores de Calor, 4 Placas de Lápis, 2 Circuitos e 1 Placa de Cobre = §eTrocador de
-      Calor Avançado§r. No reator, move bastante calor; fora dele, é peça dos §eÓculos de Visão
-      Noturna§r (que levam 2). Faça §e2§r.
+      2 Trocadores de Calor, 4 Placas de Lápis, 2 Circuitos e 1 Placa de Cobre = §eTrocador de Calor Avançado§r.
+
+      No reator, move bastante calor; fora dele, é peça dos §eÓculos de Visão Noturna§r (que levam 2). Faça §e2§r, Herói. Se faltar alguma peça, a receita completa está no NEI (R/U).
     tasks:
       - get: IC2:reactorHeatSwitchDiamond:* x2
     rewards:
@@ -2828,9 +2781,9 @@ quests:
     deps: [bateria_re, circuito]
     icon: IC2:itemBatChargeRE:1
     desc: |
-      4 Baterias e 4 Circuitos = §eCharging RE Battery§r: ela fica no inventário e §erecarrega
-      os outros itens elétricos§r que você carrega. Existem versões maiores com Bateria
-      Avançada, Cristal de Energia e Lapotron (cada uma usa um tipo de Trocador de Calor).
+      4 Baterias e 4 Circuitos = §eCharging RE Battery§r: ela fica no inventário e §erecarrega os outros itens elétricos§r que você carrega.
+
+      Existem versões maiores com Bateria Avançada, Cristal de Energia e Lapotron (cada uma usa um tipo de Trocador de Calor). Faça uma delas e fique tranquilo, Herói. Confira o NEI (R/U).
     tasks:
       - one_of: [IC2:itemBatChargeRE:*, IC2:itemBatChargeAdv:*, IC2:itemBatChargeCrystal:*, IC2:itemBatChargeLamaCrystal:*]
     rewards:
@@ -2842,9 +2795,9 @@ quests:
     deps: [oculos_visao_noturna, placa_carbono, cristal_energia]
     icon: IC2:itemArmorNanoHelmet:1
     desc: |
-      4 Placas de Carbono, 1 Cristal de Energia e os Óculos de Visão Noturna = §dCapacete
-      NanoSuit§r. A NanoSuit absorve dano gastando EU (1 000 000 EU por peça) e o capacete
-      mantém a visão noturna dos óculos.
+      Tá chegando a hora de ficar nanotecnológico, Herói! 4 Placas de Carbono, 1 Cristal de Energia e os Óculos de Visão Noturna = §dCapacete NanoSuit§r.
+
+      A NanoSuit absorve dano gastando EU (1 000 000 EU por peça) e o capacete mantém a visão noturna dos óculos. Confira a receita no NEI (R/U) se precisar de ajuda.
     tasks:
       - get: IC2:itemArmorNanoHelmet:*
     rewards:
@@ -2857,9 +2810,9 @@ quests:
     deps: [placa_carbono, cristal_energia]
     icon: IC2:itemArmorNanoChestplate:1
     desc: |
-      7 Placas de Carbono + 1 Cristal de Energia = §dArmadura NanoSuit§r (o peitoral). A peça
-      que mais absorve dano. Recarregue num banco HV (MFE) ou com um Energypack... ah, espera,
-      o Energypack também vai no peito. Use Blocos de Carregar!
+      7 Placas de Carbono + 1 Cristal de Energia = §dArmadura NanoSuit§r (o peitoral). É a peça que mais absorve dano.
+
+      Recarregue num banco HV (MFE) ou com um Energypack... ah, espera, o Energypack também vai no peito. Use Blocos de Carregar, Herói! Se a receita travar, o NEI (R/U) ajuda.
     tasks:
       - get: IC2:itemArmorNanoChestplate:*
     rewards:
@@ -2874,8 +2827,7 @@ quests:
     desc: |
       Terceira peça! A NanoSuit está quase completa, eu já estou dando pulinhos.
 
-      6 Placas de Carbono + 1 Cristal de Energia = §dCalças NanoSuit§r. Elegantes e muito
-      resistentes. (Eu escolheria a cor, mas o IC2 só faz preto-futurista.)
+      6 Placas de Carbono + 1 Cristal de Energia = §dCalças NanoSuit§r. Elegantes e muito resistentes. (Eu escolheria a cor, mas o IC2 só faz preto-futurista.) Falta só uma peça, Herói. Confira o NEI (R/U) se precisar.
     tasks:
       - get: IC2:itemArmorNanoLegs:*
     rewards:
@@ -2888,8 +2840,9 @@ quests:
     deps: [placa_carbono, cristal_energia]
     icon: IC2:itemArmorNanoBoots:1
     desc: |
-      4 Placas de Carbono + 1 Cristal de Energia = §dBotas NanoSuit§r. Elas absorvem o dano de
-      queda gastando energia — pule de penhascos com (um pouco mais de) confiança.
+      Última peça da NanoSuit, Herói! 4 Placas de Carbono + 1 Cristal de Energia = §dBotas NanoSuit§r.
+
+      Elas absorvem o dano de queda gastando energia, então pule de penhascos com (um pouco mais de) confiança. Lembre de manter a carga em dia, senão a proteção não funciona. A receita está no NEI (R/U).
     tasks:
       - get: IC2:itemArmorNanoBoots:*
     rewards:
@@ -2928,9 +2881,9 @@ quests:
     deps: [placa_carbono, liga_avancada, cristal_energia]
     icon: IC2:itemNanoSaber:1
     desc: |
-      2 glowstone, 2 Ligas Avançadas, 2 Placas de Carbono e 1 Cristal de Energia = §eSabre
-      Nano§r. Clique direito para acender a lâmina de energia — desligado ele é só um cabo
-      bonito; ligado, corta quase tudo, gastando EU enquanto estiver aceso.
+      2 glowstone, 2 Ligas Avançadas, 2 Placas de Carbono e 1 Cristal de Energia = §eSabre Nano§r.
+
+      Clique direito para acender a lâmina de energia. Desligado ele é só um cabo bonito; ligado, corta quase tudo, gastando EU enquanto estiver aceso. Lembre de desligar quando não estiver lutando, Herói! Confira o NEI (R/U).
     tasks:
       - get: IC2:itemNanoSaber:*
     rewards:
@@ -2980,9 +2933,9 @@ quests:
     deps: [broca_diamante, placa_iridio, cristal_energia]
     icon: IC2:itemToolIridiumDrill:1
     desc: |
-      Broca de Diamante + 3 Placas de Irídio + Cristal de Energia = §eBroca de Irídio§r: 300 000
-      EU, Fortuna III de fábrica e um modo §eToque Suave§r. A última picareta que você vai
-      precisar no IC2.
+      Broca de Diamante + 3 Placas de Irídio + Cristal de Energia = §eBroca de Irídio§r: 300 000 EU, Fortuna III de fábrica e um modo §eToque Suave§r.
+
+      É a última picareta que você vai precisar no IC2. Fruto de muito esforço, merece orgulho, Herói! Se precisar da receita, é só olhar no NEI (R/U).
     tasks:
       - get: IC2:itemToolIridiumDrill:*
     rewards:
@@ -3029,9 +2982,9 @@ quests:
     deps: [nano_calcas, placa_iridio, cristal_lapotron]
     icon: IC2:itemArmorQuantumLegs:1
     desc: |
-      Calças Nano + Placas de Irídio + Lapotron + 2 Carcaças de Máquina + 2 glowstone = §6Calças
-      QuantumSuit§r. Corra e sinta o vento: elas dão uma §evelocidade absurda§r — neste pack o
-      impulso ativa §esó de correr§r (sprint), sem segurar tecla extra.
+      Calças Nano + Placas de Irídio + Lapotron + 2 Carcaças de Máquina + 2 glowstone = §6Calças QuantumSuit§r.
+
+      Corra e sinta o vento: elas dão uma §evelocidade absurda§r. Neste pack o impulso ativa §esó de correr§r (sprint), sem segurar tecla extra. Cuidado com a bateria, Herói! Confira a receita no NEI (R/U).
     tasks:
       - get: IC2:itemArmorQuantumLegs:*
     rewards:
@@ -3044,10 +2997,9 @@ quests:
     deps: [nano_botas, botas_borracha, placa_iridio, cristal_lapotron]
     icon: IC2:itemArmorQuantumBoots:1
     desc: |
-      Botas Nano + §e2 Botas de Borracha§r + 2 Placas de Irídio + Lapotron = §6Botas
-      QuantumSuit§r.
-      Pulos altíssimos e nenhum dano de queda (enquanto houver energia). Lembra daquelas botas
-      de borracha do começo? Eu disse que não era pra jogar fora!
+      Botas Nano + §e2 Botas de Borracha§r + 2 Placas de Irídio + Lapotron = §6Botas QuantumSuit§r.
+
+      Pulos altíssimos e nenhum dano de queda (enquanto houver energia). Lembra daquelas botas de borracha do começo? Eu disse que não era pra jogar fora! Se faltar algo, o NEI (R/U) mostra a receita, Herói.
     tasks:
       - get: IC2:itemArmorQuantumBoots:*
     rewards:
@@ -3156,8 +3108,7 @@ quests:
     desc: |
       Radiação no bolso, nunca mais.
 
-      Um baú dentro de 8 Invólucros de Chumbo = §eCaixa de Contenção§r. Itens radioativos lá
-      dentro não te afetam. Leve sempre uma ao mexer no reator.
+      Um baú dentro de 8 Invólucros de Chumbo = §eCaixa de Contenção§r. Itens radioativos lá dentro não te afetam. Leve sempre uma ao mexer no reator, Herói, porque segurança vem primeiro. Se precisar rever a receita, o NEI (R/U) mostra tudo.
     tasks:
       - get: IC2:itemContainmentbox
     rewards:
@@ -3189,10 +3140,9 @@ quests:
     desc: |
       Antes do fogo atômico, a garrafa que vai guardá-lo.
 
-      Extruda uma Placa de Ferro no Formador de Metal para obter uma §eBarra de Combustível
-      Vazia§r. Faça §e4§r.
+      Extruda uma Placa de Ferro no Formador de Metal para obter uma §eBarra de Combustível Vazia§r. Faça §e4§r.
 
-      Uma barra vazia vira barra de urânio ou de MOX na Máquina de Conservas.
+      Uma barra vazia vira barra de urânio ou de MOX na Máquina de Conservas. Se travar no processo, confira o NEI (R/U).
     tasks:
       - get: IC2:itemFuelRod x4
     rewards:
@@ -3222,8 +3172,9 @@ quests:
     deps: [barra_uranio]
     icon: IC2:reactorUraniumDual:1
     desc: |
-      2 Barras de Urânio + 1 Placa de Ferro = §eBarra Dupla§r. Ocupa um slot só e pulsa como duas
-      barras grudadas — mais energia e mais calor por slot.
+      2 Barras de Urânio + 1 Placa de Ferro = §eBarra Dupla§r. Ela ocupa um slot só e pulsa como duas barras grudadas, ou seja, mais energia e mais calor por slot.
+
+      Planeje o resfriamento antes de usar, Herói. Reator não perdoa distração! Confira a receita no NEI (R/U) se precisar.
     tasks:
       - get: IC2:reactorUraniumDual:*
     rewards:
@@ -3236,8 +3187,9 @@ quests:
     deps: [barra_dupla]
     icon: IC2:reactorUraniumQuad:1
     desc: |
-      4 Barras de Urânio + 3 Placas de Ferro + 2 de Cobre = §eBarra Quádrupla§r. O máximo de
-      combustível num slot. §cGera calor de verdade§r: só use em layouts testados.
+      4 Barras de Urânio + 3 Placas de Ferro + 2 de Cobre = §eBarra Quádrupla§r. É o máximo de combustível num slot. §cGera calor de verdade§r: só use em layouts testados.
+
+      Trate com respeito, Herói, e planeje bem o resfriamento antes de acender o reator. Confira o NEI (R/U) para a receita e para ver layouts.
     tasks:
       - get: IC2:reactorUraniumQuad:*
     rewards:
@@ -3250,10 +3202,9 @@ quests:
     deps: [chumbo, compressor, martelo_forja]
     icon: IC2:itemDensePlates:6
     desc: |
-      Chumbo é a muralha entre você e a radiação — e quanto mais denso, melhor.
+      Chumbo é a muralha entre você e a radiação, e quanto mais denso, melhor.
 
-      9 Placas de Chumbo no Compressor = §ePlaca de Chumbo Densa§r ("Chumbro" no jogo —
-      perdoe a tradução). O Reator Nuclear pede §e4§r.
+      9 Placas de Chumbo no Compressor = §ePlaca de Chumbo Densa§r ("Chumbro" no jogo, perdoe a tradução). O Reator Nuclear pede §e4§r. Junte tudo antes de montar, Herói! Boa sorte! Vai com tudo, Herói, e capriche!
     tasks:
       - get: ore:plateDenseLead x4
     rewards:
@@ -3266,9 +3217,9 @@ quests:
     deps: [chumbo, carcaca_maquina, martelo_forja]
     icon: IC2:blockReactorChamber
     desc: |
-      Uma Carcaça cercada por 4 Placas de Chumbo = §eCâmara do Reator§r. O reator precisa de 3
-      na receita; colocadas encostadas nele (até 6), cada câmara §eamplia a grade interna§r
-      em uma coluna (de 3 até 9 colunas de 6 slots).
+      Uma Carcaça cercada por 4 Placas de Chumbo = §eCâmara do Reator§r. O reator precisa de 3 na receita.
+
+      Colocadas encostadas nele (até 6), cada câmara §eamplia a grade interna§r em uma coluna (de 3 até 9 colunas de 6 slots). Quanto mais espaço, mais possibilidades, Herói! Confira o NEI (R/U).
     tasks:
       - get: IC2:blockReactorChamber x3
     rewards:
@@ -3345,7 +3296,8 @@ quests:
       A maior célula refrigerante do IC2.
 
       2 Células 30k + 6 Placas de Estanho + 1 Placa de Ferro = §e60k Célula Refrigerante§r.
-      Lembre: células só §eguardam§r calor; quando enchem, quebram. Combine com respiradouros.
+
+      Lembre: células só §eguardam§r calor; quando enchem, quebram. Combine com respiradouros, Herói. Se precisar rever a receita, confira no NEI (R/U). Boa sorte!
     tasks:
       - get: IC2:reactorCoolantSix:*
     rewards:
@@ -3358,9 +3310,9 @@ quests:
     deps: [info_componentes, motor_eletrico]
     icon: IC2:reactorVent:1
     desc: |
-      4 barras de ferro, 4 Placas de Ferro e 1 Motor Elétrico = §eRespiradouro de Calor§r. Ele
-      dissipa o calor que §eele mesmo§r recebe. É a base de todos os outros respiradouros.
-      Faça §e4§r.
+      4 barras de ferro, 4 Placas de Ferro e 1 Motor Elétrico = §eRespiradouro de Calor§r. Ele dissipa o calor que §eele mesmo§r recebe.
+
+      É a base de todos os outros respiradouros, então faça §e4§r e vá se preparando para os modelos mais sofisticados. Confira a receita no NEI (R/U) se travar, Herói.
     tasks:
       - get: IC2:reactorVent:* x4
     rewards:
@@ -3375,8 +3327,7 @@ quests:
     desc: |
       O casco do reator também precisa respirar.
 
-      Respiradouro + 8 Placas de Cobre = §eRespiradouro de Reator§r. Ele §epuxa calor do casco§r
-      e dissipa. Ótimo para manter o casco em zero.
+      Respiradouro + 8 Placas de Cobre = §eRespiradouro de Reator§r. Ele §epuxa calor do casco§r e dissipa. Ótimo para manter o casco em zero. Combine com o resto do resfriamento, Herói. Se precisar, o NEI (R/U) mostra a receita.
     tasks:
       - get: IC2:reactorVentCore:*
     rewards:
@@ -3389,9 +3340,9 @@ quests:
     deps: [respiradouro_reator]
     icon: IC2:reactorVentGold:1
     desc: |
-      Respiradouro de Reator + 4 Placas de Ouro = §eRespiradouro com Overclocker§r. Puxa ainda
-      mais calor do casco — às vezes mais do que consegue dissipar sozinho. Cerque-o de
-      Respiradouros Componentes.
+      Respiradouro de Reator + 4 Placas de Ouro = §eRespiradouro com Overclocker§r. Ele puxa ainda mais calor do casco, às vezes mais do que consegue dissipar sozinho.
+
+      Cerque-o de Respiradouros Componentes para ajudar. Cuidado com o calor, Herói! A receita está no NEI (R/U). Boa sorte!
     tasks:
       - get: IC2:reactorVentGold:*
     rewards:
@@ -3406,8 +3357,7 @@ quests:
     desc: |
       Às vezes quem esquenta não é o casco, são os vizinhos.
 
-      Respiradouro + 4 barras de ferro + 4 Placas de Estanho = §eRespiradouro Componente§r. Ele
-      §eresfria os componentes vizinhos§r (os 4 lados), sem tocar no casco.
+      Respiradouro + 4 barras de ferro + 4 Placas de Estanho = §eRespiradouro Componente§r. Ele §eresfria os componentes vizinhos§r (os 4 lados), sem tocar no casco. Combine bem no layout, Herói! Confira o NEI (R/U) se precisar.
     tasks:
       - get: IC2:reactorVentSpread:*
     rewards:
@@ -3420,10 +3370,9 @@ quests:
     deps: [respiradouro]
     icon: IC2:reactorVentDiamond:1
     desc: |
-      Um diamante bem investido — esse respiradouro aguenta o tranco.
+      Um diamante bem investido: esse respiradouro aguenta o tranco.
 
-      2 Respiradouros + 6 barras de ferro + 1 diamante = §eRespiradouro Avançado§r. Dissipa
-      bem mais calor próprio que o comum. O preferido de muitos layouts estáveis.
+      2 Respiradouros + 6 barras de ferro + 1 diamante = §eRespiradouro Avançado§r. Ele dissipa bem mais calor próprio que o comum. É o preferido de muitos layouts estáveis, Herói. A receita está no NEI (R/U).
     tasks:
       - get: IC2:reactorVentDiamond:*
     rewards:
@@ -3438,8 +3387,7 @@ quests:
     desc: |
       Calor parado no casco é calor perigoso.
 
-      Trocador de Calor + 8 Placas de Cobre = §eTrocador de Calor de Reator§r. Troca calor
-      principalmente com o §ecasco§r — o par perfeito dos Respiradouros de Reator.
+      Trocador de Calor + 8 Placas de Cobre = §eTrocador de Calor de Reator§r. Ele troca calor principalmente com o §ecasco§r, sendo o par perfeito dos Respiradouros de Reator. Monte com atenção, Herói! Confira o NEI (R/U) se precisar.
     tasks:
       - get: IC2:reactorHeatSwitchCore:*
     rewards:
@@ -3452,8 +3400,9 @@ quests:
     deps: [trocador_calor, info_componentes]
     icon: IC2:reactorHeatSwitchSpread:1
     desc: |
-      Trocador de Calor + 4 Placas de Ouro = §eTrocador de Calor Componente§r. Equilibra o calor
-      só entre os §ecomponentes vizinhos§r. Também é peça da Bateria de Carregar de Cristal.
+      Trocador de Calor + 4 Placas de Ouro = §eTrocador de Calor Componente§r. Ele equilibra o calor só entre os §ecomponentes vizinhos§r.
+
+      Também é peça da Bateria de Carregar de Cristal, então vale guardar um, Herói. Se a receita travar, o NEI (R/U) mostra o caminho.
     tasks:
       - get: IC2:reactorHeatSwitchSpread:*
     rewards:
@@ -3466,9 +3415,9 @@ quests:
     deps: [info_componentes]
     icon: IC2:reactorReflector:1
     desc: |
-      4 Pós de Estanho, 4 Pós de Carvão e 1 Placa de Cobre = §eRefletor de Nêutrons§r. Ao lado
-      de uma barra, devolve os pulsos dela: §emais EU sem gastar combustível extra§r. Desgasta
-      com o tempo.
+      4 Pós de Estanho, 4 Pós de Carvão e 1 Placa de Cobre = §eRefletor de Nêutrons§r. Ao lado de uma barra, devolve os pulsos dela: §emais EU sem gastar combustível extra§r.
+
+      Faça §e2§r, mas lembre que ele desgasta com o tempo, Herói. A receita está no NEI (R/U) se precisar.
     tasks:
       - get: IC2:reactorReflector:* x2
     rewards:
@@ -3483,8 +3432,7 @@ quests:
     desc: |
       Mais duradouro, mais confiável.
 
-      4 Refletores + 5 Placas de Cobre = §eRefletor Grosso§r: dura muito mais. (Ele também é
-      peça de uma certa... Nuke. Mas vamos fingir que eu não disse isso.)
+      4 Refletores + 5 Placas de Cobre = §eRefletor Grosso§r, que dura muito mais. (Ele também é peça de uma certa... Nuke. Mas vamos fingir que eu não disse isso.) Ótimo para reatores de longa duração, Herói. Confira o NEI (R/U).
     tasks:
       - get: IC2:reactorReflectorThick:*
     rewards:
@@ -3497,9 +3445,9 @@ quests:
     deps: [respiradouro, trocador_calor]
     icon: IC2:reactorCondensator:1
     desc: |
-      7 redstone + Respiradouro + Trocador de Calor = §eCondensador RSH§r. Ele absorve calor
-      até encher e então §erecarrega com redstone§r (combine com um bloco de redstone na
-      bancada). Ótimo para reatores que funcionam em ciclos.
+      7 redstone + Respiradouro + Trocador de Calor = §eCondensador RSH§r. Ele absorve calor até encher e então §erecarrega com redstone§r (combine com um bloco de redstone na bancada).
+
+      É ótimo para reatores que funcionam em ciclos. Planeje a recarga, Herói! A receita está no NEI (R/U).
     tasks:
       - get: IC2:reactorCondensator:*
     rewards:
@@ -3514,9 +3462,7 @@ quests:
     desc: |
       O primo rico do RSH.
 
-      2 Condensadores RSH, Respiradouro de Reator, Trocador de Reator, redstone e um bloco de
-      lápis = §eCondensador LZH§r. Absorve muito mais calor e §erecarrega com blocos de
-      lápis-lazúli§r.
+      2 Condensadores RSH, Respiradouro de Reator, Trocador de Reator, redstone e um bloco de lápis = §eCondensador LZH§r. Ele absorve muito mais calor e §erecarrega com blocos de lápis-lazúli§r. Perfeito para reatores mais exigentes, Herói. Veja o NEI (R/U). Boa sorte!
     tasks:
       - get: IC2:reactorCondensatorLap:*
     rewards:
@@ -3576,11 +3522,9 @@ quests:
     deps: [reator_nuclear]
     icon: IC2:itemPlutonium
     desc: |
-      Barras esgotadas no Centrifugador Térmico (calor 4000+) devolvem U-238, pó de ferro e
-      §ePequenos Montes de Plutônio§r (9 = 1 Plutônio). As de MOX esgotadas rendem bem mais
-      plutônio.
+      Barras esgotadas no Centrifugador Térmico (calor 4000+) devolvem U-238, pó de ferro e §ePequenos Montes de Plutônio§r (9 = 1 Plutônio). As de MOX esgotadas rendem bem mais plutônio.
 
-      Junte §e3 Plutônios§r — com cuidado, ele é bem radioativo.
+      Junte §e3 Plutônios§r, mas §ccom cuidado§r: ele é bem radioativo. Leve a Caixa de Contenção, Herói!
     tasks:
       - get: IC2:itemPlutonium x3
     rewards:
@@ -3593,9 +3537,9 @@ quests:
     deps: [plutonio]
     icon: IC2:itemMOX
     desc: |
-      6 U-238 + 3 Plutônios = §eCombustível Nuclear MOX§r. Enlatado numa Barra Vazia (Máquina de
-      Conservas) vira §eBarra de MOX§r. No reator EU, a MOX rende §emais quanto mais quente o
-      casco§r — poderosa, mas exige mão firme no controle do calor.
+      6 U-238 + 3 Plutônios = §eCombustível Nuclear MOX§r. Enlatado numa Barra Vazia (Máquina de Conservas) vira §eBarra de MOX§r.
+
+      No reator EU, a MOX rende §emais quanto mais quente o casco§r. É poderosa, mas exige mão firme no controle do calor, Herói. Confira o NEI (R/U).
     tasks:
       - get: IC2:reactorMOXSimple:*
     rewards:
@@ -3612,7 +3556,7 @@ quests:
 
       Como a de urânio: 2 Barras de MOX + 1 Placa de Ferro = §eBarra Dupla de MOX§r.
 
-      Lembre que barras agrupadas esquentam mais: ajuste o resfriamento antes de trocar.
+      Lembre que barras agrupadas esquentam mais: ajuste o resfriamento antes de trocar, Herói. Missão opcional para quem quer mais potência. Confira o NEI (R/U) se precisar.
     tasks:
       - get: IC2:reactorMOXDual:*
     rewards:
@@ -3624,8 +3568,9 @@ quests:
     deps: [mox_dupla]
     icon: IC2:reactorMOXQuad:1
     desc: |
-      4 Barras de MOX + 3 Placas de Ferro + 2 de Cobre = §eBarra Quádrupla de MOX§r. Só para
-      quem já domina o reator. Eu vou ficar olhando daqui... de bem longe.
+      4 Barras de MOX + 3 Placas de Ferro + 2 de Cobre = §eBarra Quádrupla de MOX§r. Só para quem já domina o reator.
+
+      Eu vou ficar olhando daqui... de bem longe. Brincadeiras à parte, Herói, só tente se tiver o resfriamento bem calculado. Se precisar, o NEI (R/U) mostra a receita.
     tasks:
       - get: IC2:reactorMOXQuad:*
     rewards:
@@ -3639,8 +3584,7 @@ quests:
     desc: |
       Plutônio que não explode? Existe, e é lindo.
 
-      6 Placas de Ferro Densas + 3 Plutônios = §ePelotas de Combustível RTG§r. Elas
-      alimentam geradores de radioisótopos — energia lenta, silenciosa e praticamente eterna.
+      6 Placas de Ferro Densas + 3 Plutônios = §ePelotas de Combustível RTG§r. Elas alimentam geradores de radioisótopos: energia lenta, silenciosa e praticamente eterna. Prepare os ingredientes e vá com calma, Herói. A receita está no NEI (R/U).
     tasks:
       - get: IC2:itemRTGPellet
     rewards:
@@ -3653,9 +3597,9 @@ quests:
     deps: [pelotas_rtg, camara_reator]
     icon: IC2:blockGenerator:6
     desc: |
-      7 Invólucros de Ferro, 1 Câmara do Reator e 1 Gerador = §eRTG§r. Coloque Pelotas RTG: cada
-      pelota a mais §edobra§r a produção. Sem calor, sem explosão, sem manutenção — só EU
-      pingando para sempre.
+      7 Invólucros de Ferro, 1 Câmara do Reator e 1 Gerador = §eRTG§r. Coloque Pelotas RTG: cada pelota a mais §edobra§r a produção.
+
+      Sem calor, sem explosão, sem manutenção, só EU pingando para sempre. Uma boa solução para quem quer energia sem dor de cabeça, Herói. Confira o NEI (R/U) para a receita.
     tasks:
       - get: IC2:blockGenerator:6
     rewards:
@@ -3670,8 +3614,7 @@ quests:
     desc: |
       Calor eterno, sem uma gota de combustível.
 
-      A versão "calor" do RTG: Invólucros de Ferro, Câmara do Reator e Condutor de Calor. Com
-      Pelotas RTG, ele aquece Stirlings, Alto-Fornos e Geradores de Vapor eternamente.
+      A versão "calor" do RTG: Invólucros de Ferro, Câmara do Reator e Condutor de Calor. Com Pelotas RTG, ele aquece Stirlings, Alto-Fornos e Geradores de Vapor eternamente. Missão opcional, mas bem prática, Herói. Confira a receita no NEI (R/U).
     tasks:
       - get: IC2:blockHeatGenerator:2
     rewards:
@@ -3787,10 +3730,9 @@ quests:
     deps: [fabricador_massa]
     icon: IC2:itemCellEmpty:3
     desc: |
-      O Fabricador enche um tanque interno de §dMatéria UU§r; tire-a com células (slot de
-      recipiente) ou canos. Junte §e100 mB§r em qualquer recipiente.
+      O Fabricador enche um tanque interno de §dMatéria UU§r; tire-a com células (slot de recipiente) ou canos. Junte §e100 mB§r em qualquer recipiente.
 
-      Parece pouco. Não é. Faça as contas e chore um pouquinho comigo.
+      Parece pouco. Não é. Faça as contas e chore um pouquinho comigo. Mas calma, Herói: cada gota conta e vale a pena. Veja detalhes no NEI (R/U).
     tasks:
       - fluid: "ic2uumatter x100"
     rewards:
@@ -3803,9 +3745,9 @@ quests:
     deps: [centrifuga_termica]
     icon: IC2:itemcrystalmemory
     desc: |
-      5 Dióxidos de Silício (4 Pós de Argila no Centrifugador Térmico) + 4 Pós de Obsidiana =
-      §eCristal de Memória Bruto§r → fornalha → §eCristal de Memória§r. Ele guarda um padrão de
-      replicação e é peça do Padrão de Armazenamento (que pede 2).
+      5 Dióxidos de Silício (4 Pós de Argila no Centrifugador Térmico) + 4 Pós de Obsidiana = §eCristal de Memória Bruto§r → fornalha → §eCristal de Memória§r.
+
+      Ele guarda um padrão de replicação e é peça do Padrão de Armazenamento (que pede 2). Faça §e2§r, Herói. Confira o NEI (R/U) se travar.
     tasks:
       - get: IC2:itemcrystalmemory x2
     rewards:
@@ -3838,10 +3780,9 @@ quests:
     desc: |
       Uma pecinha simples que conversa à distância.
 
-      Circuito + Cabo de Cobre Isolado = §eTransmissor de Frequência§r. Ele "pareia" coisas à
-      distância: Teletransportadores e a Dinamite Remota.
+      Circuito + Cabo de Cobre Isolado = §eTransmissor de Frequência§r. Ele "pareia" coisas à distância: Teletransportadores e a Dinamite Remota.
 
-      Clique direito num Teletransportador, depois no outro, e eles ficam pareados.
+      Clique direito num Teletransportador, depois no outro, e eles ficam pareados. Simples assim, Herói! Boa sorte! Vai com tudo, Herói, e capriche!
     tasks:
       - get: IC2:itemFreq
     rewards:
@@ -3854,10 +3795,9 @@ quests:
     deps: [carcaca_avancada, vidro_reforcado, iluminador, circuito_avancado]
     icon: IC2:blockMachine2:7
     desc: |
-      Placas de Ferro, Vidro Reforçado, 2 Motores, Iluminador, 2 Circuitos Avançados e Carcaça
-      Avançada = §eExaminador§r. Coloque um item e ele o §eescaneia§r (gastando EU) para
-      descobrir quanta UU custa replicá-lo. O resultado vai para um Padrão de Armazenamento
-      encostado.
+      Placas de Ferro, Vidro Reforçado, 2 Motores, Iluminador, 2 Circuitos Avançados e Carcaça Avançada = §eExaminador§r.
+
+      Coloque um item e ele o §eescaneia§r (gastando EU) para descobrir quanta UU custa replicá-lo. O resultado vai para um Padrão de Armazenamento encostado. Boa pesquisa, Herói! A receita está no NEI (R/U).
     tasks:
       - get: IC2:blockMachine2:7
     rewards:
@@ -3870,9 +3810,9 @@ quests:
     deps: [cristal_memoria, laser_mineracao, pedra_reforcada]
     icon: IC2:blockMachine2:6
     desc: |
-      3 Pedras Reforçadas, 2 Cristais de Memória, Carcaça Avançada, Circuito Avançado e §e2
-      Lasers de Mineração§r = §ePadrão de Armazenamento§r. Ele guarda os padrões escaneados (e
-      importa/exporta padrões para Cristais de Memória).
+      3 Pedras Reforçadas, 2 Cristais de Memória, Carcaça Avançada, Circuito Avançado e §e2 Lasers de Mineração§r = §ePadrão de Armazenamento§r.
+
+      Ele guarda os padrões escaneados (e importa/exporta padrões para Cristais de Memória). Encoste no Examinador, Herói. Se precisar, o NEI (R/U) mostra a receita. Boa sorte!
     tasks:
       - get: IC2:blockMachine2:6
     rewards:
@@ -3935,8 +3875,7 @@ quests:
     desc: |
       Antes de tudo ficar alto e elétrico, a gente precisa alcançar o alto.
 
-      Tábuas e gravetos = §e4 Andaimes§r. Dá para subir por eles como por uma escada — ótimos
-      para construir alto (os moinhos de vento agradecem).
+      Tábuas e gravetos = §e4 Andaimes§r. Dá para subir por eles como por uma escada, ótimos para construir alto (os moinhos de vento agradecem). Faça §e8§r, Herói. Se precisar, o NEI (R/U) mostra a receita.
     tasks:
       - get: IC2:blockScaffold x8
     rewards:
@@ -3948,9 +3887,9 @@ quests:
     deps: [formador_metal]
     icon: IC2:blockIronScaffold
     desc: |
-      Extruda Invólucros de Ferro no Formador de Metal para fazer §eCercas de Ferro§r. 6 Placas
-      de Ferro + 3 Cercas = §e16 Andaimes de Ferro§r — a base para a Pedra Reforçada e para o
-      Magnetizador.
+      Extruda Invólucros de Ferro no Formador de Metal para fazer §eCercas de Ferro§r. 6 Placas de Ferro + 3 Cercas = §e16 Andaimes de Ferro§r.
+
+      Eles são a base para a Pedra Reforçada e para o Magnetizador, então guarde com carinho. Faça §e4 Cercas§r e §e16 Andaimes§r, Herói. Veja o NEI (R/U) se precisar.
     tasks:
       - get: [IC2:blockFenceIron x4, IC2:blockIronScaffold x16]
     rewards:
@@ -3963,9 +3902,9 @@ quests:
     deps: [andaime_ferro]
     icon: IC2:blockMachine:9
     desc: |
-      6 redstone, 2 Cercas de Ferro e Carcaça = §eMagnetizador§r. Ele magnetiza uma coluna de
-      Cercas de Ferro acima dele: quem estiver com §ebotas de metal§r sobe e desce como num
-      elevador. (A janela avisa se detectou suas botas.)
+      Quer subir como num elevador? 6 redstone, 2 Cercas de Ferro e Carcaça = §eMagnetizador§r. Ele magnetiza uma coluna de Cercas de Ferro acima dele: quem estiver com §ebotas de metal§r sobe e desce como num elevador.
+
+      (A janela avisa se detectou suas botas.) Uma opção divertida para bases altas, Herói! Confira o NEI (R/U).
     tasks:
       - get: IC2:blockMachine:9
     rewards:
@@ -3977,9 +3916,9 @@ quests:
     deps: [transformador_mv, circuito]
     icon: IC2:blockMachine2:1
     desc: |
-      5 redstone, MV-Transformador, Circuito e 2 Invólucros de Ferro = §eBobina de Tesla§r. Com
-      energia e sinal de redstone, ela dá choques em criaturas próximas. Defesa elétrica de
-      base — mantenha os amigos longe!
+      5 redstone, MV-Transformador, Circuito e 2 Invólucros de Ferro = §eBobina de Tesla§r. Com energia e sinal de redstone, ela dá choques em criaturas próximas.
+
+      É defesa elétrica de base: mantenha os amigos longe, Herói! Se precisar rever a receita, o NEI (R/U) mostra os ingredientes direitinho.
     tasks:
       - get: IC2:blockMachine2:1
     rewards:
@@ -3991,9 +3930,9 @@ quests:
     deps: [carcaca_avancada, circuito_avancado]
     icon: IC2:blockMachine:15
     desc: |
-      O §eTerraformer§r (TFBP vazio, glowstone, terra e Carcaça Avançada) usa §eprojetos TFBP§r
-      para remodelar o terreno em volta: plantar, irrigar, resfriar, desertificar, aplainar ou
-      espalhar cogumelos. O TFBP vazio leva 1 Circuito, 1 Circuito Avançado e 2 redstone.
+      O §eTerraformer§r (TFBP vazio, glowstone, terra e Carcaça Avançada) usa §eprojetos TFBP§r para remodelar o terreno em volta: plantar, irrigar, resfriar, desertificar, aplainar ou espalhar cogumelos.
+
+      O TFBP vazio leva 1 Circuito, 1 Circuito Avançado e 2 redstone. Faça os dois itens, Herói! Veja detalhes no NEI (R/U).
     tasks:
       - get: [IC2:blockMachine:15, IC2:itemTFBP]
     rewards:
@@ -4023,11 +3962,11 @@ quests:
     icon: IC2:blockPersonal
     desc: |
       Três blocos para servidores (oi, Rede Akashic!):
-      §e• Cofre Pessoal§r — só o dono abre.
-      §e• Trade-O-Mat§r — vende itens por itens, sem você estar lá.
-      §e• Energy-O-Mat§r — vende energia.
+      §e• Cofre Pessoal§r: só o dono abre.
+      §e• Trade-O-Mat§r: vende itens por itens, sem você estar lá.
+      §e• Energy-O-Mat§r: vende energia.
 
-      Faça qualquer um deles.
+      Faça qualquer um deles, Herói. As receitas estão no NEI (R/U) se você precisar de ajuda. Boa sorte!
     tasks:
       - one_of: [IC2:blockPersonal, IC2:blockPersonal:1, IC2:blockPersonal:2]
     rewards:
@@ -4039,8 +3978,9 @@ quests:
     deps: [chumbo, placas]
     icon: IC2:itemDoorAlloy
     desc: |
-      Placas de Ferro e de Chumbo = §ePorta Reforçada§r, resistente a explosões. A porta ideal
-      para a sala do reator (e para o seu quarto, se você tem irmãos com TNT).
+      Placas de Ferro e de Chumbo = §ePorta Reforçada§r, resistente a explosões. É a porta ideal para a sala do reator (e para o seu quarto, se você tem irmãos com TNT).
+
+      Segurança em primeiro lugar, Herói! Se precisar da receita, é só conferir no NEI (R/U).
     tasks:
       - get: IC2:itemDoorAlloy
     rewards:
@@ -4052,9 +3992,9 @@ quests:
     deps: [resina]
     icon: IC2:blockITNT
     desc: |
-      TNT + sílex = §e4 TNTs Industriais§r; TNT Industrial + linha = §e8 Dinamites§r para
-      arremessar; Dinamite + Resina = Dinamite Grudenta. Com um Transmissor de Frequência, dá até
-      para fazer a §eDinamite Remota§r. Mineração com estilo (e com cuidado)!
+      Mineração com estilo (e com cuidado)! TNT + sílex = §e4 TNTs Industriais§r; TNT Industrial + linha = §e8 Dinamites§r para arremessar; Dinamite + Resina = Dinamite Grudenta.
+
+      Com um Transmissor de Frequência, dá até para fazer a §eDinamite Remota§r. Faça qualquer um deles e mantenha distância segura, Herói. §cExplosivos não perdoam!§r
     tasks:
       - one_of: [IC2:blockITNT, IC2:itemDynamite, IC2:itemDynamiteSticky]
     rewards:
@@ -4102,9 +4042,9 @@ quests:
     deps: [estacas_plantacao, circuito]
     icon: IC2:itemCropnalyzer:1
     desc: |
-      Cabos, redstone, vidro e Circuito = §eAnalisador de Plantação§r (Cropnalyzer). Ele lê os
-      pacotes de sementes do IC2 e mostra a espécie e os atributos (crescimento, ganho e
-      resistência). Essencial para melhorar suas linhagens.
+      Cabos, redstone, vidro e Circuito = §eAnalisador de Plantação§r (Cropnalyzer). Ele lê os pacotes de sementes do IC2 e mostra a espécie e os atributos (crescimento, ganho e resistência).
+
+      É essencial para melhorar suas linhagens, Herói. Se tiver dúvida na receita, o NEI (R/U) resolve rapidinho.
     tasks:
       - get: IC2:itemCropnalyzer:*
     rewards:
@@ -4116,9 +4056,9 @@ quests:
     deps: [analisador_plantacao]
     icon: IC2:itemCropSeed
     desc: |
-      Colha uma planta cruzada e ganhe um §ePacote de Sementes§r do IC2 — qualquer espécie
-      vale. Quanto melhores os atributos, melhor a próxima geração. O Registro também tem
-      páginas de botânica, sabia?
+      Colha uma planta cruzada e ganhe um §ePacote de Sementes§r do IC2; qualquer espécie vale. Quanto melhores os atributos, melhor a próxima geração.
+
+      O Registro também tem páginas de botânica, sabia? Guarde as melhores sementes, Herói, e use o Analisador para escolher. Para ver como cruzar, confira o NEI (R/U) ou o manual do mod.
     tasks:
       - get: IC2:itemCropSeed
     rewards:
@@ -4130,11 +4070,9 @@ quests:
     deps: [estacas_plantacao, celula_vazia, circuito]
     icon: IC2:blockMachine2:2
     desc: |
-      O §eCrop-Matron§r cuida das plantações em volta: aplica Fertilizante (sucata + farinha de
-      osso) e hidrata com água ou Células de Hidratação. A §eColheitadeira§r (Crop Harvester,
-      mesma receita com tesoura no lugar das células) colhe tudo sozinha.
+      O §eCrop-Matron§r cuida das plantações em volta: aplica Fertilizante (sucata + farinha de osso) e hidrata com água ou Células de Hidratação.
 
-      Faça qualquer um dos dois.
+      A §eColheitadeira§r (Crop Harvester, mesma receita com tesoura no lugar das células) colhe tudo sozinha. Faça qualquer um dos dois, Herói. As receitas estão no NEI (R/U).
     tasks:
       - one_of: [IC2:blockMachine2:2, IC2:blockMachine3:7]
     rewards:
@@ -4198,8 +4136,9 @@ quests:
     deps: [pulverizador_cf]
     icon: IC2:itemToolPainterRed
     desc: |
-      Lã e ferro = §eRolo de Pintura§r; com um corante, ele pega a cor. Use-o nas paredes de
-      Espuma de Construção para colorir a sua base industrial. São 16 cores!
+      Quer uma base colorida? Lã e ferro = §eRolo de Pintura§r; com um corante, ele pega a cor.
+
+      Use-o nas paredes de Espuma de Construção para colorir a sua base industrial. São 16 cores! Faça qualquer um dos rolos, Herói, e solte a imaginação. A receita certa está no NEI (R/U).
     tasks:
       - one_of: [IC2:itemToolPainterBlack:*, IC2:itemToolPainterRed:*, IC2:itemToolPainterGreen:*, IC2:itemToolPainterBrown:*, IC2:itemToolPainterBlue:*, IC2:itemToolPainterPurple:*, IC2:itemToolPainterCyan:*, IC2:itemToolPainterLightGrey:*, IC2:itemToolPainterDarkGrey:*, IC2:itemToolPainterPink:*, IC2:itemToolPainterLime:*, IC2:itemToolPainterYellow:*, IC2:itemToolPainterCloud:*, IC2:itemToolPainterMagenta:*, IC2:itemToolPainterOrange:*, IC2:itemToolPainterWhite:*]
     rewards:
@@ -4211,9 +4150,9 @@ quests:
     deps: [placa_carbono, rotor_ferro]
     icon: IC2:itemBoat
     desc: |
-      5 Placas de Carbono = §eCanoa de Fibra de Carbono§r, resistente e rápida. Para os fãs de
-      velocidade: o §eBote Elétrico§r leva Placas de Ferro, cabos, Motor Elétrico e um Rotor
-      de Ferro. Faça qualquer um e vá passear — você merece.
+      5 Placas de Carbono = §eCanoa de Fibra de Carbono§r, resistente e rápida. Para os fãs de velocidade: o §eBote Elétrico§r leva Placas de Ferro, cabos, Motor Elétrico e um Rotor de Ferro.
+
+      Faça qualquer um e vá passear, você merece! Confira as receitas no NEI (R/U), Herói.
     tasks:
       - one_of: [IC2:itemBoat, IC2:itemBoat:3]
     rewards:
