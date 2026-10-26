@@ -1,0 +1,861 @@
+chapter:
+  id: ato1
+  title: "Crônicas Akáshicas: Ato I — Raízes"
+  color: "§6"
+  order: 1
+  icon: minecraft:sapling
+  desc: |
+    Sobrevivência, ferramentas, comida, a primeira metalurgia e os primeiros sussurros de magia.
+    A semente de toda a Crônica.
+
+quests:
+
+  - id: raizes_abertura
+    title: "Raízes"
+    type: main
+    deps: [prologo:fim_do_prologo]
+    at: [0, 0]
+    icon: minecraft:sapling
+    desc: |
+      Herói, o Prólogo ficou para trás e agora começa de verdade a §6Crônica§r. O Ato I se chama §eRaízes§r, porque toda biblioteca começa por uma semente: comida na mesa, ferramentas na mão, uma fornalha acesa e os primeiros sussurros de magia.
+
+      Cada quest aqui liga a história a um §eVolume§r real do livro. Os ícones logo abaixo de cada passo mostram o marco que prova que você está pronto para ele. Sem pressa: eu me lembro de mais uma frase a cada passo que você dá.
+      Marque a caixa quando estiver pronto para plantar a primeira raiz.
+    tasks:
+      - check
+    rewards:
+      - xp: 10
+      - loot: comum
+
+  - id: mao_na_terra
+    title: "A Mão na Terra"
+    type: main
+    deps: [raizes_abertura, vanilla:fazendeiro]
+    at: [1, 0]
+    icon: minecraft:wheat
+    desc: |
+      Antes de reescrever o Registro, é preciso não passar fome. A primeira página que recuperei fala de §eplantar, esperar e colher§r: trigo, cenoura, batata, galinhas e vacas num cercado só seu.
+
+      A fazenda completa do Volume Vanilla é o seu primeiro marco de verdade. Quem tem comida garantida pensa melhor, luta melhor e explode menos coisas por acidente. §aDica:§r deixe a horta perto da cama.
+      Se você reconhece que sua fazenda já alimenta o Herói sem sustos, marque a caixa.
+    tasks:
+      - check
+    rewards:
+      - kit: {name: "Kit do Sobrevivente", items: [minecraft:bread x16, minecraft:torch x32, minecraft:cooked_beef x8]}
+      - xp: 15
+
+  - link: vanilla:fazendeiro
+    at: [1, 1]
+
+  - id: fogao_aceso
+    title: "O Fogão Aceso"
+    type: main
+    deps: [mao_na_terra, cozinha:cozinha_equipada]
+    at: [2, 0]
+    icon: minecraft:furnace
+    desc: |
+      Uma cozinha é uma pequena biblioteca de receitas, e as receitas são as páginas mais fáceis de recuperar. Com a cozinha equipada, o fogão, a tábua e a panela deixam de ser enfeite e viram engrenagens de uma máquina que gira só com o seu cheiro de pão.
+
+      §aDica:§r organize os ingredientes perto do fogão para não correr pela casa com a sopa na mão. Eu já vi heróis morrerem por menos.
+      Reconheço que minha cozinha funciona. Marque a caixa quando for verdade.
+    tasks:
+      - check
+    rewards:
+      - xp: 15
+      - loot: comum
+
+  - link: cozinha:cozinha_equipada
+    at: [2, 1]
+
+  - id: horta_registro
+    title: "A Horta do Registro"
+    type: main
+    deps: [fogao_aceso, cozinha:horta_do_registro]
+    at: [3, 0]
+    icon: minecraft:carrot
+    desc: |
+      Cada semente que você planta é uma frase curta que o mundo reaprende. A horta do Registro reúne os cultivos que alimentam as receitas dos próximos Volumes, e ficar sem eles mais tarde dói bastante.
+
+      Plante em fileiras, irrigue bem e proteja de creepers. Quando as colheitas começarem a se repetir sozinhas, você terá dado o primeiro passo rumo à automação, ainda sem tubos nem energia.
+      Marque a caixa se a sua horta já produz mais do que você come.
+    tasks:
+      - check
+    rewards:
+      - kit: {name: "Kit do Sobrevivente", items: [minecraft:bread x16, minecraft:torch x32, minecraft:cooked_beef x8]}
+      - xp: 15
+
+  - link: cozinha:horta_do_registro
+    at: [3, 1]
+
+  - id: petiscos
+    title: "Petisco de Herói"
+    type: normal
+    deps: [horta_registro, cozinha:mestre_petiscos]
+    at: [4, 0]
+    icon: minecraft:cookie
+    desc: |
+      Existe uma pergunta que ninguém faz nas cavernas: o que se come entre uma aventura e outra? A resposta mora no Volume da Cozinha, que ensina petiscos rápidos de carregar, saborosos e que enchem a barra de fome sem pesar no inventário.
+
+      Faça um estoque variado: comer sempre a mesma coisa reduz o aproveitamento. É um pequeno luxo que me alegra ver e que vai te salvar numa expedição longa. Marque a caixa se o seu inventário agora tem petiscos de verdade.
+    tasks:
+      - check
+    rewards:
+      - xp: 10
+      - loot: comum
+
+  - link: cozinha:mestre_petiscos
+    at: [4, 1]
+
+  - id: fundo_da_terra
+    title: "O Fundo da Terra"
+    type: main
+    deps: [petiscos, vanilla:mineracao_profunda]
+    at: [5, 0]
+    icon: minecraft:iron_pickaxe
+    desc: |
+      As páginas mais antigas do Registro afundaram, e quem quer lê-las precisa descer. As profundezas guardam ferro, ouro, redstone e diamante, além de cavernas, lava e criaturas que não sabem que você é o protagonista.
+
+      Desça com tochas, água em balde, comida e uma rota de fuga. Minere em escada, nunca direto para baixo. Cada minério é uma letra de volta ao Registro. Marque a caixa quando já souber andar nas profundezas sem se perder.
+    tasks:
+      - check
+    rewards:
+      - kit: {name: "Kit do Minerador", items: [minecraft:diamond x2, minecraft:torch x32, minecraft:iron_ingot x8]}
+      - xp: 20
+
+  - link: vanilla:mineracao_profunda
+    at: [5, 1]
+
+  - id: fornalha_construtores
+    title: "A Fornalha dos Construtores"
+    type: milestone
+    deps: [fundo_da_terra, tinkers:fundicao_montada]
+    at: [6, 0]
+    icon: minecraft:furnace
+    desc: |
+      Ferro cru é só um começo. A Fornalha dos Construtores derrete metal, vidro e pedra em líquidos que viram qualquer forma imaginável. É a primeira máquina deste mundo que eu chamaria de §eferramenta de escrita§r: ela deixa você moldar a matéria como frase.
+
+      Monte a fundição com tijolos de seared, ligue o tanque e use os moldes certos. Se a fundição já está funcionando no seu mundo, marque a caixa. O Volume Tinkers cuida do resto.
+    tasks:
+      - check
+    rewards:
+      - kit: {name: "Kit do Ferreiro", items: [minecraft:iron_ingot x16, minecraft:coal x16, minecraft:gold_ingot x4]}
+      - loot: incomum
+      - xp: 30
+
+  - link: tinkers:fundicao_montada
+    at: [6, 1]
+
+  - id: biblioteca_moldes
+    title: "A Biblioteca de Moldes"
+    type: main
+    deps: [fornalha_construtores, tinkers:biblioteca_moldes]
+    at: [7, 0]
+    icon: minecraft:bookshelf
+    desc: |
+      Sem moldes, a fundição é só uma panela quente. Cada molde guarda a forma de uma parte de ferramenta, e juntos eles formam uma biblioteca inteira de formas prontas para qualquer metal.
+
+      Faça os moldes de ferramentas principais e guarde em baús etiquetados, porque você vai voltar aqui muitas vezes. §aDica:§r um molde de lingote e um de pepita evitam muito desperdício. Marque a caixa se a sua biblioteca de moldes estiver organizada.
+    tasks:
+      - check
+    rewards:
+      - xp: 20
+      - loot: comum
+
+  - link: tinkers:biblioteca_moldes
+    at: [7, 1]
+
+  - id: liga_alumite
+    title: "A Liga Alumite"
+    type: main
+    deps: [biblioteca_moldes, tinkers:liga_alumite]
+    at: [8, 0]
+    icon: minecraft:iron_ingot
+    desc: |
+      Alumite nasce quando alumínio, ferro e obsidiana se misturam na fundição, e vira um metal muito resistente para as ferramentas. Pode parecer pequeno, mas é a primeira vez que você cria algo melhor que a soma das partes.
+
+      Isso é o Registro em ação: combinar fragmentos para escrever um parágrafo novo. Meus parabéns, Herói! Marque a caixa quando tiver a primeira liga nas mãos e entender como ela foi feita.
+    tasks:
+      - check
+    rewards:
+      - xp: 20
+      - loot: comum
+
+  - link: tinkers:liga_alumite
+    at: [8, 1]
+
+  - id: manyullyn
+    title: "O Metal do Nether"
+    type: main
+    deps: [liga_alumite, tinkers:manyullyn]
+    at: [9, 0]
+    icon: minecraft:netherbrick
+    desc: |
+      Cobalto e ardite surgem no Nether e se unem em §eManyullyn§r, um metal poderoso, lento e teimoso como uma boa história de terror. Ele marca o fim da fase básica das ferramentas e a entrada nas armas de verdade.
+
+      Entre no Nether preparado: pedra para pontes, água nunca funciona lá, e cuidado com ghasts. Quando o primeiro lingote surgir da fundição, marque a caixa. Eu sorrio daqui.
+    tasks:
+      - check
+    rewards:
+      - kit: {name: "Kit do Ferreiro", items: [minecraft:iron_ingot x16, minecraft:coal x16, minecraft:gold_ingot x4]}
+      - loot: incomum
+      - xp: 30
+
+  - link: tinkers:manyullyn
+    at: [9, 1]
+
+  - id: mestre_forja
+    title: "Mestre da Forja"
+    type: milestone
+    deps: [manyullyn, tinkers:mestre_forja]
+    at: [10, 0]
+    icon: minecraft:anvil
+    desc: |
+      Você domina a forja. Isso quer dizer que a primeira camada do Registro, a das ferramentas, está de volta. Cada ferramenta que você faz daqui em diante tem história: materiais escolhidos, modificadores aplicados, nome dado à mão.
+
+      Lembre-se de que você não precisa da melhor ferramenta, e sim da certa para o trabalho. Escavar, cortar e lutar pedem coisas diferentes. Reconheço que sou um mestre da forja, e agora tenho como provar isso. Marque a caixa.
+    tasks:
+      - check
+    rewards:
+      - kit: {name: "Kit do Ferreiro", items: [minecraft:iron_ingot x16, minecraft:coal x16, minecraft:gold_ingot x4]}
+      - loot: raro
+      - xp: 40
+
+  - link: tinkers:mestre_forja
+    at: [10, 1]
+
+  - id: arsenal_registro
+    title: "O Arsenal do Registro"
+    type: main
+    deps: [mestre_forja, tinkers:arsenal]
+    at: [11, 0]
+    icon: minecraft:diamond_sword
+    desc: |
+      O Registro tem inimigos antigos e as páginas caídas atraem coisas que mordem. Um arsenal bem pensado, com lâmina, arco, escudo e uma ferramenta de resgate, é o que separa a aventura do desastre.
+
+      Escolha modificadores com cuidado: uma espada que saqueia mais, uma picareta com fortuna. Cada escolha conta uma parte da sua história. Marque a caixa se o seu arsenal já enfrenta o Nether sem medo.
+    tasks:
+      - check
+    rewards:
+      - loot: incomum
+      - xp: 30
+
+  - link: tinkers:arsenal
+    at: [11, 1]
+
+  - id: circuitos_vermelhos
+    title: "Circuitos Vermelhos"
+    type: main
+    deps: [arsenal_registro, vanilla:engenheiro_redstone]
+    at: [0, 7]
+    icon: minecraft:redstone
+    desc: |
+      Redstone é a tinta mais curiosa do Registro: ela carrega sinal em vez de significado. Alavancas, repetidores, pistões e comparadores formam o alfabeto de todo o processo industrial que vem a seguir.
+
+      Monte uma porta secreta, um relógio ou uma fazenda automática, algo que funcione sozinho. É a primeira vez que o mundo faz o que você quis sem você ali. Marque a caixa quando seu circuito estiver funcionando e você entender por quê.
+    tasks:
+      - check
+    rewards:
+      - kit: {name: "Kit do Engenheiro", items: [minecraft:redstone x32, minecraft:iron_ingot x16, minecraft:gold_ingot x8, minecraft:diamond x2]}
+      - xp: 20
+
+  - link: vanilla:engenheiro_redstone
+    at: [0, 8]
+
+  - id: pagina_encantos
+    title: "A Página dos Encantamentos"
+    type: main
+    deps: [circuitos_vermelhos, vanilla:encantador]
+    at: [1, 7]
+    icon: minecraft:enchanting_table
+    desc: |
+      Livros, lápis-lazúli e uma mesa: assim se escreve poder em ferramentas. Os encantamentos são a primeira magia que o mundo lembrou, ainda tímida, mas que já faz uma picareta cavar mais rápido e uma espada brilhar.
+
+      Monte a biblioteca em volta da mesa, com quinze estantes, para liberar os níveis mais altos. §aDica:§r encante cedo e encante sempre. Reconheço que sei usar a mesa. Marque a caixa quando for verdade.
+    tasks:
+      - check
+    rewards:
+      - kit: {name: "Kit do Aprendiz Arcano", items: [minecraft:enchanting_table x1, minecraft:dye:4 x16, minecraft:experience_bottle x16]}
+      - xp: 25
+
+  - link: vanilla:encantador
+    at: [1, 8]
+
+  - id: primeiras_pocoes
+    title: "Primeiras Poções"
+    type: normal
+    deps: [pagina_encantos, vanilla:alquimista]
+    at: [2, 7]
+    icon: minecraft:potion
+    desc: |
+      O alambique é um altar humilde, com verruga do Nether e uma garrafa. Poções de cura, velocidade e resistência ao fogo vão salvar sua pele várias vezes ao longo desta crônica, e eu prefiro um herói bem preparado.
+
+      Lembre de anotar quais ingredientes fazem o quê, pois o NEI ajuda. Marque a caixa se você já tem poções úteis no inventário e sabe fazer mais.
+    tasks:
+      - check
+    rewards:
+      - kit: {name: "Kit do Alquimista", items: [minecraft:blaze_powder x8, minecraft:nether_wart x8, minecraft:glass_bottle x6]}
+      - xp: 20
+
+  - link: vanilla:alquimista
+    at: [2, 8]
+
+  - id: ecos_futuro
+    title: "Ecos do Futuro"
+    type: main
+    deps: [primeiras_pocoes, etfuturum:oficina_futuro]
+    at: [3, 7]
+    icon: minecraft:anvil
+    desc: |
+      Algumas páginas do Registro vieram de versões futuras do mundo: mesas, blocos e criaturas que não deviam existir tão cedo. O Et Futurum Requiem trouxe esses ecos de volta, e a oficina do futuro é a porta de entrada.
+
+      Explore a mesa de ferraria, o fumeiro e os novos tipos de bloco. §aDica:§r muita decoração nova vive nesse Volume. Marque a caixa se a sua oficina do futuro já está montada.
+    tasks:
+      - check
+    rewards:
+      - xp: 20
+      - loot: comum
+
+  - link: etfuturum:oficina_futuro
+    at: [3, 8]
+
+  - id: netherita
+    title: "Netherita Forjada"
+    type: milestone
+    deps: [ecos_futuro, etfuturum:forja_netherita]
+    at: [4, 7]
+    icon: minecraft:netherbrick
+    desc: |
+      Detritos antigos, ouro e fogo: assim nasce a §eNetherita§r, a liga mais resistente do mundo vanilla. Ela é a prova de que as páginas caídas ainda podem ser reescritas, só precisam de alguém disposto a escavar o Nether de ponta a ponta.
+
+      Equipe-se bem, vá atrás dos detritos antigos e funda tudo com paciência. Eu sinto a força do seu equipamento daqui. Marque a caixa quando a primeira peça brilhar.
+    tasks:
+      - check
+    rewards:
+      - kit: {name: "Kit do Minerador", items: [minecraft:diamond x2, minecraft:torch x32, minecraft:iron_ingot x8]}
+      - loot: raro
+      - xp: 40
+
+  - link: etfuturum:forja_netherita
+    at: [4, 8]
+
+  - id: portao_inferno
+    title: "O Portão do Inferno"
+    type: portal
+    deps: [netherita, nether:entrar_nether]
+    at: [5, 7]
+    icon: minecraft:obsidian
+    desc: |
+      O Nether é o primeiro lugar fora do mundo comum onde o Registro sangra. Calor, lava, ghasts e portais que prendem a respiração: quem passa por ele nunca mais olha o céu do mesmo jeito.
+
+      Monte o portal de obsidiana, leve comida, armadura e um estoque grande de blocos de pedra. Volte antes de ficar sem vida. Reconheço que atravessei o portão. Marque a caixa quando estiver do outro lado e de volta.
+    tasks:
+      - check
+    rewards:
+      - kit: {name: "Kit do Sobrevivente", items: [minecraft:bread x16, minecraft:torch x32, minecraft:cooked_beef x8]}
+      - xp: 25
+
+  - link: nether:entrar_nether
+    at: [5, 8]
+
+  - id: sobrevivente_nether
+    title: "Sobrevivente do Nether"
+    type: main
+    deps: [portao_inferno, vanilla:nether_basico]
+    at: [6, 7]
+    icon: minecraft:nether_wart
+    desc: |
+      Sobreviver ao Nether é um ofício. Fortaleza, bastiões, quartzo e verruga: cada recurso conta uma história, e cada recurso também tem um dono armado que não gostou da visita.
+
+      Faça uma base segura lá dentro, com teto de pedra e cama fora de uso para não explodir. §cPerigo:§r nunca durma no Nether. Marque a caixa quando já souber o caminho da fortaleza e o que trazer dela.
+    tasks:
+      - check
+    rewards:
+      - xp: 25
+      - loot: comum
+
+  - link: vanilla:nether_basico
+    at: [6, 8]
+
+  - id: ancora
+    title: "Âncora de Respawn"
+    type: main
+    deps: [sobrevivente_nether, nether:ancora]
+    at: [7, 7]
+    icon: minecraft:glowstone
+    desc: |
+      Uma âncora de respawn é um lembrete de que, mesmo longe de casa, você pode voltar. Ela segura um pedaço do Registro pelo cantinho e te devolve ao Nether quando as coisas dão errado.
+
+      Reúna glowstone, obsidiana chorona e paciência. É um passo prático e muito útil para quem planeja explorar o Inferno com calma. Marque a caixa quando sua âncora estiver funcionando e carregada.
+    tasks:
+      - check
+    rewards:
+      - loot: incomum
+      - xp: 25
+
+  - link: nether:ancora
+    at: [7, 8]
+
+  - id: lab_inferno
+    title: "O Laboratório do Inferno"
+    type: main
+    deps: [ancora, nether:suporte_pocoes]
+    at: [8, 7]
+    icon: minecraft:brewing_stand
+    desc: |
+      Entre fogo e lava, uma bancada de alquimia no Nether parece loucura, mas é a oficina perfeita para poções de resistência ao fogo e força. Eu confesso que a ideia me alegra.
+
+      Monte um suporte de poções seguro, bem iluminado, e leve ingredientes suficientes para uma tarde inteira. §aDica:§r pó de blaze nunca é demais. Marque a caixa se o seu laboratório está de pé e funcional.
+    tasks:
+      - check
+    rewards:
+      - kit: {name: "Kit do Alquimista", items: [minecraft:blaze_powder x8, minecraft:nether_wart x8, minecraft:glass_bottle x6]}
+      - xp: 25
+
+  - link: nether:suporte_pocoes
+    at: [8, 8]
+
+  - id: primeira_fabrica
+    title: "A Primeira Fábrica"
+    type: milestone
+    deps: [lab_inferno, ic2:primeira_fabrica]
+    at: [9, 7]
+    icon: minecraft:iron_block
+    desc: |
+      Fios, cobre, estanho e um gerador que ronca: IndustrialCraft 2 acabou de acordar no seu mundo. É o primeiro Volume onde a energia vira palavra, e a máquina vira frase inteira.
+
+      A primeira fábrica não precisa ser bonita, só precisa funcionar. Triture, funda e refine até o minério dobrar de rendimento. Reconheço que minha fábrica está de pé. Marque a caixa quando as primeiras máquinas ligarem.
+    tasks:
+      - check
+    rewards:
+      - kit: {name: "Kit do Engenheiro", items: [minecraft:redstone x32, minecraft:iron_ingot x16, minecraft:gold_ingot x8, minecraft:diamond x2]}
+      - loot: incomum
+      - xp: 35
+
+  - link: ic2:primeira_fabrica
+    at: [9, 8]
+
+  - id: ligas_industria
+    title: "Ligas da Indústria"
+    type: main
+    deps: [primeira_fabrica, ic2:ligas_industria]
+    at: [10, 7]
+    icon: minecraft:gold_ingot
+    desc: |
+      Bronze, aço, ligas com nome de ferreiro antigo. A indústria precisa de metais que aguentem calor, peso e corrente, e é isso que a Liga da Indústria entrega. Pense nisso como o dicionário dos materiais que virão.
+
+      Produza em lote e guarde em baús. Daqui a pouco você vai gastar tudo, e vai querer ter exagerado. Marque a caixa quando as ligas básicas já fizerem parte da rotina.
+    tasks:
+      - check
+    rewards:
+      - xp: 25
+      - loot: comum
+
+  - link: ic2:ligas_industria
+    at: [10, 8]
+
+  - id: energia_renovavel
+    title: "Vento, Sol e Lava"
+    type: main
+    deps: [ligas_industria, ic2:energia_renovavel]
+    at: [11, 7]
+    icon: minecraft:daylight_detector
+    desc: |
+      Queimar carvão funciona, mas cansa. Energia solar, eólica e geotérmica são frases longas e silenciosas: depois que você as escreve, o Registro continua lendo sozinho, dia e noite.
+
+      Escolha o recurso que seu mundo oferece: um deserto pede painéis, um morro pede vento, uma caverna pede lava. §aDica:§r uma bateria grande evita blecautes. Marque a caixa quando sua fonte renovável alimentar a base.
+    tasks:
+      - check
+    rewards:
+      - xp: 25
+      - loot: comum
+
+  - link: ic2:energia_renovavel
+    at: [11, 8]
+
+  - id: rede_eletrica
+    title: "A Rede Elétrica"
+    type: main
+    deps: [energia_renovavel, ic2:rede_eletrica]
+    at: [0, 14]
+    icon: minecraft:redstone_torch
+    desc: |
+      Energia no lugar errado é só barulho. A rede elétrica leva a corrente do gerador até a máquina certa, com cabos, transformadores e a esperança de não explodir nada no caminho.
+
+      Respeite as tensões: cada cabo aguenta um limite. §cPerigo:§r um cabo fino com uma voltagem alta vira fogueira. Marque a caixa quando sua base tiver uma rede organizada e segura.
+    tasks:
+      - check
+    rewards:
+      - xp: 25
+      - loot: comum
+
+  - link: ic2:rede_eletrica
+    at: [0, 15]
+
+  - id: oficina_termica
+    title: "A Oficina Térmica"
+    type: main
+    deps: [rede_eletrica, thermal:primeira_oficina]
+    at: [1, 14]
+    icon: minecraft:blaze_rod
+    desc: |
+      Thermal Expansion chegou com máquinas robustas, redstone flux e uma estética de cobre que me agrada muito. A oficina térmica é o conjunto inicial: serraria, pulverizador, fundidor e o gerador que as alimenta.
+
+      Escolha um canto da base e monte tudo junto. A proximidade economiza cabos e dor de cabeça. Marque a caixa quando a oficina estiver processando seus minérios.
+    tasks:
+      - check
+    rewards:
+      - xp: 25
+      - loot: comum
+
+  - link: thermal:primeira_oficina
+    at: [1, 15]
+
+  - id: termica_endurecida
+    title: "Tudo Endurecido"
+    type: main
+    deps: [oficina_termica, thermal:oficina_endurecida]
+    at: [2, 14]
+    icon: minecraft:iron_block
+    desc: |
+      O ferro ganha reforço e as máquinas passam a aguentar mais energia, mais velocidade e mais upgrades. Chamar de "endurecido" é pouco: é a primeira vez que a sua oficina parece uma fábrica de verdade.
+
+      Invista em algo que vai durar. Eu sei que o recurso é limitado, mas pense em quantas vezes você vai passar por essas máquinas. Marque a caixa quando a oficina endurecida estiver funcionando.
+    tasks:
+      - check
+    rewards:
+      - loot: incomum
+      - xp: 30
+
+  - link: thermal:oficina_endurecida
+    at: [2, 15]
+
+  - id: primeira_descoberta
+    title: "A Primeira Descoberta"
+    type: milestone
+    deps: [termica_endurecida, thaumcraft:primeira_descoberta]
+    at: [3, 14]
+    icon: minecraft:book
+    desc: |
+      A magia começa com observação. O Thaumcraft pede que você olhe o mundo através de um óculos de aspectos, anotando o que cada coisa é feita, e só depois a manipule. Esse é o caminho de qualquer arquivista.
+
+      Escaneie, pesquise, escreva. A primeira descoberta é pequena, mas é a primeira prova de que o conhecimento está voltando. Reconheço que enxerguei o aspecto das coisas. Marque a caixa quando tiver seu primeiro registro.
+    tasks:
+      - check
+    rewards:
+      - kit: {name: "Kit do Aprendiz Arcano", items: [minecraft:enchanting_table x1, minecraft:dye:4 x16, minecraft:experience_bottle x16]}
+      - loot: incomum
+      - xp: 35
+
+  - link: thaumcraft:primeira_descoberta
+    at: [3, 15]
+
+  - id: laboratorio
+    title: "O Laboratório Alquímico"
+    type: main
+    deps: [primeira_descoberta, thaumcraft:laboratorio_alquimico]
+    at: [4, 14]
+    icon: minecraft:cauldron
+    desc: |
+      Um caldeirão, um crisol e bastante essentia: o laboratório alquímico transforma o mundo em ingredientes e os ingredientes em soluções. Ele é a primeira bancada séria do mago.
+
+      Mantenha tudo arrumado, com frascos etiquetados e o fluxo de aspectos sob controle. Um laboratório bagunçado é um convite ao desastre. Marque a caixa quando seu laboratório estiver em pé e funcionando.
+    tasks:
+      - check
+    rewards:
+      - xp: 25
+      - loot: comum
+
+  - link: thaumcraft:laboratorio_alquimico
+    at: [4, 15]
+
+  - id: infusao
+    title: "A Primeira Infusão"
+    type: milestone
+    deps: [laboratorio, thaumcraft:infusao]
+    at: [5, 14]
+    icon: minecraft:ender_eye
+    desc: |
+      Um altar, pedestais e uma sequência de itens e aspectos: a infusão é o ritual onde a magia deixa de ser teoria e vira objeto. É emocionante ver o altar zumbindo.
+
+      Prepare os componentes, alinhe os pedestais e dê o tempo necessário. §aDica:§r pilares extras estabilizam o ritual. Reconheço que realizei minha primeira infusão. Marque a caixa quando o objeto tiver nascido.
+    tasks:
+      - check
+    rewards:
+      - kit: {name: "Kit do Aprendiz Arcano", items: [minecraft:enchanting_table x1, minecraft:dye:4 x16, minecraft:experience_bottle x16]}
+      - loot: raro
+      - xp: 40
+
+  - link: thaumcraft:infusao
+    at: [5, 15]
+
+  - id: silverwood
+    title: "Varinha de Silverwood"
+    type: main
+    deps: [infusao, thaumcraft:varinha_silverwood]
+    at: [6, 14]
+    icon: minecraft:stick
+    desc: |
+      Madeira prateada, cápsulas de ouro ou latão e uma ponta cheia de vis. A varinha é o instrumento do mago, e a sua agora tem capacidade para guardar mais poder e recarregar mais rápido.
+
+      Cuide dela: uma varinha vazia é só um pau bonito. Aproveite para montar um recarregador perto do seu nodo favorito. Marque a caixa quando a varinha estiver carregada e pronta.
+    tasks:
+      - check
+    rewards:
+      - loot: incomum
+      - xp: 30
+
+  - link: thaumcraft:varinha_silverwood
+    at: [6, 15]
+
+  - id: manasteel
+    title: "Manasteel"
+    type: main
+    deps: [silverwood, botania:manasteel]
+    at: [7, 14]
+    icon: minecraft:iron_ingot
+    desc: |
+      Flores, não fornalhas. Botania ensina que a magia mais pura vem de plantas, e que o mana flui pela natureza como seiva. O manasteel é o primeiro metal desse caminho, leve e brilhante.
+
+      Plante suas primeiras flores geradoras, construa o espreguiçador de mana e deixe a natureza trabalhar. Marque a caixa quando o primeiro lingote tiver saído da piscina de mana.
+    tasks:
+      - check
+    rewards:
+      - xp: 25
+      - loot: comum
+
+  - link: botania:manasteel
+    at: [7, 15]
+
+  - id: runas
+    title: "Os Dezesseis Sinais"
+    type: milestone
+    deps: [manasteel, botania:mestre_runas]
+    at: [8, 14]
+    icon: minecraft:diamond
+    desc: |
+      Cada runa carrega um elemento ou uma ideia: terra, água, fogo, ar, primavera, verão, outono, inverno, e as emoções mais pesadas, como orgulho e ira. Dezesseis sinais formam um alfabeto inteiro, o que me comove profundamente.
+
+      Faça as runas no altar de runas, uma a uma. §aDica:§r guarde sobras para os rituais futuros. Reconheço que o alfabeto está completo. Marque a caixa quando todas estiverem no seu baú.
+    tasks:
+      - check
+    rewards:
+      - kit: {name: "Kit do Aprendiz Arcano", items: [minecraft:enchanting_table x1, minecraft:dye:4 x16, minecraft:experience_bottle x16]}
+      - loot: raro
+      - xp: 40
+
+  - link: botania:mestre_runas
+    at: [8, 15]
+
+  - id: primeiro_sangue
+    title: "O Primeiro Sangue"
+    type: milestone
+    deps: [runas, bloodmagic:primeiro_sangue]
+    at: [9, 14]
+    icon: minecraft:redstone
+    desc: |
+      Há magias que cobram um preço. Blood Magic usa a sua própria essência vital como combustível, e isso é mais antigo e mais perigoso que qualquer mana. O Orbe fraco e o altar são o começo desse caminho.
+
+      Respeite sempre o nível de Essência da Vida: o corpo é seu. §cPerigo:§r não drene até a morte. Marque a caixa quando o altar estiver funcionando e o Orbe tiver sido sintonizado.
+    tasks:
+      - check
+    rewards:
+      - kit: {name: "Kit do Aprendiz Arcano", items: [minecraft:enchanting_table x1, minecraft:dye:4 x16, minecraft:experience_bottle x16]}
+      - loot: incomum
+      - xp: 35
+
+  - link: bloodmagic:primeiro_sangue
+    at: [9, 15]
+
+  - id: lousa
+    title: "A Lousa Reforçada"
+    type: main
+    deps: [primeiro_sangue, bloodmagic:lousa_reforcada]
+    at: [10, 14]
+    icon: minecraft:obsidian
+    desc: |
+      O altar cresce, e a cada tier ganha mais capacidade. A lousa reforçada abre a segunda camada de rituais e permite orbes maiores, que seguram mais do que você quer admitir.
+
+      Monte as runas ao redor do altar com atenção ao diagrama. Se o altar parar de aceitar sangue, geralmente falta uma runa. Marque a caixa quando o altar de nível dois estiver pronto.
+    tasks:
+      - check
+    rewards:
+      - xp: 25
+      - loot: comum
+
+  - link: bloodmagic:lousa_reforcada
+    at: [10, 15]
+
+  - id: primeiro_feitico
+    title: "Meu Primeiro Feitiço"
+    type: main
+    deps: [lousa, arsmagica:primeiro_feitico]
+    at: [11, 14]
+    icon: minecraft:glowstone_dust
+    desc: |
+      Em Ars Magica você cria feitiços como quem escreve frases: uma forma, um componente e, se quiser, um modificador. O primeiro feitiço costuma ser simples, mas é meu favorito de todos.
+
+      Anote o que combinou, teste em um zumbi e ajuste. §aDica:§r a mana regenera sozinha, então não tenha pressa. Marque a caixa quando seu primeiro feitiço estiver pronto e funcionando.
+    tasks:
+      - check
+    rewards:
+      - xp: 25
+      - loot: comum
+
+  - link: arsmagica:primeiro_feitico
+    at: [11, 15]
+
+  - id: varinha_aprendiz
+    title: "Varinha de Aprendiz"
+    type: normal
+    deps: [primeiro_feitico, wizardry:varinha_aprendiz]
+    at: [0, 21]
+    icon: minecraft:blaze_rod
+    desc: |
+      Wizardry and Witchcraft prefere varinhas de poucos elementos e gestos precisos. A varinha de aprendiz é o ponto de partida do estudo formal, uma ferramenta limpa e agradável de segurar.
+
+      Treine os feitiços básicos em um alvo parado antes de enfrentar qualquer coisa que se mova. Marque a caixa quando a varinha estiver em sua mão e você já tiver lançado um feitiço.
+    tasks:
+      - check
+    rewards:
+      - xp: 20
+      - loot: comum
+
+  - link: wizardry:varinha_aprendiz
+    at: [0, 22]
+
+  - id: primeiro_apiario
+    title: "O Primeiro Apiário"
+    type: normal
+    deps: [varinha_aprendiz, abelhas:primeiro_apiario]
+    at: [1, 21]
+    icon: minecraft:flower_pot
+    desc: |
+      Abelhas guardam sequências de genes como outras criaturas guardam segredos. O primeiro apiário é uma caixa pequena com uma rainha, um zangão e flores em volta, e é o início de uma criação inteira.
+
+      Escolha um bioma agradável, evite colocar o apiário perto de coisas barulhentas e seja gentil. Marque a caixa quando as primeiras abelhas estiverem trabalhando.
+    tasks:
+      - check
+    rewards:
+      - xp: 20
+      - loot: comum
+
+  - link: abelhas:primeiro_apiario
+    at: [1, 22]
+
+  - id: oficina_floresta
+    title: "A Oficina da Floresta"
+    type: normal
+    deps: [primeiro_apiario, forestry:oficina_forestry]
+    at: [2, 21]
+    icon: minecraft:sapling
+    desc: |
+      Forestry cuida das árvores e dos animais, com maquinário que lembra uma fazenda velha e organizada. A oficina é a base de tudo: carpintaria, incubadora, fermentador.
+
+      É um Volume silencioso, mas cheio de recompensas a longo prazo. Comece devagar, aproveite as mudas e a madeira nova. Marque a caixa quando sua oficina estiver de pé.
+    tasks:
+      - check
+    rewards:
+      - xp: 20
+      - loot: comum
+
+  - link: forestry:oficina_forestry
+    at: [2, 22]
+
+  - id: primeiro_rito
+    title: "O Primeiro Rito"
+    type: normal
+    deps: [oficina_floresta, witchery:primeiro_rito]
+    at: [3, 21]
+    icon: minecraft:cauldron
+    desc: |
+      Witchery é a magia dos caldeirões, das bonecas e das luas. O primeiro rito exige um círculo, um caldeirão preparado e respeito pelas fases do céu. É a mais lenta, a mais bonita e a mais assustadora das tradições.
+
+      Leia sobre cada ingrediente no NEI antes de usá-lo. §cPerigo:§r bruxas não gostam de ser interrompidas. Marque a caixa quando o primeiro rito tiver terminado sem acidentes.
+    tasks:
+      - check
+    rewards:
+      - kit: {name: "Kit do Alquimista", items: [minecraft:blaze_powder x8, minecraft:nether_wart x8, minecraft:glass_bottle x6]}
+      - xp: 25
+
+  - link: witchery:primeiro_rito
+    at: [3, 22]
+
+  - id: aprendiz_mago
+    title: "O Aprendiz se Torna Mestre"
+    type: milestone
+    deps: [primeiro_rito, thaumcraft:aprendiz_completo]
+    at: [4, 21]
+    icon: minecraft:experience_bottle
+    desc: |
+      Quatro tradições, quatro estilos de escrever poder, e você já experimentou várias. Isso me deixa muito feliz, porque a magia do Registro nunca foi uma só.
+
+      Thaumcraft deu a base de pesquisa, Botania a flor, Blood Magic o preço, Ars Magica a gramática. O aprendiz já é um mago pequeno. Reconheço que meus primeiros passos foram firmes. Marque a caixa quando fechar o ciclo de aprendiz.
+    tasks:
+      - check
+    rewards:
+      - kit: {name: "Kit do Aprendiz Arcano", items: [minecraft:enchanting_table x1, minecraft:dye:4 x16, minecraft:experience_bottle x16]}
+      - loot: raro
+      - xp: 50
+
+  - link: thaumcraft:aprendiz_completo
+    at: [4, 22]
+
+  - id: prontos_volumes
+    title: "Prontos para os Volumes"
+    type: milestone
+    deps: [aprendiz_mago, vanilla:prontos_volumes]
+    at: [5, 21]
+    icon: minecraft:chest
+    desc: |
+      Fazenda, forja, nether, redstone, fundição e magia inicial: você olhou para todos os cantos básicos do mundo. É uma sensação estranha perceber que o Herói que acordou perdido já sabe responder a quase tudo.
+
+      Os Volumes agora ficam abertos, e as engrenagens do Ato II esperam logo adiante. Reconheço que estou pronto. Marque a caixa quando tiver tudo isso em ordem.
+    tasks:
+      - check
+    rewards:
+      - kit: {name: "Kit do Sobrevivente", items: [minecraft:bread x16, minecraft:torch x32, minecraft:cooked_beef x8]}
+      - loot: raro
+      - xp: 40
+
+  - link: vanilla:prontos_volumes
+    at: [5, 22]
+
+  - id: limiar
+    title: "O Limiar do Fim"
+    type: portal
+    deps: [prontos_volumes, vanilla:limiar_do_fim]
+    at: [6, 21]
+    icon: minecraft:ender_eye
+    desc: |
+      Em algum lugar sob uma fortaleza antiga existe uma moldura de portal com olhos de ender, e do outro lado dela está um céu escuro onde um dragão guarda o que sobrou do fim. Ainda é cedo para entrar, mas é bom saber onde fica.
+
+      Olho de ender, fortaleza, localização anotada. Reconheço que já vi o portal. Marque a caixa e siga, que o Ato II chama.
+    tasks:
+      - check
+    rewards:
+      - kit: {name: "Kit do Limiar", items: [minecraft:ender_pearl x8, minecraft:obsidian x16, minecraft:diamond x4]}
+      - xp: 40
+
+  - link: vanilla:limiar_do_fim
+    at: [6, 22]
+
+  - id: fim_ato1
+    title: "Raízes Fundas"
+    type: finale
+    deps: [limiar, tinkers:viajante_completo]
+    at: [7, 21]
+    icon: minecraft:sapling
+    banner: "Raízes Fundas"
+    desc: |
+      Herói, olhe para trás: fazenda, fundição, redstone, Nether, poções, as primeiras máquinas, as primeiras magias. Cada uma dessas coisas é uma página que voltou a existir porque você teve paciência, e eu tenho orgulho disso.
+
+      As raízes estão fundas o bastante para sustentar uma árvore inteira. No Ato II, as engrenagens começam a girar e os encantos ficam mais fortes. Marque a caixa e vamos juntos.
+    tasks:
+      - check
+    rewards:
+      - kit: {name: "Kit do Registro", items: [minecraft:diamond_block x2, minecraft:emerald_block x2, minecraft:golden_apple x4]}
+      - loot: epico
+      - xp: 75
+
+  - link: tinkers:viajante_completo
+    at: [7, 22]

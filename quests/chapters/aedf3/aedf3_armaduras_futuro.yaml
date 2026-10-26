@@ -12,7 +12,7 @@ quests:
   type: main
   deps_hidden: ['aedf3_energia_solar:solar_milestone']
   desc: |
-    Tudo de elétrico precisa de bateria. As §eBaterias Avançadas§r guardam bastante energia e são reutilizáveis: carregue na BatBox ou MFE e use quando precisar. Faça três para circular entre ferramentas e armaduras. Nenhum herói saía de casa sem pelo menos uma de reserva.
+    Tudo de elétrico precisa de bateria. As §eBaterias Avançadas§r guardam bastante energia e são reutilizáveis: carregue na BatBox ou MFE e use quando precisar. Faça três para circular entre ferramentas e armaduras. Nenhum herói saía de casa sem pelo menos uma de reserva. Carregue na BatBox e leve sempre uma de reserva.
   tasks:
   - {get: 'IC2:itemAdvBat:* x3'}
   rewards:
@@ -23,7 +23,7 @@ quests:
   type: normal
   deps: [bateria_recarregavel]
   desc: |
-    Antes de qualquer armadura de futuro, a segurança: o §eTraje Hazmat§r protege contra lava, fogo e radiação. É feito de borracha, lã e vidro. Não custa caro e salva vidas em reatores, minas profundas e cavernas de lava.
+    Antes de qualquer armadura de futuro, a segurança: o §eTraje Hazmat§r protege contra lava, fogo e radiação. É feito de borracha, lã e vidro. Não custa caro e salva vidas em reatores, minas profundas e cavernas de lava. Capacete, peitoral e calças de proteção mais as botas de borracha formam o conjunto. Use sempre que for mexer com urânio.
   tasks:
   - get: ['IC2:itemArmorHazmatHelmet', 'IC2:itemArmorHazmatChestplate', 'IC2:itemArmorHazmatLeggings',
       'IC2:itemArmorRubBoots']
@@ -35,7 +35,7 @@ quests:
   type: normal
   deps: [traje_hazmat]
   desc: |
-    O §eColete de Liga§r é um peitoral reforçado do IC2, bem mais resistente que ferro. É um primeiro passo, sem energia, para quem ainda não chegou na Nano. Os heróis lendários usavam esse colete como ponte entre o ferro e o futuro.
+    O §eColete de Liga§r é um peitoral reforçado do IC2, bem mais resistente que ferro. É um primeiro passo, sem energia, para quem ainda não chegou na Nano. Os heróis lendários usavam esse colete como ponte entre o ferro e o futuro. Ainda não precisa de energia.
   tasks:
   - {get: 'IC2:itemArmorAlloyChestplate'}
   rewards:
@@ -46,7 +46,7 @@ quests:
   type: normal
   deps: [colete_reforcado]
   desc: |
-    A §eMochila de Baterias§r carrega itens do inventário enquanto você anda e serve como reserva para ferramentas elétricas. Use no peito (lugar da armadura) e tenha energia portátil o dia inteiro. Perfeito para expedições longas.
+    A §eMochila de Baterias§r carrega itens do inventário enquanto você anda e serve como reserva para ferramentas elétricas. Use no peito (lugar da armadura) e tenha energia portátil o dia inteiro. Perfeito para expedições longas. Basta usá-la no slot do peito e guardar baterias no inventário. Ela carrega suas ferramentas elétricas durante as expedições, sem você precisar parar e voltar para a base.
   tasks:
   - {get: 'IC2:itemArmorBatpack:*'}
   rewards:
@@ -70,7 +70,7 @@ quests:
   type: normal
   deps: [jetpack_eletrico]
   desc: |
-    Cavernas escuras viram dia claro com os §eÓculos de Visão Noturna§r. Ligue com o atalho certo, gaste um pouquinho de energia e veja tudo em verde. Útil em minas e no Nether, mas também para evitar monstros escondidos.
+    Cavernas escuras viram dia claro com os §eÓculos de Visão Noturna§r. Ligue com o atalho certo, gaste um pouquinho de energia e veja tudo em verde. Útil em minas e no Nether, mas também para evitar monstros escondidos. Eles gastam um pouquinho de energia quando ligados. Use com cuidado.
   tasks:
   - {get: 'IC2:itemNightvisionGoggles:*'}
   rewards:
@@ -81,7 +81,7 @@ quests:
   type: main
   deps: [oculos_noturnos]
   desc: |
-    A armadura que deu fama à Era do Futuro! O §eCapacete Nano§r tem boa proteção, respira embaixo d'água e tem visão noturna embutida. Precisa de fibra de carbono, circuitos e cristal de energia. Comece pela cabeça, que é a peça mais barata.
+    A armadura que deu fama à Era do Futuro! O §eCapacete Nano§r tem boa proteção, respira embaixo d'água e tem visão noturna embutida. Precisa de fibra de carbono, circuitos e cristal de energia. Comece pela cabeça, que é a peça mais barata. Procure a receita no NEI.
   tasks:
   - {get: 'IC2:itemArmorNanoHelmet:*'}
   rewards:
@@ -92,7 +92,7 @@ quests:
   type: main
   deps: [nano_capacete]
   desc: |
-    O peito é a peça que mais protege. O §ePeitoral Nano§r absorve boa parte do dano quando carregado. É caro (cristais, carbono, circuitos avançados) e valioso. Junte os materiais com calma e confie na máquina de compressão para a fibra.
+    O peito é a peça que mais protege. O §ePeitoral Nano§r absorve boa parte do dano quando carregado. É caro (cristais, carbono, circuitos avançados) e valioso. Junte os materiais com calma e confie na máquina de compressão para a fibra. Cada peça nova da armadura aumenta a sensação de poder.
   tasks:
   - {get: 'IC2:itemArmorNanoChestplate:*'}
   rewards:
@@ -103,7 +103,7 @@ quests:
   type: main
   deps: [nano_peitoral]
   desc: |
-    As calças aumentam a velocidade em terra e dão proteção sólida. As §eCalças Nano§r pedem fibra de carbono e cristal de energia. A recompensa é enorme: sentir-se leve, rápido e blindado. Prepare o carregador!
+    As calças aumentam a velocidade em terra e dão proteção sólida. As §eCalças Nano§r pedem fibra de carbono e cristal de energia. A recompensa é enorme: sentir-se leve, rápido e blindado. Prepare o carregador! Elas são uma das peças mais leves do conjunto e deixam o herói rápido. Carregue na BatBox ou MFE antes de sair, para não ficar com a proteção zerada no meio da aventura.
   tasks:
   - {get: 'IC2:itemArmorNanoLegs:*'}
   rewards:
@@ -114,7 +114,7 @@ quests:
   type: main
   deps: [nano_calcas]
   desc: |
-    As §eBotas Nano§r absorvem impacto de quedas altas e deixam saltar mais longe. Perfeito para quem usa jetpack e para o dia em que a bateria acaba. A quarta peça do conjunto!
+    As §eBotas Nano§r absorvem impacto de quedas altas e deixam saltar mais longe. Perfeito para quem usa jetpack e para o dia em que a bateria acaba. A quarta peça do conjunto! Combinam com o resto do conjunto e salvam seu pescoço em quedas altas. Carregue antes de usar, que botas descarregadas não protegem. Falta só uma peça, confira o NEI!
   tasks:
   - {get: 'IC2:itemArmorNanoBoots:*'}
   rewards:
@@ -125,7 +125,7 @@ quests:
   type: main
   deps: [nano_botas]
   desc: |
-    O conjunto completo! Capacete, peitoral, calças e botas Nano formam a armadura mais famosa das memórias da Era do Futuro. Vista tudo e carregue na BatBox. Você está andando pelo mundo como um herói de verdade.
+    O conjunto completo! Capacete, peitoral, calças e botas Nano formam a armadura mais famosa das memórias da Era do Futuro. Vista tudo e carregue na BatBox. Você está andando pelo mundo como um herói de verdade. Antes de sair, confira se cada peça está carregada. Os cristais ficam completos.
   tasks:
   - get: ['IC2:itemArmorNanoHelmet:*', 'IC2:itemArmorNanoChestplate:*', 'IC2:itemArmorNanoLegs:*', 'IC2:itemArmorNanoBoots:*']
   rewards:
@@ -136,7 +136,7 @@ quests:
   type: main
   deps: [nano_completa]
   desc: |
-    Uma espada de energia! O §eSabre Nano§r causa dano gigante quando ligado, mas consome carga bem rápido. Acenda antes do combate e desligue depois. Perfeito para chefes e multidões, mas só se a bateria aguentar.
+    Uma espada de energia! O §eSabre Nano§r causa dano gigante quando ligado, mas consome carga bem rápido. Acenda antes do combate e desligue depois. Perfeito para chefes e multidões, mas só se a bateria aguentar. Carregue antes e leve baterias de reserva para não ficar na mão no meio da luta.
   tasks:
   - {get: 'IC2:itemNanoSaber:*'}
   rewards:
@@ -147,7 +147,7 @@ quests:
   type: normal
   deps: [sabre_nano]
   desc: |
-    O §eLaser de Mineração§r fura túneis em linha reta, rápido e sem esforço. Também é arma de longo alcance. Use com cuidado, pois o disparo atravessa blocos e pode destruir coisas importantes atrás da parede.
+    O §eLaser de Mineração§r fura túneis em linha reta, rápido e sem esforço. Também é arma de longo alcance. Use com cuidado, pois o disparo atravessa blocos e pode destruir coisas importantes atrás da parede. Ele tem vários modos de disparo, e você pode alternar para mineração, dano e outros. Leia a descrição do item no inventário.
   tasks:
   - {get: 'IC2:itemToolMiningLaser:*'}
   rewards:
@@ -158,7 +158,7 @@ quests:
   type: main
   deps: [laser_de_mineracao]
   desc: |
-    O metal mais raro do IC2! O §eMinério de Irídio§r só aparece em profundidades baixas, em veios pequenos. Muitos heróis perdiam dias procurando. Use um scanner de minérios para achar rápido. Junte quatro, que é o suficiente para a primeira placa e o primeiro sonho.
+    O metal mais raro do IC2! O §eMinério de Irídio§r só aparece em profundidades baixas, em veios pequenos. Muitos heróis perdiam dias procurando. Use um scanner de minérios para achar rápido. Junte quatro, que é o suficiente para a primeira placa e o primeiro sonho. Seja paciente.
   tasks:
   - {get: 'IC2:itemOreIridium x4'}
   rewards:
@@ -169,7 +169,7 @@ quests:
   type: main
   deps: [minerio_de_iridio]
   desc: |
-    A §ePlaca Reforçada de Irídio§r é o ingrediente-chave da armadura Quantum. Feita com irídio, carbono e outros materiais, ela é dura e cara. Duas são suficientes para o conjunto inicial. Guarde com carinho!
+    A §ePlaca Reforçada de Irídio§r é o ingrediente-chave da armadura Quantum. Feita com irídio, carbono e outros materiais, ela é dura e cara. Duas são suficientes para o conjunto inicial. Guarde com carinho! Ela exige irídio puro, outras placas de metal e uma boa quantidade de materiais. Veja a receita no NEI e organize os ingredientes antes de começar a bancada.
   tasks:
   - {get: 'IC2:itemPartIridium x2'}
   rewards:
@@ -180,7 +180,7 @@ quests:
   type: optional
   deps: [placa_iridio]
   desc: |
-    A ferramenta definitiva de mineração do IC2. A §eBroca de Irídio§r quebra qualquer bloco em instantes e é um sonho para quem trabalha em minas grandes. Gasta bastante energia, então prepare um bom estoque.
+    A ferramenta definitiva de mineração do IC2. A §eBroca de Irídio§r quebra qualquer bloco em instantes e é um sonho para quem trabalha em minas grandes. Gasta bastante energia, então prepare um bom estoque. Pode ser feita a partir da broca de diamante, com placas de irídio e outros materiais. Opcional, mas muito satisfatória para quem tem muita escavação pela frente.
   tasks:
   - {get: 'IC2:itemToolIridiumDrill:*'}
   rewards:
@@ -191,7 +191,7 @@ quests:
   type: main
   deps: [broca_iridio]
   desc: |
-    O capacete mais poderoso do IC2. Protege de quase tudo (gases, sufocamento, fome!) e ainda tem visão noturna embutida. Faça com a Nano, irídio e circuitos. Cada peça Quantum é uma pequena vitória.
+    O capacete mais poderoso do IC2. Protege de quase tudo (gases, sufocamento, fome!) e ainda tem visão noturna embutida. Faça com a Nano, irídio e circuitos. Cada peça Quantum é uma pequena vitória. Depois de pronto, carregue na MFSU e saia de peito aberto. Veja as receitas no NEI e reúna todos os materiais antes de começar.
   tasks:
   - {get: 'IC2:itemArmorQuantumHelmet:*'}
   rewards:
@@ -202,7 +202,7 @@ quests:
   type: main
   deps: [quantum_capacete]
   desc: |
-    O §ePeitoral Quantum§r é quase invulnerável. Consome pouca energia por dano e permite fazer um jetpack acoplado ao corpo. É a peça que dá ao Herói aquela sensação de "ninguém me segura".
+    O §ePeitoral Quantum§r é quase invulnerável. Consome pouca energia por dano e permite fazer um jetpack acoplado ao corpo. É a peça que dá ao Herói aquela sensação de "ninguém me segura". Faça a partir do peitoral Nano com placas de irídio e muitos circuitos avançados. Carregue bem antes de usar, pois vai consumir energia quando absorver dano.
   tasks:
   - {get: 'IC2:itemArmorQuantumChestplate:*'}
   rewards:
@@ -213,7 +213,7 @@ quests:
   type: main
   deps: [quantum_peitoral]
   desc: |
-    As §eCalças Quantum§r dão velocidade extra e proteção quase total. Você corre muito mais rápido e acompanha os mobs sem esforço. Combine com as botas para a experiência completa.
+    As §eCalças Quantum§r dão velocidade extra e proteção quase total. Você corre muito mais rápido e acompanha os mobs sem esforço. Combine com as botas para a experiência completa. Veja a receita no NEI e reúna as peças antes de ir para a bancada, que gasta bastante material. Depois de pronta, carregue na MFSU.
   tasks:
   - {get: 'IC2:itemArmorQuantumLegs:*'}
   rewards:
@@ -224,7 +224,7 @@ quests:
   type: main
   deps: [quantum_calcas]
   desc: |
-    As §eBotas Quantum§r deixam saltar até o topo de edifícios e eliminam o dano de queda. Quando a energia acaba, o corpo sente. Cuide das baterias e aproveite o céu.
+    As §eBotas Quantum§r deixam saltar até o topo de edifícios e eliminam o dano de queda. Quando a energia acaba, o corpo sente. Cuide das baterias e aproveite o céu. Combinadas com o resto do conjunto, elas deixam o Herói saltar três andares sem sofrer um arranhão. Reúna o material no NEI e carregue direitinho.
   tasks:
   - {get: 'IC2:itemArmorQuantumBoots:*'}
   rewards:
@@ -235,7 +235,7 @@ quests:
   type: main
   deps: [quantum_botas]
   desc: |
-    O auge do IC2! Capacete, peitoral, calças e botas Quantum. Você corre, pula e aguenta quase tudo. Os heróis da Era do Futuro ficavam horas fazendo testes só para admirar o brilho. Vá em frente, Herói, você merece.
+    O auge do IC2! Capacete, peitoral, calças e botas Quantum. Você corre, pula e aguenta quase tudo. Os heróis da Era do Futuro ficavam horas fazendo testes só para admirar o brilho. Vá em frente, Herói, você merece. Confira todas as peças carregadas. Dê uma voltinha para testar a velocidade e os pulos.
   tasks:
   - get: ['IC2:itemArmorQuantumHelmet:*', 'IC2:itemArmorQuantumChestplate:*', 'IC2:itemArmorQuantumLegs:*',
       'IC2:itemArmorQuantumBoots:*']
@@ -247,7 +247,7 @@ quests:
   type: main
   deps: [quantum_completa]
   desc: |
-    O Industrial Upgrade traz sua própria linha de armaduras Nano, mais fortes que a do IC2. Comece pelo capacete e peitoral. Confira no NEI os materiais exatos e prepare minérios do mod.
+    O Industrial Upgrade traz sua própria linha de armaduras Nano, mais fortes que a do IC2. Comece pelo capacete e peitoral. Confira no NEI os materiais exatos e prepare minérios do mod. Veja as receitas no NEI e confira os materiais do Industrial Upgrade. É uma versão reforçada que combina bem com o resto do arsenal elétrico que você já tem.
   tasks:
   - get: ['industrialupgrade:itemArmorNanoHelmet:*', 'industrialupgrade:itemArmorNanoChestplate:*']
   rewards:
@@ -258,7 +258,7 @@ quests:
   type: optional
   deps: [nano_iu]
   desc: |
-    O §eSabre Quântico§r do IU é o irmão mais forte do Nano. Dano absurdo, consumo alto, brilho elegante. Um sonho para qualquer duelista e uma prova de que o futuro é afiado.
+    O §eSabre Quântico§r do IU é o irmão mais forte do Nano. Dano absurdo, consumo alto, brilho elegante. Um sonho para qualquer duelista e uma prova de que o futuro é afiado. Opcional, mas incrível. Veja a receita no NEI e reúna os materiais do Industrial Upgrade. Carregue bem antes dos duelos.
   tasks:
   - {get: 'industrialupgrade:itemNanoSaber1:*'}
   rewards:
@@ -269,7 +269,7 @@ quests:
   type: optional
   deps: [quantum_iu]
   desc: |
-    O §eJetpack Avançado§r do IU voa mais rápido e dura mais tempo. Combine com a armadura Quantum para viajar pelos céus. Os heróis lendários ganhavam rios de tempo com isso, e você também.
+    O §eJetpack Avançado§r do IU voa mais rápido e dura mais tempo. Combine com a armadura Quantum para viajar pelos céus. Os heróis lendários ganhavam rios de tempo com isso, e você também. Opcional e divertido. Olhe a receita no NEI, junte os materiais e carregue direitinho antes de decolar. Combina muito com a armadura Quantum.
   tasks:
   - {get: 'industrialupgrade:advjetpack:*'}
   rewards:
@@ -280,7 +280,7 @@ quests:
   type: milestone
   deps: [jetpack_avancado_iu]
   desc: |
-    Quantum completa, sabre nas costas, baterias cheias e céu azul. É assim que os heróis da Era do Futuro se lembravam do próprio auge: blindados, rápidos e sorrindo. O que parecia lenda agora está no seu peito.
+    Quantum completa, sabre nas costas, baterias cheias e céu azul. É assim que os heróis da Era do Futuro se lembravam do próprio auge: blindados, rápidos e sorrindo. O que parecia lenda agora está no seu peito. Sinta o peso do metal, o zumbido da energia e a segurança de quem sabe que está bem preparado, e comemore com calma antes de partir para a próxima aventura. Você merece cada brilho desse conjunto.
 
     Mas armadura sem sabedoria é só metal bonito. As próximas páginas ensinam algo bem diferente: magia, golens e livros antigos. Pegue a varinha, Herói. É hora de ser §eaprendiz de mago§r.
   tasks:

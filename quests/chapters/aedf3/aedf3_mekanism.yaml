@@ -12,7 +12,7 @@ quests:
   type: main
   deps_hidden: ['aedf3_automacao_industria:industria_milestone']
   desc: |
-    O §eÓsmio§r é o metal azul-prateado do Mekanism e a base de quase tudo. Procure o minério em cavernas, bem abaixo da superfície, com picareta de ferro ou melhor. Junte 16 blocos. Fácil de achar, bom de usar.
+    O §eÓsmio§r é o metal azul-prateado do Mekanism e a base de quase tudo. Procure o minério em cavernas, bem abaixo da superfície, com picareta de ferro ou melhor. Junte 16 blocos. Fácil de achar, bom de usar. Use picareta de ferro e leve ao triturador.
   tasks:
   - {get: 'ore:oreOsmium x16'}
   rewards:
@@ -23,7 +23,7 @@ quests:
   type: main
   deps: [osmio]
   desc: |
-    Funda na fornalha e junte §e16 lingotes de Ósmio§r. Tudo no Mekanism passa por ele: máquinas, ferramentas, tubos, cabos. Se estiver faltando minério, procure mais fundo, ou use a Pedreira da fase anterior.
+    Funda na fornalha e junte §e16 lingotes de Ósmio§r. Tudo no Mekanism passa por ele: máquinas, ferramentas, tubos, cabos. Se estiver faltando minério, procure mais fundo, ou use a Pedreira da fase anterior. Também dá para processar o minério na câmara de enriquecimento para dobrar a quantidade antes de fundir. Estoque bastante, que praticamente todo bloco do mod leva ósmio na receita.
   tasks:
   - {get: 'ore:ingotOsmium x16'}
   rewards:
@@ -34,7 +34,7 @@ quests:
   type: main
   deps: [lingote_osmio]
   desc: |
-    O §eInfusor Metalúrgico§r mistura metal com redstone, diamante ou carvão para fazer ligas. É o primeiro passo na produção de aço e no ciclo de processamento. Coloque energia e matéria-prima e veja a mágica.
+    O §eInfusor Metalúrgico§r mistura metal com redstone, diamante ou carvão para fazer ligas. É o primeiro passo na produção de aço e no ciclo de processamento. Coloque energia e matéria-prima e veja a mágica. Coloque o metal e o material de infusão e ele produz as ligas. É uma máquina essencial no Mekanism, usada em quase todas as receitas de aço e de liga.
   tasks:
   - {get: 'Mekanism:MachineBlock:8'}
   rewards:
@@ -45,7 +45,7 @@ quests:
   type: normal
   deps: [infusor_metalurgico]
   desc: |
-    Ferro misturado com carbono vira §eFerro Enriquecido§r, base do aço e de muita coisa no Mekanism. Faça 16 no infusor e use em tudo. Parece pouco, mas rende bastante.
+    Ferro misturado com carbono vira §eFerro Enriquecido§r, base do aço e de muita coisa no Mekanism. Faça 16 no infusor e use em tudo. Parece pouco, mas rende bastante. Passe lingotes de ferro e carvão no infusor metalúrgico. O resultado é um metal mais resistente, usado na construção de máquinas e no aço. Faça de 16 em 16 e guarde no baú de materiais.
   tasks:
   - {get: 'Mekanism:EnrichedIron x16'}
   rewards:
@@ -56,7 +56,7 @@ quests:
   type: normal
   deps: [ferro_enriquecido]
   desc: |
-    O §eAço§r serve de armação para máquinas maiores e de estrutura para tanques. Passe o ferro enriquecido na fornalha de ferro para produzir. Pegue uma boa quantidade e deixe as máquinas rolarem.
+    O §eAço§r serve de armação para máquinas maiores e de estrutura para tanques. Passe o ferro enriquecido na fornalha de ferro para produzir. Pegue uma boa quantidade e deixe as máquinas rolarem. Também há receitas de aço em outros mods, como Tinkers e Thermal. Escolha a mais rápida para você. Muitas máquinas do Mekanism usam aço como armação, então produza sem medo.
   tasks:
   - {get: 'ore:ingotSteel x32'}
   rewards:
@@ -67,7 +67,7 @@ quests:
   type: normal
   deps: [aco_do_mekanism]
   desc: |
-    O primeiro nível de liga do Mekanism. A §eLiga Enriquecida§r nasce no Infusor e vira cabos, circuitos e máquinas básicas. Muito, muito importante para toda a linha. Faça com calma.
+    O primeiro nível de liga do Mekanism. A §eLiga Enriquecida§r nasce no Infusor e vira cabos, circuitos e máquinas básicas. Muito, muito importante para toda a linha. Faça com calma. Use redstone no infusor com ferro para fazer a liga. Ela serve de componente para cabos, circuitos e máquinas básicas. Faça de uma vez grandes quantidades, que o consumo é alto.
   tasks:
   - {get: 'Mekanism:EnrichedAlloy x16'}
   rewards:
@@ -78,7 +78,7 @@ quests:
   type: main
   deps: [liga_enriquecida]
   desc: |
-    Você acaba de montar a §eCâmara de Enriquecimento§r, a máquina que dobra minérios! Dois pós por bloco de minério, igualzinho a um triturador, só que com a graça do Mekanism. Posicione-a no início da linha de processamento.
+    Você acaba de montar a §eCâmara de Enriquecimento§r, a máquina que dobra minérios! Dois pós por bloco de minério, igualzinho a um triturador, só que com a graça do Mekanism. Posicione-a no início da linha de processamento. Basta energia e minério. Posicione-a perto da fornalha.
   tasks:
   - {get: 'Mekanism:MachineBlock'}
   rewards:
@@ -89,7 +89,7 @@ quests:
   type: normal
   deps: [camara_enriquecimento]
   desc: |
-    Fornalha elétrica do Mekanism: mais rápida, mais limpa e aceita melhorias. Posicione ao lado da câmara de enriquecimento e processe tudo no mesmo ritmo. Sem fumaça e sem cansaço.
+    Fornalha elétrica do Mekanism: mais rápida, mais limpa e aceita melhorias. Posicione ao lado da câmara de enriquecimento e processe tudo no mesmo ritmo. Sem fumaça e sem cansaço. Aceita melhorias de velocidade e energia, ideal para quem processa muito minério. Instale ao lado da câmara de enriquecimento e use o configurador para ligar tudo.
   tasks:
   - {get: 'Mekanism:MachineBlock:10'}
   rewards:
@@ -100,7 +100,7 @@ quests:
   type: main
   deps: [fundicao_energizada]
   desc: |
-    O §eCubo de Energia§r guarda J para quando as máquinas pedirem. Fica ao lado do gerador e aceita fios por qualquer lado. Mais para frente você poderá subir para cubos Avançados, Elite e Supremos.
+    O §eCubo de Energia§r guarda J para quando as máquinas pedirem. Fica ao lado do gerador e aceita fios por qualquer lado. Mais para frente você poderá subir para cubos Avançados, Elite e Supremos. Coloque ao lado do gerador e das máquinas. Dá para carregar e descarregar por qualquer face, ajustando com o configurador. Há versões avançadas, elite e supremas para armazenar ainda mais energia.
   tasks:
   - {get: 'Mekanism:EnergyCube {tier:"Basic"}'}
   rewards:
@@ -111,7 +111,7 @@ quests:
   type: normal
   deps: [cubo_de_energia]
   desc: |
-    Um cabo só serve para tudo: energia, fluidos, itens. O §eCabo Universal§r do Mekanism é barato e flexível. Comece por ele e substitua por tipos melhores com o tempo.
+    Um cabo só serve para tudo: energia, fluidos, itens. O §eCabo Universal§r do Mekanism é barato e flexível. Comece por ele e substitua por tipos melhores com o tempo. Existem versões melhores para transportar mais energia por tick. Comece pelos universais e troque conforme a fábrica cresce. Eles se conectam sozinhos às máquinas próximas.
   tasks:
   - {get: 'Mekanism:PartTransmitter x16'}
   rewards:
@@ -122,7 +122,7 @@ quests:
   type: normal
   deps: [cabo_universal]
   desc: |
-    Com o §eConfigurador§r você escolhe quais lados da máquina recebem e entregam itens. Use sempre que montar uma linha. Evita que as máquinas se confundam e deixa tudo organizado.
+    Com o §eConfigurador§r você escolhe quais lados da máquina recebem e entregam itens. Use sempre que montar uma linha. Evita que as máquinas se confundam e deixa tudo organizado. Clique com o botão direito para alternar o modo e depois clique em cada face da máquina. Mudar entrada e saída fica fácil. Também serve para remover o bloco com segurança.
   tasks:
   - {get: 'Mekanism:Configurator'}
   rewards:
@@ -133,7 +133,7 @@ quests:
   type: main
   deps: [configurador]
   desc: |
-    A segunda geração de processamento! A §eCâmara de Purificação§r exige oxigênio e entrega o minério em 3x. Dê a ela energia e matéria e perceba a diferença. Mais minério para o mesmo esforço.
+    A segunda geração de processamento! A §eCâmara de Purificação§r exige oxigênio e entrega o minério em 3x. Dê a ela energia e matéria e perceba a diferença. Mais minério para o mesmo esforço. Ela recebe minério, oxigênio e energia, e entrega o triplo do rendimento de pó. Instale ao lado do separador e configure os tubos. Quanto mais minério passar por ela, maior o lucro.
   tasks:
   - {get: 'Mekanism:MachineBlock:9'}
   rewards:
@@ -144,7 +144,7 @@ quests:
   type: normal
   deps: [camara_purificacao]
   desc: |
-    Separa a água em hidrogênio e oxigênio. O §eSeparador Eletrolítico§r é a fonte dos gases usados no processamento. Também alimenta o jetpack. Uma máquina simples, mas indispensável.
+    Separa a água em hidrogênio e oxigênio. O §eSeparador Eletrolítico§r é a fonte dos gases usados no processamento. Também alimenta o jetpack. Uma máquina simples, mas indispensável. Ele separa a água em oxigênio e hidrogênio, que ficam em tanques de gás. O hidrogênio alimenta o jetpack e outros processos. Instale perto de uma fonte de água e energia.
   tasks:
   - {get: 'Mekanism:MachineBlock2:4'}
   rewards:
@@ -155,7 +155,7 @@ quests:
   type: main
   deps: [separador_eletrolitico]
   desc: |
-    Para o processamento 4x, a §eCâmara de Injeção Química§r aplica ácido sulfúrico ao minério. O rendimento é ótimo, mas exige uma pequena rede de gás. Vale cada tubulação.
+    Para o processamento 4x, a §eCâmara de Injeção Química§r aplica ácido sulfúrico ao minério. O rendimento é ótimo, mas exige uma pequena rede de gás. Vale cada tubulação. Alimente com minério, ácido sulfúrico e energia para obter pedaços, que depois seguem para o próximo passo. Instale perto do tanque de gás e confira os tubos. Aqui o rendimento do minério quadruplica, uma das melhores formas de multiplicar recursos.
   tasks:
   - {get: 'Mekanism:MachineBlock2:3'}
   rewards:
@@ -166,7 +166,7 @@ quests:
   type: main
   deps: [injecao_quimica]
   desc: |
-    A última máquina do ciclo 5x. O §eCristalizador Químico§r transforma lavagem em cristais, que viram pó e depois em lingotes. Você chegou ao topo da cadeia, Herói, e o baú está explodindo de minério.
+    A última máquina do ciclo 5x. O §eCristalizador Químico§r transforma lavagem em cristais, que viram pó e depois em lingotes. Você chegou ao topo da cadeia, Herói, e o baú está explodindo de minério. Alimente com a solução química e deixe o cristal formar. Depois passe pela câmara de enriquecimento e pela fundição. Quintuplicar o minério parece mágica, mas é só engenharia bem feita. Os heróis lendários ficavam impressionados com o baú cheio de lingotes.
   tasks:
   - {get: 'Mekanism:MachineBlock2:8'}
   rewards:
@@ -177,7 +177,7 @@ quests:
   type: normal
   deps: [cristalizador]
   desc: |
-    Gases como oxigênio e hidrogênio são guardados em §eTanques de Gás§r. Eles se enchem pelos tubos pressurizados. Mantenha um estoque separado por tipo.
+    Gases como oxigênio e hidrogênio são guardados em §eTanques de Gás§r. Eles se enchem pelos tubos pressurizados. Mantenha um estoque separado por tipo. Comece com tanque básico e suba de nível quando precisar de mais espaço. Use o configurador para ajustar entrada e saída, e conecte a tubos pressurizados. Mantenha um tanque separado para cada gás, que a bagunça gera problemas.
   tasks:
   - {get: 'Mekanism:GasTank x4 {tier:0}'}
   rewards:
@@ -188,7 +188,7 @@ quests:
   type: main
   deps: [tanque_de_gas]
   desc: |
-    O §eMinerador Digital§r escava uma grande área sozinho, escolhendo exatamente o que minerar. Configure o filtro no menu e deixe trabalhar. Uma das máquinas mais amadas pela turma, e uma das mais caras!
+    O §eMinerador Digital§r escava uma grande área sozinho, escolhendo exatamente o que minerar. Configure o filtro no menu e deixe trabalhar. Uma das máquinas mais amadas pela turma, e uma das mais caras! Defina o filtro no menu (por exemplo, só ouro ou só diamante), ajuste o raio e ligue a energia. A máquina cava sozinha e entrega os itens em baús ou tubos ao lado. Cuidado com lava e água ao redor da área.
   tasks:
   - {get: 'Mekanism:MachineBlock:4'}
   rewards:
@@ -199,7 +199,7 @@ quests:
   type: normal
   deps: [minerador_digital]
   desc: |
-    Para teletransportar blocos, você precisa de §eNúcleos de Teleporte§r. Feitos de pérola, diamante e outros materiais. Três bastam para o teleporte e o portátil. Esse é o início da viagem instantânea.
+    Para teletransportar blocos, você precisa de §eNúcleos de Teleporte§r. Feitos de pérola, diamante e outros materiais. Três bastam para o teleporte e o portátil. Esse é o início da viagem instantânea. Veja a receita no NEI e faça três núcleos. Eles são a base das molduras e dos aparelhos de teleporte. Cada um custa pérola, diamante e componentes de circuitos.
   tasks:
   - {get: 'Mekanism:TeleportationCore x3'}
   rewards:
@@ -210,7 +210,7 @@ quests:
   type: main
   deps: [teleporte_nucleo]
   desc: |
-    Teleportar-se de um lugar a outro sem gastar passos! O §eTeleportador Portátil§r é o item sonhado de qualquer explorador. Ele precisa de energia e de um quadro de teletransporte no destino. Um clássico da Era do Futuro.
+    Teleportar-se de um lugar a outro sem gastar passos! O §eTeleportador Portátil§r é o item sonhado de qualquer explorador. Ele precisa de energia e de um quadro de teletransporte no destino. Um clássico da Era do Futuro. Instale o quadro de teletransporte no destino. Cada viagem consome energia, então carregue bem.
   tasks:
   - {get: 'Mekanism:PortableTeleporter:*'}
   rewards:
@@ -221,7 +221,7 @@ quests:
   type: main
   deps: [teleportador_portatil]
   desc: |
-    O §eJetpack§r do Mekanism voa com hidrogênio. Sem baterias, mas com um tanque de gás. Pressione o botão de salto e se solte. Os modos podem ser ajustados com o atalho de teclado. Uma delícia de usar.
+    O §eJetpack§r do Mekanism voa com hidrogênio. Sem baterias, mas com um tanque de gás. Pressione o botão de salto e se solte. Os modos podem ser ajustados com o atalho de teclado. Uma delícia de usar. Abasteça com hidrogênio do separador eletrolítico e vista no peito.
   tasks:
   - {get: 'Mekanism:Jetpack'}
   rewards:
@@ -232,7 +232,7 @@ quests:
   type: normal
   deps: [jetpack]
   desc: |
-    Explorar oceanos sem se afogar! Use a §eMáscara de Gás§r e o §eTanque de Oxigênio§r (cheio, claro). Dá para mergulhar fundo, passar por gases perigosos e respirar em áreas tóxicas. Muito útil na fase seguinte.
+    Explorar oceanos sem se afogar! Use a §eMáscara de Gás§r e o §eTanque de Oxigênio§r (cheio, claro). Dá para mergulhar fundo, passar por gases perigosos e respirar em áreas tóxicas. Muito útil na fase seguinte. Encha o tanque de oxigênio no separador eletrolítico e vista os dois. Com isso, dá para explorar o fundo do oceano e ambientes tóxicos sem preocupação. Os heróis lendários chamavam isso de "pulmão artificial".
   tasks:
   - get: ['Mekanism:GasMask', 'Mekanism:ScubaTank']
   rewards:
@@ -243,7 +243,7 @@ quests:
   type: main
   deps: [mascara_scuba]
   desc: |
-    A ferramenta definitiva do Mekanism. O §eDesintegrador Atômico§r quebra, corta e escava quase tudo, com modos selecionáveis. É caro, mas vale cada diamante. Combine com um bom cubo de energia.
+    A ferramenta definitiva do Mekanism. O §eDesintegrador Atômico§r quebra, corta e escava quase tudo, com modos selecionáveis. É caro, mas vale cada diamante. Combine com um bom cubo de energia. Alterne os modos de uso com a tecla de modo e ajuste a eficiência. Gasta energia, então carregue em um cubo. Corta pedra rápido, tira minério sem perder drop e serve de arma. Uma ferramenta completa, pesada e elegante.
   tasks:
   - {get: 'Mekanism:AtomicDisassembler:*'}
   rewards:
@@ -254,7 +254,7 @@ quests:
   type: optional
   deps: [desintegrador]
   desc: |
-    As §eBotas Livres§r deixam você andar rápido e pular grande altura sem sofrer dano. Elas gastam energia, então carregue. Um complemento perfeito para o jetpack.
+    As §eBotas Livres§r deixam você andar rápido e pular grande altura sem sofrer dano. Elas gastam energia, então carregue. Um complemento perfeito para o jetpack. Deixam o herói correr e pular sem sentir os impactos. Perfeitas para quem usa jetpack e vive em altitudes. Carregue no cubo de energia antes de sair para a aventura, pois gastam energia constante enquanto você se movimenta.
   tasks:
   - {get: 'Mekanism:FreeRunners:*'}
   rewards:
@@ -265,7 +265,7 @@ quests:
   type: normal
   deps: [botas_de_corrida]
   desc: |
-    O §ePaxel§r junta picareta, machado e pá numa ferramenta só. A de Ósmio é resistente e rápida. Prática para quem não quer trocar de item toda hora.
+    O §ePaxel§r junta picareta, machado e pá numa ferramenta só. A de Ósmio é resistente e rápida. Prática para quem não quer trocar de item toda hora. Funciona como picareta, pá e machado ao mesmo tempo. Boa durabilidade e boa velocidade, perfeita para o dia a dia. Combine com o desintegrador para os trabalhos mais pesados.
   tasks:
   - {get: 'MekanismTools:OsmiumPaxel'}
   rewards:
@@ -276,7 +276,7 @@ quests:
   type: optional
   deps: [paxel_de_osmio]
   desc: |
-    O melhor armazenamento de energia do Mekanism em bloco único. O §eCubo Supremo§r guarda uma quantidade absurda de J. Poucos heróis chegaram a ter vários, e quem tem se sente rei do mundo.
+    O melhor armazenamento de energia do Mekanism em bloco único. O §eCubo Supremo§r guarda uma quantidade absurda de J. Poucos heróis chegaram a ter vários, e quem tem se sente rei do mundo. Pode ser empilhado para criar bancos gigantescos. Ligue a cabos supremos para máxima velocidade. Um item de colecionador.
   tasks:
   - {get: 'Mekanism:EnergyCube {tier:"Ultimate"}'}
   rewards:
@@ -287,7 +287,7 @@ quests:
   type: milestone
   deps: [cubo_supremo]
   desc: |
-    Câmara, purificação, injeção, minerador digital e jetpack cheio de hidrogênio. É assim que os heróis lendários descreviam a sensação do Mekanism: ter minério sobrando e voar por cima da própria fábrica.
+    Câmara, purificação, injeção, minerador digital e jetpack cheio de hidrogênio. É assim que os heróis lendários descreviam a sensação do Mekanism: ter minério sobrando e voar por cima da própria fábrica. Os heróis lendários diziam que o Mekanism ensinava a pensar em escala: em vez de um lingote, cinco. Olhe para a sua fábrica, ouça o zumbido das câmaras e deixe o orgulho tomar conta. Ao fundo, o jetpack espera encostado na parede, com o tanque cheio, só aguardando você aceitar o convite do céu.
 
     Agora é hora de pegar essa riqueza e transformá-la em algo bonito. O sonho de toda a Era do Futuro está a um passo: a §eCasa do Futuro§r.
   tasks:

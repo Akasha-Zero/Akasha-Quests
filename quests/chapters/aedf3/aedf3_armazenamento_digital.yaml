@@ -12,7 +12,7 @@ quests:
   type: main
   deps_hidden: ['aedf3_casa_do_futuro:casa_milestone']
   desc: |
-    O primeiro passo da jornada digital: o §eQuartzo Certus§r, cristais azulados que ficam enterrados em cavernas e em geodos. Junte 16 e guarde. Servem de base para ferramentas, fluix, cabos e cristais que viram a memória da rede.
+    O primeiro passo da jornada digital: o §eQuartzo Certus§r, cristais azulados que ficam enterrados em cavernas e em geodos. Junte 16 e guarde. Servem de base para ferramentas, fluix, cabos e cristais que viram a memória da rede. Perto de meteoritos ele aparece com mais frequência.
   tasks:
   - {get: 'ore:crystalCertusQuartz x16'}
   rewards:
@@ -23,7 +23,7 @@ quests:
   type: normal
   deps: [certus]
   desc: |
-    Um raio de energia transforma o cristal em §eCertus Carregado§r, que brilha e serve para criar fluix e energia. Use o Carregador (precisa de energia) ou espere uma tempestade. Parte importante da produção.
+    Um raio de energia transforma o cristal em §eCertus Carregado§r, que brilha e serve para criar fluix e energia. Use o Carregador (precisa de energia) ou espere uma tempestade. Parte importante da produção. Use o carregador ligado a uma fonte de energia ou deixe o cristal exposto a uma tempestade de raios. Ele fica brilhante e ganha poder. Usado em fluix e outros itens do AE2, então faça vários e guarde.
   tasks:
   - {get: 'appliedenergistics2:item.ItemMultiMaterial:1 x4'}
   rewards:
@@ -34,7 +34,7 @@ quests:
   type: main
   deps: [certus_carregado]
   desc: |
-    Mistura de certus carregado, redstone e quartzo na água: nasce o §eFluix§r, cristal de cor rosada que é a alma das cordas da rede. Junte oito cristais e coloque um balde de água por perto. Parece mágica, e é.
+    Mistura de certus carregado, redstone e quartzo na água: nasce o §eFluix§r, cristal de cor rosada que é a alma das cordas da rede. Junte oito cristais e coloque um balde de água por perto. Parece mágica, e é. Veja a receita completa no NEI.
   tasks:
   - {get: 'appliedenergistics2:item.ItemMultiMaterial:7 x8'}
   rewards:
@@ -45,7 +45,7 @@ quests:
   type: normal
   deps: [fluix]
   desc: |
-    Hora de moer! O §eRebolo§r transforma cristais em pó, que depois vira circuitos. A manivela gira com sua mão ou com um motor. Barulhento e satisfatório. Dê várias voltas e veja o pó escorrer.
+    Hora de moer! O §eRebolo§r transforma cristais em pó, que depois vira circuitos. A manivela gira com sua mão ou com um motor. Barulhento e satisfatório. Dê várias voltas e veja o pó escorrer. Basta girar a manivela algumas vezes para a máquina moer os itens, ou ligar a um motor. Perfeito para quem quer pó de certus, nether e ouro sem energia elétrica.
   tasks:
   - get: ['appliedenergistics2:tile.BlockGrinder', 'appliedenergistics2:tile.BlockCrank']
   rewards:
@@ -56,7 +56,7 @@ quests:
   type: main
   deps: [rebolo]
   desc: |
-    De tempos em tempos, meteoritos caem do céu, deixando crateras e blocos escuros. A §ePedra Celeste§r é o material para as prensas e para a memória da rede. Use a Bússola Celeste para achar o meteorito. Ele pode estar longe, mas vale a viagem.
+    De tempos em tempos, meteoritos caem do céu, deixando crateras e blocos escuros. A §ePedra Celeste§r é o material para as prensas e para a memória da rede. Use a Bússola Celeste para achar o meteorito. Ele pode estar longe, mas vale a viagem. Ela só aparece em meteoritos.
   tasks:
   - {get: 'appliedenergistics2:tile.BlockSkyStone x16'}
   rewards:
@@ -67,7 +67,7 @@ quests:
   type: main
   deps: [pedra_celeste]
   desc: |
-    Dentro do meteorito, quatro prensas de ouro, diamante, ferro e silício esperam por você. Elas são o molde para cada tipo de circuito. Guarde com cuidado, pois só dá para fazer uma cópia com o Inscritor.
+    Dentro do meteorito, quatro prensas de ouro, diamante, ferro e silício esperam por você. Elas são o molde para cada tipo de circuito. Guarde com cuidado, pois só dá para fazer uma cópia com o Inscritor. Elas ficam em baús dentro do meteorito e são consumidas quando você as usa. Duplique cada uma antes de gastar. Os heróis lendários perdiam muito tempo procurando esses itens, então guarde bem os seus.
   tasks:
   - get: ['appliedenergistics2:item.ItemMultiMaterial:13', 'appliedenergistics2:item.ItemMultiMaterial:14',
       'appliedenergistics2:item.ItemMultiMaterial:15', 'appliedenergistics2:item.ItemMultiMaterial:19']
@@ -79,7 +79,7 @@ quests:
   type: main
   deps: [prensas]
   desc: |
-    A máquina central do ramo AE2. O §eInscritor§r prensa circuitos, copia prensas e produz processadores. Alimente com energia e coloque os materiais certos entre as placas. Cada processador sai com um clique.
+    A máquina central do ramo AE2. O §eInscritor§r prensa circuitos, copia prensas e produz processadores. Alimente com energia e coloque os materiais certos entre as placas. Cada processador sai com um clique. Coloque a prensa de um lado, o material no meio e o resultado sai embaixo. Funciona com energia. Cada circuito, processador e cópia de prensa passa por ele, então posicione perto do baú principal.
   tasks:
   - {get: 'appliedenergistics2:tile.BlockInscriber'}
   rewards:
@@ -90,7 +90,7 @@ quests:
   type: normal
   deps: [inscritor]
   desc: |
-    Para circuitos, você precisa de §eSilício§r: areia quartzo na fornalha. Junte oito e já faça mais, pois todo processador consome um. Se tiver Mekanism ou IC2, há outras fontes. Escolha a mais barata.
+    Para circuitos, você precisa de §eSilício§r: areia quartzo na fornalha. Junte oito e já faça mais, pois todo processador consome um. Se tiver Mekanism ou IC2, há outras fontes. Escolha a mais barata. Funda areia de quartzo (ou outras fontes) na fornalha. Em máquinas melhores o rendimento aumenta bastante. Se faltar, procure os minérios certos e comece uma pequena produção.
   tasks:
   - {get: 'ore:itemSilicon x8'}
   rewards:
@@ -101,7 +101,7 @@ quests:
   type: normal
   deps: [silicio]
   desc: |
-    O §eCircuito de Cálculo§r nasce do certus puro e do silício no Inscritor. É a parte inteligente dos processadores e das memórias. Faça quatro e guarde.
+    O §eCircuito de Cálculo§r nasce do certus puro e do silício no Inscritor. É a parte inteligente dos processadores e das memórias. Faça quatro e guarde. Faça no Inscritor com a prensa de cálculo, certus puro e um pouco de silício. O resultado é a base dos processadores de cálculo e das memórias da rede, então vale guardar boas quantidades. Veja a receita no NEI e comece já.
   tasks:
   - {get: 'appliedenergistics2:item.ItemMultiMaterial:16 x4'}
   rewards:
@@ -112,7 +112,7 @@ quests:
   type: normal
   deps: [circuito_de_calculo]
   desc: |
-    Diamante e silício no Inscritor: o §eCircuito de Engenharia§r entra em quase todas as máquinas do AE2. Procure diamantes para fabricar quantos precisar. Prepare uma boa reserva.
+    Diamante e silício no Inscritor: o §eCircuito de Engenharia§r entra em quase todas as máquinas do AE2. Procure diamantes para fabricar quantos precisar. Prepare uma boa reserva. Faça no Inscritor com a prensa de engenharia, um diamante e silício. Ele está em quase todas as peças avançadas da rede, de processadores a cabos inteligentes. Diamantes no estoque são um bom investimento.
   tasks:
   - {get: 'appliedenergistics2:item.ItemMultiMaterial:17 x4'}
   rewards:
@@ -123,7 +123,7 @@ quests:
   type: normal
   deps: [circuito_de_engenharia]
   desc: |
-    Ouro, silício e prensa: sai o §eCircuito Lógico§r, base do processamento lógico. Faça quatro. Esses circuitos serão constantemente consumidos pela rede.
+    Ouro, silício e prensa: sai o §eCircuito Lógico§r, base do processamento lógico. Faça quatro. Esses circuitos serão constantemente consumidos pela rede. Faça no Inscritor com a prensa de lógica, um lingote de ouro e silício. A lógica é a base dos processadores lógicos e de muitas partes da rede. Parece um detalhe, mas toda a inteligência do sistema depende dele. Guarde bastante ouro no baú e vá produzindo sem pressa.
   tasks:
   - {get: 'appliedenergistics2:item.ItemMultiMaterial:18 x4'}
   rewards:
@@ -134,7 +134,7 @@ quests:
   type: main
   deps: [circuito_logico]
   desc: |
-    Processadores de lógica, cálculo e engenharia: o cérebro de toda a rede. Cada um precisa de silício, circuito impresso e redstone. Faça dois de cada para as primeiras instalações.
+    Processadores de lógica, cálculo e engenharia: o cérebro de toda a rede. Cada um precisa de silício, circuito impresso e redstone. Faça dois de cada para as primeiras instalações. Cada processador usa um circuito do tipo certo, silício e redstone. Prense tudo no Inscritor para formar a peça. Os processadores formam o cérebro das células, das CPUs e das interfaces.
   tasks:
   - get: ['appliedenergistics2:item.ItemMultiMaterial:22 x2', 'appliedenergistics2:item.ItemMultiMaterial:23
         x2', 'appliedenergistics2:item.ItemMultiMaterial:24 x2']
@@ -146,7 +146,7 @@ quests:
   type: normal
   deps: [processadores]
   desc: |
-    Sua rede consome energia e uma §eCélula§r guarda um estoque. Conecte à rede e carregue com um Aceitador de Energia. Boa para o caso de queda de eletricidade e para picos de uso.
+    Sua rede consome energia e uma §eCélula§r guarda um estoque. Conecte à rede e carregue com um Aceitador de Energia. Boa para o caso de queda de eletricidade e para picos de uso. Ela guarda energia da rede para quando a eletricidade falhar. Basta conectar a um cabo e carregar com o Aceitador de Energia. Boa proteção contra apagões.
   tasks:
   - {get: 'appliedenergistics2:tile.BlockEnergyCell'}
   rewards:
@@ -157,7 +157,7 @@ quests:
   type: main
   deps: [celula_de_energia_ae]
   desc: |
-    Fibra de quartzo e vidro: o §eCabo de Vidro§r transporta o sinal da rede. Faça 16 e comece a interligar tudo. Cada cabo suporta até oito canais, e cada máquina conectada usa um.
+    Fibra de quartzo e vidro: o §eCabo de Vidro§r transporta o sinal da rede. Faça 16 e comece a interligar tudo. Cada cabo suporta até oito canais, e cada máquina conectada usa um. Dá para colorir depois com corantes para organizar a rede. Isso evita confusão em salas cheias de cabos e deixa tudo bonito.
   tasks:
   - {get: 'appliedenergistics2:item.ItemMultiPart:16 x16'}
   rewards:
@@ -168,7 +168,7 @@ quests:
   type: main
   deps: [cabos_de_vidro]
   desc: |
-    O coração da rede. O §eControlador§r dá vida à ME e permite mais canais por cabo. Posicione perto do centro, conecte energia e os cabos. Quando a luz azul acender, a rede acorda.
+    O coração da rede. O §eControlador§r dá vida à ME e permite mais canais por cabo. Posicione perto do centro, conecte energia e os cabos. Quando a luz azul acender, a rede acorda. Coloque no centro da rede e cerque de cabos. Ele fornece energia e canais para tudo o que estiver ligado. Sem ele, a rede acorda muito pequena e travada, com poucos canais.
   tasks:
   - {get: 'appliedenergistics2:tile.BlockController'}
   rewards:
@@ -179,7 +179,7 @@ quests:
   type: main
   deps: [controlador]
   desc: |
-    O §eDrive§r abriga as células de armazenamento. Conecte à rede e insira as células nos slots. Cada drive tem dez espaços e pode virar um armazém gigantesco. Uma rede boa começa com um bom drive.
+    O §eDrive§r abriga as células de armazenamento. Conecte à rede e insira as células nos slots. Cada drive tem dez espaços e pode virar um armazém gigantesco. Uma rede boa começa com um bom drive. Cada drive guarda dez células. Posicione perto do controlador e ligue a energia. Pronto: capacidade enorme com um bloco só.
   tasks:
   - {get: 'appliedenergistics2:tile.BlockDrive'}
   rewards:
@@ -190,7 +190,7 @@ quests:
   type: main
   deps: [drive_me]
   desc: |
-    Seu primeiro disco rígido! A §eCélula de 1k§r guarda 1000 bytes de itens (até 63 tipos). Pouco, mas já substitui dois baús. Faça outras, de 4k, 16k e 64k, conforme avança.
+    Seu primeiro disco rígido! A §eCélula de 1k§r guarda 1000 bytes de itens (até 63 tipos). Pouco, mas já substitui dois baús. Faça outras, de 4k, 16k e 64k, conforme avança. Insira no drive e veja a capacidade aparecer no terminal. Guarda 63 tipos diferentes de item, e cada tipo ocupa bytes. Uma célula pequena é boa para começar, mas logo você vai querer subir de tamanho.
   tasks:
   - {get: 'appliedenergistics2:item.ItemBasicStorageCell.1k'}
   rewards:
@@ -201,7 +201,7 @@ quests:
   type: normal
   deps: [celula_1k]
   desc: |
-    Cada salto de capacidade pede componentes melhores. A de §e64k§r já guarda uma loja inteira. Compre peças de vidro, quartzo e ouro, e monte uma coleção. Cada célula pesa pouco e vale muito.
+    Cada salto de capacidade pede componentes melhores. A de §e64k§r já guarda uma loja inteira. Compre peças de vidro, quartzo e ouro, e monte uma coleção. Cada célula pesa pouco e vale muito. Cada nível usa um componente melhor, com material mais caro. Preencha o drive com células de capacidades variadas e tenha um armazém quase infinito. Pense bem em quais itens quer guardar em cada uma, que a organização é metade da diversão.
   tasks:
   - get: ['appliedenergistics2:item.ItemBasicStorageCell.4k', 'appliedenergistics2:item.ItemBasicStorageCell.16k',
       'appliedenergistics2:item.ItemBasicStorageCell.64k']
@@ -213,7 +213,7 @@ quests:
   type: main
   deps: [celula_64k]
   desc: |
-    Painel que mostra tudo o que há na rede, com busca e organização. O §eTerminal§r é seu painel de controle diário. Instale na parede ao lado do trabalho e nunca mais abra um baú. É viciante!
+    Painel que mostra tudo o que há na rede, com busca e organização. O §eTerminal§r é seu painel de controle diário. Instale na parede ao lado do trabalho e nunca mais abra um baú. É viciante! Instale o terminal em qualquer cabo da rede. Busca, classificação e acesso instantâneo a todos os itens. Os heróis lendários nunca mais abriram um baú depois disso.
   tasks:
   - {get: 'appliedenergistics2:item.ItemMultiPart:380'}
   rewards:
@@ -224,7 +224,7 @@ quests:
   type: normal
   deps: [terminal]
   desc: |
-    Com o §eTerminal de Fabricação§r você cria itens direto da rede, sem abrir a bancada. Coloque os ingredientes e o resultado vai para o inventário. Parte do sonho do herói preguiçoso.
+    Com o §eTerminal de Fabricação§r você cria itens direto da rede, sem abrir a bancada. Coloque os ingredientes e o resultado vai para o inventário. Parte do sonho do herói preguiçoso. Ele funciona como uma bancada com acesso à rede inteira. Os itens saem direto do estoque e o resultado vai para o inventário. Economiza horas de corre-corre entre baús.
   tasks:
   - {get: 'appliedenergistics2:item.ItemMultiPart:360'}
   rewards:
@@ -235,7 +235,7 @@ quests:
   type: milestone
   deps: [terminal_craft]
   desc: |
-    Controlador no centro, drive cheio, terminal na parede. Sua primeira rede ME está viva, Herói! Pergunte a qualquer item onde mora e a rede responde com um sorriso. A lenda dizia que esse dia vira festa.
+    Controlador no centro, drive cheio, terminal na parede. Sua primeira rede ME está viva, Herói! Pergunte a qualquer item onde mora e a rede responde com um sorriso. A lenda dizia que esse dia vira festa. Parabéns pelo feito: aquela bagunça de baús ficou para trás, e agora cada item tem endereço certo, com busca na ponta dos dedos. Os heróis da Era do Futuro diziam que a primeira rede ME faz o jogador mudar de jeito para sempre. Tire uma foto do terminal aceso, guarde bem a memória e se prepare para a próxima etapa, que promete deixar tudo ainda mais automático e organizado.
 
     Mas a rede ainda é manual; vamos fazê-la trabalhar sozinha? Interfaces, padrões e montadores esperam por você logo abaixo.
   tasks:
@@ -253,7 +253,7 @@ quests:
   type: main
   deps: [primeira_rede]
   desc: |
-    A §eInterface§r conecta a rede a máquinas, baús e fábricas. Ela entrega itens que as máquinas precisam e aceita os produtos. É a ponte para a automação.
+    A §eInterface§r conecta a rede a máquinas, baús e fábricas. Ela entrega itens que as máquinas precisam e aceita os produtos. É a ponte para a automação. Ela deixa a rede entregar itens para máquinas e receber o resultado delas. Também funciona como estoque de materiais. Combine com padrões para automatizar a produção de qualquer item. Posicione sempre perto das máquinas que você quer controlar, com cabos livres.
   tasks:
   - {get: 'appliedenergistics2:tile.BlockInterface'}
   rewards:
@@ -264,7 +264,7 @@ quests:
   type: main
   deps: [interface_me]
   desc: |
-    Aqui você grava as receitas! No §eTerminal de Padrões§r, coloque os ingredientes e o resultado: a rede passa a saber fabricar. O trabalho é grande no começo e compensa depois.
+    Aqui você grava as receitas! No §eTerminal de Padrões§r, coloque os ingredientes e o resultado: a rede passa a saber fabricar. O trabalho é grande no começo e compensa depois. Coloque os ingredientes na grade, o resultado ao lado e grave. Depois, insira o padrão na interface. A rede passa a saber fazer aquele item sozinha. Parece difícil, mas depois do primeiro fica natural.
   tasks:
   - {get: 'appliedenergistics2:item.ItemMultiPart:340'}
   rewards:
@@ -275,7 +275,7 @@ quests:
   type: main
   deps: [terminal_padroes]
   desc: |
-    O §eMontador Molecular§r fabrica itens da rede sozinho, seguindo seus padrões. Aceita aceleradores e trabalha em silêncio. Os heróis lendários diziam que era como ter um exército de carpinteiros invisíveis.
+    O §eMontador Molecular§r fabrica itens da rede sozinho, seguindo seus padrões. Aceita aceleradores e trabalha em silêncio. Os heróis lendários diziam que era como ter um exército de carpinteiros invisíveis. Instale ao lado de uma interface com padrões carregados. Aceita aceleradores para trabalhar ainda mais rápido. É o operário silencioso da rede, que fabrica o que você pedir sem reclamar.
   tasks:
   - {get: 'appliedenergistics2:tile.BlockMolecularAssembler'}
   rewards:
@@ -286,7 +286,7 @@ quests:
   type: main
   deps: [montador_molecular]
   desc: |
-    A "CPU" da rede: unidades de fabricação com armazenamento. Quanto mais armazenamento, maiores os pedidos que a rede aceita. Monte um bloco 3x3 e instale um monitor. Pronto para o autocraft.
+    A "CPU" da rede: unidades de fabricação com armazenamento. Quanto mais armazenamento, maiores os pedidos que a rede aceita. Monte um bloco 3x3 e instale um monitor. Pronto para o autocraft. Monte a CPU de fabricação com unidades, armazenamento e monitor. Quanto maior o armazenamento, maiores os pedidos. Assim a rede fabrica itens complexos com várias etapas encadeadas.
   tasks:
   - get: ['appliedenergistics2:tile.BlockCraftingUnit x2', 'appliedenergistics2:tile.BlockCraftingStorage']
   rewards:
@@ -297,7 +297,7 @@ quests:
   type: milestone
   deps: [crafting_unit]
   desc: |
-    Montador, CPU, interface e padrões gravados: a rede fabrica por conta própria. Você pede um item, aperta o botão e a máquina cuida de tudo. É mágica pura, Herói.
+    Montador, CPU, interface e padrões gravados: a rede fabrica por conta própria. Você pede um item, aperta o botão e a máquina cuida de tudo. É mágica pura, Herói. O sonho se realizou: a rede cuida de tudo! Você pede, ela fabrica, e os itens aparecem no terminal. Cada receita nova vira mais um membro da equipe invisível. Aproveite o tempo livre para tomar um café e olhar a casa funcionando.
 
     Nos tempos lendários, isso significava que o dia não acabava mais. Agora vamos guardar a energia do futuro: reatores, turbinas e muita potência. É a §eEnergia Avançada§r.
   tasks:

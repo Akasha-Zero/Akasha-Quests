@@ -10,9 +10,9 @@ quests:
 - id: martelo_termico
   title: Chave Inglesa Térmica
   type: main
-  deps_hidden: ['aedf3_cacadores_bosses:caçadores_milestone']
+  deps_hidden: ['aedf3_cacadores_bosses:cacadores_milestone']
   desc: |
-    A chave inglesa do Thermal Expansion gira e desmonta máquinas sem destruí-las. Fica no cinto de qualquer engenheiro. Faça uma e use em tudo o que for conectar nesta fase.
+    A chave inglesa do Thermal Expansion gira e desmonta máquinas sem destruí-las. Fica no cinto de qualquer engenheiro. Faça uma e use em tudo o que for conectar nesta fase. Use-a para girar, desmontar e reposicionar qualquer máquina do Thermal Expansion e de mods parecidos. Sem ela você corre o risco de perder uma máquina cara por descuido. Ela cabe no inventário e dura muito, então não tem desculpa para não carregar uma.
   tasks:
   - {get: 'ThermalExpansion:wrench'}
   rewards:
@@ -23,7 +23,7 @@ quests:
   type: main
   deps: [martelo_termico]
   desc: |
-    A estrutura é o esqueleto de todas as máquinas do Thermal. Faça com ferro, vidro e cobre. Guarde algumas para as próximas construções. Pense no futuro: você vai precisar de muitas.
+    A estrutura é o esqueleto de todas as máquinas do Thermal. Faça com ferro, vidro e cobre. Guarde algumas para as próximas construções. Pense no futuro: você vai precisar de muitas. Faça um lote e guarde num baú. Elas servem para todas as máquinas do Thermal e custam ferro, vidro e engrenagens simples. Se tiver estoque, o resto vai muito mais rápido. É o tipo de preparação que os heróis lendários faziam antes de qualquer projeto grande.
   tasks:
   - {get: 'ThermalExpansion:Frame'}
   rewards:
@@ -34,7 +34,7 @@ quests:
   type: main
   deps: [estrutura_de_maquina]
   desc: |
-    A §eFornalha de Redstone§r é a versão rápida e elétrica da comum. Ela trabalha mais depressa e se liga à rede de RF. Primeira máquina do ramo Thermal, e o caminho que leva ao resto.
+    A §eFornalha de Redstone§r é a versão rápida e elétrica da comum. Ela trabalha mais depressa e se liga à rede de RF. Primeira máquina do ramo Thermal, e o caminho que leva ao resto. Alimente com RF e com itens, e ela funde mais rápido que qualquer fornalha comum. Perfeita para quem está montando as primeiras linhas de produção.
   tasks:
   - {get: 'ThermalExpansion:Machine'}
   rewards:
@@ -45,7 +45,7 @@ quests:
   type: main
   deps: [fornalha_de_redstone]
   desc: |
-    Cada máquina precisa de RF, e o §eDínamo a Vapor§r produz. Alimente com carvão ou lava, e a energia flui. Ponha dois ou três em linha para uma fábrica estável. É o coração do ramo.
+    Cada máquina precisa de RF, e o §eDínamo a Vapor§r produz. Alimente com carvão ou lava, e a energia flui. Ponha dois ou três em linha para uma fábrica estável. É o coração do ramo. Alimente com combustível sólido e conecte a máquinas ou células de energia. Basta uma chave inglesa para ajustar a saída. Dois dínamos já aguentam a fábrica inicial.
   tasks:
   - {get: 'ThermalExpansion:Dynamo'}
   rewards:
@@ -56,7 +56,7 @@ quests:
   type: main
   deps: [dinamo_a_vapor]
   desc: |
-    O §ePulverizador§r esmaga minérios e dá dois pós. É a base da multiplicação de recursos. Ponha um logo na entrada da fábrica e veja o ouro dobrar. Cada herói tinha o seu.
+    O §ePulverizador§r esmaga minérios e dá dois pós. É a base da multiplicação de recursos. Ponha um logo na entrada da fábrica e veja o ouro dobrar. Cada herói tinha o seu. Ele moe minérios, areia e até pedregulho, e entrega pós que viram dobro na fundição. Ligue a um dínamo ou célula de energia e deixe os baús ao lado para entrada e saída. Tudo funciona sozinho depois.
   tasks:
   - {get: 'ThermalExpansion:Machine:1'}
   rewards:
@@ -67,7 +67,7 @@ quests:
   type: main
   deps: [pulverizador]
   desc: |
-    A §eFundição por Indução§r mistura pós e metais para fazer ligas. Invar, Electrum, Bronze, tudo sai daqui. Depois do pulverizador, é a segunda perna do processo de multiplicação. Perfeito.
+    A §eFundição por Indução§r mistura pós e metais para fazer ligas. Invar, Electrum, Bronze, tudo sai daqui. Depois do pulverizador, é a segunda perna do processo de multiplicação. Perfeito. Ela combina pós, lingotes e outros materiais em ligas como Invar e Electrum. Também funde minérios com bônus. É uma das máquinas centrais do Thermal, então vale a pena instalar duas lado a lado.
   tasks:
   - {get: 'ThermalExpansion:Machine:3'}
   rewards:
@@ -78,7 +78,7 @@ quests:
   type: normal
   deps: [fundicao_inducao]
   desc: |
-    A §eSerraria§r corta troncos em tábuas, com bônus. Sobram serragem e lascas, que você pode usar como combustível ou material. Útil para quem constrói muito. Pense na casa do futuro!
+    A §eSerraria§r corta troncos em tábuas, com bônus. Sobram serragem e lascas, que você pode usar como combustível ou material. Útil para quem constrói muito. Pense na casa do futuro! Coloque troncos e leve embora as tábuas, com alguns bônus de serragem. Tem receitas especiais no NEI. Ótimo para construções gigantes, como a Casa do Futuro.
   tasks:
   - {get: 'ThermalExpansion:Machine:2'}
   rewards:
@@ -89,7 +89,7 @@ quests:
   type: main
   deps: [serraria]
   desc: |
-    Ferro e níquel formam o §eInvar§r, uma liga resistente e brilhante. Muitos itens do Thermal exigem dele. Junte 16 lingotes e já fique com um baú cheio para o que vier.
+    Ferro e níquel formam o §eInvar§r, uma liga resistente e brilhante. Muitos itens do Thermal exigem dele. Junte 16 lingotes e já fique com um baú cheio para o que vier. Funda dois ferros e um níquel na fundição por indução para sair três lingotes. Metal resistente e bonito, usado em ferramentas, engrenagens e máquinas. Veja as proporções no NEI e junte um estoque bom.
   tasks:
   - {get: 'ore:ingotInvar x16'}
   rewards:
@@ -100,7 +100,7 @@ quests:
   type: main
   deps: [invar]
   desc: |
-    Ouro e prata, meio a meio, formam o §eElectrum§r. Condutor excelente e metal bonito. Serve de componente para cabos, bobinas e bancos de energia. Faça oito.
+    Ouro e prata, meio a meio, formam o §eElectrum§r. Condutor excelente e metal bonito. Serve de componente para cabos, bobinas e bancos de energia. Faça oito. Também sai da fundição por indução, com ouro e prata. Resistente, brilhante e condutor, serve para cabos, engrenagens, bobinas e muita coisa. Veja a receita no NEI e comece o estoque agora.
   tasks:
   - {get: 'ore:ingotElectrum x8'}
   rewards:
@@ -111,7 +111,7 @@ quests:
   type: main
   deps: [electrum]
   desc: |
-    As §eCélulas de Energia§r guardam RF da rede e entregam quando falta. Comece com a de Leadstone, simples e barata. Mais para frente você troca por modelos maiores. Nunca se esqueça da reserva!
+    As §eCélulas de Energia§r guardam RF da rede e entregam quando falta. Comece com a de Leadstone, simples e barata. Mais para frente você troca por modelos maiores. Nunca se esqueça da reserva! Posicione ao lado do dínamo e ajuste as faces com a chave inglesa. Ela é a bateria grande do ramo Thermal.
   tasks:
   - {get: 'ThermalExpansion:Cell:1'}
   rewards:
@@ -122,7 +122,7 @@ quests:
   type: normal
   deps: [celula_de_energia]
   desc: |
-    Funde pedregulho e outros sólidos em lava líquida. Uma fonte infinita de combustível! Com o Crisol, você produz lava sem sair da base. Combine com o Dínamo Magmático para ter energia sem fim.
+    Funde pedregulho e outros sólidos em lava líquida. Uma fonte infinita de combustível! Com o Crisol, você produz lava sem sair da base. Combine com o Dínamo Magmático para ter energia sem fim. Funde pedregulho e outros sólidos em lava. Isso dá combustível infinito para o Dínamo Magmático e para as outras máquinas.
   tasks:
   - {get: 'ThermalExpansion:Machine:4'}
   rewards:
@@ -133,7 +133,7 @@ quests:
   type: normal
   deps: [crisol_magmatico]
   desc: |
-    Coloca ou tira fluidos de baldes e recipientes. Simples, mas muito útil para organizar sua indústria. É a ponte entre baldes e tanques, e você vai se perguntar como viveu sem.
+    Coloca ou tira fluidos de baldes e recipientes. Simples, mas muito útil para organizar sua indústria. É a ponte entre baldes e tanques, e você vai se perguntar como viveu sem. Coloque o balde cheio num lado e retire o líquido no outro. Ele serve também para esvaziar baldes em tanques e encher recipientes. Pequena máquina, grande conveniência.
   tasks:
   - {get: 'ThermalExpansion:Machine:5'}
   rewards:
@@ -144,7 +144,7 @@ quests:
   type: normal
   deps: [transpositor]
   desc: |
-    Um tanque que você carrega sem perder o conteúdo! Pegue com uma chave inglesa e leve lava, água ou combustível para onde quiser. Muito prático para expedições.
+    Um tanque que você carrega sem perder o conteúdo! Pegue com uma chave inglesa e leve lava, água ou combustível para onde quiser. Muito prático para expedições. Use a chave inglesa para pegá-lo sem perder o conteúdo. Dá para levar lava, água, óleo e outros fluidos para qualquer lugar, e o tanque cresce em capacidade conforme as melhorias. Perfeito para expedições, minas e viagens de reabastecimento.
   tasks:
   - {get: 'ThermalExpansion:Tank:1'}
   rewards:
@@ -155,7 +155,7 @@ quests:
   type: optional
   deps: [tanque_portatil]
   desc: |
-    Uma caixa que guarda itens sem perder o inventário ao ser recolhida. A §eCaixa Forte§r é segura e cresce em capacidade com as melhorias. Ótima para guardar tesouros que não podem se perder.
+    Uma caixa que guarda itens sem perder o inventário ao ser recolhida. A §eCaixa Forte§r é segura e cresce em capacidade com as melhorias. Ótima para guardar tesouros que não podem se perder. Quando você a pega com a chave, os itens ficam dentro. Excelente para transportar tesouros e materiais valiosos sem se preocupar em perder nada no caminho.
   tasks:
   - {get: 'ThermalExpansion:Strongbox:1'}
   rewards:
@@ -166,7 +166,7 @@ quests:
   type: normal
   deps: [caixa_forte]
   desc: |
-    O MineFactory Reloaded tem suas próprias seringueiras. Colha oito troncos e prepare-se para as máquinas agrícolas. A borracha daqui tem outros usos, e as mudas estão em quase todo lugar.
+    O MineFactory Reloaded tem suas próprias seringueiras. Colha oito troncos e prepare-se para as máquinas agrícolas. A borracha daqui tem outros usos, e as mudas estão em quase todo lugar. Corte o tronco da seringueira do MFR com machado. Plante as mudas em solo fértil. Todas as máquinas agrícolas do MFR giram em torno disso, e a borracha também serve para bolsas, cabos e peças. Boa pedida para quem curte automação.
   tasks:
   - {get: 'MineFactoryReloaded:rubberwood.log x8'}
   rewards:
@@ -177,7 +177,7 @@ quests:
   type: main
   deps: [mfr_borracha]
   desc: |
-    Uma máquina que planta sozinha! O §ePlantador§r semeia sementes, mudas e até cana. Posicione sobre a terra, coloque o baú com sementes ao lado e dê energia. Os heróis da Era do Futuro enchiam hortas inteiras assim.
+    Uma máquina que planta sozinha! O §ePlantador§r semeia sementes, mudas e até cana. Posicione sobre a terra, coloque o baú com sementes ao lado e dê energia. Os heróis da Era do Futuro enchiam hortas inteiras assim. Posicione sobre a terra, coloque sementes no baú ao lado e dê energia. Ajuste o alcance com melhorias para cobrir áreas maiores. Os heróis lendários chegavam a plantar campos inteiros assim.
   tasks:
   - {get: 'MineFactoryReloaded:machine.0'}
   rewards:
@@ -188,7 +188,7 @@ quests:
   type: main
   deps: [mfr_plantador]
   desc: |
-    Depois do plantador, o §eColhedor§r! Ele corta trigo, cana, árvores e outros cultivos maduros. Coloque um baú ao lado para guardar. Em poucos minutos o baú enche, e você pode ir para outra tarefa.
+    Depois do plantador, o §eColhedor§r! Ele corta trigo, cana, árvores e outros cultivos maduros. Coloque um baú ao lado para guardar. Em poucos minutos o baú enche, e você pode ir para outra tarefa. Instale perto do plantador e coloque um baú para receber a colheita. Ele reconhece plantas maduras e ignora as que ainda estão crescendo, então não destrói nada à toa.
   tasks:
   - {get: 'MineFactoryReloaded:machine.0:2'}
   rewards:
@@ -199,7 +199,7 @@ quests:
   type: normal
   deps: [mfr_colhedor]
   desc: |
-    O §eFertilizador§r aplica adubo nas plantas, acelerando a colheita. Combina com plantador e colhedor para formar uma fazenda autônoma. A ideia é simples, e o resultado é sensacional.
+    O §eFertilizador§r aplica adubo nas plantas, acelerando a colheita. Combina com plantador e colhedor para formar uma fazenda autônoma. A ideia é simples, e o resultado é sensacional. Use o adubo do MFR ou farinha de osso. Ele cuida das plantas dentro do raio e acelera a colheita. Quando combina com plantador e colhedor, o resultado é uma fazenda 100% automática. Dá gosto de ver.
   tasks:
   - {get: 'MineFactoryReloaded:machine.0:4'}
   rewards:
@@ -210,7 +210,7 @@ quests:
   type: main
   deps: [mfr_fertilizador]
   desc: |
-    Plantador, colhedor e fertilizador trabalhando em conjunto: agora você tem uma §efazenda de verdade§r. Adicione um coletor de itens e estará pronto. Perfeita para suprir a padaria da vila e as cozinhas do futuro.
+    Plantador, colhedor e fertilizador trabalhando em conjunto: agora você tem uma §efazenda de verdade§r. Adicione um coletor de itens e estará pronto. Perfeita para suprir a padaria da vila e as cozinhas do futuro. Coloque os três lado a lado e feche com baús. Ajuste o raio com as melhorias da máquina.
   tasks:
   - get: ['MineFactoryReloaded:machine.0', 'MineFactoryReloaded:machine.0:2', 'MineFactoryReloaded:machine.0:4']
   rewards:
@@ -221,7 +221,7 @@ quests:
   type: normal
   deps: [fazenda_automatica]
   desc: |
-    A §eBomba§r do BuildCraft sobe da superfície até o fundo e puxa lava, água e petróleo. Ligue a um motor e a tanques. Muito útil para esvaziar lagos e coletar óleo. Cuidado onde coloca.
+    A §eBomba§r do BuildCraft sobe da superfície até o fundo e puxa lava, água e petróleo. Ligue a um motor e a tanques. Muito útil para esvaziar lagos e coletar óleo. Cuidado onde coloca. Ligue o motor, desça o cano e deixe o sistema bombear. Tanques ao lado guardam o que sair. Útil para lava, água e petróleo, e importante para muitas receitas futuras.
   tasks:
   - {get: 'BuildCraft|Factory:pumpBlock'}
   rewards:
@@ -232,7 +232,7 @@ quests:
   type: normal
   deps: [bc_bomba_agua]
   desc: |
-    O §ePreenchedor§r nivela terreno, cava buracos e constrói paredes. Escolha o padrão no menu e coloque os marcadores. Tudo em um clique! Perfeito para preparar o terreno da vila.
+    O §ePreenchedor§r nivela terreno, cava buracos e constrói paredes. Escolha o padrão no menu e coloque os marcadores. Tudo em um clique! Perfeito para preparar o terreno da vila. Marque a área com três marcadores, escolha o padrão no menu do bloco e ligue a energia. Ele nivela, escava e constrói paredes e pisos sem esforço. Muito útil para preparar o terreno de grandes obras, como a vila, o estacionamento e o hangar.
   tasks:
   - {get: 'BuildCraft|Builders:fillerBlock'}
   rewards:
@@ -243,7 +243,7 @@ quests:
   type: main
   deps: [bc_preenchedor]
   desc: |
-    Marque uma área com os três marcadores, encaixe a §ePedreira§r no canto e ligue o motor. Ela escava tudo sozinha. Uma ideia clássica da Era do Futuro: dormir enquanto a máquina minera. Cuidado com lava e com o sono.
+    Marque uma área com os três marcadores, encaixe a §ePedreira§r no canto e ligue o motor. Ela escava tudo sozinha. Uma ideia clássica da Era do Futuro: dormir enquanto a máquina minera. Cuidado com lava e com o sono. Instale a bateria de motores e deixe o baú perto para receber os itens.
   tasks:
   - get: ['BuildCraft|Builders:machineBlock', 'BuildCraft|Core:markerBlock']
   rewards:
@@ -254,7 +254,7 @@ quests:
   type: main
   deps: [bc_pedreira_pesada]
   desc: |
-    O §eMoinho SAG§r do EnderIO pulveriza minérios com bônus. É a versão poderosa do pulverizador. Se quiser mais rendimento, adicione os melhoradores. Os heróis do passado já faziam fila para usar.
+    O §eMoinho SAG§r do EnderIO pulveriza minérios com bônus. É a versão poderosa do pulverizador. Se quiser mais rendimento, adicione os melhoradores. Os heróis do passado já faziam fila para usar. Também dá bônus de subprodutos para cada minério. É melhor que o pulverizador básico e vale a pena para quem quer rendimento máximo. Dê energia em RF e coloque baús ao lado.
   tasks:
   - {get: 'EnderIO:blockSagMill'}
   rewards:
@@ -265,7 +265,7 @@ quests:
   type: main
   deps: [eio_moinho]
   desc: |
-    A §eFundidora de Ligas§r mistura metais e produz Dark Steel, Electrical Steel e outros. Perfeita para quem pretende explorar o EnderIO. Veja as receitas no NEI e escolha o que for mais urgente.
+    A §eFundidora de Ligas§r mistura metais e produz Dark Steel, Electrical Steel e outros. Perfeita para quem pretende explorar o EnderIO. Veja as receitas no NEI e escolha o que for mais urgente. Também funde minérios mais rápido que a fornalha comum. Alimente com RF. Boa escolha para produzir Dark Steel e Electrical Steel.
   tasks:
   - {get: 'EnderIO:blockAlloySmelter'}
   rewards:
@@ -276,7 +276,7 @@ quests:
   type: normal
   deps: [eio_fundidora]
   desc: |
-    Armazena RF de forma barata. O §eBanco de Capacitores§r é fácil de montar e escalável: empilhe vários para expandir. Os heróis da indústria enchiam paredes inteiras deles.
+    Armazena RF de forma barata. O §eBanco de Capacitores§r é fácil de montar e escalável: empilhe vários para expandir. Os heróis da indústria enchiam paredes inteiras deles. Ligue-os em fila, de preferência com condutos de energia, e adicione mais conforme precisar. Empilhado, ele guarda uma quantidade grande de RF. Excelente para estabilizar a rede toda.
   tasks:
   - {get: 'EnderIO:blockCapBank'}
   rewards:
@@ -287,7 +287,7 @@ quests:
   type: optional
   deps: [eio_banco_capacitores]
   desc: |
-    Âncora de teletransporte rápido entre pontos da vila. Coloque várias e use a Varinha de Viagem para pular de uma a outra. Perfeito para mapas grandes e para chegar rápido à fazenda.
+    Âncora de teletransporte rápido entre pontos da vila. Coloque várias e use a Varinha de Viagem para pular de uma a outra. Perfeito para mapas grandes e para chegar rápido à fazenda. Com ela, cada ponto da vila vira estação de viagem. Para usar, segure a Varinha de Viagem e olhe para a âncora desejada. Muito confortável, e os heróis lendários nunca mais voltaram a pé.
   tasks:
   - {get: 'EnderIO:blockTravelAnchor'}
   rewards:
@@ -298,7 +298,7 @@ quests:
   type: milestone
   deps: [eio_ancora]
   desc: |
-    Pulverizador, fundição, colhedor, pedreira e moinho SAG. Sua sala de máquinas faria qualquer herói lendário chorar de emoção. Fumaça no ar, barulho de engrenagem, baús cheios. Vá com calma e agradeça cada máquina pelo trabalho duro.
+    Pulverizador, fundição, colhedor, pedreira e moinho SAG. Sua sala de máquinas faria qualquer herói lendário chorar de emoção. Fumaça no ar, barulho de engrenagem, baús cheios. Vá com calma e agradeça cada máquina pelo trabalho duro. Os heróis da Era do Futuro costumavam dizer que uma sala de máquinas bem-feita é como uma orquestra: cada máquina com seu instrumento, cada fio no seu lugar, e todo mundo tocando junto. Dê uma volta pelo salão, ouça os sons e saiba que construiu isso com as próprias mãos. Merece uma pausa e um copo de leite.
 
     Agora, uma mudança de ares: o osmium e a tecnologia de multiplicação do §eMekanism§r. Tem muita coisa boa por aí, Herói.
   tasks:

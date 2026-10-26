@@ -1,0 +1,1092 @@
+chapter:
+  id: ato2
+  title: "Crônicas Akáshicas: Ato II — Engrenagens e Encantos"
+  color: "§6"
+  order: 2
+  icon: minecraft:redstone
+  desc: |
+    Energia, processamento, automação e magia intermediária.
+    As máquinas e os feitiços aprendem a trabalhar juntos.
+
+quests:
+
+  - id: engrenagens_abertura
+    title: "Engrenagens e Encantos"
+    type: main
+    deps: [ato1:fim_ato1]
+    at: [0, 0]
+    icon: minecraft:redstone
+    desc: |
+      Herói, as raízes pegaram. Agora o Registro pede máquinas. O Ato II se chama §eEngrenagens e Encantos§r porque, daqui em diante, o mundo é escrito em duas línguas ao mesmo tempo: a de cabos e engrenagens e a de runas e vis.
+
+      Cada quest abaixo liga a história a marcos reais dos Volumes. Fábricas que trabalham sozinhas, redes que guardam tudo, magia que dobra a realidade. Não se preocupe com o tamanho: uma peça de cada vez. Marque a caixa quando quiser começar.
+    tasks:
+      - check
+    rewards:
+      - xp: 10
+      - loot: comum
+
+  - id: processamento
+    title: "A Linha de Processamento"
+    type: main
+    deps: [engrenagens_abertura, ic2:processamento_completo]
+    at: [1, 0]
+    icon: minecraft:iron_block
+    desc: |
+      Minério que entra, lingote duplo que sai. A linha de processamento é a espinha dorsal de qualquer fábrica: triturador, forno, extrator, compressor, cada um fazendo a sua parte da frase.
+
+      Organize em fileira e use tubos ou funis para levar o material de uma máquina a outra. §aDica:§r separe as saídas por tipo. Marque a caixa quando a linha estiver rodando com minério de verdade.
+    tasks:
+      - check
+    rewards:
+      - kit: {name: "Kit do Engenheiro", items: [minecraft:redstone x32, minecraft:iron_ingot x16, minecraft:gold_ingot x8, minecraft:diamond x2]}
+      - xp: 25
+
+  - link: ic2:processamento_completo
+    at: [1, 1]
+
+  - id: mfsu
+    title: "O MFSU"
+    type: main
+    deps: [processamento, ic2:mfsu]
+    at: [2, 0]
+    icon: minecraft:redstone_block
+    desc: |
+      Um bloco gigante, cheio de energia guardada, e a calma de saber que a fábrica não vai parar por falta de corrente. O MFSU é o primeiro grande reservatório do seu mundo.
+
+      Carregue-o com geradores variados e ligue-o a uma rede protegida. Um dia ele vai salvar sua base de um apagão. Reconheço que tenho energia guardada. Marque a caixa quando o MFSU estiver cheio.
+    tasks:
+      - check
+    rewards:
+      - loot: incomum
+      - xp: 30
+
+  - link: ic2:mfsu
+    at: [2, 1]
+
+  - id: arsenal_eletrico
+    title: "O Arsenal Elétrico"
+    type: main
+    deps: [mfsu, ic2:arsenal_eletrico]
+    at: [3, 0]
+    icon: minecraft:diamond_sword
+    desc: |
+      Motosserra, broca de diamante, lança-ondas, tudo movido a bateria. O arsenal elétrico transforma o trabalho pesado em trabalho rápido, e dá a sensação de ter um exército de ferramentas na mochila.
+
+      Mantenha baterias de reserva e um carregador sempre por perto. Uma ferramenta descarregada no meio da caverna é só um peso extra. Marque a caixa quando seu arsenal elétrico estiver completo.
+    tasks:
+      - check
+    rewards:
+      - loot: incomum
+      - xp: 30
+
+  - link: ic2:arsenal_eletrico
+    at: [3, 1]
+
+  - id: nano
+    title: "A NanoSuit"
+    type: main
+    deps: [arsenal_eletrico, ic2:nano_completo]
+    at: [4, 0]
+    icon: minecraft:iron_chestplate
+    desc: |
+      Armadura que absorve dano, ilumina o escuro e não pesa nada. A NanoSuit é o primeiro traje do futuro que você veste, e o primeiro que realmente muda o jeito de explorar.
+
+      Carregue as quatro peças, leve baterias extras e teste em pequenas quedas primeiro. Reconheço que visto o futuro. Marque a caixa quando a armadura estiver completa e carregada.
+    tasks:
+      - check
+    rewards:
+      - kit: {name: "Kit do Engenheiro", items: [minecraft:redstone x32, minecraft:iron_ingot x16, minecraft:gold_ingot x8, minecraft:diamond x2]}
+      - loot: raro
+      - xp: 40
+
+  - link: ic2:nano_completo
+    at: [4, 1]
+
+  - id: reator_nuclear
+    title: "Fogo Atômico"
+    type: main
+    deps: [nano, ic2:reator_nuclear]
+    at: [5, 0]
+    icon: minecraft:blaze_powder
+    desc: |
+      O reator nuclear é a máquina que me deixa mais nervosa. Ele gera energia demais, e quem erra o projeto descobre o §cpreço§r. Simule antes, monte devagar e sempre tenha água e um botão de desligar.
+
+      Use o planejador de reatores de IC2 antes de colocar o primeiro tijolo. Marque a caixa quando seu reator estiver rodando com segurança e sem sustos.
+    tasks:
+      - check
+    rewards:
+      - loot: raro
+      - xp: 40
+
+  - link: ic2:reator_nuclear
+    at: [5, 1]
+
+  - id: mestre_industrial
+    title: "Mestre da Indústria"
+    type: milestone
+    deps: [reator_nuclear, ic2:mestre_industrial]
+    at: [6, 0]
+    icon: minecraft:iron_block
+    desc: |
+      IndustrialCraft 2 inteira. Cabos, ligas, reatores, trajes e até matéria UU sendo fabricada do nada. Pouca gente chega até aqui sem reclamar de uma explosão.
+
+      O Volume da Indústria te deu a primeira língua das máquinas. Daqui em diante, tudo o que for energético fala um pouco do que você aprendeu aqui. Reconheço que sou um mestre da indústria. Marque a caixa.
+    tasks:
+      - check
+    rewards:
+      - kit: {name: "Kit do Engenheiro", items: [minecraft:redstone x32, minecraft:iron_ingot x16, minecraft:gold_ingot x8, minecraft:diamond x2]}
+      - loot: epico
+      - xp: 60
+
+  - link: ic2:mestre_industrial
+    at: [6, 1]
+
+  - id: termica_reforcada
+    title: "Reforçando o Fluxo"
+    type: main
+    deps: [mestre_industrial, thermal:oficina_reforcada]
+    at: [7, 0]
+    icon: minecraft:iron_block
+    desc: |
+      A oficina reforçada guarda mais energia e trabalha mais rápido. É a transição entre uma fábrica que sobrevive e uma que prospera, e Thermal entrega isso sem muito alarde.
+
+      Aplique upgrades de acordo com a máquina: velocidade para pulverizadores, capacidade para tanques. Marque a caixa quando a oficina reforçada estiver rodando em tempo integral.
+    tasks:
+      - check
+    rewards:
+      - xp: 25
+      - loot: comum
+
+  - link: thermal:oficina_reforcada
+    at: [7, 1]
+
+  - id: tesserato
+    title: "O Tesserato"
+    type: main
+    deps: [termica_reforcada, thermal:tesserato]
+    at: [8, 0]
+    icon: minecraft:ender_eye
+    desc: |
+      Um cubo que dobra o espaço para guardar e mover energia, itens e fluidos sem precisar de fio. O Tesserato é um dos objetos mais elegantes do Registro, porque resolve o transporte com uma única ideia.
+
+      Ligue em pares, configure as faces e deixe o invisível fazer o trabalho. Marque a caixa quando o primeiro Tesserato estiver conectado e funcionando.
+    tasks:
+      - check
+    rewards:
+      - loot: incomum
+      - xp: 35
+
+  - link: thermal:tesserato
+    at: [8, 1]
+
+  - id: mestre_termico
+    title: "Mestre do Fluxo"
+    type: milestone
+    deps: [tesserato, thermal:mestre_termico]
+    at: [9, 0]
+    icon: minecraft:blaze_rod
+    desc: |
+      Thermal Expansion dominado: máquinas, dínamos, dutos e fluxo. Você aprendeu a falar a língua de cobre dessa tradição, o que me enche de orgulho.
+
+      Cada Volume que vira marco é uma frase a menos no esquecimento. Reconheço que a energia obedece. Marque a caixa quando tiver concluído o último passo do Volume Térmico.
+    tasks:
+      - check
+    rewards:
+      - kit: {name: "Kit do Engenheiro", items: [minecraft:redstone x32, minecraft:iron_ingot x16, minecraft:gold_ingot x8, minecraft:diamond x2]}
+      - loot: raro
+      - xp: 45
+
+  - link: thermal:mestre_termico
+    at: [9, 1]
+
+  - id: ligas_enderio
+    title: "A Fundição das Oito Ligas"
+    type: main
+    deps: [mestre_termico, enderio:ligas_completas]
+    at: [10, 0]
+    icon: minecraft:iron_ingot
+    desc: |
+      EnderIO tem um gosto particular por ligas com nomes poéticos: metal de alma, metal vibrante, aço eletrizado. Oito delas formam uma coleção que eu chamo de pequena orquestra.
+
+      Forje todas, uma por uma. §aDica:§r o forno de ligas poupa muito tempo. Marque a caixa quando as oito estiverem no baú.
+    tasks:
+      - check
+    rewards:
+      - xp: 25
+      - loot: comum
+
+  - link: enderio:ligas_completas
+    at: [10, 1]
+
+  - id: condutos
+    title: "A Rede de Condutos"
+    type: main
+    deps: [ligas_enderio, enderio:rede_condutos]
+    at: [11, 0]
+    icon: minecraft:hopper
+    desc: |
+      Condutos carregam itens, energia, líquidos e sinal, tudo pelo mesmo caminho. É o encanamento que toda base grande precisa para não virar um emaranhado de fios.
+
+      Planeje as rotas com antecedência e rotule os conectores. A rede bem feita é invisível, e o que se vê é só a fábrica funcionando. Marque a caixa quando a rede de condutos estiver ativa.
+    tasks:
+      - check
+    rewards:
+      - xp: 25
+      - loot: comum
+
+  - link: enderio:rede_condutos
+    at: [11, 1]
+
+  - id: fabrica_autonoma
+    title: "A Fábrica Autônoma"
+    type: main
+    deps: [condutos, enderio:fabrica_autonoma]
+    at: [0, 7]
+    icon: minecraft:dispenser
+    desc: |
+      Um lugar onde o minério entra, o produto sai, e ninguém precisa apertar um botão. A fábrica autônoma é o sonho do engenheiro preguiçoso, e eu aprovo.
+
+      Use sensores, filtros e redstone para que cada máquina só trabalhe quando o resto estiver pronto. Reconheço que minha fábrica anda sozinha. Marque a caixa quando ela rodar sem você.
+    tasks:
+      - check
+    rewards:
+      - kit: {name: "Kit do Engenheiro", items: [minecraft:redstone x32, minecraft:iron_ingot x16, minecraft:gold_ingot x8, minecraft:diamond x2]}
+      - loot: incomum
+      - xp: 35
+
+  - link: enderio:fabrica_autonoma
+    at: [0, 8]
+
+  - id: mestre_ligas
+    title: "Mestre das Ligas"
+    type: milestone
+    deps: [fabrica_autonoma, enderio:mestre_ligas]
+    at: [1, 7]
+    icon: minecraft:diamond_block
+    desc: |
+      EnderIO completo. As oito ligas, os condutos, a fábrica automática, a armadura negra e a estelar. É uma coleção que meu coração de arquivista adora.
+
+      Um Volume completo vale mais do que dois pela metade. Reconheço que dominei o EnderIO. Marque a caixa quando todos os passos estiverem concluídos.
+    tasks:
+      - check
+    rewards:
+      - kit: {name: "Kit do Engenheiro", items: [minecraft:redstone x32, minecraft:iron_ingot x16, minecraft:gold_ingot x8, minecraft:diamond x2]}
+      - loot: raro
+      - xp: 50
+
+  - link: enderio:mestre_ligas
+    at: [1, 8]
+
+  - id: oficina_quimica
+    title: "A Oficina Química"
+    type: main
+    deps: [mestre_ligas, mekanism:primeira_fabrica_mek]
+    at: [2, 7]
+    icon: minecraft:glass_bottle
+    desc: |
+      Mekanism pensa em química: gases, líquidos, minérios enriquecidos. A primeira fábrica é um conjunto de máquinas que aceita um minério e devolve duas ou três vezes mais do que entrou.
+
+      Comece com o ósmio, que é o mais comum. Marque a caixa quando a oficina química estiver funcionando e você entender o ciclo.
+    tasks:
+      - check
+    rewards:
+      - xp: 25
+      - loot: comum
+
+  - link: mekanism:primeira_fabrica_mek
+    at: [2, 8]
+
+  - id: tres_ligas
+    title: "Enriquecida, Reforçada, Atômica"
+    type: main
+    deps: [oficina_quimica, mekanism:tres_ligas]
+    at: [3, 7]
+    icon: minecraft:iron_ingot
+    desc: |
+      Três ligas, três níveis, uma pirâmide de materiais. Cada uma abre novas máquinas, novos transportes e novas opções, o que torna o caminho em Mekanism um pouco como subir uma escada em espiral.
+
+      Guarde uma boa quantidade de cada. A atômica custa caro, mas vale cada pedacinho. Marque a caixa quando as três ligas estiverem fabricadas.
+    tasks:
+      - check
+    rewards:
+      - loot: incomum
+      - xp: 30
+
+  - link: mekanism:tres_ligas
+    at: [3, 8]
+
+  - id: quintuplo
+    title: "Rendimento Quíntuplo"
+    type: main
+    deps: [tres_ligas, mekanism:processamento_5x]
+    at: [4, 7]
+    icon: minecraft:redstone
+    desc: |
+      Cinco minérios onde só havia um. Parece magia, mas é química bem feita: ácido, hidrogênio, oxigênio, cloro, tudo para extrair mais do que a natureza oferece sozinha.
+
+      O processamento quíntuplo é a técnica que sustenta muitas receitas futuras. Valha-se dele. Marque a caixa quando o primeiro lote de rendimento ampliado sair da linha.
+    tasks:
+      - check
+    rewards:
+      - kit: {name: "Kit do Engenheiro", items: [minecraft:redstone x32, minecraft:iron_ingot x16, minecraft:gold_ingot x8, minecraft:diamond x2]}
+      - loot: incomum
+      - xp: 35
+
+  - link: mekanism:processamento_5x
+    at: [4, 8]
+
+  - id: rede_quimica
+    title: "A Rede Química"
+    type: main
+    deps: [quintuplo, mekanism:logistica_mek]
+    at: [5, 7]
+    icon: minecraft:hopper
+    desc: |
+      Tubos de gás, de líquido, de item e de energia, cada um com cor e função própria. A rede química organiza o fluxo de tudo e impede que um vazamento vire um acidente.
+
+      Etiquete as saídas e agrupe tubulações do mesmo tipo. Um bom projeto parece simples, mesmo sendo complexo por dentro. Marque a caixa quando a rede química estiver fechada.
+    tasks:
+      - check
+    rewards:
+      - xp: 25
+      - loot: comum
+
+  - link: mekanism:logistica_mek
+    at: [5, 8]
+
+  - id: matriz
+    title: "A Matriz de Indução"
+    type: main
+    deps: [rede_quimica, mekanism:matriz_inducao]
+    at: [6, 7]
+    icon: minecraft:redstone_block
+    desc: |
+      Uma caixa enorme, de camadas bem alinhadas, que guarda uma quantidade absurda de energia. A matriz de indução é a bateria mais séria que um engenheiro pode construir.
+
+      Planeje o tamanho, os provedores e as células antes de começar. §cPerigo:§r uma matriz mal fechada simplesmente não liga. Marque a caixa quando ela estiver acesa.
+    tasks:
+      - check
+    rewards:
+      - loot: raro
+      - xp: 40
+
+  - link: mekanism:matriz_inducao
+    at: [6, 8]
+
+  - id: mestre_quimico
+    title: "Mestre da Química"
+    type: milestone
+    deps: [matriz, mekanism:mestre_quimico]
+    at: [7, 7]
+    icon: minecraft:diamond_block
+    desc: |
+      Mekanism completo. Ósmio, ácido, matrizes, fusão e uma armadura que faz inveja a tudo o que veio antes. Eu me sinto uma bibliotecária de laboratório quando vejo isso.
+
+      Cada reação bem planejada é uma página que você escreveu. Reconheço que tenho a química do Registro nas mãos. Marque a caixa quando tiver terminado.
+    tasks:
+      - check
+    rewards:
+      - kit: {name: "Kit do Engenheiro", items: [minecraft:redstone x32, minecraft:iron_ingot x16, minecraft:gold_ingot x8, minecraft:diamond x2]}
+      - loot: epico
+      - xp: 60
+
+  - link: mekanism:mestre_quimico
+    at: [7, 8]
+
+  - id: pedreira
+    title: "A Pedreira"
+    type: main
+    deps: [mestre_quimico, buildcraft:pedreira]
+    at: [8, 7]
+    icon: minecraft:iron_pickaxe
+    desc: |
+      Uma máquina que cava um retângulo inteiro de terra enquanto você toma um café. A pedreira do BuildCraft é a mineração em escala industrial, simples e barulhenta.
+
+      Ligue-a a um motor, delimite a área com marcadores e deixe trabalhar. Use um baú ou tubo para recolher o que ela escava. Marque a caixa quando a pedreira terminar o primeiro buraco.
+    tasks:
+      - check
+    rewards:
+      - xp: 25
+      - loot: comum
+
+  - link: buildcraft:pedreira
+    at: [8, 8]
+
+  - id: construtor
+    title: "O Construtor"
+    type: main
+    deps: [pedreira, buildcraft:construtor]
+    at: [9, 7]
+    icon: minecraft:brick_block
+    desc: |
+      O construtor lê uma planta e reproduz a construção bloco por bloco, de modo que uma casa gigante se ergue sozinha enquanto você olha. Admito que isso me emociona.
+
+      Faça o modelo com cuidado e abasteça o construtor com materiais. Marque a caixa quando a primeira construção automática estiver pronta.
+    tasks:
+      - check
+    rewards:
+      - loot: incomum
+      - xp: 30
+
+  - link: buildcraft:construtor
+    at: [9, 8]
+
+  - id: mestre_engrenagens
+    title: "Mestre das Engrenagens"
+    type: milestone
+    deps: [construtor, buildcraft:mestre_engrenagens]
+    at: [10, 7]
+    icon: minecraft:piston
+    desc: |
+      BuildCraft inteiro: motores, tubos, robôs e construtores. Lembra uma oficina grande, barulhenta e cheia de peças em movimento, e eu adoro cada pedacinho dela.
+
+      Esse Volume marcou uma era do mundo. Seus tubos de madeira e pedra são a gramática mais antiga da logística. Reconheço que as engrenagens giram. Marque a caixa quando concluir.
+    tasks:
+      - check
+    rewards:
+      - kit: {name: "Kit do Engenheiro", items: [minecraft:redstone x32, minecraft:iron_ingot x16, minecraft:gold_ingot x8, minecraft:diamond x2]}
+      - loot: raro
+      - xp: 45
+
+  - link: buildcraft:mestre_engrenagens
+    at: [10, 8]
+
+  - id: alto_forno
+    title: "O Alto-Forno Aprimorado"
+    type: main
+    deps: [mestre_engrenagens, ie:alto_forno_aprimorado]
+    at: [11, 7]
+    icon: minecraft:furnace
+    desc: |
+      Immersive Engineering tem cheiro de siderurgia: aço, coque, cabos de cobre a céu aberto. O alto-forno aprimorado é a peça que dá o salto para metais de verdade.
+
+      Construa o multibloco com atenção ao desenho e alimente com ferro e coque. Marque a caixa quando o primeiro lote de aço sair do forno.
+    tasks:
+      - check
+    rewards:
+      - xp: 25
+      - loot: comum
+
+  - link: ie:alto_forno_aprimorado
+    at: [11, 8]
+
+  - id: mestre_engenheiro
+    title: "Mestria em Engenharia"
+    type: milestone
+    deps: [alto_forno, ie:mestre_engenheiro]
+    at: [0, 14]
+    icon: minecraft:iron_block
+    desc: |
+      Fios no ar, geradores a diesel, forno de arco, escavadeira gigante. Immersive Engineering tem um estilo visual que lembra um quadro antigo e funcionando.
+
+      Dominar esse Volume exige paciência com multiblocos, e você teve. Reconheço que sou engenheiro de ofício. Marque a caixa quando todos os passos estiverem concluídos.
+    tasks:
+      - check
+    rewards:
+      - kit: {name: "Kit do Engenheiro", items: [minecraft:redstone x32, minecraft:iron_ingot x16, minecraft:gold_ingot x8, minecraft:diamond x2]}
+      - loot: raro
+      - xp: 45
+
+  - link: ie:mestre_engenheiro
+    at: [0, 15]
+
+  - id: eln_200
+    title: "Máquinas de 200 Volts"
+    type: normal
+    deps: [mestre_engenheiro, eln:maquinas_200v]
+    at: [1, 14]
+    icon: minecraft:redstone
+    desc: |
+      Electrical Age trata a eletricidade como ela é: tensão, corrente e resistência. Máquinas de 200 volts têm necessidades reais e uma lógica que você precisa respeitar.
+
+      Faça cálculos, pese os cabos e meça com o multímetro. Marque a caixa quando suas máquinas 200V estiverem funcionando sem esquentar.
+    tasks:
+      - check
+    rewards:
+      - xp: 25
+      - loot: comum
+
+  - link: eln:maquinas_200v
+    at: [1, 15]
+
+  - id: eletricista
+    title: "Mestre Eletricista"
+    type: milestone
+    deps: [eln_200, eln:mestre_eletricista]
+    at: [2, 14]
+    icon: minecraft:redstone_block
+    desc: |
+      Mestre eletricista não é um título leve. Significa que você entende redes de baixa e alta tensão, protege seus circuitos e deixa a energia onde ela deve ficar.
+
+      Isso exige mais teoria do que a maioria dos Volumes, e você enfrentou com coragem. Reconheço que domino a eletricidade. Marque a caixa.
+    tasks:
+      - check
+    rewards:
+      - loot: raro
+      - xp: 45
+
+  - link: eln:mestre_eletricista
+    at: [2, 15]
+
+  - id: fazenda_auto
+    title: "A Fazenda que Nunca Dorme"
+    type: main
+    deps: [eletricista, mfr:fazenda_automatica]
+    at: [3, 14]
+    icon: minecraft:wheat
+    desc: |
+      MineFactory Reloaded entrega fazendas que colhem, replantam e guardam sozinhas. A primeira fazenda automática é um dos momentos mais gratificantes da campanha.
+
+      Escolha um cultivo, organize o chão e conecte a energia. Deixe rodando e volte depois para encontrar o baú cheio. Marque a caixa quando a fazenda estiver colhendo sem você.
+    tasks:
+      - check
+    rewards:
+      - kit: {name: "Kit do Sobrevivente", items: [minecraft:bread x16, minecraft:torch x32, minecraft:cooked_beef x8]}
+      - xp: 25
+
+  - link: mfr:fazenda_automatica
+    at: [3, 15]
+
+  - id: mestre_fabrica
+    title: "Mestre da Fábrica Automática"
+    type: milestone
+    deps: [fazenda_auto, mfr:mestre_fabrica]
+    at: [4, 14]
+    icon: minecraft:iron_block
+    desc: |
+      A fábrica toda funciona por conta própria: fazendas, criaturas, redes vermelhas, lasers que tocam a rocha-mãe. É um sonho que virou obra de engenharia.
+
+      Eu olho para ela e penso que sozinha daria para reescrever uma biblioteca inteira. Reconheço que a fábrica trabalha por mim. Marque a caixa quando concluir.
+    tasks:
+      - check
+    rewards:
+      - kit: {name: "Kit do Engenheiro", items: [minecraft:redstone x32, minecraft:iron_ingot x16, minecraft:gold_ingot x8, minecraft:diamond x2]}
+      - loot: raro
+      - xp: 45
+
+  - link: mfr:mestre_fabrica
+    at: [4, 15]
+
+  - id: banco_geradores
+    title: "O Banco de Geradores"
+    type: normal
+    deps: [mestre_fabrica, extrautils:banco_geradores]
+    at: [5, 14]
+    icon: minecraft:furnace
+    desc: |
+      Extra Utilities é uma caixa de ferramentas esquisita e deliciosa. O banco de geradores reúne fontes de energia que usam coisas inesperadas, de lava a lixo, para manter a base acesa.
+
+      Escolha o combustível que mais sobra no seu mundo e ligue o gerador. Marque a caixa quando o banco estiver gerando energia.
+    tasks:
+      - check
+    rewards:
+      - xp: 20
+      - loot: comum
+
+  - link: extrautils:banco_geradores
+    at: [5, 15]
+
+  - id: pequenas_maravilhas
+    title: "Mestre das Pequenas Maravilhas"
+    type: milestone
+    deps: [banco_geradores, extrautils:mestre_utilidades]
+    at: [6, 14]
+    icon: minecraft:ender_chest
+    desc: |
+      Baús ender, transferência de itens, pedreira do Fim: pequenas maravilhas que facilitam a vida. Eu as chamo de utilidades, e são o que torna a rotina de um Herói suportável.
+
+      Cada uma economiza minutos, e minutos somados viram horas. Reconheço que dominei as utilidades. Marque a caixa quando concluir o Volume.
+    tasks:
+      - check
+    rewards:
+      - loot: raro
+      - xp: 40
+
+  - link: extrautils:mestre_utilidades
+    at: [6, 15]
+
+  - id: primeira_rede_me
+    title: "A Primeira Rede ME"
+    type: milestone
+    deps: [pequenas_maravilhas, ae2:primeira_rede]
+    at: [7, 14]
+    icon: minecraft:chest
+    desc: |
+      Applied Energistics 2 guarda o seu mundo inteiro dentro de uma rede digital. Controlador, terminal, drive e discos: peças simples que juntas fazem sua base parecer uma biblioteca de verdade.
+
+      Eu me emociono, porque é o mais próximo que você chega do Registro Akáshico. Reconheço que meu armazenamento é digital. Marque a caixa quando a primeira rede estiver funcionando.
+    tasks:
+      - check
+    rewards:
+      - kit: {name: "Kit do Engenheiro", items: [minecraft:redstone x32, minecraft:iron_ingot x16, minecraft:gold_ingot x8, minecraft:diamond x2]}
+      - loot: raro
+      - xp: 45
+
+  - link: ae2:primeira_rede
+    at: [7, 15]
+
+  - id: autocraft
+    title: "A Rede que Fabrica"
+    type: main
+    deps: [primeira_rede_me, ae2:primeiro_autocraft]
+    at: [8, 14]
+    icon: minecraft:crafting_table
+    desc: |
+      Pedir um item e ele aparecer, craftado, sem tocar na bancada. O autocraft é a fronteira onde você deixa de ser operário e vira arquiteto da fábrica.
+
+      Crie padrões, ligue a máquina de moldes e deixe a rede pensar. Marque a caixa quando o primeiro item for automaticamente fabricado.
+    tasks:
+      - check
+    rewards:
+      - loot: incomum
+      - xp: 35
+
+  - link: ae2:primeiro_autocraft
+    at: [8, 15]
+
+  - id: mestre_me
+    title: "Mestre do Armazenamento Digital"
+    type: milestone
+    deps: [autocraft, ae2:mestre_me]
+    at: [9, 14]
+    icon: minecraft:ender_chest
+    desc: |
+      Rede de fluidos, alcance infinito, ponte quântica e espaço guardado num cristal. Você domina o Armazenamento Digital, e isso diz muito sobre o seu mundo e seu jeito.
+
+      Se o Registro é uma biblioteca, o ME é o seu catálogo. Reconheço que meu mundo cabe em uma rede. Marque a caixa quando concluir.
+    tasks:
+      - check
+    rewards:
+      - kit: {name: "Kit do Engenheiro", items: [minecraft:redstone x32, minecraft:iron_ingot x16, minecraft:gold_ingot x8, minecraft:diamond x2]}
+      - loot: epico
+      - xp: 60
+
+  - link: ae2:mestre_me
+    at: [9, 15]
+
+  - id: reator_ativo
+    title: "O Reator Ativo"
+    type: normal
+    deps: [mestre_me, bigreactors:reator_ativo]
+    at: [10, 14]
+    icon: minecraft:blaze_rod
+    desc: |
+      Big Reactors transforma ciclos de combustível em energia por dutos ativos e passivos. O reator ativo é grande, seguro quando bem projetado, e bonito de ver por dentro.
+
+      Aprenda a regular as hastes e a refrigeração. §cPerigo:§r desligue se algo esquentar demais. Marque a caixa quando o reator ativo estiver gerando energia.
+    tasks:
+      - check
+    rewards:
+      - loot: incomum
+      - xp: 30
+
+  - link: bigreactors:reator_ativo
+    at: [10, 15]
+
+  - id: traje_modular
+    title: "O Traje Desperta"
+    type: normal
+    deps: [reator_ativo, mps:traje_protegido]
+    at: [11, 14]
+    icon: minecraft:iron_chestplate
+    desc: |
+      O Modular Powersuits cria uma armadura que você mesmo monta módulo por módulo, de visão noturna a propulsores. É uma costura de peças que me lembra um grimório de tecnologia.
+
+      Escolha módulos para seu estilo: velocidade, proteção ou mineração. Marque a caixa quando o traje despertar e você estiver dentro dele.
+    tasks:
+      - check
+    rewards:
+      - loot: incomum
+      - xp: 30
+
+  - link: mps:traje_protegido
+    at: [11, 15]
+
+  - id: replicacao
+    title: "A Primeira Replicação"
+    type: normal
+    deps: [traje_modular, matteroverdrive:primeira_replicacao]
+    at: [0, 21]
+    icon: minecraft:diamond
+    desc: |
+      Matter Overdrive entra em cena com replicadores, androides e armas de uma frota distante. A primeira replicação é um truque de mágica científica: matéria que vira informação e volta a ser matéria.
+
+      Monte o replicador, ligue o fornecimento e escolha o item. Marque a caixa quando a primeira cópia surgir.
+    tasks:
+      - check
+    rewards:
+      - loot: incomum
+      - xp: 30
+
+  - link: matteroverdrive:primeira_replicacao
+    at: [0, 22]
+
+  - id: vis_rede
+    title: "Vis em Rede"
+    type: main
+    deps: [replicacao, thaumcraft2:vis_em_rede]
+    at: [1, 21]
+    icon: minecraft:glowstone
+    desc: |
+      Thaumcraft entra na segunda fase: o vis agora corre por tubos, recipientes e filtros, alimentando altares e máquinas sem que você carregue a varinha toda hora.
+
+      Monte uma rede de vis que sirva sua oficina e ainda tenha folga. §aDica:§r preste atenção em nodos próximos, pois eles definem sua qualidade. Marque a caixa quando a rede estiver viva.
+    tasks:
+      - check
+    rewards:
+      - kit: {name: "Kit do Aprendiz Arcano", items: [minecraft:enchanting_table x1, minecraft:dye:4 x16, minecraft:experience_bottle x16]}
+      - xp: 30
+      - loot: incomum
+
+  - link: thaumcraft2:vis_em_rede
+    at: [1, 22]
+
+  - id: golens
+    title: "A Fábrica de Golens"
+    type: main
+    deps: [vis_rede, thaumcraft2:fabrica_golens]
+    at: [2, 21]
+    icon: minecraft:iron_block
+    desc: |
+      Golens são trabalhadores feitos de barro, ferro e instruções. Um golem bem configurado limpa a base, coleta recursos e guarda a casa, e tudo isso sem pedir salário.
+
+      Dê nomes, escolha materiais e defina marcadores. Eu tenho carinho por eles. Marque a caixa quando uma pequena equipe de golens estiver trabalhando.
+    tasks:
+      - check
+    rewards:
+      - loot: incomum
+      - xp: 35
+
+  - link: thaumcraft2:fabrica_golens
+    at: [2, 22]
+
+  - id: montador
+    title: "O Montador Arcano"
+    type: normal
+    deps: [golens, thaumextras:montador_arcano]
+    at: [3, 21]
+    icon: minecraft:crafting_table
+    desc: |
+      Thaumic Extras entrega utilidades para quem está cansado de repetir rituais. O montador arcano combina itens com a ajuda do vis e reduz drasticamente o tempo de trabalho.
+
+      Pense nele como a bancada que o mago merecia. Marque a caixa quando o montador estiver construído e cumprindo seu papel.
+    tasks:
+      - check
+    rewards:
+      - loot: incomum
+      - xp: 30
+
+  - link: thaumextras:montador_arcano
+    at: [3, 22]
+
+  - id: terrasteel
+    title: "Terrasteel"
+    type: main
+    deps: [montador, botania:terrasteel]
+    at: [4, 21]
+    icon: minecraft:emerald
+    desc: |
+      Mana, manasteel, pó de mana e uma runa do espírito: o terrasteel nasce de um ritual verde no Terrestre Agglomeration Plate. É leve, forte e a grande conquista do Botania.
+
+      Fique atento aos materiais e à mana disponível. Reconheço que o terrasteel é meu. Marque a caixa quando o primeiro lingote surgir.
+    tasks:
+      - check
+    rewards:
+      - kit: {name: "Kit do Aprendiz Arcano", items: [minecraft:enchanting_table x1, minecraft:dye:4 x16, minecraft:experience_bottle x16]}
+      - loot: raro
+      - xp: 45
+
+  - link: botania:terrasteel
+    at: [4, 22]
+
+  - id: altar3
+    title: "A Lousa Imbuída"
+    type: main
+    deps: [terrasteel, bloodmagic:altar_tier3]
+    at: [5, 21]
+    icon: minecraft:obsidian
+    desc: |
+      Altar de nível três exige mais runas, mais pilares e uma boa dose de coragem. A lousa imbuída mostra que o sangue pode ser um combustível bem refinado.
+
+      Siga o diagrama e confirme cada runa no lugar. Marque a caixa quando o altar nível três estiver ativo.
+    tasks:
+      - check
+    rewards:
+      - loot: incomum
+      - xp: 35
+
+  - link: bloodmagic:altar_tier3
+    at: [5, 22]
+
+  - id: armadura_vinculada
+    title: "A Armadura Vinculada"
+    type: main
+    deps: [altar3, bloodmagic:armadura_vinculada]
+    at: [6, 21]
+    icon: minecraft:iron_chestplate
+    desc: |
+      Armadura vinculada ao seu sangue: ela cresce com você, ganha poder conforme a sua essência e se torna um pedaço do seu corpo. Algo entre proteção e segredo.
+
+      Use com sabedoria e mantenha o orbe cheio. Reconheço que vesti o sangue. Marque a caixa quando as quatro peças estiverem em você.
+    tasks:
+      - check
+    rewards:
+      - kit: {name: "Kit do Aprendiz Arcano", items: [minecraft:enchanting_table x1, minecraft:dye:4 x16, minecraft:experience_bottle x16]}
+      - loot: raro
+      - xp: 40
+
+  - link: bloodmagic:armadura_vinculada
+    at: [6, 22]
+
+  - id: traje_mago
+    title: "O Traje Completo"
+    type: main
+    deps: [armadura_vinculada, arsmagica:traje_mago]
+    at: [7, 21]
+    icon: minecraft:leather_chestplate
+    desc: |
+      Em Ars Magica, o traje de mago não é só aparência. Ele amplifica feitiços, reduz o custo de mana e carrega o estilo de uma tradição inteira.
+
+      Cuide das quatro peças e do acabamento. Um bom traje reflete a carreira do mago. Marque a caixa quando o conjunto estiver completo.
+    tasks:
+      - check
+    rewards:
+      - loot: incomum
+      - xp: 35
+
+  - link: arsmagica:traje_mago
+    at: [7, 22]
+
+  - id: tres_luzes
+    title: "As Três Luzes do Etherium"
+    type: main
+    deps: [traje_mago, arsmagica:tres_luzes]
+    at: [8, 21]
+    icon: minecraft:glowstone
+    desc: |
+      Etherium em três cores, três luzes, três formas de poder. Quem as reúne ganha acesso a rituais e itens que mudam o ritmo da magia.
+
+      Cada luz exige uma parte do mundo explorada. Reconheço que o Etherium brilha em mim. Marque a caixa quando tiver as três.
+    tasks:
+      - check
+    rewards:
+      - kit: {name: "Kit do Aprendiz Arcano", items: [minecraft:enchanting_table x1, minecraft:dye:4 x16, minecraft:experience_bottle x16]}
+      - loot: raro
+      - xp: 40
+
+  - link: arsmagica:tres_luzes
+    at: [8, 22]
+
+  - id: vassoura
+    title: "A Vassoura Encantada"
+    type: normal
+    deps: [tres_luzes, witchery:vassoura]
+    at: [9, 21]
+    icon: minecraft:stick
+    desc: |
+      Voar é um privilégio das bruxas, e a vassoura de Witchery é o transporte mais romântico desta crônica. Ela cruza o céu com graça e deixa uma trilha de faíscas.
+
+      Monte o rito, escolha os ingredientes e confie nos ventos. Marque a caixa quando estiver sobrevoando seu mundo.
+    tasks:
+      - check
+    rewards:
+      - loot: incomum
+      - xp: 30
+
+  - link: witchery:vassoura
+    at: [9, 22]
+
+  - id: bonecos
+    title: "A Coleção de Bonecos"
+    type: normal
+    deps: [vassoura, witchery:colecao_bonecos]
+    at: [10, 21]
+    icon: minecraft:wool
+    desc: |
+      Bonecos de bruxa fazem muito mais do que enfeitar prateleiras: eles são alvos de feitiços, vínculos entre o ritual e o mundo. Cada um carrega uma intenção.
+
+      Guarde-os num lugar seguro e longe de quem não deve tocá-los. Marque a caixa quando sua coleção tiver os modelos principais.
+    tasks:
+      - check
+    rewards:
+      - loot: incomum
+      - xp: 30
+
+  - link: witchery:colecao_bonecos
+    at: [10, 22]
+
+  - id: varinha_mestre
+    title: "Varinha de Mestre"
+    type: main
+    deps: [bonecos, wizardry:varinha_mestre]
+    at: [11, 21]
+    icon: minecraft:blaze_rod
+    desc: |
+      Wizardry and Witchcraft premia quem estuda. A varinha de mestre é a ponta da escada: poderosa, precisa e capaz de feitiços que as versões menores nem sonham.
+
+      Pratique os gestos até que a mão decore a sequência. Reconheço que meus feitiços respondem. Marque a caixa quando a varinha de mestre for sua.
+    tasks:
+      - check
+    rewards:
+      - loot: raro
+      - xp: 40
+
+  - link: wizardry:varinha_mestre
+    at: [11, 22]
+
+  - id: grimorios
+    title: "Os Sete Grimórios"
+    type: normal
+    deps: [varinha_mestre, wizardry:sete_grimorios]
+    at: [0, 28]
+    icon: minecraft:book
+    desc: |
+      Sete grimórios, sete tradições elementares. Cada um traz uma lista de feitiços, e juntos formam um pequeno arquivo do poder mágico do Registro.
+
+      Leia com calma e anote o que importa. Eu adoraria conversar sobre eles em um dia sem perigo. Marque a caixa quando os sete estiverem na estante.
+    tasks:
+      - check
+    rewards:
+      - kit: {name: "Kit do Aprendiz Arcano", items: [minecraft:enchanting_table x1, minecraft:dye:4 x16, minecraft:experience_bottle x16]}
+      - loot: incomum
+      - xp: 35
+
+  - link: wizardry:sete_grimorios
+    at: [0, 29]
+
+  - id: fazenda_forestry
+    title: "A Fazenda Que Trabalha Sozinha"
+    type: normal
+    deps: [grimorios, forestry:fazenda_montada]
+    at: [1, 28]
+    icon: minecraft:wheat
+    desc: |
+      Forestry sabe cuidar de campos grandes: uma fazenda montada com multibloco planta, colhe e guarda por conta própria. É a calma agrícola da automação.
+
+      Escolha o tipo de cultivo e fique de olho na água. Marque a caixa quando a fazenda estiver colhendo sem você.
+    tasks:
+      - check
+    rewards:
+      - loot: incomum
+      - xp: 30
+
+  - link: forestry:fazenda_montada
+    at: [1, 29]
+
+  - id: grande_horta
+    title: "A Grande Horta"
+    type: normal
+    deps: [fazenda_forestry, agricraft:marco_agricraft]
+    at: [2, 28]
+    icon: minecraft:carrot
+    desc: |
+      AgriCraft transforma cultivos em ciência: cruzamentos, estatísticas, sementes especiais. A grande horta é onde as plantas começam a contar uma história genética.
+
+      Marque as sementes boas e descarte as fracas. Marque a caixa quando a sua horta de cruzamentos estiver gerando bons resultados.
+    tasks:
+      - check
+    rewards:
+      - loot: incomum
+      - xp: 30
+
+  - link: agricraft:marco_agricraft
+    at: [2, 29]
+
+  - id: apiaryum
+    title: "O Grande Apiaryum"
+    type: normal
+    deps: [grande_horta, abelhas:apiaryum_montado]
+    at: [3, 28]
+    icon: minecraft:flower_pot
+    desc: |
+      O Apiaryum é a versão monumental do apiário: colmeias lado a lado, abelhas raras produzindo e uma estrutura que impressiona qualquer visitante.
+
+      Leve flores variadas e mantenha o clima agradável. Marque a caixa quando o Apiaryum estiver montado e funcionando.
+    tasks:
+      - check
+    rewards:
+      - loot: incomum
+      - xp: 30
+
+  - link: abelhas:apiaryum_montado
+    at: [3, 29]
+
+  - id: reliquias
+    title: "O Relicário"
+    type: normal
+    deps: [apiaryum, reliquary:relicario_completo]
+    at: [4, 28]
+    icon: minecraft:gold_ingot
+    desc: |
+      Xreliquary guarda relíquias de caçadores antigos: arma de ouro, amuleto, lanternas e uma coleção que cheira a incenso. O relicário é o ponto de encontro dessas peças.
+
+      Reúna o que puder, mas respeite a história de cada item. Marque a caixa quando o relicário estiver completo.
+    tasks:
+      - check
+    rewards:
+      - loot: incomum
+      - xp: 30
+
+  - link: reliquary:relicario_completo
+    at: [4, 29]
+
+  - id: oficina_nodos
+    title: "A Base Taumática"
+    type: normal
+    deps: [reliquias, tbases:mestre_bases]
+    at: [5, 28]
+    icon: minecraft:ender_eye
+    desc: |
+      Thaumic Bases amplia o Thaumcraft com novos materiais e utilidades, de sobre-encantamento a manipuladores de nodo. É o Volume para quem já tem o básico e quer luxo.
+
+      Escolha apenas o que serve ao seu projeto. Marque a caixa quando a sua base taumática estiver completa.
+    tasks:
+      - check
+    rewards:
+      - kit: {name: "Kit do Aprendiz Arcano", items: [minecraft:enchanting_table x1, minecraft:dye:4 x16, minecraft:experience_bottle x16]}
+      - loot: incomum
+      - xp: 35
+
+  - link: tbases:mestre_bases
+    at: [5, 29]
+
+  - id: primeiro_reino
+    title: "A Porta que Não Devia Existir"
+    type: portal
+    deps: [oficina_nodos, dimdoors:porta_dimensional]
+    at: [6, 28]
+    icon: minecraft:iron_door
+    desc: |
+      Há portas que não levam a cômodos. As portas dimensionais abrem para espaços que existem entre mundos, onde a geometria deixa de ser educada. É o primeiro sinal de que os reinos perdidos estão por perto.
+
+      Faça sua porta, escolha o destino e entre com cuidado. Marque a caixa quando tiver atravessado a primeira porta dimensional.
+    tasks:
+      - check
+    rewards:
+      - kit: {name: "Kit do Limiar", items: [minecraft:ender_pearl x8, minecraft:obsidian x16, minecraft:diamond x4]}
+      - xp: 40
+
+  - link: dimdoors:porta_dimensional
+    at: [6, 29]
+
+  - id: fim_ato2
+    title: "Engrenagens em Movimento"
+    type: finale
+    deps: [primeiro_reino, thaumcraft2:taumaturgo_supremo]
+    at: [7, 28]
+    icon: minecraft:redstone_block
+    banner: "Engrenagens em Movimento"
+    desc: |
+      Herói, escute: é o som de máquinas e feitiços trabalhando ao mesmo tempo. Fábricas que se alimentam, redes que guardam tudo, magos que dobram o vis. O Registro já pode voltar a respirar.
+
+      O Ato II termina aqui, mas as páginas mais difíceis ainda estão adiante. No Ato III vamos atrás dos três reinos que guardam as Chaves do Registro. Marque a caixa quando estiver pronto para sair do laboratório e ver o mundo.
+    tasks:
+      - check
+    rewards:
+      - kit: {name: "Kit do Registro", items: [minecraft:diamond_block x2, minecraft:emerald_block x2, minecraft:golden_apple x4]}
+      - loot: epico
+      - xp: 80
+
+  - link: thaumcraft2:taumaturgo_supremo
+    at: [7, 29]

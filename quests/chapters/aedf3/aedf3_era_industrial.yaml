@@ -23,7 +23,7 @@ quests:
   type: main
   deps: [arvore_de_borracha]
   desc: |
-    Cinco tábuas em formato de "T" e você ganha a §eTorneira§r. Clique com ela nas manchas úmidas do tronco para sair resina. Não bata na árvore com a mão! Faça duas torneiras de uma vez, pois a durabilidade é baixinha e a resina vale ouro.
+    Cinco tábuas em formato de "T" e você ganha a §eTorneira§r. Clique com ela nas manchas úmidas do tronco para sair resina. Não bata na árvore com a mão! Faça duas torneiras de uma vez, pois a durabilidade é baixinha e a resina vale ouro. Procure uma mancha úmida para começar.
   tasks:
   - {get: 'IC2:itemTreetap'}
   rewards:
@@ -34,7 +34,7 @@ quests:
   type: main
   deps: [torneira_de_resina]
   desc: |
-    Resina assada na fornalha vira borracha, e no Extrator rende ainda mais. Junte §e8 borrachas§r para os primeiros cabos. Cada herói tinha seu "pomar de seringueiras", e você também terá. Replante as mudas e não falte resina.
+    Resina assada na fornalha vira borracha, e no Extrator rende ainda mais. Junte §e8 borrachas§r para os primeiros cabos. Cada herói tinha seu "pomar de seringueiras", e você também terá. Replante as mudas e não falte resina. Se a resina faltar, plante mais árvores e espere a mancha voltar. Quanto mais fábricas você montar, mais borracha vai consumir, então já pense em montar uma plantação grande de seringueiras com baús ao lado.
   tasks:
   - {get: 'ore:itemRubber x8'}
   rewards:
@@ -45,7 +45,7 @@ quests:
   type: main
   deps: [borracha_pronta]
   desc: |
-    Os dois metais mais importantes da indústria! O cobre vira cabo e o estanho vira cabo e lata. Procure minérios alaranjados (cobre) e esbranquiçados (estanho), funda na fornalha e junte 16 de cada. Quanto mais, melhor, pois o consumo nessa fase é grande.
+    Os dois metais mais importantes da indústria! O cobre vira cabo e o estanho vira cabo e lata. Procure minérios alaranjados (cobre) e esbranquiçados (estanho), funda na fornalha e junte 16 de cada. Quanto mais, melhor, pois o consumo nessa fase é grande. Guarde um bom estoque.
   tasks:
   - get: ['ore:ingotCopper x16', 'ore:ingotTin x16']
   rewards:
@@ -69,7 +69,7 @@ quests:
   type: normal
   deps: [bronze_da_industria]
   desc: |
-    Com o §eMartelo de Forja§r você bate lingotes sobre bigornas e transforma em placas de metal. Placas viram carcaças de máquinas, cabos reforçados e estruturas inteiras. A durabilidade acaba, então leve dois. Pense nele como o primeiro instrumento da indústria.
+    Com o §eMartelo de Forja§r você bate lingotes sobre bigornas e transforma em placas de metal. Placas viram carcaças de máquinas, cabos reforçados e estruturas inteiras. A durabilidade acaba, então leve dois. Pense nele como o primeiro instrumento da indústria. Também serve para fazer placas de ferro, estanho e cobre sobre a bancada, e os heróis juravam que a batida do martelo era a música da indústria nascendo. Leve duas unidades por segurança.
   tasks:
   - {get: 'IC2:itemToolForgeHammer'}
   rewards:
@@ -80,7 +80,7 @@ quests:
   type: main
   deps: [martelo_da_forja]
   desc: |
-    Cobre e borracha formam o §eCabo Isolado§r, que carrega energia (EU) sem dar choque. Cabo sem isolamento perde energia e machuca quem encosta, e cabo comprido perde ainda mais. Prepare 16 peças e já deixe um alicate para cortar. A rede elétrica começa aqui, Herói.
+    Cobre e borracha formam o §eCabo Isolado§r, que carrega energia (EU) sem dar choque. Cabo sem isolamento perde energia e machuca quem encosta, e cabo comprido perde ainda mais. Prepare 16 peças e já deixe um alicate para cortar. A rede elétrica começa aqui, Herói. Prefira sempre cabos isolados.
   tasks:
   - {get: 'IC2:itemCable x16'}
   rewards:
@@ -91,7 +91,7 @@ quests:
   type: main
   deps: [cabo_de_cobre]
   desc: |
-    Ferro, redstone e cabos de cobre formam o §eCircuito§r, o cérebro das máquinas. Quase tudo da Era Industrial leva um ou vários. Faça uma boa quantidade, pois você vai precisar de uma enxurrada deles para a primeira fábrica.
+    Ferro, redstone e cabos de cobre formam o §eCircuito§r, o cérebro das máquinas. Quase tudo da Era Industrial leva um ou vários. Faça uma boa quantidade, pois você vai precisar de uma enxurrada deles para a primeira fábrica. A receita leva ferro, redstone e cabos de cobre isolados, tudo no formato certo. Faça de quatro em quatro para não faltar, e guarde alguns para os primeiros projetos grandes da fábrica.
   tasks:
   - {get: 'IC2:itemPartCircuit x4'}
   rewards:
@@ -102,7 +102,7 @@ quests:
   type: main
   deps: [circuito_basico]
   desc: |
-    Oito lingotes de ferro em quadrado formam a §eCarcaça Básica§r, que dá origem a qualquer máquina simples. Guarde algumas na caixa de ferramentas. Dentro dela cabem os circuitos e os cabos.
+    Oito lingotes de ferro em quadrado formam a §eCarcaça Básica§r, que dá origem a qualquer máquina simples. Guarde algumas na caixa de ferramentas. Dentro dela cabem os circuitos e os cabos. Ela é feita com oito lingotes de ferro em volta de um espaço vazio na bancada, e serve de base para quase todas as máquinas simples, como triturador, extrator e compressor. Faça um lote e deixe num baú ao lado da bancada, que vai dar muito trabalho.
   tasks:
   - {get: 'IC2:blockMachine x2'}
   rewards:
@@ -126,7 +126,7 @@ quests:
   type: main
   deps: [gerador_de_luz]
   desc: |
-    O §eTriturador§r (macerador) quebra minério em pó e dobra o rendimento: dois pós a partir de um bloco de minério. Faça com ferro, pedregulho e um circuito. Esse é o mais importante passo para a indústria, porque todo o resto depende de minério sobrando.
+    O §eTriturador§r (macerador) quebra minério em pó e dobra o rendimento: dois pós a partir de um bloco de minério. Faça com ferro, pedregulho e um circuito. Esse é o mais importante passo para a indústria, porque todo o resto depende de minério sobrando. Coloque-o perto do baú de minérios.
   tasks:
   - {get: 'IC2:blockMachine:3'}
   rewards:
@@ -137,7 +137,7 @@ quests:
   type: main
   deps: [triturador]
   desc: |
-    Minério no triturador vira §eMinério Triturado§r, que na fornalha rende dois lingotes em vez de um. Passe seus estoques de ferro, cobre, estanho, ouro e prata pela máquina. Você vai ver o baú encher em poucos minutos. Isso é indústria, Herói!
+    Minério no triturador vira §eMinério Triturado§r, que na fornalha rende dois lingotes em vez de um. Passe seus estoques de ferro, cobre, estanho, ouro e prata pela máquina. Você vai ver o baú encher em poucos minutos. Isso é indústria, Herói! O resultado fica melhor ainda com o refinamento.
   tasks:
   - {get: 'IC2:itemCrushedOre:* x16'}
   rewards:
@@ -148,7 +148,7 @@ quests:
   type: normal
   deps: [minerio_dobrado]
   desc: |
-    Aqui ninguém mais precisa de carvão! A §eFornalha Elétrica§r funde itens com energia, rápida e silenciosa. Combine com o triturador e você processa minérios sem lenha. Um dos primeiros luxos da Era Industrial.
+    Aqui ninguém mais precisa de carvão! A §eFornalha Elétrica§r funde itens com energia, rápida e silenciosa. Combine com o triturador e você processa minérios sem lenha. Um dos primeiros luxos da Era Industrial. Ela é feita com ferro, redstone e uma fornalha comum, e ainda aceita upgrades de velocidade. Um detalhe: ela só consome energia enquanto funde, então nem precisa se preocupar com desperdício quando estiver parada.
   tasks:
   - {get: 'IC2:blockMachine:2'}
   rewards:
@@ -159,7 +159,7 @@ quests:
   type: normal
   deps: [fornalha_eletrica]
   desc: |
-    O §eExtrator§r tira o melhor das coisas: de uma resina saem três borrachas! Sozinho, ele substitui a fornalha para fazer borracha. Mais um ótimo motivo para manter aquele pomar de seringueiras funcionando.
+    O §eExtrator§r tira o melhor das coisas: de uma resina saem três borrachas! Sozinho, ele substitui a fornalha para fazer borracha. Mais um ótimo motivo para manter aquele pomar de seringueiras funcionando. Também processa outros materiais, como alguns minérios e itens de borracha; confira no NEI tudo o que ele aceita. Funciona com cabos de cobre e é uma peça que os heróis lendários colocavam em toda fábrica.
   tasks:
   - {get: 'IC2:blockMachine:4'}
   rewards:
@@ -170,7 +170,7 @@ quests:
   type: normal
   deps: [extrator]
   desc: |
-    O §eCompressor§r prensa materiais em formas mais densas: neve em gelo, areia em arenito, carvão em diamante (com alguns truques). Parte vital da sua linha de produção, e logo vira o dono do corredor de máquinas.
+    O §eCompressor§r prensa materiais em formas mais densas: neve em gelo, areia em arenito, carvão em diamante (com alguns truques). Parte vital da sua linha de produção, e logo vira o dono do corredor de máquinas. Com ele você faz placas densas, blocos de gelo e muitos materiais finos. Para funcionar, basta energia e o item certo no encaixe de entrada.
   tasks:
   - {get: 'IC2:blockMachine:5'}
   rewards:
@@ -181,7 +181,7 @@ quests:
   type: main
   deps: [compressor]
   desc: |
-    O §eBatBox§r guarda energia para quando o gerador falhar. Madeira, cobre e baterias formam a caixa; coloque uma ao lado do gerador e ligue tudo com cabos. Com ela você tem energia estável, mesmo quando as máquinas estiverem em pico. Não tem preço isso.
+    O §eBatBox§r guarda energia para quando o gerador falhar. Madeira, cobre e baterias formam a caixa; coloque uma ao lado do gerador e ligue tudo com cabos. Com ela você tem energia estável, mesmo quando as máquinas estiverem em pico. Não tem preço isso. Coloque uma bateria dentro dela.
   tasks:
   - {get: 'IC2:blockElectric'}
   rewards:
@@ -192,7 +192,7 @@ quests:
   type: normal
   deps: [bateria_da_caixa]
   desc: |
-    Itens indesejados vão para o §eReciclador§r e viram sucata. A sucata, por sua vez, é a matéria-prima da Matéria UU lá na frente. O reciclador é barulhento, mas vale cada ruído. Guarde todo lixo que encontrar, Herói.
+    Itens indesejados vão para o §eReciclador§r e viram sucata. A sucata, por sua vez, é a matéria-prima da Matéria UU lá na frente. O reciclador é barulhento, mas vale cada ruído. Guarde todo lixo que encontrar, Herói. Ele transforma itens indesejados em sucata, que serve de matéria-prima para a Matéria UU. Basta energia e um monte de itens inúteis no encaixe, que ele devora tudo.
   tasks:
   - {get: 'IC2:blockMachine:11'}
   rewards:
@@ -203,7 +203,7 @@ quests:
   type: normal
   deps: [reciclador]
   desc: |
-    Quando a rede some, ou quando alguma máquina não funciona, o §eLeitor de EU§r mostra o que está acontecendo. Ele indica fluxo, perdas e problemas de tensão. Ferramenta de diagnóstico indispensável para qualquer eletricista que se preze.
+    Quando a rede some, ou quando alguma máquina não funciona, o §eLeitor de EU§r mostra o que está acontecendo. Ele indica fluxo, perdas e problemas de tensão. Ferramenta de diagnóstico indispensável para qualquer eletricista que se preze. Clique com ele em um cabo ou em uma máquina para ler os dados. Bom para achar vazamentos de energia e confirmar se a tensão está ok.
   tasks:
   - {get: 'IC2:itemToolMEter'}
   rewards:
@@ -214,7 +214,7 @@ quests:
   type: normal
   deps: [leitor_de_eu]
   desc: |
-    A §eChave Inglesa§r desmonta máquinas sem destruí-las, devolvendo o bloco inteiro e a carcaça. Quebrar sem a chave desperdiça materiais, e você vai sentir isso no bolso. Faça uma logo, ela é barata.
+    A §eChave Inglesa§r desmonta máquinas sem destruí-las, devolvendo o bloco inteiro e a carcaça. Quebrar sem a chave desperdiça materiais, e você vai sentir isso no bolso. Faça uma logo, ela é barata. Clique com o botão direito na máquina para recuperá-la inteira, em vez de quebrá-la e perder materiais. Sem a chave você desperdiça peças, então faça uma assim que puder. Um bom herói nunca solta a sua.
   tasks:
   - {get: 'IC2:itemToolWrench'}
   rewards:
@@ -225,7 +225,7 @@ quests:
   type: normal
   deps: [chave_inglesa]
   desc: |
-    Uma picareta elétrica que come pedra! A §eBroca§r exige energia (leve uma bateria cheia) e rende muito mais velocidade. Conforme os heróis lendários avançavam, era a primeira ferramenta que todos queriam ter. Uma mina com broca é uma mina rápida.
+    Uma picareta elétrica que come pedra! A §eBroca§r exige energia (leve uma bateria cheia) e rende muito mais velocidade. Conforme os heróis lendários avançavam, era a primeira ferramenta que todos queriam ter. Uma mina com broca é uma mina rápida. Pode usar baterias recarregáveis ou a Mochila de Baterias para energizar.
   tasks:
   - {get: 'IC2:itemToolDrill:*'}
   rewards:
@@ -236,7 +236,7 @@ quests:
   type: normal
   deps: [broca_de_mineracao]
   desc: |
-    Fora da eletricidade, os heróis lendários também usavam o poder dos motores do BuildCraft. O §eMotor de Redstone§r é o mais simples: ele fornece energia mecânica para canos e máquinas. Use com a chave inglesa para girar a face e acender a primeira tocha mecânica.
+    Fora da eletricidade, os heróis lendários também usavam o poder dos motores do BuildCraft. O §eMotor de Redstone§r é o mais simples: ele fornece energia mecânica para canos e máquinas. Use com a chave inglesa para girar a face e acender a primeira tocha mecânica. Para ligar, basta um sinal de redstone.
   tasks:
   - {get: 'BuildCraft|Core:engineBlock'}
   rewards:
@@ -247,7 +247,7 @@ quests:
   type: normal
   deps: [bc_motor]
   desc: |
-    Canos de madeira puxam itens de baús. Com um motor ligado, eles transportam materiais sozinhos de um lado para outro. Experimente automatizar a mina: baú na ponta, cano de madeira e outro baú no destino. Simples, genial e divertido de montar.
+    Canos de madeira puxam itens de baús. Com um motor ligado, eles transportam materiais sozinhos de um lado para outro. Experimente automatizar a mina: baú na ponta, cano de madeira e outro baú no destino. Simples, genial e divertido de montar. Lembre que o cano de madeira só extrai itens de baús, e precisa de motor ao lado.
   tasks:
   - {get: 'BuildCraft|Transport:item.buildcraftPipe.pipeitemswood x8'}
   rewards:
@@ -271,7 +271,7 @@ quests:
   type: normal
   deps: [bc_pedreira]
   desc: |
-    O §eAço§r nasce do ferro refinado na fornalha de indução ou em fundição, e é a base das máquinas avançadas. Junte 8 lingotes. Mais forte e confiável, ele separa a fábrica caseira da indústria de verdade. O passo seguinte da jornada exige isso.
+    O §eAço§r nasce do ferro refinado na fornalha de indução ou em fundição, e é a base das máquinas avançadas. Junte 8 lingotes. Mais forte e confiável, ele separa a fábrica caseira da indústria de verdade. O passo seguinte da jornada exige isso. Use a Fornalha de Indução para acelerar a produção.
   tasks:
   - {get: 'ore:ingotSteel x8'}
   rewards:
@@ -282,7 +282,7 @@ quests:
   type: main
   deps: [aco_da_industria]
   desc: |
-    O §eMFE§r guarda muito mais energia que o BatBox e emite com tensão maior. Perfeito para ligar uma linha inteira de máquinas. Faça com ouro e cabos. É o coração de uma fábrica sólida.
+    O §eMFE§r guarda muito mais energia que o BatBox e emite com tensão maior. Perfeito para ligar uma linha inteira de máquinas. Faça com ouro e cabos. É o coração de uma fábrica sólida. Ele exige ouro, cabos de ouro isolados e uma carcaça de máquina, e armazena muito mais energia que a BatBox. Perfeito para ser o primeiro estoque grande da sua base. Use cabos adequados na saída.
   tasks:
   - {get: 'IC2:blockElectric:1'}
   rewards:
@@ -293,7 +293,7 @@ quests:
   type: main
   deps: [mfe]
   desc: |
-    O §eMFSU§r é o monstro das baterias: guarda milhões de EU! Se um MFE é o coração, o MFSU é o cofre inteiro. Faça um (leva muitos materiais, incluindo circuito avançado) e ligue a rede toda nele. Quando ele estiver cheio, você vai sentir orgulho.
+    O §eMFSU§r é o monstro das baterias: guarda milhões de EU! Se um MFE é o coração, o MFSU é o cofre inteiro. Faça um (leva muitos materiais, incluindo circuito avançado) e ligue a rede toda nele. Quando ele estiver cheio, você vai sentir orgulho. Cuide para ligar tudo com cabos adequados.
   tasks:
   - {get: 'IC2:blockElectric:2'}
   rewards:
@@ -304,7 +304,7 @@ quests:
   type: milestone
   deps: [mfsu]
   desc: |
-    Gerador roncando, triturador moendo, fornalha elétrica brilhando, extrator, compressor e um MFSU pronto para guardar o excesso. É assim que o povo lendário da Era do Futuro descrevia a primeira fábrica, e você acaba de montar a sua.
+    Gerador roncando, triturador moendo, fornalha elétrica brilhando, extrator, compressor e um MFSU pronto para guardar o excesso. É assim que o povo lendário da Era do Futuro descrevia a primeira fábrica, e você acaba de montar a sua. Peço licença para um aplauso, Herói. Cada cabo bem ligado ali é seu.
 
     Foi muito trabalho, Herói, e valeu cada cabo. A eletricidade agora corre por aqui, e o mundo parece diferente. Mas calma, ainda há céus e infernos para visitar. Prepare as botas, porque a próxima página é uma aventura bem mais quente: o §eNether§r!
   tasks:

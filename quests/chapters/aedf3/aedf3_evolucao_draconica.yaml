@@ -12,7 +12,7 @@ quests:
   type: portal
   deps_hidden: ['aedf3_energia_avancada:energia_milestone']
   desc: |
-    O draconium nasce nas ilhas do Fim. Atravesse o portal de novo (se ainda não for veterano) e prepare as ferramentas. Leve armadura boa, um balde, blocos e uma picareta de diamante. A viagem é longa, mas recompensa.
+    O draconium nasce nas ilhas do Fim. Atravesse o portal de novo (se ainda não for veterano) e prepare as ferramentas. Leve armadura boa, um balde, blocos e uma picareta de diamante. A viagem é longa, mas recompensa. Antes de partir, confira o inventário: poções, comida, blocos para ponte, arco e uma boa picareta. As ilhas externas do Fim ficam longe do centro, então vá com calma e marque o caminho de volta. Quem se perde por lá leva tempo para achar casa.
   tasks:
   - visit: {dim: 1, name: O Fim}
   rewards:
@@ -23,7 +23,7 @@ quests:
   type: main
   deps: [ida_ao_fim]
   desc: |
-    No Fim, os veios roxos brilhantes são o §eMinério de Draconium§r. Quebre com picareta de diamante e tome cuidado com Endermen. O veio é rico, e o fim é cheio de coisas boas para encontrar. Junte 16 blocos.
+    No Fim, os veios roxos brilhantes são o §eMinério de Draconium§r. Quebre com picareta de diamante e tome cuidado com Endermen. O veio é rico, e o fim é cheio de coisas boas para encontrar. Junte 16 blocos. Ele aparece só no Fim, espalhado nas ilhas.
   tasks:
   - {get: 'DraconicEvolution:draconiumOre x16'}
   rewards:
@@ -34,7 +34,7 @@ quests:
   type: main
   deps: [minerio_draconium]
   desc: |
-    Triturando o minério, sai o §ePó de Draconium§r. Faça no pulverizador do Thermal, no triturador ou no Mekanism. Pó é o ponto de partida para os lingotes. Quanto mais, melhor.
+    Triturando o minério, sai o §ePó de Draconium§r. Faça no pulverizador do Thermal, no triturador ou no Mekanism. Pó é o ponto de partida para os lingotes. Quanto mais, melhor. Qualquer triturador do pack serve: Thermal, Mekanism, IC2 ou EnderIO. Escolha o que tiver à mão e dê escala ao processo. Pó sobrando nunca é problema, porque a fundição devolve lingote com folga.
   tasks:
   - {get: 'ore:dustDraconium x16'}
   rewards:
@@ -45,7 +45,7 @@ quests:
   type: main
   deps: [po_draconium]
   desc: |
-    Funda o pó e junte §e16 lingotes§r. Cada um vale ouro, e o brilho roxo combina com quem ama estilo. Guarde e use com cuidado: todo o ramo dracônico passa por esse metal.
+    Funda o pó e junte §e16 lingotes§r. Cada um vale ouro, e o brilho roxo combina com quem ama estilo. Guarde e use com cuidado: todo o ramo dracônico passa por esse metal. Cada lingote vira núcleos, blocos, ferramentas e armaduras, então produza sem medo e guarde o estoque num baú de fácil acesso.
   tasks:
   - {get: 'ore:ingotDraconium x16'}
   rewards:
@@ -56,7 +56,7 @@ quests:
   type: main
   deps: [lingote_draconium]
   desc: |
-    Ouro, Draconium e um diamante: o §eNúcleo Dracônico§r é a base de todo item do ramo. Faça quatro para começar. Ele é a porta de entrada para máquinas, armas e armaduras.
+    Ouro, Draconium e um diamante: o §eNúcleo Dracônico§r é a base de todo item do ramo. Faça quatro para começar. Ele é a porta de entrada para máquinas, armas e armaduras. Veja a receita no NEI e monte em lote. Eles entram em praticamente toda máquina e equipamento do ramo, e o estoque sempre acaba rápido demais. Guarde com carinho e organize um baú só para eles.
   tasks:
   - {get: 'DraconicEvolution:draconicCore x4'}
   rewards:
@@ -67,7 +67,7 @@ quests:
   type: normal
   deps: [nucleo_draconico]
   desc: |
-    Obsidiana infundida com Draconium: mais forte e brilhante. Usada em estruturas, núcleos e máquinas. Quatro bastam para os primeiros projetos, mas faça um estoque.
+    Obsidiana infundida com Draconium: mais forte e brilhante. Usada em estruturas, núcleos e máquinas. Quatro bastam para os primeiros projetos, mas faça um estoque. Combine obsidiana com Draconium na receita de bancada que o NEI mostra. O bloco resultante é mais forte e usado em estruturas, altares e rituais. Não use em decoração à toa, porque o material é caro e vai fazer falta mais tarde.
   tasks:
   - {get: 'DraconicEvolution:infusedObsidian x4'}
   rewards:
@@ -78,7 +78,7 @@ quests:
   type: main
   deps: [obsidiana_infundida]
   desc: |
-    O §eInfusor de Energia§r transforma materiais comuns em versões carregadas de poder, em troca de RF. Ele é essencial para evoluir itens e núcleos. Coloque perto de uma boa fonte de energia.
+    O §eInfusor de Energia§r transforma materiais comuns em versões carregadas de poder, em troca de RF. Ele é essencial para evoluir itens e núcleos. Coloque perto de uma boa fonte de energia. Posicione perto de uma boa fonte de RF e dos Pilares. Coloque o item no centro e deixe a máquina trabalhar. Aos poucos, ele ganha poder. Parece lento, mas é isso que dá vida aos itens mais fortes.
   tasks:
   - {get: 'DraconicEvolution:energyInfuser'}
   rewards:
@@ -89,7 +89,7 @@ quests:
   type: normal
   deps: [infusor_de_energia]
   desc: |
-    Aqui as ferramentas ganham vantagens. O §eModificador§r permite acrescentar melhorias às suas armas e armaduras. É onde nasce a personalização do herói. Combine com baterias grandes.
+    Aqui as ferramentas ganham vantagens. O §eModificador§r permite acrescentar melhorias às suas armas e armaduras. É onde nasce a personalização do herói. Combine com baterias grandes. Abra o menu e escolha as melhorias para cada item. Dá para aumentar dano, alcance, eficiência e muito mais. Planeje o que quer antes de gastar materiais, e guarde espaço para as melhorias seguintes.
   tasks:
   - {get: 'DraconicEvolution:upgradeModifier'}
   rewards:
@@ -100,7 +100,7 @@ quests:
   type: main
   deps: [modificador_de_melhorias]
   desc: |
-    A moeda dos itens Wyvern. O §eNúcleo de Energia§r guarda e fornece RF para armas e armaduras. Faça quatro. O Wyvern é o primeiro nível do arsenal dracônico.
+    A moeda dos itens Wyvern. O §eNúcleo de Energia§r guarda e fornece RF para armas e armaduras. Faça quatro. O Wyvern é o primeiro nível do arsenal dracônico. Cada núcleo guarda RF, e o Infusor usa isso para alimentar itens. Armazene em local seguro e carregue regularmente. Sem energia, nada de arma ou armadura em ação.
   tasks:
   - {get: 'DraconicEvolution:draconiumEnergyCore x4'}
   rewards:
@@ -111,7 +111,7 @@ quests:
   type: main
   deps: [nucleo_energia_wyvern]
   desc: |
-    O Wither precisa estar morto, mas é para isso que servem as estrelas. Cada núcleo Wyvern leva uma, então junte as que puder. Se faltar, volte ao capítulo infernal e dê aquele susto no Wither.
+    O Wither precisa estar morto, mas é para isso que servem as estrelas. Cada núcleo Wyvern leva uma, então junte as que puder. Se faltar, volte ao capítulo infernal e dê aquele susto no Wither. Uma estrela para cada Núcleo Wyvern, sem atalhos. Se tiver só uma, comece pelo que mais importa. O Wither respawna sempre, então dá para repetir a luta quantas vezes quiser. Um grupo de amigos ajuda muito.
   tasks:
   - {get: 'minecraft:nether_star'}
   rewards:
@@ -122,7 +122,7 @@ quests:
   type: main
   deps: [estrela_nether_draconica]
   desc: |
-    O primeiro item "de verdade" do Draconic. O §eNúcleo Wyvern§r vira armas, ferramentas e armaduras. Sua forja precisa de Draconium, Estrela do Nether e muito RF. Guarde bem.
+    O primeiro item "de verdade" do Draconic. O §eNúcleo Wyvern§r vira armas, ferramentas e armaduras. Sua forja precisa de Draconium, Estrela do Nether e muito RF. Guarde bem. Confira os materiais no NEI, junte Draconium, energia e uma Estrela. O núcleo vira o miolo de armas, ferramentas, armaduras e dispositivos do ramo Wyvern. Faça quantos precisar, porque cada item novo consome um.
   tasks:
   - {get: 'DraconicEvolution:wyvernCore'}
   rewards:
@@ -133,7 +133,7 @@ quests:
   type: main
   deps: [nucleo_wyvern]
   desc: |
-    Uma picareta poderosa, com área de mineração e energia própria. A §ePicareta Wyvern§r mina em 3x3 ou 5x5 e é feita para quem faz grandes obras. Os heróis dizem que sentir o primeiro golpe dá arrepios.
+    Uma picareta poderosa, com área de mineração e energia própria. A §ePicareta Wyvern§r mina em 3x3 ou 5x5 e é feita para quem faz grandes obras. Os heróis dizem que sentir o primeiro golpe dá arrepios. Carregue antes de usar e ajuste o modo de mineração pelo menu de melhorias. É uma ferramenta enorme, que facilita grandes obras. Guarde o estoque de RF e use com carinho, que ela ainda será útil por muito tempo.
   tasks:
   - {get: 'DraconicEvolution:wyvernPickaxe'}
   rewards:
@@ -144,7 +144,7 @@ quests:
   type: main
   deps: [picareta_wyvern]
   desc: |
-    Dano alto, golpes rápidos e visual roxo e dourado. A §eEspada Wyvern§r usa RF e se melhora no Modificador. Vale cada lingote, principalmente nos próximos chefes.
+    Dano alto, golpes rápidos e visual roxo e dourado. A §eEspada Wyvern§r usa RF e se melhora no Modificador. Vale cada lingote, principalmente nos próximos chefes. Carregada, ela atravessa chefes, golpeia rápido e brilha de um jeito lindo. Combine com a armadura Wyvern e com algumas melhorias de dano. Cuidado para não gastar toda a energia numa só luta.
   tasks:
   - {get: 'DraconicEvolution:wyvernSword'}
   rewards:
@@ -155,7 +155,7 @@ quests:
   type: optional
   deps: [espada_wyvern]
   desc: |
-    Um arco potente, com flechas especiais. O §eArco Wyvern§r acerta de longe e causa danos extras. Combine com as flechas de Ender e derrube inimigos antes de chegarem perto.
+    Um arco potente, com flechas especiais. O §eArco Wyvern§r acerta de longe e causa danos extras. Combine com as flechas de Ender e derrube inimigos antes de chegarem perto. Mais potente que o arco comum, tem alcance maior e dano elevado. Carregue com RF e guarde flechas de Ender de reserva. Útil para derrubar Endermen à distância e atacar chefes sem se aproximar.
   tasks:
   - {get: 'DraconicEvolution:wyvernBow'}
   rewards:
@@ -166,7 +166,7 @@ quests:
   type: main
   deps: [arco_wyvern]
   desc: |
-    Peças que combinam bem com tudo que você já conquistou: capacete, peitoral, calças e botas Wyvern. Resistentes, recarregáveis e lindas. É o primeiro nível de armadura dracônica de verdade.
+    Peças que combinam bem com tudo que você já conquistou: capacete, peitoral, calças e botas Wyvern. Resistentes, recarregáveis e lindas. É o primeiro nível de armadura dracônica de verdade. Cada peça guarda RF e oferece proteção extra, com melhorias opcionais. Carregue as quatro e use sempre em expedições longas. É o conjunto mais bonito do ramo, com tons roxos que combinam com tudo.
   tasks:
   - get: ['DraconicEvolution:wyvernHelm', 'DraconicEvolution:wyvernChest', 'DraconicEvolution:wyvernLeggs',
       'DraconicEvolution:wyvernBoots']
@@ -178,7 +178,7 @@ quests:
   type: main
   deps: [armadura_wyvern]
   desc: |
-    O §eNúcleo de Energia§r é um tanque multibloco gigantesco. Cerca de 45 milhões de RF no nível 1 e centenas de bilhões nos maiores. Coloque no centro de um salão e construa o resto em volta. É a grande bateria da lenda.
+    O §eNúcleo de Energia§r é um tanque multibloco gigantesco. Cerca de 45 milhões de RF no nível 1 e centenas de bilhões nos maiores. Coloque no centro de um salão e construa o resto em volta. É a grande bateria da lenda. Estude o manual do mod.
   tasks:
   - {get: 'DraconicEvolution:energyStorageCore'}
   rewards:
@@ -189,7 +189,7 @@ quests:
   type: normal
   deps: [nucleo_de_energia]
   desc: |
-    Quatro geradores de partículas ativam a estrutura e dão aquele visual de poder. Posicione em volta do Núcleo, a no máximo dez blocos. Quando a energia flui, a sala inteira brilha.
+    Quatro geradores de partículas ativam a estrutura e dão aquele visual de poder. Posicione em volta do Núcleo, a no máximo dez blocos. Quando a energia flui, a sala inteira brilha. Eles se posicionam a no máximo dez blocos, um por canto do Núcleo. Clique com a chave especial para ativar o conjunto e acompanhe o efeito visual no centro da sala.
   tasks:
   - {get: 'DraconicEvolution:particleGenerator x4'}
   rewards:
@@ -200,7 +200,7 @@ quests:
   type: normal
   deps: [geradores_de_particulas]
   desc: |
-    Pilares enviam e recebem RF do Núcleo. Coloque dois, um para entrada e outro para saída. Alinhe com vidro entre o pilar e o núcleo.
+    Pilares enviam e recebem RF do Núcleo. Coloque dois, um para entrada e outro para saída. Alinhe com vidro entre o pilar e o núcleo. Posicione um de cada lado do Núcleo, alinhados com o vidro. Um recebe energia da rede e outro entrega para as máquinas. Verifique o alcance máximo de quinze blocos e use a chave inglesa para ajustar. Sem os pilares, o núcleo fica apenas bonito.
   tasks:
   - {get: 'DraconicEvolution:energyPylon x2'}
   rewards:
@@ -211,7 +211,7 @@ quests:
   type: optional
   deps: [pilares_de_energia]
   desc: |
-    Quanto maior o núcleo, mais RF. O nível 3 exige §e26 blocos de Draconium§r e dá mais de um bilhão de RF. Um bom projeto para o final de semana.
+    Quanto maior o núcleo, mais RF. O nível 3 exige §e26 blocos de Draconium§r e dá mais de um bilhão de RF. Um bom projeto para o final de semana. Os níveis crescem em tamanho, custo e capacidade. Cada nível exige um estoque maior de blocos de Draconium e redstone. Se não tiver tudo, comece com o nível menor e aumente aos poucos. É um projeto de longo prazo, mas muito gratificante.
   tasks:
   - {get: 'ore:blockDraconium x26'}
   rewards:
@@ -222,7 +222,7 @@ quests:
   type: main
   deps: [nucleo_nivel_3]
   desc: |
-    Item raro: o §eCoração do Dragão§r vem do Dragão do Fim. Guarde com muito cuidado, porque é o ingrediente do ritual de despertar. Sem ele, nada de Draconium Despertado.
+    Item raro: o §eCoração do Dragão§r vem do Dragão do Fim. Guarde com muito cuidado, porque é o ingrediente do ritual de despertar. Sem ele, nada de Draconium Despertado. Só aparece quando o Dragão do Fim é derrotado com a versão especial do mod. Se o seu dragão ainda não caiu, siga o capítulo dos Caçadores ou o ritual mais adiante. Guarde o coração com muito cuidado, porque ele é insubstituível.
   tasks:
   - {get: 'DraconicEvolution:dragonHeart'}
   rewards:
@@ -233,7 +233,7 @@ quests:
   type: main
   deps: [coracao_do_dragao]
   desc: |
-    Monte o altar no centro do Fim: Pedra de Ressurreição, glowstone, obsidiana, diamante e blocos carregados. Ao ativar, o dragão renasce. É o momento mais épico da série. Prepare arena, armadura e arco.
+    Monte o altar no centro do Fim: Pedra de Ressurreição, glowstone, obsidiana, diamante e blocos carregados. Ao ativar, o dragão renasce. É o momento mais épico da série. Prepare arena, armadura e arco. Monte o altar com a pedra, glowstone, obsidiana, diamante e blocos carregados nos lugares certos, siga as instruções do manual e ative. Não saia de perto, porque o dragão renasce com fúria e vai exigir toda a sua atenção.
   tasks:
   - {get: 'DraconicEvolution:draconium:1'}
   rewards:
@@ -245,7 +245,7 @@ quests:
   deps: [ritual_ressurreicao]
   icon: DraconicEvolution:dragonHeart
   desc: |
-    O Dragão ressurge, mais forte. Esta versão ataca com sopros e investidas, e cura-se com cristais. Derrube os cristais primeiro, depois ataque a cabeça. Tenha arco e armadura e a coragem dos antigos. Do coração dele nasce o Draconium Despertado.
+    O Dragão ressurge, mais forte. Esta versão ataca com sopros e investidas, e cura-se com cristais. Derrube os cristais primeiro, depois ataque a cabeça. Tenha arco e armadura e a coragem dos antigos. Do coração dele nasce o Draconium Despertado. A arena é a ilha central do Fim, com torres de obsidiana e cristais que o curam. Destrua todos com arco ou escalando, e depois ataque o dragão quando ele pousar sobre o portal. Leve armadura Wyvern carregada, flechas de sobra, comida e poções de cura. O sopro de roxo queima e as investidas empurram, então mantenha distância. Quando ele cair, o coração aparece. Respire, Herói, que a parte mais bonita ainda está por vir.
   tasks:
   - kill: {entity: DraconicEvolution.EnderDragon, count: 1}
   rewards:
@@ -257,7 +257,7 @@ quests:
   type: main
   deps: [dragao_renascido]
   desc: |
-    O metal definitivo, dourado e vivo. O §eDraconium Despertado§r é o material das armaduras e ferramentas dracônicas. Cada bloco custa uma fortuna em RF e matéria. Mas cada brilho vale a pena.
+    O metal definitivo, dourado e vivo. O §eDraconium Despertado§r é o material das armaduras e ferramentas dracônicas. Cada bloco custa uma fortuna em RF e matéria. Mas cada brilho vale a pena. Ele só nasce do ritual do dragão e da fusão de energia. Siga o guia do manual e planeje o consumo de RF. O brilho dourado do metal é inconfundível, e cada bloco guarda uma energia absurda.
   tasks:
   - {get: 'ore:blockDraconiumAwakened'}
   rewards:
@@ -268,7 +268,7 @@ quests:
   type: main
   deps: [draconium_despertado]
   desc: |
-    O §eNúcleo Despertado§r é a base de tudo no topo da escada. Feito de Draconium Despertado e Núcleos de Draconium. Faça um por vez, pois exige muita matéria-prima.
+    O §eNúcleo Despertado§r é a base de tudo no topo da escada. Feito de Draconium Despertado e Núcleos de Draconium. Faça um por vez, pois exige muita matéria-prima. Combine o Draconium Despertado com núcleos e energia. Veja a receita completa no NEI e organize tudo antes de começar. Cada núcleo é um tesouro, e as ferramentas e armaduras do topo dependem dele.
   tasks:
   - {get: 'DraconicEvolution:awakenedCore'}
   rewards:
@@ -279,7 +279,7 @@ quests:
   type: main
   deps: [nucleo_despertado]
   desc: |
-    A ferramenta mais poderosa que um herói pode segurar. A §ePicareta Dracônica§r mina em 7x7, com alcance e velocidade absurdos. Guarde e use com respeito. Foi essa que cavou a montanha das lendas.
+    A ferramenta mais poderosa que um herói pode segurar. A §ePicareta Dracônica§r mina em 7x7, com alcance e velocidade absurdos. Guarde e use com respeito. Foi essa que cavou a montanha das lendas. Carregue no Capacitor Dracônico e ajuste o alcance pelo menu de melhorias. Quebra blocos numa área enorme e entrega itens direto no inventário se configurar. Uma ferramenta de lenda, que nunca vai sair da sua mão.
   tasks:
   - {get: 'DraconicEvolution:draconicPickaxe'}
   rewards:
@@ -290,7 +290,7 @@ quests:
   type: main
   deps: [picareta_draconica]
   desc: |
-    Dano enorme, golpes que atravessam armaduras e brilho dourado. A §eEspada Dracônica§r é a arma do último capítulo. Cuidado com o consumo de RF e com a vaidade.
+    Dano enorme, golpes que atravessam armaduras e brilho dourado. A §eEspada Dracônica§r é a arma do último capítulo. Cuidado com o consumo de RF e com a vaidade. Combine com a armadura e as melhorias de dano para derrubar até o chefe mais bravo. Mantenha energia suficiente e cuide para não abusar do poder. Os heróis lendários riam ao contar que a espada precisava de recarga mais que de afiação.
   tasks:
   - {get: 'DraconicEvolution:draconicSword'}
   rewards:
@@ -301,7 +301,7 @@ quests:
   type: main
   deps: [espada_draconica]
   desc: |
-    Capacete, peitoral, calças e botas Dracônicos. A armadura mais resistente do pack, com habilidades próprias e energia embutida. Quem veste sente que o céu pode cair, e ele nem se importa.
+    Capacete, peitoral, calças e botas Dracônicos. A armadura mais resistente do pack, com habilidades próprias e energia embutida. Quem veste sente que o céu pode cair, e ele nem se importa. Cada peça precisa de núcleo despertado e energia. Aproveite as melhorias para voo, velocidade e proteção. Carregue antes de partir para o Caos. É o melhor conjunto do mod, e a sua proteção reflete cada esforço.
   tasks:
   - get: ['DraconicEvolution:draconicHelm', 'DraconicEvolution:draconicChest', 'DraconicEvolution:draconicLeggs',
       'DraconicEvolution:draconicBoots']
@@ -314,7 +314,7 @@ quests:
   deps: [armadura_draconica]
   icon: DraconicEvolution:chaosShard
   desc: |
-    Nas ilhas do Caos, a 10 mil blocos do centro, um gigante de cristal vigia. O §cGuardião do Caos§r é o chefe final do mod, com rajadas, cristais e fúria. Armadura dracônica carregada e energia de sobra, Herói. Dizem que poucos o enfrentaram. Seja um deles.
+    Nas ilhas do Caos, a 10 mil blocos do centro, um gigante de cristal vigia. O §cGuardião do Caos§r é o chefe final do mod, com rajadas, cristais e fúria. Armadura dracônica carregada e energia de sobra, Herói. Dizem que poucos o enfrentaram. Seja um deles. A ilha dele fica a milhares de blocos do centro do Fim. A viagem é longa, então leve comida, blocos, flechas e energia. O Guardião ataca com rajadas, cria escudos de cristal e se protege de golpes diretos. Destrua os cristais que o curam, depois acerte nos pontos fracos. Leve armadura dracônica totalmente carregada, poções e coragem. A luta é longa, mas termina em glória, e as lascas de cristal do chefe são o prêmio. Boa sorte, Herói, e respire entre as rajadas.
   tasks:
   - kill: {entity: DraconicEvolution.ChaosGuardian, count: 1}
   rewards:
@@ -326,7 +326,7 @@ quests:
   type: main
   deps: [guardiao_do_caos]
   desc: |
-    Das lascas do Guardião nasce o §eNúcleo Caótico§r, o maior de todos. Aqui você alcança o auge da engenharia dracônica. É também ingrediente do Reator e de equipamentos finais.
+    Das lascas do Guardião nasce o §eNúcleo Caótico§r, o maior de todos. Aqui você alcança o auge da engenharia dracônica. É também ingrediente do Reator e de equipamentos finais. Combine lascas do Guardião com núcleos despertados. Veja a receita no NEI e reúna os materiais. É a peça mais poderosa do mod e fecha a coleção de núcleos. Guarde bem.
   tasks:
   - {get: 'DraconicEvolution:chaoticCore'}
   rewards:
@@ -337,7 +337,7 @@ quests:
   type: optional
   deps: [nucleo_caotico]
   desc: |
-    O §eReator Dracônico§r produz energia em escala absurda, mas não perdoa erros. Monte estabilizadores, injetores e portões de fluxo direitinho. Estude o manual e jamais se apresse.
+    O §eReator Dracônico§r produz energia em escala absurda, mas não perdoa erros. Monte estabilizadores, injetores e portões de fluxo direitinho. Estude o manual e jamais se apresse. Construa com calma e estude o manual antes de acender qualquer coisa. Estabilizadores, injetores e portões precisam estar nos lugares certos. Erros custam caro. Opcional para quem quer a maior usina que o jogo oferece.
   tasks:
   - {get: 'DraconicEvolution:reactorCore'}
   rewards:
@@ -348,7 +348,7 @@ quests:
   type: milestone
   deps: [reator_draconico]
   desc: |
-    Wyvern, Despertado, Caótico e a picareta de sete por sete. Você subiu a escada inteira, Herói, e olhe o que há lá no topo: uma ferramenta capaz de cavar um mundo. Os heróis da Era do Futuro iam ficar de queixo caído.
+    Wyvern, Despertado, Caótico e a picareta de sete por sete. Você subiu a escada inteira, Herói, e olhe o que há lá no topo: uma ferramenta capaz de cavar um mundo. Os heróis da Era do Futuro iam ficar de queixo caído. Olhe só o que você já tem nas mãos: a mais alta escada do mod. Vencer um dragão, domar um guardião de cristal e cavar montanhas com uma ferramenta só.
 
     Só falta um degrau, o que ninguém tem certeza de que existe. Nas lendas, alguns falavam num metal que não pesa e numa espada que não acaba. Preparado para o §eInfinito§r?
   tasks:

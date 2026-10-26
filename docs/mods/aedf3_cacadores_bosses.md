@@ -17,4 +17,4 @@ Memórias de outros heróis, página sete. Dizem que havia uma estante na vila, 
 
 ## Marcos exportados
 
-* `aedf3_cacadores_bosses:caçadores_milestone`
+* `aedf3_cacadores_bosses:cacadores_milestone`

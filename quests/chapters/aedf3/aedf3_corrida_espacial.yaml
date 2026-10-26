@@ -12,7 +12,7 @@ quests:
   type: main
   deps_hidden: ['aedf3_rumo_infinito:infinito_milestone']
   desc: |
-    Aço e alumínio, os dois metais do astronauta. Procure o minério, passe pela fundição e junte as quantidades. É um projeto de construção, e a lista de compras é longa. Faça uma pausa para respirar e vá em frente.
+    Aço e alumínio, os dois metais do astronauta. Procure o minério, passe pela fundição e junte as quantidades. É um projeto de construção, e a lista de compras é longa. Faça uma pausa para respirar e vá em frente. Dica: use a fundição ou fornalha elétrica para acelerar.
   tasks:
   - get: ['ore:ingotAluminum x24', 'ore:ingotSteel x16']
   rewards:
@@ -23,7 +23,7 @@ quests:
   type: main
   deps: [metais_espaciais]
   desc: |
-    Para circuitos, silício e wafers. O Fabricador de Circuitos junta os materiais e entrega os wafers. Os heróis lendários chamavam isso de "pão de astronauta". Prepare um estoque.
+    Para circuitos, silício e wafers. O Fabricador de Circuitos junta os materiais e entrega os wafers. Os heróis lendários chamavam isso de "pão de astronauta". Prepare um estoque. O silício vem de minério de silício ou de outras fontes, e os wafers saem do Fabricador de Circuitos, em versões básica, avançada e solar. Cada foguete exige bastante, então faça com calma e guarde num baú. Prepare tudo antes de iniciar a construção.
   tasks:
   - get: ['ore:itemSilicon x16', 'ore:waferBasic x6']
   rewards:
@@ -34,7 +34,7 @@ quests:
   type: normal
   deps: [silicio_wafers]
   desc: |
-    As máquinas do Galacticraft têm sua própria energia (GJ). O §eGerador de Carvão§r é o primeiro degrau, simples e honesto. Ligue a fios de alumínio. Painéis solares e baterias vêm depois.
+    As máquinas do Galacticraft têm sua própria energia (GJ). O §eGerador de Carvão§r é o primeiro degrau, simples e honesto. Ligue a fios de alumínio. Painéis solares e baterias vêm depois. Queima carvão para produzir energia. Aceita combustível sólido e entrega GJ para fios de alumínio. Perfeito para ligar as primeiras máquinas do Galacticraft. Mais tarde, os painéis solares assumem esse trabalho.
   tasks:
   - {get: 'GalacticraftCore:tile.machine'}
   rewards:
@@ -45,7 +45,7 @@ quests:
   type: normal
   deps: [gerador_gc]
   desc: |
-    No espaço, o sol é o seu melhor amigo. O §ePainel Solar Básico§r do Galacticraft gera energia sem queimar nada. Combine com baterias e conecte à base lunar. Em planetas com mais luz, rende ainda mais.
+    No espaço, o sol é o seu melhor amigo. O §ePainel Solar Básico§r do Galacticraft gera energia sem queimar nada. Combine com baterias e conecte à base lunar. Em planetas com mais luz, rende ainda mais. Posicione ao ar livre e conecte com fio de alumínio ao resto da base.
   tasks:
   - {get: 'GalacticraftCore:tile.solar'}
   rewards:
@@ -56,7 +56,7 @@ quests:
   type: main
   deps: [painel_solar_gc]
   desc: |
-    A compressão é o coração do foguete. O §eCompressor§r (carvão) transforma lingotes em placas densas. Aço comprimido é o material estrutural de todo o foguete. Faça 16 placas.
+    A compressão é o coração do foguete. O §eCompressor§r (carvão) transforma lingotes em placas densas. Aço comprimido é o material estrutural de todo o foguete. Faça 16 placas. Ela comprime lingotes e outras matérias em placas densas. Alimente com combustível e coloque dois lingotes lado a lado, que ela devolve uma placa. É o coração da produção de foguetes.
   tasks:
   - get: ['GalacticraftCore:tile.machine:12', 'ore:compressedSteel x16']
   rewards:
@@ -67,7 +67,7 @@ quests:
   type: normal
   deps: [prensa_de_compressao]
   desc: |
-    Com ele você fabrica wafers e circuitos usados em quase tudo. Dê energia, coloque silício e redstone. É lento, mas valioso. Perfeito para ligar e esquecer.
+    Com ele você fabrica wafers e circuitos usados em quase tudo. Dê energia, coloque silício e redstone. É lento, mas valioso. Perfeito para ligar e esquecer. Coloque silício, redstone e outros materiais para fabricar wafers. Precisa de energia e leva um tempinho. Ligue e vá fazer outra coisa, que as placas ficam prontas sozinhas. Esse equipamento é indispensável para os circuitos do foguete.
   tasks:
   - {get: 'GalacticraftCore:tile.machine2:4'}
   rewards:
@@ -78,7 +78,7 @@ quests:
   type: main
   deps: [fabricador_de_circuitos]
   desc: |
-    Aqui nasce o foguete! A §eBancada de Foguete§r (NASA) exige aço comprimido e muita paciência. Uma estrutura bonita, com encaixes precisos. Cada peça do foguete tem seu lugar.
+    Aqui nasce o foguete! A §eBancada de Foguete§r (NASA) exige aço comprimido e muita paciência. Uma estrutura bonita, com encaixes precisos. Cada peça do foguete tem seu lugar. Coloque na base e abra o menu para ver o desenho do foguete. Preencha cada espaço com as peças certas e retire o resultado. É a oficina oficial da corrida espacial, e fica linda quando acesa à noite.
   tasks:
   - {get: 'GalacticraftCore:tile.rocketWorkbench'}
   rewards:
@@ -89,7 +89,7 @@ quests:
   type: main
   deps: [bancada_nasa]
   desc: |
-    Peças do foguete: o motor, as aletas e o cone. Feitos com aço comprimido, latas de combustível e outros. Cada peça carrega a ambição de quem quer chegar ao céu.
+    Peças do foguete: o motor, as aletas e o cone. Feitos com aço comprimido, latas de combustível e outros. Cada peça carrega a ambição de quem quer chegar ao céu. Veja o desenho completo no menu da bancada, e comece pelas peças mais simples. Placas de aço comprimido, latas e circuitos entram em todas. Organize os materiais antes de começar.
   tasks:
   - get: ['GalacticraftCore:item.engine', 'GalacticraftCore:item.rocketFins x4']
   rewards:
@@ -100,7 +100,7 @@ quests:
   type: main
   deps: [motor_e_aletas]
   desc: |
-    Foguete montado! O §eFoguete Tier 1§r leva até a Lua com combustível e oxigênio. Ainda falta a plataforma de lançamento e o combustível. Quando ele estiver parado na plataforma, tire uma foto, Herói.
+    Foguete montado! O §eFoguete Tier 1§r leva até a Lua com combustível e oxigênio. Ainda falta a plataforma de lançamento e o combustível. Quando ele estiver parado na plataforma, tire uma foto, Herói. Monte as peças na bancada, coloque o foguete na plataforma e carregue combustível. Abra a tela de lançamento e escolha o destino. Quando o contador chegar a zero, segure firme!
   tasks:
   - {get: 'GalacticraftCore:item.spaceship:*'}
   rewards:
@@ -111,7 +111,7 @@ quests:
   type: main
   deps: [foguete_t1]
   desc: |
-    A plataforma de lançamento é um quadrado 3x3 de blocos de pouso. Posicione o foguete no centro e conecte o carregador de combustível ao lado. Segurança em primeiro lugar!
+    A plataforma de lançamento é um quadrado 3x3 de blocos de pouso. Posicione o foguete no centro e conecte o carregador de combustível ao lado. Segurança em primeiro lugar! Mantenha uma distância segura quando for testar um lançamento. Monte um quadrado de 3x3 com os blocos de pouso, e deixe espaço livre em volta e acima. Centralize o foguete e instale o carregador de combustível ao lado. Teste a conexão antes de fechar as paredes da base.
   tasks:
   - {get: 'GalacticraftCore:tile.landingPad x9'}
   rewards:
@@ -122,7 +122,7 @@ quests:
   type: main
   deps: [plataforma]
   desc: |
-    O combustível sai do óleo. A §eRefinaria§r transforma petróleo em combustível de foguete. Procure poças de petróleo (as manchas escuras no deserto e no oceano) e use o extrator. Boa sorte!
+    O combustível sai do óleo. A §eRefinaria§r transforma petróleo em combustível de foguete. Procure poças de petróleo (as manchas escuras no deserto e no oceano) e use o extrator. Boa sorte! Coloque o petróleo na entrada, dê energia e retire o combustível na saída. Use baldes ou latas para guardar. Sem a refinaria, nada de viagem espacial, então ligue logo.
   tasks:
   - {get: 'GalacticraftCore:tile.refinery'}
   rewards:
@@ -133,7 +133,7 @@ quests:
   type: main
   deps: [petroleo_e_refinaria]
   desc: |
-    Um balde de §eCombustível§r na mão significa que a Lua está ao alcance. O foguete T1 precisa de pelo menos um tanque cheio. Mantenha reservas e jamais decole com o tanque pela metade.
+    Um balde de §eCombustível§r na mão significa que a Lua está ao alcance. O foguete T1 precisa de pelo menos um tanque cheio. Mantenha reservas e jamais decole com o tanque pela metade. Também aceita combustível de outros mods, como BuildCraft, mas confira no NEI. Encha o foguete pelo carregador de combustível para economizar o trabalho.
   tasks:
   - {get: 'GalacticraftCore:item.bucketFuel'}
   rewards:
@@ -144,7 +144,7 @@ quests:
   type: main
   deps: [combustivel]
   desc: |
-    Sem oxigênio, o astronauta sufoca em segundos. Use a §eMáscara de Oxigênio§r, o equipamento e os tanques cheios. Encha no Compressor de Oxigênio e confira o medidor.
+    Sem oxigênio, o astronauta sufoca em segundos. Use a §eMáscara de Oxigênio§r, o equipamento e os tanques cheios. Encha no Compressor de Oxigênio e confira o medidor. Equipe a máscara no capacete, o equipamento no peito e os tanques no lugar certo. O medidor mostra quanto oxigênio resta. Reabasteça sempre antes de viajar e carregue tanques de reserva. Parece muita coisa, mas vira rotina rapidinho.
   tasks:
   - get: ['GalacticraftCore:item.oxygenMask', 'GalacticraftCore:item.oxygenGear']
   rewards:
@@ -155,7 +155,7 @@ quests:
   type: normal
   deps: [mascara_oxigenio]
   desc: |
-    Caso o foguete falhe, o paraquedas salva. Faça com lã e fios, e use quando precisar pousar sozinho. Os heróis lendários nunca decolavam sem um no inventário.
+    Caso o foguete falhe, o paraquedas salva. Faça com lã e fios, e use quando precisar pousar sozinho. Os heróis lendários nunca decolavam sem um no inventário. Use quando o foguete falhar ou na volta do espaço. Escolha uma cor bonita para o seu e deixe sempre no inventário. Um herói precavido vale por dois.
   tasks:
   - {get: 'GalacticraftCore:item.parachute:*'}
   rewards:
@@ -166,7 +166,7 @@ quests:
   type: normal
   deps: [paraquedas]
   desc: |
-    Plantas viram oxigênio. O §eColetor§r puxa o ar produzido por folhas e árvores próximas. Combine com um Selador e uma base, e você respira sem tanque. Uma estufa no espaço é um sonho antigo.
+    Plantas viram oxigênio. O §eColetor§r puxa o ar produzido por folhas e árvores próximas. Combine com um Selador e uma base, e você respira sem tanque. Uma estufa no espaço é um sonho antigo. Plante árvores, grama e folhas em volta da base e o coletor trabalha sozinho. Combine com tanque e distribuidor.
   tasks:
   - {get: 'GalacticraftCore:tile.oxygenCollector'}
   rewards:
@@ -177,7 +177,7 @@ quests:
   type: normal
   deps: [coletor_oxigenio]
   desc: |
-    O §eSelador§r veda a base e o §eDistribuidor§r espalha o oxigênio. Cuide para que não haja vazamentos. Uma bolha de ar pode salvar a vida e a expedição.
+    O §eSelador§r veda a base e o §eDistribuidor§r espalha o oxigênio. Cuide para que não haja vazamentos. Uma bolha de ar pode salvar a vida e a expedição. Ele fecha o ambiente e libera o ar. Coloque em um ponto central da base e ligue o distribuidor ao lado. Teste as paredes antes de tirar a máscara. Qualquer buraco pequeno pode fazer o oxigênio sumir.
   tasks:
   - get: ['GalacticraftCore:tile.sealer', 'GalacticraftCore:tile.distributor']
   rewards:
@@ -189,7 +189,7 @@ quests:
   deps: [selador_oxigenio]
   icon: GalacticraftCore:item.flag
   desc: |
-    Um pequeno passo para o Herói. O silêncio é absoluto, a poeira é cinza e a Terra pende no céu, azul. Planeje um posto de base, instale o selador e explore com cuidado. As lendas diziam que a Lua é cheia de dungeons e mistérios.
+    Um pequeno passo para o Herói. O silêncio é absoluto, a poeira é cinza e a Terra pende no céu, azul. Planeje um posto de base, instale o selador e explore com cuidado. As lendas diziam que a Lua é cheia de dungeons e mistérios. Antes de explorar, monte um abrigo selado e um ponto de energia. Leve o foguete de volta quando estiver pronto, ou use o paraquedas se algo falhar. O silêncio daqui é profundo, e a vista da Terra no céu é uma das mais bonitas do jogo.
   tasks:
   - visit: {dim: -28, name: Lua}
   rewards:
@@ -200,7 +200,7 @@ quests:
   type: normal
   deps: [lua]
   desc: |
-    Meteoritos caem de vez em quando, trazendo §eFerro Meteórico§r. Quebre os blocos e funda. O metal é denso, resistente e indispensável para o segundo tier. Guarde bastante.
+    Meteoritos caem de vez em quando, trazendo §eFerro Meteórico§r. Quebre os blocos e funda. O metal é denso, resistente e indispensável para o segundo tier. Guarde bastante. Meteoritos caem em momentos aleatórios no mundo. Procure crateras com blocos escuros e use a picareta. Funda o material para obter lingotes, depois comprima para fazer placas. Metal denso e valioso, muito requisitado nas próximas fases.
   tasks:
   - {get: 'GalacticraftCore:item.meteoricIronIngot x16'}
   rewards:
@@ -211,7 +211,7 @@ quests:
   type: normal
   deps: [ferro_meteorico]
   desc: |
-    Cobre, estanho e queijo lunar (sim, existe!) esperam sob a poeira. Minere e leve para casa. A mineração lunar não tem mistério, mas exige tanque de oxigênio cheio.
+    Cobre, estanho e queijo lunar (sim, existe!) esperam sob a poeira. Minere e leve para casa. A mineração lunar não tem mistério, mas exige tanque de oxigênio cheio. Procure cobre e estanho lunar na superfície. Explore cavernas próximas, sempre com tanque de oxigênio cheio. Os minérios daqui rendem mais que os da Terra. Boa expedição!
   tasks:
   - get: ['GalacticraftCore:tile.moonBlock x8', 'GalacticraftCore:tile.moonBlock:1 x8']
   rewards:
@@ -222,7 +222,7 @@ quests:
   type: optional
   deps: [minerios_lunares]
   desc: |
-    A lenda é verdade, Herói: a Lua tem queijo. Procure as formas esbranquiçadas e colete. Faça um bloco e deixe no refeitório da base. Os heróis do passado nunca explicaram como isso é possível.
+    A lenda é verdade, Herói: a Lua tem queijo. Procure as formas esbranquiçadas e colete. Faça um bloco e deixe no refeitório da base. Os heróis do passado nunca explicaram como isso é possível. Dá para fazer blocos para a base. Colete os pedaços de queijo e use na culinária da base. Lenda confirmada, Herói! O sabor é... lunar.
   tasks:
   - {get: 'GalacticraftCore:item.cheeseCurd x8'}
   rewards:
@@ -234,7 +234,7 @@ quests:
   deps: [queijo_lunar]
   icon: GalacticraftCore:item.sensorGlasses
   desc: |
-    No espaço, zumbis, esqueletos e creepers evoluíram, ficando mais fortes e respirando o vazio. Leve armadura boa e combata em grupo. Derrote §e3 zumbis evoluídos§r e colete os itens que deixam.
+    No espaço, zumbis, esqueletos e creepers evoluíram, ficando mais fortes e respirando o vazio. Leve armadura boa e combata em grupo. Derrote §e3 zumbis evoluídos§r e colete os itens que deixam. Eles aparecem à noite, nas cavernas e perto dos calabouços. Levam pouco tempo para chegar, então não fique parado. Mate com espada boa e armadura firme. Colete os itens que caem para fabricar equipamentos.
   tasks:
   - kill: {entity: GalacticraftCore.EvolvedZombie, count: 3}
   rewards:
@@ -246,7 +246,7 @@ quests:
   deps: [monstros_evoluidos]
   icon: GalacticraftCore:item.key
   desc: |
-    Sob a superfície, o calabouço do §cEsqueleto Chefe§r guarda a chave dos tesouros. Entre pelo labirinto, enfrente os guardiões e vença o chefe. A recompensa são esquemáticos para novos foguetes. Uma das lutas mais emocionantes da Lua.
+    Sob a superfície, o calabouço do §cEsqueleto Chefe§r guarda a chave dos tesouros. Entre pelo labirinto, enfrente os guardiões e vença o chefe. A recompensa são esquemáticos para novos foguetes. Uma das lutas mais emocionantes da Lua. O calabouço fica enterrado, com corredores de tijolos lunares, salas fechadas e armadilhas. No fundo, o Esqueleto Chefe protege o baú com a chave. Ele atira flechas, invoca ajudantes e tem muita vida. Entre com armadura forte, arma afiada, poções de cura e tanques de oxigênio cheios. Fique em movimento, ataque e recue. Quando o chefe cair, a chave abre um tesouro valioso com esquemáticos para foguetes novos. Que final de aventura, Herói!
   tasks:
   - kill: {entity: GalacticraftCore.EvolvedSkeletonBoss, count: 1}
   rewards:
@@ -258,7 +258,7 @@ quests:
   type: optional
   deps: [calabouco_lunar]
   desc: |
-    Um carrinho para passear na Lua! O §eBuggy§r precisa de esquemático, rodas e combustível. Perfeito para explorar a superfície. Um pouco de diversão no meio de tanto trabalho.
+    Um carrinho para passear na Lua! O §eBuggy§r precisa de esquemático, rodas e combustível. Perfeito para explorar a superfície. Um pouco de diversão no meio de tanto trabalho. Precisa do esquemático, de rodas e de combustível. Dá para guardar itens no porta-malas e passear à vontade pela superfície. Ótimo para conhecer os arredores com rapidez e conforto.
   tasks:
   - {get: 'GalacticraftCore:item.buggy:*'}
   rewards:
@@ -269,7 +269,7 @@ quests:
   type: main
   deps: [buggy_lunar]
   desc: |
-    Com ferro meteórico, painéis de blindagem e um esquemático, o §eFoguete Tier 2§r chega a Marte. Mais complicado e mais caro, mas o resultado é uma máquina bonita. Boa viagem, Herói.
+    Com ferro meteórico, painéis de blindagem e um esquemático, o §eFoguete Tier 2§r chega a Marte. Mais complicado e mais caro, mas o resultado é uma máquina bonita. Boa viagem, Herói. Use o esquemático encontrado no calabouço da Lua. Monte as peças, abasteça e escolha o destino. Marte espera.
   tasks:
   - {get: 'GalacticraftMars:item.spaceshipTier2:*'}
   rewards:
@@ -281,7 +281,7 @@ quests:
   deps: [foguete_t2]
   icon: GalacticraftMars:tile.mars
   desc: |
-    O planeta vermelho! Poeira laranja, vulcões de lodo e cavernas gigantes. Marte tem criaturas diferentes, minérios novos e uma dungeon sinistra. Marque a plataforma de pouso e descubra tudo. Aproveite o céu rosa.
+    O planeta vermelho! Poeira laranja, vulcões de lodo e cavernas gigantes. Marte tem criaturas diferentes, minérios novos e uma dungeon sinistra. Marque a plataforma de pouso e descubra tudo. Aproveite o céu rosa. Procure a plataforma de pouso, monte uma base selada e levante a energia. O planeta tem minérios novos, lodo, criaturas diferentes e uma dungeon sinistra. Leve armadura boa, comida e oxigênio sobrando. Os heróis lendários sonharam muito com essa vista.
   tasks:
   - visit: {dim: -29, name: Marte}
   rewards:
@@ -292,7 +292,7 @@ quests:
   type: main
   deps: [marte]
   desc: |
-    O metal marciano: §eDesh§r. Forte, leve e brilhante. Minere os blocos azulados e funda. Vai virar ferramentas, armaduras e peças de foguete. Muito valioso.
+    O metal marciano: §eDesh§r. Forte, leve e brilhante. Minere os blocos azulados e funda. Vai virar ferramentas, armaduras e peças de foguete. Muito valioso. Procure o minério azul nas cavernas e funda no forno. Depois comprima para formar placas. O Desh serve de ferramenta, armadura e componente de foguete tier 3. Guarde um bom estoque, porque ele é muito usado.
   tasks:
   - {get: 'ore:ingotDesh x24'}
   rewards:
@@ -304,7 +304,7 @@ quests:
   deps: [desh]
   icon: GalacticraftMars:item.key
   desc: |
-    O calabouço marciano guarda um §cCreeper gigante§r que explode ao menor deslize. Entre com cuidado, desvie das armadilhas e golpeie de longe. Tesouros esperam no fundo. É um dos grandes momentos da corrida espacial.
+    O calabouço marciano guarda um §cCreeper gigante§r que explode ao menor deslize. Entre com cuidado, desvie das armadilhas e golpeie de longe. Tesouros esperam no fundo. É um dos grandes momentos da corrida espacial. O calabouço marciano é uma estrutura escura de pedra e lama, cheia de armadilhas e corredores. No fundo, o Creeper Chefe de Marte, gigante, cheio de vida e explosões, guarda um baú de tesouros com esquemáticos. Mantenha distância, ataque com arco ou espada e recue quando ele inchar. Leve armadura reforçada, poções de cura e tanques de oxigênio cheios. A recompensa vale cada susto.
   tasks:
   - kill: {entity: GalacticraftMars.CreeperBoss, count: 1}
   rewards:
@@ -317,7 +317,7 @@ quests:
   deps: [creeper_chefe]
   icon: GalacticraftMars:tile.asteroidsBlock
   desc: |
-    Com o Foguete Tier 3, o céu se abre: o cinturão de asteroides flutua como ilhas de rocha. Salte entre eles com cuidado, pois não há chão embaixo. Leve gancho e tanque cheio. Titânio e gelo denso esperam por você.
+    Com o Foguete Tier 3, o céu se abre: o cinturão de asteroides flutua como ilhas de rocha. Salte entre eles com cuidado, pois não há chão embaixo. Leve gancho e tanque cheio. Titânio e gelo denso esperam por você. Os blocos flutuam no vazio, e uma queda é fatal. Use blocos para fazer pontes seguras e leve o gancho para pular entre eles. Não esqueça do tanque de oxigênio cheio e de um foguete de volta.
   tasks:
   - visit: {dim: -30, name: Asteroides}
   rewards:
@@ -328,7 +328,7 @@ quests:
   type: normal
   deps: [asteroides]
   desc: |
-    O metal dos asteroides, leve e resistente. O §eTitânio§r faz armaduras e ferramentas de ponta. Reúna 24 lingotes e guarde para o futuro.
+    O metal dos asteroides, leve e resistente. O §eTitânio§r faz armaduras e ferramentas de ponta. Reúna 24 lingotes e guarde para o futuro. Procure o minério em asteroides, com picareta de ferro ou melhor. Funda no forno e comprima para fazer placas. É leve, resistente e valioso. Guarde para fabricar armaduras, ferramentas e componentes de naves.
   tasks:
   - {get: 'ore:ingotTitanium x24'}
   rewards:
@@ -339,7 +339,7 @@ quests:
   type: milestone
   deps: [titanio]
   desc: |
-    Lua, Marte e Asteroides, o céu inteiro na palma da mão. Nos episódios mais loucos da Era do Futuro, a Casa do Futuro foi parar no espaço, e alguém até levou porcos para lá. Agora, com a sua nave pronta, você pode fazer o mesmo.
+    Lua, Marte e Asteroides, o céu inteiro na palma da mão. Nos episódios mais loucos da Era do Futuro, a Casa do Futuro foi parar no espaço, e alguém até levou porcos para lá. Agora, com a sua nave pronta, você pode fazer o mesmo. Olhe para as estrelas e lembre do caminho que fez. Aprendeu a respirar no vácuo, pousou em dois mundos e voou entre pedras no espaço profundo.
 
     Mas toda jornada termina, Herói. A última página já se abre, e ela guarda a despedida. Leve o coração cheio e as mãos limpas: chegou §eO Fim§r.
   tasks:

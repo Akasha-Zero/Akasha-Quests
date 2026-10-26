@@ -1,0 +1,731 @@
+chapter:
+  id: ato3
+  title: "Crônicas Akáshicas: Ato III — Os Reinos Perdidos"
+  color: "§6"
+  order: 3
+  icon: minecraft:ender_eye
+  desc: |
+    Crepúsculo, Céus e Areias: os três arquivos externos do Registro.
+    Cada reino guarda uma Chave.
+
+quests:
+
+  - id: reinos_abertura
+    title: "Os Reinos Perdidos"
+    type: main
+    deps: [ato2:fim_ato2]
+    at: [0, 0]
+    icon: minecraft:ender_eye
+    desc: |
+      Herói, chegou a hora de olhar além do mundo comum. Antes da Fratura, três reinos serviam de §earquivos externos§r do Registro: o §5Crepúsculo§r, os §bCéus§r e as §6Areias§r. Cada um guardou páginas importantes e cada um tem um guardião que não perdoa visitas despreparadas.
+
+      Cada reino esconde uma §eChave§r. Reunir as três é o que abre o caminho para os Selos do Ato IV. Traga armadura boa, comida de sobra e uma cama fora do alcance. Marque a caixa quando estiver pronto para a viagem.
+    tasks:
+      - check
+    rewards:
+      - xp: 15
+      - loot: comum
+
+  - id: mapa_reinos
+    title: "Como os Reinos se Conhecem"
+    type: info
+    deps: [reinos_abertura]
+    at: [1, 0]
+    icon: minecraft:map
+    desc: |
+      Os três reinos não eram vizinhos distraídos. Os Lich do Crepúsculo negociavam páginas com os Faraós das Areias, e as Valquírias dos Céus vigiavam ambos lá de cima, com uma pena de desconfiança em cada olhar.
+
+      Quando a Fratura aconteceu, os acordos se romperam e cada reino se trancou em si mesmo. Por isso as Chaves estão tão bem guardadas. Se você conseguir passar por todos eles, vai entender por que cada um escondeu o que escondeu.
+      Marque a caixa se reconhece que os três reinos eram uma única biblioteca.
+    tasks:
+      - check
+    rewards:
+      - xp: 10
+
+  - id: portal_crepusculo
+    title: "Atravessando o Véu"
+    type: portal
+    deps: [mapa_reinos, twilight:portal_crepusculo]
+    at: [2, 0]
+    icon: minecraft:flower_pot
+    desc: |
+      O Crepúsculo fica atrás de um poço de diamante rodeado de flores, onde um raio abre o caminho. Do outro lado, o céu é sempre um fim de tarde e a floresta é tão densa que a luz parece desistir.
+
+      Leve comida, armas sólidas e cuidado: lá os monstros são nativos. Os Lich eram arquivistas gentis que acabaram corrompidos pelo próprio conhecimento. Reconheço que atravessei o Véu. Marque a caixa quando estiver do outro lado.
+    tasks:
+      - check
+    rewards:
+      - kit: {name: "Kit do Crepúsculo", items: [minecraft:emerald x4, minecraft:golden_apple x2, minecraft:cooked_beef x16]}
+      - xp: 30
+
+  - link: twilight:portal_crepusculo
+    at: [2, 1]
+
+  - id: explorador_crepusculo
+    title: "Explorador do Crepúsculo"
+    type: milestone
+    deps: [portal_crepusculo, twilight:primeiros_passos_crepusculo]
+    at: [3, 0]
+    icon: minecraft:sapling
+    desc: |
+      Caminhar no Crepúsculo é aprender uma geografia nova. Árvores gigantes, riachos de luz e estruturas dos arquivistas espalhadas como carimbos esquecidos no mapa. Cada bioma tem seu humor e seu perigo.
+
+      Anote as coordenadas de tudo o que encontrar, porque você vai voltar muitas vezes. §aDica:§r as estruturas maiores indicam chefes próximos. Marque a caixa quando a floresta já não te assustar tanto.
+    tasks:
+      - check
+    rewards:
+      - loot: incomum
+      - xp: 30
+
+  - link: twilight:primeiros_passos_crepusculo
+    at: [3, 1]
+
+  - id: naga
+    title: "A Naga do Pátio"
+    type: boss
+    deps: [explorador_crepusculo, twilight:naga]
+    at: [4, 0]
+    icon: minecraft:diamond_sword
+    desc: |
+      A Naga é a primeira guardiã. Ela serpenteia pelo pátio de pedra fazendo curvas apertadas e atacando em linha reta, como quem não aceita ser contornada. Seu escamas viram armadura, e sua vitória abre o caminho.
+
+      Leve escudo, poção de cura e um terreno onde possa recuar. §cPerigo:§r a cauda também bate. Reconheço que derrotei a Naga. Marque a caixa quando ela cair.
+    tasks:
+      - check
+    rewards:
+      - loot: raro
+      - xp: 40
+
+  - link: twilight:naga
+    at: [4, 1]
+
+  - id: lich
+    title: "O Arquivista Caído"
+    type: boss
+    deps: [naga, twilight:lich]
+    at: [5, 0]
+    icon: minecraft:ender_pearl
+    desc: |
+      Ele já foi um arquivista orgulhoso, e hoje é uma sombra com cetro. O Lich guarda a torre que antes servia para catalogar as páginas do tempo, e agora a usa para defender segredos que nem ele lembra direito.
+
+      Traga armadura boa, curas e um plano para lidar com clones e projéteis. Reconheço que o Lich perdeu o cetro. Marque a caixa quando ele cair e eu tentar, só por um instante, sentir pena.
+    tasks:
+      - check
+    rewards:
+      - kit: {name: "Kit do Crepúsculo", items: [minecraft:emerald x4, minecraft:golden_apple x2, minecraft:cooked_beef x16]}
+      - loot: epico
+      - xp: 60
+
+  - link: twilight:lich
+    at: [5, 1]
+
+  - id: minoshroom
+    title: "O Minoshroom"
+    type: boss
+    deps: [lich, twilight:minoshroom]
+    at: [6, 0]
+    icon: minecraft:mushroom_stew
+    desc: |
+      Um touro de cogumelo que protege um labirinto cheio de armadilhas. O Minoshroom é grande, bravo e muito tradicional em seu ataque, o que o torna previsível para quem presta atenção.
+
+      Mantenha distância nos golpes carregados e bata nas pausas. Os troféus do labirinto valem o esforço. Marque a caixa quando o Minoshroom tombar.
+    tasks:
+      - check
+    rewards:
+      - loot: raro
+      - xp: 40
+
+  - link: twilight:minoshroom
+    at: [6, 1]
+
+  - id: hidra
+    title: "A Hidra"
+    type: boss
+    deps: [minoshroom, twilight:hidra]
+    at: [7, 0]
+    icon: minecraft:fire_charge
+    desc: |
+      Três cabeças, três bafos de fogo, uma paciência curta. A Hidra vive no pântano e cresce a cada cabeça que você deixa de cortar a tempo.
+
+      Corte as cabeças uma a uma e fuja das labaredas. §aDica:§r poção de resistência ao fogo é um presente dos deuses. Reconheço que enfrentei a Hidra. Marque a caixa quando ela cair.
+    tasks:
+      - check
+    rewards:
+      - loot: raro
+      - xp: 45
+
+  - link: twilight:hidra
+    at: [7, 1]
+
+  - id: cavaleiros
+    title: "Os Cavaleiros Fantasmas"
+    type: boss
+    deps: [hidra, twilight:cavaleiros_fantasmas]
+    at: [8, 0]
+    icon: minecraft:iron_sword
+    desc: |
+      Três cavaleiros de armadura que já não têm corpo, mas ainda têm honra. Eles atacam em formação e esperam que você erre o ritmo.
+
+      Procure separar um do outro e use o terreno a seu favor. Mantenha energia e poções à mão. Marque a caixa quando os três tiverem tombado.
+    tasks:
+      - check
+    rewards:
+      - loot: raro
+      - xp: 45
+
+  - link: twilight:cavaleiros_fantasmas
+    at: [8, 1]
+
+  - id: ur_ghast
+    title: "Lágrimas de Fogo"
+    type: boss
+    deps: [cavaleiros, twilight:ur_ghast]
+    at: [9, 0]
+    icon: minecraft:ghast_tear
+    desc: |
+      O Ur-Ghast chora lágrimas de fogo na torre mais alta do Crepúsculo. É um ghast gigante, com um canhão de bolas incandescentes e uma tristeza que ninguém soube explicar.
+
+      Prepare-se para um combate aéreo: arco, escudo e poções. Reconheço que silenciei o Ur-Ghast. Marque a caixa quando ele cair.
+    tasks:
+      - check
+    rewards:
+      - loot: epico
+      - xp: 55
+
+  - link: twilight:ur_ghast
+    at: [9, 1]
+
+  - id: fortaleza
+    title: "A Forja do Crepúsculo"
+    type: milestone
+    deps: [ur_ghast, twilight:fortaleza_crepusculo]
+    at: [10, 0]
+    icon: minecraft:iron_block
+    desc: |
+      A fortaleza dos Lich guarda um dos materiais mais interessantes do reino: ferro do crepúsculo e a forja onde ele toma forma. É o lugar onde as armas do reino foram escritas.
+
+      Traga ferramentas boas e prepare-se para salas cheias de armadilhas. Marque a caixa quando a forja estiver acessível e você tiver sua primeira peça.
+    tasks:
+      - check
+    rewards:
+      - kit: {name: "Kit do Crepúsculo", items: [minecraft:emerald x4, minecraft:golden_apple x2, minecraft:cooked_beef x16]}
+      - loot: raro
+      - xp: 45
+
+  - link: twilight:fortaleza_crepusculo
+    at: [10, 1]
+
+  - id: yeti_alfa
+    title: "O Yeti Alfa"
+    type: boss
+    deps: [fortaleza, twilight:yeti_alfa]
+    at: [11, 0]
+    icon: minecraft:snowball
+    desc: |
+      Neve, silêncio e uma criatura enorme que vive no gelo. O Yeti Alfa é rápido, bate forte e conta com a ajuda dos filhotes.
+
+      Leve roupa quente e pegue o terreno em seu favor. §aDica:§r o frio aqui também castiga. Marque a caixa quando o Yeti cair.
+    tasks:
+      - check
+    rewards:
+      - loot: raro
+      - xp: 45
+
+  - link: twilight:yeti_alfa
+    at: [11, 1]
+
+  - id: rainha_neve
+    title: "A Rainha da Neve"
+    type: boss
+    deps: [yeti_alfa, twilight:rainha_neve]
+    at: [0, 7]
+    icon: minecraft:ice
+    desc: |
+      Uma rainha de gelo sentada num castelo cristalino, lançando gelo e sentinelas congeladas. A Rainha da Neve era uma das últimas guardiãs lúcidas do Crepúsculo.
+
+      Chegue preparado para múltiplas ondas. Reconheço que derrotei uma rainha que não queria me matar. Marque a caixa quando o castelo se calar.
+    tasks:
+      - check
+    rewards:
+      - kit: {name: "Kit do Crepúsculo", items: [minecraft:emerald x4, minecraft:golden_apple x2, minecraft:cooked_beef x16]}
+      - loot: epico
+      - xp: 60
+
+  - link: twilight:rainha_neve
+    at: [0, 8]
+
+  - id: terras_altas
+    title: "O Fim do Reino"
+    type: milestone
+    deps: [rainha_neve, twilight:senhor_terras_altas]
+    at: [1, 7]
+    icon: minecraft:diamond
+    desc: |
+      O último desafio do Crepúsculo é uma subida, entre torres, lava e criaturas que cuidam dos portões finais. O topo das Terras Altas mostra o reino inteiro, e dá para ver bem de onde a corrupção começou.
+
+      Leve tudo o que aprendeu. Reconheço que cheguei ao fim do reino. Marque a caixa quando estiver no alto.
+    tasks:
+      - check
+    rewards:
+      - kit: {name: "Kit do Crepúsculo", items: [minecraft:emerald x4, minecraft:golden_apple x2, minecraft:cooked_beef x16]}
+      - loot: epico
+      - xp: 65
+
+  - link: twilight:senhor_terras_altas
+    at: [1, 8]
+
+  - id: sala_trofeus
+    title: "A Sala de Troféus"
+    type: milestone
+    deps: [terras_altas, twilight:sala_trofeus]
+    at: [2, 7]
+    icon: minecraft:item_frame
+    desc: |
+      Cada chefe deixou um troféu. Os troféus, pendurados em uma sala, contam a história de quem você enfrentou. Eu os olho e sinto o peso da biblioteca que um dia os Lich quiseram proteger.
+
+      Monte a sala com carinho. Ela é sua memória. Marque a caixa quando todos os troféus estiverem pendurados.
+    tasks:
+      - check
+    rewards:
+      - loot: raro
+      - xp: 45
+
+  - link: twilight:sala_trofeus
+    at: [2, 8]
+
+  - id: chave_crepusculo
+    title: "A Chave do Crepúsculo"
+    type: finale
+    deps: [sala_trofeus, twilight:chave_crepusculo]
+    at: [3, 7]
+    icon: minecraft:gold_ingot
+    banner: "A Chave do Crepúsculo"
+    desc: |
+      Pronto. A primeira Chave do Registro está nas suas mãos, forjada depois que o Lich caiu e a Rainha da Neve fechou o ciclo. Ela brilha com a luz de um fim de tarde que nunca acaba.
+
+      Os Lich eram arquivistas. Eles guardaram o tempo em páginas, e pagaram por isso. Você honrou a memória deles ao fechar o capítulo. Reconheço que tenho a Chave do Crepúsculo. Marque a caixa.
+    tasks:
+      - check
+    rewards:
+      - kit: {name: "Kit do Registro", items: [minecraft:diamond_block x2, minecraft:emerald_block x2, minecraft:golden_apple x4]}
+      - loot: epico
+      - xp: 80
+
+  - link: twilight:chave_crepusculo
+    at: [3, 8]
+
+  - id: rumo_ceus
+    title: "Olhar para Cima"
+    type: info
+    deps: [chave_crepusculo]
+    at: [4, 7]
+    icon: minecraft:feather
+    desc: |
+      O Crepúsculo ficou para trás, e o próximo reino não está sob a terra, mas acima das nuvens. As Valquírias juraram guardar as páginas do céu, e agora estão prisioneiras do Espírito do Sol.
+
+      Prepare um portal de glowstone e leve água, porque o céu é bonito, mas a queda é longa. Marque a caixa quando estiver pronto para subir.
+    tasks:
+      - check
+    rewards:
+      - xp: 10
+
+  - id: portal_aether
+    title: "Paraíso Hostil"
+    type: portal
+    deps: [rumo_ceus, aether:portal_aether]
+    at: [5, 7]
+    icon: minecraft:glowstone
+    desc: |
+      Um portal de glowstone com água dentro abre as nuvens do Aether. O céu de lá é azul-pálido, com ilhas flutuantes, vacas de nuvem e inimigos que parecem simpáticos até morderem.
+
+      Leve armadura leve, uma pena de queda e coragem. Reconheço que subi ao paraíso hostil. Marque a caixa quando estiver nas ilhas.
+    tasks:
+      - check
+    rewards:
+      - kit: {name: "Kit dos Céus", items: [minecraft:feather x16, minecraft:golden_apple x2, minecraft:ender_pearl x4]}
+      - xp: 30
+
+  - link: aether:portal_aether
+    at: [5, 8]
+
+  - id: morador_nuvens
+    title: "Morador das Nuvens"
+    type: milestone
+    deps: [portal_aether, aether:primeiros_passos_ceus]
+    at: [6, 7]
+    icon: minecraft:feather
+    desc: |
+      Aprender a viver nas nuvens é um exercício de equilíbrio. Aqui, a gravidade se comporta como uma opinião, e os recursos ficam em ilhas separadas por vazios de queda livre.
+
+      Colete zanita, madeira dourada e lanternas. Marque a caixa quando já tiver uma base nas nuvens.
+    tasks:
+      - check
+    rewards:
+      - loot: incomum
+      - xp: 30
+
+  - link: aether:primeiros_passos_ceus
+    at: [6, 8]
+
+  - id: oficina_celeste
+    title: "Oficina Celeste"
+    type: milestone
+    deps: [morador_nuvens, aether:oficina_celeste]
+    at: [7, 7]
+    icon: minecraft:iron_block
+    desc: |
+      A oficina celeste usa gravitita e zanita para forjar o equipamento do reino: armaduras, ferramentas e armas que combinam leveza com robustez.
+
+      Monte a oficina perto do portal para não perder tempo. Marque a caixa quando a oficina estiver ativa e você tiver sua primeira peça.
+    tasks:
+      - check
+    rewards:
+      - loot: incomum
+      - xp: 35
+
+  - link: aether:oficina_celeste
+    at: [7, 8]
+
+  - id: gravitite
+    title: "Senhor da Gravidade"
+    type: milestone
+    deps: [oficina_celeste, aether:mestre_gravitite]
+    at: [8, 7]
+    icon: minecraft:diamond_block
+    desc: |
+      A gravitita faz um item levitar se for lançado, e é a matéria mais curiosa dos Céus. Equipamentos de gravitita são os melhores do Aether.
+
+      Colete o suficiente e forje com cuidado. Reconheço que domino a gravidade. Marque a caixa quando tiver o conjunto completo.
+    tasks:
+      - check
+    rewards:
+      - loot: raro
+      - xp: 45
+
+  - link: aether:mestre_gravitite
+    at: [8, 8]
+
+  - id: slider
+    title: "Como um Chefão!"
+    type: boss
+    deps: [gravitite, aether:slider]
+    at: [9, 7]
+    icon: minecraft:stone
+    desc: |
+      O Slider é um bloco de pedra com olhos, gigante, rápido e enraivecido. É a primeira masmorra e seu primeiro verdadeiro desafio nos Céus.
+
+      Mire nos olhos quando ele travar e fuja quando ele atacar. Marque a caixa quando a pedra se calar.
+    tasks:
+      - check
+    rewards:
+      - loot: raro
+      - xp: 50
+
+  - link: aether:slider
+    at: [9, 8]
+
+  - id: valquiria
+    title: "Destronada"
+    type: boss
+    deps: [slider, aether:rainha_valquiria]
+    at: [10, 7]
+    icon: minecraft:golden_sword
+    desc: |
+      A Rainha Valquíria luta com honra e precisão. Ela jurou proteger as páginas do céu, e a derrota dela não é desonra, é libertação.
+
+      Respeite a duelista. Reconheço que a Rainha Valquíria foi destronada. Marque a caixa quando ela cair.
+    tasks:
+      - check
+    rewards:
+      - kit: {name: "Kit dos Céus", items: [minecraft:feather x16, minecraft:golden_apple x2, minecraft:ender_pearl x4]}
+      - loot: epico
+      - xp: 60
+
+  - link: aether:rainha_valquiria
+    at: [10, 8]
+
+  - id: espirito_sol
+    title: "O Espírito do Sol"
+    type: boss
+    deps: [valquiria, aether:espirito_sol]
+    at: [11, 7]
+    icon: minecraft:blaze_powder
+    desc: |
+      O Espírito do Sol mantém as Valquírias como reféns há eras. Ele queima, voa e protege a mais alta das masmorras, e sua queda finalmente liberta os Céus.
+
+      Leve armadura resistente a fogo e muitas curas. Reconheço que o sol se apagou. Marque a caixa quando ele cair.
+    tasks:
+      - check
+    rewards:
+      - kit: {name: "Kit dos Céus", items: [minecraft:feather x16, minecraft:golden_apple x2, minecraft:ender_pearl x4]}
+      - loot: epico
+      - xp: 70
+
+  - link: aether:espirito_sol
+    at: [11, 8]
+
+  - id: tres_masmorras
+    title: "As Três Masmorras"
+    type: milestone
+    deps: [espirito_sol, aether:tres_masmorras]
+    at: [0, 14]
+    icon: minecraft:chest
+    desc: |
+      Bronze, prata e ouro: as três masmorras testam coragem, habilidade e paciência. Cada uma tem um chefe e um baú à altura.
+
+      Você as concluiu com bravura. Reconheço que sou vencedor das três. Marque a caixa quando as três estiverem completas.
+    tasks:
+      - check
+    rewards:
+      - loot: raro
+      - xp: 50
+
+  - link: aether:tres_masmorras
+    at: [0, 15]
+
+  - id: chave_ceus
+    title: "A Chave dos Céus"
+    type: finale
+    deps: [tres_masmorras, aether:chave_ceus]
+    at: [1, 14]
+    icon: minecraft:gold_ingot
+    banner: "A Chave dos Céus"
+    desc: |
+      A segunda Chave está com você. As Valquírias estão livres e o céu respira de novo. Vejo uma pena dourada flutuando no horizonte, como um agradecimento silencioso.
+
+      A Chave dos Céus vem das mãos do Espírito do Sol. Cada reino guardou uma ponta do mesmo fio, e você já tem duas. Reconheço que os Céus me reconheceram. Marque a caixa.
+    tasks:
+      - check
+    rewards:
+      - kit: {name: "Kit do Registro", items: [minecraft:diamond_block x2, minecraft:emerald_block x2, minecraft:golden_apple x4]}
+      - loot: epico
+      - xp: 80
+
+  - link: aether:chave_ceus
+    at: [1, 15]
+
+  - id: rumo_areias
+    title: "Descer ao Deserto"
+    type: info
+    deps: [chave_ceus]
+    at: [2, 14]
+    icon: minecraft:sand
+    desc: |
+      O terceiro reino é seco, antigo e cheio de histórias. Os deuses de Atum guardam o Livro dos Mortos, onde está escrito o que acontece com tudo o que acaba.
+
+      O caminho é por um portal de areia e fogo. Leve água, sombra e paciência. Marque a caixa quando estiver pronto para o deserto.
+    tasks:
+      - check
+    rewards:
+      - xp: 10
+
+  - id: portal_atum
+    title: "As Areias Eternas"
+    type: portal
+    deps: [rumo_areias, atum:portal_atum]
+    at: [3, 14]
+    icon: minecraft:sand
+    desc: |
+      O portal de Atum abre num deserto que não acaba, com templos soterrados e tempestades de areia que escondem o horizonte. É lindo e traiçoeiro.
+
+      Leve poções, comida e um mapa. Reconheço que cheguei às Areias Eternas. Marque a caixa quando estiver do outro lado.
+    tasks:
+      - check
+    rewards:
+      - kit: {name: "Kit das Areias", items: [minecraft:sandstone x32, minecraft:gold_ingot x8, minecraft:ender_pearl x2]}
+      - xp: 30
+
+  - link: atum:portal_atum
+    at: [3, 15]
+
+  - id: habitante_areias
+    title: "Habitante das Areias"
+    type: milestone
+    deps: [portal_atum, atum:habitante_areias]
+    at: [4, 14]
+    icon: minecraft:sandstone
+    desc: |
+      Viver em Atum é aprender a ler o vento. Tempestades, ruínas e nômades compõem uma geografia viva.
+
+      Monte uma base resistente e busque água. Marque a caixa quando já se sentir em casa.
+    tasks:
+      - check
+    rewards:
+      - loot: incomum
+      - xp: 30
+
+  - link: atum:habitante_areias
+    at: [4, 15]
+
+  - id: guerreiro_deserto
+    title: "Guerreiro do Deserto"
+    type: milestone
+    deps: [habitante_areias, atum:guerreiro_deserto]
+    at: [5, 14]
+    icon: minecraft:iron_sword
+    desc: |
+      Armas de osso e ferro, couro endurecido e a disciplina dos antigos guerreiros. O deserto exige prática, e você teve.
+
+      Equipe-se bem para as pirâmides. Reconheço que sou um guerreiro das areias. Marque a caixa.
+    tasks:
+      - check
+    rewards:
+      - loot: raro
+      - xp: 45
+
+  - link: atum:guerreiro_deserto
+    at: [5, 15]
+
+  - id: farao
+    title: "O Faraó Desperta"
+    type: boss
+    deps: [guerreiro_deserto, atum:farao]
+    at: [6, 14]
+    icon: minecraft:gold_block
+    desc: |
+      O Faraó guarda a Chave das Areias na pirâmide mais funda. Ele acorda furioso e convoca guardas, maldições e uma cara de desprezo imbatível.
+
+      Leve todas as curas e um bom plano. Reconheço que o Faraó caiu. Marque a caixa.
+    tasks:
+      - check
+    rewards:
+      - kit: {name: "Kit das Areias", items: [minecraft:sandstone x32, minecraft:gold_ingot x8, minecraft:ender_pearl x2]}
+      - loot: epico
+      - xp: 70
+
+  - link: atum:farao
+    at: [6, 15]
+
+  - id: panteao
+    title: "O Panteão de Atum"
+    type: milestone
+    deps: [farao, atum:panteao]
+    at: [7, 14]
+    icon: minecraft:ender_eye
+    desc: |
+      Os deuses de Atum têm nomes e domínios distintos. O panteão reúne seus templos e seus desafios, uma coleção de histórias que vale ouro.
+
+      Visite cada templo e ofereça seu respeito. Marque a caixa quando tiver visitado todos.
+    tasks:
+      - check
+    rewards:
+      - loot: raro
+      - xp: 50
+
+  - link: atum:panteao
+    at: [7, 15]
+
+  - id: chave_areias
+    title: "A Chave das Areias"
+    type: finale
+    deps: [panteao, atum:chave_areias]
+    at: [8, 14]
+    icon: minecraft:gold_ingot
+    banner: "A Chave das Areias"
+    desc: |
+      A terceira Chave. Os Faraós guardavam o Livro dos Mortos, e agora você o lê. Os Lich, os Faraós e as Valquírias tinham um acordo antigo, e cada um deles entregou uma Chave a quem provasse merecê-la.
+
+      Reconheço que tenho a Chave das Areias. Marque a caixa quando estiver no inventário.
+    tasks:
+      - check
+    rewards:
+      - kit: {name: "Kit do Registro", items: [minecraft:diamond_block x2, minecraft:emerald_block x2, minecraft:golden_apple x4]}
+      - loot: epico
+      - xp: 80
+
+  - link: atum:chave_areias
+    at: [8, 15]
+
+  - id: senhor_masmorras
+    title: "O Senhor das Masmorras"
+    type: normal
+    deps: [chave_areias, runic:senhor_masmorra]
+    at: [9, 14]
+    icon: minecraft:iron_sword
+    desc: |
+      Entre os reinos, masmorras rúnicas espalham tesouros e chefes. Elas não pertencem a nenhum dos três, mas servem de treino para qualquer aventureiro.
+
+      Explore, colete runas e use o que ganhar. Marque a caixa quando for o senhor das masmorras.
+    tasks:
+      - check
+    rewards:
+      - loot: raro
+      - xp: 40
+
+  - link: runic:senhor_masmorra
+    at: [9, 15]
+
+  - id: cinto_voo
+    title: "O Cinto de Voo"
+    type: normal
+    deps: [senhor_masmorras, runic:cinto_voo]
+    at: [10, 14]
+    icon: minecraft:feather
+    desc: |
+      Voar sem asas: o cinto de voo é um dos achados mais cobiçados das masmorras. Ele muda o jeito de explorar tudo o que vier.
+
+      Guarde-o bem. Marque a caixa quando estiver voando.
+    tasks:
+      - check
+    rewards:
+      - loot: raro
+      - xp: 40
+
+  - link: runic:cinto_voo
+    at: [10, 15]
+
+  - id: mestre_orespawn
+    title: "Mestre do OreSpawn"
+    type: milestone
+    deps: [cinto_voo, orespawn:mestre_orespawn]
+    at: [11, 14]
+    icon: minecraft:diamond
+    desc: |
+      OreSpawn trouxe criaturas e minérios que o mundo nunca viu. Dominar esse Volume mostra sua experiência com o improvável.
+
+      Reconheço que o improvável não me assusta. Marque a caixa quando concluir.
+    tasks:
+      - check
+    rewards:
+      - loot: raro
+      - xp: 50
+
+  - link: orespawn:mestre_orespawn
+    at: [11, 15]
+
+  - id: mestre_cacador
+    title: "Mestre das Caçadas"
+    type: normal
+    deps: [mestre_orespawn, bestiario:mestre_cacador]
+    at: [0, 21]
+    icon: minecraft:bow
+    desc: |
+      Cada chefe derrotado fica no Bestiário. O Mestre das Caçadas é quem completa a lista.
+
+      Continue caçando. Marque a caixa quando o Bestiário estiver completo.
+    tasks:
+      - check
+    rewards:
+      - loot: raro
+      - xp: 50
+
+  - link: bestiario:mestre_cacador
+    at: [0, 22]
+
+  - id: tres_chaves
+    title: "As Três Chaves"
+    type: finale
+    deps: [mestre_cacador, twilight:chave_crepusculo, aether:chave_ceus, atum:chave_areias]
+    at: [1, 21]
+    icon: minecraft:nether_star
+    banner: "As Três Chaves"
+    desc: |
+      Crepúsculo, Céus e Areias. Os três reinos entregaram suas Chaves, e agora elas giram juntas no seu inventário, num acorde que só eu escuto. Antes da Fratura, elas abriam o Registro por fora. Hoje, abrem o caminho dos Selos.
+
+      O Ato III termina aqui, mas o trabalho começa agora. Os oito Selos esperam por você. Marque a caixa quando estiver pronto.
+    tasks:
+      - check
+    rewards:
+      - kit: {name: "Kit do Registro", items: [minecraft:diamond_block x2, minecraft:emerald_block x2, minecraft:golden_apple x4]}
+      - loot: lendario
+      - xp: 100

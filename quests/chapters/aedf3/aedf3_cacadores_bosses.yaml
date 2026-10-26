@@ -12,7 +12,7 @@ quests:
   type: portal
   deps_hidden: ['aedf3_aprendiz_mago:aprendiz_pronto']
   desc: |
-    Procure uma lagoa cercada de flores e jogue um §eDiamante§r na água. Raios caem, a água ganha um brilho estranho e um portal se abre para a §eFloresta do Crepúsculo§r. Parece mágica, mas é só engenharia de outra dimensão. O diamante é o preço, e vale cada pedacinho.
+    Procure uma lagoa cercada de flores e jogue um §eDiamante§r na água. Raios caem, a água ganha um brilho estranho e um portal se abre para a §eFloresta do Crepúsculo§r. Parece mágica, mas é só engenharia de outra dimensão. O diamante é o preço, e vale cada pedacinho. Procure um lago pequeno cercado de flores, de preferência numa planície comum. Arremesse o diamante na água, na superfície, e espere os raios aparecerem. Se nada acontecer, tente em outra lagoa ou com mais flores em volta, que a lenda diz que o mundo precisa de uma certa quantidade de beleza para abrir o portal.
   tasks:
   - {get: 'minecraft:diamond'}
   rewards:
@@ -24,7 +24,7 @@ quests:
   deps: [lago_das_flores]
   icon: TwilightForest:tile.TFLog
   desc: |
-    Do outro lado, as árvores têm um tom dourado, a luz é sempre de fim de tarde e as criaturas lembram uma história de fadas, só que mais perigosa. Tire um minuto para olhar o mapa e conversar com o silêncio. Os heróis da Era do Futuro adoravam esse mundo. Cuidado com as colinas, que escondem tesouros e armadilhas.
+    Do outro lado, as árvores têm um tom dourado, a luz é sempre de fim de tarde e as criaturas lembram uma história de fadas, só que mais perigosa. Tire um minuto para olhar o mapa e conversar com o silêncio. Os heróis da Era do Futuro adoravam esse mundo. Cuidado com as colinas, que escondem tesouros e armadilhas. Nada de correr no escuro, olhe tudo com calma.
   tasks:
   - visit: {dim: 7, name: Floresta do Crepúsculo}
   rewards:
@@ -35,7 +35,7 @@ quests:
   type: normal
   deps: [floresta_crepusculo]
   desc: |
-    Os troncos da floresta têm texturas e propriedades próprias. Junte §e16 madeiras§r de tipos diferentes e use para casas, ferramentas e móveis. O visual é lindo e combina bem com a decoração da vila. Quem sabe uma cabana de caça na entrada do portal?
+    Os troncos da floresta têm texturas e propriedades próprias. Junte §e16 madeiras§r de tipos diferentes e use para casas, ferramentas e móveis. O visual é lindo e combina bem com a decoração da vila. Quem sabe uma cabana de caça na entrada do portal? Várias árvores diferentes crescem por lá.
   tasks:
   - {get: 'TwilightForest:tile.TFLog:* x16'}
   rewards:
@@ -47,7 +47,7 @@ quests:
   deps: [madeiras_crepusculo]
   icon: minecraft:iron_boots
   desc: |
-    Sob montes de terra, as §eColinas Ocas§r guardam cavernas, baús e criaturinhas. Os Redcaps são anões de gorro vermelho que perseguem quem entra sem convite. Derrote três deles (cuidado com os que trazem fogo) e recolha o saque.
+    Sob montes de terra, as §eColinas Ocas§r guardam cavernas, baús e criaturinhas. Os Redcaps são anões de gorro vermelho que perseguem quem entra sem convite. Derrote três deles (cuidado com os que trazem fogo) e recolha o saque. Entre pelo túnel de terra, ilumine tudo com tochas e fique de olho nos cantos escuros, onde os baús aparecem. Os redcaps são rápidos, mas fracos sozinhos.
   tasks:
   - kill: {entity: TwilightForest.Redcap, count: 3}
   rewards:
@@ -58,7 +58,7 @@ quests:
   type: main
   deps: [colinas_vazias]
   desc: |
-    O primeiro metal do Crepúsculo é o §eIronwood§r: mistura de ferro e madeira mágica, leve e resistente. Faça quatro lingotes e guarde para ferramentas e armadura. Dê o primeiro passo na forja local.
+    O primeiro metal do Crepúsculo é o §eIronwood§r: mistura de ferro e madeira mágica, leve e resistente. Faça quatro lingotes e guarde para ferramentas e armadura. Dê o primeiro passo na forja local. Junte um pedaço de madeira de ironwood com ferro e fogo, seguindo a receita do NEI. O metal sai leve e forte, perfeito para as primeiras ferramentas e armaduras da floresta. Quatro lingotes já abrem muitas portas.
   tasks:
   - {get: 'TwilightForest:item.ironwoodIngot x4'}
   rewards:
@@ -69,7 +69,7 @@ quests:
   type: normal
   deps: [ironwood]
   desc: |
-    A §eSteeleaf§r é um metal vegetal mais forte e com bônus de armadura. Exige folhas e minério da floresta. É um bom equipamento intermediário para quem vai encarar chefes grandes. Junte seis lingotes e faça uma peça.
+    A §eSteeleaf§r é um metal vegetal mais forte e com bônus de armadura. Exige folhas e minério da floresta. É um bom equipamento intermediário para quem vai encarar chefes grandes. Junte seis lingotes e faça uma peça. O material nasce de folhas e ferro em receita própria. Veja no NEI e produza o suficiente para uma peça de armadura ou ferramenta, que é um ótimo reforço antes de encarar os chefes maiores.
   tasks:
   - {get: 'TwilightForest:item.steeleafIngot x6'}
   rewards:
@@ -80,7 +80,7 @@ quests:
   type: boss
   deps: [steeleaf]
   desc: |
-    O primeiro chefe! A §eNaga§r serpenteia pelo pátio de pedra, bate de cauda e investe contra quem aparece. Use armadura boa e mantenha-se em movimento, pois ela é rápida. Quando cair, solta a primeira cabeça do seu troféu, e a emoção é grande. Parabéns, Herói!
+    O primeiro chefe! A §eNaga§r serpenteia pelo pátio de pedra, bate de cauda e investe contra quem aparece. Use armadura boa e mantenha-se em movimento, pois ela é rápida. Quando cair, solta a primeira cabeça do seu troféu, e a emoção é grande. Parabéns, Herói! O pátio fica no coração de um labirinto de pedra coberto de musgo. Entre com armadura de ferro ou melhor, espada afiada e comida. A Naga corre pelo pátio, bate com a cauda e arremessa o corpo contra você, então se mova em círculos e acerte pelas costas. Depois da luta, colete o troféu e as escamas, que viram uma armadura leve e elegante. Parabéns pela primeira cabeça, que merece um lugar de honra no salão, bem à frente.
 
     §cPerigo:§r nada de ficar parado no caminho dela.
   tasks:
@@ -95,7 +95,7 @@ quests:
   type: normal
   deps: [naga]
   desc: |
-    Escamas de Naga viram uma armadura leve e resistente. Junte §e8 escamas§r e monte uma túnica ou calças, que combinam muito bem com o visual das lendas. Combine com Ironwood para ficar ainda mais forte.
+    Escamas de Naga viram uma armadura leve e resistente. Junte §e8 escamas§r e monte uma túnica ou calças, que combinam muito bem com o visual das lendas. Combine com Ironwood para ficar ainda mais forte. Com elas você faz túnica e calças resistentes e leves.
   tasks:
   - {get: 'TwilightForest:item.nagaScale x8'}
   rewards:
@@ -107,7 +107,7 @@ quests:
   deps: [escamas_naga]
   icon: minecraft:book
   desc: |
-    Numa torre alta e escura vive o §eLich§r, mago morto que não aceita descanso. Antes dele, os livros-vivos da torre atacam sem parar. Destrua §e3 Death Tomes§r e suba com cuidado. Leve uma boa armadura e uma boa arma, e talvez uma poção ou duas.
+    Numa torre alta e escura vive o §eLich§r, mago morto que não aceita descanso. Antes dele, os livros-vivos da torre atacam sem parar. Destrua §e3 Death Tomes§r e suba com cuidado. Leve uma boa armadura e uma boa arma, e talvez uma poção ou duas. Leve armadura boa, claro.
   tasks:
   - kill: {entity: TwilightForest.Death Tome, count: 3}
   rewards:
@@ -118,7 +118,7 @@ quests:
   type: boss
   deps: [torre_lich]
   desc: |
-    O segundo chefe é o §eLich§r, que lança magia, invoca clones e teletransporta-se. Mate os clones primeiro e o verdadeiro depois, sem gastar tempo nos adornos. Ele solta um troféu e raros itens mágicos. Os heróis da Era do Futuro já pensavam em qual prateleira usar!
+    O segundo chefe é o §eLich§r, que lança magia, invoca clones e teletransporta-se. Mate os clones primeiro e o verdadeiro depois, sem gastar tempo nos adornos. Ele solta um troféu e raros itens mágicos. Os heróis da Era do Futuro já pensavam em qual prateleira usar! A torre fica numa região de pedra escura, com andares cheios de armadilhas, aranhas e livros voadores. No topo, o Lich lança projéteis mágicos, cria clones de si mesmo e vai teletransportando de canto a canto. Ataque os clones primeiro, que desaparecem fácil, e depois persiga o verdadeiro com golpes rápidos. Se a vida cair, recue, beba uma poção e volte. Ele deixa um troféu, que é a prova de que você foi mais esperto que um mago morto.
   tasks:
   - kill: {entity: TwilightForest.Twilight Lich, count: 1}
   - {get: 'TwilightForest:item.trophy:2'}
@@ -132,7 +132,7 @@ quests:
   deps: [lich]
   icon: minecraft:iron_axe
   desc: |
-    O §eLabirinto§r é feito de corredores e armadilhas, e minotauros vigiam cada curva. Entre com tochas e um mapa, derrote cinco deles e vá ao centro. Cuidado com as paredes que não deveriam estar lá e com os sons que vêm de trás de você.
+    O §eLabirinto§r é feito de corredores e armadilhas, e minotauros vigiam cada curva. Entre com tochas e um mapa, derrote cinco deles e vá ao centro. Cuidado com as paredes que não deveriam estar lá e com os sons que vêm de trás de você. Não esqueça de marcar o caminho de volta.
   tasks:
   - kill: {entity: TwilightForest.Minotaur, count: 5}
   rewards:
@@ -143,7 +143,7 @@ quests:
   type: boss
   deps: [minotauros]
   desc: |
-    Um minotauro gigante e vermelho, coberto de cogumelos: o §eMinoshroom§r. É mais forte que seus subordinados e carrega um machado enorme. Mantenha distância, golpeie e recue. O troféu vai direto para a prateleira.
+    Um minotauro gigante e vermelho, coberto de cogumelos: o §eMinoshroom§r. É mais forte que seus subordinados e carrega um machado enorme. Mantenha distância, golpeie e recue. O troféu vai direto para a prateleira. Ele aguarda no centro do labirinto, numa sala grande, protegido por muita pedra e cogumelos. É maior que os minotauros comuns e bate com a força de um touro. Mantenha a distância, bata e recue, e jamais fique encostado na parede, onde ele acerta com mais facilidade. Use armadura de ferro ou superior e carregue poções de cura. A recompensa vale ouro: o machado do chefe e uma cabeça gigante de cogumelo. Respire fundo antes de abrir a porta, Herói.
   tasks:
   - kill: {entity: TwilightForest.Minoshroom, count: 1}
   - {get: 'TwilightForest:item.trophy:5'}
@@ -156,7 +156,7 @@ quests:
   type: boss
   deps: [minoshroom]
   desc: |
-    Sete cabeças, uma cauda e muito fogo. A §eHidra§r vive numa ilha dentro do pântano, cercada de lava. Ataque cabeça por cabeça e fuja do fogo. É uma das lutas mais memoráveis da floresta.
+    Sete cabeças, uma cauda e muito fogo. A §eHidra§r vive numa ilha dentro do pântano, cercada de lava. Ataque cabeça por cabeça e fuja do fogo. É uma das lutas mais memoráveis da floresta. A ilha da Hidra fica numa região de pântano profundo, cercada de lava e fogo. Cada uma das sete cabeças ataca por conta própria, e as cortadas voltam a crescer se você demorar demais, então concentre dano numa por vez. Leve poções de resistência ao fogo, arco e uma armadura boa. Depois da vitória, as costelas e a cabeça viram troféu. Uma das lutas mais memoráveis de toda a floresta, e os heróis da lenda lembravam dela com um calafrio.
 
     §cPerigo:§r leve resistência ao fogo.
   tasks:
@@ -172,7 +172,7 @@ quests:
   deps: [hidra]
   icon: minecraft:iron_helmet
   desc: |
-    Uma fortaleza antiga e cheia de goblins armados, com capacete de ferro e escudo. Derrote §e4 cavaleiros goblin§r e entre com cuidado. O baú no fundo tem equipamentos raros. Bom lugar para treinar combate em grupo.
+    Uma fortaleza antiga e cheia de goblins armados, com capacete de ferro e escudo. Derrote §e4 cavaleiros goblin§r e entre com cuidado. O baú no fundo tem equipamentos raros. Bom lugar para treinar combate em grupo. Dentro da fortaleza, cuidado com armadilhas e corredores apertados.
   tasks:
   - kill: {entity: TwilightForest.Lower Goblin Knight, count: 4}
   rewards:
@@ -183,7 +183,7 @@ quests:
   type: boss
   deps: [ruinas_cavaleiros]
   desc: |
-    Antigos guerreiros que não aceitam o fim. Os §eCavaleiros Fantasmas§r aparecem em grupo e giram em torno da arena. Derrote todos seguindo o ritmo dos golpes. Você receberá armaduras raras e uma cabeça de troféu muito especial.
+    Antigos guerreiros que não aceitam o fim. Os §eCavaleiros Fantasmas§r aparecem em grupo e giram em torno da arena. Derrote todos seguindo o ritmo dos golpes. Você receberá armaduras raras e uma cabeça de troféu muito especial. Eles ficam numa fortaleza de pedra escura, em uma sala grande com um cofre no fundo. Aparecem em grupo e giram ao seu redor, atacando por todos os lados ao mesmo tempo. Escolha um alvo, acerte até ele cair e vá para o próximo. Arco ajuda, mas o corpo a corpo é mais confiável. No fim, as armaduras raras e o troféu esperam. Nenhum cavaleiro esquece quem o derrotou.
   tasks:
   - kill: {entity: TwilightForest.Knight Phantom, count: 6}
   - {get: 'TwilightForest:item.trophy:6'}
@@ -196,7 +196,7 @@ quests:
   type: boss
   deps: [cavaleiros_fantasma]
   desc: |
-    No topo de uma torre de carminite, o §eUr-Ghast§r chora lágrimas de fogo e atira bolas explosivas. É o maior ghast que você já viu. Leve arco, armadura e paciência para dar conta do ataque aéreo. Ao final, o troféu é seu.
+    No topo de uma torre de carminite, o §eUr-Ghast§r chora lágrimas de fogo e atira bolas explosivas. É o maior ghast que você já viu. Leve arco, armadura e paciência para dar conta do ataque aéreo. Ao final, o troféu é seu. Sua torre é feita de carminite, uma pedra vermelha cheia de armadilhas e portas fechadas. No topo, o Ur-Ghast flutua num salão enorme, chora lágrimas ardentes e atira bolas de fogo explosivas. Fique perto das paredes, rebata as bolas com a espada e use arco quando ele estiver parado. Leve poção de resistência ao fogo, comida e muita calma. Quando ele cair, o troféu é seu.
   tasks:
   - kill: {entity: TwilightForest.Tower Boss, count: 1}
   - {get: 'TwilightForest:item.trophy:3'}
@@ -209,7 +209,7 @@ quests:
   type: boss
   deps: [ur_ghast]
   desc: |
-    Na floresta de neve vive o §eYeti Alfa§r, que faz a cabeça de qualquer herói balançar. Ele ataca com fúria, chama aliados e pisoteia o gelo. Leve roupas quentes (armadura de couro basta) e armas boas. Um troféu muito fofo e perigoso.
+    Na floresta de neve vive o §eYeti Alfa§r, que faz a cabeça de qualquer herói balançar. Ele ataca com fúria, chama aliados e pisoteia o gelo. Leve roupas quentes (armadura de couro basta) e armas boas. Um troféu muito fofo e perigoso. Ele vive numa caverna de gelo, no meio da floresta de neve. Furioso, pula de um lado para outro, chama aliados e pisoteia o chão. Mantenha a vida alta, use armadura de ferro ou superior e acerte golpes seguidos. Evite ficar de costas para o grupo dele. Quando cair, solta pelagem rara e o troféu mais peludo da coleção.
   tasks:
   - kill: {entity: TwilightForest.Yeti Boss, count: 1}
   - {get: 'TwilightForest:item.trophy:7'}
@@ -222,7 +222,7 @@ quests:
   type: boss
   deps: [yeti_alfa]
   desc: |
-    No Palácio da Aurora, a §eRainha da Neve§r domina a geada. Ela sustenta cristais de gelo, invoca tempestades e fere quem chega perto. É o último grande chefe da floresta. Quando ela cai, o céu parece limpar.
+    No Palácio da Aurora, a §eRainha da Neve§r domina a geada. Ela sustenta cristais de gelo, invoca tempestades e fere quem chega perto. É o último grande chefe da floresta. Quando ela cai, o céu parece limpar. O palácio fica numa região de gelo cristalino, cheio de corredores brancos e armadilhas de neve. A Rainha comanda cristais de gelo, congela quem se aproxima e se protege atrás de guardiões. Derrote os cristais primeiro, quebre as defesas e acerte a rainha com golpes fortes. Use roupas de proteção contra o frio e muita comida. Ao final, o céu clareia e o troféu fecha a sua coleção.
   tasks:
   - kill: {entity: TwilightForest.Snow Queen, count: 1}
   - {get: 'TwilightForest:item.trophy:4'}
@@ -235,7 +235,7 @@ quests:
   type: main
   deps: [rainha_da_neve]
   desc: |
-    Chegou a hora de montar a estante de chefes! O §ePedestal de Troféu§r exibe as cabeças dos monstros que você derrotou. Coloque-os lado a lado em um salão da vila. Os heróis da Era do Futuro chegavam a fazer cerimônia de inauguração. Capriche na iluminação.
+    Chegou a hora de montar a estante de chefes! O §ePedestal de Troféu§r exibe as cabeças dos monstros que você derrotou. Coloque-os lado a lado em um salão da vila. Os heróis da Era do Futuro chegavam a fazer cerimônia de inauguração. Capriche na iluminação. Centralize o pedestal na sala.
   tasks:
   - {get: 'TwilightForest:tile.TFTrophyPedestal'}
   rewards:
@@ -246,7 +246,7 @@ quests:
   type: main
   deps: [prateleira_de_trofeus]
   desc: |
-    Nem tudo está na floresta: o §eWither§r também é um chefe digno de prateleira. Seus crânios (de esqueletos) enfeitam bem o salão. Junte três e guarde. Se ainda não derrotou o Wither, volte ao capítulo infernal e dê um jeito.
+    Nem tudo está na floresta: o §eWither§r também é um chefe digno de prateleira. Seus crânios (de esqueletos) enfeitam bem o salão. Junte três e guarde. Se ainda não derrotou o Wither, volte ao capítulo infernal e dê um jeito. Caso ainda não tenha enfrentado o Wither, volte ao capítulo infernal quando estiver pronto.
   tasks:
   - {get: 'minecraft:skull:1 x3'}
   rewards:
@@ -257,7 +257,7 @@ quests:
   type: main
   deps: [wither_na_prateleira]
   desc: |
-    Com pérolas de Ender e pó de Blaze, faça §e12 Olhos do Fim§r. Eles mostram o caminho até a fortaleza subterrânea onde o portal para o Fim espera. Jogue um no ar e siga a direção. Prepare-se para uma jornada longa.
+    Com pérolas de Ender e pó de Blaze, faça §e12 Olhos do Fim§r. Eles mostram o caminho até a fortaleza subterrânea onde o portal para o Fim espera. Jogue um no ar e siga a direção. Prepare-se para uma jornada longa. Cada olho mostra o caminho até a fortaleza.
   tasks:
   - {get: 'minecraft:ender_eye x12'}
   rewards:
@@ -269,7 +269,7 @@ quests:
   deps: [olho_do_fim]
   icon: minecraft:ender_eye
   desc: |
-    Encontrada a fortaleza, ative os 12 Olhos e entre. O Fim é um ilhéu flutuante e escuro, vigiado por Endermen e cristais. Leve blocos de construção, arco e muita comida. O último chefe espera, e não vai ser educado.
+    Encontrada a fortaleza, ative os 12 Olhos e entre. O Fim é um ilhéu flutuante e escuro, vigiado por Endermen e cristais. Leve blocos de construção, arco e muita comida. O último chefe espera, e não vai ser educado. Cave onde o olho afundar, até achar a fortaleza subterrânea com corredores e bibliotecas. Na sala do portal, encaixe um olho em cada moldura vazia e salte para a luz. O Fim é uma ilha flutuante cercada de vazio: leve blocos, tenha cuidado com as bordas e nunca olhe nos olhos de um Enderman. Boa viagem, Herói.
   tasks:
   - visit: {dim: 1, name: O Fim}
   rewards:
@@ -281,7 +281,7 @@ quests:
   deps: [portal_do_fim]
   icon: minecraft:dragon_egg
   desc: |
-    O maior desafio do capítulo! Quebre os cristais que curam o dragão, ataque quando ele pousar e fuja do sopro. Leve arco, armadura quantum se tiver, blocos para esconderijo. Quando ele cair, o céu estoura em luz e você leva o ovo do dragão como prêmio.
+    O maior desafio do capítulo! Quebre os cristais que curam o dragão, ataque quando ele pousar e fuja do sopro. Leve arco, armadura quantum se tiver, blocos para esconderijo. Quando ele cair, o céu estoura em luz e você leva o ovo do dragão como prêmio. As torres de obsidiana guardam cristais que curam o dragão. Destrua todos, usando arco ou escalando com blocos. Depois, ataque quando ele pousar no centro e se proteja do sopro roxo. Leve armadura boa, flechas de sobra e comida. A luta dura, mas termina bem. Ele deixa o portal de volta e um ovo raro como troféu.
   tasks:
   - kill: {entity: EnderDragon, count: 1}
   rewards:
@@ -293,18 +293,18 @@ quests:
   type: main
   deps: [dragao_do_fim]
   desc: |
-    O ovo é um troféu raro e inútil, mas lindo. Pegue e coloque no centro da prateleira. Ele se teletransporta quando tocado: use uma tocha por baixo para deixá-lo no lugar. Ninguém jamais esquece o primeiro ovo.
+    O ovo é um troféu raro e inútil, mas lindo. Pegue e coloque no centro da prateleira. Ele se teletransporta quando tocado: use uma tocha por baixo para deixá-lo no lugar. Ninguém jamais esquece o primeiro ovo. Clique nele com cuidado para não perder. Coloque uma tocha embaixo do pedestal para ele não sair pulando por aí.
   tasks:
   - {get: 'minecraft:dragon_egg'}
   rewards:
   - {xp: 5}
   - choice: ['minecraft:experience_bottle x16', 'minecraft:ender_pearl x16']
-- id: caçadores_milestone
+- id: cacadores_milestone
   title: A Estante dos Chefes
   type: milestone
   deps: [ovo_dragao]
   desc: |
-    Naga, Lich, Minoshroom e Hidra encarando você do alto da estante. Quem passa pelo salão da vila não consegue deixar de olhar. É assim que os heróis da Era do Futuro registravam suas conquistas: não com palavras, mas com cabeças penduradas.
+    Naga, Lich, Minoshroom e Hidra encarando você do alto da estante. Quem passa pelo salão da vila não consegue deixar de olhar. É assim que os heróis da Era do Futuro registravam suas conquistas: não com palavras, mas com cabeças penduradas. Olhe para o salão e sinta a respiração de cada fera na sombra, imóvel. É a lembrança viva de uma Era que ensinou a coragem como ofício.
 
     Seu nome agora está na Lista dos Caçadores, Herói. Depois da glória, o trabalho: chegou a hora de automatizar tudo. Máquinas, fábricas e motores te esperam na §eAutomação e Indústria Pesada§r.
   tasks:

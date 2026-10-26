@@ -1,0 +1,1161 @@
+chapter:
+  id: ato4
+  title: "Crônicas Akáshicas: Ato IV — Os Oito Selos"
+  color: "§6"
+  order: 4
+  icon: minecraft:nether_star
+  desc: |
+    Oito Selos mantêm a Fratura aberta.
+    Restaure um por um, na ordem que quiser.
+
+quests:
+
+  - id: selos_abertura
+    title: "Os Oito Selos"
+    type: main
+    deps: [ato3:tres_chaves]
+    at: [0, 0]
+    icon: minecraft:nether_star
+    desc: |
+      Herói, com as três Chaves na mão, o Registro finalmente mostra a sua tranca. São §eoito Selos§r, oito lacres que mantêm fechada a rachadura da Fratura. Cada um guarda um tipo de maestria: os três reinos, o Abismo, as Estrelas, o Arcano, a Engrenagem e a Vida.
+
+      Você pode restaurá-los em qualquer ordem, e é isso que torna o Ato IV a parte mais livre da campanha. Cada Selo se acende quando você cumpre marcos reais dos Volumes, e o mapa mostra tudo logo abaixo. Quando os oito brilharem, as dimensões ATM abrem. Marque a caixa e escolha por onde começar.
+    tasks:
+      - check
+    rewards:
+      - xp: 20
+      - loot: incomum
+
+  - id: crepusculo_intro
+    title: "Primeiro Selo: o Crepúsculo"
+    type: info
+    deps: [selos_abertura]
+    at: [1, 0]
+    icon: minecraft:sapling
+    desc: |
+      O Selo do Crepúsculo é o mais fácil de explicar: ele exige que você tenha vencido o Reino por inteiro, não só os chefes mais famosos. A Chave que você carrega prova que fez o essencial, mas o Selo quer ver o caminho completo.
+
+      Revisite o Lich, a Rainha da Neve e as Terras Altas, e confirme que sua sala de troféus está em ordem. Os Lich eram meus colegas arquivistas, e eu gosto de pensar que eles perdoam quem termina o que eles não conseguiram. Marque a caixa para começar.
+    tasks:
+      - check
+    rewards:
+      - xp: 10
+
+  - id: crep_lich
+    title: "O Arquivista, de Novo"
+    type: normal
+    deps: [crepusculo_intro, twilight:lich]
+    at: [2, 0]
+    icon: minecraft:ender_pearl
+    desc: |
+      Lembra do Lich? O primeiro Selo começa com ele, porque foi ele quem tentou guardar as páginas do tempo e se perdeu. O marco de derrota dele é a prova de que a corrupção do Crepúsculo foi contida.
+
+      Se você já o venceu, parabéns, só falta marcar. Se não, o Reino te espera com a torre, o cetro e os clones. Marque a caixa quando o Lich estiver mesmo vencido.
+    tasks:
+      - check
+    rewards:
+      - loot: incomum
+      - xp: 30
+
+  - link: twilight:lich
+    at: [2, 1]
+
+  - id: crep_neve
+    title: "A Rainha, de Novo"
+    type: normal
+    deps: [crep_lich, twilight:rainha_neve]
+    at: [3, 0]
+    icon: minecraft:ice
+    desc: |
+      A Rainha da Neve fechou o ciclo do frio. Sem a derrota dela, o Selo continuaria meio aberto, porque o gelo é a camada que segura tudo o que o Crepúsculo escondeu.
+
+      Reconheço que o frio já não me impede. Marque a caixa quando a Rainha estiver derrotada e o castelo em silêncio.
+    tasks:
+      - check
+    rewards:
+      - loot: incomum
+      - xp: 30
+
+  - link: twilight:rainha_neve
+    at: [3, 1]
+
+  - id: crep_altas
+    title: "Terras Altas"
+    type: normal
+    deps: [crep_neve, twilight:senhor_terras_altas]
+    at: [4, 0]
+    icon: minecraft:diamond
+    desc: |
+      O fim do Reino é um pico, e o pico é um espelho. Quem sobe até lá vê o que o Crepúsculo foi um dia e o que ainda poderia ser.
+
+      Suba preparado, desça mais sábio. Marque a caixa quando tiver estado no alto e voltado inteiro.
+    tasks:
+      - check
+    rewards:
+      - loot: raro
+      - xp: 40
+
+  - link: twilight:senhor_terras_altas
+    at: [4, 1]
+
+  - id: selo_crepusculo
+    title: "O Selo do Crepúsculo"
+    type: milestone
+    deps: [crep_altas, twilight:chave_crepusculo, twilight:sala_trofeus]
+    at: [5, 0]
+    icon: minecraft:nether_star
+    desc: |
+      O primeiro Selo acende com um brilho violeta, quase uma lamparina no fundo da floresta. Chave na mão, troféus na parede, chefes caídos: o Reino do Crepúsculo foi lido do começo ao fim, e a corrupção dos Lich perdeu mais um pedaço do seu poder.
+
+      Eu fico olhando a luz subir pelas páginas e penso nos arquivistas que não conseguiram ver isso. Obrigada, Herói, por terminar o que eles não puderam. Marque a caixa e siga para o próximo.
+    tasks:
+      - check
+    rewards:
+      - kit: {name: "Kit do Selo", items: [minecraft:diamond x8, minecraft:emerald x8, minecraft:experience_bottle x32]}
+      - loot: epico
+      - xp: 75
+
+  - link: twilight:chave_crepusculo
+    at: [5, 1]
+
+  - link: twilight:sala_trofeus
+    at: [5, 2]
+
+  - id: ceus_intro
+    title: "Segundo Selo: os Céus"
+    type: info
+    deps: [selos_abertura]
+    at: [6, 0]
+    icon: minecraft:feather
+    desc: |
+      O Selo dos Céus é o mais leve, e talvez o mais bonito. Exige que você prove que honrou as Valquírias, liberou as páginas do alto e entendeu o que cada masmorra tentava ensinar.
+
+      As ilhas flutuantes não se esquecem de quem as visitou. Se você já tem a Chave dos Céus, o resto é confirmação. Marque a caixa para começar.
+    tasks:
+      - check
+    rewards:
+      - xp: 10
+
+  - id: ceus_valquiria
+    title: "A Rainha, a Honra"
+    type: normal
+    deps: [ceus_intro, aether:rainha_valquiria]
+    at: [7, 0]
+    icon: minecraft:golden_sword
+    desc: |
+      A Rainha Valquíria é o centro moral dos Céus. Vencê-la com honra, e não com truque, é o que o Selo pede: respeito pelo que ela protegia.
+
+      Confirme o marco. Marque a caixa quando a Rainha estiver derrotada.
+    tasks:
+      - check
+    rewards:
+      - loot: incomum
+      - xp: 30
+
+  - link: aether:rainha_valquiria
+    at: [7, 1]
+
+  - id: ceus_sol
+    title: "O Sol, Apagado"
+    type: normal
+    deps: [ceus_valquiria, aether:espirito_sol]
+    at: [8, 0]
+    icon: minecraft:blaze_powder
+    desc: |
+      O Espírito do Sol mantinha as Valquírias como reféns, e a queda dele devolve o céu ao seu ritmo. É o chefe mais difícil do Aether.
+
+      Confirme o marco. Marque a caixa quando a luz dele se apagar.
+    tasks:
+      - check
+    rewards:
+      - loot: raro
+      - xp: 40
+
+  - link: aether:espirito_sol
+    at: [8, 1]
+
+  - id: ceus_masmorras
+    title: "As Três Masmorras"
+    type: normal
+    deps: [ceus_sol, aether:tres_masmorras]
+    at: [9, 0]
+    icon: minecraft:chest
+    desc: |
+      Bronze, prata e ouro: cada masmorra ensinou uma lição. O Selo quer saber se você aprendeu as três.
+
+      Confirme o marco. Marque a caixa quando as três estiverem concluídas.
+    tasks:
+      - check
+    rewards:
+      - loot: raro
+      - xp: 40
+
+  - link: aether:tres_masmorras
+    at: [9, 1]
+
+  - id: selo_ceus
+    title: "O Selo dos Céus"
+    type: milestone
+    deps: [ceus_masmorras, aether:chave_ceus]
+    at: [10, 0]
+    icon: minecraft:nether_star
+    desc: |
+      O segundo Selo sobe como uma pena branca e se prende no teto do Registro. As Valquírias, livres, voam em círculos ao redor dele, e eu juro que ouço um canto.
+
+      Vencer o Aether por inteiro não é só uma façanha, é uma restauração. Cada ilha tem um passado que você ajudou a lembrar. Marque a caixa e vamos para o terceiro.
+    tasks:
+      - check
+    rewards:
+      - kit: {name: "Kit do Selo", items: [minecraft:diamond x8, minecraft:emerald x8, minecraft:experience_bottle x32]}
+      - loot: epico
+      - xp: 75
+
+  - link: aether:chave_ceus
+    at: [10, 1]
+
+  - id: areias_intro
+    title: "Terceiro Selo: as Areias"
+    type: info
+    deps: [selos_abertura]
+    at: [11, 0]
+    icon: minecraft:sand
+    desc: |
+      O Selo das Areias é o mais antigo. Atum guardou o Livro dos Mortos, e o Faraó, o último a falar sobre o que acontece com tudo o que acaba, caiu diante de você.
+
+      Confirme os marcos e deixe os deuses descansarem. Marque a caixa para começar.
+    tasks:
+      - check
+    rewards:
+      - xp: 10
+
+  - id: areias_farao
+    title: "O Faraó, Silenciado"
+    type: normal
+    deps: [areias_intro, atum:farao]
+    at: [0, 7]
+    icon: minecraft:gold_block
+    desc: |
+      O Faraó caiu, mas o desafio dele ainda ecoa nas pirâmides. O marco prova que a guarda do Livro dos Mortos foi vencida.
+
+      Confirme o marco. Marque a caixa quando o Faraó estiver derrotado.
+    tasks:
+      - check
+    rewards:
+      - loot: raro
+      - xp: 40
+
+  - link: atum:farao
+    at: [0, 8]
+
+  - id: areias_panteao
+    title: "O Panteão Visitado"
+    type: normal
+    deps: [areias_farao, atum:panteao]
+    at: [1, 7]
+    icon: minecraft:ender_eye
+    desc: |
+      Cada deus tem um templo, e cada templo, uma lição. O Selo pede que você tenha percorrido todos.
+
+      Confirme o marco. Marque a caixa quando o panteão estiver completo.
+    tasks:
+      - check
+    rewards:
+      - loot: raro
+      - xp: 40
+
+  - link: atum:panteao
+    at: [1, 8]
+
+  - id: selo_areias
+    title: "O Selo das Areias"
+    type: milestone
+    deps: [areias_panteao, atum:chave_areias]
+    at: [2, 7]
+    icon: minecraft:nether_star
+    desc: |
+      O terceiro Selo é dourado e pesado, como um escaravelho de ouro puro. Ele se encaixa no Registro com um som de areia caindo numa ampulheta, e eu sinto que cada grão é uma história terminada.
+
+      Os três reinos agora estão selados, e a base do Registro está firme. Faltam cinco. Marque a caixa e vamos adiante.
+    tasks:
+      - check
+    rewards:
+      - kit: {name: "Kit do Selo", items: [minecraft:diamond x8, minecraft:emerald x8, minecraft:experience_bottle x32]}
+      - loot: epico
+      - xp: 75
+
+  - link: atum:chave_areias
+    at: [2, 8]
+
+  - id: abismo_intro
+    title: "Quarto Selo: o Abismo"
+    type: info
+    deps: [selos_abertura]
+    at: [3, 7]
+    icon: minecraft:skull
+    desc: |
+      O Selo do Abismo é o mais sombrio. Ele exige três chefes que guardam o vazio: o Wither, o Dragão do Fim e o Guardião do Caos. Cada um é um teste de preparo, de armadura e de coragem.
+
+      Antes de começar, revise seus equipamentos e suas curas. Eu quero você inteiro do outro lado. Marque a caixa para começar.
+    tasks:
+      - check
+    rewards:
+      - xp: 10
+
+  - id: abismo_wither
+    title: "O Wither"
+    type: boss
+    deps: [abismo_intro, nether:wither]
+    at: [4, 7]
+    icon: minecraft:skull
+    desc: |
+      Três cabeças, uma explosão inteira e um Nether que treme. O Wither é o primeiro guardião do Abismo, e vencê-lo exige preparo, espaço aberto e muita cura.
+
+      Convoque-o em campo aberto, com armadura encantada. §cPerigo:§r a explosão inicial derruba blocos. Marque a caixa quando o Wither cair.
+    tasks:
+      - check
+    rewards:
+      - loot: raro
+      - xp: 50
+
+  - link: nether:wither
+    at: [4, 8]
+
+  - id: abismo_portal
+    title: "O Portal do Fim"
+    type: portal
+    deps: [abismo_wither, fim:portal_fim]
+    at: [5, 7]
+    icon: minecraft:ender_eye
+    desc: |
+      O portal do Fim abre sobre uma ilha de pedra branca e um céu de estrelas apagadas. É a entrada para o segundo guardião.
+
+      Leve blocos, arco e uma cama para quando perder o equilíbrio. Marque a caixa quando estiver lá.
+    tasks:
+      - check
+    rewards:
+      - loot: incomum
+      - xp: 35
+
+  - link: fim:portal_fim
+    at: [5, 8]
+
+  - id: abismo_dragao
+    title: "O Dragão do Fim"
+    type: boss
+    deps: [abismo_portal, fim:dragao]
+    at: [6, 7]
+    icon: minecraft:dragon_egg
+    desc: |
+      O Dragão do Fim sobrevoa as torres de obsidiana curando-se nos cristais. Para vencê-lo, destrua os cristais, abra o flanco e acerte quando ele pousar.
+
+      Marque a caixa quando o Dragão cair e o ovo repousar.
+    tasks:
+      - check
+    rewards:
+      - kit: {name: "Kit do Limiar", items: [minecraft:ender_pearl x8, minecraft:obsidian x16, minecraft:diamond x4]}
+      - loot: epico
+      - xp: 65
+
+  - link: fim:dragao
+    at: [6, 8]
+
+  - id: abismo_renascido
+    title: "O Dragão Renascido"
+    type: boss
+    deps: [abismo_dragao, draconic:dragao_ressuscitado]
+    at: [7, 7]
+    icon: minecraft:dragon_egg
+    desc: |
+      O Dragão do Fim volta, mais forte, para quem usa o ritual dracônico. É o teste de quem quer mais do que o fim normal oferece.
+
+      Prepare-se como se fosse a primeira vez. Marque a caixa quando o Dragão Renascido tombar.
+    tasks:
+      - check
+    rewards:
+      - loot: epico
+      - xp: 65
+
+  - link: draconic:dragao_ressuscitado
+    at: [7, 8]
+
+  - id: abismo_caos
+    title: "O Guardião do Caos"
+    type: boss
+    deps: [abismo_renascido, draconic:guardiao_caos]
+    at: [8, 7]
+    icon: minecraft:nether_star
+    desc: |
+      O Guardião do Caos é o chefe final do Volume do Dragão. Uma ilha de pedra, um escudo de energia, um poder que quase não cabe em palavras.
+
+      Leve o melhor equipamento que tiver. Reconheço que o caos foi contido. Marque a caixa quando o Guardião cair.
+    tasks:
+      - check
+    rewards:
+      - kit: {name: "Kit do Limiar", items: [minecraft:ender_pearl x8, minecraft:obsidian x16, minecraft:diamond x4]}
+      - loot: lendario
+      - xp: 90
+
+  - link: draconic:guardiao_caos
+    at: [8, 8]
+
+  - id: selo_abismo
+    title: "O Selo do Abismo"
+    type: milestone
+    deps: [abismo_caos, nether:wither, fim:dragao, draconic:guardiao_caos]
+    at: [9, 7]
+    icon: minecraft:nether_star
+    desc: |
+      O quarto Selo é negro, e mesmo assim brilha. Ele fica pendurado sobre o vazio e pulsa devagar, como um coração que já aceitou o silêncio. Wither, Dragão do Fim e Guardião do Caos: três guardiães da escuridão que agora repousam.
+
+      Eu preciso confessar que fiquei com medo. Mas você foi, e voltou, e o Abismo cedeu. Marque a caixa e vamos olhar para cima, onde as estrelas esperam.
+    tasks:
+      - check
+    rewards:
+      - kit: {name: "Kit do Selo", items: [minecraft:diamond x8, minecraft:emerald x8, minecraft:experience_bottle x32]}
+      - loot: lendario
+      - xp: 100
+
+  - id: estrelas_intro
+    title: "Quinto Selo: as Estrelas"
+    type: info
+    deps: [selos_abertura]
+    at: [10, 7]
+    icon: minecraft:fireworks
+    desc: |
+      O Selo das Estrelas é o mais distante. Exige que você saia do mundo, cruze o vazio e volte com o conhecimento do cosmos nas mãos. Foguetes, estações, outros planetas.
+
+      Respire, olhe para cima e comece a montar. Marque a caixa quando estiver pronto para a viagem.
+    tasks:
+      - check
+    rewards:
+      - xp: 10
+
+  - id: est_oficina
+    title: "A Oficina Espacial"
+    type: main
+    deps: [estrelas_intro, galacticraft:oficina_espacial]
+    at: [11, 7]
+    icon: minecraft:iron_block
+    desc: |
+      Foguetes não se improvisam. A oficina espacial reúne as bancadas e as máquinas que dão forma ao primeiro voo. Confira se tem aço, oxigênio e combustível.
+
+      Marque a caixa quando a oficina estiver montada.
+    tasks:
+      - check
+    rewards:
+      - kit: {name: "Kit do Engenheiro", items: [minecraft:redstone x32, minecraft:iron_ingot x16, minecraft:gold_ingot x8, minecraft:diamond x2]}
+      - xp: 30
+
+  - link: galacticraft:oficina_espacial
+    at: [11, 8]
+
+  - id: est_lancamento
+    title: "Pronto para o Lançamento"
+    type: main
+    deps: [est_oficina, galacticraft:pronto_lancamento]
+    at: [0, 14]
+    icon: minecraft:fireworks
+    desc: |
+      Foguete, plataforma de lançamento, combustível e um traje com oxigênio. Tudo pronto. O resto é coragem.
+
+      Marque a caixa quando o foguete estiver na plataforma.
+    tasks:
+      - check
+    rewards:
+      - loot: incomum
+      - xp: 35
+
+  - link: galacticraft:pronto_lancamento
+    at: [0, 15]
+
+  - id: est_estacao
+    title: "A Estação Espacial"
+    type: main
+    deps: [est_lancamento, galacticraft:estacao_espacial]
+    at: [1, 14]
+    icon: minecraft:glass
+    desc: |
+      Uma casa no vazio, com escudo, estufa e vista para o planeta. A estação espacial é a primeira prova de que o ser humano pode morar entre as estrelas.
+
+      Marque a caixa quando a estação estiver habitada.
+    tasks:
+      - check
+    rewards:
+      - loot: raro
+      - xp: 40
+
+  - link: galacticraft:estacao_espacial
+    at: [1, 15]
+
+  - id: est_marte
+    title: "A Base em Marte"
+    type: main
+    deps: [est_estacao, galacticraft:base_marte]
+    at: [2, 14]
+    icon: minecraft:redstone
+    desc: |
+      Marte é vermelho, frio e cheio de recursos. Uma base lá é a prova de que o seu conhecimento aguenta a distância.
+
+      Marque a caixa quando a base estiver funcionando.
+    tasks:
+      - check
+    rewards:
+      - loot: raro
+      - xp: 45
+
+  - link: galacticraft:base_marte
+    at: [2, 15]
+
+  - id: est_esqueleto
+    title: "O Esqueleto-Chefe"
+    type: boss
+    deps: [est_marte, galacticraft:esqueleto_chefe]
+    at: [3, 14]
+    icon: minecraft:bone
+    desc: |
+      O primeiro chefe espacial é um esqueleto evoluído, alto, armado e furioso. Ele guarda o tesouro de um mundo sem ar.
+
+      Leve oxigênio e paciência. Marque a caixa quando ele cair.
+    tasks:
+      - check
+    rewards:
+      - loot: raro
+      - xp: 45
+
+  - link: galacticraft:esqueleto_chefe
+    at: [3, 15]
+
+  - id: est_gigantes
+    title: "Os Gigantes Gasosos"
+    type: main
+    deps: [est_esqueleto, extraplanets:gigantes_gasosos]
+    at: [4, 14]
+    icon: minecraft:ender_pearl
+    desc: |
+      Júpiter, Saturno, Urano e Netuno: gigantes de gás que não têm chão, mas têm luas cheias de segredos.
+
+      Marque a caixa quando tiver visitado os gigantes.
+    tasks:
+      - check
+    rewards:
+      - loot: raro
+      - xp: 45
+
+  - link: extraplanets:gigantes_gasosos
+    at: [4, 15]
+
+  - id: est_guardioes
+    title: "Os Sete Guardiões"
+    type: boss
+    deps: [est_gigantes, extraplanets:sete_guardioes]
+    at: [5, 14]
+    icon: minecraft:skull
+    desc: |
+      Sete chefes em sete mundos. Cada um é uma versão distorcida de um velho conhecido, e todos exigem preparo. Eles guardam as estrelas mais longes.
+
+      Marque a caixa quando os sete caírem.
+    tasks:
+      - check
+    rewards:
+      - loot: epico
+      - xp: 65
+
+  - link: extraplanets:sete_guardioes
+    at: [5, 15]
+
+  - id: est_nave
+    title: "A Nave-Mãe"
+    type: main
+    deps: [est_guardioes, amunra:nave_mae]
+    at: [6, 14]
+    icon: minecraft:iron_block
+    desc: |
+      Uma nave que carrega uma base inteira consigo. Amun-Ra eleva a viagem espacial a outra escala, com sóis duplos e planetas de nomes antigos.
+
+      Marque a caixa quando a nave-mãe estiver construída.
+    tasks:
+      - check
+    rewards:
+      - loot: epico
+      - xp: 60
+
+  - link: amunra:nave_mae
+    at: [6, 15]
+
+  - id: est_farao
+    title: "O Faraó Morto-Vivo"
+    type: boss
+    deps: [est_nave, amunra:farao]
+    at: [7, 14]
+    icon: minecraft:gold_block
+    desc: |
+      Quem diria: o Faraó voltou, agora no espaço, e mais furioso. O Faraó Morto-Vivo é o chefe final de Amun-Ra.
+
+      Marque a caixa quando ele cair.
+    tasks:
+      - check
+    rewards:
+      - loot: epico
+      - xp: 70
+
+  - link: amunra:farao
+    at: [7, 15]
+
+  - id: selo_estrelas
+    title: "O Selo das Estrelas"
+    type: milestone
+    deps: [est_farao, galacticraft:explorador_solar, extraplanets:viajante_interestelar, amunra:mestre_amunra]
+    at: [8, 14]
+    icon: minecraft:nether_star
+    desc: |
+      O quinto Selo tem o brilho das estrelas de verdade. Ele sobe sem pressa, passa pelo teto da biblioteca e fica pendurado ali, sem peso e sem tempo, olhando de volta.
+
+      Você cruzou o sistema solar e foi além. Galacticraft, Extra Planets e Amun-Ra: três tradições, uma só coragem. Eu nunca vi o céu com tantos olhos. Marque a caixa e siga para o Arcano.
+    tasks:
+      - check
+    rewards:
+      - kit: {name: "Kit do Selo", items: [minecraft:diamond x8, minecraft:emerald x8, minecraft:experience_bottle x32]}
+      - loot: lendario
+      - xp: 100
+
+  - link: galacticraft:explorador_solar
+    at: [8, 15]
+
+  - link: extraplanets:viajante_interestelar
+    at: [8, 16]
+
+  - link: amunra:mestre_amunra
+    at: [8, 17]
+
+  - id: arcano_intro
+    title: "Sexto Selo: o Arcano"
+    type: info
+    deps: [selos_abertura]
+    at: [9, 14]
+    icon: minecraft:enchanting_table
+    desc: |
+      O Selo Arcano exige maestria mágica de verdade. Thaumcraft, Blood Magic, Witchery, Ars Magica e a Guardiã Gaia: cinco caminhos de poder que se cruzam na mesma meta.
+
+      Não é um Selo para correr. Estude, pratique e respeite o preço. Marque a caixa para começar.
+    tasks:
+      - check
+    rewards:
+      - xp: 10
+
+  - id: arc_warden
+    title: "O Vigia Eldritch"
+    type: boss
+    deps: [arcano_intro, thaumcraft2:warden_eldritch]
+    at: [10, 14]
+    icon: minecraft:ender_eye
+    desc: |
+      Nas profundezas eldritch, o Vigia observa tudo. Ele não é só um chefe, é um lembrete de que o Thaumcraft esconde coisas além da compreensão.
+
+      Marque a caixa quando o Vigia cair.
+    tasks:
+      - check
+    rewards:
+      - loot: raro
+      - xp: 50
+
+  - link: thaumcraft2:warden_eldritch
+    at: [10, 15]
+
+  - id: arc_construto
+    title: "O Construto Eldritch"
+    type: boss
+    deps: [arc_warden, thaumcraft2:construto_eldritch]
+    at: [11, 14]
+    icon: minecraft:obsidian
+    desc: |
+      Uma máquina antiga, de pedra viva, que protege o coração do labirinto. O construto não negocia.
+
+      Marque a caixa quando ele cair.
+    tasks:
+      - check
+    rewards:
+      - loot: raro
+      - xp: 50
+
+  - link: thaumcraft2:construto_eldritch
+    at: [11, 15]
+
+  - id: arc_sangue
+    title: "O Orbe Transcendente"
+    type: main
+    deps: [arc_construto, bloodmagic:orbe_transcendente]
+    at: [0, 21]
+    icon: minecraft:redstone_block
+    desc: |
+      O orbe transcendente é o ápice do Blood Magic: capacidade quase infinita de Essência, pago com um preço que só você conhece.
+
+      Marque a caixa quando o orbe estiver nas suas mãos.
+    tasks:
+      - check
+    rewards:
+      - loot: epico
+      - xp: 60
+
+  - link: bloodmagic:orbe_transcendente
+    at: [0, 22]
+
+  - id: arc_mestre_sangue
+    title: "Mestre do Sangue"
+    type: milestone
+    deps: [arc_sangue, bloodmagic:mestre_sangue]
+    at: [1, 21]
+    icon: minecraft:redstone_block
+    desc: |
+      Todos os rituais, todos os altares, todos os sigilos. O Blood Magic completo.
+
+      Marque a caixa quando o Volume estiver concluído.
+    tasks:
+      - check
+    rewards:
+      - loot: epico
+      - xp: 65
+
+  - link: bloodmagic:mestre_sangue
+    at: [1, 22]
+
+  - id: arc_bruxa
+    title: "A Grande Bruxa"
+    type: main
+    deps: [arc_mestre_sangue, witchery:grande_bruxa]
+    at: [2, 21]
+    icon: minecraft:cauldron
+    desc: |
+      Witchery lhe deu rituais, bonecos, vassouras e a lua. A Grande Bruxa é o título de quem completou o círculo.
+
+      Marque a caixa quando o título for seu.
+    tasks:
+      - check
+    rewards:
+      - loot: epico
+      - xp: 65
+
+  - link: witchery:grande_bruxa
+    at: [2, 22]
+
+  - id: arc_maestria
+    title: "Maestria Arcana"
+    type: main
+    deps: [arc_bruxa, arsmagica:maestria_arcana]
+    at: [3, 21]
+    icon: minecraft:experience_bottle
+    desc: |
+      Dez guardiões, trajes completos e feitiços personalizados: Ars Magica completo.
+
+      Marque a caixa quando a maestria arcana for sua.
+    tasks:
+      - check
+    rewards:
+      - loot: epico
+      - xp: 65
+
+  - link: arsmagica:maestria_arcana
+    at: [3, 22]
+
+  - id: arc_gaia
+    title: "A Guardiã Gaia"
+    type: boss
+    deps: [arc_maestria, bestiario:gaia]
+    at: [4, 21]
+    icon: minecraft:nether_star
+    desc: |
+      Gaia é a guardiã do Botania, uma chefe de arena que testa tudo: mira, esquiva e paciência. Ela foi feita para o fim do caminho do mago.
+
+      Marque a caixa quando Gaia cair.
+    tasks:
+      - check
+    rewards:
+      - kit: {name: "Kit do Selo", items: [minecraft:diamond x8, minecraft:emerald x8, minecraft:experience_bottle x32]}
+      - loot: epico
+      - xp: 75
+
+  - link: bestiario:gaia
+    at: [4, 22]
+
+  - id: arc_supremo
+    title: "O Taumaturgo Supremo"
+    type: main
+    deps: [arc_gaia, thaumcraft2:taumaturgo_supremo]
+    at: [5, 21]
+    icon: minecraft:ender_eye
+    desc: |
+      Thaumcraft inteiro, da primeira pesquisa à última infusão. O título de Taumaturgo Supremo é uma das maiores honras do livro.
+
+      Marque a caixa quando o título for seu.
+    tasks:
+      - check
+    rewards:
+      - loot: epico
+      - xp: 70
+
+  - link: thaumcraft2:taumaturgo_supremo
+    at: [5, 22]
+
+  - id: selo_arcano
+    title: "O Selo Arcano"
+    type: milestone
+    deps: [arc_supremo, thaumcraft2:taumaturgo_supremo, bloodmagic:mestre_sangue, witchery:grande_bruxa, arsmagica:maestria_arcana, bestiario:gaia]
+    at: [6, 21]
+    icon: minecraft:nether_star
+    desc: |
+      O sexto Selo é um redemoinho de cores que não existem. Sangue, vis, mana, lua e pensamento: cinco magias diferentes, uma só assinatura.
+
+      Eu sempre achei que a magia era a parte mais frágil do Registro, porque depende de intenção. Você provou o contrário. Marque a caixa e vamos para a Engrenagem.
+    tasks:
+      - check
+    rewards:
+      - kit: {name: "Kit do Selo", items: [minecraft:diamond x8, minecraft:emerald x8, minecraft:experience_bottle x32]}
+      - loot: lendario
+      - xp: 100
+
+  - id: eng_intro
+    title: "Sétimo Selo: a Engrenagem"
+    type: info
+    deps: [selos_abertura]
+    at: [7, 21]
+    icon: minecraft:redstone_block
+    desc: |
+      O Selo da Engrenagem pede o que a magia não pode dar: precisão, repetição e escala. Reatores, redes digitais, máquinas de matéria e painéis quânticos.
+
+      Prepare a fábrica e respire fundo. Marque a caixa para começar.
+    tasks:
+      - check
+    rewards:
+      - xp: 10
+
+  - id: eng_quantum
+    title: "A QuantumSuit"
+    type: main
+    deps: [eng_intro, ic2:quantum_completo]
+    at: [8, 21]
+    icon: minecraft:iron_chestplate
+    desc: |
+      A armadura mais avançada do IC2. Ela suporta quedas absurdas, voa e carrega o jogador pelo mundo inteiro.
+
+      Marque a caixa quando a QuantumSuit estiver completa.
+    tasks:
+      - check
+    rewards:
+      - kit: {name: "Kit do Engenheiro", items: [minecraft:redstone x32, minecraft:iron_ingot x16, minecraft:gold_ingot x8, minecraft:diamond x2]}
+      - loot: raro
+      - xp: 50
+
+  - link: ic2:quantum_completo
+    at: [8, 22]
+
+  - id: eng_uu
+    title: "Matéria do Nada"
+    type: main
+    deps: [eng_quantum, ic2:materia_uu]
+    at: [9, 21]
+    icon: minecraft:diamond
+    desc: |
+      Matéria UU: o líquido que vira qualquer coisa. Ela precisa de muita energia e de muita paciência.
+
+      Marque a caixa quando a primeira UU estiver pronta.
+    tasks:
+      - check
+    rewards:
+      - loot: raro
+      - xp: 50
+
+  - link: ic2:materia_uu
+    at: [9, 22]
+
+  - id: eng_fusao
+    title: "O Reator de Fusão"
+    type: main
+    deps: [eng_uu, mekanism_gen:reator_fusao]
+    at: [10, 21]
+    icon: minecraft:blaze_rod
+    desc: |
+      Deutério e trítio, calor de uma estrela e a promessa de energia ilimitada. O reator de fusão do Mekanism é o auge da geração.
+
+      Marque a caixa quando o reator estiver aceso.
+    tasks:
+      - check
+    rewards:
+      - loot: epico
+      - xp: 65
+
+  - link: mekanism_gen:reator_fusao
+    at: [10, 22]
+
+  - id: eng_reatores
+    title: "Mestre dos Reatores"
+    type: milestone
+    deps: [eng_fusao, bigreactors:mestre_reatores]
+    at: [11, 21]
+    icon: minecraft:redstone_block
+    desc: |
+      Big Reactors completo: reatores passivos, ativos e turbinas.
+
+      Marque a caixa quando concluir o Volume.
+    tasks:
+      - check
+    rewards:
+      - loot: epico
+      - xp: 60
+
+  - link: bigreactors:mestre_reatores
+    at: [11, 22]
+
+  - id: eng_quantica
+    title: "A Ponte Quântica"
+    type: main
+    deps: [eng_reatores, ae2:ponte_quantica]
+    at: [0, 28]
+    icon: minecraft:ender_eye
+    desc: |
+      Um par de anéis que liga duas redes ME a qualquer distância. A ponte quântica é a mais elegante das soluções de rede.
+
+      Marque a caixa quando a ponte estiver funcionando.
+    tasks:
+      - check
+    rewards:
+      - loot: epico
+      - xp: 60
+
+  - link: ae2:ponte_quantica
+    at: [0, 29]
+
+  - id: eng_melhorias
+    title: "Mestre das Melhorias"
+    type: milestone
+    deps: [eng_quantica, iu_endgame:mestre_melhorias]
+    at: [1, 28]
+    icon: minecraft:diamond_block
+    desc: |
+      Painéis solares de níveis incríveis, armaduras quânticas e uma energia que supera tudo o que veio antes.
+
+      Marque a caixa quando o Volume estiver concluído.
+    tasks:
+      - check
+    rewards:
+      - loot: epico
+      - xp: 65
+
+  - link: iu_endgame:mestre_melhorias
+    at: [1, 29]
+
+  - id: eng_draconico
+    title: "O Reator Dracônico"
+    type: main
+    deps: [eng_melhorias, draconic:reator_draconico]
+    at: [2, 28]
+    icon: minecraft:nether_star
+    desc: |
+      O reator dracônico é a máquina mais perigosa e a mais generosa do livro. Se bem feito, entrega energia que parece magia.
+
+      Marque a caixa quando o reator estiver estável.
+    tasks:
+      - check
+    rewards:
+      - loot: lendario
+      - xp: 75
+
+  - link: draconic:reator_draconico
+    at: [2, 29]
+
+  - id: selo_engrenagem
+    title: "O Selo da Engrenagem"
+    type: milestone
+    deps: [eng_draconico, ic2:mestre_industrial, ae2:mestre_me, mekanism:mestre_quimico, bigreactors:mestre_reatores]
+    at: [3, 28]
+    icon: minecraft:nether_star
+    desc: |
+      O sétimo Selo é feito de ferro, vidro e luz, com engrenagens girando em volta dele. O som é o de uma fábrica enorme funcionando em perfeita sincronia.
+
+      IC2, AE2, Mekanism e Big Reactors: quatro tradições industriais, uma só mão. Eu me sinto uma engenheira de verdade. Marque a caixa e vamos para o último Selo.
+    tasks:
+      - check
+    rewards:
+      - kit: {name: "Kit do Selo", items: [minecraft:diamond x8, minecraft:emerald x8, minecraft:experience_bottle x32]}
+      - loot: lendario
+      - xp: 100
+
+  - link: ic2:mestre_industrial
+    at: [3, 29]
+
+  - link: ae2:mestre_me
+    at: [3, 30]
+
+  - link: mekanism:mestre_quimico
+    at: [3, 31]
+
+  - id: vida_intro
+    title: "Oitavo Selo: a Vida"
+    type: info
+    deps: [selos_abertura]
+    at: [4, 28]
+    icon: minecraft:sapling
+    desc: |
+      O Selo da Vida fecha o ciclo com o mais simples e o mais profundo: plantas, abelhas e genes. É o Selo que lembra que o Registro não é só poder, é também cuidado.
+
+      Respire, plante, cuide. Marque a caixa para começar.
+    tasks:
+      - check
+    rewards:
+      - xp: 10
+
+  - id: vida_arborista
+    title: "Arborista Mestre"
+    type: main
+    deps: [vida_intro, forestry:arborista_mestre]
+    at: [5, 28]
+    icon: minecraft:sapling
+    desc: |
+      Árvores raras, cruzamentos e madeira que ninguém viu. O arborista mestre é o jardineiro do Registro.
+
+      Marque a caixa quando concluir.
+    tasks:
+      - check
+    rewards:
+      - loot: raro
+      - xp: 45
+
+  - link: forestry:arborista_mestre
+    at: [5, 29]
+
+  - id: vida_apimancia
+    title: "Mestre da Apimancia"
+    type: main
+    deps: [vida_arborista, abelhas:apimancia]
+    at: [6, 28]
+    icon: minecraft:flower_pot
+    desc: |
+      Abelhas mágicas, genes raros e favos que valem ouro. A apimancia une ciência e encanto.
+
+      Marque a caixa quando concluir.
+    tasks:
+      - check
+    rewards:
+      - loot: raro
+      - xp: 45
+
+  - link: abelhas:apimancia
+    at: [6, 29]
+
+  - id: vida_genes
+    title: "O Replicador Genético"
+    type: main
+    deps: [vida_apimancia, abelhas:g_replicador]
+    at: [7, 28]
+    icon: minecraft:ender_eye
+    desc: |
+      Genes copiados, preservados e reutilizados. O replicador é uma biblioteca viva.
+
+      Marque a caixa quando o replicador estiver ativo.
+    tasks:
+      - check
+    rewards:
+      - loot: raro
+      - xp: 50
+
+  - link: abelhas:g_replicador
+    at: [7, 29]
+
+  - id: vida_botany
+    title: "O Jardim Botânico"
+    type: main
+    deps: [vida_genes, binnie:marco_botany]
+    at: [8, 28]
+    icon: minecraft:red_flower
+    desc: |
+      Binnie dá ao jardineiro ferramentas de especialista. Um jardim botânico completo é uma obra viva.
+
+      Marque a caixa quando concluir.
+    tasks:
+      - check
+    rewards:
+      - loot: raro
+      - xp: 50
+
+  - link: binnie:marco_botany
+    at: [8, 29]
+
+  - id: vida_genesis
+    title: "Gênese"
+    type: boss
+    deps: [vida_botany, binnie:genesis]
+    at: [9, 28]
+    icon: minecraft:nether_star
+    desc: |
+      Gênese é o chefe final da genética. Ele exige o que a natureza tem de mais forte.
+
+      Marque a caixa quando ele cair.
+    tasks:
+      - check
+    rewards:
+      - loot: epico
+      - xp: 65
+
+  - link: binnie:genesis
+    at: [9, 29]
+
+  - id: vida_imperio
+    title: "O Poder Imperio"
+    type: main
+    deps: [vida_genesis, magicalcrops:marco_imperio]
+    at: [10, 28]
+    icon: minecraft:diamond
+    desc: |
+      Cultivos mágicos que dão recursos de verdade, plantados no solo e colhidos na estação.
+
+      Marque a caixa quando a colheita estiver na mão.
+    tasks:
+      - check
+    rewards:
+      - loot: epico
+      - xp: 60
+
+  - link: magicalcrops:marco_imperio
+    at: [10, 29]
+
+  - id: selo_vida
+    title: "O Selo da Vida"
+    type: milestone
+    deps: [vida_imperio, abelhas:selo_da_vida, forestry:mestre_florestal, agricraft:marco_agricraft]
+    at: [11, 28]
+    icon: minecraft:nether_star
+    desc: |
+      O oitavo Selo é verde e dourado, e vem com cheiro de terra molhada. Ele se acende devagar, como uma semente que acorda, e cobre as páginas do Registro com folhas novas.
+
+      Abelhas, árvores e cultivos: a vida se organiza sozinha, quando alguém cuida. Eu estava errada sobre uma coisa, Herói: o Registro não precisava de poder, precisava de paciência. Marque a caixa.
+    tasks:
+      - check
+    rewards:
+      - kit: {name: "Kit do Selo", items: [minecraft:diamond x8, minecraft:emerald x8, minecraft:experience_bottle x32]}
+      - loot: lendario
+      - xp: 100
+
+  - link: abelhas:selo_da_vida
+    at: [11, 29]
+
+  - link: forestry:mestre_florestal
+    at: [11, 30]
+
+  - link: agricraft:marco_agricraft
+    at: [11, 31]
+
+  - id: oito_selos
+    title: "Os Oito Selos"
+    type: finale
+    deps: [selo_crepusculo, selo_ceus, selo_areias, selo_abismo, selo_estrelas, selo_arcano, selo_engrenagem, selo_vida]
+    at: [0, 35]
+    icon: minecraft:nether_star
+    banner: "Os Oito Selos"
+    desc: |
+      Oito luzes, oito cores, oito promessas cumpridas. Eu olho para o Registro e ele brilha: os Selos estão restaurados. A Fratura, que parecia eterna, se fecha o bastante para deixar passar uma luz nova.
+
+      As dimensões §6ATM§r se abrem: §eMineração§r, §eO Outro§r e §eO Além§r. É a Jornada da Estrela de Todas as Coisas, e ela começa agora. Mas antes, respire. Você merece.
+    tasks:
+      - check
+    rewards:
+      - kit: {name: "Kit do Registro", items: [minecraft:diamond_block x2, minecraft:emerald_block x2, minecraft:golden_apple x4]}
+      - loot: lendario x3
+      - xp: 250

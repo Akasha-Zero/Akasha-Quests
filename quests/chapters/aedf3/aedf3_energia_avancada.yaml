@@ -12,7 +12,7 @@ quests:
   type: main
   deps_hidden: ['aedf3_armazenamento_digital:autocraft']
   desc: |
-    O combustível da era nuclear. O §eUrânio§r aparece em veios verdes e brilhantes. Minere com picareta de ferro ou melhor e leve para o triturador. Use o traje hazmat se for ficar perto por muito tempo.
+    O combustível da era nuclear. O §eUrânio§r aparece em veios verdes e brilhantes. Minere com picareta de ferro ou melhor e leve para o triturador. Use o traje hazmat se for ficar perto por muito tempo. Use picareta de ferro ou melhor. O minério fica em profundidades médias, como o ferro, mas é mais raro. Um scanner de minérios acelera a busca.
   tasks:
   - {get: 'ore:oreUranium x8'}
   rewards:
@@ -23,7 +23,7 @@ quests:
   type: main
   deps: [ciclo_do_uranio]
   desc: |
-    Processando o minério, saem dois tipos de urânio: o §e238§r (fértil) e o §e235§r (físsil). Combine as partes pequenas para fazer células de combustível. Guarde numa caixa de contenção.
+    Processando o minério, saem dois tipos de urânio: o §e238§r (fértil) e o §e235§r (físsil). Combine as partes pequenas para fazer células de combustível. Guarde numa caixa de contenção. Triture o minério no triturador, processe no centrifugador e separe os dois tipos. Guarde tudo numa caixa de contenção e trate com respeito. Juntos, os dois tipos formam o combustível do reator.
   tasks:
   - get: ['IC2:itemUran238 x12', 'IC2:itemUran235small x6']
   rewards:
@@ -34,7 +34,7 @@ quests:
   type: main
   deps: [uranio_238_235]
   desc: |
-    Urânio enriquecido e uma barra vazia formam a §eBarra de Combustível§r. Há versões simples, duplas e quádruplas. Comece com as simples. Elas geram calor e energia dentro do reator.
+    Urânio enriquecido e uma barra vazia formam a §eBarra de Combustível§r. Há versões simples, duplas e quádruplas. Comece com as simples. Elas geram calor e energia dentro do reator. Basta combinar urânio com a barra vazia na bancada. Há versões simples, duplas e quádruplas, cada uma com mais energia e mais calor. Comece com as simples, que são mais seguras.
   tasks:
   - get: ['IC2:reactorUraniumSimple:* x2', 'IC2:itemFuelRod x4']
   rewards:
@@ -45,7 +45,7 @@ quests:
   type: main
   deps: [barras_de_combustivel]
   desc: |
-    As §eCâmaras§r aumentam o espaço interno do reator. Coloque em volta e conecte ao reator principal. Quanto mais câmaras, mais barras cabem. Prepare materiais para as paredes.
+    As §eCâmaras§r aumentam o espaço interno do reator. Coloque em volta e conecte ao reator principal. Quanto mais câmaras, mais barras cabem. Prepare materiais para as paredes. Elas se ligam ao reator por qualquer lado. Cada câmara adiciona um espaço interno para componentes. Uma estrutura maior significa potência maior, mas exige mais refrigeração.
   tasks:
   - {get: 'IC2:blockReactorChamber x3'}
   rewards:
@@ -56,7 +56,7 @@ quests:
   type: main
   deps: [camara_do_reator]
   desc: |
-    O §eReator Nuclear§r do IC2 produz EU em quantidade, mas aquece. Monte barras, vents e coolant numa grade que funciona. Teste primeiro com poucos componentes. Heróis lendários perderam bases inteiras por pressa.
+    O §eReator Nuclear§r do IC2 produz EU em quantidade, mas aquece. Monte barras, vents e coolant numa grade que funciona. Teste primeiro com poucos componentes. Heróis lendários perderam bases inteiras por pressa. Lembre de usar o traje hazmat. Faça um desenho no papel primeiro e consulte o NEI para ver a receita de cada componente.
 
     §cPerigo:§r reator sem refrigeração explode.
   tasks:
@@ -69,7 +69,7 @@ quests:
   type: normal
   deps: [reator_nuclear_ic2]
   desc: |
-    As §eCélulas de Refrigeração§r absorvem calor dentro do reator. Há de 10k, 30k e 60k. Misture com vents para dissipar. Uma boa grade é a diferença entre vitória e desastre.
+    As §eCélulas de Refrigeração§r absorvem calor dentro do reator. Há de 10k, 30k e 60k. Misture com vents para dissipar. Uma boa grade é a diferença entre vitória e desastre. Elas ficam nos espaços entre as barras e retiram calor. Misture tipos diferentes para equilibrar a temperatura. Quando a célula enche, troque. Uma fileira bem pensada é a chave do reator seguro.
   tasks:
   - {get: 'IC2:reactorCoolantSimple:* x3'}
   rewards:
@@ -80,7 +80,7 @@ quests:
   type: normal
   deps: [celulas_refrigerantes]
   desc: |
-    Os respiradouros soltam calor acumulado. Cada tipo dissipa uma quantidade diferente. Combine com trocadores de calor para equilibrar. O jogo dessa grade é como montar um quebra-cabeça de engenharia.
+    Os respiradouros soltam calor acumulado. Cada tipo dissipa uma quantidade diferente. Combine com trocadores de calor para equilibrar. O jogo dessa grade é como montar um quebra-cabeça de engenharia. Posicione ao lado das barras e das células para retirar calor. Há tipos que absorvem de outros componentes, e outros que resfriam sozinhos. Teste primeiro com poucas barras, observe a temperatura e vá ajustando.
   tasks:
   - {get: 'IC2:reactorVent:* x4'}
   rewards:
@@ -91,7 +91,7 @@ quests:
   type: normal
   deps: [respiradouros]
   desc: |
-    O chumbo denso protege o reator e forma as paredes. Junte placas e prepare a estrutura. Também é ingrediente de blindagem e componentes de segurança. Tem pouca utilidade fora desse mundo.
+    O chumbo denso protege o reator e forma as paredes. Junte placas e prepare a estrutura. Também é ingrediente de blindagem e componentes de segurança. Tem pouca utilidade fora desse mundo. Também servem para blindagem do reator. Veja o resultado no NEI e faça lotes.
   tasks:
   - {get: 'ore:plateDenseLead x4'}
   rewards:
@@ -102,7 +102,7 @@ quests:
   type: main
   deps: [placas_de_chumbo]
   desc: |
-    O §eYellorite§r é o minério amarelo do Big Reactors. Procure em cavernas profundas, junto da bedrock. Quebre e leve para fundição. O reator ativo precisa de muito dele, então faça um bom estoque.
+    O §eYellorite§r é o minério amarelo do Big Reactors. Procure em cavernas profundas, junto da bedrock. Quebre e leve para fundição. O reator ativo precisa de muito dele, então faça um bom estoque. O minério aparece amarelo-vivo nas cavernas profundas. Quebre com picareta de ferro e leve para o triturador ou a fundição. Vai render o Yellorium, o combustível do reator. Faça um estoque grande, que o consumo é constante.
   tasks:
   - {get: 'BigReactors:YelloriteOre x16'}
   rewards:
@@ -113,7 +113,7 @@ quests:
   type: main
   deps: [reator_br_yellorite]
   desc: |
-    Funda o Yellorite e junte §e32 lingotes de Yellorium§r: o combustível do reator. Parece muito, mas cada barra consome pouco. Com um bom estoque, o reator funciona dias sem parar.
+    Funda o Yellorite e junte §e32 lingotes de Yellorium§r: o combustível do reator. Parece muito, mas cada barra consome pouco. Com um bom estoque, o reator funciona dias sem parar. Use a fundição ou o forno comum. Guarde os lingotes num baú fácil de achar. O reator usa o combustível devagar, então 32 lingotes duram bastante tempo. É um bom investimento, fácil de renovar.
   tasks:
   - {get: 'ore:ingotYellorium x32'}
   rewards:
@@ -124,7 +124,7 @@ quests:
   type: main
   deps: [yellorium]
   desc: |
-    A estrutura do reator é um bloco multiblock: paredes de carcaça, vidro, portas. Monte um cubo oco e coloque o controlador no centro de uma parede. O tamanho é livre, mas o desempenho cresce com ele.
+    A estrutura do reator é um bloco multiblock: paredes de carcaça, vidro, portas. Monte um cubo oco e coloque o controlador no centro de uma parede. O tamanho é livre, mas o desempenho cresce com ele. Use a carcaça nos cantos, nas paredes e no teto. Vidro vai nas bordas para ver o interior. Verifique se o cubo está bem fechado.
   tasks:
   - {get: 'BigReactors:BRReactorPart x24'}
   rewards:
@@ -135,7 +135,7 @@ quests:
   type: main
   deps: [carcaca_do_reator]
   desc: |
-    O painel de comando! O §eControlador§r liga, desliga e ajusta a potência. Coloque numa parede do cubo e abra a tela para ver os dados. Cuide para que o reator nunca fique sem refrigerante no modo ativo.
+    O painel de comando! O §eControlador§r liga, desliga e ajusta a potência. Coloque numa parede do cubo e abra a tela para ver os dados. Cuide para que o reator nunca fique sem refrigerante no modo ativo. Ele liga e desliga o reator e mostra a produção.
   tasks:
   - {get: 'BigReactors:BRReactorPart:1'}
   rewards:
@@ -146,7 +146,7 @@ quests:
   type: main
   deps: [controlador_br]
   desc: |
-    Barras de combustível de Yellorium com hastes de controle em cima. Elas regulam a reação. Quanto mais fundo, menos energia. Ajuste com cuidado para equilibrar energia e calor.
+    Barras de combustível de Yellorium com hastes de controle em cima. Elas regulam a reação. Quanto mais fundo, menos energia. Ajuste com cuidado para equilibrar energia e calor. Coloque as barras de combustível no centro e as hastes por cima. Ajuste a profundidade pelo controlador para regular a potência. É a parte mais delicada do reator, mas com um pouco de prática vira rotina.
   tasks:
   - get: ['BigReactors:YelloriumFuelRod x4', 'BigReactors:BRReactorPart:2 x4']
   rewards:
@@ -157,7 +157,7 @@ quests:
   type: main
   deps: [hastes_de_controle]
   desc: |
-    O mais simples: sem refrigerante, só gera RF. É o §eReator Passivo§r, perfeito para começar. Rende menos, mas quase não dá trabalho. Os heróis lendários começavam por aqui antes de arriscar o modo ativo.
+    O mais simples: sem refrigerante, só gera RF. É o §eReator Passivo§r, perfeito para começar. Rende menos, mas quase não dá trabalho. Os heróis lendários começavam por aqui antes de arriscar o modo ativo. Cerque as barras de combustível com grafite para aumentar a reação. Conecte a porta de energia aos cabos ou capacitores e esqueça. Ele não precisa de refrigerante e gera energia constante.
   tasks:
   - get: ['BigReactors:BRReactorPart:1', 'BigReactors:BRReactorPart:3', 'BigReactors:BRReactorPart:4']
   rewards:
@@ -168,7 +168,7 @@ quests:
   type: main
   deps: [reator_passivo]
   desc: |
-    Com portas de refrigeração e líquido, o reator vira vapor, e o vapor move turbinas. Mais complexo e mais potente. É o caminho da energia grande. Não se esqueça da água.
+    Com portas de refrigeração e líquido, o reator vira vapor, e o vapor move turbinas. Mais complexo e mais potente. É o caminho da energia grande. Não se esqueça da água. Conecte a porta de refrigeração ao tanque e à turbina. O líquido vira vapor, e o vapor move a turbina. Mais potente, mais complexo e mais divertido. Verifique sempre o nível de água.
   tasks:
   - {get: 'BigReactors:BRReactorPart:5 x2'}
   rewards:
@@ -179,7 +179,7 @@ quests:
   type: main
   deps: [reator_ativo]
   desc: |
-    A turbina gira com vapor e gera RF. Monte o rotor com hastes e lâminas, alinhe o rolamento e coloque bobinas. Cada lâmina a mais aumenta a eficiência. Ouvir o ronco de uma turbina em movimento é a trilha sonora do futuro.
+    A turbina gira com vapor e gera RF. Monte o rotor com hastes e lâminas, alinhe o rolamento e coloque bobinas. Cada lâmina a mais aumenta a eficiência. Ouvir o ronco de uma turbina em movimento é a trilha sonora do futuro. Alinhe tudo antes.
   tasks:
   - get: ['BigReactors:BRTurbinePart:1', 'BigReactors:BRTurbinePart:4']
   rewards:
@@ -190,7 +190,7 @@ quests:
   type: normal
   deps: [turbina]
   desc: |
-    As bobinas convertem rotação em energia. Ouro rende pouco, eletrum rende mais, e metais raros rendem muito. Escolha conforme o material disponível. A bobina define o fôlego do seu reator.
+    As bobinas convertem rotação em energia. Ouro rende pouco, eletrum rende mais, e metais raros rendem muito. Escolha conforme o material disponível. A bobina define o fôlego do seu reator. Eletrum rende mais que ouro, e metais raros rendem ainda mais. Coloque as bobinas em volta do rotor, dentro da estrutura. Quanto melhor o material, melhor a conversão em energia. Escolha conforme o estoque.
   tasks:
   - {get: 'ore:blockElectrum x4'}
   rewards:
@@ -201,7 +201,7 @@ quests:
   type: normal
   deps: [bobinas]
   desc: |
-    A energia vai precisar de lugar para morar. Um §eBanco de Capacitores§r Vibrante guarda uma quantidade enorme de RF. Coloque ao lado do reator e ligue a saída aos consumidores. Combine com cabos de energia.
+    A energia vai precisar de lugar para morar. Um §eBanco de Capacitores§r Vibrante guarda uma quantidade enorme de RF. Coloque ao lado do reator e ligue a saída aos consumidores. Combine com cabos de energia. Ligue com condutos de energia ou cabos compatíveis. Ele guarda e entrega RF sob demanda. Um banco de capacitores bem montado garante tranquilidade durante picos de uso.
   tasks:
   - {get: 'EnderIO:blockCapBank:3'}
   rewards:
@@ -212,7 +212,7 @@ quests:
   type: optional
   deps: [bateria_de_rf]
   desc: |
-    Para guardar J do Mekanism. O §eCubo Supremo§r tem espaço enorme e aceita conversão. Dê uma volta pela base e escolha o lugar ideal. Este é o cofre de energia dos heróis mais ricos.
+    Para guardar J do Mekanism. O §eCubo Supremo§r tem espaço enorme e aceita conversão. Dê uma volta pela base e escolha o lugar ideal. Este é o cofre de energia dos heróis mais ricos. Ele aceita energia de cabos universais e entrega para máquinas. Confira a conversão no NEI. Opcional, mas bonito.
   tasks:
   - {get: 'Mekanism:EnergyCube {tier:"Ultimate"}'}
   rewards:
@@ -223,7 +223,7 @@ quests:
   type: optional
   deps: [cubo_mekanism_final]
   desc: |
-    Para ver tudo funcionando, use leitores de EU, comparadores e lâmpadas de redstone. Faça um painel na sala de controle com alarmes. Sem informação, você corre risco.
+    Para ver tudo funcionando, use leitores de EU, comparadores e lâmpadas de redstone. Faça um painel na sala de controle com alarmes. Sem informação, você corre risco. Liga a alarmes, luzes e portas. Útil para avisar sobre queda de energia ou calor. Um painel de controle bem montado impressiona qualquer visita, e evita acidentes feios.
   tasks:
   - get: ['IC2:itemToolMEter', 'minecraft:comparator x2']
   rewards:
@@ -234,7 +234,7 @@ quests:
   type: optional
   deps: [comparador_de_energia]
   desc: |
-    O metal mais forte do Big Reactors. A §eLudicrite§r serve como bobina de altíssima eficiência. Difícil de produzir, vale cada esforço. Quem conseguiu ficou com a fama de ter a melhor usina da vila.
+    O metal mais forte do Big Reactors. A §eLudicrite§r serve como bobina de altíssima eficiência. Difícil de produzir, vale cada esforço. Quem conseguiu ficou com a fama de ter a melhor usina da vila. Veja a receita no NEI, e prepare materiais raros. Depois use como bobina na turbina e veja a produção disparar.
   tasks:
   - {get: 'BigReactors:BRMetalBlock:4'}
   rewards:
@@ -245,7 +245,7 @@ quests:
   type: milestone
   deps: [energia_ludicrite]
   desc: |
-    Um reator IC2 respirando bem, um reator Big Reactors girando a turbina e um banco de capacitores cheio. Qual é "a melhor energia"? Os heróis da Era do Futuro nunca chegaram a um acordo, e você tem o direito de escolher.
+    Um reator IC2 respirando bem, um reator Big Reactors girando a turbina e um banco de capacitores cheio. Qual é "a melhor energia"? Os heróis da Era do Futuro nunca chegaram a um acordo, e você tem o direito de escolher. Dois reatores, duas escolas de pensamento, e você dominou as duas! Olhe para os painéis de controle e perceba que a energia sempre foi um problema de paciência e planejamento. Os heróis da Era do Futuro ficavam horas sentados diante de painéis iguais, apenas observando os números subirem. Faça o mesmo: respire, aprecie e comemore. Você mereceu.
 
     Agora, a energia é grande, mas a fome é maior. Há dragões no horizonte, Herói, e eles têm nome: §eEvolução Dracônica§r.
   tasks:
