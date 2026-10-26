@@ -7,6 +7,31 @@ Uma campanha narrada por **Akasha**, a Guardiã do Registro Akáshico, que atrav
 200 mods de tecnologia, magia e aventura — dos primeiros gravetos até a **Estrela ATM**
 (*pseudo-final*) e, depois dela, o **Infinito** do Avaritia.
 
+**8.939 quests em 102 capítulos** (lista completa em [docs/CAPITULOS.md](docs/CAPITULOS.md)),
+validadas no BetterQuesting real: nenhum item, entidade, fluido ou dimensão inexistente no pack.
+
+## A campanha
+
+1. **Prólogo — O Despertar** e os **Atos I–IV** (*Crônicas Akáshicas*): a história que liga os
+   Volumes de mod. O Ato III reúne as Chaves dos **Três Reinos** (Twilight Forest, Aether,
+   Atum); o Ato IV exige os **Oito Selos** (Crepúsculo, Céus, Areias, Abismo, Estrelas,
+   Arcano, Engrenagem, Vida), cada um ligado aos marcos finais reais dos capítulos.
+2. **Volumes de mod** (Base, Aventura, Tecnologia, Magia, Vida): livres desde o início.
+3. Série **AEDF3:** — 17 capítulos com a progressão da lendária *A Era do Futuro*.
+4. Série **ATM:** — Allthemodium, Compressed, Tweaks e a **Estrela ATM** (pseudo-final),
+   liberada pelos Oito Selos.
+5. **Epílogo — Além do Infinito** (Avaritia, Singularidades) e **A Última Página**.
+
+## Patches recomendados para o pack
+
+Problemas reais do modpack encontrados durante o estudo (detalhes em `patches/`):
+
+| Patch | Efeito | Seguro em mundo existente? |
+| --- | --- | --- |
+| 01 — IDs de bioma ChromatiCraft × Twilight (47–51) | Sem ele, a Floresta de Neve e a Geleira do Crepúsculo não geram (Rainha da Neve impossível) | Não: mundo novo ou com backup |
+| 02 — Quartzo Queimado (script CraftTweaker) | Restaura QED, Pedreira do Fim e Último Milênio do Extra Utilities | Sim |
+| 03 — Circuito de Controle do MPS (script CraftTweaker) | Libera módulos do Modular Powersuits | Sim |
+
 ## Instalação
 
 Copie o conteúdo de `dist/config/betterquesting/` para `config/betterquesting/` do servidor
