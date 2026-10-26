@@ -75,9 +75,8 @@ quests:
     deps_hidden: [galacticraft:foguete_t2]
     icon: ExtraPlanets:tile.phobos:2
     desc: |
-      A maior lua de Marte, alcançável com o §eFoguete Nível 2§r. Uma pedra cinza e fria
-      (traje térmico do Galacticraft recomendado), sem ar, com minérios comuns e o §eMinério de
-      Chumbo§r — a matéria-prima das baterias dos rovers.
+      Primeira parada depois de Marte, Herói: Fobos, a maior lua marciana! Vá de §eFoguete Nível 2§r e leve o traje térmico do Galacticraft, porque é uma pedra cinza, fria e sem ar.
+      Por lá tem minérios comuns e o §eMinério de Chumbo§r, a matéria-prima das baterias dos rovers. Pouse, dê uma olhada em volta e minere à vontade. Se precisar lembrar a receita do foguete, o NEI (R/U) ajuda.
     tasks:
       - visit: {dim: -33, name: "Fobos"}
     rewards:
@@ -91,8 +90,8 @@ quests:
     deps_hidden: [galacticraft:foguete_t2]
     icon: ExtraPlanets:tile.deimos:2
     desc: |
-      A irmã menor de Fobos. Também pede só o Foguete Nível 2, também é fria e também tem
-      §eMinério de Chumbo§r.
+      Fobos tem uma irmã menor, e ela está esperando por você! Deimos também pede apenas o Foguete Nível 2, também é fria (leve o traje térmico) e também esconde §eMinério de Chumbo§r.
+      É uma visita rápida e rende o mesmo tesouro. Pouse, minere o que precisar e volte com o inventário recheado. Vale lembrar que lá não tem ar, então confira o oxigênio antes de sair da nave.
     tasks:
       - visit: {dim: -35, name: "Deimos"}
     rewards:
@@ -106,8 +105,8 @@ quests:
     deps_any: true
     icon: ExtraPlanets:tile.phobos:6
     desc: |
-      Os Minérios de Chumbo de Fobos e Deimos fundem em lingotes de chumbo comuns. Junte §e16§r:
-      as Baterias Nível 1 e 2 dos rovers pedem 5 cada.
+      Hora de transformar pedra em energia! Os Minérios de Chumbo de Fobos e Deimos fundem em lingotes de chumbo comuns, e você vai precisar de §e16§r deles.
+      A conta é simples: as Baterias Nível 1 e 2 dos rovers pedem 5 lingotes cada, e sobra um pouquinho para outras receitas. Use a fornalha que preferir e guarde tudo em um baú. Dúvida sobre outro uso do chumbo? Aperte U no NEI.
     tasks:
       - get: ore:ingotLead x16
     rewards:
@@ -121,8 +120,8 @@ quests:
     deps: [mundos_distantes]
     icon: ExtraPlanets:item.schematicMarsRover
     desc: |
-      O ExtraPlanets colocou o esquemático do §eMars Rover§r nos §ebaús dos calabouços lunares§r
-      (junto dos esquemáticos do Galacticraft). Se ele veio no seu baú, destrave na Bancada NASA.
+      Quer passear por Marte sem gastar combustível? Então precisa do esquemático certo! O ExtraPlanets espalhou o esquemático do §eMars Rover§r pelos §ebaús dos calabouços lunares§r, junto dos esquemáticos do Galacticraft.
+      Se ele apareceu no seu baú, é só destravar na Bancada NASA. Não veio? Explore mais um calabouço e abra os baús com calma. Eu torço por você, Herói!
     tasks:
       - get: ExtraPlanets:item.schematicMarsRover
     rewards:
@@ -135,8 +134,8 @@ quests:
     deps: [esquematico_mars_rover, chumbo_luas]
     icon: ExtraPlanets:item.electricParts:2
     desc: |
-      §eTier 1 Wheel:§r 4 Blindagens Pesadas + uma Roda de Buggy. §eTier 1 Battery:§r 5 lingotes de
-      chumbo + 4 Blindagens Pesadas. O Mars Rover é elétrico: nada de combustível!
+      O Mars Rover é elétrico, então esqueça o combustível! Ele pede duas peças. A §eTier 1 Wheel§r leva 4 Blindagens Pesadas e uma Roda de Buggy. A §eTier 1 Battery§r leva 5 lingotes de chumbo e 4 Blindagens Pesadas.
+      Separe o material com carinho, porque as blindagens somem rápido. Se algo estiver faltando na receita, confira no NEI (R) como cada peça é montada. Falta pouco para o seu rover!
     tasks:
       - get: [ExtraPlanets:item.electricParts:2 x4, ExtraPlanets:item.electricParts]
     rewards:
@@ -149,8 +148,8 @@ quests:
     deps: [pecas_rover_t1]
     icon: ExtraPlanets:item.marsRover
     desc: |
-      Monte o §eMars Rover§r na Bancada NASA e passeie por Marte sem gastar combustível. Ele carrega
-      numa §eVehicle Charging Pad§r (5×5) com um §eVehicle Charger§r encostado.
+      Chegou a hora de rodar por Marte sem gastar uma gota de combustível! Monte o §eMars Rover§r na Bancada NASA e saia explorando.
+      A bateria dele recarrega numa §eVehicle Charging Pad§r (5×5) com um §eVehicle Charger§r encostado. Esta missão é opcional, mas é muito divertida, e passear de rover é bem mais prático do que ir a pé. Boa viagem, Herói, e não esqueça de recarregar!
     tasks:
       - get: ExtraPlanets:item.marsRover:*
     rewards:
@@ -162,8 +161,8 @@ quests:
     deps: [mars_rover]
     icon: ExtraPlanets:chargingBlock
     desc: |
-      §eVehicle Charging Pad:§r 3 Blocos de Desh + 3 Barras de Desh rendem 5; a pista é um quadrado
-      §e5×5§r (25 blocos). §eVehicle Charger:§r 6 Barras de Desh e 3 Baterias, encostado na pista.
+      Todo rover precisa de uma tomada, Herói! A §eVehicle Charging Pad§r é feita com 3 Blocos de Desh e 3 Barras de Desh, que rendem 5 blocos. Como a pista é um quadrado §e5×5§r (25 blocos), faça a receita as vezes necessárias.
+      O §eVehicle Charger§r leva 6 Barras de Desh e 3 Baterias, e precisa ficar encostado na pista. Opcional, mas essencial para quem curte rover. Confira os detalhes no NEI.
     tasks:
       - get: [ExtraPlanets:tile.advancedLaunchPad:2 x25, ExtraPlanets:chargingBlock]
     rewards:
@@ -178,8 +177,8 @@ quests:
     deps: [termico_info]
     icon: ExtraPlanets:item.thermalCloth
     desc: |
-      3 Desh Prensado e 2 Tecidos Térmicos do Galacticraft: o §eTier 2 Thermal Cloth§r. As 4 peças
-      do traje (elmo, peitoral, perneiras e botas) pedem muito tecido — faça §e20§r.
+      Vênus e Mercúrio são quentes demais para qualquer roupa comum! O primeiro passo é o §eTier 2 Thermal Cloth§r, feito com 3 Desh Prensado e 2 Tecidos Térmicos do Galacticraft.
+      As 4 peças do traje (elmo, peitoral, perneiras e botas) pedem muito tecido, então faça §e20§r de uma vez. Dá trabalho, mas é um passo obrigatório. Cuide do estoque de Desh e capriche, Herói!
     tasks:
       - get: ExtraPlanets:item.thermalCloth x20
     rewards:
@@ -192,8 +191,8 @@ quests:
     deps: [tecido_termico_t2]
     icon: ExtraPlanets:item.tier2ThermalPadding:1
     desc: |
-      As quatro peças do §eTier 2 Thermal Padding§r (o elmo, por exemplo, leva 5 tecidos de Nível 2
-      e um Desh Prensado). Obrigatório em §eVênus e Mercúrio§r.
+      Seu traje de proteção contra o calor está quase pronto! Monte as quatro peças do §eTier 2 Thermal Padding§r: elmo, peitoral, perneiras e botas. O elmo, por exemplo, leva 5 tecidos de Nível 2 e um Desh Prensado.
+      Ele é obrigatório em §eVênus e Mercúrio§r, então não tente passar sem ele. Se tiver dúvida sobre as demais peças, o NEI (R/U) mostra cada receita. Vista tudo e prepare-se para o calor!
     tasks:
       - get: [ExtraPlanets:item.tier2ThermalPadding, ExtraPlanets:item.tier2ThermalPadding:1, ExtraPlanets:item.tier2ThermalPadding:2, ExtraPlanets:item.tier2ThermalPadding:3]
     rewards:
@@ -228,8 +227,8 @@ quests:
     deps: [venus]
     icon: ExtraPlanets:tile.venus:6
     desc: |
-      Funda o §eCarbon Ore§r para ter §eCarbon Ingot§r (ou use o minério com Pó de Pyrotheum na
-      bancada). Junte §e24§r.
+      Um material novo entra em cena, Herói: o carbono! Funda o §eCarbon Ore§r para obter §eCarbon Ingot§r. Se preferir, use o minério com Pó de Pyrotheum na bancada.
+      Junte §e24§r, porque esse metal vai virar blindagem, motores e tecidos térmicos mais adiante. Vale juntar tudo de uma vez para não precisar voltar a minerar. Ficou na dúvida? Confira no NEI (R/U).
     tasks:
       - get: ore:ingotCarbon x24
     rewards:
@@ -242,8 +241,8 @@ quests:
     deps: [carbono]
     icon: ExtraPlanets:tier4Items:4
     desc: |
-      Dois Carbon Ingots na Prensa = §eCompressed Carbon§r. Ele faz a Blindagem Nível 4, os Motores
-      Auxiliares Nível 4 e o Tecido Térmico Nível 3. Faça §e16§r.
+      Hora de usar a Prensa! Dois Carbon Ingots viram um §eCompressed Carbon§r, e esse material é muito versátil. Ele faz a Blindagem Nível 4, os Motores Auxiliares Nível 4 e o Tecido Térmico Nível 3.
+      Faça §e16§r para não faltar depois. Se a Prensa ainda estiver livre, aproveite e deixe várias unidades prontas no baú. Seu foguete mais forte começa aqui, Herói!
     tasks:
       - get: ExtraPlanets:tier4Items:4 x16
     rewards:
@@ -256,8 +255,8 @@ quests:
     deps: [venus]
     icon: ExtraPlanets:volcanicRock
     desc: |
-      A §eVolcanic Rock§r dos vulcões funde em §eVolcanic Ingot§r. Com ela você faz o §eSledge
-      Hammer§r (3 lingotes vulcânicos, 2 Barras de Ferro Meteórico e 2 gravetos).
+      Vulcões podem ser perigosos, mas esconderem tesouros! A §eVolcanic Rock§r funde em §eVolcanic Ingot§r, e você precisa de §e8§r unidades da rocha.
+      Com os lingotes você faz o §eSledge Hammer§r: 3 lingotes vulcânicos, 2 Barras de Ferro Meteórico e 2 gravetos. Cuidado com a lava na hora de minerar, Herói! Para conferir outras receitas com esse material, use R ou U no NEI.
     tasks:
       - get: ExtraPlanets:tier4Items:11 x8
     rewards:
@@ -270,8 +269,8 @@ quests:
     deps: [rocha_vulcanica]
     icon: ExtraPlanets:tier4Items:8
     desc: |
-      Uma marreta de bancada: com um §eAsh Block§r ela rende 2 §eAsh Shards§r (4 shards = 1 Ash).
-      Também é ingrediente do Grinding Wheel.
+      Que tal uma ferramenta que bate forte? O §eSledge Hammer§r é uma marreta de bancada. Com um §eAsh Block§r ela rende 2 §eAsh Shards§r, e 4 shards formam 1 Ash.
+      Também é ingrediente do Grinding Wheel, o próximo passo. Guarde ela com cuidado, porque ela é peça-chave de um bom pedaço da cadeia. Se esquecer a receita, o NEI (R) mostra num instante.
     tasks:
       - get: ExtraPlanets:tier4Items:8
     rewards:
@@ -284,9 +283,8 @@ quests:
     deps: [marreta]
     icon: ExtraPlanets:tier4Items:9
     desc: |
-      4 Volcanic Ingots, 4 Ash Shards e o Sledge Hammer: o §eGrinding Wheel§r. Com 5 lingotes
-      vulcânicos ele faz 2 Volcanic Shards; com 5 Magnesium Ingots, 2 Magnesium Shards (que vão na
-      Fire Bomb).
+      Um rebolo para moer o que for preciso! O §eGrinding Wheel§r leva 4 Volcanic Ingots, 4 Ash Shards e o Sledge Hammer.
+      Com 5 lingotes vulcânicos ele faz 2 Volcanic Shards. Com 5 Magnesium Ingots, faz 2 Magnesium Shards, que vão na Fire Bomb. Esta missão é opcional, mas abre portas para receitas explosivas. Confira os detalhes no NEI (R/U), Herói!
     tasks:
       - get: ExtraPlanets:tier4Items:9
     rewards:
@@ -298,8 +296,8 @@ quests:
     deps: [rebolo]
     icon: ExtraPlanets:fireBomb
     desc: |
-      Cinzas, areia, um lingote e um estilhaço vulcânico e um Magnesium Shard: uma bomba que
-      espalha fogo. §cUse longe de qualquer coisa que você ame.§r
+      Gosta de fogo? Esta é a Fire Bomb! Ela leva cinzas, areia, um lingote e um estilhaço vulcânico e um Magnesium Shard, e espalha chamas por toda parte.
+      §cUse longe de qualquer coisa que você ame.§r Nada de testar perto de casa ou de baús, combinado? É uma missão opcional e bem divertida. Se faltar algum ingrediente, o NEI (R) mostra a receita certinha.
     tasks:
       - get: ExtraPlanets:fireBomb
     rewards:
@@ -311,8 +309,8 @@ quests:
     deps: [venus]
     icon: ExtraPlanets:veunsDungeonBrick
     desc: |
-      Como os calabouços da Lua e de Marte, o de Vênus fica escondido e é feito de §eVenus Dungeon
-      Brick§r. No fundo mora o primeiro chefe do ExtraPlanets. Ache-o e pegue alguns tijolos.
+      Vênus guarda um segredo, Herói! Como os calabouços da Lua e de Marte, o de Vênus fica escondido e é feito de §eVenus Dungeon Brick§r.
+      No fundo mora o primeiro chefe do ExtraPlanets. Ache o calabouço, enfrente o que aparecer e pegue alguns tijolos como prova. Leve armadura boa e paciência, porque o caminho é longo. Eu acredito em você!
     tasks:
       - get: ExtraPlanets:veunsDungeonBrick x8
     rewards:
@@ -346,8 +344,8 @@ quests:
     deps: [chefe_venus]
     icon: ExtraPlanets:schematicTier4
     desc: |
-      A chave abre o §eTier 4 Treasure Chest§r, que guarda o esquemático do §eFoguete Nível 4§r (e
-      pode trazer também o do §eVenus Rover§r). Destrave na Bancada NASA.
+      Que sensação boa, Herói: a chave abre o §eTier 4 Treasure Chest§r! Dentro dele está o esquemático do §eFoguete Nível 4§r, e ele pode trazer também o do §eVenus Rover§r.
+      Destrave os esquemáticos na Bancada NASA e prepare o próximo salto. Não deixe de guardar a chave com cuidado até chegar ao baú, e se perdeu a receita de algo, o NEI (R/U) ajuda.
     tasks:
       - get: ExtraPlanets:schematicTier4
     rewards:
@@ -360,9 +358,8 @@ quests:
     deps: [tesouro_venus, pecas_rover_t1]
     icon: ExtraPlanets:item.venusRover
     desc: |
-      Com o esquemático do Venus Rover, monte o irmão mais forte do Mars Rover. Ele usa §eTier 2
-      Wheels§r (4 Blindagens Nível 4 + Tier 1 Wheel) e a §eTier 2 Battery§r (5 lingotes de chumbo +
-      4 Blindagens Nível 4).
+      Com o esquemático do Venus Rover em mãos, monte o irmão mais forte do Mars Rover! Ele usa §eTier 2 Wheels§r (4 Blindagens Nível 4 + Tier 1 Wheel) e a §eTier 2 Battery§r (5 lingotes de chumbo + 4 Blindagens Nível 4).
+      Missão opcional, mas rodar por Vênus de rover é bem mais divertido. Confira as receitas no NEI (R) e bom passeio!
     tasks:
       - get: ExtraPlanets:item.venusRover:*
     rewards:
@@ -377,9 +374,8 @@ quests:
     deps: [tesouro_venus, carbono_prensado]
     icon: ExtraPlanets:tier4Items:3
     desc: |
-      Na Prensa: §eBlindagem Pesada Nível 3 (Galacticraft) + Compressed Carbon = Heavy-Duty Plate
-      Nível 4§r. A regra se repete daqui até o Nível 10: cada blindagem nova = a blindagem anterior +
-      o metal prensado do planeta da vez. Faça §e20§r.
+      Chegou a hora de reforçar tudo, Herói! Na Prensa: §eBlindagem Pesada Nível 3 (Galacticraft) + Compressed Carbon = Heavy-Duty Plate Nível 4§r.
+      A regra se repete daqui até o Nível 10: cada blindagem nova é a anterior mais o metal prensado do planeta da vez. Entender esse padrão economiza muito tempo. Faça §e20§r placas e guarde bem, porque o foguete e o resto do equipamento vão consumir tudo.
     tasks:
       - get: ExtraPlanets:tier4Items:3 x20
     rewards:
@@ -426,8 +422,8 @@ quests:
     deps: [pecas_t4, plataforma_t2]
     icon: ExtraPlanets:itemTier4Rocket
     desc: |
-      Monte o §eFoguete Nível 4§r na Bancada NASA. Ele abre §eMercúrio, Ceres, Júpiter§r e as quatro
-      grandes luas de Júpiter. Lance-o da plataforma 5×5!
+      Seu foguete mais ambicioso até agora! Monte o §eFoguete Nível 4§r na Bancada NASA. Ele abre §eMercúrio, Ceres, Júpiter§r e as quatro grandes luas de Júpiter.
+      Lance-o da plataforma 5×5, Herói, e confira se o combustível e o oxigênio estão em dia antes da decolagem. Se alguma peça faltar, o NEI (R/U) mostra cada receita. Contagem regressiva: 3, 2, 1... decolar!
     tasks:
       - get: ExtraPlanets:itemTier4Rocket:*
     rewards:
@@ -445,8 +441,8 @@ quests:
     banner: "Colado no Sol"
     subtitle: "Chegada a Mercúrio"
     desc: |
-      O planeta mais perto do Sol: pequeno, quente e sem ar. Pede o §eFoguete Nível 4§r (config) e o
-      §eTraje Térmico Nível 2§r. O tesouro daqui é o §eMercury Ore§r.
+      O planeta mais perto do Sol: pequeno, quente e sem ar! Para chegar lá, você precisa do §eFoguete Nível 4§r (config) e do §eTraje Térmico Nível 2§r.
+      O tesouro daqui é o §eMercury Ore§r, então traga picareta e muito oxigênio. Confira bem o equipamento antes de embarcar, porque o calor não perdoa. Pronto para a viagem, Herói? Eu estarei torcendo por você!
     tasks:
       - visit: {dim: -13, name: "Mercúrio"}
     rewards:
@@ -459,8 +455,8 @@ quests:
     deps: [mercurio]
     icon: ExtraPlanets:ingotMercury
     desc: |
-      O Mercury Ore funde em §eMercury Ingot§r (ou com Pó de Pyrotheum na bancada). Ele vira
-      Compressed Mercury, a §eMercury Battery§r (85 000 gJ) e o equipamento de Mercúrio.
+      O Mercury Ore funde em §eMercury Ingot§r, ou você pode usar o minério com Pó de Pyrotheum na bancada. Junte §e12§r.
+      Esse metal vira Compressed Mercury, a §eMercury Battery§r (85 000 gJ) e o equipamento de Mercúrio. Vale guardar bastante, Herói, porque as próximas receitas pedem esse lingote. Para ver todos os usos, aperte U no NEI. Boa mineração!
     tasks:
       - get: ExtraPlanets:ingotMercury x12
     rewards:
@@ -473,8 +469,8 @@ quests:
     deps: [mercurio_metal]
     icon: ExtraPlanets:mercuryBattery
     desc: |
-      5 Compressed Mercury, redstone e carvão: uma bateria com mais de cinco vezes a carga da
-      Bateria do Galacticraft.
+      Uma bateria que impressiona! A §eMercury Battery§r leva 5 Compressed Mercury, redstone e carvão, e carrega mais de cinco vezes a carga da Bateria do Galacticraft.
+      É uma missão opcional, mas vale muito a pena para quem precisa de energia de sobra. Confira a receita no NEI (R) e guarde bem, Herói. Sua base e seus rovers agradecem!
     tasks:
       - get: ExtraPlanets:mercuryBattery
     rewards:
@@ -488,8 +484,8 @@ quests:
     banner: "O Planeta-Anão"
     subtitle: "Chegada a Ceres"
     desc: |
-      O maior objeto do cinturão de asteroides é um planeta-anão de verdade, com chão firme! Ceres
-      pede o §eFoguete Nível 4§r, é frio e tem vilas (config ativa) e §eCeres Uranium Ore§r.
+      O maior objeto do cinturão de asteroides é um planeta-anão de verdade, com chão firme! Ceres pede o §eFoguete Nível 4§r, é frio e tem vilas (config ativa) e §eCeres Uranium Ore§r.
+      Leve traje térmico e muito oxigênio, e explore com cuidado, Herói. Esse portal abre novas oportunidades, então anote o que encontrar. Se algo faltar para a viagem, o NEI (R/U) ajuda.
     tasks:
       - visit: {dim: -20, name: "Ceres"}
     rewards:
@@ -502,8 +498,8 @@ quests:
     deps: [ceres]
     icon: ExtraPlanets:tile.ceres:6
     desc: |
-      O Ceres Uranium Ore funde em lingotes de urânio (oredict "ingotUranium", que o IC2 e outros
-      mods aceitam). Cuidado com a radiação dos mods que a simulam!
+      O Ceres Uranium Ore funde em lingotes de urânio (oredict "ingotUranium", que o IC2 e outros mods aceitam). Junte §e8§r.
+      Cuidado com a radiação dos mods que a simulam! Manuseie com cautela e guarde em baú separado. Se quiser saber onde mais o urânio é útil, aperte U no NEI. Boa mineração, Herói!
     tasks:
       - get: ore:ingotUranium x8
     rewards:
@@ -516,8 +512,8 @@ quests:
     deps: [uranio_ceres]
     icon: ExtraPlanets:nuclearBomb
     desc: |
-      Pólvora, areia e um lingote de urânio. §cUma explosão enorme.§r Eu não vou dizer que você
-      deveria fazer uma... mas também não vou fingir que não é tentador.
+      Pólvora, areia e um lingote de urânio. §cUma explosão enorme.§r
+      Eu não vou dizer que você deveria fazer uma... mas também não vou fingir que não é tentador. Faça só se tiver certeza, Herói, e longe de tudo que importa. É uma missão opcional, e o NEI (R) mostra a receita completa caso você queira conferir.
     tasks:
       - get: ExtraPlanets:nuclearBomb
     rewards:
@@ -532,8 +528,8 @@ quests:
     deps: [carbono_prensado, tecido_termico_t2]
     icon: ExtraPlanets:item.thermalCloth:1
     desc: |
-      3 Compressed Carbon + 2 Tier 2 Thermal Cloth = §eTier 3 Thermal Cloth§r. Faça §e20§r para o
-      traje completo.
+      Mais um degrau no calor extremo! O §eTier 3 Thermal Cloth§r leva 3 Compressed Carbon e 2 Tier 2 Thermal Cloth.
+      Faça §e20§r para montar o traje completo, porque cada peça consome bastante tecido. Dá trabalho, mas é obrigatório para Júpiter e além. Confira a receita no NEI (R) se tiver dúvida. Você já está no caminho certo, Herói!
     tasks:
       - get: ExtraPlanets:item.thermalCloth:1 x20
     rewards:
@@ -546,8 +542,8 @@ quests:
     deps: [tecido_termico_t3]
     icon: ExtraPlanets:item.tier3ThermalPadding:1
     desc: |
-      As quatro peças de Nível 3 (o elmo leva 5 tecidos de Nível 3 e um Compressed Carbon).
-      Obrigatório em §eJúpiter, Saturno e suas luas§r.
+      Mais proteção para mais longe! Monte as quatro peças de Nível 3: o elmo leva 5 tecidos de Nível 3 e um Compressed Carbon, e as outras seguem o mesmo molde.
+      O traje é obrigatório em §eJúpiter, Saturno e suas luas§r, então não pule esta etapa. Se esquecer algum item, o NEI (R/U) mostra a receita. Vista-se bem, Herói, e prepare-se para o calor!
     tasks:
       - get: [ExtraPlanets:item.tier3ThermalPadding, ExtraPlanets:item.tier3ThermalPadding:1, ExtraPlanets:item.tier3ThermalPadding:2, ExtraPlanets:item.tier3ThermalPadding:3]
     rewards:
@@ -580,9 +576,8 @@ quests:
     deps: [jupiter]
     icon: ExtraPlanets:tile.jupiter:6
     desc: |
-      Funda os minérios de §ePalladium§r e §eNickel§r de Júpiter. O Compressed Palladium faz a
-      blindagem e os motores auxiliares do Nível 5; o Nickel faz a Nickel Battery e o Advanced Fuel
-      Loader. Junte §e24 de paládio§r e §e12 de níquel§r.
+      Júpiter esconde metais valiosos, Herói! Funda os minérios de §ePalladium§r e §eNickel§r daquele planeta. O Compressed Palladium faz a blindagem e os motores auxiliares do Nível 5; o Nickel faz a Nickel Battery e o Advanced Fuel Loader.
+      Junte §e24 de paládio§r e §e12 de níquel§r. Organize os dois em baús separados para não se perder. Confira os usos no NEI (R/U).
     tasks:
       - get: [ore:ingotPalladium x24, ore:ingotNickel x12]
     rewards:
@@ -595,8 +590,8 @@ quests:
     deps: [jupiter]
     icon: ExtraPlanets:tier5Items:8
     desc: |
-      O Red Gem Ore funde em §eRed Gem§r (ou rende 1 gema com o Martelo de Engenheiro). Ferramentas,
-      armadura e o Red Gem Wafer.
+      Brilho vermelho vindo do espaço! O Red Gem Ore funde em §eRed Gem§r, ou rende 1 gema com o Martelo de Engenheiro. Junte §e6§r.
+      Essas gemas viram ferramentas, armadura e o Red Gem Wafer. Capriche na coleta, Herói, e guarde com cuidado, porque elas são difíceis de repor. Para ver todas as receitas, aperte U no NEI.
     tasks:
       - get: ore:gemRedGem x6
     rewards:
@@ -611,10 +606,9 @@ quests:
     banner: "Júpiter Silencia"
     subtitle: "O Morcego de Fogo-Chefe caiu"
     desc: |
-      No calabouço de Júpiter (tijolos de Jupiter Dungeon Brick) voa um §cMorcego de Fogo Evoluído§r
-      gigante. Ele voa rápido e incendeia; leve Resistência ao Fogo, arco e paciência.
+      Prepare-se, Herói: o calabouço de Júpiter (feito de Jupiter Dungeon Brick) esconde um §cMorcego de Fogo Evoluído§r gigante! Ele voa rápido e incendeia, então leve Resistência ao Fogo, arco e paciência.
 
-      Ele deixa a §eTier 5 Dungeon Key§r. Mais um chefe do §5Selo das Estrelas§r!
+      Ele deixa a §eTier 5 Dungeon Key§r. Mais um chefe do §5Selo das Estrelas§r! Respire fundo, confira seu equipamento e vá com tudo. Eu estou torcendo por você!
     tasks:
       - kill: {entity: "extraplanets.EvolvedFireBatBoss", count: 1}
       - get: ExtraPlanets:T5key
@@ -628,8 +622,8 @@ quests:
     deps: [chefe_jupiter]
     icon: ExtraPlanets:schematicTier5
     desc: |
-      Abra o §eTier 5 Treasure Chest§r com a chave e destrave o §eFoguete Nível 5§r. Saturno está
-      logo ali.
+      Vitória merece recompensa! Abra o §eTier 5 Treasure Chest§r com a chave e destrave o §eFoguete Nível 5§r.
+      Saturno está logo ali, Herói, esperando por você. Leve o esquemático para a Bancada NASA e prepare os materiais do próximo foguete. Se precisar rever alguma receita, o NEI (R/U) está à mão. Bom trabalho!
     tasks:
       - get: ExtraPlanets:schematicTier5
     rewards:
@@ -642,8 +636,8 @@ quests:
     deps: [jupiter]
     icon: ExtraPlanets:tile.io:2
     desc: |
-      A lua vulcânica de Júpiter, com terras de cinza e planícies em chamas. Pede o Foguete Nível 4
-      e o Traje Térmico Nível 3.
+      A lua vulcânica de Júpiter, com terras de cinza e planícies em chamas! Para chegar a Io, você precisa do Foguete Nível 4 e do Traje Térmico Nível 3.
+      Prepare-se para um cenário bem quente, Herói, e confira o oxigênio antes de sair da nave. Pouse, explore um pouco e anote tudo o que encontrar. Se faltar alguma peça, aperte R no NEI.
     tasks:
       - visit: {dim: -2004, name: "Io"}
     rewards:
@@ -656,7 +650,8 @@ quests:
     deps: [jupiter]
     icon: ExtraPlanets:tile.europa:2
     desc: |
-      Uma lua de gelo com oceanos escondidos. Foguete Nível 4 e Traje Térmico Nível 3.
+      Uma lua de gelo com oceanos escondidos! Para visitar Europa, você precisa do Foguete Nível 4 e do Traje Térmico Nível 3.
+      O cenário é belíssimo, mas perigoso, então confira o oxigênio e o combustível antes de decolar. Pouse, dê uma olhada em volta e anote o que encontrar, Herói. Em caso de dúvida sobre as receitas, o NEI (R/U) ajuda.
     tasks:
       - visit: {dim: -2002, name: "Europa"}
     rewards:
@@ -669,7 +664,8 @@ quests:
     deps: [jupiter]
     icon: ExtraPlanets:tile.ganymede:2
     desc: |
-      A maior lua do sistema solar. Foguete Nível 4 e Traje Térmico Nível 3.
+      A maior lua do sistema solar, Herói! Para chegar a Ganimedes, você precisa do Foguete Nível 4 e do Traje Térmico Nível 3.
+      O tamanho impressiona, então reserve tempo para explorar com calma. Confira o oxigênio, o combustível e a armadura antes da viagem. Se esquecer alguma receita, o NEI (R/U) mostra num instante.
     tasks:
       - visit: {dim: -2003, name: "Ganimedes"}
     rewards:
@@ -682,7 +678,8 @@ quests:
     deps: [jupiter]
     icon: ExtraPlanets:tile.callisto:2
     desc: |
-      Uma lua antiga, cheia de crateras. Foguete Nível 4 e Traje Térmico Nível 3.
+      Uma lua antiga, cheia de crateras! Para visitar Calisto, você precisa do Foguete Nível 4 e do Traje Térmico Nível 3.
+      É a quarta das luas de Júpiter, então você já está quase lá, Herói. Leve oxigênio extra, pouse com cuidado e explore as crateras. Em caso de dúvida sobre algum item, aperte R ou U no NEI.
     tasks:
       - visit: {dim: -2001, name: "Calisto"}
     rewards:
@@ -695,9 +692,8 @@ quests:
     deps: [io, europa, ganimedes, calisto]
     icon: ExtraPlanets:tile.ganymede:2
     desc: |
-      Io, Europa, Ganimedes e Calisto — as quatro luas que Galileu viu pela primeira vez. Visitar
-      todas é um feito digno de Herói! Esta quest marca que você esteve nas
-      quatro.
+      Io, Europa, Ganimedes e Calisto, as quatro luas que Galileu viu pela primeira vez! Visitar todas é um feito digno de Herói.
+      Esta quest marca que você esteve nas quatro e não pede nenhum item. É opcional, mas é uma bela conquista. Se ainda faltar alguma lua, volte às quests anteriores, escolha seu destino e boa viagem!
     tasks:
       - check
     rewards:
@@ -712,9 +708,8 @@ quests:
     deps: [tesouro_jupiter, paladio]
     icon: ExtraPlanets:itemTier5Rocket
     desc: |
-      §eBlindagem Nível 5§r = Blindagem Nível 4 + Compressed Palladium (na Prensa). Nariz, motor,
-      aletas (6 blindagens) e propulsores (4 Compressed Palladium, Lã Azul...) seguem o mesmo molde.
-      Monte o §eFoguete Nível 5§r: Saturno, Titã, Reia e Oberon.
+      Mais um foguete, mais um planeta! A §eBlindagem Nível 5§r é a Blindagem Nível 4 mais Compressed Palladium, feita na Prensa. Nariz, motor, aletas (6 blindagens) e propulsores (4 Compressed Palladium, Lã Azul...) seguem o mesmo molde.
+      Monte o §eFoguete Nível 5§r e conquiste Saturno, Titã, Reia e Oberon. Confira as receitas no NEI (R/U), Herói!
     tasks:
       - get: [ExtraPlanets:tier5Items:3 x8, ExtraPlanets:itemTier5Rocket:*]
     rewards:
@@ -747,9 +742,8 @@ quests:
     deps: [saturno]
     icon: ExtraPlanets:tile.saturn:6
     desc: |
-      O §eSaturn Magnesium Ore§r funde em Magnesium Ingot. Compressed Magnesium faz a Blindagem
-      Nível 6, o Tecido Térmico Nível 4, o Hybrid Solar Panel e o Advanced Oxygen Compressor.
-      Junte §e32§r.
+      Saturno traz um novo metal! O §eSaturn Magnesium Ore§r funde em Magnesium Ingot. Junte §e32§r.
+      O Compressed Magnesium faz a Blindagem Nível 6, o Tecido Térmico Nível 4, o Hybrid Solar Panel e o Advanced Oxygen Compressor, então não economize. Organize bem o inventário, Herói, e confira os outros usos no NEI (R/U).
     tasks:
       - get: ore:ingotMagnesium x32
     rewards:
@@ -762,8 +756,8 @@ quests:
     deps: [saturno]
     icon: ExtraPlanets:tile.saturn:11
     desc: |
-      Um minério que dá gosma de slime! Útil para Manipuladores de Fluidos e pistões grudentos.
-      (Também existe um Slime Block do ExtraPlanets.)
+      Um minério que dá gosma de slime! Junte §e16§r bolas de slime.
+      Elas são úteis para Manipuladores de Fluidos e pistões grudentos. Também existe um Slime Block do ExtraPlanets, caso queira variar. É uma missão opcional, mas divertida de fazer. Se quiser saber mais usos, aperte U no NEI. Boa mineração, Herói!
     tasks:
       - get: minecraft:slime_ball x16
     rewards:
@@ -777,10 +771,9 @@ quests:
     banner: "Os Anéis Brilham em Paz"
     subtitle: "O Ghast-Chefe caiu"
     desc: |
-      O calabouço de Saturno guarda um §cGhast Evoluído§r gigante que dispara bolas de fogo
-      explosivas. Rebata as bolas, use arco e lute com cobertura.
+      Atenção, Herói: o calabouço de Saturno guarda um §cGhast Evoluído§r gigante, que dispara bolas de fogo explosivas! Rebata as bolas, use arco e lute sempre com cobertura por perto.
 
-      Ele deixa a §eTier 6 Dungeon Key§r. Chefe do §5Selo das Estrelas§r!
+      Quando ele cair, deixa a §eTier 6 Dungeon Key§r. Mais um chefe do §5Selo das Estrelas§r! Leve armadura boa, poções de cura e muita calma. Eu aposto todas as minhas páginas do Registro em você. Vá lá e mostre quem manda!
     tasks:
       - kill: {entity: "extraplanets.EvolvedGhastBoss", count: 1}
       - get: ExtraPlanets:T6key
@@ -794,7 +787,8 @@ quests:
     deps: [chefe_saturno]
     icon: ExtraPlanets:schematicTier6
     desc: |
-      O §eTier 6 Treasure Chest§r guarda o projeto do §eFoguete Nível 6§r. Urano espera.
+      Boa, Herói! O §eTier 6 Treasure Chest§r guarda o projeto do §eFoguete Nível 6§r. Use a chave que o chefe deixou, abra o baú e leve o esquemático para a Bancada NASA.
+      Urano espera por você lá na frente. Antes de partir, confira no NEI (R/U) o que o novo foguete vai pedir, para já ir separando os materiais. Falta pouco para a próxima fronteira!
     tasks:
       - get: ExtraPlanets:schematicTier6
     rewards:
@@ -807,7 +801,8 @@ quests:
     deps: [saturno]
     icon: ExtraPlanets:tile.titan:2
     desc: |
-      A lua de Saturno com colinas e mares de metano. Foguete Nível 5 e Traje Térmico Nível 3.
+      A lua de Saturno com colinas e mares de metano! Para visitar Titã, você precisa do Foguete Nível 5 e do Traje Térmico Nível 3.
+      O cenário é de cair o queixo, Herói. Confira o oxigênio, o combustível e a armadura antes de decolar, pouse com cuidado e explore à vontade. Se faltar alguma peça, o NEI (R/U) mostra a receita.
     tasks:
       - visit: {dim: -40, name: "Titã"}
     rewards:
@@ -820,7 +815,8 @@ quests:
     deps: [saturno]
     icon: ExtraPlanets:tile.rhea:2
     desc: |
-      Outra lua de Saturno, acessível com o Foguete Nível 5 e o Traje Térmico Nível 3.
+      Outra lua de Saturno esperando sua visita! Reia é acessível com o Foguete Nível 5 e o Traje Térmico Nível 3.
+      A viagem é parecida com a de Titã, então você já sabe o caminho, Herói. Verifique o oxigênio, pouse com cuidado e dê uma boa explorada. Se esquecer alguma receita, aperte R no NEI. Boa viagem!
     tasks:
       - visit: {dim: -2006, name: "Reia"}
     rewards:
@@ -833,8 +829,8 @@ quests:
     deps: [saturno, foguete_t6]
     icon: ExtraPlanets:iapetus:2
     desc: |
-      A lua "de duas cores" de Saturno é mais difícil de alcançar: pede o §eFoguete Nível 6§r (e,
-      como lua de Saturno, o Traje Térmico Nível 3).
+      A lua "de duas cores" de Saturno é mais difícil de alcançar, Herói! Para chegar a Jápeto, você precisa do §eFoguete Nível 6§r e, como é lua de Saturno, do Traje Térmico Nível 3.
+      Portanto, prepare o foguete novo antes de embarcar. Confira o oxigênio e o combustível, e explore com calma. O NEI (R/U) ajuda caso falte alguma peça. Boa sorte!
     tasks:
       - visit: {dim: -43, name: "Jápeto"}
     rewards:
@@ -850,8 +846,8 @@ quests:
     deps: [tesouro_saturno, magnesio]
     icon: ExtraPlanets:itemTier6Rocket
     desc: |
-      §eBlindagem Nível 6§r = Blindagem Nível 5 + Compressed Magnesium. Propulsores com Compressed
-      Magnesium e Lã Verde-Limão. Monte o §eFoguete Nível 6§r: Urano, Titânia e Jápeto.
+      Subindo mais um degrau! A §eBlindagem Nível 6§r é a Blindagem Nível 5 mais Compressed Magnesium. Os propulsores levam Compressed Magnesium e Lã Verde-Limão.
+      Monte o §eFoguete Nível 6§r na Bancada NASA e conquiste Urano, Titânia e Jápeto. Confira as receitas completas no NEI (R/U) e separe o material com antecedência. Falta pouco, Herói, e o espaço é todo seu!
     tasks:
       - get: [ExtraPlanets:tier6Items:3 x8, ExtraPlanets:itemTier6Rocket:*]
     rewards:
@@ -864,7 +860,8 @@ quests:
     deps: [magnesio, tecido_termico_t3]
     icon: ExtraPlanets:item.thermalCloth:2
     desc: |
-      3 Compressed Magnesium + 2 Tier 3 Thermal Cloth = §eTier 4 Thermal Cloth§r. Faça §e20§r.
+      Chegamos ao último tecido térmico, Herói! O §eTier 4 Thermal Cloth§r leva 3 Compressed Magnesium e 2 Tier 3 Thermal Cloth.
+      Faça §e20§r, porque o traje inteiro consome bastante tecido. Dá trabalho, mas é o que protege você do frio extremo mais adiante. Confira a receita no NEI (R) se tiver dúvida e capriche na produção!
     tasks:
       - get: ExtraPlanets:item.thermalCloth:2 x20
     rewards:
@@ -877,8 +874,8 @@ quests:
     deps: [tecido_termico_t4]
     icon: ExtraPlanets:item.tier4ThermalPadding:1
     desc: |
-      O traje definitivo do ExtraPlanets: obrigatório em §eUrano, Netuno, Plutão, Éris e suas
-      luas§r, onde o frio passa de -100 na escala térmica do Galacticraft.
+      O traje definitivo do ExtraPlanets! Monte as quatro peças do Nível 4, que são obrigatórias em §eUrano, Netuno, Plutão, Éris e suas luas§r, onde o frio passa de -100 na escala térmica do Galacticraft.
+      Sem ele, nem pense em sair da nave, Herói. Confira cada peça no NEI (R/U) e vista tudo antes de pousar. Você está quase no fim da jornada!
     tasks:
       - get: [ExtraPlanets:item.tier4ThermalPadding, ExtraPlanets:item.tier4ThermalPadding:1, ExtraPlanets:item.tier4ThermalPadding:2, ExtraPlanets:item.tier4ThermalPadding:3]
     rewards:
@@ -894,10 +891,9 @@ quests:
     subtitle: "Chegada a Urano"
     effect: 3
     desc: |
-      Tudo é gelo: mares congelados, terras de neve, §eespinhos de gelo§r e até §eiglus§r (ambos
-      ativos na config). Pede o §eFoguete Nível 6§r e o §eTraje Térmico Nível 4§r.
+      Tudo é gelo, Herói: mares congelados, terras de neve, §eespinhos de gelo§r e até §eiglus§r (ambos ativos na config)! Para chegar, você precisa do §eFoguete Nível 6§r e do §eTraje Térmico Nível 4§r.
 
-      §eRecursos:§r §eCrystal§r (o metal do Nível 7) e §eWhite Gem§r.
+      §eRecursos:§r §eCrystal§r (o metal do Nível 7) e §eWhite Gem§r. Leve oxigênio de sobra, pouse com cuidado e explore. O NEI (R/U) ajuda caso falte alguma receita. Boa viagem!
     tasks:
       - visit: {dim: -17, name: "Urano"}
     rewards:
@@ -910,9 +906,8 @@ quests:
     deps: [urano]
     icon: ExtraPlanets:tile.uranus:3
     desc: |
-      O §eUranus Crystal Ore§r funde em Crystal Ingot. Para a Blindagem Nível 7 você vai precisar de
-      §eCompressed Reinforced Crystal§r: dois Compressed Crystal juntos na Prensa. Junte §e32§r
-      lingotes.
+      O §eUranus Crystal Ore§r funde em Crystal Ingot, e esse é o metal do Nível 7. Para a Blindagem Nível 7 você vai precisar de §eCompressed Reinforced Crystal§r, que são dois Compressed Crystal juntos na Prensa.
+      Junte §e32§r lingotes e deixe tudo organizado no baú, Herói. Se quiser ver outros usos do cristal, aperte U no NEI. Mãos à obra!
     tasks:
       - get: ore:ingotCrystal x32
     rewards:
@@ -925,8 +920,8 @@ quests:
     deps: [urano]
     icon: ExtraPlanets:tier7Items:7
     desc: |
-      Funda o §eUranus White Gem Ore§r para White Gems (ou use o Martelo de Engenheiro).
-      Ferramentas, armadura e o White Gem Wafer.
+      Funda o §eUranus White Gem Ore§r para obter White Gems, ou use o Martelo de Engenheiro. Junte §e6§r.
+      Elas viram ferramentas, armadura e o White Gem Wafer, então guarde com carinho. Se tiver dúvida sobre alguma receita, aperte R ou U no NEI. Boa coleta, Herói, e lembre-se de levar oxigênio para o frio de Urano!
     tasks:
       - get: ore:gemWhiteGem x6
     rewards:
@@ -941,10 +936,9 @@ quests:
     banner: "O Gelo Racha"
     subtitle: "O Slime de Gelo-Chefe caiu"
     desc: |
-      O guardião de Urano é um §cSlime de Gelo Evoluído§r enorme que pula, esmaga e se divide.
-      Cuidado com o terreno escorregadio da arena.
+      O guardião de Urano é um §cSlime de Gelo Evoluído§r enorme que pula, esmaga e se divide! Cuidado com o terreno escorregadio da arena, Herói, porque um deslize pode ser fatal.
 
-      Ele deixa a §eTier 7 Dungeon Key§r. Chefe do §5Selo das Estrelas§r!
+      Quando ele cair, deixa a §eTier 7 Dungeon Key§r. Chefe do §5Selo das Estrelas§r! Leve armadura boa, poções e uma estratégia de recuo. Eu acredito em você, vá e volte vitorioso!
     tasks:
       - kill: {entity: "extraplanets.EvolvedIceSlimeBoss", count: 1}
       - get: ExtraPlanets:T7key
@@ -958,7 +952,8 @@ quests:
     deps: [chefe_urano]
     icon: ExtraPlanets:schematicTier7
     desc: |
-      O §eTier 7 Treasure Chest§r guarda o projeto do §eFoguete Nível 7§r. Rumo a Netuno!
+      Rumo a Netuno! O §eTier 7 Treasure Chest§r guarda o projeto do §eFoguete Nível 7§r. Use a chave que o chefe deixou, abra o baú e leve o esquemático para a Bancada NASA.
+      Aproveite para dar uma olhada no NEI (R/U) e já separar o material do foguete novo. O frio vai ficar ainda mais intenso, então mantenha o traje em dia, Herói!
     tasks:
       - get: ExtraPlanets:schematicTier7
     rewards:
@@ -971,8 +966,8 @@ quests:
     deps: [urano]
     icon: ExtraPlanets:oberon:2
     desc: |
-      Uma lua de Urano com montanhas e vales enormes. Curiosamente, pede só o §eFoguete Nível 5§r —
-      mas o frio é de Urano: Traje Térmico Nível 4.
+      Uma lua de Urano com montanhas e vales enormes! Curiosamente, ela pede só o §eFoguete Nível 5§r, mas o frio é de Urano: leve o Traje Térmico Nível 4.
+      É um destino ótimo para explorar com calma, Herói. Confira o oxigênio e o combustível, e pouse com cuidado. Se esquecer alguma receita, o NEI (R/U) mostra num instante.
     tasks:
       - visit: {dim: -41, name: "Oberon"}
     rewards:
@@ -985,7 +980,8 @@ quests:
     deps: [urano]
     icon: ExtraPlanets:titania:2
     desc: |
-      A maior lua de Urano. Foguete Nível 6 e Traje Térmico Nível 4.
+      A maior lua de Urano! Para visitar Titânia, você precisa do Foguete Nível 6 e do Traje Térmico Nível 4.
+      O tamanho dela convida a explorar sem pressa, Herói. Confira o oxigênio, o combustível e a armadura antes de decolar. Se faltar alguma peça do equipamento, aperte R ou U no NEI. Boa viagem!
     tasks:
       - visit: {dim: -2007, name: "Titânia"}
     rewards:
@@ -1001,8 +997,8 @@ quests:
     deps: [tesouro_urano, cristal]
     icon: ExtraPlanets:itemTier7Rocket
     desc: |
-      §eBlindagem Nível 7§r = Blindagem Nível 6 + Compressed Reinforced Crystal. Propulsores com
-      Compressed Crystal e Lã Magenta. Monte o §eFoguete Nível 7§r: Netuno e Tritão.
+      Mais longe ainda! A §eBlindagem Nível 7§r é a Blindagem Nível 6 mais Compressed Reinforced Crystal. Os propulsores levam Compressed Crystal e Lã Magenta.
+      Monte o §eFoguete Nível 7§r na Bancada NASA e visite Netuno e Tritão. Confira as receitas completas no NEI (R/U) e separe tudo com antecedência. Você está chegando nos confins do sistema solar, Herói!
     tasks:
       - get: [ExtraPlanets:tier7Items:3 x8, ExtraPlanets:itemTier7Rocket:*]
     rewards:
@@ -1018,10 +1014,9 @@ quests:
     subtitle: "Chegada a Netuno"
     effect: 3
     desc: |
-      O planeta mais azul: colinas em camadas, mares de §cÁgua Radioativa§r e um frio de -140.
-      §eFoguete Nível 7§r e §eTraje Térmico Nível 4§r.
+      O planeta mais azul, Herói: colinas em camadas, mares de §cÁgua Radioativa§r e um frio de -140! Para chegar, leve o §eFoguete Nível 7§r e o §eTraje Térmico Nível 4§r.
 
-      §eRecursos:§r §eZinc§r (o metal do Nível 8) e §eBlue Gem§r.
+      §eRecursos:§r §eZinc§r (o metal do Nível 8) e §eBlue Gem§r. Cuidado para não cair na água, confira o oxigênio e pouse com calma. Se esquecer algo, o NEI (R/U) ajuda. Boa viagem!
     tasks:
       - visit: {dim: -18, name: "Netuno"}
     rewards:
@@ -1034,8 +1029,8 @@ quests:
     deps: [netuno]
     icon: ExtraPlanets:tile.neptune:6
     desc: |
-      O §eNeptune Zinc Ore§r funde em Zinc Ingot. Compressed Zinc faz a Blindagem Nível 8; o zinco
-      também faz a Zinc Battery, o Advanced Refinery e a Tier 3 Launch Pad. Junte §e32§r.
+      O §eNeptune Zinc Ore§r funde em Zinc Ingot. O Compressed Zinc faz a Blindagem Nível 8, e o zinco também entra na Zinc Battery, no Advanced Refinery e na Tier 3 Launch Pad. Junte §e32§r.
+      É um metal bem útil, Herói, então guarde de sobra. Se quiser ver todos os usos, aperte U no NEI. Boa mineração, e cuidado com a Água Radioativa!
     tasks:
       - get: ore:ingotZinc x32
     rewards:
@@ -1048,7 +1043,8 @@ quests:
     deps: [netuno]
     icon: ExtraPlanets:tier8Items:6
     desc: |
-      Funda o §eNeptune Blue Gem Ore§r (ou martele). Ferramentas, armadura e o Blue Gem Wafer.
+      Funda o §eNeptune Blue Gem Ore§r, ou use o Martelo de Engenheiro para martelar. Junte §e6§r.
+      As Blue Gems viram ferramentas, armadura e o Blue Gem Wafer. Guarde com carinho, Herói, porque elas são valiosas. Em caso de dúvida sobre as receitas, aperte R ou U no NEI. Boa coleta, e lembre-se de manter o traje térmico em dia!
     tasks:
       - get: ore:gemBlueGem x6
     rewards:
@@ -1063,10 +1059,9 @@ quests:
     banner: "Netuno Derrete um Pouco"
     subtitle: "O Boneco de Neve-Chefe caiu"
     desc: |
-      Não ria do nome: o §cBoneco de Neve Evoluído§r de Netuno é uma metralhadora de bolas de neve
-      que empurram e machucam. Escudo de blocos, arco e muita mobilidade.
+      Não ria do nome, Herói: o §cBoneco de Neve Evoluído§r de Netuno é uma metralhadora de bolas de neve que empurram e machucam! Use escudo de blocos, arco e muita mobilidade.
 
-      Ele deixa a §eTier 8 Dungeon Key§r. Chefe do §5Selo das Estrelas§r!
+      Quando ele cair, deixa a §eTier 8 Dungeon Key§r. Chefe do §5Selo das Estrelas§r! Não o subestime e mantenha-se em movimento. Eu estou aqui torcendo, vá com tudo!
     tasks:
       - kill: {entity: "extraplanets.EvolvedSnowmanBoss", count: 1}
       - get: ExtraPlanets:T8key
@@ -1080,8 +1075,8 @@ quests:
     deps: [chefe_netuno]
     icon: ExtraPlanets:schematicTier8
     desc: |
-      O §eTier 8 Treasure Chest§r guarda o projeto do §eFoguete Nível 8§r — o último a usar a
-      plataforma de Nível 2.
+      Quase lá, Herói! O §eTier 8 Treasure Chest§r guarda o projeto do §eFoguete Nível 8§r, o último a usar a plataforma de Nível 2.
+      Use a chave que o chefe deixou, abra o baú e leve o esquemático para a Bancada NASA. Confira no NEI (R/U) o que o foguete novo vai pedir e já vá separando o material. Plutão te espera!
     tasks:
       - get: ExtraPlanets:schematicTier8
     rewards:
@@ -1094,7 +1089,8 @@ quests:
     deps: [netuno]
     icon: ExtraPlanets:tile.triton:2
     desc: |
-      A lua gelada de Netuno, com terras e mares de gelo. Foguete Nível 7 e Traje Térmico Nível 4.
+      A lua gelada de Netuno, com terras e mares de gelo! Para visitar Tritão, você precisa do Foguete Nível 7 e do Traje Térmico Nível 4.
+      O cenário é lindo e perigoso, Herói. Confira o oxigênio e o combustível antes de decolar, e pouse com cuidado. Se esquecer alguma receita, o NEI (R/U) mostra num instante.
     tasks:
       - visit: {dim: -36, name: "Tritão"}
     rewards:
@@ -1110,8 +1106,8 @@ quests:
     deps: [tesouro_netuno, zinco]
     icon: ExtraPlanets:itemTier8Rocket
     desc: |
-      §eBlindagem Nível 8§r = Blindagem Nível 7 + Compressed Zinc. Monte o §eFoguete Nível 8§r e
-      parta para Plutão.
+      Mais um salto! A §eBlindagem Nível 8§r é a Blindagem Nível 7 mais Compressed Zinc, feita na Prensa. Siga o mesmo molde dos foguetes anteriores.
+      Monte o §eFoguete Nível 8§r na Bancada NASA e parta para Plutão. Confira as receitas completas no NEI (R/U) e separe o material com calma. Falta cada vez menos, Herói, e eu estou muito orgulhosa de você!
     tasks:
       - get: [ExtraPlanets:tier8Items:3 x8, ExtraPlanets:itemTier8Rocket:*]
     rewards:
@@ -1127,8 +1123,8 @@ quests:
     subtitle: "Chegada a Plutão"
     effect: 3
     desc: |
-      Para o Registro, Plutão sempre vai ser um planeta. Pede o §eFoguete Nível 8§r e o §eTraje
-      Térmico Nível 4§r. O recurso daqui é o §eTungsten§r (Nível 9).
+      Para o Registro, Plutão sempre vai ser um planeta! Para chegar lá, você precisa do §eFoguete Nível 8§r e do §eTraje Térmico Nível 4§r. O recurso daqui é o §eTungsten§r (Nível 9).
+      É um mundo gelado e distante, então confira o oxigênio e o combustível antes de decolar, Herói. Pouse com calma e explore. O NEI (R/U) mostra o que faltar. Boa viagem!
     tasks:
       - visit: {dim: -2005, name: "Plutão"}
     rewards:
@@ -1141,8 +1137,8 @@ quests:
     deps: [plutao]
     icon: ExtraPlanets:tile.pluto:6
     desc: |
-      O §ePluto Tungsten Ore§r funde em Tungsten Ingot. Compressed Tungsten faz a Blindagem Nível 9;
-      9 lingotes viram um Block of Tungsten, base da plataforma de Nível 3. Junte §e48§r.
+      O §ePluto Tungsten Ore§r funde em Tungsten Ingot. O Compressed Tungsten faz a Blindagem Nível 9, e 9 lingotes viram um Block of Tungsten, a base da plataforma de Nível 3. Junte §e48§r.
+      É bastante material, Herói, então tenha paciência e organize o baú. Para ver outros usos, aperte U no NEI. Boa mineração, e mantenha o traje em dia!
     tasks:
       - get: ore:ingotTungsten x48
     rewards:
@@ -1157,10 +1153,9 @@ quests:
     banner: "Plutão Conquistado"
     subtitle: "O Creeper-Chefe de Plutão caiu"
     desc: |
-      Uma versão gelada e mais forte do Creeper-Chefe de Marte, com o mesmo gosto por explosões.
-      Proteção contra Explosões e distância!
+      Prepare-se, Herói: uma versão gelada e mais forte do Creeper-Chefe de Marte, com o mesmo gosto por explosões! Leve Proteção contra Explosões e mantenha distância.
 
-      Ele deixa a §eTier 9 Dungeon Key§r. Chefe do §5Selo das Estrelas§r!
+      Quando ele cair, deixa a §eTier 9 Dungeon Key§r. Chefe do §5Selo das Estrelas§r! Use o que aprendeu em Marte e lute com cobertura. Respire fundo, confira a armadura e vá lá. Eu confio em você!
     tasks:
       - kill: {entity: "extraplanets.CreeperBossPluto", count: 1}
       - get: ExtraPlanets:T9key
@@ -1174,7 +1169,8 @@ quests:
     deps: [chefe_plutao]
     icon: ExtraPlanets:schematicTier9
     desc: |
-      O §eTier 9 Treasure Chest§r guarda o projeto do §eFoguete Nível 9§r.
+      Mais um esquemático para a coleção! O §eTier 9 Treasure Chest§r guarda o projeto do §eFoguete Nível 9§r.
+      Use a chave que o chefe deixou, abra o baú e leve o esquemático para a Bancada NASA. Confira no NEI (R/U) o que o foguete novo vai pedir, Herói, para já ir separando o material. O fim do sistema solar está logo ali!
     tasks:
       - get: ExtraPlanets:schematicTier9
     rewards:
@@ -1187,8 +1183,8 @@ quests:
     deps: [tungstenio, zinco]
     icon: ExtraPlanets:tile.advancedLaunchPad:1
     desc: |
-      Os Foguetes Nível 9 e 10 exigem a §eTier 3 Rocket Launch Pad§r: 3 Blocks of Tungsten + 3 Zinc
-      Ingots rendem 5; monte o quadrado §e5×5§r (25 blocos).
+      Seu foguete cresceu, Herói, e a plataforma precisa crescer junto! Os Foguetes Nível 9 e 10 exigem a §eTier 3 Rocket Launch Pad§r: 3 Blocks of Tungsten e 3 Zinc Ingots rendem 5 blocos.
+      Monte o quadrado §e5×5§r (25 blocos), então faça a receita as vezes necessárias. Confira os detalhes no NEI (R) e não deixe de testar o espaço livre em volta.
     tasks:
       - get: ExtraPlanets:tile.advancedLaunchPad:1 x25
     rewards:
@@ -1204,8 +1200,8 @@ quests:
     deps: [tesouro_plutao, tungstenio, plataforma_t3]
     icon: ExtraPlanets:itemTier9Rocket
     desc: |
-      §eBlindagem Nível 9§r = Blindagem Nível 8 + Compressed Tungsten. Propulsores com Compressed
-      Tungsten e Lã Azul-Clara. Monte o §eFoguete Nível 9§r e lance-o da plataforma de Nível 3.
+      Quase no fim da escada! A §eBlindagem Nível 9§r é a Blindagem Nível 8 mais Compressed Tungsten. Os propulsores levam Compressed Tungsten e Lã Azul-Clara.
+      Monte o §eFoguete Nível 9§r e lance-o da plataforma de Nível 3, Herói. Confira as receitas no NEI (R/U) e separe o material com antecedência. Éris te espera nos confins do sistema solar!
     tasks:
       - get: [ExtraPlanets:tier9Items:3 x8, ExtraPlanets:itemTier9Rocket:*]
     rewards:
@@ -1221,8 +1217,8 @@ quests:
     subtitle: "Chegada a Éris"
     effect: 3
     desc: |
-      O planeta-anão mais distante: escuro, gelado (-150!) e silencioso. §eFoguete Nível 9§r e
-      §eTraje Térmico Nível 4§r. O recurso daqui é o §eDark Iron§r, metal do último foguete.
+      O planeta-anão mais distante, Herói: escuro, gelado (-150!) e silencioso. Para chegar, leve o §eFoguete Nível 9§r e o §eTraje Térmico Nível 4§r.
+      O recurso daqui é o §eDark Iron§r, metal do último foguete. Confira o oxigênio, o combustível e a armadura antes de decolar, e pouse com cuidado. O NEI (R/U) mostra o que faltar. Boa viagem!
     tasks:
       - visit: {dim: -21, name: "Éris"}
     rewards:
@@ -1235,9 +1231,8 @@ quests:
     deps: [eris]
     icon: ExtraPlanets:tile.eris:7
     desc: |
-      O §eEris Dark Iron Ore§r funde em Dark Iron Ingot (ou com Pó de Pyrotheum na bancada).
-      Compressed Dark Iron faz a Blindagem e os propulsores do Nível 10; o Dark Iron também faz o
-      Ultimate Refinery. Junte §e32§r.
+      O §eEris Dark Iron Ore§r funde em Dark Iron Ingot, ou você pode usar Pó de Pyrotheum na bancada. O Compressed Dark Iron faz a Blindagem e os propulsores do Nível 10, e o Dark Iron também faz o Ultimate Refinery. Junte §e32§r.
+      É o metal do último foguete, Herói, então não economize. Aperte U no NEI para ver todos os usos. Boa mineração!
     tasks:
       - get: ore:ingotDarkIron x32
     rewards:
@@ -1252,11 +1247,9 @@ quests:
     banner: "O Último Guardião"
     subtitle: "O Creeper-Chefe de Éris caiu"
     desc: |
-      O guardião mais distante do sistema solar: um Creeper-Chefe ainda mais resistente. Use tudo o
-      que aprendeu nos outros seis chefes.
+      O guardião mais distante do sistema solar, Herói: um Creeper-Chefe ainda mais resistente! Use tudo o que aprendeu nos outros seis chefes.
 
-      Ele deixa a §eTier 10 Dungeon Key§r — a chave para Kepler 22b. Último chefe do ExtraPlanets no
-      §5Selo das Estrelas§r!
+      Quando ele cair, deixa a §eTier 10 Dungeon Key§r, a chave para Kepler 22b. Último chefe do ExtraPlanets no §5Selo das Estrelas§r! Leve armadura de primeira, Proteção contra Explosões e mantenha distância. Eu acredito em você até o fim. Vá, e que o Registro registre sua vitória!
     tasks:
       - kill: {entity: "extraplanets.CreeperBossEris", count: 1}
       - get: ExtraPlanets:T10key
@@ -1270,8 +1263,8 @@ quests:
     deps: [chefe_eris]
     icon: ExtraPlanets:schematicTier10
     desc: |
-      O §eTier 10 Treasure Chest§r guarda o último projeto: o §eFoguete Nível 10§r, capaz de deixar
-      o sistema solar.
+      O último projeto, Herói! O §eTier 10 Treasure Chest§r guarda o esquemático do §eFoguete Nível 10§r, capaz de deixar o sistema solar.
+      Use a chave que o chefe deixou, abra o baú e leve o esquemático para a Bancada NASA. Dê uma olhada no NEI (R/U) para ver o que o foguete final vai pedir. O próximo destino é além das estrelas!
     tasks:
       - get: ExtraPlanets:schematicTier10
     rewards:
@@ -1287,9 +1280,8 @@ quests:
     deps: [tesouro_eris, ferro_escuro]
     icon: ExtraPlanets:itemTier10Rocket
     desc: |
-      §eBlindagem Nível 10§r = Blindagem Nível 9 + Compressed Dark Iron. Propulsores com Compressed
-      Dark Iron e Lã Ciano. Monte o §eFoguete Nível 10§r: o primeiro foguete interestelar do
-      Registro.
+      O momento chegou, Herói! A §eBlindagem Nível 10§r é a Blindagem Nível 9 mais Compressed Dark Iron. Os propulsores levam Compressed Dark Iron e Lã Ciano.
+      Monte o §eFoguete Nível 10§r: o primeiro foguete interestelar do Registro. Confira as receitas no NEI (R/U) e separe o material com calma. Eu mal posso esperar para ver você decolar rumo a Kepler 22b!
     tasks:
       - get: [ExtraPlanets:tier10Items:3 x8, ExtraPlanets:itemTier10Rocket:*]
     rewards:
@@ -1324,8 +1316,8 @@ quests:
     deps: [kepler22b]
     icon: ExtraPlanets:tile.kepler22bMapleLogs
     desc: |
-      Seis cores de bordos, seis cores de tábuas e de gravetos. Leve uma muda de cada cor para casa
-      — um jardim interestelar!
+      Em Kepler 22b há seis cores de bordos, seis cores de tábuas e de gravetos. Leve uma muda de cada cor para casa e monte um jardim interestelar, Herói!
+      É uma missão de coleta tranquila, ótima para relaxar depois de tanto chefe. Plante as mudas num lugar bonito da base. Se esquecer alguma cor, aperte R ou U no NEI para ver as variantes.
     tasks:
       - get: [ExtraPlanets:tile.kepler22bMapleSaplings, ExtraPlanets:tile.kepler22bMapleSaplings:1, ExtraPlanets:tile.kepler22bMapleSaplings:2, ExtraPlanets:tile.kepler22bMapleSaplings:3, ExtraPlanets:tile.kepler22bMapleSaplings:4, ExtraPlanets:tile.kepler22bMapleSaplings:5]
     rewards:
@@ -1338,8 +1330,8 @@ quests:
     deps: [kepler22b]
     icon: ExtraPlanets:tier11Items
     desc: |
-      Os planaltos de Kepler escondem minérios de diamante azul, vermelho, roxo, amarelo e verde.
-      Martele (Martelo de Engenheiro) ou funda para obter as gemas. Junte uma de cada cor.
+      Os planaltos de Kepler escondem minérios de diamante azul, vermelho, roxo, amarelo e verde, Herói!
+      Martele com o Martelo de Engenheiro ou funda para obter as gemas. Junte uma de cada cor. Guarde com carinho, porque são lindas e valiosas. Se tiver dúvida sobre alguma gema, aperte R ou U no NEI. Boa mineração!
     tasks:
       - get: [ExtraPlanets:tier11Items, ExtraPlanets:tier11Items:1, ExtraPlanets:tier11Items:2, ExtraPlanets:tier11Items:3, ExtraPlanets:tier11Items:4]
     rewards:
@@ -1352,7 +1344,8 @@ quests:
     deps: [kepler22b]
     icon: ExtraPlanets:tile.kepler22b:13
     desc: |
-      O §eKepler 22b Platinum Ore§r dá Platinum Ingots (e Compressed Platinum na Prensa).
+      O §eKepler 22b Platinum Ore§r dá Platinum Ingots, e na Prensa vira Compressed Platinum. Junte §e8§r.
+      É uma missão opcional, mas o metal é valioso e pode servir para outras receitas, Herói. Guarde de sobra no baú. Para ver todos os usos da platina, aperte U no NEI. Boa mineração, e aproveite o planeta novo!
     tasks:
       - get: ExtraPlanets:tier11Items:11 x8
     rewards:
@@ -1364,8 +1357,8 @@ quests:
     deps: [kepler22b]
     icon: ExtraPlanets:tile.kepler22b:5
     desc: |
-      Minério de carvão "denso" das planícies de Kepler: combustível farto para a base
-      interestelar. Minere alguns blocos.
+      Minério de carvão "denso" das planícies de Kepler: combustível farto para a base interestelar! Minere alguns blocos, no total de §e8§r.
+      É uma missão opcional e bem tranquila, Herói. Guarde o carvão num baú para alimentar fornalhas e geradores. Se quiser ver outros usos, aperte U no NEI. Boa mineração, e aproveite a calmaria!
     tasks:
       - get: ExtraPlanets:tile.kepler22b:5 x8
     rewards:
@@ -1380,8 +1373,8 @@ quests:
     deps: [zinco]
     icon: ExtraPlanets:advancedRefinery
     desc: |
-      Uma Refinaria do Galacticraft com 2 Zinc Ingots: refina petróleo mais rápido. Foguetes grandes
-      bebem muito combustível!
+      Foguetes grandes bebem muito combustível, Herói! A §eAdvanced Refinery§r é uma Refinaria do Galacticraft com 2 Zinc Ingots, e refina petróleo mais rápido.
+      Se você pretende abastecer vários foguetes, ela vale cada lingote. Monte e deixe funcionando num cantinho da base. Confira a receita no NEI (R) se tiver dúvida. Combustível farto, viagens tranquilas!
     tasks:
       - get: ExtraPlanets:advancedRefinery
     rewards:
@@ -1394,7 +1387,8 @@ quests:
     deps: [refinaria_avancada, ferro_escuro]
     icon: ExtraPlanets:ultimateRefinery
     desc: |
-      A Advanced Refinery com 2 Dark Iron Ingots: a refinaria mais rápida do Registro.
+      A refinaria mais rápida do Registro! A §eUltimate Refinery§r é a Advanced Refinery com 2 Dark Iron Ingots.
+      É uma missão opcional, Herói, mas excelente para quem abastece foguetes grandes o tempo todo. Confira a receita no NEI (R) e deixe a máquina ligada num lugar seguro da base. Seu estoque de combustível nunca mais vai secar!
     tasks:
       - get: ExtraPlanets:ultimateRefinery
     rewards:
@@ -1407,9 +1401,8 @@ quests:
     icon: ExtraPlanets:item.wafer:1
     task_logic: OR
     desc: |
-      O Fabricador de Circuitos ganhou novos wafers: §eDiamond, Carbon, Titanium, Red Gem, Blue Gem e
-      White Gem§r. Eles são usados nos carregadores avançados e nas §eestações espaciais§r dos
-      planetas do ExtraPlanets (o tooltip avisa). Confira as receitas no NEI. Faça qualquer um.
+      O Fabricador de Circuitos ganhou novos wafers, Herói: §eDiamond, Carbon, Titanium, Red Gem, Blue Gem e White Gem§r! Eles são usados nos carregadores avançados e nas §eestações espaciais§r dos planetas do ExtraPlanets (o tooltip avisa qual é qual).
+      Confira as receitas no NEI (R/U) e faça qualquer um para cumprir a missão. Dica de quem conhece o Registro: guarde os wafers extras, porque as máquinas mais avançadas vão pedir.
     tasks:
       - get: ExtraPlanets:item.wafer
       - get: ExtraPlanets:item.wafer:1
@@ -1427,8 +1420,8 @@ quests:
     deps: [paladio, wafers_ep]
     icon: ExtraPlanets:advancedFuelLoader
     desc: |
-      Um Carregador de Combustível com níquel, paládio e um Carbon Wafer: enche os tanques grandes
-      dos foguetes mais rápido.
+      Foguetes grandes têm tanques enormes, e esperar encher é um tédio! O §eAdvanced Fuel Loader§r é um Carregador de Combustível com níquel, paládio e um Carbon Wafer, e enche os tanques mais rápido.
+      Separe os materiais, Herói, e confira a receita exata no NEI (R). Lembre que o níquel e o paládio vêm de Júpiter, então a viagem compensa. Bom abastecimento!
     tasks:
       - get: ExtraPlanets:advancedFuelLoader
     rewards:
@@ -1441,7 +1434,8 @@ quests:
     deps: [carregador_avancado, tungstenio]
     icon: ExtraPlanets:ultimateFuelLoader
     desc: |
-      Tungstênio, zinco, um Titanium Wafer e o Advanced Fuel Loader.
+      O carregador mais rápido do pedaço! O §eUltimate Fuel Loader§r leva tungstênio, zinco, um Titanium Wafer e o Advanced Fuel Loader.
+      É uma missão opcional, Herói, mas ótima para quem abastece foguetes o tempo todo. Guarde o Advanced Fuel Loader até a hora de montar, e confira os detalhes no NEI (R/U). Abasteça num piscar de olhos!
     tasks:
       - get: ExtraPlanets:ultimateFuelLoader
     rewards:
@@ -1453,8 +1447,8 @@ quests:
     deps: [magnesio]
     icon: ExtraPlanets:advancedOxygenCompressor
     desc: |
-      4 Compressores de Oxigênio e 5 Magnesium Ingots: enche tanques muito mais rápido. Também há a
-      versão Descompressor e as versões §eUltimate§r (com tungstênio).
+      Respirar fundo nunca foi tão rápido! O §eAdvanced Oxygen Compressor§r leva 4 Compressores de Oxigênio e 5 Magnesium Ingots, e enche tanques muito mais rápido.
+      Também existem a versão Descompressor e as versões §eUltimate§r (com tungstênio). É uma missão opcional, Herói, mas bem útil para quem passa muito tempo no espaço. Confira as receitas no NEI (R/U).
     tasks:
       - get: ExtraPlanets:advancedOxygenCompressor
     rewards:
@@ -1466,7 +1460,8 @@ quests:
     deps: [compressor_oxigenio_avancado, tungstenio]
     icon: ExtraPlanets:ultimateOxygenCompressor
     desc: |
-      4 Advanced Oxygen Compressors e 5 Tungsten Ingots. O ar mais rápido do sistema solar.
+      O ar mais rápido do sistema solar! O §eUltimate Oxygen Compressor§r leva 4 Advanced Oxygen Compressors e 5 Tungsten Ingots.
+      É uma missão opcional, Herói, mas ideal para bases grandes que precisam de muito oxigênio. Separe os compressores avançados com antecedência e confira a receita completa no NEI (R). Respire à vontade, o Registro está de olho em você!
     tasks:
       - get: ExtraPlanets:ultimateOxygenCompressor
     rewards:
@@ -1478,7 +1473,8 @@ quests:
     deps: [magnesio]
     icon: ExtraPlanets:tile.solar
     desc: |
-      Um Painel Solar Avançado do Galacticraft com 2 Compressed Magnesium: mais energia por painel.
+      Mais energia por painel, Herói! O §eHybrid Solar Panel§r é um Painel Solar Avançado do Galacticraft com 2 Compressed Magnesium.
+      Se a sua base vive faminta por energia, este é o upgrade certo. Posicione no sol, de preferência bem alto, e conecte aos seus cabos. Para ver a receita exata, aperte R no NEI. Energia limpa e abundante a caminho!
     tasks:
       - get: ExtraPlanets:tile.solar
     rewards:
@@ -1491,7 +1487,8 @@ quests:
     deps: [solar_hibrido, cristal]
     icon: ExtraPlanets:tile.solar:4
     desc: |
-      O Hybrid Solar Panel com 2 Compressed Crystal: o painel mais forte do Galacticraft no pack.
+      O painel solar mais forte do Galacticraft no pack! O §eUltimate Solar Panel§r é o Hybrid Solar Panel com 2 Compressed Crystal.
+      É uma missão opcional, Herói, mas excelente para bases grandes. Guarde o Hybrid Solar Panel e o cristal prensado até a hora de montar. Confira a receita no NEI (R/U) e deixe o sol trabalhar por você!
     tasks:
       - get: ExtraPlanets:tile.solar:4
     rewards:
@@ -1503,8 +1500,8 @@ quests:
     deps: [paladio, zinco]
     icon: ExtraPlanets:zincBattery
     desc: |
-      Cada planeta traz uma bateria: §eNickel Battery§r (45 000 gJ, Júpiter), §eMercury Battery§r
-      (85 000) e §eZinc Battery§r (125 000, Netuno). Faça a de níquel e a de zinco.
+      Cada planeta traz uma bateria, Herói: a §eNickel Battery§r (45 000 gJ, Júpiter), a §eMercury Battery§r (85 000) e a §eZinc Battery§r (125 000, Netuno).
+      Para esta missão, faça a de níquel e a de zinco. Elas guardam muito mais energia que as baterias comuns, então valem o esforço. Confira as receitas no NEI (R/U) e separe os metais com antecedência. Energia de sobra!
     tasks:
       - get: [ExtraPlanets:nickelBattery, ExtraPlanets:zincBattery]
     rewards:
@@ -1517,7 +1514,8 @@ quests:
     deps: [baterias_ep]
     icon: ExtraPlanets:item.advancedBattery
     desc: |
-      5 Titânio Prensado, uma Bateria e um Bloco de Desh: 50 000 gJ.
+      Uma bateria sólida e simples de fazer! A §eAdvanced Battery§r leva 5 Titânio Prensado, uma Bateria e um Bloco de Desh, e guarda 50 000 gJ.
+      É uma missão opcional, Herói, mas serve de base para a Ultimate Battery mais à frente. Confira a receita no NEI (R) e guarde com carinho. Seu estoque de energia agradece!
     tasks:
       - get: ExtraPlanets:item.advancedBattery
     rewards:
@@ -1529,8 +1527,8 @@ quests:
     deps: [bateria_avancada_ep, tungstenio, cristal, gema_azul, gema_branca, gema_vermelha]
     icon: ExtraPlanets:item.ultimateBattery
     desc: |
-      Um "tour" pelo sistema solar numa bateria: blocos de White Gem, Red Gem, Blue Gem, Carbon,
-      Palladium e Magnesium, lingotes de Tungsten e Zinc e uma Advanced Battery. 200 000 gJ.
+      Um "tour" pelo sistema solar numa bateria só! A §eUltimate Battery§r leva blocos de White Gem, Red Gem, Blue Gem, Carbon, Palladium e Magnesium, lingotes de Tungsten e Zinc e uma Advanced Battery. Ela guarda 200 000 gJ.
+      É uma missão opcional, Herói, mas é a prova de que você visitou tudo. Separe com calma e confira a receita no NEI (R/U).
     tasks:
       - get: ExtraPlanets:item.ultimateBattery
     rewards:
@@ -1543,8 +1541,8 @@ quests:
     icon: ExtraPlanets:diamondApple
     task_logic: OR
     desc: |
-      O ExtraPlanets tem §eIron Apples§r (8 ferros + maçã) e §eDiamond Apples§r (8 diamantes +
-      maçã), com versões "Notch" feitas de blocos. Boas para as lutas contra os chefes.
+      Hora de um lanchinho para a batalha! O ExtraPlanets tem §eIron Apples§r (8 ferros e uma maçã) e §eDiamond Apples§r (8 diamantes e uma maçã), com versões "Notch" feitas de blocos.
+      São ótimas para as lutas contra os chefes, Herói. Esta missão é opcional, mas dá um bom fôlego extra. Confira as receitas no NEI (R/U) e guarde algumas no inventário.
     tasks:
       - get: ExtraPlanets:ironApple
       - get: ExtraPlanets:diamondApple
@@ -1557,8 +1555,8 @@ quests:
     deps: [mundos_distantes]
     icon: ExtraPlanets:cannedFood
     desc: |
-      Uma Lata de Estanho com 2 carnes assadas (porco, peixe, salmão, frango ou filé) vira comida
-      enlatada do ExtraPlanets. Proteína para a viagem!
+      Proteína para a viagem! Uma Lata de Estanho com 2 carnes assadas (porco, peixe, salmão, frango ou filé) vira comida enlatada do ExtraPlanets. Faça §e8§r.
+      Comida enlatada dura e alimenta bem, Herói, perfeita para expedições longas pelo espaço. É uma missão opcional, mas prática. Confira a receita no NEI (R) e guarde no inventário. Bom apetite!
     tasks:
       - get: ExtraPlanets:cannedFood:* x8
     rewards:
@@ -1571,9 +1569,8 @@ quests:
     icon: ExtraPlanets:item.tier2_kit
     task_logic: OR
     desc: |
-      Os §eKits§r guardam máscara, equipamento, tanques, módulo de frequência, paraquedas e (no Full
-      Kit) o "Protection Kit" com o traje térmico. Clique direito para vestir tudo de uma vez. Faça
-      qualquer Full Kit (Nível 1 a 4).
+      Quer se vestir para o espaço num clique só? Os §eKits§r guardam máscara, equipamento, tanques, módulo de frequência, paraquedas e, no Full Kit, o "Protection Kit" com o traje térmico.
+      Clique direito para vestir tudo de uma vez, Herói! Faça qualquer Full Kit (Nível 1 a 4). Esta missão é opcional, mas poupa muito tempo. Confira as receitas no NEI (R/U).
     tasks:
       - get: ExtraPlanets:item.tier1_kit
       - get: ExtraPlanets:item.tier2_kit
@@ -1603,8 +1600,8 @@ quests:
     deps: [cristal]
     icon: ExtraPlanets:tier7Items:6
     desc: |
-      Dois Compressed Crystal juntos na Prensa viram §eCompressed Reinforced Crystal§r — o
-      ingrediente da Blindagem Nível 7. Faça §e8§r antes de começar o foguete.
+      Dois Compressed Crystal juntos na Prensa viram §eCompressed Reinforced Crystal§r, o ingrediente da Blindagem Nível 7. Faça §e8§r antes de começar o foguete.
+      Já deixe a Prensa e os cristais prontos, Herói, porque a produção toma um tempo. Se esquecer a receita, aperte R no NEI. Organizar antes economiza dor de cabeça depois!
     tasks:
       - get: ExtraPlanets:tier7Items:6 x8
     rewards:
@@ -1617,8 +1614,8 @@ quests:
     deps: [blindagem_t4, pecas_rover_t1]
     icon: ExtraPlanets:item.electricParts:3
     desc: |
-      §eTier 2 Wheel:§r 4 Heavy-Duty Plates Nível 4 + uma Tier 1 Wheel. §eTier 2 Battery:§r 5 lingotes
-      de chumbo + 4 Heavy-Duty Plates Nível 4. São as peças do Venus Rover.
+      Para o Venus Rover, as peças também sobem de nível! A §eTier 2 Wheel§r leva 4 Heavy-Duty Plates Nível 4 e uma Tier 1 Wheel. A §eTier 2 Battery§r leva 5 lingotes de chumbo e 4 Heavy-Duty Plates Nível 4.
+      É uma missão opcional, Herói. Confira as receitas no NEI (R) e separe os materiais antes de montar. Bom passeio em Vênus!
     tasks:
       - get: [ExtraPlanets:item.electricParts:3 x4, ExtraPlanets:item.electricParts:1]
     rewards:
@@ -1630,8 +1627,8 @@ quests:
     deps: [marreta]
     icon: ExtraPlanets:tier4Items:6
     desc: |
-      Sledge Hammer + Ash Block = 2 Ash Shards; 4 shards = 1 Ash. As cinzas são ingrediente da Fire
-      Bomb.
+      Cinzas vulcânicas, Herói! Com o Sledge Hammer num Ash Block você obtém 2 Ash Shards, e 4 shards formam 1 Ash. Faça §e4§r.
+      As cinzas são ingrediente da Fire Bomb, então guarde algumas para quando chegar a hora. Esta missão é opcional e bem tranquila. Se esquecer a receita, aperte R no NEI. Boa coleta!
     tasks:
       - get: ExtraPlanets:tier4Items:6 x4
     rewards:
@@ -1643,9 +1640,8 @@ quests:
     deps: [venus]
     icon: minecraft:emerald
     desc: |
-      Quase todos os mundos do ExtraPlanets têm §evilas§r (todas ativas na config): de Mercúrio a
-      Éris, passando pelas luas. Encontre uma vila fora da Terra, da Lua e de Marte e confirme
-      aqui.
+      Que tal bater um papo com os vizinhos? Quase todos os mundos do ExtraPlanets têm §evilas§r (todas ativas na config), de Mercúrio a Éris, passando pelas luas.
+      Encontre uma vila fora da Terra, da Lua e de Marte e confirme aqui, Herói. É uma missão opcional e sem item para entregar. Explore com calma, mantenha o traje em dia e boa busca!
     tasks:
       - check
     rewards:
@@ -1658,8 +1654,8 @@ quests:
     icon: ExtraPlanets:bucket_infected_water
     task_logic: OR
     desc: |
-      Saturno tem mares de §eHidrocarboneto Líquido§r e terras com §cÁgua Infectada§r. Encha um balde
-      de qualquer um dos dois — com cuidado.
+      Saturno tem mares de §eHidrocarboneto Líquido§r e terras com §cÁgua Infectada§r. Encha um balde de qualquer um dos dois, com cuidado.
+      É uma missão opcional, Herói, mas curiosa para conhecer o planeta. Leve um balde vazio e proteção, e não beba nada por impulso! Se tiver dúvida sobre o fluido, aperte U no NEI. Boa exploração!
     tasks:
       - get: ExtraPlanets:bucket_infected_water
       - get: ExtraPlanets:bucket_liquid_hydrocarbon
@@ -1672,8 +1668,8 @@ quests:
     deps: [tita]
     icon: ExtraPlanets:bucket_methane
     desc: |
-      Titã tem mares e colinas de §eMetano Líquido§r. Encha um balde: é a mesma molécula que o
-      Sintetizador de Metano de Marte fabrica.
+      Titã tem mares e colinas de §eMetano Líquido§r. Encha um balde: é a mesma molécula que o Sintetizador de Metano de Marte fabrica.
+      É uma missão opcional e tranquila, Herói, perfeita para uma passada rápida pela lua. Leve um balde vazio, pouse com cuidado e traga o metano de volta. Para ver outros usos, aperte U no NEI. Boa coleta!
     tasks:
       - get: ExtraPlanets:bucket_methane
     rewards:
@@ -1686,8 +1682,8 @@ quests:
     icon: ExtraPlanets:frozenNitrogen
     task_logic: OR
     desc: |
-      Os mundos gelados guardam fluidos estranhos: §eNitrogênio Líquido§r e §eÁgua Congelada§r. Um
-      balde de nitrogênio na bancada vira 2 blocos de Frozen Nitrogen. Traga um balde de qualquer um.
+      Os mundos gelados guardam fluidos estranhos, Herói: §eNitrogênio Líquido§r e §eÁgua Congelada§r. Um balde de nitrogênio na bancada vira 2 blocos de Frozen Nitrogen.
+      Traga um balde de qualquer um deles para cumprir a missão. É opcional e tranquila. Leve um balde vazio e o traje térmico, e confira o NEI (R/U) para ver outros usos. Boa coleta!
     tasks:
       - get: ExtraPlanets:bucket_nitrogen
       - get: ExtraPlanets:bucket_frozen_water
@@ -1701,8 +1697,8 @@ quests:
     icon: minecraft:blaze_rod
     task_logic: OR
     desc: |
-      Os mundos quentes do ExtraPlanets têm suas próprias criaturas evoluídas: §eBlazes§r e §eCubos
-      de Magma§r Evoluídos. Derrote alguns (a config deixa todos ligados).
+      Os mundos quentes do ExtraPlanets têm suas próprias criaturas evoluídas: §eBlazes§r e §eCubos de Magma§r Evoluídos. Derrote 3 de cada (a config deixa todos ligados).
+      São inimigos mais fortes que os comuns, Herói, então leve armadura boa e Resistência ao Fogo. É uma missão opcional, mas rende uma boa experiência de combate. Boa caçada!
     tasks:
       - kill: {entity: "extraplanets.EvolvedBlaze", count: 3}
       - kill: {entity: "extraplanets.EvolvedMagmaCube", count: 3}
@@ -1716,7 +1712,8 @@ quests:
     icon: minecraft:snowball
     task_logic: OR
     desc: |
-      Nos mundos gelados aparecem §eSlimes de Gelo§r e §eCreepers Azuis§r Evoluídos. Derrote alguns.
+      Nos mundos gelados aparecem §eSlimes de Gelo§r e §eCreepers Azuis§r Evoluídos. Derrote 3 de cada.
+      São inimigos mais fortes que os comuns, Herói, então mantenha distância dos Creepers e leve armadura de qualidade. É uma missão opcional, mas rende uma boa experiência de combate. Cuidado com o frio e com as explosões. Boa caçada!
     tasks:
       - kill: {entity: "extraplanets.EvolvedIceSlime", count: 3}
       - kill: {entity: "extraplanets.EvolvedBlueCreeper", count: 3}
@@ -1730,9 +1727,8 @@ quests:
     icon: minecraft:spider_eye
     task_logic: OR
     desc: |
-      Endermen e Mini-Endermen Evoluídos, Aranhas Gigantes, Bruxas, Esqueletos Poderosos e Creepers
-      Vermelhos — o ExtraPlanets tem um zoológico inteiro. Derrote 3 de qualquer uma dessas
-      espécies.
+      Endermen e Mini-Endermen Evoluídos, Aranhas Gigantes, Bruxas, Esqueletos Poderosos e Creepers Vermelhos: o ExtraPlanets tem um zoológico inteiro!
+      Derrote 3 de cada espécie que cobre a missão. Em caso de dúvida sobre quais valem, olhe a lista da quest. É opcional, Herói, mas rende ótimo treino de combate. Leve armadura boa e boa caçada!
     tasks:
       - kill: {entity: "extraplanets.EvolvedEnderman", count: 3}
       - kill: {entity: "extraplanets.EvolvedMiniEnderman", count: 3}
@@ -1753,8 +1749,8 @@ quests:
     icon: ExtraPlanets:carbonPickaxe
     task_logic: OR
     desc: |
-      Cada metal novo tem ferramentas e armadura completas. As de Carbono são leves; as de Mercúrio,
-      mais duráveis. Faça uma peça qualquer de uma das duas linhas.
+      Cada metal novo tem ferramentas e armadura completas, Herói! As de Carbono são leves; as de Mercúrio, mais duráveis.
+      Faça uma peça qualquer de uma das duas linhas para cumprir a missão. É opcional, mas um equipamento melhor ajuda muito nos próximos planetas. Confira as receitas no NEI (R/U) e escolha a que mais combina com o seu estilo. Boa forja!
     tasks:
       - one_of: [ExtraPlanets:carbonPickaxe, ExtraPlanets:carbonSword, ExtraPlanets:carbonChest]
       - one_of: [ExtraPlanets:mercuryPickaxe, ExtraPlanets:mercurySword, ExtraPlanets:mercuryChest]
@@ -1767,7 +1763,8 @@ quests:
     deps: [uranio_ceres]
     icon: ExtraPlanets:uraniumPickaxe
     desc: |
-      Ferramentas e armadura de Urânio, com o metal de Ceres. Faça uma peça.
+      Ferramentas e armadura de Urânio, feitas com o metal de Ceres! Faça uma peça.
+      É uma missão opcional, Herói, mas equipamento novo sempre ajuda a explorar com mais segurança. Escolha entre picareta, espada ou peitoral e confira a receita no NEI (R/U). Cuidado com a radiação nos mods que a simulam. Boa forja!
     tasks:
       - one_of: [ExtraPlanets:uraniumPickaxe, ExtraPlanets:uraniumSword, ExtraPlanets:uraniumChest]
     rewards:
@@ -1780,7 +1777,8 @@ quests:
     icon: ExtraPlanets:redGemPickaxe
     task_logic: OR
     desc: |
-      Paládio e Red Gem dão duas linhas de equipamento. Faça uma peça de qualquer uma.
+      Paládio e Red Gem dão duas linhas de equipamento, Herói! Faça uma peça de qualquer uma delas.
+      É uma missão opcional, mas ferramentas e armaduras melhores fazem diferença nas viagens longas. Escolha a que preferir e confira as receitas no NEI (R/U). Os metais e as gemas vêm de Júpiter, então a viagem compensa. Boa forja!
     tasks:
       - one_of: [ExtraPlanets:palladiumPickaxe, ExtraPlanets:palladiumSword, ExtraPlanets:palladiumChest]
       - one_of: [ExtraPlanets:redGemPickaxe, ExtraPlanets:redGemSword, ExtraPlanets:redGemChest]
@@ -1793,7 +1791,8 @@ quests:
     deps: [magnesio]
     icon: ExtraPlanets:magnesiumPickaxe
     desc: |
-      O magnésio de Saturno também vira ferramentas e armadura.
+      O magnésio de Saturno também vira ferramentas e armadura, Herói! Faça uma peça, escolhendo entre picareta, espada ou peitoral.
+      É uma missão opcional, mas equipamento novo sempre ajuda nas próximas viagens. Confira a receita no NEI (R/U) e aproveite o magnésio que sobrou da blindagem. Boa forja, e que o frio de Saturno não te alcance!
     tasks:
       - one_of: [ExtraPlanets:magnesiumPickaxe, ExtraPlanets:magnesiumSword, ExtraPlanets:magnesiumChest]
     rewards:
@@ -1806,7 +1805,8 @@ quests:
     icon: ExtraPlanets:crystalPickaxe
     task_logic: OR
     desc: |
-      Crystal e White Gem: duas linhas de equipamento geladas e muito duráveis.
+      Crystal e White Gem: duas linhas de equipamento geladas e muito duráveis! Faça uma peça de qualquer uma delas, Herói.
+      É uma missão opcional, mas equipamento forte ajuda muito contra os chefes de Netuno e Plutão. Confira as receitas no NEI (R/U) e escolha a linha que mais combina com você. Boa forja, e que o frio de Urano não te alcance!
     tasks:
       - one_of: [ExtraPlanets:crystalPickaxe, ExtraPlanets:crystalSword, ExtraPlanets:crystalChest]
       - one_of: [ExtraPlanets:whiteGemPickaxe, ExtraPlanets:whiteGemSword, ExtraPlanets:whiteGemChest]
@@ -1820,7 +1820,8 @@ quests:
     icon: ExtraPlanets:blueGemPickaxe
     task_logic: OR
     desc: |
-      Zinc e Blue Gem. As armaduras de zinco e de gema azul estão entre as mais duráveis do mod.
+      Zinc e Blue Gem! As armaduras de zinco e de gema azul estão entre as mais duráveis do mod, Herói. Faça uma peça de qualquer uma das duas linhas.
+      É uma missão opcional, mas vale muito para encarar os chefes de Plutão e Éris. Confira as receitas no NEI (R/U) e escolha o que combina mais com você. Boa forja!
     tasks:
       - one_of: [ExtraPlanets:zincPickaxe, ExtraPlanets:zincSword, ExtraPlanets:zincChest]
       - one_of: [ExtraPlanets:blueGemPickaxe, ExtraPlanets:blueGemSword, ExtraPlanets:blueGemChest]
@@ -1833,7 +1834,8 @@ quests:
     deps: [tungstenio]
     icon: ExtraPlanets:tungstenPickaxe
     desc: |
-      A armadura de tungstênio é a mais durável do ExtraPlanets. Faça uma peça.
+      A armadura de tungstênio é a mais durável do ExtraPlanets, Herói! Faça uma peça: picareta, espada ou peitoral.
+      É uma missão opcional, mas ótima para quem enfrenta os chefes finais. O tungstênio exige bastante lingote, então confira a receita no NEI (R/U) e organize o estoque antes de começar. Boa forja, e que nada te derrube!
     tasks:
       - one_of: [ExtraPlanets:tungstenPickaxe, ExtraPlanets:tungstenSword, ExtraPlanets:tungstenChest]
     rewards:
@@ -1845,8 +1847,8 @@ quests:
     deps: [diamantes_coloridos]
     icon: ExtraPlanets:blueDiamondPickaxe
     desc: |
-      Cada diamante colorido de Kepler 22b tem uma linha completa de ferramentas — as mais duráveis
-      do mod. Faça uma picareta de qualquer cor.
+      Cada diamante colorido de Kepler 22b tem uma linha completa de ferramentas, as mais duráveis do mod! Faça uma picareta de qualquer cor, Herói.
+      É uma missão opcional, mas uma bela recompensa para quem chegou tão longe. Escolha a cor que mais gostar e confira a receita no NEI (R/U). Boa forja, e aproveite o brilho!
     tasks:
       - one_of: [ExtraPlanets:blueDiamondPickaxe, ExtraPlanets:redDiamondPickaxe, ExtraPlanets:purpleDiamondPickaxe, ExtraPlanets:yellowDiamondPickaxe, ExtraPlanets:greenDiamondPickaxe]
     rewards:
