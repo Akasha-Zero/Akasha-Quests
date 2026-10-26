@@ -1,0 +1,395 @@
+chapter:
+  id: ultima_pagina
+  title: "Crônicas Akáshicas: A Última Página"
+  color: "§6"
+  order: 999
+  icon: minecraft:enchanted_book
+  desc: |
+    O fim verdadeiro. A página em branco, o Avaritia e a escolha do que não escrever.
+
+quests:
+
+  - id: registro_inteiro
+    title: "O Registro Está Inteiro"
+    type: finale
+    deps: [atm_star:atm_star, atm_star:atm_star]
+    at: [0, 0]
+    icon: minecraft:nether_star
+    banner: "O Registro Está Inteiro"
+    desc: |
+      Herói... eu preciso respirar antes de dizer isto. A Estrela de Todas as Coisas brilha no seu inventário, e o Registro Akáshico está inteiro. Cada prateleira no lugar, cada página relida, cada Volume restaurado. Eu consigo ouvir a biblioteca respirar outra vez.
+
+      Pelos Selos, pelas Chaves, pelas dimensões e pela Estrela, você fez o que os Antigos nunca conseguiram. Eu tinha prometido ficar até o fim, e estou aqui, emocionada. Mas fica uma sensação estranha, como se uma estante ainda tivesse um espaço vazio. Marque a caixa e vamos olhar com calma.
+    tasks:
+      - check
+    rewards:
+      - kit: {name: "Kit do Registro", items: [minecraft:diamond_block x2, minecraft:emerald_block x2, minecraft:golden_apple x4]}
+      - loot: epico
+      - xp: 100
+
+  - link: atm_star:atm_star
+    at: [0, 1]
+
+  - id: pagina_em_branco
+    title: "Uma Página Ainda em Branco"
+    type: info
+    deps: [registro_inteiro, avaritia:epilogo_abertura]
+    at: [1, 0]
+    icon: minecraft:paper
+    desc: |
+      Ali, no fundo da última estante, uma página permanece em branco. Não está rasgada, não está corrompida: só vazia, como se esperasse uma frase. Reconheci a letra do papel antes mesmo de tocar nele. É a mesma que os Antigos tentaram ler, a página do §dInfinito§r.
+
+      Ela ainda tem fome. Não é maldade, é natureza: uma página em branco quer ser escrita. A pergunta é quem vai escrever, e com que cuidado. Marque a caixa se reconhece que a página existe e que ela exige respeito.
+    tasks:
+      - check
+    rewards:
+      - xp: 20
+
+  - link: avaritia:epilogo_abertura
+    at: [1, 1]
+
+  - id: erro_dos_antigos
+    title: "O Erro dos Antigos"
+    type: info
+    deps: [pagina_em_branco, avaritia:erro_dos_antigos]
+    at: [2, 0]
+    icon: minecraft:book
+    desc: |
+      Os Antigos queriam ler o Infinito, e leram. O Registro não aguentou, e a Fratura veio. O erro deles não foi a curiosidade, foi a pressa: quiseram o fim da história antes de escrever o meio. Cada atalho que tomaram virou uma rachadura.
+
+      Quero que você carregue essa lição pelo caminho que vem. O Epílogo é uma escalada longa, feita de paciência e de contas bem feitas. Cada passo é uma escolha, e cada escolha pode ser revista. Marque a caixa se entende que o caminho importa tanto quanto o destino.
+    tasks:
+      - check
+    rewards:
+      - xp: 20
+
+  - link: avaritia:erro_dos_antigos
+    at: [2, 1]
+
+  - id: mesa_extrema
+    title: "A Mesa Extrema"
+    type: milestone
+    deps: [erro_dos_antigos, avaritia:mesa_extrema]
+    at: [3, 0]
+    icon: minecraft:crafting_table
+    desc: |
+      Tudo começa numa bancada. A Mesa de Trabalho Extrema é a ferramenta que o Avaritia oferece para escrever receitas de uma escala nunca antes vista. É grande, é cara e exige um volume de materiais que vai pesar no seu inventário e na sua paciência.
+
+      Planeje as etapas, deixe a automação cuidar do trabalho repetitivo e não tenha pressa. A mesa é o primeiro altar do Epílogo. Reconheço que a mesa extrema é minha. Marque a caixa quando ela estiver pronta.
+    tasks:
+      - check
+    rewards:
+      - kit: {name: "Kit do Registro", items: [minecraft:diamond_block x2, minecraft:emerald_block x2, minecraft:golden_apple x4]}
+      - loot: raro
+      - xp: 60
+
+  - link: avaritia:mesa_extrema
+    at: [3, 1]
+
+  - id: coletor_neutrons
+    title: "O Coletor de Nêutrons"
+    type: milestone
+    deps: [mesa_extrema, avaritia:coletor_neutrons]
+    at: [4, 0]
+    icon: minecraft:redstone_block
+    desc: |
+      Um nêutron sozinho não é nada, mas um coletor trabalhando dia e noite junta pilhas inteiras deles. O Coletor de Nêutrons é a máquina que transforma tempo em matéria, e a matéria em poder. É lento por natureza, e é aí que mora a lição.
+
+      Monte vários, ligue-os a um baú, e deixe o mundo girar enquanto você faz outra coisa. Paciência é a ferramenta mais forte do Epílogo. Marque a caixa quando o primeiro coletor estiver funcionando.
+    tasks:
+      - check
+    rewards:
+      - loot: raro
+      - xp: 60
+
+  - link: avaritia:coletor_neutrons
+    at: [4, 1]
+
+  - id: compressor_neutronio
+    title: "O Compressor de Neutrônio"
+    type: milestone
+    deps: [coletor_neutrons, avaritia:compressor_neutronio]
+    at: [5, 0]
+    icon: minecraft:obsidian
+    desc: |
+      O Compressor de Neutrônio transforma o impossível em material. Ele pega uma quantidade absurda de itens e a comprime em uma Singularidade, um bloquinho que carrega o peso de um mundo. É a máquina mais curiosa do livro, e a mais honesta: quem pede muito, paga muito.
+
+      Alimente-o com calma e confira as receitas no NEI. Cada Singularidade é uma pequena vitória sobre a escala. Reconheço que o compressor trabalha por mim. Marque a caixa quando a primeira Singularidade sair.
+    tasks:
+      - check
+    rewards:
+      - kit: {name: "Kit do Registro", items: [minecraft:diamond_block x2, minecraft:emerald_block x2, minecraft:golden_apple x4]}
+      - loot: epico
+      - xp: 70
+
+  - link: avaritia:compressor_neutronio
+    at: [5, 1]
+
+  - id: doze_singularidades
+    title: "As Doze do Avaritia"
+    type: milestone
+    deps: [compressor_neutronio, singularidades:sing_avaritia_12]
+    at: [6, 0]
+    icon: minecraft:nether_star
+    desc: |
+      Doze Singularidades, doze compressões, doze histórias do mundo condensadas num ponto. Cada uma guarda um material comum levado ao extremo: ferro, ouro, diamante, redstone e assim por diante. Juntas, elas são uma enciclopédia em miniatura.
+
+      Faça uma por vez, guarde numa vitrine e sinta o peso do que construiu. §aDica:§r automatize a coleta dos materiais básicos. Marque a caixa quando a coleção estiver completa.
+    tasks:
+      - check
+    rewards:
+      - loot: epico
+      - xp: 65
+
+  - link: singularidades:sing_avaritia_12
+    at: [6, 1]
+
+  - id: eterna
+    title: "A Singularidade Eterna"
+    type: milestone
+    deps: [doze_singularidades, singularidades:eternal_singularity]
+    at: [7, 0]
+    icon: minecraft:ender_eye
+    desc: |
+      Existe uma Singularidade diferente das outras, uma que parece nunca terminar de se formar. A Eternal Singularity é o item mais denso deste livro, uma memória do tempo guardada num ponto. Fazê-la exige tudo o que você aprendeu sobre compressão, energia e persistência.
+
+      Eu a olho e vejo um pouco do que a página em branco poderia ser: fome sem fundo, mas também possibilidade. Reconheço que ela existe em minhas mãos. Marque a caixa quando a Eterna estiver pronta.
+    tasks:
+      - check
+    rewards:
+      - loot: epico
+      - xp: 70
+
+  - link: singularidades:eternal_singularity
+    at: [7, 1]
+
+  - id: iu_conjunto
+    title: "O Conjunto do IU"
+    type: milestone
+    deps: [eterna, singularidades:iu_conjunto]
+    at: [8, 0]
+    icon: minecraft:redstone_block
+    desc: |
+      O Industrial Upgrade também guarda suas Singularidades, ligadas a materiais e energias que só ele conhece. O conjunto reúne essas peças, e cada uma lembra um capítulo da sua jornada de engenharia.
+
+      É um tipo de reencontro: você revê os materiais do Ato II e os transforma em pontos de densidade absurda. Faça com cuidado e confira cada receita. Marque a caixa quando o conjunto do IU estiver completo.
+    tasks:
+      - check
+    rewards:
+      - loot: epico
+      - xp: 65
+
+  - link: singularidades:iu_conjunto
+    at: [8, 1]
+
+  - id: mestre_singularidades
+    title: "Mestre das Singularidades"
+    type: finale
+    deps: [iu_conjunto, singularidades:sing_mestre]
+    at: [9, 0]
+    icon: minecraft:nether_star
+    banner: "Mestre das Singularidades"
+    desc: |
+      Doze do Avaritia, a Eterna, o conjunto do IU: você aprendeu a comprimir o mundo sem destruí-lo. Isso é raro e valioso, e me faz acreditar que a página em branco pode estar em boas mãos.
+
+      Cada Singularidade é uma promessa de que o excesso pode virar ordem. Guarde-as com orgulho. Reconheço que sou mestre da compressão. Marque a caixa quando estiver pronto para o próximo passo.
+    tasks:
+      - check
+    rewards:
+      - kit: {name: "Kit do Registro", items: [minecraft:diamond_block x2, minecraft:emerald_block x2, minecraft:golden_apple x4]}
+      - loot: epico
+      - xp: 80
+
+  - link: singularidades:sing_mestre
+    at: [9, 1]
+
+  - id: catalisador
+    title: "O Catalisador do Infinito"
+    type: milestone
+    deps: [mestre_singularidades, avaritia:catalisador]
+    at: [10, 0]
+    icon: minecraft:ender_eye
+    desc: |
+      O Catalisador do Infinito é o ingrediente que falta para o grande ritual. Ele pede uma combinação de materiais inesperada: esmeralda, aço, manyullyn, pérola do Fim e um ensopado que dispensa apresentações. É um prato digno de um banquete cósmico.
+
+      Não se assuste com a lista: cada item está em algum Volume do livro, e agora você os conhece todos. Reconheço que o catalisador foi feito. Marque a caixa quando o primeiro estiver nas suas mãos.
+    tasks:
+      - check
+    rewards:
+      - kit: {name: "Kit do Registro", items: [minecraft:diamond_block x2, minecraft:emerald_block x2, minecraft:golden_apple x4]}
+      - loot: epico
+      - xp: 75
+
+  - link: avaritia:catalisador
+    at: [10, 1]
+
+  - id: ensopado_cosmico
+    title: "O Ensopado Cósmico"
+    type: normal
+    deps: [catalisador, avaritia:ensopado]
+    at: [11, 0]
+    icon: minecraft:mushroom_stew
+    desc: |
+      Sim, eu sei: um ensopado no meio do caminho do Infinito. Mas o Avaritia tem senso de humor, e a receita do ensopado cósmico mistura carnes, vegetais, ervas e exotismos de todo o livro. Se você começou lá atrás com a cozinha, é aqui que ela se paga.
+
+      Reúna os ingredientes, cozinhe com carinho e coma devagar. O Infinito também precisa de calor humano. Marque a caixa quando o ensopado estiver pronto.
+    tasks:
+      - check
+    rewards:
+      - kit: {name: "Kit do Sobrevivente", items: [minecraft:bread x16, minecraft:torch x32, minecraft:cooked_beef x8]}
+      - xp: 40
+
+  - link: avaritia:ensopado
+    at: [11, 1]
+
+  - id: lingote_infinito
+    title: "O Lingote do Infinito"
+    type: milestone
+    deps: [ensopado_cosmico, avaritia:lingote_infinito]
+    at: [0, 7]
+    icon: minecraft:gold_ingot
+    desc: |
+      O lingote do Infinito é uma das coisas mais bonitas e mais assustadoras que já vi. Ele reflete o que você mais quer, e não sei se é bom ou ruim. Fazê-lo exige catalisadores, neutrônio e uma quantidade de paciência que nem eu tenho.
+
+      Respire fundo antes de usar. Cada lingote é uma decisão. Reconheço que o Infinito tem forma em minhas mãos. Marque a caixa quando o primeiro lingote estiver pronto.
+    tasks:
+      - check
+    rewards:
+      - kit: {name: "Kit do Registro", items: [minecraft:diamond_block x2, minecraft:emerald_block x2, minecraft:golden_apple x4]}
+      - loot: lendario
+      - xp: 100
+
+  - link: avaritia:lingote_infinito
+    at: [0, 8]
+
+  - id: bloco_infinito
+    title: "O Bloco do Infinito"
+    type: normal
+    deps: [lingote_infinito, avaritia:bloco_infinito]
+    at: [1, 7]
+    icon: minecraft:diamond_block
+    desc: |
+      Nove lingotes do Infinito formam um bloco, e um bloco forma o início de qualquer coisa. Eu não consigo olhar para ele sem sentir que o mundo inteiro está dentro de uma pedra. Que coragem a sua, de chegar até aqui.
+
+      Guarde-o num lugar seguro e longe de curiosos. Se quiser decorar com ele, faça isso com humildade. Marque a caixa quando o primeiro bloco estiver pronto.
+    tasks:
+      - check
+    rewards:
+      - loot: lendario
+      - xp: 80
+
+  - link: avaritia:bloco_infinito
+    at: [1, 8]
+
+  - id: armadura_infinito
+    title: "A Armadura do Infinito"
+    type: milestone
+    deps: [bloco_infinito, avaritia:armadura_infinito]
+    at: [2, 7]
+    icon: minecraft:diamond_chestplate
+    desc: |
+      Capacete, peitoral, calças e botas. A armadura do Infinito brilha como um céu estrelado e protege como um segredo bem guardado. Voar, respirar em qualquer lugar, ser invulnerável a quase tudo: ela dá a sensação de que nada mais pode te ferir.
+
+      Mas eu pergunto: o que se faz com tanta proteção? A resposta, Herói, é cuidar de quem não tem. Reconheço que visto o Infinito. Marque a caixa quando as quatro peças estiverem em você.
+    tasks:
+      - check
+    rewards:
+      - kit: {name: "Kit do Registro", items: [minecraft:diamond_block x2, minecraft:emerald_block x2, minecraft:golden_apple x4]}
+      - loot: lendario
+      - xp: 110
+
+  - link: avaritia:armadura_infinito
+    at: [2, 8]
+
+  - id: espada_infinito
+    title: "A Espada do Infinito"
+    type: boss
+    deps: [armadura_infinito, avaritia:espada_infinito]
+    at: [3, 7]
+    icon: minecraft:diamond_sword
+    desc: |
+      Uma espada que atravessa qualquer coisa, inclusive as sombras mais densas. A Espada do Infinito é o símbolo mais direto do poder do Avaritia, e a que mais exige responsabilidade. Eu sempre digo que uma arma não é boa nem má: depende de quem a segura.
+
+      Guarde-a em uma vitrine quando não precisar, e use com sabedoria quando precisar. Reconheço que o poder de uma espada é o de quem a segura. Marque a caixa quando ela for sua.
+    tasks:
+      - check
+    rewards:
+      - loot: lendario
+      - xp: 100
+
+  - link: avaritia:espada_infinito
+    at: [3, 8]
+
+  - id: arsenal_infinito
+    title: "O Arsenal do Infinito"
+    type: milestone
+    deps: [espada_infinito, avaritia:arsenal_infinito]
+    at: [4, 7]
+    icon: minecraft:bow
+    desc: |
+      Espada, picareta, pá, machado e arco: o arsenal completo do Infinito cobre todas as tarefas do mundo, da mineração à batalha, da colheita à caça. Nenhum bloco resiste, nenhum monstro permanece. É uma sensação intensa e estranha.
+
+      Eu fico pensando em como seria bom que ninguém precisasse de tanta força. Guarde as ferramentas com carinho e use só o necessário. Marque a caixa quando todo o arsenal estiver completo.
+    tasks:
+      - check
+    rewards:
+      - kit: {name: "Kit do Registro", items: [minecraft:diamond_block x2, minecraft:emerald_block x2, minecraft:golden_apple x4]}
+      - loot: lendario
+      - xp: 110
+
+  - link: avaritia:arsenal_infinito
+    at: [4, 8]
+
+  - id: o_que_nao_escrever
+    title: "O Que Não Escrever"
+    type: info
+    deps: [arsenal_infinito]
+    at: [5, 7]
+    icon: minecraft:writable_book
+    desc: |
+      Tenho uma pergunta, Herói, e não precisa responder em voz alta: o que você escreveria na última página? Poder? Riqueza? Um mundo sem perigo? Os Antigos escreveram a ambição, e foi isso que quebrou o Registro.
+
+      Eu aprendi, ao longo desta crônica, que o mais difícil de escrever é o que a gente escolhe não escrever. Deixe de fora o que pode ferir. Guarde o que pode curar. Marque a caixa quando tiver pensado na sua resposta.
+    tasks:
+      - check
+    rewards:
+      - xp: 30
+
+  - id: a_pagina
+    title: "A Última Página"
+    type: finale
+    deps: [o_que_nao_escrever, avaritia:ultima_pagina]
+    at: [6, 7]
+    icon: minecraft:enchanted_book
+    banner: "A Última Página"
+    desc: |
+      Chegamos. A armadura e o arsenal do Infinito estão com você, e a página em branco finalmente pode ser escrita. Eu não vou te dizer o que colocar nela. Prefiro confiar em você, como confiei desde o primeiro dia, lá no Despertar, quando mal te conhecia.
+
+      A página precisava de alguém que soubesse §eo que não escrever§r. Alguém que, depois de tudo, ainda preferisse cuidar a dominar. Escreva o que fizer sentido, Herói. Marque a caixa quando estiver pronto para fechar o livro.
+    tasks:
+      - check
+    rewards:
+      - kit: {name: "Kit do Registro", items: [minecraft:diamond_block x2, minecraft:emerald_block x2, minecraft:golden_apple x4]}
+      - loot: lendario x3
+      - xp: 150
+
+  - link: avaritia:ultima_pagina
+    at: [6, 8]
+
+  - id: fim_cronica
+    title: "O Fim de uma Crônica"
+    type: finale
+    deps: [a_pagina]
+    at: [7, 7]
+    icon: minecraft:book
+    banner: "O Fim de uma Crônica"
+    desc: |
+      Fechei o livro com cuidado, como quem fecha uma porta que se quer reabrir um dia. O Registro está inteiro, a última página está escrita, e a biblioteca descansa. Eu não sei bem como me despedir, então vou dizer só o que mais importa: obrigada.
+
+      Obrigada por acordar, por seguir, por escrever e por escolher o que não escrever. Eu fui a guardiã de um lugar que quase se perdeu, e você foi quem o devolveu. §dO fim de uma crônica é só o começo de outra.§r Até a próxima página, Herói.
+    tasks:
+      - check
+    rewards:
+      - kit: {name: "Kit do Registro", items: [minecraft:diamond_block x2, minecraft:emerald_block x2, minecraft:golden_apple x4]}
+      - loot: lendario
+      - xp: 200

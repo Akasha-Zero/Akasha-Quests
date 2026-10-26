@@ -1,0 +1,125 @@
+{
+  "preRequisites:9": {
+    "0:10": {
+      "questIDHigh:4": 8025796196373975634,
+      "questIDLow:4": -9011945411388939797
+    },
+    "1:10": {
+      "questIDHigh:4": -7064985152941633033,
+      "questIDLow:4": -8747295476689095081
+    }
+  },
+  "properties:10": {
+    "betterquesting:10": {
+      "autoClaim:1": 0,
+      "completion_animation:8": "default",
+      "completion_particle:8": "default",
+      "confetti_icon:10": {
+        "Count:3": 0,
+        "Damage:2": 0,
+        "OreDict:8": "",
+        "id:8": "minecraft:stick"
+      },
+      "countAsQuest:1": 1,
+      "desc:8": "Algumas máquinas do IU não ligam só com energia: elas precisam de §etemperatura§r. O\nFabricante de Circuitos pede §e4500 graus§r, e o Separador de Minerais de 1500 a 5000,\nconforme o minério.\n\nQuem esquenta é um §eAquecedor§r encostado na máquina — ele passa o calor dele para os\nvizinhos (máximo 5000):\n§e•§r §eAquecedor Elétrico§r (Electric Heater): 4 Placas de Titânio, 2 Placas Densas de\nTungstênio, 2 Circuitos Avançados e um Gerador; gasta 50 EU a cada +5 graus.\n§e•§r §eAquecedor de Líquido§r (Liquid Heater): queima §clava§r em vez de EU.\n\nFaça qualquer um dos dois.",
+      "globalShare:1": 1,
+      "icon:10": {
+        "Count:3": 1,
+        "Damage:2": 5,
+        "OreDict:8": "",
+        "id:8": "industrialupgrade:BlockBaseMachine4"
+      },
+      "isGlobal:1": 0,
+      "isMain:1": 1,
+      "isSilent:1": 0,
+      "lockedProgress:1": 1,
+      "name:8": "§eAquecedor",
+      "notification_duration:5": -1.0,
+      "notification_effect:3": -1,
+      "notification_fade_in:5": -1.0,
+      "notification_fade_out:5": -1.0,
+      "notification_icon_offset_y:3": -2147483648,
+      "notification_icon_scale:5": -1.0,
+      "notification_pos_x:3": -2147483648,
+      "notification_pos_y:3": -2147483648,
+      "notification_show_icon:8": "default",
+      "notification_style:8": "default",
+      "notification_subtitle:8": "",
+      "notification_subtitle_scale:5": -1.0,
+      "notification_title:8": "",
+      "notification_title_scale:5": -1.0,
+      "particle_count:3": -1,
+      "partySingleReward:1": 0,
+      "questLogic:8": "AND",
+      "repeatTime:3": -1,
+      "repeat_relative:1": 1,
+      "simultaneous:1": 0,
+      "snd_complete:8": "random.levelup",
+      "snd_update:8": "random.levelup",
+      "taskLogic:8": "AND",
+      "visibility:8": "NORMAL"
+    }
+  },
+  "questIDHigh:4": -7098802131263072458,
+  "questIDLow:4": -7134421601597956814,
+  "rewards:9": {
+    "0:10": {
+      "amount:3": 4,
+      "ignoreDisabled:1": 0,
+      "index:3": 0,
+      "isLevels:1": 1,
+      "rewardID:8": "bq_standard:xp"
+    },
+    "1:10": {
+      "choices:9": {
+        "0:10": {
+          "Count:3": 2,
+          "Damage:2": 0,
+          "OreDict:8": "",
+          "id:8": "minecraft:lava_bucket"
+        },
+        "1:10": {
+          "Count:3": 2,
+          "Damage:2": 0,
+          "OreDict:8": "",
+          "id:8": "IC2:itemPartCircuitAdv"
+        },
+        "2:10": {
+          "Count:3": 4,
+          "Damage:2": 0,
+          "OreDict:8": "",
+          "id:8": "minecraft:redstone_block"
+        }
+      },
+      "ignoreDisabled:1": 0,
+      "index:3": 1,
+      "rewardID:8": "bq_standard:choice"
+    }
+  },
+  "tasks:9": {
+    "0:10": {
+      "autoConsume:1": 0,
+      "consume:1": 0,
+      "groupDetect:1": 0,
+      "ignoreNBT:1": 1,
+      "index:3": 0,
+      "partialMatch:1": 1,
+      "requireOnlyOneItem:1": 1,
+      "requiredItems:9": {
+        "0:10": {
+          "Count:3": 1,
+          "Damage:2": 5,
+          "OreDict:8": "",
+          "id:8": "industrialupgrade:BlockBaseMachine4"
+        },
+        "1:10": {
+          "Count:3": 1,
+          "Damage:2": 6,
+          "OreDict:8": "",
+          "id:8": "industrialupgrade:BlockBaseMachine4"
+        }
+      },
+      "taskID:8": "bq_standard:retrieval"
+    }
+  }
+}
