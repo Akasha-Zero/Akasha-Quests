@@ -33,7 +33,7 @@ def export(out, files, minw):
     print('%d quests exported' % len(rows))
 
 
-ID_RE = re.compile(r'^(\s*)-\s+id:\s*["\']?([^\s"']+)["\']?\s*$')
+ID_RE = re.compile(r'''^(\s*)-\s+id:\s*["']?([^\s"']+)["']?\s*$''')
 
 
 def replace_desc(lines, qid, text):
