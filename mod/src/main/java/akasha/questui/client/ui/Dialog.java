@@ -69,8 +69,10 @@ public abstract class Dialog extends Widget {
         int by = y + h - PAD - BTN_H;
         for (int i = buttons.size() - 1; i >= 0; i--) {
             Btn b = buttons.get(i);
-            int bw = Math.max(50, Draw.font()
-                .getStringWidth(b.label) + 12);
+            int bw = Math.max(
+                50,
+                Draw.font()
+                    .getStringWidth(b.label) + 12);
             b.x1 = bx;
             b.x0 = bx - bw;
             b.y0 = by;
@@ -92,7 +94,12 @@ public abstract class Dialog extends Widget {
         for (IGuiPanel f : fields) if (f.isEnabled()) f.drawPanel(mx, my, pt);
         for (Btn b : buttons) {
             boolean hot = mx >= b.x0 && mx < b.x1 && my >= b.y0 && my < b.y1;
-            Draw.panel(b.x0, b.y0, b.x1, b.y1, hot ? Palette.BTN_HOVER : Palette.BTN,
+            Draw.panel(
+                b.x0,
+                b.y0,
+                b.x1,
+                b.y1,
+                hot ? Palette.BTN_HOVER : Palette.BTN,
                 hot ? Palette.BTN_EDGE_HOVER : Palette.BTN_EDGE);
             Draw.textCentered(b.label, (b.x0 + b.x1) / 2.0, b.y0 + 3, Palette.TEXT, false);
         }

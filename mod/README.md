@@ -11,6 +11,17 @@ de tarefa e recompensa. O mod troca só a apresentação.
 
 Especificação completa (geometria, layout, cores, dados): [docs/DESIGN.md](docs/DESIGN.md).
 
+| Mapa e capítulos | Janela da quest |
+| --- | --- |
+| ![mapa](docs/img/mapa.png) | ![janela](docs/img/janela_quest.png) |
+| **Zoom (formas com anti-aliasing)** | **Menu de contexto** |
+| ![zoom](docs/img/zoom.png) | ![menu](docs/img/menu.png) |
+| **Modo de edição: imagem selecionada** | **Propriedades da imagem** |
+| ![edição](docs/img/edicao_imagem.png) | ![diálogo](docs/img/dialogo_imagem.png) |
+
+Capturas do cliente real (Minecraft 1.7.10 + BetterQuesting 3.8.79-GTNH) com o livro de teste em
+`devtest/quests`, tiradas pelo teste automatizado descrito abaixo.
+
 ## O que muda
 
 | FTB Quests | Aqui |
@@ -69,5 +80,12 @@ executa um roteiro e salva capturas de tela em `run/client/screenshots/`:
 
 ```bash
 python3 ../tools/bqgen/bqgen.py build --chapters devtest/quests --out run/client/config/betterquesting
-xvfb-run -a -s "-screen 0 1280x720x24" ./gradlew runClient -Pselftest=devtest/smoke.txt
+xvfb-run -a -s "-screen 0 1280x720x24" ./gradlew runClient -Pselftest=devtest/tour.txt
 ```
+
+Roteiros em `devtest/`: `smoke` (primeira olhada), `tour` (estados, hover, menus, janela, edição,
+imagens, zoom, painel recolhido), `edit` (mover, redimensionar e girar imagens, mover quests),
+`small` (1920×1080 com escala automática, GUI 480×270; use `-PselftestWidth=1920 -PselftestHeight=1080`),
+`bqscreens` (telas do próprio BQ com o tema) e `real` (o livro completo de `dist/`). O LWJGL 2
+precisa do comando `xrandr` no PATH. Os testes unitários (câmera, geometria de edição e polígonos
+das formas) rodam com `./gradlew test`.

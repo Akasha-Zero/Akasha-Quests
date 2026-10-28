@@ -1,3 +1,20 @@
+# Changelog — Akasha Quests UI 1.0.0
+
+Novo mod opcional, só cliente, em `mod/` (jar em `dist/mods/`): interface no estilo FTB Quests
+para o BetterQuesting 3.8.79-GTNH.
+
+- Barra de capítulos com grupos (pela pasta do capítulo), nomes curtos, selos de concluído,
+  recompensa esperando e bloqueado; fixável ou recolhida.
+- Mapa com câmera (zoom no cursor, arrastar, enquadrar), 11 formas de quest com anti-aliasing e
+  mipmaps, estados por cor, selos, linhas com chevrons animados e destaque de requisitos/dependentes.
+- Janela da quest sobre o mapa com os painéis de tarefa e recompensa do próprio BQ, descrição com
+  links e imagens, Detectar/Entregar, Resgatar, navegação por pré-requisitos e dependentes.
+- Imagens nos capítulos (resource pack, arquivo ou item) com tamanho, rotação, opacidade, cor,
+  camada, dica, clique e quest requerida.
+- Modo de edição: mover quests e imagens, redimensionar e girar imagens, forma e tamanho das
+  quests, requisitos, grupos e ordem dos capítulos, desfazer.
+- `bqgen`: campos `shape`, `group`, `short` e `images`; formas padrão por tipo de quest.
+
 # Changelog — Akasha Quests 1.0.0
 
 Primeira versão do livro de quests *Crônicas Akáshicas* (BetterQuesting 3.8.79-GTNH) do modpack Technic Forbidden (TEOF 4.0).

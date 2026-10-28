@@ -61,11 +61,17 @@ import cpw.mods.fml.common.gameevent.TickEvent;
  * pin on|off                 pin or collapse the chapter panel
  * menu label                 activate the item of the open context menu containing `label`
  * fps                        log the current frame rate
+ * drag X0 Y0 X1 Y1 [steps] [shift]  left-drag over several frames (shift: hold Shift semantics off/on)
+ * dragimage I DX DY / dragquest title DX DY   drag an image or quest by a screen offset
+ * handle I SX SY DX DY       drag resize handle (SX, SY in -1..1, 2 2 = rotation) of image I by a screen offset
  * shot NAME                  save run/screenshots/NAME.png after the next frame
  * exit                       quit the game
  * </pre>
  */
-@Mod(modid = "akashaquestui_selftest", name = "Akasha Quests UI self test", version = "dev",
+@Mod(
+    modid = "akashaquestui_selftest",
+    name = "Akasha Quests UI self test",
+    version = "dev",
     dependencies = "required-after:akashaquestui")
 public class SelfTest {
 
@@ -76,6 +82,8 @@ public class SelfTest {
     private int waitTicks;
     private String pendingShot;
     private boolean waitingQuests;
+    private final java.util.ArrayDeque<int[]> dragPath = new java.util.ArrayDeque<>();
+    private int[] dragEnd;
 
     @Mod.EventHandler
     public void init(FMLInitializationEvent e) throws Exception {
@@ -95,8 +103,8 @@ public class SelfTest {
     public void onRender(TickEvent.RenderTickEvent e) {
         if (e.phase != TickEvent.Phase.END || pendingShot == null) return;
         Minecraft mc = Minecraft.getMinecraft();
-        ScreenShotHelper.saveScreenshot(mc.mcDataDir, pendingShot + ".png", mc.displayWidth, mc.displayHeight,
-            mc.getFramebuffer());
+        ScreenShotHelper
+            .saveScreenshot(mc.mcDataDir, pendingShot + ".png", mc.displayWidth, mc.displayHeight, mc.getFramebuffer());
         LOG.info("screenshot {}", pendingShot);
         pendingShot = null;
     }
@@ -110,14 +118,19 @@ public class SelfTest {
             waitTicks--;
             return;
         }
+        if (dragEnd != null) {
+            stepDrag(mc);
+            return;
+        }
         if (waitingQuests) {
-            if (mc.thePlayer == null || QuestDatabase.INSTANCE.isEmpty() || QuestLineDatabase.INSTANCE.isEmpty()) return;
+            if (mc.thePlayer == null || QuestDatabase.INSTANCE.isEmpty() || QuestLineDatabase.INSTANCE.isEmpty())
+                return;
             waitingQuests = false;
             waitTicks = 20;
             return;
         }
         if (pc == 0 && !(mc.currentScreen instanceof GuiMainMenu) && mc.theWorld == null) return; // still loading
-        while (pc < lines.size() && waitTicks == 0 && !waitingQuests && pendingShot == null) {
+        while (pc < lines.size() && waitTicks == 0 && !waitingQuests && pendingShot == null && dragEnd == null) {
             String line = lines.get(pc++);
             try {
                 run(mc, line);
@@ -125,6 +138,50 @@ public class SelfTest {
                 LOG.error("step '{}' failed", line, ex);
             }
         }
+    }
+
+    private void startDrag(Minecraft mc, int x0, int y0, int x1, int y1, int steps) {
+        GuiScreen s = mc.currentScreen;
+        if (!(s instanceof GuiScreenCanvas)) return;
+        int[] d = toDevice(mc, x0, y0);
+        Mouse.setCursorPosition(d[0], d[1]);
+        akasha.questui.client.map.QuestMap.buttonDown = b -> b == 0;
+        ((GuiScreenCanvas) s).onMouseClick(x0, y0, 0);
+        for (int i = 1; i <= steps; i++) {
+            dragPath.add(new int[] { x0 + (x1 - x0) * i / steps, y0 + (y1 - y0) * i / steps });
+        }
+        dragEnd = new int[] { x1, y1 };
+    }
+
+    private void stepDrag(Minecraft mc) {
+        int[] p = dragPath.poll();
+        if (p != null) {
+            int[] d = toDevice(mc, p[0], p[1]);
+            Mouse.setCursorPosition(d[0], d[1]);
+            return; // the next frame's drawScreen sees the new cursor and applies the drag
+        }
+        akasha.questui.client.map.QuestMap.buttonDown = Mouse::isButtonDown;
+        if (mc.currentScreen instanceof GuiScreenCanvas)
+            ((GuiScreenCanvas) mc.currentScreen).onMouseRelease(dragEnd[0], dragEnd[1], 0);
+        dragEnd = null;
+        waitTicks = 5;
+    }
+
+    /** Screen position of image I's handle (sx, sy), or its centre for (0, 0), using the image's current geometry. */
+    private static int[] handlePos(QuestScreen qs, int index, int sx, int sy) {
+        int[] c = qs.imageScreenPos(index);
+        double[] g = qs.imageScreenGeometry(index);
+        if (c == null || g == null) return null;
+        double t = Math.toRadians(g[2]), co = Math.cos(t), si = Math.sin(t);
+        double lx, ly;
+        if (sx == 2) {
+            lx = 0;
+            ly = -g[1] - 14;
+        } else {
+            lx = sx * g[0];
+            ly = sy * g[1];
+        }
+        return new int[] { (int) Math.round(c[0] + lx * co - ly * si), (int) Math.round(c[1] + lx * si + ly * co) };
     }
 
     private static int[] toDevice(Minecraft mc, int gx, int gy) {
@@ -141,7 +198,12 @@ public class SelfTest {
         GuiScreen s = mc.currentScreen;
         switch (a[0]) {
             case "world":
-                WorldSettings ws = new WorldSettings(4242L, WorldSettings.GameType.CREATIVE, false, false, WorldType.FLAT);
+                WorldSettings ws = new WorldSettings(
+                    4242L,
+                    WorldSettings.GameType.CREATIVE,
+                    false,
+                    false,
+                    WorldType.FLAT);
                 ws.enableCommands();
                 mc.launchIntegratedServer("selftest", "selftest", ws);
                 break;
@@ -205,7 +267,8 @@ public class SelfTest {
                 if (s instanceof GuiScreenCanvas) {
                     int sc = Integer.parseInt(n[2]);
                     for (int i = 0; i < Math.abs(sc); i++) {
-                        ((GuiScreenCanvas) s).onMouseScroll(Integer.parseInt(n[0]), Integer.parseInt(n[1]), Integer.signum(sc));
+                        ((GuiScreenCanvas) s)
+                            .onMouseScroll(Integer.parseInt(n[0]), Integer.parseInt(n[1]), Integer.signum(sc));
                     }
                 }
                 break;
@@ -244,8 +307,10 @@ public class SelfTest {
                 break;
             }
             case "menu":
-                if (s instanceof QuestScreen && ((QuestScreen) s).currentPopup() instanceof akasha.questui.client.ui.ContextMenu) {
-                    if (!((akasha.questui.client.ui.ContextMenu) ((QuestScreen) s).currentPopup()).activate(arg)) LOG.warn("no menu item {}", arg);
+                if (s instanceof QuestScreen
+                    && ((QuestScreen) s).currentPopup() instanceof akasha.questui.client.ui.ContextMenu) {
+                    if (!((akasha.questui.client.ui.ContextMenu) ((QuestScreen) s).currentPopup()).activate(arg))
+                        LOG.warn("no menu item {}", arg);
                 } else LOG.warn("no menu open");
                 break;
             case "pin":
@@ -255,6 +320,41 @@ public class SelfTest {
             case "fps":
                 LOG.info("fps: {}", mc.debug);
                 break;
+            case "drag":
+                startDrag(
+                    mc,
+                    Integer.parseInt(n[0]),
+                    Integer.parseInt(n[1]),
+                    Integer.parseInt(n[2]),
+                    Integer.parseInt(n[3]),
+                    n.length > 4 ? Integer.parseInt(n[4]) : 8);
+                break;
+            case "dragimage": {
+                int[] c = ((QuestScreen) s).imageScreenPos(Integer.parseInt(n[0]));
+                if (c != null)
+                    startDrag(mc, c[0], c[1], c[0] + Integer.parseInt(n[1]), c[1] + Integer.parseInt(n[2]), 8);
+                break;
+            }
+            case "dragquest": {
+                String[] parts = arg.split("\\s+(?=-?\\d+\\s+-?\\d+$)");
+                String[] off = parts[1].split("\\s+");
+                UUID id = questByName(parts[0]);
+                int[] c = id == null ? null : ((QuestScreen) s).questScreenPos(id);
+                if (c != null)
+                    startDrag(mc, c[0], c[1], c[0] + Integer.parseInt(off[0]), c[1] + Integer.parseInt(off[1]), 8);
+                else LOG.warn("quest {} not on screen", parts[0]);
+                break;
+            }
+            case "handle": {
+                int[] h = handlePos(
+                    (QuestScreen) s,
+                    Integer.parseInt(n[0]),
+                    Integer.parseInt(n[1]),
+                    Integer.parseInt(n[2]));
+                if (h != null)
+                    startDrag(mc, h[0], h[1], h[0] + Integer.parseInt(n[3]), h[1] + Integer.parseInt(n[4]), 8);
+                break;
+            }
             case "shot":
                 pendingShot = arg;
                 break;

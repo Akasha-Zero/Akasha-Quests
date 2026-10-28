@@ -15,9 +15,11 @@ import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.gui.GuiYesNoCallback;
 import net.minecraft.util.ChatComponentText;
 import net.minecraft.util.EnumChatFormatting;
+import net.minecraftforge.common.config.Configuration;
 
 import org.lwjgl.input.Keyboard;
 
+import akasha.questui.Config;
 import akasha.questui.client.data.ChapterImage;
 import akasha.questui.client.data.ImageSources;
 import akasha.questui.client.data.UiProps;
@@ -31,23 +33,23 @@ import akasha.questui.client.map.MapHost;
 import akasha.questui.client.map.QuestMap;
 import akasha.questui.client.map.QuestNode;
 import akasha.questui.client.ui.ContextMenu;
+import akasha.questui.client.ui.Dialog;
 import akasha.questui.client.ui.Lang;
 import akasha.questui.client.ui.TextPrompt;
 import akasha.questui.client.ui.Widget;
-import betterquesting.api.api.ApiReference;
 import betterquesting.api.api.QuestingAPI;
+import betterquesting.api.client.gui.misc.INeedsRefresh;
 import betterquesting.api.properties.NativeProps;
 import betterquesting.api.questing.IQuest;
 import betterquesting.api.questing.IQuestLine;
 import betterquesting.api.questing.IQuestLineEntry;
 import betterquesting.api.storage.BQ_Settings;
+import betterquesting.api.utils.UuidConverter;
 import betterquesting.api2.cache.QuestCache;
-import betterquesting.api.client.gui.misc.INeedsRefresh;
 import betterquesting.api2.client.gui.GuiScreenCanvas;
-import betterquesting.api2.client.gui.panels.IGuiPanel;
-import akasha.questui.client.ui.Dialog;
 import betterquesting.api2.client.gui.context.IQuestContextMenuEntry;
 import betterquesting.api2.client.gui.context.QuestContextMenuRegistry;
+import betterquesting.api2.client.gui.panels.IGuiPanel;
 import betterquesting.api2.client.gui.popups.PopChoice;
 import betterquesting.api2.client.gui.themes.presets.PresetIcon;
 import betterquesting.api2.utils.QuestTranslation;
@@ -69,9 +71,6 @@ import betterquesting.questing.QuestDatabase;
 import betterquesting.questing.QuestLineDatabase;
 import betterquesting.questing.QuestLineEntry;
 import betterquesting.storage.QuestSettings;
-import betterquesting.api.utils.UuidConverter;
-import net.minecraftforge.common.config.Configuration;
-import akasha.questui.Config;
 
 /**
  * The FTB Quests style quest book: chapter panel | map | toolbar, with the quest view on top (DESIGN §6).
@@ -155,14 +154,23 @@ public class QuestScreen extends GuiScreenCanvas implements INeedsRefresh, MapHo
     public int[] questScreenPos(UUID questId) {
         QuestNode n = model == null ? null : model.nodes.get(questId);
         if (n == null) return null;
-        return new int[] { (int) Math.round(map.camera.toScreenX(n.cx())), (int) Math.round(map.camera.toScreenY(n.cy())) };
+        return new int[] { (int) Math.round(map.camera.toScreenX(n.cx())),
+            (int) Math.round(map.camera.toScreenY(n.cy())) };
     }
 
     /** Screen centre of the i-th image of the current chapter. */
     public int[] imageScreenPos(int index) {
         if (model == null || index < 0 || index >= model.images.size()) return null;
         ChapterImage img = model.images.get(index);
-        return new int[] { (int) Math.round(map.camera.toScreenX(img.x)), (int) Math.round(map.camera.toScreenY(img.y)) };
+        return new int[] { (int) Math.round(map.camera.toScreenX(img.x)),
+            (int) Math.round(map.camera.toScreenY(img.y)) };
+    }
+
+    /** Half width, half height (screen px) and rotation (degrees) of the i-th image. */
+    public double[] imageScreenGeometry(int index) {
+        if (model == null || index < 0 || index >= model.images.size()) return null;
+        ChapterImage img = model.images.get(index);
+        return new double[] { img.w / 2 * map.camera.zoom, img.h / 2 * map.camera.zoom, img.rot };
     }
 
     public void deleteImage(ChapterImage image) {
@@ -334,8 +342,7 @@ public class QuestScreen extends GuiScreenCanvas implements INeedsRefresh, MapHo
         for (Map.Entry<UUID, IQuest> e : QuestDatabase.INSTANCE.entrySet()) {
             IQuest q = e.getValue();
             if (q != null && q.getRequirements()
-                .contains(questId) && chapterOf(e.getKey()) != null
-                && QuestCache.isQuestShown(q, pid, mc.thePlayer)) {
+                .contains(questId) && chapterOf(e.getKey()) != null && QuestCache.isQuestShown(q, pid, mc.thePlayer)) {
                 out.add(e);
             }
         }
@@ -363,7 +370,9 @@ public class QuestScreen extends GuiScreenCanvas implements INeedsRefresh, MapHo
         m.separator();
         for (Map.Entry<UUID, IQuest> e : quests) {
             UUID id = e.getKey();
-            m.add(QuestTranslation.translateQuestName(e), (betterquesting.api2.client.gui.resources.textures.IGuiTexture) null,
+            m.add(
+                QuestTranslation.translateQuestName(e),
+                (betterquesting.api2.client.gui.resources.textures.IGuiTexture) null,
                 () -> focusQuest(id, true));
         }
         show(m, mx, my);
@@ -375,25 +384,37 @@ public class QuestScreen extends GuiScreenCanvas implements INeedsRefresh, MapHo
         IQuest quest = node.quest;
         ContextMenu m = menu();
         boolean marked = BookmarkHandler.isBookmarked(qid);
-        m.add(QuestTranslation.translate(marked ? "betterquesting.btn.unbookmark_quest" : "betterquesting.btn.bookmark_quest"),
-            PresetIcon.ICON_BOOKMARK, () -> {
+        m.add(
+            QuestTranslation
+                .translate(marked ? "betterquesting.btn.unbookmark_quest" : "betterquesting.btn.bookmark_quest"),
+            PresetIcon.ICON_BOOKMARK,
+            () -> {
                 BookmarkHandler.bookmarkQuest(qid);
                 map.refresh();
             });
-        m.add(QuestTranslation.translate("betterquesting.btn.share_quest"), PresetIcon.ICON_PARTY,
+        m.add(
+            QuestTranslation.translate("betterquesting.btn.share_quest"),
+            PresetIcon.ICON_PARTY,
             () -> mc.thePlayer.sendChatMessage("betterquesting.msg.sharequest:" + UuidConverter.encodeUuid(qid)));
         m.add(QuestTranslation.translate("betterquesting.btn.copy_quest"), PresetIcon.ICON_COPY, () -> {
             String s = UuidConverter.encodeUuid(qid);
             setClipboardString(s);
-            mc.thePlayer.addChatMessage(new ChatComponentText(QuestTranslation.translate("betterquesting.msg.copy_quest_copied")));
+            mc.thePlayer.addChatMessage(
+                new ChatComponentText(QuestTranslation.translate("betterquesting.msg.copy_quest_copied")));
             mc.thePlayer.addChatMessage(new ChatComponentText("  " + EnumChatFormatting.AQUA + s));
         });
-        m.submenu(QuestTranslation.translate("betterquesting.btn.view_dependencies"), PresetIcon.ICON_LEFT,
+        m.submenu(
+            QuestTranslation.translate("betterquesting.btn.view_dependencies"),
+            PresetIcon.ICON_LEFT,
             navItems(visibleDependencies(quest)));
-        m.submenu(QuestTranslation.translate("betterquesting.btn.view_dependants"), PresetIcon.ICON_RIGHT,
+        m.submenu(
+            QuestTranslation.translate("betterquesting.btn.view_dependants"),
+            PresetIcon.ICON_RIGHT,
             navItems(visibleDependants(qid)));
         for (IQuestContextMenuEntry ext : QuestContextMenuRegistry.getEntries()) {
-            m.add(ext.getLabel(qid, quest), (betterquesting.api2.client.gui.resources.textures.IGuiTexture) null,
+            m.add(
+                ext.getLabel(qid, quest),
+                (betterquesting.api2.client.gui.resources.textures.IGuiTexture) null,
                 ext.getAction(qid, quest));
         }
 
@@ -411,14 +432,19 @@ public class QuestScreen extends GuiScreenCanvas implements INeedsRefresh, MapHo
                 boolean linked = quest.getRequirements()
                     .contains(from);
                 String otherName = QuestTranslation.translateQuestName(from, QuestDatabase.INSTANCE.get(from));
-                m.add(Lang.get(linked ? "remove_dep" : "add_dep", otherName), PresetIcon.ICON_LINK,
+                m.add(
+                    Lang.get(linked ? "remove_dep" : "add_dep", otherName),
+                    PresetIcon.ICON_LINK,
                     () -> toggleDependency(qid, from));
             }
             m.add(Lang.get("complete"), PresetIcon.ICON_TICK, () -> NetQuestEdit.requestComplete(sel, true));
             m.add(Lang.get("reset"), PresetIcon.ICON_REFRESH, () -> NetQuestEdit.requestComplete(sel, false));
             m.add(Lang.get("remove_from_chapter"), PresetIcon.ICON_NEGATIVE, () -> removeFromChapter(sel));
-            m.add(Lang.get("delete_quest"), PresetIcon.ICON_TRASH, () -> confirm(Lang.get("confirm_delete", sel.size()),
-                () -> NetQuestEdit.requestDelete(sel))).color(0xFFFF7070);
+            m.add(
+                Lang.get("delete_quest"),
+                PresetIcon.ICON_TRASH,
+                () -> confirm(Lang.get("confirm_delete", sel.size()), () -> NetQuestEdit.requestDelete(sel)))
+                .color(0xFFFF7070);
         }
         show(m, mx, my);
     }
@@ -434,13 +460,18 @@ public class QuestScreen extends GuiScreenCanvas implements INeedsRefresh, MapHo
 
     private List<ContextMenu.Item> shapeItems(Set<UUID> quests) {
         List<ContextMenu.Item> items = new ArrayList<>();
-        String current = quests.size() == 1 ? QuestDatabase.INSTANCE.get(quests.iterator()
-            .next())
+        String current = quests.size() == 1 ? QuestDatabase.INSTANCE.get(
+            quests.iterator()
+                .next())
             .getProperty(UiProps.SHAPE) : null;
-        items.add(ContextMenu.check(Lang.get("shape.default"), () -> current != null && current.isEmpty(),
-            () -> setQuestShape(quests, "")));
+        items.add(
+            ContextMenu.check(
+                Lang.get("shape.default"),
+                () -> current != null && current.isEmpty(),
+                () -> setQuestShape(quests, "")));
         for (String s : Shapes.ORDER) {
-            items.add(ContextMenu.check(Lang.get("shape." + s), () -> s.equals(current), () -> setQuestShape(quests, s)));
+            items.add(
+                ContextMenu.check(Lang.get("shape." + s), () -> s.equals(current), () -> setQuestShape(quests, s)));
         }
         return items;
     }
@@ -449,8 +480,9 @@ public class QuestScreen extends GuiScreenCanvas implements INeedsRefresh, MapHo
         List<ContextMenu.Item> items = new ArrayList<>();
         int current = -1;
         if (quests.size() == 1 && model != null) {
-            IQuestLineEntry e = model.line.get(quests.iterator()
-                .next());
+            IQuestLineEntry e = model.line.get(
+                quests.iterator()
+                    .next());
             if (e != null) current = e.getSizeX();
         }
         final int cur = current;
@@ -512,9 +544,13 @@ public class QuestScreen extends GuiScreenCanvas implements INeedsRefresh, MapHo
     }
 
     private void confirm(String message, Runnable yes) {
-        openPopup(new PopChoice(message, PresetIcon.ICON_NOTICE.getTexture(), choice -> {
-            if (choice == 0) yes.run();
-        }, QuestTranslation.translate("gui.yes"), QuestTranslation.translate("gui.no")));
+        openPopup(
+            new PopChoice(
+                message,
+                PresetIcon.ICON_NOTICE.getTexture(),
+                choice -> { if (choice == 0) yes.run(); },
+                QuestTranslation.translate("gui.yes"),
+                QuestTranslation.translate("gui.no")));
     }
 
     @Override
@@ -529,7 +565,9 @@ public class QuestScreen extends GuiScreenCanvas implements INeedsRefresh, MapHo
         m.submenu(Lang.get("chapter_shape"), PresetIcon.ICON_PAINT, chapterShapeItems(model.lineId, model.line));
         m.separator();
         m.add(Lang.get("fit"), PresetIcon.ICON_BOX_FIT, map::fit);
-        m.add(QuestTranslation.translate("betterquesting.btn.designer"), PresetIcon.ICON_SORT,
+        m.add(
+            QuestTranslation.translate("betterquesting.btn.designer"),
+            PresetIcon.ICON_SORT,
             () -> mc.displayGuiScreen(new GuiDesigner(this, model.line)));
         m.add(Lang.get("reload_images"), PresetIcon.ICON_REFRESH, ImageSources::clear);
         show(m, mx, my);
@@ -551,7 +589,8 @@ public class QuestScreen extends GuiScreenCanvas implements INeedsRefresh, MapHo
         String cur = line.getProperty(UiProps.SHAPE);
         items.add(ContextMenu.check(Lang.get("shape.default"), cur::isEmpty, () -> setChapterShape(lineId, line, "")));
         for (String s : Shapes.ORDER) {
-            items.add(ContextMenu.check(Lang.get("shape." + s), () -> s.equals(cur), () -> setChapterShape(lineId, line, s)));
+            items.add(
+                ContextMenu.check(Lang.get("shape." + s), () -> s.equals(cur), () -> setChapterShape(lineId, line, s)));
         }
         return items;
     }
@@ -584,7 +623,8 @@ public class QuestScreen extends GuiScreenCanvas implements INeedsRefresh, MapHo
         }
         m.submenu(Lang.get("layer"), PresetIcon.ICON_SORT, layers);
         m.separator();
-        m.add(Lang.get("delete"), PresetIcon.ICON_TRASH, () -> map.editor.deleteImage(image)).color(0xFFFF7070);
+        m.add(Lang.get("delete"), PresetIcon.ICON_TRASH, () -> map.editor.deleteImage(image))
+            .color(0xFFFF7070);
         show(m, mx, my);
     }
 
@@ -605,8 +645,9 @@ public class QuestScreen extends GuiScreenCanvas implements INeedsRefresh, MapHo
             UUID id = Ids.parse(c.substring(8));
             if (id != null) selectChapter(id);
         } else if (lower.startsWith("url:")) {
-            openLink(c.substring(4)
-                .trim());
+            openLink(
+                c.substring(4)
+                    .trim());
         }
     }
 
@@ -633,19 +674,34 @@ public class QuestScreen extends GuiScreenCanvas implements INeedsRefresh, MapHo
     @Override
     public void chapterContextMenu(ChapterInfo info, int mx, int my) {
         ContextMenu m = menu();
-        m.add(QuestTranslation.translate("betterquesting.btn.designer"), PresetIcon.ICON_SORT,
+        m.add(
+            QuestTranslation.translate("betterquesting.btn.designer"),
+            PresetIcon.ICON_SORT,
             () -> mc.displayGuiScreen(new GuiDesigner(this, info.line)));
-        m.add(Lang.get("edit_chapters"), PresetIcon.ICON_BOOKS, () -> mc.displayGuiScreen(new GuiQuestLinesEditor(this)));
+        m.add(
+            Lang.get("edit_chapters"),
+            PresetIcon.ICON_BOOKS,
+            () -> mc.displayGuiScreen(new GuiQuestLinesEditor(this)));
         List<ContextMenu.Item> groupItems = new ArrayList<>();
-        groupItems.add(ContextMenu.check(Lang.get("no_group"), info.group::isEmpty, () -> setGroup(Collections.singletonList(info), "")));
+        groupItems.add(
+            ContextMenu
+                .check(Lang.get("no_group"), info.group::isEmpty, () -> setGroup(Collections.singletonList(info), "")));
         Set<String> groups = new LinkedHashSet<>();
         for (ChapterInfo c : chapters.getChapters()) if (!c.group.isEmpty()) groups.add(c.group);
         for (String g : groups) {
-            groupItems.add(ContextMenu.check(QuestTranslation.translate(g), () -> g.equals(info.group),
-                () -> setGroup(Collections.singletonList(info), g)));
+            groupItems.add(
+                ContextMenu.check(
+                    QuestTranslation.translate(g),
+                    () -> g.equals(info.group),
+                    () -> setGroup(Collections.singletonList(info), g)));
         }
-        groupItems.add(ContextMenu.item(Lang.get("new_group"), () -> prompt(Lang.get("new_group"), "",
-            name -> setGroup(Collections.singletonList(info), name.trim()))));
+        groupItems.add(
+            ContextMenu.item(
+                Lang.get("new_group"),
+                () -> prompt(
+                    Lang.get("new_group"),
+                    "",
+                    name -> setGroup(Collections.singletonList(info), name.trim()))));
         m.submenu(Lang.get("group"), PresetIcon.ICON_FOLDER_CLOSED, groupItems);
         m.submenu(Lang.get("chapter_shape"), PresetIcon.ICON_PAINT, chapterShapeItems(info.id, info.line));
         m.add(Lang.get("move_up"), PresetIcon.ICON_UP, () -> moveChapter(info.id, -1));
@@ -693,10 +749,15 @@ public class QuestScreen extends GuiScreenCanvas implements INeedsRefresh, MapHo
 
     private void prompt(String title, String initial, java.util.function.Consumer<String> done) {
         closePopup();
-        openPopup(new TextPrompt(title, initial, this::closePopup, s -> {
-            if (!s.trim()
-                .isEmpty()) done.accept(s);
-        }).layoutCentered(width, height));
+        openPopup(
+            new TextPrompt(
+                title,
+                initial,
+                this::closePopup,
+                s -> {
+                    if (!s.trim()
+                        .isEmpty()) done.accept(s);
+                }).layoutCentered(width, height));
     }
 
     @Override
@@ -717,38 +778,64 @@ public class QuestScreen extends GuiScreenCanvas implements INeedsRefresh, MapHo
         toolbar.top(PresetIcon.ICON_CHEST_ALL.getTexture(), () -> Lang.get("claim_all"), (bx, by) -> claimAll(bx, by))
             .enabled(() -> !claimable().isEmpty())
             .tint(() -> Draw.lerpColor(0xFFFFFFFF, 0xFFFFD34A, (float) Anim.pulse(1.6)));
-        toolbar.top(PresetIcon.ICON_BOOKMARK.getTexture(), () -> QuestTranslation.translate("betterquesting.gui.bookmarks"),
+        toolbar.top(
+            PresetIcon.ICON_BOOKMARK.getTexture(),
+            () -> QuestTranslation.translate("betterquesting.gui.bookmarks"),
             (bx, by) -> {
                 GuiBookmarks g = new GuiBookmarks(this);
-                g.setCallback(entry -> focusQuest(entry.getQuest()
-                    .getKey(), false));
+                g.setCallback(
+                    entry -> focusQuest(
+                        entry.getQuest()
+                            .getKey(),
+                        false));
                 mc.displayGuiScreen(g);
             });
-        toolbar.top(PresetIcon.ICON_ZOOM.getTexture(), () -> QuestTranslation.translate("betterquesting.gui.search"),
+        toolbar.top(
+            PresetIcon.ICON_ZOOM.getTexture(),
+            () -> QuestTranslation.translate("betterquesting.gui.search"),
             (bx, by) -> {
                 GuiQuestSearch g = new GuiQuestSearch(this);
-                g.setCallback(entry -> focusQuest(entry.getQuest()
-                    .getKey(), false));
+                g.setCallback(
+                    entry -> focusQuest(
+                        entry.getQuest()
+                            .getKey(),
+                        false));
                 mc.displayGuiScreen(g);
             });
         toolbar.top(PresetIcon.ICON_BOX_FIT.getTexture(), () -> Lang.get("fit"), (bx, by) -> map.fit());
 
-        toolbar.bottom(PresetIcon.ICON_VISIBILITY_NORMAL.getTexture(), () -> Lang.get("view_options"),
+        toolbar.bottom(
+            PresetIcon.ICON_VISIBILITY_NORMAL.getTexture(),
+            () -> Lang.get("view_options"),
             (bx, by) -> viewOptions(bx, by));
-        toolbar.bottom(PresetIcon.ICON_PARTY.getTexture(), () -> QuestTranslation.translate("betterquesting.home.party"),
+        toolbar.bottom(
+            PresetIcon.ICON_PARTY.getTexture(),
+            () -> QuestTranslation.translate("betterquesting.home.party"),
             (bx, by) -> mc.displayGuiScreen(new GuiPartyManage(this)));
-        toolbar.bottom(PresetIcon.ICON_NOTICE.getTexture(), () -> QuestTranslation.translate("betterquesting.notification.settings"),
+        toolbar.bottom(
+            PresetIcon.ICON_NOTICE.getTexture(),
+            () -> QuestTranslation.translate("betterquesting.notification.settings"),
             (bx, by) -> mc.displayGuiScreen(new GuiNotificationSettings(this)));
-        toolbar.bottom(PresetIcon.ICON_GRAB.getTexture(), () -> Lang.get(editing ? "edit_mode_off" : "edit_mode_on"),
-            (bx, by) -> setEditing(!editing))
+        toolbar
+            .bottom(
+                PresetIcon.ICON_GRAB.getTexture(),
+                () -> Lang.get(editing ? "edit_mode_off" : "edit_mode_on"),
+                (bx, by) -> setEditing(!editing))
             .visible(this::canEdit)
             .tint(() -> editing ? Palette.ACCENT : 0xFFFFFFFF);
-        toolbar.bottom(PresetIcon.ICON_BOOKS.getTexture(), () -> Lang.get("edit_chapters"),
-            (bx, by) -> mc.displayGuiScreen(new GuiQuestLinesEditor(this)))
+        toolbar
+            .bottom(
+                PresetIcon.ICON_BOOKS.getTexture(),
+                () -> Lang.get("edit_chapters"),
+                (bx, by) -> mc.displayGuiScreen(new GuiQuestLinesEditor(this)))
             .visible(this::isEditing);
-        toolbar.bottom(PresetIcon.ICON_INFO.getTexture(), () -> Lang.get("help"),
+        toolbar.bottom(
+            PresetIcon.ICON_INFO.getTexture(),
+            () -> Lang.get("help"),
             (bx, by) -> mc.displayGuiScreen(new GuiQuestHelp(this)));
-        toolbar.bottom(PresetIcon.ICON_EXIT.getTexture(), () -> QuestTranslation.translate("gui.done"),
+        toolbar.bottom(
+            PresetIcon.ICON_EXIT.getTexture(),
+            () -> QuestTranslation.translate("gui.done"),
             (bx, by) -> doClose());
     }
 
@@ -776,8 +863,12 @@ public class QuestScreen extends GuiScreenCanvas implements INeedsRefresh, MapHo
         }
         ContextMenu m = menu();
         m.add(Lang.get("claim_n", ids.size()), PresetIcon.ICON_CHEST_ALL, go);
-        m.toggle(QuestTranslation.translate(BQ_Settings.claimAllRandomChoice ? "betterquesting.gui.force_choice_yes"
-            : "betterquesting.gui.force_choice_no"), () -> BQ_Settings.claimAllRandomChoice, () -> {
+        m.toggle(
+            QuestTranslation.translate(
+                BQ_Settings.claimAllRandomChoice ? "betterquesting.gui.force_choice_yes"
+                    : "betterquesting.gui.force_choice_no"),
+            () -> BQ_Settings.claimAllRandomChoice,
+            () -> {
                 BQ_Settings.claimAllRandomChoice = !BQ_Settings.claimAllRandomChoice;
                 saveBq("Claim all random choice", BQ_Settings.claimAllRandomChoice);
             });
@@ -791,25 +882,38 @@ public class QuestScreen extends GuiScreenCanvas implements INeedsRefresh, MapHo
     /** BQ's quest-book toggles, persisted in BQ's own config like its buttons do. */
     private void viewOptions(int bx, int by) {
         ContextMenu m = menu();
-        m.toggle(QuestTranslation.translate("betterquesting.btn.hide_locked_quest_lines"), () -> BQ_Settings.hideLockedQuestLines, () -> {
-            BQ_Settings.hideLockedQuestLines = !BQ_Settings.hideLockedQuestLines;
-            saveBq("Hide locked quest lines", BQ_Settings.hideLockedQuestLines);
-            reloadChapters();
-            layout();
-        });
-        m.toggle(QuestTranslation.translate("betterquesting.btn.always_draw_implicit"), () -> BQ_Settings.alwaysDrawImplicit, () -> {
-            BQ_Settings.alwaysDrawImplicit = !BQ_Settings.alwaysDrawImplicit;
-            saveBq("Always draw implicit dependency", BQ_Settings.alwaysDrawImplicit);
-        });
-        m.toggle(QuestTranslation.translate("betterquesting.btn.show_dependency_arrows"), () -> BQ_Settings.showDependencyArrows, () -> {
-            BQ_Settings.showDependencyArrows = !BQ_Settings.showDependencyArrows;
-            saveBq("Show dependency arrows", BQ_Settings.showDependencyArrows);
-        });
-        m.toggle(QuestTranslation.translate("betterquesting.btn.force_monochrome"), () -> BQ_Settings.forceMonochromeText, () -> {
-            BQ_Settings.forceMonochromeText = !BQ_Settings.forceMonochromeText;
-            saveBq("Force Monochrome Text", BQ_Settings.forceMonochromeText);
-            view.refresh();
-        });
+        m.toggle(
+            QuestTranslation.translate("betterquesting.btn.hide_locked_quest_lines"),
+            () -> BQ_Settings.hideLockedQuestLines,
+            () -> {
+                BQ_Settings.hideLockedQuestLines = !BQ_Settings.hideLockedQuestLines;
+                saveBq("Hide locked quest lines", BQ_Settings.hideLockedQuestLines);
+                reloadChapters();
+                layout();
+            });
+        m.toggle(
+            QuestTranslation.translate("betterquesting.btn.always_draw_implicit"),
+            () -> BQ_Settings.alwaysDrawImplicit,
+            () -> {
+                BQ_Settings.alwaysDrawImplicit = !BQ_Settings.alwaysDrawImplicit;
+                saveBq("Always draw implicit dependency", BQ_Settings.alwaysDrawImplicit);
+            });
+        m.toggle(
+            QuestTranslation.translate("betterquesting.btn.show_dependency_arrows"),
+            () -> BQ_Settings.showDependencyArrows,
+            () -> {
+                BQ_Settings.showDependencyArrows = !BQ_Settings.showDependencyArrows;
+                saveBq("Show dependency arrows", BQ_Settings.showDependencyArrows);
+            });
+        // BQ labels this "Show Quest Colors": checked means colours are shown, i.e. NOT forced monochrome
+        m.toggle(
+            QuestTranslation.translate("betterquesting.btn.force_monochrome"),
+            () -> !BQ_Settings.forceMonochromeText,
+            () -> {
+                BQ_Settings.forceMonochromeText = !BQ_Settings.forceMonochromeText;
+                saveBq("Force Monochrome Text", BQ_Settings.forceMonochromeText);
+                view.refresh();
+            });
         if (BQ_Settings.viewModeBtn) {
             m.toggle(QuestTranslation.translate("betterquesting.btn.view_mode"), () -> BQ_Settings.viewMode, () -> {
                 BQ_Settings.viewMode = !BQ_Settings.viewMode;
@@ -817,8 +921,14 @@ public class QuestScreen extends GuiScreenCanvas implements INeedsRefresh, MapHo
                 refreshGui();
             });
         }
-        m.toggle(Lang.get("animate_lines"), () -> Config.animateLines, () -> Config.animateLines = !Config.animateLines);
-        m.toggle(Lang.get("pulse_available"), () -> Config.pulseAvailable, () -> Config.pulseAvailable = !Config.pulseAvailable);
+        m.toggle(
+            Lang.get("animate_lines"),
+            () -> Config.animateLines,
+            () -> Config.animateLines = !Config.animateLines);
+        m.toggle(
+            Lang.get("pulse_available"),
+            () -> Config.pulseAvailable,
+            () -> Config.pulseAvailable = !Config.pulseAvailable);
         show(m, bx, by);
         m.setBounds(Math.max(0, bx - m.getW() - 2), Math.max(0, Math.min(by, height - m.getH())), m.getW(), m.getH());
     }

@@ -93,14 +93,20 @@ public class ImageDialog extends Dialog {
     }
 
     private PanelTextField<String> text(int x, int y, int w, String value, int max) {
-        PanelTextField<String> f = new PanelTextField<>(new GuiRectangle(x, y, w, 14), value, FieldFilterString.INSTANCE);
+        PanelTextField<String> f = new PanelTextField<>(
+            new GuiRectangle(x, y, w, 14),
+            value,
+            FieldFilterString.INSTANCE);
         f.setMaxLength(max);
         fields.add(f);
         return f;
     }
 
     private PanelTextField<Double> number(int x, int y, int w, double value) {
-        PanelTextField<Double> f = new PanelTextField<>(new GuiRectangle(x, y, w, 14), num(value), FieldFilterNumber.DOUBLE);
+        PanelTextField<Double> f = new PanelTextField<>(
+            new GuiRectangle(x, y, w, 14),
+            num(value),
+            FieldFilterNumber.DOUBLE);
         fields.add(f);
         return f;
     }
@@ -114,8 +120,10 @@ public class ImageDialog extends Dialog {
         work.rot = value(fRot, work.rot);
         work.alpha = (float) Math.max(0, Math.min(1, value(fAlpha, work.alpha * 100) / 100.0));
         try {
-            work.tint = 0xFF000000 | Integer.parseInt(fTint.getRawText()
-                .trim(), 16);
+            work.tint = 0xFF000000 | Integer.parseInt(
+                fTint.getRawText()
+                    .trim(),
+                16);
         } catch (NumberFormatException ignored) {}
         work.click = fClick.getRawText()
             .trim();
@@ -125,9 +133,10 @@ public class ImageDialog extends Dialog {
 
     private static double value(PanelTextField<Double> f, double fallback) {
         try {
-            return Double.parseDouble(f.getRawText()
-                .trim()
-                .replace(',', '.'));
+            return Double.parseDouble(
+                f.getRawText()
+                    .trim()
+                    .replace(',', '.'));
         } catch (NumberFormatException e) {
             return fallback;
         }
@@ -186,7 +195,12 @@ public class ImageDialog extends Dialog {
         int[] e = btnEditOnly();
         Draw.border(e[0], e[1] + 3, e[0] + 8, e[1] + 11, 1, work.editOnly ? Palette.ACCENT : Palette.TEXT_OFF);
         if (work.editOnly) Draw.rect(e[0] + 2, e[1] + 5, e[0] + 6, e[1] + 9, Palette.ACCENT);
-        Draw.text(Draw.ellipsize(Lang.get("image.edit_only"), e[2] - e[0] - 12), e[0] + 12, e[1] + 3, Palette.TEXT_2, false);
+        Draw.text(
+            Draw.ellipsize(Lang.get("image.edit_only"), e[2] - e[0] - 12),
+            e[0] + 12,
+            e[1] + 3,
+            Palette.TEXT_2,
+            false);
         // live preview swatch of the tint
         int sw = cx + LABEL + 60;
         Draw.rect(sw, rowY(3) + 2, sw + 10, rowY(3) + 12, work.tint | 0xFF000000);
@@ -198,7 +212,13 @@ public class ImageDialog extends Dialog {
 
     private static void small(int[] r, String s, int mx, int my) {
         boolean hot = mx >= r[0] && mx < r[2] && my >= r[1] && my < r[3];
-        Draw.panel(r[0], r[1], r[2], r[3], hot ? Palette.BTN_HOVER : Palette.BTN, hot ? Palette.BTN_EDGE_HOVER : Palette.BTN_EDGE);
+        Draw.panel(
+            r[0],
+            r[1],
+            r[2],
+            r[3],
+            hot ? Palette.BTN_HOVER : Palette.BTN,
+            hot ? Palette.BTN_EDGE_HOVER : Palette.BTN_EDGE);
         Draw.textCentered(Draw.ellipsize(s, r[2] - r[0] - 4), (r[0] + r[2]) / 2.0, r[1] + 3, Palette.TEXT, false);
     }
 
@@ -213,29 +233,38 @@ public class ImageDialog extends Dialog {
             pull();
             File dir = ImageSources.imageDir();
             if (!dir.exists()) dir.mkdirs();
-            screen.leaveForPicker(this, ThemeRegistry.INSTANCE.getGui(PresetGUIs.FILE_EXPLORE, new GArgsFileBrowser(screen, dir,
-                files -> {
+            screen.leaveForPicker(
+                this,
+                ThemeRegistry.INSTANCE.getGui(PresetGUIs.FILE_EXPLORE, new GArgsFileBrowser(screen, dir, files -> {
                     if (files == null || files.length == 0) return;
                     String rel = relative(dir, files[0]);
                     if (rel != null) {
                         work.image = "file:" + rel;
                         fitAspect();
                     }
-                }, f -> f.isDirectory() || f.getName()
-                    .toLowerCase(Locale.ROOT)
-                    .endsWith(".png"), false)));
+                },
+                    f -> f.isDirectory() || f.getName()
+                        .toLowerCase(Locale.ROOT)
+                        .endsWith(".png"),
+                    false)));
         } else if (in(btnItem(), mx, my)) {
             pull();
             ImageSources.Resolved r = ImageSources.resolve(work.image);
-            BigItemStack start = r.item != null ? new BigItemStack(r.item) : new BigItemStack(net.minecraft.init.Items.diamond);
-            screen.leaveForPicker(this, ThemeRegistry.INSTANCE.getGui(PresetGUIs.EDIT_ITEM, new GArgsCallback<>(screen, start,
-                stack -> {
+            BigItemStack start = r.item != null ? new BigItemStack(r.item)
+                : new BigItemStack(net.minecraft.init.Items.diamond);
+            screen.leaveForPicker(
+                this,
+                ThemeRegistry.INSTANCE.getGui(PresetGUIs.EDIT_ITEM, new GArgsCallback<>(screen, start, stack -> {
                     if (stack == null || stack.getBaseStack() == null) return;
-                    String id = Item.itemRegistry.getNameForObject(stack.getBaseStack()
-                        .getItem());
-                    work.image = "item:" + id + (stack.getBaseStack()
-                        .getItemDamage() != 0 ? ":" + stack.getBaseStack()
-                            .getItemDamage() : "");
+                    String id = Item.itemRegistry.getNameForObject(
+                        stack.getBaseStack()
+                            .getItem());
+                    work.image = "item:" + id
+                        + (stack.getBaseStack()
+                            .getItemDamage() != 0 ? ":"
+                                + stack.getBaseStack()
+                                    .getItemDamage()
+                                : "");
                     work.h = work.w;
                 })));
         } else if (in(btnAspect(), mx, my)) {
@@ -249,8 +278,9 @@ public class ImageDialog extends Dialog {
         } else if (in(btnHover(), mx, my)) {
             pull();
             String joined = String.join("\n", work.hover);
-            screen.leaveForPicker(this, ThemeRegistry.INSTANCE.getGui(PresetGUIs.EDIT_TEXT, new GArgsCallback<>(screen, joined,
-                text -> {
+            screen.leaveForPicker(
+                this,
+                ThemeRegistry.INSTANCE.getGui(PresetGUIs.EDIT_TEXT, new GArgsCallback<>(screen, joined, text -> {
                     work.hover.clear();
                     if (text != null && !text.trim()
                         .isEmpty()) work.hover.addAll(Arrays.asList(text.split("\n")));
@@ -289,8 +319,14 @@ public class ImageDialog extends Dialog {
         List<String> tt = new ArrayList<>();
         if (in(btnFile(), mx, my)) tt.add(Lang.get("image.file_tip", ImageSources.FILE_DIR));
         else if (in(btnItem(), mx, my)) tt.add(Lang.get("image.item_tip"));
-        else if (my >= rowY(0) && my < rowY(1) && mx < cx + LABEL) tt.addAll(Arrays.asList(Lang.get("image.source_tip").split("\\\\n")));
-        else if (my >= rowY(4) && my < rowY(5) && mx < cx + LABEL) tt.addAll(Arrays.asList(Lang.get("image.click_tip").split("\\\\n")));
+        else if (my >= rowY(0) && my < rowY(1) && mx < cx + LABEL) tt.addAll(
+            Arrays.asList(
+                Lang.get("image.source_tip")
+                    .split("\\\\n")));
+        else if (my >= rowY(4) && my < rowY(5) && mx < cx + LABEL) tt.addAll(
+            Arrays.asList(
+                Lang.get("image.click_tip")
+                    .split("\\\\n")));
         else if (my >= rowY(5) && my < rowY(6) && mx < cx + LABEL) tt.add(Lang.get("image.dep_tip"));
         return tt.isEmpty() ? null : tt;
     }

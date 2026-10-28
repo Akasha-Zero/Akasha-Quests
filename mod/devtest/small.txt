@@ -1,0 +1,30 @@
+# Smallest practical GUI: 1920x1080 at auto scale (4) -> 480x270
+world
+waitquests
+wait 40
+cmd /bq_admin edit true
+complete Madeira
+complete Tábuas
+wait 30
+open
+wait 20
+chapter Primeiros Passos
+wait 15
+shot s01_map
+quest Madeira
+wait 15
+shot s02_view
+close
+clickquest Bancada 1
+wait 5
+shot s03_menu
+key 1
+edit on
+chapter Bem-vindo
+wait 10
+clickimage 0 1
+menu Editar imagem
+wait 10
+shot s04_dialog
+key 1
+exit

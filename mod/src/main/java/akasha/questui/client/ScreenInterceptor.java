@@ -52,22 +52,23 @@ public class ScreenInterceptor {
                 QuestScreen screen = QuestScreen.create(lines.parent);
                 transferPrevious(lines, screen);
                 event.gui = screen;
-            } else if (event.gui instanceof GuiQuest && !(event.gui instanceof akasha.questui.client.screen.QuestView.LinkBridge)) {
-                applyTheme();
-                GuiQuest gq = (GuiQuest) event.gui;
-                UUID questId = (UUID) questIdField.get(gq);
-                QuestScreen screen;
-                if (gq.parent instanceof QuestScreen) {
-                    screen = (QuestScreen) gq.parent;
-                } else {
-                    GuiScreen parent = gq.parent instanceof GuiQuestLines ? ((GuiScreenCanvas) gq.parent).parent
-                        : gq.parent;
-                    screen = QuestScreen.create(parent);
+            } else if (event.gui instanceof GuiQuest
+                && !(event.gui instanceof akasha.questui.client.screen.QuestView.LinkBridge)) {
+                    applyTheme();
+                    GuiQuest gq = (GuiQuest) event.gui;
+                    UUID questId = (UUID) questIdField.get(gq);
+                    QuestScreen screen;
+                    if (gq.parent instanceof QuestScreen) {
+                        screen = (QuestScreen) gq.parent;
+                    } else {
+                        GuiScreen parent = gq.parent instanceof GuiQuestLines ? ((GuiScreenCanvas) gq.parent).parent
+                            : gq.parent;
+                        screen = QuestScreen.create(parent);
+                    }
+                    transferPrevious(gq, screen);
+                    screen.focusQuest(questId, true);
+                    event.gui = screen;
                 }
-                transferPrevious(gq, screen);
-                screen.focusQuest(questId, true);
-                event.gui = screen;
-            }
         } catch (ReflectiveOperationException | RuntimeException e) {
             // never break BQ: on any surprise fall back to its own screen
             AkashaQuestUI.LOG.error("Could not open the Akasha quest screen, using BetterQuesting's", e);

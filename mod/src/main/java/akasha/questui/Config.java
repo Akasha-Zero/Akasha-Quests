@@ -39,17 +39,34 @@ public final class Config {
     }
 
     private static void sync() {
-        enabled = cfg.getBoolean("enabled", UI, true, "Replace BetterQuesting's quest screens with the FTB Quests style screen.");
-        applyTheme = cfg.getBoolean("applyTheme", UI, true, "Select the 'Akasha FTB' BetterQuesting theme at startup so BQ panels match the dark look.");
-        defaultShape = shape(cfg.getString("defaultShape", UI, "circle", "Shape of quests without an explicit shape. One of: " + Shapes.ORDER));
-        mainShape = shape(cfg.getString("mainShape", UI, "hexagon", "Shape of BQ 'main' quests without an explicit shape."));
+        enabled = cfg.getBoolean(
+            "enabled",
+            UI,
+            true,
+            "Replace BetterQuesting's quest screens with the FTB Quests style screen.");
+        applyTheme = cfg.getBoolean(
+            "applyTheme",
+            UI,
+            true,
+            "Select the 'Akasha FTB' BetterQuesting theme at startup so BQ panels match the dark look.");
+        defaultShape = shape(
+            cfg.getString(
+                "defaultShape",
+                UI,
+                "circle",
+                "Shape of quests without an explicit shape. One of: " + Shapes.ORDER));
+        mainShape = shape(
+            cfg.getString("mainShape", UI, "hexagon", "Shape of BQ 'main' quests without an explicit shape."));
         animateLines = cfg.getBoolean("animateLines", UI, true, "Move the chevrons along dependency lines.");
-        lineSpeed = cfg.get(UI, "lineSpeed", 0.5, "Chevron speed in tiles per second.", 0.0, 4.0).getDouble();
+        lineSpeed = cfg.get(UI, "lineSpeed", 0.5, "Chevron speed in tiles per second.", 0.0, 4.0)
+            .getDouble();
         pulseAvailable = cfg.getBoolean("pulseAvailable", UI, true, "Soft glow pulse on quests that can be started.");
 
-        sidebarPinned = cfg.getBoolean("sidebarPinned", STATE, true, "Chapter panel pinned open (toggled by the pin button).");
+        sidebarPinned = cfg
+            .getBoolean("sidebarPinned", STATE, true, "Chapter panel pinned open (toggled by the pin button).");
         collapsedGroups.clear();
-        collapsedGroups.addAll(Arrays.asList(cfg.getStringList("collapsedGroups", STATE, new String[0], "Collapsed chapter groups.")));
+        collapsedGroups.addAll(
+            Arrays.asList(cfg.getStringList("collapsedGroups", STATE, new String[0], "Collapsed chapter groups.")));
         if (cfg.hasChanged()) cfg.save();
     }
 
@@ -59,8 +76,10 @@ public final class Config {
 
     public static void saveState() {
         if (cfg == null) return;
-        cfg.get(STATE, "sidebarPinned", true).set(sidebarPinned);
-        cfg.get(STATE, "collapsedGroups", new String[0]).set(collapsedGroups.toArray(new String[0]));
+        cfg.get(STATE, "sidebarPinned", true)
+            .set(sidebarPinned);
+        cfg.get(STATE, "collapsedGroups", new String[0])
+            .set(collapsedGroups.toArray(new String[0]));
         cfg.save();
     }
 }

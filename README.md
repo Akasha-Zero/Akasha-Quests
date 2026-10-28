@@ -32,6 +32,16 @@ Problemas reais do modpack encontrados durante o estudo (detalhes em `patches/`)
 | 02 — Quartzo Queimado (script CraftTweaker) | Restaura QED, Pedreira do Fim e Último Milênio do Extra Utilities | Sim |
 | 03 — Circuito de Controle do MPS (script CraftTweaker) | Libera módulos do Modular Powersuits | Sim |
 
+## Interface estilo FTB Quests (opcional)
+
+O mod **Akasha Quests UI** (`mod/`) troca as telas do BetterQuesting por uma interface no estilo
+do FTB Quests: barra de capítulos com grupos, mapa com formas e linhas animadas, janela da quest
+sobre o mapa, imagens nos capítulos e um modo de edição para posicionar quests e imagens. É só
+cliente (o servidor não precisa dele) e usa os próprios painéis e pacotes do BQ.
+
+Instale `dist/mods/akashaquestui-1.0.0.jar` na pasta `mods/` do cliente. Detalhes em
+[mod/README.md](mod/README.md); a especificação de design em [mod/docs/DESIGN.md](mod/docs/DESIGN.md).
+
 ## Instalação
 
 Copie o conteúdo de `dist/config/betterquesting/` para `config/betterquesting/` do servidor
@@ -69,6 +79,7 @@ versão multi-arquivo `saved_quests/AkashaQuests/`, que o BQ prefere quando exis
 | `registry/` | Dump real do registro do modpack (itens, metas, nomes pt_BR, oredict, entidades, fluidos, dimensões, receitas). |
 | `tools/bqgen/` | Gerador, validador e consulta ao registro. |
 | `tools/dumpmod/` | Fonte do mod que extrai o registro de dentro do jogo. |
+| `mod/` | Akasha Quests UI: interface estilo FTB Quests para o BQ (Forge 1.7.10, só cliente). |
 | `dist/` | Saída gerada — não editar à mão. |
 
 ## Gerar

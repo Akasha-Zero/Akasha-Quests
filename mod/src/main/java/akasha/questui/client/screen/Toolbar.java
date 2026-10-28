@@ -117,7 +117,13 @@ public class Toolbar extends Widget {
             boolean en = b.enabled.getAsBoolean();
             if (b == hot && en) Draw.rect(x + 2, b.by, x + w - 1, b.by + CELL, Palette.ROW_SELECTED);
             int tint = en ? b.tint.getAsInt() : 0xFF55555E;
-            b.icon.drawTexture(ix, b.by + (CELL - ICON) / 2, ICON, ICON, 0F, partialTick,
+            b.icon.drawTexture(
+                ix,
+                b.by + (CELL - ICON) / 2,
+                ICON,
+                ICON,
+                0F,
+                partialTick,
                 new betterquesting.api2.client.gui.resources.colors.GuiColorStatic(tint));
         }
     }

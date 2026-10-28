@@ -108,11 +108,20 @@ public class ChapterPanel extends Widget {
         // content-driven: the pack title in the header is ellipsized instead of widening the panel
         int max = 0;
         for (ChapterInfo c : chapters) {
-            max = Math.max(max, Draw.font()
-                .getStringWidth(c.label) + ICON + INDENT + BADGE + 4 + 3 * PAD);
+            max = Math.max(
+                max,
+                Draw.font()
+                    .getStringWidth(c.label) + ICON
+                    + INDENT
+                    + BADGE
+                    + 4
+                    + 3 * PAD);
         }
-        for (String g : groups().keySet()) max = Math.max(max, Draw.font()
-            .getStringWidth(g) + 10 + 2 * PAD);
+        for (String g : groups().keySet()) max = Math.max(
+            max,
+            Draw.font()
+                .getStringWidth(g) + 10
+                + 2 * PAD);
         return Math.max(MIN_W, Math.min(max, (int) (0.30 * screenW)));
     }
 
@@ -267,8 +276,12 @@ public class ChapterPanel extends Widget {
         if (hot) Draw.rect(x, ry, x + dw - 1, ry + r.h, Palette.ROW_HOVER);
         boolean collapsed = Config.collapsedGroups.contains(r.group);
         Draw.triangle(x + PAD, ry + 3.5, 6, collapsed ? Draw.RIGHT : Draw.DOWN, Palette.TEXT_2);
-        Draw.text(Draw.ellipsize(QuestTranslation.translate(r.group), dw - 2 * PAD - 12), x + PAD + 9, ry + 3,
-            Palette.TEXT_GROUP, false);
+        Draw.text(
+            Draw.ellipsize(QuestTranslation.translate(r.group), dw - 2 * PAD - 12),
+            x + PAD + 9,
+            ry + 3,
+            Palette.TEXT_GROUP,
+            false);
     }
 
     private void drawChapter(Row r, int ry, int dw, boolean hot, boolean sel, float pt) {
@@ -363,14 +376,16 @@ public class ChapterPanel extends Widget {
         if (!covers(mx, my)) return null;
         if (my < y + HEADER) {
             int px = x + drawnWidth() - 1 - PAD - 8;
-            if (mx >= px - 2 && mx < px + 10) return single(Lang.get(Config.sidebarPinned ? "unpin_panel" : "pin_panel"));
+            if (mx >= px - 2 && mx < px + 10)
+                return single(Lang.get(Config.sidebarPinned ? "unpin_panel" : "pin_panel"));
             if (host.isEditing() && mx >= px - 14 && mx < px - 2) return single(Lang.get("new_chapter"));
             int done = 0, total = 0;
             for (ChapterInfo c : chapters) {
                 done += c.done;
                 total += c.total;
             }
-            return single(Lang.get("progress_total", done, total, String.format("%.1f", total > 0 ? done * 100.0 / total : 0)));
+            return single(
+                Lang.get("progress_total", done, total, String.format("%.1f", total > 0 ? done * 100.0 / total : 0)));
         }
         Row r = rowAt(mx, my);
         if (r == null || r.info == null) return null;

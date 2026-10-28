@@ -57,7 +57,8 @@ public class CameraTest {
     public void fitContainsTheContentWithMargin() {
         Camera c = camera();
         c.fit();
-        // bounds 800 x 400 plus 2*24 margin into 400 x 300: z_fit = min(400/848, 300/448) = 0.4717 -> k = floor(4 log2) = -5
+        // bounds 800 x 400 plus 2*24 margin into 400 x 300: z_fit = min(400/848, 300/448) = 0.4717 -> k = floor(4 log2)
+        // = -5
         assertEquals(-5, c.getLevel());
         assertTrue(c.toScreenX(-200) >= c.vx && c.toScreenX(600) <= c.vx + c.vw);
         assertTrue(c.toScreenY(-100) >= c.vy && c.toScreenY(300) <= c.vy + c.vh);

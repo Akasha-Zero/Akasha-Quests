@@ -151,8 +151,10 @@ public class QuestView extends Widget {
 
     private void saveScroll() {
         if (questId == null || csTask == null) return;
-        SCROLLS.put(questId, new int[] { csTask.getScrollY(), csReward == null ? 0 : csReward.getScrollY(),
-            csDesc == null ? 0 : csDesc.getScrollY() });
+        SCROLLS.put(
+            questId,
+            new int[] { csTask.getScrollY(), csReward == null ? 0 : csReward.getScrollY(),
+                csDesc == null ? 0 : csDesc.getScrollY() });
     }
 
     // ------------------------------------------------------------------------------------------
@@ -205,7 +207,8 @@ public class QuestView extends Widget {
             descH = descNeed;
             colH = avail - descH;
         } else {
-            descH = descNeed == 0 ? 0 : Math.min(descNeed, Math.max(36, Math.max((int) (0.42 * avail), avail - colNeed)));
+            descH = descNeed == 0 ? 0
+                : Math.min(descNeed, Math.max(36, Math.max((int) (0.42 * avail), avail - colNeed)));
             colH = avail - descH;
         }
         int innerX = x + PAD;
@@ -292,8 +295,9 @@ public class QuestView extends Widget {
         cs.refreshScrollBounds();
         cs.setScrollY(scrollY);
         cs.updatePanelScroll();
-        sb.setEnabled(cs.getScrollBounds()
-            .getHeight() > 0);
+        sb.setEnabled(
+            cs.getScrollBounds()
+                .getHeight() > 0);
     }
 
     /** Same structure as BQ's GuiQuest.refreshTaskPanel: numbered title, task panel on a framed canvas, OR marks. */
@@ -307,13 +311,15 @@ public class QuestView extends Widget {
                 .getValue();
             boolean done = task.isComplete(screen.playerId());
             String name = (i + 1) + ". " + QuestTranslation.translate(task.getUnlocalisedName());
-            PanelTextBox label = new PanelTextBox(new GuiTransform(new Vector4f(), 0, yy, width, 10, 0),
+            PanelTextBox label = new PanelTextBox(
+                new GuiTransform(new Vector4f(), 0, yy, width, 10, 0),
                 (done ? "§a✔ " : "") + name);
             label.setColor(new GuiColorStatic(done ? 0xFF7CD977 : 0xFFC9C9D1));
             cs.addPanel(label);
             yy += 10;
 
-            IGuiPanel gui = task.getTaskGui(new GuiTransform(GuiAlign.FULL_BOX, 10, 10, width, rTask.h, 0),
+            IGuiPanel gui = task.getTaskGui(
+                new GuiTransform(GuiAlign.FULL_BOX, 10, 10, width, rTask.h, 0),
                 Maps.immutableEntry(questId, quest));
             if (gui != null) {
                 gui.initPanel();
@@ -321,14 +327,16 @@ public class QuestView extends Widget {
                     .getHeight() + 20
                     - gui.getTransform()
                         .getY();
-                CanvasTextured frame = new CanvasTextured(new GuiTransform(GuiAlign.TOP_LEFT, 0, yy, width, ph, 1),
+                CanvasTextured frame = new CanvasTextured(
+                    new GuiTransform(GuiAlign.TOP_LEFT, 0, yy, width, ph, 1),
                     PresetTexture.PANEL_INNER.getTexture());
                 cs.addPanel(frame);
                 frame.addPanel(gui);
                 yy += ph + 4;
             }
             if (logic == EnumLogic.OR && i < entries.size() - 1) {
-                PanelTextBox or = new PanelTextBox(new GuiTransform(new Vector4f(), 0, yy, width, 10, 0),
+                PanelTextBox or = new PanelTextBox(
+                    new GuiTransform(new Vector4f(), 0, yy, width, 10, 0),
                     QuestTranslation.translate("betterquesting.gui.logic.or")).setAlignment(1);
                 or.setColor(new GuiColorStatic(Palette.ACCENT));
                 cs.addPanel(or);
@@ -345,12 +353,14 @@ public class QuestView extends Widget {
         for (DBEntry<IReward> entry : quest.getRewards()
             .getEntries()) {
             IReward rew = entry.getValue();
-            PanelTextBox label = new PanelTextBox(new GuiTransform(new Vector4f(), 0, yy, width, 10, 0),
+            PanelTextBox label = new PanelTextBox(
+                new GuiTransform(new Vector4f(), 0, yy, width, 10, 0),
                 QuestTranslation.translate(rew.getUnlocalisedName()));
             label.setColor(new GuiColorStatic(0xFFC9C9D1));
             cs.addPanel(label);
             yy += 10;
-            IGuiPanel gui = rew.getRewardGui(new GuiTransform(GuiAlign.FULL_BOX, 0, 0, width, rReward.h, 111),
+            IGuiPanel gui = rew.getRewardGui(
+                new GuiTransform(GuiAlign.FULL_BOX, 0, 0, width, rReward.h, 111),
                 Maps.immutableEntry(questId, quest));
             if (gui != null) {
                 gui.initPanel();
@@ -387,8 +397,10 @@ public class QuestView extends Widget {
                 if ((float) width / dim.getWidth() < (float) hImg / dim.getHeight()) {
                     hImg = -Math.floorDiv(-dim.getHeight() * width, dim.getWidth());
                 }
-                out.add(new PanelGeneric(new GuiRectangle(0, yy + 2, width, hImg),
-                    new SimpleNoUVTexture(res, dim).maintainAspect(true)));
+                out.add(
+                    new PanelGeneric(
+                        new GuiRectangle(0, yy + 2, width, hImg),
+                        new SimpleNoUVTexture(res, dim).maintainAspect(true)));
                 yy += hImg + 4;
             }
         }
@@ -400,8 +412,11 @@ public class QuestView extends Widget {
 
     private static int descText(List<IGuiPanel> out, int yy, int width, String s, LinkBridge bridge) {
         if (s.isEmpty()) return 0;
-        PanelTextBox p = new PanelTextBox(new GuiRectangle(0, yy, width, 0),
-            GuiTextToggles.applyMonochromeIfEnabled(s), true, true);
+        PanelTextBox p = new PanelTextBox(
+            new GuiRectangle(0, yy, width, 0),
+            GuiTextToggles.applyMonochromeIfEnabled(s),
+            true,
+            true);
         p.setColor(new GuiColorStatic(0xFFC8C8CE));
         p.setGUI(bridge);
         p.initPanel();
@@ -488,7 +503,12 @@ public class QuestView extends Widget {
                     break;
                 case "pin":
                     Draw.bind(Textures.BADGE_PIN);
-                    Draw.tex(bx[i], y + 5, bx[i] + 10, y + 15, BookmarkHandler.isBookmarked(questId) ? 0xFFFFFFFF : 0x60FFFFFF);
+                    Draw.tex(
+                        bx[i],
+                        y + 5,
+                        bx[i] + 10,
+                        y + 15,
+                        BookmarkHandler.isBookmarked(questId) ? 0xFFFFFFFF : 0x60FFFFFF);
                     break;
                 case "edit":
                     PresetIcon.ICON_GEAR.getTexture()
@@ -540,10 +560,15 @@ public class QuestView extends Widget {
     private static void button(int[] r, String label, boolean active, int mx, int my) {
         boolean hot = active && mx >= r[0] && mx < r[2] && my >= r[1] && my < r[3];
         int edge = !active ? Palette.DIVIDER
-            : (hot ? Palette.BTN_EDGE_HOVER : Draw.lerpColor(Palette.BTN_EDGE, Palette.Q_DONE_EDGE, (float) Anim.pulse(1.6)));
+            : (hot ? Palette.BTN_EDGE_HOVER
+                : Draw.lerpColor(Palette.BTN_EDGE, Palette.Q_DONE_EDGE, (float) Anim.pulse(1.6)));
         Draw.panel(r[0], r[1], r[2], r[3], hot ? Palette.BTN_HOVER : Palette.BTN, edge);
-        Draw.textCentered(Draw.ellipsize(label, r[2] - r[0] - 6), (r[0] + r[2]) / 2.0, r[1] + 3,
-            active ? Palette.TEXT : Palette.TEXT_OFF, false);
+        Draw.textCentered(
+            Draw.ellipsize(label, r[2] - r[0] - 6),
+            (r[0] + r[2]) / 2.0,
+            r[1] + 3,
+            active ? Palette.TEXT : Palette.TEXT_OFF,
+            false);
     }
 
     private static boolean in(int[] r, int mx, int my) {
@@ -586,11 +611,13 @@ public class QuestView extends Widget {
         if (button == 0) {
             if ((quest.getTasks()
                 .size() > 0 || !hasRewards) && in(detectBtn(), mx, my)) {
-                if (quest.canSubmit(Minecraft.getMinecraft().thePlayer)) NetQuestAction.requestDetect(java.util.Collections.singletonList(questId));
+                if (quest.canSubmit(Minecraft.getMinecraft().thePlayer))
+                    NetQuestAction.requestDetect(java.util.Collections.singletonList(questId));
                 return true;
             }
             if (hasRewards && in(claimBtn(), mx, my)) {
-                if (quest.canClaim(Minecraft.getMinecraft().thePlayer)) NetQuestAction.requestClaim(java.util.Collections.singletonList(questId));
+                if (quest.canClaim(Minecraft.getMinecraft().thePlayer))
+                    NetQuestAction.requestClaim(java.util.Collections.singletonList(questId));
                 return true;
             }
         }
@@ -622,7 +649,9 @@ public class QuestView extends Widget {
 
     /** Plain text for the clipboard: formatting codes and BQ tags removed (as BQ's copy button does). */
     static String stripFormatting(String s) {
-        return s.replaceAll("§.|&#[0-9a-fA-F]{6}|&[0-9a-fA-Fk-orqgzv]|\\[/?(url|warn|note|quest|questlink)]|\\[img.*?]|\\[/img]", "");
+        return s.replaceAll(
+            "§.|&#[0-9a-fA-F]{6}|&[0-9a-fA-Fk-orqgzv]|\\[/?(url|warn|note|quest|questlink)]|\\[img.*?]|\\[/img]",
+            "");
     }
 
     @Override

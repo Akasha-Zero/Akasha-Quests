@@ -87,7 +87,11 @@ public class ChapterModel {
             node.state = state(quest.getState(player), node.tasksDone);
             node.bookmarked = BookmarkHandler.isBookmarked(node.id);
             node.clickable = canEdit || node.state != QuestNode.State.LOCKED || BQ_Settings.viewMode;
-            node.icon = new OreDictTexture(1F, quest.getOrDefault(NativeProps.ICON, new BigItemStack(placeholder)), false, true);
+            node.icon = new OreDictTexture(
+                1F,
+                quest.getOrDefault(NativeProps.ICON, new BigItemStack(placeholder)),
+                false,
+                true);
             nodes.put(node.id, node);
         }
 

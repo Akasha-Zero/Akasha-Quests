@@ -1,0 +1,41 @@
+# Edit mode gestures: select, move, resize, rotate images; move quests; undo
+world
+waitquests
+wait 40
+cmd /bq_admin edit true
+wait 20
+open
+wait 20
+chapter Bem-vindo
+wait 10
+edit on
+wait 10
+clickimage 0
+wait 5
+shot e01_selected
+dragimage 0 60 40
+wait 10
+shot e02_moved
+handle 0 1 1 40 30
+wait 10
+shot e03_resized
+handle 0 2 2 80 20
+wait 10
+shot e04_rotated
+clickimage 1
+wait 5
+handle 1 1 1 30 30
+wait 10
+shot e06_item_resized
+key 211
+wait 15
+shot e06b_item_deleted
+dragquest Começar 0 60
+wait 15
+shot e07_quest_moved
+chapter Primeiros Passos
+wait 15
+drag 300 300 420 240 10
+wait 10
+shot e08_box_select_none
+exit

@@ -115,7 +115,10 @@ public class ContextMenu extends Widget {
         int maxText = 0;
         boolean anySub = false;
         for (Item it : items) {
-            maxText = Math.max(maxText, Draw.font().getStringWidth(it.label));
+            maxText = Math.max(
+                maxText,
+                Draw.font()
+                    .getStringWidth(it.label));
             anySub |= it.sub != null;
         }
         int width = PAD + ICON + 4 + maxText + (anySub ? 10 : 0) + PAD + 2;

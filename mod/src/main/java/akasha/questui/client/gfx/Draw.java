@@ -132,8 +132,8 @@ public final class Draw {
         restore();
     }
 
-    private static void corner(Tessellator t, double cx, double cy, double lx, double ly, double c, double s,
-        double u, double v) {
+    private static void corner(Tessellator t, double cx, double cy, double lx, double ly, double c, double s, double u,
+        double v) {
         t.addVertexWithUV(cx + lx * c - ly * s, cy + lx * s + ly * c, 0, u, v);
     }
 

@@ -441,7 +441,10 @@ public class MapEditor {
         for (Map.Entry<UUID, double[]> e : before.entrySet()) {
             QuestNode n = m.nodes.get(e.getKey());
             if (n == null) continue;
-            prev.put(e.getKey(), e.getValue().clone());
+            prev.put(
+                e.getKey(),
+                e.getValue()
+                    .clone());
             IQuestLineEntry entry = n.entry;
             int nx = (int) Math.round(n.x), ny = (int) Math.round(n.y);
             if (entry.getPosX() != nx || entry.getPosY() != ny) changed = true;

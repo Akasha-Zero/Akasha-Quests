@@ -67,7 +67,13 @@ public class GeometryTest {
         assertEquals(90, Geometry.rotation(0, 0, 10, 0, false), 1e-9); // to the right (clockwise on screen)
         assertEquals(180, Geometry.rotation(0, 0, 0, 10, false), 1e-9);
         assertEquals(-90, Geometry.rotation(0, 0, -10, 0, false), 1e-9);
-        assertEquals(15, Geometry.rotation(0, 0, Math.sin(Math.toRadians(17)), -Math.cos(Math.toRadians(17)), false), 1e-9);
-        assertEquals(17, Geometry.rotation(0, 0, Math.sin(Math.toRadians(17)), -Math.cos(Math.toRadians(17)), true), 1e-9);
+        assertEquals(
+            15,
+            Geometry.rotation(0, 0, Math.sin(Math.toRadians(17)), -Math.cos(Math.toRadians(17)), false),
+            1e-9);
+        assertEquals(
+            17,
+            Geometry.rotation(0, 0, Math.sin(Math.toRadians(17)), -Math.cos(Math.toRadians(17)), true),
+            1e-9);
     }
 }

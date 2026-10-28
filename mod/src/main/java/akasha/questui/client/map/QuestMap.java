@@ -47,6 +47,9 @@ public class QuestMap extends Widget {
     private static final double BADGE_OFFSET = 0.72;
     private static final double LINE_FRAC = 0.11;
 
+    /** Mouse button state source; replaceable so scripted UI tests can perform drags. */
+    public static java.util.function.IntPredicate buttonDown = Mouse::isButtonDown;
+
     private final MapHost host;
     public final Camera camera = new Camera();
     public final MapEditor editor;
@@ -190,8 +193,8 @@ public class QuestMap extends Widget {
             UUID dep = Ids.parse(img.dep);
             if (dep != null) {
                 betterquesting.api.questing.IQuest q = betterquesting.questing.QuestDatabase.INSTANCE.get(dep);
-                return q != null && q.isComplete(
-                    betterquesting.api.api.QuestingAPI.getQuestingUUID(Minecraft.getMinecraft().thePlayer));
+                return q != null && q
+                    .isComplete(betterquesting.api.api.QuestingAPI.getQuestingUUID(Minecraft.getMinecraft().thePlayer));
             }
         }
         return true;
@@ -325,7 +328,15 @@ public class QuestMap extends Widget {
             double sy0 = snap(camera.toScreenY(n.y), f), sy1 = snap(camera.toScreenY(n.y + n.h), f);
             if (sx1 < x || sy1 < y || sx0 > x + w || sy0 > y + h) continue;
             boolean sel = n.id.equals(selected) || (editing && editor.isSelected(n));
-            drawNode(n, (sx0 + sx1) / 2, (sy0 + sy1) / 2, (sx1 - sx0) / 2, (sy1 - sy0) / 2, n == hovered, sel, partialTick);
+            drawNode(
+                n,
+                (sx0 + sx1) / 2,
+                (sy0 + sy1) / 2,
+                (sx1 - sx0) / 2,
+                (sy1 - sy0) / 2,
+                n == hovered,
+                sel,
+                partialTick);
         }
     }
 
@@ -373,7 +384,11 @@ public class QuestMap extends Widget {
                 Draw.tex(cx - 2 * hx, cy - 2 * hy, cx + 2 * hx, cy + 2 * hy, Draw.withAlpha(c, a));
             } else if (n.state == QuestNode.State.AVAILABLE && Config.pulseAvailable) {
                 Draw.bind(shape.glow);
-                Draw.tex(cx - 2 * hx, cy - 2 * hy, cx + 2 * hx, cy + 2 * hy,
+                Draw.tex(
+                    cx - 2 * hx,
+                    cy - 2 * hy,
+                    cx + 2 * hx,
+                    cy + 2 * hy,
                     Draw.withAlpha(edge, (float) (0.10 + 0.20 * Anim.pulse(2.4))));
             }
             // 2. fill
@@ -490,7 +505,7 @@ public class QuestMap extends Widget {
     /** Per-frame drag handling (GuiScreenCanvas has no drag event). */
     private void processDrag(int mx, int my) {
         if (pressButton < 0) return;
-        if (!Mouse.isButtonDown(pressButton)) {
+        if (!buttonDown.test(pressButton)) {
             // the release went to another panel: finish the gesture here so edits are still committed
             onMouseRelease(mx, my, pressButton);
             return;
@@ -572,7 +587,10 @@ public class QuestMap extends Widget {
         if (hovered != null) {
             if (tooltipFor != hovered || tooltipButton == null) {
                 tooltipFor = hovered;
-                tooltipButton = new PanelButtonQuest(new GuiRectangle(0, 0, 1, 1), -1, "",
+                tooltipButton = new PanelButtonQuest(
+                    new GuiRectangle(0, 0, 1, 1),
+                    -1,
+                    "",
                     new java.util.AbstractMap.SimpleEntry<>(hovered.id, hovered.quest));
             }
             // PanelButtonQuest only answers for points inside its own rectangle
