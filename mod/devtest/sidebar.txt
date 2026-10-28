@@ -1,0 +1,12 @@
+# Chapter panel width (DESIGN §6): long chapter and group names, panel capped at 22 % of the GUI width.
+# python3 ../tools/bqgen/bqgen.py build --chapters devtest/perfquests --out run/client/config/betterquesting
+# Run at 1920x1080 and at 1366x768 (-PselftestWidth/-PselftestHeight).
+world
+waitquests
+wait 60
+open
+wait 40
+chapter Grande
+wait 20
+shot s01_sidebar
+exit

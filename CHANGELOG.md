@@ -1,3 +1,11 @@
+# Changelog — Akasha Quests UI 1.0.3
+
+**Interface**
+- Barra lateral de capítulos limitada a 22 % da largura da tela (antes até 30 %, e o mínimo fixo de
+  110 px podia passar disso em GUI estreita). Nomes de capítulo e de grupo maiores que a barra são
+  cortados com reticências; o nome inteiro continua na dica. Conferido em 1920×1080 e 1366×768
+  (roteiro `devtest/sidebar.txt`): a barra fica com 21,8 % nas duas.
+
 # Changelog — Akasha Quests UI 1.0.2
 
 **Render (travadas em capítulos grandes)**

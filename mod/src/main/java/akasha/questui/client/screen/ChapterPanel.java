@@ -32,6 +32,11 @@ public class ChapterPanel extends Widget {
     public static final int INDENT = 8;
     public static final int STRIP = 10;
     public static final int MIN_W = 110;
+    /**
+     * Largest share of the screen width the panel takes; longer chapter names are ellipsized (full name in the
+     * tooltip).
+     */
+    public static final double MAX_FRAC = 0.22;
     private static final int PAD = 4;
     private static final int BADGE = 8;
     private static final long SLIDE_MS = 140;
@@ -102,7 +107,7 @@ public class ChapterPanel extends Widget {
         return null;
     }
 
-    /** W_s = clamp(max title + icon + indent + badge + margins, 110, 0.30 W) (DESIGN §6). */
+    /** W_s = clamp(max title + icon + indent + badge + margins, min(110, 0.22 W), 0.22 W) (DESIGN §6). */
     public int preferredWidth(int screenW) {
         // content-driven: the pack title in the header is ellipsized instead of widening the panel
         int max = 0;
@@ -121,7 +126,8 @@ public class ChapterPanel extends Widget {
             Draw.font()
                 .getStringWidth(g) + 10
                 + 2 * PAD);
-        return Math.max(MIN_W, Math.min(max, (int) (0.30 * screenW)));
+        int cap = (int) (MAX_FRAC * screenW);
+        return Math.max(Math.min(MIN_W, cap), Math.min(max, cap));
     }
 
     public void setFullWidth(int fw) {
