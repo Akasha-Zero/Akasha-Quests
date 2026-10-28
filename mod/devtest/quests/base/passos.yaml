@@ -1,0 +1,24 @@
+chapter:
+  id: t_passos
+  title: "Primeiros Passos"
+  order: 10
+  icon: minecraft:wooden_pickaxe
+  desc: Do primeiro tronco ao fim do mundo.
+quests:
+  - {id: madeira, title: "Madeira", type: main, at: [0, 0], desc: "Soque uma árvore.", tasks: [{get: minecraft:log x4}], rewards: [{item: minecraft:apple x2}]}
+  - {id: tabuas, title: "Tábuas", at: [1, 0], deps: [madeira], desc: "Transforme troncos em tábuas.", tasks: [{get: minecraft:planks x8}]}
+  - {id: bancada, title: "Bancada", type: main, at: [2, 0], deps: [tabuas], desc: "Faça uma bancada.", tasks: [{get: minecraft:crafting_table}], rewards: [{xp: 2}]}
+  - {id: picareta_madeira, title: "Picareta de Madeira", at: [3, -1], deps: [bancada], desc: "A primeira ferramenta.", tasks: [{get: minecraft:wooden_pickaxe}]}
+  - {id: espada, title: "Espada", type: optional, at: [3, 1], deps: [bancada], desc: "Opcional, mas útil.", tasks: [{get: minecraft:wooden_sword}]}
+  - {id: picareta_pedra, title: "Picareta de Pedra", at: [4, -1], deps: [picareta_madeira], desc: "Pedra é mais dura.", tasks: [{get: minecraft:stone_pickaxe}]}
+  - {id: fornalha, title: "Fornalha", type: main, at: [5, 0], deps: [picareta_pedra], desc: "Fundir minérios.", tasks: [{get: minecraft:furnace}], rewards: [{item: minecraft:coal x8}]}
+  - {id: ferro, title: "Lingote de Ferro", type: main, at: [6, 0], deps: [fornalha], desc: "O metal básico.", tasks: [{get: minecraft:iron_ingot x3}]}
+  - {id: picareta_ferro, title: "Picareta de Ferro", at: [7, -1], deps: [ferro], desc: "Agora dá para minerar diamante.", tasks: [{get: minecraft:iron_pickaxe}]}
+  - {id: balde, title: "Balde", at: [7, 1], deps: [ferro], desc: "Carregue água e lava.", tasks: [{get: minecraft:bucket}]}
+  - {id: diamante, title: "Diamantes!", type: milestone, at: [8.5, -1], deps: [picareta_ferro], desc: "O marco de todo começo.", tasks: [{get: minecraft:diamond x3}], rewards: [{item: minecraft:diamond_pickaxe}]}
+  - {id: obsidiana, title: "Obsidiana", at: [8.5, 1], deps: [balde, picareta_ferro], desc: "Água sobre lava.", tasks: [{get: minecraft:obsidian x10}]}
+  - {id: portal, title: "Portal do Nether", type: portal, at: [10, 1], deps: [obsidiana], desc: "Acenda o portal.", tasks: [{get: minecraft:flint_and_steel}]}
+  - {id: blaze, title: "Blaze", type: boss, at: [11.5, 1], deps: [portal], desc: "Derrote blazes.", tasks: [{get: minecraft:blaze_rod x6}]}
+  - {id: olho, title: "Olho de Ender", at: [12.5, 0], deps: [blaze], deps_hidden: [diamante], desc: "Encontre o Fim.", tasks: [{get: minecraft:ender_eye x12}]}
+  - {id: dragao, title: "O Dragão", type: finale, at: [14, 0], deps: [olho], desc: "O fim do começo.", tasks: [{get: minecraft:dragon_egg}], rewards: [{item: minecraft:nether_star}]}
+  - {id: pao, title: "Pão", type: optional, shape: heart, at: [1, 1.5], deps: [madeira], desc: "Comida!", tasks: [{get: minecraft:bread x4}]}

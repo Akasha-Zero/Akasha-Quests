@@ -1,0 +1,30 @@
+# First look: chapters, map, quest view
+world
+waitquests
+wait 40
+cmd /bq_admin edit true
+complete Olá, viajante
+complete Como funciona
+complete Madeira
+complete Tábuas
+complete Bancada
+complete Picareta de Madeira
+complete Picareta de Pedra
+complete Sementes
+cmd /bq_admin edit false
+wait 40
+open
+wait 30
+shot 01_welcome
+chapter Primeiros Passos
+wait 30
+shot 02_passos
+quest Lingote de Ferro
+wait 20
+shot 03_view
+close
+chapter Fazenda
+wait 20
+shot 04_fazenda
+wait 5
+exit

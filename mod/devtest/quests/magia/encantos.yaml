@@ -1,0 +1,11 @@
+chapter:
+  id: t_encantos
+  title: "Encantamentos"
+  order: 20
+  icon: minecraft:enchanting_table
+  desc: Livros, estantes e mesa de encantamento.
+quests:
+  - {id: livro, title: "Livro", at: [0, 0], desc: "Papel e couro.", tasks: [{get: minecraft:book x3}]}
+  - {id: estante, title: "Estante", shape: pentagon, at: [1, -0.5], deps: [livro], desc: "Conhecimento acumulado.", tasks: [{get: minecraft:bookshelf x15}]}
+  - {id: mesa, title: "Mesa de Encantamento", type: milestone, at: [2, 0], deps: [estante, livro], desc: "Encante sua primeira ferramenta.", tasks: [{get: minecraft:enchanting_table}], rewards: [{item: minecraft:experience_bottle x16}]}
+  - {id: bigorna, title: "Bigorna", shape: square, at: [3, 0], deps: [mesa], desc: "Combine encantamentos.", tasks: [{get: minecraft:anvil}]}

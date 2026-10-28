@@ -1,0 +1,13 @@
+chapter:
+  id: t_fazenda
+  title: "Fazenda"
+  order: 11
+  icon: minecraft:wheat
+  shape: square
+  desc: Plantações e animais (forma padrão do capítulo = quadrado).
+quests:
+  - {id: sementes, title: "Sementes", at: [0, 0], desc: "Colha grama.", tasks: [{get: minecraft:wheat_seeds x8}]}
+  - {id: trigo, title: "Trigo", at: [1, 0], deps: [sementes], desc: "Plante e colha.", tasks: [{get: minecraft:wheat x16}]}
+  - {id: bolo, title: "Bolo", shape: heart, at: [2, -1], deps: [trigo], desc: "Uma recompensa doce.", tasks: [{get: minecraft:cake}]}
+  - {id: biscoito, title: "Biscoito ou Pão", deps_any: true, at: [2, 1], deps: [trigo, sementes], desc: "Basta um dos pré-requisitos (lógica OR, linha tracejada).", tasks: [{get: minecraft:cookie x8}]}
+  - {id: ovos, title: "Ovos", shape: none, at: [3, 0], deps: [bolo], desc: "Forma 'nenhuma': só o ícone.", tasks: [{get: minecraft:egg x4}]}

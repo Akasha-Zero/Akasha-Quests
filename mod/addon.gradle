@@ -1,0 +1,22 @@
+// Version source of truth (see gradle.properties: gtnh.modules.gitVersion = false)
+project.ext.modVersion = '1.0.0'
+version = project.ext.modVersion
+
+// Dev-only scripted UI test (src/devtest): compiled against the mod, added to runClient, never packaged.
+sourceSets {
+    devtest {
+        java.srcDir 'src/devtest/java'
+        compileClasspath += sourceSets.main.output + sourceSets.main.compileClasspath
+        runtimeClasspath += sourceSets.main.output + sourceSets.main.runtimeClasspath
+    }
+}
+
+tasks.matching { it.name == 'runClient' }.configureEach { t ->
+    t.dependsOn(tasks.named('devtestClasses'))
+    t.classpath(sourceSets.devtest.output)
+    def script = project.findProperty('selftest')
+    if (script != null) {
+        t.jvmArgs("-Dakashaquestui.selftest=${file(script).absolutePath}", '-Dorg.lwjgl.opengl.Display.allowSoftwareOpenGL=true')
+        t.args('--width', project.findProperty('selftestWidth') ?: '1280', '--height', project.findProperty('selftestHeight') ?: '720')
+    }
+}

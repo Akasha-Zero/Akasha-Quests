@@ -1,0 +1,47 @@
+chapter:
+  id: t_bemvindo
+  title: "Bem-vindo"
+  group: ""
+  order: 0
+  icon: minecraft:book
+  desc: Comece por aqui.
+  images:
+    - image: akashaquestui:textures/gui/placeholder.png
+      at: [2, -2.2]
+      size: [96, 54]
+      hover: ["Imagem de título (camada de trás)", "§7clique: abre a quest Madeira"]
+      click: "quest:t_passos:madeira"
+    - image: item:minecraft:diamond_sword
+      at: [4.5, 0]
+      size: 24
+      rot: 30
+      layer: front
+      hover: ["Item como imagem, girado 30°"]
+quests:
+  - id: ola
+    title: "Olá, viajante"
+    type: info
+    at: [0, 0]
+    desc: |
+      Este é um livro de teste do Akasha Quests UI.
+      [url]https://github.com[/url] e um link para [quest]t_passos:madeira[/quest].
+    tasks:
+      - check
+  - id: regras
+    title: "Como funciona"
+    type: info
+    at: [1, 0]
+    deps: [ola]
+    desc: Clique nas quests para abrir a janela. Arraste para mover o mapa e use a roda para zoom.
+    tasks:
+      - check
+  - id: comecar
+    title: "Começar"
+    type: main
+    at: [2.5, 0]
+    deps: [regras]
+    desc: Vá para o capítulo Primeiros Passos.
+    tasks:
+      - check
+    rewards:
+      - item: minecraft:bread x8

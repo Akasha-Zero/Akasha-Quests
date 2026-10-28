@@ -47,18 +47,28 @@ LOOT_NAMES = {'comum': '§fBaú de Saque Comum', 'incomum': '§aBaú de Saque In
               'raro': '§9Baú de Saque Raro', 'epico': '§5Baú de Saque Épico',
               'lendario': '§6Baú de Saque Lendário'}
 
-# Quest "type" presets: icon size on the map, main flag, notification extras.
+# Quest "type" presets: icon size on the map, main flag, notification extras, and the shape drawn by
+# Akasha Quests UI (mod/docs/DESIGN.md §2). Empty shape = the mod's default (hexagon for main, circle otherwise).
 TYPES = {
-    'normal':    dict(size=24, main=False),
-    'main':      dict(size=32, main=True),
-    'optional':  dict(size=24, main=False),
-    'info':      dict(size=24, main=False),
-    'milestone': dict(size=40, main=True, effect=3, particle='firework', anim='slam'),
-    'boss':      dict(size=40, main=True, effect=3, particle='firework', anim='slam'),
-    'portal':    dict(size=32, main=True, effect=5, particle='sparkle', anim='zoom'),
-    'finale':    dict(size=48, main=True, effect=6, particle='item_confetti', anim='tada'),
-    'secret':    dict(size=24, main=False, visibility='SECRET'),
+    'normal':    dict(size=24, main=False, shape=''),
+    'main':      dict(size=32, main=True, shape=''),
+    'optional':  dict(size=24, main=False, shape=''),
+    'info':      dict(size=24, main=False, shape='rsquare'),
+    'milestone': dict(size=40, main=True, effect=3, particle='firework', anim='slam', shape='gear'),
+    'boss':      dict(size=40, main=True, effect=3, particle='firework', anim='slam', shape='octagon'),
+    'portal':    dict(size=32, main=True, effect=5, particle='sparkle', anim='zoom', shape='diamond'),
+    'finale':    dict(size=48, main=True, effect=6, particle='item_confetti', anim='tada', shape='star'),
+    'secret':    dict(size=24, main=False, visibility='SECRET', shape=''),
 }
+
+# Akasha Quests UI: quest shapes, chapter-panel groups (by chapter folder) and image layers.
+SHAPES = ('circle', 'square', 'rsquare', 'diamond', 'pentagon', 'hexagon', 'octagon', 'heart', 'gear', 'star', 'none')
+GROUPS = OrderedDict([
+    ('story', 'Crônicas Akáshicas'), ('base', 'Base'), ('aventura', 'Aventura'), ('tech', 'Tecnologia'),
+    ('magia', 'Magia'), ('vida', 'Vida'), ('aedf3', 'A Era do Futuro 3'), ('atm', 'All the Mods'),
+    ('epilogo', 'Epílogo'),
+])
+IMAGE_LAYERS = {'back': 0, 'middle': 1, 'front': 2}
 
 VISIBILITIES = {'normal': 'NORMAL', 'unlocked': 'UNLOCKED', 'hidden': 'HIDDEN',
                 'secret': 'SECRET', 'chain': 'CHAIN', 'always': 'ALWAYS', 'completed': 'COMPLETED'}
@@ -430,6 +440,9 @@ class Quest:
             raise GenError('%s:%s: unknown quest type %r' % (chapter.id, self.id, self.type))
         self.deps = [self._qualify(d) for d in as_list(data.get('deps'))]
         self.hidden_deps = [self._qualify(d) for d in as_list(data.get('deps_hidden'))]
+        self.shape = str(data.get('shape', TYPES[self.type]['shape']))
+        if self.shape and self.shape not in SHAPES:
+            raise GenError('%s:%s: unknown shape %r (one of %s)' % (chapter.id, self.id, self.shape, ', '.join(SHAPES)))
         self.pos = None
 
     def _qualify(self, d):
@@ -459,6 +472,16 @@ class Chapter:
             raise GenError('%s: prefix must be one of ATM, AEDF3 or empty' % path)
         self.title = PREFIXES[self.prefix] + str(meta['title'])
         self.order = float(meta.get('order', 9999))
+        folder = os.path.basename(os.path.dirname(path))
+        self.group = str(meta.get('group', GROUPS.get(folder, '')))
+        self.shape = str(meta.get('shape', ''))
+        if self.shape and self.shape not in SHAPES:
+            raise GenError('%s: unknown shape %r (one of %s)' % (path, self.shape, ', '.join(SHAPES)))
+        # Short name for the chapter panel: the title without the group/series prefix.
+        short = str(meta.get('short', meta['title']))
+        if self.group and short.startswith(self.group + ': '):
+            short = short[len(self.group) + 2:]
+        self.short = short if short != self.title else ''
         self.quests = []
         self.links = []  # quests from other chapters shown here: (key, at)
         seen = set()
@@ -476,7 +499,7 @@ class Chapter:
 def load_chapters(paths=None, tolerate=None):
     """Load chapter files. `tolerate` is a set of absolute paths that must load; errors in
     any other file are reported as warnings and the file is skipped (used by partial lint)."""
-    paths = paths or sorted(glob.glob(os.path.join(CHAPTER_DIR, '**', '*.yaml'), recursive=True))
+    paths = paths or sorted(glob.glob(os.path.join(CHAPTER_DIR, '**', '*.yaml'), recursive=True))  # CHAPTER_DIR may be overridden by --chapters
     chapters = []
     for p in paths:
         try:
@@ -655,6 +678,8 @@ def build_quest_json(q, all_quests, reg, settings):
     if pre:
         o['preRequisites:9'] = pre
     o['properties:10'] = {'betterquesting:10': quest_props(q, reg, settings)}
+    if q.shape:
+        o['properties:10']['akashaui:10'] = OrderedDict([('shape:8', q.shape)])
     hi, lo = uuid_parts(q.uuid)
     o['questIDHigh:4'] = hi
     o['questIDLow:4'] = lo
@@ -667,6 +692,72 @@ def build_quest_json(q, all_quests, reg, settings):
         tk['%d:10' % i] = build_task(t, i, ctx, reg)
     o['tasks:9'] = tk
     return o
+
+
+def quest_ref(ref, chapter, all_quests, ctx):
+    """'quest' or 'chapter:quest' -> BQ base64 id (what the mod's Ids.parse reads)."""
+    key = ref if ':' in ref else '%s:%s' % (chapter.id, ref)
+    if key not in all_quests:
+        raise GenError('%s: unknown quest %r' % (ctx, ref))
+    return encode_uuid(all_quests[key].uuid)
+
+
+def chapter_image(img, chapter, all_quests, ctx):
+    """One chapter image (mod/docs/DESIGN.md §8). Position: `at: [col, row]` (quest grid) or `pos: [x, y]`."""
+    if 'image' not in img:
+        raise GenError('%s: image without `image:`' % ctx)
+    if 'at' in img:
+        x, y = img['at'][0] * COL_W, img['at'][1] * ROW_H
+    else:
+        x, y = img.get('pos', [0, 0])
+    size = img.get('size', [32, 32])
+    if not isinstance(size, list):
+        size = [size, size]
+    o = OrderedDict([('image:8', str(img['image'])), ('x:6', float(x)), ('y:6', float(y)),
+                     ('w:6', float(size[0])), ('h:6', float(size[1]))])
+    if img.get('rot'):
+        o['rot:6'] = float(img['rot'])
+    if 'alpha' in img:
+        o['alpha:5'] = float(img['alpha'])
+    if 'tint' in img:
+        o['tint:3'] = struct.unpack('>i', struct.pack('>I', 0xFF000000 | int(str(img['tint']).lstrip('#'), 16)))[0]
+    layer = str(img.get('layer', 'back'))
+    if layer not in IMAGE_LAYERS:
+        raise GenError('%s: layer must be one of %s' % (ctx, ', '.join(IMAGE_LAYERS)))
+    if IMAGE_LAYERS[layer]:
+        o['layer:3'] = IMAGE_LAYERS[layer]
+    hover = as_list(img.get('hover'))
+    if hover:
+        o['hover:9'] = OrderedDict(('%d:8' % i, str(h)) for i, h in enumerate(hover))
+    click = str(img.get('click', ''))
+    if click.startswith('quest:'):
+        click = 'quest:' + quest_ref(click[6:], chapter, all_quests, ctx)
+    elif click.startswith('chapter:'):
+        click = 'chapter:' + encode_uuid(line_uuid(click[8:]))
+    elif click and not click.startswith('url:'):
+        raise GenError('%s: click must start with quest:, chapter: or url:' % ctx)
+    if click:
+        o['click:8'] = click
+    if img.get('dep'):
+        o['dep:8'] = quest_ref(str(img['dep']), chapter, all_quests, ctx)
+    if img.get('edit_only'):
+        o['edit:1'] = 1
+    return o
+
+
+def chapter_ui_props(c, all_quests):
+    ui = OrderedDict()
+    if c.group:
+        ui['group:8'] = c.group
+    if c.shape:
+        ui['shape:8'] = c.shape
+    if c.short:
+        ui['title:8'] = c.short
+    images = as_list(c.meta.get('images'))
+    if images:
+        ui['images:9'] = OrderedDict(
+            ('%d:10' % i, chapter_image(img, c, all_quests, '%s.images[%d]' % (c.id, i))) for i, img in enumerate(images))
+    return ui
 
 
 def build(strict=False, out_dir=OUT_DIR, quiet=False):
@@ -739,6 +830,9 @@ def build(strict=False, out_dir=OUT_DIR, quiet=False):
             ('name:8', c.meta.get('color', '') + c.title),
             ('visibility:8', VISIBILITIES[str(c.meta.get('visibility', 'normal')).lower()]),
         ])}
+        ui = chapter_ui_props(c, all_quests)
+        if ui:
+            ql['properties:10']['akashaui:10'] = ui
         hi, lo = uuid_parts(c.uuid)
         ql['questLineIDHigh:4'] = hi
         ql['questLineIDLow:4'] = lo
@@ -816,10 +910,15 @@ def main():
     ap.add_argument('cmd', choices=['build', 'lint', 'stats'])
     ap.add_argument('files', nargs='*')
     ap.add_argument('--strict', action='store_true')
+    ap.add_argument('--chapters', help='chapter folder (default: quests/chapters)')
+    ap.add_argument('--out', help='output config/betterquesting folder (default: dist/config/betterquesting)')
     a = ap.parse_args()
+    global CHAPTER_DIR
+    if a.chapters:
+        CHAPTER_DIR = os.path.abspath(a.chapters)
     try:
         if a.cmd == 'build':
-            build(strict=a.strict)
+            build(strict=a.strict, out_dir=os.path.abspath(a.out) if a.out else OUT_DIR)
         elif a.cmd == 'stats':
             stats()
         else:
