@@ -218,7 +218,7 @@ public class ChapterPanel extends Widget {
             }
         }
         int dw = drawnWidth();
-        Draw.rect(x, y, x + dw, y + h, Palette.PANEL);
+        Draw.rect(x, y, x + dw, y + h, Palette.panelBg());
         Draw.rect(x + dw - 1, y, x + dw, y + h, Palette.PANEL_EDGE);
         if (dw <= STRIP + 1) {
             Draw.triangle(x + (dw - 1 - 6) / 2.0, y + h / 2.0 - 3, 6, Draw.RIGHT, Palette.TEXT_2);
@@ -251,7 +251,7 @@ public class ChapterPanel extends Widget {
     }
 
     private void drawHeader(int mx, int my, int dw, float pt) {
-        Draw.rect(x, y, x + dw - 1, y + HEADER, Palette.PANEL_HEADER);
+        Draw.rect(x, y, x + dw - 1, y + HEADER, 0x14FFFFFF);
         Draw.rect(x, y + HEADER - 1, x + dw - 1, y + HEADER, Palette.PANEL_EDGE);
         int right = x + dw - 1 - PAD;
         // pin

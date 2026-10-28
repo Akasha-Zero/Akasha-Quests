@@ -108,7 +108,7 @@ public class Toolbar extends Widget {
     @Override
     public void drawPanel(int mx, int my, float partialTick) {
         layout();
-        Draw.rect(x, y, x + w, y + h, Palette.PANEL);
+        Draw.rect(x, y, x + w, y + h, Palette.panelBg());
         Draw.rect(x, y, x + 1, y + h, Palette.PANEL_EDGE);
         Button hot = at(mx, my);
         int ix = x + (w - ICON) / 2 + 1;

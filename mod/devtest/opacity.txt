@@ -1,0 +1,30 @@
+# Translucent background: default 72 %, then 50 % from the view options menu
+world
+waitquests
+wait 40
+cmd /time set 1000
+cmd /bq_admin edit true
+complete Madeira
+complete Tábuas
+complete Bancada
+wait 30
+open
+wait 10
+chapter Primeiros Passos
+wait 20
+shot o01_default
+click 630 258
+wait 5
+menu 50%
+key 1
+wait 10
+shot o02_50
+quest Fornalha
+wait 15
+shot o03_view
+close
+click 630 258
+wait 5
+menu 72%
+key 1
+exit

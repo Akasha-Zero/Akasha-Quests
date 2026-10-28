@@ -921,6 +921,15 @@ public class QuestScreen extends GuiScreenCanvas implements INeedsRefresh, MapHo
                 refreshGui();
             });
         }
+        List<ContextMenu.Item> opacity = new ArrayList<>();
+        for (int pct : new int[] { 100, 90, 80, 72, 60, 50, 40, 30 }) {
+            opacity.add(
+                ContextMenu.check(
+                    pct + "%",
+                    () -> Math.round(Config.backgroundOpacity * 100) == pct,
+                    () -> Config.setBackgroundOpacity(pct / 100.0)));
+        }
+        m.submenu(Lang.get("bg_opacity"), PresetIcon.ICON_VISIBILITY_IMPLICIT, opacity);
         m.toggle(
             Lang.get("animate_lines"),
             () -> Config.animateLines,

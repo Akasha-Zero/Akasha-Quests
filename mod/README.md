@@ -16,6 +16,8 @@ Especificação completa (geometria, layout, cores, dados): [docs/DESIGN.md](doc
 | ![mapa](docs/img/mapa.png) | ![janela](docs/img/janela_quest.png) |
 | **Zoom (formas com anti-aliasing)** | **Menu de contexto** |
 | ![zoom](docs/img/zoom.png) | ![menu](docs/img/menu.png) |
+| **Fundo translúcido (72 %)** | |
+| ![fundo](docs/img/fundo_translucido.png) | |
 | **Modo de edição: imagem selecionada** | **Propriedades da imagem** |
 | ![edição](docs/img/edicao_imagem.png) | ![diálogo](docs/img/dialogo_imagem.png) |
 
@@ -61,6 +63,7 @@ Cada gesto concluído é enviado ao servidor pelos pacotes do próprio BQ e sinc
 | `defaultShape` / `mainShape` | `circle` / `hexagon` | Formas padrão |
 | `animateLines`, `lineSpeed` | `true`, `0.5` | Chevrons nas linhas |
 | `pulseAvailable` | `true` | Brilho nas quests que podem ser feitas |
+| `backgroundOpacity` | `0.72` | Opacidade do fundo do mapa (1 = sólido; menos mostra o mundo atrás). Também em Opções de visualização |
 
 ## Compilar
 

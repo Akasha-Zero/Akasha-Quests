@@ -26,6 +26,11 @@ public final class Config {
     public static boolean animateLines = true;
     public static double lineSpeed = 0.5;
     public static boolean pulseAvailable = true;
+    /**
+     * Opacity of the map background; below 1 the world shows through like in FTB Quests. Side panels use
+     * min(1, a + 0.15) so their text stays readable (DESIGN §10).
+     */
+    public static double backgroundOpacity = 0.72;
 
     // Client view state, saved across sessions
     public static boolean sidebarPinned = true;
@@ -61,6 +66,15 @@ public final class Config {
         lineSpeed = cfg.get(UI, "lineSpeed", 0.5, "Chevron speed in tiles per second.", 0.0, 4.0)
             .getDouble();
         pulseAvailable = cfg.getBoolean("pulseAvailable", UI, true, "Soft glow pulse on quests that can be started.");
+        backgroundOpacity = cfg
+            .get(
+                UI,
+                "backgroundOpacity",
+                0.72,
+                "Map background opacity (1 = solid, lower shows the world behind).",
+                0.2,
+                1.0)
+            .getDouble();
 
         sidebarPinned = cfg
             .getBoolean("sidebarPinned", STATE, true, "Chapter panel pinned open (toggled by the pin button).");
@@ -72,6 +86,14 @@ public final class Config {
 
     private static String shape(String s) {
         return Shapes.exists(s) ? s : "circle";
+    }
+
+    public static void setBackgroundOpacity(double a) {
+        backgroundOpacity = Math.max(0.2, Math.min(1.0, a));
+        if (cfg == null) return;
+        cfg.get(UI, "backgroundOpacity", 0.72)
+            .set(backgroundOpacity);
+        cfg.save();
     }
 
     public static void saveState() {

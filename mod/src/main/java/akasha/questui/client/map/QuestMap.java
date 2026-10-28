@@ -217,7 +217,7 @@ public class QuestMap extends Widget {
 
         RenderUtils.startScissor(new GuiRectangle(x, y, w, h));
         GL11.glPushMatrix();
-        Draw.rect(x, y, x + w, y + h, Palette.MAP_BG);
+        Draw.rect(x, y, x + w, y + h, Palette.mapBg());
         if (model != null) {
             drawBgImage();
             drawGrid();

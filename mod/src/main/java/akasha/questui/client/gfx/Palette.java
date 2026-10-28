@@ -5,6 +5,20 @@ public final class Palette {
 
     private Palette() {}
 
+    /** Map background with the configured opacity (DESIGN §10). */
+    public static int mapBg() {
+        return Draw.withAlpha(MAP_BG, (float) akasha.questui.Config.backgroundOpacity);
+    }
+
+    /** Side panels and toolbar: a step more opaque than the map, a = min(1, a_map + 0.15). */
+    public static int panelBg() {
+        return Draw.withAlpha(PANEL, (float) Math.min(1.0, akasha.questui.Config.backgroundOpacity + 0.15));
+    }
+
+    public static int panelHeaderBg() {
+        return Draw.withAlpha(PANEL_HEADER, (float) Math.min(1.0, akasha.questui.Config.backgroundOpacity + 0.15));
+    }
+
     // Surfaces
     public static final int MAP_BG = 0xFF16161A;
     public static final int GRID = 0xFFFFFFFF;

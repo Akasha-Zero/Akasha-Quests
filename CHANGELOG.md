@@ -14,6 +14,8 @@ para o BetterQuesting 3.8.79-GTNH.
 - Modo de edição: mover quests e imagens, redimensionar e girar imagens, forma e tamanho das
   quests, requisitos, grupos e ordem dos capítulos, desfazer.
 - `bqgen`: campos `shape`, `group`, `short` e `images`; formas padrão por tipo de quest.
+- Fundo translúcido como no FTB Quests: o mundo aparece atrás do mapa (opacidade ajustável em
+  Opções de visualização ou `backgroundOpacity` no config).
 
 # Changelog — Akasha Quests 1.0.0
 

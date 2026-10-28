@@ -150,7 +150,10 @@ De centro a centro, desenhadas **antes** das quests (que as ocultam por cima). P
 
 ## 5. Fundo do mapa
 
-`#16161A` com duas grades em espaçamento de mundo `g = 8` (menor) e `4g = 32` (maior).
+`#16161A` com opacidade `a` (padrão `0,72`, ajustável de 0,2 a 1 em Opções de visualização →
+Opacidade do fundo): abaixo de 1 o mundo aparece por trás, como no FTB Quests. Barra lateral e barra de
+ferramentas usam `min(1, a + 0,15)` para o texto continuar legível; a janela da quest, menus e
+diálogos continuam sólidos. Por cima, duas grades em espaçamento de mundo `g = 8` (menor) e `4g = 32` (maior).
 A opacidade some suavemente quando as linhas ficariam densas demais:
 `α_menor = 0,035·clamp((8z − 5)/7, 0, 1)` e `α_maior = 0,07·clamp((32z − 5)/7, 0, 1)`.
 A imagem de fundo nativa do BQ (`bg_image`, `bg_size`) é desenhada sob a grade.
@@ -281,8 +284,8 @@ No JSON do BQ (multi-arquivo) aparecem como `"akashaui:10": {"shape:8": "hexagon
 
 | Token | Valor |
 | --- | --- |
-| fundo do mapa | `#16161A` |
-| painel (barra lateral, popup) | `#101014` α 0,94 |
+| fundo do mapa | `#16161A` α `a` (configurável, padrão 0,72) |
+| painel (barra lateral, barra de ferramentas) | `#101014` α `min(1, a + 0,15)` |
 | borda de painel | `#3A3A44` |
 | cabeçalho de painel | `#1C1C22` |
 | hover de linha | `#FFFFFF` α 0,12 |
