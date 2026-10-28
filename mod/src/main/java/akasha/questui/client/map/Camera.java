@@ -134,19 +134,19 @@ public class Camera {
 
     /** Advance the zoom animation (call once per frame). */
     public void tick() {
-        long now = Anim.millis();
+        tick(Anim.millis());
+    }
+
+    void tick(long now) {
         double dt = lastMillis < 0 ? 16 : Math.min(100, now - lastMillis);
         lastMillis = now;
-        if (Math.abs(zoom - targetZoom) < 1e-4 * targetZoom) {
-            zoom = targetZoom;
-            anchored = false;
-            return;
-        }
-        zoom += (targetZoom - zoom) * Anim.approach(dt, TAU_MS);
+        boolean settled = Math.abs(zoom - targetZoom) < 1e-4 * targetZoom;
+        zoom = settled ? targetZoom : zoom + (targetZoom - zoom) * Anim.approach(dt, TAU_MS);
         if (anchored) {
             // c' = w* - (s* - v0) / z'
             cx = anchorWx - (anchorSx - v0x()) / zoom;
             cy = anchorWy - (anchorSy - v0y()) / zoom;
+            if (settled) anchored = false;
         }
         clamp();
     }

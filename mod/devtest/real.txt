@@ -1,0 +1,33 @@
+# Stress test with the real book (dist/): 102 chapters, 8939 quests
+world
+waitquests
+wait 60
+cmd /bq_admin default load
+wait 200
+open
+wait 40
+fps
+shot r01_open
+chapter IndustrialCraft 2
+wait 60
+fps
+shot r02_ic2
+scroll 400 180 -4
+wait 40
+fps
+shot r03_ic2_zoom
+key 199
+chapter Tinkers
+wait 30
+shot r04_tinkers
+quest Fundição
+wait 20
+shot r05_view
+close
+scroll 60 200 30
+wait 10
+shot r06_sidebar_scrolled
+chapter Prólogo
+wait 30
+shot r07_prologo
+exit

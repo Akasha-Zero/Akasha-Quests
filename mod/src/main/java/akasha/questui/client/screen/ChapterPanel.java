@@ -105,8 +105,8 @@ public class ChapterPanel extends Widget {
 
     /** W_s = clamp(max title + icon + indent + badge + margins, 110, 0.30 W) (DESIGN §6). */
     public int preferredWidth(int screenW) {
-        int max = Draw.font()
-            .getStringWidth(host.packTitle()) + 28;
+        // content-driven: the pack title in the header is ellipsized instead of widening the panel
+        int max = 0;
         for (ChapterInfo c : chapters) {
             max = Math.max(max, Draw.font()
                 .getStringWidth(c.label) + ICON + INDENT + BADGE + 4 + 3 * PAD);
@@ -212,7 +212,7 @@ public class ChapterPanel extends Widget {
         Draw.rect(x, y, x + dw, y + h, Palette.PANEL);
         Draw.rect(x + dw - 1, y, x + dw, y + h, Palette.PANEL_EDGE);
         if (dw <= STRIP + 1) {
-            Draw.textCentered("▸", x + dw / 2.0, y + h / 2.0 - 4, Palette.TEXT_2, false);
+            Draw.triangle(x + (dw - 1 - 6) / 2.0, y + h / 2.0 - 3, 6, Draw.RIGHT, Palette.TEXT_2);
             return;
         }
 
@@ -266,7 +266,7 @@ public class ChapterPanel extends Widget {
     private void drawGroup(Row r, int ry, int dw, boolean hot) {
         if (hot) Draw.rect(x, ry, x + dw - 1, ry + r.h, Palette.ROW_HOVER);
         boolean collapsed = Config.collapsedGroups.contains(r.group);
-        Draw.text(collapsed ? "▸" : "▾", x + PAD, ry + 3, Palette.TEXT_2, false);
+        Draw.triangle(x + PAD, ry + 3.5, 6, collapsed ? Draw.RIGHT : Draw.DOWN, Palette.TEXT_2);
         Draw.text(Draw.ellipsize(QuestTranslation.translate(r.group), dw - 2 * PAD - 12), x + PAD + 9, ry + 3,
             Palette.TEXT_GROUP, false);
     }

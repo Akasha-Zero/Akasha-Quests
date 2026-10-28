@@ -32,9 +32,9 @@ import betterquesting.client.themes.ThemeRegistry;
  */
 public class ImageDialog extends Dialog {
 
-    private static final int LABEL = 64;
+    private static final int LABEL = 76;
     private static final int ROW = 18;
-    private static final int W = 270;
+    private static final int W = 284;
 
     private final QuestScreen screen;
     private final ChapterImage original;

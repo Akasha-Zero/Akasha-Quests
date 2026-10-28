@@ -81,6 +81,7 @@ public class QuestView extends Widget {
     private final GuiRectangle rReward = new GuiRectangle(0, 0, 0, 0);
     private final GuiRectangle rDesc = new GuiRectangle(0, 0, 0, 0);
     private int colY, colH, descY, descH, footY, midX;
+    private int vx, vy, vw, vh;
     private boolean hasRewards;
 
     // BQ content
@@ -132,11 +133,12 @@ public class QuestView extends Widget {
         rebuild();
     }
 
-    /** Lays the view out inside the map viewport (DESIGN §7). */
+    /** Remembers the map viewport the view is centred in (DESIGN §7). */
     public void layoutIn(int vx, int vy, int vw, int vh) {
-        int pw = vw < 316 ? vw - 16 : clamp((int) Math.round(0.70 * vw), 300, 480);
-        int ph = vh < 206 ? vh - 16 : clamp((int) Math.round(0.82 * vh), 190, 340);
-        setBounds(vx + (vw - pw) / 2, vy + (vh - ph) / 2, pw, ph);
+        this.vx = vx;
+        this.vy = vy;
+        this.vw = vw;
+        this.vh = vh;
         if (isEnabled()) {
             saveScroll();
             rebuild();
@@ -159,7 +161,7 @@ public class QuestView extends Widget {
 
     private void rebuild() {
         children.clear();
-        if (quest == null || w <= 0) return;
+        if (quest == null || vw <= 0) return;
 
         title = GuiTextToggles.applyMonochromeIfEnabled(QuestTranslation.translateQuestName(questId, quest));
         BigItemStack ico = quest.getProperty(NativeProps.ICON);
@@ -169,33 +171,60 @@ public class QuestView extends Widget {
         hasRewards = quest.getRewards()
             .size() > 0;
 
-        int innerX = x + PAD, innerW = w - 2 * PAD;
-        int bodyY = y + HEADER + 2;
-        int bodyH = h - HEADER - FOOTER - 2 * PAD;
+        boolean hasTasks = quest.getTasks()
+            .size() > 0;
+        boolean columns = hasTasks || hasRewards;
 
-        // Description first: its wrapped height decides the split (h_d = min(h_text + 4, max(36, 0.42 H_b)))
-        rDesc.x = innerX;
-        rDesc.w = innerW;
+        // Width: W_p = clamp(0.78 w_v, 300, 480 with rewards | 360 without) (DESIGN §7); BQ task panels need ~200 px
+        int pw = vw < 316 ? vw - 16 : clamp((int) Math.round(0.78 * vw), 300, hasRewards ? 480 : 360);
+        int hMax = vh < 206 ? vh - 16 : (int) Math.round(0.82 * vh);
+        int innerW = pw - 2 * PAD;
+        int colWT = hasRewards ? (innerW - 6) / 2 : innerW;
+        int colWR = innerW - 6 - colWT;
+
+        // Measure: task/reward panels and the wrapped description decide the height (shrink to fit)
+        rTask.h = rReward.h = hMax;
+        int needT = hasTasks ? buildTasks(measureCanvas(), colWT - SCROLL_W) : 0;
+        int needR = hasRewards ? buildRewards(measureCanvas(), colWR - SCROLL_W) : 0;
         List<IGuiPanel> descPanels = new ArrayList<>();
         int textH = buildDescription(descPanels, innerW - SCROLL_W - 2);
-        boolean noColumns = quest.getTasks()
-            .size() == 0 && !hasRewards;
-        descH = textH == 0 ? 0 : (noColumns ? bodyH : Math.min(textH + 4, Math.max(36, (int) (0.42 * bodyH))));
-        colY = bodyY;
-        colH = noColumns ? 0 : bodyH - descH - (descH > 0 ? 4 : 0);
-        descY = colY + colH + (descH > 0 && colH > 0 ? 4 : 0);
+        int colNeed = columns ? COL_HEADER + 2 + Math.max(needT, needR) : 0;
+        int descNeed = textH > 0 ? textH + 4 : 0;
+        int gap = columns && descNeed > 0 ? 4 : 0;
+        int ph = clamp(HEADER + FOOTER + 2 * PAD + colNeed + gap + descNeed, 150, Math.max(150, hMax));
+        setBounds(vx + (vw - pw) / 2, vy + (vh - ph) / 2, pw, ph);
+
+        // Split the body: both fit -> each gets its need, spare space to the columns; otherwise the description
+        // gets h_d = min(need, max(36, 0.42 avail, avail - columns need))
+        int bodyH = h - HEADER - FOOTER - 2 * PAD;
+        int avail = bodyH - gap;
+        if (!columns) {
+            descH = avail;
+            colH = 0;
+        } else if (colNeed + descNeed <= avail) {
+            descH = descNeed;
+            colH = avail - descH;
+        } else {
+            descH = descNeed == 0 ? 0 : Math.min(descNeed, Math.max(36, Math.max((int) (0.42 * avail), avail - colNeed)));
+            colH = avail - descH;
+        }
+        int innerX = x + PAD;
+        colY = y + HEADER + 2;
+        descY = colY + colH + gap;
         footY = y + h - FOOTER - PAD + 4;
-        midX = hasRewards ? x + w / 2 : x + w - PAD;
+        midX = hasRewards ? innerX + colWT + 3 : x + w - PAD;
+        rDesc.x = innerX;
+        rDesc.w = innerW;
 
         int listY = colY + COL_HEADER + 2;
         int listH = Math.max(0, colH - COL_HEADER - 2);
         rTask.x = innerX;
         rTask.y = listY;
-        rTask.w = midX - innerX - (hasRewards ? 3 : 0);
+        rTask.w = colWT;
         rTask.h = listH;
         rReward.x = midX + 3;
         rReward.y = listY;
-        rReward.w = x + w - PAD - rReward.x;
+        rReward.w = colWR;
         rReward.h = listH;
         rDesc.y = descY;
         rDesc.h = descH;
@@ -232,6 +261,12 @@ public class QuestView extends Widget {
         }
     }
 
+    private static CanvasScrolling measureCanvas() {
+        CanvasScrolling cs = new CanvasScrolling(new GuiRectangle(0, 0, 100, 100));
+        cs.initPanel();
+        return cs;
+    }
+
     private CanvasScrolling scroller(GuiRectangle region) {
         CanvasScrolling cs = new CanvasScrolling(
             new GuiTransform(GuiAlign.FULL_BOX, new GuiPadding(0, 0, SCROLL_W + 1, 0), 0));
@@ -262,7 +297,7 @@ public class QuestView extends Widget {
     }
 
     /** Same structure as BQ's GuiQuest.refreshTaskPanel: numbered title, task panel on a framed canvas, OR marks. */
-    private void buildTasks(CanvasScrolling cs, int width) {
+    private int buildTasks(CanvasScrolling cs, int width) {
         int yy = 0;
         EnumLogic logic = quest.getProperty(NativeProps.LOGIC_TASK);
         List<DBEntry<ITask>> entries = quest.getTasks()
@@ -301,10 +336,11 @@ public class QuestView extends Widget {
             }
             yy += 4;
         }
+        return yy;
     }
 
     /** Same structure as BQ's GuiQuest.refreshRewardPanel. */
-    private void buildRewards(CanvasScrolling cs, int width) {
+    private int buildRewards(CanvasScrolling cs, int width) {
         int yy = 0;
         for (DBEntry<IReward> entry : quest.getRewards()
             .getEntries()) {
@@ -329,6 +365,7 @@ public class QuestView extends Widget {
                 yy += ph + 4;
             }
         }
+        return yy;
     }
 
     /** BQ description with [img height=N]domain:path[/img] segments; returns the total height. */
@@ -468,18 +505,18 @@ public class QuestView extends Widget {
         int hy = colY + 2;
         int tCx = (x + PAD + midX) / 2;
         Draw.textCentered(Lang.get("tasks"), tCx, hy, Palette.TASKS, true);
-        if (!deps.isEmpty()) arrow("◀", x + PAD, hy, mx, my);
+        if (!deps.isEmpty()) arrow(Draw.LEFT, x + PAD, hy, mx, my);
         if (hasRewards) {
             int rCx = (midX + x + w - PAD) / 2;
             Draw.textCentered(Lang.get("rewards"), rCx, hy, Palette.REWARDS, true);
         }
-        if (!dependants.isEmpty()) arrow("▶", x + w - PAD - 8, hy, mx, my);
+        if (!dependants.isEmpty()) arrow(Draw.RIGHT, x + w - PAD - 8, hy, mx, my);
     }
 
-    private static void arrow(String s, int ax, int ay, int mx, int my) {
+    private static void arrow(int dir, int ax, int ay, int mx, int my) {
         boolean hot = mx >= ax - 2 && mx < ax + 10 && my >= ay - 2 && my < ay + 10;
         if (hot) Draw.rect(ax - 2, ay - 2, ax + 10, ay + 10, 0x30FFFFFF);
-        Draw.text(s, ax, ay, hot ? Palette.TEXT : Palette.TEXT_2, false);
+        Draw.triangle(ax, ay, 8, dir, hot ? Palette.TEXT : Palette.TEXT_2);
     }
 
     private int[] detectBtn() {

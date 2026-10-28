@@ -195,7 +195,7 @@ public class ContextMenu extends Widget {
             }
             int tc = it.enabled ? it.color : Palette.TEXT_OFF;
             Draw.text(it.label, ix + ICON + 4, yy + (ROW - 8) / 2 + 1, tc, false);
-            if (it.sub != null) Draw.text("▸", x + w - PAD - 6, yy + (ROW - 8) / 2 + 1, tc, false);
+            if (it.sub != null) Draw.triangle(x + w - PAD - 6, yy + (ROW - 6) / 2.0, 6, Draw.RIGHT, tc);
             yy += ROW;
         }
 
@@ -219,6 +219,25 @@ public class ContextMenu extends Widget {
         close.run();
         if (it.action != null) it.action.run();
         return true;
+    }
+
+    /** Activates the first enabled item whose label contains the text, searching open submenus too. */
+    public boolean activate(String labelPart) {
+        for (int i = 0; i < items.size(); i++) {
+            Item it = items.get(i);
+            if (it.separator || !it.enabled || !it.label.contains(labelPart)) continue;
+            if (it.sub != null) continue;
+            if (it.checked == null) close.run();
+            if (it.action != null) it.action.run();
+            return true;
+        }
+        for (Item it : items) {
+            if (it.sub == null || !it.enabled) continue;
+            ContextMenu sub = new ContextMenu(close);
+            sub.items.addAll(it.sub);
+            if (sub.activate(labelPart)) return true;
+        }
+        return false;
     }
 
     @Override

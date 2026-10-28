@@ -52,7 +52,9 @@ public class ChapterInfo {
         this.name = QuestTranslation.translateQuestLineName(id, line);
         String shortTitle = line.getProperty(UiProps.TITLE)
             .trim();
-        this.label = shortTitle.isEmpty() ? name : QuestTranslation.translate(shortTitle);
+        // formatting stripped: in the panel, colour encodes state (selected, complete, locked)
+        this.label = net.minecraft.util.EnumChatFormatting
+            .getTextWithoutFormattingCodes(shortTitle.isEmpty() ? name : QuestTranslation.translate(shortTitle));
         this.group = line.getProperty(UiProps.GROUP)
             .trim();
         this.icon = new OreDictTexture(1F, line.getProperty(NativeProps.ICON), false, true);

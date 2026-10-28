@@ -172,8 +172,9 @@ A imagem de fundo nativa do BQ (`bg_image`, `bg_size`) é desenhada sob a grade.
 ```
 
 **Barra lateral.** Largura
-`W_s = clamp(maxᵢ largura(títuloᵢ) + 8 + 10 + 12 + 6, 110, ⌊0,30·W⌋)`
-(ícone 8 + recuo do grupo 10 + selo 12 + margens). Linhas de 12 px (ícone 8 px: a 2× da GUI
+`W_s = clamp(maxᵢ largura(títuloᵢ) + 8 + 8 + 8 + 16, 110, ⌊0,30·W⌋)`
+(ícone 8 + recuo do grupo 8 + selo 8 + margens; o nome do pack no cabeçalho é encurtado com
+reticências e não alarga o painel). Os capítulos mostram o nome curto `akashaui:title` quando existe. Linhas de 12 px (ícone 8 px: a 2× da GUI
 isso é 16 px de dispositivo, escala 1:1 do sprite do item), cabeçalho de grupo 13 px,
 cabeçalho do painel 18 px. Dois modos:
 
@@ -193,14 +194,18 @@ operadores), notificações, sair.
 
 ## 7. Janela da quest (popup)
 
-Viewport do mapa `V = (w_v, h_v)`. Dimensões:
+Viewport do mapa `V = (w_v, h_v)`. A janela se ajusta ao conteúdo, como no FTB Quests:
 
 ```
-W_p = clamp(⌊0,70·w_v⌉, 300, 480)        (se w_v < 316: W_p = w_v − 16)
-H_p = clamp(⌊0,82·h_v⌉, 190, 340)        (se h_v < 206: H_p = h_v − 16)
+W_p = clamp(⌊0,78·w_v⌉, 300, 480 com recompensas | 360 sem)   (se w_v < 316: W_p = w_v − 16)
+H_max = ⌊0,82·h_v⌉                                               (se h_v < 206: h_v − 16)
+H_p = clamp(h_h + h_f + 2p + c + g + d, 150, H_max)
 ```
 
-centrada em `V`. Fundo do mapa escurecido por `#000000 60%`. Margem interna `p = 6`.
+onde `c = 12 + 2 + max(altura das tarefas, altura das recompensas)` (medidas montando os próprios
+painéis do BQ), `d = altura da descrição quebrada + 4` e `g = 4` quando há colunas e descrição.
+A janela é centrada em `V`. A largura é generosa porque os painéis de tarefa do BQ precisam de
+≈ 200 px por coluna para não cortar nomes de itens. Fundo do mapa escurecido por `#000000 60%`. Margem interna `p = 6`.
 
 ```
 ┌──────────────────────────────────────────────────────────┐
@@ -216,10 +221,10 @@ centrada em `V`. Fundo do mapa escurecido por `#000000 60%`. Margem interna `p =
 └──────────────────────────────────────────────────────────┘
 ```
 
-Altura do corpo `H_b = H_p − h_h − h_f − 2p`. A descrição recebe o que precisa, até 42%:
-`h_d = min(h_texto + 4, max(36, ⌊0,42·H_b⌋))`, onde `h_texto` = linhas quebradas × 9 + alturas
-das imagens. As colunas ficam com `h_c = H_b − h_d − 4`. Sem descrição, `h_d = 0`; sem
-recompensas, a coluna de tarefas ocupa a largura toda. `◀`/`▶` abrem a lista de
+Altura do corpo `H_b = H_p − h_h − h_f − 2p` e `A = H_b − g`. Se colunas e descrição cabem
+(`c + d ≤ A`), cada uma recebe o que precisa e a sobra vai para as colunas. Senão a descrição fica
+com `h_d = min(d, max(36, ⌊0,42·A⌋, A − c))` e as colunas com `h_c = A − h_d`; as duas rolam.
+Sem recompensas, a coluna de tarefas ocupa a largura toda. `◀`/`▶` abrem a lista de
 pré-requisitos/dependentes (navegação do BQ GTNH) e levam a câmera até a quest escolhida.
 
 Abertura: escala `0,92 → 1` e `α 0 → 1` em 120 ms com `1 − (1 − t)³`, em torno do centro.

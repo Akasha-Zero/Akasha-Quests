@@ -163,6 +163,47 @@ public final class Draw {
         restore();
     }
 
+    /** Direction constants for {@link #triangle}. */
+    public static final int RIGHT = 0, DOWN = 1, LEFT = 2, UP = 3;
+
+    /**
+     * Filled isosceles triangle inscribed in the square (x, y, s): base on one side, apex at the middle of the
+     * opposite side. Used for disclosure and navigation arrows (the MC font has no such glyphs).
+     */
+    public static void triangle(double x, double y, double s, int dir, int argb) {
+        double[][] p;
+        double m = s / 2;
+        double inset = s * 0.2; // narrower base reads better at 5-7 px
+        switch (dir) {
+            case DOWN:
+                p = new double[][] { { x, y + inset }, { x + s, y + inset }, { x + m, y + s - inset } };
+                break;
+            case LEFT:
+                p = new double[][] { { x + s - inset, y }, { x + s - inset, y + s }, { x + inset, y + m } };
+                break;
+            case UP:
+                p = new double[][] { { x, y + s - inset }, { x + m, y + inset }, { x + s, y + s - inset } };
+                break;
+            default:
+                p = new double[][] { { x + inset, y }, { x + s - inset, y + m }, { x + inset, y + s } };
+        }
+        blend();
+        GL11.glDisable(GL11.GL_TEXTURE_2D);
+        Tessellator t = Tessellator.instance;
+        // GUI quads are emitted with a negative signed area (y down); keep triangles the same way or they get culled
+        double area2 = (p[1][0] - p[0][0]) * (p[2][1] - p[0][1]) - (p[2][0] - p[0][0]) * (p[1][1] - p[0][1]);
+        if (area2 > 0) {
+            double[] tmp = p[1];
+            p[1] = p[2];
+            p[2] = tmp;
+        }
+        t.startDrawing(GL11.GL_TRIANGLES);
+        color(t, argb);
+        for (double[] v : p) t.addVertex(v[0], v[1], 0);
+        t.draw();
+        restore();
+    }
+
     /** Untextured line of width w between two points. */
     public static void line(double ax, double ay, double bx, double by, double w, int argb) {
         double dx = bx - ax;

@@ -104,10 +104,6 @@ public class MapEditor {
         return Keyboard.isKeyDown(Keyboard.KEY_LSHIFT) || Keyboard.isKeyDown(Keyboard.KEY_RSHIFT);
     }
 
-    private static double snap(double v, double unit) {
-        return Math.round(v / unit) * unit;
-    }
-
     // ------------------------------------------------------------------------------------------
     // Pointer
     // ------------------------------------------------------------------------------------------
@@ -190,14 +186,14 @@ public class MapEditor {
                 for (Map.Entry<UUID, double[]> e : origin.entrySet()) {
                     QuestNode n = map.getModel().nodes.get(e.getKey());
                     if (n == null) continue;
-                    n.x = snap(e.getValue()[0] + dx, unit);
-                    n.y = snap(e.getValue()[1] + dy, unit);
+                    n.x = Geometry.snap(e.getValue()[0] + dx, unit);
+                    n.y = Geometry.snap(e.getValue()[1] + dy, unit);
                 }
                 return true;
             case MOVE_IMAGE:
                 if (img == null) return false;
-                img.x = snap(imageOrigin.x + dx, unit);
-                img.y = snap(imageOrigin.y + dy, unit);
+                img.x = Geometry.snap(imageOrigin.x + dx, unit);
+                img.y = Geometry.snap(imageOrigin.y + dy, unit);
                 return true;
             case RESIZE_IMAGE:
                 if (img == null) return false;
@@ -205,11 +201,7 @@ public class MapEditor {
                 return true;
             case ROTATE_IMAGE:
                 if (img == null) return false;
-                // theta = atan2(p - c) + 90 deg, snapped to 15 deg unless Shift
-                double deg = Math.toDegrees(Math.atan2(wy - img.y, wx - img.x)) + 90;
-                if (!shift()) deg = Math.round(deg / 15) * 15;
-                deg = ((deg % 360) + 360) % 360;
-                img.rot = deg > 180 ? deg - 360 : deg;
+                img.rot = Geometry.rotation(img.x, img.y, wx, wy, shift());
                 return true;
             case BOX:
                 boxX1 = mx;
@@ -220,38 +212,15 @@ public class MapEditor {
         }
     }
 
-    /**
-     * Resize keeping the opposite handle fixed (DESIGN §8). Local delta d = R(-theta) D; half sizes
-     * h' = max(1, h + s d / 2); centre moves by R(theta) (s_x (h'_x - h_x), s_y (h'_y - h_y)).
-     */
+    /** Resize keeping the opposite handle fixed (DESIGN §8, {@link Geometry#resize}). */
     private void resize(ChapterImage img, double dx, double dy) {
         ChapterImage o = imageOrigin;
-        double t = o.theta();
-        double c = Math.cos(t), s = Math.sin(t);
-        double lx = dx * c + dy * s;
-        double ly = -dx * s + dy * c;
-        double hx = o.w / 2, hy = o.h / 2;
-        double nhx = handleSx == 0 ? hx : Math.max(1, hx + handleSx * lx / 2);
-        double nhy = handleSy == 0 ? hy : Math.max(1, hy + handleSy * ly / 2);
-        if (shift() || ImageSources.resolve(o.image).item != null) {
-            // keep aspect: uniform factor from the axes being dragged
-            double k;
-            if (handleSx != 0 && handleSy != 0) k = Math.max(nhx / hx, nhy / hy);
-            else if (handleSx != 0) k = nhx / hx;
-            else k = nhy / hy;
-            nhx = hx * k;
-            nhy = hy * k;
-        }
-        nhx = Math.max(1, Math.round(nhx * 2) / 2.0);
-        nhy = Math.max(1, Math.round(nhy * 2) / 2.0);
-        // with keep-aspect on an edge handle the other axis grows symmetrically, so its centre shift is 0
-        double sx = handleSx != 0 ? handleSx : 0;
-        double sy = handleSy != 0 ? handleSy : 0;
-        double mxl = sx * (nhx - hx), myl = sy * (nhy - hy);
-        img.w = nhx * 2;
-        img.h = nhy * 2;
-        img.x = o.x + mxl * c - myl * s;
-        img.y = o.y + mxl * s + myl * c;
+        boolean keep = shift() || ImageSources.resolve(o.image).item != null;
+        double[] r = Geometry.resize(o.x, o.y, o.w, o.h, o.rot, handleSx, handleSy, dx, dy, keep);
+        img.x = r[0];
+        img.y = r[1];
+        img.w = r[2];
+        img.h = r[3];
     }
 
     /** True when the release finished an editor gesture (the map must not treat it as a click). */
@@ -383,8 +352,8 @@ public class MapEditor {
         NBTTagList before = ChapterImage.writeList(m.images);
         ChapterImage img = new ChapterImage();
         img.image = "akashaquestui:textures/gui/placeholder.png";
-        img.x = snap(wx, SNAP);
-        img.y = snap(wy, SNAP);
+        img.x = Geometry.snap(wx, SNAP);
+        img.y = Geometry.snap(wy, SNAP);
         m.images.add(img);
         selectImage(img);
         commitImages(before);

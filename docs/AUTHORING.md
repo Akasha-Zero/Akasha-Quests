@@ -124,3 +124,52 @@ Balanceamento em `docs/design/RECOMPENSAS.md`.
 Sem `at`, o gerador posiciona por camadas da esquerda para a direita (profundidade nos
 `deps` do próprio capítulo) e ordena verticalmente pelos pais. Colunas com mais de 14 quests
 são quebradas. Use `at` para desenhar formas (estrela, árvore, círculo) em capítulos-vitrine.
+
+## 7. Visual do Akasha Quests UI (estilo FTB Quests)
+
+O mod `mod/` (Akasha Quests UI) desenha o livro no estilo do FTB Quests. Os campos abaixo são
+opcionais: sem eles o livro continua funcionando no BetterQuesting puro, e o mod usa padrões.
+Tudo vai para o domínio `akashaui` do NBT do BQ (detalhes em `mod/docs/DESIGN.md`).
+
+**Quest**
+
+| Campo | Significado |
+| --- | --- |
+| `shape` | Forma do ícone no mapa: `circle`, `square`, `rsquare`, `diamond`, `pentagon`, `hexagon`, `octagon`, `heart`, `gear`, `star`, `none`. |
+
+Sem `shape`, a forma vem do tipo: `info` → `rsquare`, `milestone` → `gear`, `boss` → `octagon`,
+`portal` → `diamond`, `finale` → `star`. Os demais usam a forma padrão do capítulo ou do mod
+(hexágono para quests principais, círculo para as outras).
+
+**Capítulo** (`chapter:`)
+
+| Campo | Significado |
+| --- | --- |
+| `group` | Grupo na barra lateral. Padrão pela pasta: `story` → Crônicas Akáshicas, `base`, `aventura`, `tech` → Tecnologia, `magia`, `vida`, `aedf3` → A Era do Futuro 3, `atm` → All the Mods, `epilogo`. Use `group: ""` para deixar fora de grupo (aparece no topo). |
+| `short` | Nome curto na barra lateral. Padrão: o título sem o prefixo do grupo/série. |
+| `shape` | Forma padrão das quests do capítulo. |
+| `images` | Imagens no mapa (abaixo). |
+
+**Imagens** (como as imagens de capítulo do FTB Quests):
+
+```yaml
+chapter:
+  images:
+    - image: akashaquests:textures/titulo.png   # resource pack; ou file:pasta/a.png; ou item:minecraft:diamond
+      at: [2, -2]          # centro na grade das quests (coluna 44px, linha 40px); ou pos: [x, y] em pixels
+      size: [96, 48]       # largura, altura (um número = quadrado)
+      rot: 15              # graus, horário
+      alpha: 0.8
+      tint: "#FFD080"
+      layer: back          # back (atrás das linhas), middle (entre linhas e quests), front
+      hover: ["Texto da dica", "§7segunda linha"]
+      click: "quest:macerador"   # ou quest:outrocap:quest, chapter:ic2, url:https://...
+      dep: macerador       # só aparece depois que esta quest for concluída
+      edit_only: true      # só aparece no modo de edição (anotações de layout)
+```
+
+`file:` lê PNGs de `config/betterquesting/akasha_images/` (distribua a pasta com o pack).
+As imagens também podem ser colocadas, movidas, redimensionadas e giradas dentro do jogo, no
+modo de edição do mod; essa edição grava no banco de quests do servidor. Para levá-las de volta ao
+YAML, copie os valores do arquivo do capítulo em `config/betterquesting/DefaultQuests` depois de
+`/bq_admin default save`.

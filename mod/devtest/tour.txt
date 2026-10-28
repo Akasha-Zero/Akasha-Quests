@@ -1,0 +1,74 @@
+# Full tour: states, hover, menus, quest view, edit mode, images, zoom, unpinned panel
+world
+waitquests
+wait 40
+cmd /bq_admin edit true
+complete Olá, viajante
+complete Como funciona
+complete Madeira
+complete Tábuas
+complete Bancada
+complete Picareta de Madeira
+complete Picareta de Pedra
+complete Sementes
+complete Livro
+wait 40
+open
+wait 30
+shot t01_welcome
+chapter Primeiros Passos
+wait 20
+hoverquest Bancada
+wait 10
+shot t02_hover
+clickquest Fornalha 1
+wait 5
+shot t03_context
+key 1
+quest Madeira
+wait 15
+shot t04_view_rewards
+close
+quest Diamantes
+wait 15
+shot t05_view_locked
+close
+scroll 500 200 -3
+wait 15
+shot t06_zoom_in
+click 630 10
+wait 5
+shot t06b_claim_menu
+key 1
+key 199
+wait 10
+edit on
+wait 10
+shot t07_edit
+clickquest Balde 1
+wait 5
+menu Losango
+wait 10
+shot t08_shape_applied
+chapter Bem-vindo
+wait 15
+clickimage 0
+wait 5
+shot t09_image_selected
+clickimage 0 1
+wait 5
+shot t10_image_menu
+menu Editar imagem
+wait 10
+shot t11_image_dialog
+key 1
+edit off
+pin off
+wait 20
+shot t12_unpinned
+mouse 4 120
+wait 30
+shot t13_unpinned_hover
+pin on
+wait 5
+exit

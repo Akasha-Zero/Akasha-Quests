@@ -55,6 +55,12 @@ import cpw.mods.fml.common.gameevent.TickEvent;
  * press X Y [button] / release X Y [button]
  * scroll X Y N               wheel N notches (positive = zoom out)
  * key CODE [char]            keyTyped on the current screen
+ * hoverquest title           move the cursor onto a quest of the current chapter
+ * clickquest title [button]  click a quest (button 1 = context menu)
+ * clickimage I [button]      click the I-th chapter image
+ * pin on|off                 pin or collapse the chapter panel
+ * menu label                 activate the item of the open context menu containing `label`
+ * fps                        log the current frame rate
  * shot NAME                  save run/screenshots/NAME.png after the next frame
  * exit                       quit the game
  * </pre>
@@ -208,6 +214,46 @@ public class SelfTest {
                     char ch = n.length > 1 ? n[1].charAt(0) : 0;
                     ((GuiScreenCanvas) s).keyTyped(ch, Integer.parseInt(n[0]));
                 }
+                break;
+            case "hoverquest":
+            case "clickquest": {
+                String[] parts = arg.split("\\s+(?=\\d$)");
+                UUID id = questByName(parts[0]);
+                int[] pos = s instanceof QuestScreen && id != null ? ((QuestScreen) s).questScreenPos(id) : null;
+                if (pos == null) {
+                    LOG.warn("quest {} not on screen", arg);
+                    break;
+                }
+                int[] d = toDevice(mc, pos[0], pos[1]);
+                Mouse.setCursorPosition(d[0], d[1]);
+                if ("clickquest".equals(a[0])) {
+                    int b = parts.length > 1 ? Integer.parseInt(parts[1]) : 0;
+                    ((GuiScreenCanvas) s).onMouseClick(pos[0], pos[1], b);
+                    ((GuiScreenCanvas) s).onMouseRelease(pos[0], pos[1], b);
+                }
+                break;
+            }
+            case "clickimage": {
+                int[] pos = s instanceof QuestScreen ? ((QuestScreen) s).imageScreenPos(Integer.parseInt(n[0])) : null;
+                if (pos == null) break;
+                int b = n.length > 1 ? Integer.parseInt(n[1]) : 0;
+                int[] d = toDevice(mc, pos[0], pos[1]);
+                Mouse.setCursorPosition(d[0], d[1]);
+                ((GuiScreenCanvas) s).onMouseClick(pos[0], pos[1], b);
+                ((GuiScreenCanvas) s).onMouseRelease(pos[0], pos[1], b);
+                break;
+            }
+            case "menu":
+                if (s instanceof QuestScreen && ((QuestScreen) s).currentPopup() instanceof akasha.questui.client.ui.ContextMenu) {
+                    if (!((akasha.questui.client.ui.ContextMenu) ((QuestScreen) s).currentPopup()).activate(arg)) LOG.warn("no menu item {}", arg);
+                } else LOG.warn("no menu open");
+                break;
+            case "pin":
+                akasha.questui.Config.sidebarPinned = "on".equals(arg);
+                if (s instanceof QuestScreen) ((QuestScreen) s).pinChanged();
+                break;
+            case "fps":
+                LOG.info("fps: {}", mc.debug);
                 break;
             case "shot":
                 pendingShot = arg;

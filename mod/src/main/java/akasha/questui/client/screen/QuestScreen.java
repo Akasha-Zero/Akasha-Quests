@@ -146,6 +146,25 @@ public class QuestScreen extends GuiScreenCanvas implements INeedsRefresh, MapHo
         mc.displayGuiScreen(picker);
     }
 
+    /** The popup currently shown, if any (menus, dialogs). */
+    public IGuiPanel currentPopup() {
+        return popupRef;
+    }
+
+    /** Screen centre of a quest on the current map, or null when it is not on it. */
+    public int[] questScreenPos(UUID questId) {
+        QuestNode n = model == null ? null : model.nodes.get(questId);
+        if (n == null) return null;
+        return new int[] { (int) Math.round(map.camera.toScreenX(n.cx())), (int) Math.round(map.camera.toScreenY(n.cy())) };
+    }
+
+    /** Screen centre of the i-th image of the current chapter. */
+    public int[] imageScreenPos(int index) {
+        if (model == null || index < 0 || index >= model.images.size()) return null;
+        ChapterImage img = model.images.get(index);
+        return new int[] { (int) Math.round(map.camera.toScreenX(img.x)), (int) Math.round(map.camera.toScreenY(img.y)) };
+    }
+
     public void deleteImage(ChapterImage image) {
         map.editor.deleteImage(image);
     }
@@ -283,7 +302,7 @@ public class QuestScreen extends GuiScreenCanvas implements INeedsRefresh, MapHo
 
     @Override
     public boolean mapInteractive() {
-        return !view.isEnabled();
+        return !view.isEnabled() && popupRef == null;
     }
 
     UUID playerId() {
@@ -878,6 +897,7 @@ public class QuestScreen extends GuiScreenCanvas implements INeedsRefresh, MapHo
 
         @Override
         public List<String> getTooltip(int mx, int my) {
+            if (popupRef != null) return null; // menus and dialogs own the tooltip layer
             if (view.isEnabled()) return view.getTooltip(mx, my);
             List<String> tt = toolbar.getTooltip(mx, my);
             if (tt == null) tt = chapters.getTooltip(mx, my);

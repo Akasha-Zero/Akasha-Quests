@@ -20,3 +20,8 @@ tasks.matching { it.name == 'runClient' }.configureEach { t ->
         t.args('--width', project.findProperty('selftestWidth') ?: '1280', '--height', project.findProperty('selftestHeight') ?: '720')
     }
 }
+
+// The convention plugin applies the Jabel compiler plugin to every Java compile; give devtest the same processor path.
+tasks.named('compileDevtestJava').configure {
+    options.annotationProcessorPath = tasks.named('compileJava').get().options.annotationProcessorPath
+}

@@ -8,7 +8,7 @@ public final class Palette {
     // Surfaces
     public static final int MAP_BG = 0xFF16161A;
     public static final int GRID = 0xFFFFFFFF;
-    public static final int PANEL = 0xF0101014;
+    public static final int PANEL = 0xFF101014;
     public static final int PANEL_EDGE = 0xFF3A3A44;
     public static final int PANEL_HEADER = 0xFF1C1C22;
     public static final int ROW_HOVER = 0x1FFFFFFF;
