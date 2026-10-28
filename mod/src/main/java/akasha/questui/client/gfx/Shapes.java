@@ -44,6 +44,9 @@ public final class Shapes {
             NONE));
 
     private static final Map<String, Shape> SHAPES = new LinkedHashMap<>();
+    /** Used when shapes.json or a shape's textures failed to load: draws like "none" (icon only). */
+    private static final Shape FALLBACK = new Shape(NONE, null, null, null, null, null, null);
+    private static boolean loadAttempted;
 
     private Shapes() {}
 
@@ -84,10 +87,16 @@ public final class Shapes {
         public boolean isNone() {
             return xs == null;
         }
+
+        /** A shape whose PNGs failed to load would bind an empty texture and draw solid squares. */
+        boolean usable() {
+            return isNone() || fill.isLoaded() && outline.isLoaded() && mask.isLoaded() && glow.isLoaded();
+        }
     }
 
     /** Loads polygons and registers the textures with the texture manager (reloaded with resource packs). */
     public static void load() {
+        loadAttempted = true;
         SHAPES.clear();
         TextureManager tm = Minecraft.getMinecraft()
             .getTextureManager();
@@ -143,9 +152,11 @@ public final class Shapes {
     }
 
     public static Shape get(String id) {
-        if (SHAPES.isEmpty()) load();
+        if (!loadAttempted) load(); // once: a broken shapes.json must not be re-read every frame
         Shape s = SHAPES.get(id);
-        return s != null ? s : SHAPES.get("circle");
+        if (s != null && s.usable()) return s;
+        Shape c = SHAPES.get("circle");
+        return c != null && c.usable() ? c : FALLBACK;
     }
 
     public static boolean exists(String id) {

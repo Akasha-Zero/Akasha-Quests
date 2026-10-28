@@ -109,7 +109,9 @@ def file_stub(name, u):
 def dump_json(path, obj):
     os.makedirs(os.path.dirname(path), exist_ok=True)
     with open(path, 'w', encoding='utf-8') as f:
-        json.dump(obj, f, indent=2, ensure_ascii=False, sort_keys=True)
+        # no sort_keys: NBT lists are JSON objects ("0:10", "1:10", ...) that BQ appends in file order, and sorting
+        # would put "10:10" before "2:10". Insertion order is deterministic (OrderedDict / Python 3.7+ dicts).
+        json.dump(obj, f, indent=2, ensure_ascii=False)
         f.write('\n')
 
 
@@ -702,6 +704,9 @@ def quest_ref(ref, chapter, all_quests, ctx):
     return encode_uuid(all_quests[key].uuid)
 
 
+CHAPTER_IDS = set()  # filled by build(); chapter: click targets are checked against it
+
+
 def chapter_image(img, chapter, all_quests, ctx):
     """One chapter image (mod/docs/DESIGN.md §8). Position: `at: [col, row]` (quest grid) or `pos: [x, y]`."""
     if 'image' not in img:
@@ -713,6 +718,8 @@ def chapter_image(img, chapter, all_quests, ctx):
     size = img.get('size', [32, 32])
     if not isinstance(size, list):
         size = [size, size]
+    if len(size) != 2 or not all(isinstance(v, (int, float)) and v > 0 for v in size):
+        raise GenError('%s: size must be a positive number or [w, h] of positive numbers' % ctx)
     o = OrderedDict([('image:8', str(img['image'])), ('x:6', float(x)), ('y:6', float(y)),
                      ('w:6', float(size[0])), ('h:6', float(size[1]))])
     if img.get('rot'):
@@ -720,7 +727,11 @@ def chapter_image(img, chapter, all_quests, ctx):
     if 'alpha' in img:
         o['alpha:5'] = float(img['alpha'])
     if 'tint' in img:
-        o['tint:3'] = struct.unpack('>i', struct.pack('>I', 0xFF000000 | int(str(img['tint']).lstrip('#'), 16)))[0]
+        # RGB only (opacity is `alpha`); 3-digit shorthand would silently read as 0x000F80 for "f80"
+        hexs = str(img['tint']).lstrip('#')
+        if not re.fullmatch('[0-9a-fA-F]{6}', hexs):
+            raise GenError('%s: tint must be 6 hex digits RRGGBB, got %r' % (ctx, img['tint']))
+        o['tint:3'] = struct.unpack('>i', struct.pack('>I', 0xFF000000 | int(hexs, 16)))[0]
     layer = str(img.get('layer', 'back'))
     if layer not in IMAGE_LAYERS:
         raise GenError('%s: layer must be one of %s' % (ctx, ', '.join(IMAGE_LAYERS)))
@@ -733,6 +744,8 @@ def chapter_image(img, chapter, all_quests, ctx):
     if click.startswith('quest:'):
         click = 'quest:' + quest_ref(click[6:], chapter, all_quests, ctx)
     elif click.startswith('chapter:'):
+        if click[8:] not in CHAPTER_IDS:
+            raise GenError('%s: click to unknown chapter %r' % (ctx, click[8:]))
         click = 'chapter:' + encode_uuid(line_uuid(click[8:]))
     elif click and not click.startswith('url:'):
         raise GenError('%s: click must start with quest:, chapter: or url:' % ctx)
@@ -771,6 +784,8 @@ def build(strict=False, out_dir=OUT_DIR, quiet=False):
     if os.path.exists(SETTINGS_FILE):
         settings = yaml.safe_load(open(SETTINGS_FILE, encoding='utf-8')) or {}
     chapters = load_chapters()
+    CHAPTER_IDS.clear()
+    CHAPTER_IDS.update(c.id for c in chapters)
     all_quests = {}
     for c in chapters:
         for q in c.quests:

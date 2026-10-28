@@ -15,6 +15,9 @@ public final class Ids {
         if (s.isEmpty()) return null;
         try {
             if (s.length() == 36 && s.charAt(8) == '-') return UUID.fromString(s);
+            // BQ's decoder pads or truncates any base64 to 16 bytes, so a typo would become some random id
+            if (java.util.Base64.getUrlDecoder()
+                .decode(s).length != 16) return null;
             return UuidConverter.decodeUuid(s);
         } catch (RuntimeException e) {
             return null;

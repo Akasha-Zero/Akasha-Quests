@@ -25,4 +25,9 @@ public interface MapHost {
 
     /** False while a modal (quest view, dialog) covers the map. */
     boolean mapInteractive();
+
+    /** True where another panel lies over the map (the slid-out chapter panel), so the map must not hover. */
+    default boolean covered(int mx, int my) {
+        return false;
+    }
 }

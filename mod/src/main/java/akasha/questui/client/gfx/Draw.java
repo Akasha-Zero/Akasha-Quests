@@ -32,6 +32,28 @@ public final class Draw {
         t.setColorRGBA((argb >> 16) & 0xFF, (argb >> 8) & 0xFF, argb & 0xFF, (argb >>> 24) & 0xFF);
     }
 
+    /** Batch of same-colour rectangles in one draw call: beginRects, then batchRect per rectangle, then endRects. */
+    public static void beginRects(int argb) {
+        blend();
+        GL11.glDisable(GL11.GL_TEXTURE_2D);
+        Tessellator t = Tessellator.instance;
+        t.startDrawingQuads();
+        color(t, argb);
+    }
+
+    public static void batchRect(double x0, double y0, double x1, double y1) {
+        Tessellator t = Tessellator.instance;
+        t.addVertex(x0, y1, 0);
+        t.addVertex(x1, y1, 0);
+        t.addVertex(x1, y0, 0);
+        t.addVertex(x0, y0, 0);
+    }
+
+    public static void endRects() {
+        Tessellator.instance.draw();
+        restore();
+    }
+
     /** Solid rectangle [x0, x1) x [y0, y1). */
     public static void rect(double x0, double y0, double x1, double y1, int argb) {
         if ((argb >>> 24) == 0) return;
@@ -225,12 +247,29 @@ public final class Draw {
         restore();
     }
 
+    /**
+     * Item icons (RenderItem) draw with depth test and depth writes; with no clear in between, a later icon fails
+     * the depth test where an earlier 3D block icon was and gets holes cut out of it. Call before each item icon
+     * that may overlap a previous one, and between screen layers. Honours the active scissor.
+     */
+    public static void clearDepth() {
+        GL11.glClear(GL11.GL_DEPTH_BUFFER_BIT);
+    }
+
+    /** State left by RenderItem that our flat drawing must not inherit. */
+    public static void afterItem() {
+        GL11.glDisable(GL11.GL_LIGHTING);
+        GL11.glDisable(GL11.GL_DEPTH_TEST);
+    }
+
     public static FontRenderer font() {
         return Minecraft.getMinecraft().fontRenderer;
     }
 
     public static void text(String s, double x, double y, int argb, boolean shadow) {
+        // set the function too: an enchanted item icon leaves the glint's additive (DST_ALPHA, ONE) behind
         GL11.glEnable(GL11.GL_BLEND);
+        OpenGlHelper.glBlendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA, 1, 0);
         font().drawString(s, (int) Math.round(x), (int) Math.round(y), argb, shadow);
         GL11.glColor4f(1F, 1F, 1F, 1F);
     }

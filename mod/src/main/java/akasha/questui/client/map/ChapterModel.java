@@ -10,6 +10,7 @@ import java.util.UUID;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.StringUtils;
 
 import akasha.questui.Config;
@@ -57,6 +58,7 @@ public class ChapterModel {
     public void rebuild() {
         nodes.clear();
         links.clear();
+        List<ChapterImage> previous = new ArrayList<>(images);
         images.clear();
         if (line == null) return;
 
@@ -108,8 +110,21 @@ public class ChapterModel {
             }
         }
 
+        // Unchanged images keep their object: dialogs, menus, the selection and undo hold references to them,
+        // and every sync (any quest, party or progress update) rebuilds the model.
         for (ChapterImage img : ChapterImage.readList(line.getProperty(UiProps.IMAGES))) {
-            images.add(img);
+            NBTTagCompound tag = img.write();
+            ChapterImage keep = null;
+            for (java.util.Iterator<ChapterImage> it = previous.iterator(); it.hasNext();) {
+                ChapterImage old = it.next();
+                if (old.write()
+                    .equals(tag)) {
+                    keep = old;
+                    it.remove();
+                    break;
+                }
+            }
+            images.add(keep != null ? keep : img);
         }
     }
 

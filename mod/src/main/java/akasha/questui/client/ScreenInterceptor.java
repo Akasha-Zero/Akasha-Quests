@@ -43,6 +43,8 @@ public class ScreenInterceptor {
 
     @SubscribeEvent(priority = EventPriority.LOW)
     public void onGuiOpen(GuiOpenEvent event) {
+        // back to the game (e.g. ESC inside a BQ picker): a dialog waiting for that picker must not reappear later
+        if (event.gui == null) QuestScreen.droppedToGame();
         if (!Config.enabled || event.gui == null || event.gui instanceof QuestScreen) return;
         if (questIdField == null) return;
         try {
@@ -86,7 +88,11 @@ public class ScreenInterceptor {
         themeApplied = true;
         IGuiTheme theme = ThemeRegistry.INSTANCE.getTheme(THEME);
         IGuiTheme current = ThemeRegistry.INSTANCE.getCurrentTheme();
-        if (theme != null && (current == null || !THEME.equals(current.getID()))) {
+        // only over BQ's default: a theme the player picked in BQ's own theme screen is left alone
+        String cur = current == null ? ""
+            : current.getID()
+                .toString();
+        if (theme != null && (cur.isEmpty() || "betterquesting:light".equals(cur))) {
             ThemeRegistry.INSTANCE.setTheme(THEME);
         }
     }

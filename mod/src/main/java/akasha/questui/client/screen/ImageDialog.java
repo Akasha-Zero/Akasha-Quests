@@ -233,6 +233,7 @@ public class ImageDialog extends Dialog {
             pull();
             File dir = ImageSources.imageDir();
             if (!dir.exists()) dir.mkdirs();
+            awaitingPicker = true;
             screen.leaveForPicker(
                 this,
                 ThemeRegistry.INSTANCE.getGui(PresetGUIs.FILE_EXPLORE, new GArgsFileBrowser(screen, dir, files -> {
@@ -252,6 +253,7 @@ public class ImageDialog extends Dialog {
             ImageSources.Resolved r = ImageSources.resolve(work.image);
             BigItemStack start = r.item != null ? new BigItemStack(r.item)
                 : new BigItemStack(net.minecraft.init.Items.diamond);
+            awaitingPicker = true;
             screen.leaveForPicker(
                 this,
                 ThemeRegistry.INSTANCE.getGui(PresetGUIs.EDIT_ITEM, new GArgsCallback<>(screen, start, stack -> {
@@ -278,6 +280,7 @@ public class ImageDialog extends Dialog {
         } else if (in(btnHover(), mx, my)) {
             pull();
             String joined = String.join("\n", work.hover);
+            awaitingPicker = true;
             screen.leaveForPicker(
                 this,
                 ThemeRegistry.INSTANCE.getGui(PresetGUIs.EDIT_TEXT, new GArgsCallback<>(screen, joined, text -> {
@@ -297,6 +300,15 @@ public class ImageDialog extends Dialog {
         ImageSources.Resolved r = ImageSources.resolve(work.image);
         double a = r.aspect();
         if (a > 0) work.h = Math.max(1, Math.round(work.w / a * 2) / 2.0);
+    }
+
+    /** Set when leaving for a picker: its result is already in `work`, and the fields still hold the old text. */
+    private boolean awaitingPicker;
+
+    @Override
+    protected void beforeRelayout() {
+        if (awaitingPicker) awaitingPicker = false;
+        else pull();
     }
 
     private void relayout() {

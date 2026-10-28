@@ -76,4 +76,19 @@ public class GeometryTest {
             Geometry.rotation(0, 0, Math.sin(Math.toRadians(17)), -Math.cos(Math.toRadians(17)), true),
             1e-9);
     }
+
+    /** Bad data (w = 0) must not produce NaN: BQ's JSON writer refuses NaN and the chapter would stop saving. */
+    @Test
+    public void zeroSizeKeepAspectStaysFinite() {
+        for (int sx = -1; sx <= 1; sx++) {
+            for (int sy = -1; sy <= 1; sy++) {
+                if (sx == 0 && sy == 0) continue;
+                double[] r = Geometry.resize(0, 0, 0, 0, 30, sx, sy, 5, 7, true);
+                for (double v : r) {
+                    org.junit.Assert.assertFalse(Double.isNaN(v) || Double.isInfinite(v));
+                }
+                org.junit.Assert.assertTrue(r[2] >= 2 && r[3] >= 2);
+            }
+        }
+    }
 }

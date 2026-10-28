@@ -22,6 +22,7 @@ import akasha.questui.client.gfx.Anim;
 import akasha.questui.client.gfx.Draw;
 import akasha.questui.client.gfx.MipTexture;
 import akasha.questui.client.gfx.Palette;
+import akasha.questui.client.gfx.Scissor;
 import akasha.questui.client.gfx.Shapes;
 import akasha.questui.client.gfx.Textures;
 import akasha.questui.client.ui.Widget;
@@ -29,7 +30,6 @@ import betterquesting.api.storage.BQ_Settings;
 import betterquesting.api.utils.RenderUtils;
 import betterquesting.api2.client.gui.controls.PanelButtonQuest;
 import betterquesting.api2.client.gui.misc.GuiRectangle;
-import betterquesting.api2.client.gui.resources.textures.SimpleTexture;
 import betterquesting.api2.utils.QuestTranslation;
 
 /**
@@ -46,6 +46,12 @@ public class QuestMap extends Widget {
     private static final double BADGE_FRAC = 0.46;
     private static final double BADGE_OFFSET = 0.72;
     private static final double LINE_FRAC = 0.11;
+    /** Item icons smaller than this (device px) are skipped: unreadable, and RenderItem is the costliest call. */
+    private static final double ICON_MIN_DEVICE_PX = 6;
+
+    /** Chevron phase per link, advanced by v * dt so a speed change (hover) never makes the chevrons jump. */
+    private final Map<QuestLink, Double> linkPhase = new java.util.IdentityHashMap<>();
+    private double lastLineTime = -1;
 
     /** Mouse button state source; replaceable so scripted UI tests can perform drags. */
     public static java.util.function.IntPredicate buttonDown = Mouse::isButtonDown;
@@ -92,6 +98,7 @@ public class QuestMap extends Widget {
         hovered = null;
         hoveredImage = null;
         tooltipFor = null;
+        linkPhase.clear();
         editor.reset();
         if (m == null) return;
         camera.setBounds(m.bounds(host.isEditing()));
@@ -212,10 +219,11 @@ public class QuestMap extends Widget {
 
         boolean interactive = host.mapInteractive();
         boolean editing = host.isEditing();
+        interactive &= !host.covered(mx, my);
         hovered = interactive && !dragging ? nodeAt(mx, my) : null;
         hoveredImage = interactive && !dragging && hovered == null ? imageAt(mx, my, editing) : null;
 
-        RenderUtils.startScissor(new GuiRectangle(x, y, w, h));
+        Scissor.push(x, y, w, h);
         GL11.glPushMatrix();
         Draw.rect(x, y, x + w, y + h, Palette.mapBg());
         if (model != null) {
@@ -229,17 +237,26 @@ public class QuestMap extends Widget {
             if (editing) editor.drawOverlay(mx, my);
         }
         GL11.glPopMatrix();
-        RenderUtils.endScissor();
+        Scissor.pop();
     }
 
+    private ResourceLocation bgLocation;
+
+    /** BQ's chapter background, on the same device-snapped grid as the quests so it does not slide while zooming. */
     private void drawBgImage() {
         if (model.bgImage == null) return;
+        if (bgLocation == null || !model.bgImage.equals(bgLocation.toString())) {
+            bgLocation = new ResourceLocation(model.bgImage);
+        }
+        double f = deviceScale();
         double s = model.bgSize;
-        int x0 = (int) Math.round(camera.toScreenX(0));
-        int y0 = (int) Math.round(camera.toScreenY(0));
-        int sz = (int) Math.round(s * camera.zoom);
-        new SimpleTexture(new ResourceLocation(model.bgImage), new GuiRectangle(0, 0, 256, 256))
-            .drawTexture(x0, y0, sz, sz, 0F, 0F);
+        Draw.bind(bgLocation);
+        Draw.tex(
+            snap(camera.toScreenX(0), f),
+            snap(camera.toScreenY(0), f),
+            snap(camera.toScreenX(s), f),
+            snap(camera.toScreenY(s), f),
+            0xFFFFFFFF);
     }
 
     /** Two grids at g = 8 and 4g with opacity fading as lines get dense (DESIGN §5). */
@@ -259,23 +276,28 @@ public class QuestMap extends Widget {
         double wx0 = camera.toWorldX(x), wx1 = camera.toWorldX(x + w);
         double wy0 = camera.toWorldY(y), wy1 = camera.toWorldY(y + h);
         long i0 = (long) Math.floor(wx0 / step), i1 = (long) Math.ceil(wx1 / step);
+        Draw.beginRects(col);
         for (long i = i0; i <= i1; i++) {
             if (skipEvery > 0 && i % skipEvery == 0) continue; // major line drawn by the other pass
             double sx = snap(camera.toScreenX(i * step), f);
-            Draw.rect(sx, y, sx + px, y + h, col);
+            Draw.batchRect(sx, y, sx + px, y + h);
         }
         long j0 = (long) Math.floor(wy0 / step), j1 = (long) Math.ceil(wy1 / step);
         for (long j = j0; j <= j1; j++) {
             if (skipEvery > 0 && j % skipEvery == 0) continue;
             double sy = snap(camera.toScreenY(j * step), f);
-            Draw.rect(x, sy, x + w, sy + px, col);
+            Draw.batchRect(x, sy, x + w, sy + px);
         }
+        Draw.endRects();
     }
 
     private void drawLines() {
         boolean shift = Keyboard.isKeyDown(Keyboard.KEY_LSHIFT) || Keyboard.isKeyDown(Keyboard.KEY_RSHIFT);
         QuestNode focus = hovered != null ? hovered : (selected != null ? model.nodes.get(selected) : null);
         double t = Anim.seconds();
+        double dt = lastLineTime < 0 ? 0 : Math.max(0, Math.min(0.25, t - lastLineTime));
+        lastLineTime = t;
+        if (linkPhase.size() > 4 * model.links.size() + 16) linkPhase.clear(); // links rebuilt on refresh
         double speed = Config.animateLines ? Config.lineSpeed : 0;
         for (QuestLink link : model.links) {
             boolean touches = focus != null && (link.from == focus || link.to == focus);
@@ -293,17 +315,36 @@ public class QuestMap extends Widget {
             MipTexture tex = link.dashed ? Textures.LINE_DASHED
                 : (BQ_Settings.showDependencyArrows ? Textures.LINE_CHEVRON : Textures.LINE_PLAIN);
             double v = touches && BQ_Settings.animateDependencyArrows ? Math.max(speed, 0.5) * 3 : speed;
+            double phase = (linkPhase.getOrDefault(link, 0.0) + v * dt) % 1.0;
+            linkPhase.put(link, phase);
+            double ax = camera.toScreenX(link.from.cx()), ay = camera.toScreenY(link.from.cy());
+            double bx = camera.toScreenX(link.to.cx()), by = camera.toScreenY(link.to.cy());
+            double m = sw + 2;
+            if (Math.max(ax, bx) + m < x || Math.min(ax, bx) - m > x + w
+                || Math.max(ay, by) + m < y
+                || Math.min(ay, by) - m > y + h) continue;
+            // quests without a shape have no fill to hide the line: stop it at the icon edge
+            double len = Math.hypot(bx - ax, by - ay);
+            if (len < 1e-6) continue;
+            double ta = trim(link.from) / len, tb = trim(link.to) / len;
+            if (ta + tb >= 1) continue;
+            double ax2 = ax + (bx - ax) * ta, ay2 = ay + (by - ay) * ta;
+            bx = bx - (bx - ax) * tb;
+            by = by - (by - ay) * tb;
+            ax = ax2;
+            ay = ay2;
+            // dark casing 1 px each side keeps the line >= 3:1 against any world behind a translucent map (DESIGN §4)
+            Draw.line(ax, ay, bx, by, sw + 2, Draw.mulAlpha(Palette.LINE_CASING, ((col >>> 24) & 0xFF) / 255F));
             Draw.bind(tex);
-            Draw.band(
-                camera.toScreenX(link.from.cx()),
-                camera.toScreenY(link.from.cy()),
-                camera.toScreenX(link.to.cx()),
-                camera.toScreenY(link.to.cy()),
-                sw,
-                2 * sw,
-                (v * t) % 1.0,
-                col);
+            Draw.band(ax, ay, bx, by, sw, 2 * sw, phase, col);
         }
+    }
+
+    /** Screen distance cut from a line end at a quest: the icon half side for shapeless quests, else 0. */
+    private double trim(QuestNode n) {
+        if (!Shapes.get(n.shape)
+            .isNone()) return 0;
+        return ICON_FRAC * Math.min(n.w, n.h) / 2 * camera.zoom;
     }
 
     private static int lineColor(QuestNode.State s) {
@@ -326,7 +367,9 @@ public class QuestMap extends Widget {
         for (QuestNode n : model.nodes.values()) {
             double sx0 = snap(camera.toScreenX(n.x), f), sx1 = snap(camera.toScreenX(n.x + n.w), f);
             double sy0 = snap(camera.toScreenY(n.y), f), sy1 = snap(camera.toScreenY(n.y + n.h), f);
-            if (sx1 < x || sy1 < y || sx0 > x + w || sy0 > y + h) continue;
+            // margin = half size: the glow reaches 2h from the centre, badges about 1.18h
+            double mg = Math.max(sx1 - sx0, sy1 - sy0) / 2;
+            if (sx1 + mg < x || sy1 + mg < y || sx0 - mg > x + w || sy0 - mg > y + h) continue;
             boolean sel = n.id.equals(selected) || (editing && editor.isSelected(n));
             drawNode(
                 n,
@@ -336,12 +379,13 @@ public class QuestMap extends Widget {
                 (sy1 - sy0) / 2,
                 n == hovered,
                 sel,
+                f,
                 partialTick);
         }
     }
 
     /** Layered quest drawing, DESIGN §3 steps 1-7. */
-    private void drawNode(QuestNode n, double cx, double cy, double hx, double hy, boolean hover, boolean sel,
+    private void drawNode(QuestNode n, double cx, double cy, double hx, double hy, boolean hover, boolean sel, double f,
         float partialTick) {
         Shapes.Shape shape = Shapes.get(n.shape);
         int fill;
@@ -400,14 +444,16 @@ public class QuestMap extends Widget {
 
         // 3. icon, side 0.62 * 2h
         double side = ICON_FRAC * 2 * Math.min(hx, hy);
-        if (n.icon != null && side >= 2) {
+        if (n.icon != null && side * f >= ICON_MIN_DEVICE_PX) {
+            Draw.clearDepth();
             GL11.glPushMatrix();
-            GL11.glTranslated(cx - side / 2, cy - side / 2, 0);
-            GL11.glScaled(side / 16.0, side / 16.0, 1);
+            // origin on the device pixel grid so the nearest-sampled item atlas keeps even texel widths
+            GL11.glTranslated(snap(cx - side / 2, f), snap(cy - side / 2, f), 0);
+            // uniform: Z shrinks with X/Y (depth extent) and GL_RESCALE_NORMAL stays valid (block shading)
+            GL11.glScaled(side / 16.0, side / 16.0, side / 16.0);
             n.icon.drawTexture(0, 0, 16, 16, 0F, partialTick);
             GL11.glPopMatrix();
-            GL11.glDisable(GL11.GL_LIGHTING);
-            GL11.glDisable(GL11.GL_DEPTH_TEST);
+            Draw.afterItem();
         }
 
         if (!shape.isNone()) {
@@ -468,10 +514,12 @@ public class QuestMap extends Widget {
             GL11.glPushMatrix();
             GL11.glTranslated(cx, cy, 0);
             GL11.glRotated(img.rot, 0, 0, 1);
-            GL11.glScaled(side / 16.0, side / 16.0, 1);
-            RenderUtils.RenderItemStack(Minecraft.getMinecraft(), r.item, -8, -8, "");
+            GL11.glScaled(side / 16.0, side / 16.0, side / 16.0);
+            Draw.clearDepth();
+            // RenderItem has no alpha: tint applies, opacity does not (documented in ImageDialog's tooltip)
+            RenderUtils.RenderItemStack(Minecraft.getMinecraft(), r.item, -8, -8, "", img.tint | 0xFF000000);
             GL11.glPopMatrix();
-            GL11.glDisable(GL11.GL_LIGHTING);
+            Draw.afterItem();
         } else if (editing) {
             // Missing source: magenta/black checker like vanilla's missing texture, only for editors
             GL11.glPushMatrix();
@@ -603,8 +651,8 @@ public class QuestMap extends Widget {
             List<String> tt = new ArrayList<>();
             for (String s : hoveredImage.hover) tt.add(QuestTranslation.translate(s));
             if (host.isEditing()) {
-                tt.add("§8" + hoveredImage.image);
-                if (!hoveredImage.click.isEmpty()) tt.add("§8↪ " + hoveredImage.click);
+                tt.add("§7" + hoveredImage.image);
+                if (!hoveredImage.click.isEmpty()) tt.add("§7> " + hoveredImage.click); // ASCII: the default font has no arrow glyphs
             }
             return tt.isEmpty() ? null : tt;
         }

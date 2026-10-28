@@ -543,17 +543,29 @@ public class QuestView extends Widget {
         return new int[] { x + PAD, footY, midX - (hasRewards ? 3 : 0), footY + 14 };
     }
 
+    private boolean showDetect() {
+        return quest.getTasks()
+            .size() > 0 || !hasRewards;
+    }
+
+    /** Right half next to Detect; the full width when there is nothing to detect. */
     private int[] claimBtn() {
-        return new int[] { midX + 3, footY, x + w - PAD, footY + 14 };
+        return new int[] { showDetect() ? midX + 3 : x + PAD, footY, x + w - PAD, footY + 14 };
     }
 
     private void drawFooter(int mx, int my) {
-        if (quest.getTasks()
-            .size() > 0 || !hasRewards) {
-            button(detectBtn(), Lang.get("detect"), quest.canSubmit(Minecraft.getMinecraft().thePlayer), mx, my);
+        net.minecraft.entity.player.EntityPlayer player = Minecraft.getMinecraft().thePlayer;
+        UUID pid = betterquesting.api.api.QuestingAPI.getQuestingUUID(player);
+        if (showDetect()) {
+            boolean can = quest.canSubmit(player);
+            // a disabled button says why, instead of just greying out
+            String label = !can && quest.isComplete(pid) ? Lang.get("state_done") : Lang.get("detect");
+            button(detectBtn(), label, can, mx, my);
         }
         if (hasRewards) {
-            button(claimBtn(), Lang.get("claim"), quest.canClaim(Minecraft.getMinecraft().thePlayer), mx, my);
+            boolean can = quest.canClaim(player);
+            String label = !can && quest.hasClaimed(pid) ? Lang.get("state_claimed") : Lang.get("claim");
+            button(claimBtn(), label, can, mx, my);
         }
     }
 
@@ -609,8 +621,7 @@ public class QuestView extends Widget {
             }
         }
         if (button == 0) {
-            if ((quest.getTasks()
-                .size() > 0 || !hasRewards) && in(detectBtn(), mx, my)) {
+            if (showDetect() && in(detectBtn(), mx, my)) {
                 if (quest.canSubmit(Minecraft.getMinecraft().thePlayer))
                     NetQuestAction.requestDetect(java.util.Collections.singletonList(questId));
                 return true;

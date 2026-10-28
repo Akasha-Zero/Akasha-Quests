@@ -87,8 +87,17 @@ preench.(p)  = L(y) + 0,16·(−n·ℓ)·clamp(1 + d/b, 0, 1)²,  b = 0,18
 `ℓ = (−0,55; −0,835)` a luz vinda de cima à esquerda. O resultado é um chanfro interno sutil.
 
 Texturas: 64 texels por meia-unidade (128² para corpo, 256² para brilho). O mod gera a cadeia
-de **mipmaps** ao carregar (média 2×2 em alfa pré-multiplicado) e amostra com
-`GL_LINEAR_MIPMAP_LINEAR`. Com zoom ¼ uma quest de 24 px ocupa 12 px de dispositivo a partir
+de **mipmaps** ao carregar e amostra com `GL_LINEAR_MIPMAP_LINEAR`:
+
+* cada nível tem `⌊n/2⌋` texels por eixo (regra do GL) e é a **média por área** do nível anterior em
+  alfa pré-multiplicado: o texel `i` cobre `[i·r, (i+1)·r)` com `r = n/⌊n/2⌋`, pesos `|cobertura|/r`
+  que somam 1. Para tamanhos pares é a caixa 2×2; para ímpares (`2 < r < 3`) nenhuma linha ou coluna é
+  descartada e a média se conserva (teste `MipResampleTest`);
+* texels com `α = 0` recebem a cor média dos vizinhos visíveis (8-vizinhança, ponderada por α), que
+  desce a cadeia junto. O filtro bilinear mistura o RGB desses texels na borda, e preto ali daria
+  franja escura no contorno e nos selos com zoom alto;
+* imagens maiores que `min(2048, GL_MAX_TEXTURE_SIZE)` são reduzidas ao carregar (memória e limite
+  da GPU). Com zoom ¼ uma quest de 24 px ocupa 12 px de dispositivo a partir
 de 128 texels: sem mipmap haveria serrilhado e cintilação.
 
 **Hit-test.** Ponto `p` em S → coordenada local `u = (p − centro)/(meio-tamanho)` → teste
@@ -102,7 +111,12 @@ Ordem de desenho (meio-tamanho `h = z·size/2`):
 1. **Brilho** (só "disponível" e "selecionada"): textura `glow` em `[−2h, 2h]`.
    Disponível pulsa `α = 0,10 + 0,20·(½ − ½cos(2πt/2,4 s))`.
 2. **Preenchimento** tingido com a cor de fundo do estado.
-3. **Ícone** do item (`RenderItem`) de lado `0,62·2h`, centralizado.
+3. **Ícone** do item (`RenderItem`) de lado `s = 0,62·2h`, centralizado, origem alinhada ao pixel de
+   dispositivo e escala **uniforme** `s/16` nos três eixos (a profundidade do bloco 3D encolhe junto e
+   `GL_RESCALE_NORMAL` continua válido para o sombreamento). O `RenderItem` escreve profundidade, então o
+   buffer de profundidade é limpo antes de cada ícone e entre camadas da tela; sem isso um ícone de
+   bloco recorta os ícones desenhados depois dele. Ícones abaixo de 6 px de dispositivo não são
+   desenhados (ilegíveis e o custo maior por quest).
 4. **Escurecimento** (bloqueada): máscara tingida `#000000`, `α = 0,55`.
 5. **Hover**: máscara branca, `α = 0,12`.
 6. **Contorno** tingido com a cor do estado.
@@ -114,7 +128,7 @@ Ordem de desenho (meio-tamanho `h = z·size/2`):
 
 | Estado | Condição no BQ | Preench. | Contorno |
 | --- | --- | --- | --- |
-| Bloqueada | `LOCKED` | `#2B2B2E` | `#5E5E66` |
+| Bloqueada | `LOCKED` | `#2B2B2E` | `#76767F` (3,14:1 contra o preenchimento, WCAG 1.4.11) |
 | Disponível | `UNLOCKED`, 0 tarefas concluídas | `#3A3A40` | `#E6E6E6` + brilho |
 | Em progresso | `UNLOCKED`, ≥ 1 tarefa concluída | `#3A3A40` | `#3FD2E0` |
 | Recompensa pendente | `UNCLAIMED` | `#3A3A40` | `#5BD94F` + `!` |
@@ -129,18 +143,23 @@ e `circle` para as demais (ambos configuráveis).
 De centro a centro, desenhadas **antes** das quests (que as ocultam por cima). Para
 `A → B` em S: `d̂ = (B − A)/|B − A|`, `n̂ = (−d̂_y, d̂_x)`; quad `A ± n̂·w/2`, `B ± n̂·w/2`.
 
+* Quests sem forma (`none`) não têm preenchimento para cobrir a linha: ela termina na borda do
+  ícone, `0,31·size·z` antes do centro.
+* Antes da faixa, um contorno `#000000` α `0,85·α_linha` de `w + 2` px (1 px de cada lado) mantém
+  a linha legível sobre qualquer mundo atrás do fundo translúcido.
 * Largura no mundo `w_W = 0,11·min(size_A, size_B)` (2,64 px para quests de 24 px), ×1,25 se a
   dependente for `MAIN`; na tela `w = max(1, z·w_W)`.
 * Textura em ladrilho de 2 larguras: faixa com borda escura e uma chevron `>` apontando de A
   para B. `u = s/(2w) − φ(t)`, com `s` a distância ao longo da linha desde A. A fase
-  `φ(t) = v·t` faz as chevrons correrem no sentido do progresso (`v = 0,5` ladrilho/s; ×3 na
-  linha sob o mouse). Sem setas (opção do BQ) usa a faixa lisa.
+  `φ` faz as chevrons correrem no sentido do progresso (`v = 0,5` ladrilho/s; ×3 na
+  linha sob o mouse). Cada linha guarda sua fase e a avança por `φ ← (φ + v·Δt) mod 1`; com
+  `φ = v·t` a troca de `v` no hover faria as chevrons saltarem. Sem setas (opção do BQ) usa a faixa lisa.
 * Requisito `IMPLICIT` do BQ: só aparece com hover ou Shift (UX do BQ), textura tracejada.
 * Quest com lógica `OR`/`XOR` nos pré-requisitos: textura tracejada.
 
 | Situação | Cor |
 | --- | --- |
-| Dependente bloqueada | `#4A4A52` |
+| Dependente bloqueada | `#6E6E78` (com o contorno: ≥ 3,45:1 no pior fundo) |
 | Dependente disponível/em progresso | `#BDBDC6` |
 | Dependente concluída | `#5BD94F` |
 | Dependente repetível | `#B584F0` |
@@ -152,11 +171,15 @@ De centro a centro, desenhadas **antes** das quests (que as ocultam por cima). P
 
 `#16161A` com opacidade `a` (padrão `0,72`, ajustável de 0,2 a 1 em Opções de visualização →
 Opacidade do fundo): abaixo de 1 o mundo aparece por trás, como no FTB Quests. Barra lateral e barra de
-ferramentas usam `min(1, a + 0,15)` para o texto continuar legível; a janela da quest, menus e
+ferramentas usam `max(0,88, min(1, a + 0,15))` para o texto continuar legível (com o piso 0,88 o
+texto desabilitado `#8A8A94` fica ≥ 4,1:1 mesmo com o mundo branco atrás); a janela da quest, menus e
 diálogos continuam sólidos. Por cima, duas grades em espaçamento de mundo `g = 8` (menor) e `4g = 32` (maior).
 A opacidade some suavemente quando as linhas ficariam densas demais:
 `α_menor = 0,035·clamp((8z − 5)/7, 0, 1)` e `α_maior = 0,07·clamp((32z − 5)/7, 0, 1)`.
-A imagem de fundo nativa do BQ (`bg_image`, `bg_size`) é desenhada sob a grade.
+A imagem de fundo nativa do BQ (`bg_image`, `bg_size`) é desenhada sob a grade, com os cantos
+alinhados ao pixel de dispositivo como as quests (não desliza ao dar zoom). Os recortes (scissor)
+do mapa, do painel e dos menus convertem y por `H − y·f` com a altura real `H` da janela; o BQ usa
+`⌈H/f⌉·f`, que desloca o recorte até `f − 1` px quando `H` não é múltiplo de `f`.
 
 ## 6. Layout da tela
 
@@ -173,6 +196,17 @@ A imagem de fundo nativa do BQ (`bg_image`, `bg_size`) é desenhada sob a grade.
 │            │                                              │✎ │
 └────────────┴──────────────────────────────────────────────┴──┘
 ```
+
+**Título do capítulo.** No canto superior esquerdo do mapa (6 px de margem, seguindo a borda
+direita do painel quando ele desliza por cima): pílula de 16 px na cor do painel com o nome, o
+progresso `feitas/total quests (p%)` em cor secundária e uma barra de 1 px de largura
+`(L − 2)·feitas/total` em `#3FD2E0`. Só exibição, não recebe cliques. Se o espaço não couber, o nome
+ganha reticências e o progresso some antes do nome.
+
+**Camadas e teclado.** ESC e Backspace fecham a camada mais interna: menu/diálogo, depois a janela
+da quest, depois a seleção do modo de edição; ESC sem nada aberto fecha o livro, Backspace nunca
+(o BQ voltaria para a tela-mãe). Com a janela da quest aberta a tela inteira escurece (`#000000`
+α 0,6) e nada atrás dela reage ao mouse.
 
 **Barra lateral.** Largura
 `W_s = clamp(maxᵢ largura(títuloᵢ) + 8 + 8 + 8 + 16, 110, ⌊0,30·W⌋)`
@@ -285,10 +319,10 @@ No JSON do BQ (multi-arquivo) aparecem como `"akashaui:10": {"shape:8": "hexagon
 | Token | Valor |
 | --- | --- |
 | fundo do mapa | `#16161A` α `a` (configurável, padrão 0,72) |
-| painel (barra lateral, barra de ferramentas) | `#101014` α `min(1, a + 0,15)` |
+| painel (barra lateral, barra de ferramentas) | `#101014` α `max(0,88, min(1, a + 0,15))` |
 | borda de painel | `#3A3A44` |
 | cabeçalho de painel | `#1C1C22` |
 | hover de linha | `#FFFFFF` α 0,12 |
 | destaque | `#3FD2E0` |
-| texto principal / secundário / desabilitado | `#EDEDED` / `#A6A6B0` / `#62626C` |
+| texto principal / secundário / desabilitado | `#EDEDED` / `#A6A6B0` / `#8A8A94` |
 | rótulo "Tarefas" / "Recompensas" | `#8E8EFF` / `#FFC64A` |

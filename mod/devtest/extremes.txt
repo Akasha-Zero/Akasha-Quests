@@ -1,0 +1,25 @@
+world
+waitquests
+wait 40
+cmd /bq_admin edit true
+complete Madeira
+wait 20
+open
+wait 10
+chapter Primeiros Passos
+wait 15
+shot x01_map
+edit on
+wait 5
+shot x02_edit_toolbar
+quest Madeira
+wait 15
+shot x03_view
+close
+chapter Bem-vindo
+clickimage 0 1
+menu Editar imagem
+wait 10
+shot x04_dialog
+key 1
+exit

@@ -51,11 +51,15 @@ public abstract class Dialog extends Widget {
 
     protected void drawContent(int mx, int my, float pt) {}
 
+    /** Called before the fields are rebuilt (window resize, return from a picker): keep what was typed. */
+    protected void beforeRelayout() {}
+
     protected void addButton(String label, Runnable action) {
         buttons.add(new Btn(label, action));
     }
 
     public Dialog layoutCentered(int sw, int sh) {
+        if (!fields.isEmpty()) beforeRelayout();
         screenW = sw;
         screenH = sh;
         int dw = contentW() + 2 * PAD;

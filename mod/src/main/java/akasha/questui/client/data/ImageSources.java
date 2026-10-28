@@ -39,6 +39,8 @@ public final class ImageSources {
         public final MipTexture texture;
         public final ItemStack item;
         public final boolean missing;
+        final long created = System.currentTimeMillis();
+        long lastUse = created;
 
         Resolved(MipTexture texture, ItemStack item, boolean missing) {
             this.texture = texture;
@@ -57,14 +59,36 @@ public final class ImageSources {
         return new File(Minecraft.getMinecraft().mcDataDir, FILE_DIR);
     }
 
+    /** A missing source is looked up again after this long (a PNG copied into the folder later appears). */
+    private static final long MISSING_RETRY_MS = 5000;
+    /** Textures unused this long are freed (images of chapters no longer viewed). */
+    private static final long EVICT_MS = 120_000;
+    private static long lastSweep;
+
     public static Resolved resolve(String source) {
         if (source == null) source = "";
+        long now = System.currentTimeMillis();
         Resolved r = CACHE.get(source);
-        if (r == null) {
+        if (r == null || r.missing && now - r.created > MISSING_RETRY_MS) {
             r = load(source.trim());
             CACHE.put(source, r);
         }
+        r.lastUse = now;
+        if (now - lastSweep > 10_000) sweep(now);
         return r;
+    }
+
+    private static void sweep(long now) {
+        lastSweep = now;
+        java.util.Iterator<Resolved> it = CACHE.values()
+            .iterator();
+        while (it.hasNext()) {
+            Resolved r = it.next();
+            if (now - r.lastUse > EVICT_MS) {
+                if (r.texture != null) r.texture.deleteGlTexture();
+                it.remove();
+            }
+        }
     }
 
     /** Drops cached images; file images are re-read from disk on next use. */

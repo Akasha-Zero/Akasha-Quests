@@ -116,6 +116,10 @@ public class QuestScreen extends GuiScreenCanvas implements INeedsRefresh, MapHo
         GuiHome.bookmark = this;
         addPanel(root);
         reloadChapters();
+        // syncs that arrived while a BQ screen (designer, editors, pickers) was open refreshed that screen, not
+        // this one, and BQ replaces the chapter's entry objects on sync
+        map.refresh();
+        view.refresh();
         layout();
         if (pendingFocus != null) applyFocus();
         if (activeDialog != null) openPopup(activeDialog.layoutCentered(width, height));
@@ -131,6 +135,11 @@ public class QuestScreen extends GuiScreenCanvas implements INeedsRefresh, MapHo
     public void closePopup() {
         super.closePopup();
         popupRef = null;
+    }
+
+    /** The game screen was shown: forget a dialog that waited for a picker to return here. */
+    public static void droppedToGame() {
+        if (GuiHome.bookmark instanceof QuestScreen) ((QuestScreen) GuiHome.bookmark).activeDialog = null;
     }
 
     public void closeDialog() {
@@ -246,15 +255,19 @@ public class QuestScreen extends GuiScreenCanvas implements INeedsRefresh, MapHo
         closePopup();
         UUID line = chapterOf(qid);
         if (line != null && !line.equals(selectedChapter)) selectChapter(line);
+        // only what the map itself would show and let you click: links and image actions must not reveal
+        // hidden, secret or locked quests (the chapter model applies BQ's visibility rules)
+        QuestNode node = model == null || !model.lineId.equals(line) ? null : model.nodes.get(qid);
+        if (node == null) return;
         map.focus(qid);
-        if (open && QuestDatabase.INSTANCE.get(qid) != null) openQuest(qid);
+        if (open && node.clickable) openQuest(qid);
     }
 
+    /** A chapter the player can open that contains the quest: the current one first, then the panel's order. */
     private UUID chapterOf(UUID questId) {
         if (model != null && model.line.containsKey(questId)) return model.lineId;
-        for (Map.Entry<UUID, IQuestLine> e : QuestLineDatabase.INSTANCE.getOrderedEntries()) {
-            if (e.getValue()
-                .containsKey(questId)) return e.getKey();
+        for (ChapterInfo c : chapters.getChapters()) {
+            if (c.line.containsKey(questId) && (!c.locked || canEdit())) return c.id;
         }
         return null;
     }
@@ -263,8 +276,9 @@ public class QuestScreen extends GuiScreenCanvas implements INeedsRefresh, MapHo
     public void selectChapter(UUID id) {
         if (id.equals(selectedChapter) && model != null) return;
         ChapterInfo info = chapters.find(id);
-        IQuestLine line = info != null ? info.line : QuestLineDatabase.INSTANCE.get(id);
-        if (line == null) return;
+        // only chapters the panel lists (hidden ones are not in it) and, outside edit mode, not locked ones
+        if (info == null || info.locked && !canEdit()) return;
+        IQuestLine line = info.line;
         closeQuestView();
         selectedChapter = id;
         model = new ChapterModel(id, line);
@@ -311,6 +325,11 @@ public class QuestScreen extends GuiScreenCanvas implements INeedsRefresh, MapHo
     @Override
     public boolean mapInteractive() {
         return !view.isEnabled() && popupRef == null;
+    }
+
+    @Override
+    public boolean covered(int mx, int my) {
+        return chapters.covers(mx, my) || mx >= toolbar.getX();
     }
 
     UUID playerId() {
@@ -460,10 +479,11 @@ public class QuestScreen extends GuiScreenCanvas implements INeedsRefresh, MapHo
 
     private List<ContextMenu.Item> shapeItems(Set<UUID> quests) {
         List<ContextMenu.Item> items = new ArrayList<>();
-        String current = quests.size() == 1 ? QuestDatabase.INSTANCE.get(
+        IQuest single = quests.size() == 1 ? QuestDatabase.INSTANCE.get(
             quests.iterator()
                 .next())
-            .getProperty(UiProps.SHAPE) : null;
+            : null;
+        String current = single != null ? single.getProperty(UiProps.SHAPE) : null;
         items.add(
             ContextMenu.check(
                 Lang.get("shape.default"),
@@ -704,8 +724,10 @@ public class QuestScreen extends GuiScreenCanvas implements INeedsRefresh, MapHo
                     name -> setGroup(Collections.singletonList(info), name.trim()))));
         m.submenu(Lang.get("group"), PresetIcon.ICON_FOLDER_CLOSED, groupItems);
         m.submenu(Lang.get("chapter_shape"), PresetIcon.ICON_PAINT, chapterShapeItems(info.id, info.line));
-        m.add(Lang.get("move_up"), PresetIcon.ICON_UP, () -> moveChapter(info.id, -1));
-        m.add(Lang.get("move_down"), PresetIcon.ICON_DOWN, () -> moveChapter(info.id, 1));
+        m.add(Lang.get("move_up"), PresetIcon.ICON_UP, () -> moveChapter(info, -1))
+            .enabled(neighbour(info, -1) != null);
+        m.add(Lang.get("move_down"), PresetIcon.ICON_DOWN, () -> moveChapter(info, 1))
+            .enabled(neighbour(info, 1) != null);
         show(m, mx, my);
     }
 
@@ -715,7 +737,10 @@ public class QuestScreen extends GuiScreenCanvas implements INeedsRefresh, MapHo
         m.add(Lang.get("rename_group"), PresetIcon.ICON_PROPS, () -> prompt(Lang.get("rename_group"), group, name -> {
             List<ChapterInfo> members = new ArrayList<>();
             for (ChapterInfo c : chapters.getChapters()) if (c.group.equals(group)) members.add(c);
-            if (Config.collapsedGroups.remove(group)) Config.collapsedGroups.add(name.trim());
+            if (Config.collapsedGroups.remove(group)) {
+                Config.collapsedGroups.add(name.trim());
+                Config.saveState();
+            }
             setGroup(members, name.trim());
         }));
         m.add(Lang.get("ungroup"), PresetIcon.ICON_NEGATIVE, () -> {
@@ -736,13 +761,29 @@ public class QuestScreen extends GuiScreenCanvas implements INeedsRefresh, MapHo
         layout();
     }
 
-    /** Swaps the chapter with its neighbour in BQ's global order (NetChapterEdit reorder). */
-    private void moveChapter(UUID id, int delta) {
+    /**
+     * The chapter shown next to this one inside its group in the panel (the panel lists ungrouped chapters first,
+     * then each group, so BQ's global neighbour is often in another group or hidden).
+     */
+    private ChapterInfo neighbour(ChapterInfo info, int delta) {
+        List<ChapterInfo> siblings = new ArrayList<>();
+        for (ChapterInfo c : chapters.getChapters()) if (c.group.equals(info.group)) siblings.add(c);
+        int i = siblings.indexOf(info);
+        int j = i + delta;
+        return i < 0 || j < 0 || j >= siblings.size() ? null : siblings.get(j);
+    }
+
+    /**
+     * Swaps the chapter with its panel neighbour in BQ's global order (NetChapterEdit reorder). Only the two
+     * positions exchange, so every other chapter, and each group's first appearance, keeps its place.
+     */
+    private void moveChapter(ChapterInfo info, int delta) {
+        ChapterInfo other = neighbour(info, delta);
+        if (other == null) return;
         List<UUID> order = new ArrayList<>();
         for (Map.Entry<UUID, IQuestLine> e : QuestLineDatabase.INSTANCE.getOrderedEntries()) order.add(e.getKey());
-        int i = order.indexOf(id);
-        int j = i + delta;
-        if (i < 0 || j < 0 || j >= order.size()) return;
+        int i = order.indexOf(info.id), j = order.indexOf(other.id);
+        if (i < 0 || j < 0) return;
         Collections.swap(order, i, j);
         NetChapterEdit.requestReorder(order);
     }
@@ -857,7 +898,8 @@ public class QuestScreen extends GuiScreenCanvas implements INeedsRefresh, MapHo
             if (BQ_Settings.claimAllRandomChoice) NetQuestAction.requestClaimForceChoice(ids);
             else NetQuestAction.requestClaim(ids);
         };
-        if (!BQ_Settings.claimAllConfirmation || isShiftKeyDown()) {
+        // BQ: the confirmation shows when enabled in its settings, and Shift forces it
+        if (!BQ_Settings.claimAllConfirmation && !isShiftKeyDown()) {
             go.run();
             return;
         }
@@ -870,7 +912,7 @@ public class QuestScreen extends GuiScreenCanvas implements INeedsRefresh, MapHo
             () -> BQ_Settings.claimAllRandomChoice,
             () -> {
                 BQ_Settings.claimAllRandomChoice = !BQ_Settings.claimAllRandomChoice;
-                saveBq("Claim all random choice", BQ_Settings.claimAllRandomChoice);
+                saveBq("Claim all random select choice rewards", BQ_Settings.claimAllRandomChoice);
             });
         m.add(QuestTranslation.translate("gui.cancel"), PresetIcon.ICON_CROSS, null);
         show(m, bx - 4, by);
@@ -933,11 +975,11 @@ public class QuestScreen extends GuiScreenCanvas implements INeedsRefresh, MapHo
         m.toggle(
             Lang.get("animate_lines"),
             () -> Config.animateLines,
-            () -> Config.animateLines = !Config.animateLines);
+            () -> Config.setAnimation(!Config.animateLines, Config.pulseAvailable));
         m.toggle(
             Lang.get("pulse_available"),
             () -> Config.pulseAvailable,
-            () -> Config.pulseAvailable = !Config.pulseAvailable);
+            () -> Config.setAnimation(Config.animateLines, !Config.pulseAvailable));
         show(m, bx, by);
         m.setBounds(Math.max(0, bx - m.getW() - 2), Math.max(0, Math.min(by, height - m.getH())), m.getW(), m.getH());
     }
@@ -955,17 +997,57 @@ public class QuestScreen extends GuiScreenCanvas implements INeedsRefresh, MapHo
 
     @Override
     public void keyTyped(char c, int keyCode) {
-        if (keyCode == Keyboard.KEY_ESCAPE && popupRef != null) {
-            // ESC closes the innermost layer first: popup/dialog, then the quest view, then the screen
+        if (keyCode == Keyboard.KEY_BACK) {
+            // text fields get it first; otherwise it closes the innermost layer like ESC but never leaves the
+            // book (BQ's canvas would jump to the parent screen, usually its home screen)
+            if (!onKeyTyped(c, keyCode)) closeLayer();
+            return;
+        }
+        if (keyCode == Keyboard.KEY_ESCAPE && closeLayer()) return;
+        super.keyTyped(c, keyCode);
+    }
+
+    /** Closes the innermost layer: popup/dialog, then the quest view, then the edit selection. */
+    private boolean closeLayer() {
+        if (popupRef != null) {
             if (popupRef == activeDialog) closeDialog();
             else closePopup();
-            return;
+            return true;
         }
-        if (keyCode == Keyboard.KEY_ESCAPE && view.isEnabled()) {
+        if (view.isEnabled()) {
             closeQuestView();
-            return;
+            return true;
         }
-        super.keyTyped(c, keyCode);
+        return isEditing() && map.editor.clearSelection();
+    }
+
+    /**
+     * Chapter title and progress over the top-left of the map (DESIGN §6): a pill of panel colour, the name, then
+     * "done/total (p%)" in the secondary colour, and a 2 px bar of width p under it. Display only, no input.
+     */
+    private void drawChapterTitle() {
+        ChapterInfo info = selectedChapter == null ? null : chapters.find(selectedChapter);
+        if (info == null) return;
+        String prog = Lang.get("progress", info.done, info.total, String.format("%.0f", info.percent()));
+        // follows the right edge of the chapter panel, which slides over the map when unpinned
+        int left = Math.max(map.getX(), chapters.getX() + chapters.drawnWidth());
+        int px = left + 6, py = 6;
+        int maxW = map.getX() + map.getW() - left - 12 - 8;
+        if (maxW < 60) return;
+        int progW = Draw.font()
+            .getStringWidth(prog);
+        String name = Draw
+            .ellipsize(EnumChatFormatting.getTextWithoutFormattingCodes(info.name), Math.max(20, maxW - progW - 8));
+        int nameW = Draw.font()
+            .getStringWidth(name);
+        int pw = Math.min(maxW, nameW + 8 + progW) + 8;
+        Draw.panel(px, py, px + pw, py + 16, Palette.panelBg(), Palette.PANEL_EDGE);
+        Draw.text(name, px + 4, py + 4, Palette.TEXT, false);
+        if (nameW + 8 + progW <= maxW) Draw.text(prog, px + 4 + nameW + 8, py + 4, Palette.TEXT_2, false);
+        if (info.total > 0) {
+            int bw = (int) Math.round((pw - 2) * info.done / (double) info.total);
+            Draw.rect(px + 1, py + 14, px + 1 + bw, py + 15, Palette.ACCENT);
+        }
     }
 
     /** Composes the screen's widgets in a fixed order: map, panel, toolbar, then the modal quest view. */
@@ -977,21 +1059,33 @@ public class QuestScreen extends GuiScreenCanvas implements INeedsRefresh, MapHo
 
         @Override
         public void drawPanel(int mx, int my, float pt) {
+            // depth cleared between layers: item icons write depth (Draw.clearDepth)
+            // while the quest view is up nothing behind it may show hover feedback (menus keep the real cursor so
+            // the slid-out chapter panel stays open under a menu opened from it)
+            boolean modal = view.isEnabled();
+            int hx = modal ? -10000 : mx, hy = modal ? -10000 : my;
             map.drawPanel(mx, my, pt);
-            chapters.drawPanel(mx, my, pt);
-            toolbar.drawPanel(mx, my, pt);
+            Draw.clearDepth();
+            drawChapterTitle();
+            chapters.drawPanel(hx, hy, pt);
+            Draw.clearDepth();
+            toolbar.drawPanel(hx, hy, pt);
+            Draw.clearDepth();
             if (view.isEnabled()) {
-                Draw.rect(map.getX(), map.getY(), map.getX() + map.getW(), map.getY() + map.getH(), Palette.DIM);
+                Draw.rect(0, 0, width, height, Palette.DIM);
                 view.drawPanel(mx, my, pt);
+                Draw.clearDepth();
             }
         }
 
         @Override
         public boolean onMouseClick(int mx, int my, int button) {
-            if (view.isEnabled()) return view.onMouseClick(mx, my, button);
-            if (chapters.onMouseClick(mx, my, button)) return true;
-            if (toolbar.onMouseClick(mx, my, button)) return true;
-            return map.onMouseClick(mx, my, button);
+            // always consumed: BQ's canvas treats an unused right click as "go back to the parent screen"
+            if (view.isEnabled()) view.onMouseClick(mx, my, button);
+            else if (!chapters.onMouseClick(mx, my, button) && !toolbar.onMouseClick(mx, my, button)) {
+                map.onMouseClick(mx, my, button);
+            }
+            return true;
         }
 
         @Override

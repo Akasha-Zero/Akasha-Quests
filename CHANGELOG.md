@@ -1,3 +1,53 @@
+# Changelog — Akasha Quests UI 1.0.1
+
+Auditoria de render, interface, UX e lógica. Cada achado foi conferido no código do mod, do
+BetterQuesting e do Minecraft antes de corrigir.
+
+**Render**
+- Ícones de item escreviam profundidade e recortavam os ícones desenhados depois (buracos com a
+  forma de um bloco 3D). Profundidade limpa antes de cada ícone e entre camadas; escala uniforme.
+- Franja escura no contorno e nos selos com zoom alto: texels transparentes herdam a cor dos
+  vizinhos visíveis; mipmaps por média de área (tamanhos ímpares não perdem linha nem coluna).
+- Texto depois de um ícone encantado herdava o blend aditivo do brilho.
+- Recorte do mapa deslocado até `f − 1` px em janelas de altura ímpar (cálculo do BQ); recorte próprio.
+- Imagens enormes reduzidas ao carregar (limite 2048 e o da GPU); cache de imagens reavalia arquivos
+  ausentes e libera texturas sem uso.
+- Chevrons não saltam mais ao passar o mouse; linhas não atravessam quests sem forma; brilho e selos
+  não somem na borda; imagem de fundo do BQ alinhada ao pixel; grade num só desenho; formas com
+  recurso faltando não viram quadrados brancos.
+- Item como imagem de capítulo respeita a cor.
+
+**Lógica**
+- Edições pelo diálogo de imagem ou pelo menu eram descartadas quando chegava qualquer sincronização
+  (o modelo recriava os objetos). As imagens mantêm a identidade; alteração concorrente avisa no chat.
+- Mapa desatualizado ao voltar do Designer, do editor de quest ou de um seletor do BQ.
+- Links de descrição e cliques em imagem abriam quests e capítulos ocultos ou bloqueados.
+- Subir/descer capítulo segue a ordem mostrada no painel (dentro do grupo) e desabilita nas pontas.
+- "Resgatar tudo": chave de configuração do BQ correta e Shift com o mesmo sentido do BQ.
+- Dados com tamanho 0 ou NaN não geram mais NaN (o BQ deixaria de salvar o capítulo).
+- IDs de quest digitados errado não viram outro ID; Ctrl+clique e arrastar não move a seleção errada.
+- Diálogo de imagem não reaparece sozinho e não perde o que foi digitado ao redimensionar a janela.
+- Opções "animar linhas" e "pulsar disponíveis" e o recolhimento de grupo renomeado são salvos;
+  valores fora da faixa no config são limitados.
+- O tema só é aplicado sobre o tema padrão do BQ, nunca sobre um escolhido pelo jogador.
+- `bqgen`: listas com 11 ou mais itens saíam embaralhadas (`"10:10"` antes de `"2:10"`). Havia 45
+  no livro (itens de tarefas e tabela de saque); `dist/` regenerado com a ordem correta. Valida
+  `tint` (6 dígitos), `size` positivo e `click: chapter:`.
+
+**Interface e UX**
+- Backspace nunca sai do livro; ESC e Backspace fecham a camada mais interna (menu, janela, seleção).
+- Clique direito no vazio não volta mais para a tela inicial do BQ.
+- Título e progresso do capítulo sobre o mapa, como prometido no DESIGN §6.
+- Telas do BQ (tarefas, recompensas, editores) em português: tradução pt_BR do BetterQuesting e do
+  BQ Standard incluída no mod.
+- Menus longos rolam com a roda e cortam rótulos compridos com reticências.
+- Botões desabilitados dizem o motivo ("Concluída", "Resgatado"); "Resgatar" ocupa a largura toda
+  quando não há tarefas.
+- Mira escondida sob o fundo translúcido; tela inteira escurece com a janela da quest aberta;
+  sem hover no mapa sob o painel aberto.
+- Contraste: linhas bloqueadas com contorno escuro (≥ 3,45:1), texto desabilitado ≥ 4,1:1,
+  contorno de quest bloqueada 3,14:1, dicas sem cinza-escuro ilegível; barra de status compacta.
+
 # Changelog — Akasha Quests UI 1.0.0
 
 Novo mod opcional, só cliente, em `mod/` (jar em `dist/mods/`): interface no estilo FTB Quests

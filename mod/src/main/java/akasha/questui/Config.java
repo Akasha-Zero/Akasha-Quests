@@ -65,6 +65,8 @@ public final class Config {
         animateLines = cfg.getBoolean("animateLines", UI, true, "Move the chevrons along dependency lines.");
         lineSpeed = cfg.get(UI, "lineSpeed", 0.5, "Chevron speed in tiles per second.", 0.0, 4.0)
             .getDouble();
+        // Forge does not enforce the min/max it writes in the comment
+        lineSpeed = Double.isNaN(lineSpeed) ? 0.5 : Math.max(0.0, Math.min(4.0, lineSpeed));
         pulseAvailable = cfg.getBoolean("pulseAvailable", UI, true, "Soft glow pulse on quests that can be started.");
         backgroundOpacity = cfg
             .get(
@@ -75,6 +77,7 @@ public final class Config {
                 0.2,
                 1.0)
             .getDouble();
+        backgroundOpacity = Double.isNaN(backgroundOpacity) ? 0.72 : Math.max(0.2, Math.min(1.0, backgroundOpacity));
 
         sidebarPinned = cfg
             .getBoolean("sidebarPinned", STATE, true, "Chapter panel pinned open (toggled by the pin button).");
@@ -93,6 +96,18 @@ public final class Config {
         if (cfg == null) return;
         cfg.get(UI, "backgroundOpacity", 0.72)
             .set(backgroundOpacity);
+        cfg.save();
+    }
+
+    /** View options toggles, saved like the opacity. */
+    public static void setAnimation(boolean lines, boolean pulse) {
+        animateLines = lines;
+        pulseAvailable = pulse;
+        if (cfg == null) return;
+        cfg.get(UI, "animateLines", true)
+            .set(lines);
+        cfg.get(UI, "pulseAvailable", true)
+            .set(pulse);
         cfg.save();
     }
 

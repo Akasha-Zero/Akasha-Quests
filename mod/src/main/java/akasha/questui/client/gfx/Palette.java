@@ -12,11 +12,12 @@ public final class Palette {
 
     /** Side panels and toolbar: a step more opaque than the map, a = min(1, a_map + 0.15). */
     public static int panelBg() {
-        return Draw.withAlpha(PANEL, (float) Math.min(1.0, akasha.questui.Config.backgroundOpacity + 0.15));
+        return Draw.withAlpha(PANEL, panelAlpha());
     }
 
-    public static int panelHeaderBg() {
-        return Draw.withAlpha(PANEL_HEADER, (float) Math.min(1.0, akasha.questui.Config.backgroundOpacity + 0.15));
+    /** a_panel = max(0.88, min(1, a + 0.15)): the floor keeps disabled text >= 4:1 over any world (DESIGN §10). */
+    public static float panelAlpha() {
+        return (float) Math.max(0.88, Math.min(1.0, akasha.questui.Config.backgroundOpacity + 0.15));
     }
 
     // Surfaces
@@ -34,7 +35,7 @@ public final class Palette {
     // Text
     public static final int TEXT = 0xFFEDEDED;
     public static final int TEXT_2 = 0xFFA6A6B0;
-    public static final int TEXT_OFF = 0xFF62626C;
+    public static final int TEXT_OFF = 0xFF8A8A94;
     public static final int TEXT_GROUP = 0xFFC9C9D1;
     public static final int TEXT_CHAPTER = 0xFFD8D8DE;
     public static final int TEXT_DONE = 0xFF7CD977;
@@ -49,7 +50,7 @@ public final class Palette {
 
     // Quest states: fill / outline
     public static final int Q_LOCKED_FILL = 0xFF2B2B2E;
-    public static final int Q_LOCKED_EDGE = 0xFF5E5E66;
+    public static final int Q_LOCKED_EDGE = 0xFF76767F; // 3.14:1 against Q_LOCKED_FILL (WCAG 1.4.11)
     public static final int Q_FILL = 0xFF3A3A40;
     public static final int Q_AVAILABLE_EDGE = 0xFFE6E6E6;
     public static final int Q_PROGRESS_EDGE = 0xFF3FD2E0;
@@ -58,7 +59,9 @@ public final class Palette {
     public static final int Q_REPEAT_EDGE = 0xFFB584F0;
 
     // Dependency lines
-    public static final int L_LOCKED = 0xFF4A4A52;
+    public static final int L_LOCKED = 0xFF6E6E78;
+    /** Casing under every dependency line: black at 85 % (DESIGN §4). */
+    public static final int LINE_CASING = 0xD9000000;
     public static final int L_OPEN = 0xFFBDBDC6;
     public static final int L_DONE = 0xFF5BD94F;
     public static final int L_REPEAT = 0xFFB584F0;

@@ -25,7 +25,8 @@ public final class Geometry {
         double c = Math.cos(t), s = Math.sin(t);
         double lx = dx * c + dy * s;
         double ly = -dx * s + dy * c;
-        double hx = w / 2, hy = h / 2;
+        // half sizes below 0.5 (bad data) would make the keep-aspect ratio k = n / 0 infinite and the result NaN
+        double hx = Math.max(0.5, w / 2), hy = Math.max(0.5, h / 2);
         double nhx = sx == 0 ? hx : Math.max(1, hx + sx * lx / 2);
         double nhy = sy == 0 ? hy : Math.max(1, hy + sy * ly / 2);
         if (keepAspect) {

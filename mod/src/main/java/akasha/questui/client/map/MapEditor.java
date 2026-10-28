@@ -46,7 +46,8 @@ public class MapEditor {
 
     private final QuestMap map;
     private final Set<UUID> selected = new LinkedHashSet<>();
-    private int selectedImage = -1;
+    /** Selected image by identity (ChapterModel keeps unchanged images' objects across rebuilds). */
+    private ChapterImage selectedImg;
 
     private Mode mode = Mode.NONE;
     private double pressWx, pressWy;
@@ -65,7 +66,7 @@ public class MapEditor {
 
     void reset() {
         selected.clear();
-        selectedImage = -1;
+        selectedImg = null;
         mode = Mode.NONE;
         undo.clear();
     }
@@ -73,7 +74,7 @@ public class MapEditor {
     void onModelRebuilt() {
         ChapterModel m = map.getModel();
         selected.retainAll(m.nodes.keySet());
-        if (selectedImage >= m.images.size()) selectedImage = -1;
+        if (selectedImg != null && !containsRef(m.images, selectedImg)) selectedImg = null;
     }
 
     public boolean isSelected(QuestNode n) {
@@ -86,18 +87,41 @@ public class MapEditor {
 
     public ChapterImage getSelectedImage() {
         ChapterModel m = map.getModel();
-        return m != null && selectedImage >= 0 && selectedImage < m.images.size() ? m.images.get(selectedImage) : null;
+        return m != null && selectedImg != null && containsRef(m.images, selectedImg) ? selectedImg : null;
     }
 
     public void selectImage(ChapterImage img) {
-        selectedImage = map.getModel().images.indexOf(img);
-        if (selectedImage >= 0) selected.clear();
+        selectedImg = containsRef(map.getModel().images, img) ? img : null;
+        if (selectedImg != null) selected.clear();
+    }
+
+    private static boolean containsRef(List<ChapterImage> list, ChapterImage img) {
+        for (ChapterImage i : list) if (i == img) return true;
+        return false;
+    }
+
+    /** The image was changed or removed by someone else since the dialog or menu was opened. */
+    private static void reportStale() {
+        net.minecraft.client.Minecraft mc = net.minecraft.client.Minecraft.getMinecraft();
+        if (mc.thePlayer != null) {
+            mc.thePlayer.addChatMessage(
+                new net.minecraft.util.ChatComponentText(
+                    net.minecraft.util.EnumChatFormatting.YELLOW + akasha.questui.client.ui.Lang.get("image_stale")));
+        }
+    }
+
+    /** Drops the quest and image selection; true when there was one (ESC / Backspace layering). */
+    public boolean clearSelection() {
+        boolean had = !selected.isEmpty() || selectedImg != null;
+        selected.clear();
+        selectedImg = null;
+        return had;
     }
 
     public void selectOnly(QuestNode n) {
         selected.clear();
         selected.add(n.id);
-        selectedImage = -1;
+        selectedImg = null;
     }
 
     private static boolean shift() {
@@ -132,11 +156,16 @@ public class MapEditor {
         QuestNode node = map.nodeAt(mx, my);
         if (node != null) {
             if (ctrlPress) {
-                if (!selected.remove(node.id)) selected.add(node.id);
+                if (selected.remove(node.id)) {
+                    // deselected: a drag now must not move the rest of the selection without this quest
+                    selectedImg = null;
+                    return true;
+                }
+                selected.add(node.id);
             } else if (!selected.contains(node.id)) {
                 selectOnly(node);
             }
-            selectedImage = -1;
+            selectedImg = null;
             mode = Mode.MOVE_NODES;
             origin.clear();
             for (UUID id : selected) {
@@ -162,7 +191,7 @@ public class MapEditor {
         }
         if (!ctrlPress) {
             selected.clear();
-            selectedImage = -1;
+            selectedImg = null;
         }
         return false;
     }
@@ -253,7 +282,7 @@ public class MapEditor {
         double x0 = cam.toWorldX(Math.min(boxX0, boxX1)), x1 = cam.toWorldX(Math.max(boxX0, boxX1));
         double y0 = cam.toWorldY(Math.min(boxY0, boxY1)), y1 = cam.toWorldY(Math.max(boxY0, boxY1));
         if (!ctrlPress) selected.clear();
-        selectedImage = -1;
+        selectedImg = null;
         for (QuestNode n : map.getModel().nodes.values()) {
             if (n.x + n.w >= x0 && n.x <= x1 && n.y + n.h >= y0 && n.y <= y1) selected.add(n.id);
         }
@@ -303,7 +332,7 @@ public class MapEditor {
         if (ctrl && key == Keyboard.KEY_A) {
             selected.clear();
             selected.addAll(map.getModel().nodes.keySet());
-            selectedImage = -1;
+            selectedImg = null;
             return true;
         }
         if (img != null && (key == Keyboard.KEY_DELETE || key == Keyboard.KEY_BACK)) {
@@ -364,9 +393,9 @@ public class MapEditor {
         ChapterModel m = map.getModel();
         NBTTagList before = ChapterImage.writeList(m.images);
         if (m.images.remove(img)) {
-            selectedImage = -1;
+            selectedImg = null;
             commitImages(before);
-        }
+        } else reportStale();
     }
 
     public void duplicateImage(ChapterImage img) {
@@ -384,8 +413,12 @@ public class MapEditor {
     public void reorderImage(ChapterImage img, int delta) {
         List<ChapterImage> list = map.getModel().images;
         int i = list.indexOf(img);
+        if (i < 0) {
+            reportStale();
+            return;
+        }
         int j = Math.max(0, Math.min(list.size() - 1, i + delta));
-        if (i < 0 || i == j) return;
+        if (i == j) return;
         NBTTagList before = ChapterImage.writeList(list);
         list.remove(i);
         list.add(j, img);
@@ -397,10 +430,13 @@ public class MapEditor {
     public void replaceImage(ChapterImage old, ChapterImage edited) {
         List<ChapterImage> list = map.getModel().images;
         int i = list.indexOf(old);
-        if (i < 0) return;
+        if (i < 0) {
+            reportStale();
+            return;
+        }
         NBTTagList before = ChapterImage.writeList(list);
         list.set(i, edited);
-        selectedImage = i;
+        selectedImg = edited;
         commitImages(before);
     }
 
@@ -427,7 +463,7 @@ public class MapEditor {
             pushUndo(() -> {
                 m.images.clear();
                 m.images.addAll(ChapterImage.readList(before));
-                selectedImage = -1;
+                selectedImg = null;
                 commitImages(null);
             });
         }
@@ -495,13 +531,13 @@ public class MapEditor {
 
         // Status bar, bottom-left of the map: cursor in world units, selection, snap
         ChapterModel m = map.getModel();
-        String status = Lang.get(
-            "status",
-            (long) Math.floor(cam.toWorldX(mx)),
-            (long) Math.floor(cam.toWorldY(my)),
-            selected.size(),
-            m.nodes.size(),
-            shift() ? 1 : (int) SNAP);
+        long cx = (long) Math.floor(cam.toWorldX(mx)), cy = (long) Math.floor(cam.toWorldY(my));
+        int avail = map.getW() - 8;
+        String status = Lang.get("status", cx, cy, selected.size(), m.nodes.size(), shift() ? 1 : (int) SNAP);
+        // narrow maps: compact form, then ellipsis, so the bar never spills past the map
+        if (Draw.font()
+            .getStringWidth(status) > avail) status = Lang.get("status_short", cx, cy, selected.size(), m.nodes.size());
+        status = Draw.ellipsize(status, avail);
         int sw = Draw.font()
             .getStringWidth(status) + 8;
         int sy = map.getY() + map.getH() - 12;

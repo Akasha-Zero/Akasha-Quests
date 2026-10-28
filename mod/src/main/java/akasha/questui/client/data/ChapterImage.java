@@ -54,7 +54,19 @@ public class ChapterImage {
         img.click = tag.getString("click");
         img.dep = tag.getString("dep");
         img.editOnly = tag.getBoolean("edit");
+        // NaN or a zero size would poison resize math (k = n / 0) and BQ's JSON writer refuses NaN, which stops
+        // the chapter file from saving
+        img.x = finite(img.x, 0);
+        img.y = finite(img.y, 0);
+        img.w = Math.max(1, finite(img.w, 32));
+        img.h = Math.max(1, finite(img.h, 32));
+        img.rot = finite(img.rot, 0);
+        img.alpha = Float.isNaN(img.alpha) ? 1F : Math.max(0F, Math.min(1F, img.alpha));
         return img;
+    }
+
+    private static double finite(double v, double fallback) {
+        return Double.isNaN(v) || Double.isInfinite(v) ? fallback : v;
     }
 
     public NBTTagCompound write() {

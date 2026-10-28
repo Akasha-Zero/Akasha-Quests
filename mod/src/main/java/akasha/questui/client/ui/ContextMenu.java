@@ -8,6 +8,7 @@ import net.minecraft.client.Minecraft;
 
 import akasha.questui.client.gfx.Draw;
 import akasha.questui.client.gfx.Palette;
+import akasha.questui.client.gfx.Scissor;
 import betterquesting.api2.client.gui.resources.textures.IGuiTexture;
 import betterquesting.api2.client.gui.themes.presets.PresetIcon;
 
@@ -20,6 +21,8 @@ public class ContextMenu extends Widget {
     public static final int ROW = 14;
     private static final int PAD = 3;
     private static final int ICON = 8;
+    /** Longest label drawn in full; longer ones (quest names in the dependency lists) end in "...". */
+    private static final int MAX_LABEL = 200;
 
     public static class Item {
 
@@ -58,6 +61,9 @@ public class ContextMenu extends Widget {
     private int hoverRow = -1;
     private ContextMenu child;
     private int childRow = -1;
+    /** Full content height and the scroll offset when the menu is taller than the screen. */
+    private int contentH;
+    private int scrollY;
 
     public ContextMenu(Runnable close) {
         this.close = close;
@@ -117,13 +123,18 @@ public class ContextMenu extends Widget {
         for (Item it : items) {
             maxText = Math.max(
                 maxText,
-                Draw.font()
-                    .getStringWidth(it.label));
+                Math.min(
+                    MAX_LABEL,
+                    Draw.font()
+                        .getStringWidth(it.label)));
             anySub |= it.sub != null;
         }
         int width = PAD + ICON + 4 + maxText + (anySub ? 10 : 0) + PAD + 2;
         int height = 2;
         for (Item it : items) height += it.separator ? 3 : ROW;
+        contentH = height;
+        scrollY = 0;
+        height = Math.min(height, sr.getScaledHeight() - 8); // taller lists scroll with the wheel
         int x0 = Math.max(0, Math.min(mx, sr.getScaledWidth() - width));
         int y0 = Math.max(0, Math.min(my, sr.getScaledHeight() - height));
         setBounds(x0, y0, width, height);
@@ -131,8 +142,8 @@ public class ContextMenu extends Widget {
     }
 
     private int rowAt(int mx, int my) {
-        if (!inside(mx, my)) return -1;
-        int yy = y + 1;
+        if (!inside(mx, my) || my < y + 1 || my >= y + h - 1) return -1;
+        int yy = y + 1 - scrollY;
         for (int i = 0; i < items.size(); i++) {
             int rh = items.get(i).separator ? 3 : ROW;
             if (my >= yy && my < yy + rh) return items.get(i).separator ? -1 : i;
@@ -142,7 +153,7 @@ public class ContextMenu extends Widget {
     }
 
     private int rowY(int row) {
-        int yy = y + 1;
+        int yy = y + 1 - scrollY;
         for (int i = 0; i < row; i++) yy += items.get(i).separator ? 3 : ROW;
         return yy;
     }
@@ -177,9 +188,15 @@ public class ContextMenu extends Widget {
             }
         }
 
-        int yy = y + 1;
+        boolean scrolls = contentH > h;
+        if (scrolls) Scissor.push(x, y + 1, w, h - 2);
+        int yy = y + 1 - scrollY;
         for (int i = 0; i < items.size(); i++) {
             Item it = items.get(i);
+            if (yy >= y + h || yy + ROW <= y) {
+                yy += it.separator ? 3 : ROW;
+                continue;
+            }
             if (it.separator) {
                 Draw.rect(x + PAD, yy + 1, x + w - PAD, yy + 2, Palette.DIVIDER);
                 yy += 3;
@@ -197,9 +214,17 @@ public class ContextMenu extends Widget {
                 it.icon.drawTexture(ix, iy, ICON, ICON, 0F, partialTick);
             }
             int tc = it.enabled ? it.color : Palette.TEXT_OFF;
-            Draw.text(it.label, ix + ICON + 4, yy + (ROW - 8) / 2 + 1, tc, false);
+            int room = w - (ix + ICON + 4 - x) - PAD - 2 - (it.sub != null ? 10 : 0);
+            Draw.text(Draw.ellipsize(it.label, room), ix + ICON + 4, yy + (ROW - 8) / 2 + 1, tc, false);
             if (it.sub != null) Draw.triangle(x + w - PAD - 6, yy + (ROW - 6) / 2.0, 6, Draw.RIGHT, tc);
             yy += ROW;
+        }
+        if (scrolls) {
+            Scissor.pop();
+            // 2 px scroll bar, handle proportional to the visible fraction
+            int hh = Math.max(8, (h - 2) * (h - 2) / contentH);
+            int hy = y + 1 + (int) ((h - 2 - hh) * (scrollY / (double) (contentH - h)));
+            Draw.rect(x + w - 3, hy, x + w - 1, hy + hh, 0x80FFFFFF);
         }
 
         if (child != null) child.drawPanel(mx, my, partialTick);
@@ -250,6 +275,12 @@ public class ContextMenu extends Widget {
 
     @Override
     public boolean onMouseScroll(int mx, int my, int scroll) {
+        if (child != null && child.insideTree(mx, my)) return child.onMouseScroll(mx, my, scroll);
+        if (contentH > h && inside(mx, my)) {
+            scrollY = Math.max(0, Math.min(contentH - h, scrollY + (scroll > 0 ? 1 : -1) * 2 * ROW));
+            child = null;
+            childRow = -1;
+        }
         return true;
     }
 

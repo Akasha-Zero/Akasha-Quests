@@ -16,6 +16,7 @@ public final class ClientSetup {
 
     public static void init() {
         MinecraftForge.EVENT_BUS.register(new ScreenInterceptor());
+        MinecraftForge.EVENT_BUS.register(new HudFilter());
         Textures.load();
         ((IReloadableResourceManager) Minecraft.getMinecraft()
             .getResourceManager()).registerReloadListener(new IResourceManagerReloadListener() {

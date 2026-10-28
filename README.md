@@ -39,7 +39,7 @@ do FTB Quests: barra de capítulos com grupos, mapa com formas e linhas animadas
 sobre o mapa, imagens nos capítulos e um modo de edição para posicionar quests e imagens. É só
 cliente (o servidor não precisa dele) e usa os próprios painéis e pacotes do BQ.
 
-Instale `dist/mods/akashaquestui-1.0.0.jar` na pasta `mods/` do cliente. Detalhes em
+Instale `dist/mods/akashaquestui-1.0.1.jar` na pasta `mods/` do cliente. Detalhes em
 [mod/README.md](mod/README.md); a especificação de design em [mod/docs/DESIGN.md](mod/docs/DESIGN.md).
 
 ## Instalação

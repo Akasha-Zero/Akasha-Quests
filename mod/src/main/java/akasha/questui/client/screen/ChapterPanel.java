@@ -12,11 +12,10 @@ import akasha.questui.Config;
 import akasha.questui.client.gfx.Anim;
 import akasha.questui.client.gfx.Draw;
 import akasha.questui.client.gfx.Palette;
+import akasha.questui.client.gfx.Scissor;
 import akasha.questui.client.gfx.Textures;
 import akasha.questui.client.ui.Lang;
 import akasha.questui.client.ui.Widget;
-import betterquesting.api.utils.RenderUtils;
-import betterquesting.api2.client.gui.misc.GuiRectangle;
 import betterquesting.api2.client.gui.themes.presets.PresetIcon;
 import betterquesting.api2.utils.QuestTranslation;
 
@@ -225,10 +224,11 @@ public class ChapterPanel extends Widget {
             return;
         }
 
-        RenderUtils.startScissor(new GuiRectangle(x, y, dw - 1, h));
+        Scissor.push(x, y, dw - 1, h);
         drawHeader(mx, my, dw, partialTick);
-        RenderUtils.startScissor(new GuiRectangle(x, listTop(), dw - 1, listH()));
+        Scissor.push(x, listTop(), dw - 1, listH());
         GL11.glPushMatrix();
+        clampScroll(); // the list height changes with the window
         int top = listTop() - (int) Math.round(scroll);
         UUID sel = host.selectedChapter();
         for (Row r : rows) {
@@ -239,7 +239,7 @@ public class ChapterPanel extends Widget {
             else drawChapter(r, ry, dw, hot, r.info.id.equals(sel), partialTick);
         }
         GL11.glPopMatrix();
-        RenderUtils.endScissor();
+        Scissor.pop();
         // scroll bar: 2px, proportional handle
         if (contentH > listH()) {
             double frac = listH() / (double) contentH;
@@ -247,7 +247,7 @@ public class ChapterPanel extends Widget {
             int hy = listTop() + (int) ((listH() - hh) * (scroll / (contentH - listH())));
             Draw.rect(x + dw - 4, hy, x + dw - 2, hy + hh, 0x80FFFFFF);
         }
-        RenderUtils.endScissor();
+        Scissor.pop();
     }
 
     private void drawHeader(int mx, int my, int dw, float pt) {
@@ -397,9 +397,9 @@ public class ChapterPanel extends Widget {
             for (String s : Draw.font()
                 .listFormattedStringToWidth(desc, 200)) tt.add("§7" + s);
         }
-        tt.add("§8" + Lang.get("progress", c.done, c.total, String.format("%.1f", c.percent())));
+        tt.add("§7" + Lang.get("progress", c.done, c.total, String.format("%.1f", c.percent())));
         if (c.pendingClaim) tt.add("§6" + Lang.get("rewards_waiting"));
-        if (c.locked) tt.add("§8" + Lang.get("chapter_locked"));
+        if (c.locked) tt.add("§7" + Lang.get("chapter_locked"));
         return tt;
     }
 
