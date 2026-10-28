@@ -1,0 +1,27 @@
+# Frame-rate A/B of the quest map with 200 icons on screen (devtest/perfquests, Home frames the whole chapter).
+# python3 ../tools/bqgen/bqgen.py build --chapters devtest/perfquests --out run/client/config/betterquesting
+# run/client/options.txt: maxFps:260 and enableVsync:false, so the frame rate is not capped.
+# Same world, camera and window for both builds; compare the "fps:" lines.
+world
+waitquests
+wait 60
+open
+wait 40
+chapter Grande
+wait 20
+key 199
+wait 100
+fps
+wait 40
+fps
+wait 40
+fps
+wait 40
+fps
+shot p01_grande
+scroll 300 135 -10
+wait 30
+fps
+shot p02_zoom
+close
+exit

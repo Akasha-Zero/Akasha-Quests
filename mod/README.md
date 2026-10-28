@@ -89,6 +89,7 @@ xvfb-run -a -s "-screen 0 1280x720x24" ./gradlew runClient -Pselftest=devtest/to
 Roteiros em `devtest/`: `smoke` (primeira olhada), `tour` (estados, hover, menus, janela, edição,
 imagens, zoom, painel recolhido), `edit` (mover, redimensionar e girar imagens, mover quests),
 `small` (1920×1080 com escala automática, GUI 480×270; use `-PselftestWidth=1920 -PselftestHeight=1080`),
-`bqscreens` (telas do próprio BQ com o tema) e `real` (o livro completo de `dist/`). O LWJGL 2
+`bqscreens` (telas do próprio BQ com o tema), `real` (o livro completo de `dist/`) e `perf` (FPS com
+200 ícones na tela, livro de `devtest/perfquests`; instruções no cabeçalho do roteiro). O LWJGL 2
 precisa do comando `xrandr` no PATH. Os testes unitários (câmera, geometria de edição e polígonos
 das formas) rodam com `./gradlew test`.

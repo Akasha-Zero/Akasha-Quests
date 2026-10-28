@@ -1,3 +1,19 @@
+# Changelog — Akasha Quests UI 1.0.2
+
+**Render (travadas em capítulos grandes)**
+- A 1.0.1 limpava a profundidade antes de cada ícone de quest com o recorte do mapa inteiro: num
+  capítulo como RotaryCraft (192 quests) ou ChromatiCraft (201), eram cerca de 200 passadas de
+  profundidade de tela cheia por frame, além do mundo, do Distant Horizons e do Angelica — numa GPU
+  integrada (Intel UHD) isso derruba o FPS e dá as "congeladas" ao navegar. Agora cada limpeza fica
+  no quadrado do ícone (com meia aresta de margem), o que dá o mesmo resultado: o ícone só é testado
+  contra a profundidade dentro do próprio quadrado, e o resto só tem profundidade de ícones
+  anteriores, que ele não toca. Limpar mais do que o necessário é sempre o comportamento antigo.
+- A/B num cliente real headless (Xvfb/llvmpipe, 1920×1080, mesmo mundo e câmera, roteiro
+  `devtest/perf.txt` com 200 ícones na tela, 4 rodadas de cada): 1.0.1 ≈ 4–5 FPS, 1.0.2 ≈ 11–13 FPS.
+  Capturas das duas versões idênticas pixel a pixel (enquadrado e com zoom alto). O ganho numa Intel
+  UHD não foi medido; o llvmpipe não reproduz o custo de limpeza da Intel nem o dos ícones com
+  renderizador próprio (RotaryCraft, ChromatiCraft).
+
 # Changelog — Akasha Quests UI 1.0.1
 
 Auditoria de render, interface, UX e lógica. Cada achado foi conferido no código do mod, do

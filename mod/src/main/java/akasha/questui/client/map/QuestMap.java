@@ -447,7 +447,7 @@ public class QuestMap extends Widget {
         // 3. icon, side 0.62 * 2h
         double side = ICON_FRAC * 2 * Math.min(hx, hy);
         if (n.icon != null && side * f >= ICON_MIN_DEVICE_PX) {
-            Draw.clearDepth();
+            Draw.clearDepthIcon(cx, cy, side);
             GL11.glPushMatrix();
             // origin on the device pixel grid so the nearest-sampled item atlas keeps even texel widths
             GL11.glTranslated(snap(cx - side / 2, f), snap(cy - side / 2, f), 0);
@@ -514,11 +514,12 @@ public class QuestMap extends Widget {
             Draw.texRotated(cx, cy, hw, hh, img.theta(), tint);
         } else if (r.item != null) {
             double side = 2 * Math.min(hw, hh);
+            // the rotated square's screen extent is at most side * sqrt(2); clearDepthIcon covers 2 * side
+            Draw.clearDepthIcon(cx, cy, side);
             GL11.glPushMatrix();
             GL11.glTranslated(cx, cy, 0);
             GL11.glRotated(img.rot, 0, 0, 1);
             GL11.glScaled(side / 16.0, side / 16.0, Math.min(side / 16.0, 8)); // Z capped, see drawNode
-            Draw.clearDepth();
             // RenderItem has no alpha: tint applies, opacity does not (documented in ImageDialog's tooltip)
             RenderUtils.RenderItemStack(Minecraft.getMinecraft(), r.item, -8, -8, "", img.tint | 0xFF000000);
             GL11.glPopMatrix();

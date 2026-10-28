@@ -256,6 +256,28 @@ public final class Draw {
         GL11.glClear(GL11.GL_DEPTH_BUFFER_BIT);
     }
 
+    /**
+     * {@link #clearDepth()} limited to the GUI rectangle [x0, x1) x [y0, y1), intersected with the active scissor.
+     * For an icon drawn inside the rectangle the result is the same as a full clear: the depth it is tested against
+     * there is cleared, and depth elsewhere only comes from earlier icons, which it does not touch. Under the map's
+     * scissor a full clear per icon is a depth pass over the whole map for each of the ~200 icons of a large chapter,
+     * which stalls integrated GPUs; the rectangle is a few icon areas.
+     */
+    public static void clearDepth(double x0, double y0, double x1, double y1) {
+        int ix0 = (int) Math.floor(x0), iy0 = (int) Math.floor(y0);
+        Scissor.push(ix0, iy0, (int) Math.ceil(x1) - ix0, (int) Math.ceil(y1) - iy0);
+        GL11.glClear(GL11.GL_DEPTH_BUFFER_BIT);
+        Scissor.pop();
+    }
+
+    /**
+     * Depth clear for an item icon of the given side centred on (cx, cy), with half a side of margin on every edge
+     * for renderers that draw a little past the 16 x 16 box. Clearing more than needed is always the old behaviour.
+     */
+    public static void clearDepthIcon(double cx, double cy, double side) {
+        clearDepth(cx - side, cy - side, cx + side, cy + side);
+    }
+
     /** State left by RenderItem that our flat drawing must not inherit. */
     public static void afterItem() {
         GL11.glDisable(GL11.GL_LIGHTING);
