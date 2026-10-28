@@ -997,6 +997,12 @@ public class QuestScreen extends GuiScreenCanvas implements INeedsRefresh, MapHo
 
     @Override
     public void keyTyped(char c, int keyCode) {
+        if (keyCode == Keyboard.KEY_BACK && popupRef instanceof ContextMenu) {
+            // BQ's canvas reports every key as used while a popup is open, so close menus here; dialogs and
+            // prompts keep Backspace for their text fields
+            closePopup();
+            return;
+        }
         if (keyCode == Keyboard.KEY_BACK) {
             // text fields get it first; otherwise it closes the innermost layer like ESC but never leaves the
             // book (BQ's canvas would jump to the parent screen, usually its home screen)

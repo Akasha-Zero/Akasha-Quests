@@ -37,6 +37,8 @@ public class MapEditor {
 
     private enum Mode {
         NONE,
+        /** Press fully handled at press time (Ctrl+click deselect): the release must not open the quest. */
+        HANDLED,
         MOVE_NODES,
         MOVE_IMAGE,
         RESIZE_IMAGE,
@@ -157,8 +159,10 @@ public class MapEditor {
         if (node != null) {
             if (ctrlPress) {
                 if (selected.remove(node.id)) {
-                    // deselected: a drag now must not move the rest of the selection without this quest
+                    // deselected: a drag now must not move the rest of the selection without this quest, and
+                    // the release must not open it
                     selectedImg = null;
+                    mode = Mode.HANDLED;
                     return true;
                 }
                 selected.add(node.id);
@@ -271,6 +275,8 @@ public class MapEditor {
                 return true;
             case BOX:
                 boxSelect();
+                return true;
+            case HANDLED:
                 return true;
             default:
                 return false;

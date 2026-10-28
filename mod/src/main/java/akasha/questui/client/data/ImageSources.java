@@ -30,6 +30,7 @@ public final class ImageSources {
     public static final String FILE_DIR = "config/betterquesting/akasha_images";
 
     private static final Map<String, Resolved> CACHE = new HashMap<>();
+    private static final java.util.Set<String> WARNED = new java.util.HashSet<>();
 
     private ImageSources() {}
 
@@ -93,6 +94,7 @@ public final class ImageSources {
 
     /** Drops cached images; file images are re-read from disk on next use. */
     public static void clear() {
+        WARNED.clear();
         for (Resolved r : CACHE.values()) {
             if (r.texture != null) r.texture.deleteGlTexture();
         }
@@ -117,7 +119,9 @@ public final class ImageSources {
                     .getResourceManager());
             return new Resolved(tex, null, false);
         } catch (Exception e) {
-            AkashaQuestUI.LOG.warn("Chapter image '{}' could not be loaded: {}", src, e.toString());
+            // retried every few seconds while shown: warn once per source
+            if (WARNED.add(src))
+                AkashaQuestUI.LOG.warn("Chapter image '{}' could not be loaded: {}", src, e.toString());
             return new Resolved(null, null, true);
         }
     }

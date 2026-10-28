@@ -112,8 +112,8 @@ Ordem de desenho (meio-tamanho `h = z·size/2`):
    Disponível pulsa `α = 0,10 + 0,20·(½ − ½cos(2πt/2,4 s))`.
 2. **Preenchimento** tingido com a cor de fundo do estado.
 3. **Ícone** do item (`RenderItem`) de lado `s = 0,62·2h`, centralizado, origem alinhada ao pixel de
-   dispositivo e escala **uniforme** `s/16` nos três eixos (a profundidade do bloco 3D encolhe junto e
-   `GL_RESCALE_NORMAL` continua válido para o sombreamento). O `RenderItem` escreve profundidade, então o
+   dispositivo e escala `s/16` em x, y e `min(s/16, 8)` em z (a profundidade do bloco 3D encolhe junto;
+   o teto mantém z dentro de `[−1000, 1000]`, a faixa da projeção da GUI, para ícones enormes). O `RenderItem` escreve profundidade, então o
    buffer de profundidade é limpo antes de cada ícone e entre camadas da tela; sem isso um ícone de
    bloco recorta os ícones desenhados depois dele. Ícones abaixo de 6 px de dispositivo não são
    desenhados (ilegíveis e o custo maior por quest).
@@ -152,7 +152,7 @@ De centro a centro, desenhadas **antes** das quests (que as ocultam por cima). P
 * Textura em ladrilho de 2 larguras: faixa com borda escura e uma chevron `>` apontando de A
   para B. `u = s/(2w) − φ(t)`, com `s` a distância ao longo da linha desde A. A fase
   `φ` faz as chevrons correrem no sentido do progresso (`v = 0,5` ladrilho/s; ×3 na
-  linha sob o mouse). Cada linha guarda sua fase e a avança por `φ ← (φ + v·Δt) mod 1`; com
+  linha sob o mouse). Cada linha (chave: ids das duas quests, que sobrevivem às reconstruções do modelo) guarda sua fase e a avança por `φ ← (φ + v·Δt) mod 1`; com
   `φ = v·t` a troca de `v` no hover faria as chevrons saltarem. Sem setas (opção do BQ) usa a faixa lisa.
 * Requisito `IMPLICIT` do BQ: só aparece com hover ou Shift (UX do BQ), textura tracejada.
 * Quest com lógica `OR`/`XOR` nos pré-requisitos: textura tracejada.
@@ -203,7 +203,8 @@ progresso `feitas/total quests (p%)` em cor secundária e uma barra de 1 px de l
 `(L − 2)·feitas/total` em `#3FD2E0`. Só exibição, não recebe cliques. Se o espaço não couber, o nome
 ganha reticências e o progresso some antes do nome.
 
-**Camadas e teclado.** ESC e Backspace fecham a camada mais interna: menu/diálogo, depois a janela
+**Camadas e teclado.** ESC e Backspace fecham a camada mais interna (Backspace não fecha diálogos, onde
+apaga texto): menu/diálogo, depois a janela
 da quest, depois a seleção do modo de edição; ESC sem nada aberto fecha o livro, Backspace nunca
 (o BQ voltaria para a tela-mãe). Com a janela da quest aberta a tela inteira escurece (`#000000`
 α 0,6) e nada atrás dela reage ao mouse.

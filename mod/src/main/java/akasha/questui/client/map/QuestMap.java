@@ -50,7 +50,8 @@ public class QuestMap extends Widget {
     private static final double ICON_MIN_DEVICE_PX = 6;
 
     /** Chevron phase per link, advanced by v * dt so a speed change (hover) never makes the chevrons jump. */
-    private final Map<QuestLink, Double> linkPhase = new java.util.IdentityHashMap<>();
+    /** Keyed by quest ids: the model (and its QuestLink objects) is rebuilt on every sync. */
+    private final Map<String, Double> linkPhase = new HashMap<>();
     private double lastLineTime = -1;
 
     /** Mouse button state source; replaceable so scripted UI tests can perform drags. */
@@ -297,7 +298,7 @@ public class QuestMap extends Widget {
         double t = Anim.seconds();
         double dt = lastLineTime < 0 ? 0 : Math.max(0, Math.min(0.25, t - lastLineTime));
         lastLineTime = t;
-        if (linkPhase.size() > 4 * model.links.size() + 16) linkPhase.clear(); // links rebuilt on refresh
+        if (linkPhase.size() > 4 * model.links.size() + 16) linkPhase.clear(); // removed links
         double speed = Config.animateLines ? Config.lineSpeed : 0;
         for (QuestLink link : model.links) {
             boolean touches = focus != null && (link.from == focus || link.to == focus);
@@ -315,8 +316,9 @@ public class QuestMap extends Widget {
             MipTexture tex = link.dashed ? Textures.LINE_DASHED
                 : (BQ_Settings.showDependencyArrows ? Textures.LINE_CHEVRON : Textures.LINE_PLAIN);
             double v = touches && BQ_Settings.animateDependencyArrows ? Math.max(speed, 0.5) * 3 : speed;
-            double phase = (linkPhase.getOrDefault(link, 0.0) + v * dt) % 1.0;
-            linkPhase.put(link, phase);
+            String key = link.from.id + ">" + link.to.id;
+            double phase = (linkPhase.getOrDefault(key, 0.0) + v * dt) % 1.0;
+            linkPhase.put(key, phase);
             double ax = camera.toScreenX(link.from.cx()), ay = camera.toScreenY(link.from.cy());
             double bx = camera.toScreenX(link.to.cx()), by = camera.toScreenY(link.to.cy());
             double m = sw + 2;
@@ -450,7 +452,8 @@ public class QuestMap extends Widget {
             // origin on the device pixel grid so the nearest-sampled item atlas keeps even texel widths
             GL11.glTranslated(snap(cx - side / 2, f), snap(cy - side / 2, f), 0);
             // uniform: Z shrinks with X/Y (depth extent) and GL_RESCALE_NORMAL stays valid (block shading)
-            GL11.glScaled(side / 16.0, side / 16.0, side / 16.0);
+            // Z capped: the GUI projection keeps modelview z in [-1000, 1000] and a block icon spans about 4..32
+            GL11.glScaled(side / 16.0, side / 16.0, Math.min(side / 16.0, 8));
             n.icon.drawTexture(0, 0, 16, 16, 0F, partialTick);
             GL11.glPopMatrix();
             Draw.afterItem();
@@ -514,7 +517,7 @@ public class QuestMap extends Widget {
             GL11.glPushMatrix();
             GL11.glTranslated(cx, cy, 0);
             GL11.glRotated(img.rot, 0, 0, 1);
-            GL11.glScaled(side / 16.0, side / 16.0, side / 16.0);
+            GL11.glScaled(side / 16.0, side / 16.0, Math.min(side / 16.0, 8)); // Z capped, see drawNode
             Draw.clearDepth();
             // RenderItem has no alpha: tint applies, opacity does not (documented in ImageDialog's tooltip)
             RenderUtils.RenderItemStack(Minecraft.getMinecraft(), r.item, -8, -8, "", img.tint | 0xFF000000);
@@ -652,7 +655,8 @@ public class QuestMap extends Widget {
             for (String s : hoveredImage.hover) tt.add(QuestTranslation.translate(s));
             if (host.isEditing()) {
                 tt.add("§7" + hoveredImage.image);
-                if (!hoveredImage.click.isEmpty()) tt.add("§7> " + hoveredImage.click); // ASCII: the default font has no arrow glyphs
+                if (!hoveredImage.click.isEmpty()) tt.add("§7> " + hoveredImage.click); // ASCII: the default font has
+                                                                                        // no arrow glyphs
             }
             return tt.isEmpty() ? null : tt;
         }
