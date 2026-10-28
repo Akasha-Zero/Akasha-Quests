@@ -26,6 +26,8 @@ public final class Config {
     public static boolean animateLines = true;
     public static double lineSpeed = 0.5;
     public static boolean pulseAvailable = true;
+    /** Scroll the selected chapter's name in the side panel when it is too long for its row. */
+    public static boolean scrollChapterName = true;
     /**
      * Opacity of the map background; below 1 the world shows through like in FTB Quests. Side panels use
      * min(1, a + 0.15) so their text stays readable (DESIGN §10).
@@ -68,6 +70,11 @@ public final class Config {
         // Forge does not enforce the min/max it writes in the comment
         lineSpeed = Double.isNaN(lineSpeed) ? 0.5 : Math.max(0.0, Math.min(4.0, lineSpeed));
         pulseAvailable = cfg.getBoolean("pulseAvailable", UI, true, "Soft glow pulse on quests that can be started.");
+        scrollChapterName = cfg.getBoolean(
+            "scrollChapterName",
+            UI,
+            true,
+            "Scroll the selected chapter's name in the side panel (marquee) when it does not fit; off: cut with '...'.");
         backgroundOpacity = cfg
             .get(
                 UI,

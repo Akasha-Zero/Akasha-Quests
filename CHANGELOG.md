@@ -1,3 +1,11 @@
+# Changelog — Akasha Quests UI 1.0.4
+
+**Interface**
+- Nome do capítulo selecionado que não cabe na barra lateral rola como letreiro: vai para a esquerda
+  em laço e para 1,5 s com o início visível a cada volta, então dá para ler o nome inteiro. Os outros
+  capítulos continuam cortados com reticências (nome inteiro na dica). Desliga com
+  `scrollChapterName=false` em `config/akashaquestui.cfg`. Roteiro `devtest/marquee.txt`.
+
 # Changelog — Akasha Quests UI 1.0.3
 
 **Interface**

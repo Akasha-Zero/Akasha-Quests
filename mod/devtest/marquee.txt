@@ -1,0 +1,20 @@
+# Selected chapter name marquee (DESIGN §6): long name scrolls, pausing with its start in view each lap.
+# python3 ../tools/bqgen/bqgen.py build --chapters devtest/perfquests --out run/client/config/betterquesting
+world
+waitquests
+wait 60
+open
+wait 40
+chapter Taumaturgia
+wait 10
+shot m01_rest
+wait 50
+shot m02_scrolling
+wait 40
+shot m03_scrolling
+wait 60
+shot m04_wrap
+chapter Grande
+wait 10
+shot m05_other_selected
+exit

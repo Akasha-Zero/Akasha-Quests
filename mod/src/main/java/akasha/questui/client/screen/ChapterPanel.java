@@ -6,6 +6,9 @@ import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.ScaledResolution;
+
 import org.lwjgl.opengl.GL11;
 
 import akasha.questui.Config;
@@ -40,6 +43,10 @@ public class ChapterPanel extends Widget {
     private static final int PAD = 4;
     private static final int BADGE = 8;
     private static final long SLIDE_MS = 140;
+    /** Marquee of the selected chapter name (GUI px per second, rest at the start of each lap, gap between laps). */
+    private static final double MARQUEE_SPEED = 30;
+    private static final long MARQUEE_PAUSE_MS = 1500;
+    private static final int MARQUEE_GAP = 24;
     private static final long CLOSE_DELAY_MS = 250;
 
     public interface Host {
@@ -88,6 +95,8 @@ public class ChapterPanel extends Widget {
     private long slideStart;
     private double slideFrom = STRIP, slideTo = STRIP;
     private long leftAt = -1;
+    private UUID marqueeFor;
+    private long marqueeStart;
 
     public ChapterPanel(Host host) {
         this.host = host;
@@ -290,6 +299,32 @@ public class ChapterPanel extends Widget {
             false);
     }
 
+    /**
+     * Selected chapter name wider than its slot: scrolls left in a loop (name, gap, name again), resting
+     * {@link #MARQUEE_PAUSE_MS} with the start in view each lap. Restarts from the start when the selection changes.
+     */
+    private void drawMarquee(ChapterInfo c, int labelW, int textX, int ry, int maxW, int color) {
+        if (!c.id.equals(marqueeFor)) {
+            marqueeFor = c.id;
+            marqueeStart = Anim.millis();
+        }
+        double lap = labelW + MARQUEE_GAP;
+        long period = MARQUEE_PAUSE_MS + Math.round(lap / MARQUEE_SPEED * 1000);
+        long t = (Anim.millis() - marqueeStart) % period;
+        double off = t < MARQUEE_PAUSE_MS ? 0 : (t - MARQUEE_PAUSE_MS) * MARQUEE_SPEED / 1000;
+        // whole device pixels, so the glyphs of the nearest-sampled font do not shimmer while moving
+        Minecraft mc = Minecraft.getMinecraft();
+        int f = new ScaledResolution(mc, mc.displayWidth, mc.displayHeight).getScaleFactor();
+        off = Math.floor(off * f) / f;
+        Scissor.push(textX, ry, maxW, ROW);
+        GL11.glPushMatrix();
+        GL11.glTranslated(-off, 0, 0);
+        Draw.text(c.label, textX, ry + 2, color, false);
+        Draw.text(c.label, textX + lap, ry + 2, color, false);
+        GL11.glPopMatrix();
+        Scissor.pop();
+    }
+
     private void drawChapter(Row r, int ry, int dw, boolean hot, boolean sel, float pt) {
         ChapterInfo c = r.info;
         if (sel) {
@@ -309,7 +344,11 @@ public class ChapterPanel extends Widget {
             : (sel ? 0xFFFFFFFF : (c.allComplete ? Palette.TEXT_DONE : Palette.TEXT_CHAPTER));
         int textX = ix + ICON + 4;
         int maxW = x + dw - 1 - PAD - BADGE - 2 - textX;
-        Draw.text(Draw.ellipsize(c.label, maxW), textX, ry + 2, color, false);
+        int labelW = Draw.font()
+            .getStringWidth(c.label);
+        if (sel && Config.scrollChapterName && labelW > maxW && maxW > 0)
+            drawMarquee(c, labelW, textX, ry, maxW, color);
+        else Draw.text(Draw.ellipsize(c.label, maxW), textX, ry + 2, color, false);
 
         // right badge: rewards waiting > complete > locked
         int bx = x + dw - 1 - PAD - BADGE;

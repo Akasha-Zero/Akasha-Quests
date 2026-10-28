@@ -63,6 +63,7 @@ Cada gesto concluído é enviado ao servidor pelos pacotes do próprio BQ e sinc
 | `defaultShape` / `mainShape` | `circle` / `hexagon` | Formas padrão |
 | `animateLines`, `lineSpeed` | `true`, `0.5` | Chevrons nas linhas |
 | `pulseAvailable` | `true` | Brilho nas quests que podem ser feitas |
+| `scrollChapterName` | `true` | Nome do capítulo selecionado rola na barra lateral quando não cabe (desligado: corta com reticências) |
 | `backgroundOpacity` | `0.72` | Opacidade do fundo do mapa (1 = sólido; menos mostra o mundo atrás). Também em Opções de visualização |
 
 ## Compilar
@@ -89,7 +90,7 @@ xvfb-run -a -s "-screen 0 1280x720x24" ./gradlew runClient -Pselftest=devtest/to
 Roteiros em `devtest/`: `smoke` (primeira olhada), `tour` (estados, hover, menus, janela, edição,
 imagens, zoom, painel recolhido), `edit` (mover, redimensionar e girar imagens, mover quests),
 `small` (1920×1080 com escala automática, GUI 480×270; use `-PselftestWidth=1920 -PselftestHeight=1080`),
-`bqscreens` (telas do próprio BQ com o tema), `real` (o livro completo de `dist/`) e `perf` (FPS com
+`bqscreens` (telas do próprio BQ com o tema), `real` (o livro completo de `dist/`), `marquee` (nome do capítulo selecionado rolando), `sidebar` (largura da barra) e `perf` (FPS com
 200 ícones na tela, livro de `devtest/perfquests`; instruções no cabeçalho do roteiro). O LWJGL 2
 precisa do comando `xrandr` no PATH. Os testes unitários (câmera, geometria de edição e polígonos
 das formas) rodam com `./gradlew test`.

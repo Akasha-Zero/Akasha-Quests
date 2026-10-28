@@ -212,7 +212,10 @@ da quest, depois a seleção do modo de edição; ESC sem nada aberto fecha o li
 **Barra lateral.** Largura
 `W_s = clamp(maxᵢ largura(títuloᵢ) + 8 + 8 + 8 + 16, min(110, ⌊0,22·W⌋), ⌊0,22·W⌋)`
 (ícone 8 + recuo do grupo 8 + selo 8 + margens; o nome do pack no cabeçalho é encurtado com
-reticências e não alarga o painel; nomes de capítulo maiores que a barra também, com o nome inteiro na dica). Os capítulos mostram o nome curto `akashaui:title` quando existe. Linhas de 12 px (ícone 8 px: a 2× da GUI
+reticências e não alarga o painel; nomes de capítulo maiores que a barra também, com o nome inteiro na dica).
+O nome do capítulo **selecionado** que não cabe rola para a esquerda em laço (nome, 24 px de espaço,
+nome de novo) a 30 px/s da GUI, parando 1,5 s com o início visível a cada volta; recomeça do início
+quando a seleção muda; deslocamento em pixels inteiros do dispositivo (`scrollChapterName`, padrão ligado). Os capítulos mostram o nome curto `akashaui:title` quando existe. Linhas de 12 px (ícone 8 px: a 2× da GUI
 isso é 16 px de dispositivo, escala 1:1 do sprite do item), cabeçalho de grupo 13 px,
 cabeçalho do painel 18 px. Dois modos:
 
