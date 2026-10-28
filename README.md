@@ -42,6 +42,10 @@ cliente (o servidor não precisa dele) e usa os próprios painéis e pacotes do 
 Instale `dist/mods/akashaquestui-1.0.1.jar` na pasta `mods/` do cliente. Detalhes em
 [mod/README.md](mod/README.md); a especificação de design em [mod/docs/DESIGN.md](mod/docs/DESIGN.md).
 
+O GitHub Actions (`.github/workflows/build.yml`) compila e testa o mod e valida o livro a cada push
+na `main` e em pull requests. O jar sai como artefato `.jar` (sem zip) na página da execução; uma tag
+`v*` publica o jar numa release.
+
 ## Instalação
 
 Copie o conteúdo de `dist/config/betterquesting/` para `config/betterquesting/` do servidor
